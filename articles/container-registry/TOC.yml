@@ -181,6 +181,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Rendszerkép összeállítása buildcsomagokkal (előzetes verzió)
           href: container-registry-tasks-pack-build.md
+        - name: Feladatnaplók megtekintése
+          href: container-registry-tasks-logs.md
 - name: Referencia
   expanded: false
   items:

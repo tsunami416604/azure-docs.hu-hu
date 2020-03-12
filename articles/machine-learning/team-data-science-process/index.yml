@@ -1,37 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Csoportos adatelemzési folyamat dokumentációja
+summary: Útmutató a csoportos adatelemzési folyamat használatához, amely egy olyan rugalmas és iteratív adatelemzési módszer, amely a prediktív elemzési megoldásokhoz és az intelligens alkalmazásokhoz készült.
 metadata:
   title: Csoportos adatelemzési folyamat dokumentációja
-  description: 'Útmutató a csoportos adatelemzési folyamat használatához, amely egy olyan rugalmas és iteratív adatelemzési módszer, amelynek célja a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása. A csoportos adatelemzési folyamat elősegíti a csoportok hatékonyabb együttműködését és tanulását. A Microsofttól és az iparág más vállalataitól származó, olyan ajánlott eljárásokból és szerkezetekből álló válogatást tartalmaz, amelyek az adatelemzési kezdeményezések sikeres megvalósítását segítik elő. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.'
-  services: machine-learning
-  author: marktab
+  description: Útmutató a csoportos adatelemzési folyamat használatához, amely egy olyan rugalmas és iteratív adatelemzési módszer, amely a prediktív elemzési megoldásokhoz és az intelligens alkalmazásokhoz készült.
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/10/2020
+  author: marktab
   ms.author: marktab
-abstract:
-  description: 'A csoportos adatelemzési folyamat rugalmas és iteratív adatelemzési módszer, amelynek célja a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása. A csoportos adatelemzési folyamat elősegíti a csoportok hatékonyabb együttműködését és tanulását. A Microsofttól és az iparág más vállalataitól származó, olyan ajánlott eljárásokból és szerkezetekből álló válogatást tartalmaz, amelyek az adatelemzési kezdeményezések sikeres megvalósítását segítik elő. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'A csoportos adatelemzési folyamat ismertetése:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="overview">Áttekintés</a>
-          - html: <a href="lifecycle">Életciklus</a>
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutató a csoportos adatelemzési folyamat különböző forgatókönyvekben való használatához:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="walkthroughs-spark">Spark PySparkkal és Scalával</a>
-          - html: <a href="walkthroughs-hdinsight-hadoop">Hive a HDInsight Hadooppal</a>
-          - html: <a href="walkthroughs-azure-data-lake">U-SQL az Azure Data Lake-kel</a>
-          - html: '<a href="walkthroughs-sql-server">R, Python és T-SQL az SQL Serverrel</a>'
-          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL és Python az SQL DW-vel</a>
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 5090cbcf6c177b99f4932eb77647520c3602a832
+  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/11/2020
+  ms.locfileid: "79087382"
+landingContent:
+- title: Tudnivalók a folyamatról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a csoportos adatelemzési folyamat?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Folyamat életciklusa
+      url: lifecycle.md
+    - text: Üzleti ismertetés
+      url: lifecycle-business-understanding.md
+    - text: Adatgyűjtés
+      url: lifecycle-data.md
+- title: Projekt tervezése és kidolgozása
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Projekttervezés
+      url: team-data-science-process-project-templates.md
+    - text: Rugalmas fejlesztés
+      url: agile-development.md

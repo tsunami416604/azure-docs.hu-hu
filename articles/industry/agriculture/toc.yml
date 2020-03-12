@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Korábbi telemetriaadatok feldolgozása
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: Feldolgozott telemetria-adatok lekérdezése
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: Alapelvek
   items:
     - name: Integrációs minták

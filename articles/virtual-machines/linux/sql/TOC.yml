@@ -10,6 +10,8 @@
   items:
     - name: Azure RHEL-alapú virtuális gépek rendelkezésreállási csoportjának beállítása a STONITH használatával
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: Rendelkezésreállási csoport figyelőjének konfigurálása Azure RHEL-alapú virtuális gépeken futó SQL Serverhez
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -199,18 +199,27 @@
         - name: Streamelés
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
-    - name: Útmutatás a 2-esről a 3-as verzióra való migráláshoz
-      href: migrate-from-v2-to-v3.md
-      displayName: naming
+    - name: Migrálás a 2-esről a 3-as verzióra
+      items:
+        - name: A 2-es és 3-as verzió összevetése
+          displayName: 'migrate, v2 to v3'
+          href: media-services-v2-vs-v3.md
+        - name: Útmutató a migráláshoz
+          href: migrate-from-v2-to-v3.md
+          displayName: naming
 - name: Útmutatók
   items:
     - name: Bevezetés
       items:
+        - name: Fiók létrehozása – portál
+          href: create-account-portal.md
         - name: Fiók létrehozása – parancssori felület
           href: create-account-cli-how-to.md
           displayName: storage
         - name: Fiók hitelesítő adatainak alaphelyzetbe állítása – parancssori felület
           href: cli-reset-account-credentials.md
+        - name: Adatelérési API-k – portál
+          href: access-api-portal.md
         - name: Adatelérési API-k – parancssori felület
           href: access-api-cli-how-to.md
         - name: Fenntartott médiaegységek skálázása – parancssori felület
@@ -324,6 +333,18 @@
           href: download-results-howto.md
         - name: Leíró hang jelzése
           href: signal-descriptive-audio-howto.md
+    - name: Hibaelhárítás
+      items:
+        - name: Gyakori kérdések
+          href: frequently-asked-questions.md
+        - name: Hibakódok
+          items:
+            - name: Streamvégpont-hibakódok
+              href: streaming-endpoint-error-codes.md
+            - name: Élő események hibakódjai
+              href: live-event-error-codes.md
+            - name: Feladathibakódok
+              href: job-error-codes.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
@@ -347,14 +368,6 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions
-    - name: Hibakódok
-      items:
-        - name: Streamvégpont-hibakódok
-          href: streaming-endpoint-error-codes.md
-        - name: Élő események hibakódjai
-          href: live-event-error-codes.md
-        - name: Feladathibakódok
-          href: job-error-codes.md
 - name: További források
   items:
     - name: Azure Media Services-közösség
@@ -388,7 +401,5 @@
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: Kvóták és korlátozások
       href: limits-quotas-constraints.md
-    - name: GYIK
-      href: frequently-asked-questions.md
     - name: Azure-felhők és -régiók
       href: azure-clouds-regions.md

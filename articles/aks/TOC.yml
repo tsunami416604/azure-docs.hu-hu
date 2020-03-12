@@ -216,7 +216,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: Központi telepítések ellenőrzése az Azure Policy használatával (előzetes verzió)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
-        - name: A fürt szolgáltatásneve hitelesítő adatainak frissítése
+        - name: Fürt hitelesítő adatainak frissítése
           href: update-credentials.md
         - name: Fürt kimenő forgalmának korlátozása és szabályozása
           href: limit-egress-traffic.md

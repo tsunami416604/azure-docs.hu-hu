@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: Hitelesítés felügyelt identitással – Power BI
           href: powerbi-output-managed-identity.md
+        - name: Adatok titkosítása
+          href: data-protection.md
     - name: Megoldások kiépítése
       items:
         - name: Twitter-hangulatelemzés
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: API használata az IoT Edge-feladatokhoz
           href: stream-analytics-cicd-api.md
+        - name: Exportálás és üzembe helyezés az Azure Resource Managerrel
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: Eszközök telepítése

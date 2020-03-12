@@ -479,6 +479,8 @@
           href: control-flow-webhook-activity.md
     - name: Adatfolyam-átalakítások
       items:
+        - name: Átalakítás áttekintése
+          href: data-flow-transformation-overview.md
         - name: Összesítés
           href: data-flow-aggregate.md
         - name: Sor módosítása
