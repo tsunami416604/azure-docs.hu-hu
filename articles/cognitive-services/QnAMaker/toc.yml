@@ -68,6 +68,8 @@
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
         - name: Üzletmenet-folytonossági terv létrehozása
           href: How-To/business-continuity-plan.md
+        - name: Együttműködés
+          href: How-To/collaborate-knowledge-base.md
     - name: A tudásbázis kezelése
       items:
         - name: Tudásbázis létrehozása
@@ -79,8 +81,6 @@
         - name: Migrálás új tudásbázisra
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Együttműködés
-          href: How-To/collaborate-knowledge-base.md
         - name: Tesztelés
           href: How-To/test-knowledge-base.md
     - name: QnA-készletek kezelése

@@ -117,18 +117,12 @@
   items:
     - name: Fürtműveletek
       items:
-        - name: AKS-fürt létrehozása
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: AKS-fürt méretezése
           href: scale-cluster.md
         - name: AKS-fürt frissítése
           href: upgrade-cluster.md
         - name: Folyamatcsomópont operációsrendszer-frissítései
           href: node-updates-kured.md
-        - name: AKS-fürt törlése
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: ACR integrálása AKS-fürttel
           href: cluster-container-registry-integration.md
         - name: Virtuális csomópontok létrehozása
