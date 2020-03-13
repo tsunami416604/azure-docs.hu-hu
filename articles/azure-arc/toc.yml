@@ -12,6 +12,8 @@
       href: ./servers/onboard-portal.md
     - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
       href: ./servers/onboard-service-principal.md
+    - name: Gépek csatlakoztatása az Azure Archoz a PowerShell DSC használatával
+      href: ./servers/onboard-dsc.md
 - name: Referencia
   items:
     - name: Azure-beli csatlakoztatottgép-ügynök parancssori felülete

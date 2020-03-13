@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: Nyelvi és régiós támogatás
       href: language-support.md
+    - name: Szövegeltolások
+      href: concepts/text-offsets.md
 - name: Útmutatók
   items:
     - name: Szövegelemzési API hívása

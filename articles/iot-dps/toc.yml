@@ -97,6 +97,8 @@
       href: concepts-security.md
     - name: Szolgáltatás
       href: concepts-service.md
+    - name: A DPS IP-címek ismertetése
+      href: iot-dps-understand-ip-address.md
     - name: TPM-igazolás
       href: concepts-tpm-attestation.md
     - name: Szimmetrikus kulcsú igazolás
@@ -127,6 +129,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: Regisztrációs szolgáltatási API-k hozzáférésének vezérlése
           href: how-to-control-access.md
+        - name: IP-szűrés konfigurálása
+          href: iot-dps-ip-filtering.md
     - name: IoT Edge-eszközök regisztrálása
       items:
         - name: Linux

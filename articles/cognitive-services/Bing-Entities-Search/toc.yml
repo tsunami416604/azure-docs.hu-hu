@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'A C# használata'
-          href: quickstarts/entity-sdk-csharp-quickstart.md
-        - name: A Node.js használata
-          href: quickstarts/entity-sdk-node-quickstart.md
-        - name: A Python használata
-          href: quickstarts/entity-sdk-python-quickstart.md
-        - name: A Java használata
-          href: quickstarts/entity-sdk-java-quickstart.md
+        - name: Bing Entity Search-ügyfélkódtárak
+          href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás készítése

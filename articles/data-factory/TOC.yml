@@ -392,14 +392,22 @@
       items:
         - name: Adatok másolása Másolási tevékenységgel
           href: copy-activity-overview.md
+        - name: Másolási tevékenység figyelése
+          href: copy-activity-monitoring.md
         - name: Fájlok törlése a Törlés tevékenységgel
           href: delete-activity.md
         - name: Adatok másolása eszköz
           href: copy-data-tool.md
         - name: Formátum- és tömörítéstámogatás
           href: supported-file-formats-and-compression-codecs.md
-        - name: Teljesítmény és finomhangolás
-          href: copy-activity-performance.md
+        - name: Másolási tevékenység teljesítménye
+          items:
+            - name: Teljesítményre és skálázhatóságra vonatkozó útmutató
+              href: copy-activity-performance.md
+            - name: Teljesítményproblémák elhárítása
+              href: copy-activity-performance-troubleshooting.md
+            - name: Teljesítményszolgáltatások
+              href: copy-activity-performance-features.md
         - name: Metaadatok és ACL-ek megőrzése
           href: copy-activity-preserve-metadata.md
         - name: Séma- és típusleképezés
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: Blog
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: Kérdés feltevése – MSDN-fórum
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: Kérdés feltevése – Stack Overflow

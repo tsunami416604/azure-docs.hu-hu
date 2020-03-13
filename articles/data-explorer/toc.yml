@@ -154,6 +154,8 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+        - name: Kibana (K2Bridge-összekötő)
+          href: k2bridge.md
     - name: Biztonságos
       items:
         - name: Fürtbiztonság kezelése

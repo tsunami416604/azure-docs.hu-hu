@@ -10,13 +10,13 @@ metadata:
   ms.collection: performance
   author: CarlRabeler
   ms.author: carlrab
-  ms.date: 01/25/2020
-  ms.openlocfilehash: 9ef3980b61f60deaa929c932cecc093a82025cbd
-  ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
+  ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/26/2020
-  ms.locfileid: "76756623"
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79208912"
 landingContent:
 - title: Tudnivalók a monitorozással és teljesítmény-finomhangolással kapcsolatban
   linkLists:
@@ -28,14 +28,20 @@ landingContent:
     links:
     - text: Microsoft Azure – Adatbázis–monitorozási forgatókönyv
       url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
-- title: Metrikák és naplók gyűjtése
+- title: Intelligens javaslatok a teljesítménnyel kapcsolatban
   linkLists:
   - linkListType: concept
     links:
-    - text: Metrikák és diagnosztikai naplózás
-      url: sql-database-metrics-diag-logging.md
-    - text: A teljesítménydiagnosztikai naplózás ismertetése
-      url: sql-database-intelligent-insights-use-diagnostics-log.md
+    - text: SQL Database Advisor – finomhangolási javaslatok
+      url: sql-database-advisor.md
+    - text: Automatikus hangolás
+      url: sql-database-automatic-tuning.md
+    - text: Lekérdezési terheléselemző
+      url: sql-database-query-performance.md
+  - linkListType: video
+    links:
+    - text: Automatikus hangolás
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Erőforráskorlátok
   linkLists:
   - linkListType: concept
@@ -52,50 +58,46 @@ landingContent:
       url: sql-database-managed-instance-resource-limits.md
     - text: Felügyeltpéldány-készletek erőforráskorlátai
       url: sql-database-instance-pools.md#instance-pools-resource-limitations
-- title: Első lépések – Azure Portal
+- title: Intelligens teljesítményelemzés
   linkLists:
   - linkListType: overview
     links:
-    - text: Monitorozás és finomhangolás mesterséges intelligencia használatával
-      url: sql-database-performance.md
+    - text: Intelligent Insights MI használatával
+      url: sql-database-intelligent-insights.md
   - linkListType: concept
     links:
-    - text: SQL Database Advisor – finomhangolási javaslatok
-      url: sql-database-advisor.md
-    - text: Lekérdezési terheléselemző
-      url: sql-database-query-performance.md
+    - text: Metrikák és diagnosztikai naplózás
+      url: sql-database-metrics-diag-logging.md
+    - text: A teljesítménydiagnosztikai naplózás ismertetése
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
     - text: Azure SQL Analytics
       url: ../azure-monitor/insights/azure-sql.md
-    - text: Intelligent Insights
-      url: sql-database-intelligent-insights.md
     - text: Észlelhető teljesítményminták
       url: sql-database-intelligent-insights-troubleshoot-performance.md
-    - text: Automatikus hangolás
-      url: sql-database-automatic-tuning.md
+    - text: Intelligens lekérdezés-feldolgozás
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
   - linkListType: video
     links:
     - text: Intelligent Insights
       url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
-    - text: Automatikus hangolás
-      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
 - title: Manuális teljesítmény-finomhangolás
   linkLists:
   - linkListType: overview
     links:
-    - text: Útmutató a teljesítmény manuális finomhangolásához
-      url: sql-database-performance-guidance.md
+    - text: Lekérdezéssel kapcsolatos problémák azonosítása
+      url: sql-database-identify-query-performance-issues.md
   - linkListType: concept
     links:
+    - text: Monitorozás DMV-k használatával
+      url: sql-database-monitoring-with-dmvs.md
+    - text: Alkalmazások és adatbázisok finomhangolása
+      url: sql-database-performance-guidance.md
     - text: Lekérdezéstár használata
       url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
-    - text: DMV-k használata
-      url: sql-database-monitoring-with-dmvs.md
     - text: Bővített események használata
       url: sql-database-xevent-db-diff-from-svr.md
     - text: Rugalmas skálázás teljesítménydiagnosztikája
       url: sql-database-hyperscale-performance-diagnostics.md
-    - text: Intelligens lekérdezés-feldolgozás
-      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: Erőforrások skálázása
   linkLists:
   - linkListType: overview

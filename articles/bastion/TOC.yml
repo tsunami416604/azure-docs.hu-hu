@@ -4,6 +4,10 @@
   items:
     - name: Az Azure Bastion ismertetése
       href: bastion-overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Bastion-gazdagép létrehozása a virtuális gép beállításaiból
+      href: quickstart-host-portal.md
 - name: Útmutatók
   items:
     - name: Bastion-gazdagép létrehozása

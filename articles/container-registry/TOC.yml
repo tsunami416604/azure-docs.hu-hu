@@ -80,6 +80,8 @@
           items:
             - name: Hozzáférés korlátozása virtuális hálózattal (előzetes verzió)
               href: container-registry-vnet.md
+            - name: Integráció az Azure Private Linkkel (előzetes verzió)
+              href: container-registry-private-link.md
             - name: Tűzfal mögötti hozzáférés
               href: container-registry-firewall-access-rules.md
             - name: Hitelesítés
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: Tartalommegbízhatóság
               href: container-registry-content-trust.md
-            - name: Rendszerképek vizsgálata a Security Centerrel (előzetes verzió)
+            - name: Rendszerképek vizsgálata a Security Centerrel
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: Beállításjegyzék-adatok titkosítása (előzetes verzió)
+              href: container-registry-customer-managed-keys.md
         - name: Regisztrációs adatbázisok és más Azure-szolgáltatások
           expanded: false
           items:

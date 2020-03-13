@@ -1,27 +1,37 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: A Microsoft Genomics dokumentációja
+summary: Megismerheti, hogyan végezhető a Microsoft Genomics segítségével genomszekvenálás a Burrows-Wheeler Aligner (BWA) és a másodlagos elemzéshez használható Genome Analysis Toolkit (GATK) felhőalapú implementálása révén.
 metadata:
   title: A Microsoft Genomics dokumentációja
-  meta.description: Learn how Microsoft Genomics can power genome sequencing using a cloud implementation of the Burrows-Wheeler Aligner (BWA) and the Genome Analysis Toolkit (GATK) for secondary analysis.
+  description: Megismerheti, hogyan végezhető a Microsoft Genomics segítségével genomszekvenálás a Burrows-Wheeler Aligner (BWA) és a másodlagos elemzéshez használható Genome Analysis Toolkit (GATK) felhőalapú implementálása révén.
   services: genomics
-  author: grhuynh
-  manager: cgronlun
-  ms.author: grhuynh
   ms.service: genomics
   ms.topic: landing-page
-  ms.date: 12/07/2017
-abstract:
-  description: 'Megismerheti, hogyan végezhető a Microsoft Genomics segítségével genomszekvenálás a Burrows-Wheeler Aligner (BWA) és a másodlagos elemzéshez használható Genome Analysis Toolkit (GATK) felhőalapú implementálása révén.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: Munkafolyamat elküldése a Microsoft Genomics szolgáltatással.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/helix-blue-orange.svg
-            text: Munkafolyamat elküldése
-            href: quickstart-run-genomics-workflow-portal
+  author: grhuynh
+  ms.author: grhuynh
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 36b5898aca2f019351aaeda8438fb6771a09b6c4
+  ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79137041"
+landingContent:
+- title: Bevezetés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Microsoft Genomics?
+      url: overview-what-is-genomics.md
+    - text: Gyakori kérdések
+      url: frequently-asked-questions-genomics.md
+  - linkListType: quickstart
+    links:
+    - text: Minta-munkafolyamat futtatása
+      url: quickstart-run-genomics-workflow-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: FASTQ bemeneti fájlok használata
+      url: quickstart-input-pair-fastq.md
+    - text: BAM bemeneti fájl használata
+      url: quickstart-input-bam.md

@@ -125,6 +125,8 @@
       href: event-grid-tutorial.md
     - name: Értesítések fogadása az Event Gridben és a Logic Appsben
       href: event-grid-logicapps.md
+    - name: Egyfelhasználós erőforrások titkos kulcsainak rotálása
+      href: tutorial-rotation.md
     - name: Integrálás az Azure Policy szolgáltatással
       href: azure-policy.md
     - name: Integrálás az Azure Private Link szolgáltatással (előzetes verzió)

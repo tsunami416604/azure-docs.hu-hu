@@ -161,6 +161,9 @@
         - name: Katalógusadatok
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: Notebookok letöltése
+          displayName: export
+          href: download-notebooks-data.md
 - name: Referencia
   items:
     - name: Algoritmusokra és modulokra vonatkozó referenciák
