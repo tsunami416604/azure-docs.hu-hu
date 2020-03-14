@@ -4,16 +4,16 @@ description: 'Oktatóanyag: a környezet előkészítése a gépi tanuláshoz k�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296802"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
@@ -189,12 +189,13 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 
 1. Bontsa ki a **Storage** szakaszt:
 
-   ![Ellenőrizze, hogy az turbofandevicestorage szerepel-e az egyéni végpontok listájában](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![Ellenőrizze, hogy az turbofanDeviceStorage szerepel-e az egyéni végpontok listájában](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   A **turbofandevicestorage** az egyéni végpontok listájában látható. Figyelje meg a végpont alábbi jellemzőit:
+   A **turbofanDeviceStorage** az egyéni végpontok listájában látható. Figyelje meg a végpont alábbi jellemzőit:
 
    * Az `devicedata` nevű blob Storage-tárolóra mutat, amelyet a **tároló neve**jelez.
    * A **Fájlnév formátuma** a név utolsó elemének partíciója. Ezt a formátumot úgy találjuk, hogy az oktatóanyag későbbi részében Azure Notebooks a fájl műveleteihez.
+   * Az **állapota** kifogástalannak kell lennie.
 
 1. Válassza az **útvonalak** fület.
 

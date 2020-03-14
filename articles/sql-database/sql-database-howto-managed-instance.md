@@ -12,17 +12,17 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
 ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357620"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256912"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány használata Azure SQL Database
 
 Ebben a cikkben különböző útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek a felügyelt példányok kezelésében és konfigurálásában.
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 - [Migrálás felügyelt példányra](sql-database-managed-instance-migrate.md) – az ajánlott áttelepítési folyamat és a felügyelt példányra való áttelepítéshez szükséges eszközök megismerése.
 
@@ -44,6 +44,6 @@ Ebben a cikkben különböző útmutatókat, parancsfájlokat és magyarázatoka
 - A [tranzakciós replikáció](replication-with-sql-database-managed-instance.md) lehetővé teszi, hogy az adatait felügyelt példányok között, vagy a helyszíni SQL Server egy felügyelt példányra replikálja, és fordítva. További információ a tranzakciós replikáció használatáról és konfigurálásáról ebben az útmutatóban.
 - A [fenyegetések észlelésének konfigurálása](sql-database-managed-instance-threat-detection.md) – a [fenyegetések észlelése](sql-database-threat-detection-overview.md) egy beépített Azure SQL Database funkció, amely különböző lehetséges támadásokat, például SQL-befecskendezést vagy gyanús helyekről való hozzáférést észlel. Ebből az útmutatóból megtudhatja, hogyan engedélyezheti és konfigurálhatja a [fenyegetések észlelését](sql-database-threat-detection-overview.md) felügyelt példányok esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [az önálló adatbázisok](sql-database-howto-single-database.md) útmutatóinak megismeréséről

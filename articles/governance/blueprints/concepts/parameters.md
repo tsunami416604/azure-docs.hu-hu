@@ -4,11 +4,11 @@ description: Ismerje meg a statikus és dinamikus paramétereket, valamint azt, 
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385261"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264712"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
@@ -232,7 +232,7 @@ A **dinamikus paraméterek** a hozzárendelés során történő beállítása k
   }
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [terv függvények](../reference/blueprint-functions.md)listáját.
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).

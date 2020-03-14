@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 4bbadd7e10f0fd6896932dd79a5ca42d9906d2a2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393485"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251322"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-fiókok
 
@@ -67,6 +67,6 @@ Az alábbiak az elsődleges forgatókönyvek, amelyek a Media Services-fiók a c
 
 A Azure Media Services nem támogatja a Storage-fiókok használatát az Azure Storage-tűzfallal vagy a [magánhálózati végpontokkal](https://docs.microsoft.com/azure/storage/common/storage-network-security) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan csatolhat Storage-fiókot a Media Services-fiókjához, tekintse meg a [fiók létrehozása](create-account-cli-quickstart.md)című témakört.

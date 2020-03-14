@@ -4,11 +4,11 @@ description: Bevezetés az Azure Container-nyilvántartások,-adattárak és-tá
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669094"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247058"
 ---
 # <a name="about-registries-repositories-and-images"></a>A jegyzékek, adattárak és lemezképek
 
@@ -55,7 +55,7 @@ A tárház neve tartalmazhat [névtereket](container-registry-best-practices.md#
 - *Product-Returns/web-beküldési: 20180604*
 - *Product-Returns/Legacy-integrátor: 20180715*
 
-## <a name="image"></a>Image (Kép)
+## <a name="image"></a>Kép
 
 A beállításjegyzékben található tároló-rendszerkép vagy más összetevő egy vagy több címkével van társítva, egy vagy több réteget tartalmaz, és egy jegyzékfájl azonosítja. Az összetevők egymáshoz való viszonyának megértése segíthet a beállításjegyzék hatékony kezelésében.
 

@@ -12,11 +12,11 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668633"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264309"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -83,7 +83,7 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Domain | 0:1 | A technikai profil tartományneve. Ha például a technikai profil megadja a Facebook-identitás szolgáltatóját, a tartománynév Facebook.com. |
+| Tartomány | 0:1 | A technikai profil tartományneve. Ha például a technikai profil megadja a Facebook-identitás szolgáltatóját, a tartománynév Facebook.com. |
 | DisplayName | 1:1 | A felhasználók számára megjeleníthető technikai profil neve. |
 | Leírás | 0:1 | A felhasználók számára megjeleníthető technikai profil leírása. |
 | Protokoll | 0:1 | A másik féllel folytatott kommunikációhoz használt protokoll. |
@@ -111,7 +111,7 @@ A **protokoll** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`vagy `None`. |
+| Név | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`vagy `None`. |
 | Kezelő | Nem | Ha a protokoll neve `Proprietary`re van állítva, adja meg a Azure AD B2C által a protokollkezelő meghatározásához használt szerelvény teljesen minősített nevét. |
 
 ## <a name="metadata"></a>Metaadatok
@@ -128,7 +128,7 @@ A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Paraméter | Igen | A metaadat-kulcs. A metaadat-elemek listájának megtekintéséhez tekintse meg az egyes műszaki profilok típusait. |
+| Kulcs | Igen | A metaadat-kulcs. A metaadat-elemek listájának megtekintéséhez tekintse meg az egyes műszaki profilok típusait. |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -136,9 +136,9 @@ A **CryptographicKeys** elem a következő elemet tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Paraméter | 1: n | A technikai profilban használt titkosítási kulcs. |
+| Kulcs | 1: n | A technikai profilban használt titkosítási kulcs. |
 
-### <a name="key"></a>Paraméter
+### <a name="key"></a>Kulcs
 
 A **Key** elem a következő attribútumot tartalmazza:
 

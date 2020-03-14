@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e17112cbe2a494a585cd5a09c36cfe449d3d433c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249206"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365815"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Gyakori hibák és hibaelhárítási lépések a Azure Active Directory Domain Services
 
@@ -30,7 +30,7 @@ Ha problémába ütközik az Azure AD DS engedélyezésekor, tekintse át a köv
 
 | **Példa hibaüzenet** | **Resolution** (Osztás) |
 | --- |:--- |
-| *A addscontoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
+| *A aaddscontoso.com név már használatban van ezen a hálózaton. Olyan nevet adjon meg, amely nincs használatban.* |[Tartománynév-ütközés a virtuális hálózaton](troubleshoot.md#domain-name-conflict) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel a (z) "Azure AD Domain Services Sync" nevű alkalmazáshoz. Törölje a "Azure AD Domain Services Sync" nevű alkalmazást, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[A tartományi szolgáltatások nem rendelkeznek megfelelő engedélyekkel a Azure AD Domain Services Sync alkalmazáshoz](troubleshoot.md#inadequate-permissions) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Azure AD-bérlőben található tartományi szolgáltatások alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje az alkalmazást az alkalmazás-azonosító d87dcbc6-a371-462e-88e3-28ad15ec4e64, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[A tartományi szolgáltatások alkalmazás nincs megfelelően konfigurálva az Azure AD-bérlőben](troubleshoot.md#invalid-configuration) |
 | *Nem lehet engedélyezni a tartományi szolgáltatásokat ebben az Azure AD-bérlőben. Az Microsoft Azure AD alkalmazás le van tiltva az Azure AD-bérlőben. Engedélyezze az alkalmazást az 00000002-0000-0000-C000-000000000000 alkalmazás-azonosítóval, majd próbálja meg engedélyezni az Azure AD-bérlő tartományi szolgáltatásait.* |[Az Microsoft Graph alkalmazás le van tiltva az Azure AD-bérlőben](troubleshoot.md#microsoft-graph-disabled) |

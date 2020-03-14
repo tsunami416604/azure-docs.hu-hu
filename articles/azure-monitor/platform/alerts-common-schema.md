@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668179"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249047"
 ---
 # <a name="common-alert-schema"></a>Gyakori riasztási séma
 
@@ -31,7 +31,7 @@ Ez azt jelenti, hogy lehetséges, hogy kevesebb integrációval rendelkezik, íg
 
 Az általános riasztási séma elsődlegesen a riasztási értesítésekben is megnyilvánulhat. A megjelenő fejlesztések az alábbi listában láthatók:
 
-| Műveletek | Fejlesztések|
+| Művelet | Fejlesztések|
 |:---|:---|
 | SMS | Konzisztens SMS-sablon az összes riasztási típushoz. |
 | E-mail | Konzisztens és részletes e-mail sablon, amely lehetővé teszi, hogy könnyedén diagnosztizálja a problémákat egy pillantással. Beágyazott mély – hivatkozások a riasztási példányra a Portálon és az érintett erőforráson gondoskodjon arról, hogy gyorsan beugorjon a Szervizelési folyamatba. |
@@ -118,7 +118,7 @@ Például a [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyakori riasztási séma-definíciók webhookok/Logic Apps/Azure Functions/Automation Runbookok.](https://aka.ms/commonAlertSchemaDefinitions)
 - [Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 

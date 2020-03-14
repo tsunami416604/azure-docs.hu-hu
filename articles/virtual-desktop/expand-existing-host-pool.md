@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127896"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365219"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -71,7 +71,7 @@ A következőképpen telepítheti újra a Azure Resource Manager sablont a gazda
 
 ## <a name="run-the-azure-marketplace-offering"></a>Az Azure Marketplace-ajánlat futtatása
 
-Kövesse az [alkalmazáskészlet létrehozása az Azure Marketplace](./create-host-pools-azure-marketplace.md) -en című témakör utasításait, amíg el nem éri [Az Azure Marketplace-ajánlat futtatását az új címkészlet](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)kiépítéséhez. Amikor erre a pontra kerül, meg kell adnia az alábbi adatokat az egyes panelekhez:
+Kövesse az [alkalmazáskészlet létrehozása az Azure Marketplace](./create-host-pools-azure-marketplace.md) -en című témakör utasításait, amíg el nem éri [Az Azure Marketplace-ajánlat futtatását az új címkészlet](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)kiépítéséhez. Amikor erre a pontra kerül, meg kell adnia az alábbi adatokat az egyes lapokon:
 
 ### <a name="basics"></a>Alapvető beállítások
 

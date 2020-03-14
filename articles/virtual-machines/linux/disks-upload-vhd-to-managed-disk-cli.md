@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan tölthet fel egy virtuális merevlemezt egy Azu
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f2eb0f59d460fbf8d6595db658bb3f5f9c4a6ad0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970345"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365849"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>VHD feltöltése az Azure-ba az Azure CLI használatával
 
@@ -28,7 +28,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 - Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 - Helyileg tárolt vhd-fájl
-- Ha a virtuális merevlemezt a helyszínen kívánja feltölteni: az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
+- Ha a virtuális merevlemezt a helyszíni rendszerből kívánja feltölteni: az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md)rögzített méretű VHD-t helyileg tárolják.
 - Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
@@ -79,8 +79,6 @@ Ez a feltöltés azonos átviteli sebességgel rendelkezik, mint a [szabványos 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
-
-Ha a SAS lejár a feltöltés során, és még nem nevezte meg `revoke-access`, akkor új SAS-t kaphat a feltöltés folytatásához `grant-access`használatával.
 
 Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
 

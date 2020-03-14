@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: c1ca85ba9c79f828b5ddcf0d640cfe7f8b6e097c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668009"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249437"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>API-beállítások váltása naplózási riasztásokhoz
 
@@ -111,7 +111,7 @@ Máskülönben ha a megadott log analitikai munkaterület még nem lett átvált
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor-log riasztásokról](alerts-unified-log.md).
 - Megtudhatja, hogyan hozhat létre [naplózási riasztásokat az Azure-riasztásokban](alerts-log.md).

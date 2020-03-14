@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9fc60549d895129af56f289c6247dcb377b973b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298673"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -22,7 +22,7 @@ A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománysal 
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat LDAPs-t egy Azure AD DS felügyelt tartományhoz.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Digitális tanúsítvány létrehozása az Azure AD DS használatával
@@ -68,7 +68,7 @@ A kért vagy létrehozott tanúsítványnak meg kell felelnie az alábbi követe
 * **Kulcshasználat** – a tanúsítványt a *digitális aláírásokhoz* és a *kulcsfontosságú titkosítási*kell konfigurálni.
 * **Tanúsítvány célja** – a tanúsítványnak érvényesnek kell lennie az SSL-kiszolgáló hitelesítéséhez.
 
-Ebben az oktatóanyagban hozzunk létre egy önaláírt tanúsítványt a biztonságos LDAP-hez a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag használatával. Nyisson meg egy PowerShell-ablakot **rendszergazdaként** , és futtassa a következő parancsokat. Cserélje le a *$dnsName* változót a saját felügyelt tartománya által használt DNS-névre, például *aaddscontoso.com*:
+Több eszköz áll rendelkezésre az önaláírt tanúsítványok, például az OpenSSL, a MakeCert, a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag stb. létrehozásához. Ebben az oktatóanyagban hozzunk létre egy önaláírt tanúsítványt a biztonságos LDAP-hez a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag használatával. Nyisson meg egy PowerShell-ablakot **rendszergazdaként** , és futtassa a következő parancsokat. Cserélje le a *$dnsName* változót a saját felügyelt tartománya által használt DNS-névre, például *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Ahhoz, hogy használni tudja az előző lépésben létrehozott digitális tanú
 1. Mivel ez a tanúsítvány az adatvisszafejtéshez használatos, alaposan meg kell határoznia a hozzáférést. A tanúsítvány használatához jelszó használható. A megfelelő jelszó nélkül nem alkalmazható a tanúsítvány a szolgáltatásra.
 
     A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább**gombra. Ezt a jelszót a következő szakaszban lehet használni az Azure AD DS felügyelt tartományának biztonságos LDAP-szolgáltatásának engedélyezéséhez.
-1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*.
+1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*. Jegyezze fel a jelszavát és helyét *.* A következő lépésekben a pfx-fájlnak ezt az információt kell megadnia.
 1. Az Áttekintés lapon válassza a **Befejezés** lehetőséget a tanúsítvány exportálásához *. PFX* -tanúsítványfájl. A tanúsítvány sikeres exportálását megerősítő párbeszédpanel jelenik meg.
 1. Hagyja nyitva az MMC-t a következő szakaszban való használatra.
 
@@ -215,13 +215,13 @@ Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hoz
     |-----------------------------------|--------------|
     | Forrás                            | IP-címek |
     | Forrás IP-címeinek/CIDR tartományai | Érvényes IP-cím vagy tartomány a környezet számára |
-    | Forrásporttartományok                | *            |
+    | Source port ranges                | *            |
     | Cél                       | Bármelyik          |
     | Célporttartományok           | 636          |
     | Protokoll                          | TCP          |
-    | Műveletek                            | Engedélyezés        |
+    | Művelet                            | Engedélyezett        |
     | Prioritás                          | 401          |
-    | Name (Név)                              | AllowLDAPS   |
+    | Név                              | AllowLDAPS   |
 
 1. Ha elkészült, kattintson a **Hozzáadás** gombra a szabály mentéséhez és alkalmazásához.
 
@@ -275,7 +275,7 @@ Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzés
 1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc* fájlt.
 1. Törölje a hozzáadott rekordhoz tartozó sort, például `40.121.19.239    ldaps.aaddscontoso.com`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

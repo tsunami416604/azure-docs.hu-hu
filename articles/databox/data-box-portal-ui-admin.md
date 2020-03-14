@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380310"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259967"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box Disk felügyeletének Azure Portal használata
 
@@ -134,6 +134,6 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [a Data Box Disk-hibák elhárításának](data-box-disk-troubleshoot.md) módját.

@@ -3,16 +3,23 @@ title: SQL Server adatbázisok biztonsági mentése az Azure-ba
 description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297476"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
-SQL Server adatbázisok olyan kritikus fontosságú munkaterhelések, amelyek alacsony helyreállítási időcélkitűzést (RPO) és hosszú távú adatmegőrzést igényelnek. Azure-beli virtuális gépeken futó SQL Server-adatbázisok biztonsági mentését [Azure Backup](backup-overview.md)használatával végezheti el.
+A [Azure Backup](backup-overview.md) stream-alapú, speciális megoldást kínál az Azure-beli virtuális gépeken futó SQL Server biztonsági mentésére. Ez a megoldás a Azure Backup a nulla infrastruktúra biztonsági mentésével, a hosszú távú adatmegőrzéssel és a központi felügyelettel kapcsolatos előnyökkel illeszkedik. Emellett a következő előnyöket nyújtja kifejezetten a SQL Server számára:
+
+1. Az összes biztonsági mentési típust támogató, munkaterhelés-alapú biztonsági másolatok – teljes, különbözeti és napló
+2. 15 perces RPO (helyreállítási pont célkitűzés) gyakori naplók biztonsági másolatokkal
+3. Időponthoz képesti helyreállítás másodpercenként
+4. Egyedi adatbázis-szintű biztonsági mentés és visszaállítás
+
+A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyvek megtekintéséhez tekintse meg a [támogatási mátrixot](backup-azure-sql-database.md#scenario-support).
 
 ## <a name="backup-process"></a>Biztonsági mentési folyamat
 
@@ -78,7 +85,7 @@ A biztonsági mentési beállítások és a biztonsági másolatok típusaitól 
 
 **Biztonsági mentés típusa** | **Node**
     --- | ---
-    Korlátlan | Elsődleges
+    teljes | Elsődleges
     Differenciál | Elsődleges
     Napló |  Elsődleges
     Csak másolás – teljes |  Elsődleges
@@ -87,7 +94,7 @@ A biztonsági mentési beállítások és a biztonsági másolatok típusaitól 
 
 **Biztonsági mentés típusa** | **Node**
 --- | ---
-Korlátlan | Elsődleges
+teljes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
@@ -96,7 +103,7 @@ Csak másolás – teljes |  Másodlagos
 
 **Biztonsági mentés típusa** | **Node**
 --- | ---
-Korlátlan | Elsődleges
+teljes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
@@ -105,7 +112,7 @@ Csak másolás – teljes |  Másodlagos
 
 **Biztonsági mentés típusa** | **Node**
 --- | ---
-Korlátlan | Elsődleges
+teljes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos

@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegoszt�
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393194"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248098"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
 
@@ -54,7 +54,7 @@ Mivel az összes kötelező paraméter meg van adva az URI-ban, nincs szükség 
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses"></a>Responses
 
 A "refresh" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-| Name (Név)       | Típus                       | Leírás                       |
+| Név       | Típus                       | Leírás                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Tulajdonságok | AzurefilesharebackupReques | BackupRequestResource tulajdonságai |
 
@@ -487,7 +487,7 @@ Példa a kérelem szövegtörzsére
 }
 ```
 
-### <a name="responses"></a>Válaszok
+### <a name="responses"></a>Responses
 
 Az igény szerinti biztonsági mentés indítása [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
@@ -542,6 +542,6 @@ A művelet befejezése után a 200 (OK) értéket adja vissza az eredményül ka
 
 Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)című részben leírtak szerint kell követni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [állíthatja vissza az Azure-fájlmegosztást a REST API használatával](restore-azure-file-share-rest-api.md).

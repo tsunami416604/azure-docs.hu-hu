@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362805"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257380"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -142,7 +142,7 @@ A konfigurációs kiszolgáló legújabb verzióra történő frissítésével k
 
 A folyamatban lévő replikáció megszakításának elkerülése érdekében győződjön meg arról, hogy a konfigurációs kiszolgáló IP-címe nem változik, miután a konfigurációs kiszolgáló regisztrálva van egy tárolóban. A gyakori konfigurációs kiszolgáló felügyeleti feladatokkal kapcsolatos további tudnivalókért lásd: [a konfigurációs kiszolgáló kezelése a VMWare virtuális](vmware-azure-manage-configuration-server.md)gépek vész-helyreállítási feladataihoz.
 
-## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
+## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezés hibáinak elhárítása
 
 Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a [hibaelhárítással](vmware-azure-troubleshoot-configuration-server.md) foglalkozó cikket.
 
@@ -193,6 +193,6 @@ Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a
 
 További gyakori kérdések a konfigurációs kiszolgálókról: [konfigurációs kiszolgáló gyakori kérdései](vmware-azure-common-questions.md#configuration-server).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Állítsa be a [VMWare virtuális gépek](vmware-azure-tutorial.md) vész-helyreállítását az Azure-ba.

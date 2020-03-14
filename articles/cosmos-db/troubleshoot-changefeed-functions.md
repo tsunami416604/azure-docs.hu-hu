@@ -3,16 +3,16 @@ title: Hibák elhárítása Azure Functions trigger használatakor Cosmos DB
 description: Gyakori problémák, megkerülő megoldások és diagnosztikai lépések a Azure Functions trigger használatakor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605087"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365508"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 
@@ -41,7 +41,7 @@ Emellett, ha manuálisan hozza létre az [Azure Cosmos db SDK-ügyfél](./sql-ap
 
 Az Azure-függvény a következő hibaüzenettel meghiúsul: "vagy" a forrás gyűjteménye "(adatbázis neve"), vagy a (z) "collection2-Name" címbérleti gyűjtemény (adatbázis: "Adatbázis2") nem létezik. Mindkét gyűjteménynek léteznie kell a figyelő elindítása előtt. A címbérleti gyűjtemény automatikus létrehozásához állítsa a "CreateLeaseCollectionIfNotExists" értéket "true" értékre.
 
-Ez azt jelenti, hogy a trigger működéséhez szükséges Azure Cosmos-tárolók egyike vagy mindkettő nem létezik, vagy nem érhető el az Azure-függvény számára. **A hiba maga tájékoztatja arról, hogy mely Azure Cosmos-adatbázis és-tárolók a konfiguráció alapján megkeresett triggerek** .
+Ez azt jelenti, hogy a trigger működéséhez szükséges Azure Cosmos-tárolók egyike vagy mindkettő nem létezik, vagy nem érhető el az Azure-függvény számára. **Maga a hiba azt fogja megállapítani, hogy melyik Azure Cosmos-adatbázis és-tároló az** a konfiguráció alapján keresett trigger.
 
 1. Ellenőrizze a `ConnectionStringSetting` attribútumot, és hogy az **Azure-függvényalkalmazás található beállításokra hivatkozik-** e. Az attribútum értéke nem lehet maga a kapcsolatok karakterlánca, hanem a konfigurációs beállítás neve.
 2. Győződjön meg arról, hogy a `databaseName` és a `collectionName` létezik az Azure Cosmos-fiókjában. Ha automatikus érték-helyettesítést használ (`%settingName%` mintázatok használatával), győződjön meg arról, hogy a beállítás neve létezik az Azure-függvényalkalmazásban.
@@ -51,6 +51,10 @@ Ez azt jelenti, hogy a trigger működéséhez szükséges Azure Cosmos-tároló
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Az Azure-függvény nem indul el "a megosztott átviteli sebességű gyűjteménynek rendelkeznie kell partíciós kulccsal"
 
 A Azure Cosmos DB bővítmény korábbi verziói nem támogatják a [megosztott átviteli sebességű adatbázisban](./set-throughput.md#set-throughput-on-a-database)létrehozott bérletek tároló használatát. A probléma megoldásához frissítse a [Microsoft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) kiterjesztést a legújabb verzió beszerzéséhez.
+
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Az Azure-függvény nem kezdődhet a következővel: "PartitionKey kell megadni ehhez a művelethez."
+
+Ez a hiba azt jelenti, hogy jelenleg egy particionált címbérleti gyűjteményt használ, amely egy régi [bővítmény-függőséggel](#dependencies)rendelkezik. Frissítsen a legújabb elérhető verzióra. Ha jelenleg Azure Functions v1 rendszeren fut, frissítenie kell Azure Functions v2-re.
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Az Azure-függvény nem indul el a következővel: "a bérlet gyűjteménye, ha particionálva van, az azonosítóval megegyező partíciós kulcsnak kell lennie."
 
@@ -70,6 +74,13 @@ Ha ez utóbbi, akkor késés fordulhat elő a módosítások tárolása és azok
 3. Előfordulhat, hogy az Azure Cosmos [-tárolók száma korlátozott](./request-units.md).
 4. A trigger `PreferredLocations` attribútumával megadhatja az Azure-régiók vesszővel tagolt listáját az egyéni előnyben részesített kapcsolódási sorrend meghatározásához.
 
+### <a name="some-changes-are-repeated-in-my-trigger"></a>Néhány módosítás ismétlődik az triggerben
+
+A "módosítás" fogalma egy dokumentumon végzett művelet. A leggyakoribb forgatókönyvek, ahol az azonos dokumentum eseményeinek fogadása a következő:
+* A fiók végleges konzisztenciát használ. Miközben a változási csatornát egy végleges konzisztencia-szinten fogyasztja, előfordulhat, hogy a későbbi módosítási hírcsatorna olvasási műveletei között ismétlődő események szerepelnek (az egyik olvasási művelet utolsó eseménye a következőként jelenik meg).
+* A dokumentum frissítése folyamatban van. A módosítási hírcsatorna több műveletet is tartalmazhat ugyanahhoz a dokumentumokhoz, ha a dokumentum frissítéseket fogad, több eseményt is felvehet (egyet az egyes frissítések esetében). Egy egyszerű módja annak, hogy megkülönböztethető legyen egy dokumentum különböző műveletei között, hogy nyomon követhesse az [egyes módosítások `_lsn` tulajdonságát](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Ha nem egyeznek meg, ezek a dokumentumok eltérő módosításai.
+* Ha csak `id`alapján azonosítja a dokumentumokat, ne feledje, hogy a dokumentum egyedi azonosítója a `id` és a hozzá tartozó partíciós kulcs (lehet, hogy két olyan dokumentum létezik, amely azonos `id` de eltérő partíciós kulccsal rendelkezik).
+
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Néhány módosítás hiányzik a saját triggerben
 
 Ha azt tapasztalja, hogy az Azure Cosmos-tárolóban történt módosítások közül néhányat nem az Azure-függvény vette fel, akkor a kezdeti vizsgálati lépésnek kell megtörténnie.
@@ -83,26 +94,26 @@ Ebben az esetben a legjobb megoldás az, ha `try/catch` blokkokat ad hozzá a k�
 > [!NOTE]
 > A Cosmos DB Azure Functions-triggere alapértelmezés szerint nem próbálkozik újra egy köteg változásával, ha nem kezelt kivétel történt a kód végrehajtása során. Ez azt jelenti, hogy a módosítások nem érkeznek meg a célhelyre, mert nem kell feldolgoznia azokat.
 
-Ha azt tapasztalja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
+Ha úgy találja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
 
-Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérletek számát a n belül, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint ismert Azure-függvényalkalmazáspéldány, az azt jelenti, hogy ezek a további tulajdonosok „lopják” a módosításokat.
+Emellett a forgatókönyv érvényesíthető is, ha tudja, hány Azure függvényalkalmazás példány fut. Ha megvizsgálja a bérletek tárolóját, és megszámolja a címbérletek számát a n belül, a bennük lévő `Owner` tulajdonság különböző értékeinek meg kell egyezniük a függvényalkalmazás példányainak számával. Ha több tulajdonos van, mint az ismert Azure függvényalkalmazás-példányok, az azt jelenti, hogy ezek a további tulajdonosok a módosítások "ellopása".
 
-Az ilyen helyzetek megkerülő megoldásának egyik egyszerű módja, ha egy új/eltérő értékkel `LeaseCollectionPrefix/leaseCollectionPrefix`t alkalmaz a függvényre, vagy egy új bérletek tárolóval teszteli.
+Ennek a helyzetnek az egyik egyszerű módja, ha egy új/eltérő értékkel `LeaseCollectionPrefix/leaseCollectionPrefix`t alkalmaz a függvényre, vagy egy új bérletek tárolóval teszteli.
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Újra kell indítania és újra fel kell dolgoznia a tárolóban lévő összes elemet az elejéről 
-Egy tároló összes elemének újbóli feldolgozása az elejétől:
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>A tárolóban lévő összes elem újraindítása és újrafeldolgozásának kezdete 
+Egy tároló összes elemének újrafeldolgozása a kezdetektől fogva:
 1. Ha éppen fut, állítsa le az Azure-függvényt. 
 1. Törölje a címbérleti gyűjtemény dokumentumait (vagy törölje, majd hozza létre újra a címbérleti gyűjteményt, hogy az üres legyen)
 1. Állítsa a függvény [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger attribútumát True (igaz) értékre. 
 1. Indítsa újra az Azure-függvényt. Most már elolvashatja és feldolgozhatja az összes módosítást a kezdetektől fogva. 
 
-A [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) True értékre állításával megtudhatja, hogy az Azure-függvény az aktuális idő helyett a gyűjtemény előzményeinek elejéről olvassa be a módosításokat. Ez csak akkor működik, ha nincsenek már létrehozott bérletek (azaz dokumentumok a bérletek gyűjteményében). Ha a tulajdonságot igaz értékre állítja, akkor a már létrehozott bérletek nem lépnek érvénybe. Ebben az esetben, ha egy függvény leáll és újraindul, a a bérletek gyűjteményében meghatározottak szerint megkezdi az utolsó ellenőrzőpont olvasását. Az elejétől a fenti lépéseket követve újra feldolgozhatja a 1-4-as lépést.  
+A [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) True értékre állításával megtudhatja, hogy az Azure-függvény az aktuális idő helyett a gyűjtemény előzményeinek elejéről olvassa be a módosításokat. Ez csak akkor működik, ha nincsenek már létrehozott bérletek (azaz a bérletek gyűjtemény dokumentumai). Ha a tulajdonságot igaz értékre állítja, akkor a már létrehozott bérletek nem lépnek érvénybe. Ebben az esetben, ha egy függvény leáll és újraindul, a a bérletek gyűjteményében meghatározottak szerint megkezdi az utolsó ellenőrzőpont olvasását. Az elejétől az újrafeldolgozáshoz kövesse a 1-4-es lépéseket.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>A kötés csak a IReadOnlyList\<Document > vagy a JArray használatával végezhető el.
 
 Ez a hiba akkor fordul elő, ha a Azure Functions projekt (vagy bármely hivatkozott projekt) manuális NuGet hivatkozást tartalmaz az Azure Cosmos DB SDK-ra, amely az [Azure Functions Cosmos db bővítmény](./troubleshoot-changefeed-functions.md#dependencies)által megadott verziótól eltérő verziójú.
 
-Ennek a helyzetnek a megkerülő megoldásához távolítsa el a hozzáadott manuális NuGet-hivatkozást, és hagyja meg a Azure Cosmos DB SDK-referenciát a Azure Functions Cosmos DB kiterjesztési csomagon keresztül.
+A probléma megkerüléséhez távolítsa el a hozzáadott manuális NuGet-hivatkozást, és hagyja meg a Azure Cosmos DB SDK-referenciát a Azure Functions Cosmos DB bővítmény-csomagon keresztül.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Az Azure-függvény lekérdezési intervallumának módosítása a változások észleléséhez
 
