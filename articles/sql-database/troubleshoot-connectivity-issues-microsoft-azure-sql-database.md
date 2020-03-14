@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208783"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Kapcsolódási problémák és egyéb hibák elhárítása Microsoft Azure SQL Database
 
-Hibaüzeneteket kap, amikor meghiúsul az Azure SQL Database-hez való kapcsolódás. Ezeket a kapcsolódási problémákat a Azure SQL Database újrakonfigurálás, a tűzfal beállításai, a kapcsolat időtúllépése, helytelen bejelentkezési adatok vagy nem sikerült alkalmazni az ajánlott eljárások és tervezési irányelvek alkalmazása során az [Application design] ( sql-database-develop-overview.md) folyamat. Emellett, ha a Azure SQL Database erőforrásokra vonatkozó maximális korlátot eléri, nem tud kapcsolódni a Azure SQL Databasehoz.
+Hibaüzeneteket kap, amikor meghiúsul az Azure SQL Database-hez való kapcsolódás. Ezeket a kapcsolódási problémákat a Azure SQL Database újrakonfigurálás, a tűzfal beállításai, a kapcsolat időtúllépése, a helytelen bejelentkezési adatok, illetve az ajánlott eljárások és a kialakítási irányelvek alkalmazása során az [alkalmazás tervezési](sql-database-develop-overview.md) folyamata okozhatja. Emellett, ha a Azure SQL Database erőforrásokra vonatkozó maximális korlátot eléri, nem tud kapcsolódni a Azure SQL Databasehoz.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Átmeneti hibák hibaüzenetei (40197, 40613 és egyebek)
 
@@ -316,7 +316,7 @@ A rugalmas készletek létrehozásával és használatával kapcsolatos hibák a
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull; &nbsp;[DTU-alapú korlátok a rugalmas készletekhez](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[virtuális mag korlátait a rugalmas készletekhez](sql-database-vcore-resource-limits-elastic-pools.md). <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](sql-database-elastic-pool-scale.md)méretezése.|
 | 10929 | 16 |A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull; &nbsp;[DTU-alapú korlátok a rugalmas készletekhez](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[virtuális mag korlátait a rugalmas készletekhez](sql-database-vcore-resource-limits-elastic-pools.md). <br/> Ellenkező esetben próbálkozzon újra később. DTU/virtuális mag/perc/adatbázis; DTU/virtuális mag-adatbázis maximális száma. Az egyidejű feldolgozók (kérelmek) teljes száma a rugalmas készletben lévő összes adatbázisban, a készlet korlátjának túllépése miatt. |Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU vagy virtuális mag, hogy növelje a munkavégző korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
-| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N/A |
+| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N.A. |
 | 40857 | 16 |Nem található rugalmas készlet a következő kiszolgálóhoz: "% ls", rugalmas készlet neve: "% ls". A megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg a rugalmas készlet érvényes nevét. |
 | 40858 | 16 |A (z) "% ls" rugalmas készlet már létezik a következő kiszolgálón: "% ls". A megadott rugalmas készlet már létezik a megadott SQL Database-kiszolgálón. | Adja meg az új rugalmas készlet nevét. |
 | 40859 | 16 |A rugalmas készlet nem támogatja a (z)% ls szolgáltatási szintet. A megadott szolgáltatási szintet nem támogatja a rugalmas készlet kiépítés. |Adja meg a megfelelő kiadást, vagy hagyja üresen a szolgáltatási szintet, hogy az alapértelmezett szolgáltatási szintet használja. |
@@ -389,7 +389,7 @@ Ha ezek a lépések nem oldják meg a problémát, próbálkozzon a további ada
 
 A naplózás engedélyezésével kapcsolatos további információkért lásd: a [diagnosztikai naplózás engedélyezése a Azure app Service alkalmazásokban](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure SQL-kapcsolat architektúrája](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
 * [A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

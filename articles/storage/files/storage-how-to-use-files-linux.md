@@ -8,11 +8,11 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: b2469a2b5819b3011f919a2b483933bb030eed70
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268196"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha `/etc/fstab`-bejegyzést hoz létre.
@@ -278,7 +278,7 @@ Linux-felhasználók, szeretnénk hallani!
 
 A Linux-felhasználók csoportjának Azure Files egy olyan fórumot biztosít, amellyel megoszthatja a visszajelzéseket, és elfogadhatja a Linuxon a fájlok tárolását. E-mail [Azure Files Linux-felhasználók](mailto:azurefiles@microsoft.com) csatlakozhatnak a felhasználók csoportjához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)

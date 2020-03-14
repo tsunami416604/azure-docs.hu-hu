@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3de4baa4eafe26cff18d9b1bcfb59398439994b0
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 22a4177d85cb9dbbaa9ed75e063306484c7b48a9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969772"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298971"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -23,9 +23,13 @@ A Key Vault virtuálisgép-bővítmény az Azure Key vaultban tárolt tanúsítv
 
 A Key Vault virtuálisgép-bővítmény a Windows alábbi verzióit támogatja:
 
-- Windows Server 2019
+- A Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012
+
+### <a name="supported-certificate-content-types"></a>Támogatott tanúsítvány-tartalomtípusok
+
+- PKCS #12
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -66,17 +70,17 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték és példa | Adattípus |
+| Név | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
-| publisher | Microsoft.Azure.KeyVault | sztring |
-| type | KeyVaultForWindows | sztring |
+| publisher | Microsoft.Azure.KeyVault | Karakterlánc |
+| típus | KeyVaultForWindows | Karakterlánc |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | sztring |
-| certificateStoreName | MY | sztring |
-| linkOnRenewal | false | logikai |
-| certificateStoreLocation  | LocalMachine | sztring |
-| requiredInitialSync | true | logikai |
+| pollingIntervalInS | 3600 | Karakterlánc |
+| certificateStoreName | MY | Karakterlánc |
+| linkOnRenewal | false | Logikai érték |
+| certificateStoreLocation  | LocalMachine | Karakterlánc |
+| requiredInitialSync | true | Logikai érték |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Karakterlánc-tömb
 
 

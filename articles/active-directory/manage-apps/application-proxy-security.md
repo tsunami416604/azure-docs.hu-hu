@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0fd016e02c579f4e7230bd18d363cfe9a64c88eb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244263"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366104"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -81,13 +81,9 @@ A nem javított szoftverek nagy számú támadás esetén is fiókok. Az Azure A
 
 Az Azure AD Application Proxy által közzétett alkalmazások biztonságának javítása érdekében letiltjuk a webbejáró-robotok számára az alkalmazások indexelését és archiválását. Minden alkalommal, amikor egy weblánctalpas robot megpróbál beolvasni egy közzétett alkalmazás robotjának beállításait, az alkalmazásproxy a `User-agent: * Disallow: /`tartalmazó robots. txt fájllal válaszol.
 
-### <a name="ddos-prevention"></a>DDOS-megelőzés
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection szolgáltatás
 
-Az Application proxyn keresztül közzétett alkalmazások védve vannak az elosztott szolgáltatásmegtagadási (DDOS) támadások ellen.
-
-Az alkalmazásproxy szolgáltatás figyeli az alkalmazások és a hálózat elérésére irányuló forgalom mennyiségét. Ha az alkalmazásokhoz való távoli hozzáférést kérő eszközök száma megszegi a hálózatot, a Microsoft szabályozza a hozzáférést a hálózathoz. 
-
-A Microsoft az egyes alkalmazásokhoz és az előfizetéséhez tartozó forgalmi mintákat figyeli. Ha egy alkalmazás magasabb, mint a normál kérés, akkor az alkalmazás elérésére irányuló kérések rövid idő alatt megtagadva lesznek. Ha a teljes előfizetésnél magasabb szintű kérelmeket kap, akkor az alkalmazások elérésére vonatkozó kérések megtagadva. Ez a megelőző mérték megakadályozza, hogy az alkalmazás-kiszolgálókat a távelérési kérelmek túlterhelik, így a helyszíni felhasználók továbbra is hozzáférhetnek az alkalmazásaihoz. 
+Az Application proxyn keresztül közzétett alkalmazások védve vannak az elosztott szolgáltatásmegtagadási (DDoS) támadások ellen. Az Azure **DDoS Protection** szolgáltatás az Azure platformmal biztosít védelmet az Azure-erőforrások számára a szolgáltatásmegtagadási támadások ellen. Az alapszintű szolgáltatási szint automatikusan engedélyezve van, **így a forgalom** folyamatos figyelését és a gyakori hálózati szintű támadások valós idejű enyhítését teszi lehetővé. Egy **standard** szintű csomag is elérhető, amely további, kifejezetten az Azure Virtual Network-erőforrásokra hangolt enyhítő képességeket kínál. Részletekért lásd: [Azure DDoS Protection standard Overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>Technikai részletek
 

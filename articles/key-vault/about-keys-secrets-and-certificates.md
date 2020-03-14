@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355730"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271732"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
@@ -120,6 +120,7 @@ A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a 
 -   **ES384** – ECDSA a P-384 görbével létrehozott SHA-384 kivonatokhoz és kulcsokhoz. Ez az algoritmus a következő címen érhető el: [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES512** – ECDSA a P-521 görbével létrehozott SHA-512 kivonatokhoz és kulcsokhoz. Ez az algoritmus a következő címen érhető el: [RFC7518](https://tools.ietf.org/html/rfc7518).
 
+
 ###  <a name="rsa-algorithms"></a>RSA-algoritmusok  
  A következő algoritmus-azonosítók támogatottak az RSA és az RSA-HSM kulcsok esetében Key Vaultban.  
 
@@ -130,6 +131,9 @@ A Key Vault által használt kriptográfiai modulok (a HSM vagy a szoftverek) a 
 
 #### <a name="signverify"></a>ALÁÍRÁS/ELLENŐRZÉS
 
+-   **PS256** -RSASSA-PSS az sha-256 és a MGF1 sha-256 használatával, az [RFC7518](https://tools.ietf.org/html/rfc7518)-ben leírtak szerint.
+-   **PS384** -RSASSA-PSS az sha-384 és a MGF1 sha-384 használatával, az [RFC7518](https://tools.ietf.org/html/rfc7518)-ben leírtak szerint.
+-   **PS512** -RSASSA-PSS az sha-512 és a MGF1 sha-512 használatával, az [RFC7518](https://tools.ietf.org/html/rfc7518)-ben leírtak szerint.
 -   **RS256** -RSASSA-PKCS-V1_5 az SHA-256 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-256 értékkel kell kiszámítani, és 32 bájt hosszúságú kell lennie.  
 -   **RS384** -RSASSA-PKCS-V1_5 az SHA-384 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-384 értékkel kell kiszámítani, és 48 bájt hosszúságú kell lennie.  
 -   **RS512** -RSASSA-PKCS-V1_5 az SHA-512 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-512 értékkel kell kiszámítani, és 64 bájt hosszúságú kell lennie.  
@@ -364,14 +368,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N/A |
-|DecipherOnly|visszafejteni| N/A  |
+|DataEncipherment|titkosítás, visszafejtés| N.A. |
+|DecipherOnly|visszafejteni| N.A.  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N/A |
-|KeyCertSign|aláírás, ellenőrzés|N/A|
+|EncipherOnly|encrypt| N.A. |
+|KeyCertSign|aláírás, ellenőrzés|N.A.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
-|crlsign|aláírás, ellenőrzés| N/A |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
+|crlsign|aláírás, ellenőrzés| N.A. |
 
 ### <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

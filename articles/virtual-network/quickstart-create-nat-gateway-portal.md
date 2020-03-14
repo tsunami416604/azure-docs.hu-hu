@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6199beadc3a23b8e973ea26c2b525add98d3dcbb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246017"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216960"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Gyors útmutató: NAT-átjáró létrehozása a Azure Portal használatával
 
 Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
-
->[!NOTE] 
->Az Azure Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el, és korlátozott számú [régióban](./nat-overview.md#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -97,8 +94,8 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4**elemet.
     | SKU | Válassza a **standard**lehetőséget.
-    | Name (Név) | Adja meg a **myPublicIP**. |
-    | Előfizetést | Válassza ki előfizetését.|
+    | Név | Adja meg a **myPublicIP**. |
+    | -előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
 
@@ -167,7 +164,7 @@ Most már készen áll a NAT szolgáltatás használatára.
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 
@@ -179,6 +176,5 @@ Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének
 - Rövid útmutató a [NAT-átjáró erőforrásának Azure CLI](./quickstart-create-nat-gateway-cli.md)-vel történő üzembe helyezéséhez.
 - Útmutató a NAT- [átjáró erőforrásának Azure PowerShell használatával](./quickstart-create-nat-gateway-powershell.md)történő üzembe helyezéséhez.
 - Útmutató a NAT- [átjáró erőforrásának Azure Portal használatával](./quickstart-create-nat-gateway-portal.md)történő üzembe helyezéséhez.
-- [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
 > [!div class="nextstepaction"]
 

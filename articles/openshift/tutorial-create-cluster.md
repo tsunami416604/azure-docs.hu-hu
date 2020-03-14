@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
 ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381460"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238355"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift-fürt létrehozása
 
@@ -224,7 +224,7 @@ A **parancssori eszközök** lap a `oc login https://<your cluster name>.<azure 
 
 Ha nem tudta lekérni a jogkivonat értékét a fenti lépésekkel, szerezze be a jogkivonat értékét a következőből: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

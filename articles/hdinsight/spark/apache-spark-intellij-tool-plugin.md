@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381642"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239531"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához
 
@@ -25,7 +25,7 @@ Az **Azure Toolkit** beépülő modult többféleképpen is használhatja:
 * Hozzáférés a Azure HDInsight Spark-fürt erőforrásaihoz.
 * A Scala Spark alkalmazást helyileg fejlesztheti és futtathatja.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * A Azure Toolkit for IntelliJ beépülő modul használata
 > * Apache Spark alkalmazások fejlesztése
@@ -205,7 +205,7 @@ Egy HDInsight-fürtöt az Apache Ambari Managed username használatával kapcsol
         |Erőforrás típusának csatolása|Válassza ki a **Livy szolgáltatást** a legördülő listából.|
         |Livy végpont| Livy-végpont megadása|
         |Fürt neve| Adja meg a fürt nevét.|
-        |Fonal végpontja|Választható.|
+        |Fonal végpontja|Nem kötelező.|
         |Hitelesítés típusa| Szabadság **alapszintű hitelesítésként**|
         |Felhasználónév| Adja meg a fürt felhasználói nevét, az alapértelmezett érték a rendszergazda.|
         |Jelszó| Adja meg a felhasználónévhez tartozó jelszót.|
@@ -478,7 +478,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 ![HDInsight-fürt törlése Azure Portal](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult a [Scala](https://www.scala-lang.org/)-ban írt Apache Spark alkalmazások fejlesztéséhez, majd beküldheti őket egy HDInsight Spark-fürtbe közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A következő cikkből megtudhatja, hogy a Apache Sparkban regisztrált információk Hogyan tölthetők be egy BI Analytics-eszközbe, például Power BIba.
 

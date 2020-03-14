@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 3/13/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123068"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369165"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -58,17 +58,74 @@ Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
 |Engedélyezés|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
+|Ocp-Apim-Subscription-Region|*Cognitive Services Multi-Service és regionális Translator erőforrással használható.*<br/>Az érték a Multi-Service vagy a regionális Translator erőforrás régiója. Ez az érték nem kötelező, ha globális Translator-erőforrást használ.|
 
 ###  <a name="secret-key"></a>Titkos kulcs
 Az első lehetőség a hitelesítés a `Ocp-Apim-Subscription-Key` fejléc használatával. Adja hozzá a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
 
-### <a name="authorization-token"></a>Engedélyezési jogkivonat
+#### <a name="authenticating-with-a-global-resource"></a>Hitelesítés globális erőforrással
+
+Ha [globális Translator-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)használ, egy fejlécet kell tartalmaznia a Translator API meghívásához.
+
+|Fejlécek|Leírás|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+
+Íme egy példa a Translator API meghívására a Global Translator Resource használatával
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>Hitelesítés regionális erőforrással
+
+Ha [regionális Translator-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)használ.
+2 fejlécre van szükség a Translator API meghívásához.
+
+|Fejlécek|Leírás|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+|Ocp-Apim-Subscription-Region| Az érték a fordítói erőforrás régiója. |
+
+Íme egy példa a Translator API meghívására a regionális Translator erőforrás használatával
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>Hitelesítés több szolgáltatással rendelkező erőforrásokkal
+
+Ha a kognitív szolgáltatás több szolgáltatást használó erőforrását használja. Ez lehetővé teszi, hogy egyetlen titkos kulcsot használjon a kérelmek több szolgáltatáshoz való hitelesítéséhez. 
+
+Több szolgáltatásból álló titkos kulcs használata esetén két hitelesítési fejlécet kell tartalmaznia a kérelemmel. 2 fejlécre van szükség a Translator API meghívásához.
+
+|Fejlécek|Leírás|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Az érték a több szolgáltatásra épülő erőforráshoz tartozó Azure titkos kulcs.|
+|Ocp-Apim-Subscription-Region| Az érték a több szolgáltatásból álló erőforrás régiója. |
+
+A Multi-Service Text API-előfizetéshez régió szükséges. A kiválasztott régió az egyetlen olyan régió, amelyet a többszolgáltatásos előfizetési kulcs használatakor használhat a szöveges fordításhoz, és a Azure Portalon keresztül a többszolgáltatásos előfizetésre való feliratkozáskor választott régiónak kell lennie.
+
+Az elérhető régiók a következők: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`és `southafricanorth`.
+
+Ha a lekérdezési sztringben megadja a titkos kulcsot a `Subscription-Key`paraméterrel, akkor meg kell adnia a régiót a lekérdezési paraméterrel `Subscription-Region`.
+
+### <a name="authenticating-with-an-access-token"></a>Hitelesítés hozzáférési jogkivonattal
 Azt is megteheti, hogy kicseréli a titkos kulcsot egy hozzáférési jogkivonatra. Ezt a tokent minden kérelem tartalmazza `Authorization` fejlécként. Az engedélyezési jogkivonat beszerzéséhez hozzon `POST` kérelmet a következő URL-címre:
 
-| Környezet     | Hitelesítési szolgáltatás URL-címe                                |
+| Erőforrás típusa     | Hitelesítési szolgáltatás URL-címe                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Globális          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Regionális vagy több szolgáltatás | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 Az alábbi példa egy titkos kulcsot tartalmazó jogkivonat beszerzésére vonatkozó kérelmeket mutat be:
 
@@ -88,22 +145,29 @@ Authorization: Bearer <Base64-access_token>
 
 A hitelesítési jogkivonat 10 percig érvényes. A tokent újra fel kell használni, ha több hívást végez a Translator API-khoz. Ha azonban a program hosszabb időn keresztül kéri a Translator API-nak küldött kéréseket, akkor a programnak rendszeres időközönként új hozzáférési jogkivonatot kell igényelnie (például 8 percenként).
 
-### <a name="multi-service-subscription"></a>Több szolgáltatásra kiterjedő előfizetés
+## <a name="virtual-network-support"></a>Virtual Network támogatás
 
-Az utolsó hitelesítési lehetőség a kognitív szolgáltatás többszolgáltatásos előfizetésének használata. Ez lehetővé teszi, hogy egyetlen titkos kulcsot használjon a kérelmek több szolgáltatáshoz való hitelesítéséhez. 
+A Translator Service mostantól korlátozott régiókban Virtual Network képességekkel érhető el (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP`, `global`). Virtual Network engedélyezéséhez tekintse meg az [Azure Cognitive Services Virtual Networks konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)című témakört. 
 
-Több szolgáltatásból álló titkos kulcs használata esetén két hitelesítési fejlécet kell tartalmaznia a kérelemmel. Első lépésként a titkos kulcsot adja meg, a második az előfizetéshez társított régiót határozza meg. 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+Ha bekapcsolta ezt a funkciót, az egyéni végpontot kell használnia a Translator API meghívásához. A globális Translator Endpoint ("api.cognitive.microsofttranslator.com") nem használható, és nem végezhető el a hitelesítés egy hozzáférési jogkivonattal.
 
-A Multi-Service Text API-előfizetéshez régió szükséges. A kiválasztott régió az egyetlen olyan régió, amelyet a többszolgáltatásos előfizetési kulcs használatakor használhat a szöveges fordításhoz, és a Azure Portalon keresztül a többszolgáltatásos előfizetésre való feliratkozáskor választott régiónak kell lennie.
+Az egyéni végpontot a [Translator erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)létrehozása után találhatja meg.
 
-Az elérhető régiók a következők: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`és `southafricanorth`.
+|Fejlécek|Leírás|
+|:-----|:----|
+|OCP-Apim-Subscription-Key| Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+|Ocp-Apim-Subscription-Region| Az érték a fordítói erőforrás régiója. Ez az érték nem kötelező, ha az erőforrás `global`|
 
-Ha a lekérdezési sztringben megadja a titkos kulcsot a `Subscription-Key`paraméterrel, akkor meg kell adnia a régiót a lekérdezési paraméterrel `Subscription-Region`.
+Íme egy példa arra, hogy meghívjuk a Translator API-t az egyéni végpont használatával
 
-Ha tulajdonosi jogkivonatot használ, be kell szereznie a tokent a régió végpontján: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
-
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
 ## <a name="errors"></a>Hibák
 
@@ -162,7 +226,7 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 408002| A kérelem időtúllépést várt a bejövő adatfolyamra való várakozás közben. Az ügyfél nem hozott létre kérelmet a kiszolgáló várakozási ideje alatt. Az ügyfél bármikor megismételheti a kérést anélkül, hogy később módosításokat kellene megismételnie.|
 | 415000| A Content-Type fejléc hiányzik vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.|
-| 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
+| 500 000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 | 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 
 ## <a name="metrics"></a>Mérőszámok 

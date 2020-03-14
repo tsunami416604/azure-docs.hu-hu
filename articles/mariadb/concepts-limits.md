@@ -5,35 +5,38 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 3/9/2020
+ms.openlocfilehash: c982181dee34a7eb0715d5e1271ef5ed794f3809
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191156"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296744"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>A Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai.
 
-## <a name="maximum-connections"></a>Kapcsolatok maximális száma
-Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a következők:
+## <a name="server-parameters"></a>Kiszolgálói paraméterek
 
-|**Tarifacsomag**|**Virtuális mag (ok)**| **Kapcsolatok maximális száma**|
-|---|---|---|
-|Alapszintű| 1| 50|
-|Alapszintű| 2| 100|
-|Általános célú| 2| 600|
-|Általános célú| 4| 1250|
-|Általános célú| 8| 2500|
-|Általános célú| 16| 5000|
-|Általános célú| 32| 10000|
-|Általános célú| 64| 20000|
-|Memóriára optimalizált| 2| 800|
-|Memóriára optimalizált| 4| 2500|
-|Memóriára optimalizált| 8| 5000|
-|Memóriára optimalizált| 16| 10000|
-|Memóriára optimalizált| 32| 20000|
+Számos népszerű kiszolgálói paraméter minimális és maximális értékét a díjszabási szint és a virtuális mag határozza meg. A korlátokat az alábbi táblázatokban találja.
+
+### <a name="max_connections"></a>max_connections
+
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|---|---|---|---|---|
+|Alapszintű|1|50|10|50|
+|Alapszintű|2|100|10|100|
+|Általános rendeltetés|2|300|10|600|
+|Általános rendeltetés|4|625|10|1250|
+|Általános rendeltetés|8|1250|10|2500|
+|Általános rendeltetés|16|2500|10|5000|
+|Általános rendeltetés|32|5000|10|10000|
+|Általános rendeltetés|64|10000|10|20000|
+|Memóriára optimalizált|2|600|10|800|
+|Memóriára optimalizált|4|1250|10|2500|
+|Memóriára optimalizált|8|2500|10|5000|
+|Memóriára optimalizált|16|5000|10|10000|
+|Memóriára optimalizált|32|10000|10|20000|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 > 1040 (08004). hiba: Túl sok kapcsolat
@@ -42,6 +45,108 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 > A legjobb megoldás érdekében javasoljuk, hogy használjon olyan kapcsolati Pooler, mint a ProxySQL, hogy hatékonyan kezelhesse a kapcsolatokat.
 
 Ha új ügyfélkapcsolatokat hoz létre a MariaDB-hoz, akkor az idő és a létrehozás után ezek a kapcsolatok adatbázis-erőforrásokat foglalnak el, még ha tétlen is. A legtöbb alkalmazás sok rövid életű kapcsolatot igényel, amely ezt a helyzetet összeképezi. Ennek eredményeképpen kevesebb erőforrás érhető el a tényleges munkaterheléshez, ami csökkenti a teljesítményt. Egy kapcsolati Pooler, amely csökkenti az üresjárati kapcsolatokat, és a meglévő kapcsolatokat újra felhasználva segít elkerülni ezt. A ProxySQL beállításával kapcsolatos további információkért látogasson el a [blogbejegyzésbe](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
+
+## <a name="query_cache_size"></a>query_cache_size
+
+A lekérdezés gyorsítótára alapértelmezés szerint ki van kapcsolva. A lekérdezési gyorsítótár engedélyezéséhez konfigurálja a `query_cache_type` paramétert. 
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) .
+
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|---|---|---|---|---|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Általános rendeltetés|2|0|0|16777216|
+|Általános rendeltetés|4|0|0|33554432|
+|Általános rendeltetés|8|0|0|67108864|
+|Általános rendeltetés|16|0|0|134217728|
+|Általános rendeltetés|32|0|0|134217728|
+|Általános rendeltetés|64|0|0|134217728|
+|Memóriára optimalizált|2|0|0|33554432|
+|Memóriára optimalizált|4|0|0|67108864|
+|Memóriára optimalizált|8|0|0|134217728|
+|Memóriára optimalizált|16|0|0|134217728|
+|Memóriára optimalizált|32|0|0|134217728|
+
+## <a name="sort_buffer_size"></a>sort_buffer_size
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) .
+
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|---|---|---|---|---|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Általános rendeltetés|2|524288|32768|4194304|
+|Általános rendeltetés|4|524288|32768|8388608|
+|Általános rendeltetés|8|524288|32768|16777216|
+|Általános rendeltetés|16|524288|32768|33554432|
+|Általános rendeltetés|32|524288|32768|33554432|
+|Általános rendeltetés|64|524288|32768|33554432|
+|Memóriára optimalizált|2|524288|32768|8388608|
+|Memóriára optimalizált|4|524288|32768|16777216|
+|Memóriára optimalizált|8|524288|32768|33554432|
+|Memóriára optimalizált|16|524288|32768|33554432|
+|Memóriára optimalizált|32|524288|32768|33554432|
+
+## <a name="join_buffer_size"></a>join_buffer_size
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) .
+
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|---|---|---|---|---|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Általános rendeltetés|2|262144|128|268435455|
+|Általános rendeltetés|4|262144|128|536870912|
+|Általános rendeltetés|8|262144|128|1073741824|
+|Általános rendeltetés|16|262144|128|2147483648|
+|Általános rendeltetés|32|262144|128|4294967295|
+|Általános rendeltetés|64|262144|128|4294967295|
+|Memóriára optimalizált|2|262144|128|536870912|
+|Memóriára optimalizált|4|262144|128|1073741824|
+|Memóriára optimalizált|8|262144|128|2147483648|
+|Memóriára optimalizált|16|262144|128|4294967295|
+|Memóriára optimalizált|32|262144|128|4294967295|
+
+## <a name="max_heap_table_size"></a>max_heap_table_size
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) .
+
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|---|---|---|---|---|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Általános rendeltetés|2|16777216|16384|268435455|
+|Általános rendeltetés|4|16777216|16384|536870912|
+|Általános rendeltetés|8|16777216|16384|1073741824|
+|Általános rendeltetés|16|16777216|16384|2147483648|
+|Általános rendeltetés|32|16777216|16384|4294967295|
+|Általános rendeltetés|64|16777216|16384|4294967295|
+|Memóriára optimalizált|2|16777216|16384|536870912|
+|Memóriára optimalizált|4|16777216|16384|1073741824|
+|Memóriára optimalizált|8|16777216|16384|2147483648|
+|Memóriára optimalizált|16|16777216|16384|4294967295|
+|Memóriára optimalizált|32|16777216|16384|4294967295|
+
+## <a name="tmp_table_size"></a>tmp_table_size
+
+A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) .
+
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|---|---|---|---|---|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
+|Általános rendeltetés|2|16777216|1024|67108864|
+|Általános rendeltetés|4|16777216|1024|134217728|
+|Általános rendeltetés|8|16777216|1024|268435456|
+|Általános rendeltetés|16|16777216|1024|536870912|
+|Általános rendeltetés|32|16777216|1024|1073741824|
+|Általános rendeltetés|64|16777216|1024|1073741824|
+|Memóriára optimalizált|2|16777216|1024|134217728|
+|Memóriára optimalizált|4|16777216|1024|268435456|
+|Memóriára optimalizált|8|16777216|1024|536870912|
+|Memóriára optimalizált|16|16777216|1024|1073741824|
+|Memóriára optimalizált|32|16777216|1024|1073741824|
 
 ## <a name="storage-engine-support"></a>Storage engine-támogatás
 
@@ -94,6 +199,6 @@ Ha új ügyfélkapcsolatokat hoz létre a MariaDB-hoz, akkor az idő és a létr
 ## <a name="current-known-issues"></a>Jelenlegi ismert problémák
 - A MariaDB-kiszolgálópéldány a kiszolgáló nem megfelelő verzióját jeleníti meg a kapcsolatok létrehozása után. A megfelelő kiszolgálópéldány-motor verziójának beszerzéséhez használja a `select version();` parancsot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az egyes szolgáltatási szinteknél elérhető szolgáltatások](concepts-pricing-tiers.md)
 - [Támogatott MariaDB-adatbázis-verziók](concepts-supported-versions.md)

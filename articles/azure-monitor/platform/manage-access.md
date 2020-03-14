@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
 ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373293"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274423"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>A naplózási és munkaterületekhez való hozzáférés kezelése Azure Monitor
 
@@ -104,7 +104,7 @@ Minden munkaterülethez társítva több fiókot lehet, és minden egyes fiók f
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
-|Műveletek |Azure-engedélyek szükségesek |Megjegyzések |
+|Művelet |Azure-engedélyek szükségesek |Megjegyzések |
 |-------|-------------------------|------|
 | Figyelési megoldások hozzáadása és eltávolítása | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Az engedélyeknek az erőforráscsoport vagy előfizetés szinteken kell megadva lenniük. |
 | Tarifacsomag módosítása | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -134,10 +134,10 @@ A Log Analytics olvasó szerepkör az alábbi Azure műveleteket tartalmazza:
 
 | Típus    | Engedély | Leírás |
 | ------- | ---------- | ----------- |
-| Műveletek | `*/read`   | Lehetővé teszi az összes Azure-erőforrások és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállításait, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
-| Műveletek | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
-| Műveletek | `Microsoft.OperationalInsights/workspaces/search/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
-| Műveletek | `Microsoft.Support/*` | Támogatási esetek nyitása |
+| Művelet | `*/read`   | Lehetővé teszi az összes Azure-erőforrások és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállításait, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
+| Művelet | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
+| Művelet | `Microsoft.OperationalInsights/workspaces/search/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
+| Művelet | `Microsoft.Support/*` | Támogatási esetek nyitása |
 |Nem művelet | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Olvasását meggátolja az adatgyűjtési API használatához és az ügynökök telepítéséhez szükséges kulcs. Ez megakadályozza, hogy a felhasználó új erőforrásokat ad hozzá a munkaterülethez |
 
 A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
@@ -189,7 +189,7 @@ Ha a felhasználók erőforrás-kontextusos hozzáférés használatával kérde
 
 | Engedély | Leírás |
 | ---------- | ----------- |
-| `Microsoft.Insights/logs/<tableName>/read`<br><br>Példák:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Képes megtekinteni az erőforrás összes naplózási adatforrását.  |
+| `Microsoft.Insights/logs/<tableName>/read`<br><br>Például:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Képes megtekinteni az erőforrás összes naplózási adatforrását.  |
 | `Microsoft.Insights/diagnosticSettings/write` | A diagnosztikai beállítások konfigurálásának lehetősége az erőforráshoz tartozó naplók beállításának engedélyezéséhez. |
 
 `/read` engedély általában olyan szerepkörből származik, amely _\*/Read vagy_ _\*_ engedélyeket tartalmaz, például a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) -és [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepköröket. Előfordulhat, hogy az adott műveleteket vagy a dedikált beépített szerepköröket tartalmazó egyéni szerepkörök nem tartalmazzák ezt az engedélyt.
@@ -283,7 +283,7 @@ Hozzon létre egy egyéni szerepkört, amely csak a _SecurityBaseline_ tábláho
 ],
 ```
 
-### <a name="considerations"></a>Megfontolások
+### <a name="considerations"></a>Megfontolandó szempontok
 
 * Ha a felhasználó globális olvasási engedéllyel rendelkezik a _\*/Read_ műveletet tartalmazó szabványos olvasó-vagy közreműködői szerepkörökkel, a rendszer felülbírálja a táblán belüli hozzáférés-vezérlést, és hozzáférést biztosít számukra az összes naplózási adathoz.
 * Ha egy felhasználó számára engedélyezett a táblán belüli hozzáférés, de nincs más engedélye, akkor hozzáférhetnek a naplóbeli adatokhoz az API-ból, de nem a Azure Portal. A Azure Portal való hozzáférés biztosításához használja az Log Analytics olvasót alapszerepkörként.
@@ -291,7 +291,7 @@ Hozzon létre egy egyéni szerepkört, amely csak a _SecurityBaseline_ tábláho
 * A munkaterület tulajdonosai úgy vannak kezelve, mint bármely más felhasználó a táblán belüli hozzáférés-vezérléshez.
 * Azt javasoljuk, hogy egyéni felhasználók helyett szerepköröket rendeljen a biztonsági csoportokhoz a hozzárendelések számának csökkentése érdekében. Ez segítséget nyújt a meglévő csoport-felügyeleti eszközök használatához a hozzáférés konfigurálásához és ellenőrzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az adatközpontban vagy más felhőalapú környezetben található számítógépek adatainak összegyűjtéséhez tekintse meg [log Analytics ügynök áttekintését](../../azure-monitor/platform/log-analytics-agent.md) .
 

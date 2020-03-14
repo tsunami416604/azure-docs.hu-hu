@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690496"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298750"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a REST használatával
 
@@ -185,9 +185,9 @@ $clusterName
 
 1. Ha a művelet állapota **sikeresen**módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A lekérdezéssel átadott `statusdir` paraméter tartalmazza a kimeneti fájl helyét; Ebben az esetben `/example/rest`. Ez a címe tárolja a kimenetet a fürtök alapértelmezett tárolójában lévő `example/curl` könyvtárban.
 
-    Ezeket a fájlokat az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI és az Azure Storage használatával kapcsolatos további információkért lásd az Azure [CLI használata](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) az Azure Storage-ban című dokumentumot.
+    Ezeket a fájlokat az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI és az Azure Storage használatával kapcsolatos további információkért lásd az Azure [CLI használata](https://docs.microsoft.com/azure/storage/storage-azure-cli) az Azure Storage-ban című dokumentumot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a HDInsight-beli Hadoop használható egyéb módszerekről:
 

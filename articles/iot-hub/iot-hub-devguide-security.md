@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356632"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272057"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -57,7 +57,7 @@ Például egy tipikus IoT-megoldásban:
 > [!NOTE]
 > Részletes információk: [engedélyek](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az Azure IoT Hub hozzáférést biztosít a végpontokhoz egy jogkivonat ellenőrzésével a megosztott hozzáférési házirendek és a személyazonossági beállításjegyzék biztonsági hitelesítő adataival.
 
@@ -464,7 +464,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [RFC 5246 – a Transport Layer Security (TLS) protokoll 1,2-es verziója](https://tools.ietf.org/html/rfc5246/) további információkat nyújt a TLS-hitelesítésről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a hozzáférési IoT Hub vezérlését, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

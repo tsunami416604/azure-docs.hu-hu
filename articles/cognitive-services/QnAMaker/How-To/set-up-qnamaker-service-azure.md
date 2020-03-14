@@ -4,11 +4,11 @@ description: Mielőtt bármilyen QnA Maker tudásbázisok hozhat létre, elősz�
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389405"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220588"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -189,7 +189,7 @@ A QnA Maker **app Service** erőforrása a Cognitive Search erőforrást haszná
 
 Ha Azure Resource Manager sablonokon keresztül hoz létre QnA szolgáltatást, az összes erőforrást létrehozhatja, és szabályozhatja a App Service létrehozását egy meglévő keresési szolgáltatás használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 

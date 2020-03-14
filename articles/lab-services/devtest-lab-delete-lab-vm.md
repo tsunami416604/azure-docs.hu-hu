@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381013"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270809"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
 Ebből a cikkből megtudhatja, hogyan törölhet laboratóriumi vagy virtuális gépet egy laborban.
@@ -71,7 +71,7 @@ Ha törölni szeretne egy virtuális **gépet a virtuális gép lapról**, vála
 ![Virtuális gép törlése a virtuális gép lapról](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha labort szeretne létrehozni, tekintse meg a következő cikkeket: 
 
 - [Labor létrehozása](devtest-lab-create-lab.md)

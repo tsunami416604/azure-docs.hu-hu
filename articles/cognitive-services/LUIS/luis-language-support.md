@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361129"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220852"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -35,7 +35,7 @@ A LUIS tisztában van azzal a kimondott szöveg a következő nyelveken:
 | Amerikai angol |`en-US` | ✔ | ✔  |✔|✔|
 | Arab (előzetes verzió – modern standard arab) |`ar-AR`|-|-|-|-|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| holland |`nl-NL` |✔|  -   |-|✔|
+| Holland |`nl-NL` |✔|  -   |-|✔|
 | francia (Franciaország) |`fr-FR` |✔| ✔ |✔ |✔|
 | francia (Kanada) |`fr-CA` |-|   -   |-|✔|
 | német |`de-DE` |✔| ✔ |✔ |✔|
@@ -79,9 +79,9 @@ A gépi tanulás elvégzéséhez LUIS a kulturális környezet alapján megszak�
 
 |Nyelv|  minden szóközt vagy különleges karaktert | karakter szint|összetett szavakat|[visszaadott jogkivonat-entitás](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
-|arab|||||
-|kínai||✔||✔|
-|holland|||✔|✔|
+|Arab|||||
+|Kínai||✔||✔|
+|Holland|||✔|✔|
 |Angol (en-us)|✔ ||||
 |Francia (fr-FR)|✔||||
 |Francia (fr, CA)|✔||||

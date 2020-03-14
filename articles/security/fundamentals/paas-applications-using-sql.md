@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726778"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217227"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Ajánlott eljárások a Pásti-adatbázisok biztonságossá tételéhez az Azure-ban
 
@@ -48,7 +48,7 @@ Az Azure SQL Database-adatbázisok két hitelesítési típus egyikének haszná
 - A a tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
 - Támogatja a jogkivonat-alapú hitelesítést a SQL Databasehoz csatlakozó alkalmazások esetében.
 - Támogatja a tartományi összevonást a Active Directory összevonási szolgáltatások (AD FS) (ADFS) vagy a natív felhasználói/jelszó-hitelesítéssel egy helyi Azure AD-hoz tartományi szinkronizálás nélkül.
-- A a többtényezős [hitelesítést (MFA)](/azure/active-directory/authentication/multi-factor-authentication)tartalmazó Active Directory univerzális hitelesítést használó SQL Server Management Studio kapcsolatainak támogatása. A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: [az univerzális hitelesítés SQL Database és SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
+- Támogatja a [multi-Factor Authentication (MFA)](/azure/active-directory/authentication/multi-factor-authentication)Active Directory univerzális hitelesítést használó SQL Server Management Studiookhoz való kapcsolódást. A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: [az univerzális hitelesítés SQL Database és SQL Data Warehouse](../../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd:
 
@@ -68,7 +68,7 @@ SQL Database alapértelmezett forrás IP-cím korlátozásai lehetővé teszik a
 
 Az Azure SQL Firewall és az IP-korlátozásokról további információt a következő témakörben talál:
 
-- [Azure SQL Database és SQL Data Warehouse hozzáférés-vezérlés](../../sql-database/sql-database-control-access.md)
+- [Azure SQL Database és SQL Data Warehouse hozzáférés-vezérlés](../../sql-database/sql-database-manage-logins.md)
 - [Tűzfalszabályok Azure SQL Database és SQL Data Warehouse](../../sql-database/sql-database-firewall-configure.md)
 
 
@@ -77,7 +77,7 @@ A [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encry
 
 Az Azure SQL a TDE kapcsolatos legfontosabb problémákat kezeli. A TDE hasonlóan a helyszíni speciális felügyeletet is meg kell tenni a helyreállítás és az adatbázisok áthelyezése érdekében. Kifinomultabb helyzetekben a kulcsok explicit módon kezelhetők Azure Key Vault a bővíthető kulcskezelő szolgáltatással. Lásd: [a TDE engedélyezése SQL Server a EKM használatával](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm). Ez lehetővé teszi, hogy a Bring Your Own Key (BYOK) az Azure Key Vaults BYOK képességgel is rendelkezik.
 
-Az Azure SQL Always Encryptedon keresztül biztosítja [](/sql/relational-databases/security/encryption/always-encrypted-database-engine)az oszlopok titkosítását. Ez lehetővé teszi, hogy csak az engedélyezett alkalmazások férhessenek hozzá a bizalmas oszlopokhoz. Az ilyen típusú titkosítás a titkosított oszlopokhoz tartozó SQL-lekérdezéseket az esélyegyenlőségi alapú értékekre korlátozza.
+Az Azure SQL [Always Encryptedon](/sql/relational-databases/security/encryption/always-encrypted-database-engine)keresztül biztosítja az oszlopok titkosítását. Ez lehetővé teszi, hogy csak az engedélyezett alkalmazások férhessenek hozzá a bizalmas oszlopokhoz. Az ilyen típusú titkosítás a titkosított oszlopokhoz tartozó SQL-lekérdezéseket az esélyegyenlőségi alapú értékekre korlátozza.
 
 Szelektív adathoz is használható az alkalmazás szintjének titkosítása. Az adatszuverenitással kapcsolatos problémákat esetenként enyhítheti az adatoknak a megfelelő országban/régióban tárolt kulccsal való titkosításával. Ez megakadályozza a véletlen adatátvitelt a probléma okozása miatt, mivel a kulcs nélkül nem lehet visszafejteni az adatok visszafejtését, feltételezve, hogy erős algoritmus van használatban (például AES 256).
 

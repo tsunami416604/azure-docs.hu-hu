@@ -1,6 +1,6 @@
 ---
-title: A Azure Data Lake Analytics U-SQL-feladatok hibáinak elhárítása a .NET 4.7.2 frissítése miatt
-description: A U-SQL-feladatok hibáinak elhárítása a .NET-4.7.2 való frissítés miatt.
+title: A Azure Data Lake Analytics U-SQL-feladatok hibáinak elhárítása a .NET-keretrendszer 4.7.2 frissítése miatt
+description: A U-SQL-feladatok hibáinak elhárítása a .NET-keretrendszer 4.7.2 való frissítés miatt.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873233"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213581"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>A Azure Data Lake Analytics a .NET-keretrendszer v 4.7.2 frissít
 
@@ -22,12 +22,12 @@ Az alapértelmezett futtatókörnyezet Azure Data Lake Analytics a .NET-keretren
 
 A .NET-keretrendszer 4.5.2-es verziójáról a 4.7.2 verzióra történő frissítés azt jelenti, hogy az U-SQL-futtatókörnyezetben (az alapértelmezett futtatókörnyezetben) üzembe helyezett .NET-keretrendszer mostantól mindig 4.7.2 lesz. Nincs párhuzamos lehetőség a .NET-keretrendszer verzióihoz.
 
-A .NET-4.7.2 való frissítés befejezését követően a rendszer felügyelt kódja 4.7.2 verzióként fut, a felhasználó által megadott kódtárak, például a U-SQL egyéni szerelvények a szerelvény által generált verziónak megfelelő visszamenőlegesen kompatibilis módban futnak. a.
+A .NET-keretrendszer 4.7.2 való frissítés befejezése után a rendszer felügyelt kódja 4.7.2 verzióként fut, a felhasználó által megadott kódtárak, például a U-SQL-szerelvények a szerelvényhez tartozó verzióhoz megfelelő visszafelé kompatibilis módban futnak. létrehozva:.
 
 - Ha a szerelvény dll-jei az 4.5.2-es verzióhoz jönnek létre, a központilag telepített keretrendszer 4.5.2 függvénytárként fog megjelenni, amely (néhány kivétellel) 4.5.2-es szemantikai információkkal szolgál.
 - Mostantól olyan U-SQL-alapú egyéni szerelvényeket is használhat, amelyek a 4.7.2-funkciók használatát teszik elérhetővé, ha a .NET-keretrendszer 4.7.2 célozza meg.
 
-A .NET-4.7.2 való frissítés miatt lehetséges, hogy a .NET-alapú egyéni szerelvényeket használó U-SQL-feladatokban felmerülő változtatásokat is be kell állítani. Javasoljuk, hogy a visszamenőleges kompatibilitási problémákat az alábbi eljárással keresse meg.
+A .NET-keretrendszer 4.7.2 való frissítés miatt előfordulhat, hogy a .NET-alapú egyéni szerelvényeket használó U-SQL-feladatokban felmerülő változtatásokat is be kell állítani. Javasoljuk, hogy a visszamenőleges kompatibilitási problémákat az alábbi eljárással keresse meg.
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>A visszamenőleges kompatibilitási problémák ellenőrzése
 
@@ -57,7 +57,7 @@ Elküldheti a feladatot a régi futtatókörnyezet-verzióra (amely az 4.5.2-es 
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Melyek a leggyakoribb visszamenőleges kompatibilitási problémák, amelyekkel találkozhat
 
-Azok a leggyakoribb visszamenőleges inkompatibilitások, amelyeket az ellenőrzés valószínűleg azonosít, (ezt a listát a saját belső ADLA-feladatain futtatjuk), amely hatással van a könyvtárakra (Megjegyzés: a kódtárak csak közvetett módon hívhatók meg, ezért fontos a szükséges műveletek elvégzése #1 a feladatok érintettek állapotának vizsgálatához, valamint a lehetséges műveletek orvoslásához. Megjegyzés: a saját feladatokhoz szinte minden esetben a figyelmeztetések hamis pozitívnak bizonyultak a legtöbb feltörési változás miatt.
+A leggyakoribb visszamenőleges inkompatibilitás, amelyet az ellenőrzés valószínűleg azonosít (ezt a listát a saját belső ADLA-feladatain futtatjuk), mely könyvtárak érintettek (Megjegyzés: a kódtárak csak közvetett módon hívhatók meg, ezért fontos a szükséges művelet végrehajtása #1 a feladatok érintettvé tételének ellenőrzéséhez) és a lehetséges műveletek orvoslásához. Megjegyzés: a saját feladatokhoz szinte minden esetben a figyelmeztetések hamis pozitívnak bizonyultak a legtöbb feltörési változás miatt.
 
 - A IAsyncResult. CompletedSynchronously tulajdonságnak helyesnek kell lennie az eredményül kapott tevékenység befejezéséhez.
   - A TaskFactory. FromAsync hívásakor a IAsyncResult. CompletedSynchronously tulajdonság megvalósításának helyesnek kell lennie az eredményül kapott tevékenység befejezéséhez. Vagyis a tulajdonságnak igaz értéket kell visszaadnia, és csak akkor, ha a megvalósítás szinkron módon fejeződött be. Korábban a tulajdonság nincs bejelölve.

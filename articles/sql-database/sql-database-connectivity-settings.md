@@ -9,14 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: cd239106bfd3ac785cffbf1365f298da565179ec
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096678"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366087"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-kapcsolati beállítások
+> [!NOTE]
+> A szolgáltatások csak az **USA 2. nyugati** régiójában, az USA keleti régiójában, az USA déli középső régiójában, a többi régióban pedig hamarosan elérhetők
+
 > [!NOTE]
 > Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 

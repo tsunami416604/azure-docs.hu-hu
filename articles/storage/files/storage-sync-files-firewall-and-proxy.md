@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 93681813c12f0df99909c849e57153e7a64c78fb
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268040"
+ms.locfileid: "79299311"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
@@ -119,8 +119,8 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Nyilvános | USA 2. keleti régiója | https:\//kailani-ess.one.microsoft.com | USA középső régiója | https:\//tm-kailani-ess.one.microsoft.com |
 | Nyilvános | Kelet-Japán | https:\//japaneast01.afs.azure.net | Nyugat-Japán | https:\//tm-japaneast01.afs.azure.net |
 | Nyilvános | Nyugat-Japán | https:\//japanwest01.afs.azure.net | Kelet-Japán | https:\//tm-japanwest01.afs.azure.net |
-| Nyilvános | Dél-Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Dél-Korea déli régiója | https:\//tm-koreacentral01.afs.azure.net/ |
-| Nyilvános | Dél-Korea déli régiója | https:\//koreasouth01.afs.azure.net/ | Dél-Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
+| Nyilvános | Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Korea déli régiója | https:\//tm-koreacentral01.afs.azure.net/ |
+| Nyilvános | Korea déli régiója | https:\//koreasouth01.afs.azure.net/ | Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
 | Nyilvános | USA északi középső régiója | https:\//northcentralus01.afs.azure.net | USA déli középső régiója | https:\//tm-northcentralus01.afs.azure.net |
 | Nyilvános | Észak-Európa | https:\//kailani7.one.microsoft.com | Nyugat-Európa | https:\//tm-kailani7.one.microsoft.com |
 | Nyilvános | USA déli középső régiója | https:\//southcentralus01.afs.azure.net | USA északi középső régiója | https:\//tm-southcentralus01.afs.azure.net |
@@ -145,6 +145,55 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 > - https:\//kailani1.one.microsoft.com (párosított feladatátvételi régió: USA keleti régiója)
 > - https:\//tm-kailani.one.microsoft.com (az elsődleges régió felderítési URL-címe)
 
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP-címek engedélyezési listájának engedélyezése
+Ha a helyszíni tűzfalhoz konkrét IP-címeket kell hozzáadni egy engedélyezési listához a Azure File Synchoz való csatlakozáshoz, a következő IP-címtartományok adhatók meg azon régiók alapján, amelyekhez csatlakozik.
+
+| Régió | IP-címtartományok |
+|--------|-------------------|
+| USA középső régiója | 52.176.149.179/32, 20.37.157.80/29 |
+| USA 2. keleti régiója | 40.123.47.110/32, 20.41.5.144/29 |
+| USA keleti régiója | 104.41.148.238/32, 20.42.4.248/29 |
+| USA északi középső régiója | 65.52.62.167/32, 40.80.188.24/29 |
+| USA déli középső régiója | 104.210.219.252/32, 13.73.248.112/29 |
+| USA nyugati régiója, 2. | 52.183.27.204/32, 20.42.131.224/29 |
+| USA nyugati középső régiója | 52.161.25.233/32, 52.150.139.104/29 |
+| USA nyugati régiója | 40.112.150.67/32, 40.82.253.192/29 |
+| Közép-Kanada | 52.228.42.41/32, 52.228.81.248/29 |
+| Kelet-Kanada | 52.235.36.119/32, 40.89.17.232/29 |
+| Dél-Brazília | 191.237.253.115/32, 191.235.225.216/29 |
+| Észak-Európa | 40.113.94.67/32, 20.38.85.152/29 |
+| Nyugat-Európa | 104.40.191.8/32, 20.50.1.0/29 |
+| Közép-Franciaország | 52.143.166.54/32, 20.43.42.8/29 |
+| Dél-Franciaország | 52.136.131.99/32, 51.105.88.248/29 |
+| Az Egyesült Királyság déli régiója | 51.140.67.72/32, 51.104.25.224/29 |
+| Az Egyesült Királyság nyugati régiója | 51.140.202.34/32, 51.137.161.240/29 |
+| Észak-Svájc | 51.107.48.224/29 |
+| Nyugat-Svájc | 51.107.144.216/29 |
+| Norvégia nyugati régiója | 51.120.224.216/29 |
+| Kelet-Norvégia | 51.120.40.224/29 |
+| Kelet-Ázsia | 23.102.225.54/32, 20.189.108.56/29 |
+| Délkelet-Ázsia | 13.76.81.46/32, 20.43.131.40/29 |
+| Ausztrália középső régiója | 20.37.224.216/29 |
+| Ausztrália 2. középső régiója | 20.36.120.216/29 |
+| Kelet-Ausztrália | 13.75.153.240/32, 20.37.195.96/29 |
+| Délkelet-Ausztrália | 13.70.176.196/32, 20.42.227.128/29 |
+| Dél-India | 104.211.231.18/32, 20.41.193.160/29 |
+| Nyugat-India | 52.136.48.216/29 |
+| Kelet-Japán | 104.41.161.113/32, 20.43.66.0/29 |
+| Nyugat-Japán | 23.100.106.151/32, 40.80.57.192/29 |
+| Korea középső régiója | 52.231.67.75/32, 20.41.65.184/29 |
+| Korea déli régiója | 52.231.159.38/32, 40.80.169.176/29 |
+| US DoD – Kelet | 20.140.72.152/29 |
+| USA-beli államigazgatás – Arizona | 20.140.64.152/29 |
+| USA-beli államigazgatás – Arizona | 52.244.75.224/32, 52.244.79.140/32 |
+| US Gov Iowa | 52.244.79.140/32, 52.244.75.224/32 |
+| USA-beli államigazgatás – Texas | 52.238.166.107/32, 52.238.79.29/32 |
+| USA-beli államigazgatás – Virginia | 13.72.17.152/32, 52.227.153.92/32 |
+| Dél-Afrika északi régiója | 102.133.175.72/32 |
+| Dél-Afrika nyugati régiója | 102.133.75.173/32, 102.133.56.128/29, 20.140.48.216/29 |
+| UAE középső régiója | 20.45.71.151/32, 20.37.64.216/29, 20.140.48.216/29 |
+| Észak-Egyesült Arab | 40.123.216.130/32, 20.38.136.224/29, 20.140.56.136/29 |
+
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Hálózati kapcsolat tesztelése a szolgáltatási végpontokhoz
 Ha egy kiszolgáló regisztrálva van a Azure File Sync szolgáltatásban, a test-StorageSyncNetworkConnectivity parancsmag és a ServerRegistration. exe segítségével tesztelheti a kiszolgálón található összes végponttal (URL-címmel) folytatott kommunikációt. Ez a parancsmag segít elhárítani a hiányos kommunikációt, ami megakadályozza, hogy a kiszolgáló teljes mértékben működjön a Azure File Sync, és használható a proxy és a tűzfal konfigurációinak finomhangolására.
 
@@ -159,7 +208,7 @@ A dokumentum korábbi listája tartalmazza azokat az URL-címeket, Azure File Sy
 
 A tartomány korlátozására vonatkozó tűzfalszabályok beállítása lehet egy mérték a biztonság növelése érdekében. Ha ezeket a tűzfal-konfigurációkat használja, az egyiknek figyelembe kell vennie, hogy az URL-címek fel lesznek véve, és akár idővel is változhatnak. Ebben a cikkben rendszeresen tájékozódhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

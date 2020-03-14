@@ -4,11 +4,11 @@ description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan tes
 ms.date: 03/02/2020
 ms.topic: overview
 ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240057"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -87,7 +87,7 @@ Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez ké
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
 - Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.

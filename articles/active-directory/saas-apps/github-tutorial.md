@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129899"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138977"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a GitHubot Azure Active Directory (Azure AD-val). Ha a GitHubot az Azure AD-vel integrálja, a következőket teheti:
 
-* A GitHubhoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a GitHubba az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* A GitHub Enterprise Cloud Organization szolgáltatáshoz hozzáférő Azure AD-beli vezérlés.
+* A GitHub Enterprise Cloud Organization elérésének kezelése egyetlen központi helyen – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
@@ -45,7 +44,7 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 * A GitHub támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-* A GitHub támogatja a [felhasználók **automatikus** kiépítési felállítását](github-provisioning-tutorial.md)
+* A GitHub támogatja a felhasználók automatikus kiépítését [ **Automated** (a szervezeti meghívókat)](github-provisioning-tutorial.md)
 * A GitHub konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>A GitHub hozzáadása a gyűjteményből
@@ -187,7 +186,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a GitH
 
 2. Kattintson a **személyek**elemre.
 
-    ![Személyek](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![Személyek](./media/github-tutorial/tutorial_github_config_github_08.png "Személyek")
 
 3. Kattintson a **tag meghívása**elemre.
 
@@ -212,7 +211,7 @@ Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai 
 
 Amikor a hozzáférési panelen a GitHub csempére kattint, automatikusan be kell jelentkeznie a GitHubba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

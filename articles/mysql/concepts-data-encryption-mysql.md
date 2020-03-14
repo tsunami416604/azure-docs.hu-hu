@@ -1,17 +1,17 @@
 ---
-title: Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
+title: Adattitkosítás az ügyfél által felügyelt kulccsal – Azure Database for MySQL
 description: Az ügyfél által felügyelt kulccsal Azure Database for MySQL adattitkosítás lehetővé teszi, hogy Bring Your Own Key (BYOK) adatvédelmet biztosítson a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a97fee619858aa024ff208b72d3b2594c30d2fd5
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210431"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299124"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -125,6 +125,6 @@ Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállí
 * Az újonnan létrehozott kiszolgáló (visszaállított/replika) nem elérhető állapotban marad, mert az egyedi identitása még nem kapott engedélyt a Key Vault.
 * A visszaállított/replika kiszolgálón ellenőrizze újra az ügyfél által felügyelt kulcsot az adattitkosítási beállításokban. Ez biztosítja, hogy az újonnan létrehozott kiszolgáló becsomagolja és kicsomagolja az engedélyeket a Key Vaultban tárolt kulcshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást a MySQL-hez készült Azure-adatbázishoz tartozó ügyfél által felügyelt kulccsal a Azure Portal használatával](howto-data-encryption-portal.md).

@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381482"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243665"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift-erőforrások
 
@@ -61,6 +61,6 @@ Az Azure Red Hat OpenShift REST API a következő fő/infrastrukturális csomóp
 |Standard D16s v3|16|64 GB|
 |Standard D32s v3|32|128 GB|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az [Azure Red Hat OpenShift-fürt létrehozásával](tutorial-create-cluster.md) foglalkozó oktatóanyagot.

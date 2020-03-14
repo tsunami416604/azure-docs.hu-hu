@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
 ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376564"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239139"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
@@ -22,7 +22,7 @@ A Azure Active Directory Domain Services (AD DS) olyan felügyelt tartományi sz
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet az Azure-ban, és hogyan telepítheti az Azure AD DS felügyelt tartomány felügyeletéhez szükséges eszközöket.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure AD DS felügyelt tartományában elérhető felügyeleti feladatok ismertetése
@@ -141,7 +141,7 @@ Az általános Active Directory felügyeleti központ műveletek, például a fe
 
 A felügyeleti eszközök részeként telepített *Windows PowerShell Active Directory modulját*is használhatja az Azure AD DS felügyelt tartomány általános műveleteinek kezeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

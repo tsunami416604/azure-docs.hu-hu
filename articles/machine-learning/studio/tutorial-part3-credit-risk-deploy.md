@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8ab6904a2569e508c0697cc273af4fd40a1767de
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 9fb0b59374edf322e5e2221b90e912ee2c665bac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898741"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204153"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3\. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat harmadik**része.
 
@@ -34,7 +36,7 @@ Ebben a három részből álló oktatóanyagban nyilvánosan elérhető hitelkoc
 Az oktatóanyag ezen részében:
 
 > [!div class="checklist"]
-> * Felkészülés az üzembe helyezésre
+> * Üzembe helyezés előkészítése
 > * A webszolgáltatás üzembe helyezése
 > * A webszolgáltatás teszteléséhez
 > * A webszolgáltatás kezelése
@@ -44,7 +46,7 @@ Az oktatóanyag ezen részében:
 
 Fejezze be [az oktatóanyag második részét](tutorial-part2-credit-risk-train.md).
 
-## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+## <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 Annak érdekében, hogy a jelen oktatóanyagban fejlesztett prediktív modellt az Azure-ban, webszolgáltatásként is üzembe helyezheti.
 
 Ez a pont már kísérletezett a modell betanításával. Azonban az üzemelő szolgáltatás már nem fogja képzési lehetőségek - fogja létrehozni új előrejelzések szerint a felhasználói bevitel alapján a modell pontozása. Ezért elvégezünk némi felkészülést, hogy a kísérletet egy ***betanítási*** kísérletből egy ***prediktív*** kísérletbe alakítsa át. 
@@ -240,7 +242,7 @@ További információ a webszolgáltatás eléréséről és használatáról: [
 Ebben az oktatóanyagban a következő lépéseket végezte el:
 
 > [!div class="checklist"]
-> * Felkészülés az üzembe helyezésre
+> * Üzembe helyezés előkészítése
 > * A webszolgáltatás üzembe helyezése
 > * A webszolgáltatás teszteléséhez
 > * A webszolgáltatás kezelése

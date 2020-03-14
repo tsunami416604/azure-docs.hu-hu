@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206300"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299504"
 ---
-### <a name="portal"></a>Portál
+### <a name="portal"></a>portál
 
 Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, hogy az erőforrásokat egy adott sorrendben hozzon létre, ha az első alkalommal végzi el. Először létre kell hoznia és be kell állítania egy Azure Key Vault.
 
@@ -49,9 +49,14 @@ Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, h
 
 #### <a name="setting-up-your-disk-encryption-set"></a>A lemez titkosítási készletének beállítása
 
-A lemezes titkosítási készletek létrehozásához és konfigurálásához a következő hivatkozást kell használnia: https://aka.ms/diskencryptionsets. A lemez titkosítási készletének létrehozása még nem érhető el a globális Azure Portalban.
+A lemezes titkosítási készletek létrehozásához és konfigurálásához a következő hivatkozást kell használnia: https://aka.ms/diskencryptionsets. Ha a Microsoft Azure Government régióban van, ezt a hivatkozást kell használnia helyette: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff). A lemez titkosítási készletének létrehozása még nem érhető el a globális Azure Portalban.
 
-1. Nyissa meg a [lemez titkosítási készletek hivatkozását](https://aka.ms/diskencryptionsets).
+1. Nyissa meg az adott régióhoz megfelelő lemezes titkosítási készletek hivatkozást:
+
+    Nyilvános régiók: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government régiók: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. Válassza a **+ Hozzáadás**lehetőséget.
 
     ![Képernyőkép a lemez titkosítási portálján Főképernyőről. A Hozzáadás gomb kiemelése](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
@@ -77,7 +82,12 @@ Két értesítésnek kell megjelennie, és sikeresnek kell lennie. Ezzel lehető
 Most, hogy létrehozta és beállította a kulcstartót és a lemez titkosítási készletét, a titkosítás használatával üzembe helyezhet egy virtuális gépet.
 A virtuális gép telepítési folyamata hasonló a normál telepítési folyamathoz, az egyetlen különbség, hogy a virtuális gépet ugyanabban a régióban kell telepíteni, mint a többi erőforrást, és Ön úgy dönt, hogy az ügyfél által felügyelt kulcsot használja.
 
-1. Nyissa meg a [lemez titkosítási készletek hivatkozását](https://aka.ms/diskencryptionsets).
+1. Nyissa meg az adott régióhoz megfelelő lemezes titkosítási készletek hivatkozást:
+
+    Nyilvános régiók: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government régiók: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+
 1. Keressen rá **Virtual Machines** , és válassza a **+ Hozzáadás** elemet a virtuális gép létrehozásához.
 1. Az **alapszintű** lapon válassza ki ugyanazt a régiót, mint a lemez titkosítási készletét, és Azure Key Vault.
 1. Adja meg a többi értéket az **Alap** lapon, ahogy szeretné.
@@ -97,7 +107,12 @@ A lemezek titkosításának kezeléséhez és konfigurálásához a meglévő le
 > [!CAUTION]
 > A virtuális géphez csatlakoztatott lemezeken a lemez titkosításának engedélyezéséhez le kell állítania a virtuális gépet.
 
-1. Nyissa meg a [lemez titkosítási készletek hivatkozását](https://aka.ms/diskencryptionsets).
+1. Nyissa meg az adott régióhoz megfelelő lemezes titkosítási készletek hivatkozást:
+
+    Nyilvános régiók: [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure Government régiók: [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. Navigáljon egy olyan virtuális gépre, amely ugyanabban a régióban található, mint az egyik lemezes titkosítási csoport.
 1. Nyissa meg a virtuális gépet, és válassza a **Leállítás**lehetőséget.
 

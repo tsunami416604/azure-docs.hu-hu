@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239783"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Oktatóanyag: hálózati kapcsolatok létrehozása és áramellátás az Azure FXT Edge Filer-csomóponthoz
 
@@ -161,7 +161,7 @@ A csomópont bekapcsolásához nyomja meg a rendszer elején található főkapc
 
 A főkapcsoló gomb használatával leállíthatja a rendszer a tesztelés során, és még a fürthöz való hozzáadása előtt. Ha azonban egy Azure FXT Edge Filer-csomópont már használatban van egy fürt részeként, akkor a fürt Vezérlőpultjának szoftverét kell használnia a hardver leállításához. A részletekért olvassa el az [Azure FXT Edge Filer Hardver biztonságos](fxt-power-off.md) kikapcsolását ismertető témakört. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután befejezte a hardver kábelezését, kapcsolja be mindegyik csomópontot, majd inicializálja őket a legfelső szintű jelszavaik beállításával. 
 > [!div class="nextstepaction"]

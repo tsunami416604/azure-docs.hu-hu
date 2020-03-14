@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394422"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274722"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások a Azure Monitorban
 Syslog-esemény naplózása protokoll, amely Linux közös. Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
@@ -197,10 +197,10 @@ A syslog-rekordok rendelkeznek **syslog** típussal, és rendelkeznek a követke
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Computer |Az esemény gyűjtötte a program a számítógép. |
-| Létesítmény |A rendszer által generált üzenet részeként határozza meg. |
+| Szolgáltatás |A rendszer által generált üzenet részeként határozza meg. |
 | HostIP |A rendszer az üzenetet küldő IP-címe. |
 | Állomásnév |A rendszer az üzenetet küldő neve. |
-| SeverityLevel |Az esemény súlyossági szintje. |
+| Súlyossági szint |Az esemény súlyossági szintje. |
 | SyslogMessage |Az üzenet szövege. |
 | ProcessID |A folyamat által generált üzenet azonosítója. |
 | eventTime |Dátum és idő, amelyik az esemény jött létre. |
@@ -210,12 +210,12 @@ Az alábbi táblázat a rekordok Syslog lekérő lekérdezések log különböz�
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| Rendszernapló |Minden Syslog. |
+| Rendszernapló: |Minden Syslog. |
 | Syslog &#124; , err == "error" |Minden Syslog-rekord a hiba súlyossága |
 | Syslog &#124; summarize AggregatedValue = count() összegzése számítógép szerint |A Syslog-Rekordok számlálása számítógép szerint. |
 | Syslog &#124; summarize AggregatedValue = count() by létesítmény |Száma a Syslog-rekord létesítmény szerint. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../../azure-monitor/log-query/log-query-overview.md) .
 * [Egyéni mezők](../../azure-monitor/platform/custom-fields.md) használatával elemezheti az adatokat a syslog-rekordokból az egyes mezőkbe.
 * [Linux-ügynökök konfigurálása](../../azure-monitor/learn/quick-collect-linux-computer.md) más típusú adatok gyűjtéséhez.

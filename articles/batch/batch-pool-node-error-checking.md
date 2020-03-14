@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484128"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369267"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -137,8 +137,21 @@ Az ideiglenes meghajtó mérete a virtuális gép méretétől függ. A virtuál
 
 Az egyes feladatok által írt fájlok esetében megadható az egyes feladatokhoz tartozó megőrzési idő, amely meghatározza, hogy a rendszer mennyi ideig tárolja a feladatokat, mielőtt automatikusan kitakarítja a fájlokat. A megőrzési idő csökkentheti a tárolási követelmények csökkentését.
 
-Ha az ideiglenes lemezterület kitöltése megtörténik, a csomópont jelenleg leállítja a futó feladatokat. A jövőben a rendszer [Node-hibát](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) jelez.
+Ha az ideiglenes lemez kifogy (vagy nagyon közel van a helyhez), a csomópont [használhatatlan](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) állapotba kerül, és a csomópont hibája (a már ott található hivatkozás használata) jelentés azt jelzi, hogy a lemez megtelt.
 
+### <a name="what-to-do-when-a-disk-is-full"></a>Mi a teendő, ha egy lemez megtelt
+
+Annak meghatározása, hogy a lemez miért megtelt: Ha nem biztos benne, hogy mi a terület a csomóponton, akkor azt javasoljuk, hogy távolról a csomópontra kerüljön, és vizsgálja meg, hogy a terület Hová lett-e mentve. A [Batch Files API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) -t is használhatja a Batch által felügyelt mappákban található fájlok vizsgálatához (például feladat kimenetei). Vegye figyelembe, hogy ez az API csak a Batch által felügyelt címtárakban található fájlokat sorolja fel, és ha a feladatok máshol nem láthatók, akkor azok nem jelennek meg.
+
+Győződjön meg arról, hogy minden szükséges adat le lett kérve a csomópontból, vagy feltöltve lett egy tartós tárolóba. A lemez teljes hibájának enyhítése magában foglalja az adattárolás lemezterület felszabadításához szükséges adattörlést.
+
+### <a name="recovering-the-node"></a>A csomópont helyreállítása
+
+1. Ha a készlet egy [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) -készlet, akkor a csomópontot a [Batch relemezkép API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)használatával újra elvégezheti. Ezzel megtisztítja a teljes lemezt. A [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) -készletek jelenleg nem támogatják az újralemezképet.
+
+2. Ha a készlet [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), a csomópontok [eltávolítása API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)használatával eltávolíthatja a csomópontot a készletből. Ezután ismét növelheti a készletet, hogy a rossz csomópontot egy frissre cserélje.
+
+3.  Törölheti a régi befejezett feladatokat vagy a régi befejezett feladatokat, amelyek tevékenységi adatai még mindig a csomópontokon vannak. Arra vonatkozóan, hogy milyen feladatok/feladatok adatai vannak azon csomópontokon, amelyeket a csomóponton található [RecentTasks-gyűjteményben](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) vagy a [csomóponton lévő fájlokban](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)kereshet. A feladat törlésével törli a feladat összes feladatát, és törli a feladat feladatait, hogy a csomóponton lévő feladatok könyvtáraiban található adatok törlődnek, így felszabadítja a helyet. Ha elegendő lemezterületet szabadít fel, indítsa újra a csomópontot, és a "használhatatlan" állapotból és a "tétlen" állapotúra kell lépnie.
 
 ## <a name="next-steps"></a>Következő lépések
 

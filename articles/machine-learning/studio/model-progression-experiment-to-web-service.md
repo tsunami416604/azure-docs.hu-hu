@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: b5640100067ec62a1a0813e5d5fc808f19f5a97d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: e6a8fe7771776a92b3c28a188bc352e3bb105313
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169025"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217924"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan halad egy Machine Learning Studio (klasszikus) modell egy kísérletből a webszolgáltatásba
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 A Azure Machine Learning Studio (klasszikus) egy interaktív vászon, amely lehetővé teszi egy prediktív elemzési modellt jelölő ***kísérlet*** fejlesztését, futtatását, tesztelését és megismétlését. Számos különböző modul érhető el, amelyek a következőket tehetik:
 
 * Adatok bevitele a kísérletbe
@@ -104,7 +106,7 @@ Ha szeretné megőrizni a gépi tanulási modellt, de az új adataival szeretné
 
 Ha módosítani kívánja az eredeti prediktív kísérletet, például egy másik gépi tanulási algoritmus kiválasztásával, egy másik betanítási módszer kipróbálásával, majd a modell átképzéséhez a fentebb ismertetett második eljárást kell követnie: Nyissa meg a betanítási kísérletet, kattintson a **Mentés másként** lehetőségre a másoláshoz, majd indítsa el a modell fejlesztésének új útvonalát, hozza létre a prediktív kísérletet és telepítse a webszolgáltatást. Ezzel egy új webszolgáltatás fog létrejönni, amely nem kapcsolódik az eredetihöz – eldöntheti, hogy melyik vagy mindkettőt használja a működés folytatásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A fejlesztés és kísérletezés folyamatával kapcsolatos további részletekért tekintse meg a következő cikkeket:
 
 * a kísérlet átalakítása – a [modell előkészítése a Azure Machine learning Studio (klasszikus) üzembe helyezéséhez](convert-training-experiment-to-scoring-experiment.md)

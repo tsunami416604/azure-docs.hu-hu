@@ -2,20 +2,20 @@
 title: A málna PI összekötése az Azure IoT Hub a felhőben (node. js)
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be és kapcsolja össze a málna PI-t az Azure IoT Hub for málna PI használatával az Azure Cloud platformba való adatküldéshez.
 author: wesmc7777
-manager: philmea
-keywords: Azure IOT málna PI, málna PI IOT hub, málna PI az adatküldés a felhőbe, málna PI a felhőbe
+manager: eliotgra
+keywords: azure iot raspberry pi, raspberry pi iot hub, raspberry pi send data to cloud, raspberry pi to cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457096"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371501"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (node. js)
 
@@ -146,7 +146,7 @@ Az érzékelő PIN-kódokhoz használja a következő huzalozást:
 | SDI (10G PIN-kód)            | I2C1 SDA (PIN-kód 3)       | Piros kábel     |
 | SCK (PIN-kód 8G)             | I2C1 SCL (PIN 5)       | Narancssárga kábel  |
 | LED VDD (18F PIN-kód)        | 24. GPIO (18. PIN)       | Fehér kábel   |
-| LED GND (17F PIN-kód)        | GND (20. PIN-kód)           | Fekete kábel   |
+| LED GND (17F PIN-kód)        | GND (Pin 20)           | Fekete kábel   |
 
 Kattintson ide a [málna pi 2 & 3 PIN-kód megfeleltetésének](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) megtekintéséhez a hivatkozáshoz.
 
@@ -202,20 +202,20 @@ Kapcsolja be a PI-t a Micro USB-kábel és a tápegység használatával. Az Eth
 3. A minta alkalmazás klónozása.
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. Telepítse a minta összes csomagját. A telepítés magában foglalja az Azure IoT Device SDK, a BME280 Sensor Library és a huzalozási PI függvénytárat.
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
    > [!NOTE]
    >Több percet is igénybe vehet, amíg a hálózati kapcsolatban a telepítési folyamat befejeződik.
 
-### <a name="configure-the-sample-application"></a>A minta alkalmazás konfigurálása
+### <a name="configure-the-sample-application"></a>A mintaalkalmazás konfigurálása
 
 1. Nyissa meg a konfigurációs fájlt a következő parancsok futtatásával:
 
@@ -244,9 +244,9 @@ Futtassa a minta alkalmazást a következő parancs futtatásával:
    > [!NOTE]
    > Ügyeljen rá, hogy az eszközhöz tartozó kapcsolatok sztringjét másolja be az aposztrófok közé.
 
-A következő kimenetnek kell megjelennie, amely tartalmazza az érzékelők adatait és az IoT Hubnak üzeneteket.
+A következő kimenetnek kell megjelennie, amely az érzékelő adatait és az IoT hub számára küldött üzeneteket jeleníti meg.
 
-![Kimenet – A Raspberry Pi-ról az IoT Hubba küldött érzékelői adatok](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Kimenet – érzékelő adatok málna PI-ből a IoT hubhoz](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>A hub által fogadott üzenetek olvasása
 

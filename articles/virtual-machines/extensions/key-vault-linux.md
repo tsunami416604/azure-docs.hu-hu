@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945222"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298988"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -27,6 +27,10 @@ A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúció
 - Ubuntu – 1804
 - Debian – 9
 - SUSE – 15 
+
+### <a name="supported-certificate-content-types"></a>Támogatott tanúsítvány-tartalomtípusok
+
+- PKCS #12
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -71,7 +75,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | publisher | Microsoft.Azure.KeyVault | Karakterlánc |
-| type | KeyVaultForLinux | Karakterlánc |
+| típus | KeyVaultForLinux | Karakterlánc |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | Karakterlánc |
 | certificateStoreName | MY | Karakterlánc |

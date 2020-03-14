@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393048"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238733"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
 
@@ -151,7 +151,7 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Ha a visszaállítási feladatok jelentéseinek állapota *befejeződött*, a rendszer visszaállította a szükséges információkat (a virtuálisgép-konfigurációt és a központi telepítési sablont) a Storage-fiókra.
+Ha a *Status* visszaállítási feladatok jelentéseinek állapota *befejeződött*, a rendszer visszaállította a szükséges információkat (a virtuálisgép-konfigurációt és a központi telepítési sablont) a Storage-fiókra.
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Virtuális gép létrehozása a visszaállított lemezről
 

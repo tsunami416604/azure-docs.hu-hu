@@ -4,11 +4,11 @@ description: A képzési beállítások határozzák meg a *hiperparaméterek be
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381276"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219345"
 ---
 # <a name="learning-policy-and-settings"></a>Képzési szabályzat és beállítások
 
@@ -49,6 +49,6 @@ A személyre szabott képzési szabályzatok egy [Offline próbaverzióban](how-
 
 A tanulási szabályzatok optimalizálása után közvetlenül is alkalmazhatja a személyre szabást, hogy azonnal felváltsa az aktuális házirendet. Vagy mentheti az optimalizált szabályzatot a további értékeléshez, és később eldöntheti, hogy elveti, menti vagy alkalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az aktív és az inaktív események](concept-active-inactive-events.md)megismerése.

@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/18/2018
-ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/11/2020
+ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241387"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369063"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 
@@ -49,8 +49,7 @@ Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulc
 
 A Visual Studióban kattintson a **File (Fájl)**  > **New (Új)**  > **Project (Projekt)** parancsra.
 
-A **Visual C#** területen kattintson a **Windows Classic Desktop (Windows klasszikus asztal)** , majd a **Console App (Konzolalkalmazás)** elemre, végül pedig az **OK** gombra egy új konzolalkalmazás létrehozásához.
-
+Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az alkalmazás konfigurálásához kattintson a **következő** elemre. Adja meg a **projekt nevét** , majd kattintson a **Létrehozás** gombra egy új konzol alkalmazás létrehozásához.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -128,7 +127,7 @@ Adja hozzá a következő kódot a konzolalkalmazás `Main` osztályának `Progr
         {
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            IDatabase cache = Connection.GetDatabase();
 
             // Perform cache operations using the cache object...
 

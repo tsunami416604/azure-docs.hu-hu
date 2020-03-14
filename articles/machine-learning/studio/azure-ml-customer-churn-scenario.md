@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168998"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204528"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Ügyfél-adatforgalom elemzése Azure Machine Learning Studio (klasszikus) használatával
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>Áttekintés
 Ez a cikk a Azure Machine Learning Studio (klasszikus) használatával létrehozott ügyfél-adatforgalom-elemzési projekt hivatkozási megvalósítását ismerteti. Ebben a cikkben bemutatjuk, azok alkalmazásfüggőségeit az iparági vásárlók lemorzsolódási problémájának megoldására szolgáló kapcsolódó általános modellekről. Azt is mérheti a Machine Learning segítségével létrehozott modellek pontossága, és felmérheti a további fejlesztésére vonatkozó utasításokat.  
 
@@ -210,7 +213,7 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
 
  
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 [1] prediktív elemzés: az előrejelzéseken felül a W. McKnight, az Information Management, a július/August 2011, a p. 18 – 20.  
 
 [2] wikipedia-cikk: [pontosság és pontosság](https://en.wikipedia.org/wiki/Accuracy_and_precision)

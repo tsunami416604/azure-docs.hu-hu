@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245225"
+ms.locfileid: "79299345"
 ---
 # <a name="azure-best-practices-for-network-security"></a>A hálózati biztonságra vonatkozó Azure ajánlott eljárások
 Ez a cikk az Azure ajánlott eljárásainak gyűjteményét ismerteti a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure hálózatkezelési tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -122,7 +122,7 @@ Bár ez a peremhálózat alapszintű kialakítása, számos különböző kialak
 
 A korábban említett zéró megbízhatósági koncepció alapján azt javasoljuk, hogy az Azure-erőforrások hálózati biztonságának és hozzáférés-vezérlésének szintjének növeléséhez használjon peremhálózati hálózatot az összes magas biztonságú központi telepítéshez. Az Azure-ban vagy egy harmadik féltől származó megoldással további biztonsági réteget biztosíthat az eszközök és az internet között:
 
-- Azure natív vezérlők. [Azure Firewall](/azure/firewall/overview) és a [Application Gateway webalkalmazási tűzfala](/azure/application-gateway/overview#web-application-firewall) alapszintű biztonságot kínál a teljes állapotú tűzfallal, a beépített magas rendelkezésre állással, a korlátlan felhő-méretezhetőséggel, a teljes tartománynév-SZŰRÉSsel, a OWASP-szabályok támogatásával, valamint az egyszerű beállítással és konfigurációval.
+- Azure natív vezérlők. [Azure Firewall](/azure/firewall/overview) és a [Application Gateway webalkalmazási tűzfala](../../application-gateway/features.md#web-application-firewall) alapszintű biztonságot kínál a teljes állapotú tűzfallal, a beépített magas rendelkezésre állással, a korlátlan felhő-méretezhetőséggel, a teljes tartománynév-SZŰRÉSsel, a OWASP-szabályok támogatásával, valamint az egyszerű beállítással és konfigurációval.
 - Harmadik féltől származó ajánlatok. Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en megkeresheti a következő generációs tűzfalat (NGFW) és más, az ismerős biztonsági eszközöket és a hálózati biztonság jelentős szintjét biztosító ajánlatokat. Előfordulhat, hogy a konfiguráció összetettebb, de egy harmadik féltől származó ajánlat lehetővé teszi a meglévő képességek és szakértelmével használatát.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>A dedikált WAN-kapcsolatokkal elkerülhető az internetre való kitettség
@@ -209,5 +209,5 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 Ha többet szeretne megtudni a szolgáltatási végpontokról, valamint azokról az Azure-szolgáltatásokról és-régiókról, amelyek a szolgáltatás-végpontok számára elérhetők, tekintse meg a [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.

@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a9dbd0d7a3b8dde45e317b624303082465f93bc9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119926"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369488"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
 A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [SDK](speech-sdk-reference.md), a [SPEECH Devices SDK](https://aka.ms/sdsdk-quickstart)vagy a [REST API](rest-apis.md)-k segítségével egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
 
 > [!IMPORTANT]
-> A beszédfelismerési szolgáltatás Bing Speech API, Translator Speech és Custom Speech váltotta fel. Tekintse át az áttelepítési utasítások _> áttelepítési_ útmutatókat.
+> A Speech szolgáltatás leváltotta Bing Speech API és Translator Speech. Tekintse át az áttelepítési utasítások _> áttelepítési_ útmutatókat.
 
 Ezek a funkciók alkotják a beszédfelismerési szolgáltatást. Az ebben a táblázatban található hivatkozásokkal többet tudhat meg az egyes funkciók általános használati eseteiről, vagy böngészhet az API-referenciában.
 
 | Szolgáltatás | Funkció | Leírás | SDK | REST |
-| ------- | ------- | ----------- | --- | ---- |
+|---------|---------|-------------|-----|------|
 | [Beszéd – szöveg](speech-to-text.md) | Diktálás | A beszéd-szöveg szöveggé átmásolja a hangadatfolyamokat valós időben a szöveggé, hogy alkalmazásai, eszközei vagy eszközei képesek legyenek a felhasználásra vagy a megjelenítésre. A beszéd-szöveg és a [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Kötegelt átírás](batch-transcription.md) | A Batch-átírás lehetővé teszi a nagy mennyiségű adatforgalom aszinkron beszéd-szöveggé átírását. Ez egy REST-alapú szolgáltatás, amely ugyanazt a végpontot használja, mint a Testreszabás és a modell kezelése. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
 | | [Több eszközre kiterjedő beszélgetés](multi-device-conversation.md) | Több eszköz vagy ügyfél csatlakoztatása egy beszélgetésben beszéd-vagy szöveges üzenetek küldéséhez egyszerű támogatással a transzkripció és a fordítás számára| Igen | Nem |
@@ -43,7 +43,7 @@ Ezek a funkciók alkotják a beszédfelismerési szolgáltatást. Az ebben a tá
 A legnépszerűbb programozási nyelveken gyors útmutatókat ajánlunk, amelyek mindegyike kevesebb, mint 10 perc alatt futtathatja a kódot. Ez a táblázat az egyes szolgáltatásokhoz tartozó legnépszerűbb gyors útmutatókat tartalmazza. A bal oldali navigációs sávon további nyelveket és platformokat is felhasználhat.
 
 | Beszéd – szöveg (SDK) | Szöveg – beszéd (SDK) | Translation (SDK) |
-| -------------------- | -------------------- | ----------------- |
+|----------------------|----------------------|-------------------|
 | [Hangfájlból származó beszéd felismerése](quickstarts/speech-to-text-from-file.md) | [Beszéd szintetizálása hangfájlba](quickstarts/text-to-speech-audio-file.md) | [Beszéd fordítása szöveggé](quickstarts/translate-speech-to-text.md) |
 | [Beszéd felismerése mikrofonnal](quickstarts/speech-to-text-from-microphone.md) | [Beszéd szintetizálása egy beszélő számára](quickstarts/text-to-speech.md) | [Beszéd fordítása több megcélzott nyelvre](quickstarts/translate-speech-to-text-multiple-languages.md) |
 | [BLOB Storage-ban tárolt beszéd felismerése](quickstarts/from-blob.md) | [Aszinkron szintézis a hosszú formátumú hangokhoz](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Beszéd – beszéd fordítása](quickstarts/translate-speech-to-speech.md) |

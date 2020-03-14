@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: eed839c277156046ff9b7d97c6e87636a0822889
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767772"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299328"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatikus hangolás engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 
@@ -33,6 +33,13 @@ Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélye
 ## <a name="enable-automatic-tuning-on-server"></a>Automatikus hangolás engedélyezése a kiszolgálón
 
 A kiszolgáló szintjén dönthet úgy, hogy az "Azure Defaults" értékről örökli az Automatikus hangolási konfigurációt, vagy nem örökli a konfigurációt. Az Azure alapértelmezett beállításai FORCE_LAST_GOOD_PLAN engedélyezve vannak, CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
+
+> [!IMPORTANT]
+> Március 2020 az automatikus hangoláshoz tartozó Azure-beli alapértelmezett beállítások változásai az alábbiak szerint lépnek életbe:
+>
+> - Az új Azure alapértékek FORCE_LAST_GOOD_PLAN = engedélyezve, CREATE_INDEX = letiltva, és DROP_INDEX = letiltva lesznek.
+> - Az Automatikus hangolási beállítások konfigurálását nem tartalmazó meglévő kiszolgálók automatikusan konfigurálva lesznek az új Azure-alapértékek ÖRÖKLÉSére. Ez minden olyan ügyfélre vonatkozik, amely jelenleg nem definiált állapotban van az Automatikus hangolási kiszolgáló beállításaival.
+> - A létrehozott új kiszolgálók automatikusan úgy lesznek konfigurálva, hogy ÖRÖKÖLje az új Azure-alapértékeket (a korábbitól eltérően, ha az Automatikus hangolási konfiguráció nem definiált állapotú az új kiszolgáló létrehozása után).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -72,7 +79,7 @@ Vegye figyelembe, hogy az DROP_INDEX lehetőség jelenleg nem kompatibilis a par
 
 Miután kiválasztotta a kívánt konfigurációt, kattintson az **alkalmaz**gombra.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rest API
 
 További információ a REST API használatáról egyetlen adatbázis automatikus finomhangolásának engedélyezéséhez: [SQL Database Automatikus hangolási frissítés és http-metódusok BEolvasása](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 
@@ -114,7 +121,7 @@ Az automatikus hangolás használatához minimálisan szükséges engedély a fe
 
 Lásd: az [e-mail értesítések automatikus finomhangolása](sql-database-automatic-tuning-email-notifications.md) útmutató.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](sql-database-automatic-tuning.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 * Tekintse meg a teljesítményre vonatkozó [javaslatokat](sql-database-advisor.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

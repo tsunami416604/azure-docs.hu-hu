@@ -11,11 +11,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391427"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219433"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni Translator-munkaterület?
 
@@ -45,6 +45,6 @@ Ha például azt szeretném, hogy a technológiai tartomány fordításait angol
 
 Ha Ön nyelvi szolgáltató, és több olyan ügyfelet szeretne kiszolgálni, akik különböző modellekkel rendelkeznek, és megtartják ugyanazt a kategóriát és nyelvi párt, akkor a projekt címkéje az ügyfelek közötti különbségtételhez bölcs döntés lenne.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tájékozódjon a [Betanításról és a modellről, és](training-and-model.md) Ismerje meg, hogyan hozhat létre hatékony fordítási modellt.
