@@ -4,12 +4,12 @@ description: Az Azure Blockchain Workbench előzetes verziójának és képessé
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387071"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203644"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Mi az Azure Blockchain Workbench?
 
@@ -29,7 +29,7 @@ Az Azure Blockchain Workbench webalkalmazást és REST API-kat biztosít a blokk
 
 A Blockchain Workbench REST API-jai és az üzenetalapú API-k a meglévő rendszerekkel való integrációra is használhatók. Az API-k olyan felületet biztosítanak, amely lehetővé teszi többféle elosztott tranzakciónapló-technológia, tárterület és adatbázis-ajánlat cseréjét vagy felhasználását.
 
-A Blockchain Workbench át tudja alakítani az üzenetalapú API-ja számára küldött üzeneteket, hogy a tranzakciók a blokklánc natív API-ja által elvárt formátumban jöhessenek létre.  A Workbench aláírja és a megfelelő blokklánchoz irányítja a tranzakciókat. 
+Az Blockchain Workbench átalakíthatja az üzenet-alapú API-nak küldött üzeneteket, hogy a Blockchain natív API-ját elvárt formában hozza létre a tranzakciókat.  A Workbench aláírja és a megfelelő blokklánchoz irányítja a tranzakciókat. 
 
 A Workbench automatikusan továbbítja az eseményeket a Service Bus és az Event Grid részére az üzenetek az alárendelt fogyasztóknak történő elküldése érdekében. A fejlesztők ezen üzenetküldő rendszerek bármelyikével elvégezhetik az integrációt a tranzakciók irányításához és az eredmények megtekintéséhez.
 

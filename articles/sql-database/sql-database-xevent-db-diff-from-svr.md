@@ -3,7 +3,7 @@ title: Bővített események
 description: Ismerteti a Azure SQL Database kiterjesztett eseményeit (Xevent típusú eseményekhez), valamint azt, hogy az esemény-munkamenetek hogyan térnek el kis mértékben a Microsoft SQL Server esemény-munkameneteitől.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822295"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213945"
 ---
 # <a name="extended-events-in-sql-database"></a>Bővített események SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -65,7 +65,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
     - Az 1. fázis a PowerShell egy Azure Storage-tároló létrehozásához.
     - A 2. fázis a Transact-SQL, amely az Azure Storage-tárolót használja.
 
-## <a name="transact-sql-differences"></a>A Transact-SQL eltérései
+## <a name="transact-sql-differences"></a>Transact-SQL-különbségek
 
 
 - Ha az esemény- [munkamenet létrehozása](https://msdn.microsoft.com/library/bb677289.aspx) parancsot SQL Serveron hajtja végre, használja a **on Server** záradékot. SQL Database azonban a **on Database** záradékot használja.
@@ -91,7 +91,7 @@ A kiterjesztett események funkciót számos [katalógus-nézet](https://msdn.mi
 
 Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, mint a. *Server\_* a *. Database\_* helyett. A név mint **sys. server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Új dinamikus felügyeleti nézetek [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Új dinamikus felügyeleti nézetek [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](https://msdn.microsoft.com/library/bb677293.aspx) , amelyek támogatják a kiterjesztett eseményeket. DMV az *aktív* esemény-munkamenetekről.
 
@@ -142,7 +142,7 @@ SELECT
 ```
 
 
-<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a> &nbsp;
+<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a>&nbsp;
 
 ## <a name="targets-for-your-sql-database-event-sessions"></a>A SQL Database esemény-munkamenetek céljai
 

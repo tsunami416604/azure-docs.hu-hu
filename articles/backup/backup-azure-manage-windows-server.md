@@ -3,12 +3,12 @@ title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b57d6eff5f5dfa2163962a47eee079d7e26257b5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586444"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136956"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
@@ -49,7 +49,7 @@ A Recovery Services-tároló **áttekintése** irányítópult csempéket biztos
 A figyelés szakasz az előre definiált **biztonságimásolat-riasztások** és a **biztonsági mentési feladatok** lekérdezésének eredményeit jeleníti meg. A monitorozási csempék naprakész információkat biztosítanak az alábbiakról:
 
 * Kritikus és figyelmeztető riasztások a biztonsági mentési feladatokhoz (az elmúlt 24 órában)
-* Azure-beli virtuális gépek előzetes ellenőrzési állapota – az előzetes ellenőrzési állapottal kapcsolatos teljes információkért tekintse meg a biztonsági mentési [blog biztonsági mentés előtti ellenőrzési állapotát](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)ismertető témakört.
+* Azure-beli virtuális gépek előzetes ellenőrzési állapota. Az előzetes ellenőrzési állapottal kapcsolatos részletes információkért lásd: [biztonsági mentés előzetes ellenőrzési állapota](#backup-pre-check-status).
 * A folyamatban lévő biztonsági mentési feladatok és a sikertelen feladatok (az elmúlt 24 órában).
 
 A használati csempék a következőket biztosítják:
@@ -62,6 +62,22 @@ A társított menü megnyitásához kattintson a csempére (kivéve a biztonság
 ![A biztonsági mentési riasztások menü a kritikus riasztások esetében szűrve](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 A biztonsági mentési riasztások menüt a fenti képen a szűri: állapot aktív, súlyosság kritikus, és az idő az előző 24 óra.
+
+### <a name="backup-pre-check-status"></a>Biztonsági mentés előzetes ellenőrzési állapota
+
+A biztonsági mentés előzetes ellenőrzése ellenőrzi a virtuális gépek konfigurációját olyan problémák esetén, amelyek hátrányosan befolyásolhatják a biztonsági mentéseket. Összesítik ezeket az adatokat, így közvetlenül az Recovery Services-tároló irányítópultján tekinthetők meg, és a megfelelő fájl-konzisztens vagy alkalmazás-konzisztens biztonsági másolatok biztosítására vonatkozó ajánlásokat is biztosítanak. Nem igényelnek infrastruktúrát, és nem igényelnek további költségeket.  
+
+A biztonsági mentés előzetes ellenőrzése az Azure-beli virtuális gépek ütemezett biztonsági mentési műveleteinek részeként fut. A következő állapotok egyikével zárulnak:
+
+* **Átadva**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációjának sikeres biztonsági mentéseket kell eredményeznie, és nem kell végrehajtania javítási műveletet.
+* **Figyelmeztetés**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációja egy vagy több olyan hibát jelez *, amely biztonsági* mentési hibákhoz vezethet. *Ajánlott* lépéseket biztosít a sikeres biztonsági mentések biztosításához. Ha például nincs telepítve a legújabb virtuálisgép-ügynök, a biztonsági mentések időnként sikertelenek lehetnek. Ez a helyzet figyelmeztetési állapotot biztosít.
+* **Kritikus**: ez az állapot azt jelzi, hogy a virtuális gép konfigurációja egy vagy több kritikus problémát jelez *, amely a* biztonsági mentési hibákat eredményezi, és a sikeres biztonsági mentések biztosításához *szükséges* lépéseket tesz lehetővé. Például egy virtuális gép NSG-szabályainak frissítése által okozott hálózati hiba miatt a biztonsági mentések sikertelenek lesznek, mivel megakadályozza, hogy a virtuális gép kommunikáljon a Azure Backup szolgáltatással. Ez a helyzet kritikus állapotot jelentene.
+
+Az alábbi lépésekkel megkezdheti az Recovery Services-tárolóban található virtuális gépek biztonsági mentésének előzetes ellenőrzései által jelentett problémák megoldását.
+
+* Válassza a **biztonsági mentés előzetes ellenőrzési állapota (Azure-beli virtuális gépek)** csempét az Recovery Services-tároló irányítópultján.
+* Válasszon ki egy olyan virtuális gépet, amelynek biztonsági mentésének előzetes ellenőrzési állapota **kritikus** vagy **Figyelmeztetés**. Ez a művelet megnyitja a **virtuális gép részleteit** tartalmazó ablaktáblát.
+* Kattintson a panel tetején látható értesítésre a konfigurációs probléma leírásának és a javító lépéseknek a megjelenítéséhez.
 
 ## <a name="manage-backup-alerts"></a>Biztonsági mentési riasztások kezelése
 
@@ -272,4 +288,3 @@ Az irányítópulton található Backup Storage (biztonsági mentés) csempén a
 
 * [Windows Server-vagy Windows-ügyfél visszaállítása az Azure-ból](backup-azure-restore-windows-server.md)
 * További információ a Azure Backupről: [Azure Backup áttekintése](backup-introduction-to-azure-backup.md)
-

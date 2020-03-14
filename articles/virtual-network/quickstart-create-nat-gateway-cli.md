@@ -13,19 +13,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1317ea6526a28c5d71dce1a3c25b2fd05f5e446b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9402960927f56092e226ab81bd3e6ede0cf6a52d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271307"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202195"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rövid útmutató: NAT-átjáró létrehozása az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
-
->[!NOTE] 
->Az Azure Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el, és korlátozott számú [régióban](https://azure.microsoft.com/global-infrastructure/regions/)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -236,6 +233,5 @@ Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének
 - Rövid útmutató a [NAT-átjáró erőforrásának Azure CLI](./quickstart-create-nat-gateway-cli.md)-vel történő üzembe helyezéséhez.
 - Útmutató a NAT- [átjáró erőforrásának Azure PowerShell használatával](./quickstart-create-nat-gateway-powershell.md)történő üzembe helyezéséhez.
 - Útmutató a NAT- [átjáró erőforrásának Azure Portal használatával](./quickstart-create-nat-gateway-portal.md)történő üzembe helyezéséhez.
-- [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
 > [!div class="nextstepaction"]
 

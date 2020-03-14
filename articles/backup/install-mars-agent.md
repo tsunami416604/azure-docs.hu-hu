@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök telepítése
 description: Ismerje meg, hogyan telepítheti a Microsoft Azure Recovery Services-(MARS-) ügynököt a Windows rendszerű gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: cf6b332c308bb0224dbfed546f8b3ba819abcb02
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673097"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247760"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>A Azure Backup MARS-ügynök telepítése
 
@@ -99,6 +99,10 @@ További információ: ExpressRoute- [útválasztási követelmények](https://d
 
 Az előző URL-címek és IP-címek mindegyike a HTTPS protokollt használja a 443-es porton.
 
+### <a name="private-endpoints"></a>Privát végpontok
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
+
 ## <a name="download-the-mars-agent"></a>A MARS-ügynök letöltése
 
 Töltse le a MARS-ügynököt, és telepítse azokat a számítógépekre, amelyekről biztonsági másolatot szeretne készíteni.
@@ -155,6 +159,6 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
 1. Válassza a **Finish** (Befejezés) elemet. Az ügynök már telepítve van, és a számítógép regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Windows rendszerű gépek biztonsági mentésének ismertetése a Azure Backup Mars-ügynök használatával](backup-windows-with-mars-agent.md)

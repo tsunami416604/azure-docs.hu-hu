@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358908"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278115"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.

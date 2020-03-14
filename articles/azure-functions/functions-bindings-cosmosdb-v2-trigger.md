@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: c006aa8c46864b78ae46aa9c351605cca1d1e425
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277569"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Cosmos DB trigger a Azure Functions 2. x esetében
 
@@ -236,7 +236,8 @@ Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDBTrigger` attrib
 |**leaseRenewInterval**| **LeaseRenewInterval**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, minden bérletek példány által jelenleg birtokolt partíciók megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
 |**checkpointFrequency**| **CheckpointFrequency**| (Nem kötelező) Érték beállítása esetén azt határozza meg, ezredmásodpercben, a bérlet ellenőrzőpontok közötti időtartam. Az alapértelmezett érték mindig az egyes függvények hívása után történik.
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| Választható Ha be van állítva, ez a tulajdonság határozza meg a függvényhívás által fogadott elemek maximális számát. Ha a figyelt gyűjteményben lévő műveleteket tárolt eljárásokkal hajtják végre, a [tranzakció hatóköre](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) megmarad a változási csatornán lévő elemek olvasása során. Ennek eredményeképpen a fogadott elemek száma magasabb lehet a megadott értéknél, így az ugyanazon tranzakció által módosított elemek egy atomi köteg részeként lesznek visszaadva.
-|**startFromBeginning**| **StartFromBeginning**| Választható Ez a beállítás azt jelzi, hogy a trigger beolvassa a gyűjtemény korábbi változásait, nem pedig az aktuális időpontot. Az elejétől való olvasás csak az indítás első indításakor működik, ahogy az a későbbi futtatásokban is, az ellenőrzőpontok már tárolódnak. Ha úgy állítja be ezt a beállítást, hogy a már létrehozott bérletek már nem lépnek érvénybe, `true`.
+|**startFromBeginning**| **StartFromBeginning**| Választható Ez a beállítás azt jelzi, hogy a trigger beolvassa a gyűjtemény korábbi változásait, nem pedig az aktuális időpontot. Az elejétől való olvasás csak az indítás első indításakor működik, ahogy az a későbbi futtatásokban is, az ellenőrzőpontok már tárolódnak. Ha úgy állítja be ezt a beállítást, hogy a már létrehozott bérletek már nem lépnek érvénybe, `true`. |
+|**preferredLocations**| **PreferredLocations**| Választható Meghatározza a földrajzilag replikált adatbázis-fiókok előnyben részesített helyét (régióit) a Azure Cosmos DB szolgáltatásban. Az értékeket vesszővel kell elválasztani. Például: "az USA keleti régiója, az USA déli középső régiója, Észak-Európa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

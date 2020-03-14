@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3559a139ff89c949ee691310ae25af7d6950abdf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251618"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138960"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés
 
@@ -184,6 +184,10 @@ Megváltoztathatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<d
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> Az OpenVPN Azure AD-ügyfél DNS-névfeloldási házirend-táblákat (NRPT-bejegyzéseket) használ, ami azt jelenti, hogy a DNS-kiszolgálók nem lesznek felsorolva a `ipconfig /all`kimenetében. A használaton kívüli DNS-beállítások megerősítéséhez tekintse meg a [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) a PowerShellben című részt.
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hogyan egyéni útvonalakat hozzáadni a VPN-ügyfélhez?
 

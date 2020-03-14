@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602322"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247825"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -21,6 +21,7 @@ További információ a biztonsági mentési folyamatról és a korlátozásokr�
 Ha egy SQL Server adatbázis védelmét szeretné konfigurálni egy virtuális gépen, telepítenie kell a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Ha a **UserErrorSQLNoSysadminMembership**hibaüzenetet kap, az azt jelenti, hogy az SQL Server-példány nem rendelkezik a szükséges biztonsági mentési engedélyekkel. A hiba elhárításához kövesse a [virtuális gép engedélyeinek beállítása](backup-azure-sql-database.md#set-vm-permissions)című témakör lépéseit.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Problémák felderítésével és konfigurálásával kapcsolatos hibák elhárítása
+
 Recovery Services-tároló létrehozása és konfigurálása után az adatbázisok felfedése és a biztonsági mentés konfigurálása két lépésből álló folyamat.<br>
 
 ![SQL](./media/backup-azure-sql-database/sql.png)
@@ -35,9 +36,25 @@ A biztonsági mentési konfiguráció során, ha az SQL-alapú virtuális gép �
 
 - Ha az a tároló, amelyben az SQL virtuális gép regisztrálva van az adatbázisok védelméhez használt tárban, kövesse a [biztonsági mentés konfigurálása](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) lépéseit.
 
-Ha az SQL virtuális gépet regisztrálni kell az új tárolóban, akkor azt törölni kell a régi tárból.  Ha az SQL-alapú virtuális gépet a tárolóból törli, az összes védett adatforrást le kell állítani, és ezután törölheti a biztonsági másolatba mentett adatok védelmét. A biztonsági másolatba mentett adathalmazok törlése romboló művelet.  Miután áttekintette és elvégezte az összes óvintézkedést az SQL virtuális gép regisztrációjának megszüntetéséhez, regisztrálja ugyanezt a virtuális gépet egy új tárolóval, és próbálkozzon újra a biztonsági mentési művelettel.
+Ha az SQL virtuális gépet regisztrálni kell az új tárolóban, akkor azt törölni kell a régi tárból.  Egy SQL virtuális gép tárolóból való regisztrációjának megszüntetéséhez az összes védett adatforrást le kell állítani, és ezután törölheti a biztonsági másolatok adatait. A biztonsági másolatba mentett adathalmazok törlése romboló művelet.  Miután áttekintette és elvégezte az összes óvintézkedést az SQL virtuális gép regisztrációjának megszüntetéséhez, regisztrálja ugyanezt a virtuális gépet egy új tárolóval, és próbálkozzon újra a biztonsági mentési művelettel.
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Biztonsági mentési és helyreállítási problémák elhárítása  
 
+Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és visszaállítási műveletekben, vagy a műveletek elakadnak. Ennek oka lehet a virtuális gépen futó víruskereső program. Ajánlott eljárásként a következő lépéseket javasoljuk:
+
+1. A következő mappák kizárása a víruskeresésből:
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    Cserélje le a `C:\`t a *rendszermeghajtó*betűjelére.
+
+1. Zárja ki a virtuális gépen belül futó következő három folyamatot víruskereső vizsgálatból:
+
+    - IaasWLPluginSvc. exe
+    - IaasWorkloadCoordinaorService. exe
+    - TriggerExtensionJob. exe
+
+1. Az SQL Emellett néhány útmutatót is biztosít a víruskereső programokkal való együttműködéshez. További részletekért tekintse meg [ezt a cikket](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
 
 ## <a name="error-messages"></a>Hibaüzenetek
 
@@ -149,7 +166,6 @@ A művelet le van tiltva, mert a tároló elérte a maximális korlátot az ilye
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
 Az internetkapcsolattal kapcsolatos problémák miatt a virtuális gép nem tud kapcsolatba lépni Azure Backup szolgáltatással. | A virtuális gépnek kimenő kapcsolatra van szüksége Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy Azure Active Directory-szolgáltatásokhoz.| – Ha a NSG-t használja a kapcsolat korlátozására, akkor a AzureBackup szolgáltatás címkével kell rendelkeznie a Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy a Azure Active Directory-szolgáltatásokhoz való kimenő Azure Backup hozzáféréshez. A hozzáférés engedélyezéséhez kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) .<br>– Győződjön meg arról, hogy a DNS feloldja az Azure-végpontokat.<br>– Ellenőrizze, hogy a virtuális gép az internet-hozzáférést blokkoló terheléselosztó mögött van-e. Ha nyilvános IP-címet rendel a virtuális gépekhez, a felderítés működni fog.<br>– Győződjön meg arról, hogy nincs olyan tűzfal/víruskereső/proxy, amely blokkolja a fenti három cél szolgáltatás hívásait.
-
 
 ## <a name="re-registration-failures"></a>Ismételt regisztrálási hibák
 

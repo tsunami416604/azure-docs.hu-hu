@@ -4,11 +4,11 @@ description: Azure Functions támogatja a futtatókörnyezet több verzióját. 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356719"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276555"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 

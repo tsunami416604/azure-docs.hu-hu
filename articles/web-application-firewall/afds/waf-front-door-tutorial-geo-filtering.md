@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: dd9c3f972a2b598c0c03db2cb80986c08900c609
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517123"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135870"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Geo-szűrési WAF szabályzat beállítása a bejárati ajtóhoz
 
@@ -110,7 +110,7 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > Csak egyszer kell beállítania a WebApplicationFirewallPolicyLink tulajdonságot, ha egy WAF-szabályzatot szeretne csatlakoztatni egy előtér-előtérben lévő gazdagéphez. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza a előtér-gazdagépre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - [Frontdoor létrehozására](../../frontdoor/quickstart-create-front-door.md) vonatkozó információk.

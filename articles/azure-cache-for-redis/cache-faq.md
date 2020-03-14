@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355884"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278713"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.

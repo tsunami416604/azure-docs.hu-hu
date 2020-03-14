@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan fejlesztheti C#Azure functions a használatáva
 ms.topic: reference
 ms.date: 09/12/2018
 ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277062"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# fejlesztői dokumentáció
 

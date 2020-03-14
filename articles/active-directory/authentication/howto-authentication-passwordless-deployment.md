@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378193"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136534"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -130,7 +130,7 @@ Tekintse meg az [ajánlott eljárásokat a pilóta számára](https://aka.ms/dep
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Jelszóval nem rendelkező hitelesítés tervezése a Microsoft Authenticator alkalmazással
 
-A Microsoft Authenticator alkalmazás ingyenesen letölthető a Google Play-ből vagy az Apple App Store áruházból. [További információ a Microsoft Authenticator alkalmazás letöltéséről](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak). A felhasználók letöltik a Microsoft Authenticator alkalmazást. és kövesse az utasításokat a telefonos bejelentkezés engedélyezéséhez. 
+A Microsoft Authenticator alkalmazás ingyenesen letölthető a Google Play-ből vagy az Apple App Store áruházból. [További információ a Microsoft Authenticator alkalmazás letöltéséről](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). A felhasználók letöltik a Microsoft Authenticator alkalmazást. és kövesse az utasításokat a telefonos bejelentkezés engedélyezéséhez. 
 
 Minden iOS-vagy Android-telefont erős, jelszó nélküli hitelesítő adatba kapcsol. A felhasználók bármely platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján lévő egy számmal látják el, majd a biometria vagy a PIN-kód segítségével megerősítik. [Tekintse meg a Microsoft Authenticator alkalmazás működésének részleteit](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
 

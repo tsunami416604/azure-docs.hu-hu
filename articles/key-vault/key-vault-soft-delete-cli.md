@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e773d628b4600d6c2e73d488d82d6ab4c64b56a2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392380"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239923"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault Soft-delete használata a parancssori felülettel
 
@@ -53,7 +53,7 @@ A "Soft-Delete" lehetővé teszi a törölt kulcstartó vagy a kulcstartóban t�
 Egy ContosoVault nevű meglévő kulcstartó esetén a következő módon engedélyezze a Soft delete törlését. 
 
 ```azurecli
-az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
+az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
 ### <a name="new-key-vault"></a>Új kulcstartó

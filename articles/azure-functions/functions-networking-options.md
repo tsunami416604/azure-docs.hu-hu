@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: d8c3357325eadefec7bb97faba5d600e9c6793a9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893339"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276711"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -54,6 +54,8 @@ A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak magán
     * További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
 * A privát hely elérését egy belső terheléselosztó (ILB) használatára konfigurált App Service Environmenton belül is elérhető. További információ: [belső terheléselosztó létrehozása és használata app Service Environmentsal](../app-service/environment/create-ilb-ase.md).
+
+A privát helyek hozzáférésének beállításával kapcsolatos további információkért lásd: [Azure functions Private site Access létrehozása](functions-create-private-site-access.md).
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
 
@@ -148,7 +150,7 @@ Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező A
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről és a Azure Functions:
 

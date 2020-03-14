@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037084"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140790"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-A folyamat sikeres elküldését követően megtekintheti a képet a modul jobb oldali paneljén, ![feltöltött-kép](media/module/upload-image-in-python-script.png)
+A folyamat sikeres elküldését követően a rendszerképet a modul jobb oldali paneljén tekintheti meg
+
+[!div class="mx-imgBorder"]
+![feltöltve – rendszerkép](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>A Python-szkript végrehajtásának konfigurálása
 
@@ -132,7 +135,7 @@ A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, a
 
     ![Python bemeneti térképének végrehajtása](media/module/python-module.png)
 
-4. Új Python-csomagok vagy-kódok felvételéhez adja hozzá az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-csomagban**. A **parancsfájlba** való bevitelnek a munkaterületre fájltípus-adatkészletként feltöltött tömörített fájlnak kell lennie. 
+4. Új Python-csomagok vagy-kódok felvételéhez adja hozzá az egyéni erőforrásokat tartalmazó tömörített fájlt a **parancsfájl-csomagban**. A **parancsfájlba** való bevitelnek a munkaterületre fájltípus-adatkészletként feltöltött tömörített fájlnak kell lennie. Feltöltheti az adatkészletet az **adatkészletek** eszköz lapján, és az adatkészletek modulját áthelyezheti **a bal** oldali modul konzolfáján a tervező szerzői műveletek lapján. 
 
     A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát, de egy **src** nevű könyvtárat kell megadnia az elérési útra.
 

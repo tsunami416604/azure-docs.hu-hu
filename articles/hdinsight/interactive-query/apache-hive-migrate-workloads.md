@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214648"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -39,33 +39,81 @@ Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár
 
 Ha a belső metaadattár használja, a lekérdezésekkel exportálhatja az objektum-definíciókat a Hive-metaadattárban, és importálhatja őket egy új adatbázisba.
 
+A szkript befejezése után feltételezhető, hogy a régi fürtöt a rendszer többé nem fogja használni a parancsfájlban hivatkozott táblák vagy adatbázisok eléréséhez.
+
+> [!NOTE]
+> A savas táblák esetében a tábla alatti adatmennyiség új másolatát fogja létrehozni.
+
 1. Kapcsolódjon a HDInsight-fürthöz egy [Secure Shell-(SSH-) ügyfél](../hdinsight-hadoop-linux-use-ssh-unix.md)használatával.
 
 1. A következő parancs beírásával csatlakozhat a HiveServer2-hez a [Beeline-ügyféllel](../hadoop/apache-hadoop-use-hive-beeline.md) az Open SSH-munkamenetből:
 
     ```hiveql
-    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; do echo "create database $d; use $d;" >> alltables.sql; for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"` ; do ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
+    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; 
+    do
+        echo "Scanning Database: $d"
+        echo "create database if not exists $d; use $d;" >> alltables.hql; 
+        for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"`;
+        do
+            echo "Copying Table: $t"
+            ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`;
+
+            echo "$ddl;" >> alltables.hql;
+            lowerddl=$(echo $ddl | awk '{print tolower($0)}')
+            if [[ $lowerddl == *"'transactional'='true'"* ]]; then
+                if [[ $lowerddl == *"partitioned by"* ]]; then
+                    # partitioned
+                    raw_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "CREATE TABLE .*" | cut -d"(" -f2- | cut -f1 -d")" | sed 's/`//g');
+                    ptn_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "PARTITIONED BY .*" | cut -f1 -d")" | cut -d"(" -f2- | sed 's/`//g');
+                    final_cols=$(echo "(" $raw_cols "," $ptn_cols ")")
+
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t $final_cols TBLPROPERTIES ('transactional'='false');";
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
+                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
+                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
+
+                    parsed_ptn_cols=$(echo $ptn_cols| sed 's/ [a-z]*,/,/g' | sed '$s/\w*$//g');
+                    echo "create table flattened_$t $final_cols;" >> alltables.hql;
+                    echo "load data inpath '$dir' into table flattened_$t;" >> alltables.hql;
+                    echo "insert into $t partition($parsed_ptn_cols) select * from flattened_$t;" >> alltables.hql;
+                    echo "drop table flattened_$t;" >> alltables.hql;
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
+                else
+                    # not partitioned
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t like $t TBLPROPERTIES ('transactional'='false');";
+                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
+                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
+
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
+                    echo "load data inpath '$dir' into table $t;" >> alltables.hql;
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
+                fi
+            fi
+            echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t;" >> alltables.hql;
+        done;
+    done
     ```
 
-    Ez a parancs létrehoz egy **alltables. SQL**nevű fájlt. Mivel az alapértelmezett adatbázist nem lehet törölni/újból létrehozni, távolítsa el `create database default;` utasítást a **alltables. SQL**-ben.
+    Ez a parancs létrehoz egy **alltables. HQL**nevű fájlt.
 
-1. Lépjen ki az SSH-munkamenetből. Ezután adjon meg egy scp-parancsot a **alltables. SQL** helyi letöltéséhez.
+1. Lépjen ki az SSH-munkamenetből. Ezután adjon meg egy scp-parancsot a **alltables. HQL** helyi letöltéséhez.
 
     ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.sql c:/hdi
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. Töltse fel a **alltables. SQL** -t az *új* HDInsight-fürtre.
+1. Töltse fel a **alltables. HQL** az *új* HDInsight-fürtre.
 
     ```bash
-    scp c:/hdi/alltables.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
 1. Ezután használja az SSH-t az *új* HDInsight-fürthöz való kapcsolódáshoz. Futtassa az alábbi kódot az SSH-munkamenetből:
 
     ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.sql
+    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
     ```
+
 
 ## <a name="upgrade-metastore"></a>Metaadattár frissítése
 
@@ -73,12 +121,12 @@ A metaadattár **másolásának** befejeződése után futtasson egy [séma-fris
 
 Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSERVERNAME DATABASENAME USERNAME PASSWORD`t a **másolt** Hive-metaadattár megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
 
-|Tulajdonság | Value (Díj) |
+|Tulajdonság | Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Név|Struktúra frissítése|
+|Name (Név)|Struktúra frissítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Csomópont típusa (i)|Fej|
+|Csomópont típusa (i)|Head|
 |Paraméterek|SQLSERVERNAME DATABASENAME FELHASZNÁLÓNÉV JELSZAVA|
 
 > [!Warning]  
@@ -118,7 +166,7 @@ Erre a tömörítésre azért van szükség, mert a HDInsight 3,6 és a HDInsigh
 
 A metaadattár áttelepítési és tömörítési lépéseinek elvégzése után áttelepítheti a tényleges raktárat. A kaptár-tárház áttelepítésének befejezése után a HDInsight 4,0 Warehouse a következő tulajdonságokkal fog rendelkezni:
 
-|3,6 |4,0 |
+|3.6 |4.0 |
 |---|---|
 |Külső táblák|Külső táblák|
 |Nem tranzakciós felügyelt táblák|Külső táblák|
@@ -176,12 +224,12 @@ A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A HiveCLI egy takar�
 
 A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló grafikus felhasználói felület a Ambari struktúra nézet. A HDInsight 4,0 nem Ambari nézettel rendelkezik. Lehetőséget biztosítunk ügyfeleinknek az adatelemzési Studio (DAS) használatára, amely nem alapvető HDInsight szolgáltatás. A DAS nem támogatja a HDInsight-fürtöket, és nem hivatalosan támogatott csomag. A DAS azonban a következő módon telepíthető a fürtre a [parancsfájl](../hdinsight-hadoop-customize-cluster-linux.md) használatával:
 
-|Tulajdonság | Value (Díj) |
+|Tulajdonság | Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Név|DAS|
+|Name (Név)|DAS|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Csomópont típusa (i)|Fej|
+|Csomópont típusa (i)|Head|
 
 Várjon 10 – 15 percet, majd indítsa el az adatelemzési stúdiót a következő URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/`.
 

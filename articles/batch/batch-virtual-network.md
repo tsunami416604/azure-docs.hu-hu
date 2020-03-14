@@ -10,11 +10,11 @@ ms.date: 04/10/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: bbe38a9dc7be749b8e138ff3ca9ec4f06255b389
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355343"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247747"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -64,7 +64,7 @@ Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat 
 
 ![Felhasználó által megadott útvonal](./media/batch-virtual-network/user-defined-route.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
 - A felhasználó által megadott útvonal létrehozásával kapcsolatos további információkért lásd: [felhasználó által definiált útvonal-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).

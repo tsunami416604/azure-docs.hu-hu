@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380829"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282639"
 ---
 # <a name="protect-your-machines-and-applications"></a>A gépek és az alkalmazások elleni védelem
 Ha Azure Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.

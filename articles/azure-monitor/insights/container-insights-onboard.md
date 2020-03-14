@@ -4,11 +4,11 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezheti és konfigurálhatj
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 7aad7e7dd5ec2569377f9276c2e4793c7afd631a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395315"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275307"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor engedélyezése tárolók számára
 

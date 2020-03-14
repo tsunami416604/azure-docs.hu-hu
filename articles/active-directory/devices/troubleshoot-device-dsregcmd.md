@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707944"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136483"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Eszközök hibaelhárítása a dsregcmd parancs használatával
 
@@ -28,10 +28,10 @@ Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Eszköz állapota |
 | ---   | ---   | ---   | ---   |
-| IGEN | NO | NO | Azure AD-hez csatlakoztatott |
-| NO | NO | IGEN | Tartományhoz csatlakoztatott |
-| IGEN | NO | IGEN | Hibrid AD-hez csatlakoztatott |
-| NO | IGEN | IGEN | A helyszíni DRS csatlakoztatva |
+| igen | NO | NO | Azure AD-hez csatlakoztatott |
+| NO | NO | igen | Tartományhoz csatlakoztatott |
+| igen | NO | igen | Hibrid AD-hez csatlakoztatott |
+| NO | igen | igen | A helyszíni DRS csatlakoztatva |
 
 > [!NOTE]
 > Workplace Join (az Azure AD-ben regisztrált) állapot a "felhasználói állapot" szakaszban jelenik meg
@@ -54,7 +54,7 @@ Ez a szakasz az eszköz csatlakoztatási állapotának paramétereit sorolja fel
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Eszközadatok
+## <a name="device-details"></a>Eszköz adatai
 
 Csak akkor jelenik meg, ha az eszköz az Azure AD-hez csatlakozott vagy a hibrid Azure AD-hez csatlakozik (nem az Azure AD-ben regisztrált). Ez a szakasz felsorolja az eszköz a felhőben tárolt adatait.
 
@@ -193,7 +193,7 @@ Ez a szakasz figyelmen kívül hagyható az Azure AD által regisztrált eszköz
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnosztikai adatok
+## <a name="diagnostic-data"></a>Diagnosztikai adatszolgáltatások
 
 ### <a name="pre-join-diagnostics"></a>Csatlakozás előtti diagnosztika
 
@@ -211,8 +211,16 @@ Ez a szakasz különböző teszteket hajt végre a csatlakozási hibák diagnosz
 - **Ad-konfigurációs teszt:** – a teszt beolvassa és ellenőrzi, hogy az scp-objektum megfelelően van-e konfigurálva a helyszíni ad-erdőben. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban a hibakód 0x801c001d.
 - **DRS felderítési teszt:** – a teszt lekéri a DRS-végpontokat a felderítési metaadatok végpontján, és elvégzi a felhasználói tartományra vonatkozó kérelmet. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek a felderítési fázisban.
 - **DRS-kapcsolat tesztelése:** a test alapszintű kapcsolati tesztet hajt végre a DRS-végponton.
-- **Jogkivonat-beszerzési teszt:** a test megpróbál beolvasni egy Azure ad-hitelesítési tokent, ha a felhasználói bérlő összevont. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek az hitelesítési fázisban. Ha a hitelesítés meghiúsul, akkor a rendszer tartalékként kísérli meg a szinkronizálási csatlakozást, kivéve, ha a tartalék explicit módon le van tiltva egy beállításkulcs megadásával.
-- **Tartalék szinkronizáláshoz – csatlakozás:** – az "engedélyezve" értékre állítva, ha a beállításkulcs lehetővé teszi, hogy a tartalék szinkronizálási hibákkal való összekapcsolásának MEGAKADÁLYOZása ne legyen jelen. Ez a beállítás a Windows 10 1803-es és újabb verzióiban érhető el.
+- **Jogkivonat-beszerzési teszt:** a test megpróbál beolvasni egy Azure ad-hitelesítési tokent, ha a felhasználói bérlő összevont. Ebben a tesztben a hibák valószínűleg csatlakozási hibákat eredményeznek az hitelesítési fázisban. Ha az Auth nem sikerül, a rendszer tartalékként kísérli meg a szinkronizálási csatlakozást, kivéve, ha a tartalék explicit módon le van tiltva az alábbi beállításkulcs-beállításokkal.
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **Tartalék szinkronizáláshoz – csatlakozás:** – az "enabled" értékre állítva, ha a fenti beállításkulcs lehetővé teszi, hogy a tartalék szinkronizálási hibákkal való CSATLAKOZTATÁSa ne legyen jelen. Ez a beállítás a Windows 10 1803-es és újabb verzióiban érhető el.
 - **Korábbi regisztráció:** – az előző csatlakozási kísérlet ideje. A rendszer csak a sikertelen csatlakoztatási kísérleteket naplózza.
 - **Error fázis:** – a csatlakozás megszakított szakasza. A lehetséges értékek: előzetes vizsgálat, felderítés, hitelesítés, csatlakozás.
 - **Ügyfél-errorcode:** – visszaadott ügyfél-HIBAKÓD (HRESULT).

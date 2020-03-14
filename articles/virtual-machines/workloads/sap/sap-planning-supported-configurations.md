@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599183"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137628"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP számítási feladatok az Azure-beli virtuális gépek által támogatott forgatókönyvekben
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
 Az SAP NetWeaver, az üzleti `Hybris` vagy a S/4HANA rendszerek architektúrája az Azure-ban számos különböző lehetőséget nyit meg különböző architektúrák és eszközök számára, amelyek segítségével méretezhető, hatékony és nagy mértékben elérhető üzembe helyezést érhet el. Bár a használt operációs rendszertől vagy adatbázis-kezelőtől függ, korlátozások vannak érvényben. A helyszíni támogatás nem minden esetben támogatott ugyanúgy az Azure-ban. Ez a dokumentum a támogatott nem magas rendelkezésre állású konfigurációkon és a magas rendelkezésre állású konfigurációkon és architektúrán keresztül kizárólag az Azure-beli virtuális gépeket használja. A [Hana Large-példányokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)támogatott forgatókönyvek esetében tekintse [meg a Hana Large instances által támogatott forgatókönyvek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)című cikket. 
 
 
@@ -66,7 +66,8 @@ Az ilyen típusú adatbázis-kezelő üzembe helyezését a következő támogat
 - SQL Server Windows rendszeren
 - IBM DB2. További részletek a cikkben [több példányban (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
 - Oracle esetén. Részletekért lásd: [SAP-támogatási megjegyzés #1778431](https://launchpad.support.sap.com/#/notes/1778431) és kapcsolódó SAP-megjegyzések
-- Ha SAP HANA, egy virtuális gépen több példány van, az SAP meghívja ezt a telepítési módszert MCOS, amely támogatott. További részletekért tekintse meg az SAP [-cikk több SAP HANA rendszerét egy gazdagépen (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html)
+- Ha SAP HANA, egy virtuális gépen több példány van, az SAP meghívja ezt a telepítési módszert MCOS, amely támogatott. Részletekért tekintse meg az SAP-cikket [több SAP HANA rendszer egy gazdagépen (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html)
 
 Ha több adatbázis-példányt futtat egy gazdagépen, meg kell győződnie arról, hogy a különböző példányok nem versenyeznek az erőforrásokkal, és így túllépik a virtuális gép fizikai erőforrás-korlátait. Ez különösen akkor igaz, ha a memóriát a virtuális gépet megosztó példányok számára le kell foglalni. Ez a CPU-erőforrások esetében is igaz lehet, ha a különböző adatbázis-példányok képesek kihasználni. Az összes említett adatbázis-kezelő olyan konfigurációval rendelkezik, amelyek lehetővé teszik a memória-kiosztást és a processzor-erőforrásokat egy példány szintjén.
 Az Azure-beli virtuális gépek ilyen konfigurációjának támogatásához a rendszer azt várja, hogy a különböző példányok által kezelt adatbázisok adatkezelési és naplófájl-naplófájljaihoz használt lemezek vagy kötetek elkülönítve legyenek. Más szóval a különböző adatbázis-kezelő példányok által felügyelt adatbázisok vagy napló-vagy visszaadott naplófájlok nem ugyanazt a lemezt vagy kötetet használják. 
@@ -121,6 +122,8 @@ Azure-beli virtuális gépek esetén a következő magas rendelkezésre állás�
 
 > [!IMPORTANT]
 > A fent ismertetett forgatókönyvek egyike sem támogatja több adatbázis-kezelő példány konfigurációját egy virtuális gépen. Azt jelenti, hogy az egyes esetekben csak egy adatbázis-példány telepíthető virtuális gépenként és védett a magas rendelkezésre állási módszerekkel. Ezen a ponton **nem** támogatott több adatbázis-kezelő példány védelme ugyanazon a Windows-vagy pacemaker-feladatátvevő fürtön. Emellett az Oracle-adatvédelmet csak a virtuálisgép-telepítési esetekben támogatja a rendszer. 
+
+A különböző adatbázis-rendszerek lehetővé teszik több adatbázis üzemeltetését egy adatbázis-kezelő példányban. Ahogy SAP HANA esetében, több adatbázis is üzemeltethető több adatbázis-tárolóban (MDC). Azokban az esetekben, amikor ezek a többadatbázisos konfigurációk egy feladatátvevő fürt erőforrásán belül működnek, ezek a konfigurációk támogatottak. A nem támogatott konfigurációk olyan esetek, amikor több fürterőforrás szükséges. Olyan konfigurációk esetében, amelyekben több SQL Server rendelkezésre állási csoportot határoz meg egy SQL Server példány alatt.
 
 
 ![Adatbázis-kezelő HA konfiguráció](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

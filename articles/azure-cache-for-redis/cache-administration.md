@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278843"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6b0d967dad250b06988865cde2f4ce11367f8acb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361904"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245771"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Erőforrás-szolgáltatói műveletek Azure Resource Manager
 
@@ -448,10 +448,9 @@ Azure-szolgáltatás: [API Management](../api-management/index.yml)
 > | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/olvasás | A Service instance szolgáltatásban regisztrált átjárók gyűjteményét listázza. vagy beolvassa az azonosító által megadott átjáró részleteit. |
 > | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/írás | Létrehoz vagy frissít egy átjárót az API Management-példányban való használatra. vagy frissíti az azonosító alapján megadott átjáró részleteit. |
 > | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/törlés | Adott átjáró törlése. |
-> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/kulcsok/művelet | Az átjáró kulcsainak beolvasása. |
-> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/regeneratePrimaryKey/művelet | Újragenerálta az elsődleges átjáró kulcsát a invalidationg létrehozott jogkivonatokkal. |
-> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/regenerateSecondaryKey/művelet | Újragenerálja a másodlagos átjáró kulcsát a vele létrehozott jogkivonatok invalidationg. |
-> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/jogkivonat/művelet | Az átjáróhoz tartozó megosztott hozzáférés engedélyezési jogkivonatának beolvasása. |
+> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/Listkeys műveletének beolvasása/művelet | Az átjáró kulcsainak beolvasása. |
+> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/regenerateKey/művelet | A megadott átjáró kulcsának újralétrehozása a vele létrehozott invalidationg. |
+> | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/generateToken/művelet | Az átjáróhoz tartozó megosztott hozzáférés engedélyezési jogkivonatának beolvasása. |
 > |  | **szolgáltatás/átjárók/API-k** |  |
 > | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/API-k/olvasás | Az átjáróhoz társított API-k gyűjteményét listázza. |
 > | Műveletek | Microsoft. ApiManagement/szolgáltatás/átjárók/API-k/írás | Egy API-t ad hozzá a megadott átjáróhoz. |
@@ -483,7 +482,7 @@ Azure-szolgáltatás: [API Management](../api-management/index.yml)
 > | Műveletek | Microsoft. ApiManagement/Service/namedValues/READ | A szolgáltatási példányon belül definiált nevesített értékek gyűjteményét listázza. vagy lekéri az azonosító alapján megadott megnevezett érték részleteit. |
 > | Műveletek | Microsoft. ApiManagement/szolgáltatás/namedValues/írás | Megnevezett érték létrehozása vagy frissítése. vagy frissíti az adott megnevezett értéket. |
 > | Műveletek | Microsoft. ApiManagement/Service/namedValues/delete | Törli az adott megnevezett értéket az API Management Service-példányból. |
-> | Műveletek | Microsoft. ApiManagement/Service/namedValues/listSecrets/művelet | Lekéri az azonosító alapján megadott megnevezett érték titkait. |
+> | Műveletek | Microsoft. ApiManagement/Service/namedValues/listValue/művelet | Lekéri az azonosító alapján megadott megnevezett érték titkát. |
 > |  | **szolgáltatás/networkstatus** |  |
 > | Műveletek | Microsoft.ApiManagement/service/networkstatus/read | Lekéri azon erőforrások hálózati hozzáférési állapotát, amelyeken a szolgáltatás függ. |
 > |  | **szolgáltatás/értesítések** |  |
@@ -809,6 +808,18 @@ Azure-szolgáltatás: [automatizálás](../automation/index.yml)
 > | Műveletek | Microsoft.Automation/automationAccounts/nodes/reports/content/read | Azure Automation DSC-jelentés tartalmának beolvasása |
 > |  | **automationAccounts/objectDataTypes/mezők** |  |
 > | Műveletek | Microsoft.Automation/automationAccounts/objectDataTypes/fields/read | Azure Automation TypeFields beolvasása |
+> |  | **automationAccounts/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/READ | A Azure Automation privát végponti kapcsolatok proxyjának beolvasása |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/Write | Létrehoz egy Azure Automation privát végponti ügyfélkapcsolati proxyt |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/validate/Action | Privát végponti kapcsolatok igénylésének ellenőrzése (groupId-érvényesítés) |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/delete | Azure Automation Private Endpoint-kapcsolatok proxyjának törlése |
+> |  | **automationAccounts/privateEndpointConnectionProxies/operationResults** |  |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnectionProxies/operationResults/READ | Azure Automation magánhálózati végpont-proxy művelet eredményeinek beolvasása. |
+> |  | **automationAccounts/privateEndpointConnections** |  |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnections/READ | Azure Automation magánhálózati végponti kapcsolatok állapotának beolvasása |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateEndpointConnections/Write | Azure Automation privát végponti kapcsolatok jóváhagyása vagy elutasítása |
+> |  | **automationAccounts/privateLinkResources** |  |
+> | Műveletek | Microsoft. Automation/automationAccounts/privateLinkResources/READ | A privát végpontok csoportos adatainak beolvasása |
 > |  | **automationAccounts/python2Packages** |  |
 > | Műveletek | Microsoft.Automation/automationAccounts/python2Packages/read | Azure Automation Python 2 csomag beolvasása |
 > | Műveletek | Microsoft.Automation/automationAccounts/python2Packages/write | Egy Azure Automation Python 2 csomag létrehozása vagy frissítése |
@@ -910,6 +921,8 @@ Azure-szolgáltatás: Core
 > | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.AzureStack/register/action | Előfizetés regisztrálása a Microsoft. AzureStack erőforrás-szolgáltatónál |
+> |  | **cloudManifestFiles** |  |
+> | Műveletek | Microsoft. AzureStack/cloudManifestFiles/READ | A Cloud manifest-fájl beolvasása |
 > |  | **Műveletek** |  |
 > | Műveletek | Microsoft.AzureStack/Operations/read | Erőforrás-szolgáltatói művelet tulajdonságainak beolvasása |
 > |  | **regisztrációk** |  |
@@ -927,8 +940,6 @@ Azure-szolgáltatás: Core
 > | Műveletek | Microsoft. AzureStack/regisztráció/termékek/getProducts/művelet | Azure Stack Marketplace-termékek listájának beolvasása |
 > | Műveletek | Microsoft. AzureStack/regisztráció/termékek/getProduct/művelet | Azure Stack Marketplace-termék beolvasása |
 > | Műveletek | Microsoft. AzureStack/regisztráció/termékek/uploadProductLog/művelet | A Piactéri termék műveleti állapotának és időbélyegének rögzítése Azure Stack |
-> |  | **verificationKeys** |  |
-> | Műveletek | Microsoft. AzureStack/verificationKeys/getCurrentKey/művelet | Beolvassa Azure Stack aláírás nyilvános kulcsának aktuális verzióját |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -1010,6 +1021,7 @@ Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billin
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/írás |  |
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/READ |  |
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/írás |  |
+> | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/írás |  |
 > |  | **billingAccounts/billingProfiles/billingPermissions** |  |
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/billingPermissions/READ |  |
 > |  | **billingAccounts/billingProfiles/ügyfelek** |  |
@@ -1019,6 +1031,7 @@ Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billin
 > |  | **billingAccounts/billingProfiles/invoiceSections** |  |
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/invoiceSections/Write |  |
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/invoiceSections/READ |  |
+> | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/invoiceSections/Write |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingPermissions** |  |
 > | Műveletek | Microsoft. Billing/billingAccounts/billingProfiles/invoiceSections/billingPermissions/READ |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingSubscriptions** |  |
@@ -1263,14 +1276,6 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 > | Műveletek | Microsoft. CDN/CheckNameAvailability/művelet |  |
 > | Műveletek | Microsoft.Cdn/ValidateProbe/action |  |
 > | Műveletek | Microsoft.Cdn/CheckResourceUsage/action |  |
-> |  | **cdnwebapplicationfirewallmanagedrulesets** |  |
-> | Műveletek | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/READ |  |
-> | Műveletek | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/írás |  |
-> | Műveletek | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/delete |  |
-> |  | **cdnwebapplicationfirewallpolicies** |  |
-> | Műveletek | Microsoft. CDN/cdnwebapplicationfirewallpolicies/READ |  |
-> | Műveletek | Microsoft. CDN/cdnwebapplicationfirewallpolicies/írás |  |
-> | Műveletek | Microsoft. CDN/cdnwebapplicationfirewallpolicies/delete |  |
 > |  | **edgenodes** |  |
 > | Műveletek | Microsoft.Cdn/edgenodes/read |  |
 > | Műveletek | Microsoft. CDN/edgenodes/írás |  |
@@ -1279,10 +1284,6 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 > | Műveletek | Microsoft.Cdn/operationresults/read |  |
 > | Műveletek | Microsoft.Cdn/operationresults/write |  |
 > | Műveletek | Microsoft.Cdn/operationresults/delete |  |
-> |  | **operationresults/cdnwebapplicationfirewallpolicyresults** |  |
-> | Műveletek | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/READ |  |
-> | Műveletek | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/írás |  |
-> | Műveletek | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/delete |  |
 > |  | **operationresults/profileresults** |  |
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/read |  |
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/write |  |
@@ -1306,6 +1307,10 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/delete |  |
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/DisableCustomHttps/action |  |
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/EnableCustomHttps/action |  |
+> |  | **operationresults/profileresults/endpointresults/origingroupresults** |  |
+> | Műveletek | Microsoft. CDN/operationresults/profileresults/endpointresults/origingroupresults/READ |  |
+> | Műveletek | Microsoft. CDN/operationresults/profileresults/endpointresults/origingroupresults/írás |  |
+> | Műveletek | Microsoft. CDN/operationresults/profileresults/endpointresults/origingroupresults/delete |  |
 > |  | **operationresults/profileresults/endpointresults/originresults** |  |
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/read |  |
 > | Műveletek | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/write |  |
@@ -1335,6 +1340,10 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 > | Műveletek | Microsoft.Cdn/profiles/endpoints/customdomains/delete |  |
 > | Műveletek | Microsoft.Cdn/profiles/endpoints/customdomains/DisableCustomHttps/action |  |
 > | Műveletek | Microsoft.Cdn/profiles/endpoints/customdomains/EnableCustomHttps/action |  |
+> |  | **profilok/végpontok/origingroups** |  |
+> | Műveletek | Microsoft. CDN/profilok/végpontok/origingroups/olvasás |  |
+> | Műveletek | Microsoft. CDN/profilok/végpontok/origingroups/írás |  |
+> | Műveletek | Microsoft. CDN/profilok/végpontok/origingroups/delete |  |
 > |  | **profilok/végpontok/eredetek** |  |
 > | Műveletek | Microsoft.Cdn/profiles/endpoints/origins/read |  |
 > | Műveletek | Microsoft.Cdn/profiles/endpoints/origins/write |  |
@@ -1756,6 +1765,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
+> | Műveletek | Microsoft.CognitiveServices/register/action | Előfizetés-regisztrációs művelet |
 > | Műveletek | Microsoft.CognitiveServices/register/action | Cognitive Services-előfizetés regisztrálása |
 > | Műveletek | Microsoft.CognitiveServices/checkDomainAvailability/action | Beolvassa az elérhető SKU-t egy előfizetéshez. |
 > | Műveletek | Microsoft.CognitiveServices/register/action | Cognitive Services-előfizetés regisztrálása |
@@ -2447,6 +2457,8 @@ Azure-szolgáltatás: [Container Registry](../container-registry/index.yml)
 > | Műveletek | Microsoft.ContainerRegistry/registries/queueBuild/action | Létrehoz egy új buildet a kérés paraméterei alapján, és hozzáadja azt a Build-várólistához. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/listBuildSourceUploadUrl/action | Forrás feltöltési URL-címének beolvasása egy tároló-beállításjegyzékhez. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/scheduleRun/action | Futtasson egy futtatást egy tároló-beállításjegyzékben. |
+> |  | **kibocsátásiegység-forgalmi jegyzékek/agentpools** |  |
+> | Műveletek | Microsoft. ContainerRegistry/nyilvántartó/agentpools/listQueueStatus/művelet | Egy agentpool összes üzenetsor-állapotának listázása egy tároló-beállításjegyzékben. |
 > |  | **kibocsátásiegység-forgalmi jegyzékek/összetevők** |  |
 > | Műveletek | Microsoft.ContainerRegistry/registries/artifacts/delete | Összetevő törlése egy tároló-beállításjegyzékben. |
 > |  | **kibocsátásiegység-forgalmi jegyzékek/buildek** |  |
@@ -2510,6 +2522,8 @@ Azure-szolgáltatás: [Container Registry](../container-registry/index.yml)
 > | Műveletek | Microsoft. ContainerRegistry/nyilvántartó/scopeMaps/operationStatuses/READ | A hatókör-leképezés aszinkron műveleti állapotának beolvasása. |
 > |  | **nyilvántartások/aláírás** |  |
 > | Műveletek | Microsoft.ContainerRegistry/registries/sign/write | A tartalom megbízhatóságának leküldése/lekérése egy tároló-beállításjegyzékben. |
+> |  | **kibocsátásiegység-forgalmi jegyzékek/taskruns** |  |
+> | Műveletek | Microsoft. ContainerRegistry/nyilvántartó/taskruns/listDetails/művelet | A tároló-beállításjegyzék/TR összes adatának listázása. |
 > |  | **kibocsátásiegység-forgalmi jegyzékek/feladatok** |  |
 > | Műveletek | Microsoft.ContainerRegistry/registries/tasks/read | Feladat beolvasása egy tároló-beállításjegyzékhez vagy az összes feladat listázása. |
 > | Műveletek | Microsoft.ContainerRegistry/registries/tasks/write | Létrehoz vagy frissít egy feladatot egy tároló-beállításjegyzékhez. |
@@ -2812,6 +2826,9 @@ Azure-szolgáltatás: [Azure Databricks](../azure-databricks/index.yml)
 > | Műveletek | Microsoft.Databricks/workspaces/delete | Eltávolít egy Databricks-munkaterületet. |
 > | Műveletek | Microsoft. Databricks/munkaterületek/refreshPermissions/művelet | Munkaterületre vonatkozó engedélyek frissítése |
 > | Műveletek | Microsoft. Databricks/munkaterületek/updateDenyAssignment/művelet | Munkaterület felügyelt erőforráscsoport nem műveleteinek megtagadási hozzárendelésének frissítése |
+> | Műveletek | Microsoft. Databricks/munkaterületek/refreshWorkspaces/művelet | Munkaterület frissítése új adatokkal, például URL-címmel |
+> |  | **munkaterületek/dbWorkspaces** |  |
+> | Műveletek | Microsoft. Databricks/munkaterületek/dbWorkspaces/írás | A Databricks-munkaterület inicializálása (csak belső) |
 > |  | **munkaterületek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings** |  |
 > | Műveletek | Microsoft. Databricks/munkaterületek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | A Databricks munkaterület elérhető diagnosztikai beállításainak megadása |
 > | Műveletek | Microsoft. Databricks/munkaterületek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Diagnosztikai beállítások hozzáadása vagy módosítása. |
@@ -3470,7 +3487,7 @@ Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | Műveletek | Microsoft. DBforPostgreSQL/Servers/Providers/Microsoft. bepillantást/diagnosticSettings/READ | Az erőforráshoz tartozó nem független beállítás beolvasása |
 > | Műveletek | Microsoft. DBforPostgreSQL/kiszolgálók/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Az erőforrás diagnosztikai beállításának létrehozása vagy frissítése |
 > |  | **kiszolgálók/szolgáltatók/Microsoft. bepillantást/logDefinitions** |  |
-> | Műveletek | Microsoft. DBforPostgreSQL/Servers/Providers/Microsoft. bepillantást/logDefinitions/READ | A postgres-kiszolgálók számára elérhető naplók beolvasása |
+> | Műveletek | Microsoft. DBforPostgreSQL/Servers/Providers/Microsoft. bepillantást/logDefinitions/READ | A PostgreSQL-kiszolgálókhoz elérhető naplók beolvasása |
 > |  | **kiszolgálók/szolgáltatók/Microsoft. bepillantást/metricDefinitions** |  |
 > | Műveletek | Microsoft. DBforPostgreSQL/Servers/Providers/Microsoft. bepillantást/metricDefinitions/READ | Az adatbázisokhoz elérhető metrikák visszatérési típusai |
 > |  | **kiszolgálók/queryTexts** |  |
@@ -3506,7 +3523,7 @@ Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | Műveletek | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. bepillantást/diagnosticSettings/READ | Az erőforráshoz tartozó nem független beállítás beolvasása |
 > | Műveletek | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. bepillantások/diagnosticSettings/írás | Az erőforrás diagnosztikai beállításának létrehozása vagy frissítése |
 > |  | **serversv2/szolgáltatók/Microsoft. bepillantások/logDefinitions** |  |
-> | Műveletek | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. bepillantást/logDefinitions/READ | A postgres-kiszolgálók számára elérhető naplók beolvasása |
+> | Műveletek | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. bepillantást/logDefinitions/READ | A PostgreSQL-kiszolgálókhoz elérhető naplók beolvasása |
 > |  | **serversv2/szolgáltatók/Microsoft. bepillantások/metricDefinitions** |  |
 > | Műveletek | Microsoft. DBforPostgreSQL/serversv2/Providers/Microsoft. bepillantást/metricDefinitions/READ | Az adatbázisokhoz elérhető metrikák visszatérési típusai |
 
@@ -3597,6 +3614,7 @@ Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provision
 > | Műveletek | Microsoft.Devices/iotHubs/listkeys/Action | Az összes IotHub kulcs lekérése |
 > | Műveletek | Microsoft.Devices/iotHubs/exportDevices/Action | Eszközök exportálása |
 > | Műveletek | Microsoft.Devices/iotHubs/importDevices/Action | Eszközök importálása |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnectionsApproval/Action | Privát végponti kapcsolatok jóváhagyása vagy elutasítása |
 > |  | **iotHubs/tanúsítványok** |  |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/Read | A tanúsítvány beolvasása |
 > | Műveletek | Microsoft.Devices/iotHubs/certificates/Write | Tanúsítvány létrehozása vagy frissítése |
@@ -3611,6 +3629,10 @@ Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provision
 > |  | **IotHubs/diagnosticSettings** |  |
 > | Műveletek | Microsoft.Devices/IotHubs/diagnosticSettings/read | Az erőforrás diagnosztikai beállításának beolvasása |
 > | Műveletek | Microsoft.Devices/IotHubs/diagnosticSettings/write | Az erőforrás diagnosztikai beállításának létrehozása vagy frissítése |
+> |  | **iotHubs/digitalTwinsLinks** |  |
+> | Műveletek | Microsoft. Devices/iotHubs/digitalTwinsLinks/Write |  |
+> | Műveletek | Microsoft. Devices/iotHubs/digitalTwinsLinks/READ |  |
+> | Műveletek | Microsoft. Devices/iotHubs/digitalTwinsLinks/delete |  |
 > |  | **iotHubs/eventGridFilters** |  |
 > | Műveletek | Microsoft.Devices/iotHubs/eventGridFilters/Write | Új vagy meglévő Event Grid-szűrő létrehozása vagy frissítése |
 > | Műveletek | Microsoft.Devices/iotHubs/eventGridFilters/Read | A Event Grid szűrő beolvasása |
@@ -3631,6 +3653,21 @@ Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provision
 > | Műveletek | Microsoft.Devices/IotHubs/metricDefinitions/read | A IotHub szolgáltatás elérhető metrikáinak beolvasása |
 > |  | **iotHubs/operationresults** |  |
 > | Műveletek | Microsoft.Devices/iotHubs/operationresults/Read | Művelet eredményének beolvasása (elavult API) |
+> |  | **iotHubs/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/validate/Action | A magánhálózati végponti kapcsolatok proxyhoz való bevitelének ellenőrzése a létrehozás során |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/READ | Tulajdonságok beolvasása a megadott privát végponti kapcsolatok proxyja számára |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/Write | Privát végponti kapcsolatok proxyjának létrehozása vagy frissítése |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/delete | Meglévő privát végponti kapcsolatkezelő törlése |
+> |  | **iotHubs/privateEndpointConnectionProxies/operationResults** |  |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnectionProxies/operationResults/READ | Egy aszinkron művelet eredményének beolvasása egy privát végpont-összekötő proxyn |
+> |  | **iotHubs/privateEndpointConnections** |  |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnections/READ | A megadott privát végponti kapcsolatok tulajdonságainak beolvasása |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnections/delete | Meglévő magánhálózati végponti kapcsolatok törlése |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnections/Write | Privát végponti kapcsolatok létrehozása vagy frissítése |
+> |  | **iotHubs/privateEndpointConnections/operationResults** |  |
+> | Műveletek | Microsoft. Devices/iotHubs/privateEndpointConnections/operationResults/READ | Aszinkron művelet eredményének beolvasása privát végponti kapcsolatban |
+> |  | **iotHubs/privateLinkResources** |  |
+> | Műveletek | Microsoft. Devices/iotHubs/privateLinkResources/READ | A IotHub privát kapcsolati erőforrásainak beolvasása |
 > |  | **iotHubs/quotaMetrics** |  |
 > | Műveletek | Microsoft.Devices/iotHubs/quotaMetrics/Read | Kvóta-metrikák beolvasása |
 > |  | **iotHubs/Útválasztás** |  |
@@ -4121,6 +4158,17 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 > | Műveletek | Microsoft.EventGrid/domains/delete | Tartomány törlése |
 > | Műveletek | Microsoft.EventGrid/domains/listKeys/action | Tartomány kulcsainak listázása |
 > | Műveletek | Microsoft.EventGrid/domains/regenerateKey/action | Tartomány kulcsának újralétrehozása |
+> |  | **tartományok/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. EventGrid/Domains/privateEndpointConnectionProxies/validate/Action | Tartományok PrivateEndpointConnectionProxies ellenőrzése |
+> | Műveletek | Microsoft. EventGrid/tartományok/privateEndpointConnectionProxies/olvasás | Tartományok PrivateEndpointConnectionProxies beolvasása |
+> | Műveletek | Microsoft. EventGrid/tartományok/privateEndpointConnectionProxies/írás | PrivateEndpointConnectionProxies írása tartományokhoz |
+> | Műveletek | Microsoft. EventGrid/Domains/privateEndpointConnectionProxies/delete | Tartományok PrivateEndpointConnectionProxies törlése |
+> |  | **tartományok/privateEndpointConnections** |  |
+> | Műveletek | Microsoft. EventGrid/tartományok/privateEndpointConnections/olvasás | Tartományok PrivateEndpointConnections beolvasása |
+> | Műveletek | Microsoft. EventGrid/tartományok/privateEndpointConnections/írás | PrivateEndpointConnections írása tartományokhoz |
+> | Műveletek | Microsoft. EventGrid/Domains/privateEndpointConnections/delete | Tartományok PrivateEndpointConnections törlése |
+> |  | **tartományok/privateLinkResources** |  |
+> | Műveletek | Microsoft. EventGrid/tartományok/privateLinkResources/olvasás | Tartományok PrivateLinkResources beolvasása vagy listázása |
 > |  | **tartományok/szolgáltatók/Microsoft. bepillantást/logDefinitions** |  |
 > | Műveletek | Microsoft. EventGrid/Domains/Providers/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
 > |  | **tartományok/szolgáltatók/Microsoft. bepillantást/metricDefinitions** |  |
@@ -4160,12 +4208,56 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 > | Műveletek | Microsoft.EventGrid/operations/read | EventGrid-műveletek listázása. |
 > |  | **operationsStatus** |  |
 > | Műveletek | Microsoft.EventGrid/operationsStatus/read | Művelet állapotának beolvasása |
+> |  | **partnerNamespaces** |  |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/Write | Partneri névtér létrehozása vagy frissítése |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/READ | Partneri névtér olvasása |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/delete | Partneri névtér törlése |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/Listkeys műveletének beolvasása/művelet | Partneri névtér kulcsainak listázása |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/regenerateKey/művelet | Partneri névtér kulcsának újralétrehozása |
+> |  | **partnerNamespaces/eventChannels** |  |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/eventChannels/READ | Esemény-csatorna beolvasása |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/eventChannels/Write | Esemény-csatorna létrehozása vagy frissítése |
+> | Műveletek | Microsoft. EventGrid/partnerNamespaces/eventChannels/delete | Esemény-csatorna törlése |
+> |  | **partnerRegistrations** |  |
+> | Műveletek | Microsoft. EventGrid/partnerRegistrations/Write | Partner regisztrációjának létrehozása vagy frissítése |
+> | Műveletek | Microsoft. EventGrid/partnerRegistrations/READ | Partner regisztrációjának beolvasása |
+> | Műveletek | Microsoft. EventGrid/partnerRegistrations/delete | Partner regisztrációjának törlése |
+> |  | **partnerTopics** |  |
+> | Műveletek | Microsoft. EventGrid/partnerTopics/READ | Partneri témakör beolvasása |
+> | Műveletek | Microsoft. EventGrid/partnerTopics/Write | Partneri témakör létrehozása vagy frissítése |
+> | Műveletek | Microsoft. EventGrid/partnerTopics/delete | Partneri témakör törlése |
+> | Műveletek | Microsoft. EventGrid/partnerTopics/aktiválás/művelet | Partneri témakör aktiválása |
+> | Műveletek | Microsoft. EventGrid/partnerTopics/inaktiválás/művelet | Partneri témakör inaktiválása |
+> |  | **SKU** |  |
+> | Műveletek | Microsoft. EventGrid/SKU/READ | Az Event Grid-erőforrások elérhető SKU-definícióinak olvasása |
+> |  | **systemTopics** |  |
+> | Műveletek | Microsoft. EventGrid/systemTopics/READ | Rendszertémakör beolvasása |
+> | Műveletek | Microsoft. EventGrid/systemTopics/Write | Rendszertémakör létrehozása vagy frissítése |
+> | Műveletek | Microsoft. EventGrid/systemTopics/delete | Rendszer-témakör törlése |
+> |  | **systemTopics/szolgáltatók/Microsoft. bepillantások/diagnosticSettings** |  |
+> | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A rendszertémakörök diagnosztikai beállításainak beolvasása |
+> | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A rendszertémakörök diagnosztikai beállításainak létrehozása vagy frissítése |
+> |  | **systemTopics/szolgáltatók/Microsoft. bepillantások/logDefinitions** |  |
+> | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
+> |  | **systemTopics/szolgáltatók/Microsoft. bepillantások/metricDefinitions** |  |
+> | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/metricDefinitions/READ | A rendszertémakörök elérhető metrikáinak beolvasása |
 > |  | **témakörök** |  |
 > | Műveletek | Microsoft. EventGrid/témakörök/írás | Témakör létrehozása vagy frissítése |
 > | Műveletek | Microsoft.EventGrid/topics/read | Témakör beolvasása |
 > | Műveletek | Microsoft.EventGrid/topics/delete | Témakör törlése |
 > | Műveletek | Microsoft.EventGrid/topics/listKeys/action | Témakör kulcsainak listázása |
 > | Műveletek | Microsoft.EventGrid/topics/regenerateKey/action | Témakör kulcsának újralétrehozása |
+> |  | **témakörök/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnectionProxies/érvényesítés/művelet | PrivateEndpointConnectionProxies ellenőrzése témakörökhöz |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnectionProxies/READ | PrivateEndpointConnectionProxies olvasása témakörökhöz |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnectionProxies/írás | PrivateEndpointConnectionProxies írása témakörökhöz |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnectionProxies/delete | Témakörök PrivateEndpointConnectionProxies törlése |
+> |  | **témakörök/privateEndpointConnections** |  |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnections/READ | PrivateEndpointConnections olvasása témakörökhöz |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnections/írás | PrivateEndpointConnections írása témakörökhöz |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateEndpointConnections/delete | Témakörök PrivateEndpointConnections törlése |
+> |  | **témakörök/privateLinkResources** |  |
+> | Műveletek | Microsoft. EventGrid/témakörök/privateLinkResources/READ | PrivateLinkResources olvasása témakörökhöz |
 > |  | **témakörök/szolgáltatók/Microsoft. bepillantást/diagnosticSettings** |  |
 > | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | A témakörök diagnosztikai beállításának beolvasása |
 > | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | A témakörök diagnosztikai beállításának létrehozása vagy frissítése |
@@ -4259,6 +4351,11 @@ Azure-szolgáltatás: [Event Hubs](../event-hubs/index.yml)
 > | Műveletek | Microsoft.EventHub/namespaces/networkrulesets/delete | VNET-szabály erőforrásának törlése |
 > |  | **névterek/operationresults** |  |
 > | Műveletek | Microsoft.EventHub/namespaces/operationresults/read | Névtér-művelet állapotának beolvasása |
+> |  | **névterek/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/érvényesítés/művelet | Privát végponti kapcsolatok proxyjának ellenőrzése |
+> | Műveletek | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/olvasás | Privát végponti kapcsolatok proxyjának beolvasása |
+> | Műveletek | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása |
+> | Műveletek | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
 > |  | **névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings** |  |
 > | Műveletek | Microsoft. EventHub/névterek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Műveletek | Microsoft. EventHub/névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
@@ -4885,6 +4982,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft. bepillantások/myWorkbooks/olvasás | Privát munkafüzet beolvasása |
 > |  | **Műveletek** |  |
 > | Műveletek | Microsoft. bepillantások/műveletek/olvasás | Olvasási műveletek |
+> |  | **PrivateLinkScopeOperationStatuses** |  |
+> | Műveletek | Microsoft. bepillantások/PrivateLinkScopeOperationStatuses/olvasás | Privát hivatkozás hatókörű műveleti állapotának olvasása |
 > |  | **PrivateLinkScopes** |  |
 > | Műveletek | Microsoft. bepillantások/PrivateLinkScopes/olvasás | Privát hivatkozás hatókörének beolvasása |
 > | Műveletek | Microsoft. bepillantások/PrivateLinkScopes/írás | Privát hivatkozás hatókörének létrehozása vagy frissítése |
@@ -5630,6 +5729,7 @@ Azure-szolgáltatás: Core
 > | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.Marketplace/register/action | Regisztrálja a Microsoft. Marketplace erőforrás-szolgáltatót az előfizetésben. |
+> | Műveletek | Microsoft. Marketplace/privateStores/művelet | Frissíti a PrivateStore. |
 > |  | **offerTypes/kiadók/ajánlatok/csomagok/szerződések** |  |
 > | Műveletek | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | Egy szerződést ad vissza. |
 > | Műveletek | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | Elfogad egy aláírt szerződést. |
@@ -5637,6 +5737,13 @@ Azure-szolgáltatás: Core
 > | Műveletek | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | Egy konfigurációt ad vissza. |
 > | Műveletek | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | Egy konfiguráció mentése. |
 > | Műveletek | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | Rendszerkép importálása a végfelhasználói ACR-be. |
+> |  | **privateStores** |  |
+> | Műveletek | Microsoft. Marketplace/privateStores/írás | PrivateStore hoz létre. |
+> | Műveletek | Microsoft. Marketplace/privateStores/delete | Törli a PrivateStore. |
+> | Műveletek | Microsoft. Marketplace/privateStores/ajánlatok/művelet | Frissítések ajánlat a PrivateStore-ben. |
+> |  | **privateStores/ajánlatok** |  |
+> | Műveletek | Microsoft. Marketplace/privateStores/ajánlatok/írás | Ajánlatot hoz létre a PrivateStore-ben. |
+> | Műveletek | Microsoft. Marketplace/privateStores/ajánlatok/törlés | Az ajánlat törlése a PrivateStore. |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -5988,6 +6095,10 @@ Azure-szolgáltatás [: Virtual Network](../virtual-network/index.yml), [Load Ba
 > | Műveletek | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Application Gateway WAF szabályzat beolvasása |
 > | Műveletek | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Létrehoz egy Application Gateway WAF szabályzatot, vagy frissít egy Application Gateway WAF szabályzatot |
 > | Műveletek | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/delete | Application Gateway WAF szabályzat törlése |
+> |  | **applicationRuleCollections** |  |
+> | Műveletek | Microsoft. Network/applicationRuleCollections/READ | Azure Firewall ApplicationRuleCollection beolvasása |
+> | Műveletek | Microsoft. Network/applicationRuleCollections/Write | CreatesOrUpdates Azure Firewall ApplicationRuleCollection |
+> | Műveletek | Microsoft. Network/applicationRuleCollections/delete | Azure Firewall ApplicationRuleCollection törlése |
 > |  | **applicationSecurityGroups** |  |
 > | Műveletek | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Összekapcsolja az IP-konfigurációt az alkalmazás biztonsági csoportjaival. Nem riasztásos. |
 > | Műveletek | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Egy biztonsági szabály csatlakoztatása az alkalmazás biztonsági csoportjaihoz. Nem riasztásos. |
@@ -6259,6 +6370,22 @@ Azure-szolgáltatás [: Virtual Network](../virtual-network/index.yml), [Load Ba
 > | Műveletek | Microsoft. Network/Locations/használat/olvasás | Az erőforrások használati metrikáinak beolvasása |
 > |  | **helyszínek/virtualNetworkAvailableEndpointServices** |  |
 > | Műveletek | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | Lekéri az elérhető Virtual Network Endpoint Services listáját |
+> |  | **natRuleCollections** |  |
+> | Műveletek | Microsoft. Network/natRuleCollections/READ | Azure Firewall NatRuleCollection beolvasása |
+> | Műveletek | Microsoft. Network/natRuleCollections/Write | CreatesOrUpdates Azure Firewall NatRuleCollection |
+> | Műveletek | Microsoft. Network/natRuleCollections/delete | Azure Firewall NatRuleCollection törlése |
+> |  | **networkExperimentProfiles** |  |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/READ | Internet Analyzer-profil beszerzése |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/Write | Internet Analyzer-profil létrehozása vagy frissítése |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/delete | Internet Analyzer-profil törlése |
+> |  | **networkExperimentProfiles/kísérletek** |  |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/kísérletek/olvasás | Internet Analyzer-teszt beszerzése |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/kísérletek/írás | Internet Analyzer-teszt létrehozása vagy frissítése |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/kísérletek/törlés | Internet Analyzer-teszt törlése |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/kísérletek/idősor/művelet | Internet Analyzer-teszt idősorozatának beolvasása |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/kísérletek/latencyScorecard/művelet | Internet Analyzer teszt késési mutatószámának beolvasása |
+> |  | **networkExperimentProfiles/preconfiguredEndpoints** |  |
+> | Műveletek | Microsoft. Network/networkExperimentProfiles/preconfiguredEndpoints/READ | Internet Analyzer-profil előre konfigurált végpontjának beolvasása |
 > |  | **networkIntentPolicies** |  |
 > | Műveletek | Microsoft.Network/networkIntentPolicies/read | Hálózati leképezési szabályzat lekérése – Leírás |
 > | Műveletek | Microsoft.Network/networkIntentPolicies/write | Létrehoz egy hálózati leképezési házirendet, vagy frissíti a meglévő hálózati leképezési házirendet. |
@@ -6287,6 +6414,10 @@ Azure-szolgáltatás [: Virtual Network](../virtual-network/index.yml), [Load Ba
 > | Műveletek | Microsoft.Network/networkProfiles/setContainers/action | Tárolók beállítása |
 > | Műveletek | Microsoft.Network/networkProfiles/removeContainers/action | Tárolók eltávolítása |
 > | Műveletek | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | Tároló hálózati adapterek beállítása |
+> |  | **networkRuleCollections** |  |
+> | Műveletek | Microsoft. Network/networkRuleCollections/READ | Azure Firewall NetworkRuleCollection beolvasása |
+> | Műveletek | Microsoft. Network/networkRuleCollections/Write | CreatesOrUpdates Azure Firewall NetworkRuleCollection |
+> | Műveletek | Microsoft. Network/networkRuleCollections/delete | Azure Firewall NetworkRuleCollection törlése |
 > |  | **networkSecurityGroups** |  |
 > | Műveletek | Microsoft.Network/networkSecurityGroups/read | Hálózati biztonsági csoport definíciójának beolvasása |
 > | Műveletek | Microsoft.Network/networkSecurityGroups/write | Hálózati biztonsági csoport létrehozása vagy egy meglévő hálózati biztonsági csoport frissítése |
@@ -6381,7 +6512,7 @@ Azure-szolgáltatás [: Virtual Network](../virtual-network/index.yml), [Load Ba
 > |  | **privateDnsZones/MX** |  |
 > | Műveletek | Microsoft.Network/privateDnsZones/MX/read | Az "MX" típusú rekordhalmaz beolvasása egy saját DNS zónába, JSON formátumban megadva. A rekordhalmaz a rekordok listáját, valamint az ÉLETTARTAMot, a címkéket és a ETAG tartalmazza. |
 > | Műveletek | Microsoft.Network/privateDnsZones/MX/write | Hozzon létre vagy frissítsen egy MX típusú rekordhalmazt egy saját DNS zónán belül. A megadott rekordok lecserélik az aktuális rekordokat a rekordhalmazban. |
-> | Műveletek | Microsoft.Network/privateDnsZones/MX/delete | Remove the record set of a given name and type ‘MX’ from a Private DNS zone. |
+> | Műveletek | Microsoft.Network/privateDnsZones/MX/delete | Távolítsa el egy adott név rekordját, és írja be az "MX" típust egy saját DNS zónából. |
 > |  | **privateDnsZones/PTR** |  |
 > | Műveletek | Microsoft. Network/privateDnsZones/PTR/READ | A "PTR" típusú rekordhalmaz beolvasása egy saját DNS zónában JSON formátumban. A rekordhalmaz a rekordok listáját, valamint az ÉLETTARTAMot, a címkéket és a ETAG tartalmazza. |
 > | Műveletek | Microsoft.Network/privateDnsZones/PTR/write | Hozzon létre vagy frissítsen egy PTR típusú rekordhalmazt egy saját DNS zónán belül. A megadott rekordok lecserélik az aktuális rekordokat a rekordhalmazban. |
@@ -7030,6 +7161,18 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/ADFActivityRun/read | Adatok beolvasása a ADFActivityRun táblából |
 > |  | **munkaterületek/lekérdezés/ADFPipelineRun** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/ADFPipelineRun/read | Adatok beolvasása a ADFPipelineRun táblából |
+> |  | **munkaterületek/lekérdezés/ADFSSISIntegrationRuntimeLogs** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADFSSISIntegrationRuntimeLogs/olvasás | Adatok beolvasása a ADFSSISIntegrationRuntimeLogs táblából |
+> |  | **munkaterületek/lekérdezés/ADFSSISPackageEventMessageContext** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADFSSISPackageEventMessageContext/olvasás | Adatok beolvasása a ADFSSISPackageEventMessageContext táblából |
+> |  | **munkaterületek/lekérdezés/ADFSSISPackageEventMessages** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADFSSISPackageEventMessages/olvasás | Adatok beolvasása a ADFSSISPackageEventMessages táblából |
+> |  | **munkaterületek/lekérdezés/ADFSSISPackageExecutableStatistics** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADFSSISPackageExecutableStatistics/olvasás | Adatok beolvasása a ADFSSISPackageExecutableStatistics táblából |
+> |  | **munkaterületek/lekérdezés/ADFSSISPackageExecutionComponentPhases** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADFSSISPackageExecutionComponentPhases/olvasás | Adatok beolvasása a ADFSSISPackageExecutionComponentPhases táblából |
+> |  | **munkaterületek/lekérdezés/ADFSSISPackageExecutionDataStatistics** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ADFSSISPackageExecutionDataStatistics/olvasás | Adatok beolvasása a ADFSSISPackageExecutionDataStatistics táblából |
 > |  | **munkaterületek/lekérdezés/ADFTriggerRun** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/ADFTriggerRun/read | Adatok beolvasása a ADFTriggerRun táblából |
 > |  | **munkaterületek/lekérdezés/ADReplicationResult** |  |
@@ -7052,14 +7195,30 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AmlComputeJobEvent/olvasás | Adatok beolvasása a AmlComputeJobEvent táblából |
 > |  | **munkaterületek/lekérdezés/ApiManagementGatewayLogs** |  |
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ApiManagementGatewayLogs/olvasás | Adatok beolvasása a ApiManagementGatewayLogs táblából |
+> |  | **munkaterületek/lekérdezés/AppAvailabilityResults** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppAvailabilityResults/olvasás | Adatok beolvasása a AppAvailabilityResults táblából |
+> |  | **munkaterületek/lekérdezés/AppBrowserTimings** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppBrowserTimings/olvasás | Adatok beolvasása a AppBrowserTimings táblából |
 > |  | **munkaterületek/lekérdezés/AppCenterError** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | Adatok beolvasása a AppCenterError táblából |
+> |  | **munkaterületek/lekérdezés/AppDependencies** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppDependencies/olvasás | Adatok beolvasása a AppDependencies táblából |
+> |  | **munkaterületek/lekérdezés/AppEvents** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppEvents/olvasás | Adatok beolvasása a AppEvents táblából |
 > |  | **munkaterületek/lekérdezés/ApplicationInsights** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Adatok beolvasása a ApplicationInsights táblából |
+> |  | **munkaterületek/lekérdezés/AppMetrics** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppMetrics/olvasás | Adatok beolvasása a AppMetrics táblából |
+> |  | **munkaterületek/lekérdezés/AppPageViews** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppPageViews/olvasás | Adatok beolvasása a AppPageViews táblából |
+> |  | **munkaterületek/lekérdezés/AppPerformanceCounters** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppPerformanceCounters/olvasás | Adatok beolvasása a AppPerformanceCounters táblából |
 > |  | **munkaterületek/lekérdezés/AppPlatformLogsforSpring** |  |
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppPlatformLogsforSpring/olvasás | Adatok beolvasása a AppPlatformLogsforSpring táblából |
 > |  | **munkaterületek/lekérdezés/AppPlatformSystemLogs** |  |
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppPlatformSystemLogs/olvasás | Adatok beolvasása a AppPlatformSystemLogs táblából |
+> |  | **munkaterületek/lekérdezés/AppRequests** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppRequests/olvasás | Adatok beolvasása a AppRequests táblából |
 > |  | **munkaterületek/lekérdezés/AppServiceAppLogs** |  |
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceAppLogs/olvasás | Adatok beolvasása a AppServiceAppLogs táblából |
 > |  | **munkaterületek/lekérdezés/AppServiceAuditLogs** |  |
@@ -7072,6 +7231,10 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceFileAuditLogs/olvasás | Adatok beolvasása a AppServiceFileAuditLogs táblából |
 > |  | **munkaterületek/lekérdezés/AppServiceHTTPLogs** |  |
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppServiceHTTPLogs/olvasás | Adatok beolvasása a AppServiceHTTPLogs táblából |
+> |  | **munkaterületek/lekérdezés/AppSystemEvents** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppSystemEvents/olvasás | Adatok beolvasása a AppSystemEvents táblából |
+> |  | **munkaterületek/lekérdezés/AppTraces** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppTraces/olvasás | Adatok beolvasása a AppTraces táblából |
 > |  | **munkaterületek/lekérdezés/AuditLogs** |  |
 > | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AuditLogs/olvasás | Adatok beolvasása a AuditLogs táblából |
 > |  | **munkaterületek/lekérdezés/AutoscaleEvaluationsLog** |  |
@@ -7086,6 +7249,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | Adatok beolvasása a AzureActivity táblából |
 > |  | **munkaterületek/lekérdezés/AzureAssessmentRecommendation** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/AzureAssessmentRecommendation/read | Adatok beolvasása a AzureAssessmentRecommendation táblából |
+> |  | **munkaterületek/lekérdezés/AzureDiagnostics** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AzureDiagnostics/olvasás | Adatok beolvasása a AzureDiagnostics táblából |
 > |  | **munkaterületek/lekérdezés/AzureMetrics** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | Adatok beolvasása a AzureMetrics táblából |
 > |  | **munkaterületek/lekérdezés/BaiClusterEvent** |  |
@@ -7424,6 +7589,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | Adatok beolvasása a SPAssessmentRecommendation táblából |
 > |  | **munkaterületek/lekérdezés/SQLAssessmentRecommendation** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | Adatok beolvasása a SQLAssessmentRecommendation táblából |
+> |  | **munkaterületek/lekérdezés/SqlDataClassification** |  |
+> | Műveletek | Microsoft. OperationalInsights/munkaterületek/lekérdezés/SqlDataClassification/olvasás | Adatok beolvasása a SqlDataClassification táblából |
 > |  | **munkaterületek/lekérdezés/SQLQueryPerformance** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | Adatok beolvasása a SQLQueryPerformance táblából |
 > |  | **munkaterületek/lekérdezés/SqlThreatProtectionLoginAudits** |  |
@@ -7784,6 +7951,21 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 > |  | **Tárolók/monitoringConfigurations** |  |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | A Recovery Services-tár értesítési konfigurációjának beolvasása. |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | E-mail-értesítések konfigurálása a Recovery Services-tárolóhoz. |
+> |  | **Tárolók/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/delete | Az összes védhető tároló beolvasása |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/READ | Az összes védhető tároló beolvasása |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vaults/privateEndpointConnectionProxies/validate/Action | Az összes védhető tároló beolvasása |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/tárolók/privateEndpointConnectionProxies/írás | Az összes védhető tároló beolvasása |
+> |  | **Tárolók/privateEndpointConnectionProxies/operationResults** |  |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/operationResults/READ | Az összes védhető tároló beolvasása |
+> |  | **Tárolók/privateEndpointConnectionProxies/operationsStatus** |  |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/operationsStatus/READ | Az összes védhető tároló beolvasása |
+> |  | **Tárolók/privateEndpointConnections** |  |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/tárolók/privateEndpointConnections/írás | Az összes védhető tároló beolvasása |
+> |  | **Tárolók/privateEndpointConnections/operationResults** |  |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnections/operationResults/READ | Az összes védhető tároló beolvasása |
+> |  | **Tárolók/privateEndpointConnections/operationsStatus** |  |
+> | Műveletek | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnections/operationsStatus/READ | Az összes védhető tároló beolvasása |
 > |  | **Tárolók/registeredIdentities** |  |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | A szolgáltatás-tároló regisztrálása művelettel regisztrálhat egy tárolót a helyreállítási szolgáltatással. |
 > | Műveletek | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | A tárolók beolvasása művelettel beolvashatók az adott erőforráshoz regisztrált tárolók. |
@@ -8008,6 +8190,11 @@ Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 > | Műveletek | Microsoft. Relay/névterek/networkrulesets/delete | VNET-szabály erőforrásának törlése |
 > |  | **névterek/operationresults** |  |
 > | Műveletek | Microsoft. Relay/névtér/operationresults/olvasás | Névtér-művelet állapotának beolvasása |
+> |  | **névterek/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. Relay/névterek/privateEndpointConnectionProxies/érvényesítés/művelet | Privát végponti kapcsolatok proxyjának ellenőrzése |
+> | Műveletek | Microsoft. Relay/névtér/privateEndpointConnectionProxies/olvasás | Privát végponti kapcsolatok proxyjának beolvasása |
+> | Műveletek | Microsoft. Relay/névterek/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása |
+> | Műveletek | Microsoft. Relay/névterek/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
 > |  | **névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings** |  |
 > | Műveletek | Microsoft. Relay/névterek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Műveletek | Microsoft. Relay/névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
@@ -8043,6 +8230,8 @@ Azure-szolgáltatás: [Azure Service Health](../service-health/index.yml)
 > | Műveletek | Microsoft.ResourceHealth/AvailabilityStatuses/read | A megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotának beolvasása |
 > |  | **AvailabilityStatuses/aktuális** |  |
 > | Műveletek | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | Lekéri a megadott erőforrás rendelkezésre állási állapotát. |
+> |  | **emergingissues** |  |
+> | Műveletek | Microsoft. ResourceHealth/emergingissues/READ | Az Azure-szolgáltatások felmerülő problémáinak beszerzése |
 > |  | **események** |  |
 > | Műveletek | Microsoft.ResourceHealth/events/read | Az adott előfizetés Service Health eseményeinek beolvasása |
 > |  | **healthevent** |  |
@@ -8216,6 +8405,9 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 > |  | **értékelések** |  |
 > | Műveletek | Microsoft. Security/értékelések/olvasás | Biztonsági értékelések beszerzése az előfizetésen |
 > | Műveletek | Microsoft. Security/értékelések/írás | Biztonsági értékelések létrehozása vagy frissítése az előfizetésen |
+> |  | **autoProvisioningSettings** |  |
+> | Műveletek | Microsoft. Security/autoProvisioningSettings/READ | Az előfizetés biztonsági automatikus kiépítési beállításának beolvasása |
+> | Műveletek | Microsoft. Security/autoProvisioningSettings/írás | Az előfizetés biztonsági automatikus kiépítési beállításának létrehozása vagy frissítése |
 > |  | **complianceResults** |  |
 > | Műveletek | Microsoft.Security/complianceResults/read | Az erőforrás megfelelőségi eredményeinek beolvasása |
 > |  | **informationProtectionPolicies** |  |
@@ -8406,6 +8598,11 @@ Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 > | Műveletek | Microsoft.ServiceBus/namespaces/networkrulesets/delete | VNET-szabály erőforrásának törlése |
 > |  | **névterek/operationresults** |  |
 > | Műveletek | Microsoft.ServiceBus/namespaces/operationresults/read | Névtér-művelet állapotának beolvasása |
+> |  | **névterek/privateEndpointConnectionProxies** |  |
+> | Műveletek | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/érvényesítés/művelet | Privát végponti kapcsolatok proxyjának ellenőrzése |
+> | Műveletek | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/olvasás | Privát végponti kapcsolatok proxyjának beolvasása |
+> | Műveletek | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása |
+> | Műveletek | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
 > |  | **névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings** |  |
 > | Műveletek | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Műveletek | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |

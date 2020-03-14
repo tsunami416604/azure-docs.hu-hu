@@ -8,11 +8,11 @@ ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
 ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373701"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277153"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -304,7 +304,7 @@ Vagy hozzon létre egy alkalmazást a `WEBSITE_TIME_ZONE` nevű Function alkalma
 
 `WEBSITE_TIME_ZONE`használatakor az idő az adott időzónában, például a nyári időszámítás időpontjára módosul. 
 
-## <a name="timespan"></a>időtartam
+## <a name="timespan"></a>Időtartam
 
  `TimeSpan` csak egy App Service-csomagon futó Function alkalmazás esetében használható.
 

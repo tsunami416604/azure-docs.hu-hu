@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246785"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek használata Azure Cosmos DBban
 

@@ -11,11 +11,11 @@ ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365255"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246044"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Egyéni házirendek a Azure Active Directory B2Cban
 
@@ -63,7 +63,7 @@ Az egyéni szabályzatok egy vagy több XML formátumú fájlként jelennek meg,
 
 Amikor egy alkalmazás meghívja az RP-házirend fájlját, a Azure AD B2C Identity Experience Framework az alapfájlból származó összes elemet hozzáadja a kiterjesztések fájlból, majd az RP-házirend fájlból az aktuális házirend összeállításához.  Az RP-fájlban szereplő azonos típusú és nevű elemek felülbírálják a bővítmények és a bővítmények felülbírálásának alapjait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)

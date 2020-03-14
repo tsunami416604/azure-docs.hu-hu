@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976497"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284251"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Virtuális gép hozzáadása laborhoz Azure DevTest Labs
 Ha már [létrehozta az első virtuális gépet](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), akkor valószínű, hogy egy előre betöltött [Piactéri rendszerképből](devtest-lab-configure-marketplace-images.md)származik. Most, ha további virtuális gépeket szeretne hozzáadni a laborhoz, kiválaszthat egy [Egyéni rendszerképet](devtest-lab-create-template.md) vagy egy [képletet](devtest-lab-manage-formulas.md)tartalmazó *alapot* is. Ez az oktatóanyag végigvezeti a virtuális gép DevTest Labs-beli laborban való hozzáadásának Azure Portal használatával.
@@ -27,7 +27,7 @@ Ha már [létrehozta az első virtuális gépet](tutorial-create-custom-lab.md#a
 A cikk azt is bemutatja, hogyan kezelheti a virtuális gép összetevőit a laborban.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>A virtuális gép tesztkörnyezetben való hozzáadásának lépései Azure DevTest Labs
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a **DEVOPS** szakaszban. Ha a * (csillag) lehetőséget választja a **DevTest Labs** mellett a **DEVOPS** szakaszban. Ez a művelet hozzáadja a **DevTest Labs** szolgáltatást a bal oldali navigációs menühöz, hogy a következő alkalommal könnyen elérhető legyen. Ezután kiválaszthatja a bal oldali navigációs menü **DevTest Labs** elemét.
 
     ![Minden szolgáltatás – válassza a DevTest Labs lehetőséget](./media/devtest-lab-create-lab/all-services-select.png)
@@ -70,7 +70,7 @@ A virtuális gépek létrehozása során meglévő összetevőket is hozzáadhat
 
 Az összetevők létrehozásával kapcsolatos információkért tekintse meg a cikket, [amelyből megtudhatja, hogyan hozhat létre saját összetevőket a DevTest Labs használatával](devtest-lab-artifact-author.md).
 
-1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A laborok listájából válassza ki azt a labort, amely a használni kívánt virtuális gépet tartalmazza.
 1. Válassza **a saját virtuális gépek**lehetőséget.

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929067"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281235"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a PostgreSQL-ből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -70,23 +70,23 @@ A következő szakaszokban részletesen ismertetjük a PostgreSQL-adattárra jel
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a PostgreSQL-hez társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Igen |
 | kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
-| adatbázis |A PostgreSQL-adatbázis neve. |Igen |
-| séma |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |Nem |
+| database |A PostgreSQL-adatbázis neve. |Igen |
+| schema |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |Nem |
 | authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
 | felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Igen |
+| gatewayName |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-típusai, például a struktúra, a rendelkezésre állás és a szabályzat, az összes adatkészlet esetében hasonlóak.
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú (PostgreSQL-adatkészletet tartalmazó) adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | tableName |Annak a PostgreSQL-adatbázisnak a neve, amelyre a társított szolgáltatás hivatkozik. A táblanév megkülönbözteti a kis-és nagybetűket. |Nem (ha meg van adva a **RelationalSource** **lekérdezése** ) |
 
@@ -97,7 +97,7 @@ Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az eg
 
 Ha a forrás típusa **RelationalSource** (beleértve a PostgreSQL-t is), a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
@@ -302,44 +302,44 @@ Az [adattovábbítási tevékenységekről](data-factory-data-movement-activitie
 
 Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképezéseket használja a PostgreSQL típusról a .NET típusra.
 
-| PostgreSQL-adatbázis típusa | PostgresSQL-aliasok | .NET-keretrendszer típusa |
+| PostgreSQL-adatbázis típusa | PostgresSQL aliasok | .NET-keretrendszer típusa |
 | --- | --- | --- |
-| abstime | |Dátum/idő |
-| bigint |Int8 |Int64 |
+| abstime | |Dátum és idő |
+| bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Bájt [], karakterlánc |
 | bit változó [(n)] |varbit |Bájt [], karakterlánc |
-| logikai |logikai |Logikai |
+| logikai |bool |Logikai |
 | párbeszédpanel | |Bájt [], karakterlánc |
 | bytea | |Bájt [], karakterlánc |
 | karakter [(n)] |char [(n)] |Sztring |
 | változó karakter [(n)] |varchar [(n)] |Sztring |
 | CID | |Sztring |
 | CIDR | |Sztring |
-| kör | |Bájt [], karakterlánc |
-| dátum | |Dátum/idő |
-| daterange | |Sztring |
-| dupla pontosság |FLOAT8 |Double |
+| Kör | |Bájt [], karakterlánc |
+| dátum | |Dátum és idő |
+| DateRange | |Sztring |
+| dupla pontosság |FLOAT8 |Dupla |
 | inet | |Bájt [], karakterlánc |
 | intarr | |Sztring |
 | int4range | |Sztring |
 | int8range | |Sztring |
 | egész szám |int, int4 |Int32 |
 | intervallum [mezők] [(p)] | |Időtartomány |
-| json | |Sztring |
-| jsonb | |Bájt [] |
-| sor | |Bájt [], karakterlánc |
+| JSON | |Sztring |
+| jsonb | |Byte[] |
+| parancssori | |Bájt [], karakterlánc |
 | lseg | |Bájt [], karakterlánc |
 | macaddr | |Bájt [], karakterlánc |
-| pénzt | |Decimális |
-| numerikus [(p, s)] |decimális [(p, s)] |Decimális |
+| money | |tizedes tört |
+| numerikus [(p, s)] |decimális [(p, s)] |tizedes tört |
 | numrange | |Sztring |
-| OID | |Int32 |
+| oid | |Int32 |
 | elérési út | |Bájt [], karakterlánc |
 | pg_lsn | |Int64 |
 | pont | |Bájt [], karakterlánc |
-| sokszög | |Bájt [], karakterlánc |
-| real |float4 |Önálló |
+| Sokszög | |Bájt [], karakterlánc |
+| real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sorozatszám |serial4 |Int32 |

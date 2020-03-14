@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283159"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
 
@@ -34,7 +34,7 @@ Az alkalmazásfejlesztés során a lekérdezéseket alkotó kód megírása a mu
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
 Ez a cikk a feladatok keresési portálját használja példaként. A példa ASP.NET MVC-alkalmazásként van implementálva.
 
-- Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](http://azjobsdemo.azurewebsites.net/).
+- Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](https://aka.ms/azjobsdemo).
 
 - Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -78,7 +78,7 @@ Az összetett keresési kifejezések csökkentik a lekérdezés teljesítményé
 Ha szeretné jobban megismerni, hogy egy szűrő nagyobb pontosságot ad hozzá, hasonlítson össze egy összetett keresési kifejezéssel, amely egy szűrési kifejezést tartalmaz:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 Mindkét lekérdezés érvényes, de a második jobb, ha nem moteleket keres a Seattle-ben.
 -   Az első lekérdezés azon konkrét szavakra támaszkodik, amelyek nem szerepelnek a karakterlánc mezőiben, például a név, a leírás és bármely más olyan mező, amely kereshető adat.
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 A dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól függően további paramétert adhat meg a vesszővel tagolt lista, amely tartalmazza `count:<integer>`, `sort:<>`, `interval:<integer>`és `values:<list>`. A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
 
-Az egyes aspektusokkal együtt az alkalmazás által létrehozott kérelemnek olyan szűrőket is kell kiépítenie, amelyekkel szűkítheti a jelölt dokumentumok készletét egy adott dimenzió érték kiválasztása alapján. A bike Store-ban a sokoldalú Navigálás olyan kérdéseket *tesz elérhetővé, mint a színek, a gyártók és a különböző típusú kerékpárok típusai?* . A szűrés olyan kérdésekre ad választ, mint a *pontos kerékpárok piros, Mountain Bikes, ebben az árakban?* . Ha a "vörös" gombra kattint, hogy csak a vörös termékek jelenjenek meg, az alkalmazás által küldött következő lekérdezés tartalmazza a `$filter=Color eq ‘Red’`.
+Az egyes aspektusokkal együtt az alkalmazás által létrehozott kérelemnek olyan szűrőket is kell kiépítenie, amelyekkel szűkítheti a jelölt dokumentumok készletét egy adott dimenzió érték kiválasztása alapján. A bike Store-ban a sokoldalú Navigálás olyan kérdéseket *tesz elérhetővé, mint a színek, a gyártók és a különböző típusú kerékpárok típusai?* . A szűrés olyan kérdésekre ad választ, mint a *pontos kerékpárok piros, Mountain Bikes, ebben az árakban?* . Ha a "vörös" gombra kattint, hogy csak a vörös termékek jelenjenek meg, az alkalmazás által küldött következő lekérdezés tartalmazza a `$filter=Color eq 'Red'`.
 
 A `JobsSearch.cs` oldal következő kódrészlete hozzáadja a kiválasztott üzleti címet a szűrőhöz, ha az üzleti cím dimenzióból választ ki egy értéket.
 
@@ -371,7 +371,7 @@ A szűrési példákat a [OData kifejezés szintaxisában (Azure Cognitive Searc
 ## <a name="try-the-demo"></a>A bemutató kipróbálása
 Az Azure Cognitive Search Job Portal bemutatója a cikkben hivatkozott példákat tartalmazza.
 
--   Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a munkahelyi bemutatót az [Azure Cognitive Search Job Portal bemutatójában](https://aka.ms/azjobsdemo).
 
 -   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 

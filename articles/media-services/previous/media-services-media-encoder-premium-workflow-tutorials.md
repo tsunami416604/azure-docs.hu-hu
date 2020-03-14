@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392951"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251010"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Speciális Media Encoder Premium Workflow oktatóanyagok
 ## <a name="overview"></a>Áttekintés

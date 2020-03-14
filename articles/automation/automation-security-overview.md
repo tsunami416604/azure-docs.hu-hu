@@ -8,11 +8,11 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360843"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278570"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Bevezetés a hitelesítési folyamatba az Azure Automationben  
 Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS).  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal.

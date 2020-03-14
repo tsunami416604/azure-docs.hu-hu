@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168781"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218170"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Azure Machine Learning Studiohoz (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni R studiót (klasszikus). Ismerteti, milyen egyéni R-modulok és fájlokat adhat meg hozzájuk. Azt mutatja be, hogyan hozható létre a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés a modul regisztrálása. Az elemek és attribútumok az egyéni modult definíciójában használt majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és több kimenetek használata is tárgyalja. 
 
@@ -200,7 +202,7 @@ Ha például módosítani kívánja az **egyéni sorok hozzáadása** modult, ho
     </Ports> 
 
 
-És az objektumok listájában, a megfelelő sorrendben a "CustomAddRows.R" listáját adja vissza:
+A listában szereplő objektumok listájának visszaadása a "CustomAddRows. R" megfelelő sorrendjében:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -333,11 +335,11 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
 Összes fájl, amely az egyéni modul ZIP-fájlja kerül lesz használható végrehajtási idő alatt. Jelen könyvtárstruktúrák megmaradnak. Ez azt jelenti, hogy a fájl beszerzése a helyi és a Azure Machine Learning Studio (klasszikus) végrehajtással azonos módon működik. 
 
 > [!NOTE]
-> Figyelje meg, hogy az összes fájlok kibontása "src" könyvtár, így az összes elérési utat kell "src /" előtaggal.
+> Figyelje meg, hogy minden fájl "src" könyvtárba van kibontva, így minden elérési útnak "src/" előtaggal kell rendelkeznie.
 > 
 > 
 
-Tegyük fel például, távolítsa el a NAs sorokat az adatkészlet, és is távolítsa el az ismétlődő sorokat szerint kiírta volna az CustomAddRows előtt szeretne, és a egy R-függvényt, amely egy fájlban RemoveDupNARows.R végez, amely már leírt:
+Tegyük fel például, hogy el kívánja távolítani a NAs-ból származó összes sort az adatkészletből, és el is távolítja az ismétlődő sorokat, mielőtt a CustomAddRows, és már írt egy R-függvényt, amely egy RemoveDupNARows. R fájlban található.
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ A kiegészítő fájl RemoveDupNARows.R CustomAddRows függvényében is forrás
         return (dataset)
     }
 
-Ezután töltse fel a 'CustomAddRows.R', "CustomAddRows.xml" és "RemoveDupNARows.R" egy egyéni R modult tartalmazó zip-fájlt.
+Ezután töltsön fel egy "CustomAddRows. R", "CustomAddRows. xml" és "RemoveDupNARows. R" nevű zip-fájlt egyéni R-modulként.
 
 ## <a name="execution-environment"></a>Végrehajtási környezet
 Az R-szkript végrehajtási környezete ugyanazt az R-verziót használja, mint az r **szkript végrehajtása** modul, és ugyanazokat az alapértelmezett csomagokat használhatja. Az egyéni modul fel azokat az egyéni modult zip-csomagját is hozzáadhat további R csomagokat. Csak betöltheti őket az R-szkript, mint az a saját R-környezetben. 

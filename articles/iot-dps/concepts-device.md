@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975312"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285161"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Az eszközök IoT Hub Device Provisioning Service kapcsolatos fogalmak
 
@@ -42,7 +42,7 @@ A hardveres biztonsági modul, vagy a HSM biztonságos, hardveres tárolást biz
 
 Az eszköz titkai a szoftverben (memóriában) is tárolhatók, de ez a tárterület kevésbé biztonságos, mint a HSM.
 
-## <a name="registration-id"></a>Regisztráció azonosítója
+## <a name="registration-id"></a>Regisztrációs azonosító
 
 A regisztrációs azonosító az eszköz kiépítési szolgáltatásban való egyedi azonosítására szolgál. Az eszköz AZONOSÍTÓjának egyedinek kell lennie a létesítési szolgáltatás [azonosítójának hatókörében](#id-scope). Minden eszköznek regisztrációs AZONOSÍTÓval kell rendelkeznie. A regisztrációs azonosító alfanumerikus, kis-és nagybetű nem különbözik, és tartalmazhat speciális karaktereket, beleértve a kettőspontot, az időtartamot, az aláhúzást és a kötőjelet.
 

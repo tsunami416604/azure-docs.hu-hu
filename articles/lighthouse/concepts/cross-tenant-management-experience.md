@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402086"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218389"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -63,6 +63,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 
 - Ügyféladatok biztonsági mentése és visszaállítása az ügyfelek bérlői számára
 - A [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági másolati elemek működési információit (beleértve a biztonsági mentéshez még nem konfigurált Azure-erőforrásokat), valamint a delegált előfizetések figyelési információit (feladatok és riasztások). A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
+- [Készítsen biztonsági mentési jelentéseket](../../backup/configure-reports.md) a delegált előfizetések között a korábbi trendek nyomon követéséhez, a biztonsági mentési tárolók felhasználásának elemzéséhez, valamint a biztonsági másolatok és visszaállítások ellenőrzéséhez
 
 [Azure Kubernetes szolgáltatás (ak)](../../aks/index.yml):
 

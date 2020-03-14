@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943638"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214119"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL Database Azure biztonsági alapterve
 
@@ -238,13 +238,12 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 Emellett az Azure SQL Diagnostics-telemetria Azure SQL Analyticsba, egy felhőalapú megoldásba is továbbíthatja, amely az Azure SQL Database-adatbázisok, rugalmas készletek és felügyelt példányok teljesítményét figyeli a skálán és több előfizetésen keresztül. Segítséget nyújt Azure SQL Database teljesítmény-mérőszámok gyűjtéséhez és megjelenítéséhez, és beépített intelligenciával rendelkezik a teljesítménnyel kapcsolatos hibaelhárításhoz.
 
-
 A Azure SQL Database naplózásának beállítása:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Platform-naplók és-metrikák összegyűjtése a Azure Monitor használatával:
+Mérőszámok és erőforrás-naplók összegyűjtése a Azure Monitor használatával:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
@@ -1348,7 +1347,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -3,12 +3,12 @@ title: A metrikák valós idejű megtekintése a Azure Monitor for containers sz
 description: Ez a cikk a metrikák valós idejű nézetét írja le anélkül, hogy a kubectl és a Azure Monitor for containers használatával kellene használnia.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404930"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216592"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>A metrikák valós idejű megtekintése
 
@@ -24,7 +24,7 @@ Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció hasz
 
 Az élő adatszolgáltatások (előzetes verzió) beállításával vagy hibaelhárításával kapcsolatos segítségért tekintse át a [telepítési útmutatót](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>A működési elv 
+## <a name="how-it-works"></a>Működési elv 
 
 Az élő adatok (előzetes verzió) funkció közvetlenül a Kubernetes API-hoz érhető el, és a hitelesítési modellel kapcsolatos további információk [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)találhatók. 
 
@@ -34,7 +34,7 @@ Ez a szolgáltatás lekérdezési műveletet hajt végre a metrikák végpontoko
 
 A lekérdezési időközt a **beállított intervallum** legördülő menüben állíthatja be, amely lehetővé teszi az új adatok lekérdezésének megadását az egyes 1, 5, 15 és 30 másodpercekben. 
 
-![Ugrás élő legördülő lekérdezési időköz](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![Ugrás élő legördülő lekérdezési időköz](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >Javasoljuk, hogy a lekérdezési időközt egy másodpercre állítsa be, miközben rövid idő alatt hibaelhárítást végez a probléma megoldásában. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását. Ezt követően a rendszer újrakonfigurálja a lekérdezési időközt. 

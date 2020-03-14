@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372210"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135938"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Tároló létrehozása vagy törlése az Azure Storage-ban .NET-tel
 
-Az Azure Storage-beli Blobok tárolóba vannak rendezve. A Blobok feltöltéséhez először létre kell hoznia egy tárolót. Ez a cikk bemutatja, hogyan hozhat létre és törölhet tárolókat a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage/client)használatával.
+Az Azure Storage-beli Blobok tárolóba vannak rendezve. A Blobok feltöltéséhez először létre kell hoznia egy tárolót. Ez a cikk bemutatja, hogyan hozhat létre és törölhet tárolókat a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.
 
 ## <a name="name-a-container"></a>Tároló neve
 
@@ -185,7 +185,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Tároló létrehozása művelet](/rest/api/storageservices/create-container)
 - [Tároló törlése művelet](/rest/api/storageservices/delete-container)

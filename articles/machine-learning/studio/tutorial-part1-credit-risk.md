@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432244"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204256"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1\. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -56,12 +58,12 @@ Machine Learning Studio (klasszikus) használatához Microsoft Azure Machine Lea
 
 Munkaterület létrehozásához lásd: [Azure Machine learning Studio (klasszikus) munkaterület létrehozása és megosztása](create-workspace.md).
 
-A munkaterület létrehozása után nyissa meg Machine Learning Studio (klasszikus) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Ha több munkaterülettel rendelkezik, a munkaterületet az ablak jobb felső sarkában található eszköztárban választhatja ki.
+A munkaterület létrehozása után nyissa meg Machine Learning Studio (klasszikus) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Ha egynél több munkaterületet, akkor válassza ki a munkaterületet az eszköztáron az ablak jobb felső sarkában.
 
 ![Munkaterület kiválasztása a Studióban (klasszikus)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Ha Ön a munkaterület tulajdonosa, megoszthatja azokat a kísérleteket, amelyekkel a munkaterületet másokkal meghívja. Ezt megteheti Machine Learning Studio (klasszikus) a **Beállítások** lapon. Az egyes felhasználókhoz csak Microsoft-fiók vagy szervezeti fiókra van szükség.
+> Ha Ön a munkaterület tulajdonosa, megoszthatja azokat a kísérleteket, amelyekkel a munkaterületet másokkal meghívja. Ezt megteheti Machine Learning Studio (klasszikus) a **Beállítások** lapon. Egyszerűen a Microsoft-fiókjával vagy szervezeti fiók minden felhasználó számára.
 > 
 > A **Beállítások** lapon kattintson a **felhasználók**elemre, majd kattintson az ablak ALJÁn található **további felhasználók meghívása** elemre.
 > 
@@ -191,7 +193,7 @@ A [metaadatok szerkesztésének][edit-metadata]használatához először meg kel
 
     ![Szerkesztési metaadatok hozzáadása](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    A piros felkiáltójel azt jelzi, hogy még nem állította be a modul tulajdonságait. Ezt a következő lépésben teheti meg.
+    A piros felkiáltójel azt jelzi, hogy még nem állította be a modul tulajdonságait. Ezt a következő lépéssel teheti meg.
 
     > [!TIP]
     > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. Ebben az esetben kattintson duplán a [metaadatok szerkesztése][edit-metadata] modulra, és írja be az "oszlopfejlécek hozzáadása" megjegyzést. A szövegmező bezárásához kattintson a vászonon bárhová máshol. A Megjegyzés megjelenítéséhez kattintson a modulban a lefelé mutató nyílra.

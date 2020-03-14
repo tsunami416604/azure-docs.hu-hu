@@ -1,6 +1,6 @@
 ---
 title: Webszolgáltatás naplózása – Azure Machine Learning Studio (klasszikus) | Microsoft Docs
-description: Megtudhatja, hogyan engedélyezheti a Machine Learning Studio (klasszikus) webszolgáltatások naplózását. A naplózás további információkat biztosít az API-k hibakereséséhez.
+description: Megtudhatja, hogyan engedélyezheti a Machine Learning Studio (klasszikus) webszolgáltatások naplózását. Naplózás nyújt további információt talál az API-k hibaelhárítása.
 services: machine-learning
 author: xiaoharper
 ms.custom: seodec18
@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427402"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217846"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások naplózási képességével kapcsolatos információkat tartalmaz. A naplózási szolgáltatás további információkat tartalmaz, amelyek csak egy adott számú és egy üzeneten felül segítenek a Machine Learning Studio (klasszikus) API-k hívásának hibakeresésében.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Webszolgáltatások naplózásának engedélyezése
@@ -27,25 +30,25 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
 1. Jelentkezzen be a Azure Machine Learning Studio (klasszikus) webszolgáltatások portálra a következő címen: [https://services.azureml.net](https://services.azureml.net). A klasszikus webszolgáltatások esetében az új webMachine Learning Studio **szolgáltatások** használata a Studióban (klasszikus) webszolgáltatások lapján is elérhetővé teheti a portált.
 
-   ![Új webszolgáltatási élmény hivatkozása](./media/web-services-logging/new-web-services-experience-link.png)
+   ![Új webes szolgáltatási környezetet biztosít hivatkozás](./media/web-services-logging/new-web-services-experience-link.png)
 
 2. A felső menüsorban kattintson az új webszolgáltatáshoz tartozó **webszolgáltatások** lehetőségre, vagy kattintson a klasszikus webszolgáltatások klasszikus webes **szolgáltatásai** lehetőségre.
 
-   ![Új vagy klasszikus webszolgáltatások kiválasztása](./media/web-services-logging/select-web-service.png)
+   ![Válassza ki az új vagy a klasszikus webszolgáltatások](./media/web-services-logging/select-web-service.png)
 
-3. Új webszolgáltatás esetén kattintson a webszolgáltatás nevére. Klasszikus webszolgáltatás esetén kattintson a webszolgáltatás nevére, majd a következő lapon kattintson a megfelelő végpontra.
+3. Új webszolgáltatásként kattintson a webes szolgáltatás nevét. Klasszikus webszolgáltatás kattintson a webes szolgáltatás nevét és a következő lapon kattintson a megfelelő végpontra.
 
 4. A felső menüsorban kattintson a **Konfigurálás**elemre.
 
 5. Állítsa be a **naplózás engedélyezése** beállítást a *hiba* (csak a hibák naplózása) vagy az *összes* (teljes naplózáshoz) beállításnál.
 
-   ![Naplózási szint kiválasztása](./media/web-services-logging/enable-logging.png)
+   ![Válassza ki a naplózási szint](./media/web-services-logging/enable-logging.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 
 7. A klasszikus webszolgáltatások esetében hozza létre a **ml-diagnosztika** tárolót.
 
-   Az összes webszolgáltatás naplója egy **ml-diagnosztika** nevű blob-tárolóban marad a webszolgáltatáshoz társított Storage-fiókban. Az új webszolgáltatások esetében ez a tároló jön létre, amikor először fér hozzá a webszolgáltatáshoz. A klasszikus webszolgáltatások esetében létre kell hoznia a tárolót, ha még nem létezik. 
+   Az összes webszolgáltatás naplója egy **ml-diagnosztika** nevű blob-tárolóban marad a webszolgáltatáshoz társított Storage-fiókban. Az új webszolgáltatásoknál Ez a tároló jön létre az első alkalommal fér hozzá a web service. Klasszikus webszolgáltatásoknál kell létrehozni a tárolót, ha még nem létezik. 
 
    1. A [Azure Portal](https://portal.azure.com)lépjen a webszolgáltatáshoz társított Storage-fiókra.
 
@@ -57,22 +60,22 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
 > [!TIP]
 >
-> A klasszikus webszolgáltatások esetében a Machine Learning Studio (klasszikus) webszolgáltatások irányítópultján is van egy kapcsoló a naplózás engedélyezéséhez. Mivel azonban a naplózást most a webszolgáltatások portálon keresztül felügyelik, engedélyeznie kell a naplózást a portálon a jelen cikkben leírtak szerint. Ha már engedélyezte a naplózást a Studióban (klasszikus), akkor a Web Services portálon tiltsa le a naplózást, majd engedélyezze újra.
+> A klasszikus webszolgáltatások esetében a Machine Learning Studio (klasszikus) webszolgáltatások irányítópultján is van egy kapcsoló a naplózás engedélyezéséhez. Azonban naplózási most már felügyelt, a Web Services portálon keresztül, mert, engedélyeznie kell a portálon keresztül naplózása ebben a cikkben leírtak szerint. Ha már engedélyezte a naplózást a Studióban (klasszikus), akkor a Web Services portálon tiltsa le a naplózást, majd engedélyezze újra.
 
 
-## <a name="the-effects-of-enabling-logging"></a>A naplózás engedélyezésének hatásai
-Ha a naplózás engedélyezve van, a webszolgáltatási végpont diagnosztika és hibák naplózása a felhasználó munkaterületéhez társított Azure Storage **-fiók ml-diagnosztika blob-** tárolójában történik. Ez a tároló tartalmazza az összes webszolgáltatási végponthoz tartozó diagnosztikai információt az ehhez a Storage-fiókhoz társított összes munkaterülethez.
+## <a name="the-effects-of-enabling-logging"></a>A naplózás engedélyezése hatásait
+Ha a naplózás engedélyezve van, a webszolgáltatási végpont diagnosztika és hibák naplózása a felhasználó munkaterületéhez társított Azure Storage **-fiók ml-diagnosztika blob-** tárolójában történik. Ez a tároló összes a webszolgáltatás-végpontok a storage-fiókhoz társított összes munkaterülethez tartozó összes diagnosztikai adatokat tárolja.
 
-A naplók az Azure Storage-fiók megismeréséhez rendelkezésre álló számos eszköz használatával tekinthetők meg. A legegyszerűbb lehet, ha a Azure Portal a Storage-fiókra kattint **, kattintson a tárolók**elemre, majd kattintson a tároló **ml-diagnosztika**elemre.  
+A naplókban is megtekinthetők, a számos eszközt biztosít Ismerkedés az Azure Storage-fiók bármelyikével. A legegyszerűbb lehet, ha a Azure Portal a Storage-fiókra kattint **, kattintson a tárolók**elemre, majd kattintson a tároló **ml-diagnosztika**elemre.  
 
-## <a name="log-blob-detail-information"></a>A blob részletes adatainak naplózása
-A tárolóban lévő összes blob a diagnosztikai adatokat a következő műveletek pontosan egyikének megfelelően tárolja:
+## <a name="log-blob-detail-information"></a>Blob részletes adatait
+A tárolóban lévő minden egyes blob pontosan a következő műveletek egyikét tartozó diagnosztikai adatokat tartalmazza:
 
-* A batch-execution metódus végrehajtása  
-* A kérelem-válasz módszer végrehajtása  
-* Kérelem-válasz tároló inicializálása
+* A Batch-végrehajtási metódus végrehajtásának  
+* A kérés-válasz metódus végrehajtásának  
+* Kérés-válasz tároló inicializálása
 
-Az egyes Blobok neve a következő formátumú előtaggal rendelkezik: 
+Minden egyes blob neve van egy előtagot a következő formátumot követi: 
 
 
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
@@ -80,7 +83,7 @@ Az egyes Blobok neve a következő formátumú előtaggal rendelkezik:
 
 Ahol a _napló típusa_ a következő értékek egyike:  
 
-* batch  
+* kötegelt  
 * pontszám/kérelmek  
 * pontszám/init  
 

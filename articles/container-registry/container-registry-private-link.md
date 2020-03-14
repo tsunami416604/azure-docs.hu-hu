@@ -3,12 +3,12 @@ title: Privát hivatkozás beállítása
 description: Privát végpont beállítása egy tároló-beállításjegyzékben és privát hivatkozás engedélyezése egy helyi virtuális hálózaton
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7dcf2d1eb1a77ea8b9660318ed2a7d4ec183b42
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 57c2a59ad8b16c39c7c577173feae68dcb263277
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128386"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203355"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Private-hivatkozás konfigurálása Azure Container registryhez 
 
@@ -28,7 +28,14 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A cikkben szereplő Azure CLI-lépések használatához ajánlott az Azure CLI-es vagy újabb verziója. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli]. Vagy futtassa [Azure Cloud Shell](../cloud-shell/quickstart.md).
-* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és küldjön le egy mintát, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t. 
+* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és küldjön le egy mintát, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t.
+* Ha egy másik Azure-előfizetésben lévő privát hivatkozás használatával szeretné konfigurálni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of private link>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 A cikkben szereplő Azure CLI-példák az alábbi környezeti változókat használják. A környezetnek megfelelő helyettesítő értékeket. Az összes példa a bash-rendszerhéjra van formázva:
 

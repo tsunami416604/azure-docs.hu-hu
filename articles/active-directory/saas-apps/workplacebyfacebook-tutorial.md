@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98706d0c9a86d53ae31d05bec48d7071f251b651
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944388"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136380"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a munkahelyeket Fa
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a munkahelyre a Facebookban az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -240,7 +240,7 @@ Amikor a hozzáférési panelen a munkahelyi Facebook csempére kattint, automat
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

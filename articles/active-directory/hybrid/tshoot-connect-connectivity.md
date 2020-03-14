@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376028"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253597"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
 Ez a cikk azt ismerteti, hogyan működik a Azure AD Connect és az Azure AD közötti kapcsolat, és hogyan lehet elhárítani a kapcsolódási problémákat. Ezeket a problémákat legvalószínűbben a proxykiszolgáló fogja látni a környezetben.

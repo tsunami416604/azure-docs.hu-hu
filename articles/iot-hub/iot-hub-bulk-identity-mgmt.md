@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub-eszköz identitások exportálásának importálása | Microsoft Docs
-description: Az Azure IoT Service SDK használata az eszközök identitásának importálására és exportálására szolgáló tömeges műveletek végrehajtásához az Identity registryben. Az importálási műveletek lehetővé teszik az eszköz-identitások tömeges létrehozását, frissítését és törlését.
+title: Azure IoT Hub-eszközök identitásának importálása/exportálása | Microsoft Docs
+description: Az Azure IoT Service SDK használata az eszközök identitásának importálására és exportálására szolgáló tömeges műveletek futtatásához az Identity registryben. Az importálási műveletek lehetővé teszik az eszköz-identitások tömeges létrehozását, frissítését és törlését.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429256"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218422"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub eszköz-identitások tömeges importálása és exportálása
 
@@ -26,7 +26,6 @@ Az importálási és exportálási műveletek olyan *feladatok* kontextusában l
 A **RegistryManager** osztály a **ExportDevicesAsync** és a **ImportDevicesAsync** metódusokat tartalmazza, amelyek a **feladatok** keretrendszerét használják. Ezek a módszerek lehetővé teszik az IoT hub összes azonosítójának beállításjegyzékének teljes körű exportálását, importálását és szinkronizálását.
 
 Ebből a témakörből megtudhatja, hogyan végezheti el a **RegistryManager** osztály és a **feladat** rendszerét az IoT hub azonosító-beállításjegyzékbe irányuló és onnan érkező eszközök tömeges importálására és exportálására. Az Azure IoT Hub Device Provisioning Service használatával az emberi beavatkozás nélkül is engedélyezheti a nulla érintéses, igény szerinti üzembe helyezést egy vagy több IoT-hubhoz. További információt a [kiépítési szolgáltatás dokumentációjában](/azure/iot-dps)talál.
-
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 

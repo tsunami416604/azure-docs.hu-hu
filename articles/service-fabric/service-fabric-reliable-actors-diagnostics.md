@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389603"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282327"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
 A Reliable Actors futtatókörnyezet [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) [eseményeket és teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a futtatókörnyezet működésével, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.

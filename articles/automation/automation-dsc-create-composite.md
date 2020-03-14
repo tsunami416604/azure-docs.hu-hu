@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c060462a84b197cdd0aec1beecc0b4d4807feb49
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030119"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136655"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Konfigurációk átalakítása összetett erőforrásokká
 
@@ -47,7 +47,7 @@ Első lépésként a (z) (vagy Build kiszolgáló) konfigurációs parancsfájl 
 Ezután ahelyett, hogy a konfigurációt futtatja egy MOF-fájl létrehozásához, használja a CompositeResource modul által biztosított funkciót az átalakítás automatizálásához.
 A parancsmag betölti a konfiguráció tartalmát, lekéri a paraméterek listáját, és létrehoz egy új modult, amire szüksége van.
 
-Miután létrehozta a modult, megnövelheti a verziót, és hozzáadhat kibocsátási megjegyzéseket minden alkalommal, amikor módosításokat végez, és közzéteszi azt a saját [PowerShellGet-adattárában](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
+Miután létrehozta a modult, megnövelheti a verziót, és hozzáadhat kibocsátási megjegyzéseket minden alkalommal, amikor módosításokat végez, és közzéteszi azt a saját [PowerShellGet-adattárában](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo).
 
 Miután létrehozta a konfigurációját (vagy több konfigurációját) tartalmazó összetett erőforrás-modult, használhatja azokat az Azure-ban a készíthető [authoring Experience](/azure/automation/compose-configurationwithcompositeresources) -ben, vagy hozzáadhatja a [DSC konfigurációs PARANCSFÁJLokhoz](/powershell/scripting/dsc/configurations/configurations) a MOF-fájlok LÉTREHOZÁSához és [a MOF-fájlok Azure Automationba való feltöltéséhez](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
 Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekéréséhez.

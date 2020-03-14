@@ -15,11 +15,11 @@ ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357681"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240106"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrásokhoz?
 
@@ -84,7 +84,7 @@ Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti cs
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 
-Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Példa:
+Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Például:
 
 - Ha [tulajdonosi](built-in-roles.md#owner) szerepkört rendel egy, a felügyeleti csoport hatóköréhez tartozó felhasználóhoz, a felhasználó a felügyeleti csoportban lévő összes előfizetésben mindent felügyelhet.
 - Ha az [Olvasó](built-in-roles.md#reader) szerepkört hozzárendeli egy csoporthoz az előfizetés hatókörében, a csoport tagjai az előfizetésben lévő összes erőforráscsoportot és erőforrást megtekinthetik.

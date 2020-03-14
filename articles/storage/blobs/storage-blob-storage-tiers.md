@@ -9,11 +9,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389084"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255508"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek
 

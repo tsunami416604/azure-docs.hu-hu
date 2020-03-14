@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080876"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137194"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>Media Services-fiók létrehozása a Azure Portal használatával
 
@@ -54,8 +54,6 @@ Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További info
     
 1. A fióklétrehozás előrehaladásának megtekintéséhez kattintson a **Rögzítés az irányítópulton** elemre.
 1. Kattintson az űrlap alján található **Létrehozás** lehetőségre.
-   
-    A fiók sikeres létrehozása után betöltődik az áttekintési oldal. A streaming Endpoint (adatfolyam-végpont) táblában a fiók egy **leállított** állapotú alapértelmezett folyamatos átviteli végponttal fog rendelkezni. 
 
     A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom folyamatos átvitelének megkezdéséhez, valamint a [dinamikus csomagolás](dynamic-packaging-overview.md) és a [dinamikus titkosítás](content-protection-overview.md)kihasználásához a adatfolyam-továbbítási végpontnak **futó** állapotban kell lennie. 
 

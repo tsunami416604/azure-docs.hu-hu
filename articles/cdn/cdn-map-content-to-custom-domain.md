@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383581"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238705"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 

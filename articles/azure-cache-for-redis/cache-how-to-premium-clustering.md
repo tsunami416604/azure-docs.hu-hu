@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372050"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278037"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk azt ismerteti, hogyan konfigurálható a fürtözés a prémium szintű Azure cache-ben a Redis-példányhoz.

@@ -16,17 +16,17 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064801"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238579"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: változások figyelése és Windowsos virtuális gépek frissítése az Azure-ban
 
 Az Azure [change Tracking](../../automation/change-tracking.md) és [Update Management](../../automation/automation-update-management.md)segítségével könnyedén azonosíthatja a Windows rendszerű virtuális gépek változásait az Azure-ban, és kezelheti az operációs rendszer frissítéseit ezekhez a virtuális gépekhez.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Windows-frissítések kezelése.
@@ -94,7 +94,7 @@ Az **Update Management engedélyezése** ablakban válassza ki a log Analytics m
 A rendszer az előkészítés során hiányzó alábbi előfeltételek bármelyikét automatikusan hozzáadja:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Automatizálás](../../automation/automation-offering-get-started.md)
 * [Hibrid runbook Worker](../../automation/automation-hybrid-runbook-worker.md), amely engedélyezve van a virtuális gépen
 
 A megoldás engedélyezését követően megnyílik az **Update Management** ablak. Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés**lehetőséget. Ha ezek a beállítások szürkén jelennek meg, egy másik automatizálási megoldás van engedélyezve a virtuális gépen, és a megoldás munkaterület-és Automation-fiókját kell használnia.
@@ -206,7 +206,7 @@ Az előző diagramon az idő múlásával történt változások láthatók. Miu
 
 A sávdiagramok minden sora egy másik, nyomon követhető módosítás típusát jelöli. Ezek a típusok a Linux-démonok, a fájlok, a Windows-beállításkulcsok, a szoftverek és a Windows-szolgáltatások. A **módosítás lap a változás** részleteit jeleníti meg. A változások az egyes előfordulások sorrendjében jelennek meg, és a legutóbbi változás látható először.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

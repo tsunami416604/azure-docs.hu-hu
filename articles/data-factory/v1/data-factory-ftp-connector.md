@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387396"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281404"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése FTP-kiszolgálóról Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304393"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136159"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Javaslatok és ajánlott eljárások Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ A megvalósítási fázisban vegye figyelembe az alábbi javaslatokat.
 
 |  |  |
 |--|--|
-| Egyéni szabályzatok szerkesztése a Visual Studio Code-hoz készült Azure AD B2C bővítménnyel | Töltse le a Visual Studio Code-ot és a Közösség által készített [bővítményt a Visual Studio Code piactérről]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)). Habár nem hivatalos Microsoft-termék, a Visual Studio Code-hoz készült Azure AD B2C-bővítmény számos olyan funkciót tartalmaz, amelyek megkönnyítik az egyéni házirendek használatát. |
+| Egyéni szabályzatok szerkesztése a Visual Studio Code-hoz készült Azure AD B2C bővítménnyel | Töltse le a Visual Studio Code-ot és a Közösség által készített [bővítményt a Visual Studio Code piactérről](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). Habár nem hivatalos Microsoft-termék, a Visual Studio Code-hoz készült Azure AD B2C-bővítmény számos olyan funkciót tartalmaz, amelyek megkönnyítik az egyéni házirendek használatát. |
 | Tudnivalók a Azure AD B2C hibakereséséről | Ismerje meg, hogy miként lehet [elhárítani az egyéni házirendeket](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) a fejlesztés során. Megtudhatja, hogyan néz ki egy normál hitelesítési folyamat a rendellenességek és hibák felderítésére szolgáló eszközök használatával. Például a [Application Insights](troubleshoot-with-application-insights.md) segítségével tekintheti át a felhasználói útvonalak kimeneti naplóit. |
 | A bevált egyéni szabályzatok mintájának kihasználása | Többek között számos továbbfejlesztett Azure AD B2C ügyfél-identitás-és hozzáférés-kezelési (CIAM) felhasználói útvonalon talál [mintákat](https://github.com/azure-ad-b2c/samples) . |
 

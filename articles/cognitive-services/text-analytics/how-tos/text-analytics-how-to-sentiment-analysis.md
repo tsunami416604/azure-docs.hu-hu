@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: aahi
-ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197470"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203457"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
@@ -42,7 +42,7 @@ A Text Analytics API a Hangulatelemzés-v2 és v3 két verzióját kínálja. A 
 > * Az Hangulatelemzés v3 kérelem formátuma és [adatkorlátja](../overview.md#data-limits) megegyezik az előző verzióval.
 > * A Hangulatelemzés v3 a következő régiókban érhető el: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`és `West US 2`.
 
-| Szolgáltatás                                   | Hangulatelemzés v2 | Hangulatelemzés v3 |
+| Funkció                                   | Hangulatelemzés v2 | Hangulatelemzés v3 |
 |-------------------------------------------|-----------------------|-----------------------|
 | Egyszeri és batch-kérelmek módszerei    | X                     | X                     |
 | A teljes dokumentum hangulati pontszámai  | X                     | X                     |
@@ -160,7 +160,7 @@ A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen a
 
 Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
 
-A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat.
+A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információkért lásd: [eltolások feldolgozása](../concepts/text-offsets.md) .
 
 #### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 

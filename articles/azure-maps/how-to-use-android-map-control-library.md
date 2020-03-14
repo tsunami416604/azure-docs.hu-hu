@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b43169b59425e97b0aa614eb64a5c86c20179a8d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368685"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136816"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -106,8 +106,8 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
 4. A **MainActivity. Java** fájlban a következőket kell tennie:
     
     * importálások hozzáadása az Azure Maps SDK-hoz
-    * A Azure Maps hitelesítési adatainak beállítása
-    * A Térkép vezérlőelem példányának beolvasása a **onCreate** metódusban
+    * a Azure Maps hitelesítési adatainak beállítása
+    * a Térkép vezérlőelem példányának beolvasása a **onCreate** metódusban
 
     Ha a hitelesítési adatokat a `AzureMaps` osztályban globálisan a `setSubscriptionKey` vagy a `setAadProperties` módszer használatával állítja be, akkor a hitelesítési adatokat nem kell minden nézetben felvennie. 
 
@@ -273,7 +273,7 @@ A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported
 Megtudhatja, hogyan adhat hozzá átfedéses információkat a térképen:
 
 > [!div class="nextstepaction"]
-> [Szimbólum réteg hozzáadása Android-térképhez](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
+> [Szimbólum réteg hozzáadása Android-térképhez](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Alakzatok hozzáadása Android-térképhez](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

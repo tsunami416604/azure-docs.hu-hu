@@ -17,11 +17,11 @@ ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668855"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253454"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -152,7 +152,7 @@ Delegált bejelentkezési azonosító használata esetén az érték nem egyedi 
 Ha az egyszeri bejelentkezés folyamata során hiba lép fel, az az összekötő számítógép eseménynaplójában jelenik meg, a [Hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)során.
 De egyes esetekben a sikeresen irányuló kérést küld a háttéralkalmazás az alkalmazás válaszol a különböző HTTP-válaszok során. Ezekben az esetekben hibaelhárítási el kell indítaniuk az alkalmazásproxy-munkamenet eseménynaplóban összekötő gépen 24029 eseményazonosítóval megvizsgálásával. A felhasználói identitás delegálásához használt belül az esemény részleteinek a "user" mezőjében jelenik meg. A munkamenet-napló bekapcsolásához válassza az **elemzési és hibakeresési naplók megjelenítése** lehetőséget az Eseménynapló Nézet menüjében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazásproxy-alkalmazás konfigurálása a Kerberos által korlátozott delegálás használatára](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)

@@ -12,11 +12,11 @@ ms.date: 03/10/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 530a8848eceecb1a15d14ce1fef2aa58a3ef5908
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082030"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220247"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Olvasási tárolók telepítése és futtatása (előzetes verzió)
 
@@ -241,7 +241,7 @@ export interface Word {
 }
 ```
 
-Példa a használati esetekre: itt <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer"> <span class="docon docon-navigate-external x-hidden-focus"></span> láthatja az írógéppel Sandboxot</a> , és a Futtatás lehetőség kiválasztásával jelenítheti meg a könnyű használatot.
+Példa a használati esetekre: itt **Run** <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer"> <span class="docon docon-navigate-external x-hidden-focus"></span> láthatja az írógéppel Sandboxot</a> , és a Futtatás lehetőség kiválasztásával jelenítheti meg a könnyű használatot.
 
 ## <a name="stop-the-container"></a>A tároló leállítása
 

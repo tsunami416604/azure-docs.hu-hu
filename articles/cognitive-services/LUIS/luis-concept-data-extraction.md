@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361132"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221083"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
@@ -73,7 +73,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * *
 
-|Objektum|Adattípus|Adatok helye|Érték|
+|Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|
 |Szándék|Sztring|topScoringIntent.intent|"GetStoreInfo"|
 
@@ -135,7 +135,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 A leképezések vannak rendezve legmagasabbtól a legalacsonyabb pontszámot.
 
-|Objektum|Adattípus|Adatok helye|Érték|Pontszám|
+|Objektum|Adattípus|Az adatok helye|Érték|Pontszám|
 |--|--|--|--|:--|
 |Szándék|Sztring|[0]. szándék .intent|"GetStoreInfo"|0.984749258|
 |Szándék|Sztring|[1]. szándék .intent|"Nincs"|0.0168218873|
@@ -196,7 +196,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * *
 
-|Domain|Objektum|Adattípus|Adatok helye|Érték|
+|Domain|Objektum|Adattípus|Az adatok helye|Érték|
 |--|--|--|--|--|
 |Közművek|Szándék|Sztring|[0]. szándék .intent|"<b>Segédprogramok</b>. ShowNext"|
 |Kommunikáció|Szándék|Sztring|[1]. szándék .intent|<b>Kommunikáció</b>. StartOver"|

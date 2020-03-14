@@ -14,11 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981742"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243197"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server virtuális gépek tárolási konfigurációja
 
@@ -40,7 +40,7 @@ Az automatikus tárolási konfigurációs beállítások használatához a virtu
 
 A következő szakaszok azt ismertetik, hogyan konfigurálható a tároló az új SQL Server virtuális gépekhez.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Ha egy Azure-beli virtuális gépet kiépít egy SQL Server Gallery-rendszerkép használatával, válassza a **konfiguráció módosítása** lehetőséget a **SQL Server beállítások** lapon a teljesítményre optimalizált tárolási konfiguráció lap megnyitásához. Meghagyhatja az alapértelmezett értékeket, vagy módosíthatja az igényeinek leginkább megfelelő lemez-konfigurációt a munkaterhelés alapján. 
 
@@ -123,10 +123,10 @@ A díjszabással kapcsolatos információkért tekintse meg a [Storage díjszab�
 
 Az Azure a következő beállítások használatával hozza létre a tárolót SQL Server virtuális gépeken.
 
-| Beállítás | Value (Díj) |
+| Beállítás | Érték |
 | --- | --- |
 | Sáv mérete |256 KB (adattárház); 64 KB (tranzakciós) |
-| Lemezméretek |1 TB |
+| Lemezek mérete |1 TB |
 | Gyorsítótár |Olvasás |
 | Foglalás mérete |64 KB NTFS-foglalási egység mérete |
 | Helyreállítás | Egyszerű helyreállítás (nincs rugalmasság) |
@@ -140,9 +140,9 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Számítási feladat típusa | Leírás | Optimalizálás |
+| Munkaterhelés típusa | Leírás | Optimalizálás |
 | --- | --- | --- |
-| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |None |
+| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincs |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |
 | **Adattárház** |Optimalizálja a tárolót analitikai és jelentéskészítési számítási feladatokhoz |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
 

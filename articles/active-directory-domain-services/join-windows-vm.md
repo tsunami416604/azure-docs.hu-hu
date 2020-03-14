@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
 ms.openlocfilehash: 05705d14db336b15a6ddf2317f9e69464c8e575b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378545"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239181"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Az Azure AD DS felügyelt tartománya lehetővé teszi a tartományhoz való csatlakozást és a felügyeletet az Azure-beli virtuális gépekhez (VM). Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet, majd hogyan csatlakozhat egy Azure AD DS felügyelt tartományhoz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Windows Server rendszerű virtuális gép létrehozása
@@ -224,7 +224,7 @@ A hibaelhárítási lépések elvégzése után próbáljon újra csatlakozni a 
 * Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][password-sync] a felügyelt tartományhoz. A konfigurációs lépés nélkül a szükséges jelszó-kivonatok nem jelennek meg az Azure AD DS felügyelt tartományában, hogy megfelelően hitelesítse a bejelentkezési kísérletet.
 * Várjon, amíg a jelszó-szinkronizálás be nem fejeződik. A felhasználói fiók jelszavának módosításakor az Azure AD automatikus háttérben történő szinkronizálása frissíti az Azure AD DSban található jelszót. Időbe telik, amíg a jelszó elérhetővé válik a tartományhoz való csatlakozáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

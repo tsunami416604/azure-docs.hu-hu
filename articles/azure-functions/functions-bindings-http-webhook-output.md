@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356796"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277621"
 ---
 # <a name="azure-functions-http-output-bindings"></a>HTTP-kimeneti kötések Azure Functions
 

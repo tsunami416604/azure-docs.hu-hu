@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan telepíthet át fizikai gépeket az Azu
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: bd55f422451df935301245eef3e9dd10f7ab55b1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239328"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
@@ -321,7 +321,10 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 
 ## <a name="complete-the-migration"></a>Az áttelepítés befejezése
 
-1. Az áttelepítés befejezése után kattintson a jobb gombbal a virtuális gépre > az **áttelepítés leállítása**elemre. Ez leállítja a helyszíni gép replikálását, és megtisztítja a virtuális gép replikációs állapotával kapcsolatos információkat.
+1. Az áttelepítés befejezése után kattintson a jobb gombbal a virtuális gépre > az **áttelepítés leállítása**elemre. Ez a következő műveleteket végzi el:
+    - Leállítja a helyszíni gép replikálását.
+    - Eltávolítja a gépet a **replikálási kiszolgálók** száma Azure Migrate: kiszolgáló áttelepítése.
+    - A számítógép replikációs állapotának adatainak törlése.
 2. Telepítse az Azure-beli VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -ügynököt az áttelepített gépekre.
 3. Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása).
 4. Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.

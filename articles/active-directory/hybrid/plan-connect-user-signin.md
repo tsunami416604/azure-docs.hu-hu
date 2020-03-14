@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376270"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253740"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Felhasználói bejelentkezési beállítások Azure AD Connect
 Azure Active Directory (Azure AD) kapcsolat lehetővé teszi, hogy a felhasználók ugyanazzal a jelszóval jelentkezzenek be a felhőbe és a helyszíni erőforrásokra. Ez a cikk az egyes identitási modellekkel kapcsolatos főbb fogalmakat ismerteti, így kiválaszthatja az Azure AD-ba való bejelentkezéshez használni kívánt identitást.

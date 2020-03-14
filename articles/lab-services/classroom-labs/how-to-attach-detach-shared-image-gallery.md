@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360576"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284316"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 A tanárok/laborok rendszergazdái egy sablon virtuálisgép-rendszerképét menthetik az Azure [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md) -katalógusában, amelyet mások is felhasználhatnak. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 

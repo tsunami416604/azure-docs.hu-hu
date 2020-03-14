@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript hasz
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276828"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -363,6 +363,7 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 | _fejlécek_ | Egy objektum, amely tartalmazza a válasz fejléceit.             |
 | _isRaw_   | Azt jelzi, hogy a válasz formátuma kimarad.    |
 | _állapota_  | A válasz HTTP-állapotkódot.                     |
+| _sütik_ | A válaszban beállított HTTP cookie-objektumok tömbje. A HTTP-cookie-objektumok `name`, `value`és egyéb cookie-tulajdonságokkal rendelkeznek, például `maxAge` vagy `sameSite`. |
 
 ### <a name="accessing-the-request-and-response"></a>A kérelem és válasz elérése 
 

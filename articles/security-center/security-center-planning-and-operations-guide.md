@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373011"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282691"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.

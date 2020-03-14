@@ -4,15 +4,15 @@ description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforr
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384530"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274007"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
-Rendszergazdaként szükség lehet egy előfizetés, erőforráscsoport vagy erőforrás zárolására, hogy megakadályozza a szervezet más felhasználói számára a kritikus erőforrások véletlen törlését vagy módosítását. Beállíthatja, hogy a zárolási szint **CanNotDelete** vagy **readonly**legyen. A portálon a zárolások neve **Törlés** és **csak olvasható** .
+Rendszergazdaként szüksége lehet egy előfizetés, erőforráscsoport vagy erőforrás zárolására annak érdekében, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
 
 * A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást. 
 * A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
@@ -35,7 +35,7 @@ A **readonly** utasítás alkalmazása váratlan eredményekhez vezethet, mert e
 
 ## <a name="who-can-create-or-delete-locks"></a>Kik hozhatnak létre vagy törölhetnek zárolásokat
 
-Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök közül csak a **tulajdonos** és a **felhasználói hozzáférés rendszergazdája** kapja meg ezeket a műveleteket.
+Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
 ## <a name="managed-applications-and-locks"></a>Felügyelt alkalmazások és zárolások
 
@@ -237,8 +237,8 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
       }
     } 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az erőforrások logikus rendszerezéséről: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md)
-* Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az Azure Policy?](../../governance/policy/overview.md)
-* Útmutató arról, hogy a vállalatok hogyan használhatják a Resource Managert az előfizetések hatékony kezelésére: az [Azure Enterprise állvány – előírásos előfizetés szabályozása](/azure/architecture/cloud-adoption-guide/subscription-governance).
+* Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)
+* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 

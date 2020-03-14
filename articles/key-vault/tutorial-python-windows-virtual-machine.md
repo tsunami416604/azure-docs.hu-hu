@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3b965ab7dfafd6c78c801cf3692463efe366c852
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6e6c4bb03490d1a5d2c0ea5a3b892b8ddb8f0bf8
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198082"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134442"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata Windows rendszerű virtuális géppel a Pythonban
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Windows, Mac és Linux rendszerekhez:
   * [Git](https://git-scm.com/downloads)
-  * Ehhez az oktatóanyaghoz helyileg kell futtatnia az Azure CLI-t. Telepítenie kell az Azure CLI 2.0.4 vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
+  * Ehhez az oktatóanyaghoz helyileg kell futtatnia az Azure CLI-t. Telepítenie kell az Azure CLI 2.0.4 vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="about-managed-service-identity"></a>Tudnivalók a felügyeltszolgáltatás-identitásról
 
@@ -61,7 +61,7 @@ Ha az Azure-ba az Azure CLI használatával szeretne bejelentkezni, írja be a k
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -180,7 +180,7 @@ Az előző kód azt mutatja be, hogyan végezheti el a műveleteket a Azure Key 
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

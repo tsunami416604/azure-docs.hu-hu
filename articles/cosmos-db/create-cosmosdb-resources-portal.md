@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
 ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240407"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
 
@@ -107,7 +107,7 @@ Ha csak az adatbázist szeretné törölni, és a jövőben az Azure Cosmos-fió
 * Nyissa meg **adatkezelő**, kattintson a jobb gombbal a törölni kívánt adatbázisra, majd válassza az **adatbázis törlése**lehetőséget.
 * Adja meg az adatbázis-azonosító/adatbázis nevét a törlési művelet megerősítéséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre adatbázist és tárolót a Adatkezelő használatával. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 

@@ -8,11 +8,11 @@ ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668825"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275047"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése
 

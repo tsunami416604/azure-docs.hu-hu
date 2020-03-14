@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360763"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244692"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Virtuális gép létrehozása az Azure-ban virtuálisgép-sablonok használatával a VMware-infrastruktúrában
 

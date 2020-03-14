@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
 ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373102"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239664"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Az Azure- és nem Azure-gépeken telepített szoftverek felderítése
 
@@ -127,7 +127,7 @@ ConfigurationData
 | summarize by Publisher, SoftwareName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan tekintheti meg a szoftverleltárt, és ennek keretében hogyan végezheti el az alábbi műveleteket:
 

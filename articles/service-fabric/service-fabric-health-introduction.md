@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365072"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282418"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.

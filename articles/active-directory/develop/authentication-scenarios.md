@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194995"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138518"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
@@ -50,7 +50,7 @@ Az Azure AD Azure Active Directory B2C is biztosít, hogy a szervezetek a felhas
 
 A biztonsági tokenek a felhasználókkal és az alkalmazásokkal kapcsolatos információkat tartalmaznak. Az Azure AD JSON-alapú jogkivonatokat (JWTs) használ, amelyek jogcímeket tartalmaznak.
 
-A jogcím egy entitást, például egy [ügyfélalkalmazás](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) vagy egy [erőforrás tulajdonosát](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner), egy másik entitásra, például egy [erőforrás-kiszolgálóra](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)vonatkozó kijelentéseket biztosít.
+A jogcím egy entitásra, például egy [ügyfélalkalmazás](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application) vagy [erőforrás-tulajdonosra](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)vonatkozó kijelentéseket biztosít egy másik entitáshoz, például egy [erőforrás-kiszolgálóhoz](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server).
 
 A jogcímek olyan név/érték párok, amelyek a jogkivonat tárgyával kapcsolatos adatokat továbbítanak. Előfordulhat például, hogy a jogcím az [engedélyezési kiszolgáló](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)által hitelesített rendszerbiztonsági tag tényeit is tartalmazza. Az adott jogkivonatban található jogcímek számos dologtól függenek, beleértve a token típusát, a tulajdonos hitelesítéséhez használt hitelesítő adatokat, az alkalmazás konfigurációját stb.
 

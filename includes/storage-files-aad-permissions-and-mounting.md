@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 7246a072c1bf2253b822fca53b0b69700c66221d
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565252"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208235"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek kiosztása identitáshoz
 
@@ -26,7 +26,7 @@ Három Azure-beli beépített szerepkört vezettünk be a felhasználók számá
 - A **Storage file-ADATsmb-megosztás emelt szintű közreműködője** lehetővé teszi az Azure Storage-FÁJLMEGOSZTÁS az SMB protokollon keresztül történő olvasását, írását, törlését és módosítását.
 
 > [!IMPORTANT]
-> Egy fájlmegosztás teljes körű felügyeleti felügyelete, beleértve a szerepkör identitáshoz való hozzárendelésének lehetőségét is, a Storage-fiók kulcsát kell használnia. Az Azure AD hitelesítő adatai nem támogatják a felügyeleti felügyeletet.
+> Egy fájlmegosztás teljes körű felügyeleti ellenőrzése, beleértve a fájl tulajdonjogának átvételének lehetőségét, a Storage-fiók kulcsát kell használnia. Az Azure AD hitelesítő adatai nem támogatják a felügyeleti felügyeletet.
 
 A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti a beépített szerepköröket egy felhasználó Azure AD-identitásához a megosztási szintű engedélyek megadásához.
 

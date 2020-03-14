@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7003dc19a7bfc405809de91534028aba8e0416c5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913242"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136850"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Az első Azure-függvény létrehozása Javával és IntelliJ
 
@@ -46,7 +46,7 @@ A Java-és IntelliJ-függvények fejlesztéséhez telepítse a következő szoft
 1. Az **archetípus hozzáadása** ablakban végezze el a következő mezőket:
     - _GroupID_: com. microsoft. Azure
     - _ArtifactId_: Azure-functions-archetípus
-    - _Verzió_: használja a legújabb **1,22** -es verziót [a központi tárházból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - _Verzió_: a [központi tárház](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) legújabb verziójának megkeresése és használata
     ![hozzon létre egy Maven-projektet az archetípusból a IntelliJ IDEA-ban](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. Válassza **az OK**, majd a **tovább**lehetőséget.
 1. Adja meg az aktuális projekt adatait, majd kattintson a **Befejezés gombra**.

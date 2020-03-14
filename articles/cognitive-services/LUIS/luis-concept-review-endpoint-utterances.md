@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: diberry
 ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393778"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219939"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Aktív tanulás engedélyezésének végpont utterances áttekintésével kapcsolatos fogalmak
 Aktív tanulás az előrejelzési pontosság és a legegyszerűbb megvalósításához három stratégia egyik. Aktív tanulás, a felülvizsgálat végpont utterances megfelelő leképezés és entitás. A LUIS úgy dönt, hogy pontosan végpontja kimondott szöveg.
@@ -43,6 +43,6 @@ Használja a nem **[címkézett hosszúságú kimondott szöveg API törlését]
 
 Az aktív tanulás engedélyezéséhez naplóznia kell a felhasználói lekérdezéseket. Ezt úgy hajthatja végre, hogy meghívja a [végponti lekérdezést](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató az Endpoint hosszúságú kimondott szöveg [áttekintéséhez](luis-how-to-review-endpoint-utterances.md)

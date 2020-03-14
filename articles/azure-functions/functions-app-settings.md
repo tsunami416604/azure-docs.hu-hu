@@ -4,11 +4,11 @@ description: Az Azure Functions-alkalmazás beállításai vagy a környezeti v�
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277829"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 

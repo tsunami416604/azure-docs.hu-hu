@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280312"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.

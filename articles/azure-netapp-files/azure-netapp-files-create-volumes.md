@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380872"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274085"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 

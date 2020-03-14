@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373230"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279610"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
@@ -64,10 +64,10 @@ A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy mege
 
 A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához használt fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek | Név |
+| Műveletek | Name (Név) |
 |---|---|
-| Microsoft. Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
-| Microsoft. Network/networkInterfaces/READ | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
+| Microsoft.Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
+| Microsoft.Network/networkInterfaces/read | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
 | Microsoft. Network/tapConfigurations/* | A TAP-konfiguráció hálózati adapteren való létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
 
 ## <a name="next-steps"></a>Következő lépések

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382362"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280884"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute kapcsolati modellek
 A helyszíni hálózata és a Microsoft-felhő között háromféleképpen hozhat létre kapcsolatot: [Cloud Exchange közös elhelyezés](#CloudExchange), [pontok közötti Ethernet-kapcsolat](#Ethernet) és [bármely elemek közötti (IPVPN) kapcsolat](#IPVPN). A kapcsolatszolgáltatók egy vagy több kapcsolódási modellt kínálhatnak. Kapcsolatszolgáltatójával együttműködve választhatja ki az Ön számára optimális modellt.

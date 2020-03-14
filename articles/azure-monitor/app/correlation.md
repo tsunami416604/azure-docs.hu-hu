@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367658"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276126"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -45,7 +45,7 @@ Az eredményül kapott telemetria a következő lekérdezés futtatásával elem
 
 Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosztja a legfelső `operation_Id`. Amikor az oldalról AJAX-hívást kezdeményeznek, a rendszer új egyedi azonosítót (`qJSXU`) rendel a függőségi telemetria, és az oldalmegtekintés AZONOSÍTÓját használja `operation_ParentId`. A kiszolgálói kérelem ezután az Ajax ID-t használja `operation_ParentId`ként.
 
-| ItemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
+| itemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock lap                |              | STYz               | STYz         |
 | függőségi | GET /Home/Stock           | qJSXU        | STYz               | STYz         |

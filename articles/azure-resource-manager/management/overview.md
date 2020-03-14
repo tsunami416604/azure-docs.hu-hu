@@ -4,11 +4,11 @@ description: Ismerteti, hogyan használja az Azure Resource Manager eszközt er�
 ms.topic: overview
 ms.date: 08/29/2019
 ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473786"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240323"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -26,7 +26,7 @@ Az alábbi képen látható, hogy milyen szerepkör Azure Resource Manager játs
 
 A portálon elérhető összes funkció a PowerShell, az Azure CLI, a REST API-k és az ügyféloldali SDK-k segítségével is elérhető. Az eredetileg API-kon keresztül kiadott funkciók a kezdeti kiadástól számított 180 napig jelennek meg a portálon.
 
-## <a name="terminology"></a>Szakkifejezések
+## <a name="terminology"></a>Terminológia
 
 Ha új felhasználója az Azure Resource Managernek, találkozhat néhány olyan kifejezéssel, amelyet még nem ismer.
 

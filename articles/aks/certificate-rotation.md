@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917033"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205212"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -37,7 +37,7 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 * Az `kubectl` ügyfél rendelkezik tanúsítvánnyal az AK-fürttel való kommunikációhoz.
 
 > [!NOTE]
-> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019 után vagy bármely olyan fürt, amelynek a tanúsítványait elforgatták, 30 év után lejárnak. Annak ellenőrzéséhez, hogy a fürt létrejött-e, a `kubectl get nodes` használatával megtekintheti a Node-készletek *korát* .
+> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019-ig vagy bármely, a tanúsítvánnyal elforgatott fürttel létrehozott fürtnek 30 év után lejár a fürt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa. Minden más tanúsítvány két év után lejár. Annak ellenőrzéséhez, hogy a fürt létrejött-e, a `kubectl get nodes` használatával megtekintheti a Node-készletek *korát* .
 > 
 > Emellett a fürt tanúsítványának lejárati dátumát is megtekintheti. A következő parancs például megjeleníti a *myAKSCluster* -fürthöz tartozó tanúsítvány részleteit.
 > ```console

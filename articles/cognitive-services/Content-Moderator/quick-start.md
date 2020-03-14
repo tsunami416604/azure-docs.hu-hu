@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973611"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203563"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
@@ -32,9 +32,23 @@ A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehet
 
 ## <a name="create-a-review-team"></a>Felülvizsgálati csapat létrehozása
 
-Ezután hozzon létre egy felülvizsgálati csapatot. A munkahelyen ez azon személyek csoportja lesz, akik manuálisan áttekintik a szolgáltatás moderálási döntéseit. Egyelőre csak a csapat nevét kell létrehoznia. Ha meg szeretné hívni a munkatársakat a csapatnak, az e-mail-címei Itt megadhatók.
+Ezután hozzon létre egy felülvizsgálati csapatot. A munkahelyen ez azon személyek csoportja lesz, akik manuálisan áttekintik a szolgáltatás moderálási döntéseit. Csapat létrehozásához ki kell választania egy **régiót**, és meg kell adnia a **csoport nevét** és a **csoport azonosítóját**. Ha meg szeretné hívni a munkatársakat a csapatnak, az e-mail-címei Itt megadhatók.
 
-![Csapattag meghívása](images/QuickStart-2-small.png)
+> [!NOTE]
+> A **csapat neve** a felülvizsgálati csapat rövid neve. Ez a név jelenik meg a Azure Portalban. A **csapat azonosítója** a felülvizsgálati csapat programozott módon azonosítására szolgál.
+
+> [!div class="mx-imgBorder"]
+> ![meghívó csapat tagja](images/create-team.png)
+
+Ha ügyfél által felügyelt kulcs (CMK) használatával titkosítja az adattitkosítást, a rendszer a E0-díjszabási szinten kéri a Content Moderator-erőforrás **erőforrás-azonosítójának** megadását. Az Ön által megadott erőforrásnak újnak kell lennie. 
+
+> [!div class="mx-imgBorder"]
+> ![meghívó csapat tagja a CMK-](images/create-team-cmk.png)
+
+Ha egy Content Moderator erőforrás újrafelhasználását kísérli meg, akkor a következő figyelmeztetés jelenik meg: 
+
+> [!div class="mx-imgBorder"]
+> ![CMK sikertelen](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>Minta tartalmának feltöltése
 

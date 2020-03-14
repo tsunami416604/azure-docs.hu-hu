@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357246"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281729"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Adatok másolása a Teradata Vantage-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -53,7 +53,7 @@ Az Integration Runtime a 3,18-es verziótól kezdődően beépített Teradata-il
 
 Az 3,18-nál korábbi, saját üzemeltetésű Integration Runtime-verziók esetében telepítse a [.net-adatszolgáltatót a Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), 14-ös vagy újabb verzióra az Integration Runtime-gépen. 
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -65,7 +65,7 @@ A Teradata társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **Teradata**értékre kell beállítani. | Igen |
+| type | A Type tulajdonságot **Teradata**értékre kell beállítani. | Igen |
 | connectionString | Meghatározza az Teradata-példányhoz való kapcsolódáshoz szükséges adatokat. Tekintse át a következő mintákat.<br/>A jelszót Azure Key Vaultba is helyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md) című témakört. | Igen |
 | felhasználónév | Adja meg a Teradata való kapcsolódáshoz használandó felhasználónevet. Windows-hitelesítés használatakor érvényes. | Nem |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Azt is megteheti, hogy [hivatkozik Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). <br>A Windows-hitelesítés használatakor, vagy az alapszintű hitelesítéshez Key Vault jelszóra hivatkozik. | Nem |
@@ -152,7 +152,7 @@ Az adatok Teradata történő másolásához a következő tulajdonságok támog
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát `TeradataTable`értékre kell beállítani. | Igen |
+| type | Az adatkészlet Type tulajdonságát `TeradataTable`értékre kell beállítani. | Igen |
 | database | Az Teradata-példány neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 | table | A Teradata-példányban található tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
 
@@ -206,7 +206,7 @@ Az adatok Teradata történő másolásához a másolási tevékenység **forrá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát `TeradataSource`értékre kell állítani. | Igen |
+| type | A másolási tevékenység forrásának Type tulajdonságát `TeradataSource`értékre kell állítani. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, össze kell kapcsolnia a lekérdezéshez tartozó beépített partíciós paramétereket. Példákat a [párhuzamos másolás Teradata](#parallel-copy-from-teradata) szakaszban talál. | Nem (ha meg van adva table az adatkészletben) |
 | partitionOptions | Meghatározza az adatok Teradata való betöltéséhez használt adatparticionálási beállításokat. <br>Értékek engedélyezése: **none** (alapértelmezett), **kivonat** -és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None`), akkor a Teradata származó adatok párhuzamos betöltésének fokát a másolási tevékenység [`parallelCopies`](copy-activity-performance.md#parallel-copy) beállítása vezérli. | Nem |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció beállítása nem `None`. | Nem |
@@ -310,7 +310,7 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | tizedes tört |tizedes tört |
 | Dupla |Dupla |
 | Graphic |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
-| Egész |Int32 |
+| Egész szám |Int32 |
 | Interval Day |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Interval Day To Hour |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Interval Day To Minute |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
@@ -331,8 +331,8 @@ Az adatok Teradata történő másolásakor a következő leképezések érvény
 | Időszak (timestamp) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | Időtartam (időbélyegző az időzónával) |Nem támogatott. Explicit szereposztás alkalmazása a forrás lekérdezésben. |
 | SmallInt |Int16 |
-| Time |időtartam |
-| Time With Time Zone |időtartam |
+| Time |Időtartam |
+| Time With Time Zone |Időtartam |
 | Időbélyeg |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |

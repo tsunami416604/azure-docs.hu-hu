@@ -15,11 +15,11 @@ ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720656"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243483"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -142,7 +142,7 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
-1. Kattintson a **Tulajdonságok** lehetőségre.
+1. Kattintson a **Tulajdonságok** elemre.
 
     Az előfizetés fiókjának rendszergazdája megjelenik a **fiók** adminisztrátora mezőben.
 

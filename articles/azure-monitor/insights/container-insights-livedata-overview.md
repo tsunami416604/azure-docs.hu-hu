@@ -3,12 +3,12 @@ title: Élő adatértékek (előzetes verzió) megtekintése az Azure Monitor fo
 description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404759"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216541"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
@@ -26,7 +26,7 @@ Az élő adatszolgáltatások (előzetes verzió) beállításához vagy hibaelh
 
 ## <a name="live-data-preview-functionality-overview"></a>Az élő adat (előzetes verzió) funkcióinak áttekintése
 
-### <a name="search"></a>Search
+### <a name="search"></a>Keresés
 
 ![Példa az élő adatkonzol ablaktáblájának szűrésére](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -54,7 +54,7 @@ A valós idejű naplózási adatok megtekinthetők úgy, ahogy a tároló motorj
 
 3. Válassza ki a **csomópontok**, **vezérlők**vagy **tárolók** fület.
 
-4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.  
+4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  
 
     >[!NOTE]
     >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
@@ -75,7 +75,7 @@ Megtekintheti a tároló motor által a **csomópontok**, **vezérlők**, **tár
 
 3. Válassza ki a **csomópontok**, **vezérlők**, **tárolók**vagy **központi telepítések (előzetes verzió)** lapot.
 
-4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.  
+4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  
 
     >[!NOTE]
     >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  
@@ -84,7 +84,7 @@ A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktáb
     
 Ha a kiválasztott objektum egy tároló, válassza az **események** lehetőséget a panelen. Ha kiválasztotta a csomópontot, a hüvelyt vagy a vezérlőt, a rendszer automatikusan kijelöli az események megtekintését. 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+![Vezérlő tulajdonságai ablaktábla – események megtekintése](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 A panel címe annak a pod-nek a nevét mutatja, amelybe a tároló van csoportosítva.
 
@@ -102,7 +102,7 @@ A valós idejű metrikai adatokat úgy tekintheti meg, ahogy a tároló motorja 
 
 3. Válassza ki a **csomópontok** vagy a **vezérlők** lapot.
 
-4. Válasszon ki egy **Pod** objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.  
+4. Válasszon ki egy **Pod** objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  
 
     >[!NOTE]
     >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. Kísérlet a naplók keresésére egy olyan tárolóban, amely nem érhető el a `kubectl`-ben is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .  

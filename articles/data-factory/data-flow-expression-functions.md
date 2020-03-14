@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 8e607a4447448ee0e822dbee721b701d677d4f63
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1b87fa795047070db9a10ceec4b69dd6f7c042a2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197453"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217193"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban 
 
@@ -142,7 +142,8 @@ Kiszámítja a különböző primitív adattípusok oszlopának CRC32 kivonatát
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Lekérdezi az aktuális dátumot, amikor a feladatnak futnia kell. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. (https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``
+Lekérdezi az aktuális dátumot, amikor a feladatnak futnia kell. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
+* ``currentDate() == toDate('2250-12-31') -> false``
 * ``currentDate('PST')  == toDate('2250-12-31') -> false``
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``
 ___
@@ -961,6 +962,6 @@ ___
 <code><b>rowNumber() => integer</b></code><br/><br/>
 Egymást követő sorszámozást rendel egy ablakban lévő sorokhoz, 1-től kezdődően * ``rowNumber()``
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg a Expression Builder használatát](concepts-data-flow-expression-builder.md).

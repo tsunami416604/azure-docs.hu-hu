@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669590"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136740"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
 
@@ -38,7 +38,7 @@ A .NET, a .NET Core, a Java, a Node. js és a JavaScript Application Insights SD
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (előzetes verzió)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 A megfelelő Application Insights SDK telepítésével és konfigurálásával az SDK-függőségi automatikus gyűjtők automatikusan gyűjtik a nyomkövetési információkat a népszerű keretrendszerek, könyvtárak és technológiák számára. A támogatott technológiák teljes listája [a függőségi automatikus gyűjtemény dokumentációjában](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)érhető el.
 
@@ -48,7 +48,7 @@ A megfelelő Application Insights SDK telepítésével és konfigurálásával a
 
 A Application Insights SDK-k mellett Application Insights is támogatja az elosztott nyomkövetést a [OpenCensus](https://opencensus.io/)-en keresztül. A OpenCensus egy nyílt forráskódú, szállítói-agnosztikus, a könyvtárak egyetlen eloszlása, amely metrikák gyűjtését és elosztott nyomkövetését biztosítja a szolgáltatásokhoz. Emellett lehetővé teszi a nyílt forráskódú közösség számára, hogy lehetővé tegye az elosztott nyomkövetést olyan népszerű technológiákkal, mint a Redis, a Memcached vagy a MongoDB. [A Microsoft számos más monitorozási és felhőalapú partnerrel együttműködve együttműködik a OpenCensus](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-[Python (előzetes verzió)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 A OpenCensus webhely a [Python](https://opencensus.io/api/python/trace/usage.html) és a [Go](https://godoc.org/go.opencensus.io)API-referenciájának dokumentációját, valamint a OpenCensus használatának különböző útmutatóit tartalmazza. 
 

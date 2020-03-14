@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 1d9f148351e4ce12d6f6bcd699cdd74e94ba09ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358106"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276906"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Ebben a példában cserélje le a `<RESOURCE_GROUP>`t az erőforráscsoporthoz, és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [támogatott `<REGION>`](#regions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
+Ebben a példában cserélje le a `<RESOURCE_GROUP>`t az erőforráscsoporthoz, és `<PLAN_NAME>` az erőforráscsoport egyedi csomagjának nevére. Válasszon egy [támogatott `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions). A Linuxot támogató Prémium csomag létrehozásához adja meg a `--is-linux` lehetőséget.
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
@@ -99,44 +99,42 @@ A több memóriával rendelkező gépeken való futtatás nem mindig jelenti azt
 
 A JavaScript-függvények alkalmazásait például korlátozza a Node. js alapértelmezett memória-korlátja. A rögzített memória korlátjának növeléséhez adja hozzá az `languageWorkers:node:arguments` `--max-old-space-size=<max memory in MB>`értékkel.
 
-## <a name="regions"></a>Régiók
+## <a name="region-max-scale-out"></a>Régió maximális felskálázása
 
-Az alábbiakban láthatók az egyes operációs rendszerek jelenleg támogatott régiói.
+Az alábbiakban láthatók az egyes régiók és operációs rendszerek konfigurációjának egyetlen csomagjának jelenleg támogatott maximális méretezési értékei. Ha növekményt szeretne kérni, nyisson meg egy támogatási jegyet.
+
+Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Régió| Windows | Linux |
 |--| -- | -- |
-|Ausztrália középső régiója| ✔<sup>1</sup> | |
-|Ausztrália 2. középső régiója| ✔<sup>1</sup> | |
-|Kelet-Ausztrália| ✔ | ✔<sup>1</sup> |
-|Délkelet-Ausztrália | ✔ | ✔<sup>1</sup> |
-|Dél-Brazília| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|Közép-Kanada| ✔ | ✔<sup>1</sup> |
-|USA középső régiója| ✔ | ✔<sup>1</sup> |
-|Kelet-Ázsia| ✔ | ✔<sup>1</sup> |
-|USA keleti régiója | ✔ | ✔<sup>1</sup> |
-|USA 2. keleti régiója| ✔ | ✔<sup>1</sup> |
-|Közép-Franciaország| ✔ | ✔<sup>1</sup> |
-|Középnyugat-Németország| ✔ | |
-|Kelet-Japán| ✔ | ✔<sup>1</sup> |
-|Nyugat-Japán| ✔ | ✔<sup>1</sup> |
-|Dél-Korea középső régiója| ✔ | ✔<sup>1</sup> |
-|USA északi középső régiója| ✔ | ✔<sup>1</sup> |
-|Észak-Európa| ✔ | ✔<sup>1</sup> |
-|Kelet-Norvégia| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|USA déli középső régiója| ✔ | ✔<sup>1</sup> |
-|Dél-India | ✔ | |
-|Délkelet-Ázsia| ✔ | ✔<sup>1</sup> |
-|Az Egyesült Királyság déli régiója| ✔ | ✔<sup>1</sup> |
-|Az Egyesült Királyság nyugati régiója| ✔ | ✔<sup>1</sup> |
-|Nyugat-Európa| ✔ | ✔<sup>1</sup> |
-|Nyugat-India| ✔ | ✔<sup>1</sup> |
-|USA nyugati középső régiója| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|USA nyugati régiója| ✔ | ✔<sup>1</sup> |
-|USA nyugati régiója, 2.| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup> A maximális méretezés legfeljebb 20 példányra korlátozódik.  
-<sup>2</sup> A maximális felskálázás 60 példányra korlátozódik.
-
+|Ausztrália középső régiója| 20 | Nem érhető el |
+|Ausztrália 2. középső régiója| 20 | Nem érhető el |
+|Kelet-Ausztrália| 100 | 20 |
+|Délkelet-Ausztrália | 100 | 20 |
+|Dél-Brazília| 60 | 20 |
+|Közép-Kanada| 100 | 20 |
+|USA középső régiója| 100 | 20 |
+|Kelet-Ázsia| 100 | 20 |
+|USA keleti régiója | 100 | 20 |
+|USA 2. keleti régiója| 100 | 20 |
+|Közép-Franciaország| 100 | 20 |
+|Középnyugat-Németország| 100 | Nem érhető el |
+|Kelet-Japán| 100 | 20 |
+|Nyugat-Japán| 100 | 20 |
+|Dél-Korea középső régiója| 100 | 20 |
+|USA északi középső régiója| 100 | 20 |
+|Észak-Európa| 100 | 20 |
+|Kelet-Norvégia| 20 | 20 |
+|USA déli középső régiója| 100 | 20 |
+|Dél-India | 100 | Nem érhető el |
+|Délkelet-Ázsia| 100 | 20 |
+|Az Egyesült Királyság déli régiója| 100 | 20 |
+|Az Egyesült Királyság nyugati régiója| 100 | 20 |
+|Nyugat-Európa| 100 | 20 |
+|Nyugat-India| 100 | 20 |
+|USA nyugati középső régiója| 20 | 20 |
+|USA nyugati régiója| 100 | 20 |
+|USA nyugati régiója, 2.| 100 | 20 |
 
 ## <a name="next-steps"></a>Következő lépések
 

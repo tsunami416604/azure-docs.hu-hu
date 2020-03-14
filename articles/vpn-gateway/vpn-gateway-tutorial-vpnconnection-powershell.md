@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f4687a6af9cae7172a70527f336b98c75d0e9cd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: c42d164647d608fc45e1135cd4111ff3900a733c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903389"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137160"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Oktatóanyag: S2S VPN-kapcsolatok létrehozása és kezelése a PowerShell-lel
 
@@ -25,13 +25,13 @@ Az Azure S2S VPN-kapcsolatok biztonságos, helyszínek közötti kapcsolatot biz
 > * További VPN-kapcsolatok hozzáadása
 > * VPN-kapcsolat törlése
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Az alábbi diagram az oktatóanyagban használt topológiát mutatja:
 
 ![Helyek közötti VPN-kapcsolat ábrája](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell és Azure PowerShell használata
+
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>Követelmények
 

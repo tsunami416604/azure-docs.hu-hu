@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259291"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
 Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a Service Bus entitások (várólisták, témakörök, előfizetések vagy szűrők) kérésének engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).

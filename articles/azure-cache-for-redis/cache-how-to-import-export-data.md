@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372040"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278089"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
 Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be adatok exportálását egy Azure cache for Redis Database (RDB) pillanatkép importálásával és exportálásával egy Azure Storage-fiókban található blobba.

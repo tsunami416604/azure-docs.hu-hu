@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826879"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240561"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Gyors útmutató: Azure SQL Database a kapcsolat és a lekérdezés
 
@@ -28,7 +28,7 @@ A következő dokumentum az Azure SQL-adatbázisok csatlakozásával és lekérd
 |---|---|
 |[SQL Server Management Studio](sql-database-connect-query-ssms.md)|Ez a rövid útmutató azt ismerteti, hogyan használható az SSMS egy Azure SQL-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
 |[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|Ez a rövid útmutató azt ismerteti, hogyan használható az Azure Data Studio egy Azure SQL-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL- (T-SQL-) utasításokkal létrehozni az Azure Data Studio oktatóanyagaiban használt TutorialDB adatbázist.|
-|[Azure Portal](sql-database-connect-query-portal.md)|Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
+|[Azure Portalra](sql-database-connect-query-portal.md)|Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
 |[Visual Studio Code](sql-database-connect-query-vscode.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Visual Studio Code egy Azure SQL-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
 |[.NET Visual Studióval](sql-database-connect-query-dotnet-visual-studio.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a .NET-keretrendszer olyan C#-program a Visual Studióval való létrehozásához, amely egy Azure SQL-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.|
 |[.NET Core](sql-database-connect-query-dotnet-core.md)|Ez a rövid útmutató ismerteti, hogyan használható a .NET Core olyan C#-program létrehozásához Windows/Linux/macOS-gépeken, amely egy Azure SQL-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.|
@@ -59,7 +59,7 @@ A Azure SQL Databasehoz való kapcsolódáshoz különböző kódtárak és kere
 
 A következő táblázat felsorolja azokat a kapcsolódási könyvtárakat és *illesztőprogramokat* , amelyeket az ügyfélalkalmazások számos különböző nyelven használhatnak a helyszíni vagy a felhőben futó SQL Serverhoz való csatlakozáshoz és használatához. A Linuxon, a Windowson vagy a Docker-ben is használható, és a Azure SQL Databasehoz és Azure SQL Data Warehousehoz való kapcsolódáshoz használhatja őket. 
 
-| Nyelv | Platform | További források | Letöltés | Bevezetés |
+| Nyelv | Platform | További források | Letöltés | Első lépések |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [A SQL Server Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Letöltés](https://www.microsoft.com/net/download/) | [Bevezetés](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Microsoft JDBC-illesztőprogram a SQL Serverhoz](https://msdn.microsoft.com/library/mt484311.aspx) | [Letöltés](https://go.microsoft.com/fwlink/?linkid=852460) |  [Bevezetés](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
@@ -71,7 +71,7 @@ A következő táblázat felsorolja azokat a kapcsolódási könyvtárakat és *
 
 Az alábbi táblázat felsorolja azokat az objektum-összehasonlító leképezési (ORM) keretrendszereket és webes keretrendszereket, amelyeket az ügyfélalkalmazások használhatnak a helyszíni vagy a felhőben futó SQL Server. Használhatja a Linuxon, a Windowson vagy a Docker-keretrendszereken, és a SQL Database és SQL Data Warehousehoz való kapcsolódáshoz használhatja őket. 
 
-| Nyelv | Platform | ORM (ok) |
+| Nyelv | Platform | ORM(s) |
 | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework mag](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows, Linux, macOS |[Hibernált ORM](https://hibernate.org/orm)|
@@ -81,7 +81,7 @@ Az alábbi táblázat felsorolja azokat az objektum-összehasonlító leképezé
 | Ruby | Windows, Linux, macOS | [Ruby on Rails](https://rubyonrails.org/) |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kapcsolati architektúrával kapcsolatos információkért tekintse meg [az Azure SQL Database kapcsolati architektúráját](sql-database-connectivity-architecture.md) ismertető cikket.
 - Ügyfél-alkalmazásokból való kapcsolódáshoz használt [SQL Server-illesztőprogramok](https://msdn.microsoft.com/library/mt654049.aspx) keresése

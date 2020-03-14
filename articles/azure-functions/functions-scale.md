@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356502"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276607"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
@@ -153,12 +153,10 @@ A Azure Functions méretezési egysége a Function alkalmazás. A Function alkal
 A skálázás több tényezőn is változhat, és a kiválasztott trigger és nyelv alapján különbözőképpen méretezhető. Van néhány bonyolult méretezési mód az alábbiakkal kapcsolatban:
 
 * Egyetlen Function-alkalmazás csak legfeljebb 200 példányra méretezhető. Egyetlen példány egyszerre több üzenetet vagy kérelmet is feldolgozhat, így az egyidejű végrehajtások száma nem megengedett.
-* HTTP-eseményindítók esetén az új példányok csak a legfeljebb 1 másodpercenként lesznek lefoglalva.
-* A nem HTTP-triggerek esetében az új példányok csak 30 másodpercenként egyszer lesznek lefoglalva.
-
-A különböző eseményindítók eltérő skálázási korlátokkal is rendelkezhetnek, és az alábbiakban dokumentálva vannak:
-
-* [Event Hub](functions-bindings-event-hubs-trigger.md#scaling)
+* HTTP-eseményindítók esetén az új példányok lefoglalása legfeljebb egyszer, másodpercenként történik.
+* A nem HTTP-triggerek esetében az új példányok lefoglalása legfeljebb 30 másodpercenként történik. A skálázás gyorsabb, ha [prémium](#premium-plan)szintű csomagban fut.
+* Service Bus eseményindítók esetében a leghatékonyabb skálázáshoz használja az erőforrások _kezelése_ jogosultságokat. A _figyelési_ jogosultságok használata esetén a skálázás nem annyira pontos, mert a várólista hossza nem használható a skálázási döntések tájékoztatására. Ha többet szeretne megtudni a Service Bus hozzáférési házirendekben található jogosultságok beállításáról, tekintse meg a [megosztott hozzáférés engedélyezési házirendjét](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
+* Az Event hub-eseményindítók esetében lásd a [méretezési útmutatót](functions-bindings-event-hubs-trigger.md#scaling) a dokumentációban. 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ajánlott eljárások és minták méretezhető alkalmazásokhoz
 

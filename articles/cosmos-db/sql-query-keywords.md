@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
 ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898766"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246577"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB kulcsszavai
 Ez a cikk a Azure Cosmos DB SQL-lekérdezésekben felhasználható kulcsszavakat részletezi.
@@ -163,7 +163,7 @@ Az eredmények a következők:
     }]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Első lépések](sql-query-getting-started.md)
 - [Csatlakozik](sql-query-join.md)

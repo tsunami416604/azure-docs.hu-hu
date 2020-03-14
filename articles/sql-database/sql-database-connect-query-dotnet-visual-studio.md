@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/31/2019
-ms.openlocfilehash: b37430ed7f23088c9bcacd555d68e484310de700
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 75f84f87fc59a870a0c88fd24cb1b1b8894b3e2a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562153"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209575"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rövid útmutató: a .NET C# és a Visual Studio használata Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
 
@@ -30,7 +30,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -48,7 +48,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 

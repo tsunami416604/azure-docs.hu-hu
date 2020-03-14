@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Azure Data Box Disk áttekintése | Microsoft Docs
-description: Az Azure Data Box Disk felhő alapú megoldást mutatja be, amellyel nagy mennyiségű adat helyezhető át az Azure-ba
+description: Ismerteti az Azure Data Box Disk nevű felhőalapú megoldást, amellyel nagy mennyiségű adat vihető át az Azure-ba
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,13 +10,13 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204768"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240729"
 ---
-# <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
+# <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk?
 
 A Microsoft Azure Data Box Disk megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi helyszíni adatot az Azure-ba. A biztonságos adatátvitel gyorsaságáról 1-5 SSD-lemez küldésével gondoskodunk. Ezeket a 8 TB-os titkosított lemezeket egy regionális szállító szolgáltatóval küldjük el az Ön adatközpontjába. 
 
@@ -76,7 +76,7 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
-| Tömeg                                                  | < 2 lb dobozonként. A mezőbe legfeljebb 5 lemezek                |
+| Tömeg                                                  | < 2 lb dobozonként. Legfeljebb 5 lemez a dobozban                |
 | Dimenziók                                              | Lemez – 2,5 inch SSD |            
 | Kábelek                                                  | 1 USB 3.1 kábel lemezenként|
 | Tárolási kapacitás megrendelésenként                              | 40 TB (használható ~ 35 TB)|
@@ -89,14 +89,14 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Információk a régiók rendelkezésre állása, [elérhető Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Az Azure Government cloud Data Box-lemezek is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+A régió rendelkezésre állásával kapcsolatos információkért tekintse meg a [régiók által elérhető Azure-termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
 
 ## <a name="pricing"></a>Díjszabás
 
-Díjszabási információkért látogasson el a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/databox/disk/).
+A díjszabással kapcsolatos információkért lépjen a [díjszabás oldalra](https://azure.microsoft.com/pricing/details/databox/disk/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box Disk követelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.

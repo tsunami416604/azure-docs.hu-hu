@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359095"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217013"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal (nyilvános előzetes verzió)
 
@@ -31,10 +31,6 @@ A NAT-átjáró erőforrásai [Virtual Network NAT](nat-overview.md) részét k�
 </p>
 
 *Ábra: Virtual Network NAT a kimenő internethez*
-
-
->[!NOTE] 
->Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](nat-overview.md#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>NAT üzembe helyezése
 
@@ -147,7 +143,7 @@ Tekintse át ezt a szakaszt, és ismerkedjen meg a virtuális hálózatok NAT-be
 
 ### <a name="cost-optimization"></a>Költségoptimalizálás
 
-A [szolgáltatás-végpontok](virtual-network-service-endpoints-overview.md) és a [magánhálózati kapcsolatok](../private-link/private-link-overview.md) két lehetőség közül választhatnak, hogy optimalizálják a költségeket, ahol a NAT nem szükséges.  A virtuális hálózat NAT-kapcsolata nem dolgozza fel a szolgáltatási végpontokra vagy privát hivatkozásokra irányuló forgalmat.  
+A [szolgáltatási végpontok](virtual-network-service-endpoints-overview.md) és a [magánjellegű hivatkozások](../private-link/private-link-overview.md) a költségeket optimalizáló beállítások. Ezekhez a szolgáltatásokhoz nincs szükség NAT-ra. A virtuális hálózat NAT-kapcsolata nem dolgozza fel a szolgáltatási végpontokra vagy privát hivatkozásokra irányuló forgalmat.  
 
 A szolgáltatás-végpontok az Azure-szolgáltatások erőforrásainak a virtuális hálózatra való összekötését és az Azure-szolgáltatás erőforrásaihoz való hozzáférést vezérlik. Ha például az Azure Storage-hoz fér hozzá, a tároláshoz használjon szolgáltatási végpontot, hogy elkerülje az adatok feldolgozott NAT-díját. A szolgáltatási végpontok ingyenesek.
 
@@ -339,33 +335,29 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 - A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 - A NAT nem tud több virtuális hálózatot kifogni.
 
-## <a name="preview-participation"></a>Előzetes verzió részvétele
-
-[Az előfizetés engedélyezéséhez](nat-overview.md#public-preview-participation)kövesse az utasításokat.
 
 ## <a name="feedback"></a>Visszajelzés
 
-Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [véleményét a nyilvános előzetes](https://aka.ms/natfeedback) verzióban.  Azt is javasolhatja, hogy mit érdemes a következő címen létrehozni a [NAT-UserVoice](https://aka.ms/natuservoice).
+Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szavazzon arra, hogy mi a következő lépés a [NAT-UserVoice](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók a [Virtual Network NAT](nat-overview.md)-ról.
 * Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
 * További információ a [NAT-átjárók erőforrásainak hibaelhárításáról](troubleshoot-nat.md).
-* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
-* [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
 * Oktatóanyag a NAT-átjáró ellenőrzéséhez
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md),
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * Gyors útmutató NAT Gateway-erőforrás üzembe helyezéséhez
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md),
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  - [Portálon](./quickstart-create-nat-gateway-portal.md).
+  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Portal](./quickstart-create-nat-gateway-portal.md)
 * Tudnivalók a NAT Gateway Resource API-ról
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+
 * További információ a [rendelkezésre állási zónákról](../availability-zones/az-overview.md).
 * Ismerje meg a [standard Load balancert](../load-balancer/load-balancer-standard-overview.md).
 * További információ a [rendelkezésre állási zónákról és a standard Load balancerről](../load-balancer/load-balancer-standard-availability-zones.md).

@@ -10,11 +10,11 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/04/2020
 ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933314"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238663"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]

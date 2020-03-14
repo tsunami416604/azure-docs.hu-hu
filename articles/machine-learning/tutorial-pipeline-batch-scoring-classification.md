@@ -1,35 +1,36 @@
 ---
 title: 'Oktatóanyag: a Batch pontozásának ML-folyamatai'
 titleSuffix: Azure Machine Learning
-description: Ebben az oktatóanyagban egy gépi tanulási folyamatot hoz létre a Batch-pontozás futtatásához Azure Machine Learning képbesorolási modellben. A gépi tanulási folyamatok gyorsabbá, hordozhatósággal és újrafelhasználással optimalizálják a munkafolyamatot, így az infrastruktúra és az automatizálás helyett a szakértelemre koncentrálhat.
+description: Ebben az oktatóanyagban egy gépi tanulási folyamatot hoz létre a Batch-pontozás létrehozásához egy képbesorolási modellen. Azure Machine Learning lehetővé teszi, hogy az infrastruktúra és az automatizálás helyett a gépi tanulásra koncentráljon.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: cb99861a53c6802598cf925121f1821f74e7d76f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.reviewer: laobri
+ms.date: 03/11/2020
+ms.openlocfilehash: bfa39d4a508412322f0caec36d557c3fc6775090
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354915"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238649"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben az oktatóanyagban a Batch-pontozási feladatok futtatásához a Azure Machine Learning egy folyamatát használja. A példa a megcímkézetlen rendszerképek besorolására szolgáló, az előre betanított [kezdeti és a v3-](https://arxiv.org/abs/1512.00567) as típusú, a rendszerhez tartozó neurális hálózat Tensorflow modelljét használja. A folyamat létrehozása és közzététele után beállíthat egy REST-végpontot, amely segítségével bármely platformon bármely HTTP-könyvtárból aktiválhatja a folyamatot.
+Megtudhatja, hogyan hozhat létre folyamatokat Azure Machine Learning egy batch-pontozási feladatok futtatásához. A gépi tanulási folyamatok gyorsabbá, hordozhatósággal és újrafelhasználással optimalizálja a munkafolyamatot, így az infrastruktúra és az automatizálás helyett a gépi tanulásra is koncentrálhat. A folyamat létrehozása és közzététele után beállíthat egy REST-végpontot, amely segítségével bármely platformon bármely HTTP-könyvtárból aktiválhatja a folyamatot. 
 
-A gépi tanulási folyamatok gyorsabbá, hordozhatósággal és újrafelhasználással optimalizálják a munkafolyamatot, így az infrastruktúra és az automatizálás helyett a szakértelemre koncentrálhat. [További információ a gépi tanulási folyamatokról](concept-ml-pipelines.md).
+A példa a Tensorflow-ben megvalósított, a nem címkézett rendszerképek besorolására szolgáló, előre betanított [kezdeti és v3-](https://arxiv.org/abs/1512.00567) as, a-ben implementált neurális hálózati modellt használja. [További információ a gépi tanulási folyamatokról](concept-ml-pipelines.md).
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Munkaterület konfigurálása és mintaadatok letöltése
-> * Adatobjektumok létrehozása a lekéréshez és a kimeneti adatmennyiséghez
+> * Munkaterület konfigurálása 
+> * Mintaadatok letöltése és tárolása
+> * Adatkészlet-objektumok létrehozása a lekéréshez és a kimeneti adathoz
 > * A modell letöltése, előkészítése és regisztrálása a munkaterületen
 > * Számítási célok kiépítése és pontozási szkript létrehozása
 > * Az aszinkron kötegelt pontozás `ParallelRunStep` osztályának használata
@@ -57,7 +58,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Adattár létrehozása minta lemezképekhez
+## <a name="create-a-datastore-for-sample-images"></a>Adattár létrehozása minta lemezképekhez
 
 A `pipelinedata` fiókban szerezze be a ImageNet próbaverzió nyilvános adatait a `sampledata` nyilvános blob-tárolóból. A `register_azure_blob_container()` meghívásával elérhetővé teheti az adatterületet a `images_datastore`név alatt. Ezután állítsa be a munkaterület alapértelmezett adattárát kimeneti adattárként. A kimeneti adattárral szerzi be a folyamat kimenetét.
 
@@ -73,7 +74,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Adatobjektumok létrehozása
+## <a name="create-dataset-objects"></a>Adatkészlet-objektumok létrehozása
 
 A folyamatok kiépítésekor `Dataset` objektumokat használ a munkaterület-adattárolók adatainak olvasására, és `PipelineData` objektumokat a közbenső adatok átvitelére a folyamat lépései között.
 
@@ -259,7 +260,7 @@ def run(mini_batch):
 > [!TIP]
 > Az oktatóanyagban szereplő folyamat csak egyetlen lépésből áll, és egy fájlba írja a kimenetet. A többlépéses folyamatok esetében a `ArgumentParser` használatával is definiálhat egy könyvtárat, amely a kimeneti adatokat ír a következő lépésekhez. Ha például az `ArgumentParser` tervezési minta használatával több folyamat lépései között kívánja átadni az adattovábbítást, tekintse meg a [jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-and-run-the-pipeline"></a>A folyamat létrehozása és futtatása
+## <a name="build-the-pipeline"></a>A folyamat összeállítása
 
 A folyamat futtatása előtt hozzon létre egy objektumot, amely meghatározza a Python-környezetet, és létrehozza azokat a függőségeket, amelyekhez a `batch_scoring.py`-parancsfájl szükséges. A fő függőség Tensorflow, de a `azureml-defaults` is telepíti a háttérben futó folyamatokhoz. Hozzon létre egy `RunConfiguration` objektumot a függőségek használatával. Továbbá a Docker és a Docker-GPU támogatását is megadhatja.
 
@@ -324,7 +325,7 @@ batch_score_step = ParallelRunStep(
 
 A különböző lépésekhez használható osztályok listáját a [Steps csomagban](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)tekintheti meg.
 
-### <a name="run-the-pipeline"></a>A folyamat futtatása
+## <a name="run-the-pipeline"></a>A folyamat futtatása
 
 Most futtassa a folyamatot. Először hozzon létre egy `Pipeline` objektumot a munkaterület-hivatkozás és az Ön által létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
 

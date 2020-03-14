@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386427"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247474"
 ---
 # <a name="sizes-for-cloud-services"></a>Méretek Cloud Services
 Ez a témakör a Cloud Service-példányok (webes szerepkörök és feldolgozói szerepkörök) elérhető méreteit és beállításait ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy az erőforrások használatának megtervezésekor vegye figyelembe a használatát. Minden mérethez tartozik egy azonosító, amelyet a [szolgáltatás definíciós fájljába](cloud-services-model-and-package.md#csdef)helyez. Az egyes méretek árai a [Cloud Services díjszabási](https://azure.microsoft.com/pricing/details/cloud-services/) oldalon érhetők el.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967703"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SignalFx
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SignalFx a Azure
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a SignalFx az Azure AD-fiókjával. és
 * A fiókokat egy helyen kezelheti (a Azure Portal).
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)használatával című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,7 +57,7 @@ A SignalFx-alkalmazás a felügyelt SaaS-alkalmazások listájához való hozzá
 1. Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 1. Válassza az **Új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban a keresőmezőbe írja be a kifejezést, és válassza a **SignalFx**lehetőséget.
-    * Előfordulhat, hogy néhány percet várnia kell, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
+     * Előfordulhat, hogy néhány percet várnia kell, amíg az alkalmazás hozzá lesz adva a bérlőhöz.
 1. Hagyja nyitva a Azure Portal, majd nyisson meg egy új weblapot.    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>2\. lépés: a SignalFx SSO konfigurációjának megkezdése
@@ -175,7 +175,7 @@ Tekintse át az alábbi információkat az egyszeri bejelentkezés tesztelésév
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

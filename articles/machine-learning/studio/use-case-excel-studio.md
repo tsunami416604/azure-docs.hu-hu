@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 85bae9bfc10460b51935c6eb1e14e3a3dd816a8c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169091"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217800"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Elemzések migrálása az Excelből a Azure Machine Learning Studioba (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > *Kate Baroni* és a *ben Boater* a Microsoft adatelemzési központjában található vállalati megoldás-építészek. Ebben a cikkben leírja a meglévő regressziós elemzési csomag áttelepítését egy felhőalapú megoldásba Azure Machine Learning Studio (klasszikus) használatával.
 

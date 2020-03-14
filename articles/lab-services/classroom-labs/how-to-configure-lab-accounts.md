@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284303"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezet-fiókok konfigurálása Azure Lab Services 
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. 

@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
 ms.openlocfilehash: cbd32be2caefc9b84c2db4255df298cfd0766c01
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893197"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241135"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (C)
 
@@ -202,7 +202,7 @@ Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.mic
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldése a hubhoz C alkalmazás használatával, valamint a telemetria olvasása a központban a Azure Cloud Shell használatával.
 

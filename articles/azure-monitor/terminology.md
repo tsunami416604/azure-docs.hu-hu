@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393461"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274137"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor elnevezési és terminológiai változások
 Jelentős változások történtek a közelmúltban, és az Azure-ügyfelek figyelésének egyszerűsítése érdekében a különböző szolgáltatások összevonása is megtörténik a Azure Monitor. Ez a cikk a Azure Monitor dokumentációjának közelmúltbeli nevét és terminológiájának változásait ismerteti.

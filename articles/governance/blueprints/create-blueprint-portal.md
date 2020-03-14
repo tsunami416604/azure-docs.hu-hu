@@ -4,11 +4,11 @@ description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az ö
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356816"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240981"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282041"
 ---
 # <a name="testability-actions"></a>Tesztelési műveletek
 A megbízhatatlan infrastruktúra szimulálása érdekében az Azure Service Fabric biztosítja a fejlesztőket, és lehetővé teszi a különböző valós hibák és az állami váltások szimulálása. Ezek tesztelési műveleteknek vannak kitéve. A műveletek az alacsony szintű API-k, amelyek egy adott hiba befecskendezését, állapotának átváltását vagy érvényesítését okozzák. A műveletek kombinálásával átfogó tesztelési forgatókönyveket írhat a szolgáltatásaihoz.
@@ -33,17 +33,17 @@ A jobb minőség-ellenőrzés érdekében futtassa a szolgáltatást és az üzl
 | CleanTestState |Eltávolítja az összes teszt állapotot a fürtből a tesztelési illesztőprogram hibás leállítása esetén. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem alkalmazható |
 | InvokeDataLoss |Adatvesztést okoz a szolgáltatás partíciójában. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Biztonságos |
 | InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatási partíciót helyez el kvórum elvesztéseként. |InvokeQuorumLossAsync |Meghívás – ServiceFabricQuorumLoss |Biztonságos |
-| MovePrimary |Áthelyezi egy állapot-nyilvántartó szolgáltatás megadott elsődleges replikáját a fürt megadott csomópontjára. |MovePrimaryAsync |Áthelyezés – ServiceFabricPrimaryReplica |Biztonságos |
-| MoveSecondary |Egy állapot-nyilvántartó szolgáltatás aktuális másodlagos replikáját áthelyezi egy másik fürtcsomópont-csomópontra. |MoveSecondaryAsync |Áthelyezés – ServiceFabricSecondaryReplica |Biztonságos |
+| MovePrimary |Áthelyezi egy állapot-nyilvántartó szolgáltatás megadott elsődleges replikáját a fürt megadott csomópontjára. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Biztonságos |
+| MoveSecondary |Egy állapot-nyilvántartó szolgáltatás aktuális másodlagos replikáját áthelyezi egy másik fürtcsomópont-csomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Biztonságos |
 | RemoveReplica |Replika meghibásodásának szimulálása egy replika fürtből való eltávolításával. Ez lezárta a replikát, és átvált a "None" szerepkörre, és eltávolítja az összes állapotát a fürtből. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Biztonságos |
-| RestartDeployedCodePackage |A kód-előkészítési folyamat hibájának szimulálása egy fürt csomópontjain telepített kód újraindításával. Ezzel megszakítja a kód-csomag folyamatát, amely újraindítja a folyamatban lévő összes felhasználói szolgáltatás replikáját. |RestartDeployedCodePackageAsync |Újraindítás – ServiceFabricDeployedCodePackage |Biztonságos |
-| RestartNode |Egy csomópont újraindításával szimulálja Service Fabric fürtcsomópont meghibásodását. |RestartNodeAsync |Újraindítás – ServiceFabricNode |Biztonságos |
+| RestartDeployedCodePackage |A kód-előkészítési folyamat hibájának szimulálása egy fürt csomópontjain telepített kód újraindításával. Ezzel megszakítja a kód-csomag folyamatát, amely újraindítja a folyamatban lévő összes felhasználói szolgáltatás replikáját. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Biztonságos |
+| RestartNode |Egy csomópont újraindításával szimulálja Service Fabric fürtcsomópont meghibásodását. |RestartNodeAsync |Restart-ServiceFabricNode |Biztonságos |
 | RestartPartition |Egy adott partíció egy vagy több replikájának újraindításával szimulálja az adatközpont áramszünetét vagy a fürt kimaradási forgatókönyvét. |RestartPartitionAsync |Restart-ServiceFabricPartition |Biztonságos |
-| RestartReplica |Nem szimulálja a replikát egy megőrzött replika újraindításával egy fürtben, bezárja a replikát, majd újból megnyitja. |RestartReplicaAsync |Újraindítás – ServiceFabricReplica |Biztonságos |
+| RestartReplica |Nem szimulálja a replikát egy megőrzött replika újraindításával egy fürtben, bezárja a replikát, majd újból megnyitja. |RestartReplicaAsync |Restart-ServiceFabricReplica |Biztonságos |
 | StartNode |Egy olyan csomópontot indít el a fürtben, amely már le van állítva. |StartNodeAsync |Start-ServiceFabricNode |Nem alkalmazható |
 | Stopnode parancs |Csomópont meghibásodásának szimulálása egy fürt csomópontjainak leállításával. A csomópont a StartNode meghívása után marad lefelé. |StopNodeAsync |Stop-ServiceFabricNode |Biztonságos |
-| ValidateApplication |Érvényesíti az alkalmazáson belüli összes Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateApplicationAsync |Teszt – ServiceFabricApplication |Nem alkalmazható |
-| ValidateService |Ellenőrzi a Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateServiceAsync |Teszt – ServiceFabricService |Nem alkalmazható |
+| ValidateApplication |Érvényesíti az alkalmazáson belüli összes Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nem alkalmazható |
+| ValidateService |Ellenőrzi a Service Fabric szolgáltatás rendelkezésre állását és állapotát, általában azt követően, hogy valamilyen hibát okoz a rendszernek. |ValidateServiceAsync |Test-ServiceFabricService |Nem alkalmazható |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Tesztelési művelet futtatása a PowerShell használatával
 Ez az oktatóanyag bemutatja, hogyan futtathat tesztelési műveletet a PowerShell használatával. Megtudhatja, hogyan futtathat tesztelési műveletet egy helyi (egyablakos) fürtön vagy egy Azure-fürtön. Microsoft. Fabric. PowerShell. dll – a Service Fabric PowerShell-modul – a Microsoft Service Fabric MSI telepítésekor automatikusan települ. A modul automatikusan betöltődik, amikor megnyit egy PowerShell-parancssort.

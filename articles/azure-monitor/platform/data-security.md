@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: 0ac169060f7ba0e58aeb3e36e3af1629b6453fc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362077"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274865"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](../../security/fundamentals/trust-center.md)információit.  

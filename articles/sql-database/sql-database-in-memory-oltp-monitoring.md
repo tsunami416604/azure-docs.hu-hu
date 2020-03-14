@@ -3,7 +3,7 @@ title: Memóriában tárolt XTP figyelése
 description: Megbecsülheti és figyelheti a XTP memóriabeli tárolási használatát, a kapacitást; kapacitás feloldása 41823
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 22ff83b1ccd009624082e45073123a45006df70f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689800"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209441"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Memóriában tárolt OLTP-tárolók figyelése
 
@@ -59,5 +59,5 @@ A hiba elhárításához a következők egyikét kell tennie:
 > [!NOTE] 
 > Ritka esetekben a 41823-es és a 41840-es hibák átmenetiek lehetnek, ami azt jelenti, hogy elegendő memóriabeli OLTP-tárterület áll rendelkezésre, és a művelet sikeres újrapróbálkozik. Ezért javasoljuk, hogy figyelje a memóriában elérhető teljes OLTP-tárolót, és próbálkozzon újra a 41823-es vagy 41840-os hiba esetén. Az újrapróbálkozási logikával kapcsolatos további információkért lásd: [ütközések észlelése és újrapróbálkozási logika a memóriában tárolt OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A figyeléssel kapcsolatos útmutatásért lásd: [Azure SQL Database figyelése dinamikus felügyeleti nézetek használatával](sql-database-monitoring-with-dmvs.md).

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942532"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213572"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: adatok átvitele Azure Data Box Gateway
 
@@ -24,12 +24,12 @@ Ez a cikk azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Data Box Gate
 
 A folyamat elvégzése körülbelül 10 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
+>
 > * Megosztás hozzáadása
 > * Csatlakozás megosztáshoz
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,6 +56,8 @@ A megosztás létrehozásához hajtsa végre a következő eljárást:
     2. Válassza ki a megosztás **típusát**. A típus SMB vagy NFS lehet. Az alapértelmezett érték az SMB. Ez a szokásos típus Windows-ügyfelekhez, míg az NFS a Linux rendszerű ügyfelekhez használatos. Attól függően, hogy az SMB vagy az NFS típust választja, a megjelenő beállítások kis mértékben eltérőek.
 
     3. Adja meg azt a Storage-fiókot, amelyben a megosztás található. Ha egy tároló még nem létezik, a rendszer létrehozza a Storage-fiókban az újonnan létrehozott megosztási névvel. Ha a tároló már létezik, a rendszer a tárolót használja.
+       > [!IMPORTANT]
+       > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack peremhálózati vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
     
     4. Válassza ki a **tárolási szolgáltatást** a blokkblobok, lapblobok vagy fájlok közül. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adatok blokkblobokban legyenek tárolva az Azure-ban, ezért a Blokkblob lehetőséget választjuk. Ha a Lapblob lehetőséget választja, biztosítania kell az adatok 512 bájtos igazítását. A VHDX például mindig 512 bájtos igazítású.
    
@@ -137,7 +139,7 @@ A Data Box Edge eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a kö
 > - A fájlok megosztásból való törlése nem törli a bejegyzéseket a tárfiókból.
 > - Ha az adatmásoláshoz `rsync` használ, a `rsync -a` lehetőség nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8818158e8eefe89a1cec98c7e4972ac4a6d931a6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: dc6eee984f6c6fbdf916d1287d98b921158271af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207574"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a WhosOffice
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a WhosOffice a Azu
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a WhosOffice az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -179,7 +179,7 @@ Ha a hozzáférési panelen a WhosOffice csempére kattint, automatikusan be kel
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

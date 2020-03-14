@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427491"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217868"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>2\. Oktatóanyag: a kredit kockázati modelljeinek betanítása – Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
 
@@ -88,7 +90,7 @@ Most meg kell adnia a [betanítási modell][train-model] modulját, amely alapj�
 
 1. Kattintson az **OK** pipa jelre.
 
-### <a name="two-class-support-vector-machine"></a>Kétosztályos tartóvektor-gép
+### <a name="two-class-support-vector-machine"></a>Kétosztályos támogató vektorgép
 
 Ezután állítsa be a SVM modellt.  
 

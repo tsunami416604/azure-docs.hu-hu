@@ -10,19 +10,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: a7227b939af1c826d2ee06d8203710839da430ee
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168675"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218145"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a cikk bemutatja, hogyan értékelheti ki a modell teljesítményét Azure Machine Learning Studio (klasszikus), és rövid magyarázatot ad a feladathoz elérhető mérőszámokról. Három közös felügyelt tanulási forgatókönyv jelenik meg: 
 
 * regressziós
-* Bináris besorolás 
+* bináris besorolás 
 * többosztályos besorolás
 
 

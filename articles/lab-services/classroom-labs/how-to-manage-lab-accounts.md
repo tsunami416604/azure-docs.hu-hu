@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382932"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284290"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Lab-fiókok kezelése a Azure Lab Servicesban 
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.

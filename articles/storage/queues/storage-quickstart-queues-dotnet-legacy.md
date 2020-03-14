@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943559"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137339"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: a .NET-hez készült Azure Storage SDK v11 használatával kezelheti a várólistákat
 
@@ -262,7 +262,7 @@ Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues
 
 ### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
 
-- A .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage/client) legújabb verziójához tartozó NuGet-csomagok letöltése
+- A .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet) legújabb verziójához tartozó NuGet-csomagok letöltése
     - [Közös](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Üzenetsorok](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
@@ -272,7 +272,7 @@ Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues
 - A .NET ügyféloldali kódtárral kapcsolatos további információért lásd a [.NET API-referenciáját](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
 - A .NET ügyféloldali kódtár használatával írt [üzenetsor-tárolási minták](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) megismerése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan adhat hozzá üzeneteket egy várólistához, hogyan szúrhat be üzeneteket egy várólistából, és hogyan dolgozza fel az üzeneteket a .NET használatával. 
 

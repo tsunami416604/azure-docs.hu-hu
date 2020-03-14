@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0830d470d359b12c23a6cd0430075c94c7a06a
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 883dd7caabba48b42aaeaeddbe854ddf42973cb4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205096"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Airtable
 
@@ -161,7 +161,7 @@ Ha a hozzáférési panelen a Airtable csempére kattint, automatikusan be kell 
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

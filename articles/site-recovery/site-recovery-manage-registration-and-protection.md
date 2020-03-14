@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362858"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257627"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 

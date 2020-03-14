@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373310"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274774"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Számítógépcsoportok a Azure Monitor log lekérdezésekben
 A Azure Monitorban lévő számítógépcsoportok lehetővé teszik a [naplózási lekérdezések](../log-query/log-query-overview.md) hatókörét a számítógépek adott csoportjára.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  Ha a csoport egy napló lekérdezésében szerepel, az eredmények a csoport számítógépeinek megfelelő rekordokra korlátozódnak.

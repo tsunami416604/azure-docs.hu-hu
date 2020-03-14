@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381979"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284511"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszköz hitelesítése X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok használatával
 

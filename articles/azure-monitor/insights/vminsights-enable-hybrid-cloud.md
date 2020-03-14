@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362041"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275138"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése hibrid környezetekhez
 

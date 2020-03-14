@@ -4,11 +4,11 @@ description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Mana
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: 17307b1657afc133a7e1b1d7714363329573e48c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945675"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273903"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -221,7 +221,7 @@ Ha a sablon szintaktikai hibát tartalmaz, a parancs egy hibaüzenetet ad vissza
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).

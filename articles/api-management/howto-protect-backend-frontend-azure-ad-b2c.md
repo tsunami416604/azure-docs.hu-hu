@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ae776fc3fb1f9eb4b7fa9747f2769dcccb25e042
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967631"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136346"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
 
@@ -250,7 +250,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 
    > [!NOTE]
    > A következő szakasz nem kötelező, és nem vonatkozik a fejlesztői portált nem támogató **felhasználási** szintre.
-   > Ha nem kívánja használni a fejlesztői portált, vagy nem használhatja azt a felhasználási szint használata óta, ugorja át ezt a lépést, és ugorjon a ["JavaScript-Spa felépítése az API-hoz](##build-the-javascript-spa-to-consume-the-api)" lehetőségre.
+   > Ha nem kívánja használni a fejlesztői portált, vagy nem használhatja azt a felhasználási szint használata óta, ugorja át ezt a lépést, és ugorjon a ["JavaScript-Spa felépítése az API-hoz](#build-the-javascript-spa-to-consume-the-api)" lehetőségre.
 
 ## <a name="optional-configure-the-developer-portal"></a>Választható A fejlesztői portál konfigurálása
 

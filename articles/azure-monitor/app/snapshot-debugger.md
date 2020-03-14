@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374975"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275762"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 Ha egy kivétel lép fel, automatikusan gyűjtheti hibakereső pillanatképek az élő webalkalmazások. A pillanatkép abban a pillanatban a kivétel történt a Forráskód és a változók állapotát mutatja. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger figyeli a webalkalmazás kivétel-telemetria. Ez adatokat gyűjt a pillanatképek a felső értesítő kivételek, hogy rendelkezik diagnosztizálhatja a problémákat, éles környezetben a szükséges információkat. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és opcionálisan konfigurálja a gyűjtemény paramétereit a [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](../../azure-monitor/app/asp-net-exceptions.md) között jelennek meg.

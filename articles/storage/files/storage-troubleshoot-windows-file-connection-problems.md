@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597966"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136905"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files problémáinak elhárítása
 
@@ -43,6 +43,14 @@ Ha virtuális hálózati (VNET) és tűzfalszabályok vannak konfigurálva a tá
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
 Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>3\. ok: a megosztási szintű engedélyek helytelenek az identitás-alapú hitelesítés használatakor
+
+Ha a felhasználók Active Directory (AD) vagy Azure Active Directory Domain Services (Azure AD DS) hitelesítés használatával érik el az Azure-fájlmegosztást, akkor a fájlmegosztás hozzáférése sikertelen lesz, ha a megosztási szintű engedélyek helytelenek. 
+
+### <a name="solution-for-cause-3"></a>3\. ok megoldás
+
+A megosztási szintű engedélyek frissítéséhez tekintse meg a [hozzáférési engedélyek kiosztása identitáshoz](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity)című témakört.
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>53 hiba, hiba 67 vagy hiba 87 az Azure-fájlmegosztás csatlakoztatásakor vagy leválasztásakor

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: 2786519bfc54b39c986ba57c78d9d6409a596351
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b871ccb5cb110cfc6154a415059541c4b94f4106
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129784"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137305"
 ---
 # <a name="query-ingested-telemetry-data"></a>Telemetria-adatmennyiség lekérdezése
 
@@ -108,8 +108,8 @@ A rendszer telemetria-adatkérést fogad egy EventHub, majd feldolgozza és lek�
 
 Kövesse az alábbi lépéseket az ÁME-beli adatmegjelenítéshez
 
-1. Nyissa meg az Azure Portalt – > FarmBeats DataHub erőforráscsoportot – > kattintson a Time Series Insights Environment (ÁME-XXXX) – > adatelérési házirendek elemre. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
-2. Nyissa meg Time Series Insights környezet áttekintés lapját (ÁME-XXXX), és kattintson az "Time Series Insights Explorer URL-címe" elemre. Ekkor láthatóvá válik a betöltött telemetria.
+1. Nyissa meg az Azure Portalt – > FarmBeats DataHub erőforráscsoportot – > válassza a Time Series Insights környezet (ÁME-XXXX) – > adatelérési szabályzatok elemet. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
+2. Nyissa meg Time Series Insights környezet áttekintés lapját (ÁME-XXXX), és válassza a "Time Series Insights Explorer URL-címe" lehetőséget. Ekkor láthatóvá válik a betöltött telemetria.
 
 A telemetria tárolása, lekérdezése és megjelenítése mellett az ÁME is lehetővé teszi az integrációt egy Power BI irányítópulton. További részletek [here]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

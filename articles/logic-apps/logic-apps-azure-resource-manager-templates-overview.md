@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386594"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284043"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 

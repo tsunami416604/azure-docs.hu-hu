@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan konfigurálhatja az ügyfél által felügyelt 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 02b1009a69a8a408581ce23b3845881bba6bb51e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252011"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Cosmos-fiókhoz Azure Key Vault
 
@@ -187,6 +187,22 @@ New-AzResourceGroupDeployment `
     -accountName $accountName `
     -location $accountLocation `
     -keyVaultKeyUri $keyVaultKeyUri
+```
+
+### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+
+Amikor új Azure Cosmos-fiókot hoz létre az Azure CLI-n keresztül, adja át a korábban a **--Key-URI** paraméterben másolt Azure Key Vault-kulcs URI-ját.
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+keyVaultKeyUri = 'https://<my-vault>.vault.azure.net/keys/<my-key>'
+
+az cosmosdb create \
+    -n $accountName \
+    -g $resourceGroupName \
+    --locations regionName='West US 2' failoverPriority=0 isZoneRedundant=False \
+    --key-uri $keyVaultKeyUri
 ```
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

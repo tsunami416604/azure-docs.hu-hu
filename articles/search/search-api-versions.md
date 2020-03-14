@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278811"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137288"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -30,14 +30,14 @@ Ugyanez a szabály vonatkozik az SDK frissítéseire is. Az Azure Cognitive Sear
 Az alábbiakban az Azure Cognitive Search összes programozási felületének aktuális verzióit tartalmazó pillanatkép látható.
 
 
-| Interfészek | Legújabb főverzió | Állapot |
+| Interfészek | Legújabb főverzió | status |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |Általánosan elérhető, megjelent május 2019 |
 | [.NET SDK – előzetes verzió](https://aka.ms/search-sdk-preview) |8,0 – előzetes verzió |Előzetes verzió, kiadás dátuma április 2019 |
-| [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Mindenki számára elérhető |
+| [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Általánosan elérhető |
 | [Service REST API 2019-05-06 – előzetes verzió](search-api-preview.md) |2019-05-06 – előzetes verzió |Előzetes verzió |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Mindenki számára elérhető |
-| [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Mindenki számára elérhető |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Általánosan elérhető |
+| [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Általánosan elérhető |
 
 A REST API-k esetében, beleértve az egyes hívások `api-version` is. A `api-version` használatával egyszerűen megcélozhat egy adott verziót, például egy előzetes verziójú API-t. Az alábbi példa azt szemlélteti, hogyan van megadva a `api-version` paraméter:
 
@@ -51,7 +51,7 @@ A REST API-k esetében, beleértve az egyes hívások `api-version` is. A `api-v
 Az általánosan elérhető (vagy GA) API-k éles környezetben is használhatók, és az Azure-szolgáltatói szerződések hatálya alá tartoznak. Az előzetes verziók olyan kísérleti funkciókkal rendelkeznek, amelyek nem mindig a GA verzióra vannak áttelepítve. **Határozottan javasoljuk, hogy ne használja az előnézeti API-kat éles alkalmazásokban.**
 
 ## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>A REST API legújabb verziójának frissítése a 2020. október 15-én
-Az Azure Cognitive Search REST API következő verziói megszűnnek, és már nem támogatottak a 2020. október 15-én: **2014-07-31-Preview**, **2014-10-20-Preview**, **2015-02-28-Preview**és **2015-02-28**. Emellett az Azure Cognitive Search .net SDK-nál régebbi, az **3.0.0-RC** verziónál régebbi verziók is megszűnnek, mivel ezek a REST API-verziók egyikét célozzák meg. Ezen időpont után az elavult REST API vagy SDK-verziót használó alkalmazások már nem fognak működni, és frissíteni kell őket. Ahogy az ilyen típusú változások esetében is, 12 hónapos felmondást adunk, így Önnek megfelelő idő van a módosításra.  Az Azure Cognitive Search használatának folytatásához telepítse át azt REST API [REST API](search-api-migration.md) a meglévő kódot, amely a 2019-05-06-es vagy újabb [verzióra](https://docs.microsoft.com/rest/api/searchservice/) , illetve a [3,0](search-dotnet-sdk-migration.md) -es vagy újabb verziójú .net SDK-ra vonatkozik, 2020. október 15-én.  Ha bármilyen kérdése van a legújabb verzióra való frissítéssel kapcsolatban, küldjön e-mailt a azuresearch_contact@microsoft.com 2020. május 15-én, hogy elegendő idő legyen a kód frissítésére.
+Az Azure Cognitive Search REST API következő verziói megszűnnek, és már nem támogatottak a 2020. október 15-én: **2014-07-31-Preview**, **2014-10-20-Preview**, **2015-02-28-Preview**és **2015-02-28**. Emellett az Azure Cognitive Search .NET SDK-nál régebbi, az **3.0.0-RC** verziónál régebbi verziók is megszűnnek, mivel ezek a REST API-verziók egyikét célozzák meg. Ezen időpont után az elavult REST API vagy SDK-verziót használó alkalmazások már nem fognak működni, és frissíteni kell őket. Ahogy az ilyen típusú változások esetében is, 12 hónapos felmondást adunk, így Önnek megfelelő idő van a módosításra.  Az Azure Cognitive Search használatának folytatásához telepítse át azt REST API [REST API](search-api-migration.md) a meglévő kódot, amely a 2019-05-06-es vagy újabb [verzióra](https://docs.microsoft.com/rest/api/searchservice/) , illetve a [3,0](search-dotnet-sdk-migration.md) -es vagy újabb verziójú .net SDK-ra vonatkozik, 2020. október 15-én.  Ha bármilyen kérdése van a legújabb verzióra való frissítéssel kapcsolatban, küldjön e-mailt a azuresearch_contact@microsoft.com 2020. május 15-én, hogy elegendő idő legyen a kód frissítésére.
 
 ## <a name="about-preview-and-generally-available-versions"></a>Az előzetes verzió és az általánosan elérhető verziók
 Az Azure Cognitive Search mindig előzetesen kibocsátja a kísérleti szolgáltatásokat a REST API a .NET SDK előzetes verzióival.

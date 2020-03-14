@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359004"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284030"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
@@ -112,7 +112,7 @@ Bár a művelet vagy trigger explicit módon nincs definiálva, az alapértelmez
 }
 ```
 
-### <a name="none"></a>Nincsenek
+### <a name="none"></a>Nincs
 
 Annak megadásához, hogy a művelet vagy az aktiválás Ne próbálkozzon újra a sikertelen kérelmekkel, állítsa a <*újrapróbálkozási házirend típusú*>t `none`re.
 
@@ -366,7 +366,7 @@ Az előző minták nagyszerű módon kezelik a hibákat és a kivételeket egy f
 
 A futtatási állapotok kiértékeléséhez nyomon követheti a naplókat és a metrikákat, vagy közzéteheti azokat bármely figyelési eszközön. Az egyik lehetséges lehetőség az, hogy az összes eseményt Event Hubs-ba [Azure stream Analyticsba](https://azure.microsoft.com/services/stream-analytics/)továbbítsa. Stream Analytics élő lekérdezéseket írhat a diagnosztikai naplókból származó rendellenességek, átlagok vagy hibák alapján. A Stream Analytics használatával adatokat küldhet más adatforrásoknak, például várólistákat, témaköröket, SQL-, Azure Cosmos DB-vagy Power BI.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogy az ügyfél hogyan épít a hibakezelés során Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [További Logic Apps példák és forgatókönyvek](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -10,11 +10,11 @@ ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384713"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239013"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Oktatóanyag: Felkészülés a Azure Data Box Edge üzembe helyezésére  
 

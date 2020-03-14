@@ -4,11 +4,11 @@ description: Az Azure Resource Graph használatával néhány kezdő lekérdezé
 ms.date: 11/21/2019
 ms.topic: sample
 ms.openlocfilehash: b966d8c239cb6ff706c967174bcea23bf25de374
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360179"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238397"
 ---
 # <a name="starter-resource-graph-query-samples"></a>A Starter Resource Graph lekérdezési mintái
 

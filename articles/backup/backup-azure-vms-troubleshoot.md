@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: c087814d74032bfc39310690cb31e258fdb1e41e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363858"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247929"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -190,7 +190,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | A virtuálisgép-ügynök nincs jelen a virtuális gépen: <br>Telepítse az előfeltételt és a virtuálisgép-ügynököt. Ezután indítsa újra a műveletet. |További információ a [VM-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről](#vm-agent). |
 | **Hibakód**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert nem sikerült létrehozni a biztonságos hálózati kommunikációs csatornát. | <ol><li> Nyissa meg a Beállításszerkesztőt a **Regedit. exe** futtatásával emelt szintű módban. <li> Azonosítsa a rendszeren lévő .NET-keretrendszer összes verzióját. A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**beállításkulcs hierarchiájában jelennek meg. <li> A beállításkulcsban található minden egyes .NET-keretrendszerhez adja hozzá a következő kulcsot: <br> **Alatt "= DWORD: 00000001**. </ol>|
 | **Hibakód**: ExtensionVCRedistInstallationFailure <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert nem sikerült telepíteni C++ a Visual Studio 2012-hoz készült Visual terjeszthető változatot. | Navigáljon a C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion, és telepítse a vcredist2013_x64.<br/>Győződjön meg arról, hogy a beállításjegyzék-kulcs értéke, amely lehetővé teszi, hogy a szolgáltatás telepítése a megfelelő értékre legyen állítva. Ez azt eredményezi, hogy a **kezdő** értéket **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** **3** értékre, nem pedig **4**értékre állítja. <br><br>Ha továbbra is problémái vannak a telepítéssel, indítsa újra a telepítési szolgáltatást az msiexec **/UNREGISTER** , majd az **msiexec/Register** egy rendszergazda jogú parancssorból való futtatásával.  |
-
+| **Hibakód**: UserErrorRequestDisallowedByPolicy <BR> **Hibaüzenet**: érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet. | Ha van olyan Azure Policy, amely [a környezetében található címkéket szabályozza](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), érdemes lehet a szabályzatot egy [megtagadási hatásról](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [módosítani](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), vagy a [Azure Backup által igényelt elnevezési séma](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)alapján manuálisan létrehozni az erőforráscsoportot.
 ## <a name="jobs"></a>Feladatok
 
 | A hiba részletei | Áthidaló megoldás |

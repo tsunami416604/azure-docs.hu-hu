@@ -13,11 +13,11 @@ ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
 ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514340"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238635"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST
 
@@ -248,7 +248,7 @@ Ebben a példában a feladathoz tartozó bevitel egy HTTPS-URL-cím ("https:\//n
         }
         ```
 
-A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. A feladat előrehaladásának megtekintéséhez az Event Grid használatát javasoljuk. Ez egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid használatával az alkalmazásai szinte minden Azure-szolgáltatástól és egyéni forrástól származó eseményt figyelni tudnak és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés intelligens szűréssel és az események útválasztásával segít hatékony megoldások kiépítésében.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
+A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. A feladat előrehaladásának megtekintéséhez az Event Grid használatát javasoljuk. Ez egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
 
 A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 

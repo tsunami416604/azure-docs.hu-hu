@@ -1,6 +1,6 @@
 ---
-title: (ELAVULT) Azure Swarm-fürtöt a Docker API-val kezelheti.
-description: Tárolók üzembe helyezése a Docker Swarm-fürt Azure Container Service-ben
+title: ELAVULT Azure Swarm-fürt kezelése a Docker API-val
+description: Tárolók üzembe helyezése Docker Swarm-fürtön Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456554"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136227"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>(ELAVULT) Tárolókezelés a Docker Swarmmal
+# <a name="deprecated-container-management-with-docker-swarm"></a>ELAVULT Tárolók kezelése a Docker Swarmmal
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -69,9 +69,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Tároló üzembe helyezése a Docker Compose-zal
 A Docker Compose-zal automatizálhatja a több tároló telepítését és konfigurálását. Ehhez hozzon létre egy Secure Shell- (SSH-) alagutat, és állítsa be a DOCKER_HOST változót (lásd a feni előfeltételeket).
 
-Hozzon létre egy docker-compose.yml fájlt a helyi számítógépen. Ehhez használja ezt a [mintát](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
+Hozzon létre egy docker-compose.yml fájlt a helyi számítógépen. Ehhez használja a következő mintát:
 
-```bash
+```dockerfile
 web:
   image: adtd/web:0.1
   ports:
@@ -112,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 A `docker-compose ps` használatával természetesen megvizsgálhatja a csak a `compose.yml` fájlban megadott tárolókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Docker Swarmról](https://docs.docker.com/swarm/)
 

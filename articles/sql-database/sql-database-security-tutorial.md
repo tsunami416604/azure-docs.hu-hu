@@ -10,16 +10,16 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818041"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238831"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: egyetlen vagy készletezett adatbázis biztonságossá tétele
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > - Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok létrehozása
@@ -149,7 +149,7 @@ Az Azure AD konfigurálásával kapcsolatos információkért lásd:
 
 ## <a name="manage-database-access"></a>Adatbázis-hozzáférés kezelése
 
-Az adatbázis-hozzáférés kezeléséhez felhasználókat adhat hozzá az adatbázishoz, vagy engedélyezheti a felhasználók hozzáférését a biztonságos kapcsolati karakterláncokkal. A külső alkalmazások esetében hasznos a kapcsolatok karakterlánca. További információ: [Azure SQL hozzáférés-vezérlés](sql-database-control-access.md) és [AD-hitelesítés](sql-database-aad-authentication.md).
+Az adatbázis-hozzáférés kezeléséhez felhasználókat adhat hozzá az adatbázishoz, vagy engedélyezheti a felhasználók hozzáférését a biztonságos kapcsolati karakterláncokkal. A külső alkalmazások esetében hasznos a kapcsolatok karakterlánca. További információ: a [bejelentkezések és a felhasználói fiókok kezelése](sql-database-manage-logins.md) , valamint az [AD-hitelesítés](sql-database-aad-authentication.md).
 
 Felhasználók hozzáadásához válassza ki az adatbázis-hitelesítés típusát:
 
@@ -336,7 +336,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 > [!NOTE]
 > A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](./sql-database-connect-query-ssms.md) használatával, és kérdezze le a [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet `encryption_state` oszlopát. `3` állapota azt jelzi, hogy az adatbázis titkosítva van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

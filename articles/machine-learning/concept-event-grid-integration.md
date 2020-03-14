@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 5ec953ace6bb9583c622f89cfcd0196482b1c683
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8a975487c68a21b2c8b6fa2f07d86c312243f12
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541750"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139045"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>Azure Machine Learning események felhasználása (előzetes verzió)
 
@@ -36,12 +36,13 @@ További információ az eseményforrás és az eseménykezelők használatáró
 
 A Azure Machine Learning a gépi tanulási életciklus különböző pontjain biztosít eseményeket: 
 
-| Eseménytípus | Leírás |
+| Esemény típusa | Leírás |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Gépi tanulási kísérlet futtatásának befejeződése után következik be |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Akkor következik be, amikor egy Machine learning-modell van regisztrálva a munkaterületen |
 | `Microsoft.MachineLearningServices.ModelDeployed` | Akkor következik be, amikor egy vagy több modellel rendelkező következtetési szolgáltatás üzembe helyezése befejeződött |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | Akkor következik be, amikor két adatkészlet adateltolódás-észlelési feladata befejeződött |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | Futási állapot megváltozásakor következik be, amely jelenleg csak akkor jelenik meg, ha a futtatási állapot "sikertelen". |
 
 ## <a name="subscribe-to-machine-learning-events"></a>Előfizetés Machine Learning eseményekre
 
@@ -55,12 +56,13 @@ Az esemény-előfizetés egy vagy több Azure Machine Learning eseménytípus me
 ### <a name="filter-by-event-subject"></a>Szűrés esemény tárgya szerint
 A Azure Event Grid a-től __kezdődően__ __a és a egyezéseknek megfelelően támogatja__ a tulajdonosi szűrőket, így a megfelelő tárgyú események az előfizetőnek lesznek továbbítva. A különböző gépi tanulási események formátuma eltérő.
 
-| Eseménytípus | Tulajdonos formátuma | Minta tárgya |
+| Esemény típusa | Tulajdonos formátuma | Minta tárgya |
 | ---------- | ----------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` |
 | `Microsoft.MachineLearningServices.ModelRegistered` | `models/{modelName}:{modelVersion}` | `models/sklearn_regression_model:3` |
 | `Microsoft.MachineLearningServices.ModelDeployed` | `endpoints/{serviceId}` | `endpoints/my_sklearn_aks` |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
 ### <a name="advanced-filtering"></a>Speciális szűrés
 
@@ -90,7 +92,7 @@ Az Machine Learning eseményeket kezelő alkalmazásoknak néhány ajánlott gya
 Azure Event Grid lehetővé teszi, hogy az ügyfelek olyan, de egymással összekapcsolt üzenetkezelőket hozzanak létre, amelyeket Azure Machine Learning események indíthatnak el. Az üzenetkezelő néhány jelentős példája a következő:
 * Azure Functions
 * Azure Logic Apps
-* Azure Event Hubs-eseményközpontok
+* Azure Event Hubs
 * Azure Data Factory folyamat
 * Általános webhookok, amelyek az Azure platformon vagy máshol is üzemeltethető
 

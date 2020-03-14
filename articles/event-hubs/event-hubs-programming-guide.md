@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/15/2020
 ms.author: shvija
 ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945609"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280975"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -29,7 +29,7 @@ Eseményeket küldeni egy eseményközpontba, vagy a HTTP POST használatával v
 
 A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient][] és az [EventData][] osztály. A [EventHubClient][] biztosítja azt a AMQP kommunikációs csatornát, amelyen keresztül az Event hub az eseményeket elküldi. A [EventData][] osztály egy eseményt jelöl, és az üzenetek az Event hub-ba való közzétételére szolgál. Ebbe az osztályba beletartozik a törzs, az egyes metaadatok (Tulajdonságok) és a fejléc információi (SystemProperties) az eseményről. A [EventData][] objektumhoz más tulajdonságok is bekerülnek, ahogy az egy Event hub-n halad át.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 A Event Hubst támogató .NET-osztályok a [Microsoft. Azure. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet csomagban találhatók. A Visual Studio Solution Explorer vagy a [Package Manager konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) használatával is telepíthető. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
 
 ```shell
@@ -151,7 +151,7 @@ Az Event Processor Host speciális futásidejű funkciói mellett a Event Hubs s
 
 A közzétevők visszavonásával és az eseményközpontokba közzétevőként való küldés módjával kapcsolatban a [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Event Hubs nagyléptékű biztonságos közzététele) mintában tekinthet meg további információt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 

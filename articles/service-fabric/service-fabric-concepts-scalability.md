@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378930"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282561"
 ---
 # <a name="scaling-in-service-fabric"></a>Méretezés Service Fabric
 Az Azure Service Fabric használatával könnyedén méretezhető alkalmazások hozhatók létre egy fürt csomópontjain található szolgáltatások, partíciók és replikák kezelésével. Számos számítási feladat ugyanazon a hardveren való futtatása lehetővé teszi az erőforrások maximális kihasználtságát, azonban rugalmasságot is biztosít a munkaterhelések skálázása szempontjából. Ez a Channel 9 videó azt ismerteti, hogyan hozhat létre méretezhető Service-alkalmazásokat:

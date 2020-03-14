@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 94cddf097f2a9e51f061909f6bdd3dcd82f18bfe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226957"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262528"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -43,7 +43,7 @@ Részletekért olvassa el az [alkalmazások regisztrálását](quickstart-regist
 
 Az alkalmazás regisztrálása után az alkalmazás kommunikál a Microsoft Identity platformmal, ha kéréseket küld a végpontnak. Nyílt forráskódú keretrendszereket és könyvtárakat biztosítunk, amelyek kezelik a kérelmek részleteit. Lehetősége van arra is, hogy saját maga is megvalósítsa a hitelesítési logikát, ha kéréseket hoz létre ezekhez a végpontokhoz:
 
-```
+```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
@@ -62,7 +62,7 @@ Ha ezt a forgatókönyvet működés közben szeretné látni, próbálja ki a [
 
 Webalkalmazásokhoz (.NET, PHP, Java, Ruby, Python, node) a felhasználó egy böngészőben keresztül fér hozzá, az [OpenID Connect](active-directory-v2-protocols.md) felhasználói bejelentkezéshez használható. Az OpenID Connect szolgáltatásban a webalkalmazás megkapja az azonosító tokent. Az azonosító jogkivonat egy biztonsági jogkivonat, amely ellenőrzi a felhasználó identitását, és a jogcímek formájában szolgáltat információkat a felhasználóról:
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -91,7 +91,7 @@ Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alka
 
 A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. A webes API-kat számos platformon és nyelven lehet megvalósítani. A Azure Functions HTTP-eseményindítók használatával is megvalósítható. Az azonosító tokenek és a munkamenet-cookie-k helyett a webes API egy OAuth 2,0 hozzáférési tokent használ az adatai védelméhez és a bejövő kérések hitelesítéséhez. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, például a következőhöz:
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -121,7 +121,7 @@ Ebben a folyamatban az alkalmazás egy engedélyezési kódot kap a Microsoft Id
 
 ## <a name="daemons-and-server-side-apps"></a>Démonok és kiszolgálóoldali alkalmazások
 
-A hosszan futó folyamatokkal rendelkező vagy a felhasználóval való interakció nélkül működő alkalmazások esetében is szükség van a biztonságos erőforrásokhoz, például a webes API-khoz való hozzáférésre. Ezek az alkalmazások a felhasználó delegált identitása helyett az alkalmazás identitását használva hitelesíthetők és lekérhetik a jogkivonatokat a OAuth 2,0 ügyfél-hitelesítő adatokkal. Az alkalmazás identitását az ügyfél titkos kódjával vagy tanúsítványával igazolhatja. További információ: [hitelesítés a Microsoft Identity platformon a Daemon-alkalmazásokban tanúsítványokkal](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/).
+A hosszan futó folyamatokkal rendelkező vagy a felhasználóval való interakció nélkül működő alkalmazások esetében is szükség van a biztonságos erőforrásokhoz, például a webes API-khoz való hozzáférésre. Ezek az alkalmazások a felhasználó delegált identitása helyett az alkalmazás identitását használva hitelesíthetők és lekérhetik a jogkivonatokat a OAuth 2,0 ügyfél-hitelesítő adatokkal. Az alkalmazás identitását az ügyfél titkos kódjával vagy tanúsítványával igazolhatja. További információ: [.net Core Daemon Console Application a Microsoft Identity platform használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
 
 Ebben a folyamatban az alkalmazás közvetlenül a `/token`-végponttal kommunikál a hozzáférés eléréséhez:
 

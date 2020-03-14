@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b7c26a40d5c5feebe122db911b88dc5a0caa9042
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356915"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254208"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -409,7 +409,7 @@ Windows Defender ATP és EDR | Riasztások megtekintése és kivizsgálása. Ha 
 Az ezzel a szerepkörrel rendelkező felhasználók megnyithatja a Microsoft Azure és az Office 365 Services támogatási kérelmeit, és megtekintheti a szolgáltatás irányítópultját és az üzenetközpont a [Azure Portal](https://portal.azure.com) és [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). További információ a [rendszergazdai szerepkörökről](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> A Microsoft Graph API-ban és az Azure AD PowerShellben ez a szerepkör "szolgáltatás-támogatási rendszergazdaként" van azonosítva. Ez a [Azure Portal](https://portal.azure.com), a [Microsoft 365 felügyeleti központ](https://admin.microsoft.com)és az Intune-portál "szolgáltatás rendszergazdája".
+> Korábban ezt a szerepkört "szolgáltatás-rendszergazdaként" hívták a [Azure Portal](https://portal.azure.com) és [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). Átnevezte a szolgáltatást támogató rendszergazdának, hogy az Microsoft Graph API-ban, az Azure AD Graph API és az Azure AD PowerShellben meglévő.
 
 ### <a name="sharepoint-administrator"></a>[SharePoint-rendszergazda](#sharepoint-service-administrator-permissions)
 
@@ -990,18 +990,19 @@ Az Exchange termék összes aspektusát képes kezelni.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Directory/csoportok/Unified/appRoleAssignments/Update | A groups. Unified tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/Unified/Basic/Update | Az Office 365-csoportok alapszintű tulajdonságainak frissítése. |
 | Microsoft. Directory/csoportok/egységes/létrehozás | Office 365-csoportok létrehozása. |
 | Microsoft. Directory/csoportok/egyesített/delete | Office 365-csoportok törlése. |
 | Microsoft. Directory/csoportok/egyesített/tagok/frissítés | Az Office 365-csoportok tagságának frissítése. |
 | Microsoft. Directory/csoportok/Unified/owners/Update | Az Office 365-csoportok tulajdonjogának frissítése. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
-| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | microsoft.office365.exchange/allEntities/allTasks | Az Exchange Online összes aspektusának kezelése. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
+| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Külső identitás-szolgáltató rendszergazdai engedélyei
 
@@ -1101,7 +1102,6 @@ Kezelheti a csoportok és a csoportházirend-beállítások összes aspektusát,
 | microsoft.office365.messageCenter/messages/read | Read messages in microsoft.office365.messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
 
 ### <a name="guest-inviter-permissions"></a>Vendég meghívójának engedélyei
 Meghívhatja a vendég felhasználókat a "tagok hívhatják meg a vendégeket" beállítástól függetlenül.
@@ -1212,10 +1212,12 @@ A a Skype vállalati verziójának minden aspektusát képes kezelni.
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
-| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | A Skype vállalati online verzió összes aspektusának kezelése. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
+| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>A Message Center adatvédelmi olvasójának engedélyei
 
@@ -1260,7 +1262,6 @@ Kezelheti az Office-alkalmazások Cloud Services szolgáltatásait, beleértve a
 | microsoft.office365.messageCenter/messages/read | Read messages in microsoft.office365.messageCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
 | Microsoft. Office 365. userCommunication/allEntities/allTasks | Az új üzenetek láthatóságának olvasása és frissítése. |
 | microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
@@ -1442,7 +1443,6 @@ A a Microsoft keresési beállításainak minden aspektusát létrehozhatja és 
 | microsoft.office365.search/allEntities/allProperties/allTasks | Az összes erőforrás létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése a Microsoft. Office 365. Search webhelyen. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
 | microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="search-editor-permissions"></a>Keresési szerkesztői engedélyek
@@ -1458,7 +1458,6 @@ Létrehozhat és kezelhet olyan szerkesztési tartalmakat, mint a könyvjelzők,
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | Read messages in microsoft.office365.messageCenter. |
 | microsoft.office365.search/content/allProperties/allTasks | Tartalom létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése a Microsoft. Office 365. Search fájlból. |
-| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
 
 ### <a name="security-administrator-permissions"></a>Biztonsági rendszergazdai engedélyek
 
@@ -1507,7 +1506,6 @@ Biztonsági események létrehozása és kezelése.
 | microsoft.azure.advancedThreatProtection/allEntities/read | Az Azure AD komplex veszélyforrások elleni védelem olvasása és konfigurálása. |
 | microsoft.intune/allEntities/allTasks | Az Intune összes aspektusának kezelése. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Biztonsági és megfelelőségi központ olvasása és konfigurálása. |
-| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | A Windows Defender komplex veszélyforrások elleni védelem olvasása és konfigurálása. |
 
 ### <a name="security-reader-permissions"></a>Biztonsági olvasó engedélyei
@@ -1560,18 +1558,19 @@ A a SharePoint szolgáltatás összes aspektusát képes kezelni.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Directory/csoportok/Unified/appRoleAssignments/Update | A groups. Unified tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/Unified/Basic/Update | Az Office 365-csoportok alapszintű tulajdonságainak frissítése. |
 | Microsoft. Directory/csoportok/egységes/létrehozás | Office 365-csoportok létrehozása. |
 | Microsoft. Directory/csoportok/egyesített/delete | Office 365-csoportok törlése. |
 | Microsoft. Directory/csoportok/egyesített/tagok/frissítés | Az Office 365-csoportok tagságának frissítése. |
 | Microsoft. Directory/csoportok/Unified/owners/Update | Az Office 365-csoportok tulajdonjogának frissítése. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
-| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése a Microsoft. Office 365. SharePointban. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365 használati jelentéseit. |
+| microsoft.office365.webPortal/allEntities/basic/read | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="teams-communications-administrator-permissions"></a>A csapat kommunikációs rendszergazdai engedélyei
 

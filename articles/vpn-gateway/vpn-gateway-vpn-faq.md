@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357812"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279883"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – Gyakori kérdések
 
@@ -168,6 +168,10 @@ Ez normális működés házirendalapú (más néven statikus útválasztású) 
 A helyek közötti létesítmények közötti konfigurációkhoz támogatottak a Windows Server 2012 útválasztási és távelérési (RRAS) kiszolgálók is.
 
 Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az iparági szabványos IPsec-megvalósításoknak. A konfigurációs és támogatási útmutatáshoz vegye fel a kapcsolatot a szoftver szállítójával.
+
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Hogyan módosíthatja a pont – hely kapcsolat hitelesítési típusát?
+
+A pont – hely kapcsolatokhoz tartozó hitelesítési módszert a VPN Gateway alatti **pont – hely konfiguráció** szakaszban módosíthatja, és a kívánt választógombot kell ellenőrizni. Az aktuális lehetőségek az **Azure-tanúsítvány, a RADIUS-hitelesítés és a Azure Active Directory**. Vegye figyelembe, hogy az aktuális ügyfelek **nem tudnak csatlakozni** a változás után, amíg az új profil le nem töltődik, és nincs konfigurálva az ügyfélen.
 
 ## <a name="P2S"></a>Pont–hely kapcsolat az Azure natív tanúsítványalapú hitelesítésének használatával
 

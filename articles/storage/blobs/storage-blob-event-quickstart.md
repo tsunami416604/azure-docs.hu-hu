@@ -4,18 +4,18 @@ description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre. Az e
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
-ms.date: 12/06/2018
-ms.topic: quickstart
+ms.date: 03/05/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: dc8ed420fdb04d04c02c91f2fa90939562b91645
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 93a146e481e6bb8b9180012d8c569d45521b4450
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845617"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269314"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Gyors útmutató: Tárolási események továbbítása webes végponthoz az Azure CLI-vel
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Gyors útmutató: A tárolási események átirányítása az Azure CLI-vel webes végpont
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez.
 
@@ -29,11 +29,11 @@ A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadato
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy az Azure CLI legújabb verzióját futtatja-e (2.0.24 vagy újabb). A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.70 vagy újabb verzió) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -155,7 +155,7 @@ A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscso
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthatnak segítséget a Blob Storage-események és az Event Grid:
 

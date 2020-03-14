@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227123"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136833"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Az első függvény létrehozása a Java és az Eclipse használatával 
 
@@ -42,9 +42,9 @@ Javasoljuk, hogy a [Azure functions Core Tools, 2-es verziójú verziót](functi
 1. Válassza az **archetípus hozzáadása** lehetőséget, és adja hozzá a bejegyzéseket az [Azure-functions-archetípushoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
     - Archetípus csoport azonosítója: com. microsoft. Azure
     - Archetípus-összetevő azonosítója: Azure-functions-archetípus
-    - Verzió: a legújabb **1,22** -es verzió használata [a központi adattárból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Verzió: a legújabb verzió keresése és használata [a központi adattárból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![Eclipse Maven Create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Kattintson **az OK** , majd a **tovább**gombra.  Ügyeljen arra, hogy az összes mező értékeit kitöltse, beleértve a `resourceGroup`, a `appName`és a `appRegion` (a **Fabrikam-Function-20170920120101928-** től eltérő appName használjon), és végül **fejezze be**a műveletet.
+1. Kattintson az **OK**, majd a **Tovább** gombra.  Ügyeljen arra, hogy az összes mező értékeit kitöltse, beleértve a `resourceGroup`, a `appName`és a `appRegion` (a **Fabrikam-Function-20170920120101928-** től eltérő appName használjon), és végül **fejezze be**a műveletet.
     ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A projektben létrehozott kód egy egyszerű http- [triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
@@ -90,7 +90,7 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 [INFO] ------------------------------------------------------------------------
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.

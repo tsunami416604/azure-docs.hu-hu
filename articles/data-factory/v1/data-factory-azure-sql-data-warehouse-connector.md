@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282002"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása Azure SQL Data Warehouseba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -47,7 +47,7 @@ Az adatok a következő adattárakból másolhatók **Azure SQL Data Warehouseba
 ## <a name="supported-authentication-type"></a>Támogatott hitelesítési típus
 Azure SQL Data Warehouse-összekötő támogatja az egyszerű hitelesítést.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely a különböző eszközök/API-k segítségével áthelyezi az adatokra egy Azure SQL Data Warehouse.
 
 A legkönnyebben olyan folyamat hozható létre, amely az adatok másolását Azure SQL Data Warehouse az adatok másolása varázsló használatával másolja. Tekintse meg az [oktatóanyag: az adatgyűjtés SQL Data Warehouseba való betöltését](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) ismertető témakört Data Factory, amely gyors áttekintést nyújt a folyamat létrehozásáról az Adatmásolás varázsló segítségével.
@@ -70,7 +70,7 @@ A következő táblázat a Azure SQL Data Warehouse társított szolgáltatásho
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
+| type |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
 | connectionString |A connectionString tulajdonsághoz Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
 
 > [!IMPORTANT]
@@ -322,7 +322,7 @@ Data Factory létrehozza a tárolóban található táblát a forrás adattárba
 | SmallDateTime | SmallDateTime |
 | Szöveg | Varchar (legfeljebb 8000) |
 | NText | NVarChar (legfeljebb 4000) |
-| Kép | VarBinary (legfeljebb 8000) |
+| Image (Kép) | VarBinary (legfeljebb 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | CHAR | CHAR |
 | NChar | NChar |
@@ -369,7 +369,7 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | smallmoney |tizedes tört |
 | sql_variant |Object * |
 | szöveg |String, Char[] |
-| time |időtartam |
+| time |Időtartam |
 | időbélyeg |Byte[] |
 | tinyint |Bájt |
 | uniqueidentifier |Guid |

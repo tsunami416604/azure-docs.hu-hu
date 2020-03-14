@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 127d1942becf3d7f1c0a30ccaeae8c65317e3e82
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169351"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204392"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezekhez a webszolgáltatásokhoz majd hívja a gépi tanulási modellek alkalmazásokból az interneten-t az előrejelzések valós időben vagy kötegelt módban használható. Mivel a webes szolgáltatások RESTful, meghívhatja azokat a különböző programozási nyelvekhez és platformokhoz, mint például a .NET, a Java, és az alkalmazások, például az Excel.
 

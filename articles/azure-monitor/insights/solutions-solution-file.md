@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395624"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275177"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájljának létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -63,10 +63,10 @@ A következő táblázat a paraméter attribútumait ismerteti.
 
 | Attribútum | Leírás |
 |:--- |:--- |
-| típus |A paraméter adattípusa. A felhasználó számára megjelenített beviteli vezérlő az adattípustól függ.<br><br>bool – legördülő lista<br>karakterlánc – szövegmező<br>int-Text Box<br>SecureString – jelszó mező<br> |
-| kategória |A paraméter nem kötelező kategóriája.  Az azonos kategóriába tartozó paraméterek együtt vannak csoportosítva. |
+| type |A paraméter adattípusa. A felhasználó számára megjelenített beviteli vezérlő az adattípustól függ.<br><br>bool – legördülő lista<br>karakterlánc – szövegmező<br>int-Text Box<br>SecureString – jelszó mező<br> |
+| category |A paraméter nem kötelező kategóriája.  Az azonos kategóriába tartozó paraméterek együtt vannak csoportosítva. |
 | control |További funkciók a karakterlánc-paraméterekhez.<br><br>datetime – datetime típusú vezérlő jelenik meg.<br>GUID – a GUID azonosító automatikusan létrejön, és a paraméter nem jelenik meg. |
-| Leírás |A paraméter leírását nem kötelező megadni.  A paraméter melletti információs buborékban jelenik meg. |
+| leírás |A paraméter leírását nem kötelező megadni.  A paraméter melletti információs buborékban jelenik meg. |
 
 ### <a name="standard-parameters"></a>Szabványos paraméterek
 Az alábbi táblázat az összes felügyeleti megoldás szabványos paramétereit sorolja fel.  Ezeket az értékeket a rendszer a felhasználó számára tölti fel ahelyett, hogy az Azure Marketplace-ről vagy a gyors üzembe helyezési sablonokból telepíti a megoldást.  Ha a megoldás másik módszerrel van telepítve, a felhasználónak meg kell adnia az értékeket.
@@ -78,12 +78,12 @@ Az alábbi táblázat az összes felügyeleti megoldás szabványos paraméterei
 
 | Paraméter | Típus | Leírás |
 |:--- |:--- |:--- |
-| accountName |Karakterlánc |Azure Automation fiók neve. |
-| pricingTier |Karakterlánc |A Log Analytics munkaterület és Azure Automation fiók díjszabási szintje. |
-| regionId |Karakterlánc |A Azure Automation-fiók régiója. |
-| solutionName |Karakterlánc |A megoldás neve.  Ha a gyors üzembe helyezési sablonok segítségével telepíti a megoldását, akkor a solutionName paramétert kell meghatároznia, hogy egy karakterláncot határozzon meg, így a felhasználónak meg kell adnia egyet. |
-| workspaceName |Karakterlánc |Log Analytics munkaterület neve. |
-| workspaceRegionId |Karakterlánc |A Log Analytics munkaterület régiója. |
+| accountName |sztring |Azure Automation fiók neve. |
+| pricingTier |sztring |A Log Analytics munkaterület és Azure Automation fiók díjszabási szintje. |
+| regionId |sztring |A Azure Automation-fiók régiója. |
+| solutionName |sztring |A megoldás neve.  Ha a gyors üzembe helyezési sablonok segítségével telepíti a megoldását, akkor a solutionName paramétert kell meghatároznia, hogy egy karakterláncot határozzon meg, így a felhasználónak meg kell adnia egyet. |
+| workspaceName |sztring |Log Analytics munkaterület neve. |
+| workspaceRegionId |sztring |A Log Analytics munkaterület régiója. |
 
 
 Az alábbiakban a megoldás fájljába másolható és beilleszthető szabványos paraméterek szerkezete látható.  
@@ -218,13 +218,13 @@ A megoldás erőforrásának **csomag** entitása a következő táblázatban ta
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | név |A megoldás neve. |
-| verzió |A megoldásnak a szerző által meghatározott verziója. |
-| termék |Egyedi karakterlánc a megoldás azonosításához. |
+| version |A megoldásnak a szerző által meghatározott verziója. |
+| product |Egyedi karakterlánc a megoldás azonosításához. |
 | publisher |A megoldás közzétevője. |
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Mentett keresések és riasztások hozzáadása](solutions-resources-searches-alerts.md) a felügyeleti megoldáshoz.
 * [Nézetek hozzáadása](solutions-resources-views.md) a felügyeleti megoldáshoz.
 * [Vegyen fel runbookok és egyéb Automation-erőforrásokat](solutions-resources-automation.md) a felügyeleti megoldásba.

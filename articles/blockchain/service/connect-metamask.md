@@ -4,12 +4,12 @@ description: Kapcsolódjon az Azure Blockchain Service networkhez a MetaMask has
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455994"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205111"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Gyors útmutató: az MetaMask használata intelligens szerződéshez való kapcsolódáshoz és üzembe helyezéshez
 
@@ -25,15 +25,16 @@ Ebben a rövid útmutatóban a MetaMask használatával csatlakozhat egy Azure B
 
 ## <a name="get-endpoint-address"></a>Végponti címek beolvasása
 
-A Blockchain hálózathoz való kapcsolódáshoz az Azure Blockchain szolgáltatás végpontjának címe szükséges. A végponti címeket és a hozzáférési kulcsokat a Azure Portal találja.
+A Blockchain hálózathoz való kapcsolódáshoz az Azure Blockchain szolgáltatás végpontjának címe szükséges. A végpont címe és elérési kulcsa a Azure Portal.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Navigáljon az Azure Blockchain-szolgáltatás tagjához. Válassza a **tranzakciós csomópontok** és az alapértelmezett tranzakció csomópontja hivatkozást.
+1. Navigáljon az Azure Blockchain-szolgáltatás tagjához.
+1. Válassza a **tranzakciós csomópontok** és az alapértelmezett tranzakció csomópontja hivatkozást.
 
     ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/connect-metamask/transaction-nodes.png)
 
 1. Válassza a **kapcsolati karakterláncok > hozzáférési kulcsok**elemet.
-1. Másolja a végponti címeket a https-ről **(1. hozzáférési kulcs)** . A következő szakasz címe szükséges.
+1. Másolja a végponti címeket a https-ről **(1. hozzáférési kulcs)** .
 
     ![Kapcsolati sztring](./media/connect-metamask/connection-string.png)
 
@@ -44,10 +45,10 @@ A Blockchain hálózathoz való kapcsolódáshoz az Azure Blockchain szolgáltat
 
     ![Egyéni RPC](./media/connect-metamask/custom-rpc.png)
 
-1. Az **új hálózat > új RPC URL-** cím mezőben adja meg az előző szakaszból másolt végponti címet.
+1. Az **új hálózat > új RPC URL-** cím elemnél illessze be a fent lemásolt végpont-címet.
 1. Kattintson a **Mentés** gombra.
 
-    Ha a kapcsolatok sikeresek voltak, a magánhálózat a hálózat legördülő listájában jelenik meg.
+    Ha a kapcsolatok sikeresek voltak, a magánhálózat a hálózat legördülő menüben jelenik meg.
 
     ![Új hálózat](./media/connect-metamask/new-network.png)
 
@@ -86,7 +87,7 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
     ```
 
     Az **egyszerű szerződés** deklarál egy **Balance**nevű állapotjelző változót. Két függvény van definiálva. A **Hozzáadás** függvény egy számot ad hozzá az **egyenleghez**. A **Get** függvény az **Egyenleg**értékét adja vissza.
-1. A szerződés fordításához először válassza a szilárdtest-fordító ablaktáblát, majd válassza a **Simple. Sol fordítása**lehetőséget. 
+1. A szerződés fordításához először válassza a szilárdtest-fordító ablaktáblát, majd válassza a **Simple. Sol fordítása**lehetőséget.
 
     ![Lefordítani](./media/connect-metamask/compile.png)
 
@@ -94,12 +95,12 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
 
     ![Futtatás lap](./media/connect-metamask/injected-web3.png)
 
-1. Válassza ki az **egyszerű** szerződést, majd a **telepítés**lehetőséget.
+1. Válassza ki az **egyszerű** szerződést, majd **telepítse**a t.
 
     ![Üzembe helyezés](./media/connect-metamask/deploy.png)
 
 
-1. Egy MetaMask értesítés jelenik meg, amely figyelmezteti, hogy nem rendelkezik elegendő összeggel a tranzakció végrehajtásához.
+1. A MetaMask-értesítés figyelmezteti, ha nem rendelkezik elegendő összeggel a tranzakció végrehajtásához.
 
     Nyilvános blockchain-hálózat esetén a tranzakciós díj megfizetéséhez éterre van szükség. Mivel ez egy konzorciumban található magánhálózat, a gáz árát nullára állíthatja.
 
@@ -114,24 +115,24 @@ A Remix egy böngészőalapú szilárdtest-fejlesztési környezet. A MetaMask �
 
     ![Központilag telepített szerződés](./media/connect-metamask/deployed-contract.png)
 
-    A szerződésben meghatározott függvényekhez két művelet **hozzáadására** és **lekérésére** van lehetőség.
+    Két művelet, **Hozzáadás** és **lekérés**, leképezés a szerződésben meghatározott funkciókra.
 
-1. Ha blockchain szeretne **hozzáadni** egy tranzakciót, adja meg a hozzáadni kívánt számot, majd válassza a **Hozzáadás**lehetőséget. Előfordulhat, hogy a Remixből a gáz-becslési hiba üzenet jelenik meg. A tranzakciót olyan privát blockchain küldi, amely nem igényel gázt. Válassza a **tranzakció küldése** lehetőséget a tranzakció kényszerítéséhez.
-1. A szerződés központi telepítésekor a MetaMask értesítés jelenik meg, amely figyelmezteti, hogy nem rendelkezik elegendő összeggel a tranzakció végrehajtásához.
+1. Ha blockchain szeretne **hozzáadni** egy tranzakciót, adjon meg egy hozzáadandó számot, majd válassza a **Hozzáadás**lehetőséget. A (z) Remix: "gáz-becslési hiba" üzenet jelenik meg. "a tranzakciót olyan privát blockchain küldi, amely nem igényel gázt." Válassza a **tranzakció küldése** lehetőséget a tranzakció kényszerítéséhez.
+1. A szerződés központi telepítésekor a MetaMask-értesítés figyelmezteti, ha nem áll rendelkezésre elegendő összeg a tranzakció végrehajtásához.
 
     Mivel ez egy konzorcium privát hálózata, a gáz árát nulla értékre állíthatja.
 
-1.  Válassza a **gáz díja > a > speciális szerkesztése**lehetőséget, állítsa a **gáz árát** 0 értékre, majd válassza a **Mentés**lehetőséget.
+1. Válassza a **gáz díja > a > speciális szerkesztése**lehetőséget, állítsa a **gáz árát** 0 értékre, majd válassza a **Mentés**lehetőséget.
 1. Válassza a **megerősítés** lehetőséget a tranzakció blockchain való elküldéséhez.
 1. Válassza a **Get** művelet lehetőséget. Ez a csomópont-adat lekérdezési hívása. Nincs szükség tranzakcióra.
-1. A Remix hibakeresés paneljén megtekintheti a tranzakciók részleteit a blockchain.
 
-    ![Hibakeresési előzmények](./media/connect-metamask/debug.png)
+A Remix hibakeresési panelje a blockchain tranzakcióinak részleteit jeleníti meg:
 
-    Megtekintheti az **egyszerű** szerződések létrehozását, a tranzakciót **egyszerűre. adja hozzá**, és hívja a **Simple. Get**.
+    ![Debug history](./media/connect-metamask/debug.png)
 
-1. A MetaMask a tranzakciók előzményeit is megtekintheti. Nyissa meg a MetaMask böngésző bővítményét.
-1. Az **Előzmények** szakaszban láthatja a központilag telepített szerződések és tranzakciók naplóját.
+    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+
+A MetaMask lévő tranzakciók előzményeinek megtekintéséhez nyissa meg a MetaMask böngésző bővítményét, és tekintse meg az **Előzmények** szakaszt a központilag telepített szerződés és tranzakciók naplójához.
 
 ## <a name="next-steps"></a>Következő lépések
 

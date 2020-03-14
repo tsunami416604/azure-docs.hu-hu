@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362746"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257965"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 

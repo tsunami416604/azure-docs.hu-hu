@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373623"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279220"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -340,7 +340,7 @@ Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításb
 
 ## <a name="back-end-pool"></a>Háttérkészlet
 
-Egy háttér-készletet a háttérbeli tagok négy típusára irányíthat: egy adott virtuális gépet, egy virtuálisgép-méretezési készletet, egy IP-címet/teljes tartománynevet vagy egy app Service-t. Minden háttér-készlet több, azonos típusú taggal is mutathat. Az ugyanabban a háttér-készletben lévő különböző típusú tagokra mutatók nem támogatottak.
+Egy háttér-készletet a háttérbeli tagok négy típusára irányíthat: egy adott virtuális gépet, egy virtuálisgép-méretezési készletet, egy IP-címet/teljes tartománynevet vagy egy app Service-t. 
 
 Miután létrehozta a háttér-készletet, hozzá kell rendelnie egy vagy több kérelem-útválasztási szabályhoz. Az alkalmazás-átjárón az összes háttér-készlethez is be kell állítania az állapot-mintavételt. Ha egy kérés-útválasztási szabály feltétele teljesül, az Application Gateway továbbítja a forgalmat a megfelelő háttér-készletben lévő kifogástalan állapotú kiszolgálókra.
 

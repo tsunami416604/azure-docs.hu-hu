@@ -3,12 +3,12 @@ title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358179"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276581"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -56,6 +56,25 @@ Több Function-alkalmazás is lehetséges, hogy problémák nélkül megoszthatj
 Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. További információ: az [Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
 
 Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat a blobok és a fájlok titkosításához. Ezeknek a kulcsoknak jelen kell lenniük a Azure Key Vaultban ahhoz, hogy a függvények hozzáférhessenek a Storage-fiókhoz. További információ: [az ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault használatával a Azure Portal használatával](../storage/common/storage-encryption-keys-portal.md).  
+
+## <a name="mount-file-shares-linux"></a>Csatlakoztatási fájlmegosztás (Linux)
+
+Meglévő Azure Files-megosztásokat csatlakoztathat a Linux Function-alkalmazásaihoz. Ha egy megosztást csatlakoztat a linuxos Function-alkalmazáshoz, használhatja a meglévő gépi tanulási modelleket és a függvények más adatait. A [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) parancs használatával csatlakoztathat egy meglévő megosztást a Linux-függvény alkalmazásához. 
+
+Ebben a parancsban a `share-name` a meglévő Azure Files-megosztás neve, és a `custom-id` bármely olyan karakterlánc lehet, amely egyedileg definiálja a megosztást a Function alkalmazáshoz való csatlakoztatáskor. Emellett a `mount-path` az az elérési út, amelyből a megosztás elérhető a Function alkalmazásban. a `mount-path` formátumának `/dir-name`nak kell lennie, és nem kezdődhet a `/home`.
+
+Teljes példaként tekintse meg a Python- [függvény létrehozása és a Azure Files megosztás csatlakoztatása](scripts/functions-cli-mount-files-storage-linux.md)című témakörben található parancsfájlokat. 
+
+Jelenleg csak `AzureFiles` `storage-type` támogatott. Csak öt megosztást lehet csatlakoztatni egy adott Function alkalmazáshoz. A fájlmegosztás csatlakoztatása növelheti a hideg kezdési időt legalább 200 300ms, vagy akár több is, ha a Storage-fiók egy másik régióban található.
+
+A csatlakoztatott megosztás a megadott `mount-path`ban érhető el a függvény kódjában. Ha például a `mount-path` `/path/to/mount`, a cél könyvtárat a fájlrendszer API-jai segítségével érheti el, ahogy az a következő Python-példában látható:
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

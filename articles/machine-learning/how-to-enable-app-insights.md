@@ -9,18 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 11/12/2019
-ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/12/2020
+ms.openlocfilehash: 464ec1fcf0986dc04bd92bbe9e31b5675e5822d4
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268482"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136193"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási végpontokon üzembe helyezett modellekről az Azure Kubernetes szolgáltatásban (ak) vagy Azure Container Instances (ACI) az Azure Application Insights engedélyezésével. A végpont bemeneti adatának és válaszának begyűjtése mellett a következőket is figyelheti:
+Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási végpontokon üzembe helyezett modellekről az Azure Kubernetes szolgáltatásban (ak) vagy Azure Container Instances (ACI), ha engedélyezi az Azure Application Insightst 
+* [Azure Machine Learning Python SDK](#python)
+* [Azure Machine learning Studio](#studio) a következő címen: https://ml.azure.com
+
+A végpont kimeneti adatok és válaszok összegyűjtése mellett a következőket is megfigyelheti:
 
 * Kérelmek díjai, válaszideje és meghibásodási aránya
 * Függőségi arányok, válaszidő és sikertelenség aránya
@@ -34,6 +38,7 @@ Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási v�
 * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
 
 * Egy helyi könyvtárba, amely tartalmazza a parancsfájlokat, és az Azure Machine Learning SDK telepítve van a Pythonhoz készült Azure Machine Learning munkaterület. Az előfeltételek beszerzéséről a [fejlesztési környezet konfigurálása](how-to-configure-environment.md) című cikkben olvashat bővebben.
+
 * Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) vagy az Azure Container Instance (aci) Szolgáltatásban üzembe helyezhető. Ha még nem rendelkezik ilyennel, tekintse meg a következő témakört: a [rendszerképek besorolási modellje](tutorial-train-models-with-aml.md) oktatóanyaga
 
 ## <a name="web-service-metadata-and-response-data"></a>Webszolgáltatás metaadatainak és válaszideje
@@ -42,6 +47,8 @@ Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási v�
 > Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. 
 
 A szolgáltatás metaadatainak és válaszai – a webszolgáltatás metaadatainak és a modell előrejelzésének megfelelően – a rendszer az üzenet `"model_data_collection"`jában naplózza az Azure Application Insights nyomkövetéseit. Az Azure Application Insights közvetlenül is lekérdezheti az adatok eléréséhez, vagy beállíthat [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) egy Storage-fiókba a hosszú megőrzés vagy a további feldolgozás érdekében. A modell adatai ezután felhasználhatók a Azure Machine Learning a címkézés, az átképzés, a magyarázat, az adatelemzés vagy más felhasználás beállításához. 
+
+<a name="python"></a>
 
 ## <a name="use-python-sdk-to-configure"></a>A Python SDK használata a konfiguráláshoz 
 
@@ -86,11 +93,27 @@ Az Azure Application Insights letiltásához használja a következő kódot:
 <service_name>.update(enable_app_insights=False)
 ```
 
+<a name="studio"></a>
+
+## <a name="use-azure-machine-learning-studio-to-configure"></a>A Azure Machine Learning Studio használata a konfiguráláshoz
+
+Az Azure Application Insights a Azure Machine Learning studióból is engedélyezhető, ha készen áll a modell üzembe helyezésére ezekkel a lépésekkel.
+
+1. Jelentkezzen be a munkaterületére https://ml.azure.com/
+1. Nyissa meg a **modelleket** , és válassza ki, hogy melyik modellt szeretné telepíteni
+1. Válassza a **+ üzembe helyezés** lehetőséget
+1. A **modell üzembe helyezése** űrlap feltöltése
+1. A **speciális** menü kibontása
+
+    ![Űrlap üzembe helyezése](./media/how-to-enable-app-insights/deploy-form.png)
+1. Válassza ki **a diagnosztika és az adatgyűjtés engedélyezése Application Insights**
+
+    ![Az alkalmazás-felismerés engedélyezése](./media/how-to-enable-app-insights/enable-app-insights.png)
 ## <a name="evaluate-data"></a>Adatok kiértékelése
 A szolgáltatás adatait a rendszer az Azure Application Insights-fiókjában tárolja, amely ugyanabban az erőforráscsoporthoz van, mint Azure Machine Learning.
 A megtekintéséhez:
 
-1. Lépjen a Azure Machine Learning munkaterületre a [Azure Machine learning Studióban](https://ml.azure.com) , és kattintson Application Insights hivatkozásra
+1. Lépjen a [Azure Portal](https://ms.portal.azure.com/) Azure Machine learning munkaterületére, és kattintson a Application Insights hivatkozásra.
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 

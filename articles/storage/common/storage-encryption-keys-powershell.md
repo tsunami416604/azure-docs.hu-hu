@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2019
+ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 77324dff7e3f34574f36aa3bb775aed6a945a3bd
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d7e4843bfbd622ad99cad4d9048e91a0cb49b1c1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665285"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136244"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával
 
@@ -97,9 +97,18 @@ A kulcsok új verziójának létrehozásakor frissítenie kell a Storage-fiókot
 
 Ha módosítani szeretné az Azure Storage-titkosításhoz használt kulcsot, hívja a [set-AzStorageAccount-](/powershell/module/az.storage/set-azstorageaccount) t a [titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal beállításnál](#configure-encryption-with-customer-managed-keys) látható módon, majd adja meg az új kulcs nevét és verzióját. Ha az új kulcs egy másik kulcstartóban található, frissítse a Key Vault URI-JÁT is.
 
+## <a name="revoke-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok visszavonása
+
+Ha úgy véli, hogy egy kulcs biztonsága sérült, visszavonhatja az ügyfél által felügyelt kulcsokat a Key Vault hozzáférési házirendjének eltávolításával. Az ügyfél által felügyelt kulcs visszavonásához hívja meg a [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) parancsot az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+
+```powershell
+Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
+    -ObjectId $storageAccount.Identity.PrincipalId `
+```
+
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 
-Az ügyfél által felügyelt kulcsok letiltásakor a rendszer a Storage-fiókot a Microsoft által felügyelt kulcsokkal titkosítja. Az ügyfél által felügyelt kulcsok letiltásához hívja a [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot a `-StorageEncryption` kapcsolóval, az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból titkosítva lesz a Microsoft által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok letiltásához hívja a [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) parancsot a `-StorageEncryption` kapcsolóval, az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `

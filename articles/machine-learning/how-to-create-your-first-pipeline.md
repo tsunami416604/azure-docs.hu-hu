@@ -12,11 +12,11 @@ author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354982"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283601"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

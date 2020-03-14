@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: MT
+ms.openlocfilehash: 80d8f176d3a4af82a6b93e1af430d914c47bfff6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131898"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137356"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -283,6 +283,22 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
 \"description\": \"Test Device 123\"}" *
 ```
+
+Az alábbiakban egy, a Pythonban található mintakód szerepel. Vegye figyelembe, hogy a mintában használt hozzáférési jogkivonat ugyanaz, mint amit a hitelesítés során kapott
+
+```python
+import requests
+import json
+
+# Got access token - Calling the Device Model API
+headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type" : "application/json"
+    }
+payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "port1","type": "Analog"}], "name" : "DummyDevice"}'
+response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
+```
+
 
 > [!NOTE]
 > Az API-k egyedi azonosítókat adnak vissza minden létrehozott példányhoz. Meg kell őriznie az azonosítókat a megfelelő telemetria-üzenetek elküldéséhez.

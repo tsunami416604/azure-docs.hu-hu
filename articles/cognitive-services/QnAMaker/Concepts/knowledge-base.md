@@ -4,17 +4,17 @@ description: A QnA Maker Tudásbázis egy kérdés-válasz típusú (QnA) készl
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843355"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219686"
 ---
 # <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
 A Tudásbázis a nyilvános URL-címek és fájlok által benyújtott kérdés-és answer-csoportokból áll.
 
-## <a name="data-source-locations"></a>Adatforrás helyei
+## <a name="data-source-locations"></a>Adatforrás helye
 
 A tartalom egy adatforrásból származó tudásbázisba kerül. Az adatforrás helyei **nyilvános URL-címek vagy fájlok**, amelyek nem igényelnek hitelesítést.
 
@@ -22,11 +22,11 @@ A hitelesítéssel védett [SharePoint-fájlok](../how-to/add-sharepoint-datasou
 
 ## <a name="chit-chat-content"></a>Chit-csevegési tartalom
 
-A Chit Chat QnA teljes tartalom-adatforrásként van felkínálva több nyelven és társalgási stílusban. Ez lehet a bot személyiségének kiindulási pontja, és megtakarítja az időt és a költségeket a semmiből való írás során. Megtudhatja [, hogyan adhatja hozzá](../how-to/chit-chat-knowledge-base.md) ezt a tartalmat a tudásbázishoz.
+A Chit Chat QnA teljes tartalom-adatforrásként van felkínálva több nyelven és társalgási stílusban. Ez a robot felhőszerepkör felel a kiindulási pont lehet, és az időt és rögzíti őket előzmények költséget takaríthat meg. Megtudhatja [, hogyan adhatja hozzá](../how-to/chit-chat-knowledge-base.md) ezt a tartalmat a tudásbázishoz.
 
-## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálással
+## <a name="structured-data-format-through-import"></a>Strukturált adatok formátumát importálása
 
-A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz strukturált `.tsv` fájl szükséges, amely kérdéseket és válaszokat tartalmaz. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz készleteket, és azokat egy adott adatforráshoz rendelni.
+Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz strukturált `.tsv` fájl szükséges, amely kérdéseket és válaszokat tartalmaz. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz készleteket, és azokat egy adott adatforráshoz rendelni.
 
 | Kérdés  | Válasz  | Forrás| Metaadatok (1 kulcs: 1 érték) |
 |-----------|---------|----|---------------------|
@@ -63,7 +63,7 @@ Ha nem tudja, hogyan jelöli meg a QnA a `.tsv` fájlban, hozza létre a készle
 > [!div class="nextstepaction"]
 > [Tudásbázis fejlesztési életciklusa](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 A válaszok formázásához használja a QnA Maker [Markdown-referenciát](../reference-markdown-format.md) .
 

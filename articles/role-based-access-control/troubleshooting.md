@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980994"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245524"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure-erőforrások RBAC kapcsolatos hibák
 
@@ -56,7 +56,7 @@ Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével 
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Ismeretlen rendszerbiztonsági tag szerepkör-hozzárendelések
 
-Ha szerepkört rendel egy rendszerbiztonsági tag (felhasználó, csoport, egyszerű szolgáltatásnév vagy felügyelt identitás) számára, majd később törli a rendszerbiztonsági tag szerepkör-hozzárendelés eltávolítása nélkül, a szerepkör-hozzárendelés rendszerbiztonsági tag-típusa **ismeretlen**lesz. Az alábbi képernyőkép egy példát mutat be az Azure Portalon. A rendszerbiztonsági tag neve az **Identity Deleted** néven szerepel, és az **identitás már nem létezik**. 
+Ha szerepkört rendel egy rendszerbiztonsági tag (felhasználó, csoport, egyszerű szolgáltatásnév vagy felügyelt identitás) számára, majd később törli a rendszerbiztonsági tag szerepkör-hozzárendelés eltávolítása nélkül, a szerepkör-hozzárendelés rendszerbiztonsági tag-típusa **ismeretlen**lesz. Az alábbi képernyőképen egy példa látható a Azure Portal. A rendszerbiztonsági tag neve az **Identity Deleted** néven szerepel, és az **identitás már nem létezik**. 
 
 ![Webalkalmazás-erőforráscsoport](./media/troubleshooting/unknown-security-principal.png)
 
@@ -150,7 +150,7 @@ Ezeknek az elemeknek **írási** hozzáférésre van szükségük a webhelyet ta
 
 * SSL-tanúsítványok és-kötések (az SSL-tanúsítványok megoszthatók az azonos erőforráscsoporthoz és a földrajzi helyen található helyek között)  
 * Riasztási szabályok  
-* az autoskálázás beállításai  
+* Az autoskálázás beállításai  
 * Application bepillantások összetevői  
 * Webes tesztek  
 
@@ -162,7 +162,7 @@ A virtuális gépek a tartománynevek, a virtuális hálózatok, a tárolási fi
 
 Ezeknek az elemeknek **írási** hozzáférésre van szükségük a **virtuális géphez**:
 
-* Endpoints (Végpontok)  
+* Végpontok  
 * IP-címek  
 * Lemezek  
 * Bővítmények  

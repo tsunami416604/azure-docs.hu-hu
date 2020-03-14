@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395463"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240190"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
 

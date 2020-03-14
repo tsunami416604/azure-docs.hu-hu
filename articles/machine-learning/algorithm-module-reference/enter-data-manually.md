@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 736b128e5207e58220afa69b4cf5dc4e8fea4a26
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268773"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140807"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
 
@@ -62,13 +62,13 @@ Ez a modul a következő helyzetekben lehet hasznos:
   
     -   **ARFF**: beillesztés meglévő ARFF-formátumú fájlba. Ha közvetlenül ír be értékeket, ügyeljen arra, hogy az adatok elején adja hozzá az opcionális fejlécet és a kötelező attribútum mezőket. 
     
-        A következő fejléc-és attribútum-sorok például hozzáadhatók egy egyszerű listához. Az oszlop fejléce `SampleText`.
+        A következő fejléc-és attribútum-sorok például hozzáadhatók egy egyszerű listához. Az oszlop fejléce `SampleText`. Vegye figyelembe, hogy a karakterlánc típusa nem támogatott.
     
         ```text
-        % Title: SampleText.ARFF  
-        % Source: Enter Data module  
-        @ATTRIBUTE SampleText STRING  
-        @DATA  
+        % Title: SampleText.ARFF
+        % Source: Enter Data module
+        @ATTRIBUTE SampleText NUMERIC
+        @DATA
         \<type first data row here>  
         ```
 

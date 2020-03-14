@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572477"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205157"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
 
@@ -22,7 +22,8 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 - Analysis Services-kiszolgáló az előfizetésben. További tudnivalókért lásd: [Rövid útmutató: Kiszolgáló létrehozása – Portál](analysis-services-create-server.md) vagy [Rövid útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
 - Egy vagy több IP-címtartomány ügyfélszámítógépekhez (ha szükséges).
-- Vegye figyelembe, hogy a Power BI Premium importálási forgatókönyve jelenleg nem támogatott.
+- Előfordulhat, hogy a Power BI Premium Azure Analysis Serviceshoz, például az adatimportáláshoz (frissítéshez) és a többoldalas jelentésekhez való kapcsolódáskor jelenleg nem támogatottak, még akkor is, ha engedélyezve van a hozzáférés engedélyezése a Power BI. A Power BI Premium élő kapcsolat használatának leggyakoribb forgatókönyve támogatott. Az összes Power BI Pro-forgatókönyv támogatott.
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra 
 
@@ -42,7 +43,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 Ha már nincs rá szükség, törölje az IP-címtartományokat, vagy tiltsa le a tűzfalat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megismerte, hogyan konfigurálhat tűzfalat a kiszolgálójához. Most, hogy tűfalas védelmet biztosított a kiszolgáló számára, hozzáadhat egy alapszintű minta adatmodellt a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és az ügyfélkapcsolatok tesztelését. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]

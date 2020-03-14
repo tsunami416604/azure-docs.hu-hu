@@ -7,11 +7,11 @@ ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358324"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249515"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.

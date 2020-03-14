@@ -1,5 +1,6 @@
 ---
 title: Mi az Azure Virtual Network NAT?
+titlesuffix: Azure Virtual Network
 description: A Virtual Network NAT funkcióinak, erőforrásainak, architektúrájának és megvalósításának áttekintése. Megtudhatja, hogyan működik Virtual Network NAT és hogyan használható a NAT Gateway-erőforrások a felhőben.
 services: virtual-network
 documentationcenter: na
@@ -13,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55e5b0be7ebefaa26a5981afe3b7c9d3f8a5bf37
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359259"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216972"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Mi az Virtual Network NAT (nyilvános előzetes verzió)?
+# <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
 Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimenő internetkapcsolatot a virtuális hálózatokhoz. Ha egy alhálózaton van konfigurálva, minden kimenő kapcsolat a megadott statikus nyilvános IP-címeket használja.  A kimenő kapcsolat a virtuális gépekhez közvetlenül csatlakoztatott terheléselosztó vagy nyilvános IP-címek nélkül is lehetséges. A NAT teljes körűen felügyelt és rugalmas.
 
@@ -36,10 +37,6 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 
 
 *Ábra: Virtual Network NAT*
-
-
->[!NOTE] 
->Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statikus IP-címek csak kimenőként
 
@@ -125,48 +122,6 @@ A NAT működését a Azure Monitorban elérhető többdimenziós metrikák hasz
 
 Általánosan elérhető a NAT-adatelérési út legalább 99,9%-os rendelkezésre állású.
 
-## <a name = "region-availability"></a>Régió elérhetősége
-
-A NAT jelenleg a következő régiókban érhető el:
-
-- Nyugat-Európa
-- Kelet-Japán
-- USA 2. keleti régiója
-- USA nyugati régiója
-- USA 2. nyugati régiója
-- USA nyugati középső régiója
-
-## <a name = "enable-preview"></a>Nyilvános előzetes részvétel
-
-Az előfizetéseket regisztrálni kell a nyilvános előzetes verzióban való részvétel engedélyezéséhez.  A részvételhez két lépésből álló folyamatra van szükség, és az Azure CLI és a Azure PowerShell esetében az alábbi utasításokat kell megadnia.  Az aktiválás végrehajtása több percet is igénybe vehet.
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. Nyilvános előzetes verzióra vonatkozó előfizetés regisztrálása
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. regisztráció aktiválása
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. Nyilvános előzetes verzióra vonatkozó előfizetés regisztrálása
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. regisztráció aktiválása
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -188,7 +143,8 @@ A NAT a normál támogatási csatornákon keresztül támogatott.
 
 ## <a name="feedback"></a>Visszajelzés
 
-Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [véleményét a nyilvános előzetes](https://aka.ms/natfeedback) verzióban.  Azt is javasolhatja, hogy mit érdemes a következő címen létrehozni a [NAT-UserVoice](https://aka.ms/natuservoice).
+Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szavazzon arra, hogy mi a következő lépés a [NAT-UserVoice](https://aka.ms/natuservoice).
+
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -201,4 +157,4 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Ossza meg velünk [
 
 * További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
-* [Visszajelzés küldése a nyilvános előzetes](https://aka.ms/natfeedback)verzióról.
+

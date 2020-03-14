@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383329"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250672"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>A Windows-függőség virtuálisgép-bővítményének Azure Monitor
 

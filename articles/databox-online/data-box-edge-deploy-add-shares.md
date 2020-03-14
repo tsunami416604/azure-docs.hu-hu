@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946149"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79212949"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Oktatóanyag: adatok átvitele Azure Data Box Edge
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Data
 
 A folyamat elvégzése körülbelül 10 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Megosztás hozzáadása
@@ -59,26 +59,28 @@ Megosztás létrehozásához hajtsa végre a következő eljárást:
     A típus **SMB** vagy **NFS** lehet. Az alapértelmezett érték az SMB. Ez a szokásos típus Windows-ügyfelekhez, míg az NFS a Linux rendszerű ügyfelekhez használatos.  
     Attól függően, hogy az SMB-vagy NFS-megosztásokat választja, a többi lehetőség némileg eltérő lehet. 
 
-    c. Adja meg azt a Storage-fiókot, amelyben a megosztás található. 
+    c. Adja meg azt a Storage-fiókot, amelyben a megosztás található.
 
-    
+      > [!IMPORTANT]
+      > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack peremhálózati vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+
     d. A **tárolási szolgáltatás** legördülő listában válassza a blob, **oldal blob**vagy **fájlok** **letiltása**lehetőséget.  
     A kiválasztott szolgáltatás típusa attól függ, hogy milyen formátumban szeretné használni az Azure-ban az adatok használatát. Ebben a példában, mert az adatblokk-blobokat az Azure-ban szeretnénk tárolni, válassza a **blob letiltása**lehetőséget. Ha kijelöli az **oldal blobot**, ügyeljen arra, hogy az adatai 512 bájtra legyenek igazítva. A VHDX például mindig 512 bájtos igazítású.
 
     e. Hozzon létre egy új BLOB-tárolót, vagy használjon egy meglévőt a legördülő listából. BLOB-tároló létrehozásakor adja meg a tároló nevét. Ha egy tároló még nem létezik, a rendszer létrehozza a Storage-fiókban az újonnan létrehozott megosztási névvel.
-   
-    f. Attól függően, hogy létrehozott-e SMB-megosztást vagy NFS-megosztást, hajtsa végre a következő lépések egyikét: 
-     
-    - **SMB-megosztás**: **az összes jogosultság helyi felhasználó**területen válassza az **új létrehozása** vagy a **meglévő használata**lehetőséget. Ha új helyi felhasználót hoz létre, adjon meg egy felhasználónevet és egy jelszót, majd erősítse meg a jelszót. Ez a művelet engedélyeket rendel a helyi felhasználóhoz. A megosztási szintű engedélyek módosítása jelenleg nem támogatott.
+
+    f. Attól függően, hogy létrehozott-e SMB-megosztást vagy NFS-megosztást, hajtsa végre a következő lépések egyikét:
+
+    * **SMB-megosztás**: **az összes jogosultság helyi felhasználó**területen válassza az **új létrehozása** vagy a **meglévő használata**lehetőséget. Ha új helyi felhasználót hoz létre, adjon meg egy felhasználónevet és egy jelszót, majd erősítse meg a jelszót. Ez a művelet engedélyeket rendel a helyi felhasználóhoz. A megosztási szintű engedélyek módosítása jelenleg nem támogatott.
 
         Ha bejelöli a **csak olvasási műveletek engedélyezése** jelölőnégyzetet ehhez a megosztási adatokhoz, megadhat csak olvasási jogosultsággal rendelkező felhasználókat.
 
         ![SMB-megosztás hozzáadása](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
-   
-    - **NFS-megosztás**: adja meg a megosztást elérő engedélyezett ügyfelek IP-címeit.
+
+    * **NFS-megosztás**: adja meg a megosztást elérő engedélyezett ügyfelek IP-címeit.
 
         ![NFS-megosztás hozzáadása](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
-   
+
 4. A megosztás létrehozásához válassza a **Létrehozás** lehetőséget.
     
     Értesítést kap arról, hogy a megosztás létrehozása folyamatban van. Miután létrehozta a megosztást a megadott beállításokkal, a **megosztások** csempe frissül, hogy tükrözze az új megosztást.
@@ -148,7 +150,7 @@ A Data Box Edge eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a kö
 > - Miután létrehozta a fájlt a megosztásban, a fájl átnevezése nem támogatott. 
 > - Egy fájl megosztásból való törlése nem törli a bejegyzést a Storage-fiókban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következő Data Box Edge témaköröket:
 

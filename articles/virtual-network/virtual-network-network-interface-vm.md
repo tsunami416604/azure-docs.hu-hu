@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: kumud
 ms.openlocfilehash: a55bf014a2da10069e4e6a5f6f4eb4b8cd9ff205
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279558"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása a virtuális gépek hálózati adapterei közül
 

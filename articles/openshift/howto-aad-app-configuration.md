@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381477"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280533"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
 
@@ -92,15 +92,20 @@ További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalma
 
 ## <a name="add-api-permissions"></a>API-engedélyek hozzáadása
 
-1. A **kezelés** szakaszban kattintson az **API-engedélyek**elemre.
-2. Kattintson az **engedély hozzáadása** lehetőségre, és válassza ki **Azure Active Directory gráfot** , majd **delegált engedélyeket**. 
-3. Bontsa ki a **felhasználó** elemet az alábbi listán, és engedélyezze a **User. Read** engedélyt. Ha a **User. Read** beállítás alapértelmezés szerint engedélyezve van, győződjön meg arról, hogy az **Azure Active Directory Graph** engedély **felhasználó. Read**, *nem* az **Microsoft Graph** engedély **felhasználó. Read**.
+[//]: # (Ne váltson Microsoft Graphra. Microsoft Graph esetén nem működik.)
+1. A **kezelés** szakaszban kattintson az **API-engedélyek** elemre.
+2. Kattintson az **engedély hozzáadása** lehetőségre, és válassza ki **Azure Active Directory gráfot** , majd **delegált engedélyeket**.
+> [!NOTE]
+> Győződjön meg arról, hogy a "Azure Active Directory gráf" lehetőséget választotta, nem pedig a "Microsoft Graph" csempét.
+
+3. Bontsa ki a **felhasználó** elemet az alábbi listán, és engedélyezze a **User. Read** engedélyt. Ha a **User. Read** beállítás alapértelmezés szerint engedélyezve van, győződjön meg arról, hogy az **Azure Active Directory gráf** engedély **felhasználó. Read**.
 4. Görgessen felfelé, és válassza ki az **alkalmazás engedélyeit**.
-5. Bontsa ki az alábbi lista **könyvtárát** , és engedélyezze a **Directory. ReadAll**
+5. Bontsa ki az alábbi lista **könyvtárát** , és engedélyezze a **Directory. ReadAll**.
 6. A módosítások elfogadásához kattintson az **engedélyek hozzáadása** lehetőségre.
 7. Az API-engedélyek panelnek ekkor meg kell jelennie a *User. Read* és a *Directory. ReadAll*. Vegye figyelembe, hogy a **rendszergazda beleegyezett a szükséges** oszlopba a *Directory. ReadAll*mellett.
 8. Ha Ön az *Azure-előfizetés rendszergazdája*, kattintson az alábbi  ***előfizetés neveként* a rendszergazdai jóváhagyás megadása** lehetőségre. Ha nem Ön az *Azure-előfizetés rendszergazdája*, kérje meg a rendszergazdától a hozzájárulásukat.
-![képernyőkép az API-engedélyek panelről. User. Read és Directory. ReadAll engedélyek hozzáadva, rendszergazdai engedély szükséges a Directory. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+
+![Képernyőkép az API-engedélyek panelről. User. Read és Directory. ReadAll engedélyek hozzáadva, rendszergazdai engedély szükséges a címtárhoz. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > A fürt-rendszergazdák csoport szinkronizálása csak a beleegyező engedély megadása után fog működni. Ekkor megjelenik egy pipa nevű zöld kör, és egy "megadott *előfizetés neve*" üzenet jelenik meg a *rendszergazdai engedély szükséges* oszlopban.

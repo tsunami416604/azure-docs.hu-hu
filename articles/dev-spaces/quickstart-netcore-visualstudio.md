@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d3eaa3869c79852d1e598cae76e1dac81c08cdc2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245030"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137971"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-A fenti példában a nyilvános URL-cím http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Navigáljon a szolgáltatás nyilvános URL-címére, és lépjen kapcsolatba a fejlesztői térben futó szolgáltatással.
+A fenti példában a nyilvános URL-cím http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. 
+
+Válassza a **hibakeresés** lehetőséget, majd **indítsa el a hibakeresést**. Néhány másodperc elteltével a szolgáltatás elindul, és a Visual Studio megnyit egy böngészőt a szolgáltatás nyilvános URL-címével. Ha egy böngésző nem nyílik meg automatikusan, navigáljon a szolgáltatás nyilvános URL-címéhez egy böngészőben, és lépjen kapcsolatba a fejlesztői térben futó szolgáltatással.
 
 Előfordulhat, hogy a folyamat letiltotta a szolgáltatáshoz való nyilvános hozzáférést. A nyilvános hozzáférés engedélyezéséhez frissítheti a [bejövő *értékeket a Values. YAML*][ingress-update].
 
@@ -106,7 +108,7 @@ Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintso
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Mentse a módosításokat, és indítsa el a szolgáltatást az **Azure dev Spaces** használatával az indítási beállítások legördülő menüből. Nyissa meg a szolgáltatás nyilvános URL-címét egy böngészőben, és kattintson *a névjegy*elemre. Figyelje meg, hogy a frissített üzenet jelenik meg.
+Mentse a módosításokat, és válassza a **hibakeresés** lehetőséget, majd **indítsa el a hibakeresést**. Néhány másodperc elteltével a szolgáltatás elindul, és a Visual Studio megnyit egy böngészőt a szolgáltatás nyilvános URL-címével. Ha egy böngésző nem nyílik meg automatikusan, navigáljon a szolgáltatás nyilvános URL-címéhez egy böngészőben, és kattintson *a névjegy*elemre. Figyelje meg, hogy a frissített üzenet jelenik meg.
 
 Az új Container-lemezképek újraépítése és újratelepítése helyett az Azure dev Spaces fokozatosan újrafordítja a kódot a meglévő tárolóban, így gyorsabb szerkesztési/hibakeresési hurkot biztosít.
 

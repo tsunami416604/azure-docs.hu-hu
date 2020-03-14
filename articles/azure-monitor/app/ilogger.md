@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 2c97c79229c6f136c154169253f2299b7756a105
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192472"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276009"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider a .NET Core ILogger-naplókhoz
 
@@ -496,7 +496,7 @@ Ez a kód csak önálló naplózási szolgáltató használata esetén szükség
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk:
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361987"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276178"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 A Application Insights .NET SDK számos NuGet-csomagot tartalmaz. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t, amely telemetria küld a Application Insightsnak. A [további csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetria *modulokat* és *inicializáló* csomagokat biztosítanak az alkalmazás és a környezet telemetria automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetria-modulokat és-inicializálók beállításait, és beállíthat paramétereket.

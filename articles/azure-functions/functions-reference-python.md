@@ -3,12 +3,12 @@ title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c625c050652ffac568ac45b06af7a853c75c8c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358059"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276685"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -394,7 +394,18 @@ Helyi fejlesztés esetén az Alkalmazásbeállítások a [Local. Settings. JSON 
 
 ## <a name="python-version"></a>Python-verzió 
 
-A Azure Functions jelenleg a Python 3.6. x és 3.7. x (hivatalos CPython-eloszlások) használatát támogatja. Helyileg futtatva a futtatókörnyezet a rendelkezésre álló Python-verziót használja. Ha egy adott Python-verziót szeretne kérni a Function alkalmazás Azure-ban való létrehozásakor, használja a [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) parancs `--runtime-version` lehetőségét. A verzió módosítása csak függvényalkalmazás létrehozáskor engedélyezett.  
+A Azure Functions a következő Python-verziókat támogatja:
+
+| Függvények verziója | Python<sup>*</sup> verziók |
+| ----- | ----- |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 2. x | 3.7<br/>3.6 |
+
+<sup>*</sup> Hivatalos CPython-disztribúciók
+
+Ha egy adott Python-verziót szeretne kérni a Function alkalmazás Azure-ban való létrehozásakor, használja a [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) parancs `--runtime-version` lehetőségét. A functions futásidejű verzióját a `--functions-version` beállítás határozza meg. A Python verziója a Function alkalmazás létrehozásakor van beállítva, és nem módosítható.  
+
+Helyileg futtatva a futtatókörnyezet a rendelkezésre álló Python-verziót használja. 
 
 ## <a name="package-management"></a>Csomagkezelés
 

@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239216"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása 
 

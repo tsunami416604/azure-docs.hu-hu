@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894198"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135921"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Tároló tulajdonságainak és metaadatainak kezelése a .NET-tel
 
-A blob-tárolók támogatják a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az általuk tartalmazott adatokon kívül. Ez a cikk bemutatja, hogyan kezelheti a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az [Azure Storage .net-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage/client)szolgáltatásával.
+A blob-tárolók támogatják a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az általuk tartalmazott adatokon kívül. Ez a cikk bemutatja, hogyan kezelheti a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az [Azure Storage .net-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)szolgáltatásával.
 
 ## <a name="about-properties-and-metadata"></a>A tulajdonságok és a metaadatok
 
@@ -128,7 +128,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 - [Tároló tulajdonságainak beolvasása művelet](/rest/api/storageservices/get-container-properties)
 - [Tároló metaadatainak beállítása művelet](/rest/api/storageservices/set-container-metadata)

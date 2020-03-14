@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360841"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248930"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor parancssori felület gyors üzembe helyezési mintái
 Ez a cikk a parancssori felület (CLI) parancsait mutatja be Azure Monitor szolgáltatások elérésének megkönnyítéséhez. A Azure Monitor lehetővé teszi a Cloud Services, a Virtual Machines és a Web Apps autoskálázását, illetve riasztási értesítések küldését vagy webes URL-címek meghívását a konfigurált telemetria-adatok értékei alapján.

@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393771"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241779"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -39,8 +39,8 @@ Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az er�
 
    |Beállítás|Érték|Cél|
    |--|--|--|
-   |Név|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
-   |Előfizetés|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
+   |Name (Név)|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
+   |Előfizetést|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
    |Erőforráscsoport|`my-resource-group`|Hozzon létre egy új erőforráscsoportot az összes kognitív szolgáltatás erőforrásaihoz. Ha elkészült az erőforrásokkal, törölheti az erőforráscsoportot az előfizetés tisztításához. |
    |Szerzői hely|**USA nyugati régiója**|Az Azure-régió létrehozásához.|
    |A szerzői díjak szintjei|**F0**|A szerzői műveletek alapértelmezett díjszabási szintje.|
@@ -144,7 +144,7 @@ Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közz
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)

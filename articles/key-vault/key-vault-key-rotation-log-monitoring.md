@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195515"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218402"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault beállítása a kulcsfontosságú rotációs és naplózási szolgáltatással
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195515"
 
 A Key Vault használata után elkezdheti a kulcsok és titkok tárolására. Az alkalmazásai többé nem kell megőrizniük a kulcsokat vagy a titkokat, de igény szerint kérhetik őket a tárból. A Key Vault lehetővé teszi a kulcsok és a titkos kódok frissítését anélkül, hogy az hatással lenne az alkalmazás viselkedésére, ami a kulcs-és titkos felügyeleti lehetőségek széles körét nyitja meg.
 
->[!IMPORTANT]
-> A cikkben szereplő példák csak illusztrációs célokat szolgálnak. Nem éles használatra készültek. 
+Ez a cikk bemutatja, hogyan valósítható meg a Storage-fiók kulcsainak ütemezett rotációja, hogyan figyelhetők meg a Key Vault-naplók, és hogyan lehet riasztásokat felvenni váratlan kérelmek esetén. 
 
-Ez a cikk végigvezeti a következő lépéseken:
+Először létre kell hoznia egy Key vaultot a választott módszer használatával:
 
-- Példa a titkos kód tárolására Azure Key Vault használatára. Ebben a cikkben a tárolt titkos kód az alkalmazás által elérhető Azure Storage-fiók kulcsa. 
-- A Storage-fiók kulcsának ütemezett rotációjának implementálása.
-- A Key Vault-naplók figyelése és riasztások létrehozása váratlan kérelmek esetén.
+- [Azure Key Vault titkos kód beállítása és beolvasása az Azure CLI használatával](quick-create-cli.md)
+- [Azure Key Vault titkos kulcsának beállítása és beolvasása Azure PowerShell használatával](quick-create-powershell.md)
+- [Azure Key Vault titkos kulcsának beállítása és beolvasása Azure Portal használatával](quick-create-portal.md)
 
-> [!NOTE]
-> Ez a cikk részletesen ismerteti a Key Vault kezdeti beállítását. További információ: [Mi az Azure Key Vault?](key-vault-overview.md) A platformfüggetlen parancssori felülettel kapcsolatos utasításokért lásd: [Key Vault kezelése az Azure CLI használatával](key-vault-manage-with-cli2.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>A Key Vault beállítása
+## <a name="store-a-secret"></a>Titkos kód tárolása
 
 Annak engedélyezéséhez, hogy az alkalmazás Key Vault titkos kulcsot kérjen, először létre kell hoznia a titkot, és fel kell töltenie a tárolóba.
 

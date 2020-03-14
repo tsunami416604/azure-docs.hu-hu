@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249050"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240799"
 ---
 # <a name="what-is-a-device-identity"></a>Mi az az eszközidentitás?
 

@@ -1,22 +1,22 @@
 ---
 title: Az Azure Blockchain szolgáltatás áttekintése
 description: Az Azure Blockchain Service áttekintése
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387377"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205072"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
 Az Azure Blockchain Service egy teljes körűen felügyelt Főkönyv szolgáltatás, amely lehetővé teszi a felhasználók számára, hogy az Azure-ban méretezhető Blockchain-hálózatokat fejlesszenek és működtessenek. Az infrastruktúra felügyeletének és a blockchain hálózati irányításának egységes szabályozásával az Azure Blockchain Service a következőket biztosítja:
 
 * Egyszerű hálózati üzembe helyezés és műveletek
-* Beépített konzorciumkezelés
+* Beépített konzorciumok felügyelete
 * Intelligens szerződések fejlesztése ismerős fejlesztői eszközökkel
 
 Az Azure Blockchain szolgáltatás több Főkönyv protokoll támogatására lett kialakítva. Jelenleg a [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusi mechanizmus használatával támogatja a Ethereum [kvórum](https://www.goquorum.com/) főkönyvét.
@@ -29,7 +29,7 @@ Az Azure Blockchain szolgáltatás üzembe helyezése az Azure Blockchain bőví
 
 ### <a name="performance-and-service-tiers"></a>Teljesítmény-és szolgáltatási szintek
 
-Az Azure Blockchain Service két szolgáltatási szintet kínál: *Alapszintű* és *standard*. Az egyes szintek különböző teljesítményt és képességeket biztosítanak a könnyű fejlesztési és tesztelési feladatoknak a nagy mértékben méretezhető üzemi blockchain való üzembe helyezéséhez. Mindkét réteg tartalmaz legalább egy tranzakciós csomópontot és egy validator csomópontot (alapszintű) vagy két validator csomópontot (standard).
+Az Azure Blockchain Service két szolgáltatási szintet kínál: *Alapszintű* és *standard*. Az egyes szintek különböző teljesítményt és képességeket biztosítanak a könnyű fejlesztési és tesztelési feladatoknak a nagy mértékben méretezhető üzemi blockchain való üzembe helyezéséhez. A fogalmak fejlesztéséhez, teszteléséhez és bizonyításához *használja az alapszintű* csomagot. Használja a *standard* szintű üzemi szintű üzembe helyezést. Mindkét réteg tartalmaz legalább egy tranzakciós csomópontot és egy validator csomópontot (alapszintű) vagy két validator csomópontot (standard). 
 
 ![Árképzési szintek](./media/overview/pricing-tiers.png)
 
@@ -41,15 +41,15 @@ Az első blockchain-tag üzembe helyezése után további tranzakciós csomópon
 
 Felügyelt szolgáltatásként az Azure Blockchain Service biztosítja, hogy a Blockchain-tag csomópontjai a legújabb gazda operációs rendszerrel és a Főkönyv szoftveres verem frissítéseivel legyenek javítva, és a magas rendelkezésre álláshoz vannak konfigurálva (csak a standard csomag esetében), ami kiküszöböli a DevOps nagy részét. a hagyományos IaaS blockchain-csomópontokhoz szükséges.  A javítással és a frissítésekkel kapcsolatos további információkért lásd: az [Azure Blockchain Service Ledger támogatott verziói](ledger-versions.md).
 
-### <a name="monitoring-and-logging"></a>Figyelés és naplózás
+### <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
 Emellett az Azure Blockchain szolgáltatás részletes mérőszámokat biztosít Azure Monitor szolgáltatáson keresztül, amely betekintést nyújt a csomópontok CPU-, memória-és tárterület-használati adataiba.  A Azure Monitor hasznos betekintést nyújt a blockchain hálózati tevékenységekkel, például a kibányászott tranzakciókkal, a tranzakciós várólista mélységével és az aktív kapcsolatokkal.  A metrikák testreszabhatók úgy, hogy nézeteiket szolgáltassanak a blockchain-alkalmazás szempontjából fontos adatokhoz.  Emellett a küszöbértékeket olyan riasztások segítségével is meghatározhatja, amelyek lehetővé teszik a felhasználók számára olyan műveletek elindítását, mint például az e-mailek vagy SMS-üzenetek elküldése, a logikai alkalmazás, az Azure-függvény futtatása vagy egy egyéni módon definiált webhookra
 
-![Metrikák](./media/overview/metrics.png)
+![Mérőszámok](./media/overview/metrics.png)
 
 Az Azure Log Analytics segítségével a felhasználók megtekinthetik a kvórum főkönyvéhez kapcsolódó naplókat, illetve egyéb fontos információkat, például a tranzakciós csomópontokhoz való kapcsolódási kísérleteket.
 
-## <a name="built-in-consortium-management"></a>Beépített konzorciumkezelés
+## <a name="built-in-consortium-management"></a>Beépített konzorciumok felügyelete
 
 Az első blockchain-tag üzembe helyezésekor csatlakozhat vagy létrehozhat egy új konzorciumot.  A konzorcium olyan logikai csoport, amely a többrésztvevős folyamatokban lebonyolított blockchain-tagok közötti irányítás és kapcsolat kezelésére szolgál.  Az Azure Blockchain szolgáltatás beépített irányítási ellenőrzéseket biztosít az előre definiált intelligens szerződések segítségével, amelyek meghatározzák, hogy a konzorcium milyen műveleteket végezhet.  Ezek az irányítási vezérlők a konzorcium rendszergazdája által igény szerint testreszabhatók. Új konzorcium létrehozásakor a blockchain-tag a konzorcium alapértelmezett rendszergazdája, amely lehetővé teszi más felek meghívását a konzorciumhoz való csatlakozásra.  A konzorciumot csak akkor lehet csatlakoztatni, ha korábban meghívott.  Konzorciumhoz való csatlakozáskor a blockchain-tag a konzorcium rendszergazdája által bevezetett irányítási szabályozás hatálya alá esik.
 

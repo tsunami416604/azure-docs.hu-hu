@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602583"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283536"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -297,12 +297,12 @@ A webszolgáltatások is támogatják a jogkivonat-alapú hitelesítést, de csa
 
 ### <a name="token-based-web-service-authentication"></a>Jogkivonat-alapú webszolgáltatások hitelesítése
 
-Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználóknak egy Azure Machine Learning JSON Web Token kell bemutatnia a webszolgáltatásnak az eléréséhez. A jogkivonat egy megadott időkereten belül lejár, és a hívások folytatásához frissíteni kell.
+Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználóknak egy Azure Machine Learning JSON Web Token kell bemutatnia a webszolgáltatásnak az eléréséhez. A jogkivonat egy megadott időkeret után lejár, és a hívások folytatásához frissíteni kell.
 
 * **Alapértelmezés szerint** a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
 * A jogkivonat-hitelesítés **nem támogatott** , ha Azure Container instances telepíti.
 
-A jogkivonat-hitelesítés vezérléséhez használja a `token_auth_enabled` paramétert egy központi telepítés létrehozásakor vagy frissítésekor.
+A jogkivonat-alapú hitelesítés vezérléséhez használja a `token_auth_enabled` paramétert az üzemelő példány létrehozásakor vagy frissítésekor.
 
 Ha engedélyezve van a jogkivonat-hitelesítés, használhatja a `get_token` metódust egy JSON Web Token (JWT) és a jogkivonat lejárati idejének lekéréséhez:
 
@@ -312,7 +312,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Új jogkivonatot kell kérnie a jogkivonat `refresh_by` idő után. Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség, hogy a REST APIt a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként, a korábban leírtaknak megfelelően végezze el a `service.get_token()` hívást.
+> Új jogkivonatot kell kérnie a jogkivonat `refresh_by` ideje után. Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség, hogy a REST APIt a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként, a korábban leírtaknak megfelelően végezze el a `service.get_token()` hívást.
 >
 > Javasoljuk, hogy az Azure Kubernetes Service-fürttel azonos régióban hozza létre Azure Machine Learning munkaterületét. 
 >

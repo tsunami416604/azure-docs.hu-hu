@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a08b247a6c1b2f954f66aa4b853532142d3aaba
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: c0a795418e46a9fb256bd920732afcd875f88a6b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205806"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136431"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shiphazmat"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ShipHazmat
 
@@ -155,7 +155,7 @@ Ha a hozzáférési panelen a ShipHazmat csempére kattint, automatikusan be kel
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

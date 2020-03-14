@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/18/2018
 ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241387"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 

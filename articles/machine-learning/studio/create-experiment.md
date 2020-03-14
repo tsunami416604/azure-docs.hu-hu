@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: ebde02d222502c58536269243343b21271f19269
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168870"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204562"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rövid útmutató: az első adatelemzési kísérlet létrehozása Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -130,7 +132,7 @@ Most, hogy megtisztítottuk az adatokat, megadhatjuk, hogy mely jellemzőket sze
 
 ## <a name="define-features"></a>Funkciók definiálása
 
-A gépi tanulásban a *jellemzők* azok a külön-külön mérhető tulajdonságok, amelyekre kíváncsiak vagyunk. Adathalmazunk minden sora egy-egy autót képvisel, az oszlopok pedig az autók különböző jellemzőit tartalmazzák.
+A gépi tanulásban a *funkciók* a érdeklik egyes, mérhető tulajdonságai. Adathalmazunk minden sora egy-egy autót képvisel, az oszlopok pedig az autók különböző jellemzőit tartalmazzák.
 
 A prediktív modellben használandó jellemzők helyes megválasztásához fontos a kísérletezés, illetve a megoldani kívánt probléma jó ismerete. Bizonyos jellemzők ugyanis hasznosabbak a cél előrejelzéséhez, mint mások. Egyes funkciók erős korrelációt mutatnak más funkciókkal, és eltávolíthatók. A példánkban például szorosan összefügg a city-mpg (fogyasztás városban) és highway-mpg (fogyasztás autópályán), ezért az egyiket eltávolíthatjuk anélkül, hogy lényegesen befolyásolnánk az előrejelzést.
 

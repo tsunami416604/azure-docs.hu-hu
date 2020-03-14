@@ -2,14 +2,14 @@
 title: VMware virtuális gépek migrálása ügynökön alapuló Azure Migrate kiszolgáló áttelepítése
 description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök-alapú áttelepítését Azure Migrate használatával.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388976"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238439"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
@@ -156,7 +156,7 @@ A mobilitási szolgáltatásnak telepítve kell lennie a replikálni kívánt g�
 
 - A Azure Migrate replikációs berendezés elvégezheti a szolgáltatás leküldéses telepítését, amikor engedélyezi a replikálást egy gép számára, vagy manuálisan telepítheti, vagy a telepítési eszközöket is használhatja.
 - Ebben az oktatóanyagban leküldéses telepítéssel telepítjük a mobilitási szolgáltatást.
-- A leküldéses telepítéshez elő kell készítenie egy fiókot, amely Azure Migrate a kiszolgáló áttelepítése a virtuális gép elérésére használható.
+- A leküldéses telepítéshez elő kell készítenie egy fiókot, amely Azure Migrate a kiszolgáló áttelepítése a virtuális gép elérésére használható. Ezt a fiókot csak a leküldéses telepítéshez használja a rendszer, ha nem telepíti manuálisan a mobilitási szolgáltatást.
 
 Készítse elő a fiókot az alábbiak szerint:
 
@@ -409,7 +409,10 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 
 ## <a name="complete-the-migration"></a>Az áttelepítés befejezése
 
-1. Az áttelepítés befejezése után kattintson a jobb gombbal a virtuális gépre > az **áttelepítés leállítása**elemre. Ez leállítja a helyszíni gép replikálását, és megtisztítja a virtuális gép replikációs állapotával kapcsolatos információkat.
+1. Az áttelepítés befejezése után kattintson a jobb gombbal a virtuális gépre > az **áttelepítés leállítása**elemre. Ez a következő műveleteket végzi el:
+    - Leállítja a helyszíni gép replikálását.
+    - Eltávolítja a gépet a **replikálási kiszolgálók** száma Azure Migrate: kiszolgáló áttelepítése.
+    - A virtuális gép replikációs állapotára vonatkozó információk tisztítása.
 2. Telepítse az Azure-beli VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -ügynököt az áttelepített gépekre.
 3. Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása).
 4. Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.

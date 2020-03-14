@@ -6,11 +6,11 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
 ms.openlocfilehash: ef8f5d1e011990e1d98a492ab8bfd871b7f429aa
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381256"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275918"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights és Log Analytics által használt IP-címek
 Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatás számos IP-címet használ. Előfordulhat, hogy ismernie kell ezeket a címeket, ha a figyelt alkalmazás tűzfal mögött található.
