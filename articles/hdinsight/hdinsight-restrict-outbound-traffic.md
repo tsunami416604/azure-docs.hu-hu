@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/11/2020
+ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646693"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370185"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -26,16 +26,17 @@ Több függőség is van, amelyek bejövő forgalmat igényelnek. A bejövő fel
 
 A HDInsight kimenő forgalmának függőségei szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek statikus IP-címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok (NSG-EK) nem használhatók a fürt kimenő forgalmának zárolására. A címek elég gyakran változnak, hogy az aktuális névfeloldáson alapuló szabályok nem állíthatók be, és ez a NSG-szabályok beállítására használható.
 
-A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes szabályozni a kimenő forgalmat. A Azure Firewall a cél-vagy [FQDN-címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags)teljes tartományneve alapján korlátozhatja a kimenő http-és HTTPS-forgalmat.
+A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes szabályozni a kimenő forgalmat. A Azure Firewall a cél-vagy [FQDN-címkék](../firewall/fqdn-tags.md)teljes tartományneve alapján korlátozhatja a kimenő http-és HTTPS-forgalmat.
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Azure Firewall konfigurálása a HDInsight
 
 A meglévő HDInsight a Azure Firewall-mel való kilépésének lezárásához szükséges lépések összefoglalása:
 
+1. Hozzon létre egy alhálózatot.
 1. Hozzon létre egy tűzfalat.
 1. Alkalmazási szabályok hozzáadása a tűzfalhoz
 1. Adja hozzá a hálózati szabályokat a tűzfalhoz.
-1. Hozzon létre egy útválasztási táblázatot.
+1. Útválasztási táblázat létrehozása.
 
 ### <a name="create-new-subnet"></a>Új alhálózat létrehozása
 
@@ -59,25 +60,25 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     **Felső szakasz**
 
-    | Tulajdonság|  Value (Díj)|
+    | Tulajdonság|  Érték|
     |---|---|
-    |Név| FwAppRule|
+    |Name (Név)| FwAppRule|
     |Prioritás|200|
     |Műveletek|Engedélyezés|
 
     **FQDN-címkék szakasz**
 
-    | Név | Forrás címe | FQDN címke | Megjegyzések |
+    | Name (Név) | Forrás címe | FQDN címke | Megjegyzések |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | A HDI-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynevek szakasz**
 
-    | Név | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Megjegyzések |
+    | Name (Név) | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Megjegyzések |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Cserélje le a `storage_account_name`t a tényleges Storage-fiók nevére. Ha a fürtöt a WASB támogatja, vegyen fel egy szabályt a WASB. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a Storage-fiókon. |
+    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Cserélje le a `storage_account_name`t a tényleges Storage-fiók nevére. Ha a fürtöt a WASB támogatja, vegyen fel egy szabályt a WASB. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](../storage/common/storage-require-secure-transfer.md) beállítás engedélyezve van a Storage-fiókon. |
 
    ![Title: adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -93,15 +94,15 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **Felső szakasz**
 
-    | Tulajdonság|  Value (Díj)|
+    | Tulajdonság|  Érték|
     |---|---|
-    |Név| FwNetRule|
+    |Name (Név)| FwNetRule|
     |Prioritás|200|
     |Műveletek|Engedélyezés|
 
     **IP-címek szakasz**
 
-    | Név | Protocol (Protokoll) | Forrásoldali címek | Cél címei | Célportok | Megjegyzések |
+    | Name (Név) | Protokoll | Forrásoldali címek | Cél címei | Célportok | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
     | Rule_2 | Bármelyik | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
@@ -110,7 +111,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **A szolgáltatás címkéi szakasza**
 
-    | Név | Protocol (Protokoll) | Forráscímek | Szolgáltatáscímkék | Célport | Megjegyzések |
+    | Name (Név) | Protokoll | Forráscímek | Szolgáltatás címkéi | Célport | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Konfiguráljon egy hálózati szabályt az SQL-hez tartozó szolgáltatás-címkék szakaszban, amely lehetővé teszi az SQL-forgalom naplózását és naplózását, kivéve, ha a HDInsight alhálózaton a SQL Serverhoz konfigurált szolgáltatási végpontokat, ami megkerüli a tűzfalat. |
 
@@ -138,12 +139,12 @@ Ha például az útválasztási táblázatot az USA keleti régiójában létreh
 
 | Útvonal neve | Címelőtag | A következő ugrás típusa | A következő ugrás címe |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | n/a |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | n/a |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | n/a |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | n/a |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | n/a |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | n/a |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuális berendezés | 10.0.2.4 |
 
 Fejezze be az útválasztási táblázat konfigurációját:
@@ -182,7 +183,7 @@ Ha többet szeretne megtudni a Azure Firewall méretezési korlátairól és a k
 
 ## <a name="access-to-the-cluster"></a>Hozzáférés a fürthöz
 
-A tűzfal sikeres beállítása után a belső végpont (`https://CLUSTERNAME-int.azurehdinsight.net`) használatával férhet hozzá a Ambari a VNET belülről.
+A tűzfal sikeres beállítása után a belső végpont (`https://CLUSTERNAME-int.azurehdinsight.net`) segítségével érheti el a Ambari a virtuális hálózaton belülről.
 
 A nyilvános végpont (`https://CLUSTERNAME.azurehdinsight.net`) vagy SSH-végpont (`CLUSTERNAME-ssh.azurehdinsight.net`) használatához győződjön meg arról, hogy rendelkezik a megfelelő útvonalakkal az útválasztási táblázatban és a NSG-szabályokban, hogy elkerülje az aszimmetrikus útválasztási [probléma magyarázatát](../firewall/integrate-lb.md). Ebben az esetben engedélyeznie kell az ügyfél IP-címét a bejövő NSG-szabályokban, és hozzá kell adnia azt a felhasználó által megadott útválasztási táblázathoz a következő ugrási beállítással `internet`. Ha ez nem megfelelő, időtúllépési hiba jelenik meg.
 

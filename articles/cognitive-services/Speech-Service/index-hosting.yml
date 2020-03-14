@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Üzemeltetési dokumentáció
+title: Az üzemeltetés dokumentációja
 summary: A Speech Service-tárolók mind a beszéd-szöveg, mind a szöveg-beszéd forgatókönyvek számára elérhetők, amely magában foglalja a standard vagy a testreszabott modelleket.
 metadata:
   title: Üzemeltetési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
@@ -10,32 +10,32 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ead45759891d4b2a41a380c88cf32f4e504b6e2c
-  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "77920875"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79366700"
 landingContent:
-- title: Első lépések
+- title: Az üzemeltetésről
   linkLists:
   - linkListType: concept
     links:
-    - text: Beszédfelismerési szolgáltatás tárolói
+    - text: Beszédfelismerési tárolók telepítése és futtatása
       url: speech-container-howto.md
-    - text: Beszédfelismerési szolgáltatás tárolói a Kubernetes
+    - text: Beszédfelismerési tárolók Kubernetes és Helmtal
       url: speech-container-howto-on-premises.md
-    - text: Beszédfelismerési szolgáltatás tárolói Azure Container Instances
+    - text: Beszédfelismerési tárolók az Azure Container instances szolgáltatásban
       url: deploy-speech-on-container-instances.md
-- title: Lépésenkénti útmutatók
+- title: Létrehozás és konfigurálás
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Speech-erőforrás létrehozása
       url: get-started.md#new-resource
-    - text: Tárolók konfigurálása
+    - text: Beszédfelismerési tárolók konfigurálása
       url: speech-container-configuration.md
 - title: Referencia
   linkLists:
@@ -43,5 +43,5 @@ landingContent:
     links:
     - text: Támogatott régiók
       url: regions.md
-    - text: Szuverén felhők
+    - text: Független felhők
       url: sovereign-clouds.md

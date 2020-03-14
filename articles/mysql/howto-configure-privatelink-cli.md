@@ -1,19 +1,19 @@
 ---
-title: Privát hivatkozás a Azure Database for MySQL (előzetes verzió) CLI telepítési módszeréhez
+title: Privát hivatkozás – Azure CLI – Azure Database for MySQL
 description: Ismerje meg, hogyan konfigurálhatja a Azure Database for MySQLhez készült privát hivatkozást az Azure CLI-vel
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561697"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368009"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Privát hivatkozás létrehozása és kezelése Azure Database for MySQL (előzetes verzió) a CLI használatával
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Azure Database for MySQL magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
 
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network és egy Azure Database for MySQL-kiszolgáló Azure-beli privát végponttal, hogyan lehet az Azure CLI használatával létrehozni.
 
@@ -26,7 +26,7 @@ A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehe
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version`. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot a Virtual Network üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westeurope* helyen:
 
@@ -188,5 +188,5 @@ Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az e
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private Endpoint szolgáltatásról](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)

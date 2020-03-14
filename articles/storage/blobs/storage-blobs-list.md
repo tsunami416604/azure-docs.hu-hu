@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b51016b1b73b51cd1f1ec827f05fc9a93dd4cb38
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650707"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137920"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
 Ha a kódból listázza a blobokat, megadhatja az eredmények Azure Storage-ból való visszaadásának módját. Megadhatja az egyes eredményekben visszaadott eredmények számát, majd beolvashatja a következő készleteket. Megadhat egy előtagot olyan Blobok visszaadásához, amelyek neve megegyezik a karakterrel vagy karakterlánccal. Emellett a blobokat egy egyszerű felsorolási struktúrában vagy hierarchikusan is listázhatja. A hierarchikus lista a blobokat úgy adja vissza, mintha mappákba vannak rendezve. 
 
-Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage/client)használatával.  
+Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.  
 
 ## <a name="understand-blob-listing-options"></a>A Blobok listázási beállításainak ismertetése
 
@@ -207,7 +207,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Blobok listázása](/rest/api/storageservices/list-blobs)
 - [BLOB-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)

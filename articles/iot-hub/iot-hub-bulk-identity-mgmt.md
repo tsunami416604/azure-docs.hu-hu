@@ -8,24 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: d217025a847c33ceff49feac22023f80fde2b109
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79218422"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371579"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub eszköz-identitások tömeges importálása és exportálása
 
 Minden IoT hub rendelkezik egy azonosító beállításjegyzékkel, amellyel eszközönkénti erőforrásokat hozhat létre a szolgáltatásban. Az Identity Registry Emellett lehetővé teszi az eszközre irányuló végpontokhoz való hozzáférés szabályozását. Ez a cikk azt ismerteti, hogyan importálhat és exportálhat eszköz-identitásokat egy identitás-beállításjegyzékből és-ból. Ha szeretne megtekinteni egy C# működő mintát a alkalmazásban, és megtudhatja, hogyan használhatja ezt a képességet, ha egy másik régióba klónozást végez, tekintse meg [az IoT hub klónozását](iot-hub-how-to-clone.md)ismertető témakört.
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub a közelmúltban több régióban adta hozzá a virtuális hálózatok támogatását. Ez a szolgáltatás biztosítja az importálási és exportálási műveleteket, és nem szükséges kulcsokat továbbítani a hitelesítéshez.  Kezdetben a virtuális hálózatok támogatása csak a következő régiókban érhető el: *WestUS2*, *EastUS*és *SouthCentralUS*. Ha többet szeretne megtudni a virtuális hálózatok támogatásáról és a megvalósításához szükséges API-hívásokról, tekintse meg a [virtuális hálózatok IoT hub támogatását](virtual-network-support.md)ismertető témakört.
 
 Az importálási és exportálási műveletek olyan *feladatok* kontextusában lépnek életbe, amelyek lehetővé teszik a tömeges szolgáltatási műveletek végrehajtását egy IoT hubhoz.
 
 A **RegistryManager** osztály a **ExportDevicesAsync** és a **ImportDevicesAsync** metódusokat tartalmazza, amelyek a **feladatok** keretrendszerét használják. Ezek a módszerek lehetővé teszik az IoT hub összes azonosítójának beállításjegyzékének teljes körű exportálását, importálását és szinkronizálását.
 
 Ebből a témakörből megtudhatja, hogyan végezheti el a **RegistryManager** osztály és a **feladat** rendszerét az IoT hub azonosító-beállításjegyzékbe irányuló és onnan érkező eszközök tömeges importálására és exportálására. Az Azure IoT Hub Device Provisioning Service használatával az emberi beavatkozás nélkül is engedélyezheti a nulla érintéses, igény szerinti üzembe helyezést egy vagy több IoT-hubhoz. További információt a [kiépítési szolgáltatás dokumentációjában](/azure/iot-dps)talál.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Mik azok a feladatok?
 
@@ -83,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> Ha a Storage-fiók olyan tűzfal-konfigurációval rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) használni (az IoT-hubok számára elérhető régiókban, felügyelt szolgáltatás identitásával).
+
 
 ## <a name="device-importexport-job-limits"></a>Eszközök importálási/exportálási feladatainak korlátai
 

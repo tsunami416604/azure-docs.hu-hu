@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297832"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket-kiszolgáló közzététele Application Gateway
 
-A Application Gateway v2 dokumentációjában leírtaknak megfelelően [a WebSocket és a http/2 protokollok natív támogatást biztosítanak](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic). Vegye figyelembe, hogy mind a Application Gateway, mind a Kubernetes beáramlása esetén nincs felhasználó által konfigurálható beállítás a WebSocket-támogatás szelektív engedélyezéséhez vagy letiltásához.
+A Application Gateway v2 dokumentációjában leírtaknak megfelelően [a WebSocket és a http/2 protokollok natív támogatást biztosítanak](features.md#websocket-and-http2-traffic). Vegye figyelembe, hogy mind a Application Gateway, mind a Kubernetes beáramlása esetén nincs felhasználó által konfigurálható beállítás a WebSocket-támogatás szelektív engedélyezéséhez vagy letiltásához.
 
 Az alábbi Kubernetes-telepítési YAML a WebSocket-kiszolgáló üzembe helyezésének minimális konfigurációját mutatja be, amely megegyezik egy normál webkiszolgáló üzembe helyezésével:
 ```yaml
@@ -75,7 +75,7 @@ spec:
               servicePort: 80
 ```
 
-Tekintettel arra, hogy minden előfeltétel teljesült, és Ön rendelkezik egy Application Gateway Kubernetes bevezetéssel, a fenti üzembe helyezés a Application Gateway nyilvános IP-címének és a `ws.contoso.com` 80-es portján elérhető WebSocket-kiszolgálót eredményezi. tartományi.
+Tekintettel arra, hogy minden előfeltétel teljesült, és Application Gateway egy Kubernetes bejövő forgalom vezérli az AK-ban, a fenti üzembe helyezés a Application Gateway nyilvános IP-címének és `ws.contoso.com` tartományának 80-as portján elérhető WebSocket-kiszolgálóval fog rendelkezni.
 
 A következő cURL-parancs teszteli a WebSocket-kiszolgáló telepítését:
 ```sh

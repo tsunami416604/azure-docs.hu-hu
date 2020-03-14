@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246412"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367278"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése Azure Automationban
 
@@ -59,7 +59,7 @@ A következő eljárással megnyithatja a runbook szerkesztésre a szöveges sze
 
 ### <a name="insert-an-asset-into-a-runbook"></a>Eszköz beszúrása egy runbook
 
-1. A szöveges szerkesztő Vászonján vigye a kurzort arra a helyre, ahová a gyermek runbook kódot kívánja helyezni.
+1. A szöveges szerkesztő vászon vezérlőjében vigye a kurzort arra a helyre, ahová a gyermek runbook kódot kívánja helyezni.
 2. Bontsa ki az **eszközök** csomópontot a könyvtár vezérlőben.
 3. Bontsa ki a kívánt eszköz típusának csomópontját.
 4. Kattintson a jobb gombbal a beszúrandó eszköz nevére, majd válassza a **Hozzáadás a vászonhoz**lehetőséget. [Változó eszközök](automation-variables.md)esetén válassza a **"változó beolvasása" lehetőséget a vászonhoz** , vagy **adja hozzá a "változó beállítása" beállítást a vászonhoz**, attól függően, hogy szeretné-e lekérni vagy beállítani a változót.
@@ -67,7 +67,7 @@ A következő eljárással megnyithatja a runbook szerkesztésre a szöveges sze
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Azure Automation runbook szerkesztése a Windows PowerShell használatával
 
-Ha a Windows PowerShell segítségével szeretne szerkeszteni egy runbook, használja az Ön által választott szerkesztőt, és mentse a runbook egy ". ps1" fájlba. A runbook tartalmának lekéréséhez az [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) parancsmagot használhatja. Az [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) parancsmag használatával lecserélheti a meglévő Piszkozat runbook a módosítottra.
+Ha a Windows PowerShell segítségével szeretne szerkeszteni egy runbook, használja a választott szerkesztőt, és mentse a runbook egy **. ps1** fájlba. A runbook tartalmának lekéréséhez az [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) parancsmagot használhatja. Az [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) parancsmag használatával lecserélheti a meglévő Piszkozat runbook a módosítottra.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának beolvasása a Windows PowerShell használatával
 

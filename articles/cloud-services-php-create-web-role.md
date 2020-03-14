@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 82bb5f153a2c70d3b26f295925f8e48693bc49b9
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146869"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297254"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Webes és feldolgozói PHP-szerepkörök létrehozása
 
@@ -26,13 +26,13 @@ ms.locfileid: "71146869"
 
 Ebből az útmutatóból megtudhatja, hogyan hozhat létre PHP-alapú webes vagy feldolgozói szerepköröket egy Windows-fejlesztési környezetben, kiválaszthatja a PHP adott verzióját az elérhető "beépített" verziók közül, módosíthatja a PHP-konfigurációt, engedélyezheti a bővítményeket, és végül üzembe helyezheti az Azure-ban. Azt is ismerteti, hogyan konfigurálhat webes vagy feldolgozói szerepkört egy olyan PHP-futtatókörnyezet használatára, amelyet Ön biztosít.
 
-Az Azure három számítási modellt kínál az alkalmazások futtatásához: Azure App Service, Azure Virtual Machines és Azure Cloud Services. Mindhárom modell támogatja a PHP-t. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *a szolgáltatásként szolgáló platformot (Pásti)* biztosítja. Egy felhőalapú szolgáltatásban a webes szerepkör egy dedikált Internet Information Services (IIS) webkiszolgálót biztosít az előtér-webalkalmazások üzemeltetéséhez. Egy feldolgozói szerepkör aszinkron, hosszan futó vagy örökös feladatokat futtathat a felhasználói interakciótól vagy bemenettől függetlenül.
+Az Azure három számítási modellt biztosít az alkalmazások futtatásához: Azure App Service, Azure Virtual Machines és Azure Cloud Services. Mindhárom modell támogatja a PHP-t. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *a szolgáltatásként szolgáló platformot (Pásti)* biztosítja. Egy felhőalapú szolgáltatásban a webes szerepkör egy dedikált Internet Information Services (IIS) webkiszolgálót biztosít az előtér-webalkalmazások üzemeltetéséhez. Egy feldolgozói szerepkör aszinkron, hosszan futó vagy örökös feladatokat futtathat a felhasználói interakciótól vagy bemenettől függetlenül.
 
 További információ ezekről a lehetőségekről: az [Azure által biztosított számítási üzemeltetési beállítások](cloud-services/cloud-services-choose-me.md).
 
-## <a name="download-the-azure-sdk-for-php"></a>A PHP-hoz készült Azure SDK letöltése
+## <a name="download-the-azure-sdk-for-php"></a>A PHP-hez készült Azure SDK letöltése
 
-A [PHP-hez készült Azure SDK](https://github.com/Azure/azure-sdk-for-php) számos összetevőből áll. Ez a cikk kettőt fog használni: Azure PowerShell és az Azure-emulátorok. Ez a két összetevő a Microsoft webplatform-telepítő használatával telepíthető. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+A [PHP-hez készült Azure SDK](https://github.com/Azure/azure-sdk-for-php) számos összetevőből áll. Ez a cikk kettőt használ: Azure PowerShell és az Azure-emulátorok. Ez a két összetevő a Microsoft webplatform-telepítő használatával telepíthető. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
 
 ## <a name="create-a-cloud-services-project"></a>Cloud Services projekt létrehozása
 
@@ -42,7 +42,7 @@ A PHP webes vagy feldolgozói szerepkör létrehozásának első lépése egy Az
 
     PS C:\>New-AzureServiceProject myProject
 
-Ezzel a paranccsal létrehozhat egy új könyvtárat (`myProject`), amelyhez webes és feldolgozói szerepköröket adhat hozzá.
+Ez a parancs létrehoz egy új könyvtárat (`myProject`), amelyhez webes és feldolgozói szerepköröket adhat hozzá.
 
 ## <a name="add-php-web-or-worker-roles"></a>PHP webes vagy feldolgozói Szerepkörök hozzáadása
 
@@ -55,54 +55,7 @@ Feldolgozói szerepkör esetén használja a következő parancsot:
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> A `roleName` paraméter megadása nem kötelező. Ha nincs megadva, a rendszer automatikusan létrehozza a szerepkör nevét. Ekkor `WebRole1`létrejön az első webes szerepkör, a második `WebRole2`pedig a következő lesz:. Az első feldolgozói szerepkör a `WorkerRole1`következő lesz, a második `WorkerRole2`pedig a következő lesz:.
->
->
-
-## <a name="specify-the-built-in-php-version"></a>A beépített PHP-verzió meghatározása
-
-Ha PHP webes vagy feldolgozói szerepkört ad hozzá egy projekthez, a rendszer módosítja a projekt konfigurációs fájljait, hogy a PHP az alkalmazás minden webes vagy feldolgozói példányán telepítve legyen. A következő parancs futtatásával tekintheti meg a PHP azon verzióját, amelyet alapértelmezés szerint telepíteni fog:
-
-    PS C:\myProject> Get-AzureServiceProjectRoleRuntime
-
-A fenti parancs kimenete az alább láthatóhoz hasonlóan fog kinézni. Ebben a példában a `IsDefault` jelölő a PHP-5.3.17 van `true` beállítva, ami azt jelzi, hogy az alapértelmezett PHP-verzió lesz telepítve.
-
-```
-Runtime Version     PackageUri                      IsDefault
-------- -------     ----------                      ---------
-Node 0.6.17         http://nodertncu.blob.core...   False
-Node 0.6.20         http://nodertncu.blob.core...   True
-Node 0.8.4          http://nodertncu.blob.core...   False
-IISNode 0.1.21      http://nodertncu.blob.core...   True
-Cache 1.8.0         http://nodertncu.blob.core...   True
-PHP 5.3.17          http://nodertncu.blob.core...   True
-PHP 5.4.0           http://nodertncu.blob.core...   False
-```
-
-A PHP-futtatókörnyezet verziója a felsorolt PHP-verziók bármelyikére beállítható. Ha például a PHP-verziót szeretné beállítani (a névvel `roleName`rendelkező szerepkörhöz) a 5.4.0, használja a következő parancsot:
-
-    PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
-
-> [!NOTE]
-> A rendelkezésre álló PHP-verziók megváltozhatnak a jövőben.
->
->
-
-## <a name="customize-the-built-in-php-runtime"></a>A beépített PHP-futtatókörnyezet testreszabása
-
-A fenti lépéseket követve teljes mértékben szabályozhatja a PHP futtatókörnyezet konfigurációját, beleértve a `php.ini` beállítások módosítását és a bővítmények engedélyezését.
-
-A beépített PHP-futtatókörnyezet testreszabásához kövesse az alábbi lépéseket:
-
-1. Vegyen fel egy nevű `php`új mappát a `bin` webes szerepkör könyvtárába. Feldolgozói szerepkör esetén adja hozzá a szerepkör gyökérkönyvtárához.
-2. A `php` mappában hozzon létre egy nevű `ext`mappát. Helyezzen el `.dll` minden olyan kiterjesztési fájlt ( `php_mongo.dll`például), amelyet engedélyezni szeretne ebben a mappában.
-3. Adjon hozzá `php.ini` egy fájlt a `php` mappához. Engedélyezze az egyéni bővítményeket, és állítson be bármilyen PHP-irányelvet ebben a fájlban. Ha például a `php_mongo.dll` bővítményt be szeretné kapcsolni `display_errors` és engedélyezni kívánja `php.ini` , a fájl tartalma a következő lesz:
-
-        display_errors=On
-        extension=php_mongo.dll
-
-> [!NOTE]
-> Az `php.ini` Ön által megadott fájlban nem megadott beállítások automatikusan az alapértelmezett értékre lesznek beállítva. Ne feledje azonban, hogy teljes `php.ini` fájlt is hozzáadhat.
+> A `roleName` paraméter nem kötelező. Ha nincs megadva, a rendszer automatikusan létrehozza a szerepkör nevét. Az első létrehozott webes szerepkör `WebRole1`lesz, a második pedig `WebRole2`, és így tovább. A létrehozott első feldolgozói szerepkör `WorkerRole1`lesz, a második pedig `WorkerRole2`, és így tovább.
 >
 >
 
@@ -115,11 +68,11 @@ Bizonyos esetekben előfordulhat, hogy a beépített PHP-futtatókörnyezet kiv�
 Ha egy webes szerepkört úgy szeretne konfigurálni, hogy az Ön által megadott PHP-futtatókörnyezetet használja, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy Azure-szolgáltatási projektet, és adjon hozzá egy PHP-alapú webes szerepkört a témakörben korábban ismertetett módon.
-2. Hozzon `php` létre egy mappát `bin` a webes szerepkör gyökérkönyvtárában található mappában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) `php` a mappához.
-3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet a [Windowshoz készült Microsoft-illesztőprogramokat használja a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a webes szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés során. Ehhez adja hozzá a [sqlncli. msi x64 telepítőt] a `bin` webes szerepkör gyökérkönyvtárában található mappához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
+2. Hozzon létre egy `php` mappát a webes szerepkör gyökérkönyvtárában található `bin` mappában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) a `php` mappájához.
+3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet a [Windowshoz készült Microsoft-illesztőprogramokat használja a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a webes szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés során. Ehhez adja hozzá a [sqlncli. msi x64 telepítőt] a webes szerepkör gyökérkönyvtárának `bin` mappájához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definiáljon egy indítási feladatot, amely úgy konfigurálja [Internet Information Services (IIS)][iis.net] , hogy a PHP-futtatókörnyezetet `.php` használja a lapokra vonatkozó kérelmek kezeléséhez. Ehhez nyissa meg a `setup_web.cmd` fájlt ( `bin` a webes szerepkör gyökérkönyvtárában) a szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
+4. Definiáljon egy indítási feladatot, amely úgy konfigurálja [Internet Information Services (IIS)][iis.net] , hogy a PHP-futtatókörnyezetet használja a `.php` lapokra vonatkozó kérelmek kezeléséhez. Ehhez nyissa meg a `setup_web.cmd` fájlt (a webes szerepkör gyökérkönyvtárában található `bin` fájlban), és cserélje le a tartalmát a következő parancsfájlra:
 
     ```cmd
     @ECHO ON
@@ -142,7 +95,7 @@ Ha egy webes szerepkört úgy szeretne konfigurálni, hogy az Ön által megadot
 6. Tegye közzé az alkalmazást az alábbi, az [alkalmazás közzététele](#publish-your-application) című szakaszban leírtak szerint.
 
 > [!NOTE]
-> A `download.ps1` parancsfájl ( `bin` a webes szerepkör gyökérkönyvtárában) a saját php-futtatókörnyezet használatára vonatkozó fenti lépéseket követve törölhető.
+> A `download.ps1` szkriptet (a webes szerepkör gyökérkönyvtárában található `bin` mappában) törölheti a saját PHP-futtatókörnyezet használatára vonatkozó fenti lépéseket követve.
 >
 >
 
@@ -151,11 +104,11 @@ Ha egy webes szerepkört úgy szeretne konfigurálni, hogy az Ön által megadot
 Ha egy feldolgozói szerepkört úgy szeretne konfigurálni, hogy az Ön által megadott PHP-futtatókörnyezetet használja, kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy Azure-szolgáltatási projektet, és adjon hozzá egy PHP-feldolgozói szerepkört a témakörben korábban ismertetett módon.
-2. Hozzon `php` létre egy mappát a feldolgozói szerepkör gyökérkönyvtárában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) a `php` mappához.
+2. Hozzon létre egy `php` mappát a feldolgozói szerepkör gyökérkönyvtárában, majd adja hozzá a PHP-futtatókörnyezetet (az összes bináris fájlt, a konfigurációs fájlokat, az almappákat stb.) a `php` mappához.
 3. VÁLASZTHATÓ Ha a PHP-futtatókörnyezet [Microsoft-illesztőprogramokat használ a PHP-hez a SQL Serverhoz][sqlsrv drivers], akkor konfigurálnia kell a feldolgozói szerepkört, hogy telepítse a [SQL Server Native Client 2012][sql native client] -et a kiépítés után. Ehhez adja hozzá a [sqlncli. msi x64 telepítőt] a feldolgozói szerepkör gyökérkönyvtárához. A következő lépésben leírt indítási parancsfájl csendesen futtatja a telepítőt a szerepkör kiépítés után. Ha a PHP-futtatókörnyezet nem a Microsoft Windows-illesztőprogramokat használja a SQL Serverhoz, akkor a következő lépésben látható parancsfájlból eltávolíthatja a következő sort:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definiáljon egy indítási feladatot, amely `php.exe` hozzáadja a végrehajtható fájlt a feldolgozói szerepkör PATH környezeti változóhoz a szerepkör kiépítés során. Ehhez nyissa meg a `setup_worker.cmd` fájlt (a feldolgozói szerepkör gyökérkönyvtárában) egy szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
+4. Definiáljon egy indítási feladatot, amely hozzáadja a `php.exe` végrehajtható fájlt a feldolgozói szerepkör PATH környezeti változóhoz, amikor a szerepkör kiépítve van. Ehhez nyissa meg a `setup_worker.cmd` fájlt (a feldolgozói szerepkör gyökérkönyvtárában) egy szövegszerkesztőben, és cserélje le a tartalmát a következő parancsfájlra:
 
     ```cmd
     @echo on
@@ -203,7 +156,7 @@ A következőhöz hasonló kimenet jelenik meg:
     Role is running at http://127.0.0.1:81
     Started
 
-Az emulátorban futó alkalmazást úgy tekintheti meg, ha megnyit egy webböngészőt, és megkeresi a kimenetben`http://127.0.0.1:81` megjelenített helyi címeket (a fenti példában szereplő kimenetben).
+Az emulátorban futó alkalmazást úgy tekintheti meg, ha megnyit egy webböngészőt, és megkeresi a kimenetben megjelenített helyi címeket (a fenti kimenetben`http://127.0.0.1:81`).
 
 Az emulátorok leállításához hajtsa végre a következő parancsot:
 

@@ -1,32 +1,35 @@
 ---
-title: Privát végpontok használata az Azure Storage szolgáltatással | Microsoft Docs
+title: Privát végpontok használata
+titleSuffix: Azure Storage
 description: A privát végpontok áttekintése a virtuális hálózatok Storage-fiókjainak biztonságos eléréséhez.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252647"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299056"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Privát végpontok használata az Azure Storage-hoz (előzetes verzió)
+# <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
 
 Az Azure Storage-fiókokhoz [privát végpontokat](../../private-link/private-endpoint-overview.md) is használhat, amelyek lehetővé teszik a virtuális hálózat (VNet) ügyfelei számára, hogy biztonságosan hozzáférjenek az adataihoz egy [privát kapcsolaton](../../private-link/private-link-overview.md)keresztül. A privát végpont IP-címet használ a Storage-fiók szolgáltatás VNet. A VNet és a Storage-fiók ügyfelei közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül halad, ami kiküszöböli a nyilvános internetről való kitettséget.
 
 Privát végpontok használata a Storage-fiókhoz a következőket teszi lehetővé:
+
 - A Storage-fiók biztonságossá tételéhez konfigurálja a Storage-tűzfalat úgy, hogy az a tárolási szolgáltatás nyilvános végpontján lévő összes kapcsolatot letiltsa.
 - A virtuális hálózat (VNet) biztonságának növelésével letilthatja a VNet kiszűrése adatait.
 - Biztonságosan csatlakozhat a Storage-fiókokhoz olyan helyszíni hálózatokról, amelyek VPN-vagy [Expressroute](../../expressroute/expressroute-locations.md) [-](../../vpn-gateway/vpn-gateway-about-vpngateways.md) kapcsolaton keresztül csatlakoznak a VNet.
 
 ## <a name="conceptual-overview"></a>Fogalmi áttekintés
-![Privát végpontok az Azure Storage-hoz – áttekintés](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+
+![Az Azure Storage privát végpontjai – áttekintés](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 A privát végpontok egy speciális hálózati adapterek egy Azure-szolgáltatáshoz a [Virtual Networkban](../../virtual-network/virtual-networks-overview.md) (VNet). Amikor létrehoz egy privát végpontot a Storage-fiókjához, biztonságos kapcsolatot biztosít a VNet található ügyfelek és a tároló között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a tárolási szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
 
@@ -43,7 +46,7 @@ A Storage-fiók tulajdonosai a [Azure Portal](https://portal.azure.com)a Storage
 
 A Storage-fiók úgy is biztosítható, hogy csak a VNet érkező kapcsolatokat fogadja el, ha úgy [konfigurálja a tárolási tűzfalat](storage-network-security.md#change-the-default-network-access-rule) , hogy alapértelmezés szerint megtagadja a hozzáférést a nyilvános végponton keresztül. Nincs szükség olyan tűzfalszabályre, amely engedélyezi a forgalmat egy privát végponttal rendelkező VNet, mivel a tárolási tűzfal csak a nyilvános végponton keresztüli hozzáférést vezérli. A magánhálózati végpontok Ehelyett az alhálózatokhoz való hozzáférést biztosító engedélyezési folyamaton alapulnak.
 
-### <a name="private-endpoints-for-storage-service"></a>Privát végpontok tárolási szolgáltatáshoz
+### <a name="private-endpoints-for-azure-storage"></a>Privát végpontok az Azure Storage-hoz
 
 A magánhálózati végpont létrehozásakor meg kell adnia a Storage-fiókot és a tárolási szolgáltatást, amelyhez csatlakozik. Külön privát végpontra van szükség az egyes tárolási szolgáltatásokhoz egy olyan Storage-fiókban, amelyhez hozzá kell férnie, azaz [blobokhoz](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2okhoz](../blobs/data-lake-storage-introduction.md), [fájlokhoz](../files/storage-files-introduction.md), [várólistákhoz](../queues/storage-queues-introduction.md), [táblákhoz](../tables/table-storage-overview.md)vagy [statikus webhelyekhez](../blobs/storage-blob-static-website.md).
 
@@ -51,8 +54,6 @@ A magánhálózati végpont létrehozásakor meg kell adnia a Storage-fiókot é
 > Hozzon létre egy külön privát végpontot a Storage szolgáltatás másodlagos példányához az RA-GRS-fiókok jobb olvasási teljesítményéhez.
 
 Ha olvasási hozzáférést szeretne a másodlagos régióhoz a földrajzi redundáns tároláshoz konfigurált Storage-fiókkal, akkor a szolgáltatás elsődleges és másodlagos példányaihoz külön magánhálózati végpontokra van szükség. A **feladatátvételhez**nem kell létrehoznia privát végpontot a másodlagos példányhoz. A magánhálózati végpont automatikusan csatlakozni fog az új elsődleges példányhoz a feladatátvétel után. További információ a tárterület-redundancia lehetőségeiről: [Azure Storage redundancia](storage-redundancy.md).
-
-#### <a name="resources"></a>További források
 
 A privát végpontok Storage-fiókhoz való létrehozásával kapcsolatos részletes információkért tekintse meg a következő cikkeket:
 
@@ -78,20 +79,20 @@ Ha a VNet kívülről oldja fel a tárolási végpont URL-címét a privát vég
 
 A fenti ábrán látható példában a "StorageAccountA" Storage-fiókhoz tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről történő feloldáskor a következők:
 
-| Name (Név)                                                  | Típus  | Érték                                                 |
+| Név                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Storage szolgáltatás nyilvános végpontja\>                   |
-| \<Storage szolgáltatás nyilvános végpontja\>                   | A     | \<Storage szolgáltatás nyilvános IP-címe\>                 |
+| \<Storage szolgáltatás nyilvános végpontja\>                   | Az     | \<Storage szolgáltatás nyilvános IP-címe\>                 |
 
 Amint azt korábban említettük, a VNet kívüli ügyfelek számára a nyilvános végponton keresztül megtagadhatja vagy vezérelheti a hozzáférést a Storage tűzfal használatával.
 
 A StorageAccountA tartozó DNS-erőforrásrekordok, amikor a privát végpontot üzemeltető VNet-ügyfél feloldotta a következőt:
 
-| Name (Név)                                                  | Típus  | Érték                                                 |
+| Név                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | Az     | 10.1.1.5                                              |
 
 Ez a megközelítés lehetővé teszi, hogy a Storage-fiókhoz **ugyanazt a kapcsolati karakterláncot használja** , mint a privát végpontokat üzemeltető VNet lévő ügyfelek, valamint a VNet kívüli ügyfelek számára.
 
@@ -111,8 +112,6 @@ A tárolási szolgáltatásokhoz tartozó magánhálózati végpontok ajánlott 
 | Table service          | `privatelink.table.core.windows.net` |
 | Statikus webhelyek        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>További források
-
 A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Azure virtuális hálózatokon található erőforrások névfeloldása](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
@@ -124,16 +123,23 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 ## <a name="known-issues"></a>Ismert problémák
 
+Tartsa szem előtt az Azure Storage-hoz készült privát végpontok következő ismert problémáit.
+
 ### <a name="copy-blob-support"></a>BLOB-támogatás másolása
 
-Az előzetes verzió ideje alatt nem támogatott a privát végpontokon keresztül elért Storage-fiókok számára kiadott blob-parancsok [másolása](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) , ha a forrásként szolgáló Storage-fiókot tűzfal védi.
+Ha a Storage-fiókot tűzfal védi, és a fiók privát végpontokon keresztül érhető el, akkor ez a fiók nem szolgálhat [másolási blob](/rest/api/storageservices/copy-blob) -művelet forrásaként.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Tároló-hozzáférési megkötések a virtuális hálózatok-beli ügyfelek számára privát végpontokkal
 
-A meglévő privát végpontokkal rendelkező virtuális hálózatok-ügyfelek megkötést kaptak a privát végpontokkal rendelkező más Storage-fiókok elérésekor. Tegyük fel például, hogy egy VNet N1-hez saját végpont tartozik az A1-es Storage-fiókhoz, azaz a blob szolgáltatáshoz. Ha az A2-es Storage-fiók privát végponttal rendelkezik a blob szolgáltatáshoz tartozó VNet N2-ben, akkor az VNet N1-ben lévő ügyfeleknek a privát végpont használatával is el kell érniük az A2-es fiók blob szolgáltatását. Ha az A2-es Storage-fiók nem rendelkezik privát végpontokkal a blob szolgáltatáshoz, akkor a VNet N1-ben lévő ügyfelek privát végpont nélkül is hozzáférhetnek a blob szolgáltatáshoz.
+A meglévő privát végpontokkal rendelkező virtuális hálózatok-ügyfelek megkötést kaptak a privát végpontokkal rendelkező más Storage-fiókok elérésekor. Tegyük fel például, hogy egy VNet N1 rendelkezik egy saját végponttal az A1-es Storage-fiókhoz a blob Storage-hoz. Ha az A2-es Storage-fiókhoz privát végpont tartozik egy VNet N2-ben a blob Storage-hoz, akkor az VNet N1-ben lévő ügyfeleknek a privát végpont használatával is hozzá kell férniük a blob Storage-fiókhoz. Ha az A2-es Storage-fiók nem rendelkezik privát végpontokkal a blob Storage-hoz, akkor a VNet N1-ben lévő ügyfelek privát végpont nélkül férhetnek hozzá a fiókhoz a blob Storage-ban.
 
 Ez a megkötés a DNS-módosítások eredményeként történt, amikor az A2-es fiók létrehoz egy magánhálózati végpontot.
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Hálózati biztonsági csoportra vonatkozó szabályok privát végpontokkal rendelkező alhálózatokhoz
 
 Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok a magánhálózati végpontra lesznek alkalmazva. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
+
+## <a name="next-steps"></a>További lépések
+
+- [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md)
+- [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

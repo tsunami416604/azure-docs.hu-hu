@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748059"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370457"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -45,7 +45,7 @@ Az eszközről a felhőbe irányuló üzenetek fogadásához a beépített végp
 
 Két tárolási szolgáltatás IoT Hub képes üzeneteket átirányítani az Azure- [blob Storage](../storage/blobs/storage-blobs-introduction.md) és a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) fiókba. Azure Data Lake Storage-fiókok a blob Storage-ra épülő [hierarchikus névtereket](../storage/blobs/data-lake-storage-namespace.md)használó Storage-fiókok. Mindkét blob a tárolóhoz használható.
 
-IoT Hub támogatja az Azure Storage-ba való adatírást az [Apache Avro](https://avro.apache.org/) formátumban, valamint JSON formátumban. Az alapértelmezett érték a AVRO. A kódolás formátuma csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. Egy meglévő végpont formátuma nem szerkeszthető. JSON **-** kódolás használatakor az ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét érték megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni. A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy az [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)használatával. Az alábbi ábrán látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
+IoT Hub támogatja az Azure Storage-ba való adatírást az [Apache Avro](https://avro.apache.org/) formátumban, valamint JSON formátumban. Az alapértelmezett érték a AVRO. A kódolás formátuma csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. Egy meglévő végpont formátuma nem szerkeszthető. JSON **-** kódolás használatakor az ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét érték megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni. A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)használatával. Az alábbi ábrán látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
 
 ![BLOB Storage-végpont kódolása](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -75,6 +75,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> Ha a Storage-fiók olyan tűzfal-konfigurációval rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) használni (az IoT-hubok számára elérhető régiókban, felügyelt szolgáltatás identitásával).
+
 Azure Data Lake Gen2-kompatibilis Storage-fiók létrehozásához hozzon létre egy új v2-es Storage-fiókot, és válassza az *engedélyezve* lehetőséget a **speciális** lap *hierarchikus névtér* mezőjében az alábbi képen látható módon:
 
 ![Azure Date Lake Gen2-tároló kiválasztása](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -84,9 +87,17 @@ Azure Data Lake Gen2-kompatibilis Storage-fiók létrehozásához hozzon létre 
 
 Service Bus várólisták és a IoT Hub végpontként használt témakörök nem rendelkezhetnek engedélyezett **munkamenetekkel** vagy **duplikált észleléssel** . Ha bármelyik beállítás engedélyezve van, a végpont nem **érhető el** a Azure Portalban.
 
+> [!NOTE]
+> Ha a Service Bus-erőforrás olyan tűzfal-konfigurációval rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) használni (az IoT-hubok számára a felügyelt szolgáltatás identitásával érhető el).
+
+
 ### <a name="event-hubs"></a>Event Hubs
 
 A beépített Event Hubs kompatibilis végponton kívül az adatok átirányítása Event Hubs típusú egyéni végpontokra is elvégezhető. 
+
+> [!NOTE]
+> Ha az Event hub-erőforrás olyan tűzfallal rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) használni (amely a felügyelt szolgáltatás identitásával IoT hubok esetében érhető el).
+
 
 ## <a name="reading-data-that-has-been-routed"></a>Az átirányított adatolvasás
 
@@ -104,6 +115,7 @@ Az alábbi oktatóanyagok segítségével megtudhatja, hogyan olvashatja el a v�
 
 * Olvasás [Service Bus témakörökből](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
 
+
 ## <a name="fallback-route"></a>Tartalék útvonal
 
 A tartalék útvonal minden olyan üzenetet elküld, amely nem felel meg a lekérdezési feltételeknek a meglévő útvonalakon a beépített Event Hubs (**üzenetek/események**) számára, amely kompatibilis a [Event Hubsokkal](/azure/event-hubs/). Ha az üzenet-útválasztás be van kapcsolva, engedélyezheti a tartalék útvonal funkciót. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, hacsak nem jön létre útvonal a végponthoz. Ha nincs elérhető útvonal a beépített végponthoz, és a tartalék útvonal engedélyezve van, csak az útvonalakon nem egyező üzeneteket küld a rendszer a beépített végpontnak. Továbbá, ha az összes meglévő útvonal törölve van, a tartalék útvonalnak engedélyezve kell lennie az összes, a beépített végponton tárolt érték fogadásához.
@@ -112,7 +124,7 @@ Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal-> üzenet
 
 ## <a name="non-telemetry-events"></a>Nem telemetria események
 
-Az eszköz telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését (nyilvános előzetes verzióban). Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végül, a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és a digitális Twin [tulajdonság](../iot-pnp/iot-plug-and-play-glossary.md) beállításakor vagy módosításakor IoT hub üzeneteket küld. [ ](../iot-pnp/iot-plug-and-play-glossary.md)lecserélve, vagy ha változási esemény történik az alapul szolgáló eszköznél.
+Az eszköz telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését (nyilvános előzetes verzióban). Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végül, a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és IoT hub üzeneteket küld, amikor egy digitális Twin [tulajdonságot](../iot-pnp/iot-plug-and-play-glossary.md) állítanak be vagy módosítanak, a rendszer lecseréli a [digitális](../iot-pnp/iot-plug-and-play-glossary.md) twint, vagy ha változási esemény történik az alapul szolgáló eszköz esetében.
 
 A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az eszköz eseményeinek közzétételéhez, hogy támogassa a valós idejű integrációkat és a munkafolyamatok automatizálását ezen események alapján. Tekintse meg az [üzenet-útválasztás és a Event Grid közötti fő különbségeket](iot-hub-event-grid-routing-comparison.md) , amelyekből megtudhatja, melyik a legmegfelelőbb a forgatókönyvhöz.
 
@@ -140,7 +152,7 @@ A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custo
 
 Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub, például ha egy végpont meghalt. Ezeket a diagnosztikai naplókat Azure Monitor naplókba, Event Hubsba vagy az Azure Storage-ba is elküldhetik egyéni feldolgozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzenetküldési útvonalak létrehozásával kapcsolatos információkért lásd: [IoT hub eszközről a felhőbe irányuló üzenetek feldolgozása útvonalak használatával](tutorial-routing.md).
 

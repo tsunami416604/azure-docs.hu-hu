@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535326"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298614"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory identitás-és hozzáférés-kezelési műveletek útmutatója
 
@@ -31,7 +31,7 @@ Az [Azure ad üzemeltetési útmutatójának](active-directory-ops-guide-intro.m
 
 A Azure Active Directory kezeléséhez olyan kulcsfontosságú működési feladatok és folyamatok folyamatos végrehajtása szükséges, amelyek esetleg nem részei a bevezetési projektnek. Még mindig fontos, hogy ezeket a feladatokat a környezet fenntartásához állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
 
-| Tevékenység | Tulajdonos |
+| Feladat | Tulajdonos |
 | :- | :- |
 | Az Azure-előfizetések létrehozási folyamatának meghatározása | Szervezettől függően |
 | Annak eldöntése, hogy ki kap Enterprise Mobility + Security licenceket | IAM Operations csapat |
@@ -170,7 +170,7 @@ Ha jelenleg olyan eszközt használ, mint például a [Microsoft Identity Manage
 Az erőforrás-tulajdonosok úgy vélik, hogy a **minden felhasználó** csoport csak **vállalati alkalmazottakat** tartalmaz, ha azok ténylegesen **vállalati alkalmazottakat** és **vendégeket**is tartalmazhatnak. Ennek eredményeképpen különleges figyelmet igényel, ha az **összes felhasználó** csoportot használja az alkalmazás-hozzárendeléshez, és hozzáférést biztosít az erőforrásokhoz, például a SharePoint-tartalomhoz vagy-alkalmazásokhoz.
 
 > [!IMPORTANT]
-> Ha a **minden felhasználó** csoport engedélyezve van, és a feltételes hozzáférési házirendekhez, alkalmazásokhoz vagy erőforrás-hozzárendelésekhez használatos, akkor ügyeljen arra, hogy [a csoport biztonságossá](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group) tétele, ha nem szeretné, hogy a vendég felhasználók is szerepeljenek. Emellett a licencelési hozzárendeléseket úgy kell kijavítania, hogy csak **vállalati alkalmazottakat** tartalmazó csoportokat hozzon létre és rendeljen hozzájuk. Ha azonban úgy találja, hogy a **minden felhasználó** csoport engedélyezve van, de nem használja az erőforrásokhoz való hozzáférést, akkor győződjön meg arról, hogy a szervezet operatív útmutatása szerint szándékosan használja ezt a csoportot (amely magában foglalja a **vállalati alkalmazottakat** és a **vendégeket**is).
+> Ha a **minden felhasználó** csoport engedélyezve van, és a feltételes hozzáférési házirendekhez, alkalmazásokhoz vagy erőforrás-hozzárendelésekhez használatos, akkor ügyeljen arra, hogy [a csoport biztonságossá](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups) tétele, ha nem szeretné, hogy a vendég felhasználók is szerepeljenek. Emellett a licencelési hozzárendeléseket úgy kell kijavítania, hogy csak **vállalati alkalmazottakat** tartalmazó csoportokat hozzon létre és rendeljen hozzájuk. Ha azonban úgy találja, hogy a **minden felhasználó** csoport engedélyezve van, de nem használja az erőforrásokhoz való hozzáférést, akkor győződjön meg arról, hogy a szervezet operatív útmutatása szerint szándékosan használja ezt a csoportot (amely magában foglalja a **vállalati alkalmazottakat** és a **vendégeket**is).
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatikus felhasználó-kiépítés az alkalmazásokba
 
@@ -191,7 +191,7 @@ Az [alapértelmezett különbözeti szinkronizálás](https://docs.microsoft.com
 - [Címtár attribútumainak előkészítése az Office 365-vel való szinkronizáláshoz a IdFix eszköz használatával – Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: hibák elhárítása szinkronizálás közben](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának öt aspektusa van. Ebben a listában gyorsan megtalálhatja és megteheti a szükséges műveleteket az identitások és jogosultságok életciklusának védelméhez és kezeléséhez a szervezetében.
 
@@ -201,6 +201,6 @@ A biztonságos identitás-infrastruktúrának öt aspektusa van. Ebben a listáb
 - Egyszerűsítse a licencek kezelését és az alkalmazások hozzárendelését.
 - A felhasználók üzembe helyezésének automatizálása az alkalmazásokban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a [hitelesítési kezelési ellenőrzésekkel és műveletekkel](active-directory-ops-guide-auth.md).

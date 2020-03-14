@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0df2c0501dfba6311d1178703e0907090706859a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303256"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296778"
 ---
 # <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
 
@@ -67,7 +67,7 @@ A szolgáltatással kapcsolatos releváns Security Center javaslatok részletei�
 
 Security Center valós idejű veszélyforrások észlelését teszi lehetővé a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
-A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. A részletekért lásd: [Az Azure-tárolók veszélyforrások észlelése](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
+A fenyegetéseket a gazdagép és az AK-fürt szintjén észleljük. A részletekért lásd: [Az Azure-tárolók veszélyforrások észlelése](threat-protection.md#azure-containers).
 
 
 ## <a name="container-security-faq"></a>Container Security – gyakori kérdések
@@ -89,7 +89,7 @@ A képvizsgálatok minden leküldésen aktiválva lesznek.
 Igen. Az eredmények az [alárendelt értékelések REST API](/rest/api/securitycenter/subassessments/list/)-ban találhatók. Emellett használhatja az Azure Resource Graph (ARG), a Kusto API-t az összes erőforráshoz: a lekérdezés egy adott vizsgálatot tud beolvasni.
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Azure Security Center tárolók biztonságáról, tekintse meg a következő kapcsolódó cikkeket:
 

@@ -8,16 +8,18 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252682"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370491"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
 A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web*nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](/azure/azure-functions/functions-overview) és más platformként nyújtott szolgáltatásokat is tartalmazzák.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
 > Ha a hely kiszolgálóoldali kódból függ, használja a [Azure app Service](/azure/app-service/overview) helyet.

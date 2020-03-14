@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 65465c6897853617f7f33a989f97d01fb0518a5e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304419"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136500"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -36,7 +36,7 @@ A Beta API-k használatának megkezdéséhez lásd: [Microsoft Graph béta-végp
 
 A 1.0-s API-k használatának megkezdéséhez lásd a [Microsoft Graph REST API 1.0-s verziójának dokumentációját](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) .
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Ha olyan erőforrást szeretne olvasni vagy írni, mint például egy felhasználó vagy egy e-mail-üzenet, a következőhöz hasonló kérelmet kell létrehoznia:
 
@@ -57,4 +57,4 @@ Ha elvégezte a gyors üzembe helyezést, már van egy alkalmazás, amely késze
 
 A Microsoft Graph Explorer egy webalapú eszköz, amellyel Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. Microsoft Graph Explorer a következő címen érhető el: `https://developer.microsoft.com/graph/graph-explorer`.
 
-A Poster olyan eszköz, amellyel a Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. A Poster a következő címen tölthető le: `https://www.getpostman.com/`. Ha a Poster-ben szeretné használni a Microsoft Grapht, használja a Microsoft Graph gyűjteményt a Poster szolgáltatásban. További információ: [Poster használata a Microsoft Graph API-val](https://docs.microsoft.comgraph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+A Poster olyan eszköz, amellyel a Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. A Poster a következő címen tölthető le: `https://www.getpostman.com/`. Ha a Poster-ben szeretné használni a Microsoft Grapht, használja a Microsoft Graph gyűjteményt a Poster szolgáltatásban. További információ: [Poster használata a Microsoft Graph API-val](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

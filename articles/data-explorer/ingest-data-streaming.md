@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330974"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297084"
 ---
 # <a name="streaming-ingestion-preview"></a>Folyamatos átvitel (előzetes verzió)
 
@@ -72,13 +72,13 @@ Két támogatott adatfolyam-betöltési típus létezik:
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az adatfolyam betöltése nem támogatja az [adatbázis-kurzorokat](/azure/kusto/management/databasecursor) vagy [az adatleképezést](/azure/kusto/management/mappings). Csak az [előre létrehozott](/azure/kusto/management/tables#create-ingestion-mapping) adatleképezés támogatott. 
+* Az adatfolyam betöltése nem támogatja az [adatbázis-kurzorokat](/azure/kusto/management/databasecursor) vagy [az adatleképezést](/azure/kusto/management/mappings). Csak az [előre létrehozott](/azure/kusto/management/create-ingestion-mapping-command) adatleképezés támogatott. 
 * A streaming betöltési teljesítménye és a kapacitása nagyobb a virtuális gépek és a fürtök méretével. Az egyidejű betöltések legfeljebb hat betöltésre korlátozódnak. Például 16 Magos SKU esetében, például a D14 és a L16 esetében a maximálisan támogatott terhelés 96 egyidejű betöltés. Két fő SKU esetében, például a D11 esetében a maximálisan támogatott terhelés 12 egyidejű betöltés.
 * A betöltési kérések adatméretre vonatkozó korlátozása 4 MB.
 * A séma frissítései, például a táblák létrehozása és módosítása, valamint a betöltési leképezések, akár öt percet is igénybe vehetnek a streaming betöltési szolgáltatás számára.
 * Az adatfolyamok betöltésének engedélyezése egy fürtön, még akkor is, ha az adatok nem a folyamatos átvitelen keresztül kerülnek betöltésre, a a fürt helyi SSD-lemezének részét képezi a betöltési adatok átviteléhez, és csökkenti a gyors gyorsítótár számára elérhető tárterületet
 * Az adatfolyam-betöltési adatmennyiség [nem állítható](/azure/kusto/management/extents-overview#extent-tagging) be.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Adatkezelő lekérdezése](web-query-data.md)

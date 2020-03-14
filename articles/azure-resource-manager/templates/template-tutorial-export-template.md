@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773175"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368893"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -32,11 +32,11 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
 ## <a name="create-app-service-plan"></a>App Service-csomag létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza **az erőforrás létrehozása**lehetőséget.
 1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
 1. Kattintson a **Létrehozás** gombra.
-1. Be
+1. Adja meg a következőt:
 
     - **Előfizetés**: válassza ki az Azure-előfizetést.
     - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet a jelen oktatóanyag-sorozatban használt.
@@ -84,7 +84,7 @@ Sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell-
 
 Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addappserviceplan \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -111,7 +111,7 @@ az group deployment create \
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Az erőforráscsoport egy Storage-fiókot és egy App Service tervet tartalmaz.

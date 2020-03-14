@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Beszédfelismerési eszközök dokumentációja
+title: A Speech Devices dokumentációja
 summary: A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
 metadata:
   title: Beszédfelismerési eszközök dokumentációja – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
@@ -10,30 +10,30 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562855"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79369250"
 landingContent:
-- title: Bevezetés
+- title: Tudnivalók a Speech Devices SDK-ról
   linkLists:
   - linkListType: overview
     links:
-    - text: A Beszédeszközök SDK ismertetése
+    - text: Mi a Speech Devices SDK?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: A Speech Device SDK (Windows) használata
+    - text: A Speech Devices SDK (Windows) használata
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: A Speech Device SDK (Linux) használata
+    - text: A Speech Devices SDK (Linux) használata
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: A Speech Device SDK (Android) használata
+    - text: A Speech Devices SDK (Android) használata
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Lépésenkénti útmutatók
+- title: Fejlesztés a Speech Device SDK-val
   linkLists:
   - linkListType: how-to-guide
     links:

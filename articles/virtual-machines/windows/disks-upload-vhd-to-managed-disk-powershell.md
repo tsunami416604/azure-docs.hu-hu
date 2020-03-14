@@ -3,17 +3,17 @@ title: VHD feltöltése az Azure-ba a Azure PowerShell használatával
 description: Megtudhatja, hogyan tölthet fel egy virtuális merevlemezt egy Azure Managed Disk-lemezre, és hogyan másolhat a felügyelt lemezeket régiók között a közvetlen feltöltéssel Azure PowerShell használatával.
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459981"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369556"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>VHD feltöltése az Azure-ba a Azure PowerShell használatával
 
@@ -27,7 +27,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 
 - Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps).
-- Ha a virtuális merevlemezt a helyszínen kívánja feltölteni: az Azure-hoz [készült](prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
+- Ha a virtuális merevlemezt a helyszíni rendszerből kívánja feltölteni: az Azure-hoz [készült](prepare-for-upload-vhd-image.md)rögzített méretű VHD-t helyileg tárolják.
 - Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
@@ -76,8 +76,6 @@ Ez a feltöltés azonos átviteli sebességgel rendelkezik, mint a [szabványos 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-Ha a SAS lejár a feltöltés során, és még nem nevezte meg `revoke-access`, akkor új SAS-t kaphat a feltöltés folytatásához `grant-access`használatával.
 
 Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
 

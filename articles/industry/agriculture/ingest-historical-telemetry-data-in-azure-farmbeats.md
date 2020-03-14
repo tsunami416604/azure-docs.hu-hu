@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 80d8f176d3a4af82a6b93e1af430d914c47bfff6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
-ms.translationtype: HT
+ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79137356"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298767"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -20,30 +20,29 @@ Az eszközök internetes hálózata (IoT) erőforrások, például az eszközök
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a FarmBeats-t, és összegyűjtötte a korábbi adatokat a IoT-eszközökről.
-A partnerek hozzáférését is engedélyeznie kell a következő lépésekben leírtak szerint.
+Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a FarmBeats-t, és összegyűjtötte a korábbi adatokat a IoT-eszközökről. A partnerek hozzáférését is engedélyeznie kell a következő lépésekben leírtak szerint.
 
 ## <a name="enable-partner-access"></a>Partneri hozzáférés engedélyezése
 
 Engedélyeznie kell a partner-integrációt az Azure FarmBeats-példányához. Ez a lépés egy olyan ügyfelet hoz létre, amely hozzáfér az Azure FarmBeats-példányhoz az eszköz partnereként, és a következő lépésekben szükséges értékeket biztosítja:
 
-- API-végpont: Ez a Datahub URL-cím, például https://\<Datahub >. azurewebsites. net.
+- API-végpont: Ez a Datahub URL-cím, például https://\<Datahub >. azurewebsites. net
 - Bérlőazonosító
 - Ügyfél-azonosító
 - Titkos ügyfélkulcs
 - EventHub-kapcsolatok karakterlánca
 
-Kövesse az alábbi lépéseket.
+Kövesse az alábbi lépéseket:
 
 >[!NOTE]
 > A következő lépések végrehajtásához rendszergazdának kell lennie.
 
 1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscriptv2), és bontsa ki a helyi meghajtóra. Egy fájl lesz a zip-fájlban.
-2. Jelentkezzen be https://portal.azure.com/, és lépjen a Azure Active Directory-> alkalmazás regisztrációi
+2. Jelentkezzen be https://portal.azure.com/ba, és lépjen **Azure Active Directory** > **alkalmazás regisztrációja**.
 
-3. Kattintson a FarmBeats-telepítés részeként létrehozott alkalmazás-regisztrációra. Ez a neve megegyezik a FarmBeats Datahub.
+3. Válassza ki a FarmBeats-telepítés részeként létrehozott **alkalmazás-regisztrációt** . Ez a neve megegyezik a FarmBeats Datahub.
 
-4. Kattintson az "API közzététele" elemre, > kattintson az "ügyfélalkalmazás hozzáadása" elemre, és írja be a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az "engedélyezés hatóköre" lehetőséget. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához.
+4. Válassza ki **az API közzététele** lehetőséget > válassza az **ügyfélalkalmazás hozzáadása** lehetőséget, és adja meg a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az **Engedélyezés hatókört**. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) a következő lépések végrehajtásához:
 
 5. Nyissa meg a Cloud Shellt. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
@@ -59,9 +58,9 @@ Kövesse az alábbi lépéseket.
 
 8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
 
-9. Futtassa a következő szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
+9. Futtassa a következő szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely **Azure Active Directory** > **Áttekintés lapon**szerezhető be.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1   
 
@@ -70,9 +69,12 @@ Kövesse az alábbi lépéseket.
 10. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
 ## <a name="create-device-or-sensor-metadata"></a>Eszköz vagy érzékelő metaadatainak létrehozása
 
- Most, hogy rendelkezik a szükséges hitelesítő adatokkal, megadhatja az eszközt és az érzékelőket. Ehhez hozza létre a metaadatokat a FarmBeats API-k meghívásával. Vegye figyelembe, hogy az API-kat a fenti szakaszban létrehozott ügyfélalkalmazásként kell meghívni.
+ Most, hogy rendelkezik a szükséges hitelesítő adatokkal, megadhatja az eszközt és az érzékelőket. Ehhez hozza létre a metaadatokat a FarmBeats API-k meghívásával. Ügyeljen arra, hogy az API-kat a fenti szakaszban létrehozott ügyfélalkalmazásként hívja meg.
 
- A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét. Vegye figyelembe, hogy partnereként csak olvasási, létrehozási és frissítési metaadatokat lehet elérni. **Egy partner nem engedélyezte a törlést.**
+ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
+
+ > [!NOTE]
+ > Partnerként csak olvasási, létrehozási és frissítési metaadatokat lehet elérni. **a törlési lehetőség csak a partnerre korlátozódik.**
 
 - /**DeviceModel**: a DeviceModel az eszköz metaadatait, például a gyártót és az eszköz típusát, amely vagy egy átjáró vagy egy csomópont.
 - /**eszköz**: az eszköz a farmon lévő fizikai eszköznek felel meg.
@@ -86,7 +88,7 @@ Kövesse az alábbi lépéseket.
 |          Gyártó            |         A gyártó neve    |
 |  ProductCode                    |  Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800.  |
 |            Portok          |     A port neve és típusa, amely digitális vagy analóg.
-|     Name (Név)                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+|     Név                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
       Leírás     | Adjon meg egy értelmes leírást a modellről.
 |    Tulajdonságok          |    További tulajdonságok a gyártótól.   |
 |    **Eszköz**             |                      |
@@ -95,7 +97,7 @@ Kövesse az alábbi lépéseket.
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc).
 |  Hely            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).   
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId.  |
-|    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
+|    Név            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
 |     Leírás       |      Adjon meg egy értelmes leírást. |
 |     Tulajdonságok    |  További tulajdonságok a gyártótól.
 |     **SensorModel**        |          |
@@ -107,7 +109,7 @@ Kövesse az alábbi lépéseket.
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által meghatározott típusok: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nem egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak, tekintse meg a/ExtendedType API-t.|
 |    SensorMeasures > AggregationType    |  Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation.  |
-|          Name (Név)            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
+|          Név            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
 |    Leírás        | Adjon meg egy értelmes leírást a modellről.  |
 |   Tulajdonságok       |  További tulajdonságok a gyártótól.  |
 |    **Érzékelő**      |          |
@@ -116,7 +118,7 @@ Kövesse az alábbi lépéseket.
 | Hely          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
-| Name (Név)            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
+| Név            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
 |    Leírás      | Adjon meg egy értelmes leírást. |
 |    Tulajdonságok        |További tulajdonságok a gyártótól. |
 
@@ -126,7 +128,7 @@ További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDat
 
 API-kérelem létrehozásához össze kell kapcsolni a HTTP-(POST-) metódust, az API szolgáltatás URL-címét és az erőforráshoz tartozó URI-t, amely lekérdezi, beküldi a kérelmet, létrehoz vagy töröl egy kérést. Ezután adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz a Datahub URL-cím (https://\<yourdatahub >. azurewebsites. net).  
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A FarmBeats Datahub tulajdonosi hitelesítést használ, amelyhez az alábbi, az előző szakaszban létrehozott hitelesítő adatok szükségesek:
 
@@ -284,7 +286,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
-Az alábbiakban egy, a Pythonban található mintakód szerepel. Vegye figyelembe, hogy a mintában használt hozzáférési jogkivonat ugyanaz, mint amit a hitelesítés során kapott
+Az alábbiakban egy, a Pythonban található mintakód szerepel. A mintában használt hozzáférési jogkivonat ugyanaz, mint a hitelesítés során.
 
 ```python
 import requests
@@ -347,11 +349,11 @@ Alakítsa át a korábbi érzékelő adatformátumát olyan kanonikus formátumr
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
         }
       ]
     }
@@ -400,7 +402,7 @@ Példa egy telemetria-üzenetre:
 }
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nem lehet megtekinteni a telemetria adatait az érzékelőkből származó múltbeli/adatfolyam-adatok betöltése után
 
@@ -408,8 +410,10 @@ Példa egy telemetria-üzenetre:
 
 **Javítási művelet**:
 
-1. Győződjön meg arról, hogy helyesen végrehajtotta a partner regisztrációját – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a lekérést, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse az [itt található lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) a partner hozzáadásához.
+1. Győződjön meg arról, hogy végrehajtotta a megfelelő partneri regisztrációt – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a beolvasást, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse a partner hozzáadásához [szükséges lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
+
 2. Győződjön meg arról, hogy létrehozta a metaadatokat (DeviceModel, eszköz, SensorModel, érzékelő) a partner ügyfél hitelesítő adataival.
+
 3. Győződjön meg arról, hogy a megfelelő telemetria-formátumot használta (az alább megadott módon):
 
 ```json
@@ -423,11 +427,11 @@ Példa egy telemetria-üzenetre:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -436,6 +440,6 @@ Példa egy telemetria-üzenetre:
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](rest-api-in-azure-farmbeats.md).

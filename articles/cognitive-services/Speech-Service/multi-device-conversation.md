@@ -1,5 +1,5 @@
 ---
-title: A több eszközre kiterjedő beszélgetés (előzetes verzió) – beszédfelismerési szolgáltatás
+title: Multi-Device beszélgetés (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560813"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371358"
 ---
-# <a name="about-multi-device-conversation-preview"></a>A többeszközes beszélgetés ismertetése (előzetes verzió)
+# <a name="what-is-multi-device-conversation-preview"></a>Mi a multi-Device beszélgetés (előzetes verzió)?
 
 A **többeszközes beszélgetés** révén egyszerűen hozhat létre beszéd-vagy szöveges beszélgetést több ügyfél között, és koordinálhatja a közöttük küldött üzeneteket.
 
@@ -75,8 +75,8 @@ Minden ügyfél küldhet hang-vagy azonnali üzeneteket. A szolgáltatás a besz
 A **beszélgetés** egy olyan munkamenet, amelyet az egyik felhasználó elindít a többi résztvevő felhasználótól a csatlakozáshoz. Minden ügyfél az öt betűs **beszélgetési kóddal**csatlakozik a beszélgetéshez.
 
 Mindegyik beszélgetés olyan metaadatokat hoz létre, amelyek a következőket tartalmazzák:
--   A beszélgetés elindításának és befejezésének időbélyege
--   A beszélgetésben szereplő összes résztvevő listája, beleértve az egyes felhasználók által választott beceneveket és az elsődleges nyelvet a beszédfelismeréshez vagy szövegbevitelhez.
+-    A beszélgetés elindításának és befejezésének időbélyege
+-    A beszélgetésben szereplő összes résztvevő listája, beleértve az egyes felhasználók által választott beceneveket és az elsődleges nyelvet a beszédfelismeréshez vagy szövegbevitelhez.
 
 
 A beszélgetésben két típusú felhasználó található: a **gazdagép** és a **résztvevő**.
@@ -112,7 +112,7 @@ Az elsődleges nyelvtől függetlenül minden résztvevő további nyelveket is 
 Az alábbi összefoglalás azt mutatja be, hogy a felhasználó hogyan teheti meg a több eszközből álló beszélgetéseket a választott elsődleges nyelv alapján.
 
 
-| A felhasználó által a beszélgetésben elvégezhető műveletek | Speech-to-text | Csak szöveg |
+| A felhasználó által a beszélgetésben elvégezhető műveletek | Diktálás | Csak szöveg |
 |-----------------------------------|----------------|------|
 | Beszédfelismerési bemenet használata | ✔️ | ❌ |
 | Azonnali üzenetek küldése | ✔️ | ✔️ |
@@ -123,7 +123,7 @@ Az alábbi összefoglalás azt mutatja be, hogy a felhasználó hogyan teheti me
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszélgetések valós idejű fordítása](quickstarts/multi-device-conversation.md)

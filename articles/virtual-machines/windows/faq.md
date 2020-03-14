@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 64aeaf412bc8af242a9d3184a3c1f0fa0ee4809e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: e3d2673ba52ba0cca36e2a999558313b64716ade
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243327"
+ms.locfileid: "79299614"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines
 Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A jelen témakör Linux-verziójával kapcsolatban lásd: [Linux Virtual Machines kapcsolatos gyakori kérdések](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -41,7 +41,7 @@ Hozzon létre egy távoli kapcsolatot egy Windows rendszerű virtuális gép Tá
 
 Ha problémákat tapasztal a Távoli asztalával kapcsolatban, tekintse [meg a Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)foglalkozó témakört. 
 
-Ha járatos a Hyper-V használatában, akkor előfordulhat, hogy egy, a VMConnecthez hasonló eszközt szeretne használni. Az Azure nem biztosít hasonló eszközt, mivel nem támogatja a virtuális gépek konzolos elérését.
+Ha már ismeri a Hyper-V-t, előfordulhat, hogy a VMConnect hasonló eszközt keres. Az Azure nem nyújt hasonló eszközt, mert a virtuális géphez való hozzáférés nem támogatott.
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Használhatom az ideiglenes lemezt (a D: meghajtó alapértelmezés szerint) az adattároláshoz?
 Ne használja az ideiglenes lemezt az adattároláshoz. Csak átmeneti tárterület, ezért a nem helyreállítható adatvesztés kockázatát kockáztatja. Adatvesztés történhet, ha a virtuális gép egy másik gazdagépre lép. A virtuális gép átméretezése, a gazdagép frissítése vagy a gazdagépen bekövetkezett hardverhiba lehet az oka egy virtuális gép áthelyezésének.
@@ -75,7 +75,7 @@ Igen. Linux rendszerű virtuális gép gyors létrehozásához a kipróbálásho
 Igen, ez már lehetséges. Először le kell állítani a virtuális gépet. Ezután hozzáadhat vagy eltávolíthat egy hálózati adaptert (kivéve, ha ez a virtuális gép utolsó hálózati adaptere). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Van-e számítógépnév-követelmény?
-Igen. A számítógép neve legfeljebb 15 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) .
+Igen. A számítógép neve legfeljebb 15 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Vannak az erőforráscsoport-nevekre vonatkozó követelmények?
 Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszú lehet. Az erőforráscsoportok további információit az [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) című témakörben talál.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127998"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366683"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -35,7 +35,7 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
 4. Adja hozzá azt a fiókot, amelyet a gazdagéphez a "Távoli asztal user" csoport RDP-vel való csatlakozásakor használt. Ha ezt nem teszi meg, előfordulhat, hogy nem tud csatlakozni a virtuális géphez a Active Directory tartományhoz való csatlakoztatása után.
 5. Nyissa meg a Windows Updatet a virtuális gépen.
 6. Telepítse az összes Windows-frissítést a fontos kategóriába.
-7. Telepítse az összes Windows-frissítést a választható kategóriába (kivéve a nyelvi csomagokat). Ezzel telepíti a RDP protokoll 8,0 frissítést ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), amelyre el kell végeznie ezeket az utasításokat.
+7. Telepítse az összes Windows-frissítést a választható kategóriába (kivéve a nyelvi csomagokat). Ezzel telepíti a RDP protokoll 8,0 frissítést ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)), amelyre el kell végeznie ezeket az utasításokat.
 8. Nyissa meg a Helyicsoportházirend-szerkesztőt, és navigáljon a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > távoli asztal **munkamenet-gazdagép** > **távoli munkamenet-környezet**.
 9. Engedélyezze a RDP protokoll 8,0 szabályzatot.
 10. Csatlakoztassa a virtuális gépet a Active Directory tartományhoz.

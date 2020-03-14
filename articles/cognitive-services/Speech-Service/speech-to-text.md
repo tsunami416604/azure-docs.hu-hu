@@ -3,19 +3,19 @@ title: Beszéd – szöveg – beszéd szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A beszédfelismerési funkció lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé. Alkalmazásait, eszközeit és eszközeit felhasználhatják, megjeleníthetik, és műveleteket végezhetnek ezen a szövegbevitelen. Ez a szolgáltatás zökkenőmentesen működik a szöveg-beszéd (Speech szintézis) és a beszédfelismerési funkciók használatával.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.author: erhopf
-ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.author: dapine
+ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388294"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371256"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
@@ -24,9 +24,8 @@ A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből sz�
 A beszédfelismerési szolgáltatás alapértelmezés szerint az univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adataival lett betanítva, és a felhőben van üzembe helyezve. Ez optimális a társalgási és a diktálási forgatókönyvek esetében. A beszédfelismerés és az átiratok egyedi környezetben való használatakor egyéni akusztikai, nyelvi és kiejtési modelleket hozhat létre és állíthat be. A Testreszabás hasznos lehet a környezeti zaj vagy az iparágra jellemző szókincs kezelése során.
 
 > [!NOTE]
-> A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat vagy Custom Speech-t használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
+> A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
 > - [Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba](how-to-migrate-from-bing-speech.md)
-> - [Áttelepítés Custom Speechról a beszédfelismerési szolgáltatásba](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>Ismerkedés a beszédfelismerési szöveggel
 

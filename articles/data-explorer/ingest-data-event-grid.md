@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096415"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370440"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobok betöltése az Azure Adatkezelőba Event Grid értesítésekre való feliratkozással
 
@@ -69,7 +69,7 @@ Hozzon létre egy táblázatot az Azure Adatkezelőban, ahol Event Hubs küldi a
 
 1. Másolja a következő parancsot az ablakba, és válassza a **Futtatás** elemet a betöltött adatot fogadó tábla (TestTable) létrehozásához.
 
-    ```Kusto
+    ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
@@ -77,7 +77,7 @@ Hozzon létre egy táblázatot az Azure Adatkezelőban, ahol Event Hubs küldi a
 
 1. Másolja a következő parancsot az ablakba, és válassza a **Futtatás** elemet a bejövő JSON-adattípusok a tábla oszlopnevek és adattípusai (TestTable) szerinti leképezéséhez.
 
-    ```Kusto
+    ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
@@ -130,11 +130,11 @@ Egy kisméretű rendszerhéj-parancsfájllal dolgozunk, amely néhány alapszint
 
 Mentse az adatok fájlba, és töltse fel a következő szkripttel:
 
-```Json
+```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
 ```
 
-```bash
+```azurecli
 #!/bin/bash
 ### A simple Azure Storage example script
 
@@ -195,14 +195,14 @@ Szükség esetén később is megváltoztathatja a szabályzatot. Ebben a cikkbe
 
 1. A következő lekérdezés a tesztadatbázison való futtatásával ellenőrizze, hogy hány üzenet került át eddig a pillanatig az adatbázisba.
 
-    ```Kusto
+    ```kusto
     TestTable
     | count
     ```
 
 1. Az üzenetek tartalmának megtekintéséhez futtassa a következő lekérdezést a tesztelési adatbázisban.
 
-    ```Kusto
+    ```kusto
     TestTable
     ```
 

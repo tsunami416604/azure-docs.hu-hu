@@ -1,6 +1,6 @@
 ---
 title: Legyen egy helyszíni kódoló partner – Azure Media Services
-description: Egy helyszíni kódoló partner lesz Azure Media Services.
+description: Ez a cikk azt ismerteti, hogyan ellenőrizheti a helyszíni élő adatfolyam-kódolókat.
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252973"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298631"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>Helyszíni kódoló partner lesz
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Helyszíni élő adatfolyam-kódoló ellenőrzése
 
 Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállalati ügyfeleknek ajánljuk, Media Services népszerűsíti a terméket. Helyszíni kódoló partnernek való megfeleléshez ellenőriznie kell a helyszíni kódoló kompatibilitását Media Services használatával. Ehhez végezze el a következő ellenőrzéseket.
 
-### <a name="pass-through-live-event-verification"></a>Áteresztő élő esemény ellenőrzése
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>Áteresztő élő esemény ellenőrzése
 
 1. A Media Services-fiókjában ellenőrizze, hogy fut-e a **folyamatos átviteli végpont** . 
 2. Hozzon létre és indítsa el az **átmenő** élő eseményt. <br/> További információ: [élő események állapota és számlázása](live-event-states-billing.md).
@@ -38,7 +40,7 @@ Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállala
 15. Az élő esemény állapotának alaphelyzetbe állítása az egyes minták létrehozása után.
 16. Ismételje meg az 5 – 15. lépést a kódoló által támogatott összes konfiguráció esetében (az ad-jelzések, a feliratok vagy a különböző kódolási sebességek nélkül).
 
-### <a name="live-encoding-live-event-verification"></a>Élő események élő kódolásának ellenőrzése
+## <a name="live-encoding-live-event-verification"></a>Élő események élő kódolásának ellenőrzése
 
 1. A Media Services-fiókjában ellenőrizze, hogy fut-e a **folyamatos átviteli végpont** . 
 2. Hozza létre és indítsa el az élő **kódolás** élő eseményét. <br/> További információ: [élő események állapota és számlázása](live-event-states-billing.md).
@@ -57,18 +59,18 @@ Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállala
 15. Az élő esemény állapotának alaphelyzetbe állítása az egyes minták létrehozása után.
 16. Ismételje meg az 5 – 15. lépést a kódoló által támogatott összes konfiguráció esetében (az ad-jelzések, a feliratok vagy a különböző kódolási sebességek nélkül).
 
-### <a name="longevity-verification"></a>Élettartam ellenőrzése
+## <a name="longevity-verification"></a>Élettartam ellenőrzése
 
 Kövesse az [élő esemény ellenőrzésének](#pass-through-live-event-verification) megfelelő lépéseket, kivéve a 11. lépést. <br/>10 perc helyett futtassa az élő kódolót egy hétig vagy tovább. Az élő adatfolyamok időről időre (vagy archivált eszközre) való megtekintésével ellenőrizheti, hogy a lejátszás nem rendelkezik-e látható hibákkal. [Azure Media Player](https://aka.ms/azuremediaplayer)
 
-### <a name="email-your-recorded-settings"></a>A rögzített beállítások elküldése e-mailben
+## <a name="email-your-recorded-settings"></a>A rögzített beállítások elküldése e-mailben
 
 Végezetül, a rögzített beállítások és az élő archiválási paraméterek elküldése e-mailben Azure Media Services a amshelp@microsoft.com értesítésként, hogy az összes önellenőrzési ellenőrzés el lett-e adva. Adja meg a kapcsolattartási adatait is a követő feladatokhoz. A folyamattal kapcsolatos bármilyen kérdéssel kapcsolatba léphet a Azure Media Services csapatával.
 
 ## <a name="see-also"></a>Lásd még
 
-[Ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md)
+[Tesztelt helyszíni kódolók](recommended-on-premises-live-encoders.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Élő közvetítés a Media Services v3-val](live-streaming-overview.md)

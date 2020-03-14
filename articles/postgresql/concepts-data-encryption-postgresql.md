@@ -1,17 +1,17 @@
 ---
-title: Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
+title: Adattitkosítás az ügyfél által felügyelt kulccsal – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Azure Database for PostgreSQL egy ügyfél által felügyelt kulccsal rendelkező egykiszolgálós adattitkosítás lehetővé teszi, hogy Bring Your Own Key (BYOK) a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198700"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297022"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -32,9 +32,9 @@ A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelke
 Azure Database for PostgreSQL egyetlen kiszolgáló adattitkosítása a következő előnyöket biztosítja:
 
 * Az adathozzáférést teljes mértékben a rendszer ellenőrzi, hogy el tudja-e távolítani a kulcsot, és elérhetetlenné teszi az adatbázist 
-*   Teljes hozzáférés a kulcs-életciklushoz, beleértve a kulcs rotációját a vállalati házirendekkel való összehangoláshoz
-*   A Azure Key Vaultban található kulcsok központi felügyelete és szervezete
-*   A feladatok elkülönítésének lehetősége a biztonsági tisztviselők, valamint a DBA és a rendszergazdák között
+*    Teljes hozzáférés a kulcs-életciklushoz, beleértve a kulcs rotációját a vállalati házirendekkel való összehangoláshoz
+*    A Azure Key Vaultban található kulcsok központi felügyelete és szervezete
+*    A feladatok elkülönítésének lehetősége a biztonsági tisztviselők, valamint a DBA és a rendszergazdák között
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
@@ -124,7 +124,7 @@ Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállí
 * Az újonnan létrehozott kiszolgáló (visszaállított/replika) nem elérhető állapotban marad, mert az egyedi identitása még nem kapott engedélyt a Key Vault.
 * A visszaállított/replika kiszolgálón ellenőrizze újra az ügyfél által felügyelt kulcsot az adattitkosítási beállításokban. Ez biztosítja, hogy az újonnan létrehozott kiszolgáló becsomagolja és kicsomagolja az engedélyeket a Key Vaultban tárolt kulcshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást egy ügyfél által felügyelt kulccsal a PostgreSQL-hez készült Azure-adatbázishoz a Azure Portal használatával](howto-data-encryption-portal.md).
 

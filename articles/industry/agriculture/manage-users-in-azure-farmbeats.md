@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271693"
+ms.locfileid: "79298784"
 ---
 # <a name="manage-users"></a>Felhasználók kezelése
 
@@ -18,7 +18,7 @@ Az Azure FarmBeats felhasználói felügyeletet tartalmaz a Azure Active Directo
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Szükség van egy Azure FarmBeats-telepítésre. További információ: az [Azure FarmBeats telepítése](install-azure-farmbeats.md).
+- Az Azure FarmBeats telepítése szükséges. További információ: az [Azure FarmBeats telepítése](install-azure-farmbeats.md).
 - Azon felhasználók e-mail-azonosítói, amelyeket hozzá szeretne adni, vagy amelyekről el szeretné távolítani az Azure FarmBeats-példányát.
 
 ## <a name="manage-azure-farmbeats-users"></a>Azure FarmBeats-felhasználók kezelése
@@ -26,6 +26,8 @@ Az Azure FarmBeats felhasználói felügyeletet tartalmaz a Azure Active Directo
 Az Azure FarmBeats az Azure AD-t használja a hitelesítéshez, a hozzáférés-vezérléshez és a szerepkörökhöz. Az Azure AD-bérlőben felhasználókat adhat hozzá az Azure FarmBeats.
 
 > [!NOTE]
+> Ha a felhasználó nem Azure AD-bérlői felhasználó, kövesse az **Azure ad-felhasználók hozzáadása** szakasz utasításait a telepítés befejezéséhez.
+
 > Ha az Azure FarmBeats-felhasználóként hozzáadni próbált felhasználó nem szerepel az Azure AD-bérlőben, az "Azure AD-felhasználók hozzáadása" szakaszban található utasításokat követve fejezze be a telepítést.
 
 Az Azure FarmBeats két típusú felhasználói szerepkört támogat:
@@ -63,7 +65,7 @@ Felhasználók eltávolítása az Azure FarmBeats rendszerből:
 ## <a name="add-azure-ad-users"></a>Azure AD-felhasználók hozzáadása
 
 > [!NOTE]
-> Az Azure FarmBeats-felhasználóknak az Azure AD-bérlőben kell rendelkezniük ahhoz, hogy hozzá lehessen rendelni azokat az alkalmazásokhoz és szerepkörökhöz. Ha az Azure FarmBeats hozzáadni kívánt felhasználó még nem létezik az Azure AD-bérlőben, kövesse az ebben a szakaszban található utasításokat. Ha a felhasználó létezik az Azure AD-bérlőben, akkor kihagyhatja ezeket az utasításokat.
+> Az Azure FarmBeats-felhasználóknak az Azure AD-bérlőben kell léteznie ahhoz, hogy alkalmazásokat és szerepköröket rendeljenek hozzájuk. Ha a felhasználó nem létezik az Azure AD-bérlőben, kövesse az ebben a szakaszban található utasításokat. Ha a felhasználó már létezik az Azure AD-bérlőben, hagyja ki az utasításokat.
 
 Ha felhasználókat szeretne hozzáadni az Azure AD-hez, tegye a következőket:
 
@@ -82,6 +84,6 @@ Ha felhasználókat szeretne hozzáadni az Azure AD-hez, tegye a következőket:
 
 Az Azure AD-felhasználók felügyeletével kapcsolatos információkért lásd: [felhasználók hozzáadása vagy törlése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen hozzáadta a felhasználókat az Azure FarmBeats-példányhoz. Most Ismerkedjen meg a [farmok létrehozásával és kezelésével](manage-farms-in-azure-farmbeats.md#create-farms).

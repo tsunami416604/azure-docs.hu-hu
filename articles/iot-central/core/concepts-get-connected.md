@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298818"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -194,6 +194,9 @@ Ha egy valós eszköz csatlakozik a IoT Central alkalmazáshoz, az eszköz álla
     - Azok az eszközök, amelyek nem lettek kézzel regisztrálva az **eszközök** lapon érvényes hitelesítő adatokkal, de nem határozzák meg a sablon azonosítóját a regisztráció során.  
 Az operátor a **Migrálás** gomb használatával rendelheti hozzá az eszközöket egy sablonhoz az **eszközök** lapról.
 
+## <a name="best-practices"></a>Ajánlott eljárások 
+1.  Ha a DPS használatával csatlakoztatja az eszközöket IoT Centralhoz, győződjön meg arról, hogy a (IoT Hub) eszköz kapcsolati karakterlánca nem marad meg vagy nem gyorsítótárazott. Az eszközök újbóli csatlakoztatásához lépjen a normál DPS-eszköz regisztrációs folyamatára a megfelelő eszköz kapcsolati karakterlánc beszerzéséhez. Ha a rendszer gyorsítótárazza a kapcsolódási sztringet, az eszközön futó szoftver elavult kapcsolódási karakterláncot tartalmaz abban az esetben, amikor a IoT Central frissítette az alapul szolgáló Azure-IoT Hub. 
+
 ## <a name="sdk-support"></a>SDK-támogatás
 
 Az Azure-eszközök SDK-k az eszköz kódjának megvalósítására szolgáló legegyszerűbb megoldást nyújtanak. A következő eszköz-SDK-k érhetők el:
@@ -237,7 +240,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, az Azure IoT Edg
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az eszköz kapcsolatát az Azure IoT Centralban, a következő lépéseket javasoljuk:
 

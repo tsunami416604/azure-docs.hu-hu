@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278453"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366989"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -71,14 +71,14 @@ Töltse le a **New-OnPremiseHybridWorker. ps1** parancsfájlt a [PowerShell-Gal�
 
 | Paraméter | status | Leírás |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | Kötelező | Az Automation-fiókhoz társított erőforráscsoport neve. |
-| *AutomationAccountName* | Kötelező | Az Automation-fiók neve.
-| *Hitelesítőadat* | Optional | Az Azure-környezetbe való bejelentkezéskor használandó hitelesítő adatok. |
-| *HybridGroupName* | Kötelező | Annak a hibrid Runbook-feldolgozó csoportnak a neve, amelyet a jelen forgatókönyvet támogató runbookok célként határoz meg. |
-| *OMSResourceGroupName* | Optional | Az Log Analytics munkaterület erőforráscsoport neve. Ha ez az erőforráscsoport nincs megadva, a rendszer a *AAResourceGroupName* értékét használja. |
-| *SubscriptionID* | Kötelező | Az Automation-fiókhoz társított Azure-előfizetés azonosítója. |
-| *TenantID* | Optional | Az Automation-fiókhoz társított bérlői szervezet azonosítója. |
-| *WorkspaceName* | Optional | A Log Analytics munkaterület neve. Ha nem rendelkezik Log Analytics munkaterülettel, a szkript létrehoz és konfigurál egyet. |
+| `AAResourceGroupName` | Kötelező | Az Automation-fiókhoz társított erőforráscsoport neve. |
+| `AutomationAccountName` | Kötelező | Az Automation-fiók neve.
+| `Credential` | Optional | Az Azure-környezetbe való bejelentkezéskor használandó hitelesítő adatok. |
+| `HybridGroupName` | Kötelező | Annak a hibrid Runbook-feldolgozó csoportnak a neve, amelyet a jelen forgatókönyvet támogató runbookok célként határoz meg. |
+| `OMSResourceGroupName` | Optional | Az Log Analytics munkaterület erőforráscsoport neve. Ha ez az erőforráscsoport nincs megadva, a rendszer a `AAResourceGroupName` értékét használja. |
+| `SubscriptionID` | Kötelező | Az Automation-fiókhoz társított Azure-előfizetés azonosítója. |
+| `TenantID` | Optional | Az Automation-fiókhoz társított bérlői szervezet azonosítója. |
+| `WorkspaceName` | Optional | A Log Analytics munkaterület neve. Ha nem rendelkezik Log Analytics munkaterülettel, a szkript létrehoz és konfigurál egyet. |
 
 > [!NOTE]
 > A megoldások engedélyezésekor Azure Automation csak bizonyos régiókat támogat, Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
@@ -89,7 +89,7 @@ Nyissa meg a **Windows PowerShellt** a **kezdőképernyőn** rendszergazdai mód
 
 ### <a name="step-3---run-the-powershell-script"></a>3\. lépés – a PowerShell-szkript futtatása
 
-A PowerShell parancssori felületén keresse meg a letöltött parancsfájlt tartalmazó mappát. Módosítsa a *AutomationAccountName*, a *AAResourceGroupName*, a *OMSResourceGroupName*, a *HybridGroupName*, a *SubscriptionID*és a *WorkspaceName*paraméterek értékeit. Ezután futtassa a parancsfájlt.
+A PowerShell parancssori felületén keresse meg a letöltött parancsfájlt tartalmazó mappát. Módosítsa `AutomationAccountName`, `AAResourceGroupName`, `OMSResourceGroupName`, `HybridGroupName`, `SubscriptionID`és `WorkspaceName`paraméterek értékeit. Ezután futtassa a parancsfájlt.
 
 A parancsfájl futtatása után meg kell adnia a hitelesítést az Azure-ban. Be kell jelentkeznie egy olyan fiókkal, amely tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés közös rendszergazdája.
 
@@ -149,7 +149,7 @@ Az ügynök telepítésének és telepítésének befejezéséhez kövesse az al
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>4\. lépés – a runbook-környezet telepítése és a Azure Automationhoz való kapcsolódás
 
-Ha úgy konfigurálja az ügynököt, hogy egy Log Analytics munkaterületre jelentsen, az Automation-megoldás leküldi a **HybridRegistration** PowerShell-modult, amely tartalmazza az **Add-HybridRunbookWorker** parancsmagot. Ezzel a parancsmaggal telepítheti a számítógép runbook-környezetét, és regisztrálhatja Azure Automation.
+Ha úgy konfigurálja az ügynököt, hogy egy Log Analytics munkaterületre jelentsen, az Automation-megoldás leküldi a `HybridRegistration` PowerShell-modult, amely tartalmazza a `Add-HybridRunbookWorker` parancsmagot. Ezzel a parancsmaggal telepítheti a számítógép runbook-környezetét, és regisztrálhatja Azure Automation.
 
 Nyisson meg egy PowerShell-munkamenetet rendszergazdai módban, és futtassa a következő parancsokat a modul importálásához.
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-Most futtassa az **Add-HybridRunbookWorker** parancsmagot a következő szintaxis használatával.
+Most futtassa a `Add-HybridRunbookWorker` parancsmagot a következő szintaxissal.
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ A parancsmaghoz szükséges adatokat a Azure Portal kulcsok kezelése lapján é
 
 ![Kulcsok kezelése lap](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* A *Csoportnév* paraméternél használja a hibrid Runbook Worker csoport nevét. Ha ez a csoport már létezik az Automation-fiókban, az aktuális számítógép hozzá lesz adva. Ha ez a csoport nem létezik, a rendszer hozzáadja.
-* A *végpont* paraméternél használja az **URL-címet** a kulcsok kezelése lapon.
-* A *jogkivonat* paraméternél használja a kulcsok kezelése lap **elsődleges hozzáférési kulcs** bejegyzését.
-* Ha szükséges, állítsa be a *részletes* paramétert a telepítés részleteinek fogadásához.
+* A `GroupName` paraméternél használja a Hybrid Runbook Worker Group nevét. Ha ez a csoport már létezik az Automation-fiókban, az aktuális számítógép hozzá lesz adva. Ha ez a csoport nem létezik, a rendszer hozzáadja.
+* A `EndPoint` paraméternél használja az **URL-címet** a kulcsok kezelése lapon.
+* A `Token` paraméternél használja az **elsődleges hozzáférési kulcs** bejegyzést a Manage Keys (kulcsok kezelése) lapon.
+* Ha szükséges, állítsa a `Verbose` paramétert a telepítés részleteinek fogadásához.
 
 ### <a name="step-5----install-powershell-modules"></a>5\. lépés – PowerShell-modulok telepítése
 
 A runbookok a Azure Automation környezetében telepített modulokban meghatározott tevékenységeket és parancsmagokat is használhatják. Mivel ezeket a modulokat a rendszer nem telepíti automatikusan a helyszíni számítógépekre, manuálisan kell telepítenie azokat. A kivétel az Azure-modul. Ez a modul alapértelmezés szerint telepítve van, és hozzáférést biztosít a Azure Automation összes Azure-szolgáltatásának és tevékenységének parancsmagokhoz.
 
-Mivel a hibrid Runbook-feldolgozó funkció elsődleges célja a helyi erőforrások kezelése, valószínűleg telepítenie kell azokat a modulokat, amelyek támogatják ezeket az erőforrásokat, különösen a **PowerShellGet** modult. A Windows PowerShell-modulok telepítésével kapcsolatos információkért lásd: [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Mivel a hibrid Runbook Worker funkció elsődleges célja a helyi erőforrások kezelése, valószínűleg telepítenie kell az ezeket az erőforrásokat támogató modulokat, különösen a `PowerShellGet` modult. A Windows PowerShell-modulok telepítésével kapcsolatos információkért lásd: [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
-A telepített moduloknak a *PSModulePath* környezeti változó által hivatkozott helyen kell lenniük, hogy a hibrid feldolgozó automatikusan importálni tudja azokat. További információkért lásd: [modulok telepítése a PSModulePath-ben](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+A telepített moduloknak a `PSModulePath` környezeti változó által hivatkozott helyen kell lenniük, hogy a hibrid feldolgozó automatikusan importálni tudja azokat. További információkért lásd: [modulok telepítése a PSModulePath-ben](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
 ## <a name="next-steps"></a>Következő lépések
 

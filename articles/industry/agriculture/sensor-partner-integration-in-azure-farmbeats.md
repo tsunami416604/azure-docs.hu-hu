@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298733"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
 Ez a cikk az érzékelő partner-integrációt lehetővé tevő Azure FarmBeats **Translator** összetevővel kapcsolatos információkat tartalmaz.
 
-Ennek az összetevőnek a használatával a partnerek a FarmBeats adatközpont API-jai segítségével integrálhatók a FarmBeats, és az ügyfél-eszköz adatai és a telemetria FarmBeats-adatközpontba is elküldhetők. Ha az adatok elérhetők a FarmBeats-ben, a rendszer a FarmBeats-gyorsító használatával, valamint a gépi tanulási/mesterséges intelligencia-modellek létrehozásához használható.
+Ennek az összetevőnek a használatával a partnerek a FarmBeats Datahub API-k segítségével integrálhatók a FarmBeats, és az ügyfél-eszköz adatai és a telemetria FarmBeats Datahub. Ha az adatok elérhetők a FarmBeats-ben, a rendszer a FarmBeats-gyorsító használatával, valamint a gépi tanulási/mesterséges intelligencia-modellek létrehozásához használható.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -50,7 +50,7 @@ A FarmBeats Microsoft Azure Active Directory hitelesítést használ. A Azure 
 
 További információ: [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
 
-A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
+A FarmBeats Datahub tulajdonosi hitelesítést használ, amelynek a következő hitelesítő adatokra van szüksége:
    - Ügyfél-azonosító
    - Titkos ügyfélkulcs
    - Bérlőazonosító
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **HTTP-kérelmek fejlécei**
 
-Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amikor API-hívást végez az FarmBeats adatközpontba.
+Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats Datahub.
 
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Content-Type | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats adatközpont API-jai esetében a formátum a JSON. Content-Type: Application/JSON
+Content-Type | A kérelem formátuma (Content-Type: Application/<format>). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
 Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos < hozzáférés-token >
-Elfogadás | A válasz formátuma. A FarmBeats adatközpont API-jai esetében a formátum a JSON. Elfogadás: alkalmazás/JSON
+Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
 
 **API-kérelmek**
 
@@ -119,7 +119,7 @@ A JSON egy közös nyelvtől független adatformátum, amely tetszőleges adatst
 
 ## <a name="metadata-specifications"></a>Metaadatok specifikációi
 
-A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszközök partnerei számára az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
+A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszközök partnerei számára az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
 
 - /**DeviceModel**: a DeviceModel az eszköz metaadatait, például a gyártót és az eszköz típusát adja meg, amely átjáró vagy csomópont lehet.
 - /**eszköz**: az eszköz a farmon lévő fizikai eszköznek felel meg.
@@ -132,7 +132,7 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   Gyártó  | A gyártó neve |
   ProductCode  | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
   Portok  | A port neve és típusa, amely digitális vagy analóg.  |
-  Name (Név)  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
+  Név  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
   Leírás  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | További tulajdonságok a gyártótól. |
   **Eszköz** |  |
@@ -141,7 +141,7 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   ReportingInterval |Jelentéskészítési időköz (másodperc). |
   Hely    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
   ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Ha például egy csomópont átjáróhoz csatlakozik, a csomópont parentDeviceID van. |
-  Name (Név)  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
+  Név  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
   Leírás  | Adjon meg egy értelmes leírást.  |
   Tulajdonságok  |További tulajdonságok a gyártótól.  |
   **SensorModel** |  |
@@ -155,7 +155,7 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   SensorMeasures > AggregationType  | Egyik sem, átlagos, maximális, minimum vagy StandardDeviation.
   SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   SensorMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről.
-  Name (Név)  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+  Név  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
   Leírás  | Adjon meg egy értelmes leírást a modellről.
   Tulajdonságok  | További tulajdonságok a gyártótól.
   **Érzékelő**  |  |
@@ -164,7 +164,7 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   Hely  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
   Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.
   DeviceId  | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.
-  Name (Név)  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
+  Név  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
   Leírás  | Adjon meg egy értelmes leírást.
   Tulajdonságok  | További tulajdonságok a gyártótól.
 
@@ -230,11 +230,11 @@ A Canonical üzenet formátuma a következő:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -304,7 +304,7 @@ Miután az ügyfelek megvásárolták és telepítették az eszközöket vagy é
 
 ## <a name="unlink-farmbeats"></a>FarmBeats leválasztása
 
-Az eszközök partnerei lehetővé teszik az ügyfelek számára egy meglévő FarmBeats-integráció leválasztását. A FarmBeats leválasztása nem törli a FarmBeats-adatközpontban létrehozott eszközöket vagy érzékelő-metaadatokat. A Leválasztás a következő műveleteket végzi el:
+Az eszközök partnerei lehetővé teszik az ügyfelek számára egy meglévő FarmBeats-integráció leválasztását. A FarmBeats leválasztása nem törli a FarmBeats Datahub-ben létrehozott összes eszközt vagy érzékelő metaadatot. A Leválasztás a következő műveleteket végzi el:
 
    - Leállítja a telemetria folyamatot.
    - Törli és törli az integrációs hitelesítő adatokat az eszköz partnerén.
@@ -343,6 +343,6 @@ Az eszközök gyártói vagy partnerei az alábbi ellenőrzőlista segítségév
    - Ellenőrizze, hogy az API-hívás sikeres-e a kapott hozzáférési jogkivonattal.
    - Ellenőrizze, hogy létrejött-e a EventHub-ügyfélkapcsolat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a REST APIről: [REST API](rest-api-in-azure-farmbeats.md).

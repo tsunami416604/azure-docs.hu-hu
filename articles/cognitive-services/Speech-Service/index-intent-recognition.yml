@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: A szándék-felismerés dokumentációja
+title: A Szándékfelismerés dokumentációja
 summary: A Speech és Language Understanding (LUIS) szolgáltatásokkal való felismerés lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé, a szándékok és az entitások azonosításával.
 metadata:
   title: Szándék-felismerési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
@@ -10,26 +10,26 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 278dc182b682615d621bfd8a891cc77591a511f1
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 63c830b20ad5a3bf322fe2402d72230a80399d45
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562844"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79371460"
 landingContent:
-- title: Bevezetés
+- title: A szándék felismerése
   linkLists:
   - linkListType: quickstart
     links:
     - text: Beszéd, szándékok és entitások felismerése
       url: quickstarts/intent-recognition.md
-- title: Lépésenkénti útmutatók
+- title: Fejlesztés a szándék-felismeréssel
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: A beszédfelismerési szándék felismerése a LUIS és aC#
+    - text: A beszélő szándékának felismerése a LUIS szolgáltatással és a C#-pal
       url: how-to-recognize-intents-from-speech-csharp.md
 - title: Referencia
   linkLists:
@@ -41,5 +41,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: Nyelvi támogatás
       url: ../luis/luis-language-support.md#languages-supported
-    - text: Díjszabás
+    - text: A szándék felismerésének díjszabása
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb9c628993201553b8da1d1bd37b4705e0f23dc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 68136d5b9ec16c822cb62e4fee85b8ace9b1899a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271640"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371099"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>ELAVULT Azure Container Service Kubernetes-fürt figyelése a Sysdig használatával
 
@@ -25,8 +25,8 @@ Azt is feltételezi, hogy telepítette az Azure CLI-t és a kubectl-eszközöket
 
 A futtatásával tesztelheti, hogy telepítve van-e a `az` eszköz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#installation)talál útmutatást.
@@ -34,13 +34,13 @@ Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#ins
 A futtatásával tesztelheti, hogy telepítve van-e a `kubectl` eszköz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Ha nincs `kubectl` telepítve, akkor a következőket futtathatja:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="sysdig"></a>Sysdig
@@ -61,13 +61,13 @@ A Sysdig-daemonset elemet telepítéséhez először le kell töltenie [a sablon
 Linux és OS X rendszeren futtathatja a következőt:
 
 ```console
-$ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
+curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
 A PowerShellben:
 
-```console
-$ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
+```powershell
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml
 ```
 
 Ezután szerkessze a fájlt a Sysdig-fiókjából beszerzett hozzáférési kulcs beszúrásához.
@@ -75,7 +75,7 @@ Ezután szerkessze a fájlt a Sysdig-fiókjából beszerzett hozzáférési kulc
 Végül hozza létre a Daemonset elemet:
 
 ```console
-$ kubectl create -f sysdig-daemonset.yaml
+kubectl create -f sysdig-daemonset.yaml
 ```
 
 ## <a name="view-your-monitoring"></a>Figyelés megtekintése

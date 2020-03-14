@@ -4,16 +4,16 @@ description: Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift
 services: openshift
 keywords: a Red Hat openshift projects önkiszolgálót kér
 author: mjudeikis
-ms.author: b-majude
+ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378228"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139113"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift-fürtben 
 
@@ -124,7 +124,7 @@ Az összes `Templates` és `ImageStreams` frissítéseinek letiltása `openshift
 
    A `openshift` névtérben lévő minden egyes objektum eltávolítható a frissítési folyamatból, ha a jegyzetet `openshift.io/reconcile-protect: "true"` hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az oktatóanyagot:
 > [!div class="nextstepaction"]

@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c49892f97d9c15efcaecccb6133c67133e81c87
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512573"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137560"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mi a Geo-szűrés egy tartományon az Azure bejárati ajtón?
 
@@ -21,11 +21,11 @@ Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasz
 
 A WAF szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
-A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) vagy a rövid útmutató [sablonjának](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)használatával.
+A Azure Portal, [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) vagy a gyors üzembe helyezési [sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)beállíthat egy geo-szűrési szabályzatot az előtérben.
 
 ## <a name="country-code-reference"></a>Országkód-hivatkozás
 
-|Országkód | Ország neve |
+|Országhívó szám | Ország neve |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Egyesült Arab Emírségek|
@@ -45,7 +45,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | BE | Belgium|
 | BF | Burkina Faso|
 | BG | Bulgária|
-| BH | Bahrein|
+| BH | Bahreini Királyság|
 | BI | Burundi|
 | BJ | Benin|
 | BL | Saint Barthélemy|
@@ -61,7 +61,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | CD | Kongói Demokratikus Köztársaság|
 | CF | Közép-afrikai Köztársaság|
 | CH | Svájc|
-| CI | Elefántcsontpart|
+| CI | Côte d’Ivoire|
 | CL | Chile|
 | CM | Kamerun|
 | CN | Kína|
@@ -98,7 +98,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID (Azonosító) | Indonézia|
+| ID | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|
@@ -193,7 +193,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | TZ | Tanzániai Egyesült Köztársaság|
 | UA | Ukrajna|
 | UG | Uganda|
-| USA | Egyesült Államok|
+| US | Egyesült Államok|
 | UY | Uruguay|
 | UZ | Üzbegisztán|
 | VC | Saint Vincent és Grenadine-szigetek|
@@ -201,7 +201,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | VG | Brit Virgin-szigetek|
 | VI | Amerikai Virgin-szigetek|
 | VN | Vietnam|
-| ZA | Dél-afrikai Köztársaság|
+| ZA | Dél-Afrika|
 | ZM | Zambia|
 | ZW | Zimbabwe|
 

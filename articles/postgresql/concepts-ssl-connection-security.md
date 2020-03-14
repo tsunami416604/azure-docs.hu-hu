@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 5c5e1a8cee8cdad0659ae00829d170bf3fa7bf87
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 03/10/2020
+ms.openlocfilehash: c235562834ae78a12b690fcd1b96d6a3640e0c66
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941421"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371664"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Az SSL-kapcsolat konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón
 
@@ -29,12 +29,9 @@ Hasonlóképpen, a "kapcsolati karakterláncok" beállításokban előre defini�
 
 Igény szerint letilthatja az SSL-kapcsolat kényszerítését. Microsoft Azure azt javasolja, hogy mindig engedélyezze az **SSL-kapcsolat kikényszerített** beállítását a fokozott biztonság érdekében.
 
-> [!NOTE]
-> Jelenleg a Azure Database for PostgreSQL által támogatott TLS-verzió a TLS 1,0, a TLS 1,1, a TLS 1,2.
-
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Keresse fel Azure Database for PostgreSQL-kiszolgálóját, és kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást. Ezután kattintson a **Mentés** gombra.
+Keresse fel Azure Database for PostgreSQL-kiszolgálóját, és kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást. Ezután kattintson a **Mentés**gombra.
 
 ![Kapcsolatbiztonsági – a kényszerített SSL letiltása](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
@@ -68,6 +65,31 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 > [!TIP]
 > Győződjön meg arról, hogy a `sslrootcert` átadott érték megegyezik a mentett tanúsítvány elérési útjával.
+
+## <a name="tls-connectivity-in-azure-database-for-postgresql-single-server"></a>TLS-kapcsolat Azure Database for PostgreSQL egyetlen kiszolgálón
+
+Azure Database for PostgreSQL – az egyetlen kiszolgáló támogatja a titkosítást az adatbázis-kiszolgálóhoz Transport Layer Security (TLS) használatával csatlakozó ügyfelek számára. A TLS egy iparági szabványnak megfelelő protokoll, amely gondoskodik az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti biztonságos hálózati kapcsolatokról, ami lehetővé teszi a megfelelőségi követelmények betartását.
+
+### <a name="tls-settings"></a>TLS-beállítások
+
+Az ügyfelek mostantól képesek kikényszeríteni a TLS-verziót, hogy az ügyfél Azure Database for PostgreSQL egyetlen kiszolgálóhoz kapcsolódjon. A TLS beállítás használatához használja a TLS- **verzió minimális verziója** beállítást. Ehhez a beállításhoz a következő értékek engedélyezettek:
+
+|  Minimális TLS-beállítás             | A TLS verziója támogatott                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (alapértelmezett) | Nincs szükség TLS-re                      |
+| TLS1_0                           | TLS 1,0, TLS 1,1, TLS 1,2 és újabb |
+| TLS1_1                           | TLS 1,1, TLS 1,2 és újabb          |
+| TLS1_2                           | TLS 1,2-es és újabb verzió           |
+
+
+Ha például ezt a TLS-beállítást a TLS 1,0 értékre állítja be, akkor a kiszolgáló engedélyezi a TLS 1,0, 1,1 és 1.2 + protokollt használó ügyfelek kapcsolódását. Azt is megteheti, hogy a 1,2 értékre állítja azt, hogy csak a TLS 1,2-t használó ügyfelek kapcsolatainak engedélyezése, valamint a TLS 1,0 és a TLS 1,1 használatával létesített összes kapcsolat el lesz utasítva.
+
+> [!Note] 
+> Azure Database for PostgreSQL egyetlen kiszolgáló alapértelmezés szerint a TLS-t minden új kiszolgálón le kell tiltani.
+>
+> Jelenleg az byAzure-adatbázis a PostgreSQL-hez támogatott TLS-verzió a TLS 1,0, 1,1 és 1,2.
+
+Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for PostgreSQL egyetlen kiszolgálóhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

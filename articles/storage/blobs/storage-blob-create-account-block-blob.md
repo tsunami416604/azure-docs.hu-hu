@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6dd5d98b559d49656c44b75e86398a017d923203
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933189"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371086"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
 A BlockBlobStorage fiók típusa lehetővé teszi, hogy a prémium szintű teljesítménnyel rendelkező blokk blobokat hozzon létre. Ez a típusú Storage-fiók olyan számítási feladatokhoz van optimalizálva, amelyek nagy tranzakciós díjszabással rendelkeznek, vagy amelyek nagyon gyors hozzáférési időt igényelnek. Ez a cikk bemutatja, hogyan hozhat létre BlockBlobStorage-fiókot a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
@@ -25,15 +27,15 @@ A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Nincs.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ez a cikk a Azure PowerShell modult igényli az az Version 1.2.0 vagy újabb verzióra. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Jelentkezzen be az Azure-ba, és futtassa az Azure CLI-parancsokat kétféleképpen:
 
@@ -58,11 +60,11 @@ Az Azure CLI-t helyben is telepítheti és használhatja. Ehhez a cikkhez az Azu
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
 
@@ -70,7 +72,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és k�
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure Cloud Shell indításához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
@@ -84,7 +86,7 @@ az login
 
 ## <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. A Azure Portal válassza a **minden szolgáltatás** > a **tárolási** kategória > **Storage-fiókok**lehetőséget.
@@ -105,7 +107,7 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
 1. A többi beállításnál konfigurálja a következőket:
 
-   |Mező     |Value (Díj)  |
+   |Mező     |Érték  |
    |---------|---------|
    |**Teljesítmény**    |  Válassza a **prémium**lehetőséget.   |
    |**Fióktípus**    | Válassza a **BlockBlobStorage**lehetőséget.      |
@@ -117,7 +119,7 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
 1. Kattintson a **Létrehozás** gombra.
 
-## <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -153,7 +155,7 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, először telepítenie kell az Azure CLI v-t. 2.0.46 vagy újabb verzió. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 

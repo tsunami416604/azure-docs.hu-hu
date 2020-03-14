@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24a4209869d4c47f8ac73e250699ec55d006296
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79253402"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366070"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 
@@ -46,7 +46,7 @@ Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, 
 | [SAML](#saml-sso) | felhőbeli és helyszíni | Válassza ki az SAML-t, amikor lehetséges olyan meglévő alkalmazások esetében, amelyek nem használnak OpenID connectet vagy OAuth. Az SAML olyan alkalmazások esetében működik, amelyek az egyik SAML protokoll használatával végzik a hitelesítést.|
 | [Jelszó-alapú](#password-based-sso) | felhőbeli és helyszíni | Válassza a jelszó-alapú lehetőséget, ha az alkalmazás hitelesíti magát a felhasználónévvel és a jelszóval. Jelszavas egyszeri bejelentkezés lehetővé teszi a biztonságos tárolását és ismétlését egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Ezt a módszert használja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat. |
 | [Csatolt](#linked-sign-on) | felhőbeli és helyszíni | Válassza a csatolt bejelentkezés lehetőséget, ha az alkalmazás az egyszeri bejelentkezéshez van konfigurálva egy másik identitás-szolgáltatói szolgáltatásban. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
-| [Letiltva](#disabled-sso) | felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Adja meg a felhasználónevüket és jelszavukat minden alkalommal, amikor az alkalmazás indításakor kell felhasználók.|
+| [Letiltva](#disabled-sso) | felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
 | [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | Az [integrált Windows-hitelesítést (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)vagy jogcímbarát alkalmazásokat használó alkalmazások esetében válassza az IWA egyszeri bejelentkezés lehetőséget. A IWA esetében az alkalmazásproxy-összekötők a Kerberos által korlátozott delegálás (KCD) használatával hitelesítik a felhasználókat az alkalmazásban. |
 | [Fejléc-alapú](#header-based-sso) | csak helyszíni | Használja fejléc-alapú egyszeri bejelentkezés, ha az alkalmazás fejléceket használja a hitelesítéshez. A fejléc-alapú egyszeri bejelentkezéshez az Azure AD PingAccess van szükség. Az alkalmazásproxy az Azure AD segítségével hitelesíti a felhasználót, és ezután továbbítja a forgalmat az összekötő szolgáltatást.  |
 
@@ -146,6 +146,8 @@ Használata le van tiltva az egyszeri bejelentkezési mód:
 - Ha még nem készen áll az alkalmazás integrálása az Azure AD egyszeri bejelentkezés, vagy
 - Ha a tesztelést az alkalmazás más aspektusait, vagy
 - Egy helyszíni alkalmazásba biztonsági réteget, a felhasználóknak a hitelesítést nem igénylő. Le van tiltva a felhasználónak hitelesítenie kell.
+
+Vegye figyelembe, hogy ha konfigurálta az alkalmazást a (z) SP-ben kezdeményezett SAML-alapú egyszeri bejelentkezéshez, és az egyszeri bejelentkezés üzemmódját a Letiltás értékre módosítja, akkor nem állítja le a felhasználókat a MyApps-portálon kívüli alkalmazásba való bejelentkezésre. Ennek eléréséhez [le kell tiltania a felhasználók bejelentkezési képességét](disable-user-sign-in-portal.md)
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>Integrált Windows-hitelesítés (IWA) egyszeri bejelentkezés
 

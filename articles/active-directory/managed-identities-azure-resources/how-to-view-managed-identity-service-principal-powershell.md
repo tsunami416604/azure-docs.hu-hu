@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac2d1d4fc5e669f63bff49a7948db74ec1baa62
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 33fc6fbfd7c47b5809e8aff8ee9806c9eeac1162
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184125"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298665"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>Felügyelt identitás egyszerű szolgáltatásának megtekintése a PowerShell használatával
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg egy felügyelt identitás e
 
 - Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md).
 - Ha még nem rendelkezik Azure-fiókkal, [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
-- A [rendszerhez rendelt identitás engedélyezése egy virtuális gépen](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) vagy [alkalmazáson](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
+- A [rendszerhez rendelt identitás engedélyezése egy virtuális gépen](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) vagy [alkalmazáson](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity).
 - A [Azure PowerShell](/powershell/azure/install-az-ps) legújabb verziójának telepítése
 
 ## <a name="view-the-service-principal"></a>Az egyszerű szolgáltatás megtekintése
@@ -45,7 +45,7 @@ Az alábbi parancs bemutatja, hogyan tekintheti meg egy virtuális gép vagy alk
 Get-AzADServicePrincipal -DisplayName <VM or application name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-szolgáltatások PowerShell használatával történő megtekintésével kapcsolatos további információkért lásd: [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
 

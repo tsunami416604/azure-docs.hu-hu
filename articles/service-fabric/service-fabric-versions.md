@@ -3,12 +3,12 @@ title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252709"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370423"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
@@ -37,7 +37,7 @@ A következő táblázat felsorolja a Service Fabric verzióit és azok támogat
 | 6.3.* | 6.1.480.* |Kisebb vagy egyenlő, mint a 3,2-es verzió |Március 31., 2019  |
 | 6.4.* | 6.2.301.* |Kisebb vagy egyenlő, mint a 3,3-es verzió |Szeptember 15., 2019 |
 | 6.5.* | 6.4.617.* |Kisebb vagy egyenlő, mint a 3,4-es verzió |2020. május 1. |
-| 7,0. * | 6.4.664. # |Kisebb vagy egyenlő, mint a 4,0-es verzió |Aktuális verzió, így nincs befejező dátum |
+| 7,0. * | 7.0.466.* |Kisebb vagy egyenlő, mint a 4,0-es verzió |Aktuális verzió, így nincs befejező dátum |
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 A következő táblázat felsorolja a támogatott Service Fabric-verziókhoz tartozó támogatott operációs rendszereket.

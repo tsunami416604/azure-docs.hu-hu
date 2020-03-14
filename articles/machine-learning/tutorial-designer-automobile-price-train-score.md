@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: ed3667ada834437e81ffdcb9161c2a726fe6a6dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.date: 03/12/2020
+ms.openlocfilehash: 3a857c145959c1bcde169e95369ef0bea327dfaf
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238663"
+ms.locfileid: "79296982"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -168,6 +168,12 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
 1. Válassza ki a **tiszta hiányzó** adatmodult.
 
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
+
+1. A megjelenő **oszlopok** területen bontsa ki a **Belefoglalás**elem melletti legördülő menüt. Kijelölés, **minden oszlop**
+
+1. Kattintson a **Mentés** gombra
+
 1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **Megjegyzés** mezőt, és írja be a *hiányzó értékek eltávolítása sorokat*. 
@@ -213,9 +219,11 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
 1. Válassza a **regresszió** > a **lineáris regresszió**lehetőséget, majd húzza a folyamat vászonra.
 
-1. Keresse meg és húzza a **Train Model** modult a folyamat vászonra. 
-
 1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
+
+1. A modul palettáján bontsa ki a **modul betanítása**szakaszt, majd húzza a **Train Model** modult a vászonra.
+
+1. Válassza ki a **betanítási modell** modult, és húzza a folyamat vászonra.
 
 1. Kapcsolja össze az **adatok felosztása** modul betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
     
@@ -224,8 +232,6 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
     ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. A modul palettáján bontsa ki a **modul betanítása**szakaszt, majd húzza a **Train Model** modult a vászonra.
-
 1. Válassza ki a **Train Model** modult.
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
@@ -233,6 +239,9 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 1. Az **oszlop felirata** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. 
 
 1. A szövegmezőbe írja be a *Price (ár* ) értéket a modell által előre jelzett érték megadásához.
+
+    >[!IMPORTANT]
+    > Győződjön meg arról, hogy pontosan megadja az oszlop nevét. Ne tőkésítse az **árat**. 
 
     A folyamatnak így kell kinéznie:
 
@@ -260,7 +269,7 @@ A **modell kiértékelése** modul használatával kiértékelheti, hogy a model
 
 ## <a name="run-the-pipeline"></a>A folyamat futtatása
 
-Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat futtatását a Machine learning-modell betanításához. A folyamatokat bármikor elküldheti, miközben a tervezőben felépíti a folyamatokat. Ezt megteheti a munka ellenőrzéséhez, és a folyamat működésének ellenőrzéséhez a várt módon.
+Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat futtatását a Machine learning-modell betanításához. A folyamatokat bármikor elküldheti, miközben a tervezőben felépíti a folyamatokat. Ezt megteheti, ha ellenőrizni szeretné, hogy a folyamat a várt módon működik-e.
 
 1. A vászon tetején válassza a **Küldés**lehetőséget.
 
@@ -311,7 +320,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

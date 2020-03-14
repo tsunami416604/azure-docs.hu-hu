@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274365"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371120"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>ELAVULT Azure AD egyszerű szolgáltatás beállítása Kubernetes-fürthöz a Container Service-ben
 
@@ -76,7 +76,7 @@ Ezeket a paramétereket a Kubernetes-fürt üzembe helyezésekor adhatja meg az 
 
 Az alábbi példában az Azure CLI-vel adjuk át a paramétereket. Ez a példa a [Kubernetes gyorsindítási sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) használja.
 
-1. A paraméterfájl-sablont `azuredeploy.parameters.json` a GitHubról [töltheti le](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json).
+1. A paraméterfájl-sablont [ a GitHubról ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)töltheti le`azuredeploy.parameters.json`.
 
 2. Az egyszerű szolgáltatás megadásához adja meg a `servicePrincipalClientId` és a `servicePrincipalClientSecret` értékét a fájlban. (A saját értékeit is meg kell adnia a `dnsNamePrefix` és az `sshRSAPublicKey` esetében. Az utóbbi az SSH nyilvános kulcsa a fürt eléréséhez.) Mentse a fájlt.
 
@@ -103,7 +103,7 @@ Hasonlóan mint más Kubernetes-fürt létrehozási lehetőségek esetében, az 
 
 A következő parancs létrehoz egy Kubernetes-fürtöt, valamint előállítja az SSH-kulcsokat és az egyszerű szolgáltatás hitelesítő adatait:
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 
@@ -133,7 +133,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Az egyszerű szolgáltatásokban használt hitelesítő adatok a létrehozásuktól számítva 1 évig érvényesek, kivéve, ha megad egy egyéni érvényességi időkeretet a `--years` paraméter segítségével. Ha a hitelesítő adatok érvényessége lejár, előfordulhat hogy a fürtcsomópontok **NotReady** állapotba lépnek.
 
-Az egyszerű szolgáltatás lejárati idejének ellenőrzéséhez hajtsa végre az [az ad app show](/cli/azure/ad/app#az-ad-app-show) parancsot a `--debug` paraméterrel, és keresse a `passwordCredentials``endDate` értékét a kimenet aljához közel:
+Az egyszerű szolgáltatás lejárati idejének ellenőrzéséhez hajtsa végre az [az ad app show](/cli/azure/ad/app#az-ad-app-show) parancsot a `--debug` paraméterrel, és keresse a `endDate``passwordCredentials` értékét a kimenet aljához közel:
 
 ```azurecli
 az ad app show --id <appId> --debug

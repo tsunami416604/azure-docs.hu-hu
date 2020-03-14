@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: f42be2a3075d313a490703562761a5df13542c85
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: ef82d748b67db736bc2294089cd92edd2adde4a7
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279220"
+ms.locfileid: "79297940"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -127,7 +127,7 @@ HTTP vagy HTTPS kiválasztása:
 
 - Ha a HTTP lehetőséget választja, az ügyfél és az Application Gateway közötti forgalom titkosítatlan.
 
-- Válassza a HTTPS lehetőséget, ha [SSL-lezárást](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) vagy [végpontok közötti SSL-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview)szeretne használni. Az ügyfél és az Application Gateway közötti forgalom titkosítva van. Az SSL-kapcsolat leáll az Application gatewaynél. Ha a végpontok közötti SSL-titkosítást szeretné használni, a HTTPS lehetőséget kell választania, és konfigurálnia kell a **háttérbeli http** -beállítást. Ez biztosítja, hogy a forgalom újra titkosítva legyen, amikor az Application Gateway-ből a háttérbe utazik.
+- Válassza a HTTPS lehetőséget, ha [SSL-lezárást](features.md#secure-sockets-layer-ssltls-termination) vagy [végpontok közötti SSL-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview)szeretne használni. Az ügyfél és az Application Gateway közötti forgalom titkosítva van. Az SSL-kapcsolat leáll az Application gatewaynél. Ha a végpontok közötti SSL-titkosítást szeretné használni, a HTTPS lehetőséget kell választania, és konfigurálnia kell a **háttérbeli http** -beállítást. Ez biztosítja, hogy a forgalom újra titkosítva legyen, amikor az Application Gateway-ből a háttérbe utazik.
 
 Az SSL-lezárás és a végpontok közötti SSL-titkosítás konfigurálásához hozzá kell adnia egy tanúsítványt a figyelőhöz, hogy az Application Gateway szimmetrikus kulcsot lehessen származtatni. Ezt az SSL protokoll specifikációja határozza meg. A szimmetrikus kulcs az átjárónak továbbított forgalom titkosítására és visszafejtésére szolgál. Az átjáró tanúsítványának személyes információcsere (PFX) formátumúnak kell lennie. Ez a formátum lehetővé teszi a titkos kulcs exportálását, amelyet az átjáró használ a forgalom titkosításához és visszafejtéséhez.
 
@@ -351,7 +351,7 @@ Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás �
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a Application Gateway összetevőket, a következőket teheti:
 

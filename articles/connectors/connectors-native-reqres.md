@@ -1,20 +1,20 @@
 ---
-title: HTTPS-hívások fogadása és megválaszolása
-description: HTTPS-kérelmek és-események kezelése valós időben a Azure Logic Apps használatával
+title: Hívások fogadása és válaszadás a HTTPS használatával
+description: Külső szolgáltatásokból érkező bejövő HTTPS-kérések kezelése Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79247279"
+ms.locfileid: "79297295"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített kérelem-trigger vagy Response művelettel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek fogadják és válaszolnak a bejövő HTTPS-kérelmekre. Használhatja például a logikai alkalmazást:
 
@@ -203,6 +203,19 @@ A válasz művelettel válaszolhat egy adattartalomra (adatok) egy bejövő HTTP
 
 A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy válasz műveletet, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` ad vissza a hívónak. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` választ a hívónak.
 
+> [!IMPORTANT]
+> Ha a Response művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált válaszüzenetből anélkül, hogy a rendszer figyelmeztetést vagy hibát mutat:
+>
+> * `Allow`
+> * `Content-*` a következő kivételekkel: `Content-Disposition`, `Content-Encoding`és `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Bár a Logic Apps nem fogja leállítani a logikai alkalmazások mentését, amelyekben a válasz művelettel rendelkezik, a Logic Apps figyelmen kívül hagyja ezeket a fejléceket.
+
 1. A Logic app Designerben abban a lépésben, amelyhez hozzá szeretne adni egy válasz műveletet, válassza az **új lépés**lehetőséget.
 
    Például a korábban megjelenő kérelem triggerének használatával:
@@ -242,6 +255,6 @@ A logikai alkalmazás csak egy percig tart nyitva a bejövő kérelemben. Felté
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Logic Apps-összekötők](../connectors/apis-list.md)

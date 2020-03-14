@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863240"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370899"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
+# <a name="overview-of-azure-digital-twins-preview"></a>Az Azure Digital Twins előzetes verziójának áttekintése
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Az Azure Digital Twins Preview egy Azure IoT szolgáltatás, amely átfogó modelleket hoz létre a fizikai környezetből. Térbeli intelligenciát ábrázoló diagramokat hozhat létre a személyek, a szóközök és az eszközök közötti kapcsolatok és interakciók modellezéséhez.
 
@@ -39,7 +41,7 @@ Az alábbi videó alaposabban megtekinti az Azure digitális ikreket.
 
 > [!VIDEO https://www.youtube.com/embed/TvN_NxpgyzQ]
 
-## <a name="key-capabilities"></a>Főbb képességek
+## <a name="key-capabilities"></a>Főbb funkciók
 
 Az Azure Digital Twins a következő főbb képességekkel rendelkezik.
 

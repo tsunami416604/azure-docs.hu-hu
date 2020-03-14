@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 224b69ab571f934f0bd3b05bbdeb9dc4013f96bf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759806"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371613"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -135,6 +135,8 @@ Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, enge
 | login.microsoftonline.com | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | *.hypervrecoverymanager.windowsazure.com | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | *.servicebus.windows.net | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
+| *.vault.azure.net | Lehetővé teszi a hozzáférést az ADE-kompatibilis virtuális gépek replikálásának engedélyezéséhez a portálon keresztül
+| *. automation.ext.azure.com | Lehetővé teszi a mobilitási ügynöknek a portálon keresztüli replikált elemek automatikus frissítésének engedélyezését
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
@@ -149,6 +151,8 @@ HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage
 HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directorynak (Azure AD) megfelelő tartományok engedélyezése  | AzureActiveDirectory
 HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban található Events hubhoz tartozó tartományok engedélyezése. | EventsHub.\<régió – név >
 HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
+HTTPS-kimenő engedélyezése: 443-es port | Azure Key Vaultnak megfelelő tartományok engedélyezése (ez csak az ADE-kompatibilis virtuális gépek portálon keresztüli replikálásának engedélyezéséhez szükséges) | AzureKeyVault
+HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfelelő tartományok engedélyezése (ez csak a mobilitási ügynöknek a portálon keresztüli replikált elemek esetében történő automatikus frissítésének engedélyezéséhez szükséges) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>A célként megadott régió szabályai
 
@@ -158,6 +162,8 @@ HTTPS-kimenő engedélyezése: 443-es port | A cél régióban lévő Storage-fi
 HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése  | AzureActiveDirectory
 HTTPS-kimenő engedélyezése: 443-es port | Az Events hub-nak megfelelő tartományok engedélyezése a forrás régióban. | EventsHub.\<régió – név >
 HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
+HTTPS-kimenő engedélyezése: 443-es port | Azure Key Vaultnak megfelelő tartományok engedélyezése (ez csak az ADE-kompatibilis virtuális gépek portálon keresztüli replikálásának engedélyezéséhez szükséges) | AzureKeyVault
+HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfelelő tartományok engedélyezése (ez csak a mobilitási ügynöknek a portálon keresztüli replikált elemek esetében történő automatikus frissítésének engedélyezéséhez szükséges) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal

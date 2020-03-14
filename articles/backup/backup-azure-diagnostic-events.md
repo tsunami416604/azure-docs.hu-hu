@@ -3,12 +3,12 @@ title: Recovery Services-tárolók diagnosztikai beállításainak használata
 description: Cikk, amely leírja, hogyan használhatja a Azure Backup korábbi és új diagnosztikai eseményeit
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583945"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136939"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnosztikai beállítások használata Recovery Services-tárolókhoz
 
@@ -56,7 +56,9 @@ Ha az adatforgalom bekerül a LA munkaterületre, az egyes események dedikált 
 
 Hagyományosan a tár összes biztonsági másolattal kapcsolatos diagnosztikai adatát egyetlen, "AzureBackupReport" nevű esemény tárolja. A fent ismertetett hat esemény lényegében a AzureBackupReport-ben található összes adathalmaz összetételét képezi. 
 
-Jelenleg továbbra is támogatjuk a AzureBackupReport eseményt a visszamenőleges kompatibilitás érdekében, olyan esetekben, amikor a felhasználók meglévő egyéni lekérdezésekkel rendelkeznek ezen az eseményen, például az egyéni naplózási riasztások, az egyéni vizualizációk stb. Azt javasoljuk azonban, hogy az új eseményeket a tár összes új diagnosztikai beállítására kiválasztva, mivel így sokkal könnyebben használhatók a naplók a napló lekérdezésekben, a sémák és azok struktúrájának jobb észlelése, valamint a teljesítmény növelése mindkét betöltésnél késés és lekérdezési időpontok. A Azure Diagnostics mód használatának támogatása végül fokozatosan megszűnik, így az új események kiválasztásával elkerülhető, hogy egy későbbi időpontban el lehessen kerülni az összetett áttelepítést.
+Jelenleg továbbra is támogatjuk a AzureBackupReport eseményt a visszamenőleges kompatibilitás érdekében, olyan esetekben, amikor a felhasználók meglévő egyéni lekérdezésekkel rendelkeznek ezen az eseményen, például az egyéni naplózási riasztások, az egyéni vizualizációk stb. **Azt javasoljuk azonban, hogy a lehető leghamarabb váltson az új eseményekre**, mivel így sokkal könnyebben dolgozhatnak az adatnapló-lekérdezésekben, a sémák és azok struktúrájának jobb észlelését teszi lehetővé, és javítja a teljesítményt a betöltési késés és a lekérdezési időpontok között. **A Azure Diagnostics mód használatának támogatása végül fokozatosan megszűnik, így az új események kiválasztásával elkerülhető, hogy egy későbbi időpontban el lehessen kerülni az összetett áttelepítést**.
+
+A Azure Backup beépített szabályzatával új diagnosztikai beállítást adhat hozzá a 6 új eseményhez, a megadott hatókörben lévő összes tárolóhoz: a tár [diagnosztikai beállításainak konfigurálása a skálán](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 Dönthet úgy, hogy külön diagnosztikai beállításokat hoz létre a AzureBackupReport és a hat új eseményhez, amíg az összes egyéni lekérdezést át nem telepítette az új táblákból származó adatok használatára. Az alábbi képen egy példa látható egy olyan tárolóra, amely két diagnosztikai beállítással rendelkezik. A **Setting1** nevű első beállítás a AzureBackupReport esemény adatokat küld egy La munkaterületre AzureDiagnostics módban. A második beállítás, a nevű **Setting2** a hat új Azure Backup eseményt küldi el egy La munkaterületre erőforrás-specifikus módban.
 
@@ -84,6 +86,6 @@ Az alábbi képen egy példa látható egy olyan felhasználóra, aki három dia
 
 ![Három beállítás](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A diagnosztikai események Log Analytics adatmodelljének megismerése](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

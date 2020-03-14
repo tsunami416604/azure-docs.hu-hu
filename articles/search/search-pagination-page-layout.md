@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721574"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136990"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 Ez a cikk útmutatást nyújt a keresési eredmények oldalának szabványos elemeinek megvalósításához, például az összesített számokhoz, a dokumentumok lekéréséhez, a rendezési sorrendekhez és a navigáláshoz. Az oldalhoz kapcsolódó, a keresési eredményeknek megfelelő adatokat vagy információkat a [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) által az Azure Cognitive Search szolgáltatásnak küldött kérések határozzák meg. 
@@ -25,7 +25,7 @@ Az ügyfél keresési oldalának gyors létrehozásához tekintse meg a követke
 + A portálon az [Application Generator](search-create-app-portal.md) használatával LÉTREHOZHAT egy HTML-oldalt a keresősáv, a csiszolt navigálás és az eredmények területen.
 + A funkcionális ügyfél létrehozásához kövesse az [első alkalmazás létrehozása az C# ](tutorial-csharp-create-first-app.md) oktatóanyagban című témakört.
 
-Több mintakód is tartalmaz egy webes előtér-felületet, amely itt található: [New York City Jobs bemutató alkalmazás](https://azjobsdemo.azurewebsites.net/), [JavaScript-mintakód élő bemutató webhellyel](https://github.com/liamca/azure-search-javascript-samples)és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Több mintakód is tartalmaz egy webes előtér-felületet, amely itt található: [New York City Jobs bemutató alkalmazás](https://aka.ms/azjobsdemo), [JavaScript-mintakód élő bemutató webhellyel](https://github.com/liamca/azure-search-javascript-samples)és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Egy érvényes kérelem számos elemet tartalmaz, például egy szolgáltatás URL-címét és elérési útját, HTTP-műveletet, `api-version`stb. A rövidség kedvéért a példákat úgy vágja ki, hogy csak a tördeléshez kapcsolódó szintaxist emelje ki. További információ a kérelem szintaxisáról: [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice)-k.

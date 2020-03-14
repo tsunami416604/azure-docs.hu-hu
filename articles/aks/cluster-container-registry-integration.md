@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 5d8b45137ff82db6b23b5bf31eb3e8063de343bb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191333"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368451"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
 
@@ -41,6 +41,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 # Create an AKS cluster with ACR integration
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
+
 Alternatív megoldásként megadhatja az ACR nevét egy ACR erőforrás-AZONOSÍTÓval, amelynek formátuma a következő:
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
@@ -58,17 +59,22 @@ Az alábbihoz tartozó **ACR-Name** vagy **ACR-Resource-id** érvényes értéke
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
+
 vagy,
-```
+
+```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
 Az ACR és az AK-fürt közötti integrációt is eltávolíthatja a következőkkel
+
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
 ```
-or
-```
+
+vagy
+
+```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 ```
 
@@ -93,7 +99,7 @@ az aks get-credentials -g myResourceGroup -n myAKSCluster
 
 Hozzon létre egy **ACR-Nginx. YAML** nevű fájlt, amely a következőket tartalmazza:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -118,16 +124,20 @@ spec:
 ```
 
 Ezután futtassa ezt az üzembe helyezést az AK-fürtben:
-```
+
+```console
 kubectl apply -f acr-nginx.yaml
 ```
 
 A központi telepítést a futtatásával figyelheti:
-```
+
+```console
 kubectl get pods
 ```
+
 Két futó hüvelynek kell lennie.
-```
+
+```output
 NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s

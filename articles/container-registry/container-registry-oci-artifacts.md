@@ -4,14 +4,14 @@ description: A nyílt Container Initiative (OCI) összetevők leküldése és le
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456257"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371052"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>OCI-összetevő leküldése és lekérése egy Azure Container Registry használatával
 
@@ -66,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 A `oras push` parancs használatával küldje le ezt a szövegfájlt a beállításjegyzékbe. A következő példa leküldi a minta szövegfájlt a `samples/artifact` adattárba. A beállításjegyzéket a rendszer a teljesen minősített *myregistry.azurecr.IO* (az összes kisbetűs) azonosítja. Az összetevő címkézett `1.0`. Az összetevő alapértelmezés szerint nem definiált típust tartalmaz, amelyet az *adathordozó típusa* karakterlánc azonosít a `artifact.txt`fájlnév után. További típusok: [OCI](https://github.com/opencontainers/artifacts) -összetevők. 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 A sikeres leküldések kimenete a következőhöz hasonló:

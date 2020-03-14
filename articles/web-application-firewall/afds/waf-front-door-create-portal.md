@@ -1,24 +1,24 @@
 ---
-title: 'Oktatóanyag: WAF-szabályzat létrehozása az Azure bejárati ajtóhoz – Azure Portal'
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre webalkalmazási tűzfal-(WAF-) szabályzatot a Azure Portal használatával.
+title: 'Oktatóanyag: webalkalmazási tűzfal-(WAF-) szabályzat létrehozása az Azure bejárati ajtóhoz – Azure Portal'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy WAF házirendet a Azure Portal használatával.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 2e4987273d0ecdc258a3134b89ffc3406e25e97c
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186728"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137577"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Oktatóanyag: webalkalmazási tűzfal szabályzatának létrehozása az Azure-beli előtérben a Azure Portal használatával
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy alapszintű Azure webalkalmazási tűzfal-(WAF-) szabályzatot, és hogyan alkalmazhatja azt egy előtér-gazdagépen az Azure bejárati ajtón.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy alapszintű Azure webalkalmazási tűzfal-(WAF-) szabályzatot, és hogyan alkalmazhatja a szabályzatot egy előtér-gazdagépre az Azure-beli bejárati ajtón.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * WAF szabályzat létrehozása
@@ -27,20 +27,21 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre egy bevezető ajtót a következő témakörben ismertetett utasításokat követve [: első ajtós profil létrehozása](../../frontdoor/quickstart-create-front-door.md). 
+Hozzon létre egy bevezető ajtót a következő témakörben ismertetett utasításokat követve [: első ajtós profil létrehozása](../../frontdoor/quickstart-create-front-door.md).
 
 ## <a name="create-a-web-application-firewall-policy"></a>Webalkalmazási tűzfal házirend létrehozása
 
-Először hozzon létre egy alapszintű WAF szabályzatot a felügyelt alapértelmezett szabálykészlet (DRS) használatával a portálon. 
+Először hozzon létre egy alapszintű WAF szabályzatot a felügyelt alapértelmezett szabálykészlet (DRS) használatával a portálon.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása**> **WAF**keresése lehetőséget > válassza a **webalkalmazási tűzfal (előzetes verzió)** lehetőséget > válassza a **Létrehozás**lehetőséget.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**> **WAF**keresése lehetőséget > válassza a * * webalkalmazási tűzfal * * > válassza a **Létrehozás**lehetőséget.
 2. A **WAF házirend létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetést            |Válassza ki a bejárati ajtó előfizetés nevét.|
+    | Házirend a következőhöz:            |Válassza a globális WAF (bejárati ajtó) lehetőséget.|
+    | -előfizetés            |Válassza ki a bejárati ajtó előfizetés nevét.|
     | Erőforráscsoport          |Válassza ki az első ajtóhoz tartozó erőforráscsoport nevét.|
-    | Szabályzat neve             |Adja meg a WAF szabályzat egyedi nevét.|
+    | Házirend neve             |Adja meg a WAF szabályzat egyedi nevét.|
 
    ![WAF szabályzat létrehozása](../media/waf-front-door-create-portal/basic.png)
 
@@ -57,7 +58,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot a felügyelt alapérte
 
 ## <a name="configure-web-application-firewall-rules-optional"></a>Webalkalmazási tűzfalszabályok konfigurálása (nem kötelező)
 
-### <a name="change-mode"></a>Mód váltása
+### <a name="change-mode"></a>Módváltás
 
 WAF szabályzat létrehozásakor az alapértelmezett WAF-házirend **észlelési** módban van. **Észlelési** módban a WAF nem blokkolja a kérelmeket, hanem a WAF-szabályoknak megfelelő kérelmeket naplózza a rendszer a WAF-naplókon.
 Ha működés közben szeretné látni a WAF, az **észleléstől** kezdve a **megelőzés**lehetőségre módosíthatja a mód beállításait. A **megelőzési** módban az alapértelmezett SZABÁLYKÉSZLET (DRS) által meghatározott szabályoknak megfelelő kérelmeket a rendszer letiltja és naplózza a WAF-naplókban.
@@ -76,7 +77,7 @@ Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés sz
 
  ![WAF-szabálykészlet módosítása](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-webalkalmazási tűzfal](../overview.md)

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7e4282802c287becf9ccb036ba0063d3c48bc332
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773225"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370763"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Oktatóanyag: template functions hozzáadása a Resource Manager-sablonhoz
 
@@ -48,7 +48,7 @@ Az előző oktatóanyagokban létrehozott egy Storage-fiókot az USA keleti rég
 
 Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -58,10 +58,10 @@ New-AzResourceGroupDeployment `
   -storageName "{new-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addlocationparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -74,7 +74,7 @@ az group deployment create \
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Láthatja, hogy a Storage-fiók erőforrása telepítve van, és ugyanazzal a hellyel rendelkezik, mint az erőforráscsoport.

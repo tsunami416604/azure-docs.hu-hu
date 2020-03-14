@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258160"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371443"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Tudnivalók az Azure-beli virtuális gépek vész-helyreállításáról
 
@@ -52,6 +52,8 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolat vezérléséhez, enged
 login.microsoftonline.com | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez.
 *.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen.
 *.servicebus.windows.net | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek.
+*.vault.azure.net | Lehetővé teszi a hozzáférést az ADE-kompatibilis virtuális gépek replikálásának engedélyezéséhez a portálon keresztül
+*. automation.ext.azure.com | Lehetővé teszi a mobilitási ügynöknek a portálon keresztüli replikált elemek automatikus frissítésének engedélyezését
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
@@ -63,6 +65,8 @@ Ha NSG használ a kimenő kapcsolatok vezérlésére, akkor ezeket a szolgáltat
 - Hozzon létre egy [Azure Active Directory (HRE) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi a HRE-hoz tartozó összes IP-cím elérését
 - Hozzon létre egy EventsHub-alapú NSG-szabályt a célként megadott régióhoz, és engedélyezze a hozzáférést Site Recovery figyeléshez.
 - Hozzon létre egy AzureSiteRecovery-alapú NSG-szabályt, amellyel bármely régióban engedélyezheti a hozzáférést Site Recovery szolgáltatáshoz.
+- Hozzon létre egy AzureKeyVault-alapú NSG-szabályt. Ez csak az ADE-kompatibilis virtuális gépek portálon keresztüli replikálásának engedélyezéséhez szükséges.
+- Hozzon létre egy GuestAndHybridManagement-alapú NSG-szabályt. Ez csak a mobilitási ügynöknek a portálon keresztüli replikált elemek esetében történő automatikus frissítésének engedélyezéséhez szükséges.
 - Javasoljuk, hogy hozza létre a szükséges NSG-szabályokat egy teszt NSG, és ellenőrizze, hogy nincsenek-e problémák a szabályok éles NSG való létrehozása előtt.
 
 ## <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra

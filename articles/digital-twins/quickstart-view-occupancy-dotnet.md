@@ -10,14 +10,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 01/10/2020
-ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: de8611e53339d38a03836bc9272ad42ff88a59b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240687"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371426"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető Teremkeresés Azure digitális Twins használatával
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Az Azure digitális Twins szolgáltatás lehetővé teszi, hogy hozza létre újból a fizikai környezetnek digitális képe. Ezután értesítéseket kaphat a környezetben zajló eseményekről, és testre szabhatja a rájuk adott válaszokat.
 

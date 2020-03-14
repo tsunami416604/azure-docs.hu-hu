@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270315"
+ms.locfileid: "79296846"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
 Azure Machine Learning folyamatok lehetővé teszik munkafolyamatok létrehozását a gépi tanulási projektekben. Ezek a munkafolyamatok számos előnnyel rendelkeznek: 
 
 + Egyszerűség kedvéért
-+ Sebesség
++ sebesség
 + Ismételhetőség
 + Rugalmasság
 + Verziószámozás és nyomon követés
@@ -205,6 +205,12 @@ A gépi tanulási munkafolyamatok folyamatainak használatának fő előnyei a k
 | **Modularitás** | Az érintett területek elkülönítése és a változások elkülönítése lehetővé teszi, hogy a szoftverek gyorsabb ütemben, magasabb színvonalú minőségben fejlődjenek. | 
 |**Együttműködés**|A folyamatok lehetővé teszik az adatszakértők számára, hogy működjenek együtt a gépi tanulási tervezési folyamat minden területén, miközben egyidejűleg dolgozhatnak a folyamat lépésein.|
 
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>A megfelelő PipelineStep alosztály kiválasztása
+
+A `PythonScriptStep` az absztrakt `PipelineStep`legrugalmasabb alosztálya. Más alosztályok, például `EstimatorStep` alosztályok és `DataTransferStep` a kevesebb kóddal rendelkező konkrét feladatokat is elvégezhetik. Például egy `EstimatorStep` hozható létre a lépés, egy `Estimator`és egy számítási cél nevének átadásával. Vagy felülbírálhatja a bemeneteket és kimeneteket, a folyamat paramétereit és az argumentumokat. További információ: a [modellek Betanítása Azure Machine learning a kalkulátor használatával](how-to-train-ml-models.md). 
+
+A `DataTransferStep` megkönnyíti az adatforrások és a nyelők közötti adatáthelyezést. A manuálisan elvégezhető kód egyszerű, de ismétlődő. Ehelyett egyszerűen létrehozhat egy `DataTransferStep` nevet, egy adatforrásra és egy adatfogadóra mutató hivatkozásokat, valamint egy számítási célt. A notebook [Azure Machine learning a DataTransferStep folyamata](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) ezt a rugalmasságot mutatja be.
+
 ## <a name="modules"></a>Modulok
 
 Míg a folyamat lépései lehetővé teszik egy korábbi Futtatás eredményeinek újrafelhasználását, sok esetben a lépés felépítése feltételezi, hogy a szükséges parancsfájloknak és a függő fájloknak helyileg elérhetőnek kell lenniük. Ha egy adattudós már meglévő kód alapján kíván felépíteni, a szkripteket és a függőségeket gyakran külön tárházból kell klónozott.
@@ -219,7 +225,7 @@ A modulok a folyamat lépéseihez hasonlóan hasonlóak, de a munkaterületen el
 
 Az Azure Machine Learning-folyamatok moduljainak létrehozásához, összekapcsolásához és használatához szükséges példákért tekintse meg a [notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure ML-folyamatok egy hatékony létesítmény, amely megkezdi az értékek megvalósítását a korai fejlesztési fázisokban. Az érték növekszik, ahogy a csapat és a projekt növekszik. Ez a cikk azt ismerteti, hogyan vannak megadva a folyamatok a Azure Machine Learning Python SDK-val és az Azure-ban. Megtalálta az alapszintű forráskódot, és bevezette az elérhető `PipelineStep` osztályokba. Érdemes lehet az Azure ML-adatfolyamatok és az Azure-t futtató folyamatok használatára. 
 

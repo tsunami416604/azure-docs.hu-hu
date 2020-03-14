@@ -3,12 +3,12 @@ title: Oktatóanyag – Terraform-modulok tesztelése az Azure-ban a Terratest h
 description: Ismerje meg, hogyan használható a Terratest a Terraform-modulok tesztelésére.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 41f7f9c00f626cf622ea781f01da6db1f46cd805
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158963"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370797"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Oktatóanyag: Terraform-modulok tesztelése az Azure-ban a Terratest használatával
 
@@ -248,14 +248,17 @@ func TestUT_StorageAccountName(t *testing.T) {
 
 Az egység tesztek futtatásához hajtsa végre a következő lépéseket a parancssorban:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestUT_StorageAccountName
 ```
 
 A hagyományos go-teszt eredménye körülbelül egy percet ad vissza.
@@ -369,21 +372,24 @@ func TestIT_HelloWorldExample(t *testing.T) {
 
 Az integrációs tesztek futtatásához hajtsa végre a következő lépéseket a parancssorban:
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
-GoPath/src/staticwebpage$ cd test
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in test cases
+cd test
+go fmt
+go test -run TestIT_HelloWorldExample
 ```
 
 A hagyományos go-teszt eredménye körülbelül két percet vesz igénybe. A következő parancsok végrehajtásával is futtathatja az egység teszteit és az integrációs teszteket:
 
 ```shell
-GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ go test
+go fmt
+go test
 ```
 
 Az integrációs tesztek sokkal hosszabb ideig tartanak, mint az egység-tesztek (két perc az egyes integrációs esetekhez, mint egy perc öt egység esetén). Azonban a döntése, hogy az egység-vagy integrációs teszteket egy adott forgatókönyvben használja-e. Általában a Terraform HCL függvények használatával érdemes az összetett logikához tartozó egység-teszteket használni. Általában az integrációs teszteket használjuk a felhasználók végpontok közötti perspektívájában.
@@ -496,13 +502,16 @@ func Clean() error {
 
 A teljes tesztelési csomag végrehajtásához használja a következő parancsokat. A kód hasonló a korábbi szakaszban használt futtatási lépésekhez. 
 
+```azurecli
+az login    # Required when no service principal environment variables are present
+```
+
 ```shell
-$ cd [Your GoPath]/src/staticwebpage
-GoPath/src/staticwebpage$ dep init    # Run only once for this folder
-GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
-GoPath/src/staticwebpage$ mage
+cd [Your GoPath]/src/staticwebpage
+dep init    # Run only once for this folder
+dep ensure  # Required to run if you imported new packages in magefile or test cases
+go fmt      # Only required when you change the magefile
+mage
 ```
 
 Az utolsó parancssort a mágus további lépéseivel cserélheti le. Használhatja például `mage unit` vagy `mage clean`. Érdemes beágyazni `dep` parancsokat és `az login`eket a magefile. Itt nem jelennek meg a kód. 

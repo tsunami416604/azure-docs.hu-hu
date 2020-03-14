@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127416"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371596"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -145,7 +145,7 @@ Nyers hiba – példa:
 
 A probléma megoldásához tegye a következőket:
 
-1. Nyissa meg az Azure Portalt, és lépjen a **Virtual Networks (virtuális hálózatok** ) panelre.
+1. Nyissa meg az Azure Portalt, és lépjen a **Virtual Networks (virtuális hálózatok** ) lapra.
 2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók**lehetőséget.
 3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
 4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.

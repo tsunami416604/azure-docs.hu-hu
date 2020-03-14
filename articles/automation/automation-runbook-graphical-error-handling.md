@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246274"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367074"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Hibakezelés az Azure Automation grafikus runbookokban
 
@@ -48,7 +48,7 @@ Az ajánlott eljárás egy dedikált hibakezelés runbook létrehozása közös 
 1. Értesítés küldése erről a problémáról.
 2. Elindítja egy másik runbook, amely automatikusan kiépít egy új virtuális gépet.
 
-Az egyik megoldás az, ha a runbook egy olyan tevékenységre mutat, amely az első lépést kezeli. A runbook például összekapcsolhatja a **Write-Warning** parancsmagot a második lépés egy tevékenységével, például a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) parancsmaggal.
+Az egyik megoldás az, ha a runbook egy olyan tevékenységre mutat, amely az első lépést kezeli. A runbook például összekapcsolhatja a `Write-Warning` parancsmagot a második lépés tevékenységével, például a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) parancsmaggal.
 
 Ezt a viselkedést is általánosíthatja számos runbookok való használathoz azáltal, hogy ezt a két tevékenységet külön hibakezelés runbook. Mielőtt az eredeti runbook meghívja ezt a hibát a runbook kezelésében, létrehozhat egy egyéni üzenetet az adataiból, majd átadhatja azt paraméterként a runbook kezeléséhez.
 
@@ -60,9 +60,9 @@ A konfigurációs beállítás engedélyezése után a runbook létrehozhat egy 
 
 A következő példában egy runbook egy olyan változót kér le, amely egy virtuális gép számítógépnevét tartalmazza. Ezután megpróbálja elindítani a virtuális gépet a következő tevékenységgel.<br><br> ![Automatizálási runbook – példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-A **Get-AutomationVariable** tevékenység és a [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmag úgy van konfigurálva, hogy a kivételeket a hibákra konvertálja. Ha problémák merülnek fel a változó beszerzése vagy a virtuális gép elindítása során, a kód hibákat generál.<br><br> ![Automation runbook hiba-kezelési tevékenység beállítások](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
+A `Get-AutomationVariable` tevékenység és a [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmag úgy van konfigurálva, hogy a kivételeket a hibákra konvertálja. Ha problémák merülnek fel a változó beszerzése vagy a virtuális gép elindítása során, a kód hibákat generál.<br><br> ![Automation runbook hiba-kezelési tevékenység beállítások](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
 
-Hiba történt a folyamatok ezen tevékenységekből egyetlen **hiba-felügyeleti** kód tevékenységre való csatolásakor. Ez a tevékenység egy egyszerű PowerShell-kifejezéssel van konfigurálva, amely a **Throw** kulcsszó használatával leállítja a feldolgozást, valamint `$Error.Exception.Message` az aktuális kivételt leíró üzenet beszerzéséhez.<br><br> ![Automation runbook hiba a kód kezelésére példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Hiba történt a folyamatok ezen tevékenységekből egyetlen `error management` kód tevékenységre való csatolásakor. Ez a tevékenység egy egyszerű PowerShell-kifejezéssel van konfigurálva, amely a `throw` kulcsszó használatával leállítja a feldolgozást, valamint `$Error.Exception.Message` az aktuális kivételt leíró üzenet beszerzéséhez.<br><br> ![Automation runbook hiba a kód kezelésére példa](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

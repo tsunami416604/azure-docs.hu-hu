@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ms.author: allensu
-ms.openlocfilehash: d78828b2e439668dbc0cd8567560a709256dad5f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 3cc459b7f4b81b14f57bbb702f0b0d988654189f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217013"
+ms.locfileid: "79298654"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal (nyilvános előzetes verzió)
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
 A NAT-átjáró erőforrásai [Virtual Network NAT](nat-overview.md) részét képezik, és kimenő internetkapcsolatot biztosítanak a virtuális hálózatok egy vagy több alhálózatához. Annak a virtuális hálózatnak az alhálózata, amelyet a NAT-átjáró használni fog. A NAT a forrás hálózati címfordítást (SNAT) biztosítja egy alhálózat számára.  A NAT-átjáró erőforrásai határozzák meg, hogy a virtuális gépek mely statikus IP-címeket használják a kimenő folyamatok létrehozásakor. A statikus IP-címek a nyilvános IP-címek erőforrásaiból, a nyilvános IP-előtag erőforrásaiból vagy mindkettőből származnak. A NAT-átjáró erőforrásai akár 16 statikus IP-címet is használhatnak.
 
@@ -46,11 +46,11 @@ Virtuális hálózat:
 
 A felhasználó által megadott útvonalak nem szükségesek.
 
-## <a name="resource"></a>Erőforrás
+## <a name="resource"></a>Resource
 
 Az erőforrás úgy lett kialakítva, hogy egyszerű legyen, mint az alábbi Azure Resource Manager példa a sablonhoz hasonló formátumban.  Ez a sablon-szerű formátum itt látható, hogy bemutassa a fogalmakat és a struktúrát.  Módosítsa a példát az igényeinek megfelelően.  Ez a dokumentum nem az oktatóanyaghoz készült.
 
-A következő ábrán a különböző Azure Resource Manager erőforrások közötti írható hivatkozások láthatók.  A nyíl a hivatkozás irányát jelzi, amelyből az írható. Áttekintés 
+A következő ábrán a különböző Azure Resource Manager erőforrások közötti írható hivatkozások láthatók.  A nyíl a hivatkozás irányát jelzi, amelyből az írható. Felülvizsgálat 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="NAT-objektummodell Virtual Network">
@@ -177,7 +177,7 @@ A NAT-átjáró által biztosított internetes kimenő forgatókönyvek kiterjes
 
 *Ábra: Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel*
 
-| Irány | Erőforrás |
+| Irány | Resource |
 |:---:|:---:|
 | Bejövő | Példány szintű nyilvános IP-címmel rendelkező virtuális gép |
 | Kimenő | NAT-átjáró |
@@ -192,7 +192,7 @@ A virtuális gép a NAT-átjárót fogja használni a kimenő forgalomhoz.  A be
 
 *Ábra: Virtual Network NAT és virtuális gép nyilvános Load Balancer*
 
-| Irány | Erőforrás |
+| Irány | Resource |
 |:---:|:---:|
 | Bejövő | nyilvános Load Balancer |
 | Kimenő | NAT-átjáró |
@@ -207,7 +207,7 @@ Egy terheléselosztási szabály vagy kimenő szabályok kimenő konfigurációj
 
 *Ábra: Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel és nyilvános Load Balancer*
 
-| Irány | Erőforrás |
+| Irány | Resource |
 |:---:|:---:|
 | Bejövő | Példány szintű nyilvános IP-címmel rendelkező virtuális gép és nyilvános Load Balancer |
 | Kimenő | NAT-átjáró |
@@ -340,7 +340,7 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 
 Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szavazzon arra, hogy mi a következő lépés a [NAT-UserVoice](https://aka.ms/natuservoice).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók a [Virtual Network NAT](nat-overview.md)-ról.
 * Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
@@ -353,6 +353,7 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
+  - [Sablon](./quickstart-create-nat-gateway-template.md)
 * Tudnivalók a NAT Gateway Resource API-ról
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)

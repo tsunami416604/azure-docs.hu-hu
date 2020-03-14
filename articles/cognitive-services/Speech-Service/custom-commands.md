@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9349969f1f9b037a271cb727233517daba999acd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446981"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367839"
 ---
-# <a name="custom-commands-preview"></a>Egyéni parancsok (előzetes verzió)
+# <a name="what-are-custom-commands-preview"></a>Mik azok az egyéni parancsok (előzetes verzió)?
 
 A hangvezérelt alkalmazások, például a [hangsegédek](voice-assistants.md) figyelik a felhasználókat, és válaszként reagálnak, gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet. Az eszközök a Speech SDK `DialogServiceConnector` objektumával csatlakoznak a segédekhez.
 

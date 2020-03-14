@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 043350db2c5372fc81fbb2b68155a4ac75457208
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278401"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367023"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation runbook indítása webhooktal
 
@@ -39,37 +39,37 @@ A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webh
 
 A webhookok meghatározhatják a runbook indításakor használt runbook paraméterek értékeit. A webhooknak tartalmaznia kell a kötelező runbook paraméterek értékeit, és tartalmazhat értékeket a választható paraméterek számára. A webhookra konfigurált paraméterérték a webhook létrehozása után is módosítható. Egy runbook összekapcsolt webhookok mindegyike különböző runbook paramétereket használhat. Amikor egy ügyfél egy webhook használatával indít el egy runbook, az nem bírálhatja felül a webhookban definiált paraméterek értékét.
 
-Az ügyféltől érkező adatok fogadásához a runbook támogatja a *WebhookData*nevű egyetlen paramétert. Ez a paraméter egy olyan objektumot határoz meg, amely tartalmazza az ügyfél által a POST kérelemben foglalt adatkészletet.
+Az ügyféltől érkező adatok fogadásához a runbook egyetlen, `WebhookData`nevű paramétert támogat. Ez a paraméter egy olyan objektumot határoz meg, amely tartalmazza az ügyfél által a POST kérelemben foglalt adatkészletet.
 
 ![WebhookData tulajdonságai](media/automation-webhooks/webhook-data-properties.png)
 
-A *WebhookData* paraméter a következő tulajdonságokkal rendelkezik:
+A `WebhookData` paraméter a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| WebhookName | A webhook neve. |
-| RequestHeader | A beérkező POST kérelem fejléceit tartalmazó szórótábla. |
-| RequestBody | A beérkező POST kérelem törzse. Ez a törzs megőrzi az adatformázást, például a karakterláncot, a JSON-t, az XML-t vagy az űrlap kódolását. A runbook a várt adatformátummal való együttműködésre kell írni. |
+| `WebhookName` | A webhook neve. |
+| `RequestHeader` | A beérkező POST kérelem fejléceit tartalmazó szórótábla. |
+| `RequestBody` | A beérkező POST kérelem törzse. Ez a törzs megőrzi az adatformázást, például a karakterláncot, a JSON-t, az XML-t vagy az űrlap kódolását. A runbook a várt adatformátummal való együttműködésre kell írni. |
 
-Nincs szükség a webhook konfigurálására a *WebhookData* paraméter támogatásához, és a runbook nem szükséges az elfogadásához. Ha a runbook nem határozza meg a paramétert, a rendszer figyelmen kívül hagyja az ügyféltől érkező kérések részleteit.
+Nincs szükség a webhook konfigurálására a `WebhookData` paraméter támogatásához, és a runbook nem kell elfogadnia. Ha a runbook nem határozza meg a paramétert, a rendszer figyelmen kívül hagyja az ügyféltől érkező kérések részleteit.
 
 > [!NOTE]
 > Webhook meghívásakor az ügyfélnek mindig minden paraméter értékét tárolnia kell, ha a hívás sikertelen. Hálózati leállás vagy kapcsolati probléma esetén az alkalmazás nem tudja beolvasni a sikertelen webhook-hívásokat.
 
-Ha a webhook létrehozásakor megad egy értéket a *WebhookData* számára, a rendszer felülbírálja azt, amikor a webhook elindítja a runbook az ügyfél post kérelemből származó adatokkal. Ez akkor is megtörténik, ha az alkalmazás nem tartalmaz semmilyen adatbevitelt a kérelem törzsében. 
+Ha a webhook létrehozásakor megadja a `WebhookData` értékét, a rendszer felülbírálja azt, amikor a webhook elindítja a runbook az ügyfél POST kérelemből származó adatokkal. Ez akkor is megtörténik, ha az alkalmazás nem tartalmaz semmilyen adatbevitelt a kérelem törzsében. 
 
-Ha olyan runbook indít el, amely a webhookon kívül más mechanizmussal definiál *WebhookData* , megadhat egy értéket a runbook által felismert *WebhookData* számára. Ennek az értéknek olyan objektumnak kell lennie, amely ugyanazokkal a [tulajdonságokkal](#webhook-properties) rendelkezik, mint a *WebhookData* paraméter, így a runbook ugyanúgy működhet, mint a webhook által átadott tényleges *WebhookData* objektumokkal.
+Ha olyan runbook indít el, amely a webhooktól eltérő mechanizmust használ `WebhookData`t, megadhatja a runbook által felismert `WebhookData` értékét. Ennek az értéknek olyan objektumnak kell lennie, amely a `WebhookData` paraméterrel megegyező [tulajdonságokkal](#webhook-properties) rendelkezik, így a runbook ugyanúgy működhet, mint a webhook által átadott tényleges `WebhookData` objektumokkal.
 
 Ha például a következő runbook indítja el a Azure Portalból, és szeretne átadni valamilyen minta webhook-adatait tesztelésre, akkor a felhasználói felületen át kell adnia a JSON-ban lévő adatok adatait.
 
 ![WebhookData paraméter a felhasználói felületen](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
-A következő runbook példaként adja meg a következő tulajdonságokat *WebhookData*:
+A következő runbook példaként adja meg a következő tulajdonságokat a `WebhookData`hoz:
 
 * **WebhookName**: MyWebhook
 * **RequestBody**: `*[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*`
 
-Most átadjuk a következő JSON-objektumot a *WebhookData* paraméter felhasználói felületén. Ez a példa a szállítás visszaadásával és a sortörés karakterrel egyezik meg a webhookból átadott formátummal.
+Most átadjuk a következő JSON-objektumot a `WebhookData` paraméter felhasználói felületén. Ez a példa a szállítás visszaadásával és a sortörés karakterrel egyezik meg a webhookból átadott formátummal.
 
 ```json
 {"WebhookName":"mywebhook","RequestBody":"[\r\n {\r\n \"ResourceGroup\": \"vm01\",\r\n \"Name\": \"vm01\"\r\n },\r\n {\r\n \"ResourceGroup\": \"vm02\",\r\n \"Name\": \"vm02\"\r\n }\r\n]"}
@@ -84,7 +84,7 @@ Most átadjuk a következő JSON-objektumot a *WebhookData* paraméter felhaszn�
 
 A webhook biztonsága az URL-címének védelmére támaszkodik, amely egy olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi a webhook meghívását. A Azure Automation nem végez hitelesítést a kérelemben, amíg a megfelelő URL-címre kerül. Ezért az ügyfelek nem használhatnak olyan webhookokat a runbookok, amelyek nagy mértékben bizalmas műveleteket hajtanak végre anélkül, hogy alternatív módszert kellene alkalmazni a kérés érvényesítésére.
 
-A runbook belül eldöntheti, hogy egy webhook hívja-e meg a logikát. A runbook a *WebhookData* paraméter **WebhookName** tulajdonságát kell megnéznie. A runbook további ellenőrzéseket hajthat végre, ha a **RequestHeader** és a **RequestBody** tulajdonságban meghatározott adatokat keres.
+A runbook belül eldöntheti, hogy egy webhook hívja-e meg a logikát. A runbook a `WebhookData` paraméter `WebhookName` tulajdonságát kell megnéznie. A runbook további ellenőrzéseket hajthat végre, ha a `RequestHeader` és `RequestBody` tulajdonságaiban meghatározott adatokat keres.
 
 Egy másik stratégia az, hogy a runbook végre kell hajtania egy külső feltétel érvényességét, amikor webhook-kérést kap. Vegyünk például egy GitHub által meghívott runbook, amikor új véglegesít egy GitHub-tárházat. A runbook csatlakozhat a GitHubhoz annak ellenőrzéséhez, hogy új véglegesítés történt a folytatás előtt.
 
@@ -108,13 +108,13 @@ A következő eljárással hozhat létre egy új webhookot, amely egy runbook ka
 
 ## <a name="using-a-webhook"></a>Webhook használata
 
-Ha a létrehozása után webhookot szeretne használni, az ügyfélnek egy HTTP POST-kérelmet kell kiadnia a webhook URL-címével. A szintaxis a következő:
+Ha a létrehozása után webhookot szeretne használni, az ügyfélnek egy HTTP `POST` kérelmet kell kiadnia a webhook URL-címével. A szintaxis a következő:
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
 ```
 
-Az ügyfél a következő visszatérési kódok egyikét fogadja a POST kérelemből.
+Az ügyfél a következő visszatérési kódok egyikét fogadja az `POST` kérelemből.
 
 | Kód | Szöveg | Leírás |
 |:--- |:--- |:--- |
@@ -147,7 +147,7 @@ Kiterjesztheti azt a webhookot, amely nem érte el a lejárati idejét. Webhook 
 A következő minta-runbook fogadja a webhook-adatkapcsolatot, és elindítja a kérés törzsében megadott virtuális gépeket. A runbook teszteléséhez az Automation-fiók **runbookok**területén kattintson a **runbook létrehozása**lehetőségre. Ha nem tudja, hogyan hozhat létre runbook, tekintse meg [a Runbook létrehozását](automation-quickstart-create-runbook.md)ismertető témakört.
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok esetében a **Add-AzAccount** és a **Add-AzureRMAccount** aliasok a következőhöz: [kapcsolat-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> A nem grafikus PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` a [csatlakozási AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
 ```powershell
 param
@@ -219,7 +219,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-A következő példa a runbook **RequestBody** tulajdonságában elérhető kérelem törzsét mutatja be a *WebhookData*. Ez az érték a JSON-ban van formázva, hogy kompatibilis legyen a kérelem törzsében található formátummal.
+A következő példa a runbook számára elérhető kérelem törzsét mutatja `WebhookData``RequestBody` tulajdonságában. Ez az érték a JSON-ban van formázva, hogy kompatibilis legyen a kérelem törzsében található formátummal.
 
 ```json
 [

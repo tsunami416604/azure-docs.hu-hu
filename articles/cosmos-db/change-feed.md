@@ -1,5 +1,5 @@
 ---
-title: A módosítási hírcsatorna támogatásának használata Azure Cosmos DB
+title: A módosítási hírcsatorna támogatása az Azure Cosmos DB használata
 description: A Azure Cosmos DB módosítás-visszavételi támogatással nyomon követheti a dokumentumok, az eseményvezérelt feldolgozás, például az eseményindítók változásait, valamint naprakészen tarthatja a gyorsítótárait és az elemzési rendszereket.
 author: TheovanKraay
 ms.author: thvankra
@@ -8,117 +8,121 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 898dfe7a619981b93af98effa942fdecbeb42dde
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445586"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368128"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB adatcsatorna módosítása – áttekintés
 
-Ha módosítani szeretné a hírcsatornák támogatását Azure Cosmos DB működik, egy Azure Cosmos-tárolóban figyelheti a módosításokat. Ezután a módosításuk sorrendjében felsorolja a módosított dokumentumokat. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozáshoz. 
+A változáscsatorna támogatása az Azure Cosmos DB-ben egy Azure Cosmos-tároló változásainak figyelésével működik. Ezután a módosításuk sorrendjében felsorolja a módosított dokumentumokat. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozás érdekében. 
 
-A Azure Cosmos DB kiválóan alkalmas a IoT, a játékok, a kiskereskedelmi és az operatív naplózási alkalmazások számára. Ezeknek az alkalmazásoknak a közös kialakítási mintája az, hogy a további műveletek elindításához használja az adatmódosításokat. Példák a további műveletekre:
+Az Azure Cosmos DB kiválóan alkalmas IoT, a játékok, kiskereskedelmi, és a működési naplózási alkalmazások. Ezeket az alkalmazásokat a gyakori tervezési minta, hogy további műveletek indításához használja az adatok módosításait. További műveletek közé:
 
-* Értesítés vagy API meghívásának indítása, amikor egy elem be van helyezve vagy frissül.
-* Valós idejű adatfolyam-feldolgozás a IoT vagy a valós idejű elemzési folyamatok esetében az operatív adatfeldolgozás során.
-* További adatáthelyezés a gyorsítótárral vagy a keresőmotorral vagy adattárházral történő szinkronizálással, vagy az adattárolással a hűtőházi tárolóba.
+* Indítására egy értesítést vagy egy API-hívás, amikor egy cikk beszúrva vagy frissítve.
+* Valós idejű streamfeldolgozás IoT vagy működési adatokkal kapcsolatos valós idejű elemzés.
+* További adatmozgatás szinkronizálása egy gyorsítótárhoz vagy egy keresőmotor vagy egy adattárházat, vagy ritka elérésű tárolási adatok archiválása.
 
-A Azure Cosmos DB változási csatornája lehetővé teszi, hogy hatékony és méretezhető megoldásokat hozzon létre az egyes mintákhoz, ahogy az alábbi képen is látható:
+Az Azure Cosmos DB a változáscsatorna lehetővé teszi, hogy ezek a minták minden hatékony és méretezhető megoldások létrehozását a következő képen látható módon:
 
-![A Azure Cosmos DB változási csatornájának használata valós idejű elemzési és eseményvezérelt számítástechnikai forgatókönyvekhez](./media/change-feed/changefeedoverview.png)
+![Power valós idejű elemzési és számítási eseményvezérelt forgatókönyvek használatával az Azure Cosmos DB-módosítási hírcsatorna](./media/change-feed/changefeedoverview.png)
 
-## <a name="supported-apis-and-client-sdks"></a>Támogatott API-k és ügyféloldali SDK-k
+## <a name="supported-apis-and-client-sdks"></a>Támogatott API-k és az ügyfél SDK-k
 
-Ezt a funkciót jelenleg a következő Azure Cosmos DB API-k és ügyféloldali SDK-k támogatják.
+Ez a funkció jelenleg a következő Azure Cosmos DB API-k és ügyféloldali SDK-k által támogatott.
 
 | **Ügyfél-illesztőprogramok** | **Azure CLI** | **SQL API** | **Azure Cosmos DB a Cassandra-hez készült API** | **Azure Cosmos DB API-MongoDB** | **Gremlin API**|**Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | n/a | Igen | Igen | Igen | Igen | Nem |
-|Java|n/a|Igen|Igen|Igen|Igen|Nem|
-|Python|n/a|Igen|Igen|Igen|Igen|Nem|
-|Node/JS|n/a|Igen|Igen|Igen|Igen|Nem|
+| .NET | NA | Igen | Igen | Igen | Igen | Nem |
+|Java|NA|Igen|Igen|Igen|Igen|Nem|
+|Python|NA|Igen|Igen|Igen|Igen|Nem|
+|Csomópont/js rendszerekhez|NA|Igen|Igen|Igen|Igen|Nem|
 
-## <a name="change-feed-and-different-operations"></a>A hírcsatorna és a különböző műveletek módosítása
+## <a name="change-feed-and-different-operations"></a>Csatorna módosítása és a különböző műveletek
 
-Ma az összes művelet megjelenik a változási hírcsatornában. Az a funkció, ahol a változási csatornát szabályozhatja, bizonyos műveletekhez, például a frissítésekhez, és nem szúrja be még nem érhető el. A frissítésekhez és szűréshez hozzáadhat egy "Soft marker" elemet a változási csatornán lévő elemek feldolgozásakor. Az aktuális változási csatorna nem törli a naplókat. Az előző példához hasonlóan hozzáadhat egy lágy jelölőt is a törölt elemekhez, például hozzáadhat egy attribútumot a "törölt" nevű elemhez, és beállíthatja azt "true" értékre, és beállíthatja az elem ÉLETTARTAMát, hogy az automatikusan törölhető legyen. Elolvashatja a változási csatornát a korábbi elemek esetében (az elemnek megfelelő legutóbbi módosítást, nem tartalmazza a köztes változásokat), például az öt évvel ezelőtt hozzáadott elemeket. Ha az objektum nem törlődik, a változási csatornát a tároló forrásaként is elolvashatja.
+Még ma tekintse meg a csatorna módosítása az összes műveletet. A funkciót, ahol megadhatja a módosítási hírcsatornáról, adott műveletek esetében, például csak a frissítéseket, és nem Beszúrások még nem érhető el. A frissítésekhez és szűréshez hozzáadhat egy "Soft marker" elemet a változási csatornán lévő elemek feldolgozásakor. Az aktuális változási csatorna nem törli a naplókat. Az előző példához hasonló, hozzáadhat egy helyreállítható jelölő az éppen törölt elemek, például adhat hozzá egy attribútumot az elem "törölt" nevű és "true" értékűre, és Élettartamot meg az elem, hogy automatikusan törli. Elolvashatja a változási csatornát a korábbi elemek esetében (az elemnek megfelelő legutóbbi módosítást, nem tartalmazza a köztes változásokat), például az öt évvel ezelőtt hozzáadott elemeket. Ha az elem nincs törölve áttekintheti, hogy a módosítás adatcsatorna lehetőség a tároló forrása.
 
-### <a name="sort-order-of-items-in-change-feed"></a>Elemek rendezési sorrendje a változási hírcsatornában
+### <a name="sort-order-of-items-in-change-feed"></a>Rendezési sorrend a módosítási hírcsatorna-elem
 
-A hírcsatorna-elemek módosítása a módosítási idő sorrendjében történik. Ez a rendezési sorrend logikai partíciós kulcs alapján garantált.
+A változáscsatorna elemek származnak sorrendjében azok módosításának időpontja. Ez a rendezési sorrend logikai partíciós kulcs alapján garantált.
 
-### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>A többrégiós Azure Cosmos-fiókok csatornájának módosítása
+### <a name="consistency-level"></a>Konzisztencia szintje
 
-Ha egy többrégiós Azure Cosmos-fiókban egy írási régió feladatátvételt hajt végre, akkor a változási csatorna a manuális feladatátvételi művelet során fog működni, és összefüggő lesz.
+Miközben a változási csatornát egy végleges konzisztencia-szinten fogyasztja, előfordulhat, hogy a későbbi módosítási hírcsatorna olvasási műveletei között ismétlődő események szerepelnek (az egyik olvasási művelet utolsó eseménye a következőként jelenik meg).
 
-### <a name="change-feed-and-time-to-live-ttl"></a>A hírcsatorna és az élettartam (TTL) módosítása
+### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Az Azure Cosmos-fiókok többrégiós csatorna módosítása
 
-Ha a TTL (time to Live) tulajdonság egy elemre van állítva, akkor a változási csatorna örökre fennmarad. Ha a rendszer nem törli az adatvesztést, akkor a változási hírcsatornában marad.  
+Egy több régióban az Azure Cosmos-fiók egy írási régiót átadja a feladatokat, ha módosítási hírcsatorna a manuális feladatátvételt művelet között fog működni, és összefüggő lesz.
 
-### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>A hírcsatorna és a _etag módosítása, _lsn vagy _ts
+### <a name="change-feed-and-time-to-live-ttl"></a>Csatorna módosítása és élettartamot (TTL)
 
-A _etag formátuma belső, és nem érdemes attól függővé tenni, mert bármikor megváltozhat. _ts egy módosítás vagy egy létrehozási időbélyeg. A _ts a kronológiai összehasonlításhoz használható. _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy számos elemnek ugyanaz a _lsna. A FeedResponse lévő ETag eltér az elemen látható _etagtól. a _etag egy belső azonosító, amelyet a rendszer az elem verziójával kapcsolatos Egyidejűség-vezérlésre használ, míg a ETag a hírcsatorna előkészítésére szolgál.
+Ha egy élettartam (idő élettartama) tulajdonsága egy elemet a -1, módosítási hírcsatorna örökre megmaradnak. Az adatok nem törlődnek, ha a csatorna módosítása megmarad.  
 
-## <a name="change-feed-use-cases-and-scenarios"></a>Hírcsatorna-használati esetek és forgatókönyvek módosítása
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Csatorna módosítása és _etag, _lsn vagy _ts
 
-A módosítási hírcsatorna lehetővé teszi a nagy adatkészletek hatékony feldolgozását nagy mennyiségű írási művelettel. A Change feed a teljes adatkészlet lekérdezését is lehetővé teszi a megváltozott változások azonosítására.
+A belső _etag formátuma, és nem megtétele függőségi rajta, mivel bármikor módosíthatja. _ts módosítását vagy a létrehozás időbélyegzője. Időrendi összehasonlító _ts is használhat. _lsn egy olyan batch-azonosító, amely csak a változási hírcsatornához lett hozzáadva; Ez a tranzakció AZONOSÍTÓját jelöli. Előfordulhat, hogy hány elemet azonos _lsn. A FeedResponse ETag eltér a _etag akkor jelenik meg a cikket. _etag belső azonosítója, és ez használatos egyidejűségi vezérlő a verziójának használatát a cikk arról tájékoztatja, mivel az ETag használt műveleti sorrend a hírcsatorna.
 
-### <a name="use-cases"></a>Használati példák
+## <a name="change-feed-use-cases-and-scenarios"></a>Csatorna használati esetekre és forgatókönyvekre módosítása
 
-A változási hírcsatornával például a következő feladatokat végezheti el hatékonyan:
+Módosítási hírcsatorna lehetővé teszi, hogy az írási műveletek nagy mennyiségű nagy adatkészletek feldolgozása hatékony. Módosítási hírcsatorna is kínál egy teljes adatkészleten azonosításához, mi változott a lekérdezés helyett.
 
-* Frissítsen egy gyorsítótárat, frissítsen egy keresési indexet, vagy frissítsen egy adattárházat Azure Cosmos DBban tárolt adattal.
+### <a name="use-cases"></a>Használati esetek
+
+Például a csatorna módosítása a következő feladatokat végezheti hatékonyan:
+
+* Frissítse a gyorsítótárat, a keresési index frissítése vagy frissítése egy adattárházat az Azure Cosmos DB-ben tárolt adatokat.
 
 * Egy alkalmazás szintű adatréteget és archiválást valósíthat meg, például a "gyakori adatok" tárolása Azure Cosmos DB és a "hideg adatok" más tárolási rendszerekre, például az [Azure Blob Storage](../storage/common/storage-introduction.md).
 
-* Nulla idejű áttelepítést végezhet egy másik Azure Cosmos-fiókba vagy egy másik Azure Cosmos-tárolóba egy másik logikai partíciós kulccsal.
+* Hajtsa végre a nulla-ideje áttelepítések egy másik Azure-Cosmos-fiók vagy egy másik Azure-Cosmos-tároló egy másik logikai partíciós kulccsal.
 
 * [Lambda-architektúra](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) implementálása Azure Cosmos db használatával, ahol a Azure Cosmos db a valós idejű, a kötegelt és a lekérdezési rétegeket is támogatja, ami lehetővé teszi a lambda architektúra alacsony TCO-vel való használatát.
 
-* Az adatok az eszközökről, érzékelőkről, infrastruktúrából és alkalmazásokból érkeznek és tárolhatók, és valós időben dolgozzák fel ezeket az eseményeket, például a [Spark](../hdinsight/spark/apache-spark-overview.md)használatával.  Az alábbi képen bemutatjuk, hogyan valósítható meg a lambda architektúra a Azure Cosmos DB használatával a változási csatornán keresztül:
+* Az adatok az eszközökről, érzékelőkről, infrastruktúrából és alkalmazásokból érkeznek és tárolhatók, és valós időben dolgozzák fel ezeket az eseményeket, például a [Spark](../hdinsight/spark/apache-spark-overview.md)használatával.  A következő kép bemutatja, hogyan valósítható meg az Azure Cosmos DB-n keresztül módosítási hírcsatorna a lambda architektúra:
 
-![Azure Cosmos DB-alapú lambda-folyamat a betöltéshez és a lekérdezéshez](./media/change-feed/lambda.png)
+![Az Azure Cosmos DB-alapú lambda folyamat fenntartásával és a lekérdezések](./media/change-feed/lambda.png)
 
-### <a name="scenarios"></a>Alkalmazási helyzetek
+### <a name="scenarios"></a>Forgatókönyvek
 
-Az alábbiakban néhány olyan forgatókönyvet talál, amelyekkel könnyedén megvalósíthatja a változási hírcsatornát:
+Az alábbiakban a forgatókönyvek is egyszerűen implementálni a módosítás adatcsatornával:
 
 * A [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli webes vagy mobil alkalmazásaiban nyomon követheti az eseményeket, például az ügyfelek profiljára, beállításaira vagy helyükre vonatkozó módosításokat, és elindíthat bizonyos műveleteket, például leküldéses értesítéseket küldhet az eszközeiknek [Azure functions](change-feed-functions.md)használatával.
 
-* Ha Azure Cosmos DBt használ egy játék létrehozásához, például a változási hírcsatorna használatával valós idejű ranglistákat hozhat létre a befejezett játékok eredményei alapján.
+* Készítsen játékot használata Azure Cosmos DB, akkor is, például használata módosításcsatornáját befejezett játékok a pontszámok alapján a valós idejű ranglisták megvalósításához.
 
 
-## <a name="working-with-change-feed"></a>A változási csatorna használata
+## <a name="working-with-change-feed"></a>Csatorna módosítása használata
 
-A Change feed a következő beállításokkal használható:
+Az alábbi beállítások segítségével módosítási hírcsatorna használhatja:
 
 * [A Change feed használata a Azure Functions](change-feed-functions.md)
 * [Módosítási hírcsatorna használata a Change feed processzorral](change-feed-processor.md) 
 
-A módosítási hírcsatorna a tárolóban lévő minden logikai partíciós kulcshoz elérhető, és az alábbi képen látható módon osztható fel egy vagy több felhasználó között párhuzamos feldolgozásra.
+Módosítási hírcsatorna érhető el a tárolóban lévő minden egyes logikai partíciós kulcs, és hogy szét lehetnek osztva egy vagy több ügyfél párhuzamos feldolgozásra az alábbi képen látható módon.
 
-![Azure Cosmos DB változási csatorna elosztott feldolgozása](./media/change-feed/changefeedvisual.png)
+![Elosztott feldolgozásához Azure Cosmos DB – csatorna módosítása](./media/change-feed/changefeedvisual.png)
 
-## <a name="features-of-change-feed"></a>A változási hírcsatorna funkciói
+## <a name="features-of-change-feed"></a>Módosítási hírcsatorna funkciói
 
-* A módosítási hírcsatorna alapértelmezés szerint engedélyezve van az összes Azure Cosmos-fiók esetében.
+* Minden Azure-Cosmos-fiókok számára alapértelmezés szerint engedélyezve van a módosítási hírcsatorna.
 
 * Az Azure Cosmos-adatbázishoz társított régiókban a [kiépített átviteli sebesség](request-units.md) használatával a változási csatornát ugyanúgy használhatja, mint bármely más Azure Cosmos db művelethez.
 
-* A módosítási hírcsatorna tartalmazza a tárolóban lévő elemekhez tartozó lapkákat és frissítési műveleteket. A törlések rögzítéséhez állítson be egy "Soft-Delete" jelzőt az elemeken belül (például dokumentumok) a törlés helyett. Másik lehetőségként megadhat egy véges lejárati időszakot az elemekhez az [élettartam lehetőséggel](time-to-live.md). Tegyük fel például, hogy 24 óra, és az adott tulajdonság értékeként rögzíti a törléseket. Ezzel a megoldással a módosításokat a TTL lejárati idejénél rövidebb idő elteltével kell feldolgoznia. 
+* A módosítási hírcsatorna beszúrások és a tárolóban lévő elemek frissítési műveleteket tartalmaz. Rögzítheti a törlések az elemek (például dokumentumok) belül "helyreállítható törlés" jelölő beállításával törlése helyett. Másik lehetőségként megadhat egy véges lejárati időszakot az elemekhez az [élettartam lehetőséggel](time-to-live.md). Például 24 óra és -felhasználási rögzítheti a tulajdonság értékét törli. Ezzel a megoldással hogy feldolgozza a módosításokat a TTL lejárata időszaknál rövidebb időközt belül. 
 
-* Egy elem minden módosítása pontosan egyszer jelenik meg a változási hírcsatornában, és az ügyfeleknek az ellenőrzőpont-logikát kell kezelnie. Ha el szeretné kerülni az ellenőrzőpontok kezelésének bonyolultságát, akkor a változási hírcsatorna-feldolgozó automatikus ellenőrzőpontot és "legalább egyszer" szemantikaot biztosít. Lásd: [a Change feed használata a Change feed Processor használatával](change-feed-processor.md).
+* Minden módosítás elem pontosan egyszer jelenik meg a változáscsatorna, és az ügyfelek az ellenőrzőpontok használata logikát kell kezelni. Ha el szeretné kerülni az ellenőrzőpontok kezelésének bonyolultságát, akkor a változási hírcsatorna-feldolgozó automatikus ellenőrzőpontot és "legalább egyszer" szemantikaot biztosít. Lásd: [a Change feed használata a Change feed Processor használatával](change-feed-processor.md).
 
-* A módosítási napló csak az adott elemek legutóbbi módosítását tartalmazza. Előfordulhat, hogy a köztes változások nem érhetők el.
+* Egy adott elem csak a legutóbbi módosítás a módosítási napló tartalmazza. Közbenső változások nem érhető el.
 
-* A változási csatornát a logikai partíciók minden egyes kulcsának értékén belüli módosítás sorrendjében rendezi a rendszer. Nincs garantált megrendelés a partíciós kulcs értékei között.
+* A módosítási hírcsatorna sorrendje módosításának belül minden egyes logikai partíciókulcs-értékkel van rendezve. Nincs garantált rendelés partíciókulcs között.
 
-* A módosítások bármilyen időpontból szinkronizálhatók, azaz nincs olyan rögzített adatmegőrzési időszak, amelynél a módosítások elérhetők.
+* Változások a bármely-időponthoz, amely nem rögzített adatok megőrzési időszak, amelyekhez le változások szinkronizálhatók.
 
-* A módosítások párhuzamosan érhetők el egy Azure Cosmos-tároló összes logikai partíciós kulcsához. Ez a funkció lehetővé teszi, hogy a nagyméretű tárolók módosításait több fogyasztó is párhuzamosan dolgozza fel.
+* Változások az Azure Cosmos-tároló az összes logikai partíciókulcsok párhuzamosan érhetők el. Ez a funkció lehetővé teszi, hogy a változásokat a nagy méretű tárolók több fogyasztó a párhuzamos feldolgozásra.
 
-* Az alkalmazások egyszerre több módosítási csatornát is igényelhetnek ugyanazon a tárolón. A ChangeFeedOptions. Starter használható a kezdeti kiindulási pont biztosításához. Például az adott időponthoz tartozó folytatási token megkereséséhez. A Continuationtoken argumentumot használja, ha meg van adva, a WINS a kezdő és a StartFromBeginning értékeket adja meg. A ChangeFeedOptions. kezdő időpont pontossága ~ 5 másodperc. 
+* Az alkalmazások egyszerre több módosítási csatornát is igényelhetnek ugyanazon a tárolón. ChangeFeedOptions.StartTime használható egy kezdeti kiindulási pontot biztosít. Ha például a folytatási kód egy megadott idő értékeknek megfelelő található. A continuationtoken argumentumot használja, ha meg van adva, a WINS-keresztül a StartTime és StartFromBeginning értékeket. A pontosság ChangeFeedOptions.StartTime ~ 5 másodperc. 
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Adatcsatorna módosítása a Cassandra és a MongoDB API-khoz
 
@@ -128,7 +132,7 @@ A natív Apache Cassandra lehetővé teszi az adatváltozások rögzítését (C
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkekben további tudnivalókat talál a hírcsatornák változásáról:
+Folytassa további információ a változáscsatorna az alábbi cikkeket:
 
 * [Beállítások a változási csatorna olvasásához](read-change-feed.md)
 * [A Change feed használata a Azure Functions](change-feed-functions.md)

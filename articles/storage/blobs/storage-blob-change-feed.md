@@ -8,18 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ea0b173f12a1c80f276af3ce3f6222efaad07972
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691044"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370627"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)
 
 A változási csatorna célja, hogy tranzakciós naplókat szolgáltasson a blobok és a blob metaadatainak a Storage-fiókban történt változásairól. A változási hírcsatorna **rendezett**, **garantált**, **tartós**, **nem módosítható,** **csak olvasható** naplót biztosít ezekről a változásokról. Az ügyfélalkalmazások bármikor elolvashatják ezeket a naplókat, akár streaming, akár batch módban. A módosítási hírcsatorna lehetővé teszi olyan hatékony és méretezhető megoldások kiépítését, amelyek alacsony áron dolgozzák fel az Blob Storage-fiókban bekövetkező változásokat.
 
-A módosítási csatornát [blobként](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) tárolja a rendszer a Storage-fiókban lévő speciális tárolóban, standard [blob díjszabási](https://azure.microsoft.com/pricing/details/storage/blobs/) költséggel. A fájlok megőrzési időtartamát a követelmények alapján szabályozhatja (lásd a jelenlegi kiadás [feltételeit](#conditions) ). Az [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) formátumának specifikációja: egy kompakt, gyors, bináris formátum, amely beágyazott sémával rendelkező, gazdag adatstruktúrákat biztosít a változási hírcsatornához. Ezt a formátumot széles körben használják a Hadoop ökoszisztémájában, Stream Analytics és Azure Data Factory.
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+
+A módosítási csatornát [blobként](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) tárolja a rendszer a Storage-fiókban lévő speciális tárolóban, standard [blob díjszabási](https://azure.microsoft.com/pricing/details/storage/blobs/) költséggel. A fájlok megőrzési időtartamát a követelmények alapján szabályozhatja (lásd a jelenlegi kiadás [feltételeit](#conditions) ). Az [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) formátumának specifikációja: egy kompakt, gyors, bináris formátum, amely beágyazott sémával rendelkező, gazdag adatstruktúrákat biztosít a változási hírcsatornához. Ez a formátum széles körben használt, a Hadoop ökoszisztéma, a Stream Analytics és az Azure Data Factory.
 
 Ezeket a naplókat aszinkron módon, Növekményesen vagy teljes mértékben feldolgozhatja. Tetszőleges számú ügyfélalkalmazás önállóan, párhuzamosan és saját tempójában is elolvashatja a változási csatornát. Az olyan elemzési alkalmazások, mint az [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) vagy a [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) közvetlenül Avro-fájlként használhatják a naplókat, így alacsony költséghatékonyságú, nagy sávszélességű és egyéni alkalmazások írása nélkül is feldolgozhatók.
 
@@ -55,7 +57,7 @@ A módosítások rögzítésének és rögzítésének megkezdéséhez engedély
 > [!IMPORTANT]
 > A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és a **westcentralus** és **westus2** régiókban is elérhető. Tekintse meg a jelen cikk [feltételek](#conditions) című szakaszát. Az előzetes verzióra való regisztráláshoz tekintse meg a jelen cikk [előfizetés regisztrálása](#register) című szakaszát. Regisztrálnia kell az előfizetését, mielőtt engedélyezi a módosítási csatornát a Storage-fiókokon.
 
-### <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A Azure Portal használatával engedélyezze a Storage-fiók módosítási csatornájának használatát:
 
@@ -69,7 +71,7 @@ A Azure Portal használatával engedélyezze a Storage-fiók módosítási csato
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A módosítási hírcsatorna engedélyezése a PowerShell használatával:
 
@@ -99,7 +101,7 @@ A módosítási hírcsatorna engedélyezése a PowerShell használatával:
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+### <a name="template"></a>[Sablon](#tab/template)
 Azure Resource Manager sablon használatával engedélyezheti a meglévő Storage-fiók módosítási csatornáját Azure Portalon keresztül:
 
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
@@ -317,7 +319,7 @@ Ez a szakasz a változási hírcsatorna aktuális nyilvános előzetes verziój�
 - A ListContainers API meghívásakor jelenleg nem látható a **$blobchangefeed** tároló, és a tároló nem jelenik meg Azure Portal vagy Storage Explorer
 - Azok a Storage-fiókok, amelyek korábban már kezdeményezték a [fiók feladatátvételét](../common/storage-disaster-recovery-guidance.md) , a naplófájlban nem jelennek meg problémák. A jövőbeli fiók-feladatátvételek az előzetes verzió során is befolyásolhatják a naplófájlt.
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 ### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Mi a különbség a változási hírcsatorna és a Storage Analytics naplózás között?
 Az elemzési naplók minden művelet során a sikeres és sikertelen kérelmekkel rendelkező összes olvasási, írási, listázási és törlési műveletet rögzítik. Az elemzési naplók a legjobb erőfeszítés, és a megrendelés nem garantált.

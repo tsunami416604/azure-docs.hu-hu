@@ -10,16 +10,16 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 7e42f33b0821372c4df4106e3f10fe6981c9d023
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 7f3486e9944cf7f01c2a53ca101c5cc26530e086
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943391"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79370355"
 landingContent:
-- title: Bevezetés
+- title: A beszéd – szöveg
   linkLists:
   - linkListType: overview
     links:
@@ -33,47 +33,33 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Blobtárolóban tárolt beszéd felismerése
       url: quickstarts/from-blob.md
-- title: Lépésenkénti útmutatók
+- title: Fejlesztés a beszéd és a szöveg között
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Beszédfelismerési forrásnyelv módosítása
-      url: how-to-specify-source-language.md
     - text: Beszédfelismerési mód kiválasztása
       url: how-to-choose-recognition-mode.md
-    - text: Pontosság javítása kifejezéslistákkal
-      url: how-to-phrase-lists.md
-    - text: Pontosság javítása bérlőmodellekkel
-      url: tutorial-tenant-model.md
+    - text: Beszédfelismerési forrásnyelv módosítása
+      url: how-to-specify-source-language.md
     - text: Pontosság javítása Custom Speech segítségével
       url: how-to-custom-speech.md
-    - text: Válasszon ki egy adott mikrofon típusú bemeneti eszközt
-      url: how-to-select-audio-input-devices.md
-    - text: Automatikus forrásnyelv-felismerés használata
-      url: how-to-automatic-language-detection.md
     - text: Tömörített hangbemeneti formátumok használata
       url: how-to-use-codec-compressed-audio-input-streams.md
   - linkListType: concept
     links:
-    - text: Custom Speech-adatfeldolgozás előkészítése
+    - text: Custom Speechi adatfeldolgozás előkészítése
       url: how-to-custom-speech-test-data.md
-    - text: Custom Speech-adatellenőrzés
-      url: how-to-custom-speech-inspect-data.md
-    - text: Custom Speech pontosságának kiértékelése
-      url: how-to-custom-speech-evaluate-data.md
-    - text: Egyéni modell betanítása
+    - text: Custom Speech modell betanítása
       url: how-to-custom-speech-train-model.md
-    - text: Egyéni modell üzembe helyezése
-      url: how-to-custom-speech-deploy-model.md
     - text: Ember által címkézett átiratok létrehozása
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: Leírások
+- title: Hivatkozások
   linkLists:
   - linkListType: reference
     links:
     - text: Nyelvi támogatás
       url: language-support.md#speech-to-text
-    - text: Díjszabás
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Diktálás – GYIK
       url: faq-stt.md
+    - text: Beszéd – szöveg díjszabása
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

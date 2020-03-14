@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276979"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371137"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>ELAVULT A Kubernetes webes felhasználói felületének használata a Azure Container Service
 
@@ -29,8 +29,8 @@ Azt is feltételezi, hogy telepítve van az Azure CLI és a `kubectl` eszköz.
 
 A futtatásával tesztelheti, hogy telepítve van-e a `az` eszköz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#installation)talál útmutatást.
@@ -38,13 +38,13 @@ Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#ins
 A futtatásával tesztelheti, hogy telepítve van-e a `kubectl` eszköz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Ha nincs `kubectl` telepítve, akkor a következőket futtathatja:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>Áttekintés
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>Kapcsolódás a webes felhasználói felülethez
 A Kubernetes webes felhasználói felületét a következő futtatásával indíthatja el:
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 Ekkor meg kell nyitnia egy webböngészőt, amely úgy van konfigurálva, hogy a helyi gépet a Kubernetes webes felhasználói felületéhez csatlakozó biztonságos proxyval beszéljen.
@@ -77,7 +77,7 @@ Ekkor meg kell nyitnia egy webböngészőt, amely úgy van konfigurálva, hogy a
 
 4. A tárolók és szolgáltatások telepítéséhez kattintson a **telepítés** elemre.
 
-    ![Kubernetes üzembe helyezése](./media/container-service-kubernetes-ui/deploy.png)
+    ![Kubernetes – üzembe helyezés](./media/container-service-kubernetes-ui/deploy.png)
 
 ### <a name="view-your-containers"></a>Tárolók megtekintése
 Miután rákattintott a **telepítés**gombra, a felhasználói felület a szolgáltatás központi telepítésének nézetét jeleníti meg:
@@ -107,7 +107,7 @@ A tárolók futtatásán kívül a Kubernetes felhasználói felületén egy kü
 
 A bal oldali navigációs panelen kattintson a **szolgáltatások** elemre az összes szolgáltatás megtekintéséhez (csak egy).
 
-![Kubernetes szolgáltatások](./media/container-service-kubernetes-ui/service-deployed.png)
+![Kubernetes-szolgáltatások](./media/container-service-kubernetes-ui/service-deployed.png)
 
 Ebben a nézetben egy külső végpontot (IP-címet) kell látnia, amelyet a szolgáltatáshoz rendeltek.
 Ha erre az IP-címére kattint, megjelenik a terheléselosztó mögött futó Nginx-tároló.
@@ -121,7 +121,7 @@ Először kattintson a **központi telepítések** elemre a bal oldali navigáci
 
 Ha ezt a nézetet választotta, kattintson a másodpéldányra, majd a felső navigációs sávon a **Szerkesztés** elemre:
 
-![Kubernetes szerkesztése](./media/container-service-kubernetes-ui/edit.png)
+![Kubernetes Edit](./media/container-service-kubernetes-ui/edit.png)
 
 Szerkessze a `spec.replicas` mezőt `2`, majd kattintson a **frissítés**gombra.
 

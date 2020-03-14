@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 03f383bd6e44a55388e0bef6a38c4a1880d6f044
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 29fa294d2f384ae74c1184c6207648907cb99386
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268261"
+ms.locfileid: "79299107"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -392,7 +392,7 @@ A **megbízható Microsoft-szolgáltatások engedélyezése...** beállítás az
 | Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | Az ACR-feladatok tároló-lemezképek létrehozásakor férhetnek hozzá a Storage-fiókokhoz. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Lehetővé teszi a Storage-fiókok elérését az ADF futtatókörnyezeten keresztül. |
 | Azure Data Share               | Microsoft. DataShare/fiókok           | Lehetővé teszi a Storage-fiókok elérését az adatmegosztáson keresztül. |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Lehetővé teszi a Logic apps számára a Storage-fiókok elérését. [További információk](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Lehetővé teszi a Logic apps számára a Storage-fiókok elérését. [További információk](/azure/logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
 | Azure Machine Learning szolgáltatás | Microsoft.MachineLearningServices      | Engedélyezett Azure Machine Learning munkaterületek a kísérlet kimenetét, modelljeit és naplóit írják a blob Storage-ba, és beolvasják az adatokat. [További információk](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Lehetővé teszi az adatok importálását és exportálását egy adott SQL Database példányból a Base használatával. [További információk](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Lehetővé teszi a folyamatos átviteli feladatok adatainak blob Storage-ba való írását. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. [További információk](/azure/stream-analytics/blob-output-managed-identity). |
@@ -469,7 +469,7 @@ Hálózati kivételeit, annak az Azure portal, PowerShell vagy az Azure CLI seg�
 > [!IMPORTANT]
 > Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a kivételek eltávolítása ne legyen hatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Network Service-végpontokról a [szolgáltatási végpontokon](/azure/virtual-network/virtual-network-service-endpoints-overview).
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278375"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366836"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -33,7 +33,7 @@ Az Azure-portálok vagy a Windows PowerShell használatával létrehozhat egy ú
 
 ### <a name="create-a-runbook-with-powershell"></a>Runbook létrehozása a PowerShell-lel
 
-A [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) parancsmag használatával létrehozhat egy üres [PowerShell-munkafolyamat-runbook](automation-runbook-types.md#powershell-workflow-runbooks). A *Type* paraméterrel megadhatja a **New-AzAutomationRunbook**definiált runbook-típusok egyikét.
+A [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) parancsmag használatával létrehozhat egy üres [PowerShell-munkafolyamat-runbook](automation-runbook-types.md#powershell-workflow-runbooks). A `Type` paraméterrel adhatja meg a `New-AzAutomationRunbook`hoz definiált runbook-típusok egyikét.
 
 Az alábbi példa bemutatja, hogyan hozhat létre új üres runbook.
 
@@ -75,7 +75,7 @@ A parancsfájlokat a következő eljárással importálhatja Azure Automationba.
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>Runbook importálása parancsfájlból a Windows PowerShell-lel
 
-Az [import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) parancsmag használatával egy parancsfájlt importálhat a PowerShell-munkafolyamat runbook. Ha a runbook már létezik, az importálás meghiúsul, ha a *Force* paramétert használja a parancsmaggal.
+Az [import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) parancsmag használatával egy parancsfájlt importálhat a PowerShell-munkafolyamat runbook. Ha a runbook már létezik, az importálás meghiúsul, ha a `Force` paramétert használja a parancsmaggal.
 
 Az alábbi példa bemutatja, hogyan importálhat egy parancsfájlt egy runbook.
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Runbook tesztelése
 
-A runbook tesztelésekor a rendszer végrehajtja a [Piszkozat verzióját](#publish-a-runbook) , és az általa végrehajtott műveletek befejeződtek. A rendszer nem hoz létre munkaelőzményeket, de a [kimenet](automation-runbook-output-and-messages.md#output-stream) és a [Figyelmeztetés és a hiba](automation-runbook-output-and-messages.md#message-streams) streamek a test output (teszt kimenet) ablaktáblán jelennek meg. A [részletes adatfolyamba](automation-runbook-output-and-messages.md#message-streams) küldött üzenetek csak akkor jelennek meg a kimeneti ablaktáblán, ha a *VerbosePreference* változó] (Automation-runbook-output-and-messages. MD # preferencia-változók) a **Continue**értékre van állítva.
+A runbook tesztelésekor a rendszer végrehajtja a [Piszkozat verzióját](#publish-a-runbook) , és az általa végrehajtott műveletek befejeződtek. A rendszer nem hoz létre munkaelőzményeket, de a [kimenet](automation-runbook-output-and-messages.md#output-stream) és a [Figyelmeztetés és a hiba](automation-runbook-output-and-messages.md#message-streams) streamek a test output (teszt kimenet) ablaktáblán jelennek meg. A [részletes adatfolyamba](automation-runbook-output-and-messages.md#message-streams) küldött üzenetek csak akkor jelennek meg a kimeneti ablaktáblán, ha a `VerbosePreference` változót] (Automation-runbook-output-and-messages. MD # preferencia-változók) a Continue értékre van állítva.
 
 Bár a Piszkozat verziója fut, a runbook továbbra is szabályosan hajtja végre, és minden műveletet végrehajt a környezetben lévő erőforrásokon. Emiatt csak a nem éles erőforrások runbookok kell tesztelni.
 

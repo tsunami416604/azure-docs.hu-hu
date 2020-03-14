@@ -4,12 +4,12 @@ description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások ha
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: cfd5925c61d1edf1fe9477d3239ec77a4c3de326
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e7cde3ca47afd4db072b734c797a42ecd5a053aa
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666292"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136799"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 A Application Insights a [Azure monitor](../overview.md)egy funkciója, amely egy bővíthető Application Performance Management-(APM-) szolgáltatás fejlesztők és DevOps szakemberek számára. Használhatja az élő alkalmazások figyelésére. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az alkalmazások számos platformon használhatók, többek között a .NET, a Node. js és a Java EE, helyszíni, hibrid vagy nyilvános felhőben. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -66,7 +66,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 
 ## <a name="how-do-i-use-application-insights"></a>Hogyan használható az Application Insights?
 
-### <a name="monitor"></a>Monitoring
+### <a name="monitor"></a>Figyelés
 Telepítse az Application Insightsot az alkalmazásba, állítsa be a [rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), és az alábbiakra nyílik lehetőség:
 
 * Nézze meg az alapértelmezett [alkalmazás-irányítópultot](../../azure-monitor/app/overview-dashboard.md) a munkaterületén, és tartsa szem előtt a terhelést, a válaszadást és a függőségek, az oldalak terhelését és az Ajax-hívásokat.
@@ -87,7 +87,7 @@ Az újonnan üzembe helyezett szolgáltatások [hatékonyságának mérése](../
 * Egyéni telemetriai adatokat vehet fel a kódba.
 * A következési fejlesztési ciklust a telemetriai adatokból származó konkrét tényekre alapozhatja.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 Az Application Insights a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike, és a telemetriai adatok ide érkeznek be elemzésre és megjelenítésre. A használat megkezdéséhez egy [Microsoft Azure-előfizetésre](https://azure.com) van szükség. A regisztráció ingyenes, és ha az Application Insights alapszintű [díjcsomagját](https://azure.microsoft.com/pricing/details/application-insights/) választja, a használat mindaddig díjmentes, amíg az alkalmazás el nem ér egy jelentős használati értéket. Ha a munkahelye már rendelkezik előfizetéssel, lehetőség van felvenni az Ön Microsoft-fiókját az adott előfizetésbe.
 
 Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önnek a legmegfelelőbb. További szolgáltatásokat később is felvehet.
@@ -102,13 +102,13 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
   * [.NET-konzol alkalmazásai](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
-  * [Python (előzetes verzió)](../../azure-monitor/app/opencensus-python.md)
+  * [Python](../../azure-monitor/app/opencensus-python.md)
   * [Más platformok](../../azure-monitor/app/platforms.md)
 * Megtekintheti **[a weblapok](../../azure-monitor/app/javascript.md)** megtekintését, Ajax-t és más ügyféloldali telemetria.
 * **[Elemezheti a mobilalkalmazások használatát](../../azure-monitor/learn/mobile-center-quickstart.md)** a Visual Studio App Center integrálásával.
 * **[Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Első lépések futtatáskor:
 
 * [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoport – IIS által üzemeltetett alkalmazások](../../azure-monitor/app/azure-vm-vmss-apps.md)
@@ -121,7 +121,7 @@ Első lépések fejlesztéskor:
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python (előzetes verzió)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 930ae27acf09dfa54638e27c938d7680817cbbab
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773204"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370746"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Oktatóanyag: paraméterek hozzáadása a Resource Manager-sablonhoz
 
@@ -44,7 +44,7 @@ Végezzük el a sablon üzembe helyezését. Az alábbi példa telepíti a sablo
 
 Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -54,10 +54,10 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnameparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -88,7 +88,7 @@ A **storageSKU** paraméter alapértelmezett értékkel rendelkezik. Ezt az ért
 
 Most már készen áll a telepítésre. Mivel az alapértelmezett SKU a **Standard_LRS**értékre van állítva, nem kell megadnia a paraméter értékét.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -98,10 +98,10 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -112,7 +112,7 @@ az group deployment create \
 
 A sablon rugalmasságának megtekintéséhez próbálkozzon újra a telepítéssel. Ezúttal állítsa az SKU paramétert **Standard_GRSra**. Átadhat egy új nevet egy másik Storage-fiók létrehozásához, vagy használhatja ugyanazt a nevet a meglévő Storage-fiók frissítéséhez. Mindkét beállítás működik.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -123,10 +123,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_GRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name usedefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -137,7 +137,7 @@ az group deployment create \
 
 Végül futtasson még egy tesztet, és nézze meg, mi történik, ha olyan SKU-t továbbít, amely nem a megengedett értékek egyike. Ebben az esetben teszteljük azt a forgatókönyvet, amelyben a sablon felhasználója azt gondolja, hogy az **alapszintű** az egyik SKU.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -148,10 +148,10 @@ New-AzResourceGroupDeployment `
   -storageSKU basic
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name testskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \

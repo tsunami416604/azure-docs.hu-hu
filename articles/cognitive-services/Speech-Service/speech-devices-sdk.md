@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók a Speech Devices SDK-Speech szolgáltatásról
+title: Speech Devices SDK – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Első lépések a beszédfelismerő Devices SDK-val. A beszédfelismerési szolgáltatás számos különböző eszközzel és hangforrással működik. A beszédfelismerés Devices SDK-val egy előre beállított kódtár, amely az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 40179c7d421a26fd9a77b435668f75ec6fde8ab1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136973"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370644"
 ---
-# <a name="about-the-speech-devices-sdk"></a>A Beszédeszközök SDK ismertetése
+# <a name="what-is-the-speech-devices-sdk"></a>Mi a Speech Devices SDK?
 
-A [beszédfelismerési szolgáltatás](overview.md) számos különböző eszközzel és hangforrással működik. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
+A [beszédfelismerési szolgáltatás](overview.md) számos különböző eszközzel és hangforrással működik. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val egy előre beállított kódtár, amely az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel.
 
 A beszédfelismerés eszközök SDK segítségével:
 

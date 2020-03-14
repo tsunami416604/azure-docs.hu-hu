@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 98326d23f5aca1264bc47168cc25b427c3db331d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087119"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135955"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -51,9 +51,9 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 
 | |Python 2,7|Python 3,5|
 |----|----|----|
-|Útvonal|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Alapértelmezett érték 2,7|N/A|
-|Livy|Alapértelmezett érték 2,7|N/A|
+|`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|Alapértelmezett érték 2,7|N.A.|
+|Livy|Alapértelmezett érték 2,7|N.A.|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
@@ -74,12 +74,38 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     A [csomag indexében](https://pypi.python.org/pypi) a rendelkezésre álló csomagok teljes listáját is megkeresheti. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. Telepítheti például a [Conda-Forge](https://conda-forge.org/feedstocks/)használatával elérhetővé tett csomagokat.
 
-    -   `seaborn` a telepíteni kívánt csomag neve.
-    -   `-n py35new` adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
+    Használja az alábbi parancsot, ha a legújabb verziójával szeretné telepíteni a könyvtárat:
+    
+    - Conda-csatorna használata:
 
-    ```bash
-    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
-    ```
+        -   `seaborn` a telepíteni kívánt csomag neve.
+        -   `-n py35new` adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
+        ```
+
+    - Vagy használja a PyPi-tárházat, módosítsa `seaborn` és `py35new` megfelelőt:
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        ```        
+
+    Ha egy adott verziójú könyvtárat szeretne telepíteni, használja az alábbi parancsot:
+
+    - Conda-csatorna használata:
+
+        -   `numpy=1.16.1` a telepíteni kívánt csomag neve és verziószáma.
+        -   `-n py35new` adja meg az imént létrehozott virtuális környezet nevét. Ügyeljen arra, hogy a virtuális környezet létrehozása alapján megfelelően módosítsa a nevet.
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
+        ```
+
+    - Vagy használja a PyPi-tárházat, módosítsa `numpy==1.16.1` és `py35new` megfelelőt:
+
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        ```
 
     Ha nem ismeri a virtuális környezet nevét, az SSH-t használhatja a fürt fő csomópontjára, és `/usr/bin/anaconda/bin/conda info -e` futtathatja az összes virtuális környezet megjelenítéséhez.
 

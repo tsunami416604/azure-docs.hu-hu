@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271072"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371154"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>ELAVULT Azure Container Service-fürt figyelése Log Analytics
 
@@ -28,8 +28,8 @@ Azt is feltételezi, hogy telepítve van a `az` Azure CLI és `kubectl` eszköz�
 
 A futtatásával tesztelheti, hogy telepítve van-e a `az` eszköz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#installation)talál útmutatást.
@@ -38,21 +38,24 @@ Azt is megteheti, hogy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cl
 A futtatásával tesztelheti, hogy telepítve van-e a `kubectl` eszköz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Ha nincs `kubectl` telepítve, akkor a következőket futtathatja:
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 Ha a kubectl-eszközön telepített kubernetes-kulcsokkal szeretne tesztelni, futtassa a következőt:
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 Ha a fenti parancs hibába ütközik, telepítenie kell a kubernetes-fürt kulcsait a kubectl eszközre. Ezt a következő paranccsal teheti meg:
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ Itt látható a [DAEMONSET elemet YAML-fájlja](https://github.com/Microsoft/OMS
 Miután hozzáadta a munkaterület AZONOSÍTÓját és kulcsát a Daemonset elemet-konfigurációhoz, telepítheti a Log Analytics ügynököt a fürtön a `kubectl` parancssori eszköz használatával:
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>A Log Analytics-ügynök telepítése Kubernetes-titok használatával
@@ -91,19 +94,27 @@ A Log Analytics-munkaterület AZONOSÍTÓjának és kulcsának védetté tétele
 
 - Másolja a parancsfájlt, a titkos sablonfájl és a Daemonset elemet YAML-fájlját (a [tárházból](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)), és győződjön meg arról, hogy ugyanazon a címtáron vannak.
   - titkos kód generálása – secret-gen.sh
-  - titkos sablon – Secret-template. YAML
+  - titkos kód sablon - secret-template.yaml
     - Daemonset elemet YAML fájl-omsagent-DS-Secrets. YAML
 - Futtassa a szkriptet. A parancsfájl kérni fogja a Log Analytics munkaterület AZONOSÍTÓját és elsődleges kulcsát. Szúrja be, és a szkript létrehoz egy titkos YAML-fájlt, amellyel futtathatja.
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - Hozza létre a Secrets Pod-t a következő futtatásával: ```kubectl create -f omsagentsecret.yaml```
+  - Hozza létre a titkos kulcsok pod a következő futtatásával:
 
-  - A következő futtatásával ellenőrizhető:
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
+  - Ellenőrizze, hogy futtassa a következőt:
+
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ A Log Analytics-munkaterület AZONOSÍTÓjának és kulcsának védetté tétele
   KEY:    88 bytes
   ```
 
-  - Hozza létre a omsagent démont a ```kubectl create -f omsagent-ds-secrets.yaml``` futtatásával
+  - Hozza létre a omsagent Daemon-set utasításait a következő futtatásával:
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>Összegzés
 Ennyi az egész! Néhány perc elteltével láthatja, hogy a Log Analytics-irányítópultra áramló adatfolyamok láthatók.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300068"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136517"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: opcionális jogcímek megadása az Azure AD-alkalmazáshoz
 
@@ -49,7 +49,7 @@ Az alábbi listában a használni kívánt alkalmazások alapértelmezett válas
 
 **2. táblázat: v 1.0 és v 2.0 opcionális jogcím-készlet**
 
-| Name (Név)                       |  Leírás   | Jogkivonat típusa | Felhasználó típusa | Megjegyzések  |
+| Név                       |  Leírás   | Jogkivonat típusa | Felhasználó típusa | Megjegyzések  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | A felhasználó utolsó hitelesítésének időpontja. Lásd: OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Az erőforrás-bérlő régiója | JWT        |           | |
@@ -78,17 +78,17 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 
 **3. táblázat: v 2.0 – csak opcionális jogcímek**
 
-| JWT jogcím     | Name (Név)                            | Leírás                                | Megjegyzések |
+| JWT jogcím     | Név                            | Leírás                                | Megjegyzések |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-cím                      | Az ügyféltől bejelentkezett IP-cím.   |       |
 | `onprem_sid`  | Helyszíni biztonsági azonosító |                                             |       |
 | `pwd_exp`     | Jelszó lejárati ideje        | Az a dátum és idő, amikor a jelszó lejár. |       |
 | `pwd_url`     | Jelszó URL-címének módosítása             | URL-cím, amelyet a felhasználó megkereshet a jelszavuk módosításához.   |   |
 | `in_corp`     | Vállalati hálózaton belül        | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet.   |  Az MFA [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) -címeinek beállításai alapján.    |
-| `nickname`    | Becenév                        | A felhasználó további neve. A becenév elkülönül az utónévtől vagy az utónévtől. | 
-| `family_name` | Vezetéknév                       | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. <br>"family_name":"Miller" | Támogatott a MSA és az Azure AD-ben   |
-| `given_name`  | Keresztnév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben  |
-| `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a legfontosabb adathoz. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . |
+| `nickname`    | Becenév                        | A felhasználó további neve. A becenév elkülönül az utónévtől vagy az utónévtől. A `profile` hatókörét igényli.| 
+| `family_name` | Vezetéknév                       | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. <br>"family_name":"Miller" | Támogatott a MSA és az Azure AD-ben. A `profile` hatókörét igényli.   |
+| `given_name`  | Keresztnév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben.  A `profile` hatókörét igényli. |
+| `upn`         | Egyszerű felhasználónév | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a legfontosabb adathoz. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókörét igényli.|
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságai
 
@@ -117,12 +117,13 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
         }
     ```
 
-Ez a OptionalClaims objektum azt eredményezi, hogy az azonosító token visszakerül az ügyfélnek, hogy egy másik UPN-t is tartalmazzon a további Kezdőlap bérlői és erőforrás-bérlői információk A `upn` jogcímet csak akkor változtatja meg a tokenben, ha a felhasználó a bérlő egyik vendége (amely más IDENTITÁSSZOLGÁLTATÓ használ a hitelesítéshez). 
+Ez a OptionalClaims objektum azt eredményezi, hogy a rendszer visszaadja az azonosító jogkivonatot az ügyfélnek, hogy tartalmazza a további otthoni Bérlővel és erőforrás-bérlői információkkal rendelkező UPN A `upn` jogcímet csak akkor változtatja meg a tokenben, ha a felhasználó a bérlő egyik vendége (amely más IDENTITÁSSZOLGÁLTATÓ használ a hitelesítéshez). 
 
 ## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
 
 > [!IMPORTANT]
 > A hozzáférési jogkivonatok **mindig** az erőforrás jegyzékfájljának használatával jönnek létre, nem az ügyfél.  Tehát a kérelemben `...scope=https://graph.microsoft.com/user.read...` az erőforrás a Microsoft Graph API.  Így a hozzáférési jogkivonat a Microsoft Graph API-jegyzékfájl használatával jön létre, nem az ügyfél jegyzékfájlja.  Az alkalmazás jegyzékfájljának módosítása soha nem okoz jogkivonatot a Microsoft Graph API-nak a különböző megjelenéséhez.  Annak ellenőrzéséhez, hogy a `accessToken` változásai érvényesek-e, igényeljen egy jogkivonatot az alkalmazáshoz, nem pedig egy másik alkalmazást.  
+
 
 Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület vagy az alkalmazás jegyzékfájlja segítségével konfigurálhatja.
 
@@ -186,7 +187,7 @@ Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmaz�
 
 **5. táblázat: OptionalClaims típusának tulajdonságai**
 
-| Name (Név)        | Típus                       | Leírás                                           |
+| Név        | Típus                       | Leírás                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Gyűjtemény (OptionalClaim) | A JWT azonosító jogkivonatában visszaadott választható jogcímek. |
 | `accessToken` | Gyűjtemény (OptionalClaim) | Az JWT hozzáférési jogkivonatban visszaadott választható jogcímek. |
@@ -199,7 +200,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 
 **6. táblázat: OptionalClaim típusának tulajdonságai**
 
-| Name (Név)                 | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
+| Név                 | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím neve.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | A jogcím forrása (Directory-objektum). A bővítmény tulajdonságaiban előre definiált jogcímek és felhasználó által definiált jogcímek találhatók. Ha a forrás értéke null, a jogcím egy előre meghatározott opcionális jogcím. Ha a forrás értéke felhasználó, a Name (név) tulajdonság értéke a felhasználói objektum kiterjesztés tulajdonsága. |
@@ -207,7 +208,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 | `additionalProperties` | Collection (Edm.String) | A jogcím további tulajdonságai. Ha egy tulajdonság létezik ebben a gyűjteményben, a módosítja a Name (név) tulajdonságban megadott választható jogcím viselkedését.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>A címtár-bővítmény választható jogcímeinek konfigurálása
 
-A standard opcionális jogcímek készleten kívül a jogkivonatokat is konfigurálhatja a bővítmények belefoglalásához. Ez a funkció hasznos lehet az alkalmazás által használható további felhasználói adatok csatolásához – például egy további azonosító vagy fontos konfigurációs beállítás, amelyet a felhasználó beállított. Példaként tekintse meg az oldal alját.
+A standard opcionális jogcímek készleten kívül a jogkivonatokat is konfigurálhatja a bővítmények belefoglalásához. További információkért tekintse meg [a Microsoft Graph extensionProperty dokumentációját](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0) – vegye figyelembe, hogy a választható jogcímek nem támogatják a sémát és az Open Extensions szolgáltatást, csak a HRE stílusú címtárszolgáltatás-bővítményeket. Ez a funkció hasznos lehet az alkalmazás által használható további felhasználói adatok csatolásához – például egy további azonosító vagy fontos konfigurációs beállítás, amelyet a felhasználó beállított. Példaként tekintse meg az oldal alját.
 
 > [!NOTE]
 > - A címtár-séma bővítményei egy csak Azure AD-szolgáltatás, így ha az alkalmazás jegyzékfájlja egyéni kiterjesztést kér, és egy MSA-felhasználó bejelentkezik az alkalmazásba, akkor ezeket a bővítményeket a rendszer nem adja vissza.
@@ -269,7 +270,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    Ha azt szeretné, hogy a tokenben lévő csoportok megjelenjenek a helyszíni AD-csoport attribútumai a választható jogcímek szakaszban, adja meg, hogy melyik jogkivonat-típust kívánja alkalmazni, a kért választható jogcím nevét és a kívánt további tulajdonságokat.  Több jogkivonat-típus is szerepelhet:
 
    - a OIDC azonosító token idToken
-   - a OAuth/OIDC hozzáférési token accessToken
+   - a OAuth hozzáférési token accessToken
    - SAML-tokenek Saml2Token.
 
    > [!NOTE]

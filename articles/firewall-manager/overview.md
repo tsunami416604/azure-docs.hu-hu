@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443149"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366274"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Mi az Azure Firewall Manager előzetes verziója?
 
@@ -80,13 +80,14 @@ A Azure Firewall Manager előzetes verziója a következő ismert problémákkal
 
 |Probléma  |Leírás  |Kezelés  |
 |---------|---------|---------|
-|Harmadik féltől származó szűrési korlátozások|A V2I külső szolgáltatókkal való kiszűrése nem támogatott a Azure Firewall B2V és a V2V.|Jelenleg vizsgálja.|
-|A forgalom felosztása jelenleg nem támogatott|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|Jelenleg vizsgálja a forgalom felosztását a központban.
-|Egy biztonságos virtuális központ régiónként|Régiónként legfeljebb egy biztonságos virtuális központ tartozhat|Több virtuális WAN-t hozhat létre egy régióban.|
-|Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Jelenleg vizsgálja.|
-|A csomópontok közötti kommunikáció nem működik a biztonságos virtuális hubhoz|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott.|Jelenleg vizsgálja.|
+|Harmadik féltől származó szűrési korlátozások.|A V2I külső szolgáltatókkal való kiszűrése nem támogatott a Azure Firewall B2V és a V2V.|Vizsgáló|
+|A forgalom felosztása jelenleg nem támogatott.|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
+|Egy biztonságos virtuális központ régiónként.|Régiónként legfeljebb egy biztonságos virtuális központ lehet.|Több virtuális WAN-t hozhat létre egy régióban.|
+|Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Vizsgáló|
+|A csomópontok közötti kommunikáció nem működik a biztonságos virtuális hubhoz|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott.|Vizsgáló|
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
-|Az IP-csoportok nem támogatottak a tűzfal házirendjében|Az IP-csoportok nyilvános előzetes verzióban érhetők el, és jelenleg csak a hagyományos tűzfalszabályok támogatottak|Javítás folyamatban
+|Az IP-csoportok nem támogatottak a tűzfal házirendjében.|Az IP-csoportok nyilvános előzetes verzióban érhetők el, és jelenleg csak a hagyományos tűzfalszabályok támogatottak.|Javítás folyamatban.
+|A Cloud Solution Provider (CSP) előfizetések nem támogatottak.|A [CSP-előfizetések](https://azure.microsoft.com/offers/ms-azr-0145p/) jelenleg nem támogatottak.|Vizsgáló
 
 ## <a name="next-steps"></a>Következő lépések
 

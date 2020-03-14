@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: bf4c7e9fc623ad7dc74b6da943232d5c558d43a4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 86128953130fdb34c660f6e40ec24565ff93edb4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920263"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299226"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -110,17 +110,17 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték és példa | Adattípus |
+| Név | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Compute | sztring |
-| type | CustomScriptExtension | sztring |
+| publisher | Microsoft.Compute | Karakterlánc |
+| típus | CustomScriptExtension | Karakterlánc |
 | typeHandlerVersion | 1,10 | int |
 | fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
 | timestamp (például:) | 123456789 | 32 bites egész szám |
-| commandToExecute (például) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | sztring |
-| storageAccountName (például:) | examplestorageacct | sztring |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
+| commandToExecute (például) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | Karakterlánc |
+| storageAccountName (például:) | examplestorageacct | Karakterlánc |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
 | managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
 
 >[!NOTE]
@@ -149,7 +149,7 @@ A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a vi
 
 A CustomScript (1,10-es verzió) támogatja a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a fájl (ok) letöltéséhez a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok vagy tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
 
-Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
 
 Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, állítsa a "managedidentity" mezőt egy üres JSON-objektumra. 
 
@@ -165,7 +165,7 @@ Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtu
 
 Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
 
-> Példák:
+> Például:
 >
 > ```json
 > {

@@ -1,21 +1,21 @@
 ---
 title: Beszédfelismerési szolgáltatás fordítása
 titleSuffix: Azure Cognitive Services
-description: A Speech Service lehetővé teszi, hogy teljes körű, valós idejű, többnyelvű fordítást adjon az alkalmazásaihoz, eszközeihez és eszközeihez. Ugyanez az API használható tolmácsoláshoz és beszéd lefordított szöveggé alakításához is.
+description: A Speech Service lehetővé teszi, hogy teljes körű, valós idejű, többnyelvű fordítást adjon az alkalmazásaihoz, eszközeihez és eszközeihez. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: a05a2bf81a278322bc4e07ed959aedb828c39b73
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f2f0b277fb9dc6270e9015b5bf3205cc8aceaa0a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815459"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371239"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
 
@@ -23,7 +23,7 @@ A beszédfelismerési szolgáltatásból való beszéd fordítás lehetővé tes
 
 A Microsoft fordítói motorját két különböző módszer látja el: statisztikai gépi fordítás (SMT) és neurális gépi fordítás (NMT). A SMT speciális statisztikai elemzést használ a lehetséges fordítások megbecslésére néhány szó kontextusában. A NMT-alapú neurális hálózatokkal pontosabb és természetesebb fordításokat biztosítanak a szavak fordításához a mondatok teljes kontextusával.
 
-A Microsoft jelenleg a NMT használja a legnépszerűbb nyelvekre való fordításhoz. A [beszéd-beszéd fordításhoz elérhető összes nyelv](language-support.md#speech-translation) a NMT. A beszédfelismerési és a szöveges fordítás a nyelvi pároktól függően SMT-t vagy NMT-t is használhat. Ha a NMT támogatja a célként megadott nyelvet, a teljes fordítás NMT-alapú. Ha a NMT nem támogatja a célként megadott nyelvet, a fordítás a NMT és az SMT hibrid változata, amely az angol nyelvet használja a két nyelv közötti "pivot" kifejezéssel.
+A Microsoft jelenleg a NMT használja a legnépszerűbb nyelvekre való fordításhoz. A [beszéd-beszéd fordításhoz elérhető összes nyelv](language-support.md#speech-translation) a NMT. Hang-szöveg transzformációs fordítási attól függően, a nyelv pár SMT vagy NMT használhatja. Ha a NMT támogatja a célként megadott nyelvet, a teljes fordítás NMT-alapú. Ha a NMT nem támogatja a célként megadott nyelvet, a fordítás a NMT és az SMT hibrid változata, amely az angol nyelvet használja a két nyelv közötti "pivot" kifejezéssel.
 
 ## <a name="core-features"></a>Alapvető funkciók
 
@@ -39,7 +39,7 @@ A Speech SDK és a REST API-k segítségével az alábbi funkciók érhetők el:
 
 Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a beszéd fordítási útmutatóinak nyelv alapján rendezett listáját tartalmazza.
 
-| Gyors útmutató | Platform | API-leírások |
+| Első lépések | Platform | API-referencia |
 |------------|----------|---------------|
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET-keretrendszer](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
@@ -59,7 +59,7 @@ Ha alkalmazásai, eszközei vagy termékei a [Translator Speech API](https://doc
 
 * [Migrálás a Translator Speech APIról a beszédfelismerési szolgáltatásba](how-to-migrate-from-translator-speech-api.md)
 
-## <a name="reference-docs"></a>Segédanyagok
+## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
 * [Beszéd SDK](speech-sdk-reference.md)
 * [Beszédfelismerési eszközök SDK](speech-devices-sdk.md)

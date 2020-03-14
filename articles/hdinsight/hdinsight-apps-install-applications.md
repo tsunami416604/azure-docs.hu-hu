@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: a7d83d2bc418e62bc2858e2a7fb35d2113640c83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79272616"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366342"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Az Azure HDInsight külső Apache Hadoop-alkalmazások telepítése
 
@@ -39,12 +39,12 @@ Az alábbi listában a közzétett alkalmazást mutatja be:
 |[Trifacta Wrangler vállalat](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBase |A Trifacta Wrangler Enterprise for HDInsight minden adatskála esetében támogatja a nagyvállalati szintű adatmennyiség-huzavona. A Trifacta Azure-on való futtatásának költsége a Trifacta-előfizetés költségeinek és a virtuális gépek Azure-infrastruktúra-költségeinek a kombinációja. |
 |[Az egységesített adatplatform](https://unifisoftware.com/platform/) |Hadoop,HBase,Storm,Spark |Az egységesített adatplatform az önkiszolgáló Adateszközök zökkenőmentesen integrált csomagja, amely lehetővé teszi az üzleti felhasználó számára a növekményes bevételt, a költségek csökkentését és a működési komplexitást eredményező adatkihívások kezelését. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |A HDInsight Spark-fürthöz tartozó adatalkalmazás felbomlik. |
-|[A vízvonal MESTERSÉGESen vezérelt Data Catalog](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |Az adatközpont-katalógusok, rendszerezések és az azokra vonatkozó információk a mesterséges intelligenciával az üzleti feltételekkel való automatikus címkézés érdekében. Üzleti literate katalógus vízvonallal a része a kritikus fontosságú, sikeres önkiszolgáló elemzési, megfelelőségi és szabályozási és informatikai kezdeményezések előrehaladását. |
+|[A vízvonal MESTERSÉGESen vezérelt Data Catalog](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |Az adatközpont-katalógusok, rendszerezések és az azokra vonatkozó információk a mesterséges intelligenciával az üzleti feltételekkel való automatikus címkézés érdekében. A vízvonal üzleti írástudó-katalógusa egy kritikus, sikeres összetevő az önkiszolgáló elemzési, megfelelőségi és irányítási, valamint informatikai felügyeleti kezdeményezésekhez. |
 
 A cikkben szereplő utasítások az Azure Portalon alapulnak. Az Azure Resource Manager-sablonok exportálása a portálról vagy a Resource Manager-sablon másolatának beszerzése szállítóktól származó, és a sablon üzembe helyezése az Azure PowerShell és a klasszikus Azure CLI használatával.  Lásd: [Apache Hadoop-fürtök létrehozása a HDInsight Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha egy meglévő HDInsight-fürtre kíván HDInsight-alkalmazásokat telepíteni, HDInsight-fürttel kell rendelkeznie. A fürt létrehozását lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). HDInsight-alkalmazásokat HDInsight-fürt létrehozása közben is telepíthet.
+Ha egy meglévő HDInsight-fürtre kíván HDInsight-alkalmazásokat telepíteni, HDInsight-fürttel kell rendelkeznie. A fürt létrehozását lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight-alkalmazásokat HDInsight-fürt létrehozása közben is telepíthet.
 
 ## <a name="install-applications-to-existing-clusters"></a>Alkalmazások telepítése a meglévő fürtökre
 Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat egy meglévő HDInsight-fürtbe.
@@ -53,7 +53,7 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A bal oldali menüben navigáljon az **összes szolgáltatás** > **Analytics** > **HDInsight-fürtök**elemre.
-3. Válasszon ki egy HDInsight-fürtöt a listából.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+3. Válasszon ki egy HDInsight-fürtöt a listából.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. A **Beállítások** kategóriában válassza az **alkalmazások**lehetőséget. A fő ablakban megtekintheti a telepített alkalmazások listáját. 
    
     ![HDInsight-alkalmazások menü a portálon](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)

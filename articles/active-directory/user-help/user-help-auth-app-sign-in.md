@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297843"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138943"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
 
@@ -112,7 +112,7 @@ IOS-eszközön:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Bejelentkezés a fiók kétfaktoros ellenőrzésének használatával
 
-A standard kétfaktoros ellenőrzési módszernek meg kell adnia a felhasználónevét és jelszavát ahhoz az eszközhöz, amelyhez be van jelentkezve, majd válassza ki, hogy a Microsoft Authenticator alkalmazás fogadja-e Microsoft Authenticator alkalmazást. Android-eszközön ezek az ellenőrző kódok a fiókok képernyőjén találhatók. IOS-eszközökön ezek az ellenőrző kódok a **fiókok** képernyőjén vagy egy fiók teljes képernyős nézetében találhatók a fiók típusától függően. A fiók a Microsoft Authenticator alkalmazásba való felvételének folyamata során bekapcsolja a fiók kétfaktoros ellenőrzését.
+A standard kétfaktoros ellenőrzési módszerhez meg kell adnia a felhasználónevét és a jelszavát arra az eszközre, amelyhez be van jelentkezve. Ezután nyissa meg a Microsoft Authenticator alkalmazást, és írja be a fiókja véletlenszerűen generált kódját a **kód megadása** mezőbe. Android-eszközön ezek az ellenőrző kódok a **fiókok** képernyőjén találhatók. IOS-eszközökön ezek az ellenőrző kódok a **fiókok** képernyőjén vagy egy fiók teljes képernyős nézetében találhatók a fiók típusától függően. A fiók a Microsoft Authenticator alkalmazásba való felvételének folyamata során bekapcsolja a fiók kétfaktoros ellenőrzését.
 
 >[!Note]
 >Ha nem látja munkahelyi vagy iskolai fiókját vagy személyes fiókját a Microsoft Authenticator alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy nem adta hozzá a fiókot a Microsoft Authenticator alkalmazáshoz. A fiók hozzáadásához tekintse meg [a munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md) vagy [a személyes fiókok](user-help-auth-app-add-personal-ms-account.md)hozzáadása című témakört.
@@ -131,7 +131,7 @@ A munkahelyi vagy iskolai vagy személyes fiókba való bejelentkezéshez szüks
 | Miért nem használhatok több munkahelyi vagy iskolai fiókot a telefonos bejelentkezéshez? | A telefont egyetlen munkahelyi vagy iskolai fiókhoz kell regisztrálni. Ha egy másik munkahelyi vagy iskolai fiókhoz szeretné bekapcsolni a telefonos bejelentkezést, akkor a **Beállítások** lapon törölni kell a fiókját az eszközről. |
 | Be tudok jelentkezni a számítógépre a telefonom használatával? | A számítógép esetében javasoljuk, hogy jelentkezzen be a Windows Hello használatával a Windows 10 rendszeren. A Windows Hello lehetővé teszi az arc, az ujjlenyomat vagy a PIN-kód használatát a bejelentkezéshez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

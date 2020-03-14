@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 9a53cae61e48a8d0aa19b138d4084ca257ea705b
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79254000"
+ms.locfileid: "79299243"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
 Az egyéni szkriptek bővítményének 2. verziója letölti és futtatja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezés utáni konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs/felügyeleti feladat esetén hasznos. A szkripteket letöltheti az Azure Storage-ból vagy más elérhető Internet-helyről, vagy megadhatja a bővítmény futtatókörnyezetét. 
@@ -110,19 +110,19 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságok értékei
 
-| Name (Név) | Érték és példa | Adattípus | 
+| Név | Érték és példa | Adattípus | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | dátum |
-| publisher | Microsoft.Compute.Extensions | sztring |
-| type | CustomScript | sztring |
+| publisher | Microsoft.Compute.Extensions | Karakterlánc |
+| típus | CustomScript | Karakterlánc |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
-| commandToExecute (például) | Python MyPythonScript.py \<My-param1 > | sztring |
-| szkriptet. | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | sztring |
-| skipDos2Unix (például) | false | logikai |
+| commandToExecute (például) | Python MyPythonScript.py \<My-param1 > | Karakterlánc |
+| Parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | Karakterlánc |
+| skipDos2Unix (például) | false | Logikai érték |
 | timestamp (például:) | 123456789 | 32 bites egész szám |
-| storageAccountName (például:) | examplestorageacct | sztring |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
+| storageAccountName (például:) | examplestorageacct | Karakterlánc |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Karakterlánc |
 | managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
 
 ### <a name="property-value-details"></a>Tulajdonság értékének részletei
@@ -212,7 +212,7 @@ A CustomScript a következő algoritmust használja a parancsfájlok végrehajt�
 
 A CustomScript (2,1-es verzió) támogatja a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a fájl (ok) letöltéséhez a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok vagy tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
 
-Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
 
 Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, állítsa a "managedidentity" mezőt egy üres JSON-objektumra. 
 
@@ -228,7 +228,7 @@ Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtu
 
 Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
 
-> Példák:
+> Például:
 >
 > ```json
 > {
@@ -376,7 +376,7 @@ az vm extension set \
   --protected-settings ./protected-config.json
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 Az egyéni szkriptek bővítményének futtatásakor a szkript az alábbi példához hasonló könyvtárba jön létre vagy töltődik le. A parancs kimenete `stdout` és `stderr` fájlokban is ebbe a könyvtárba kerül.
 
 ```bash
@@ -460,6 +460,6 @@ data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2
 info:    vm extension get command OK
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A kód, az aktuális problémák és a verziók megtekintéséhez lásd: [Custom-script-Extension-Linux](https://github.com/Azure/custom-script-extension-linux)adattár.
 

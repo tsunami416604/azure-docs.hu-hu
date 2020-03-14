@@ -8,22 +8,22 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c109f5309837de8c9b4bd3e4bc5a5da0a6da534e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806864"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366257"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 
 Ebből a cikkből megtudhatja, hogyan telepíthet egy [Apache Hadoop](https://hadoop.apache.org/) alkalmazást az Azure HDInsight, amely még nem lett közzétéve a Azure Portal. Az ebben a cikkben telepítendő alkalmazás [Hue](https://gethue.com/).
 
-An méretű HDInsight alkalmazás egy olyan alkalmazás, amelyet a felhasználók telepíthetnek egy HDInsight-fürtre.  Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései.  
+Egy HDInsight-alkalmazás olyan alkalmazás, amely a felhasználók telepíthetik az HDInsight-fürtön.  Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha egy meglévő HDInsight-fürtre kíván HDInsight-alkalmazásokat telepíteni, HDInsight-fürttel kell rendelkeznie. A fürt létrehozását lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). HDInsight-alkalmazásokat HDInsight-fürt létrehozása közben is telepíthet.
+Ha egy meglévő HDInsight-fürtre kíván HDInsight-alkalmazásokat telepíteni, HDInsight-fürttel kell rendelkeznie. A fürt létrehozását lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight-alkalmazásokat HDInsight-fürt létrehozása közben is telepíthet.
 
 ## <a name="install-hdinsight-applications"></a>HDInsight-alkalmazások telepítése
 
@@ -77,13 +77,13 @@ A **Hue**esetében az alábbi lépéseket hajthatja végre:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyre az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **alkalmazások**lehetőséget.
 1. A tulajdonságok megtekintéséhez válassza a **színárnyalat** lehetőséget a listából.  
 1. A webhely érvényesítéséhez válassza a weblap hivatkozást.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Cserélje le a `CLUSTERNAME`t, és `RESOURCEGROUP` a megfelelő értékekkel, majd írja be az alábbi parancsokat:
 
@@ -125,13 +125,13 @@ Ha egy alkalmazás telepítése nem sikerült, a következő három helyről lá
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyre az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **alkalmazások**lehetőséget.
 1. Kattintson a jobb gombbal az eltávolítani kívánt alkalmazásra, majd válassza a **Törlés**lehetőséget.
 1. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Cserélje le a `NAME`, `CLUSTERNAME`és `RESOURCEGROUP` értéket a megfelelő értékekre, majd írja be az alábbi parancsot:
 

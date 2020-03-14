@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5f091341bee65d17b42e289bab1192142d095637
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665470"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136125"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a Azure Portal használatával
 
@@ -23,7 +23,7 @@ ms.locfileid: "75665470"
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vaultt az ügyfél által felügyelt kulcsokkal a [Azure Portal](https://portal.azure.com/)használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../../key-vault/quick-create-portal.md).
 
-## <a name="configure-azure-key-vault"></a>Az Azure Key Vault konfigurálása
+## <a name="configure-azure-key-vault"></a>Azure Key Vault konfigurálása
 
 Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással való használata megköveteli, hogy két tulajdonság legyen beállítva a kulcstartóban, a **Soft delete** és a **not Purge**. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, de a PowerShell vagy az Azure CLI használatával is engedélyezhető egy új vagy meglévő kulcstartón.
 
@@ -94,12 +94,12 @@ Az Azure Storage-titkosításhoz használt kulcs módosításához kövesse az a
 
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 
-Az ügyfél által felügyelt kulcsok letiltásakor a rendszer a Storage-fiókot a Microsoft által felügyelt kulcsokkal titkosítja. Az ügyfél által felügyelt kulcsok letiltásához kövesse az alábbi lépéseket:
+Ha letiltja az ügyfél által felügyelt kulcsokat, a Storage-fiók újból titkosítva lesz a Microsoft által felügyelt kulcsokkal. Az ügyfél által felügyelt kulcsok letiltásához kövesse az alábbi lépéseket:
 
 1. Navigáljon a Storage-fiókjához, és jelenítse meg a **titkosítási** beállításokat.
 1. Törölje a **saját kulcs használata** beállítás melletti jelölőnégyzet jelölését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

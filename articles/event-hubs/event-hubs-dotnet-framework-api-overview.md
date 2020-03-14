@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: f67351fa38543504d63dbf8d86c9537feea24a4f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312617"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137611"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs a .NET-keretrendszer API áttekintése
 
-Ez a cikk az Azure Event Hubs [.NET-keretrendszer ügyféloldali API](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-jait foglalja össze. Két kategória létezik: felügyeleti és futásidejű API-k. A futásidejű API-k az üzenetek küldéséhez és fogadásához szükséges összes műveletből állnak. A kezelési műveletek lehetővé teszik a Event Hubs entitások állapotának kezelését az entitások létrehozásával, frissítésével és törlésével.
+Ez a cikk az Azure Event Hubs [.NET-keretrendszer ügyféloldali API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)-jait foglalja össze. Két kategória létezik: felügyeleti és futásidejű API-k. A futásidejű API-k az üzenetek küldéséhez és fogadásához szükséges összes műveletből állnak. A kezelési műveletek lehetővé teszik a Event Hubs entitások állapotának kezelését az entitások létrehozásával, frissítésével és törlésével.
 
 A [figyelési forgatókönyvek](event-hubs-metrics-azure-monitor.md) a felügyeletet és a futtatási időt is kiterjedhetnek. A .NET API-kra vonatkozó részletes dokumentáció: .net- [keretrendszer](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs)és [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) -referenciák.
 
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>Frissítés
+### <a name="update"></a>frissítés
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
@@ -174,11 +174,11 @@ public class SimpleEventProcessor : IEventProcessor
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 
-* [Mi az Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
+* [Mi az az Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 
 A .NET API-referenciák itt találhatók:

@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9ae8f5072573dcc91dd3e8bdcd08968790f6444d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79205212"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368519"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -52,13 +52,13 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 
 Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs a `kubectl` ügyféltanúsítványt is letölti és konfigurálja a helyi gépen.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 A `az aks rotate-certs` használatával elforgathatja az összes tanúsítványt, hitelesítésszolgáltatót és SAs-t a fürtön.
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 Frissítse az `kubectl` által használt tanúsítványt `az aks get-credentials`futtatásával.
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

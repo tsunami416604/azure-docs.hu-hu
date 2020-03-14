@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299362"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>A Azure SQL Database instance Pools (előzetes verzió) útmutatója
 
@@ -26,7 +26,7 @@ Ez a cikk a [példány-készletek](sql-database-instance-pools.md)létrehozásá
 
 A következő táblázat a példány-készletekhez kapcsolódó elérhető műveleteket, valamint azok rendelkezésre állását mutatja be a Azure Portal és a PowerShellben.
 
-|Parancs|Azure portál|PowerShell|
+|Parancs|Azure Portal|PowerShell|
 |:---|:---|:---|
 |Példánykészlet létrehozása|Nem|Igen|
 |Példány frissítése (korlátozott számú tulajdonság)|Nem |Igen |
@@ -41,7 +41,7 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Parancsmag |Leírás |
+|A parancsmag |Leírás |
 |:---|:---|
 |[Új – AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Létrehoz egy Azure SQL Database példány-készletet. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Az Azure SQL-példány készletével kapcsolatos információkat ad vissza. |
@@ -50,7 +50,7 @@ Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/a
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Az Azure SQL-példányok készletének használatáról ad vissza adatokat. |
 
 
-A PowerShell használatához [telepítse a PowerShell Core legújabb verzióját](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core), és kövesse az utasításokat az [Azure PowerShell modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
+A PowerShell használatához [telepítse a PowerShell Core legújabb verzióját](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell), és kövesse az utasításokat az [Azure PowerShell modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 A készleteken és az önálló példányokon belüli példányokkal kapcsolatos műveletekhez használja a szabványos [felügyelt példányok parancsait](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances), de a *példány neve* tulajdonságot fel kell tölteni, ha egy készlet egy példányához használja ezeket a parancsokat.
 
@@ -267,7 +267,7 @@ Meglévő adatbázisok áthelyezése:
 Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](sql-database-features.md).
 - A VNet-konfigurációval kapcsolatos további információkért lásd: [felügyelt példányok VNet konfigurációja](sql-database-managed-instance-connectivity-architecture.md).

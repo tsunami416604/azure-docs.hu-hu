@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan hozhatja létre, tekintheti meg és kezelheti a
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79249008"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369386"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -136,7 +136,7 @@ Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet m
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Metrikai riasztások létrehozása Azure Resource Manager-sablonok használatával](../../azure-monitor/platform/alerts-enable-template.md).
+- [Metrikai riasztások létrehozása Azure Resource Manager-sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md).
 - A [metrikai riasztások működésének megismerése](alerts-metric-overview.md).
 - [Megtudhatja, hogyan működik a metrikák riasztásai a dinamikus küszöbértékek feltételével](alerts-dynamic-thresholds.md).
 - [A webes Hook sémájának ismertetése metrikus riasztásokhoz](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)

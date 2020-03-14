@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500126"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371273"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Nem interaktív hitelesítéssel rendelkező .NET HDInsight-alkalmazás létrehozása
 
@@ -27,7 +27,7 @@ A nem interaktív .NET-alkalmazásból a következőkre lesz szüksége:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-An méretű HDInsight-fürt. Tekintse meg az [első lépéseket ismertető oktatóanyagot](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+An méretű HDInsight-fürt. Tekintse meg az [első lépéseket ismertető oktatóanyagot](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Szerepkör társítása az Azure AD-alkalmazáshoz
 
@@ -35,7 +35,7 @@ Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.m
 
 **A tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazáshoz**
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Navigáljon ahhoz a HDInsight-fürthöz tartozó erőforráscsoporthoz, amelyen a kaptár-lekérdezést a cikk későbbi részében futtatni fogja. Ha nagy számú erőforráscsoportot használ, a szűrőt használva megkeresheti a kívánt csoportot.
 1. Az erőforráscsoport menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 1. Válassza ki a **szerepkör-hozzárendelések** lapot az aktuális szerepkör-hozzárendelések megtekintéséhez.

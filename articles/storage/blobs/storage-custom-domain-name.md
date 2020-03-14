@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906544"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370474"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
 
 Az egyéni tartományt egy blob Service-végpontra vagy egy [statikus webhely](storage-blob-static-website.md) -végpontra is leképezheti. 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Ez a leképezés csak altartományok esetén működik (például: `www.contoso.com`). Ha azt szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például: `contoso.com`), akkor a Azure CDNt kell használnia. Útmutatásért tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. Mivel ennek a cikknek a szakasza az egyéni tartomány legfelső szintű tartományának engedélyezéséhez szükséges, az adott szakaszon belül a HTTPS engedélyezésének lépései nem kötelező. 
@@ -229,9 +231,9 @@ Ha például egy webes űrlapot szeretne elérni a *myForms* -tárolóban a *pho
 
 ### <a name="remove-a-custom-domain-mapping"></a>Egyéni tartomány-hozzárendelés eltávolítása
 
-Egyéni tartomány-hozzárendelés eltávolításához törölje az egyéni tartomány regisztrációját. Használja az alábbi eljárások egyikét.
+Egyéni tartomány-hozzárendelés eltávolításához törölje az egyéni tartomány regisztrációját. Használja a következő eljárások közül a megfelelőt.
 
-#### <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Az egyéni tartomány beállításának eltávolításához tegye a következőket:
 
@@ -246,7 +248,7 @@ Az egyéni tartomány beállításának eltávolításához tegye a következők
 
 Miután sikeresen eltávolította az egyéni tartományt, egy portál értesítést kap arról, hogy a Storage-fiók frissítése sikerült
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Egyéni tartományi regisztráció eltávolításához használja az az [Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI parancsot, majd adja meg a `--custom-domain` argumentum értékének üres karakterláncát (`""`).
 
@@ -268,7 +270,7 @@ Egyéni tartományi regisztráció eltávolításához használja az az [Storage
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

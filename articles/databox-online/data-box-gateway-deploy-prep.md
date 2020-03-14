@@ -8,23 +8,23 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 7de14dec4d282116b71a5800f2cf51afad0ee8a4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303205"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370253"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Oktatóanyag: Felkészülés a Azure Data Box Gateway üzembe helyezésére
 
-
-A jelen oktatóanyag az első az Azure Data Box Gateway teljes üzembe helyezéséhez szükséges üzembehelyezési oktatóanyagok sorozatában. Ez az oktatóanyag az Azure Portal előkészítésének módját ismerteti a Data Box Gateway-erőforrás üzembe helyezéséhez. 
+A jelen oktatóanyag az első az Azure Data Box Gateway teljes üzembe helyezéséhez szükséges üzembehelyezési oktatóanyagok sorozatában. Ez az oktatóanyag az Azure Portal előkészítésének módját ismerteti a Data Box Gateway-erőforrás üzembe helyezéséhez.
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
+>
 > * Új erőforrás létrehozása
 > * A virtuáliseszköz-rendszerkép letöltése
 > * Az aktiválási kulcs lekérése
@@ -50,13 +50,13 @@ Az alábbiakban a Data Box Gateway-erőforrással, a Data Box Gateway-eszközzel
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- A Microsoft Azure-előfizetést Data Box Gateway erőforráshoz kell támogatnia. Az utólagos elszámolású előfizetések szintén támogatottak.
-- Tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén a Data Box Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások számára.
+* A Microsoft Azure-előfizetés engedélyezve van egy Azure Stack Edge-erőforráshoz. Győződjön meg arról, hogy olyan támogatott előfizetést használt, mint például a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/overview/sales-number/), a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén a Data Box Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások számára.
 
-    - Bármilyen Data Box Edge/Data Box Gateway erőforrás létrehozásához jogosultságot kell biztosítania a közreműködői (vagy magasabb) hatókörnek az erőforráscsoport szintjén. Győződjön meg arról is, hogy a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
-    - A Storage-fiók erőforrásának létrehozásához ismét közreműködői vagy magasabb szintű hozzáférési hatókörre van szükség az erőforráscsoport szintjén. Az Azure Storage alapértelmezés szerint regisztrált erőforrás-szolgáltató.
-- Rendszergazdai vagy felhasználói hozzáféréssel rendelkezik Azure Active Directory Graph APIhoz. További információ: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-- Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
+  * Bármilyen Data Box Edge/Data Box Gateway erőforrás létrehozásához jogosultságot kell biztosítania a közreműködői (vagy magasabb) hatókörnek az erőforráscsoport szintjén. Győződjön meg arról is, hogy a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
+  * A Storage-fiók erőforrásának létrehozásához ismét közreműködői vagy magasabb szintű hozzáférési hatókörre van szükség az erőforráscsoport szintjén. Az Azure Storage alapértelmezés szerint regisztrált erőforrás-szolgáltató.
+* Rendszergazdai vagy felhasználói hozzáféréssel rendelkezik Azure Active Directory Graph APIhoz. További információ: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
 
 ### <a name="for-the-data-box-gateway-device"></a>Data Box Gateway-eszköz
 
@@ -102,7 +102,7 @@ Data Box Gateway-erőforrás létrehozásához hajtsa végre a következő lép�
     
     |Beállítás  |Érték  |
     |---------|---------|
-    |-előfizetés    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
+    |Előfizetést    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
     |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
 
 5. Adja meg vagy válassza ki a következő **példány részleteit**.

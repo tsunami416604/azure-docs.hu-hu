@@ -1,21 +1,21 @@
 ---
-title: Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló (előzetes verzió)
+title: Privát hivatkozás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Megtudhatja, hogyan működik a Private link Azure Database for PostgreSQL-Single Server esetében.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: e3667a60a326838b490f9082fd55bdc92d038cf9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898364"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371681"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server-preview"></a>Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló (előzetes verzió)
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
-A privát hivatkozás lehetővé teszi, hogy egy privát végponton keresztül kapcsolódjon az Azure-beli különböző Pásti-szolgáltatásokhoz. Az Azure Private link lényegében az Azure-szolgáltatásokat a privát Virtual Networkon (VNet) belül hozza elérhetővé. A Péter-erőforrások a magánhálózati IP-cím használatával ugyanúgy érhetők el, mint a VNet lévő többi erőforráshoz.
+A privát hivatkozás lehetővé teszi, hogy saját végpontokat hozzon létre Azure Database for PostgreSQL-egyetlen kiszolgálóhoz, és így az Azure-szolgáltatásokat a saját Virtual Network (VNet) belül hozza létre. A privát végpont egy magánhálózati IP-címet tesz elérhetővé, amellyel ugyanúgy csatlakozhat az adatbázis-kiszolgálóhoz, mint bármely más erőforrás a VNet.
 
 A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a privát hivatkozás [dokumentációjában](https://docs.microsoft.com/azure/private-link/index)tekintheti meg. A privát végpont egy adott [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) és alhálózaton belüli magánhálózati IP-cím.
 
@@ -53,14 +53,11 @@ Privát hivatkozással engedélyezheti a létesítmények közötti hozzáféré
 
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
-* [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
+* [Azure Portalra](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
 * [Parancssori felület](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
-Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), a PostgreSQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) Azure Database for PostgreSQL.
-
-> [!NOTE]
-> Jelenleg Azure Database for PostgreSQL egy kiszolgáló csak a privát végpont automatikus jóváhagyását támogatja.
+Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), a PostgreSQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) Azure Database for PostgreSQL. A hálózati rendszergazda és a DBA közötti feladatok elkülönítése hasznos lehet az Azure Database for PostgreSQL-kapcsolat kezeléséhez. 
 
 * A Azure Portalban navigáljon a Azure Database for PostgreSQL Server-erőforráshoz. 
     * Válassza ki a privát végponti kapcsolatokat a bal oldali ablaktáblán
@@ -109,6 +106,19 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 * Ha nyilvános forgalmat vagy szolgáltatási végpontot állít be, és privát végpontokat hoz létre, akkor a megfelelő tűzfalszabály engedélyezi a bejövő forgalom különböző típusait.
 
 * Ha nem állít be nyilvános forgalmat vagy szolgáltatási végpontot, és privát végpontokat hoz létre, akkor a Azure Database for PostgreSQL egyetlen kiszolgáló csak a privát végpontokon keresztül érhető el. Ha nem konfigurálja a nyilvános forgalmat vagy a szolgáltatási végpontot, az összes jóváhagyott privát végpont elutasítása vagy törlése után sem lesz elérhető forgalom a Azure Database for PostgreSQL egyetlen kiszolgálóval.
+
+## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL egyetlen kiszolgáló nyilvános hozzáférésének megtagadása
+
+Ha csak privát végpontokat szeretne használni a Azure Database for PostgreSQL egyetlen kiszolgálóhoz való hozzáféréshez, letilthatja az összes nyilvános végpont ([Tűzfalszabályok](concepts-firewall-rules.md) és [VNet-végpontok](concepts-data-access-and-security-vnet.md)) beállítását úgy, hogy **megtagadja a nyilvános hálózati hozzáférési konfiguráció megtagadását** az adatbázis-kiszolgálón. 
+
+Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for PostgreSQL. Ha ezt a beállítást úgy állítja be, hogy *egyetlen ügyfél sem* tud csatlakozni a Azure Database for PostgreSQL a tűzfal vagy a VNet szolgáltatás végpont-beállítása alapján. Emellett, ha a magánhálózati hozzáférés értéke ügyfelekre van állítva, a meglévő "tűzfalszabályok" és a "VNet szolgáltatás végpontja" szabály nem adható hozzá és/vagy nem frissíthető.
+
+> [!Note]
+> Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.
+>
+> Ez a beállítás nem befolyásolja az Azure Database for PostgreSQL egyetlen kiszolgáló SSL-és TLS-konfigurációit.
+
+Ha meg szeretné tudni, hogyan állíthatja be a **nyilvános hálózati hozzáférés megtagadása** a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal-ról, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának beállítása](howto-deny-public-network-access.md)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

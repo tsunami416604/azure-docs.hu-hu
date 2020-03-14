@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/13/2020
+ms.openlocfilehash: b83828c3c78913598c103730e11222969fe1fddb
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905229"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370168"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
@@ -30,7 +30,7 @@ Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes. A HDInsight-kiadás 
 > [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információ: [HDInsight verziószámozási cikk](hdinsight-component-versioning.md).
 
-## <a name="new-features"></a>ÚJ funkciók
+## <a name="new-features"></a>Új funkciók
 ### <a name="tls-12-enforcement"></a>A TLS 1.2 kényszerítése
 A Transport Layer Security (TLS) és a SSL (SSL) olyan titkosítási protokollok, amelyek kommunikációs biztonságot biztosítanak a számítógép hálózatán. További információ a [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)-ről. A HDInsight TLS 1,2-t használ a nyilvános HTTPs-végpontokon, de a TLS 1,1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében. 
 
@@ -65,38 +65,3 @@ A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének n
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 ad HDInsight 3,6 aktuális összetevő-verzióit itt találja.
-
-## <a name="known-issues"></a>Ismert problémák
-
-2020. január 29-én egy aktív probléma merül fel, amelyben a Jupyter-Jegyzetfüzet használatának megkísérlése során hibaüzenet jelenhet meg. A probléma megoldásához kövesse az alábbi lépéseket. Ezt az [MSDN-bejegyzést](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) vagy ezt a [StackOverflow bejegyzést](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) is megtekintheti naprakész információkkal, vagy további kérdéseket is feltehet. Ez a lap a probléma kijavítása után frissül.
-
-**Hibák**
-
-* ValueError: a jegyzetfüzet nem konvertálható V5-re, mert ez a verzió nem létezik
-* Hiba történt a jegyzetfüzet betöltésekor, mert a jegyzetfüzet betöltése során ismeretlen hiba történt. Ez a verzió a v4-es vagy korábbi notebook-formátumokat tudja betölteni.
-
-**Ok** 
-
-A fürtön lévő _version. a fájlt 5. x. x-re frissítették a 4.4. x. # # helyett, vagy a Ambari újra kell indítani.
-
-**Megoldás**
-
-Ha új Jupyter-jegyzetfüzetet hoz létre, és a fent felsorolt hibák valamelyikét fogadja, a probléma megoldásához hajtsa végre a következő lépéseket.
-
-1. Nyissa meg a Ambari egy böngészőben a `https://CLUSTERNAME.azurehdinsight.net`, ahol a CLUSTERNAME a fürt neve.
-1. A Ambari bal oldali menüjében kattintson a **Jupyter**, majd a **szolgáltatási műveletek**elemre, végül a **Leállítás**gombra.
-1. SSH-t a fürt átjárócsomóponthoz, ahol a Jupyter szolgáltatás fut.
-1. Nyissa meg a következő fájlt a _version./usr/bin/anaconda/lib/python2.7/site-Packages/nbformat/fájlból sudo módban.
-1. Version_info értékének bejelölése.
-1. Ha a version_info értéke a következőre van beállítva: 
-
-    version_info = (5, 0, 3)
-
-    Ezután módosítsa a bejegyzést a következőre: 
-    
-    version_info = (4, 4, 0)
-
-    És mentse a fájlt. 
-
-    Ha version_info már be van állítva (4, 4, 0), akkor folytassa a következő lépéssel, mert csak a Ambari újraindítása szükséges, nincs szükség további módosításokra.
-1. Lépjen vissza a Ambari, és a **szolgáltatási műveletek**területen kattintson az **összes újraindítása**elemre.

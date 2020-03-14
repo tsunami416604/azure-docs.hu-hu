@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269119"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371553"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -108,7 +108,7 @@ Az elérhető hozzáférési szintek a következők:
 
 - A **gyors** elérési szint. Ez a szintet a Storage-fiókban lévő objektumok gyakori elérésére optimalizáltuk. A gyors elérésű rétegben az adatok elérése a leghatékonyabb, a tárolási költségek pedig magasabbak. Alapértelmezés szerint a rendszer új Storage-fiókokat hoz létre a gyors elérésű rétegben.
 - A **lassú** elérési szint. Ez a csomag olyan nagy mennyiségű, ritkán használt és tárolt adatok tárolására van optimalizálva, amelyek legalább 30 napig vannak tárolva. Az adatok lassú elérésű szinten való tárolása költséghatékonyabb, de az adatokhoz való hozzáférés drágább lehet, mint a gyors elérésű rétegben lévő adatok elérése.
-- Az **archiválási** szint. Ez a szintet csak az egyes blokk-Blobok esetében és a Blobok hozzáfűzésével érheti el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
+- Az **archiválási** szint. Ez a szintet csak az egyes blokkos Blobok esetében érhető el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
 
 Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáférési szintek között. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4e3f4f1c829436415880e66f0cf0170107732bda
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773151"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368842"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Oktatóanyag: paraméterek használata a Resource Manager-sablon üzembe helyezéséhez
 
@@ -54,7 +54,7 @@ A sablon utolsó tesztje hozzon létre két új erőforráscsoportot. Egyet a fe
 
 Először üzembe kell helyezni a fejlesztői környezetet.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -69,14 +69,14 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
@@ -87,7 +87,7 @@ az group deployment create \
 
 Most üzembe helyezzük az éles környezetben.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -101,13 +101,13 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
   --name myResourceGroupProd \
   --location "West US"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
@@ -120,7 +120,7 @@ az group deployment create \
 
 A központi telepítés ellenőrzéséhez tekintse meg az Azure Portal lévő erőforráscsoportokat.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Ekkor megjelenik az oktatóanyagban üzembe helyezett két új erőforráscsoport.
 1. Válassza ki az erőforráscsoportot, és tekintse meg a telepített erőforrásokat. Figyelje meg, hogy az adott környezethez tartozó paraméterben megadott értékeknek felelnek meg.

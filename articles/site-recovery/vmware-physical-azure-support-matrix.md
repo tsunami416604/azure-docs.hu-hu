@@ -3,14 +3,14 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/21/2020
+ms.date: 2/24/2020
 ms.author: raynew
-ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79257042"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371392"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -135,7 +135,7 @@ SUSE Linux Enterprise Server 15 és 15 SP1 | 9,32 | A rendszer minden [SUSE 15 �
 
 **Összetevő** | **Támogatott**
 --- | ---
-Fájlrendszerek | ext3, ext4, XFS
+Fájlrendszerek | ext3, ext4, XFS, BTRFS (az erre a táblára vonatkozó feltételek)
 A Volume Manager | -Az LVM támogatott.<br/> -a/boot on LVM a [31. kumulatív frissítéssel](https://support.microsoft.com/help/4478871/) (a mobilitási szolgáltatás 9,20-es verziójával) kezdődően támogatott. A korábbi mobilitási szolgáltatás verzióiban nem támogatott.<br/> – Több operációsrendszer-lemez nem támogatott.
 Paravirtualizált | A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 Több üzenetsor-blokkoló IO-eszközök | Nem támogatott.

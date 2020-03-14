@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246552"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367363"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Gyermek runbookok Azure Automation
 
@@ -35,13 +35,13 @@ Mely runbook-típusok hívhatják egymást?
 
 * Egy [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks) és egy [grafikus runbook](automation-runbook-types.md#graphical-runbooks) is meghívhat egymásba, mivel mindkettő PowerShell-alapú.
 * A [PowerShell-munkafolyamatok runbook](automation-runbook-types.md#powershell-workflow-runbooks) és a grafikus PowerShell-munkafolyamat runbook meghívhatják egymást, mivel mindkettő PowerShell-munkafolyamat-alapú.
-* A PowerShell-típusok és a PowerShell-munkafolyamatok típusai nem hívhatják egymást, és a **Start-AzAutomationRunbook**parancsot kell használniuk.
+* A PowerShell-típusok és a PowerShell-munkafolyamatok típusai nem hívhatják egymást, és a `Start-AzAutomationRunbook`t kell használniuk.
 
 Mikor teszi közzé a sorrendet?
 
 A runbookok közzétételi sorrendje csak a PowerShell-munkafolyamatok és a grafikus PowerShell-munkafolyamat runbookok esetében számít.
 
-Ha a runbook a beágyazott végrehajtás használatával meghívja a grafikus vagy a PowerShell-munkafolyamatok alárendelt runbook, a a runbook nevét használja. A névnek a következővel kell kezdődnie: **.\\** annak megadásához, hogy a parancsfájl a helyi könyvtárban található.
+Ha a runbook a beágyazott végrehajtás használatával meghívja a grafikus vagy a PowerShell-munkafolyamatok alárendelt runbook, a a runbook nevét használja. A névnek `.\\` kell kezdődnie, hogy megadja, hogy a parancsfájl a helyi könyvtárban található.
 
 ### <a name="example"></a>Példa
 
@@ -62,15 +62,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 ## <a name="starting-a-child-runbook-using-a-cmdlet"></a>Gyermek runbook indítása parancsmag használatával
 
 > [!IMPORTANT]
-> Ha a runbook meghív egy gyermek runbook a **Start-AzAutomationRunbook** parancsmaggal a *WAIT* paraméterrel, és a gyermek runbook egy objektum eredményét eredményezi, a művelet hibába ütközhet. A hiba megoldásához tekintse meg a [gyermek runbookok az objektum kimenetével](troubleshoot/runbooks.md#child-runbook-object) című témakört, amelyből megtudhatja, hogyan implementálhatja a logikát az eredmények lekérdezésére a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) parancsmag használatával.
+> Ha a runbook meghívja a `Start-AzAutomationRunbook` parancsmaggal rendelkező gyermek-runbook a `Wait` paraméterrel, és a gyermek runbook objektumot eredményez, a művelet hibába ütközhet. A hiba megoldásához tekintse meg a [gyermek runbookok az objektum kimenetével](troubleshoot/runbooks.md#child-runbook-object) című témakört, amelyből megtudhatja, hogyan implementálhatja a logikát az eredmények lekérdezésére a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) parancsmag használatával.
 
-A **Start-AzAutomationRunbook** használatával elindíthat egy runbook a következő témakörben leírtak szerint: [Runbook elindítása Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell)-lel. Ehhez a parancsmaghoz két mód használható. Egy módban a parancsmag a feladattípust adja vissza, ha a rendszer létrehozza a feladatot a gyermek runbook. A másik mód, amelyet a parancsfájl a *WAIT* paraméter megadásával engedélyez, a parancsmag addig vár, amíg a gyermek feladata be nem fejeződik, és visszaadja a gyermek runbook kimenetét.
+A `Start-AzAutomationRunbook` segítségével elindíthat egy runbook a következő témakörben leírtak szerint: [runbook elindítása a Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell)használatával. Ehhez a parancsmaghoz két mód használható. Egy módban a parancsmag a feladattípust adja vissza, ha a rendszer létrehozza a feladatot a gyermek runbook. A másik mód, amelyet a parancsfájl a *WAIT* paraméter megadásával engedélyez, a parancsmag addig vár, amíg a gyermek feladata be nem fejeződik, és visszaadja a gyermek runbook kimenetét.
 
 A-parancsmaggal elindított runbook-feladatok a szülő runbook-feladatoktól függetlenül futnak. Ez a viselkedés több feladatot eredményez, mint a runbook inline elindítása, és nehezebbé teszi a feladatok nyomon követését. A szülő több alárendelt runbook is indíthat aszinkron módon anélkül, hogy az egyes műveletek befejezésére kellene várnia. Ahhoz, hogy ez a párhuzamos végrehajtás meghívja a alárendelt runbookok, a szülő runbook a [Parallel kulcsszót](automation-powershell-workflow.md#parallel-processing)kell használnia.
 
-A gyermek runbook kimenete az időzítés miatt nem megbízhatóan tér vissza a szülő runbook. Emellett előfordulhat, hogy a változók (például *$VerbosePreference*, *$WarningPreference*és mások) nem lesznek propagálva a gyermek runbookok. Ezen problémák elkerülése érdekében a **Start-AzAutomationRunbook** és a *WAIT* paraméter használatával elindíthatja a gyermek runbookok külön Automation-feladatként. Ez a módszer megakadályozza a szülő runbook, amíg a gyermek runbook be nem fejeződik.
+A gyermek runbook kimenete az időzítés miatt nem megbízhatóan tér vissza a szülő runbook. Emellett előfordulhat, hogy a változók (például `$VerbosePreference`, `$WarningPreference`és mások) nem lesznek propagálva a gyermek runbookok. Ezen problémák elkerülése érdekében a gyermek runbookok különálló automatizálási feladatokként indíthatja el `Start-AzAutomationRunbook` és a `Wait` paraméter használatával. Ez a módszer megakadályozza a szülő runbook, amíg a gyermek runbook be nem fejeződik.
 
-Ha nem szeretné, hogy a szülő runbook le legyen tiltva a várakozási sorban, a **Start-AzAutomationRunbook** paranccsal elindíthatja a gyermek Runbook a *WAIT* paraméter nélkül. Ebben az esetben a runbook a [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) használatával kell várnia a feladatok befejezését. A [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) és a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) használatával is le kell kérni az eredményeket.
+Ha nem szeretné, hogy a szülő runbook le legyen tiltva a várakozáskor, a `Start-AzAutomationRunbook` a `Wait` paraméter nélkül is elindíthatja a gyermek runbook. Ebben az esetben a runbook a [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) használatával kell várnia a feladatok befejezését. A [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) és a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) használatával is le kell kérni az eredményeket.
 
 Egy parancsmaggal elindított alárendelt runbook paramétereinek megadása szórótábla, a [runbook paraméterben](start-runbooks.md#runbook-parameters)leírtak szerint. Csak az egyszerű adattípusokat lehet használni. Ha a runbook rendelkezik összetett adattípusú paraméterrel, majd, beágyazottan kell meghívni.
 
@@ -80,7 +80,7 @@ Ha ugyanabban az Automation-fiókban lévő feladatok egynél több előfizetés
 
 ### <a name="example"></a>Példa
 
-A következő példa egy gyermek runbook indít el paraméterekkel, majd megvárja, amíg a **Start-AzAutomationRunbook** parancsmagot a *WAIT* paraméterrel elvégezte. Ha elkészült, a példa a gyermek runbook származó parancsmag kimenetét gyűjti. A **Start-AzAutomationRunbook**használatához a szkriptnek hitelesítenie kell magát az Azure-előfizetésében.
+A következő példa egy gyermek runbook indít el paraméterekkel, majd megvárja, amíg a `Start-AzAutomationRunbook` parancsmagot használja a `Wait` paraméterrel. Ha elkészült, a példa a gyermek runbook származó parancsmag kimenetét gyűjti. `Start-AzAutomationRunbook`használatához a szkriptnek hitelesítenie kell magát az Azure-előfizetésében.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext

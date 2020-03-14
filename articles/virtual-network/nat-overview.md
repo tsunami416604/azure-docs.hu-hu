@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 55e5b0be7ebefaa26a5981afe3b7c9d3f8a5bf37
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d8ecabab596612b443f1eb0a50fd550fdc474c43
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79216972"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370814"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -135,7 +135,9 @@ A NAT-átjáró számlázása két külön mérőszámmal történik:
 Az erőforrás-órák a NAT-átjáró erőforrásának időtartama alatt.
 Az adatok feldolgozott fiókjai a NAT-átjáró erőforrásai által feldolgozott összes forgalomhoz.
 
-A nyilvános előzetes verzióban a díjszabás 50%-kal diszkontálva érhető el.
+## <a name="availability"></a>Rendelkezésre állás
+
+Virtual Network NAT és a NAT-átjáró erőforrás az összes Azure-beli nyilvános felhő- [régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
 
 ## <a name="support"></a>Támogatás
 
@@ -148,7 +150,7 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
 
 ## <a name="limitations"></a>Korlátozások
 
-* A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
+* A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival. Az alapszintű erőforrások, például az alapszintű Load Balancer és az ezekből származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
 * Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
 * A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 * A NAT nem tud több virtuális hálózatot kifogni.

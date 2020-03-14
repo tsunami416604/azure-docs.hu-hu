@@ -4,12 +4,12 @@ description: A Azure Functions használatával ütemezhet egy olyan feladatot, a
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972234"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366809"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
@@ -29,7 +29,7 @@ Ha első alkalommal dolgozik a functions szolgáltatással C# , olvassa el a [Az
 
 Az [Azure SQL Database-adatbázis létrehozásakor](../sql-database/sql-database-get-started-portal.md)létrehozott adatbázishoz tartozó kapcsolódási karakterláncot le kell kérni a Azure Portal.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
 1. Válassza ki az **SQL-adatbázisok** elemet a bal oldali menüben, és válassza ki az adatbázist az **SQL-adatbázisok** lapon.
 
@@ -43,7 +43,7 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 
 Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette meg, [tegye közzé a Function alkalmazást az Azure](functions-develop-vs.md#publish-to-azure)-ban.
 
-1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **közzététel** > az **Alkalmazásbeállítások kezelése...** lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe írja be a `sqldb_connection`nevet, majd kattintson **az OK gombra**.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **közzététel** > **Azure app Service beállítások szerkesztése**lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe írja be a `sqldb_connection`nevet, majd kattintson **az OK gombra**.
 
     ![A Function alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 

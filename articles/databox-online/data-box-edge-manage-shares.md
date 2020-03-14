@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Box Edge fájlmegosztás-kezelést |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure Data Box Edge-megosztások kezelése az Azure portal használatával.
+title: Azure Data Box Edge megosztások kezelése | Microsoft Docs
+description: Ismerteti, hogyan használható a Azure Portal a megosztások kezeléséhez a Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,23 +8,23 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759192"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79212943"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Az Azure Data Box Edge-megosztások kezelése az Azure portal használatával
+# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>A Azure Portal használatával kezelheti a Azure Data Box Edge megosztásait
 
-Ez a cikk ismerteti, hogyan kezelheti az Azure Data Box Edge-megosztások. Az Azure Data Box Edge az Azure Portalon kezelheti, vagy keresztül a helyi webes felhasználói Felületét. Az Azure portal használatával adja hozzá, törlés, frissítés, megosztások vagy a megosztások társított tárfiók tárolási kulcs szinkronizálása.
+Ez a cikk ismerteti, hogyan kezelheti a megosztásokat a Azure Data Box Edgeon. A Azure Data Box Edge a Azure Portal vagy a helyi webes felületen keresztül felügyelheti. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához.
 
 ## <a name="about-shares"></a>Információk a megosztásokról
 
-Adatok átviteléhez az Azure-ba, szüksége az Azure Data Box Edge megosztások létrehozásához. A megosztásokat, adja hozzá a Data Box Edge-eszközön helyi megosztásokból vagy -megosztásokkal, az adatok felhőbe küldése is lehet.
+Az adatok Azure-ba történő átviteléhez megosztásokat kell létrehoznia a Azure Data Box Edgeon. A Data Box Edge eszközön hozzáadott megosztások lehetnek helyi megosztások vagy megosztások, amelyek az adott felhőbe küldenek adattovábbítást.
 
- - **Helyi megosztásokból**: Használja ezeket a megosztásokat, ha azt szeretné, hogy helyileg az eszközön feldolgozni az adatokat.
- - **Megosztások**: Ha azt szeretné, hogy az eszközön lévő adatokat lehet leküldeni a felhőben a storage-fiók automatikusan, használja ezeket a megosztásokat. Felhőszolgáltatásokkal függvények, mint például **frissítése** és **tárfiókkulcsok szinkronizálása** a megosztásokat a alkalmazni.
+ - **Helyi megosztások**: akkor használja ezeket a megosztásokat, amikor azt szeretné, hogy az eszközön helyileg dolgozzák fel az adatfeldolgozást.
+ - **Megosztások**: akkor használja ezeket a megosztásokat, ha azt szeretné, hogy az eszköz adatai automatikusan a felhőben legyenek leküldve a Storage-fiókba. Az összes Felhőbeli funkció, például a **frissítési** és **szinkronizálási tárolási kulcsok** a megosztásokra vonatkoznak.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -39,9 +39,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Portalon.
 
-1. Az Azure Portalon nyissa meg a Data Box Edge erőforrás, és folytassa a **átjáró > megosztások**. Válassza ki **+ Hozzáadás megosztás** a parancssávon.
+1. A Azure Portal nyissa meg a Data Box Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
-    ![Válassza a Megosztás hozzáadása](media/data-box-edge-manage-shares/add-share-1.png)
+    ![Válassza a megosztás hozzáadása elemet.](media/data-box-edge-manage-shares/add-share-1.png)
 
 2. A **Megosztás hozzáadása** területen adja meg a megosztás beállításait. Adjon egy egyedi nevet a megosztásnak.
     
@@ -51,7 +51,10 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 4. Adja meg azt a **tárfiókot**, ahol a megosztás található. A rendszer a tárfiókban létrehoz egy tárolót a megosztás nevével, ha még nem létezik ilyen. Ha létezik, akkor a rendszer a meglévő tárolót használja.
 
-5. A legördülő listából válassza ki a **társzolgáltatás** blokkblob, lapblob vagy fájlokat. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Például ez esetben az adatokat az Azure-ban blokkblobként tárolni kívánt, ezért kiválasztjuk **Blokkblob**. Ha a **Lapblob**, gondoskodnia kell arról, hogy az adatok igazítva 512 bájt. Használat **lapblob** VHD vagy VHDX, amelyek mindig igazítva 512 bájt.
+5. A legördülő listából válassza ki a **Storage szolgáltatást** a blob, az oldal blob vagy a Files blokkban. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adat az Azure-ban blokkolja a blobokat, ezért a **blob blokkolása**lehetőséget választjuk. Az **oldal blobjának**kiválasztásakor győződjön meg arról, hogy az adatai 512 bájtra vannak igazítva. Az **oldal blobjának** használata VHD-k vagy VHDX esetén, amelyek mindig 512 bájtra vannak igazítva.
+
+   > [!IMPORTANT]
+   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack peremhálózati vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
 6. A következő lépés attól függ, hogy SMB- vagy NFS-megosztást hozunk-e létre.
     - **SMB-megosztás létrehozásakor** – A **Teljes körű jogosultsággal rendelkező helyi felhasználó** mezőben válasszon az **Új létrehozása** és a **Meglévő használata** lehetőségek közül. Ha új helyi felhasználót hoz létre, adja meg a **felhasználónevet** és a **jelszót**, majd erősítse meg a jelszót. Ezzel hozzárendeli az engedélyeket a helyi felhasználóhoz. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
@@ -63,15 +66,15 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
         ![NFS-megosztás hozzáadása](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. Az Edge-modulok számítási egyszerűen éri el a megosztásokat, használja a helyi csatlakoztatási pont. Válassza ki **megosztás használatára az Edge számítási** úgy, hogy a megosztás létrehozása után automatikusan van csatlakoztatva. Ha ezt a lehetőséget választja, az Edge-modul is használhatja a számítási a helyi csatlakoztatási ponttal.
+7. Az Edge számítási modulok megosztásának egyszerű eléréséhez használja a helyi csatlakoztatási pontot. Válassza **a megosztás Edge-számítással** lehetőséget, hogy a megosztás automatikusan a létrehozás után legyen csatlakoztatva. Ha ez a beállítás be van jelölve, a peremhálózati modul a helyi csatlakoztatási ponttal is használhatja a számítást.
 
 8. A megosztás létrehozásához kattintson a **Létrehozás** parancsra. A rendszer megjelenít egy értesítést arról, hogy a megosztás létrehozása folyamatban van. Miután a megosztás létrejött a megadott beállításokkal, a **Megosztások** panel frissül, és megjeleníti az új megosztást.
 
-## <a name="add-a-local-share"></a>Egy helyi megosztás hozzáadása
+## <a name="add-a-local-share"></a>Helyi megosztás hozzáadása
 
-1. Az Azure Portalon nyissa meg a Data Box Edge erőforrás, és folytassa a **átjáró > megosztások**. Válassza ki **+ Hozzáadás megosztás** a parancssávon.
+1. A Azure Portal nyissa meg a Data Box Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
-    ![Válassza a Megosztás hozzáadása](media/data-box-edge-manage-shares/add-local-share-1.png)
+    ![Válassza a megosztás hozzáadása elemet.](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. A **Megosztás hozzáadása** területen adja meg a megosztás beállításait. Adjon egy egyedi nevet a megosztásnak.
     
@@ -79,68 +82,68 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 3. Válassza ki a megosztás **típusát**. A típus **SMB** vagy **NFS** lehet. Az alapértelmezett érték az SMB. Ez a szokásos típus Windows-ügyfelekhez, míg az NFS a Linux rendszerű ügyfelekhez használatos. Attól függően, hogy az SMB vagy az NFS típust választja, a megjelenő beállítások kis mértékben eltérőek.
 
-4. Az Edge-modulok számítási egyszerűen éri el a megosztásokat, használja a helyi csatlakoztatási pont. Válassza ki **megosztás használatára az Edge számítási** , hogy az Edge-modul a számítási használhatja a helyi csatlakoztatási ponttal.
+4. Az Edge számítási modulok megosztásának egyszerű eléréséhez használja a helyi csatlakoztatási pontot. Válassza **a megosztás Edge-számítással** lehetőséget, hogy a peremhálózati modul a helyi csatlakoztatási ponttal tudja használni a számítást.
 
-5. Válassza ki **konfigurálása, Edge helyi megosztásokból**. Az adatok a helyi megosztásokból helyileg marad az eszközön. Helyileg ezeket az adatokat tud feldolgozni.
+5. Válassza **a konfigurálás helyi megosztásként**lehetőséget. A helyi megosztásokban lévő információk helyileg maradnak az eszközön. Ezeket az adatfolyamatokat helyileg is feldolgozhatja.
 
-6. Az a **jogosultság az összes helyi felhasználó** mezőben válassza ki a **új létrehozása** vagy **meglévő**.
+6. A **minden jogosultság helyi felhasználó** mezőben válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**.
 
 7. Kattintson a **Létrehozás** gombra. 
 
     ![Helyi megosztás létrehozása](media/data-box-edge-manage-shares/add-local-share-2.png)
 
-    Megjelenik egy értesítés, hogy a megosztás létrehozása folyamatban van. Miután a megosztás létrejött a megadott beállításokkal, a **Megosztások** panel frissül, és megjeleníti az új megosztást.
+    Megjelenik egy értesítés arról, hogy a megosztás létrehozása folyamatban van. Miután a megosztás létrejött a megadott beállításokkal, a **Megosztások** panel frissül, és megjeleníti az új megosztást.
 
-    ![Frissítések megosztások panel megjelenítése](media/data-box-edge-manage-shares/add-local-share-3.png)
+    ![Frissítések megosztásának megtekintése panel](media/data-box-edge-manage-shares/add-local-share-3.png)
     
-    Válassza ki a megosztást a helyi csatlakoztatási pont az Edge számítási a megosztás modulok megtekintéséhez.
+    Válassza ki a megosztást a megosztás peremhálózati számítási moduljainak helyi csatlakoztatási pont megtekintéséhez.
 
     ![Helyi megosztás részleteinek megtekintése](media/data-box-edge-manage-shares/add-local-share-4.png)
 
-## <a name="mount-a-share"></a>A fájlmegosztás csatlakoztatása
+## <a name="mount-a-share"></a>Megosztás csatlakoztatása
 
-Ha egy megosztást a Data Box Edge-eszközön beállított számítási előtt hozta létre, szüksége lesz a megosztás csatlakoztatásához. Az alábbi lépéseket a megosztás csatlakoztatásához.
+Ha létrehozott egy megosztást, mielőtt beállította a számítást a Data Box Edge eszközön, csatlakoztatnia kell a megosztást. A megosztás csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
 
-1. Az Azure Portalon nyissa meg a Data Box Edge erőforrás, és folytassa a **átjáró > megosztások**. A megosztások listájában jelölje ki a megosztást szeretné csatlakoztatni. A **használt számítási erőforrások** oszlopban jelennek meg lesz, mint az állapot **letiltott** a kijelölt megosztás.
+1. A Azure Portal nyissa meg a Data Box Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
 
     ![Jelölje ki a megosztást](media/data-box-edge-manage-shares/select-share-mount.png)
 
-2. Válassza ki **csatlakoztatási**.
+2. Válassza a **Csatlakoztatás**lehetőséget.
 
-    ![Válassza ki a csatlakoztatási](media/data-box-edge-manage-shares/select-mount.png)
+    ![Csatlakoztatás kiválasztása](media/data-box-edge-manage-shares/select-mount.png)
 
-3. Amikor a rendszer megerősítést kér, válassza ki a **Igen**. Ez lesz a megosztás csatlakoztatásához.
+3. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget. Ekkor a rendszer csatlakoztatja a megosztást.
 
-    ![Csatlakoztatási megerősítése](media/data-box-edge-manage-shares/confirm-mount.png)
+    ![Csatlakoztatás megerősítése](media/data-box-edge-manage-shares/confirm-mount.png)
 
-4. Miután a fájlmegosztás csatlakoztatva van, lépjen a megosztások. Láthatja, hogy a **használt számítási erőforrások** az oszlopban látható a megosztás állapotjelentése **engedélyezve**.
+4. A megosztás csatlakoztatása után lépjen a megosztások listájára. Láthatja, hogy a **számítási** oszlophoz használt érték azt jelzi, hogy a megosztás állapota **engedélyezett**.
 
-    ![Fájlmegosztás csatlakoztatva](media/data-box-edge-manage-shares/share-mounted.png)
+    ![Csatlakoztatott megosztás](media/data-box-edge-manage-shares/share-mounted.png)
 
-5. Válassza ki újra a megosztást a megosztás a helyi csatlakoztatási pont megtekintése. Edge számítási modul használja a helyi csatlakoztatási pont a megosztáshoz.
+5. A megosztás helyi csatlakoztatási pont megtekintéséhez válassza újra a megosztást. Az Edge számítási modul ezt a helyi csatlakoztatási pont használja a megosztáshoz.
 
     ![A megosztás helyi csatlakoztatási pont](media/data-box-edge-manage-shares/share-mountpoint.png)
 
-## <a name="unmount-a-share"></a>A fájlmegosztás leválasztása
+## <a name="unmount-a-share"></a>Megosztás leválasztása
 
-Kövesse az alábbi lépéseket az Azure Portalon a fájlmegosztás leválasztásához.
+A megosztás leválasztásához hajtsa végre az alábbi lépéseket a Azure Portalben.
 
-1. Az Azure Portalon nyissa meg a Data Box Edge erőforrás, és folytassa a **átjáró > megosztások**.
+1. A Azure Portal nyissa meg a Data Box Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget.
 
     ![Jelölje ki a megosztást](media/data-box-edge-manage-shares/select-share-unmount.png)
 
-2. A megosztások listájában jelölje ki a leválasztani kívánt megosztást. Győződjön meg arról, hogy a megosztást, válassza le nem kapcsolt modulok által használt szeretné. Ha egy modul használja a megosztást, majd megjelenik a megfelelő modullal kapcsolatos problémák. Válassza ki **leválasztása**.
+2. A megosztások listájában válassza ki a leválasztani kívánt megosztást. Meg szeretné győződni arról, hogy a leválasztott megosztást egyetlen modul sem használja. Ha a megosztást egy modul használja, akkor a rendszer a megfelelő modullal kapcsolatos problémákat fogja látni. Válassza a **Leválasztás**lehetőséget.
 
-    ![Válassza a leválasztás](media/data-box-edge-manage-shares/select-unmount.png)
+    ![Válassza a leválasztás lehetőséget](media/data-box-edge-manage-shares/select-unmount.png)
 
-3. Amikor a rendszer megerősítést kér, válassza ki a **Igen**. Ez a megosztás fogja válassza le.
+3. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget. Ezzel leválasztja a megosztást.
 
-    ![Győződjön meg róla leválasztása](media/data-box-edge-manage-shares/confirm-unmount.png)
+    ![Leválasztás megerősítése](media/data-box-edge-manage-shares/confirm-unmount.png)
 
-4. Miután a megosztás nem csatlakoztatott, nyissa meg a megosztások. Láthatja, hogy **használt számítási erőforrások** az oszlopban látható a megosztás állapotjelentése **letiltott**.
+4. A megosztás leválasztása után lépjen a megosztások listájára. Láthatja, hogy a számítási oszlophoz **használt** érték a megosztás állapotát **letiltottként**jeleníti meg.
 
-    ![Megosztás leválasztani](media/data-box-edge-manage-shares/share-unmounted.png)
+    ![Megosztás leválasztva](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>Megosztás törlése
 
@@ -150,7 +153,7 @@ Megosztás törléséhez hajtsa végre a következő lépéseket az Azure Portal
 
     ![Jelölje ki a megosztást](media/data-box-edge-manage-shares/delete-share-1.png)
 
-2. Kattintson a **Törlés** gombra.
+2. Kattintson a **Delete** (Törlés) gombra.
 
     ![Kattintson a Törlés gombra](media/data-box-edge-manage-shares/delete-share-2.png)
 
@@ -158,34 +161,34 @@ Megosztás törléséhez hajtsa végre a következő lépéseket az Azure Portal
 
     ![Törlés megerősítése](media/data-box-edge-manage-shares/delete-share-3.png)
 
-A törlés megosztások frissítések listája.
+A megosztások listájának frissítése, hogy tükrözze a törlést.
 
 
 ## <a name="refresh-shares"></a>Megosztások frissítése
 
-A frissítési funkció lehetővé teszi egy fájlmegosztás tartalmának frissítése. A megosztások frissítésekor a rendszer keresést indít a legutóbbi frissítés óta a felhőbe feltöltött Azure-objektumok (például blobok és fájlok) azonosítására. Ezeket a további fájlokat majd letöltődnek az eszközön a megosztás tartalmának frissítéséhez.
+A frissítési funkció lehetővé teszi egy megosztás tartalmának frissítését. A megosztások frissítésekor a rendszer keresést indít a legutóbbi frissítés óta a felhőbe feltöltött Azure-objektumok (például blobok és fájlok) azonosítására. A rendszer ezután letölti ezeket a további fájlokat az eszközön található megosztás tartalmának frissítéséhez.
 
 > [!IMPORTANT]
-> - Helyi megosztásokból nem frissíthetők.
-> - Engedélyek és hozzáférés-vezérlési listák (ACL) nem maradnak a frissítési művelet között. 
+> - A helyi megosztások nem frissíthetők.
+> - Az engedélyek és hozzáférés-vezérlési listák (ACL-ek) nem őrződnek meg a frissítési művelet során. 
 
 Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
-1.  Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
+1.   Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
 
     ![Jelölje ki a megosztást](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.  Kattintson a **Frissítés** gombra. 
+2.   Kattintson a **Frissítés** gombra. 
 
     ![Kattintson a Frissítés gombra](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.  Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A rendszer ekkor egy feladatot indít a helyszíni megosztás tartalmának frissítésére.
+3.   Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A rendszer ekkor egy feladatot indít a helyszíni megosztás tartalmának frissítésére.
 
     ![Frissítés megerősítése](media/data-box-edge-manage-shares/refresh-share-3.png)
  
-4.  Amíg folyamatban van a frissítés, a Frissítés lehetőség kiszürkítve jelenik meg a helyi menüben. A frissítési feladat állapotát a feladatértesítésre kattintva tekintheti meg.
+4.   Amíg folyamatban van a frissítés, a Frissítés lehetőség kiszürkítve jelenik meg a helyi menüben. A frissítési feladat állapotát a feladatértesítésre kattintva tekintheti meg.
 
-5.  A frissítés végrehajtásához szükséges idő az Azure-tárolón és az eszközön található fájlok számától függ. A frissítés sikeres befejezése után frissül a megosztás időbélyege. Ha a frissítés csak részben sikeres, maga a művelet akkor is sikeresnek tekintendő, és az időbélyeg frissülni fog. A frissítés hibanaplókat is frissülnek.
+5.   A frissítés végrehajtásához szükséges idő az Azure-tárolón és az eszközön található fájlok számától függ. A frissítés sikeres befejezése után frissül a megosztás időbélyege. Ha a frissítés csak részben sikeres, maga a művelet akkor is sikeresnek tekintendő, és az időbélyeg frissülni fog. A frissítési naplók frissítése is megtörtént.
 
     ![Frissített időbélyeg](media/data-box-edge-manage-shares/refresh-share-4.png)
  
@@ -200,11 +203,11 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 
 1. Lépjen az erőforrás **Áttekintés** területére. A megosztások listájában válassza ki a szinkronizálni kívánt tárfiókhoz tartozó megosztást, majd kattintson rá.
 
-    ![Válassza ki a megfelelő tárfiók megosztása](media/data-box-edge-manage-shares/sync-storage-key-1.png)
+    ![Megosztás kiválasztása a megfelelő Storage-fiókkal](media/data-box-edge-manage-shares/sync-storage-key-1.png)
 
 2. Kattintson a **Tárkulcsok szinkronizálása** elemre. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
-     ![Válassza ki a storage-kulcs szinkronizálása](media/data-box-edge-manage-shares/sync-storage-key-2.png)
+     ![Válassza ki a Storage-kulcs szinkronizálása lehetőséget](media/data-box-edge-manage-shares/sync-storage-key-2.png)
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 

@@ -1,17 +1,17 @@
 ---
-title: Active Directory hitelesítés – Azure Database for MySQL – egyetlen kiszolgáló
-description: Ismerje meg a Azure Database for MySQL-Single Serverrel való hitelesítéshez Azure Active Directory fogalmakat
+title: Active Directory hitelesítés – Azure Database for MySQL
+description: Ismerje meg a hitelesítési Azure Active Directory fogalmait Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706101"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299022"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -47,7 +47,7 @@ Azure Active Directory hitelesítés konfigurálásához és használatához has
 
 A következő magas szintű diagram összefoglalja, hogyan működik a hitelesítés az Azure AD-hitelesítéssel Azure Database for MySQL használatával. A nyilak a kommunikációs útvonalakat jelzik.
 
-![hitelesítési folyamat][1]
+![Hitelesítési folyamat][1]
 
 ## <a name="administrator-structure"></a>Rendszergazdai struktúra
 
@@ -77,7 +77,7 @@ Miután hitelesítette a Active Directory, lekérheti a tokent. Ez a jogkivonat 
 > [!NOTE]
 > A Active Directory-tokenekkel való kapcsolódással kapcsolatos további információkért lásd: [Konfigurálás és bejelentkezés az Azure ad-vel a Azure Database for MySQLhoz](howto-configure-sign-in-azure-ad-authentication.md).
 
-## <a name="additional-considerations"></a>Néhány fontos megjegyzés
+## <a name="additional-considerations"></a>További szempontok
 
 - A Azure Database for MySQL kiszolgálókhoz egyszerre csak egy Azure AD-rendszergazda konfigurálható.
 - Először csak a MySQL-hez készült Azure AD-rendszergazda csatlakozhat a Azure Database for MySQL egy Azure Active Directory-fiókkal. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
@@ -87,10 +87,10 @@ Miután hitelesítette a Active Directory, lekérheti a tokent. Ez a jogkivonat 
 - Ha az Azure AD-rendszergazda el lett távolítva a kiszolgálóról, a kiszolgáló már nem lesz társítva az Azure AD-bérlőhöz, ezért az összes Azure AD-bejelentkezés le lesz tiltva a kiszolgálón. Ha új Azure AD-rendszergazdát ad hozzá ugyanahhoz a bérlőhöz, az Azure AD-bejelentkezések ismét engedélyezve lesznek.
 - A Azure Database for MySQL a felhasználó egyedi Azure AD-beli felhasználói AZONOSÍTÓjának használatával egyezteti a hozzáférési jogkivonatokat a Azure Database for MySQL felhasználó számára, a Felhasználónév használata helyett. Ez azt jelenti, hogy ha egy Azure AD-felhasználót törölnek az Azure AD-ben, és egy azonos nevű új felhasználó lett létrehozva, Azure Database for MySQL úgy véli, hogy egy másik felhasználó. Ezért ha egy felhasználó törlődik az Azure AD-ből, és egy új, azonos nevű felhasználó lett hozzáadva, az új felhasználó nem fog tudni csatlakozni a meglévő felhasználóhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha szeretné megtudni, hogyan hozhat létre és tölthet fel Azure AD-t, majd hogyan konfigurálhatja az Azure AD-t a Azure Database for MySQLsal, tekintse meg az Azure ad- [vel való konfigurálást és bejelentkezést Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
-- A bejelentkezések és a Azure Database for MySQL adatbázis-felhasználóinak áttekintését lásd: [felhasználók létrehozása a Azure Database for MySQL egyetlen kiszolgálón](howto-create-users.md).
+- A bejelentkezések és az adatbázis-felhasználók Azure Database for MySQL való áttekintését lásd: [felhasználók létrehozása a Azure Database for MySQLban](howto-create-users.md).
 
 <!--Image references-->
 

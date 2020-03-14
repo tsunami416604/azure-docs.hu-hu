@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a70e52771828de6cc9fad7998097d70c28a64fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9f9f7f709d31967e892900ccb25657a5963c0379
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238817"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370219"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
 
@@ -82,7 +82,7 @@ A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
 3. Válassza a **Felhasználók és csoportok** elemet. Láthatja, hogy az alkalmazáshoz beleegyezett jogosultsággal rendelkező rendszergazda már szerepel a hozzárendelt **alapértelmezett hozzáférési** szerepkörben. Ez nem elég a Windows rendszerű virtuális asztali bérlő létrehozásához. Kövesse az alábbi utasításokat a **TenantCreator** szerepkör felhasználóhoz való hozzáadásához.
    
    ![Képernyőkép a "Windows Virtual Desktop" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat.](media/tenant-default-access.png)
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** lapon válassza a **felhasználók és csoportok** lehetőséget.
 5. Keressen egy olyan felhasználói fiókot, amely létrehozza a Windows rendszerű virtuális asztali bérlőt. Az egyszerűség kedvéért ez lehet a globális rendszergazdai fiók.
    - Ha olyan Microsoft-identitás-szolgáltatót használ, mint például contosoadmin@live.com vagy contosoadmin@outlook.com, előfordulhat, hogy nem tud bejelentkezni a Windows rendszerű virtuális asztalra. Azt javasoljuk, hogy inkább olyan tartományi fiókot használjon, mint például a admin@contoso.com vagy a admin@contoso.onmicrosoft.com.
 

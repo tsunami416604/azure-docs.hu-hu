@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264950"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370379"
 ---
 # <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
-A nyilvános előzetes verzióban az Azure Digital Twins a következő ideiglenes előfizetést, példányt és díjszabási korlátot jeleníti meg.
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-Ezek a megkötések megkönnyítik az új szolgáltatással és számos szolgáltatásával kapcsolatos ismeretek leegyszerűsítését.
-
-> [!NOTE]
-> Ezeket a korlátokat az általános elérhetőség (GA) növeli vagy eltávolítja.
+A nyilvános előzetes verzióban az Azure Digital Twins az alábbi ideiglenes előfizetést, példányt és díjszabási korlátozásokat tartalmaz a meglévő ügyfelek számára. Ezek a megkötések megkönnyítik az új szolgáltatás és számos funkció megismerését, és az általánosan elérhetővé tétel (GA) növelésével vagy eltávolításával.
 
 ## <a name="per-subscription-limits"></a>Előfizetési korlátok
 
-A nyilvános előzetes verzióban minden egyes Azure-előfizetés egyszerre csak egy Azure digitális Twins-példányt tud létrehozni vagy futtatni.
-
-> [!TIP]
-> Ha törli a példányt, létrehozhat egy újat.
+A nyilvános előzetes verzióban minden egyes Azure-előfizetés egyszerre csak egy Azure digitális Twins-példányt tud létrehozni vagy futtatni. Ha törli a példányt, létrehozhat egy újat.
 
 ## <a name="per-instance-limits"></a>Felhasználónkénti korlátok
 
@@ -71,8 +65,8 @@ A következő korlátok határozzák meg az Azure Digital Twins-példányon vég
 Az alábbi korlátok az eszközök által az Azure Digital Twins-példányba küldött összes üzenet teljes száma.
 
 - 100 üzenet másodpercenként az összes eszközön
--   25 üzenet/másodperc/eszköz
+-    25 üzenet/másodperc/eszköz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Egy Azure-beli digitális Twins-minta kipróbálásához lépjen a gyors üzembe helyezési [lehetőségre, és keresse meg az elérhető szobákat](./quickstart-view-occupancy-dotnet.md).

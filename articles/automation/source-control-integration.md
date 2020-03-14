@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b0eed8fe9d548ee54698d187e192960bb3b44e44
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253734"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368808"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
@@ -33,7 +33,7 @@ A Azure Automation háromféle verziókövetés használatát támogatja:
 
 * Egy forrásoldali vezérlő adattár (GitHub vagy Azure Repos)
 * [Futtató fiók](manage-runas-account.md)
-* A [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban, beleértve az az **. accounts** modult (az az Module AzureRM. profil)
+* A [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban, beleértve a `Az.Accounts` modult is (az a modulnak megfelelő `AzureRM.Profile`)
 
 > [!NOTE]
 > A verziókövetés szinkronizációs feladatai a felhasználó Automation-fiókjában futnak, és a többi Automation-feladattal megegyező sebességgel lesznek számlázva.
@@ -54,15 +54,15 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
 
 3. Megnyílik egy böngészőablak, amely felszólítja a bejelentkezésre. A hitelesítés befejezéséhez kövesse az utasításokat.
 
-4. A **verziókövetés összegzése** lapon használja a mezőket az alább megadott verziókövetés tulajdonságainak kitöltéséhez. Ha elkészült, kattintson a **Mentés** gombra. 
+4. A verziókövetés összegzése lapon használja a mezőket az alább megadott verziókövetés tulajdonságainak kitöltéséhez. Ha elkészült, kattintson a **Mentés** gombra. 
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |Forrás vezérlőelem neve     | A verziókövetés rövid neve. A név csak betűket és számokat tartalmazhat.        |
-    |Forrás vezérlőelem típusa     | A forrás-ellenőrzési mechanizmus típusa. Az elérhető lehetőségek:</br> GitHub</br>Azure-repók (git)</br> Azure Repos (TFVC)        |
+    |Forrás vezérlőelem típusa     | A forrás-ellenőrzési mechanizmus típusa. Az elérhető lehetőségek:</br> * GitHub</br>* Azure-repók (git)</br> * Azure-repók (TFVC)        |
     |Tárház     | A tárház vagy a projekt neve. A rendszer beolvassa az első 200 adattárat. Egy adattár kereséséhez írja be a nevet a mezőbe, majd kattintson a **Keresés a githubon**lehetőségre.|
     |Ág     | A forrásfájlokat lekérő ág. A TFVC nem érhető el a fiókra vonatkozó célzás.          |
-    |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például/Runbooks. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
+    |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például **/Runbooks**. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
     |<sup>1</sup> . automatikus szinkronizálás     | Az automatikus szinkronizálás bekapcsolásának vagy kikapcsolásának beállítása a verziókövetés adattárában.        |
     |Runbook közzététele     | Annak beállítása, hogy a runbookok automatikusan közzé legyenek-e téve a forrás-vezérlőelemről való szinkronizálás után, vagy más módon.           |
     |Leírás     | A verziókövetés további részleteit megadó szöveg        |
@@ -72,7 +72,7 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
    ![Verziókövetés összegzése](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Előfordulhat, hogy a forrásként szolgáló adattárházhoz tartozó bejelentkezési azonosító eltér a Azure Portalhoz tartozó bejelentkezési adatoktól. Győződjön meg arról, hogy a verziókövetés konfigurálásakor a forrás vezérlő adattárának megfelelő fiókkal van bejelentkezve. Ha kétségei vannak, nyisson meg egy új fület a böngészőben, jelentkezzen ki a visualstudio.com vagy a github.com-ből, és próbálkozzon újra a forrás-vezérlőelemmel való csatlakozással.
+> Előfordulhat, hogy a forrásként szolgáló adattárházhoz tartozó bejelentkezési azonosító eltér a Azure Portalhoz tartozó bejelentkezési adatoktól. Győződjön meg arról, hogy a verziókövetés konfigurálásakor a forrás vezérlő adattárának megfelelő fiókkal van bejelentkezve. Ha kétségei vannak, nyisson meg egy új fület a böngészőben, jelentkezzen ki a **VisualStudio.com** vagy a **GitHub.com**-ből, és próbálkozzon újra a forrás-vezérlőelemmel való csatlakozással.
 
 ### <a name="configure-source-control----powershell"></a>Verziókövetés konfigurálása – PowerShell
 
@@ -109,13 +109,13 @@ A következő táblázat a GitHubhoz szükséges minimális PAT-engedélyeket ha
 
 |Hatókör  |Leírás  |
 |---------|---------|
-|**adattár**     |         |
-|repó: állapot     | Hozzáférési véglegesítés állapota         |
-|repo_deployment      | Hozzáférés központi telepítési állapota         |
-|public_repo     | Nyilvános adattárak elérése         |
-|**rendszergazda: repo_hook**     |         |
-|write:repo_hook     | Adattár-hookok írása         |
-|read:repo_hook|Adattár-hookok olvasása|
+|**`repo`**     |         |
+|`repo:status`     | Hozzáférési véglegesítés állapota         |
+|`repo_deployment`      | Hozzáférés központi telepítési állapota         |
+|`public_repo`     | Nyilvános adattárak elérése         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | Adattár-hookok írása         |
+|`read:repo_hook`|Adattár-hookok olvasása|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Az Azure-adattárakhoz minimálisan szükséges PAT-engedélyek
 
@@ -134,9 +134,9 @@ Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-enged
 
 ## <a name="synchronizing"></a>Szinkronizálása
 
-A következő lépések végrehajtásával szinkronizálhat a verziókövetés használatával. 
+Kövesse az alábbi lépéseket a verziókövetés szinkronizálásához. 
 
-1. Válassza ki a forrást a **forrás vezérlőelem** oldalon található táblázatból. 
+1. Válassza ki a forrást a forrás vezérlőelem oldalon található táblázatból. 
 
 2. A szinkronizálási folyamat elindításához kattintson a **szinkronizálás indítása** elemre. 
 
@@ -178,7 +178,7 @@ A következő lépések végrehajtásával szinkronizálhat a verziókövetés h
 
     ```
 
-6. A további naplózást a **verziókövetés szinkronizálása feladatok összegzése** lapon található **összes napló** lehetőség kiválasztásával érheti el. Ezek a további naplóbejegyzések segíthetnek a verziókövetés használata során felmerülő problémák megoldásában.
+6. A további naplózást a verziókövetés szinkronizálása feladatok összegzése lapon található **összes napló** lehetőség kiválasztásával érheti el. Ezek a további naplóbejegyzések segíthetnek a verziókövetés használata során felmerülő problémák megoldásában.
 
 ## <a name="disconnecting-source-control"></a>Verziókövetés leválasztása
 
@@ -188,11 +188,11 @@ A forrás-felügyeleti adattárból való leválasztáshoz:
 
 2. Válassza ki az eltávolítandó verziókövetés-mechanizmust. 
 
-3. A **verziókövetés összegzése** lapon kattintson a **Törlés**elemre.
+3. A verziókövetés összegzése lapon kattintson a **Törlés**elemre.
 
 ## <a name="handling-encoding-issues"></a>Kódolási problémák kezeléséhez
 
-Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues) .
+Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
 ## <a name="updating-the-pat"></a>A PAT frissítése
 

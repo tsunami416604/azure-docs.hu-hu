@@ -4,12 +4,12 @@ description: Hozzon létre egy új Function alkalmazást az Azure-ban a portálo
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79276971"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368757"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Függvényalkalmazás létrehozása az Azure Portal használatával
 
@@ -18,10 +18,6 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre egy Function-alkalmazá
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
-
-Ha függvényalkalmazást hoz létre, ügyeljen arra, hogy érvényes **alkalmazásnevet** adjon meg, amely csak betűket, számokat és kötőjelet tartalmazhat. Az aláhúzás ( **_** ) nem engedélyezett karakter.
-
-A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. A tárfiók nevének egyedinek kell lennie az Azure rendszerben. 
 
 A függvényalkalmazás létrehozása után létrehozhatja a különálló függvényeket egy vagy több nyelven. A [portál használatával](functions-create-first-azure-function.md#create-function), [folyamatos üzembe helyezéssel](functions-continuous-deployment.md), vagy [FTP-s feltöltéssel](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) is létrehozhatja a függvényeket.
 

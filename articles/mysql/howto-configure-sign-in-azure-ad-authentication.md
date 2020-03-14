@@ -1,17 +1,17 @@
 ---
-title: Azure Active Directory-Azure Database for MySQL – egyetlen kiszolgáló használata
-description: Ismerje meg, hogyan állíthat be Azure Active Directory (Azure AD) a Azure Database for MySQL – egyetlen kiszolgálóval történő hitelesítéshez
+title: Azure Active Directory-Azure Database for MySQL használata
+description: Ismerje meg, hogyan állíthat be Azure Active Directory (Azure AD) a hitelesítéshez Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110606"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299005"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -46,7 +46,7 @@ A rendszergazda konfigurálása után most bejelentkezhet:
 
 A következő magas szintű diagram összefoglalja az Azure AD-hitelesítés Azure Database for MySQL használatával történő használatának munkafolyamatát:
 
-![hitelesítési folyamat][1]
+![Hitelesítési folyamat][1]
 
 Az Azure AD-integrációt úgy terveztük, hogy olyan közös MySQL-eszközökkel működjön, mint például a MySQL parancssori felület, amely nem ismeri az Azure AD-t, és csak a Felhasználónév és a jelszó megadását támogatja a MySQL-hez való csatlakozáskor. Az Azure AD-tokent jelszóként adjuk át a fenti képen látható módon.
 
@@ -200,12 +200,12 @@ A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a
 * Perl
   * DBD:: MySQL: támogatott
   * NET:: MySQL: nem támogatott
-* Indítás
+* Ugrás
   * Go-SQL-illesztőprogram: támogatott, `?tls=true&allowCleartextPasswords=true` hozzáadása a kapcsolódási karakterlánchoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [Azure Database for MySQL – egyetlen kiszolgálóval Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat
+* Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
 
 <!--Image references-->
 

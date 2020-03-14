@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 714cdefa7100160a510d1922a2547ae53692d76c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562530"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367805"
 ---
-# <a name="about-direct-line-speech"></a>Közvetlen vonalas beszéd
+# <a name="what-is-direct-line-speech"></a>Mi az a Direct Line Speech?
 
 A **Direct line Speech** egy robusztus, teljes körű megoldás egy rugalmas, bővíthető hangsegéd létrehozásához. A robot-keretrendszer és a közvetlen vonalas beszéd csatornája, amely hangvételre van optimalizálva, a botokkal való kommunikációhoz.
 
@@ -62,7 +62,7 @@ A közvetlen vonalas beszéd és a hozzá tartozó funkciók a hangsegédek szá
 * [Beszéd SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 * [A Speech SDK beszerzése](speech-sdk.md)

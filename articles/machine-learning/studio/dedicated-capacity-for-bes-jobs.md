@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 0bb4157ff77ef57f377ba0c6a08bfe8529f663f4
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 618bc5719e3629d37567d8ac77594e7734f82a09
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169279"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204426"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio (klasszikus) feladatok Azure Batch szolgáltatása
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Machine Learning Batch-készlet feldolgozási ügyfél által felügyelt méretezési biztosít az Azure Machine Learning kötegelt végrehajtási szolgáltatás. Klasszikus kötegelt feldolgozása, egy több-bérlős környezet, amely korlátozza az egyidejűleg futó feladatainak számát a sor kerül a machine learning küldhet, és a feladatok sorba állva várják első-az-érkezési idősorrendben történik. Ez a bizonytalanság azt jelenti, hogy Ön nem előre pontosan mikor fog futni a feladat.
 
@@ -111,4 +113,4 @@ Azt javasoljuk, hogy a meghatározásához, ha a feladatok elvégzése a feladat
 
 | **Batch-készlet feldolgozásának használata, ha**    | **Klasszikus kötegelt feldolgozás használata, ha**  |
 |---|---|
-|Futó feladatok nagy számú szüksége<br>Vagy<br/>Érdemes tudni, hogy a feladatok azonnal futtatja-e<br/>Vagy<br/>Garantált átviteli van szüksége. Például hogy kell feladatok számos futtatásához egy megadott időkereten belül, és szeretne horizontális felskálázása a számítási erőforrásokat az igényeknek.    | Néhány feladat futtatásakor<br/>And<br/> A feladatok azonnal nem szükséges |
+|Futó feladatok nagy számú szüksége<br>Vagy<br/>Érdemes tudni, hogy a feladatok azonnal futtatja-e<br/>Vagy<br/>Garantált átviteli van szüksége. Például hogy kell feladatok számos futtatásához egy megadott időkereten belül, és szeretne horizontális felskálázása a számítási erőforrásokat az igényeknek.    | Néhány feladat futtatásakor<br/>És<br/> Nincs szükség a feladatok azonnali futtatására |

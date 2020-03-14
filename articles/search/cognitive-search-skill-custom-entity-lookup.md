@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651338"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369777"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
 
 > [!IMPORTANT] 
 > Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
@@ -38,9 +38,9 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| entitiesDefinitionUri | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
+| entitiesDefinitionUri    | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
 |inlineEntitiesDefinition | Beágyazott JSON-entitások definíciói. Ez a paraméter felülírja a entitiesDefinitionUri paramétert, ha van ilyen. Legfeljebb 10 KB konfigurációt lehet megadni. A várt JSON-sémáért lásd alább az [egyéni entitások definícióját](#custom-entity-definition-format) . |
-|defaultLanguageCode |  Választható A bemeneti szöveg tokenize és körülhatárolása során használt szövegbeviteli szöveg nyelvi kódja. A következő nyelvek támogatottak: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (`en`). Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.  |
+|defaultLanguageCode |    Választható A bemeneti szöveg tokenize és körülhatárolása során használt szövegbeviteli szöveg nyelvi kódja. A következő nyelvek támogatottak: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (`en`). Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.  |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
@@ -48,13 +48,13 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 | Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | szöveg          | Az elemezni kívánt szöveg.          |
-| languageCode  | Választható. Az alapértelmezett érték a `"en"`.  |
+| languageCode    | Választható. Az alapértelmezett érték a `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 
-| Kimenet neve     | Leírás                   |
+| Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
 | szervezetek | Olyan objektumok tömbje, amelyek tartalmazzák a talált egyezésekre vonatkozó információkat, valamint a kapcsolódó metaadatokat. Az azonosított entitások mindegyike a következő mezőket tartalmazza:  <ul> <li> *Name (név*): a legfelső szintű entitás azonosítva. Az entitás a "normalizált" űrlapot jelöli. </li> <li> *azonosító*: az entitás egyedi azonosítója, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *Leírás*: az entitások leírása a felhasználó által az "egyéni entitás definíciójának formátuma" kifejezésben meghatározott módon. </li> <li> *írja be a következőt:* Az entitás típusa, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *altípus:* Az entitás altípusa a felhasználó által az "egyéni entitás definíciójának formátuma" beállításban meghatározott.</li>  <li> *egyezések*: gyűjtemény, amely leírja az adott entitáshoz tartozó összes egyezést a forrás szövegén. Minden egyezés a következő tagokkal fog rendelkezni: </li> <ul> <li> *text (szöveg*): a forrás dokumentum szövege megegyezik a nyers szöveggel. </li> <li> *eltolás*: az a hely, ahol a egyezés megtalálható a szövegben. </li> <li> *length (hossz*): az egyező szöveg hossza. </li> <li> *matchDistance*: a megfeleltetéstől eltérő karakterek száma az eredeti entitás neve vagy aliasa volt.  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs 
 Bizonyos esetekben érdemes lehet megadnia az egyéni entitások listáját, amelyek közvetlenül a szakértelem-definícióba illeszkednek. Ebben az esetben a fentiekben ismertetett módon hasonló JSON-formátumot használhat, de a szaktudás definíciójában szerepel.
 Csak a 10 KB-nál kevesebb konfiguráció (szerializált méret) lehet definiálva. 
 
-##  <a name="sample-definition"></a>Minta definíciója
+##    <a name="sample-definition"></a>Minta definíciója
 
 Az alábbi példa egy beágyazott formátumot használó minta-képzettségi definíciót mutat be:
 
@@ -231,7 +231,7 @@ Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a en
 
 ```
 
-##  <a name="sample-input"></a>Minta bemenet
+##    <a name="sample-input"></a>Minta bemenet
 
 ```json
 {
@@ -248,7 +248,7 @@ Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a en
 }
 ```
 
-##  <a name="sample-output"></a>Példa kimenet
+##    <a name="sample-output"></a>Példa kimenet
 
 ```json
   { 
@@ -295,6 +295,12 @@ Ha úgy dönt, hogy egy mutatót ad az entitások definíciós fájljához, a en
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>Hibák és figyelmeztetések
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Figyelmeztetés: elérte a maximális kapacitást a találatok számára, kihagyva az összes további ismétlődő egyezést.
+
+Ez a figyelmeztetés akkor jelenik meg, ha az észlelt egyezések száma meghaladja a maximálisan megengedettet. Ebben az esetben az ismétlődő egyezéseket is leállítjuk. Ha ez nem fogadható el, küldjön egy [támogatási jegyet](https://ms.portal.azure.com/#create/Microsoft.Support) , hogy segítséget nyújtson az egyéni használati esetekhez.
 
 ## <a name="see-also"></a>Lásd még
 

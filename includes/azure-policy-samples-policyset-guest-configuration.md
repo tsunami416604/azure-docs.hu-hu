@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3f20533316049568d24a613322c63f1a888866df
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 2876acd62e573b746b8c0abf671aa6472cec3104
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669309"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79381551"
 ---
-|Név |Leírás |Házirendek |Verzió |
+|Name (Név) |Leírás |Szabályzatok |Verzió |
 |---|---|---|---|
 |[Olyan linuxos virtuális gépek naplózása, amelyeken nincs telepítve a megadott alkalmazás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |Ez a kezdeményezés telepíti a szabályzat követelményeit, és naplózza azokat a linuxos virtuális gépeket, amelyeken nincs telepítve a megadott alkalmazás. A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg https://aka.ms/gcpol |2 |1.1.0 |
 |[Linux rendszerű virtuális gépek naplózása, amelyeken telepítve vannak a megadott alkalmazások](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |Ez a kezdeményezés telepíti a szabályzat követelményeit, és naplózza azokat a linuxos virtuális gépeket, amelyeken telepítve vannak a megadott alkalmazások. A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg https://aka.ms/gcpol |2 |1.1.0 |

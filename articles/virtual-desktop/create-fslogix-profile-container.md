@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128175"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370202"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával
 
@@ -73,7 +73,7 @@ Első lépésként be kell állítania egy Azure NetApp Files fiókot.
 7. Válassza a **Azure NetApp Files** lehetőséget a keresési eredmények között, majd válassza a **Létrehozás**lehetőséget.
 
 8. Kattintson a **Hozzáadás** gombra.
-9. Amikor megnyílik az **új NetApp-fiók** panel, adja meg a következő értékeket:
+9. Amikor megnyílik az **új NetApp-fiók** lap, adja meg a következő értékeket:
 
     - A **név**mezőben adja meg a NetApp-fiók nevét.
     - Az **előfizetés**mezőben válassza ki a legördülő menüből a 4. lépésben beállított Storage-fiók előfizetését.
@@ -92,7 +92,7 @@ Következő lépésként hozzon létre egy új kapacitási készletet:
 1. Lépjen a Azure NetApp Files menüre, és válassza ki az új fiókot.
 2. A fiók menüben válassza a **Kapacitási készletek** lehetőséget a Storage szolgáltatás területen.
 3. Válassza a **készlet hozzáadása**lehetőséget.
-4. Amikor megnyílik az **új kapacitási készlet** panel, adja meg a következő értékeket:
+4. Amikor megnyílik az **új kapacitási készlet** lap, adja meg a következő értékeket:
 
     - A **név**mezőben adja meg az új kapacitási készlet nevét.
     - A **szolgáltatási szint**mezőben válassza ki a kívánt értéket a legördülő menüből. A legtöbb környezethez **prémium szintű támogatást** ajánlunk.
@@ -127,7 +127,7 @@ Ezután létre kell hoznia egy új kötetet.
 
 1. Válassza a **kötetek**lehetőséget, majd kattintson a **kötet hozzáadása**lehetőségre.
 
-2. A **kötet létrehozása** panel megnyitásakor adja meg a következő értékeket:
+2. Amikor megnyílik a **kötet létrehozása** lap, adja meg a következő értékeket:
 
     - A **kötet neve**mezőben adja meg az új kötet nevét.
     - A **Kapacitási készlet**területen válassza ki az imént létrehozott kapacitás-készletet a legördülő menüből.

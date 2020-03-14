@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 893a7a2c7483fccc3bbc7bd198929f65917457b3
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: ad7e04d611129766fe9fb72285fe35ccfbb17626
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79036952"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136672"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
@@ -69,7 +69,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: a [webalkalmazásokhoz való magánhálózati kapcsolódás][howtoguide]
 
@@ -83,7 +83,7 @@ Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: 
 [vnetintegrationfeature]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [disablesecuritype]: https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy
 [accessrestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
-[tcpproxy]: https://docs.microsoft.com/azure/private-link/rivate-link-service-overview#getting-connection-information-using-tcp-proxy-v2
+[tcpproxy]: ../../private-link/private-link-service-overview.md#getting-connection-information-using-tcp-proxy-v2
 [dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
 [pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/

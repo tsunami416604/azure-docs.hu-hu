@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268190"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298954"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>Ajánlott helyszíni élő adatfolyam-kódolók
+# <a name="tested-on-premises-live-streaming-encoders"></a>Helyszíni élő adatfolyam-kódolók tesztelése
 
 Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 
@@ -24,10 +24,12 @@ Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/me
 
     Ha több sávszélességű adatfolyamot használ az átmenő élő eseményhez, szinkronizálni kell a video GOP-méretet és a különböző bitráták videós darabjait, hogy elkerülje a nem várt viselkedést a lejátszási oldalon.
 
-  > [!NOTE]
+  > [!TIP]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
  
 * A helyszíni élő kódoló egyetlen sávszélességű streamet küld az élő eseménynek, amely lehetővé teszi, hogy az Media Services az alábbi formátumok valamelyikével végezzen élő kódolást: RTMP vagy Smooth Streaming (töredezett MP4). Az élő esemény ezután a bejövő egyszeri átviteli sebességű adatfolyam élő kódolását egy többszörös sávszélességű (adaptív) videó streamre hajtja végre.
+
+Ez a cikk a tesztelt helyszíni élő adatfolyam-kódolókat ismerteti. A helyszíni élő kódoló ellenőrzésével kapcsolatos útmutatásért lásd [a helyszíni kódoló ellenőrzése](become-on-premises-encoder-partner.md) című témakört.
 
 A Media Services élő kódolásával kapcsolatos részletes információkért lásd: [élő adatfolyamok Media Services v3](live-streaming-overview.md).
 
@@ -99,8 +101,8 @@ A tartalom lejátszásához a hang-és video streamnek is jelen kell lennie. A c
 
 ## <a name="see-also"></a>Lásd még
 
-[Helyszíni kódoló partner lesz](become-on-premises-encoder-partner.md)
-
-## <a name="next-steps"></a>Következő lépések
-
 [Élő közvetítés a Media Services v3-val](live-streaming-overview.md)
+
+## <a name="next-steps"></a>További lépések
+
+[A kódoló ellenőrzése](become-on-premises-encoder-partner.md)

@@ -1,5 +1,5 @@
 ---
-title: A beszélgetés átirata (előzetes verzió) – beszédfelismerési szolgáltatás
+title: Beszélgetés átírása (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A beszélgetés átirata egy beszéd-szöveg típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes hangszórók (más néven diarization) számára, hogy valós idejű és/vagy aszinkron átírást nyújtson a beszélgetésekhez.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561068"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367822"
 ---
-# <a name="about-conversation-transcription-preview"></a>A beszélgetés átírása (előzetes verzió)
+# <a name="what-is-conversation-transcription-preview"></a>Mi a beszélgetés átírása (előzetes verzió)?
 
 A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megoldás, amely kombinálja a beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes hangszórók (más néven _diarization_) számára, hogy valós idejű és/vagy aszinkron átírást nyújtson a beszélgetésekhez. A beszélgetés átirata megkülönbözteti a beszélőket a beszélgetésekben, hogy kiderítse, ki mit és mikor, és hogyan könnyíti meg a fejlesztők számára, hogy beszéd-szövegeket adjanak a több hangszórót használó diarization.
 
@@ -75,7 +75,7 @@ A rendszer a hangadatokat élő módon dolgozza fel az előadói azonosító és
 
 Jelenleg a beszélgetés átirata a következő régiókban támogatja az "en-US" és a "zh-CN" használatát: *CentralUS* és *eastasia*. Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription-service.md)

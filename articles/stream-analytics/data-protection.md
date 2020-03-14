@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 34cbe5f23728c1fcff0555256575cc34b2b6a869
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079833"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299396"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
@@ -54,8 +54,6 @@ Az Stream Analytics által megőrzött személyes adatait a Storage-fiókban kel
 
 * Felhasználó által meghatározott függvények 
 
-* A bemenetek mintavételi adatainak eredményei 
-
 * Az Stream Analytics futtatókörnyezet által igényelt ellenőrzőpontok
 
 * A hivatkozási adatpillanatképek 
@@ -64,7 +62,7 @@ A Stream Analytics-feladatban használt erőforrások kapcsolati adatait is tár
 
 A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md)
 * [Azure Stream Analytics-bemenetek ismertetése](stream-analytics-add-inputs.md)

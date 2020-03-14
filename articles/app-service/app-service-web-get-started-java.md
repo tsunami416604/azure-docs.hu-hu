@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1929e78b1787e4e5d50908fd3cfc0292de8ea92b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: ed477e3c1431048d60e4a696f59aa0593e1b3f1f
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226361"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136329"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Windows rendszeren
 
@@ -59,7 +59,7 @@ Ezután adja hozzá a következő bővítménydefiníciót a `<build>` fájl `po
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.8.0</version>
+        <version>1.9.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -102,7 +102,7 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 | `WEBAPP_NAME` | Az alkalmazás neve az alkalmazás állomásneve része lesz az Azure-ban (WEBAPP_NAME. azurewebsites. net) való üzembe helyezéskor. Frissítse ezt az értéket az új App Service alkalmazás egyedi nevével, amely a Java-alkalmazást, például a *contosot*fogja üzemeltetni. |
 | `REGION` | Egy Azure-régió, ahol az alkalmazás üzemeltetve van, például *westus2*. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
 
-## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
+## <a name="deploy-the-app"></a>Az alkalmazás központi telepítése
 
 Helyezze üzembe a Java-alkalmazást az Azure-ban az alábbi paranccsal:
 
@@ -118,7 +118,7 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 

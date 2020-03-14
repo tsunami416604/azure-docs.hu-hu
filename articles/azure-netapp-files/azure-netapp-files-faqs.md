@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 0713f59889962960b4f3ad5eba58ddb7b32e95ff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78924822"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369743"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -60,7 +60,7 @@ Az összes Azure NetApp Files kötet titkosítása az FIPS 140-2 szabvány haszn
 
 Azure NetApp Files felügyeletét a szolgáltatás kezeli. Minden kötethez létrejön egy egyedi XTS-AES-256 adattitkosítási kulcs. A titkosítási kulcs hierarchiája az összes kötet kulcsának titkosítására és védelemmel való ellátására szolgál. Ezeket a titkosítási kulcsokat a rendszer soha nem titkosítatlan formában jeleníti meg vagy jelenti. A rendszer azonnal törli a titkosítási kulcsokat a kötetek törlésekor.
 
-Jelenleg a felhasználó által felügyelt kulcsok (saját kulcsok használata) nem támogatottak.
+A felhasználó által felügyelt kulcsok támogatása (saját kulcsok használata) az Azure dedikált HSM az USA keleti, USA-beli West2 és USA déli középső régiójában szabályozott módon érhető el.  Az ügyfél a anffeedback@microsoft.comhoz férhet hozzá, és a kapacitás elérhető, és a kérések jóváhagyása is megtörténik.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Megadhatom az NFS-exportálási házirend szabályait a Azure NetApp Files Service Mount-célhoz való hozzáférés szabályozásához?
 

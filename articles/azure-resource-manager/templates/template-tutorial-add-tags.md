@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: dd89d41e0980afcef30e11fac3ce5583f439662f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773179"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370712"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Oktatóanyag: Címkék hozzáadása a Resource Manager-sablonban
 
@@ -44,7 +44,7 @@ Itt az ideje, hogy üzembe helyezi a sablont, és tekintse meg az eredményeket.
 
 Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -56,10 +56,10 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addtags \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -72,7 +72,7 @@ az group deployment create \
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Válasszon ki egy erőforrást, például a Storage-fiók erőforrását. Láthatja, hogy most már rendelkezik címkékkel.

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c8978a0114caf57d01f7add0bd9357c5d0775dc
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609944"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366745"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Teljesítményfigyelés Azure Monitor naplókkal
 
@@ -33,17 +33,17 @@ Az Log Analytics-ügynök fürthöz való hozzáadásának legjobb módja az Azu
 
 3. Ha **Windows-fürtöt vagy Linux** -fürtöt hoz létre, kattintson a **Windows-kiszolgálók** lehetőségre. Ezen az oldalon megtekintheti a `workspace ID` és `workspace key` (a portálon elsődleges kulcsként jelenik meg). A következő lépéshez mindkettőre szüksége lesz.
 
-4. Futtassa a parancsot a Log Analytics-ügynök a fürtre való telepítéséhez a Cloud Shell `vmss extension set` API használatával:
+4. Futtassa a parancsot a Log Analytics-ügynök a fürtre való telepítéséhez a `vmss extension set` API használatával:
 
     Windows-fürt esetén:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
     Linux-fürtök esetén:
 
-    ```sh
+    ```azurecli
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
@@ -53,7 +53,7 @@ Az Log Analytics-ügynök fürthöz való hozzáadásának legjobb módja az Azu
 
 5. Ennek elvégzéséhez kevesebb, mint 15 percnek kell lennie ahhoz, hogy sikeresen hozzáadja az ügynököt a csomópontokhoz. A `az vmss extension list` API használatával ellenőrizheti, hogy az ügynökök hozzá lettek-e adva:
 
-    ```sh
+    ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 

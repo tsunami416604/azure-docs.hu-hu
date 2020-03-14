@@ -1,23 +1,23 @@
 ---
-title: Egyéni parancsok teljesítése az ügyfélen a Speech SDK-val
+title: Az ügyfél parancsainak teljesítése a Speech SDK-val
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan kezelheti az egyéni parancsok tevékenységeit az ügyfélen a Speech SDK-val.
+description: Ez a cikk bemutatja, hogyan kezelheti az egyéni parancsok tevékenységeit egy ügyfélen a Speech SDK-val.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156505"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367744"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Útmutató: parancsok teljesítése az ügyfélen a Speech SDK-val (előzetes verzió)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Az ügyfél parancsainak teljesítése a Speech SDK-val (előzetes verzió)
 
 A feladatok egyéni parancsok használatával történő elvégzéséhez egyéni adattartalomot küldhet egy csatlakoztatott ügyfél-eszközre.
 

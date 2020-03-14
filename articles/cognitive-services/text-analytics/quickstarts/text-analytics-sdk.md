@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/12/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 5a0856bb2fc73b7095b0b2552efe0ccc91ae3f59
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1f5658c6fa52caa67de1f60c50048014dd77af13
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241723"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371321"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -44,7 +44,6 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 
 > [!IMPORTANT]
 > * Ez a rövid útmutató csak az Text Analytics ügyféloldali kódtár `3.0-preview` verziójára vonatkozik, amely a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és a [megnevezett entitások felismerésére](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)szolgáló nyilvános előzetes verziót tartalmaz.
->    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]

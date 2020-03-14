@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: c71643adf3b34954ea5ce020351559abbfc60fab
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251257"
+ms.locfileid: "79298937"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -59,14 +59,14 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="comparing-streaming-types"></a>Adatfolyam-típusok összehasonlítása
 
-Funkció|Standard|Premium
+Szolgáltatás|Standard|Prémium
 ---|---|---
-Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
-A számlázás arányosan történik| Napi|Napi
+A számlázás arányosan történik| Naponta|Naponta
 Dinamikus titkosítás|Igen|Igen
 Dinamikus csomagolás|Igen|Igen
-Méretezés|Automatikus méretezés a célként megadott átviteli sebességgel.|További SUs
+Beosztás|Automatikus méretezés a célként megadott átviteli sebességgel.|További SUs
 IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Igen
 Progresszív letöltés|Igen|Igen
 Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többségét ajánljuk.|Professzionális használat.
@@ -161,6 +161,6 @@ Lásd az alábbi cikkeket:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.
+[Streamvégpontok kezelése](manage-streaming-endpoints-howto.md)

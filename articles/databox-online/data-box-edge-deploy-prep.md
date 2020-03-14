@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5192816ca7be47ecb5e602e46dff16951f7475ee
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239013"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370270"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Oktatóanyag: Felkészülés a Azure Data Box Edge üzembe helyezésére  
 
@@ -25,6 +25,7 @@ A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogo
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
+>
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
@@ -52,14 +53,14 @@ A következő konfigurációs előfeltételek vonatkoznak a Data Box Edge erőfo
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- A Microsoft Azure-előfizetés engedélyezve van egy Data Box Edge erőforráshoz. Az utólagos elszámolású előfizetések nem támogatottak.
-- Tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén a Data Box Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások számára.
+* A Microsoft Azure-előfizetés engedélyezve van egy Azure Stack Edge-erőforráshoz. Győződjön meg arról, hogy olyan támogatott előfizetést használt, mint például a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/overview/sales-number/), a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén a Data Box Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások számára.
 
-    - Bármilyen Data Box Edge/Data Box Gateway erőforrás létrehozásához jogosultságot kell biztosítania a közreműködői (vagy magasabb) hatókörnek az erőforráscsoport szintjén. Győződjön meg arról is, hogy a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
-    - Ha IoT Hub erőforrást szeretne létrehozni, győződjön meg arról, hogy a Microsoft. Devices szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
-    - A Storage-fiók erőforrásának létrehozásához ismét közreműködői vagy magasabb szintű hozzáférési hatókörre van szükség az erőforráscsoport szintjén. Az Azure Storage alapértelmezés szerint regisztrált erőforrás-szolgáltató.
-- Rendszergazdai vagy felhasználói hozzáféréssel rendelkezik Azure Active Directory Graph APIhoz. További információ: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-- Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
+  * Bármilyen Data Box Edge/Data Box Gateway erőforrás létrehozásához jogosultságot kell biztosítania a közreműködői (vagy magasabb) hatókörnek az erőforráscsoport szintjén. Győződjön meg arról is, hogy a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
+  * Ha IoT Hub erőforrást szeretne létrehozni, győződjön meg arról, hogy a Microsoft. Devices szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
+  * A Storage-fiók erőforrásának létrehozásához ismét közreműködői vagy magasabb szintű hozzáférési hatókörre van szükség az erőforráscsoport szintjén. Az Azure Storage alapértelmezés szerint regisztrált erőforrás-szolgáltató.
+* Rendszergazdai vagy felhasználói hozzáféréssel rendelkezik Azure Active Directory Graph APIhoz. További információ: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
 
 ### <a name="for-the-data-box-edge-device"></a>Data Box Edge-eszköz esetén
 

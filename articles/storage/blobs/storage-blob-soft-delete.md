@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 360930b708d6358692de2af7325701b73d5cf9c9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972729"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370559"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Az Azure Storage-Blobok Soft delete
 
 Az Azure Storage mostantól lágy törlést biztosít a blob-objektumokhoz, így könnyebben lehet helyreállítani az adatokat, amikor az alkalmazás vagy más Storage-fiók felhasználója hibásan módosítja vagy törölte azokat.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-soft-delete-works"></a>A Soft delete működése
 
@@ -76,13 +78,13 @@ A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor e
 |--------------------|---------------|-------------|--------------------|
 | [Törlés](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
 | [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve a benne található összes blobot is. | Nincs változás. A törölt tárolóban lévő Blobok nem lesznek helyreállítva. |
-| [Put Blob](/rest/api/storageservices/put-blob) | Blobok letiltása, hozzáfűzése és lapja | Új blob létrehozása vagy egy meglévő blob cseréje egy tárolón belül | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az és csak akkor, ha az azonos típusú blobtal (blokk, Hozzáfűzés vagy lap) van lecserélve. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
-| [Delete Blob](/rest/api/storageservices/delete-blob) | Blobok letiltása, hozzáfűzése és lapja | A törléshez a blob vagy a blob pillanatképét jelöli. A blob vagy pillanatkép később törlődik a Garbage gyűjtemény során | Ha egy blob-pillanatkép törlésére használatos, a pillanatképet a rendszer a törlésre kijelöltként jelöli meg. Ha egy blob törlésére használatos, a blob törlésre kerül. |
-| [Copy Blob](/rest/api/storageservices/copy-blob) | Blobok letiltása, hozzáfűzése és lapja | Egy forrás blobot másol egy célként megadott blobba ugyanabban a Storage-fiókban vagy egy másik Storage-fiókban. | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az és csak akkor, ha az azonos típusú blobtal (blokk, Hozzáfűzés vagy lap) van lecserélve. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
-| [Put blokk](/rest/api/storageservices/put-block) | Blokkblobok | Létrehoz egy új blokkot, amelyet egy blokk blob részeként kíván véglegesíteni. | Ha egy blokknak az aktív blobhoz való elvégzésére van szükség, nincs változás. Ha egy blokkot töröl egy olyan blobra, amely nem törlődik, egy új blob jön létre, és a rendszer automatikusan létrehoz egy pillanatképet a helyreállított blob állapotának rögzítéséhez. |
-| [Tiltási lista](/rest/api/storageservices/put-block-list) | Blokkblobok | Egy blobot véglegesít a blokk-blobot alkotó blokk-azonosítók megadásával. | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az egy blokkos blob. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
-| [Oldal elhelyezése](/rest/api/storageservices/put-page) | Lapblobok | Különböző lapokat ír egy oldal Blobba. | Nincs változás. A rendszer nem menti az oldal blobjának a művelettel felülírt vagy törölt lapjait, és nem helyreállítható. |
-| [Blokk hozzáfűzése](/rest/api/storageservices/append-block) | Hozzáfűző blobok | Adatblokkot ír egy hozzáfűző blob végére | Nincs változás. |
+| [BLOB elhelyezése](/rest/api/storageservices/put-blob) | Blobok letiltása, hozzáfűzése és lapja | Új blob létrehozása vagy egy meglévő blob cseréje egy tárolón belül | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az és csak akkor, ha az azonos típusú blobtal (blokk, Hozzáfűzés vagy lap) van lecserélve. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
+| [BLOB törlése](/rest/api/storageservices/delete-blob) | Blobok letiltása, hozzáfűzése és lapja | A törléshez a blob vagy a blob pillanatképét jelöli. A blob vagy pillanatkép később törlődik a Garbage gyűjtemény során | Ha egy blob-pillanatkép törlésére használatos, a pillanatképet a rendszer a törlésre kijelöltként jelöli meg. Ha egy blob törlésére használatos, a blob törlésre kerül. |
+| [BLOB másolása](/rest/api/storageservices/copy-blob) | Blobok letiltása, hozzáfűzése és lapja | Egy forrás blobot másol egy célként megadott blobba ugyanabban a Storage-fiókban vagy egy másik Storage-fiókban. | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az és csak akkor, ha az azonos típusú blobtal (blokk, Hozzáfűzés vagy lap) van lecserélve. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
+| [Put blokk](/rest/api/storageservices/put-block) | Blobok letiltása | Létrehoz egy új blokkot, amelyet egy blokk blob részeként kíván véglegesíteni. | Ha egy blokknak az aktív blobhoz való elvégzésére van szükség, nincs változás. Ha egy blokkot töröl egy olyan blobra, amely nem törlődik, egy új blob jön létre, és a rendszer automatikusan létrehoz egy pillanatképet a helyreállított blob állapotának rögzítéséhez. |
+| [Tiltási lista](/rest/api/storageservices/put-block-list) | Blobok letiltása | Egy blobot véglegesít a blokk-blobot alkotó blokk-azonosítók megadásával. | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az egy blokkos blob. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
+| [Oldal elhelyezése](/rest/api/storageservices/put-page) | Oldal Blobok | Különböző lapokat ír egy oldal Blobba. | Nincs változás. A rendszer nem menti az oldal blobjának a művelettel felülírt vagy törölt lapjait, és nem helyreállítható. |
+| [Blokk hozzáfűzése](/rest/api/storageservices/append-block) | Blobok hozzáfűzése | Adatblokkot ír egy hozzáfűző blob végére | Nincs változás. |
 | [BLOB tulajdonságainak beállítása](/rest/api/storageservices/set-blob-properties) | Blobok letiltása, hozzáfűzése és lapja | Beállítja a blobhoz definiált Rendszertulajdonságok értékeit. | Nincs változás. A felülírt blob-tulajdonságok nem helyreállítható. |
 | [BLOB metaadatainak beállítása](/rest/api/storageservices/set-blob-metadata) | Blobok letiltása, hozzáfűzése és lapja | A megadott blobhoz tartozó felhasználó által definiált metaadatokat állítja be egy vagy több név-érték párokként. | Nincs változás. A felülírt blob-metaadatok nem helyreállítható. |
 
@@ -146,11 +148,11 @@ Az Azure Blob Storage díjszabásával kapcsolatos további információkért te
 
 Amikor először kapcsolja be a Soft delete szolgáltatást, javasoljuk, hogy használjon egy kis megőrzési időtartamot, hogy jobban megértse, hogyan befolyásolja a szolgáltatás a számlát.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Első lépések
 
 A következő lépések bemutatják, hogyan kezdheti el a Soft deletet.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 A Blobok törlésének engedélyezése a Storage-fiókban Azure Portal használatával:
 
@@ -190,7 +192,7 @@ Miután visszavonta egy blob pillanatképének törlését, az **előléptetés*
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -227,7 +229,7 @@ A következő parancs használatával megkeresheti az aktuális helyreállíthat
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="clitabazure-cli"></a>[Parancssori felület](#tab/azure-CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/azure-CLI)
 
 A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
 
@@ -241,7 +243,7 @@ A Soft delete bekapcsolásának ellenőrzéséhez használja a következő paran
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
 
@@ -259,7 +261,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
 
@@ -307,7 +309,7 @@ blockBlob.StartCopy(copySource);
 
 Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül módosította vagy törölte az adatait, a rendszer a Soft delete bekapcsolását javasolja. Ha engedélyezi a gyakori felülírású adatok törlését, megnövelheti a tárolási kapacitást, és a Blobok listázása nagyobb késést eredményezhet. Ezt a további költségeket és késést úgy csökkentheti, ha a gyakran felülírt, különálló Storage-fiókban tárolja azokat, amelyekben a Soft delete le van tiltva. 
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 ### <a name="for-which-storage-services-can-i-use-soft-delete"></a>Mely tárolási szolgáltatásokhoz használhatom a Soft delete szolgáltatást?
 
@@ -366,7 +368,7 @@ A Soft delete előnyeit kihasználhatja a használt API-verziótól függetlenü
 ## <a name="next-steps"></a>Következő lépések
 
 * [.NET-mintakód](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
-* [A Blob szolgáltatás REST API-ja](/rest/api/storageservices/blob-service-rest-api)
+* [BLOB Service REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Azure Storage-replikáció](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Magasan elérhető alkalmazások tervezése RA-GRS használatával](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

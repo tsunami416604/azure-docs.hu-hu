@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467138"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367992"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interaktív lekérdezési Apache Hive adatai megjelenítése a Microsoft Power BI használatával közvetlen lekérdezéssel a HDInsight-ben
 
@@ -26,7 +26,7 @@ Az [Apache HIVE ODBC-illesztőt](../hadoop/apache-hadoop-connect-hive-power-bi.m
 ## <a name="prerequisites"></a>Előfeltételek
 A cikk végrehajtása előtt a következő elemeket kell megadnia:
 
-* **HDInsight-fürt**. A fürt lehet egy Apache Hive vagy egy újonnan kiadott interaktív lekérdezési fürttel rendelkező HDInsight-fürt. Fürtök létrehozásával kapcsolatban lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* **HDInsight-fürt**. A fürt lehet egy Apache Hive vagy egy újonnan kiadott interaktív lekérdezési fürttel rendelkező HDInsight-fürt. Fürtök létrehozásával kapcsolatban lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * **[Microsoft Power bi Desktop](https://powerbi.microsoft.com/desktop/)** . A másolást a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45331)töltheti le.
 
 ## <a name="load-data-from-hdinsight"></a>Adatok betöltése a HDInsight
@@ -75,7 +75,7 @@ Folytassa az utolsó eljárással.
 
 3. Bontsa ki a térképet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan jelenítheti meg a HDInsight adatait a Microsoft Power BI használatával.  Az adatvizualizációval kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * Az [Azure HDInsight használatával megjelenítheti a Microsoft Power BI Apache Hivei adataival](../hadoop/apache-hadoop-connect-hive-power-bi.md). 

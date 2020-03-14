@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132869"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202144"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Machine Learning Azure Event Gridi esemény sémája
 
@@ -30,6 +30,7 @@ Azure Machine Learning a következő típusú eseményeket bocsátja ki:
 | Microsoft. MachineLearningServices. ModelDeployed | Akkor következik be, amikor a modell (ek) sikeresen telepítve lett egy végpontra. |
 | Microsoft. MachineLearningServices. RunCompleted | A Futtatás sikeres befejeződése után következik be. |
 | Microsoft. MachineLearningServices. DatasetDriftDetected | Akkor következik be, amikor egy adatkészlet drift figyelője észleli a driftet. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Akkor következik be, amikor a futtatási állapot "Failed" értékre változik. |
 
 ## <a name="the-contents-of-an-event-response"></a>Egy eseményre adott válasz tartalma
 
@@ -148,20 +149,60 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 }]
 ```
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft. MachineLearningServices. RunStatusChanged esemény
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
+  "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "ExperimentName": "automl-local-regression",
+    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "RunType": null,
+    "RunTags": {},
+    "RunProperties": {
+        "runTemplate": "automl_child",
+        "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
+        "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
+        "training_percent": "100",
+        "predicted_cost": "0.062226144097381045",
+        "iteration": "5",
+        "run_template": "automl_child",
+        "run_preprocessor": "StandardScalerWrapper",
+        "run_algorithm": "LassoLars",
+        "conda_env_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/conda_env_v_1_0_0.yml",
+        "model_name": "AutoMLad912b2d65",
+        "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
+        "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
+    },
+   "RunStatus": "failed"
+   },
+  "dataVersion": "",
+  "metadataVersion": "1"
+}]
+```
+
+
+
+
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
-| subject | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
-| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
-| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | BLOB Storage-események |
-| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| topic | Karakterlánc | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
+| subject | Karakterlánc | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| eventType | Karakterlánc | Az eseményforrás egyik regisztrált eseménytípus. |
+| eventTime | Karakterlánc | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | Karakterlánc | Az esemény egyedi azonosítója. |
+| data | object | BLOB Storage-események |
+| dataVersion | Karakterlánc | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | Karakterlánc | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 
 Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal rendelkezik:
 
@@ -169,45 +210,56 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ModelName | sztring | A regisztrált modell neve. |
-| ModelVersion | int | A regisztrált modell verziója. |
-| ModelTags | objektum | A regisztrált modell címkéi. |
-| ModelProperties | objektum | A regisztrált modell tulajdonságai. |
+| ModelName | Karakterlánc | A regisztrált modell neve. |
+| ModelVersion | Karakterlánc | A regisztrált modell verziója. |
+| ModelTags | object | A regisztrált modell címkéi. |
+| ModelProperties | object | A regisztrált modell tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ServiceName | sztring | A telepített szolgáltatás neve. |
-| ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
-  | ModelIds | sztring | A modell-azonosítók vesszővel tagolt listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
-| ServiceTags | objektum | A telepített szolgáltatás címkéi. |
-| ServiceProperties | objektum | A telepített szolgáltatás tulajdonságai. |
+| ServiceName | Karakterlánc | A telepített szolgáltatás neve. |
+| ServiceComputeType | Karakterlánc | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
+  | ModelIds | Karakterlánc | A modell-azonosítók vesszővel tagolt listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
+| ServiceTags | object | A telepített szolgáltatás címkéi. |
+| ServiceProperties | object | A telepített szolgáltatás tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
-| ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
-| RunId | sztring | A befejezett Futtatás azonosítója. |
-| RunType | sztring | A befejezett Futtatás típusa. |
-| RunTags | objektum | A befejezett futtatások címkéi. |
-| RunProperties | objektum | A befejezett Futtatás tulajdonságai. |
+| ExperimentId | Karakterlánc | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
+| ExperimentName | Karakterlánc | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| RunId | Karakterlánc | A befejezett Futtatás azonosítója. |
+| RunType | Karakterlánc | A befejezett Futtatás típusa. |
+| RunTags | object | A befejezett futtatások címkéi. |
+| RunProperties | object | A befejezett Futtatás tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| DataDriftId | sztring | Az eseményt kiváltó adatdrift-figyelő azonosítója. |
-| DataDriftName | sztring | Az eseményt kiváltó adatdrift-figyelő neve. |
-| RunId | sztring | Az adateltolódást észlelő Futtatás azonosítója. |
-| BaseDatasetId | sztring | A drift észleléséhez használt alapadatkészlet azonosítója. |
-| TargetDatasetId | sztring | A drift észleléséhez használt cél adatkészlet azonosítója. |
+| DataDriftId | Karakterlánc | Az eseményt kiváltó adatdrift-figyelő azonosítója. |
+| DataDriftName | Karakterlánc | Az eseményt kiváltó adatdrift-figyelő neve. |
+| RunId | Karakterlánc | Az adateltolódást észlelő Futtatás azonosítója. |
+| BaseDatasetId | Karakterlánc | A drift észleléséhez használt alapadatkészlet azonosítója. |
+| TargetDatasetId | Karakterlánc | A drift észleléséhez használt cél adatkészlet azonosítója. |
 | DriftCoefficient | double | Az eseményt kiváltó együtthatós eredmény. |
 | StartTime | dátum/idő | A cél adatkészlet idősorozatának kezdési időpontja, amely a drift észlelését eredményezte.  |
 | EndTime | dátum/idő | A cél adatkészlet idősorozatának befejezési időpontja, amely a drift észlelését eredményezte. |
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
+| ExperimentId | Karakterlánc | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
+| ExperimentName | Karakterlánc | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| RunId | Karakterlánc | A befejezett Futtatás azonosítója. |
+| RunType | Karakterlánc | A befejezett Futtatás típusa. |
+| RunTags | object | A befejezett futtatások címkéi. |
+| RunProperties | object | A befejezett Futtatás tulajdonságai. |
+| RunStatus | Karakterlánc | A Futtatás állapota. |
 
 ## <a name="next-steps"></a>További lépések
 
