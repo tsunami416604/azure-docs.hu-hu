@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393408"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251621"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk a különböző típusú adatforrások és a [csoportos adatelemzési folyamat (TDSP)](overview.md)által kezelhető célzott forgatókönyvek körét ismerteti. A TDSP rendszerezett megközelítést biztosít olyan munkacsoportok számára az intelligens alkalmazások készítéséhez. Az itt bemutatott forgatókönyveket mutatnak be lehetőségek az adatok feldolgozása a munkafolyamat, amely a adatjellemzők, az adatforrás helyének és az Azure-beli cél tárházak függ.

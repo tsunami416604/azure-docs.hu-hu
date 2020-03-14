@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393585"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249099"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Ügynök-adatforrások a Azure Monitorban
 Az ügynököktől Azure Monitor gyűjtött adatokat a konfigurált adatforrások határozzák meg.  Az ügynököktől származó adatokat a rendszer egy rekordhalmazsal rendelkező [naplófájlként](data-platform-logs.md) tárolja.  Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.

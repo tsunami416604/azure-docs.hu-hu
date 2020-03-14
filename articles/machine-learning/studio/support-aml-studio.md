@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: ee4ef451888638c0ba33d7938c88b836b28f3fe5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7146db33368877b8eb029e106559477376c5953
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894633"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217909"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Támogatás és képzés a Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a cikk a Azure Machine Learning Studio (klasszikus) és a problémák és kérdések támogatásával kapcsolatos tudnivalókat ismerteti.
 
@@ -27,13 +29,13 @@ Tekintse meg a tanulási segédanyagokat:
 + [Kezdő adatelemzési videók](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 + [Algoritmus – Cheat Sheets](../studio/algorithm-cheat-sheet.md) 
 
-## <a name="submit-doc-feedback"></a>Doc-visszajelzés küldése
+## <a name="submit-doc-feedback"></a>Doc visszajelzés elküldése
 
 Az egyes cikkek végén található **tartalom-visszajelzési** gombbal további tanulási anyagokra vonatkozó **kéréseket küldhet** .
 
 ## <a name="get-service-support"></a>Szolgáltatás támogatásának beolvasása
 
-Tekintse meg a következő támogatási forrásokat:
+Tekintse meg ezeket erőforrások támogatása:
 
 + **Technikai támogatás Azure-ügyfelek számára**: [támogatási kérések elküldése és kezelése](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) a Azure Portalon keresztül.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827967"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214159"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Több-bérlős SaaS-alkalmazásban lévő többbérlős Azure SQL-adatbázis teljesítményének figyelése és kezelése
 
@@ -24,7 +24,7 @@ Ebben az oktatóanyagban az SaaS-alkalmazásokban használt fő teljesítmény-k
 
 A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás egy több-bérlős adatmodellt használ, ahol a bérlői AZONOSÍTÓk az esetlegesen több adatbázis között vannak elosztva. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ahhoz, hogy használhassa ezt a tipikus adatbázis-használati mintát, az adatbázisok fel-és leskálázásával optimalizálható a megoldás díja. Ilyen típusú mintázat esetén fontos az adatbázis-erőforrások használatának figyelése, hogy a terhelések ésszerűen egyensúlyban legyenek a potenciálisan több adatbázis között. Azt is biztosítania kell, hogy az egyes adatbázisok rendelkezzenek megfelelő erőforrásokkal, és ne verjék a [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) -korlátozásokat. Ez az oktatóanyag az adatbázisok figyelésének és kezelésének módjait mutatja be, valamint azt, hogyan végezheti el a javítási műveleteket a számítási feladatok változásaira reagálva.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > 
@@ -33,10 +33,10 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Az adatbázis vertikális felskálázása a megnövekedett adatbázis-terhelésre reagálva
 > * Bérlő kiépítése egyetlen bérlős adatbázisba
 
-Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
+Az oktatóanyag teljesítéséhez a következő előfeltételeknek kell teljesülnie:
 
 * A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Ha kevesebb mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése és megismerése](saas-multitenantdb-get-started-deploy.md) című részt
-* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>A SaaS teljesítmény-felügyeleti mintáinak bemutatása
 
@@ -47,11 +47,11 @@ Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és
 * Annak elkerülése érdekében, hogy a teljesítmény manuális figyelése megtörténjen, a leghatékonyabb olyan riasztások beállítása, amelyek akkor lépnek érvénybe, **amikor az adatbázisok a normál tartományokból kóborak**.
 * Egy adatbázis számítási méretének rövid távú ingadozására való reagáláshoz a **DTU szintje felfelé vagy lefelé is méretezhető**. Ha ez az ingadozás rendszeres vagy kiszámítható módon történik, **az adatbázis méretezése automatikusan ütemezhető**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
 * A hosszú távú ingadozásokra vagy a bérlők változásaira való reagáláshoz az **egyes bérlők áthelyezhetők más adatbázisba**.
-* Az *egyes* bérlők betöltésének rövid távú növekedésére való reagáláshoz az **egyes bérlők kivehetők egy adatbázisból, és egyedi számítási méretet rendelhetnek hozzájuk**. A terhelés csökkentése után a bérlő visszaküldhető a több-bérlős adatbázisba. Ha ezt előre ismeri, a bérlők előre jelleggel, így biztosítva, hogy az adatbázis mindig rendelkezik a szükséges erőforrásokkal, és hogy elkerülje a több-bérlős adatbázis többi bérlőjét is. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
+* Az *egyes* bérlők betöltésének rövid távú növekedésére való reagáláshoz az **egyes bérlők kivehetők egy adatbázisból, és egyedi számítási méretet rendelhetnek hozzájuk**. A terhelés csökkentése után a bérlő visszaküldhető a több-bérlős adatbázisba. Ha ezt előre ismeri, a bérlők áthelyezhetők a megelőző jelleggel, így biztosítva, hogy az adatbázis mindig rendelkezik a szükséges erőforrásokkal, és hogy elkerülje a több-bérlős adatbázisban lévő többi bérlőre gyakorolt hatást. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
 
 Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. SQL Database esetében a figyelés és a riasztás az adatbázisokon érhető el. Ez a beépített figyelési és riasztási erőforrás-specifikus megoldás, ezért érdemes kis mennyiségű erőforrást használni, de sok erőforrás használata esetén nem célszerű.
 
-Nagy mennyiségű forgatókönyv esetén, ahol számos erőforrással dolgozik, [Azure monitor naplókat](https://azure.microsoft.com/services/log-analytics/) is használhat. Ez egy különálló Azure-szolgáltatás, amely egy Log Analytics munkaterületen összegyűjtött diagnosztikai naplók és telemetria elemzését teszi lehetővé. Azure Monitor naplók több szolgáltatásból is gyűjthetik a telemetria, és a riasztások lekérdezésére és beállítására használhatók.
+Nagy mennyiségű forgatókönyv esetén, ahol számos erőforrással dolgozik, [Azure monitor naplókat](https://azure.microsoft.com/services/log-analytics/) is használhat. Ez egy különálló Azure-szolgáltatás, amely a Log Analytics munkaterületen összegyűjtött, kibocsátott naplók elemzését teszi lehetővé. Azure Monitor naplók több szolgáltatásból is gyűjthetik a telemetria, és a riasztások lekérdezésére és beállítására használhatók.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás forráskódjának és parancsfájljainak beszerzése
 
@@ -183,9 +183,9 @@ Mivel a méretezés egy, a felügyeleti API-n keresztül könnyen meghívható f
 
 Ha az összesített bérlői használat kiszámítható használati mintákat követ, a Azure Automation segítségével ütemezhet egy adatbázist egy ütemezett felfelé és lefelé. Tegyük fel például, hogy a 6. és a (z) időpontot lefelé kell méretezni a hétköznapokon, ha tudja, hogy az erőforrásokra vonatkozó követelmények csökkennek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Több-bérlős adatbázis használatának szimulálása egy megadott Load Generator futtatásával

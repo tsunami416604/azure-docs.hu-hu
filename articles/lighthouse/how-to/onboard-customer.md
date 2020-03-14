@@ -1,14 +1,14 @@
 ---
 title: Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azure-beli delegált erőforrás-kezelési szolgáltatásba, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők.
-ms.date: 01/20/2020
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 7cf0ff1d64603215a9607f5a25ebc4077f9fa9da
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270679"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -22,9 +22,6 @@ Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társ�
 > Az ügyfelek akkor is bevonhatók, ha az Azure Marketplace-en közzétett, felügyelt szolgáltatások (nyilvános vagy privát) vásárlási ajánlatot vásárolnak. További információ: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-](publish-managed-services-offers.md)en. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlattal együtt is használhatja.
 
 A bevezetési folyamathoz a szolgáltató bérlője és az ügyfél bérlője között végrehajtandó műveletek szükségesek. A fenti lépéseket a cikk ismerteti.
-
-> [!IMPORTANT]
-> Az Azure-beli delegált erőforrás-kezeléshez jelenleg nem lehet előfizetést (vagy erőforráscsoportot) előkészíteni, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha regisztrálva van egy előfizetés a **Microsoft. ManagedServices** erőforrás-szolgáltatóval való bevezetéshez, jelenleg nem fog tudni Databricks-munkaterületet létrehozni az adott előfizetéshez.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Bérlői és előfizetési adatok összegyűjtése
 
@@ -41,7 +38,7 @@ Ha még nem rendelkezik ezekkel az azonosító értékekkel, a következő módo
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A bérlő AZONOSÍTÓját a Azure Portal jobb felső sarkában lévő fiók neve fölé helyezve, vagy a **könyvtár váltása**lehetőség kiválasztásával lehet látni. A bérlői azonosító kiválasztásához és másolásához keressen a "Azure Active Directory" kifejezésre a portálon, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki a **címtár-azonosító** mezőben megjelenő értéket. Az előfizetés ügyfél-bérlőben történő megkereséséhez keressen rá az "előfizetések" kifejezésre, majd válassza ki a megfelelő előfizetés-azonosítót.
+A bérlő AZONOSÍTÓját a Azure Portal jobb felső sarkában lévő fiók neve fölé helyezve, vagy a **könyvtár váltása**lehetőség kiválasztásával lehet látni. A bérlői azonosító kiválasztásához és másolásához keressen a "Azure Active Directory" kifejezésre a portálon, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki a **címtár-azonosító** mezőben megjelenő értéket. Ha szeretné megtalálni egy ügyfélbérlő előfizetés-azonosítóját, keressen rá az „Előfizetések” kifejezésre, majd válassza ki a megfelelő előfizetés-azonosítót.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -98,7 +95,7 @@ Az engedélyek definiálásához ismernie kell az egyes felhasználók, felhaszn
 az ad group list --query "[?displayName == '<yourGroupName>'].objectId" --output tsv
 
 # To retrieve the objectId for an Azure AD user
-az ad user show --upn-or-object-id "<yourUPN>" –-query "objectId" --output tsv
+az ad user show --id "<yourUPN>" --query "objectId" --output tsv
 
 # To retrieve the objectId for an SPN
 az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output tsv
@@ -111,7 +108,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
 
-Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](../../azure-resource-manager/index.yml) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára, amikor a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) megtekinti az ajánlat részleteit.
+Az ügyfél beléptetéséhez létre kell hoznia az ajánlatához egy [Azure Resource Manager](../../azure-resource-manager/index.yml)-sablont a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára, amikor a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) megtekinti az ajánlat részleteit.
 
 |Mező  |Meghatározás  |
 |---------|---------|

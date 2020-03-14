@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
 ms.openlocfilehash: b4922326b92efa88552eb100488a29fc53e1f914
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386396"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272317"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és más szolgáltatásokkal
 
@@ -201,7 +201,7 @@ A csomópont-használatért díjat számítunk fel, amíg a fürt létezik. A sz
 
 Mindegyik fürt típusa saját számú csomóponttal, csomópontok terminológiával és alapértelmezett virtuálisgép-mérettel rendelkezik. Az alábbi táblázatban az egyes csomópont-típusok csomópontjainak száma zárójelben van.
 
-| Típus | Csomópontok | Diagram |
+| Típus | Csomópontok | Ábra |
 | --- | --- | --- |
 | Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |![HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |

@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan engedélyezheti az Azure-fájlmegosztás SMB-n 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/11/2020
 ms.author: rogarana
-ms.openlocfilehash: 1f904435622c8128810bb0e381308c8a308dd360
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d9d2e06cc3beae8a7bb8ea1b4eee15fb1641ddd4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129000"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255222"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Az Azure-fájlmegosztás SMB-en keresztüli Active Directory hitelesítésének engedélyezése
 
@@ -129,7 +129,8 @@ Connect-AzAccount
 #Select the target subscription for the current session
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
-#Register the target storage account with your active directory environment under the target OU
+#Register the target storage account with your active directory environment under the target OU (for example: "OU=ComputersOU,DC=prod,DC=corp,DC=contoso,DC=com")
+#You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
@@ -150,7 +151,7 @@ Ha ezzel a kulccsal rendelkezik, hozzon létre egy szolgáltatás-vagy számít�
 
 Ha a szervezeti egysége kikényszeríti a jelszó lejáratát, akkor a jelszó maximális kora előtt frissítenie kell a jelszót, hogy megakadályozza a hitelesítési hibákat az Azure-fájlmegosztás elérésekor. További részletek: az [ad-fiók jelszavának frissítése](#update-ad-account-password) .
 
-Tartsa meg az újonnan létrehozott fiók biztonsági azonosítóját, a következő lépéshez szüksége lesz rá.
+Tartsa meg az újonnan létrehozott fiók biztonsági azonosítóját, a következő lépéshez szüksége lesz rá. Az imént létrehozott, a Storage-fiókot képviselő AD-identitást nem kell szinkronizálni az Azure AD-vel.
 
 ##### <a name="c-enable-the-feature-on-your-storage-account"></a>c. A szolgáltatás engedélyezése a Storage-fiókban
 

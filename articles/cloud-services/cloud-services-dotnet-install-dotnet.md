@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214721"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése Azure Cloud Services-szerepkörökre
 Ez a cikk azt ismerteti, hogyan telepíthet olyan .NET-keretrendszer-verziókat, amelyek nem az Azure vendég operációs rendszerhez tartoznak. A .NET-kiszolgáló és a feldolgozói szerepkörök konfigurálásához használhatja a .NET-et a vendég operációs rendszeren.
 
-Telepítheti például a .NET 4.6.2-t a vendég operációs rendszer 4-es verziójára, amely nem a .NET 4,6-es kiadásával érhető el. (A vendég operációs rendszer 5. termékcsaládja a .NET 4,6-es verzióval rendelkezik.) Az Azure vendég operációs rendszer kiadásaival kapcsolatos legfrissebb információkért tekintse meg az [Azure vendég operációs rendszer kiadási hírei](cloud-services-guestos-update-matrix.md)című témakört. 
+A .NET-keretrendszer 4.6.2 telepíthető például a vendég operációs rendszer 4-es verziójára, amely a .NET-keretrendszer 4,6-es verziójának semmilyen kiadására nem alkalmas. (A vendég operációs rendszer 5. termékcsaládja a .NET-keretrendszer 4,6-es verziójával érhető el.) Az Azure vendég operációs rendszer kiadásaival kapcsolatos legfrissebb információkért tekintse meg az [Azure vendég operációs rendszer kiadási hírei](cloud-services-guestos-update-matrix.md)című témakört. 
 
 >[!IMPORTANT]
->Az Azure SDK 2,9 korlátozást tartalmaz a .NET 4,6 üzembe helyezésére a vendég operációsrendszer-család 4-es vagy korábbi verziójában. A korlátozáshoz tartozó javítás a [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) webhelyen érhető el.
+>Az Azure SDK 2,9 korlátozást tartalmaz a .NET-keretrendszer 4,6 telepítéséhez a vendég operációsrendszer-család 4-es vagy korábbi verziójában. A korlátozáshoz tartozó javítás a [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) webhelyen érhető el.
 
 Ha a .NET-et a webes és feldolgozói szerepkörökön szeretné telepíteni, foglalja bele a .NET web Installert a Cloud Service-projekt részeként. Indítsa el a telepítőt a szerepkör indítási feladatainak részeként. 
 
 ## <a name="add-the-net-installer-to-your-project"></a>A .NET-telepítő hozzáadása a projekthez
 A .NET-keretrendszerhez készült web Installer letöltéséhez válassza ki a telepíteni kívánt verziót:
 
-* [.NET 4,8 web Installer](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET 4.7.2 web Installer](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET-keretrendszer 4,8 web Installer](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET-keretrendszer 4.7.2 web Installer](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET-keretrendszer 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
 
 A telepítő hozzáadása *webes* szerepkörhöz:
   1. **Megoldáskezelő**a Cloud Service-projekt **szerepkörei** alatt kattintson a jobb gombbal a *webes* szerepkörre, és válassza a > **új mappa** **hozzáadása** lehetőséget. Hozzon létre egy **bin**nevű mappát.
@@ -44,7 +44,7 @@ A telepítő hozzáadása *feldolgozói* szerepkörhöz:
 Ha a fájlokat így hozzáadja a szerepkör-tartalom mappájához, azok automatikusan hozzáadódnak a Cloud Service-csomaghoz. Ezután a rendszer a virtuális gép egy konzisztens helyére telepíti a fájlokat. Ismételje meg ezt a folyamatot a felhőalapú szolgáltatás minden webes és feldolgozói szerepköre esetében, hogy minden szerepkör rendelkezik a telepítő másolatával.
 
 > [!NOTE]
-> A .NET-4.6.2 akkor is telepítenie kell a Cloud Service-szerepkörbe, ha az alkalmazás a .NET 4,6-et célozza meg. A vendég operációs rendszer tartalmazza a Tudásbázis [3098779-es frissítését](https://support.microsoft.com/kb/3098779) és a 3097997-es [frissítést](https://support.microsoft.com/kb/3097997). A .NET-alkalmazások futtatásakor problémák léphetnek fel, ha a .NET 4,6 telepítve van a Tudásbázis frissítésein. Ezen problémák elkerülése érdekében telepítse a .NET 4.6.2-et a 4,6-es verzió helyett. További információt a [tudásbázis 3118750](https://support.microsoft.com/kb/3118750) -es és [4340191](https://support.microsoft.com/kb/4340191)-es cikkében talál.
+> A .NET-keretrendszer 4.6.2 a Cloud Service-szerepkörre kell telepítenie, még akkor is, ha az alkalmazás a .NET-keretrendszer 4,6-es példányát A vendég operációs rendszer tartalmazza a Tudásbázis [3098779-es frissítését](https://support.microsoft.com/kb/3098779) és a 3097997-es [frissítést](https://support.microsoft.com/kb/3097997). A .NET-alkalmazások futtatásakor problémák léphetnek fel, ha a .NET-keretrendszer 4,6 telepítve van a Tudásbázis frissítésein. A probléma elkerülése érdekében telepítse a .NET-keretrendszer 4.6.2-et a 4,6-es verzió helyett. További információt a [tudásbázis 3118750](https://support.microsoft.com/kb/3118750) -es és [4340191](https://support.microsoft.com/kb/4340191)-es cikkében talál.
 > 
 > 
 
@@ -82,7 +82,7 @@ Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdés
 
 2. Hozzon létre egy **install. cmd** nevű fájlt, és adja hozzá a következő telepítési parancsfájlt a fájlhoz.
 
-   A parancsfájl ellenőrzi, hogy a .NET-keretrendszer adott verziója már telepítve van-e a számítógépen a beállításjegyzék lekérdezésével. Ha a .NET-verzió nincs telepítve, a rendszer megnyitja a .NET web Installert. A hibák elhárítása érdekében a parancsfájl az összes tevékenységet naplózza a startuptasklog-(aktuális dátum és idő). txt fájlba, amely a **InstallLogs** helyi tárolójában van tárolva.
+   A parancsfájl ellenőrzi, hogy a .NET-keretrendszer adott verziója már telepítve van-e a számítógépen a beállításjegyzék lekérdezésével. Ha a .NET-keretrendszer verziója nincs telepítve, a .NET-keretrendszer web Installer megnyitása megtörtént. A hibák elhárítása érdekében a parancsfájl az összes tevékenységet naplózza a startuptasklog-(aktuális dátum és idő). txt fájlba, amely a **InstallLogs** helyi tárolójában van tárolva.
    
    > [!IMPORTANT]
    > A install. cmd fájl létrehozásához használjon egy egyszerű szövegszerkesztőt, például a Windows jegyzettömböt. Ha a Visual Studióval szövegfájlt hoz létre, és a kiterjesztést a. cmd fájlba módosítja, akkor a fájl továbbra is tartalmazhatja az UTF-8 bájtos sorrendet. Ez a jel hibát okozhat a parancsfájl első sorának futtatásakor. A hiba elkerüléséhez végezze el a parancsfájl első sorát, amely a byte Order Processing által kihagyható REM-utasítás. 

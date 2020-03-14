@@ -4,11 +4,11 @@ description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382987"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258433"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -167,8 +167,8 @@ Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alá
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit módon az npm-ből | legújabb |
-RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit módon az npm-ből | Legújabb |
+RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | Legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
 Ha a telepítés befejeződött, indítson egy helyi fürtöt.
@@ -313,7 +313,7 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)

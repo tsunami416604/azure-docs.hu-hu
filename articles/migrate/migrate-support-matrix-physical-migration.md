@@ -4,11 +4,11 @@ description: Ismerkedjen meg a fizikai kiszolgálók áttelepítésének támoga
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269548"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>A fizikai kiszolgáló áttelepítésének támogatási mátrixa
 
@@ -26,7 +26,7 @@ A helyszíni gépeket fizikai kiszolgálóként is áttelepítheti az ügynök-a
 - Nyilvános felhőben futó virtuális gépek, például Amazon Web Services (AWS) vagy Google Cloud Platform (GCP).
 
 
-## <a name="migration-limitations"></a>A migrálásra vonatkozó korlátozások
+## <a name="migration-limitations"></a>Áttelepítési korlátozások
 
 Egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Ha több gépet szeretne áttelepíteni, a replikálást a 10 csoportba.
 
@@ -60,7 +60,7 @@ A tábla az áttelepíteni kívánt fizikai kiszolgálók támogatását összeg
 
 
 
-## <a name="replication-appliance-requirements"></a>Replikációs berendezésre vonatkozó követelmények
+## <a name="replication-appliance-requirements"></a>Replikációs berendezés követelményei
 
 Ha a replikációs készüléket manuálisan állítja be egy fizikai kiszolgálón, akkor győződjön meg arról, hogy az megfelel a táblázatban összefoglalt követelményeknek. Ha a Azure Migrate replikációs berendezést VMware virtuális gépként állítja be a Azure Migrate hub-ban megadott petesejtek sablonnal, a készülék a Windows Server 2016 rendszerrel van beállítva, és megfelel a támogatási követelményeknek. 
 

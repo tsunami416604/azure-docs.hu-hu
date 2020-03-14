@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: d2ca7b7e4b637802df6a78c2493e3cc088f09881
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673340"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246681"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>A fejlesztési és tesztelési díjak optimalizálása Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Egy [megosztott átviteli sebességű adatbázisban](set-throughput.md#set-throu
 
 Tegyük fel például, hogy a fejlesztési vagy tesztelési fiók négy tárolóval rendelkezik. Ha négy tárolót hoz létre dedikált átviteli sebességgel (legalább 400 RU/s), akkor a teljes RU/s a 1600 RU/s lesz. Ezzel szemben, ha létrehoz egy megosztott átviteli sebességű adatbázist (minimum 400 RU/s), és elhelyezi a tárolókat, a teljes RU/s csak 400 RU/s lesz. Általánosságban elmondható, hogy a megosztott átviteli sebességű adatbázisok kiválóan alkalmasak olyan forgatókönyvek esetén, amelyeknél nincs szükség a garantált átviteli sebességre minden egyes tárolón  További információ a [megosztott átviteli sebességű adatbázisokról.](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az emulátor vagy az ingyenes Azure Cosmos DB fiókok használatának első lépései a következő cikkekkel szerezhetők be:
 

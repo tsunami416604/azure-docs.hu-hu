@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382695"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266870"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure-beli Windows virtuális gépek konkrét RDP-hibaüzeneteinek elhárítása
 A Windows rendszerű virtuális gépekhez (VM) az Azure-ban Távoli asztal-csatlakozás használatakor hibaüzenet jelenhet meg. Ez a cikk a leggyakoribb hibaüzenetek némelyikét ismerteti, valamint a hibaelhárítási lépéseket. Ha olyan problémák merülnek fel, amelyek RDP használatával kapcsolódnak a virtuális géphez, de nem találnak konkrét hibaüzenetet, tekintse [meg a távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md).

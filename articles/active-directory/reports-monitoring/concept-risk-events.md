@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376377"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266480"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory kockázati észlelések
 
@@ -108,19 +108,19 @@ A következő táblázat felsorolja, hogy mennyi ideig tart az észlelési típu
 | Észlelés típusa | Jelentési késés |
 | --- | --- |
 | Valós idejű | 5 – 10 perc |
-| Kapcsolat nélküli | 2 – 4 óra |
+| Offline | 2 – 4 óra |
 
 
 Az észlelt kockázati észlelési típusok Azure Active Directory észleli a következő észlelési típusokat:
 
 | Kockázat észlelésének típusa | Észlelés típusa |
 | :-- | --- | 
-| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Kapcsolat nélküli |
+| [Kiszivárgott hitelesítő adatokkal rendelkező felhasználók](#leaked-credentials) | Offline |
 | [Névtelen IP-címekről érkező bejelentkezések](#sign-ins-from-anonymous-ip-addresses) | Valós idejű |
-| [Nem lehet utazni atipikus helyszínekre](#impossible-travel-to-atypical-locations) | Kapcsolat nélküli |
+| [Nem lehet utazni atipikus helyszínekre](#impossible-travel-to-atypical-locations) | Offline |
 | [Ismeretlen helyekről érkező bejelentkezések](#sign-in-from-unfamiliar-locations) | Valós idejű |
-| [Bejelentkezések fertőzött eszközökről](#sign-ins-from-infected-devices) | Kapcsolat nélküli |
-| [Gyanús tevékenységet folytató IP-címekről érkező bejelentkezések](#sign-ins-from-ip-addresses-with-suspicious-activity) | Kapcsolat nélküli|
+| [Bejelentkezések fertőzött eszközökről](#sign-ins-from-infected-devices) | Offline |
+| [Gyanús tevékenységet folytató IP-címekről érkező bejelentkezések](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
 ## <a name="risk-level"></a>Kockázati szint

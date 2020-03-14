@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037114"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140773"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-A folyamat sikeres elküldését követően megtekintheti a képet a modul jobb oldali paneljén, ![feltöltött-kép](media/module/upload-image-in-r-script.png)
+A folyamat sikeres elküldését követően a rendszerképet a modul jobb oldali paneljén tekintheti meg
+
+[!div class="mx-imgBorder"]
+![feltöltve – rendszerkép](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 
 Az **R-szkript végrehajtása** modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R- **parancsfájl végrehajtása** modul konfigurálásához adja meg a végrehajtandó bemeneteket és kódokat.
 
-![R-modul](media/module/upload-image-in-r-script.png)
+![R-modul](media/module/execute-r-script.png)
 
 A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek konvertálva, ha ezzel a modullal vannak feltöltve.
 
@@ -123,25 +126,25 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 
     Az első lépésekhez az R- **szkript** szövegmező előre ki van töltve a mintakód segítségével, amelyet szerkeszthet vagy lecserélheti.
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * A szkriptnek tartalmaznia kell egy `azureml_main`nevű függvényt, amely a modul belépési pontja.
 
@@ -174,9 +177,9 @@ A folyamatokat többféleképpen is kiterjesztheti egyéni R-szkriptek használa
 
 Az **r-szkript végrehajtása** modul bemenetként támogatja a tetszőleges r-parancsfájlokat. Ehhez a ZIP-fájl részeként fel kell tölteni őket a munkaterületre.
 
-1. Ha R-kódot tartalmazó ZIP-fájlt szeretne feltölteni a munkaterületre, kattintson az **új**, majd az **adatkészlet**elemre, majd válassza a **helyi fájlból** és a **zip-fájlból** lehetőséget.  
+1. Ha R-kódot tartalmazó ZIP-fájlt szeretne feltölteni a munkaterületre, nyissa meg az **adatkészletek** eszközcsoport lapot, kattintson az **adatkészlet létrehozása**elemre, majd válassza a **helyi fájl** és a **fájl** adatkészlet típusa lehetőséget.  
 
-1. Ellenőrizze, hogy a tömörített fájl elérhető-e a **mentett adatkészletek** listájában.
+1. Ellenőrizze, hogy a zip-fájl elérhető- **e a bal** oldali modul faszerkezetek **kategóriájának adatkészletek** listájában.
 
 1.  Kapcsolja össze az adatkészletet a **parancsfájl-csomag** bemeneti portjával.
 

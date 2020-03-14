@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: cbdad3c68848ce552811ee658bb29df74a6fad19
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467028"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267676"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple-tárolók kezelésére
 

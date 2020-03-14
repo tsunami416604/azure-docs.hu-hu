@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Ismerteti az Azure dev Spaces Azure Kubernetes Servicesben való futtatásának hálózati követelményeit
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389685"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265349"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev Spaces szolgáltatáshoz különböző hálózati topológiákban
 

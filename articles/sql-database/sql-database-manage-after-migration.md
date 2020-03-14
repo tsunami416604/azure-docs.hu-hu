@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382393"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256184"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új DBA a felhőben – az önálló és a készletezett adatbázisok kezelése Azure SQL Database
 
@@ -91,7 +91,7 @@ További információ a vész-helyreállítási szolgáltatásról: [Azure SQL d
 
 A SQL Database nagyon komolyan veszi a biztonságot és az adatvédelmet. A SQL Databaseon belüli biztonság az adatbázis szintjén és a platform szintjén érhető el, és a legjobban értelmezhető, ha több rétegbe van kategorizálva. Minden rétegben vezérelheti az alkalmazás optimális biztonságát. A rétegek a következők:
 
-- Identitás & hitelesítés ([Windows/SQL-hitelesítés és Azure Active Directory [HRE] hitelesítés](sql-database-control-access.md)).
+- Identitás & hitelesítés ([SQL-hitelesítés és Azure Active Directory [HRE] hitelesítés](sql-database-manage-logins.md)).
 - Figyelési tevékenység ([auditálás](sql-database-auditing.md) és [fenyegetések észlelése](sql-database-threat-detection.md)).
 - A tényleges adatok védelme ([transzparens adattitkosítás [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) és [Always encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - A bizalmas és a privilegizált adatokhoz való hozzáférés szabályozása ([sor szintű biztonság](/sql/relational-databases/security/row-level-security) és [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)).
@@ -100,10 +100,10 @@ A [Azure Security Center](https://azure.microsoft.com/services/security-center/)
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Milyen felhasználói hitelesítési módszereket kínálnak a SQL Database
 
-A SQL Databaseban [két hitelesítési módszer](sql-database-control-access.md#authentication) érhető el:
+A SQL Databaseban két hitelesítési módszer érhető el:
 
 - [Azure Active Directory hitelesítés](sql-database-aad-authentication.md)
-- SQL-hitelesítés
+- [SQL-hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 A hagyományos Windows-hitelesítés nem támogatott. A Azure Active Directory (AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. A HRE támogatja az MFA-t [(többtényezős hitelesítés)](sql-database-ssms-mfa-authentication.md) , és [néhány kattintással](../active-directory/hybrid/how-to-connect-install-express.md) HRE integrálható a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott SQL Database-kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi SQL Database és SQL Data Warehouse számára, hogy többtényezős hitelesítést és vendég felhasználói fiókokat nyújtson az Azure AD-tartományon belül. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
 
@@ -226,7 +226,7 @@ Az Express Route azt is lehetővé teszi, hogy a megvásárolt sávszélesség l
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>A SQL Database megfelel a szabályozás követelményeinek, és hogyan segíti a saját szervezete megfelelőségét
 
-SQL Database megfelel a szabályozási megfelelőségi követelményeknek. A SQL Database által teljesített megfelelőségi szabályok megtekintéséhez látogasson el a [Microsoft adatvédelmi központba](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , és részletesen tájékozódjon a szervezete számára fontos megfelelőségekről, és ellenőrizze, hogy a megfelelő Azure-szolgáltatások részét képezik-e a SQL Database. Fontos megjegyezni, hogy bár a SQL Database megfelelőségi szolgáltatásként is megtekinthetők, az informatikai részleg a szervezet szolgáltatásának megfelelőségét segíti elő, de nem garantálja automatikusan.
+SQL Database megfelel a szabályozási compliancies. A SQL Database által teljesített compliancies legújabb készletének megtekintéséhez látogasson el a [Microsoft adatvédelmi központba](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , és tekintse meg a szervezet számára fontos compliancies, és ellenőrizze, hogy az SQL Database szerepel-e a megfelelő Azure-szolgáltatásokban. Fontos megjegyezni, hogy bár a SQL Database megfelelőségi szolgáltatásként is megtekinthetők, az informatikai részleg a szervezet szolgáltatásának megfelelőségét segíti elő, de nem garantálja automatikusan.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligens adatbázis figyelése és karbantartása az áttelepítés után
 

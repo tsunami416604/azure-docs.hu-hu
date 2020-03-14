@@ -4,11 +4,11 @@ description: A fájlok és mappák Azure Backupsal történő biztonsági menté
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673073"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273422"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
@@ -98,7 +98,7 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 1. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Győződjön meg arról, hogy a mappa helyének elérési útja megegyezik az alább látható beállításkulcs-bejegyzések értékeivel:
 
-    | Beállításjegyzékbeli elérési út | Beállításkulcs | Érték |
+    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
@@ -113,7 +113,7 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 4. Másolja a teljes `\Scratch` mappát egy másik, elegendő lemezterülettel rendelkező meghajtóra. Győződjön meg arról, hogy a tartalom másolása megtörtént, nincs áthelyezve.
 5. Frissítse a következő beállításjegyzékbeli bejegyzéseket az újonnan áthelyezett Scratch mappa elérési útjával.
 
-    | Beállításjegyzékbeli elérési út | Beállításkulcs | Érték |
+    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új mappa helye* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új mappa helye* |

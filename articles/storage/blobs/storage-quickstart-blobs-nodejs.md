@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b53896896ecd4b0e577e8d2c5ec13e00ce6fab30
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e68e91d90846ab77b994b53be7a84a9dd8bc5a25
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241037"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Rövid útmutató: Blobok kezelése a JavaScript V12 SDK-val a Node. js-ben
 
@@ -118,7 +118,7 @@ Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van 
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![BLOB Storage-architektúra ábrája](./media/storage-blob-introduction/blob1.png)
+![BLOB Storage-architektúra ábrája](./media/storage-blobs-introduction/blob1.png)
 
 Használja az alábbi JavaScript-osztályokat a következő erőforrásokkal való interakcióhoz:
 
@@ -302,7 +302,7 @@ Done
 
 Lépjen be a hibakeresőbe, és vizsgálja meg a [Azure Portal](https://portal.azure.com) a folyamat során. Ellenőrizze, hogy a tároló létrehozása folyamatban van-e. A blobot megnyithatja a tárolón belül, és megtekintheti a tartalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a JavaScript használatával.
 

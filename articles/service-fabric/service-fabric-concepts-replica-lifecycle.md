@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391373"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258563"
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
 Ez a cikk áttekintést nyújt az állapot-nyilvántartó szolgáltatások replikáinak életciklusáról és az állapot nélküli szolgáltatások példányairól.

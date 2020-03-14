@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy
 ms.date: 03/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264673"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 

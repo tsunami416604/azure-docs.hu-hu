@@ -12,11 +12,11 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220082"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok határai
 A LUIS több határ területeken rendelkezik. Az első a [modell határa](#model-boundaries), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határ harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.

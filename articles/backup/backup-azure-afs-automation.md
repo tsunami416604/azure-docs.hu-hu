@@ -4,11 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382517"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273539"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Azure Files biztonsági mentése a PowerShell-lel
 
@@ -296,6 +296,6 @@ Ha minta parancsfájlokat keres, tekintse meg a GitHubon (<https://github.com/Az
 > [!WARNING]
 > Győződjön meg arról, hogy a PS verziója frissítve lett az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára az Automation-runbookok lévő AFS-alapú biztonsági mentésekhez. A régi "AzureRM" modult az "az" modullal kell helyettesíteni. Ebben a verzióban az "friendlyName" szűrő ```Get-AzRecoveryServicesBackupItem``` parancshoz érhető el. Adja át az Azure-fájlmegosztás nevét a friendlyName paraméternek. Ha átadja az Azure-fájlmegosztás nevét a "név" paraméternek, ez a verzió figyelmeztetést küld, hogy a rövid nevet adja át a felhasználóbarát név paraméternek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók](backup-afs.md) a Azure Portal Azure Files biztonsági mentéséről.

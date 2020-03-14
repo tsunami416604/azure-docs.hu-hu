@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208837"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az a Azure SQL Database önálló adatbázisa?
 
@@ -37,13 +37,13 @@ Az erőforrás-megosztáshoz egyetlen adatbázis helyezhető be vagy ki egy [rug
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 
-A beépített [Teljesítményfigyelő](sql-database-performance.md) és [riasztási eszközöket](sql-database-insights-alerts-portal.md)a teljesítmény-minősítésekkel együtt használva használhatja. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet.
+A beépített [Teljesítményfigyelő](sql-database-performance.md) és [riasztási eszközöket](sql-database-insights-alerts-portal.md)a teljesítmény-minősítésekkel együtt használva használhatja. Ezek lehetővé teszik az aktuális vagy a projekthez kapcsolódó teljesítményigényeken alapuló fel- vagy leskálázás hatásainak gyors kiértékelését. Emellett a SQL Database a könnyebb monitorozás érdekében [mérőszámokat és erőforrás-naplókat is képes kibocsátani](sql-database-metrics-diag-logging.md) .
 
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
 Az önálló adatbázisok, a rugalmas készletek és a felügyelt példányok számos rendelkezésre állási jellemzőt biztosítanak. További információ: [rendelkezésre állási jellemzők](sql-database-technical-overview.md#availability-capabilities).
 
-## <a name="transact-sql-differences"></a>A Transact-SQL eltérései
+## <a name="transact-sql-differences"></a>Transact-SQL-különbségek
 
 Az alkalmazások által használt legtöbb Transact-SQL-szolgáltatás teljes mértékben támogatott Microsoft SQL Server és Azure SQL Database egyaránt. Például az alapvető SQL-összetevők, például az adattípusok, a operátorok, a karakterláncok, a aritmetikai, a logikai és a kurzor függvények azonos módon működnek SQL Server és SQL Database. Van azonban néhány, a DDL (adatdefiníciós nyelv) és a DML (adatmanipulációs nyelv) elemeinek néhány T-SQL-eltérése, ami csak részben támogatott T-SQL-utasításokat és-lekérdezéseket eredményez (amit a cikk későbbi részében tárgyalunk).
 Emellett vannak olyan szolgáltatások és szintaxisok is, amelyek egyáltalán nem támogatottak, mert Azure SQL Database úgy lett kialakítva, hogy elkülönítse a szolgáltatásokat a főadatbázis és az operációs rendszer függőségeitől. Ennek megfelelően a legtöbb kiszolgálói szintű tevékenység nem megfelelő a SQL Database számára. A T-SQL-utasítások és-beállítások nem érhetők el, ha a kiszolgálói szintű beállításokat, az operációs rendszer összetevőit vagy a fájlrendszer konfigurációját konfigurálja. Ha ilyen képességekre van szükség, a megfelelő alternatíva gyakran elérhető más módon, SQL Database vagy egy másik Azure-szolgáltatásból vagy-szolgáltatásból.
@@ -57,7 +57,7 @@ SQL Database számos [beépített biztonsági és megfelelőségi](sql-database-
 > [!IMPORTANT]
 > Azure SQL Database (az összes központi telepítési lehetőség), számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyetlen adatbázis gyors megkezdéséhez kezdje az [egyetlen adatbázis rövid útmutatóját](sql-database-single-database-quickstart-guide.md).
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](sql-database-single-database-migrate.md).

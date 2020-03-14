@@ -14,11 +14,11 @@ ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359347"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251413"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 

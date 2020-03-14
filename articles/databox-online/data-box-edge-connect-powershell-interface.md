@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265479"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Azure Data Box Edge-eszköz kezelése a Windows PowerShell használatával
 
@@ -46,7 +46,7 @@ Ez a cikk az alábbi eljárásokat tartalmazza:
 IoT Edge tanúsítványokat is feltölthet, hogy biztonságos kapcsolatot lehessen létesíteni a IoT Edge-eszköz és a hozzájuk kapcsolódó alsóbb rétegbeli eszközök között. Három IoT Edge tanúsítvány ( *. PEM* formátum) szükséges a telepítéséhez:
 
 - Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a tulajdonos HITELESÍTÉSSZOLGÁLTATÓja
-- Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
+- Eszköz Hitelesítésszolgáltatói tanúsítvány
 - Eszköz kulcsának tanúsítványa
 
 A következő példa a parancsmag használatát mutatja be IoT Edge tanúsítványok telepítéséhez:
@@ -62,7 +62,7 @@ A tanúsítványokkal kapcsolatos további információkért nyissa meg a [Azure
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="reset-your-device"></a>Eszköz alaphelyzetbe állítása
+## <a name="reset-your-device"></a>Az eszköz alaphelyzetbe állítása
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 

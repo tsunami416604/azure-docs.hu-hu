@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361392"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260305"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>A Azure Data Lake Storage Gen1 tárolt adatvédelem védelme
 A Azure Data Lake Storage Gen1ban lévő adatvédelme egy három lépésből álló megközelítés.  Mind a szerepköralapú hozzáférés-vezérlést (RBAC), mind a hozzáférés-vezérlési listákat (ACL-eket) úgy kell beállítani, hogy teljes mértékben engedélyezzék a felhasználók és biztonsági csoportok számára az adathozzáférést.

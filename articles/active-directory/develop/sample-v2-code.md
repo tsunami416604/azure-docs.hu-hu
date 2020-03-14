@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f24412aa7e53c52f0fcbf0c266b57db077d41eb1
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a0ba46abcc6e3b837dc0b13422bdc3d714ed0022
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612040"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262684"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -114,6 +114,7 @@ Az alábbi példák bemutatják, hogyan lehet védelemmel ellátni egy webes API
 | ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core web API (szolgáltatás) a [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![Ez a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NET.png)</p>ASP.NET, MVC | [MS-Identity-ASPNET-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) webes API (szolgáltatás) |
 | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | [MS-Identity-Java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi) webes API (szolgáltatás) |
+| ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo_nodejs.png) | Az [Active Directory-JavaScript-NodeJS-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) webes API (szolgáltatás) |
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions webes API-kként
 
@@ -133,5 +134,4 @@ A Microsoft Graph API különböző használati mintáit bemutató [minták](htt
 ## <a name="see-also"></a>Lásd még
 
 - [Azure Active Directory (v 1.0) fejlesztői útmutató](../azuread-dev/v1-overview.md)
-- [Az Azure AD Graph API fogalma és referenciája](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-- [Azure AD Graph API segítő könyvtár](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [A Microsoft Graph API fogalma és referenciája](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)

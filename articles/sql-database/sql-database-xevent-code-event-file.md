@@ -3,7 +3,7 @@ title: XEvent-esemény fájljának kódja
 description: A PowerShell és a Transact-SQL egy kétfázisú kódrészletet biztosít, amely bemutatja az eseménynaplót egy Azure SQL Database kiterjesztett eseményében. Az Azure Storage a forgatókönyv kötelező része.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: 00f31bdf147c4711715cd600fa8a8fd4bac2162a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a9bf28fb1b3c5278d25b417fc646d2ad3d6f1abc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422473"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213990"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Az eseménynaplóban a kiterjesztett események SQL Database
 

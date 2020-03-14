@@ -15,11 +15,11 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388749"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243184"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -289,7 +289,7 @@ A Azure Portal, az Azure CLI vagy a PowerShell használatával ellenőrizheti, h
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
 1. Lépjen a [SQL Server virtuális gépekre](virtual-machines-windows-sql-manage-portal.md).
 1. Válassza ki a SQL Server VM a listából. Ha a SQL Server VM nem szerepel a listán, valószínűleg nincs regisztrálva az SQL VM erőforrás-szolgáltatónál. 
-1. Tekintse meg az **állapot**alatt lévő értéket. Ha az állapot **sikeres**, akkor a SQL Server VM sikeresen regisztrálva lett az SQL VM erőforrás-szolgáltatónál. 
+1. Tekintse meg az **állapot**alatt lévő értéket. Ha **Status** az állapot **sikeres**, akkor a SQL Server VM sikeresen regisztrálva lett az SQL VM erőforrás-szolgáltatónál. 
 
 ![SQL RP-regisztrációval rendelkező állapot ellenőrzése](media/virtual-machines-windows-sql-register-with-rp/verify-registration-status.png)
 

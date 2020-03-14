@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 5228e42a778714f0d656bc993007692bd32d84fb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c380d10d0c68794ec3810cea25341d68bb41400d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388459"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251686"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Terméken belüli felhasználói adatok exportálása és törlése Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A Azure Portal, a Studio (klasszikus) felület, a PowerShell és a hitelesített REST API-k használatával törölheti vagy exportálhatja Azure Machine Learning Studio (klasszikus) tárolt termékeit. Ez a cikk bemutatja, hogyan. 
 

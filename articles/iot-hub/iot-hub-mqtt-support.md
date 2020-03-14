@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
 ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382032"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271160"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -132,7 +132,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 ### <a name="for-device-explorer"></a>Device Explorer
 
-1. Lépjen a Device Explorer **felügyelet** lapjára.
+1. Lépjen a Device Explorer **felügyelet** lapjára **Device Explorer**.
 
 2. Kattintson a **sas-jogkivonat** (jobb felső) elemre.
 

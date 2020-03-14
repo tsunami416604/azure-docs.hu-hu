@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: d7ed4dbbc3fddb2e21ed3cf5292ebd80fe1e3e23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698526"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263113"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
 
@@ -48,7 +48,7 @@ Minden olyan alkalmazást, amely a személyes és munkahelyi vagy iskolai fióko
 
 További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-register-app.md).
 
-## <a name="endpoints"></a>Endpoints (Végpontok)
+## <a name="endpoints"></a>Végpontok
 
 A regisztrációt követően az alkalmazás a Microsoft Identity platformmal kommunikál, ha kéréseket küld a végpontnak:
 
@@ -59,7 +59,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Ahol a `{tenant}` négy különböző érték egyikét hajthatja végre:
 
-| Value (Díj) | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | `common` | Lehetővé teszi, hogy a felhasználók személyes Microsoft-fiókokkal és munkahelyi/iskolai fiókkal jelentkezzenek be az Azure AD-be az alkalmazásba. |
 | `organizations` | Csak az Azure AD-beli munkahelyi vagy iskolai fiókkal rendelkező felhasználók számára engedélyezi az alkalmazásba való bejelentkezést. |

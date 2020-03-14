@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384618"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265453"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>A Azure Data Box Gateway hozzáférésének, teljesítményének és kapcsolati módjának kezelése
 
@@ -47,12 +47,12 @@ A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó fel
 
 1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása**elemre.
 
-    ![Másik jelszó kérése](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Új jelszó létrehozása](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
 2. Adja meg az új jelszót, majd erősítse meg. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Kattintson az **Alaphelyzetbe állítás**gombra.
 
-    ![Másik jelszó kérése](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Új jelszó létrehozása](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Erőforrás-hozzáférés kezelése
 

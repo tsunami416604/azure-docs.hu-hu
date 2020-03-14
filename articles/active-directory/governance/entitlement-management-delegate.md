@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376700"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261839"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -91,7 +91,7 @@ Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is
 
 A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
 
-| Feladat | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
+| Tevékenység | rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegálás katalógus-létrehozóra](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |

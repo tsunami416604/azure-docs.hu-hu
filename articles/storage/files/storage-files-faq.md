@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f1be146a5173c86a8b19bca5c7b3b8c72d72b9c5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362124"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268183"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Gyakran ismételt kérdések (GYIK) a Azure Filesról
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -81,6 +81,9 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
   szeretném **megtekinteni a Azure Fileshoz hozzáadott speciális funkciót. Felveheti?**  
     A Azure Files csapata érdekli a szolgáltatással kapcsolatos összes visszajelzés meghallgatása. Kérjük, szavazzon a szolgáltatásra vonatkozó kérésekre [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! Örömmel várjuk, hogy számos új funkciót kínálunk.
 
+  **Támogatja a Azure Files a fájlok zárolását?**  
+    Igen, Azure Files teljes mértékben támogatja az SMB-/Windows-stílusú fájlok zárolását, [lásd: részletek](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
+    
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
@@ -211,6 +214,11 @@ van olyan **REST API-k, amelyek támogatják a beolvasási/beállítási/másol�
 
     Igen, engedélyezheti az Azure-AD DS vagy az AD-hitelesítést az Azure file Sync által kezelt fájlmegosztás esetén. A könyvtár/fájl NTFS ACL-ek helyi fájlkiszolgálón való módosítása a Azure Files és fordítva történik.
 
+* <a id="ad-aad-smb-files"></a>
+**Hogyan ellenőrizhetem, hogy engedélyezem-e az ad-hitelesítést a Storage-fiókon és az ad-tartomány adatain?**
+
+    Az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) található útmutatást követve ellenőrizheti, hogy Azure Files ad-hitelesítés engedélyezve van-e a Storage-fiókjában, és lekéri az ad-tartomány adatait.
+    
 * <a id="encryption-at-rest"></a>
 Hogyan biztosíthatom az Azure-fájlmegosztás inaktív állapotban való **titkosítását?**  
 

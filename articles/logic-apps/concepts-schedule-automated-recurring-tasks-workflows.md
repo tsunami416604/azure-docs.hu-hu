@@ -7,11 +7,11 @@ ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359183"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270562"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezett és futtatása Azure Logic Apps
 
@@ -134,13 +134,13 @@ Az alábbi példa a beállításokat támogató eseményindítók különböző 
 | Megismétlődésének <br>Csúszóablak | Futtatás óránként, naponta (nincs kezdő dátum és idő) | 1 | Óra | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, és az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
 | Megismétlődésének <br>Csúszóablak | Futtatás óránként, minden nap (kezdő dátummal és idővel) | 1 | Óra | *StartDate* T*kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
 | Megismétlődésének <br>Csúszóablak | Minden órában 15 percenként fut, óránként (kezdő dátummal és idővel) | 1 | Óra | *StartDate* T00:15:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli ismétlődések a kezdési időpontból kiszámított "15" perces jellel futnak, így: 00:15, 1:15, 2:15 AM és így tovább. |
-| Ismétlődés | Minden órában 15 percenként fut, óránként (nincs kezdő dátum és idő) | 1 | Nap | nEz egy | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ez az ütemterv a következő időpontban fut: 00:15, 1:15, 2:15, és így tovább. Emellett ez az ütemterv az "Hour" gyakoriságának és a "15" perces kezdési időpontnak felel meg. |
-| Ismétlődés | Futtassa 15 percenként a megadott percenkénti jelzéseket (nincs kezdő dátum és idő). | 1 | Nap | nEz egy | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ez az ütemezés addig nem indul el, amíg a következő megadott 15 perces megjelölés be nem fejeződik. |
-| Ismétlődés | A logikai alkalmazás mentésekor naponta, a percek alatt, *illetve* a percben is futtatható. | 1 | Nap | nEz egy | érhető | 8 | nEz egy | Kezdési dátum és idő nélkül ez az ütemterv a logikai alkalmazás mentésekor (PUT művelet) történő mentés időpontja alapján fut le. |
-| Ismétlődés | Napi Futtatás 8:00 ÓRAKOR (kezdő dátummal és idővel) | 1 | Nap | *StartDate* T08:00:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli előfordulások naponta, 8:00 ÓRAKOR futnak. | 
-| Ismétlődés | Napi Futtatás 8:30 ÓRAKOR (nincs kezdő dátum és idő) | 1 | Nap | nEz egy | érhető | 8 | 30 | Ez az ütemterv minden nap 8:30 ÓRAKOR fut. |
-| Ismétlődés | Napi Futtatás 8:30 órakor és 4:30 PM | 1 | Nap | nEz egy | érhető | 8, 16 | 30 | |
-| Ismétlődés | Napi Futtatás 8:30 ÓRAKOR, 8:45, 4:30 PM és 4:45 PM | 1 | Nap | nEz egy | érhető | 8, 16 | 30, 45 | |
+| Ismétlődés | Minden órában 15 percenként fut, óránként (nincs kezdő dátum és idő) | 1 | Day | nEz egy | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ez az ütemterv a következő időpontban fut: 00:15, 1:15, 2:15, és így tovább. Emellett ez az ütemterv az "Hour" gyakoriságának és a "15" perces kezdési időpontnak felel meg. |
+| Ismétlődés | Futtassa 15 percenként a megadott percenkénti jelzéseket (nincs kezdő dátum és idő). | 1 | Day | nEz egy | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ez az ütemezés addig nem indul el, amíg a következő megadott 15 perces megjelölés be nem fejeződik. |
+| Ismétlődés | A logikai alkalmazás mentésekor naponta, a percek alatt, *illetve* a percben is futtatható. | 1 | Day | nEz egy | érhető | 8 | nEz egy | Kezdési dátum és idő nélkül ez az ütemterv a logikai alkalmazás mentésekor (PUT művelet) történő mentés időpontja alapján fut le. |
+| Ismétlődés | Napi Futtatás 8:00 ÓRAKOR (kezdő dátummal és idővel) | 1 | Day | *StartDate* T08:00:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli előfordulások naponta, 8:00 ÓRAKOR futnak. | 
+| Ismétlődés | Napi Futtatás 8:30 ÓRAKOR (nincs kezdő dátum és idő) | 1 | Day | nEz egy | érhető | 8 | 30 | Ez az ütemterv minden nap 8:30 ÓRAKOR fut. |
+| Ismétlődés | Napi Futtatás 8:30 órakor és 4:30 PM | 1 | Day | nEz egy | érhető | 8, 16 | 30 | |
+| Ismétlődés | Napi Futtatás 8:30 ÓRAKOR, 8:45, 4:30 PM és 4:45 PM | 1 | Day | nEz egy | érhető | 8, 16 | 30, 45 | |
 | Ismétlődés | Minden szombaton fut 5 ÓRAKOR (nincs kezdő dátum és idő) | 1 | Hét | nEz egy | Szombat | 17 | 00 | Ez az ütemterv minden szombaton 5:00 ÓRAKOR fut. |
 | Ismétlődés | Minden szombaton fut 5 ÓRAKOR (kezdő dátummal és idővel) | 1 | Hét | *StartDate* KÖZLEMÉNNYEL17:00:00Z | Szombat | nEz egy | nEz egy | Ez az ütemterv nem *indul el a megadott* kezdési dátumnál és időpontnál (ebben az esetben a 2017. szeptember 9-én, 5:00 órakor). A jövőbeli ismétlődések minden szombaton 5:00 ÓRAKOR futnak. |
 | Ismétlődés | Minden kedden, csütörtökön és a logikai alkalmazás *mentésekor a* percben is futtatható.| 1 | Hét | nEz egy | "Kedd", "csütörtök" | 17 | nEz egy | |

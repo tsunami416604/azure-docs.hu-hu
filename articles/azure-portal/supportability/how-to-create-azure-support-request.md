@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547659"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248488"
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Támogatási kérések létrehozása az Azure-hoz
+# <a name="how-to-create-an-azure-support-request"></a>Azure-támogatáskérések létrehozása
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a [Azure Portalban](https://portal.azure.com).
+Az Azure-ban támogatási kérelmeket, más néven támogatási jegyeket hozhat létre és kezelhet. A [Azure Portalban](https://portal.azure.com)olyan kérelmeket hozhat létre és kezelhet, amelyek a jelen cikkben szerepelnek. A kéréseket programozott módon is létrehozhatja és kezelheti az [Azure támogatási jegy REST API](/rest/api/support)használatával.
 
 > [!NOTE]
 > A Azure Portal URL-cím kifejezetten arra az Azure-felhőre vonatkozik, ahol a szervezete telepítve van.
@@ -37,19 +37,19 @@ Az ügyfelek visszajelzései alapján frissítettük a támogatási kérések ta
 * **Integrált**: létrehozhat egy támogatási kérést, ha egy Azure-erőforrással kapcsolatos problémát hibaelhárítás nélkül kapcsol be a környezettel.
 * **Hatékony**: gyűjtsön olyan legfontosabb információkat, amelyekre a támogatási ügynöknek szüksége van ahhoz, hogy hatékonyan megoldja a problémát.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 A Azure Portal Súgó és **támogatás** szolgáltatását is elérheti. A szolgáltatás a Azure Portal menüjéből, a globális fejlécből vagy a szolgáltatások erőforrás-menüjéből érhető el. Ha támogatási kérést szeretne beküldeni, rendelkeznie kell a megfelelő engedélyekkel.
 
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Támogatási kérelem létrehozásához rendszergazdának kell lennie, vagy hozzá kell rendelnie a [támogatási kérelem közreműködői](../../role-based-access-control/built-in-roles.md#support-request-contributor) szerepkörhöz.
+Támogatási kérelem létrehozásához rendszergazdának kell lennie, vagy hozzá kell rendelnie a [támogatási kérelem közreműködői](../../role-based-access-control/built-in-roles.md#support-request-contributor) szerepköréhez az előfizetés szintjén.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Ugrás a Súgó + támogatás elemre a globális fejlécből
 
 Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
-1. Válassza ki a **?** elemet. a globális fejlécben. Ezután válassza a **Súgó + támogatás**lehetőséget.
+1. Jelölje be a **?** a globális fejlécben. Ezután válassza a **Súgó + támogatás**lehetőséget.
 
    ![Súgó és támogatás](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 

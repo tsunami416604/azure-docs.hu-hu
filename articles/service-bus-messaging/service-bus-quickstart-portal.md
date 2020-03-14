@@ -9,11 +9,11 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357076"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240645"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozása a Azure Portal használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet üzeneteket küldeni és fogadni egy Service Bus-várólistából, a [Azure Portal][Azure portal] használatával üzenetküldési névteret és a névtéren belüli üzenetsor létrehozására, valamint az engedélyezési hitelesítő adatok megszerzésére az adott névtéren. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).

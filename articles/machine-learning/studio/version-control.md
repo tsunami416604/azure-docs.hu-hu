@@ -9,14 +9,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 1b76147ac48d0bfb7b7bb1302e33b21e5ababb77
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169068"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204136"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Az alkalmazások életciklusának kezelése Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 A Azure Machine Learning Studio (klasszikus) az Azure Cloud platformon üzemelő gépi tanulási kísérletek fejlesztésére szolgáló eszköz. Olyan, mint a Visual Studio IDE és a skálázható felhőalapú szolgáltatás egyetlen platformba egyesítve. A standard szintű alkalmazás-életciklus-kezelési (ALM) eljárásokat beépítheti a különböző eszközökről az automatikus végrehajtásra és üzembe helyezésre Azure Machine Learning Studio (klasszikus). Ez a cikk néhány lehetőséget és megközelítést ismertet.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

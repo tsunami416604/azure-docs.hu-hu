@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: 752e8745a1cf2965d2dc88eaeee9404cf596547a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668931"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263243"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -144,7 +144,7 @@ A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak
 | `onprem_sid`| Karakterlánc, [SID-formátumban](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, amikor a felhasználó helyszíni hitelesítéssel rendelkezik, ez a jogcím a biztonsági azonosítóját adja meg. A `onprem_sid` az engedélyezéshez használhatja az örökölt alkalmazásokban.|
 | `pwd_exp`| int, egy UNIX timestamp | Azt jelzi, hogy a felhasználó jelszava lejár-e. |
 | `pwd_url`| Sztring | Egy URL-cím, amelyben a felhasználók elküldhetik a jelszavukat alaphelyzetbe. |
-| `in_corp`| Logikai érték | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet. |
+| `in_corp`| logikai | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet. |
 | `nickname`| Sztring | A felhasználó további neve, amely az utónévtől és az utónévtől elválasztva.|
 | `family_name` | Sztring | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. |
 | `given_name` | Sztring | A felhasználó első vagy megadott nevét adja meg a felhasználói objektumra vonatkozóan. |
@@ -245,7 +245,7 @@ A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-to
 
 * MaxInactiveTime: Ha a frissítési token nem lett használva a MaxInactiveTime által diktált időn belül, a frissítési token többé nem lesz érvényes.
 * MaxSessionAge: Ha a MaxAgeSessionMultiFactor vagy a MaxAgeSessionSingleFactor értéke nem az alapértelmezett (a visszavonás után) értékre van állítva, akkor az újrahitelesítésre akkor van szükség, amikor a MaxAgeSession * eltelik.
-* Például:
+* Példák:
   * A bérlőnek öt napja van egy MaxInactiveTime, és a felhasználó egy hétig ment a vakáción, így az Azure AD nem kapott új jogkivonat-kérelmet a felhasználótól 7 napon belül. Amikor a felhasználó legközelebb új jogkivonatot kér, megtalálják a frissítési jogkivonatot, és újra meg kell adniuk a hitelesítő adataikat.
   * Egy bizalmas alkalmazásnak egy nap MaxAgeSessionSingleFactor kell lennie. Ha a felhasználó hétfőn és kedden (25 óra elteltével) bejelentkezik, újra kell hitelesítenie.
 
@@ -270,7 +270,7 @@ A frissítési tokeneket a kiszolgáló visszavonhatja a hitelesítő adatok mó
 >
 > A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg az [Azure ad-`id_tokens`okkal](id-tokens.md).
 * További információ az engedélyekről és a hozzájárulásról ( [1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).

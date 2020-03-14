@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887240"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272642"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitásának megtervezése
 
@@ -56,7 +56,7 @@ A fürtök különböző tárolási fiókok kombinációjából is hozzáférhet
 * Ha az adatfeldolgozást szeretné végezni, már feltöltött egy BLOB-tárolót a fürt számára.
 * Ha a biztonsági okokból el szeretné különíteni a tárterület különböző részeit, vagy leegyszerűsíti a felügyeletet.
 
-48 csomópontos fürt esetén 4 – 8 Storage-fiók használatát javasoljuk. Bár lehetséges, hogy a teljes tárterület már elegendő, az egyes Storage-fiókok további hálózati sávszélességet biztosítanak a számítási csomópontok számára. Ha több Storage-fiókkal rendelkezik, minden egyes Storage-fiókhoz használjon véletlenszerű nevet, előtag nélkül. A véletlenszerű elnevezések célja, hogy csökkentse a tárolási torlódások (szabályozás) és az összes fiók általános módú meghibásodásának esélyét. A jobb teljesítmény érdekében csak egy tárolót használjon Storage-fiókkal.
+A jobb teljesítmény érdekében csak egy tárolót használjon Storage-fiókkal.
 
 ## <a name="choose-a-cluster-type"></a>Fürt típusának kiválasztása
 
@@ -96,15 +96,15 @@ A célként megadott fürt virtuálisgép-méretének, méretezésének és típ
 
 Az elérhető magok vizsgálatához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Navigáljon a HDInsight-fürt **áttekintő** oldalára. 
 3. A bal oldali menüben kattintson a **kvóta korlátai**elemre.
 
-   A lap megjeleníti a használatban lévő magok számát, a rendelkezésre álló magok számát és az összes magot.
+   Az oldal megjeleníti a használatban lévő magok számát, az elérhető magok számát és a magok teljes számát.
 
 Ha kvótát kell megadnia, hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 1. A lap bal alsó részén kattintson a **Súgó és támogatás** elemre.
 1. Válassza az **Új támogatási kérelem** lehetőséget.
 1. Az **új támogatási kérelem** oldal **alapismeretek** lapján válassza a következő beállításokat:

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987475"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259993"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>A Azure Portal használatával felügyelheti Azure Data Box és Azure Data Box Heavy
 
@@ -48,7 +48,7 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
     ![Rendelés klónozása 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Create** (Létrehozás) gombra.
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a  **Create** (Létrehozás) gombra.
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -65,9 +65,9 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
 
     ![Data Box-rendelés törlése 1](media/data-box-portal-admin/delete-order1.png)
 
-3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Törlés** gombra.
+3. Ha a rendszer kéri, írja be a rendelés nevét a rendelés törlésének megerősítéséhez. Kattintson a **Delete** (Törlés) gombra.
 
-## <a name="download-shipping-label"></a>Levélcímke letöltése
+## <a name="download-shipping-label"></a>Fuvarlevélcímke letöltése
 
 Ha a Data Box E-ink kijelzője nem működik és nem jeleníti meg a visszaküldési fuvarlevélcímkét, akkor azt le kell töltenie a portálról. A Data Box Heavy nem jeleníthető meg E-Ink, ezért ez a munkafolyamat nem vonatkozik a Data Box Heavyra.
 
@@ -75,9 +75,9 @@ A fuvarlevélcímkék letöltéséhez kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Ez a lehetőség csak az eszköz kézbesítését követően érhető el. 
 
-    ![Levélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
+    ![Fuvarlevélcímke letöltése](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  Ezzel letölti a következő fuvarlevélcímkét a visszaküldéshez. Mentse a címkét, majd nyomtassa ki. Hajtsa össze, majd helyezze a címkét az eszközön található átlátszó zsebbe. Győződjön meg arról, hogy a címke jól látható. Távolítsa el a matricákat, amelyek az előző szállítás során kerültek az eszközre.
+2.  Ezzel letölti a következő fuvarlevélcímkét a visszaküldéshez. Mentse a címkét, és nyomtassa ki. Illessze be a címkét a Clear hüvelybe az eszközön. Győződjön meg arról, hogy a címke jól látható. Távolítsa el a matricákat, amelyek az előző szállítás során kerültek az eszközre.
 
     ![Példa a fuvarlevélcímkére](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -95,7 +95,7 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
     ![Szállítási cím szerkesztése 2](media/data-box-portal-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Értesítés adatainak szerkesztése
+## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
 
 Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha az eszközt kiszállítják vagy már átvették. Előfordulhat, hogy egy másik felhasználónak is tájékoztatnia kell, amikor az Adatmásolás befejeződött, így ellenőrizhetik, hogy az adatok az Azure Storage-fiókban találhatók-e, mielőtt törölné a forrásból. Ilyen esetekben szerkesztheti az értesítési adatokat.
 
@@ -204,7 +204,7 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 |Feladva     | A rendelés fel lett adva. A portálon a rendelésnél feltüntetett követési azonosítóval követheti nyomon a szállítást.        |
 |Kézbesítve     | A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
 |Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
-|Érkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
+|Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
 |Adatok másolása     | Az adatok másolása folyamatban van. Kövesse nyomon a rendelés másolásának folyamatát az Azure Portalon. <br> Várjon, amíg az adatok másolása befejeződik. |
 |Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. [A másolási naplókra vonatkozó példákat a feltöltés hibával fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)be.   |
@@ -214,6 +214,6 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan lehet elhárítani a [Data Box és Data Box Heavy problémákat](data-box-troubleshoot.md).
+- Ismerje meg, hogyan lehet [elhárítani a Data Box és Data Box Heavy problémákat](data-box-troubleshoot.md).

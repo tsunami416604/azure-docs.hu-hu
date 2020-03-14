@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Megtudhatja, hogyan konfigurálhatja az Azure dev Spaces-t egyéni NGINX bejövő vezérlő használatára, és hogyan konfigurálhatja a HTTPS-t az adott bejövő vezérlő használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 ms.openlocfilehash: 2debe6daf409200059f28aef52202223193e8f0c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389657"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265336"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Egyéni NGINX bemenő vezérlő használata és HTTPS konfigurálása
 

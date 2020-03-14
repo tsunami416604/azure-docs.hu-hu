@@ -1,6 +1,6 @@
 ---
-title: Az Azure Virtual Network NAT kapcsolódási problémáinak elhárítása
-titleSuffix: Azure Virtual Network NAT troubleshooting
+title: Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
+titleSuffix: Azure Virtual Network
 description: Virtual Network NAT problémáinak elhárítása.
 services: virtual-network
 documentationcenter: na
@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: c629b3425cd095a6ac9d305b5cd6de58ed9d572a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 43e6853fd5e7583883f79e70c8dbcd558f137834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674333"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79202161"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Az Azure Virtual Network NAT kapcsolódási problémáinak elhárítása
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
 
 Ez a cikk segítséget nyújt a rendszergazdáknak a kapcsolódási problémák diagnosztizálásában és megoldásában Virtual Network NAT használatakor.
-
->[!NOTE] 
->Virtual Network NAT jelenleg nyilvános előzetes verzióként érhető el. Jelenleg csak korlátozott számú [régióban](nat-overview.md#region-availability)érhető el. Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, ezért nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="problems"></a>Problémák
 
@@ -54,7 +51,7 @@ A SNAT-kimerülés kiváltó oka gyakran a kimenő kapcsolat létesítésének �
 
 #### <a name="design-patterns"></a>Tervezési minták
 
-Mindig használja ki a kapcsolatok újrafelhasználását és a kapcsolatok készletezését, amikor csak lehetséges.  Ezek a minták elkerülik az erőforrások kimerülésével kapcsolatos problémákat, és kiszámítható, megbízható és skálázható viselkedést eredményeznek. A mintákhoz tartozó primitívek számos fejlesztői könyvtárban és keretrendszerben találhatók.
+Mindig használja ki a kapcsolatok újrafelhasználását és a kapcsolatok készletezését, amikor csak lehetséges.  Ezek a minták elkerülik az erőforrás-kimerülési problémákat, és kiszámítható viselkedést eredményeznek. A mintákhoz tartozó primitívek számos fejlesztői könyvtárban és keretrendszerben találhatók.
 
 _**Megoldás:**_ Megfelelő minták használata
 
@@ -90,14 +87,14 @@ A következő táblázat kiindulási pontot használhat, amellyel a tesztek elin
 
 ### <a name="connectivity-failures"></a>Csatlakozási hibák
 
-[Virtual Network NAT](nat-overview.md) kapcsolódási problémái több különböző probléma miatt is lehetnek:
+[Virtual Network NAT](nat-overview.md) kapcsolódási problémáit számos különböző probléma okozhatja:
 
 * a NAT-átjáró átmeneti vagy tartós [SNAT-kimerülése](#snat-exhaustion) ,
 * átmeneti hibák az Azure-infrastruktúrában, 
 * átmeneti hibák az Azure és a nyilvános internetes cél közötti útvonalon, 
 * átmeneti vagy állandó hibák a nyilvános internetes célhelyen.
 
-A következőhöz hasonló eszközök használhatók az érvényesítéshez: [Az ICMP ping nem támogatott](#icmp-ping-is-failing).
+A következőhöz hasonló eszközök használhatók az érvényesítéshez: Az [ICMP ping nem támogatott](#icmp-ping-is-failing).
 
 | Operációs rendszer | Általános TCP-kapcsolatok tesztelése | TCP-alkalmazás rétegének tesztelése | UDP |
 |---|---|---|---|
@@ -110,7 +107,7 @@ Tekintse át a jelen cikk [SNAT-kimerültség](#snat-exhaustion) című szakasz�
 
 #### <a name="azure-infrastructure"></a>Azure-infrastruktúra
 
-Bár az Azure figyeli és nagy gonddal kezeli az infrastruktúráját, átmeneti hibák léphetnek fel, mivel nincs garancia arra, hogy a továbbítások veszteségmentesek.  Használjon olyan kialakítási mintákat, amelyek lehetővé teszik a a TCP-alkalmazások SYN-újraküldését. A kapcsolat időtúllépése elég nagy a TCP SYN újraküldésének engedélyezéséhez, hogy csökkentse az elveszett SYN-csomagok által okozott átmeneti hatásokat.
+Az Azure figyeli és nagy gonddal kezeli az infrastruktúrát. Átmeneti hibák léphetnek fel, ezért nincs garancia arra, hogy az átvitelek veszteségmentesek.  Használjon olyan kialakítási mintákat, amelyek lehetővé teszik a a TCP-alkalmazások SYN-újraküldését. A kapcsolat időtúllépése elég nagy a TCP SYN újraküldésének engedélyezéséhez, hogy csökkentse az elveszett SYN-csomagok által okozott átmeneti hatásokat.
 
 _**Megoldás**_
 
@@ -118,17 +115,17 @@ _**Megoldás**_
 * A SYN-újraküldési viselkedést vezérlő TCP-verem konfigurációs paramétere RTO ([újraküldési időkorlát](https://tools.ietf.org/html/rfc793)). A RTO értéke állítható, de általában 1 másodperc vagy magasabb értékre van beállítva az exponenciális visszalépéshez.  Ha az alkalmazás kapcsolati időkorlátja túl rövid (például 1 másodperc), akkor előfordulhat, hogy a rendszer szórványos kapcsolati időtúllépéseket lát.  Növelje meg az alkalmazás-kapcsolatok időtúllépését.
 * Ha továbbra is megfigyelheti az alapértelmezett alkalmazás-viselkedéssel kapcsolatos váratlan időtúllépéseket, további hibaelhárításhoz nyisson meg egy támogatási esetet.
 
-Nem ajánlott mesterségesen csökkenteni a TCP-kapcsolat időtúllépését vagy a RTO paraméter finomhangolását.
+Nem javasoljuk, hogy mesterségesen csökkentse a TCP-kapcsolat időtúllépését, vagy hangolja a RTO paramétert.
 
 #### <a name="public-internet-transit"></a>nyilvános internetes tranzit
 
-Az átmeneti hibák valószínűsége a cél és a több köztes rendszer hosszabb elérési útjával nő. Várható, hogy az átmeneti hibák növelhetik az Azure- [infrastruktúra](#azure-infrastructure)gyakoriságát. 
+Az átmeneti hibák esélyei a cél és a több köztes rendszerek hosszabb elérési útjával növekednek. Várható, hogy az átmeneti hibák növelhetik az Azure- [infrastruktúra](#azure-infrastructure)gyakoriságát. 
 
 Kövesse az [Azure-infrastruktúra](#azure-infrastructure) előző szakaszának utasításait.
 
 #### <a name="internet-endpoint"></a>Internetes végpont
 
-Az előző részekben az internetes végponttal kapcsolatos megfontolások is érvényesek, amelyekkel az Ön kommunikációja létrejött. A kapcsolódás sikerességét befolyásoló egyéb tényezők:
+Az előző fejezetek azon internetes végponttal együtt érvényesek, amellyel a kommunikáció létrejött. A kapcsolódás sikerességét befolyásoló egyéb tényezők:
 
 * a forgalom kezelése a célhely oldalon, beleértve a következőket is
 - Az API-arány korlátozása a cél oldal alapján
@@ -147,9 +144,11 @@ _**Megoldás**_
 
 #### <a name="tcp-resets-received"></a>A fogadott TCP-visszaállítások
 
-Ha betartja a forrás virtuális gépen fogadott TCP-alapértékeket (TCP első csomagokat), akkor azokat a privát oldalon található NAT-átjáró hozhatja létre olyan folyamatok esetében, amelyeket nem ismernek fel folyamatban.  Ennek egyik lehetséges oka, hogy a TCP-kapcsolatok üresjárati időtúllépés miatt megszakadt.  Az üresjárati időkorlátot 4 perctől akár 120 percre is beállíthatja.
+A NAT-átjáró TCP-alaphelyzetbe állítja a forrás virtuális gépet olyan forgalom esetén, amely nem ismerhető fel folyamatban.
 
-A TCP-visszaállítások nem a NAT-átjáró erőforrásainak nyilvános oldalán jönnek létre. Ha a TCP alaphelyzetbe állítását a cél oldalon kapja, a forrás virtuális gép vereme és nem a NAT-átjáró erőforrása jön létre.
+Ennek egyik lehetséges oka, hogy a TCP-kapcsolatok üresjárati időtúllépés miatt megszakadt.  Az üresjárati időkorlátot 4 perctől akár 120 percre is beállíthatja.
+
+A TCP-alaphelyzetek nem jönnek létre a NAT-átjáró erőforrásainak nyilvános oldalán. A cél oldalon a TCP-alaphelyzeteket a forrás virtuális gép hozza létre, nem pedig a NAT-átjáró erőforrását.
 
 _**Megoldás**_
 

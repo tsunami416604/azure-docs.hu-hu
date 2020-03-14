@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672280"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239083"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -82,10 +82,10 @@ Az alábbi táblázatban áttekintheti a forgatókönyvéhez szükséges lépés
 
 | Lépések | Jelenlegi Windows és a jelszókivonat szinkronizálása | Jelenlegi Windows és összevonás | Korábbi verziójú Windows |
 | :--- | :---: | :---: | :---: |
-| A szolgáltatáskapcsolódási pont konfigurálása | ![Ellenőrzés][1] | ![Ellenőrzés][1] | ![Ellenőrzés][1] |
-| Jogcímek kiállításának beállítása |     | ![Ellenőrzés][1] | ![Ellenőrzés][1] |
-| Nem Windows 10 operációs rendszerű eszközök engedélyezése |       |        | ![Ellenőrzés][1] |
-| Csatlakoztatott eszközök ellenőrzése | ![Ellenőrzés][1] | ![Ellenőrzés][1] | [Ellenőrizze][1] |
+| A szolgáltatáskapcsolódási pont konfigurálása | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
+| Jogcímek kiállításának beállítása |     | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
+| Nem Windows 10 operációs rendszerű eszközök engedélyezése |       |        | ![Jelölőnégyzet][1] |
+| Csatlakoztatott eszközök ellenőrzése | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | [Ellenőrizze][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Szolgáltatási kapcsolódási pont konfigurálása
 
@@ -560,7 +560,7 @@ Ha problémákat tapasztal a hibrid Azure AD-csatlakozásnak a tartományhoz csa
 * [Jelenlegi Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 * [Korábbi verziójú Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

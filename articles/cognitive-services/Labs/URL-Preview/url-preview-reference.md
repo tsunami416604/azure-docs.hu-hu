@@ -12,11 +12,11 @@ ms.date: 03/29/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220786"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-címének előzetes verziója – dokumentáció
 

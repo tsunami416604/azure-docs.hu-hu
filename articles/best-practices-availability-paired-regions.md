@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
-ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344172"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248254"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók
 
@@ -26,7 +26,7 @@ A regionális párok két régióból állnak, ugyanazon a földrajzon belül. A
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Bizonyos Azure-szolgáltatások a párosított régiók további előnyeit biztosítják az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez.  Az Azure számos [tárolási megoldást](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) kínál, amelyek kihasználják a párosított régiókat az adatelérhetőség biztosításához. Az [Azure geo-redundáns tároló](/storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) például automatikusan replikálja az adatforrásokat egy másodlagos régióba, így biztosítva, hogy az adatvédelem még abban az esetben is megmaradjon, ha az elsődleges régió nem helyreállítható. 
+Bizonyos Azure-szolgáltatások a párosított régiók további előnyeit biztosítják az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez.  Az Azure számos [tárolási megoldást](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) kínál, amelyek kihasználják a párosított régiókat az adatelérhetőség biztosításához. Az [Azure geo-redundáns tároló](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) például automatikusan replikálja az adatforrásokat egy másodlagos régióba, így biztosítva, hogy az adatvédelem még abban az esetben is megmaradjon, ha az elsődleges régió nem helyreállítható. 
 
 Vegye figyelembe, hogy az összes Azure-szolgáltatás nem replikálja automatikusan az adatait, és az összes Azure-szolgáltatás nem áll automatikusan vissza egy sikertelen régióból a párja felé.  Ilyen esetekben a helyreállítást és a replikálást az ügyfélnek kell konfigurálnia.
 

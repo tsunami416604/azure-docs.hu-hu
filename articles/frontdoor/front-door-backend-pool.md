@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272850"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>A háttérrendszer és a háttérbeli készletek az Azure bejárati ajtó szolgáltatásában
 Ez a cikk bemutatja, hogyan képezhető le az alkalmazás üzembe helyezése az Azure bevezetési szolgáltatásával. Emellett ismerteti a különböző használati feltételeket is az alkalmazási háttérrendszer-konfigurációban.

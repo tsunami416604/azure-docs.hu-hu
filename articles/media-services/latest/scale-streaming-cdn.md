@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 90fa3b06e2696e9b45c333c75c8a8e117d5c0c96
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e918f7ee64d4bc49d5da80bf9a3e7595555296dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563114"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203695"
 ---
-# <a name="scaling-streaming-with-cdn"></a>Streaming skálázás a CDN-vel
+# <a name="scaling-streaming-with-cdn"></a>Streamelés méretezése CDN-nel
 
 Az Azure tartalomkézbesítési hálózat CDN a tartalmakat világszerte, stratégiai alapon elhelyezett fizikai csomópontokon gyorsítótárazva globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű gyors kézbesítéséhez a felhasználók felé.  
 
@@ -33,7 +33,7 @@ Annak eldöntése során, hogy engedélyezi-e a CDN-t a Media Services [streamin
 
 Ez a témakör a [CDN-integráció](#enable-azure-cdn-integration)engedélyezését ismerteti. Ismerteti továbbá az előzetes beolvasást (az aktív gyorsítótárazást) és az [Origin-Assist CDN-prefektusi](#origin-assist-cdn-prefetch) koncepciót.
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="considerations"></a>Megfontolások
 
 * A [streaming endpoint](streaming-endpoint-concept.md) `hostname` és a folyamatos átviteli URL-cím ugyanaz marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
 * Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, hozzon létre egy másik, CDN-t nem támogató streaming-végpontot.
@@ -86,7 +86,7 @@ A *forrás – támogatás CDN-kiindulási* funkció előnyei a következők:
 
 A Akamai CDN-vel közvetlen szerződéssel rendelkező ügyfelek számára a CDN-támogatás a *forrás-assziszt CDN-* hez (az élő és a videó igény szerinti közvetítéséhez egyaránt). A szolgáltatás a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Media Services-forrás között:
 
-|HTTP-fejléc|értékek|Feladó|Fogadó|Cél|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -145,6 +145,7 @@ A *forrás-assziszt CDN-kiindulási* szolgáltatás a következő folyamatos át
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.
+* Ügyeljen arra, hogy SLA az [adatfolyam-végpont (forrás)](streaming-endpoint-concept.md) dokumentumát.
+* Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.
