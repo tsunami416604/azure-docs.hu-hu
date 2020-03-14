@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264920"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -50,7 +50,15 @@ Igen. Egy ExpressRoute-kapcsolatcsoportot, egyszer állítsa be, egy virtuális 
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Hogyan hirdetik meg a virtuális hálózatok a ExpressRoute-alapú privát kiszolgálókon?
 
-Az ExpressRoute-átjáró meghirdeti *Az Azure* -VNet, és az alhálózat szintjén nem szerepelhet/nem zárható ki. Mindig a meghirdetett VNet-címtartomány. Továbbá, ha a VNet-társítást használja, és a "távoli átjáró használata" beállítás engedélyezve van, a rendszer a meghirdetett VNet VNet is közzéteszi.
+Az ExpressRoute-átjáró meghirdeti az Azure-VNet tartozó *címterület (ka)* t, az alhálózat szintjén nem szerepelhet/nem zárható ki. Mindig a meghirdetett VNet-címtartomány. Továbbá, ha a VNet-társítást használja, és a "távoli átjáró használata" beállítás engedélyezve van, a rendszer a meghirdetett VNet VNet is közzéteszi.
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Hány előtagokat lehet meghirdetni egy VNet a helyszíni ExpressRoute-alapú privát partneri kapcsolaton?
+
+Egyetlen ExpressRoute-kapcsolaton keresztül legfeljebb 200 előtagot lehet meghirdetni, vagy az átjáró-továbbítást használó VNet-társításon keresztül. Ha például a 199-es címtartomány egyetlen VNet van csatlakoztatva egy ExpressRoute-áramkörhöz, a rendszer az összes előtagok 199-os részét a helyszínen hirdeti meg. Ha van olyan VNet, amely lehetővé teszi, hogy az átjárók átvitele 1 címtartomány és 150 küllős virtuális hálózatok engedélyezve legyen a "távoli átjáró engedélyezése" lehetőség használatával, az átjáróval üzembe helyezett VNet a 151 előtagokat hirdeti meg a helyszínen.
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Mi történik, ha túllépem a ExpressRoute-kapcsolatok előtag-korlátját?
+
+A ExpressRoute áramkör és az átjáró (és az átjárót használó virtuális hálózatok, ha van ilyen) közötti kapcsolat leáll. A rendszer újra létrehozza, ha az előtag korlátja már nem lépi túl.  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Szűrhetim a helyszíni hálózatról érkező útvonalakat?
 

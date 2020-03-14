@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377665"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266623"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
 
@@ -76,6 +76,6 @@ Ha egy jogosult felhasználó rákattint az adott alkalmazásra vonatkozó hivat
 
 Ezek a hivatkozások ugyanazokat a hozzáférés-vezérlési mechanizmusokat használják, mint a hozzáférési panel és az Office 365, és csak azok a felhasználók vagy csoportok fognak tudni sikeres hitelesítést végezni, akik hozzá lettek rendelve az alkalmazáshoz a Azure Portal. Azonban minden jogosulatlan felhasználó számára megjelenik egy üzenet, amely arról tájékoztatja, hogy nem kaptak hozzáférést, és a hozzáférési panel betöltésére szolgáló hivatkozásra kattintva megtekintheti azokat az elérhető alkalmazásokat, amelyekhez hozzáférése van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Központi telepítési csomagok: [Azure Active Directory telepítési tervek](../fundamentals/active-directory-deployment-plans.md)
