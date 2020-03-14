@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272369"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET-megoldások migrálása Windows-alapú HDInsight Linux-alapú HDInsight
 
@@ -65,7 +65,7 @@ A naplók elérésével kapcsolatos további információkért tekintse meg a k�
 
 * [Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A C# MapReduce használata a HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 

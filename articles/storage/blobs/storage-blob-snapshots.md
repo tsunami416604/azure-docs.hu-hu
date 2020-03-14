@@ -8,18 +8,20 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fb2da8acb0aa4d105f23ab5d1ad42f08a6ae722c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 17cd57fbcf9b1c14fb275a070bdefdd1282c4d6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595248"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370525"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>BLOB-pillanatkép létrehozása és kezelése a .NET-ben
 
-A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik. A pillanatképek a Blobok biztonsági mentéséhez hasznosak. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet blob-pillanatképeket a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage/client)használatával.
+A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik. A pillanatképek a Blobok biztonsági mentéséhez hasznosak. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet blob-pillanatképeket a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.
 
 ## <a name="about-blob-snapshots"></a>Tudnivalók a blob-pillanatképekről
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 A blob pillanatképe azonos az alap blobtal, azzal a különbséggel, hogy a blob URI-ja a blob URI-hoz fűzött **datetime** értékkel rendelkezik, hogy jelezze a pillanatkép készítésének időpontját. Ha például az oldal blob URI-ja `http://storagesample.core.blob.windows.net/mydrives/myvhd`, a pillanatkép URI-ja hasonló a `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z`hoz.
 

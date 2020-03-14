@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 9360a90b457f99cb9c15deda80dce8233069100d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355762"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277764"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Functions 2. x kimeneti kötésének Azure Cosmos DB
 
@@ -574,6 +574,8 @@ Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDB` attribútumba
 |**partitionKey**|**PartitionKey** |Ha a `CreateIfNotExists` értéke TRUE (igaz), akkor a létrehozott gyűjtemény partíciós kulcsának elérési útját határozza meg.|
 |**collectionThroughput**|**CollectionThroughput**| Ha a `CreateIfNotExists` értéke igaz, meghatározza a létrehozott gyűjtemény [átviteli sebességét](../cosmos-db/set-throughput.md) .|
 |**connectionStringSetting**    |**ConnectionStringSetting** |Az Azure Cosmos DB kapcsolati sztringjét tartalmazó alkalmazásbeállítás neve.        |
+|**preferredLocations**| **PreferredLocations**| Választható Meghatározza a földrajzilag replikált adatbázis-fiókok előnyben részesített helyét (régióit) a Azure Cosmos DB szolgáltatásban. Az értékeket vesszővel kell elválasztani. Például: "az USA keleti régiója, az USA déli középső régiója, Észak-Európa". |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Választható Ha a beállítás értéke `true` és `PreferredLocations`, akkor a Azure Cosmos DB szolgáltatásban [több régiót](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) is használhat. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -586,7 +588,7 @@ Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy doku
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
 
-| Kötés | Referencia |
+| Kötés | Leírások |
 |---|---|
 | CosmosDB | [CosmosDB-hibakódok](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
@@ -613,11 +615,11 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|GatewayMode|Átjáró|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek `Direct` és `Gateway`|
+|GatewayMode|Átjáró-|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek `Direct` és `Gateway`|
 |Protokoll|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|
 |leasePrefix|n/a|Az alkalmazás összes függvényében használandó bérlet-előtag.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása Azure Cosmos DB dokumentum létrehozásakor vagy módosításakor (trigger)](./functions-bindings-cosmosdb-v2-trigger.md)
 - [Azure Cosmos DB dokumentum olvasása (bemeneti kötés)](./functions-bindings-cosmosdb-v2-input.md)

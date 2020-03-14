@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360498"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268859"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Felügyelt API-referenciák Azure SQL Database felügyelt példányokhoz
 
@@ -37,7 +37,7 @@ Felügyelt példányok Azure PowerShell használatával történő létrehozás�
 > [!TIP]
 > A PowerShell-parancsfájlok például a következő témakörben találhatók [: gyors indítású parancsfájl: az Azure SQL felügyelt példányának létrehozása a PowerShell-kódtár használatával](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Parancsmag | Leírás |
+| A parancsmag | Leírás |
 | --- | --- |
 |[Új – AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Létrehoz egy Azure SQL Database felügyelt példányt |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|A felügyelt Azure SQL-példányra vonatkozó adatokat adja vissza.|
@@ -55,7 +55,7 @@ Felügyelt példányok [Azure CLI](/cli/azure)-vel való létrehozásához és k
 > [!TIP]
 > Azure CLI-gyors útmutató: az [SQL felügyelt példány használata az Azure CLI használatával](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Parancsmag | Leírás |
+| A parancsmag | Leírás |
 | --- | --- |
 |[az SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Felügyelt példány létrehozása|
 |[az SQL mi List](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Az elérhető felügyelt példányok listája|
@@ -94,7 +94,7 @@ Felügyelt példányok létrehozásához és kezeléséhez használja ezeket a R
 |[Felügyelt példányok – erőforráslista szerint csoportosítva](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Egy erőforráscsoport felügyelt példányainak listáját adja vissza.|
 |[Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Felügyelt példány frissítése.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](sql-database-single-database-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

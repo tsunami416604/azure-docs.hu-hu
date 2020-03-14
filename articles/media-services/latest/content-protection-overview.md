@@ -16,11 +16,11 @@ ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393472"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269795"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
 
@@ -114,7 +114,7 @@ A biztonságijogkivonat-szolgáltatás (STS) a háttérbeli erőforrás-hozzáf�
 
 [Ezt az STS-eszközt](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) használhatja az STS teszteléséhez. Az ellenőrző kulcsok mindhárom típusát támogatja: szimmetrikus, aszimmetrikus vagy Azure Active Directory (Azure AD) a kulcsok átváltásával.
 
-## <a name="streaming-protocols-and-encryption-types"></a>Streamelési protokollok és titkosítási típusok
+## <a name="streaming-protocols-and-encryption-types"></a>Adatfolyam-továbbítási protokollok és a titkosítási típusok
 
 A Media Services segítségével dinamikusan az AES-kulcsok vagy titkosított DRM-titkosítást a PlayReady, Widevine vagy FairPlay használatával a tartalmat. Jelenleg titkosíthatja a HLS, az MPEG DASH és a Smooth Streaming formátumokat. A protokollok a következő titkosítási módszereket támogatják.
 
@@ -186,7 +186,7 @@ Ha a jogkivonat-korlátozott szabályzatot konfigurálja, meg kell adnia az els�
 
 A *jogkivonat-Visszajátszások megelőzési* funkciója lehetővé teszi, hogy Media Services ügyfelek megszabják, hogy egy adott jogkivonat hányszor használható kulcs vagy licenc igénylésére. Az ügyfél hozzáadhat egy `urn:microsoft:azure:mediaservices:maxuses` típusú jogcímet a jogkivonatban, ahol az érték az a szám, ahányszor a token használható a licencek vagy kulcsok beszerzéséhez. Az ugyanazzal a jogkivonattal rendelkező összes további kérelem nem engedélyezett választ ad vissza. Lásd: a jogcím hozzáadása a DRM- [mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
  
-#### <a name="considerations"></a>Megfontolások
+#### <a name="considerations"></a>Megfontolandó szempontok
 
 * Az ügyfeleknek meg kell határoznia a jogkivonat-generálást. A jogcímet maga a jogkivonatban kell elhelyezni.
 * A szolgáltatás használatakor a rendszer nem engedélyezett válaszként utasítja el azokat a jogkivonatokat, amelyek lejárati ideje meghaladja a kérés fogadásának idejét.
@@ -259,7 +259,7 @@ Ha `_NOT_SPECIFIED_IN_URL`kal végződik hibákat kap, ügyeljen arra, hogy a ti
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Védelem AES-titkosítással](protect-with-aes128.md)
 * [Védelem a DRM-mel](protect-with-drm.md)

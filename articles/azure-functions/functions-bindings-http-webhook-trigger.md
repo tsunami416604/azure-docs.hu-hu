@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356103"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277595"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -808,7 +808,7 @@ Az üzemi végpontok éles környezetben történő teljes biztonságossá téte
 
 Ha ezen alkalmazás-szintű biztonsági módszerek egyikét használja, a HTTP-triggert használó függvény engedélyezési szintjét `anonymous`értékre kell állítani.
 
-## <a name="webhooks"></a>Webhookok
+## <a name="webhooks"></a>webhooks
 
 > [!NOTE]
 > A webhook mód csak a functions futtatókörnyezet 1. x verziójához érhető el. Ez a változás a 2. x vagy újabb verziójú HTTP-eseményindítók teljesítményének javítása érdekében történt.
@@ -839,6 +839,6 @@ A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza 
 Ha a HTTP-triggert használó függvény 230 másodpercen belül nem fejeződik be, akkor a [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) időtúllépést jelez, és http 502-hibát ad vissza. A függvény továbbra is futni fog, de nem tud HTTP-választ adni. A hosszú ideig futó függvények esetében javasoljuk, hogy kövesse az aszinkron mintákat, és olyan helyet küldjön vissza, amelyben pingelheti a kérés állapotát. További információ a függvények futtatásának időtartamáról: [skálázás és üzemeltetés – fogyasztási terv](functions-scale.md#timeout).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [HTTP-válasz visszaadása függvényből](./functions-bindings-http-webhook-output.md)

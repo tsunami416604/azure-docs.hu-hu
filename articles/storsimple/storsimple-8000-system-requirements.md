@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267663"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-es sorozatú szoftverek, magas rendelkezésre állás és hálózati követelmények
 
@@ -244,7 +244,7 @@ Körültekintően tekintse át az ajánlott eljárásokat a StorSimple-eszközh�
 * Konfigurálja az StorSimple [-t két csomópontos fájlkiszolgálói fürt-konfigurációval][1]. Ha eltávolítja az egyes meghibásodási pontokat, és a gazdagép oldalon redundancia-felépítést készít, a teljes megoldás rendkívül elérhetővé válik.
 * A Windows Server 2012 (SMB 3,0) szolgáltatásban elérhető folyamatos rendelkezésre állású (CA) megosztások használata a tárolási vezérlők feladatátvétele során. A fájlkiszolgáló-fürtök és a folyamatosan rendelkezésre álló megosztások Windows Server 2012-ben történő konfigurálásával kapcsolatos további információkért tekintse meg ezt a [videót bemutató](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)részt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A StorSimple rendszerkorlátainak megismerése](storsimple-8000-limits.md).
 * [Ismerje meg, hogyan helyezheti üzembe a StorSimple-megoldást](storsimple-8000-deployment-walkthrough-u2.md).

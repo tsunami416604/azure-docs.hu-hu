@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358638"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270939"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 Ez a cikk azt ismerteti, hogyan adhat hozzá felhasználókat a laborhoz, hogyan regisztrálhatja őket a laborban, hogy hány órát használhat a virtuális gép, és így tovább. 
@@ -144,7 +144,7 @@ Ehhez kövesse az alábbi lépéseket:
 ## <a name="student-accounts"></a>Tanulói fiókok
 Ha tanulókat szeretne felvenni egy osztályterem laborba, használja az e-mail-fiókjait. A következő típusú e-mail-fiókokat lehet használni:
 
-- Egy tanulói e-mail-fiók, amelyet az egyetemi Office 365 Azure Active Directory (HRE) biztosít. 
+- Egy tanulói e-mail-fiók, amelyet az egyetemi irodája 365 Azure Active Directory biztosít. 
 - Egy Microsoft e-mail-fiók, például `@outlook.com`, `@hotmail.com`, `@msn.com`vagy `@live.com`.
 - Egy nem a Microsofttól származó e-mail-fiók, például a Yahoo vagy a Google által biztosított. Az ilyen típusú fiókoknak azonban Microsoft-fiókhoz kell kapcsolódniuk.
 - Egy GitHub-fiók. Ennek a fióknak egy Microsoft-fiók-vel kell összekapcsolnia.
@@ -174,7 +174,15 @@ A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a github
 
 Végül a rendszer kéri, hogy hozzon létre egy Microsoft-fiók, amely a GitHub-fiókjához van csatolva. Automatikusan megtörténik, amikor a tanuló kiválasztja a **Next (tovább**) lehetőséget.  Ezután a tanuló azonnal bejelentkezik, és csatlakozik az osztályterem laborhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="export-list-of-users-to-a-csv-file"></a>Felhasználók listájának exportálása CSV-fájlba
+
+1. Váltson a **felhasználók** lapra.
+2. Válassza a **...** (három pont) lehetőséget az eszköztáron, majd válassza a **CSV exportálása**lehetőséget. 
+
+    ![Felhasználók listájának exportálása](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
+
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 - [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

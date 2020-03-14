@@ -12,11 +12,11 @@ manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
 ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360348"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269132"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Speciális adatbiztonság a Azure SQL Database
 
@@ -72,7 +72,7 @@ Az adatbázis-kiszolgáló vagy a felügyelt példány speciális biztonsági be
 
 ![Adatbázis-beállítások](./media/sql-advanced-protection/database_settings.png) 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - További tudnivalók az [adatfelderítési & besorolásáról](sql-database-data-discovery-and-classification.md) 
 - További információ a [sebezhetőségi felmérésről](sql-vulnerability-assessment.md) 

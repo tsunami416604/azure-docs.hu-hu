@@ -7,11 +7,11 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368960"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277725"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions Azure Event Grid trigger
 
@@ -21,7 +21,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 ## <a name="example"></a>Példa
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 HTTP-trigger esetén például az [események fogadása http-végpontra](../event-grid/receive-events.md)című témakörben talál további információt.
 
@@ -76,7 +76,7 @@ namespace Company.Function
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja.
 
@@ -128,7 +128,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja.
 
@@ -159,7 +159,7 @@ module.exports = function (context, eventGridEvent) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja.
 
@@ -200,7 +200,7 @@ def main(event: func.EventGridEvent):
     logging.info('Python EventGrid trigger processed an event: %s', result)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Ez a szakasz tartalmazza az alábbi példák:
 
@@ -269,7 +269,7 @@ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-b
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) attribútumot.
 
@@ -285,19 +285,19 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 Teljes példa: C# példa.
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az C# attribútumokat a parancsfájl nem támogatja.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) jegyzet lehetővé teszi a Event Grid kötések deklaratív konfigurálását a konfigurációs értékek megadásával. További részletekért tekintse meg a [példa](#example) és a [konfigurációs](#configuration) szakaszt.
 
@@ -315,7 +315,7 @@ A következő táblázat a *function. JSON* fájlban beállított kötési konfi
 
 ## <a name="usage"></a>Használat
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Azure Functions 1. x esetén a következő paramétereket használhatja a Event Grid triggerhez:
 
@@ -329,7 +329,7 @@ Azure Functions 2. x vagy újabb verzióban a következő paraméter-típust is 
 > [!NOTE]
 > Ha `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`hoz próbál kötni a functions v1-ben, a fordító egy "elavult" üzenetet jelenít meg, és azt tanácsoljuk, hogy a `Microsoft.Azure.EventGrid.Models.EventGridEvent` használja helyette. Az újabb típus használatához hivatkozzon a [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet-csomagra, és teljes mértékben kihasználja a `EventGridEvent` típus nevét `Microsoft.Azure.EventGrid.Models`használatával.
 
-# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Azure Functions 1. x esetén a következő paramétereket használhatja a Event Grid triggerhez:
 
@@ -343,15 +343,15 @@ Azure Functions 2. x vagy újabb verzióban a következő paraméter-típust is 
 > [!NOTE]
 > Ha `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`hoz próbál kötni a functions v1-ben, a fordító egy "elavult" üzenetet jelenít meg, és azt tanácsoljuk, hogy a `Microsoft.Azure.EventGrid.Models.EventGridEvent` használja helyette. Az újabb típus használatához hivatkozzon a [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet-csomagra, és teljes mértékben kihasználja a `EventGridEvent` típus nevét `Microsoft.Azure.EventGrid.Models`használatával. További információ a NuGet-csomagok C# parancsfájl-függvényekben való hivatkozásáról: [NuGet-csomagok használata](functions-reference-csharp.md#using-nuget-packages)
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A Event Grid példány a *function. JSON* fájl `name` tulajdonságában konfigurált paraméterrel érhető el.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 A Event Grid-példány elérhető a *function. JSON* fájl `name` tulajdonságában megadott paraméterrel, amelyet `func.EventGridEvent`ként kell beírni.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Az Event Grid-esemény a `EventGridTrigger` attribútumhoz társított paraméterrel érhető el, `EventSchema`ként beírva. További részletekért tekintse meg a [példát](#example) .
 
@@ -568,6 +568,6 @@ A Event Grid trigger függvény végrehajtja és megjeleníti a következő pél
 
 ![Minta Event Grid trigger-függvények naplói](media/functions-bindings-event-grid/eg-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Event Grid esemény elküldése](./functions-bindings-event-grid-trigger.md)

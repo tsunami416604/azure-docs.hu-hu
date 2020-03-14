@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391193"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268209"
 ---
 # <a name="get-started-with-azcopy"></a>Ismerkedés a AzCopy
 
@@ -92,7 +92,7 @@ Ezeket a szerepköröket a következő hatókörök bármelyikében lehet hozzá
 - Tároló (fájlrendszer)
 - Tárfiók
 - Erőforráscsoport
-- Előfizetést
+- -előfizetés
 
 A szerepkörök ellenőrzésével és hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a várólista adataihoz a Azure Portal RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -318,6 +318,6 @@ Ha a AzCopy (AzCopy v 8.1) előző verzióját kell használnia, tekintse meg az
 
 Lásd: [AzCopy konfigurálása, optimalizálása és hibáinak megoldása](storage-use-azcopy-configure.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha kérdése van, problémája vagy általános visszajelzése van, küldje el őket [a GitHub](https://github.com/Azure/azure-storage-azcopy) oldalon.

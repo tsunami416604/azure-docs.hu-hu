@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
 ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374931"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279649"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
 
@@ -142,7 +142,7 @@ A virtuális hálózati társítással való együttműködéshez használt fió
 
 Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell rendelnie egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek                                                          | Name (Név) |
+| Művelet                                                          | Név |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Az A virtuális hálózatról a B virtuális hálózatra való társítás létrehozásához szükséges. A virtuális hálózatnak virtuális hálózatnak (Resource Manager) kell lennie.          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | A (z) B virtuális hálózatról (Resource Manager) az A virtuális hálózatra való társítás létrehozásához szükséges                                                       |
@@ -150,11 +150,11 @@ Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell 
 | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/READ   | Virtuális hálózati társak beolvasása   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Virtuális hálózati társak törlése |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-  |Azure üzembehelyezési modell             | Előfizetést  |
+  |Azure üzembehelyezési modell             | -előfizetés  |
   |---------                          |---------|
   |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
   |                                   |[Különböző](create-peering-different-subscriptions.md)|

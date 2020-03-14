@@ -10,11 +10,11 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356363"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270419"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -72,7 +72,7 @@ Azure Machine Learning számítási fürtöket a betanításhoz és a Batch-köv
 
 A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 * [Számítási cél beállítása a modell betanításához](how-to-set-up-training-targets.md)

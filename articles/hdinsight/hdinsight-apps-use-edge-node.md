@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
 ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386395"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272603"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön a HDInsight-ben
 
@@ -79,7 +79,7 @@ Ebben a szakaszban egy Resource Manager-sablon használatával ad hozzá egy per
 
     |Tulajdonság |Leírás |
     |---|---|
-    |Előfizetést|Válassza ki a fürt létrehozásához használt Azure-előfizetést.|
+    |-előfizetés|Válassza ki a fürt létrehozásához használt Azure-előfizetést.|
     |Erőforráscsoport|Válassza ki a meglévő HDInsight-fürthöz használt erőforráscsoportot.|
     |Hely|Válassza ki a meglévő HDInsight-fürt helyét.|
     |Fürt neve|Adja meg egy meglévő HDInsight-fürt nevét.|
@@ -103,7 +103,7 @@ Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtö
 
     |Tulajdonság |Leírás |
     |---|---|
-    |Előfizetést|Válassza ki a fürt létrehozásához használt Azure-előfizetést.|
+    |-előfizetés|Válassza ki a fürt létrehozásához használt Azure-előfizetést.|
     |Erőforráscsoport|Hozzon létre egy új erőforráscsoportot a fürthöz.|
     |Hely|Válasszon egy helyet az erőforráscsoportnak.|
     |Fürt neve|Adja meg a létrehozandó új fürt nevét.|
@@ -156,7 +156,7 @@ A Azure Portalból törölhet egy peremhálózati csomópontot.
 4. Kattintson a jobb gombbal a törölni kívánt peremhálózati csomópontra, majd válassza a **Törlés**lehetőséget.
 5. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan adhat hozzá egy Edge-csomópontot, és hogyan érheti el a peremhálózati csomópontot. További információt a következő cikkekben talál:
 

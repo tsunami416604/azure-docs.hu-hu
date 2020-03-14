@@ -4,11 +4,11 @@ description: Erőforrások, riasztások és rendelkezésre állási tesztek lét
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381122"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275879"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -450,7 +450,7 @@ Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A követ
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egyéb Automation-cikkek:
 
 * [Hozzon létre egy Application Insights erőforrás](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) -gyors metódust sablon használata nélkül.
