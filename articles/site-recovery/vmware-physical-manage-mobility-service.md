@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362997"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256964"
 ---
 # <a name="manage-the-mobility-agent"></a>A Mobility-ügynök kezelése 
 
@@ -37,11 +37,24 @@ Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszol
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobilitási szolgáltatás frissítése PowerShell-parancsfájllal a Windows Serveren
 
+Mielőtt elkezdené, győződjön meg arról, hogy a konfigurációs kiszolgáló, a kibővíthető folyamat-kiszolgálók és a telepítés részét képező fő célkiszolgáló frissítése megtörtént, mielőtt frissíti a mobilitási szolgáltatást a védett gépeken.
+
 A következő szkripttel frissítheti a mobilitási szolgáltatást a kiszolgálón a Power Shell parancsmag használatával
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Mobilitási szolgáltatás manuális frissítése minden védett kiszolgálón
+
+1. Mielőtt elkezdené, győződjön meg arról, hogy a konfigurációs kiszolgáló, a kibővíthető folyamat-kiszolgálók és a telepítés részét képező fő célkiszolgáló frissítése megtörtént, mielőtt frissíti a mobilitási szolgáltatást a védett gépeken.
+
+2. [Keresse meg az ügynök telepítőjét](vmware-physical-mobility-service-overview.md#locate-installer-files) a-kiszolgáló operációs rendszere alapján.
+
+>[!IMPORTANT]
+> Ha az Azure IaaS virtuális gépet egy Azure-régióból egy másikba replikálja, ne használja ezt a metódust. Az összes elérhető lehetőségről az [útmutatóban](azure-to-azure-autoupdate.md) tájékozódhat.
+
+3. Másolja a telepítési fájlt a védett gépre, és futtassa a mobilitási ügynök frissítéséhez.
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>A mobilitási szolgáltatás leküldéses telepítéséhez használt fiók frissítése
 

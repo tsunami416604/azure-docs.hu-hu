@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482295"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271693"
 ---
 # <a name="manage-users"></a>Felhasználók kezelése
 
@@ -67,7 +67,7 @@ Felhasználók eltávolítása az Azure FarmBeats rendszerből:
 
 Ha felhasználókat szeretne hozzáadni az Azure AD-hez, tegye a következőket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. A jobb felső sarokban válassza ki a fiókját, majd váltson arra az Azure AD-bérlőre, amely a FarmBeats-hez van társítva.
 3. Válassza **Azure Active Directory** > **felhasználók**lehetőséget.
 

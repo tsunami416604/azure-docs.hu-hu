@@ -8,11 +8,11 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968134"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250256"
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxon
 A Linux rendszerű virtuális gépeken az Azure-ban a szoftveres RAID használatával egyetlen RAID-eszközként több csatlakoztatott adatlemezt is be lehet mutatni. Ez általában a teljesítmény javítása és a jobb átviteli sebesség lehetővé tétele, mint a csak egyetlen lemez használata.

@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945499"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264933"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Az Event Hubs kapcsolati sztring lekérése
 
@@ -76,7 +76,7 @@ az eventhubs eventhub authorization-rule keys list --resource-group dummyresourc
 
 Az Event Hubs Azure CLI-parancsaival kapcsolatos további információkért lásd: [Az Azure CLI a Event Hubshoz](/cli/azure/eventhubs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

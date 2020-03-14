@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259863"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
 
@@ -92,8 +92,9 @@ További információ a kvótákkal és a korlátozásokkal kapcsolatban: [app S
 Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy meghatározott időtartam alatt tétlenek. Így a rendszeren erőforrásokat takaríthat meg. A hátránya, hogy a webalkalmazás eltávolítását követően az első kérelemre adott válasz már nem érhető el, így a webalkalmazás betöltődik, és megkezdheti a válaszok kiszolgálását. Az alapszintű és a standard szintű szolgáltatási csomagokban a **mindig** bekapcsolva beállítás megadásával megtarthatja az alkalmazás folyamatos betöltését. Ez a várakozási idő elteltével nem töltődik be az alkalmazás üresjárata után. Az **Always On** beállítás módosítása:
 
 1. A Azure Portal nyissa meg a webalkalmazást.
-2. Válassza az **Alkalmazásbeállítások**lehetőséget.
-3. Az **Always On**beállításnál válassza **a be**lehetőséget.
+2. **Konfiguráció** kiválasztása
+3. Válassza az **általános beállítások**lehetőséget.
+4. Az **Always On**beállításnál válassza **a be**lehetőséget.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hogyan bekapcsolni a sikertelen kérelmek nyomkövetését?
 

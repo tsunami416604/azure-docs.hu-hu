@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681173"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280754"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>App Service-csomag kezelése az Azure-ban
 
@@ -24,7 +24,7 @@ Egy [Azure app Service csomag](overview-hosting-plans.md) biztosítja azokat az 
 
 Létrehozhat egy üres App Service-csomagot, vagy létrehozhat egy csomagot az alkalmazások létrehozásának részeként.
 
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** elemet.
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása**lehetőséget.
 
    ![Hozzon létre egy erőforrást a Azure Portalban.][createResource] 
 
@@ -96,7 +96,7 @@ Ha el szeretné kerülni a nem várt díjakat, akkor a App Service csomag utols�
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás vertikális felskálázása az Azure-ban](manage-scale-up.md)
+> [Alkalmazások vertikális felskálázása az Azure-ban](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

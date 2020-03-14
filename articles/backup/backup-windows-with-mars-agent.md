@@ -4,11 +4,11 @@ description: A Windows rendszerű gépek biztonsági mentéséhez használja a M
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 0e1f7044c62bbaa9969b97690bf16b9ed446c27c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673012"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247773"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Windows rendszerű gépek biztonsági mentése a Azure Backup MARS-ügynök használatával
 
@@ -150,11 +150,11 @@ A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** ál
 
 | Biztonsági mentés – ütemezett beállítás | Az adatmegőrzés időtartama
 | -- | --
-| Nap | **Alapértelmezett megőrzés**: megegyezik a napi biztonsági másolatok megőrzési napjaiban. <br/><br/> **Kivétel**: Ha a hosszú távú adatmegőrzésre beállított napi ütemezett biztonsági mentés (hét, hónap vagy év) meghiúsul, egy igény szerinti biztonsági mentést, amely a hiba után azonnal aktiválódik, hosszú távú adatmegőrzésre számít. Ellenkező esetben a következő ütemezett biztonsági mentés a hosszú távú adatmegőrzést veszi figyelembe.<br/><br/> **Példa**: a 8:00-as csütörtökön ütemezett biztonsági mentés sikertelen. Ezt a biztonsági mentést hetente, havonta vagy évenkénti megőrzés céljából kell figyelembe venni. Ezért az első igény szerinti biztonsági mentést a rendszer a következő ütemezett biztonsági mentés elindítását megelőzően, a 8:00 ÓRAKOR automatikusan címkézi, hetente, havonta vagy évenkénti megőrzéssel. Ez a biztonsági másolat helyettesíti a Csütörtök 8:00 AM biztonsági mentést.
+| Day | **Alapértelmezett megőrzés**: megegyezik a napi biztonsági másolatok megőrzési napjaiban. <br/><br/> **Kivétel**: Ha a hosszú távú adatmegőrzésre beállított napi ütemezett biztonsági mentés (hét, hónap vagy év) meghiúsul, egy igény szerinti biztonsági mentést, amely a hiba után azonnal aktiválódik, hosszú távú adatmegőrzésre számít. Ellenkező esetben a következő ütemezett biztonsági mentés a hosszú távú adatmegőrzést veszi figyelembe.<br/><br/> **Példa**: a 8:00-as csütörtökön ütemezett biztonsági mentés sikertelen. Ezt a biztonsági mentést hetente, havonta vagy évenkénti megőrzés céljából kell figyelembe venni. Ezért az első igény szerinti biztonsági mentést a rendszer a következő ütemezett biztonsági mentés elindítását megelőzően, a 8:00 ÓRAKOR automatikusan címkézi, hetente, havonta vagy évenkénti megőrzéssel. Ez a biztonsági másolat helyettesíti a Csütörtök 8:00 AM biztonsági mentést.
 | Hét | **Alapértelmezett megőrzés**: egy nap. A heti biztonsági mentési házirenddel rendelkező adatforrások igény szerinti biztonsági mentését a következő nap során törli a rendszer. A rendszer akkor is törli őket, ha az adatforrás legújabb biztonsági mentései vannak. <br/><br/> **Kivétel**: Ha a hosszú távú adatmegőrzésre beállított heti ütemezett biztonsági mentés (hét, hónap vagy év) meghiúsul, egy igény szerinti biztonsági mentés, amely a hiba után azonnal aktiválódik, hosszú távú adatmegőrzésre számít. Ellenkező esetben a következő ütemezett biztonsági mentés a hosszú távú adatmegőrzést veszi figyelembe. <br/><br/> **Példa**: a 8:00-as csütörtökön ütemezett biztonsági mentés sikertelen. A biztonsági mentést figyelembe kell venni a havi vagy az éves adatmegőrzés során. Így az első, a 8:00-as csütörtökön a következő ütemezett biztonsági mentés előtt kiváltott, igény szerinti biztonsági mentést a rendszer automatikusan felcímkézi a havi vagy az éves adatmegőrzési időszakra. Ez a biztonsági másolat helyettesíti a Csütörtök 8:00 AM biztonsági mentést.
 
 További információt a [biztonsági mentési szabályzat létrehozása](#create-a-backup-policy)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure-ban](backup-azure-restore-windows-server.md).

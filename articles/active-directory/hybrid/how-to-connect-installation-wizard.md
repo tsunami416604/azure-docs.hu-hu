@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376326"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261332"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálás: a telepítővarázsló második alkalommal történő futtatása
 A Azure AD Connect telepítővarázsló első futtatásakor végigvezeti a telepítés konfigurálásának lépésein. Ha újra futtatja a telepítővarázslót, a karbantartási lehetőségeket kínál.

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 616cdc0387d5c5cf3c2980ae1cfbc10e3c1119f4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261358"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -65,9 +65,11 @@ A másolási tevékenységet engedélyező szolgáltatás globálisan elérhető
 
 ## <a name="configuration"></a>Konfiguráció
 
-A másolási tevékenység Azure Data Factoryban való használatához a következőket kell tennie:
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-1. **Társított szolgáltatások létrehozása a forrás adattárhoz és a fogadó adattárhoz.** A konfigurációs információk és a támogatott tulajdonságok esetében tekintse meg az összekötő cikk "társított szolgáltatás tulajdonságai" szakaszát. A támogatott összekötők listáját a jelen cikk [támogatott adattárak és formátumok](#supported-data-stores-and-formats) című szakaszában találja.
+Általánosságban elmondható, hogy a másolási tevékenységet a Azure Data Factoryban kell használnia:
+
+1. **Társított szolgáltatások létrehozása a forrás adattárhoz és a fogadó adattárhoz.** A támogatott összekötők listáját a jelen cikk [támogatott adattárak és formátumok](#supported-data-stores-and-formats) című szakaszában találja. A konfigurációs információk és a támogatott tulajdonságok esetében tekintse meg az összekötő cikk "társított szolgáltatás tulajdonságai" szakaszát. 
 2. **Hozzon létre adatkészleteket a forráshoz és a fogadóhoz.** A konfigurációs információkat és a támogatott tulajdonságokat a forrás és a fogadó összekötő cikkek "adatkészlet tulajdonságai" szakaszában találja.
 3. **Hozzon létre egy folyamatot a másolási tevékenységgel.** Ez a szakasz mutatja be.
 
@@ -140,102 +142,7 @@ A másolási tevékenység következő sablonja a támogatott tulajdonságok tel
 
 ## <a name="monitoring"></a>Figyelés
 
-A másolási tevékenység futtatását a Azure Data Factory szerző & a felhasználói felület **figyelése** vagy programozott módon követheti.
-
-### <a name="monitor-visually"></a>Vizuális megfigyelés
-
-A másolási tevékenység futtatásának vizuális figyeléséhez nyissa meg az adatgyárat, és lépjen a **szerző & monitor**elemre. A **figyelés** lapon megtekintheti a folyamat futásának listáját a **műveletek** oszlopban található **megtekintési tevékenység futtatása** gombbal:
-
-![Folyamatfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-
-Válassza a tevékenységek **megtekintése futtatása** lehetőséget a folyamat futtatási tevékenységeinek megtekintéséhez. A **műveletek** oszlopban láthatók a másolási tevékenység bemenetére mutató hivatkozások, a kimenet, a hibák (ha a másolási tevékenység futtatása sikertelen) és a részletek:
-
-![Tevékenységfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
-
-A **műveletek** oszlopban a **részletek** gombra kattintva megtekintheti a másolási tevékenység végrehajtási részleteit és a teljesítmény jellemzőit. A forrásról a fogadóra, az átviteli sebességre, a másolási tevékenység menetére és a másoláshoz használt konfigurációkra vonatkozó információk, például a sorok mennyisége/száma, valamint az adatfájlok száma.
-
->[!TIP]
->Bizonyos helyzetekben a **teljesítmény-hangolási tippeket** is láthatja a másolás figyelése oldal tetején. Ezek a tippek ismertetik az azonosított szűk keresztmetszeteket, és információt nyújtanak arról, hogy mit kell módosítani a másolási teljesítmény növelése érdekében. Példaként tekintse meg a jelen cikk [teljesítmény és Finomhangolás](#performance-and-tuning) című szakaszát.
-
-**Példa: másolás az Amazon S3-ból Azure Data Lake Store**
-![a tevékenység futásának részletei](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
-
-**Példa: másolás Azure SQL Databaseról Azure SQL Data Warehousera előkészített másolással**
-![figyelési tevékenység futtatási részletei](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
-
-### <a name="monitor-programmatically"></a>Programozott figyelése
-
-A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredmények** > **kimenet** szakaszában is visszakerülnek. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek futtatásának figyeléséről: [a folyamat futásának figyelése](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
-
-| Tulajdonság neve  | Leírás | Unit (Egység) |
-|:--- |:--- |:--- |
-| dataRead | A forrásból beolvasott adatok mennyisége. | Int64 érték bájtban |
-| dataWritten | A fogadóba írt adatmennyiség. | Int64 érték bájtban |
-| filesRead | A file Storage-ból másolás során másolt fájlok száma. | Int64 típusú érték (egység) |
-| filesWritten | A file Storage-ba másolás során másolt fájlok száma. | Int64 típusú érték (egység) |
-| sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int64 típusú érték (egység) |
-| sinkPeakConnections | A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma. | Int64 típusú érték (egység) |
-| rowsRead | A forrásból beolvasott sorok száma (bináris másolás esetén nem alkalmazható). | Int64 típusú érték (egység) |
-| rowsCopied | A fogadóba másolt sorok száma (bináris másolás esetén nem alkalmazható). | Int64 típusú érték (egység) |
-| rowsSkipped | A kihagyott inkompatibilis sorok száma. A nem kompatibilis sorok kihagyását a `enableSkipIncompatibleRow` True értékre állításával engedélyezheti. | Int64 típusú érték (egység) |
-| copyDuration | A másolás futtatásának időtartama. | Int32 érték másodpercben |
-| Átviteli sebesség | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
-| sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int32 érték (nincs egység) |
-| sinkPeakConnections| A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma.| Int32 érték (nincs egység) |
-| sqlDwPolyBase | Azt jelzi, hogy a rendszer az adatok másolásakor használja-e a SQL Data Warehouse. | Logikai |
-| redshiftUnload | Azt jelzi, hogy a rendszer az ELTÁVOLÍTÁSt használja-e az adatok Vöröseltolódásból történő másolásakor. | Logikai |
-| hdfsDistcp | Azt határozza meg, hogy a rendszer DistCp használ-e az adatok HDFS-ből való másolásakor. | Logikai |
-| effectiveIntegrationRuntime | A tevékenység futtatásához használt integrációs modul (IR) vagy futtatókörnyezet a következő formátumban: `<IR name> (<region if it's Azure IR>)`. | Szöveg (karakterlánc) |
-| usedDataIntegrationUnits | A hatékony integrációs adategységek másolása során. | Int32 érték |
-| usedParallelCopies | A hatékony parallelCopies másolása során. | Int32 érték |
-| redirectRowPath | A `redirectIncompatibleRowSettings` tulajdonságban konfigurált blob Storage-beli kihagyott inkompatibilis sorok naplójának elérési útja. Tekintse meg a jelen cikk későbbi [hibatűrését](#fault-tolerance) . | Szöveg (karakterlánc) |
-| executionDetails | További részletek a másolási tevékenység lépésein, valamint a megfelelő lépéseken, időtartamokon, konfigurációkon stb. Nem javasoljuk, hogy elemezze ezt a szakaszt, mert megváltozhat.<br/><br/>A Data Factory a `detailedDurations`alatt a különböző fázisokban töltött részletes időtartamokat (másodpercben) is jelenti. A lépések időtartama kizárólagos. Csak a megadott másolási tevékenység futtatására érvényes időtartamok jelennek meg:<br/>**Üzenetsor** -kezelő időtartama (`queuingDuration`): a másolási tevékenységnek az integrációs modulban ténylegesen elinduló ideje. Ha saját üzemeltetésű integrációs modult használ, és ez az érték nagy, ellenőrizze az IR-kapacitást és a használatot, és a számítási feladatok alapján fel-vagy leskálázást. <br/>**Másolás előtti parancsfájl időtartama** (`preCopyScriptDuration`): az az időpont, amikor a másolási tevékenység ELINDUL az IR-ben, és ha a másolási tevékenység befejezi a fogadó adattárban lévő, másolás előtti parancsfájl futtatását. A másolás előtti parancsfájl konfigurálására vonatkozik. <br/>Az **első bájtig** eltelt idő (`timeToFirstByte`): az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik. Ha ez az érték nagy, ellenőrizze és optimalizálja a lekérdezést vagy a kiszolgálót.<br/>**Átvitel időtartama** (`transferDuration`): az előző lépés vége és az az idő, amikor az IR átviszi a forrásról a fogadóba a teljes adatmennyiséget. | Tömb |
-| perfRecommendation | Teljesítmény-finomhangolási tippek másolása. A részletekért lásd a [teljesítmény és hangolás](#performance-and-tuning) című témakört. | Tömb |
-
-```json
-"output": {
-    "dataRead": 6198358,
-    "dataWritten": 19169324,
-    "filesRead": 1,
-    "sourcePeakConnections": 1,
-    "sinkPeakConnections": 2,
-    "rowsRead": 39614,
-    "rowsCopied": 39614,
-    "copyDuration": 1325,
-    "throughput": 4.568,
-    "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedDataIntegrationUnits": 4,
-    "usedParallelCopies": 1,
-    "executionDetails": [
-        {
-            "source": {
-                "type": "AzureBlobStorage"
-            },
-            "sink": {
-                "type": "AzureSqlDatabase"
-            },
-            "status": "Succeeded",
-            "start": "2019-08-06T01:01:36.7778286Z",
-            "duration": 1325,
-            "usedDataIntegrationUnits": 4,
-            "usedParallelCopies": 1,
-            "detailedDurations": {
-                "queuingDuration": 2,
-                "preCopyScriptDuration": 12,
-                "transferDuration": 1311
-            }
-        }
-    ],
-    "perfRecommendation": [
-        {
-            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
-            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
-            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
-        }
-    ]
-}
-```
+A másolási tevékenységet a Azure Data Factory vizuálisan és programozott módon is figyelheti. Részletekért lásd: a [másolási tevékenység figyelése](copy-activity-monitoring.md).
 
 ## <a name="incremental-copy"></a>A növekményes másolási
 
@@ -243,15 +150,7 @@ A Data Factory lehetővé teszi a különbözeti adatok növekményes másolás�
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 
-A [másolási tevékenység teljesítményének és méretezhetőségének útmutatója](copy-activity-performance.md) ismerteti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés teljesítményére a Azure Data Factory másolási tevékenységén keresztül. Felsorolja továbbá a tesztelés során megfigyelt teljesítményadatokat, valamint ismerteti a másolási tevékenység teljesítményének optimalizálását.
-
-Bizonyos helyzetekben, amikor másolási tevékenységet futtat Data Factoryban, az alábbi példában látható **teljesítmény-hangolási tippek** jelennek meg a [másolási tevékenység figyelése oldal](#monitor-visually)tetején. A tippekből megtudhatja, hogy a rendszer milyen szűk keresztmetszetet észlelt az adott másolási futtatáshoz. Emellett információt nyújtanak arról, hogy mit kell módosítani a másolási teljesítmény növelése érdekében. A teljesítmény-hangolási tippek jelenleg olyan javaslatokat biztosítanak, mint például az adatok másolása a Azure SQL Data Warehouseba, a Azure Cosmos DB RUs vagy a Azure SQL Database DTU növelése, ha az adattárban található erőforrás szűk keresztmetszetet tartalmaz, és eltávolítja szükségtelenül előkészített másolatok.
-
-**Példa: másolás a Azure SQL Databaseba, teljesítmény-hangolási tipptel**
-
-Ebben a példában a másolás során a Data Factory a fogadó Azure SQL Database nagy DTU-kihasználtságot követ nyomon. Ez az állapot lelassítja az írási műveleteket. A javaslat célja, hogy növelje a DTU a Azure SQL Database szinten:
-
-![A monitoring és a Performance tuning tippek másolása](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+A [másolási tevékenység figyelési](copy-activity-monitoring.md) élménye megmutatja a másolási teljesítmény statisztikáit az egyes tevékenységek futtatásához. A [másolási tevékenység teljesítményének és méretezhetőségének útmutatója](copy-activity-performance.md) ismerteti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés teljesítményére a Azure Data Factory másolási tevékenységén keresztül. Felsorolja továbbá a tesztelés során megfigyelt teljesítményadatokat, valamint ismerteti a másolási tevékenység teljesítményének optimalizálását.
 
 ## <a name="resume-from-last-failed-run"></a>Folytatás az utolsó sikertelen futtatásból
 

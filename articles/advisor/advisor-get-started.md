@@ -4,11 +4,11 @@ description: A Azure Advisor első lépései.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443138"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259629"
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
 
@@ -19,7 +19,7 @@ Ismerje meg, hogyan érheti el az Advisorot a Azure Portalon keresztül, javasla
 
 ## <a name="get-recommendations"></a>Javaslatok kérése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. A bal oldali ablaktáblán kattintson az **Advisor**elemre.  Ha nem látja az Advisort a bal oldali ablaktáblán, kattintson a **minden szolgáltatás**elemre.  Kattintson a szolgáltatás menü **felügyelet és kezelés**területén található **Advisor**elemre. Megjelenik az Advisor irányítópultja.
 
@@ -82,7 +82,7 @@ Lehetnek olyan erőforráscsoportok vagy előfizetések, amelyekhez nem kíván 
 
     ![Advisor-erőforrások konfigurálása – példa](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. Kattintson az **alkalmaz** gombra.
+1. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="configure-low-usage-vm-recommendation"></a>Alacsony használati virtuálisgép-javaslat konfigurálása
 

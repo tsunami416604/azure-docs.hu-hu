@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359570"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280494"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL lehetővé teszi a postgres szabványos naplófájljainak konfigurálását és elérését. A naplók használatával azonosíthatja, elháríthatja és kijavíthatja a konfigurációs hibákat és az optimális teljesítményt. A konfigurálható és elérhető naplózási információk közé tartoznak a hibák, a lekérdezési információk, az autoporszívós rekordok, a kapcsolatok és az ellenőrzőpontok. (A tranzakciós naplókhoz való hozzáférés nem érhető el).

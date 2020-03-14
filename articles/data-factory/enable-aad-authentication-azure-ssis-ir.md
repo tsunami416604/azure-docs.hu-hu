@@ -12,11 +12,11 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927449"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260708"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime Azure Active Directory hitelesítésének engedélyezése
 
@@ -198,7 +198,7 @@ A Azure-SSIS IR PowerShell-lel való kiépítéséhez tegye a következőket:
 
 1.  Telepítse [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modult.
 
-2.  A parancsfájlban ne állítson be `CatalogAdminCredential` paramétert. Példa:
+2.  A parancsfájlban ne állítson be `CatalogAdminCredential` paramétert. Például:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

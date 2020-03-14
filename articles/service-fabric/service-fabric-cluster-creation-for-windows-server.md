@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389839"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258823"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások. További információ a különbségekről: az [Azure és az önálló Service Fabric-fürtök összehasonlítása](./service-fabric-deploy-anywhere.md).

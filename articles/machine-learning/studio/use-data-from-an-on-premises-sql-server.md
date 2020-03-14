@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169119"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204182"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Elemzések elvégzése Azure Machine Learning Studio (klasszikus) használatával helyszíni SQL Server-adatbázis segítségével
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Gyakran olyan vállalatok, amelyek a helyszíni adatok használata, ha a méretezési csoport és a gépi tanulási célú számítási feladatokhoz a felhő rugalmasságát. De azok nem szeretné, hogy megszakítja az aktuális üzleti és munkafolyamatok által a helyszíni adatok áthelyezése a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok helyszíni SQL Server-adatbázisból való beolvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan másolja, és szinkronizálja az adatokat a felhőben és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio (klasszikus) **adatimportálási** modulja most már közvetlenül a helyszíni SQL Server-adatbázisból is beolvasható a betanítási és pontozási feladatokhoz.
 
@@ -43,7 +45,7 @@ A Data Factory integrációs modulnak előfeltételei a következők:
 * A Data Factory helyi integráció csak a .NET-keretrendszer 4.6.1-es verzióját vagy újabb 64 bites operációs rendszer.
 * A Windows operációs rendszerek támogatott verzióinak a Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 rendszer. 
 * Az ajánlott konfiguráció az integrációs modul gép legalább 2 GHz-es, 4 mag CPU, 8GB RAM-MAL és 80GB lemezterület.
-* Ha a gazdagép frissítéséből hibernálás az integrációs modul kérelmek nem fog válaszolni. Ezért egy megfelelő energiasémát beállítani a számítógépen bemutathatja telepítése előtt Ha a számítógép hibernált állapotba van konfigurálva, az integrációs modul telepítése üzenetet jelenít meg.
+* Ha a gazdaszámítógép hibernált állapotba kerül, az IR nem válaszol az adatkérésekre. Ezért egy megfelelő energiasémát beállítani a számítógépen bemutathatja telepítése előtt Ha a számítógép hibernált állapotba van konfigurálva, az integrációs modul telepítése üzenetet jelenít meg.
 * A másolási tevékenység egy adott gyakorisággal következik be, mert az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, csúcs-és üresjárati. Erőforrás-használat is nagyban függ az áthelyezett adatok mennyisége. Több másolási feladat van folyamatban, meg fogjuk megfigyelheti csúcsidőben feljebb görgetünk erőforrás-használat. Bár technikailag elegendő a fent felsorolt minimális konfiguráció, érdemes több erőforrást, mint a minimális konfigurációs függően az adatok áthelyezését a meghatározott típusú konfigurációt.
 
 Vegye figyelembe a következőket, amikor beállításával és használatával a Data Factory helyi Integration Runtime:
@@ -51,7 +53,7 @@ Vegye figyelembe a következőket, amikor beállításával és használatával 
 * Integrációs modul csak egyetlen példányát telepítheti egyetlen számítógépre.
 * Több helyszíni adatforrás olyan egységes integrációs modul is használhat.
 * Több IRs más-más számítógépekre csatlakozhat a helyszíni ugyanazon az adatforráson.
-* Egyszerre csak egy munkaterülethez konfigurálhat egy IRs-t. Integrációs modulok jelenleg nem oszthatók meg munkaterületek között.
+* Egyszerre csak egy munkaterülethez konfigurálhat egy IRs-t. Jelenleg az IRs nem osztható meg a munkaterületek között.
 * Egyetlen munkaterület több IRs konfigurálhatja. Előfordulhat például, hogy egy olyan IR-t szeretne használni, amely a tesztelési adatforrásokhoz van csatlakoztatva a fejlesztés során, valamint egy éles IR-t, amikor készen áll a működővé tenni.
 * Az integrációs modul nem kell ugyanarra a gépre, az adatforrással kell. De az adatforrás közelebb tartózkodó lerövidíti az átjáró csatlakozik az adatforráshoz. Azt javasoljuk, hogy az integrációs modul telepítését olyan számítógépen, amelyen eltér, amely üzemelteti a helyszíni adatforrás úgy, hogy az erőforrások az átjáró és az adatforrás nem vagyunk versenyképesek.
 * Ha a számítógépen már telepítve van egy Power BI vagy Azure Data Factory forgatókönyveket kiszolgáló IR, telepítsen egy különálló IR-t a Azure Machine Learning Studio (klasszikus) számára egy másik számítógépen.
@@ -118,7 +120,7 @@ Az első lépéseként hozhat létre, és állítsa be az átjáró a helyszíni
 Ezzel befejezte az átjáró telepítési folyamatát Azure Machine Learning Studio (klasszikus).
 Most már készen áll a helyszíni adatok használatát.
 
-Mindegyik munkaterülethez létrehozhat és beállíthat több átjárót a Studio (klasszikus) használatával. Például előfordulhat, hogy szeretne csatlakozni a fejlesztés során, a teszt adatforrások átjáró és a egy másik átjáró a termelési adatforrások. A Azure Machine Learning Studio (klasszikus) lehetőséget biztosít több átjáró beállítására a vállalati környezettől függően. Jelenleg nem oszthat meg egy átjárót a munkaterületek között, és csak egy átjáró telepíthető ugyanazon a számítógépen. További információkért lásd: [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md).
+Mindegyik munkaterülethez létrehozhat és beállíthat több átjárót a Studio (klasszikus) használatával. Például előfordulhat, hogy szeretne csatlakozni a fejlesztés során, a teszt adatforrások átjáró és a egy másik átjáró a termelési adatforrások. A Azure Machine Learning Studio (klasszikus) lehetőséget biztosít több átjáró beállítására a vállalati környezettől függően. Jelenleg nem oszthat meg átjárókat a munkaterületek között, és csak egy átjárót telepíthet egyetlen számítógépre. További információkért lásd: [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáróval](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>2\. lépés: Az átjáró használatára, egy helyszíni adatforrásból származó adatokat olvasni.
 Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult egy olyan kísérlethez, amely beírja az adatokat a helyszíni SQL Server adatbázisból.

@@ -1,6 +1,6 @@
 ---
 title: Monitorozás és teljesítmény-finomhangolás
-description: Tippek a teljesítmény finomhangolásához Azure SQL Database a kiértékelés és fejlesztés révén.
+description: A monitorozási és teljesítmény-hangolási képességek és módszertan áttekintése Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,249 +10,99 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: 837d88665c1fdffe902c9c478e5d6dc65a2e402a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382347"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268729"
 ---
-# <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
+# <a name="monitoring-and-performance-tuning-in-azure-sql-database"></a>A monitorozás és a teljesítmény finomhangolása Azure SQL Database
 
-A Azure SQL Database olyan eszközöket és metódusokat biztosít, amelyekkel könnyen figyelheti a használatot, hozzáadhat vagy eltávolíthat erőforrásokat (például CPU-t, memóriát vagy I/O-t), elháríthatja a lehetséges problémákat, és javaslatokat tehet az adatbázisok teljesítményének növelésére. A Azure SQL Database szolgáltatásai automatikusan kijavíthatják az adatbázisokban felmerülő problémákat. 
+Azure SQL Database-adatbázis teljesítményének figyeléséhez először figyelje a számítási feladatok által használt CPU-és IO-erőforrásokat az adott szolgáltatási szint és teljesítmény szintjének kiválasztása során kiválasztott adatbázis-teljesítmény szintjéhez képest. Ennek elvégzéséhez Azure SQL Database olyan erőforrás-metrikákat bocsát ki, amelyek megtekinthetők a Azure Portal vagy az alábbi SQL Management-eszközök valamelyikével: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
-Az automatikus hangolás lehetővé teszi, hogy az adatbázis alkalmazkodjon a számítási feladatokhoz, és automatikusan optimalizálja a teljesítményt. Előfordulhat azonban, hogy egyes egyéni problémák hibaelhárítást igényelnek. Ez a cikk ismerteti az ajánlott eljárásokat és néhány olyan eszközt, amelyekkel elháríthatja a teljesítménnyel kapcsolatos problémákat.
+Az önálló és a készletezett adatbázisok esetében a Azure SQL Database számos adatbázis-tanácsadót biztosít az intelligens teljesítmény-hangolási javaslatok és az Automatikus hangolási beállítások biztosításához a teljesítmény javítása érdekében. Emellett Lekérdezési terheléselemző megjeleníti a legtöbb CPU-és IO-használatért felelős lekérdezések részleteit az önálló és a készletezett adatbázisok esetében.
 
-A következő lépésekkel biztosíthatja, hogy egy adatbázis probléma nélkül fusson:
-- [Figyelje meg az adatbázis teljesítményét](#monitor-database-performance) , és győződjön meg arról, hogy az adatbázishoz rendelt erőforrások kezelhetik a munkaterhelést. Ha az adatbázis eléri az erőforrás-korlátozásokat, vegye figyelembe a következőket:
-   - A legfontosabb erőforrás-fogyasztási lekérdezések azonosítása és optimalizálása.
-   - További erőforrások hozzáadása [a szolgáltatási szintek frissítésével](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources).
-- [Teljesítményproblémák elhárítása](#troubleshoot-performance-problems) a lehetséges problémák okának megállapítása és a probléma kiváltó okának azonosítása érdekében. A kiváltó ok azonosítása után végezze el a probléma megoldásához szükséges lépéseket.
+A Azure SQL Database a mesterséges intelligencia által támogatott további monitorozási és hangolási képességeket biztosít az adatbázisok és megoldások teljesítményének hibaelhárításához és maximalizálásához. Dönthet úgy is, hogy a [Intelligent Insights](sql-database-intelligent-insights.md) és más SQL Database erőforrás-naplók és metrikák [adatfolyam-exportálását](sql-database-metrics-diag-logging.md) több, a felhasználás és az elemzés céljára szolgáló célhelyre konfigurálja, különösen az [SQL Analytics](../azure-monitor/insights/azure-sql.md)használatával). A Azure SQL Analytics egy fejlett felhőalapú figyelési megoldás, amely az összes Azure SQL Database-adatbázis teljesítményét és egyetlen nézetben több előfizetést is figyel. Az exportálható naplók és metrikák listáját az [Exportálás diagnosztikai telemetria](sql-database-metrics-diag-logging.md#diagnostic-telemetry-for-export-for-azure-sql-database) című témakörben tekintheti meg.
 
-## <a name="monitor-database-performance"></a>Adatbázis teljesítményének monitorozása
+Végül az SQL saját figyelési és diagnosztikai képességekkel rendelkezik a [SQL Server Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) -val és a [dinamikus felügyeleti nézetekkel (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](sql-database-monitoring-with-dmvs.md) szkripteket.
 
-Az Azure-beli SQL-adatbázisok teljesítményének figyeléséhez először figyelje a választott adatbázis-teljesítmény szintjéhez képest felhasznált erőforrásokat. A következő erőforrások figyelése:
- - **CPU-használat**: Ellenőrizze, hogy az adatbázis hosszabb ideig eléri-e a CPU-használat 100 százalékát. A magas CPU-használat azt jelezheti, hogy azonosítania és hangolnia kell a legtöbb számítási teljesítményt használó lekérdezéseket. A magas CPU-használat azt is jelezheti, hogy az adatbázist vagy a példányt magasabb szolgáltatási szintre kell frissíteni. 
- - **Várakozási statisztika**: a [sys. dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) használatával határozza meg, hogy mennyi ideig várakozik a lekérdezések. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak. 
- - **I/o-használat**: Ellenőrizze, hogy az adatbázis eléri-e a mögöttes tároló IO-korlátait.
- - **Memóriahasználat**: az adatbázishoz vagy példányhoz rendelkezésre álló memória mennyisége arányos a virtuális mag számával. Győződjön meg arról, hogy a memória elég a munkaterheléshez. A lap várható élettartama azon paraméterek egyike, amelyek azt jelezhetik, hogy a rendszer milyen gyorsan távolítja el a lapokat a memóriából.
+## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>A Azure Portal funkcióinak figyelése és finomhangolása
 
-A Azure SQL Database szolgáltatás olyan eszközöket és erőforrásokat tartalmaz, amelyek segítenek a lehetséges teljesítménnyel kapcsolatos problémák megoldásában. A [teljesítmény-finomhangolási javaslatok](sql-database-advisor.md)áttekintésével azonosíthatja a lekérdezési teljesítmény javításának és optimalizálásának lehetőségeit az erőforrások módosítása nélkül. 
+A Azure Portal Azure SQL Database az összes központi telepítési típus erőforrás-metrikáinak figyelését. Az önálló és a készletezett adatbázisok esetében az adatbázis-tanácsadók és a Lekérdezési terheléselemző biztosítanak lekérdezés-hangolási javaslatokat és a lekérdezési teljesítmény elemzését. Végül a Azure Portalban engedélyezheti a logikai kiszolgálók és az önálló és a készletezett adatbázisok automatikus alkalmazását.
 
-A hiányzó indexek és rosszul optimalizált lekérdezések az adatbázis gyenge teljesítményének gyakori okai. A számítási feladatok teljesítményének növeléséhez finomhangolási javaslatokat is alkalmazhat. Azt is megteheti, hogy Azure SQL Database az összes azonosított javaslat alkalmazásával [automatikusan optimalizálja a lekérdezések teljesítményét](sql-database-automatic-tuning.md) . Ezután ellenőrizze, hogy a javaslatok javították-e az adatbázis teljesítményét.
+### <a name="sql-database-resource-monitoring"></a>Erőforrás-figyelés SQL Database
 
-> [!NOTE]
-> Az indexelés csak önálló adatbázisban és rugalmas készletekben érhető el. Az indexelés felügyelt példányban nem érhető el.
+A **metrikák** nézetben gyorsan figyelheti a Azure Portal következő erőforrás-metrikáit:
 
-Az adatbázis teljesítményének figyeléséhez és hibakereséséhez válasszon az alábbi lehetőségek közül:
+- **DTU-használat**
 
-- A [Azure Portal](https://portal.azure.com)válassza az **SQL-adatbázisok** lehetőséget, majd válassza ki az adatbázist. A **figyelési** diagramon keresse meg a maximális kihasználtságot megközelítő erőforrásokat. A DTU-felhasználás alapértelmezés szerint megjelenik. Válassza a **Szerkesztés** lehetőséget a megjelenített időtartomány és értékek módosításához.
-- Az eszközök, például a SQL Server Management Studio számos hasznos jelentést biztosítanak, például a [teljesítmény-irányítópultot](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard). Ezekkel a jelentésekkel figyelheti az erőforrás-használatot, és azonosíthatja a leggyakoribb erőforrás-felhasználási lekérdezéseket. A [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed) segítségével azonosíthatja azokat a lekérdezéseket, amelyeknek a teljesítménye romlott.
-- A [Azure Portal](https://portal.azure.com)a legtöbb erőforrást használó lekérdezések azonosításához használja a [lekérdezési terheléselemző](sql-database-query-performance.md) . Ez a funkció csak önálló adatbázisban és rugalmas készletekben érhető el.
-- A [SQL Database Advisor](sql-database-advisor-portal.md) használatával megtekintheti az indexek, a parametrizálja lekérdezések és a séma problémáinak létrehozásához és eldobásához szükséges javaslatokat. Ez a funkció csak önálló adatbázisban és rugalmas készletekben érhető el.
-- Az [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) használatával automatikusan figyelheti az adatbázis teljesítményét. Teljesítményproblémák észlelésekor a rendszer diagnosztikai naplót hoz létre. A napló a probléma részleteit és a kiváltó okok elemzését (RCA) tartalmazza. Ha lehetséges, teljesítmény-javító javaslatot kell megadnia.
-- Az [automatikus hangolás engedélyezése lehetővé](sql-database-automatic-tuning-enable.md) teszi, hogy Azure SQL Database automatikusan javítsa a teljesítménnyel kapcsolatos problémákat.
-- A teljesítménnyel kapcsolatos problémák részletesebb hibaelhárításával segítséget nyújthat a [dinamikus felügyeleti nézetek (DMV)](sql-database-monitoring-with-dmvs.md), a [kiterjesztett események](sql-database-xevent-db-diff-from-svr.md)és a [lekérdezési tároló](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) használata.
+  Ellenőrizze, hogy egy adatbázis vagy rugalmas készlet elérte-e a DTU-használat 100%-át hosszabb ideig. A magas DTU-használat azt jelzi, hogy a számítási feladathoz több CPU-vagy IO-erőforrásra lehet szükség. Azt is jelezheti, hogy milyen lekérdezéseket kell optimalizálni.
+- **CPU-használat**
 
-> [!TIP]
-> Miután azonosította a teljesítménnyel kapcsolatos problémát, tekintse meg a [teljesítményre vonatkozó útmutatót](sql-database-performance-guidance.md) , amellyel megtalálhatja a Azure SQL Database teljesítményének javításához szükséges technikákat.
+  Ellenőrizze, hogy az adatbázis, a rugalmas készlet vagy a felügyelt példány eléri-e a CPU-használat 100%-át hosszabb ideig. A magas CPU azt jelzi, hogy a számítási feladathoz több CPU-vagy IO-erőforrásra lehet szükség. Azt is jelezheti, hogy milyen lekérdezéseket kell optimalizálni.
+- **I/o-használat**
 
-## <a name="troubleshoot-performance-problems"></a>Teljesítménnyel kapcsolatos problémák elhárítása
+  Ellenőrizze, hogy az adatbázis, a rugalmas készlet vagy a kezelés példánya eléri-e a mögöttes tároló IO-korlátait. A magas IO-használat azt jelzi, hogy a számítási feladathoz több CPU-vagy IO-erőforrásra lehet szükség. Azt is jelezheti, hogy milyen lekérdezéseket kell optimalizálni.
 
-A teljesítménnyel kapcsolatos problémák diagnosztizálásához és megoldásához először keresse meg az egyes aktív lekérdezések állapotát, valamint azokat a feltételeket, amelyek az egyes számítási feladatok állapotára vonatkozó teljesítménnyel kapcsolatos problémákat okoznak. A Azure SQL Database teljesítményének javítása érdekében meg kell ismernie, hogy az alkalmazás minden aktív lekérdezési kérelme futó állapotban vagy várakozási állapotban van. A Azure SQL Database teljesítménybeli problémáinak elhárítása során tartsa szem előtt a következő diagramot.
+  ![Erőforrás-metrikák](./media/sql-database-monitor-tune-overview/resource-metrics.png)
 
-![Munkaterhelési állapotok](./media/sql-database-monitor-tune-overview/workload-states.png)
+### <a name="database-advisors"></a>Adatbázis-tanácsadók
+"Azure SQL Database olyan [adatbázis-tanácsadókat](sql-database-advisor.md) tartalmaz, amelyek teljesítmény-hangolási javaslatokat biztosítanak az önálló és a készletezett adatbázisokhoz. Ezek a javaslatok a Azure Portal és a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor)használatával is elérhetők. Az [automatikus hangolást](sql-database-automatic-tuning.md) is engedélyezheti, hogy a SQL Database automatikusan implementálja ezeket a hangolási javaslatokat.
 
-A számítási feladatok teljesítményével kapcsolatos problémát a CPU-tartalom okozhatja (egy *futó* feltételt) vagy egy bizonyos, a *várakozással kapcsolatos* feltételre váró lekérdezéseket.
+### <a name="query-performance-insight"></a>Lekérdezési terheléselemző
 
-A futtatással kapcsolatos problémákat az alábbiak okozhatják:
-- **Fordítási problémák**: az SQL-lekérdezés-optimalizáló az elavult statisztikai adatok miatt előkészítheti a legoptimálisabb tervet, a feldolgozandó sorok számának vagy a szükséges memória pontatlan becslésének megfelelően. Ha tudja, hogy a lekérdezés a múltban vagy egy másik példányon (felügyelt példányon vagy SQL Server-példányon) lett végrehajtva, hasonlítsa össze a tényleges végrehajtási terveket, és ellenőrizze, hogy azok eltérnek-e. Próbáljon meg lekérdezési tippeket alkalmazni, vagy újjáépíteni a statisztikákat vagy indexeket a jobb terv beszerzéséhez. A problémák automatikus mérsékléséhez engedélyezze a Azure SQL Database automatikus tervének javítását.
-- **Végrehajtási problémák**: Ha a lekérdezési terv optimális, valószínűleg az adatbázis erőforrás-korlátait, például a napló írási sebességét éri el. Vagy lehet, hogy olyan töredezett indexeket használ, amelyeket újra kell építeni. A végrehajtási problémák akkor is előfordulhat, ha az egyidejű lekérdezések nagy száma ugyanazokat az erőforrásokat igényel. A *várakozással kapcsolatos* problémák általában a végrehajtási problémákkal kapcsolatosak, mert a nem hatékonyan végrehajtandó lekérdezések valószínűleg bizonyos erőforrásokra várnak.
+A [lekérdezési terheléselemző](sql-database-query-performance.md) megjeleníti a teljesítményt a leggyakrabban használt és a leghosszabb ideig futó lekérdezések Azure Portalában az önálló és a készletezett adatbázisok esetében.
 
-A várakozással kapcsolatos problémákat az alábbiak okozhatják:
-- **Blokkolás**: az egyik lekérdezés rendelkezhet az adatbázisban lévő objektumok zárolásával, míg mások megpróbálnak hozzáférni ugyanahhoz az objektumhoz. A blokkoló lekérdezéseket DMV vagy figyelési eszközök használatával is azonosíthatja.
-- **IO-problémák**: Előfordulhat, hogy a lekérdezések arra várnak, hogy a lapok az adatfájlba vagy a naplófájlba kerüljenek. Ebben az esetben keresse meg a `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`vagy `PAGEIOLATCH_*` WAIT statisztikát a DMV-ben.
-- **Tempdb problémák**: Ha a munkaterhelés ideiglenes táblákat használ, vagy a csomagok tempdb kifolyása van, előfordulhat, hogy a lekérdezések tempdb átviteli sebességgel rendelkeznek. 
-- **Memóriával kapcsolatos problémák**: Ha a munkaterhelés nem rendelkezik elegendő memóriával, az oldal várható élettartama csökkenhet, vagy előfordulhat, hogy a lekérdezések kevesebb memóriát igényelnek. Bizonyos esetekben a lekérdezés-optimalizáló beépített intelligencia javítja a memóriával kapcsolatos problémákat.
- 
-A következő szakaszokban ismertetjük az egyes típusú problémák azonosításának és hibaelhárításának módját.
+## <a name="generate-intelligent-assessments-of-performance-issues"></a>Teljesítménybeli problémák intelligens értékelésének előállítása
 
-## <a name="performance-problems-related-to-running"></a>Futó teljesítménnyel kapcsolatos problémák
+A Azure SQL Database [Intelligent Insights](sql-database-intelligent-insights.md) a beépített intelligenciával folyamatosan figyeli az adatbázis-használatot mesterséges intelligenciával, és felderíti a gyenge teljesítményt okozó zavaró eseményeket. A Intelligent Insights automatikusan észleli a Azure SQL Database-adatbázisokkal kapcsolatos teljesítményproblémák a lekérdezés végrehajtásának várakozási ideje, hibái vagy időtúllépése alapján. Az észlelést követően a rendszer részletes elemzést végez, amely egy erőforrás-naplót (SQLInsights) hoz létre a [problémák intelligens értékelésével](sql-database-intelligent-insights-troubleshoot-performance.md). Ez az értékelés az adatbázis teljesítményével kapcsolatos probléma okának elemzését, és ahol lehetséges, a teljesítménnyel kapcsolatos javításokra vonatkozó javaslatokat tartalmaz.
 
-Általános útmutatóként, ha a CPU-használat konzisztens a 80%-os vagy újabb értéknél, a teljesítménnyel kapcsolatos probléma nem működik. A futtatással kapcsolatos problémát a nem elegendő processzor-erőforrás okozhatja. Vagy lehet, hogy a következő feltételek valamelyikéhez kapcsolódik:
+A Intelligent Insights az Azure beépített intelligenciának egyedülálló funkciója, amely a következő értéket biztosítja:
 
-- Túl sok futó lekérdezés
-- Túl sok lekérdezés fordítása
-- Egy vagy több olyan végrehajtó lekérdezés, amely a legoptimálisabb lekérdezési tervet használja
+- Proaktív figyelés
+- Testreszabott teljesítmény-felismerés
+- Az adatbázis-teljesítmény romlásának korai észlelése
+- Az észlelt problémák kiváltó okának elemzése
+- Teljesítmény-javító javaslatok
+- Több százezer adatbázisra kibővíthető képesség
+- Pozitív hatással van a DevOps-erőforrásokra és a teljes tulajdonlási díjakra
 
-Ha egy futó teljesítménnyel kapcsolatos problémát tapasztal, a cél a pontos probléma azonosítása egy vagy több módszer használatával. Ezek a módszerek a futtatással kapcsolatos problémák azonosításának leggyakoribb módjai:
+## <a name="enable-the-streaming-export-of-metrics-and-resource-logs"></a>Metrikák és erőforrás-naplók adatfolyam-exportálásának engedélyezése
 
-- A [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) használatával figyelheti a CPU-kihasználtság százalékos arányát.
-- Használja a következő [DMV](sql-database-monitoring-with-dmvs.md):
+Engedélyezheti és konfigurálhatja a [diagnosztikai telemetria adatfolyam-exportálását](sql-database-metrics-diag-logging.md) több célhelyre, beleértve a Intelligent Insights erőforrás-naplót is. Az [SQL Analytics](../azure-monitor/insights/azure-sql.md) és egyéb funkciók használatával felhasználhatja ezt a további diagnosztikai telemetria a teljesítményproblémák azonosításához és megoldásához.
 
-  - A [sys. dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV egy SQL-adatbázis CPU-, I/O-és memória-felhasználását adja vissza. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
-  - A [sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV visszaadja a CPU-használati és adattárolási adatokat Azure SQL Database számára. Az adatok gyűjtése és összesítése öt percenként történik.
+A diagnosztikai beállításokat a mérőszámok és az erőforrás-naplók a következő Azure-erőforrások egyikére történő továbbításához kell konfigurálni: önálló adatbázisok, készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok.
 
-> [!IMPORTANT]
-> A sys. dm_db_resource_stats és sys. resource_stats DMV használó T-SQL-lekérdezések CPU-használati problémáinak elhárításához tekintse meg a [CPU-teljesítménnyel kapcsolatos problémák azonosítása](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)című témakört.
+### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület az Azure monitorban
 
-### <a name="ParamSniffing"></a>PSP-problémákkal rendelkező lekérdezések
+A metrikák és az erőforrás-naplók a [Azure Monitor log Analytics munkaterületére](../azure-monitor/platform/resource-logs-collect-workspace.md)is továbbíthatók. Az itt továbbított adatfolyamokat az [SQL Analytics](../azure-monitor/insights/azure-sql.md)is felhasználhatja, ami egy kizárólag Felhőbeli figyelési megoldás, amely a teljesítményadatokat, a riasztásokat és a kockázatcsökkentő ajánlásokat tartalmazó adatbázisok intelligens figyelését teszi lehetővé. A Log Analytics munkaterületre továbbított adatok elemezhetők más figyelési adatokkal, és lehetővé teszik más Azure Monitor funkciók, például a riasztások és a vizualizációk kihasználása is.
 
-Ha a lekérdezés-optimalizáló olyan lekérdezés-végrehajtási tervet hoz létre, amely csak az adott paraméterérték (vagy az értékek halmaza) számára érhető el, és a gyorsítótárazott csomag nem optimális, akkor az egymást követő értékekben használt paraméterek értékeinél nem optimális. kivégzések. Azok a csomagok, amelyek nem optimálisak, a lekérdezési teljesítménnyel kapcsolatos problémákat okozhatnak, és csökkenthetik a munkaterhelés teljes átviteli sebességét. 
+### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-További információ a paraméterek elemzéséről és a lekérdezések feldolgozásáról: a [lekérdezés-feldolgozási architektúra útmutatója](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
+A metrikákat és az erőforrás-naplókat továbbíthatja az [Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md). Adatfolyam-diagnosztikai telemetria az Event hubok számára a következő funkciók biztosításához:
 
-Több megkerülő megoldás is csökkentheti a PSP-problémákat. Minden megkerülő megoldáshoz kapcsolódó kompromisszumok és hátrányok tartoznak:
+- **Stream-naplók harmadik féltől származó naplózási és telemetria rendszerekhez**
 
-- A lekérdezés végrehajtásához használja az [ÚJRAfordítási](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési célzást. Ez a megkerülő megoldás a minőség javítása érdekében a fordítási időt és a CPU-t növeli. A `RECOMPILE` beállítás használata gyakran nem lehetséges a nagy átviteli sebességet igénylő munkaterhelések esetében.
-- Használja a [(z) (optimalizálás a...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatót a tényleges paraméterérték felülbírálására egy jellemző paraméter értékkel, amely egy olyan tervet hoz létre, amely elég jó a legtöbb paraméter-érték lehetőséghez. Ehhez a beállításhoz jól ismerni kell az optimális paramétereket és a társított terv jellemzőit.
-- A [(z) (ismeretlen)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatóval felülbírálhatja a tényleges paraméter értékét, és Ehelyett használhatja a sűrűség vektor átlagát. Ezt úgy is megteheti, hogy beírja a bejövő paraméterek értékét a helyi változók között, majd a predikátumok helyi változóit használja a paraméterek használata helyett. Ennél a javításnál az átlagos sűrűségnek *elég jónak*kell lennie.
-- Tiltsa le a paraméterek teljes elemzését a [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutató használatával.
-- A gyorsítótárban lévő újrafordítások elkerülése érdekében használja a [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatóját. Ez a megkerülő megoldás azt feltételezi, hogy a megfelelő közös csomag már a gyorsítótárban van. Az automatikus statisztikákat is letilthatja, hogy csökkentse a jó terv kizárásának esélyét, és egy új, rossz tervet fog lefordítani.
-- A tervet úgy kényszerítheti, hogy explicit módon a [használati terv](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezése célzást használja a lekérdezés újraírásával és a lekérdezés szövegének hozzáadásával. Vagy állítson be egy adott csomagot a Query Store használatával vagy az [automatikus hangolás](sql-database-automatic-tuning.md)engedélyezésével.
-- Cserélje le az egyetlen eljárást egy beágyazott eljárásokra, amelyek mindegyike felhasználható a feltételes logika és a hozzá tartozó paraméterek értékei alapján.
-- Dinamikus karakterlánc-végrehajtási alternatívák létrehozása statikus eljárás definíciójában.
+  Továbbítsa az összes mérőszámot és erőforrás-naplót egy adott esemény központba egy harmadik féltől származó SIEM-vagy log Analytics-eszközre.
+- **Egyéni telemetria és naplózási platform létrehozása**
 
-A PSP-problémák megoldásával kapcsolatos további információkért tekintse meg ezeket a blogbejegyzéseket:
+  Az Event hubok nagymértékben méretezhető közzétételi-előfizetési természete lehetővé teszi a metrikák és erőforrás-naplók rugalmas betöltését egy egyéni telemetria platformra. A részletekért lásd: [globális méretű telemetria platform tervezése és méretezése az Azure Event Hubsban](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
+- **A szolgáltatás állapotának megtekintése az adattovábbítási Power BI**
 
-- [Egy paramétert érzek](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
-- [A (z) és a dinamikus SQL vs. eljárások és a paraméteres lekérdezések minőségének megtervezése](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
-- [SQL-lekérdezés optimalizálási módszerei SQL Server: paraméter-elemzés](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
+  Event Hubs, Stream Analytics és Power BI használatával alakítsa át diagnosztikai adatait az Azure-szolgáltatások közel valós idejű elemzéséhez. A megoldás részleteiért tekintse meg a [stream Analytics és Power bi: valós idejű elemzési irányítópultot a folyamatos adattovábbításhoz](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) .
 
-### <a name="compile-activity-caused-by-improper-parameterization"></a>Helytelen paraméterezés által okozott tevékenységek fordítása
+### <a name="azure-storage"></a>Azure Storage
 
-Ha egy lekérdezés literálokat tartalmaz, vagy az adatbázismotor automatikusan felparaméterezi az utasítást, vagy a felhasználó explicit módon felparaméterezi az utasítást, hogy csökkentse a fordítások számát. A lekérdezések nagy számú fordítása ugyanazzal a mintával, de a különböző literális értékek magas CPU-használatot eredményezhetnek. Hasonlóképpen, ha csak részben parametrizálja egy olyan lekérdezést, amely továbbra is literálokkal rendelkezik, akkor az adatbázismotor még nem parametrizálja a lekérdezést.  
+Stream-metrikák és erőforrás-naplók az [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md)-ba. Az Azure Storage használatával nagy mennyiségű diagnosztikai telemetria archiválható az előző két folyamatos átviteli lehetőség díjainak töredékéért.
 
-Példa egy részleges paraméteres lekérdezésre:
+## <a name="use-extended-events-in-the-sql-database-engine"></a>Kiterjesztett események használata az SQL Database Engine-ben
 
-```sql
-SELECT * 
-FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
-```
-
-Ebben a példában a `t1.c1` `@p1`, de a `t2.c2` továbbra is a GUID-ot használja literálként. Ebben az esetben, ha módosítja `c2`értékét, a lekérdezés más lekérdezésként lesz kezelve, és új fordítás fog történni. Ebben a példában a fordítások csökkentése érdekében parametrizálja a GUID azonosítót is.
-
-Az alábbi lekérdezés a lekérdezési kivonatok számát jeleníti meg, hogy a lekérdezés megfelelően van-e konfigurálva:
-
-```sql
-SELECT  TOP 10  
-  q.query_hash
-  , count (distinct p.query_id ) AS number_of_distinct_query_ids
-  , min(qt.query_sql_text) AS sampled_query_text
-FROM sys.query_store_query_text AS qt
-  JOIN sys.query_store_query AS q
-     ON qt.query_text_id = q.query_text_id
-  JOIN sys.query_store_plan AS p 
-     ON q.query_id = p.query_id
-  JOIN sys.query_store_runtime_stats AS rs 
-     ON rs.plan_id = p.plan_id
-  JOIN sys.query_store_runtime_stats_interval AS rsi
-     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-WHERE
-  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-  AND query_parameterization_type_desc IN ('User', 'None')
-GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
-```
-
-### <a name="factors-that-affect-query-plan-changes"></a>A lekérdezési terv módosítását befolyásoló tényezők
-
-Egy lekérdezés-végrehajtási terv újrafordítása olyan generált lekérdezési tervet eredményezhet, amely eltér az eredeti gyorsítótárazott tervtől. Lehetséges, hogy egy meglévő eredeti csomagot is automatikusan újrafordítanak a különböző okok miatt:
-- A séma módosításait a lekérdezés hivatkozik.
-- A táblákban lévő adatváltozásokra a lekérdezés hivatkozik. 
-- A lekérdezési környezet beállításai módosultak.
-
-A lefordított tervet különböző okok miatt lehet kiadni a gyorsítótárból, például:
-
-- A példány újraindul.
-- Adatbázis-hatókörű konfiguráció módosításai.
-- Memória nyomása.
-- Explicit kérelmek a gyorsítótár törléséhez.
-
-Ha újrafordítási emlékeztetőt használ, a rendszer nem gyorsítótárazza a csomagot.
-
-Az újrafordítás (vagy a gyorsítótár kiürítése utáni friss fordítás) továbbra is az eredetivel megegyező lekérdezés-végrehajtási terv létrehozását eredményezheti. Ha a terv a korábbi vagy az eredeti csomag alapján változik, a következő magyarázatok valószínűek:
-
-- **Megváltozott fizikai kialakítás**: például az újonnan létrehozott indexek hatékonyabban fedik le a lekérdezés követelményeit. Az új indexeket új fordításban lehet használni, ha a lekérdezés-optimalizáló úgy dönt, hogy az új indexet használja, mint az eredetileg a lekérdezés-végrehajtás első verziójára kiválasztott adatstruktúra használata.  A hivatkozott objektumok fizikai változásai a fordítási idő új tervének megválasztásához vezethetnek.
-
-- **Kiszolgáló erőforrásainak eltérései**: Ha egy rendszer egyik csomagja eltér a tervtől, akkor az erőforrás rendelkezésre állása, például az elérhető processzorok száma, befolyásolhatja, hogy melyik tervet hozza létre a rendszer.  Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki. 
-
-- **Különböző statisztikák**: a hivatkozott objektumokhoz társított statisztikák változhattak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek.  Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól.  Ezek a változások a kardinális becslések létrehozásához használatosak. (A*kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók.  A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
-
-- **Módosult az adatbázis-kompatibilitási szint vagy a Cardinals-kalkulátor verziója**: az adatbázis kompatibilitási szintjének módosítása lehetővé teszi, hogy az új stratégiák és szolgáltatások egy másik lekérdezés-végrehajtási tervet eredményeznek.  Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis hatókörű QUERY_OPTIMIZER_HOTFIXES konfigurációjának módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt.  A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik. 
-
-### <a name="resolve-problem-queries-or-provide-more-resources"></a>Probléma-lekérdezések feloldása vagy további erőforrások biztosítása
-
-A probléma azonosítása után beállíthatja a problémák lekérdezését, vagy frissítheti a számítási méretet vagy a szolgáltatási szintet, hogy növelje az SQL-adatbázis kapacitását a CPU-követelmények befogadásához. 
-
-További információkért lásd: [önálló adatbázis-erőforrások méretezése Azure SQL Database](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése a Azure SQL Databaseban](sql-database-elastic-pool-scale.md). A felügyelt példányok skálázásával kapcsolatos információkért lásd: [szolgáltatási rétegbeli erőforrás-korlátok](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
-
-### <a name="performance-problems-caused-by-increased-workload-volume"></a>Megnövekedett munkaterhelés-mennyiség által okozott teljesítménnyel kapcsolatos problémák
-
-Az alkalmazások forgalmának növekedése és a számítási feladatok mennyisége nagyobb CPU-használatot eredményezhet. A probléma megfelelő diagnosztizálásához azonban körültekintően kell eljárnia. Ha nagy CPU-problémát lát, válaszoljon ezekre a kérdésekre annak megállapítására, hogy a növekedés a munkaterhelés kötetének változásai miatt következik-e be:
-
-- Az alkalmazás lekérdezései okozzák a nagy CPU-problémát?
-- A legfontosabb CPU-fogyasztási lekérdezések esetében:
-
-   - Több végrehajtási terv lett társítva ugyanahhoz a lekérdezéshez? Ha igen, miért?
-   - Ugyanazzal a végrehajtási tervvel rendelkező lekérdezések esetében a végrehajtási idők konzisztensek voltak? Növekedett a végrehajtások száma? Ha igen, a munkaterhelés növekedése valószínűleg teljesítménnyel kapcsolatos problémákat okoz.
-
-Összefoglalva, ha a lekérdezés végrehajtási terve nem eltérően lett végrehajtva, de a CPU-használat a végrehajtások számával együtt növekedett, a teljesítménnyel kapcsolatos probléma valószínűleg a munkaterhelés növekedésével lesz összefüggésben.
-
-Nem mindig könnyű megállapítani a CPU-problémát okozó számítási feladatok kötetének változását. Vegye figyelembe a következő tényezőket: 
-
-- **Megváltoztatott erőforrás-használat**: Vegyünk például egy olyan forgatókönyvet, amelyben a CPU-használat hosszabb ideig 80%-ra nőtt.  A CPU-használat önmagában nem jelenti azt, hogy a munkaterhelés mennyisége megváltozott. A lekérdezés-végrehajtási terv és az adateloszlás változásainak regressziói is hozzájárulhatnak az erőforrás-használathoz, még akkor is, ha az alkalmazás ugyanazt a munkaterhelést hajtja végre.
-
-- **Új lekérdezés megjelenése**: az alkalmazás különböző időpontokban lehet új lekérdezéseket vezetni.
-
-- **A kérelmek számának növelése vagy csökkenése**: Ez a forgatókönyv a számítási feladatok legnyilvánvalóbb mérőszáma. A lekérdezések száma nem mindig felel meg az erőforrás-felhasználásnak. Ez a metrika azonban még mindig jelentős jel, feltéve, hogy más tényezők nem változnak.
-
-## <a name="waiting-related-performance-problems"></a>Várakozó teljesítménnyel kapcsolatos problémák 
-
-Ha biztos abban, hogy a teljesítménnyel kapcsolatos probléma nem kapcsolódik a nagy CPU-használathoz vagy a futtatáshoz, a probléma a várakozással kapcsolatos. A CPU-erőforrásokat tehát nem hatékonyan használják, mert a CPU egy másik erőforrásra vár. Ebben az esetben azonosítsa a CPU-erőforrások várakozási körét. 
-
-Ezeket a metódusokat általában a várakozási típusok leggyakoribb kategóriáinak megjelenítésére használják:
-
-- A [lekérdezési tároló](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) használatával megkeresheti az egyes lekérdezések várakozási statisztikáit az idő múlásával. A lekérdezési tárolóban a várakozási típusok a várakozási kategóriákba vannak összevonva. A várakozási kategóriák hozzárendelését a [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)várakozási típusok között találja.
-- A [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) használatával a művelet során végrehajtott szálak által észlelt összes várakozásról információt adhat vissza. Ennek az összesített nézetnek a segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat Azure SQL Database, valamint adott lekérdezésekkel és kötegekkel is.
-- A [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával információt adhat vissza az egyes erőforrásokra várakozó feladatok várólistáján.
-
-A nagy CPU-forgatókönyvek esetében előfordulhat, hogy a Query Store és a wait statisztikája nem tükrözi a CPU-használatot, ha:
-
-- A nagy CPU-fogyasztású lekérdezések végrehajtása még folyamatban van.
-- A nagy CPU-fogyasztásra felhasználható lekérdezések akkor futnak, amikor feladatátvétel történt.
-
-A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának csak a sikeresen befejezett és időkorlátú lekérdezések eredményei láthatók. Nem jelenítenek meg adatokat a jelenleg végrehajtás alatt álló utasításokhoz, amíg az utasítások befejeződik. A dinamikus felügyeleti nézet [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) használatával követheti nyomon a jelenleg végrehajtás alatt álló lekérdezéseket és a kapcsolódó munkavégző időt.
-
-A cikk elején található diagram azt mutatja, hogy a leggyakoribb várakozások a következők:
-
-- Zárolások (blokkolás)
-- I/O
-- TempDB kapcsolatos tartalom
-- Memória-engedélyezési várakozások
-
-> [!IMPORTANT]
-> A DMV-T használó T-SQL-lekérdezések esetében a várakozással kapcsolatos problémák elhárításához tekintse meg a következő témakört:
->
-> - [I/O-teljesítménnyel kapcsolatos problémák azonosítása](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [Memória-engedélyezési várakozások azonosítása](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
-> - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
-> - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
-
-## <a name="improve-database-performance-with-more-resources"></a>Az adatbázis teljesítményének növelése több erőforrással
-
-Ha egyetlen végrehajtható elem sem javíthatja az adatbázis teljesítményét, megváltoztathatja Azure SQL Databaseban elérhető erőforrások mennyiségét. Rendeljen hozzá több erőforrást egy önálló adatbázis [DTU-szolgáltatási rétegének](sql-database-service-tiers-dtu.md) megváltoztatásával. Bármikor megnövelheti a rugalmas készlet Edtu. Ha a [virtuális mag-alapú vásárlási modellt](sql-database-service-tiers-vcore.md)használja, módosítsa a szolgáltatási szintet, vagy növelje az adatbázishoz lefoglalt erőforrásokat.
-
-Önálló adatbázisok esetén az adatbázis teljesítményének növelése érdekében igény szerint [válthat szolgáltatási szinteket vagy számítási erőforrásokat](sql-database-single-database-scale.md) . Több adatbázis esetében érdemes [rugalmas készleteket](sql-database-elastic-pool-guidance.md) használni az erőforrások automatikus méretezéséhez.
-
-## <a name="tune-and-refactor-application-or-database-code"></a>Alkalmazás-vagy adatbázis-kód hangolása és újrabontása
-
-Optimalizálhatja az adatbázishoz tartozó programkódot, módosíthatja az indexeket, kikényszerítheti a terveket, vagy a mutatókat használva manuálisan igazíthatja az adatbázist a munkaterheléshez. A manuális hangolással és a kód újraírásával kapcsolatos információkért lásd: [teljesítmény-finomhangolási útmutató](sql-database-performance-guidance.md).
+Emellett az SQL-ben [kiterjesztett eseményeket](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) is használhat további speciális figyeléshez és hibaelhárításhoz. A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a SQL Databaseban](sql-database-xevent-db-diff-from-svr.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ha engedélyezni szeretné az automatikus hangolást a Azure SQL Databaseban, és lehetővé teszi, hogy az Automatikus hangolási funkció teljes mértékben kezelhesse a számítási feladatokat, tekintse meg az [automatikus](sql-database-automatic-tuning-enable.md)
-- A Manuális hangolás használatához tekintse át [a Azure Portal hangolásával kapcsolatos ajánlásokat](sql-database-advisor-portal.md). Manuálisan alkalmazza a lekérdezések teljesítményét javító javaslatokat.
-- Módosítsa az adatbázisban elérhető erőforrásokat a [Azure SQL Database szolgáltatási szintjeinek](sql-database-performance-guidance.md)módosításával.
+- Az önálló és a készletezett adatbázisokra vonatkozó intelligens teljesítménnyel kapcsolatos javaslatokról az [adatbázis-tanácsadó teljesítményével kapcsolatos javaslatok](sql-database-advisor.md)című témakörben olvashat bővebben.
+- Az adatbázis teljesítményének automatikus és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzésével kapcsolatos további információkért lásd: [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md).
+'''''''''

@@ -4,7 +4,7 @@ description: Ez a cikk az adatbiztonságra és-titkosításra vonatkozó ajánlo
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389963"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243496"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai
 Ez a cikk az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásokat ismerteti.
@@ -108,7 +108,7 @@ Az alábbiakban az Azure VPN Gateway, az SSL/TLS és a HTTPS használatára vona
 **Részletek**: [pont – hely típusú VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)használata.
 
 **Ajánlott eljárás**: nagyobb adatkészletek mozgatása dedikált, nagy sebességű WAN-kapcsolaton keresztül.   
-**Részletek**: a [ExpressRoute](/azure/expressroute/expressroute-introduction)használata. Ha úgy dönt, hogy a ExpressRoute-t használja, akkor az alkalmazás szintjén is titkosíthatja az adatvédelmet [SSL/TLS](https://support.microsoft.com/kb/257591) vagy más protokollok használatával a védelem hozzáadásához.
+**Részletek**: a [ExpressRoute](/azure/expressroute/expressroute-introduction)használata. Ha úgy dönt, hogy a ExpressRoute-t használja, akkor az alkalmazás szintjén is titkosíthatja az adatvédelmet SSL/TLS vagy más protokollok használatával a védelem hozzáadásához.
 
 **Ajánlott eljárás**: az Azure Storage szolgáltatással való interakció a Azure Portalon keresztül.   
 **Részletek**: minden tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) a HTTPS protokollon keresztül is használhatja az [Azure Storage](https://azure.microsoft.com/services/storage/)szolgáltatással való kommunikációhoz.

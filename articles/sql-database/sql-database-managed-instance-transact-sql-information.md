@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8c995a40e621f7155ad0741004d10b1146523489
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360028"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256054"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -65,7 +65,6 @@ Korlátozások
 
 - Felügyelt példány esetén biztonsági mentést készíthet egy példány-adatbázisról olyan biztonsági másolatra, amelyen akár 32 sáv is található, ami elegendő a 4 TB-ig terjedő adatbázisokhoz, ha biztonsági mentési tömörítést használ.
 - Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` a szolgáltatás által felügyelt transzparens adattitkosítás (TDE) titkosított adatbázison. A szolgáltatás által felügyelt TDE a biztonsági mentések belső TDE-kulccsal lesznek titkosítva. A kulcs nem exportálható, így a biztonsági mentés nem állítható vissza. Használjon automatikus biztonsági mentést és időponthoz való visszaállítást, vagy használja helyette az [ügyfél által felügyelt (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Emellett letilthatja a titkosítást az adatbázison.
-- Az Azure Blob Storage-ba történő manuális biztonsági mentések csak a [BlockBlobStorage-fiókok](/azure/storage/common/storage-account-overview#types-of-storage-accounts)esetében támogatottak.
 - A biztonsági mentési sávok maximális mérete a felügyelt példány `BACKUP` parancsának használatával 195 GB, amely a blob maximális mérete. Növelje meg a sávok számát a Backup parancsban, hogy csökkentse az egyes sávok méretét, és a korláton belül maradjon.
 
     > [!TIP]
@@ -140,8 +139,8 @@ A felügyelt példányok nem férhetnek hozzá a fájlokhoz, így a titkosítás
     A felügyelt példány a `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`szintaxissal támogatja az Azure AD-adatbázis rendszerbiztonsági tagait. Ez a szolgáltatás az Azure AD-ben tárolt adatbázis-felhasználók néven is ismert.
 
 - A `CREATE LOGIN ... FROM WINDOWS` szintaxissal létrehozott Windows-bejelentkezések nem támogatottak. Azure Active Directory bejelentkezések és felhasználók használata.
-- Az Azure AD-felhasználó, aki létrehozta a példányt, [korlátlan rendszergazdai jogosultságokkal](sql-database-manage-logins.md#unrestricted-administrative-accounts)rendelkezik.
-- A nem rendszergazda Azure AD adatbázis-szintű felhasználók a `CREATE USER ... FROM EXTERNAL PROVIDER` szintaxis használatával hozhatók létre. Lásd: [felhasználó létrehozása... KÜLSŐ SZOLGÁLTATÓtól](sql-database-manage-logins.md#non-administrator-users).
+- Az Azure AD-felhasználó, aki létrehozta a példányt, [korlátlan rendszergazdai jogosultságokkal](sql-database-manage-logins.md)rendelkezik.
+- A nem rendszergazda Azure AD adatbázis-szintű felhasználók a `CREATE USER ... FROM EXTERNAL PROVIDER` szintaxis használatával hozhatók létre. Lásd: [felhasználó létrehozása... KÜLSŐ SZOLGÁLTATÓtól](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
 - Az Azure AD-kiszolgáló résztvevői (bejelentkezések) csak egy felügyelt példányon belül támogatják az SQL-funkciókat. Azok a funkciók, amelyek eltérő interakciót igényelnek, függetlenül attól, hogy ugyanazon az Azure AD-bérlőn vagy más bérlőn belül vannak, nem támogatottak az Azure AD-felhasználók számára. Ilyen funkciók például a következők:
 
   - SQL tranzakciós replikáció.
@@ -470,6 +469,7 @@ A több példányban elérhető Service Broker nem támogatott:
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - a `sp_execute_external_scripts` nem támogatott. Lásd: [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).

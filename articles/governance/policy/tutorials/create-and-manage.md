@@ -4,11 +4,11 @@ description: Ebben az oktatóanyagban szabályzatokat alkalmaz a szabványok bet
 ms.date: 12/20/2019
 ms.topic: tutorial
 ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238950"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 

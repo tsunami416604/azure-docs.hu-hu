@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254767"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A kötetek kezelése a StorSimple Eszközkezelő szolgáltatásával (3. frissítés vagy újabb)
 
@@ -57,8 +57,8 @@ A következő táblázat tartalmazza az egyes eszközök és kötetek típusána
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuális eszközök** | | |
-| 8010 |30 TB |– |
-| 8020 |64 TB |– |
+| 8010 |30 TB |N/A |
+| 8020 |64 TB |N/A |
 
 ## <a name="the-volumes-blade"></a>A kötetek panel
 
@@ -317,7 +317,7 @@ A kötet figyelésének engedélyezéséhez vagy letiltásához hajtsa végre az
 
 4. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra. A Azure Portal megjelenít egy értesítést a kötet frissítéséről, majd egy sikeres üzenetről, miután a kötet frissítése sikeresen megtörtént.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-8000-clone-volume-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).

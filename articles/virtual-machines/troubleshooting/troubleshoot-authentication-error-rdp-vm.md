@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155618"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266974"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Hitelesítési hibák elhárítása, amikor RDP használatával csatlakozik az Azure-beli virtuális géphez
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure-beli virtuális géphez RDP használatával való csatlakozáskor jelentkező hitelesítési hibák elhárítása
 
 Ez a cikk segítséget nyújt az Azure-beli virtuális gépekhez (VM) való csatlakozáskor RDP protokoll (RDP) kapcsolat használatakor fellépő hitelesítési hibák elhárításához.
 
@@ -83,7 +83,7 @@ Ha távolról szeretne csatlakozni a virtuális géphez, használja az egyik mó
 
 ### <a name="group-policy-client-service"></a>Csoportházirend-ügyfél szolgáltatás
 
-Ha ez egy tartományhoz csatlakoztatott virtuális gép, először állítsa le a Csoportházirend ügyfélszolgáltatás számára, hogy megakadályozza, hogy a Active Directory házirend felülírja a módosításokat. Ehhez futtassa a következő parancsot:
+Ha ez egy tartományhoz csatlakoztatott virtuális gép, először állítsa le a Csoportházirend ügyfélszolgáltatás számára, hogy megakadályozza, hogy a Active Directory házirend felülírja a módosításokat. Ehhez futtassa az alábbi parancsot:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
@@ -124,7 +124,7 @@ REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 ### <a name="for-domain-joined-vms"></a>Tartományhoz csatlakoztatott virtuális gépek esetén
 
@@ -202,15 +202,15 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 A beállításjegyzék értéke alapján kövesse az alábbi lépéseket:
 
-* 4 (FIPS): Lépjen az [FIPs-kompatibilis algoritmusok kapcsolatainak vizsgálatához](#fips-compliant).
+* 4 (FIPS): ugrás az [FIPS-kompatibilis algoritmusok kapcsolatainak megadásához](#fips-compliant).
 
-* 3 (128 bites titkosítás): Állítsa a súlyosságot a **2** értékre a következő parancs futtatásával:
+* 3 (128 bites titkosítás): állítsa a súlyosságot **2** értékre a következő parancs futtatásával:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (az ügyfél által diktált legmagasabb titkosítási mód): A következő parancs futtatásával megpróbálhatja beállítani a titkosítást a minimális **1** értékre:
+* 2 (az ügyfél által diktált legmagasabb szintű titkosítás lehetséges): a következő parancs futtatásával megpróbálhatja beállítani a titkosítást a minimális **1** értékre:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
@@ -274,7 +274,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 Indítsa újra a virtuális gépet, hogy a beállításjegyzék módosításai érvénybe lépnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Win32_TSGeneralSetting osztály SetEncryptionLevel metódusa](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
 

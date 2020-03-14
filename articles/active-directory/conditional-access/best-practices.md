@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963936"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263295"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -35,7 +35,7 @@ Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminol�
 
 A szabályzat működéséhez konfigurálnia kell a következőket:
 
-| Mi           | Hogyan?                                  | miért |
+| Mi           | Hogyan                                  | miért |
 | :--            | :--                                  | :-- |
 | **Felhőalapú alkalmazások** |Válasszon ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
 | **Felhasználók és csoportok** | Válasszon ki legalább egy olyan felhasználót vagy csoportot, amely jogosult a kiválasztott felhőalapú alkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
@@ -141,7 +141,7 @@ Ajánlott eljárásként hozzon létre egy felhasználói fiókot:
 - A feltételes hozzáférési szabályzatokat egyetlen központi helyen kezelheti.
 - A klasszikus Azure portál ki lett vonva.   
 
-További információért lásd: [Klasszikus szabályzatok áttelepítése az Azure Portalon](policy-migration.md).
+További információ: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

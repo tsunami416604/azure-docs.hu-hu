@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátri
 description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 93ee900eb936bdc3f03c96d0b1196227d05dd03f
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668864"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247903"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -43,8 +43,6 @@ További információ a biztonsági mentésről [a Backup Server használatával
 
 **Művelet** | **Támogatás**
 --- | ---
-Biztonsági mentés engedélyezése Windows Azure-beli virtuális gép létrehozásakor | Támogatott: <br/><br/> – Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
-Biztonsági mentés engedélyezése Linux rendszerű virtuális gép létrehozásakor | Támogatott:<br/><br/> -Ubuntu Server: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> -CentOS: 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Leállítás/offline virtuális gép biztonsági mentése | Támogatott.<br/><br/> A pillanatkép csak Crash-konzisztens, nem az alkalmazás-konzisztens.
 Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Semmit nem kell tenni.
 Felügyelt lemezek biztonsági mentése az erőforráscsoport zárolásának engedélyezése után | Nem támogatott.<br/><br/> Azure Backup nem tudja törölni a régebbi visszaállítási pontokat, és a biztonsági mentések sikertelenek lesznek, ha elérik a visszaállítási pontok maximális korlátját.

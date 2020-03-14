@@ -15,11 +15,11 @@ ms.date: 11/18/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388330"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252271"
 ---
 > [!NOTE] 
 > A cikkben tárgyalt felhasználói fiókok nem különböznek a RDP protokoll (RDP) vagy a Secure Shell (SSH) számára biztonsági okokból használt felhasználói fióktól. 

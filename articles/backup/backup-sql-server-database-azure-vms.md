@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393152"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273331"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -97,6 +97,10 @@ IP-címtartományok engedélyezése | Nincs további költség | Összetett a ke
 NSG szolgáltatásbeli címkék használata | A tartomány módosításainak könnyebb kezelése automatikusan történik <br/><br/> Nincs további költség <br/><br/> | Csak NSG használható <br/><br/> Hozzáférést biztosít a teljes szolgáltatáshoz
 Azure Firewall FQDN-címkék használata | Könnyebben kezelhető, mert a szükséges teljes tartománynevek automatikusan kezelhetők | Csak Azure Firewall használható
 HTTP-proxy használata | A virtuális gépekhez való internetes hozzáférés egyetlen pontja <br/> | További költségek egy virtuális gép futtatásához a proxy szoftverrel <br/> Nincsenek közzétett FQDN-címek, az engedélyezési szabályok az Azure IP-címek változásai alá esnek
+
+#### <a name="private-endpoints"></a>Privát végpontok
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Adatbázis-elnevezési irányelvek a Azure Backup
 

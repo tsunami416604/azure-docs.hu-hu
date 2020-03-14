@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382284"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265206"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>A digitális ikrek Object models és a térbeli intelligencia Graph ismertetése
 

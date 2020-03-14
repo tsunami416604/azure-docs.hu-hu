@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255144"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagy teljesítményű táblák tervezése
 
@@ -140,19 +140,8 @@ A Table service szolgáltatásban (EGTs) tranzakciók atomi frissítések végre
 A EGTs emellett potenciális kompromisszumot is bevezet, hogy kiértékelje a kialakítását. Ez a több partíció használata növeli az alkalmazás méretezhetőségét, mivel az Azure több lehetőséget kínál a különböző csomópontokon belüli terheléselosztási kérelmekre. A további partíciók használata azonban korlátozhatja, hogy az alkalmazás képes legyen atomi tranzakciókat végrehajtani, és erős konzisztenciát fenntartani az adatokhoz. Emellett vannak olyan méretezhetőségi célok is a partíció szintjén, amelyek korlátozhatják az egyetlen csomópontra várható tranzakciók átviteli sebességét. Az Azure standard Storage-fiókok méretezhetőségi céljaival kapcsolatos további információkért lásd [a standard szintű Storage-fiókok méretezhetőségi céljait](../common/scalability-targets-standard-account.md)ismertető témakört. A Table service skálázhatósági céljaival kapcsolatos további információkért lásd: a [táblázatos tárolás skálázhatósági és teljesítményi céljai](scalability-targets.md).
 
 ## <a name="capacity-considerations"></a>A kapacitás szempontok
-Az alábbi táblázat néhány fontos értéket ismertet a Table service megoldás tervezésekor:  
 
-| Az Azure storage-fiók teljes kapacitás | 500 TB |
-| --- | --- |
-| Az Azure storage-fiók táblák száma |Csak a tárfiók kapacitásának által korlátozott |
-| Egy táblát a partíciók száma |Csak a tárfiók kapacitásának által korlátozott |
-| Egy partíció entitások száma |Csak a tárfiók kapacitásának által korlátozott |
-| Egy egyéni entitás méretét |Legfeljebb 1 MB, legfeljebb 255 tulajdonsággal (beleértve a **PartitionKey**, a **RowKey**és az **időbélyeget**) |
-| A **PartitionKey** mérete |A karakterlánc-legfeljebb 1 KB méretű |
-| A **RowKey** mérete |A karakterlánc-legfeljebb 1 KB méretű |
-| Egy Entitáscsoportot tranzakció mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos 4 MB-nál kisebbnek kell lennie. Miután egy EGT csak is frissítheti egy entitás. |
-
-További információt a [Table Service adatmodelljét ismertető](https://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 A Table Storage szolgáltatás viszonylag olcsó, azonban a kapacitás kihasználtsága és a tranzakciók mennyisége a Table service megoldások kiértékelésének részeként is szerepelnie kell. Számos esetben azonban a denormalizált vagy ismétlődő adatok tárolása a megoldás teljesítményének és méretezhetőségének javítása érdekében érvényes megközelítés. A díjszabással kapcsolatos további információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).  

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391012"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271524"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-k által biztosított eszközök használata a kiépítés fejlesztésének egyszerűsítése érdekében
 A IoT Hub Device Provisioning Service leegyszerűsíti a kiépítési folyamatot a biztonságos és skálázható módon történő [automatikus kiépítés](concepts-auto-provisioning.md) révén.  A biztonsági igazolás X. 509 tanúsítvány vagy platformmegbízhatósági modul (TPM) formájában szükséges.  A Microsoft [más biztonsági partnerekkel](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) is együttműködik a IoT-telepítés biztonságossá tétele érdekében. A hardveres biztonsági követelmények megismerése nagyon nagy kihívást jelenthet a fejlesztők számára. Az Azure IoT-létesítési szolgáltatás SDK-k készletét biztosítjuk, így a fejlesztők egy kényelmi réteget használhatnak a kiépítési szolgáltatással kommunikáló ügyfelek írásához. Az SDK-k emellett mintákat is biztosítanak a gyakori forgatókönyvekhez, valamint a biztonsági igazolások fejlesztésének egyszerűsítésére szolgáló eszközkészletet.

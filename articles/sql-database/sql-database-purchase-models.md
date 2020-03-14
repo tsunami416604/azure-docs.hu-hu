@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255989"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
@@ -85,6 +85,11 @@ A DTU-alapú vásárlási modellről a virtuális mag-alapú vásárlási modell
 
 - A standard szinten minden 100 DTU legalább 1 virtuális mag igényel a általános célú szolgáltatási szinten.
 - A prémium szintű csomag 125 DTU legalább 1 virtuális mag kell lennie a üzletileg kritikus szolgáltatási szinten.
+
+> [!NOTE]
+> A virtuális mag-Méretezési irányelvek DTU megközelítik, és a célként megadott adatbázis-szolgáltatási cél kezdeti becslésében nyújtanak segítséget. A céladatbázis optimális konfigurációja a munkaterhelés függ. 
+> 
+> Az optimális ár/teljesítmény arány eléréséhez szükség lehet a virtuális mag-modell rugalmasságának kihasználására a virtuális mag, a [hardver-generálás](sql-database-service-tiers-vcore.md#hardware-generations), a [szolgáltatás](sql-database-service-tiers-vcore.md#service-tiers) és a [számítási](sql-database-service-tiers-vcore.md#compute-tiers) rétegek számának, valamint más adatbázis-konfigurációs paraméterek (például a [maximális párhuzamossági fok](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)) finomhangolása érdekében.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -167,7 +172,7 @@ Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási 
 
 Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](sql-database-single-database-scale.md) és [rugalmas készletek kezelése](sql-database-elastic-pool.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A virtuális mag-alapú vásárlási modellel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 - A DTU-alapú vásárlási modellel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).

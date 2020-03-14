@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121803"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244809"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -309,7 +309,7 @@ Igen. Ugyanezen a virtuális hálózati KOPPINTÁSi erőforráson keresztül a t
 
 A virtuális hálózat KOPPINTÁS előzetes verzióban érhető el. Az előzetes verzió ideje alatt nincs szolgáltatói szerződés. A képesség nem használható éles számítási feladatokhoz. Ha egy virtuális gép hálózati adaptere egy KOPPINTÁSi konfigurációval van engedélyezve, ugyanazokat az erőforrásokat kell használni az Azure-gazdagépen, amelyet a virtuális géphez rendeltek, hogy elküldjék az éles forgalmat a tükrözési funkció végrehajtásához és a tükrözött csomagok elküldéséhez. A megfelelő [linuxos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windowsos](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép méretének kiválasztásával biztosíthatja, hogy elegendő erőforrás álljon rendelkezésre ahhoz, hogy a virtuális gép el lehessen küldeni az üzemi forgalmat és a tükrözött forgalmat.
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelés [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows rendszeren](create-vm-accelerated-networking-powershell.md) támogatott a Virtual Network-sel?
+### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelés [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows rendszeren](create-vm-accelerated-networking-powershell.md) támogatott a Virtual Network-sel?
 
 Hozzáadhat egy KOPPINTó konfigurációt egy olyan virtuális géphez csatlakoztatott hálózati adapterhez, amely a gyorsított hálózatkezeléssel van ellátva. A virtuális gép teljesítményét és késését azonban érinteni fogja a rendszer, mivel a rendszer a tükrözési forgalom kiszervezését jelenleg nem támogatja az Azure gyorsított hálózatkezeléssel.
 

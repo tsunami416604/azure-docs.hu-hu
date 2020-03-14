@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270640"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
 

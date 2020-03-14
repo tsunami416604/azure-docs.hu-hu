@@ -1,24 +1,24 @@
 ---
-title: Teljesítmény-finomhangolási útmutató
-description: Útmutató a Azure SQL Database lekérdezési teljesítmény manuális finomhangolásához.
+title: Teljesítmény-finomhangolási útmutató alkalmazások és adatbázisok számára
+description: Ismerkedjen meg az adatbázis-alkalmazások és-adatbázisok hangolásával a Azure SQL Database teljesítményéhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382382"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255950"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>A lekérdezés teljesítményének manuális finomhangolása Azure SQL Database
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Alkalmazások és adatbázisok hangolása a Azure SQL Database teljesítményéhez
 
 Ha olyan teljesítménnyel kapcsolatos problémát észlelt, amely SQL Database, akkor ez a cikk a következőkhöz nyújt segítséget:
 
@@ -232,6 +232,10 @@ A **sys. resource_stats** vizsgálatával megállapíthatja, hogy egy teszt erő
 
 Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a [lekérdezési mutatókkal (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
+### <a name="very-large-database-architectures"></a>Nagyon nagy adatbázis-architektúrák
+
+A [nagy kapacitású](sql-database-service-tier-hyperscale.md) szolgáltatási rétegének a Azure SQL Database önálló adatbázisaihoz való kiadása előtt az ügyfelek az egyes adatbázisok kapacitásának korlátozásait használták. Ezek a Kapacitási korlátok továbbra is léteznek a rugalmas készletekben található készletezett adatbázisokhoz és a példány-adatbázishoz a felügyelt példányokban. Az alábbi két szakaszban két lehetőség közül választhat a Azure SQL Database nagyon nagy méretű adatbázisokkal kapcsolatos problémák megoldásához, ha nem tudja használni a nagy kapacitású szolgáltatási szintet.
+
 ### <a name="cross-database-sharding"></a>Adatbázisok közti horizontális felskálázás
 
 Mivel a Azure SQL Database a termék hardverén fut, az egyes adatbázisok kapacitásának korlátai alacsonyabbak, mint a hagyományos helyszíni SQL Server telepítésekor. Egyes ügyfelek horizontális Felskálázási technikák használatával terjesztik az adatbázis-műveleteket több adatbázisra, ha a műveletek nem illeszkednek a Azure SQL Database egyes adatbázisainak korlátaihoz. A legtöbb horizontális Felskálázási technikát használó ügyfelek több adatbázisra osztották fel az adatAzure SQL Databaset egyetlen dimenzióban. Ehhez a megközelítéshez meg kell ismernie, hogy a OLTP-alkalmazások gyakran olyan tranzakciókat hajtanak végre, amelyek csak egy sorra vagy a séma sorainak egy kis csoportjára vonatkoznak.
@@ -243,7 +247,7 @@ Ha például egy adatbázis az ügyfél nevét, sorrendjét és a rendelés rés
 
 Bár az adatbázisok horizontális felskálázása nem csökkenti a megoldás összesített erőforrás-kapacitását, rendkívül hatékony a több adatbázison keresztül elosztott, nagyon nagy megoldások támogatásához. Az egyes adatbázisok más számítási méretekben futhatnak, hogy a nagyon nagy, "hatékony" és magas erőforrás-igényű adatbázisokra is felhasználhatók legyenek.
 
-### <a name="functional-partitioning"></a>Funkcionális particionálás
+#### <a name="functional-partitioning"></a>Funkcionális particionálás
 
 SQL Server a felhasználók gyakran egyesítenek számos függvényt egy adott adatbázisban. Ha például egy alkalmazás logikával kezeli az áruház leltárát, akkor az adatbázishoz a leltárhoz, a beszerzési rendelésekhez, a tárolt eljárásokhoz, valamint a hónap végét kezelő, indexelt vagy jelentős nézetekhez tartozó logika tartozhat. Ezzel a technikával könnyebben felügyelheti az adatbázist olyan műveletekhez, mint a biztonsági mentés, de a hardver méretét is megköveteli, hogy a maximális terhelést az alkalmazás összes funkcióján kezeljék.
 

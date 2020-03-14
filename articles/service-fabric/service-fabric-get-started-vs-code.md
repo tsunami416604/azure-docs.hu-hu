@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945829"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258485"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
 
@@ -124,7 +124,7 @@ A **Service Fabric: Clean Application** parancs törli a Build által generált 
 2.  Válassza a **Service Fabric: Clean Application (alkalmazás tisztítása** ) parancsot.
 3.  A tiszta folyamat kimenete az integrált terminálba íródik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [fejleszthet C# és kereshet Service FABRIC alkalmazásokat a vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md)használatával.
 * Ismerje meg, hogyan [fejleszthet és kereshet Java Service Fabric-alkalmazásokat a vs Code](./service-fabric-develop-java-applications-with-vs-code.md)használatával.

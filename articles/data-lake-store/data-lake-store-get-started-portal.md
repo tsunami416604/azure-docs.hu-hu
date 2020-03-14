@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438762"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265583"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>A Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Portál](data-lake-store-get-started-portal.md)
+> * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -32,7 +32,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 fiók létrehozása
 
 1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
 2. Kattintson **az erőforrás létrehozása > Storage > Data Lake Storage Gen1**elemre.
@@ -56,7 +56,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
         További információ: az [adatok titkosítása Azure Data Lake Storage Gen1ban](./data-lake-store-encryption.md).
 
-4. Kattintson a **Create** (Létrehozás) gombra. Ha úgy döntött, hogy rögzíti a fiókot az irányítópulton, visszakerül az irányítópultra, és megtekintheti a Data Lake Storage Gen1 fiók üzembe helyezésének folyamatát. A Data Lake Storage Gen1 fiók üzembe helyezése után megjelenik a fiók panel.
+4. Kattintson a  **Create** (Létrehozás) gombra. Ha úgy döntött, hogy rögzíti a fiókot az irányítópulton, visszakerül az irányítópultra, és megtekintheti a Data Lake Storage Gen1 fiók üzembe helyezésének folyamatát. A Data Lake Storage Gen1 fiók üzembe helyezése után megjelenik a fiók panel.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>Engedélyek hozzárendelése az Azure Key Vaulthoz
 
@@ -105,7 +105,7 @@ Az adatait közvetlenül a gyökér szintjén vagy a fiókon belül létrehozott
 
     ![Adatok feltöltése](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Adatok feltöltése")
 
-Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát.
+Ha feltölthető mintaadatokra van szüksége, használhatja az **Azure Data Lake Git-tárában** található [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) mappát.
 
 ## <a name="properties"></a>A tárolt adatokhoz elérhető műveletek
 
@@ -113,7 +113,7 @@ Kattintson a fájl melletti, három pontot ábrázoló ikonra, majd az előugró
 
 ![Az adatkészletek tulajdonságai](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Az adatok tulajdonságai")
 
-## <a name="secure-your-data"></a>Adatbiztonság
+## <a name="secure-your-data"></a>Az adatok védelme
 
 Azure Active Directory és hozzáférés-vezérlés (ACL-ek) használatával biztonságossá teheti a Data Lake Storage Gen1-fiókban tárolt adatait. Ennek módjával kapcsolatos útmutatásért lásd: az [adatvédelme Azure Data Lake Storage Gen1ban](data-lake-store-secure-data.md).
 

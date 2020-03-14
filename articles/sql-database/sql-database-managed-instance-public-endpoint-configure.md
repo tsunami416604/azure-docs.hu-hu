@@ -11,11 +11,11 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256158"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Nyilvános végpont konfigurálása Azure SQL Database felügyelt példányban
 

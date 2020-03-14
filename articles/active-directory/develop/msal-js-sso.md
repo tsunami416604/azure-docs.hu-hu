@@ -14,11 +14,11 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377227"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262853"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Egyszeri bejelentkezés az MSAL.js-sel
 
@@ -169,6 +169,6 @@ const myMSALObj = new UserAgentApplication(config);
 
 Ha ez a beállítás be van állítva, a MSAL. js képes lesz olvasni a hitelesített felhasználó gyorsítótárazott állapotát a ADAL. js fájlban, és ezzel az SSO-t a MSAL. js fájlban is megadhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [egyszeri bejelentkezési munkamenet és a jogkivonat élettartamának](active-directory-configurable-token-lifetimes.md) értékeiről az Azure ad-ben.

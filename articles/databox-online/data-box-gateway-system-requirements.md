@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260188"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Rendszerkövetelmények Azure Data Box Gateway
 

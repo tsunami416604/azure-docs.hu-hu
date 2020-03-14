@@ -4,11 +4,11 @@ description: Az egyes csomópontok és virtuálisgép-méretezési csoportokra v
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587481"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258732"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Fürt horizontális fel- és leskálázása
 

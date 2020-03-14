@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932476"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261761"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -38,7 +38,7 @@ A nagyvállalati szervezetek gyakran szembesülnek kihívásokkal az alkalmazott
 - Előfordulhat, hogy a felhasználók nem tudják, hogy milyen hozzáférésre van szükségük, és még ha igen, nehéz lehet megtalálni a megfelelő személyeket a hozzáférésük jóváhagyására
 - Miután a felhasználók megkeresik és megkapják a hozzáférést egy erőforráshoz, előfordulhat, hogy a hozzáférésük hosszabb ideig tart, mint az üzleti célra szükséges
 
-Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Példa:
+Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Például:
 
 - Előfordulhat, hogy egyetlen személy sem tudja, hogy a többi szervezet könyvtáraiban lévő összes adott személy meghívja őket
 - Még ha ezek a felhasználók is meghívhatják ezeket a felhasználókat, a szervezetben senki sem emlékszik arra, hogy az összes felhasználó hozzáférését következetesen kezelje
@@ -71,7 +71,7 @@ A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát m
 - Hozzárendelés az Azure AD vállalati alkalmazásokhoz, beleértve az SaaS-alkalmazásokat, valamint az összevonás/egyszeri bejelentkezést és/vagy üzembe helyezést támogató egyéni integrált alkalmazásokat
 - SharePoint Online-webhelyek tagsága
 
-Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
+Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
 
 - A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
 - Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
@@ -114,16 +114,16 @@ A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáféré
 
 A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételek listáját.
 
-| Időtartam | Leírás |
+| Időszak | Leírás |
 | --- | --- |
 | hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. Hozzon létre egy új hozzáférési csomagot egy olyan forgatókönyvhöz, amelyben a felhasználóknak hozzáférést kell kérniük.  |
 | hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy jóváhagyási munkafolyamaton keresztül mennek keresztül.  Ha jóváhagyják, a kérelmező felhasználó hozzáférési csomagbeli hozzárendelést kap. |
 | hozzárendelés | Egy hozzáférési csomag felhasználónak való hozzárendelése biztosítja, hogy a felhasználó rendelkezik az adott hozzáférési csomag összes erőforrás-szerepkörével.  Az Access Package-hozzárendelések esetében általában időkorlát van a lejárat előtt. |
-| Katalógus | Kapcsolódó erőforrások és hozzáférési csomagok tárolója.  A rendszer katalógusokat használ a delegáláshoz, így a nem rendszergazdák létrehozhatják saját hozzáférési csomagjaikat. A katalógus tulajdonosai erőforrásokat adhatnak hozzá a katalógushoz. |
+| catalog | Kapcsolódó erőforrások és hozzáférési csomagok tárolója.  A rendszer katalógusokat használ a delegáláshoz, így a nem rendszergazdák létrehozhatják saját hozzáférési csomagjaikat. A katalógus tulajdonosai erőforrásokat adhatnak hozzá a katalógushoz. |
 | Katalógus létrehozója | Olyan felhasználók gyűjteménye, akik jogosultak új katalógusok létrehozására.  Ha egy olyan nem rendszergazda felhasználó, aki jogosult katalógus létrehozására, új katalógust hoz létre, automatikusan a katalógus tulajdonosa lesz. |
 | csatlakoztatott szervezet | Egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van. Egy csatlakoztatott szervezet felhasználóit megadhatja egy szabályzatban, mivel a hozzáférés kérése engedélyezett. |
 | szabályzat | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók a hozzárendeléseken keresztül. Egy házirend egy hozzáférési csomaghoz van csatolva. Egy hozzáférési csomag például rendelkezhet két házirenddel – az egyik az alkalmazottak számára, hogy hozzáférést igényeljen, és egy másikat a külső felhasználók számára a hozzáférés kéréséhez. |
-| erőforrás | Egy eszköz, például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely, egy olyan szerepkörrel, amellyel a felhasználók engedélyt kaphatnak. |
+| resource | Egy eszköz, például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely, egy olyan szerepkörrel, amellyel a felhasználók engedélyt kaphatnak. |
 | erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
 | erőforrás-szerepkör | Egy erőforrás által társított és meghatározott engedélyek gyűjteménye. Egy csoportnak két szerepköre van – a tag és a tulajdonos. A SharePoint-webhelyek általában 3 szerepkörrel rendelkeznek, de lehetnek további egyéni szerepkörök. Az alkalmazásokhoz egyéni szerepkörök tartozhatnak. |
 
@@ -156,10 +156,10 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Alkalmazási helyzet | Számítás | Licencek száma |
+| Forgatókönyv | Számítás | Licencek száma |
 | --- | --- | --- |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2,000 |
-| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |
+| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Következő lépések
 

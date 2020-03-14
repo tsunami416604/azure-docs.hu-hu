@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774603"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259252"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások Service Bus kimaradások és katasztrófák elleni elszigeteléséhez
 
@@ -38,7 +38,7 @@ A Service Bus Premium SKU támogatja a [Availability Zones](../availability-zone
 > [!NOTE]
 > A prémium szintű Azure Service Bus Availability Zones támogatása csak olyan Azure- [régiókban](../availability-zones/az-overview.md#services-support-by-region) érhető el, ahol rendelkezésre áll a rendelkezésre állási zónák.
 
-A Availability Zones csak az új névtereken engedélyezheti, a Azure Portal használatával. A Service Bus nem támogatja a meglévő névterek áttelepítését. A zóna redundancia nem tiltható le, miután engedélyezte azt a névtérben.
+Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. A Service Bus nem támogatja a meglévő névterek áttelepítését. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 
 ![1][]
 

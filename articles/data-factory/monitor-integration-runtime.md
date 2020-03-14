@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356271"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261137"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul figyelése Azure Data Factory  
 Az **Integration Runtime** a Azure Data Factory által használt számítási infrastruktúra, amely különböző adatintegrációs képességeket biztosít a különböző hálózati környezetekben. A Data Factory három különböző típusú integrációs modult kínál:

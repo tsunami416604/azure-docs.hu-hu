@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77196133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263360"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Az Azure AD B2B együttműködés korlátai
 Azure Active Directory (Azure AD) VÁLLALATKÖZI együttműködés jelenleg a jelen cikkben ismertetett korlátozások hatálya alá esik.
@@ -32,6 +32,21 @@ Az Azure AD B2B az Azure AD szolgáltatási könyvtárának korlátaira vonatkoz
 
 ## <a name="national-clouds"></a>Nemzeti felhők
 Az [országos felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) fizikailag elkülönített Azure-példányok. A B2B együttműködés nem támogatott a nemzeti felhő határain belül. Ha például az Azure-bérlő nyilvános, globális felhőben van, nem hívhat meg olyan felhasználót, akinek a fiókja egy nemzeti felhőben található. A felhasználóval való együttműködéshez kérje meg őket egy másik e-mail-címre, vagy hozzon létre egy tag felhasználói fiókot a címtárban.
+
+## <a name="azure-us-government-clouds"></a>Azure USA-beli kormányzati felhők
+Az Amerikai Egyesült Államok kormányzati felhője keretében a B2B-együttműködés jelenleg csak az USA-beli kormányzati felhőben és a B2B-együttműködés támogatását támogató bérlők között támogatott. Ha olyan bérlőn hívja meg a felhasználót, amely nem része az Azure US government-felhőnek, vagy amely még nem támogatja a B2B-együttműködést, a meghívás sikertelen lesz, vagy a felhasználó nem tudja beváltani a meghívót. További információk az egyéb korlátozásokról: [prémium szintű Azure Active Directory P1 és P2 változatok](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
+### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Honnan tudhatom meg, hogy a B2B együttműködés elérhető-e az Azure US government-bérlőben?
+Ha szeretné megtudni, hogy az Azure US government Cloud bérlője támogatja-e a B2B-együttműködést, tegye a következőket:
+
+1. Egy böngészőben nyissa meg a következő URL-címet, és helyettesítse be a bérlő nevét *&lt;tenantname&gt;* :
+
+   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
+
+2. `"tenant_region_scope"` keresése a JSON-válaszban:
+
+   - Ha `"tenant_region_scope":"USGOV”` jelenik meg, a B2B támogatott.
+   - Ha `"tenant_region_scope":"USG"` jelenik meg, a B2B nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 

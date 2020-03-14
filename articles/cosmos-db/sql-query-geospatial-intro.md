@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 655c3a96792fba83ac73365f02d48ce0347e9048
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566347"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137886"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helye Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Ez a cikk az Azure Cosmos DB a térinformatikai funkciókat bemutató. Jelenleg 
 
 Térbeli adatok pozíció és objektumok terület alakja ismerteti. A legtöbb alkalmazásban ezek felel meg az objektumok a föld és a földrajzi adatok. Térbeli adatok segítségével egy személy, egy helyen a lényeges vagy a város vagy egy lake határait helyét jelölik. Gyakori alkalmazási helyzetek gyakran közelségi lekérdezések, például olyan, "minden kávézóban található a jelenlegi tartózkodási közel."
 
-A Azure Cosmos DB SQL API támogatja a **földrajzi** adattípust. A **földrajzi** típus a kör alakú koordináta-rendszerbeli adathalmazokat jelöli.
+A Azure Cosmos DB SQL API két térbeli adattípust támogat: a **geometria** adattípust és a **Földrajz** adattípust.
+
+- A **geometria** típusa egy euklideszi (Flat) koordináta-rendszerbe tartozó adatoknak felel meg.
+- A **földrajzi** típus a kör alakú koordináta-rendszerbeli adathalmazokat jelöli.
 
 ## <a name="supported-data-types"></a>Támogatott adattípusok
 
@@ -70,7 +73,11 @@ A térbeli adattípusokat beágyazhatja egy Azure Cosmos DB-dokumentumba, ahogy 
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>Pontok a földrajzi koordináta-rendszeren
+### <a name="points-in-a-geometry-coordinate-system"></a>Geometriai koordináta-rendszer pontjai
+
+A **geometria** adattípus esetében a GeoJSON-specifikáció meghatározza a vízszintes tengelyt és a második függőleges tengelyt.
+
+### <a name="points-in-a-geography-coordinate-system"></a>Földrajzi koordináták rendszerbeli pontok
 
 A **földrajzi** adattípus esetében a GeoJSON-specifikáció meghatározza az első és a szélességi fok értéket. Például a többi leképezési alkalmazások, a szélességi és hosszúsági szögek és fok formájában jelennek meg. Hosszúsági értékeket mért vannak a szélességi és-180 fok és 180.0 fok közé, és szélességi értékek vannak az Egyenlítőtől mért-90.0 fok és 90.0 fok közé.
 
@@ -194,7 +201,7 @@ await container.CreateItemAsync( new UserProfile
 
 Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További információ a Bing Maps helymeghatározáshoz [itt](https://msdn.microsoft.com/library/ff701713.aspx).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulhatta, hogyan kezdheti el a földrajzi támogatásával az Azure Cosmos DB, ezután is:
 

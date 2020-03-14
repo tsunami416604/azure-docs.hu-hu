@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388110"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251465"
 ---
 # <a name="filters"></a>Szűrők
 
@@ -51,7 +51,7 @@ A szűrők leírásához a következő tulajdonságokat használhatja.
 |---|---|
 |firstQuality|A szűrő első minőségi bitrátája.|
 |presentationTimeRange|A megjelenítési idő tartománya. Ez a tulajdonság a jegyzékfájl kezdő/záró pontjainak, a megjelenítési időszak hosszának és az élő indítási pozíciónak a szűrésére szolgál. <br/>További információ: [PresentationTimeRange](#presentationtimerange).|
-|nyomon követi|A nyomon követi a kiválasztási feltételeket. További információ: [tracks](#tracks)|
+|Nyomon követi|A nyomon követi a kiválasztási feltételeket. További információ: [tracks](#tracks)|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 

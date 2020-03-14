@@ -4,11 +4,11 @@ description: Útmutató Service Fabric állapot-nyilvántartó szolgáltatások 
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258615"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Partition Service Fabric megbízható szolgáltatások
 Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A cikkben használt forráskód a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
@@ -352,7 +352,7 @@ A minta teljes forráskódja elérhető a [githubon](https://github.com/Azure-Sa
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services-és Actor-elágazási alfolyamatok
 A Service Fabric nem támogatja a megbízható szolgáltatásokat és a későbbiekben megbízható Actors elágazási alfolyamatokat. A nem támogatott alfolyamatok nem regisztrálhatók, és a visszavonási jogkivonatok csak a regisztrált folyamatoknak [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) , ezért nem használhatók. az olyan problémák, mint például a frissítési hibák, ha az alfolyamatok nem zárulnak le, miután a fölérendelt folyamat megkapta a lemondási tokent. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos információkért tekintse meg a következőket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

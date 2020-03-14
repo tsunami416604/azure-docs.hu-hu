@@ -15,11 +15,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375735"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253038"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -101,7 +101,7 @@ Tippek az alkalmazások kezelésének delegálásához egyéni szerepkörök lé
 
 Az egyéni szerepkörök alapjaival kapcsolatos további információkért tekintse meg az [Egyéni szerepkörök áttekintését](roles-custom-overview.md), valamint az [Egyéni szerepkör létrehozását](roles-create-custom.md) és [a szerepkör hozzárendelését](roles-assign-powershell.md)ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazás regisztrációs altípusai és engedélyei](roles-custom-available-permissions.md)
 - [Azure AD-rendszergazdai szerepkör-hivatkozás](directory-assign-admin-roles.md)

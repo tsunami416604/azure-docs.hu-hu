@@ -11,14 +11,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168985"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204545"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Megtekintheti és terméken belüli felhasználói adatok törlése az Azure AI-katalógusban
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Megtekintheti, és a terméken belüli felhasználói adatok törlése az Azure AI-katalógusban a felület vagy a AI katalógus katalógus API használatával. Ez a cikk bemutatja, hogyan.
 
@@ -30,9 +32,9 @@ Megtekintheti, és a terméken belüli felhasználói adatok törlése az Azure 
 
 Az Azure AI-katalógusban webhelyen felhasználói felületén keresztül közzétett cikkek megtekintéséhez. Felhasználók megtekinthetik a nyilvános és a fel nem sorolt megoldások, a projektek, a kísérletek és a más közzétett elemeket:
 
-1.  Jelentkezzen be a [Azure AI Galleryba](https://gallery.azure.ai/).
-2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
-3.  A profil lapra a katalógusban, beleértve a listán nem szereplő bejegyzések közzétett összes elemet jeleníti meg.
+1.    Jelentkezzen be a [Azure AI Galleryba](https://gallery.azure.ai/).
+2.    Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
+3.    A profil lapra a katalógusban, beleértve a listán nem szereplő bejegyzések közzétett összes elemet jeleníti meg.
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Az AI katalógus katalógus API használatával az adatok megtekintése
 
@@ -43,9 +45,9 @@ Katalógus válaszokat a rendszer JSON formátumban adja vissza.
 ### <a name="get-an-author-id"></a>Szerző azonosító beszerzése
 A szerző azonosító az Azure AI-katalógusban való közzétételkor használt e-mail-cím alapján. Nem módosítja:
 
-1.  Jelentkezzen be [Azure AI Galleryba](https://gallery.azure.ai/).
-2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
-3.  A címsorban található URL-cím a `authorId=`következő alfanumerikus azonosítót jeleníti meg. Például a következő URL-címhez: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    Jelentkezzen be [Azure AI Galleryba](https://gallery.azure.ai/).
+2.    Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
+3.    A címsorban található URL-cím a `authorId=`következő alfanumerikus azonosítót jeleníti meg. Például a következő URL-címhez: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Szerző azonosítója: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,12 +57,12 @@ Szüksége lesz egy hozzáférési jogkivonatot a katalógus API-n keresztül fe
 
 Hozzáférési jogkivonat beszerzéséhez meg kell vizsgálnia egy HTTP-kérelem `DataLabAccessToken` fejlécét, amelyet a böngésző a katalógus API-ba való bejelentkezéskor tesz elérhetővé:
 
-1.  Jelentkezzen be a [Azure AI Galleryba](https://gallery.azure.ai/).
-2.  Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
-3.  Nyissa meg a böngésző fejlesztői eszközök ablak F12 billentyű lenyomásával, válassza ki a hálózat lapot, és frissítse az oldalt. 
+1.    Jelentkezzen be a [Azure AI Galleryba](https://gallery.azure.ai/).
+2.    Kattintson a jobb felső sarokban, majd a fiók nevét a profillapján betölteni a profilképét.
+3.    Nyissa meg a böngésző fejlesztői eszközök ablak F12 billentyű lenyomásával, válassza ki a hálózat lapot, és frissítse az oldalt. 
 4. A karakterlánc- *katalógusban* lévő kérelmek szűréséhez írja be a szűrő szövegmezőbe.
-5.  Az URL-címre `https://catalog.cortanaanalytics.com/entities`keresse meg a GET kérelmet, és válassza a *fejlécek* fület. görgessen le a *kérések fejlécek* szakaszhoz.
-6.  A fejléc alatt `DataLabAccessToken` az alfanumerikus token. Az adatok biztonsága érdekében, ne ossza meg ezt a tokent.
+5.    Az URL-címre `https://catalog.cortanaanalytics.com/entities`keresse meg a GET kérelmet, és válassza a *fejlécek* fület. görgessen le a *kérések fejlécek* szakaszhoz.
+6.    A fejléc alatt `DataLabAccessToken` az alfanumerikus token. Az adatok biztonsága érdekében, ne ossza meg ezt a tokent.
 
 ### <a name="view-user-information"></a>Felhasználói adatok megtekintése
 Az előző lépésekben kapott szerzői azonosító használatával megtekintheti a felhasználói profilban található információkat, ha lecseréli `[AuthorId]` a következő URL-címre:
@@ -92,9 +94,9 @@ Például:
 
 Ez a lekérdezés csak nyilvános entitásokat jeleníti meg. Minden az entitásokkal, többek között a listán nem szereplő eszközök megtekintéséhez adja meg a hozzáférési jogkivonat érkezett az előző szakaszban.
 
-1.  Hozzon létre egy HTTP GET-kérést a katalógus [URL-](https://www.getpostman.com)címére a következő témakörben leírtak szerint: [hozzáférési token beszerzése](#get-your-access-token).
-2.  Hozzon létre egy `DataLabAccessToken`nevű HTTP-kérési fejlécet a hozzáférési jogkivonathoz beállított értékkel.
-3.  A HTTP-kérelem elküldéséhez.
+1.    Hozzon létre egy HTTP GET-kérést a katalógus [URL-](https://www.getpostman.com)címére a következő témakörben leírtak szerint: [hozzáférési token beszerzése](#get-your-access-token).
+2.    Hozzon létre egy `DataLabAccessToken`nevű HTTP-kérési fejlécet a hozzáférési jogkivonathoz beállított értékkel.
+3.    A HTTP-kérelem elküldéséhez.
 
 > [!TIP]
 > Listán nem szereplő entitások nem jelennek meg a válaszokat a katalógus API-ból, ha a felhasználó előfordulhat, hogy érvénytelen, vagy a hozzáférési jogkivonat lejárt. Jelentkezzen ki a Azure AI Galleryból, majd ismételje meg a [hozzáférési token beszerzése](#get-your-access-token) című témakör lépéseit a jogkivonat megújításához. 

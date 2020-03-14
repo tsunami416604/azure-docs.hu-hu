@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 6fef1829e008b58f50546e9e6e7ad2ccee037224
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892847"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245264"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -495,9 +495,17 @@ A helyszíni díjszabással kapcsolatos további információkért olvassa el a 
 
 Az Azure emellett egy dedikált gazdagép fogalmait is biztosítja. A dedikált gazdagépi koncepció részletesebben szabályozza az Azure által végzett javítási ciklusokat. A javítás időpontját a saját ütemterv szerint állíthatja be. Ez az ajánlat kifejezetten olyan ügyfelek számára célozza meg a munkaterheléseket, amelyek nem feltétlenül követik a számítási feladatok normál ciklusát. Az Azure dedikált gazdagép-ajánlatok fogalmait az [Azure dedikált gazdagép](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)című cikkben olvashatja. Az ajánlat használata az SAP számítási feladatait támogatja, és számos SAP-ügyfél használja, akik hatékonyabban szeretnék szabályozni az infrastruktúra és a Microsoft végleges karbantartási terveinek javítását. Ha többet szeretne megtudni arról, hogyan kezeli a Microsoft a virtuális gépeket üzemeltető Azure-infrastruktúrát, olvassa el az [Azure-beli virtuális gépek karbantartását](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)ismertető cikket.
 
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>1\. és 2. generációs virtuális gépek
+A Microsoft hypervisor képes a virtuális gépek két különböző generációjának kezelésére. Ezeket a formátumokat az **1** . és a **2**. generációnak nevezzük. A **2. generáció** az 2012-as évben lett bevezetve a Windows Server 2012 hypervisorral. Az Azure az 1. generációs virtuális gépek használatával indult el. Az Azure-beli virtuális gépek üzembe helyezésekor az alapértelmezett érték az 1. generációs formátumot is használja. Eközben a 2. generációs virtuális gépek formátumait is üzembe helyezheti. A [2. generációs virtuális gépek Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) -ban való támogatása a 2. generációs virtuális gépekként üzembe HELYEZHETŐ Azure VM-családokat sorolja fel. Ez a cikk a 2. generációs virtuális gépek nagyon fontos működési különbségeit is felsorolja, mivel azok a Hyper-V saját felhőben és az Azure-ban is futtathatók. Ennél is fontosabb ez a cikk az 1. generációs virtuális gépek és a 2. generációs virtuális gépek közötti, az Azure-ban futtatott működési különbségeket is felsorolja. 
+
+> [!NOTE]
+> Az 1. és a 2. generációs virtuális gépek az Azure-ban üzemelő működési különbségek. Tekintse át a [2. generációs virtuális gépek Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) -ban való támogatását ismertető cikket a különbségek listájának megtekintéséhez.  
+ 
+Egy meglévő virtuális gép egyik generációról a másikra való áthelyezése nem lehetséges. A virtuálisgép-generáció módosításához üzembe kell helyeznie egy új virtuális gépet, amelyet szeretne, és újra telepítenie kell a generáció virtuális gépén futó szoftvert. Ez csak a virtuális gép alapszintű VHD-rendszerképére vonatkozik, és nincs hatással az adatlemezekre vagy a csatolt NFS-vagy SMB-megosztásokra. Adatlemezek, NFS-vagy SMB-megosztások, amelyek eredetileg egy 1. generációs virtuális gépen lettek hozzárendelve
+
+Jelenleg ez a probléma különösen az Azure M sorozatú virtuális gépek és a Mv2 sorozatú virtuális gépek között fordul elő. Az 1. generációs virtuális gépek formátumának korlátai miatt a Mv2 család nagyméretű virtuális gépei nem érhetők el az 1. generációs formátumban, de csak a 2. generációban szükségesek. A másik oldalon az M sorozatú virtuálisgép-család még nincs engedélyezve a 2. generációban való üzembe helyezéshez. Ennek eredményeképpen az M-sorozat és a Mv2 sorozatú virtuális gépek közötti újraméretezés szükséges a szoftver újratelepítéséhez egy olyan virtuális gépen, amelyet Ön a másik virtuálisgép-családnak céloz. A Microsoft dolgozik, hogy lehetővé tegye az M sorozatú virtuális gépek üzembe helyezését 2. generációs környezetekben. Az M-sorozatú virtuális gépeknek a jövőben 2. generációs virtuális gépekként való üzembe helyezése lehetővé teszi, hogy az M-sorozatú és a Mv2-sorozatú virtuális gépek között kevésbé legyen újraméretezés. Mindkét irányban akár az M sorozatból a nagyobb Mv2-sorozatú virtuális gépekre, akár a nagyobb Mv2 sorozatú virtuális gépekről a kisebb M sorozatú virtuális gépekre. A dokumentációt akkor fogjuk frissíteni, amikor az M sorozatú virtuális gépek 2. generációs virtuális gépekként telepíthetők.    
 
  
-
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Tárolás: Microsoft Azure Storage és adatlemezek
 Microsoft Azure Virtual Machines eltérő tárolási típusokat használ. Az SAP Azure-beli virtuálisgép-szolgáltatásokon való megvalósításakor fontos megérteni a két fő tárolási típus közötti különbségeket:
@@ -2056,7 +2064,7 @@ Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pont
 * Az SAP-párbeszédpanel példányainak biztonsági mentése kevés értelmet, mivel általában gyorsabb az egyszerű párbeszédpanel-példányok újratelepítése.
 * A virtuális gép biztonsági mentése, amely tartalmazza az SAP-rendszer globális könyvtárát, valamint a különböző példányok összes profilját, a Windows biztonsági mentésével, vagy például a Linux-alapú tar-vel kell elvégezni. Mivel a Windows Server 2008 (R2) és a Windows Server 2012 (R2) között különbségek vannak, így könnyebben készíthető biztonsági mentés a legújabb Windows Server-kiadásokkal, javasoljuk, hogy Windows Server 2012 (R2) operációs rendszert futtasson Windows vendég operációs rendszerként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a cikkeket:
 
 - [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)

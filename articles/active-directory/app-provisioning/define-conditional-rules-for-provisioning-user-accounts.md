@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544266"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138535"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -103,7 +103,8 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 
 >[!IMPORTANT] 
-> A IsMemberOf szűrő jelenleg nem támogatott.
+> - A IsMemberOf szűrő jelenleg nem támogatott.
+> - A többértékű attribútumok esetében nem támogatott egyenlő és nem egyenlő.
 
 9. Szükség esetén ismételje meg a 7-8. lépést további hatókör-záradékok hozzáadásához.
 

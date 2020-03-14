@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378192"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263906"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 ## <a name="requirements"></a>Követelmények
 
-| Eszköztípus | Azure AD-hez csatlakoztatott | Hibrid Azure AD-csatlakozás |
+| Eszköz típusa | Azure AD-hez csatlakoztatott | Hibrid Azure AD-csatlakozás |
 | --- | --- | --- |
 | [Azure-Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |

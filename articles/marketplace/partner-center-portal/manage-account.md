@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385522"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283341"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben
 
@@ -59,7 +59,7 @@ A fiók részletei szakaszban megtekintheti az alapvető adatokat, például a *
 
 A közzétevői azonosítók szakaszban megtekintheti a **Symantec-azonosítót**, az **eladó azonosítóját**, a **felhasználói azonosítót**, az **MPN-azonosítót**és az **Azure ad-bérlőket**. Ezeket az értékeket a Microsoft rendeli hozzá a fejlesztői fiók egyedi azonosításához, és nem szerkeszthető.
 
-### <a name="contact-info"></a>Kapcs. adatok
+### <a name="contact-info"></a>Kapcsolattartási adatok
 
 A kapcsolattartási adatok szakaszban megtekintheti a **közzétevő megjelenítendő nevét**, az **eladó kapcsolattartási adatait** (a partner nevét, az e-mail-címet, a telefonszámot és a céges értékesítő címét), valamint a **vállalat jóváhagyóját** (az egyén nevét, e-mail-címét és telefonszámát a vállalat döntéseinek jóváhagyása céljából).
 

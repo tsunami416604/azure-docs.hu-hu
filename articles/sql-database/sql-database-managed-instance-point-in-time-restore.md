@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197521"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268807"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>SQL-adatbázis visszaállítása felügyelt példányban egy korábbi időpontra
 
@@ -247,6 +247,6 @@ A következő módszerek egyikével csatlakozhat az adatbázishoz a felügyelt p
 - [Pont – hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [automatizált biztonsági mentésekről](sql-database-automated-backups.md).

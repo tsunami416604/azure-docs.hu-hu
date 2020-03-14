@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261020"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: átmeneti kiszolgáló és vész-helyreállítás
 Ha egy kiszolgáló átmeneti módban van, módosíthatja a konfigurációt, és előkészítheti a módosításokat a kiszolgáló aktív állapotba helyezése előtt. Azt is lehetővé teszi, hogy teljes importálást és teljes szinkronizálást futtasson annak ellenőrzéséhez, hogy az összes módosítás várható-e, mielőtt a módosításokat elvégezte az éles környezetben.
