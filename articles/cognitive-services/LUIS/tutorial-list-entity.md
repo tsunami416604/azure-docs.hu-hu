@@ -1,22 +1,14 @@
 ---
 title: 'Oktatóanyag: entitások listázása – LUIS'
-titleSuffix: Azure Cognitive Services
 description: Elemek előre meghatározott listájával egyező adatok lekérése. A lista minden elemének lehetnek pontosan megegyező szinonimái
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297407"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Oktatóanyag: pontos szöveggel egyező adatok beolvasása a listázási entitással
 
@@ -42,7 +34,7 @@ A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
 * Az adatok értékei egy ismert készletbe tartoznak.
 * A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. LUIS nem használja a listát a pontos szöveges egyezéseken felül. A kivezetés, a többes szám és más változat nem oldható fel egyetlen listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal.
+* A kiírásban szereplő szöveg a kis-és nagybetűk megkülönböztetése egy szinonimával vagy a kanonikus névvel. LUIS nem használja az egyezésen felüli listát. A kivezetés, a többes szám és más változat nem oldható fel egyetlen listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal.
 
 > [!CAUTION]
 > Ha nem biztos abban, hogy egy lista entitást vagy egy géppel megtanult entitást leíróként egy kifejezési listával rendelkezik, a legjobb és legrugalmasabb eljárás egy olyan géppel megtanult entitás használata, amelyben leíróként szerepel egy kifejezési lista. Ez a módszer lehetővé teszi a LUIS számára a kinyerni kívánt adatok értékének megismerését és kiterjesztését.
@@ -72,7 +64,7 @@ Az elsődleges név és a szinonimák példái a következők:
 |Kanonikus név|Szinonimák|
 |--|--|
 |Deep Dish|mély<br>mély tál kéreg<br>vastag<br>sűrű kéreg|
-|Pásztázás|rendszeres<br>eredeti<br>normál<br>normál kéreg<br>eredeti kéreg<br>normál kéreg|
+|Pan|Rendszeres<br>eredeti<br>normál<br>normál kéreg<br>eredeti kéreg<br>normál kéreg|
 |Töltött|töltött kéreg|
 |Vékony|vékony kéreg<br>sovány<br>sovány kéreg|
 
@@ -200,7 +192,7 @@ Az elsődleges név és a szinonimák példái a következők:
 * [A reguláris kifejezés entitás JSON-hivatkozása](reference-entity-regular-expression.md?tabs=V3)
 * [Entitások hozzáadása adatok kinyeréséhez](luis-how-to-add-entities.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag példaként adott hosszúságú kimondott szöveg, majd létrehozta a List entitást a pontos szöveges egyezések kinyeréséhez a hosszúságú kimondott szöveg. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
 
 > [!div class="nextstepaction"]

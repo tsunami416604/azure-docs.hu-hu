@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248605"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
 
@@ -37,7 +37,7 @@ Ez a cikk olyan sablon-mintákat tartalmaz, amelyek a sablonokkal végrehajthat�
 
 A következő táblázat felsorolja az ebben a példában használt erőforrások API-verzióját.
 
-| Erőforrás | Erőforrás típusa | API-verzió |
+| Resource | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
 | Munkaterület   | munkaterületek    | 2017-03-15 – előzetes verzió |
 | Keresés      | savedSearches | 2015-03-20 |
@@ -656,7 +656,7 @@ Az Azure rövid útmutató sablonjának katalógusa számos Log Analytics sablon
 * [Azure-Web Apps figyelése meglévő Log Analytics munkaterület használatával](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Meglévő Storage-fiók hozzáadása a Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Windows-ügynök üzembe helyezése az Azure-beli virtuális gépeken Resource Manager-sablon használatával](../../virtual-machines/extensions/oms-windows.md).
 

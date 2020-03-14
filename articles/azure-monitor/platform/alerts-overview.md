@@ -5,11 +5,11 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395763"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274787"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztások áttekintése 
 
@@ -34,7 +34,7 @@ A riasztási szabályok legfontosabb attribútumai a következők:
 
 **Jel**: a cél erőforrás által kibocsátva. A jelek a következő típusúak lehetnek: metrika, műveletnapló, Application Insights és napló.
 
-**Feltételek**: a cél erőforráson alkalmazott jel és logika kombinációja. Példák: 
+**Feltételek**: a cél erőforráson alkalmazott jel és logika kombinációja. Például: 
 
 - Százalékos CPU > 70%
 - Kiszolgáló válaszideje > 4 MS 
@@ -76,7 +76,7 @@ Beállíthatja egy riasztás állapotát, hogy meghatározza, hol található a 
 
 A következő riasztási állapotok támogatottak.
 
-| Állapot | Leírás |
+| State | Leírás |
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nincs áttekintve. |
 | Arra vonatkozik | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
@@ -105,7 +105,7 @@ A nézet szűréséhez válassza az értékek lehetőséget a lap tetején talá
 
 | Oszlop | Leírás |
 |:---|:---|
-| Előfizetést | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
+| -előfizetés | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
 | Erőforráscsoport | Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
 | Időtartomány | Csak a kijelölt időtartományon belül indított riasztások szerepelnek a nézetben. A támogatott értékek az elmúlt óra, az elmúlt 24 óra, az elmúlt 7 nap és az elmúlt 30 nap. |
 
@@ -148,10 +148,10 @@ A nézet szűréséhez válassza a következő értékeket az oldal tetején tal
 
 | Oszlop | Leírás |
 |:---|:---|
-| Előfizetést | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
+| -előfizetés | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
 | Erőforráscsoport | Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
 | Erőforrás típusa | Válasszon ki egy vagy több erőforrástípust. Csak a kiválasztott típusú célokat tartalmazó riasztások szerepelnek a nézetben. Ez az oszlop csak az erőforráscsoport megadása után érhető el. |
-| Erőforrás | Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
+| Resource | Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
 | Severity | Válassza ki a riasztás súlyosságát, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
 | Figyelési feltétel | Válasszon ki egy figyelési feltételt, vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
 | Riasztás állapota | Válasszon ki egy riasztási állapotot, vagy válassza az **összes** lehetőséget az összes állapotú riasztások belefoglalásához. |
@@ -167,7 +167,7 @@ Ha kiválaszt egy riasztást, ez a lap a riasztás részleteit jeleníti meg, é
 
 A riasztás részletei lapon a következő témakörök találhatók:
 
-| Section | Leírás |
+| Szakasz | Leírás |
 |:---|:---|
 | Összegzés | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
 | Előzmények | Felsorolja a riasztás által végrehajtott műveleteket és a riasztáson végrehajtott módosításokat. Jelenleg csak az állapot változásaira korlátozódik. |
@@ -202,7 +202,7 @@ A riasztásokat lekérdezheti az [alapvető](alerts-common-schema-definitions.md
 
 Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségével további információkat kaphat az egyes riasztásokról, például a [riasztási környezet](alerts-common-schema-definitions.md#alert-context) mezőiről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az intelligens csoportokról](https://aka.ms/smart-groups)
 - [A műveleti csoportok ismertetése](../../azure-monitor/platform/action-groups.md)

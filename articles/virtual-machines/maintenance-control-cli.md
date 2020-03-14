@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382729"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250178"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Előzetes verzió: a frissítések kezelése a karbantartási ellenőrzés és az Azure CLI használatával
 
@@ -285,5 +285,5 @@ az maintenance configuration delete \
    --name myConfig
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [karbantartás és frissítések](maintenance-and-updates.md).

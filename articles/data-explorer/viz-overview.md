@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064563"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139062"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Adatvizualizáció az Azure Adatkezelő 
 
@@ -43,11 +43,15 @@ Az Azure Adatkezelő lehetővé teszi a [Microsoft Excelhez](https://products.of
 
 A [Grafana](https://grafana.com) egy Azure adatkezelő beépülő modult biztosít, amely lehetővé teszi az azure-adatkezelő adatainak megjelenítését. Az [Azure adatkezelő-t a Grafana adatforrásaként állíthatja be, majd megjelenítheti az adatmegjelenítést](/azure/data-explorer/grafana). 
 
+## <a name="kibana"></a>Kibana
+
+Az Azure Adatkezelő lehetővé teszi a [Kibana (a felderítési oldal)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) csatlakozását a K2Bridge, egy nyílt forráskódú összekötő használatával. Az [Azure adatkezelő-t a Kibana adatforrásaként állíthatja be, majd megjelenítheti az adatmegjelenítést](/azure/data-explorer/k2bridge).
+
 ## <a name="odbc-connector"></a>ODBC-összekötő
 
 Az Azure Adatkezelő egy [nyílt adatbázis-kapcsolati (ODBC) összekötőt](connect-odbc.md) biztosít, így bármely, az ODBC-t támogató alkalmazás csatlakozhat az Azure Adatkezelőhoz.
 
-## <a name="tableau"></a>Tableau
+## <a name="tableau"></a>A tableau
 
 Az Azure Adatkezelő lehetővé teszi a [tablóhoz](https://www.tableau.com) való csatlakozást az [ODBC-összekötő](/azure/data-explorer/connect-odbc) használatával, majd [az adatmegjelenítést a tablóban](tableau.md).
 

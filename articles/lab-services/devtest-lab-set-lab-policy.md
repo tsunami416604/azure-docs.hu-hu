@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270718"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>A labor összes szabályzatának kezelése Azure DevTest Labs
 
@@ -130,7 +130,7 @@ Ha engedélyezve van, a rendszer nem alkalmazza automatikusan a szabályzatot az
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután meghatározta és alkalmazta a tesztkörnyezet különböző virtuálisgép-házirend-beállításait, a következő lépésekkel próbálkozhat:
 
 * A [megosztott IP-címek ismertetése](devtest-lab-shared-ip.md) – ismerteti, hogyan használják a megosztott IP-címeket a DevTest Labs szolgáltatásban, hogy minimálisra csökkentsék a laboratóriumi virtuális gépekhez való kapcsolódáshoz szükséges nyilvános IP-címek számát.

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
 ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251348"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services eseményekhez Azure Event Grid sémák
 
@@ -136,8 +136,8 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| previousState | sztring | A feladattípus állapota az esemény előtt. |
-| state | sztring | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
+| previousState | Karakterlánc | A feladattípus állapota az esemény előtt. |
+| state | Karakterlánc | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
 
 Ahol a feladat állapota lehet a következő értékek egyike: *várólista*, *ütemezett*, *feldolgozás*, *befejezett*, *hiba*, *megszakított*, *megszakítás*
 
@@ -322,11 +322,11 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
-| ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
-| encoderIp | sztring | A kódoló IP-címe. |
-| encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
-| resultCode | sztring | A rendszer elutasította a csatlakozás okát. Az eredmény-kódokat a következő táblázat tartalmazza. |
+| Streamazonosítója | Karakterlánc | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
+| ingestUrl | Karakterlánc | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
+| encoderIp | Karakterlánc | A kódoló IP-címe. |
+| encoderPort | Karakterlánc | Annak a kódolónak a portja, ahonnan a stream érkezik. |
+| resultCode | Karakterlánc | A rendszer elutasította a csatlakozás okát. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
 A hibák eredményének kódjait az [élő események](live-event-error-codes.md)hibakódjában találja.
 
@@ -358,10 +358,10 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél felelős azért, hogy ezt az azonosítót a betöltési URL-címben adja meg. |
-| ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |
-| encoderIp | sztring | A kódoló IP-címe. |
-| encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
+| Streamazonosítója | Karakterlánc | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél felelős azért, hogy ezt az azonosítót a betöltési URL-címben adja meg. |
+| ingestUrl | Karakterlánc | Betöltési URL-cím, amelyet az élő esemény biztosít. |
+| encoderIp | Karakterlánc | A kódoló IP-címe. |
+| encoderPort | Karakterlánc | Annak a kódolónak a portja, ahonnan a stream érkezik. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -392,11 +392,11 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Streamazonosítója | sztring | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
-| ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
-| encoderIp | sztring | A kódoló IP-címe. |
-| encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
-| resultCode | sztring | A kódoló kibontásának oka. Előfordulhat, hogy a rendszer kecsesen leválasztja vagy hibát észlelt. Az eredmény-kódokat a következő táblázat tartalmazza. |
+| Streamazonosítója | Karakterlánc | Az adatfolyam vagy a kapcsolatok azonosítója. A kódoló vagy az ügyfél feladata, hogy hozzáadja ezt az azonosítót a betöltési URL-címben. |  
+| ingestUrl | Karakterlánc | Betöltési URL-cím, amelyet az élő esemény biztosít. |  
+| encoderIp | Karakterlánc | A kódoló IP-címe. |
+| encoderPort | Karakterlánc | Annak a kódolónak a portja, ahonnan a stream érkezik. |
+| resultCode | Karakterlánc | A kódoló kibontásának oka. Előfordulhat, hogy a rendszer kecsesen leválasztja vagy hibát észlelt. Az eredmény-kódokat a következő táblázat tartalmazza. |
 
 A hibák eredményének kódjait az [élő események](live-event-error-codes.md)hibakódjában találja.
 
@@ -442,12 +442,12 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| trackType | sztring | A pálya típusa (hang/videó). |
-| trackName | sztring | A pálya neve. |
-| bitrate | egész szám | A pálya bitrátája. |
-| időbélyeg | sztring | Az adattömb eldobott időbélyegzője. |
-| timescale | sztring | Az időbélyeg időkerete. |
-| resultCode | sztring | Az adattömb eldobásának oka. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
+| trackType | Karakterlánc | A pálya típusa (hang/videó). |
+| trackName | Karakterlánc | A pálya neve. |
+| bitrate | integer | A pálya bitrátája. |
+| időbélyeg | Karakterlánc | Az adattömb eldobott időbélyegzője. |
+| timescale | Karakterlánc | Az időbélyeg időkerete. |
+| resultCode | Karakterlánc | Az adattömb eldobásának oka. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -482,14 +482,14 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| trackType | sztring | A pálya típusa (hang/videó). |
-| trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
-| bitrate | egész szám | A pálya bitrátája. |
-| ingestUrl | sztring | Betöltési URL-cím, amelyet az élő esemény biztosít. |
-| encoderIp | sztring  | A kódoló IP-címe. |
-| encoderPort | sztring | Annak a kódolónak a portja, ahonnan a stream érkezik. |
-| időbélyeg | sztring | A fogadott adathalmaz első időbélyege. |
-| timescale | sztring | Az időbélyeg megjelenítésének időkerete. |
+| trackType | Karakterlánc | A pálya típusa (hang/videó). |
+| trackName | Karakterlánc | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
+| bitrate | integer | A pálya bitrátája. |
+| ingestUrl | Karakterlánc | Betöltési URL-cím, amelyet az élő esemény biztosít. |
+| encoderIp | Karakterlánc  | A kódoló IP-címe. |
+| encoderPort | Karakterlánc | Annak a kódolónak a portja, ahonnan a stream érkezik. |
+| időbélyeg | Karakterlánc | A fogadott adathalmaz első időbélyege. |
+| timescale | Karakterlánc | Az időbélyeg megjelenítésének időkerete. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -521,12 +521,12 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| minLastTimestamp | sztring | Az összes műsorszám (hang vagy videó) utolsó időbélyegének minimális száma. |
-| typeOfTrackWithMinLastTimestamp | sztring | A pálya (hang vagy videó) minimális utolsó időbélyeg-típusa. |
-| maxLastTimestamp | sztring | Az összes műsorszám (hang vagy videó) közötti időbélyegek maximális száma. |
-| typeOfTrackWithMaxLastTimestamp | sztring | A nyomvonal (hang vagy videó) típusa, amely az utolsó időbélyeg maximális számát adja meg. |
-| timescaleOfMinLastTimestamp| sztring | Lekérdezi azt az időskálát, amelyben a "MinLastTimestamp" kifejezés jelenik meg.|
-| timescaleOfMaxLastTimestamp| sztring | Lekérdezi azt az időskálát, amelyben a "MaxLastTimestamp" kifejezés jelenik meg.|
+| minLastTimestamp | Karakterlánc | Az összes műsorszám (hang vagy videó) utolsó időbélyegének minimális száma. |
+| typeOfTrackWithMinLastTimestamp | Karakterlánc | A pálya (hang vagy videó) minimális utolsó időbélyeg-típusa. |
+| maxLastTimestamp | Karakterlánc | Az összes műsorszám (hang vagy videó) közötti időbélyegek maximális száma. |
+| typeOfTrackWithMaxLastTimestamp | Karakterlánc | A nyomvonal (hang vagy videó) típusa, amely az utolsó időbélyeg maximális számát adja meg. |
+| timescaleOfMinLastTimestamp| Karakterlánc | Lekérdezi azt az időskálát, amelyben a "MinLastTimestamp" kifejezés jelenik meg.|
+| timescaleOfMaxLastTimestamp| Karakterlánc | Lekérdezi azt az időskálát, amelyben a "MaxLastTimestamp" kifejezés jelenik meg.|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -557,11 +557,11 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| firstTimestamp | sztring | A videó típusú számok/minőségi szintek egyikéhez tartozó időbélyeg érkezett. |
-| firstDuration | sztring | Az adathalmaz időtartama az első időbélyeggel. |
-| secondTimestamp | sztring  | A videó típusának más követési/minőségi szintjéhez tartozó időbélyeg érkezett. |
-| secondDuration | sztring | Az adattömb időtartama második időbélyegzővel. |
-| timescale | sztring | Az időbélyegek és az időtartam időkerete.|
+| firstTimestamp | Karakterlánc | A videó típusú számok/minőségi szintek egyikéhez tartozó időbélyeg érkezett. |
+| firstDuration | Karakterlánc | Az adathalmaz időtartama az első időbélyeggel. |
+| secondTimestamp | Karakterlánc  | A videó típusának más követési/minőségi szintjéhez tartozó időbélyeg érkezett. |
+| secondDuration | Karakterlánc | Az adattömb időtartama második időbélyegzővel. |
+| timescale | Karakterlánc | Az időbélyegek és az időtartam időkerete.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -599,17 +599,17 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| trackType | sztring | A pálya típusa (hang/videó). |
-| trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
-| bitrate | egész szám | A pálya bitrátája. |
-| incomingBitrate | egész szám | A kódolóból érkező adattömbök alapján számított bitráta. |
-| lastTimestamp | sztring | Utolsó 20 másodpercben egy nyomkövetéshez tartozó legutóbbi időbélyeg érkezett. |
-| timescale | sztring | Az időbélyegek kiértékelési időkerete. |
-| overlapCount | egész szám | Az átfedő időbélyegek száma az elmúlt 20 másodpercben. |
-| discontinuityCount | egész szám | Az elmúlt 20 másodpercben megfigyelt megszakítások száma. |
-| nonIncreasingCount | egész szám | A múltban az időbélyegzővel rendelkező adattömbök száma az elmúlt 20 másodpercben érkezett. |
+| trackType | Karakterlánc | A pálya típusa (hang/videó). |
+| trackName | Karakterlánc | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
+| bitrate | integer | A pálya bitrátája. |
+| incomingBitrate | integer | A kódolóból érkező adattömbök alapján számított bitráta. |
+| lastTimestamp | Karakterlánc | Utolsó 20 másodpercben egy nyomkövetéshez tartozó legutóbbi időbélyeg érkezett. |
+| timescale | Karakterlánc | Az időbélyegek kiértékelési időkerete. |
+| overlapCount | integer | Az átfedő időbélyegek száma az elmúlt 20 másodpercben. |
+| discontinuityCount | integer | Az elmúlt 20 másodpercben megfigyelt megszakítások száma. |
+| nonIncreasingCount | integer | A múltban az időbélyegzővel rendelkező adattömbök száma az elmúlt 20 másodpercben érkezett. |
 | unexpectedBitrate | bool | Ha a várt érték és a tényleges bitsebességek az elmúlt 20 másodpercben több mint megengedett korláttal térnek el egymástól. Igaz, ha és csak akkor, ha incomingBitrate > = 2 * bitráta vagy incomingBitrate < = bitráta/2 vagy IncomingBitrate = 0. |
-| state | sztring | Az élő esemény állapota. |
+| state | Karakterlánc | Az élő esemény állapota. |
 | healthy | bool | Azt jelzi, hogy a betöltés kifogástalan állapotú-e a számok és a jelzők alapján. Az kifogástalan érték igaz, ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -643,13 +643,13 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| trackType | sztring | A pálya típusa (hang/videó). |
-| trackName | sztring | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
-| bitrate | egész szám | A pálya bitrátája. |
-| previousTimestamp | sztring | Az előző töredék időbélyegzője. |
-| newTimestamp | sztring | Az aktuális töredék időbélyegzője. |
-| discontinuityGap | sztring | A két időbélyeg közötti különbség. |
-| timescale | sztring | Az az időkeret, amelyben az időbélyegző és a folytonossági hézag is szerepel. |
+| trackType | Karakterlánc | A pálya típusa (hang/videó). |
+| trackName | Karakterlánc | A nyomkövetés neve (amelyet a kódoló biztosít, vagy ha RTMP esetén a kiszolgáló *TrackType_Bitrate* formátumban hozza létre). |
+| bitrate | integer | A pálya bitrátája. |
+| previousTimestamp | Karakterlánc | Az előző töredék időbélyegzője. |
+| newTimestamp | Karakterlánc | Az aktuális töredék időbélyegzője. |
+| discontinuityGap | Karakterlánc | A két időbélyeg közötti különbség. |
+| timescale | Karakterlánc | Az az időkeret, amelyben az időbélyegző és a folytonossági hézag is szerepel. |
 
 ### <a name="common-event-properties"></a>Gyakori esemény tulajdonságai
 
@@ -657,16 +657,16 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | A EventGrid témakör. Ez a tulajdonság a Media Services fiók erőforrás-azonosítójával rendelkezik. |
-| subject | sztring | A Media Services fiók Media Servicesi csatornájának erőforrás-elérési útja. A témakör és a tárgy összefűzésével megadhatja a feladatokhoz tartozó erőforrás-azonosítót. |
-| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. Például: "Microsoft. Media. JobStateChange". |
-| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| id | sztring | Az esemény egyedi azonosítója. |
-| data | objektum | Media Services az eseményekre vonatkozó adatgyűjtést. |
-| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| topic | Karakterlánc | A EventGrid témakör. Ez a tulajdonság a Media Services fiók erőforrás-azonosítójával rendelkezik. |
+| subject | Karakterlánc | A Media Services fiók Media Servicesi csatornájának erőforrás-elérési útja. A témakör és a tárgy összefűzésével megadhatja a feladatokhoz tartozó erőforrás-azonosítót. |
+| eventType | Karakterlánc | Az eseményforrás egyik regisztrált eseménytípus. Például: "Microsoft. Media. JobStateChange". |
+| eventTime | Karakterlánc | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | Karakterlánc | Az esemény egyedi azonosítója. |
+| data | object | Media Services az eseményekre vonatkozó adatgyűjtést. |
+| dataVersion | Karakterlánc | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | Karakterlánc | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Regisztrálja a feladatok állapotának változási eseményeit](job-state-events-cli-how-to.md)
 

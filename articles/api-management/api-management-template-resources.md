@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249502"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management-sablon erőforrásai
 Az Azure API Management a következő típusú erőforrásokat biztosítja a fejlesztői portál sablonjaiban való használathoz.  
@@ -113,13 +113,13 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="ApisStrings"></a>ApisStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |PageTitleApis|API-k|  
   
 ###  <a name="AppDetailsStrings"></a>AppDetailsStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Alkalmazás előnézete|  
 |WebApplicationsRequirementsHeader|Követelmények|  
@@ -128,14 +128,14 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="ApplicationListStrings"></a>ApplicationListStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Biztosan el kívánja távolítani az alkalmazást?|  
 |WebDevelopersAppNotPublished|Nincs közzétéve|  
 |WebDevelopersAppNotSubmitted|Nincs elküldve|  
 |WebDevelopersAppTableCategoryHeader|Kategória|  
-|WebDevelopersAppTableNameHeader|Name (Név)|  
-|WebDevelopersAppTableStateHeader|Állapot|  
+|WebDevelopersAppTableNameHeader|Név|  
+|WebDevelopersAppTableStateHeader|State|  
 |WebDevelopersEditLink|Szerkesztés|  
 |WebDevelopersRegisterAppLink|Alkalmazás regisztrálása|  
 |WebDevelopersRemoveLink|Eltávolítás|  
@@ -144,13 +144,13 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="AppStrings"></a>AppStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |WebApplicationsHeader|Alkalmazások|  
   
 ###  <a name="CommonResources"></a>CommonResources  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |NoItemsToDisplay|Nem található eredmény.|  
 |GeneralExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes hiba vagy egy hiba. Próbálkozzon újra.|  
@@ -161,14 +161,14 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="CommonStrings"></a>CommonStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |ButtonLabelCancel|Mégse|  
 |ButtonLabelSave|Mentés|  
 |GeneralExceptionMessage|Valami nem megfelelő. Ez lehet egy ideiglenes hiba vagy egy hiba. Próbálkozzon újra.|  
 |NoItemsToDisplay|Nincsenek megjeleníthető elemek.|  
 |PagerButtonLabelFirst|első|  
-|PagerButtonLabelLast|Vezetéknév|  
+|PagerButtonLabelLast|Legutóbbi|  
 |PagerButtonLabelNext|Tovább|  
 |PagerButtonLabelPrevious|Előző|  
 |PagerLabelPageNOfM|{1} oldal {0}|  
@@ -185,7 +185,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="Documentation"></a>Dokumentáció  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Érvénytelen fejléc: "{0}"|  
 |WebDocumentationInvalidRequestErrorMessage|Érvénytelen kérelem URL-címe|  
@@ -333,7 +333,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="ErrorPageStrings"></a>ErrorPageStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |LinkLabelBack|vissza|  
 |LinkLabelHomePage|Kezdőlap|  
@@ -351,9 +351,9 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="IssuesStrings"></a>IssuesStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
-|WebIssuesIndexTitle|Hibák|  
+|WebIssuesIndexTitle|Problémák|  
 |WebIssuesNoActiveSubscriptions|Nincsenek aktív előfizetések. A probléma bejelentéséhez elő kell fizetnie egy termékre.|  
 |WebIssuesNotSignin|Nincs bejelentkezve. A probléma bejelentéséhez vagy a Megjegyzés közzétételéhez {0}.|  
 |WebIssuesReportIssueButton|Probléma jelentése|  
@@ -362,7 +362,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="NotFoundStrings"></a>NotFoundStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |LinkLabelHomePage|Kezdőlap|  
 |LinkLabelSendUsEmail|Küldjön nekünk e-mailt|  
@@ -377,7 +377,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="ProductDetailsStrings"></a>ProductDetailsStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |WebProductsAgreement|{0} termékre való feliratkozással Elfogadom a `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
 |WebProductsLegalTermsLink|Használati feltételek|  
@@ -399,13 +399,13 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="ProductsStrings"></a>ProductsStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |PageTitleProducts|Termékek|  
   
 ###  <a name="ProviderInfoStrings"></a>ProviderInfoStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|A bejelentkezést a rendszergazdák jelenleg letiltották.|  
 |TextboxExternalIdentitiesSigninInvitation|Másik lehetőségként jelentkezzen be|  
@@ -413,7 +413,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="SigninResources"></a>SigninResources  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |PrincipalNotFound|A rendszerbiztonsági tag nem található, vagy az aláírás érvénytelen.|  
 |ErrorSsoAuthenticationFailed|Az SSO-hitelesítés nem sikerült|  
@@ -436,7 +436,7 @@ A következő honosítási lehetőségek támogatottak:
 |ValidationErrorEmailRequired|E-mail-cím megadása kötelező.|  
 |WebAuthenticationErrorNoticeHeader|Hiba|  
 |WebAuthenticationFieldLengthErrorMessage|a {0}nak maximális hosszúságú kell lennie {1}|  
-|TextboxLabelEmailFirstName|Utónév|  
+|TextboxLabelEmailFirstName|Keresztnév|  
 |ValidationErrorFirstNameRequired|A keresztnév megadása kötelező.|  
 |ValidationErrorFirstNameInvalid|Érvénytelen keresztnév|  
 |NoticeInvalidInvitationToken|Vegye figyelembe, hogy a megerősítő hivatkozások csak 48 óráig érvényesek. Ha továbbra is ezen az időkereten belül van, ellenőrizze, hogy helyes-e a hivatkozás. Ha a hivatkozás lejárt, akkor ismételje meg a megerősíteni kívánt műveletet.|  
@@ -509,7 +509,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="SigninStrings"></a>SigninStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Elfelejtette jelszavát?|  
 |WebAuthenticationIfAdministrator|Ha Ön rendszergazda, `<a href="{0}"\>here</a\>`kell bejelentkeznie.|  
@@ -521,7 +521,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="SignupStrings"></a>SignupStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |PageTitleSignup|Regisztráció|  
 |WebAuthenticationAlreadyAMember|Már van tag?|  
@@ -531,7 +531,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="SubscriptionListStrings"></a>SubscriptionListStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Biztosan meg kívánja szakítani ezt az előfizetést?|  
 |SubscriptionRenewConfirmation|Biztosan meg kívánja újítani ezt az előfizetést?|  
@@ -543,8 +543,8 @@ A következő honosítási lehetőségek támogatottak:
 |ButtonLabelRenewSubscription|Frissítés|  
 |WebDevelopersSubscriptionRequested|Kérelem {0}|  
 |WebDevelopersSubscriptionRequestedState|Kérve|  
-|WebDevelopersSubscriptionTableNameHeader|Name (Név)|  
-|WebDevelopersSubscriptionTableStateHeader|Állapot|  
+|WebDevelopersSubscriptionTableNameHeader|Név|  
+|WebDevelopersSubscriptionTableStateHeader|State|  
 |WebDevelopersUsageStatisticsLink|Elemzési jelentések|  
 |WebDevelopersYourSubscriptions|Előfizetések|  
 |SubscriptionPropertyLabelRequestedDate|Igénylés bekapcsolva|  
@@ -554,7 +554,7 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="SubscriptionStrings"></a>SubscriptionStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |SectionHeadingCloseAccount|Szeretné lezárta a fiókját?|  
 |PageTitleDeveloperProfile|Profil|  
@@ -565,26 +565,26 @@ A következő honosítási lehetőségek támogatottak:
   
 ###  <a name="UpdateProfileStrings"></a>UpdateProfileStrings  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|Profil frissítése|  
 |PageTitleUpdateProfile|Fiókadatok frissítése|  
   
 ###  <a name="UserProfile"></a>UserProfile  
   
-|Name (Név)|Szöveg|  
+|Név|Szöveg|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Fiókadatok módosítása|  
 |ButtonLabelChangePassword|Jelszó módosítása|  
 |ButtonLabelCloseAccount|Fiók lezárása|  
 |TextboxLabelEmail|E-mail|  
-|TextboxLabelEmailFirstName|Utónév|  
+|TextboxLabelEmailFirstName|Keresztnév|  
 |TextboxLabelEmailLastName|Vezetéknév|  
 |TextboxLabelNotificationsSenderEmail|Értesítések feladójának e-mail címe|  
 |TextboxLabelOrganizationName|Szervezet neve|  
-|SubscriptionStateActive|Aktív|  
+|SubscriptionStateActive|Active|  
 |SubscriptionStateCancelled|Megszakítva|  
-|SubscriptionStateExpired|Lejárt|  
+|SubscriptionStateExpired|Elévült|  
 |SubscriptionStateRejected|Elutasítva|  
 |SubscriptionStateRequested|Kérve|  
 |SubscriptionStateSuspended|Felfüggesztve|  
@@ -603,5 +603,5 @@ A következő honosítási lehetőségek támogatottak:
   
  A karakterjelek teljes listájáért lásd: [Glyphicons from bootstrap](https://getbootstrap.com/components/#glyphicons).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

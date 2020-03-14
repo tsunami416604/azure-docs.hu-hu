@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375956"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253883"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tervezési fogalmak
 A dokumentum célja, hogy leírja, milyen területeken kell átgondolni a Azure AD Connect megvalósításának tervezése során. Ez a dokumentum részletesen ismerteti az egyes területeket, és ezeket a fogalmakat röviden ismertetjük más dokumentumokban is.
@@ -197,5 +197,5 @@ A tartományok hozzáadásával és ellenőrzésével kapcsolatos további infor
 
 Azure AD Connect észleli, ha nem átirányítható tartományi környezetben fut, és megfelelően figyelmezteti Önt az expressz beállításokkal. Ha nem átirányítható tartományban működik, akkor valószínű, hogy a felhasználók UPN-je nem irányítható utótaggal rendelkezik. Ha például a contoso. local alatt fut, Azure AD Connect javasolja, hogy az expressz beállítások használata helyett egyéni beállításokat használjon. Egyéni beállításokkal megadhatja azt az attribútumot, amelyet UPN-ként kell használni az Azure-ba való bejelentkezéshez, miután a felhasználók szinkronizálva lettek az Azure AD szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

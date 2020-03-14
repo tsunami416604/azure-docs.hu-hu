@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385585"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249268"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása Azure Monitor
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.
@@ -129,7 +129,7 @@ Azure Monitor a naplók több szolgáltatásból és más adatforrásokból szá
 - Tekintse meg az [adatgyűjtési módot](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) , amely azt ismerteti, hogyan épülnek fel az erőforrás-naplózási információk Azure monitor naplókba.
 - Tekintse meg az egyes Azure-szolgáltatások dokumentációját Azure Monitor naplókban található táblázat részleteivel.
 
-![Naplók](media/monitor-azure-resource/logs.png)
+![Logs](media/monitor-azure-resource/logs.png)
 
 ## <a name="monitoring-from-command-line"></a>Figyelés parancssorból
 Az erőforrásból gyűjtött figyelési adatokat parancssorból vagy [Azure PowerShell](/powershell/azure/) vagy az [Azure parancssori felületét](/cli/azure/)használó parancsfájlba is elérheti. 
@@ -161,6 +161,6 @@ Különböző típusú figyelési adattípusokat használ a riasztási szabályo
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A különböző Azure-szolgáltatásokhoz tartozó erőforrás-naplók részleteiért lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/diagnostic-logs-schema.md) .  

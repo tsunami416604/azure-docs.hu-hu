@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387532"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281339"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a MongoDB a Azure Data Factory használatával
 
@@ -41,7 +41,7 @@ Ahhoz, hogy a Azure Data Factory szolgáltatás csatlakozni tudjon a helyszíni 
     > [!NOTE]
     > A MongoDB való kapcsolódáshoz az átjárót kell használnia, még akkor is, ha az Azure IaaS-beli virtuális gépeken van üzemeltetve. Ha a felhőben üzemeltetett MongoDB-példányhoz próbál csatlakozni, akkor a IaaS virtuális gépen is telepítheti az átjáró példányát.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni MongoDB-adattárból származó adatokkal.
 
 A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
@@ -63,7 +63,7 @@ A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz t
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
 | kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
 | port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, alapértelmezett érték: 27017 |
 | authenticationType |Alapszintű vagy névtelen. |Igen |
@@ -92,7 +92,7 @@ Ha a forrás típusa **MongoDbSource** , a következő tulajdonságok érhetők 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezési karakterlánc. Például: select * from MyTable. |Nem (ha meg van adva az **adatkészlet** **collectionName** ) |
+| query |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezési karakterlánc. Például: select * from MyTable. |Nem (ha meg van adva az **adatkészlet** **collectionName** ) |
 
 
 
@@ -345,7 +345,7 @@ A következő táblázatok a példában szereplő eredeti tömböket képviselő
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |kenyérpirító |456 |0.2 |
 | 1111 |1 |124 |sütő |1235 |0.2 |
-| 2222 |0 |135 |hűtőszekrény |12543 |0,0 |
+| 2222 |0 |135 |hűtőszekrény |12543 |0.0 |
 
 "ExampleTable_Ratings" tábla:
 

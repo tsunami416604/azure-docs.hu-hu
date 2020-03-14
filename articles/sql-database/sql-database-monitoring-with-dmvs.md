@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: bea6a572e55f1a79515c385fd7b79881c54ae65e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802925"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214028"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Teljesítmény monitorozása a dinamikus felügyeleti nézetek használatával Azure SQL Database
 
@@ -28,7 +28,7 @@ SQL Database részben a dinamikus felügyeleti nézetek három kategóriáját t
 - Végrehajtással kapcsolatos dinamikus felügyeleti nézetek.
 - Tranzakcióval kapcsolatos dinamikus felügyeleti nézetek.
 
-A dinamikus felügyeleti nézetekkel kapcsolatos részletes információkért lásd: a [dinamikus felügyeleti nézetek és függvények (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) SQL Server Books Online-ban. 
+A dinamikus felügyeleti nézetekkel kapcsolatos részletes információkért lásd: a [dinamikus felügyeleti nézetek és függvények (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) SQL Server Books Online-ban.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -40,6 +40,17 @@ GRANT VIEW DATABASE STATE TO database_user;
 ```
 
 A helyszíni SQL Server egy példányában a dinamikus felügyeleti nézetek a kiszolgáló állapotával kapcsolatos információkat adnak vissza. SQL Database a csak az aktuális logikai adatbázisra vonatkozó adatokat adja vissza.
+
+Ez a cikk a következő típusú lekérdezési teljesítménnyel kapcsolatos problémák észlelésére szolgáló DMV-lekérdezések gyűjteményét tartalmazza SQL Server Management Studio vagy Azure Data Studio használatával:
+
+- [A túlzott CPU-fogyasztással kapcsolatos lekérdezések azonosítása](#identify-cpu-performance-issues)
+- [PAGELATCH_ * és WRITE_LOG az IO szűk keresztmetszetekhez kapcsolódó várakozások](#identify-io-performance-issues)
+- [PAGELATCH_ * megvárja a bytTempDB-állítást](#identify-tempdb-performance-issues)
+- [A memóriára vonatkozó várakozási problémák miatt RESOURCE_SEMAHPORE várakozások](#identify-memory-grant-wait-performance-issues)
+- [Adatbázis és az objektumok méretének azonosítása](#calculating-database-and-objects-sizes)
+- [Az aktív munkamenetek adatainak beolvasása](#monitoring-connections)
+- [Rendszerszintű és adatbázis-erőforrás-használati információk beolvasása](#monitor-resource-use)
+- [Lekérdezés teljesítményére vonatkozó információk beolvasása](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>CPU-teljesítménnyel kapcsolatos problémák azonosítása
 
@@ -56,11 +67,11 @@ Használja a következő lekérdezést a leggyakoribb lekérdezési kivonatok az
 ```sql
 PRINT '-- top 10 Active CPU Consuming Queries (aggregated)--';
 SELECT TOP 10 GETDATE() runtime, *
-FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
-     FROM(SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
+FROM (SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
+    FROM (SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
           FROM sys.dm_exec_requests AS req
-               CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
-     GROUP BY query_hash) AS t
+                CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
+    GROUP BY query_hash) AS t
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
@@ -72,14 +83,14 @@ A következő lekérdezés segítségével azonosíthatja a lekérdezéseket:
 PRINT '--top 10 Active CPU Consuming Queries by sessions--';
 SELECT TOP 10 req.session_id, req.start_time, cpu_time 'cpu_time_ms', OBJECT_NAME(ST.objectid, ST.dbid) 'ObjectName', SUBSTRING(REPLACE(REPLACE(SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1), CHAR(10), ' '), CHAR(13), ' '), 1, 512) AS statement_text
 FROM sys.dm_exec_requests AS req
-     CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
+    CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
 ORDER BY cpu_time DESC;
 GO
 ```
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>A CPU-probléma a múltban történt
 
-Ha a probléma a múltban történt, és a kiváltó okok elemzését szeretné elvégezni, használja a [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)-t. Az adatbázis-hozzáféréssel rendelkező felhasználók a T-SQL használatával tudják lekérdezni a lekérdezési adattárolási adattárakat.  A Query Store alapértelmezett konfigurációi 1 órás részletességet használnak.  A következő lekérdezéssel tekintheti meg a magas CPU-fogyasztást igénylő lekérdezések tevékenységeit. Ez a lekérdezés az első 15 CPU-fogyasztási lekérdezést adja vissza.  Ne felejtse el módosítani `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
+Ha a probléma a múltban történt, és a kiváltó okok elemzését szeretné elvégezni, használja a [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)-t. Az adatbázis-hozzáféréssel rendelkező felhasználók a T-SQL használatával tudják lekérdezni a lekérdezési adattárolási adattárakat. A Query Store alapértelmezett konfigurációi 1 órás részletességet használnak. A következő lekérdezéssel tekintheti meg a magas CPU-fogyasztást igénylő lekérdezések tevékenységeit. Ez a lekérdezés az első 15 CPU-fogyasztási lekérdezést adja vissza. Ne felejtse el módosítani `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -512,7 +523,7 @@ Ezt a két nézetet is használhatja a használat figyeléséhez:
 - [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 A [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) nézetet minden SQL-adatbázisban használhatja. A **sys. dm_db_resource_stats** nézet a legutóbbi erőforrás-használati adatmennyiséget jeleníti meg a szolgáltatási szintjéhez képest. A CPU, az adatio, a log writes és a memória átlagos százalékos arányát 15 másodpercenként rögzíti a rendszer, és 1 órára tartja karban.
 
@@ -533,7 +544,7 @@ FROM sys.dm_db_resource_stats;
 
 Más lekérdezések esetében tekintse meg a következő témakörben található példákat: [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresource_stats"></a>sys. resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 A **Master** adatbázis [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) nézete további információkat tartalmaz, amelyek segítségével figyelheti az SQL-adatbázis teljesítményét az adott szolgáltatási rétegben és a számítási méretekben. Az adatok gyűjtése 5 percenként történik, és körülbelül 14 napig tart fenn. Ez a nézet hasznos lehet a hosszú távú múltbeli elemzésekhez, hogy az SQL-adatbázis hogyan használja az erőforrásokat.
 
@@ -612,7 +623,7 @@ A következő példa különböző módokon mutatja be a **sys. resource_stats**
 
    | Átlagos CPU-százalék | CPU maximális százaléka |
    | --- | --- |
-   | 24,5 |100,00 |
+   | 24.5 |100.00 |
 
     Az átlagos processzor a számítási méret korlátjának egy negyedét jelenti, ami jól illeszkedik az adatbázis számítási méretéhez. A maximális érték azonban azt mutatja, hogy az adatbázis eléri a számítási méret korlátját. A következő nagyobb számítási méretre kell lépnie? Tekintse meg, hogy a munkaterhelés hányszor éri el a 100 százalékot, majd hasonlítsa össze az adatbázis-munkaterhelés célkitűzéssel.
 
@@ -635,19 +646,19 @@ Rugalmas készletek esetén az ebben a szakaszban leírt technikákkal az adatb�
 
 Az egyidejű kérelmek számának megtekintéséhez futtassa ezt a Transact-SQL-lekérdezést az SQL-adatbázison:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R;
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R;
+```
 
 Egy helyszíni SQL Server adatbázis munkaterhelésének elemzéséhez módosítsa ezt a lekérdezést az elemezni kívánt adatbázis szűréséhez. Ha például egy MyDatabase nevű helyszíni adatbázissal rendelkezik, akkor ez a Transact-SQL-lekérdezés az adatbázisban egyidejű kérelmek számát adja vissza:
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-    INNER JOIN sys.databases D ON D.database_id = R.database_id
-    AND D.name = 'MyDatabase';
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R
+INNER JOIN sys.databases D ON D.database_id = R.database_id
+AND D.name = 'MyDatabase';
+```
 
 Ez csak egy pillanatkép egy adott időpontban. Ha jobban meg szeretné ismerni a munkaterhelést és az egyidejű kérelmekre vonatkozó követelményeket, sok mintát kell gyűjtenie az idő múlásával.
 
@@ -664,16 +675,20 @@ Ha több ügyfél ugyanazt a csatlakoztatási karakterláncot használja, akkor 
 
 Az aktuális aktív munkamenetek számának megtekintéséhez futtassa ezt a Transact-SQL-lekérdezést az SQL-adatbázison:
 
-    SELECT COUNT(*) AS [Sessions]
-    FROM sys.dm_exec_connections
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections
+```
 
 Ha helyszíni SQL Server munkaterhelést elemez, módosítsa a lekérdezést úgy, hogy az egy adott adatbázisra összpontosítsanak. Ez a lekérdezés segít meghatározni a lehetséges munkamenet-igényeket az adatbázishoz, ha azt tervezi, hogy áthelyezi a Azure SQL Databaseba.
 
-    SELECT COUNT(*)  AS [Sessions]
-    FROM sys.dm_exec_connections C
-    INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
-    INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-    WHERE D.name = 'MyDatabase'
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections C
+INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
+INNER JOIN sys.databases D ON (D.database_id = S.database_id)
+WHERE D.name = 'MyDatabase'
+```
 
 Ezek a lekérdezések ismét egy időponthoz tartozó értéket adnak vissza. Ha az idő múlásával több mintát gyűjt, akkor a munkamenet-használat legjobb ismerete lesz.
 
@@ -687,22 +702,22 @@ A lassú vagy hosszú ideig futó lekérdezések jelentős rendszererőforrások
 
 Az alábbi példa az első öt lekérdezés adatait adja vissza átlagos CPU-idő szerint rangsorolva. Ez a példa a lekérdezési kivonat alapján összesíti a lekérdezéseket, így a logikailag egyenértékű lekérdezések a halmozott erőforrás-felhasználás szerint vannak csoportosítva.
 
-    ```sql
-    SELECT TOP 5 query_stats.query_hash AS "Query Hash",
-       SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
-       MIN(query_stats.statement_text) AS "Statement Text"
-    FROM
-       (SELECT QS.*,
+```sql
+SELECT TOP 5 query_stats.query_hash AS "Query Hash",
+    SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
+     MIN(query_stats.statement_text) AS "Statement Text"
+FROM
+    (SELECT QS.*,
         SUBSTRING(ST.text, (QS.statement_start_offset/2) + 1,
-        ((CASE statement_end_offset
-           WHEN -1 THEN DATALENGTH(ST.text)
-           ELSE QS.statement_end_offset END
-           - QS.statement_start_offset)/2) + 1) AS statement_text
-    FROM sys.dm_exec_query_stats AS QS
-    CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
-    GROUP BY query_stats.query_hash
-    ORDER BY 2 DESC;
-    ```
+            ((CASE statement_end_offset
+                WHEN -1 THEN DATALENGTH(ST.text)
+                ELSE QS.statement_end_offset END
+            - QS.statement_start_offset)/2) + 1) AS statement_text
+FROM sys.dm_exec_query_stats AS QS
+CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
+GROUP BY query_stats.query_hash
+ORDER BY 2 DESC;
+```
 
 ### <a name="monitoring-blocked-queries"></a>Letiltott lekérdezések figyelése
 
@@ -712,26 +727,26 @@ A lassú vagy hosszan futó lekérdezések hozzájárulhatnak a túlzott erőfor
 
 A nem hatékony lekérdezési terv is növelheti a CPU-felhasználást. Az alábbi példa a [sys. dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) nézetet használja annak meghatározásához, hogy melyik lekérdezés használja a legátfogóbb CPU-t.
 
-    ```sql
-    SELECT
-       highest_cpu_queries.plan_handle,
-       highest_cpu_queries.total_worker_time,
-       q.dbid,
-       q.objectid,
-       q.number,
-       q.encrypted,
-       q.[text]
-    FROM
-       (SELECT TOP 50
+```sql
+SELECT
+    highest_cpu_queries.plan_handle,
+    highest_cpu_queries.total_worker_time,
+    q.dbid,
+    q.objectid,
+    q.number,
+    q.encrypted,
+    q.[text]
+FROM
+    (SELECT TOP 50
         qs.plan_handle,
         qs.total_worker_time
     FROM
         sys.dm_exec_query_stats qs
-    ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
-    CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
-    ORDER BY highest_cpu_queries.total_worker_time DESC;
-    ```
+ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
+ORDER BY highest_cpu_queries.total_worker_time DESC;
+```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [Bevezetés a SQL Databaseba](sql-database-technical-overview.md)

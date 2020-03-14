@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
 ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360840"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249164"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -52,7 +52,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 - Naplók – a szolgáltatás támogatja a diagnosztikai beállításokat, amelyek összegyűjthetik a naplók és a metrikák összegyűjtését Azure Monitor.
 - Betekintés – a szolgáltatás számára elérhető egy betekintés, amely testreszabott figyelési élményt biztosít a szolgáltatás számára.
 
-| Szolgáltatás | Mérőszámok | Naplók | Elemzések | Megjegyzések |
+| Szolgáltatás | Mérőszámok | Logs | Elemzések | Megjegyzések |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nem | Igen | [Igen](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Nem | Nem | Nem |  |
@@ -107,7 +107,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Event Hubs | Igen | Igen | Nem |  |
 |ExpressRoute | Igen | Igen | Nem |  |
 |Tűzfal | Igen | Igen | Nem |  |
-|Front Door | Igen | Igen | Nem |  |
+|Bejárati ajtajának | Igen | Igen | Nem |  |
 |Functions | Igen | Igen | Nem |  |
 |HDInsight | Nem | Igen | Nem |  |
 |HPC-gyorsítótár | Nem | Nem | Nem |  |
@@ -128,8 +128,8 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Microsoft PowerApps | Nem | Nem | Nem |  |
 |Microsoft közösségi szerepvállalás | Nem | Nem | Nem |  |
 |Microsoft Stream | Igen | Igen | Nem |  |
-|Migrálás | Nem | Nem | Nem |  |
-|Többtényezős hitelesítés | Nem | Igen | Nem |  |
+|Migrate (Áttelepítés) | Nem | Nem | Nem |  |
+|Multi-Factor Authentication | Nem | Igen | Nem |  |
 |Network Watcher | Igen | Igen | Nem |  |
 |Notification Hubs | Igen | Nem | Nem |  |
 |Nyílt adathalmazok | Nem | Nem | Nem |  |
@@ -150,10 +150,10 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Site Recovery | Nem | Igen | Nem |  |
 |Spring Cloud Service | Nem | Nem | Nem |  |
 |SQL Data Warehouse | Igen | Igen | Nem |  |
-|SQL Database | Igen | Igen | Nem |  |
+|SQL-adatbázis | Igen | Igen | Nem |  |
 |SQL Server Stretch Database | Igen | Igen | Nem |  |
-|Verem | Nem | Nem | Nem |  |
-|Tárterület | Igen | Nem | [Igen](insights/storage-insights-overview.md) |  |
+|Halom | Nem | Nem | Nem |  |
+|Storage | Igen | Nem | [Igen](insights/storage-insights-overview.md) |  |
 |Tárolási gyorsítótár | Nem | Nem | Nem |  |
 |Storage Sync Services | Nem | Nem | Nem |  |
 |Stream Analytics | Igen | Igen | Nem |  |
@@ -163,7 +163,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Univerzális nyomtatás | Nem | Nem | Nem |  |
 |Virtual Machine Scale Sets | Nem | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
 |Virtuális gépek | Igen | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
-|Virtual Network | Igen | Igen | [Igen](insights/network-insights-overview.md) |  |
+|Virtuális hálózat | Igen | Igen | [Igen](insights/network-insights-overview.md) |  |
 |Virtual Network – NSG folyamatok naplói | Nem | Igen | Nem |  |
 |VPN Gateway | Igen | Igen | Nem |  |
 |Windows Virtual Desktop | Nem | Nem | Nem |  |
@@ -180,7 +180,7 @@ Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Anal
 | [Azure Sentinel](/azure/sentinel/) | Különböző forrásokhoz, például az Office 365-hez és a Amazon Web Services Cloud Trailhez csatlakozik. Lásd: [az adatforrások összekötése](/azure/sentinel/connect-data-sources). |
 | [Key Vault-elemzés](insights/azure-key-vault.md) | Azure Key Vault AuditEvent-naplók elemzése. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Hozzon létre egy diagnosztikai beállítást, amely naplókat küld Azure Monitornak. Lásd: [naplózási információk küldése a Storage-ba, az Event hubokba vagy a log analyticsbe az Intune-ban (előzetes verzió)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Hálózat  | [Network Performance monitor](insights/network-performance-monitor.md) – a hálózati kapcsolat és a teljesítmény figyelése a szolgáltatás-és alkalmazás-végpontok számára.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – naplók és mérőszámok elemzése az Azure Application Gatewayból.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) – elemzi Network Watcher hálózati biztonsági csoport (NSG) folyamatának naplóit, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. |
+| Network (Hálózat)  | [Network Performance monitor](insights/network-performance-monitor.md) – a hálózati kapcsolat és a teljesítmény figyelése a szolgáltatás-és alkalmazás-végpontok számára.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – naplók és mérőszámok elemzése az Azure Application Gatewayból.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) – elemzi Network Watcher hálózati biztonsági csoport (NSG) folyamatának naplóit, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. |
 | [Office 365](insights/solution-office-365.md) | Az Office 365-környezet monitorozása. Frissített verzió, amely az Azure Sentinel használatával érhető el továbbfejlesztett bevezetéssel. |
 | [SQL-elemzés](insights/azure-sql.md) | Az Azure SQL Database-adatbázisok, rugalmas készletek és felügyelt példányok teljesítményének figyelése nagy méretekben és több előfizetésen keresztül. |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub eszközök állapotának és használatának nyomon követése. |
@@ -217,7 +217,7 @@ Más megoldások is elérhetők különböző alkalmazások és szolgáltatások
 ## <a name="resources-outside-of-azure"></a>Az Azure-on kívüli erőforrások
 A Azure Monitor az Azure-on kívüli erőforrásokból is gyűjthet adatokat az alábbi táblázatban felsorolt módszerek használatával.
 
-| Erőforrás | Módszer |
+| Resource | Módszer |
 |:---|:---|
 | Alkalmazások | Webalkalmazások monitorozása az Azure-on kívül Application Insights használatával. Lásd: [Mi az Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) |
 | Virtual machines (Virtuális gépek) | A Log Analytics ügynök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [a naplózási adatok összegyűjtése a log Analytics ügynökkel](platform/log-analytics-agent.md). |
@@ -225,7 +225,7 @@ A Azure Monitor az Azure-on kívüli erőforrásokból is gyűjthet adatokat az 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet a [Azure monitor adatplatformról, amely az elemzések és megoldások által gyűjtött naplókat és mérőszámokat tárolja](platform/data-platform.md).
 - Az [Azure-erőforrások figyelésével kapcsolatos oktatóanyag](learn/tutorial-resource-logs.md)elvégzése.

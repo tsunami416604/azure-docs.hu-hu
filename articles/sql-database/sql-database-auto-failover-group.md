@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
 ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269834"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -25,7 +25,7 @@ Az automatikus feladatátvételi csoportok egy SQL Database funkció, amely lehe
 > [!NOTE]
 > Ha SQL Database-kiszolgálón található önálló vagy készletezett adatbázisokkal dolgozik, és több formátumú másodlagos zónák szeretne ugyanabban vagy különböző régiókban, használja az [aktív földrajzi replikálást](sql-database-active-geo-replication.md). 
 
-Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Ezek általában olyan incidensek, amelyeket a beépített automatikus magas rendelkezésre állású műveletek nem képesek önállóan elhárítani. A feladatátvételi eseményindítók példái közé tartozik egy olyan incidens, amely egy SQL-bérlői kör vagy egy ellenőrző gyűrű miatt leállt, mert egy operációsrendszer-kernel memóriája több számítási csomóponton van, vagy egy vagy több bérlői kör okozta incidens, mert rossz hálózati kábelt vágtak le utine hardver leszerelése.  További információ: [SQL Database magas rendelkezésre állás](sql-database-high-availability.md).
+Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatátvételi csoportokat használ, a csoport egy vagy több adatbázisára hatással lévő kimaradások automatikusan feladatátvételt eredményeznek. Ezek általában olyan incidensek, amelyeket a beépített automatikus magas rendelkezésre állású műveletek nem képesek önállóan elhárítani. A feladatátvételi eseményindítók példái közé tartozik az SQL-bérlői kör vagy a vezérlési kör okozta incidens, mert egy operációsrendszer-kernel memóriavesztés miatt több számítási csomóponton van, vagy ha egy vagy több bérlői csengetés okozta az incidenst, mert a hálózati kábel nem megfelelő. rutin hardver leszerelése.  További információ: [SQL Database magas rendelkezésre állás](sql-database-high-availability.md).
 
 Az automatikus feladatátvételi csoportok emellett olyan írási és olvasási figyelőket is biztosítanak, amelyek változatlanok maradnak a feladatátvételek során. Akár kézi, akár automatikus feladatátvételi aktiválást használ, a feladatátvétel a csoportban lévő összes másodlagos adatbázist elsődlegesre váltja. Az adatbázis-feladatátvétel befejeződése után a rendszer automatikusan frissíti a DNS-rekordot, hogy átirányítsa a végpontokat az új régióba. Az adott RPO-és RTO-információk esetében lásd: [az üzletmenet folytonosságának áttekintése](sql-database-business-continuity.md).
 
@@ -394,7 +394,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Az SQL Database feladatátvételének kezelése önálló adatbázisokkal és rugalmas készletekkel
 
-| Parancsmag | Leírás |
+| A parancsmag | Leírás |
 | --- | --- |
 | [Új – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -405,7 +405,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>SQL Database-alapú feladatátvételi csoportok kezelése felügyelt példányokkal
 
-| Parancsmag | Leírás |
+| A parancsmag | Leírás |
 | --- | --- |
 | [Új – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és a másodlagos példányokon is.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Feladatátvételi csoport konfigurációjának módosítása|
@@ -463,7 +463,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 | [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Lekéri a feladatátvételi csoport konfigurációját. |
 | [Feladatátvételi csoportok listázása hely szerint](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Egy helyen lévő feladatátvételi csoportok felsorolása. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Részletes oktatóanyagok:
     - [Önálló adatbázis hozzáadása egy feladatátvételi csoporthoz](sql-database-single-database-failover-group-tutorial.md)

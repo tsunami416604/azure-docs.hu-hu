@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356313"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281885"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Az adatáthelyezés a másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -118,8 +118,8 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | &nbsp; | Dél-India | Közép-India |
 | Japán | Kelet-Japán | Kelet-Japán |
 | &nbsp; | Nyugat-Japán | Kelet-Japán |
-| Dél-Korea | Dél-Korea középső régiója | Dél-Korea középső régiója |
-| &nbsp; | Dél-Korea déli régiója | Dél-Korea középső régiója |
+| Dél-Korea | Korea középső régiója | Korea középső régiója |
+| &nbsp; | Korea déli régiója | Korea középső régiója |
 
 Azt is megteheti, hogy explicit módon megadhatja Data Factory szolgáltatás azon régióját, amelyet a másolás végrehajtásához kíván használni a `executionLocation` tulajdonság megadásával a másolási tevékenység `typeProperties`. A tulajdonsághoz tartozó támogatott értékek az **adatáthelyezési** oszlophoz használt fenti régióban vannak felsorolva. Vegye figyelembe, hogy az adatai a másolás során a hálózaton keresztül haladnak át az adott régióban. Például a Koreában található Azure-áruházak közötti másoláshoz megadhatja, hogy `"executionLocation": "Japan East"` a japán régión keresztüli átirányításhoz (lásd: a [JSON minta](#by-using-json-scripts) hivatkozásként).
 
@@ -210,6 +210,6 @@ A különböző adattárak eltérő natív típusú rendszerekkel rendelkeznek. 
 
 A natív típusrendszer és az adattár .NET-típusra való leképezése a megfelelő adattár-cikkben található. (Kattintson az adott hivatkozásra a támogatott adattár táblában). Ezeket a leképezéseket a táblázatok létrehozásakor a megfelelő típusok meghatározására használhatja, így a másolási tevékenység a megfelelő konverziókat hajtja végre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a másolási tevékenységről: [adatok másolása az Azure Blob Storage-ból a Azure SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Az adatok helyszíni adattárból Felhőbeli adattárba való áthelyezésével kapcsolatos további információkért lásd: [adatok áthelyezése a helyszínről a Felhőbeli adattárakba](data-factory-move-data-between-onprem-and-cloud.md).

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358983"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270575"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>A munkafolyamat-műveleteket ismétlődő vagy a Azure Logic Appsban feldolgozó hurkok létrehozása
 
@@ -176,7 +176,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
    | Tulajdonság | Érték |
    | -------- | ----- |
    | **Intervallum** | 1 | 
-   | **Gyakoriság** | Day |
+   | **Gyakoriság** | Nap |
    | **Ezekben az órákban** | 8 |
    ||| 
 
@@ -192,7 +192,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
    | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
    | **Name (Név)** | Korlát | A változó neve | 
-   | **Típus** | Egész szám | Változó adattípusa | 
+   | **Típus** | Egész | Változó adattípusa | 
    | **Érték** | 0 | A változó kezdő értéke | 
    |||| 
 
@@ -338,7 +338,7 @@ Ebben a példában a "ig" ciklus egy olyan HTTP-végpontot hív meg, amely létr
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A szolgáltatásokról és javaslatokról [Azure Logic apps felhasználói visszajelzési webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)

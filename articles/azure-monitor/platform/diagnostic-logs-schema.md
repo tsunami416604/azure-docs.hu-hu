@@ -5,11 +5,11 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359597"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248813"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz
 
@@ -22,14 +22,14 @@ Az erőforrástípus kombinációja (a `resourceId` tulajdonságban érhető el)
 
 ## <a name="top-level-resource-logs-schema"></a>Legfelső szintű erőforrás-naplók sémája
 
-| Name (Név) | Kötelező/nem kötelező | Leírás |
+| Név | Kötelező/nem kötelező | Leírás |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyegzője (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
 | tenantId | A bérlői naplókhoz szükséges | Annak a Active Directory bérlőnek a bérlői azonosítója, amelyhez ez az esemény hozzá van kötve. Ez a tulajdonság csak a bérlői szintű naplók esetében használatos, nem jelenik meg az erőforrás-szintű naplókban. |
 | operationName | Kötelező | Az esemény által jelzett művelet neve. Ha az esemény egy RBAC műveletet jelöl, akkor ez a RBAC művelet neve (például Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Általában Resource Manager-művelet formájában modellezve, még akkor is, ha nem ténylegesen dokumentált erőforrás-kezelői műveletek (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optional | A művelethez társított API-verzió, ha a operationName API-val (például:) lett elvégezve. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
-| category | Kötelező | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. A szokásos naplózási kategóriák "audit" "működési" "végrehajtás" és "kérelem". |
+| kategória | Kötelező | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. A szokásos naplózási kategóriák "audit" "működési" "végrehajtás" és "kérelem". |
 | resultType | Optional | Az esemény állapota. A tipikus értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
 | resultSignature | Optional | Az esemény alállapota. Ha ez a művelet egy REST API hívásnak felel meg, akkor ez a megfelelő REST-hívás HTTP-állapotkód. |
 | resultDescription | Optional | A művelet statikus szöveges leírása, például:. "Tárolási fájl beolvasása" |
@@ -39,7 +39,7 @@ Az erőforrástípus kombinációja (a `resourceId` tulajdonságban érhető el)
 | identity | Optional | Egy JSON-blob, amely leírja a műveletet végrehajtó felhasználó vagy alkalmazás identitását. Ez általában magában foglalja az Active Directoryból származó engedélyezési és jogcímek/JWT tokent is. |
 | Szint | Optional | Az esemény súlyossági szintje. Az egyik tájékoztatási, figyelmeztetési, hiba vagy kritikus értéknek kell lennie. |
 | location | Optional | Az eseményt kibocsátó erőforrás régiója, például:. "USA keleti régiója" vagy "Dél-Franciaország" |
-| properties | Optional | Az adott kategóriába tartozó eseményekhez kapcsolódó további tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B része" részévé kell tenni. |
+| tulajdonságok | Optional | Az adott kategóriába tartozó eseményekhez kapcsolódó további tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B része" részévé kell tenni. |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>Az erőforrás-naplók szolgáltatás-specifikus sémái
 Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kategóriától függően változik. Ez a lista az összes olyan szolgáltatást megjeleníti, amely elérhető erőforrás-naplókat készít, valamint a szolgáltatásra mutató hivatkozásokat, valamint a kategória-specifikus sémát.
@@ -76,7 +76,7 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 | Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
 | Service Bus |[Naplók Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Azure SQL Database naplózás](../../sql-database/sql-database-metrics-diag-logging.md) |
+| SQL-adatbázis | [Azure SQL Database naplózás](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Feladatok naplói](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager naplózási séma](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuális hálózatok | A séma nem érhető el. |
@@ -125,7 +125,7 @@ Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak
 |Microsoft. Databricks/munkaterületek|dbfs|Databricks fájlrendszer|
 |Microsoft. Databricks/munkaterületek|fürtök|Databricks-fürtök|
 |Microsoft. Databricks/munkaterületek|fiókok|Databricks-fiókok|
-|Microsoft. Databricks/munkaterületek|Feladatok|Databricks-feladatok|
+|Microsoft. Databricks/munkaterületek|feladatok|Databricks-feladatok|
 |Microsoft. Databricks/munkaterületek|notebook|Databricks-jegyzetfüzet|
 |Microsoft. Databricks/munkaterületek|ssh|Databricks SSH|
 |Microsoft. Databricks/munkaterületek|munkaterület|Databricks-munkaterület|
@@ -154,14 +154,14 @@ Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL lekérdezési tár várakozási statisztikái|
 |Microsoft. DesktopVirtualization/munkaterületek|Checkpoint|Checkpoint|
 |Microsoft. DesktopVirtualization/munkaterületek|Hiba|Hiba|
-|Microsoft. DesktopVirtualization/munkaterületek|Kezelés|Kezelés|
+|Microsoft. DesktopVirtualization/munkaterületek|Felügyelet|Felügyelet|
 |Microsoft. DesktopVirtualization/munkaterületek|Hírcsatorna|Hírcsatorna|
 |Microsoft. DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
 |Microsoft. DesktopVirtualization/applicationGroups|Hiba|Hiba|
-|Microsoft. DesktopVirtualization/applicationGroups|Kezelés|Kezelés|
+|Microsoft. DesktopVirtualization/applicationGroups|Felügyelet|Felügyelet|
 |Microsoft. DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
 |Microsoft. DesktopVirtualization/hostPools|Hiba|Hiba|
-|Microsoft. DesktopVirtualization/hostPools|Kezelés|Kezelés|
+|Microsoft. DesktopVirtualization/hostPools|Felügyelet|Felügyelet|
 |Microsoft. DesktopVirtualization/hostPools|Kapcsolat|Kapcsolat|
 |Microsoft. DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
 |Microsoft.Devices/IotHubs|Kapcsolatok|Kapcsolatok|
@@ -295,8 +295,8 @@ Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak
 |Microsoft.Storage/storageAccounts/queueServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/queueServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/queueServices|StorageDelete|StorageDelete|
-|Microsoft.StreamAnalytics/streamingjobs|Futtatási|Futtatási|
-|Microsoft.StreamAnalytics/streamingjobs|Tartalomkészítés|Tartalomkészítés|
+|Microsoft.StreamAnalytics/streamingjobs|Végrehajtás|Végrehajtás|
+|Microsoft.StreamAnalytics/streamingjobs|Szerzői műveletek|Szerzői műveletek|
 |Microsoft. Web/hostingenvironments|AppServiceEnvironmentPlatformLogs|App Service Environment platform naplói|
 |microsoft.web/sites|FunctionAppLogs|Function Application-naplók|
 |microsoft.web/sites|AppServiceHTTPLogs|HTTP-naplók|

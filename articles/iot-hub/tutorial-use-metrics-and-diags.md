@@ -9,11 +9,11 @@ ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: a19eb19c3a25d3856d5cf333bd64be888f65a6e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78892850"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79239937"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
@@ -371,7 +371,7 @@ Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatók a metrikák és a diagnosztikai naplók a következő feladatok végrehajtásával:
 

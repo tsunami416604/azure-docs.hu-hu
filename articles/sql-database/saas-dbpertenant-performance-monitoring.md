@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214466"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Azure SQL-adatbázisok és-készletek teljesítményének figyelése és kezelése több-bérlős SaaS-alkalmazásokban
 
@@ -24,7 +24,7 @@ Ebben az oktatóanyagban az SaaS-alkalmazásokban használt fő teljesítmény-k
 
 A Wingtip tickets SaaS-adatbázis a bérlői alkalmazásokban egy egybérlős adatmodellt használ, ahol minden egyes helyszín (bérlő) saját adatbázissal rendelkezik. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. A tipikus adatbázis-használati minta kihasználásához a bérlői adatbázisok rugalmas készletekre vannak telepítve. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > 
@@ -34,10 +34,10 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Egy második rugalmas készlet kiépítése az adatbázis-tevékenységek terhelésének kiegyenlítésére
 
 
-Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
+Az oktatóanyag teljesítéséhez a következő előfeltételeknek kell teljesülnie:
 
 * A Wingtip jegyek SaaS-adatbázisa egy bérlői alkalmazáson van üzembe helyezve. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezése és megismerése bérlői alkalmazásokban](saas-dbpertenant-get-started-deploy.md)
-* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>A SaaS teljesítmény-felügyeleti mintáinak bemutatása
 
@@ -52,11 +52,11 @@ A készleteket és a készletekben lévő adatbázisokat figyelni kell, hogy a t
 * A teljesítmény manuális figyelése érdekében a leghatékonyabb olyan riasztások beállítása, amelyek akkor lépnek érvénybe, **amikor az adatbázisok vagy készletek elkóborolnak a normál tartományokból**.
 * A készlet összesített számítási méretének rövid távú ingadozására való reagáláshoz a **készlet eDTU szintje felfelé vagy lefelé is méretezhető**. Ha az ingadozás rendszeres vagy kiszámítható, akkor **a készlet beállítható úgy, hogy a skálázás automatikusan ütemezve legyen**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
 * A hosszabb távú ingadozásokra vagy az adatbázisok számának változására válaszul **az egyes adatbázisok áthelyezhetők másik készletekbe**.
-* Az *egyes* adatbázisok egyéni adatbázis-terhelésének rövid távú növekedésére való reagáláshoz **létrehozhat egy készletet, és hozzárendelheti az egyes számítási méreteket**. A terhelés csökkenésével az adatbázis visszahelyezhető a készletbe. Ha ez előre ismert, az adatbázisok jelleggel helyezhetők, így biztosítva, hogy az adatbázis mindig rendelkezik a szükséges erőforrásokkal, és hogy elkerülje a készlet más adatbázisainak hatását. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
+* Az *egyes* adatbázisok egyéni adatbázis-terhelésének rövid távú növekedésére való reagáláshoz **létrehozhat egy készletet, és hozzárendelheti az egyes számítási méreteket**. A terhelés csökkenésével az adatbázis visszahelyezhető a készletbe. Ha ez előre ismert, az adatbázisok áthelyezhetők megelőző jelleggel, így biztosítva, hogy az adatbázis mindig rendelkezik a szükséges erőforrásokkal, és hogy elkerülje a készlet más adatbázisainak hatását. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
 
 Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. Az SQL Database esetében a figyelés és riasztás rendelkezésre áll az adatbázisokhoz és a készletekhez. Ez a beépített figyelési és riasztási erőforrás-specifikus megoldás, ezért érdemes kis mennyiségű erőforrást használni, de nem nagyon kényelmes, ha sok erőforrással dolgozik.
 
-Nagy mennyiségű forgatókönyv esetén, ahol számos erőforrással dolgozik, [Azure monitor naplókat](saas-dbpertenant-log-analytics.md) is használhat. Ez egy különálló Azure-szolgáltatás, amely egy Log Analytics munkaterületen összegyűjtött diagnosztikai naplók és telemetria elemzését teszi lehetővé. Azure Monitor naplók több szolgáltatásból is gyűjthetik a telemetria, és a riasztások lekérdezésére és beállítására használhatók.
+Nagy mennyiségű forgatókönyv esetén, ahol számos erőforrással dolgozik, [Azure monitor naplókat](saas-dbpertenant-log-analytics.md) is használhat. Ez egy különálló Azure-szolgáltatás, amely a Log Analytics munkaterületen összegyűjtött, kibocsátott naplók elemzését teszi lehetővé. Azure Monitor naplók több szolgáltatásból is gyűjthetik a telemetria, és a riasztások lekérdezésére és beállítására használhatók.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip tickets SaaS-adatbázis beszerzése bérlői alkalmazás parancsfájljai alapján
 
@@ -74,7 +74,7 @@ Ha egy korábbi oktatóanyagban már kiépített bérlők kötegét, ugorjon a [
 
 A szkript kevesebb mint öt perc alatt 17 bérlőt helyez üzembe.
 
-A *New-TenantBatch* szkript olyan beágyazott vagy csatolt [Resource Manager](../azure-resource-manager/index.yml) -sablonokat használ, amelyek bérlők kötegét hoznak létre, amelyek alapértelmezés szerint a katalógus-kiszolgáló adatbázis- **basetenantdb** másolja az új bérlői adatbázisok létrehozásához. regisztrálja ezeket a katalógusban, és végül inicializálja a bérlő nevét és a helyszín típusát. Ez összhangban van azzal, ahogyan az alkalmazás kiépít egy új bérlőt. A *basetenantdb* végrehajtott módosítások minden olyan új bérlőre érvényesek, amelyet később kiépítenek. Tekintse meg a [séma-kezelési oktatóanyagot](saas-tenancy-schema-management.md) , amelyből megtudhatja, hogyan teheti meg a séma módosításait a *meglévő* bérlői adatbázisokra (beleértve a *basetenantdb*
+A *New-TenantBatch* parancsfájl a bérlők kötegét létrehozó [Resource Manager](../azure-resource-manager/index.yml) -sablonok beágyazott vagy csatolt készletét használja, amely alapértelmezés szerint átmásolja a katalógus-kiszolgáló adatbázis- **basetenantdb** az új bérlői adatbázisok létrehozásához, majd regisztrálja ezeket a katalógusban, végül pedig a bérlő nevét és a hely típusát. Ez összhangban van azzal, ahogyan az alkalmazás kiépít egy új bérlőt. A *basetenantdb* végrehajtott módosítások minden olyan új bérlőre érvényesek, amelyet később kiépítenek. Tekintse meg a [séma-kezelési oktatóanyagot](saas-tenancy-schema-management.md) , amelyből megtudhatja, hogyan teheti meg a séma módosításait a *meglévő* bérlői adatbázisokra (beleértve a *basetenantdb*
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 
@@ -177,7 +177,7 @@ A készlet felskálázása mellett másik lehetőségként létrehozhat egy más
    1. Az **adatbázisok hozzáadása** lehetőségre kattintva megtekintheti a kiszolgálón található adatbázisok listáját, amelyeket hozzáadhat a *pool2 értéket*-hez.
    1. Válasszon ki 10 adatbázist az új készletbe való áthelyezéshez, majd kattintson a **kiválasztás**elemre. Ha már futtatta a Load Generatort, a szolgáltatás már tudja, hogy a teljesítményadatok nagyobb készletet igényelnek, mint az alapértelmezett 50 eDTU-méret, és azt ajánljuk, hogy a 100 eDTU beállítással kezdjen.
 
-      ![Ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Ebben az oktatóanyagban hagyja meg az alapértelmezett értéket a 50 Edtu, majd kattintson ismét a **kijelölés** gombra.
    1. Kattintson az **OK** gombra az új készlet létrehozásához és a kiválasztott adatbázisok áthelyezéséhez.
@@ -218,7 +218,7 @@ Ha a contosoconcerthall-adatbázis nagy terhelését a rendszer azonnal visszak�
 
 ## <a name="other-performance-management-patterns"></a>Egyéb teljesítmény-felügyeleti minták
 
-**Megelőző skálázás** A fenti gyakorlat során, ahol megvizsgálta, hogyan méretezhető egy elkülönített adatbázis, megismerte, hogy melyik adatbázist kell megkeresnie. Ha a contoso Concert Hall felügyeletét értesítette a közelgő wingtips, az adatbázist kihelyezték a készletből a jelleggel. Máskülönben valószínűleg egy riasztást kellett volna beállítani a készleten vagy az adatbázison ahhoz, hogy észre lehessen venni, mi történik. Nem jó, ha az ilyen eseményekről úgy szerez tudomást, hogy a készletben található többi bérlő csökkenő teljesítményről panaszkodik. Ha a bérlő meg tudja jósolni, hogy milyen hosszan lesz szüksége további erőforrásokra, beállítható egy Azure Automation-runbook, amely pontosan ütemezi az adatbázis kivételét, majd visszahelyezését a készletbe.
+**Megelőző skálázás** A fenti gyakorlat során, ahol megvizsgálta, hogyan méretezhető egy elkülönített adatbázis, megismerte, hogy melyik adatbázist kell megkeresnie. Ha a contoso Concert Hall felügyeletét értesítette a közelgő wingtips, az adatbázist kihelyezték a készlet megelőző jelleggel. Máskülönben valószínűleg egy riasztást kellett volna beállítani a készleten vagy az adatbázison ahhoz, hogy észre lehessen venni, mi történik. Nem jó, ha az ilyen eseményekről úgy szerez tudomást, hogy a készletben található többi bérlő csökkenő teljesítményről panaszkodik. Ha a bérlő meg tudja jósolni, hogy milyen hosszan lesz szüksége további erőforrásokra, beállítható egy Azure Automation-runbook, amely pontosan ütemezi az adatbázis kivételét, majd visszahelyezését a készletbe.
 
 **Bérlők általi önkiszolgáló skálázás** Mivel a skálázási feladat könnyen meghívható a felügyeleti API-n keresztül, így a bérlői adatbázisok méretezésének lehetősége könnyen beépíthető a bérlőoldali alkalmazásba, és felkínálható az SaaS-szolgáltatás egy funkciójaként. Például a bérlők saját maguk adminisztrálhatják a vertikális fel- és leskálázást, ami előfordulhat, hogy közvetlen kapcsolatban áll a számlázásukkal.
 
@@ -230,7 +230,7 @@ Ha az összesített bérlői használat kiszámítható mintákat követ, az Azu
 
 ## <a name="next-steps"></a>További lépések
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * A bérlői adatbázisok használatának szimulálása egy adott terhelésgenerátor futtatásával
@@ -241,7 +241,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 [Egyetlen bérlő visszaállítása – oktatóanyag](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * További [oktatóanyagok, amelyek az Wingtip tickets SaaS-adatbázisra épülnek a bérlői alkalmazások üzembe helyezése](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) után
 * [Rugalmas SQL-készletek](sql-database-elastic-pool.md)

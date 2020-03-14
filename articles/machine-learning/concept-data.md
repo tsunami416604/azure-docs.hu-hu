@@ -11,11 +11,11 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
 ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128618"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270263"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Adatelérés Azure Machine Learning
 
@@ -58,7 +58,7 @@ Támogatott Azure Storage-szolgáltatások, amelyek adattárként regisztrálhat
 + Databricks fájlrendszer
 + Azure Database for MySQL
 
-### <a name="datasets"></a>Adatkészletek
+### <a name="datasets"></a>Adathalmazok
 
 [Hozzon létre egy Azure Machine learning adatkészletet](how-to-create-register-datasets.md) az adattárolókban lévő adatokkal való kommunikációhoz, és a gépi tanulási feladatokhoz csomagolja ki az adatokat egy fogyasztható objektumba. Regisztrálja az adatkészletet a munkaterületen, hogy az adatfeldolgozási bonyolultság nélkül ossza meg és használja fel a különböző kísérletek között.
 
@@ -114,7 +114,7 @@ Azure Machine Learning központi helyet biztosít a címkézési projektek létr
 A gépi tanulás kontextusában az adateltolódás a modellben a teljesítmény romlását eredményező bemeneti adatok változása. Ez az egyik legfontosabb ok, hogy a modell pontossága az idő múlásával csökken, így az adateltolódás monitorozása segít a modell teljesítményével kapcsolatos problémák észlelésében.
 Az adatkészlet létrehozása című cikkből megtudhatja, hogyan azonosíthatja és [figyelheti](how-to-monitor-datasets.md) az adateltolódást az adatkészletekben lévő új adatokat.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 + Hozzon létre egy adatkészletet Azure Machine Learning Studióban vagy a Python SDK-val, [kövesse az alábbi lépéseket.](how-to-create-register-datasets.md)
 + A [minta-jegyzetfüzetekkel](https://aka.ms/dataset-tutorial)kipróbálhatja az adatkészlet tanítási példáit.

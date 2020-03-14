@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148643"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365866"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Útmutató: az Azure AD SAML-jogkivonat titkosításának konfigurálása (előzetes verzió)
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Útmutató: az Azure AD SAML-jogkivonat titkosításának konfigurálása
 
 > [!NOTE]
 > A jogkivonat-titkosítás egy Azure Active Directory (Azure AD) prémium szintű szolgáltatás. Az Azure AD-kiadásokkal,-funkciókkal és-díjszabással kapcsolatos további információkért lásd: az [Azure ad díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -56,7 +56,7 @@ Az SAML-jogkivonat titkosításának konfigurálásához kövesse az alábbi lé
 
 A nyilvános tanúsítványt a Azure Portalon belül adhatja hozzá az alkalmazás konfigurációjához.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 1. Lépjen a **Azure Active Directory > vállalati alkalmazások** panelre, majd válassza ki azt az alkalmazást, amelyre a jogkivonat-titkosítást konfigurálni kívánja.
 
@@ -71,7 +71,7 @@ A nyilvános tanúsítványt a Azure Portalon belül adhatja hozzá az alkalmaz�
 
     ![Importálja az X. 509 tanúsítványt tartalmazó. cer fájlt.](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. A tanúsítvány importálása után, a titkos kulcs pedig az alkalmazás oldalán való használatra van konfigurálva, aktiválja a titkosítást az ujjlenyomat állapota melletti **...** elemre kattintva, majd válassza a **jogkivonat-titkosítás aktiválása** lehetőséget a legördülő menü
+1. A tanúsítvány importálása után, a titkos kulcs pedig az alkalmazás oldalán való használatra van konfigurálva, aktiválja a titkosítást az ujjlenyomat állapota melletti **...** elemre kattintva, majd válassza a **jogkivonat-titkosítás aktiválása** lehetőséget a legördülő menüből.
 
 1. Válassza az **Igen** lehetőséget a jogkivonat-titkosítási tanúsítvány aktiválásának megerősítéséhez.
 
@@ -123,26 +123,21 @@ Amikor a Graph, a PowerShell vagy az Application manifest használatával konfig
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>Jogkivonat-titkosítás konfigurálása a PowerShell használatával
 
-Ez a funkció hamarosan elérhető lesz. 
+1. A bérlőhöz való kapcsolódáshoz használja a legújabb Azure AD PowerShell-modult.
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. Állítsa be a jogkivonat titkosítási beállításait a **[set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** parancs használatával.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. Olvassa el a jogkivonat titkosítási beállításait a következő parancsokkal.
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>Jogkivonat-titkosítás konfigurálása az alkalmazás jegyzékfájljának használatával
 

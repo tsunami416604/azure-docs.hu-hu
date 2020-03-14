@@ -5,11 +5,11 @@ ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
 ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186981"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79240939"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -87,7 +87,7 @@ A virtuálisgép-közreműködői RBAC-szerepkör például hozzárendelhető a 
 
 Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és támogatott műveletek listája látható.
 
-| RBAC-szerepkör neve             | Létrehozás | Átnevezés | Áthelyezés** | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
+| RBAC-szerepkör neve             | Létrehozás | Átnevez | Áthelyezés** | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Tulajdonos                       | X      | X      | X      | X      | X             | X             | X     |
 |Közreműködő                 | X      | X      | X      | X      |               |               | X     |
@@ -102,7 +102,7 @@ Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és tá
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Egyéni RBAC szerepkör-definíció és hozzárendelés
 
-A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg előzetes verzióban érhető el bizonyos [korlátozásokkal](#limitations).  A felügyeleti csoport hatókörét megadhatja a szerepkör-definíció hozzárendelhető hatókörében.  Ez az egyéni RBAC-szerepkör ezután elérhető lesz az adott felügyeleti csoportban és bármely felügyeleti csoportban, előfizetésben, erőforráscsoporthoz vagy erőforrásban. Ez az egyéni szerepkör a hierarchiát a beépített szerepkörhöz hasonlóan örökli.    
+A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg előzetes verzióban érhető el bizonyos [korlátozásokkal](#limitations).  A felügyeleti csoportok hatóköre a szerepkör-definíció hozzárendelhető hatókörében határozható meg.  Az egyéni RBAC-szerepkör hozzárendelhető lesz az adott felügyeleti csoporthoz és az alá tartozó összes felügyeleti csoporthoz, előfizetéshez, erőforráscsoporthoz vagy erőforráshoz. Az egyéni szerepkör ugyanúgy öröklődik lefelé a hierarchián belül, mint a beépített szerepkörök.    
 
 ### <a name="example-definition"></a>Példa definíció
 Az [Egyéni szerepkör definiálása és létrehozása](../../role-based-access-control/custom-roles.md) nem változik a felügyeleti csoportok belefoglalásával. A felügyeleti csoport **/providers/Microsoft.Management/managementgroups/{GroupID}** megadásához használja a teljes elérési utat. 
@@ -189,7 +189,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

@@ -4,11 +4,11 @@ description: Ismerje meg az Azure Service Fabric-alkalmazások csomagolását é
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361273"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258342"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
@@ -224,7 +224,7 @@ A csomag kiépítéséhez használja a külső kiépítés elemet, amelyhez a le
 >[!NOTE]
 > A rendszerkép-tároló relatív elérési útja alapján történő kiépítés jelenleg nem támogatja `sfpkg` fájlokat. Ezért a `sfpkg` nem másolhatók a rendszerkép-tárolóba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [alkalmazások telepítése és eltávolítása című][10] témakör ismerteti, hogyan kezelheti az alkalmazás példányait a PowerShell használatával
 

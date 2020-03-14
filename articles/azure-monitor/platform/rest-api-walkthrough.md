@@ -5,11 +5,11 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.openlocfilehash: 42a7034c586f4e01066e989dcb2b9fae4eebfa85
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248553"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
@@ -611,7 +611,7 @@ Az alábbi lista néhány példát tartalmaz a különböző Azure-erőforrások
 
 Az erőforrás-azonosító lekérésének alternatív módszerei vannak, beleértve a Azure Erőforrás-kezelő használatát, a kívánt erőforrás megtekintését a Azure Portal, a PowerShell vagy az Azure CLI segítségével.
 
-### <a name="azure-resource-explorer"></a>Azure Resource Explorer
+### <a name="azure-resource-explorer"></a>Azure Resource Manager
 
 A kívánt erőforrás erőforrás-AZONOSÍTÓjának megkereséséhez az egyik hasznos módszer az [Azure erőforrás-kezelő](https://resources.azure.com) eszköz használata. Navigáljon a kívánt erőforráshoz, és tekintse meg a megjelenő azonosítót, ahogy az alábbi képernyőképen is látható:
 
@@ -716,7 +716,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [figyelés áttekintését](../../azure-monitor/overview.md).
 * A [támogatott metrikák megtekintése Azure monitor](metrics-supported.md).

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219719"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
@@ -24,15 +24,15 @@ Language Understanding (LUIS) biztosít az előre összeállított entitások. H
 
 |Kulturális környezet|Tápfolyadékok cseréjét|Megjegyzések|
 |--|--|--|
-|kínai|[zh-CN](#chinese-entity-support)||
-|holland|[nl-NL](#dutch-entity-support)||
+|Kínai|[zh-CN](#chinese-entity-support)||
+|Holland|[nl-NL](#dutch-entity-support)||
 |Angol|[en-US (amerikai)](#english-american-entity-support)||
 |francia|[fr-Ca (Kanada)](#french-canadian-entity-support), [fr-fr (Franciaország)](#french-france-entity-support), ||
 |német|[de-DE](#german-entity-support)||
 |olasz|[informatikai](#italian-entity-support)||
 |japán|[ja-JP](#japanese-entity-support)||
 |koreai|[ko-KR](#korean-entity-support)||
-|portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
+|Portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
 |spanyol|[es-es (Spanyolország)](#spanish-spain-entity-support), [es-MX (Mexikó)](#spanish-mexico-entity-support)||
 |török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
 
@@ -344,6 +344,6 @@ Az előre összeállított entitások lettek kifejlesztve, a felismerő szövege
 
 GeographyV2 és PersonName nem szerepelnek a szöveges felismerő projekt. Az előre elkészített entitásokkal kapcsolatos problémák esetén nyisson meg egy [támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók a [számokról](luis-reference-prebuilt-number.md), a [datetimeV2](luis-reference-prebuilt-datetimev2.md)és a [Pénznem](luis-reference-prebuilt-currency.md) entitásokról.

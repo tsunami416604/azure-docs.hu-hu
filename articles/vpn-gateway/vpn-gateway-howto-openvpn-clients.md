@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: cherylmc
 ms.openlocfilehash: a45a3412a1ceb8e8a9bd9fd1a34dfdbd10ba1c75
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393543"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244601"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Az Azure VPN Gateway OpenVPN-ügyfeleinek konfigurálása
 
@@ -105,7 +105,7 @@ Ellenőrizze, hogy elvégezte-e a VPN-átjáróhoz tartozó OpenVPN konfigurál�
 
 13. Indítsa el az OpenVPN-alkalmazást, és csúsztassa a kapcsolót a **profil** oldalon a kapcsolódáshoz
 
-    ![Kapcsolódás](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+    ![Csatlakozás](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
 
 
 ## <a name="linux"></a>Linux-ügyfelek
@@ -165,7 +165,7 @@ Ellenőrizze, hogy elvégezte-e a VPN-átjáróhoz tartozó OpenVPN konfigurál�
     ![Importálás fájlból](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. A csatlakozáshoz **kapcsolja be a VPN-** t a **hálózati beállítások** lapon, vagy a rendszertálcán a hálózat ikon alatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha azt szeretné, hogy a VPN-ügyfelek hozzáférhessenek egy másik VNet található erőforrásokhoz, kövesse a [VNet – VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) cikk utasításait egy VNet-VNet kapcsolat beállításához. Ügyeljen arra, hogy az átjárók és a kapcsolatok esetében engedélyezze a BGP-t, ellenkező esetben a forgalom nem fog folytatódni.
 

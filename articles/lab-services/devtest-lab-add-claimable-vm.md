@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390965"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270796"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Igényelhető virtuális gépek létrehozása és kezelése Azure DevTest Labs
 Az igény szerinti virtuális gépeket hasonló módon veheti fel a laborba úgy, hogy hogyan [vegyen fel egy szabványos virtuális gépet](devtest-lab-add-vm.md) – egy olyan *alapból* , amely [Egyéni rendszerkép](devtest-lab-create-template.md), [képlet](devtest-lab-manage-formulas.md)vagy [piactér-rendszerkép](devtest-lab-configure-marketplace-images.md). Ez az oktatóanyag végigvezeti a Azure Portal használatával, hogy a DevTest Labs szolgáltatásban egy, az igénylést használó virtuális gépet felvegyen egy laborba, és megjeleníti a felhasználó által a virtuális gép igénylésére és visszaigénylésére vonatkozó folyamatokat.
@@ -97,6 +97,6 @@ Ez az úgynevezett "adatlemez átvitele". Az adatlemez ezután elérhetővé vá
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A létrehozást követően csatlakozhat a virtuális géphez a felügyeleti paneljén a **Kapcsolódás** lehetőség kiválasztásával.
 * Ismerkedjen meg a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

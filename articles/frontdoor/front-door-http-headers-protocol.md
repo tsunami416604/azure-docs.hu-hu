@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382560"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280819"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli előtérben szolgáltatásban
 Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó szolgáltatás a hívási útvonal részeivel támogat (lásd a képet). A következő szakaszokban további információk találhatók a bejárati szolgáltatás által támogatott HTTP-fejlécekről.
@@ -53,7 +53,7 @@ A háttérbeli bejáratra küldött fejlécek is át lesznek adva az ügyfélnek
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy egyedi hivatkozási karakterlánc, amely a bejárati ajtó által kiszolgált kéréseket azonosítja. Ez kritikus fontosságú a hibaelhárításhoz, mivel a hozzáférési naplók keresésére szolgál.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bejárati ajtó létrehozása](quickstart-create-front-door.md)
 - [Az előtérben működik](front-door-routing-architecture.md)

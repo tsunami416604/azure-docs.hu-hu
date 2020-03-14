@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: e3668718e27a3dcb545428637b34de51ec621c60
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169055"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217786"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 [top]: #machine-learning-sample-datasets
 
 Ha Azure Machine Learning Studio (klasszikus) új munkaterületet hoz létre, a rendszer alapértelmezés szerint több minta adatkészletet és kísérletet is tartalmaz. A minta-adathalmazok nagy részét a [Azure AI Galleryban](https://gallery.azure.ai/)szereplő minták használják. Mások például a gépi tanulásban jellemzően használt különböző típusú adattípusokra mutatnak.
@@ -27,7 +30,7 @@ Ezen adatkészletek némelyike elérhető az Azure Blob Storage-ban. Ezen adatk�
 Ezen minta-adatkészletek további része a munkaterületen a **mentett adatkészletek**területen érhető el. Ez a modul paletta bal oldalán található, Machine Learning Studio (klasszikus).
 A saját kísérletekben bármelyik adatkészletet használhatja a kísérlet vászonra húzva.
 
-## <a name="datasets"></a>Adatkészletek
+## <a name="datasets"></a>Adathalmazok
 
 <table>
 
@@ -405,7 +408,7 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 
 </table>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Példa a kísérletek Kickstart-re](sample-experiments.md)

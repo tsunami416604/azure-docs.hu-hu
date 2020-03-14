@@ -3,16 +3,22 @@ title: Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás hogyan készít biztonsági másolatot az Azure Virtual Machines szolgáltatásról, és hogyan követi az ajánlott eljárásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273214"
+ms.locfileid: "79297357"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
 Ez a cikk azt ismerteti, hogy az [Azure Backup szolgáltatás](backup-introduction-to-azure-backup.md) hogyan készít biztonsági másolatot az Azure Virtual Machines-ről (VM).
+
+A Azure Backup független és elkülönített biztonsági mentéseket biztosít a virtuális gépeken tárolt adatmennyiségek nem szándékos megsemmisítése elleni védelemhez. A biztonsági mentések a helyreállítási pontok beépített felügyeletét biztosító Recovery Services-tárolóban tárolódnak. A konfiguráció és a skálázás egyszerű, a biztonsági mentések optimalizáltak, és szükség esetén egyszerűen visszaállíthatók.
+
+A biztonsági mentési folyamat részeként [Pillanatkép készül](#snapshot-creation), és az adatok átkerülnek a Recovery Services-tárolóba, és nincs hatással az éles munkaterhelésekre. A pillanatkép különböző szintű konzisztenciát biztosít az [itt](#snapshot-consistency)leírtak szerint.
+
+Azure Backup az adatbázis-munkaterhelések, például a [SQL Server](backup-azure-sql-database.md) és az [SAP HANA](sap-hana-db-about.md) számítási feladataihoz is specializált ajánlatokat biztosít, amelyek a számítási feladatok ellátására használhatók, 15 perces RPO (helyreállítási időkorlát), valamint az egyes adatbázisok biztonsági mentését és visszaállítását teszik lehetővé.
 
 ## <a name="backup-process"></a>Biztonsági mentési folyamat
 
@@ -66,7 +72,7 @@ A Azure Backup a biztonsági mentés ütemtervének megfelelően hozza a pillana
   - Ha az előkészítő parancsfájlok és a parancsfájlok utáni végrehajtás sikeresen befejeződött, Azure Backup a helyreállítási pontot alkalmazás-konzisztensként jelöli meg. Ha azonban egyéni parancsfájlokat használ, az alkalmazás konzisztenciája végső soron a felelős.
   - [További](backup-azure-linux-app-consistent.md) információ a parancsfájlok konfigurálásáról.
 
-### <a name="snapshot-consistency"></a>Pillanatkép konzisztenciája
+## <a name="snapshot-consistency"></a>Pillanatkép konzisztenciája
 
 A következő táblázat a pillanatkép-konzisztencia különböző típusait ismerteti:
 
@@ -129,6 +135,6 @@ Helyi/ideiglenes lemez | 135 GB | 5 GB (nem tartalmazza a biztonsági mentést)
 
 Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 GB. Ez a védett példány mérete (47 GB) lesz a havi számla alapja. Ahogy a virtuális gépen lévő adatmennyiség növekszik, a számlázáshoz használt védett példány mérete megegyezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most [készítse elő az Azure-beli virtuális gépek biztonsági mentését](backup-azure-arm-vms-prepare.md).

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365472"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220137"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -29,12 +29,12 @@ Az OCR automatikusan észleli a bemeneti anyag nyelvét, így nincs szükség a 
 
 |Nyelv| Nyelvkód | OCR API |
 |:-----|:----:|:-----:|
-|arab | `ar`|✔ |
+|Arab | `ar`|✔ |
 |kínai (egyszerűsített) | `zh-Hans`|✔ |
 |kínai (hagyományos) | `zh-Hant`|✔ |
 |cseh | `cs` |✔ |
 |dán | `da` |✔ |
-|holland | `nl` |✔ |
+|Holland | `nl` |✔ |
 |Angol | `en` |✔ |
 |finn | `fi` |✔ |
 |francia | `fr` |✔ |
@@ -46,8 +46,8 @@ Az OCR automatikusan észleli a bemeneti anyag nyelvét, így nincs szükség a 
 |koreai | `ko` |✔ |
 |norvég | `nb` |✔ |
 |lengyel | `pl` |✔ |
-|portugál | `pt` |✔ |
-|román | `ro` |✔ |
+|Portugál | `pt` |✔ |
+|Román | `ro` |✔ |
 |Orosz | `ru` |✔ |
 |szerb (cirill betűs) | `sr-Cyrl` |✔ |
 |szerb (latin betűs) | `sr-Latn` |✔ |
@@ -62,13 +62,13 @@ Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/servi
 
 |Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumok | Hírességek | Arcrész |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |japán | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
 

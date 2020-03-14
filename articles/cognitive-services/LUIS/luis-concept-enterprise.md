@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361125"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221061"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák a LUIS-alkalmazások
 Tekintse át ezeket a vállalati alkalmazások tervezési stratégiák.
@@ -76,7 +76,7 @@ A küldő alkalmazás 500 dispatch forrásokból, egyenértékű 500 szándékot
 * [Küldési CLI](https://github.com/Microsoft/botbuilder-tools)
 * Minta küldése a robothoz – [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Útmutató [a Batch teszteléséhez](luis-how-to-batch-test.md)
 

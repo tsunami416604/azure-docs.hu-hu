@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365697"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254728"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>A webes felhasználói felület használata a StorSimple virtuális tömb felügyeletéhez
 ![folyamat beállítása folyamatban](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -109,6 +109,6 @@ Leállíthatja vagy újraindíthatja a virtuális eszközt a helyi webes felhasz
    
     Amíg az újraindítás folyamatban van, elveszíti a kapcsolódást a felhasználói felülethez. A felhasználói felület rendszeres frissítésével nyomon követheti az újraindítást. Azt is megteheti, hogy az eszköz újraindítási állapotát a Hyper-V kezelőjével figyelheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan [kezelheti az eszközt a StorSimple Manager szolgáltatással](storsimple-virtual-array-manager-service-administration.md).
 

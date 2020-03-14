@@ -9,11 +9,11 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238887"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése helyszíni vész-helyreállításra az Azure-ba
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure-erőforrások és-összetevők előkészítését ismerteti, 
 Ez az oktatóanyag az első rész abban a sorozatban, amely bemutatja, hogyan állíthat be vészhelyreállítást helyszíni virtuális gépekhez. 
 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Győződjön meg arról, hogy az Azure-fiók replikációs engedélyekkel rendelkezik.
@@ -88,7 +88,7 @@ A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A VMware vész-helyreállítás esetén [készítse elő a helyszíni VMware-infrastruktúrát](tutorial-prepare-on-premises-vmware.md).
 - A Hyper-V vész-helyreállítás esetén [készítse elő a helyszíni Hyper-v-kiszolgálókat](hyper-v-prepare-on-premises-tutorial.md).

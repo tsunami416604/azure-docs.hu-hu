@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623459"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298835"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáró típusú eszköz definiálása az Azure IoT Central-alkalmazásban
 
@@ -105,8 +105,8 @@ Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró e
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | Nincs          | Dátum   |
-    | Ügyfél neve     | Nincs          | Sztring |
+    | Utolsó szervizelés dátuma | Nincsenek          | Dátum   |
+    | Ügyfél neve     | Nincsenek          | Sztring |
 
 2. Kattintson a **Mentés** gombra.
 
@@ -193,7 +193,7 @@ A szimulált alsóbb szintű eszközök most már csatlakozva vannak a szimulál
 
 Válassza ki az átjáró-eszköz sablonját és az átjáró eszköz példányát, és válassza a **Csatlakozás**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -203,6 +203,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 * Adjon meg egy vizualizációt az eszköz telemetria.
 * Kapcsolatok hozzáadása.
 * Tegye közzé az eszköz sablonját.
+
+> [!NOTE]
+> A VS Code-alapú programkódok létrehozása jelenleg nem támogatott a IoT Centralban modellezett átjáró eszközök esetében.
 
 Következő lépésként a következőket teheti:
 

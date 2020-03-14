@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42888060f206c89a597a1a18783070d0a805dfb9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208948"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241303"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával
 
@@ -32,7 +32,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 + [Node. js](https://nodejs.org/), aktív LTS és karbantartási LTS-verziók (10.14.1 ajánlott). Használja a `npm --version` parancsot a verziójának vizsgálatához.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3,7](https://www.python.org/downloads/release/python-375/) vagy [Python 3,6](https://www.python.org/downloads/release/python-368/), amelyet Azure functions támogat. A Python 3,8 még nem támogatott. 
++ A [python 3,8](https://www.python.org/downloads/release/python-381/), a [Python 3,7](https://www.python.org/downloads/release/python-375/), a [Python 3,6](https://www.python.org/downloads/release/python-368/) Azure functions támogatja.
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell-mag](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -41,7 +41,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 ::: zone-end  
 + [Visual Studio Code](https://code.visualstudio.com/) az egyik [támogatott platformon](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
 ::: zone pivot="programming-language-csharp"  
-+ A Visual Studio Code [ C# bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) .  
++ A Visual Studio Code [ C# bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .  
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + A [Python-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a Visual Studio Code-hoz.  
@@ -141,7 +141,7 @@ Ellenkező esetben a következő lépésekkel törölheti a Function alkalmazás
 
 A functions-költségekkel kapcsolatos további tudnivalókért lásd: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 

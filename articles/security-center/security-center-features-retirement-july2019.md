@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245407"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center szolgáltatások kivonása (július 2019)
 
@@ -189,7 +189,7 @@ Javasoljuk, hogy váltson Azure Security Centerra. Ugyanazt a biztonsági áttek
 
 A biztonsági és auditálási irányítópultot a Security Centerhoz tartozó [GitHub-tárházban](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) töltheti le az eredeti log Analytics lekérdezéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Security Centerról](https://docs.microsoft.com/azure/security-center/).
 - További információ az [Azure sentinelről](https://docs.microsoft.com/azure/sentinel).

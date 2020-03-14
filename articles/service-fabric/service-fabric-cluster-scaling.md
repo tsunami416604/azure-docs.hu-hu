@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386285"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258693"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric-fürtök méretezése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A fürtök akár több ezer csomópontot is tartalmazhatnak. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt (a csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrásainak módosítása).  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -78,7 +78,7 @@ Azt javasoljuk, hogy ne módosítsa az elsődleges csomópont típusú virtuáli
 
 Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja az alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből. Nincs szükség a rendszerszolgáltatások állapotának visszaállítására, ezeket a rendszer újból létrehozza, amikor telepíti az alkalmazásokat az új fürtre. Ha csak az állapot nélküli alkalmazásokat futtatta a fürtön, akkor csak az alkalmazásait telepíti az új fürtre, nincs szükség a visszaállításra. Ha úgy dönt, hogy nem támogatott útvonalat szeretne használni, és módosítani szeretné a virtuális gép SKU-jának módosítását, akkor módosítsa a virtuálisgép-méretezési csoport modelljének definícióját, hogy az új SKU-t tükrözze. Ha a fürtnek csak egy csomópont-típusa van, akkor győződjön meg arról, hogy az összes állapot-nyilvántartó alkalmazás válaszol az összes [szolgáltatás-replika életciklus-eseményére](service-fabric-reliable-services-lifecycle.md) (például a buildben található replika beragadva), és hogy a szolgáltatás replikájának újraépítési időtartama kevesebb, mint öt perc (ezüst tartóssági szint esetén). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.
 * Az [Azure-fürtöket programozott módon méretezheti](service-fabric-cluster-programmatic-scaling.md) a Fluent Azure számítási SDK használatával.

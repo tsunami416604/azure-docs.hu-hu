@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3d5f3ade3ef3b79ddb3996b5bf2d609b11aff8a5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255963"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -470,14 +470,14 @@ Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valósz
 
 | Forrás | Részletességi | Részletességi | Ügyfélkérelem azonosítója | Művelet szövege |
 | --- | --- | --- | --- | --- |
-| Microsoft.Azure.Storage |Információ |3 |85d077ab-… |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
-| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Szinkron kérelem indítása <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Várakozás a válaszra. |
+| Microsoft.Azure.Storage |Adatok |3 |85d077ab-… |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
+| Microsoft.Azure.Storage |Adatok |3 |85d077ab -… |Szinkron kérelem indítása <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |Adatok |3 |85d077ab -… |Várakozás a válaszra. |
 | Microsoft.Azure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. |
-| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
+| Microsoft.Azure.Storage |Adatok |3 |85d077ab -… |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
 | Microsoft.Azure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel történt a művelet során: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott.. |
-| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
-| Microsoft.Azure.Storage |Információ |3 |85d077ab -… |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
+| Microsoft.Azure.Storage |Adatok |3 |85d077ab -… |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
+| Microsoft.Azure.Storage |Adatok |3 |85d077ab -… |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
 | Microsoft.Azure.Storage |Hiba |1 |85d077ab -… |Az újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. A távoli kiszolgáló meghibásodása hibát adott vissza: (403) tiltott. |
 
 Ebben az esetben meg kell vizsgálnia, hogy miért jár le az SAS-token, mielőtt az ügyfél elküldi a jogkivonatot a kiszolgálónak:
@@ -562,7 +562,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Name (Név) | Érték |
+| Név | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697Z |
 | Művelet típusa     | GetBlobProperties            |
@@ -627,7 +627,7 @@ Ha ez a probléma gyakran előfordul, vizsgálja meg, hogy az ügyfél miért ne
 ### <a name="the-client-is-receiving-409-messages"></a>Az ügyfél HTTP 409 (ütközés) üzeneteket kap
 Az alábbi táblázat a kiszolgálóoldali napló kivonatát mutatja be két ügyfél-művelethez: a **deleteifexists paranccsal** a **createifnotexists metódust** által azonnal követte a blob-tároló nevét használva. Minden ügyfél-művelet két kérelmet küld a kiszolgálónak, először egy **GetContainerProperties** -kérést, hogy ellenőrizze, hogy létezik-e a tároló, majd kövesse a **DeleteContainer** vagy a **CreateContainer** kérelmet.
 
-| Időbélyeg | Művelet | Eredmény | Tárolónév | Ügyfélkérelem azonosítója |
+| Időbélyeg | Művelet | Eredmény | Tároló neve | Ügyfélkérelem azonosítója |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -809,7 +809,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

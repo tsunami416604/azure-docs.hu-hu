@@ -4,11 +4,11 @@ description: A Azure Functions Host. JSON fájl dokumentációja a v1 futtatók�
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356079"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277049"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>a Azure Functions 1. x gazdagép. JSON-referenciája
 
@@ -138,7 +138,7 @@ A [Azure Cosmos db trigger és kötések](functions-bindings-cosmosdb.md)konfigu
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|GatewayMode|Átjáró|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek `Direct` és `Gateway`|
+|GatewayMode|Átjáró-|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek `Direct` és `Gateway`|
 |Protokoll|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|
 |leasePrefix|n/a|Az alkalmazás összes függvényében használandó bérlet-előtag.|
 
@@ -252,7 +252,7 @@ A [ILogger objektum](functions-monitoring.md#write-logs-in-c-functions) vagy a [
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |categoryFilter|n/a|Meghatározza a kategória szerinti szűrést| 
-|defaultLevel|Információ|A `categoryLevels` tömbben nem megadott kategóriákhoz küldje el a naplókat ezen a szinten, és Application Insights.| 
+|defaultLevel|Adatok|A `categoryLevels` tömbben nem megadott kategóriákhoz küldje el a naplókat ezen a szinten, és Application Insights.| 
 |categoryLevels|n/a|Kategóriákból álló tömb, amely meghatározza, hogy az egyes kategóriákhoz Application Insights milyen minimális naplózási szint legyen elküldve. Az itt megadott kategória az összes olyan kategóriát szabályozza, amely ugyanazzal az értékkel kezdődik, és a hosszabb értékek elsőbbséget élveznek. Az előző minta *Host. JSON* fájlban az összes kategória, amely a "host. aggregator" kifejezéssel kezdődik, `Information` szinten. Az összes többi olyan kategória, amely a "host" kifejezéssel kezdődik, például "host. végrehajtó", jelentkezzen be `Error` szinten.| 
 
 ## <a name="queues"></a>üzenetsorok
@@ -368,7 +368,7 @@ A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csh
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a Host. JSON fájl frissítéséhez](functions-reference.md#fileupdate)

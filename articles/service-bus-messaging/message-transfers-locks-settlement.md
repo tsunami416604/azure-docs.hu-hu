@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: aschhab
 ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396664"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260994"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Üzenetek átvitele, zárolása és elszámolása
 
@@ -134,7 +134,7 @@ Az ismétlődő üzenetek azonosítására szolgáló jellemző mechanizmus az �
 >
 > A zárolás elvesztése után Azure Service Bus egy LockLostException fog előállítani, amely az ügyfélalkalmazás kódján lesz feldolgozva. Ebben az esetben az ügyfél alapértelmezett újrapróbálkozási logikájának automatikusan be kell jelentkeznie, és újra kell próbálkoznia a művelettel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394386"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274761"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
@@ -96,33 +96,33 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Logikai lemez | Lemezírások/mp |
 | Logikai lemez | Szabad hely MB-ban |
 | Logikai lemez | Logikai lemez bájt/mp |
-| Memory (Memória) | Rendelkezésre álló memória%-ban |
-| Memory (Memória) | Rendelkezésre álló swap-terület (%) |
-| Memory (Memória) | Felhasznált memória (%) |
-| Memory (Memória) | Felhasznált swap-terület%-ban |
-| Memory (Memória) | Rendelkezésre álló memória |
-| Memory (Memória) | Rendelkezésre álló memória (MB) |
-| Memory (Memória) | Olvasott lap/mperc |
-| Memory (Memória) | Írt lap/mperc |
-| Memory (Memória) | Mozgatott lapok (lap/sec) |
-| Memory (Memória) | Felhasznált memória (MB) – lapozófájl |
-| Memory (Memória) | Felhasznált memória (MB) |
-| Hálózat | Küldött bájtok száma összesen |
-| Hálózat | Fogadott bájtok teljes száma |
-| Hálózat | Bájtok összesen |
-| Hálózat | Továbbított csomagok összesen |
-| Hálózat | Fogadott csomagok összesen |
-| Hálózat | Rx-hibák összesen |
-| Hálózat | TX-hibák összesen |
-| Hálózat | Ütközések összesen |
+| Memória | Rendelkezésre álló memória%-ban |
+| Memória | Rendelkezésre álló swap-terület (%) |
+| Memória | Felhasznált memória (%) |
+| Memória | Felhasznált swap-terület%-ban |
+| Memória | Rendelkezésre álló memória |
+| Memória | Rendelkezésre álló memória (MB) |
+| Memória | Olvasott lap/mperc |
+| Memória | Írt lap/mperc |
+| Memória | Mozgatott lapok (lap/sec) |
+| Memória | Felhasznált memória (MB) – lapozófájl |
+| Memória | Felhasznált memória (MB) |
+| Network (Hálózat) | Küldött bájtok száma összesen |
+| Network (Hálózat) | Fogadott bájtok teljes száma |
+| Network (Hálózat) | Bájtok összesen |
+| Network (Hálózat) | Továbbított csomagok összesen |
+| Network (Hálózat) | Fogadott csomagok összesen |
+| Network (Hálózat) | Rx-hibák összesen |
+| Network (Hálózat) | TX-hibák összesen |
+| Network (Hálózat) | Ütközések összesen |
 | Fizikai lemez | Átlagos írási idő (mp/olvasás) |
 | Fizikai lemez | Átlagos műveleti idő (mp/átvitel) |
 | Fizikai lemez | Átlagos írási idő (mp/írás) |
 | Fizikai lemez | Fizikai lemez sebessége (bájt/s) |
-| Folyamat | PCT rendszerjogosultságú idő |
-| Folyamat | PCT felhasználói idő |
-| Folyamat | Felhasznált memória (kilobájt) |
-| Folyamat | Virtuális megosztott memória |
+| Process | PCT rendszerjogosultságú idő |
+| Process | PCT felhasználói idő |
+| Process | Felhasznált memória (kilobájt) |
+| Process | Virtuális megosztott memória |
 | Processzor | % DPC idő |
 | Processzor | Üresjárati idő%-ban |
 | Processzor | Megszakítási idő%-ban |
@@ -216,7 +216,7 @@ Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatoka
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése Linux-alkalmazásokból](data-sources-linux-applications.md) , beleértve a MySQL-t és az Apache HTTP-kiszolgálót.
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
 * Az összegyűjtött adatok [Power BIba](powerbi.md) való exportálása további vizualizációk és elemzések céljából.

@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
 ms.openlocfilehash: b560cee23855d1c0e8a7b3c2cb9d82c184a1ebf6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269652"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állás és Azure SQL Database
 
@@ -102,7 +102,7 @@ A feladatátvételt REST API vagy PowerShell használatával lehet kezdeményezn
 
 A Azure SQL Database egy beépített, magas rendelkezésre állású megoldást kínál, amely mélyen integrálva van az Azure platformmal. A probléma a hibák észlelése és helyreállítása Service Fabric függ, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében. Az Azure SQL Database emellett az Always On rendelkezésre állási csoport technológiáját is kihasználja SQL Server a replikációhoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [Azure Availability Zones](../availability-zones/az-overview.md)
 - Tudnivalók a [Service Fabric](../service-fabric/service-fabric-overview.md)

@@ -11,11 +11,11 @@ ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3abf38a4b1ea798c39150454ac33f73ea588b782
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933058"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264374"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -115,14 +115,14 @@ Az alábbi azonosítók egy `api.localaccountsignup` vagy bármely olyan tartalo
 | **error_requiredFieldMissing** | Hiányzik egy kötelező mező. Töltse ki az összes kötelező mezőt, és próbálkozzon újra. |
 | **initial_intro** | Adja meg a következő adatokat. |
 | **ver_but_resend** | Új kód küldése |
-| **button_continue** | Hozzon létre |
+| **button_continue** | Létrehozás |
 | **error_passwordEntryMismatch** | A jelszó-beviteli mezők nem egyeznek. Ugyanazt a jelszót adja meg mindkét mezőben, majd próbálkozzon újra. |
 | **ver_incorrect_format** | Helytelen formátumú. |
 | **ver_but_edit** | E-mail módosítása |
 | **ver_but_verify** | Kód ellenőrzése |
 | **alert_no** | Nem |
 | **ver_info_msg** | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe. |
-| **nap** | Day |
+| **nap** | Nap |
 | **ver_fail_throttled** | Túl sok kérelem érkezett az e-mail-cím ellenőrzéséhez. Várjon egy kicsit, és próbálkozzon újra. |
 | **helplink_text** | mi ez? |
 | **ver_fail_retry** | A kód helytelen. Kérjük, próbálkozzon újból. |
@@ -209,7 +209,7 @@ Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-co
 
 | ID | Alapértelmezett érték |
 | -- | ------------- |
-|verification_control_but_change_claims |Módosítás |
+|verification_control_but_change_claims |Változás |
 |verification_control_fail_send_code |Nem sikerült elküldeni a kódot, próbálkozzon újra később. |
 |verification_control_fail_verify_code |A kód ellenőrzése sikertelen volt, próbálkozzon újra később. |
 |verification_control_but_send_code |Kód küldése |

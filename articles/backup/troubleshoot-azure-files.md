@@ -4,11 +4,11 @@ description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információka
 ms.date: 08/20/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382523"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252388"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
 
@@ -65,7 +65,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | Folyamatban van egy másik konfigurálási védelmi művelet ehhez az objektumhoz. | Várjon, amíg befejeződik az előző házirend-módosítási művelet, és némi várakozás után próbálkozzon újra.|
 | Egy másik művelet van folyamatban a kijelölt elemen. | Várjon, amíg a másik folyamatban lévő művelet befejeződik, és próbálkozzon újra egy kis idő elteltével |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure-fájlmegosztás biztonsági mentéséről további információt a következő témakörben talál:
 

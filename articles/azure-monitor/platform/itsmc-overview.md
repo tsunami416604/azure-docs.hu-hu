@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373348"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274540"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -178,11 +178,11 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állapot
+- State
 - Sürgősség
 - Hatás
 - Prioritás
-- Eszkalálás
+- Eszkalációs
 - Létrehozta
 - Megoldó
 - Lezárta
@@ -212,8 +212,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Cím
 - Típus
 - Kategória
-- Állapot
-- Eszkalálás
+- State
+- Eszkalációs
 - Ütközési állapot
 - Sürgősség
 - Prioritás
@@ -236,7 +236,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állapot |
+| IncidentState_s | State |
 | Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
@@ -264,7 +264,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állapot|
+| CRState_s|  State|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
@@ -302,5 +302,5 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért vagy Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](../../azure-monitor/platform/itsmc-connections.md).

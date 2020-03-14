@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281287"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -46,7 +46,7 @@ Ahhoz, hogy adatkezelés átjáró csatlakozhasson a MySQL-adatbázishoz, telep�
 > [!TIP]
 > Ha a "sikertelen hitelesítés" hibát észlelt, mert a távoli fél bezárta az átviteli streamet, érdemes lehet frissíteni a MySQL-összekötőt/a NET-et újabb verzióra.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal. 
 
 - A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
@@ -67,7 +67,7 @@ A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
 | kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
 | database |A MySQL-adatbázis neve. |Igen |
 | schema |A séma neve az adatbázisban. |Nem |
@@ -94,7 +94,7 @@ Ha a másolási tevékenységben a forrás **RelationalSource** típusú (amely 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| query |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from MyTable. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-példa: adatok másolása a MySQL-ből az Azure Blobba
@@ -316,7 +316,7 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | int előjel nélküli |Int64 |
 | int |Int32 |
 | egész szám előjel nélküli |Int64 |
-| egész szám |Int32 |
+| integer |Int32 |
 | hosszú varbinary |Byte[] |
 | hosszú varchar |Sztring |
 | longblob |Byte[] |
@@ -331,7 +331,7 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | smallint aláíratlan |Int32 |
 | smallint |Int16 |
 | szöveg |Sztring |
-| time |Időtartam |
+| time |időtartam |
 | időbélyeg |Dátum és idő |
 | tinyblob |Byte[] |
 | tinyint aláíratlan |Int16 |

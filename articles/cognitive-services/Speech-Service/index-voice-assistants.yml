@@ -10,66 +10,54 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943333"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79365559"
 landingContent:
-- title: Bevezetés
+- title: A hangsegédek ismertetése
   linkLists:
   - linkListType: overview
     links:
-    - text: Hangsegéd-megoldások
+    - text: Mi az a hangvezérelt asszisztens?
       url: voice-assistants.md
-    - text: Az egyéni parancsok ismertetése
+    - text: Mi az egyéni parancsok alkalmazás?
       url: custom-commands.md
-    - text: Közvetlen vonalas beszéd
+    - text: Mi az a Direct Line Speech?
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: Díjszabás
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
       url: faq-voice-assistants.md
-- title: Egyéni kulcsszó
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Egyéni kulcsszó
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: Egyéni kulcsszó elnevezési irányelvei
-      url: speech-devices-sdk-kws-guidelines.md
-- title: Egyéni parancsok
+    - text: Hangvezérelt asszisztensek díjszabása
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Fejlesztés egyéni parancsokkal
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Egyéni parancs létrehozása (előzetes verzió)
+    - text: Egyéni parancsok alkalmazás létrehozása
       url: quickstart-custom-speech-commands-create-new.md
-    - text: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
+    - text: Egyéni parancs létrehozása paraméterekkel
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Egyéni parancsok használata Custom Voice-szal (előzetes verzió)
+    - text: Egyéni parancsok használata egyéni hanggal
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Egyéni parancsok használata a Speech SDK-val (előzetes verzió)
+    - text: Egyéni parancsok használata a Speech SDK-val
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Egyéni parancsok a Speech SDK-val
+    - text: Az ügyfél parancsainak teljesítése
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Egyéni parancsok teljesítése a Speech SDK-val
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Paraméter-ellenőrzés hozzáadása az egyéni parancsokhoz
+    - text: Paraméter-ellenőrzés hozzáadása
       url: how-to-custom-speech-commands-validations.md
-    - text: Megerősítés hozzáadása egyéni parancshoz
+    - text: Megerősítés hozzáadása
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Egylépéses javítás hozzáadása egyéni parancshoz
+    - text: Egylépéses javítás hozzáadása
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Direct Line Speech
+- title: Fejlesztés közvetlen vonalas Beszédtel
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +71,13 @@ landingContent:
     links:
     - text: Robot hangvezérlésének engedélyezése a Speech SDK használatával
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: Fejlesztés egyéni kulcsszóval
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni kulcsszó létrehozása
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Egyéni kulcsszó elnevezési irányelvei
+      url: speech-devices-sdk-kws-guidelines.md

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261280"
 ---
 # <a name="more-details-about-features-in-preview"></a>További információ az előzetes verzió szolgáltatásairól
 Ez a témakör a jelenleg előzetes verzióban elérhető szolgáltatások használatát ismerteti.
@@ -51,7 +51,7 @@ Az Office 365-csoportok terjesztési csoportként jelennek meg a helyszíni AD D
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa [Azure ad Connect egyéni telepítését](how-to-connect-install-custom.md).
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

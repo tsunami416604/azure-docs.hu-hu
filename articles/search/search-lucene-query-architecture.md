@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379728"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282938"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Hogyan működik a teljes szöveges keresés az Azure-ban Cognitive Search
 
@@ -251,7 +251,7 @@ Gyakori, de nem kötelező, ha ugyanazokat az elemzőket használja a keresési 
 
 Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a következőképpen néz ki:
 
-| Időszak | Dokumentumok listája |
+| Kifejezés | Dokumentumok listája |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -265,7 +265,7 @@ A title (cím) mezőben csak a ( *z* ) két dokumentum jelenik meg: 1, 3.
 
 A **Leírás** mezőben az index a következő:
 
-| Időszak | Dokumentumok listája |
+| Kifejezés | Dokumentumok listája |
 |------|---------------|
 | levegő | 3
 | és | 4
@@ -279,14 +279,14 @@ A **Leírás** mezőben az index a következő:
 | Észak | 2
 | óceáni | 1, 2, 3
 | a | 2
-| be |2
+| itt: |2
 | csendes | 4
 | tárgyalótermek  | 1, 3
 | félreeső | 4
 | Shore | 2
 | tágas | 1
 | műveletnek a(z) | 1, 2
-| erre: | 1
+| a következőig: | 1
 | nézet | 1, 2, 3
 | séta | 1
 | Adja meg ezt az URL-címet: | 3
@@ -379,7 +379,7 @@ Technikai szempontból a teljes szöveges keresés nagyon összetett, és kifino
 
 Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search kontextusában. Reméljük, hogy elegendő hátteret biztosít a gyakori lekérdezési problémák kezelésére vonatkozó lehetséges okok és megoldások felismeréséhez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Hozza létre a minta indexet, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [index létrehozása és lekérdezése a portálon](search-get-started-portal.md#query-index).
 

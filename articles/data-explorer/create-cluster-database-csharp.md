@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 0c32d438ac8551f061343edb747e9fc035b498e2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560524"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246408"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a használatávalC#
 
@@ -33,7 +33,7 @@ Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szol
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmazásra és egy egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Az Azure ad- [alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) létrehozásával hozzon létre egy ingyenes Azure ad-alkalmazást, és adja hozzá a szerepkör-hozzárendelést az előfizetési hatókörhöz. Azt is bemutatja, hogyan kérhető le a `Directory (tenant) ID`, a `Application ID`és a `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása
@@ -72,7 +72,7 @@ A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmaz�
    | clusterName | *mykustocluster* | A fürt kívánt neve.|
    | skuName | *Standard_D13_v2* | A fürthöz használni kívánt SKU. |
    | tier | *Standard* | Az SKU-szintet. |
-   | capacity | *száma* | A fürt példányainak száma. |
+   | kapacitás | *száma* | A fürt példányainak száma. |
    | resourceGroupName | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
     > [!NOTE]

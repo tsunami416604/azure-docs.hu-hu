@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376584"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261683"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
 Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Active Directory (Azure AD) jogosultságok kezelésének hibaelhárításában.
 
-## <a name="administration"></a>Adminisztráció
+## <a name="administration"></a>Felügyelet
 
 * Ha hozzáférés-megtagadási üzenetet kap a jogosultságok kezelésének konfigurálásakor, és Ön globális rendszergazda, győződjön meg arról, hogy a címtárban van egy [prémium szintű Azure ad P2 (vagy EMS E5) licenc](entitlement-management-overview.md#license-requirements).
 
@@ -138,7 +138,7 @@ Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett k
     
     Ha bármelyik szabályzat magasabb prioritású kategóriába tartozik, a rendszer figyelmen kívül hagyja az alacsonyabb prioritású kategóriákat. Ha például azt szeretné, hogy az azonos prioritású házirendek hogyan jelenjenek meg a kérelmező számára, tekintse meg a szabályzat [kiválasztása](entitlement-management-request-access.md#select-a-policy)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzáférés szabályozása külső felhasználók számára](entitlement-management-external-users.md)
 - [A felhasználók hozzáférési jogosultságok kezelésével kapcsolatos jelentések megtekintése](entitlement-management-reports.md)

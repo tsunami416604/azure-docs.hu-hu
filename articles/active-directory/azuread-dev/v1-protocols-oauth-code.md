@@ -17,11 +17,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263542"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Hozzáférés engedélyezése Azure Active Directory webes alkalmazásokhoz az OAuth 2.0 kódengedélyezési folyamat használatával
 
@@ -89,8 +89,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_mode |választható |Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. `query`, `fragment`vagy `form_post`lehet. `query` a kódot lekérdezési karakterlánc paraméterként adja meg az átirányítási URI-n. Ha az implicit folyamat használatával kér azonosító jogkivonatot, az [OpenID specifikációban](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)megadott `query` nem használható. Ha csak a kódot kéri, `query`, `fragment`vagy `form_post`is használhat. `form_post` végrehajt egy BEJEGYZÉST, amely tartalmazza a kódot az átirányítási URI-nak. Az alapértelmezett érték `query` a kód folyamatához.  |
 | state |ajánlott |A kérelemben szereplő, a jogkivonat-válaszban visszaadott érték. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
 | resource | ajánlott |A célként szolgáló webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja. Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory**elemre, majd az **alkalmazás regisztrációja**elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok**elemre. Külső erőforrás is lehet, például `https://graph.microsoft.com`. Erre az engedélyezési vagy a jogkivonat-kérelmek egyikében van szükség. Annak biztosítása érdekében, hogy kevesebb hitelesítési kérdés kerüljön az engedélyezési kérelembe annak biztosításához, hogy a felhasználó elfogadja a jóváhagyást. |
-| scope | **figyelmen kívül hagyja** | A v1 Azure AD-alkalmazások esetében a hatóköröket statikusan kell konfigurálni az Azure Portalon az alkalmazások **beállításai**, a **szükséges engedélyek**területen. |
-| gyors |választható |Adja meg a szükséges felhasználói interakció típusát.<p> Érvényes értékek a következők: <p> *Bejelentkezés*: a rendszer kérni fogja a felhasználótól az ismételt hitelesítést. <p> *select_account*: a rendszer megkéri a felhasználót, hogy válasszon egy fiókot, és szakítsa meg az egyszeri bejelentkezést. A felhasználó kiválaszthat egy meglévő bejelentkezett fiókot, megadhatja a megjegyzett fiók hitelesítő adatait, vagy választhat, hogy egy másik fiókot is használ-e. <p> *beleegyezik*: a felhasználói beleegyezett, de frissíteni kell. A felhasználónak meg kell adnia a hozzájárulásukat. <p> *admin_consent*: a rendszergazdának a szervezet összes felhasználója nevében kell megadnia a hozzájárulásukat |
+| hatókör | **figyelmen kívül hagyja** | A v1 Azure AD-alkalmazások esetében a hatóköröket statikusan kell konfigurálni az Azure Portalon az alkalmazások **beállításai**, a **szükséges engedélyek**területen. |
+| gyors |választható |Adja meg a szükséges felhasználói interakció típusát.<p> Az érvényes értékek az alábbiak: <p> *Bejelentkezés*: a rendszer kérni fogja a felhasználótól az ismételt hitelesítést. <p> *select_account*: a rendszer megkéri a felhasználót, hogy válasszon egy fiókot, és szakítsa meg az egyszeri bejelentkezést. A felhasználó kiválaszthat egy meglévő bejelentkezett fiókot, megadhatja a megjegyzett fiók hitelesítő adatait, vagy választhat, hogy egy másik fiókot is használ-e. <p> *beleegyezik*: a felhasználói beleegyezett, de frissíteni kell. A felhasználónak meg kell adnia a hozzájárulásukat. <p> *admin_consent*: a rendszergazdának a szervezet összes felhasználója nevében kell megadnia a hozzájárulásukat |
 | login_hint |választható |A használatával előre kitöltheti a felhasználó bejelentkezési oldalának username/e-mail címe mezőjét, ha már ismeri a felhasználónevét. Az alkalmazások gyakran ezt a paramétert használják az újrahitelesítés során, miután az `preferred_username` jogcím használatával már kibontották a felhasználónevet egy korábbi bejelentkezésből. |
 | domain_hint |választható |A felhasználó által a bejelentkezéshez használt bérlőről vagy tartományról nyújt be egy tippet. A domain_hint értéke a bérlő regisztrált tartománya. Ha a bérlőt egy helyszíni címtárba összevonták, a HRE átirányítja a megadott bérlői összevonási kiszolgálóra. |
 | code_challenge_method | ajánlott    | A `code_challenge` paraméterhez tartozó `code_verifier` kódolására szolgáló metódus. `plain` vagy `S256`egyike lehet. Ha ki van zárva, a rendszer a `code_challenge`t úgy tekinti, hogy egyszerű szöveges, ha `code_challenge` szerepel. Az Azure HRE 1.0-s verziójában `plain` és `S256`is támogatott. További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
@@ -206,7 +206,7 @@ A sikeres válasz így néz ki:
 | expires_in |A hozzáférési jogkivonat érvényességi ideje (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. Ez az érték a gyorsítótárazott tokenek élettartamának meghatározására szolgál. |
 | resource |A webes API alkalmazás-azonosító URI-ja (biztonságos erőforrás). |
-| scope |Az ügyfélalkalmazás számára megadott megszemélyesítési engedélyek. Az alapértelmezett engedély `user_impersonation`. A biztonságos erőforrás tulajdonosa további értékeket is regisztrálhat az Azure AD-ben. |
+| hatókör |Az ügyfélalkalmazás számára megadott megszemélyesítési engedélyek. Az alapértelmezett engedély `user_impersonation`. A biztonságos erőforrás tulajdonosa további értékeket is regisztrálhat az Azure AD-ben. |
 | refresh_token |Egy OAuth 2,0 frissítési token. Az alkalmazás az aktuális hozzáférési jogkivonat lejárta után további hozzáférési jogkivonatok beszerzésére használhatja ezt a tokent. A frissítési tokenek hosszú életűek, és az erőforrásokhoz való hozzáférés hosszabb ideig is használhatók. |
 | id_token |Egy [azonosító jogkivonatot](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)jelölő aláíratlan JSON web token (JWT). Az alkalmazás képes base64Url dekódolni a token szegmenseit, hogy információkat kérjen a bejelentkezett felhasználóval kapcsolatban. Az alkalmazás gyorsítótárazhatja az értékeket, és megjelenítheti őket, de nem hivatkozhat rájuk az engedélyezési vagy biztonsági határokra. |
 
@@ -342,7 +342,7 @@ A jogkivonat sikeres válasza A következőképpen fog kinézni:
 | expires_in |A token hátralévő élettartama másodpercben. Egy átlagos érték 3600 (egy óra). |
 | expires_on |A jogkivonat lejárati dátuma és időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. |
 | resource |Meghatározza azt a biztonságos erőforrást, amelyet a hozzáférési jogkivonat használhat. |
-| scope |A natív ügyfélalkalmazás számára megadott megszemélyesítési engedélyek. Az alapértelmezett engedély **user_impersonation**. A célként megadott erőforrás tulajdonosa az Azure AD-ben is regisztrálhat alternatív értékeket. |
+| hatókör |A natív ügyfélalkalmazás számára megadott megszemélyesítési engedélyek. Az alapértelmezett engedély **user_impersonation**. A célként megadott erőforrás tulajdonosa az Azure AD-ben is regisztrálhat alternatív értékeket. |
 | access_token |A kért új hozzáférési jogkivonat. |
 | refresh_token |Egy új OAuth 2,0 refresh_token, amely új hozzáférési jogkivonatok igénylésére használható, ha a válaszban szereplő egy lejárati idő lejár. |
 
@@ -373,5 +373,5 @@ A példaként kapott hiba a következőhöz hasonló:
 
 A hibakódok és az ajánlott ügyfél-művelet leírását a jogkivonat- [végponti hibák hibakódja](#error-codes-for-token-endpoint-errors)című témakörben tekintheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az Azure AD 1.0 végpontról, valamint a webes alkalmazások és webes API-k hitelesítésének és engedélyezésének módjáról: [példák az alkalmazásokra](sample-v1-code.md).

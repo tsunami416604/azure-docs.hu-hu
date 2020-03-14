@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: 6392c1a128032670ae9d43a1f23c59194c2964bb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279779"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standard áttekintése
 
@@ -27,7 +27,7 @@ Az Azure DDoS Protection az alkalmazások kialakításával kapcsolatos ajánlot
 - **Alapszintű**: automatikusan engedélyezve van az Azure platform részeként. A forgalom folyamatos monitorozása és a gyakori hálózati szintű támadások valós idejű enyhítése biztosítja a Microsoft online szolgáltatások által használt védelmi adatokat. Az Azure globális hálózatának teljes skálája felhasználható a különböző régiók közötti támadási forgalom elosztására és enyhítésére. A védelem az IPv4-és IPv6-alapú Azure [nyilvános IP-címekhez](virtual-network-public-ip-address.md)van megadva.
 - **Standard**: további enyhítő képességeket biztosít az alapszintű szolgáltatási szinten, amelyeket kifejezetten az Azure Virtual Network erőforrásaihoz hangoltak. DDoS Protection a standard egyszerűen engedélyezhető, és nem igényel alkalmazás-módosítást. A védelmi szabályzatok a dedikált forgalom monitorozásával és a gépi tanulási algoritmusokkal vannak összehangolva. A házirendeket a rendszer a virtuális hálózatokban üzembe helyezett erőforrásokhoz társított nyilvános IP-címekre alkalmazza, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric példányokban, de ez a védelem nem vonatkozik App Service környezetekre. A valós idejű telemetria a támadás során Azure Monitor nézeteken keresztül érhető el, és az előzményekhez. A hatékony támadások enyhítése diagnosztikai beállításokon keresztül érhető el. Az alkalmazások rétegének védelme az [azure Application Gateway webalkalmazási tűzfalon](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) keresztül, vagy egy külső gyártótól származó tűzfal az Azure Marketplace-ről való telepítésével adható hozzá. A védelem az IPv4-és IPv6-alapú Azure [nyilvános IP-címekhez](virtual-network-public-ip-address.md)van megadva.
 
-|Funkció                                         |Alapszintű DDoS Protection                 |DDoS Protection Standard                      |
+|Szolgáltatás                                         |Alapszintű DDoS Protection                 |DDoS Protection Standard                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |Aktív forgalom figyelése & always on észlelés |Igen                                   |Igen                                           |
 |Automatikus támadás-enyhítés                    |Igen                                   |Igen                                           |
@@ -39,7 +39,7 @@ Az Azure DDoS Protection az alkalmazások kialakításával kapcsolatos ajánlot
 |Áttelepítési szabályzat testreszabása                 |Nem                                    |DDoS-szakértők részvétele                           |
 |Támogatás                                         |Legjobb erőfeszítés                           |Hozzáférés a DDoS-szakértőkhöz aktív támadás során|
 |SLA                                             |Azure-régió                          |Alkalmazás-garancia & Cost Protection       |
-|Díjszabás                                         |Ingyenes                                  |Havi & használat alapján                         |
+|Díjszabás                                         |Free                                  |Havi & használat alapján                         |
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>A standard megoldásokkal DDoS Protection DDoS-támadások típusai
 
@@ -89,6 +89,6 @@ A Microsoft a BreakingPoint- [felhővel](https://www.ixiacom.com/products/breaki
 - Dokumentum DDoS-megfelelősége
 - A hálózati biztonsági csapatok betanítása
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [DDoS Protection standard konfigurálása](manage-ddos-protection.md)

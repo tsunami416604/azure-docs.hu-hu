@@ -9,14 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163041"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371409"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: az Azure digitális Twins előzetes verziójának üzembe helyezése és a térbeli gráf konfigurálása
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Az Azure Digital ikrek előzetes verzió szolgáltatásával egy koherens térbeli rendszerbe rendezheti az embereket, a helyeket és az eszközöket. Ez az oktatóanyag-sorozat bemutatja, hogyan használhatja az Azure digitális Twins észleléséhez helyiségben foglaltsága hőmérséklet és a légi minőségű optimális feltételekkel. 
 
@@ -38,7 +40,7 @@ Ezek az oktatóanyagok ugyanazokat a mintákat használják és módosítják, m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha még nincs Azure-fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure-előfizetés. Ha nem rendelkezik Azure-fiókkal, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - A .NET Core SDK-t. Az Azure digitális Twins minták ezekben az oktatóanyagokban használt nyelven írták C#. A minta létrehozásához és futtatásához győződjön meg arról, hogy a fejlesztői gépen [.net Core SDK 2.1.403 vagy újabb verzió](https://www.microsoft.com/net/download) van telepítve. Győződjön meg arról, hogy a megfelelő verzió telepítve van a gépen a `dotnet --version` parancssori futtatásával.
 
@@ -147,7 +149,7 @@ A **provisionSample. YAML** fájl a következő csomópontokat tartalmazza:
 
 - **spaces**: A Digital Twins-objektummodellben a `spaces` jelöli a fizikai helyeket. Minden területhez tartozik egy `Type`&mdash;például a régió, a helyszín vagy az ügyfél&mdash;és egy barátságos `Name`. Tárolóhelyek más tárolóhelyek létrehozása a hierarchikus is tartozhat. A provisionSample.yaml fájl rendelkezik egy képzeletbeli épület térbeli grafikon. Figyelje meg, hogy `Floor` típusú szóközök logikai beágyazása `Venue`, a padlón `Area`, és egy adott területen `Room` csomópontok között. 
 
-- **devices**: A terek `devices`-elemeket tartalmazhatnak, amelyek érzékelőket kezelő fizikai vagy virtuális entitások. Egy eszköz lehet például a felhasználó telefonja, érzékelő podot Raspberry Pi vagy egy átjárót. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
+- **devices**: A terek `devices`-elemeket tartalmazhatnak, amelyek érzékelőket kezelő fizikai vagy virtuális entitások. Előfordulhat például, hogy egy eszköz lehet egy felhasználó telefonja, egy málna PI szenzor Pod vagy egy átjáró. Figyelje meg a mintában lévő képzeletbeli épületben, hogy a **Focus Room** nevű helyiség egy **Raspberry Pi 3 A1** eszközt tartalmaz. Minden eszközcsomópontot egyedi `hardwareId` azonosít, amely szoftveresen kötött a mintában. A minta tényleges éles környezethez való konfigurálásához cserélje le ezeket a környezetében lévő értékekre.  
 
 - **érzékelők**: az eszközök több `sensors`is tartalmazhatnak. Azt is észleli, és rekord fizikai módosítása, például hőmérséklet mozgásban lévő adatoknak egyaránt és töltöttségi szint. Minden érzékelő-csomópontot egyedien azonosít egy `hardwareId`, amely itt szoftveresen kötött. Tényleges alkalmazás esetén cserélje le ezeket a telepítő az érzékelők egyedi azonosítói használatával. A provisionSample. YAML fájl két érzékelővel rendelkezik a *Motion* és a *CarbonDioxide*rögzítéséhez. Ha a *hőmérséklet* érzékelőjét is hozzá szeretné adni, adja a következő sorokat a széndioxid-érzékelő sorai alá. Ezeket a provisionSample. YAML a megjegyzésekkel ellátható sorokban biztosítjuk. Az egyes sorok elején lévő `#` karakter eltávolításával törölheti a megjegyzéseket. 
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391421"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282392"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric üzemeltetési modell
 Ez a cikk áttekintést nyújt az Azure Service Fabric által biztosított alkalmazás-üzemeltetési modellekről, valamint ismerteti a **megosztott folyamat** és az **exkluzív folyamat** modelljei közötti különbségeket. Leírja, hogyan néz ki egy telepített alkalmazás egy Service Fabric csomóponton, valamint a szolgáltatás replikái (vagy példányai) és a Service-Host folyamat közötti kapcsolat.
@@ -169,7 +169,7 @@ A (z) "MultiTypeServicePackage" a Service **Fabric:/SpecialApp/servicea**, a (z)
 
 Az előző példában úgy tűnhet, hogy ha a "MyCodePackageA" regisztrálja a "MyServiceTypeA" és a "MyServiceTypeB" karakterláncot, és nincs "MyCodePackageB", akkor nem fut redundáns *CodePackage* . Bár ez helyes, ez az alkalmazás-modell nem illeszkedik az exkluzív folyamat üzemeltetési modelljéhez. Ha a cél az, hogy az egyes replikákat a saját dedikált folyamatában helyezze el, nem kell mindkét *ServiceTypes* regisztrálnia ugyanabból a *CodePackage*. Ehelyett egyszerűen helyezze el az egyes *ServiceType* a saját *szervizcsomagjában*.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazás becsomagolása][a4] és üzembe helyezése készen áll a telepítésre.
 
 [Alkalmazások telepítése és eltávolítása][a5]. Ez a cikk azt ismerteti, hogyan használható a PowerShell az alkalmazások példányainak kezeléséhez.

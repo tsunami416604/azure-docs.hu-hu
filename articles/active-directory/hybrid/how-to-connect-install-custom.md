@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375959"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261449"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -283,7 +283,7 @@ Határozza meg a webalkalmazás-proxy kiszolgálóként használni kívánt kisz
 > <li> A hitelesítési kérések zavartalan áramlása érdekében győződjön meg róla, hogy fennáll a HTTP/HTTPS kapcsolat a webalkalmazás-kiszolgáló és az AD FS-kiszolgáló közt.</li>
 >
 
-![Webalkalmazás](./media/how-to-connect-install-custom/adfs3.png)
+![Webes alkalmazás](./media/how-to-connect-install-custom/adfs3.png)
 
 A rendszer kéri a hitelesítő adatok megadását, hogy a webalkalmazás-kiszolgáló létrehozhasson egy biztonságos kapcsolatot az AD FS-kiszolgálóval. Ezeknek helyi rendszergazdai hitelesítő adatoknak kell lenniük az AD FS kiszolgálón.
 
@@ -336,7 +336,7 @@ A PingFederate-et kell beállítani összevonási kiszolgálóként mindegyik ö
 
 Az érvényesítéssel kapcsolatos problémák megoldásához forduljon a PingFederate-rendszergazdához.  Az alábbiakban egy példa látható egy PingFederate-kiszolgálóra, amely nem rendelkezik érvényes megbízhatósági kapcsolattal az Azure-ral:
 
-![Bizalmi kapcsolat](./media/how-to-connect-install-custom/ping5.png)
+![Bizalom](./media/how-to-connect-install-custom/ping5.png)
 
 
 
@@ -382,7 +382,7 @@ Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a 
 
 * Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához.
 
-![Complete](./media/how-to-connect-install-custom/completed.png)
+![Kész](./media/how-to-connect-install-custom/completed.png)
 
 ![Ellenőrzés](./media/how-to-connect-install-custom/adfs7.png)
 
@@ -393,7 +393,7 @@ A teljes körű hitelesítés sikerességének ellenőrzéséhez manuálisan kel
 * Ellenőrizze, hogy be tud jelentkezni egy, az extraneten lévő eszközről. Egy otthoni gépről vagy mobileszközről csatlakozzon a https://myapps.microsoft.com helyre, és adja meg hitelesítő adatait.
 * Ellenőrizze a gazdag ügyféllel való bejelentkezést. Csatlakozzon a https://testconnectivity.microsoft.com helyhez, lépjen az **Office 365** lapra, és válassza az **Office 365 Single Sign-On Test** (Office 365 egyszeri bejelentkezés tesztelése) lehetőséget.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 A következő szakaszban az Azure AD Connect telepítése során felmerülő problémákkal kapcsolatos hibaelhárítási és egyéb információkat talál.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Az ADSync adatbázis már tartalmaz adatokat, és nem írható felül”
@@ -415,7 +415,7 @@ Végül törölje az adatbázist.  Ehhez használja a **Microsoft SQL Server Man
 
 Miután törölte az **ADSync** adatbázist, a **Telepítés** gombra kattintva újból megkísérelheti a telepítést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen be a Windowsba, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná.
 
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).

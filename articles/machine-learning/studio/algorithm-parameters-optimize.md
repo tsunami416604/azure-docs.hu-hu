@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168969"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218268"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine Learning Studio (klasszikus)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a témakör azt ismerteti, hogyan választhatja ki a megfelelő hiperparaméter-készletet Azure Machine Learning Studio (klasszikus) algoritmushoz. A legtöbb gépi tanulási algoritmusok meg a paraméterek beállításához. Amikor egy modell betanításához e paraméterek értékének megadására van szükség. A betanított modell hatékonyságát a modell paraméterek, választott függ. A paraméterek optimális készletének megkeresésének folyamata modell- *kiválasztás*néven ismert.
 
@@ -41,7 +43,7 @@ A paraméter a modell alkalmazásinicializálási lépéshez beállítva határo
 
 ![Kétosztályos gyorsított döntési fa, egyetlen paramétert](./media/algorithm-parameters-optimize/fig2.png)
 
- Másik lehetőségként megadhatja a rács maximális és minimális pontjait, valamint a **használati tartomány-szerkesztővel**előállított pontok teljes számát. Alapértelmezés szerint a paraméterértékek lineáris skála jönnek létre. Ha azonban a **naplózási skála be** van jelölve, az értékek a naplózási skálán jönnek létre (azaz a szomszédos pontok aránya állandó a különbség helyett). Egész szám paramétert meghatározhatja egy tartományt kötőjellel. Például "1-10" azt jelenti, hogy az összes egész számok 1 és 10 (mindkét határokat is beleértve) közötti alkotnak a paraméterkészletet. A kevert üzemmód is támogatott. Ha például a paraméterkészlet "1 – 10, 20, 50" műveletekre egész számok 1-10, 20, és 50.
+ Másik lehetőségként megadhatja a rács maximális és minimális pontjait, valamint a **használati tartomány-szerkesztővel**előállított pontok teljes számát. Alapértelmezés szerint a paraméterértékek lineáris skála jönnek létre. Ha azonban a **naplózási skála be** van jelölve, az értékek a naplózási skálán jönnek létre (azaz a szomszédos pontok aránya állandó a különbség helyett). Egész szám paramétert meghatározhatja egy tartományt kötőjellel. Például a "1-10" érték azt jelenti, hogy az 1 és 10 közötti egész szám (a kettőt is beleértve) a beállított paramétert alkotják. A kevert üzemmód is támogatott. Például a "1-10, 20, 50" set paraméter a következő egész számot tartalmazza: 1-10, 20 és 50.
 
 ![Kétosztályos gyorsított döntési fa, paraméter tartomány](./media/algorithm-parameters-optimize/fig3.png)
 

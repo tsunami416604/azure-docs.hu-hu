@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362819"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257614"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
 
@@ -36,7 +36,7 @@ A Site Recovery Deployment Planner egy olyan jelentést biztosít, amely teljes 
 
 Egy olyan konfigurációs kiszolgáló, amely egy beépített folyamat-kiszolgálót használ a munkaterhelések elleni védelemhez, az alábbi konfigurációk alapján akár 200 virtuális gépet is kezelhet:
 
-CPU | Memory (Memória) | Gyorsítótárazott lemez mérete | Adatváltozási arány | Védett gépek
+CPU | Memória | Gyorsítótárazott lemez mérete | Adatváltozási arány | Védett gépek
 --- | --- | --- | --- | ---
 8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | Kevesebb mint 100 gép replikálására használható.
 12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB – 1 TB | 100 és 150 gép közötti replikálásra használható.
@@ -168,6 +168,6 @@ A regisztráció sikeres befejezését követően a kiszolgáló megjelenik a Az
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)letöltése és futtatása.

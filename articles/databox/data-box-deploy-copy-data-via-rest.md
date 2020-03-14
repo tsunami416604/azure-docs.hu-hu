@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
 ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380161"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79238999"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül  
 
 Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https*-kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek
@@ -222,7 +222,7 @@ Ha a csatlakozás vagy a másolás művelet során hibák léptek fel, tekintse 
 
 A következő lépés az eszköz szállításra való előkészítése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

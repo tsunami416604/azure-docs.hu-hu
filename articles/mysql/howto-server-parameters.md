@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392708"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245719"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Hogyan lehet a kiszolgáló paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure portal használatával
 
@@ -41,12 +41,12 @@ A InnoDB-puffer mérete nem konfigurálható, és az [árképzési szintjéhez](
 |:---|---:|---:|---:|
 |Alapszintű| 1| 832| |
 |Alapszintű| 2| 2560| |
-|Általános célú| 2| 3584| 7168|
-|Általános célú| 4| 7680| 15360|
-|Általános célú| 8| 15360| 30720|
-|Általános célú| 16| 31232| 62464|
-|Általános célú| 32| 62976| 125952|
-|Általános célú| 64| 125952| 251904|
+|Általános rendeltetés| 2| 3584| 7168|
+|Általános rendeltetés| 4| 7680| 15360|
+|Általános rendeltetés| 8| 15360| 30720|
+|Általános rendeltetés| 16| 31232| 62464|
+|Általános rendeltetés| 32| 62976| 125952|
+|Általános rendeltetés| 64| 125952| 251904|
 |Memóriára optimalizált| 2| 7168| 14336|
 |Memóriára optimalizált| 4| 15360| 30720|
 |Memóriára optimalizált| 8| 30720| 61440|
@@ -102,6 +102,6 @@ SET time_zone = 'US/Pacific';
 
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

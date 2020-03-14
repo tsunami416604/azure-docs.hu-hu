@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
 ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392497"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245381"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -148,7 +148,7 @@ A [támogatott Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs
 | Riasztások információinak beolvasása: idő, név, állapot, azonosító és előfizetés | index = fő Microsoft. Security/Locations/riasztások \| tábla \_idő, tulajdonságok. eventName, állapot, tulajdonságok. operationId, am_subscriptionId |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő cikket:
 

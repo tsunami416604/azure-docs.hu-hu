@@ -8,17 +8,17 @@ ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 11f593bae6b3aab8355a8f39b56639cad8133b51
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362833"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257445"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
 Ez a cikk a helyszíni VMware virtuális gépek (VM-EK) Azure-ba történő vész-helyreállításának telepítésekor felmerülő gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Mire van szükség a VMware virtuális gépek vész-helyreállításához?
 
@@ -357,7 +357,7 @@ Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhat
 
 Igen. [További információk](site-recovery-plan-capacity-vmware.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](vmware-physical-azure-support-matrix.md) a támogatási követelményeket.
 - [Beállítás](vmware-azure-tutorial.md) VMware – Azure replikálás.

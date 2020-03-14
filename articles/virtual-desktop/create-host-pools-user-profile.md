@@ -9,11 +9,11 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127376"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250919"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
 
@@ -66,7 +66,7 @@ A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a követ
 6. Hozzon létre egy **profilok**nevű kulcsot.
 7. Hozza létre a következő értékeket a profilok kulcshoz:
 
-| Name (Név)                | Típus               | Az adatértékek/értékek                        |
+| Név                | Típus               | Az adatértékek/értékek                        |
 |---------------------|--------------------|-----------------------------------|
 | Engedélyezve             | DWORD              | 1                                 |
 | VHDLocations        | Több karakterláncos érték | "Fájlmegosztás hálózati elérési útja"     |

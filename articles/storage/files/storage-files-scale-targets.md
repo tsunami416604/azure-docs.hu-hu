@@ -8,11 +8,11 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362120"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255131"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -78,9 +78,9 @@ Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbi
 | Rendszer-konfiguráció |  |
 |-|-|
 | CPU | 64 virtuális maggal és 64 MiB L3-gyorsítótár |
-| Memory (Memória) | 128 GiB |
+| Memória | 128 GiB |
 | Lemez | Akkumulátor a RAID 10-zel SAS-lemezek biztonsági gyorsítótár |
-| Hálózat | 1 GB/s hálózat |
+| Network (Hálózat) | 1 GB/s hálózat |
 | Számítási feladat | Általános célú fájlkiszolgáló|
 
 | Kezdeti egyszeri kiépítése  |  |

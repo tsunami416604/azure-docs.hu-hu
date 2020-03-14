@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117163"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259473"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -270,7 +270,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Névtér figyelésének megkezdése |Figyelés |Bármely névtér címe |
 | Üzenetek küldése egy figyelőnek egy névtérben |Küldés |Bármely névtér címe |
 | **Várólista** | | |
-| Üzenetsor létrehozása |Kezelés |Bármely névtér címe |
+| Várólista létrehozása |Kezelés |Bármely névtér címe |
 | Üzenetsor törlése |Kezelés |Bármely érvényes várólista-címe |
 | Várólisták enumerálása |Kezelés |/$Resources/Queues |
 | A várólista leírásának beolvasása |Kezelés |Bármely érvényes várólista-címe |
@@ -305,7 +305,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Szabály törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
 | Szabályok enumerálása |Kezelés vagy figyelés |../myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 

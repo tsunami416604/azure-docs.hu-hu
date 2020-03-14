@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365609"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254533"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – a Azure Portal előkészítése
 
@@ -30,7 +30,7 @@ A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogo
 
 A cikkben közzétett információk a StorSimple virtuális tömbök üzembe helyezésére vonatkoznak a Azure Portal és Microsoft Azure Government felhőben.
 
-### <a name="get-started"></a>Első lépések
+### <a name="get-started"></a>Bevezetés
 Az üzembe helyezési munkafolyamat a portál előkészítését, virtuális tömb kiépítését a virtualizált környezetben, valamint a telepítés befejezését foglalja magában. Ha a StorSimple Virtual Array üzemelő példányát fájlkiszolgáló vagy iSCSI-kiszolgálóként szeretné elindítani, tekintse át a következő táblázatos erőforrásokat.
 
 #### <a name="deployment-articles"></a>Üzembe helyezési cikkek
@@ -162,7 +162,7 @@ Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a követk
    
       ![Meglévő Storage-fiók hitelesítő adatainak hozzáadása](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-step"></a>További lépések
 
 A következő lépés egy virtuális gép kiépítése a StorSimple virtuális tömbhöz. A gazdagép operációs rendszerétől függően az alábbi témakörökben tekintheti meg a részletes utasításokat:
 

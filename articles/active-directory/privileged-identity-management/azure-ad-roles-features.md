@@ -17,11 +17,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375418"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245979"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Az Azure AD-szerepkörök felügyeleti képességei Privileged Identity Management
 
@@ -64,7 +64,7 @@ Mindent megtettünk, hogy megismerjük a korábbi API-t használó ügyfeleket, 
 
 Azon ügyfelek esetében, akik az Azure AD-szerepkörökhöz tartozó Privileged Identity Management PowerShell-modult használják, a PowerShell nem fog működni a frissítéssel. Az előző parancsmagok helyett a Privileged Identity Management-parancsmagokat kell használnia az Azure AD előzetes verzió PowerShell-modulján belül. Telepítse az Azure AD PowerShell-modult a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Most már [elolvashatja a PIM-műveletekhez tartozó dokumentációt és mintákat ebben a PowerShell-modulban](powershell-for-azure-ad-roles.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

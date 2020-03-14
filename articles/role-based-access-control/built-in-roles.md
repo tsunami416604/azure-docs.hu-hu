@@ -1,6 +1,6 @@
 ---
 title: Azure-beli beépített szerepkörök az Azure RBAC
-description: Ismerteti az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Azure-beli beépített szerepköreit. Felsorolja a műveleteket, a nem Tapintatokat, a DataActions és a NotDataActions.
+description: Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (RBAC) Azure-beli beépített szerepköreit ismerteti. Felsorolja a műveleteket, a nem Tapintatokat, a DataActions és a NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,30 +11,30 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b7b944880074b64f6a9e66e177082e52632e9c9d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 5b6da05f07636f6a6dde16cf6d8061629a72adfa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205891"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281105"
 ---
 # <a name="azure-built-in-roles"></a>Azure beépített szerepkörök
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) számos olyan Azure-beli beépített szerepkört tartalmaz, amelyeket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz rendelhet hozzá. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
+Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) számos olyan Azure-beli beépített szerepkört tartalmaz, amelyeket felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz rendelhet hozzá. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
 
-Ez a cikk az Azure-erőforrások beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha a Azure Active Directory rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Ez a cikk az Azure-erőforrások beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha Azure Active Directory (Azure AD) rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit a Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="descriptions-and-ids"></a>Leírások és azonosítók
 
-Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. A szerepkör nevére kattintva megtekintheti az egyes szerepkörökhöz tartozó `Actions`, `NotActions`, `DataActions`és `NotDataActions` listáját. További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md).
+Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. Válassza ki a szerepkör nevét az egyes szerepkörökhöz tartozó `Actions`, `NotActions`, `DataActions`és `NotDataActions` listájának megtekintéséhez. További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Leírás | ID (Azonosító) |
+> | Beépített szerepkör | Leírás | ID |
 > | --- | --- | --- |
 > | [AcrDelete](#acrdelete) | ACR törlése | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | ACR-rendszerkép aláírója | 6cef56e8-d556-48e5-a04f-b8e64114680f |
@@ -173,7 +173,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Munkafüzet-olvasó](#workbook-reader) | A munkafüzetek beolvasása. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 
 ### <a name="contributor"></a>Közreműködő
@@ -1019,7 +1019,7 @@ Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz
 }
 ```
 
-## <a name="compute"></a>Számítás
+## <a name="compute"></a>Compute
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Klasszikus virtuális gép közreműködője
@@ -1059,7 +1059,7 @@ Lehetővé teszi a klasszikus virtuális gépek kezelését, de nem fér hozzáj
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -1316,7 +1316,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -2052,7 +2052,7 @@ Lehetővé teszi az SQL felügyelt példányok és a szükséges hálózati konf
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -3853,10 +3853,7 @@ Kezelheti a terv definícióit, de nem rendelheti hozzá őket.
 
 ### <a name="blueprint-operator"></a>Blueprint operátor
 
-Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új tervrajzokat. 
-
-> [!NOTE] 
-> Ez csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva.
+Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új tervrajzokat. Megjegyzés: ez csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
 > | Microsoft. WorkloadMonitor/figyelők/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft. AlertsManagement/smartDetectorAlertRules/* |  |
+> | Microsoft. AlertsManagement/actionRules/* |  |
+> | Microsoft. AlertsManagement/smartGroups/* |  |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
 > | **DataActions** |  |
@@ -4359,7 +4358,9 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -5322,7 +5323,7 @@ Kezelheti a CDN-végpontokat, de nem tud hozzáférést biztosítani más felhas
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5376,7 +5377,7 @@ Megtekintheti a CDN-végpontokat, de nem végezheti el a módosításokat.
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5430,7 +5431,7 @@ Kezelheti a CDN-profilokat és azok végpontjait, de nem adhat hozzáférést m�
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5484,7 +5485,7 @@ Megtekintheti a CDN-profilokat és azok végpontjait, de nem végezhet módosít
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Azure Sentinel közreműködő
 > | **Műveletek** |  |
 > | Microsoft. SecurityInsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Keresés az új motor használatával. |
-> | Microsoft.OperationalInsights/workspaces/read | Meglévő munkaterület beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/*/READ | Log Analytics-adatértékek megtekintése |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | OMS-megoldás beolvasása |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/olvasás | Lekérdezések futtatása a munkaterület összes adatán |
@@ -5763,7 +5764,7 @@ Azure Sentinel közreműködő
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Azure Sentinel-olvasó
 > | **Műveletek** |  |
 > | Microsoft. SecurityInsights/*/READ |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Keresés az új motor használatával. |
-> | Microsoft.OperationalInsights/workspaces/read | Meglévő munkaterület beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/*/READ | Log Analytics-adatértékek megtekintése |
+> | Microsoft. OperationalInsights/munkaterületek/LinkedServices/olvasás | Társított szolgáltatások beolvasása az adott munkaterületen. |
 > | Microsoft. OperationalInsights/munkaterületek/savedSearches/olvasás | Mentett keresési lekérdezés beolvasása |
 > | Microsoft.OperationsManagement/solutions/read | OMS-megoldás beolvasása |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/olvasás | Lekérdezések futtatása a munkaterület összes adatán |
@@ -5829,7 +5831,8 @@ Azure Sentinel-olvasó
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Azure Sentinel-válaszadó
 > | **Műveletek** |  |
 > | Microsoft. SecurityInsights/*/READ |  |
 > | Microsoft. SecurityInsights/esetek/* |  |
+> | Microsoft. SecurityInsights/incidensek/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Keresés az új motor használatával. |
-> | Microsoft.OperationalInsights/workspaces/read | Meglévő munkaterület beolvasása |
+> | Microsoft. OperationalInsights/munkaterületek/*/READ | Log Analytics-adatértékek megtekintése |
 > | Microsoft. OperationalInsights/munkaterületek/adatforrások/olvasás | Munkaterületen lévő adatforrások beolvasása. |
 > | Microsoft. OperationalInsights/munkaterületek/savedSearches/olvasás | Mentett keresési lekérdezés beolvasása |
 > | Microsoft.OperationsManagement/solutions/read | OMS-megoldás beolvasása |
@@ -5897,8 +5901,9 @@ Azure Sentinel-válaszadó
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6189,7 +6194,7 @@ Megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági ház
 }
 ```
 
-## <a name="storage"></a>Tárterület
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>Avere közreműködője
@@ -6655,6 +6660,7 @@ Megtekintheti a biztonsági mentési szolgáltatásokat, de nem végezheti el a 
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Egy adott művelet műveleti állapotának beolvasása |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Az összes biztonsági mentési védelmi leképezés listázása |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Egy Recovery Services tár használati adatait adja vissza. |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | Funkciók ellenőrzése |
 > | **Nincs tapintat** |  |
 > | *nEz egy* |  |
 > | **DataActions** |  |
@@ -6709,7 +6715,8 @@ Megtekintheti a biztonsági mentési szolgáltatásokat, de nem végezheti el a 
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7898,7 +7905,7 @@ Lehetővé teszi a BizTalk Services kezelését, de azokhoz való hozzáférés 
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

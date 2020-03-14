@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391041"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248592"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure platform-naplók gyűjtése Log Analytics munkaterületen Azure Monitor
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk ismerteti az erőforrás-naplók összegyűjtését egy Log Analytics munkaterületen, amely lehetővé teszi, hogy a rendszer hatékony naplók használatával elemezze Azure Monitor naplókban gyűjtött más figyelési adatokkal, valamint más Azure Monitor funkciók, például riasztások és vizualizációk. 
@@ -54,7 +54,7 @@ Vegye figyelembe a következő példát, ahol a diagnosztikai beállítások gy�
 
 A AzureDiagnostics táblázat a következőképpen jelenik meg:  
 
-| ResourceProvider    | Kategória     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | Kategória     | Az  | B  | Ü  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft. service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Microsoft. service1 | Alkalmazásnaplókat    |    |    |    | q1 | W1 | E1 csomag |    |    |    |
@@ -71,7 +71,7 @@ A fenti példa három tábla létrehozását eredményezi:
  
 - A tábla *Service1AuditLogs* a következőképpen történik:
 
-    | Erőforrás-szolgáltató | Kategória | A | B | C |
+    | Erőforrás-szolgáltató | Kategória | Az | B | Ü |
     | -- | -- | -- | -- | -- |
     | Service1 | AuditLogs | x1 | y1 | z1 |
     | Service1 | AuditLogs | x5 | y5 | z5 |
@@ -121,7 +121,7 @@ Azure Data Factory a naplók nagyon részletes készlete miatt egy olyan szolgá
 A naplók áttelepíthetők az erőforrás-specifikus mód használatára a lehető leghamarabb. Ha ezt azonnal nem tudja elvégezni, egy ideiglenes alternatíva az, hogy elkülönítse Azure Data Factory naplókat a saját munkaterületére, hogy csökkentse annak esélyét, hogy ezek a naplók a munkaterületeken gyűjtött más naplózási típusokra is hatással legyenek.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ az erőforrás-naplókról](platform-logs-overview.md).
 * [Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](diagnostic-settings.md).

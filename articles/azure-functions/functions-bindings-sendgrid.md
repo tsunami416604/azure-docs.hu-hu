@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356231"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277465"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -356,13 +356,13 @@ A következő táblázat a *function. JSON* fájlban és a `SendGrid` attribútu
 
 | *function. JSON* -tulajdonság | Attribútum/Megjegyzés tulajdonság | Leírás | Optional |
 |--------------------------|-------------------------------|-------------|----------|
-| type |n/a| `sendGrid`értékre kell állítani.| Nem |
-| irány |n/a| `out`értékre kell állítani.| Nem |
+| típus |n/a| `sendGrid`értékre kell állítani.| Nem |
+| direction |n/a| `out`értékre kell állítani.| Nem |
 | név |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
 | apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
-| erre:| Művelet | A címzett e-mail-címe. | Igen |
+| a következőig:| Végpont | A címzett e-mail-címe. | Igen |
 | from| Forrás | A feladó e-mail-címe. |  Igen |
-| subject| Tárgy | Az e-mail tárgya. | Igen |
+| subject| Tulajdonos | Az e-mail tárgya. | Igen |
 | szöveg| Szöveg | Az e-mail tartalma. | Igen |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
@@ -394,7 +394,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |from|n/a|A küldő e-mail-címe az összes függvényen belül.| 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

@@ -16,11 +16,11 @@ ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375537"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253376"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure Resource Manager használatával
 
@@ -83,7 +83,7 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához haszn
   }
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználó által hozzárendelt felügyelt identitások Azure-beli virtuális gépekhez Azure Resource Manager sablon használatával történő hozzárendelésével kapcsolatos információkért lásd: [felügyelt identitások konfigurálása](qs-configure-template-windows-vm.md)Azure-beli virtuális gépeken sablonok használatával.
 

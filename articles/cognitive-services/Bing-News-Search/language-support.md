@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385076"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220192"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvi és területi támogatása
 
@@ -50,7 +50,7 @@ Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját
 |Egyesült Államok|Angol|hu-HU|
 |Angol|általános|EN-WW|
 |Angol|általános|en-XA|
-|Dél-afrikai Köztársaság|Angol|en-ZA|
+|Dél-Afrika|Angol|en-ZA|
 |Argentína|spanyol|es-AR|
 |Chile|spanyol|es-CL|
 |Spanyolország|spanyol|es-ES|
@@ -60,7 +60,7 @@ Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját
 |Finnország|finn|fi-FI|  
 |Franciaország|francia|fr-BE|
 |Kanada|francia|FR-hitelesítésszolgáltató|
-|Belgium|holland|nl-BE|
+|Belgium|Holland|nl-BE|
 |Svájc|francia|FR-CH|
 |Franciaország|francia|FR-FR|  
 |Olaszország|olasz|it-IT|
@@ -68,9 +68,9 @@ Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját
 |Tajvan|Hagyományos kínai|zh-TW|
 |Japán|japán|ja-JP|  
 |Dél-Korea|koreai|ko-KR|  
-|Hollandia|holland|NL-NL|  
-|Kínai Népköztársaság|kínai|zh-CN|  
-|Brazília|portugál|pt-BR|
+|Hollandia|Holland|NL-NL|  
+|Kínai Népköztársaság|Kínai|zh-CN|  
+|Brazília|Portugál|pt-BR|
 |Oroszország|Orosz|ru-RU|  
 |Svédország|svéd|SV-SE|  
 |Törökország|török|tr-TR|  
@@ -95,8 +95,8 @@ Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Franciaország|francia|FR-FR|  
 |Olaszország|olasz|it-IT|
-|Brazília|portugál|pt-BR|
-|Kínai Népköztársaság|kínai|zh-CN|
+|Brazília|Portugál|pt-BR|
+|Kínai Népköztársaság|Kínai|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>Támogatott piacok a hírek trendi végpontja számára
 Az `/news/trendingtopics` végpont esetében az alábbi táblázat felsorolja a `mkt` lekérdezési paraméter megadásához használható piaci kódok értékeit. A Bing csak ezekre a piacokra vonatkozó tartalmat adja vissza. A lista módosítása változhat.  
@@ -113,8 +113,8 @@ Az `cc` lekérdezési paraméterben megadható ország-/régiókódok listáját
 |India|Angol|en-IN|
 |Franciaország|francia|FR-FR|
 |Kanada|francia|FR-hitelesítésszolgáltató|
-|Brazília|portugál|pt-BR|
-|Kínai Népköztársaság|kínai|zh-CN|
+|Brazília|Portugál|pt-BR|
+|Kínai Népköztársaság|Kínai|zh-CN|
 
 
 <a name="countrycodes"></a>   
@@ -137,7 +137,7 @@ A `cc` lekérdezési paraméterben megadható ország-és régiókódok az aláb
 |Németország|DE|  
 |Hongkong (KKT)|HK|  
 |India|IN|  
-|Indonézia|ID (Azonosító)|  
+|Indonézia|ID|  
 |Olaszország|IT|  
 |Japán|JP|  
 |Dél-Korea|KR|  
@@ -152,14 +152,14 @@ A `cc` lekérdezési paraméterben megadható ország-és régiókódok az aláb
 |Fülöp-szigeteki Köztársaság|PH|  
 |Oroszország|RU|  
 |Szaúd-Arábia|SA|  
-|Dél-afrikai Köztársaság|ZA|  
+|Dél-Afrika|ZA|  
 |Spanyolország|ES|  
 |Svédország|SE|  
 |Svájc|CH|  
 |Tajvan|TW|  
 |Törökország|TR|  
 |Egyesült Királyság|GB|  
-|Egyesült Államok|USA|
+|Egyesült Államok|US|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az Bing News Search-végpontokról: [News Search API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

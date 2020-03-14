@@ -10,11 +10,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386858"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279506"
 ---
 # <a name="private-cloud-vmware-components"></a>Private Cloud VMware-összetevők
 
@@ -86,7 +86,7 @@ Az ESXi-gazdagépek fürtként vannak konfigurálva, hogy magas rendelkezésre �
 
 ### <a name="vsphere-cluster-limits"></a>vSphere-fürt korlátai
 
-| Erőforrás | Korlát |
+| Resource | Korlát |
 |----------|-------|
 | A privát felhő létrehozásához szükséges csomópontok minimális száma (első vSphere-fürt) | 3 |
 | VSphere-fürt csomópontjainak maximális száma privát felhőben | 16 |
@@ -117,6 +117,6 @@ A CloudSimple kritikus biztonsági javítást végez, amint a VMware-ről elérh
 
 A CloudSimple negyedévente karbantartási frissítéseket biztosít a VMware szoftver összetevőihez. Ha elérhetővé válik a VMware szoftver új főverziója, a CloudSimple együttműködik az ügyfelekkel, hogy koordinálja a megfelelő karbantartási időszakot a frissítéshez.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [CloudSimple-karbantartás és-frissítések](cloudsimple-maintenance-updates.md)

@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385346"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265726"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -607,7 +607,7 @@ Ebben a lépésben adatkészleteket hoz létre a bemeneti és kimeneti adatok á
     }
     ```
 
-    Vegye figyelembe a következő pontokat:
+    Vegye figyelembe a következő szempontokat:
 
    * A **Egyidejűség** **2** értékre van állítva, hogy két szeletet párhuzamosan dolgozza fel a rendszer a Azure batch készletben lévő 2 virtuális géppel.
    * A tevékenységek szakaszban egy tevékenység található, és a következő típusú: **DotNetActivity**.

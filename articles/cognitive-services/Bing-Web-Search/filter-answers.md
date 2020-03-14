@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381810"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220269"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési választ tartalmazó válaszok szűrése  
 
@@ -100,7 +100,7 @@ Bár a Bing nem adott vissza videót és híreket az előző válaszban, nem jel
 
 A `responseFilter` használatával nem kell lekérnie az eredményeket egyetlen API-ból. Ha egyetlen Bing API-val szeretne tartalmat használni, hívja meg az API-t közvetlenül. Ha például csak képeket szeretne kapni, küldjön egy kérést az Image Search API-végpontnak, `https://api.cognitive.microsoft.com/bing/v7.0/images/search` vagy az egyik másik [lemezkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) -végpontnak. Az egyetlen API meghívása nem csak a teljesítmény szempontjából fontos, hanem azért, mert a tartalom-specifikus API-k gazdagabb eredményeket nyújtanak. Használhat például olyan szűrőket, amelyek nem érhetők el a Web Search API számára az eredmények szűréséhez.  
 
-### <a name="site"></a>hely
+### <a name="site"></a>Hely
 
 Egy adott tartomány keresési eredményeinek lekéréséhez a lekérdezési karakterláncban adja meg a `site:` lekérdezési paramétert.  
 

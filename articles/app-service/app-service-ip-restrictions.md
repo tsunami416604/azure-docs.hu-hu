@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374107"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280351"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Hozzáférési korlátozások Azure App Service #
 
@@ -129,7 +129,7 @@ A korábbi példa JSON-szintaxisa a következő:
 
 A hozzáférési korlátozások a App Service csomagokkal megegyező funkcióval rendelkező Function apps-alkalmazásokhoz is elérhetők. A hozzáférési korlátozások engedélyezése letiltja a portál Kódszerkesztő használatát a nem engedélyezett IP-címekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure Function apps hozzáférési korlátozásai](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Application Gateway integráció a szolgáltatási végpontokkal](networking/app-gateway-with-service-endpoints.md)

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362788"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257068"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 
@@ -93,7 +93,7 @@ A folyamat-kiszolgálók állapotát a következőképpen figyelheti:
 A **site Recovery infrastruktúra**alatt figyelheti a tárolóban lévő folyamat-kiszolgálókat is. A **site Recovery-infrastruktúra kezelése**területen kattintson a **konfigurációs kiszolgálók**elemre. Válassza ki a Process Serverhez társított konfigurációs kiszolgálót, és bontsa ki a folyamat kiszolgálójának adatait.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha problémái vannak a folyamatok kiszolgálóival, kövesse a [hibaelhárítási útmutatót](vmware-physical-azure-troubleshoot-process-server.md)
 - Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 

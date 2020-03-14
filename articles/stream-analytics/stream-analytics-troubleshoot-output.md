@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364561"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254286"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
@@ -46,7 +46,7 @@ Ez a lap a kimeneti kapcsolatokkal kapcsolatos gyakori problémákat, valamint a
 ## <a name="job-output-is-delayed"></a>A feladatok kimenete késleltetve
 
 ### <a name="first-output-is-delayed"></a>Első kimeneti késleltetve
-Stream Analytics-feladat elindításakor a bemeneti eseményeket beolvassa a rendszer, azonban bizonyos helyzetekben késés lehet tapasztalható a kimenet előállításában.
+Stream Analytics-feladat indításakor a bemeneti események olvasása, de lehet késleltetés bizonyos körülmények között előállítása a kimenetben.
 
 A historikus lekérdezések elemek nagy időértékek hozzájárulhat a kimeneti késés. A nagy windows keresztül megfelelő kimenet létrehozására a folyamatos átviteli feladat indítása adatok olvasása a legújabb idő lehetséges (hét napja), adja meg az időtartomány alapján. Ez idő alatt nincs kimenet jön létre az utólagos olvasási a szálankénti függőben lévő bemeneti események befejezéséig. Ez a probléma akkor merülhet fel, amikor a rendszer frissíti a folyamatos átviteli feladatok, így az a feladat újraindítása. Az ilyen frissítések általában egyszer minden néhány hónap során történik.
 
@@ -98,7 +98,7 @@ Az eredeti kompatibilitási szint (1,0) használatakor Azure Stream Analytics az
 
 További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

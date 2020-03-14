@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379746"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282782"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Alapszintű index létrehozása az Azure Cognitive Searchban
 
@@ -221,7 +221,7 @@ A következő beállítások állíthatók be a CORS:
 
 Habár a Microsoft által felügyelt kulcsokkal az összes Azure Cognitive Search-index titkosítva van, az indexek úgy konfigurálhatók, hogy az **ügyfél által felügyelt kulcsokkal** legyenek titkosítva Key Vault. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az index-összeállítás megismerésével a portálon folytathatja az első index létrehozását.
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374185"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248917"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
@@ -109,7 +109,7 @@ Emellett a Hétfőhöz ismétlődő profilok is be vannak állítva. Ez a minimu
 
 Hasonlóképpen, amikor az autoscale visszavált az alapértelmezett profilra, először ellenőrzi, hogy teljesülnek-e a minimális és a maximális feltételek. Ha az idő alatt a példányok száma 12, akkor az az alapértelmezett profil számára engedélyezett maximális értéket (10).
 
-![az autoskálázás beállításai](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![Az autoskálázás beállításai](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>A méretezés szempontjai, ha több szabály van konfigurálva egy profilban
 

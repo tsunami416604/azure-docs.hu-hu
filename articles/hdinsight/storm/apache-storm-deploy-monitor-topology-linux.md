@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386348"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271901"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
 
@@ -172,7 +172,7 @@ A Storm felhasználói felülete egy webes felületet biztosít a futó topológ
 
 A Storm felhasználói felületének fő lapja a következő információkat tartalmazza:
 
-| Section | Leírás |
+| Szakasz | Leírás |
 | --- | --- |
 | Fürt összegzése| Alapszintű információk a Storm-fürtről. |
 | Nimbus összegzése | Az alapvető Nimbus-információk listája. |
@@ -188,7 +188,7 @@ A Storm UI főoldala a következő weboldalhoz hasonlóan néz ki:
 
 A **topológia összegzése** szakasz egy hivatkozásának kiválasztásával az alábbi információk jelennek meg a topológiával kapcsolatban:
 
-| Section | Leírás |
+| Szakasz | Leírás |
 | --- | --- |
 | Topológia összegzése | A topológiával kapcsolatos alapvető információk. |
 | Topológiai műveletek| A topológiához elvégezhető felügyeleti műveletek. Az elérhető műveleteket a szakasz későbbi részében ismertetjük. |
@@ -219,7 +219,7 @@ A **topológiai műveletek** szakaszban a következő gombokra kattintva végezh
 
 **A kiöntő vagy a** **boltokból** származó kiöntő kiválasztásakor az alábbi információk jelennek meg a kijelölt elemről:
 
-| Section | Leírás |
+| Szakasz | Leírás |
 | --- | --- |
 | Összetevő összegzése | Alapszintű információk a kiöntő vagy a boltról. |
 | Összetevő-műveletek | **Hibakeresés** és **Leállítás** gombokkal. |
@@ -255,7 +255,7 @@ A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megker
 | Ambari web | A Ambari-fürt weblapján (`https://CLUSTERNAME.azurehdinsight.net`) válassza ki a **szolgáltatások** elemet a lap tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
 | Ambari REST API | A (z) `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` parancs használatával lekérheti a Storm felhasználói felületének és REST API futó csomópont információit. Cserélje le a *CLUSTERNAME* két példányát a fürt nevére. Amikor a rendszer kéri, adja meg a felhasználói (rendszergazdai) fiókhoz tartozó jelszót. A válaszban a JSON-kimenet "host_name" bejegyzése tartalmazza a csomópont teljes tartománynevét. |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A REST APIra irányuló kérelmeknek *alapszintű hitelesítést*kell használniuk, ezért a HDInsight-fürthöz tartozó rendszergazdai nevet és jelszót kell használnia.
 
@@ -266,7 +266,7 @@ A REST APIra irányuló kérelmeknek *alapszintű hitelesítést*kell használni
 
 A REST API által visszaadott adatok csak a fürtön belül használhatók. A [Apache ZooKeeper](https://zookeeper.apache.org/) -kiszolgálók által visszaadott teljes tartománynév (FQDN) például nem érhető el az internetről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [fejleszthet Java-alapú topológiákat az Apache Maven használatával](apache-storm-develop-java-topology.md).
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820728"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255690"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -68,7 +68,7 @@ SQL Database a következő vásárlási modelleket kínálja:
 A Azure SQL Database három szolgáltatási szintet kínál, amelyek különböző típusú alkalmazásokhoz készültek:
 - [Általános célú/standard](sql-database-service-tier-general-purpose.md) szolgáltatási szint általános számítási feladatokhoz tervezve. Költségvetés-alapú, kiegyensúlyozott számítási és tárolási lehetőségeket kínál.
 - [Üzletileg kritikus/prémium](sql-database-service-tier-business-critical.md) szintű szolgáltatási szint a nagy tranzakciós sebességgel és a legalacsonyabb késleltetésű I/O-OLTP alkalmazásokhoz tervezve. Több elkülönített replika használatával a hibák legmagasabb rugalmasságát nyújtja.
-- A [nagy kapacitású](sql-database-service-tier-hyperscale.md) szolgáltatási réteg rendkívül nagy OLTP-adatbázishoz készült, és lehetővé teszi a tárolási és a számítási kapacitások automatikus méretezését. 
+- A [nagy kapacitású](sql-database-service-tier-hyperscale.md) szolgáltatási réteg rendkívül nagy OLTP-adatbázishoz készült, és lehetővé teszi a tárolási és a számítási kapacitások automatikus méretezését.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -76,7 +76,7 @@ Számos vállalkozás és alkalmazás számára elegendő az, ha önálló adatb
 
    ![Az alapszintű, standard és prémium kiadásokban rugalmas készleteket bemutató ábra](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-A rugalmas készletekkel az erőforrásigények ingadozásakor sem kell a az adatbázis teljesítményének fel- és leskálázására koncentrálnia. A rugalmas készletbe helyezett adatbázisok szükség szerint használják fel a teljesítmény-erőforrásokat. A rugalmas készletbe helyezett adatbázisok használják az adatbáziskészlethez hozzárendelt teljesítményt, de nem lépik túl az adatbáziskészlet teljesítménykorlátait, így költségei előre jelezhetők még akkor is, ha az egyéni adatbázis-használat nem jelezhető előre.
+Rugalmas készletekkel nem kell összpontosítania az adatbázis teljesítményének felfelé és lefelé állítására, mivel az erőforrások igénye ingadozik. A rugalmas készletbe helyezett adatbázisok szükség szerint használják fel a teljesítmény-erőforrásokat. A készletezett adatbázisok felhasználják, de nem lépik túl a készlet korlátait, így a díjszabás akkor is kiszámítható marad, ha az egyes adatbázisok használata nem.
 
 [Hozzáadhat és eltávolíthat adatbázisokat a készlethez](sql-database-elastic-pool-manage-portal.md), az alkalmazást egy maroknyi adatbázisból több ezerre, az Ön által felügyelt Költségvetésen belül. A készlet adatbázisai számára elérhető erőforrások minimális és maximális mennyiségét is szabályozhatja, így biztosíthatja, hogy a készlet egyetlen adatbázisa se használja fel a készlet összes erőforrását, és hogy minden készletezett adatbázisnak garantált minimális erőforrása legyen. A rugalmas készleteket használó szoftveres (SaaS-) alkalmazások tervezési mintáinak megismeréséhez lásd: [tervezési minták több-bérlős SaaS-alkalmazásokhoz SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)használatával.
 
@@ -95,7 +95,7 @@ A Azure SQL Database fejlett monitorozási és hibaelhárítási funkciókat biz
  - A SQL Server adatbázismotor legújabb verziójában elérhető beépített figyelési képességek. Lehetővé teszik a valós idejű teljesítménnyel kapcsolatos megállapításokat. 
  - Az Azure által biztosított, a nagy számú adatbázis-példány figyelésére és hibakeresésére képes,
 
-A [query Store](sql-database-operate-query-store.md)egy beépített SQL Server figyelési funkciója, amely valós időben rögzíti a lekérdezések teljesítményét, és lehetővé teszi a lehetséges teljesítménnyel kapcsolatos problémák és a legfontosabb erőforrás-felhasználók azonosítását. Az automatikus hangolás és a javaslatok a romlott teljesítményével és hiányzó vagy duplikált indexekkel kapcsolatos tanácsokat nyújtanak. A SQL Database automatikus hangolásával manuálisan alkalmazhatja a hibákat kijavító szkripteket, vagy engedélyezheti SQL Database a javítás alkalmazását. A SQL Database tesztelheti és ellenőrizheti, hogy a javítás bizonyos előnyöket biztosít-e, és az eredménytől függően megőrzi vagy visszaállíthatja a változást. A lekérdezési tároló és az Automatikus hangolási funkciók mellett a standard [DMV és a XEvent](sql-database-monitoring-with-dmvs.md) is használható a munkaterhelés teljesítményének figyelésére.
+A [query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)egy beépített SQL Server figyelési funkciója, amely valós időben rögzíti a lekérdezések teljesítményét, és lehetővé teszi a lehetséges teljesítménnyel kapcsolatos problémák és a legfontosabb erőforrás-felhasználók azonosítását. Az automatikus hangolás és a javaslatok a romlott teljesítményével és hiányzó vagy duplikált indexekkel kapcsolatos tanácsokat nyújtanak. A SQL Database automatikus hangolásával manuálisan alkalmazhatja a hibákat kijavító szkripteket, vagy engedélyezheti SQL Database a javítás alkalmazását. A SQL Database tesztelheti és ellenőrizheti, hogy a javítás bizonyos előnyöket biztosít-e, és az eredménytől függően megőrzi vagy visszaállíthatja a változást. A lekérdezési tároló és az Automatikus hangolási funkciók mellett a standard [DMV és a XEvent](sql-database-monitoring-with-dmvs.md) is használható a munkaterhelés teljesítményének figyelésére.
 
 Az Azure [beépített teljesítmény-figyelési](sql-database-performance.md) és [riasztási](sql-database-insights-alerts-portal.md) eszközöket kínál a teljesítmény-minősítéssel együtt, amely lehetővé teszi több ezer adatbázis állapotának figyelését. Ezeknek az eszközöknek a használatával gyorsan elemezheti a fel-vagy leskálázás hatásait az aktuális vagy tervezett teljesítménybeli igények alapján. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
@@ -157,7 +157,7 @@ SQL Database két automatikus finomhangolási szempont [érhető el](sql-databas
 
 ### <a name="adaptive-query-processing"></a>Adaptív lekérdezés-feldolgozás
 
-Használhatja az [adaptív lekérdezések feldolgozását](/sql/relational-databases/performance/intelligent-query-processing), többek között a többutasításos táblázat értékű függvények többértékű futtatását, a kötegelt üzemmód memóriájának visszajelzését és a kötegelt módú adaptív illesztéseket. Ezen adaptív lekérdezésfeldolgozó funkciók mindegyike hasonló technikával „tanul és alkalmazkodik”, ezzel is hozzájárulva a korábban nyomon követhetetlen lekérdezés-optimalizálási gondokra visszavezethető teljesítményproblémák megoldásához.
+Használhatja az [adaptív lekérdezések feldolgozását](/sql/relational-databases/performance/intelligent-query-processing), többek között a többutasításos táblázat értékű függvények többértékű futtatását, a kötegelt üzemmód memóriájának visszajelzését és a kötegelt módú adaptív illesztéseket. Ezen adaptív lekérdezés-feldolgozási funkciók mindegyike hasonló "Learn and alkalmazkodás" technikákat alkalmaz, így segítve a korábban bevonható lekérdezés-optimalizálási problémákkal kapcsolatos teljesítménnyel kapcsolatos problémák megoldását.
 
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség
 
@@ -242,7 +242,7 @@ A SQL Server Azure Hybrid Benefit két kulcsfontosságú területen különbözi
 
 SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure Hybrid Benefithoz:
 
-|Licencigény|Mire Azure Hybrid Benefit a SQL Server?|
+|Licenc-lábnyom|Mire Azure Hybrid Benefit a SQL Server?|
 |---|---|
 |SQL Server Enterprise Edition Core-ügyfelek a SA-val|<li>általános célú vagy üzletileg kritikus SKU-ra is fizethet alapdíj</li><br><li>1 mag helyszíni = 4 mag általános célú SKU-ban</li><br><li>1 mag a helyszínen = 1 mag üzletileg kritikus SKU-ban</li>|
 |SQL Server Standard Edition Core-ügyfelek a SA-val|<li>Csak általános célú SKU-ra fizethet alapdíj</li><br><li>1 mag a helyszínen = 1 mag általános célú SKU-ban</li>|

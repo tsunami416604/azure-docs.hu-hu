@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379646"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283146"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -64,30 +64,30 @@ További információ az index tulajdonságairól: [create index &#40;Azure Cogn
 
 |Nyelv|Microsoft Analyzer neve|Lucene Analyzer neve|  
 |--------------|-----------------------------|--------------------------|  
-|arab|ar.microsoft|ar. Lucene|  
+|Arab|ar.microsoft|ar. Lucene|  
 |örmény||Lucene|  
 |Bengáli|bn.microsoft||  
 |baszk||EU. Lucene|  
 |bolgár|bg.microsoft|bg.lucene|  
 |katalán|CA. Microsoft|CA. Lucene|  
 |kínai (egyszerűsített)|zh-Hans.microsoft|zh-Hans.lucene|  
-|kínai (hagyományos)|zh-Hant.microsoft|zh-Hant. Lucene|  
+|Kínai (hagyományos)|zh-Hant.microsoft|zh-Hant. Lucene|  
 |horvát|HR. Microsoft||  
 |cseh|cs. Microsoft|cs. Lucene|  
 |dán|da.microsoft|da. Lucene|  
-|holland|nl. Microsoft|nl. Lucene|  
+|Holland|nl. Microsoft|nl. Lucene|  
 |Angol|en. Microsoft|en. Lucene|  
 |észt|et. Microsoft||  
 |finn|fi.microsoft|Fi. Lucene|  
 |francia|fr. Microsoft|fr. Lucene|  
-|galíciai||Gl. Lucene|  
+|gallego||Gl. Lucene|  
 |német|de.microsoft|de. Lucene|  
 |görög|el. Microsoft|el. Lucene|  
 |gudzsaráti|gu.microsoft||  
-|héber|ő. Microsoft||  
+|Héber|ő. Microsoft||  
 |hindi|hi.microsoft|Hi. Lucene|  
 |magyar|hu. Microsoft|hu. Lucene|  
-|izlandi|is.microsoft||  
+|Izlandi|is.microsoft||  
 |Indonéz (Bahasa)|id.microsoft|id.lucene|  
 |ír||ga. Lucene|  
 |olasz|it. Microsoft|it. Lucene|  
@@ -105,7 +105,7 @@ További információ az index tulajdonságairól: [create index &#40;Azure Cogn
 |portugál (brazíliai)|pt-Br.microsoft|pt-Br.lucene|  
 |portugál (általános)|pt-Pt.microsoft|pt-Pt.lucene|  
 |pandzsábi|pa.microsoft||  
-|román|ro.microsoft|ro. Lucene|  
+|Román|ro.microsoft|ro. Lucene|  
 |Orosz|ru.microsoft|ru. Lucene|  
 |szerb (cirill betűs)|sr-cyrillic.microsoft||  
 |szerb (latin betűs)|sr-latin.microsoft||  
@@ -118,8 +118,8 @@ További információ az index tulajdonságairól: [create index &#40;Azure Cogn
 |thai|th.microsoft|th. Lucene|  
 |török|TR. Microsoft|TR. Lucene|  
 |ukrán|uk.microsoft||  
-|urdu|a. Microsoft||  
-|vietnami|vi.microsoft||  
+|Urdu|a. Microsoft||  
+|Vietnami|vi.microsoft||  
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 

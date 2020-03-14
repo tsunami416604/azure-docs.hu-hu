@@ -12,11 +12,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260422"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Adatok áthelyezése HTTP-forrásokból Azure Data Factory használatával
 
@@ -38,7 +38,7 @@ Ezt a HTTP-összekötőt használhatja a *felhőből és egy helyszíni http/S-v
 
 Amikor helyszíni HTTP-végpontból másol Adatmásolást, adatkezelés átjárót kell telepítenie a helyszíni környezetben vagy egy Azure-beli virtuális gépen. Ha többet szeretne megtudni a adatkezelés átjáróról, valamint az átjáró beállításával kapcsolatos részletes utasításokért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök vagy API-k használatával helyezi át az adatok HTTP-forrásból való áthelyezését:
 
@@ -52,8 +52,8 @@ A következő táblázat a HTTP-társított szolgáltatáshoz tartozó JSON-elem
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type | A **Type** tulajdonságot **http**-értékre kell beállítani. | Igen |
-| url | A webkiszolgáló alap URL-címe. | Igen |
+| típus | A **Type** tulajdonságot **http**-értékre kell beállítani. | Igen |
+| URL-címe | A webkiszolgáló alap URL-címe. | Igen |
 | authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A jelen cikk későbbi szakaszaiban további tulajdonságokat és JSON-mintákat találhat a következő hitelesítési típusokhoz. | Igen |
 | enableServerCertificateValidation | Megadja, hogy engedélyezi-e a kiszolgáló SSL-tanúsítványának érvényesítését, ha a forrás egy HTTPS-webkiszolgáló. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, ezt állítsa **hamis**értékre. | Nem<br /> (az alapértelmezett érték **igaz**) |
 | gatewayName | A helyszíni HTTP-forráshoz való kapcsolódáshoz használt adatkezelés átjáró-példány neve. | Igen, ha helyszíni HTTP-forrásról másol adatokból |
@@ -159,7 +159,7 @@ A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. A **typ
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet **típusát** **http**-értékre kell beállítani. | Igen |
+| típus | Az adatkészlet **típusát** **http**-értékre kell beállítani. | Igen |
 | relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. <br><br> Dinamikus URL-cím létrehozásához [Data Factory függvényeket és rendszerváltozókat](data-factory-functions-variables.md)használhat. Példa: **relativeUrl**: **$ $Text. Format ("/My/Report? month = {0: ÉÉÉÉ}-{0: PP} & FMT Package = CSV", SliceStart)** . | Nem |
 | requestMethod | A HTTP-metódus. Az engedélyezett értékek a **Get** és a **post**. | Nem <br />(az alapértelmezett érték a **Get**) |
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |

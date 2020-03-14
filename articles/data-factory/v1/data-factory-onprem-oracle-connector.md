@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265856"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása a helyszíni Oracle-be vagy onnan a Azure Data Factory használatával
 
@@ -76,7 +76,7 @@ Ez az Oracle-összekötő az illesztőprogramok két verzióját támogatja:
 
 Ha a másolás varázslót használja a másolási folyamat létrehozásához, az illesztőprogram típusa a következő: automeghatározva. Alapértelmezés szerint a Microsoft illesztőprogramját használja a rendszer, kivéve, ha az átjáró verziója korábbi, mint a 2,7-es verzió, vagy ha az Oracle-t a fogadóként választja.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Létrehozhat egy másolási tevékenységet tartalmazó folyamatot. A folyamat különböző eszközök vagy API-k használatával helyezi át az adatait egy helyszíni Oracle-adatbázisba vagy onnan.
 
@@ -101,7 +101,7 @@ A következő táblázat az Oracle-hez társított szolgáltatáshoz tartozó JS
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Igen |
+| típus |A **Type** tulajdonságot **OnPremisesOracle**értékre kell beállítani. |Igen |
 | driverType | Itt adhatja meg, hogy melyik illesztőprogramot használja az adatok egy Oracle-adatbázisba való másolásához. Az engedélyezett értékek a következők: **Microsoft** és **ODP** (alapértelmezett). Lásd: [támogatott verzió és telepítés](#supported-versions-and-installation) az illesztőprogram részleteihez. | Nem |
 | connectionString | A **ConnectionString** tulajdonsághoz tartozó Oracle Database-példányhoz való kapcsolódáshoz szükséges információk megadása. | Igen |
 | gatewayName | A helyszíni Oracle-kiszolgálóhoz való kapcsolódáshoz használt átjáró neve. |Igen |
@@ -604,7 +604,7 @@ Ha az Oracle-ből helyez át adatátvitelt, a következő leképezéseket haszn�
 | FLOAT |Decimal, String (Ha a pontosság > 28) |
 | INTEGER |Decimal, String (Ha a pontosság > 28) |
 | ÉV ÉS HÓNAP KÖZÖTTI IDŐSZAK |Int32 |
-| IDŐINTERVALLUM – MÁSODPERC |Időtartam |
+| IDŐINTERVALLUM – MÁSODPERC |időtartam |
 | LONG |Sztring |
 | LONG RAW |Byte[] |
 | NCHAR |Sztring |

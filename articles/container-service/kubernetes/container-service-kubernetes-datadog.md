@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: c8ed146a224ec4225a7a0e85c76227fb1dc71b0b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 1f3f70c30ab397bd549a2f3305a738274ee4f64f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271052"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371171"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>ELAVULT Azure Container Service-fürt figyelése a Datadoggal
 
@@ -25,8 +25,8 @@ Azt is feltételezi, hogy telepítve van a `az` Azure CLI és `kubectl` eszköz�
 
 A futtatásával tesztelheti, hogy telepítve van-e a `az` eszköz:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#installation)talál útmutatást.
@@ -34,16 +34,16 @@ Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#ins
 A futtatásával tesztelheti, hogy telepítve van-e a `kubectl` eszköz:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Ha nincs `kubectl` telepítve, akkor a következőket futtathatja:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
-## <a name="datadog"></a>Datadoggal
+## <a name="datadog"></a>DataDog
 A datadoggal egy figyelési szolgáltatás, amely a Azure Container Service-fürtön belüli tárolók figyelési adatait gyűjti. A datadoggal rendelkezik egy Docker-integrációs irányítópulttal, ahol megtekintheti a tárolókban található konkrét mérőszámokat. A tárolók által gyűjtött mérőszámokat a CPU, a memória, a hálózat és az I/O rendezi. A datadoggal tárolók és képek számára osztja szét a metrikákat.
 
 Először [létre kell hoznia egy fiókot](https://www.datadoghq.com/lpg/)

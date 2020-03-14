@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
 ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373767"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280169"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -244,7 +244,7 @@ Linux-alkalmazások esetén lásd:
 
 Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](containers/configure-custom-container.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni tartománynév konfigurálása az Azure App Service-ben]
 - [Átmeneti környezetek beállítása az Azure App Service-ben]

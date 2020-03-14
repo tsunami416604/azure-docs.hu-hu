@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392608"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265154"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és-rekordok áttekintése
 
@@ -129,7 +129,7 @@ A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak me
 
 | Fejléc | Viselkedés |
 | --- | --- |
-| Nincs |Mindig sikeres (nincs ETAG-ellenőrzés) |
+| Nincsenek |Mindig sikeres (nincs ETAG-ellenőrzés) |
 | If-Match \<ETAG > |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
 | If-Match * |A PUT csak akkor sikeres, ha az erőforrás létezik |
 | If-None-Match * |A csak akkor sikeres, ha az erőforrás nem létezik |
@@ -141,7 +141,7 @@ Azure DNS használatakor a következő alapértelmezett korlátok érvényesek:
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](dns-getstarted-create-dnszone-portal.md) , és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
 * Meglévő DNS-zóna áttelepítéséhez tekintse meg [a DNS-zónafájl importálását és exportálását](dns-import-export.md)ismertető témakört.

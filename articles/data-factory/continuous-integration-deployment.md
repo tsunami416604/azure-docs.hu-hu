@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187807"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371375"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -60,7 +60,7 @@ Alább látható egy példa az Azure Repos git szolgáltatással konfigurált Az
 
    ![Saját sablon létrehozása](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Válassza a **fájl betöltése**lehetőséget, majd válassza ki a generált Resource Manager-sablont.
+1. Válassza a **fájl betöltése**lehetőséget, majd válassza ki a generált Resource Manager-sablont. Ez az 1. lépésben exportált. zip fájlban található **arm_template. JSON** fájl.
 
    ![Sablon szerkesztése](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ A titkokat kétféleképpen kezelheti:
 
     A paraméterek fájljának a közzétételi ágban is szerepelnie kell.
 
--  Az előző szakaszban ismertetett Azure Resource Manager központi telepítési feladat előtt adjon hozzá egy [Azure Key Vault feladatot](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) :
+1. Az előző szakaszban ismertetett Azure Resource Manager központi telepítési feladat előtt adjon hozzá egy [Azure Key Vault feladatot](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) :
 
     1.  A **feladatok** lapon hozzon létre egy új feladatot. Keressen rá **Azure Key Vault** és vegye fel.
 
@@ -179,9 +179,9 @@ A titkokat kétféleképpen kezelheti:
 
     ![Key Vault feladat hozzáadása](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynökének
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynökének
 
-   Ha a megfelelő engedélyek nincsenek beállítva, a Azure Key Vault feladat meghiúsulhat a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és keresse meg azt a. ps1 fájlt, amely a parancsot tartalmazza az Azure-folyamatok ügynökének engedélyek megadásához. A parancsot közvetlenül is futtathatja. Vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. `Get` és `List` a minimálisan szükséges engedélyek.
+Ha a megfelelő engedélyek nincsenek beállítva, a Azure Key Vault feladat meghiúsulhat a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és keresse meg azt a. ps1 fájlt, amely a parancsot tartalmazza az Azure-folyamatok ügynökének engedélyek megadásához. A parancsot közvetlenül is futtathatja. Vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. `Get` és `List` a minimálisan szükséges engedélyek.
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 
@@ -471,7 +471,10 @@ Ha GIT módban van, felülbírálhatja a Resource Manager-sablonban található 
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-Ilyen körülmények között az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy ARM-template-Parameters-definition. JSON nevű fájlt a adat-előállító git-integrációjának gyökérkönyvtárában megadott mappában. Pontosan ezt a fájlnevet kell használnia. Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
+Ilyen körülmények között az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy **ARM-template-Parameters-definition. JSON** nevű fájlt a adat-előállító git-integrációjának gyökérkönyvtárában megadott mappában. Pontosan ezt a fájlnevet kell használnia. Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
+
+> [!NOTE]
+> Az egyéni paraméterezés-sablonok nem változtatják meg az ARM-sablon 256-as korlátját. Lehetővé teszi a paraméteres tulajdonságok számának kiválasztását és csökkentését.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Egyéni paraméterek fájljának szintaxisa
 
@@ -657,7 +660,7 @@ A következő az aktuális alapértelmezett paraméterezés sablon. Ha csak néh
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

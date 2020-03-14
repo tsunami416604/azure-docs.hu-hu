@@ -1,5 +1,5 @@
 ---
-title: Konfigurálás és kezelés
+title: Beállítás és kezelés
 description: Útmutató Azure SQL Database konfigurálásához és kezeléséhez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082427"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209428"
 ---
 # <a name="how-to-use-azure-sql-database"></a>A Azure SQL Database használata
 
@@ -32,7 +32,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
-- [SQL Data Sync](sql-database-sync-data.md)
+- [SQL-adatszinkronizálás](sql-database-sync-data.md)
 - [Adatszinkronizálási ügynök](sql-database-data-sync-agent.md)
 - [Séma módosításainak replikálása](sql-database-update-sync-schema.md)
 - [Figyelés az OMS-szel](sql-database-sync-monitor-oms.md)
@@ -43,7 +43,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 
 - [Manuális hangolás](sql-database-performance-guidance.md)
 - [A DMV használata a teljesítmény figyeléséhez](sql-database-monitoring-with-dmvs.md)
-- [A lekérdezési tároló használata a teljesítmény figyeléséhez](sql-database-operate-query-store.md)
+- [A lekérdezési tároló használata a teljesítmény figyeléséhez](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Teljesítménnyel kapcsolatos hibák Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [Intelligent Insights diagnosztikai napló használata](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Memóriabeli OLTP-terület figyelése](sql-database-in-memory-oltp-monitoring.md)
@@ -92,7 +92,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - [SaaS video Indexer](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazás biztonsága](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [felügyelt példányokkal kapcsolatos útmutatókról](sql-database-howto-managed-instance.md).
 - További információ [az önálló adatbázisok](sql-database-howto-single-database.md)útmutatóinak megismeréséről.

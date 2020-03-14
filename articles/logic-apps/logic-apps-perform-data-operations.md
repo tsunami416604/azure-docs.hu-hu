@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358808"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283939"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
 
@@ -29,7 +29,7 @@ Ezek a táblázatok összefoglalják a felhasználható adatműveleteket, amelye
 
 Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésében.
 
-| Műveletek | Leírás |
+| Művelet | Leírás |
 |--------|-------------|
 | [**CSV-tábla létrehozása**](#create-csv-table-action) | Hozzon létre egy vesszővel tagolt (CSV) táblázatot egy tömbből. |
 | [**HTML-tábla létrehozása**](#create-html-table-action) | Hozzon létre egy HTML-táblázatot egy tömbből. |
@@ -42,7 +42,7 @@ Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésébe
 
 Ezek a műveletek segítenek JavaScript Object Notation (JSON) formátumban tárolt adatmennyiségek kezelésében.
 
-| Műveletek | Leírás |
+| Művelet | Leírás |
 |--------|-------------|
 | [**Compose**](#compose-action) | Hozzon létre egy üzenetet vagy karakterláncot több olyan bemenetből, amely különböző adattípusokkal rendelkezhet. Ezt a karakterláncot ezután egyetlen bemenetként használhatja, és nem kell ismételten megadnia ugyanazt a bemenetet. Létrehozhat például egy JSON-üzenetet különböző bemenetekről. |
 | [**JSON-elemzés**](#parse-json-action) | Felhasználóbarát adattokeneket hozhat létre a JSON-tartalmak tulajdonságaihoz, így könnyebben használhatja a logikai alkalmazásaiban található tulajdonságokat. |
@@ -707,6 +707,6 @@ Annak ellenőrzéséhez, hogy a **Select** művelet létrehozza-e a várt eredm�
 
    ![E-mailek a "Select" művelet eredményeivel](./media/logic-apps-perform-data-operations/select-email-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [Logic apps-összekötőről](../connectors/apis-list.md)

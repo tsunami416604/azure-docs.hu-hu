@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356566"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276477"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Szószedet: az Azure platform felhőalapú terminológiájának szótára
 
@@ -87,7 +87,7 @@ Olyan erőforrás, amely a bejövő forgalmat a hálózat számítógépei köz�
 Az Azure-előfizetésre vonatkozó díjszabás, kreditek és kapcsolódó feltételek.  
 Tekintse meg az [Azure-ajánlat részleteit ismertető oldalt](https://azure.microsoft.com/support/legal/offer-details/)
 
-## <a name="portal"></a>portal
+## <a name="portal"></a>portál
 Az Azure-szolgáltatások üzembe helyezésére és kezelésére szolgáló biztonságos webes portál.
 
 ## <a name="region"></a>régió
@@ -150,7 +150,7 @@ Lásd: [a virtuálisgép-bővítmények és-szolgáltatások (Windows)](virtual-
 Olyan hálózat, amely az összes többi Azure-bérlőtől elkülönített Azure-erőforrások közötti kapcsolatot biztosít. Az [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi a virtuális hálózatok és egy virtuális hálózat és egy helyszíni hálózat közötti kapcsolatok létrehozását. Az IP-címek, a DNS-beállítások, a biztonsági házirendek és a virtuális hálózatokon belüli útválasztási táblák teljes körű szabályozására is lehetőség van.  
 Lásd: [Virtual Network áttekintése](virtual-network/virtual-networks-overview.md)  
 
-## <a name="web-app"></a>Webalkalmazás
+## <a name="web-app"></a>Web app
 [App Service alkalmazás](#app-service-app)másik neve.
 
 ## <a name="see-also"></a>Lásd még

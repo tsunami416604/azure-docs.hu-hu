@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252206"
 ---
 # <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain-tokenek sablonjai
 
@@ -86,6 +86,6 @@ A jegyek tokenje konzisztens értékkel rendelkezik, de általában lejár. Pél
 
 A Ticket tokenek jellemzően lejárati dátummal rendelkeznek, amely eltér a normál, a szokásostól eltérő jogkivonattól. A repülőjegyek, a koncert jegyek vagy a sportfogadási jegyek például az adott időponthoz rendelt ülőhelyekkel rendelkeznek. Nem lehet egyszerűen átváltani a jegyeket a dátumok vagy az ülőhelyek között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nagyobb rugalmasságra van szüksége a forgatókönyvhöz, Ismerje meg, hogyan hozhat létre saját jogkivonat-sablonokat a [jogkivonat-megkomponálás](composability.md)használatával.

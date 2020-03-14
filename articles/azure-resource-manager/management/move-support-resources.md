@@ -4,11 +4,11 @@ description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthely
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671846"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273929"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
@@ -170,21 +170,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftaad"></a>Microsoft.AAD
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | domainservices | Nem | Nem |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | bérlők | Nem | Nem |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | konfigurációk | Nem | Nem |
 > | javaslatok | Nem | Nem |
@@ -193,7 +193,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | actionrules | Igen | Igen |
 > | riasztások | Nem | Nem |
@@ -203,35 +203,35 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kiszolgálók | Igen | Igen |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | szolgáltatás | Igen | Igen |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | configurationstores | Igen | Igen |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | Spring | Igen | Igen |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | apiapps | Nem | Nem |
 > | appidentities | Nem | Nem |
@@ -243,7 +243,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | CheckAccess | Nem | Nem |
 > | denyassignments | Nem | Nem |
@@ -260,7 +260,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | automationaccounts | Igen | Igen |
 > | automationaccounts/konfigurációk | Igen | Igen |
@@ -272,14 +272,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | b2cdirectories | Igen | Igen |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hybriddatamanagers | Nem | Nem |
 > | postgresinstances | Nem | Nem |
@@ -290,31 +290,31 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | regisztrációk | Igen | Igen |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | batchaccounts | Igen | Igen |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Nem | Nem |
 > | fileservers | Nem | Nem |
-> | Feladatok | Nem | Nem |
+> | feladatok | Nem | Nem |
 > | munkaterületek | Nem | Nem |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | billingperiods | Nem | Nem |
 > | billingpermissions | Nem | Nem |
@@ -325,21 +325,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | mapapis | Nem | Nem |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | biztalk | Nem | Nem |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | Nem | Nem |
 > | Watchers | Nem | Nem |
@@ -347,7 +347,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | blueprintassignments | Nem | Nem |
 > | tervrajzok | Nem | Nem |
@@ -355,14 +355,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | botservices | Igen | Igen |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | Redis | Igen | Igen |
 
@@ -372,7 +372,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | Igen | Igen |
 > | profiles | Igen | Igen |
@@ -381,7 +381,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tanúsítványrendelések | Igen | Igen |
 
@@ -391,7 +391,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartománynevek | Igen | Nem |
 > | virtualmachines | Igen | Nem |
@@ -402,7 +402,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | networksecuritygroups | Nem | Nem |
 > | reservedips | Nem | Nem |
@@ -414,7 +414,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | storageaccounts | Igen | Nem |
 
@@ -424,14 +424,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | availabilitysets | Igen | Igen |
 > | diskencryptionsets | Nem | Nem |
@@ -457,7 +457,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | aggregatedcost | Nem | Nem |
 > | elosztja | Nem | Nem |
@@ -485,14 +485,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | containergroups | Nem | Nem |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | containergroups | Nem | Nem |
 > | serviceassociationlinks | Nem | Nem |
@@ -500,7 +500,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kibocsátásiegység | Igen | Igen |
 > | kibocsátásiegység-forgalmi jegyzékek/buildtasks | Igen | Igen |
@@ -512,7 +512,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | containerservices | Nem | Nem |
 > | managedclusters | Nem | Nem |
@@ -521,21 +521,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Nem | Nem |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | riasztások | Nem | Nem |
 > | költségvetése | Nem | Nem |
@@ -544,7 +544,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Export | Nem | Nem |
 > | externalsubscriptions | Nem | Nem |
 > | Időjárás | Nem | Nem |
-> | lekérdezés | Nem | Nem |
+> | query | Nem | Nem |
 > | Reportconfigs | Nem | Nem |
 > | jelentések | Nem | Nem |
 > | showbackrules | Nem | Nem |
@@ -553,14 +553,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | Hubs | Nem | Nem |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | szövetségek | Nem | Nem |
 > | resourceproviders | Igen | Igen |
@@ -568,28 +568,28 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Feladatok | Nem | Nem |
+> | feladatok | Nem | Nem |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | databoxedgedevices | Nem | Nem |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | munkaterületek | Nem | Nem |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | katalógusok | Igen | Igen |
 > | datacatalogs | Nem | Nem |
@@ -597,14 +597,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | connectionmanagers | Nem | Nem |
 
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | csomagok | Nem | Nem |
 > | tervek | Nem | Nem |
@@ -612,7 +612,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | datafactories | Igen | Igen |
 > | előállítók | Igen | Igen |
@@ -620,28 +620,28 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | datalakeaccounts | Nem | Nem |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | services | Nem | Nem |
 > | szolgáltatások/projektek | Nem | Nem |
@@ -650,35 +650,35 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | backupvaults | Nem | Nem |
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kiszolgálók | Igen | Igen |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kiszolgálók | Igen | Igen |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | servergroups | Nem | Nem |
 > | kiszolgálók | Igen | Igen |
@@ -687,19 +687,19 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | artifactsources | Igen | Igen |
 > | kibocsátások | Igen | Igen |
 > | servicetopologies | Igen | Igen |
 > | servicetopologies/szolgáltatások | Igen | Igen |
 > | servicetopologies/szolgáltatások/serviceunits | Igen | Igen |
-> | lépések | Igen | Igen |
+> | Lépések | Igen | Igen |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | elasticpools | Nem | Nem |
 > | elasticpools / iothubtenants | Nem | Nem |
@@ -709,21 +709,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | csővezetékek | Igen | Igen |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartományvezérlők | Igen | Igen |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nem | Nem |
 > | Labs | Igen | Nem |
@@ -735,35 +735,35 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | digitaltwinsinstances | Nem | Nem |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | databaseaccounts | Igen | Igen |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartományok | Igen | Igen |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | services | Igen | Igen |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartományok | Igen | Igen |
 > | eventSubscriptions | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. |
@@ -774,7 +774,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Igen | Igen |
 > | névterek | Igen | Igen |
@@ -782,14 +782,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | guestconfigurationassignments | Nem | Nem |
 > | szoftver | Nem | Nem |
@@ -799,7 +799,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | Nem | Nem |
 > | sapmonitors | Igen | Igen |
@@ -807,7 +807,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Igen | Igen |
 
@@ -819,14 +819,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | services | Igen | Igen |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | gépek | Igen | Igen |
 > | gépek/bővítmények | Nem | Nem |
@@ -834,21 +834,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | datamanagers | Igen | Igen |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Feladatok | Igen | Igen |
+> | feladatok | Igen | Igen |
 
 ## <a name="microsoftinsights"></a>Microsoft. bepillantások
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | actiongroups | Igen | Igen |
 > | activitylogalerts | Nem | Nem |
@@ -862,7 +862,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | eventtypes | Nem | Nem |
 > | extendeddiagnosticsettings | Nem | Nem |
 > | logdefinitions | Nem | Nem |
-> | naplók | Nem | Nem |
+> | logs | Nem | Nem |
 > | metricalerts | Nem | Nem |
 > | metricbaselines | Nem | Nem |
 > | metricdefinitions | Nem | Nem |
@@ -884,14 +884,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | iotapps | Igen | Igen |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | Igen | Igen |
 > | graph | Igen | Igen |
@@ -899,7 +899,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | boltívek | Igen | Igen |
 
@@ -909,42 +909,42 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | connectedclusters | Nem | Nem |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Igen | Igen |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labaccounts | Nem | Nem |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nem | Nem |
 > | integrationaccounts | Igen | Igen |
@@ -956,7 +956,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Igen | Igen |
 > | WebServices | Igen | Nem |
@@ -965,14 +965,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | operationalizationclusters | Nem | Nem |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 > | fiókok/munkaterületek | Nem | Nem |
@@ -984,21 +984,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hostingaccounts | Nem | Nem |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | munkaterületek | Nem | Nem |
 > | munkaterületek/számítások | Nem | Nem |
@@ -1006,7 +1006,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | identitások | Nem | Nem |
 > | userassignedidentities | Nem | Nem |
@@ -1014,7 +1014,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | registrationassignments | Nem | Nem |
 > | registrationdefinitions | Nem | Nem |
@@ -1022,21 +1022,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | classicdevservices | Nem | Nem |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | Mediaservices | Igen | Igen |
 > | Mediaservices/liveevents | Igen | Igen |
@@ -1045,14 +1045,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | appclusters | Nem | Nem |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | assessmentprojects | Igen | Igen |
 > | migrateprojects | Igen | Igen |
@@ -1061,7 +1061,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | netappaccounts | Nem | Nem |
 > | netappaccounts / backuppolicies | Nem | Nem |
@@ -1073,7 +1073,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | applicationgateways | Nem | Nem |
 > | applicationgatewaywebapplicationfirewallpolicies | Nem | Nem |
@@ -1131,7 +1131,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | névterek | Igen | Igen |
 > | névterek/notificationhubs | Igen | Igen |
@@ -1139,14 +1139,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | osnamespaces | Igen | Igen |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | storageinsightconfigs | Nem | Nem |
 > | munkaterületek | Igen | Igen |
@@ -1157,7 +1157,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | managementassociations | Nem | Nem |
 > | managementconfigurations | Igen | Igen |
@@ -1167,7 +1167,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | társviszonyok | Igen | Igen |
 > | peeringservices | Nem | Nem |
@@ -1175,7 +1175,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | policyevents | Nem | Nem |
 > | policystates | Nem | Nem |
@@ -1185,56 +1185,56 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | irányítópultok | Igen | Igen |
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | rootresources | Nem | Nem |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | workspacecollections | Igen | Igen |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kapacitások | Igen | Igen |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
 
 ## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kibocsátások | Nem | Nem |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | backupprotecteditems | Nem | Nem |
 > | replicationeligibilityresults | Nem | Nem |
@@ -1246,21 +1246,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | névterek | Igen | Igen |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | lekérdezés | Igen | Igen |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | availabilitystatuses | Nem | Nem |
 > | childavailabilitystatuses | Nem | Nem |
@@ -1271,7 +1271,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | deploymentscripts | Nem | Nem |
 > | linkek | Nem | Nem |
@@ -1280,14 +1280,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Igen | Nem |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | searchservices | Igen | Igen |
 
@@ -1297,7 +1297,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | adaptivenetworkhardenings | Nem | Nem |
 > | advancedthreatprotectionsettings | Nem | Nem |
@@ -1315,7 +1315,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsecurityinsights"></a>Microsoft. SecurityInsights
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | összesítések | Nem | Nem |
 > | alertrules | Nem | Nem |
@@ -1326,14 +1326,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | dataconnectorscheckrequirements | Nem | Nem |
 > | szervezetek | Nem | Nem |
 > | entityqueries | Nem | Nem |
-> | Események | Nem | Nem |
+> | események | Nem | Nem |
 > | officeconsents | Nem | Nem |
 > | beállítások | Nem | Nem |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | átjárók | Nem | Nem |
 > | csomópontok | Nem | Nem |
@@ -1341,14 +1341,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | névterek | Igen | Igen |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Nem | Nem |
 > | fürtök | Igen | Igen |
@@ -1359,44 +1359,44 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | managedclusters | Nem | Nem |
 > | hálózatok | Nem | Nem |
 > | secretstores | Nem | Nem |
-> | volumes | Nem | Nem |
+> | kötegek | Nem | Nem |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Igen | Igen |
 > | átjárók | Igen | Igen |
 > | hálózatok | Igen | Igen |
 > | titkok | Igen | Igen |
-> | volumes | Igen | Igen |
+> | kötegek | Igen | Igen |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kibocsátások | Nem | Nem |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | signalr | Igen | Igen |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hybridusebenefits | Nem | Nem |
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | applicationdefinitions | Nem | Nem |
 > | alkalmazások | Nem | Nem |
@@ -1405,7 +1405,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | instancepools | Nem | Nem |
 > | managedinstances | Nem | Nem |
@@ -1423,7 +1423,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | sqlvirtualmachinegroups | Igen | Igen |
 > | sqlvirtualmachines | Igen | Igen |
@@ -1431,49 +1431,49 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | dwvm | Nem | Nem |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | storageaccounts | Igen | Igen |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | storagesyncservices | Igen | Igen |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | storagesyncservices | Nem | Nem |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | storagesyncservices | Nem | Nem |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kezelők | Nem | Nem |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | streamingjobs | Igen | Igen |
 
@@ -1483,7 +1483,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | környezetben | Nem | Nem |
 > | környezetek/eventsources | Nem | Nem |
@@ -1494,21 +1494,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | createsubscription | Nem | Nem |
 
 ## <a name="microsoftsupport"></a>microsoft.support
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | supporttickets | Nem | Nem |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | providerregistrations | Nem | Nem |
 > | erőforrások | Nem | Nem |
@@ -1516,7 +1516,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | környezetben | Igen | Igen |
 > | környezetek/eventsources | Igen | Igen |
@@ -1525,14 +1525,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tárolja | Igen | Igen |
 
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | account | Nem | Nem |
 > | fiók/bővítmény | Igen | Igen |
@@ -1544,7 +1544,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | dedicatedcloudnodes | Nem | Nem |
 > | dedicatedcloudservices | Nem | Nem |
@@ -1553,7 +1553,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftvsonline"></a>Microsoft. VSOnline
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
 > | tervek | Igen | Igen |
@@ -1561,7 +1561,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tanúsítványok | Nem | Igen |
 > | connectiongateways | Igen | Igen |
@@ -1580,14 +1580,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | deviceservices | Nem | Nem |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetést |
+> | Erőforrás típusa | Erőforráscsoport | -előfizetés |
 > | ------------- | ----------- | ---------- |
 > | összetevők | Nem | Nem |
 > | monitorinstances | Nem | Nem |
@@ -1598,7 +1598,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.

@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705615"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298801"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
 Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti.
 
-További segítségért lépjen kapcsolatba velünk a következő címen: farmbeatssupport@microsoft.com. Ügyeljen arra, hogy tartalmazza az **üzembe helyező. log** fájlt az e-mailben.
+További segítségért lépjen kapcsolatba velünk a következő címen: farmbeatssupport@microsoft.com. Győződjön meg arról, hogy tartalmazza a **telepítő. log** fájlt az e-mailben.
 
 A **telepítő. log** fájl letöltéséhez tegye a következőket:
 
@@ -51,7 +51,7 @@ A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjt�
 
 **Javítási művelet**:
 
-1. Győződjön meg arról, hogy helyesen végrehajtotta a partner regisztrációját – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a lekérést, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse az [itt található lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) a partner hozzáadásához.
+1. Győződjön meg arról, hogy helyesen végrehajtotta a partner regisztrációját – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a lekérést, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse a partner hozzáadásához [szükséges lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
 2. Győződjön meg arról, hogy a megfelelő telemetria-üzenet formátumát használta:
 
 ```json
@@ -65,11 +65,11 @@ A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjt�
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -119,14 +119,14 @@ Egy eszköz törlésekor a következő gyakori hibák valamelyike merülhet fel:
 2. Törölje az adott eszközt.  
 
     > [!NOTE]
-    > Az eszköz nem törölhető, ha az érzékelők társítva vannak hozzá. A kapcsolódó érzékelők törlésével kapcsolatos további információkért tekintse meg az érzékelők [adatainak beolvasása az érzékelő partnereinktől](get-sensor-data-from-sensor-partner.md)című témakör "az érzékelő törlése" című szakaszát.
+    > Az eszköz nem törölhető, ha az érzékelők társítva vannak hozzá. A kapcsolódó érzékelők törlésével kapcsolatos további információkért tekintse meg az érzékelők [adatainak beolvasása az érzékelő partnereinktől](get-sensor-data-from-sensor-partner.md)című szakaszt az érzékelő **törlése** című szakaszban.
 
 
 ## <a name="issues-with-jobs"></a>Problémák a feladatokkal
 
 ### <a name="farmbeats-internal-error"></a>FarmBeats belső hiba
 
-**Üzenet**: "FarmBeats belső hiba", további részletekért lásd a hibaelhárítási útmutatót. "
+**Üzenet**: "FarmBeats belső hiba", további részletekért lásd a hibaelhárítási útmutatót.
 
 **Javító művelet**: Ez a probléma az adatfolyamatok ideiglenes meghibásodása miatt lehet. Hozza létre újra a feladatot. Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
 
@@ -138,7 +138,7 @@ Egy eszköz törlésekor a következő gyakori hibák valamelyike merülhet fel:
 
 **Üzenet**: "nem található egyező felhasználó."
 
-**Javítási művelet**: keresse meg azt az e-mail-azonosítót, amelyhez szerepkör-hozzárendelést próbál hozzáadni. Az e-mail-AZONOSÍTÓnak pontosan egyeznie kell az adott felhasználó számára a Active Directoryban regisztrált AZONOSÍTÓval. Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
+**Javítási művelet**: keresse meg azt az e-mail-azonosítót, amelyhez szerepkör-hozzárendelést próbál hozzáadni. Az e-mail-AZONOSÍTÓnak pontosan egyeznie kell az AZONOSÍTÓval, amely regisztrálva van az adott felhasználó számára a Active Directoryban. Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon, vagy forduljon a FarmBeatsSupport@microsoft.comhoz.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nem lehet bejelentkezni a Gyorssegédbe
 
@@ -163,6 +163,7 @@ Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon,
 **Probléma**: a FarmBeats-gyorsító nem jeleníti meg a legújabb verziót még a FarmBeatsDeployment frissítése után sem.
 
 **Javító művelet**: Ez a hiba a szolgáltatás munkavégző általi megőrzésének a böngészőben való megőrzése miatt fordul elő. Tegye a következőket:
+
 1. Zárjunk be minden olyan böngésző fület, amelyen a Gyorssegéd meg van nyitva, és zárjuk be a böngészőablakot.
 2. Indítsa el a böngésző új példányát, és töltse be újra a Gyorssegéd URI-JÁT. Ez a művelet betölti a Gyorssegéd új verzióját.
 
@@ -174,7 +175,8 @@ Ha a hiba továbbra is fennáll, vegye fel a hibaüzenetet a FarmBeats fórumon,
 
 **Javítási művelet**:
 
-Folytassa a következők egyikével:
+Tegye a következők valamelyikét:
+
 - Futtassa újra a telepítőt a Datahub frissítéséhez a megfelelő felhasználónévvel és jelszóval.
 - Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.
 
@@ -198,6 +200,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 1. Ha bármilyen feladatra vagy folyamatra nem kerül sor, mert a karbantartás folyamatban van, egy kis idő elteltével küldje el újra a feladatot. 
 
    A tervezett vagy nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információkért lépjen a [Kopernikusz Open Access hub Hírek](https://scihub.copernicus.eu/news/) webhelyére.  
+
 2. Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: elérte a kapcsolatok maximális számát
@@ -207,6 +210,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 **Jelentés**: Ha egy feladatot nem sikerül elérni, mert elérte a kapcsolatok maximális számát, akkor ugyanazt a Sentinel-fiókot használja egy másik szoftver központi telepítésében.
 
 **Javítási művelet**: próbálkozzon a következők valamelyikével:
+
 * Hozzon létre egy új Sentinel-fiókot, majd futtassa újra a telepítőt a Datahub frissítéséhez egy új Sentinel-Felhasználónév és-jelszó használatával.  
 * Futtassa újra a sikertelen feladatot, vagy futtasson egy 5 és 7 nap közötti dátumtartományt egy Satellite Indexes feladatot, majd ellenőrizze, hogy a művelet sikeres volt-e.
 
@@ -218,6 +222,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 1. Ha bármilyen feladatra vagy folyamatra nem kerül sor, mert a karbantartás folyamatban van, egy kis idő elteltével küldje el újra a feladatot. 
 
    A tervezett vagy nem tervezett Sentinel karbantartási tevékenységekkel kapcsolatos információkért lépjen a [Kopernikusz Open Access hub Hírek](https://scihub.copernicus.eu/news/) webhelyére.  
+
 2. Futtassa újra a sikertelen feladatot, vagy futtassa a Satellite indexek feladatot egy 5 – 7 napos dátumtartomány esetében, majd ellenőrizze, hogy a művelet sikeres-e.
 
 ## <a name="collect-logs-manually"></a>Naplók manuális gyűjtése
@@ -225,7 +230,8 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 [Azure Storage Explorer telepítése és üzembe helyezése]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Azure Data Factory Datahub gyűjtése
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
 
     > [!NOTE]
@@ -243,7 +249,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Azure Data Factory-feladatokhoz tartozó naplók gyűjtése a Gyorssegédben
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A **keresőmezőbe** keresse meg a FarmBeats-gyorsító erőforráscsoportot.
 
     > [!NOTE]
@@ -260,7 +266,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 ### <a name="collect-datahub-app-service-logs"></a>Datahub app Service-naplók gyűjtése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
 
     > [!NOTE]
@@ -276,7 +282,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 ### <a name="collect-accelerator-app-service-logs"></a>Gyorsító app Service-naplók gyűjtése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A **keresőmezőbe** keresse meg a FarmBeats-gyorsító erőforráscsoportot.
 
     > [!NOTE]
@@ -304,7 +310,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 **Jelentés**: az Azure ad-alkalmazás regisztrációs konfigurációja nem fejeződött be megfelelően.  
 
-**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáféréssel rendelkező személyét [) az Azure](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) ad-alkalmazás regisztrációjának létrehozásához. Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
+**Javítási művelet**: kérdezze meg a rendszergazdát (a bérlő olvasási hozzáféréssel rendelkező személyt) az Azure ad-alkalmazás regisztrációjának létrehozásához használt [parancsfájl](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) használatával. Ez a szkript automatikusan gondoskodik a konfigurációs lépésekről is.
 
 **Hibaüzenet**: "nem sikerült új Active Directory alkalmazást létrehozni a (z)\<alkalmazás neve\>" ebben a bérlőben: már létezik egy olyan objektum, amely azonos értékű a tulajdonságértékek URI azonosítói számára. "
 
@@ -331,6 +337,6 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 2. Válassza ki az **app Service**-t.  
 3. Lépjen a vertikális felskálázás [app Service díjszabása lapra](https://azure.microsoft.com/pricing/details/app-service/windows/), és válassza ki a megfelelő árképzési szintet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha továbbra is FarmBeats problémákba ütközik, forduljon a [támogatási fórumhoz](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats).

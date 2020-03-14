@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254650"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Kötetek megtekintése és kezelése StorSimple Snapshot Manager használatával
 ## <a name="overview"></a>Áttekintés
@@ -93,7 +93,7 @@ Az alábbi eljárással tekintheti meg a helyi és az Azure-beli StorSimple-köt
    
    | Eredmények oszlop | Leírás |
    |:--- |:--- |
-   |  Name (Név) |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
+   |  Név |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
    |  Eszköz |Az **eszköz** oszlop tartalmazza a gazdaszámítógéphez csatlakoztatott eszköz IP-címét. |
    |  Eszköz kötetének neve |Az **eszköz kötet neve** oszlop tartalmazza annak az eszköznek a nevét, amelyhez a kiválasztott kötet tartozik. Ez az adott kötethez tartozó Azure Portalban definiált kötet neve. |
    |  Elérési utak |A **hozzáférési útvonalak** oszlop a kötet elérési útját jeleníti meg. Ez az a meghajtóbetűjel vagy csatlakoztatási pont, amelyen a kötet elérhető a gazdaszámítógépen. |
@@ -131,7 +131,7 @@ A következő eljárással ellenőrizheti újra a StorSimple-Snapshot Managerhoz
 Az alábbi eljárással konfigurálhatja az alapszintű kötetek biztonsági mentését, majd azonnal elindíthatja a biztonsági mentést, vagy létrehozhat egy szabályzatot az ütemezett biztonsági mentésekhez.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Előkészületek:
+Alapismeretek:
 
 * Győződjön meg arról, hogy a StorSimple eszköz és a gazdaszámítógép megfelelően van konfigurálva. További információért látogasson el a helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-deployment-walkthrough-u2.md)című témakörre.
 * Telepítse és konfigurálja a StorSimple Snapshot Manager. További információért látogasson el a [StorSimple Snapshot Manager üzembe helyezése](storsimple-snapshot-manager-deployment.md)című témakörre.
@@ -159,7 +159,7 @@ A dinamikus tükrözött kötetek biztonsági mentésének konfigurálásához h
 * 2\. lépés: a biztonsági mentés konfigurálásához használja a StorSimple Snapshot Manager.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Előkészületek:
+Alapismeretek:
 
 * Győződjön meg arról, hogy a StorSimple eszköz és a gazdaszámítógép megfelelően van konfigurálva. További információért látogasson el a helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md)című témakörre.
 * Telepítse és konfigurálja a StorSimple Snapshot Manager. További információért látogasson el a [StorSimple Snapshot Manager üzembe helyezése](storsimple-snapshot-manager-deployment.md)című témakörre.
@@ -205,7 +205,7 @@ A következő eljárással konfigurálhatja a dinamikus tükrözött köteteket,
    * Ha automatikus biztonsági mentést szeretne ütemezni, kattintson a **biztonsági mentési szabályzat létrehozása**elemre. Az **általános** lapon válassza ki a kötet csoportot a listából. Az **ütemterv** lapon adja meg az ütemterv részleteit. Ha elkészült, kattintson **az OK**gombra. 
 7. A biztonsági mentési feladatot a Futtatás közben is figyelheti. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás**elemre, a feladat részletei megjelennek az **eredmények** ablaktábláján. A biztonsági mentési feladatok befejezése után a rendszer átviszi a részleteket az **elmúlt 24** órás feladatok listájára. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet StorSimple-Snapshot Manager a kötetek létrehozásához és kezeléséhez](storsimple-snapshot-manager-manage-volume-groups.md).
 

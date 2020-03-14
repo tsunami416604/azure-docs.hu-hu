@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168546"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204324"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A **[Azure AI Gallery](https://gallery.azure.ai)** az Azure AI-vel létrehozott megoldások felderítésére és megosztására szolgáló, Közösség által vezérelt webhely.
 A katalógus számos olyan erőforrással rendelkezik, amelyek segítségével saját elemzési megoldásait fejlesztheti.
@@ -86,7 +88,7 @@ Emellett olyan vitafórum-eszközzel is bejelentkezhet, mint például a Disqus,
 
 1. A kísérlet vászon alatti műveletek listájában válassza a **Közzététel a**katalógusban lehetőséget.
 
-1. A katalógusban adjon meg egy leíró **nevet** és **címkéket** . Emelje ki a használt technikákat vagy a megoldás valós problémáját. Egy leíró kísérlet címe például "bináris osztályozás: Twitter-Hangulatelemzés."
+1. A katalógusban adjon meg egy leíró **nevet** és **címkéket** . Emelje ki a használt technikákat vagy a megoldás valós problémáját. Példa egy leíró kísérlet címére: "bináris besorolás: Twitter Hangulatelemzés."
 
 1. Az **Összefoglalás** mezőben adja meg a kísérlet összegzését. Röviden ismertesse a kísérlet megoldja a problémát, és hogyan válaszadásra.
 
@@ -121,7 +123,7 @@ Közvetlenül a katalógusban a kísérlethez módosíthatja a következő infor
 * Kísérlet neve
 * Összefoglalás vagy leírása
 * Címkék
-* Image (Kép)
+* Kép
 * Láthatósági beállítás (**nyilvános** vagy nem **listázva**)
 
 A kísérlet a katalógusból is törli.

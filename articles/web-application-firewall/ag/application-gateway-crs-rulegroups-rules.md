@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373033"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279246"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
 
@@ -98,7 +98,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ## <a name="owasp31"></a>Szabálykészlet
 
-### <a name="general-31"></a> <p x-ms-format-detection="none">Általános kérdések</p>
+### <a name="general-31"></a> <p x-ms-format-detection="none">Általános</p>
 
 |RuleId|Leírás|
 |---|---|
@@ -344,7 +344,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ## <a name="owasp30"></a>Szabálykészlet
 
-### <a name="general-30"></a> <p x-ms-format-detection="none">Általános kérdések</p>
+### <a name="general-30"></a> <p x-ms-format-detection="none">Általános</p>
 
 |RuleId|Leírás|
 |---|---|
@@ -800,6 +800,6 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Webalkalmazási tűzfalszabályok testreszabása a Azure Portal használatával](application-gateway-customize-waf-rules-portal.md)

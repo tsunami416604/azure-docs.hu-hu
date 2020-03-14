@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190789"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276659"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -65,13 +65,13 @@ A következő lépések a NPM segítségével telepítik a Windows rendszerhez t
 
     ##### <a name="v2x"></a>v2. x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools
     ```
 
     ##### <a name="v3x"></a>v3. x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
@@ -79,7 +79,7 @@ A következő lépések a NPM segítségével telepítik a Windows rendszerhez t
 
 1. Ha nem tervezi a [bővítmények]használatát, telepítse a [Windowshoz készült .net Core 2. x SDK](https://www.microsoft.com/net/download/windows)-t.
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 A következő lépések a Homebrew-t használják a fő eszközök macOS rendszeren való telepítéséhez.
 
@@ -163,33 +163,33 @@ A 2. x verzióhoz az inicializáláskor ki kell választania a projekt alapérte
 
 A terminál ablakban vagy egy parancssorban futtassa a következő parancsot a projekt és a helyi git-tárház létrehozásához:
 
-```bash
+```
 func init MyFunctionProj
 ```
 
 Amikor megadja a projekt nevét, létrejön egy új, a névvel ellátott mappa, amely inicializálva van. Ellenkező esetben az aktuális mappa inicializálása megtörtént.  
 A 2. x verzióban a parancs futtatásakor ki kell választania egy futtatókörnyezetet a projekthez. 
 
-```output
+<pre>
 Select a worker runtime:
 dotnet
 node
 python 
 powershell
-```
+</pre>
 
 A fel/le nyílbillentyűk használatával válassza ki a nyelvet, majd nyomja le az ENTER billentyűt. Ha JavaScript-vagy írógéppel-függvények fejlesztését tervezi, válassza a **csomópont**lehetőséget, majd válassza ki a nyelvet. Az írógéppel [néhány további követelményt](functions-reference-node.md#typescript)is tartalmaz. 
 
 A kimenet a következő példához hasonlít egy JavaScript-projekthez:
 
-```output
+<pre>
 Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
 Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
-```
+</pre>
 
 a `func init` a következő beállításokat támogatja, amelyek csak 2. x verziójúak, hacsak másként nincs jelezve:
 
@@ -247,12 +247,12 @@ Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes 
 
   + Egy meglévő Function alkalmazás összes beállításának letöltése:
 
-    ```bash
+    ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
   + Egy adott Storage-fiókhoz tartozó kapcsolatok karakterláncának beolvasása:
 
-    ```bash
+    ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
@@ -262,13 +262,13 @@ Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes 
 
 Hozzon létre egy függvényt, futtassa a következő parancsot:
 
-```bash
+```
 func new
 ```
 
 A 2. x verzióban a `func new` futtatásakor a rendszer a Function app alapértelmezett nyelvén kéri a sablon kiválasztását, és a függvény nevét is kiválaszthatja. Az 1. x verzióban a rendszer azt is kéri, hogy válassza ki a nyelvet.
 
-```output
+<pre>
 Select a language: Select a template:
 Blob trigger
 Cosmos DB trigger
@@ -279,18 +279,18 @@ SendGrid
 Service Bus Queue trigger
 Service Bus Topic trigger
 Timer trigger
-```
+</pre>
 
 A függvény kódja a megadott nevű almappában jön létre, ahogy az a következő üzenetsor-trigger kimenetében látható:
 
-```output
+<pre>
 Select a language: Select a template: Queue trigger
 Function name: [QueueTriggerJS] MyQueueTrigger
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
-```
+</pre>
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
@@ -303,62 +303,65 @@ Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok 
 
 Ha például JavaScript HTTP-triggert szeretne létrehozni egyetlen parancsban, futtassa a következőt:
 
-```bash
+```
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
 Ha üzenetsor által aktivált függvényt szeretne létrehozni egyetlen parancsban, futtassa a következőt:
 
-```bash
+```
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
 ## <a name="start"></a>Függvények helyi futtatása
 
-Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép lehetővé teszi az eseményindítók használatát a projektben lévő összes függvénynél. 
+Functions-projekt futtatásához futtassa a functions gazdagépet. A gazdagép lehetővé teszi az eseményindítók használatát a projektben lévő összes függvénynél. A Start parancs a projekt nyelvétől függően változhat.
 
-### <a name="version-2x"></a>2-es verzió. x
+# <a name="c"></a>[C\#](#tab/csharp)
 
-A futtatókörnyezet 2. x verziójában a Start parancs a projekt nyelvétől függően változhat.
-
-#### <a name="c"></a>C\#
-
-```command
+```
 func start --build
 ```
+# <a name="javascript"></a>[JavaScript](#tab/node)
 
-#### <a name="javascript"></a>JavaScript
-
-```command
+```
 func start
 ```
 
-#### <a name="typescript"></a>TypeScript
+# <a name="python"></a>[Python](#tab/python)
 
-```command
+```
+func start
+```
+Ezt a parancsot [virtuális környezetben kell futtatni](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv).
+
+# <a name="typescript"></a>[TypeScript](#tab/ts)
+
+```
 npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>1\. x verzió
+---
 
-A functions futtatókörnyezet 1. x verziójának a `host` parancsot kell megadnia, ahogy az alábbi példában is látható:
-
-```command
-func host start
-```
+>[!NOTE]  
+> A functions futtatókörnyezet 1. x verziójának a `host` parancsot kell megadnia, ahogy az alábbi példában is látható:
+>
+> ```
+> func host start
+> ```
 
 `func start` a következő lehetőségeket támogatja:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Csak 2. x verzió. |
-| **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak `--useHttps`használatos. Csak 2. x verzió. |
-| **`--cors-credentials`** | A csak a cookie-k és a hitelesítési fejlécek használatának engedélyezése csak a 2. x verzióban. |
+| **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Az 1. x verzió esetében nem támogatott. |
+| **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak `--useHttps`használatos. Az 1. x verzió esetében nem támogatott. |
+| **`--cors-credentials`** | A több forrásból származó hitelesített kérelmek (azaz a cookie-k és a hitelesítési fejléc) engedélyezése az 1. x verzió esetében nem támogatott. |
 | **`--cors`** | A CORS-eredetek vesszővel tagolt listája, szóközök nélkül. |
-| **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Engedélyezheti például a nyelvi feldolgozó hibakeresését a [hibakeresési port és egyéb szükséges argumentumok](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)megadásával. Csak 2. x verzió. |
+| **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Engedélyezheti például a nyelvi feldolgozó hibakeresését a [hibakeresési port és egyéb szükséges argumentumok](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)megadásával. Az 1. x verzió esetében nem támogatott. |
 | **`--nodeDebugPort`** , **`-n`** | A Node. js hibakereső által használandó port. Default (alapértelmezett): A Launch. JSON vagy A 5858 érték. Csak 1. x verzió. |
-| **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak `--cert`használatos. Csak 2. x verzió. |
+| **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak `--cert`használatos. Az 1. x verzió esetében nem támogatott. |
 | **`--port`** , **`-p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | A folyamat bezárása előtt szüneteltesse a további adatokat. Csak akkor használható, ha egy integrált fejlesztői környezetből (IDE) indít alapszintű eszközöket.|
 | **`--script-root`** , **`--prefix`** | A futtatni vagy telepíteni kívánt Function alkalmazás gyökeréhez tartozó elérési út megadására szolgál. Ez olyan lefordított projektek esetében használatos, amelyek a projektfájlok almappában hozhatók elő. Ha például létrehoz egy C# Class Library-projektet, a Host. JSON, a local. Settings. JSON és a function. JSON fájlok egy olyan *gyökérkönyvtárban* jönnek létre, amelynek elérési útja például a `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben az előtagot `--script-root MyProject/bin/Debug/netstandard2.0`ként kell beállítani. Ez a Function alkalmazás gyökere, ha az Azure-ban fut. |
@@ -367,13 +370,13 @@ func host start
 
 A functions-gazdagép indításakor a HTTP-triggert függvények URL-címét adja meg:
 
-```output
+<pre>
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
 Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
-```
+</pre>
 
 >[!IMPORTANT]
 >Helyileg futtatva az engedélyezés nem kényszeríti ki a HTTP-végpontokat. Ez azt jelenti, hogy az összes helyi HTTP-kérelem `authLevel = "anonymous"`-ként van kezelve. További információkért lásd a http- [kötést ismertető cikket](functions-bindings-http-webhook-trigger.md#authorization-keys).
@@ -397,21 +400,31 @@ Győződjön meg arról, hogy ugyanazt a kiszolgálónevet és portot használja
 
 A következő cURL-parancs elindítja a `MyHttpTrigger` rövid útmutató függvényt egy GET kérelemből a lekérdezési karakterláncban átadott _Name_ paraméterrel.
 
-```bash
+```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
 A következő példa ugyanazt a függvényt _hívja meg a_ kérelem törzsében a post kérelem átadásakor:
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azure Rocks'}"
+```
+---
 
 A lekérdezési karakterláncban található adatok beolvasása egy böngészőből is elvégezhető. Minden más HTTP-módszer esetében a cURL, a Hegedűs, a Poster vagy egy hasonló HTTP-tesztelési eszközt kell használnia.
 
 #### <a name="non-http-triggered-functions"></a>Nem HTTP által aktivált függvények
 
-A HTTP-triggereken és webhookokon kívüli egyéb függvények esetében az adminisztrációs végpont meghívásával helyileg is tesztelheti a függvényeket. Ha ezt a végpontot egy HTTP POST-kérelemmel hívja meg a helyi kiszolgálón, a függvényt indítja el. Szükség esetén a POST kérelem törzsében is elvégezheti a tesztelési célú adatellenőrzést. Ez a funkció hasonló a Azure Portal **teszt** lapjához.
+A HTTP-triggerek, a webhookok és a Event Grid-eseményindítók kivételével a függvények helyi teszteléséhez az adminisztrációs végpont meghívásával végezheti el a funkciókat. Ha ezt a végpontot egy HTTP POST-kérelemmel hívja meg a helyi kiszolgálón, a függvényt indítja el. 
+
+Event Grid aktivált függvények helyi teszteléséhez tekintse meg [a local Testing with Viewer Web App](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)című témakört.
+
+Szükség esetén a POST kérelem törzsében is elvégezheti a tesztelési célú adatellenőrzést. Ez a funkció hasonló a Azure Portal **teszt** lapjához.
 
 A nem HTTP-függvények elindításához a következő rendszergazdai végpontot kell meghívni:
 
@@ -427,16 +440,22 @@ Ahhoz, hogy egy függvény rendszergazdai végpontján át lehessen adni a teszt
 
 A `<trigger_input>` érték a függvény által várt formátumú értékeket tartalmaz. A következő cURL-példa egy `QueueTriggerJS` függvény BEJEGYZÉSe. Ebben az esetben a bemenet egy karakterlánc, amely egyenértékű a várólistában várható üzenettel.
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
-curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
+curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTrigger
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```bash
+curl --request POST -H "Content-Type:application/json" --data "{'input':'sample queue data'}" http://localhost:7071/admin/functions/QueueTrigger
+```
+---
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>A `func run` parancs használata az 1. x verzióban
+#### <a name="using-the-func-run-command-version-1x-only"></a>Az `func run` parancs használata (csak 1. x verzió)
 
 >[!IMPORTANT]
-> Az `func run` parancs nem támogatott az eszközök 2. x verziójában. További információ: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
+> Az `func run` parancs csak az eszközök 1. x verziójában támogatott. További információ: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
 
-A függvényeket közvetlenül a `func run <FunctionName>` használatával is meghívhatja, és bemeneti adatokat is megadhat a függvénynek. Ez a parancs hasonló egy függvény futtatásához a Azure Portal **teszt** lapján.
+Az 1. x verzióban a függvényeket közvetlenül a `func run <FunctionName>` használatával is meghívhatja, és a függvény bemeneti adatokat is megadhat. Ez a parancs hasonló egy függvény futtatásához a Azure Portal **teszt** lapján.
 
 `func run` a következő lehetőségeket támogatja:
 
@@ -450,7 +469,7 @@ A függvényeket közvetlenül a `func run <FunctionName>` használatával is me
 
 Ha például egy HTTP-triggert használó függvényt szeretne meghívni, és tartalmat kell átadnia, futtassa a következő parancsot:
 
-```bash
+```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
@@ -467,7 +486,7 @@ A Project mappa olyan nyelvspecifikus fájlokat és címtárakat tartalmazhat, a
 
 Ha a helyi kódot egy Azure-beli Function alkalmazásban szeretné közzétenni, használja a `publish` parancsot:
 
-```bash
+```
 func azure functionapp publish <FunctionAppName>
 ```
 
@@ -504,7 +523,7 @@ A következő közzétételi beállítások csak a 2. x verzióban támogatottak
 
 Azure Functions lehetővé teszi a Function projekt üzembe helyezését egy [Egyéni Docker-tárolóban](functions-deployment-technologies.md#docker-container). További információkért lásd: [függvény létrehozása Linuxon egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md). Az egyéni tárolók Docker kell rendelkezniük. Ha Docker szeretne létrehozni egy alkalmazást, használja az--Docker kapcsolót `func init`on.
 
-```bash
+```
 func deploy
 ```
 

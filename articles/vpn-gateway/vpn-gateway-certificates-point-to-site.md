@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393565"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279337"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Tanúsítványok előállítása és exportálása pont – hely kapcsolatokhoz a PowerShell használatával
 
@@ -31,7 +31,7 @@ A P2S-kapcsolaton keresztül a VNet csatlakozó összes ügyfélnek helyileg tel
 
 Az ügyféltanúsítvány telepítéséhez tekintse meg [az Ügyféltanúsítványok telepítése pont – hely kapcsolatokhoz](point-to-site-how-to-vpn-client-install-azure-cert.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a pont – hely konfigurációval.
 

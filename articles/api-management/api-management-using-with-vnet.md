@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: HT
+ms.openlocfilehash: 0ff7eff2465f187c25c58b429db752decc38ffc4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244055"
+ms.locfileid: "79298036"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -177,9 +177,11 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 ## <a name="subnet-size"></a> Alhálózat méretének követelménye
 Az Azure egyes alhálózatokon belül fenntart néhány IP-címet, és ezeket a címeket nem lehet használni. Az alhálózatok első és utolsó IP-címe a protokoll-megfelelőség számára van fenntartva, valamint az Azure-szolgáltatásokhoz használt három további címet. További információ: az [IP-címek ezen alhálózatokon belüli használatára vonatkozó korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Az Azure VNET-infrastruktúra által használt IP-címeken kívül az alhálózat minden egyes API Management-példánya két IP-címet használ a prémium SKU vagy egy IP-cím alapján a fejlesztői SKU számára. Minden példány fenntart egy további IP-címet a külső terheléselosztó számára. Belső vnet való üzembe helyezéskor további IP-címet igényel a belső terheléselosztó számára.
+Az Azure VNET-infrastruktúra által használt IP-címeken kívül az alhálózat minden egyes API Management-példánya két IP-címet használ a prémium SKU vagy egy IP-cím alapján a fejlesztői SKU számára. Minden példány fenntart egy további IP-címet a külső terheléselosztó számára. Belső virtuális hálózatra való üzembe helyezéskor további IP-címet igényel a belső terheléselosztó számára.
 
 Az alhálózat minimális mérete feletti számítás miatt, amelyben a API Management telepíthető a/29, amely három használható IP-címet biztosít.
+
+API Management minden további méretezési egységéhez két további IP-cím szükséges.
 
 ## <a name="routing"></a> Útválasztás
 + Az elosztott terhelésű nyilvános IP-cím (VIP) le lesz foglalva az összes szolgáltatási végpont elérésének biztosításához.
@@ -202,7 +204,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Public| USA déli középső régiója (globális)| 104.214.19.224|
 | Azure Public| USA északi középső régiója (globális)| 52.162.110.80|
 | Azure Public| USA nyugati középső régiója| 52.253.135.58|
-| Azure Public| Dél-Korea középső régiója| 40.82.157.167|
+| Azure Public| Korea középső régiója| 40.82.157.167|
 | Azure Public| Az Egyesült Királyság nyugati régiója| 51.137.136.0|
 | Azure Public| Nyugat-Japán| 40.81.185.8|
 | Azure Public| USA északi középső régiója| 40.81.47.216|
@@ -218,7 +220,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Public| Délkelet-Ázsia| 40.90.185.46|
 | Azure Public| Dél-Afrika északi régiója| 102.133.130.197|
 | Azure Public| Közép-Kanada| 52.139.20.34|
-| Azure Public| Dél-Korea déli régiója| 40.80.232.185|
+| Azure Public| Korea déli régiója| 40.80.232.185|
 | Azure Public| Közép-India| 13.71.49.1|
 | Azure Public| USA nyugati régiója| 13.64.39.16|
 | Azure Public| Délkelet-Ausztrália| 20.40.160.107|

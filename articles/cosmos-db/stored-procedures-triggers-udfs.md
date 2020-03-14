@@ -8,11 +8,11 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388579"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246525"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -79,7 +79,7 @@ Az Azure Cosmos DB az eseményindítók két típusát támogatja:
 
 ### <a name="pre-triggers"></a>Trigger előtti
 
-Az Azure Cosmos DB olyan eseményindítókat nyújt, amelyek egy Azure Cosmos-elemen végzett művelet végrehajtásával indíthatók. Meghatározhat például egy előzetes eseményindítót, amikor elemet hoz létre. Ebben az esetben az előzetes eseményindító az elem létrehozása előtt fut. Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. Szükség esetén a kérésobjektummal frissíthető a dokumentum törzse az eredeti kéréshez képest. Az eseményindítók regisztrálásakor a felhasználók meghatározhatják azokat a műveleteket, amelyekkel futhatnak. Ha egy triggert `TriggerOperation.Create`használatával hoztak létre, ez azt jelenti, hogy az triggert a csere műveletben nem engedélyezi a rendszer. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
+Az Azure Cosmos DB olyan eseményindítókat nyújt, amelyek egy Azure Cosmos-elemen végzett művelet végrehajtásával indíthatók. Meghatározhat például egy előzetes eseményindítót, amikor elemet hoz létre. Ebben az esetben az előzetes eseményindító az elem létrehozása előtt fut. Üzem előtti eseményindítók nem lehet bemeneti paramétereket. Szükség esetén a kérésobjektummal frissíthető a dokumentum törzse az eredeti kéréshez képest. Eseményindítók regisztrálásakor a felhasználók megadhatják a műveletek, amelyek való futtatás. Ha egy triggert `TriggerOperation.Create`használatával hoztak létre, ez azt jelenti, hogy az triggert a csere műveletben nem engedélyezi a rendszer. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
 
 ### <a name="post-triggers"></a>Triggerek utáni
 
@@ -96,7 +96,7 @@ A felhasználó által definiált függvények (UDF-k) az SQL API-lekérdezés n
 
 Az SQL API-lekérdezési szintaxist használó lekérdezések kiadása mellett a [KISZOLGÁLÓOLDALI SDK](https://azure.github.io/azure-cosmosdb-js-server) lehetővé teszi, hogy az SQL ismerete nélkül JavaScript-interfész használatával végezzen lekérdezéseket. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DBon belül hatékonyan hajtja végre. A JavaScript-lekérdezési API-támogatással kapcsolatos további információkért lásd: [a JavaScript nyelvi integrált lekérdezési API használata](javascript-query-api.md) című cikk. Példákat a [tárolt eljárások és eseményindítók írása JavaScript-lekérdezési API használatával](how-to-write-javascript-query-api.md) című cikkben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan írhat és használhat tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB a következő cikkekkel:
 

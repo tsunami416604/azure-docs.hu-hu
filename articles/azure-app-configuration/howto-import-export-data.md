@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 2c074cbd99620a482b18cbe2dfcce8f987d78bd5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372094"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278271"
 ---
 # <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása vagy exportálása
 
@@ -62,7 +62,7 @@ Az adatexportálás az [Azure Portal](https://portal.azure.com) vagy az [Azure C
 
     ![A fájl exportálása befejeződött](./media/export-file-complete.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  

@@ -4,11 +4,11 @@ description: Az ACR-feladatok által létrehozott futtatási naplók megtekinté
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096506"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246967"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Feladat-futtatási naplók megtekintése és kezelése
 
@@ -95,7 +95,7 @@ az acr task logs --registry mycontainerregistry1220 \
 Helyi naplófájlokat is menthet az Azure Storage szolgáltatásba. Például az [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md), a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)vagy más módszerek használatával tölthet fel fájlokat egy Storage-fiókba.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Azure Container Registry feladatokról](container-registry-tasks-overview.md)
 

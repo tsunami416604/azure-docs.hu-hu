@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/06/2020
 ms.author: victorh
 ms.openlocfilehash: ad3289d9b93421df6776c685325f388d552bdba4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893006"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279233"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -20,7 +20,7 @@ ms.locfileid: "78893006"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -414,6 +414,6 @@ NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![Applica
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>A Application Gateway affinitás cookie támogatja a SameSite attribútumot?
 Igen, a [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) a SameSite attribútum nélküli http-cookie-kra vonatkozó mandátumot vezetett be SameSite = LAX néven. Ez azt jelenti, hogy a böngésző nem fogja elküldeni a Application Gateway affinitási cookie-t harmadik féltől származó környezetben. Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos*. Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-overview.md#cookie-based-affinity) talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374467"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243925"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Termékcsoportok az Azure API Management
 
@@ -207,16 +207,16 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |Product|[Termék](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
-|IsDeveloperSubscribed|logikai|Azt határozza meg, hogy az aktuális felhasználó előfizetett-e erre a termékre.|  
-|SubscriptionState|szám|Az előfizetés állapota. A lehetséges állapotok a következők:<br /><br /> -   `0 - suspended` – az előfizetés le van tiltva, és az előfizető nem hívhat meg semmilyen API-t a termékről.<br />-   `1 - active` – az előfizetés aktív.<br />-   `2 - expired` – az előfizetés elérte a lejárati dátumot, és inaktiválva lett.<br />-   `3 - submitted` – az előfizetési kérést a fejlesztő hozta létre, de még nem hagyta jóvá vagy nem utasította el.<br />-   `4 - rejected` – az előfizetési kérelmet a rendszergazda megtagadta.<br />-   `5 - cancelled` – az előfizetést a fejlesztő vagy a rendszergazda megszakította.|  
+|IsDeveloperSubscribed|Logikai érték|Azt határozza meg, hogy az aktuális felhasználó előfizetett-e erre a termékre.|  
+|SubscriptionState|number|Az előfizetés állapota. A lehetséges állapotok a következők:<br /><br /> -   `0 - suspended` – az előfizetés le van tiltva, és az előfizető nem hívhat meg semmilyen API-t a termékről.<br />-   `1 - active` – az előfizetés aktív.<br />-   `2 - expired` – az előfizetés elérte a lejárati dátumot, és inaktiválva lett.<br />-   `3 - submitted` – az előfizetési kérést a fejlesztő hozta létre, de még nem hagyta jóvá vagy nem utasította el.<br />-   `4 - rejected` – az előfizetési kérelmet a rendszergazda megtagadta.<br />-   `5 - cancelled` – az előfizetést a fejlesztő vagy a rendszergazda megszakította.|  
 |Korlátok|tömb|Ez a tulajdonság elavult, és nem használható.|  
-|DelegatedSubscriptionEnabled|logikai|Engedélyezve van-e a [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) ehhez az előfizetéshez.|  
-|DelegatedSubscriptionUrl|sztring|Ha a delegálás engedélyezve van, a delegált előfizetési URL-cím.|  
-|IsAgreed|logikai|Ha a termék rendelkezik feltételekkel, azt, hogy az aktuális felhasználó elfogadta-e a feltételeket.|  
+|DelegatedSubscriptionEnabled|Logikai érték|Engedélyezve van-e a [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) ehhez az előfizetéshez.|  
+|DelegatedSubscriptionUrl|Karakterlánc|Ha a delegálás engedélyezve van, a delegált előfizetési URL-cím.|  
+|IsAgreed|Logikai érték|Ha a termék rendelkezik feltételekkel, azt, hogy az aktuális felhasználó elfogadta-e a feltételeket.|  
 |Előfizetések|[Előfizetés összegző](api-management-template-data-model-reference.md#SubscriptionSummary) entitások gyűjteménye.|A termékre vonatkozó előfizetések.|  
 |API|[API](api-management-template-data-model-reference.md#API) -entitások gyűjteménye.|A termékben található API-k.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|logikai|Azt határozza meg, hogy az aktuális felhasználó jogosult-e előfizetni erre a termékre az előfizetési korlát tekintetében.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|logikai|Azt határozza meg, hogy az aktuális felhasználó jogosult-e előfizetni erre a termékre több előfizetésre vonatkozóan.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|Logikai érték|Azt határozza meg, hogy az aktuális felhasználó jogosult-e előfizetni erre a termékre az előfizetési korlát tekintetében.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|Logikai érték|Azt határozza meg, hogy az aktuális felhasználó jogosult-e előfizetni erre a termékre több előfizetésre vonatkozóan.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -262,5 +262,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

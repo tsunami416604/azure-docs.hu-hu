@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385370"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254624"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz bekapcsolása vagy kikapcsolása
 
@@ -165,6 +165,6 @@ Miután elvégezte a Windows PowerShell StorSimple-bővítménye vagy a Azure Po
 > [!NOTE]
 > A EBOD-ház az elsődleges házba való csatlakoztatásához használt SAS-kábelek nem távolíthatók el a rendszer leállítása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a StorSimple-eszköz bekapcsolása vagy leállítása során problémák merülnek [fel, forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) .
 

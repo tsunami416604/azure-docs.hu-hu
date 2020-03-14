@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220555"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker erőforrások és tudásbázisok nyelvi támogatása
 
@@ -31,7 +31,7 @@ A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalm
 
 |Nyelv|
 |--|
-|arab|
+|Arab|
 |örmény|
 |bengáli|
 |baszk|
@@ -42,20 +42,20 @@ A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalm
 |horvát|
 |cseh|
 |dán|
-|holland|
+|Holland|
 |Angol|
 |észt|
 |finn|
 |francia|
-|galíciai|
+|gallego|
 |német|
 |görög|
 |gudzsaráti|
-|héber|
+|Héber|
 |hindi|
 |magyar|
-|izlandi|
-|indonéz|
+|Izlandi|
+|Indonéz|
 |ír|
 |olasz|
 |japán|
@@ -64,12 +64,12 @@ A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalm
 |lett|
 |litván|
 |malajálam|
-|maláj|
+|Maláj|
 |norvég|
 |lengyel|
-|portugál|
+|Portugál|
 |pandzsábi|
-|román|
+|Román|
 |Orosz|
 |Serbian_Cyrillic|
 |Serbian_Latin|
@@ -82,10 +82,10 @@ A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalm
 |thai|
 |török|
 |ukrán|
-|urdu|
-|vietnami|
+|Urdu|
+|Vietnami|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Nyelv kiválasztása](../how-to/language-knowledge-base.md)

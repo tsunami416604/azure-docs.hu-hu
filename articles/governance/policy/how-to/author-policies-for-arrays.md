@@ -4,18 +4,18 @@ description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezése
 ms.date: 11/26/2019
 ms.topic: how-to
 ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360190"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280663"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
 A Azure Resource Manager tulajdonságok általában karakterláncként és logikai értékként vannak definiálva. Ha egy-a-többhöz kapcsolat létezik, az összetett tulajdonságok tömbként vannak definiálva. Azure Policy a tömbök számos különböző módon használatosak:
 
 - Egy [definíciós paraméter](../concepts/definition-structure.md#parameters)típusa több beállítás megadásához
-- Egy házirend- [szabály](../concepts/definition-structure.md#policy-rule) része a vagy a **notIn** feltételek használatával
+- Egy házirend- [szabály](../concepts/definition-structure.md#policy-rule) része a vagy a **in** **notIn** feltételek használatával
 - Egy olyan házirend-szabály része, amely kiértékeli a [\[\*\] aliast](../concepts/definition-structure.md#understanding-the--alias) a kiértékeléshez:
   - Olyan forgatókönyvek, mint a **none** **, sem**vagy **az összes**
   - Összetett forgatókönyvek **darabszámmal**
@@ -203,7 +203,7 @@ A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

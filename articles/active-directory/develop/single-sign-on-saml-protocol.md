@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375677"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262424"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
@@ -48,7 +48,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| ID (Azonosító) | Kötelező | Az Azure AD ezt az attribútumot használja a visszaadott válasz `InResponseTo` attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
+| ID | Kötelező | Az Azure AD ezt az attribútumot használja a visszaadott válasz `InResponseTo` attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
 | Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
 | IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](https://msdn.microsoft.com/library/az4se3k1.aspx)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
 | AssertionConsumerServiceUrl | Optional | Ha meg van adni, ennek a paraméternek meg kell egyeznie a Cloud Service `RedirectUri` az Azure AD-ben. |
@@ -99,7 +99,7 @@ Ha meg van adni, ne adja meg a `ProxyCount` attribútumot, `IDPListOption` vagy 
 ### <a name="signature"></a>Aláírás
 Ne tartalmazzon `Signature` elemet `AuthnRequest` elemekben, mivel az Azure AD nem támogatja az aláírt hitelesítési kérelmeket.
 
-### <a name="subject"></a>Tárgy
+### <a name="subject"></a>Tulajdonos
 Az Azure AD figyelmen kívül hagyja `AuthnRequest` elemek `Subject` elemét.
 
 ## <a name="response"></a>Válasz
@@ -165,7 +165,7 @@ A kiállítói elemmel kapcsolatos válasz például a következő mintához has
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 
 A `Status` elem a bejelentkezés sikerességét vagy sikertelenségét közvetíti. Tartalmazza a `StatusCode` elemet, amely tartalmaz egy kódot vagy egy beágyazott kódot, amely a kérelem állapotát jelöli. Emellett tartalmazza a `StatusMessage` elemet is, amely a bejelentkezési folyamat során létrehozott egyéni hibaüzeneteket tartalmazza.
 
@@ -210,7 +210,7 @@ A digitális aláírás létrehozásához az Azure AD az aláíró kulcsot haszn
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Tárgy
+#### <a name="subject"></a>Tulajdonos
 
 Ez határozza meg az utasításban szereplő utasítások tárgyát képező rendszerbiztonsági tag. `NameID` elemet tartalmaz, amely a hitelesített felhasználót jelöli. A `NameID` érték olyan célzott azonosító, amely csak a jogkivonat célközönségét képező szolgáltatóhoz van irányítva. Állandó – visszavonható, de soha nem lesz hozzárendelve. Az is átlátszatlan, hogy nem fedi fel a felhasználót, és nem használható azonosítóként az attribútumok lekérdezéséhez.
 

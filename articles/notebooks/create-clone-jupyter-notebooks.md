@@ -4,11 +4,11 @@ description: Azure Notebooks az előzetes verziójú projektek jegyzetfüzetek �
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360622"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280572"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projektek létrehozása és klónozása Azure Notebooks előzetes verzióban
 
@@ -72,9 +72,9 @@ A következő fenntartott szavak önmagukban nem használhatók projekt-azonosí
 | --- | --- | --- | --- | --- | --- |
 | körülbelül | account | adminisztráció | api | blog | osztályteremben |
 | content | irányítópult | Ismerkedés | – gyakori kérdések | Súgó | HTML |
-| Kezdőlap | importálása | erőforrástár | felügyelet | új | notebook |
+| Kezdőlap | importálása | erőforrástár | kezelés | új | notebook |
 | notebookok | PDF | előzetes verzió | árképzési | profile | Keresés |
-| status | támogatja | test | | | |
+| status | támogatja | teszt | | | |
 
 Ha a következő szavak egyikét próbálja meg projekt-AZONOSÍTÓként használni, az **új projekt létrehozása** és a **projekt beállításainak** előugró ablakai jelzik, hogy a "könyvtár azonosítója fenntartott azonosító".
 
@@ -110,7 +110,7 @@ A projekt klónozása:
 
 1. A **klónozás** gomb kiválasztását követően Azure Notebooks közvetlenül a másolatra navigál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 - [Útmutató: projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)

@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362978"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257575"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel (RBAC)
 
@@ -43,7 +43,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 
 | **Erőforrás típusa** | **Üzembe helyezési modell** | **Engedéllyel** |
 | --- | --- | --- |
-| Számítás | Resource Manager | Microsoft.Compute/availabilitySets/read |
+| Compute | Resource Manager | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
 |  |  | Microsoft.Compute/virtualMachines/write |
 |  |  | Microsoft.Compute/virtualMachines/delete |
@@ -53,7 +53,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft.ClassicCompute/virtualMachines/read |
 |  |  | Microsoft.ClassicCompute/virtualMachines/write |
 |  |  | Microsoft.ClassicCompute/virtualMachines/delete |
-| Hálózat | Resource Manager | Microsoft.Network/networkInterfaces/read |
+| Network (Hálózat) | Resource Manager | Microsoft.Network/networkInterfaces/read |
 |  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft.Network/networkInterfaces/delete |
 |  |  | Microsoft.Network/networkInterfaces/join/action |
@@ -62,7 +62,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Klasszikus | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Tárterület | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | Klasszikus | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
@@ -71,7 +71,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 
 Érdemes lehet a "Virtual Machine közreműködő" és a "klasszikus virtuálisgép-közreműködő" [beépített szerepköröket](../role-based-access-control/built-in-roles.md) használni a Resource Manager és a klasszikus üzemi modellekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md): első lépések a RBAC a Azure Portal.
 * Ismerje meg, hogyan kezelheti a hozzáférést a következővel:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)

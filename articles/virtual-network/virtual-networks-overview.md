@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
 ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372389"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241422"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -85,6 +85,6 @@ Bizonyos korlátozások vonatkoznak az üzembe helyezhető Azure-erőforrások s
 
 Az Azure VNet díjmentesen vehető igénybe. A standard díjak olyan erőforrásokra vonatkoznak, mint a Virtual Machines (VM) és más termékek. További információ: a [VNet díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/) és az Azure [díjszabásának kalkulátora](https://azure.microsoft.com/pricing/calculator/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  A virtuális hálózatok használatának megkezdéséhez hozzon létre egyet, helyezzen üzembe rajta néhány virtuális gépet, majd létesítsen kommunikációt a virtuális gépek között. Ennek ismertetéséhez tekintse meg a [Virtuális hálózat létrehozása](quick-create-portal.md) című rövid útmutatót.

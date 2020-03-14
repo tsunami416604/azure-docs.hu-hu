@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373292"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274345"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -65,11 +65,11 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
 >- System Center Operations Manager 2012 R2 esetén töltse le [innen](https://www.microsoft.com/download/details.aspx?id=57171)a felügyeleti csomagot.  
 
 
-### <a name="network"></a>Hálózat
+### <a name="network"></a>Network (Hálózat)
 
 Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszolgálókhoz és az operatív konzolhoz szükséges proxy-és tűzfal-konfigurációs adatokat felsorolják Azure Monitorekkel való kommunikációhoz. Az egyes összetevőktől érkező forgalom a hálózatról Azure Monitorra van kifelé.
 
-|Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
+|Resource | Portszám| HTTP-ellenőrzés kihagyása|  
 |---------|------|-----------------------|  
 |**Ügynök**|||  
 |\*.ods.opinsights.azure.com| 443 |Igen|  
@@ -352,6 +352,6 @@ Ha a felügyeleti csoport Log Analytics munkaterületre való újrakapcsolódás
 * A forrás-adathordozón a `\ManagementPacks` System Center 2016 – Operations Manager mappában vagy felette.
 * A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. Operations Manager 2012 esetében a forrás mappája `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és 2012 R2, `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A funkciók hozzáadásával és az adatok összegyűjtésével kapcsolatban lásd: [Azure monitor megoldások hozzáadása a Solutions Gallery](../../azure-monitor/insights/solutions.md).

@@ -5,11 +5,11 @@ ms.date: 11/25/2019
 ms.topic: overview
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e886f37a8d7f1395b5c831e81e600ecc6e2dd20f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384430"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79241527"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -107,7 +107,7 @@ Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióho
 | Szabályzat | Paraméter neve |Paraméter típusa  |Megjegyzés |
 |---|---|---|---|
 | A szabályzat | allowedLocations | tömb  |Ez a paraméter sztringek listáját várja értékként, mivel a paraméter típusa tömbként lett megadva |
-| B szabályzat | allowedSingleLocation |sztring |Ez a paraméter egy szót vár értékként, mivel a paraméter típusa sztringként lett megadva |
+| B szabályzat | allowedSingleLocation |Karakterlánc |Ez a paraméter egy szót vár értékként, mivel a paraméter típusa sztringként lett megadva |
 
 Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdeményezési paramétereinek megadására:
 
@@ -143,7 +143,7 @@ Az Azure Policy alábbi áttekintése a 2018-as buildből származik. A diaképe
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 

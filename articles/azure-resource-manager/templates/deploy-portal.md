@@ -4,11 +4,11 @@ description: A Azure Portal és az Azure Erőforrás-kezelés használatával az
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 32c807b4881bc59b6bec0d26ab3664abdb200628
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358288"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274358"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -23,7 +23,7 @@ Emellett Azure Resource Manager sablont is üzembe helyezhet az Azure-erőforrá
 
 Ez a cikk mindkét módszert mutatja be.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Új erőforráscsoport létrehozásához válassza az **erőforráscsoportok** lehetőséget a [Azure Portal](https://portal.azure.com).
 
@@ -122,7 +122,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
 1. Válassza a **Beszerzés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A naplók megtekintéséhez lásd: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).
 - Az üzembe helyezési hibák elhárításáról lásd: [telepítési műveletek megtekintése](deployment-history.md).

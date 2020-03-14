@@ -4,11 +4,11 @@ description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393303"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245810"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
@@ -82,6 +82,6 @@ A függőségi [vizualizáció](concepts-dependency-visualization.md) segítség
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felkészülés a Hyper-V virtuális gépek felmérésére](tutorial-prepare-hyper-v.md)

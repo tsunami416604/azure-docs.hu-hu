@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375707"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244289"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -45,7 +45,7 @@ A windows server a TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő te
     [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
     ```
 
-1. Kiszolgáló újraindítása
+1. Indítsa újra a kiszolgálót
 
 Az összekötő-kiszolgáló hálózati követelményeivel kapcsolatos további információkért lásd: az [alkalmazásproxy első lépései és az összekötő telepítése](application-proxy-add-on-premises-application.md).
 
@@ -178,7 +178,7 @@ A szolgáltatás a szolgáltatások ablakban ellenőrizheti. Az összekötő ké
 
  ![Példa: szolgáltatások ablak, amelyen az Azure AD Services helyi](./media/application-proxy-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)

@@ -4,11 +4,11 @@ description: A funkciók az Azure Resource Manager-sablon használatával lekér
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355021"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248670"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -38,10 +38,10 @@ A [bővítmény erőforrásának](../management/extension-resource-types.md)erő
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceId |Igen |sztring |Annak az erőforrásnak az erőforrás-azonosítója, amelyre a bővítmény erőforrása vonatkozik. |
-| resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
-| resourceName1 |Igen |sztring |Erőforrás neve. |
-| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
+| resourceId |Igen |Karakterlánc |Annak az erőforrásnak az erőforrás-azonosítója, amelyre a bővítmény erőforrása vonatkozik. |
+| resourceType |Igen |Karakterlánc |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
+| resourceName1 |Igen |Karakterlánc |Erőforrás neve. |
+| resourceName2 |Nem |Karakterlánc |A következő erőforrás neve szegmens, ha szükséges. |
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
@@ -118,9 +118,9 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |sztring |Az erőforrás egyedi azonosítója. |
-| apiVersion |Igen |sztring |API-verzió erőforrás futásidejű állapot. Általában az **éééé-hh-nn**formátumban kell megadni. |
-| functionValues |Nem |objektum | A függvény értékekkel rendelkező objektum. Csak olyan függvényeknek adja meg ezt az objektumot, amelyek támogatják a paraméterek értékeit, például a **listAccountSas** . Ebben a cikkben látható egy példa a függvény értékének átadására. |
+| resourceName vagy resourceIdentifier |Igen |Karakterlánc |Az erőforrás egyedi azonosítója. |
+| apiVersion |Igen |Karakterlánc |API-verzió erőforrás futásidejű állapot. Általában az **éééé-hh-nn**formátumban kell megadni. |
+| functionValues |Nem |object | A függvény értékekkel rendelkező objektum. Csak olyan függvényeknek adja meg ezt az objektumot, amelyek támogatják a paraméterek értékeit, például a **listAccountSas** . Ebben a cikkben látható egy példa a függvény értékének átadására. |
 
 ### <a name="valid-uses"></a>Érvényes használati módok
 
@@ -366,8 +366,8 @@ Erőforrás-szolgáltató és a támogatott erőforrástípusok kapcsolatos info
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Igen |sztring |A szolgáltató Namespace |
-| resourceType |Nem |sztring |Erőforrás típusa, az adott névtérben. |
+| providerNamespace |Igen |Karakterlánc |A szolgáltató Namespace |
+| resourceType |Nem |Karakterlánc |Erőforrás típusa, az adott névtérben. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -443,9 +443,9 @@ Az erőforrások futásidejű állapotot képviselő objektumot adja vissza.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |sztring |Név vagy erőforrás egyedi azonosítója. Amikor egy erőforrást az aktuális sablon hivatkozik, adja meg az erőforrásnév csak paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
-| apiVersion |Nem |sztring |A megadott erőforrás API-verzió. Adja meg az értékét üzembe helyezésekor az erőforrás nem található ugyanazt a sablont. Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
-| "Teljes" |Nem |sztring |Érték, amely megadja, hogy a teljes erőforrás-objektumot ad vissza. Ha nem ad meg `'Full'`, a rendszer csak az erőforrás tulajdonságok objektumát adja vissza. A teljes objektum például az erőforrás-azonosító és a hely értékeket tartalmaz. |
+| resourceName vagy resourceIdentifier |Igen |Karakterlánc |Név vagy erőforrás egyedi azonosítója. Amikor egy erőforrást az aktuális sablon hivatkozik, adja meg az erőforrásnév csak paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
+| apiVersion |Nem |Karakterlánc |A megadott erőforrás API-verzió. Adja meg az értékét üzembe helyezésekor az erőforrás nem található ugyanazt a sablont. Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
+| "Teljes" |Nem |Karakterlánc |Érték, amely megadja, hogy a teljes erőforrás-objektumot ad vissza. Ha nem ad meg `'Full'`, a rendszer csak az erőforrás tulajdonságok objektumát adja vissza. A teljes objektum például az erőforrás-azonosító és a hely értékeket tartalmaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -666,7 +666,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Erőforráscsoport
 
 ```json
 resourceGroup()
@@ -759,10 +759,10 @@ Adja vissza egy adott erőforrás egyedi azonosítója. A függvény akkor haszn
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nem |karakterlánc (a GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, amikor szüksége van egy másik előfizetésben egy erőforrás lekérése. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörére telepíti. |
-| resourceGroupName |Nem |sztring |Alapértelmezett érték az aktuális erőforráscsoportban. Adja meg ezt az értéket, amikor szüksége van egy másik erőforráscsoportban található egy erőforrás lekérése. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
-| resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
-| resourceName1 |Igen |sztring |Erőforrás neve. |
-| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
+| resourceGroupName |Nem |Karakterlánc |Alapértelmezett érték az aktuális erőforráscsoportban. Adja meg ezt az értéket, amikor szüksége van egy másik erőforráscsoportban található egy erőforrás lekérése. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
+| resourceType |Igen |Karakterlánc |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
+| resourceName1 |Igen |Karakterlánc |Erőforrás neve. |
+| resourceName2 |Nem |Karakterlánc |A következő erőforrás neve szegmens, ha szükséges. |
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
@@ -896,7 +896,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeket az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | sameRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -959,9 +959,9 @@ Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját ad
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nem |karakterlánc (GUID formátumban) |Alapértelmezett érték az aktuális előfizetésben. Adja meg ezt az értéket, amikor szüksége van egy másik előfizetésben egy erőforrás lekérése. |
-| resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
-| resourceName1 |Igen |sztring |Erőforrás neve. |
-| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
+| resourceType |Igen |Karakterlánc |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
+| resourceName1 |Igen |Karakterlánc |Erőforrás neve. |
+| resourceName2 |Nem |Karakterlánc |A következő erőforrás neve szegmens, ha szükséges. |
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
@@ -1042,9 +1042,9 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceType |Igen |sztring |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
-| resourceName1 |Igen |sztring |Erőforrás neve. |
-| resourceName2 |Nem |sztring |A következő erőforrás neve szegmens, ha szükséges. |
+| resourceType |Igen |Karakterlánc |Felhasznált erőforrás típusa, beleértve az erőforrás-szolgáltató névtere. |
+| resourceName1 |Igen |Karakterlánc |Erőforrás neve. |
+| resourceName2 |Nem |Karakterlánc |A következő erőforrás neve szegmens, ha szükséges. |
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
@@ -1060,7 +1060,7 @@ Az azonosító a következő formátumban adja vissza:
 
 Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.

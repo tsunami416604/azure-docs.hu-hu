@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Container Registry titkosítását, valamint a
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096499"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365341"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Titkosítás az ügyfél által felügyelt kulcsokkal
 
@@ -27,6 +27,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 
 * Jelenleg csak a beállításjegyzék létrehozásakor engedélyezheti ezt a funkciót.
 * Az ügyfél által felügyelt kulcs beállításjegyzékbe való engedélyezése után nem lehet letiltani.
+* A [tartalom megbízhatósága](container-registry-content-trust.md) jelenleg nem támogatott az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben.
 * Az ügyfél által felügyelt kulccsal titkosított beállításjegyzékben az [ACR-feladatokhoz](container-registry-tasks-overview.md) tartozó naplókat jelenleg csak 24 óráig őrzi meg a rendszer. Ha hosszabb ideig kell megőriznie a naplókat, tekintse meg a [feladat-futtatási naplók exportálásával és tárolásával](container-registry-tasks-logs.md#alternative-log-storage)kapcsolatos útmutatót.
 
 ## <a name="prerequisites"></a>Előfeltételek

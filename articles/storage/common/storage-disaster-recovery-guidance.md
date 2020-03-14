@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894530"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365363"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Vész-helyreállítás és fiók feladatátvétele (előzetes verzió)
 
 A Microsoft igyekszik biztosítani, hogy az Azure-szolgáltatások mindig elérhetők legyenek. A nem tervezett szolgáltatások azonban előfordulhatnak. Ha az alkalmazása rugalmasságot igényel, a Microsoft a Geo-redundáns tárolás használatát javasolja, hogy az adatai egy második régióba legyenek másolva. Emellett az ügyfeleknek vészhelyzeti helyreállítási tervvel kell rendelkezniük a regionális szolgáltatások kimaradásának kezelésére. A vész-helyreállítási terv fontos része arra készül, hogy átadja a feladatátvételt a másodlagos végpontnak abban az esetben, ha az elsődleges végpont elérhetetlenné válik.
 
 Az Azure Storage támogatja a fiók feladatátvételét (előzetes verzió) a Geo-redundáns tárolási fiókokhoz. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik. A feladatátvétel frissíti a másodlagos végpontot, hogy az a Storage-fiók elsődleges végpontja legyen. A feladatátvétel befejeződése után az ügyfelek megkezdhetik az új elsődleges végpont írását.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Ez a cikk a fiók feladatátvételével kapcsolatos fogalmakat és folyamatokat ismerteti, és bemutatja, hogyan készítheti elő a Storage-fiókját a lehető legkevesebb vásárlói hatású helyreállításra. Ha meg szeretné tudni, hogyan kezdeményezheti a fiók feladatátvételét a Azure Portal vagy a PowerShellben, tekintse meg a [fiók feladatátvételének kezdeményezése (előzetes verzió)](storage-initiate-account-failover.md)című témakört.
 
@@ -118,13 +120,13 @@ A fiók feladatátvétele az GRS-t vagy RA-GRS-t használó összes ügyfél sz�
 
 Az előzetes verzió csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
 
-### <a name="additional-considerations"></a>További szempontok
+### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
 Tekintse át az ebben a szakaszban ismertetett további szempontokat annak megismeréséhez, hogy az alkalmazások és szolgáltatások milyen hatással lehetnek a feladatátvétel kényszerítésére az előzetes verzió ideje alatt.
 
 #### <a name="storage-account-containing-archived-blobs"></a>Archivált blobokat tartalmazó Storage-fiók
 
-Az archivált blobokat tartalmazó Storage-fiókok támogatják a fiók feladatátvételét. A feladatátvétel befejeződése után vissza kell alakítani a fiókot GRS vagy RA-GRS az összes archieved-blobot először egy online rétegbe.
+Az archivált blobokat tartalmazó Storage-fiókok támogatják a fiók feladatátvételét. A feladatátvétel befejeződése után vissza kell alakítani a fiókot a GRS vagy RA-GRS az összes archivált blobot először egy online rétegbe kell rehidratálni.
 
 #### <a name="storage-resource-provider"></a>Tárolásierőforrás-szolgáltató
 

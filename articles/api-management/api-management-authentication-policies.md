@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374334"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280325"
 ---
 # <a name="api-management-authentication-policies"></a>API Management hitelesítési házirendek
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,16 +48,16 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |hitelesítés – alapszintű|Gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|N/A|
-|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|N/A|
+|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|N.A.|
+|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -88,16 +88,16 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Név|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – tanúsítvány|Gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Név|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint` vagy `certificate-id`nek kell lennie.|N/A|  
-|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint` vagy `certificate-id`nek kell lennie.|N/A|  
+|thumbprint|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint` vagy `certificate-id`nek kell lennie.|N.A.|  
+|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint` vagy `certificate-id`nek kell lennie.|N.A.|  
   
 ### <a name="usage"></a>Használat  
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
@@ -147,16 +147,16 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Név|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Név|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|resource|sztring elemet. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Igen|N/A|  
-|output-token-változó-neve|sztring elemet. Annak a környezeti változónak a neve, amely a jogkivonat értékét a következő objektumtípusként fogja fogadni: `string`. |Nem|N/A|  
+|resource|sztring elemet. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Igen|N.A.|  
+|output-token-változó-neve|sztring elemet. Annak a környezeti változónak a neve, amely a jogkivonat értékét a következő objektumtípusként fogja fogadni: `string`. |Nem|N.A.|  
 |Mellőzés – hiba|Logikai. Ha `true`értékre van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|Nem|false|  
   
 ### <a name="usage"></a>Használat  
@@ -166,7 +166,7 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
   
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)

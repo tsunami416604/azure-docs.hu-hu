@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085127"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262905"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -39,7 +39,7 @@ Ez a cikk a Microsoft Authentication Library (MSAL) által biztosított különb
  
 Az ügyfél felépítésének módjától függően a Microsoft Identity platform által támogatott hitelesítési folyamatok közül egy (vagy több) is használható.  Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
  
-|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Folyamat | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | Engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -87,7 +87,7 @@ Az előző ábrán az alkalmazás:
 1. Egy hozzáférési jogkivonat számára beváltott engedélyezési kódot kér.
 2. A hozzáférési token használatával hívja meg a webes API-t.
 
-### <a name="considerations"></a>Megfontolások
+### <a name="considerations"></a>Megfontolandó szempontok
 
 - A jogkivonat beváltásához csak egyszer használhatja az engedélyezési kódot. Ne próbálja meg többször bekérni a jogkivonatot ugyanazzal az engedélyezési kóddal (a protokoll szabványos specifikációja explicit módon tiltja). Ha a kódot többször is beváltja, vagy ha nem tudja, hogy egy keretrendszer is elvégzi az Ön számára, a következő hibaüzenet jelenik meg: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 

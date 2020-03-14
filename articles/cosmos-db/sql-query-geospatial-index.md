@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 2cf682a404154b9c1bb94680b3adb673892c1c72
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566373"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137903"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 
@@ -25,6 +25,44 @@ Ha olyan indexelési házirendet ad meg, amely tartalmazza a/* (az összes elér
 > Azure Cosmos DB támogatja a pontok, Linestring, sokszögek és többsokszögek indexelését
 >
 >
+
+## <a name="modifying-geospatial-data-type"></a>Térinformatikai adattípus módosítása
+
+A tárolóban a `geospatialConfig` megadja, hogy a térinformatikai adatai hogyan lesznek indexelve. Egy `geospatialConfig` kell megadnia a Container: földrajz vagy a geometriában. Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. A `geospatialConfig`módosításakor a rendszer a tárolóban lévő összes meglévő térinformatikai adattal újraindexeli.
+
+> [!NOTE]
+> Azure Cosmos DB jelenleg csak a 3,6-es és újabb verziókban támogatja a .NET SDK-ban lévő geospatialConfig módosításait.
+>
+
+Az alábbi példa a térinformatikai adattípus módosítását `geometry` a `geospatialConfig` tulajdonság beállításával és a **boundingBox**hozzáadásával:
+
+```csharp
+    //Retrieve the container's details
+    ContainerResponse containerResponse = await client.GetContainer("db", "spatial").ReadContainerAsync();
+    //Set GeospatialConfig to Geometry
+    GeospatialConfig geospatialConfig = new GeospatialConfig(GeospatialType.Geometry);
+    containerResponse.Resource.GeospatialConfig = geospatialConfig;
+    // Add a spatial index including the required boundingBox
+    SpatialPath spatialPath = new SpatialPath
+            {  
+                Path = "/locations/*",
+                BoundingBox = new BoundingBoxProperties(){
+                    Xmin = 0,
+                    Ymin = 0,
+                    Xmax = 10,
+                    Ymax = 10
+                }
+            };
+    spatialPath.SpatialTypes.Add(SpatialType.Point);
+    spatialPath.SpatialTypes.Add(SpatialType.LineString);
+    spatialPath.SpatialTypes.Add(SpatialType.Polygon);
+    spatialPath.SpatialTypes.Add(SpatialType.MultiPolygon);
+
+    containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(spatialPath);
+
+    // Update container with changes
+    await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
+```
 
 ## <a name="geography-data-indexing-examples"></a>Földrajzi adatindexelési példák
 
@@ -58,11 +96,64 @@ A következő JSON-kódrészlet egy indexelési házirendet mutat be, amelyen en
 
 > [!NOTE]
 > Ha a hely a dokumentum GeoJSON érték helytelen formátumú vagy érvénytelen, majd, nem get indexelve a térbeli lekérdezéséhez. Hely értékek ST_ISVALID és ST_ISVALIDDETAILED használatával ellenőrizheti.
->
->
->
 
 Az [indexelési házirendet](how-to-manage-indexing-policy.md) az Azure CLI, a PowerShell vagy bármely SDK használatával is módosíthatja.
+
+## <a name="geometry-data-indexing-examples"></a>Geometriai adatok indexelésére vonatkozó példák
+
+Ha a **geometria** adattípusa hasonló a földrajzi adattípushoz, a megfelelő elérési utakat és típusokat kell megadnia az indexhez. Emellett meg kell adnia egy `boundingBox` az indexelési házirendben is, hogy jelezze az adott elérési útra vonatkozó kívánt területeket. Minden földrajzi útvonalhoz saját`boundingBox`szükséges.
+
+A határoló mező a következő tulajdonságokat tartalmazza:
+
+- **xmin**: a minimálisan indexelt x koordináta
+- **ymin**: a minimális indexelt y koordináta
+- **Xmax**: a maximális indexelt x koordináta
+- **Ymax**: a maximális indexelt y koordináta
+
+A határolókeret megadása kötelező, mert a geometriai adat egy olyan gépet foglal, amely végtelen lehet. A térbeli indexek esetében azonban véges terület szükséges. A **földrajzi** adattípushoz a föld a határ, és nem kell megadnia egy határoló mezőt.
+
+Létre kell hoznia egy határoló mezőt, amely az összes (vagy a legtöbb) adatát tartalmazza. A térbeli indexet csak a teljes mértékben a határolókeret belsejében lévő objektumokra kiszámított műveletek lesznek képesek használni. A határolókeret a szükségesnél lényegesen nagyobb mértékben nem végezhető el, mert ez negatív hatással lesz a lekérdezés teljesítményére.
+
+Az alábbi példa egy olyan indexelési házirendet mutat be, amely a **geometriai** adatok **geospatialConfig** -készlettel való indexelését `geometry`:
+
+```json
+ {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/locations/*",
+            "types": [
+                "Point",
+                "LineString",
+                "Polygon",
+                "MultiPolygon"
+            ],
+            "boundingBox": {
+                "xmin": -10,
+                "ymin": -20,
+                "xmax": 10,
+                "ymax": 20
+            }
+        }
+    ]
+}
+```
+
+A fenti indexelési házirend **boundingBox** (-10, 10) tartalmaz x koordinátákat és (-20, 20) az y koordinátákhoz. A fenti indexelési szabályzattal rendelkező tároló az összes olyan pontot, sokszöget, többsokszögű és Linestring indexeli, amely teljes egészében ebben a régióban található.
+
+> [!NOTE]
+> Ha olyan indexelési házirendet próbál hozzáadni egy **boundingBox** , amely `geography` adattípusú tárolót hoz létre, az sikertelen lesz. A **boundingBox**hozzáadása előtt módosítania kell a tároló `geometry` **geospatialConfig** . A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
 
 ## <a name="next-steps"></a>További lépések
 

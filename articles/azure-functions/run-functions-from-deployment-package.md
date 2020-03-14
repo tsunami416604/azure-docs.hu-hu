@@ -3,12 +3,12 @@ title: Azure Functions futtatása csomagból
 description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087025"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365271"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
@@ -58,32 +58,6 @@ A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service egyi
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>Key Vault referenciák használata
-
-A további biztonság érdekében Key Vault hivatkozásokat is használhat a külső URL-címmel együtt. Ez megtartja az URL-címek titkosítását, és lehetővé teszi, hogy kihasználja Key Vault a titkos felügyelet és a forgás számára. Az Azure Blob Storage használata ajánlott, így egyszerűen elforgathatja a társított SAS-kulcsot. Az Azure Blob Storage inaktív állapotban van, így az alkalmazás adatai biztonságban maradnak, amikor nincs telepítve App Service.
-
-1. Hozzon létre egy Azure Key Vault.
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. Adja hozzá a külső URL-címet Key Vault-titokként.
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. Hozza létre a `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítását, és állítsa be az értéket Key Vault hivatkozásként a külső URL-címre.
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-További információt a következő cikkekben talál.
-
-- [App Service Key Vault referenciái](../app-service/app-service-key-vault-references.md)
-- [Azure Storage-titkosítás a REST-adatokhoz](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Hibakeresés
 

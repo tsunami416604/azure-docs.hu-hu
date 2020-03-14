@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan kezelheti a projekt metaadatait, a projektfájl
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197691"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280598"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks előzetes verzióban felügyelheti és konfigurálhatja a projekteket
 
@@ -73,25 +73,25 @@ A projekt fájl lista minden eleme egy kattintson a jobb gombbal a helyi menü k
 
 ![Egy fájl helyi menü parancsai](media/project-file-commands.png)
 
-| Parancs | Billentyűparancs | Műveletek |
+| Parancs | Billentyűparancs | Művelet |
 | --- | --- | --- |
 | Futtassa a következőt: | az r (vagy kattintson) | A notebook fájl fut. Más fájltípusok megtekintésre nyílnak meg.  |
 | Hivatkozás másolása | y | Másolja a vágólapra a fájl egy hivatkozást. |
 | Futtatása a Jupyter-tesztkörnyezet | J | Fut egy jegyzetfüzetet JupyterLab, azaz Jupyter általában biztosít, mint egy több fejlesztő-orientált felületet. |
-| Előzetes verzió | p | Megnyílik egy HTML-előnézetet a fájl; az előzetes verzió notebookokat, a jegyzetfüzet egy csak olvasható leképezési. További információ: [előnézet](#preview) szakasz. |
+| Előzetes | p | Megnyílik egy HTML-előnézetet a fájl; az előzetes verzió notebookokat, a jegyzetfüzet egy csak olvasható leképezési. További információ: [előnézet](#preview) szakasz. |
 | Fájl szerkesztése | I | Megnyitja a fájlt szerkesztésre. |
 | Letöltés | d | Letölti a fájl vagy mappa tartalmát tartalmazó zip-fájlt. |
-| Átnevezés | a | Egy új nevet a fájlhoz vagy mappához tartozó utasításokat. |
+| Átnevez | a | Egy új nevet a fájlhoz vagy mappához tartozó utasításokat. |
 | Törlés | x | Megerősítést kér, majd véglegesen eltávolítja a fájlt a projektben. Törlés nem vonható vissza. |
 | Áthelyezés | m | A fájl ugyanabban a projektben egy másik mappába helyezi át. |
 
-#### <a name="preview"></a>Előzetes verzió
+#### <a name="preview"></a>Előzetes
 
 Előzetes verziója egy fájl vagy a jegyzetfüzet; tartalma írásvédett nézete notebook cellák fut le van tiltva. Mindenki számára, aki rendelkezik a fájl vagy a jegyzetfüzet mutató hivatkozást, de nem jelentkezett be az Azure-jegyzetfüzetek előnézete látható. Miután bejelentkezett, a felhasználó a saját fiókhoz a notebookot klónozhat, vagy a jegyzetfüzet letölthetik a helyi számítógépre.
 
 Az előzetes verziójú szolgáltatásainak weblapján különböző eszköztár parancsokat a billentyűparancsok használatát támogatja:
 
-| Parancs | Billentyűparancs | Műveletek |
+| Parancs | Billentyűparancs | Művelet |
 | --- | --- | --- |
 | Megosztás | s | Megjeleníti a megosztási előugró ablak, amelyről hivatkozás beszerzése, közösségi megosztás, HTML beszerzése a beágyazáshoz és e-mail küldése. |
 | Klónozás | c  | Klónozza a fiókhoz a notebookot. |

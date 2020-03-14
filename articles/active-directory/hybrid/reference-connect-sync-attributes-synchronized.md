@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375964"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253610"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: a Azure Active Directory szinkronizált attribútumok
 Ez a témakör a Azure AD Connect Sync által szinkronizált attribútumokat sorolja fel.  
@@ -64,7 +64,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
 | Szervezeti egység |X |X | | |
-| leírás | | |X | |
+| Leírás | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -185,7 +185,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
 | Szervezeti egység |X |X | | |
-| leírás |X |X |X | |
+| Leírás |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -250,7 +250,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | thumbnailphoto |X |X | | |
 | Cím |X |X | | |
 | unauthOrig |X |X |X | |
-| url |X |X | | |
+| URL-címe |X |X | | |
 | usageLocation |X | | |mechanikai tulajdonság. A felhasználó országa/régiója
 . Licenc-hozzárendeléshez használatos. |
 | userPrincipalName |X | | |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
@@ -265,7 +265,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Szervezeti egység |X |X | | |
-| leírás |X |X |X | |
+| Leírás |X |X |X | |
 | displayName |X |X |X | |
 | érték facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -325,7 +325,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | accountEnabled |X | | |Meghatározza, hogy engedélyezve van-e a fiók. |
 | c |X |X | | |
 | CN |X | |X | |
-| leírás |X |X |X | |
+| Leírás |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailnickname |X |X |X | |
@@ -346,7 +346,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
-| leírás |X |X |X | |
+| Leírás |X |X |X | |
 | displayName |X |X |X | |
 | érték facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -470,7 +470,7 @@ Az eszközök objektumai a Active Directoryban jönnek létre. Ezek az objektumo
 * Alternatív azonosító használata esetén a userPrincipalName helyszíni attribútuma szinkronizálva lesz az Azure AD attribútum onPremisesUserPrincipalName. A másodlagos azonosító attribútum, például a levelezés, szinkronizálva van az Azure AD-attribútum userPrincipalName.
 * A fenti listában az objektumtípus **felhasználója** az **InetOrgPerson**objektumra is érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

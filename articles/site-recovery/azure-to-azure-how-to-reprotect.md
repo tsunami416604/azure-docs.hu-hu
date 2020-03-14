@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 818c053c22cfa47cac0f4f6a19349cf239d3cdec
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396861"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258121"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépek ismételt védetté váltása az elsődleges régióba
 
@@ -90,6 +90,6 @@ A következő feltételek határozzák meg az adatreplikációk mennyiségét:
 |A forrástartomány 1 TB-os standard lemezzel rendelkezik.<br/>Csak 127 GB-nyi adat van használatban, és a lemez többi része üres.<br/>A lemez típusa standard, 60 MiB/S átviteli sebességgel.<br/>A feladatátvételt követően nem módosult az adatváltozás.| Hozzávetőleges idő: 45 perc – 1,5 óra.<br/>Az ismételt védelem során a Site Recovery feltölti az összes adat ellenőrzőösszegét, amely 127 GB/45 MB-ot, körülbelül 45 percet vesz igénybe.<br/>A Site Recovery az automatikus skálázáshoz körülbelül 20-30 percet vesz igénybe.<br/>A kimenő forgalomért nem számítunk fel díjat. |
 |A forrástartomány 1 TB-os standard lemezzel rendelkezik.<br/>Csak 127 GB-nyi adat használatos, és a lemez többi része üres.<br/>A lemez típusa standard, 60 MiB/S átviteli sebességgel.<br/>45 GB adatváltozás a feladatátvétel után.| Hozzávetőleges idő: 1 óra – 2 óra.<br/>Az ismételt védelem során a Site Recovery feltölti az összes adat ellenőrzőösszegét, amely 127 GB/45 MB-ot, körülbelül 45 percet vesz igénybe.<br/>Átvitt idő a 45 GB-os módosítások alkalmazásához, amely körülbelül 17 percet vesz igénybe 45 GB/45 MBps.<br/>A kimenő költségek 45 GB-os adatváltozásokra vonatkoznak, nem az ellenőrzőösszeghez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális gép védelme után kezdeményezheti a feladatátvételt. A feladatátvétel leállítja a virtuális gépet a másodlagos régióban, és létrehozza és elindítja a virtuális gépet az elsődleges régióban, rövid állásidővel a folyamat során. Javasoljuk, hogy válasszon ki egy megfelelő időpontot a folyamathoz, és futtasson feladatátvételi tesztet, mielőtt teljes feladatátvételt kezdeményez az elsődleges helyre. [További](site-recovery-failover.md) információ a Azure site Recovery feladatátvételről.

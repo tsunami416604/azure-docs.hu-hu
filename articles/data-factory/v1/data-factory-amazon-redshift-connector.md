@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382648"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260526"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -38,7 +38,7 @@ Data Factory jelenleg csak az Amazon vöröseltolódásról származó adatok á
 * Ha helyszíni adattárba helyezi át az adatátvitelt, telepítse [adatkezelés átjárót](data-factory-data-management-gateway.md) egy helyszíni gépre. A helyszíni számítógép IP-címének használatával adjon hozzáférést egy átjáróhoz az Amazon Vöröseltolódási fürthöz. Útmutatásért lásd: [hozzáférés engedélyezése a fürthöz](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Az adatok Azure-adattárba való áthelyezéséhez tekintse meg az [Microsoft Azure adatközpontok által használt számítási IP-címeket és SQL-tartományokat](https://www.microsoft.com/download/details.aspx?id=41653).
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök és API-k használatával helyezi át az adatait egy Amazon Vöröseltolódási forrásból.
 
 A folyamat létrehozásának legegyszerűbb módja a Azure Data Factory másolási varázsló használata. A folyamat a másolás varázslóval történő létrehozásával kapcsolatos gyors útmutatóért tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md)című témakört.
@@ -351,5 +351,5 @@ Amikor Adatmásolást végez egy kapcsolódó adattárból, a nem kívánt eredm
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 Ismerje meg a másolási tevékenység teljesítményét befolyásoló főbb tényezőket és a teljesítmény optimalizálásának módjait a [másolási tevékenység teljesítményének és hangolási útmutatójának](data-factory-copy-activity-performance.md)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenységgel rendelkező folyamatok létrehozásával kapcsolatos részletes útmutatásért lásd a [másolási tevékenységről szóló oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58a7689263f9bc761eb0b904a9376c1ca0112c13
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128099"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365389"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
 
@@ -76,7 +76,7 @@ A szolgáltatás frissítései havonta történnek. Jelentős problémák eseté
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy létrehozott egy érvényesítési alkalmazáskészletet, megtudhatja, hogyan telepíthet és csatlakozhat egy felügyeleti eszközhöz a Microsoft virtuális asztali erőforrásainak kezeléséhez.
+Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére. 
 
 > [!div class="nextstepaction"]
-> [Felügyeleti eszköz üzembe helyezése – oktatóanyag](./manage-resources-using-ui.md)
+> [Szolgáltatási riasztások beállítása](./set-up-service-alerts.md)

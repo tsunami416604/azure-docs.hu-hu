@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362886"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281781"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>A Hyper-V virtuális gépek feladat-visszavételének futtatása
 
@@ -81,5 +81,5 @@ A következő lépésekkel térhet vissza egy másik helyre:
     > Ha megszakítja a feladat-visszavételi feladatot az adatszinkronizálás során, a helyszíni virtuális gép sérült állapotban lesz. Ennek az az oka, hogy az adatszinkronizálás az Azure VM-lemezek legújabb adatait a helyszíni adatlemezekre másolja, és a szinkronizálás befejezéséig a lemez adatainak nem konzisztens állapotban vannak. Ha a helyszíni virtuális gép elindul az adatszinkronizálás megszakítása után, előfordulhat, hogy a rendszer nem indul el. Ebben az esetben futtassa újra a feladatátvételt az adatszinkronizálás befejezéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a helyszíni virtuális gép az Azure-ba replikálódik, igény szerint [futtathat egy másik feladatátvételt](site-recovery-failover.md) az Azure-ban.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126561"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297985"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -157,6 +157,12 @@ Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngész
 </cors>
 ```
 
+Alkalmazza a CORS a globális hatókörön annak biztosítására, hogy az minden API-ra engedélyezve legyen.
+
+1. A Azure Portal a API Management szolgáltatás **API** -k szakaszában navigáljon az **összes API** -hoz.
+2. Kattintson a **</>** ikonra a **bejövő feldolgozás** szakaszban.
+3. Szúrja be a szabályzatot az XML-fájl **<inbound>** szakaszában. Győződjön meg arról, hogy a **<origin>** érték megegyezik a fejlesztői portál tartományával.
+
 > [!NOTE]
 > 
 > Ha a CORS szabályzatot a termék hatókörében alkalmazza, az API-k hatóköre helyett, és az API az előfizetés-kulcs hitelesítését használja egy fejlécen keresztül, a konzol nem fog működni.
@@ -217,7 +223,7 @@ A hívási hibát egy olyan SSL-tanúsítvány is okozhatja, amely egy egyéni t
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az új fejlesztői portálról:
 

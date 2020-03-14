@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393733"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220973"
 ---
 # <a name="intents-in-your-luis-app"></a>Szándékok a LUIS-alkalmazásban
 
@@ -29,7 +29,7 @@ Utazás alkalmazásszándékkal   |   Példák kimondott szövegekre   |
  RepülőjegyFoglalás     |   Például "book nekem, Rio repülőjegyet következő hét" <br/> "Repülési nekem, Rio a 24th a" <br/> "Van szükségem egy adatsík jegyet Río de Janeiro tovább vasárnap"    |
  Üdvözlés     |   "Hi" <br/>"Hello" <br/>"Jó reggeli"  |
  CheckWeather | "Mi az az időjárás, például Bostonban?" <br/> "Show me a hétvégi vonatkozó előrejelzést" |
- Nincs         | "Get me egy cookie-k recept"<br>"Volt a Lakers win?" |
+ Nincsenek         | "Get me egy cookie-k recept"<br>"Volt a Lakers win?" |
 
 Minden alkalmazás a "[nincs](#none-intent)" előre definiált szándékkal, azaz a tartalék szándékkal van ellátva. 
 
@@ -43,8 +43,8 @@ Ha azt szeretné, hogy a pontszámok a teljes értékre legyenek kiválasztva, m
 
 |Előrejelzési API verziója|Jelző|
 |--|--|
-|2\. verzió|`verbose=true`|
-|V3|`show-all-intents=true`|
+|K2|`verbose=true`|
+|K3|`show-all-intents=true`|
 
 ## <a name="intent-compared-to-entity"></a>A szándék entitás képest
 A szándék azt a műveletet jelöli, amelyet az alkalmazásnak el kell végeznie a felhasználó számára, és a teljes Kimondás alapján kell megjelennie. Az utterance (kifejezés) pontozási szándéka csak egy top rendelkezhet, de számos entitás veheti fel. 
@@ -100,7 +100,7 @@ További információ a LUIS és a QnA Maker alkalmazások a [küldő modellel](
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Leképezések jelentős számú használó alkalmazásokkal kapcsolatos segítség kérése
 Ha a leképezések számának csökkentése, vagy a leképezések osztani több alkalmazásokba, nem működik, forduljon az ügyfélszolgálathoz. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [entitásokról](luis-concept-entity-types.md), amelyek a szándékok szempontjából fontos szavakat mutatnak
 * Megtudhatja, hogyan [veheti fel és kezelheti a szándékait](luis-how-to-add-intents.md) a Luis-alkalmazásban.

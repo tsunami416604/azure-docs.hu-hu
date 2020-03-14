@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266337"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
 
@@ -138,7 +138,7 @@ Dönthet úgy is, hogy kijelentkezik a saját munkahelyi vagy iskolai fiókjáva
 
 2. A **kijelentkezés bárhová** megerősítő mezőben válassza az **Igen** lehetőséget annak megerősítéséhez, hogy ki szeretné jelentkezni az összes munkamenetből és eszközről. Ha meggondolja magát, válassza a **nem** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután befejezte a frissítéseket a **profil** lapon, a következőket teheti:
 
