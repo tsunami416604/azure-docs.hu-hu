@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 0cf8eb7b07622a989bc78637b1601ba68b9b5f6f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: af6577684af559b7e152a53fbe4293740d676e6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251121"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370831"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -76,12 +76,15 @@ Az Azure dev Spaces nem tudta létrehozni a vezérlőt az AK-fürtön, mert nem 
 
 A probléma megoldásához [frissítse a szennyező konfigurációt](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AK-fürtön, hogy legalább egy Linux-csomópont lehetővé tegye a hüvelyek ütemezését a tolerancia megadása nélkül. Győződjön meg arról is, hogy legalább egy Linux-csomópont, amely lehetővé teszi a hüvelyek ütemezését, a tolerálás nélkül *kész* állapotban van. Ha a csomópont hosszú időt vesz elérhetővé a *kész* állapot elérése érdekében, próbálja meg újraindítani a csomópontot.
 
-### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Hiba: "az Azure dev Spaces CLI nincs megfelelően telepítve" `az aks use-dev-spaces` futtatásakor
+### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Hiba: az "Azure dev Spaces CLI nincs megfelelően telepítve" az az AK use-dev-Spaces futtatásakor
 
 Az Azure dev Spaces parancssori felületének frissítése megváltoztatta a telepítési útvonalat. Ha a 2.0.63-nél korábbi Azure CLI-verziót használja, akkor ez a hiba látható. Az Azure CLI verziójának megjelenítéséhez használja a `az --version`.
 
 ```azurecli
 az --version
+```
+
+```output
 azure-cli                         2.0.60 *
 ...
 ```
@@ -126,7 +129,7 @@ Ez az időkorlát akkor fordul elő, ha a fejlesztői szóközök használatáva
 Ha a `--verbose` kapcsolóval `azds up` futtat, vagy engedélyezi a részletes naplózást a Visual Studióban, további részleteket láthat:
 
 ```cmd
-$ azds up --verbose
+azds up --verbose
 
 Installed chart in 2s
 Waiting for container image build...
@@ -292,7 +295,7 @@ Próbálja meg letölteni és telepíteni az Azure dev Spaces CLI legújabb verz
 
 Ez a hiba a Visual Studio Code Debugger futtatásakor fordulhat elő. Lehet, hogy nincs C# telepítve a vs Code bővítmény a fejlesztői gépen. A C# bővítmény a .net Core (CoreCLR) hibakeresési támogatását is tartalmazza.
 
-A probléma megoldásához telepítse a [vs Code-bővítményt C#a következőhöz: ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+A probléma megoldásához telepítse a [vs Code-bővítményt C#a következőhöz: ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
 ### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>Hiba: a "coreclr" konfigurált hibakeresési típus nem támogatott "
 
@@ -357,10 +360,13 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 Ez a probléma a fürt *összes névterében* hatással lehet a hüvelyekre, beleértve azokat a névtereket is, amelyekben nincs engedélyezve az Azure dev Spaces.
 
-A probléma megoldásához [frissítse a dev Spaces CLI-t a legújabb verzióra](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) , majd törölje a *Azds InitializerConfiguration* az Azure dev Spaces-vezérlőből:
+A probléma megoldásához [frissítse a dev Spaces CLI-t a legújabb verzióra](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) , majd törölje a *Azds InitializerConfiguration* az Azure dev Spaces vezérlőből:
 
 ```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
+```
+
+```bash
 kubectl delete InitializerConfiguration azds
 ```
 
@@ -495,5 +501,8 @@ A probléma megoldásához ellenőrizze, hogy a *kubeconfig* rendelkezik-e a fri
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>
+```
+
+```console
 azds controller refresh-credentials -g <resource group name> -n <cluster name>
 ```
