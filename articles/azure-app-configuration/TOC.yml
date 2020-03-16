@@ -64,8 +64,6 @@
   items:
     - name: Kulcs-érték tároló
       href: concept-key-value.md
-    - name: Titkosítás az ügyfelek által felügyelt kulcsokkal
-      href: concept-customer-managed-keys.md
     - name: Adott időpontban készült pillanatképek
       href: concept-point-time-snapshot.md
     - name: Funkciókezelés
@@ -74,8 +72,12 @@
       href: concept-github-action.md
     - name: Eseménykezelés
       href: concept-app-configuration-event.md
-    - name: Hitelesítés
+    - name: Biztonság
       items:
+        - name: Titkosítás az ügyfelek által felügyelt kulcsokkal
+          href: concept-customer-managed-keys.md
+        - name: A konfigurációs adattár védelme privát végpontok használatával
+          href: concept-private-endpoint.md
         - name: Integráció az Azure Managed Identityvel
           href: howto-integrate-azure-managed-service-identity.md
         - name: Hozzáférés engedélyezése az Azure Active Directoryval

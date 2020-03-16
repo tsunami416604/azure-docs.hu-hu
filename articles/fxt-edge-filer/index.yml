@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure FXT Edge Filer – dokumentáció
+summary: Az Azure FXT Edge Filer hibrid tárolási gyorsítótár olyan hardver/szoftver hibrid rendszer, amely felgyorsítja az adatelérést a fájlalapú, olvasásigényes, nagy teljesítményű feldolgozási (HPC) munkafolyamatokhoz.
 metadata:
   title: Azure FXT Edge Filer – dokumentáció
-  description: 'Az Azure FXT Edge Filer használata gyorsítótárazási rétegként olvasásigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz'
-  author: ekpgh
+  description: Az Azure FXT Edge Filer használata gyorsítótárazási rétegként olvasásigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz.
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Az Azure FXT Edge Filer hibrid tárolási gyorsítótár olyan hardver/szoftver hibrid rendszer, amely felgyorsítja az adatelérést a fájlalapú, olvasásigényes, nagy teljesítményű feldolgozási (HPC) munkafolyamatokhoz. Egy három vagy több Azure FXT Edge Filer eszközből álló fürt felgyorsíthatja a tárolási teljesítményt helyszíni NAS-rendszereknél (NetApp vagy Dell EMC Isilon), felhőalapú tárolásnál vagy különböző megoldások kombinációjánál.'
-sections:
-  - title: Részletes útmutatók
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Az Azure FXT Edge Filer hardver telepítése</a>
-          - html: <a href="fxt-network-power">Hálózati kapcsolatok létrehozása az Azure FXT Edge Filerhez</a>
-          - html: <a href="fxt-node-password">A rendszergazdai jelszavak beállítása a hardvercsomópontokon</a>
-          - html: <a href="fxt-cluster-create">A hibrid tárolásigyorsítótár-fürt létrehozása</a>
-          - html: <a href="fxt-add-nodes">Fürtcsomópontok hozzáadása</a>
-          - html: <a href="fxt-add-storage">Háttérben működő tárolás hozzáadása és virtuális névtér konfigurálása</a>
-          - html: <a href="fxt-configure-network">A fürt hálózati beállításainak konfigurálása</a>
-  - title: Útmutatók
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">Ügyfelek csatlakoztatása az Azure FXT Edge Filer-fürthöz</a>
-          - html: <a href="fxt-monitor">Az Azure FXT Edge Filer monitorozása</a>
-          - html: <a href="fxt-power-off">Hardvercsomópont biztonságos kikapcsolása</a>
-  - title: További források
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">Hardverspecifikációk</a>
-          - html: <a href="fxt-additional-doc">További dokumentáció</a>
-          - html: <a href="fxt-support-ticket">Támogatási jegy megnyitása</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298852"
+landingContent:
+- title: Az Azure FXT Edge Filer bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure FXT Edge Filer?
+      url: fxt-overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1 – A hardver telepítése
+      url: fxt-install.md
+    - text: 2 – Kábelek csatlakoztatása
+      url: fxt-network-power.md
+    - text: 3 – Hardverjelszók beállítása
+      url: fxt-node-password.md
+    - text: 4 – Fürt létrehozása
+      url: fxt-cluster-create.md
+    - text: 5 – Fürtcsomópontok hozzáadása
+      url: fxt-add-nodes.md
+    - text: 6 – Háttérben működő tárolás hozzáadása és virtuális névtér konfigurálása
+      url: fxt-add-storage.md
+    - text: 7 – A fürt hálózati beállításainak konfigurálása
+      url: fxt-configure-network.md
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ügyfelek csatlakoztatása a fürthöz
+      url: fxt-mount-clients.md
+    - text: Hardverállapot monitorozása
+      url: fxt-monitor.md
+    - text: Hardver biztonságos kikapcsolása
+      url: fxt-power-off.md
+- title: További források
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Hardverspecifikációk
+      url: fxt-specs.md
+    - text: További dokumentáció
+      url: fxt-additional-doc.md

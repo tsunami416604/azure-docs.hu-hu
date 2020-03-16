@@ -639,8 +639,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Lemezes tárolás lefoglalása
           href: disks-reserved-capacity.md
-        - name: Növekményes pillanatkép létrehozása
+        - name: Növekményes pillanatkép létrehozása – PowerShell
           href: disks-incremental-snapshots.md
+        - name: Növekményes pillanatkép létrehozása – portál
+          href: disks-incremental-snapshots-portal.md
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
         - name: Migrálás és átalakítás

@@ -8,12 +8,12 @@
       displayName: release notes
       href: release-notes.md
 - name: Rövid útmutatók
+  expanded: true
   items:
     - name: Élő esemény portál és Wirecast használatával
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
 - name: Oktatóanyagok
-  expanded: true
   items:
     - name: Távoli fájl kódolása és videó streamelése
       items:
@@ -42,7 +42,7 @@
       href: protect-with-drm.md
 - name: Példák
   items:
-    - name: Media Services-minták
+    - name: Media Services v3-minták
       displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
     - name: Media Services v3 REST-minták
@@ -71,8 +71,6 @@
         - name: Átalakítások és feladatok
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
-        - name: Hibakódok
-          href: job-error-codes.md
     - name: Tartalom kódolása
       items:
         - name: Áttekintés
@@ -92,8 +90,6 @@
           displayName: 'analyzing, presets, jobs'
         - name: Átalakítások és feladatok
           href: transforms-jobs-concept.md
-        - name: Feladathibakódok
-          href: job-error-codes.md
     - name: Live streaming (Élő adatfolyam)
       items:
         - name: Áttekintés
@@ -101,7 +97,7 @@
         - name: Élő események és élő kimenetek
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
-        - name: Ajánlott élő kódolók
+        - name: Tesztelt helyszíni élő kódolók
           href: recommended-on-premises-live-encoders.md
         - name: Időeltolás és élő adásból igény szerinti videó készítése
           displayName: 'archive, dvr'
@@ -114,10 +110,6 @@
           href: live-event-states-billing.md
         - name: Késés
           href: live-event-latency.md
-        - name: Váljon helyszíni kódoló partnerré
-          href: become-on-premises-encoder-partner.md
-        - name: Élő események hibakódjai
-          href: live-event-error-codes.md
     - name: Csomagolás és kézbesítés
       items:
         - name: Dinamikus csomagolás
@@ -138,8 +130,6 @@
           href: streaming-locators-concept.md
         - name: Streamelési szabályok
           href: streaming-policy-concept.md
-        - name: Streamvégpont-hibakódok
-          href: streaming-endpoint-error-codes.md
     - name: Tartalomvédelem
       items:
         - name: Dinamikus titkosítás és kulcskézbesítés
@@ -211,20 +201,24 @@
   items:
     - name: Bevezetés
       items:
-        - name: Fiók létrehozása – portál
-          href: create-account-portal.md
-        - name: Fiók létrehozása – parancssori felület
-          href: create-account-cli-how-to.md
-          displayName: storage
-        - name: Fiók hitelesítő adatainak alaphelyzetbe állítása – parancssori felület
+        - name: Fiók létrehozása
+          items:
+            - name: A portál használatával
+              href: create-account-portal.md
+            - name: Parancssori felülettel
+              href: create-account-cli-how-to.md
+              displayName: storage
+        - name: Fiók hitelesítő adatainak alaphelyzetbe állítása
           href: cli-reset-account-credentials.md
-        - name: Adatelérési API-k – portál
-          href: access-api-portal.md
-        - name: Adatelérési API-k – parancssori felület
-          href: access-api-cli-how-to.md
-        - name: Fenntartott médiaegységek skálázása – parancssori felület
+        - name: Adatelérési API-k
+          items:
+            - name: A portál használatával
+              href: access-api-portal.md
+            - name: Parancssori felülettel
+              href: access-api-cli-how-to.md
+        - name: Fenntartott médiaegységek skálázása
           href: media-reserved-units-cli-how-to.md
-        - name: Adategység létrehozása – parancssori felület
+        - name: Adategység létrehozása
           href: cli-create-asset.md
     - name: Fejlesztői útmutatók
       items:
@@ -244,31 +238,33 @@
               href: configure-connect-python-howto.md
     - name: Tartalom feltöltése
       items:
-        - name: HTTPS-forrásból – .NET
+        - name: HTTPS-forrásból
           displayName: upload
           href: job-input-from-http-how-to.md
-        - name: Egy helyi fájlból – .NET
-          displayName: upload
-          href: job-input-from-local-file-how-to.md
-        - name: Egy helyi fájlból – REST
-          displayName: upload
-          href: upload-files-rest-how-to.md
-        - name: Egy helyi fájlból – parancssori felület
-          href: cli-upload-file-asset.md
+        - name: Egy helyi fájlból
+          items:
+            - name: .NET-tel
+              displayName: upload
+              href: job-input-from-local-file-how-to.md
+            - name: A REST-tel
+              displayName: upload
+              href: upload-files-rest-how-to.md
+            - name: Parancssori felülettel
+              href: cli-upload-file-asset.md
     - name: Átalakítások és feladatok létrehozása
       items:
-        - name: Átalakítások létrehozása – parancssori felület
+        - name: Átalakítások létrehozása
           href: cli-create-transform.md
-        - name: Feladatok létrehozása – parancssori felület
+        - name: Feladatok létrehozása
           href: cli-create-jobs.md
         - name: Feladatok egyszerre több transzformált adattal
           href: job-multiple-transform-outputs.md
     - name: Tartalom kódolása
       items:
-        - name: HTTPS mint feladatbemenet – .NET
+        - name: HTTPS mint feladatbemenet
           displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
-        - name: Helyi fájl mint feladatbemenet – .NET
+        - name: Helyi fájl mint feladatbemenet
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: Kódolás egyéni átalakítással
@@ -290,6 +286,16 @@
             - name: A REST-tel
               href: subclip-video-rest-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: Feladathibakódok
+          href: job-error-codes.md
+    - name: Élő stream
+      items:
+        - name: Élő esemény portál és Wirecast használatával
+          href: live-events-wirecast-quickstart.md
+        - name: Helyszíni kódoló ellenőrzése
+          href: become-on-premises-encoder-partner.md
+        - name: Élő események hibakódjai
+          href: live-event-error-codes.md
     - name: Az Event Grid használata
       items:
         - name: Események monitorozása – Portál
@@ -304,7 +310,7 @@
           href: media-services-diagnostic-logs-howto.md
     - name: Tartalom védelme
       items:
-        - name: Tartalomkulcs-szabályzat lekérése – .NET
+        - name: Tartalomkulcs-szabályzat lekérése
           href: get-content-key-policy-dotnet-howto.md
         - name: Offline FairPlay iOS-hez
           href: offline-fairplay-for-ios.md
@@ -325,7 +331,9 @@
           displayName: filters
     - name: Tartalom továbbítása
       items:
-        - name: Adategység közzététele – parancssori felület
+        - name: Streamvégpontok kezelése
+          href: manage-streaming-endpoints-howto.md
+        - name: Adategység közzététele
           href: cli-publish-asset.md
         - name: Streamelési lokátor létrehozása és URL-címek összeállítása
           href: create-streaming-locator-build-url.md

@@ -1,24 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure-hoz készült Avere vFXT dokumentációja
+### YamlMime:Landing
+title: Az Avere vFXT for Azure dokumentációja
+summary: Az Azure-hoz készült Avere vFXT felhőalapú gyorsítótárazási réteget biztosít az adatigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz.
 metadata:
-  title: Az Azure-hoz készült Avere vFXT dokumentációja
-  description: 'Az Avere vFXT használata gyorsítótárazási rétegként olvasásigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz'
-  services: avere-vfxt
-  author: ekpgh
+  title: Az Avere vFXT for Azure dokumentációja
+  description: Az Avere vFXT használata gyorsítótárazási rétegként olvasásigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz.
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 12/19/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Az Azure-hoz készült Avere vFXT felhőalapú gyorsítótárazási réteget biztosít az adatigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz. Az Avere vFXT a számítási csomópontokhoz közel gyorsítótárazza a fájlokat, ezáltal felgyorsítja az olvasási időt, és még csúcsterhelés mellett is zavartalan munkavégzést biztosít. Az Avere vFXT az 1000 és 40 000 ügyfélmaggal rendelkező rendszerekkel működik a legjobban. <p>Az Avere vFXT a meglévő adattárolókkal együttműködve közelebb hozza a fájlokat az Azure-alapú számítási erőforrásokhoz. Az aktív fájlok hosszú távú tárolását továbbra is az adatközpont biztosítja.'
-sections:
-  - title: Az Azure-hoz készült Avere vFXT megismerése
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="avere-vfxt-deploy-plan">Az Azure-rendszerhez készült Avere vFXT megtervezése</a>
-          - html: <a href="avere-vfxt-deploy-overview">Az Avere vFXT üzembe helyezésének megismerése</a>
-          - html: <a href="avere-vfxt-prereqs">Előfeltételek teljesítése</a>
-          - html: <a href="avere-vfxt-deploy">Az Avere vFXT-fürt üzembe helyezése</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79297781"
+landingContent:
+- title: Az Avere vFXT for Azure bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure-hoz készült Avere vFXT?
+      url: avere-vfxt-overview.md
+  - linkListType: concept
+    links:
+    - text: GYIK
+      url: avere-vfxt-faq.md
+- title: Tervezés és előkészítés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az Avere vFXT rendszer megtervezése
+      url: avere-vfxt-deploy-plan.md
+  - linkListType: how-to-guide
+    links:
+    - text: Felkészülés az Avere vFXT létrehozására
+      url: avere-vfxt-prereqs.md
+- title: Létrehozás és üzembe helyezés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az üzembe helyezés áttekintése
+      url: avere-vfxt-deploy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: A vFXT-fürt üzembe helyezése
+      url: avere-vfxt-deploy.md
+- title: Csatlakozás és kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hozzáférés a vFXT-fürthöz
+      url: avere-vfxt-cluster-gui.md
+    - text: Támogatási feltöltések engedélyezése
+      url: avere-vfxt-enable-support.md
+    - text: A tárolás konfigurálása
+      url: avere-vfxt-add-storage.md
+    - text: Az Avere vFXT-fürt csatlakoztatása
+      url: avere-vfxt-mount-clients.md
+    - text: Adatok áthelyezése a vFXT-fürtbe
+      url: avere-vfxt-data-ingest.md
+    - text: Az Avere vFXT-fürt felügyelete
+      url: avere-vfxt-manage-cluster.md
