@@ -80,7 +80,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Suriname                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad és Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Egyesült Államok kisebb kifelé húzódó szigetek                |                 |                |              |      ✓     |          ✓         |
-| Amerika Egyesült Államok                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Amerika                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Brit Virgin-szigetek                              |                 |                |              |      ✓     |          ✓         |
