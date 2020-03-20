@@ -12,11 +12,11 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374861"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245992"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -30,11 +30,11 @@ Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-sta
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. a bővítmények fájljának módosítása
+## <a name="4-modify-the-extensions-file"></a>4. A kiterjesztések fájljának módosítása
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Nyissa meg a szabályzat alapfájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
 1. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
@@ -60,7 +60,7 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 
 1. Mentse a bővítmények fájlt.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. a frissített egyéni szabályzat feltöltése és tesztelése
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. A frissített egyéni szabályzat feltöltése és tesztelése
 
 ### <a name="51-upload-the-custom-policy"></a>5,1 az egyéni szabályzat feltöltése
 
@@ -131,6 +131,6 @@ Azure AD B2C elküldi a két betűs ISO-kódot a nyelvhez, `fr` franciául:
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a testreszabható felhasználói felületi elemekről: [útmutató a felhasználói folyamatokhoz használható felhasználói felület testreszabásához](customize-ui-overview.md).
