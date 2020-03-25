@@ -6,7 +6,7 @@
       href: azure-netapp-files-introduction.md
     - name: A tárhely-hierarchia ismertetése
       href: azure-netapp-files-understand-storage-hierarchy.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Az Azure NetApp Files beállítása és NFS-kötet létrehozása

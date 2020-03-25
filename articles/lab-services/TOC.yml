@@ -8,7 +8,7 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs és Lab Services
       href: lab-services-overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1. Tesztkörnyezet beállítása
       href: tutorial-create-custom-lab.md

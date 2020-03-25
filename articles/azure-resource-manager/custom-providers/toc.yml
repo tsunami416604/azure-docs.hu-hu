@@ -4,12 +4,12 @@
   items:
     - name: Mi az az Azure Custom Providers?
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Egyéni erőforrás-szolgáltató létrehozása
       href: create-custom-provider.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Az egyéni szolgáltatók alkalmazásának első lépései
       href: tutorial-get-started-with-custom-providers.md

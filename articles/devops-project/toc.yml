@@ -28,7 +28,7 @@
     - name: Indítás
       href: /azure/devops-project/azure-devops-project-go
       maintainContext: true
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – GitHub és DevOps Projects
       href: azure-devops-project-github.md

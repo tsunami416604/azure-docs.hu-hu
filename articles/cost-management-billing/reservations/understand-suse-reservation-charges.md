@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200231"
 ---
 # <a name="azure-software-plan-discount"></a>Azure-szoftvercsomag-kedvezmények
 
 Az Azure-beli SUSE- és RedHat-szoftvercsomagok üzembe helyezett virtuális gépekre alkalmazható foglalások. A szoftvercsomag-kedvezmény a foglalással egyező, üzembe helyezett virtuális gépek szoftverhasználatára érvényes.
 
-Egy virtuális gép leállításakor a rendszer automatikusan egy másik egyező virtuális gépre alkalmazza a kedvezményt, ha van ilyen. A szoftvercsomagok a szoftver virtuális gépen történő futtatásának költségét fedezik. Az egyéb (pl. számítási, tárolási és hálózatkezelési) költségek számlázása külön történik.
+Egy virtuális gép leállításakor a rendszer automatikusan egy másik egyező virtuális gépre alkalmazza a kedvezményt, ha van ilyen. A szoftvercsomagok a szoftver virtuális gépen történő futtatásának költségét fedezik. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 
 A megfelelő csomag megvásárlásához ismernie kell a saját virtuálisgép-használatát és azt, hogy a virtuális gépek hány virtuális processzorral rendelkeznek. Az alábbi szakaszok segítségével meghatározhatja a használati adatok alapján, hogy melyik csomagot érdemes megvásárolnia.
 
@@ -142,7 +142,7 @@ Azure Portal Marketplace-en szereplő nevek:
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A foglalással kapcsolatos további információkért tekintse meg a következő cikkeket:
 

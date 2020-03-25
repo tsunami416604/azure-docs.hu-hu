@@ -4,10 +4,10 @@ description: Az ISO 27001-tervminta áttekintése. Ennek a tervmintának a segí
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: e61ccaea9903eb2aa050b0b49ea9cfe9b8c52d72
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75920585"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>Az ISO 27001-tervminta áttekintése
@@ -18,7 +18,7 @@ Az ISO 27001-tervminta az [Azure Policy](../../../policy/overview.md) használat
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik az ISO 27001 különböző vezérlőit. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel megismerte az ISO 27001 tervmintájának áttekintését és architektúráját.
 Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:

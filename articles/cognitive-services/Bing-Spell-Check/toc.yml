@@ -28,7 +28,7 @@
       items:
         - name: 'A C# használata'
           href: sdk-quickstart-spell-check.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Helyesírás-ellenőrző webalkalmazás készítése
       href: tutorials/spellcheck.md

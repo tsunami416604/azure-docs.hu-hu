@@ -6,11 +6,11 @@
       href: oracle-vm-solutions.md
     - name: Megoldások az OCI-vel – előzetes verzió
       href: oracle-oci-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Oracle-adatbázis létrehozása
       href: oracle-database-quick-create.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Oracle ASM konfigurálása
       href: configure-oracle-asm.md

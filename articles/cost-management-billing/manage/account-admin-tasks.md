@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200999"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Fiókadminisztrátori feladatok az Azure Portalon
@@ -57,7 +57,7 @@ Az aktív fizetési mód módosításához hozzáadhat egy új hitelkártyát, v
 
     ![A hitelkártya hozzáadása űrlapot megjelenítő képernyőkép.](./media/account-admin-tasks/subscription-add-payment-method-x.png)
 
-1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az **Ez legyen az aktív fizetési mód** beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetében, amely a kiválasztott előfizetéssel azonos kártyát használ.
+1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az **Ez legyen az aktív fizetési mód** beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetben, amely a kiválasztott előfizetéssel azonos kártyát használ.
 
     ![Képernyőkép a kártyát aktív fizetési móddá tevő jelölőnégyzettel.](./media/account-admin-tasks/subscription-make-active-payment-method-x.png)
 
@@ -138,7 +138,7 @@ A költségkeret nem érhető el hűségszerződéses csomagokat és használata
 
 1. Kattintson a **Fizetési mód kiválasztása** lehetőségre az előfizetés fizetési módjának kiválasztásához. Ez lesz az előfizetése aktív fizetési módja.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Finish** (Befejezés) gombra.
 
 ## <a name="add-credits-to-azure-in-open-subscription"></a>Kreditek hozzáadása az Azure in Open-előfizetéshez
 
@@ -178,8 +178,8 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
 
 1. Kattintson az **Alkalmaz** gombra
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 Nem támogatjuk a virtuális kártyákat és a feltöltőkártyákat. Ha egy érvényes hitelkártya hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt inkognitó módban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [váratlan költségek elemzéséről és megelőzéséről az Azure Portalon](getting-started.md)

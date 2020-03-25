@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Modern olvasó?
       href: Overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: 'A C# használata'
@@ -13,7 +13,7 @@
       href: quickstart-nodejs.md
     - name: A Swift használata (iOS)
       href: ios-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: A Modern olvasó indítása (Python)
       href: tutorial-python.md

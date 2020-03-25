@@ -10,7 +10,7 @@
       items:
         - name: Folyamatok és tevékenységek
           href: data-factory-create-pipelines.md
-        - name: Adathalmazok
+        - name: Adatkészletek
           href: data-factory-create-datasets.md
         - name: Ütemezés és végrehajtás
           href: data-factory-scheduling-and-execution.md
@@ -47,7 +47,7 @@
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: GYIK
       href: data-factory-faq.md
-- name: Útmutató
+- name: 'Útmutató:'
   items:
     - name: Adatok áthelyezése
       items:

@@ -6,7 +6,7 @@
       href: app-service-mobile-value-prop.md
     - name: App Service-csomagok
       href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Android
       href: app-service-mobile-android-get-started.md
@@ -22,9 +22,9 @@
       href: app-service-mobile-xamarin-forms-get-started.md
     - name: Xamarin.iOS
       href: app-service-mobile-xamarin-ios-get-started.md
-- name: Útmutató
+- name: Útmutatók
   items:
-    - name: Tervezés és kialakítás
+    - name: Terv és kialakítás
       items:
         - name: Hitelesítés és engedélyezés az Azure Mobile Apps megoldásban
           href: app-service-mobile-auth.md
@@ -172,7 +172,7 @@
         - name: Azure Virtual Network
           href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Erőforráscsoportok
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations'
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
           items:
             - name: Háttérfeladatok futtatása WebJobs-feladatokkal
               href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
@@ -186,11 +186,11 @@
               href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
             - name: Hálózati konfiguráció részletei az ExpressRoute-tal
               href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: Biztonságos
+    - name: Védelem
       items:
         - name: Hitelesítés identitásszolgáltatókkal
           items:
-            - name: Hitelesítés Azure Active Directory-fiókkal
+            - name: Azure Active Directory-alapú hitelesítés
               href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
             - name: Hitelesítés Facebook-fiókkal
               href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
@@ -212,15 +212,15 @@
               href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
             - name: Többrétegű biztonsági architektúra megvalósítása
               href: ../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-            - name: Biztonságos csatlakozás a háttérerőforrásokhoz
+            - name: Biztonságos csatlakozás háttérerőforrásokhoz
               href: ../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: Backup
+    - name: Biztonsági mentés
       items:
         - name: Adatok biztonsági mentése az Azure-ban
           href: ../app-service/manage-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Alkalmazás visszaállítása az Azure-ban
           href: ../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: Figyelés
+    - name: Monitoring
       href: ../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
       items:
         - name: Diagnosztikai naplózás engedélyezése
@@ -261,12 +261,10 @@
       href: 'https://azure.github.io/azure-mobile-apps-js-client/'
     - name: Windows/Xamarin ügyfél-SDK
       href: 'https://msdn.microsoft.com/library/azure/mt419521.aspx'
-- name: Kapcsolódó témakörök
+- name: További források
   items:
     - name: GitHub-adattárak
       href: 'https://github.com/Azure/azure-mobile-apps'
-- name: További források
-  items:
     - name: App Service – ajánlott eljárások
       href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
     - name: Azure-ütemterv

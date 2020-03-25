@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e885abcd997a4764090c5e8c8ce7ad14c0963220
-  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79086714"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80129824"
 highlightedContent:
   items:
   - title: Azure fejlesztői útmutató az első lépésekhez
@@ -304,7 +304,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: sql-data-warehouse/index.yml
+    url: synapse-analytics/sql-data-warehouse/index.yml
   - title: Data Catalog
     summary: Jobban kihasználhatja a vállalati adategységekben rejlő értékeket
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
@@ -455,7 +455,7 @@ productDirectory:
     azureCategories:
     - compute
     url: batch/index.yml
-  - title: Cloud Services
+  - title: Felhőszolgáltatások
     summary: Magas rendelkezésre állású, a végtelenségig méretezhető felhőalkalmazások és API-k létrehozása
     imageSrc: https://static.docs.com/ui/media/product/azure/cloud-services.svg
     azureCategories:
@@ -527,7 +527,7 @@ productDirectory:
     - compute
     - windows-virtual-desktop
     url: virtual-desktop/index.yml
-  - title: Windows rendszerű virtuális gépek
+  - title: Windows Virtual Machines
     summary: Windows-alapú virtuális gépek kiépítése percek alatt
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
     azureCategories:
@@ -800,7 +800,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
     azureCategories:
     - integration
-    url: service-bus/index.md
+    url: service-bus-messaging/index.yml
   - title: Azure Digital Twins (előzetes verzió)
     summary: IoT-térbeliintelligenciára épülő következő generációs megoldások kialakítása
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
@@ -867,7 +867,7 @@ productDirectory:
     - iot
     - security
     url: asc-for-iot/index.yml
-  - title: Automation
+  - title: Automatizálás
     summary: Egyszerűbb felhőfelügyelet a folyamatok automatizálásával
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
     azureCategories:
@@ -1179,7 +1179,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/blobs/index.yml
-  - title: Disk Storage
+  - title: Lemezes tárolás
     summary: Állandó, biztonságos, virtuális gépeket támogató lemezbeállítások
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
@@ -1203,7 +1203,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/queues/index.yml
-  - title: Storage
+  - title: Tárterület
     summary: Adatok, alkalmazások és számítási feladatok tárolása biztonságos, nagymértékben skálázható felhőalapú tárban
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -1220,7 +1220,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
     azureCategories:
     - storage
-    url: storsimple/index.md
+    url: storsimple/index.yml
   - title: Azure SignalR szolgáltatás
     summary: Valós idejű webes funkciók egyszerű hozzáadása
     imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg

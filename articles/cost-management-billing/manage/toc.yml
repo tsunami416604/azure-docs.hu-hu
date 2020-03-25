@@ -83,15 +83,13 @@
       items:
         - name: Első lépések a nagyvállalati szerződéses Azure Portalon
           href: ea-portal-get-started.md
-        - name: A nagyvállalati szerződéses számla értelmezése
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: Nagyvállalati szerződéses szerepkörök az Azure-ban
           href: understand-ea-roles.md
         - name: A nagyvállalati szerződéses Azure Portal adminisztrációja
           href: ea-portal-administration.md
         - name: A Microsoft ügyfélszerződés EA-feladatai
           href: mca-enterprise-operations.md
-        - name: Azure nagyvállalati szerződések és a módosításaik
+        - name: Nagyvállalati szerződéses Azure-szerződések és -kiegészítések
           href: ea-portal-agreements.md
         - name: Nagyvállalati regisztrációs számlák
           href: ea-portal-enrollment-invoices.md

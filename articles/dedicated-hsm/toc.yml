@@ -4,7 +4,7 @@
   items:
     - name: Dedicated HSM – áttekintés
       href: overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: HSM-ek üzembe helyezése meglévő virtuális hálózaton a parancssori felülettel
       href: tutorial-deploy-hsm-cli.md

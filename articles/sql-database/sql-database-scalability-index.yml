@@ -42,7 +42,7 @@ sections:
           - title: Adatbázisközi feladatok
             href: /azure/sql-database/elastic-jobs-overview
             html: <p>Fenntarthat egy adatbáziskészletet adatbázisokon átívelő rugalmas feladatok használatával.</p>
-  - title: További erőforrások
+  - title: További segédanyagok
     items:
       - type: paragraph
         text: 'Megismerheti azokat a további funkciókat, amelyek segítenek az adatok méretezésében.'

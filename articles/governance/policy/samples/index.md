@@ -4,10 +4,10 @@ description: Az Azure Policyhez készült beépített elemek indexe Kategóriac�
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "77168034"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-minták
@@ -32,7 +32,7 @@ Az alábbiakban példákat láthat az Azure Policyben található nyelvet és op
 - [Szabályzatdefiníciók csoportosítása egy kezdeményezésben](./pattern-group-with-initiative.md)
 - [Erőforrások üzembe helyezése a deployIfNotExists használatával](./pattern-deploy-resources.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

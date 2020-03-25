@@ -5,7 +5,7 @@
   items:
     - name: Tudnivalók az Azure Blockchain Workbenchről
       href: overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: Blokkláncalkalmazások létrehozása

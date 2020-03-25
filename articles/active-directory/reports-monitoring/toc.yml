@@ -17,7 +17,7 @@
       href: quickstart-configure-named-locations.md
     - name: Naplók átirányítása egy tárfiókba
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Hozzáférés a Reporting API-hoz tanúsítványok használatával
       href: tutorial-access-api-with-certificates.md

@@ -8,7 +8,7 @@
       href: quickstart-powershell.md
 - name: Funkciók és eszközök
   href: features.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Ansible
       items:

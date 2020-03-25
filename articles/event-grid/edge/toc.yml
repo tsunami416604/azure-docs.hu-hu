@@ -6,7 +6,7 @@
   items:
     - name: Mi az Event Grid az IoT Edge-en?
       href: overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Események közzététele és regisztráció helyben
       href: pub-sub-events-webhook-local.md

@@ -11,7 +11,7 @@
       href: deploy-portal.md
     - name: Az ONNX üzembe helyezése az SQL Database Edge-ben
       href: deploy-onnx.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Adatok szinkronizálása az Azure Data Factoryvel
       href: tutorial-sync-data-factory.md

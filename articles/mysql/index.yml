@@ -9,10 +9,10 @@ metadata:
   ms.service: mysql
   ms.topic: landing-page
   ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/04/2019
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "70309287"
 landingContent:
 - title: További információ az Azure Database for MySQL-ről
@@ -101,7 +101,7 @@ landingContent:
       url: connect-workbench.md
     - text: Csatlakozás PHP használatával
       url: connect-php.md
-    - text: Csatlakozás Java használatával
+    - text: Csatlakozás VPN használatával
       url: connect-java.md
     - text: Csatlakozás .Net használatával
       url: connect-csharp.md

@@ -8,7 +8,7 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Bevezetés
+    - name: Első lépések
       href: ../../media-services/video-indexer/video-indexer-get-started.md
 - name: Útmutatók
   items:

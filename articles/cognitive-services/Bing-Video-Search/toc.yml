@@ -35,7 +35,7 @@
           href: quickstarts/sdk-python-quickstart.md
         - name: A Java használata
           href: quickstarts/sdk-java-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Egyoldalas webalkalmazás készítése
       href: tutorial-bing-video-search-single-page-app.md

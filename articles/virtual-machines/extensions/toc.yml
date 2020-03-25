@@ -8,7 +8,7 @@
       href: agent-linux.md
     - name: Windows rendszerű virtuálisgép-ügynök
       href: agent-windows.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Egyéni szkriptbővítmény használata

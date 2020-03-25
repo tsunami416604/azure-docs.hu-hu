@@ -1,20 +1,20 @@
 ---
-title: Kiterjesztett metrikák hozzáadása Azure-beli virtuális gépekhez | Microsoft Docs
+title: Kiterjesztett metrikák hozzáadása Azure-beli virtuális gépekhez
 description: Ez a cikk segítséget nyújt a kiterjesztett diagnosztikai metrikák Azure-beli virtuális gépekhez történő engedélyezésében és konfigurálásában.
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082914"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481619"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Kiterjesztett metrikák hozzáadása Azure-beli virtuális gépekhez
 
@@ -30,7 +30,9 @@ A metrikák gyűjtésének engedélyezése után a következőkre van lehetősé
 Például előfordulhat, hogy szeretné monitorozni az Azure-beli virtuális gépek processzor- és memóriahasználatát (%). Az Azure-beli virtuális gép metrikái megfelelnek a _Százalékos processzorhasználat_ és a _\Memória\% Előjegyzett memória kihasználtsága_ értékeknek.
 
 > [!NOTE]
-> A kiterjesztett metrikaadatok gyűjtése csak az Azure-beli vendégszintű monitorozással támogatott. A Cloudyn nem kompatibilis a [Log Analytics-ügynökkel](../../azure-monitor/platform/agents-overview.md). 
+> A kiterjesztett metrikaadatok gyűjtése csak az Azure-beli vendégszintű monitorozással támogatott. A Cloudyn nem kompatibilis a [Log Analytics-ügynökkel](../../azure-monitor/platform/agents-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Annak meghatározása, hogy engedélyezve vannak-e a kiterjesztett metrikák
 
@@ -83,6 +85,6 @@ Az Azure-példányok teljesítménymetrikáinak a Cloudyn portálján való megt
 
 ![mintaadatok az Instance Explorerben](./media/azure-vm-extended-metrics/instance-explorer.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha még nem engedélyezte az Azure Resource Manager API-hozzáférést a fiókokhoz, lépjen tovább az [Azure-előfizetések és -fiókok aktiválása](../../cost-management/activate-subs-accounts.md) részre.

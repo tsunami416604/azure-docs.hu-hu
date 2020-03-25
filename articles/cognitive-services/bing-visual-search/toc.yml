@@ -35,7 +35,7 @@
           href: visual-search-sdk-python.md
         - name: A Java használata
           href: visual-search-sdk-java.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Kép feltöltése
       href: tutorial-visual-search-image-upload.md

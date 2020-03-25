@@ -24,7 +24,7 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: A Python használata
           href: quickstarts/detect-data-anomalies-python.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával
       href: tutorials/batch-anomaly-detection-powerbi.md

@@ -4,10 +4,10 @@ description: A UK OFFICIAL- és az UK NHS-tervminták áttekintése és architek
 ms.date: 06/26/2019
 ms.topic: sample
 ms.openlocfilehash: e6ba277c879f8569e32ec963aaa15a2e14fe78c0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74546374"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>A UK OFFICIAL- és az UK NHS-tervminták áttekintése
@@ -18,7 +18,7 @@ A UK OFFICIAL- és a UK NHS-tervminták az [Azure Policy](../../../policy/overvi
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a kezdeményezésben található szabályzatokat, és hogy ezek hogyan segítik elő a UK OFFICIAL és a UK NHS keretrendszerek által meghatározott különböző vezérlőknek való megfelelőséget. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel megismerte a UK OFFICIAL- és a UK NHS-tervminták áttekintését és architektúráját. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 

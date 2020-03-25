@@ -12,7 +12,7 @@
       href: analysis-services-create-powershell.md
     - name: Kiszolgáló tűzfalának konfigurálása – Portal
       href: analysis-services-qs-firewall.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – Mintamodell hozzáadása a portálról
       href: analysis-services-create-sample-model.md
