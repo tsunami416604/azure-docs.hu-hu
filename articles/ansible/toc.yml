@@ -4,7 +4,7 @@
   items:
     - name: Ansible az Azure-ban – ismertetés
       href: ./ansible-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Ansible-megoldássablon üzembe helyezése CentOS rendszeren
@@ -23,7 +23,7 @@
         - name: Linux rendszerű virtuális gépek kezelése
           href: ./ansible-manage-linux-vm.md
           maintainContext: true
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Azure Application Gateway
       items:
@@ -111,7 +111,7 @@
       href: ./ansible-matrix.md
     - name: Minden modul az Azure-ban
       href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
-- name: Eszközök
+- name: További források
   items:
     - name: Visual Studio Code-bővítmény az Ansible-höz
       href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

@@ -9,7 +9,7 @@
   items:
     - name: A Kubernetes az Azure-on
       href: container-service-kubernetes-walkthrough.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – Tárolórendszerképek létrehozása
       href: container-service-tutorial-kubernetes-prepare-app.md
@@ -43,7 +43,7 @@
       href: container-service-draft-up.md
     - name: Fürt méretezése
       href: container-service-scale.md
-    - name: Figyelés
+    - name: Monitoring
       items:
         - name: Figyelés a Log Analytics használatával
           href: container-service-kubernetes-oms.md

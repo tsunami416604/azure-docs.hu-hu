@@ -2,19 +2,19 @@
   items:
     - name: Áttekintés
       items:
-        - name: Bevezetés
+        - name: Első lépések
           href: overview.md
         - name: Számítási feladatok
           href: partner-workloads.md
     - name: Alapelvek
       items:
-        - name: Compute
+        - name: Számítás
           href: concepts/mainframe-compute-azure.md
-        - name: Storage
+        - name: Tárterület
           href: concepts/mainframe-storage-azure.md
     - name: Micro Focus
       items:
-        - name: Bevezetés
+        - name: Első lépések
           href: microfocus/get-started.md
         - name: Az Enterprise Server telepítése
           href: microfocus/set-up-micro-focus-azure.md
@@ -24,13 +24,13 @@
           href: microfocus/run-enterprise-server-container.md
     - name: TmaxSoft OpenFrame
       items:
-        - name: Bevezetés
+        - name: Első lépések
           href: tmaxsoft/get-started.md
         - name: Az OpenFrame telepítése
           href: tmaxsoft/install-openframe-azure.md
     - name: IBM
       items:
-        - name: Bevezetés
+        - name: Első lépések
           href: ibm/get-started.md
         - name: IBM zD&T telepítése
           href: ibm/install-ibm-z-environment.md

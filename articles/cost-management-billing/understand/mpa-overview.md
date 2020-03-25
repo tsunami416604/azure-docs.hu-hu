@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 45dbf43966b71d7db7ada8be7704f6b3b37aab25
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199177"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Bevezetés a Microsoft Partnerszerződéshez tartozó számlázási fiók használatába
 
-A számlázási fiók az Azure-ba való regisztráció során jön létre. A számlázási fiók használatával kezelheti a számlákat és a kifizetéseket, valamint nyomon követheti a költségeket. Több számlázási fiókhoz is rendelkezhet hozzáféréssel. Előfordulhat például, hogy az egyéni projektjei kezeléséhez regisztrált az Azure-ba. Emellett az Azure-hoz hozzáféréssel rendelkezhet a szervezet Nagyvállalati Szerződésén, Microsoft-ügyfélszerződésén vagy Microsoft Partnerszerződésén keresztül is. Mindegyik regisztrációhoz egy külön számlázási fiók tartozik.
+A számlázási fiók akkor jön létre, amikor regisztrálja magát az Azure használatára. A számlázási fiók használatával kezelheti a számlákat és a kifizetéseket, valamint nyomon követheti a költségeket. Több számlázási fiókhoz is rendelkezhet hozzáféréssel. Előfordulhat például, hogy az egyéni projektjei kezeléséhez regisztrált az Azure-ba. Emellett az Azure-hoz hozzáféréssel rendelkezhet a szervezet Nagyvállalati Szerződésén, Microsoft-ügyfélszerződésén vagy Microsoft Partnerszerződésén keresztül is. Mindegyik regisztrációhoz egy külön számlázási fiók tartozik.
 
 Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. Ezek a fiókok a felhőszolgáltatói partnerek (CSP-k) számára készülnek az ügyfelek számláinak az új kereskedelmi felületen való kezeléséhez. Az új felület csak olyan partnerek számára érhető el, akik legalább egy olyan ügyféllel rendelkeznek, aki elfogadta a Microsoft-ügyfélszerződést, illetve rendelkezik Azure-csomaggal. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-partnerszerződéshez](#check-access-to-a-microsoft-partner-agreement). Az [Azure-csomagok](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) a Microsoft Ügyfélszerződés feltételeiben rögzített használatalapú díjak szerint biztosítanak hozzáférést az ügyfelek számára az Azure-szolgáltatásokhoz.
 
@@ -50,7 +50,7 @@ Szabályzattal vezérelheti, hogy az ügyfelek vállalatának felhasználói meg
 
 Szabályzat bekapcsolása:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
@@ -77,7 +77,7 @@ A CSP [kétrétegű modelljében](https://docs.microsoft.com/partner-center) a k
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 

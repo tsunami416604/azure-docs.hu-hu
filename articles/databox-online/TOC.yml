@@ -7,7 +7,7 @@
       items:
         - name: Mi a Data Box Gateway?
           href: data-box-gateway-overview.md
-    - name: Oktatóanyagok
+    - name: oktatóanyagokat
       items:
         - name: 1 – Előkészítés
           href: data-box-gateway-deploy-prep.md
@@ -43,7 +43,7 @@
               href: data-box-gateway-manage-access-power-connectivity-mode.md
             - name: A PowerShell-lel
               href: data-box-gateway-connect-powershell-interface.md
-        - name: Figyelés
+        - name: Monitoring
           href: data-box-gateway-monitor.md
         - name: Hibaelhárítás
           href: data-box-gateway-troubleshoot.md
@@ -63,7 +63,7 @@
       items:
         - name: Mi az Azure Stack Edge?
           href: data-box-edge-overview.md
-    - name: Oktatóanyagok
+    - name: oktatóanyagokat
       items:
         - name: 1 – Előkészítés
           href: data-box-edge-deploy-prep.md
@@ -111,7 +111,7 @@
           href: data-box-edge-troubleshoot.md
         - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
           href: data-box-edge-contact-microsoft-support.md
-        - name: Figyelés
+        - name: Monitoring
           href: data-box-edge-monitor.md
         - name: Eszköz visszaküldése vagy cseréje
           href: data-box-edge-return-device.md

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: tamram
 ms.openlocfilehash: b6360619b7666ab7836a751491e05e379df32d93
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199194"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>A foglalási kedvezmény alkalmazása az Azure Storage-ra
@@ -29,7 +29,7 @@ A fenntartott Azure Storage-kapacitásra vonatkozó kedvezmény csak akkor érv�
 
 Egy erőforrás törlésekor a rendszer a foglalási kedvezményt automatikusan a megadott hatókör egy másik egyező erőforrására alkalmazza. Ha nem találhatók egyező erőforrások a megadott hatókörben, akkor a lefoglalt órák elvesznek.
 
-## <a name="discount-examples"></a>Példák a kedvezményre
+## <a name="discount-examples"></a>Példák a kedvezmény alkalmazására
 
 Az alábbi példák bemutatják, hogy a rendszer hogyan alkalmazza a fenntartott Azure Storage-kapacitásra érvényes kedvezményt az üzemelő példányoktól függően.
 
@@ -51,7 +51,7 @@ Tegyük fel, hogy a foglalási időszak egy adott órájában 101 TB-nyi tárol�
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A fenntartott kapacitású Blob Storage költségeinek optimalizálása](../../storage/blobs/storage-blob-reserved-capacity.md)
 - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)

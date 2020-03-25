@@ -7,7 +7,7 @@
     - name: Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
       href: what-is-cloud-provisioning.md
       maintainContext: true
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: Egyetlen AD-erdő integrálása egyetlen Azure AD-bérlővel

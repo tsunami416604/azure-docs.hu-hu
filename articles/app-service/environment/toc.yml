@@ -3,14 +3,14 @@
   items:
     - name: Tudnivalók az App Service-környezetekről
       href: intro.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Külső ASE létrehozása
       href: create-external-ase.md
     - name: Belső ASE létrehozása
       href: create-ilb-ase.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Integrálás WAF-fal
       href: app-service-app-service-environment-web-application-firewall.md
@@ -104,7 +104,7 @@
       items:
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: Hibaelhárítás
+    - name: Hibakeresés
       items:
         - name: Hibaelhárítás a Visual Studióval
           href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json

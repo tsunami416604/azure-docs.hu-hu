@@ -19,7 +19,7 @@
     - name: Tartós függvények létrehozása – JavaScript
       displayName: 'get started, chaining'
       href: quickstart-js-vscode.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Függvényláncolás
       href: durable-functions-sequence.md
@@ -107,7 +107,7 @@
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Nulla állásidejű üzembe helyezés
           href: durable-functions-zero-downtime-deployment.md
-    - name: Figyelés
+    - name: Monitoring
       items:
         - name: Diagnosztika
           href: durable-functions-diagnostics.md

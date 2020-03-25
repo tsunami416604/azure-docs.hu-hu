@@ -1,18 +1,18 @@
 ---
 title: Mobilalkalmazások létrehozása a Visual Studio App Center és Azure-szolgáltatások használatával
 description: Megtudhatja, hogyan hozhat létre valós mobilalkalmazásokat különböző szolgáltatások, például a Visual Studio App Center és egyéb Azure-szolgáltatások használatával.
-author: elamalani
+author: codemillmatt
 ms.assetid: 98899889-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 6e60aa223b3c4f362ed13411c54212e9d1fa2c87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 19d317ca564f925562994a5f90cd3892d0ee1d08
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454425"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240837"
 ---
 # <a name="mobile-application-development-in-microsoft"></a>Mobilalkalmazások fejlesztése a Microsoftnál
 A döntéshozóknak, a fejlesztői csapatoknak és az informatikai részlegeknek egy stabil mobilalkalmazás-fejlesztési stratégiát kell kidolgoznia, amely:

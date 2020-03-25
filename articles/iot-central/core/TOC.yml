@@ -6,7 +6,7 @@
       href: overview-iot-central.md
     - name: Felhasználói felület bemutatása
       href: overview-iot-central-tour.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: 1. Új alkalmazás létrehozása
@@ -17,7 +17,7 @@
       href: quick-configure-rules.md
     - name: 4. Eszközök monitorozása
       href: quick-monitor-devices.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Csatlakozás
       items:
@@ -127,8 +127,10 @@
               href: howto-manage-preferences.md
             - name: Élő csevegés ki-/bekapcsolása
               href: howto-show-hide-chat.md
-- name: Kapcsolódó témakörök
+- name: További források
   items:
+    - name: Támogatási és súgólehetőségek
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Iparági alkalmazássablonok
       items:
         - name: Kiskereskedelem
@@ -139,30 +141,30 @@
           href: ../government/overview-iot-central-government.md
         - name: Egészségügy
           href: ../healthcare/overview-iot-central-healthcare.md
-    - name: Platformszolgáltatások
+    - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Hub eszközkiépítési szolgáltatás
+          href: /azure/iot-dps
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
         - name: IoT Plug and Play
           href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
+        - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge-megoldások
+    - name: Azure IoT SDK-k
       items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
+        - name: IoT szolgáltatásoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT eszközoldali SDK-k
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: További források
-  items:
-    - name: Támogatási és súgólehetőségek
-      href: /azure/iot-fundamentals/iot-support-help
     - name: IoT Central API – Referencia
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Ügyfelek adatkérései

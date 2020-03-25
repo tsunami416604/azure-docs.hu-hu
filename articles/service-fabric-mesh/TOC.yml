@@ -5,13 +5,13 @@
   items:
     - name: A Service Fabric Mesh névjegye
       href: service-fabric-mesh-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: A Hello World üzembe helyezése
       href: service-fabric-mesh-quickstart-deploy-container.md
     - name: Webalkalmazás létrehozása a Visual Studióval
       href: service-fabric-mesh-quickstart-dotnet-core.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Mesh-alkalmazás buildelése és üzembe helyezése a Visual Studióval
       items:

@@ -4,7 +4,7 @@
   items:
     - name: Mi a Service Fabric?
       href: service-fabric-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: .NET-alkalmazás létrehozása
@@ -19,7 +19,7 @@
           href: service-fabric-quickstart-java-spring-boot.md
         - name: Reliable Services-alkalmazás üzembe helyezése
           href: service-fabric-quickstart-java-reliable-services.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: .NET-alkalmazás üzembe helyezése
       items:
@@ -139,7 +139,7 @@
       items:
         - name: Az alkalmazások létrehozásának áttekintése
           href: service-fabric-choose-framework.md
-        - name: Containers
+        - name: Tárolók
           items:
             - name: A tárolók áttekintése
               href: service-fabric-containers-overview.md
@@ -316,9 +316,7 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Fürt terhelésének elosztása
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Alfürtözés
-              href: service-fabric-cluster-resource-manager-subclustering.md
-            - name: Throttling
+            - name: Szabályozás
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Szolgáltatás áthelyezése
               href: service-fabric-cluster-resource-manager-movement-cost.md

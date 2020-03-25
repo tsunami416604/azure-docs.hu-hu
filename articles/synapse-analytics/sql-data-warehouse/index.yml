@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics (korábban Azure SQL Data Warehouse)
+summary: Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben.
+metadata:
+  title: Azure Synapse Analytics
+  description: Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben.
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: 36943d330d0bd97fe6139f5cfa19da571fc70835
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80135674"
+landingContent:
+- title: Az Azure Synapse Analytics ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Synapse?
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: Az Azure Synapse architektúrája
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: Tippek és ajánlott eljárások
+      url: cheat-sheet.md
+    - text: Referenciaarchitektúra
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/data/enterprise-bi-synapse
+- title: Bevezetés
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: SQL-készlet létrehozása (adattárház)
+      url: create-data-warehouse-portal.md
+- title: Adatok betöltése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Adatbetöltési stratégia tervezése
+      url: design-elt-data-loading.md
+    - text: Ajánlott eljárások
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adatok betöltése az Azure Data Lake Storage-ból
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Adatok betöltése az Azure Blob Storage-ból
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: Teljesítmény-finomhangolás
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ajánlott eljárások
+      url: sql-data-warehouse-best-practices.md
+    - text: Rendezett fürtözött oszlopcentrikus indexek finomhangolása
+      url: performance-tuning-ordered-cci.md
+    - text: Materializált nézetek használata a számítási feladatok finomhangolásához
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: A számítási feladatok elemzése
+      url: analyze-your-workload.md
+- title: Kezelés és monitorozás
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az adattárház kezelésének és monitorozásának megismerése
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Monitor your workload using DMVs
+      url: sql-data-warehouse-manage-monitor.md
+    - text: A számítási feladat fontosságának kezelése és figyelése
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: Az adattárház biztonságossá tétele
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az adattárház biztonságossá tételének alapjai
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: További források
+  linkLists:
+  - linkListType: video
+    links:
+    - text: A legfrissebb adattárház-videók megtekintése
+      url: sql-data-warehouse-videos.md

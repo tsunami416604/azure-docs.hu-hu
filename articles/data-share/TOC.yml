@@ -6,7 +6,7 @@
       href: overview.md
     - name: Támogatott adattárak
       href: supported-data-stores.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: Adatok megosztása
@@ -29,7 +29,7 @@
       href: samples-powershell.md
 - name: Útmutatók
   items:
-    - name: Figyelés
+    - name: Monitoring
       href: how-to-monitor.md
     - name: Adathalmaz-leképezések konfigurálása
       href: how-to-configure-mapping.md

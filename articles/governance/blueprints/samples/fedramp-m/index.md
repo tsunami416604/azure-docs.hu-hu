@@ -4,10 +4,10 @@ description: A FedRAMP Moderate-tervminta áttekintése. Ennek a tervmintának a
 ms.date: 10/31/2019
 ms.topic: sample
 ms.openlocfilehash: 4a94d4ad29fdc79be508deb4bed76a91e8e76168
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74544446"
 ---
 # <a name="overview-of-the-fedramp-moderate-blueprint-sample"></a>A FedRAMP Moderate-tervminta áttekintése
@@ -18,7 +18,7 @@ A FedRAMP Moderate-tervminta az [Azure Policy](../../../policy/overview.md) hasz
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a FedRAMP Moderate különböző vezérlőit. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel áttekintette a FedRAMP Moderate-tervminta részleteit. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 

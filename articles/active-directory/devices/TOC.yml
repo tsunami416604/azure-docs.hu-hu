@@ -6,7 +6,7 @@
       href: overview.md
     - name: Mi az az Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: false
   items:
     - name: A hibrid Azure AD-csatlakozás konfigurálása felügyelt tartományokhoz

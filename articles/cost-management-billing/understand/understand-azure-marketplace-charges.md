@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587785"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
@@ -59,7 +59,7 @@ Az Azure Marketplace díjai a helyi pénznemben jelennek meg.
 
 Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 1. A bal oldali menüben válassza a **Számlák** elemet.
 1. Az előfizetés legördülő szűrőjében válassza ki a Marketplace-szolgáltatásokhoz tartozó előfizetést.
@@ -104,7 +104,7 @@ Ha nem rendelkezik MCA vagy MPA szerződéssel, a Marketplace-számlákat a köv
 
 Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az erőforráshoz. A külső szolgáltatás fizetési módja azonos lesz a kiválasztott Azure-előfizetésével. A külső szolgáltatás fizetési módjának módosításához [módosítania kell annak az Azure-előfizetésnek a fizetési módját](../manage/change-credit-card.md), amely a külső szolgáltatáshoz kapcsolódik. Ha szeretné kideríteni, hogy a külső szolgáltatás melyik előfizetéshez kapcsolódik, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali navigációs menüben kattintson a **Minden erőforrás** elemre.
      ![képernyőkép a menü Minden erőforrás eleméről](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Keresse meg a külső szolgáltatást.
@@ -116,7 +116,7 @@ Külső szolgáltatás vásárlásakor kiválaszt egy Azure-előfizetést az er�
 
 Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az [Azure Portalon](https://portal.azure.com).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. A bal oldali navigációs menüben kattintson a **Minden erőforrás** elemre.
     ![Képernyőkép a menü Minden erőforrás eleméről](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Keresse meg a külső szolgáltatást.
@@ -125,7 +125,7 @@ Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az 
     ![Képernyőkép a Törlés gombról](./media/understand-azure-marketplace-charges/delete-button.png)
 1. A megerősítési párbeszédpanelen írja be az *Igen* kifejezést.
     ![Erőforrás törlése](./media/understand-azure-marketplace-charges/delete-resource.PNG)
-1. Kattintson a **Törlés** gombra.
+1. Kattintson a **Delete** (Törlés) gombra.
 
 ## <a name="check-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-mca.md)]
@@ -134,5 +134,5 @@ Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az 
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Költségelemzés indítása](../costs/quick-acm-cost-analysis.md)

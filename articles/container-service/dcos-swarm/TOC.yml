@@ -11,7 +11,7 @@
       href: container-service-swarm-mode-walkthrough.md
     - name: DC/OS
       href: container-service-dcos-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – Fürt létrehozása és felügyelete
       href: container-service-dcos-manage-tutorial.md

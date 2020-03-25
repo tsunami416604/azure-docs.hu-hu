@@ -2,11 +2,11 @@
   items:
     - name: Bevezetés az Azure használatába
       href: azure-operations-guide.md
-    - name: Rövid útmutatók
+    - name: Gyors útmutatók
       items:
         - name: Virtuális gépek
           items:
-            - name: Windows rendszerű virtuális gépek
+            - name: Windows Virtual Machines
               href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Linux rendszerű virtuális gépek
               href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
@@ -30,7 +30,7 @@
           items:
             - name: Azure-beli virtuális gép replikálása másik Azure-régióba
               href: ../../site-recovery/azure-to-azure-quickstart.md
-    - name: Oktatóanyagok
+    - name: oktatóanyagokat
       items:
         - name: Virtuális gépek
           items:

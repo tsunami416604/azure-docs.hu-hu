@@ -16,7 +16,7 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: Egyéni környezet használata
       href: quickstart-create-jupyter-notebook-project-environment.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Notebook létrehozása és futtatása
       href: tutorial-create-run-jupyter-notebook.md

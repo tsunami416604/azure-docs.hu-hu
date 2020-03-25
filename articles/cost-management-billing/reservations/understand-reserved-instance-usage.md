@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5867c4ba7fa1447cbd5d40e15237ae50c24c7168
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199262"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Használatalapú fizetéses egyéni előfizetés Azure-beli foglalása használatának ismertetése
@@ -64,7 +64,7 @@ Tegyük fel, hogy egy 4. generációs SQL Database-adatbázist futtat az USA kel
 
 | Mező | Érték |
 |---| --- |
-|Foglalásazonosító |446ec809-423d-467c-8c5c-bbd5d22906b1|
+|ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Mennyiség |2|
 |Product| SQL Database Gen 4 (2 Core)|
 |Régió | eastus |
@@ -91,7 +91,7 @@ Szűrjön az **Additional Info** mezőre, és adja meg a **foglalásazonosítót
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

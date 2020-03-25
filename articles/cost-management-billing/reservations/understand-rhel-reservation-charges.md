@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 173967356c17150d5694b48e6ed2acd78155ca4b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199228"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Tudnivalók a Red Hat Linux Enterprise szoftver foglalásicsomag-kedvezményeinek alkalmazásáról az Azure-ban
@@ -52,7 +52,7 @@ Azure Portal Marketplace-en szereplő nevek:
 - Red Hat Enterprise Linux 7.6
 - Red Hat Enterprise Linux 7 (legújabb LVM)
 
-|Red Hat rendszerű virtuális gép | MeterId| Arány| Példa virtuálisgép-méretre|
+|Red Hat rendszerű virtuális gép | Fogyasztásmérő azonosítója| Arány| Példa virtuálisgép-méretre|
 | -------| ------------------------| --- |--- |
 |1–4 virtuális processzorral rendelkező virtuális gép licence|077a07bb-20f8-4bc6-b596-ab7211a1e247|1|D4s_v3|
 |1–4 virtuális processzorral rendelkező virtuális gép licence|2f96d035-3bac-46d6-b2bc-c6daa0938536|1|D4s_v3|
@@ -76,7 +76,7 @@ Azure Portal Marketplace-en szereplő nevek:
 
 Azure Portal Marketplace-en szereplő név:
 
-|Red Hat rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|Red Hat rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- | --- | ------------------------| --- | --- |
 |1–4 virtuális processzorral rendelkező virtuális gép licence |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |5 vagy több virtuális processzorral rendelkező virtuális gép licence|6dfb482b-23ea-487f-810c-e66360f025de|2,333333333|D8s_v3|
@@ -85,7 +85,7 @@ Azure Portal Marketplace-en szereplő név:
 
 Azure Portal Marketplace-en szereplő nevek:
 
-|Red Hat rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|Red Hat rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- |------------------------| --- | --- |
 |1–4 virtuális processzorral rendelkező virtuális gép licence|e9711132-d9d9-450c-8203-25cfc4bce8de|1|D4s_v3|
 |5 vagy több virtuális processzorral rendelkező virtuális gép licence|93954aa4-b55f-4b7b-844d-a119d6bf3c4e|2|D8s_v3|
@@ -99,7 +99,7 @@ Azure Portal Marketplace-en szereplő nevek:
 - Red Hat Enterprise Linux 7.4 for SAP
 - Red Hat Enterprise Linux 7.5 for SAP
 
-|Red Hat rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|Red Hat rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- |------------------------| --- |--- |
 |1 virtuális processzorral rendelkező virtuális gép licence|25889e91-c740-42ac-bc52-6b8f73b98575|1|D2s_v3|
 |2 virtuális processzorral rendelkező virtuális gép licence|2a0c92c8-23a7-4dc9-a39c-c4a73a85b5da|1|D2s_v3|
@@ -127,7 +127,7 @@ Azure Portal Marketplace-en szereplő nevek:
 - Red Hat Enterprise Linux 7.2 for SAP HANA
 - Red Hat Enterprise Linux 7.3 for SAP HANA
 
-|Red Hat rendszerű virtuális gép | MeterId | Arány|Példa virtuálisgép-méretre|
+|Red Hat rendszerű virtuális gép | Fogyasztásmérő azonosítója | Arány|Példa virtuálisgép-méretre|
 | ------- |------------------------| --- |--- |
 |1 virtuális processzorral rendelkező virtuális gép licence|be0a59d1-eed7-47ec-becd-453267753793|1|D2s_v3|
 |2 virtuális processzorral rendelkező virtuális gép licence|3b97c9f5-f5d5-4fd3-a421-b78fca32a656|1|D2s_v3|
@@ -147,7 +147,7 @@ Azure Portal Marketplace-en szereplő nevek:
 |96 virtuális processzorral rendelkező virtuális gép licence|b13895fc-0d06-4de9-b860-627c471cd247|2,166666667||
 |128 virtuális processzorral rendelkező virtuális gép licence|6e67ac0b-19d3-4289-96df-05d0093d4b3b|2,166666667| M128ms|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A foglalással kapcsolatos további információkért tekintse meg a következő cikkeket:
 

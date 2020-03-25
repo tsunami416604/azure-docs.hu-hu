@@ -43,7 +43,7 @@ sections:
           - title: Erőforrások skálázása
             href: /azure/sql-database/sql-database-scale-resources
             html: '<p>Az Azure SQL Database segítségével további erőforrásokat (processzort, memóriát, tárterületet) is egyszerűen hozzáadhat, anélkül, hogy az üzembe helyezésük túl sok időt emésztene fel.</p>'
-  - title: További erőforrások
+  - title: További segédanyagok
     items:
       - type: paragraph
         text: 'Az Azure SQL-adatbázis további beépített PaaS-funkciók teljes készletét kínálja, amelyekkel könnyebben felügyelheti adatbázisait.'

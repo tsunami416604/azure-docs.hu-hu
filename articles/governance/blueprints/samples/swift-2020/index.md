@@ -4,10 +4,10 @@ description: A SWIFT CSP-CSCF v2020-tervminta áttekintése. Ennek a tervmintán
 ms.date: 09/24/2019
 ms.topic: sample
 ms.openlocfilehash: ee8670522bc4549dbb687a9ebe35bb20d53b0f17
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74546458"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020-tervminta áttekintése
@@ -18,7 +18,7 @@ A SWIFT CSP-CSCF v2020-tervminta az [Azure Policy](../../../policy/overview.md) 
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a legújabb SWIFT CSP-CSCF vezérlőit. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Áttekintette a SWIFT CSP-CSCF v2020-tervmintát. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 

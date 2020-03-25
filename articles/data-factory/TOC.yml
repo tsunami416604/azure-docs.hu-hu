@@ -8,7 +8,7 @@
       href: introduction.md
     - name: Az aktuális verzió összehasonlítása az 1.-vel
       href: compare-versions.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Adat-előállító létrehozása – felhasználói felület (UI)
@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Adatfolyam létrehozása
       href: data-flow-create.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Adatok másolása és betöltése
       items:
@@ -150,7 +150,7 @@
       href: concepts-pipelines-activities.md
     - name: Társított szolgáltatások
       href: concepts-linked-services.md
-    - name: Adathalmazok
+    - name: Adatkészletek
       href: concepts-datasets-linked-services.md
     - name: Folyamat futtatása és eseményindítók
       href: concepts-pipeline-execution-triggers.md

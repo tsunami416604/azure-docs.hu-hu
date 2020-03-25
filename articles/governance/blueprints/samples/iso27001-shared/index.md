@@ -4,10 +4,10 @@ description: Az ISO 27001 Megosztott szolgáltatások tervmintájának áttekint
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75922540"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Azure Blueprints Megosztott szolgáltatások tervmintájának áttekintése
@@ -44,7 +44,7 @@ A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitek
 
 További információért tekintse meg a [virtuális adatközpont dokumentációját](/azure/architecture/vdc/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel megismerte az ISO 27001 Megosztott szolgáltatások tervmintájának áttekintését és architektúráját.
 Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:

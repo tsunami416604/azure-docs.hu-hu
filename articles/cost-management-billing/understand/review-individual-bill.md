@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199126"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Oktatóanyag: Saját Azure-számla áttekintése
@@ -120,7 +120,7 @@ A költségelemzésben megjelenített költségeknek pontosan meg kell egyezniü
 
 ![A számlán feltüntetett használati díjak](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>A külső szolgáltatásokat külön számlázzuk
+## <a name="external-services-billed-separately"></a><a name="external"></a>A külső szolgáltatásokat külön számlázzuk
 
 A külső szolgáltatások vagy a piactér díjai olyan erőforrásokra vonatkoznak, amelyeket külső szoftverszállítók készítettek. Ezek az erőforrások az Azure Marketplace-ből érhetők el. A Barracuda-tűzfal például egy harmadik fél által kínált Azure Marketplace-erőforrás. A tűzfal és a hozzá tartozó mérőszámok összes díja külső szolgáltatási díjként jelenik meg.
 
@@ -149,7 +149,7 @@ A virtuális gép létrehozásakor minden mérőeszköz elkezd használati adato
 
 A számla összegének kiszámításához használt mérőeszközök a használati adatok CSV-fájljában láthatók.
 
-## <a name="payment"></a>A számla befizetése
+## <a name="pay-your-bill"></a><a name="payment"></a>A számla befizetése
 
 Ha hitelkártyás fizetést állít be fizetési módként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan felszámítja az összeget. A hitelkártya-kivonatban a költségsorban a következő szerepel: **MSFT Azure**.
 

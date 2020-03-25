@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 3480f60b354de94f604dab1ea1f16d3b0ad59379
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199347"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure-beli fenntartott VM-példányok által nem tartalmazott szoftverköltségek
@@ -21,7 +21,7 @@ A virtuális gép fenntartott példánya és az SQL számára fenntartott kapaci
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>A foglalási költség által nem tartalmazott Windows szoftverhasználat-mérők
 
-| MeterId | MeterName a használati fájlban | Felhasználó virtuális gép |
+| Fogyasztásmérő azonosítója | MeterName a használati fájlban | Felhasználó virtuális gép |
 | ------- | ------------------------| --- |
 | e7e152ac-f29c-4cce-ad6e-026192c01ef2 | Reservation-Windows Svr Burst (1 Core) | B sorozat |
 | cac255a2-9f0f-4c62-8bd6-f0fa449c5f76 | Reservation-Windows Svr Burst (2 Core) | B sorozat |
@@ -46,7 +46,7 @@ A virtuális gép fenntartott példánya és az SQL számára fenntartott kapaci
 
 ## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>A foglalási költség által nem tartalmazott felhőhasználati szoftverhasználat-mérők
 
-| MeterId | MeterName a használati fájlban |
+| Fogyasztásmérő azonosítója | MeterName a használati fájlban |
 | ------- | ------------------------|
 |ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Cloud Services 1 vCPU License|
 |e0434559-19ee-4132-9c46-05ad4044f3f7|Cloud Services 2 vCPU License|
@@ -62,7 +62,7 @@ A virtuális gép fenntartott példánya és az SQL számára fenntartott kapaci
 
 Az Azure RateCard API-n keresztül minden mérő díját lekérheti. Az Azure-beli mérők díjainak lekéréséhez szükséges információkért lásd az [Azure-előfizetésben használt erőforrások ár- és metaadat-információinak lekérése](/previous-versions/azure/reference/mt219004(v=azure.100)) részben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli foglalásokkal kapcsolatos további információkért olvassa el a következő cikkeket:
 
 - [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)

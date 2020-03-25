@@ -4,10 +4,10 @@ description: Az Azure Migrate-hez készült felhőbevezetési keretrendszer migr
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: 08171a39c83ea6822243d7239882a19b053f213e
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74545495"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Az Azure-beli migráláshoz készült Microsoft Cloud bevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése
@@ -38,7 +38,7 @@ A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitek
 
 További információ: [Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszere – Migrálás](/azure/architecture/cloud-adoption/migrate/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel megismerte a felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintését és architektúráját.
 

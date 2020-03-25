@@ -12,7 +12,7 @@
           items:
             - name: Beállítás - Azure Portal
               href: data-box-quickstart-portal.md
-        - name: Oktatóanyagok
+        - name: oktatóanyagokat
           items:
             - name: 1 – Rendelés
               href: data-box-deploy-ordered.md
@@ -62,7 +62,7 @@
               href: data-box-cable-options.md
             - name: Kapcsolatfelvétel a támogatási szolgáltatással
               href: data-box-disk-contact-microsoft-support.md
-            - name: Migrate (Áttelepítés)
+            - name: Migrálás
               items:
                 - name: A SharePoint Online-ba
                   href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
@@ -87,7 +87,7 @@
           items:
             - name: Beállítás - Azure Portal
               href: data-box-disk-quickstart-portal.md
-        - name: Oktatóanyagok
+        - name: oktatóanyagokat
           items:
             - name: 1 – Rendelés
               href: data-box-disk-deploy-ordered.md
@@ -135,7 +135,7 @@
           items:
             - name: Beállítás - Azure Portal
               href: data-box-heavy-quickstart-portal.md
-        - name: Oktatóanyagok
+        - name: oktatóanyagokat
           items:
             - name: 1 – Rendelés
               href: data-box-heavy-deploy-ordered.md
@@ -177,7 +177,7 @@
               href: data-box-how-to-set-data-tier.md
             - name: Kapcsolatfelvétel a támogatási szolgáltatással
               href: data-box-disk-contact-microsoft-support.md
-            - name: Migrate (Áttelepítés)
+            - name: Migrálás
               items:
                 - name: A SharePoint Online-ba
                   href: data-box-heavy-migrate-spo.md

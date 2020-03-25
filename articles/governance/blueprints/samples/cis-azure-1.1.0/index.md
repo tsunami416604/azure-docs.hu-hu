@@ -4,10 +4,10 @@ description: A CIS Microsoft Azure Foundations Benchmark tervmintájának áttek
 ms.date: 08/09/2019
 ms.topic: sample
 ms.openlocfilehash: 414c6d5a38821767dd43e62aa9f42edd8633dbe2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74544577"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintése
@@ -18,7 +18,7 @@ A CIS Microsoft Azure Foundations Benchmark-tervminta az [Azure Policy](../../..
 
 Az ajánlások leképezéséről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a CIS Microsoft Azure Foundations Benchmark 1.1.0-s verziójának különböző ajánlásait. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel megismerte a CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintését.
 Következő lépésként tekintse meg az alábbi cikkeket, amelyek az ajánlások leképezését ismertetik:
