@@ -7,7 +7,7 @@
       href: home.md
     - name: Újdonságok
       href: whats-new.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: A webes portál használata
       items:
@@ -45,7 +45,7 @@
           href: go-tutorial.md
         - name: Objektumészlelés
           href: go-tutorial-object-detection.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Vizuális állapotok jelentése IoT-eszközön
       href: iot-visual-alerts-tutorial.md

@@ -4,13 +4,13 @@
   items:
     - name: Mi az a feltételes hozzáférés?
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: A használati feltételek elfogadásának kötelezővé tétele
       href: require-tou.md
     - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
       href: app-sign-in-risk.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Azure Multi-Factor Authentication szükséges
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
@@ -92,7 +92,7 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration-mfa.md
-    - name: Hibaelhárítás
+    - name: Hibakeresés
       items:
         - name: Hibaelhárítás a Lehetőségelemzési eszközzel
           href: troubleshoot-conditional-access-what-if.md

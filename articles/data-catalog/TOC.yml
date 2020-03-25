@@ -4,17 +4,17 @@
   items:
     - name: Mi a Data Catalog?
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Azure Data Catalog létrehozása
       href: data-catalog-get-started.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Adategységek regisztrálása
       href: register-data-assets-tutorial.md
 - name: Alapelvek
   items:
-    - name: Gyakori forgatókönyvek
+    - name: Gyakori alkalmazási helyzetek
       href: data-catalog-common-scenarios.md
     - name: Támogatott adatforrások
       href: data-catalog-dsr.md
@@ -24,7 +24,7 @@
       href: data-catalog-prerequisites.md
     - name: GYIK
       href: data-catalog-frequently-asked-questions.md
-- name: Útmutató
+- name: 'Útmutató:'
   items:
     - name: Adatforrások regisztrálása
       href: data-catalog-how-to-register.md

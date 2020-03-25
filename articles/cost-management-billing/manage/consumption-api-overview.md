@@ -5,15 +5,14 @@ author: bandersmsft
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.workload: billing
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 68d838bf6d2df72299df2796f3cc47c463ba95be
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f2d7398be1db6760ebe532d3d726373d8c78e0c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200897"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202947"
 ---
 # <a name="azure-consumption-api-overview"></a>Az Azure-használati API áttekintése
 
@@ -156,6 +155,6 @@ Néhány forgatókönyv, amelyek a használati API-kkal válnak lehetségessé:
 -   **Azure-költségek a hónap során** – Eddig mennyit költöttem az aktuális hónapban? Változtatnom kell azon, mennyit költök az Azure-ra és/vagy hogyan használom? A hónap során mikor használom a legtöbbet az Azure-t?
 -   **Riasztások beállítása** – Szeretnék erőforrás-alapú használatot vagy pénzügyi alapú riasztásokat beállítani a költségvetés alapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure használatára vonatkozó programozott elemzések beszerzéséhez szükséges az Azure Billing API-k használatával kapcsolatban lásd [az Azure Billing API áttekintését](usage-rate-card-overview.md).

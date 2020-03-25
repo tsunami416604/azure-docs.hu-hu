@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c2e590f011c92df6aa942e8e1fc799023f15750f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200350"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237581"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k az Azure-foglalás automatizálásához
 
@@ -105,7 +105,7 @@ A foglalás hatóköre kiterjedhet egyetlen előfizetésre, egyetlen erőforrás
 
 A hatókör programozott módon történő módosításához használja a [Foglalás – Frissítés](/rest/api/reserved-vm-instances/reservation/update) API-t.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információk
 
 - [Mik azok az Azure-beli foglalások?](save-compute-costs-reservations.md)
 - [A virtuális gépek foglalására vonatkozó kedvezmény alkalmazásának ismertetése](../manage/understand-vm-reservation-charges.md)

@@ -12,7 +12,7 @@
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: Traffic Manager-profil létrehozása – Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Forgalom irányítása az alacsony késés érdekében
       href: tutorial-traffic-manager-improve-website-response.md
@@ -59,7 +59,7 @@
       href: traffic-manager-how-it-works.md
     - name: Gyakori kérdések
       href: traffic-manager-FAQs.md
-- name: Útmutató
+- name: 'Útmutató:'
   items:
     - name: Teljesítmény-centrikus útválasztás konfigurálása a Traffic Managerben
       href: traffic-manager-configure-performance-routing-method.md
@@ -119,14 +119,6 @@
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: Kapcsolódó témakörök
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: További források
   items:
     - name: Azure-ütemterv

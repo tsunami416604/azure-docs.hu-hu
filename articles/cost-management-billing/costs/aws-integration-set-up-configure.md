@@ -1,20 +1,18 @@
 ---
 title: Az AWS és az Azure Cost Management integrációjának beállítása
 description: Ez a cikk végigvezeti az AWS költség- és használati jelentésnek az Azure Cost Managementbe való integrálásának beállításán és konfigurálásán.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199993"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203083"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Az AWS költség- és használati jelentés integrálásának beállítása és konfigurálása
 
@@ -39,11 +37,11 @@ Az AWS számlázási és Cost Management-konzoljának **költség- és használa
 9. Az S3-tároló konfigurálására szolgáló párbeszédpanelen végezze el a következő feladatok egyikét:
     1. Válasszon ki egy meglévő tárolót a legördülő listából, majd válassza a **Next** (Tovább) lehetőséget.
     2. Adja meg a tároló nevét és a régiót, ahol létre kívánja hozni az új tárolót, majd kattintson a **Next** (Tovább) gombra.
-10. Jelölje be az **I have confirmed that this policy is correct** (Megerősítem, hogy ez a szabályzat helyes) lehetőséget, majd kattintson a **Save** (Mentés) parancsra.
-11. (Nem kötelező) A jelentés elérési útjának előtagjánál adja meg a jelentés nevének elejéhez hozzáadott előtagot.
+10.    Jelölje be az **I have confirmed that this policy is correct** (Megerősítem, hogy ez a szabályzat helyes) lehetőséget, majd kattintson a **Save** (Mentés) parancsra.
+11.    (Nem kötelező) A jelentés elérési útjának előtagjánál adja meg a jelentés nevének elejéhez hozzáadott előtagot.
 Ha nem ad meg előtagot, a rendszer az alapértelmezett előtagot tekinti a jelentéshez megadott névnek. A dátumtartomány formátuma: `/report-name/date-range/`.
 12. A **Time unit** (Időegység) beállításnál válassza az **Hourly** (Óránként) lehetőséget.
-13. A **Report versioning** (Jelentés verziószámozása) beállításnál válassza ki, hogy szeretné-e, hogy a jelentés minden egyes verziója felülírja az előző verziót, vagy további új jelentéseket szeretne létrehozni.
+13.    A **Report versioning** (Jelentés verziószámozása) beállításnál válassza ki, hogy szeretné-e, hogy a jelentés minden egyes verziója felülírja az előző verziót, vagy további új jelentéseket szeretne létrehozni.
 14. Az **Enable data integration for** (Adatintegráció engedélyezése a következőhöz) beállításnál semmit nem kell kiválasztania.
 15. A **Compression** (Tömörítés) beállításnál válassza a **GZIP** lehetőséget.
 16. Kattintson a **Tovább** gombra.
@@ -124,8 +122,8 @@ A szabályzat JSON-jának a következő példához hasonlóan kell kinéznie. Cs
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

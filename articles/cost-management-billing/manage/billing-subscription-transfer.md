@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245391"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238159"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -124,7 +124,7 @@ Az előfizetések Azure Portalon történő átadása az alábbi előfizetési t
 
 Ezek a gyakori kérdések azoknak a felhasználóknak szólnak, akik átadják egy Azure-előfizetés számlázási tulajdonjogát egy másik fióknak.
 
-### <a name="whoisaa"></a> Ki a fiók számlázási adminisztrátora?
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Ki a fiók számlázási adminisztrátora?
 
 A számlázási adminisztrátor az a személy, aki jogosult kezelni a fiók számlázási feladatait. Ő férhet hozzá a számlákhoz az [Azure Portalon](https://portal.azure.com), és ő végzi el a különböző számlázási feladatokat, mint az előfizetések létrehozása, a számlák áttekintése és kifizetése, valamint a fizetési módok frissítése.
 
@@ -206,15 +206,15 @@ A vállalati rendszergazda bármilyen fiók tulajdonjogát frissítheti, még az
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a id="no-button"></a> Miért nem látom Az előfizetés átadása gombot?
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> Miért nem látom Az előfizetés átadása gombot?
 
 Az önkiszolgáló előfizetés-átadási funkció nem érhető el a számlázási fiókjában. Jelenleg a nagyvállalati szerződéses (EA-) fiókok esetében nem támogatott az előfizetések számlázási tulajdonjogának átadása az Azure Portalon. Ezenkívül a Microsoft-képviselővel közösen létrehozott Microsoft-ügyfélszerződési fiókok nem támogatják a számlázási tulajdonjog átadását.
 
-### <a id="no-button"></a> Miért nem támogatja az előfizetési típusom az átadást?
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Miért nem támogatja az előfizetési típusom az átadást?
 
 Nem minden előfizetés-típus támogatja a számlázási tulajdonjog átadását. Az átadást támogató előfizetési típusok teljes listáját a [támogatott előfizetési típusokat](#supported-subscription-types) felsoroló témakörben tekintheti át.
 
-### <a id="no-button"></a> Miért jelenik meg hozzáférés megtagadva hiba, amikor megpróbálom átadni az előfizetés számlázási tulajdonjogát?
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Miért jelenik meg hozzáférés megtagadva hiba, amikor megpróbálom átadni az előfizetés számlázási tulajdonjogát?
 
 Akkor kapja ezt a hibaüzenetet, ha úgy próbálja átadni egy Microsoft Azure-csomag előfizetését, hogy nem rendelkezik a szükséges engedéllyel. A Microsoft Azure-csomag előfizetésének átadásához tulajdonosnak vagy közreműködőnek kell lennie abban a számlázási szakaszban, ahol az előfizetés számlái megjelennek. További információk: [A számlázási szakaszokhoz tartozó előfizetések kezelése](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 

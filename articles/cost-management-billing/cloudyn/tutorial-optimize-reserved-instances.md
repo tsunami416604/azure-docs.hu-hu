@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – Fenntartott példányok költségeinek optimalizálása a Cloudynnel – Azure
 description: Ebben az oktatóanyagban megismerheti, hogyan optimalizálhatja a fenntartott példányok költségeit az Azure-ban és az Amazon Web Servicesben (AWS).
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 22a435a63c4ff649fe428e031bca7beecdbc46d1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201118"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463713"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -36,6 +36,8 @@ Ez az oktatóanyag azt ismerteti, hogyan támogatja a Cloudyn az Azure-beli és 
 > * Nem használt foglalások módosítása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -215,7 +217,7 @@ Kattintson az első foglalási bejegyzéshez tartozó pluszjelre, majd állítsa
 
 A foglalás összes nem használt példánya teljes mértékben ki van használva, és 51 példány már nem igény szerint fut. Ebben a példában a vállalkozás pénzt takaríthat meg az igény szerinti használat jelentős csökkentésével és a már kifizetett foglalások kihasználásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 

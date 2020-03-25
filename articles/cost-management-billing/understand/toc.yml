@@ -1,7 +1,7 @@
 - name: Ismerkedés az Azure számlázási dokumentációjával
   href: index.yml
   items:
-    - name: Oktatóanyagok
+    - name: oktatóanyagokat
       items:
         - name: Az egyéni fiókhoz tartozó számla áttekintése
           href: review-individual-bill.md
@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: A Microsoft-partnerszerződéshez tartozó számla áttekintése
           href: review-partner-agreement-bill.md
+        - name: A nagyvállalati szerződéshez tartozó számla áttekintése
+          href: review-enterprise-agreement-bill.md
     - name: Alapelvek
       items:
         - name: Egyéni előfizetés – használattal kapcsolatos kifejezések

@@ -8,7 +8,7 @@
       href: app-service-linux-intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: .NET Core-alkalmazás létrehozása
@@ -27,7 +27,7 @@
       href: quickstart-docker.md
     - name: Többtárolós alkalmazás létrehozása
       href: quickstart-multi-container.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Adatbázist használó alkalmazás
       items:
@@ -176,7 +176,7 @@
         - name: Alkalmazás klónozása
           href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Erőforrások áthelyezése
-          href: '../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations'
+          href: '../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#checklist-before-moving-resources'
 - name: Referencia
   items:
     - name: Azure CLI
@@ -211,7 +211,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: Hibaelhárítás
+    - name: Hibakeresés
       items:
         - name: Hibaelhárítás a Visual Studióval
           href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

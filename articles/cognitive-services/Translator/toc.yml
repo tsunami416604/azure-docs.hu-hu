@@ -20,7 +20,7 @@
           href: quickstart-languages.md
         - name: Mondat hosszának meghatározása
           href: quickstart-sentences.md
-    - name: Oktatóanyagok
+    - name: oktatóanyagokat
       items:
         - name: 'Translator Textet használó WPF-alkalmazás létrehozása (C#)'
           href: tutorial-wpf-translation-csharp.md
@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: A dinamikus szótár funkció használata
           href: dynamic-dictionary.md
-        - name: Tárolók használata
-          items:
-            - name: Tárolók telepítése és futtatása
-              href: how-to-install-containers.md
-            - name: Tárolók konfigurálása
-              href: translator-text-container-config.md
         - name: Fordítás tűzfalak mögött
           href: firewalls.md
     - name: Példák
@@ -178,5 +172,7 @@
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Megfelelőség
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: Titkosítás
+          href: translator-encryption-of-data-at-rest.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

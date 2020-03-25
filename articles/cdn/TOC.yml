@@ -6,7 +6,7 @@
       href: cdn-overview.md
     - name: Termékjellemzők összehasonlítása
       href: cdn-features.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Profil és -végpont létrehozása
       href: cdn-create-new-endpoint.md
@@ -14,7 +14,7 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Profil létrehozása Azure Resource Manager-sablon használatával
       href: create-profile-resource-manager-template.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Az Azure CDN hozzáadása webalkalmazáshoz
       href: cdn-add-to-web-app.md

@@ -1,20 +1,20 @@
 ---
 title: Cloudyn-költségvetések kezelése az Azure-ban
 description: Ennek a cikknek a segítségével gyorsan létrehozhat költségvetéseket a Cloudynben, és megkezdheti a kezelésüket.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2f8fdbf2b470e9f1eb0d82c4c6de230c2a9e78f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201135"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464155"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Azure-költségvetések kezelése a Cloudynnel
 
@@ -27,6 +27,8 @@ A hozzárendelt költségvetésekhez kapcsolódóan meghatározhat küszöbért�
 A költségvetési jelentések a hozzárendelt költségvetést jelenítik meg. A felhasználók megtekinthetik, hogy a kiadásaik egy adott időszakban mikor lépik túl a felhasználást, mikor vannak alatta, vagy mikor egyeznek meg azzal. A költségvetési jelentések tetején található **Show/Hide Fields** (Mezők megjelenítése/elrejtése) elemmel tekintheti meg a költségeket, a költségvetést, a halmozott költségeket vagy a teljes költségvetést.
 
 Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. A Cost Management költségvetéseivel kapcsolatos további információkért tekintse meg a [költségvetések létrehozását és kezelését](../costs/tutorial-acm-create-budgets.md) ismertető cikket.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 

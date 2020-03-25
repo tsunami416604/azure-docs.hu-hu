@@ -4,7 +4,7 @@
   items:
     - name: Mik a virtuálisgép-méretezési csoportok?
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Létrehozás az Azure Portalon
@@ -19,7 +19,7 @@
           href: quick-create-template-linux.md
         - name: Windows méretezési csoport
           href: quick-create-template-windows.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – Méretezési csoport létrehozása/kezelése
       items:
@@ -135,6 +135,9 @@
         - name: Válasszon egy lemeztípust
           href: ../virtual-machines/windows/disks-types.md
           maintainContext: true
+        - name: Titkosítás
+          href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
+          maintainContext: true
         - name: Prémium szintű tárolási teljesítmény
           href: ../virtual-machines/windows/premium-storage-performance.md
           maintainContext: true
@@ -171,7 +174,7 @@
           maintainContext: true
     - name: Méretezési csoport – gyakran ismételt kérdések
       href: virtual-machine-scale-sets-faq.md
-- name: Útmutató
+- name: 'Útmutató:'
   items:
     - name: Tervezés és kialakítás
       items:

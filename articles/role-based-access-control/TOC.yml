@@ -7,11 +7,11 @@
       href: overview.md
     - name: A különböző szerepkörök ismertetése
       href: rbac-and-directory-admin-roles.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Felhasználó hozzáférésének megtekintése
       href: check-access.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Hozzáférés biztosítása felhasználó számára – Portal
       href: quickstart-assign-role-user-portal.md

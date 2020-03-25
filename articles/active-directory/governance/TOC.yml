@@ -9,7 +9,7 @@
       href: entitlement-management-overview.md
     - name: Mik azok a hozzáférési felülvizsgálatok?
       href: access-reviews-overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: Az első hozzáférési csomag létrehozása
@@ -36,7 +36,7 @@
   items:
     - name: Jogosultságkezelés
       items:
-        - name: Gyakori forgatókönyvek
+        - name: Gyakori alkalmazási helyzetek
           href: entitlement-management-scenarios.md
         - name: Rendszergazdák
           items:

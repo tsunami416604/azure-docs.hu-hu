@@ -7,7 +7,7 @@
       href: what-is-luis.md
     - name: Újdonságok
       href: whats-new.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Előre összeállított tartományalkalmazás létrehozása
       href: luis-get-started-create-app.md
@@ -33,7 +33,7 @@
           href: luis-get-started-get-intent-from-rest.md
         - name: Modell módosítása
           href: get-started-get-model-rest-apis.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Felbontható alkalmazás létrehozása
       items:
@@ -370,7 +370,7 @@
               href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python'
             - name: Példák
               href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
-- name: Kapcsolódó témakörök
+- name: Kapcsolódó
   items:
     - name: Azure Bot Service
       href: 'https://dev.botframework.com/'
@@ -401,13 +401,15 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Szószedet
       href: luis-glossary.md
-    - name: Hibaelhárítás
+    - name: Hibakeresés
       href: troubleshooting.md
       displayName: 'FAQ, import'
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Titkosítás
+      href: luis-encryption-of-data-at-rest.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

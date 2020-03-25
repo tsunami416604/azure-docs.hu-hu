@@ -16,7 +16,7 @@
       displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Virtuális gépek internetes forgalmának terheléselosztása
       href: tutorial-load-balancer-standard-manage-portal.md

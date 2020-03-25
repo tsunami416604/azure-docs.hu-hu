@@ -12,17 +12,19 @@ metadata:
   ms.author: markvi
   ms.date: 08/29/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2b29aaf88f0a7659fd3ceb58ddf3b762ee7646d3
-  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.openlocfilehash: 3d7248a09c0e9acc792bb0be80217f11a78ba73f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/29/2019
-  ms.locfileid: "70162500"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80048795"
 landingContent:
 - title: Az Azure Active Directory-jelentések és -monitorozás ismertetése
   linkLists:
   - linkListType: overview
     links:
+    - text: Mi az Azure Active Directory-jelentés?
+      url: overview-reports.md
     - text: Mit jelent az Azure Active Directory monitorozása?
       url: overview-monitoring.md
   - linkListType: concept

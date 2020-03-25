@@ -25,7 +25,7 @@
           href: redeploy-to-new-node-windows.md
     - name: Hálózati adapter alaphelyzetbe állítása
       href: reset-network-interface.md
-- name: Foglalási hibák elhárítása
+- name: Lefoglalási hibák elhárítása
   items:
     - name: Foglalási hibák
       href: allocation-failure.md

@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure Firewall Manager?
       href: overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: A virtuális WAN biztonságossá tétele – portál

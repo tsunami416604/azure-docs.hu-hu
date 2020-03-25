@@ -5,7 +5,7 @@
   items:
     - name: Mi az a Face szolgáltatás?
       href: Overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Az ügyfél-SDK használata
       items:
@@ -37,7 +37,7 @@
               href: QuickStarts/Python.md
             - name: Ruby
               href: QuickStarts/Ruby.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Az ügyfél-SDK használata
       items:
@@ -115,5 +115,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Titkosítás
+      href: face-encryption-of-data-at-rest.md
     - name: Kibocsátási megjegyzések
       href: ReleaseNotes.md

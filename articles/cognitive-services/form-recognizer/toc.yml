@@ -7,7 +7,7 @@
       href: overview.md
     - name: Újdonságok
       href: whats-new.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expaned: true
   items:
     - name: Mintacímkézési eszköz használata
@@ -38,7 +38,7 @@
               href: quickstarts/python-layout.md
     - name: A .NET SDK használata
       href: quickstarts/dotnet-sdk.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: A Form Recognizer használata a Logic Appsszel
       href: tutorial-form-recognizer-with-logic-apps.md

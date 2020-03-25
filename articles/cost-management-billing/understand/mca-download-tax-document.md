@@ -10,11 +10,11 @@ ms.date: 02/10/2020
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: dacae693020fea2f77a80b5b8bad44a07e471367
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200197"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237921"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Az Azure-számla adózási dokumentumainak megtekintése és letöltése
 
@@ -22,7 +22,7 @@ Ha hozzáférése van az Azure Portalon található számlákhoz, letöltheti az
 
 ## <a name="view-and-download-tax-documents"></a>Adózási dokumentumok megtekintése és letöltése
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 1. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt.
 1. A bal oldali menüben válassza a **Számlázás** területen lévő **Számlák** elemet.
@@ -33,7 +33,7 @@ Ha hozzáférése van az Azure Portalon található számlákhoz, letöltheti az
 ## <a name="check-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Microsoft Azure-számla megtekintése és letöltése](download-azure-invoice.md)
 - [A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése](download-azure-daily-usage.md)

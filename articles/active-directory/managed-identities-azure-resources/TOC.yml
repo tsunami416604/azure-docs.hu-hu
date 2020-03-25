@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók az Azure-erőforrások felügyelt identitásairól
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Virtuális géphez tartozó felügyelt identitás használata az Azure Resource Manager eléréséhez
       items:
@@ -12,7 +12,7 @@
           href: tutorial-windows-vm-access-arm.md
         - name: Linux rendszerű virtuális gép
           href: tutorial-linux-vm-access-arm.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Windows VM/VMSS
       items:

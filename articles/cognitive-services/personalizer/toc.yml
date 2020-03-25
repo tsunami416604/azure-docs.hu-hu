@@ -9,11 +9,11 @@
     - name: Újdonságok
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Az SDK használata
       href: sdk-learning-loop.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Az Azure Notebooks használata
       href: tutorial-use-azure-notebook-generate-loop-data.md
@@ -101,12 +101,14 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: További források
   items:
-    - name: Hibaelhárítás
+    - name: Hibakeresés
       href: troubleshooting.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Titkosítás
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure-ütemterv
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: Díjszabás

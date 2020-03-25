@@ -6,7 +6,7 @@
       href: dns-overview.md
     - name: Mi az Azure Private DNS?
       href: private-dns-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Nyilvános DNS
@@ -25,7 +25,7 @@
           href: private-dns-getstarted-cli.md
         - name: Magánzóna létrehozása – PowerShell
           href: private-dns-getstarted-powershell.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Nyilvános DNS
       items:
@@ -157,22 +157,6 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: Kapcsolódó témakörök
-  items:
-    - name: Privát kapcsolat
-      href: ../private-link/private-link-overview.md
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: Virtuális gép
-      href: /azure/virtual-machines/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: Webalkalmazások
-      href: /azure/app-service/
 - name: További források
   items:
     - name: Azure-ütemterv

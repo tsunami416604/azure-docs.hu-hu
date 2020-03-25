@@ -8,7 +8,7 @@
       href: ./chef-habitat-overview.md
     - name: InSpec az Azure-on – Tudnivalók
       href: ./chef-inspec-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Chef
@@ -16,7 +16,7 @@
       items:
         - name: A Chef telepítése az Azure Portal használatával
           href: ./chef-extension-portal.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Chef
       items:

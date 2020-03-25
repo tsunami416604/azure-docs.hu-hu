@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200948"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Díjak elkerülése az ingyenes Azure-fiókkal
@@ -37,7 +37,7 @@ Miután frissítette a fiókját, az olyan szolgáltatások használatáért, am
 
 Az ingyenes szolgáltatások és mennyiségek igénybevételi joga a 12 hónap elteltével lejár. Az Azure Portalon megtekintheti az ingyenes szolgáltatások lejáratának dátumát.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. A navigációs terület bal oldalán válassza ki a **Minden szolgáltatás** elemet.
 
@@ -56,5 +56,5 @@ Az ingyenes szolgáltatások és mennyiségek lejárata után az esetlegesen has
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Ingyenes Azure-fiók frissítése](upgrade-azure-subscription.md)

@@ -4,7 +4,7 @@
   items:
     - name: Az Azure Cache for Redis névjegye
       href: cache-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: ASP.NET-alkalmazás
@@ -19,7 +19,7 @@
       href: cache-nodejs-get-started.md
     - name: Python-alkalmazás
       href: cache-python-get-started.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: A gyorsítótárazás és a ranglisták együttes használata
       href: cache-web-app-cache-aside-leaderboard.md
@@ -33,6 +33,10 @@
       href: cli-samples.md
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Feladatátvétel és javítás
       href: cache-failover.md
     - name: Ajánlott eljárások
@@ -41,10 +45,10 @@
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Útmutatók
   items:
-    - name: Felkészülés
+    - name: Csomag
       items:
         - name: Gyorsítótárszint kiválasztása
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: A gyorsítótár elosztása klaszterezéssel
           href: cache-how-to-premium-clustering.md
         - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával
@@ -93,7 +97,7 @@
           href: cache-how-to-redis-cli-tool.md
         - name: A TLS 1.0 és 1.1 eltávolítása
           href: cache-remove-tls-10-11.md
-    - name: Figyelés
+    - name: Monitoring
       items:
         - name: Monitorozás az Azure Portalon
           href: cache-how-to-monitor.md
