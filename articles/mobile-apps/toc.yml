@@ -8,7 +8,7 @@
       href: front-end-development-platform.md
     - name: Mobilalkalmazások megtervezése és kialakítása háttérszolgáltatásokkal
       items:
-        - name: Hitelesítés
+        - name: Authentication
           href: authentication.md
         - name: Adattárolás
           href: data-storage.md

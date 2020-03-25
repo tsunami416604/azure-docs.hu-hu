@@ -8,7 +8,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: REST API
       items:
@@ -28,7 +28,7 @@
       items:
         - name: Bing Image Search-ügyfélkódtár
           href: ./quickstarts/client-libraries.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Képkeresési webalkalmazás létrehozása
       href: tutorial-bing-image-search-single-page-app.md

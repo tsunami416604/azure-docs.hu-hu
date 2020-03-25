@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201033"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrálás Nagyvállalati Szerződésről Microsoft Customer Agreement API-kra
@@ -127,7 +127,7 @@ A Usage Details API az összes Cost Management API-hoz hasonlóan több hatókö
 | --- | --- |
 | Számlázási fiók | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Számlázási profil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| Előfizetés | `/subscriptions/{subscriptionId}` |
+| Előfizetést | `/subscriptions/{subscriptionId}` |
 | Erőforráscsoport | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
 A következő lekérdezésisztring-paraméterekkel frissítse a programozási kódokat.
@@ -175,26 +175,26 @@ A használati rekordok tömbjét tartalmazó tulajdonságnév adatról _értékr
 | ChargesBilledSeparately | isAzureCreditEligible | Vegye figyelembe, hogy ezek a tulajdonságok egymás ellentétei. Ha az isAzureCreditEnabled értéke igaz, akkor a ChargesBilledSeparately hamis. |
 | ConsumedQuantity | quantity | &nbsp; |
 | ConsumedService | consumedService | A pontos sztringértékek eltérhetnek. |
-| ConsumedServiceId | None | &nbsp; |
+| ConsumedServiceId | Nincs | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date és usageStartDate | dátum | &nbsp;  |
-| Day | None | A napot elemzi a dátumból. |
+| Day | Nincs | A napot elemzi a dátumból. |
 | DepartmentId | invoiceSectionId | A pontos értékek eltérhetnek. |
 | DepartmentName | invoiceSectionName | A pontos sztringértékek eltérhetnek. Szükség esetén konfigurálja úgy a számlázási szakaszokat, hogy megfeleljenek a részlegeknek. |
 | ExtendedCost és Cost | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| Ismétlődő költség | None | &nbsp;  |
+| Ismétlődő költség | Nincs | &nbsp;  |
 | Hely | location | &nbsp;  |
 | MeterCategory | meterCategory | A pontos sztringértékek eltérhetnek. |
-| MeterId | meterId | A pontos sztringértékek eltérőek. |
+| Fogyasztásmérő azonosítója | meterId | A pontos sztringértékek eltérőek. |
 | MeterName | meterName | A pontos sztringértékek eltérhetnek. |
 | MeterRegion | meterRegion | A pontos sztringértékek eltérhetnek. |
 | MeterSubCategory | meterSubCategory | A pontos sztringértékek eltérhetnek. |
-| Month | None | A hónapot elemzi a dátumból. |
-| Offer Name | None | Használja a következőt: publisherName és productOrderName. |
-| OfferID | None | &nbsp;  |
-| Order Number | None | &nbsp;  |
-| PartNumber | None | Használja meterId azonosítót és productOrderName nevet az árak egyedi azonosításához. |
+| Month | Nincs | A hónapot elemzi a dátumból. |
+| Offer Name | Nincs | Használja a következőt: publisherName és productOrderName. |
+| OfferID | Nincs | &nbsp;  |
+| Order Number | Nincs | &nbsp;  |
+| PartNumber | Nincs | Használja meterId azonosítót és productOrderName nevet az árak egyedi azonosításához. |
 | Plan Name | productOrderName | &nbsp;  |
 | Product | Product |   |
 | ProductId | productId | A pontos sztringértékek eltérőek. |
@@ -202,7 +202,7 @@ A használati rekordok tömbjét tartalmazó tulajdonságnév adatról _értékr
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | A pontos sztringértékek eltérőek. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | None | &nbsp;  |
+| ResourceLocationId | Nincs | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
 | ServiceAdministratorId | N/A | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
@@ -216,7 +216,7 @@ A használati rekordok tömbjét tartalmazó tulajdonságnév adatról _értékr
 | Címkék | tags | A címkék tulajdonság a gyökérszintű objektumra vonatkozik, nem a beágyazott tulajdonságok tulajdonságra. |
 | UnitOfMeasure | unitOfMeasure | A pontos sztringértékek eltérőek. |
 | usageEndDate | dátum | &nbsp;  |
-| Year | None | Az évet elemzi a dátumból. |
+| Year | Nincs | Az évet elemzi a dátumból. |
 | (új) | billingCurrency | A díjhoz használt pénznem. |
 | (új) | billingProfileId | A számlázási profil (a regisztráció) egyedi azonosítója. |
 | (új) | billingProfileName | A számlázási profil (a regisztráció) neve. |
@@ -531,6 +531,6 @@ Az Azure Cost Management a következőket teszi lehetővé:
 
 A költségek jelentéséhez a Power BI-t is használhatja. A Power BI Desktophoz készült [Azure Cost Management-összekötővel](/power-bi/desktop-connect-azure-cost-management) hatékony, személyre szabott jelentéseket hozhat létre, amelyek segítségével jobban megismerheti az Azure-beli kiadásait. Az Azure Cost Management-összekötő jelenleg a Microsoft Ügyfélszerződéssel és a Nagyvállalati Szerződéssel (EA) rendelkező ügyfeleket támogatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli költségek monitorozásáról és szabályozásáról a [Cost Management dokumentációjában](../index.yml) olvashat. Továbbá azt is megtudhatja, hogyan optimalizálhatja az erőforrás-használatot a Cost Managementtel.

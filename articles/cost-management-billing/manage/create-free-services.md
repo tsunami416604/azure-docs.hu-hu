@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 1d2c4ed141aeff97f5987b0b23ff1e6201e53c6a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200880"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ingyenes Azure-fiókhoz tartozó szolgáltatások létrehozása
@@ -34,6 +34,6 @@ Több szolgáltatáspéldányt is létrehozhat ingyenesen, ha a használat össz
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg [az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használata ellenőrzésének](check-free-service-usage.md) módját.
 - Tudja meg, [hogyan kerülheti el, hogy díjak merüljenek fel ingyenes Azure-fiókja használatakor](avoid-charges-free-account.md).

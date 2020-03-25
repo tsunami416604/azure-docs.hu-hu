@@ -1,19 +1,18 @@
 ---
 title: Gyakran használt költségelemzési megoldások az Azure Cost Managementben
 description: Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori költségelemzési feladatok esetében az Azure Cost Managementben.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 901f271ac401cb985e59c434b9e6d7f8db03889f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562581"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203100"
 ---
 # <a name="common-cost-analysis-uses"></a>Gyakran használt költségelemzési megoldások
 

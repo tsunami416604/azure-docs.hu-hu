@@ -9,16 +9,16 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 02/23/2020
 ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78898609"
 ---
 # <a name="scheduler-documentation"></a>A Scheduler dokumentációja
 
 > [!IMPORTANT]
-> Az Azure Scheduler [kivezetése folyamatban van](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date), a helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Ha továbbra is használni szeretné a Schedulerben beállított feladatokat, minél előbb [migrálja őket az Azure Logic Appsbe](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Az Azure Scheduler [kivezetése folyamatban van](../logic-apps/logic-apps-overview.md), a helyébe az [Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) lép. Ha továbbra is használni szeretné a Schedulerben beállított feladatokat, minél előbb [migrálja őket az Azure Logic Appsbe](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 >
 > A Scheduler ezentúl nem lesz elérhető az Azure Portalon, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg még elérhetők maradnak, így továbbra is kezelheti feladatait és feladatgyűjteményeit.
 

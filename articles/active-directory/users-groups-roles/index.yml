@@ -13,10 +13,10 @@ metadata:
   author: curtand
   ms.author: curtand
   ms.openlocfilehash: 242bbfa3143827162b087e231d99b6de451d4908
-  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/04/2020
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "78272991"
 landingContent:
 - title: Információk a felhasználókról, csoportokról, szerepkörökről és licencekről
@@ -33,7 +33,7 @@ landingContent:
       url: roles-concept-delegation.md
     - text: Azure RBAC-szerepkörök és Azure AD-rendszergazdai szerepkörök összehasonlítása
       url: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
-- title: Bevezetés
+- title: Első lépések
   linkLists:
   - linkListType: quickstart
     links:

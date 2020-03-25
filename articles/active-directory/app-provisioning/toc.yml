@@ -5,7 +5,7 @@
   items:
     - name: Mit jelent az alkalmazások üzembe helyezése?
       href: user-provisioning.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: G Suite
       href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

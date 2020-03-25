@@ -28,7 +28,7 @@
       href: quickstarts/csharp-sdk.md
     - name: Indítás
       href: quickstarts/go-sdk.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Egyoldalas webalkalmazás
       href: tutorials/autosuggest.md

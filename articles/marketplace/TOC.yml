@@ -34,7 +34,7 @@
               href: ./marketplace-managed-apps.md
             - name: SaaS-alkalmazások
               href: ./marketplace-saas-applications-technical-publishing-guide.md
-            - name: Containers
+            - name: Tárolók
               href: ./marketplace-containers.md
             - name: IoT Edge-modulok
               href: ./iot-edge-module.md
@@ -401,7 +401,7 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
         - name: Előfeltételek
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: Megfontolandó szempontok
+        - name: Megfontolások
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
         - name: Egyidejűség-vezérlés
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md

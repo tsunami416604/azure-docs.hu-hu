@@ -4,13 +4,13 @@
   items:
     - name: Mi az Azure Database Migration Service?
       href: dms-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Szolgáltatás létrehozása – Portál
       href: quickstart-create-data-migration-service-portal.md
     - name: Szolgáltatás létrehozása hibrid módban – Portál
       href: quickstart-create-data-migration-service-hybrid-portal.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: SQL Server offline migrálása önálló Azure SQL DB-adatbázisba
       href: tutorial-sql-server-to-azure-sql.md

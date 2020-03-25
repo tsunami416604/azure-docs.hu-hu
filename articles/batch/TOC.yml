@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Batch?
       href: batch-technical-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Batch-feladat futtatása – parancssori felület
@@ -15,7 +15,7 @@
       href: quick-run-dotnet.md
     - name: Batch-feladat futtatása – Python
       href: quick-run-python.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Párhuzamos fájlfeldolgozás – .NET
       href: tutorial-parallel-dotnet.md
@@ -55,7 +55,7 @@
       href: batch-retry-after-errors.md
     - name: Ajánlott eljárások
       href: best-practices.md
-    - name: Kvóták és korlátok
+    - name: Kvóták és korlátozások
       href: batch-quota-limit.md
     - name: Támogatott virtuálisgép-méretek
       href: batch-pool-vm-sizes.md

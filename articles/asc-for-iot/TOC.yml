@@ -18,7 +18,7 @@
           href: iot-hub-integration.md
         - name: Biztonsági ügynökök
           href: security-agents.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Az Azure Security Center for IoT előkészítése az IoT Hubban

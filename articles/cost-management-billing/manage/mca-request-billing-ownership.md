@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200727"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Azure-előfizetések számlázási tulajdonjogának beszerzése más fiókoktól
 
 Az Azure-előfizetések számlázási tulajdonjogának átvételére akkor lehet szükség, ha a meglévő számlázási tulajdonos elhagyja a szervezetet, vagy ha a saját számlázási fiókján keresztül szeretné fizetni az előfizetéseket. A tulajdonjog átadásával az Ön fiókjára hárul az előfizetések számlázásának felelőssége.
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-for-access).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-for-access).
 
 Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **számlaszakaszok közreműködői** igényelhetnek. További tudnivalókért lásd a [számlaszakaszokra vonatkozó szerepkörök feladatait](understand-mca-roles.md#invoice-section-roles-and-tasks).
 
@@ -50,7 +50,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 
 6. A bal oldalon válassza a **Számlaszakaszok** lehetőséget.
 
-    ![Képernyőkép a számlaszakaszok kiválasztásáról](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
+    ![Képernyőkép a számlázási szakaszok kiválasztásáról](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
 7. Válasszon egy számlaszakaszt a listából. Az előfizetések használata a tulajdonjog átvétele után a számlázási profil számlájának ehhez a szakaszához lesz hozzárendelve.
 
@@ -72,7 +72,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 
 ## <a name="check-the-transfer-request-status"></a>Az átadási kérelem állapotának ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -88,7 +88,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 
 6. A bal oldalon válassza a **Számlaszakaszok** lehetőséget.
 
-    ![Képernyőkép a számlaszakaszok kiválasztásáról](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
+    ![Képernyőkép a számlázási szakaszok kiválasztásáról](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
 7. Válassza ki a listából a számlaszakaszt, amelyre az elküldött átadási kérelem vonatkozik.
 
@@ -100,7 +100,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
    |---------|---------|
    |Kérelem dátuma|Az átadási kérelem elküldésének dátuma|
    |Címzett|A felhasználó e-mail-címe, ahová a számlázási tulajdonjog átadásának kérése el lett küldve|
-   |Lejárat dátuma|A kérelem lejáratának dátuma|
+   |Lejárati dátum|A kérelem lejáratának dátuma|
    |status|Az átadási kérelem állapota|
 
     Az átadási kérelem állapota a következők egyike lehet:
@@ -206,7 +206,7 @@ A SaaS-termékek nem adhatók át az előfizetésekkel együtt. Kérje meg a fel
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-előfizetések számlázási tulajdonjoga átadódik az Ön számlaszakaszába. Az ezen előfizetésekre vonatkozó díjak alakulását nyomon követheti az [Azure Portalon](https://portal.azure.com).
 - Engedélyt adhat másoknak is, hogy megtekintsék és kezeljék ezen előfizetések számlázását. További információkért lásd [a számlaszakasz szerepköreit és azok feladatait](understand-mca-roles.md#invoice-section-roles-and-tasks) ismertető részt.

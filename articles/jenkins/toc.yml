@@ -4,12 +4,12 @@
   items:
     - name: A Jenkins az Azure-on
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Jenkins-kiszolgáló létrehozása
       href: install-solution-template-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1. Telepítés
       items:

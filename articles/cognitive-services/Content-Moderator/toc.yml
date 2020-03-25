@@ -6,7 +6,7 @@
     - name: Mi a Content Moderator?
       href: overview.md
       expanded: true
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: A Content Moderator kipróbálása az interneten
       href: quick-start.md
@@ -18,7 +18,7 @@
           href: python-sdk-quickstart.md
         - name: A Java SDK használata
           href: java-sdk-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: E-kereskedelmi képek moderálása
       href: ecommerce-retail-catalog-moderation.md
@@ -134,3 +134,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Titkosítás
+      href: content-moderator-encryption-of-data-at-rest.md

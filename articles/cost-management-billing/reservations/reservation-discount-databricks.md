@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200316"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Az előzetes Azure Databricks-vásárlásért járó kedvezmény alkalmazásának módja
@@ -46,7 +46,7 @@ Ha előzetes vásárlási kedvezmény vonatkozik a Databricks-használatra, a ha
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](manage-reserved-vm-instance.md) szakaszt.
 - Az Azure Databricks-egységek előzetes vásárlásával történő megtakarításra vonatkozó információkért tekintse meg az [Azure Databricks-költségek előzetes vásárlással történő optimalizálását](prepay-databricks-reserved-capacity.md) ismertető szakaszt.

@@ -8,7 +8,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Egyéni keresési példány létrehozása
@@ -29,7 +29,7 @@
           items:
             - name: Bing Custom Search-ügyfélkódtárak
               href: ./quickstarts/client-libraries.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Custom Search-webhely létrehozása
       href: ./tutorials/custom-search-web-page.md

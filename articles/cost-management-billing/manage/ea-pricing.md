@@ -10,10 +10,10 @@ ms.date: 02/14/2020
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 1dd0dfad0c68e18ae272d5d94fedd67d24be9ae1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200778"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>A cég vagy intézmény Azure-díjszabásának megtekintése és letöltése
@@ -45,7 +45,7 @@ Ha MCA-val rendelkezik, a díjszabás megtekintéséhez és letöltéséhez a sz
 
 ### <a name="download-price-sheets-for-billed-charges"></a>A számlázott díjak árlistáinak letöltése
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
 1. Válassza ki a **Számlák** elemet.
@@ -62,7 +62,7 @@ Ha MCA-val rendelkezik, a díjszabás megtekintéséhez és letöltéséhez a sz
 
 Ha rendelkezik MCA-val, letöltheti az aktuális számlázási időszakra vonatkozó díjszabást.
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
 1. Az **Áttekintés** területen keresse meg a letöltési hivatkozásokat az aktuális havi díjak alatt.
@@ -88,7 +88,7 @@ A szervezete díjszabásának használatával megbecsülheti a költségeket az 
 ## <a name="check-your-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön EA-ügyfél, tekintse meg a következő cikkeket:
 

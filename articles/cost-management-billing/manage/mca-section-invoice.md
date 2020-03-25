@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200744"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>A költségek rendszerezése a számlázási fiók testreszabásával
 
 A Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal rugalmasan rendszerezheti a költségeit az igényeinek megfelelően, például részleg, projekt vagy fejlesztési környezet szerint.
 
-Ez a cikk azt ismerteti, hogyan rendszerezheti a költségeit az Azure Portal használatával. A Microsoft Ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk azt ismerteti, hogyan rendszerezheti a költségeit az Azure Portal használatával. A Microsoft Ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>A fiók strukturálása számlázási profilok és számlaszakaszok segítségével
 
@@ -70,7 +70,7 @@ Ez a szakasz a költségek rendszerezésével és a hozzájuk tartozó számláz
 
 Számlázási szakasz létrehozásához a **számlázási profil tulajdonosának** vagy a **számlázási profil közreműködőjének** kell lennie. További információkért lásd [a számlázási profil számlázási szakaszainak kezelését](understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -98,7 +98,7 @@ Számlázási profil létrehozásához a **számlázási fiók tulajdonosának**
 >
 > A további számlázási profilok létrehozása hatással lehet a teljes költségre. További információért tekintse meg [az új számlázási profilok hozzáadásakor megfontolandó szempontokat](#things-to-consider-when-adding-new-billing-profiles).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -131,7 +131,7 @@ Miután az igényeinek megfelelően személyre szabta a számlázási fiókot, a
 
 ### <a name="link-a-new-subscription"></a>Új előfizetés csatolása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Keressen rá az **Előfizetések** kifejezésre.
 
@@ -151,7 +151,7 @@ Miután az igényeinek megfelelően személyre szabta a számlázási fiókot, a
 
 7. Válasszon ki egy Azure-csomagot, és adjon egy felhasználóbarát nevet az előfizetésnek.
 
-9. Kattintson a **Create** (Létrehozás) gombra.  
+9. Kattintson a  **Create** (Létrehozás) gombra.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Meglévő előfizetések és termékek csatolása
 
@@ -161,7 +161,7 @@ Ha már rendelkezik Azure-előfizetésekkel vagy egyéb termékekkel (például 
 >
 > Az előfizetések és egyéb termékek csak olyan számlaszakaszok között helyezhetők át, amelyek ugyanahhoz a számlázási profilhoz tartoznak. Az előfizetések és termékek áthelyezése nem támogatott olyan számlaszakaszok között, amelyek különböző számlázási profilokhoz tartoznak.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -236,7 +236,7 @@ A fenti képen a Contoso két előfizetéssel rendelkezik. Az Azure-foglalási k
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További Azure-előfizetés létrehozása a Microsoft-ügyfélszerződésben](create-subscription.md)
 - [Számlázási szerepkörök kezelése az Azure Portalon](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)

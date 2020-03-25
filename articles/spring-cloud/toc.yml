@@ -5,7 +5,7 @@
   items:
     - name: Mi az az Azure Spring Cloud?
       href: spring-cloud-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Spring Cloud-alkalmazás indítása a portál használatával
@@ -16,7 +16,7 @@
       href: spring-cloud-launch-from-source.md
     - name: Spring Cloud-alkalmazás indítása Maven használatával
       href: spring-cloud-quickstart-launch-app-maven.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Java Spring-alkalmazás előkészítése üzembe helyezéshez
       href: spring-cloud-tutorial-prepare-app-deployment.md

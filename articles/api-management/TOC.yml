@@ -8,14 +8,14 @@
       href: api-management-features.md
     - name: AKS-ben üzembe helyezett mikroszolgáltatások kezelése
       href: api-management-kubernetes.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Példány létrehozása – Portal
       href: get-started-create-service-instance.md
     - name: Példány létrehozása – PowerShell
       href: powershell-create-service-instance.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – Az első API importálása
       href: import-and-publish.md
@@ -37,7 +37,7 @@
       href: api-management-howto-developer-portal-customize.md
 - name: Példák
   items:
-    - name: Házirendek
+    - name: Szabályzatok
       href: policy-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -45,7 +45,7 @@
   items:
     - name: Terminológia
       href: api-management-terminology.md
-    - name: Házirendek
+    - name: Szabályzatok
       items:
         - name: Áttekintés
           href: api-management-howto-policies.md

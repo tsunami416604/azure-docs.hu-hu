@@ -2,14 +2,14 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Az Azure Sentinel előkészítése
       href: quickstart-onboard.md
     - name: Áttekinthető riasztások
       href: quickstart-get-visibility.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Fenyegetésészlelés a beépített elemzésekkel
       href: tutorial-detect-threats-built-in.md

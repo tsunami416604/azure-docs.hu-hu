@@ -4,7 +4,7 @@
   items:
     - name: A Spatial Anchors ismertetése
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Unity-alkalmazás létrehozása
@@ -30,7 +30,7 @@
           href: quickstarts/get-started-xamarin-android.md
         - name: iOS
           href: quickstarts/get-started-xamarin-ios.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Megosztás munkamenetek és eszközök között
       href: tutorials/tutorial-share-anchors-across-devices.md
@@ -78,7 +78,7 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Alapelvek
   items:
-    - name: Hitelesítés
+    - name: Authentication
       href: concepts/authentication.md
     - name: Kapcsolatok horgonyzása
       href: concepts/anchor-relationships-way-finding.md

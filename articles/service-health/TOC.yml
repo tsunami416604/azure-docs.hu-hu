@@ -16,7 +16,7 @@
       href: service-health-overview.md
     - name: Resource Health
       href: resource-health-overview.md
-- name: Útmutató
+- name: 'Útmutató:'
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
       href: alerts-activity-log-service-notifications.md

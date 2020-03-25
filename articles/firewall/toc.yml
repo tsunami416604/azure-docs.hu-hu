@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Firewall?
       href: overview.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: Üzembe helyezés és konfigurálás

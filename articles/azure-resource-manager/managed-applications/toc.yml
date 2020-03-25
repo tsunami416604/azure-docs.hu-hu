@@ -4,14 +4,14 @@
   items:
     - name: Tudnivalók a felügyelt alkalmazásokról
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Alkalmazásdefiníció közzététele
       href: publish-managed-app-definition-quickstart.md
     - name: Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése
       href: deploy-service-catalog-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Definíciós fájlok létrehozása
       href: publish-service-catalog-app.md
@@ -102,7 +102,7 @@
               href: microsoft-common-textblock.md
             - name: TextBox
               href: microsoft-common-textbox.md
-        - name: Compute
+        - name: Számítás
           items:
             - name: CredentialsCombo
               href: microsoft-compute-credentialscombo.md
@@ -114,13 +114,13 @@
           items:
             - name: IdentitySelector
               href: microsoft-managedidentity-identityselector.md
-        - name: Network (Hálózat)
+        - name: Hálózat
           items:
             - name: PublicIPAddressCombo
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Storage
+        - name: Tárterület
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md

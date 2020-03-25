@@ -4,10 +4,10 @@ description: A FedRAMP High-tervminta áttekintése. Ennek a tervmintának a seg
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: dede255b73a2a052acf1e8b95ad5171a1ace6ae5
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "77087289"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP High-tervminta áttekintése
@@ -18,7 +18,7 @@ A FedRAMP High-tervminta az [Azure Policy](../../../policy/overview.md) használ
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a FedRAMP High különböző vezérlőit. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel áttekintette a FedRAMP High-tervminta részleteit. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 

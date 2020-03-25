@@ -6,7 +6,7 @@
       href: v2-overview.md
     - name: A Microsoft identitásplatformjának fejlődése
       href: about-microsoft-identity-platform.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Bérlő beállítása
@@ -64,7 +64,7 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konzol-démon
           href: quickstart-v2-python-daemon.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Egyoldalas alkalmazások
       displayName: SPA
@@ -433,7 +433,7 @@
       items:
         - name: Áttekintés
           href: authentication-national-cloud.md
-        - name: Hitelesítés
+        - name: Authentication
           href: msal-national-cloud.md
     - name: A felhasználók automatikus átadása (SCIM)
       items:
@@ -443,7 +443,7 @@
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
 - name: Útmutatók
   items:
-    - name: Hitelesítés
+    - name: Authentication
       items:
         - name: Szerepkörjogcím konfigurálása
           href: active-directory-enterprise-app-role-management.md

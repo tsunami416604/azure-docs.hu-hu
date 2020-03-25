@@ -4,12 +4,12 @@
   items:
     - name: Az Azure Digital Twins bemutatása
       href: about-digital-twins.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Szabad szobák keresése
       href: quickstart-view-occupancy-dotnet.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Épület monitorozása a Digital Twins segítségével
       items:
@@ -74,7 +74,7 @@
 - name: További források
   expanded: true
   items:
-    - name: Fejlesztői erőforrások
+    - name: Fejlesztői forrásanyagok
       items:
         - name: Azure Digital Twins Graph Viewer
           href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'

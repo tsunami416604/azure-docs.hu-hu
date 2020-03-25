@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Démon vagy kiszolgálóalkalmazás
           href: service-to-service.md
-    - name: Hitelesítés
+    - name: Authentication
       items:
         - name: Hitelesítési alapok
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: Útmutatók
   items:
-    - name: Hitelesítés
+    - name: Authentication
       items:
         - name: Egyszeri bejelentkezés konfigurálása
           displayName: SSO

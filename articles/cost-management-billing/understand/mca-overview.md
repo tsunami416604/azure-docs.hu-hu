@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: a580dd1fb9d2965a9da1e4918733bd5cf137e443
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199211"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79139946"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Bevezetés a Microsoft-ügyfélszerződéshez tartozó számlázási fiók használatába
 
-A számlázási fiók az Azure-ba való regisztráció során jön létre. A számlázási fiók használatával kezelheti a számlákat és a kifizetéseket, valamint nyomon követheti a költségeket. Több számlázási fiókhoz is rendelkezhet hozzáféréssel. Előfordulhat például, hogy az egyéni projektjei kezeléséhez regisztrált az Azure-ba. Emellett az Azure-hoz hozzáféréssel rendelkezhet a szervezete Nagyvállalati Szerződésén vagy egy Microsoft-ügyfélszerződésen keresztül is. Mindegyik regisztrációhoz egy külön számlázási fiók tartozik.
+A számlázási fiók akkor jön létre, amikor regisztrálja magát az Azure használatára. A számlázási fiók használatával kezelheti a számlákat és a kifizetéseket, valamint nyomon követheti a költségeket. Több számlázási fiókhoz is rendelkezhet hozzáféréssel. Előfordulhat például, hogy az egyéni projektjei kezeléséhez regisztrált az Azure-ba. Emellett az Azure-hoz hozzáféréssel rendelkezhet a szervezete Nagyvállalati Szerződésén vagy egy Microsoft-ügyfélszerződésen keresztül is. Mindegyik regisztrációhoz egy külön számlázási fiók tartozik.
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="your-billing-account"></a>Az Ön számlázási fiókja
 
@@ -62,7 +62,7 @@ Szabályzatokat alkalmazhat az Azure Marketplace- és Reservations-vásárlások
 
 Az Azure-előfizetések díjszabását és szolgáltatói szerződéseit az Azure-csomagok határozzák meg. Ezek a számlázási profil létrehozásakor automatikusan engedélyezve vannak. A számlázási profilhoz társított összes számlaszakasz használhatja ezeket a csomagokat. A csomagokkal a számlaszakaszhoz hozzáféréssel rendelkező felhasználók létrehozhatnak Azure-előfizetéseket. A Microsoft-ügyfélszerződéssel rendelkező számlázási fiókok esetében az alábbi Azure-csomagok támogatottak:
 
-| Felkészülés             | Meghatározás  |
+| Csomag             | Meghatározás  |
 |------------------|-------------|
 |Microsoft Azure-csomag   | Lehetővé teszi a felhasználók számára olyan előfizetések létrehozását, amelyek bármilyen számítási feladatot futtathatnak.  |
 |Microsoft Azure-csomag fejlesztéshez/teszteléshez | Lehetővé teszi a Visual Studio-előfizetők számára olyan előfizetések létrehozását, amelyek fejlesztési és tesztelési számítási feladatokra vannak korlátozva. Ezek az előfizetések olyan kedvezményeket kapnak, mint az alacsonyabb díjak és az exkluzív virtuálisgép-rendszerképekhez való hozzáférés az Azure Portalon. |
@@ -82,7 +82,7 @@ A számlaszakasz szerepkörei jogosultak szabályozni, ki hozhat létre Azure-el
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 

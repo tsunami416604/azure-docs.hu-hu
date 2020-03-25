@@ -28,7 +28,7 @@
       items:
         - name: Bing Entity Search-ügyfélkódtárak
           href: ./quickstarts/client-libraries.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Egyoldalas webalkalmazás készítése
       href: tutorial-bing-entities-search-single-page-app.md

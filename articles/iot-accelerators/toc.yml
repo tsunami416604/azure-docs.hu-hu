@@ -23,7 +23,7 @@
       href: iot-accelerators-device-simulation-overview.md
     - name: Prediktív karbantartás
       href: iot-accelerators-predictive-walkthrough.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Távoli monitorozási megoldás kipróbálása
@@ -34,7 +34,7 @@
       href: quickstart-device-simulation-deploy.md
     - name: Prediktív karbantartási megoldás kipróbálása
       href: quickstart-predictive-maintenance-deploy.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Távoli figyelés
       items:
@@ -195,34 +195,34 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Egyéni Docker-rendszerkép üzembe helyezése
           href: iot-accelerators-device-simulation-deploy-image.md
-- name: Kapcsolódó témakörök
-  items:
-    - name: IoT-központ
-      href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Platformszolgáltatások
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT-szolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub eszközkiépítési szolgáltatás
+          href: /azure/iot-dps
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK-k
+      items:
+        - name: IoT szolgáltatásoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Távoli figyelés
       items:
         - name: Fejlesztői referencia-útmutató (.NET)

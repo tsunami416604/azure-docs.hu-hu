@@ -5,7 +5,7 @@
     - name: Mi az az Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Az első lekérdezés futtatása – Azure Portal
@@ -17,7 +17,7 @@
     - name: Az első lekérdezés futtatása – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Lekérdezés létrehozása és megosztása az Azure Portalon
       displayName: 'query, portal'
@@ -62,7 +62,7 @@
       href: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
     - name: .NET-hez készült Azure SDK (NuGet)
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/'
-    - name: Azure SDK for Go
+    - name: Góhoz készült Azure SDK
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph'
     - name: Javához készült Azure SDK
       href: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable

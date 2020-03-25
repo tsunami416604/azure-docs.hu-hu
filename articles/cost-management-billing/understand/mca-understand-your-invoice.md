@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200214"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237904"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>A Microsoft-ügyfélszerződés számláin szereplő kifejezések
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure-beli számlázási fiókra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft-ügyfélszerződéshez tartozó Azure számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 
 A számla tartalmazza a díjak összesítését, valamint a fizetésre vonatkozó utasításokat. A számlát letöltheti Portable Document Format (.pdf) formátumban az [Azure Portalról](https://portal.azure.com/), vagy kérheti, hogy e-mailben legyen elküldve. További információ: [A Microsoft Azure-számla megtekintése és letöltése](download-azure-invoice.md).
 
 ## <a name="billing-period"></a>Számlázási időszak
 
-A számlázás havi rendszerességgel történik. A számlázás napját megtalálhatja az [Azure Portalon](https://portal.azure.com/) a számlázási profil tulajdonságai alatt, a *számla dátuma* szakaszban. A számlázási időszak vége és a számla dátuma közötti időben felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakra esnek. Az egyes számlák számlázási időszakának kezdési és záró dátumait a számlázási PDF-fájl tartalmazza az **Összesítő elszámolás** felett.
+A számlázás havi rendszerességgel történik. A számlázás napját megtalálhatja az *Azure Portalon* a számlázási profil tulajdonságai alatt, a [számla dátuma](https://portal.azure.com/) szakaszban. A számlázási időszak vége és a számla dátuma közötti időben felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakra esnek. Az egyes számlák számlázási időszakának kezdési és záró dátumait a számlázási PDF-fájl tartalmazza az **Összesítő elszámolás** felett.
 
 ## <a name="invoice-terms-and-descriptions"></a>A számlában használatos kifejezések és leírásaik
 
@@ -100,7 +100,7 @@ Ha a számlán harmadik féltől származó szolgáltatások szerepelnek, az egy
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A számlázási profil számláján szereplő díjak ismertetése](review-customer-agreement-bill.md)
 - [Az Azure számlázási és napi használati adatainak beszerzése](../manage/download-azure-invoice-daily-usage-date.md)

@@ -22,7 +22,7 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio'
         - name: Container Service
           href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment'
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Webalkalmazás létrehozása és üzembe helyezése
       items:
@@ -80,7 +80,7 @@
       href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-overview'
 - name: Útmutatók
   items:
-    - name: Felkészülés
+    - name: Csomag
       items:
         - name: Webalkalmazás-architektúrák
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
@@ -132,17 +132,17 @@
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Mikroszolgáltatások alkalmazásai
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
-    - name: Biztonságos
+    - name: Védelem
       items:
         - name: Web- és mobilalkalmazások
           href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
-    - name: Backup
+    - name: Biztonsági mentés
       items:
         - name: Web- és mobilalkalmazások
           href: 'https://docs.microsoft.com/azure/app-service/manage-backup'
         - name: Virtual machines (Virtuális gépek)
           href: 'https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction'
-    - name: Figyelés
+    - name: Monitoring
       items:
         - name: Web- és mobilalkalmazások
           href: 'https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs'

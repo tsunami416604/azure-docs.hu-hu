@@ -1,5 +1,5 @@
 ---
-title: Azure-költségkeret | Microsoft Docs
+title: Azure-költségkeret
 description: Ez a cikk az Azure-költségkeret működését és eltávolításának módját ismerteti.
 author: bandersmsft
 ms.reviewer: judupont
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6feac116c92f8dac7bd1dde2084f9b25f5e559f8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200554"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238057"
 ---
 # <a name="azure-spending-limit"></a>Azure-költségkeret
 
@@ -67,7 +67,7 @@ Amennyiben ingyenes Azure-fiókkal rendelkezik, tekintse meg az [Azure-előfizet
 
 1. Kattintson a **Fizetési mód kiválasztása** lehetőségre az előfizetés fizetési módjának kiválasztásához. Ez lesz az előfizetése aktív fizetési módja.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Finish** (Befejezés) gombra.
 
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>A költségkeret eltávolításának lehetséges okai
@@ -111,5 +111,5 @@ Egyéni költségkeretek nem érhetők el.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Frissítsen egy [használatalapú fizetéses](upgrade-azure-subscription.md) díjszabású csomagra.

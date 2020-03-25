@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók az Azure Blockchain Service-ről
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Tag létrehozása – portál
@@ -21,7 +21,7 @@
           href: connect-geth.md
         - name: A Truffle használata
           href: connect-truffle.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Intelligens szerződések létrehozása
       href: send-transaction.md

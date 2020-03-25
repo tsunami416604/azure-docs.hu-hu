@@ -4,10 +4,10 @@ description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek
 ms.date: 02/26/2020
 ms.topic: sample
 ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78196824"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
@@ -47,7 +47,7 @@ Lehetőség van a tervminták iterálására és az ügyfél által alkalmazott 
 
 Léteznek tervminták azon ügyfélforgatókönyvek kezelésére, amelyekben a megfelelőségi követelmények magasak, és az architekturális összetettség is jelentős (az ábra E régiója). Az ábra F régióját az ügyfelek és a partnerek tervminták használatával és azok egyedi igényekre történő testreszabásával fogják kezelni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

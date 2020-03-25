@@ -4,7 +4,7 @@
   items:
     - name: Az Azure-on futtatott Terraform ismertetése
       href: terraform-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: A Terraform telepítése és konfigurálása
@@ -15,7 +15,7 @@
     - name: Linux rendszerű virtuális gép létrehozása
       href: terraform-create-complete-vm.md
       maintainContext: true
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Telepítés és konfigurálás
       items:
@@ -27,7 +27,7 @@
       items:
         - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
           href: terraform-slot-walkthru.md
-    - name: Containers
+    - name: Tárolók
       items:
         - name: Kubernetes-fürt létrehozása az AKS használatával
           href: terraform-create-k8s-cluster-with-tf-and-aks.md

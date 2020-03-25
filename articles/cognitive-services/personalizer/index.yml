@@ -13,10 +13,10 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
   ms.openlocfilehash: c703673ec85cadb57e2cc69d1ee1a0d023d53436
-  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/21/2020
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "77525023"
 landingContent:
 - title: Információk a Personalizerről
@@ -115,7 +115,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Hibaelhárítás
+    - text: Hibakeresés
       url: troubleshooting.md
     - text: Tegye fel kérdéseit a Stack Overflow-val kapcsolatban
       url: https://stackoverflow.com/questions/tagged/personalizer

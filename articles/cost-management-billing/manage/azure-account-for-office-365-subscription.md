@@ -1,20 +1,19 @@
 ---
-title: Regisztrálás az Office 365-be Azure-fiókkal | Microsoft Docs
+title: Regisztrálás az Office 365-be Azure-fiókkal
 description: Tudnivalók Office 365-előfizetés létrehozásáról egy Azure-fiók használatával
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199925"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204817"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Regisztrálás Office 365-előfizetésre Azure-fiókkal
 Ha Ön Azure-előfizető, akkor Azure-fiókjával regisztrálhat Office 365-előfizetésre. Ha Ön egy Azure-előfizetéssel rendelkező szervezet tagja, akkor a meglévő Azure Active Directory (Azure AD) felhasználói számára létrehozhat Office 365-előfizetéseket. Olyan fiókkal regisztráljon az Office 365-be, amely globális rendszergazdai vagy számlázási rendszergazdai engedélyekkel rendelkezik az Azure Active Directory-bérlőben. További információkért lásd [az Azure AD-ben a fiókengedélyek ellenőrzését](#RoleInAzureAD) és [az Azure Active Directoryban a rendszergazdai szerepkörök hozzárendelését](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) ismertető cikket.
@@ -47,8 +46,8 @@ Ha létrehozta az Office 365-előfizetést a szervezet számára, az alábbi lé
 
 A regisztráció után az Office 365-előfizetés ugyanahhoz az Azure Active Directory-példányhoz lesz hozzáadva, amelyhez az Azure-előfizetés tartozik. További információkért lásd [az Azure- és az Office 365-előfizetésekkel kapcsolatos további tudnivalókat](office-365-account-for-azure-subscription.md#more-about-subs) és [az Azure-előfizetések az Azure Active Directoryhoz társítását](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) ismertető cikket.
 
-## <a id="RoleInAzureAD"></a>Fiókengedélyek ellenőrzése az Azure AD-ben
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Fiókengedélyek ellenőrzése az Azure AD-ben
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 2. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az **Active Directoryt**.
 
     ![Képernyőkép az Active Directoryról az Azure Portalon](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)

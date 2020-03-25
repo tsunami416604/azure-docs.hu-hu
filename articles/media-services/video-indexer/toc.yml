@@ -4,14 +4,14 @@
   items:
     - name: Mi az a Video Indexer?
       href: video-indexer-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
-    - name: Bevezetés
+    - name: Első lépések
       href: video-indexer-get-started.md
     - name: Felhasználók meghívása
       href: invite-users.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: A Video Indexer API használata
       href: video-indexer-use-apis.md

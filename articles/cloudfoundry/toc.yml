@@ -1,11 +1,11 @@
 - name: Cloud Foundry – dokumentáció
   href: index.yml
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Marketplace-sablon
       href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: CF létrehozása az Azure-on
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure

@@ -10,7 +10,7 @@
       href: geo-ai-dsvm-overview.md
     - name: Az adatelemzési virtuális géphez mellékelt eszközök
       href: tools-included.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Windows rendszerű adatelemzési virtuális gép létrehozása

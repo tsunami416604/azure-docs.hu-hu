@@ -4,7 +4,7 @@
   items:
     - name: Mi a hitelesítés?
       href: overview-authentication.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   expanded: true
   items:
     - name: Új jelszó önkiszolgáló kérésének engedélyezése
@@ -38,7 +38,7 @@
           href: concept-sspr-licensing.md
         - name: Helyszíni integráció
           href: concept-sspr-writeback.md
-    - name: Multi-Factor Authentication
+    - name: Többtényezős hitelesítés
       items:
         - name: Az MFA működése
           href: concept-mfa-howitworks.md

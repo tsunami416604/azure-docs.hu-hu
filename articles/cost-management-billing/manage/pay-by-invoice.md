@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199602"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure-előfizetés fizetése számla alapján
@@ -117,6 +117,6 @@ Kövesse az alábbi lépéseket a számlázási profil csekkes/átutalásos fize
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szükséges, frissítse a számlázási kapcsolattartási adatokat az [Azure Fiókközpontban](https://account.azure.com/Profile).

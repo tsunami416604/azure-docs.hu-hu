@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199245"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure Reservations megtekintése az Azure Portalon
@@ -26,7 +26,7 @@ További információk [a foglalást kezelő felhasználók hozzáadásáról va
 
 Foglalás megtekintése Tulajdonosként vagy Olvasóként:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Keressen a **Foglalások** kifejezésre.
     ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-reservations/portal-reservation-search.png)  
 3. A listán szerepel az összes olyan foglalás, amelyhez Tulajdonos vagy Olvasó szerepkörben hozzáfér. Mindegyik foglalás mellett a kihasználtság legutóbb ismert százalékos értéke látható.  
@@ -43,7 +43,7 @@ Ha módosítania kell a foglalás hatókörét, fel kell osztania a foglalást, 
 
 Foglalási tranzakciók megtekintése az Azure Portalon:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
     ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-reservations/portal-cm-billing-search.png)
@@ -56,7 +56,7 @@ Foglalási tranzakciók megtekintése az Azure Portalon:
 
 Ha az adatokat egy API használatával kérné le, tekintse meg [a fenntartott példány tranzakciós díjainak vállalati ügyfelek esetén történő lekérését](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 

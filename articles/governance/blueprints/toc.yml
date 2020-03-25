@@ -5,7 +5,7 @@
     - name: Mi az az Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Terv létrehozása – Portal
@@ -17,7 +17,7 @@
     - name: Terv létrehozása – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Létrehozás tervmintából
       displayName: 'template, resource group, rbac, role assignment'

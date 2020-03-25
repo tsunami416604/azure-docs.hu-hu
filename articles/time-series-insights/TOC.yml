@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók a Time Series Insightsról
       href: time-series-insights-update-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Az Azure Time Series Insights általánosan elérhető verziója
@@ -15,7 +15,7 @@
       items:
         - name: Ismerkedés a Time Series Insights előzetes verziójával
           href: time-series-insights-update-quickstart.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Az Azure Time Series Insights általánosan elérhető verziója
       items:
@@ -140,7 +140,7 @@
   items:
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
-    - name: Fejlesztői erőforrások
+    - name: Fejlesztői forrásanyagok
       items:
         - name: Azure Time Series Insights-kódminták
           href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'

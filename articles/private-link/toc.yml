@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure privát kapcsolat?
       href: private-link-overview.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   items:
     - name: Privát végpont létrehozása – Portal
       href: create-private-endpoint-portal.md
