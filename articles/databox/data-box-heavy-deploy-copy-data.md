@@ -10,15 +10,15 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380362"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214207"
 ---
 ::: zone target = "docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Oktatóanyag: az Adatmásolás Azure Data Box Heavy SMB-n keresztül
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box Heavyre SMB-n keresztül
 
 ::: zone-end
 
@@ -32,7 +32,7 @@ ms.locfileid: "78380362"
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a gazdagéphez és hogyan másolhat onnan adatokat a helyi webes felhasználói felület használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Csatlakozás a Data Box Heavyhez
@@ -54,7 +54,7 @@ Minden esetben gondoskodjon róla, hogy a megosztások és a mappák neve, valam
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box Heavy beállítása](data-box-deploy-set-up.md).
+1. Az [ Az Azure Data Box Heavy beállítása](data-box-deploy-set-up.md) című oktatóanyagot.
 2. Megkapta a Data Box Heavyt, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Rendelkezik egy gazdagéppel, amelyen a Data Box Heavyre másolni kívánt adatok találhatók. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
@@ -268,7 +268,7 @@ Az SMB-megosztáshoz való csatlakozás után kezdje meg az adatok másolását.
 
 Ismételje meg a fenti lépéseket az adatoknak az eszköz második csomópontjára történő másolásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box Heavyvel kapcsolatos témakörökkel ismerkedett meg, például a következőkkel:
 
@@ -296,7 +296,7 @@ Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti
 
 3. Az adatok megosztásokba történő másolásához használjon SMB-kompatibilis fájlmásoló eszközt, mint amilyen a Robocopy.
 
-Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az SMB-n keresztül Azure Data Box elemre](data-box-heavy-deploy-copy-data.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása az Azure Data Boxra SMB-n keresztül](data-box-heavy-deploy-copy-data.md).
 
 ### <a name="copy-data-via-nfs"></a>Adatok másolása NFS-en keresztül
 
@@ -308,7 +308,7 @@ Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az SMB-n k
 3. Az adatok másolásához használja a `cp` vagy az `rsync` parancsot. 
 4. Ismételje meg ezeket a lépéseket a Data Box Heavy második csomópontjához történő csatlakoztatáshoz és az adatok másolásához.
 
-Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az NFS-en keresztül Azure Data Box](data-box-heavy-deploy-copy-data-via-nfs.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása az Azure Data Boxra NFS-en keresztül](data-box-heavy-deploy-copy-data-via-nfs.md).
 
 ### <a name="copy-data-via-rest"></a>Adatok másolása REST-n keresztül
 
@@ -316,7 +316,7 @@ Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az NFS-en 
 2. Az adatok Data Box Blob Storage-ba másolásához használhatja az AzCopyt.
 3. Ismételje meg ezeket a lépéseket a Data Box Heavy második csomópontjához történő csatlakoztatáshoz és az adatok másolásához.
 
-Részletes útmutatásért lépjen az [oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API](data-box-heavy-deploy-copy-data-via-rest.md)-kon keresztül.
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása a Data Box Blob Storage-ba REST API-k segítségével](data-box-heavy-deploy-copy-data-via-rest.md).
 
 ### <a name="copy-data-via-data-copy-service"></a>Adatok másolása adatmásolási szolgáltatással
 
@@ -324,7 +324,7 @@ Részletes útmutatásért lépjen az [oktatóanyag: adatok másolása Azure Dat
 2. Adja meg a paramétereket, és hozzon létre egy feladatot.
 3. Ismételje meg ezeket a lépéseket a Data Box Heavy második csomópontjához történő csatlakoztatáshoz és az adatok másolásához.
 
-Részletes útmutatásért lépjen az [oktatóanyag: az adatmásolási szolgáltatás használata az Azure Data Box Heavyba való másolásához](data-box-heavy-deploy-copy-data-via-copy-service.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása az Azure Data Box Heavyre az adatmásolási szolgáltatással](data-box-heavy-deploy-copy-data-via-copy-service.md).
 
 ### <a name="copy-data-to-managed-disks"></a>Adatok másolása felügyelt lemezekre
 
@@ -333,7 +333,7 @@ Részletes útmutatásért lépjen az [oktatóanyag: az adatmásolási szolgált
 3. Ezután SMB- vagy NFS-eszközökkel másolhatja az adatokat.
 4. Ismételje meg ezeket a lépéseket a Data Box Heavy második csomópontjához történő csatlakoztatáshoz és az adatok másolásához.
 
-Részletes útmutatást a következő [oktatóanyagban talál: a Data Box Heavy használata az Azure-ban felügyelt lemezként történő adatimportáláshoz](data-box-heavy-deploy-copy-data-from-vhds.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok importálása felügyelt lemezekként az Azure-ban a Data Box Heavy használatával](data-box-heavy-deploy-copy-data-from-vhds.md).
 
 ::: zone-end
 

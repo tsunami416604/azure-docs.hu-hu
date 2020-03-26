@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380494"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214326"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása Azure Data Box Diskre, majd azok ellenőrzése
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok Azure Data Box Diskre történő másolása és ellenőrzése
 
 ::: zone-end
 
@@ -34,7 +34,7 @@ Miután csatlakoztatta a lemezeket és feloldotta a zárolásukat, átmásolhatj
 
 A jelen oktatóanyag ismerteti, hogyan másolhat adatokat a gazdagépről, majd hogyan hozhat létre ellenőrzőösszegeket az adatok integritásának ellenőrzéséhez.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Adatok másolása Data Box Diskre
@@ -43,7 +43,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
-- Befejezte az [Azure Data Box Disk üzembe helyezését és konfigurálását ismertető oktatóanyagot](data-box-disk-deploy-set-up.md).
+- Elvégezte [ az Azure Data Box Disk telepítéséről és konfigurálásáról](data-box-disk-deploy-set-up.md) szóló oktatóanyagot.
 - Lemezeit feloldotta és csatlakoztatta az ügyfélszámítógéphez.
 - Az ügyfélszámítógépnek, amelyet az adatok a lemezekre történő másolásához használ, [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) kell futtatnia.
 - Győződjön meg arról, hogy az adatok választott tárolótípusa egyezik valamelyik [támogatott tárolótípussal](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
@@ -106,8 +106,8 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
     |Cél       | Megadja a célkönyvtár elérési útját.        |
     |/E                  | Átmásolja az alkönyvtárakat, az üres könyvtárakkal együtt. |
     |/MT[:N]             | Többszálas másolatokat hoz létre N szállal, ahol az N egy 1 és 128 közötti egész szám. <br>Az N alapértelmezett értéke 8.        |
-    |/R: \<N >             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |
-    |/W: \<N >             | Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben. Az N alapértelmezett értéke 30 (30 másodperc várakozási idő).        |
+    |/R: \<N>             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |
+    |/W: \<N>             | Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben. Az N alapértelmezett értéke 30 (30 másodperc várakozási idő).        |
     |/NFL                | Azt adja meg, hogy a fájlnevek ne legyenek naplózva.        |
     |/NDL                | Azt adja meg, hogy a könyvtárnevek ne legyenek naplózva.        |
     |/FFT                | FAT-fájlidőket feltételez (két másodperces pontosság).        |
@@ -289,7 +289,7 @@ Ha nem használta a másolásfelosztó eszközt az adatok másolásához, ellen�
 
 Ha hibákat tapasztal az ellenőrzés során, tekintse meg az [ellenőrzési hibák elhárítását](data-box-disk-troubleshoot.md) ismertető részt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box Diskkel kapcsolatos alábbi témakörökkel ismerkedett meg:
 
