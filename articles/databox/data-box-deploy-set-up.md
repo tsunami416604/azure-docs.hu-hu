@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76514136"
 ---
 ::: zone target="docs"
@@ -32,7 +32,7 @@ ms.locfileid: "76514136"
 
 Az oktatóanyag az Azure Data Box bekábelezését, csatlakoztatását és bekapcsolását mutatja be.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A Data Box bekábelezése
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte [ Az Azure Data Box megrendelése](data-box-deploy-ordered.md) című oktatóanyagot.
+1. Befejezte [az Azure Data Box rendelését ismertető oktatóanyagot](data-box-deploy-ordered.md).
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
     - Az aktuális fuvarlevélcímke alatt egy átlátszó zacskó van rögzítve az eszközre, benne egy másik címkével. Őrizze meg ezt a címkét, mivel ezt fogja használni a küldemény visszaküldéséhez.
     - Egyes európai régiókban előfordulhat, hogy az eszköz egy dobozba csomagolva érkezik. Csomagolja ki az eszközt, és őrizze meg a dobozt a visszaküldéshez.
@@ -120,7 +120,7 @@ Az eszköz beállításához kövesse az alábbi lépéseket a helyi webes felha
    ![Csatlakozás a helyi webes felhasználói felülethez](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
 4. Megjelenik a helyi webes felhasználói felület **bejelentkezési** oldala. Győződjön meg róla, hogy az eszköz sorozatszáma megegyezik a helyi webes felhasználói felületen és a portál felhasználói felületén. Ekkor az eszköz még le van zárva.
-5. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+5. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 6. Töltse le az eszköz hitelesítő adatait a portálról. Lépjen az **Általános > Eszköz adatai** menüpontra. Másolja ki **az eszköz jelszavát**. Az eszköz jelszava a portálon megadott sorrendhez kötött. 
 
     ![Eszköz hitelesítő adatainak letöltése](media/data-box-deploy-set-up/data-box-device-credentials.png)
@@ -143,7 +143,7 @@ Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztások
 
 ## <a name="connect-your-device"></a>Az eszköz csatlakoztatása
 
-1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com)**Általános > Eszköz adatai** lapján találja.
+1. Az eszköz jelszavát az **Azure Portal**[Általános > Eszköz adatai](https://portal.azure.com) lapján találja.
 2. A Data Boxhoz csatlakoztatott számítógépen rendelje a 192.168.100.5 statikus IP-címet és a 255.255.255.0 alhálózatot az Ethernet-adapterhez. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet. 
 3. Jelentkezzen be az Azure Portalról beszerzett jelszóval. Egy hibaüzenet jelenik meg, miszerint a webhely biztonsági tanúsítványa hibás. A böngészőspecifikus utasításokat követve lépjen a weblapra.
 4. Alapértelmezés szerint a 10 Gb/s (vagy az 1 Gb/s) sebességű adatillesztő DHCP-ként van konfigurálva. Szükség esetén statikusként is konfigurálhatja az illesztőt, és megadhat egy IP-címet. 
@@ -153,7 +153,7 @@ Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztások
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
