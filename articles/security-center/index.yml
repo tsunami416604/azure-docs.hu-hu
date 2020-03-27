@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604775"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159302"
 landingContent:
 - title: Tudnivalók a Security Centerről
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: A tárolók védelme
       url: container-security.md
-    - text: Dinamikus megfelelőségi csomagok hozzáadása
-      url: update-regulatory-compliance-packages.md
-    - text: Integráció a Windows Admin Centerrel
-      url: windows-admin-center-integration.md
+    - text: Integrált sebezhetőségi felmérés virtuális gépekhez
+      url: built-in-vulnerability-assessment.md
+    - text: Sémák áttekintése a biztonsági riasztások esetében
+      url: alerts-schemas.md
     - text: Riasztásokra és javaslatokra adott válaszok automatizálása
       url: workflow-automation.md
     - text: Biztonsági riasztások és javaslatok exportálása
       url: continuous-export.md
-    - text: Az Advanced Threat Protection beállítása az Azure Key Vaulthoz
+    - text: Fenyegetésvédelem beállítása az Azure Key Vaulthoz
       url: advanced-threat-protection-key-vault.md
 - title: Bevezetés
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Mi az a biztonsági pontszám?
-      url: security-center-secure-score.md
+    - text: A biztonsági pontszám értelmezése
+      url: secure-score-security-controls.md
     - text: Biztonsági javaslatok javítása
       url: security-center-remediate-recommendations.md
     - text: Biztonsági javaslatok testreszabása

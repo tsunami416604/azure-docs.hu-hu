@@ -1,51 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
+### YamlMime:Landing
+title: Az Azure IoT Hub Device Provisioning Service (DPS) dokumentációja
+summary: Az IoT Hub Device Provisioning Service (DPS) az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való igény szerinti üzembe helyezést, és amellyel az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az eszközök IoT hub(ok)on történő kiépítésével.
 metadata:
-  title: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
-  description: 'Azure IoT Hub eszközkiépítési szolgáltatás – Oktatóanyagok, gyorsútmutatók, egyéb útmutatók és API-referencia'
-  author: nberdy
+  title: Az Azure IoT Hub Device Provisioning Service (DPS) dokumentációja
+  description: Azure IoT Hub eszközkiépítési szolgáltatás (DPS) – Oktatóanyagok, gyorsútmutatók, egyéb útmutatók és API-referencia
+  author: wesmc7777
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: nberdy
-abstract:
-  description: 'Az IoT Hub Device Provisioning Service (DPS) az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való igény szerinti üzembe helyezést, és amellyel az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az eszközök IoT hub(ok)on történő kiépítésével.'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan állíthatja be az Eszközkiépítési szolgáltatás első példányát, és hogyan építhet ki egy szimulált eszközt az IoT hubon.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Automatikus kiépítés beállítása
-            href: /azure/iot-dps/quick-setup-auto-provision
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: Szimulált eszköz létrehozása
-            href: /azure/iot-dps/quick-create-simulated-device
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan használhatja az IoT Hub eszközkiépítési szolgáltatást biztonságos eszközök automatikus kiépítésére egy vagy több IoT hubon.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">Felhőerőforrások konfigurálása</a>
-          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Az eszköz beállítása az Azure-hoz való csatlakozásra</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">Eszközök kiépítése egyetlen IoT hubon</a>
-          - html: '<a href="/azure/iot-dps/tutorial-provision-multiple-hubs">Eszközök kiépítése több, elosztott terhelésű IoT hubon</a>'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: <p><a href="/rest/api/iot-dps">REST</a></p>
-          - title: Azure IoT SDK-k
-            html: '<p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>'
+  ms.date: 03/03/2020
+  ms.author: wesmc
+  ms.openlocfilehash: 2d89b99005a4e430aca85c109f3d000c3b21674c
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80133259"
+landingContent:
+- title: Tudnivalók Azure IoT Hub Device Provisioning Service (DPS) szolgáltatásról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a DPS?
+      url: about-iot-dps.md
+  - linkListType: concept
+    links:
+    - text: Az automatikus kiépítés alapfogalmai az Azure IoT esetében
+      url: concepts-auto-provisioning.md
+  - linkListType: video
+    links:
+    - text: IoT Hub DPS-bemutató
+      url: https://azure.microsoft.com/resources/videos/iot-hub-dps-demo/
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: DPS beállítása az Azure Portal használatával
+      url: quick-setup-auto-provision.md
+  - linkListType: sample
+    links:
+    - text: Szimmetrikus kulccsal rendelkező szimulált eszköz kiépítése C használatával
+      url: quick-create-simulated-device-symm-key.md
+    - text: Szimmetrikus kulccsal rendelkező szimulált eszköz kiépítése Java használatával
+      url: quick-create-simulated-device-symmetric-key-java.md
+  - linkListType: how-to-guide
+    links:
+    - text: Több-bérlős modell kiépítése
+      url: how-to-provision-multitenant.md
+    - text: Egyéni kiosztási szabályzatok használata
+      url: how-to-use-custom-allocation-policies.md
+- title: Hozzáférés kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Eszközregisztrációk kezelése
+      url: how-to-manage-enrollments.md
+    - text: Az Azure IoT Hub Device Provisioning Service hozzáférés-vezérlése
+      url: how-to-control-access.md
+- title: IoT-megoldás fejlesztése DPS-szel
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: C nyelvhez készült Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-c
+    - text: Pythonhoz készült Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-python
+    - text: Node.js-hez készült Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-node
+    - text: Javához készült Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-java
+    - text: .NET-hez készült Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-csharp
+    - text: REST API
+      url: /rest/api/iot-dps

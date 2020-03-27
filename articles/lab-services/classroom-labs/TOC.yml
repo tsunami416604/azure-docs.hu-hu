@@ -30,12 +30,16 @@
   items:
     - name: Rendszergazdai útmutató
       href: administrator-guide.md
+    - name: Felgyorsított tesztkörnyezetfiók beállításának útmutatója
+      href: account-setup-guide.md
+    - name: Felgyorsított tesztkörnyezet beállításának útmutatója
+      href: setup-guide.md
     - name: Osztályterem-tesztkörnyezetek – osztálytípusok
       items:
         - name: Osztálytípusok áttekintése
           href: class-types.md
-        - name: Mélytanulás a természetes feldolgozásban
-          href: class-type-deep-learning-natural-processing.md
+        - name: Mélytanulás a természetes nyelvfeldolgozásban
+          href: class-type-deep-learning-natural-language-processing.md
         - name: Héjszkriptek használata Linuxon
           href: class-type-shell-scripting-linux.md
         - name: Etikus hackertevékenység
@@ -66,6 +70,8 @@
           href: how-to-configure-firewall-settings.md
         - name: Marketplace-rendszerképek megadása tesztkörnyezetekhez
           href: specify-marketplace-images.md
+        - name: Támogatási információk megadása (tesztkörnyezetfiók tulajdonosa)
+          href: lab-account-owner-support-information.md
     - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
       items:
         - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
@@ -87,17 +93,29 @@
         - name: Automatikus leállítás engedélyezése a kapcsolat bontásakor
           href: how-to-enable-shutdown-disconnect.md
         - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
-          href: how-to-enable-nested-virtualization-template-vm.md
+          items:
+            - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen – áttekintés
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen a felhasználói felület használatával
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen szkript használatával
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Windows rendszerű virtuálisgép-sablon előkészítése
           href: how-to-prepare-windows-template.md
+        - name: Támogatási információk megtekintése (oktató)
+          href: lab-creator-support-information.md
     - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
       items:
         - name: Osztályterem-tesztkörnyezetek elérése
           href: how-to-use-classroom-lab.md
         - name: Távoli asztali kapcsolat használata Linux rendszerű virtuális gépeken
           href: how-to-use-remote-desktop-linux-student.md
+        - name: 'Kapcsolódás virtuális géphez Mac gépekről, RDP használatával'
+          href: connect-virtual-machine-mac-rdp.md
         - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
           href: how-to-set-virtual-machine-passwords-student.md
+        - name: Támogatási információk megtekintése (diák)
+          href: lab-user-support-information.md
 - name: Referencia
   items:
     - name: REST API

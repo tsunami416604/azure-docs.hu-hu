@@ -66,9 +66,13 @@
               href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
     - name: Címkék
       items:
-        - name: Erőforrások címkézése
+        - name: Útmutató döntésekhez
+          href: /azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json
+        - name: Címkék használata
           href: tag-resources.md
-        - name: Címketámogatás
+        - name: Szabályzatok – megfelelőség
+          href: tag-policies.md
+        - name: Támogatott erőforrástípusok
           href: tag-support.md
     - name: Erőforráscsoportok kezelése
       items:

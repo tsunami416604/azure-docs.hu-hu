@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: Cognitive Services és Machine Learning
       href: cognitive-services-and-machine-learning.md
-    - name: Virtuális hálózatok a Cognitive Serviceshez
-      href: cognitive-services-virtual-networks.md
     - name: Egyéni altartományok a Cognitive Serviceshez
       href: cognitive-services-custom-subdomains.md
     - name: Nyelvi támogatás
       href: language-support.md
+- name: Rövid útmutatók
+  items:
+    - name: Új erőforrás létrehozása az Azure Portal használatával
+      href: cognitive-services-apis-create-account.md
+    - name: Új erőforrás létrehozása az Azure CLI használatával
+      href: cognitive-services-apis-create-account-cli.md
+    - name: Diagnosztikai naplózás
+      href: diagnostic-logging.md
+- name: Biztonság
+  items:
+    - name: Cognitive Services – biztonság
+      href: cognitive-services-security.md
+    - name: Virtuális hálózatok a Cognitive Serviceshez
+      href: cognitive-services-virtual-networks.md
+    - name: Ügyfél által felügyelt kulcsok konfigurálása
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: A Cognitive Services felé küldött kérelmek hitelesítése
+      href: authentication.md
 - name: Tárolótámogatás
   items:
     - name: Tárolótámogatás
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: Gyors útmutatók
-  items:
-    - name: Új erőforrás létrehozása az Azure Portal használatával
-      href: cognitive-services-apis-create-account.md
-    - name: Új erőforrás létrehozása az Azure CLI használatával
-      href: cognitive-services-apis-create-account-cli.md
-    - name: Hitelesítés
-      href: authentication.md
-    - name: Diagnosztikai naplózás
-      href: diagnostic-logging.md
 - name: További források
   items:
     - name: Azure-ütemterv

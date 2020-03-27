@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970124"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474526"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Mi az az Azure Cost Management and Billing?
 
@@ -89,13 +89,13 @@ A javaslatok a kihasználatlan vagy alacsony kihasználtságú erőforrások kim
 
 Ha külső rendszereket használ a költségadatokhoz való hozzáféréshez vagy áttekintésükhöz, az Azure-ból könnyedén kiexportálhatja az adatokat. Ezen felül beállíthat egy napi rendszerességű ütemezett exportot CSV-formátumban, az adatfájlokat pedig eltárolhatja az Azure Storage-ban. Ezt követően máris hozzáférhet az adatokhoz a külső rendszeren keresztül is.
 
-### <a name="consider-cloudyn"></a>Fontolja meg a Cloudyn használatát
+### <a name="cloudyn-deprecation"></a>A Cloudyn kivezetése
 
-A [Cloudyn](./cloudyn/overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgáltatás. A Cloudyn használatával nyomon követheti Azure-erőforrásai felhőhasználatát és költségeit. Ezenkívül támogatja az egyéb felhőszolgáltatókat, beleértve az AWS-t és a Google-t. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management jelenleg nem támogatja költséghelyi visszacsatolásos/elszámolásos, valamint az egyéb felhőszolgáltatókat. Azonban a Cloudyn _igen_. A Cost Management jelenleg nem támogat Microsoft-felhőszolgáltatói (CSP-) fiókokat, a Cloudyn viszont igen. Ha CSP-fiókokkal rendelkezik, vagy a költséghelyi visszacsatolást/elszámolást szeretné használni, a Cloudynnel kezelheti a költségeit.
-
-[Az Azure Cost Management és a Cloudyn videója](https://www.youtube.com/watch?v=PmwFWwSluh8) ajánlásokat mutat be arra vonatkozóan, hogy az üzleti igényeknek megfelelően mikor érdemes az Azure Cost Management vagy a Cloudyn mellett dönteni.
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
+A [Cloudyn](./cloudyn/overview.md) egy Cost Managementhez kapcsolódó Azure-szolgáltatás, amelyet 2020 végével kivezetünk a használatból. A meglévő Cloudyn-funkciók, ahol ez megoldható, közvetlenül az Azure Portallal lesznek integrálva. Új ügyfeleket már nem regisztrálunk, a támogatás azonban továbbra is elérhető lesz, amíg a kivezetés teljesen le nem zárul.
+ 
+Az [Azure Cost Management és a Cloudyn videója](https://www.youtube.com/watch?v=15DzKPMBRxM) további információkat tartalmaz arra vonatkozóan, hogy az üzleti igényeknek megfelelően mikor érdemes az Azure Cost Management vagy a Cloudyn mellett dönteni.
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ### <a name="additional-azure-tools"></a>További Azure-eszközök
 

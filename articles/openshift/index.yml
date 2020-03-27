@@ -3,19 +3,19 @@ title: Az Azure Red Hat OpenShift dokumentációja
 summary: Az Azure Red Hat OpenShift egybérlős, magas rendelkezésre állású Kubernetes-fürtöket biztosít az Azure-ban, a Red Hat és Microsoft támogatásával.
 metadata:
   title: Az Azure Red Hat OpenShift dokumentációja
-  description: A Microsoft Azure Red Hat OpenShift lehetővé teszi egy üzemkész Red Hat OpenShift-fürt gyors üzembe helyezését az Azure-ban. Ismerje meg oktatóanyagainkból és útmutatóinkból az Azure Red Hat OpenShift használatát.
+  description: A Microsoft Azure Red Hat OpenShift lehetővé teszi egy üzemkész Red Hat OpenShift-fürt üzembe helyezését az Azure-ban. Oktatóanyagainkból és útmutatóinkból megismerheti ennek végrehajtását.
   ms.service: container-service
   services: container-service
   ms.topic: landing-page
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
-  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.openlocfilehash: f35419d63375ae8fca5f9458505b96b6ddfd3890
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/10/2020
-  ms.locfileid: "79037043"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80062293"
 landingContent:
 - title: AZ Azure Red Hat OpenShift bemutatása
   linkLists:

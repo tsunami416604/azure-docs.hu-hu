@@ -1,5 +1,5 @@
 ---
-title: Azure-fiók csatolása egy partnerazonosítóhoz | Microsoft Docs
+title: Azure-fiók csatolása egy partnerazonosítóhoz
 description: Kövesse nyomon az Azure-ügyfelekkel való együttműködéseket a partnerazonosító csatolásával ahhoz a felhasználói fiókhoz, amelyet az ügyfélerőforrások kezelésére használ.
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651372"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204800"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
-A Microsoft-partnerek olyan szolgáltatásokat biztosítanak, amelyek segítségével az ügyfelek a Microsoft termékeinek használatával elérhetik üzleti és stratégiai célkitűzéseiket. Ha egy ügyfél nevében az Azure-szolgáltatásokat kezeli, konfigurálja és támogatja, akkor a partnerfelhasználóknak hozzá kell férniük az ügyfél környezetéhez. A partnerrendszergazdai hivatkozás használatával a partnerek társítani tudják a partnerhálózati azonosítójukat a szolgáltatás teljesítéséhez használt hitelesítőadatokkal.
+A Microsoft-partnerek olyan szolgáltatásokat biztosítanak, amelyek segítségével az ügyfelek a Microsoft termékeinek használatával elérhetik üzleti és stratégiai célkitűzéseiket. Ha egy ügyfél nevében az Azure-szolgáltatásokat kezeli, konfigurálja és támogatja, akkor a partnerfelhasználóknak hozzá kell férniük az ügyfél környezetéhez. A partnerrendszergazdai hivatkozás (Partner Admin Link, PAL) használatával a partnerek társítani tudják a partnerhálózati azonosítójukat a szolgáltatás teljesítéséhez használt hitelesítő adatokkal.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+A PAL lehetővé teszi, hogy a Microsoft azonosítsa és felismerje az Azure-ügyfelek sikerességért felelős partnereket. A Microsoft a fiók engedélyei (RBAC-szerepkör) és a hatókör (előfizetés, erőforráscsoport, erőforrás) alapján biztosíthat a szervezet számára befolyást, illetve az Azure által felhasznált bevételt.
 
 ## <a name="get-access-from-your-customer"></a>Hozzáférés kérése az ügyféltől
 

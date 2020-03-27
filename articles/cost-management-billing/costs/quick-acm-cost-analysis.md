@@ -1,19 +1,19 @@
 ---
-title: Rövid útmutató – Az Azure-költségek feltérképezése költségelemzés használatával | Microsoft Docs
+title: Rövid útmutató – Az Azure-költségek feltérképezése költségelemzés használatával
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649296"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155953"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -27,12 +27,13 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 - Költségnézetek testreszabása
 - Költségelemzési adatok letöltése
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md). A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához.
 
 További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../../cost-management/assign-access-acm-data.md).
+
+Új előfizetés esetén nem használhatja azonnal a Cost Management szolgáltatásait. Akár 48 órára is szükség lehet, hogy a Cost Management összes szolgáltatását használhassa.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -43,6 +44,10 @@ További információért az Azure Cost Management adataihoz való hozzáférés
 A költségek a költségelemzésben való áttekintéséhez nyissa meg a hatókört az Azure Portalon, majd válassza ki a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A **Hatókör** elemmel másik hatókörre válthat a költségelemzésben. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 
 A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett egy magasabb szintű hatókört választ ki, amely alá több alacsonyabb szintű hatókör is tartozik, és szűrő alkalmazásával keresi meg a kívánt beágyazott hatóköröket. Ezt a megközelítést azért fontos megérteni, mert nem biztos, hogy minden személy rendelkezik hozzáféréssel egyetlen szülőhatókörhöz, amely több beágyazott hatókört is magába foglal.
+
+Ha többet szeretne megtudni a költségelemzésről, tekintse meg [a Cost Management Azure Portalon történő használatával](https://www.youtube.com/watch?v=mfxysF-kTFA) foglalkozó videót.
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 A kezdő költségelemzési nézet a következő területeket foglalja magába.
 
@@ -65,7 +70,6 @@ A kezdő költségelemzési nézet a következő területeket foglalja magába.
 A költség-előrejelzés a becsült költségek kivetítése a kiválasztott időszakra. A modell egy idősoros regressziós modellen alapul. Legalább 10 napnyi előzetes költség- és felhasználási adat szükséges a költségek pontos előrejelzéséhez. Egy adott időszakra vonatkozóan az előrejelzési modellnek az időszak hosszával megegyező mennyiségű betanítási adatra van szüksége. Például a három hónapos előrejelzéshez legalább három hónapnyi friss költség- és felhasználási adat szükséges.
 
 A modell legfeljebb hat hónapos betanítási adatmennyiséget használ a költségek egy éves előrevetítéséhez. Legalább hét napnyi betanítási adatra van szüksége az előrejelzés megváltoztatásához. Az előrejelzés a költség- és felhasználási mintákban végbemenő jelentős változásokon, pl. kiugróan magas és alacsony értékeken alapul. Az előrejelzés nem hoz létre előrevetítést a **Csoportosítási szempont** tulajdonság alatt található minden egyes elemhez. Csak az összesített költségekről ad előrejelzést. Ha több pénznemet használ, a modell csak amerikai dollárban biztosítja a költségek előrejelzését.
-
 
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 
@@ -174,11 +178,17 @@ A kifejezésekkel kapcsolatos további információ: [Az Azure használati adata
 
 A személyre szabott nézeteket a költségelemzés az Azure Portal irányítópultján való rögzítésével vagy a költségelemzésre mutató hivatkozás másolásával mentheti és oszthatja meg másokkal.
 
+Ha többet szeretne megtudni arról, miként oszthatja meg a cégen vagy szervezeten belül a költségekkel kapcsolatos információkat a portál segítségével, tekintse meg a [nézetek Azure Cost Managementben történő megosztásával és mentésével](https://www.youtube.com/watch?v=kQkXXj-SmvQ) foglalkozó videót.
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 A költségelemzés rögzítéséhez kattintson a rögzítés ikonra a jobb felső sarokban. A költségelemzés rögzítése csak a fő diagramot vagy a táblanézetet fogja menteni. Az irányítópult megosztásával biztosítása másoknak is hozzáférést a csempéhez. Vegye figyelembe, hogy ez csak az irányítópult konfigurációját osztja meg, és nem biztosít hozzáférést a mögöttes adatokhoz. Ha nincs hozzáférése a költségekhez, de hozzáfér egy megosztott irányítópulthoz, a „hozzáférés megtagadva” üzenetet fog látni.
 
 A költségelemzésre mutató hivatkozás megosztásához válassza a panel tetején lévő **Megosztás** lehetőséget. Egy egyéni URL-cím fog megjelenni, amely megnyitja az adott hatókörre vonatkozó nézetet. Ha nincs hozzáférése a költséghez, az URL-cím használatakor a "hozzáférés megtagadva" üzenet jelenik meg.
 
 Az egyes támogatott hatókörök költségeihez való hozzáférés megadásával kapcsolatban tekintse meg [A hatókörök ismertetése és használata](understand-work-scopes.md) címe részt.
+
+
 
 ## <a name="automation-and-offline-analysis"></a>Automatizálás és offline elemzés
 

@@ -45,8 +45,11 @@
       items:
         - name: Biztonsági javaslatok
           href: security-recommendations.md
-        - name: Azure Storage-titkosítás
+        - name: Azure Storage-titkosítás inaktív állapotban
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: Felhasználó által kezelt kulcsok az Azure Key Vaulttal
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Adatműveletek engedélyezése
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:

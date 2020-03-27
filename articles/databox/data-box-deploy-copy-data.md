@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 804b46cd5238c189063608d067c0b40fcd3e306d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 8d72ee529966fe0db8bf496533453c81064a81a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379285"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79501788"
 ---
 ::: zone target="docs" 
 
-# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: az Adatmásolás Azure Data Box SMB-n keresztül
+# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Boxra SMB-n keresztül
 
 ::: zone-end
 
@@ -32,7 +32,7 @@ ms.locfileid: "78379285"
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a gazdagéphez és hogyan másolhat onnan adatokat a helyi webes felhasználói felület használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek
@@ -44,7 +44,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box beállítása](data-box-deploy-set-up.md).
+1. Az [ Az Azure Data Box beállítása](data-box-deploy-set-up.md) című oktatóanyagot.
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
@@ -107,22 +107,21 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 Linux-ügyfél használata esetén csatlakoztassa az SMB-megosztást az alábbi parancs használatával. Az alábbi vers paraméter az SMB Linux-gazdagép által támogatott verziója. Az alábbi parancsban adja meg a megfelelő verziót. A Data Box által támogatott SMB-verziókkal kapcsolatban tekintse meg a [Linux-ügyfelek esetében támogatott fájlrendszereket](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) ismertető cikket. 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
-    
-
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
 A Data Box-megosztásokhoz történő csatlakozás után a következő lépés az adatok másolása. Az adatok másolásának megkezdése előtt tekintse át a következőket:
 
-- Ügyeljen rá, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-kat a lapblobba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
--  Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak.
-- Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
-- A következő megoldást javasoljuk:
-    - Ne használjon egyidejűleg SMB-t és NFS-t.
-    - Ne másolja ugyanazokat az adatokat ugyanarra a célhelyre az Azure-ban. 
-     
+* Ügyeljen rá, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-kat a lapblobba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
+*  Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak.
+* Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
+* A következő megoldást javasoljuk:
+  * Ne használjon egyidejűleg SMB-t és NFS-t.
+  * Ne másolja ugyanazokat az adatokat ugyanarra a célhelyre az Azure-ban.
+
   Ilyen esetekben a végeredmény nem garantálható.
-- Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
+* Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
+* Gondoskodjon róla, hogy megtartja a forrásadatok egy másolatát addig, amíg ellenőrizheti, hogy a Data Box valóban átvitte-e az adatokat az Azure Storage-ba.
 
 Az SMB-megosztáshoz való csatlakozás után kezdje meg az adatok másolását. Az adatok másolásához bármilyen SMB-kompatibilis fájlmásoló eszközt használhat (ilyen például a Robocopy). A Robocopyval több másolási feladat is elindítható. Használja az alábbi parancsot:
     
@@ -238,7 +237,7 @@ Minden esetben gondoskodjon róla, hogy a megosztások és a mappák neve, valam
 2. A megosztás eléréséhez szükséges hitelesítő adatokat a Data Box helyi webes kezelőfelületének **Connect & copy** (Kapcsolódás és másolás) lapján tekintheti meg.
 3. Az adatok megosztásokba történő másolásához használjon SMB-kompatibilis fájlmásoló eszközt, mint amilyen a Robocopy. 
 
-Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az SMB-n keresztül Azure Data Box elemre](data-box-deploy-copy-data.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása az Azure Data Boxra SMB-n keresztül](data-box-deploy-copy-data.md).
 
 ## <a name="copy-data-via-nfs"></a>Adatok másolása NFS-en keresztül
 
@@ -249,21 +248,21 @@ Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az SMB-n k
 2. A megosztás eléréséhez szükséges hitelesítő adatokat a Data Box helyi webes kezelőfelületének **Connect & copy** (Kapcsolódás és másolás) lapján tekintheti meg.
 3. Az adatok másolásához használja a `cp` vagy az `rsync` parancsot.
 
-Részletes útmutatásért lépjen az [oktatóanyag: az Adatmásolás az NFS-en keresztül Azure Data Box](data-box-deploy-copy-data-via-nfs.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása az Azure Data Boxra NFS-en keresztül](data-box-deploy-copy-data-via-nfs.md).
 
 ## <a name="copy-data-via-rest"></a>Adatok másolása REST-n keresztül
 
 1. Az adatok Data Box Blob Storage és REST API-k segítségével történő másolásához csatlakozhat *http* vagy *https* protokollal is.
 2. Az adatok Data Box Blob Storage-ba másolásához használhatja az AzCopyt.
 
-Részletes útmutatásért lépjen az [oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API](data-box-deploy-copy-data-via-nfs.md)-kon keresztül.
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása a Data Box Blob Storage-ba REST API-k segítségével](data-box-deploy-copy-data-via-nfs.md).
 
 ## <a name="copy-data-via-data-copy-service"></a>Adatok másolása adatmásolási szolgáltatással
 
 1. Az adatok adatmásolási szolgáltatás használatával történő másolásához létre kell hoznia egy feladatot. A Data Box helyi webes felhasználói felületén lépjen a **Kezelés > Adatok másolása > Létrehozás** lehetőségre. 
 2. Adja meg a paramétereket, és hozzon létre egy feladatot.
 
-Részletes útmutatásért lépjen az [oktatóanyag: az adatmásolási szolgáltatás használata az Azure Data boxba való másolásához](data-box-deploy-copy-data-via-copy-service.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok másolása az Azure Data Boxra az adatmásolási szolgáltatással](data-box-deploy-copy-data-via-copy-service.md).
 
 ## <a name="copy-data-to-managed-disks"></a>Adatok másolása felügyelt lemezekre
 
@@ -271,14 +270,14 @@ Részletes útmutatásért lépjen az [oktatóanyag: az adatmásolási szolgált
 2. A Data Boxhoz SMB- és NFS-megosztásokon keresztül is csatlakozhat.
 3. Ezután SMB- vagy NFS-eszközökkel másolhatja az adatokat.
 
-Részletes útmutatást a következő [oktatóanyagban talál: a Data Box használata az Azure-ban felügyelt lemezként történő adatimportáláshoz](data-box-deploy-copy-data-from-vhds.md).
+Részletes útmutatásért lásd: [Oktatóanyag: Adatok importálása felügyelt lemezekként az Azure-ban a Data Box használatával](data-box-deploy-copy-data-from-vhds.md).
 
 ::: zone-end
 
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

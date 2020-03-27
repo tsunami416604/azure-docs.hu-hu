@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Távmunka támogatása
+      items:
+        - name: Távmunka
+          href: work-remotely-support.md
+        - name: NVA-konfigurációk és távmunka
+          href: nva-work-remotely-support.md
     - name: További információk a VPN Gateway beállításairól
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: Tudnivalók a VPN-eszközökről
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Az OpenVPN-ügyfelek konfigurálása
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: Áttérés az OpenVPN-protokollra vagy az IKEv2-re az SSTP-ről
+          href: ikev2-openvpn-from-sstp.md
         - name: Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: AlwaysOn VPN-eszközalagút konfigurálása
@@ -217,7 +225,7 @@
           items:
             - name: Pont–hely kapcsolati problémák
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: Pont–hely kapcsolati problémák – Mac OS X-alapú VPN-ügyfél
+            - name: Pont–hely kapcsolati problémák – macOS X-alapú VPN-ügyfél
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: Pont–hely – Azure AD-hitelesítés
               href: troubleshoot-ad-vpn-client.md

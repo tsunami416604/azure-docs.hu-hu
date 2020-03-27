@@ -1,5 +1,5 @@
 ---
-title: A vállalati rendszergazdai szerepkörök az Azure-ban | Microsoft Docs
+title: A vállalati rendszergazdai szerepkörök az Azure-ban
 description: Megismerheti a vállalati rendszergazdai szerepköröket az Azure-ban.
 author: bandersmsft
 ms.reviewer: adwise
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: banders
-ms.openlocfilehash: 7b3b3e96f9e065614e8acc5305658c2e1d0abd4a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270217"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202773"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Az Azure Nagyvállalati Szerződés rendszergazdai szerepkörei az Azure-ban
 

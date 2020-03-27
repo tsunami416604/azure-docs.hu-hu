@@ -1,20 +1,19 @@
 ---
-title: Oktatóanyag – Azure-költségvetések létrehozása és kezelése | Microsoft Docs
+title: Oktatóanyag – Azure-költségvetések létrehozása és kezelése
 description: Ez az oktatóanyag segít megtervezni és elszámolni a felhasznált Azure-szolgáltatások költségeit.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/11/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128352"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155936"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -28,6 +27,7 @@ Az oktatóanyagban található példák bemutatják, hogyan hozhat létre és sz
 
 A [költségvetések előfizetésekre az Azure Portal használatával történő alkalmazását](https://www.youtube.com/watch?v=UrkHiUx19Po) ismertető videóban bemutatjuk, hogyan hozhat létre költségvetéseket az Azure-ban a kiadások monitorozásához.
 
+>[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

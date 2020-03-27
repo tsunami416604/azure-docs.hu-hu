@@ -1,77 +1,154 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Az Azure Adatkezelő dokumentációja
+### YamlMime:Landing
+title: Az Azure Data Explorer dokumentációja
+summary: Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatával különféle típusú adatokat gyűjthet, tárolhat és elemezhet, javíthatja az ügyfélélményt, gondoskodhat az eszközök figyeléséről és felgyorsíthatja a műveleteket.
 metadata:
-  title: 'Az Azure Data Explorer gyorsútmutatói, oktatóanyagai, lekérdezés nyelve és API-dokumentumai'
-  description: 'Az Azure Data Explorer egy felhőalapú naplóelemzési platform, amely az alkalmi big data-lekérdezésekre van optimalizálva.'
-  author: orspod
-  ms.author: orspodek
+  title: Az Azure Data Explorer dokumentációja
+  description: Az Azure Data Explorer egy felhőalapú naplóelemzési platform, amely az alkalmi big data-lekérdezésekre van optimalizálva.
   ms.service: data-explorer
   ms.topic: landing-page
-  ms.date: 03/24/2019
-abstract:
-  description: '<p>Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatával különféle típusú adatokat gyűjthet, tárolhat és elemezhet, javíthatja az ügyfélélményt, gondoskodhat az eszközök figyeléséről és felgyorsíthatja a műveleteket.</p><p>Rövid útmutatóink, oktatóanyagaink és a referenciatartalmak segítségével megismerkedhet az Azure Adatkezelő használatával.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Mi az az Azure Data Explorer? (19:47)'
-    href: 'https://youtu.be/D_AJk2lAepw'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Útmutató az Azure Adatkezelő kiépítéséhez és használatához:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Fürt és adatbázis létrehozása
-            href: /azure/data-explorer/create-cluster-database-portal
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Streamelési adatok betöltése az Event Hubsból
-            href: /azure/data-explorer/ingest-data-event-hub
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Adatok lekérése a webes felülettel
-            href: /azure/data-explorer/web-query-data
-          - image:
-              src: /azure/data-explorer/media/index/logo-python.svg
-            text: Üzenetsorba küldött adatok betöltése a Python használatával
-            href: /azure/data-explorer/python-ingest-data
-          - image:
-              src: /azure/data-explorer/media/index/logo-python.svg
-            text: Adatok lekérdezése a Python használatával
-            href: /azure/data-explorer/python-query-data
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan építhet ki végpontok közötti megoldásokat:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/data-explorer/visualize-power-bi">Az Azure Adatkezelőből származó adatok megjelenítése a Power BI használatával</a>
-  - title: Ingyenes Pluralsight videós képzés
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Az Azure Adatkezelő lekérdezési nyelve
-            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-            image:
-              src: /azure/data-explorer/media/index/logo-pluralsight.svg
-              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Nyelvek és API
-            html: '<p><a href="https://aka.ms/kustolangref">Lekérdezési nyelv, felügyeleti parancsok és API-k</a>'
+  author: orspod
+  ms.author: orspodek
+  ms.date: 03/19/2020
+  ms.openlocfilehash: f00722d273ed95d82d433b66750e0a2211f04ee3
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80065631"
+landingContent:
+- title: Tudnivalók az Azure Data Explorerről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Data Explorer?
+      url: data-explorer-overview.md
+  - linkListType: video
+    links:
+    - text: Mi az az Azure Data Explorer? (19:47)
+      url: https://youtu.be/D_AJk2lAepw
+    - text: 'Pluralsight: Kusto lekérdezési nyelv (KQL) az alapoktól'
+      url: https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch
+- title: Fürt és adatbázis létrehozása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Fürt és adatbázis létrehozása
+      url: create-cluster-database-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Python
+      url: create-cluster-database-python.md
+    - text: Azure Resource Manager-sablon
+      url: create-cluster-database-resource-manager.md
+    - text: C#
+      url: create-cluster-database-csharp.md
+    - text: PowerShell
+      url: create-cluster-database-powershell.md
+    - text: Azure CLI
+      url: create-cluster-database-cli.md
+- title: Adatok betöltése az Azure Data Explorerbe
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az adatbetöltés áttekintése
+      url: ingest-data-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Mintaadatok betöltése
+      url: ingest-sample-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egykattintásos feldolgozás
+      url: ingest-data-one-click.md
+    - text: Streamek feldolgozása
+      url: ingest-data-streaming.md
+    - text: Python
+      url: python-ingest-data.md
+    - text: Eseményközpont az Azure Portal használatával
+      url: ingest-data-event-hub.md
+    - text: Event Grid az Azure Portal használatával
+      url: ingest-data-event-grid.md
+    - text: A LightIngest telepítése és használata
+      url: lightingest.md
+- title: Adatok lekérdezése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Adatok lekérdezése a webes felülettel
+      url: web-query-data.md
+  - linkListType: tutorial
+    links:
+    - text: KQL-lekérdezések írása
+      url: write-queries.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adatok lekérdezése az Azure Data Lake-ben
+      url: data-lake-query-data.md
+    - text: Adatok lekérdezése a Python használatával
+      url: python-query-data.md
+    - text: Idősorozat-elemzések
+      url: time-series-analysis.md
+  - linkListType: reference
+    links:
+    - text: KQL– rövid áttekintés
+      url: kql-quick-reference.md
+    - text: Kusto Query Language
+      url: https://docs.microsoft.com/azure/kusto/query/
+- title: Adatok vizualizációja
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Az adatmegjelenítés áttekintése
+      url: viz-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Power BI-összekötő
+      url: power-bi-connector.md
+    - text: Grafana
+      url: grafana.md
+    - text: ODBC-összekötő
+      url: connect-odbc.md
+    - text: Tableau
+      url: tableau.md
+    - text: Kibana (K2Bridge-összekötő)
+      url: k2bridge.md
+    - text: Redash
+      url: redash.md
+    - text: Sisense
+      url: sisense.md
+- title: Integráció más eszközökkel
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Integráció a Data Factoryvel
+      url: data-factory-integration.md
+    - text: Apache Spark-összekötő
+      url: spark-connector.md
+    - text: Microsoft Flow-összekötő
+      url: flow.md
+    - text: Azure DevOps
+      url: devops.md
+- title: Erőforrások és adatok kezelése és monitorozása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Fürtök horizontális skálázásának kezelése
+      url: manage-cluster-horizontal-scaling.md
+    - text: Fürtök vertikális skálázásának kezelése
+      url: manage-cluster-vertical-scaling.md
+    - text: Követő adatbázisok
+      url: follower.md
+    - text: Adatbázis-engedélyek kezelése
+      url: manage-database-permissions.md
+    - text: Metrikák használata a fürtállapot monitorozásához
+      url: using-metrics.md
+    - text: Diagnosztikai naplók használata a betöltés monitorozásához
+      url: using-diagnostic-logs.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Felügyeleti parancsok
+      url: https://docs.microsoft.com/azure/kusto/management/
+    - text: Azure Data Explorer API
+      url: https://docs.microsoft.com/azure/kusto/api/

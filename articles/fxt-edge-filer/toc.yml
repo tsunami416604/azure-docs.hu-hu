@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7 – A fürt hálózati beállításainak konfigurálása
       href: fxt-configure-network.md
+    - name: 8 – Ügyfelek csatlakoztatása
+      href: fxt-mount-clients.md
 - name: Útmutatók
   items:
-    - name: Ügyfelek csatlakoztatása
-      href: fxt-mount-clients.md
     - name: Az Azure FXT Edge Filer hardver monitorozása
       href: fxt-monitor.md
     - name: Hardvercsomópont biztonságos kikapcsolása

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199160"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065691"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>A Microsoft-ügyfélszerződéshez tartozó, az Azure használati adatait és díjait tartalmazó fájlban foglalt kifejezések
 
@@ -88,6 +88,8 @@ meterCategory | A fogyasztásmérő osztályozási kategóriájának neve. Péld
 meterSubCategory | A fogyasztásmérő osztályozási alkategóriájának neve
 meterRegion | Azon régió neve, ahol a szolgáltatáshoz tartozó fogyasztásmérő elérhető. Az adatközpont helye, ha a szolgáltatás díjszabása az adatközpont helyétől is függ.
 offer | A megvásárolt ajánlat neve
+PayGPrice | Az erőforrás kiskereskedelmi ára.
+PricingModel | Egy azonosító, amely azt jelzi, mi alapján alakul a mérőszám díjszabása (értékek: igény szerinti, foglalás, kihasználatlan)
 productId | Annak a terméknek az egyedi azonosítója, amelyre vonatkozóan a díjak keletkeznek
 product | Annak a terméknek a neve, amelyre vonatkozóan a díjak keletkeznek
 subscription ID | Annak az előfizetésnek az egyedi azonosítója, amelyre vonatkozóan a díjak keletkeznek

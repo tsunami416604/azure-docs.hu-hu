@@ -1,5 +1,5 @@
-- name: A Data Lake Storage Gen1 dokumentációja
-  href: index.md
+- name: Az 1. generációs Data Lake Storage dokumentációja
+  href: index.yml
 - name: A Data Lake Storage Gen2-re történő váltás dokumentációja
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: Áttekintés

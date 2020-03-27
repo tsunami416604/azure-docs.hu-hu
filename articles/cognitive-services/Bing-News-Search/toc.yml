@@ -28,14 +28,8 @@
           href: go.md
     - name: SDK
       items:
-        - name: 'A C# használata'
-          href: news-search-sdk-quickstart.md
-        - name: A Node.js használata
-          href: news-search-sdk-node-quickstart.md
-        - name: A Python használata
-          href: news-sdk-python-quickstart.md
-        - name: A Java használata
-          href: news-sdk-java-quickstart.md
+        - name: Bing News Search-ügyfélkódtár
+          href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás létrehozása

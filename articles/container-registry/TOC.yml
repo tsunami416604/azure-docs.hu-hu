@@ -35,6 +35,10 @@
     - name: Alapelvek
       expanded: false
       items:
+        - name: Biztonság
+          items:
+            - name: Biztonsági alapkonfiguráció
+              href: security-baseline.md
         - name: Tárolóregisztrációs adatbázis termékváltozatai és korlátai
           href: container-registry-skus.md
         - name: 'Beállításjegyzékek, adattárak és rendszerképek'
@@ -120,7 +124,7 @@
         - name: Figyelés
           expanded: false
           items:
-            - name: Diagnosztikai és auditnaplók (előzetes verzió)
+            - name: Diagnosztikai és auditnaplók
               href: container-registry-diagnostics-audit-logs.md
             - name: Megfelelőség naplózása az Azure Policyval (előzetes verzió)
               href: container-registry-azure-policy.md

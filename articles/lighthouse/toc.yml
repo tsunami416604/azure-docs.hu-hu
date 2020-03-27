@@ -44,9 +44,14 @@
     - name: Ügyfelek megtekintése és kezelése
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Az Azure Monitor-naplók nagy léptékű használata
-      displayName: 'log, analytics, analyze, activity'
-      href: ./how-to/monitor-at-scale.md
+    - name: Azure Monitor-integráció
+      items:
+        - name: Az Azure Monitor-naplók nagy léptékű használata
+          displayName: 'log, analytics, analyze, activity'
+          href: ./how-to/monitor-at-scale.md
+        - name: Delegálási módosítások monitorozása
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
     - name: Azure Policy-integráció
       items:
         - name: Szabályzat nagy léptékű üzembe helyezése

@@ -1,20 +1,19 @@
 ---
-title: A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával | Microsoft Docs
+title: A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 description: Ez a cikk segítséget nyújt a felhővel kapcsolatos befektetések leghatékonyabb kihasználásához, a költségek csökkentéséhez és annak kiértékeléséhez, mire költ pénzt.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383535"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157211"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -116,7 +115,7 @@ További információ: [Azure-díjkalkulátor](https://azure.microsoft.com/prici
 
 Az Azure Migrate egy olyan szolgáltatás, amely kiértékeli a szervezet aktuális számítási feladatait a helyszíni adatközpontokban. Betekintést nyújt az Ön számára abba, hogy mire lehet szüksége egy helyettesítő Azure-megoldástól. A Migrate először a helyszíni gépek vizsgálatát végzi el, hogy meghatározza a migrálás megvalósíthatóságát. Ezután javaslatot tesz egy Azure-beli virtuálisgép-méretre a teljesítmény maximalizálásához. Végül pedig megbecsüli az Azure-alapú megoldás költségét.
 
-További információ: [Azure Migrate](../../site-recovery/migrate-overview.md).
+További információ: [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
 
 ## <a name="analyze-and-manage-your-costs"></a>Költségek elemzése és kezelése
 
@@ -125,6 +124,11 @@ Kövesse figyelemmel, hogyan változnak a szervezet költségei az idő múlás�
 ### <a name="organize-and-tag-your-resources"></a>Erőforrások rendszerezése és címkézése
 
 Rendszerezze költségtudatosan az erőforrásokat. Az előfizetések és erőforráscsoportok létrehozásakor gondoljon a kapcsolódó költségekért felelős csapatokra. Ügyeljen rá, hogy a jelentéskészítés során érvényesüljenek a szervezet szempontjai. Az előfizetések és az erőforráscsoportok kiválóan használható gyűjtők a költségek szervezeten belüli rendszerezéséhez és elosztásához. A címkék jó módszert kínálnak a költségek elosztására. A címkéket szűrőként is lehet használni. A címkéket csoportosításra is használhatja az adatok elemzésekor és a költségek vizsgálatakor. A Nagyvállalati Szerződéssel rendelkező ügyfelek részlegeket is létrehozhatnak, és előfizetéseket rendelhetnek azokhoz. Az Azure-beli költségalapú szervezés segít abban, hogy a szervezet megfelelő személyei folyamatosan elszámoltathatók maradjanak a csapataik költéseiért.
+
+Ha meg szeretné tudni, milyen eszközök állnak a rendelkezésére, ha ki szeretné kényszeríteni a méretezhető erőforrás-címkézést a cégén vagy szervezetén belül, tekintse meg a [címkeszabályzatok Azure Cost Managementtel történő áttekintésével](https://www.youtube.com/watch?v=nHQYcYGKuyw) foglalkozó videót.
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>Költségelemzés használata
 
@@ -190,5 +194,5 @@ További információért lásd az [Azure Hybrid Benefit megtakarításkalkulát
 
 Az Azure olyan szolgáltatást is biztosít, amellyel a kedvezményes díjszabás érdekében az Azure többletkapacitását kihasználó szolgáltatásokat hozhat létre. További információ: [Alacsony prioritású virtuális gépek használata a Batch szolgáltatással](../../batch/batch-low-pri-vms.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ha először használja a Cost Managementet, olvassa el a [Mi az Azure Cost Management?](../cost-management-billing-overview.md) című cikket, amely ismerteti, hogy milyen segítséget nyújt ez a szolgáltatás az Azure-költségek monitorozásához és szabályozásához, valamint az erőforrás-használat optimalizálásához.

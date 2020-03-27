@@ -9,18 +9,8 @@
       href: whats-new.md
 - name: Rövid útmutatók
   items:
-    - name: Az ügyfél-SDK használata
-      items:
-        - name: .NET SDK
-          href: quickstarts-sdk/csharp-sdk.md
-        - name: Python SDK
-          href: quickstarts-sdk/python-sdk.md
-        - name: Java SDK
-          href: quickstarts-sdk/java-sdk.md
-        - name: Node.js SDK
-          href: quickstarts-sdk/node-sdk.md
-        - name: Go SDK
-          href: quickstarts-sdk/go-sdk.md
+    - name: Az ügyfélkódtár használata
+      href: quickstarts-sdk/client-library.md
     - name: A REST API használata
       items:
         - name: Távoli rendszerkép elemzése

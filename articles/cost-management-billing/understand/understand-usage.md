@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199024"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065641"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése
 
@@ -74,10 +74,12 @@ MeterName | Összes | A fogyasztásmérő neve.
 MeterRegion | Összes | Az adatközpont neve a hely alapján árazott szolgáltatások esetén. Lásd: Hely.
 MeterSubCategory | Összes | A fogyasztásmérő osztályozási alkategóriájának neve.
 OfferId<sup>1</sup> | Összes | A megvásárolt ajánlat neve.
+PayGPrice | Összes | Az erőforrás kiskereskedelmi ára.
 PartNumber<sup>1</sup> | EA, PAYG | Az adott fogyasztásmérő árképzéséhez használt azonosító.
 PlanName | EA, PAYG | A Marketplace-csomag neve.
 PreviousInvoiceId | MCA | Hivatkozás az eredeti számlára, ha ez a számla visszatérítésről lett kiállítva.
 PricingCurrency | MCA | Az egyeztetett árakon alapuló árképzéshez használt pénznem.
+PricingModel | Összes | Egy azonosító, amely azt jelzi, mi alapján alakul a mérőszám díjszabása. (Értékek: igény szerinti, foglalás, kihasználatlan)
 Product | Összes | A termék neve.
 ProductId<sup>1</sup> | MCA | A termék egyedi azonosítója.
 ProductOrderId | Összes | A termékrendelés egyedi azonosítója.

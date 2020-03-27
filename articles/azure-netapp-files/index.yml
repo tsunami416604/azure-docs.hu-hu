@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure NetApp Files dokumentációja
+summary: Ez az oktatóanyag bemutatja, hogyan használja az Azure NetApp Files szolgáltatást NetApp-fiókok, kapacitáskészletek és kötetek létrehozására és kezelésére, exportálási szabályzat konfigurálására, kötet virtuális géphez való csatlakoztatására és pillanatképek kezelésére.
 metadata:
   title: Az Azure NetApp Files dokumentációja
-  description: 'Ismerje meg, hogyan állíthat be, érhet el és kezelhet köteteket az Azure NetApp Files használatával.'
-  author: b-juche
-  ms.author: b-juche
+  description: Ismerje meg, hogyan állíthat be, érhet el és kezelhet köteteket az Azure NetApp Files használatával.
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 'Ez az oktatóanyag bemutatja, hogyan használja az Azure NetApp Files szolgáltatást NetApp-fiókok, kapacitáskészletek és kötetek létrehozására és kezelésére, exportálási szabályzat konfigurálására, kötet virtuális géphez való csatlakoztatására és pillanatképek kezelésére. <p>Az Azure NetApp Files használatához hozzáféréssel kell rendelkeznie az Azure NetApp Files szolgáltatáshoz. A hozzáférés kéréséről lásd: <a href="azure-netapp-files-register#waitlist"> Várólista-kérelem küldése</a>.</p>'
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: 'Az Azure NetApp Files beállítása, és egy kötet létrehozása a következő használatával:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure Portal
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager-sablonok</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369052"
+landingContent:
+- title: Tudnivalók az Azure NetApp Filesról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure NetApp Files?
+      url: azure-netapp-files-introduction.md
+    - text: A tárhely-hierarchia ismertetése
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: Szolgáltatásszintek
+      url: azure-netapp-files-service-levels.md
+    - text: A teljesítménnyel kapcsolatos megfontolások
+      url: azure-netapp-files-performance-considerations.md
+    - text: Irányelvek hálózattervezéshez
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Azure NetApp Files-videók
+      url: azure-netapp-files-videos.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Várólista-kérelem küldése
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: Az Azure NetApp Files beállítása és NFS-kötet létrehozása
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: Létrehozás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: NetApp-fiók létrehozása
+      url: azure-netapp-files-create-netapp-account.md
+    - text: Kapacitáskészlet beállítása
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: Alhálózat delegálása az Azure NetApp Fileshoz
+      url: azure-netapp-files-delegate-subnet.md
+    - text: SMB-kötet létrehozása az Azure NetApp Files számára
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: NFS-kötet létrehozása az Azure NetApp Files számára
+      url: azure-netapp-files-create-volumes.md
+- title: Fejlesztés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: REST API
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: Azure NetApp Files SDK-k és CLI-eszközök
+      url: azure-netapp-files-sdk-cli.md

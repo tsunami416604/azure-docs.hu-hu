@@ -1,25 +1,26 @@
 ---
-title: Google Cloud Platform-fiók csatlakoztatása a Cloudynhez az Azure-ban | Microsoft Docs
+title: Google Cloud Platform-fiók csatlakoztatása a Cloudynhez az Azure-ban
 description: Csatlakoztasson egy Google Cloud Platform-fiókot a költségek és a használati adatok Cloudyn-jelentésekben való megtekintéséhez.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e10d39f744b40e7eb9058841eed9ff0f0e55d44
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770189"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474645"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform-fiók csatlakoztatása
 
 Csatlakoztathatja meglévő Google Cloud Platform-fiókját a Cloudynhez. Miután csatlakoztatta a fiókot a Cloudynhez, a költség- és a használati adatok elérhetők lesznek a Cloudyn-jelentésekben. Ez a cikk segítséget nyújt a Google-fiók konfigurálásához és a Cloudynhez való csatlakoztatásához.
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="collect-project-information"></a>Projektadatok gyűjtése
 

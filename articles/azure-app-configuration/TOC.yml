@@ -92,6 +92,8 @@
   items:
     - name: Egy szolgáltatás engedélyezése a felhasználók egy része számára
       href: howto-feature-filters-aspnet-core.md
+    - name: Környezetenkénti konfigurálás címkék használatával
+      href: howto-labels-aspnet-core.md
     - name: Konfigurációs adatok importálása vagy exportálása
       href: howto-import-export-data.md
     - name: Események átirányítása egyéni végponthoz

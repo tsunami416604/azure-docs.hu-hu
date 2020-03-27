@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Az 1. generációs Azure Data Lake Storage dokumentációja
+summary: Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet. A 2. generációs Azure Data Lake Storage általánosan elérhető. Javasoljuk, hogy már ma kezdje el használni.
+metadata:
+  title: Az 1. generációs Azure Data Lake Storage dokumentációja
+  description: Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet.
+  ms.service: data-lake-store
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf688b1230c8fd4eecba08ce361e92b9030a241f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79410091"
+landingContent:
+- title: Tudnivalók az 1. generációs Azure Data Lake Storage-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az 1. generációs Azure Data Lake Storage?
+      url: data-lake-store-overview.md
+    - text: Összehasonlítás az Azure Storage szolgáltatással
+      url: data-lake-store-comparison-with-blob-storage.md
+    - text: A Data Lake Storage Gen2-re történő váltás dokumentációja
+      url: ../storage/data-lake-storage/introduction.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Portal
+      url: data-lake-store-get-started-portal.md
+    - text: Azure PowerShell
+      url: data-lake-store-get-started-powershell.md
+    - text: Azure CLI
+      url: data-lake-store-get-started-cli-2.0.md
+- title: Adatok betöltése és áthelyezése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Data Factory használata
+      url: ../data-factory/load-azure-data-lake-store.md
+    - text: A Storage Explorer használata
+      url: data-lake-store-in-storage-explorer.md
+    - text: Az AdlCopy használata
+      url: data-lake-store-copy-data-azure-storage-blob.md
+    - text: A DistCp használata
+      url: data-lake-store-copy-data-wasb-distcp.md
+    - text: A Sqoop használata
+      url: data-lake-store-data-transfer-sql-sqoop.md
+- title: Adatok védelme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Biztonsági áttekintés
+      url: data-lake-store-security-overview.md
+    - text: Hozzáférés-vezérlés
+      url: data-lake-store-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: Biztonságos adattárolás
+      url: data-lake-store-secure-data.md
+    - text: Titkosítás
+      url: data-lake-store-encryption.md
+    - text: Virtuális hálózat integrációja
+      url: data-lake-store-network-security.md
+- title: Hitelesítés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hitelesítési lehetőségek
+      url: data-lakes-store-authentication-using-azure-active-directory.md
+  - linkListType: how-to-guide
+    links:
+    - text: Végfelhasználói hitelesítés
+      url: data-lake-store-end-user-authenticate-using-active-directory.md
+    - text: Szolgáltatások közötti hitelesítés
+      url: data-lake-store-service-to-service-authenticate-using-active-directory.md
+- title: Fájlrendszeri műveletek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-data-operations-net-sdk.md
+    - text: Java SDK
+      url: data-lake-store-get-started-java-sdk.md
+    - text: REST API
+      url: data-lake-store-data-operations-rest-api.md
+    - text: Python
+      url: data-lake-store-data-operations-python.md
+- title: Fiókkezelési műveletek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-get-started-net-sdk.md
+    - text: REST API
+      url: data-lake-store-get-started-rest-api.md
+    - text: Python
+      url: data-lake-store-get-started-python.md

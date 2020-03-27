@@ -1,8 +1,8 @@
-- name: A Front Door Service dokumentációja
+- name: A Front Door dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Azure Front Door Service?
+    - name: Mi az az Azure Front Door?
       href: front-door-overview.md
 - name: Rövid útmutatók
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: Gyorsítótárazás a bejárati ajtóval
       href: front-door-caching.md
+    - name: Front Door – GYIK
+      href: front-door-faq.md
     - name: Geoszűrés
       href: front-door-geo-filtering.md
     - name: Állapotminták
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: URL-átirányítás
       href: front-door-url-redirect.md
+    - name: Helyettesítő karaktert tartalmazó tartomány
+      href: front-door-wildcard-domain.md
 - name: Útmutatók
   items:
     - name: Forgalom átirányítása
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: Engedélyezett hitelesítésszolgáltatók
           href: front-door-troubleshoot-allowed-ca.md
-- name: GYIK
-  items:
-    - name: Front Door – GYIK
-      href: front-door-faq.md
 - name: Referencia
   items:
     - name: Azure CLI

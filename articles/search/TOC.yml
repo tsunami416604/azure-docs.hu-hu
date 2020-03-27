@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: Relevanciahangolás (relevanciaprofilok)
           href: index-add-scoring-profiles.md
+        - name: Relevanciahangolás (hasonlósági algoritmus)
+          href: index-ranking-similarity.md
     - name: Felkészülés
       items:
         - name: Szint kiválasztása

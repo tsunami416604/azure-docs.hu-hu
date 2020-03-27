@@ -84,7 +84,7 @@
           href: hana-large-instance-virtual-machine-migration.md
 - name: SAP HANA az Azure-beli virtuális gépeken
   items:
-    - name: Egyetlen példánnyal rendelkező SAP HANA telepítése
+    - name: SAP HANA telepítése Azure-beli virtuális gépeken
       href: hana-get-started.md
     - name: S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója
       href: cal-s4h.md

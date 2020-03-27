@@ -1,24 +1,26 @@
 ---
-title: Oktatóvideók az Azure-beli Cloudyn használatához | Microsoft Docs
+title: Oktatóvideók az Azure-beli Cloudyn használatához
 description: A Cloudynhoz készült oktatóvideók végigvezetik Önt az első lépéseken, és bemutatják a funkciók használatát.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 3344dfb1518eeb495b019138c72d566ce4064017
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9acad813914614fd2cdaad4fd348e9e19225c67e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201101"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463764"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>A Cloudyn használatát lépésről lépésre bemutató oktatóvideók
 
 A következő videók végigvezetik Önt a Cloudyn használatának első lépésein, és bemutatják a funkciók használatát. A Cloudyn támogatja a többfelhős költségkövetést és optimalizálást az olyan felhőszolgáltatók között, mint a Microsoft Azure, az Amazon Web Services és a Google Cloud Platform.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="overview-video"></a>Áttekintő videó
 

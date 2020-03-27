@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Szöveg előfeldolgozása
       href: preprocess-text.md
+    - name: Rejtett Dirichlet-lefoglalás
+      href: latent-dirichlet-allocation.md
 - name: Ajánlás
   items:
     - name: Ajánló értékelése
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: SVD-ajánló betanítása
       href: train-svd-recommender.md
+- name: Rendellenességek észlelése
+  items:
+    - name: PCA-alapú rendellenesség-észlelés
+      href: pca-based-anomaly-detection.md
+    - name: Rendellenesség-észlelési modell betanítása
+      href: train-anomaly-detection-model.md
 - name: Modulhibák és hibaelhárítás
   href: designer-error-codes.md

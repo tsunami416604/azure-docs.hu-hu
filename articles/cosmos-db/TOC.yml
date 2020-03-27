@@ -89,7 +89,7 @@
       href: relational-nosql.md
     - name: Globális terjesztés
       items:
-        - name: Globális terjesztés áttekintése
+        - name: A globális terjesztés áttekintése
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: Konzisztenciaszintek
@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Speciális fenyegetésvédelem
-        - name: Beépített biztonsági vezérlők
-          href: cosmos-db-security-controls.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Online biztonsági mentés és igény szerinti helyreállítás
@@ -600,7 +600,7 @@
             - name: Csatorna módosítása
               href: cassandra-change-feed.md
             - name: A Spring Data tárolása és kezelése
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra és Spark
               items:
                 - name: Introduction (Bevezetés)
@@ -709,7 +709,7 @@
             - name: Adatindexelés felügyelete
               href: mongodb-indexing.md
             - name: A Spring Data tárolása és kezelése
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: A MongoDB bővítmény parancsai
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: Gráfadatok vizualizációja
               href: graph-visualization.md
             - name: A Spring Data tárolása és kezelése
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Kezelés Resource Manager-sablonokkal
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -989,11 +989,11 @@
           href: use-notebook-features-and-commands.md
     - name: Kiszolgálóoldali programozás
       items:
-        - name: 'Tárolt eljárások, triggerek és felhasználói függvények írása'
+        - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények írása'
           href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Tárolt eljárások és triggerek írása a JavaScript lekérdezési API-val
+        - name: Tárolt eljárások és eseményindítók írása a JavaScript lekérdezési API-val
           href: how-to-write-javascript-query-api.md
-        - name: 'Tárolt eljárások, triggerek és felhasználói függvények használata'
+        - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények használata'
           href: how-to-use-stored-procedures-triggers-udfs.md
     - name: Biztonság
       items:
@@ -1073,9 +1073,9 @@
         - name: Az Azure Event Hubs és az Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: A Spring Boot Starter használata
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Spring Data fejlesztői útmutató
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC-illesztő
           href: odbc-driver.md
     - name: Adatok migrálása a Cosmos DB-re

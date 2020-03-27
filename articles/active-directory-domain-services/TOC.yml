@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: Biztonsági naplózási események engedélyezése
           href: security-audit-events.md
+        - name: Auditesemények elemzése Azure Monitor-munkafüzetekkel
+          href: use-azure-monitor-workbooks.md
     - name: Virtuális gépek csatlakoztatása tartományhoz
       items:
         - name: Windows Server rendszerű virtuális gép sablonból

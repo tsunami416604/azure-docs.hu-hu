@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: StorSimple-dokumentáció
+summary: Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál.
+metadata:
+  title: StorSimple-dokumentáció
+  description: Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál.
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540306"
+landingContent:
+- title: Tudnivalók a StorSimple-ről
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A StorSimple összehasonlítása az Azure File Sync-kel és a Data Box Edge-dzsel
+      url: storsimple-8000-choose-storage-solution.md
+- title: StorSimple Virtual Array
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a StorSimple Virtual Array?
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: Követelmények áttekintése
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000 sorozat
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a StorSimple 8000 sorozat?
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: Követelmények áttekintése
+      url: storsimple-8000-system-requirements.md
+- title: StorSimple Data Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a StorSimple Data Manager?
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: Felügyelet az Azure Portalon
+      url: storsimple-data-manager-ui.md
+- title: StorSimple felhőszolgáltatók számára program
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a StorSimple felhőszolgáltatók számára program?
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: Üzembe helyezés
+      url: storsimple-partner-csp-deploy.md

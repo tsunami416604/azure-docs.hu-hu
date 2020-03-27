@@ -1,5 +1,5 @@
 ---
-title: Azure-regisztráció Office 365-fiókkal | Microsoft Docs
+title: Azure-regisztráció Office 365-fiókkal
 description: Tudnivalók Azure-előfizetés létrehozásáról egy Office 365-fiók használatával
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199585"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238108"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Regisztrálás Azure-előfizetésre Office 365-fiókkal
 Ha rendelkezik Office 365-előfizetéssel, akkor Office 365-fiókja segítségével létrehozhat Azure-előfizetést. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) Office 365-felhasználónevével és -jelszavával. Ha virtuális gépeket szeretne beállítani, vagy más Azure-szolgáltatásokat szeretne használni, regisztrálnia kell egy Azure-előfizetést. Azure-előfizetését megoszthatja másokkal, és [szerepköralapú hozzáférés-vezérléssel kezelheti az Azure-előfizetéshez és -erőforrásokhoz való hozzáférést](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -35,7 +35,7 @@ Időt takaríthat meg, és elkerülheti egy újabb fiók létrehozását, ha Off
 
 - Ha a szervezetből további személyeket is szeretne hozzáadni az Azure-előfizetéshez, tekintse meg [a hozzáférés Azure Portalon történő kezelésének első lépéseit](../../role-based-access-control/overview.md) ismertető részt.
 
-## <a id="more-about-subs">További információk az Azure- és az Office 365-előfizetésekről</a>
+## <a name=""></a><a id="more-about-subs">További információk az Azure- és az Office 365-előfizetésekről</a>
 Az Office 365 és az Azure az Azure AD szolgáltatást használja a felhasználók és az előfizetések kezeléséhez. Az Azure-címtárak olyan tárolók, amelyekben csoportosíthatja a felhasználókat és az előfizetéseket. Ha ugyanazokat a felhasználói fiókokat szeretné használni az Azure- és az Office 365-előfizetésekhez, győződjön meg arról, hogy az Azure-előfizetések ugyanabban a címtárban lettek létrehozva, mint az Office 365-előfizetések. Tartsa szem előtt az alábbi szempontokat:
 
 * Az előfizetések címtárakban jönnek létre.

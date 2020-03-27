@@ -1,20 +1,18 @@
 ---
-title: Azure Cost Management-adatok ismertetése | Microsoft Docs
+title: Az Azure Cost Management adatainak ismertetése
 description: Ez a cikk segít az Azure Cost Managementben található adatok, valamint azok feldolgozási, gyűjtési, megjelenítési és lezárási gyakoriságának jobb megértésében.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245370"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203015"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -165,9 +163,9 @@ Függetlenül attól, hogy a [Cost Management API-k](../index.yml), a Power BI v
 A Cost Managementben megjelenített költségek kerekítve vannak. A Query API által visszaadott költségek nincsenek kerekítve. Például:
 
 - Költségelemzés az Azure Portalon – A díjak kerekítése standard kerekítési szabályok szerint történik: a 0,5-nél nagyobb értékeket felfelé, az egyéb költségeket lefelé kerekíti a rendszer. Kerekítés csak értékek megjelenítésekor történik. Az adatfeldolgozás és -összesítés során nem történik kerekítés. A költségelemzés a következőképpen összesíti a költségeket:
-  - 1\. díj: 0,004 dollár
+  -    1\. díj: 0,004 dollár
   - 2\. díj: 0,004 dollár
-  - A díjak összesítésének megjelenítése: 0,004 + 0,004 = 0,008. A megjelenő díj 0,01 dollár.
+  -    A díjak összesítésének megjelenítése: 0,004 + 0,004 = 0,008. A megjelenő díj 0,01 dollár.
 - Query API – A díj nyolc tizedesjegyig jelenik meg, és nem történik kerekítés.
 
 

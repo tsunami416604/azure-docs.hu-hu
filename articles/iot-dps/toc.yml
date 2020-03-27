@@ -171,50 +171,46 @@
       href: 'https://github.com/Azure/azure-iot-sdk-java'
     - name: .NET-hez készült Azure IoT SDK
       href: 'https://github.com/Azure/azure-iot-sdk-csharp'
-- name: Kapcsolódó témakörök
-  items:
-    - name: Megoldások
-      items:
-        - name: IoT-központ
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-accelerators
-    - name: Platformszolgáltatások
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge-megoldások
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
-    - name: 'Azure IoT-minták C#-hoz (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: Azure IoT-minták Node.js-hez
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: Azure IoT-minták Javához
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: Azure IoT-minták Pythonhoz
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: Azure IoT-minták iOS platformhoz
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Azure IoT Hub
-      href: 'https://azure.microsoft.com/services/iot-hub/'
+    - name: Azure IoT-szolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK-k
+      items:
+        - name: IoT szolgáltatásoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: Azure IoT-minták
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS platform
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure Certified for IoT eszközkatalógus
       href: 'https://catalog.azureiotsolutions.com/'
     - name: Azure IoT fejlesztői központ
@@ -223,8 +219,8 @@
       href: iot-dps-customer-data-requests.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Device Explorer eszköz
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: Azure IoT Explorer-eszköz
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics eszköz
       href: 'https://github.com/Azure/iothub-diagnostics'
     - name: MSDN-fórum

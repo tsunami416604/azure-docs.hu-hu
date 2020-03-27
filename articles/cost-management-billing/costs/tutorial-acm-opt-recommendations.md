@@ -3,21 +3,25 @@ title: Oktatóanyag – Az Azure-költségek csökkentése javaslatokkal
 description: Ezen oktatóanyag segítségével csökkentheti Azure-költségeit, ha követi az optimalizálással kapcsolatos javaslatokat.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245413"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155919"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: Javaslatok alapján történő költségoptimalizálás
 
 Az Azure Cost Management az Azure Advisor segítségével tesz költségoptimalizálási javaslatokat. Az Azure Advisor a tétlen és kihasználatlan erőforrások azonosításával segítséget nyújt a hatékonyság optimalizálásában és javításában. Ez az oktatóanyag bemutat egy példát, ahol azonosíthatja az alacsony kihasználtságú Azure-erőforrásokat, majd intézkedéseket tehet a költségek csökkentésére.
+
+Ha többet szeretne megtudni arról, hogyan optimalizálhatja a költségeit az Advisorral, tekintse meg a videót, amely [a felhővel kapcsolatos befektetések Azure Cost Managementben történő optimalizálásával](https://www.youtube.com/watch?v=cSNPoAb-TNc) foglalkozik.
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

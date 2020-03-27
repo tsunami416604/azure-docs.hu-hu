@@ -98,6 +98,8 @@
   items:
     - name: Az Event Griddel kapcsolatos fogalmak
       href: concepts.md
+    - name: Rendszertémakörök
+      href: system-topics.md
     - name: Biztonság
       items:
         - name: Hitelesítés

@@ -1,26 +1,25 @@
 ---
 title: Az Azure Cost Management adataihoz való hozzáférés hozzárendelése
 description: Ez a cikk azt mutatja be, hogyan rendelhet hozzá az Azure Cost Management adataira vonatkozó engedélyeket a különböző hozzáférési hatókörök esetén.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 84637f74408724fec300a2a5cb49cd9f460ed395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201084"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065829"
 ---
 # <a name="assign-access-to-cost-management-data"></a>A Cost Management adataihoz való hozzáférés hozzárendelése
 
-Az Azure nagyvállalati szerződéssel rendelkező felhasználók esetén az Azure Portalon és az Enterprise (EA) Portalon megadott engedélyek együttese határozza meg, hogy a felhasználók milyen szintű hozzáféréssel rendelkeznek az Azure Cost Management adataihoz. Más típusú Azure-fiókkal rendelkező felhasználók esetén a felhasználóknak a Cost Management adataihoz való hozzáférési szintje egyszerűbben határozható meg az Azure szerepköralapú hozzáférés-vezérlésével. Ez a cikk a Cost Management adataihoz való hozzáférés hozzárendelését mutatja be. Az engedélyek együttesének hozzárendelését követően a felhasználó annak a hatókörnek az alapján tekintheti meg a Cost Management adatait, amelyhez hozzáférése van, illetve amelyet kiválaszt az Azure Portalon.
+Az Azure nagyvállalati szerződéssel rendelkező felhasználók esetén az Azure Portalon és az Enterprise (EA) Portalon megadott engedélyek együttese határozza meg, hogy a felhasználók milyen szintű hozzáféréssel rendelkeznek az Azure Cost Management adataihoz. Más típusú Azure-fiókkal rendelkező felhasználók esetén a felhasználóknak a Cost Management adataihoz való hozzáférési szintje egyszerűbben határozható meg az Azure szerepköralapú hozzáférés-vezérlésével. Ez a cikk a Cost Management adataihoz való hozzáférés hozzárendelését mutatja be. Az engedélyek együttesének hozzárendelését követően a felhasználó saját hozzáférési hatóköre és azon hatókör alapján tekintheti meg a Cost Management adatait, amelyet kiválaszt az Azure Portalon.
 
-A felhasználó által kiválasztott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használatakor a felhasználók nem választhatnak ki egyszerre több hatókört. Ehelyett egy magasabb szintű hatókör választhatnak ki, amely alá több, alacsonyabb szintű gyermekhatókör is tartozik, és szűrő alkalmazásával kereshetik meg a kívánt adatokat. Az adatkonszolidáció azért fontos, mert nem minden személy rendelkezhet hozzáféréssel egy szülőhatókörhöz, amely több gyermekhatókört is magába foglal.
+A felhasználó által kiválasztott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használatakor a felhasználók nem választhatnak ki egyszerre több hatókört. Ehelyett egy magasabb szintű hatókör választhatnak ki, amely alá több, alacsonyabb szintű gyermekhatókör is tartozik, és szűrő alkalmazásával kereshetik meg a kívánt adatokat. Az adatkonszolidációval azért fontos megismerkedni, mert nem mindenki rendelkezhet hozzáféréssel egy szülőhatókörhöz, amely több gyermekhatókört is magába foglal.
 
 A [How to assign access with Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) (Hozzáférés hozzárendelése az Azure Cost Managementtel) című videóból megtudhatja, hogyan rendelhet hozzá hozzáférést az Azure szerepköralapú hozzáférés-vezérlésével a költségek és díjak megtekintéséhez.
 
@@ -58,11 +57,26 @@ Az egyéb Azure-előfizetések költségadatainak megtekintéséhez a felhaszná
 
 Számos különféle hatókör érhető el, miután a partnerek előkészítik az ügyfeleket egy Microsoft-ügyfélszerződéshez. A CSP-ügyfelek ezután akkor használhatják a Cost Management funkcióit, ha a CSP-partnerük engedélyezte őket. További információ: [Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással](get-started-partners.md).
 
+## <a name="enable-access-to-costs-in-the-azure-portal"></a>Költségekhez való hozzáférés engedélyezése az Azure Portalon
+
+Részleg hatókör esetén **A részlegek adminisztrátorai megtekinthetik a díjakat** (Díjak megtekintése részlegadminisztrátorok által) beállítást **Be** kell kapcsolni. A beállítás az Azure Portalon vagy az EA Portalon konfigurálható. Minden egyéb hatókör esetén **A fióktulajdonosok megtekinthetik a díjakat** (Díjak megtekintése fióktulajdonosok által) beállítást kell **Be** értékre állítani.
+
+A beállítások engedélyezéséhez az Azure Portalon:
+
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen egy vállalati rendszergazdai fiókkal.
+1. Válassza a **Költségkezelés + Számlázás** menüelemet.
+1. Válassza ki a **Számlázási hatókörök** lehetőséget az elérhető számlázási hatókörök és számlázási fiókok listájának megtekintéséhez.
+1. Válassza ki a **Számlázási fiókot** az elérhető számlázási fiókok közül.
+1. A **Beállításoknál** válassza ki a **Szabályzatok** menüelemet, és konfigurálja a beállítást.  
+    ![Számlázási hatókörre vonatkozó szabályzatok a díjak megtekintési lehetőségeivel](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
+
+A díjtételek megtekintésére vonatkozó beállítások engedélyezése után a hatókörök többsége megköveteli szerepköralapú hozzáférés-vezérlési (RBAC-) engedélyek konfigurálását az Azure Portalon.
+
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Költségekhez való hozzáférés engedélyezése az EA Portalon
 
-A részleg hatókör esetén a **Díjtételek megtekintése a részlegszintű rendszergazda számára** beállítást **Engedélyezve** értékűre kell beállítani az EA Portalon. A többi hatókör esetén a **Díjtételek megtekintése a fióktulajdonos számára** beállítást kell **Engedélyezve** értékűre beállítani az EA Portalon.
+A részleg hatókör esetén a **Díjtételek megtekintése a részlegszintű rendszergazda számára** beállítást **Engedélyezve** értékűre kell beállítani az EA Portalon. A beállítás az Azure Portalon vagy az EA Portalon konfigurálható. A többi hatókör esetén a **Díjtételek megtekintése a fióktulajdonos számára** beállítást kell **Engedélyezve** értékűre beállítani az EA Portalon.
 
-A beállítások engedélyezése:
+A beállítások engedélyezéséhez az EA Portalon:
 
 1. Jelentkezzen be az EA Portalra a [https://ea.azure.com](https://ea.azure.com) címen egy vállalati rendszergazdai fiókkal.
 2. A bal oldali panelen válassza a **Kezelés** lehetőséget.
@@ -83,7 +97,7 @@ A számlázási fiók hatókörhöz való hozzáféréshez vállalati szintű re
 2. A bal oldali panelen válassza a **Kezelés** lehetőséget.
 3. A **Regisztráció** lapon válassza ki a kezelni kívánt regisztrációt.  
     ![a regisztráció kiválasztása az EA Portalon](./media/assign-access-acm-data/ea-portal.png)
-4. Kattintson a **+ Adminisztrátor hozzáadása** elemre.
+4. Válassza az **+ Adminisztrátor hozzáadása** lehetőséget.
 5. Az Adminisztrátor hozzáadása panelen válassza ki a hitelesítés típusát, és adja meg a felhasználó e-mail-címét.
 6. Amennyiben a felhasználó csak olvasási hozzáféréssel rendelkezhet a költség- és használati adatokhoz, a **Csak olvasás** területen jelölje be az **Igen** választógombot.  Egyéb esetben a **Nem** választógombot jelölje be.
 7. Kattintson a **Hozzáadás** gombra a fiók létrehozásához.  
@@ -93,12 +107,12 @@ Akár 30 percet is igénybe vehet, mire az új felhasználó hozzáférhet a Cos
 
 ### <a name="assign-department-scope-access"></a>Hozzáférés hozzárendelése a részleg hatókörhöz
 
-A részleg hatókörhöz való hozzáféréshez a részlegszintű rendszergazdai (Díjtételek megtekintése a részlegszintű rendszergazda számára) hozzáférés szükséges az EA Portalon. A részlegszintű rendszergazda a részleghez vagy több részleghez kapcsolódó költség- és használati adatok megtekintésére rendelkezik jogosultsággal. A részleg adatai magukban foglalják a részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetést. Az Azure Portalon nem kell műveletet végrehajtani.
+A részleg hatókörhöz való hozzáféréshez a részlegszintű rendszergazdai (Díjtételek megtekintése a részlegszintű rendszergazda számára) hozzáférés szükséges az EA Portalon. A részlegszintű rendszergazdának ahhoz van jogosultsága, hogy megtekintse a részleghez vagy több részleghez kapcsolódó költség- és használati adatokat. A részleg adatai magukban foglalják a részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetést. Az Azure Portalon nem kell műveletet végrehajtani.
 
 1. Jelentkezzen be az EA Portalra a [https://ea.azure.com](https://ea.azure.com) címen egy vállalati rendszergazdai fiókkal.
 2. A bal oldali panelen válassza a **Kezelés** lehetőséget.
 3. A **Regisztráció** lapon válassza ki a kezelni kívánt regisztrációt.
-4. Kattintson a **Részleg** lapra, majd az **Adminisztrátor hozzáadása** elemre.
+4. Válassza a **Részleg** fület, majd kattintson a **Rendszergazda hozzáadása** lehetőségre.
 5. A Részlegszintű rendszergazda hozzáadása panelen válassza ki a hitelesítés típusát, és adja meg a felhasználó e-mail-címét.
 6. Amennyiben a felhasználó csak olvasási hozzáféréssel rendelkezhet a költség- és használati adatokhoz, a **Csak olvasás** területen jelölje be az **Igen** választógombot.  Egyéb esetben a **Nem** választógombot jelölje be.
 7. Válassza ki a részlegeket, amelyekre vonatkozóan részlegszintű rendszergazdai engedélyt szeretne adni.
@@ -112,11 +126,11 @@ A regisztrációs fiók hatókörhöz való hozzáféréshez a fióktulajdonosi 
 1. Jelentkezzen be az EA Portalra a [https://ea.azure.com](https://ea.azure.com) címen egy vállalati rendszergazdai fiókkal.
 2. A bal oldali panelen válassza a **Kezelés** lehetőséget.
 3. A **Regisztráció** lapon válassza ki a kezelni kívánt regisztrációt.
-4. Kattintson a **Fiók** lapra, majd a **Fiók hozzáadása** elemre.
+4. Válassza a **Fiók** fület, majd kattintson a **Fiók hozzáadása** lehetőségre.
 5. A Fiókok hozzáadása panelen válassza ki azt a **részleget**, amelyhez a fiókot társítani szeretni, vagy hagyja a fiókot hozzárendelés nélkül.
 6. Válassza ki a hitelesítés típusát, és adja meg a fiók nevét.
 7. Adja meg a felhasználó e-mail-címet, majd igény szerint a költséghelyet.
-8. Kattintson a **Hozzáadás** gombra a fiók létrehozásához.  
+8. Válassza ki a **Hozzáadás** gombot a fiók létrehozásához.  
     ![a kötelező adatok megadása a regisztrációs fiók Fiók hozzáadása paneljén](./media/assign-access-acm-data/add-account.png)
 
 A fenti lépések elvégzése után a felhasználói fiókból regisztrációs fiók lesz az Enterprise Portalon, és létrehozhat előfizetéseket. A felhasználó hozzáférhet az általa létrehozott előfizetések költség- és használati adataihoz.
@@ -128,13 +142,13 @@ A felügyeleti csoport hatókör megtekintéséhez legalább Cost Management-olv
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az oldalsávon válassza a **Minden szolgáltatás** lehetőséget, keressen rá a _felügyeleti csoportok_ kifejezésre, és válassza a **felügyeleti csoportok** elemet.
 3. Válassza ki a felügyeleti csoportot a hierarchiában.
-4. Kattintson a felügyeleti csoport neve melletti a **Részletek** lehetőségre.
+4. Válassza ki a felügyeleti csoport neve melletti **Részletek** lehetőséget.
 5. A bal oldali panelen válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-6. Kattintson a **Hozzáadás** parancsra.
+6. Válassza a **Hozzáadás** lehetőséget.
 7. A **Szerepkör** területen válassza a **Cost Management-olvasó** lehetőséget.
 8. A **Hozzáférés hozzárendelése** területen válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet.
 9. Hozzáférés hozzárendeléséhez keresse meg, majd válassza ki a felhasználót.
-10. Kattintson a **Save** (Mentés) gombra.  
+10. Kattintson a **Mentés** gombra.  
     ![példaadatok a felügyeleti csoport Engedélyek hozzáadása paneljén](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>Hozzáférés hozzárendelése az előfizetés hatókörhöz
@@ -145,11 +159,11 @@ Az előfizetéshez való hozzáféréshez legalább Cost Management-olvasó (vag
 2. Az oldalsávon válassza a **Minden szolgáltatás** lehetőséget, keressen rá az _előfizetések_ kifejezésre, és válassza az **Előfizetések** elemet.
 3. Válassza ki előfizetését.
 4. A bal oldali panelen válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-5. Kattintson a **Hozzáadás** parancsra.
+5. Válassza a **Hozzáadás** lehetőséget.
 6. A **Szerepkör** területen válassza a **Cost Management-olvasó** lehetőséget.
 7. A **Hozzáférés hozzárendelése** területen válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet.
 8. Hozzáférés hozzárendeléséhez keresse meg, majd válassza ki a felhasználót.
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-resource-group-scope-access"></a>Hozzáférés hozzárendelése az erőforráscsoport hatókörhöz
 
@@ -159,11 +173,11 @@ Az erőforráscsoporthoz való hozzáféréshez legalább Cost Management-olvas�
 2. Az oldalsávon válassza a **Minden szolgáltatás** lehetőséget, keressen rá az _erőforráscsoportok_ kifejezésre, és válassza az **Erőforráscsoportok** elemet.
 3. Válassza ki az erőforráscsoportot.
 4. A bal oldali panelen válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-5. Kattintson a **Hozzáadás** parancsra.
+5. Válassza a **Hozzáadás** lehetőséget.
 6. A **Szerepkör** területen válassza a **Cost Management-olvasó** lehetőséget.
 7. A **Hozzáférés hozzárendelése** területen válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet.
 8. Hozzáférés hozzárendeléséhez keresse meg, majd válassza ki a felhasználót.
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 ## <a name="cross-tenant-authentication-issues"></a>A több-bérlős hitelesítéssel kapcsolatos problémák
 

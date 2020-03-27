@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Azure Resource Manager-sablon
+            - name: ARM-sablon
               href: service-bus-resource-manager-namespace-queue.md
         - name: Üzenetek küldése és fogadása
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure Resource Manager-sablon
+            - name: ARM-sablon
               href: service-bus-resource-manager-namespace-topic.md
         - name: Üzenetek közzététele és feliratkozás rájuk
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Leltárfrissítés – parancssori felület
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Reagálás eseményekre az Event Griden keresztül
+      href: service-bus-to-event-grid-integration-example.md
 - name: Példák
   items:
     - name: Service Bus-példák
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: Beépített biztonsági vezérlők
           href: service-bus-messaging-security-controls.md
+        - name: Hálózati biztonság
+          href: network-security.md
 - name: Útmutatók
   items:
     - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Üzenetkezelés az Azure Event Griddel
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure Event Grid-példák
-              href: service-bus-to-event-grid-integration-example.md
         - name: Témakörszűrők és -műveletek
           href: topic-filters.md
         - name: Migrálás standard névterekről prémium névterekre
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Speciális funkciók
           items:
-            - name: Tűzfalak használata
-              href: service-bus-ip-filtering.md
-            - name: Virtuális hálózati szolgáltatásvégpontok
-              href: service-bus-service-endpoints.md
             - name: Kézbesíthetetlen levelek sorai
               href: service-bus-dead-letter-queues.md
             - name: Üzenetek előzetes betöltése
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: Üzenetküldési entitások felfüggesztése és újraaktiválása
           href: entity-suspend.md
-        - name: Használjon Azure Resource Manager-sablonokat
+        - name: ARM-sablonok használata
           href: service-bus-resource-manager-overview.md
           items:
             - name: Névtér létrehozása
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Biztonságos
       items:
-        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív állapotban történő titkosításhoz
+        - name: Tűzfalak konfigurálása
+          href: service-bus-ip-filtering.md
+        - name: Virtuális hálózati szolgáltatásvégpontok konfigurálása
+          href: service-bus-service-endpoints.md
+        - name: Privát végpontok konfigurálása (előzetes verzió)
+          href: private-link-service.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:

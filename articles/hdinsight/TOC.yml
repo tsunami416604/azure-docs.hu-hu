@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: Fürtök létrehozása runbookokkal
           href: ./manage-clusters-runbooks.md
+        - name: Az Apache Ambari e-mail-értesítései
+          href: ./apache-ambari-email.md
         - name: ETL-folyamat létrehozása
           href: ./hdinsight-sales-insights-etl.md
     - name: Példák
@@ -272,7 +274,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: Apache Spark-fürt létrehozása – Azure CLI
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: Apache Spark-fürt létrehozása – Sablon
+        - name: Apache Spark-fürt létrehozása – ARM-sablon
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: Oktatóanyagok
       items:
@@ -416,8 +419,8 @@
       items:
         - name: Apache Hadoop-fürt létrehozása – Portál
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-        - name: Apache Hadoop-fürt létrehozása – Sablon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Apache Hadoop-fürt létrehozása – ARM-sablon
+          displayName: Resource Manager
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
     - name: Oktatóanyagok
       items:
@@ -435,8 +438,54 @@
               href: use-pig.md
         - name: Fejlesztés
           items:
-            - name: Üres élcsomópontok használata
-              href: ./hdinsight-apps-use-edge-node.md
+            - name: A MapReduce használata az Apache Hadooppal
+              items:
+                - name: A MapReduce áttekintése
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: Az SSH használata
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: A cURL használata
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Azure PowerShell használatával
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: A .NET-hez készült SDK használata
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: A MapReduce-minták futtatása
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: Egyéni Apache Hadoop MapReduce-programok futtatása
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'Streamelő MapReduce programok fejlesztése C# nyelven'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Java MapReduce programok fejlesztése
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 'Az Apache Hive használata kinyerési, átalakítási és betöltési (ETL) eszközként'
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 'Kinyerés, átalakítás és betöltés nagy léptékben'
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: Big Data típusú adatok elemzése
+              items:
+                - name: Elemzés a Power Queryvel
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: A Power BI csatlakoztatása az interaktív lekérdezéshez
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: A Power BI csatlakoztatása az Apache Hadoophoz
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Az Excel csatlakoztatása az Apache Hadoophoz
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Kapcsolódás az Apache Hive JDBC-illesztővel
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: Tárolt tweetek elemzése
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Javaslatok létrehozása az Apache Mahout használatával
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: Speciális elemzések a HDInsighthoz
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+            - name: Kezelés
+              items:
+                - name: Üres élcsomópontok használata
+                  href: ./hdinsight-apps-use-edge-node.md
         - name: Hibaelhárítás
           items:
             - name: Gyakori problémák
@@ -499,8 +548,8 @@
           href: ./kafka/apache-kafka-get-started.md
         - name: Apache Kafka-fürt létrehozása – PowerShell
           href: ./kafka/apache-kafka-quickstart-powershell.md
-        - name: Apache Kafka-fürt létrehozása – Sablon
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Apache Kafka-fürt létrehozása – ARM-sablon
+          displayName: Resource Manager
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Oktatóanyagok
       items:
@@ -564,6 +613,9 @@
           href: ./hbase/apache-hbase-overview.md
     - name: Rövid útmutatók
       items:
+        - name: Apache HBase-fürt létrehozása – ARM-sablon
+          displayName: Resource Manager
+          href: ./hbase/quickstart-resource-manager-template.md
         - name: Az Apache HBase lekérdezése – Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Az Apache HBase lekérdezése – HBase-felület
@@ -636,6 +688,9 @@
           href: ./interactive-query/apache-interactive-query-get-started.md
     - name: Rövid útmutatók
       items:
+        - name: Interaktív lekérdezési fürt létrehozása – ARM-sablon
+          displayName: Resource Manager
+          href: ./interactive-query/quickstart-resource-manager-template.md
         - name: Apache Hive-lekérdezések végrehajtása – Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
     - name: Oktatóanyagok
@@ -718,6 +773,9 @@
           href: ./r-server/r-server-overview.md
     - name: Rövid útmutatók
       items:
+        - name: Az ML-szolgáltatások fürtjének létrehozása – ARM-sablon
+          displayName: Resource Manager
+          href: ./r-server/quickstart-resource-manager-template.md
         - name: Mintafeladat – RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: Mintafeladat – R-konzol
@@ -800,8 +858,6 @@
           href: ./domain-joined/hdinsight-security-overview.md
     - name: Oktatóanyagok
       items:
-        - name: Tűzfal használata a kimenő forgalom korlátozására
-          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Apache HBase RBAC és Apache Ranger
           href: ./domain-joined/apache-domain-joined-run-hbase.md
         - name: Apache Hive RBAC és Apache Ranger
@@ -850,6 +906,8 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: Adatok védelme
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: Tűzfal használata a kimenő forgalom korlátozására
+          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Hibaelhárítás
           items:
             - name: Az ESP hitelesítéssel kapcsolatos problémái

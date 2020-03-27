@@ -26,6 +26,10 @@
       href: permissions.md
     - name: Riasztások konfigurálása javaslatokhoz
       href: advisor-alerts.md
+    - name: Tömeges szervizelés javaslatokhoz
+      href: advisor-quick-fix.md
+    - name: Advisor-adatok az Azure Resource Graph-ban
+      href: advisor-azure-resource-graph.md
 - name: Referencia
   items:
     - name: Security Center

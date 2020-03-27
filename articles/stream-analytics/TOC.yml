@@ -23,13 +23,11 @@
       href: stream-analytics-manage-job.md
     - name: 2 – Az Azure Functions futtatása
       href: stream-analytics-with-azure-functions.md
-    - name: 3 – JavaScript UDF futtatása
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
+    - name: 3 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 - C# UDF futtatása'
+    - name: '4 – C# UDF futtatása'
       href: stream-analytics-edge-csharp-udf.md
-    - name: 6 – Egyéni .NET-deszerializáló létrehozása
+    - name: 5 – Egyéni .NET-deszerializáló létrehozása
       href: custom-deserializer.md
 - name: Példák
   items:
@@ -61,6 +59,14 @@
           href: stream-analytics-sql-output-perf.md
         - name: Blob egyéni elérési útjára vonatkozó minták
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Felhasználó által meghatározott függvények
+      items:
+        - name: Machine Learning UDF
+          href: machine-learning-udf.md
+        - name: 'C# UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: JavaScript UDF
+          href: stream-analytics-javascript-user-defined-functions.md
     - name: Stream Analytics-feladat optimalizálása
       items:
         - name: A streamelési egységek ismertetése és módosítása
@@ -187,8 +193,6 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: CI-/CD-folyamat beállítása
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: .NET UDF írása
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
         - name: Helyi tesztelés mintaadatokkal

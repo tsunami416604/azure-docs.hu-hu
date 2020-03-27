@@ -5,36 +5,24 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: banders
-ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ede60adc13dadc38e18ee5ade468e01b16523f4f
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587090"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235742"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Foglalások vásárlása havi kifizetésekkel
 
-Eddig csak előre fizetéssel lehetett Azure-foglalásokat vásárolni. Mostantól havi kifizetésekkel is fizethet a foglalásokért. Az előre fizetéses vásárlástól eltérően, amikor kifizeti a teljes összeget, a havi fizetéses lehetőség egyenlően osztja el a foglalás teljes költségét az időszak minden hónapjára. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie.
+Havi kifizetésekkel is fizethet a foglalásokért. Az előre fizetéses vásárlástól eltérően, amikor kifizeti a teljes összeget, a havi fizetéses lehetőség egyenlően osztja el a foglalás teljes költségét az időszak minden hónapjára. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie.
 
-A havonta fizetendő összeg a helyi pénznem aktuális hónapban érvényes átváltási árfolyamától függően változhat.
+Ha foglalását Microsoft Ügyfélszerződés (Microsoft Customer Agreement, MCA) keretén belül vásárolta, a havonta fizetendő összeg a helyi pénznem aktuális hónapban érvényes átváltási árfolyamától függően változhat.
 
-A havi kifizetések az alábbiak esetében érhetőek el:
+A havi kifizetések az alábbiakhoz nem érhetőek el: Databricks, SUSE Linux-foglalások, Red Hat-csomagok és Azure Red Hat OpenShift-számítások.
 
-- Virtual machines (Virtuális gépek)
-- Azure Storage
-- SQL Database-adatbázisok
-- SQL Data Warehouse
-- Cosmos DB
-- App Service-bélyeg díja
-- Felügyelt lemez
-- Azure Data Explorer
-- Azure Database for MariaDB, MySQL és PostgreSQL
-- Azure VMware Solution by CloudSimple
-
-
-Foglalások vásárlása az [Azure Portalon](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade).
+Foglalások vásárlása az [Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs).
 
 ![Példa a foglalásvásárlásra](./media/monthly-payments-reservations/purchase-reservation.png)
 
@@ -58,11 +46,11 @@ A foglalás megújításakor lehetősége van a számlázás gyakoriságát havi
 
 ## <a name="exchange-and-refunds"></a>Csere és visszatérítés
 
-A többi foglaláshoz hasonlóan a havi számlázással vásárolt foglalások esetében is lehetőség van visszatérítésre és cserére. Jelenleg egy támogatási kérés küldésével indíthatja el a havi számlázással vásárolt foglalás cseréjét vagy visszatérítését.
+A többi foglaláshoz hasonlóan a havi számlázással vásárolt foglalások esetében is lehetőség van visszatérítésre és cserére. 
 
 Ha egy havi kifizetéses foglalást cserél le, akkor az új vásárlás teljes élettartamra vetített költségének nagyobbnak kell lennie, mint a lecserélni kívánt foglalás lemondott, fennmaradó kifizetései. Csere esetén nincsenek más korlátozások vagy díjak. Cserére akkor van lehetősége, ha egy előre kifizetett foglalás helyett vásárol egy havi számlázású, új foglalást. Az új foglalás élettartamra vetített értékének azonban nagyobbnak kell lennie, mint a lecserélni kívánt foglalás időarányos értéke.
 
-Ha egy havi kifizetéses foglalást mond le, a Microsoft jogosult 12% lemondási díjat alkalmazni a lemondott kifizetésekért, amelyekért kötelezettséget vállalt. A Microsoft azonban jelenleg nem vonja le ezt a díjat. A lemondott kifizetések, amelyekért kötelezettséget vállalt, le lesznek vonva az 50 000 USD értékű visszatérítési korlátból. Amennyiben a lemondási díjat levonták, a visszatérítési korlát nem módosul.
+Ha lemond egy havonta fizetett foglalást, a lemondott későbbi kifizetések le lesznek vonva az 50 000 USD értékű visszatérítési korlátból.
 
 A cserével és a visszatérítéssel kapcsolatos további információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](exchange-and-refund-azure-reservations.md).
 

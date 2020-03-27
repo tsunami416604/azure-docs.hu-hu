@@ -1,20 +1,20 @@
 ---
-title: Oktatóanyag – Kiadás előrejelzése a Cloudynnel az Azure-ban | Microsoft Docs
+title: Oktatóanyag – Kiadások előrejelzése a Cloudynnel az Azure-ban
 description: Ez az oktatóanyag bemutatja, hogyan jelezheti előre a költségeit a korábbi használati és költségadatok használatával.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 455f611b57cf11e29d35e617df4fd9c09aff2906
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769924"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463781"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Oktatóanyag: Jövőbeli kiadások előrejelzése
 
@@ -24,6 +24,8 @@ A Cloudyn segít előre jelezni a jövőbeli kiadásokat a korábbi használati 
 > * Jövőbeli kiadások előrejelzése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

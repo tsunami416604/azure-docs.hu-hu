@@ -1,20 +1,20 @@
 ---
-title: Oktatóanyag – Hozzáférések hozzárendelése a Cloudynban | Microsoft Docs
+title: Oktatóanyag – Hozzáférések hozzárendelése a Cloudynnal az Azure-ban
 description: Ebben az oktatóanyagban megtudhatja, hogyan rendelhet hozzáféréseket a Cloudyn-adatokhoz olyan felhasználói fiókokkal, amelyek meghatározzák az entitások hozzáférési szintjeit.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774008"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463611"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Oktatóanyag: Hozzáférések hozzárendelése Cloudyn-adatokhoz
 
@@ -33,6 +33,8 @@ Az Azure-szerződés vagy -fiók regisztrálásakor a rendszer létrehozott egy 
 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,9 +70,9 @@ Felhasználóként saját magát nem távolíthatja el.
 > [!WARNING]
 > A felhasználótörlési műveletet nem lehet visszavonni.
 
-1.  A Cloudyn portálon kattintson a fogaskerék szimbólumra a jobb felső sarokban, és válassza a **User Management** (Felhasználókezelés) lehetőséget.
-2.  A felhasználók listájában jelölje ki a törölni kívánt felhasználót, majd kattintson a **Delete User** (Felhasználó törlése) lehetőségre (a kuka szimbólumra).
-3.  A felhasználótörlési párbeszédpanelen kattintson a **Yes** (Igen), majd az **OK** gombra.
+1.    A Cloudyn portálon kattintson a fogaskerék szimbólumra a jobb felső sarokban, és válassza a **User Management** (Felhasználókezelés) lehetőséget.
+2.    A felhasználók listájában jelölje ki a törölni kívánt felhasználót, majd kattintson a **Delete User** (Felhasználó törlése) lehetőségre (a kuka szimbólumra).
+3.    A felhasználótörlési párbeszédpanelen kattintson a **Yes** (Igen), majd az **OK** gombra.
 
 
 ## <a name="delete-or-export-personal-data"></a>Személyes adatok törlése vagy exportálása

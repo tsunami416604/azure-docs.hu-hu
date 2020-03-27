@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: Alapelvek
   items:
-    - name: Biztonsági pontszám a Security Centerben
-      href: security-center-secure-score.md
-    - name: A továbbfejlesztett biztonsági pontszám
+    - name: Biztonsági pontszám
       href: secure-score-security-controls.md
     - name: Engedélyek
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: Fenyegetésvédelem és biztonsági riasztások
       items:
+        - name: Fenyegetésvédelem az Azure Security Centerben
+          href: threat-protection.md
         - name: Biztonsági riasztások áttekintése
           href: security-center-alerts-overview.md
         - name: Riasztások hivatkozási listája
           href: alerts-reference.md
+        - name: Riasztási sémák
+          href: alerts-schemas.md
         - name: Biztonsági riasztások kezelése
           href: security-center-managing-and-responding-alerts.md
         - name: Biztonsági incidensek kezelése
           href: security-center-incident.md
-        - name: Fenyegetésvédelem az Azure Security Centerben
-          href: threat-protection.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
           href: security-center-alerts-cloud-smart.md
         - name: Biztonsági riasztások térképe és fenyegetések felderítése
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: Végpontvédelmi értékelés és javaslatok
       href: security-center-endpoint-protection.md
+    - name: Biztonsági pontszám (örökölt)
+      href: security-center-secure-score.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

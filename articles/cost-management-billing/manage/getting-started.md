@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199704"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238142"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Hogyan kerülheti el a váratlan költségeket az Azure-számlázás és -költségkezelés használatával
 
@@ -25,6 +25,8 @@ Az Azure-ra való regisztráció során sokat tehet azért, hogy jobban megismer
 - Integrálhatja a számlázási és költségadatokat saját jelentéskészítő rendszerébe a [számlázási](https://docs.microsoft.com/rest/api/billing/) és [használati](https://docs.microsoft.com/rest/api/consumption/) API-kkal.
 - A Nagyvállalati Szerződéses (EA), felhőszolgáltatói (CSP-) és Azure Sponsorship-ügyfelek részére elérhető további erőforrásokat vehet igénybe.
 - [12 hónapig ingyenesen használhatja a legnépszerűbb Azure-szolgáltatások némelyikét](create-free-services.md), amelyek az [ingyenes Azure-fiókhoz](https://azure.microsoft.com/free/) érhetőek el. Az alább felsorolt ajánlásokon kívül tekintse meg, [hogyan kerülheti el, hogy díjak merüljenek fel ingyenes fiókja használatakor](avoid-charges-free-account.md).
+
+Ha le szeretné mondani Azure-előfizetését, tekintse meg az [Az Azure-előfizetés lemondása](cancel-azure-subscription.md) című témakört.
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Becsült költségek lekérése az Azure-szolgáltatások hozzáadása előtt
 
@@ -67,7 +69,7 @@ A költségek a következő eszközökkel monitorozhatók:
 
 A költségek kezeléséhez [költségvetéseket](../costs/tutorial-acm-create-budgets.md) és [riasztásokat](../costs/cost-mgt-alerts-monitor-usage-spending.md) hozhat létre, amelyek automatikusan figyelmeztetik Önt és az érdekelt feleket a rendellenes kiadásokról és a túlköltekezésről.
 
-### <a name="costs"></a> Költségek feltérképezése és elemzése a költségelemzés szolgáltatás használatával
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> Költségek feltérképezése és elemzése a költségelemzés szolgáltatás használatával
 
 Az Azure-szolgáltatások elindítása után rendszeresen tekintse meg a költségeket az Azure-költségek nyomon követéséhez. A költségelemzés segítségével megállapíthatja, hol keletkeznek az Azure használatából eredő költségei.
 
@@ -120,7 +122,7 @@ Amennyiben az Azure-t Microsoft-ügyfélszerződéssel (MCA) használja, [össze
 
 Használja az Azure [számlázási](https://docs.microsoft.com/rest/api/billing/) és [használati](https://docs.microsoft.com/rest/api/consumption/) API-jait a számlázással és a költségekkel kapcsolatos adatok programozott módon való lekéréséhez. A RateCard API és a Usage API együttes használatával lekérhető a számlázott használat. További információkért tekintse meg az [Információk a Microsoft Azure-erőforrások igénybevételéről](usage-rate-card-overview.md) szakaszt.
 
-## <a name="other-offers"></a> További forrásanyagok és különleges esetek
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> További forrásanyagok és különleges esetek
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- és Sponsorship-ügyfelek
 Az induláshoz lépjen kapcsolatba fiókja kezelőjével vagy Azure-partnerével.
@@ -133,7 +135,7 @@ Az induláshoz lépjen kapcsolatba fiókja kezelőjével vagy Azure-partnerével
 
 Ha egy nagy méretű szervezet informatikai működését felügyeli, javasoljuk az [Azure Enterprise-szerkezet](/azure/architecture/cloud-adoption-guide/subscription-governance) és a [nagyvállalati informatikai tanulmány](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) elolvasását (letölthető .pdf-ként, csak angol nyelven).
 
-### <a name="EA"></a> Nagyvállalati Szerződések költségnézetei az Azure Portalon
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Nagyvállalati Szerződések költségnézetei az Azure Portalon
 
 A vállalati költségnézetek jelenleg nyilvános előzetes verzióban érhetők el. Megjegyzések:
 
@@ -159,7 +161,7 @@ Amennyiben az Azure-t Microsoft-ügyfélszerződéssel (MCA) rendelkező száml�
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>Szolgáltatói szerződési jóváírás kérelmezése egy szolgáltatási esemény miatt
 
-A szolgáltatási szerződés (SLA) ismerteti a Microsoft az üzemidővel és hálózati elérhetőséggel kapcsolatos vállalásait. A szolgáltatási eseményeket a rendszer akkor jelenti, ha az Azure-szolgáltatások olyan problémát tapasztalnak, amely hatással van az üzemidőre vagy a kapcsolatra. Ezt gyakran *kimaradásnak* is nevezik. Ha nem érjük el és nem tartjuk fenn az egyes szolgáltatásokhoz tartozó, az SLA-ban leírt szolgáltatási szinteket, akkor Ön jogosult lehet a havi szolgáltatási díjak egy részének jóváírására.
+A szolgáltatási szerződés (SLA) ismerteti a Microsoft üzemidővel és hálózati elérhetőséggel kapcsolatos vállalásait. A szolgáltatási eseményeket a rendszer akkor jelenti, ha az Azure-szolgáltatások olyan problémát tapasztalnak, amely hatással van az üzemidőre vagy a kapcsolatra. Ezt gyakran *kimaradásnak* is nevezik. Ha nem érjük el és nem tartjuk fenn az egyes szolgáltatásokhoz tartozó, az SLA-ban leírt szolgáltatási szinteket, akkor Ön jogosult lehet a havi szolgáltatási díjak egy részének jóváírására.
 
 Jóváírás kérése:
 
@@ -167,7 +169,7 @@ Jóváírás kérése:
 2. Hozzon létre egy új támogatási kérést.
 3. A **Probléma típusa** területen válassza a **Számlázás** lehetőséget.
 4. A **Probléma típusa** területen válassza a **Visszatérítési kérelem** lehetőséget.
-5. A részletek megadásával egyértelműsítse, hogy SLA-jóváírást szeretne, említse meg a dátumot/időt/időzónát is, valamint az érintett szolgáltatásokat (virtuális gépek, webhelyek stb.)
+5. A részletek megadásával egyértelműsítse, hogy SLA-jóváírást szeretne, és határozza meg a dátumot/időt/időzónát, valamint az érintett szolgáltatásokat (virtuális gépek, webhelyek stb.).
 6. Ellenőrizze a kapcsolattartási adatait, majd a kérés elküldéséhez válassza a **Létrehozás** elemet.
 
 Az SLA-küszöbértékek szolgáltatásonként eltérőek. Például az SQL webszint 99,9%-os SLA-val, a virtuális gépek 99,95%-os SLA-val, a standard szintű SQL-csomag pedig 99,99%-os SLA-val rendelkezik.

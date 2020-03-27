@@ -1,24 +1,26 @@
 ---
-title: A fő metrikák megtekintése Cloudyn-irányítópultokkal az Azure-ban | Microsoft Docs
+title: A fő metrikák megtekintése Cloudyn-irányítópultokkal az Azure-ban
 description: Ez a cikk azt ismerteti, hogyan tekintheti meg a fő metrikákat a Cloudyn irányítópultjaival.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770133"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464223"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>A fő költségmetrikák megtekintése irányítópultokkal
 
 A Cloudyn irányítópultjain a jelentések áttekintése látható. Az irányítópultokkal egyetlen nézetben tekintheti meg a fő költségmetrikákat. Az irányítópultok az üzleti trendekkel kapcsolatos fontos információkat is biztosítanak, megkönnyítve ezzel a fontos üzleti döntések meghozatalát.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 Az irányítópultokkal emellett nézetek is létrehozhatók a szervezet különböző felelősségi köröket ellátó munkatársainak, akik például az alábbiak lehetnek:
 

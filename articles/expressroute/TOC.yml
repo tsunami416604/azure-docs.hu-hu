@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: Alapelvek
   items:
+    - name: Távmunka
+      href: work-remotely-support.md
     - name: Kapcsolati modellek
       href: expressroute-connectivity-models.md
     - name: Kapcsolatcsoportok és társviszonyok

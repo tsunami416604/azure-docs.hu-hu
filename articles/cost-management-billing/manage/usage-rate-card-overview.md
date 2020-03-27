@@ -1,5 +1,5 @@
 ---
-title: Azure-használati adatok lekérése az Azure Billing API-kkal | Microsoft Docs
+title: Azure-használati adatok lekérése az Azure Billing API-kkal
 description: Ismerkedjen meg az Azure Billing Usage és a RateCard API-val, amelyek betekintést nyújtanak az Azure-erőforrások használatába és trendjeibe.
 author: tonguyen
 ms.reviewer: mumami
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 2765a1acca21081a696bb165b75a96e1a668aa40
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395843"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237632"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Az Azure Billing API-kkal szoftveres úton juthat az Azure-használatra vonatkozó megállapításokhoz.
 Az Azure Billing API-kkal lekérhetők a használattal és erőforrásokkal kapcsolatos adatok az előnyben részesített adatelemző eszközökbe. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k erőforrás-szolgáltatóként vannak implementálva, és az Azure Resource Manager által közzétett API-k családjának részei.  
@@ -56,7 +56,7 @@ Néhány forgatókönyv, amelyek a Usage- és RateCard API-k kombinációjával 
   * Azt is meghatározhatja, hogy egy másik Azure-ajánlat jobb díjszabást biztosít-e az Azure-erőforráshoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A GitHubon elérhető kódminták megtekintése:
   * [Számlázási API kódmintája](https://go.microsoft.com/fwlink/?linkid=845124)
 

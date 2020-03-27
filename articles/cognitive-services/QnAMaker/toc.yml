@@ -70,10 +70,12 @@
           href: How-To/business-continuity-plan.md
         - name: Együttműködés
           href: How-To/collaborate-knowledge-base.md
+        - name: Az aktív tanulás bekapcsolása
+          href: How-To/use-active-learning.md
     - name: A tudásbázis kezelése
       items:
         - name: Tudásbázis létrehozása
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: Nyelv kiválasztása
           href: How-To/language-knowledge-base.md
         - name: Csevegés hozzáadása
@@ -85,7 +87,7 @@
           href: How-To/test-knowledge-base.md
     - name: QnA-készletek kezelése
       items:
-        - name: Tudásbázis szerkesztése
+        - name: QnA-készlet szerkesztése
           href: How-To/edit-knowledge-base.md
         - name: Követő kérések hozzáadása
           href: How-To/multiturn-conversation.md

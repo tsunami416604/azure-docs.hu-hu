@@ -89,8 +89,10 @@
       items:
         - name: Cím keresése
           href: how-to-search-for-address.md
-        - name: Ajánlott keresési eljárások
+        - name: A Search szolgáltatás használatának ajánlott eljárásai
           href: how-to-use-best-practices-for-search.md
+        - name: A Route szolgáltatás használatának ajánlott eljárásai
+          href: how-to-use-best-practices-for-routing.md
         - name: Egyéni adatok megjelenítése statikus térképen
           href: how-to-render-custom-data.md
         - name: Nyilvános átviteli útvonalak kérése
@@ -101,11 +103,11 @@
       items:
         - name: Térképvezérlő
           items:
-            - name: A webes térképvezérlő használatának első lépései
+            - name: Az Azure Maps-térképvezérlő használata
               href: how-to-use-map-control.md
             - name: Térkép létrehozása
               href: map-create.md
-            - name: Térkép stílusának módosítása
+            - name: A térkép stílusának módosítása
               href: choose-map-style.md
             - name: Vezérlőelemek hozzáadása a térképhez
               href: map-add-controls.md
@@ -247,12 +249,38 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Szolgáltatásmodul
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+        - name: Térbeli IO-modul
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.maps/accounts
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT-szolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-accelerators
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK-k
+      items:
+        - name: IoT szolgáltatásoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Az Azure Maps használati feltételei
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Az Azure Maps árképzése
@@ -281,31 +309,3 @@
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Azure Maps az IoT Schoolban
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
-- name: Kapcsolódó témakörök
-  items:
-    - name: Megoldások
-      items:
-        - name: IoT-megoldásgyorsítók
-          href: /azure/iot-suite
-        - name: IoT-központ
-          href: /azure/iot-central/iot-support-help
-    - name: Platformszolgáltatások
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Szolgáltatási SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge-megoldások
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

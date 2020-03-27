@@ -58,7 +58,21 @@
     - name: Alapelvek
       items:
         - name: A Dev Spaces működése
-          href: how-dev-spaces-works.md
+          items:
+            - name: Áttekintés
+              href: how-dev-spaces-works.md
+            - name: Fürt beállítása
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Projekt előkészítése
+              href: how-dev-spaces-works-prep.md
+            - name: A kód futtatása
+              href: how-dev-spaces-works-up.md
+            - name: Útválasztás Dev Spaces-eszközök között
+              href: how-dev-spaces-works-routing.md
+            - name: Távoli hibakeresés
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: A fejlesztői számítógép csatlakoztatása az AKS-hez
+              href: how-dev-spaces-works-connect.md
         - name: A VS Code és a Dev Spaces együttes használata
           href: how-vs-code-works-with-dev-spaces.md
         - name: Hálózati konfiguráció különböző hálózati topológiák esetében
@@ -95,7 +109,7 @@
           href: how-to/ingress-https-traefik.md
         - name: NGINX használata egyéni bejövő és HTTPS-kapcsolatokhoz
           href: how-to/ingress-https-nginx.md
-        - name: A fejlesztői gép csatlakoztatása egy AKS-fürthöz (előzetes verzió)
+        - name: A fejlesztői számítógép csatlakoztatása AKS-fürthöz (előzetes verzió)
           href: how-to/connect.md
         - name: Azure Dev Spaces-fürt konfigurálása a Helm 3 használatára (előzetes verzió)
           href: how-to/helm-3.md

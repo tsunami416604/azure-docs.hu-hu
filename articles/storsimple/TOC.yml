@@ -1,5 +1,5 @@
 - name: StorSimple-dokumentáció
-  href: index.md
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: Áttekintés

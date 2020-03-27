@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: Lemeztitkosítás izolált hálózaton
               href: disk-encryption-isolated-network.md
+            - name: A titkosítási állapot ellenőrzése
+              href: how-to-verify-encryption-status.md
+            - name: Az LVM RAID konfigurálása titkosítással
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: Lemeztitkosítási hibaelhárítás
               href: disk-encryption-troubleshooting.md
             - name: Lemeztitkosítás – gyakori kérdések
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: Rendszerkép összeállítása a Packerrel
           href: build-image-with-packer.md
-        - name: RHEL-rendszerképek az Azure-ban
-          href: rhel-images.md
         - name: Meglévő lemez letöltése
           href: download-vhd.md
     - name: Rendelkezésre állás és méretezés
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: Automatizálási eszközök használata
       items:
+        - name: Egyéni adatok
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: Telepítés és konfigurálás

@@ -1,0 +1,171 @@
+### YamlMime:Hub
+title: Azure üzenetkezelési szolgáltatások dokumentációja
+summary: Megtudhatja, hogyan kézbesíthet eseményüzeneteket az Azure Event Grid, az Azure Event Hubs, az Azure Service Bus és az Azure Relay használatával.
+brand: azure
+metadata:
+  title: Azure üzenetkezelési szolgáltatások dokumentációja
+  description: Megtudhatja, hogyan kézbesíthet eseményüzeneteket az Azure Event Grid, az Azure Event Hubs, az Azure Service Bus és az Azure Relay használatával.
+  services: multiple
+  ms.service: multiple
+  ms.topic: hub-page
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 03/15/2020
+  ms.openlocfilehash: 65a4312d01d6f3652ebc37ee0276c912178d4ccd
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79472254"
+highlightedContent:
+  items:
+  - title: A megfelelő Azure üzenetküldő szolgáltatás kiválasztása
+    itemType: overview
+    url: ../event-grid/compare-messaging-services.md
+  - title: Mi az Event Grid?
+    itemType: overview
+    url: ../event-grid/overview.md
+  - title: Mi az Event Hubs?
+    itemType: overview
+    url: ../event-hubs/event-hubs-about.md
+  - title: Mi az a Service Bus?
+    itemType: overview
+    url: ../service-bus-messaging/service-bus-messaging-overview.md
+  - title: Mi az a Relay?
+    itemType: overview
+    url: ../service-bus-relay/relay-what-is-it.md
+conceptualContent:
+  items:
+  - title: Események irányítása
+    links:
+    - url: ../event-grid/blob-event-quickstart-portal.md
+      itemType: quickstart
+      text: Blob Storage-események irányítása webes végpontra az Azure Portallal
+    - url: ../event-grid/custom-event-to-function.md
+      itemType: quickstart
+      text: Egyéni események irányítása egy Azure-függvényhez az Event Griddel
+    - url: ../event-grid/custom-event-quickstart-portal.md
+      itemType: quickstart
+      text: Egyéni események irányítása webes végpontra az Azure Portallal és az Event Griddel
+    footerLink:
+      url: ../event-grid/index.yml
+      text: Részletek
+  - title: Eseményközpont létrehozása
+    links:
+    - url: ../event-hubs/event-hubs-create.md
+      itemType: quickstart
+      text: Eseményközpont létrehozása az Azure Portallal
+    - url: ../event-hubs/event-hubs-quickstart-cli.md
+      itemType: quickstart
+      text: Eseményközpont létrehozása az Azure CLI-vel
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Részletek
+  - title: Integrálás az Apache Kafkával
+    links:
+    - url: ../event-hubs/event-hubs-for-kafka-ecosystem-overview.md
+      itemType: overview
+      text: Mi az az Apache Kafkához készült Event Hubs?
+    - url: ../event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs.md
+      itemType: quickstart
+      text: Streamelés az Apache Kafkához készült Event Hubsba
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Részletek
+  - title: Események küldése és fogadása
+    links:
+    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+      itemType: quickstart
+      text: Események küldése és fogadása az Azure Event Hubsból a .NET Core használatával
+    - url: ../event-hubs/event-hubs-java-get-started-send.md
+      itemType: quickstart
+      text: Események küldése és fogadása az Azure Event Hubson a Java használatával
+    - url: ../event-hubs/get-started-python-send-v2.md
+      itemType: quickstart
+      text: Események küldése és fogadása egy eseményközponton a Python használatával
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Részletek
+  - title: Események rögzítése
+    links:
+    - url: ../event-hubs/event-hubs-dedicated-overview.md
+      itemType: overview
+      text: Események rögzítése az Azure Blob Storage-ban vagy az Azure Data Lake Storage-ban
+    - url: ../event-hubs/event-hubs-capture-enable-through-portal.md
+      itemType: quickstart
+      text: Az Azure Event Hubs használatával streamelt események rögzítésének engedélyezése
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Részletek
+  - title: Események feldolgozása
+    links:
+    - url: ../event-hubs/event-hubs-tutorial-visualize-anomalies.md
+      itemType: tutorial
+      text: Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
+    - url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+      itemType: tutorial
+      text: Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: Részletek
+  - title: Üzenetsor létrehozása
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-portal.md
+      itemType: quickstart
+      text: Service Bus-üzenetsor létrehozása az Azure Portal használatával
+    - url: ../service-bus-messaging/service-bus-quickstart-cli.md
+      itemType: quickstart
+      text: Service Bus-üzenetsor létrehozása az Azure CLI használatával
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Részletek
+  - title: Témakörök és előfizetések létrehozása
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md
+      itemType: quickstart
+      text: Service Bus-témakör és -előfizetések létrehozása a témakörhöz az Azure Portal használatával
+    - url: ../service-bus-messaging/service-bus-resource-manager-namespace-topic.md
+      itemType: quickstart
+      text: Service Bus-névtér létrehozása témakörrel és előfizetéssel sablon használatával
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Részletek
+  - title: Üzenetek küldése és fogadása – üzenetsorok
+    links:
+    - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+      itemType: concept
+      text: Azure Storage-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
+    - url: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+      itemType: quickstart
+      text: Bevezetés a Service Bus által kezelt üzenetsorok használatába
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
+      itemType: quickstart
+      text: Az Azure Service Bus-üzenetsorok és a Java együttes használata üzenetek küldéséhez és fogadásához
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Részletek
+  - title: Üzenetek közzététele és feliratkozás rájuk
+    links:
+    - url: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Bevezetés a Service Bus-üzenettémák használatába
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Service Bus-témakörök és -előfizetések használata a Javával
+    - url: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: Service Bus-témakörök és -előfizetések használata a Pythonnal
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: Részletek
+  - title: Hibrid kapcsolatok
+    links:
+    - url: ../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md
+      itemType: tutorial
+      text: Ismerkedés a hibrid Relay-kapcsolatok websocketjeivel a .NET-ben
+    - url: ../service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+      itemType: tutorial
+      text: Ismerkedés a hibrid Relay-kapcsolatok HTTP-kéréseivel a .NET-ben
+    footerLink:
+      url: ../service-bus-relay/index.yml
+      text: Részletek

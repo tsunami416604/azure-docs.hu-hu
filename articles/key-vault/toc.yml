@@ -129,7 +129,7 @@
       href: tutorial-rotation.md
     - name: Integrálás az Azure Policy szolgáltatással
       href: azure-policy.md
-    - name: Integrálás az Azure Private Link szolgáltatással (előzetes verzió)
+    - name: Integrálás az Azure Private Link szolgáltatással
       href: private-link-service.md
     - name: Az Azure Key Vault naplózása
       href: key-vault-logging.md

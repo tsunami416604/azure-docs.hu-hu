@@ -1,5 +1,5 @@
 ---
-title: Az Azure számlázási és napi használati adatainak letöltése | Microsoft Docs
+title: Az Azure számlázási és napi használati adatainak letöltése
 description: A cikk azt ismerteti, hogyan töltheti le vagy tekintheti meg az Azure számlázási és napi használati adatait.
 keywords: számla,számla letöltése,azure számla,azure használat
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125632"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237683"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási és napi használati adatainak letöltése vagy megtekintése
 
@@ -62,7 +62,7 @@ A Microsoft-ügyfélszerződésben lévő minden [számlázási profilhoz](../un
 6. A helyi letöltési menüben válassza a **Számla** lehetőséget.
 
 Amennyiben nem látja a legutóbbi számlázási időszakra vonatkozó számlát, tekintse meg a **további információkat** ismertető szakaszt. <!-- Fix this -->
-### <a name="noinvoice"></a> Miért nem látom a legutóbbi számlázási időszakra vonatkozó számlát?
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> Miért nem látom a legutóbbi számlázási időszakra vonatkozó számlát?
 
 Számos oka lehet annak, hogy nem jelenik meg számla:
 

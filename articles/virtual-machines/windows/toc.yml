@@ -585,6 +585,8 @@
               href: create-portal-availability-zone.md
     - name: Automatizálási eszközök használata
       items:
+        - name: Egyéni adatok
+          href: ../custom-data.md
         - name: Chef
           href: chef-automation.md
         - name: Webalkalmazás közzététele a Visual Studióból
