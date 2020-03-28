@@ -1,28 +1,28 @@
 ---
-title: Oktatóanyag – Terraform-állapot tárolása az Azure Storage-ban
-description: Bevezetés az Azure Storage-beli Terraform-állapotának tárolására.
+title: Oktatóanyag – Terraform állapot ának tárolása az Azure Storage-ban
+description: Bevezetés a Terraform állapot azure Storage-ban való tárolásához.
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75708424"
 ---
-# <a name="tutorial-store-terraform-state-in-azure-storage"></a>Oktatóanyag: Terraform-állapot tárolása az Azure Storage-ban
+# <a name="tutorial-store-terraform-state-in-azure-storage"></a>Oktatóanyag: Terraform állapot ának tárolása az Azure Storage-ban
 
-A Terraform állapota az üzembe helyezett erőforrások Terraform-konfigurációkkal való összeegyeztetésére szolgál. Az állapot lehetővé teszi a Terraform számára, hogy megismerjék, milyen Azure-erőforrásokat kell hozzáadni, frissíteni vagy törölni. Alapértelmezés szerint a Terraform állapot a `terraform apply` parancs futtatásakor helyileg tárolódik. Ez a konfiguráció a következő okok miatt nem ideális:
+A Terraform állapot az üzembe helyezett erőforrások és a Terraform-konfigurációk egyeztetésére szolgál. Az állapot lehetővé teszi a Terraform számára, hogy megtudja, milyen Azure-erőforrásokat adjon hozzá, frissítsen vagy töröljön. Alapértelmezés szerint a Terraform állapot helyileg tárolódik a `terraform apply` parancs futtatásakor. Ez a konfiguráció nem ideális a következő okok miatt:
 
-- A helyi állapot nem működik megfelelően egy csapatban vagy együttműködési környezetben.
-- A Terraform-állapot bizalmas adatokat is tartalmazhat.
+- A helyi állam nem működik jól csapat- vagy együttműködési környezetben.
+- A terraform állapot bizalmas információkat tartalmazhat.
 - Az állapot helyi tárolása növeli a véletlen törlés esélyét.
 
-A Terraform támogatja az állapot megőrzését a távoli tárolóban. Az egyik ilyen támogatott háttér az Azure Storage. Ebből a dokumentumból megtudhatja, hogyan konfigurálhatja és használhatja az Azure Storage-t erre a célra.
+A Terraform támogatja az állapot megőrzését a távtárolóban. Az egyik ilyen támogatott háttérrendszer az Azure Storage. Ez a dokumentum bemutatja, hogyan konfigurálhatja és használhatja az Azure Storage-ot erre a célra.
 
-## <a name="configure-storage-account"></a>Storage-fiók konfigurálása
+## <a name="configure-storage-account"></a>Tárfiók konfigurálása
 
-Az Azure Storage háttérbeli használata előtt létre kell hoznia egy Storage-fiókot. A Storage-fiók a Azure Portal, a PowerShell, az Azure CLI vagy a Terraform használatával hozható létre. A következő minta használatával konfigurálja a Storage-fiókot az Azure CLI-vel.
+Mielőtt háttérrendszerként használná az Azure Storage-t, létre kell hoznia egy tárfiókot. A tárfiók az Azure Portalon, a PowerShell, az Azure CLI vagy a Terraform önmagával hozható létre. A következő minta segítségével konfigurálja a tárfiókot az Azure CLI.Use the following sample to configure the storage account with the Azure CLI.
 
 ```azurecli
 #!/bin/bash
@@ -48,38 +48,38 @@ echo "container_name: $CONTAINER_NAME"
 echo "access_key: $ACCOUNT_KEY"
 ```
 
-Jegyezze fel a Storage-fiók nevét, a tároló nevét és a tároló elérési kulcsát. Ezek az értékek a távoli állapot konfigurálásakor szükségesek.
+Vegye figyelembe a tárfiók nevét, a tároló nevét és a tárolási hozzáférési kulcsot. Ezekre az értékekre a távoli állapot konfigurálásakor van szükség.
 
-## <a name="configure-state-back-end"></a>Állapot visszaállításának beállítása
+## <a name="configure-state-back-end"></a>Állapot háttérkiszolgálókonfigurálása
 
-A Terraform állapota a `terraform init` parancs futtatásakor van konfigurálva. Az állapot háttérbeli konfigurálásához a következő adatértékekre van szükség:
+A Terraform állapot háttérvége a `terraform init` parancs futtatásakor van konfigurálva. Az állapot háttérrendszerének konfigurálásához a következő adatok szükségesek:
 
-- **storage_account_name**: az Azure Storage-fiók neve.
-- **container_name**: a blob-tároló neve.
-- **kulcs**: a létrehozandó állapot-tároló fájl neve.
-- **access_key**: a tárolási hozzáférési kulcs.
+- **storage_account_name**: Az Azure Storage-fiók neve.
+- **container_name**: A blob tároló neve.
+- **kulcs**: A létrehozandó állapottároló fájl neve.
+- **access_key**: A tároló-hozzáférési kulcs.
 
-Ezek az értékek a Terraform konfigurációs fájljában vagy a parancssorban adhatók meg. Javasoljuk, hogy környezeti változót használjon a `access_key` értékhez. Környezeti változó használata megakadályozza a kulcs lemezre írását.
+Ezen értékek mindegyike megadható a Terraform konfigurációs fájlban vagy a parancssorban. Azt javasoljuk, hogy az `access_key` értékhez használjon környezeti változót. Egy környezeti változó használata megakadályozza a kulcs lemezre írását.
 
-Hozzon létre egy `ARM_ACCESS_KEY` nevű környezeti változót az Azure Storage hozzáférési kulcsának értékével.
+Hozzon létre `ARM_ACCESS_KEY` egy környezeti változó nevű az Azure Storage hozzáférési kulcs értékével.
 
 ```bash
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Az Azure Storage-fiók elérési kulcsának további védeleméhez tárolja azt Azure Key Vault. A környezeti változó ezután a következőhöz hasonló paranccsal állítható be. A Azure Key Vaultről a [Azure Key Vault dokumentációjában](../key-vault/quick-create-cli.md)talál további információt.
+Az Azure Storage-fiók hozzáférési kulcsának további védelme érdekében tárolja azt az Azure Key Vaultban. A környezeti változó ezután a következőhöz hasonló paranccsal állítható be. Az Azure Key Vaultról az [Azure Key Vault dokumentációjában](../key-vault/quick-create-cli.md)olvashat bővebben.
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-A Terraform a háttér használatára való konfigurálásához a következő lépéseket kell elvégeznie:
-- `backend` konfigurációs blokkot adjon meg `azurerm`típussal.
-- Adjon hozzá egy `storage_account_name` értéket a konfigurációs blokkhoz.
-- Adjon hozzá egy `container_name` értéket a konfigurációs blokkhoz.
-- Adjon hozzá egy `key` értéket a konfigurációs blokkhoz.
+A Terraform háttérkiszolgáló használatára történő beállításához a következő lépéseket kell elvégezni:
+- A `backend` típushoz kapcsolódó konfigurációs `azurerm`blokk felvétele.
+- Adjon `storage_account_name` hozzá egy értéket a konfigurációs blokkhoz.
+- Adjon `container_name` hozzá egy értéket a konfigurációs blokkhoz.
+- Adjon `key` hozzá egy értéket a konfigurációs blokkhoz.
 
-Az alábbi példa egy Terraform konfigurál, és létrehoz egy Azure-erőforráscsoportot.
+A következő példa konfigurálja a Terraform háttérkiszolgálót, és létrehoz egy Azure-erőforráscsoportot.
 
 ```hcl
 terraform {
@@ -97,30 +97,30 @@ resource "azurerm_resource_group" "state-demo-secure" {
 }
 ```
 
-A konfiguráció inicializálásához hajtsa végre a következő lépéseket:
+Inicializálja a konfigurációt a következő lépésekkel:
 
 1. Futtassa a következő parancsot: `terraform init`.
 1. Futtassa a következő parancsot: `terraform apply`.
 
-Most már megtalálhatja az állapotjelző fájlt az Azure Storage-blobban.
+Most már megtalálhatja az állapotfájlt az Azure Storage blobban.
 
-## <a name="state-locking"></a>Állapot zárolása
+## <a name="state-locking"></a>Állapotzárolás
 
-Az Azure Storage-Blobok automatikusan zárolva vannak, mielőtt bármilyen művelet beírja az állapotot. Ez a minta megakadályozza az egyidejű állapotú műveleteket, ami sérülést okozhat. 
+Az Azure Storage-blobok automatikusan zárolva vannak, mielőtt bármilyen művelet, amely írási állapotot. Ez a minta megakadályozza az egyidejű állapotműveleteket, amelyek sérüléshez vezethetnek. 
 
-További információ: [State locking](https://www.terraform.io/docs/state/locking.html) in the Terraform dokumentáció.
+További információt a Terraform dokumentációjában található [Állapotzárolás](https://www.terraform.io/docs/state/locking.html) című témakörben talál.
 
-A zárolást akkor láthatja, ha a Azure Portal vagy más Azure Management-eszközön keresztül vizsgálja meg a blobot.
+Láthatja a zárolást, amikor megvizsgálja a blobot az Azure Portalon vagy más Azure-felügyeleti eszközökön keresztül.
 
-![Azure-Blob zárolással](media/terraform-backend/lock.png)
+![Azure blob zárolással](media/terraform-backend/lock.png)
 
 ## <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-Az Azure-blobokban tárolt adatforgalom titkosítva marad. Ha szükséges, a Terraform lekérdezi az állapotot a háttérből, és a helyi memóriában tárolja. A minta használatával az állapot soha nem íródik a helyi lemezre.
+Az Azure blobban tárolt adatok titkosítva vannak, mielőtt megmaradnának. Szükség esetén a Terraform lekéri az állapotot a háttérből, és a helyi memóriában tárolja. Ezzel a mintával az állapot soha nem kerül a helyi lemezre.
 
-További információ az Azure Storage-titkosításról: [Azure Storage szolgáltatás titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
+Az Azure Storage titkosításáról az [Azure Storage szolgáltatás titkosítása az inaktív adatokról](../storage/common/storage-service-encryption.md)című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [További információ a Terraform Azure-beli használatáról](/azure/terraform)
+> [További információ a Terraform azure-beli használatáról](/azure/terraform)

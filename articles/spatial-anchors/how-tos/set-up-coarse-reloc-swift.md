@@ -1,6 +1,6 @@
 ---
-title: Durva újrahonosítás a Swift-ben
-description: Részletesen ismertetjük, hogyan hozhatók létre és találhatók a gyors használatú, durva újrahonosítást használó horgonyok.
+title: Durva újratelepülés Swift
+description: Részletes magyarázat arról, hogyan lehet horgonyokat létrehozni és megtalálni a Swift durva újralokalizációjával.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,32 +9,32 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76546163"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Horgonyok létrehozása és megkeresése a Swift-ben a durva újrahonosítás használatával
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Hogyan hozzunk létre és keresse horgonyok segítségével durva relocalization a Swift
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
-> * [Objective-C](set-up-coarse-reloc-objc.md)
+> * [Célkitűzés-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
 > * [Android Java](set-up-coarse-reloc-java.md)
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Az Azure térbeli horgonyok a létrehozott horgonyokkal társíthatók az eszközön, a helymeghatározási érzékelőkkel. Ezzel az adattal gyorsan megállapítható, hogy vannak-e az eszköz közelében horgonyok. További információ: [durva újrahonosítás](../concepts/coarse-reloc.md).
+Az Azure Spatial Anchors társíthatja az eszközön, pozicionálásérzékelő adatok at a létrehozott horgonyok. Ezek az adatok arra is használhatók, hogy gyorsan megállapíthassák, vannak-e horgonyok az eszköz közelében. További információ: [Durva áthelyezés](../concepts/coarse-reloc.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
+Az útmutató kitöltéséhez győződjön meg arról, hogy:
 
-- A Swift alapszintű ismerete.
-- Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
-- Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
-- Olvassa el a [create (létrehozás), majd a horgonyok megkeresése című témakört](../create-locate-anchors-overview.md).
+- Alapvető ismeretek swift.
+- Olvassa el az [Azure Spatial Anchors áttekintését.](../overview.md)
+- Az 5 [perces rövid összefoglalók egyike befejeződött.](../index.yml)
+- Olvassa el a [Létrehozás és a horgonyok útmutatójának megkeresését.](../create-locate-anchors-overview.md)
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

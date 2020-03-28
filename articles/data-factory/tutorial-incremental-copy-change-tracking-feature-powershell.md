@@ -1,5 +1,5 @@
 ---
-title: Az Adatmásolás növekményes másolása Change Tracking használatával
+title: Adatok fokozatos másolása a változáskövetés használatával
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
 services: data-factory
 ms.author: yexu
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: c23eaf438f43743600636e006116e3bba8dfbf70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982580"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával
@@ -67,13 +67,13 @@ Ebben az oktatóanyagban két folyamatot hoz létre, amelyek az alábbi két mű
     ![Növekményes betöltés folyamatábrája](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
 
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure PowerShell. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
-* **Azure SQL Database** Ezt az adatbázist használjuk **forrásadattárként**. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
-* **Azure Storage-fiók** A blobtárolót használjuk majd **fogadóadattárként**. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Hozzon létre egy tárolót **adftutorial** néven. 
+* Azure PowerShell. Telepítse a legújabb Azure PowerShell-modulokat az [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps)című témakörutasításait követve.
+* **Az Azure SQL Database .** Ezt az adatbázist használjuk **forrásadattárként**. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
+* **Az Azure Storage-fiók.** A blobtárolót használjuk majd **fogadóadattárként**. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Hozzon létre egy tárolót **adftutorial** néven. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Adatforrástábla létrehozása az Azure SQL-adatbázisban
 1. Indítsa el az **SQL Server Management Studiót**, és csatlakozzon az Azure SQL Serverhez.
@@ -177,7 +177,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
     ```powershell
     $dataFactoryName = "IncCopyChgTrackingDF";
     ```
-5. Az adatelőállító létrehozásához futtassa az alábbi **set-AzDataFactoryV2** parancsmagot:
+5. Az adat-előállító létrehozásához futtassa a következő **Set-AzDataFactoryV2** parancsmagát:
 
     ```powershell       
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName
@@ -213,8 +213,8 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
         }
     }
     ```
-2. A **Azure PowerShellban**váltson a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappára.
-3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**. A következő példában a **ResourceGroupName** és a **DataFactoryName** paraméter értékeit fogja megadni.
+2. Az **Azure PowerShellben**váltson a **C:\ADFTutorials\IncChangeChangeTrackingTutorial** mappára.
+3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot a csatolt szolgáltatás létrehozásához: **AzureStorageLinkedService**. A következő példában a **ResourceGroupName** és a **DataFactoryName** paraméter értékeit fogja megadni.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -232,7 +232,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
 Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
 
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában a következő tartalommal: cserélje le **&lt;Server&gt; &lt;adatbázisnév&gt;, &lt;felhasználói azonosító&gt;, és &lt;jelszó&gt;** az Azure SQL Server neve, az adatbázis neve, a felhasználói azonosító és a jelszó a fájl mentése előtt.
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService.json** nevű JSON-fájlt a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában a következő tartalommal: Mielőtt mentené a fájlt, a **&lt;server, a &gt; &lt;database name&gt;, a &lt;user id&gt; és a &lt;password&gt;** helyőrzőt cserélje az Azure SQL Server nevére, az adatbázis nevére, a felhasználói azonosítóra és a jelszóra.
 
     ```json
     {
@@ -245,7 +245,7 @@ Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
         }
     }
     ```
-2. A **Azure PowerShell**a **set-AzDataFactoryV2LinkedService** parancsmag futtatásával hozza létre a társított szolgáltatást: **AzureSQLDatabaseLinkedService**.
+2. Az **Azure PowerShellben**futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot a csatolt szolgáltatás létrehozásához: **AzureSQLDatabaseLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -284,7 +284,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadatokat jelöl
     }   
     ```
 
-2.  Futtassa a set-AzDataFactoryV2Dataset parancsmagot a következő adatkészlet létrehozásához: SourceDataset
+2.  Az adatkészlet létrehozásához futtassa a Set-AzDataFactoryV2Dataset parancsmagát
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -326,7 +326,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
     ```
 
     Előfeltételként hozzon létre egy adftutorial nevű tárolót az Azure Blob Storage-ben. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Ebben az oktatóanyagban a kimeneti fájl nevét dinamikusan hozzuk létre a következő kifejezéssel: @CONCAT('Incremental-', pipeline().RunId, '.txt').
-2.  Futtassa a set-AzDataFactoryV2Dataset parancsmagot a következő adatkészlet létrehozásához: SinkDataset
+2.  Az adatkészlet létrehozásához futtassa a Set-AzDataFactoryV2Dataset parancsmagát
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -364,7 +364,7 @@ Ebben a lépésben egy adatkészletet hozunk létre a változáskövetés verzi�
     ```
 
     Előfeltételként hozzon létre egy table_store_ChangeTracking_version nevű táblát.
-2.  Futtassa a set-AzDataFactoryV2Dataset parancsmagot a következő adatkészlet létrehozásához: ChangeTrackingDataset
+2.  Az adatkészlet létrehozásához futtassa a Set-AzDataFactoryV2Dataset parancsmagát
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -413,7 +413,7 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
         }
     }
     ```
-2. Futtassa a set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
+2. Futtassa a Set-AzDataFactoryV2Pipeline parancsmag a folyamat létrehozásához: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
@@ -430,7 +430,7 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
    ```
 
 ### <a name="run-the-full-copy-pipeline"></a>A teljes másolási folyamat futtatása
-Futtassa a folyamatot: **FullCopyPipeline** a **Meghívási-AzDataFactoryV2Pipeline** parancsmag használatával.
+Futtassa a folyamatot: **FullCopyPipeline** **az Invoke-AzDataFactoryV2Pipeline** parancsmag használatával.
 
 ```powershell
 Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
@@ -438,7 +438,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 
 ### <a name="monitor-the-full-copy-pipeline"></a>A teljes másolási folyamat megfigyelése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 2. Kattintson a **Minden szolgáltatás** elemre, végezzen keresést a `data factories` kulcsszóval, és válassza az **Adat-előállítók** lehetőséget.
 
     ![Adat-előállítók menü](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
@@ -448,7 +448,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 4. Az Adat-előállító lapon kattintson a **Figyelés és felügyelet** csempére.
 
     ![Monitor & Manage csempe](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
-5. Az **adatintegrációs alkalmazás** egy külön lapon indul el. Láthatja az összes **folyamat futtatását** és állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban. Kattintson a **Műveletek** oszlopban található hivatkozásra.
+5. Az **adatintegrációs alkalmazás** egy külön lapon indul el. Láthatja az összes **folyamat fut,** és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban. Kattintson a **Műveletek** oszlopban található hivatkozásra.
 
     ![Folyamatfuttatások](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. Ha a **Műveletek** oszlopban található hivatkozásra kattint, megjelenik a következő lap, amely megmutatja a folyamat összes **tevékenységfuttatását**.
@@ -602,7 +602,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     }
 
     ```
-2. Futtassa a set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
+2. Futtassa a Set-AzDataFactoryV2Pipeline parancsmag a folyamat létrehozásához: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -619,7 +619,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>A növekményes másolási folyamat futtatása
-Futtassa a folyamatot: **IncrementalCopyPipeline** a **Meghívási-AzDataFactoryV2Pipeline** parancsmag használatával.
+Futtassa a folyamatot: **IncrementalCopyPipeline** **az Invoke-AzDataFactoryV2Pipeline** parancsmag használatával.
 
 ```powershell
 Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
@@ -657,8 +657,8 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
+## <a name="next-steps"></a>További lépések
+Továbblépni a következő oktatóanyaghoz, ha csak a LastModifiedDate adatai alapján szeretne többet megtudni az új és módosított fájlok másolásáról:
 
 > [!div class="nextstepaction"]
->[Új fájlok másolása a lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+>[Új fájlok másolása lastmodifieddate szerint](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

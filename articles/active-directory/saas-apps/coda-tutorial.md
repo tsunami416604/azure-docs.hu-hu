@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coda szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Coda között.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Coda-val | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Coda között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,176 +16,176 @@ ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77194634"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coda-vel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Coda-val
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Codat Azure Active Directory (Azure AD-val). A Coda és az Azure AD integrálásával a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Coda-t az Azure Active Directoryval (Azure AD). Ha integrálja a Coda-t az Azure AD-vel, a következőket teheti:
 
-* A Codahoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Codaba az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Coda.Control in Azure AD who has access to Coda.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve Coda az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* A Coda egyszeri bejelentkezés (SSO) engedélyezett előfizetése (Enterprise) GDrive-integrációval letiltva. Ha jelenleg engedélyezve van, lépjen kapcsolatba a [CODA támogatási csoportjával](mailto:support@coda.io) , és tiltsa le a GDrive-integrációt a szervezet számára.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* Coda egyszeri bejelentkezés (SSO) kompatibilis előfizetés (Enterprise) a GDrive-integráció le tiltva. Lépjen kapcsolatba [a Coda támogatási csapatával,](mailto:support@coda.io) és tiltsa le a GDrive-integrációt a szervezetnél, ha az jelenleg engedélyezve van.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* A Coda támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A Coda támogatja az **IDP** által kezdeményezett sso-t
 
-* A Coda a felhasználók üzembe helyezésének **időpontját is** támogatja
+* A Coda támogatja **a Just In Time** felhasználói kiépítést
 
-* A Coda konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Coda konfigurálása után kényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
-## <a name="adding-coda-from-the-gallery"></a>CODA hozzáadása a gyűjteményből
+## <a name="adding-coda-from-the-gallery"></a>Coda hozzáadása a galériából
 
-A Coda Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Coda-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Coda azure AD-be való integrációjának konfigurálásához hozzá kell adnia a Coda-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **CODA** kifejezést a keresőmezőbe.
-1. Válassza ki a **CODA** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a gyűjteményből szakaszban** írja be a **Coda** kifejezést a keresőmezőbe.
+1. Válassza a **Coda** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-coda"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Coda számára
+## <a name="configure-and-test-azure-ad-single-sign-on-for-coda"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését a Coda-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Coda használatával a **B. Simon**nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a Coda-beli kapcsolódó felhasználó között.
+Konfigurálja és tesztelje az Azure AD-sSO-t a Coda-val egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a codai kapcsolódó felhasználó között.
 
-Az Azure AD SSO és a Coda konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD-sSO konfigurálásához és teszteléséhez a Coda segítségével hajtsa végre a következő építőelemeket:
 
-1. **[A Coda SSO konfigurációjának megkezdése](#begin-configuration-of-coda-sso)** – az egyszeri bejelentkezés konfigurációjának megkezdése a Coda-ban.
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-   * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-   * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[CODA SSO konfigurálása](#configure-coda-sso)** – a Coda egyszeri bejelentkezési beállításainak konfigurálásának befejezéséhez.
-   * **[Hozzon létre CODA-teszt felhasználót](#create-coda-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli, a Coda-beli ügyféllel.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Kezdődik konfiguráció Coda SSO](#begin-configuration-of-coda-sso)** - kezdeni konfiguráció sso A Coda.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+   * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+   * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja a Coda SSO-t](#configure-coda-sso)** - az egyszeri bejelentkezési beállítások teljes konfigurálásához a Coda-ban.
+   * **[Hozzon létre Coda teszt felhasználó](#create-coda-test-user)** - egy megfelelője B.Simon a Coda, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="begin-configuration-of-coda-sso"></a>A Coda SSO konfigurációjának megkezdése
 
-A kezdéshez kövesse az alábbi lépéseket a Coda-ben.
+A kezdéshez kövesse a Coda alábbi lépéseit.
 
-1. A Coda-ban nyissa meg a **szervezeti beállítások** panelt.
+1. A Coda alkalmazásban nyissa meg a **Szervezet beállításai** panelt.
 
    ![Szervezeti beállítások megnyitása](media/coda-tutorial/org-settings.png)
 
-1. Győződjön meg arról, hogy a szervezet GDrive-integrációja ki van kapcsolva. Ha jelenleg engedélyezve van, lépjen kapcsolatba a [CODA támogatási csapatával](mailto:support@coda.io) , és segítsen a GDrive kikapcsolásában.
+1. Győződjön meg arról, hogy a szervezetnél ki van kapcsolva a GDrive-integráció. Ha jelenleg engedélyezve van, lépjen kapcsolatba a [Coda támogatási csapatával,](mailto:support@coda.io) hogy segítséget nyújthasson a GDrive-ról való áttelepítéshez.
 
    ![GDrive letiltva](media/coda-tutorial/gdrive-off.png)
 
-1. A **hitelesítés egyszeri bejelentkezéssel (SAML)** területen válassza az **SAML konfigurálása** lehetőséget.
+1. A **Hitelesítés sso-val (SAML)** csoportban válassza az **SAML konfigurálása** lehetőséget.
 
-   ![SAML-beállítások](media/coda-tutorial/saml-settings-link.png)
+   ![Saml beállítások](media/coda-tutorial/saml-settings-link.png)
 
-1. Jegyezze fel az **entitás-azonosító** és az **SAML-válasz URL-címének**értékeit, amelyeket a következő lépésekben kell megadnia.
+1. Vegye figyelembe az **entitásazonosító** és az **SAML-válasz URL-címének**értékeit, amelyekre a következő lépésekben szüksége lesz.
 
-   ![Az Azure-ban használandó entitás-azonosító és SAML-válasz URL-címe](media/coda-tutorial/azure-settings.png)
+   ![Az Azure-ban használandó entitásazonosító és SAML-válasz URL-címe](media/coda-tutorial/azure-settings.png)
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)a **CODA** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Coda** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő mezők értékeit:
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon adja meg a következő mezők értékeit:
 
-   a. Az **azonosító** szövegmezőbe írja be a fenti "Entity id" értéket. A következő mintát kell követnie: `https://coda.io/samlId/<CUSTOMID>`
+   a. Az **Azonosító** mezőbe írja be felülről az "Entitásazonosító" kifejezést. Meg kell követni a mintát:`https://coda.io/samlId/<CUSTOMID>`
 
-   b. A **Válasz URL-címe** szövegmezőbe írja be a fenti "SAML-válasz URL-címe" kifejezést. A következő mintát kell követnie: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
+   b. A **Válasz URL-cím** mezőjébe írja be felülről az "SAML-válasz URL-címét". Meg kell követni a mintát:`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
    > [!NOTE]
-   > Az értékek eltérnek a fentitől; az értékeket a Coda "SAML konfigurálása" konzolján találja. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel.
+   > Az Ön értékei eltérnek a fentiektől; az értékeket a Coda "SAML konfigurálása" konzolján találja. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+   ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **CODA beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény alapján.
+1. A **Coda beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a Coda elérésének biztosításával.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Coda hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **CODA**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **Coda**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-   ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+   ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-coda-sso"></a>CODA SSO konfigurálása
+## <a name="configure-coda-sso"></a>Coda SSO konfigurálása
 
-A telepítés befejezéséhez Azure Active Directory értékeket kell megadnia a Coda **configure SAML** -paneljén.
+A telepítés befejezéséhez adja meg az Azure Active Directory ból származó értékeket a Coda **Configure Saml** panelen.
 
-1. A Coda-ban nyissa meg a **szervezeti beállítások** panelt.
-1. A **hitelesítés egyszeri bejelentkezéssel (SAML)** területen válassza az **SAML konfigurálása** lehetőséget.
-1. **SAML-szolgáltató** beállítása **Azure Active Directoryra**.
-1. Az **Identity Provider bejelentkezési URL-címében**illessze be a **bejelentkezési URL-címet** az Azure-konzolból.
-1. Az **Identity Provider-kiállítóban**illessze be az **Azure ad-azonosítót** az Azure-konzolból.
-1. Az **Identitáskezelő nyilvános tanúsítványa**lapon jelölje be a **tanúsítvány feltöltése** lehetőséget, majd válassza ki a korábban letöltött tanúsítványfájl-fájlt.
+1. A Coda alkalmazásban nyissa meg a **Szervezet beállításai** panelt.
+1. A **Hitelesítés sso-val (SAML)** csoportban válassza az **SAML konfigurálása** lehetőséget.
+1. Állítsa **az SAML-szolgáltatót** az **Azure Active Directory ra.**
+1. Az **identitásszolgáltató bejelentkezési URL-címét**illessze be a **bejelentkezési URL-címet** az Azure konzolról.
+1. Az **identitásszolgáltató kiállítója**illessze be az **Azure AD-azonosítót** az Azure-konzolról.
+1. Az **Identitásszolgáltató nyilvános tanúsítványa csoportban**válassza a **Tanúsítvány feltöltése** lehetőséget, és válassza ki a korábban letöltött tanúsítványfájlt.
 1. Kattintson a **Mentés** gombra.
 
-Ezzel befejezte az SAML SSO-kapcsolatok beállításához szükséges munkát.
+Ezzel befejeződött az SAML SSO-kapcsolat beállításához szükséges munka.
 
-### <a name="create-coda-test-user"></a>CODA-teszt felhasználó létrehozása
+### <a name="create-coda-test-user"></a>Coda-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Codaban. A Coda támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Coda-ban, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Coda-ban. A Coda támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó már nem létezik a Coda, egy új jön létre a hitelesítés után.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Amikor a hozzáférési panelen a Coda csempére kattint, automatikusan be kell jelentkeznie a Coda-be, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a Coda csempére kattint, automatikusan be kell jelentkeznie arra a Coda-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A Coda kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a Coda-t az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [A Coda védetté tétele a speciális láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Hogyan védjük meg coda fejlett láthatóság és ellenőrzések](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

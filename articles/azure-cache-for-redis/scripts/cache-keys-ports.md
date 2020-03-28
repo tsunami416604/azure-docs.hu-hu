@@ -1,6 +1,6 @@
 ---
-title: Állomásnév, portok, kulcsok – Azure cache a Redis-hez – Azure CLI
-description: Ez az Azure CLI-mintakód azt mutatja be, hogyan kérhető le egy Azure cache-hez tartozó állomásnév, portok és kulcsok a Redis-példányhoz.
+title: Az állomásnév, portok, kulcsok beolvasása – Azure Cache for Redis - Azure CLI
+description: Ez az Azure CLI-kódminta bemutatja, hogyan szerezheti be a állomásnevet, a portokat és a redis-példányok Azure-gyorsítótárának kulcsait.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411300"
 ---
-# <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Az Azure cache gazdagép-, port-és kulcsainak beolvasása a Redis
+# <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Az állomásnév, a portok és a redis-i Azure-gyorsítótár lekéri a gazdagépnevét, portjait és kulcsait
 
-Ebből a forgatókönyvből megtudhatja, hogyan kérheti le a Redis-példány Azure cache-hez való csatlakozáshoz használt állomásnév, portok és kulcsok beolvasását.
+Ebben a forgatókönyvben megtudhatja, hogyan kérheti be a állomásnév, portok és kulcsok, amelyek egy Azure-gyorsítótár redis-példányhoz való csatlakozáshoz használt.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -28,16 +28,16 @@ Ebből a forgatókönyvből megtudhatja, hogyan kérheti le a Redis-példány Az
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy Azure cache Redis-példányhoz tartozó állomásnév, kulcsok és portok lekéréséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja egy Azure-gyorsítótár redis-példány állomásnevének, kulcsainak és portjainak lekéréséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az Redis show](https://docs.microsoft.com/cli/azure/redis) | A Redis-példányhoz tartozó Azure cache részleteinek beolvasása. |
-| [az Redis List-Keys](https://docs.microsoft.com/cli/azure/redis) | Redis-példányhoz tartozó Azure cache elérési kulcsainak beolvasása. |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis) | A Redis-példány Azure-gyorsítótárának részleteinek beolvasása. |
+| [az redis listabillentyűk](https://docs.microsoft.com/cli/azure/redis) | Hozzáférés-kulcsok lekérése egy Azure-gyorsítótár redis-példányhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Azure cache a Redis CLI-szkriptekhez az [Azure cache Redis dokumentációjában](../cli-samples.md)található.
+További Azure Cache for Redis CLI script minták találhatók az [Azure Cache for Redis dokumentációban.](../cli-samples.md)

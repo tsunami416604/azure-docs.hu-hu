@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-minták – Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Ez a cikk a Azure Database for PostgreSQL-egyetlen kiszolgálóval való interakcióhoz elérhető Azure CLI-mintakód-mintákat sorolja fel.
+title: Azure CLI-minták - Azure Database for PostgreSQL - Single Server
+description: Ez a cikk több Azure CLI-kódmintát sorol fel, amelyek az Azure Database for PostgreSQL – Single Server használatával kommunikálnak.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,13 +9,13 @@ ms.topic: sample
 ms.custom: sample, mvc
 ms.date: 5/6/2019
 ms.openlocfilehash: 154dc8b8569162992f4fc231caee2a43682db456
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74774720"
 ---
-# <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure CLI-minták Azure Database for PostgreSQL – egyetlen kiszolgáló
+# <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure CLI-minták az Azure Database for PostgreSQL-hez – Egykiszolgálós
 A következő táblázat hivatkozásokat tartalmaz az Azure Database for PostgreSQL-hez elérhető Azure CLI-példaszkriptekre.
 
 | |  |

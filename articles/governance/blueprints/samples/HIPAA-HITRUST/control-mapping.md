@@ -1,243 +1,243 @@
 ---
-title: HIPAA HITRUST terv minta vezérlők
-description: A HIPAA HITRUST tervrajz-minták leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
+title: HIPAA HITRUST mintavezérlők
+description: A HIPAA HITRUST tervminták vezérlőleképezése. Minden vezérlő le van képezve egy vagy több Azure-szabályzatok, amelyek segítik az értékelést.
 ms.date: 11/26/2019
 ms.topic: sample
 ms.openlocfilehash: c6680055cfe41a2f893d46cba797783913d880ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75472309"
 ---
-# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>A HIPAA HITRUST tervezetének vezérlési mintája
+# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>A HIPAA HITRUST tervezetminta vezérlőtérképezése
 
-A következő cikk részletesen ismerteti, hogyan HIPAA az Azure-tervezetek HITRUST-tervezete a HIPAA HITRUST-vezérlőkbe. A vezérlőkkel kapcsolatos további információkért lásd: [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+A következő cikk részletezi, hogy az Azure Blueprints HIPAA HITRUST minta minta leképezi a HIPAA HITRUST vezérlők. A vezérlőkkel kapcsolatos további információkért lásd: [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-A következő leképezések a **HIPAA HITRUST** vezérlői. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[előnézet\]: audit HIPAA HITRUST Controls** beépített Policy Initiative.
+Az alábbi leképezések a **HIPAA HITRUST** vezérlőkhöz tartoznak. A jobb oldali navigációs sávsegítségével közvetlenül egy adott vezérlőleképezésre ugorhat. A leképezett vezérlők nagy része egy [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósítva meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** az Azure Portalon, és válassza a **Definíciók** lapot. Ezután keresse meg és válassza ki az ** \[Előzetes\]verzió : A HIPAA HITRUST vezérlők** beépített házirend-kezdeményezésének naplózása.
 
 > [!IMPORTANT]
-> Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md).
+> Az alábbi vezérlők egy vagy több [Azure-szabályzat-definícióhoz](../../../policy/overview.md) vannak társítva. Ezek a szabályzatok segíthetnek [az ellenőrzésnek való megfelelés értékelésében;](../../../policy/how-to/get-compliance-data.md) azonban gyakran nincs 1:1 vagy teljes egyezés egy vezérlő és egy vagy több házirend között. Az Azure-szabályzatban **megfelelő** csak magukra a szabályzatokra vonatkozik; ez nem biztosítja, hogy teljes mértékben megfelel-e a vezérlő összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyeket jelenleg egyetlen Azure-szabályzat-definíció sem kezel. Ezért az Azure Policy-ben való megfelelőség csak részleges nézet az általános megfelelőségi állapotról. A vezérlők és az Azure Policy-definíciók közötti társítások a megfelelőségi tervezet minta idővel változhat. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub véglegesítési előzményeit.](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md)
 
-## <a name="control-against-malicious-code"></a>A kártékony kódok elleni védekezés
+## <a name="control-against-malicious-code"></a>A rosszindulatú kód elleni védekezés
 
-Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony programkódok védelmét is, ha olyan [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek figyelik a Azure Security Center virtuális gépei hiányzó Endpoint Protection szolgáltatását, és kikényszerítik a Microsoft antimalware megoldást a Windows rendszerű virtuális gépeken.
+Ez a tervezet segít a végpontvédelem kezelésében, beleértve a rosszindulatú kódvédelmet is, azáltal, hogy [olyan Azure Policy-definíciókat](../../../policy/overview.md) rendel hozzá, amelyek figyelik a hiányzó végpontvédelmet az Azure Security Center virtuális gépein, és kényszerítik a Microsoft kártevőirtó megoldást a Windows virtuális gépeken.
 
-- Az alapértelmezett Microsoft IaaS antimalware-bővítmény telepítése a Windows Serverhez
-- A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell
-- A rendszerfrissítéseknek telepítve kell lennie a gépeken
+- Alapértelmezett Microsoft IaaS kártevőirtó bővítmény telepítése Windows Server rendszerhez
+- A Batch-fiókok diagnosztikai naplóit engedélyezni kell
+- A rendszerfrissítéseket telepíteni kell a gépeken
 
 
 ## <a name="management-of-removable-media"></a>Cserélhető adathordozók kezelése
 
-Az adatbesorolási szint alapján a szervezet a használat előtt regisztrálja az adathordozót (beleértve a laptopokat is), megkeresi az adott adathordozó használatára vonatkozó ésszerű korlátozásokat, és megfelelő szintű fizikai és logikai védelmet biztosít (beleértve a titkosítást is) a következőhöz: a kezelt adatokat tartalmazó adathordozót, amíg a megfelelő megsemmisül vagy megtisztítva.
+A szervezet az adatbesorolási szint alapján a használat előtt regisztrálja az adathordozókat (beleértve a laptopokat is), ésszerű korlátozásokat vezet be az ilyen adathordozók használatára vonatkozóan, és megfelelő szintű fizikai és logikai védelmet (beleértve a titkosítást is) biztosít a a fedett információkat tartalmazó adathordozók, amíg megfelelően meg nem semmisülnek vagy fertőtlenítésre nem kerülnek.
 
-- Titkosítás megkövetelése Data Lake Store fiókokon
-- A felügyelt SQL-példányok TDE-védőjét a saját kulcsával kell titkosítani
-- A virtuális gépeken alkalmazni kell a lemeztitkosítást
-- Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
+- Titkosítás megkövetelése data lake store-fiókokon
+- Az SQL felügyelt példány TDE-védőjét saját kulccsal kell titkosítani
+- A lemeztitkosítást virtuális gépeken kell alkalmazni
+- Az SQL-adatbázisok transzparens adattitkosítását engedélyezni kell
 
 
-## <a name="information-exchange-policies-and-procedures"></a>Információcsere-házirendek és eljárások
+## <a name="information-exchange-policies-and-procedures"></a>Információcsere-szabályzatok és -eljárások
 
-A felhőalapú szolgáltatók egy iparág által elismert virtualizációs platformot és standard virtualizációs formátumokat (pl. Open Virtualization Format, OVF) használnak az együttműködési képesség biztosításához, és dokumentálták a használatban lévő hypervisorok és az összes általa elvégzett egyéni módosításokat. az ügyfél-áttekintéshez elérhető megoldás-specifikus virtualizálási hookok.
+A felhőszolgáltatók az iparág által elismert virtualizációs platformot és szabványos virtualizációs formátumokat (pl. Open Virtualization Format, OVF) használják az interoperabilitás biztosításához, és dokumentálták a használatban lévő hipervizorok egyéni módosításait és az összes megoldás-specifikus virtualizációs horgok állnak rendelkezésre az ügyfél felülvizsgálata.
 
-- A megadott alkalmazásokkal nem rendelkező Windows rendszerű virtuális gépek naplózásához szükséges előfeltételek központi telepítése
+- Előfeltételek telepítése olyan Windows virtuális gépek naplózásához, amelyeken nincs telepítve a megadott alkalmazás
 
-## <a name="control-of-operational-software"></a>Az operatív szoftverek felügyelete 
+## <a name="control-of-operational-software"></a>Az operatív szoftverek ellenőrzése 
 
-A szervezet azonosítja a jogosulatlan szoftvereket az információs rendszeren, beleértve a kiszolgálókat, a munkaállomásokat és a laptopokat, az engedélyezési és megtagadási szabályzatot alkalmazva tiltja az ismert jogosulatlan szoftverek végrehajtását az információs rendszeren, és rendszeresen ellenőrzi és frissíti a jogosulatlan szoftverek listáját, de nem kevesebb, mint évente.
+A szervezet azonosítja a jogosulatlan szoftvereket az információs rendszeren, beleértve a szervereket, munkaállomásokat és laptopokat, minden engedélyezésre vonatkozó, kivételi házirendet alkalmaz, amely megtiltja az ismert, jogosulatlan szoftverek végrehajtását az információs rendszeren, és rendszeresen, de nem kevesebb, mint évente ellenőrzi és frissíti a jogosulatlan szoftverek listáját.
 
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeit jeleníti meg a "biztonsági beállítások – naplózás"
-- \[előzetes verzió\] a "rendszernaplózási házirendek – Fiókkezelés" című dokumentum a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeit jeleníti meg
+- \[Preview\] A Windows virtuális gépek konfigurációinak naplózási eredményeinek megjelenítése a "Biztonsági beállítások naplózása" párbeszédpanelen
+- \[Preview\] A Windows virtuális gépek konfigurációinak naplózási eredményeinek megjelenítése a "Rendszernaplózási házirendek– Fiókkezelés" szolgáltatásban
 
-## <a name="change-control-procedures"></a>Vezérlési eljárások módosítása
+## <a name="change-control-procedures"></a>Változásellenőrzési eljárások
 
-Az összes virtuálisgép-lemezkép integritását a rendszer mindig a virtuális gépek rendszerképein végrehajtott módosítások naplózásával és riasztással biztosítja, valamint az üzleti tulajdonos (ok) és/vagy az ügyfél (ek) számára az elektronikus metódusok (például a portálok vagy a riasztások), valamint a kép integritásának későbbi érvényesítése során.
+Az összes virtuálisgép-lemezkép integritását mindig biztosítják a virtuálisgép-lemezképek naplózásával és riasztásának kiemelésével, valamint a tulajdonos(ok) és/vagy ügyfél(ek) számára elektronikus módszerekkel (pl. portálok vagy riasztások) a változás vagy áthelyezés eredményeinek, valamint a lemezkép integritásának későbbi érvényesítésével történő hozzáférhetővé tétele révén.
 
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeit jeleníti meg a "rendszernaplózási házirendek – részletes követés"
+- \[Preview\] A windows vms-konfigurációnaplózási eredményeinek megjelenítése a "Rendszernaplózási házirendek – részletes nyomon követés" című részében
 
 ## <a name="inventory-of-assets"></a>Eszközök leltára 
 
-A rendszer karbantartja az eszközök és szolgáltatások leltárát
+Az eszközök és szolgáltatások leltárát
 
-- A keresési szolgáltatásokban engedélyezni kell a diagnosztikai naplókat.
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózására vonatkozó követelmények a "biztonsági beállítások – Microsoft hálózati kiszolgáló"
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózására vonatkozó követelményeket a "Felügyeleti sablonok hálózat"
+- A keresési szolgáltatások diagnosztikai naplóit engedélyezni kell.
+- \[Előzetes\] telepítési követelmények a Windows virtuális gépek konfigurációinak naplózásához a "Security Options- Microsoft Network Server" (Biztonsági beállítások – Microsoft Network Server) szolgáltatásban
+- \[Előzetes\] üzembe helyezési követelmények a Windows virtuális gépek konfigurációinak naplózásához a "Felügyeleti sablonok- Hálózat"
 
-## <a name="control-of-technical-vulnerabilities"></a>A technikai sebezhetőségek szabályozása 
+## <a name="control-of-technical-vulnerabilities"></a>A technikai biztonsági rések ellenőrzése 
 
-Az összes rendszer-és hálózati összetevő megerősített konfigurációs szabványt tartalmaz.
+Minden rendszer- és hálózati összetevőhöz létezik megerősített konfigurációs szabvány.
 
-- Naplózás Virtual Machines a vész-helyreállítási beállítások nélkül
-- A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.
-- A biztonsági rést a sebezhetőségi felmérési megoldásnak kell szervizelni
+- Virtuális gépek naplózása a vészhelyreállítás konfigurálása nélkül
+- A biztonsági rés felmérését engedélyezni kell az SQL által kezelt példányokon
+- A biztonsági rést a biztonsági rés felmérésével kell orvosolni
 
-## <a name="segregation-in-networks"></a>Elkülönítés a hálózatokban
+## <a name="segregation-in-networks"></a>Szegregáció a hálózatokban
 
-A szervezet biztonsági átjárói (például tűzfalak) kényszerítik a biztonsági házirendeket, és úgy vannak konfigurálva, hogy szűrik a tartományok közötti forgalmat, blokkolják a jogosulatlan hozzáférést, és a belső vezetékes, a belső vezeték nélküli és a külső hálózat közötti elkülönítés fenntartására szolgálnak. hálózati szegmensek (például az Internet), beleértve a DMZ és az egyes tartományok hozzáférés-vezérlési házirendjeinek betartatását.
+A szervezet biztonsági átjárói (pl. tűzfalak) biztonsági házirendeket kényszerítenek, és úgy vannak beállítva, hogy szűrjék a tartományok közötti forgalmat, blokkolják a jogosulatlan hozzáférést, és a belső vezetékes, belső vezeték nélküli és külső hozzáférés közötti szegregáció fenntartására szolgálnak hálózati szegmensek (pl. az internet), beleértve a DMZ-ket, és minden tartományhoz betartatják a hozzáférés-vezérlési házirendeket.
 
-- A biztonsági figyelő ügynök automatikus kiépítés
-- A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
+- A biztonsági figyelési ügynök automatikus kiépítése
+- Hálózati figyelő telepítése virtuális hálózatok létrehozásakor
 
-## <a name="input-data-validation"></a>Bemeneti adatok ellenőrzése
+## <a name="input-data-validation"></a>Bemeneti adatok érvényesítése
 
-A nyilvános webalkalmazások esetében az alkalmazás-szintű tűzfalak a forgalom szabályozásához vannak implementálva. A nem webalapú nyilvános alkalmazások esetében a szervezet az alkalmazás típusához tartozó, hálózati alapú tűzfalat implementált. Ha a nyilvános alkalmazás felé irányuló forgalom titkosítva van, az eszköz vagy a titkosítás mögött helyezkedik el, vagy képes a forgalom visszafejtésére az elemzés előtt.
+A nyilvános elérésű webalkalmazások esetében alkalmazásszintű tűzfalak vannak megvalósítva a forgalom szabályozására. A nem webalapú nyilvános alkalmazások esetében a szervezet az alkalmazástípusra jellemző hálózati tűzfalat valósított meg. Ha a nyilvános fekvésű alkalmazásra irányuló forgalom titkosítva van, az eszköz vagy a titkosítás mögött ül, vagy az elemzés előtt képes visszafejteni a forgalmat.
 
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeit jeleníti meg a "Windows tűzfal tulajdonságai" párbeszédpanelen
+- \[Preview\] A Windows virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése a "Windows tűzfal tulajdonságai" párbeszédpanelen
 
 
-## <a name="network-connection-control"></a>Hálózati kapcsolatok vezérlése
+## <a name="network-connection-control"></a>Hálózati kapcsolat vezérlése
 
-A hálózati forgalmat a szervezet hozzáférés-vezérlési szabályzatának megfelelően a tűzfal és az egyes hálózati hozzáférési pontokhoz vagy a külső távközlési szolgáltatás felügyelt felületéhez kapcsolódó egyéb korlátozásokkal összhangban kell szabályozni.
+A hálózati forgalmat a szervezet hozzáférés-vezérlési házirendjének megfelelően szabályozzák tűzfalon és más hálózati korlátozásokon keresztül minden egyes hálózati hozzáférési pont vagy külső távközlési szolgáltatás felügyelt felületére vonatkozóan.
 
-- Korlátozni kell az internetre irányuló végpontok elérését
-- A felügyelt SQL-példányok TDE-védőjét a saját kulcsával kell titkosítani
-- A távoli hibakeresést ki kell kapcsolni az API-alkalmazások esetében
+- Az interneten keresztüli hozzáférést korlátozni kell
+- Az SQL felügyelt példány TDE-védőjét saját kulccsal kell titkosítani
+- A távoli hibakeresést ki kell kapcsolni az API-alkalmazásokesetében
 
 ## <a name="network-controls"></a>Hálózati vezérlők
 
-A szervezet biztonságos és titkosított kommunikációs csatornákat használ a fizikai kiszolgálók, alkalmazások vagy az alkalmazások virtualizált kiszolgálókra való áttelepítésekor.
+A szervezet biztonságos és titkosított kommunikációs csatornákat használ fizikai kiszolgálók, alkalmazások vagy adatok virtualizált kiszolgálókra történő áttelepítésekor.
 
-- A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- Az SQL-kiszolgáló TDE-védelmet saját kulcs használatával ajánlott titkosítani
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeit jeleníti meg a "biztonsági beállítások – hálózati hozzáférés" című részt.
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése a "Windows tűzfal tulajdonságai" párbeszédpanelen
+- A lemeztitkosítást virtuális gépeken kell alkalmazni
+- AZ SQL server TDE protector-t saját kulccsal kell titkosítani
+- \[Preview\] A Windows virtuális gépek konfigurációinak naplózási eredményei a "Biztonsági beállítások- Hálózati hozzáférés" menüben
+- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
+- \[Preview:\] A Windows-verzió kontinói beállításainak eredményei a "Windows tűzfal tulajdonságai" párbeszédpanelen
 - Diagnosztikai beállítások telepítése hálózati biztonsági csoportokból
-- Korlátozni kell az internetre irányuló végpontok elérését
+- Az interneten keresztüli hozzáférést korlátozni kell
 
-## <a name="sensitive-system-isolation"></a>Érzékeny rendszerek elkülönítése
+## <a name="sensitive-system-isolation"></a>Érzékeny rendszerelkülönítés
 
-A megosztott rendszererőforrások (például a regisztrációk, a fő memória, a másodlagos tárolók) visszakerülnek a rendszerbe, a más rendszerekre/alkalmazásokra/felhasználókra való illetéktelen hozzáféréstől, és a felhasználók nem tudnak szándékosan hozzáférni az adatokhoz.
+A megosztott rendszererőforrások (pl. regiszterek, fő memória, másodlagos tároló) visszakerülnek a rendszerbe, védve vannak a más rendszerek/alkalmazások/felhasználók számára történő közzétételtől, és a felhasználók szándékosan vagy akaratlanul nem férhetnek hozzá az információ maradványokhoz.
 
-- Virtual Machines át kell telepíteni az új Azure Resource Manager-erőforrásokra
+- A virtuális gépeket át kell telepíteni az új Azure Resource Manager-erőforrásokba
 
-## <a name="security-of-network-services"></a>Network Services biztonsága
+## <a name="security-of-network-services"></a>A hálózati szolgáltatások biztonsága
 
-A hálózati szolgáltató/kezelő által biztosított egyeztetett szolgáltatásokat a rendszer hivatalosan felügyeli és figyeli, hogy azok biztonságosan legyenek biztosítva.
+A hálózati szolgáltató/menedzser által nyújtott, egyeztetett szolgáltatásokat hivatalosan kezelik és ellenőrzik annak biztosítása érdekében, hogy azok biztonságosan legyenek biztosítva.
 
-- Virtual Machines át kell telepíteni az új Azure Resource Manager-erőforrásokra
+- A virtuális gépeket át kell telepíteni az új Azure Resource Manager-erőforrásokba
 
 ## <a name="network-routing-control"></a>Hálózati útválasztási vezérlő
 
-Az útválasztási vezérlők a belső és külső hálózatok (például az Internet és a harmadik féltől származó hálózatok) között használt biztonsági átjárókkal (például tűzfalakkal) valósíthatók meg.
+Az útválasztási vezérlők a belső és külső hálózatok (pl. az internet és a külső hálózatok) közötti biztonsági átjárókon (pl. tűzfalakon) keresztül valósulnak meg.
 
-- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
+- Az adaptív alkalmazásvezérlőket engedélyezni kell a virtuális gépeken
 
-## <a name="information-exchange-policies-and-procedures"></a>Információcsere-házirendek és eljárások
+## <a name="information-exchange-policies-and-procedures"></a>Információcsere-szabályzatok és -eljárások
 
-A szervezet korlátozza a szervezet által vezérelt hordozható tárolóeszközök használatát a külső információs rendszereken lévő, felhatalmazott személyek által.
+A szervezet korlátozza a szervezet által ellenőrzött hordozható adathordozók használatát a külső információs rendszereken engedélyezett személyek számára.
 
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
-- A távoli hibakeresést ki kell kapcsolni a webalkalmazásokhoz
-- Az APi-alkalmazás csak HTTPS protokollon keresztül érhető el
+- Tárfiókokhoz való korlátlan hálózati hozzáférés naplózása
+- A távoli hibakeresést ki kell kapcsolni a webalkalmazásokesetében
+- Az APi alkalmazás csak HTTPS-en keresztül érhető el
 
 ## <a name="electronic-messaging"></a>Elektronikus üzenetküldés
 
-A jóváhagyások a külső nyilvános szolgáltatások, például az azonnali üzenetküldés vagy a fájlmegosztás használata előtt szerezhetők be.
+A jóváhagyások a külső közszolgáltatások – többek között az azonnali üzenetküldés vagy a fájlmegosztás – használata előtt kerülnek beszerzésre.
 
-- \[előzetes verzió\] olyan Linux rendszerű virtuális gépek naplózási eredményeit jeleníti meg, amelyek nem rendelkeznek az 0644-as jelszavas engedélyekkel
+- \[Preview\] A 0644-re nem beállított jelszófájl-engedélyekkel nem rendelkező Linux-virtuális gépek naplózási eredményeinek megjelenítése
 
-## <a name="on-line-transactions"></a>Online tranzakciók
+## <a name="on-line-transactions"></a>On-Line tranzakciók
 
-A szervezetnek a tranzakcióban részt vevő felek mindegyike számára szükséges a titkosítás és az elektronikus aláírások használata. A szervezet biztosítja, hogy a tranzakció részletei a nyilvánosan elérhető környezeteken kívül helyezkednek el (például a szervezet intranetén meglévő tárolási platformon, és nem őrzi meg és nem teszi közzé azokat az internetről közvetlenül elérhető adathordozóról. ha megbízható szolgáltatót használunk (például digitális aláírások és/vagy digitális tanúsítványok kiállítása és karbantartása céljából), a biztonság integrálva van és beágyazva van a teljes teljes körű tanúsítvány-és aláírás-kezelés során. folyamat.
+A szervezet megköveteli a tranzakcióban részt vevő felek közötti titkosítást és elektronikus aláírások használatát. A szervezet biztosítja, hogy a tranzakció részleteinek tárolása a nyilvánosan elérhető környezeteken kívül (pl. a szervezet intranetjén található tárolóplatformon) kívül helyezkedjen el, és ne maradjon meg és ne legyen elérhető az internetről közvetlenül elérhető adathordozón. Folyamat.
 
-- A lemezes titkosítást a virtuális gépeken kell alkalmazni
-- \[előzetes verzió\] olyan Windows rendszerű virtuális gépek naplózási eredményeit jeleníti meg, amelyek nem tartalmazzák a megadott tanúsítványokat a megbízható gyökérben
+- A lemeztitkosítást virtuális gépeken kell alkalmazni
+- \[Preview:\] A megbízható legfelső szintű tanúsítványban nem a megadott tanúsítványokat nem tartalmazó Windows-virtuális gépek naplózási eredményeinek megjelenítése
 
 ## <a name="password-management"></a>Jelszókezelés
 
-A rendszer a jelszavakat az átvitel és a tárolás során titkosítja az összes rendszerösszetevőn.
+A jelszavak titkosítása az összes rendszerösszetevő átvitele és tárolása során történik.
 
-- \[előzetes verzió\] olyan Windows rendszerű virtuális gépek naplózási eredményeit jeleníti meg, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
+- \[Preview:\] A windows virtuális gépek naplózási eredményeinek megjelenítése, amelyeknél nincs engedélyezve a jelszó-összetettségi beállítás
 
-## <a name="user-authentication-for-external-connections"></a>A külső kapcsolatok felhasználói hitelesítése
+## <a name="user-authentication-for-external-connections"></a>Külső kapcsolatok felhasználói hitelesítése
 
-Az erős hitelesítési módszerek, például a többtényezős, a RADIUS vagy a Kerberos (privilegizált hozzáférés esetén) és a CHAP (a telefonos módszerekhez tartozó hitelesítő adatok titkosításához) a szervezet hálózatához tartozó összes külső kapcsolat esetében implementálva vannak.
+Az erős hitelesítési módszerek, például a többtényezős, a radius vagy a kerberos (kiemelt hozzáféréshez) és a CHAP (a telefonos módszerek hitelesítő adatainak titkosításához) a szervezeti hálózattal létesített összes külső kapcsolathoz vannak megvalósítva.
 
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
-- Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
+- Az MFA-nak engedélyeznie kell az előfizetéshez írási engedélyekkel rendelkező fiókokat
+- Just In Time hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
 
-## <a name="user-identification-and-authentication"></a>Felhasználói azonosító és hitelesítés
+## <a name="user-identification-and-authentication"></a>Felhasználó azonosítása és hitelesítése
 
-A Kiemelt funkciókat (például a rendszerfelügyeletet) végző felhasználók külön fiókokat használnak az emelt szintű függvények végrehajtásakor. A többtényezős hitelesítési módszereket a szervezeti szabályzatoknak (például távoli hálózati hozzáférés esetén) megfelelően használják.
+Azok a felhasználók, akik kiemelt funkciókat (pl. rendszerfelügyeletet) hajtottak végre, külön fiókokat használnak a kiemelt funkciók végrehajtásakor. A többtényezős hitelesítési módszerek et a szervezeti házirendnek megfelelően (pl. távoli hálózati hozzáférésesetén) használják.
 
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
-- Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
+- Az MFA-nak engedélyeznie kell az előfizetéshez írási engedélyekkel rendelkező fiókokat
+- Just In Time hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
 
-## <a name="privilege-management"></a>Jogosultságok kezelése
+## <a name="privilege-management"></a>Jogosultságkezelése
 
-A virtualizált rendszereket működtető rendszerek felügyeleti funkcióihoz vagy rendszergazdai konzolokhoz való hozzáférése a legalacsonyabb jogosultsági szint elve alapján, a technikai szabályozások által támogatottak szerint korlátozódik a személyzetre.
+A virtualizált rendszereket üzemeltető rendszerek felügyeleti funkcióihoz vagy felügyeleti konzoljaihoz való hozzáférés a legkisebb jogosultság elvén alapuló személyzetre korlátozódik, és technikai ellenőrzéssel támogatott.
 
-- Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
-- \[előzetes verzió\] szerepköralapú Access Control (RBAC) használata a Kubernetes-szolgáltatásokban
+- Just In Time hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
+- \[Preview\] szerepköralapú hozzáférés-vezérlés (RBAC) kell használni a Kubernetes szolgáltatások
 
-## <a name="review-of-user-access-rights"></a>Felhasználói hozzáférési jogosultságok áttekintése
+## <a name="review-of-user-access-rights"></a>A felhasználói hozzáférési jogok áttekintése
 
-A szervezet megtartja az adategységek felhatalmazott felhasználóinak dokumentált listáját.
+A szervezet az információs eszközök jogosult felhasználóinak dokumentált listáját tartja nyilván.
 
-- \[előzetes verzió\] a "biztonsági beállítások – fiókok" a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése
+- \[Preview\] A Windows virtuális gépek konfigurációiból származó naplózási eredmények megjelenítése a "Biztonsági beállítások– fiókok" párbeszédpanelen
 
-## <a name="remote-diagnostic-and-configuration-port-protection"></a>Távoli diagnosztikai és konfigurációs portok védelme
+## <a name="remote-diagnostic-and-configuration-port-protection"></a>Távoli diagnosztikai és konfigurációs portvédelem
 
-A számítógépekre vagy hálózati rendszerekre telepített portok, szolgáltatások és hasonló alkalmazások le vannak tiltva vagy eltávolíthatók.
+A számítógépre vagy hálózati rendszerekre telepített portok, szolgáltatások és hasonló alkalmazások, amelyek nem kifejezetten szükségesek az üzleti funkciókhoz, le vannak tiltva vagy eltávolítva.
 
 - A felügyeleti portokat be kell zárni a virtuális gépeken
-- A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell
+- A virtuális gépek méretezési csoportjainak biztonsági biztonsági réseit ki kell újítani
 
 ## <a name="audit-logging"></a>Naplózás naplózása
 
-A küldött és fogadott üzenetek naplói megmaradnak, beleértve az üzenet dátumát, időpontját, eredetét és célját, de nem annak tartalmát. A naplózás mindig elérhető, amíg a rendszer aktív, és nyomon követi a legfontosabb eseményeket, a sikeres/sikertelen adatelérést, a rendszerbiztonsági konfiguráció módosításait, A jogosultsági szintű vagy a segédprogram-használatot, az összes riasztást, a védelmi rendszerek (például A/V és az AZONOSÍTÓk) aktiválását és inaktiválását, valamint a rendszerszintű objektumok létrehozását és törlését.
+Az elküldött és fogadott üzenetek naplói megmaradnak, beleértve az üzenet dátumát, időpontját, eredetét és célját, de annak tartalmát nem. A naplózás mindig elérhető, amíg a rendszer aktív, és nyomon követi a kulcsfontosságú eseményeket, a sikeres/sikertelen adathozzáférést, a rendszerbiztonsági konfigurációváltozásait, a kiemelt vagy segédprogram-használatot, a riasztást, a riasztást, a védelmi rendszerek (pl. A/V és IDS) aktiválását és deaktiválását, az azonosítási és hitelesítési mechanizmusok aktiválását és kikapcsolását, valamint a rendszerszintű objektumok létrehozását és törlését.
 
-- Az Event hub diagnosztikai naplóit engedélyezni kell
-- A virtuálisgép-méretezési csoportokhoz telepíteni kell a rendszerfrissítéseket
+- Az Event Hub diagnosztikai naplóit engedélyezni kell
+- A virtuálisgép-méretezési csoportok rendszerfrissítéseit telepíteni kell
 
-## <a name="monitoring-system-use"></a>A rendszer használatának figyelése
+## <a name="monitoring-system-use"></a>Felügyeleti rendszer használata
 
-A szervezet környezetében üzembe helyezett automatizált rendszerek a kulcsfontosságú események és a rendellenes tevékenységek figyelésére, valamint a rendszernaplók elemzésére szolgálnak, amelyek eredményei rendszeresen felül vannak értékelve. A figyelés magában foglalja az emelt szintű műveleteket, a hitelesített hozzáférési vagy jogosulatlan hozzáférési kísérleteket, beleértve a deaktivált fiókok elérésére tett kísérleteket, valamint a rendszerriasztásokat és a hibákat.
+A szervezet környezetében telepített automatizált rendszerek a legfontosabb események és rendellenes tevékenységek figyelésére, valamint a rendszernaplók elemzésére szolgálnak, amelyek eredményeit rendszeresen felülvizsgálják. A figyelés magában foglalja a kiemelt műveleteket, az engedélyezett hozzáférést vagy a jogosulatlan hozzáférési kísérleteket, beleértve az inaktivált fiókok elérésére tett kísérleteket, valamint a rendszerriasztásokat vagy hibákat.
 
-- A virtuálisgép-méretezési csoportokban lévő diagnosztikai naplókat engedélyezni kell
+- A virtuálisgép-méretezési csoportok diagnosztikai naplóit engedélyezni kell
 
 ## <a name="segregation-of-duties"></a>A feladatok elkülönítése
 
-A feladatok elkülönítése arra szolgál, hogy korlátozza az információk és rendszerek jogosulatlan vagy véletlen módosításának kockázatát. Egyetlen személy sem férhet hozzá, nem módosíthatja és nem használhatja az információs rendszereket hitelesítés vagy észlelés nélkül. A felügyeleti és hozzáférés-vezérlésért felelős személyek hozzáférése az egyes felhasználók szerepköreitől és kötelezettségeitől függ, és ezek a személyek nem férhetnek hozzá ezekhez a vezérlőkhöz kapcsolódó naplózási funkciókhoz.
+A vámok elkülönítése az információk és rendszerek jogosulatlan vagy nem szándékos módosításának kockázatának korlátozására szolgál. Egyetlen személy sem férhet hozzá, nem módosíthat vagy használhat információs rendszereket engedély vagy észlelés nélkül. A hozzáférés az egyes felhasználók szerepköre és felelőssége alapján a szükséges minimumra korlátozódik, és ezek a személyek nem férhetnek hozzá az ilyen vezérlőkkel kapcsolatos ellenőrzési funkciókhoz.
 
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-nak engedélyeznie kell az előfizetéshez írási engedélyekkel rendelkező fiókokat
 
 ## <a name="administrator-and-operator-logs"></a>Rendszergazdai és operátori naplók
 
-A szervezet biztosítja, hogy a megfelelő naplózás engedélyezve legyen a rendszergazdai tevékenységek naplózása érdekében; a rendszergazda és a kezelő rendszeresen ellenőrzi a rendszergazdákat és a naplókat.
+A szervezet biztosítja a megfelelő naplózás engedélyezését a rendszergazdai tevékenységek naplózásához; és rendszeresen áttekinti a rendszergazdai és üzemeltetői naplókat.
 
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-nak engedélyeznie kell az előfizetéshez írási engedélyekkel rendelkező fiókokat
 
-## <a name="identification-of-risks-related-to-external-parties"></a>Külső felekkel kapcsolatos kockázatok azonosítása
+## <a name="identification-of-risks-related-to-external-parties"></a>A külső felekkel kapcsolatos kockázatok azonosítása
 
 A szervezet és a külső felek közötti távelérési kapcsolatok titkosítva vannak
 
-- A lemezes titkosítást a virtuális gépeken kell alkalmazni
+- A lemeztitkosítást virtuális gépeken kell alkalmazni
 
 ## <a name="business-continuity-and-risk-assessment"></a>Üzletmenet-folytonosság és kockázatértékelés
 
-A szervezet a kritikus fontosságú üzleti folyamatokat azonosítja, és integrálja az üzletmenet folytonosságával kapcsolatos, a működéssel, a személyzettel, az anyagokkal, a közlekedéssel és létesítmények.
+A szervezet azonosítja kritikus üzleti folyamatait, és integrálja az üzletmenet-folytonosság információbiztonsági követelményeit az olyan szempontokra vonatkozó egyéb folytonossági követelményekkel, mint a működés, a személyzet, az anyagok, a közlekedés és létesítmények.
 
-- \[előzetes verzió\] a Windows rendszerű virtuális gépek konfigurációjának naplózási eredményeit jeleníti meg a "biztonsági beállítások – helyreállítási konzolban"
+- \[Preview\] A Windows virtuális gépek konfigurációjának naplózási eredményeinek megjelenítése a "Biztonsági beállítások – helyreállítási konzol" párbeszédpanelen
 
 > [!NOTE]
-> Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
+> Bizonyos Azure-szabályzat-definíciók elérhetősége az Azure Government és más nemzeti felhők ben eltérő lehet. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Áttekintette a HIPAA HITRUST Blueprint minta vezérlési leképezését. A következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
+Áttekintette a HIPAA HITRUST tervezetminta vezérlőleképezését. Ezután látogasson el az alábbi cikkekbe, amelyek ből megtudhatja az áttekintést és a minta üzembe helyezését:
 
 > [!div class="next step action"]
-> [HIPAA HITRUST Blueprint – áttekintés](./control-mapping.md)
-> [HIPAA HITRUST Blueprint – a lépések üzembe helyezése](./deploy.md)
+> [HIPAA HITRUST tervezet - Áttekintés](./control-mapping.md)
+> [HIPAA HITRUST terv - Lépések telepítése](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 
-- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
-- A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
-- A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
-- A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
-- A [meglévő hozzárendelések frissítésének](../../how-to/update-existing-assignments.md) elsajátítása.
+- További információ a [tervterv életciklusáról.](../../concepts/lifecycle.md)
+- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../../concepts/parameters.md)használni.
+- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../../concepts/sequencing-order.md)
+- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../../concepts/resource-locking.md)
+- További információ a [meglévő hozzárendelések frissítéséhez.](../../how-to/update-existing-assignments.md)

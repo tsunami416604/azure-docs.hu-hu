@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Objektum közzététele | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan tehet közzé egy eszközt az Azure CLI-szkript használatával.
+description: Ez a cikk bemutatja, hogyan használhatja az Azure CLI-parancsfájlt egy eszköz közzétételéhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
 ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74896119"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI-példa: Objektum közzététele
@@ -27,7 +27,7 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre s
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -35,6 +35,6 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre s
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/publish-asset/Publish-Asset.sh "Publish an asset")]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Media Services áttekintése](media-services-overview.md)
+[A Media Services áttekintése](media-services-overview.md)

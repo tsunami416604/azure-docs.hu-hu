@@ -9,17 +9,17 @@ ms.date: 03/15/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 27a254b664e2035cc66109f7a473a3e9ef4d730e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73612082"
 ---
 <!-- This is the note explaining about the avro and json formats when routing to blob storage. -->
 > [!NOTE]
-> Az adattárakat a blob Storage-ba lehet írni az [Apache Avro](https://avro.apache.org/) formátumban, amely az alapértelmezett vagy a JSON (előzetes verzió). 
+> Az adatok az [Apache Avro](https://avro.apache.org/) formátumban, az alapértelmezett vagy json (előzetes verzió) a blobstorage-ba írhatók. 
 >    
-> A JSON-formátum kódolásának lehetősége minden olyan régióban előzetes verzióban érhető el, amelyben IoT Hub elérhető, kivéve az USA keleti régiója, az USA nyugati régiója és Nyugat-Európa. A kódolás formátuma csak akkor állítható be, amikor a blob Storage-végpont konfigurálva van. A már beállított végpontok formátuma nem módosítható. JSON-kódolás használatakor a contentType JSON-ra és a contentEncoding UTF-8 értékre kell állítania az üzenetrendszer tulajdonságai között. 
+> A JSON-formátum kódolásának képessége előzetes verzióban érhető el minden olyan régióban, ahol az IoT Hub elérhető, kivéve az USA keleti régióját, az USA nyugati régióját és Nyugat-Európát. A kódolási formátum csak a blob storage-végpont konfigurálásakor állítható be. A formátum nem módosítható olyan végponthoz, amely már be van állítva. JSON-kódolás használatakor a contentType-ot JSON-ra, a contentEncoding-t pedig UTF-8-ra kell állítania az üzenetrendszer tulajdonságaiközött. 
 >
-> A blob Storage-végpontok használatával kapcsolatos részletesebb információkért tekintse [meg az Útválasztás a Storage](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage)szolgáltatáshoz című témakör útmutatását.
+> A blobstorage-végpont használatával kapcsolatos további információkért tekintse meg [a tárolóba történő továbbításra vonatkozó útmutatást.](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage)
 >

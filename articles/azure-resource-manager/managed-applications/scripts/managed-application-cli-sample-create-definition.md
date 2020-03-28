@@ -1,16 +1,16 @@
 ---
-title: Felügyelt alkalmazás definíciójának létrehozása – Azure CLI
-description: Egy Azure CLI parancsfájl-mintát biztosít, amely létrehoz egy felügyelt alkalmazás definícióját az előfizetésben.
+title: Felügyelt alkalmazásdefiníció létrehozása - Azure CLI
+description: Egy Azure CLI-parancsfájlmintát biztosít, amely egy felügyelt alkalmazásdefiníciót hoz létre az előfizetésben.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: f4d5a0036ba44f7e0054db7ce820b91b0de629b8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650190"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Felügyelt alkalmazás definíciójának létrehozása az Azure CLI használatával
@@ -36,7 +36,7 @@ A szkript a következő parancsot használja a felügyelt alkalmazás definíci�
 | [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az-managedapp-definition-create) | Létrehozza egy felügyelt alkalmazás definícióját. Megadja a szükséges fájlokat tartalmazó csomagot. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
 * Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).

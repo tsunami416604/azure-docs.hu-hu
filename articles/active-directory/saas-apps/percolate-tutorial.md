@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Szűrjön át az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez az Azure Active Directory, és Szűrjön át között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Percolate programmal | Microsoft dokumentumok'
+description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Percolate között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,222 +16,222 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094598"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Szűrjön át az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Az Azure Active Directory integrációja a Percolate szolgáltatással
 
-Ebben az oktatóanyagban elsajátíthatja a Szűrjön át integrálása az Azure Active Directory (Azure AD) lesz.
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Percolate-t az Azure Active Directoryval (Azure AD).
 
-Ez az integráció ezeket az előnyöket biztosítja:
+Ez az integráció a következő előnyöket nyújtja:
 
-* Az Azure AD, hogy ki férhet hozzá Szűrjön át is használhatja.
-* Engedélyezheti a felhasználók számára (egyszeri bejelentkezés) az Azure AD-fiókjukat Szűrjön át az automatikusan megtörténik a.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Percolate.You can use Azure AD to control who has access to Percolate.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve percolate (egyszeri bejelentkezés) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti: az Azure Portalon.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa [el az Alkalmazásokra való egyszeri bejelentkezés az Azure Active Directoryban című témakört.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a kezdés előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szűrjön át az Azure AD-integráció konfigurálásához szüksége lesz:
+Az Azure AD-integráció konfigurálásához a Percolate szolgáltatással rendelkeznie kell:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Szűrjön át-előfizetés, amely egyszeri bejelentkezés engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kaphat.
+* Percolate előfizetés, amely egyszeri bejelentkezés engedélyezve van.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Szűrjön át a Szolgáltató által kezdeményezett, és az identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést támogatja.
+* A Percolate támogatja az SP által kezdeményezett és az IdP által kezdeményezett egyszeri szolgáltatót.
 
-## <a name="add-percolate-from-the-gallery"></a>Szűrjön át hozzáadása a katalógusból
+## <a name="add-percolate-from-the-gallery"></a>Perkolát hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a Szűrjön át konfigurálásához hozzá kell Szűrjön át a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Percolate azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Percolate-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
+1. Az [Azure Portalon](https://portal.azure.com)a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget:
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Ugrás **az Enterprise applications** > **Összes alkalmazásra:**
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
+3. Alkalmazás hozzáadásához válassza az **Új alkalmazás** lehetőséget az ablak tetején:
 
-    ![Válassza ki az új alkalmazás](common/add-new-app.png)
+    ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Szűrjön át**. Válassza ki **Szűrjön át** a keresési eredmények, és válassza ki a **Hozzáadás**.
+4. A keresőmezőbe írja be a **Percolate ( Percolate**) kifejezést. A keresési eredmények között válassza a **Percolátok,** majd a **Hozzáadás**lehetőséget.
 
      ![Keresési eredmények](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az Szűrjön át Britta Simon nevű tesztfelhasználó használatával.
-Egyszeri bejelentkezés engedélyezéséhez szüksége Szűrjön át az Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
+Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést a Percolate-tel egy Britta Simon nevű tesztfelhasználó használatával.
+Egyszeri bejelentkezés engedélyezéséhez létre kell hoznia egy azure-felhasználó és a megfelelő felhasználó percolate közötti kapcsolatot.
 
-Az Azure AD egyszeri bejelentkezés az Szűrjön át tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
+Az Azure AD egyszeri bejelentkezéskonfigurálásához és teszteléséhez a Percolate szolgáltatással hajtsa végre az alábbi lépéseket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
-2. **[Szűrjön át egyszeri bejelentkezés konfigurálása](#configure-percolate-single-sign-on)**  az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
-5. **[Szűrjön át tesztfelhasználó létrehozása](#create-a-percolate-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** a szolgáltatás felhasználók számára való engedélyezéséhez.
+2. **[Konfigurálja perkolate egyszeri bejelentkezés](#configure-percolate-single-sign-on)** az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez.
+4. **[Rendelje hozzá az Azure AD tesztfelhasználót](#assign-the-azure-ad-test-user)** az Azure AD egyszeri bejelentkezés engedélyezéséhez a felhasználó számára.
+5. **[Hozzon létre egy perkoliátteszt-felhasználót,](#create-a-percolate-test-user)** amely a felhasználó Azure AD-ábrázolásához kapcsolódik.
+6. **[Tesztelje az egyszeri bejelentkezést](#test-single-sign-on)** a konfiguráció működésének ellenőrzéséhez.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Szűrjön át, ezeket a lépéseket:
+Az Azure AD egyszeri bejelentkezéskonfigurálásához a Percolate szolgáltatással az alábbi lépésekkel:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Szűrjön át** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**:
+1. Az [Azure Portalon](https://portal.azure.com/)a **Percolate** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget:
 
-    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
+    ![Egyszeri bejelentkezés kiválasztása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez:
 
-    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
+    ![Egyetlen bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel, nem kell konfigurálnia az alkalmazást az identitásszolgáltató által kezdeményezett módban semmit sem kell. Az alkalmazás már integrálva van az Azure-ral.
+4. Az **Egyszerű SAML-konfiguráció** párbeszédpanelen nem kell semmilyen műveletet végrehajtania az alkalmazás IdP által kezdeményezett módban történő konfigurálásához. Az alkalmazás már integrálva van az Azure-ral.
 
-    ![Szűrjön a tartomány és URL-címeket egyetlen bejelentkezési adatait át](common/preintegrated.png)
+    ![Átjárva tartomány és URL egyszeri bejelentkezési információk](common/preintegrated.png)
 
-5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani** és a a **bejelentkezési URL-cím** mezőbe írja be **https://percolate.com/app/login** :
+5. Ha az alkalmazást SP által kezdeményezett módban szeretné konfigurálni, válassza **a További URL-címek beállítása lehetőséget,** és a **Bejelentkezési URL-cím** mezőbe írja be a következőt: **https://percolate.com/app/login**
 
-   ![Szűrjön a tartomány és URL-címeket egyetlen bejelentkezési adatait át](common/metadata-upload-additional-signon.png)
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **másolási** ikonra kattintva másolja a **alkalmazás összevonási metaadatainak URL-címe** . Mentse az URL-címet.
+   ![Átjárva tartomány és URL egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** kattintson a **Másolás** ikonra az **Alkalmazásösszevonás metaadat-címének**másolásához. Mentse ezt az URL-címet.
 
-    ![Másolja az alkalmazás összevonási metaadatainak URL-címe](common/copy-metadataurl.png)
+    ![Az App Federation metaadatok URL-címének másolása](common/copy-metadataurl.png)
 
-7. Az a **Szűrjön át beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján.
+7. A **Percolate beállítása** szakaszban másolja a megfelelő URL-címeket az Ön igényei nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![A konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    1. **Bejelentkezési URL-cím**.
+    1. **Bejelentkezési URL.**
 
-    1. **Az Azure AD-azonosító**.
+    1. **Az Azure Hirdetési azonosítója**.
 
-    1. **Kijelentkezési URL-címe**.
+    1. **Kijelentkezési URL-cím**.
 
-### <a name="configure-percolate-single-sign-on"></a>Szűrjön át egyszeri bejelentkezés konfigurálása
+### <a name="configure-percolate-single-sign-on"></a>Perkolát egyszeri bejelentkezés konfigurálása
 
-1. Egy új böngészőablakban jelentkezzen be Szűrjön át rendszergazdaként.
+1. Egy új böngészőablakban jelentkezzen be a Percolate alkalmazásba rendszergazdaként.
 
-2. A kezdőlap bal oldalán válassza ki a **beállítások**:
+2. A kezdőlap bal oldalán válassza a **Beállítások**lehetőséget:
     
     ![Beállítások kiválasztása](./media/percolate-tutorial/configure01.png)
 
-3. A bal oldali panelen válassza ki a **SSO** alatt **szervezet**:
+3. A bal oldali ablaktáblában válassza az **SSO** lehetőséget a **Szervezet**csoportban:
 
-    ![Válassza ki a szervezete egyszeri bejelentkezés](./media/percolate-tutorial/configure02.png)
+    ![Válassza az SSO lehetőséget a Szervezet csoportban](./media/percolate-tutorial/configure02.png)
 
-    1. Az a **bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** , az Azure Portalról másolt érték.
+    1. A **Bejelentkezési URL-cím** mezőbe illessze be az Azure Portalról másolt **bejelentkezési URL-címet.**
 
-    1. Az a **Entitásazonosító** mezőbe illessze be a **az Azure AD-azonosító** , az Azure Portalról másolt érték.
+    1. Az **Entitásazonosító** mezőbe illessze be az Azure AD-azonosító az Azure Portalról másolt **Azure AD-azonosító** értékét.
 
-    1. A Jegyzettömbben nyissa meg a base-64 kódolású tanúsítványt, az Azure Portalról letöltött. Másolja a tartalmat, és illessze be azt a **x509 tanúsítványok** mezőbe.
+    1. A Jegyzettömbben nyissa meg az Azure Portalról letöltött 64-es alapú kódolású tanúsítványt. Másolja a tartalmát, és illessze be az **x509-es tanúsítványok** mezőbe.
 
-    1. Az a **E-mail attribútum** mezőbe írja be **emailaddress**.
+    1. Az **E-mail attribútum** mezőbe írja be az **e-mail címet.**
 
-    1. A **Identity provider metaadatok URL-címe** mező nem kötelező mező. Ha másolja egy **alkalmazás összevonási metaadatainak URL-címe** az Azure Portalon, akkor is illessze be ezt a jelölőnégyzetet.
+    1. Az **Identitásszolgáltató metaadat-URL-címe** nem kötelező mező. Ha egy **App Federation metaadat-URL-címet** másolt az Azure Portalról, beillesztheti ebbe a mezőbe.
 
-    1. Az a **AuthNRequests kell aláírni?** listáról válassza ki **nem**.
+    1. Az **AuthNRequests aláírása?** listában válassza a **Nem**lehetőséget.
 
-    1. Az a **SSO engedélyezése automatikus kiépítés** listáról válassza ki **nem**.
+    1. Az **Egyszeri bejelentkezés automatikus kiépítésének engedélyezése** listában válassza a **Nem**lehetőséget.
 
     1. Kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy Britta Simon nevű tesztfelhasználót hoz létre az Azure Portalon.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
+1. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget a bal oldali ablaktáblában, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget:
 
-    ![Válassza ki az összes felhasználó](common/users.png)
+    ![Válassza a Minden felhasználó lehetőséget](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején:
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején:
 
-    ![Válassza ki az új felhasználó](common/new-user.png)
+    ![Új felhasználó kiválasztása](common/new-user.png)
 
-3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
+3. A **Felhasználó** párbeszédpanelen tegye a következő lépéseket.
 
-    ![Felhasználói párbeszédpanel](common/user-properties.png)
+    ![Felhasználó párbeszédpanel](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<\< vállalattartomány>. kiterjesztés>. ** (Például.) BrittaSimon@contoso.com
 
-    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
+    1. Válassza **a Jelszó megjelenítése**lehetőséget, majd írja le a **Jelszó** mezőbe írt értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon számára a hozzáférés biztosításával Szűrjön át az Azure AD egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban engedélyezi Britta Simon az Azure AD egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít neki a Percolate.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **Szűrjön át**.
+1. Az Azure Portalon válassza a **Nagyvállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd a **Percolate**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Szűrjön át**.
+2. Az alkalmazások listájában válassza a **Percolate**lehetőséget.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
+3. A bal oldali ablaktáblában válassza a **Felhasználók és csoportok**lehetőséget:
 
     ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+4. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** **párbeszédpanelen** a Felhasználók és csoportok lehetőséget.
 
     ![Felhasználók és csoportok kiválasztása](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen jelölje ki **a Britta Simon** elemet a felhasználók listájában, majd kattintson a képernyő alján található **Kijelölés** gombra.
 
-6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából. Kattintson a **kijelölés** gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Hozzárendelés lehetőséget.**
 
-### <a name="create-a-percolate-test-user"></a>Szűrjön át tesztfelhasználó létrehozása
+### <a name="create-a-percolate-test-user"></a>Átjárta tesztfelhasználó létrehozása
 
-Ahhoz, hogy jelentkezzen be a Szűrjön át az Azure AD-felhasználók, azokat hozzá Szűrjön át kell. Adja hozzá manuálisan kell.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Percolate-be, hozzá kell adnia őket a Percolate-hoz. Manuálisan kell hozzáadnia őket.
 
-Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajtani:
+Felhasználói fiók létrehozásához tegye a következőket:
 
-1. Jelentkezzen be rendszergazdaként Szűrjön át
+1. Jelentkezzen be a Percolate rendszergazdaként.
 
-2. A bal oldali panelen válassza ki a **felhasználók** alatt **szervezet**. Válassza ki **új felhasználók**:
+2. A bal oldali ablaktáblában válassza a **Felhasználók** lehetőséget a **Szervezet**csoportban. Válassza **az Új felhasználók lehetőséget:**
 
-    ![Válassza ki az új felhasználók](./media/percolate-tutorial/configure03.png)
+    ![Új felhasználók kiválasztása](./media/percolate-tutorial/configure03.png)
 
-3. Az a **felhasználók létrehozása** lapon, az alábbi lépéseket.
+3. A **Felhasználók létrehozása** lapon tegye a következő lépéseket.
 
-    ![Felhasználók lap létrehozása](./media/percolate-tutorial/configure04.png)
+    ![Felhasználók létrehozása lap](./media/percolate-tutorial/configure04.png)
 
-    1. Az a **E-mail** mezőbe írja be a felhasználó e-mail-címét. Például: brittasimon@contoso.com.
+    1. Az **E-mail** mezőbe írja be a felhasználó e-mail címét. Például: brittasimon@contoso.com.
 
-    1. Az a **teljes fájlvisszaállítási név** mezőbe írja be a felhasználó nevét. Ha például **Brittasimon**.
+    1. A **Teljes név** mezőbe írja be a felhasználó nevét. Például **Brittasimon**.
 
-    1. Válassza ki **felhasználók létrehozása**.
+    1. Válassza **a Felhasználók létrehozása**lehetőséget.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
+Most kell tesztelniaz Azure AD egyszeri bejelentkezési konfiguráció a hozzáférési panel használatával.
 
-A Szűrjön át csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a Szűrjön át példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. További információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen kiválasztja a Percolate csempét, automatikusan be kell jelentkeznie a Percolate példányba, amelyhez az SSO-t beállította. További információt az Alkalmazások portálon lévő [Alkalmazások elérése és használata című témakörben](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)talál.
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

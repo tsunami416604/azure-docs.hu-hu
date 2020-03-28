@@ -1,6 +1,6 @@
 ---
-title: Pillanatkép másolása egy másik régióban lévő Storage-fiókba – CLI-minta
-description: Azure CLI-parancsfájl minta – Pillanatkép exportálása/másolása virtuális merevlemezként ugyanazon vagy eltérő régióban lévő Storage-fiókba.
+title: Pillanatkép másolása egy másik régióbeli tárfiókba – CLI-minta
+description: Azure CLI script minta – exportálása/másolása pillanatkép virtuális merevlemezként egy tárfiók ugyanabban vagy ugyanabban a régióban.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -17,13 +17,13 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 01d3b17ab2623570e086b0edea17ff97c8fe8ae8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458520"
 ---
-# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Pillanatkép exportálása/másolása egy másik régióban lévő Storage-fiókba a CLI használatával
+# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Pillanatkép exportálása/másolása különböző régióbeli tárfiókba a CLI-vel
 
 Ez a szkript egy felügyelt pillanatképet exportál egy másik régió tárfiókjába. Először létrehozza a pillanatkép SAS URI-azonosítóját, majd annak használatával átmásolja a pillanatképet egy másik régióban lévő tárfiókba. A szkript használatával vészhelyreállítási célokból eltérő régiókban készíthet biztonsági másolatokat a felügyelt lemezeiről. 
 
@@ -46,9 +46,9 @@ A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS U
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | Létrehoz egy írásvédett SAS-t, amelynek használatával a mögöttes VHD-fájl átmásolható egy tárfiókba, vagy letölthető a helyszíni rendszerre.  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | Aszinkron módon átmásol egy blobot egy tárfiókból egy másikba. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Felügyelt lemez létrehozása virtuális merevlemezből](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Felügyelt lemez létrehozása VHD-ből](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 [Virtuális gép létrehozása felügyelt lemezből](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 

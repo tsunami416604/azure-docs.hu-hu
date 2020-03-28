@@ -1,64 +1,64 @@
 ---
-title: 'Oktatóanyag: Java-függvények használata Azure Cosmos DB és Event Hubs'
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Event Hubs-ből származó eseményeket, hogy a Java-ban írt függvények használatával Azure Cosmos DB frissítéseket.
+title: 'Oktatóanyag: Java-függvények használata az Azure Cosmos DB-vel és az Event Hubs-szal'
+description: Ez az oktatóanyag bemutatja, hogyan használhatja fel az Események hubok eseményeket az Azure Cosmos DB-ben java nyelven írt függvény használatával.
 author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77425323"
 ---
-# <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
+# <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: Hozzon létre egy függvényt Java-ban egy Event Hub-eseményindítóval és egy Azure Cosmos DB kimeneti kötéssel
 
-Ez az oktatóanyag bemutatja, hogyan használható a Azure Functions egy olyan Java-függvény létrehozásához, amely folyamatos hőmérséklet-és adatterhelési adatátvitelt elemez. Az érzékelő beolvasását jelképező Event hub-események aktiválja a függvényt. A függvény feldolgozza az eseményre vonatkozó adatokat, majd hozzáadja az állapot-bejegyzéseket egy Azure Cosmos DBhoz.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Java-függvényt az Azure Functions használatával, amely a hőmérséklet- és nyomásadatok folyamatos adatfolyamát elemzi. Az érzékelőleolvasásokat jelző eseményközpont-események aktiválják a funkciót. A függvény feldolgozza az eseményadatokat, majd állapotbejegyzéseket ad hozzá egy Azure Cosmos DB-hez.
 
-Ebben az oktatóanyagban a következőket fogja elsajátítani:
+Ebben az oktatóanyagban a következőkre lehet:
 
 > [!div class="checklist"]
 > * Azure-erőforrások létrehozása és konfigurálása az Azure CLI használatával.
-> * Az ezekkel az erőforrásokkal kommunikáló Java-függvények létrehozása és tesztelése.
-> * A függvények üzembe helyezése az Azure-ban és a Application Insights figyelése.
+> * Hozzon létre és teszteljen java függvényeket, amelyek ezekkel az erőforrásokkal kommunikálnak.
+> * Telepítse a funkciókat az Azure-ba, és figyelje őket az Application Insights segítségével.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőket kell telepíteni:
+Az oktatóanyag befejezéséhez a következőket kell telepítenie:
 
-* [Java Developer Kit](https://aka.ms/azure-jdks), 8-as verzió
-* [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
-* Ha inkább nem kívánja használni az [Azure CLI](/cli/azure/install-azure-cli) -t Cloud Shell
-* [Azure functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 2.6.666 vagy újabb verzió
+* A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
+* Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
+* [Azure CLI,](/cli/azure/install-azure-cli) ha nem szeretné használni a Cloud Shellt
+* [Az Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 2.6.666-os vagy újabb verziója
 
 > [!IMPORTANT]
-> Az oktatóanyag befejezéséhez a `JAVA_HOME` környezeti változót a JDK telepítési helyére kell beállítani.
+> Az `JAVA_HOME` oktatóanyag befejezéséhez a környezeti változót a JDK telepítési helyére kell állítani.
 
-Ha közvetlenül az oktatóanyag kódját szeretné használni, tekintse meg a következőt: [Java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) Sample repo.
+Ha közvetlenül szeretné használni az oktatóanyag kódját, tekintse meg a [java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) mintatárt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
-Ebben az oktatóanyagban szüksége lesz ezekre az erőforrásokra:
+Ebben az oktatóanyagban a következő forrásokra lesz szüksége:
 
 * A többi erőforrást tartalmazó erőforráscsoport
-* Event Hubs névtér, Event hub és engedélyezési szabály
-* Egy Cosmos DB fiók, adatbázis és gyűjtemény
-* Egy Function-alkalmazás és egy Storage-fiók, amely üzemelteti azt
+* Eseményközpontok névtere, eseményközpontja és engedélyezési szabálya
+* Cosmos DB-fiók, adatbázis és gyűjtemény
+* Egy függvényalkalmazás és egy tárfiók a gazdaüzemeltetéséhez
 
-Az alábbi szakaszban bemutatjuk, hogyan hozhatja létre ezeket az erőforrásokat az Azure CLI használatával.
+A következő szakaszok bemutatják, hogyan hozhat létre ezeket az erőforrásokat az Azure CLI használatával.
 
 ### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Ha nem Cloud Shell használ, az Azure CLI-t helyileg kell használnia a fiók eléréséhez. A bash parancssorában használja a `az login` parancsot a böngészőalapú bejelentkezési élmény elindításához. Ha egynél több Azure-előfizetéshez fér hozzá, akkor az alapértelmezett értéket állítsa `az account set --subscription`, majd az előfizetés-azonosítót.
+Ha nem használja a Cloud Shellt, az Azure CLI-t helyileg kell használnia a fiók eléréséhez. Használja `az login` a bash parancs parancs átad-ból egy böngésző-alapú bejelentkezési élményt. Ha egynél több Azure-előfizetéshez fér hozzá, állítsa be az alapértelmezett et, `az account set --subscription` majd az előfizetés-azonosítót.
 
 ### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-Ezután hozzon létre néhány környezeti változót a létrehozni kívánt erőforrások neveihez és helyéhez. Használja az alábbi parancsokat, és cserélje le a `<value>` helyőrzőket a választott értékekre. Az értékeknek meg kell felelniük az [Azure-erőforrások elnevezési szabályainak és korlátozásainak](/azure/architecture/best-practices/resource-naming). A `LOCATION` változó esetében használja a `az functionapp list-consumption-locations` parancs által létrehozott értékek egyikét.
+Ezután hozzon létre néhány környezeti változót a létrehozni kívánt erőforrások nevéhez és helyéhez. Használja a következő parancsokat, és cserélje le a `<value>` helyőrzőket az Ön által választott értékekre. Az értékeknek meg kell felelniük az [Azure-erőforrások elnevezési szabályainak és korlátozásainak.](/azure/architecture/best-practices/resource-naming) A `LOCATION` változóhoz használja a `az functionapp list-consumption-locations` parancs által létrehozott értékek egyikét.
 
 ```azurecli-interactive
 RESOURCE_GROUP=<value>
@@ -71,11 +71,11 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
-Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
+Az oktatóanyag többi része ezeket a változókat használja. Ne feledje, hogy ezek a változók csak a jelenlegi Azure CLI- vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra kell futtatnia, ha egy másik helyi terminálablakot használ, vagy a Cloud Shell munkamenet-időkifutási idő.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő összes kapcsolódó erőforrást. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha elkészült velük.
+Az Azure erőforráscsoportok at használ a fiókjában lévő összes kapcsolódó erőforrás összegyűjtéséhez. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha végzett velük.
 
 Erőforráscsoport létrehozásához használja a következő parancsot:
 
@@ -87,7 +87,7 @@ az group create \
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-Ezután hozzon létre egy Azure Event Hubs névteret, az Event hub és az engedélyezési szabályt az alábbi parancsokkal:
+Ezután hozzon létre egy Azure Event Hubs névteret, eseményközpontot és engedélyezési szabályt a következő parancsokkal:
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -106,11 +106,11 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
-A Event Hubs névtér tartalmazza a tényleges Event hub-t és annak engedélyezési szabályát. Az engedélyezési szabály lehetővé teszi, hogy a függvények üzeneteket küldjenek a hubhoz, és figyeljenek a megfelelő eseményeket. Az egyik függvény telemetria-adatokat jelképező üzeneteket küld. Egy másik függvény figyeli az eseményeket, elemzi az eseményre vonatkozó adatmennyiséget, és az eredményeket Azure Cosmos DB tárolja.
+Az Event Hubs névtér tartalmazza a tényleges eseményközpontot és annak engedélyezési szabályát. Az engedélyezési szabály lehetővé teszi, hogy a függvények üzeneteket küldjenek a hubra, és figyeljék a megfelelő eseményeket. Az egyik függvény telemetriai adatokat jelölő üzeneteket küld. Egy másik függvény figyeli az eseményeket, elemzi az eseményadatokat, és tárolja az eredményeket az Azure Cosmos DB-ben.
 
 ### <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB létrehozása
 
-Ezután hozzon létre egy Azure Cosmos DB fiókot, adatbázist és gyűjteményt a következő parancsokkal:
+Ezután hozzon létre egy Azure Cosmos DB-fiókot, adatbázist és gyűjteményt a következő parancsokkal:
 
 ```azurecli-interactive
 az cosmosdb create \
@@ -128,11 +128,11 @@ az cosmosdb collection create \
     --partition-key-path '/temperatureStatus'
 ```
 
-Az `partition-key-path` érték az egyes elemek `temperatureStatus` értéke alapján particionálja az adatait. A partíciós kulcs lehetővé teszi Cosmos DB számára a teljesítmény növelését azáltal, hogy az adatait külön részhalmazokra osztja, amelyeket egymástól függetlenül érhet el.
+Az `partition-key-path` érték az egyes elemek `temperatureStatus` értéke alapján particionálja az adatokat. A partíciókulcs lehetővé teszi, hogy a Cosmos DB növelje a teljesítményt azáltal, hogy az adatokat különálló részhalmazokba osztja, amelyeket egymástól függetlenül érhet el.
 
-### <a name="create-a-storage-account-and-function-app"></a>Storage-fiók és-Function-alkalmazás létrehozása
+### <a name="create-a-storage-account-and-function-app"></a>Tárfiók és függvényalkalmazás létrehozása
 
-Ezután hozzon létre egy Azure Storage-fiókot, amelyet Azure Functions igényel, majd hozza létre a Function alkalmazást. Az alábbi parancsokat használja:
+Ezután hozzon létre egy Azure Storage-fiókot, amely az Azure Functions által igényelt, majd hozza létre a függvényalkalmazást. Az alábbi parancsokat használja:
 
 ```azurecli-interactive
 az storage account create \
@@ -147,15 +147,15 @@ az functionapp create \
     --runtime java
 ```
 
-Ha a `az functionapp create` parancs létrehozza a Function alkalmazást, akkor egy azonos nevű Application Insights-erőforrást is létrehoz. A Function alkalmazás automatikusan konfigurálva van egy `APPINSIGHTS_INSTRUMENTATIONKEY` nevű beállítással, amely összekapcsolja azt Application Insightshoz. A függvények Azure-ba történő üzembe helyezését követően megtekintheti az alkalmazás telemetria, az oktatóanyag későbbi részében leírtak szerint.
+Amikor `az functionapp create` a parancs létrehozza a függvényalkalmazást, egy Azonos nevű Application Insights-erőforrást is létrehoz. A függvényalkalmazás automatikusan konfigurálva `APPINSIGHTS_INSTRUMENTATIONKEY` van egy olyan nevű beállítással, amely összeköti azt az Application Insights-mal. Megtekintheti az alkalmazástelemetriai adatokat, miután üzembe helyezte a függvényeket az Azure-ban, az oktatóanyag későbbi részében leírtak szerint.
 
-## <a name="configure-your-function-app"></a>A Function alkalmazás konfigurálása
+## <a name="configure-your-function-app"></a>A függvényalkalmazás konfigurálása
 
-A Function alkalmazásnak hozzá kell férnie a többi erőforráshoz, hogy megfelelően működjön. A következő részben bemutatjuk, hogyan konfigurálhatja a Function alkalmazást úgy, hogy az a helyi gépen is futtatható legyen.
+A függvényalkalmazásnak hozzá kell férnie a többi erőforráshoz a megfelelő működéshez. A következő szakaszok bemutatják, hogyan konfigurálhatja a függvényalkalmazást úgy, hogy az a helyi számítógépen futhasson.
 
-### <a name="retrieve-resource-connection-strings"></a>Erőforrás-kapcsolatok karakterláncának beolvasása
+### <a name="retrieve-resource-connection-strings"></a>Erőforrás-kapcsolati karakterláncok beolvasása
 
-A következő parancsokkal kérheti le a Storage, az Event hub és a Cosmos DB kapcsolati karakterláncokat, és mentheti azokat környezeti változókba:
+A következő parancsokkal lekérheti a tároló- és eseményközpontot és a Cosmos DB kapcsolati karakterláncokat, és mentheti őket a környezeti változókban:
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -183,11 +183,11 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
-Ezek a változók az Azure CLI-parancsokból beolvasott értékekre vannak beállítva. Mindegyik parancs egy JMESPath lekérdezést használ a visszaadott JSON-adattartalomból való kinyeréséhez. A kapcsolatok karakterláncai a `echo` használatával is megjelennek, így ellenőrizheti, hogy sikerült-e beolvasni.
+Ezek a változók az Azure CLI-parancsokból beolvasott értékekre vannak beállítva. Mindegyik parancs Egy JMESPath-lekérdezést használ a visszaadott JSON-tartalom kapcsolati karakterláncának kinyeréséhez. A kapcsolati karakterláncok `echo` is megjelennek a használatával, így ellenőrizheti, hogy sikeresen lelett-e beolvasva.
 
-### <a name="update-your-function-app-settings"></a>A függvény alkalmazás beállításainak frissítése
+### <a name="update-your-function-app-settings"></a>A függvényalkalmazás beállításainak frissítése
 
-Ezután a következő parancs használatával vigye át a kapcsolódási karakterlánc értékeit az Azure Functions-fiókban található alkalmazásbeállításokba:
+Ezután a következő paranccsal vigye át a kapcsolati karakterlánc értékeit az Azure Functions-fiók alkalmazásbeállításaiba:
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -199,22 +199,22 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
-Az Azure-erőforrások létrehozása és konfigurálása sikeresen megtörtént a megfelelő együttműködés érdekében.
+Az Azure-erőforrások létrehozása és konfigurálása megfelelően működik együtt.
 
-## <a name="create-and-test-your-functions"></a>Függvények létrehozása és tesztelése
+## <a name="create-and-test-your-functions"></a>A függvények létrehozása és tesztelése
 
-Ezután hozzon létre egy projektet a helyi gépen, adja hozzá a Java-kódot, és tesztelje. Olyan parancsokat fog használni, amelyek a Maven és a Azure Functions Core Tools Azure Functions beépülő modullal működnek. A függvények helyileg futnak, de a létrehozott felhőalapú erőforrásokat fogják használni. A függvények helyi működésének megkezdése után a Maven használatával üzembe helyezheti őket a felhőben, és megtekintheti az adatok és az elemzések összegyűjtését.
+Ezután hozzon létre egy projektet a helyi számítógépen, adjon hozzá Java-kódot, és tesztelje azt. A Maven Azure Functions beépülő moduljával és az Azure Functions core eszközökkel használható parancsokat fog használni. A függvények helyileg fognak futni, de a létrehozott felhőalapú erőforrásokat használják. Miután a függvények helyileg működnek, a Maven segítségével üzembe helyezheti őket a felhőben, és megtekintheti az adatok és elemzések felhalmozódását.
 
-Ha az erőforrások létrehozásához Cloud Shell használt, akkor nem fog helyileg csatlakozni az Azure-hoz. Ebben az esetben használja a `az login` parancsot a böngészőalapú bejelentkezési folyamat elindításához. Ha szükséges, állítsa az alapértelmezett előfizetést `az account set --subscription`, majd az előfizetés-AZONOSÍTÓval. Végül futtassa a következő parancsokat a környezeti változók újbóli létrehozásához a helyi gépen. Cserélje le a `<value>` helyőrzőket a korábban használt értékekre.
+Ha a Cloud Shell használatával hozza létre az erőforrásokat, akkor nem csatlakozik helyileg az Azure-hoz. Ebben az esetben `az login` használja a parancsot a böngészőalapú bejelentkezési folyamat elindításához. Ezután szükség esetén állítsa `az account set --subscription` be az alapértelmezett előfizetést, amelyet az előfizetés-azonosító követ. Végül futtassa a következő parancsokat, hogy újra hozzon létre néhány környezeti változót a helyi számítógépen. Cserélje `<value>` le a helyőrzőket a korábban használt értékekre.
 
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
-### <a name="create-a-local-functions-project"></a>Helyi functions-projekt létrehozása
+### <a name="create-a-local-functions-project"></a>Helyi függvényprojekt létrehozása
 
-A következő Maven-paranccsal hozhat létre functions-projektet, és hozzáadhatja a szükséges függőségeket.
+A következő Maven paranccsal hozzon létre egy függvényprojektet, és adja hozzá a szükséges függőségeket.
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -226,24 +226,24 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
-Ez a parancs egy `telemetry-functions` mappában több fájlt hoz létre:
+Ez a parancs több `telemetry-functions` fájlt hoz létre egy mappában:
 
-* A Maven használatával használható `pom.xml`-fájl
-* `local.settings.json`-fájl, amely a helyi teszteléshez szükséges Alkalmazásbeállítások tárolására használható
-* `host.json`-fájl, amely lehetővé teszi, hogy az adatelemzési függvény Cosmos DB kimeneti kötéséhez szükséges Azure Functions Extension-csomagot
-* Az alapértelmezett függvény implementációját tartalmazó `Function.java`-fájl
-* Néhány olyan tesztoldalt, amelyre ez az oktatóanyag nem szükséges
+* A `pom.xml` Maven-hez használható fájl
+* Alkalmazásbeállítások `local.settings.json` at tartó fájl a helyi teszteléshez
+* Az `host.json` Azure Functions Extension Bundle-t lehetővé tő> lehetővé tévő fájl, amely a Cosmos DB kimeneti kötéséhez szükséges az adatelemzési függvényben
+* Alapértelmezett `Function.java` függvényimplementációt tartalmazó fájl
+* Néhány tesztfájl, amelyet ez az oktatóanyag nem igényel
 
-A fordítási hibák elkerülése érdekében törölnie kell a teszt fájlokat. A következő parancsok futtatásával navigáljon az új projekt mappájába, és törölje a teszt mappát:
+A fordítási hibák elkerülése érdekében törölnie kell a tesztfájlokat. Futtassa a következő parancsokat az új projektmappába való navigáláshoz és a tesztmappa törléséhez:
 
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
-### <a name="retrieve-your-function-app-settings-for-local-use"></a>A Function alkalmazás beállításainak beolvasása helyi használatra
+### <a name="retrieve-your-function-app-settings-for-local-use"></a>A függvényalkalmazás beállításainak beolvasása helyi használatra
 
-Helyi teszteléshez a Function projektnek szüksége lesz az Azure-beli Function alkalmazáshoz az oktatóanyag korábbi részében hozzáadott kapcsolódási karakterláncokra. Használja a következő Azure Functions Core Tools parancsot, amely lekéri a felhőben tárolt összes Function app-beállítást, és hozzáadja őket a `local.settings.json` fájlhoz:
+A helyi teszteléshez a függvényprojektnek szüksége lesz a kapcsolati karakterláncok, amelyek az Azure-ban az oktatóanyag korábbi az Azure-ban hozzáadott. Használja a következő Azure Functions Core Tools parancsot, amely lekéri a felhőben `local.settings.json` tárolt összes függvényalkalmazás-beállítást, és hozzáadja őket a fájlhoz:
 
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
@@ -251,7 +251,7 @@ func azure functionapp fetch-app-settings $FUNCTION_APP
 
 ### <a name="add-java-code"></a>Java-kód hozzáadása
 
-Ezután nyissa meg a `Function.java` fájlt, és cserélje le a tartalmát a következő kódra.
+Ezután nyissa `Function.java` meg a fájlt, és cserélje le a tartalmát a következő kódra.
 
 ```java
 package com.example;
@@ -324,11 +324,11 @@ public class Function {
 }
 ```
 
-Amint látható, ez a fájl két függvényt tartalmaz, `generateSensorData` és `processSensorData`. A `generateSensorData` függvény egy érzékelőt szimulál, amely hőmérséklet-és terhelési beolvasást küld az Event hub-nak. Egy időzítő eseményindító 10 másodpercenként futtatja a függvényt, az Event hub kimeneti kötése pedig visszaküldi a visszatérési értéket az Event hub számára.
+Amint láthatja, ez a `generateSensorData` fájl `processSensorData`két függvényt tartalmaz, és . A `generateSensorData` függvény egy érzékelőt szimulál, amely hőmérséklet- és nyomásértékeket küld az eseményközpontba. Egy időzítő eseményindító fut a függvény 10 másodpercenként, és egy eseményközpont kimeneti kötés elküldi a visszatérési értéket az eseményközpontba.
 
-Amikor az Event hub megkapja az üzenetet, egy eseményt hoz létre. Az `processSensorData` függvény akkor fut le, amikor megkapja az eseményt. Ezután feldolgozza az esemény-adatokat, és egy Azure Cosmos DB kimeneti kötést használ az eredmények Azure Cosmos DBnak való elküldéséhez.
+Amikor az eseményközpont megkapja az üzenetet, létrehoz egy eseményt. A `processSensorData` függvény fut, amikor megkapja az eseményt. Ezután feldolgozza az eseményadatokat, és egy Azure Cosmos DB kimeneti kötés t használ az eredmények et az Azure Cosmos DB-nek.
 
-A függvények által használt adatok tárolása egy `TelemetryItem`nevű osztály használatával történik, amelyet végre kell hajtania. Hozzon létre egy `TelemetryItem.java` nevű új fájlt ugyanazon a helyen, mint `Function.java`, és adja hozzá a következő kódot:
+Az ezek a függvények által használt `TelemetryItem`adatok tárolása egy osztály nevű , amelyet meg kell valósítani. Hozzon létre `TelemetryItem.java` egy új fájlt, amelyet ugyanazon a helyen hívnak meg, `Function.java` és adja hozzá a következő kódot:
 
 ```java
 package com.example;
@@ -389,16 +389,16 @@ public class TelemetryItem {
 
 ### <a name="run-locally"></a>Helyi futtatás
 
-Most már helyileg is létrehozhatja és futtathatja a függvényeket, és láthatja, hogy az adatok megjelennek a Azure Cosmos DB.
+Most már hozhat létre, és a függvények helyileg, és az adatok megjelennek az Azure Cosmos DB.
 
-A függvények létrehozásához és futtatásához használja a következő Maven-parancsokat:
+A függvények létrehozásához és futtatásához használja a következő Maven parancsokat:
 
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
 
-Néhány felépítési és indítási üzenet után az alábbi példához hasonló kimenet jelenik meg a függvények futtatásakor:
+Néhány létrehozási és indítási üzenet után a függvények futtatásakor a következő példához hasonló kimenet jelenik meg:
 
 ```output
 [10/22/19 4:01:30 AM] Executing 'Functions.generateSensorData' (Reason='Timer fired at 2019-10-21T21:01:30.0016769-07:00', Id=c1927c7f-4f70-4a78-83eb-bc077d838410)
@@ -411,13 +411,13 @@ Néhány felépítési és indítási üzenet után az alábbi példához hasonl
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-Ezután nyissa meg a [Azure Portal](https://portal.azure.com) , és navigáljon a Azure Cosmos db-fiókjához. Válassza ki **adatkezelő**, bontsa ki a **TelemetryInfo**elemet, majd válassza az **elemek** lehetőséget az adatok megtekintéséhez.
+Ezután nyissa meg az [Azure Portalon,](https://portal.azure.com) és keresse meg az Azure Cosmos DB-fiókját. Válassza **az Adatkezelő**, bontsa ki a **TelemetryInfo**, majd válassza **az elemek** az adatok megtekintéséhez, amikor megérkezik.
 
-![Cosmos DB Adatkezelő](media/functions-event-hub-cosmos-db/data-explorer.png)
+![Cosmos DB adatkezelő](media/functions-event-hub-cosmos-db/data-explorer.png)
 
-## <a name="deploy-to-azure-and-view-app-telemetry"></a>Üzembe helyezés az Azure-ban és az alkalmazás telemetria megtekintése
+## <a name="deploy-to-azure-and-view-app-telemetry"></a>Üzembe helyezés az Azure-ban és az alkalmazástelemetria megtekintése
 
-Végül üzembe helyezheti az alkalmazást az Azure-ban, és ellenőrizheti, hogy az továbbra is ugyanúgy működik-e, mint a helyileg.
+Végül telepítheti az alkalmazást az Azure-ba, és ellenőrizheti, hogy továbbra is ugyanúgy működik-e, mint helyileg.
 
 Telepítse a projektet az Azure-ba a következő paranccsal:
 
@@ -425,31 +425,31 @@ Telepítse a projektet az Azure-ba a következő paranccsal:
 mvn azure-functions:deploy
 ```
 
-A függvények mostantól az Azure-ban futnak, és továbbra is felhalmoznak egy adatmennyiséget a Azure Cosmos DB. Megtekintheti a telepített Function alkalmazást a Azure Portalban, és megtekintheti az alkalmazás telemetria a csatlakoztatott Application Insights erőforráson keresztül, ahogy az alábbi képernyőképeken is látható:
+Your functions now run in Azure, and continue to accumulate data in your Azure Cosmos DB. Megtekintheti az üzembe helyezett függvényalkalmazást az Azure Portalon, és megtekintheti az alkalmazástelemetriai adatokat a csatlakoztatott Application Insights-erőforráson keresztül, ahogy az a következő képernyőképeken látható:
 
-**Élő metrikastream:**
+**Élő mérőszámok streamje:**
 
-![Application Insights Élő metrikastream](media/functions-event-hub-cosmos-db/application-insights-live-metrics-stream.png)
+![Az Application Insights élő mérőszámok streamje](media/functions-event-hub-cosmos-db/application-insights-live-metrics-stream.png)
 
 **Teljesítmény:**
 
-![Application Insights teljesítmény panel](media/functions-event-hub-cosmos-db/application-insights-performance.png)
+![Az Application Insights teljesítménypanelje](media/functions-event-hub-cosmos-db/application-insights-performance.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült az oktatóanyagban létrehozott Azure-erőforrásokkal, a következő parancs használatával törölheti őket:
+Ha végzett az oktatóanyagban létrehozott Azure-erőforrásokkal, az alábbi parancs használatával törölheti őket:
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure-függvényt, amely az Event hub-eseményeket kezeli, és frissíti a Cosmos DB. További információ: [Azure functions Java fejlesztői útmutató](/azure/azure-functions/functions-reference-java). A használt megjegyzésekkel kapcsolatos információkért tekintse meg a következőt: [com. microsoft. Azure. functions. Megjegyzés](/java/api/com.microsoft.azure.functions.annotation) leírása.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure-függvényt, amely kezeli az Event Hub-eseményeket, és frissíti a Cosmos DB-t. További információt az [Azure Functions Java fejlesztői útmutatójában talál.](/azure/azure-functions/functions-reference-java) A használt jegyzetekről a [com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) hivatkozásban talál további információt.
 
-Ez az oktatóanyag a környezeti változókat és az alkalmazás beállításait használta a titkok, például a kapcsolódási karakterláncok tárolásához. A titkok Azure Key Vault-ben való tárolásával kapcsolatos információkért lásd: [Key Vault referenciák használata app Service és Azure Functionshoz](/azure/app-service/app-service-key-vault-references).
+Ez az oktatóanyag környezeti változókat és alkalmazásbeállításokat használt a titkos kulcsok, például a kapcsolati karakterláncok tárolására. A titkos kulcsok Azure Key Vaultban való tárolásáról a [Key Vault-hivatkozások használata az App Service-hez és az Azure Functionshez](/azure/app-service/app-service-key-vault-references)című témakörben talál tájékoztatást.
 
-Következő lépésként megtudhatja, hogyan használhatja az Azure-folyamatok CI/CD-t az automatikus üzembe helyezéshez:
+Ezután megtudhatja, hogyan használhatja az Azure Pipelines CI/CD-t az automatikus telepítéshez:
 
 > [!div class="nextstepaction"]
-> [Java létrehozása és üzembe helyezése Azure Functions](/azure/devops/pipelines/ecosystems/java-function)
+> [Java létrehozása és üzembe helyezése az Azure Functions ben](/azure/devops/pipelines/ecosystems/java-function)

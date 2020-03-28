@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768962"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
@@ -22,7 +22,7 @@ Az oktatóanyag bemutatja, hogyan használható a Functions, a Logic Apps és a 
 
 ![az alkalmazás első két lépésének képe a Logic App Designerben](media/functions-twitter-email/00-logic-app-overview.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Egy Cognitive Services API-erőforrás létrehozása.
@@ -43,18 +43,18 @@ Hajtsa végre az itt található lépéseket a függvényalkalmazás létrehozá
 
 A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A Text Analytics API-t használja a monitorozott tweetek hangulatának megállapításához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
 2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-3. Kattintson az **AI + Machine Learning** > **Text Analytics** elemre. Ezután használja a táblázatban megadott beállításokat az erőforrás létrehozásához.
+3. Kattintson **az AI + Machine Learning** > **Text Analytics parancsra.** Ezután használja a táblázatban megadott beállításokat az erőforrás létrehozásához.
 
     ![Cognitive-erőforrás létrehozása oldal](media/functions-twitter-email/01-create-text-analytics.png)
 
     | Beállítás      |  Ajánlott érték   | Leírás                                        |
     | --- | --- | --- |
-    | **Name (Név)** | MyCognitiveServicesAccnt | Válasszon egy egyedi fióknevet. |
-    | **Hely** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
+    | **Név** | MyCognitiveServicesAccnt | Válasszon egy egyedi fióknevet. |
+    | **Helyen** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
     | **Tarifacsomag** | F0 | Kezdjen a legalacsonyabb szinttel. Ha kifogy a hívásokból, lépjen magasabb szintre.|
     | **Erőforráscsoport** | myResourceGroup | Ugyanazt az erőforráscsoportot használja minden olyan szolgáltatáshoz, amely az oktatóanyagban szóba kerül.|
 
@@ -76,7 +76,7 @@ A függvények kiváló módot nyújtanak egy logikai alkalmazás munkafolyamat�
 
 ## <a name="create-an-http-triggered-function"></a>HTTP által aktivált függvény létrehozása  
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített** elemet.
+1. Bontsa ki a **+** függvényalkalmazást, és kattintson a **Funkciók**gomb ra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített** elemet.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -121,7 +121,7 @@ A függvények kiváló módot nyújtanak egy logikai alkalmazás munkafolyamat�
     ```
     Ez a függvénykód visszaad egy színkategóriát a kérésben kapott véleménypontszám alapján. 
 
-4. A függvény teszteléséhez kattintson a jobb szélen a **tesztelés** gombra a teszt lap kibontásához. írjon be `0.2` értéket a **kérelem törzse**számára, majd kattintson a **Futtatás**gombra. A válasz törzse a **RED** (Vörös) értéket adja vissza. 
+4. A funkció teszteléséhez kattintson a **Teszt** a jobb szélen `0.2` a **Request body**Teszt lap kibontásához. **Run** A válasz törzse a **RED** (Vörös) értéket adja vissza. 
 
     ![A függvény tesztelése az Azure Portalon](./media/functions-twitter-email/07-function-test.png)
 
@@ -129,9 +129,9 @@ Ezzel létrehozott egy olyan függvényt, amely kategorizálja a véleményponts
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása   
 
-1. A Azure Portal kattintson a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombra.
+1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra az Azure Portal bal felső sarkában.
 
-2. Kattintson a **Web** > **Logikai alkalmazás** elemre.
+2. Kattintson **a Web** > **Logic App gombra.**
  
 3. Ezután írjon be egy értéket a **Név** mezőbe (például: `TweetSentiment`), és használja a táblázatban megadott beállításokat.
 
@@ -139,9 +139,9 @@ Ezzel létrehozott egy olyan függvényt, amely kategorizálja a véleményponts
 
     | Beállítás      |  Ajánlott érték   | Leírás                                        |
     | ----------------- | ------------ | ------------- |
-    | **Name (Név)** | TweetSentiment | Válasszon egy megfelelő nevet az alkalmazáshoz. |
+    | **Név** | TweetSentiment | Válasszon egy megfelelő nevet az alkalmazáshoz. |
     | **Erőforráscsoport** | myResourceGroup | Válassza ki a korábban is használt meglévő erőforráscsoportot. |
-    | **Hely** | USA keleti régiója | Válassza ki az Önhöz legközelebb eső helyet. |    
+    | **Helyen** | USA keleti régiója | Válassza ki az Önhöz legközelebb eső helyet. |    
 
 4. Miután megadta a megfelelő beállításértékeket, kattintson a **Létrehozás** gombra a logikai alkalmazás létrehozásához. 
 
@@ -165,7 +165,7 @@ Először kapcsolatot kell létesíteni a Twitter-fiókjával. A logikai alkalma
     | ----------------- | ------------ | ------------- |
     | **Keresett szöveg** | #Azure | Olyan hashtaget használjon, amely elég népszerű ahhoz, hogy a választott időszakban új Twitter-üzenetek vonatkozzanak rá. Amikor az ingyenes szintet használja és a hashtag túl népszerű, gyorsan felhasználhatja a Cognitive Services API tranzakciókvótáját. |
     | **Intervallum** | 15 | A Twitter-kérelmek között eltelt idő, a gyakoriság mértékegységében megadva. |
-    | **Gyakoriság** | Perc | A tweetek lekérdezési gyakoriságának mértékegysége.  |
+    | **Frekvencia** | Perc | A tweetek lekérdezési gyakoriságának mértékegysége.  |
 
 3.  Kattintson a **Mentés** gombra, hogy csatlakozzon a Twitter-fiókjához. 
 
@@ -191,7 +191,7 @@ Most, hogy konfigurálta a hangulatfelismerést, kapcsolatot adhat a véleményp
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Hangulatkimenet csatlakoztatása a függvényhez
 
-1. A Logic Apps Designerben kattintson az **Új lépés** > **Művelet hozzáadása** elemre, szűrjön rá az **Azure Functions** lehetőségre, majd kattintson a **Válasszon ki egy Azure-függvényt** elemre.
+1. A Logic Apps Designerben kattintson az **Új lépés** > **Művelet hozzáadása**gombra, szűrjön az Azure **Functions** elemre, és kattintson **az Azure-függvény kiválasztása parancsra.**
 
     ![Hangulat felismerése](media/functions-twitter-email/14-azure-functions.png)
   
@@ -213,7 +213,7 @@ Mostantól aktiválódik a függvény, amikor a logikai alkalmazás átküld egy
 
 A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása, ha a vélemény a _RED_ kategóriába sorolódik. Ez a témakör egy Outlook.com-összekötőt használ. Gmail- vagy Office 365 Outlook-összekötők esetén hasonló lépéseket kell elvégezni.   
 
-1. A Logic Apps Designerben kattintson az **Új lépés** > **Feltétel hozzáadása** lehetőségre. 
+1. A Logic Apps Designerben kattintson az **Új lépés** > **Feltétel hozzáadása gombra.** 
 
     ![Feltétel hozzáadása a logikai alkalmazáshoz.](media/functions-twitter-email/18-add-condition.png)
 
@@ -238,7 +238,7 @@ A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása
 | **Tárgy** | A tweetek által tükrözött vélemény kedvezőtlen  | Az e-mail-értesítés tárgysora.  |
 | **Törzs** | Tweet szövege, Hely | Kattintson a **Tweet szövege** és a **Hely** paraméterre. |
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 Most, hogy a munkafolyamat befejeződött, engedélyezheti a logikai alkalmazást, és megtekintheti a függvényt működés közben.
 

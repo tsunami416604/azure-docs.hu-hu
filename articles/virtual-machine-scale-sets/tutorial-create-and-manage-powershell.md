@@ -9,15 +9,15 @@ ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271416"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure PowerShell használatával
 
-A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Virtuálisgép-méretezési csoport létrehozása és kapcsolódás a csoporthoz
@@ -26,7 +26,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 > * Méretezési csoport manuális méretezése
 > * Méretezési csoportra vonatkozó gyakori felügyeleti feladatok végrehajtása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -34,8 +34,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuálisgép-méretezési csoport létrejötte előtt létre kell hozni. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *EastUS* régióban. 
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuálisgép-méretezési csoport létrejötte előtt létre kell hozni. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoport jön létre az *EastUS* régióban. 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
@@ -50,7 +50,7 @@ Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1
 $cred = Get-Credential
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó olyan szabályokat tartalmaz, amelyek elosztják a 80-as TCP-porton beérkező forgalmat, valamint lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell távoli eljáráshívást az 5985-ös TCP-porton:
+Most hozzon létre egy virtuális gép méretezési készlet [New-AzVmss](/powershell/module/az.compute/new-azvmss). A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó olyan szabályokat tartalmaz, amelyek elosztják a 80-as TCP-porton beérkező forgalmat, valamint lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell távoli eljáráshívást az 5985-ös TCP-porton:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -68,7 +68,7 @@ A méretezési csoport erőforrásainak és virtuálisgép-példányainak létre
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>A méretezési csoportokban lévő virtuálisgép-példányok megtekintése
-A méretezési csoportokban lévő virtuálisgép-példányok listájának megtekintéséhez használja a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) a következő módon:
+A méretezési csoportban lévő virtuálisgép-példányok listájának megtekintéséhez használja a [Get-AzVmssVM-et](/powershell/module/az.compute/get-azvmssvm) az alábbiak szerint:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -83,7 +83,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá a `-InstanceId` paramétert a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
+Egy adott virtuálisgép-példányra vonatkozó további `-InstanceId` információk megtekintéséhez adja hozzá a paramétert a [Get-AzVmssVM-hez.](/powershell/module/az.compute/get-azvmssvm) A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -93,7 +93,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="list-connection-information"></a>Kapcsolatadatok listázása
 A rendszer egy nyilvános IP-címet rendel hozzá a terheléselosztóhoz, amely a forgalmat az egyéni virtuálisgép-példányokhoz irányítja. Alapértelmezés szerint a rendszer a hálózati címfordítási (NAT) szabályokat adja hozzá az Azure-terheléselosztóhoz, amely továbbítja a távoli kapcsolati forgalmat az egyes virtuális gépekre egy adott porton keresztül. A méretezési csoportban lévő virtuálisgép-példányok csatlakoztatásához létesítsen távoli kapcsolatot a hozzárendelt nyilvános IP-címhez és portszámhoz.
 
-A méretezési csoportokban lévő virtuálisgép-példányokhoz való csatlakozáshoz szükséges NAT-portok listázásához először töltse le a terheléselosztó objektumot a [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ezután tekintse meg a bejövő NAT-szabályokat a [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig):
+A méretezési csoportban a virtuálisgép-példányokhoz való csatlakozáshoz a NAT-portok listázásához először töltse le a terheléselosztó objektumot a [Get-AzLoadBalancer segítségével.](/powershell/module/az.network/Get-AzLoadBalancer) Ezután tekintse meg a bejövő NAT-szabályokat a [Get-AzLoadBalancerInboundNatRuleConfig segítségével:](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig)
 
 
 ```azurepowershell-interactive
@@ -115,9 +115,9 @@ myScaleSet3389.1 Tcp             50002        3389
 myScaleSet5985.1 Tcp             51002        5985
 ```
 
-A szabály *neve* a virtuálisgép-példány nevével van igazítva, ahogy az egy korábbi [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) parancsban látható. Ha például a *0-s* virtuálisgép-példányhoz szeretne csatlakozni, használja a *myScaleSet3389.0* elemet, és kapcsolódjon az *50001*-es porthoz. Az *1-es* virtuálisgép-példányhoz való csatlakozáshoz használja a *myScaleSet3389.1* elemben lévő értéket, és kapcsolódjon az *50002*-es porthoz. A PowerShell távoli eljáráshívás használatához csatlakozzon az *5985*-ös *TCP*-port megfelelő virtuálisgép-példány szabályához.
+A szabály *neve* igazodik a virtuálisgép-példány nevéhez, ahogy az egy korábbi [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) parancsban látható. Ha például a *0-s* virtuálisgép-példányhoz szeretne csatlakozni, használja a *myScaleSet3389.0* elemet, és kapcsolódjon az *50001*-es porthoz. Az *1-es* virtuálisgép-példányhoz való csatlakozáshoz használja a *myScaleSet3389.1* elemben lévő értéket, és kapcsolódjon az *50002*-es porthoz. A PowerShell távoli eljáráshívás használatához csatlakozzon az *5985*-ös *TCP*-port megfelelő virtuálisgép-példány szabályához.
 
-A terheléselosztó nyilvános IP-címének megtekintése a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+A terheléselosztó nyilvános IP-címének megtekintése a [Get-AzPublicIpAddress segítségével:](/powershell/module/az.network/Get-AzPublicIpAddress)
 
 
 ```azurepowershell-interactive
@@ -132,7 +132,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (alapértelmezés szerint a minta parancsaiban, az *azureuser* és a *P\@ssw0rd!* ). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Amikor a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (alapértelmezés szerint a mintaparancsokban, az *azureuserben* és a *\@P ssw0rd!* Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -148,7 +148,7 @@ Az Azure Marketplace-en számos rendszerkép található, amelyekkel új virtuá
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Egy adott közzétevőhöz tartozó rendszerképek listájának megtekintéséhez használja a [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku). A rendszerképek listája a `-PublisherName` (közzétevő) vagy az `-Offer` (ajánlat) alapján is szűrhető. Az alábbi példában a listát az összes olyan rendszerképre szűrjük, amelyek közzétevője a *MicrosoftWindowsServer*, és amelyek ajánlata megfelel a *WindowsServer*-nek:
+Egy adott közzétevő képeinek listájának megtekintéséhez használja a [Get-AzVMImageSku programot.](/powershell/module/az.compute/get-azvmimagesku) A rendszerképek listája a `-PublisherName` (közzétevő) vagy az `-Offer` (ajánlat) alapján is szűrhető. Az alábbi példában a listát az összes olyan rendszerképre szűrjük, amelyek közzétevője a *MicrosoftWindowsServer*, és amelyek ajánlata megfelel a *WindowsServer*-nek:
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -174,7 +174,7 @@ Skus                                  Offer         PublisherName          Locat
 2016-Nano-Server                      WindowsServer MicrosoftWindowsServer eastus
 ```
 
-Az oktatóanyag elején a méretezési csoport létrehozásakor a *Windows Server 2016 DataCenter* alapértelmezett virtuálisgép-rendszerkép lett megadva a virtuálisgép-példányokhoz. A [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku)kimenetén alapuló másik virtuálisgép-rendszerkép is megadható. Az alábbi példa egy `-ImageName` paraméterrel rendelkező méretezési csoportot hoz létre a *MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest* virtuálisgép-rendszerképének megadásához. Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
+Az oktatóanyag elején a méretezési csoport létrehozásakor a *Windows Server 2016 DataCenter* alapértelmezett virtuálisgép-rendszerkép lett megadva a virtuálisgép-példányokhoz. A [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku)kimenete alapján másik virtuálisgép-lemezképet is megadhat. Az alábbi példa egy `-ImageName` paraméterrel rendelkező méretezési csoportot hoz létre a *MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:latest* virtuálisgép-rendszerképének megadásához. Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -197,7 +197,7 @@ A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példán
 ### <a name="vm-instance-sizes"></a>A virtuálisgép-példányok mérete
 Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek alapján kategorizálja.
 
-| Type (Típus)                     | Gyakori méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -231,7 +231,7 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-Az oktatóanyag elején a méretezési csoport létrehozásakor a *Standard_DS1_v2* alapértelmezett virtuálisgép-termékváltozat (SKU) lett megadva a virtuálisgép-példányokhoz. A [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize)kimenete alapján eltérő virtuálisgép-példányok is megadhatók. Az alábbi példa a `-VmSize` paraméterrel a méretezési csoportot a *Standard_F1* virtuálisgép-példányméret megadásával hozza létre. Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
+Az oktatóanyag elején a méretezési csoport létrehozásakor a *Standard_DS1_v2* alapértelmezett virtuálisgép-termékváltozat (SKU) lett megadva a virtuálisgép-példányokhoz. A [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize)kimenete alapján másik virtuálisgép-példányméretet is megadhat. Az alábbi példa a `-VmSize` paraméterrel a méretezési csoportot a *Standard_F1* virtuálisgép-példányméret megadásával hozza létre. Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -251,7 +251,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
 A méretezési csoport létrehozása során két virtuálisgép-példányt igényelt. A méretezési csoportban lévő virtuálisgép-példányok számának növeléséhez vagy csökkentéséhez manuálisan módosíthatja a kapacitást. A méretezési csoport létrehozza vagy eltávolítja a szükséges számú virtuálisgép-példányt, majd konfigurálja a terheléselosztót a forgalom elosztásához.
 
-Először hozzon létre egy méretezési csoport objektumot a [Get-AzVmss](/powershell/module/az.compute/get-azvmss)paranccsal, majd adja meg a `sku.capacity`új értékét. A kapacitás módosításának alkalmazásához használja az [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3*-ra állítja:
+Először hozzon létre egy méretezési csoport objektumot [a Get-AzVmss](/powershell/module/az.compute/get-azvmss)segítségével, majd adjon meg egy új értéket a számára. `sku.capacity` A kapacitásmódosítás alkalmazásához használja az [Update-AzVmss szolgáltatást.](/powershell/module/az.compute/update-azvmss) Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3*-ra állítja:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -262,7 +262,7 @@ $vmss.sku.capacity = 3
 Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss 
 ```
 
-A méretezési csoport kapacitásának frissítése néhány percet vesz igénybe. A méretezési csoportba tartozó példányok számának megtekintéséhez használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
+A méretezési csoport kapacitásának frissítése néhány percet vesz igénybe. A méretezési csoportban lévő példányok számát a [Get-AzVmss használatával láthatja:](/powershell/module/az.compute/get-azvmss)
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -282,7 +282,7 @@ Sku        :
 Mostantól létrehozhat egy méretezési csoportot, listát készíthet a kapcsolatadatokról és virtuálisgép-példányokhoz csatlakozhat. Megismerte, hogyan használhatók a különböző operációsrendszer-lemezképek a virtuálisgép-példányokhoz, hogyan választhatók ki a különféle virtuálisgép-méretek és hogyan méretezhető manuálisan a példányok száma. A napi felügyelet részeként szükség lehet a méretezési csoportban lévő virtuálisgép-példányok leállítására, elindítására vagy újraindítására.
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>A méretezési csoportokban lévő virtuálisgép-példányok leállítása és felszabadítása
-A méretezési csoportokban lévő egy vagy több virtuális gép leállításához használja a [stop-AzVmss](/powershell/module/az.compute/stop-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több leállítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép le lesz állítva. A következő példa leállítja az *1-es* példányt:
+A méretezési halmaz egy vagy több virtuális gépének leállításához használja a [Stop-AzVmss .to stop-azvmss](/powershell/module/az.compute/stop-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több leállítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép le lesz állítva. A következő példa leállítja az *1-es* példányt:
 
 ```azurepowershell-interactive
 Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -291,14 +291,14 @@ Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -I
 A leállított virtuális gépek alapértelmezés szerint felszabadított állapotban vannak, és nem kell értük díjat fizetni. Ha azt szeretné, hogy a virtuális gép a leállítás után is üzembe helyezett állapotban maradjon, adja hozzá a `-StayProvisioned` paramétert az előző parancshoz. Az üzembe helyezett állapotú, leállított virtuális gépek esetében normál számítási díjak merülnek fel.
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>A méretezési csoportokban lévő virtuálisgép-példányok indítása
-Egy vagy több virtuális gép egy méretezési csoportba való elindításához használja a [Start-AzVmss](/powershell/module/az.compute/start-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. A következő példa elindítja az *1-es* példányt:
+Egy vagy több virtuális gép méretezési készletben történő indításához használja a [Start-AzVmss .use start-AzVmss](/powershell/module/az.compute/start-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. A következő példa elindítja az *1-es* példányt:
 
 ```azurepowershell-interactive
 Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>A méretezési csoportokban lévő virtuálisgép-példányok újraindítása
-Egy vagy több virtuális gép újraindításához a méretezési csoportokban használja a [refanyar-AzVmss](/powershell/module/az.compute/restart-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. A következő példa újraindítja az *1-es* példányt:
+A méretezési készlet egy vagy több virtuális gépének újraindításához használja a [Retart-AzVmss programot.](/powershell/module/az.compute/restart-azvmss) Az `-InstanceId` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. A következő példa újraindítja az *1-es* példányt:
 
 ```azurepowershell-interactive
 Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -313,7 +313,7 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag az Azure PowerShell néhány alapszintű méretezésicsoport-létrehozási és -kezelési műveletét mutatta be:
 
 > [!div class="checklist"]

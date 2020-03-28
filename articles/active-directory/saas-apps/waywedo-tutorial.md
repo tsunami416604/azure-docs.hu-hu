@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Úgy tesszük az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a úgy tesszük között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Way We Do - Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Way We Do között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,177 +17,177 @@ ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: faa23f61e5a213c492a7fb51bfc5b108e5c77946
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67310407"
 ---
-# <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Oktatóanyag: Úgy tesszük az Azure Active Directory integrálása
+# <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Oktatóanyag: Az Azure Active Directoryval való integrációs módszer
 
-Ebben az oktatóanyagban elsajátíthatja a úgy tesszük integrálása az Azure Active Directory (Azure AD) lesz. Integrálása úgy tesszük az Azure ad-vel, akkor a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Way We Do szolgáltatást az Azure Active Directoryval (Azure AD). Ha integrálja a Way We Do-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá, így még a nem Azure AD-ben.
-* Engedélyezze a felhasználókat, hogy a rendszer automatikusan bejelentkezve úgy tesszük az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Way We Do.Control in Azure AD who has access to Way We Do.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve a Way We Do az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+A kezdéshez a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, beszerezheti a egyhónapos ingyenes próbaidőszakot [Itt](https://azure.microsoft.com/pricing/free-trial/).
-* Úgy, hogy egyszeri bejelentkezési (SSO) az előfizetés engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)egy hónapos ingyenes próbaverziót kaphat.
+* Way We Do egyszeri bejelentkezés (SSO) engedélyezve van előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* Így még a nem támogatja a **SP** által kezdeményezett egyszeri bejelentkezés
-* Így még a nem támogatja a **igény szerinti** felhasználók átadása
+* A We Do támogatja **az SP** által kezdeményezett SSO-t
+* A Just **In Time** felhasználói kiépítést támogató módszer
 
-## <a name="adding-way-we-do-from-the-gallery"></a>Úgy tesszük hozzáadása a katalógusból
+## <a name="adding-way-we-do-from-the-gallery"></a>Way We Do hozzáadása a galériából
 
-Az Azure AD-be, így még a nem az integráció konfigurálásához hozzá kell úgy tesszük a galériából a felügyelt SaaS-alkalmazások listájára.
+A Way We Do azure AD-be való integrálásának konfigurálásához hozzá kell adnia a The We Do-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **úgy tesszük** kifejezést a keresőmezőbe.
-1. Válassza ki **úgy tesszük** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a gyűjteményből szakaszban** írja be a **"Hogyan csináljuk" kifejezést** a keresőmezőbe.
+1. Válassza a **Hogyan csináljuk** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Úgy tesszük nevű tesztfelhasználó használata az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása **B.Simon**. Az SSO működjön kell úgy tesszük az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a Way We Do segítségével egy **B.Simon**nevű tesztfelhasználóhasználatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Way We Do.For SSO to work, you need to establish a link relationship between a Azure AD user and the related user in Way We Do.
 
-Úgy tesszük az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a Way We Do segítségével hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Így tudjuk tegye egyszeri bejelentkezést](#configure-way-we-do-sso)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre felhasználói teszteljük módon](#create-way-we-do-test-user)**  – így még a nem kapcsolódó felhasználói reprezentációja az Azure AD-megfelelője a Britta Simon van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a Way We Do SSO-t](#configure-way-we-do-sso)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Create Way We Do teszt felhasználó](#create-way-we-do-test-user)** -, hogy egy megfelelője Britta Simon a Way We Do, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **úgy tesszük** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Hogyan csináljuk** az alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az Egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** lap, adja meg az értékeket a következő mezőket:
+1. Az **Egyszerű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
+    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.waywedo.com`
+    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.waywedo.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [módon azt tegye ügyfél-támogatási csapatának](mailto:support@waywedo.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [a Way We Do ügyféltámogatási csapatával,](mailto:support@waywedo.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Raw)** válassza **letöltése**töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon keresse meg az **SAML aláíró tanúsítvány szakaszát,** keresse meg a **Tanúsítvány (Raw)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
+   ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
-1. Az a **állítsa be úgy tesszük** területén másolja a megfelelő URL-címe szerint.
+1. A **Beállítási módja we do** szakaszban másolja a megfelelő URL-cím(ek)et a követelmény alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-way-we-do-sso"></a>Úgy tesszük az egyszeri bejelentkezés konfigurálása
+### <a name="configure-way-we-do-sso"></a>Konfigurálja a mi sso-módszerünket
 
-1. Automatizálhatja a konfigurációra úgy tesszük, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
+1. A Way We Do konfigurációjának automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
 
-    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. A felvett bővítmény a böngészőre, kattintson a **a telepítő úgy tesszük** fog irányítja át a úgy tesszük alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival jelentkezhetnek be, így még a nem. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 6. lépések automatizálásához.
+1. Hozzáadása után kiterjesztés a böngésző, kattintson a **Setup Way We Do** irányítja, hogy a Way We Do alkalmazás. Itt adja meg a rendszergazdai hitelesítő adatokat, hogy jelentkezzen be way we do. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-6.
 
-    ![Konfiguráció beállítása](common/setup-sso.png)
+    ![Beállítási konfiguráció](common/setup-sso.png)
 
-1. Ha szeretné manuálisan beállítani a úgy tesszük, nyisson meg egy új böngészőablakban, és jelentkezzen be a rendszergazda úgy tesszük céges webhelyet, és hajtsa végre az alábbi lépéseket:
+1. Ha manuálisan szeretné beállítani a Way We Do-t, nyisson meg egy új böngészőablakot, és jelentkezzen be rendszergazdaként a Way We Do vállalati webhelyére, és hajtsa végre a következő lépéseket:
 
-1. Kattintson a **személy ikon** az bármely módon végzünk az oldal jobb felső sarkában kattintson a **fiók** a legördülő menüből.
+1. Kattintson a **személy ikonjára** a Way We Do bármely oldalának jobb felső sarkában, majd kattintson a Legördülő menü **Fiók parancsára.**
 
-    ![Úgy tesszük fiók](./media/waywedo-tutorial/tutorial_waywedo_account.png)
+    ![Hogyan vesszük el a számlát](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
-1. Kattintson a **menüikonra** nyissa meg a leküldéses navigációs menüben, majd kattintson a **az egyszeri bejelentkezést**.
+1. Kattintson a **menü ikonra** a leküldéses navigációs menü megnyitásához, majd kattintson **az Egyszeri bejelentkezés gombra.**
 
-    ![Úgy tesszük egyetlen](./media/waywedo-tutorial/tutorial_waywedo_single.png)
+    ![Way We Do egyetlen](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
-1. Az a **egyszeri bejelentkezés beállítása** lapon, a következő lépésekkel:
+1. Az **Egyszeri bejelentkezés beállítási** lapján hajtsa végre a következő lépéseket:
 
-    ![Mentés végzünk módja](./media/waywedo-tutorial/tutorial_waywedo_save.png)
+    ![Így nem menteni](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Kattintson a **kapcsolja be az egyszeri bejelentkezés** kapcsolót **Igen** egyszeri bejelentkezés engedélyezéséhez.
+    a. Az **egyszeri bejelentkezés bekapcsolása** kapcsolóra az **Igen** beállításhoz kattintson az egyszeri bejelentkezés engedélyezéséhez.
 
-    b. Az a **egyetlen bejelentkezési nevet** szövegmezőbe írja be a nevét.
+    b. Az **Egyszeri bejelentkezési név** mezőbe írja be a nevét.
 
-    c. A a **Entitásazonosító** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, az Azure Portalról másolt.
+    c. Az **Entitásazonosító** szövegmezőbe illessze be az **Azure AD-azonosító**értékét, amelyet az Azure Portalról másolt.
 
-    d. Az a **SAML egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    d. Az **SAML SSO URL-cím** szövegdobozába illessze be a **bejelentkezési URL-cím**értékét, amelyet az Azure Portalról másolt.
 
-    e. Gombra kattintva töltse fel a tanúsítványt a **kiválasztása** megjelenítő gombra **tanúsítvány**.
+    e. Töltse fel a tanúsítványt a **Tanúsítvány**gomb melletti **select** gombra kattintva.
 
     f. **Választható beállítások** -
     
-    * Engedélyezi a jelszavak – Ha ez a beállítás le van tiltva, a rendszeres jelszó függvények a úgy tesszük, hogy a felhasználók csak használhatják az egyszeri bejelentkezés.
+    * Jelszavak engedélyezése – Ha ez a beállítás le van tiltva, a normál jelszó függvények a Way We Do, hogy a felhasználók csak akkor használhatják az egyszeri bejelentkezés.
 
-    * Engedélyezze az Automatikus kiépítés – Ha ez engedélyezve van, a bejelentkezéshez használt e-mail-cím lesz automatikusan összehasonlítva úgy tesszük a felhasználók listája. Ha az e-mail-cím nem egyezik meg az aktív felhasználók az úgy tesszük, automatikusan hozzáadja egy új felhasználói fiók jelentkezik be, a hiányzó információit kérő személy.
+    * Automatikus kiépítés engedélyezése – Ha ez engedélyezve van, a bejelentkezéshez használt e-mail-cím automatikusan összehasonlítja a felhasználók listáját a Way We Do-ban. Ha az e-mail cím nem egyezik meg egy aktív felhasználóval a Way We Do-ban, akkor automatikusan hozzáad egy új felhasználói fiókot a bejelentkező személyhez, és minden hiányzó információt kér.
 
       > [!NOTE]
-      > Egyszeri bejelentkezés során hozzáadott felhasználók általános felhasználói is hozzáadja, és nincsenek hozzárendelve egy szerepkörhöz a rendszerben. Rendszergazdaként nyissa meg, és módosíthatja az ő biztonsági szerepkörük-szerkesztőben vagy rendszergazdaként, és szerepkörök is hozzárendelhet egy vagy több szervezeti diagram.
+      > Az egyszeri bejelentkezéssel hozzáadott felhasználók általános felhasználóként kerülnek hozzáadásra, és nincsenek szerepkörhöz rendelve a rendszerben. A rendszergazda beléphet, és módosíthatja a szerkesztői vagy rendszergazdai biztonsági szerepkörüket, és egy vagy több szervezetidiagram-szerepkört is hozzárendelhet.
 
-    g. Kattintson a **mentése** megőrizni a beállításokat.
+    g. A beállítások megőrzéséhez kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban B.Simon alapján ad hozzáférést, így még a nem Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t, hozzáférést biztosítva a Way We Do.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **úgy tesszük**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **Way We Do**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-way-we-do-test-user"></a>Úgy tesszük tesztfelhasználó létrehozása
+### <a name="create-way-we-do-test-user"></a>Create Way We Do teszt felhasználó
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó a úgy tesszük jön létre. Így még a nem támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a úgy tesszük, egy új jön létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Way We Do alkalmazásban. A Way We Do támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a Way We Do, egy új jön létre a hitelesítés után.
 
 > [!Note]
-> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [módon azt tegye ügyfél-támogatási csapatának](mailto:support@waywedo.com).
+> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [Way We Do Ügyfél támogatási csapatához.](mailto:support@waywedo.com)
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>SSO tesztelése
 
-A úgy tesszük csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a úgy tesszük, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen kiválasztja a Hogyan csempe csempét, automatikusan be kell jelentkeznie az SSO beállításához vezető Módszerbe. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

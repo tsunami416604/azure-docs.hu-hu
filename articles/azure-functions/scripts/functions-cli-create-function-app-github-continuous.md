@@ -1,19 +1,19 @@
 ---
-title: Function-alkalmazás létrehozása GitHub-üzembe helyezéssel – Azure CLI
+title: Függvényalkalmazás létrehozása a GitHub központi telepítésével – Azure CLI
 description: Egy függvényalkalmazás létrehozása és függvénykód üzembe helyezése egy GitHub-adattárból az Azure Functions használatával.
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
 ms.openlocfilehash: e424737b67be58ac0c3880ad2454c87fab803a15
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922737"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHubról üzembe helyezett függvényalkalmazás létrehozása az Azure-ban
 
-Ez a Azure Functions minta szkript létrehoz egy Function alkalmazást a használati [terv](../functions-scale.md#consumption-plan)használatával, valamint a kapcsolódó erőforrásait. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
+Ez az Azure Functions mintaparancsfájl létrehoz egy függvényalkalmazást a [felhasználási terv](../functions-scale.md#consumption-plan)használatával, a kapcsolódó erőforrásokkal együtt. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
 
 A példához a következők szükségesek:
 
@@ -42,9 +42,9 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../functions-scale.md#consumption-plan) , és társítja azt egy git vagy Mercurial adattárral. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [felhasználási tervben,](../functions-scale.md#consumption-plan) és hozzárendeli egy Git- vagy Mercurial-tárházhoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

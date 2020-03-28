@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az Azure HDInsight Apache Spark-beli adatelemzések elemzése Power BI'
-description: Oktatóanyag – a Microsoft Power BI használata a tárolt HDInsight-fürtök megjelenítéséhez Apache Spark
+title: 'Oktatóanyag: Az Azure HDInsight Apache Spark-adatok elemzése a Power BI-val'
+description: Oktatóanyag – A Microsoft Power BI használata az Apache Spark tárolt HDInsight-fürtjeinek megjelenítéséhez
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,33 +9,33 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 03/02/2020
 ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251951"
 ---
-# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatelemzés a HDInsight Power BI használatával
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatok elemzése a POWER BI használatával a HDInsightban
 
-Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg a [Microsoft Power BIt](https://powerbi.microsoft.com/) az [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)lévő Apache Spark-fürtökben lévő adatmegjelenítéshez.
+Ebben az oktatóanyagban megtudhatja, hogyan jelenítheti meg az adatokat az [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)ban az Apache Spark-fürtökben az Azure Power [BI](https://powerbi.microsoft.com/) használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Spark-adatok vizualizációja a Power BI használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A cikkből megtudhatja [, hogyan tölthet be és futtathat lekérdezéseket egy Apache Spark-fürtön az Azure HDInsight](./apache-spark-load-data-run-query.md).
+* Végezze el az [Oktatóanyag: Adatok betöltése és lekérdezések futtatása az Azure HDInsight egy Apache Spark-fürtjén cikkben leírtakat](./apache-spark-load-data-run-query.md).
 
-* [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
+* [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
-* Nem kötelező: [Power bi próbaverziós előfizetés](https://app.powerbi.com/signupredirect?pbi_source=web).
+* Nem kötelező: [Power BI próbaverziós előfizetés](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="verify-the-data"></a>Az adatok ellenőrzése
 
-Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott [Jupyter notebook](https://jupyter.org/) kódot tartalmaz egy `hvac` tábla létrehozásához. Ez a táblázat a `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`összes HDInsight Spark-fürtön elérhető CSV-fájlon alapul. Az adatok ellenőrzéséhez kövesse az alábbi eljárást.
+Az [előző oktatóanyagban](apache-spark-load-data-run-query.md) létrehozott [Jupyter-jegyzetfüzet](https://jupyter.org/) tartalmazza `hvac` a tábla létrehozásához kívánt kódot. Ez a táblázat az összes HDInsight Spark-fürtön `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv`elérhető CSV-fájlon alapul. Az adatok ellenőrzéséhez kövesse az alábbi eljárást.
 
 1. Illessze be a Jupyter notebookból a következő kódot, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt. A kód segítségével a táblák meglétét ellenőrizhetjük.
 
@@ -74,25 +74,25 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 > [!NOTE]  
 > A jelen cikkben bemutatott összekötő jelenleg előzetes verzióban érhető el. Visszajelzéseit a [Power BI-közösség](https://community.powerbi.com/) webhelyén vagy a [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) oldalon keresztül küldheti el.
 
-1. Nyissa meg a Power BI Desktop alkalmazást. Ha megnyílik, zárjuk be a Start-up Splash képernyőt.
+1. Nyissa meg a Power BI Desktopot. Zárja be az indítási kezdőképet, ha megnyílik.
 
-2. A **Kezdőlap** lapon navigáljon az **adatok lekérése** > **továbbiak..** .
+2. A **Kezdőlap** lapon keresse meg az Adatok további >  **bekerülése****lapot. .**.
 
-    ![Adatok beolvasása Power BI Desktop a HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Adatok beolvasása Power BI Apache Spark BI-ból")
+    ![Adatok beszerezése a Power BI Desktopba a HDInsight Apache Sparktól](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Adatok beszerezése a Power BI-ba az Apache Spark BI-tól")
 
-3. Adja meg `Spark` a keresőmezőbe, válassza a **Azure HDInsight Spark**lehetőséget, majd válassza a **kapcsolat**lehetőséget.
+3. Írja `Spark` be a keresőmezőbe az **Azure HDInsight Spark**lehetőséget, majd a **Csatlakozás**lehetőséget.
 
-    ![Adatok beolvasása Power BI Apache Spark BI-ból](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Adatok beolvasása Power BI Apache Spark BI-ból")
+    ![Adatok beszerezése a Power BI-ba az Apache Spark BI-tól](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Adatok beszerezése a Power BI-ba az Apache Spark BI-tól")
 
-4. Adja meg a fürt URL-címét (az űrlap `mysparkcluster.azurehdinsight.net`) a **kiszolgáló** szövegmezőben.
+4. Írja be a fürt `mysparkcluster.azurehdinsight.net`URL-címét (az űrlapon) a **Kiszolgáló** mezőbe.
 
-5. Az **adatkapcsolati mód**területen válassza a **DirectQuery**lehetőséget. Ezután kattintson az **OK** gombra.
+5. Az **Adatkapcsolat módban**válassza a **DirectQuery**lehetőséget. Ezután kattintson az **OK** gombra.
 
     A Sparkkal bármelyik adatkapcsolati módot használhatja. A DirectQuery használatakor a módosítások anélkül jelennek meg a jelentésekben, hogy a teljes adatkészletet frissíteni kellene. Ha importálja az adatokat, a módosítások megtekintéséhez frissítenie kell az adatkészletet. További információ a DirectQuery használatának módjáról és idejéről: [DirectQuery használata a Power BI-ban](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
-6. Adja meg a HDInsight bejelentkezési fiókjának adatait, majd válassza a **kapcsolat**lehetőséget. Az alapértelmezett fióknév az *admin*.
+6. Adja meg a HDInsight bejelentkezési fiók adatait, majd válassza a **Csatlakozás lehetőséget.** Az alapértelmezett fióknév az *admin*.
 
-7. Válassza ki a `hvac` táblázatot, várjon, amíg megtekinti az adatelőnézetet, majd válassza a **Betöltés**lehetőséget.
+7. Jelölje `hvac` ki a táblázatot, várja meg az adatok előnézetét, majd válassza a **Betöltés**lehetőséget.
 
     ![Spark-fürt felhasználóneve és jelszava](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark-fürt felhasználóneve és jelszava")
 
@@ -104,83 +104,83 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
     2. Húzza a **BuildingID** mezőt a **Tengely** területre, az **ActualTemp** és a **TargetTemp** mezőket pedig az **Érték** területre.
 
-        ![érték oszlopok hozzáadása](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "érték oszlopok hozzáadása")
+        ![hozzáadott értékoszlopok](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "hozzáadott értékoszlopok")
 
         A diagram a következőképpen fog kinézni:
 
-        ![körzeti gráf összege](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "körzeti gráf összege")
+        ![területdiagram összege](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "területdiagram összege")
 
-        Alapértelmezés szerint a vizualizáció az **ActualTemp** és a **TargetTemp** mezők összegét jeleníti meg. Válassza ki a **ActualTemp** és a **TragetTemp** melletti lefelé mutató nyilat a vizualizációk ablaktáblán, amelyen a **Sum (összeg** ) lehetőség van kiválasztva.
+        Alapértelmezés szerint a vizualizáció az **ActualTemp** és a **TargetTemp** mezők összegét jeleníti meg. Jelölje ki az **ActualTemp** és a **TragetTemp** melletti lefelé mutató nyilat a Vizualizációk ablaktáblában, és láthatja, hogy az **Összeg** ki van jelölve.
 
-    3. Válassza ki a **ActualTemp** és a **TragetTemp** melletti lefelé mutató nyilat a vizualizációk ablaktáblán, és válassza az **átlag** lehetőséget az egyes épületek tényleges és megcélzott hőmérsékletének lekéréséhez.
+    3. Válassza ki az **ActualTemp** és a **TragetTemp** elem melletti lefelé mutató nyilakat a Vizualizációk ablaktáblában, és válassza az **Átlag** lehetőséget az egyes épületek tényleges és célhőmérsékletének összegzéséhez.
 
         ![értékek átlaga](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "értékek átlaga")
 
         Az adatok vizualizációjának a képernyőképen láthatóhoz hasonlóan kell kinéznie. Ha az egérmutatót a vizualizáció fölé viszi, megtekintheti a kapcsolódó adatokhoz tartozó eszköztippeket.
 
-        ![körzeti gráf](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "körzeti gráf")
+        ![területdiagram](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "területdiagram")
 
-9. Lépjen a **fájl** > **Mentés**elemre, írja be a fájl nevét `BuildingTemperature`, majd kattintson a **Save (Mentés**) gombra.
+9. Nyissa meg a > **Fájlmentés**gombot, írja be a fájl nevét, `BuildingTemperature` majd válassza a **Mentés gombot.** **File**
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>A jelentés közzététele a Power BI szolgáltatásban (opcionális)
 
-A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat oszthat meg a vállalaton belül. Ebben a szakaszban először az adatkészlet és a jelentés közzétételét végezzük el. Ezután rögzíteni fogjuk a jelentést egy irányítópulton. Az irányítópultok jellemzően a jelentésekben lévő adathalmazokra koncentrálnak. Csak egy vizualizáció szerepel a jelentésben, de továbbra is hasznos lehet a lépések végrehajtásához.
+A Power BI szolgáltatás segítségével jelentéseket és irányítópultokat oszthat meg a vállalaton belül. Ebben a szakaszban először az adatkészlet és a jelentés közzétételét végezzük el. Ezután rögzíteni fogjuk a jelentést egy irányítópulton. Az irányítópultok általában a jelentés adatainak egy részhalmazára összpontosítanak. Csak egy vizualizáció van a jelentésben, de még mindig hasznos, ha végigmegy a lépéseken.
 
-1. Nyissa meg a Power BI Desktop alkalmazást.
+1. Nyissa meg a Power BI Desktopot.
 
-1. A **Kezdőlap** lapon válassza a **Közzététel**lehetőséget.
+1. A **Kezdőlap** lapon válassza a **Közzététel**gombot.
 
-    ![Közzététel a Power BI Desktopból](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Közzététel a Power BI Desktopból")
+    ![Közzététel a Power BI Desktopról](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Közzététel a Power BI Desktopból")
 
-1. Válasszon ki egy munkaterületet, és tegye közzé az adatkészletet, majd válassza a **kiválasztás**lehetőséget. A következő képen az alapértelmezett **Saját munkaterület** mező van kiválasztva.
+1. Jelölje ki azt a munkaterületet, ahol közzé szeretné tenni az adatkészletet, majd válassza a **Kijelölés lehetőséget.** A következő képen az alapértelmezett **Saját munkaterület** mező van kiválasztva.
 
-    ![Válassza ki a munkaterületet az adatkészlet és a jelentés közzétételéhez](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Válassza ki a munkaterületet az adatkészlet és a jelentés közzétételéhez")
+    ![Válassza ki a munkaterületet az adatkészlet közzétételéhez és a jelentéshez](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Válassza ki a munkaterületet az adatkészlet közzétételéhez és a jelentéshez")
 
-1. A közzététel sikeres végrehajtása után válassza a **Power bi BuildingTemperature. Pbix megnyitása**lehetőséget.
+1. A közzététel sikeresse, válassza **a "BuildingTemperature.pbix megnyitása" lehetőséget a Power BI-ban.**
 
-    ![Sikeres közzététel, kattintson ide a hitelesítő adatok megadásához](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Sikeres közzététel, kattintson ide a hitelesítő adatok megadásához")
+    ![Sikeres közzététel, kattintson a hitelesítő adatok megadására](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Sikeres közzététel, kattintson a hitelesítő adatok megadására")
 
-1. A Power BI szolgáltatás válassza a **hitelesítő adatok megadása**lehetőséget.
+1. A Power BI szolgáltatásban válassza a **Hitelesítő adatok megadása**lehetőséget.
 
-    ![Hitelesítő adatok megadása Power BI szolgáltatás](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Hitelesítő adatok megadása Power BI szolgáltatás")
+    ![Hitelesítő adatok megadása a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Hitelesítő adatok megadása a Power BI szolgáltatásban")
 
-1. Válassza a **hitelesítő adatok szerkesztése**lehetőséget.
+1. Válassza **a Hitelesítő adatok szerkesztése lehetőséget.**
 
     ![Hitelesítő adatok szerkesztése a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Hitelesítő adatok szerkesztése a Power BI szolgáltatásban")
 
-1. Adja meg a HDInsight bejelentkezési fiókjának adatait, majd válassza a **Bejelentkezés**lehetőséget. Az alapértelmezett fióknév az *admin*.
+1. Adja meg a HDInsight bejelentkezési fiókadatait, majd válassza **a Bejelentkezés**lehetőséget. Az alapértelmezett fióknév az *admin*.
 
     ![Bejelentkezés a Spark-fürtbe](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Bejelentkezés a Spark-fürtbe")
 
-1. A bal oldali ablaktáblán válassza a **munkaterületek > ** **a saját munkaterület** > a **jelentések**, majd a **BuildingTemperature**lehetőséget.
+1. A bal oldali ablaktáblában nyissa meg **a Munkaterületek** > **saját munkaterület-jelentések** > **lehetőséget,** majd válassza **a BuildingTemperature**lehetőséget.
 
-    ![Jelentés a bal oldali ablaktábla jelentések területén](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Jelentés a bal oldali ablaktábla jelentések területén")
+    ![Jelentés a bal oldali ablaktáblában található jelentések alatt](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Jelentés a bal oldali ablaktáblában található jelentések alatt")
 
     A **BuildingTemperature** elemnek a bal oldali ablaktábla **ADATKÉSZLETEK** területén is meg kell jelennie.
 
     A Power BI Desktopban létrehozott vizualizáció mostantól a Power BI szolgáltatásban is elérhető.
 
-1. Vigye a kurzort a vizualizáció fölé, majd válassza a jobb felső sarokban található rögzítés ikont.
+1. Vigye a mutatót a képi megjelenítés fölé, majd jelölje ki a jobb felső sarokban lévő pin ikont.
 
-    ![Jelentés a Power BI szolgáltatás](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Jelentés a Power BI szolgáltatás")
+    ![Jelentés a Power BI szolgáltatásban](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Jelentés a Power BI szolgáltatásban")
 
-1. Válassza az "új irányítópult" lehetőséget, írja be a `Building temperature`nevet, majd válassza a **rögzítés**lehetőséget.
+1. Válassza az "Új irányítópult" `Building temperature`lehetőséget, írja be a nevet , majd a **Rögzítés**lehetőséget.
 
-    ![Rögzítés új irányítópultra](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Rögzítés új irányítópultra")
+    ![Rögzítés az új irányítópultra](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Rögzítés az új irányítópultra")
 
-1. A jelentésben válassza az **Ugrás az irányítópultra**lehetőséget.
+1. A jelentésben válassza az Ugrás az **irányítópultra**lehetőséget.
 
-Ezzel rögzítette a vizualizációt az irányítópulton – felvehet további vizualizációkat is a jelentésbe, amelyeket ugyanezen az irányítópulton rögzíthet. A jelentésekkel és irányítópultokkal kapcsolatos további információkért tekintse meg a Power BI Power BI és [irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/) [jelentései](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) című témakört.
+Ezzel rögzítette a vizualizációt az irányítópulton – felvehet további vizualizációkat is a jelentésbe, amelyeket ugyanezen az irányítópulton rögzíthet. A jelentésekről és az irányítópultokról a [Jelentések a Power BI-ban](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) és [az Irányítópultok a Power BI-ban](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)című témakörben talál további információt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
+Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight segítségével az adatok az Azure Storage-ban tárolódnak, így biztonságosan törölheti a fürtöt, ha nincs használatban. A HDInsight-fürtért is díjat kell fizetnie, még akkor is, ha nincs használatban. Mivel a fürt díjai sokszor több, mint a tárolási díjak, célszerű törölni a fürtöket, ha nincsenek használatban.
 
-Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
+Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan jelenítheti meg a [Microsoft Power BIt](https://powerbi.microsoft.com/) az [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)lévő Apache Spark-fürtökben lévő információk megjelenítéséhez. A következő cikkből megtudhatja, hogyan hozhat létre gépi tanulási alkalmazást.
+Ebben az oktatóanyagban megtanulta, hogyan jelenítheti meg az adatokat az Azure HDInsight ban egy Apache Spark-fürtben az Adatok Microsoft [Power BI](https://powerbi.microsoft.com/) [használatával.](https://azure.microsoft.com/services/hdinsight/) Tekintse át a következő cikket, és tekintse meg, hogy létrehozhat egy gépi tanulási alkalmazást.
 
 > [!div class="nextstepaction"]
-> [Machine learning-alkalmazás létrehozása](./apache-spark-ipython-notebook-machine-learning.md)
+> [Gépi tanulási alkalmazás létrehozása](./apache-spark-ipython-notebook-machine-learning.md)

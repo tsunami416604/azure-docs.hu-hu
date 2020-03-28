@@ -1,37 +1,37 @@
 ---
 title: Erőforrás-szolgáltató létrehozása
-description: Útmutatás erőforrás-szolgáltató létrehozásához és az egyéni erőforrástípusok üzembe helyezéséhez.
+description: Ez a témakör azt ismerteti, hogy miként hozhat létre erőforrás-szolgáltatót, és hogyan telepítheti egyéni erőforrástípusait.
 author: MSEvanhi
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
 ms.openlocfilehash: 393993a44c860525b9bd9a540ed7afff78e5b93c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649868"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Gyors útmutató: egyéni szolgáltató létrehozása és egyéni erőforrások üzembe helyezése
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Rövid útmutató: Egyéni szolgáltató létrehozása és egyéni erőforrások üzembe helyezése
 
-Ebben a rövid útmutatóban létrehoz egy saját erőforrás-szolgáltatót, és üzembe helyezi az adott erőforrás-szolgáltató egyéni erőforrás-típusait. További információ az egyéni szolgáltatókról: az [Azure Custom Providers előzetes](overview.md)verziójának áttekintése.
+Ebben a rövid útmutatóban saját erőforrás-szolgáltatót hoz létre, és egyéni erőforrástípusokat telepít az adott erőforrás-szolgáltatóhoz. Az egyéni szolgáltatókról az [Azure egyéni szolgáltatók előzetes verzió – áttekintés című témakörben olvashat bővebben.](overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató lépéseinek elvégzéséhez meg kell hívnia a REST-műveleteket. [A REST-kérelmek küldésének különböző módjai](/rest/api/azure/)vannak. Ha még nincs eszköz a REST-műveletekhez, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient)-t. Ez egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti a Azure Resource Manager API meghívását.
+A rövid útmutató lépései végrehajtásához meg kell hívnia a REST-műveleteket. A [REST-kérelmek küldésének különböző módjai](/rest/api/azure/)vannak. Ha még nem rendelkezik a REST-műveletekhez szükséges eszközzel, telepítse az [ARMClient programot.](https://github.com/projectkudu/ARMClient) Ez egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívását.
 
-## <a name="deploy-custom-provider"></a>Egyéni szolgáltató üzembe helyezése
+## <a name="deploy-custom-provider"></a>Egyéni szolgáltató telepítése
 
-Az egyéni szolgáltató beállításához telepítsen egy [példa sablont](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) az Azure-előfizetésre.
+Az egyéni szolgáltató beállítása, üzembe helyezegy [példasablont](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) az Azure-előfizetésben.
 
-A sablon telepítése után az előfizetése a következő erőforrásokkal rendelkezik:
+A sablon üzembe helyezése után az előfizetés a következő erőforrásokkal rendelkezik:
 
-* Függvényalkalmazás az erőforrásokkal és műveletekkel kapcsolatos műveletekkel.
-* Az egyéni szolgáltatón keresztül létrehozott felhasználók tárolására szolgáló Storage-fiók.
-* Egyéni erőforrás-típusokat és műveleteket definiáló egyéni szolgáltató. A függvény alkalmazás-végpontot használja a kérelmek küldéséhez.
+* Függvényalkalmazás az erőforrások és műveletek műveleteit.
+* Tárfiók az egyéni szolgáltatón keresztül létrehozott felhasználók tárolására.
+* Egyéni szolgáltató, amely meghatározza az egyéni erőforrástípusokat és műveleteket. A függvényalkalmazás-végpontot használja a kérelmek küldéséhez.
 * Egyéni erőforrás az egyéni szolgáltatótól.
 
-Az egyéni szolgáltató PowerShell használatával történő üzembe helyezéséhez használja a következőt:
+Az egyéni szolgáltató PowerShell használatával történő üzembe helyezéséhez használja a következőket:
 
 ```azurepowershell-interactive
 $rgName = "<resource-group-name>"
@@ -43,7 +43,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $rgName `
   -funcname $funcName
 ```
 
-A megoldás a következő gombbal is üzembe helyezhető:
+Vagy a következő gombbal telepítheti a megoldást:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
@@ -51,17 +51,17 @@ A megoldás a következő gombbal is üzembe helyezhető:
 
 ## <a name="view-custom-provider-and-resource"></a>Egyéni szolgáltató és erőforrás megtekintése
 
-A portálon az egyéni szolgáltató egy rejtett erőforrástípus. Az erőforrás-szolgáltató üzembe helyezésének megerősítéséhez navigáljon az erőforráscsoporthoz. Válassza a **rejtett típusok megjelenítésének**lehetőségét.
+A portálon az egyéni szolgáltató egy rejtett erőforrástípus. Annak ellenőrzéséhez, hogy az erőforrás-szolgáltató telepítve van-e, keresse meg az erőforráscsoportot. Válassza a **rejtett típusok megjelenítésének**lehetőségét.
 
 ![Rejtett erőforrástípusok megjelenítése](./media/create-custom-provider/show-hidden.png)
 
-A telepített egyéni erőforrástípus megtekintéséhez használja a GET műveletet az erőforrás-típuson.
+A telepített egyéni erőforrástípus megtekintéséhez használja a GET műveletet az erőforrástípuson.
 
 ```
 GET https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users?api-version=2018-09-01-preview
 ```
 
-A ARMClient használata esetén használja a következőket:
+Az ARMClient segítségével használja:
 
 ```powershell
 $subID = (Get-AzContext).Subscription.Id
@@ -70,7 +70,7 @@ $requestURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/
 armclient GET $requestURI
 ```
 
-A válasz a következőket kapja:
+A következő választ kapja:
 
 ```json
 {
@@ -89,17 +89,17 @@ A válasz a következőket kapja:
 }
 ```
 
-## <a name="call-action"></a>Hívási művelet
+## <a name="call-action"></a>Hívásművelet
 
-Az egyéni szolgáltató is rendelkezik egy **ping**nevű művelettel. A kérést feldolgozó kód implementálva van a Function alkalmazásban. A pingelési művelet egy üdvözléssel válaszol.
+Az egyéni szolgáltató nak ping **nevű**művelete is van. A kérelmet felértékelő kód a függvényalkalmazásban van megvalósítva. A pingművelet üdvözléssel válaszol.
 
-Pingelési kérelem küldéséhez használja a POST műveletet az egyéni szolgáltatónál.
+Pingkérés küldéséhez használja a POST műveletet az egyéni szolgáltatón.
 
 ```
 POST https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/ping?api-version=2018-09-01-preview
 ```
 
-A ARMClient használata esetén használja a következőket:
+Az ARMClient segítségével használja:
 
 ```powershell
 $pingURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/ping?api-version=2018-09-01-preview"
@@ -107,7 +107,7 @@ $pingURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rg
 armclient POST $pingURI
 ```
 
-A válasz a következőket kapja:
+A következő választ kapja:
 
 ```json
 {
@@ -120,7 +120,7 @@ A válasz a következőket kapja:
 
 ## <a name="create-resource-type"></a>Erőforrástípus létrehozása
 
-Az egyéni erőforrástípus létrehozásához üzembe helyezheti az erőforrást egy sablonban. Ez a megközelítés az ebben a rövid útmutatóban üzembe helyezett sablonban látható. Egy PUT-kérést is küldhet az erőforrás típusára.
+Az egyéni erőforrástípus létrehozásához telepítheti az erőforrást egy sablonban. Ez a megközelítés az ebben a rövid útmutatóban üzembe helyezett sablonban jelenik meg. Az erőforrástípushoz PUT-kérelmet is küldhet.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview
@@ -128,7 +128,7 @@ PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>
 {"properties":{"FullName": "Test User", "Location": "Earth"}}
 ```
 
-A ARMClient használata esetén használja a következőket:
+Az ARMClient segítségével használja:
 
 ```powershell
 $addURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/users/testuser?api-version=2018-09-01-preview"
@@ -137,7 +137,7 @@ $requestBody = "{'properties':{'FullName': 'Test User', 'Location': 'Earth'}}"
 armclient PUT $addURI $requestBody
 ```
 
-A válasz a következőket kapja:
+A következő választ kapja:
 
 ```json
 {
@@ -152,6 +152,6 @@ A válasz a következőket kapja:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az egyéni szolgáltatók bevezetését az [Azure Custom Providers előzetes](overview.md)verziójának áttekintése című témakörben tekintheti meg.
+Az egyéni szolgáltatók bemutatása az [Azure Egyéni szolgáltatók előzetes verzió – áttekintés című témakörben található.](overview.md)

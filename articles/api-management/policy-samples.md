@@ -14,10 +14,10 @@ ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75940945"
 ---
 # <a name="api-management-policy-samples"></a>API Management-szabályzatminták
@@ -33,7 +33,7 @@ A [szabályzat](api-management-howto-policies.md) a rendszer egyik kiemelkedő f
 | [Hozzáférés engedélyezése JWT-jogcímek alapján](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | Bemutatja, hogyan engedélyezheti az egyes HTTP-metódusokhoz való hozzáférést egy API-n JWT-jogcímek alapján.                                                                                                                                       |
 | [Kérelmek hitelesítése külső hitelesítő használatával](./policies/authorize-request-using-external-authorizer.md)                                                   | Bemutatja, hogyan használható külső hitelesítő az API-hozzáférés biztosításához.                                                                                                                                                               |
 | [Hozzáférés engedélyezése Google OAuth-jogkivonatokkal](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | Bemutatja, hogyan engedélyezheti a végpontokhoz való hozzáférést a Google OAuth jogkivonat-szolgáltatóként való használatával.                                                                                                                                    |
-| [IP-címek szűrése Application Gateway használatakor](./policies/filter-ip-addresses-when-using-appgw.md) | Azt mutatja be, hogyan lehet az IP-szűrést a házirendekben, ha a API Management példány egy Application Gateway keresztül érhető el
+| [IP-címek szűrése alkalmazásátjáró használataesetén](./policies/filter-ip-addresses-when-using-appgw.md) | Bemutatja, hogyan lehet IP-szűrőt a házirendekben, ha az API Management-példány egy alkalmazásátjárón keresztül érhető el
 | [Közös hozzáférésű jogosultságkód létrehozása és kérések továbbítása az Azure-tárolóba.](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | Bemutatja, hogyan hozhat létre [közös hozzáférésű jogosultságkódot](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) kifejezések használatával, majd továbbíthatja a kérést az Azure-tárolóba a rewrite-uri szabályzattal. |
 | [OAuth2 hozzáférési jogkivonat beszerzése az AAD-tól, és annak továbbítása a háttérrendszerbe](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Bemutatja, hogyan használhatja az OAuth2-t az átjáró és a háttérrendszer közötti engedélyezési folyamathoz. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.                                                    |
 | [X-CSRF-jogkivonat beszerzése az SAP-átjárótól a kérésküldési szabályzat használatával](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Bemutatja, hogyan alkalmazhatja a számos API által használt X-CSRF-mintát. Ez a példa kifejezetten az SAP-átjáróra vonatkozik.                                                                                                                           |

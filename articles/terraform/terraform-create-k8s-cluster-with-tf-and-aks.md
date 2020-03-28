@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással (ak) a Terraform használatával
-description: Ebben az oktatóanyagban egy Kubernetes-fürtöt hoz létre az Azure Kubernetes Service és a Terraform
-keywords: Azure devops Terraform AK kubernetes
+title: Oktatóanyag – Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással (AKS) a Terraform használatával
+description: Ebben az oktatóanyagban kubernetes-fürtöt hoz létre az Azure Kubernetes-szolgáltatással és a Terraform-mal
+keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945298"
 ---
-# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Oktatóanyag: Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással az Terraform használatával
+# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Oktatóanyag: Hozzon létre egy Kubernetes-fürtöt az Azure Kubernetes szolgáltatással a Terraform használatával
 
-Az [Azure Kubernetes Service (ak)](/azure/aks/) kezeli az üzemeltetett Kubernetes-környezetet. Az AK lehetővé teszi a tároló alkalmazások üzembe helyezését és kezelését a tároló-előkészítési szakértelem nélkül. Az AK azt is lehetővé teszi, hogy az alkalmazás offline állapotba helyezése nélkül is végrehajtson számos gyakori karbantartási műveletet. Ezek a műveletek magukban foglalják az erőforrások igény szerinti üzembe helyezését, frissítését és méretezését.
+[Az Azure Kubernetes-szolgáltatás (AKS)](/azure/aks/) kezeli a üzemeltetett Kubernetes-környezetet. Az AKS lehetővé teszi a tárolóba rendezett alkalmazások üzembe helyezését és kezelését a tárolóvezénylési szakértelem nélkül. Az AKS számos gyakori karbantartási műveletet is lehetővé tesz anélkül, hogy az alkalmazást offline állapotba hozná. Ezek a műveletek közé tartozik a kiépítés, a frissítés és az erőforrások igény szerinti méretezése.
 
-Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
+Ebben az oktatóanyagban megtudhatja, hogyan kell elvégezni a következő feladatokat:
 
 > [!div class="checklist"]
 > * Kubernetes-fürt meghatározása HCL (HashiCorp Language) használatával
@@ -28,7 +28,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 - **A Terraform konfigurálása**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](terraform-install-configure.md) található utasításokat
 
-- **Azure-beli szolgáltatásnév**: Kövesse az **Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel** című cikk [a szolgáltatásnév létrehozását](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
+- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
@@ -36,7 +36,7 @@ Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terrafo
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
-1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
+1. Nyissa meg [az Azure Cloud Shell](/azure/cloud-shell/overview)t. Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
     ![Cloud Shell-parancssor](./media/terraform-create-k8s-cluster-with-tf-and-aks/azure-portal-cloud-shell-button-min.png)
 
@@ -83,7 +83,7 @@ Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájl
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Kubernetes-fürt meghatározása
 
@@ -166,13 +166,13 @@ Hozza létre a Kubernetes-fürt erőforrásait deklaráló Terraform konfigurác
     }
     ```
 
-    Az előző kód a fürt, a hely és az erőforráscsoport nevét állítja be. A teljes tartománynév (FQDN) előtagja is be van állítva. A teljes tartománynév a fürt elérésére szolgál.
+    Az előző kód beállítja a fürt nevét, helyét és az erőforráscsoport nevét. A teljesen minősített tartománynév (FQDN) előtagja is be van állítva. A teljes tartománynhálózat a fürt elérésére szolgál.
 
-    A `linux_profile` rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek engedélyezik az SSH-val való bejelentkezést a munkavégző csomópontokra.
+    A `linux_profile` rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek lehetővé teszik a munkavégző csomópontokba való bejelentkezést az SSH használatával.
 
-    Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `default_node_pool` rekord a munkavégző csomópontok adatait konfigurálja. A `default_node_pool record` tartalmazza a létrehozandó munkavégző csomópontok számát és a feldolgozó csomópontok típusát. Ha a későbbiekben a fürt vertikális felskálázását vagy leskálázását szeretné végezni, módosítsa a rekord `count` értékét.
+    Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `default_node_pool` rekord konfigurálja ezeknek a munkavégző csomópontoknak a részleteit. A `default_node_pool record` tartalmazza a létrehozandó munkavégző csomópontok számát és a munkavégző csomópontok típusát. Ha a jövőben felkell skáláznia vagy lefelé kell `count` skáláznia a fürtöt, módosítsa a rekord értékét.
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
 
@@ -227,7 +227,7 @@ Hozza létre a Kubernetes-fürt erőforrásait deklaráló Terraform konfigurác
    }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Terraform kimeneti fájl létrehozása
 
@@ -271,31 +271,31 @@ A [Terraform-kimenetek](https://www.terraform.io/docs/configuration/outputs.html
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Az Azure Storage beállítása Terraform-állapot tárolásához
 
-A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon keresztül. Ez a minta jól működik egy egyszemélyes környezetben. A többszemélyes környezetekben az [Azure Storage](/azure/storage/) az állapot nyomon követésére szolgál.
+A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon keresztül. Ez a minta jól működik egy egyszemélyes környezetben. Többszemélyes környezetben az [Azure storage](/azure/storage/) az állapot nyomon követésére szolgál.
 
-Ebben a szakaszban a következő feladatokat látja el:
-- A Storage-fiók adatainak beolvasása (fióknév és a fiók kulcsa)
-- Hozzon létre egy Storage-tárolót, amelybe a rendszer a Terraform-állapotinformációkat tárolja.
+Ebben a szakaszban a következő feladatok at láthatja:
+- Tárfiók adatainak lekérése (fióknév és fiókkulcs)
+- Hozzon létre egy tárolótárolót, amelyben a Terraform állapotadatok at tárolják.
 
 1. Az Azure Portalon a bal oldali menüben válassza a **Minden szolgáltatás** elemet.
 
 1. Válassza a **Tárfiókok** lehetőséget.
 
-1. A **Tárfiókok** lapon válassza ki annak a tárfióknak nevét, amelyben a Terraform fogja tárolni az állapotot. Használhatja például azt a tárfiókot is, amely a Cloud Shell első megnyitásakor jött létre.  A Cloud Shell által létrehozott tárfiók neve általában `cs` értékkel kezdődik, amelyet számok és betűk véletlenszerű sorozata követ. Jegyezze fel a kiválasztott Storage-fiókot. Ez az érték később szükséges.
+1. A **Tárfiókok** lapon válassza ki annak a tárfióknak nevét, amelyben a Terraform fogja tárolni az állapotot. Használhatja például azt a tárfiókot is, amely a Cloud Shell első megnyitásakor jött létre.  A Cloud Shell által létrehozott tárfiók neve általában `cs` értékkel kezdődik, amelyet számok és betűk véletlenszerű sorozata követ. Vegye figyelembe a kiválasztott tárfiókot. Erre az értékre később van szükség.
 
 1. A tárfiók lapon válassza a **Hozzáférési kulcsok** lehetőséget.
 
     ![Tárfiók menüje](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Jegyezze fel a **key1** **kulcs** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
+1. Jegyezze fel a **key1** **key** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
 
     ![Tárfiók hozzáférési kulcsa](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. A Cloud Shell-ban hozzon létre egy tárolót az Azure Storage-fiókban. Cserélje le a helyőrzőket a környezetének megfelelő értékekkel.
+1. A Cloud Shellben hozzon létre egy tárolót az Azure storage-fiókjában. Cserélje le a helyőrzőket a környezetének megfelelő értékekre.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -305,17 +305,17 @@ Ebben a szakaszban a következő feladatokat látja el:
 
 Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előző szakaszokban létrehozott konfigurációs fájlokat meghatározó erőforrások létrehozásához.
 
-1. A Cloud Shell-ben inicializálja a Terraform. Cserélje le a helyőrzőket a környezetének megfelelő értékekkel.
+1. A Cloud Shell alkalmazásban inicializálja a Terraform ot. Cserélje le a helyőrzőket a környezetének megfelelő értékekre.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    A `terraform init` parancs a háttérrendszer és a szolgáltató beépülő modul inicializálásának sikerességét jeleníti meg:
+    A `terraform init` parancs a háttér- és szolgáltatóbeépülő modul inicializálásának sikeresét jeleníti meg:
 
     ![A „terraform init” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. Exportálja az egyszerű szolgáltatásnév hitelesítő adatait. Cserélje le a helyőrzőket az egyszerű szolgáltatásnév megfelelő értékeire.
+1. Exportálja az egyszerű szolgáltatásnév hitelesítő adatait. Cserélje le a helyőrzőket a szolgáltatásnév megfelelő értékeire.
 
     ```bash
     export TF_VAR_client_id=<service-principal-appid>
@@ -332,7 +332,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform plan” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata több percet is igénybe vehet, ami a Cloud Shell munkamenet időtúllépését eredményezi. Ha a Cloud Shell munkamenet időtúllépés miatt meghaladta az időkorlátot, kövesse a "helyreállítás Cloud Shell időtúllépésből" című szakasz lépéseit az oktatóanyag befejezéséhez.
+1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata több percet is igénybe vehet, ami a Cloud Shell munkamenet időtúllépésének csökkenését eredményezi. Ha a Cloud Shell-munkamenet idővel idővel, kövesse a "Helyreállítás a felhőbeli rendszerhéj időmeghosszabbítása" című szakaszban leírt lépéseket, hogy lehetővé tegye az oktatóanyag befejezéséhez.
 
     ```bash
     terraform apply out.plan
@@ -342,13 +342,13 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform apply” eredményeit mutató példa](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. A Azure Portal a bal oldali menüben válassza az **összes erőforrás** lehetőséget az új Kubernetes-fürthöz létrehozott erőforrások megtekintéséhez.
+1. Az Azure Portalon válassza a bal oldali menü **minden erőforrást** az új Kubernetes-fürthöz létrehozott erőforrások megtekintéséhez.
 
-    ![A Azure Portal összes erőforrása](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![Az Azure Portal összes erőforrása](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Helyreállítás a Cloud Shell időtúllépéséből
 
-Ha a Cloud Shell munkamenet időtúllépést tapasztal, hajtsa végre a következő lépéseket a helyreállításhoz:
+Ha a Cloud Shell munkamenet idővel ki, a következő lépéseket a helyreállításhoz:
 
 1. Indítson egy Cloud Shell-munkamenetet.
 
@@ -392,9 +392,9 @@ A Kubernetes-eszközök használhatók az újonnan létrehozott fürt tesztelés
 
 ## <a name="monitor-health-and-logs"></a>Állapot és naplók monitorozása
 
-Az AKS-fürt létrejöttekor a monitorozás is engedélyezve lett, hogy rögzítse a fürtcsomópontok és a podok állapotmetrikáit. Ezek az állapotmetrikák elérhetők az Azure Portalon. A tároló állapotának figyelésével kapcsolatos további információkért lásd: az [Azure Kubernetes szolgáltatás állapotának figyelése](/azure/azure-monitor/insights/container-insights-overview).
+Az AKS-fürt létrejöttekor a monitorozás is engedélyezve lett, hogy rögzítse a fürtcsomópontok és a podok állapotmetrikáit. Ezek az állapotmetrikák elérhetők az Azure Portalon. A tároló állapotának monitorozásával kapcsolatos további információ [az Azure Kubernetes Service állapotmonitorozásáról](/azure/azure-monitor/insights/container-insights-overview) szóló témakörben érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [További információ a Terraform Azure-beli használatáról](/azure/terraform)
+> [További információ a Terraform azure-beli használatáról](/azure/terraform)

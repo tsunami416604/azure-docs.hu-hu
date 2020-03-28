@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Szervezeti diagram most az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a szervezeti diagram most között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a OrgChart Now-val | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az OrgChart Now között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,226 +16,226 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095434"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Oktatóanyag: Szervezeti diagram most az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Oktatóanyag: Az Azure Active Directory integrációja a Szervezeti diagrammal
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a szervezeti diagram most az Azure Active Directory (Azure AD).
-Szervezeti diagram most integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a OrgChart Now-t az Azure Active Directoryval (Azure AD).
+A OrgChart Now integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá a szervezeti diagram most az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett a szervezeti diagram most (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja az Azure AD-ben, hogy ki férhet hozzá a OrgChart Now-hoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek a OrgChart Now (Single Sign-On) alkalmazásba az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szervezeti diagram most az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához a Szervezeti diagram most, szüksége van a következő elemeket:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Szervezeti diagram most az egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* OrgChart Most egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Szervezeti diagram mostantól támogatja a **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Az OrgChart Now támogatja az **SP** és **az IDP** által kezdeményezett SSO-t
 
-## <a name="adding-orgchart-now-from-the-gallery"></a>Szervezeti diagram most hozzáadása a katalógusból
+## <a name="adding-orgchart-now-from-the-gallery"></a>OrgChart hozzáadása most a galériából
 
-Az Azure AD-be a szervezeti diagram most az integráció konfigurálásához hozzá kell szervezeti diagram most a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Szervezeti diagram most azure AD-be való integrációjának konfigurálásához hozzá kell adnia a Galéria ból a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Szervezeti diagram most hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha most szeretné hozzáadni a Szervezeti diagramot a galériából, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **szervezeti diagram most**, jelölje be **szervezeti diagram most** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be az **OrgChart Now**kifejezést , válassza az **Eredménypanel En diagramja** lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Szervezeti diagram most az eredmények listájában](common/search-new-app.png)
+     ![OrgChart Most az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban konfigurálja, és a szervezeti diagram most az Azure AD egyszeri bejelentkezés tesztelése alapján nevű tesztfelhasználó **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó szervezeti diagram most hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a OrgChart Now segítségével egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó a Szervezeti diagram most létre kell hozni a kapcsolatot.
 
-Az Azure AD egyszeri bejelentkezés a szervezeti diagram most tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Szervezeti diagram most egyszeri bejelentkezés konfigurálása](#configure-orgchart-now-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Szervezeti diagram most tesztfelhasználó létrehozása](#create-orgchart-now-test-user)**  - a-megfelelője a Britta Simon rendelkezik, amely kapcsolódik az Azure AD felhasználói ábrázolása szervezeti diagram most.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a OrgChart Now Single Sign-On --t](#configure-orgchart-now-single-sign-on)** az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre OrgChart Now teszt felhasználó](#create-orgchart-now-test-user)** - hogy egy megfelelője Britta Simon orgchart most, hogy kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szervezeti diagram most az Azure AD egyszeri bejelentkezés konfigurálása, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a Szervezeti diagram most, hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **szervezeti diagram most** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **OrgChart Now** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban Ha az alkalmazást **IDP** által kezdeményezett módban kívánja konfigurálni, hajtsa végre a következő lépést:
 
-    ![Szervezeti diagram most tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-identifier.png)
+    ![OrgChart Now Domain és URL-címek egyszeri bejelentkezési információi](common/idp-identifier.png)
 
-    Az a **azonosító** szövegmezőbe írja be egy URL-címe:  `https://sso2.orgchartnow.com`
+    Az **Azonosító** mezőbe írjon be egy URL-címet:`https://sso2.orgchartnow.com`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
     ![image](common/both-preintegrated-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>` van a **az Azure AD-azonosító** átmásolta a **állítsa be a szervezeti diagram most** szakaszban, az oktatóanyag egy későbbi része ismerteti.
+    > `<YourEntityID>`az **Azure AD-azonosító** a **Szervezeti diagram beállítása most** szakaszból másolva, amelyet később ismertetünk az oktatóanyagban.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. Az a **állítsa be a szervezeti diagram most** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. A **Szervezeti diagram beállítása most** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-orgchart-now-single-sign-on"></a>Szervezeti diagram most egyszeri bejelentkezés konfigurálása
+### <a name="configure-orgchart-now-single-sign-on"></a>A Szervezeti diagram konfigurálása egyszeri bejelentkezés
 
-Az egyszeri bejelentkezés konfigurálása **szervezeti diagram most** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [szervezeti diagram most támogatási csoport ](mailto:ocnsupport@officeworksoftware.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálásához a **OrgChart Now** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról az [OrgChart Now támogatási csapatának.](mailto:ocnsupport@officeworksoftware.com) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőtípusban**brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával a szervezeti diagram most az Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a OrgChart Now-hoz.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **szervezeti diagram most**.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd a **OrgChart Now**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **szervezeti diagram most**.
+2. Az alkalmazások listájában válassza az **OrgChart Now lehetőséget.**
 
-    ![Az alkalmazások listáját a szervezeti diagram most hivatkozásra](common/all-applications.png)
+    ![A Szervezeti diagram most hivatkozása az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-orgchart-now-test-user"></a>Szervezeti diagram most tesztfelhasználó létrehozása
+### <a name="create-orgchart-now-test-user"></a>Szervezeti diagram létrehozása most tesztfelhasználó
 
-Ahhoz, hogy jelentkezzen be szervezeti diagram most az Azure AD-felhasználók, akkor ki kell építeni szervezeti diagram most be. 
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Szervezeti diagram most, ki kell építeni a OrgChart Now. 
 
-1. Szervezeti diagram most támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Új felhasználó próbál hozzáférni a szervezeti diagram most, ha még nem létezik jön létre. A just-in-time-felhasználó kiépítési szolgáltatás csak létrehoz egy **csak olvasható** egy egyszeri bejelentkezési kérelem érkezik egy felismert identitásszolgáltató és az e-mailt az SAML-előfeltétel a felhasználók listájában nem található felhasználó. Az Automatikus kiépítés funkció egy nevű-hozzáférési csoport létrehozására szeretne **általános** szervezeti diagram most. Kérjük, kövesse az alábbi lépéseket egy hozzáférési csoport létrehozására:
+1. Az OrgChart Now támogatja a just-in-time kiépítést, amely alapértelmezés szerint engedélyezve van. Új felhasználó jön létre a Szervezeti diagram most elérésére tett kísérlet során, ha még nem létezik. A just-in-time felhasználói kiépítési szolgáltatás csak akkor hoz létre **csak olvasható** felhasználót, ha egy egyszeri bejelentkezési kérelem egy elismert IDP-ből érkezik, és az SAML-alapcímben szereplő e-mail nem található meg a felhasználói listában. Ehhez az automatikus kiépítési funkcióhoz létre kell hoznia egy **Általános** nevű hozzáférési csoportot a Szervezeti diagram most. Hozzáférési csoport létrehozásához kövesse az alábbi lépéseket:
 
-    a. Nyissa meg a **csoportok kezelése** kattintás után a beállítást a **fogaskerék** a felhasználói felület jobb felső sarkában található.
+    a. Lépjen a **Csoportok kezelése** lehetőségre, miután a felhasználói felület jobb felső sarkában lévő **fogaskerékre** kattintott.
 
-    ![Szervezeti diagram most csoportok](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
+    ![OrgChart Most csoportok](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. Válassza ki a **Hozzáadás** ikon és a csoport nevét **általános** kattintson **OK**. 
+    b. Jelölje ki a **Hozzáadás** ikont, és nevezze el az **Általános** csoportot, majd kattintson az **OK**gombra. 
 
-    ![Szervezeti diagram most hozzáadása](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
+    ![OrgChart Most hozzá](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
-    c. Válassza ki az általános vagy csak olvasható felhasználók érhetik el kívánja a mappák:
+    c. Jelölje ki azokat a mappákat, amelyekhez az általános vagy csak olvasható felhasználóknak hozzá kell férniük:
 
-    ![Szervezeti diagram most mappák](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
+    ![OrgChart Most mappák](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **Zárolási** mappákat úgy, hogy csak a rendszergazda felhasználók módosíthatja őket. Nyomja le az **OK**.
+    d. **Zárolja** a mappákat, hogy csak a rendszergazdai felhasználók módosíthassák azokat. Ezután nyomja **le az OK gombot.**
 
-    ![Szervezeti diagram zárolják](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
+    ![OrgChart most zár](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. Hozhat létre **rendszergazdai** felhasználók és **olvasási/írási** felhasználók, manuálisan kell létrehoznia a felhasználó annak érdekében, hogy az egyszeri bejelentkezés használatával a jogosultsági szint eléréséhez. Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:
+2. Rendszergazdai és **olvasási/írási** felhasználók létrehozásához manuálisan kell létrehoznia egy felhasználót, hogy az SSO-n keresztül hozzáférhessen a jogosultsági szintjükhöz. **Admin** Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:
 
-    a. Szervezeti diagram most egy biztonsági-rendszergazdaként jelentkezzen be.
+    a. Jelentkezzen be a Szervezeti diagram most biztonsági rendszergazdaként.
 
-    b.  Kattintson a **beállítások** jobb felső sarokban, majd lépjen **felhasználók kezelése**.
+    b.  Kattintson a **Beállítások** gombra a jobb felső sarokban, majd keresse meg a **Felhasználók kezelése lapot.**
 
-    ![Szervezeti diagram most beállításai](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
+    ![OrgChart Most beállítások](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
-    c. Kattintson a **Hozzáadás** , és hajtsa végre az alábbi lépéseket:
+    c. Kattintson a **Hozzáadás gombra,** és hajtsa végre a következő lépéseket:
 
-    ![Szervezeti diagram most kezelése](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
+    ![OrgChart most kezelése](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * Az a **felhasználói azonosító** szövegmezőbe írja be például a felhasználói azonosító **brittasimon\@contoso.com**.
+    * A **Felhasználói azonosító** mezőbe írja be a felhasználói **azonosítót, mint a\@brittasimon contoso.com**.
 
-    * A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
+    * Az **E-mail cím** mezőbe írja be a felhasználó e-mail címét, például **\@brittasimon contoso.com**.
 
-    * Kattintson a **Hozzáadás**lehetőségre.
+    * Kattintson a **Hozzáadás** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a szervezeti diagram most csempére kattint, akkor kell automatikusan megtörténik a terjed, a szervezeti diagram, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelEn a Szervezeti diagram most csempére kattint, automatikusan be kell jelentkeznie arra a Szervezeti diagramba, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

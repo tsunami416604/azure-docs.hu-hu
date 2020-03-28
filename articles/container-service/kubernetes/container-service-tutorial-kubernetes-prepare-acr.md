@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service oktatóanyag – az ACR előkészítése
+title: (ELAVULT) Azure Container Service oktatóanyag – ACR előkészítése
 description: Azure Container Service-oktatóanyag – Az ACR előkészítése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78399784"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>ELAVULT Azure Container Registry üzembe helyezése és használata
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(ELAVULT) Az Azure Container Registry telepítése és használata
 
 > [!TIP]
-> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziója: [oktatóanyag: Azure Container Registry üzembe helyezése és használata](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Az Azure Kubernetes-szolgáltatást használó oktatóanyag frissített verziójáról az [Oktatóanyag: Az Azure Container Registry telepítése és használata](../../aks/tutorial-kubernetes-prepare-acr.md)című témakörben található.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -155,7 +155,7 @@ v1
 
 Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Kubernetes-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban előkészítettünk egy Azure Container Registry tárolóregisztrációs adatbázist az ACS Kubernetes-fürtben való használatra. A következő lépéseket hajtotta végre:
 

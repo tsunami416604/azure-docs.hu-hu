@@ -1,27 +1,27 @@
 ---
 title: Egyéni szolgáltató létrehozása és használata
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat egy egyéni Azure-szolgáltatót. Egyéni szolgáltatók használata az Azure-beli munkafolyamatok módosításához.
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat azure-beli egyéni szolgáltatót. Egyéni szolgáltatók használatával módosíthatja a munkafolyamatokat az Azure-ban.
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650029"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Egyéni szolgáltató létrehozása és használata
 
-Az egyéni szolgáltató az Azure és a végpont közötti szerződés. Az egyéni szolgáltatók használatával megváltoztathatja az Azure-beli munkafolyamatokat. Ez az oktatóanyag az egyéni szolgáltató létrehozásának folyamatát mutatja be. Ha nem ismeri az egyéni Azure-szolgáltatókat, tekintse meg [Az Azure-beli egyéni erőforrás-szolgáltatók áttekintését](overview.md).
+Az egyéni szolgáltató az Azure és a végpont közötti szerződés. Az egyéni szolgáltatókkal módosíthatja a munkafolyamatokat az Azure-ban. Ez az oktatóanyag az egyéni szolgáltató létrehozásának folyamatát mutatja be. Ha nem ismeri az Azure egyéni szolgáltatókat, tekintse [meg az Azure egyéni erőforrás-szolgáltatók áttekintését.](overview.md)
 
 ## <a name="create-a-custom-provider"></a>Egyéni szolgáltató létrehozása
 
 > [!NOTE]
-> Ez az oktatóanyag nem mutatja be a végpontok létrehozási módját. Ha nem rendelkezik REST-végponttal, kövesse az [oktatóanyagot a REST-végpontok létrehozásához](./tutorial-custom-providers-function-authoring.md), amely az aktuális oktatóanyag alapja.
+> Ez az oktatóanyag nem mutatja meg, hogyan kell végpontot szerző. Ha nem rendelkezik RESTFUL-végpont, kövesse az [oktatóanyag-ból authoring RESTful végpontok](./tutorial-custom-providers-function-authoring.md), amely az alapja az aktuális oktatóanyag.
 
-A végpont létrehozása után létrehozhat egy egyéni szolgáltatót a szolgáltató és a végpont közötti szerződések létrehozásához. Egyéni szolgáltató esetén megadhatja a végpont-definíciók listáját:
+Miután létrehozott egy végpontot, létrehozhat egy egyéni szolgáltatót, amely létrehoz egy szerződést a szolgáltató és a végpont között. Egyéni szolgáltatóval megadhatja a végpontdefiníciók listáját:
 
 ```JSON
 {
@@ -31,17 +31,17 @@ A végpont létrehozása után létrehozhat egy egyéni szolgáltatót a szolgá
 }
 ```
 
-Tulajdonság | Szükséges | Leírás
+Tulajdonság | Kötelező | Leírás
 ---|---|---
-**név** | Igen | A végpont definíciójának neve. Az Azure a/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders alatti API-n keresztül teszi elérhetővé a nevet<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
-**routingType** | Nem | A végponti szerződés típusa Ha az érték nincs megadva, a rendszer alapértelmezés szerint a "proxy" értéket adja meg.
-**végpont** | Igen | A végpont, amelybe a kérelmeket át kell irányítani. Ez a végpont kezeli a kérés válaszát, illetve a kérelem mellékhatásait.
+**név** | Igen | A végpontdefiníció neve. Az Azure ezt a nevet az API-n keresztül teszi elérhetővé a /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders alatt.<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
+**routingType típus** | Nem | A végpontszerződés típusa. Ha az érték nincs megadva, akkor alapértelmezés szerint "Proxy".
+**endpoint** | Igen | A végpont, amelyhez a kérelmeket továbbítani szeretné. Ez a végpont kezeli a választ, és a kérelem esetleges mellékhatásai.
 
-A **végpont** értéke az Azure Function alkalmazás triggerének URL-címe. A `<yourapp>`, `<funcname>`és `<functionkey>` helyőrzőket a létrehozott Function alkalmazás értékeivel kell helyettesíteni.
+A **végpont** értéke az Azure függvényalkalmazás eseményindító URL-címe. A `<yourapp>` `<funcname>`, `<functionkey>` és helyőrzők kell cserélni értékeket a létrehozott függvényalkalmazás.
 
 ## <a name="define-custom-actions-and-resources"></a>Egyéni műveletek és erőforrások definiálása
 
-Az egyéni szolgáltató a **műveletek** és a **resourceTypes** tulajdonságai között modellezett végpont-definíciók listáját tartalmazza. A **műveletek** tulajdonság az egyéni szolgáltató által elérhetővé tett egyéni műveletekre mutat, a **resourceTypes** tulajdonság pedig az egyéni erőforrások. Ebben az oktatóanyagban az egyéni szolgáltató egy `myCustomAction` nevű **Actions** tulajdonságot és egy `myCustomResources`nevű **resourceTypes** tulajdonságot tartalmaz.
+Az egyéni szolgáltató a **műveletek** és a **resourceTypes** tulajdonságok alatt modellezett végpontdefiníciók listáját tartalmazza. A **actions** tulajdonság leképezi az egyéni szolgáltatók által elérhetővé tett egyéni műveleteket, és a **resourceTypes** tulajdonság az egyéni erőforrások. Ebben az oktatóanyagban az egyéni `myCustomAction` szolgáltató rendelkezik egy `myCustomResources` **nevű művelettulajdonsággal** és egy **resourceTypes** tulajdonsággal.
 
 ```JSON
 {
@@ -65,12 +65,12 @@ Az egyéni szolgáltató a **műveletek** és a **resourceTypes** tulajdonságai
 }
 ```
 
-## <a name="deploy-the-custom-provider"></a>Az egyéni szolgáltató üzembe helyezése
+## <a name="deploy-the-custom-provider"></a>Az egyéni szolgáltató telepítése
 
 > [!NOTE]
-> A **végpontok** értékeit az előző oktatóanyagban létrehozott Function alkalmazás trigger URL-címével kell helyettesíteni.
+> A **végpontértékeket** le kell cserélnie az előző oktatóanyagban létrehozott függvényalkalmazás eseményindító URL-címére.
 
-Az előző egyéni szolgáltatót Azure Resource Manager sablonnal is telepítheti:
+Az előző egyéni szolgáltatót egy Azure Resource Manager-sablon használatával telepítheti:
 
 ```JSON
 {
@@ -105,14 +105,14 @@ Az előző egyéni szolgáltatót Azure Resource Manager sablonnal is telepíthe
 
 ## <a name="use-custom-actions-and-resources"></a>Egyéni műveletek és erőforrások használata
 
-Miután létrehozta az egyéni szolgáltatót, használhatja az új Azure API-kat. A következő lapok bemutatják, hogyan hívhat meg és használhat egyéni szolgáltatót.
+Miután létrehozott egy egyéni szolgáltatót, használhatja az új Azure API-kat. A következő lapok bemutatják, hogyan hívhat fel és használhat egyéni szolgáltatót.
 
 ### <a name="custom-actions"></a>Egyéni műveletek
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> A `{subscriptionId}` és `{resourceGroupName}` helyőrzőket le kell cserélnie az előfizetéssel és az erőforrás-csoporttal, ahol az egyéni szolgáltatót telepítette.
+> Le kell `{subscriptionId}` cserélnie a és `{resourceGroupName}` a helyőrzőket annak az előfizetésnek és erőforráscsoportnak az előfizetésére és erőforráscsoportjára, ahol az egyéni szolgáltatót telepítette.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -123,13 +123,13 @@ az resource invoke-action --action myCustomAction \
                             }'
 ```
 
-Paraméter | Szükséges | Leírás
+Paraméter | Kötelező | Leírás
 ---|---|---
-*művelet* | Igen | Az egyéni szolgáltatóban definiált művelet neve
-*azonosítók* | Igen | Az egyéni szolgáltató erőforrás-azonosítója
-*kérelem – törzs* | Nem | A végpontnak küldendő kérelem törzse
+*Akció* | Igen | Az egyéni szolgáltatóban definiált művelet neve
+*Azonosítók* | Igen | Az egyéni szolgáltató erőforrásazonosítója
+*megkereső szerv* | Nem | A végpontra küldendő kérelemtörzs
 
-# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+# <a name="template"></a>[Sablon](#tab/template)
 
 Nincs.
 
@@ -137,10 +137,10 @@ Nincs.
 
 ### <a name="custom-resources"></a>Egyéni erőforrások
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> A `{subscriptionId}` és `{resourceGroupName}` helyőrzőket le kell cserélnie az előfizetéssel és az erőforrás-csoporttal, ahol az egyéni szolgáltatót telepítette.
+> Le kell `{subscriptionId}` cserélnie a és `{resourceGroupName}` a helyőrzőket annak az előfizetésnek és erőforráscsoportnak az előfizetésére és erőforráscsoportjára, ahol az egyéni szolgáltatót telepítette.
 
 #### <a name="create-a-custom-resource"></a>Egyéni erőforrás létrehozása
 
@@ -156,11 +156,11 @@ az resource create --is-full-object \
                     }'
 ```
 
-Paraméter | Szükséges | Leírás
+Paraméter | Kötelező | Leírás
 ---|---|---
-*teljes objektum* | Igen | Azt jelzi, hogy a tulajdonságok objektum tartalmaz-e más beállításokat, például a helyet, a címkéket, az SKU-t vagy a csomagot.
-*id* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
-*Tulajdonságok* | Igen | A végpontnak küldendő kérelem törzse.
+*teljes objektum* | Igen | Azt jelzi, hogy a tulajdonságobjektum tartalmaz-e más beállításokat, például a helyet, a címkéket, a termékváltozatokat vagy a tervet.
+*id* | Igen | Az egyéni erőforrás erőforrásazonosítója. Ez az azonosító az egyéni szolgáltatói erőforrás-azonosító kiterjesztése.
+*Tulajdonságok* | Igen | A végpontra küldendő kérelemtörzs.
 
 #### <a name="delete-a-custom-resource"></a>Egyéni erőforrás törlése
 
@@ -168,23 +168,23 @@ Paraméter | Szükséges | Leírás
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Paraméter | Szükséges | Leírás
+Paraméter | Kötelező | Leírás
 ---|---|---
-*id* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
+*id* | Igen | Az egyéni erőforrás erőforrásazonosítója. Ez az azonosító az egyéni szolgáltatói erőforrás-azonosító kiterjesztése.
 
-#### <a name="retrieve-a-custom-resource"></a>Egyéni erőforrás lekérése
+#### <a name="retrieve-a-custom-resource"></a>Egyéni erőforrás beolvasása
 
 ```azurecli-interactive
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Paraméter | Szükséges | Leírás
+Paraméter | Kötelező | Leírás
 ---|---|---
-*id* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
+*id* | Igen | Az egyéni erőforrás erőforrásazonosítója. Ez az azonosító az egyéni szolgáltatói erőforrás-azonosító kiterjesztése.
 
-# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+# <a name="template"></a>[Sablon](#tab/template)
 
-Példa Resource Manager-sablonra:
+Minta erőforrás-kezelő sablon:
 
 ```JSON
 {
@@ -204,20 +204,20 @@ Példa Resource Manager-sablonra:
 }
 ```
 
-Paraméter | Szükséges | Leírás
+Paraméter | Kötelező | Leírás
 ---|---|---
-*resourceTypeName* | Igen | Az egyéni szolgáltatóban definiált **resourceTypes** tulajdonság `name` értéke.
-*resourceProviderName* | Igen | Az egyéni szolgáltató példányának neve.
+*resourceTypeName* | Igen | Az `name` egyéni szolgáltatóban definiált **resourceTypes** tulajdonság értéke.
+*resourceProviderName* | Igen | Az egyéni szolgáltatópéldány neve.
 *customResourceName* | Igen | Az egyéni erőforrás neve.
 
 ---
 
 > [!NOTE]
-> Az egyéni szolgáltató üzembe helyezésének és használatának befejezése után ne felejtse el törölni az összes létrehozott erőforrást, beleértve az Azure Function alkalmazást is.
+> Miután befejezte az egyéni szolgáltató üzembe helyezését és használatát, ne felejtse el megtisztítani az összes létrehozott erőforrást, beleértve az Azure függvényalkalmazást is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta az egyéni szolgáltatókat. További információ eléréséhez lásd:
+Ebben a cikkben az egyéni szolgáltatókról szerzett tudomást. További információkért lásd:
 
-- [Útmutató: egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
-- [Útmutató: egyéni erőforrások hozzáadása az Azure REST APIhoz](./custom-providers-resources-endpoint-how-to.md)
+- [Útmutató: Egyéni műveletek hozzáadása az Azure REST API-hoz](./custom-providers-action-endpoint-how-to.md)
+- [Útmutató: Egyéni erőforrások hozzáadása az Azure REST API-hoz](./custom-providers-resources-endpoint-how-to.md)

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – eszközök kiépítése elosztott terhelésű hubok között az Azure IoT Hub Device Provisioning Service
-description: Ez az oktatóanyag azt mutatja be, hogy a Device kiépítési szolgáltatás (DPS) hogyan teszi lehetővé az eszközök automatikus kiépítés a terheléselosztásos IoT-hubok között az Azure Portalon
+title: Oktatóanyag – Eszközök kiépítése terheléselosztásos elosztók között az Azure IoT Hub-eszközkiépítési szolgáltatás használatával
+description: Ez az oktatóanyag bemutatja, hogy az Eszközkiépítési szolgáltatás (DPS) hogyan teszi lehetővé az automatikus eszközkiépítést az Azure Portal terheléselosztásos IoT-központjai között
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976740"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: Eszközök kiépítése a terheléselosztásos IoT-központok között
 
 Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több elosztott terhelésű IoT hubhoz a Device Provisioning Service használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -25,7 +25,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több
 > * A Device Provisioning Service kiosztási szabályzatának beállítása **egyenletes eloszláshoz**
 > * Az új IoT hub csatolása a Device Provisioning Service-hez
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ Kövesse az alábbi lépéseket a kiosztási szabályzat beállításához:
 
 1. A kiosztási szabályzat beállításához kattintson a **Kiosztási szabályzat kezelése** lehetőségre a Device Provisioning Service lapján.
 2. Állítsa a kiosztási szabályzatot **Egyenletesen súlyozott elosztás** értékre.
-3. Kattintson a **Save** (Mentés) gombra.
+3. Kattintson a **Mentés** gombra.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Az új IoT hub csatolása a Device Provisioning Service-hez
 
@@ -63,11 +63,11 @@ Kapcsolja össze a Device Provisioning Service-t és az IoT hubot, hogy a Device
 
 1. Az **Összes erőforrás** lapon kattintson a korábban létrehozott Device Provisioning Service szolgáltatásra.
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás** gombra.
 4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

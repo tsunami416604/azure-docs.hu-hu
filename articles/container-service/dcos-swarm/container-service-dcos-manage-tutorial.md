@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service oktatóanyag – DC/OS kezelése
+title: (ELAVULT) Az Azure Container Service oktatóanyaga – DC/operációs rendszer kezelése
 description: Azure Container Service-oktatóanyag – A DC/OS kezelése
 author: iainfoulds
 ms.service: container-service
@@ -8,17 +8,17 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402809"
 ---
-# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>ELAVULT Azure Container Service oktatóanyag – DC/OS kezelése
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(ELAVULT) Az Azure Container Service oktatóanyaga – DC/operációs rendszer kezelése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató részletesen ismerteti a DC/OS-fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alapszintű lépéseket.
+A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató részletezi a DC/OS fürt központi telepítéséhez és az alapvető számítási feladatok futtatásához szükséges alapvető lépéseket.
 
 > [!div class="checklist"]
 > * ACS DC/OS fürt létrehozása
@@ -30,7 +30,7 @@ A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások fu
 > * Alapszintű DC/OS-kezelés
 > * A DC/OS fürt törlése
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
 
 ## <a name="create-dcos-cluster"></a>DC/OS-fürt létrehozása
 
@@ -260,7 +260,7 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-dele
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a DC/OS alapvető kezelési feladataival ismerkedtünk meg: 
 

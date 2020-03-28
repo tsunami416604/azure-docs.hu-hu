@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75927750"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
@@ -20,34 +20,34 @@ A Service Bus-üzenetküldési entitások Azure-ban való használatának megkez
 
 Névtér létrehozása:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-2. A portál bal oldali navigációs paneljén válassza az **+ erőforrás létrehozása**lehetőséget, válassza az **integráció**lehetőséget, majd válassza a **Service Bus**lehetőséget.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com)
+2. A portál bal oldali navigációs ablakában válassza a **+ Erőforrás létrehozása**lehetőséget, válassza az **Integráció**lehetőséget, majd a **Service Bus**lehetőséget.
 
-    ![Hozzon létre egy erőforrás-> integráció-> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
-3. A **névtér létrehozása** párbeszédpanelen hajtsa végre a következő lépéseket: 
-    1. Adja meg **a névtér nevét**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e. A névterek elnevezésére vonatkozó szabályok listáját lásd: [névtér létrehozása REST API](/rest/api/servicebus/create-namespace).
-    2. Válassza ki a névtérhez tartozó díjszabási szintet (alapszintű, standard vagy prémium). Ha [témaköröket és előfizetéseket](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)szeretne használni, válassza a standard vagy a prémium lehetőséget. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
-    3. Ha a **prémium** szintű díjszabást választotta, kövesse az alábbi lépéseket: 
-        1. Az **üzenetkezelési egységek**számának meghatározása. A prémium szint erőforrás-elkülönítést biztosít a processzor és a memória szintjén, így az egyes számítási feladatok elkülönítésben futnak. Ezt az erőforrás-tárolót üzenetkezelő egységnek nevezzük. A prémium szintű névterek legalább egy üzenetkezelő egységgel rendelkeznek. Az egyes Service Bus prémium szintű névterekhez 1, 2 vagy 4 üzenetkezelési egység is kiválasztható. További információ: [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).
-        2. Itt adhatja meg, hogy redundánsan kívánja-e a névtér **zónáját**. A zóna-redundancia nagyobb rendelkezésre állást biztosít azáltal, hogy a replikákat az egyik régióban lévő rendelkezésre állási zónák között terjeszti fel, külön díj nélkül. További információ: [rendelkezésre állási zónák az Azure-ban](../articles/availability-zones/az-overview.md).
-    4. Az **előfizetés**mezőben válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni a névteret.
-    5. Az **erőforráscsoport**mezőben válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér él, vagy hozzon létre egy újat.      
-    6. A **hely**mezőben válassza ki azt a régiót, amelyben a névteret üzemeltetni szeretné.
+    ![Erőforrás létrehozása -> Integráció -> Szolgáltatásbusz](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
+3. A **Névtér létrehozása** párbeszédpanelen tegye a következő lépéseket: 
+    1. Adja meg **a névtér nevét.** A rendszer azonnal ellenőrzi, hogy a név elérhető-e. A névterek elnevezésére vonatkozó szabályok listáját a [Névtér REST API létrehozása című témakörben tetszetős.](/rest/api/servicebus/create-namespace)
+    2. Válassza ki a névtér tarifacsomag (alapszintű, standard vagy prémium). Ha [témaköröket és előfizetéseket](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)szeretne használni, válassza a Standard vagy a Premium lehetőséget. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
+    3. Ha a **prémium díjszabási** szintet választotta, kövesse az alábbi lépéseket: 
+        1. Adja meg az **üzenetegységek**számát. A prémium szint biztosítja az erőforrások elkülönítését a processzor és a memória szintjén, így minden számítási feladatok elszigetelten futnak. Ennek az erőforrás-tárolónak a neve üzenetkezelési egység. A prémium szintű névtér rendelkezik legalább egy üzenetkezelő egység. Minden Service Bus Premium-névtérhez 1, 2 vagy 4 üzenetküldési egységet választhat. További információ: [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        2. Adja meg, hogy **redundánssá**kívánja-e tenni a névtérzónát. A zónaredundancia fokozott rendelkezésre állást biztosít azáltal, hogy a replikákat egy régión belül egy régión belül, további költségek nélkül szétosztja a rendelkezésre állási zónák között. További információt az [Azure rendelkezésre állási zónái című témakörben talál.](../articles/availability-zones/az-overview.md)
+    4. **Előfizetés esetén**válasszon egy Azure-előfizetést, amelyben létre szeretné hozni a névteret.
+    5. Az **Erőforráscsoport csoport**ban válasszon egy meglévő erőforráscsoportot, amelyben a névtér fog élni, vagy hozzon létre egy újat.      
+    6. A **Hely területen**válassza ki azt a régiót, ahol a névteret üzemeltetni kell.
     7. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
    
         ![Névtér létrehozása](./media/service-bus-create-namespace-portal/create-namespace.png)
-4. Győződjön meg arról, hogy a Service Bus-névtér üzembe helyezése sikeresen megtörtént. Az értesítések megtekintéséhez válassza a **harang ikont (riasztások)** az eszköztáron. Válassza ki az **erőforráscsoport nevét** az értesítésben a képen látható módon. Megjelenik a Service Bus-névteret tartalmazó erőforráscsoport.
+4. Ellenőrizze, hogy a szolgáltatásbusz névtere sikeresen telepítve van-e. Az értesítések megtekintéséhez jelölje ki a **csengő ikont (Riasztások)** az eszköztáron. Válassza ki **az erőforráscsoport nevét** az értesítésben a képen látható módon. Megjelenik a szolgáltatásbusz névtere tartalmazó erőforráscsoport.
 
-    ![Üzembe helyezési riasztás](./media/service-bus-create-namespace-portal/deployment-alert.png)
-5. Az erőforráscsoport **erőforráscsoport** lapján válassza ki a **Service Bus-névteret**. 
+    ![Telepítési riasztás](./media/service-bus-create-namespace-portal/deployment-alert.png)
+5. Az erőforráscsoport **Erőforráscsoport** lapján válassza ki a **szolgáltatásbusz névterét.** 
 
-    ![Erőforráscsoport lap – a Service Bus-névtér kiválasztása](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
-6. Megjelenik a Service Bus-névtér kezdőlapja. 
+    ![Erőforráscsoport lap – válassza ki a szolgáltatásbusz névterét](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
+6. A szolgáltatásbusz névterének kezdőlapja látható. 
 
-    ![A Service Bus-névtér kezdőlapja](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
+    ![A szolgáltatásbusz névteréhez való kezdőlap](./media/service-bus-create-namespace-portal/service-bus-namespace-home-page.png)
 
 ## <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése 
-Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. Tekintse meg a [Service Bus hitelesítés és engedélyezés](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) című témakört, amely arról nyújt tájékoztatást, hogyan hozhatók létre szabályok több korlátozott jogokkal a normál küldők és a fogadók számára. A névtér elsődleges és másodlagos kulcsainak másolásához kövesse az alábbi lépéseket: 
+Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. A [Service Bus hitelesítése és engedélyezése](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) című témakörben talál tájékoztatást arendszeres feladók és fogadók korlátozottabb jogosultságokkal rendelkező szabályailétrehozásáról. A névtér elsődleges és másodlagos kulcsainak másolásához hajtsa végre az alábbi lépéseket: 
 
 1. Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
 2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.

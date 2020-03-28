@@ -4,47 +4,47 @@ description: Ismerje meg, hogyan használható a Terratest a Terraform-modulok t
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 687a793af2b9b75efe463b042d121c32f18974d6
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79370797"
 ---
 # <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Oktatóanyag: Terraform-modulok tesztelése az Azure-ban a Terratest használatával
 
 > [!NOTE]
-> A cikkben szereplő mintakód nem működik a 0,12-es (és újabb) verzióval.
+> A cikkben szereplő mintakód nem működik a 0.12-es (és újabb) verzióval.
 
-Az Azure Terraform-modulokkal újrafelhasználható, készíthető és tesztelhető összetevőket hozhat létre. A Terraform-modulok beágyazást tartalmaznak, amely hasznos lehet az infrastruktúra programkód-folyamatként való megvalósításában.
+Az Azure Terraform-modulok segítségével újrafelhasználható, komponálható és tesztelhető összetevőket hozhat létre. A Terraform modulok olyan beágyazást tartalmaznak, amely hasznos az infrastruktúra kódfolyamatként történő megvalósításában.
 
-Terraform-modulok létrehozásakor fontos a minőségbiztosítás megvalósítása. Sajnos korlátozott dokumentáció érhető el, amelyből megtudhatja, hogyan hozhat létre egység-és integrációs teszteket a Terraform-modulokban. Ez az oktatóanyag bemutatja a tesztelési infrastruktúrát és az ajánlott eljárásokat, amelyeket az [Azure Terraform-modulok](https://registry.terraform.io/browse?provider=azurerm)kiépítésekor elfogadottunk.
+A Terraform modulok létrehozásakor fontos a minőségbiztosítás megvalósítása. Sajnos korlátozott dokumentáció áll rendelkezésre a Terraform modulok egységtesztjeinek és integrációs tesztjeinek szerkesztéséhez. Ez az oktatóanyag bemutatja az [Azure Terraform-modulok](https://registry.terraform.io/browse?provider=azurerm)készítésekekekének során elfogadott tesztelési infrastruktúrát és bevált gyakorlatokat.
 
-Megvizsgáltuk az összes legnépszerűbb tesztelési infrastruktúrát, és úgy döntöttünk, hogy [Terratest](https://github.com/gruntwork-io/terratest) a Terraform-modulok tesztelésére. A Terratest Go könyvtárként van megvalósítva. A Terratest segítő függvények és minták gyűjteményét kínálja a közös infrastruktúra-tesztelési feladatokhoz, például HTTP-kérések készítéséhez és SSH használatával egy adott virtuális géphez való hozzáféréshez. Az alábbi lista ismerteti a Terratest használatának főbb előnyeit:
+Megnéztük a legnépszerűbb tesztelési infrastruktúrákat, és a [Terratest-et](https://github.com/gruntwork-io/terratest) választottuk a Terraform modulok teszteléséhez. A Terratest Go könyvtárként van megvalósítva. Terratest segítő funkciók és minták gyűjteménye a gyakori infrastruktúra tesztelési feladatok, például a HTTP-kérelmek és az SSH használatával egy adott virtuális gép eléréséhez. Az alábbi lista a Terratest használatának néhány fő előnyét ismerteti:
 
-- **Kényelmes segítséget nyújt az infrastruktúra vizsgálatához**. Ez a funkció akkor hasznos, ha a valódi környezetben szeretné ellenőrizni a valós infrastruktúrát.
-- **A mappa szerkezete világosan van rendszerezve**. A tesztelési esetek egyértelműen vannak rendszerezve, és követik a [szabványos Terraform modult](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
-- Az **összes tesztelési eset a Go-ban van írva**. A Terraform használó fejlesztők többsége a go fejlesztői. Ha Ön go-fejlesztő, nem kell megtanulnia egy másik programozási nyelvet a Terratest használatához. Emellett az egyetlen olyan függőség, amely szükséges ahhoz, hogy tesztelési eseteket futtasson a Terratest-ben, a Go és a Terraform.
-- **Az infrastruktúra nagyon bővíthető**. A Terratest felső részén további funkciókat is kiterjesztheti, beleértve az Azure-specifikus funkciókat is.
+- **Kényelmes segítők**számára biztosítja az infrastruktúra ellenőrzését. Ez a funkció akkor hasznos, ha a valódi környezetben szeretné ellenőrizni a valós infrastruktúrát.
+- **A mappastruktúra egyértelműen szervezett**. A tesztesetek világosan vannak rendszerezve, és a [Terraform modul mappastruktúráját követik.](https://www.terraform.io/docs/modules/create.html#standard-module-structure)
+- **Minden teszteset a Go .** A Terraformot használó legtöbb fejlesztő Go-fejlesztő. Ha Go-fejlesztő vagy, nem kell másik programozási nyelvet tanulnod a Terratest használatához. Emellett a Terratest tesztesetei futtatásához csak a Go és a Terraform függőségek szükségesek.
+- **Az infrastruktúra rendkívül bővíthető**. További funkciókat is kiterjeszthet a Terratest en, beleértve az Azure-specifikus funkciókat is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a gyakorlati cikk a platformtól független. Az ebben a cikkben a Windows, Linux vagy MacOS rendszeren használt példákat is futtathatja. 
+Ez a gyakorlati cikk platformfüggetlen. Futtathatja a cikkben windowsos, Linux os vagy MacOS rendszeren használt kódpéldákat. 
 
-A Kezdés előtt telepítse a következő szoftvereket:
+Mielőtt elkezdené, telepítse a következő szoftvert:
 
-- **Go programozási nyelv**: a Terraform-tesztelési esetek a [Go](https://golang.org/dl/)-ban íródnak.
+- **Go programozási nyelv:** Terraform teszt esetekben vannak írva [Go](https://golang.org/dl/).
 - **dep**: [dep](https://github.com/golang/dep#installation) a GO nyelvhez készült függőségkezelő eszköz.
-- **Azure CLI**: az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) egy parancssori eszköz, amely az Azure-erőforrások kezelésére használható. (A Terraform támogatja az Azure-ban való hitelesítést az egyszerű szolgáltatásnév vagy [Az Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)használatával.)
-- **mágus**: a [mágus végrehajtható fájl](https://github.com/magefile/mage/releases) használatával megmutatjuk, hogyan egyszerűsíthető a futó Terratest-esetek futtatása. 
+- **Azure CLI:** Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) egy parancssori eszköz, amellyel kezelheti az Azure-erőforrásokat. (A Terraform támogatja az Azure-ba való hitelesítést egy egyszerű szolgáltatáson keresztül vagy [az Azure CLI-n keresztül.)](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)
+- **mage**: A [mage futtatható,](https://github.com/magefile/mage/releases) hogy mutassa meg, hogyan lehet egyszerűsíteni futó Terratest esetekben. 
 
 ## <a name="create-a-static-webpage-module"></a>Statikus weblap modul létrehozása
 
-Ebben az oktatóanyagban egy Terraform-modult hoz létre, amely egy statikus weblapot tesz elérhetővé azáltal, hogy egyetlen HTML-fájlt tölt fel egy Azure Storage-blobba. Ez a modul lehetővé teszi a felhasználók számára, hogy a modul által visszaadott URL-címen keresztül hozzáférjenek a weboldalhoz.
+Ebben az oktatóanyagban egy Terraform-modult hoz létre, amely egy statikus weblapot biztosít egyetlen HTML-fájl feltöltésével egy Azure Storage-blobba. Ez a modul a felhasználók számára a világ minden tájáról hozzáférést biztosít a weboldalhoz egy URL-en keresztül, amelyet a modul visszaad.
 
 > [!NOTE]
-> Hozza létre az ebben a szakaszban leírt összes fájlt a [GOPATH](https://github.com/golang/go/wiki/SettingGOPATH) helye alatt.
+> Hozza létre az ebben a szakaszban ismertetett összes fájlt a [GOPATH](https://github.com/golang/go/wiki/SettingGOPATH) helye alatt.
 
-Először hozzon létre egy `staticwebpage` nevű új mappát a GoPath `src` mappában. Az oktatóanyag általános mappastruktúrát a következő példában látható. A csillag `(*)` jelölt fájlok az elsődleges hangsúly ebben a szakaszban.
+Először hozzon létre `staticwebpage` egy új `src` mappát a GoPath mappában. Az oktatóanyag teljes mappastruktúrája a következő példában látható. Ebben a szakaszban `(*)` a csillaggal jelölt fájlok az elsődleges fókusz.
 
 ```
  📁 GoPath/src/staticwebpage
@@ -64,7 +64,7 @@ Először hozzon létre egy `staticwebpage` nevű új mappát a GoPath `src` map
    └ 📄 variables.tf (*)
 ```
 
-A statikus weblap modul három bemenetet fogad el. A bemenetek deklarálva vannak `./variables.tf`ban:
+A statikus weblapmodul három bemenetet fogad el. A bemenetek a `./variables.tf`következő helyen vannak bejelentve:
 
 ```hcl
 variable "location" {
@@ -81,7 +81,7 @@ variable "html_path" {
 }
 ```
 
-A cikkben korábban említettek szerint ez a modul a `./outputs.tf`ban deklarált URL-címet is megjeleníti:
+Ahogy korábban említettük a cikkben, ez a modul egy `./outputs.tf`URL-t is kiad, amely a következő ben deklarált:
 
 ```hcl
 output "homepage_url" {
@@ -89,11 +89,11 @@ output "homepage_url" {
 }
 ```
 
-A modul fő logikája négy erőforrást foglal le:
-- **erőforráscsoport**: az erőforráscsoport neve a `-staging-rg`által hozzáfűzött `website_name` bemenet.
-- **Storage-fiók**: a Storage-fiók neve a `data001`által hozzáfűzött `website_name` bemenet. A Storage-fiók nevének korlátozásához a modul eltávolítja az összes speciális karaktert, és kisbetűket használ a teljes Storage-fiók nevében.
-- **rögzített név tároló**: a tároló neve `wwwroot`, és a Storage-fiókban jön létre.
-- **egyetlen HTML-fájl**: a rendszer beolvassa a HTML-fájlt a `html_path` bemenetből, és feltölti `wwwroot/index.html`re.
+A modul fő logikája négy forrást tartalmaz:
+- **erőforráscsoport**: Az erőforráscsoport neve `website_name` a. `-staging-rg`által hozzáfűzött bemenet.
+- **tárfiók**: A tárfiók neve `website_name` a. `data001`által hozzáfűzte a bemenetet. A tárfiók névkorlátainak betartása érdekében a modul eltávolítja az összes speciális karaktert, és kisbetűket használ a tárfiók teljes nevében.
+- **rögzített névtároló:** A `wwwroot` tároló neve, és a tárfiókban jön létre.
+- **egyetlen HTML-fájl:** A HTML-fájlt a program beolvassa a `html_path` bemenetről, és feltölti a rendszerbe. `wwwroot/index.html`
 
 A statikus weblap modul logikát a `./main.tf` valósítja meg:
 
@@ -131,11 +131,11 @@ resource "azurerm_storage_blob" "homepage" {
 
 ### <a name="unit-test"></a>Egységteszt
 
-A Terratest az integrációs tesztekhez készült. Erre a célra a Terratest valós erőforrásokkal rendelkezik valódi környezetekben. Előfordulhat, hogy az integrációs teszt feladatai kivételesen nagy méretűek lehetnek, különösen akkor, ha nagy számú erőforrást kell kiépíteni. Jó példa arra, hogy az előző szakaszban hivatkozott Storage-fiókok nevét konvertálja. 
+A Terratest integrációs tesztekhez készült. Ebből a célból a Terratest valódi erőforrásokat szolgál fel valós környezetben. Néha az integrációs tesztfeladatok kivételesen nagyok lehetnek, különösen akkor, ha nagy számú erőforrást kell kiépítenie. A logika, amely átalakítja a tárfiók nevét, hogy az előző szakaszban egy jó példa. 
 
-Azonban nem igazán szükséges erőforrást kiépíteni. Csak azt szeretnénk, hogy helyesek legyenek az elnevezés átalakítási logikája. A Terratest rugalmasságának köszönhetően az egységes tesztek is használhatók. Az egységes tesztek helyi tesztelési esetekben működnek (bár az internet-hozzáférésre van szükség). Az egység tesztelési esetei `terraform init` és `terraform plan` parancsokat futtatnak a `terraform plan` kimenetének elemzéséhez, és megkeresik az összehasonlítandó attribútumok értékeit.
+De nem igazán kell erőforrásokat kiépíteni. Csak azt szeretnénk, hogy megbizonyosodjon arról, hogy az elnevezési konverziós logika helyes. A Terratest rugalmasságának köszönhetően használhatunk egységteszteket. Az egységtesztek helyi futó tesztesetek (bár internet-hozzáférés szükséges). Egység teszt `terraform init` esetek `terraform plan` végrehajtása és parancsok at `terraform plan` elemezni a kimenetet, és keresse meg az attribútum értékeket összehasonlítani.
 
-A szakasz további része azt ismerteti, hogyan használjuk a Terratest az egység tesztelésének megvalósítására, hogy megbizonyosodjon arról, hogy a Storage-fiókok nevének konvertálásához használt logika helyes. Csak a csillaggal `(*)`jelölt fájlok érdeklik.
+A szakasz további része azt ismerteti, hogyan használjuk a Terratest-et egy egységteszt megvalósításához, hogy megbizonyosodjunk arról, hogy a tárfióknevek konvertálásához használt logika helyes. Mi érdekli csak a fájlokat jelölt `(*)`csillaggal .
 
 ```
  📁 GoPath/src/staticwebpage
@@ -155,9 +155,9 @@ A szakasz további része azt ismerteti, hogyan használjuk a Terratest az egys�
    └ 📄 variables.tf
 ```
 
-Először egy `./test/fixtures/storage-account-name/empty.html` nevű üres HTML-fájlt használunk helyőrzőként.
+Először is egy üres `./test/fixtures/storage-account-name/empty.html` HTML-fájlt használunk helyőrzőként.
 
-A `./test/fixtures/storage-account-name/main.tf` fájl a tesztelési eset kerete. Elfogad egy bemenetet, `website_name`, amely egyben az egység tesztek bemenete is. A logika itt látható:
+A `./test/fixtures/storage-account-name/main.tf` fájl a teszteset kerete. Egy bemenetet fogad `website_name`el, amely egyben az egységtesztek bemenete is. A logika itt látható:
 
 ```hcl
 variable "website_name" {
@@ -172,17 +172,17 @@ module "staticwebpage" {
 }
 ```
 
-A fő összetevő a `./test/storage_account_name_unit_test.go`egységben végzett tesztek megvalósítása.
+A fő összetevő az egységvizsgálatok `./test/storage_account_name_unit_test.go`végrehajtása a rendszerben.
 
-A go Developers valószínűleg azt észleli, hogy az egység tesztelése megfelel a klasszikus go-teszt függvény aláírásának, ha elfogad egy `*testing.T`típusú argumentumot.
+Go fejlesztők valószínűleg észrefogja venni, hogy az egység teszt megegyezik az `*testing.T`aláírás egy klasszikus Go teszt funkció elfogadásával egy érv et .
 
-Az egység teszt törzsében összesen öt eset van megadva a változó `testCases` (`key` bemenetként, és `value` a várt kimenetként). Az egyes egységekhez tartozó tesztelési esetekben először a `terraform init` futtatjuk, és megcélozjuk a test rögzítő mappát (`./test/fixtures/storage-account-name/`). 
+Az egységteszt törzsében összesen öt olyan eset van, amely `testCases` `key` változóban van `value` meghatározva ( bemenetként és a várt kimenetként). Minden egység tesztesetében először `terraform init` futtatjuk és megcélozzuk a tesztszerelvény mappát (`./test/fixtures/storage-account-name/`). 
 
-Következő lépésként egy `terraform plan` parancs, amely konkrét tesztelési eseteket használ (lásd: `tfOptions`) a `website_name` definíciójának megkeresése az eredményt `./test/fixtures/storage-account-name/terraform.tfplan` (nem a teljes mappa struktúrájában szerepel).
+Ezután `terraform plan` egy adott teszteset-bemenetet használó parancs `website_name` (tekintse meg a definíciót `tfOptions`) menti az eredményt `./test/fixtures/storage-account-name/terraform.tfplan` (nem szerepel a teljes mappastruktúrában).
 
-Ez az eredményhalmaz egy kód által olvasható struktúrára lesz értelmezve a hivatalos Terraform terv-elemző használatával.
+Ez az eredményfájl a hivatalos Terraform tervelemző használatával kódolvasható szerkezetre van elemezve.
 
-Most megkeresjük azokat az attribútumokat, amelyeket érdekelünk (ebben az esetben a `azurerm_storage_account``name`), és összehasonlítjuk az eredményeket a várt kimenettel:
+Most megkeressük azokat az attribútumokat, amelyek érdekelnek `azurerm_storage_account`minket (ebben az esetben a) `name` és összehasonlítjuk az eredményeket a várt kimenettel:
 
 ```go
 package test
@@ -246,7 +246,7 @@ func TestUT_StorageAccountName(t *testing.T) {
 }
 ```
 
-Az egység tesztek futtatásához hajtsa végre a következő lépéseket a parancssorban:
+Az egységtesztek futtatásához hajtsa végre a következő lépéseket a parancssorban:
 
 ```azurecli
 az login    # Required when no service principal environment variables are present
@@ -261,13 +261,13 @@ go fmt
 go test -run TestUT_StorageAccountName
 ```
 
-A hagyományos go-teszt eredménye körülbelül egy percet ad vissza.
+A hagyományos Go teszt eredmény körülbelül egy perc alatt visszatér.
 
 ### <a name="integration-test"></a>Integrációs teszt
 
-Az egységbeli tesztek esetében az integrációs tesztek teljes körű perspektívát biztosítanak az erőforrások valódi környezethez való kiépítéséhez. A Terratest jó munkát végez az ilyen típusú feladatokkal. 
+Az egységtesztekkel ellentétben az integrációs teszteknek erőforrásokat kell kiépíteniük egy valós környezetbe a végpontok közötti perspektíva érdekében. Terratest jó munkát végez az ilyen jellegű feladat. 
 
-A Terraform-modulok ajánlott eljárásai közé tartozik a `examples` mappa telepítése. A `examples` mappa tartalmaz egy végpontok közötti mintákat. A valós adatértékek használatának elkerülése érdekében miért nem teszteli ezeket a mintákat integrációs tesztekként? Ebben a szakaszban arra a három fájlra fogunk összpontosítani, amely csillag `(*)` van megjelölve a következő mappastruktúrát:
+A Terraform modulokkal kapcsolatos gyakorlati `examples` tanácsok közé tartozik a mappa telepítése. A `examples` mappa tartalmaz néhány végponttól végpontig tartó mintát. A valós adatokkal való munka elkerülése érdekében miért nem teszteli ezeket a mintákat integrációs tesztként? Ebben a szakaszban a következő mappastruktúrában csillaggal `(*)` jelölt három fájlra összpontosítunk:
 
 ```
  📁 GoPath/src/staticwebpage
@@ -287,7 +287,7 @@ A Terraform-modulok ajánlott eljárásai közé tartozik a `examples` mappa tel
    └ 📄 variables.tf
 ```
 
-Kezdjük a mintákat. A `./examples/` mappában létrejön egy `hello-world/` nevű új minta mappa. Itt egy olyan egyszerű HTML-oldalt adunk meg, amelyet fel kell tölteni: `./examples/hello-world/index.html`.
+Kezdjük a mintákkal. A `./examples/` mappában `hello-world/` létrejön egy új mintamappa. Itt egy egyszerű HTML oldalt töltünk `./examples/hello-world/index.html`fel: .
 
 ```html
 <!DOCTYPE html>
@@ -303,7 +303,7 @@ Kezdjük a mintákat. A `./examples/` mappában létrejön egy `hello-world/` ne
 </html>
 ```
 
-A Terraform minta `./examples/hello-world/main.tf` hasonló az egység tesztben láthatóhoz. Van egy jelentős különbség: a minta a feltöltött HTML URL-címét is kiírja `homepage`nevű weboldalként.
+A Terraform `./examples/hello-world/main.tf` minta hasonló az egységvizsgálatban láthatóhoz. Van egy jelentős különbség: a minta is kinyomtatja az URL-t `homepage`a feltöltött HTML, mint egy weboldal nevű .
 
 ```hcl
 variable "website_name" {
@@ -322,11 +322,11 @@ output "homepage" {
 }
 ```
 
-A Terratest és a klasszikus go test functions funkciót ismét a `./test/hello_world_example_test.go`integrációs teszt fájljában használjuk.
+A Terratest és a klasszikus Go tesztfunkciókat ismét az integrációs tesztfájlban használjuk. `./test/hello_world_example_test.go`
 
-Az egységes tesztektól eltérően az integrációs tesztek tényleges erőforrásokat hoznak létre az Azure-ban. Ezért körültekintően kell eljárnia, hogy elkerülje az ütközések elnevezését. (Különös figyelmet fordít a globálisan egyedi nevekre, például a Storage-fiókok nevére.) Ezért a tesztelési logika első lépése egy véletlenszerű `websiteName` létrehozása a Terratest által biztosított `UniqueId()` függvény használatával. Ez a függvény olyan véletlenszerű nevet állít elő, amely kisbetűkből, nagybetűkből vagy számokból áll. a `tfOptions` az összes olyan Terraform-parancsot végrehajtja, amely a `./examples/hello-world/` mappát célozza meg. Azt is biztosítja, hogy `website_name` a randomizált `websiteName`ra legyen beállítva.
+Az egységtesztekkel ellentétben az integrációs tesztek tényleges erőforrásokat hoznak létre az Azure-ban. Ezért kell óvatosnak lennie, hogy elkerülje az elnevezési ütközéseket. (Fordítson különös figyelmet néhány globálisan egyedi névre, például a tárfióknevekre.) Ezért a tesztelési logika első lépése a `websiteName` terratest `UniqueId()` által biztosított függvény használatával véletlenszerűvé tett létrehozás. Ez a függvény kisbetűkből, nagybetűkből vagy számokból származó véletlenszerű nevet hoz létre. `tfOptions`leteszi a `./examples/hello-world/` mappát célzó összes Terraform parancsot. Azt is gondoskodik arról, `website_name` `websiteName`hogy van beállítva, hogy a randomizált .
 
-Utána `terraform init`, `terraform apply` és `terraform output` kerül végrehajtásra, sorban egymás után. Egy másik segítő függvényt használunk, `HttpGetWithCustomValidation()`, amelyet a Terratest biztosít. A Helper függvény használatával gondoskodhat arról, hogy a rendszer feltöltse a HTML-kódot a `terraform output`által visszaadott kimeneti `homepage` URL-címre. Összehasonlítjuk a HTTP GET állapotkódot `200` és megkeresünk néhány kulcsszavakat a HTML-tartalomban. Végül az `terraform destroy` "ígéretet" kap a végrehajtásra a Go `defer` funkciójának kihasználásával.
+Utána `terraform init`, `terraform apply` és `terraform output` kerül végrehajtásra, sorban egymás után. Egy másik segítő funkciót `HttpGetWithCustomValidation()`használunk, amelyet a Terratest biztosít. A segítő funkciót használjuk annak érdekében, hogy `homepage` a HTML-t `terraform output`feltöltsük a kimeneti URL-re, amelyet a . Összehasonlítjuk a HTTP GET `200` állapotkódot, és megkeressük a HTML-tartalom néhány kulcsszavát. Végül az `terraform destroy` "ígéretet" kap a végrehajtásra a Go `defer` funkciójának kihasználásával.
 
 ```go
 package test
@@ -385,19 +385,19 @@ go fmt
 go test -run TestIT_HelloWorldExample
 ```
 
-A hagyományos go-teszt eredménye körülbelül két percet vesz igénybe. A következő parancsok végrehajtásával is futtathatja az egység teszteit és az integrációs teszteket:
+A hagyományos Go teszt eredménye körülbelül két perc múlva tér vissza. Az egység- és integrációs teszteket is futtathatja a következő parancsok végrehajtásával:
 
 ```shell
 go fmt
 go test
 ```
 
-Az integrációs tesztek sokkal hosszabb ideig tartanak, mint az egység-tesztek (két perc az egyes integrációs esetekhez, mint egy perc öt egység esetén). Azonban a döntése, hogy az egység-vagy integrációs teszteket egy adott forgatókönyvben használja-e. Általában a Terraform HCL függvények használatával érdemes az összetett logikához tartozó egység-teszteket használni. Általában az integrációs teszteket használjuk a felhasználók végpontok közötti perspektívájában.
+Az integrációs tesztek sokkal hosszabb időt vesznek igénybe, mint az egységtesztek (két perc egy integrációs eset esetén, míg öt egységesetében egy perc). De ez a döntés, hogy használja egység tesztek vagy integrációs tesztek egy forgatókönyvben. Általában a Terraform HCL függvények használatával az összetett logika egységtesztjeit használjuk. Általában integrációs teszteket használunk a felhasználó végpontok közötti perspektívájának.
 
 ## <a name="use-mage-to-simplify-running-terratest-cases"></a>Mage használata a Terratest esetek egyszerűbb futtatásához 
-A Azure Cloud Shell tesztelési eseteinek futtatásához különböző parancsokat kell végrehajtani különböző könyvtárakban. A folyamat hatékonyabbá tételéhez bevezetjük a Build rendszerét a projektben. Ebben a szakaszban a feladatokhoz egy go Build-rendszerindítási rendszer van használatban.
+Az Azure Cloud Shellben futó tesztesetek különböző könyvtárakban különböző parancsokat igényel. Ennek a folyamatnak a hatékonyabbá tétele érdekében bevezetjük a buildrendszert a projektünkbe. Ebben a szakaszban egy Go build rendszert használunk, a mage-t a feladathoz.
 
-A mágus által igényelt egyetlen dolog `magefile.go` a projekt gyökérkönyvtárában (a következő példában `(+)` jelöléssel):
+A mage csak a `magefile.go` projekt gyökérkönyvtárában van megkövetelve (a következő példában jelölve): `(+)`
 
 ```
  📁 GoPath/src/staticwebpage
@@ -418,12 +418,12 @@ A mágus által igényelt egyetlen dolog `magefile.go` a projekt gyökérkönyvt
    └ 📄 variables.tf
 ```
 
-Íme egy példa a `./magefile.go`ra. Ebben az összeállításban, a Go-ban írt Build parancsfájl öt fordítási lépést implementál:
-- `Clean`: a lépés eltávolítja a tesztek végrehajtása során generált összes generált és ideiglenes fájlt.
-- `Format`: a lépés `terraform fmt` és `go fmt` futtatásával formázza meg a kód alapját.
-- `Unit`: a lépés az összes Unit-tesztet futtatja (a Function Name Convention `TestUT_*`használatával) a `./test/` mappában.
-- `Integration`: a lépés hasonló a `Unit`hoz, de az egységhez tartozó tesztek helyett az integrációs teszteket (`TestIT_*`) hajtja végre.
-- `Full`: a lépés `Clean`, `Format`, `Unit`és `Integration` fut a sorozatban.
+Íme egy példa `./magefile.go`a . Ebben a Go-ban írt buildszkriptben öt buildlépést valósítunk meg:
+- `Clean`: A lépés eltávolítja az összes létrehozott és ideiglenes fájlokat, amelyek során generált teszt végrehajtások.
+- `Format`: A `terraform fmt` lépés `go fmt` fut, és formázza a kód bázis.
+- `Unit`: A lépés a mappa alatt futtatja `TestUT_*`az `./test/` összes egységtesztet (a függvénynév-konvenció használatával).
+- `Integration`: A lépés `Unit`hasonló a hoz, de az egységtesztek`TestIT_*`helyett integrációs teszteket hajt végre ( ).
+- `Full`: A `Clean`lépés `Format` `Unit`fut `Integration` , , és sorrendben.
 
 ```go
 // +build mage
@@ -500,7 +500,7 @@ func Clean() error {
 }
 ```
 
-A teljes tesztelési csomag végrehajtásához használja a következő parancsokat. A kód hasonló a korábbi szakaszban használt futtatási lépésekhez. 
+A következő parancsokkal hajthatja végre a teljes tesztcsomagot. A kód hasonló a korábbi szakaszban használt futó lépésekhez. 
 
 ```azurecli
 az login    # Required when no service principal environment variables are present
@@ -514,15 +514,15 @@ go fmt      # Only required when you change the magefile
 mage
 ```
 
-Az utolsó parancssort a mágus további lépéseivel cserélheti le. Használhatja például `mage unit` vagy `mage clean`. Érdemes beágyazni `dep` parancsokat és `az login`eket a magefile. Itt nem jelennek meg a kód. 
+Az utolsó parancssort további mage lépésekkel is lecserélheti. Használhatja `mage unit` például a `mage clean`vagyat. Célszerű parancsokat beágyazni `dep` a `az login` magefile-be. Itt nem mutatjuk a kódot. 
 
-A mágus használatával a go Package rendszeren is megoszthatja a lépéseket. Ebben az esetben egyszerűbbé teheti a magefiles az összes modulban azáltal, hogy csak a közös megvalósítási és deklarált függőségekre hivatkozik (`mg.Deps()`).
+A mage segítségével a Lépéseket a Go csomagrendszer használatával is megoszthatja. Ebben az esetben egyszerűsítheti a magefiles-t az összes modulban, ha csak`mg.Deps()`egy közös implementációra hivatkozik, és deklarálja a függőségeket ( ).
 
-**Nem kötelező: a szolgáltatás egyszerű környezeti változóinak beállítása az elfogadási tesztek futtatásához**
+**Nem kötelező: Egyszerű szolgáltatáskörnyezeti változók beállítása elfogadási tesztek futtatásához**
  
-A tesztek előtt végzett `az login` végrehajtása helyett az Azure-hitelesítést az egyszerű szolgáltatás környezeti változóinak beállításával végezheti el. A Terraform közzéteszi a [környezeti változók neveinek listáját](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (A környezeti változók közül csak az első négy szükséges.) [A Terraform a környezeti változók értékének beszerzését](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)ismertető részletes utasításokat is közzétesz.
+A tesztek `az login` végrehajtása helyett az Azure-hitelesítést a szolgáltatásegyszerű környezeti változók beállításával végezheti el. A Terraform közzéteszi [a környezeti változók nevének listáját.](https://www.terraform.io/docs/providers/azurerm/index.html#testing) (Csak az első négy ilyen környezeti változóra van szükség.) A Terraform részletes utasításokat is közzétesz, amelyek ismertetik, hogyan [lehet megszerezni ezeknek a környezeti változóknak az értékét.](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Terratest GitHub-oldal](https://github.com/gruntwork-io/terratest).
+> [Terratest GitHub oldal](https://github.com/gruntwork-io/terratest).

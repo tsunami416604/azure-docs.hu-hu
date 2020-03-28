@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a ClickUp hatékonyságnövelő platformmal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a ClickUp hatékonyságnövelő platformja között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a ClickUp termelékenységi platformmal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a ClickUp productivity platform között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,208 +15,212 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 4647d78255f611959bb86ca00ff6920bc823d49a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f497955b698d7ca390b40686e94d553a7cd5c948
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158567"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048751"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Oktatóanyag: Azure Active Directory integráció a ClickUp hatékonyságnövelő platformmal
+# <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Oktatóanyag: Az Azure Active Directory integrációja a ClickUp hatékonyságnövelő platformmal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ClickUp hatékonyságnövelő platformot Azure Active Directory (Azure AD) használatával.
-A ClickUp hatékonyságnövelő platform és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a ClickUp productivity platformot az Azure Active Directoryval (Azure AD).
+A ClickUp productivity platform integrálása az Azure AD-vel a következő előnyökkel jár:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a ClickUp hatékonyságnövelő platformhoz.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a ClickUp termelékenységi platformra (egyszeri bejelentkezés) az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a ClickUp hatékonyságnövelő platformhoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve ClickUp productivity platform (Single Sign-On) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció ClickUp hatékonyságnövelő platformmal való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció beállítása a ClickUp termelékenységi platformmal a következő elemekre van szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* ClickUp hatékonyságnövelő platform egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* ClickUp Productivity Platform egyszeri bejelentkezéssel rendelkező előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A ClickUp hatékonyságnövelő platform támogatja az **SP** által kezdeményezett egyszeri bejelentkezést
+* A ClickUp Productivity Platform támogatja az **SP** által kezdeményezett SSO-t
 
-## <a name="adding-clickup-productivity-platform-from-the-gallery"></a>ClickUp hatékonyságnövelő platform hozzáadása a katalógusból
+## <a name="adding-clickup-productivity-platform-from-the-gallery"></a>ClickUp produktivitási platform hozzáadása a galériából
 
-A ClickUp hatékonyságnövelő platform Azure AD-integrációjának konfigurálásához hozzá kell adnia a ClickUp hatékonyságnövelő platformot a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A ClickUp productivity platform Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a ClickUp productivity platformot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A ClickUp hatékonyságnövelő platformnak a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**Ha a ClickUp hatékonyságnövelő platformot a katalógusból szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **ClickUp hatékonyságnövelő platform**kifejezést, válassza a **ClickUp termelékenységi platform** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **ClickUp Productivity Platform (Kattintás: Hatékonyságnövelő** **platform)** kifejezést az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![ClickUp hatékonyságnövelő platform az eredmények listájában](common/search-new-app.png)
+     ![Kattintson a Termelékenységi platform elemre az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a ClickUp hatékonyságnövelő platformmal konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a ClickUp hatékonyságnövelő platformon a kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a ClickUp productivity platformmal egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó között a ClickUp termelékenységi platform on ClickUp termelékenységi platform létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a ClickUp productivity platformmal a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[ClickUp hatékonyságnövelő platform egyszeri bejelentkezésének konfigurálása](#configure-clickup-productivity-platform-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre ClickUp hatékonyságnövelő platform-tesztelési felhasználót](#create-clickup-productivity-platform-test-user)** – hogy a Britta Simon partnere legyen a ClickUp hatékonyságnövelő platformon, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a ClickUp termelékenységi platform egyszeri bejelentkezését](#configure-clickup-productivity-platform-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[ClickUp productivity platform tesztfelhasználó](#create-clickup-productivity-platform-test-user)** létrehozása – a ClickUp hatékonyságnövelő platform britta simon-i megfelelőjének létrehozásához, amely az Azure AD felhasználói ábrázolásához kapcsolódik.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a ClickUp productivity platformmal hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **ClickUp hatékonyságnövelő platform** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **ClickUp productivity platform** alkalmazásintegrációs lapján válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![ClickUp hatékonyságnövelő platform tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
+    ![Kattintson a Termelékenységi platform tartományának elemre és az egyszeri bejelentkezési adatok URL-címeire](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következő URL-címet: `https://app.clickup.com/login/sso`
+    a. A **Bejelentkezés az URL-cím** mezőbe írjon be egy URL-címet:`https://app.clickup.com/login/sso`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://api.clickup.com/v1/team/<team_id>/microsoft`
+    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
-    > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > Az azonosító értéke nem valós. Frissítse ezt az értéket a tényleges azonosítóval, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** kattintson a Másolás gombra az **Alkalmazásösszevonás metaadat-címének** másolásához és mentéséhez a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-clickup-productivity-platform-single-sign-on"></a>A ClickUp hatékonyságnövelő platform egyszeri bejelentkezésének konfigurálása
+### <a name="configure-clickup-productivity-platform-single-sign-on"></a>ClickUp termelékenységi platform egyszeri bejelentkezéskonfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a ClickUp hatékonyságnövelő platform-bérlőre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a ClickUp productivity platform bérlője rendszergazdaként.
 
-2. Kattintson a **felhasználói profilra** , és válassza a **Beállítások**lehetőséget.
+2. Kattintson a **Felhasználói profilra**, majd a **Beállítások gombra.**
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-3. Válassza a **Microsoft**lehetőséget az egyszeri bejelentkezés (SSO) szolgáltató alatt.
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/configure1.png)
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure2.png)
+3. Válassza a **Microsoft**lehetőséget az Egyszeri bejelentkezés (SSO) szolgáltató csoportban.
 
-4. A **Microsoft egyszeri bejelentkezés konfigurálása** lapon hajtsa végre a következő lépéseket:
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/configure2.png)
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure3.png)
+4. A **Microsoft egyszeri bejelentkezés konfigurálása** lapon hajtsa végre az alábbi lépéseket:
 
-    a. Kattintson a **Másolás** elemre az entitás-azonosító értékének másolásához, majd illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában lévő **azonosító (Entity ID)** szövegmezőbe.
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/configure3.png)
+
+    a. Kattintson a **Másolás** gombra az entitásazonosító értékének másolásához és beillesztéséhez az Azure Portal **Alapszintű SAML-konfiguráció** szakaszában található **azonosító (entitásazonosító)** szövegmezőbe.
     
-    b. Az **Azure összevonási metaadatok URL-címe** szövegmezőbe illessze be az alkalmazás-összevonási metaadatok URL-címét, amelyet a Azure Portal másolt, majd kattintson a **Mentés**gombra.
+    b. Az **Azure Federation metaadat-URL-címmezőjébe** illessze be az Alkalmazásösszevonás metaadat-url-címét, amelyet az Azure Portalról másolt, majd kattintson a **Mentés gombra.**
 
-5. A telepítés befejezéséhez kattintson a **hitelesítés a Microsofttal lehetőségre a telepítés befejezéséhez** és a Microsoft-fiókkal való hitelesítéshez.
+5. A telepítés befejezéséhez kattintson a **Hitelesítés a Microsofttal** gombra a telepítés befejezéséhez és a Microsoft-fiókkal való hitelesítéshez.
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/configure4.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a ClickUp hatékonyságnövelő platformhoz.
+Ebben a szakaszban engedélyezheti Britta Simon számára, hogy egyetlen bejelentkezéssel használja az Azure egyszeri bejelentkezést a ClickUp hatékonyságnövelő platformhoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ClickUp hatékonyságnövelő platform**lehetőséget.
+1. Az Azure portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd kattintson **a Kattintási hatékonysági platform elemre.**
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **ClickUp hatékonyságnövelő platform**elemet.
+2. Az alkalmazások listájában válassza a **ClickUp Productivity Platform (Kattintás: Hatékonyságnövelés platform) lehetőséget.**
 
-    ![A ClickUp hatékonyságnövelő platform hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![A ClickUp termelékenységi platform hivatkozása az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-clickup-productivity-platform-test-user"></a>ClickUp hatékonyságnövelő platform tesztelési felhasználó létrehozása
+### <a name="create-clickup-productivity-platform-test-user"></a>ClickUp termelékenységi platform tesztfelhasználójának létrehozása
 
-1. Egy másik böngészőablakban jelentkezzen be a ClickUp hatékonyságnövelő platform-bérlőre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a ClickUp productivity platform bérlője rendszergazdaként.
 
-2. Kattintson a **felhasználói profilra** , és válassza a **felhasználók**lehetőséget.
+2. Kattintson a **Felhasználói profilra**, majd válassza a **Személyek**lehetőséget.
+   
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/user1.png)
 
-3. Adja meg a felhasználó e-mail-címét a szövegmezőben, majd kattintson a **meghívás**elemre.
+3. Írja be a felhasználó e-mail címét a szövegmezőbe, és kattintson a **Meghívás gombra.**
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![Kattintsona A termelékenység konfigurálása elemre](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
-    > A felhasználó megkapja az értesítést, és el kell fogadnia a meghívót, hogy aktiválja a fiókot.
+    > A felhasználó megkapja az értesítést, és el kell fogadnia a meghívást a fiók aktiválására.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a ClickUp hatékonyságnövelő platform csempére kattint, automatikusan be kell jelentkeznie a ClickUp hatékonyságnövelő platformra, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a ClickUp productivity platform csempére kattint, automatikusan be kell jelentkeznie a ClickUp termelékenységi platformra, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

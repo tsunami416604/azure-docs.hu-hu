@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – infrastruktúra kiépítése az Azure üzembe helyezési pontjaival a Terraform használatával
-description: Ebben az oktatóanyagban az Terraform-t használja az Azure Provider üzembe helyezési pontjaival
-keywords: Azure devops Terraform üzembe helyezési pontok
+title: Oktatóanyag – Infrastruktúra kiépítése az Azure telepítési bővítőhelyekkel a Terraform használatával
+description: Ebben az oktatóanyagban a Terraform ot használja az Azure-szolgáltató telepítési bővítőhelyekkel
+keywords: azure devops terraform telepítési tárolóhelyek
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: ddd4d84ee8bf4ab1e90dd68da185cdd9075fe1e0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78943485"
 ---
-# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Oktatóanyag: infrastruktúra kiépítése az Azure üzembe helyezési pontjaival a Terraform használatával
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Oktatóanyag: Infrastruktúra kiépítése az Azure telepítési bővítőhelyekkel a Terraform használatával
 
 Az [Azure üzembehelyezési pontjainak](/azure/app-service/deploy-staging-slots) használatával válthat az alkalmazások különböző verziói között. Ennek köszönhetően minimalizálhatja a nem működő üzemelő példányok okozta hatásokat. 
 
-Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és végigvezeti két alkalmazás a GitHub és az Azure segítségével való üzembe helyezésére. Az egyik alkalmazás egy éles üzemi, a másik pedig egy előkészítési ponton fut. (A "termelés" és az "előkészítés" név tetszőleges. A forgatókönyvnek megfelelő lehet.) Az üzembe helyezési pontok konfigurálása után a Terraform segítségével felcserélheti a két tárolóhely közötti váltást igény szerint.
+Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és végigvezeti két alkalmazás a GitHub és az Azure segítségével való üzembe helyezésére. Az egyik alkalmazás egy éles üzemi, a másik pedig egy előkészítési ponton fut. (A "termelés" és az "előkészítés" nevek tetszőlegesek. Ezek lehetnek, ami megfelel a forgatókönyv.) A központi telepítési tárolóhelyek konfigurálása után a Terraform segítségével szükség szerint cserélhet a két tárolóhely között.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
-1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
+1. Nyissa meg [az Azure Cloud Shell](/azure/cloud-shell/overview)t. Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
     ![Cloud Shell-parancssor](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
 
@@ -107,7 +107,7 @@ Ez a cikk egy példát mutat be az üzembehelyezési pontok használatára, és 
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 1. A fájl létrehozását követően ellenőrizze annak tartalmát.
 
@@ -199,7 +199,7 @@ A tesztprojektadattár leágaztatását követően az üzembehelyezési pontokat
 
 1. Az **Üzembehelyezési beállítás** lapon kattintson az **OK** gombra.
 
-Ezen a ponton üzembe helyezte az üzemi tárolóhelyet. Az átmeneti tárolóhely üzembe helyezéséhez hajtsa végre az előző lépéseket a következő módosításokkal:
+Ezen a ponton üzembe helyezte az éles tárolóhelyet. Az átmeneti tárolóhely üzembe helyezéséhez hajtsa végre az előző lépéseket a következő módosításokkal:
 
 - A 3. lépésben válassza a **slotAppServiceSlotOne** erőforrást.
 
@@ -221,15 +221,15 @@ Az előző szakaszokban két pontot (**slotAppService** és **slotAppServiceSlot
 
     ![Az alkalmazás megjelenítése az áttekintő oldal URL elemére kattintva](./media/terraform-slot-walkthru/resource-url.png)
 
-1. A kiválasztott alkalmazástól függően a következő eredmények láthatók:
-    - **slotAppService** Web App – kék oldal, amelyen az 1. **bővítőhely bemutató alkalmazás**oldal címe szerepel. 
-    - **slotAppServiceSlotOne** Web App – zöld oldal, a **2. bővítőhely bemutató alkalmazás**oldalának címével.
+1. A kiválasztott alkalmazástól függően a következő eredmények jelennek meg:
+    - **slotAppService** webapp - Kék oldal a **Slot Demo App 1**oldalcímmel. 
+    - **slotAppServiceSlotOne** webapp - Zöld oldal a **Slot Demo App 2**oldalcímével.
 
     ![Az alkalmazások megfelelő üzembe helyezésének ellenőrzése az előnézeteik megtekintésével](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Váltás a két üzembehelyezési pont között
 
-A két üzembe helyezési pont lecserélésének teszteléséhez hajtsa végre a következő lépéseket:
+A két üzembe helyezési tárolóhely cseréjének teszteléséhez tegye a következő lépéseket:
  
 1. Váltson a böngésző **slotAppService** alkalmazást (a kék oldalt) megjelenítő lapjára. 
 
@@ -268,7 +268,7 @@ A két üzembe helyezési pont lecserélésének teszteléséhez hajtsa végre a
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 1. Inicializálja a Terraformot.
 
@@ -288,7 +288,7 @@ A két üzembe helyezési pont lecserélésének teszteléséhez hajtsa végre a
     terraform apply
     ```
 
-1. Miután a Terraform felcserélte a tárolóhelyeket, térjen vissza a böngészőbe. Frissítse az oldalt. 
+1. Miután a Terraform kicserélte a bővítőhelyeket, térjen vissza a böngészőbe. Frissítse az oldalt. 
 
 A **slotAppServiceSlotOne** előkészítési ponton lévő webalkalmazás le lett cserélve az éles üzembehelyezési pontra, és most zöld színnel jelenik meg. 
 
@@ -305,4 +305,4 @@ Az alkalmazás cseréjét követően az eredeti konfiguráció látható.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [További információ a Terraform Azure-beli használatáról](/azure/terraform)
+> [További információ a Terraform azure-beli használatáról](/azure/terraform)

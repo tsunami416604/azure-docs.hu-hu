@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a iQualify LMS szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a iQualify LMS között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az iQualify LMS-szel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az iQualify LMS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,272 +16,272 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a1db4784eb63df14b7e7971d0273512ba657df96
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944991"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Azure Active Directory integráció a iQualify LMS-vel
+# <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Az Azure Active Directory integrációja az iQualify LMS-szel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a iQualify LMS Azure Active Directory (Azure AD) szolgáltatással.
-A iQualify LMS és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az iQualify LMS-t az Azure Active Directoryval (Azure AD).
+Az iQualify LMS integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* A iQualify LMS szolgáltatáshoz hozzáféréssel rendelkező Azure AD-t is vezérelheti.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a iQualify LMS-be (egyszeri bejelentkezés) az Azure AD-fiókjával.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az iQualify LMS-hez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek az iQualify LMS (Single Sign-On) szolgáltatásba az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció iQualify LMS-sel való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához az iQualify LMS rendszerrel a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* iQualify LMS egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* iQualify LMS egyszeri bejelentkezéssel rendelkező előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* a iQualify LMS támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
-* a iQualify LMS **csak időben támogatja a** felhasználók üzembe helyezését
+* Az iQualify LMS támogatja az **SP és az IDP** által kezdeményezett sso-t
+* Az iQualify LMS támogatja **a Just In Time** felhasználói kiépítést
 
-## <a name="adding-iqualify-lms-from-the-gallery"></a>IQualify LMS hozzáadása a katalógusból
+## <a name="adding-iqualify-lms-from-the-gallery"></a>IQualify LMS hozzáadása a galériából
 
-A iQualify-LMS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a iQualify-LMS-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az iQualify LMS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az iQualify LMS-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A iQualify LMS a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**Ha hozzá szeretné adni az iQualify LMS-t a galériából, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **IQUALIFY LMS**kifejezést, válassza a **iQualify LMS** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **iQualify LMS**parancsot, válassza az **iQualify LMS** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![iQualify LMS az eredmények listájában](common/search-new-app.png)
+     ![iQualify LMS az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a iQualify LMS szolgáltatással konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a iQualify LMS-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését az iQualify LMS-szel egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat iQualify LMS létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés iQualify LMS-sel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az iQualify LMS szolgáltatással a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Konfigurálja a IQUALIFY LMS egyszeri bejelentkezést](#configure-iqualify-lms-single-sign-on)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre IQUALIFY LMS-teszt felhasználót](#create-iqualify-lms-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-Britta összekapcsolt, a IQUALIFY-LMS-ben található Simon-beli partnerrel.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja az iQualify LMS Single Sign-On](#configure-iqualify-lms-single-sign-on)** --t az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre iQualify LMS tesztfelhasználó](#create-iqualify-lms-test-user)** – egy megfelelője Britta Simon az iQualify LMS, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához az iQualify LMS szolgáltatással hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **iQualify LMS** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)az **iQualify LMS-alkalmazásintegrációs** lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az alapszintű **SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban Ha az alkalmazást **IDP** által kezdeményezett módban kívánja konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![iQualify LMS-tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![az iQualify LMS-tartomány és url-ek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:
     | |
     |--|--|
-    | Éles környezet:`https://<yourorg>.iqualify.com/`|
+    | Termelési környezet:`https://<yourorg>.iqualify.com/`|
     | Tesztkörnyezet:`https://<yourorg>.iqualify.io`|
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:
     | |
     |--|--|
-    | Éles környezet:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Termelési környezet:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
     | Tesztkörnyezet:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
-5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    ![iQualify LMS-tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![az iQualify LMS-tartomány és url-ek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:
     | |
     |--|--|
-    | Éles környezet:`https://<yourorg>.iqualify.com/login` |
+    | Termelési környezet:`https://<yourorg>.iqualify.com/login` |
     | Tesztkörnyezet:`https://<yourorg>.iqualify.io/login` |
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [IQUALIFY LMS ügyfél-támogatási csapatához](https://www.iqualify.com/) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [az iQualify LMS ügyféltámogatási csapatával,](https://www.iqualify.com/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-6. A iQualify LMS-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+6. Az iQualify LMS-alkalmazás egy adott formátumban várja az SAML-állításokat, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **Felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-7. A **felhasználó attribútumai** párbeszédpanel **felhasználói** jogcímek szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
+7. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában a **Szerkesztés ikon** használatával szerkesztse a jogcímeket, vagy adja hozzá a jogcímeket az **Új jogcím hozzáadása** paragrafussal az SAML token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútuma|
     | --- | --- |
-    | email | user.userprincipalname |
-    | first_name | User. givenName |
-    | last_name | felhasználó. vezetéknév |
-    | person_id | "az Ön attribútuma" |
+    | e-mail | user.userprincipalname |
+    | first_name | user.givenname |
+    | last_name | user.vezetéknév |
+    | person_id | "az ön tulajdonsága" |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Kattintson **az Új jogcím hozzáadása** gombra a Felhasználói **jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+    b. A **Név** mezőbe írja be a sor attribútumnevét.
 
-    c. Hagyja üresen a **névteret** .
+    c. Hagyja üresen a **névteret.**
 
-    d. Válassza a forrás **attribútumként**lehetőséget.
+    d. Válassza a Forrás **attribútumként lehetőséget.**
 
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+    e. A **Forrás attribútumlistában** írja be a sor attribútumértékét.
 
-    f. Kattintson a **Ok**
+    f. Kattintson **az Ok gombra**
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    g. Kattintson a **Mentés** gombra.
 
     > [!Note]
-    > A **person_id** attribútum nem **kötelező**
+    > A **person_id** attribútum **nem kötelező**
 
-8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+8. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-9. A **iQualify-LMS beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+9. Az **iQualify LMS beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-iqualify-lms-single-sign-on"></a>IQualify LMS egyszeri bejelentkezés konfigurálása
+### <a name="configure-iqualify-lms-single-sign-on"></a>Az iQualify LMS egyszeri bejelentkezéskonfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be rendszergazdaként a iQualify-környezetbe.
+1. Nyisson meg egy új böngészőablakot, majd jelentkezzen be rendszergazdaként az iQualify környezetbe.
 
-1. Miután bejelentkezett, kattintson a jobb felső sarokban található avatarra, majd a **Fiókbeállítások** lehetőségre.
+1. Miután bejelentkezett, kattintson az avatar a jobb felső sarokban, majd kattintson a **Fiók beállításai**
 
     ![Fiókbeállítások](./media/iqualify-tutorial/setting1.png)
 
-1. A Fiókbeállítások területen kattintson a bal oldali menüszalag menüre, majd az integrációk elemre .
+1. A fiókbeállítások területen kattintson a menüszalag menüjére a bal oldalon, és kattintson az **INTEGRÁCIÓK**
 
-    ![INTEGRÁCIÓK](./media/iqualify-tutorial/setting2.png)
+    ![Integrációk](./media/iqualify-tutorial/setting2.png)
 
-1. Az INTEGRÁCIÓk területen kattintson az **SAML** ikonra.
+1. Az INTEGRÁCIÓK csoportban kattintson az **SAML** ikonra.
 
     ![SAML ikon](./media/iqualify-tutorial/setting3.png)
 
-1. Az **SAML hitelesítési beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
+1. Az **SAML hitelesítési beállítások** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    ![SAML-hitelesítési beállítások](./media/iqualify-tutorial/setting4.png)
+    ![SAML hitelesítési beállítások](./media/iqualify-tutorial/setting4.png)
 
-    a. Az **SAML egyszeri bejelentkezési szolgáltatás URL-címe** mezőbe illessze be az Azure ad-alkalmazás konfigurációs ablakából másolt **bejelentkezési URL** -értéket.
+    a. Az **SAML SINGLE SIGN-ON SERVICE URL-címmezőbe** illessze be az Azure AD alkalmazás konfigurációs ablakából másolt **bejelentkezési URL-címet.**
 
-    b. Az **SAML KIjelentkezési URL-címe** mezőbe illessze be az Azure ad-alkalmazás konfigurációs ablakából másolt kijelentkezési **URL-** értéket.
+    b. Az **SAML LOGOUT URL-címmezőbe** illessze be az Azure AD-alkalmazás konfigurációs ablakából másolt **kijelentkezési URL-értéket.**
 
-    c. Nyissa meg a letöltött tanúsítványfájl a Jegyzettömbben, másolja a tartalmat, majd illessze be a **nyilvános tanúsítvány** mezőbe.
+    c. Nyissa meg a letöltött tanúsítványfájlt a jegyzettömbben, másolja a tartalmat, majd illessze be a **NYILVÁNOS TANÚSÍTVÁNY** mezőbe.
 
-    d. A **bejelentkezési gomb feliratában** adja meg a bejelentkezési oldalon megjeleníteni kívánt gomb nevét.
+    d. A **LOGIN BUTTON LABEL (A/ bejelentkezési gomb címkéje)** mezőbe írja be a bejelentkezési oldalon megjelenítendő gomb nevét.
 
-    e. Kattintson a **SAVE** (Mentés) gombra.
+    e. Kattintson **a MENTÉS gombra.**
 
-    f. Kattintson a **frissítés**gombra.
+    f. Kattintson **a FRISSÍTÉS gombra.**
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőtípusban**brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az iQualify LMS elérésének biztosításával.
+Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést az iQualify LMS-hez való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **iQualify LMS**elemet.
+1. Az Azure portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza az **iQualify LMS**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **IQUALIFY LMS**elemet.
+2. Az alkalmazások listájában válassza az **iQualify LMS**lehetőséget.
 
-    ![Az iQualify LMS hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![Az iQualify LMS hivatkozása az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-iqualify-lms-test-user"></a>IQualify LMS-teszt felhasználó létrehozása
+### <a name="create-iqualify-lms-test-user"></a>IQualify LMS tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a iQualify LMS-ben. a iQualify LMS az igény szerinti felhasználói üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a iQualify LMS-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre az iQualify LMS-ben. Az iQualify LMS támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik az iQualify LMS-ben, a hitelesítés után egy új jön létre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a iQualify LMS csempére kattint, beolvassa a iQualify LMS-alkalmazás bejelentkezési lapját. 
+Ha a hozzáférési panelen az iQualify LMS csempére kattint, megkapja az iQualify LMS alkalmazás bejelentkezési lapját. 
 
    ![bejelentkezési oldal](./media/iqualify-tutorial/login.png) 
 
-Kattintson a **Bejelentkezés az Azure ad-vel** gombra, és automatikusan be kell jelentkeznie a iQualify LMS-alkalmazásba.
+Kattintson **a Bejelentkezés az Azure AD** gombbal gombra, és automatikusan be kell jelentkeznie az iQualify LMS-alkalmazásába.
 
-További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/active-directory-saas-access-panel-introduction.md). 
+A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](../user-help/active-directory-saas-access-panel-introduction.md) 
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

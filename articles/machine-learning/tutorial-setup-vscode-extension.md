@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: a Visual Studio Code bővítmény beállítása'
+title: 'Oktatóanyag: A Visual Studio-kódbővítmény beállítása'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan állíthatja be a Visual Studio Code Azure Machine Learning bővítményt.
 services: machine-learning
@@ -10,76 +10,76 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 02/24/2020
 ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77604871"
 ---
-# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>A Visual Studio Code-bővítmény Azure Machine Learning beállítása
+# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Az Azure Machine Learning Visual Studio-kódbővítmény beállítása
 
-Megtudhatja, hogyan telepíthet és futtathat parancsfájlokat a Azure Machine Learning Visual Studio Code bővítmény használatával.
+Ismerje meg, hogyan telepítheti és futtathatja a parancsfájlokat az Azure Machine Learning Visual Studio Code bővítmény használatával.
 
-Ez az oktatóanyag a következő feladatokat ismerteti:
+Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A Azure Machine Learning Visual Studio Code bővítmény telepítése
-> * Jelentkezzen be az Azure-fiókjába a Visual Studio Code-ból
-> * Minta parancsfájl futtatása a Azure Machine Learning bővítmény használatával
+> * Az Azure Machine Learning Visual Studio-kódbővítmény telepítése
+> * Jelentkezzen be Azure-fiókjába a Visual Studio-kódból
+> * Mintaparancsfájl futtatásához használja az Azure Machine Learning-bővítményt
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel, regisztráljon a [Azure Machine learning ingyenes vagy fizetős verziójának](https://aka.ms/AMLFree)kipróbálásához.
-- Visual Studio Code. Ha nincs telepítve, [telepítse](https://code.visualstudio.com/docs/setup/setup-overview).
-- [Python 3](https://www.python.org/downloads/)
+- Egy Azure-előfizetés. Ha még nem rendelkezik ilyen, regisztráljon az [Azure Machine Learning ingyenes vagy fizetős verziójának kipróbálására.](https://aka.ms/AMLFree)
+- Visual Studio Code. Ha nincs meg, [telepítse.](https://code.visualstudio.com/docs/setup/setup-overview)
+- [Piton 3](https://www.python.org/downloads/)
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 
 1. Nyissa meg a Visual Studio Code-ot.
-1. Válassza a **bővítmények** ikont a **tevékenység sávján** a bővítmények nézet megnyitásához.
-1. A bővítmények nézetben keressen rá a "Azure Machine Learning" kifejezésre.
+1. A Bővítmények nézet megnyitásához válassza a **Bővítmények** ikont a **Tevékenységsávon.**
+1. A bővítmények nézetben keressen rá az "Azure Machine Learning" kifejezésre.
 1. Válassza az **Install** (Telepítés) lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![telepítse Azure Machine Learning VS Code bővítményt](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
+    > ![Az Azure Machine Learning VS-kódbővítmény telepítése](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
 
 > [!NOTE]
-> Azt is megteheti, hogy a Visual Studio Marketplace-en keresztül telepíti a Azure Machine Learning bővítményt, ha [közvetlenül letölti a telepítőt](https://aka.ms/vscodetoolsforai). 
+> Azt is megteheti, hogy telepíti az Azure Machine Learning bővítményt a Visual Studio Piactéren [keresztül, ha közvetlenül letölti a telepítőt.](https://aka.ms/vscodetoolsforai) 
 
-Az oktatóanyag további lépései a bővítmény **verziójának 0.6.8** lettek tesztelve.
+Az oktatóanyag további lépéseit a bővítmény **0.6.8-as verziójával** tesztelték.
 
-## <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
+## <a name="sign-in-to-your-azure-account"></a>Bejelentkezés Azure-fiókjába
 
-Az erőforrások kiépítéséhez és az Azure-beli számítási feladatok futtatásához be kell jelentkeznie az Azure-fiók hitelesítő adataival. A fiókkezelés támogatásához Azure Machine Learning automatikusan telepíti az Azure-fiók bővítményét. Az alábbi webhelyen [További információt talál az Azure-fiók bővítményéről](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
+Az erőforrások kiépítéséhez és a számítási feladatok azure-beli futtatásához az Azure-fiók hitelesítő adataival kell bejelentkeznie. A fiókkezelés segítése érdekében az Azure Machine Learning automatikusan telepíti az Azure-fiókbővítményt. Az [Azure-fiók bővítményről az](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)alábbi webhelyen olvashat bővebben.
 
-1. Nyissa meg a parancssort úgy, hogy kijelöli a menüsávban látható **> a parancs-palettát** . 
-1. A bejelentkezési folyamat elindításához írja be az "Azure: bejelentkezés" parancsot a parancssorba.
+1. Nyissa meg a parancspalettát a menüsor **Nézet > parancspalettája parancsával.** 
+1. Írja be az "Azure: Bejelentkezés" parancsot a parancspalettába a bejelentkezési folyamat elindításához.
 
-## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Gépi tanulási modell betanítási szkript futtatása az Azure-ban
+## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Gépi tanulási modell betanítási parancsfájljának futtatása az Azure-ban
 
-Most, hogy bejelentkezett az Azure-ba a fiókja hitelesítő adataival, kövesse az ebben a szakaszban ismertetett lépéseket, amelyből megtudhatja, hogyan használható a bővítmény a Machine learning-modellek betanításához.
+Most, hogy bejelentkezett az Azure-ba a fiók hitelesítő adataival, az ebben a szakaszban ismertetett lépésekkel megtudhatja, hogyan használhatja a bővítményt egy gépi tanulási modell betanításához.
 
-1. Töltse le és csomagolja [ki a vs Code-eszközöket a AI-tárházba](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) bárhol a számítógépen.
-1. Nyissa meg a `mnist-vscode-docs-sample` könyvtárat a Visual Studio Code-ban.
-1. Válassza ki az **Azure** ikont a tevékenység sávján.
-1. Válassza a **kísérlet futtatása** ikont a Azure Machine learning nézet tetején.
+1. Töltse le és csomagolja ki a [VS Code Tools for AI repository](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) bárhol a számítógépen.
+1. Nyissa `mnist-vscode-docs-sample` meg a könyvtárat a Visual Studio-kódban.
+1. Válassza ki az **Azure** ikont a tevékenységsávon.
+1. Válassza a **Kísérlet futtatása** ikont az Azure Machine Learning nézet tetején.
 
     > [!div class="mx-imgBorder"]
-    > ![kísérlet futtatása](./media/tutorial-setup-vscode-extension/run-experiment.PNG)
+    > ![Kísérlet futtatása](./media/tutorial-setup-vscode-extension/run-experiment.PNG)
 
-1. A parancs-paletta kibontásakor kövesse az utasításokat.
+1. Amikor a parancspaletta kitágul, kövesse az utasításokat.
 
     1. Válassza ki az Azure-előfizetését.
-    1. Válassza **az új Azure ml-munkaterület létrehozása** lehetőséget.
-    1. Válassza ki a **TensorFlow egycsomópontos betanítási** feladattípust.
-    1. Adja meg `train.py`ként a betanításhoz használandó parancsfájlt. Ez a fájl tartalmazza a gépi tanulási modell kódját, amely a kézzel írt számjegyek képeit kategorizálja.
-    1. A futtatáshoz adja meg a következő csomagokat.
+    1. Válassza **az Új Azure ML-munkaterület létrehozása lehetőséget.**
+    1. Válassza ki a **TensorFlow egycsomópontos képzési** feladat típusát.
+    1. Írja `train.py` be a betanításhoz a parancsfájlt. Ez az a fájl, amely egy gépi tanulási modell kódját tartalmazza, amely a kézzel írt számjegyek képeit kategorizálja.
+    1. Adja meg a következő csomagokat a futtatandó követelményekként.
 
         ```text
         pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
         ```
 
-1. Ezen a ponton az alábbihoz hasonló konfigurációs fájl jelenik meg a szövegszerkesztőben. A konfiguráció tartalmazza a betanítási feladatok futtatásához szükséges adatokat, például a kódot tartalmazó fájlt, amely a modell betanítását és az előző lépésben megadott Python-függőségeket tartalmazza.
+1. Ezen a ponton az alábbihoz hasonló konfigurációs fájl jelenik meg a szövegszerkesztőben. A konfiguráció tartalmazza a betanítási feladat futtatásához szükséges információkat, például a modell betanításához szükséges kódot és az előző lépésben megadott Python-függőségeket tartalmazó fájlt.
 
     ```json
     {
@@ -104,39 +104,39 @@ Most, hogy bejelentkezett az Azure-ba a fiókja hitelesítő adataival, kövesse
     }
     ```
 
-1. Ha elégedett a konfigurációval, küldje el a kísérletet a Command paletta megnyitásával, és írja be a következő parancsot:
+1. Miután elégedett a konfigurációval, küldje el a kísérletet a parancspaletta megnyitásával és a következő parancs beírásával:
 
     ```text
     Azure ML: Submit Experiment
     ```
 
-    Ez elküldi a `train.py` és a konfigurációs fájlt a Azure Machine Learning munkaterületre. Ezután a betanítási feladatot egy Azure-beli számítási erőforráson indítja el.
+    Ez elküldi `train.py` a konfigurációs fájlt az Azure Machine Learning-munkaterületre. A betanítási feladat ezután elindul egy számítási erőforrás az Azure-ban.
 
-### <a name="track-the-progress-of-the-training-script"></a>A betanítási szkript előrehaladásának nyomon követése
+### <a name="track-the-progress-of-the-training-script"></a>A betanítási parancsfájl előrehaladásának nyomon követése
 
-A szkript futtatása több percet is igénybe vehet. A folyamat nyomon követése:
+A parancsfájl futtatása több percet is igénybe vehet. A folyamat nyomon követése:
 
-1. Válassza ki az **Azure** ikont a tevékenység sávjából.
-1. Bontsa ki az előfizetési csomópontot.
-1. Bontsa ki a jelenleg futó kísérlet csomópontját. Ez a `{workspace}/Experiments/{experiment}` csomóponton belül található, ahol a munkaterület és a kísérlet értékei megegyeznek a konfigurációs fájlban megadott tulajdonságokkal.
-1. A kísérlet összes futtatása megjelenik, valamint az állapotuk. A legutóbbi állapot beszerzéséhez kattintson a Azure Machine Learning nézet tetején található frissítés ikonra.
+1. Válassza ki az **Azure** ikont a tevékenységsávon.
+1. Bővítse ki az előfizetési csomópontot.
+1. Bontsa ki az éppen futó kísérlet csomópontját. Ez a `{workspace}/Experiments/{experiment}` csomóponton belül található, ahol a munkaterület és a kísérlet értékei megegyeznek a konfigurációs fájlban megadott tulajdonságokkal.
+1. A kísérlet összes futtatása fel van sorolva, valamint azok állapota. A legutóbbi állapot lefelvételéhez kattintson a frissítésikonra az Azure Machine Learning nézet tetején.
 
     > [!div class="mx-imgBorder"]
-    > ![a kísérlet előrehaladásának nyomon követése](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
+    > ![A kísérlet előrehaladásának nyomon követése](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
 
 ### <a name="download-the-trained-model"></a>A betanított modell letöltése
 
-A kísérlet futtatása után a kimenet egy betanított modell. A kimenetek helyi letöltése:
+Amikor a kísérlet futtatása befejeződött, a kimenet egy betanított modell. A kimenetek helyi letöltése:
 
-1. Kattintson a jobb gombbal a legutóbbi futtatásra, és válassza a **Letöltés kimenetek**lehetőséget.
+1. Kattintson a jobb gombbal a legutóbbi futtatásra, és válassza **a Kimenetek letöltése parancsot.**
 
     > [!div class="mx-imgBorder"]
-    > ![betanított modell letöltése](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
+    > ![Betanított modell letöltése](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
 
 1. Válassza ki azt a helyet, ahová a kimeneteket menteni szeretné.
-1. A rendszer helyileg tölti le a Futtatás nevét tartalmazó mappát. Keresse meg.
-1. A modell fájljai a `outputs/outputs/model` könyvtárban találhatók.
+1. A program helyileg letölt egy mappát a futtatás nevével. Keresse meg.
+1. A modellfájlok a `outputs/outputs/model` könyvtárban vannak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: lemezkép besorolása TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine learning használatával](tutorial-train-deploy-image-classification-model-vscode.md).
+* [Oktatóanyag: Betanítson és telepítsen egy HypersorFlow-modellrendszer-besorolást az Azure Machine Learning Visual Studio kódbővítmény használatával.](tutorial-train-deploy-image-classification-model-vscode.md)

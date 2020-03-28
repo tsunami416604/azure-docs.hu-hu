@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: SQL-alapú lekérdezés Azure Cosmos DBban?'
-description: 'Oktatóanyag: az SQL-lekérdezésekkel való lekérdezés Azure Cosmos DB a THW Query Playground használatával'
+title: 'Oktatóanyag: Sql lekérdezése az Azure Cosmos DB-ben?'
+description: 'Oktatóanyag: Ismerje meg, hogyan lehet SQL-lekérdezésekkel lekérdezni az Azure Cosmos DB-ben a thw query játszótér használatával'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870071"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
@@ -67,7 +67,7 @@ További tudnivalók az SQL-lekérdezésekről:
 
 Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel? Kövesse az [5 perces gyorsútmutató lépéseit](create-cosmosdb-resources-portal.md).
 
-## <a name="example-query-1"></a>1\. példalekérdezés
+## <a name="example-query-1"></a>1. példalekérdezés
 
 A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokumentumokat ad vissza, amelyek azonosítót tartalmazó mezői megegyeznek a következővel: `WakefieldFamily`. Mivel ez egy `SELECT *` utasítás, a lekérdezés kimenete a teljes JSON-dokumentum:
 
@@ -77,7 +77,7 @@ A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokument
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-**Results**
+**Results (Eredmények)**
 
 ```json
 {
@@ -108,7 +108,7 @@ A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokument
 }
 ```
 
-## <a name="example-query-2"></a>2\. példalekérdezés
+## <a name="example-query-2"></a>2. példalekérdezés
 
 A következő lekérdezés a család összes olyan gyermekének utónevét adja vissza, amelyek azonosítója egyezik a `WakefieldFamily` kifejezéssel, az évfolyamuk szerint rendezve.
 
@@ -119,12 +119,12 @@ A következő lekérdezés a család összes olyan gyermekének utónevét adja 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
 
-**Results**
+**Results (Eredmények)**
 
 [ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

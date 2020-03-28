@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Azure Analysis Services szerepkörök konfigurálása | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat Azure Analysis Services rendszergazdai és felhasználói szerepköröket a Azure Portal vagy a SQL Server Management Studio használatával.
+title: Oktatóanyag – Az Azure Analysis Services szerepkörök konfigurálása | Microsoft dokumentumok
+description: Megtudhatja, hogyan konfigurálhatja az Azure Analysis Services rendszergazdai és felhasználói szerepköröket az Azure Portal vagy az SQL Server Management Studio használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273678"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
@@ -37,7 +37,7 @@ Az Azure Analysis Services felhasználói biztonságáról a [Hitelesítés és 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [portálra](https://portal.azure.com/).
+Jelentkezzen be a [portálra.](https://portal.azure.com/)
 
 ## <a name="get-server-name"></a>Kiszolgálónév lekérése
 Ahhoz, hogy az SSMS-ből csatlakozni tudjon a kiszolgálójához, szüksége lesz a kiszolgáló nevére. A kiszolgálónevet a portálról kérheti le.
@@ -85,7 +85,7 @@ Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozz�
 Ebben a feladatban felhasználói vagy csoportfiókot fog hozzáadni a modellben már meglévő Internet Sales Administrator szerepkörhöz. Ez a szerepkör teljes (rendszergazdai) hozzáféréssel rendelkezik az adventureworks minta-modelladatbázishoz. A feladat a [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL-parancsot használja az Ön számára létrehozott szkriptben.
 
 1. Az **Object Explorerben** bontsa ki az **Adatbázisok** > **adventureworks** > **Szerepkörök** elemet. 
-2. Kattintson a jobb gombbal az **Internet Sales Administrator** elemre, majd kattintson a **Szerepkör szkriptelése:**  > **Létrehozás vagy áthelyezés ide:**  > **Új lekérdezésszerkesztő ablak**.
+2. Kattintson a jobb gombbal az **Internet Sales Administrator** elemre, majd kattintson a **Szerepkör szkriptelése:** > **Létrehozás vagy áthelyezés ide:** > **Új lekérdezésszerkesztő ablak**.
 
     ![Új lekérdezésszerkesztő ablak](./media/analysis-services-tutorial-roles/aas-add-db-admin.png)
 
@@ -130,16 +130,16 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/analysis-services/tmsl/
 ## <a name="verify-your-changes"></a>Módosítások ellenőrzése
 
 1. Az **Object Explorerben** kattintson a kiszolgálója nevére, majd kattintson a **Frissítés** lehetőségre, vagy nyomja le az **F5** billentyűt.
-2. Bontsa ki az **Adatbázisok** > **adventureworks** > **Szerepkörök** elemet. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
+2. **Bontsa adatbázisok** > **kalandworks** > **Szerepek**. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
 
     ![Ellenőrzés az Object Explorerben](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. A felhasználói fiókok eltávolításához használja a **Szerepkör tulajdonságai** > **Tagság** lehetőséget. Kattintson a jobb gombbal egy szerepkörre, majd kattintson a **Törlés** lehetőségre.
+Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **Szerepkör tulajdonságai** > **tagsággal** távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal egy szerepkörre, majd kattintson a Törlés **parancsra.**
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanult csatlakozni Azure AS-kiszolgálójához, megismerkedett az adventureworks minta-modelladatbázissal és annak tulajdonságaival az SSMS-ben. Elsajátította az SSMS és a TMSL-szkriptek használatát felhasználók vagy csoportok meglévő vagy új szerepkörökhöz adására. Most, hogy konfigurálta a kiszolgáló és a minta-modelladatbázis felhasználói engedélyeit, Önnel együtt mások is csatlakozhatnak ahhoz olyan ügyfélalkalmazások használatával, mint a Power BI. További tudnivalók a következő oktatóanyagban. 
 
 > [!div class="nextstepaction"]

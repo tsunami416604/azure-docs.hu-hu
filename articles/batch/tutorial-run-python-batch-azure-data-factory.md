@@ -1,6 +1,6 @@
 ---
-title: Python-parancsfájlok futtatása Data Factory-Azure Batch Python használatával
-description: Oktatóanyag – megtudhatja, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory segítségével.
+title: Python-parancsfájlok futtatása a Data Factory szolgáltatáson keresztül – Azure Batch Python
+description: Oktatóanyag – Ismerje meg, hogyan futtathat Python-parancsfájlokat egy folyamat részeként az Azure Data Factory azure-beli batch használatával.
 services: batch
 author: mammask
 manager: jeconnoc
@@ -11,70 +11,70 @@ ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
 ms.openlocfilehash: 2995c5da4491f14471d9ed03022a144a02beab5a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201835"
 ---
-# <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
+# <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása az Azure Data Factory használatával az Azure Batch használatával
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Hitelesítés Batch- és Storage-fiókokkal
-> * Parancsfájl fejlesztése és futtatása Pythonban
+> * Parancsfájl fejlesztése és futtatása pythonban
 > * Számításicsomópont-készlet létrehozása alkalmazás futtatásához
-> * A Python számítási feladatainak beosztása
-> * Az elemzési folyamat monitorozása
-> * Hozzáférés a naplófájlokhoz
+> * A Python-munkaterhelések ütemezése
+> * Az elemzési folyamat figyelése
+> * A naplófájlok elérése
 
-Az alábbi példa olyan Python-szkriptet futtat, amely egy blob Storage-tárolóból fogad CSV-bemenetet, végrehajt egy adatkezelési folyamatot, és egy külön blob Storage-tárolóba írja a kimenetet.
+Az alábbi példa futtatja a Python-parancsfájlt, amely csv-bemenetet fogad egy blob tárolóból, adatkezelési folyamatot hajt végre, és a kimenetet egy külön blobtárolóba írja.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepített [Python](https://www.python.org/downloads/) -eloszlás helyi teszteléshez.
-* Az [Azure](https://pypi.org/project/azure/) `pip`-csomag.
-* Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A Batch-fiókok Storage-fiókokhoz való létrehozásával és összekapcsolásával kapcsolatos további információkért tekintse meg [a Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) című témakört.
-* Egy Azure Data Factory-fiók. A adat-előállító létrehozásával kapcsolatos további információkért tekintse meg Azure Portal az adat-előállító [létrehozása](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) című témakört.
-* [Batch Explorer](https://azure.github.io/BatchExplorer/).
-* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+* Telepített [Python](https://www.python.org/downloads/) Python-disztribúció helyi teszteléshez.
+* Az [Azure-csomag.](https://pypi.org/project/azure/) `pip`
+* Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A [Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) című témakörben további információt talál a Batch-fiókok létrehozásáról és a tárfiókokhoz való csatolásáról.
+* Egy Azure Data Factory-fiók. Az [Adatgyár létrehozása](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) című témakörben további információt talál arról, hogyan hozhat létre adatgyárat az Azure Portalon keresztül.
+* [Batch Explorer .](https://azure.github.io/BatchExplorer/)
+* [Az Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)alkalmazást.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
-## <a name="create-a-batch-pool-using-batch-explorer"></a>Batch-készlet létrehozása Batch Explorer használatával
+## <a name="create-a-batch-pool-using-batch-explorer"></a>Kötegkészlet létrehozása a Batch Explorer használatával
 
-Ebben a szakaszban a Batch Explorer használatával hozza létre az Azure-beli adatfeldolgozó-folyamat által használt batch-készletet. 
+Ebben a szakaszban a Batch Explorer használatával hozza létre az Azure Data-folyamat által használni kívánt batch készletet. 
 
-1. Jelentkezzen be Batch Explorer Azure-beli hitelesítő adataival.
-1. Válassza ki a Batch-fiókját
-1. Hozzon létre egy készletet a bal oldali sávban található **készletek** kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
-    1. Válassza ki az azonosítót és a megjelenítendő nevet. Ezt a példát `custom-activity-pool` fogjuk használni.
-    1. Állítsa a skálázási típust **rögzített méretre**, és állítsa a dedikált csomópontok száma értéket a 2 értékre.
-    1. Az **adatelemzés**területen válassza a **Windows Dsvm** operációs rendszerként lehetőséget.
-    1. A virtuális gép méreteként válassza a `Standard_f2s_v2` lehetőséget.
-    1. Engedélyezze az indítási feladatot, és adja hozzá a `cmd /c "pip install pandas"`parancsot. A felhasználói identitás az alapértelmezett **készlet felhasználója**maradhat.
-    1. Kattintson az **OK** gombra.
+1. Jelentkezzen be a Batch-kezelőbe az Azure-hitelesítő adatok használatával.
+1. Válassza ki a Batch-fiókot
+1. Hozzon létre egy készletet a bal oldali sávon lévő **Készletek,** majd a keresési űrlap feletti **Hozzáadás** gomb kiválasztásával. 
+    1. Válasszon azonosítót és megjelenítendő nevet. Ezt a `custom-activity-pool` példát fogjuk használni.
+    1. Állítsa a méretezési típust **Rögzített méretre,** és állítsa a dedikált csomópontszámot 2-re.
+    1. Az **Adatelemzés**csoportban válassza a **DSvm Windows** operációs rendszert.
+    1. Válassza `Standard_f2s_v2` ki a virtuális gép méretét.
+    1. Engedélyezze a kezdő feladatot, és adja hozzá a parancsot `cmd /c "pip install pandas"`. A felhasználói identitás maradhat az alapértelmezett **készletfelhasználó.**
+    1. Válassza **az OK gombot.**
 
-## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
+## <a name="create-blob-containers"></a>Blob-tárolók létrehozása
 
-Itt olyan blob-tárolókat hoz létre, amelyek a bemeneti és kimeneti fájljait fogják tárolni az OCR batch-feladathoz.
+Itt hozhat létre blobtárolókat, amelyek az OCR kötegelt feladat bemeneti és kimeneti fájljait tárolják.
 
-1. Jelentkezzen be Storage Explorer Azure-beli hitelesítő adataival.
-1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)című témakör lépéseit követve.
-    * Ebben a példában meghívjuk a bemeneti tárolót `input`és a kimeneti tárolót `output`.
-1. Töltse fel `main.py` és `iris.csv` a bemeneti tárolóba `input` a Storage Explorer használatával a [Blobok blob-tárolóban való kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
+1. Jelentkezzen be a Storage Explorerbe az Azure-hitelesítő adatokhasználatával.
+1. A Batch-fiókhoz kapcsolódó tárfiók használatával hozzon létre két blobtárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [Blob-tároló létrehozása](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)című szakasz lépéseit követve.
+    * Ebben a példában a bemeneti `input`tárolót és `output`a kimeneti tárolót hívjuk meg.
+1. `main.py` Feltöltés `iris.csv` és a `input` bemeneti tárolóba a Storage Explorer használatával a [blobok kezelése egy blobtárolóban](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) című lépések végrehajtásával
 
 
-## <a name="develop-a-script-in-python"></a>Parancsfájl fejlesztése a Pythonban
+## <a name="develop-a-script-in-python"></a>Parancsfájl fejlesztése pythonban
 
-A következő Python-szkript betölti a `iris.csv` adatkészletet a `input` tárolóból, végrehajt egy adatkezelési folyamatot, és visszamenti az eredményeket a `output` tárolóba.
+A következő Python-parancsfájl betölti az adatkészletet a `iris.csv` `input` tárolóból, adatkezelési folyamatot `output` hajt végre, és menti az eredményeket a tárolóba.
 
 ``` python
 # Load libraries
@@ -104,58 +104,58 @@ df.to_csv("iris_setosa.csv", index = False)
 blobService.create_blob_from_text(containerName, "iris_setosa.csv", "iris_setosa.csv")
 ```
 
-Mentse a parancsfájlt `main.py`ként, és töltse fel az **Azure Storage** -tárolóba. A blob-tárolóba való feltöltés előtt ügyeljen arra, hogy a funkcionalitását helyileg tesztelje és érvényesítse:
+Mentse a `main.py` parancsfájlt, és töltse fel az Azure Storage-tárolóba. **Azure Storage** Győződjön meg arról, hogy tesztelje és érvényesítse a funkcionalitáshelyileg feltöltés előtt a blob tárolóba:
 
 ``` bash
 python main.py
 ```
 
-## <a name="set-up-an-azure-data-factory-pipeline"></a>Azure Data Factory folyamat beállítása
+## <a name="set-up-an-azure-data-factory-pipeline"></a>Azure Data Factory-folyamat beállítása
 
-Ebben a szakaszban egy folyamatot hoz létre és érvényesít a Python-parancsfájl használatával.
+Ebben a szakaszban hozzon létre és érvényesítsen egy folyamatot a Python-parancsfájl használatával.
 
-1. Az adat-előállító létrehozásához kövesse a [jelen cikk](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)"adat-előállító létrehozása" című szakaszának lépéseit.
-1. A **gyári erőforrások** mezőben válassza a + (plusz) gombot, majd válassza a **folyamat** elemet.
-1. Az **általános** lapon állítsa be a folyamat nevét "Python futtatása" értékre.
+1. Az adat-előállító létrehozásához kövesse az adatgyár at the "Create a data factory" [című](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)részében.
+1. A **Gyári erőforrások** párbeszédpanelen válassza a + (plusz) gombot, majd a **Folyamat lehetőséget.**
+1. Az **Általános** lapon állítsa be a folyamat nevét "Python futtatása" formában.
 
     ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. A **tevékenységek** mezőben bontsa ki a **Batch szolgáltatás**elemet. Húzza az egyéni tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére.
-1. Az **általános** lapon adja meg a **testPipeline** nevet
+1. A **Tevékenységek** mezőben bontsa ki a **Kötegelt szolgáltatás csomópontot.** Húzza az egyéni tevékenységet a **Tevékenységek** eszközkészletből a folyamattervező felületére.
+1. Az **Általános** lapon adja meg a **testPipeline** értéket a Név mezőbe.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. A **Azure batch** lapon adja hozzá az előző lépésekben létrehozott **Batch-fiókot** , és **tesztelje a kapcsolódást** annak érdekében, hogy sikeres legyen.
+1. Az **Azure Batch** lapon adja hozzá az előző lépésekben létrehozott **Batch-fiókot,** és tesztelje a **kapcsolatot,** hogy megbizonyosodjon arról, hogy sikeres
 
     ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
-1. A **Beállítások** lapon adja meg a `python main.py`parancsot.
-1. Az **erőforráshoz társított szolgáltatáshoz**adja hozzá az előző lépésekben létrehozott Storage-fiókot. Ellenőrizze, hogy a kapcsolódás sikeres volt-e.
-1. A **mappa elérési útja**mezőben válassza ki a Python-parancsfájlt és a hozzá tartozó bemeneti adatokat tartalmazó **Azure Blob Storage** tároló nevét. Ezzel letölti a kiválasztott fájlokat a tárolóból a készlet csomópont példányaira a Python-szkript végrehajtása előtt.
+1. A **Beállítások** lapon adja `python main.py`meg a parancsot .
+1. Az **erőforrás-csatolt szolgáltatáshoz**adja hozzá az előző lépésekben létrehozott tárfiókot. Tesztelje a kapcsolatot, hogy megbizonyosodjon a sikerességről.
+1. A **mappaelérési út**ban válassza ki a Python-parancsfájlt és a kapcsolódó bemeneteket tartalmazó **Azure Blob Storage-tároló** nevét. Ez letölti a kijelölt fájlokat a tárolóból a készlet csomópontpéldányaiak a Python-parancsfájl végrehajtása előtt.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
-1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítési kimenet bezárásához kattintson a &gt;&gt; (jobbra mutató nyíl) gombra.
-1. A folyamat teszteléséhez kattintson a **hibakeresés** elemre, és győződjön meg róla, hogy az megfelelően működik-e.
+1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítés kimenetének bezárásához kattintson a &gt;&gt; (jobbra mutató nyíl) gombra.
+1. Kattintson **a Hibakeresés gombra** a folyamat teszteléséhez és annak biztosításához, hogy az pontosan működjön.
 1. A folyamat közzétételéhez kattintson a **Közzététel** gombra.
-1. Kattintson az **aktiválás** gombra a Python-szkript batch-folyamat részeként való futtatásához.
+1. Kattintson **az Eseményindító** gombra a Python-parancsfájl kötegelt folyamat részeként való futtatásához.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>A naplófájlok figyelése
 
-Ha a parancsfájl végrehajtásával figyelmeztetések vagy hibák jönnek létre, a naplózott kimenettel kapcsolatos további információkért tekintse meg `stdout.txt` vagy `stderr.txt`.
+Abban az esetben, ha a parancsfájl végrehajtása figyelmeztetéseket `stdout.txt` vagy `stderr.txt` hibákat hoz létre, kiveheti, vagy további információt a naplózott kimenetről.
 
-1. Batch Explorer bal oldalán válassza a **feladatok** lehetőséget.
-1. Válassza ki az adatok előállítója által létrehozott feladatot. Ha elnevezte a készletét `custom-activity-pool`, válassza a `adfv2-custom-activity-pool`lehetőséget.
-1. Kattintson arra a feladatra, amelynél hiba történt a kilépési kóddal.
-1. `stdout.txt` és `stderr.txt` megtekintése a probléma kivizsgálásához és diagnosztizálásához.
+1. Válassza a **Feladatok** lehetőséget a Batch Explorer bal oldalán.
+1. Válassza ki az adat-előállító által létrehozott feladatot. Feltéve, hogy `custom-activity-pool`elnevezte a készletet, válassza a lehetőséget. `adfv2-custom-activity-pool`
+1. Kattintson arra a feladatra, amelynek hibakilépési kódja volt.
+1. Tekintse `stdout.txt` `stderr.txt` meg, vizsgálja meg és diagnosztizálja a problémát.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag egy példát mutat be, amely azt tanította, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory.
+Ebben az oktatóanyagban egy példát tárt fel, amely megtanította, hogyan futtathatja a Python-parancsfájlokat az Azure Data Factory azure-beli data-folyamaton keresztül az Azure Batch használatával.
 
-A Azure Data Factoryról további információt a következő témakörben talál:
+Ha többet szeretne megtudni az Azure Data Factoryról, olvassa el a következő témakört:
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory](../data-factory/introduction.md)
 > [folyamatok és tevékenységek](../data-factory/concepts-pipelines-activities.md)
-> [egyéni tevékenységek](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [Egyéni tevékenységek](../data-factory/transform-data-using-dotnet-custom-activity.md)

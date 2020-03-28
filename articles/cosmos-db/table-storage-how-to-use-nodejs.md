@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table Storage vagy a Azure Cosmos DB Table API használata a Node. js-ből
+title: Azure Table storage vagy Azure Cosmos DB Table API használata a Node.js fájlból
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771084"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
@@ -68,7 +68,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
-Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. A Cosmos DB-fiók ezen értékeit az Azure Portal **Beállítások** > **Kapcsolati sztring** területéről másolhatja ki. Példa:
+Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. Ezeket az értékeket a **Beállítások** > **kapcsolati karakterláncból** másolja az Azure Portalon a Cosmos DB-fiókjához. Példa:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 A `result.created` értéke `true`, amennyiben új táblát hoz létre, és `false`, amennyiben a tábla már létezik. A `response` a kérésre vonatkozó információkat tartalmaz.
 
 ### <a name="filters"></a>Szűrők
-A **TableService** objektummal opcionális szűrőket alkalmazhat a végrehajtott műveleteken. A szűrési műveletek magukban foglalhatják a naplózást, az automatikus újrapróbálkozásokat stb. A szűrők olyan objektumok, amelyek az aláírással ellátott metódust implementálják:
+A **TableService** objektummal opcionális szűrőket alkalmazhat a végrehajtott műveleteken. A szűrési műveletek közé tartozhat a naplózás, az automatikus újrapróbálkozások stb. A szűrők olyan objektumok, amelyek egy módszert implementáljanak az aláírással:
 
 ```javascript
 function handle (requestOptions, next)
@@ -207,10 +207,10 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 
 Ha a **replaceEntity** és **mergeEntity** metódusok esetében a frissíteni kívánt entitás nem létezik, akkor a frissítés meghiúsul. Ezért, ha tárolni szeretne egy entitást függetlenül attól, hogy már létezik-e, használja az **insertOrReplaceEntity** vagy **insertOrMergeEntity** metódusokat.
 
-Sikeres frissítés esetén a frissített entitás `result`ETagje**a** részét képezi.
+Sikeres frissítés esetén a frissített entitás `result`ETagje** a ** részét képezi.
 
 ## <a name="work-with-groups-of-entities"></a>Entitáscsoportok használata
-Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez a **TableBatch** osztállyal hozzon létre egy köteget, majd használja a **TableService** **executeBatch** metódusát a kötegelt műveletek végrehajtásához.
+Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez a **TableBatch** osztállyal hozzon létre egy köteget, majd használja a **TableService****executeBatch** metódusát a kötegelt műveletek végrehajtásához.
 
  Az alábbi példa két entitás egy kötegben való elküldését mutatja be:
 
@@ -365,12 +365,12 @@ dc.table.queryEntities(tableName,
 
 Ha megvizsgálja a `continuationToken` objektumot, olyan tulajdonságokat fog találni, mint például a `nextPartitionKey`, `nextRowKey` és `targetLocation`, amelyeket az eredmények közti iterációhoz használhat.
 
-Az oldalméret beállításához a `top` és a `continuationToken` is használható. 
+Az oldalméret `top` beállításával `continuationToken` együtt is használható. 
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 A közös hozzáférésű jogosultságkódokkal (Shared access signatures, SAS) biztonságos és részletes hozzáférést biztosíthat a táblákhoz anélkül, hogy megadná Storage-fiókjának nevét vagy kulcsait. Az SAS-t gyakran használják az adatokhoz való korlátozott hozzáférés biztosítására, például arra, hogy a mobilalkalmazások hozzáférhessenek a lekérdezésrekordokhoz.
 
-A megbízható alkalmazások, például a felhőalapú szolgáltatások SAS-eket hoznak létre a **TableService** **generateSharedAccessSignature** metódusával, és átadják azokat nem megbízható vagy részben megbízható alkalmazásoknak, például mobilalkalmazásoknak. A rendszer egy szabályzat segítségével hozza létre az SAS-eket, amely meghatározza az SAS érvényességének kezdő és befejező dátumát, valamint az SAS tulajdonosának biztosított hozzáférési szintet.
+A megbízható alkalmazások, például a felhőalapú szolgáltatások SAS-eket hoznak létre a **TableService****generateSharedAccessSignature** metódusával, és átadják azokat nem megbízható vagy részben megbízható alkalmazásoknak, például mobilalkalmazásoknak. A rendszer egy szabályzat segítségével hozza létre az SAS-eket, amely meghatározza az SAS érvényességének kezdő és befejező dátumát, valamint az SAS tulajdonosának biztosított hozzáférési szintet.
 
 Az alábbi példa egy új megosztott elérési házirendet hoz létre, amellyel az SAS tulajdonosa lekérdezheti ('r’) a táblát, és amely a létrehozástól számított 100 perc elteltével lejár.
 
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 Vegye figyelembe, hogy a gazdagép adatait is meg kell adnia, mivel szükség van rájuk, ha az SAS tulajdonosa megkísérel hozzáférni a táblához.
 
-Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával](../storage/common/storage-sas-overview.md) a tableSAS formátumához. 
+Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [Korlátozott hozzáférés az Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS)](../storage/common/storage-sas-overview.md) használatával a tableSAS formátumát. 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -454,7 +454,7 @@ Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosít
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következő forrásanyagokat.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

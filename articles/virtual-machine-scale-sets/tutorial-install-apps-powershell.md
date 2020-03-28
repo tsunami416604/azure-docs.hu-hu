@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – alkalmazások telepítése egy méretezési csoportba Azure PowerShell
+title: Oktatóanyag – Alkalmazások telepítése méretezési készletben az Azure PowerShell használatával
 description: Megismerheti, hogyan telepíthet alkalmazásokat virtuálisgép-méretezési csoportokban az egyéni szkriptbővítmény és az Azure PowerShell használatával
 author: cynthn
 tags: azure-resource-manager
@@ -9,22 +9,22 @@ ms.date: 11/08/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5e1b21b1d00defdb090a35c067fa533a482c828d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271514"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure PowerShell-lel
 
-Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Alkalmazások automatikus telepítése a méretezési csoporton
 > * Az egyéni Azure-szkriptek bővítményének használata
 > * Egy méretezési csoporton futtatott alkalmazás frissítése
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -34,13 +34,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="what-is-the-azure-custom-script-extension"></a>Mi az egyéni Azure-szkriptek bővítménye?
 Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében.
 
-Az egyéni szkriptek bővítménye Azure Resource Manager-sablonokkal integrálódik. Az Azure CLI, Azure PowerShell, Azure Portal vagy a REST API használatával is használható. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
+Az egyéni parancsfájl-bővítmény integrálható az Azure Resource Manager-sablonokkal. Az Azure CLI, az Azure PowerShell, az Azure Portal vagy a REST API használatával is használható. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
 
 Az egyéni szkriptbővítmény működés közben való megtekintéséhez hozzon létre egy méretezési csoportot, amely telepíti az IIS-webkiszolgálót, és a méretezési csoport virtuálisgép-példányának gazdagépnevét adja vissza. Az egyéni szkriptbővítmény definíciója letölt egy mintaszkriptet a GitHubról, telepíti a szükséges csomagokat, majd kiírja a virtuálisgép-példány gazdagépnevét egy alap HTML-oldalra.
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Most hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó olyan szabályokat tartalmaz, amelyek a 80-es TCP-porton keresztül terjesztik a forgalmat. Emellett lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell-távelérést a 5985-es TCP-porton Ha a rendszer kéri, beállíthatja a virtuálisgép-példányok saját rendszergazdai hitelesítő adatait a méretezési csoportba:
+Most hozzon létre egy virtuális gép méretezési készlet [New-AzVmss](/powershell/module/az.compute/new-azvmss). A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályokat tartalmaz a 80-as TCP-port forgalmának elosztására. Azt is lehetővé teszi a távoli asztali forgalom a TCP-port 3389 és a PowerShell átirányítási TCP-port on 5985. Amikor a rendszer kéri, beállíthatja saját rendszergazdai hitelesítő adatait a méretezési csoportban a virtuálisgép-példányok hoz:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -68,7 +68,7 @@ $customConfig = @{
 ```
 
 
-Most alkalmazza az egyéni szkriptek bővítményét az [Add-AzVmssExtension](/powershell/module/az.Compute/Add-azVmssExtension). A korábban definiált konfigurációs objektum át lesz adva a bővítménynek. Frissítse és futtassa a bővítményt a virtuálisgép-példányokon a [Update-AzVmss-](/powershell/module/az.compute/update-azvmss)mel.
+Most alkalmazza az egyéni parancsfájl-bővítményt az [Add-AzVmssExtension alkalmazással.](/powershell/module/az.Compute/Add-azVmssExtension) A korábban definiált konfigurációs objektum át lesz adva a bővítménynek. Frissítse és futtassa a bővítményt a virtuális gép példányain [az Update-AzVmss](/powershell/module/az.compute/update-azvmss)segítségével.
 
 
 ```azurepowershell-interactive
@@ -98,7 +98,7 @@ A méretezési csoport összes virtuálisgép-példánya a GitHubról tölti le 
 
 ## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
 
-Az alapszintű webalkalmazáshoz való hozzáférés engedélyezéséhez hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) és a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). További információ: [hálózatkezelés az Azure-beli virtuálisgép-méretezési csoportokhoz](virtual-machine-scale-sets-networking.md).
+Az alapszintű webalkalmazáshoz való hozzáférés engedélyezéséhez hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) és [a New-AzNetworkSecurityGroup segítségével.](/powershell/module/az.network/new-aznetworksecuritygroup) További információ: [Networking for Azure virtual machine scale sets](virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 
@@ -140,7 +140,7 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-A webkiszolgáló működés közbeni megtekintéséhez szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)használatával. A következő példa a *myResourceGroup* erőforráscsoporthoz létrehozott IP-címet jeleníti meg:
+Ha működés közben szeretné látni a webkiszolgálót, a [Get-AzPublicIpAddress segítségével](/powershell/module/az.network/get-azpublicipaddress)kapja meg a terheléselosztó nyilvános IP-címét. A következő példa a *myResourceGroup* erőforráscsoportban létrehozott IP-címet jeleníti meg:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
@@ -165,7 +165,7 @@ $customConfigv2 = @{
 }
 ```
 
-Frissítse az egyéni szkriptek bővítményének konfigurációját a méretezési csoport virtuálisgép-példányaira. Az alkalmazás frissített verziója a *customConfigv2* definíció használatával alkalmazható:
+Frissítse az egyéni parancsfájl-bővítmény konfigurációját a méretezési csoport virtuálisgép-példányaira. Az alkalmazás frissített verziója a *customConfigv2* definíció használatával alkalmazható:
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss `
@@ -186,14 +186,14 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és az összes erőforrását a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
+A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)segítségével. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogy lehet alkalmazásokat automatikusan telepíteni és frissíteni a méretezési csoportokban az Azure PowerShell-lel:
 
 > [!div class="checklist"]

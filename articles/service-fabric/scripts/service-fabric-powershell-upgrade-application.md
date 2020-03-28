@@ -1,6 +1,6 @@
 ---
-title: Service Fabric alkalmazás frissítése a PowerShellben
-description: Azure PowerShell szkript minta – Azure Service Fabric-alkalmazás frissítése és figyelése a PowerShell használatával.
+title: Service Fabric-alkalmazás frissítése a Powershellben
+description: Azure PowerShell-parancsfájlminta – Frissítsen és figyeljen egy Azure Service Fabric-alkalmazást a Powershell használatával.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,15 +15,15 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614740"
 ---
-# <a name="upgrade-a-service-fabric-application"></a>Service Fabric alkalmazás frissítése
+# <a name="upgrade-a-service-fabric-application"></a>Service Fabric-alkalmazás frissítése
 
-Ez a minta parancsfájl egy futó Service Fabric alkalmazás-példányt frissít a 1.3.0 verzióra. A szkript átmásolja az új alkalmazáscsomag a fürt rendszerkép-tárolójába, regisztrálja az alkalmazás típusát, és eltávolítja a szükségtelen alkalmazáscsomag-csomagot.  A szkript elindít egy figyelt frissítést, és folyamatosan ellenőrzi a frissítési állapotot, amíg a frissítés be nem fejeződik vagy vissza nem áll. Szabja testre a paramétereket szükség szerint. 
+Ez a mintaparancsfájl egy futó Service Fabric-alkalmazáspéldányt frissít az 1.3.0-s verzióra. A parancsfájl átmásolja az új alkalmazáscsomagot a fürtlemezkép-tárolóba, regisztrálja az alkalmazás típusát, és eltávolítja a szükségtelen alkalmazáscsomagot.  A parancsfájl elindítja a figyelt frissítést, és folyamatosan ellenőrzi a frissítés állapotát, amíg a frissítés befejeződik, vagy vissza nem gördül. Szabja testre a paramétereket szükség szerint. 
 
 Ha szükséges, telepítse a Service Fabric PowerShell-modult a [Service Fabric SDK](../service-fabric-get-started.md)-val. 
 
@@ -37,18 +37,18 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | A Service Fabric-fürtben vagy egy adott alkalmazásban lévő összes alkalmazás beolvasása.  |
-| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Lekéri egy Service Fabric alkalmazás frissítésének állapotát. |
-| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Beolvassa a Service Fabric-fürtön regisztrált Service Fabric alkalmazás-típusokat. |
-| [Regisztráció törlése – ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Service Fabric-alkalmazás típusának törlése.  |
-| [Másolás – ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Service Fabric-alkalmazáscsomag másolása a rendszerkép-tárolóba.  |
-| [Regisztráció – ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Service Fabric alkalmazás típusának regisztrálása. |
-| [Start – ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Egy Service Fabric alkalmazás frissítése a megadott Application Type-verzióra. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Eltávolít egy Service Fabric alkalmazáscsomag a rendszerkép-tárolóból.|
+| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Letöltője a Service Fabric-fürt ben vagy egy adott alkalmazásban lévő összes alkalmazás letöltődése.  |
+| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | A Service Fabric-alkalmazás frissítésállapotának lekért. |
+| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Letöltője a Service Fabric-alkalmazástípusok regisztrálva a Service Fabric-fürtben. |
+| [Regisztráció megszüntetése-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Törölje a Service Fabric alkalmazástípus regisztrációját.  |
+| [Copy-ServiceFabricApplicationPackage csomag](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Egy Service Fabric-alkalmazáscsomagot másol a lemezképtárolóba.  |
+| [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Regisztrálja a Service Fabric alkalmazástípusát. |
+| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Egy Service Fabric-alkalmazást frissít a megadott alkalmazástípus-verzióra. |
+| [Remove-ServiceFabricApplicationPackage csomag](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Eltávolítja a Service Fabric alkalmazáscsomagot a lemezképtárból.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Service Fabric PowerShell-modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/service-fabric/?view=azureservicefabricps).
+A Service Fabric PowerShell-modulról az [Azure PowerShell dokumentációjában](/powershell/azure/service-fabric/?view=azureservicefabricps)olvashat bővebben.
 
 További Powershell-példákat az Azure Service Fabrichez az [Azure PowerShell-példák](../service-fabric-powershell-samples.md) között találhat.

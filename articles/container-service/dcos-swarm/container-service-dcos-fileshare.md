@@ -1,5 +1,5 @@
 ---
-title: (ELAVULT) Azure DC/OS fürt fájlmegosztás
+title: (ELAVULT) Fájlmegosztás az Azure DC/OS fürthöz
 description: Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz az Azure Container Service-ben
 services: container-service
 author: julienstroheker
@@ -10,20 +10,20 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60480384"
 ---
-# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(ELAVULT) Létrehozása és csatlakoztatása DC/OS fürt fájlmegosztás
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(ELAVULT) Fájlmegosztás létrehozása és csatlakoztatása tartományvezérlő-/operációsrendszer-fürthöz
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Ez az oktatóanyag részletesen ismerteti, hogyan hozhat létre fájlmegosztást az Azure-ban, és hogyan csatlakoztathatja azt a DC/OS-fürtök egyes ügynökein és főkiszolgálóin. Fájlmegosztás beállítása megkönnyíti a fájlok, például a konfigurációk, hozzáférési jogosultságok, naplók és egyebek megosztását a fürtben. Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Azure-tárfiók létrehozása
+> * Azure Storage-fiók létrehozása
 > * Fájlmegosztás létrehozása
 > * A fürt csatlakoztatása a DC/OS-fürtben
 
@@ -35,7 +35,7 @@ Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Fájlmegosztás létrehozása a Microsoft Azure-ban
 
-Mielőtt Azure-fájlmegosztást használna egy ACS DC/OS-fürtben, létre kell hoznia a tárfiókot és a fájlmegosztást. A tárat és a fájlmegosztást a következő szkripttel hozhatja létre. Frissítse a paramétereket azokkal a környezetből.
+Mielőtt Azure-fájlmegosztást használna egy ACS DC/OS-fürtben, létre kell hoznia a tárfiókot és a fájlmegosztást. A tárat és a fájlmegosztást a következő szkripttel hozhatja létre. Frissítse a paramétereket a környezetből származóparaméterekkel.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -147,7 +147,7 @@ A fájlmegosztás mostantól elérhető az `/mnt/share/dcosshare` útvonalon a f
 Ebben az oktatóanyagban elérhetővé tettünk egy Azure-fájlmegosztás a DC/OS-fürtben a következő lépések követésével:
 
 > [!div class="checklist"]
-> * Azure-tárfiók létrehozása
+> * Azure Storage-fiók létrehozása
 > * Fájlmegosztás létrehozása
 > * A fürt csatlakoztatása a DC/OS-fürtben
 

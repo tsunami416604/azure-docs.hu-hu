@@ -1,5 +1,5 @@
 ---
-title: Nagy mennyiségű véletlenszerű adatok letöltése az Azure Storage-ból | Microsoft Docs
+title: Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból | Microsoft dokumentumok
 description: Megismerkedhet nagy mennyiségű véletlenszerű adat letöltésével egy Azure Storage-fiókból az Azure SDK használatával
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75372091"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból
@@ -27,7 +27,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez el kell végeznie az előző tárolási oktatóanyagot: [nagy mennyiségű véletlenszerű adatok párhuzamos feltöltése az Azure Storage-][previous-tutorial]ba.
+Az oktatóanyag teljesítéséhez el kell végeznie az előző Storage-oktatóanyagot, amelynek címe: [Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 
@@ -98,10 +98,10 @@ dotnet run
 Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. Az alkalmazás egyszerre 10 blobon halad végig a [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) metódussal a tárolókban, majd letölti azokat a helyi gépre a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódussal.
 Az alábbi táblázatban az egyes letöltött blobokhoz megadott [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) paraméter látható.
 
-|Tulajdonság|Value (Díj)|Leírás|
+|Tulajdonság|Érték|Leírás|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| igaz| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása. |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és tárolása megtörtént-e.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| hamis| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és tárolása megtörtént-e.   |
 
 A következő példában az `DownloadFilesAsync` feladat látható:
 
@@ -198,7 +198,7 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat harmadik részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókból történő letöltésével, például a következőkkel:
 

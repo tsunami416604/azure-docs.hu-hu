@@ -1,25 +1,25 @@
 ---
-title: 'PowerShell: biztonsági másolat visszaállítása másik előfizetésre'
-description: Megtudhatja, hogyan használhatja a Azure PowerShell a App Service üzembe helyezésének és kezelésének automatizálására. Ez a minta azt mutatja be, hogyan lehet visszaállítani egy másik előfizetésben lévő biztonsági mentést.
+title: 'PowerShell: Biztonsági mentés visszaállítása egy másik előfizetésbe'
+description: Megtudhatja, hogyan automatizálhatja az Azure PowerShellt az App Service üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan lehet visszaállítani egy biztonsági mentést egy másik előfizetésben.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 8168fbedd1a639dce0ab8bd076e14ab24e2f6d1e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4a22148d4151fd3c80c7be439b5dd281200e5456
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685819"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044575"
 ---
-# <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Webalkalmazás visszaállítása egy másik előfizetésben lévő biztonsági másolatból a PowerShell használatával
+# <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Webalkalmazás visszaállítása egy másik előfizetés biztonsági másolatából a PowerShell használatával
 
-Ez a parancsfájl egy korábban befejezett biztonsági mentést kérdez le egy meglévő webalkalmazásból, és visszaállítja egy másik előfizetésben lévő webalkalmazásba. 
+Ez a mintaparancsfájl egy korábban befejezett biztonsági mentést kér le egy meglévő webalkalmazásból, és visszaállítja azt egy másik előfizetésben lévő webalkalmazásba. 
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
+Ha szükséges, telepítse az Azure PowerShell-t az [Azure PowerShell-útmutatóban](/powershell/azure/overview)található utasítás használatával, majd futtassa `Connect-AzAccount` a kapcsolatot az Azure-ral. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -29,7 +29,7 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-Ha már nincs szüksége a webalkalmazásra, az alábbi paranccsal távolíthatja el az erőforráscsoportot, a webalkalmazást és az összes kapcsolódó erőforrást.
+Ha már nincs szüksége a webalkalmazásra, a következő paranccsal távolítsa el az erőforráscsoportot, a webalkalmazást és az összes kapcsolódó erőforrást.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroupName -Force
@@ -41,12 +41,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Felvesz egy hitelesített fiókot Azure Resource Manager parancsmag-kérelmekhez.  |
+| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Hozzáad egy hitelesített fiókot, amely az Azure Resource Manager-parancsmagok kéréseivel használható.  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
-| [Új – AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy webalkalmazást |
-| [Visszaállítás – AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Visszaállítja egy webalkalmazást egy korábban befejezett biztonsági másolatból. |
+| [Új-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Webalkalmazás létrehozása |
+| [Visszaállítás-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Egy webalkalmazás visszaállítása egy korábban befejezett biztonsági másolatból. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

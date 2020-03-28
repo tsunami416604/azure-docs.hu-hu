@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: eamono
 ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65521429"
 ---
-# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Oktatóanyag: Az Azure Automation integrálása az Event Grid és a Microsoft Teams szolgáltatással
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Oktatóanyag: Az Azure Automation integrálása az Event Griddel és a Microsoft Teamsszel
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Event Grid-előfizetés létrehozása.
 > * A runbookot aktiváló virtuális gép létrehozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/autom
 4. Válassza az **Importálás** lehetőséget, és nevezze el a **Watch-VMWrite** néven.
 
 5. Az importálás befejeztével válassza a **Szerkesztés** lehetőséget a runbook forrásának megtekintéséhez. 
-6. A használandó parancsfájlt a 74-sor frissítése `Tag` helyett `Tags`.
+6. Frissítse a 74-es sort `Tag` a `Tags`parancsfájlban a helyett használandó módon.
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
@@ -70,7 +70,7 @@ Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/autom
 
 3. Adja a webhooknak az **AzureAutomationIntegration** nevet, és válassza a **Létrehozás** lehetőséget.
 
-4. A webhook URL-cím másolása a vágólapra, és mentse azt. A rendszer a webhook URL-címének segítségével információkat küld a Microsoft Teamsnek.
+4. Másolja a webhook URL-címét a vágólapra, és mentse. A rendszer a webhook URL-címének segítségével információkat küld a Microsoft Teamsnek.
 
 5. A webhook mentéséhez válassza a **Kész** lehetőséget.
 
@@ -105,7 +105,7 @@ Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/autom
     4. A **Definiált eseménytípusok** legördülő menüben az **Erőforrás írása sikeres** lehetőség kivételével törölje az összes többi jelölőnégyzet jelölését.
 
         > [!NOTE] 
-        > Az Azure Resource Manager nem jelenleg tesz különbséget közötti létrehozása és frissítése, így ebben az oktatóanyagban az összes Microsoft.Resources.ResourceWriteSuccess esemény megvalósítása az Azure-előfizetésében hívások nagy mennyiségű eredményezheti.
+        > Az Azure Resource Manager jelenleg nem tesz különbséget a létrehozás és a frissítés között, így az azure-előfizetésben az összes Microsoft.Resources.ResourceWriteSuccess eseményhez tartozó oktatóanyag megvalósítása nagy mennyiségű hívást eredményezhet.
     1. A **Végpont típusa** mezőben válassza a **Webhook** lehetőséget.
     2. Kattintson a **Végpont kiválasztása** gombra. A megnyíló **Webhook kiválasztása** lapon illessze be a Watch-VMWrite runbookhoz létrehozott webhook URL-címét.
     3. A **SZŰRŐK** területen adja meg azt az előfizetést és az erőforráscsoportot, ahol az újonnan létrehozott virtuális gépeket figyelni szeretné. Ennek így kell kinéznie: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`

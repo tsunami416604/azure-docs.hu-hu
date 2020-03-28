@@ -1,6 +1,6 @@
 ---
 title: Hogyan kérdezhetők le táblaadatok az Azure Cosmos DB-ben?
-description: Megtudhatja, hogyan kérdezheti le a Azure Cosmos DB Table API-fiókban tárolt adatlekérdezéseket OData szűrők és LINQ-lekérdezések használatával
+description: Megtudhatja, hogyan lehet lekérdezni az Azure Cosmos DB Table API-fiókban tárolt adatokat OData-szűrők és LINQ-lekérdezések használatával
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770485"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
@@ -26,7 +26,7 @@ Ez a cikk a következő feladatokat mutatja be:
 
 A cikkben szereplő lekérdezések a következő minta `People` táblát használják:
 
-| PartitionKey | RowKey | E-mail cím | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -48,9 +48,9 @@ Mivel a PartitionKey és a RowKey tulajdonságok képezik az entitás fő kulcs�
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
-**Results**
+**Results (Eredmények)**
 
-| PartitionKey | RowKey | E-mail cím | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -74,9 +74,9 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 További információ a szűrőkifejezések felépítéséről különböző adattípusokhoz:[Táblák és entitások lekérdezése](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
 
-**Results**
+**Results (Eredmények)**
 
-| PartitionKey | RowKey | E-mail cím | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
@@ -89,7 +89,7 @@ IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
             .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Az ACR használata Azure DC/OS-fürttel
+title: (ELAVULT) Az ACR használata Azure DC/OS-fürttel
 description: Azure Container Registry használata DC/OS-fürttel az Azure Container Service szolgáltatásban
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402069"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>ELAVULT Az ACR használata DC/OS-fürttel az alkalmazás üzembe helyezéséhez
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(ELAVULT) Az ACR használata DC/OS-fürttel az alkalmazás üzembe helyezéséhez
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -30,7 +30,7 @@ Ebben a cikkben az Azure Container Registry a DC/OS-fürtökkel való használat
 
 Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -127,7 +127,7 @@ Hozzon létre egy tárolót az Ubuntu-rendszerképből.
 docker run ubuntu --name base-image
 ```
 
-Most rögzítése a tárolót egy új rendszerképbe. A rendszerkép nevének tartalmaznia kell a tároló beállításjegyzékének `loginServer` nevét `loginServer/imageName`formátumával.
+Most rögzítése a tárolót egy új rendszerképbe. A lemezkép nevének `loginServer` tartalmaznia kell a tárolóbeállítás-jegyzék `loginServer/imageName`nevét.
 
 ```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
@@ -193,7 +193,7 @@ Helyezze üzembe az alkalmazást a DC/OS parancssori felületével.
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a DC/OS-t az Azure Container Registry használatára konfiguráltuk, beleértve az alábbi feladatokat:
 

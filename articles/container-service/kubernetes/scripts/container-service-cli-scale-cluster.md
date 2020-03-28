@@ -11,13 +11,13 @@ ms.topic: sample
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: 7e1136c179c5729f5ed0de189a90bbbb31412ab7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76270662"
 ---
-# <a name="deprecated-scale-an-azure-container-service-cluster"></a>ELAVULT Azure Container Service-fürt méretezése
+# <a name="deprecated-scale-an-azure-container-service-cluster"></a>(ELAVULT) Azure container service-fürt méretezése
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -49,7 +49,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 |---|---|
 | [az acs scale](/cli/azure/acs#az-acs-scale) | Egy ACS-fürt méretezése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

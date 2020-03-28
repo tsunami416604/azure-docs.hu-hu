@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Freedcamp |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Freedcamp között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Freedcampdel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Freedcamp között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,178 +17,178 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67101909"
 ---
-# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Oktatóanyag: Freedcamp integrálása az Azure Active Directoryval
+# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Oktatóanyag: A Freedcamp integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja a Freedcamp integrálása az Azure Active Directory (Azure AD) lesz. Freedcamp integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Freedcampet az Azure Active Directoryval (Azure AD). Ha integrálja a Freedcamp-et az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá Freedcamp Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Freedcamp az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Freedcamp.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve Freedcamp az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+A kezdéshez a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Freedcamp egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* Freedcamp egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a Freedcamp **SP és IDP** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben. A Freedcamp támogatja az **SP és az IDP** által kezdeményezett SSO-t.
 
-## <a name="adding-freedcamp-from-the-gallery"></a>Freedcamp hozzáadása a katalógusból
+## <a name="adding-freedcamp-from-the-gallery"></a>Freedcamp hozzáadása a galériából
 
-Az Azure AD integrálása a Freedcamp konfigurálásához hozzá kell Freedcamp a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Freedcamp Azure AD-be való integrációjának konfigurálásához hozzá kell adnia a Freedcamp-et a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **Freedcamp** kifejezést a keresőmezőbe.
-1. Válassza ki **Freedcamp** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **Hozzáadás a galéria szakaszban** írja be a **Freedcamp** kifejezést a keresőmezőbe.
+1. Válassza a **Freedcamp** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Freedcamp **Britta Simon**. Az SSO működjön kell Freedcamp az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a Freedcamp segítségével egy **Britta Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a freedcamp kapcsolódó felhasználója között.
 
-Az Azure AD SSO Freedcamp tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO freedcamp-es konfigurálásához és teszteléséhez hajtsa végre az alábbi építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Konfigurálja a Freedcamp](#configure-freedcamp)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Freedcamp tesztfelhasználót](#create-freedcamp-test-user)**  van egy megfelelője a Britta Simon Freedcamp, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használhassák ezt a funkciót.
+2. **[A Freedcamp konfigurálásával](#configure-freedcamp)** konfigurálja az SSO-beállításokat az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének britta simonnal való teszteléséhez.
+4. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy Britta Simon használhassa az Azure AD egyszeri bejelentkezést.
+5. **[Hozzon létre Freedcamp tesztfelhasználót,](#create-freedcamp-test-user)** hogy a Freedcamp-ben lévő Britta Simon megfelelője, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+6. **[Tesztelje az SSO-t,](#test-sso)** hogy ellenőrizze, működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Freedcamp** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Freedcamp** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az Egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    1. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
+    1. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
 
-    2. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
+    2. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
 
-1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<SUBDOMAIN>.freedcamp.com/login`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Felhasználók is adja meg az URL-címértékekre garanciát a saját felhasználói tartomány és azokat nem lehet feltétlenül a minta `freedcamp.com`, azok bármely ügyfél tartomány adott értéket megadhat, az alkalmazáspéldány jellemző. Is felveheti a kapcsolatot [Freedcamp ügyfél-támogatási csapatának](mailto:devops@freedcamp.com) URL-mintákra kapcsolatban további információért.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A felhasználók saját ügyféltartományukhoz viszonyítva is megadhatják az URL-értékeket, és nem feltétlenül a minta, `freedcamp.com`megadhatják az ügyféldomainre vonatkozó bármely értéket, amely az alkalmazáspéldányukra jellemző. Is felveheti a kapcsolatot [Freedcamp Ügyfél támogatási csapat](mailto:devops@freedcamp.com) további információkért url mintákat.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon keresse meg az **SAML aláíró tanúsítvány szakaszát,** keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+   ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. Az a **Freedcamp beállítása** területén másolja a megfelelő URL-címe szerint.
+1. A **Freedcamp beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 ### <a name="configure-freedcamp"></a>Freedcamp konfigurálása
 
-1. Automatizálhatja a Freedcamp konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
+1. A Freedcamp konfigurációjának automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
 
-    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-2. A felvett bővítmény a böngészőre, kattintson a **telepítő Freedcamp** fog irányítja át a Freedcamp alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni Freedcamp. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 5. lépések automatizálásához.
+2. Hozzáadása után kiterjesztés a böngésző, kattintson a **Setup Freedcamp** irányítja, hogy a Freedcamp alkalmazás. Innen adja meg az admin hitelesítő adatokat a Freedcamp-be való bejelentkezéshez. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-5.
 
-    ![Konfiguráció beállítása](common/setup-sso.png)
+    ![Beállítási konfiguráció](common/setup-sso.png)
 
-3. Ha azt szeretné, manuálisan állíthatja be az Freedcamp, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati Freedcamp webhelyét, és hajtsa végre az alábbi lépéseket:
+3. Ha manuálisan szeretné beállítani a Freedcamp-et, nyisson meg egy új böngészőablakot, és jelentkezzen be a Freedcamp vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. Az oldal jobb felső sarokban, kattintson a **profil** , majd lépjen **My Account**.
+4. A lap jobb felső sarkában kattintson a **profilra,** majd keresse meg a **Saját fiók (Saját fiók) lapot.**
 
     ![Freedcamp konfiguráció](./media/freedcamp-tutorial/config01.png)
 
-5. A menüsávon a bal oldali menüjében kattintson a **SSO** és az a **az egyszeri bejelentkezés kapcsolatok** oldalon tegye a következőket:
+5. A menüsor bal oldalán kattintson az **SSO-ra,** és az **SSO kapcsolatok** lapon hajtsa végre a következő lépéseket:
 
     ![Freedcamp konfiguráció](./media/freedcamp-tutorial/config02.png)
 
-    a. Az a **cím** szöveg írja be a címet.
+    a. A **Cím** mezőbe írja be a címet.
 
-    b. Az a **Entitásazonosító** szövegbeviteli mezőben illessze be a **az Azure AD-azonosító** érték, amely az Azure Portalról másolta.
+    b. Az **Entitásazonosító** szövegmezőben illessze be az **Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt.
 
-    c. Az a **bejelentkezési URL-cím** szövegbeviteli mezőben illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról másolta.
+    c. A **Bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-címet,** amelyet az Azure Portalról másolt.
 
-    d. Nyissa meg a Base64-kódolású tanúsítványt a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **tanúsítvány** szövegmezőben.
+    d. Nyissa meg a Base64 kódolású tanúsítványt a jegyzettömbben, másolja annak tartalmát, és illessze be a **Tanúsítvány** mezőbe.
 
-    e. Kattintson a **Submit** (Küldés) gombra.
+    e. Kattintson a **Küldés gombra.**
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon Britta Simon néven.
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `BrittaSimon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon által biztosított hozzáférés Freedcamp Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést a Freedcamp-hez való hozzáférés biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **Freedcamp**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **Freedcamp**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a Felhasználó lista **Britta Simon** elemet, majd kattintson a képernyő alján található **Kijelölés** gombra.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
 ### <a name="create-freedcamp-test-user"></a>Freedcamp tesztfelhasználó létrehozása
 
-Engedélyezi az Azure AD-felhasználók, jelentkezzen be a Freedcamp, hogy azok ki kell építeni Freedcamp be. Freedcamp a kiépítés manuális feladat.
+Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a Freedcamp be, ki kell építeni a Freedcamp. A Freedcamp, kiépítése a manuális feladat.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Egy másik böngészőablakban jelentkezzen be Freedcamp egy biztonsági-rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Freedcamp be biztonsági rendszergazdaként.
 
-2. A lap felső – toright sarkában kattintson a **profil** , majd lépjen **kezelése rendszer**.
+2. A lap felső és jobb oldali sarkában kattintson a **profilra,** majd keresse meg a **Rendszer kezelése lapot.**
 
     ![Freedcamp konfiguráció](./media/freedcamp-tutorial/config03.png)
 
-3. A rendszer kezelése lap jobb oldalán hajtsa végre a következő lépéseket:
+3. A Rendszer kezelése lap jobb oldalán hajtsa végre az alábbi lépéseket:
 
     ![Freedcamp konfiguráció](./media/freedcamp-tutorial/config04.png)
 
-    a. Kattintson a **hozzáadása vagy a meghívó felhasználók**.
+    a. Kattintson a **Felhasználók hozzáadása vagy meghívása elemre.**
 
-    b. Az a **E-mail** szöveget adja meg az e-mailt, például a felhasználó `Brittasimon@contoso.com`.
+    b. Az **E-mail** mezőbe írja be `Brittasimon@contoso.com`a felhasználó e-mail címét, például .
 
-    c. Kattintson a **felhasználó hozzáadása**.
+    c. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>SSO tesztelése
 
-A Freedcamp csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Freedcamp, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen kiválasztja a Freedcamp csempét, automatikusan be kell jelentkeznie arra a Freedcampbe, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

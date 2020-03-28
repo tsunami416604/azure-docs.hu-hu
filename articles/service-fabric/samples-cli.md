@@ -1,13 +1,13 @@
 ---
 title: Az Azure parancssori felület (az) és az Azure Service Fabric parancssori felület (sfctl) példái
-description: Az Azure CLI (az) és az Azure Service Fabric CLI (sfctl) minták a fürtök, alkalmazások és szolgáltatások kezeléséhez.
+description: Azure CLI (az) és az Azure Service Fabric CLI (sfctl) minták fürtök, alkalmazások és szolgáltatások kezelése.
 ms.topic: sample
 ms.date: 04/09/2018
 ms.openlocfilehash: 96339f929c25db213fabe5224dd478022ff43427
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75526651"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Az Azure parancssori felület (az) és az Azure Service Fabric parancssori felület (sfctl) példái

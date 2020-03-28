@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – HTTPS konfigurálása egyéni tartományon az Azure Front Door Service-ben | Microsoft Docs
-description: Ebben az oktatóanyagban megismerheti, hogyan engedélyezheti és tilthatja le a HTTPS-t egy egyéni tartomány Azure Front Door Service-konfigurációjában.
+title: Oktatóanyag – HTTPS konfigurálása egyéni tartományban az Azure Front Door számára | Microsoft dokumentumok
+description: Ebben az oktatóanyagban megtudhatja, hogyan engedélyezheti és tilthatja le a HTTPS-t az Azure Bejárati ajtajának konfigurációjában egy egyéni tartományhoz.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512861"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471829"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
 Ez az oktatóanyag bemutatja, hogyan lehet engedélyezni a HTTPS-protokollt az előtérbeli gazdagépek szakaszban egy Front Doorhoz kapcsolódó egyéni tartomány esetében. A HTTPS-protokoll egyéni tartományon belüli használatával (például https:\//www.contoso.com) biztosítható, hogy a bizalmas adatokat a rendszer biztonságosan, TLS/SSL-titkosításon keresztül továbbítsa az Interneten. Amikor a böngésző HTTPS-protokollal kapcsolódik egy webhelyhez, ellenőrzi a webhely biztonsági tanúsítványát, és megállapítja, hogy azt arra jogosult hitelesítésszolgáltató adta-e ki. Ez az eljárás védelmet nyújt webalkalmazásai számára a támadásokkal szemben.
 
-Az Azure Front Door Service alapértelmezés szerint támogatja a HTTPS-t az alapértelmezett Front Door-gazdagépnév esetében. Ha például Front Doort hoz létre (pl. https:\//contoso.azurefd.net), a HTTPS automatikusan engedélyezve lesz a https://contoso.azurefd.net címre küldött kérések esetében. Azonban a „www.contoso.com” egyéni tartomány regisztrálása után külön engedélyeznie kell a HTTPS-t az előtérbeli gazdagépen.   
+Az Azure Bejárati ajtó alapértelmezés szerint támogatja a HTTPS-t a bejárati ajtó alapértelmezett állomásnevén. Ha például Front Doort hoz létre (pl. https:\//contoso.azurefd.net), a HTTPS automatikusan engedélyezve lesz a https://contoso.azurefd.net címre küldött kérések esetében. Azonban a „www.contoso.com” egyéni tartomány regisztrálása után külön engedélyeznie kell a HTTPS-t az előtérbeli gazdagépen.   
 
 Az egyéni HTTPS szolgáltatás legfőbb jellemzői a következők:
 
@@ -50,12 +50,12 @@ Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell h
 
 ## <a name="ssl-certificates"></a>SSL-tanúsítványok
 
-Ha HTTPS-protokollt szeretne engedélyezni egy egyéni Front Door-tartomány tartalmának biztonságos továbbításához, SSL-tanúsítványt kell használnia. Az Azure Front Door Service által kezelt vagy saját tanúsítványt használhat.
+Ha HTTPS-protokollt szeretne engedélyezni egy egyéni Front Door-tartomány tartalmának biztonságos továbbításához, SSL-tanúsítványt kell használnia. Választhat, hogy az Azure Front Door által kezelt tanúsítványt használ, vagy saját tanúsítványt használ.
 
 
-### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>1\. lehetőség (alapértelmezett): A Front Door által felügyelt tanúsítvány használata
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>1. lehetőség (alapértelmezett): A Front Door által felügyelt tanúsítvány használata
 
-Ha az Azure Front Door Service által kezelt tanúsítványt használ, a HTTPS szolgáltatás mindössze néhány kattintással bekapcsolható. Az Azure Front Door Service elvégzi az összes tanúsítványkezelési feladatot, például a beszerzést és a megújítást. A szolgáltatás engedélyezése után a folyamat azonnal elindul. Ha az egyéni tartomány már hozzá van rendelve a Front Door alapértelmezett előtérbeli gazdagépéhez (`{hostname}.azurefd.net`), nincs további teendő. A Front Door automatikusan feldolgozza a lépéseket és végrehajtja a kérést. Ha azonban az egyéni tartomány más helyre van leképezve, meg kell erősítenie a tartomány tulajdonjogát e-mailben.
+Ha az Azure Front Door által kezelt tanúsítványt használ, a HTTPS funkció néhány kattintással bekapcsolható. Az Azure Front Door teljes mértékben kezeli a tanúsítványkezelési feladatokat, például a beszerzést és a megújítást. A szolgáltatás engedélyezése után a folyamat azonnal elindul. Ha az egyéni tartomány már hozzá van rendelve a Front Door alapértelmezett előtérbeli gazdagépéhez (`{hostname}.azurefd.net`), nincs további teendő. A Front Door automatikusan feldolgozza a lépéseket és végrehajtja a kérést. Ha azonban az egyéni tartomány más helyre van leképezve, meg kell erősítenie a tartomány tulajdonjogát e-mailben.
 
 Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartományon:
 
@@ -70,28 +70,28 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 5. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
 
 
-### <a name="option-2-use-your-own-certificate"></a>2\. lehetőség: Saját tanúsítvány használata
+### <a name="option-2-use-your-own-certificate"></a>2. lehetőség: Saját tanúsítvány használata
 
-A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure Front Door Service ezt a biztonságos mechanizmust használja a tanúsítvány beszerzéséhez, és néhány további lépést igényel. SSL-tanúsítványt egy engedélyezett hitelesítésszolgáltatóval (CA) kell létrehoznia. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett CA-k megtalálhatók az [egyéni HTTPS az Azure Front Door Service-ben való engedélyezéséhez jóváhagyott hitelesítésszolgáltatók listájában](front-door-troubleshoot-allowed-ca.md).
+A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure Front Door ezt a biztonságos mechanizmust használja a tanúsítvány bemegszerzéséhez, és néhány további lépést igényel. SSL-tanúsítványt egy engedélyezett hitelesítésszolgáltatóval (CA) kell létrehoznia. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett hitelesítésszolgáltatók listáját az Engedélyezett hitelesítésszolgáltatók az [Azure Bejárati ajtaján az egyéni HTTPS engedélyezéséhez.](front-door-troubleshoot-allowed-ca.md)
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Az Azure Key Vault-fiók és a tanúsítvány előkészítése
  
 1. Azure Key Vault: Rendelkeznie kell egy futó Azure Key Vault-fiókkal abban az előfizetésben, amelyben az a Front Door található, amelyhez egyéni HTTPS-t szeretne engedélyezni. Ha még nem rendelkezik Azure Key Vault-fiókkal, hozzon létre egyet.
 
 > [!WARNING]
-> Az Azure bejárati ajtó szolgáltatás jelenleg csak az előfizetésben lévő Key Vault fiókokat támogatja, mint a bejárati ajtó konfigurációja. Ha nem a Front Door-előfizetéshez tartozó Key Vault-tárolót választ, az hibát eredményez.
+> Az Azure Bejárati ajtó jelenleg csak a Key Vault-fiókokat támogatja ugyanabban az előfizetésben, mint a Bejárati ajtó konfigurációja. Ha nem a Front Door-előfizetéshez tartozó Key Vault-tárolót választ, az hibát eredményez.
 
-2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. **Titkos**tanúsítvány helyett a tanúsítványt **tanúsítvány** -objektumként töltse fel.
-
-> [!IMPORTANT]
-> A tanúsítványt PFX formátumban kell feltölteni, jelszavas védelem **nélkül** .
-
-#### <a name="register-azure-front-door-service"></a>Az Azure Front Door Service regisztrálása
-
-Regisztrálja az Azure Front Door Service szolgáltatásnevét alkalmazásként az Azure Active Directoryban a PowerShell használatával.
+2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. Töltse fel a **certificate** tanúsítványt tanúsítványobjektumként, nem pedig **titkos könyvtárként.**
 
 > [!NOTE]
-> Ehhez a művelethez globális rendszergazdai jogosultságok szükségesek, és bérlőn csak **egyszer** kell végrehajtani.
+> Saját SSL-tanúsítványa esetén a Bejárati ajtó nem támogatja az EK-titkosítási algoritmusokkal rendelkező tanúsítványokat.
+
+#### <a name="register-azure-front-door"></a>Regisztráljon az Azure bejárati ajtaját
+
+Regisztrálja az Azure Front Door szolgáltatásnévi szolgáltatást alkalmazásként az Azure Active Directoryban a PowerShellen keresztül.
+
+> [!NOTE]
+> Ez a művelet globális rendszergazdai engedélyeket igényel, és bérlőnként csak **egyszer** kell végrehajtani.
 
 1. Ha szükséges, telepítse az [Azure PowerShell](/powershell/azure/install-az-ps) bővítményt a PowerShellhez a helyi számítógépen.
 
@@ -99,23 +99,23 @@ Regisztrálja az Azure Front Door Service szolgáltatásnevét alkalmazásként 
 
      `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Hozzáférés biztosítása az Azure Front Door Service számára a Key Vaulthoz
+#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>Az Azure Bejárati ajtajának a kulcstartóhoz való hozzáférése
  
-A Azure Key Vault-fiókban lévő tanúsítványok eléréséhez engedélyezze az Azure bejárati ajtó szolgáltatásának engedélyét.
+Adja meg az Azure Bejárati ajtajának engedélyt az Azure Key Vault-fiók tanúsítványainak eléréséhez.
 
 1. A Key Vault-fiók BEÁLLÍTÁSOK területén válassza a **Hozzáférési szabályzatok**, majd az **Új hozzáadása** lehetőséget új szabályzat létrehozásához.
 
 2. A **Rendszerbiztonsági tag kijelölése** területen keresse meg az **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** elemet, és válassza ki a **Microsoft.Azure.Frontdoor** lehetőséget. Kattintson a **Kiválasztás** gombra.
 
-3. A **titkos engedélyek**területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
+3. A **Titkos engedélyek**csoportban válassza a **Get** lehetőséget, ha engedélyezni szeretné, hogy a Bejárati ajtó beolvassa a tanúsítványt.
 
-4. A **tanúsítvány engedélyei**területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
+4. A **Tanúsítványengedélyek csoportban**válassza a **Get (Letöltés)** lehetőséget, ha engedélyezni szeretné, hogy a Bejárati ajtó beolvassa a tanúsítványt.
 
-5. Kattintson az **OK** gombra. 
+5. Válassza **az OK gombot.** 
 
-    Az Azure bejárati ajtó szolgáltatás mostantól elérhetővé teheti ezt a Key Vault és az ebben a Key Vault tárolt tanúsítványokat.
+    Az Azure Bejárati ajtó most már hozzáférhet a Key Vault és a key vaultban tárolt tanúsítványok.
  
-#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Az Azure Front Door Service által üzembe helyezendő tanúsítvány kiválasztása
+#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>Válassza ki az üzembe helyezhető Azure Bejárati ajtó tanúsítványát
  
 1. Lépjen vissza a Front Doorhoz a portálon. 
 
@@ -125,9 +125,9 @@ A Azure Key Vault-fiókban lévő tanúsítványok eléréséhez engedélyezze a
 
 3. A Tanúsítványkezelés típusa területen válassza a **Saját tanúsítvány használata** lehetőséget. 
 
-4. Az Azure Front Door Service használatához a Key Vault-fiók előfizetésének meg kell egyeznie a Front Door előfizetésével. Válassza ki a Key Vaultot, a tanúsítványt (titkos kódot) és a tanúsítványverziót.
+4. Az Azure Bejárati ajtajának megköveteli, hogy a Key Vault-fiók előfizetése megegyezik a bejárati ajtajával. Válassza ki a Key Vaultot, a tanúsítványt (titkos kódot) és a tanúsítványverziót.
 
-    Az Azure Front Door Service a következő információkat jeleníti meg: 
+    Az Azure Bejárati Ajtó a következő információkat sorolja fel: 
     - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
     - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
     - A tanúsítvány elérhető verziói. 
@@ -147,13 +147,13 @@ Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a Front Door alapértelmezett .azurefd.net eszközneve:
 
-| Név            | Type (Típus)  | Value (Díj)                 |
+| Név            | Típus  | Érték                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) részt.
 
-Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és az érvényesség lejárta előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
+Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárat előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
 
 Az automatikus érvényesítés általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
 
@@ -176,7 +176,7 @@ webmaster@&lt;az-ön-tartományneve.com&gt;
 hostmaster@&lt;az-ön-tartományneve.com&gt;  
 postmaster@&lt;az-ön-tartományneve.com&gt;  
 
-Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemét-szűrőt használ, adja hozzá admin@digicert.com az engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemétszűrőt használ, admin@digicert.com vegye fel az engedélyezési listára. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
 
 Ha a jóváhagyási hivatkozásra kattint, a rendszer átirányítja egy online jóváhagyási űrlapra. Kövesse az űrlap utasításait; két ellenőrzési lehetősége van:
 
@@ -184,7 +184,7 @@ Ha a jóváhagyási hivatkozásra kattint, a rendszer átirányítja egy online 
 
 - Jóváhagyhatja az adott gazdanevet, amelyet a kéréshez használtak. A további kérésekhez további jóváhagyás szükséges.
 
-A jóváhagyás után a DigiCert befejezi az egyéni tartománynév tanúsítványának létrehozását. A tanúsítvány egy évig érvényes, és a lejárta előtt automatikusan megújul.
+A jóváhagyás után a DigiCert befejezi az egyéni tartománynév tanúsítványának létrehozását. A tanúsítvány egy évig érvényes, és a lejárt a lejárat előtt automatikusan megújul.
 
 ## <a name="wait-for-propagation"></a>Várakozás a propagálásra
 
@@ -196,17 +196,17 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS engedélyez�
 
 | Műveleti lépés | Műveleti allépés részletei | 
 | --- | --- |
-| 1\. Kérés elküldése | Kérés elküldése |
+| 1. Kérés elküldése | Kérés elküldése |
 | | A HTTPS-kérés küldése folyamatban van. |
 | | A HTTPS-kérés elküldése sikerült. |
-| 2\. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a Front Door alapértelmezett .azurefd.net előtérbeli gazdagépéhez. Ha nincs, akkor visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Minél hamarabb igazolja vissza a tartományt. |
+| 2. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a Front Door alapértelmezett .azurefd.net előtérbeli gazdagépéhez. Ha nincs, akkor visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Minél hamarabb igazolja vissza a tartományt. |
 | | Sikerült ellenőrizni a tartomány tulajdonjogát. |
 | | A tartomány tulajdonjogának ellenőrzési kérelme lejárt (az ügyfél valószínűleg nem válaszolt 6 napon belül). A HTTPS nem lesz engedélyezve a tartományon. * |
 | | A tartomány tulajdonjogának ellenőrzésére vonatkozó kérelem vissza lett utasítva az ügyfél által. A HTTPS nem lesz engedélyezve a tartományon. * |
-| 3\. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
+| 3. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
 | | A tanúsítvány kibocsátása megtörtént, és a Front Doorban való üzembe helyezése folyamatban van. A folyamat akár 1 órát is igénybe vehet. |
 | | A tanúsítvány sikeresen üzembe lett helyezve a Front Doorhoz. |
-| 4\. Befejezve | Sikerült engedélyezni a HTTPS-t a tartományban. |
+| 4. Befejezve | Sikerült engedélyezni a HTTPS-t a tartományban. |
 
 \* Ez az üzenet csak akkor jelenik meg, ha hiba történt. 
 
@@ -224,7 +224,7 @@ Az előző lépések során engedélyezte a HTTPS protokollt az egyéni tartomá
 
 ### <a name="disable-the-https-feature"></a>HTTPS szolgáltatás letiltása 
 
-1. Az [Azure Portalon](https://portal.azure.com) keresse meg az **Azure Front Door Service** konfigurációját.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg az **Azure bejárati ajtajának konfigurációját.**
 
 2. Az előtérbeli gazdagépek listájában válassza ki azt az egyéni tartományt, amelyen le szeretné tiltani a HTTPS-t.
 
@@ -240,9 +240,9 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 | Műveleti folyamat | Művelet részletei | 
 | --- | --- |
-| 1\. Kérés elküldése | A kérelem elküldése folyamatban van |
-| 2\. Tanúsítvány megszüntetése | Tanúsítvány törlése |
-| 3\. Befejezve | Tanúsítvány törölve |
+| 1. Kérés elküldése | A kérelem elküldése folyamatban van |
+| 2. Tanúsítvány megszüntetése | Tanúsítvány törlése |
+| 3. Befejezve | Tanúsítvány törölve |
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -252,7 +252,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 2. *IP-címalapú vagy SNI TLS/SSL-t használ?*
 
-    Az Azure Front Door Service SNI TLS/SSL-t használ.
+    Az Azure Front Door sni TLS/SSL-t használ.
 
 3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
 
@@ -267,7 +267,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
     Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

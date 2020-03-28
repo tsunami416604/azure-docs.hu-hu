@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez'
-description: 'Oktatóanyag: Ismerje meg, hogyan importálhat adatokat Azure Cosmos DBba, elemezheti az adatokat, és jelenítheti meg a kimenetet a beépített Jupyter notebookok használatával.'
+title: 'Oktatóanyag: Hozzon létre egy jegyzetfüzetet az Azure Cosmos DB-ben az adatok elemzéséhez és megjelenítéséhez'
+description: 'Oktatóanyag: Ismerje meg, hogyan használhatja a beépített Jupyter-jegyzetfüzetek adatok importálását az Azure Cosmos DB-be, elemezheti az adatokat, és vizualizálhatja a kimenetet.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
@@ -8,33 +8,33 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720929"
 ---
-# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: Hozzon létre egy jegyzetfüzetet az Azure Cosmos DB-ben az adatok elemzéséhez és megjelenítéséhez
 
-Ez a cikk azt ismerteti, hogyan használhatók a beépített Jupyter jegyzetfüzetek a mintaként szolgáló kiskereskedelmi adatAzure Cosmos DBek importálásához. Láthatja, hogyan használható az SQL és a Azure Cosmos DB Magic parancsok a lekérdezések futtatásához, az adatelemzéshez és az eredmények megjelenítéséhez.
+Ez a cikk ismerteti, hogyan használhatja a beépített Jupyter notebookok minta kiskereskedelmi adatok importálásához az Azure Cosmos DB.This article describes how to use built-in Jupyter notebooks to import sample retail data to Azure Cosmos DB. Látni fogja, hogyan használhatja az SQL és az Azure Cosmos DB magic parancsokat lekérdezések futtatásához, az adatok elemzéséhez és az eredmények megjelenítéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A notebookok támogatásának engedélyezése az Azure Cosmos-fiók létrehozásakor](enable-notebooks.md)
+* [Jegyzetfüzetek támogatásának engedélyezése az Azure Cosmos-fiók létrehozása közben](enable-notebooks.md)
 
-## <a name="create-the-resources-and-import-data"></a>Erőforrások létrehozása és az információk importálása
+## <a name="create-the-resources-and-import-data"></a>Az erőforrások létrehozása és adatok importálása
  
-Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és importálja a kiskereskedelmi adattárat a tárolóba.
+Ebben a szakaszban létre fogja hozni az Azure Cosmos-adatbázist, tárolót, és importálja a kiskereskedelmi adatokat a tárolóba.
 
-1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő.**
+1. Keresse meg az Azure Cosmos-fiókot, és nyissa meg az **Adatkezelőt.**
 
-1. Lépjen a **jegyzetfüzetek** lapra, válassza a **saját jegyzetfüzetek** melletti `…` lehetőséget, és hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
+1. Nyissa meg a **Jegyzetfüzetek** lapot, jelölje be `…` a Saját jegyzetfüzetek elemet, és hozzon létre egy új **jegyzetfüzetet** . **New Notebook** Válassza ki a **Python 3-at** alapértelmezett kernelként.
 
    ![Új jegyzetfüzet létrehozása](./media/create-notebook-visualize-data/create-new-notebook.png)
 
-1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+1. Az új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData.ipynb-re.**
 
-1. Ezután létre fog hozni egy "RetailDemo" nevű adatbázist és egy "WebsiteData" nevű tárolót a kiskereskedelmi adattároláshoz. A/CardID-t használhatja partíciós kulcsként. Másolja és illessze be a következő kódot egy új cellába a jegyzetfüzetben, majd futtassa azt:
+1. Ezután létrehoz egy "RetailDemo" nevű adatbázist és egy "WebsiteData" nevű tárolót a kiskereskedelmi adatok tárolására. A /CardID kapcsolót partíciókulcsként használhatja. Másolja és illessze be a következő kódot a jegyzetfüzet egy új cellájába, és futtassa azt:
 
    ```python
    import azure.cosmos
@@ -47,22 +47,22 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
    print('Container WebsiteData created')
    ```
 
-   Cella futtatásához válassza a `Shift + Enter` lehetőséget, vagy válassza ki a cellát, és válassza az **aktív cella futtatása** lehetőséget az adatkezelő navigációs sávján.
+   Cella futtatásához `Shift + Enter` jelölje be a Vagy jelölje ki a cellát, és válassza az **Aktív cella futtatása** jelölőnégyzetet az adatkezelő navigációs sávján.
 
    ![Az aktív cella futtatása](./media/create-notebook-visualize-data/run-active-cell.png)
 
-   Az adatbázis és a tároló a jelenlegi Azure Cosmos-fiókban jön létre. A tároló 400 RU/s-vel van kiépítve. Az adatbázis és a tároló létrehozása után a következő kimenet jelenik meg. 
+   Az adatbázis és a tároló a jelenlegi Azure Cosmos-fiókban jön létre. A tartály 400 RU/s-os kiépítésű. Az adatbázis és a tároló létrehozása után a következő kimenet jelenik meg. 
 
    ```console
     Database RetailDemo created
     Container WebsiteData created
    ```
 
-   Emellett frissítheti az **adatlapot,** és megtekintheti az újonnan létrehozott erőforrásokat:
+   Az **Adatok** lapot is frissítheti, és megtekintheti az újonnan létrehozott erőforrásokat:
 
-   ![Az új tároló megjelenítéséhez frissítse az adatlapot](media/create-notebook-visualize-data/refresh-data-tab.png)
+   ![Az adatok lap frissítése az új tároló megtekintéséhez](media/create-notebook-visualize-data/refresh-data-tab.png)
 
-1. A következő lépésként importálni fogja a minta kiskereskedelmi adattárat az Azure Cosmos-tárolóba. Itt látható a kiskereskedelmi adatokból származó elem formátuma:
+1. Ezután importálja a kiskereskedelmi minta adatokat az Azure Cosmos tárolóba. A kiskereskedelmi adatokból származó cikk formátuma a következő:
 
    ```json
     {
@@ -80,7 +80,7 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
     }
    ```
 
-   Az oktatóanyag céljaként a mintaként szolgáló kiskereskedelmi adat tárolása az Azure Blob Storage-ban történik. A következő kód egy új cellába való beillesztésével importálhatja azt az Azure Cosmos-tárolóba. Az elemek számának kiválasztásához a lekérdezés futtatásával ellenőrizheti, hogy az adatok importálása sikeres volt-e.
+   Az oktatóanyag céljából a minta kiskereskedelmi adatok az Azure blob storage tárolja. Importálhatja az Azure Cosmos-tárolóba a következő kód beillesztésével egy új cellába. Az adatok sikeres importálását egy lekérdezés sel ellenőrizheti az elemek számának kiválasztásához.
 
    ```python
     # Read data from storage
@@ -112,45 +112,45 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
    Container with id 'WebsiteData' contains '2654' items
    ```
 
-## <a name="get-your-data-into-a-dataframe"></a>Az adatai beolvasása egy DataFrame
+## <a name="get-your-data-into-a-dataframe"></a>Adatok bekerülése dataframe-be
 
-Mielőtt lekérdezéseket futtasson az adatok elemzéséhez, olvassa el az adatok a tárolóból egy [Panda DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) az elemzéshez. Az alábbi SQL Magic-paranccsal olvassa be az DataFrame:
+Mielőtt lekérdezéseket futtatna az adatok elemzéséhez, elolvashatja az adatokat a tárolóból a [Pandas DataFrame-be](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) elemzésre. Az adatok dataframe-be való beolvasásához használja a következő sql magic parancsot:
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output outputDataframeVar 
 {Query text}
 ```
 
-További információért lásd a [beépített notebook-parancsokat és-szolgáltatásokat Azure Cosmos db](use-notebook-features-and-commands.md) cikkben. Futtatja a lekérdezést – `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Az eredmények a df_cosmos nevű Panda DataFrame lesznek mentve. Illessze be a következő parancsot egy új jegyzetfüzet-cellába, és futtassa azt:
+További információkért tekintse meg a [beépített jegyzetfüzet parancsok és funkciók az Azure Cosmos DB cikkben.](use-notebook-features-and-commands.md) Futtatja a lekérdezést. `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` Az eredményeket a rendszer egy Pandas DataFrame-be menti, amelynek neve df_cosmos. Illessze be a következő parancsot egy új jegyzetfüzetcellába, és futtassa azt:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
 
-Egy új jegyzetfüzet-cellában futtassa a következő kódot a kimenet első 10 elemének olvasásához:
+Egy új jegyzetfüzetcellában futtassa a következő kódot a kimenet első 10 elemének beolvasásához:
 
 ```python
 # See a sample of the result
 df_cosmos.head(10)
 ```
 
-![Lekérdezés futtatása az első 10 elem lekéréséhez](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+![Lekérdezés futtatása a 10 elem bekéséhez](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
 
-## <a name="run-queries-and-analyze-your-data"></a>Lekérdezések futtatása és az adataik elemzése
+## <a name="run-queries-and-analyze-your-data"></a>Lekérdezések futtatása és az adatok elemzése
 
-Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásról.
+Ebben a szakaszban néhány lekérdezést futtat a beolvasott adatokon.
 
-* **Query1:** Futtasson egy csoportosítási lekérdezést a DataFrame, hogy lekérje az egyes országok teljes értékesítési bevételének összegét, és 5 elemet jelenítsen meg az eredményekből. Az új jegyzetfüzet-cellában futtassa a következő kódot:
+* **Lekérdezés1:** Futtasson egy csoportot lekérdezés szerint a DataFrame-en, hogy megkapja az egyes országok összes értékesítési bevételének összegét, és 5 cikket jelenítsen meg az eredményekből. Egy új jegyzetfüzetcellában futtassa a következő kódot:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
    display(df_revenue.head(5))
    ```
 
-   ![Értékesítési bevétel teljes kimenete](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   ![Összes értékesítési bevétel kibocsátása](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
 
-* **Query2:** Az öt legfontosabb megvásárolt elem listájának lekéréséhez nyisson meg egy új jegyzetfüzet-cellát, és futtassa a következő kódot:
+* **Lekérdezés2:** Az öt beszerzett elem listájának lehívásához nyisson meg egy új jegyzetfüzetcellát, és futtassa a következő kódot:
 
    ```python
    import pandas as pd
@@ -159,18 +159,18 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Az öt legfontosabb megvásárolt elem](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   ![Az öt beszerzett elem első](./media/create-notebook-visualize-data/top5-purchased-items.png)
 
-## <a name="visualize-your-data"></a>Az adataik megjelenítése  
+## <a name="visualize-your-data"></a>Adatok vizualizációja  
 
-1. Most, hogy adataink az Azure Cosmos-tárolóból származnak, az adatait megjelenítheti egy tetszőleges vizualizációs könyvtárral. Ebben az oktatóanyagban a bokeh könyvtárat fogjuk használni. Nyisson meg egy új jegyzetfüzet-cellát, és futtassa a következő kódot a bokeh-könyvtár telepítéséhez. Miután az összes követelmény teljesült, a rendszer telepíti a könyvtárat.
+1. Most, hogy rendelkezünk az Azure Cosmos-tárolóból származó bevételre vonatkozó adatainkkal, az Ön által kiválasztott vizualizációs könyvtárral vizualizálhatja az adatokat. Ebben az oktatóanyagban a Bokeh könyvtárat használjuk. Nyisson meg egy új jegyzetfüzetcellát, és futtassa a következő kódot a Bokeh könyvtár telepítéséhez. Miután az összes követelmény teljesült, a könyvtár lesz telepítve.
 
    ```python
    import sys
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Következő felkészülés az adatábrázolásra a térképen. Csatlakoztassa Azure Cosmos DB adatokat az Azure Blob Storage-ban található ország-információkkal, és alakítsa át az eredményt GeoJSON formátumra. Másolja az alábbi kódot egy új jegyzetfüzet-cellába, és futtassa.
+1. Ezután készítse elő az adatok térképen való ábrázolására. Csatlakozzon az Azure Cosmos DB-ben tárolt adatokhoz az Azure Blob storage-ban található országadatokkal, és alakítsa át az eredményt GeoJSON formátumra. Másolja a következő kódot egy új jegyzetfüzetcellába, és futtassa azt.
 
    ```python
    import urllib.request, json
@@ -187,7 +187,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    json_data = json.dumps(merged_json)
    ```
 
-1. A következő kód egy új jegyzetfüzet-cellában történő futtatásával jelenítheti meg a különböző országok értékesítési bevételeit egy globális térképen:
+1. A különböző országok értékesítési bevételeinek megjelenítése a világtérképen a következő kód futtatásával egy új jegyzetfüzetcellában:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,11 +233,11 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    show(p)
    ```
 
-   A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat jelölik.
+   A kimenet különböző színekkel jeleníti meg a világtérképet. A világosabbra sötétebb színek a legmagasabb bevételt, a legalacsonyabb bevételt eredményező országokat jelölik.
 
-   ![Országok bevételi térképének vizualizációja](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Országok bevételi térképe imitomegjelenítése](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
-1. Lássuk egy másik esetet az adatvizualizációhoz. A WebsiteData-tároló olyan felhasználókat tartalmaz, akik megtekintett egy tételt, hozzáadták őket a kosárhoz, és megvásárolták az adott tételt. Nézzük meg a megvásárolt elemek konverziós arányát. Futtassa az alábbi kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
+1. Lássunk egy másik adatvizualizációs esetet. A WebsiteData tároló ban vannak olyan felhasználók, akik megtekintettek egy elemet, hozzáadták őket a kosárhoz, és megvásárolták az elemet. Ábrázoljuk a megvásárolt cikkek konverziós arányát. Futtassa a következő kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
 
    ```python
    from bokeh.io import show, output_notebook
@@ -286,8 +286,8 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    show(p)
    ```
 
-   ![Vásárlási konverziós arány megjelenítése](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   ![Beszerzési konverziós arány megjelenítése](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a notebook-parancsokról: a [beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-notebook-features-and-commands.md) cikkben.
+* A jegyzetfüzetparancsokról az [Azure Cosmos DB-cikk beépített jegyzetfüzetparancsainak és -szolgáltatásainak használata](use-notebook-features-and-commands.md) című témakörben olvashat bővebben.

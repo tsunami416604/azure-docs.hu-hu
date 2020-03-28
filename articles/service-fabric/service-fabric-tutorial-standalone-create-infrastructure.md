@@ -1,5 +1,5 @@
 ---
-title: Infrastruktúra létrehozása az AWS-fürthöz
+title: Fürt infrastruktúrájának létrehozása az AWS-en
 description: Ez az oktatóanyag ismerteti, hogyan állíthatja be az AWS-infrastruktúrát Service Fabric-fürt futtatásához.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75613975"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: AWS-infrastruktúra létrehozása Service Fabric-fürt futtatásához
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez egy AWS-fiókra lesz szüksége.  Ha még nem re
 
 ## <a name="create-ec2-instances"></a>EC2-példányok létrehozása
 
-Jelentkezzen be az AWS-konzolba > írja be a **EC2** kifejezést a keresőmezőbe > **EC2 virtuális kiszolgálók a felhőben**
+Jelentkezzen be az AWS konzolba > írja be az **EC2-t** a **felhőben lévő EC2 virtuális kiszolgálók** kereső >mezőjébe
 
 ![Keresés az AWS-konzolon][aws-console]
 
@@ -135,7 +135,7 @@ A tűzfalban lévő portok megnyitására ez a PowerShell-parancs szolgál:
 New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat első részében megismerte, hogyan indíthat el három EC2-példányt, és hogyan konfigurálhatja őket a Service Fabric telepítéséhez:
 

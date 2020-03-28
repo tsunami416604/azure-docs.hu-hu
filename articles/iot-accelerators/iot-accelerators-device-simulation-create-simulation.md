@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61448564"
 ---
-# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Oktatóanyag: Hozzon létre és futtasson egy IoT-eszköz szimulálása
+# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Oktatóanyag: IoT-eszközszimuláció üzembe helyezése és futtatása
 
 Ebben az oktatóanyagban létrehozhat és futtathat egy új IoT-szimulációt az Eszközszimuláció, illetve egy vagy több szimulált eszköz használatával.
 
@@ -28,7 +28,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Szimuláció mérőszámainak megtekintése
 > * Szimuláció leállítása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

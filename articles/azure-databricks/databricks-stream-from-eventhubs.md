@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
 ms.openlocfilehash: fa5568a5af483a61b4e0854cbc7c2ade3b8dc4b1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889143"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
@@ -25,7 +25,7 @@ Az oktatóanyag végére az „Azure” kifejezést tartalmazó tweeteket stream
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
-![Azure Databricks a Event Hubs](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Azure Databricks a Event Hubs")
+![Azure Databricks az Event Hubs](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Azure Databricks az Event Hubs")
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -38,11 +38,11 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Tweetek küldése az Event Hubsnak
 > * Tweetek beolvasása az Event Hubsról
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 > [!Note]
-> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
-> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg az előfizetését **az utólagos**elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
+> Ez az oktatóanyag nem hajtható végre **az Azure ingyenes próba-előfizetésével.**
+> Ha van ingyenes fiókja, nyissa meg a profilját, és módosítsa az előfizetését **a felosztó-kirovó szolgáltatásra.** További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a költségkeretet,](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)és kérjen [kvótanövelést](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) a régióban a vCPU-khoz. Az Azure Databricks-munkaterület létrehozásakor kiválaszthatja a **próbaverziós (prémium – 14 napos ingyenes dbári)** díjszabási szintet, hogy a munkaterület 14 napig hozzáférést biztosítson az ingyenes prémium szintű Azure Databricks KBB-khoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,19 +56,19 @@ Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont l
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
 Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **Azure Databricks** elemet.
+1. Az Azure Portalon válassza az Erőforrás > **adatok létrehozása + Analytics** > **Azure Databricks** **lehetőséget.**
 
-    ![Databricks Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks Azure Portal")
+    ![Databricks az Azure Portalon](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks az Azure Portalon")
 
 3. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
 
-    ![Azure Databricks munkaterület létrehozása](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
+    ![Azure Databricks-munkaterület létrehozása](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
     Adja meg a következő értékeket:
 
@@ -77,14 +77,14 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/management/overview.md). |
-    |**Hely**     | Válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).        |
-    |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Helyen**     | Válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).        |
+    |**Árképzési szint**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 4. A fiók létrehozása eltarthat néhány percig. A fiók létrehozása során a portál jobb oldalán megjelenik az **Üzembe helyezés beküldése a következőhöz: Azure Databricks** csempe. Lehetséges, hogy jobbra kell görgetnie az irányítópulton, hogy megjelenjen a csempe. Megjelenik egy folyamatjelző is a képernyő tetejéhez közel. Mindkét területen nyomon követheti a folyamat előrehaladását.
 
-    ![Databricks üzembe helyezési csempe](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Databricks üzembe helyezési csempe")
+    ![Databricks telepítési csempe](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Databricks telepítési csempe")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
@@ -101,10 +101,10 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
    * Adjon egy nevet a fürtnek.
-   * Ehhez a cikkhez hozzon létre egy **6,0** futtatókörnyezettel rendelkező fürtöt.
-   * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+   * Ebben a cikkben hozzon létre egy fürtet **6.0-s** futásidejű.
+   * Győződjön meg arról, hogy bejelöli a **Percek \_ \_ utáni inaktivitás** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-   Válassza ki a fürt feldolgozója és az illesztőprogram-csomópontok méretét a technikai feltételekhez és a [költségvetéshez](https://azure.microsoft.com/pricing/details/databricks/).
+   Válassza ki a fürtfeldolgozó és az illesztőprogram-csomópont méretét, amely megfelel a technikai feltételeknek és a [költségvetésnek.](https://azure.microsoft.com/pricing/details/databricks/)
 
      Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
@@ -112,42 +112,42 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 A valós idejű tweetstream fogadásához létre kell hoznia egy alkalmazást a Twitteren. Kövesse a Twitter-alkalmazás létrehozására vonatkozó utasításokat, és jegyezze fel az értékeket, amelyek az oktatóanyag elvégzéséhez szükségesek.
 
-1. A böngészőben nyissa meg a [Twitter fejlesztőket](https://developer.twitter.com/en/apps), és válassza **az alkalmazás létrehozása**lehetőséget. Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy egy Twitter fejlesztői fiókra van szüksége. Nyugodtan megteheti, és az alkalmazás jóváhagyását követően meg kell jelennie egy megerősítő e-mailben. Több napot is igénybe vehet egy fejlesztői fiók jóváhagyása.
+1. Webböngészőből nyissa meg a [Twitter for Developers (Fejlesztőknek)](https://developer.twitter.com/en/apps)webhelyet, és válassza **az Alkalmazás létrehozása**lehetőséget. Előfordulhat, hogy megjelenik egy üzenet, amely szerint egy Twitter-fejlesztői fiókra kell jelentkeznie. Nyugodtan tegye meg, és miután a kérelmet jóváhagyták, látnia kell egy visszaigazoló e-mailt. A fejlesztői fiók jóváhagyása több napig is eltarthat.
 
     ![Twitter fejlesztői fiók megerősítése](./media/databricks-stream-from-eventhubs/databricks-twitter-dev-confirmation.png "Twitter fejlesztői fiók megerősítése")
 
 2. Az **Alkalmazás létrehozása** oldalon adja meg az új alkalmazás adatait, majd válassza a **Twitter-alkalmazás létrehozása** parancsot.
 
-    ![Twitter-alkalmazás részletei](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Twitter-alkalmazás részletei")
+    ![Twitter alkalmazás részletei](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details.png "Twitter alkalmazás részletei")
 
-    ![Twitter-alkalmazás részletei](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Twitter-alkalmazás részletei")
+    ![Twitter alkalmazás részletei](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Twitter alkalmazás részletei")
 
-3. Az alkalmazás lapon válassza a **kulcsok és tokenek** fület, és másolja a **fogyasztói API-kulcs** és a **fogyasztói API titkos kulcsa**értékeit. A hozzáférési tokenek létrehozásához a hozzáférési jogkivonat **és a hozzáférési jogkivonat titka** területen válassza a **Létrehozás** lehetőséget. Másolja a **Hozzáférési token** és a **Hozzáférési token titkos kulcsa** mező értékeit.
+3. Az alkalmazáslapon válassza a **Kulcsok és jogkivonatok** lapot, és másolja a **Fogyasztói API-kulcs** és a **fogyasztói API titkos kulcs értékeit.** A hozzáférési jogkivonat és a **hozzáférési jogkivonat titkos** kulcsa csoportban válassza a **Create(Create)** lehetőséget is a hozzáférési jogkivonatok létrehozásához. Másolja a **Hozzáférési token** és a **Hozzáférési token titkos kulcsa** mező értékeit.
 
-    ![Twitter-alkalmazás részletei](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Twitter-alkalmazás részletei")
+    ![Twitter alkalmazás részletei](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Twitter alkalmazás részletei")
 
 Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi részében szüksége lesz rájuk.
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Kódtárak csatolása Spark-fürthöz
 
-Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha ezeket az API-kat a fürt részeként szeretné használni, vegye fel őket könyvtárakként Azure Databricks és társítsa őket a Spark-fürthöz. A következő utasítások bemutatják, hogyan adhat hozzá egy tárat.
+Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha ezeket az API-kat a fürt részeként szeretné használni, adja hozzá őket az Azure Databricks-hez, és társítsa őket a Spark-fürthöz. Az alábbi utasítások bemutatják, hogyan vehet fel könyvtárat.
 
-1. A Azure Databricks munkaterületen válassza a **fürtök**lehetőséget, majd válassza ki a meglévő Spark-fürtöt. A fürt menüben válassza a **tárak** lehetőséget, majd kattintson az **új telepítése**elemre.
+1. Az Azure Databricks-munkaterületen válassza **a Fürtök**lehetőséget, és válassza ki a meglévő Spark-fürtöt. A fürt menüben válassza a **Könyvtárak parancsot,** majd kattintson **az Új telepítése parancsra.**
 
-   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Könyvtár megkeresése fürt hozzáadása")
+   ![Tár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Tár hozzáadása a fürt megkereséséhez")
 
-   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Függvénytár hozzáadása új telepítése")
+   ![Tár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Tár telepítése új")
 
-2. Az új könyvtár lapon a **forrás** kiválasztásához válassza a **Maven**lehetőséget. Egyénileg adja meg a következő koordinátákat a Spark Event Hubs-összekötőhöz és a Twitter API-hoz **koordinátákat**.
+2. Az Új könyvtár lapon a **Forrás** területen válassza a **Maven**lehetőséget. Egyénileg adja meg a következő koordinátákat a Spark Event Hubs összekötő és a Twitter API **koordináták**.
 
    * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
 3. Válassza az **Install** (Telepítés) lehetőséget.
 
-4. Győződjön meg arról, hogy a fürt menüjében mindkét függvénytár telepítve van és megfelelően van csatolva.
+4. A fürt menüben győződjön meg arról, hogy mindkét könyvtár megfelelően van telepítve és csatlakoztatva.
 
-    ![Tárak keresése](./media/databricks-stream-from-eventhubs/databricks-add-library-check.png "Tárak keresése")
+    ![Tárak ellenőrzése](./media/databricks-stream-from-eventhubs/databricks-add-library-check.png "Tárak ellenőrzése")
 
 6. Ismételje meg ezeket a lépéseket a Twitter-csomag (`twitter4j-core:4.0.7`) esetében is.
 
@@ -172,10 +172,10 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks-munkaterületen 
 
 ## <a name="send-tweets-to-event-hubs"></a>Tweetek küldése az Event Hubsnak
 
-Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőket a korábban létrehozott Event Hubs névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
+A **SendTweetsToEventHub** notebook, illessze be a következő kódot, és cserélje le a helyőrzők az értékeket az Event Hubs névtér és a Twitter alkalmazás, amely korábban létrehozott. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 > [!NOTE]
-> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **Adatforrást** `test` helyett `twitter` és töltse ki a lista **testSource** az előnyben részesített teszt bemenettel.
+> Twitter API bizonyos kérés korlátozások és [kvóták](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Ha nem elégedett a normál sebesség korlátozása a Twitter API-ban, akkor szöveges tartalmat hozhat létre a Twitter API használata nélkül ebben a példában. Ehhez állítsa be a változó `test` **dataSource** `twitter` helyett, és feltölti a **listát testSource** preferált teszt bemenet.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -406,9 +406,9 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Data
 
 ![Databricks-fürt leállítása](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte **\_\_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem szakítja meg manuálisan a fürtöt, az automatikusan leáll, feltéve, hogy a fürt létrehozásakor bejelölte a **Percek \_ \_ utáni inaktivitás** után jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
@@ -420,7 +420,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Tweetek küldése az Event Hubsnak
 > * Tweetek beolvasása az Event Hubsról
 
-Folytassa a következő oktatóanyaggal, amely azt mutatja be, hogyan végezheti el a Azure Databricks és [Cognitive Services API](../cognitive-services/text-analytics/overview.md)használatával végzett adatelemzést az adatfolyammal rendelkező adatokon.
+Lépjen tovább a következő oktatóanyaghoz, és ismerje meg, hogyan kell elvégezni a hangulatelemzést az adatok streamelt adatokon az Azure Databricks és a [Cognitive Services API használatával.](../cognitive-services/text-analytics/overview.md)
 
 > [!div class="nextstepaction"]
->[Az adatátviteli elemzések Azure Databricks használatával](databricks-sentiment-analysis-cognitive-services.md)
+>[Streamelési adatok hangulatelemzése az Azure Databricks használatával](databricks-sentiment-analysis-cognitive-services.md)

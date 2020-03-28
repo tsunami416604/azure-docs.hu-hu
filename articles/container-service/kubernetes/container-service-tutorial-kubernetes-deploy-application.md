@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service oktatóanyag – alkalmazás üzembe helyezése
+title: (ELAVULT) Azure Container Service oktatóanyag – alkalmazás telepítése
 description: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274052"
 ---
-# <a name="deprecated-run-applications-in-kubernetes"></a>ELAVULT Alkalmazások futtatása a Kubernetes-ben
+# <a name="deprecated-run-applications-in-kubernetes"></a>(ELAVULT) Alkalmazások futtatása a Kubernetes ben
 
 > [!TIP]
-> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazások futtatása az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-deploy-application.md).
+> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes szolgáltatásban (AKS)](../../aks/tutorial-kubernetes-deploy-application.md)című témakörben található.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -93,7 +93,7 @@ A folyamat állapotának monitorozásához használja [kubectl get service](http
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben az **szolgáltatás**EXTERNAL-IP`azure-vote-front` értéke `pending` állapotú. Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `CTRL-C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
+Kezdetben az `azure-vote-front` szolgáltatás **EXTERNAL-IP** értéke `pending` állapotú. Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `CTRL-C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
 
 ```output
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
@@ -105,7 +105,7 @@ Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban az Azure Vote alkalmazást egy Azure Container Service-beli Kubernetes-fürtön helyeztünk üzembe. Az eddig végrehajtott feladatok a következők:  
 

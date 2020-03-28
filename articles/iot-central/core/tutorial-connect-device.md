@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – általános Node. js-ügyfélalkalmazás összekötése az Azure IoT Central-vel | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan, mint az eszköz fejlesztője, hogyan csatlakoztatható egy Node. js-ügyfélprogramot futtató eszköz az Azure IoT Central-alkalmazáshoz. Eszköz-sablon létrehozása eszköz-képességi modell importálásával és olyan nézetek hozzáadásával, amelyek lehetővé teszik a csatlakoztatott eszköz használatát
+title: Oktatóanyag – Általános Node.js ügyfélalkalmazás csatlakoztatása az Azure IoT Centralhoz | Microsoft dokumentumok
+description: Ez az oktatóanyag bemutatja, hogyan, eszközfejlesztőként egy Node.js ügyfélalkalmazást futtató eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz. Eszközsablont úgy hoz létre, hogy importál egy eszközképességi modellt, és olyan nézeteket ad hozzá, amelyek lehetővé teszik a csatlakoztatott eszközzel való interakciót
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/26/2020
@@ -8,122 +8,122 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1bcfc949eff0639dd1b4a063687e2c198f480ea3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77624542"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: Node. js-ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással (node. js)
+# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: Node.js ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz (Node.js)
 
-Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy Node. js-ügyfélalkalmazás Azure IoT Central-alkalmazásához az eszköz fejlesztőinek. A Node. js-alkalmazás szimulálja egy valós eszköz viselkedését. A környezeti érzékelő eszközhöz egy minta _eszköz-képesség modell_ használatával hozhat létre IoT Centralban egy _eszköz sablonját_ . A nézetek hozzáadásával megjelenítheti az eszköz telemetria, kezelheti az eszköz tulajdonságait, és parancsokat használhat az eszközök vezérléséhez.
+Ez az oktatóanyag bemutatja, hogyan, eszközfejlesztőként egy Node.js ügyfélalkalmazás csatlakoztatása az Azure IoT Central alkalmazáshoz. A Node.js alkalmazás egy valódi eszköz viselkedését szimulálja. Egy környezeti érzékelő eszköz _mintaeszköz-képességmodelljét_ használja egy _eszközsablon_ létrehozásához az IoT Centralban. Nézeteket adhat az eszközsablonhoz, hogy vizualizálhatja az eszköztelemetriát, kezelheti az eszköz tulajdonságait, és parancsokat használhat az eszközök vezérléséhez.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Eszköz-képesség modell importálása eszköz sablonjának létrehozásához.
-> * Adja hozzá az alapértelmezett és az egyéni nézeteket egy eszköz sablonhoz.
-> * Tegye közzé az eszközt, és adjon hozzá egy valós eszközt a IoT Central alkalmazáshoz.
-> * Hozza létre és futtassa a Node. js-eszköz kódját, és tekintse meg az IoT Central alkalmazáshoz való kapcsolódást.
-> * Az eszköz által küldött szimulált telemetria megtekintése.
-> * Az eszköz tulajdonságainak kezeléséhez használja a nézetet.
-> * Az eszköz vezérlésére szolgáló parancsok hívása.
+> * Eszközképességi modell importálása eszközsablon létrehozásához.
+> * Alapértelmezett és egyéni nézetek hozzáadása eszközsablonhoz.
+> * Közzétehet egy eszközsablont, és hozzáadhat egy valódi eszközt az IoT Central-alkalmazáshoz.
+> * Hozza létre és futtassa a Node.js eszközkódját, és tekintse meg, hogy csatlakozzon az IoT Central alkalmazáshoz.
+> * Tekintse meg az eszköz által küldött szimulált telemetriai adatokat.
+> * Az eszköz tulajdonságainak kezeléséhez használjon nézetet.
+> * Az eszköz vezérléséhez hívja a parancsokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-* A * * Custom Application * * sablon használatával létrehozott Azure IoT Central-alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-* A [Node. js](https://nodejs.org/) 10.0.0 vagy újabb verzióját futtató fejlesztői gép. Az `node --version` a parancssorban futtatva ellenőrizhető a verzió. A Node.js az operációs rendszerek széles körében elérhető. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. A Node. js számos operációs rendszeren használható.
+* Egy Azure IoT Central alkalmazás a **Egyéni alkalmazás **sablon használatával létrehozott. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* Fejlesztői gép, amelyen telepítve van a [Node.js](https://nodejs.org/) 10.0.0-s vagy újabb verziója. Futtathatja `node --version` a parancssorban, hogy ellenőrizze a verziót. A Node.js az operációs rendszerek széles körében elérhető. Az oktatóanyag utasításai feltételezik, hogy a **csomópontparancsot** a Windows parancssorában futtatja. A Node.js számos operációs rendszeren használható.
 
-## <a name="create-a-device-template"></a>Eszköz sablonjának létrehozása
+## <a name="create-a-device-template"></a>Eszközsablon létrehozása
 
-Hozzon létre egy `environmental-sensor` nevű mappát a helyi gépen.
+Hozzon létre `environmental-sensor` egy mappát a helyi számítógépen.
 
-Töltse le a [környezeti érzékelő képesség modell](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) JSON-fájlját, és mentse azt a `environmental-sensor` mappába.
+Töltse le a [Környezetvédelmi érzékelő képesség modell](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) `environmental-sensor` JSON fájlt, és mentse el a mappába.
 
-Szövegszerkesztővel cserélje le a `{YOUR_COMPANY_NAME_HERE}` két példányát a vállalata nevére a letöltött `EnvironmentalSensorInline.capabilitymodel.json` fájlban.
+A letöltött fájlban a két `{YOUR_COMPANY_NAME_HERE}` példányt szövegszerkesztővel `EnvironmentalSensorInline.capabilitymodel.json` cserélheti le a vállalat nevére.
 
-Az Azure IoT Central-alkalmazásban hozzon létre egy *környezeti érzékelő* nevű sablont az `EnvironmentalSensorInline.capabilitymodel.json` eszköz-képesség modell fájljának importálásával:
+Az Azure IoT Central alkalmazásban hozzon létre egy környezeti `EnvironmentalSensorInline.capabilitymodel.json` *érzékelő* nevű eszközsablont az eszközképességi modellfájl importálásával:
 
-![Eszköz sablonja az importált eszköz képességeinek modelljével](./media/tutorial-connect-device/device-template.png)
+![Eszközsablon importált eszközképesség-modellel](./media/tutorial-connect-device/device-template.png)
 
-Az eszköz képességeinek modellje két felületet tartalmaz: a szabványos **eszköz információs** felületét és az egyéni **környezeti érzékelő** felületét. A **környezeti érzékelő** felülete a következő képességeket határozza meg:
+Az eszközképességi modell két interfészt tartalmaz: a szabványos **eszközinformációs interfészt** és az egyéni **környezeti érzékelő** interfészt. A **környezeti érzékelő** felület a következő képességeket határozza meg:
 
 | Típus | Megjelenítendő név | Leírás |
 | ---- | ------------ | ----------- |
-| Tulajdonság | Eszközállapot     | Az eszköz állapota. Két állapot érhető el online/offline állapotban. |
-| Tulajdonság | Ügyfél neve    | Az eszközt jelenleg működtető ügyfél neve. |
-| Tulajdonság | Fényerő szintje | Az eszköz fényének fényerő-szintje. Megadható 1 (magas), 2 (közepes), 3 (alacsony). |
-| Telemetria | Hőmérséklet | Az eszköz aktuális hőmérséklete. |
-| Telemetria | Páratartalom    | Az eszköz aktuális nedvességtartalma. |
-| Parancs | kurzorvillogás          | A LED villogásának megkezdése adott időtartamra. |
-| Parancs | turnon         | Kapcsolja be a LED-fényt az eszközön. |
-| Parancs | kanyart        | Kapcsolja ki a LED-fényt az eszközön. |
-| Parancs | rundiagnostics | Ez a parancs elindítja a diagnosztika futtatását. |
+| Tulajdonság | Eszközállapot     | Az eszköz állapota. Két állam online / offline állnak rendelkezésre. |
+| Tulajdonság | Vevő neve    | Az eszközt jelenleg üzemeltető ügyfél neve. |
+| Tulajdonság | Fényerő szint | A készülék fényerejének fényereje. Megadható 1 (magas), 2 (közepes), 3 (alacsony). |
+| Telemetria | Hőmérséklet | A készülék aktuális hőmérséklete. |
+| Telemetria | Páratartalom    | A készülék aktuális páratartalma. |
+| Parancs | Pislogás          | Kezdje el villogni a LED-et az adott időintervallumban. |
+| Parancs | fordulat         | Kapcsolja be a LED-lámpát a készüléken. |
+| Parancs | Kanyart        | Kapcsolja ki a készülék LED-lámpáját. |
+| Parancs | rundiagnostics (diagnosztika) | Ez a parancs elindítja a diagnosztika futtatását. |
 
-Ha testre szeretné szabni, hogyan jelenjen meg az **eszköz állapota** tulajdonság a IoT Central alkalmazásban, válassza a **Testreszabás** lehetőséget az eszköz sablonjában. Bontsa ki az **eszköz állapota** bejegyzést, adja meg az _online_ értéket a **valódi név** és az _Offline_ értékként a **hamis név**mezőben. Ezután mentse a módosításokat:
+Ha testre szeretné szabni, hogy az **Eszközállapot** tulajdonság hogyan jelenjen meg az IoT Central alkalmazásban, válassza a **Testreszabás lehetőséget** az eszközsablonban. Bontsa ki az **Eszközállapot-bejegyzést,** írja be az _Online_ nevet **Igaz névként,** offline nevet _pedig_ **hamis névként.** Ezután mentse a módosításokat:
 
-![Sablon testreszabása](media/tutorial-connect-device/customize-template.png)
+![Az eszközsablon testreszabása](media/tutorial-connect-device/customize-template.png)
 
 ## <a name="create-views"></a>Nézetek létrehozása
 
-A nézetek lehetővé teszik a IoT Central alkalmazáshoz csatlakoztatott eszközök kezelését. Megtekintheti például a telemetria megjelenítő nézeteket, a tulajdonságokat megjelenítő nézeteket, valamint az írható és a felhő tulajdonságainak szerkesztését lehetővé teszi a nézeteket. A nézetek egy eszköz sablon részét képezik.
+A nézetek lehetővé teszik az IoT Central alkalmazáshoz csatlakoztatott eszközökkel való interakciót. Rendelkezhet például telemetriai adatokat megjelenítő, tulajdonságokat megjelenítő nézeteket, valamint olyan nézetekkel, amelyek lehetővé teszik az írható és felhőalapú tulajdonságok szerkesztését. A nézetek egy eszközsablon részét képezik.
 
-Ha néhány alapértelmezett nézetet szeretne hozzáadni a **környezeti érzékelő** eszköz sablonhoz, navigáljon az eszköz sablonhoz, válassza a **nézetek**lehetőséget, és válassza az **alapértelmezett nézetek előállítása** csempét. Győződjön meg arról, hogy az **Áttekintés** és a **Névjegy** be van **kapcsolva**, majd válassza az **alapértelmezett irányítópult-nézetek előállítása**lehetőséget. Most már két alapértelmezett nézet van definiálva a sablonban.
+Ha néhány alapértelmezett nézetet szeretne hozzáadni a **Környezetérzékelő** eszközsablonhoz, keresse meg az eszközsablont, válassza a **Nézetek**lehetőséget, és válassza az **Alapértelmezett nézetek létrehozása csempét.** Győződjön meg arról, hogy **az Áttekintés** és a **Betekintés** beállítás be van **kapcsolva,** majd válassza **az Alapértelmezett irányítópult-nézetek létrehozása**lehetőséget. Most már két alapértelmezett nézet van definiálva a sablonban.
 
-A **környezeti érzékelő** felülete két írható tulajdonságot tartalmaz – az **ügyfél nevét** és a **fényerő szintjét**. Nézet létrehozásához a következő tulajdonságokat használhatja:
+A **Környezeti érzékelő** felület két írható tulajdonságot tartalmaz : Az ügyfél **neve** és **a fényerő szint**. Nézet létrehozásához a következő tulajdonságokat szerkesztheti:
 
-1. Válassza a **nézetek** lehetőséget, majd válassza ki az **eszköz és a Felhőbeli adatcsempe szerkesztését** .
+1. Válassza a **Nézetek** lehetőséget, majd válassza az **Eszköz szerkesztése és** a felhőalapú adatok csempét.
 
-1. Adja meg a _tulajdonságokat_ az űrlap neveként.
+1. Adja meg a _Tulajdonságok_ nevet űrlapnévként.
 
-1. Válassza ki a **fényerő szintjét** és az **ügyfél neve** tulajdonságokat. Ezután válassza a **Hozzáadás szakaszt**.
+1. Válassza ki a **Fényerő szint** és **a Vevő neve** tulajdonságokat. Ezután válassza **a Hozzáadás szakaszlehetőséget.**
 
 1. Mentse a módosításokat.
 
-![Nézet hozzáadása a tulajdonságok szerkesztésének engedélyezéséhez](media/tutorial-connect-device/properties-view.png)
+![Nézet hozzáadása a tulajdonságszerkesztés engedélyezéséhez](media/tutorial-connect-device/properties-view.png)
 
 ## <a name="publish-the-template"></a>A sablon közzététele
 
-Mielőtt hozzáad egy eszközt a IoT Central alkalmazáshoz, amely a **környezeti érzékelő** eszköz sablonját használja, közzé kell tennie a sablont.
+Mielőtt hozzáadna egy eszközt az IoT Central alkalmazáshoz, amely a **környezeti érzékelő** eszközsablont használja, közzé kell tennie a sablont.
 
-Az eszköz sablonjában válassza a **Közzététel**lehetőséget. A közzétenni kívánt módosításokat megjelenítő panelen válassza a **Közzététel**lehetőséget.
+Az eszközsablonban válassza a **Közzététel**lehetőséget. A közzéteszendő módosításokat megjelenítő panelen válassza a **Közzététel**lehetőséget.
 
-A sablon használatra kész állapotának megtekintéséhez navigáljon az **eszközök** lapra a IoT Central alkalmazásban. Az **eszközök** szakasz az alkalmazás közzétett eszközeinek listáját jeleníti meg:
+Annak ellenőrzéséhez, hogy a sablon készen áll-e a használatra, keresse meg az **Eszközök** lapot az IoT Central alkalmazásban. Az **Eszközök** szakasz az alkalmazásban közzétett eszközök listáját jeleníti meg:
 
 ![Közzétett sablonok az eszközök lapon](media/tutorial-connect-device/published-templates.png)
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central alkalmazásban adjon hozzá egy valós eszközt az előző szakaszban létrehozott sablonhoz:
+Az Azure IoT Central-alkalmazásban adjon hozzá egy valódi eszközt az előző szakaszban létrehozott eszközsablonhoz:
 
-1. Az **eszközök** lapon válassza ki a **környezeti érzékelő** eszköz sablonját.
+1. Az **Eszközök** lapon válassza a **Környezeti érzékelő** eszköz sablont.
 
-1. Válassza az **+ új**lehetőséget.
+1. Válassza **a + Új**lehetőséget.
 
-1. Győződjön meg arról, hogy a **szimulált** érték **ki van kapcsolva**. Ezután kattintson a **Létrehozás** elemre.
+1. Győződjön meg arról, hogy a **Szimulált** ki van **kapcsolva.** Ezután válassza **a Létrehozás lehetőséget.**
 
-Kattintson az eszköz nevére, majd válassza a **Csatlakoztatás**lehetőséget. Jegyezze fel az eszköz csatlakoztatására vonatkozó információkat az eszköz **csatlakoztatása** lapon – **azonosító hatókör**, **eszköz azonosítója**és **elsődleges kulcs**. Ezekre az értékekre szüksége lesz az eszköz kódjának létrehozásakor:
+Kattintson az eszköz nevére, majd a **Csatlakozás gombra.** Jegyezze fel az eszközkapcsolat adatait az **Eszközkapcsolat** lapon - **Azonosító hatókör**, **Eszközazonosító**és **Elsődleges kulcs**. Az eszközkód létrehozásakor ezekre az értékekre van szüksége:
 
-![Eszköz csatlakoztatási adatai](./media/tutorial-connect-device/device-connection.png)
+![Eszközkapcsolat adatai](./media/tutorial-connect-device/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyfélalkalmazás, amely megvalósítja az alkalmazáshoz hozzáadott valós eszközt. Ez a Node. js-alkalmazás szimulálja egy valós eszköz viselkedését.
+A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélalkalmazást, amely megvalósítja az alkalmazáshoz hozzáadott valódi eszközt. Ez a Node.js alkalmazás egy valódi eszköz viselkedését szimulálja.
 
-1. A parancssori környezetben navigáljon a korábban létrehozott `environmental-sensor` mappához.
+1. A parancssori környezetben keresse `environmental-sensor` meg a korábban létrehozott mappát.
 
-1. A Node. js-projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – a `npm init`futtatásakor fogadja el az összes alapértelmezett beállítást:
+1. A Node.js projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – a futtatáskor `npm init`fogadja el az összes alapértelmezett beállítást:
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Hozzon létre egy **environmentalSensor. js** nevű fájlt a `environmental-sensor` mappában.
+1. Hozzon létre egy **environmentalSensor.js** nevű fájlt a `environmental-sensor` mappában.
 
-1. Adja hozzá a következő `require` utasításokat a **environmentalSensor. js** fájl elejéhez:
+1. Adja hozzá `require` a következő állításokat az **environmentalSensor.js** fájl elején:
 
     ```javascript
     "use strict";
@@ -151,9 +151,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     var ledOn = true;
     ```
 
-    Frissítse a helyőrzőket `{your Scope ID}`, `{your Device ID}`és `{your Primary Key}` a korábban jegyzett értékekkel. Ebben a példában a `targetTemperature`t nulla értékre állítja, az eszköz aktuális olvasását vagy a Twin eszköz értékét használhatja.
+    Frissítse a `{your Scope ID}` `{your Device ID}`helyőrzőket `{your Primary Key}` és a korábban feljegyzett értékekkel. Ebben a példában, `targetTemperature` inicializálja a nulla, használhatja az aktuális olvasás az eszközről, vagy egy értéket az eszköz iker.
 
-1. Ha telemetria szeretne küldeni az Azure IoT Central alkalmazásnak, adja hozzá a következő függvényt a fájlhoz:
+1. Telemetriai adatok küldése az Azure IoT Central alkalmazás, adja hozzá a következő függvényt a fájlhoz:
 
     ```javascript
     // Send device measurements.
@@ -171,7 +171,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     }
     ```
 
-1. Az eszköz tulajdonságainak Azure IoT Central-alkalmazásba való küldéséhez adja hozzá a következő függvényt a fájlhoz:
+1. Ha eszköztulajdonságokat szeretne küldeni az Azure IoT Central alkalmazásnak, adja hozzá a következő függvényt a fájlhoz:
 
     ```javascript
     // Send device reported properties.
@@ -181,7 +181,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     }
     ```
 
-1. Az eszköz által válaszolt írható tulajdonságok definiálásához és kezeléséhez adja hozzá a következő kódot:
+1. Az eszköz által válaszolandó írható tulajdonságok meghatározásához és kezeléséhez adja hozzá a következő kódot:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -222,7 +222,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     }
     ```
 
-1. Adja hozzá a következő kódot a IoT Central alkalmazásból eljuttatott parancsok kezeléséhez:
+1. Adja hozzá a következő kódot az IoT Central alkalmazásból küldött parancsok kezeléséhez:
 
     ```javascript
     // Handle blink command
@@ -325,43 +325,43 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     });
     ```
 
-## <a name="run-your-nodejs-application"></a>A Node. js-alkalmazás futtatása
+## <a name="run-your-nodejs-application"></a>A Node.js-alkalmazás futtatása
 
-Az eszköz ügyfélalkalmazás elindításához futtassa a következő parancsot a parancssori környezetben:
+Az eszközügyfél-alkalmazás elindításához futtassa a következő parancsot a parancssori környezetben:
 
 ```cmd/sh
 node environmentalSensor.js
 ```
 
-Láthatja, hogy az eszköz csatlakozik az Azure IoT Central-alkalmazáshoz, és elkezdi elküldeni a telemetria:
+Láthatja, hogy az eszköz csatlakozik az Azure IoT Central alkalmazáshoz, és elkezdi a telemetriai adatok küldését:
 
 ![Az ügyfélalkalmazás futtatása](media/tutorial-connect-device/run-application.png)
 
-Az Azure IoT Central-alkalmazásban a következőket teheti:
+Az Azure IoT Central alkalmazás operátoraként a következőket teheti:
 
-* Tekintse meg az eszköz által az **Áttekintés** lapon eljuttatott telemetria:
+* Az eszköz által küldött telemetriai adatok megtekintése az **Áttekintés** lapon:
 
     ![Telemetria megtekintése](media/tutorial-connect-device/view-telemetry.png)
 
-* Írható tulajdonságok értékének frissítése a **Tulajdonságok** lapon:
+* Írható tulajdonságértékek frissítése a **Tulajdonságok** lapon:
 
     ![Tulajdonságok frissítése](media/tutorial-connect-device/update-properties.png)
 
-    ![Tulajdonságok frissítése eszköz](media/tutorial-connect-device/update-properties-device.png)
+    ![Tulajdonságok eszközének frissítése](media/tutorial-connect-device/update-properties-device.png)
 
-* Hívja meg a parancsokat a **parancsok** lapról:
+* Hívja meg a **parancsokat** a Parancsok lapon:
 
-    ![A Blink parancs hívása](media/tutorial-connect-device/call-command.png)
+    ![Villogó hívás parancs](media/tutorial-connect-device/call-command.png)
 
-    ![A Blink parancs eszközének hívása](media/tutorial-connect-device/call-command-device.png)
+    ![Villogó parancseszköz hívása](media/tutorial-connect-device/call-command-device.png)
 
-* Tekintse meg az eszköz tulajdonságait a **Névjegy** oldalon:
+* Az eszköz tulajdonságainak megtekintése a **Betekintés** lapon:
 
     ![Tulajdonságok megtekintése](media/tutorial-connect-device/about-properties.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az eszköz képességeinek modelljeiről, valamint arról, hogyan hozhat létre saját eszközöket, folytassa a következő útmutatóval:
+Ha többet szeretne megtudni az eszközképességi modellekről és a saját eszközsablonok létrehozásáról, folytassa az útmutatóval:
 
 > [!div class="nextstepaction"]
-> [Új IoT-eszköz típusának megadása](./howto-set-up-template.md)
+> [Új IoT-eszköztípus definiálása](./howto-set-up-template.md)

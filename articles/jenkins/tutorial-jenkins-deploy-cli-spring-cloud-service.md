@@ -1,98 +1,98 @@
 ---
-title: Alkalmazások üzembe helyezése az Azure Spring Cloud-on a Jenkins és az Azure CLI használatával
-description: Ismerje meg, hogyan használhatja az Azure CLI-t folyamatos integrációs és üzembe helyezési folyamatokban a Service-szolgáltatások Azure Spring Cloud Service-ben való üzembe helyezéséhez
+title: Alkalmazások üzembe helyezése az Azure Spring Cloudban a Jenkins és az Azure parancssori felületének használatával
+description: Ismerje meg, hogyan használhatja az Azure CLI-t folyamatos integrációs és üzembe helyezési folyamatban a mikroszolgáltatások Azure Spring Cloud szolgáltatásba való üzembe helyezéséhez
 ms.topic: tutorial
 ms.date: 01/07/2020
 ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75734977"
 ---
-# <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Oktatóanyag: alkalmazások telepítése az Azure Spring Cloud-ba a Jenkins és az Azure CLI használatával
+# <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Oktatóanyag: Alkalmazások üzembe helyezése az Azure Spring Cloud szolgáltatásba a Jenkins és az Azure CLI használatával
 
-Az [Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-overview) egy teljes körűen felügyelt, beépített szolgáltatás-felderítési és-konfigurációs felügyelettel rendelkező Service-fejlesztés. A szolgáltatás megkönnyíti a Spring boot-alapú Service-alkalmazások üzembe helyezését az Azure-ban. Ez az oktatóanyag azt mutatja be, hogyan használható az Azure CLI a Jenkins-ben a folyamatos integráció és a kézbesítés (CI/CD) automatizálására az Azure Spring Cloud számára.
+[Az Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-overview) egy teljes körűen felügyelt mikroszolgáltatás-fejlesztés beépített szolgáltatásfelderítéssel és konfigurációkezeléssel. A szolgáltatás megkönnyíti a tavaszi rendszerindítás-alapú mikroszolgáltatási alkalmazások üzembe helyezését az Azure-ba. Ez az oktatóanyag bemutatja, hogyan használhatja az Azure CLI-t a Jenkinsben az Azure Spring Cloud folyamatos integrációjának és kézbesítésének (CI/CD) automatizálásához.
 
-Ebben az oktatóanyagban a következő feladatokat hajtja végre:
+Ebben az oktatóanyagban az alábbi feladatokat hajthatja végre:
 
 > [!div class="checklist"]
-> * Szolgáltatási példány kiépítése és Java Spring-alkalmazás elindítása
+> * Szolgáltatáspéldány kiépítése és Java Spring alkalmazás elindítása
 > * A Jenkins-kiszolgáló előkészítése
-> * Az Azure CLI használata a Jenkins-folyamatokban a Service-alkalmazások felépítéséhez és üzembe helyezéséhez 
+> * Az Azure CLI használata a Jenkins-folyamatban a mikroszolgáltatási alkalmazások létrehozásához és üzembe helyezéséhez 
 
-Ez az oktatóanyag az alapszintű Azure-szolgáltatások, az Azure Spring Cloud, a Jenkins- [folyamatok](https://jenkins.io/doc/book/pipeline/) , a beépülő modulok és a GitHub közbenső ismeretét feltételezi.
+Ez az oktatóanyag az alapvető Azure-szolgáltatások, az Azure Spring Cloud, [a Jenkins-folyamatok](https://jenkins.io/doc/book/pipeline/) és beépülő modulok, valamint a GitHub köztes ismereteit feltételezi.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  Az előzetes verziókra vonatkozó támogatással kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](https://azure.microsoft.com/support/faq/) , vagy a [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
+> Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes verziólehetővé teszi az ügyfelek számára, hogy a hivatalos kiadás előtt kísérletezzenek az új funkciókkal.  A nyilvános előzetes verziójú funkciók és szolgáltatások nem éles környezetben való használatra valók.  Az előzetes verziók során nyújtott támogatással kapcsolatos további információkért tekintse át [a gyakori kérdéseket,](https://azure.microsoft.com/support/faq/) vagy nyújtson be [támogatási kérelmet](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) további információkért.
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
-* Egy GitHub-fiók. Ha nem rendelkezik GitHub-fiókkal, hozzon létre egy [ingyenes fiókot](https://github.com/) a Kezdés előtt.
+* Egy GitHub-fiók. Ha nem rendelkezik GitHub-fiókkal, hozzon létre egy [ingyenes fiókot,](https://github.com/) mielőtt elkezdené.
 
-* Egy Jenkins-főkiszolgáló. Ha még nem rendelkezik Jenkins-főkiszolgálóval [, az ebben](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)a rövid útmutatóban ismertetett lépéseket követve telepítse a [Jenkins](https://aka.ms/jenkins-on-azure) az Azure-ban. A Jenkins-csomóponton/-ügynökön (például:) a következők szükségesek. kiszolgáló létrehozása):
+* Egy Jenkins-főkiszolgáló. Ha még nem rendelkezik Jenkins-főkiszolgálóval, telepítse a [Jenkinst](https://aka.ms/jenkins-on-azure) az Azure-on az ebben a rövid útmutatóban leírt lépések [végrehajtásával.](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template) A jenkins-csomóponton/ügynökön a következők szükségesek (például. build szerver):
 
     * [Git](https://git-scm.com/)
-    * [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-    * [Maven 3,0 vagy újabb](https://maven.apache.org/download.cgi)
-    * [Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.67 vagy újabb verzió
+    * [JDK, 8.](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+    * [Maven 3.0 vagy újabb](https://maven.apache.org/download.cgi)
+    * [Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.67-es vagy újabb verzió
 
     >[!TIP]
-    > Az Azure Marketplace [Microsoft Jenkins](https://aka.ms/jenkins-on-azure) megoldási sablonja alapértelmezés szerint tartalmazza a git, a JDK, az az CLI és az Azure plug-ius eszközöket.
+    > Az olyan eszközök, mint a Git, a JDK, az Az CLI és az Azure plug-ius alapértelmezés szerint az Azure Marketplace Microsoft Jenkins-megoldássablonban [Microsoft Jenkins](https://aka.ms/jenkins-on-azure) találhatók.
     
-* [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
+* [Regisztráció Azure-előfizetésre](https://azure.microsoft.com/free/)
  
-## <a name="provision-a-service-instance-and-launch-a-java-spring-application"></a>Szolgáltatási példány kiépítése és Java Spring-alkalmazás elindítása
+## <a name="provision-a-service-instance-and-launch-a-java-spring-application"></a>Szolgáltatáspéldány kiépítése és Java Spring alkalmazás elindítása
 
-A [Piggy mérőszámokat](https://github.com/Azure-Samples/piggymetrics) a Microsoft szolgáltatásalkalmazás mintaként használjuk, és a rövid útmutatóban ismertetett lépéseket követve hajtsa végre a [Java Spring-alkalmazás elindítása az Azure CLI használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) a szolgáltatási példány kiépítéséhez és az alkalmazások beállításához. Ha már elvégezte ugyanezt a folyamatot, ugorjon a következő szakaszra. Ellenkező esetben az alábbi Azure CLI-parancsokat tartalmazza. Tekintse meg a rövid útmutató [: Java Spring-alkalmazás elindítása az Azure CLI használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) további háttér-információk eléréséhez.
+A [Piggy metrikákat használjuk](https://github.com/Azure-Samples/piggymetrics) minta Microsoft-szolgáltatásalkalmazásként, és ugyanazokat a lépéseket követjük a [rövid útmutatóban: Indítsa el a Java Spring alkalmazást az Azure CLI használatával a](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) szolgáltatáspéldány kiépítése és az alkalmazások beállítása érdekében. Ha már átment ugyanazon a folyamaton, ugorhat a következő szakaszra. Ellenkező esetben az alábbi az Azure CLI-parancsok at tartalmazza. Tekintse meg [a rövid útmutató: Indítson el egy Java Spring alkalmazást az Azure CLI használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) további háttér-információk beszerezéséhez.
 
-A helyi gépnek meg kell felelnie a Jenkins Build-kiszolgálóval megegyező előfeltételeknek. Győződjön meg arról, hogy a következők telepítve vannak a Service-alkalmazások felépítéséhez és üzembe helyezéséhez:
+A helyi számítógépnek meg kell felelnie a Jenkins buildkiszolgálóval azonos előfeltételnek. Győződjön meg arról, hogy a mikroszolgáltatási alkalmazások létrehozásához és telepítéséhez telepítve vannak a következők:
     * [Git](https://git-scm.com/)
-    * [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-    * [Maven 3,0 vagy újabb](https://maven.apache.org/download.cgi)
-    * [Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.67 vagy újabb verzió
+    * [JDK, 8.](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+    * [Maven 3.0 vagy újabb](https://maven.apache.org/download.cgi)
+    * [Azure CLI telepítve](/cli/azure/install-azure-cli?view=azure-cli-latest), 2.0.67-es vagy újabb verzió
 
-1. Az Azure Spring Cloud bővítmény telepítése:
+1. Telepítse az Azure Spring Cloud bővítményt:
 
     ```Azure CLI
         az extension add --name spring-cloud
     ```
 
-2. Hozzon létre egy erőforráscsoportot, amely tartalmazza az Azure Spring Cloud Service-t:
+2. Hozzon létre egy erőforráscsoportot az Azure Spring Cloud szolgáltatás ának tárolására:
 
     ```Azure CLI
         az group create --location eastus --name <resource group name>
     ```
 
-3. Azure Spring Cloud-példány kiépítése:
+3. Az Azure Spring Cloud egy példányának kiépítése:
 
     ```Azure CLI
         az spring-cloud create -n <service name> -g <resource group name>
     ```
 
-4. A [Piggy-metrikák](https://github.com/Azure-Samples/piggymetrics) tárházát a saját GitHub-fiókjába. A helyi gépen a tárház klónozása `source-code`nevű könyvtárban:
+4. Elágazás a [Piggy metrikák](https://github.com/Azure-Samples/piggymetrics) tártára a saját GitHub-fiók. A helyi számítógépen klónozza a tártárat egy könyvtárban, amelynek neve: `source-code`
 
     ```bash
         mkdir source-code
         git clone https://github.com/<your GitHub id>/piggymetrics
     ```
 
-5. Állítsa be a konfigurációs kiszolgálót. Győződjön meg arról, hogy lecserélte a GitHub-azonosító &lt;&gt; a megfelelő értékre.
+5. Állítsa be a konfigurációs kiszolgálót. Győződjön meg &lt;arról, hogy&gt; lecseréli a GitHub-azonosítót a megfelelő értékre.
 
     ```Azure CLI
         az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/<your GitHub id>/piggymetrics --label config
     ```
 
-6. Hozza létre a projektet:
+6. A projekt megépítése:
 
     ```bash
         cd piggymetrics
         mvn clean package -D skipTests
     ```
 
-7. Hozza létre a három szolgáltatást: **átjáró**, **Auth-szolgáltatás**és **szolgáltatásfiók**:
+7. A három mikroszolgáltatás létrehozása: **átjáró**, **hitelesítési szolgáltatás**és **fiókszolgáltatás:**
 
     ```Azure CLI
         az spring-cloud app create --n gateway -s <service name> -g <resource group name>
@@ -100,7 +100,7 @@ A helyi gépnek meg kell felelnie a Jenkins Build-kiszolgálóval megegyező el�
         az spring-cloud app create --n account-service -s <service name> -g <resource group name>
     ```
 
-8. Alkalmazások üzembe helyezése: 
+8. Az alkalmazások telepítése: 
 
     ```Azure CLI
         az spring-cloud app deploy -n gateway -s <service name> -g <resource group name> --jar-path ./gateway/target/gateway.jar
@@ -108,40 +108,40 @@ A helyi gépnek meg kell felelnie a Jenkins Build-kiszolgálóval megegyező el�
         az spring-cloud app deploy -n auth-service -s <service name> -g <resource group name> --jar-path ./auth-service/target/auth-service.jar
     ```
 
-9. Nyilvános végpont kiosztása az átjáróhoz:
+9. Nyilvános végpont hozzárendelése az átjáróhoz:
 
     ```Azure CLI
         az spring-cloud app update -n gateway -s <service name> -g <resource group name> --is-public true
     ```
 
-10. Kérdezze le az átjáró alkalmazást az URL-cím lekéréséhez, így ellenőrizheti, hogy fut-e az alkalmazás.
+10. Az átjáróalkalmazás lekérdezésével lekell kérnünk az URL-címet, így ellenőrizheti, hogy fut-e az alkalmazás.
 
     ```Azure CLI
     az spring-cloud app show --name gateway | grep url
     ```
     
-    Navigáljon az előző parancs által megadott URL-címhez a PiggyMetrics alkalmazás futtatásához. 
+    Keresse meg az előző parancs által biztosított URL-címet a PiggyMetrics alkalmazás futtatásához. 
 
 ## <a name="prepare-jenkins-server"></a>Jenkins-kiszolgáló előkészítése
 
-Ebben a szakaszban előkészíti a Jenkins-kiszolgálót egy olyan Build futtatására, amely kiválóan használható a teszteléshez. A biztonsági következmények miatt azonban Azure-beli virtuálisgép- [ügynök](https://plugins.jenkins.io/azure-vm-agents) vagy [Azure Container Agent](https://plugins.jenkins.io/azure-container-agents) használatával kell felkészítenie egy ügynököt az Azure-ban a buildek futtatásához. További információkért lásd a Jenkins-cikket a [főkiszolgálón végzett összeállítás biztonsági vonatkozásairól](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
+Ebben a szakaszban előkészíti a Jenkins-kiszolgálót egy build futtatására, amely tesztelésre alkalmas. Azonban a biztonsági beleöntés miatt egy [Azure virtuálisgép-ügynök](https://plugins.jenkins.io/azure-vm-agents) vagy az [Azure Container-ügynök](https://plugins.jenkins.io/azure-container-agents) segítségével egy ügynök az Azure-ban a buildek futtatásához. További információkért lásd a Jenkins-cikket a [főkiszolgálón végzett összeállítás biztonsági vonatkozásairól](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
 
 ### <a name="install-plug-ins"></a>Beépülő modulok telepítése
 
-1. Jelentkezzen be a Jenkins-kiszolgálóra. Válassza a **Jenkins kezelése > a beépülő modulok kezelése**lehetőséget.
-2. A **rendelkezésre álló** lapon válassza ki a következő beépülő modulokat:
+1. Jelentkezzen be a Jenkins-kiszolgálóra. Válassza **a Jenkins kezelése > a Beépülő modulok kezelése lehetőséget.**
+2. Az **Elérhető** lapon válassza ki a következő beépülő modulokat:
     * [GitHub-integráció](https://plugins.jenkins.io/github-pullrequest)
-    * [Azure-beli hitelesítő adatok](https://plugins.jenkins.io/azure-credentials)
+    * [Azure-hitelesítő adatok](https://plugins.jenkins.io/azure-credentials)
 
-    Ha ezek a beépülő modulok nem jelennek meg a listában, tekintse meg a **telepített** lapot, és ellenőrizze, hogy telepítve vannak-e már.
+    Ha ezek a beépülő modulok nem jelennek meg a listában, a **Telepített** lapon ellenőrizze, hogy már telepítve vannak-e.
 
-3. A beépülő modulok telepítéséhez válassza a **Letöltés most lehetőséget, majd az újraindítás után telepítse a telepítést**.
+3. A beépülő modulok telepítéséhez válassza a **Letöltés és az újraindítás után a telepítés lehetőséget.**
 
 4. A telepítés befejezéséhez indítsa újra a Jenkins-kiszolgálót.
 
-### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>Az Azure-szolgáltatás egyszerű hitelesítő adatainak hozzáadása a Jenkins hitelesítőadat-tárolóban
+### <a name="add-your-azure-service-principal-credential-in-jenkins-credential-store"></a>Az Azure Service Principal hitelesítő adatainak hozzáadása a Jenkins-hitelesítő adatok tárolójában
 
-1. Szüksége lesz egy Azure-szolgáltatásra az Azure-ban való üzembe helyezéshez. További információ: [egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) című rész a Deploy to Azure app Service oktatóanyagban. A `az ad sp create-for-rbac` kimenete a következőképpen néz ki:
+1. Az Azure-ban üzembe helyezéshez egy Egyszerű Azure-szolgáltatásra van szükség. További információkért tekintse [meg](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) az egyszerű szolgáltatás létrehozása szakaszban az Azure App Service-oktatóanyag üzembe helyezése. A kimenet `az ad sp create-for-rbac` valahogy így néz ki:
 
     ```
     {
@@ -153,44 +153,44 @@ Ebben a szakaszban előkészíti a Jenkins-kiszolgálót egy olyan Build futtat�
     }
     ```
 
-2. A Jenkins irányítópultján válassza a **Credentials** > **System** (Hitelesítő adatok, Rendszer) lehetőséget. Ezután válassza a **Global credentials (unrestricted)** (Globális hitelesítő adatok (korlátlan)) elemet.
+2. A Jenkins irányítópulton válassza a **Hitelesítő adatok** > **rendszere lehetőséget.** Ezután válassza a **Global credentials (unrestricted)** (Globális hitelesítő adatok (korlátlan)) elemet.
 
-3. Válassza a **hitelesítő adatok hozzáadása**lehetőséget. 
+3. Válassza **a Hitelesítő adatok hozzáadása lehetőséget.** 
 
-4. Válassza ki **Microsoft Azure egyszerű szolgáltatásnevet** .
+4. Válassza ki a **Microsoft Azure egyszerű szolgáltatást.**
 
-5. Adja meg a következő értékeket: * előfizetés azonosítója: használja az Azure-előfizetés AZONOSÍTÓját * ügyfél-azonosító: `appId` * ügyfél titkának használata: használja a `password` * bérlői azonosítót: használja az `tenant` * Azure-környezetet: válasszon egy előre beállított értéket. Például használja az **Azure** -t az Azure globális * azonosítóhoz: beállítás **azure_service_principalként**. Ezt az azonosítót a cikk későbbi részében használjuk * Leírás: egy választható mező. Javasoljuk, hogy adjon meg egy értelmes értéket.
+5. Adja meg a következő értékeket: * Előfizetés-azonosító: használja `appId` az Azure-előfizetés `password` azonosítóját * `tenant` Ügyfélazonosító: használja * Ügyféltitok: használata * Bérlőazonosító: használata * Azure-környezet: válasszon ki egy előre beállított értéket. Például használja az **Azure** for Azure Global * ID azonosítóját: **azure_service_principal.** Ezt az azonosítót a cikk egy későbbi lépésében használjuk * Leírás: egy választható mező. Itt azt javasoljuk, hogy adjon érdemi értéket.
 
-### <a name="install-maven-and-az-cli-spring-cloud-extension"></a>A Maven és az a CLI Spring-Cloud Extension telepítése
+### <a name="install-maven-and-az-cli-spring-cloud-extension"></a>Telepítse a Maven és az Az CLI tavaszi felhőbővítményt
 
-A mintavételi folyamat a Maven használatával épít és az az CLI-t használja a szolgáltatási példányba való üzembe helyezéshez. A Jenkins telepítésekor létrejön egy *Jenkins*nevű rendszergazdai fiók. Győződjön meg arról, hogy a felhasználó *Jenkins* jogosult a Spring-Cloud bővítmény futtatására.
+A mintafolyamat a Maven-t használja a létrehozáshoz, az Az CLI pedig a szolgáltatáspéldányra való üzembe helyezéshez. A Jenkins telepítésekor létrehoz egy *jenkins*nevű rendszergazdai fiókot. Győződjön meg arról, hogy a felhasználó *jenkins* rendelkezik engedéllyel a tavaszi felhő bővítmény futtatásához.
 
-1. Kapcsolódjon a Jenkins-főkiszolgálóhoz SSH-n keresztül. 
+1. Csatlakozzon a Jenkins-főkiszolgálóhoz SSH-n keresztül. 
 
-2. Maven telepítése
+2. A Maven telepítése
 
     ```bash
         sudo apt-get install maven 
     ```
 
-3. Telepítse az Azure CLI-t. További információ: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ha az Azure-beli [Jenkins-főkiszolgálót](https://aka.ms/jenkins-on-azure)használja, a rendszer alapértelmezés szerint telepíti az Azure CLI-t.
+3. Telepítse az Azure CLI-t. További információ: [Az Azure CLI telepítése.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Az Azure CLI alapértelmezés szerint telepítve van, ha a Jenkins Mastert használja [az Azure-ban.](https://aka.ms/jenkins-on-azure)
 
-4. Váltson a `jenkins` felhasználóra:
+4. Váltás a `jenkins` felhasználóra:
 
     ```bash
         sudo su jenkins
     ```
 
-5. A **Spring-Cloud** bővítmény hozzáadása:
+5. Adja hozzá a **tavaszi felhő** bővítményt:
 
     ```bash
         az extension add --name spring-cloud
     ```
 
-## <a name="create-a-jenkinsfile"></a>Jenkinsfile létrehozása
-1. A saját tárházában (https://github.com/&lt ; a GitHub-azonosító&gt; /piggymetrics) hozzon létre egy **Jenkinsfile** a gyökérkönyvtárban.
+## <a name="create-a-jenkinsfile"></a>Jenkins-fájl létrehozása
+1. A saját tárházbanhttps://github.com/&lt( a GitHub-azonosító&gt;/piggymetrics) hozzon létre egy **Jenkinsfile** fájlt a gyökérben.
 
-2. Frissítse a fájlt az alábbiak szerint. Győződjön meg arról, hogy lecserélte **\<erőforráscsoport neve >** és a **\<szolgáltatásnév >** értékét. Ha más értéket használ a Jenkins-ben, cserélje le a **azure_service_principalt** a megfelelő azonosítóra. 
+2. Frissítse a fájlt az alábbiak szerint. Győződjön meg arról, hogy lecseréli az ** \<erőforráscsoport nevének**>és ** \<a szolgáltatásnév>** értékét. Cserélje le **azure_service_principal** a megfelelő azonosítóra, ha más értéket használ, amikor hozzáadja a hitelesítő adatokat a Jenkinsben. 
 
 ```groovy
     node {
@@ -224,9 +224,9 @@ A mintavételi folyamat a Maven használatával épít és az az CLI-t használj
 
 ## <a name="create-the-job"></a>A feladat létrehozása
 
-1. A Jenkins-irányítópulton kattintson az **új elem**lehetőségre.
+1. A Jenkins irányítópulton kattintson az **Új elem gombra.**
 
-2. Adjon meg egy nevet, a *PiggyMetrics* a feladatokhoz, és válassza a **folyamat**lehetőséget. Kattintson az OK gombra.
+2. Adjon meg egy nevet, *deploy-PiggyMetrics* a feladathoz, és válassza **a Folyamat lehetőséget.** Kattintson az OK gombra.
 
 3. Ezután kattintson a **Pipeline (Folyamat)** lapra.
 
@@ -234,33 +234,33 @@ A mintavételi folyamat a Maven használatával épít és az az CLI-t használj
 
 5. Az **SCM** értékeként válassza a **Git** lehetőséget.
 
-6. Adja meg az elágazó adattárhoz tartozó GitHub URL-címet: **https://github.com/&lt ; a GitHub-azonosító&gt; /piggymetrics.git**
+6. Adja meg a Forkforált tárterület GitHub-URL-címét: ** https://github.com/&lt;A GitHub-azonosító&gt;/piggymetrics.git**
 
-7. Győződjön meg arról, hogy az **ág megadása (Black for "any")** * **/Azure**
+7. Győződjön meg arról, hogy **a Branch Specifier (fekete az "any")-hoz** ***/Azure**
 
-8. **Parancsfájl elérési útjának** megtartása **Jenkinsfile**
+8. **Parancsfájl elérési útjának megtartása** **Jenkinsfile néven**
 
-7. Kattintson a **Mentés** gombra.
+7. Kattintson a **Mentés gombra**
 
-## <a name="validate-and-run-the-job"></a>A feladatok ellenőrzése és futtatása
+## <a name="validate-and-run-the-job"></a>A feladat ellenőrzése és futtatása
 
-A művelet futtatása előtt frissítse a bejelentkezés beviteli mezőjében szereplő szöveget a **bejelentkezési azonosító megadásához**.
+A feladat futtatása előtt frissítsük a bejelentkezési beviteli mezőben lévő szöveget a **bejelentkezési azonosító megadásához.**
 
-1. A saját tárházában nyissa meg `index.html` a **/Gateway/src/Main/Resources/static/**
+1. A saját tárházában `index.html` nyissa meg a **/gateway/src/main/resources/static/**
 
-2. Keressen rá a "bejelentkezési azonosító megadása" kifejezésre, és frissítse a
+2. Keressen rá a "Adja meg a bejelentkezést" kifejezésre, és frissítse a "bejelentkezési azonosító megadása" kifejezésre
 
     ```HTML
         <input class="frontforms" id="frontloginform" name="username" placeholder="enter login ID" type="text" autocomplete="off"/>
     ```
 
-3. A módosítások véglegesítve
+3. A módosítások véglegesítése
 
-4. Futtassa manuálisan a feladatot a Jenkinsben. A Jenkins Irányítópultján kattintson a PiggyMetrics, majd a **Build**( *üzembe helyezés* ) lehetőségre.
+4. Futtassa a feladatot manuálisan a Jenkinsben. A Jenkins irányítópulton kattintson a *Deploy-PiggyMetrics* feladatra, majd **a Build Now parancsra.**
 
-A feladatok befejezése után navigáljon az **átjáró** alkalmazás nyilvános IP-címére, és ellenőrizze, hogy az alkalmazás frissítve lett-e. 
+A feladat befejezése után keresse meg az **átjáróalkalmazás** nyilvános IP-címét, és ellenőrizze, hogy az alkalmazás frissült-e. 
 
-![Frissített Piggy-metrikák](media/tutorial-jenkins-deploy-cli-spring-cloud/piggymetrics.png)
+![Frissítve Malacka metrikák](media/tutorial-jenkins-deploy-cli-spring-cloud/piggymetrics.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -270,9 +270,9 @@ Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat:
 az group delete -y --no-wait -n <resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan használhatja az Azure CLI-t a Jenkins-ben a folyamatos integráció és a kézbesítés (CI/CD) automatizálására az Azure Spring Cloud számára.
+Ebben a cikkben megtanulta, hogyan használhatja az Azure CLI-t a Jenkinsben a folyamatos integráció és kézbesítés (CI/CD) automatizálására az Azure Spring Cloud számára.
 
 Ha többet szeretne megtudni az Azure Jenkins-szolgáltatóról, tekintse meg a Jenkins az Azure-webhelyen című témakört.
 

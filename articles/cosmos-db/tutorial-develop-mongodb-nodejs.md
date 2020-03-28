@@ -1,5 +1,5 @@
 ---
-title: Node. js, a MongoB Azure Cosmos DB API-ját használó szögletes alkalmazás (part1)
+title: Node.Js, Angular alkalmazás az Azure Cosmos DB MongoB API-jával (Part1)
 description: Ebben a videoalapú oktatóanyag-sorozatban megtudhatja, hogyan hozhat létre MongoDB-alkalmazásokat Azure Cosmos DB adatbázison Angular és Node használatával a MongoDB-hez használt API-kkal.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,17 +11,17 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444688"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Hozzon létre egy Angular alkalmazást az Azure Cosmos DB MongoDB-hoz való API-jával
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
+Ez a több részes oktatóanyag bemutatja, hogyan hozhat létre egy új alkalmazást a Node.js nyelven express és angular nyelven, majd csatlakoztassa a [Cosmos-fiókhoz, amely a Cosmos DB MongoDB API-jával van konfigurálva.](mongodb-introduction.md)
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Lehetővé teszi olyan dokumentum-, kulcs/érték-és Graph-adatbázisok gyors létrehozását és lekérdezését, amelyek kihasználják a globális elosztási és horizontális méretezési képességeket a Cosmos DB középpontjában. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Lehetővé teszi, hogy gyorsan hozzon létre és lekérdezési dokumentum, kulcs/érték, és a gráf adatbázisok, amelyek kihasználják a globális terjesztési és horizontális skálázási képességek a Cosmos DB magjában. 
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 
@@ -42,7 +42,7 @@ Ugyanezt az alkalmazást szeretné felépíteni a Reacttel? Lásd a [React vide�
 
 Az oktatóanyag lépésről lépésre végigvezeti az alkalmazás létrehozásának lépésein. Ha le szeretné tölteni a kész projektet, a kész alkalmazást az [angular-cosmosdb adattárból](https://github.com/Azure-Samples/angular-cosmosdb) töltheti le a GitHubról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

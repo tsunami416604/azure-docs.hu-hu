@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Azure-hoz készült NS1 SSO-val | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a NS1 SSO között az Azure-ban.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az NS1 Egyszeri bejelentkezés azure-hoz | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az NS1 Egyszeri bejelentkezés között az Azure-hoz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,160 +16,160 @@ ms.date: 02/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e917265f4bf6f857a0eada2433f0a0e4e24d7c5
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77565570"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Azure-hoz készült NS1 SSO-val
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az NS1 Egyszeri bejelentkezés az Azure-hoz
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NS1 SSO-t az Azure-ba a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja az NS1 SSO-t az Azure-ba, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az NS1 SSO-t az Azure-hoz az Azure Active Directoryval (Azure AD). Ha integrálja az NS1 SSO-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben elérhető NS1 SSO-hozzáférés az Azure-ban.
-* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezzenek az Azure-ba az Azure AD-fiókjával való NS1 egyszeri bejelentkezésre.
-* A fiókokat egy központi helyen, a Azure Portal kezelheti.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér az Azure-beli NS1-sSO-hoz.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve NS1 SSO for Azure az Azure-fiókok.
+* Egyetlen központi helyen, az Azure Portalon kezelheti fiókjait.
 
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
+Ha többet szeretne megtudni a szoftverszolgáltatásként (SaaS) alkalmazásintegrációról az Azure AD-vel, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* NS1 SSO az Azure egyszeri bejelentkezés (SSO) számára engedélyezett előfizetés esetén.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* NS1 egyszeri bejelentkezés az Azure egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* A NS1 SSO for Azure az SP és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést támogatja.
-* Miután konfigurálta a NS1 SSO-t az Azure-hoz, kényszerítheti a munkamenet-vezérlést. Ez valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
-## <a name="add-ns1-sso-for-azure-from-the-gallery"></a>NS1 SSO hozzáadása az Azure-hoz a katalógusból
-
-Az Azure NS1 SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Azure-hoz készült NS1 SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
-
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe a **ns1 egyszeri bejelentkezés az Azure** -ban kifejezést.
-1. Válassza az **ns1 SSO az Azure** -hoz lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+* Az NS1 SSO for Azure támogatja az SP-t és az IDP által kezdeményezett sso-t.
+* Az NS1 SSO azure-beli konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáféréstől nyújt ki. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ns1-sso-for-azure"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az Azure-hoz készült NS1 SSO-hoz
+## <a name="add-ns1-sso-for-azure-from-the-gallery"></a>NS1 SSO hozzáadása az Azure-hoz a galériából
 
-Konfigurálja és tesztelje az Azure AD SSO-t az Azure-hoz készült NS1 SSO-vel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez hozzon létre egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Azure NS1 SSO-hoz.
+Az NS1 SSO Azure-hoz való integrálásának konfigurálásához hozzá kell adnia az NS1 SSO for Azure-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure AD SSO konfigurálásának és tesztelésének általános lépései az Azure-hoz készült NS1 SSO használatával:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a Minden **alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a katalógusból** szakaszban írja be az **NS1 SSO for Azure-t** a keresőmezőbe.
+1. Válassza az **NS1 SSO for Azure az** eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
 
-    a. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-ns1-sso-for-azure"></a>Az Azure AD egyszeri bejelentkezésének konfigurálása és tesztelése az Azure-hoz való NS1 egyszeri bejelentkezéshez
 
-    b. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[Konfigurálja a ns1 SSO-t az Azure SSO](#configure-ns1-sso-for-azure-sso)** -hoz az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
+Konfigurálja és tesztelje az Azure AD SSO-t az NS1 SSO for Azure-ral egy **B.Simon**nevű tesztfelhasználó használatával. Az SSO működéséhez hozzon létre egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Azure-beli NS1-sSO-ban.
 
-    a. **[Hozzon létre egy ns1 SSO-t az Azure test User](#create-an-ns1-sso-for-azure-test-user)** számára, hogy a B. Simon párja legyen a ns1 SSO for Azure-ban. Ez a partner a felhasználó Azure AD-képviseletéhez van társítva.
-1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+Az Azure AD SSO konfigurálásának és tesztelésének általános lépéseit az Azure-hoz való NS1-sSO-val:
+
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használhassák ezt a funkciót.
+
+    a. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez B.Simon nal.
+
+    b. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy b.Simon az Azure AD egyszeri bejelentkezést használhasson.
+1. **[Konfigurálja az NS1 Egyszeri bejelentkezés az Azure Egyszeri bejelentkezés](#configure-ns1-sso-for-azure-sso)** konfigurálásához az alkalmazás oldalon az egyszeri bejelentkezési beállítások konfigurálásához.
+
+    a. **[Hozzon létre egy NS1 SSO azure-teszt felhasználó,](#create-an-ns1-sso-for-azure-test-user)** hogy egy megfelelője B.Simon NS1 SSO az Azure-hoz. Ez a megfelelő kapcsolódik a felhasználó Azure AD-ábrázolása.
+1. **[Tesztelje az SSO-t,](#test-sso)** hogy ellenőrizze, működik-e a konfiguráció.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)a **ns1 SSO for Azure** Application Integration oldalon keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)az **NS1 SSO for Azure alkalmazásintegrációs** lapon keresse meg a **Kezelés** szakaszt. Válassza **ki az egyszeri bejelentkezést**.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon válassza az **egyszerű SAML-konfiguráció** ceruza ikonját a beállítások szerkesztéséhez.
 
-   ![Képernyőfelvétel: egyszeri bejelentkezés beállítása SAML-oldallal – kiemelve a ceruza ikonnal](common/edit-urls.png)
+   ![Képernyőkép: Egyszeri bejelentkezés beállítása SAML-oldallal, kiemelve a ceruza ikonnal](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be a következő URL-címet: `https://api.nsone.net/saml/metadata`
+    a. Az **Azonosító** mezőbe írja be a következő URL-címet:`https://api.nsone.net/saml/metadata`
 
-    b. A **Válasz URL-cím** szövegmezőbe írja be a következő mintát használó URL-címet: `https://api.nsone.net/saml/sso/<ssoid>`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet, amely a következő mintát használja:`https://api.nsone.net/saml/sso/<ssoid>`
 
-1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Válassza **a További URL-ek beállítása**lehetőséget, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban szeretné konfigurálni:
 
-    Írja be a következő URL-címet a **bejelentkezési URL-cím** szövegmezőbe: `https://my.nsone.net/#/login/sso`
+    A **Bejelentkezési URL-cím** mezőbe írja be a következő URL-címet:`https://my.nsone.net/#/login/sso`
 
     > [!NOTE]
-    > A válasz URL-cím értéke nem valódi. A válasz URL-címének frissítése a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a ns1 SSO-val az [Azure ügyfél-támogatási csapatával](mailto:techops@nsone.net) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A Válasz URL-értéke nem valós. A válasz URL-értékének frissítése a tényleges Válasz URL-címmel. Lépjen kapcsolatba az [NS1 SSO azure-ügyfél támogatási csapatának](mailto:techops@nsone.net) az érték lekérni. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-1. Az Azure-alkalmazásokhoz készült NS1 egyszeri bejelentkezés egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit a **felhasználói attribútumok & jogcímek** szakaszban találja az alkalmazás-integráció lapon. Az **egyszeri bejelentkezés SAML** használatával lapon válassza a ceruza ikont a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+1. Az NS1 SSO azure-alkalmazás elvárja az SAML állításokat egy adott formátumban. Konfigurálja az alkalmazás következő jogcímeket. Ezeknek az attribútumoknak az értékeit az alkalmazásintegrációs lap **Felhasználói attribútumok & jogcímek** szakaszában kezelheti. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon jelölje ki a ceruza ikont a **Felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![Képernyőkép a felhasználói attribútumok & a jogcímek szakaszról, a ceruza ikon kiemelve](./media/ns1-sso-for-azure-tutorial/attribute-edit-option.png)
+    ![Képernyőkép a Felhasználói attribútumok & Jogcímek szakaszról, kiemelve a ceruza ikonnal](./media/ns1-sso-for-azure-tutorial/attribute-edit-option.png)
 
-1. Válassza ki az attribútum nevét a jogcím szerkesztéséhez.
+1. Válassza ki a jogcím szerkesztéséhez az attribútum nevét.
 
-    ![Képernyőkép a felhasználói attribútumok & a jogcímek szakaszról, az attribútum neve kiemelve](./media/ns1-sso-for-azure-tutorial/attribute-claim-edit.png)
+    ![Képernyőkép a Felhasználói attribútumok & jogcímek szakaszról, kiemelve az attribútum nevét](./media/ns1-sso-for-azure-tutorial/attribute-claim-edit.png)
 
-1. Válassza az **átalakítás**lehetőséget.
+1. Válassza **az Átalakítás**lehetőséget.
 
-    ![Képernyőkép a jogcím kezelése szakaszról, az átalakítás kiemelve](./media/ns1-sso-for-azure-tutorial/prefix-edit.png)
+    ![Képernyőkép: Jogcím kezelés szakasza, kiemelve az Átalakítás lehetőséggel](./media/ns1-sso-for-azure-tutorial/prefix-edit.png)
 
-1. Az **átalakítás kezelése** szakaszban hajtsa végre a következő lépéseket:
+1. Az **Átalakítás kezelése szakaszban** hajtsa végre az alábbi lépéseket:
 
-    ![Képernyőkép – az átalakítás kezelése szakasz, különböző mezők kiemelésével](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
+    ![Képernyőkép: Az átalakítás kezelése szakasz, a kijelölt különböző mezőkkel](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
 
-    1. Válassza a **ExactMailPrefix ()** lehetőséget **átalakításként**.
+    1. Válassza a **ExactMailPrefix()** lehetőséget **átalakításként.**
 
-    1. Válassza a **User. userPrincipalName** elemet az **1. paraméterként**.
+    1. Válassza ki **a user.userprincipalname-t** **az 1.**
 
     1. Válassza a **Hozzáadás** lehetőséget.
 
     1. Kattintson a **Mentés** gombra.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot. Ekkor a rendszer átmásolja az **alkalmazás-összevonási metaadatok URL-címét** , és menti azt a számítógépre.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** válassza a másolás gombot. Ez másolja az **App Federation metaadat-címét,** és menti azt a számítógépre.
 
-    ![Képernyőfelvétel az SAML-aláíró tanúsítványról, a másolás gombbal kiemelve](common/copy-metadataurl.png)
+    ![Képernyőkép az SAML aláíró tanúsítványról, a kiemelve a másolás gomb](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban hozzon létre egy tesztfelhasználót az Azure Portalon B.Simon nevű.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory** > **felhasználói** > **minden felhasználó lehetőséget.**
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
 
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben látható értéket.
    1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban az Azure egyszeri bejelentkezés használatát teszi lehetővé a B. Simon számára, hogy hozzáférést biztosítson az Azure-hoz készült NS1 SSO-hoz.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t, az Azure-beli NS1 egyszeri bejelentkezés engedélyezésével.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **ns1 egyszeri bejelentkezés az Azure**-hoz lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza az **NS1 SSO for Azure**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
+   ![Képernyőkép a Kezelés szakaszról, kiemelve a Felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
+    ![Képernyőkép: Felhasználók és csoportok lap, kiemelt Felhasználó hozzáadása](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a felhasználók listából. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a felhasználók listájából. Ezután válassza a **Kijelölés** gombot a képernyő alján.
+1. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából. Ezután válassza a **Kijelölés** gombot a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Hozzárendelés lehetőséget.**
 
-## <a name="configure-ns1-sso-for-azure-sso"></a>NS1 SSO konfigurálása az Azure SSO-hoz
+## <a name="configure-ns1-sso-for-azure-sso"></a>NS1 sso konfigurálása az Azure SSO-hoz
 
-Ha az egyszeri bejelentkezést az Azure NS1 SSO-ra szeretné konfigurálni, akkor az alkalmazás-összevonási metaadatok URL-címét el kell küldenie az [Azure támogatási csapatának ns1 egyszeri bejelentkezéshez](mailto:techops@nsone.net). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
+Az Azure-hoz való egyszeri bejelentkezés konfigurálásához el kell küldenie az App Federation metaadat-URL-címét az [NS1 Egyszeri bejelentkezés azure-beli támogatási csapatnak.](mailto:techops@nsone.net) Úgy konfigurálják ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-ns1-sso-for-azure-test-user"></a>NS1 SSO létrehozása az Azure test userhez
+### <a name="create-an-ns1-sso-for-azure-test-user"></a>NS1 SSO létrehozása az Azure tesztfelhasználója számára
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az Azure-beli NS1 SSO-hoz. Működjön együtt a NS1 SSO for Azure támogatási csapatával, és adja hozzá a felhasználókat a NS1 SSO for Azure platformhoz. Nem használhat egyszeri bejelentkezést, amíg nem hoz létre és nem aktivál felhasználókat.
+Ebben a szakaszban hozzon létre egy B.Simon nevű felhasználót az NS1 SSO azure-ban. Együttműködve az NS1 SSO azure támogatási csapatával, hogy hozzáadja a felhasználókat az NS1 SSO for Azure platformon. Az egyszeri bejelentkezés nem használható, amíg létre nem hozza és nem aktiválja a felhasználókat.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a Hozzáférési panel használatával teszteli.
 
-Amikor kiválasztja a NS1 SSO for Azure csempét a hozzáférési panelen, automatikusan be kell jelentkeznie az Azure-hoz készült NS1 SSO-ra, amelyhez be kell állítania az SSO-t. További információ: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja az NS1 SSO azure-hoz csempe access panel, automatikusan be kell jelentkeznie az NS1 SSO for Azure, amelyhez beállítja az SSO. További információt a [Hozzáférési panel – bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
@@ -177,8 +177,8 @@ Amikor kiválasztja a NS1 SSO for Azure csempét a hozzáférési panelen, autom
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Az Azure AD-vel való NS1 egyszeri bejelentkezés kipróbálása](https://aad.portal.azure.com/)
+- [Próbálja ki az NS1 SSO for Azure-t az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

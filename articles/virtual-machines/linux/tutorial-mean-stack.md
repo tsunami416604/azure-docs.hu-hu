@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – MEAN stack létrehozása Linux rendszerű virtuális gépen az Azure-ban
+title: Oktatóanyag – MEAN-verem létrehozása Linuxos virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) vermet Linux rendszerű virtuális gépen az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034403"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154321"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: MongoDB-, Express-, AngularJS- és Node.js- (MEAN-) verem létrehozása Linux rendszerű virtuális gépen az Azure-ban
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg MongoDB-, Express-, Angu
 > * Az útvonalak elérése AngularJS segítségével
 > * Az alkalmazás futtatása
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -220,7 +220,7 @@ Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js
 
 Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinamikus nézetek létrehozásához a webalkalmazáson belül. Ebben az oktatóanyagban az AngularJS használatával csatlakoztatjuk a weboldalt az Express szolgáltatáshoz, és műveleteket hajtunk végre a könyvadatbázison.
 
-1. Módosítsa a könyvtár biztonsági mentésének helyét a *Books* (`cd ../..`) mappára, majd hozzon létre egy *public* (nyilvános) nevű mappát, és adjon hozzá egy *script.js* nevű fájlt, amelyben meg van határozva a vezérlő konfigurációja.
+1. Módosítsa a könyvtárat a`cd ../..` *Könyvek* ( ) értékre, majd hozzon létre egy nyilvános nevű mappát, és adjon hozzá egy *script.js* nevű fájlt a vezérlő konfigurációjának definiálva. *public*
 
     ```javascript
     var app = angular.module('myApp', []);
@@ -317,17 +317,17 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 
 ##  <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. Módosítsa a könyvtár biztonsági mentésének helyét a *Books* (`cd ..`) mappára, és indítsa el a kiszolgálót az alábbi parancs futtatásával:
+1. Módosítsa a könyvtárat a`cd ..` *Könyvek* ( ) értékre, és indítsa el a kiszolgálót a következő parancs futtatásával:
 
     ```bash
     nodejs server.js
     ```
 
-2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például *http:\//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
+2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például, *http:\//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
 
     ![Könyvrekord](media/tutorial-mean/meanstack-init.png)
 
-3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Például:
+3. Adjon meg adatokat a szöveges mezőkben, és kattintson az **Add** (Hozzáadás) elemre. Példa:
 
     ![Könyvrekord hozzáadása](media/tutorial-mean/meanstack-add.png)
 
@@ -337,7 +337,7 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
 
 5. A **Delete** (Törlés) gombra kattintva eltávolíthatja a könyvrekordot az adatbázisból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy webalkalmazást, amely nyomon követi a könyvrekordokat egy MEAN-készlet használatával egy Linux rendszerű virtuális gépen. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -349,7 +349,7 @@ Ebben az oktatóanyagban létrehozott egy webalkalmazást, amely nyomon követi 
 > * Az útvonalak elérése AngularJS segítségével
 > * Az alkalmazás futtatása
 
-Folytassa a következő oktatóanyaggal, amelyből megismerheti, hogyan tehetők biztonságossá a webkiszolgálók SSL-tanúsítványok használatával.
+A következő oktatóanyagra lépésként megtudhatja, hogyan biztosíthat webkiszolgálókat TLS-tanúsítványokkal.
 
 > [!div class="nextstepaction"]
-> [Webkiszolgáló biztonságossá tétele SSL használatával](tutorial-secure-web-server.md)
+> [Biztonságos webkiszolgáló a TLS-sel](tutorial-secure-web-server.md)

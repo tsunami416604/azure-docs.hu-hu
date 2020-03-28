@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Security Center használata Linux rendszerű virtuális gépekhez az Azure-ban
+title: Oktatóanyag – Az Azure Security Center for Linux virtuális gépek használata az Azure-ban
 description: Ebben az oktatóanyagban megismerkedhet az Azure Security Center szolgáltatásaival, amelyekkel megvédheti és biztonságossá teheti Linux rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77605519"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
@@ -49,8 +49,8 @@ A Security Center az adatészlelésen túl javaslatokat is ad az észlelt probl�
 Ha a virtuális gép biztonsági konfigurációjára kíváncsi, előbb be kell állítania a Security Center adatgyűjtését. Ennek során be kell kapcsolnia az adatgyűjtést, amely automatikusan telepíti a Microsoft Monitoring Agentet az előfizetés minden virtuális gépén.
 
 1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését. 
-2. Az **Automatikus kiépítés** **Adatgyűjtés** pontjánál válassza a **Be** lehetőséget.
-3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)** .
+2. Az **Automatikus kiépítés****Adatgyűjtés** pontjánál válassza a **Be** lehetőséget.
+3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)**.
 4. A **Biztonsági eseményeknél** tartsa meg az **Általános** alapértelmezett beállítást.
 4. Kattintson az oldal tetején lévő **Mentés** elemre. 
 
@@ -64,7 +64,7 @@ Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
 2. A **Biztonsági szabályzat** panelen válassza a **Biztonsági szabályzat** elemet. 
-3. A **biztonsági házirend – biztonsági szabályzat** panelen kapcsolja be vagy kapcsolja ki azokat a szabályzatokat, amelyeket alkalmazni kíván az előfizetésre.
+3. A **Biztonsági házirend – Biztonsági házirend** panelen kapcsolja be vagy kapcsolja ki az előfizetésre alkalmazni kívánt házirendelemeket.
 4. Ha végzett a beállítások megadásával, kattintson a panel tetején lévő **Mentés** elemre. 
 
 ![Egyedi szabályzat](./media/tutorial-azure-security/unique-policy.png)
@@ -103,9 +103,9 @@ Ha a rendszer elvégzi a javaslatokhoz tartozó javításokat, megoldottként je
 
 ## <a name="view-detected-threats"></a>Észlelt fenyegetések megtekintése
 
-Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. Security Center veszélyforrások észlelési képességeivel kapcsolatos részletes információkért lásd: [Hogyan észleli a fenyegetéseket az Security Center?](../../security-center/security-center-alerts-overview.md#detect-threats)
+Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. A Security Center fenyegetésészlelési képességeiről a [Hogyan észleli a Security Center a fenyegetéseket.](../../security-center/security-center-alerts-overview.md#detect-threats)
 
-A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. Erre a magasabb szintű díjszabásra való áttéréskor **ingyenes próbaverzió** érhető el. 
+A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről**Standardra* kell emelni. Az **ingyenes próbaverzió** akkor érhető el, ha erre a magasabb tarifacsomagra lép. 
 
 A tarifacsomag módosítása:  
 
@@ -122,7 +122,7 @@ Az információk megtekintéséhez válasszon ki egy riasztást. Megjelenik pél
 
 ![RDP-támadás](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekintette a virtuális gépek Security Centerben való kezelését. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

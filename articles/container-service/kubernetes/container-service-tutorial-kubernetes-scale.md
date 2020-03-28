@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service oktatóanyag – alkalmazás méretezése
+title: (ELAVULT) Azure Container Service oktatóanyag – Alkalmazás méretezése
 description: Azure Container Service-oktatóanyag – Alkalmazás skálázása
 author: dlepow
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273989"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>ELAVULT Kubernetes hüvelyek és Kubernetes infrastruktúra méretezése
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(ELAVULT) A Kubernetes-podok és a Kubernetes-infrastruktúra méretezése
 
 > [!TIP]
-> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazások méretezése az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-scale.md).
+> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes szolgáltatásban (AKS)](../../aks/tutorial-kubernetes-scale.md)című témakörben található.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -42,7 +42,7 @@ Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, l
 
 Eddig már telepítettük az Azure Vote előtérrendszerét és a Redis-példányokat, mindegyiket egyetlen replikával. Ennek az ellenőrzéséhez futtassa a [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) parancsot.
 
-Nyissa meg a [https://shell.azure.com](https://shell.azure.com) a Cloud Shell megnyitásához a böngészőben.
+Nyissa [https://shell.azure.com](https://shell.azure.com) meg a Cloud Shell t a böngészőjében.
 
 ```console
 kubectl get pods
@@ -82,7 +82,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Podok automatikus méretezése
 
-A Kubernetes támogatja a [podok horizontális felskálázását](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) az üzemi környezetekben a podok számának a processzorhasználat vagy egyéb megadott metrikák alapján való módosítása érdekében. 
+A Kubernetes támogatja a [podok horizontális felskálázását](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) a környezetekben a podok számának a processzorhasználat vagy egyéb megadott metrikák alapján való módosítása érdekében. 
 
 Az automatikus méretező használatához definiálni kell a podok processzorigényét és korlátait. Az `azure-vote-front` üzemi környezetben az előtértároló processzorigénye 0,25, a felső korlát pedig 0,5. A beállítások a következőhöz hasonlóak:
 
@@ -94,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-Az alábbi példában a [kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) paranccsal automatikusan skálázzuk a podok számát az `azure-vote-front` üzemi környezetben. Amennyiben a processzorhasználat itt meghaladja az 50%-ot, az automatikus méretező legfeljebb 10-ig növeli a podok számát.
+Az alábbi példában a [kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) paranccsal automatikusan skálázzuk a podok számát az `azure-vote-front` környezetben. Amennyiben a processzorhasználat itt meghaladja az 50%-ot, az automatikus méretező legfeljebb 10-ig növeli a podok számát.
 
 
 ```console
@@ -143,7 +143,7 @@ A parancs kimenete az ügynökcsomópontok számát az `agentPoolProfiles:count`
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. A következők feladatokat hajtottuk végre:
 

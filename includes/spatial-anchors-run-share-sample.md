@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882313"
 ---
-## <a name="androidtabandroid"></a>[Android](#tab/Android)
+## <a name="android"></a>[Android](#tab/Android)
 
-A Java Android-minta támogatja az eszközök közötti megosztást.
-Nyissa meg a `SharedActivity.java` fájlt a Android Studio Samples mappájában. Adja meg az előző lépésben beszerzett URL-címet (a ASP.NET Web App Azure-beli telepítésből) a `SharedActivity.java` fájlban `SharingAnchorsServiceUrl` értékként. Cserélje le az URL-ben lévő `index.html` a `api/anchors`ra. A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors`.
-
-[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
-
-## <a name="iostabios"></a>[iOS](#tab/iOS)
-
-A Objective-C iOS-minta támogatja az eszközök közötti megosztást.
-Nyissa meg a `SharedDemoViewController.m` fájlt a Samples mappában. Adja meg az előző lépésben beszerzett URL-címet (a ASP.NET Web App Azure-beli telepítésből) a `SharedActivity.java` fájlban `SharingAnchorsServiceUrl` értékként. Cserélje le az URL-ben lévő `index.html` a `api/anchors`ra. A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors`.
+A Java android minta támogatja az eszközök közötti megosztást.
+Nyissa meg `SharedActivity.java` a fájlt az Android Studio mintamappájából. Adja meg az előző lépésben (a ASP.NET webalkalmazás Azure-központi `SharingAnchorsServiceUrl` telepítésében) kapott URL-címet a `SharedActivity.java` fájlban lévő értékként. Cserélje `index.html` le az `api/anchors`url-t a- ra. Meg kell így `https://<app_name>.azurewebsites.net/api/anchors`néz ki: .
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+## <a name="ios"></a>[iOS](#tab/iOS)
 
-A Xamarin Android-és iOS-minták egyaránt támogatják az eszközök közötti megosztást.
-Nyissa meg a `AccountDetails.cs` fájlt a Samples mappában. Adja meg az előző lépésben beszerzett URL-címet (a ASP.NET Web App Azure-beli telepítésből) a `SharedActivity.java` fájlban `AnchorSharingServiceUrl` értékként. Cserélje le az URL-ben lévő `index.html` a `api/anchors`ra. A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors`.
+Az Objective-C iOS minta támogatja az eszközök közötti megosztást.
+Nyissa meg `SharedDemoViewController.m` a fájlt a mintamappában. Adja meg az előző lépésben (a ASP.NET webalkalmazás Azure-központi `SharingAnchorsServiceUrl` telepítésében) kapott URL-címet a `SharedActivity.java` fájlban lévő értékként. Cserélje `index.html` le az `api/anchors`url-t a- ra. Meg kell így `https://<app_name>.azurewebsites.net/api/anchors`néz ki: .
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="unitytabunity"></a>[Unity](#tab/Unity)
+## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
+
+Mind a Xamarin Android, mind az iOS minta támogatja az eszközök közötti megosztást.
+Nyissa meg `AccountDetails.cs` a fájlt a mintamappában. Adja meg az előző lépésben (a ASP.NET webalkalmazás Azure-központi `AnchorSharingServiceUrl` telepítésében) kapott URL-címet a `SharedActivity.java` fájlban lévő értékként. Cserélje `index.html` le az `api/anchors`url-t a- ra. Meg kell így `https://<app_name>.azurewebsites.net/api/anchors`néz ki: .
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="unity"></a>[Unity](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
@@ -44,38 +44,38 @@ Nyissa meg a `AccountDetails.cs` fájlt a Samples mappában. Adja meg az előző
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-the-account-identifier-and-key"></a>A fiók azonosítójának és kulcsának konfigurálása
+## <a name="configure-the-account-identifier-and-key"></a>A fiókazonosító és a kulcs konfigurálása
 
-A **projekt** ablaktáblán navigáljon a `Assets/AzureSpatialAnchorsPlugin/Examples` elemre, és nyissa meg a `AzureSpatialAnchorsLocalSharedDemo.unity` jelenet fájlt.
+A **Project** ablaktáblán `Assets/AzureSpatialAnchorsPlugin/Examples` keresse `AzureSpatialAnchorsLocalSharedDemo.unity` meg és nyissa meg a jelenetfájlt.
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-A **projekt** ablaktáblán navigáljon a `Assets\AzureSpatialAnchors.Examples\Resources`elemre. Válassza a(z) `SpatialAnchorSamplesConfig` lehetőséget. Ezután a **felügyelő** ablaktáblán adja meg a `Sharing Anchors Service url` (a ASP.net Web App Azure-beli telepítésből) a `Base Sharing Url`értékének megfelelően, és cserélje le a `index.html`t a `api/anchors`ra. A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors`.
+A **Project** ablaktáblában `Assets\AzureSpatialAnchors.Examples\Resources`keresse meg a lehetőséget. Válassza a(z) `SpatialAnchorSamplesConfig` lehetőséget. Ezután a **Felügyelő** ablaktáblán adja `Sharing Anchors Service url` meg a (a ASP.NET `Base Sharing Url`webapp `index.html` `api/anchors`Azure deployment) értékét, a helyére. Meg kell így `https://<app_name>.azurewebsites.net/api/anchors`néz ki: .
 
-Mentse a jelenetet a **fájl** > **Mentés**lehetőség kiválasztásával.
+Mentse a jelenetet a **Fájlmentés** > lehetőség**kiválasztásával.**
 
 ## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
 
-### <a name="deploy-to-android-device"></a>Üzembe helyezés Android-eszközön
+### <a name="deploy-to-android-device"></a>Telepítés Android-eszközre
 
-Jelentkezzen be az Android-eszközén, és csatlakoztassa a számítógéphez USB-kábellel.
+Jelentkezzen be Android-eszközén, és csatlakoztassa a számítógéphez USB-kábellel.
 
-A **Build-beállítások** megnyitásához válassza a **fájl** > **létrehozási beállítások**lehetőséget.
+A **Build-beállítások** megnyitásához válassza a **Fájlösszeállítás** > **beállításai lehetőséget.**
 
-A **build (jelenetek**) területen győződjön meg arról, hogy az összes jelenet mellett Pipa jel van.
+A **Jelenetek a buildben**területen területen győződjön meg arról, hogy minden jelenet mellett pipa van.
 
-Győződjön meg arról, hogy az **exportálási projekt** nem rendelkezik pipa jellel. Válassza **a létrehozás és Futtatás**lehetőséget. A rendszer kérni fogja a `.apk` fájl mentését. Bármelyik nevet kiválaszthatja.
+Győződjön meg arról, hogy **a Project exportálása** nem rendelkezik pipával. Válassza a **Build and Run**lehetőséget. A rendszer kéri a fájl `.apk` mentését. Bármilyen nevet választhatsz.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-### <a name="deploy-to-an-ios-device"></a>Üzembe helyezés iOS-eszközön
+### <a name="deploy-to-an-ios-device"></a>Telepítés iOS-eszközön
 
-A **Build-beállítások** megnyitásához válassza a **fájl** > **létrehozási beállítások**lehetőséget.
+A **Build-beállítások** megnyitásához válassza a **Fájlösszeállítás** > **beállításai lehetőséget.**
 
-A **build (jelenetek**) területen győződjön meg arról, hogy az összes jelenet mellett Pipa jel van.
+A **Jelenetek a buildben**területen területen győződjön meg arról, hogy minden jelenet mellett pipa van.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-A Xcode-ben állítsa le az alkalmazást a **Leállítás**lehetőség kiválasztásával.
+Az Xcode-ban állítsa le az alkalmazást a **Leállítás**lehetőség kiválasztásával.

@@ -1,6 +1,6 @@
 ---
-title: Felügyelt lemezek másolása az előfizetés-CLI-mintára
-description: Azure CLI-parancsfájl minta – felügyelt lemezek másolása (vagy áthelyezése) egy másik előfizetésbe
+title: Felügyelt lemezek másolása előfizetésbe – CLI-minta
+description: Azure CLI-parancsfájlminta – Felügyelt lemezek másolása (vagy áthelyezése) ugyanarra vagy egy másik előfizetésre
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -17,15 +17,15 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 7ccdec703781a4e48870d5b4c27ec9d23de71dd0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458574"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Felügyelt lemezek másolása előfizetésen belül vagy előfizetések között a CLI használatával
 
-Ez a szkript átmásol egy felügyelt lemezt egy előfizetésen belül vagy egy eltérő, de ugyanabban a régióban található előfizetésbe. A másolás csak akkor működik, ha az előfizetések ugyanahhoz a HRE-bérlőhöz tartoznak.
+Ez a szkript átmásol egy felügyelt lemezt egy előfizetésen belül vagy egy eltérő, de ugyanabban a régióban található előfizetésbe. A másolat csak akkor működik, ha az előfizetések ugyanannak az AAD-bérlőnek a részét képezik.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -46,7 +46,7 @@ A szkript a következő parancsokat használja egy új felügyelt lemez létreho
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | Lekérdezi egy felügyelt lemez összes tulajdonságát a lemez neve és erőforráscsoport-tulajdonságai alapján. Az „Id” tulajdonság a felügyelt lemez másik előfizetésbe való másolásakor használatos.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | Lemásol egy felügyelt lemezt úgy, hogy a szülő felügyelt lemez azonosítójának és nevének használatával egy másik előfizetésben hoz létre egy felügyelt lemezt.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gép létrehozása felügyelt lemezből](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service oktatóanyag – alkalmazás előkészítése
+title: (ELAVULT) Azure Container Service oktatóanyag – Alkalmazás előkészítése
 description: Azure Container Service-oktatóanyag – Az alkalmazás előkészítése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76275426"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>ELAVULT Azure Container Servicehez használandó tároló-lemezképek létrehozása
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(ELAVULT) Az Azure Container Service szolgáltatással használandó tárolórendszerképek létrehozása
 
 > [!TIP]
-> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazás előkészítése az Azure Kubernetes Service (ak) szolgáltatáshoz](../../aks/tutorial-kubernetes-prepare-app.md).
+> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Alkalmazás előkészítése az Azure Kubernetes-szolgáltatáshoz (AKS)](../../aks/tutorial-kubernetes-prepare-app.md)című témakörben található.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -34,9 +34,9 @@ Miután végeztünk ezzel, az alábbi alkalmazás elérhető lesz a helyi fejles
 
 Az ezt követő oktatóanyagokban a tárolórendszerképet feltölti a rendszer egy Azure Container Registrybe, majd egy Azure-ban üzemeltetett Kubernetes-fürtön futtatja.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Amennyiben szükséges, tekintse meg a tárolók alapfogalmainak ismertetését a [Bevezetés a Docker használatába]( https://docs.docker.com/get-started/) című cikkben. 
+Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Amennyiben szükséges, tekintse meg a tárolók alapfogalmainak ismertetését a [Docker használatának első lépései között]( https://docs.docker.com/get-started/). 
 
 Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) vagy [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszeren.
 
@@ -123,7 +123,7 @@ docker-compose down
 
 A művelet befejezésekor az Azure Vote alkalmazást tartalmazó tárolórendszerképet kap.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy alkalmazást teszteltünk, és tárolórendszerképeket hoztunk létre az alkalmazáshoz. A következő lépéseket hajtotta végre:
 
@@ -135,4 +135,4 @@ Ebben az oktatóanyagban egy alkalmazást teszteltünk, és tárolórendszerkép
 Folytassa a következő oktatóanyaggal, amelyben a tárolórendszerképek az Azure Container Registry-ben való tárolásának módját ismerheti meg.
 
 > [!div class="nextstepaction"]
-> [Rendszerképek leküldése az Azure Container Registry-be](./container-service-tutorial-kubernetes-prepare-acr.md)
+> [Rendszerképek leküldése az Azure Container Registrybe](./container-service-tutorial-kubernetes-prepare-acr.md)
