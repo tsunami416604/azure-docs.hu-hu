@@ -1,5 +1,5 @@
 ---
-title: Telepítse át a Windows Server 2008-kiszolgálókat az Azure-ba Azure Site Recovery
+title: Windows Server 2008-kiszolgálók áttelepítése az Azure Site Recovery segítségével az Azure-ba
 description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni Windows Server 2008-gépek az Azure-ba az Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73936141"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
-Ez az oktatóanyag bemutatja, hogyan migrálhatók a helyszíni, Windows Server 2008 vagy 2008 R2 rendszert futtató kiszolgálók az Azure-ba az Azure Site Recovery használatával. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag bemutatja, hogyan migrálhatók a helyszíni, Windows Server 2008 vagy 2008 R2 rendszert futtató kiszolgálók az Azure-ba az Azure Site Recovery használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A helyszíni környezet előkészítése a migráláshoz
@@ -30,7 +30,7 @@ Ez az oktatóanyag bemutatja, hogyan migrálhatók a helyszíni, Windows Server 
 A korlátozások és ismert problémák szakaszban néhány olyan korlátozás és ismert probléma áthidaló megoldásai szerepelnek, amely a Windows Server 2008-gépek az Azure-ba történő migrálása során jelentkezhet. 
 
 > [!NOTE]
-> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [Részletek](../migrate/migrate-services-overview.md).
+> Most már áttelepítheti a helyszíni Azure-ba az Azure Áttelepítés szolgáltatás használatával. [További információ](../migrate/migrate-services-overview.md).
 
 
 ## <a name="supported-operating-systems-and-environments"></a>Támogatott operációs rendszerek és környezetek
@@ -54,7 +54,7 @@ Windows Server 2008 vagy Windows Server 2008 R2 rendszerű Hyper-V virtuális g�
 
 Ez az oktatóanyag a továbbiakban a Windows Server 2008 vagy 2008 R2 rendszert futtató, helyszíni VMware virtuális gépek és fizikai kiszolgálók migrálásának módját mutatja be.
 > [!TIP]
-> Ügynök nélküli módot keres a VMware virtuális gépek Azure-ba való áttelepítésére? [Kattintson ide](https://aka.ms/migrateVMs-signup)
+> Ügynöknélküli módot keres a VMware virtuális gépek Azure-ba való áttelepítéséhez? [Kattintson ide](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
@@ -75,7 +75,7 @@ Ez az oktatóanyag a továbbiakban a Windows Server 2008 vagy 2008 R2 rendszert 
 
 - Előfordulhat, hogy nem lehet RDP-n keresztül csatlakozni a 32 bites operációs rendszert futtató Windows Server 2008 SP2-kiszolgálókhoz közvetlenül az Azure-ba történő feladatátvétel vagy feladatátvételi teszt után. Indítsa újra a feladatátvételen átesett virtuális gépet az Azure Portalról, és próbáljon újracsatlakozni. Ha még mindig nem lehet csatlakozni, ellenőrizze, hogy a kiszolgáló beállítása engedélyezi-e a távoli asztali kapcsolatokat, és győződjön meg arról is, hogy nincsenek érvényben olyan tűzfalszabályok vagy hálózati biztonsági csoportok, amelyek blokkolhatják a kapcsolatot. 
   > [!TIP]
-  > A kiszolgálók migrálása előtt feltétlenül javasolt egy feladatátvételi teszt futtatása. Győződjön meg arról, hogy legalább egy sikeres feladatátvételi tesztet hajtott végre minden áttelepíteni kívánt kiszolgálón. A feladatátvételi teszt részeként csatlakozzon a tesztelt, feladatátvételen átesett számítógéphez, és győződjön meg arról, hogy minden az elvárt módon működik.
+  > A kiszolgálók migrálása előtt feltétlenül javasolt egy feladatátvételi teszt futtatása. Győződjön meg arról, hogy minden áttelepített kiszolgálón legalább egy sikeres sikeres sikeres feladatátvételt hajtott végre. A feladatátvételi teszt részeként csatlakozzon a tesztelt, feladatátvételen átesett számítógéphez, és győződjön meg arról, hogy minden az elvárt módon működik.
   >
   >A feladatátvételi teszt zavart nem okozó művelet, amely virtuális gépek egy tetszőleges, elkülönített hálózatban való létrehozásával nyújt segítséget a migrálás teszteléséhez. A feladatátvételi művelettel ellentétben a feladatátvételi teszt során az adatreplikáció tovább folytatódik. A migrálás megkezdése előtt tetszőleges számú feladatátvételi teszt hajtható végre. 
   >
@@ -86,22 +86,22 @@ Ez az oktatóanyag a továbbiakban a Windows Server 2008 vagy 2008 R2 rendszert 
 
 Az Azure-előfizetés és a helyszíni VMware-/fizikai környezet előkészítéséhez az alábbi feladatokat kell végrehajtania:
 
-1. [Az Azure előkészítése](tutorial-prepare-azure.md)
+1. [Készítse elő az Azure-t](tutorial-prepare-azure.md)
 2. A helyszíni [VMware](vmware-azure-tutorial-prepare-on-premises.md) előkészítése
 
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. Kattintson **az erőforrás létrehozása** > **felügyeleti eszközök** > **biztonsági mentés és site Recovery**lehetőségre.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **helyreállítási szolgáltatásokba.**
+2. Kattintson **az Erőforráskezelő** > **eszközök** > **biztonsági mentése és a Webhely-helyreállítás elemre.**
 3. A **Név** mezőben adja meg a **W2K8-migration** rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 4. Hozza létre a **w2k8migrate** erőforráscsoportot.
-5. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
+5. Válassza ki a kívánt Azure-régiót. A támogatott régiók ellenőrzéséhez tekintse meg a földrajzi elérhetőséget az [Azure Site Recovery díjszabási részletei ben.](https://azure.microsoft.com/pricing/details/site-recovery/)
 6. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
 
    ![Új tároló](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
-Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részében, illetve a központi **Recovery Services-tárolók** oldalon.
+Az új tároló megjelenik az **Irányítópult****Minden erőforrás** részében, illetve a központi **Recovery Services-tárolók** oldalon.
 
 
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>A helyszíni környezet előkészítése a migráláshoz
@@ -113,23 +113,23 @@ Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részé
 
 Válassza ki és ellenőrizze a célerőforrásokat.
 
-1. Kattintson az **Infrastruktúra előkészítése** > **Cél** elemre, majd válassza ki a használni kívánt Azure-előfizetést.
+1. Kattintson **az Infrastruktúra-cél** > **Target**előkészítése gombra, és válassza ki a használni kívánt Azure-előfizetést.
 2. Adja meg a Resource Manager-alapú üzemi modell beállítást.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
 
 ## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
-1. Új replikációs szabályzat létrehozásához kattintson a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** >  **+Replikációs szabályzat** elemre.
+1. Új replikációs házirend létrehozásához kattintson **a Hely-helyreállítási infrastruktúra** > **replikációs házirendjei** > **+Replikációs házirend elemre.**
 2. A **Replikációs szabályzat létrehozása** beállításnál adja meg a szabályzat nevét.
 3. Az **RPO küszöbértéke** beállításnál adja meg a helyreállítási időkorlátot (RPO). A rendszer riasztást ad, ha a replikációs RPO túllépi ezt a korlátot.
-4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált kiszolgálók az ablak bármely pontjára visszaállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
+4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált kiszolgálók az ablak bármely pontjára helyrehajthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 5. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállításnál adja meg a **Ki** értéket. A szabályzat létrehozásához kattintson az **OK** gombra.
 
 A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 
 > [!WARNING]
-> Győződjön meg arról, hogy a replikációs szabályzat Alkalmazáskonzisztens pillanatkép gyakorisága beállításánál a **KI** érték szerepel. A Windows Server 2008 rendszert futtató kiszolgálók replikálása esetében csak az összeomlás-konzisztens helyreállítási pontok támogatottak. Az alkalmazás-konzisztens Pillanatképek gyakoriságának bármilyen más értékének megadása hamis riasztásokat eredményez azáltal, hogy az alkalmazás-konzisztens helyreállítási pontok hiánya miatt a kiszolgáló replikációs állapotát kritikus állapotba állítja.
+> Győződjön meg arról, hogy a replikációs szabályzat Alkalmazáskonzisztens pillanatkép gyakorisága beállításánál a **KI** érték szerepel. A Windows Server 2008 rendszert futtató kiszolgálók replikálása esetében csak az összeomlás-konzisztens helyreállítási pontok támogatottak. Az alkalmazáskonzisztens pillanatkép-gyakoriság bármely más értékének megadása hamis riasztásokat eredményez azáltal, hogy a kiszolgáló replikációs állapotát kritikussá teszi az alkalmazáskonzisztens helyreállítási pontok hiánya miatt.
 
    ![Replikációs házirend létrehozása](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
@@ -154,17 +154,17 @@ A [rest failover](tutorial-dr-drill-azure.md) parancs Azure-ban történő futta
 
 Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
-1. A **Beállítások** > **Replikált elemek** területen kattintson a gépre > **Feladatátvétel** ikonra.
-2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
-3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a kiszolgálót a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
+1. A**Replikált elemek** **beállításai** > párbeszédpanelen kattintson a **feladatátvétel**> gépre.
+2. A **Feladatátvétel** csoportban válasszon egy **helyreállítási pontot,** amelynek feladatátvételre van. Válassza a legutóbbi helyreállítási pontot.
+3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a kiszolgálót a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a Feladatok lapon **követheti.**
 4. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
-5. A **replikált elemek**területen kattintson a jobb gombbal a kiszolgálóra > a **teljes áttelepítést**. Ez a következő műveleteket végzi el:
+5. A **Replikált elemek ben**kattintson a jobb gombbal a kiszolgálóra > Az áttelepítés **befejezése**című kiszolgálóra. Ez a következőket teszi:
 
-    - Befejezi az áttelepítési folyamatot, leállítja a kiszolgáló replikálását, és leállítja a kiszolgálás Site Recovery számlázását.
-    - Ezzel a lépéssel megtisztítja a replikációs adatvédelmet. Nem törli az áttelepített virtuális gépeket.
+    - Befejezi az áttelepítési folyamatot, leállítja a kiszolgáló replikációját, és leállítja a kiszolgáló szolgáltatásának site recovery számlázását.
+    - Ez a lépés törli a replikációs adatokat. Nem törli az áttelepített virtuális gépeket.
 
    ![Az áttelepítés befejezése](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: a kiszolgáló replikációja leáll a feladatátvétel elindítása előtt. Ha megszakít egy folyamatban lévő feladatátvételt, a feladatátvétel leáll, de a kiszolgáló nem fog tovább replikálni.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A kiszolgáló replikációja a feladatátvétel megkezdése előtt leáll. Ha megszakítja a folyamatban lévő feladatátvételt, a feladatátvétel leáll, de a kiszolgáló nem replikálódik tovább.

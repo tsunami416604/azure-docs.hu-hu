@@ -14,10 +14,10 @@ ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e9d2a8a8d47128161c10e81fe70a950f1ed81e1e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76273382"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Webes forgalom korlátozása az Azure CLI-vel
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | Létrehoz egy tárfiókot. |
 | [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) | Beszerzi az alkalmazásátjáró nyilvános IP-címét. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 

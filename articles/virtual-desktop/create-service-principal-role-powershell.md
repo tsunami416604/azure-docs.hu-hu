@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali szolgáltatás elsődleges szerepkör-hozzárendelése – Azure
-description: Egyszerű szolgáltatások létrehozása és szerepkörök kiosztása a PowerShell használatával a Windows Virtual Desktopban.
+title: Windows Virtual Desktop szolgáltatás egyszerű szerepkör-hozzárendelése – Azure
+description: Szolgáltatásnévi tagok létrehozása és szerepkörök hozzárendelése a PowerShell használatával a Windows Virtual Desktop rendszerben használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,43 +9,43 @@ ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79365423"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell használatával
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Oktatóanyag: Szolgáltatástagok és szerepkör-hozzárendelések létrehozása a PowerShell használatával
 
-Az egyszerű szolgáltatások olyan identitások, amelyeket a Azure Active Directory létrehozhat a szerepkörök és engedélyek adott célra való hozzárendeléséhez. A Windows virtuális asztal szolgáltatásban létrehozhat egy egyszerű szolgáltatásnevet a következőhöz:
+A szolgáltatásnévi tagok olyan identitások, amelyeket létrehozhat az Azure Active Directoryban szerepkörök és engedélyek hozzárendeléséhez egy adott célra. A Windows Virtuális asztal rendszerben egyszerű szolgáltatáslétrehozása a következőkre:
 
-- Adott Windowsos virtuális asztali felügyeleti feladatok automatizálása.
-- Használjon hitelesítő adatokat az MFA-kötelező felhasználók helyett, amikor a Windows rendszerű virtuális asztali számítógépeken bármilyen Azure Resource Manager sablont futtat.
+- Automatizálhatja a Windows virtuális asztal kezelési feladatait.
+- Az MFA-ra szükséges felhasználók helyett hitelesítő adatként használható bármely Azure Resource Manager-sablon Windows virtuális asztalhoz való futtatásakor.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Egyszerű szolgáltatásnév létrehozása Azure Active Directoryban.
-> * Szerepkör-hozzárendelés létrehozása a Windows rendszerű virtuális asztalon.
-> * Jelentkezzen be a Windows rendszerű virtuális asztalra az egyszerű szolgáltatásnév használatával.
+> * Hozzon létre egy egyszerű szolgáltatás az Azure Active Directoryban.
+> * Szerepkör-hozzárendelés létrehozása a Windows virtuális asztalon.
+> * Jelentkezzen be a Windows virtuális asztalra az egyszerű szolgáltatás használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az egyszerű szolgáltatások és a szerepkör-hozzárendelések létrehozása előtt három dolgot kell tennie:
+A szolgáltatásnév- és szerepkör-hozzárendelések létrehozása előtt három dolgot kell tennie:
 
-1. Telepítse a AzureAD modult. A modul telepítéséhez futtassa a PowerShellt rendszergazdaként, és futtassa a következő parancsmagot:
+1. Telepítse az AzureAD-modult. A modul telepítéséhez futtassa a PowerShellt rendszergazdaként, és futtassa a következő parancsmast:
 
     ```powershell
     Install-Module AzureAD
     ```
 
-2. [Töltse le és importálja a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/).
+2. [Töltse le és importálja a Windows Virtual Desktop PowerShell modult.](/powershell/windows-virtual-desktop/overview/)
 
-3. Kövesse a cikkben szereplő összes útmutatást ugyanabban a PowerShell-munkamenetben. Előfordulhat, hogy a folyamat nem működik, ha megszakítja a PowerShell-munkamenetet, ha bezárja az ablakot, és később újra megnyitja.
+3. Kövesse a jelen cikkben szereplő összes utasítást ugyanabban a PowerShell-munkamenetben. Előfordulhat, hogy a folyamat nem működik, ha megszakítja a PowerShell-munkamenetet az ablak bezárásával és később újra megnyitja.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Egyszerű szolgáltatás létrehozása az Azure Active Directory-ban
 
-Miután teljesítette az előfeltételeket a PowerShell-munkamenetben, futtassa a következő PowerShell-parancsmagokat egy több-bérlős szolgáltatásnév létrehozásához az Azure-ban.
+Miután teljesítette az előfeltételeket a PowerShell-munkamenetben, futtassa a következő PowerShell-parancsmagokat egy több-bérlős egyszerű szolgáltatás létrehozásához az Azure-ban.
 
 ```powershell
 Import-Module AzureAD
@@ -53,11 +53,11 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-## <a name="view-your-credentials-in-powershell"></a>Hitelesítő adatok megtekintése a PowerShellben
+## <a name="view-your-credentials-in-powershell"></a>A hitelesítő adatok megtekintése a PowerShellben
 
-Mielőtt létrehozza a szerepkör-hozzárendelést a szolgáltatásnév számára, tekintse meg a hitelesítő adatait, és jegyezze fel őket későbbi használatra. A jelszó különösen azért fontos, mert a PowerShell-munkamenet lezárása után nem fogja tudni lekérni azt.
+Mielőtt létrehozna egy szerepkör-hozzárendelést az egyszerű szolgáltatáshoz, tekintse meg a hitelesítő adatait, és írja le őket későbbi használatra. A jelszó különösen fontos, mert a PowerShell-munkamenet bezárása után nem fogja tudni letölteni.
 
-A következő három hitelesítő adatot kell leírnia, és a futtatni kívánt parancsmagokat kell lekérnie:
+Itt van a három hitelesítő adatokat kell leírni, és a parancsmagok meg kell futtatni, hogy őket:
 
 - Jelszó:
 
@@ -71,26 +71,26 @@ A következő három hitelesítő adatot kell leírnia, és a futtatni kívánt 
     $aadContext.TenantId.Guid
     ```
 
-- Alkalmazás azonosítója:
+- Alkalmazásazonosító:
 
     ```powershell
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Szerepkör-hozzárendelés létrehozása a Windows rendszerű virtuális asztali verzióban – előzetes verzió
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Szerepkör-hozzárendelés létrehozása a Windows virtuális asztal előzetes verziójában
 
-Ezután létre kell hoznia egy szerepkör-hozzárendelést, hogy az egyszerű szolgáltatásnév be tudja jelentkezni a Windows rendszerű virtuális asztalra. Győződjön meg arról, hogy olyan fiókkal jelentkezik be, amely jogosult szerepkör-hozzárendelések létrehozására.
+Ezután létre kell hoznia egy szerepkör-hozzárendelést, hogy az egyszerű szolgáltatás bejelentkezhessen a Windows virtuális asztalra. Ügyeljen arra, hogy olyan fiókkal jelentkezzen be, amely rendelkezik szerepkör-hozzárendelések létrehozásához szükséges engedélyekkel.
 
-Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg.
+Először [töltse le és importálja a Windows Virtual Desktop PowerShell modult](/powershell/windows-virtual-desktop/overview/) a PowerShell-munkamenetben való használatra, ha még nem tette meg.
 
-Futtassa a következő PowerShell-parancsmagokat a Windows rendszerű virtuális asztalhoz való kapcsolódáshoz és a bérlők megjelenítéséhez.
+Futtassa a következő PowerShell-parancsmagokat a Windows virtuális asztalhoz való csatlakozáshoz és a bérlők megjelenítéséhez.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-Amikor megkeresi a bérlő nevét ahhoz a bérlőhöz, amelyhez szerepkör-hozzárendelést kíván létrehozni, használja a következő parancsmagot a névvel:
+Ha megtalálja annak a bérlőnek a bérlő nevét, amelyhez szerepkör-hozzárendelést szeretne létrehozni, használja ezt a nevet a következő parancsmagban:
 
 ```powershell
 $myTenantName = "<Windows Virtual Desktop Tenant Name>"
@@ -99,18 +99,18 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincip
 
 ## <a name="sign-in-with-the-service-principal"></a>Bejelentkezés az egyszerű szolgáltatással
 
-Miután létrehozta az egyszerű szolgáltatáshoz tartozó szerepkör-hozzárendelést, győződjön meg arról, hogy a szolgáltatásnév a következő parancsmag futtatásával tud bejelentkezni a Windows rendszerű virtuális asztalra:
+Miután létrehozott egy szerepkör-hozzárendelést az egyszerű szolgáltatáshoz, győződjön meg arról, hogy a szolgáltatásnév a következő parancsmag futtatásával tud bejelentkezni a Windows virtuális asztalra:
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
 ```
 
-Miután bejelentkezett, győződjön meg róla, hogy minden működik, ha tesztel néhány Windowsos virtuális asztali PowerShell-parancsmagot az egyszerű szolgáltatással.
+Miután bejelentkezett, győződjön meg arról, hogy minden működik néhány Windows Virtual Desktop PowerShell-parancsmag tesztelésével az egyszerű szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután létrehozta a szolgáltatásnevet, és hozzárendelte azt egy szerepkörhöz a Windows rendszerű virtuális asztali bérlőben, a használatával létrehozhat egy gazdagépet. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
+Miután létrehozta az egyszerű szolgáltatást, és szerepkört rendelt hozzá a Windows virtuális asztal bérlőjéhez, gazdagépkészlet létrehozásához használhatja. Ha többet szeretne megtudni a gazdakészletekről, folytassa a gazdakészlet létrehozásáról a Windows virtuális asztalon című oktatóanyaggal.
 
  > [!div class="nextstepaction"]
  > [Gazdagépcsoport létrehozása az Azure Marketplace-en](./create-host-pools-azure-marketplace.md)

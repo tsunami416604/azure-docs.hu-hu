@@ -1,18 +1,18 @@
 ---
-title: 'Oktatóanyag: kiszolgáló megtervezése – Azure Portal – Azure Database for MySQL'
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet Azure Database for MySQL-kiszolgálókat és-adatbázisokat Azure Portal használatával.
+title: 'Oktatóanyag: Kiszolgáló tervezése – Azure portal – Azure Database for MySQL'
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet Azure Database for MySQL-kiszolgálót és -adatbázist az Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: ee33af4992745aeaeb99551cc173c39e224a298b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f66e7e29763f5854a082490cb234e465260b7744
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771156"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067741"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Oktatóanyag: Azure Database for MySQL-adatbázis tervezése az Azure Portal használatával
 A MySQL-hez készült Azure Database egy felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású MySQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure Portallal könnyedén kezelheti a kiszolgálót és tervezhet adatbázist.
@@ -36,11 +36,13 @@ Nyissa meg a kedvenc webböngészőjét, és keresse fel a [Microsoft Azure Port
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 A MySQL-kiszolgálóhoz készült Azure-adatbázis [számítási és tárolási erőforrások](./concepts-compute-unit-and-storage.md) egy meghatározott készletével együtt jön létre. A kiszolgáló egy [Azure-erőforráscsoporton](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) belül jön létre.
 
-1. Válassza az **Adatbázisok** > **Azure Database for MySQL** lehetőséget. Ha nem találja a MySQL Servert az **Adatbázisok** kategóriában, kattintson az **Összes megjelenítése** elemre az összes elérhető adatbázis-szolgáltatás megjelenítéséhez. A keresőmezőbe be is írhatja az **Azure Database for MySQL** szöveget, hogy gyorsan megtalálja a szolgáltatást.
+1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
+
+2. Válassza **az Adatbázisok** > **Azure-adatbázis a MySQL számára**lehetőséget. Ha nem találja a MySQL Server t az **Adatbázisok** kategóriában, kattintson az **Összes megtekintése** gombra az összes elérhető adatbázis-szolgáltatás megjelenítéséhez. A keresőmezőbe be is írhatja az **Azure Database for MySQL** szöveget, hogy gyorsan megtalálja a szolgáltatást.
    
    ![Ugrás a MySQL-re](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
 
-2. Kattintson az **Azure Database for MySQL** csempére, majd a **Létrehozás** elemre. Töltse ki az Azure Database for MySQL-űrlapot.
+3. Kattintson **az Azure Database for MySQL csempére.** Töltse ki az Azure Database for MySQL-űrlapot.
    
    ![Űrlap létrehozása](./media/tutorial-design-database-using-portal/2-create-form.png)
 
@@ -48,21 +50,21 @@ A MySQL-kiszolgálóhoz készült Azure-adatbázis [számítási és tárolási 
     ---|---|---
     Kiszolgálónév | Egyedi kiszolgálónév | Válasszon egy egyedi nevet, amely azonosítja a MySQL-kiszolgálóhoz készült Azure-adatbázist. Például mydemoserver. A rendszer hozzáfűzi a *.mysql.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
     Előfizetés | Az Ön előfizetése | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
-    Erőforráscsoport | *myresourcegroup* | Adjon meg egy új vagy egy létező erőforráscsoportnevet.
+    Erőforráscsoport | *myResourceGroup* | Adjon meg egy új vagy egy létező erőforráscsoportnevet.
     Forrás kiválasztása | *Üres* | Válassza az *Üres* lehetőséget egy teljesen új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MySQL-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a *Biztonsági mentés* lehetőséget).
     Kiszolgáló-rendszergazdai bejelentkezés | myadmin | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-    Jelszó | *A választása szerint* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
-    Jelszó megerősítése | *A választása szerint*| Erősítse meg a rendszergazdafiók jelszavát.
-    Földrajzi egység | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
+    Jelszó | *Az Ön választása* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Jelszó megerősítése | *Az Ön választása*| Erősítse meg a rendszergazdafiók jelszavát.
+    Hely | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *A legújabb verzió*| A legújabb verzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
-    Díjcsomag | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** lehetőséget, Ezután válassza a **általános célú** fület. a *Gen 5*, *2 virtuális mag*, *5 GB*és *7 nap* a **számítási generáció**, a **virtuális mag**, a **tárolás**és a **biztonsági másolatok megőrzési időszakának**alapértelmezett értékei. A csúszkákat nem szükséges módosítania. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Tarifacsomag | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** lehetőséget, Ezután válassza az Általános **célú** *2 vCores* *lapot.* *5 GB* *7 days* **Compute Generation** **vCore** **Storage** **Backup Retention Period** A csúszkákat nem szükséges módosítania. Ha engedélyezni szeretné a kiszolgáló biztonsági másolatait a georedundáns tárolásban, válassza a **Földrajzilag redundáns** lehetőséget a **Biztonsági mentés redundancia beállításai közül.** A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
     
-   ![Díjcsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+   ![Tarifacsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > Az **automatikus növekedés** lehetővé teszi, hogy a kiszolgáló növelje a tárterületet, ha közeledik a lefoglalt korláthoz, anélkül, hogy ez befolyásolná a munkaterhelést.
+   > Az **automatikus növekedés** engedélyezve a kiszolgáló növeli a tárhelyet, amikor közeledik a lefoglalt korlátot, anélkül, hogy befolyásolná a számítási feladatok.
 
-3. Kattintson a  **Create** (Létrehozás) gombra. Egy-két percen belül már fut a felhőben egy új, a MySQL-hez készült Azure Database. Ha monitorozni kívánja az üzembe helyezés folyamatát, kattintson az **Értesítések** gombra az eszköztáron.
+4. Kattintson az **Áttekintés + létrehozás** elemre. A telepítési folyamat figyeléséhez kattintson az eszköztár **Értesítések** gombjára. Az üzembe helyezés akár 20 percet is igénybe vehet.
 
 ## <a name="configure-firewall"></a>Tűzfal konfigurálása
 Az Azure Database for MySQL-adatbázisokat tűzfal védi. A rendszer alapértelmezés szerint elutasítja a kiszolgálóra és a kiszolgálón lévő adatbázisokra irányuló összes kapcsolatot. Mielőtt először csatlakozna az Azure Database for MySQL-hez, konfigurálja a tűzfalat, és adja hozzá az ügyfél gépének nyilvános hálózati IP-címét (vagy IP-címtartományát).
@@ -84,7 +86,7 @@ Kérje le az Azure Database for MySQL-kiszolgáló teljes **kiszolgálónevét**
 2. Az **Áttekintés** oldalon jegyezze fel a **Kiszolgálónév** és a **Kiszolgálói rendszergazda bejelentkezési neve** értékét. A mezők melletti másolás gombra kattintva a vágólapra másolhatja az értékeket.
    ![4-2 Kiszolgáló tulajdonságai](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-Ebben a példában a kiszolgáló neve *mydemoserver.mysql.database.Azure.com*, a kiszolgáló-rendszergazdai bejelentkezés pedig *myadmin\@mydemoserver*.
+Ebben a példában a kiszolgáló neve *mydemoserver.mysql.database.azure.com*, és a kiszolgáló admin bejelentkezés *myadmin\@mydemoserver*.
 
 ## <a name="connect-to-the-server-using-mysql"></a>Csatlakozás a kiszolgálóhoz a mysql használatával
 A MySQL-hez készült Azure Database-kiszolgálóhoz a [mysql parancssori eszköz](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) használatával kapcsolódhat. A mysql parancssori eszköz a böngészőben az Azure Cloud Shell használatával, a saját számítógépen pedig a helyileg telepített mysql eszközök használatával futtatható. Az Azure Cloud Shell indításához kattintson a `Try It` gombra ennek a cikknek valamelyik kódblokkjában, vagy kattintson az Azure Portal jobb felső eszköztárának `>_` ikonjára. 
@@ -95,7 +97,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
-Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amellyel dolgozhat.
+Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amelyen dolgozni szeretne.
 ```sql
 CREATE DATABASE mysampledb;
 ```
@@ -158,9 +160,9 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
    - **Hely**: A régió megegyezik a forráskiszolgálóéval, és nem módosítható.
    - **Tarifacsomag**: A tarifacsomag megegyezik a forráskiszolgálóéval, és nem módosítható.
    
-3. Az **OK** gombra kattintva állítsa vissza a kiszolgálót a tábla törlése előtti [időpontra](./howto-restore-server-portal.md). A kiszolgáló visszaállítása létrehoz egy új másolatot a kiszolgálóról a megadott időpontban aktuális állapotában. 
+3. Kattintson az **OK** gombra a kiszolgáló visszaállításához a tábla törlése előtti [időpontra.](./howto-restore-server-portal.md) A kiszolgáló visszaállítása létrehoz egy új másolatot a kiszolgálóról a megadott időpontban aktuális állapotában. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban a következők elvégzését sajátította el az Azure Portallal:
 
 > [!div class="checklist"]

@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Az adatelőkészítés egy prediktív modell betanítására az R-ben'
+title: 'Oktatóanyag: Adatok előkészítése prediktív modell betanításához az R-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A jelen háromrészes oktatóanyag-sorozat első részében egy Azure SQL Database-adatbázisból készít elő egy prediktív modellt az R-ben a Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
+description: A három részes oktatóanyag-sorozat első részében előkészíti az adatokat egy Azure SQL-adatbázisból, hogy betanítsa a prediktív modellt az R-ben az Azure SQL Database Machine Learning Services használatával (előzetes verzió).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,67 +13,69 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596669"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345777"
 ---
-# <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: A prediktív modell az R-ben való betanításának előkészítése Azure SQL Database Machine Learning Services (előzetes verzió)
+# <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Adatok előkészítése az R-ben egy prediktív modell betanításához az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
 
-A háromrészes oktatóanyag-sorozat első részében az R használatával importálhatja és készítheti elő az Azure SQL Database-adatbázisok adatait. A sorozat későbbi részében ezeket az adattípusokat a prediktív gépi tanulási modellek betanítására és üzembe helyezésére fogja használni az R Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
+A három részes oktatóanyag-sorozat első részében az R használatával importálja és előkészíti az adatokat egy Azure SQL-adatbázisból. Ebben a sorozatban később ezeket az adatokat fogja használni egy prediktív gépi tanulási modell betanításához és üzembe helyezéséhez az R-ben az Azure SQL Database Machine Learning Services használatával (előzetes verzió).
 
-Ebben az oktatóanyag-sorozatban Képzelje el, hogy Ön a Ski Rental Business, és szeretné megjósolni, hogy a későbbiekben hány bérletet fog használni. Ez az információ segítséget nyújt a készlet, a személyzet és a létesítmények előkészítéséhez.
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-A sorozat első és két részén egy R-szkriptet fejleszt ki a RStudio-ben az adatai előkészítéséhez és a gépi tanulási modellek betanításához. Ezt követően a harmadik részen az R-szkripteket az SQL Database-ben tárolt eljárásokkal futtathatja.
+Ebben a bemutató sorozat, képzeljük el, hogy a saját síkölcsönző vállalkozás, és szeretné megjósolni, hogy hány bérleti, hogy lesz egy későbbi időpontban. Ez az információ segít abban, hogy a készlet, a személyzet és a létesítmények készen álljanak.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+A sorozat első és második részében az RStudio néhány R-parancsfájlt fejleszt az adatok előkészítéséhez és a gépi tanulási modell betanításához. Ezután a harmadik részben az okat az R-parancsfájlokat egy SQL-adatbázisban futtatja tárolt eljárások használatával.
+
+Ebben a cikkben megtudhatja, hogyan:
 
 > [!div class="checklist"]
-> * Mintaadatbázis importálása Azure SQL Database-adatbázisba R használatával
-> * Az adatok betöltése az Azure SQL Database-ből egy R-adatkeretbe
-> * Készítse elő az R-t az egyes oszlopok kategorikusként való azonosításával
+> * Mintaadatbázis importálása Azure SQL-adatbázisba az R használatával
+> * Adatok betöltése az Azure SQL-adatbázisból egy R adatkeretbe
+> * Az r-ben lévő adatok előkészítése néhány oszlop kategorikusként való azonosításával
 
-A [második részből](sql-database-tutorial-predictive-model-build-compare.md)megtudhatja, hogyan hozhat létre és taníthat több gépi tanulási modellt az R-ben, majd kiválaszthatja a legpontosabbat.
+A [második részben](sql-database-tutorial-predictive-model-build-compare.md)megtudhatja, hogyan hozhat létre és taníthat be több gépi tanulási modellt az R-ben, majd kiválaszthatja a legpontosabbat.
 
-A [harmadik részből](sql-database-tutorial-predictive-model-deploy.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hogyan hozhat létre tárolt eljárásokat az 1. és a 2. részekben kifejlesztett R-parancsfájlok alapján. A tárolt eljárások egy SQL-adatbázisban futnak, így az előrejelzések az új adatértékek alapján lesznek elérhetők.
+A [harmadik részben](sql-database-tutorial-predictive-model-deploy.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hozzon létre tárolt eljárásokat az első és a második részben kifejlesztett R-parancsfájlokból. A tárolt eljárások egy SQL-adatbázisban futnak, hogy új adatok alapján előrejelzéseket készítsenek.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) a Kezdés előtt.
+* Azure-előfizetés – Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-* Azure SQL Database-kiszolgáló Machine Learning Services engedélyezve – a nyilvános előzetes verzióban a Microsoft bevezeti Önt, és lehetővé teszi a gépi tanulást a meglévő vagy új adatbázisokhoz. Kövesse a regisztráció az [előzetes](sql-database-machine-learning-services-overview.md#signup)verzióra című témakör lépéseit.
+* Azure SQL Database Server a Machine Learning Services engedélyezve van – A nyilvános előzetes verzió során a Microsoft befogja a fedélzetre, és engedélyezi a gépi tanulást a meglévő vagy az új adatbázisokhoz. Kövesse a [Regisztráció az előnézetre](sql-database-machine-learning-services-overview.md#signup)című részben található lépéseket.
 
-* RevoScaleR csomag – a csomag helyi telepítéséhez szükséges [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) lásd:.
+* RevoScaleR-csomag – A csomag helyi telepítésének lehetőségeiről a [RevoScaleR című](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) témakörben található.
 
-* R IDE – ez az oktatóanyag a [RStudio Desktopot](https://www.rstudio.com/products/rstudio/download/)használja.
+* R IDE - Ez a bemutató használ [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/).
 
-* SQL-lekérdezési eszköz – ez az oktatóanyag feltételezi, hogy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studiot](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) használ.
+* SQL-lekérdezési eszköz – Ez az oktatóanyag feltételezi, hogy [az Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy az SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) használatával.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
-## <a name="import-the-sample-database"></a>A mintaadatbázis importálása
+## <a name="import-the-sample-database"></a>Mintaadatbázis importálása
 
-Az oktatóanyagban használt minta adatkészletet egy **. bacpac** -adatbázis biztonsági másolati fájljába mentette a letöltéshez és a használatához.
+Az oktatóanyagban használt mintaadatkészletet egy **.bacpac** adatbázis biztonsági másolatfájlba mentette a letöltéshez és a használathoz.
 
-1. Töltse le a [oktatóanyagaiban. bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac)fájlt.
+1. Töltse le a fájlt [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac).
 
-1. Kövesse az BACPAC- [fájl importálása egy Azure SQL Database-adatbázis létrehozásához](https://docs.microsoft.com/azure/sql-database/sql-database-import)című témakör utasításait a következő információk használatával:
+1. Kövesse a [BACPAC-fájl importálása](https://docs.microsoft.com/azure/sql-database/sql-database-import)című részben található utasításokat az Azure SQL-adatbázis létrehozásához az alábbi adatok használatával:
 
-   * Importálás a letöltött **oktatóanyagaiban. bacpac** fájlból
-   * A nyilvános előzetes verzióban válassza ki az új adatbázis **Gen5/virtuális mag-** konfigurációját
-   * Nevezze el az új "oktatóanyagaiban" adatbázist
+   * Importálás a letöltött **TutorialDB.bacpac** fájlból
+   * A nyilvános előzetes verzió során válassza ki az új adatbázis **Gen5/virtuálismag-konfigurációját**
+   * Nevezze el az új adatbázist "TutorialDB"
 
-## <a name="load-the-data-into-a-data-frame"></a>Az adatgyűjtés egy adatkeretbe
+## <a name="load-the-data-into-a-data-frame"></a>Az adatok betöltése adatkeretbe
 
-Az R-ben tárolt adatok használatához az Azure SQL Database-ből származó adatok egy adatkeretbe (`rentaldata`) lesznek betöltve.
+Az R-ben lévő adatok használatához az Azure SQL-adatbázisból származó`rentaldata`adatokat egy adatkeretbe ( tölti be.
 
-Hozzon létre egy új RScript-fájlt a RStudio-ben, és futtassa az alábbi szkriptet. Cserélje le a **kiszolgálót**, az **UID**-t és a **pwd** a saját kapcsolatok adataira.
+Hozzon létre egy új RScript-fájlt az RStudio-ban, és futtassa a következő parancsfájlt. Cserélje le **a Kiszolgálót**, **az UID-t**és **a PWD-t** a saját kapcsolati adataira.
 
 ```r
 #Define the connection string to connect to the TutorialDB database
@@ -95,7 +97,7 @@ head(rentaldata);
 str(rentaldata);
 ```
 
-A következőhöz hasonló eredményeknek kell megjelennie.
+Az eredményeknek az alábbiakhoz hasonlónak kell lenniük.
 
 ```results
    Year  Month  Day  RentalCount  WeekDay  Holiday  Snow
@@ -117,8 +119,8 @@ $ Snow       : num  0 0 0 0 0 0 0 0 0 0 ...
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
-Ebben a mintaadatbázisban már megtörtént az előkészítés nagy része, de még egy előkészületet is végrehajthat.
-A következő R-szkripttel azonosíthatja a három oszlopot *kategóriánként* , ha az adattípusokat a *faktor*értékre módosítja.
+Ebben a mintaadatbázisban a készítmény nagy része már megtörtént, de itt még egy előkészületet fog végezni.
+A következő R parancsfájl segítségével három oszlopot *azonosíthat kategóriaként* az adattípusok *tényezőre*történő módosításával.
 
 ```r
 #Changing the three factor columns to factor types
@@ -130,7 +132,7 @@ rentaldata$WeekDay <- factor(rentaldata$WeekDay);
 str(rentaldata);
 ```
 
-A következőhöz hasonló eredményeknek kell megjelennie.
+Az eredményeknek az alábbiakhoz hasonlónak kell lenniük.
 
 ```results
 data.frame':      453 obs. of  7 variables:
@@ -143,28 +145,28 @@ $ Holiday    : Factor w/ 2 levels "0","1": 2 1 1 1 1 1 1 1 1 1 ...
 $ Snow       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-Az adatgyűjtés most már készen áll a képzésre.
+Az adatok most már előkészítve betanítás.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja ezt az oktatóanyagot, törölje a oktatóanyagaiban-adatbázist a Azure SQL Database-kiszolgálóról.
+Ha nem folytatja ezt az oktatóanyagot, törölje a TutorialDB adatbázist az Azure SQL Database-kiszolgálóról.
 
-A Azure Portal hajtsa végre az alábbi lépéseket:
+Az Azure Portalon kövesse az alábbi lépéseket:
 
-1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** vagy **SQL-adatbázis**lehetőséget.
-1. A **szűrés név szerint...** mezőbe írja be a **oktatóanyagaiban**nevet, és válassza ki az előfizetését.
-1. Válassza ki a oktatóanyagaiban-adatbázist.
+1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** vagy **SQL-adatbázis lehetőséget.**
+1. A **Szűrés név szerint...** mezőbe írja be a **TutorialDB**mezőt, és válassza ki az előfizetést.
+1. Válassza ki a TutorialDB adatbázist.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag-sorozat első részében a következő lépéseket végezte el:
+Az oktatóanyag-sorozat első részében az alábbi lépéseket hajtotta végre:
 
-* Mintaadatbázis importálása Azure SQL Database-adatbázisba R használatával
-* Az adatok betöltése az Azure SQL Database-ből egy R-adatkeretbe
-* Készítse elő az R-t az egyes oszlopok kategorikusként való azonosításával
+* Mintaadatbázis importálása Azure SQL-adatbázisba az R használatával
+* Adatok betöltése az Azure SQL-adatbázisból egy R adatkeretbe
+* Az r-ben lévő adatok előkészítése néhány oszlop kategorikusként való azonosításával
 
-A oktatóanyagaiban-adatbázisból származó adatokkal rendelkező Machine learning-modell létrehozásához kövesse az oktatóanyag-sorozat második részét:
+Ha olyan gépi tanulási modellt szeretne létrehozni, amely a TutorialDB adatbázis adatait használja, kövesse az oktatóanyag-sorozat második részét:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Prediktív modell létrehozása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-tutorial-predictive-model-build-compare.md)
+> [Oktatóanyag: Prediktív modell létrehozása az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)](sql-database-tutorial-predictive-model-build-compare.md)

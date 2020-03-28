@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: linuxos virtuálisgép-méretezési csoport létrehozása'
-description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy kiválóan elérhető alkalmazást Linux rendszerű virtuális gépeken egy virtuálisgép-méretezési csoport használatával az Azure CLI használatával
+title: 'Oktatóanyag: Linux-virtuálisgép-méretezési készlet létrehozása'
+description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe magas rendelkezésre állású alkalmazást linuxos virtuális gépeken egy virtuálisgép-méretezési készlet használatával az Azure CLI használatával
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -17,10 +17,10 @@ ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238593"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Linuxon, az Azure CLI használatával
@@ -35,7 +35,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 > * Méretezésicsoport-példányok kapcsolatinformációinak megtekintése
 > * Adatlemezek használata méretezési csoportokban
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -250,7 +250,7 @@ az vmss disk detach \
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

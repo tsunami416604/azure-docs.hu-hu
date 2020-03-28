@@ -1,62 +1,62 @@
 ---
-title: Oktatóanyag – változó hozzáadása a sablonhoz
-description: Adja hozzá a változókat a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
+title: Oktatóanyag - változó hozzáadása a sablonhoz
+description: A szintaxis egyszerűsítése érdekében adja hozzá a változókat az Azure Resource Manager-sablonhoz.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7b0ed16f95281fc793b2d350f3ed45386e52d407
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 7fa6c36b604d0e96b2192ceb6c5585afcade080b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370662"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371718"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Oktatóanyag: változók hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-variables-to-your-arm-template"></a>Oktatóanyag: Változók hozzáadása az ARM-sablonhoz
 
-Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá változót a sablonhoz. A változók leegyszerűsítik a sablonokat, mivel lehetővé teszi egy kifejezés egyszeri megírását, és az egész sablonban való felhasználását. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
+Ebben az oktatóanyagban megtudhatja, hogyan adhat hozzá egy változót az Azure Resource Manager (ARM) sablonhoz. A változók leegyszerűsítik a sablonokat, mivel lehetővé teszik egy kifejezés egyszeri írását és újrafelhasználását a sablonban. Ez az oktatóanyag **7 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Javasoljuk, hogy fejezze be a [functions oktatóanyagot](template-tutorial-add-functions.md), de ez nem kötelező.
+Azt javasoljuk, hogy töltse ki az [oktatóanyagot](template-tutorial-add-functions.md)a függvényekről , de ez nem szükséges.
 
-A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítménylel, valamint az Azure PowerShell vagy az Azure CLI használatával. További információt a [sabloneszközök című témakörben talál.](template-tutorial-create-first-template.md#get-tools)
 
-## <a name="review-template"></a>Sablon áttekintése
+## <a name="review-template"></a>Véleményezési sablon
 
-Az előző oktatóanyag végén a sablon a következő JSON-t használta:
+Végén az előző bemutató, a sablon volt a következő JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
-A Storage-fiók nevének paramétere nem használható, mert egyedi nevet kell megadni. Ha elvégezte a sorozat korábbi oktatóanyagait, akkor valószínűleg egy egyedi nevet is kitalál. Ezt a problémát úgy oldja meg, hogy hozzáad egy változót, amely egyedi nevet hoz létre a Storage-fiókhoz.
+A tárfiók nevének paramétere nehezen használható, mert egyedi nevet kell megadnia. Ha befejezte a sorozat korábbi oktatóanyagait, akkor valószínűleg belefáradt az egyedi név kitalálásába. A problémát úgy oldhatja meg, hogy hozzáad egy változót, amely egyedi nevet hoz létre a tárfiókhoz.
 
 ## <a name="use-variable"></a>Változó használata
 
-A következő példa kiemeli azokat a módosításokat, amelyek segítségével egy változót adhat hozzá a sablonhoz, amely létrehoz egy egyedi Storage-fiók nevét. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
+A következő példa kiemeli a módosításokat, hogy egy változót adjon a sablonhoz, amely egyedi tárfiók nevet hoz létre. Másolja a teljes fájlt, és cserélje le a sablontartalmát.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-Figyelje meg, hogy tartalmaz egy **uniqueStorageName**nevű változót. Ez a változó négy függvényt használ egy karakterlánc-érték létrehozásához.
+Figyelje meg, hogy tartalmaz egy **uniqueStorageName nevű változót.** Ez a változó négy függvényt használ egy karakterláncérték létrehozásához.
 
-Már ismeri a [Parameters](template-functions-deployment.md#parameters) függvényt, ezért nem vizsgáljuk meg.
+Már ismeri a [paraméterek](template-functions-deployment.md#parameters) funkciót, ezért nem vizsgáljuk meg.
 
-A [resourceGroup](template-functions-resource.md#resourcegroup) függvényt is ismeri. Ebben az esetben az **ID** tulajdonságot a **Location** tulajdonság helyett az előző oktatóanyagban látható módon kapja meg. Az **ID** tulajdonság az erőforráscsoport teljes azonosítóját adja vissza, beleértve az előfizetés-azonosítót és az erőforráscsoport nevét.
+Ismeri az [erőforráscsoport](template-functions-resource.md#resourcegroup) funkciót is. Ebben az esetben a **helytulajdonság** helyett az **id** tulajdonságot kapja, ahogy az az előző oktatóanyagban is látható. Az **id** tulajdonság az erőforráscsoport teljes azonosítóját adja vissza, beleértve az előfizetés-azonosítót és az erőforráscsoport nevét.
 
-A [uniqueString](template-functions-string.md#uniquestring) függvény egy 13 karakterből álló kivonatoló értéket hoz létre. A visszaadott értéket a megadott paraméterek határozzák meg. Ebben az oktatóanyagban az erőforráscsoport AZONOSÍTÓját használja a kivonat értékének bemenetként. Ez azt jelenti, hogy ezt a sablont különböző erőforráscsoporthoz helyezheti üzembe, és egy másik egyedi karakterláncot is beszerezhet. Ugyanakkor ugyanezt az értéket kell megkapnia, ha ugyanarra az erőforrás-csoportra telepíti.
+Az [uniqueString](template-functions-string.md#uniquestring) függvény 13 karakteres kivonatértéket hoz létre. A visszaadott értéket a megadott paraméterek határozzák meg. Ebben az oktatóanyagban az erőforráscsoport-azonosítót használja a kivonatérték bemeneteként. Ez azt jelenti, hogy ezt a sablont különböző erőforráscsoportokba helyezheti üzembe, és egy másik egyedi karakterlánc-értéket kaphat. Azonban ugyanazt az értéket kapja, ha ugyanabba az erőforráscsoportba telepíti.
 
-A [concat](template-functions-string.md#concat) függvény értékeket vesz fel, és egyesíti azokat. Ehhez a változóhoz a karakterláncot a paraméterből és a karakterláncot a uniqueString függvényből veszi át, és egyetlen karakterlánccá egyesíti őket.
+A [concat](template-functions-string.md#concat) függvény értékeket vesz fel, és egyesíti azokat. Ehhez a változóhoz a paraméterből és a uniqueString függvényből származó karakterláncból veszi a karakterláncot, és egyetlen karakterláncba egyesíti őket.
 
-A **storagePrefix** paraméter lehetővé teszi, hogy olyan előtagot adjon át, amely segítséget nyújt a Storage-fiókok azonosításában. Létrehozhat egy saját elnevezési konvenciót, amely megkönnyíti a tárolási fiókok azonosítását az erőforrások hosszú listájáról való üzembe helyezés után.
+A **storagePrefix** paraméter lehetővé teszi, hogy adja át egy előtag, amely segít azonosítani a tárfiókok. Létrehozhat saját elnevezési konvenciót, amely megkönnyíti a tárfiókok azonosítását az erőforrások hosszú listájából történő üzembe helyezés után.
 
-Végezetül figyelje meg, hogy a tároló neve már egy paraméter helyett a változóra van beállítva.
+Végül figyelje meg, hogy a tároló neve most paraméter helyett a változóra van állítva.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Végezzük el a sablon üzembe helyezését. A sablon üzembe helyezése egyszerűbb, mint az előző sablonok, mert csak a tároló nevének előtagját adja meg.
+Telepítsük a sablont. A sablon telepítése egyszerűbb, mint az előző sablonok, mert csak a tároló név előtagja.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -68,6 +68,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A központi telepítési parancs futtatásához az Azure CLI [legújabb verziójával](/cli/azure/install-azure-cli) kell rendelkeznie.
 
 ```azurecli
 az deployment group create \
@@ -81,27 +83,27 @@ az deployment group create \
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
+Az üzembe helyezést az Azure Portalon található erőforráscsoport feltárásával ellenőrizheti.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
-1. Láthatja, hogy a Storage-fiók erőforrása telepítve van. A Storage-fiók **neve és egy** véletlenszerű karakterből álló karakterlánc.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. A bal oldali menüben válassza az **Erőforráscsoportok**lehetőséget.
+1. Válassza ki azt az erőforráscsoportot, amelybe telepítette.
+1. Láthatja, hogy egy tárfiók-erőforrás telepítve van. A tárfiók neve **tároló,** valamint egy sor véletlenszerű karakter.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
+Ha most leáll, érdemes lehet az erőforráscsoport törlésével felvetheti a telepített erőforrásokat.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
+1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy olyan változót adott hozzá, amely egyedi nevet hoz létre egy Storage-fiókhoz. A következő oktatóanyagban egy értéket ad vissza a központilag telepített Storage-fiókból.
+Ebben az oktatóanyagban hozzáadott egy változót, amely létrehoz egy egyedi nevet egy tárfiókhoz. A következő oktatóanyagban egy értéket ad vissza az üzembe helyezett tárfiókból.
 
 > [!div class="nextstepaction"]
 > [Kimenetek hozzáadása](template-tutorial-add-outputs.md)

@@ -1,5 +1,5 @@
 ---
-title: A virtuális gépek forgalmának elosztása a HA-Azure CLI-Azure Load Balancer
+title: Terheléselosztási forgalom a virtuális gépekhez HA- Azure CLI - Azure Load Balancer
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet terheléselosztást végezni a virtuális gépekre a magas rendelkezésre álláshoz
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74048913"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-példaszkript: Forgalom terheléselosztása virtuális gépekre magas rendelkezésre álláshoz
@@ -58,7 +58,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm create](/cli/azure/vm#az-vm-create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

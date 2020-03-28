@@ -1,6 +1,6 @@
 ---
-title: OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből | Microsoft Docs
-description: Az OpenID/OAuth alkalmazás Azure AD-katalógusból történő konfigurálásának lépései.
+title: OpenID/OAuth alkalmazás konfigurálása az Azure AD alkalmazásgalériából | Microsoft dokumentumok
+description: Az OpenID/OAuth-alkalmazások konfigurálásának lépései az Azure AD alkalmazásgalériából.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,142 +16,142 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160212"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048416"
 ---
-# <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből
+# <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth alkalmazás konfigurálása az Azure AD alkalmazásgyűjteményből
 
-## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>OpenID-alkalmazás felvételének folyamata a katalógusból
+## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>OpenID alkalmazás hozzáadásának folyamata a galériából
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget. 
+1. Az [Azure Portalon](https://portal.azure.com)a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget. 
 
-    ![A Azure Active Directory gomb](common/select-azuread.png))
+    ![Az Azure Active Directory gombja](common/select-azuread.png))
 
-2. Nyissa meg a **vállalati alkalmazások** > **az összes alkalmazást**.
+2. Nyissa meg **a Vállalati alkalmazások** > **Minden alkalmazás**.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Válassza a párbeszédpanel tetején található **új alkalmazás** lehetőséget.
+3. A párbeszédpanel tetején válassza az **Új alkalmazás** lehetőséget.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az alkalmazás nevét. Válassza ki a kívánt alkalmazást az eredmény panelen, és regisztráljon az alkalmazásra.
+4. A keresőmezőbe írja be az alkalmazás nevét. Válassza ki a kívánt alkalmazást az eredménypanelről, és regisztráljon az alkalmazásra.
 
-    ![OpenID az eredmények listájában](common/search-new-app.png)
+    ![Openid az eredménylistában](common/search-new-app.png)
 
     > [!NOTE]
-    > Az OpenID Connect és a OAuth alkalmazások esetében a **Hozzáadás** gomb alapértelmezés szerint le van tiltva. Itt a bérlői rendszergazdának ki kell választania a regisztrációs gombot, és meg kell adnia az alkalmazáshoz való hozzájárulásukat. Az alkalmazás ezután bekerül az ügyfél bérlőbe, ahol elvégezheti a konfigurációkat. Nem kell explicit módon felvennie az alkalmazást.
+    > Az OpenID Connect és az OAuth alkalmazások esetében a **Hozzáadás** gomb alapértelmezés szerint le van tiltva. Itt a bérlői rendszergazdának ki kell választania a regisztrációs gombot, és meg kell adnia az alkalmazáshoz való hozzájárulást. Az alkalmazás ezután hozzáadódik az ügyfél-bérlőhöz, ahol elvégezheti a konfigurációkat. Nincs szükség az alkalmazás explicit hozzáadására.
 
     ![Hozzáadás gomb](./media/openidoauth-tutorial/addbutton.png)
 
-5. Ha kiválasztja a regisztrációs hivatkozást, a rendszer átirányítja a bejelentkezési hitelesítő adatokhoz tartozó Azure Active Directory (Azure AD) lapra.
+5. Amikor kiválasztja a regisztrációs kapcsolatot, a bejelentkezési hitelesítő adatok az Azure Active Directory (Azure AD) lapra lesz irányítva.
 
-6. A sikeres hitelesítés után elfogadja a beleegyezett a beleegyező oldalról. Ezután megjelenik az alkalmazás kezdőlapja.
+6. A sikeres hitelesítés tkövetően elfogadja a hozzájárulási oldal hozzájárulását. Ezt követően megjelenik az alkalmazás kezdőlapja.
 
     > [!NOTE]
-    > Csak egy példányt adhat hozzá az alkalmazáshoz. Ha már hozzáadott egyet, és ismét próbálta megadnia a beleegyezik, akkor a bérlő nem adja hozzá újra. Így logikailag csak egy alkalmazás-példányt használhat a bérlőben.
+    > Az alkalmazásnak csak egy példányát veheti fel. Ha már hozzáadott egyet, és megpróbálta újra megadni a hozzájárulást, akkor nem lesz újra hozzáadva a bérlőhöz. Így logikusan csak egy alkalmazáspéldányt használhat a bérlőben.
 
-## <a name="authentication-flow-using-openid-connect"></a>Hitelesítési folyamat OpenID Connect használatával
+## <a name="authentication-flow-using-openid-connect"></a>Hitelesítési folyamat az OpenID Connect használatával
 
 A legalapvetőbb bejelentkezési folyamat a következő lépéseket tartalmazza:
 
-![Hitelesítési folyamat OpenID Connect használatával](./media/openidoauth-tutorial/authenticationflow.png)
+![Hitelesítési folyamat az OpenID Connect használatával](./media/openidoauth-tutorial/authenticationflow.png)
 
 ### <a name="multitenant-application"></a>Több-bérlős alkalmazás 
-A több-bérlős alkalmazások számos szervezet számára készültek, nem csupán egyetlen szervezet számára. Ezek jellemzően egy független szoftvergyártó (ISV) által írt, szolgáltatott szoftveres (SaaS) alkalmazások. 
+A több-bérlős alkalmazás számos szervezetben használható, nem csak egy szervezetben. Ezek általában egy független szoftvergyártó (ISV) által írt szoftver-szolgáltatásként (SaaS) alkalmazások. 
 
-Több-bérlős alkalmazásokat kell kiépíteni minden olyan könyvtárban, ahol használni fogják őket. A regisztrációhoz felhasználói vagy rendszergazdai jogosultság szükséges. Ez a engedélyezési folyamat akkor indul el, amikor egy alkalmazás regisztrálva van a címtárban, és hozzáférést kap a Graph APIhoz vagy esetleg egy másik webes API-hoz. Ha egy másik szervezet felhasználói vagy rendszergazdái feliratkozik az alkalmazás használatára, megjelenik egy párbeszédpanel, amely az alkalmazás által igényelt engedélyeket jeleníti meg. 
+Több-bérlős alkalmazásokat kell kiépíteni minden könyvtárban, ahol használni fogják őket. A regisztrációhoz felhasználói vagy rendszergazdai hozzájárulás szükséges. Ez a jóváhagyási folyamat akkor kezdődik, ha egy alkalmazás regisztrálva van a címtárban, és hozzáférést kap a Graph API-hoz vagy esetleg egy másik webes API-hoz. Ha egy másik szervezet felhasználója vagy rendszergazdája regisztrál az alkalmazás használatára, egy párbeszédpanelen láthatók az alkalmazás igényeinek engedélyei. 
 
-A felhasználó vagy a rendszergazda megadhatja az alkalmazásnak. A belefoglalt engedély lehetővé teszi az alkalmazás számára a megadott információhoz való hozzáférést, és végül regisztrálja az alkalmazást a címtárban.
+A felhasználó vagy a rendszergazda ezután beleegyezhet az alkalmazásba. A hozzájárulás hozzáférést biztosít az alkalmazásnak a megadott adatokhoz, és végül regisztrálja az alkalmazást a címtárban.
 
 > [!NOTE]
-> Ha az alkalmazást több címtárban is elérhetővé teszi a felhasználók számára, szüksége lesz egy olyan mechanizmusra, amely meghatározza, hogy melyik bérlőn belül van. Az egybérlős alkalmazásoknak csak a saját címtárában kell megkeresniük a felhasználókat. Egy több-bérlős alkalmazásnak azonosítania kell egy adott felhasználót az Azure AD összes könyvtárában.
+> Ha az alkalmazást több könyvtárban lévő felhasználók számára elérhetővé teszi, szüksége van egy mechanizmusra annak meghatározásához, hogy melyik bérlőben vannak. Egy egybérlős alkalmazás csak meg kell keresni a saját könyvtárban a felhasználó számára. Egy több-bérlős alkalmazás nak azonosítania kell egy adott felhasználót az Azure AD-ben lévő összes könyvtárból.
 > 
-> A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, amelyben bármely több-bérlős alkalmazás képes a bejelentkezési kérelmeket a bérlő-specifikus végpont helyett. Ez a végpont [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common) az Azure ad összes könyvtárához. A bérlő-specifikus végpont lehet [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com). 
+> A feladat végrehajtásához az Azure AD egy közös hitelesítési végpontot biztosít, ahol bármely több-bérlős alkalmazás közvetlen bejelentkezési kérelmeket, ahelyett, hogy egy bérlő-specifikus végpont. Ez a `https://login.microsoftonline.com/common` végpont az Azure AD összes könyvtárára. A bérlő-specifikus végpont `https://login.microsoftonline.com/contoso.onmicrosoft.com`lehet. 
 >
-> A közös végpontot fontos figyelembe venni az alkalmazás fejlesztésekor. A bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára lesz szüksége.
+> A közös végpont fontos, hogy fontolja meg, amikor az alkalmazás fejlesztése. A bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára van szükség.
 
-Az Azure AD alapértelmezés szerint támogatja a több-bérlős alkalmazásokat. A felhasználók könnyedén hozzáférhetnek a szervezetekhez, és a beleegyezikés elfogadását követően könnyen használhatók.
+Alapértelmezés szerint az Azure AD több-bérlős alkalmazásokat léptet elő. A szervezeten belül könnyen elérhetők, és a hozzájárulás elfogadása után könnyen használhatók.
 
 ## <a name="consent-framework"></a>Jóváhagyási keretrendszer
 
-A több-bérlős webes és natív ügyfélalkalmazások fejlesztéséhez használhatja az Azure AD-beli engedélyezési keretrendszert. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést egy Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Előfordulhat, hogy a következő webes API-kat is el kell érnie:
-- Az Azure AD, az Intune és az Office 365 szolgáltatásainak eléréséhez Microsoft Graph API. 
-- Más Microsoft-szolgáltatások API-jai.
+Az Azure AD-hozzájárulási keretrendszer segítségével több-bérlős webes és natív ügyfélalkalmazások at fejleszthet. Ezek az alkalmazások lehetővé teszik a bejelentkezést egy Azure AD-bérlőfelhasználói fiókjai által, eltérve attól, ahol az alkalmazás regisztrálva van. Előfordulhat, hogy webes API-kat is el kell érniük, például:
+- A Microsoft Graph API, az Azure AD, az Intune és a szolgáltatások eléréséhez az Office 365-ben. 
+- A Microsoft egyéb szolgáltatásainak API-i.
 - Saját webes API-k. 
 
-A keretrendszer egy felhasználó vagy egy rendszergazda azon alapul, amely beleegyezik egy olyan alkalmazásba, amely a címtárban való regisztrálást kéri. Előfordulhat, hogy a regisztráció a címtáradatok elérését is magában foglalja. A beleegyező engedély megadása után az ügyfélalkalmazás meghívja a Microsoft Graph API-t a felhasználó nevében, és igény szerint használhatja az információt.
+A keretrendszer olyan felhasználón vagy rendszergazdaon alapul, aki hozzájárul egy olyan alkalmazáshoz, amely a címtárban való regisztrációt kéri. A regisztráció magában foglalhatja a címtáradatok elérését. A hozzájárulás után az ügyfélalkalmazás felhívhatja a Microsoft Graph API-t a felhasználó nevében, és szükség szerint használhatja az adatokat.
 
-A [Microsoft Graph API](https://developer.microsoft.com/graph/) hozzáférést biztosít az Office 365-beli adateléréshez, például:
+A [Microsoft Graph API](https://developer.microsoft.com/graph/) hozzáférést biztosít az Office 365-ben lévő adatokhoz, például:
 
 - Naptárak és üzenetek az Exchange-ből.
-- Helyek és listázza a SharePointból.
-- Dokumentumok a OneDrive.
+- Webhelyek és listák a SharePointból.
+- Dokumentumok a OneDrive-ról.
 - Jegyzetfüzetek a OneNote-ból.
-- A Planner feladatai.
-- Excel-munkafüzetek.
+- Feladatok a Plannerből.
+- Munkafüzetek az Excelből.
 
-A Graph API hozzáférést biztosít a felhasználók és csoportok számára az Azure AD-ből és más, a Microsoft Cloud servicesből származó adatobjektumokból is.
+A Graph API is hozzáférést biztosít a felhasználók és csoportok az Azure AD és más adatobjektumok több Microsoft felhőszolgáltatások.
 
-Az alábbi lépések bemutatják, hogyan működik az alkalmazás fejlesztője és felhasználója a beleegyezett felhasználói élményben:
+A következő lépések bemutatják, hogyan működik a hozzájárulási élmény az alkalmazás fejlesztője és felhasználója számára:
 
-1. Tegyük fel, hogy van egy webes ügyfélalkalmazás, amelynek konkrét engedélyeket kell kérnie egy erőforrás vagy API eléréséhez. A Azure Portal a rendszer a konfigurációs időpontban az engedélyezési kérelmek bejelentésére szolgál. Más konfigurációs beállításokhoz hasonlóan az alkalmazás Azure AD-regisztrációi is részévé válnak. Az engedély kérésének elérési útjához az alábbi lépéseket kell követnie:
+1. Tegyük fel, hogy rendelkezik egy webügyfél-alkalmazással, amelynek meghatározott engedélyeket kell kérnie egy erőforrás vagy API eléréséhez. Az Azure Portal konfigurációs időben az engedélykérelmek deklarálására szolgál. Más konfigurációs beállításokhoz hasonlóan az alkalmazás Azure AD-regisztrációinak részévé válnak. Az Engedélykérelem elérési útja esetén kövesse az alábbi lépéseket:
 
-    a. Kattintson a menü bal oldalán lévő **Alkalmazásregisztrációkra** , és nyissa meg az alkalmazást a keresőmezőbe írja be az alkalmazás nevét.
+    a. Kattintson az **alkalmazás regisztrációk** a bal oldalon a menü, és nyissa meg az alkalmazást beírja az alkalmazás nevét a keresőmezőbe.
 
     ![Graph API](./media/openidoauth-tutorial/application.png)
 
-    b. Kattintson az **API-engedélyek megtekintése**elemre.
+    b. Kattintson **az API-engedélyek megtekintése gombra.**
 
     ![Graph API](./media/openidoauth-tutorial/api-permission.png)
 
-    c. Kattintson az **engedély hozzáadása**lehetőségre.
+    c. Kattintson az **Engedély hozzáadása gombra.**
 
     ![Graph API](./media/openidoauth-tutorial/add-permission.png)
 
-    d. Kattintson **Microsoft Graph**.
+    d. Kattintson a **Microsoft Graph programra.**
 
     ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
 
-    e. A **delegált engedélyek** és az **alkalmazás engedélyei**közül válassza a szükséges beállítások lehetőséget.
+    e. Válassza ki a szükséges beállításokat a **Delegált engedélyek** és **az alkalmazásengedélyek közül.**
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
-2. Vegye figyelembe, hogy az alkalmazás engedélyei frissültek. Az alkalmazás fut, és a felhasználó első alkalommal hamarosan használatba kerül. Először az alkalmazásnak be kell szereznie egy engedélyezési kódot az Azure AD/Authorize-végpontból. Az engedélyezési kód ezután új hozzáférési és frissítési jogkivonat beszerzésére használható.
+2. Vegye figyelembe, hogy az alkalmazás engedélyei frissültek. Az alkalmazás fut, és a felhasználó arról szól, hogy használja az első alkalommal. Először az alkalmazás nak be kell szereznie egy engedélyezési kódot az Azure AD /authorize endpoint. Az engedélyezési kód ezután egy új hozzáférési és frissítési jogkivonat megszerzéséhez használható.
 
-3. Ha a felhasználó még nincs hitelesítve, az Azure AD/Authorize-végpont bekéri a bejelentkezést.
+3. Ha a felhasználó még nincs hitelesítve, az Azure AD /authorize endpoint kéri a bejelentkezést.
 
     ![Hitelesítés](./media/openidoauth-tutorial/authentication.png)
 
-4. Miután a felhasználó bejelentkezett, az Azure AD megállapítja, hogy a felhasználónak meg kell-e jelenítenie egy beleegyező lapot. Ez a meghatározás azon alapul, hogy a felhasználó (vagy a szervezet rendszergazdája) már megadta-e az alkalmazáshoz való hozzájárulásukat.
+4. Miután a felhasználó bejelentkezett, az Azure AD határozza meg, hogy a felhasználónak meg kell-e jelennie egy jóváhagyási oldal. Ez a meghatározás azon alapul, hogy a felhasználó (vagy a szervezet rendszergazdája) már megadta-e az alkalmazás beleegyezését.
 
-   Ha nem adta meg a hozzájárulást, az Azure AD belekéri a felhasználót a jóváhagyásra, és megjeleníti a szükséges engedélyeket a működéséhez. A beleegyezés párbeszédpanelen megjelenő engedélyek megegyeznek a Azure Portal delegált engedélyeiben kiválasztott engedélyekkel.
+   Ha a hozzájárulás nem lett megadva, az Azure AD kéri a felhasználó beleegyezését, és megjeleníti a szükséges engedélyeket, amelyek működéséhez szükséges. A hozzájárulási párbeszédpanelen megjelenő engedélyek megegyeznek az Azure Portalon a delegált engedélyekben kiválasztott engedélyekkel.
 
-    ![Beleegyezett oldal](./media/openidoauth-tutorial/consentpage.png)
+    ![Hozzájárulási oldal](./media/openidoauth-tutorial/consentpage.png)
 
-A normál felhasználók bizonyos engedélyekkel rendelkezhetnek. A többi engedélyhez bérlői rendszergazda beleegyeznie kell.
+A rendszeres felhasználók beleegyezhetnek bizonyos engedélyekbe. Más engedélyek hez bérlői rendszergazda hozzájárulása szükséges.
 
-## <a name="difference-between-admin-consent-and-user-consent"></a>A rendszergazdai beleegyezés és a felhasználói beleegyezés közötti különbség
+## <a name="difference-between-admin-consent-and-user-consent"></a>Az adminisztrátorés a felhasználó hozzájárulása közötti különbség
 
-Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az alkalmazás delegált engedélyeit is. A rendszergazdai jogosultság meggátolja, hogy a megjelenő párbeszédpanel minden felhasználó számára megjelenjen a bérlőben. A rendszergazdai szerepkörrel rendelkező felhasználók hozzájárulnak a Azure Portal. Az alkalmazás **Beállítások** lapján válassza a **szükséges engedélyek** lehetőséget, > adja meg a **rendszergazdai jóváhagyást**.
+Rendszergazdaként is hozzájárulhat egy alkalmazás delegált engedélyeihez a bérlő összes felhasználója nevében. A rendszergazdai hozzájárulás megakadályozza, hogy a hozzájárulási párbeszédpanel a bérlő minden felhasználója számára megjelenjen. A rendszergazdai szerepkört használó felhasználók beleegyezést adhatnak az Azure Portalon. Az alkalmazás **Beállítások** lapján válassza a **Szükséges engedélyek** > **megadása rendszergazdai jóváhagyás lehetőséget.**
 
 ![Engedélyek megadása gomb](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> A ADAL. js-t használó egyoldalas alkalmazásokhoz (Gyógyfürdők) mostantól meg kell adni a kifejezett beleegyezést a **Grant admin jóváhagyása** gomb használatával. Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
+> Az ADAL.js-t használó egyoldalas alkalmazások (SpA-k) mostantól kifejezett hozzájárulás megadása a **Grant admin consent** button használatával. Ellenkező esetben az alkalmazás sikertelen lesz, ha a hozzáférési jogkivonatot kéri.
 
-Csak az alkalmazásra vonatkozó engedélyek szükségesek a bérlői rendszergazda beleegyezni. Ha az alkalmazás csak alkalmazásra vonatkozó engedélyt kér, és egy felhasználó megpróbál bejelentkezni az alkalmazásba, hibaüzenet jelenik meg. Az üzenet azt mondja, hogy a felhasználó nem tud beleegyezni.
+Csak alkalmazás engedélyek mindig bérlői rendszergazda beleegyezését igényli. Ha az alkalmazás csak alkalmazásengedélyt kér, és egy felhasználó megpróbál bejelentkezni az alkalmazásba, hibaüzenet jelenik meg. Az üzenet szerint a felhasználó nem tud hozzájárulni.
 
-Ha az alkalmazás rendszergazdai jogosultságot igénylő engedélyeket használ, olyan kézmozdulattal kell rendelkeznie, mint például egy gomb vagy egy hivatkozás, amelyben a rendszergazda el tudja indítani a műveletet. Az alkalmazás által a művelethez küldött kérelem a szokásos OAuth2/OpenID Connect engedélyezési kérelem. Ez a kérelem tartalmazza a *prompt = admin_consent* lekérdezési karakterlánc paramétert. 
+Ha az alkalmazás rendszergazdai jóváhagyást igénylő engedélyeket használ, rendelkeznie kell egy kézmozdulattal, például egy gombbal vagy hivatkozással, ahol a rendszergazda elindíthatja a műveletet. A kérelem, amelyet az alkalmazás küld erre a műveletre a szokásos OAuth2/OpenID Connect engedélyezési kérelem. Ez a kérés tartalmazza a *prompt=admin_consent* lekérdezési karakterlánc-paramétert. 
 
-Miután a rendszergazda beleegyezett, és az ügyfél bérlője létrehozta a szolgáltatásnevet, a későbbi bejelentkezési kérésekhez nem szükséges a *prompt = admin_consent* paraméter. Mivel a rendszergazda úgy döntött, hogy a kért engedélyek elfogadhatók, a bérlőn kívül más felhasználókat sem kell megadnia az adott időponthoz.
+Miután a rendszergazda hozzájárult, és a szolgáltatás névadója jön létre az ügyfél bérlője, a későbbi bejelentkezési kérelmek nem kell a *prompt=admin_consent* paraméter. Mivel a rendszergazda úgy döntött, hogy a kért engedélyek elfogadhatók, a bérlő más felhasználóitól attól a ponttól kezdve nem kér jóváhagyást.
 
-A bérlői rendszergazdák letilthatják, hogy a felhasználók miként tudnak hozzájárulni az alkalmazásokhoz. Ha ez a funkció le van tiltva, a rendszergazda beleegyezik, hogy az alkalmazás a bérlőben legyen használatban. Ha tesztelni szeretné az alkalmazást a végfelhasználói beleegyezikés letiltásával, a [Azure Portalban](https://portal.azure.com/)találhatja meg a konfigurációs kapcsolót. Ez a [felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) szakaszban, a **vállalati alkalmazások**területen található.
+A bérlői rendszergazda letilthatja a rendszeres felhasználók számára az alkalmazások beleegyezését. Ha ez a funkció le van tiltva, rendszergazdai hozzájárulás mindig szükséges az alkalmazás a bérlőben való használathoz. Ha azt szeretné, hogy tesztelje az alkalmazást a végfelhasználói hozzájárulás letiltva, megtalálhatja a konfigurációs kapcsolót az [Azure Portalon.](https://portal.azure.com/) A [Felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) **szakaszban,** a Vállalati alkalmazások csoportban található.
 
-A *prompt = admin_consent* paramétert olyan alkalmazások is felhasználhatják, amelyek nem igénylik a rendszergazdai jóváhagyást. Ilyen például egy olyan alkalmazás, amely egy olyan felhasználói élményt igényel, amelyben a bérlői rendszergazda "feliratkozik", és a rendszer nem kér más felhasználókat az adott ponttól.
+A *prompt=admin_consent* paramétert olyan alkalmazások is használhatják, amelyek rendszergazdai jóváhagyást nem igényelnek. Egy példa egy olyan alkalmazás, amely olyan felhasználói élményt igényel, ahol a bérlői rendszergazda "egyszer" "regisztrál", és ettől a ponttól kezdve más felhasználók nem kérnek beleegyezést.
 
-Képzelje el, hogy egy alkalmazásnak rendszergazdai jóváhagyásra van szüksége, és egy rendszergazda bejelentkezik a *prompt = admin_consent* paraméter küldése nélkül. Ha a rendszergazda sikeresen beleegyezett az alkalmazásba, csak a felhasználói fiókjára vonatkozik. A normál felhasználók továbbra sem tudnak bejelentkezni vagy beleegyezni az alkalmazásba. Ez a funkció akkor hasznos, ha azt szeretné, hogy a bérlői rendszergazda meg tudja vizsgálni az alkalmazást, mielőtt engedélyezné más felhasználók hozzáférését.
+Képzelje el, hogy egy alkalmazás rendszergazdai jóváhagyást igényel, és egy rendszergazda jelentkezik be a *prompt=admin_consent* paraméter küldése nélkül. Ha a rendszergazda sikeresen hozzájárul az alkalmazáshoz, az csak a felhasználói fiókjukra vonatkozik. A rendszeres felhasználók továbbra sem tudnak bejelentkezni vagy hozzájárulni az alkalmazáshoz. Ez a funkció akkor hasznos, ha azt szeretné, hogy a bérlői rendszergazda képes legyen az alkalmazás felfedezése, mielőtt más felhasználók hozzáférését engedélyezne.

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Fájl feltöltése egy tárolóba | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan tölthetők fel helyi fájlok egy tárolóba az Azure CLI-parancsfájl használatával.
+description: Ez a cikk bemutatja, hogyan használhatja az Azure CLI-parancsfájlt egy helyi fájl feltöltéséhez egy tárolóba.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: d6720200da341ee466339edde6dded02dd4fddc6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d0a28bafef887bf0c40aa88eba1873f82cf36fd7
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970108"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346085"
 ---
 # <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI-példa: Helyi fájl feltöltése egy tárolóba 
 
@@ -27,7 +27,8 @@ A cikkben bemutatott Azure CLI-szkripttel feltölthet egy helyi fájlt egy tárf
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+* [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
+* Tekintse át az eszközök kezelése című [véleményt.](manage-asset-concept.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -60,6 +61,6 @@ echo "press  [ENTER]  to continue."
 read continue
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Media Services áttekintése](media-services-overview.md)
+[A Media Services áttekintése](media-services-overview.md)

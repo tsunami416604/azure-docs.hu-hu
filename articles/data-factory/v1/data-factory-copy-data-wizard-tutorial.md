@@ -13,18 +13,18 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438905"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
-> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Vizuális stúdió](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Powershell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag áttekintése]
 ## <a name="create-data-factory"></a>Data factory létrehozása
 Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialDataFactory** nevű Azure data factoryt.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 2. Kattintson az **Erőforrás létrehozása** elemre a jobb felső sarokban, kattintson az **Adatok + analitika**, majd a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
@@ -55,7 +55,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
        Az Azure data factory nevének globálisan egyedinek kell lennie. A `Data factory name “ADFTutorialDataFactory” is not available` hibaüzenet esetén változtassa meg az adat-előállító nevét (legyen például sajátnévADFTutorialDataFactoryYYYYMMDD), majd kísérelje meg újra a létrehozást. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
       
        ![A Data Factory name not available (A data factory neve nem érhető el) üzenet](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
-   2. Jelölje ki az Azure-**előfizetést**.
+   2. Válassza ki **Azure-előfizetését.**
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét: 
       
       - Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
@@ -64,10 +64,10 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
         Az oktatóanyag egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Create** (Létrehozás) gombra.
+   6. Kattintson **a Létrehozás gombra.**
       
        ![A New data factory (Új data factory) panel](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
-3. A létrehozás befejezése után a **Data Factory** panel a következő képen látható módon jelenik meg:
+3. A létrehozás befejezése után megjelenik a **Data Factory** panel az alábbi képen látható módon:
    
    ![Data factory kezdőlap](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
@@ -91,7 +91,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    
    1. Adja meg az **AzureStorageLinkedService** nevet a **Linked service name** (Társított szolgáltatás neve) mezőben.
    2. Győződjön meg arról, hogy az **Account selection method** (Fiókválasztási módszer) mezőben a **From Azure subscriptions** (Azure-előfizetésekből) lehetőség van kiválasztva.
-   3. Jelölje ki az Azure-**előfizetést**.  
+   3. Válassza ki **Azure-előfizetését.**  
    4. A kiválasztott előfizetéshez elérhető Azure Storage-fiókok listájából válasszon ki egy **Azure Storage-fiókot**. Manuálisan is megadhatja a tárfiók beállításait, ha az **Account selection method** (Fiókválasztási módszer) mezőben az **Enter manually** (Manuális megadás) lehetőséget választja, majd a **Next** (Tovább) gombra kattint. 
       
       ![Copy (Másolás) eszköz – Specify the Azure Blob storage account (Az Azure Blob Storage-fiók megadása) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
@@ -114,7 +114,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    
    1. Adja meg az **AzureSqlLinkedService** nevet a **Connection name** (Kapcsolat neve) mezőben.
    2. Győződjön meg arról, hogy a **Server/database selection method** (Kiszolgáló-/adatbázis-kiválasztási módszer) mezőben a **From Azure subscriptions** (Azure-előfizetésekből) lehetőség van kiválasztva.
-   3. Jelölje ki az Azure-**előfizetést**.  
+   3. Válassza ki **Azure-előfizetését.**  
    4. Válassza ki a **Server name** (Kiszolgálónév) és a **Database** (Adatbázis) mezők értékeit.
    5. Adja meg a **felhasználónevet** és a **jelszót**.
    6. Kattintson a **Tovább** gombra.  
@@ -149,7 +149,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
 
     Az alkalmazás használatáról további tudnivalókat talál a [Monitor and manage pipeline using Monitoring App](data-factory-monitor-manage-app.md) (Folyamat figyelése és felügyelete a Monitoring App használatával) című cikkben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag egy olyan másolási műveletet mutatott be, amelynek a forrásadattára egy Azure Blob Storage-tár, a céladattára pedig egy Azure SQL-adatbázis volt. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

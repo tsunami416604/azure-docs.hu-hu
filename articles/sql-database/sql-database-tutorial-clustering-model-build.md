@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Csoportosítási modell létrehozása R nyelven'
+title: 'Oktatóanyag: Fürtözési modell létrehozása r-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A jelen háromrészes oktatóanyag-sorozat második részében egy K-Mean modellt fog kiépíteni az R-ben a Azure SQL Database Machine Learning Services (előzetes verzió) használatával történő fürtözés végrehajtásához.
+description: A háromrészes oktatóanyag-sorozat második részében egy K-Means modellt hozhat létre az R-ben az Azure SQL Database Machine Learning Services (előzetes verzió) fürtözésének elvégzéséhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,43 +13,45 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 0a73a2bc3fa76c945cf699133a41b38a9983a234
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640011"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345811"
 ---
-# <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Fürtözött modell létrehozása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
+# <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Fürtözési modell létrehozása r-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
 
-A háromrészes oktatóanyag-sorozat második részében egy K-Mean modellt fog létrehozni az R-ben a fürtözés végrehajtásához. A sorozat következő részében ezt a modellt egy Azure SQL Database Machine Learning Servicest (előzetes verzió) tartalmazó SQL-adatbázisban fogja telepíteni.
+A három részes oktatóanyag-sorozat második részében egy K-Means modellt hozhat létre az R-ben a fürtözés végrehajtásához. A sorozat következő részében ezt a modellt egy SQL-adatbázisban telepíti az Azure SQL Database Machine Learning Services használatával (előzetes verzió).
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+Ebben a cikkben megtudhatja, hogyan:
 
 > [!div class="checklist"]
-> * A K-means algoritmushoz tartozó fürtök számának meghatározása
+> * A K-Means algoritmus fürtjaiszámának meghatározása
 > * Fürtözés végrehajtása
 > * Az eredmények elemzése
 
-Az első [részben](sql-database-tutorial-clustering-model-prepare-data.md)megtanulta, hogyan készítse elő az adatok előkészítését egy Azure SQL Database-adatbázisból a fürtözés végrehajtásához.
+Az [első részben](sql-database-tutorial-clustering-model-prepare-data.md)megtanulta, hogyan készítse elő az adatokat egy Azure SQL-adatbázis fürtözés végrehajtásához.
 
-A [harmadik részből](sql-database-tutorial-clustering-model-deploy.md)megtudhatja, hogyan hozhat létre egy tárolt eljárást egy olyan Azure SQL Database-adatbázisban, amely új adatok alapján képes a fürtözésre az R-ben.
+[A harmadik részben](sql-database-tutorial-clustering-model-deploy.md)megtudhatja, hogyan hozhat létre egy tárolt eljárást egy Azure SQL-adatbázisban, amely az új adatok alapján r-ben fürtözést végezhet.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag második része feltételezi, hogy elvégezte az [**első részt**](sql-database-tutorial-clustering-model-prepare-data.md) , és annak előfeltételeit.
+* Az oktatóanyag második része feltételezi, hogy befejezte az [**első részt**](sql-database-tutorial-clustering-model-prepare-data.md) és annak előfeltételeit.
 
 ## <a name="define-the-number-of-clusters"></a>A fürtök számának meghatározása
 
-Az ügyféladatok fürtözéséhez a **K-means** fürtszolgáltatási algoritmust kell használnia, amely az adatcsoportosítás legegyszerűbb és legismertebb módja.
-A K-vel kapcsolatos további információkért tekintse meg a " [k" teljes útmutatóját](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)a fürtözési algoritmust.
+Az ügyféladatok fürtözéséhez a **K-Means** fürtözési algoritmust fogja használni, amely az adatok csoportosításának egyik legegyszerűbb és legismertebb módja.
+A K-Means-ről a [K-means fürtözési algoritmus teljes útmutatójában](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)olvashat bővebben.
 
-Az algoritmus két bemenetet fogad el: Maga az adatmennyiség és egy előre definiált "*k*" szám, amely a létrehozott fürtök számát jelöli.
-A kimenet olyan *k* -fürtök, amelyekben a bemeneti adatok particionálva vannak a fürtök között.
+Az algoritmus két bemenetet fogad el: magát az adatot, és egy előre definiált "*k*" számot, amely a létrehozandó fürtök számát jelöli.
+A kimenet *k* fürtök a bemeneti adatok particionált a fürtök között.
 
-A használandó algoritmushoz tartozó fürtök számának meghatározásához használja a négyzetek összegét a kinyert fürtök száma alapján. A használandó fürtök megfelelő száma a mintaterület kanyarjában vagy a "könyök".
+Az algoritmus által használandó fürtök számának meghatározásához használja a négyzetek csoporton belüli összegének nyomtatását a kivont fürtök száma szerint. A megfelelő számú klaszterek használni a kanyarban vagy "könyök" a telek.
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -60,13 +62,13 @@ for (i in 2:20)
 plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups sum of squares")
 ```
 
-![Könyök gráf](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
+![Könyök grafikon](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-A gráf alapján úgy tűnik, hogy a (z) *k = 4* jó érték lenne a kipróbáláshoz. Ez a *k* érték négy fürtbe csoportosítja az ügyfeleket.
+A grafikon alapján úgy néz ki, hogy *k = 4* jó érték lenne kipróbálni. Ez a *k* érték négy fürtre csoportosítja az ügyfeleket.
 
 ## <a name="perform-clustering"></a>Fürtözés végrehajtása
 
-A következő R-szkriptben használja a **rxKmeans**függvényt, amely a RevoScaleR csomag K-Mean függvénye.
+A következő R-parancsfájlban az **rxKmeans**függvényt fogja használni, amely a RevoScaleR csomag K-Means függvénye.
 
 ```r
 # Output table to hold the customer group mappings.
@@ -90,9 +92,9 @@ customer_cluster <- rxDataStep(return_cluster);
 
 ## <a name="analyze-the-results"></a>Az eredmények elemzése
 
-Most, hogy elvégezte a fürtözést a (K) használatával, a következő lépés az eredmény elemzése, és annak megállapítása, hogy megtalálható-e a gyakorlatban használható információ.
+Most, hogy a Fürtözést a K-Means használatával végezte el, a következő lépés az eredmény elemzése, és nézze meg, hogy talál-e végrehajtható információt.
 
-A **clust** objektum a K-means fürtözés eredményét tartalmazza.
+A **clust** objektum tartalmazza a K-Means fürtözés eredményeit.
 
 ```r
 #Look at the clustering details to analyze results
@@ -122,39 +124,39 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-A négy fürt a következő [részben](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)meghatározott változók használatával van megadva:
+A négy halmazeszköz az [első részben](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)meghatározott változók alapján adható meg:
 
-* *orderRatio* = visszaadott sorrendi arány (a megrendelések teljes száma részben vagy teljes mértékben visszaadva a megrendelések teljes száma szerint)
-* *itemsRatio* = visszaadott elem aránya (a visszaadott elemek teljes száma és a megvásárolt elemek száma)
-* *monetaryRatio* = visszaadott összeg aránya (a visszaadott elemek teljes pénzügyi mennyisége és a megvásárolt mennyiség)
-* *gyakoriság* = visszatérési gyakoriság
+* *orderRatio* = visszárurendelés-arány (a rendelések teljes száma részben vagy teljesen visszalett küldve a rendelések teljes számával szemben)
+* *itemsRatio* = visszárucikk arány (a visszaküldött cikkek teljes száma a beszerzett cikkek számához képest)
+* *monetárisRatio* = hozamösszeg hányadosa (a visszaküldött tételek teljes pénzbeli összege a megvásárolt összeggel szemben)
+* *frekvencia* = visszatérési frekvencia
 
-A K-t használó adatbányászat gyakran megköveteli az eredmények további elemzését, valamint az egyes fürtök jobb megértéséhez szükséges további lépéseket, de a megfelelő érdeklődőket is biztosít.
-Az alábbi néhány módon értelmezheti ezeket az eredményeket:
+A K-Means használatával történő adatbányászat gyakran további elemzést igényel az eredményekről, és további lépéseket kell tenni az egyes fürtök jobb megértéséhez, de jó érdeklődőket nyújthat.
+Íme néhány módszer, amelyekkel értelmezheti ezeket az eredményeket:
 
-* Az 1. fürt (a legnagyobb fürt) úgy tűnik, hogy olyan ügyfelek csoportja, amelyek nem aktívak (az összes érték nulla).
-* A 3. fürt úgy tűnik, hogy egy olyan csoport, amely a visszatérési viselkedés szempontjából kiemelkedik.
+* Az 1-es fürt (a legnagyobb fürt) úgy tűnik, hogy az ügyfelek egy csoportja, amely nem aktív (minden érték nulla).
+* Cluster 3 úgy tűnik, hogy egy csoport, amely kiemelkedik a visszatérési viselkedés.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-***Ha nem folytatja ezt***az oktatóanyagot, törölje a tpcxbb_1gb-adatbázist a Azure SQL Database-kiszolgálóról.
+***Ha nem folytatja ezt az oktatóanyagot,*** törölje a tpcxbb_1gb adatbázist az Azure SQL Database-kiszolgálóról.
 
-A Azure Portal hajtsa végre az alábbi lépéseket:
+Az Azure Portalon kövesse az alábbi lépéseket:
 
-1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** vagy **SQL-adatbázis**lehetőséget.
-1. A **szűrés név szerint...** mezőbe írja be a **tpcxbb_1gb**nevet, és válassza ki az előfizetését.
-1. Válassza ki a **tpcxbb_1gb** -adatbázist.
+1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** vagy **SQL-adatbázis lehetőséget.**
+1. A **Szűrés név szerint...** mezőbe írja be **tpcxbb_1gb,** és válassza ki az előfizetést.
+1. Válassza ki a **tpcxbb_1gb** adatbázist.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag-sorozat második részében a következő lépéseket végezte el:
+Az oktatóanyag-sorozat második részében az alábbi lépéseket hajtotta végre:
 
-* A K-means algoritmushoz tartozó fürtök számának meghatározása
+* A K-Means algoritmus fürtjaiszámának meghatározása
 * Fürtözés végrehajtása
 * Az eredmények elemzése
 
-A létrehozott Machine learning-modell üzembe helyezéséhez kövesse az oktatóanyag-sorozat harmadik részét:
+A létrehozott gépi tanulási modell üzembe helyezéséhez kövesse az oktatóanyag-sorozat harmadik részét:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Fürtözött modell üzembe helyezése az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-tutorial-clustering-model-deploy.md)
+> [Oktatóanyag: Fürthálózati modell üzembe helyezése az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)](sql-database-tutorial-clustering-model-deploy.md)

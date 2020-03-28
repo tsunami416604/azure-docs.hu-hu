@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával'
-description: Ebből az oktatóanyagból megtudhatja, hogyan nyerheti ki az adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át Apache Hive használatával az Azure HDInsight, majd az átalakított adatokat Azure SQL Databaseba tölti be a Sqoop használatával.
+title: 'Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával'
+description: Ebben az oktatóanyagban megtudhatja, hogyan nyerheti ki az adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át azokat az Azure HDInsight Apache Hive használatával, majd az átalakított adatokat az Azure SQL Database-be a Sqoop használatával.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,70 +9,70 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327561"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
 
-Ebben az oktatóanyagban egy ETL-műveletet hajt végre: adatok kinyerése, átalakítása és betöltése. Létrehoz egy nyers CSV-adatfájlt, importálja egy Azure HDInsight-fürtbe, átalakítja Apache Hive, és betölti egy Azure SQL Database-be az Apache Sqoop.
+Ebben az oktatóanyagban etl-műveletet hajt végre: adatok kibontása, átalakítása és betöltése. Egy nyers CSV-adatfájlt importál, importál egy Azure HDInsight-fürtbe, átalakítja azt az Apache Hive segítségével, és betölti egy Azure SQL-adatbázisba az Apache Sqoop segítségével.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az adatok kinyerése és feltöltése egy HDInsight-fürtbe.
-> * Az adatátalakítás Apache Hive használatával.
-> * Az Azure SQL Database-be az Sqoop használatával tölthető be az adatai.
+> * Az adatok kibontása és feltöltése egy HDInsight-fürtbe.
+> * Az adatok átalakítása apache hive használatával.
+> * Töltse be az adatokat egy Azure SQL-adatbázis sqoop használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **A HDInsight konfigurált Azure Data Lake Storage Gen2 Storage-fiók**
+* **A HDInsighthoz konfigurált Azure Data Lake Storage Gen2 tárfiók**
 
-    Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+    Lásd: [Azure Data Lake Storage Gen2 használata Az Azure HDInsight-fürtökkel.](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 
-* **Linux-alapú Hadoop-fürt a HDInsight-on**
+* **Linux alapú Hadoop-fürt a HDInsight-on**
 
-    Lásd: gyors üzembe helyezés [Apache Hadoop és Apache Hive az Azure HDInsight az Azure Portal használatával](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Tekintse meg [a rövid útmutatót: Az Apache Hadoop és az Apache Hive használatának első lépései az Azure HDInsightban az Azure Portalon.](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)
 
-* **Azure SQL Database**: Azure SQL Database-t használ célként megadott adattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
+* **Azure SQL Database:** Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
 
-* **Azure CLI**: Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
+* **Azure CLI:** Ha még nem telepítette az Azure CLI-t, [olvassa el az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)című témakört.
 
-* **Egy Secure Shell-(SSH-) ügyfél**: további információért lásd: [Kapcsolódás a HDInsight (HADOOP) az SSH használatával](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Biztonságos rendszerhéj (SSH) ügyfél**: További információ: [Csatlakozás a HDInsighthoz (Hadoop) az SSH használatával](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
-1. Tallózással keresse meg a [kutatási és innovatív technológiákkal kapcsolatos adminisztrációt, az Bureau of közlekedési statisztikáit](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Nyissa meg a [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time) (Kutatási és Innovációs Műszaki Felügyelőség, Közlekedési Statisztikai Hivatal) oldalt.
 
 2. Az oldalon válassza ki a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Név | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2013 |
    | Filter Period (Szűrési időszak) |January |
-   | Mezők |Év, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, forrás, OriginCityName, OriginState, DestAirportID, cél, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Mezők |Év, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    
    Az összes többi mező jelölését törölje.
 
 3. Válassza a **Download** (Letöltés) lehetőséget. Egy .zip fájlt kap, amely a kiválasztott adatmezőket tartalmazza.
 
-## <a name="extract-and-upload-the-data"></a>Adatok kinyerése és feltöltése
+## <a name="extract-and-upload-the-data"></a>Az adatok kinyerése és feltöltése
 
-Ebben a szakaszban az adatok feltöltése a HDInsight-fürtbe, majd az adatok másolása a Data Lake Storage Gen2-fiókba.
+Ebben a szakaszban adatokat tölthet fel a HDInsight-fürtbe, majd másolja ezeket az adatokat a Data Lake Storage Gen2-fiókjába.
 
-1. Nyisson meg egy parancssort, és a következő biztonságos másolási (SCP-) parancs használatával töltse fel a. zip fájlt a HDInsight-fürt fő csomópontjára:
+1. Nyisson meg egy parancssort, és használja a következő Biztonságos másolás (Scp) parancsot a .zip fájl feltöltéséhez a HDInsight fürtfőcsomópontra:
 
    ```bash
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * Cserélje le a `<file-name>` helyőrzőt a. zip fájl nevére.
-   * Cserélje le a `<ssh-user-name>` helyőrzőt a HDInsight-fürt SSH-azonosítójával.
-   * Cserélje le az `<cluster-name>` helyőrzőt a HDInsight-fürt nevére.
+   * Cserélje `<file-name>` le a helyőrzőt a .zip fájl nevére.
+   * Cserélje `<ssh-user-name>` le a helyőrzőt a HDInsight-fürt SSH bejelentkezési adataira.
+   * Cserélje `<cluster-name>` le a helyőrzőt a HDInsight-fürt nevére.
 
    Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót.
 
@@ -90,45 +90,45 @@ Ebben a szakaszban az adatok feltöltése a HDInsight-fürtbe, majd az adatok m�
    unzip <file-name>.zip
    ```
 
-   A parancs kibont egy **. csv** fájlt.
+   A parancs **.csv** fájlt bont ki.
 
-4. A Data Lake Storage Gen2 tároló létrehozásához használja a következő parancsot.
+4. A következő paranccsal hozza létre a Data Lake Storage Gen2 tárolót.
 
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Cserélje le a `<container-name>` helyőrzőt arra a névre, amelyet meg szeretne adni a tárolónak.
+   Cserélje `<container-name>` le a helyőrzőt a tárolónak adni kívánt névre.
 
-   Cserélje le a `<storage-account-name>` helyőrzőt a Storage-fiók nevére.
+   Cserélje `<storage-account-name>` le a helyőrzőt a tárfiók nevére.
 
-5. A következő parancs használatával hozzon létre egy könyvtárat.
+5. Könyvtár létrehozásához használja a következő parancsot.
 
    ```bash
    hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
-6. Az alábbi parancs használatával másolja a *. csv* fájlt a könyvtárba:
+6. A *.csv* fájl könyvtárba másolásához használja a következő parancsot:
 
    ```bash
    hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
-   Ha a fájlnév szóközöket vagy speciális karaktereket tartalmaz, használja az idézőjeleket a fájlnév köré.
+   Ha a fájlnév szóközöket vagy speciális karaktereket tartalmaz, használjon idézőjeleket a fájlnév körül.
 
 ## <a name="transform-the-data"></a>Az adatok átalakítása
 
-Ebben a szakaszban a Beeline használatával futtat egy Apache Hive feladatot.
+Ebben a szakaszban a Beeline használatával apache Hive-feladat futtatásához.
 
-A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy **késleltetés**nevű Apache Hive táblába.
+Az Apache Hive-feladat részeként importálja az adatokat a .csv fájlból egy **késleltetésnek**nevezett Apache Hive-táblába.
 
-1. A HDInsight-fürthöz már meglévő SSH-parancssorból a következő paranccsal hozhat létre és szerkeszthet egy **flightdelays. HQL**nevű új fájlt:
+1. A HDInsight-fürthöz már meglévő SSH-parancsból a következő paranccsal hozhat létre és szerkesztheti a **flightdelays.hql**nevű új fájlt:
 
    ```bash
    nano flightdelays.hql
    ```
 
-2. Módosítsa a következő szöveget úgy, hogy lecseréli a `<container-name>` és `<storage-account-name>` helyőrzőket a tároló-és a Storage-fiók nevével. Ezután másolja és illessze be a szöveget a nano Console-ba a SHIFT billentyű lenyomásával és a jobb egérgombos kattintás gomb használatával.
+2. Módosítsa a következő szöveget a tároló- és tárfiók nevére cserélve a `<container-name>` helyőrzőket. `<storage-account-name>` Ezután másolja és illessze be a szöveget a nanokonzolra a SHIFT billentyű és a jobb egérkattintás gomb jának megnyomásával.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -192,7 +192,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
     FROM delays_raw;
     ```
 
-3. Mentse a fájlt a CTRL + X billentyűkombinációval, majd írja be `Y`, amikor a rendszer kéri.
+3. Mentse a fájlt a CTRL+X `Y` billentyűkombinációval, majd írja be a szöveget, amikor a program kéri.
 
 4. Indítsa el a Hive-ot, és futtassa a **flightdelays.hql** fájlt az alábbi paranccsal:
 
@@ -224,17 +224,17 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
 
 ## <a name="create-a-sql-database-table"></a>SQL Database-tábla létrehozása
 
-Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére. A kiszolgáló nevének megkereséséhez hajtsa végre a következő lépéseket.
+Ehhez a művelethez az SQL-adatbáziskiszolgáló nevére van szükség. Hajtsa végre az alábbi lépéseket a kiszolgáló nevének megkereséséhez.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
 
-2. Válassza az **SQL-adatbázisok**lehetőséget.
+2. Válassza az **SQL-adatbázisok lehetőséget.**
 
 3. Szűrje a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
 
 4. Szűrje a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
 
-    ![Azure SQL Server-kiszolgáló adatainak beolvasása](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL Server-kiszolgáló adatainak beolvasása")
+    ![Az Azure SQL-kiszolgáló részleteinek beszereznie](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Az Azure SQL-kiszolgáló részleteinek beszereznie")
 
     Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát. A következő lépések során a [FreeTDS](https://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
 
@@ -244,18 +244,18 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. A telepítés befejezése után a következő parancs használatával csatlakozhat a SQL Database-kiszolgálóhoz.
+6. A telepítés befejezése után a következő paranccsal csatlakozzon az SQL Database-kiszolgálóhoz.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * Cserélje le a `<server-name>` helyőrzőt a SQL Database-kiszolgáló nevére.
+   * Cserélje `<server-name>` le a helyőrzőt az SQL Database kiszolgáló nevére.
 
-   * Cserélje le a `<admin-login>` helyőrzőt a SQL Database rendszergazdai felhasználónevével.
+   * Cserélje `<admin-login>` le a helyőrzőt az SQL Database rendszergazdai bejelentkezési adataira.
 
-   * Cserélje le az `<database-name>` helyőrzőt az adatbázis nevére.
+   * A `<database-name>` helyőrző lecserélése az adatbázis nevére
 
-   Amikor a rendszer kéri, adja meg a SQL Database rendszergazdai bejelentkezéshez használt jelszót.
+   Amikor a rendszer kéri, adja meg az SQL Database rendszergazdai bejelentkezésének jelszavát.
 
    A kimenet a következő szöveghez fog hasonlítani:
 
@@ -267,7 +267,7 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
    1>
    ```
 
-7. A `1>` promptnál adja meg a következő utasításokat:
+7. A `1>` kérdésben adja meg a következő utasításokat:
 
    ```hiveql
    CREATE TABLE [dbo].[delays](
@@ -280,9 +280,9 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
 
 8. A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat.
 
-   A lekérdezés egy **késések**nevű táblát hoz létre, amely fürtözött indexszel rendelkezik.
+   A lekérdezés létrehoz egy **delays**nevű táblát, amely fürtözött indexszel rendelkezik.
 
-9. A következő lekérdezés használatával ellenőrizheti, hogy a tábla létrejött-e:
+9. A tábla létrehozásának ellenőrzéséhez használja az alábbi lekérdezést:
 
    ```hiveql
    SELECT * FROM information_schema.tables
@@ -298,9 +298,9 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
 
 10. A tsql eszközből való kilépéshez írja be az `exit` kifejezést az `1>` parancssorba.
 
-## <a name="export-and-load-the-data"></a>Az adatexportálás és-betöltés
+## <a name="export-and-load-the-data"></a>Adatok exportálása és betöltése
 
-Az előző részekben a `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`helyre másolta az átalakított adatterületet. Ebben a szakaszban a Sqoop használatával exportálja `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` adatait az Azure SQL Database-ben létrehozott táblába.
+Az előző szakaszokban az átalakított adatokat a `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`helyen másolta. Ebben a szakaszban a Sqoop segítségével `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` exportálja az adatokat az Azure SQL-adatbázisban létrehozott táblába.
 
 1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 
@@ -308,23 +308,23 @@ Az előző részekben a `abfs://<container-name>@<storage-account-name>.dfs.core
    sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
    ```
 
-   A parancs az adatbázisok listáját adja vissza, beleértve azt az adatbázist, amelyben létrehozta a **késések** táblát.
+   A parancs visszaadja az adatbázisok listáját, beleértve azt az adatbázist is, amelyben a **delays** táblát létrehozta.
 
-2. A következő paranccsal exportálhatja az adatait a **hivesampletable** táblából a **késések** táblájába:
+2. A következő paranccsal exportálhatja az adatokat a **struktúramintatáblázatból** a **delays** táblába:
 
    ```bash
    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
-   A Sqoop a **késések** táblát tartalmazó adatbázishoz csatlakozik, és a `/tutorials/flightdelays/output` könyvtárból exportálja az adatait a **késések** táblába.
+   A Sqoop csatlakozik a **delays** táblát tartalmazó adatbázishoz, és adatokat exportál a `/tutorials/flightdelays/output` könyvtárból a **delays** táblába.
 
-3. Az `sqoop` parancs befejeződése után a TSQL segédprogrammal csatlakozhat az adatbázishoz:
+3. A `sqoop` parancs befejezése után a tsql segédprogrammal csatlakozzon az adatbázishoz:
 
    ```bash
    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
    ```
 
-4. Az alábbi utasítások segítségével ellenőrizheti, hogy az adatokat a **késések** táblába exportálta-e:
+4. A következő utasítások segítségével ellenőrizheti, hogy az adatokat exportálták-e a **delays** táblába:
 
    ```sql
    SELECT * FROM delays
@@ -333,15 +333,15 @@ Az előző részekben a `abfs://<container-name>@<storage-account-name>.dfs.core
 
    A táblában látnia kell az adatok listáját. A tábla a városok nevét és az egyes városokhoz tartozó átlagos késések idejét tartalmazza.
 
-5. A TSQL segédprogramból való kilépéshez írja be `exit`.
+5. Adja `exit` meg a tsql segédprogramból való kilépéshez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyagban használt összes erőforrás már létezik. Nincs szükség karbantartásra.
+Az oktatóanyagban használt összes erőforrás már meglévő. Nincs szükség tisztításra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a HDInsight található adatkezelési lehetőségekről, tekintse meg a következő cikket:
+Az adatok HDInsight-ban való kezelésének további módjairól az alábbi cikkben olvashat:
 
 > [!div class="nextstepaction"]
 > [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának törlése
+title: Azure CLI-parancsfájlminta – Az Azure App konfigurációs tárolójának törlése
 titleSuffix: Azure App Configuration
-description: Azure-alkalmazás konfigurációs tárolójának törlése az Azure CLI-parancsfájl használatával
+description: Az Azure CLI Script használatával törölheti az Azure App Configuration Store-t
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,15 +10,15 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 7f73de459d8ce9f74e3925789af630b7c804d605
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523572"
 ---
-# <a name="delete-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának törlése
+# <a name="delete-an-azure-app-configuration-store"></a>Azure-alkalmazáskonfigurációs tároló törlése
 
-Ez a minta parancsfájl törli az Azure-alkalmazások konfigurációjának egy példányát.
+Ez a mintaparancsfájl törli az Azure App-konfiguráció egy példányát.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,14 +39,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja az alkalmazás konfigurációs tárolójának törléséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja egy alkalmazáskonfigurációs tároló törléséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | Egy alkalmazás-konfigurációs tároló erőforrásának törlése. |
+| [az appconfig törlés](/cli/azure/appconfig#az-appconfig-delete) | Egy alkalmazáskonfigurációs tároló erőforrás törlése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure app CONFIGURATION CLI-mintákban](../cli-samples.md)találhatók.
+További alkalmazáskonfigurációs CLI-parancsfájlminták találhatók az [Azure App Konfigurációs CLI-mintáiban.](../cli-samples.md)

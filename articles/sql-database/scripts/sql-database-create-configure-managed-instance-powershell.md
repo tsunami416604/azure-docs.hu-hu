@@ -1,6 +1,6 @@
 ---
-title: PowerShell-példa – felügyelt példány létrehozása Azure SQL Database
-description: Azure PowerShell példa parancsfájlt a felügyelt példányok létrehozásához Azure SQL Database
+title: PowerShell-példa – felügyelt példány létrehozása az Azure SQL Database-ben
+description: Azure PowerShell példaparancsfájl felügyelt példány létrehozásához az Azure SQL Database-ben
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,22 +12,22 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
 ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691642"
 ---
-# <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány létrehozása a PowerShell használatával
+# <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példányának létrehozása a PowerShell használatával
 
-Ez a PowerShell-parancsfájl például egy Azure SQL Database felügyelt példányt hoz létre egy dedikált alhálózaton egy új virtuális hálózaton belül. Emellett egy útválasztási táblázatot és egy hálózati biztonsági csoportot is konfigurál a virtuális hálózathoz. A szkript sikeres futtatása után a felügyelt példány a virtuális hálózatról vagy egy helyszíni környezetből is elérhető. Lásd: az [Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódáshoz](../sql-database-managed-instance-configure-vm.md) , valamint [pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](../sql-database-managed-instance-configure-p2s.md).
+Ez a PowerShell-parancsfájl-példa egy Azure SQL Database által felügyelt példányt hoz létre egy új virtuális hálózaton belüli dedikált alhálózatban. Egy útvonaltáblát és egy hálózati biztonsági csoportot is konfigurál a virtuális hálózathoz. A parancsfájl sikeres futtatása után a felügyelt példány a virtuális hálózaton belülről vagy egy helyszíni környezetből érhető el. Lásd: [Az Azure VM konfigurálása egy Azure SQL Database felügyelt példányhoz való csatlakozáshoz,](../sql-database-managed-instance-configure-vm.md) és [konfigurálása egy pont-hely kapcsolat egy Azure SQL-adatbázis felügyelt példánya a helyszíni.](../sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> Korlátozásokkal kapcsolatban lásd: [támogatott régiók](../sql-database-managed-instance-resource-limits.md#supported-regions) és [támogatott előfizetési típusok](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
+> A korlátozásokat a [Támogatott régiók](../sql-database-managed-instance-resource-limits.md#supported-regions) és a [támogatott előfizetéstípusok című témakörben](../sql-database-managed-instance-resource-limits.md#supported-subscription-types)tésszet.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez az oktatóanyag az AZ PowerShell 1.4.0-s vagy újabb szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -35,7 +35,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -48,16 +48,16 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja.
-| [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Létrehoz egy virtuális hálózatot |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Alhálózat konfigurációjának feladása egy virtuális hálózathoz |
-| [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Egy erőforráscsoport virtuális hálózatának beolvasása |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/Set-AzVirtualNetwork) | Egy virtuális hálózat cél állapotának beállítása |
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Get-AzVirtualNetworkSubnetConfig) | Alhálózatot kap egy virtuális hálózatban |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-AzVirtualNetworkSubnetConfig) | Egy virtuális hálózatban lévő alhálózat konfigurációjának cél állapotát konfigurálja. |
-| [Új – AzRouteTable](/powershell/module/az.network/New-AzRouteTable) | Útválasztási táblázat létrehozása |
-| [Get-AzRouteTable](/powershell/module/az.network/Get-AzRouteTable) | Útválasztási táblák beolvasása |
-| [Set-AzRouteTable](/powershell/module/az.network/Set-AzRouteTable) | Egy útválasztási táblázat cél állapotának beállítása |
-| [Új – AzSqlInstance](/powershell/module/az.sql/New-AzSqlInstance) | Létrehoz egy Azure SQL Database felügyelt példányt |
+| [Új-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózat létrehozása |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Alhálózati konfiguráció hozzáadása virtuális hálózathoz |
+| [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Virtuális hálózat bekéselése egy erőforráscsoportban |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/Set-AzVirtualNetwork) | Virtuális hálózat célállapotának beállítja |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Get-AzVirtualNetworkSubnetConfig) | Alhálózat bekéselése egy virtuális hálózatban |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-AzVirtualNetworkSubnetConfig) | A virtuális hálózat alhálózati konfigurációjának célállapotának konfigurálása |
+| [Új-Azroutetable](/powershell/module/az.network/New-AzRouteTable) | Útvonaltábla létrehozása |
+| [Get-Azroutetable](/powershell/module/az.network/Get-AzRouteTable) | Útvonaltáblák leválasztása |
+| [Set-Azroutetable](/powershell/module/az.network/Set-AzRouteTable) | Útvonaltábla célállapotának beállítja |
+| [Új-Azsqlinstance](/powershell/module/az.sql/New-AzSqlInstance) | Létrehoz egy Azure SQL Database felügyelt példányt |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

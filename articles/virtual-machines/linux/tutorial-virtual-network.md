@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez
+title: Oktatóanyag – Azure virtuális hálózatok létrehozása és kezelése Linuxos virtuális gépekhez
 description: Ez az oktatóanyag bemutatja az Azure-alapú virtuális hálózatok Linux rendszerű virtuális gépeken való létrehozását és kezelését az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,15 +16,15 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238600"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI-vel
 
-Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák feltételezik, hogy a virtuális gépek üzemeltetnek egy webalkalmazást egy adatbázis-alapú háttérrendszerrel, de az oktatóanyag során nem telepítünk ilyen alkalmazást. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák feltételezik, hogy a virtuális gépek üzemeltetnek egy webalkalmazást egy adatbázis-alapú háttérrendszerrel, de az oktatóanyag során nem telepítünk ilyen alkalmazást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális hálózat és alhálózat létrehozása
@@ -33,7 +33,7 @@ Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső é
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -190,7 +190,7 @@ az network vnet subnet update \
 
 Az előtérbeli virtuális gép létrehozásakor létrejön egy NSG-szabály, amely engedélyezi a bejövő forgalmat a 22-es porton. Ez a szabály engedélyezi az SSH-kapcsolatokat a virtuális gép számára. Ebben a példában a forgalmat a *80*-as porton is engedélyezni kell. Ez a konfiguráció lehetővé teszi egy webalkalmazás elérését a virtuális gépen.
 
-Hozzon létre egy szabályt a [80](/cli/azure/network/nsg/rule)-as porthoz az *az network nsg rule create* paranccsal.
+Hozzon létre egy szabályt a *80*-as porthoz az [az network nsg rule create](/cli/azure/network/nsg/rule) paranccsal.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -290,7 +290,7 @@ A háttérbeli virtuális gép csak a *22*-es és a *3306*-os porton keresztül 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -304,4 +304,4 @@ Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosí
 Folytassa a következő oktatóanyaggal, amely a virtuális gépeken lévő adatok Azure biztonsági mentéssel való biztosítását ismerteti. 
 
 > [!div class="nextstepaction"]
-> [Linux rendszerű virtuális gépek biztonsági mentése az Azure-ban](./tutorial-backup-vms.md)
+> [Linuxos virtuális gépek biztonsági és biztonsági és biztonsági másolatot az Azure-ban](./tutorial-backup-vms.md)

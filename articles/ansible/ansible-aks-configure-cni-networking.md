@@ -1,28 +1,28 @@
 ---
-title: Oktatóanyag – az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
-description: Ismerje meg, hogyan konfigurálhatja a kubenet hálózatkezelést az Azure Kubernetes Service (ak) fürtben a Ansible használatával
-keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes
+title: Oktatóanyag – Az Azure CNI-hálózat konfigurálása az Azure Kubernetes-szolgáltatásban (AKS) az Ansible használatával
+description: Ismerje meg, hogyan konfigurálhatja az Ansible használatával a kubenet-hálózatszolgáltatást az Azure Kubernetes-szolgáltatás (AKS) fürtjében
+keywords: ansible, azúr, devops, bash, cloudshell, ötletekbõl, aks, konténer, aks, kubernetes
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156897"
 ---
-# <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
+# <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: Konfigurálja az Azure CNI-hálózatot az Azure Kubernetes-szolgáltatásban (AKS) az Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Az AK-t használva a következő hálózati modellekkel telepíthet fürtöt:
+Az AKS használatával a következő hálózati modellek használatával telepíthet fürtöt:
 
-- [Kubenet hálózatkezelés](/azure/aks/configure-kubenet) – a hálózati erőforrások általában az AK-fürt üzembe helyezésekor jönnek létre és konfigurálhatók.
-- Az [Azure CNI Networking](/azure/aks/configure-azure-cni) -AK-fürt a meglévő virtuális hálózati (VNET) erőforrásokhoz és konfigurációkhoz van csatlakoztatva.
+- [Kubenet-hálózatkezelés](/azure/aks/configure-kubenet) – A hálózati erőforrások általában az AKS-fürt telepítésekor jönnek létre és konfigurálnak.
+- [Azure CNI-hálózati –](/azure/aks/configure-azure-cni) Az AKS-fürt meglévő virtuális hálózati (VNET) erőforrásokhoz és konfigurációkhoz csatlakozik.
 
-További információ az alkalmazásokkal való hálózatkezelésről az AK-ban: az AK-beli [alkalmazások hálózati fogalmai](/azure/aks/concepts-network).
+Az Alkalmazások AKS-ben való hálózattal kapcsolatos további tudnivalókért olvassa el az [AKS-alkalmazások hálózati fogalmait.](/azure/aks/concepts-network)
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -39,7 +39,7 @@ További információ az alkalmazásokkal való hálózatkezelésről az AK-ban:
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
-Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
+Az ebben a szakaszban található mintaforgatókönyv-kód a következőkre szolgál:
 
 - Virtuális hálózat létrehozása
 - Alhálózat létrehozása a virtuális hálózaton belül
@@ -63,11 +63,11 @@ Mentse a következő forgatókönyvet `vnet.yml` néven:
   register: subnet
 ```
 
-## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AK-fürt létrehozása a virtuális hálózaton
+## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AKS-fürt létrehozása a virtuális hálózatban
 
-Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
+Az ebben a szakaszban található mintaforgatókönyv-kód a következőkre szolgál:
 
-- Hozzon létre egy AK-fürtöt egy virtuális hálózaton belül.
+- Hozzon létre egy AKS-fürtöt egy virtuális hálózaton belül.
 
 Mentse a következő forgatókönyvet `aks.yml` néven:
 
@@ -102,21 +102,21 @@ Mentse a következő forgatókönyvet `aks.yml` néven:
   register: aks
 ```
 
-Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
+Íme néhány fontos megjegyzés, amelyet figyelembe kell venni a minta forgatókönyvével való munka során:
 
-- A támogatott verzió megkereséséhez használja a `azure_rm_aks_version` modult.
-- A `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
-- A forgatókönyv betölti `ssh_key`t a `~/.ssh/id_rsa.pub`ból. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
-- A `client_id` és `client_secret` értékek betöltődik a `~/.azure/credentials`ból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
+- A `azure_rm_aks_version` modul segítségével keresse meg a támogatott verziót.
+- Az `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
+- A forgatókönyv `ssh_key` betöltődik `~/.ssh/id_rsa.pub`. Ha módosítja, használja az egysoros formátumot - kezdve az "ssh-rsa" (idézőjelek nélkül).
+- A `client_id` `client_secret` és az `~/.azure/credentials`értékek betöltődnek a programból, amely az alapértelmezett hitelesítő adatok fájlja. Ezeket az értékeket beállíthatja a szolgáltatásnévhez, vagy betöltheti ezeket az értékeket a környezeti változókból:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
+## <a name="run-the-sample-playbook"></a>A mintaforgatókönyv futtatása
 
-Az ebben a szakaszban ismertetett példa az oktatóanyagban bemutatott különböző szolgáltatások tesztelésére szolgál.
+A minta forgatókönyv kód ebben a szakaszban az oktatóanyagban látható különböző funkciók tesztelésére szolgál.
 
 Mentse a következő forgatókönyvet `aks-azure-cni.yml` néven:
 
@@ -146,13 +146,13 @@ Mentse a következő forgatókönyvet `aks-azure-cni.yml` néven:
            var: aks
 ```
 
-Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
+Íme néhány fontos megjegyzés, amelyet figyelembe kell venni a minta forgatókönyvével való munka során:
 
-- Módosítsa a `aksansibletest` értéket az erőforráscsoport nevére.
-- Módosítsa a `aksansibletest` értéket az AK-névre.
-- Módosítsa a `eastus` értéket az erőforráscsoport helyére.
+- Módosítsa `aksansibletest` az értéket az erőforráscsoport nevére.
+- Módosítsa `aksansibletest` az értéket az AKS nevére.
+- Módosítsa `eastus` az értéket az erőforráscsoport helyére.
 
-Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:
+Futtassa a forgatókönyvet az ansible-playbook paranccsal:
 
 ```bash
 ansible-playbook aks-azure-cni.yml
@@ -246,9 +246,9 @@ localhost                  : ok=9    changed=4    unreachable=0    failed=0    s
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
+Az ebben a szakaszban található mintaforgatókönyv-kód a következőkre szolgál:
 
-- Törölje a `vars` szakaszban említett erőforráscsoportot.
+- A `vars` szakaszban említett erőforráscsoport törlése.
 
 Mentse a következő forgatókönyvet `cleanup.yml` néven:
 
@@ -265,18 +265,18 @@ Mentse a következő forgatókönyvet `cleanup.yml` néven:
             force: yes
 ```
 
-Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
+Íme néhány fontos megjegyzés, amelyet figyelembe kell venni a minta forgatókönyvével való munka során:
 
-- Cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
-- A megadott erőforráscsoport összes erőforrása törölve lesz.
+- Cserélje `{{ resource_group_name }}` le a helyőrzőt az erőforráscsoport nevére.
+- A megadott erőforráscsoporton belüli összes erőforrás törlődik.
 
-Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:
+Futtassa a forgatókönyvet az ansible-playbook paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure Active Directory konfigurálása az AK-ban a Ansible használatával](./ansible-aks-configure-rbac.md)
+> [Oktatóanyag: Az Azure Active Directory konfigurálása az AKS-ben az Ansible használatával](./ansible-aks-configure-rbac.md)

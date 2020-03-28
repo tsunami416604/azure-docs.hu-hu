@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75421847"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzésének a következők a feltételei:
 
 ## <a name="onboard-an-azure-vm"></a>Azure-beli virtuális gép előkészítése
 
-A gépek több módon is üzembe helyezhetők, a megoldás a [virtuális gépről](automation-onboard-solutions-from-vm.md)is felhasználható, így [több gép is tallózható](automation-onboard-solutions-from-browse.md) az [Automation-fiókból](automation-onboard-solutions-from-automation-account.md)vagy a runbook. Ez az oktatóanyag végigvezeti az Update Management runbook segítségével történő engedélyezésén. Nagy mennyiségű Azure-beli virtuális gép előkészítéséhez egy meglévő virtuális gépet kell előkészíteni a Change Tracking vagy az Update Management megoldással. Ebben a lépésben egy virtuális gépet fogunk előkészíteni az Update Management és a Change Tracking megoldással.
+A gépek et többféleképpen is belehet vezetni, a megoldást [egy virtuális gépről,](automation-onboard-solutions-from-vm.md) [több gép böngészéséből](automation-onboard-solutions-from-browse.md) [az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)vagy a runbookból is belehet vezetni. Ez az oktatóanyag végigvezeti az Update Management runbook segítségével történő engedélyezésén. Nagy mennyiségű Azure-beli virtuális gép előkészítéséhez egy meglévő virtuális gépet kell előkészíteni a Change Tracking vagy az Update Management megoldással. Ebben a lépésben egy virtuális gépet fogunk előkészíteni az Update Management és a Change Tracking megoldással.
 
 ### <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
@@ -77,7 +77,7 @@ Most, hogy engedélyezte a megoldásokat, hozzáadhat egy Azure-beli virtuális 
    ![Az Update megoldás engedélyezése a virtuális gépen](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Ha nem várja meg a másik megoldás befejeződését, akkor a következő megoldás engedélyezésekor egy üzenet jelenik *meg: egy másik megoldás telepítése folyamatban van ezen vagy egy másik virtuális gépen. Ha a telepítés befejeződött, az engedélyezés gomb engedélyezve van, és a megoldás telepítését a virtuális gépen is kérheti.*
+> Ha nem várja meg a másik megoldás befejezését, amikor engedélyezi a következő megoldás üzenet jelenik meg: *Telepítése egy másik megoldás folyamatban van ezen vagy egy másik virtuális gépen. Ha a telepítés befejeződik, az Engedélyezés gomb engedélyezve van, és kérheti a megoldás telepítését ezen a virtuális gépen.*
 
 ## <a name="install-and-update-modules"></a>Modulok telepítése és frissítése
 
@@ -129,12 +129,12 @@ A runbook indításához elő kellett készítenie a change tracking vagy az upd
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Virtuális gép eltávolítása Update Managementról:
+Virtuális gép eltávolítása az Update Management szolgáltatásból:
 
-* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfigurációs `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
-* Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+* A Log Analytics-munkaterületen távolítsa el a virtuális gép `MicrosoftDefaultScopeConfig-Updates`a mentett keresés a Hatókör konfigurációja. A mentett keresések a munkaterület **Általános** területén találhatók.
+* Távolítsa el a [Microsoft Monitoring ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Log Analytics ügynököt Linuxra.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

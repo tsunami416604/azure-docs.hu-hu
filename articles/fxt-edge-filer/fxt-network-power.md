@@ -1,168 +1,168 @@
 ---
-title: 'Oktatóanyag: Kábelek csatlakoztatása egy Azure FXT Edge Filer-hoz'
-description: Hálózati portok csatlakoztatása és az Azure FXT Edge Filer-hardver áramellátásának csatlakoztatása
+title: 'Oktatóanyag: Kábelek csatlakoztatása egy Azure FXT Edge Filer-hez'
+description: A hálózati portok kábelezése és az Azure FXT Edge Filer hardvertá válása
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239783"
 ---
-# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Oktatóanyag: hálózati kapcsolatok létrehozása és áramellátás az Azure FXT Edge Filer-csomóponthoz
+# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Oktatóanyag: Hálózati kapcsolatok létesítése és tápellátás az Azure FXT Edge Filer csomóponthoz
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet hálózati kapcsolatokat létesíteni egy Azure FXT Edge Filer-hardveres csomóponthoz.
+Ez az oktatóanyag bemutatja, hogyan kábelezheti a hálózati kapcsolatokat egy Azure FXT Edge Filer hardvercsomóponthoz.
 
 Az oktatóanyag során a következőket fogja elsajátítani: 
 
 > [!div class="checklist"]
-> * Hálózati kábel típusának kiválasztása a környezethez
-> * Azure FXT Edge Filer-csomópont összekötése az adatközpont-hálózathoz
-> * Kábelek továbbítása a kábeles felügyeleti ARM használatával (CMA)
-> * A csatlakoztatott eszköz áramellátásának csatlakoztatása és bekapcsolása
+> * Hogyan válasszuk ki a hálózati kábel típusát a környezetben
+> * Azure FXT Edge filer csomópont csatlakoztatása az adatközponti hálózathoz
+> * A kábelek átvezetése a kábelkezelő karon (CMA)
+> * Hogyan csatlakoztassuk az áramot a kínzott eszközhöz, és kapcsoljuk be
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt az Azure FXT Edge Filer-t a standard Equipment rackbe kell telepíteni. A CMA a Filer csomópontra kell telepíteni. 
+Az oktatóanyag megkezdése előtt az Azure FXT Edge Filer kell telepíteni egy szabványos berendezés rack. A CMA-t telepíteni kell a fájlkezelő csomópontra. 
 
 ## <a name="identify-ports"></a>Portok azonosítása
 
-Azonosítsa az Azure FXT Edge-Filer hátoldalán található különféle portokat. 
+Azonosítsa a különböző portokat az Azure FXT Edge Filer hátoldalán. 
  
-![Kábeles eszköz hátoldala](media/fxt-back-annotated.png)
+![Kábeles eszköz háttere](media/fxt-back-annotated.png)
 
 ## <a name="cable-the-device"></a>Az eszköz bekábelezése
 
-* A [hálózati portok](#network-ports)című témakörben leírtak szerint kapcsolja össze az RJ-45 portokat az adatközpont hálózati forrásával.  
-* Biztonságos DHCP-kiszolgálóval biztonságosan összekapcsolhatja a [iDRAC-portot](#idrac-port) egy különálló hálózattal. 
-* Az USB-portok és a VGA-port használatával kapcsolja össze a billentyűzetet és a figyelőt a csomóponthoz a kezdeti beállításhoz. A csomópont többi portjának aktiválásához el kell indítania a csomópontot, és [be kell állítania egy kezdeti jelszót](fxt-node-password.md) . A részletekért olvassa el az [első jelszavak beállítása](fxt-node-password.md) című leírást. 
+* Csatlakoztassa az RJ-45 portokat az adatközpont hálózati forrásához a [Hálózati portok](#network-ports)című részben leírtak szerint.  
+* Az [iDRAC-port](#idrac-port) biztonságos csatlakoztatása egy biztonságos DHCP-kiszolgálóval rendelkező külön hálózathoz. 
+* Az USB-portok és a VGA-port segítségével csatlakoztasson billentyűzetet és monitort a csomóponthoz a kezdeti beállításhoz. El kell indítania a csomópontot, és [be kell állítania egy kezdeti jelszót](fxt-node-password.md) a csomópont többi portjának aktiválásához. A részletekért olvassa [el a Kezdeti jelszavak beállítása](fxt-node-password.md) című szöveget. 
 
-Ez a cikk azt is ismerteti, hogyan lehet [csatlakoztatni a hálózati](#connect-power-cables) adaptert a csomóponthoz. 
+Ez a cikk azt is ismerteti, hogyan [lehet csatlakoztatni a hálózati árama](#connect-power-cables) a csomóponthoz. 
 
-A cikk azt is ismerteti, hogyan csatlakozhat a csomópont [soros portjához](#serial-port-only-when-necessary), ha szükséges a speciális hibaelhárításhoz. 
+Ez a cikk azt is ismerteti, hogyan csatlakozhat a csomópont [soros portjához,](#serial-port-only-when-necessary)ha ez speciális hibaelhárításhoz szükséges. 
 
 ### <a name="network-ports"></a>Hálózati portok 
 
-Minden egyes Azure FXT Edge Filer-csomópont a következő hálózati portokat tartalmazza: 
+Minden Azure FXT Edge Filer csomópont a következő hálózati portokat tartalmazza: 
 
-* Hat nagy sebességű 25GbE/10 GbE Dual Rate adatport: 
+* Hat nagy sebességű 25GbE/10GbE kettős sebességű adatport: 
 
-  * Négy portot biztosít két kétportos beépülőmodul-hálózati adapter
-  * Az alapszintű hálózati adapter két portot biztosít 
+  * Négy port, amelyet két kétportos beépülő modul hálózati adapter biztosít
+  * Két port által biztosított alaplap mezzanine hálózati adapter 
 
-* Az alapszintű hálózati adapter által biztosított két 1 GbE-port 
+* Két 1GbE port, amelyet az alaplap mezzanine hálózati adaptere biztosít 
 
-A nagy sebességű 25GbE/10 GbE adatportok standard SFP28-kompatibilis ketrecekkel rendelkeznek. Az optikai kábelek használatához telepítenie kell a SFP28 Optical adóvevő modulokat (nincs megadva).
+A nagy sebességű 25GbE/10GbE adatportok szabványos SFP28-kompatibilis ketrecekkel rendelkeznek. Az optikai kábelek használatához telepítenie kell az SFP28 optikai adó-vevő modulokat (nincs megadva).
 
-A 1 GbE-portok standard RJ-45 összekötővel rendelkeznek.
+Az 1GbE portok szabványos RJ-45 csatlakozókkal rendelkeznek.
 
-A támogatott kábelek, kapcsolók és adóvevők teljes listájáért olvassa el a [Cavium FastlinQ 41000 Series együttműködési mátrixot](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+A támogatott kábelek, kapcsolók és adó-vevők teljes listáját a [Cavium FastlinQ 41000 sorozatú együttműködési mátrixban talál.](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)
 
-A rendszerhez használandó kapcsolatok típusa az adatközpont-környezettől függ.
+A rendszerhez használandó kapcsolatok típusa az adatközponti környezettől függ.
 
-* Ha 25GbE hálózathoz csatlakozik, a nagy sebességű adatportok mindegyikét a következő típusú kábelek egyikével kell csatlakoztatni:
+* Ha 25 GbE-hálózathoz csatlakozik, kábelezze az egyes nagy sebességű adatportokat az alábbi kábeltípusok egyikével:
 
-  * Optikai kábel-és SFP28 optikai adóvevő 25GbE vagy kettős sebességű 25GbE/10 GbE képességgel
-  * SFP28-típus 25GbE-kompatibilis közvetlen csatolású twinaxial-kábel
+  * Optikai kábel és SFP28 optikai adó-vevő 25GbE vagy dual rate 25GbE/10GbE képességgel
+  * SFP28 típusú 25GbE-képes közvetlen csatolja twinaxialkábel
 
-* Ha 10 GbE hálózathoz csatlakozik, a nagy sebességű adatportok mindegyikét a következők egyikével csatlakoztathatja: 
+* Ha 10 GbE-hálózathoz csatlakozik, kábelezze az egyes nagy sebességű adatportokat az alábbi adatok egyikével: 
 
-  * Optikai kábel-és SFP28 optikai adóvevő 10 GbE vagy kettős sebességű 25GbE/10 GbE képességgel.
-  * SFP28-típus 25GbE-kompatibilis közvetlen csatolású twinaxial-kábel
-  * SFP28-típus 10 GbE-kompatibilis közvetlen csatolású twinaxial-kábel
+  * Optikai kábel és SFP28 optikai adó-vevő 10GbE vagy dual rate 25GbE/10GbE képesség.
+  * SFP28 típusú 25GbE-képes közvetlen csatolja twinaxialkábel
+  * SFP28 típusú 10GbE-képes közvetlen csatolja twinaxialkábel
 
-* A 1 GbE hálózati portok a fürt felügyeleti forgalmához használatosak. Ellenőrizze az **1 GB-os mgmt hálózati beállítás használatakor** a fürt létrehozásakor, ha egy fizikailag különálló hálózatot szeretne létrehozni a fürt konfigurációjához (lásd: [a felügyeleti hálózat konfigurálása](fxt-cluster-create.md#configure-the-management-network)). A portokat a támogatott kábelek listájában leírtak szerint csatlakoztassa a standard CAT5 vagy a jobb kábellel.
+* Az 1GbE hálózati portok fürtkezelési forgalomhoz használatosak. Ha a fürt létrehozásakor a fürt létrehozásakor ellenőrizze az **1 Gb-os mgmt hálózat használata** jelölőnégyzetet, ha fizikailag különálló hálózatot szeretne létrehozni a fürtkonfigurációhoz [(a leírás: A felügyeleti hálózat konfigurálása).](fxt-cluster-create.md#configure-the-management-network) Kábelezze a portokat szabványos Cat5 vagy jobb kábellel a támogatott kábelek listájában leírtak szerint.
 
-  Ha azt tervezi, hogy a nagy sebességű portokat használja az összes forgalomhoz, a 1 GbE portok nem jelennek meg a kábelen. Alapértelmezés szerint a rendszer nem használja a 1 GbE hálózati portokat, ha a nagyobb sebességű adatport elérhető.  
+  Az 1GbE portokat nem lehet kábelen hagyni, ha a nagy sebességű portokat kívánja használni az összes forgalomhoz. Alapértelmezés szerint az 1GbE hálózati portok nem használatosak, ha nagyobb sebességű adatport áll rendelkezésre.  
 
-### <a name="idrac-port"></a>iDRAC-port  
+### <a name="idrac-port"></a>iDRAC port  
 
-A iDRAC címkével ellátott port egy 1 GB-os kapcsolat, amely lehetővé teszi a kommunikációt a hardverek felügyeletéhez és figyeléséhez használt távelérési vezérlővel. A FXT szoftver az intelligens platform Management felületét (IPMI) használja a vezérlővel kapcsolatos hibaelhárításhoz és helyreállításhoz. A beépített [iDRAC felület](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) segítségével figyelheti a hardvert ezen a porton keresztül. a iDRAC és a IPMI hozzáférés alapértelmezés szerint engedélyezve van. 
+A port feliratú iDRAC egy 1 Gb-os kapcsolat, amely lehetővé teszi a kommunikációt a hardverkezeléséhez és figyeléséhez használt távelérési vezérlővel. Az FXT szoftver az Intelligent Platform Management Interface (IPMI) vezérlőt használja a hibaelhárításhoz és a helyreállításhoz. A beépített [iDRAC-csatoló](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) segítségével figyelheti a hardvert ezen a porton keresztül. Az iDRAC és az IPMI-hozzáférés alapértelmezés szerint engedélyezve van. 
 
 > [!Note]
-> A iDRAC-port megkerülheti az operációs rendszert, és közvetlenül a csomóponton található hardverekkel tud kommunikálni. 
+> Az iDRAC-port megkerülheti az operációs rendszert, és közvetlenül kapcsolatba léphet a csomóponton lévő hardverekkel. 
 
-Ezeket a biztonsági stratégiákat a iDRAC-port csatlakoztatásához és konfigurálásához használhatja:
+Az iDRAC-port csatlakoztatásakor és konfigurálásakor használja ezeket a biztonsági stratégiákat:
 
-* Csak a fürthöz való hozzáféréshez használt adathálózatból fizikailag elkülönített iDRAC-portokat csatlakoztasson a hálózathoz.
-* Minden csomóponton állítson be biztonságos iDRAC rendszergazdai jelszót. Ezt a jelszót kell megadnia, hogy aktiválja a hardver – kövesse a hardver [jelszavainak beállítása](fxt-node-password.md)című témakört.
-* Az alapértelmezett iDRAC-port konfigurációja DHCP és IPv4 protokollt használ az IP-címek hozzárendeléséhez. Győződjön meg arról, hogy a DHCP-környezet jól védett, és hogy a kapcsolatok korlátozottak a DHCP-ügyfelek és a DHCP-kiszolgáló között. (A fürt vezérlőpultja olyan beállításokat tartalmaz, amelyekkel a fürt létrehozása után módosíthatja a csomópontok címe konfigurációs módszerét.)
-* Hagyja a iDRAC portot "dedikált módra" (ez az alapértelmezett beállítás), amely a dedikált RJ-45 portra korlátozza a iDRAC/IPMI hálózati forgalmat.
+* Csak olyan hálózathoz csatlakoztasson iDRAC-portokat, amely fizikailag elkülönül a fürt höz való hozzáféréshez használt adathálózattól.
+* Állítson be egy biztonságos iDRAC rendszergazdai jelszót minden csomóponton. Be kell állítani ezt a jelszót, hogy aktiválja a hardver - kövesse az utasításokat [a Hardver jelszavak beállítása](fxt-node-password.md).
+* Az alapértelmezett iDRAC-portkonfiguráció a DHCP és az IPv4 protokollt használja az IP-címhozzárendeléshez. Győződjön meg arról, hogy a DHCP-környezet jól védett, és hogy a DHCP-ügyfelek és a DHCP-kiszolgáló között korlátozott a kapcsolat. (A fürt vezérlőpultján a csomópontok címkonfigurációs módszerének a fürt létrehozása után módosítható kontitúdóbeállításai tanak.)
+* Hagyja az iDRAC portot "dedikált módra" (az alapértelmezettre), amely korlátozza az iDRAC/IPMI hálózati forgalmat a dedikált RJ-45 portra.
 
-A iDRAC-porthoz nincs szükség nagy sebességű hálózati csatlakozásra.
+Az iDRAC-port nem igényel nagy sebességű hálózati kapcsolatot.
   
 ### <a name="serial-port-only-when-necessary"></a>Soros port (csak szükség esetén)
 
-Bizonyos helyzetekben a Microsoft szolgáltatás és támogatás azt is megtudhatja, hogy egy terminált egy csomópont soros portjához csatlakoztasson a probléma diagnosztizálásához.  
+Bizonyos esetekben előfordulhat, hogy a Microsoft szolgáltatás és támogatás azt mondja, hogy a probléma diagnosztizálásához csatlakoztasson egy terminált egy csomópont soros portjához.  
 
 A konzol csatlakoztatása:
 
-1. Keresse meg a soros (COM1) portot a FXT Edge Filer-csomópontjának hátulján.
-1. A soros portot az ANSI-115200-8N1 konfigurált terminálhoz egy NULL értékű modemes kábellel csatlakoztassa.
-1. Jelentkezzen be a konzolra, és hajtson végre további lépéseket a támogatási munkatársak utasításai szerint.
+1. Keresse meg az FXT Edge Filer csomópont hátulján található soros (COM1) portot.
+1. Null modemkábel lelhető fel a soros port nak az ANSI-115200-8N1-hez konfigurált terminálhoz való csatlakoztatásához.
+1. Jelentkezzen be a konzolra, és hajtsa végre a kisegítő személyzet utasításainak megfelelő egyéb lépéseket.
 
-## <a name="route-cables-in-the-cable-management-arm-cma"></a>Kábelek továbbítása a kábel-felügyeleti ARM-ban (CMA)
+## <a name="route-cables-in-the-cable-management-arm-cma"></a>Útvonalkábelek a kábelkezelő karon (CMA)
 
-Minden Azure FXT Edge Filer-csomópont opcionális kábelkapcsolat-felügyeleti ARM-t tartalmaz. A CMA leegyszerűsíti a kábeles útválasztást, és a kábelek leválasztása nélkül könnyebben elérhetővé teszi az alváz hátoldalát. 
+Minden Azure FXT Edge Filer csomópont hoz egy opcionális kábelkezelő kar. A CMA leegyszerűsíti a kábelvezetést, és megkönnyíti a hozzáférést a ház hátuljához anélkül, hogy le kellene választania a kábeleket. 
 
-Kövesse ezeket az utasításokat a kábelek CMA való átirányításához: 
+Kövesse az alábbi utasításokat a kábelek cma-n keresztül történő átirányításához: 
 
-1. A megadott döntetlen-körbefuttatások használatával a kábeleket a beléptetésük és a kosárból való kilépésük után csomagolja ki, hogy ne zavarja a szomszédos rendszereket (1).
-1. A szolgáltatás pozíciójában a CMA a belső és külső kosaran keresztül irányítja a kábelt (2).
-1. A (3) kábelek biztonságossá tételéhez használja az előtelepített Hook-és loop-szíjat a kosarak bármelyik végén.
-1. Vigye vissza a CMA a tálcán (4).
-1. Telepítse az állapotjelző kábelt a számítógép hátulján, és gondoskodjon arról, hogy a CMA keresztül irányítsa át a kábelt. Csatlakoztassa a kábel másik végét a külső CMA-kosár sarkához (5). 
+1. A mellékelt rögzítőcsomagolások segítségével csomagolja össze a kábeleket, amint belépnek a kosarakba és kilépnek, hogy ne zavarja a szomszédos rendszereket (1).
+1. Ha a CMA üzemi helyzetben van, irányítsa át a kábelköteget a belső és külső kosarakon (2).
+1. A kábelek (3) rögzítéséhez használja az előszerelt horog- és hurokpántokat a kosarak mindkét végén.
+1. Lendítse vissza a CMA-t a tálcára (4).
+1. Szerelje fel az állapotjelző kábelt a rendszer hátuljára, és rögzítse a kábelt a CMA-n keresztül. Csatlakoztassa a kábel másik végét a külső CMA kosár (5) sarkához. 
 
    > [!CAUTION]
-   > Ha el szeretné kerülni a kábelek kitartásával kapcsolatos esetleges károkat, gondoskodjon róla, hogy a kábel a CMA keresztül történő útválasztása után az állapotjelző kábelen lévő összes tartalékidőt védje. 
+   > A kiálló kábelek által okozott esetleges károk elkerülése érdekében biztosítsa az állapotjelző kábel lazaságát, miután ezt a kábelt a CMA-n keresztül irányította. 
 
-![CMA ábrája telepített kábelekkel](media/fxt-install/cma-cabling-400.png)
+![Cma illusztráció kábelekkel felszerelve](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
->  Ha nem telepítette a CMA, használja a Rail csomagban található két Hook-és loop-pántot a kábelek a rendszer hátulján való átirányításához.
+>  Ha nem telepítette a CMA-t, használja a sínkészletben található két horog- és hurokpántot a rendszer hátulján lévő kábelek irányításához.
 > 
->  1. Keresse meg a külső CMA szögletes zárójeleit mindkét rack karimák belső oldalain.
->  2. A kábelek csatlakoztatása óvatosan, a bal és a jobb oldalon lévő rendszerösszekötők törlésével.
->  3. A hookok és a hurkok a rendszer egyes oldalain lévő külső CMA-szögletes zárójeleken keresztül, a kábeles csomagok biztonságossá tételéhez.
+>  1. Keresse meg a külső CMA konzolok a belső oldalán mindkét rack karimák.
+>  2. Óvatosan csomagolja össze a kábeleket, és húzza ki őket a rendszercsatlakozóktól a bal és a jobb oldalra.
+>  3. Fűzze át a kampós és hurkos pántokat a rendszer mindkét oldalán lévő külső CMA konzolokon lévő szerszámozott nyílásokon, hogy biztosítsa a kábelkötegeket.
 > 
->     ![CMA nélkül átirányított kábelek](media/fxt-install/fxt-route-cables-no-cma-400.png)
+>     ![CMA nélkül irányított kábelek](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
-## <a name="about-ip-address-requirements"></a>Az IP-címekre vonatkozó követelmények
+## <a name="about-ip-address-requirements"></a>Az IP-címre vonatkozó követelmények
 
-Az Azure FXT Edge-tárolók hibrid tárolási gyorsítótárában lévő hardveres csomópontok esetén az IP-címeket a fürt szoftvere kezeli.
+Az Azure FXT Edge Filer hibrid tárolási gyorsítótárában lévő hardvercsomópontok esetében az IP-címeket a fürtszoftver kezeli.
 
-Mindegyik csomóponthoz legalább egy IP-cím szükséges, de a csomópontok hozzárendelése akkor történik meg, amikor a fürthöz hozzáadják vagy eltávolítják a csomópontokat. 
+Minden csomóponthoz legalább egy IP-cím szükséges, de a csomópontcímek hozzárendelése a csomópontok fürthöz való hozzáadásakor vagy eltávolításakor lesz hozzárendelve. 
 
-A szükséges IP-címek teljes száma a gyorsítótárat alkotó csomópontok számától függ. 
+A szükséges IP-címek teljes száma a gyorsítótárat felhasználó csomópontok számától függ. 
 
-Konfigurálja az IP-címtartományt a Vezérlőpult szoftver használatával a csomópontok telepítése után. További információért olvassa el [a fürt adatainak összegyűjtése](fxt-cluster-create.md#gather-information-for-the-cluster)című témakört.  
+Konfigurálja az IP-címtartományt a Vezérlőpult szoftverével a csomópontok telepítése után. További információt a [Fürt adatainak összegyűjtése](fxt-cluster-create.md#gather-information-for-the-cluster)című olvasni tud.  
 
-## <a name="connect-power-cables"></a>Energiaellátási kábelek csatlakoztatása
+## <a name="connect-power-cables"></a>Hálózati kábelek csatlakoztatása
 
-Mindegyik Azure FXT Edge Filer-csomópont két tápegységet (PSUs) használ. 
+Minden Egyes Azure FXT Edge Filer csomópont két tápegységet (PSUs) használ. 
 
 > [!TIP] 
-> Ahhoz, hogy kihasználhassa a két redundáns PSUs előnyeit, csatolja az egyes hálózati adaptereket egy energiagazdálkodási egységhez (PDU) egy független ág-áramkörön.  
+> A két redundáns tápegység kihasználásához csatlakoztasson minden hálózati kábelt egy áramelosztó egységhez (PDU) egy független elágazási áramkörön.  
 > 
-> A UPS használatával további védelmet biztosíthat a PDU számára. 
+> Az UPS segítségével a PDU-kat is belehet kapcsolni az extra védelem érdekében. 
 
-1. A mellékelt tápkábelek csatlakoztatása a tápegységekhez az alvázon. Győződjön meg arról, hogy a zsinórok és a tápegységek teljes mértékben vannak összefoglalva. 
-1. Csatlakoztassa a tápkábeleket a berendezések állványon található energiagazdálkodási egységekhez. Ha lehetséges, használjon két különálló áramforrást a két vezeték számára. 
+1. Csatlakoztassa a mellékelt tápkábeleket a tápegységekhez a házban. Győződjön meg arról, hogy a kábelek és a PSUs-ok teljesen be vannak ülve. 
+1. Csatlakoztassa a tápkábeleket a készülékállvány energiaelosztó egységeihez. Ha lehetséges, két külön áramforrást használjon a két kábelhez. 
  
-### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Az Azure FXT Edge Filer-csomópontjának bekapcsolása
+### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Bekapcsolás egy Azure FXT Edge Filer csomóponton
 
-A csomópont bekapcsolásához nyomja meg a rendszer elején található főkapcsoló gombot. A gomb a jobb oldali panelen található. 
+A csomópont bekapcsolásához nyomja meg a rendszer elején található bekapcsológombot. A gomb a jobb oldali kezelőpanelen található. 
 
-### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Azure FXT Edge Filer-csomópont kikapcsolása
+### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Az Azure FXT Edge Filer-csomópont kikapcsolása
 
-A főkapcsoló gomb használatával leállíthatja a rendszer a tesztelés során, és még a fürthöz való hozzáadása előtt. Ha azonban egy Azure FXT Edge Filer-csomópont már használatban van egy fürt részeként, akkor a fürt Vezérlőpultjának szoftverét kell használnia a hardver leállításához. A részletekért olvassa el az [Azure FXT Edge Filer Hardver biztonságos](fxt-power-off.md) kikapcsolását ismertető témakört. 
+A bekapcsológomb segítségével leállíthatja a rendszert a tesztelés során, és mielőtt hozzáadná egy fürthöz. Azonban miután egy Azure FXT Edge Filer csomópont van használatban egy fürt részeként, a fürt vezérlőpult szoftver segítségével állítsa le a hardvert. A részletekért olvassa el [Az Azure FXT Edge Filer hardverbiztonságos kikapcsolása](fxt-power-off.md) című elolvassa. 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután befejezte a hardver kábelezését, kapcsolja be mindegyik csomópontot, majd inicializálja őket a legfelső szintű jelszavaik beállításával. 
+Miután befejezte a hardver kábelezését, kapcsolja be az egyes csomópontokat, és inicializálja őket a gyökérjelszavak beállításával. 
 > [!div class="nextstepaction"]
 > [Kezdeti jelszavak beállítása](fxt-node-password.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának létrehozása
+title: Azure CLI-parancsfájlminta – Azure App Configuration Store létrehozása
 titleSuffix: Azure App Configuration
-description: Az Azure CLI-szkript használata Azure-alkalmazás konfigurációs tárolójának létrehozásához
+description: Az Azure CLI Script használata az Azure App Configuration Store létrehozásához
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,15 +9,15 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77623080"
 ---
-# <a name="create-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának létrehozása
+# <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration Store létrehozása
 
-Ez a példa az Azure app Configuration új példányát hozza létre egy új erőforráscsoporthoz.
+Ez a mintaparancsfájl az Azure App Configuration új példányát hozza létre egy új erőforráscsoportban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,16 +64,16 @@ Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ezt az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy új erőforráscsoport és egy alkalmazás-konfigurációs tároló létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja egy új erőforráscsoport és egy alkalmazáskonfigurációs tár létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Létrehoz egy alkalmazás-konfigurációs tároló erőforrást. |
-| [az appconfig hitelesítőadat-lista](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Az alkalmazás konfigurációs tárolójának hozzáférési kulcsainak listázása. |
+| [az appconfig létrehozása](/cli/azure/appconfig#az-appconfig-create) | Létrehoz egy alkalmazáskonfigurációs tároló erőforrást. |
+| [az appconfig hitelesítő adatok listája](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Listalista egy alkalmazáskonfigurációs tároló hozzáférési kulcsainak listázása. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure app CONFIGURATION CLI-mintákban](../cli-samples.md)találhatók.
+További alkalmazáskonfigurációs CLI-parancsfájlminták találhatók az [Azure App Konfigurációs CLI-mintáiban.](../cli-samples.md)

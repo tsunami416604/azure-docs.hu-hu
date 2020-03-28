@@ -1,17 +1,17 @@
 ---
-title: Function-alkalmazás létrehozása csatlakoztatott tárolóval – Azure CLI
+title: Függvényalkalmazás létrehozása csatlakoztatott tárterülettel - Azure CLI
 description: Azure CLI-példaszkript – Egy Azure Storage-hoz kapcsolódó Azure-függvény létrehozása
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 833b9223d473c8bfc62485e9e47ba662a4f0e154
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75922671"
 ---
-# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Function-alkalmazás létrehozása névvel ellátott Storage-fiókkal létesített kapcsolatban 
+# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Függvényalkalmazás létrehozása elnevezett tárfiók-kapcsolattal 
 
 Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, amelyet hozzákapcsol egy Azure Storage-fiókhoz. A létrehozott alkalmazásbeállítás, amely a kapcsolatot tartalmazza, egy [tárolási eseményindítóval vagy kötéssel](../functions-bindings-storage-blob.md) együtt használható. 
 
@@ -37,11 +37,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot egy helyen. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Tárfiók létrehozása. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../functions-scale.md#consumption-plan). |
-| [az Storage Account show-kapcsolat-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | Lekéri a fiók kapcsolati sztringjét. |
-| [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | A függvény alkalmazásban beállíthatja a kapcsolatok karakterláncát. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [felhasználási tervben.](../functions-scale.md#consumption-plan) |
+| [az tárfiók show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | Lekéri a fiók kapcsolati sztringjét. |
+| [az functionapp konfigurációs alkalmazásbeállítások készlete](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | A kapcsolati karakterláncot alkalmazásbeállításként állítja be a függvényalkalmazásban. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI parancsfájl-minta – virtuális gép létrehozása VHD-vel
+title: Azure CLI-parancsfájlminta – Virtuális gép létrehozása virtuális merevlemez-szolgáltatással
 description: Azure CLI-példaszkript – Virtuális gép létrehozása virtuális merevlemezzel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,10 +17,10 @@ ms.date: 03/09/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 16f4e3e153cbc02f8626199d168d069add48e4b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037668"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Virtuális gép létrehozása virtuális merevlemezzel
@@ -64,7 +64,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Létrehozza a virtuális gépeket. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | Lekéri a létrehozott virtuális gép IP-címét. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

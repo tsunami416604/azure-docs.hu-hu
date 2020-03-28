@@ -9,13 +9,13 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67179053"
 ---
-Két címkét egy erőforráscsoport hozzáadásához használja a [Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) parancsot:
+Ha két címkét szeretne hozzáadni egy erőforráscsoporthoz, használja a [Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) parancsot:
 
 ```azurepowershell-interactive
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="Test" }
@@ -86,7 +86,7 @@ Ha több értéket szeretne kombinálni egyetlen címkében, használjon JSON-sz
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
 ```
 
-Több értékkel rendelkező új címke hozzáadása a meglévő címkéket elvesztése nélkül, kell kérnie a meglévő címkéket, egy JSON-karakterlánc használata az új címkét, és alkalmazza újra beállításokat a gyűjtemény címkék:
+Ha a meglévő címkék elvesztése nélkül szeretne több értéket felhozni egy új címkét, be kell olvasnia a meglévő címkéket, JSON-karakterláncot kell használnia az új címkéhez, és újra alkalmaznia kell a címkék gyűjteményét:
 
 ```azurepowershell-interactive
 # Get existing tags and add a new tag

@@ -1,33 +1,36 @@
 ---
-title: Azure PowerShell minták a Azure Cosmos DB-MongoDB API-hoz
-description: A Azure PowerShell minták beszerzése különböző gyakori feladatok végrehajtásához Azure Cosmos DB API-MongoDB
+title: Azure PowerShell-minták az Azure Cosmos DB-hoz – MongoDB API
+description: Az Azure PowerShell-minták beszerezése különböző gyakori feladatok elvégzéséhez az Azure Cosmos DB MongoDB-hoz való API-jában
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: ca93b4fa85f5ef3ab87d108242e9cbfbd12036ab
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 810161268df405d84f6c190d4d7f3b67f2a1def8
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521863"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366208"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure PowerShell minták a Azure Cosmos DB MongoDB API-hoz
+# <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure PowerShell-minták az Azure Cosmos DB MongoDB API-hoz
 
-A következő táblázat a MongoDB API-hoz Azure Cosmos DB Azure PowerShell parancsfájlokra mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat az Azure Cosmos DB MongoDB API-hoz való Azure PowerShell-parancsfájlok mintájára mutató hivatkozásokat tartalmaz.
 
 > [!NOTE]
-> Jelenleg a PowerShell, a CLI és a Resource Manager-sablonok használatával csak a 3,2-es verziót hozhatja létre (azaz a `*.documents.azure.com`) Azure Cosmos DB API-ját használó MongoDB. A fiókok 3,6-es verziójának létrehozásához használja a Azure Portal helyet.
+> Jelenleg csak 3.2-es verziót (azaz a végpontot `*.documents.azure.com`használó, formátumú fiókokat) hozhat létre az Azure Cosmos DB MongoDB-fiókokapi-jának PowerShell-, CLI- és Erőforrás-kezelő-sablonok használatával. A fiókok 3.6-os verziójának létrehozásához használja inkább az Azure Portalt.
+
+> [!NOTE]
+> A minták [az Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használnak. Kérjük, `Az.CosmosDB` vegye figyelembe, hogy a parancsmagok továbbra is előzetes verzióban vannak, és a kiadás előtt változhatnak. Kérjük, rendszeresen ellenőrizze a frissítéseket. `Az.CosmosDB`
 
 | | |
 |---|---|
-|[Fiók, adatbázis és gyűjtemény létrehozása](scripts/powershell/mongodb/ps-mongodb-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot,-adatbázist és-gyűjteményt. |
-|[Adatbázisok vagy gyűjtemények listázása és lekérése](scripts/powershell/mongodb/ps-mongodb-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy gyűjtemény listázása vagy beolvasása. |
-|[RU/s beolvasása](scripts/powershell/mongodb/ps-mongodb-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy adatbázishoz vagy gyűjteményhez tartozó RU/s beszerzése. |
-|[RU/s frissítése](scripts/powershell/mongodb/ps-mongodb-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Az RU/s frissítése egy adatbázishoz vagy gyűjteményhez. |
-|[Fiók frissítése vagy régió hozzáadása](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Régió hozzáadása Cosmos-fiókhoz. A más fiók tulajdonságainak módosítására is használható, de a régiókban lévő módosításoktól el kell különíteni őket. |
-|[Feladatátvételi prioritás módosítása vagy feladatátvételi trigger](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egy Azure Cosmos-fiók regionális feladatátvételi prioritásának módosítása vagy manuális feladatátvétel indítása. |
-|[Fiók kulcsai vagy a kapcsolatok karakterláncai](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Elsődleges és másodlagos kulcsok, a kapcsolatok karakterláncának beolvasása vagy egy Azure Cosmos-fiókhoz tartozó fiók kulcsának újragenerálása. |
-|[Cosmos-fiók létrehozása IP-tűzfallal](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy Azure Cosmos-fiókot, amelyen engedélyezve van az IP-tűzfal. |
+|[Fiók, adatbázis és gyűjtemény létrehozása](scripts/powershell/mongodb/ps-mongodb-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy Azure Cosmos-fiókot, adatbázist és gyűjteményt. |
+|[Adatbázisok vagy gyűjtemények listázása vagy beírása](scripts/powershell/mongodb/ps-mongodb-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy gyűjtemény listázása vagy begyűjtése. |
+|[Ru/s beszerezni](scripts/powershell/mongodb/ps-mongodb-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ru/s beszerezni e-műveleteket egy adatbázishoz vagy gyűjteményhez. |
+|[Ru/s frissítése](scripts/powershell/mongodb/ps-mongodb-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adatbázis vagy gyűjtemény RU/s frissítése. |
+|[Fiók frissítése vagy régió hozzáadása](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Adjon hozzá egy régiót egy Cosmos-fiókhoz. Más fióktulajdonságok módosítására is használható, de ezeknek el kell különedniük a régiók változásaitól. |
+|[Feladatátvételi prioritás módosítása vagy eseményindító feladatátvétel](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Módosítsa az Azure Cosmos-fiók területi feladatátvételi prioritását, vagy indítson el egy manuális feladatátvételt. |
+|[Fiókkulcsok vagy kapcsolati karakterláncok](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Elsődleges és másodlagos kulcsok, kapcsolati karakterláncok vagy egy Azure Cosmos-fiók kulcsának újragenerálása. |
+|[Cosmos-fiók létrehozása IP tűzfallal](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy Azure Cosmos-fiókot, ha engedélyezve van az IP-tűzfal. |
 |||

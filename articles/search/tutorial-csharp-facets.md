@@ -1,7 +1,7 @@
 ---
-title: C#oktatóanyag a navigálást segítő aspektusok használatáról
+title: C# bemutató a laptatok használatával a navigáció elősegítésére
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag a "keresési eredmények tördelése – Azure Cognitive Search" projektre épül, és dimenziós navigálást is felvehet. Ebből a témakörből megtudhatja, hogyan használhatók a keresések egyszerű szűkítéséhez.
+description: Ez az oktatóanyag a "Keresési eredmények tördelés – Azure Cognitive Search" projektre épül, amellyel hozzáadhat a keresési adatokhoz. Ismerje meg, hogyan használható a facets segítségével könnyen szűkíti a keresést.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77121566"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#Oktatóanyag: a navigálást segítő aspektusok használata – Azure Cognitive Search
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# oktatóanyag: A navigáció támogatásához használjon aspektusait - Azure Cognitive Search
 
-Az aspektusok a navigáláshoz nyújtanak segítséget azáltal, hogy a felhasználó számára a keresésre mutató hivatkozásokat adnak meg. A dimenziók az adathalmazok (például a kategória, vagy egy adott szolgáltatás, a mintaadatok) attribútumai.
+A facet-ek a navigáció elősegítésére szolgálnak, azáltal, hogy a felhasználó számára egy sor hivatkozást biztosítanak a keresés összpontosítására. A facets az adatok attribútumai (például egy szálloda kategóriája vagy egy adott funkciója a mintaadatokban).
 
-Ez az oktatóanyag az [ C# oktatóanyagban létrehozott lapozási projektre épül: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
+Ez az oktatóanyag a C# oktatóanyagban létrehozott lapozási projektre [épül: Keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Modell tulajdonságainak beállítása _IsFacetable_
-> * Face-Navigálás hozzáadása az alkalmazáshoz
+> * Modelltulajdonságok beállítása _IsFacetable_ modellként
+> * A felhasználók facet-navigációjának hozzáadása az alkalmazáshoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-Az [ C# oktatóanyag: keresési eredmények tördelése – az Azure Cognitive Search-](tutorial-csharp-paging.md) projekt üzembe helyezése folyamatban van. A projekt lehet saját verziója, vagy a GitHubról telepítheti: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+A [C# oktatóanyag: Keresési eredmények tördelése - Azure Cognitive Search](tutorial-csharp-paging.md) projekt, és fut. Ez a projekt lehet a saját verziója, vagy telepítheti a GitHubról: [Az első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="set-model-properties-as-isfacetable"></a>Modell tulajdonságainak beállítása IsFacetable
+## <a name="set-model-properties-as-isfacetable"></a>Modelltulajdonságok beállítása IsFacetable modellként
 
-Ahhoz, hogy egy Model tulajdonságot a faced keresési szolgáltatásban lehessen elhelyezni, a címkének **IsFacetable**kell lennie.
+Ahhoz, hogy egy modelltulajdonság egy facet keresésben legyen, meg kell **címkézni isFacetable**.
 
-1. Vizsgálja meg a **szállodai** osztályt. A **Kategóriák** és **címkék**például **IsFacetable**vannak megjelölve, de a **pezsgő** és a **Leírás** nem. 
+1. Vizsgálja meg a **hotel** osztály. **A kategória** és a **címkék**például **IsFacetable**címkével vannak ellátva, de **a HotelName** és **a Description** nem. 
 
     ```cs
     public partial class Hotel
@@ -82,40 +82,40 @@ Ahhoz, hogy egy Model tulajdonságot a faced keresési szolgáltatásban lehesse
     }
     ```
 
-2. Az oktatóanyag részeként nem módosítunk címkéket, ezért a hotel.cs fájl változatlan marad.
+2. Nem fogunk módosítani semmilyen címkék részeként ez a bemutató, így zárja be a hotel.cs fájl változatlan.
 
     > [!Note]
-    > A dimenziós keresés hibát jelez, ha a keresésben kért mező nincs megfelelően címkézve.
+    > A facet keresés hibát okoz, ha a keresésben kért mező nincs megfelelően címkézve.
 
 
-## <a name="add-facet-navigation-to-your-app"></a>Face-Navigálás hozzáadása az alkalmazáshoz
+## <a name="add-facet-navigation-to-your-app"></a>A felhasználók facet-navigációjának hozzáadása az alkalmazáshoz
 
-Ebben a példában engedélyezzük a felhasználó számára, hogy kiválassza az eredmények közül az egyik kategóriát, vagy egy rekreációs elemet. A felhasználó egy adott keresési szöveg beírásával indul el, majd leszűkítheti a keresés eredményét egy kategória kiválasztásával, és az eredményeket tovább szűkítheti a megfelelőség kiválasztásával, vagy először kiválaszthatja a megfelelőt (a megrendelés nem fontos).
+Ebben a példában lehetővé tesszük a felhasználó számára, hogy kiválasszon egy szállodai kategóriát vagy egy kényelmi kategóriát az eredmények bal oldalán látható linkek listáiból. A felhasználó egy keresési szöveg beírásával kezdi, majd szűkítheti a keresés eredményeit egy kategória kiválasztásával, és tovább szűkítheti az eredményeket a kényelem kiválasztásával, vagy először kiválaszthatja a kényelmét (a sorrend nem fontos).
 
-Szükség van a vezérlőre, hogy átadja az aspektusok listáját a nézetnek. Meg kell őrizni a felhasználói beállításokat a keresés folyamata során, és ismét az ideiglenes tárterületet használjuk az adatmegőrzési mechanizmusként.
+Szükségünk van a vezérlő, hogy adja át a listákat a facets a nézetben. Meg kell tartani a felhasználó választás, mint a keresés előrehaladtával, és újra, használjuk ideiglenes tárolás, mint a mechanizmus az adatok megőrzésére.
 
-![A "pool" keresésének szűkítése a facet navigációs használatával](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
+![A "pool" keresésének szűkítése a facet navigációval](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
-### <a name="add-filter-strings-to-the-searchdata-model"></a>Szűrő sztringek hozzáadása a SearchData-modellhez
+### <a name="add-filter-strings-to-the-searchdata-model"></a>Szűrőkarakterláncok hozzáadása a SearchData modellhez
 
-1. Nyissa meg a SearchData.cs fájlt, és adja hozzá a karakterlánc-tulajdonságokat a **SearchData** osztályhoz, hogy a Dimenzióérték-szűrő sztringek tárolásához.
+1. Nyissa meg a SearchData.cs fájlt, és adjon hozzá karakterlánctulajdonságokat a **SearchData** osztályhoz a laptszűrő karakterláncok megtartásához.
 
     ```cs
         public string categoryFilter { get; set; }
         public string amenityFilter { get; set; }
     ```
 
-### <a name="add-the-facet-action-method"></a>A dimenzió műveleti módszer hozzáadása
+### <a name="add-the-facet-action-method"></a>A Facet művelet módszerének hozzáadása
 
-A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van szüksége a meglévő **index** és **Page** műveletekhez, valamint a **RunQueryAsync** metódus frissítéseihez.
+Az otthoni vezérlőnek szüksége van egy új műveletre, **a Facet**-re, és frissíti a meglévő **Index** és **Lap** műveleteket, valamint a **RunQueryAsync** metódus frissítéseit.
 
-1. Nyissa meg a Kezdőlap vezérlő fájlt, és adja hozzá a **using** utasítást, hogy engedélyezze a **List&lt;string&gt;** -összeállítást.
+1. Nyissa meg az otthoni vezérlőfájlt, és adja hozzá a **using** utasítást a **&lt;Lista&gt; karakterlánc-szerkezet** engedélyezéséhez.
 
     ```cs
     using System.Collections.Generic;
     ```
 
-2. Cserélje le az **index (SearchData Model)** műveleti metódusát.
+2. Cserélje le az **Index(SearchData modell)** műveletmetódust.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -140,7 +140,7 @@ A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van
         }
     ```
 
-3. Cserélje le az **oldal (SearchData Model)** műveleti metódusát.
+3. Cserélje le a **Page(SearchData modell)** műveletmódszert.
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -187,7 +187,7 @@ A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van
         }
     ```
 
-4. Adjon hozzá egy **dimenziós (SearchData Model)** műveleti metódust, amely akkor aktiválódik, amikor a felhasználó rákattint egy aspektus hivatkozására. A modell tartalmazni fog egy kategória keresési szűrőt vagy egy rekreációs keresési szűrőt. Felveheti a lapot az **oldal** művelet után.
+4. Adjon hozzá egy **Facet (SearchData modell)** műveletmódszert, amelyakkor aktiválódik, amikor a felhasználó egy facet linkre kattint. A modell kategóriakeresési szűrőt vagy egy kényelmi keresési szűrőt fog tartalmazni. Talán add hozzá az **Oldal** művelet után.
 
     ```cs
         public async Task<ActionResult> Facet(SearchData model)
@@ -230,9 +230,9 @@ A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van
 
 ### <a name="set-up-the-search-filter"></a>A keresési szűrő beállítása
 
-Ha a felhasználó egy adott dimenziót választ ki, például az **üdülő és a fürdő** kategóriára kattint, akkor csak az ebben a kategóriában megadott szállodák lesznek visszaadva az eredmények között. Ha így szeretne szűkíteni egy keresést, be kell állítania egy _szűrőt_.
+Ha például egy felhasználó kiválaszt egy bizonyos adértéket, az **Üdülő és gyógyfürdő** kategóriára kattint, akkor csak az ebben a kategóriában megadott szállodákat kell visszaadni az eredményekközött. A keresés ily módon való szűkítéséhez be kell állítanunk egy _szűrőt._
 
-1. Cserélje le a **RunQueryAsync** metódust a következő kódra. Elsődlegesen egy kategória-szűrő sztringet és egy rekreációs szűrő sztringet vesz igénybe, és beállítja a **SearchParameters** **Filter** paraméterét.
+1. Cserélje le a **RunQueryAsync** metódust a következő kódra. Elsősorban egy kategóriaszűrő-karakterláncot és egy kényelmi szűrőkarakterláncot vesz igénybe, és beállítja a SearchParameters **szűrő** **paraméterét.**
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
@@ -316,13 +316,13 @@ Ha a felhasználó egy adott dimenziót választ ki, például az **üdülő és
         }
     ```
 
-    Hozzáadta a **Kategória** és a **címkék** tulajdonságokat a **kijelölni** kívánt elemek listájához. Ehhez a feltételhez nem szükséges, hogy a Face navigáció működjön, de ezt az információt használjuk a megfelelő szűrés ellenőrzéséhez.
+    Hozzáadtuk a **Kategória** és **címkék** tulajdonságokat a visszaadandó **elemek kijelölésének** listájához. Ez a kiegészítés nem követelmény a kiskapcsolati navigáció működéséhez, de ezt az információt arra használjuk, hogy ellenőrizzük, hogy megfelelően szűrünk-e.
 
-### <a name="add-lists-of-facet-links-to-the-view"></a>A nézethez tartozó aspektusi hivatkozások listáját adja hozzá
+### <a name="add-lists-of-facet-links-to-the-view"></a>A nézethez hivatkozási listák hozzáadása
 
-A nézet jelentős változásokat fog igényelni. 
+A nézet jelentős változásokat igényel. 
 
-1. Először nyissa meg a Hotels. css fájlt (a WWWroot/CSS mappában), és adja hozzá a következő osztályokat.
+1. Kezdje a hotels.css fájl megnyitásával (a wwwroot/css mappában), és adja hozzá a következő osztályokat.
 
     ```html
     .facetlist {
@@ -344,7 +344,7 @@ A nézet jelentős változásokat fog igényelni.
     }
     ```
 
-2. A nézet esetében a kimenetet egy táblázatba rendezjük, hogy a bal oldali dimenziók listáit szépen igazítsa, a jobb oldalon pedig az eredményeket. Nyissa meg az index. cshtml fájlt. Cserélje le a HTML &lt;törzs&gt; címkék teljes tartalmát a következő kódra.
+2. A nézet, mi szervezi a kimenetet egy táblázatba, hogy szépen összehangolják a facet listák a bal oldalon, és az eredmények a jobb oldalon. Nyissa meg az index.cshtml fájlt. Cserélje le a HTML &lt;&gt; törzscímkék teljes tartalmát a következő kódra.
 
     ```cs
     <body>
@@ -524,40 +524,40 @@ A nézet jelentős változásokat fog igényelni.
     </body>
     ```
 
-    Figyelje meg a **HTML. ActionLink** hívás használatát. Ez a hívás érvényes szűrési karakterláncokat kommunikál a vezérlővel, amikor a felhasználó egy aspektus hivatkozásra kattint. 
+    Figyelje meg a **Html.ActionLink** hívás használatát. Ez a hívás érvényes szűrőkarakterláncokat kommunikál a vezérlővel, amikor a felhasználó egy facet hivatkozásra kattint. 
 
 ### <a name="run-and-test-the-app"></a>Az alkalmazás futtatása és tesztelése
 
-A felhasználó aspektusának az az előnye, hogy egyetlen kattintással szűkítheti a keresést, amelyet a következő sorozatban megjeleníthet.
+Az előnye, hogy a facet navigáció a felhasználó számára, hogy szűkítheti keresések egyetlen kattintással, amit meg tudunk mutatni a következő sorrendben.
 
-1. Futtassa az alkalmazást, és írja be a "repülőtér" kifejezést a keresett szövegként. Győződjön meg arról, hogy a dimenziók listája a bal oldalon látható. Ezek az aspektusok mind azokra a szállodákra vonatkoznak, amelyekben szerepelnek a "Airport" szövegük a szöveges adattárban.
+1. Futtassa az alkalmazást, írja be a "repülőtér" kifejezést keresési szövegként. Ellenőrizze, hogy a lapttartalmazók listája szépen megjelenik-e a bal oldalon. Ezek az aspektusak mind olyan szállodákra vonatkoznak, amelyek szöveges adataikban "repülőtér" szerepel, és megszámolják, hogy milyen gyakran fordulnak elő.
 
-    ![A "repülőtér" keresésének szűkítése a Face navigációs használatával](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
+    ![A "repülőtér" keresésének szűkítése a "repülőtér" leszűkítéséhez](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-2. Kattintson az **üdülő és a fürdő** kategóriára. Ellenőrizze, hogy az összes eredmény ebben a kategóriában van-e.
+2. Kattintson az **Üdülő és gyógyfürdő** kategóriára. Ellenőrizze, hogy minden eredmény ebbe a kategóriába tartozik-e.
 
-    ![A keresés szűkítése a "Resort and Spa" kifejezésre](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
+    ![A keresés szűkítése az "Üdülő és gyógyfürdő" kifejezésre](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-3. Kattintson a **kontinentális reggeli** élvezete lehetőségre. Ellenőrizze, hogy az összes eredmény továbbra is az "üdülőhely és Spa" kategóriában van-e, a kiválasztott rekreációval együtt.
+3. Kattintson a **kontinentális reggeli** kényelem. Ellenőrizze, hogy az összes eredmény továbbra is a "Resort and Spa" kategóriában van-e, a kiválasztott kényelemmel.
 
-    ![A keresés szűkítése a "kontinentális reggeli" kifejezésre](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
+    ![A keresés leszűkítése a "kontinentális reggelire"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-4. Próbáljon meg más kategóriát kijelölni, majd egy élvezetet, és tekintse meg a szűkített eredményeket. Ezután próbálkozzon a másik megoldással, egy kivezetővel, majd egy kategóriával.
+4. Próbáljon kijelölni egy másik kategóriát, majd egy kényelmi elemet, és tekintse meg a szűkülő eredményeket. Akkor próbáld meg fordítva, egy kényelem, majd egy kategória.
 
     >[!Note]
-    > Ha egy dimenziós listában (például kategória) végez egy kijelölést, akkor a rendszer felülírja az összes korábbi kijelölést a Kategória listában.
+    > Ha egy pontlista (például a kategória) egy kijelölést hoz végre, felülírja a kategórialistán belüli korábbi kijelöléseket.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Vegye figyelembe az alábbi elvihetőket a projektből:
+Vegye figyelembe a következő elvihető ételek ebből a projektből:
 
-* Minden tulajdonságot **IsFacetable**kell megjelölni, ha azokat bele kell foglalni a facet navigationbe.
-* A facet Navigation egyszerűen és intuitív módon teszi lehetővé a keresés szűkítéséhez.
-* A dimenziós Navigálás a legmegfelelőbb szakaszokra oszlik (a szállodák kategóriái, a szállodai szolgáltatások, az árak, a minősítési tartományok stb.), és mindegyik szakasz egy megfelelő fejléccel rendelkezik.
+* Elengedhetetlen, hogy minden tulajdonságot **IsFacetable-ként**jelöljön meg, ha azokat a facet navigációba szeretnék foglalni.
+* A facet navigáció egyszerű és intuitív módot biztosít a felhasználó számára a keresés szűkítéséhez.
+* A facet navigáció leginkább szakaszokra van osztva (hotelkategóriák, szállodai szolgáltatások, ártartományok, minősítési tartományok stb.), minden egyes szakasz megfelelő fejlécsel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő oktatóanyagban megtekintjük az eredmények sorrendjét. Ezen a ponton az eredmények egyszerűen sorrendbe rendezhetők az adatbázisban található sorrendben.
+A következő oktatóanyagban megvizsgáljuk a rendelési eredményeket. Az eredmények et addig a pontig egyszerűen abban a sorrendben rendezi a sorrend, ahogy azok az adatbázisban találhatók.
 
 > [!div class="nextstepaction"]
-> [C#Oktatóanyag: az eredmények rendezése – Azure Cognitive Search](tutorial-csharp-orders.md)
+> [C# oktatóanyag: Az eredmények sorrendje - Azure Cognitive Search](tutorial-csharp-orders.md)

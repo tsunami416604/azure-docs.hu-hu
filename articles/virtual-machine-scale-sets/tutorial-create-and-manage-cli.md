@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 27f216a3cc101d4241fb8d30d27999a0397356dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277220"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062810"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI használatával
-A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Virtuálisgép-méretezési csoport létrehozása és kapcsolódás a csoporthoz
@@ -25,14 +25,14 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 > * Méretezési csoport manuális méretezése
 > * Méretezési csoportra vonatkozó gyakori felügyeleti feladatok végrehajtása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.29-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuálisgép-méretezési csoport létrejötte előtt létre kell hozni. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus* régióban. 
 
 ```azurecli-interactive
@@ -69,7 +69,7 @@ az vmss list-instances \
 
 Az alábbi példa kimenetében két virtuálisgép-példány látható a méretezési csoportban:
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -100,7 +100,7 @@ az vmss list-instance-connection-info \
 
 Az alábbi példakimeneten a példány neve, a terheléselosztó nyilvános IP-címe és a portszám látható, amelyeket a NAT-szabályok a forgalom továbbításához használnak:
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -109,13 +109,13 @@ Az alábbi példakimeneten a példány neve, a terheléselosztó nyilvános IP-c
 
 SSH-n keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a nyilvános IP-címét és portszámát a `-p` paraméterrel azt ezt megelőző parancsban látható módon:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 A virtuálisgép-példányba történő bejelentkezést követően szükség szerint manuális konfigurációs módosításokat hajthat végre. Egyelőre normál módon zárja be az SSH-munkamenetet:
 
-```bash
+```console
 exit
 ```
 
@@ -129,7 +129,7 @@ az vm image list --output table
 
 Az alábbi példa kimenetében az Azure-beli leggyakoribb virtuálisgép-rendszerképek láthatók. Az *UrnAlias* paraméter segítségével adható meg ezen gyakori rendszerképek egyike a méretezési csoport létrehozása során.
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -153,7 +153,7 @@ az vm image list --offer CentOS --all --output table
 
 Az alábbi összevont kimenetben néhány elérhető CentOS 7.3 rendszerkép látható:
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -184,7 +184,7 @@ A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példán
 ### <a name="vm-instance-sizes"></a>A virtuálisgép-példányok mérete
 Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek alapján kategorizálja.
 
-| Type (Típus)                     | Gyakori méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -202,7 +202,7 @@ az vm list-sizes --location eastus --output table
 
 A kimenet a következő sűrített példához hasonló, amelyben az egyes virtuálisgép-méretekhez hozzárendelt erőforrások láthatók:
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168
@@ -294,7 +294,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag az Azure CLI néhány alapszintű méretezésicsoport-létrehozási és -kezelési műveletét mutatta be:
 
 > [!div class="checklist"]

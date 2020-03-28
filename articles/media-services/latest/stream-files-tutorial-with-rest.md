@@ -1,6 +1,6 @@
 ---
-title: Távoli fájl és stream kódolása Azure Media Services v3 használatával
-description: Kövesse ennek az oktatóanyagnak a lépéseit egy fájl URL-cím alapján történő kódolásához és a tartalom továbbításához Azure Media Services a REST használatával.
+title: Távoli fájl kódolása és streamelése az Azure Media Services v3-as használatával
+description: Az oktatóanyag lépéseit követve kódoljon egy fájlt egy URL-cím alapján, és streamelje a tartalmat az Azure Media Services használatával a REST használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238635"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472033"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: Távoli fájl kódolása URL alapján és streamelés - REST
 
-Azure Media Services lehetővé teszi a médiafájlok kódolását olyan formátumokba, amelyek számos böngészőben és eszközön játszhatók le. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket.
+Az Azure Media Services lehetővé teszi, hogy médiafájljait olyan formátumokba kódolja, amelyek a legkülönbözőbb böngészőkben és eszközökön is lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket.
 
-Ez az oktatóanyag bemutatja, hogyan kódolhat egy fájlt egy URL-cím alapján, és hogyan továbbíthatja a videót a Azure Media Services REST használatával. 
+Ez az oktatóanyag bemutatja, hogyan kódolhatja a fájlt egy URL-cím alapján, és streamelheti a videót az Azure Media Services használatával REST használatával. 
 
 ![Videó lejátszása](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,13 +42,13 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md).
 
-    Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
+    Az erőforráscsoport nevéhez és a Media Services-fiók nevéhez használt értékek megjegyzése
 
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Kód** a REST plugin vagy **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Postman-fájlok letöltése
 
@@ -58,13 +58,15 @@ Klónozzon egy GitHub-adattárat, amely tartalmazza a Postman-gyűjtemény és -
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>Hozzáférési API
+
+Részletes információt a [Hitelesítő adatok beszedése a Media Services API eléréséhez című témakörben talál.](access-api-howto.md)
 
 ## <a name="configure-postman"></a>Postman konfigurálása
 
 ### <a name="configure-the-environment"></a>A környezet konfigurálása 
 
-1. Nyissa meg a **Poster** alkalmazást.
+1. Nyissa meg a **Postman** alkalmazást.
 2. A képernyő jobb oldalán válassza a **Manage environment (Környezet felügyelete)** lehetőséget.
 
     ![Környezet felügyelete](./media/develop-with-postman/postman-import-env.png)
@@ -75,7 +77,7 @@ Klónozzon egy GitHub-adattárat, amely tartalmazza a Postman-gyűjtemény és -
     > [!Note]
     > Frissítse a hozzáférési változókat a fenti **Hozzáférés a Media Services API-hoz** szakaszban található értékekkel.
 
-7. Kattintson duplán a kiválasztott fájlra, és írja be az [API elérésének](#access-the-media-services-api) lépéseiben lekért értékeket.
+7. Kattintson duplán a kiválasztott fájlra, és írja be az [API elérésének](#access-api) lépéseiben lekért értékeket.
 8. Zárja be a párbeszédpanelt.
 9. Válassza az **Azure Media Service v3 Environment** környezetet a legördülő menüből.
 
@@ -94,19 +96,19 @@ Klónozzon egy GitHub-adattárat, amely tartalmazza a Postman-gyűjtemény és -
 Ebben a szakaszban olyan kéréseket küldünk, amelyek a kódolás és az URL-ek létrehozása szempontjából fontosak, hogy streamelhesse a fájlját. Konkrétan a következő kéréseket küldi el a rendszer:
 
 1. Azure AD-jogkivonat lekérése a szolgáltatásnév hitelesítéséhez
-1. Adatfolyam-végpont elindítása
+1. Streamelési végpont indítása
 2. Kimeneti objektum létrehozása
 3. Átalakítás létrehozása
-4. Feladatok létrehozása
-5. Adatfolyam-kereső létrehozása
-6. A folyamatos átviteli lokátor elérési útjának listázása
+4. Feladat létrehozása
+5. Streamelési lokátor létrehozása
+6. A streamelési lokátor elérési útjainak listázása
 
 > [!Note]
 >  Ez az oktatóanyag azt feltételezi, hogy az összes erőforrást egyedi névvel hozza létre.  
 
 ### <a name="get-azure-ad-token"></a>Azure AD-jogkivonat lekérése 
 
-1. A Poster alkalmazás bal oldali ablakában válassza az "1. lépés: HRE-hitelesítési jogkivonat beszerzése" lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza az "1. lépés: AAD hitelesítéstoken beszereznie" lehetőséget.
 2. Ezután válassza az „Get Azure AD Token for Service Principal Authentication” (Azure AD-jogkivonat lekérése egyszerű szolgáltatásnév hitelesítéséhez) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -121,37 +123,37 @@ Ebben a szakaszban olyan kéréseket küldünk, amelyek a kódolás és az URL-e
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
 
-### <a name="start-a-streaming-endpoint"></a>Adatfolyam-végpont elindítása
+### <a name="start-a-streaming-endpoint"></a>Streamelési végpont indítása
 
-A folyamatos átvitel engedélyezéséhez először el kell indítania azt a [folyamatos átviteli végpontot](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , amelyről továbbítani szeretné a videót.
+A streamelés engedélyezéséhez először el kell indítania azt a [streamelési végpontot,](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) amelyből a videót streamelni szeretné.
 
 > [!NOTE]
-> Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont futó állapotban van.
+> A számlázás csak akkor történik meg, ha a streamelési végpont futó állapotban van.
 
-1. A Poster alkalmazás bal oldali ablakában válassza a "streaming and Live" lehetőséget.
-2. Ezután válassza a "Start Streamvégpontok" lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza a "Streamelés és élő" lehetőséget.
+2. Ezután válassza a "StreamingEndpoint indítása" lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
-    * A rendszer a következő **post** műveletet küldi el:
+    * A rendszer a következő **POST** műveletet küldi el:
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
         ```
-    * Ha a kérelem sikeres, a rendszer a `Status: 202 Accepted` adja vissza.
+    * Ha a kérelem sikeres, a `Status: 202 Accepted` rendszer visszaadja.
 
-        Ez az állapot azt jelenti, hogy a kérelem feldolgozásra lett elfogadva; a feldolgozás azonban nem fejeződött be. A művelet állapotát a `Azure-AsyncOperation` válasz fejlécében szereplő érték alapján kérdezheti le.
+        Ez az állapot azt jelenti, hogy a kérelmet elfogadták feldolgozásra; a feldolgozás azonban nem fejeződött be. A `Azure-AsyncOperation` művelet állapotát a válaszfejléc értéke alapján kérdezheti le.
 
-        Például a következő GET művelet a művelet állapotát adja vissza:
+        Például a következő GET művelet adja vissza a művelet állapotát:
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        Az [aszinkron Azure-műveletek nyomon követése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) című cikk részletesen ismerteti, hogyan követheti nyomon az aszinkron Azure-műveletek állapotát a válaszban visszaadott értékek alapján.
+        A [pálya aszinkron Azure-műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) cikk részletesen ismerteti, hogyan követheti nyomon az aszinkron Azure-műveletek állapotát a válaszban visszaadott értékeken keresztül.
 
 ### <a name="create-an-output-asset"></a>Kimeneti objektum létrehozása
 
 A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a kódolási feladat eredményeit. 
 
-1. A Poster alkalmazás bal oldali ablakában válassza az "eszközök" lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza az "Eszközök" lehetőséget.
 2. Ezután válassza a „Create or update an Asset” (Objektum létrehozása vagy frissítése) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -173,7 +175,7 @@ A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja
 
 ### <a name="create-a-transform"></a>Átalakítás létrehozása
 
-A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha új feladatokat küld minden új videóhoz, akkor ezt a receptet a könyvtárában lévő összes videóra alkalmazza. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
+A tartalmak Media Servicesben történő kódolása és feldolgozása során gyakran előfordul, hogy a kódolási beállításokat receptként adják meg. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Ha minden új videóhoz új állásokat küldesz be, akkor ezt a receptet a könyvtárad összes videójára alkalmazod. A Media Services esetében ezt a receptet **átalakításnak** nevezzük. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat. Az ebben az oktatóanyagban leírt minta meghatároz egy receptet, amely elvégzi a videó kódolását, hogy azt streamelni lehessen többféle iOS- és Android-eszközre. 
 
 Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A kötelező paraméter egy **TransformOutput** objektum. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Az ebben a cikkben leírt minta az **AdaptiveStreaming** nevű beépített előzetes beállítást használja. Az előzetes beállítás a bemeneti videót egy automatikusan létrehozott sávszélességi skálává (sávszélesség–felbontás párokká) kódolja a bemeneti felbontás és sávszélesség alapján, majd ISO MP4-fájlokat hoz létre H.264 kódolású video- és AAC kódolású audiosávokkal, amelyek megfelelnek a sávszélesség–felbontás pároknak. Az előzetes beállítással kapcsolatos információkért tekintse meg a [sávszélességi skálák automatikus létrehozását](autogen-bitrate-ladder.md) ismertető részt.
 
@@ -182,7 +184,7 @@ Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni el�
 > [!Note]
 > [Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás. Ez az oktatóanyag azt feltételezi, hogy az átalakítást egyedi névvel hozza létre.
 
-1. A Poster alkalmazás bal oldali ablakában válassza a "Encoding and Analysis" (kódolás és elemzés) lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza a "Kódolás és elemzés" lehetőséget.
 2. Ezután kattintson a „Create Transform” (Átalakítás létrehozása) elemre.
 3. Kattintson a **Küldés** gombra.
 
@@ -215,9 +217,9 @@ Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni el�
 
 A [feladat](https://docs.microsoft.com/rest/api/media/jobs) a tényleges kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét.
 
-Ebben a példában a feladathoz tartozó bevitel egy HTTPS-URL-cím ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") alapján történik.
+Ebben a példában a feladat bemenete egy HTTPS URL-címen alapul ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
-1. A Poster alkalmazás bal oldali ablakában válassza a "Encoding and Analysis" (kódolás és elemzés) lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza a "Kódolás és elemzés" lehetőséget.
 2. Ezután válassza a „Create or Update Job” (Feladat létrehozása vagy frissítése) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -254,23 +256,23 @@ A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Váróli
 
 #### <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Lásd: [Hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="create-a-streaming-locator"></a>Streamelési lokátor létrehozása
 
-A kódolási feladatok befejezése után a következő lépés az, hogy a videó a kimeneti **eszközön** elérhető legyen az ügyfelek számára a lejátszáshoz. Ezt két lépésben teheti meg: először hozzon létre egy [StreamingLocatort](https://docs.microsoft.com/rest/api/media/streaminglocators), majd a streamelési URL-címeket, amelyeket az ügyfelek használhatnak. 
+A kódolási feladat befejezése után a következő lépés az, hogy a videó a kimeneti **eszköz** elérhetővé az ügyfelek számára a lejátszás. Ezt két lépésben teheti meg: először hozzon létre egy [StreamingLocatort](https://docs.microsoft.com/rest/api/media/streaminglocators), majd a streamelési URL-címeket, amelyeket az ügyfelek használhatnak. 
 
-Az adatfolyam-kereső létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az adatfolyam-kereső azonnal érvényes az API-hívások létrehozása után, és addig tart, amíg meg nem történik a törlés, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat. 
+A streamelési lokátor létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint a streamelési lokátor az API-hívások kezdeményezése után azonnal érvényes, és a törlésig tart, kivéve, ha konfigurálja a választható kezdési és befejezési időpontokat. 
 
-A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben a példában a folyamatos átvitelű (vagy nem titkosított) tartalmakat fogja használni, ezért a rendszer az előre definiált "Predefined_ClearStreamingOnly" folyamatos adatátviteli szabályzatot használja.
+A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben a példában a tiszta (vagy nem titkosított) tartalom streamelése lesz, így az előre definiált titkos adatfolyam-továbbítási házirend "Predefined_ClearStreamingOnly" használatos.
 
 > [!IMPORTANT]
 > Egyéni [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) használata esetén érdemes korlátozott számú szabályzatot létrehoznia a Media Service-fiókhoz, és újra felhasználni őket a StreamingLocator használatakor, amikor ugyanolyan titkosítási beállításokra és protokollokra van szükség. 
 
-A Media Service-fiókhoz tartozik egy kvóta a **folyamatos átviteli szabályzat** bejegyzéseinek számára. Ne hozzon létre új **folyamatos átviteli szabályzatot** minden egyes adatfolyam-keresőhöz.
+A Media Service-fiók rendelkezik kvótával a **streamelési szabályzat-bejegyzések** számára. Nem hozhat létre új **streamelési szabályzatot** minden egyes streamelési lokátorhoz.
 
-1. A Poster alkalmazás bal oldali ablakában válassza a "folyamatos átviteli házirendek és lokátorok" lehetőséget.
-2. Ezután válassza az "adatfolyam-kereső létrehozása (Clear)" lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza a "Streamelési irányelvek és lokátorok" lehetőséget.
+2. Ezután válassza a "Streamelési lokátor létrehozása (törlés)" lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
     * A rendszer a következő **PUT** műveletet küldi el.
@@ -295,9 +297,9 @@ A Media Service-fiókhoz tartozik egy kvóta a **folyamatos átviteli szabályza
 
 #### <a name="list-paths"></a>Elérési utak listázása
 
-Most, hogy létrejött a [folyamatos átviteli lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) , letöltheti a streaming URL-címeket
+Most, hogy létrejött a [streamelési lokátor,](https://docs.microsoft.com/rest/api/media/streaminglocators) lejuthat a streamelési URL-címekre
 
-1. A Poster alkalmazás bal oldali ablakában válassza a "streaming policies" lehetőséget.
+1. A Postman alkalmazás bal oldali ablakában válassza a "Streamelési irányelvek" lehetőséget.
 2. Ezután válassza a „List Paths” (Elérési utak listázása) lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
@@ -348,7 +350,7 @@ Ebben a szakaszban egy HLS-streamelési URL-címet hozunk létre. Az URL-címek 
 
 2. A StreamingEndpoint gazdaneve. Ebben az esetben a név „amsaccount-usw22.streaming.media.azure.net”.
 
-    Az állomásnév beszerzéséhez használhatja a következő GET műveletet:
+    Az állomásnév levételéhez a következő GET műveletet használhatja:
     
     ```
     https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
@@ -366,11 +368,11 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Győződjön meg arról, hogy az adatfolyam- **végpont** , amelyről adatfolyamot szeretne továbbítani, fut.
+> Győződjön meg arról, hogy a **streamelési végpont,** amelyről streamelni szeretne, fut.
 
 Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez. 
 
-1. Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Nyisson meg egy [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)webböngészőt, és keresse meg a ját.
 2. Az **URL:** mezőbe illessze be a létrehozott URL-t. 
 3. Kattintson az **Update Player** (Lejátszó frissítése) elemre.
 
@@ -378,7 +380,7 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>A Media Service-fiók erőforrásainak eltávolítása
 
-Általában törölni kell mindent, kivéve azokat az objektumokat, amelyeket Ön használni szeretne (általában újra kell használni az **átalakításokat**, és meg kell őriznie a **streaming-lokátorokat**stb.). Ha ki szeretné üríteni fiókját a kísérletezés után, töröljön minden erőforrást, amelyet nem szeretne ismét használni.  
+Általában mindent meg kell tisztítania, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra fel használja **az Átalakításokat,** és megfogja tartani **a streamelési lokátorokat**stb.). Ha ki szeretné üríteni fiókját a kísérletezés után, töröljön minden erőforrást, amelyet nem szeretne ismét használni.  
 
 Egy erőforrás törléséhez válassza a „Delete ...” (Törlés) műveletet a törölni kívánt erőforrás alatt.
 
@@ -386,17 +388,17 @@ Egy erőforrás törléséhez válassza a „Delete ...” (Törlés) műveletet
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.  
 
-Hajtsa végre a következő CLI-parancsot:
+Hajtsa végre a következő CLI parancsot:
 
 ```azurecli
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
+## <a name="ask-questions-give-feedback-get-updates"></a>Kérdéseket tehet fel, visszajelzést adhat, frissítéseket kaphat
 
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
+Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

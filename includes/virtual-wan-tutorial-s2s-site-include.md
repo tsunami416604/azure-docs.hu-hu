@@ -9,32 +9,32 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4bcee1097010bb8746b11185a470ca2584485c3f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73488935"
 ---
-1. A virtuális WAN portál lapjának **kapcsolat** szakaszában válassza a **VPN-helyek** lehetőséget a VPN-helyek lap megnyitásához.
+1. A virtuális wan portállapján a **Kapcsolat** szakaszban válassza a **VPN-webhelyek lehetőséget** a VPN-webhelyek lap megnyitásához.
 2. A **VPN-helyek** lapon kattintson a **+Hely létrehozása** elemre.
 
    ![Alapvető beállítások](./media/virtual-wan-tutorial-site-include/basics.png "Alapvető beállítások")
-3. A **VPN-hely létrehozása** lap **alapok** lapján végezze el a következő mezőket:
+3. A **VPN-hely létrehozása** lap Alapjai lapján **hajtsa** végre a következő mezőket:
 
-    * **Régió** – előzőleg helynek nevezzük. Ez az a hely, ahol létre szeretné hozni a hely erőforrását a alkalmazásban.
-    * **Név** – a név, amellyel a helyszíni helyre hivatkozni kíván.
-    * **Eszköz szállítója** – a VPN-eszköz gyártójának neve (például: Citrix, Cisco, Barracuda). Így az Azure csapata jobban megismerheti a környezetet, hogy további optimalizálási lehetőségeket adjon a jövőben, vagy segítséget nyújtson a hibák megoldásához.
-    * **Border Gateway Protocol** – az engedélyezés beállítás azt jelenti, hogy a hely összes kapcsolata BGP engedélyezve lesz. Végül beállítja a BGP-adatokat a VPN-helyről a hivatkozások szakaszban található minden hivatkozáshoz. A BGP virtuális WAN-on való konfigurálása egyenértékű a BGP Azure-beli virtuális hálózati átjáró VPN-en való konfigurálásával. A helyszíni BGP-társ címe nem lehet azonos a VPN által az eszközre vagy a VPN-hely VNet-címére vonatkozó nyilvános IP-címmel. Használjon egy másik IP-címet a VPN-eszközön a BGP-társ IP-címéhez. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Ez azonban nem lehet APIPA (169.254. x. x). Ezt a címeket a helyet képviselő megfelelő VPN-helyen adhatja meg. A BGP-előfeltételeket lásd: [a BGP és az Azure VPN Gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md). A VPN-kapcsolatot bármikor szerkesztheti, hogy a BGP-paramétereket (a kapcsolaton és a AS #-ban) frissítse, ha a VPN-hely BGP-beállítása engedélyezve van.
-    * **Magánhálózati címterület** – a helyszíni helyen található IP-címtartomány. Az erre a címtérre címzett forgalom át lesz irányítva a helyszíni helyre. Erre akkor van szükség, ha a BGP nincs engedélyezve a webhelyhez.
-    * **Hubok** – az a hub, amelyhez csatlakozni szeretne a helyhez. A helyek csak olyan hubokhoz csatlakoztathatók, amelyeken VPN Gateway található. Ha nem látja a hubot, először hozzon létre egy VPN-átjárót az adott központban.
-4. Válassza a **hivatkozások** lehetőséget az ág fizikai hivatkozásaival kapcsolatos információk hozzáadásához. Ha egy virtuális WAN-partner CPE-eszközzel rendelkezik, egyeztessen velük, hogy az információk az Azure-ral együtt, a saját rendszeréből való feltöltésük részeként legyenek-e kicserélve.
+    * **Régió** – korábban helyként emlegetett. Ebben a helyben szeretné létrehozni ezt a helyerőforrást.
+    * **Név** – Az a név, amellyel a helyszíni webhelyre szeretne hivatkozni.
+    * **Eszközszállító** – a VPN-eszköz szállítójának neve (például: Citrix, Cisco, Barracuda). Ezzel segíthet az Azure Team jobban megérteni a környezettovábbi optimalizálási lehetőségek a jövőben, vagy segít a hibaelhárítás.
+    * **Border Gateway Protocol** - Engedélyezése azt jelenti, hogy a helyről származó összes kapcsolat bgp engedélyezve lesz. A Hivatkozások szakaszban a VPN-helyről származó egyes hivatkozásokhoz végül be kell állítania a BGP-adatokat. A BGP konfigurálása virtuális WAN-on egyenértékű a BGP konfigurálásával egy Azure virtuális hálózati átjáró VPN-en. A helyszíni BGP-társcím nem egyezhet meg a VPN és az eszköz nyilvános IP-címe vagy a VPN-hely virtuális hálózatának címe. Használjon másik IP-címet a VPN-eszközön a BGP-társ IP-címéhez. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Ez azonban nem lehet APIPA (169.254.x.x) cím. Adja meg ezt a címet a helyet képviselő megfelelő VPN-helyen. A BGP előfeltételeiről a [BGP és az Azure VPN-átjáró című témakörben](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)látható. A VPN-hely BGP-beállítása engedélyezése után bármikor szerkesztheti a VPN-kapcsolatot a BGP-paraméterek (Társviszony-létesítési IP-cím és az AS #) frissítéséhez.
+    * **Privát címtér** – A helyszíni helyen található IP-címterület. Az erre a címtérre címzett forgalom át lesz irányítva a helyszíni helyre. Erre akkor van szükség, ha a BGP nincs engedélyezve a webhelyen.
+    * **Hubok** – Az a hub, amelyhez csatlakozniszeretne a webhelyhez. Egy hely csak vpn-átjáróval rendelkező elosztókhoz csatlakoztatható. Ha nem lát egy hubot, hozzon létre egy VPN-átjárót a hubban.
+4. Válassza a **Hivatkozások** lehetőséget az ágon lévő fizikai hivatkozásokra vonatkozó információk hozzáadásához. Ha rendelkezik egy virtuális wan partner CPE-eszközzel, kérdezze meg, hogy ezeket az adatokat kicserélik-e az Azure-ral a rendszerükből beállított fiókadatok feltöltésének részeként.
 
-   ![linkek](./media/virtual-wan-tutorial-site-include/links.png "Hivatkozások")
+   ![Linkek](./media/virtual-wan-tutorial-site-include/links.png "Hivatkozások")
 
-    * **Hivatkozás neve** – a VPN-helyen található fizikai hivatkozáshoz megadni kívánt név. Példa: mylink1.
-    * **Szolgáltató neve** : a VPN-helyen található fizikai hivatkozás neve. Példa: ATT, Verizon.
-    * **Sebesség** – ez a VPN-eszköz sebessége a fiókiroda helyén. Például: 50, ami azt jelenti, hogy 50 Mbps a VPN-eszköz sebessége a fiókirodában.
-    * **IP-cím** – a hivatkozást használó helyszíni eszköz nyilvános IP-címe. Opcionálisan megadhatja a helyszíni VPN-eszköz magánhálózati IP-címét, amely a ExpressRoute mögött található.
-5. A jelölőnégyzettel további hivatkozásokat is törölhet vagy adhat hozzá. VPN-helyek esetében négy hivatkozás támogatott. Ha például négy INTERNETSZOLGÁLTATÓval (internetszolgáltatóval) rendelkezik a fiókiroda helyén, négy hivatkozást hozhat létre. egy-egy INTERNETSZOLGÁLTATÓnál, és adja meg az egyes hivatkozások adatait.
-6. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás** lehetőséget a hely ellenőrzéséhez és létrehozásához.
-7. Tekintse meg az állapotot a VPN-helyek lapon. A hely **kapcsolódásra kerül a kapcsolathoz** , mert a hely még nem csatlakozott az elosztóhoz.
+    * **Hivatkozás neve** – A VPN-helyen található fizikai hivatkozáshoz megadandó név. Példa: mylink1.
+    * **Szolgáltató neve** – A VPN-helyen található fizikai hivatkozás neve. Példa: ATT, Verizon.
+    * **Sebesség** – Ez a VPN-eszköz sebessége az elágazási helyen. Példa: 50, ami azt jelenti, 50 Mbps a VPN-eszköz sebessége a telephelyen.
+    * **IP-cím** - A hivatkozást használó on-prem eszköz nyilvános IP-címe. Opcionálisan megadhatja az ExpressRoute mögött álló helyszíni VPN-eszköz privát IP-címét.
+5. A jelölőnégyzet segítségével további hivatkozásokat törölhet vagy adhat hozzá. VPN-helyenként négy hivatkozás támogatott. Ha például a telephelyen négy internetszolgáltató (internetszolgáltató) található, négy hivatkozást hozhat létre. minden egyes isp-nként, és adja meg az egyes hivatkozásokra vonatkozó információkat.
+6. Miután befejezte a mezők kitöltését, válassza a **Véleményezés + létrehozás** lehetőséget a webhely ellenőrzéséhez és létrehozásához.
+7. Az állapot megtekintése a VPN-webhelyek lapon. A hely a **Kapcsolat szükséges,** mert a hely még nem csatlakozik a hubhoz.

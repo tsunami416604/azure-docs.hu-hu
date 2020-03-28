@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Sprinklr |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Sprinklr között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Sprinklr-rel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Sprinklr között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,263 +16,263 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089656"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Sprinklr
+# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Oktatóanyag: Az Azure Active Directory integrációja a Sprinklr-rel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Sprinklr integrálása az Azure Active Directory (Azure AD).
-Sprinklr integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Sprinklr-t az Azure Active Directoryval (Azure AD).
+A Sprinklr és az Azure AD integrálása a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Sprinklr Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Sprinklr (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Sprinklr.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve sprinklr (Single Sign-On) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Sprinklr az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció sprinklr konfigurálásához a következő elemekre van szüksége:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Sprinklr egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* Sprinklr egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Támogatja a Sprinklr **SP** által kezdeményezett egyszeri bejelentkezés
+* Sprinklr támogatja **SP** kezdeményezett SSO
 
-## <a name="adding-sprinklr-from-the-gallery"></a>Sprinklr hozzáadása a katalógusból
+## <a name="adding-sprinklr-from-the-gallery"></a>Sprinklr hozzáadása a galériából
 
-Az Azure AD integrálása a Sprinklr konfigurálásához hozzá kell Sprinklr a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Sprinklr azure-beli AD-be való integrálásának konfigurálásához hozzá kell adnia a Sprinklr-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Sprinklr hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A Sprinklr hozzáadásához hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Sprinklr**válassza **Sprinklr** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Sprinklr**kifejezést , válassza a **Sprinklr** elemet az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában Sprinklr](common/search-new-app.png)
+     ![Sprinklr az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Sprinklr nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Sprinklr hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Sprinklr-rel egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolat közötti kapcsolat egy Azure AD-felhasználó és a kapcsolódó felhasználó Sprinklr létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés az Sprinklr tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés a Sprinklr, a következő építőelemek:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Sprinklr egyszeri bejelentkezés konfigurálása](#configure-sprinklr-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Sprinklr tesztfelhasználót](#create-sprinklr-test-user)**  – egy megfelelője a Britta Simon Sprinklr, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja Sprinklr Single Sign-On](#configure-sprinklr-single-sign-on)** -, hogy konfigurálja az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Sprinklr tesztfelhasználó létrehozása](#create-sprinklr-test-user)** - a Sprinklr-ben lévő Britta Simon megfelelőjének létrehozásához, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Sprinklr, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Sprinklr** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Sprinklr** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![Sprinklr tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![Sprinklr Domain és URL-ek egyszeri bejelentkezési információk](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.sprinklr.com`
+    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.sprinklr.com`
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.sprinklr.com`
+    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.sprinklr.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Sprinklr ügyfél-támogatási csapatának](https://www.sprinklr.com/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [a Sprinklr ügyféltámogatási csapatával,](https://www.sprinklr.com/contact-us/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. Az a **Sprinklr beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **Sprinklr beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
 ### <a name="configure-sprinklr-single-sign-on"></a>Sprinklr egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Sprinklr vállalati hely rendszergazdaként.
+1. Egy másik böngésző ablakban jelentkezzen be a Sprinklr cég webhelyére rendszergazdaként.
 
-1. Lépjen a **felügyeleti \> beállítások**.
+1. Nyissa meg a **Felügyeleti \> beállítások lapot.**
 
-    ![Felügyeleti](./media/sprinklr-tutorial/ic782907.png "felügyelete")
+    ![Felügyelet](./media/sprinklr-tutorial/ic782907.png "Adminisztráció")
 
-1. Lépjen a **kezelése Partner \> egyszeri bejelentkezési** a bal oldali panelén.
+1. Nyissa meg a **Partner \> Single Sign kezelése** lehetőséget a bal oldali ablaktáblából.
 
     ![Partner kezelése](./media/sprinklr-tutorial/ic782908.png "Partner kezelése")
 
-1. Kattintson a **+ Hozzáadás egyetlen bejelentkezéseknél**.
+1. Kattintson **a +Single Sign Ons hozzáadása gombra.**
 
-    ![Egyszeri bejelentkezés – Ons](./media/sprinklr-tutorial/ic782909.png "bejelentkezéseknél – egyszeri")
+    ![Egyszeri bejelentkezések](./media/sprinklr-tutorial/ic782909.png "Egyszeri bejelentkezések")
 
-1. Az a **az egyszeri bejelentkezés** lapon, a következő lépésekkel:
+1. Az **Egyszeri bejelentkezés a lapon** hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés – Ons](./media/sprinklr-tutorial/ic782910.png "bejelentkezéseknél – egyszeri")
+    ![Egyszeri bejelentkezések](./media/sprinklr-tutorial/ic782910.png "Egyszeri bejelentkezések")
 
-    a. Az a **neve** szövegmezőbe írja be a konfiguráció nevét (például: *WAADSSOTest*).
+    a. A **Név** mezőbe írja be a konfiguráció nevét (például: *WAADSSOTest*).
 
-    b. Válassza ki **engedélyezve**.
+    b. Válassza az **Engedélyezve** lehetőséget.
 
-    c. Válassza ki **új SSO-tanúsítvány használatára**.
+    c. Válassza **az Új SSO-tanúsítvány használata lehetőséget.**
 
-    d. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **szolgáltató Identitástanúsítványt** szövegmezőbe.
+    d. Nyissa meg az alap-64 kódolású tanúsítványt a jegyzettömbben, másolja annak tartalmát a vágólapra, majd illessze be az **identitásszolgáltató tanúsítványának** szövegmezőjébe.
 
-    e. Illessze be a **az Azure AD-azonosító** érték, amely az Azure Portalról másolta a **entitásazonosító** szövegmezőbe.
+    e. Illessze be az **Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt az **entitásazonosító** szövegmezőjébe.
 
-    f. Illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról másolta a **Identity Provider bejelentkezési URL-cím** szövegmezőbe.
+    f. Illessze be az Azure Portalról másolt **bejelentkezési URL-címet** az **Identitásszolgáltató bejelentkezési URL-címmezőjébe.**
 
-    g. Illessze be a **kijelentkezési URL-címe** érték, amely az Azure Portalról másolta a **Identity Provider kijelentkezési URL-címe** szövegmezőbe.
+    g. Illessze be a **kijelentkezési URL-értéket,** amelyet az Azure Portalról másolt az **Identitásszolgáltató kijelentkezési URL-címmezőjébe.**
 
-    h. Mint **SAML felhasználói azonosító típusa**válassza **helyességi feltétel tartalmaz sprinklr.com felhasználónév**.
+    h. **Saml felhasználói azonosító típusként**válassza a **Helyességi feltétel a felhasználó sprinklr.com felhasználónevét**.
 
-    i. Mint **SAML felhasználói azonosító hely**, jelölje be **felhasználói Azonosítóját a tulajdonos utasítás Névazonosító elemében van**.
+    i. Saml **felhasználói azonosító helyként**válassza a Felhasználói azonosító elem **névazonosító elemében található Tulajdonos utasítás**.
 
-    j. Kattintson a **Save** (Mentés) gombra.
+    j. Kattintson a **Mentés** gombra.
 
     ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. A **Felhasználónév** mezőtípusban**brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Sprinklr Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezheti Britta Simon azure egyszeri bejelentkezés használatával hozzáférést biztosít a Sprinklr.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Sprinklr**.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Sprinklr**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Sprinklr**.
+2. Az alkalmazások listájában válassza a **Sprinklr**lehetőséget.
 
-    ![Az alkalmazások listáját a Sprinklr hivatkozásra](common/all-applications.png)
+    ![A Sprinklr link az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
 ### <a name="create-sprinklr-test-user"></a>Sprinklr tesztfelhasználó létrehozása
 
-1. Jelentkezzen be rendszergazdaként a Sprinklr vállalati webhely.
+1. Jelentkezzen be a Sprinklr cég honlapján, mint egy rendszergazda.
 
-1. Lépjen a **felügyeleti \> beállítások**.
+1. Nyissa meg a **Felügyeleti \> beállítások lapot.**
 
-    ![Felügyeleti](./media/sprinklr-tutorial/ic782907.png "felügyelete")
+    ![Felügyelet](./media/sprinklr-tutorial/ic782907.png "Adminisztráció")
 
-1. Lépjen a **kezelése ügyfél \> felhasználók** a bal oldali ablaktáblán.
+1. Nyissa meg **az Ügyfélfelhasználók \> kezelése** lehetőséget a bal oldali ablaktáblából.
 
-    ![Beállítások](./media/sprinklr-tutorial/ic782914.png "beállításai")
+    ![Beállítások](./media/sprinklr-tutorial/ic782914.png "Beállítások")
 
-1. Kattintson a **felhasználó hozzáadása**.
+1. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 
-    ![Beállítások](./media/sprinklr-tutorial/ic782915.png "beállításai")
+    ![Beállítások](./media/sprinklr-tutorial/ic782915.png "Beállítások")
 
-1. Az a **szerkesztési felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. A **Felhasználó szerkesztése** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    ![Felhasználó szerkesztése](./media/sprinklr-tutorial/ic782916.png "felhasználó szerkesztése")
+    ![Felhasználó szerkesztése](./media/sprinklr-tutorial/ic782916.png "Felhasználó szerkesztése")
 
-    a. Az a **E-mail**, **Utónév** és **Vezetéknév** , beleértve a szövegdobozokat, írja be az adatokat egy Azure AD felhasználói fiók kíván üzembe helyezni.
+    a. Az **E-mail**, **Utónév** és **vezetéknév** szövegmezőbe írja be a kiépíteni kívánt Azure AD felhasználói fiók adatait.
 
-    b. Válassza ki **jelszó le van tiltva**.
+    b. Válassza a **Jelszó letiltva**lehetőséget.
 
-    c. Válassza ki **nyelvi**.
+    c. Válassza a **Nyelv**lehetőséget.
 
-    d. Válassza ki **felhasználótípus**.
+    d. Válassza a **Felhasználótípus lehetőséget**.
 
-    e. Kattintson az **Update** (Frissítés) elemre.
+    e. Kattintson a **Frissítés** parancsra.
 
     > [!IMPORTANT]
-    > **Jelszó le van tiltva** meg kell adnia egy felhasználó egy identitásszolgáltató használatával bejelentkezni. 
+    > **A jelszó letiltása** lehetőséget kell választani ahhoz, hogy a felhasználó identitásszolgáltatón keresztül belehessen jelentkezni. 
 
-1. Lépjen a **szerepkör**, és hajtsa végre az alábbi lépéseket:
+1. Nyissa meg a **Szerepkör**, majd hajtsa végre az alábbi lépéseket:
 
-    ![Partner-szerepkörök](./media/sprinklr-tutorial/ic782917.png "Partner-szerepkörök")
+    ![Partneri szerepkörök](./media/sprinklr-tutorial/ic782917.png "Partneri szerepkörök")
 
-    a. Az a **globális** listáról válassza ki **ALL_Permissions**.  
+    a. A **Globális** listában válassza **a ALL_Permissions**lehetőséget.  
 
-    b. Kattintson az **Update** (Frissítés) elemre.
+    b. Kattintson a **Frissítés** parancsra.
 
 > [!NOTE]
-> Eszközt is használhat bármilyen más Sprinklr felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Sprinklr által biztosított API-k.
+> A Sprinklr felhasználói fiók létrehozásához szükséges bármely más eszköz vagy API-k, amelyeket a Sprinklr biztosít az Azure AD felhasználói fiókok kiépítéséhez.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Sprinklr csempére kattint, meg kell lehet automatikusan bejelentkezett a Sprinklr, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha rákattint a Sprinklr csempe a hozzáférési panelen, akkor automatikusan bejelentkezett a Sprinklr, amelyre beállította SSO. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,20 +1,20 @@
 ---
-title: PowerShell-parancsfájl a Azure Cosmos DB SQL (Core) API-hoz tartozó RU/s frissítéséhez
-description: Azure Cosmos-adatbázis vagy-tároló átviteli sebességének frissítése PowerShell-parancsfájl – SQL (Core) API használatával
+title: PowerShell-parancsfájl az Azure Cosmos DB SQL API-adatbázis vagy -tároló átviteli teljesítményének (RU/s) frissítéséhez
+description: PowerShell-parancsfájl az Azure Cosmos DB SQL API-adatbázis vagy -tároló átviteli teljesítményének (RU/s) frissítéséhez
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 70dd5810d3549f19075b437044ce0dd332c45c49
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 950a76c2caaffe6eef578d5614e9469c5942e08c
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444958"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365974"
 ---
-# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>A Azure Cosmos DB-SQL (Core) API-hoz tartozó adatbázishoz vagy tárolóhoz tartozó RU/s frissítése
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>Átviteli adatszolgáltatás (RU/s) frissítése Egy Azure Cosmos DB SQL API-adatbázishoz vagy -tárolóhoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75444958"
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput on a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput (RU/s) for an Azure Cosmos DB SQL API Database or Container")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -38,13 +38,15 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB SQL-adatbázis. |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Leaszkszik egy Cosmos DB SQL Container. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB SQL Container. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

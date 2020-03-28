@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – virtuális gépek kezelése a parancssori felülettel
-description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-beli virtuális gépeket az Azure CLI használatával a RBAC, a házirendek, a zárolások és a címkék alkalmazásával.
+title: Oktatóanyag - Virtuális gépek kezelése a CLI-vel
+description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure CLI-t az Azure virtuális gépek kezelésére RBAC, a rendőrség, a zárolások és a címkék alkalmazásával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -14,13 +14,13 @@ ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: b9595c6ce464cf9e4ab0baff9ef842e76f3d18a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75970149"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: Ismerje meg a Linux virtuálisgép-kezelést az Azure CLI-vel
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "75970149"
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szüksége. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="understand-scope"></a>A hatókör megismerése
+## <a name="understand-scope"></a>A hatókör bemutatása
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -64,7 +64,7 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Ha olyan hibaüzenetet kap, amely **\<GUID-> nem létezik a címtárban**, az új csoport nem lett propagálva az egész Azure Active Directory. Próbálja meg ismét futtatni a parancsot.
+Ha olyan hibaüzenetet kap, amely szerint **a> \<nem létezik a címtárban,** az új csoport nem propagált az Azure Active Directoryban. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
@@ -172,7 +172,7 @@ Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható vé
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 
-A [címkézéssel](../../azure-resource-manager/management/tag-resources.md) logikusan, kategóriák szerint rendszerezheti az Azure-erőforrásokat. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
+[Címkéket](../../azure-resource-manager/management/tag-resources.md) alkalmazhat az Azure-erőforrásoklogikusan rendszerezheti őket kategóriák szerint. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
@@ -219,14 +219,14 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-Ha már nincs rá szükség, a [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
+Ha már nincs szükség, az [az csoport törlése](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gép és az összes kapcsolódó erőforrást. Lépjen ki az SSH-munkamenetből a virtuális gépre, majd törölje az erőforrásokat a következő módon:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -236,8 +236,8 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Kritikus erőforrások védelme zárolásokkal
 > * Erőforrások címkézése számlázáshoz és felügyelethez
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit egy virtuális gépen.
+A következő oktatóanyagra lépve megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagfrissítéseket egy virtuális gépen.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek felügyelete](tutorial-config-management.md)
+> [Virtuális gépek kezelése](tutorial-config-management.md)
 

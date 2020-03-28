@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025843"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
@@ -40,12 +40,12 @@ Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy Batch-készletet és 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>A doAzureParallel telepítése
 
-A RStudio-konzolon telepítse a [DoAzureParallel GitHub-csomagot](https://www.github.com/Azure/doAzureParallel). Az alábbi parancsok letöltik és telepítik a csomagot és függőségeit az aktuális R-munkamenetbe: 
+Az RStudio konzolon telepítse a [doAzureParallel GitHub csomagot.](https://www.github.com/Azure/doAzureParallel) Az alábbi parancsok letöltik és telepítik a csomagot és függőségeit az aktuális R-munkamenetbe: 
 
 ```R
 # Install the devtools package  
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-A szimuláció kiosztja a tevékenységeket a Batch-készlet csomópontjainak. A tevékenység látható a készlet hőtérképén az Azure Portalon]. Nyissa meg a következőt: **Batch-fiókok** > *myBatchAccount*. Kattintson ide: **Készletek** > *myPoolName*. 
+A szimuláció kiosztja a tevékenységeket a Batch-készlet csomópontjainak. A tevékenység látható a készlet hőtérképén az Azure Portalon]. Nyissa meg a **Batch-fiókok** > *myBatchAccount .* Kattintson **a** > *Készletek myPoolName elemre.* 
 
 ![Párhuzamos R-feladatokat futtató készlet hőtérképe](media/tutorial-r-doazureparallel/pool.png)
 
@@ -256,7 +256,7 @@ Miután a feladat befejeződött, automatikusan törlődik. Ha a fürtre már ni
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban a következőket sajátította el:
 
 > [!div class="checklist"]

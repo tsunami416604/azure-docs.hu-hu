@@ -1,6 +1,6 @@
 ---
-title: Az adatAzure Data Box NFS-en keresztüli adatmásolási oktatóanyag | Microsoft Docs
-description: Útmutató az adatmásoláshoz a Azure Data Box NFS-en keresztül
+title: Oktatóanyag az Azure Data Boxba az NFS-en keresztüli adatok másolásához| Microsoft dokumentumok
+description: Ismerje meg, hogyan másolhat adatokat az Azure Data Boxba az NFS-en keresztül
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,21 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239237"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501825"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: az Adatmásolás Azure Data Box NFS-en keresztül
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box ba NFS-en keresztül
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a gazdagéphez és hogyan másolhat onnan adatokat a helyi webes felhasználói felület használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Előfeltételek
 > * Csatlakozás a Data Boxhoz
 > * Adatok másolása a Data Boxra
@@ -33,8 +34,8 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 1. Befejezte [az Azure Data Box beállítását ismertető oktatóanyagot](data-box-deploy-set-up.md).
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
-    - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
-    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, a rendszer egy 1 GbE adatkapcsolatot használ, de a másolási sebesség hatással lesz rá. 
+    - Támogatott [operációs rendszer futtatása](data-box-system-requirements.md).
+    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha nem áll rendelkezésre 10 GbE-es kapcsolat, 1 GbE-es adatkapcsolat is használható, de a másolási sebesség hatással lesz. 
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
@@ -73,7 +74,7 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
     
-    Mac-ügyfelek esetén a következő módon kell hozzáadnia egy további lehetőséget: 
+    Mac-ügyfelek esetén a következőképpen kell hozzáadnia egy további lehetőséget: 
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
@@ -83,17 +84,17 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
 
 A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adatok másolása. Az adatok másolásának megkezdése előtt tekintse át a következőket:
 
-- Győződjön meg arról, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-ket az oldal blobokra. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
--  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak. 
-- Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
-- Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
-- **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
-- Ha a kis-és nagybetűket megkülönböztető könyvtárakat és fájlneveket az NFS-megosztásról az NFS-re Data Box: 
-    - Az eset a névben marad.
-    - A fájlok kis-és nagybetűk megkülönböztetése nélkül.
-    
-    Ha például `SampleFile.txt` és `Samplefile.Txt`másolását, akkor a rendszer a nevet a név alatt megőrzi a Data Box, de a második fájl felülírja az elsőt, mivel ezek ugyanaz a fájlnak számítanak.
+* Győződjön meg arról, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Vd-k másolása a lapblobokba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
+*  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak. 
+* Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
+* Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
+* **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
+* Ha nfs-megosztásról betöltő kis- és nagybetűket és fájlneveket az NFS-tárolóba az adatmezőn:
+  * Az eset megmarad a névben.
+  * Az akták nem tartalmaznak kis- és nagybetűket.
 
+    Ha például a `SampleFile.txt` `Samplefile.Txt`másolás és a másolat a névben marad meg, amikor a Data Box-ba másolja, de a második fájl felülírja az elsőt, mivel ezek ugyanannak a fájlnak minősülnek.
+* Győződjön meg arról, hogy a forrásadatok egy példányát, amíg meg tudja erősíteni, hogy az adatok az Azure Storage-ba.
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -134,7 +135,7 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
      Azt javasoljuk, hogy kezdetben 16 párhuzamos példánnyal dolgozzon, és az elérhető erőforrásoknak megfelelően növelje a szálak számát.
 
 > [!IMPORTANT]
-> A következő Linux-fájltípusok nem támogatottak: szimbolikus hivatkozások, szövegfájlok, fájlok, szoftvercsatornák és csövek blokkolása. Ezek a fájltípusok a **szállításra való előkészítés** lépésben hibát okoznak.
+> A következő Linux fájltípusok nem támogatottak: szimbolikus hivatkozások, karakterfájlok, blokkfájlok, szoftvercsatornák és csövek. Ezek a fájltípusok hibákat eredményeznek a **Szállításra való felkészülés** lépés során.
 
 Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 
@@ -143,7 +144,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
    ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

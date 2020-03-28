@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a IamIP Patent platformmal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a IamIP-alapú szabadalmi platform között.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az IamIP szabadalmi platformmal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az IamIP szabadalmi platform között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,155 +16,155 @@ ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7d487aaf7ba4aaf666962cf91ca86d46115055b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78190738"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a IamIP szabadalmi platformmal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az IamIP szabadalmi platformmal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a IamIP szabadalmi platformot Azure Active Directory (Azure AD) használatával. Ha integrálja a IamIP szabadalmi platformot az Azure AD-vel, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az IamIP szabadalmi platformot az Azure Active Directoryval (Azure AD). Ha integrálja az IamIP szabadalmi platformot az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a IamIP szabadalmi platformhoz.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Azure AD-fiókjával, hogy IamIP a szabadalmi platformot.
-* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá az IamIP szabadalmi platformhoz.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve iamIP szabadalmi platform az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen: az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa [el az Alkalmazásokra való egyszeri bejelentkezés az Azure Active Directoryban című témakört.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Az egyszeri bejelentkezést (SSO) engedélyező IamIP-platformos előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* IamIP szabadalmi platform előfizetés egyszeri bejelentkezéssel (SSO) engedélyezve.
 
 ## <a name="tutorial-description"></a>Oktatóanyag leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tesztkörnyezetben végezheti el.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-A IamIP szabadalmi platform támogatja az SP által kezdeményezett és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
+Az IamIP szabadalmi platform támogatja az SP által kezdeményezett és az IDP által kezdeményezett egyszeri szolgáltató t.
 
-A IamIP szabadalmi platform konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Az IamIP szabadalmi platform konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
 
-## <a name="add-iamip-patent-platform-from-the-gallery"></a>IamIP szabadalmi platform hozzáadása a katalógusból
+## <a name="add-iamip-patent-platform-from-the-gallery"></a>Add IamIP Szabadalmi Platform a galériából
 
-A IamIP szabadalmi platform Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy IamIP-szabadalmi platformot a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az IamIP szabadalmi platform Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az IamIP szabadalmi platformot a galériából a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
-1. A bal oldali panelen válassza az **Azure Active Directory** gombot.
-1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **IamIP szabadalmi platform** kifejezést a keresőmezőbe.
-1. Válassza ki a **IamIP szabadalmi platformot** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
+1. Nyissa meg a **Vállalati alkalmazások lehetőséget,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **Hozzáadás a galéria szakaszban** írja be az **IamIP szabadalmi platformot** a keresőmezőbe.
+1. Válassza az **IamIP szabadalmi platform** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-sso-for-iamip-patent-platform"></a>Az Azure AD SSO konfigurálása és tesztelése a IamIP szabadalmi platformon
+## <a name="configure-and-test-azure-ad-sso-for-iamip-patent-platform"></a>Az Azure AD-sSO konfigurálása és tesztelése az IamIP szabadalmi platformhoz
 
-Az Azure AD SSO-t a IamIP Patent platformmal konfigurálhatja és tesztelheti egy B. Simon nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a megfelelő felhasználó között a IamIP szabadalmi platformon.
+Konfigurálhatja és tesztelheti az Azure AD SSO-t az IamIP szabadalmi platformmal egy B.Simon nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a megfelelő felhasználó iamIP szabadalmi platform.
 
-Az Azure AD SSO az IamIP Patent platformmal való konfigurálásához és teszteléséhez a következő magas szintű lépéseket kell végrehajtania:
+Az Azure AD Egyszeri szolgáltatás IamIP szabadalmi platformmal történő konfigurálásához és teszteléséhez az alábbi magas szintű lépéseket kell tennie:
 
-1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t annak engedélyezéséhez, hogy a felhasználók használják a szolgáltatást.
-    * **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez.
-    * **[Hozzáférés biztosítása a tesztelési felhasználónak](#grant-access-to-the-test-user)** , hogy lehetővé váljon a felhasználó számára az Azure ad egyszeri bejelentkezés használata.
+1. **[Konfigurálja az Azure AD sso-t,](#configure-azure-ad-sso)** hogy a felhasználók használhassák a funkciót.
+    * **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez.
+    * **[Hozzáférést biztosít a tesztfelhasználó](#grant-access-to-the-test-user)** számára, hogy a felhasználó az Azure AD egyszeri bejelentkezést használhassa.
 
-1. **[Konfigurálja a IamIP szabadalmi platform SSO](#configure-iamip-patent-platform-sso)** -t az alkalmazás oldalán.
-    * **[Hozzon létre egy IamIP szabadalmas platformot](#create-iamip-patent-platform-test-user)** , amely a felhasználó Azure ad-beli képviseletének megfelelő felhasználói felülettel rendelkezik.
+1. **[Konfigurálja az IamIP szabadalmi platform SSO-ját](#configure-iamip-patent-platform-sso)** az alkalmazás oldalán.
+    * **[Hozzon létre egy IamIP szabadalmi platform teszt felhasználó,](#create-iamip-patent-platform-test-user)** mint a megfelelője az Azure AD ábrázolása a felhasználó.
 
-1. Ellenőrizze az **[SSO](#test-sso)** -t a konfiguráció működésének ellenőrzéséhez.
+1. **[Tesztelje az SSO-t,](#test-sso)** hogy ellenőrizze, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
+Az Azure AD SSO engedélyezéséhez kövesse az alábbi lépéseket az Azure Portalon:
 
-1. A [Azure Portal](https://portal.azure.com/)a **IamIP szabadalmi platform** alkalmazás-integráció lapján, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
+1. Az [Azure Portalon](https://portal.azure.com/)az **IamIP szabadalmi platform alkalmazásintegrációs** lapján, a **Kezelés** csoportban válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon válassza az **egyszerű SAML-konfiguráció** ceruzagombját a beállítások szerkesztéséhez:
 
-   ![Az alapszintű SAML-konfiguráció ceruza gombja](common/edit-urls.png)
+   ![Ceruza gomb az alapvető SAML konfigurációhoz](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha rendelkezik egy szolgáltatói metaadat-fájllal, és az egyszeri bejelentkezést identitásszolgáltató módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+1. Ha az **Egyszerű SAML-konfiguráció** szakaszban rendelkezik szolgáltatói metaadatfájllal, és az Egyszeri bejelentkezést IDP által kezdeményezett módban szeretné konfigurálni, tegye az alábbi lépéseket:
 
-    a. Válassza a **metaadatok feltöltése**elemet:
+    a. Válassza **a Metaadatfájl feltöltése lehetőséget:**
 
-    ![Metaadat-fájl feltöltése](common/upload-metadata.png)
+    ![Metaadatfájl feltöltése](common/upload-metadata.png)
 
-    b. Kattintson a mappa gombra, válassza ki a metaadat-fájlt, majd válassza a **feltöltés**lehetőséget:
+    b. Jelölje ki a mappagombot, jelölje ki a metaadatfájlt, majd kattintson a **Feltöltés gombra:**
 
-    ![Mappa és feltöltés gomb](common/browse-upload-metadata.png)
+    ![Mappa és Feltöltés gombok](common/browse-upload-metadata.png)
 
-    c. A metaadatok feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan betöltődik az **alapszintű SAML-konfiguráció** szakaszba:
+    c. A metaadatfájl feltöltése után az **azonosító** és a **válasz URL-értéke** automatikusan feltöltődik az **Egyszerű SAML konfiguráció szakaszban:**
 
     ![Azonosító és válasz URL-értékei](common/idp-intiated.png)
 
     > [!Note]
-    > Ha az **azonosító** és a **Válasz URL-címe** nem töltődik fel automatikusan, az értékeket az igényeinek megfelelően adja meg manuálisan.
+    > Ha az **azonosító** és a **válasz URL-értékei** nem kerülnek automatikusan kitöltésre, adja meg manuálisan az értékeket a követelményeknek megfelelően.
 
-1. Válassza a **további URL-címek beállítása** lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni:
+1. Válassza **a További URL-címek beállítása** lehetőséget, és hajtsa végre a következő lépést, ha az alkalmazást SP által kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** mezőbe írja be a **https:\//Patents.iamip.com/login-User**értéket.
+    A **Bejelentkezési URL-cím** mezőbe írja be a **\/https: /patents.iamip.com/login-user**kapcsolót.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a tanúsítvány **(RAW)** **letöltési** hivatkozását a tanúsítvány letöltéséhez és a számítógépbe való mentéséhez:
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** válassza a **Tanúsítvány (Raw)** **letöltési** hivatkozását a tanúsítvány letöltéséhez és a számítógépre való mentéséhez:
 
     ![Tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
-1. A **IamIP szabadalmi platform beállítása** szakaszban a követelmények alapján másolja a megfelelő URL-címet vagy URL-címeket:
+1. Az **IamIP szabadalmi platform beállítása** szakaszban másolja a megfelelő URL-t vagy URL-eket az Ön igényei nek megfelelően:
 
     ![Konfigurációs URL-címek másolása](common/idp-intiated.png))
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
+Ebben a szakaszban egy B.Simon nevű tesztfelhasználót hoz létre az Azure Portalon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
-   1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A Felhasználónév mezőbe írja be a \<username > @\<cégestartomány > **nevet** .\<bővítmény >. Például: `B.Simon@contoso.com`.
-   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget. Válassza a **Felhasználók**lehetőséget, majd a **Minden felhasználó lehetőséget.**
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok párbeszédpanelen hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja be a **B.Simon**értéket.  
+   1. A **Felhasználónév** mezőbe \<írja be\<a>@ cégtartomány> felhasználónevet. \<> kiterjesztése. Például: `B.Simon@contoso.com`.
+   1. Válassza **a Jelszó megjelenítése**lehetőséget, majd írja le a **Jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
-### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
+### <a name="grant-access-to-the-test-user"></a>Hozzáférés megadása a tesztfelhasználónak
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy a felhasználó hozzáférést biztosít a IamIP szabadalmi platformhoz.
+Ebben a szakaszban lehetővé teszi b.Simon azure egyszeri bejelentkezés t, amely biztosítja a felhasználói hozzáférést az IamIP szabadalmi platform.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza ki a **IamIP szabadalmi platform**elemet.
-1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
+1. Az Azure Portalon válassza a **Nagyvállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza az **IamIP szabadalmi platform**lehetőséget.
+1. Az alkalmazás áttekintése lap **Kezelés** csoportjában válassza a **Felhasználók és csoportok**lehetőséget:
 
    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** **párbeszédpanelen** a Felhasználók és csoportok lehetőséget:
 
-    ![Válassza a felhasználó hozzáadása elemet.](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a **Felhasználók** listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson a képernyő alján található **Kijelölés** gombra.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-iamip-patent-platform-sso"></a>A IamIP szabadalmi platform egyszeri bejelentkezésének konfigurálása
+## <a name="configure-iamip-patent-platform-sso"></a>Az IamIP szabadalmi platform sso-jának konfigurálása
 
-Ha az egyszeri bejelentkezést a IamIP Patent platform oldalon szeretné konfigurálni, el kell küldenie a letöltött nyers tanúsítványt és a Azure Portalról a [IamIP szabadalmi platform támogatási csapatához](mailto:info@iamip.com)másolt megfelelő URL-címeket. Az SAML SSO-kapcsolatokat úgy konfigurálja, hogy mindkét oldalon megfelelő legyen.
+Az IamIP szabadalmi platform oldalán történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött nyers tanúsítványt és az Azure Portalról másolt megfelelő URL-címeket az [IamIP szabadalmi platform támogatási csapatának.](mailto:info@iamip.com) Úgy konfigurálják az SAML SSO-kapcsolatot, hogy mindkét oldalon helyes legyen.
 
-### <a name="create-iamip-patent-platform-test-user"></a>IamIP szabadalmi platform tesztelési felhasználó létrehozása
+### <a name="create-iamip-patent-platform-test-user"></a>IamIP szabadalmi platform tesztfelhasználó létrehozása
 
-Működjön együtt a [IamIP szabadalmi platform támogatási csapatával](mailto:info@iamip.com) , és vegyen fel egy B. Simon nevű felhasználót a IamIP szabadalmi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Működjön együtt az [IamIP szabadalmi platform támogatási csapatával](mailto:info@iamip.com) egy B.Simon nevű felhasználó hozzáadásához az IamIP szabadalmi platformban. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával tesztelheti.
+Ebben a szakaszban az Azure AD SSO-konfigurációt a Hozzáférési panel használatával teszteli.
 
-Amikor kiválasztja a IamIP szabadalmi platform csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a IamIP szabadalmi platform-példányba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja az IamIP szabadalmi platform csempe access panel, akkor automatikusan bejelentkezett az IamIP Szabadalmi Platform például, amelyre beállította SSO. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a IamIP szabadalmi platformot az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki az IamIP szabadalmi platformot az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

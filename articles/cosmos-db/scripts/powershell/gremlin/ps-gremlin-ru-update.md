@@ -1,20 +1,20 @@
 ---
-title: PowerShell-parancsfájl az RU/s frissítéséhez Azure Cosmos DB Gremlin API-hoz
-description: Azure PowerShell script-Azure Cosmos DB Gremlin API-hoz tartozó RU/s frissítése
+title: PowerShell-parancsfájl az Azure Cosmos DB Gremlin API RU/s frissítéséhez
+description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB UPDATE RU/s a Gremlin API-hoz
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: c298ec58b0d69d20429413f0f36b3e28ff8e5e61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c06fca0fe2f2449f67890dd962905642605716
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441445"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366010"
 ---
-# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>A Azure Cosmos DB-Gremlin API-hoz készült adatbázishoz vagy gráfhoz tartozó RU/s frissítése
+# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Ru/s frissítése egy adatbázishoz vagy grafikonhoz az Azure Cosmos DB-hoz – Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,15 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBGremlinAdatbázis](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlindatabase) | Gremlin API-adatbázist hoz létre vagy frissít. |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Beszerzi a Gremlin API Graph-ot. |
+| [Set-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbgremlingraph) | Gremlin API Graph-ot hoz létre vagy frissít. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

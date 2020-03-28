@@ -1,67 +1,67 @@
 ---
-title: 'Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban | Microsoft Docs'
-description: Ebből az oktatóanyagból megtudhatja, hogyan méretezheti az alkalmazásokat az Azure Spring Cloudtel a Azure Portal
+title: 'Oktatóanyag: Alkalmazás méretezése az Azure Spring Cloud ban | Microsoft dokumentumok'
+description: Ebben az oktatóanyagban megtudhatja, hogyan skálázhat egy alkalmazást az Azure Spring Cloud szolgáltatással az Azure Portalon
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277476"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>Alkalmazások méretezése az Azure Spring Cloud-ban
+# <a name="scale-an-application-in-azure-spring-cloud"></a>Alkalmazás méretezése az Azure Spring Cloudban
 
-Ez az oktatóanyag bemutatja, hogyan méretezheti a Service-alkalmazásokat a Azure Portal Azure Spring Cloud irányítópultján.
+Ez az oktatóanyag bemutatja, hogyan skálázhatja a mikroszolgáltatás-alkalmazásokat az Azure Spring Cloud irányítópultjával az Azure Portalon.
 
-A virtuális processzorok (vCPU) számának és a memória mennyiségének módosításával felfelé és lefelé méretezheti az alkalmazást. Az alkalmazás-példányok számának módosításával méretezheti az alkalmazást a és a szolgáltatásban.
+Az alkalmazás fel-le méretezése a virtuális processzorok (vCPU-k) és a memória mennyiségének módosításával. Az alkalmazás be- és kiméretezése az alkalmazáspéldányok számának módosításával.
 
-A befejezést követően tudni fogja, hogyan végezheti el a gyors manuális módosításokat a szolgáltatásban lévő egyes alkalmazásokban. A skálázás másodpercek alatt lép érvénybe, és nincs szükség kód módosítására vagy újratelepítésre.
+Miután befejezte, tudni fogja, hogyan végezhet gyors manuális módosításokat a szolgáltatás egyes alkalmazásain. A skálázás másodpercek alatt lép érvénybe, és nem igényel kódmódosításokat vagy újratelepítést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
-* Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart-launch-app-cli.md) útmutatót.
-* Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
+* Üzembe helyezett Azure Spring Cloud szolgáltatáspéldány.  Kövesse [rövid útmutatónkat egy alkalmazás üzembe helyezéséről az Azure CLI-n keresztül az](spring-cloud-quickstart-launch-app-cli.md) első lépésekhez.
+* Legalább egy alkalmazás már létrehozott a szolgáltatáspéldányban.
 
-## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Navigáljon a méretezés lapra a Azure Portal
+## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Keresse meg a Méretezés lapot az Azure Portalon
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. Nyissa meg az Azure Spring Cloud **Áttekintés** oldalát.
+1. Nyissa meg az Azure Spring Cloud **Áttekintés lapját.**
 
 1. Válassza ki a szolgáltatást tartalmazó erőforráscsoportot.
 
-1. Válassza az **alkalmazások** fület a lap bal oldalán található menü **Beállítások** területén.
+1. Válassza az **Alkalmazások** lapot a lap bal oldalán található menü **Beállítások** csoportjában.
 
-1. Válassza ki a méretezni kívánt alkalmazást. Ebben a példában válassza ki a **Account-Service**nevű alkalmazást. Ekkor megjelenik az alkalmazás **Áttekintés** lapja.
+1. Jelölje ki a méretezni kívánt alkalmazást. Ebben a példában válassza ki a **fiókszolgáltatás**nevű alkalmazást. Ekkor megjelenik az alkalmazás **áttekintése** oldalon.
 
-1. Lépjen a **skála** lapra a lap bal oldalán lévő menü **Beállítások** területén. A következő szakaszban látható attribútumok méretezéséhez meg kell jelennie a beállításoknak.
+1. Nyissa meg a Lap bal oldalán található **Beállítások** lap **Méretezés** lapján található A következő szakaszban láthatók az attribútumok méretezésének beállításai.
 
 ## <a name="scale-your-application"></a>Az alkalmazás méretezése
 
-Ha módosítja a skálázási attribútumokat, tartsa szem előtt a következő megjegyzéseket:
+Ha módosítja a méretezési attribútumokat, tartsa szem előtt a következő megjegyzéseket:
 
-* **Processzorok**: az alkalmazás példányain a processzorok maximális száma négy. Az alkalmazáshoz tartozó processzorok teljes számát az itt megadott érték szorozza az alkalmazás példányainak számával.
+* **PROCESSZOROK**: A processzorok maximális száma alkalmazáspéldányonként négy. Egy alkalmazás processzorainak teljes száma az itt beállított érték és az alkalmazáspéldányok számának szorzata.
 
-* **Memória/GB**: az alkalmazás-példányok maximális mérete 8 GB. Az alkalmazáshoz tartozó memória teljes mennyisége az itt megadott érték, az alkalmazás példányainak száma szorozva.
+* **Memória/GB**: Az alkalmazáspéldányonkénti maximális memóriamennyiség 8 GB. Az alkalmazás teljes memóriamennyisége az itt beállított érték és az alkalmazáspéldányok számának szorzata.
 
-* **Alkalmazás-példányok száma**: a standard szinten legfeljebb 20 példányra lehet méretezni. Ez az érték megváltoztatja a Service-alkalmazás különböző futó példányainak számát.
+* **Alkalmazáspéldányok száma**: A standard szinten legfeljebb 20 példányra skálázható. Ez az érték módosítja a mikroszolgáltatás-alkalmazás külön futó példányainak számát.
 
-A skálázási beállítások alkalmazásához válassza a **Mentés** lehetőséget.
+Ügyeljen arra, hogy a **Mentés** lehetőséget válassza a méretezési beállítások alkalmazásához.
 
-![A Azure Portal méretezési szolgáltatása](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
+![A Méretezés szolgáltatás az Azure Portalon](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
-Néhány másodperc elteltével megjelenik az **áttekintő** oldal az Áttekintés oldalon, és további részleteket tartalmaz az **alkalmazás példányai** lapon. a skálázás nem igényli a kód módosítását vagy az újratelepítést.
+Néhány másodperc múlva a végrehajtott módosítások megjelennek az **Áttekintés** lapon, további részletek érhetők el az **Alkalmazáspéldányok** lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan méretezheti manuálisan az Azure Spring Cloud-alkalmazásait. Az alkalmazás figyelésének megismeréséhez folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban megtanulta, hogyan skálázhatja manuálisan az Azure Spring Cloud-alkalmazásokat. Ha meg szeretné tudni, hogyan figyelheti az alkalmazást, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Útmutató az alkalmazások figyeléséhez](spring-cloud-tutorial-distributed-tracing.md)
+> [Útmutató egy alkalmazás figyeléséhez](spring-cloud-tutorial-distributed-tracing.md)

@@ -1,141 +1,143 @@
 ---
 title: Adatfolyamok leképezését ismertető oktatóvideók
-description: Az adatáramlási fogalmakat bemutató videós oktatóanyagok listája
+description: Az adatfolyam-fogalmak feltérképezésével kapcsolatos oktatóanyagok listája
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: bb996b0abc16a3d6171c8f7ab2ac0e64dd0c1075
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.date: 03/24/2020
+ms.openlocfilehash: cc0feff48e7da35535e30c6741994f48750d931a
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096796"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293499"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
-Az alábbi lista a Azure Data Factory csapat által létrehozott, a leképezési folyamatokról szóló oktatóanyagot mutatja be. 
+Az alábbiakban az Azure Data Factory csapata által létrehozott adatfolyam-oktatóvideók listáját tartalmazza. 
 
-Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data Factory felhasználói élményben vannak hozzáadva vagy más funkciókkal.
+Mivel a frissítések folyamatosan a termék, egyes funkciók hozzáadott vagy eltérő funkciókat a jelenlegi Azure Data Factory felhasználói élményt.
 
 ## <a name="getting-started"></a>Első lépések
 
-[Az adatforgalom leképezése Azure Data Factoryban – első lépések](http://youtu.be/MFw7t_8tuV4)
+[Az Azure Data Factory leképezési adatfolyamainak leképezése – első lépések](http://youtu.be/MFw7t_8tuV4)
 
-## <a name="debugging-and-developing-mapping-data-flows"></a>Leképezési adatfolyamok hibakeresése és fejlesztése
+## <a name="debugging-and-developing-mapping-data-flows"></a>Leképezési adatfolyamatok hibakeresése és fejlesztése
 
-[A leképezési adatfolyamok hibakeresése és tesztelése](https://www.youtube.com/watch?v=3ANxyvDGfjA).
+[A leképezési adatfolyamok hibakeresését és tesztelését.](https://www.youtube.com/watch?v=3ANxyvDGfjA)
 
-[Adatelemzés](https://www.youtube.com/watch?v=En1ztyh5GaA)
+[Adatok feltárása](https://www.youtube.com/watch?v=En1ztyh5GaA)
 
-[Az adatelőnézet gyors műveletei](https://www.youtube.com/watch?v=CP0TnNmaLA0)
+[Az adatelőnézet gyorsműveletei](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
-[A leképezési adatfolyam teljesítményének figyelése és kezelése](https://www.youtube.com/watch?v=fktIWdJiqTk)
+[Leképezési adatfolyam-teljesítmény figyelése és kezelése](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
-[Teljesítménytesztek időzítése](http://youtu.be/6CSbWm4lRhw?hd=1)
+[Viszonyítási alap időzítése](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 ## <a name="transformation-overviews"></a>Átalakítási áttekintések
 
 [Összesített átalakítás](http://youtu.be/jdL75xIr98I)
 
-[A sor átalakításának módosítása](https://www.youtube.com/watch?v=4ktoohwptmQ)
+[Sorátalakítás módosítása](https://www.youtube.com/watch?v=4ktoohwptmQ)
 
 [Származtatott oszlop átalakítása](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
-[Csatlakozás az átalakításhoz](https://www.youtube.com/watch?v=zukwayEXRtg)
+[Illesztés átalakítása](https://www.youtube.com/watch?v=zukwayEXRtg)
 
-[Saját illesztési minta](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
+[Önillesztési minta](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
-[Keresési transzformáció](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
+[A felkeresés átalakítása](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
 [Kimutatás átalakítása](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
-[Pivot-átalakítás: felsodródott oszlopok leképezése](https://youtu.be/5MygzCX0wnM)
+[Kimutatás átalakítása: sodródott oszlopok leképezése](https://youtu.be/5MygzCX0wnM)
 
-[Átalakítás kiválasztása](http://youtu.be/F9VjQ_YyRyU?hd=1)
+[Átalakítás kijelölése](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
-[Átalakítás kiválasztása: szabály alapú leképezés](https://youtu.be/5lf1lh1qMwU)
+[Átalakítás kiválasztása: Szabályalapú leképezés](https://youtu.be/5lf1lh1qMwU)
 
-[Helyettes kulcs átalakítása](https://www.youtube.com/watch?v=ISpegL9CbTM)
+[Helyettesítő kulcs átalakítása](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
-[Unió átalakítása](http://youtu.be/_Et6mg1tEr8?hd=1)
+[Az Unió átalakítása](http://youtu.be/_Et6mg1tEr8?hd=1)
 
-[Az átalakítás unpivot](http://youtu.be/KFYkxcpB8b0?hd=1)
+[Transzformformának feloldása](http://youtu.be/KFYkxcpB8b0?hd=1)
 
 [Ablak átalakítása](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
 
 [Szűrő átalakítása](https://youtu.be/OhbKDOXSfeE)
 
-[Feltételes felosztás átalakítása](http://youtu.be/W1lQHojhKZw?hd=1)
+[Feltételes felosztási transzformáció](http://youtu.be/W1lQHojhKZw?hd=1)
 
-[Létező átalakítás](http://youtu.be/GS8JVgNBMfs?hd=1)
+[Létezik átalakítás](http://youtu.be/GS8JVgNBMfs?hd=1)
 
-[Dinamikus illesztések és dinamikus keresések](https://youtu.be/CMOPPie9bXM)
+[Dinamikus illesztések és dinamikus keresési műveletek](https://youtu.be/CMOPPie9bXM)
 
 [Átalakítás összeolvasztása](https://youtu.be/VY2tFQJoAXE)
 
-## <a name="source-and-sink"></a>Forrás és fogadó
+## <a name="source-and-sink"></a>Forrás és mosogató
 
-[JSON-olvasás és-írás](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
+[JSON-ok olvasása és írása](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
 
 [Parketta és tagolt szövegfájlok](https://youtu.be/V_2a60j2Kjo)
 
-[CosmosDB-összekötő](http://youtu.be/plp1etT2ftY?hd=1)
+[CosmosDB csatlakozó](http://youtu.be/plp1etT2ftY?hd=1)
 
-[Adattípusok kikövetkeztetve tagolt szövegfájlokban](https://www.youtube.com/watch?v=nJjRzlFktlA)
+[Adattípusok kikövetkeztetése tagolt szövegfájlokban](https://www.youtube.com/watch?v=nJjRzlFktlA)
 
 [Particionált fájlok olvasása és írása](https://www.youtube.com/watch?v=7Q-db4Qgc4M)
 
 [Több SQL-tábla átalakítása és létrehozása](https://www.youtube.com/watch?v=Sj15Yjwai1A)
 
-[A fájlok particionálása a adattóban](https://youtu.be/VNWv-MvLQ_0)
+[A fájlok particionálása a data lake-ben](https://youtu.be/VNWv-MvLQ_0)
 
-[Adatraktár betöltési mintája](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+[Adattárraktár betöltési mintája](https://www.youtube.com/watch?v=7mLqwtmeQFg)
 
-## <a name="optimizing-mapping-data-flows"></a>A leképezési adatfolyamatok optimalizálása
+## <a name="optimizing-mapping-data-flows"></a>Leképezési adatfolyamatok optimalizálása
 
-[Adatbányászat](https://www.youtube.com/watch?v=5KvqYF-y93s)
+[Adatéletút](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
 [Optimalizálási tippek](https://www.youtube.com/watch?v=a2KtwUJngHo)
 
-[Fájlok iterációja paraméterekkel](http://youtu.be/uEgz0ptYRDM?hd=1)
+[Fájlok itetése paraméterekkel](http://youtu.be/uEgz0ptYRDM?hd=1)
 
-[Indítási idő csökkentése](https://youtu.be/FFCbU4ujCiY?t=528)
+[Indítási idők csökkentése](https://youtu.be/FFCbU4ujCiY?t=528)
 
-[SQL-adatbázis teljesítménye](https://youtu.be/iyZT5CY3V_4)
+[SQL DB teljesítménye](https://youtu.be/iyZT5CY3V_4)
 
 [Naplózás](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
+[Az adatfolyam-fürt méretének dinamikus optimalizálása futásidőben](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+
 ## <a name="mapping-data-flow-scenarios"></a>Adatfolyam-forgatókönyvek leképezése
 
-[Fuzzy-keresések](http://youtu.be/7gdwExjHBbw)
+[Fuzzy lookups](http://youtu.be/7gdwExjHBbw)
 
-[Előkészítési adatminta](https://youtu.be/mZLKdyoL3Mo)
+[Átmeneti adatminta](https://youtu.be/mZLKdyoL3Mo)
 
-[Tiszta címek minta](https://youtu.be/axEYbuU3lmw)
+[Címek tisztítása minta](https://youtu.be/axEYbuU3lmw)
 
-[Deduplication](https://www.youtube.com/watch?v=OLenvYwg__I)
+[Deduplikáció](https://www.youtube.com/watch?v=OLenvYwg__I)
 
 [Fájlok egyesítése](http://youtu.be/WbDTBAyYte8)
 
-[Lassan változó méretek típusa 1: felülírás](http://youtu.be/Rz2zx5GRbrA)
+[1. típusú, lassan változó méretek: felülírás](http://youtu.be/Rz2zx5GRbrA)
 
-[Lassan változó méretek 2-es típusa: előzmények](http://youtu.be/123CptslKvU)
+[2. típusú, lassan változó méretek: előzmények](http://youtu.be/123CptslKvU)
 
-[Egyedkapcsolat-táblázat betöltése](http://youtu.be/ABG3X9pgFPQ)
+[Ténytábla betöltése](http://youtu.be/ABG3X9pgFPQ)
 
-[SQL Server helyszíni átalakítása Delta-betöltési mintával](https://youtu.be/IN-4v0e7UIs)
+[Sql Server on-prem átalakítása különbözeti adatbetöltési mintával](https://youtu.be/IN-4v0e7UIs)
 
-[Paraméterezés](https://www.youtube.com/watch?v=vpuuQcFojt8)
+[Paraméterezése](https://www.youtube.com/watch?v=vpuuQcFojt8)
 
-[Eltérő sor & sorok száma](https://youtu.be/ryYo8UFUgTI)
+[Különböző sorok & sorok száma](https://youtu.be/ryYo8UFUgTI)
 
-[Csonkolt hibák feldolgozása](http://youtu.be/sPpcSiKQz34)
+[Csonkolási hibák kezelése](http://youtu.be/sPpcSiKQz34)
 
-[Intelligens adatútválasztás](https://youtu.be/PIGw-Z-0upw)
+[Intelligens adattovábbítás](https://youtu.be/PIGw-Z-0upw)
 
-[Adatok maszkolása bizalmas adatokhoz](https://www.youtube.com/watch?v=OFd4LeiTmfs)
+[Bizalmas adatok adatmaszkolása](https://www.youtube.com/watch?v=OFd4LeiTmfs)
 
 [Logikai modellek és fizikai modellek](http://youtu.be/K5tgzLjEE9Q)
 
@@ -143,8 +145,10 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 
 ## <a name="data-flow-expressions"></a>Adatfolyam-kifejezések
 
-[Dátum-és időkifejezések](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
+[Dátum/idő kifejezések](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
 
-[Tömbök és Case-utasítások felosztása](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
+[Tömbök és esetutasítás felosztása](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
 
-[Szórakozás karakterlánc-interpolációval és paraméterekkel](https://youtu.be/hb3-cn2CMgM)
+[Szórakozás a karakterlánc-interpolációval és paraméterekkel](https://youtu.be/hb3-cn2CMgM)
+
+[Adatfolyam-parancsfájl intro: Másolás, beillesztés, kódrészletek](https://www.youtube.com/watch?v=3_1I4XdoBKQ)

@@ -1,20 +1,20 @@
 ---
-title: PowerShell-szkript adatbázis és gyűjtemény létrehozásához Azure Cosmos DB API-MongoDB
-description: Azure PowerShell script-Azure Cosmos DB MongoDB API-adatbázis és-gyűjtemény létrehozása
+title: PowerShell-parancsfájl az Azure Cosmos DB MongoDB-hoz való API-jában való adatbázis és gyűjtemény létrehozásához
+description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB mongoDB API-adatbázist és -gyűjteményt hoz létre
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 347bd6d4d9788516d51d22f43ea60a223e91c49f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59e30de7a0f069cfc69db715115f776034e94909
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444987"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365883"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Adatbázis és gyűjtemény létrehozása a Azure Cosmos DB-MongoDB API-hoz
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Adatbázis és gyűjtemény létrehozása az Azure Cosmos DB-hoz – MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,16 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Új-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Új Cosmos DB-fiókot hoz létre. |
+| [Set-AzCosmosDBMongoDBAdatbázis](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB MongoDB API-adatbázis. |
+| [Új-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | Új MongoDB API-indexet hoz létre. |
+| [Set-AzCosmosDBMongoDBGyűjtemény](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB SQL Collection. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

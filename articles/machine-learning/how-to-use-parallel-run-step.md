@@ -1,7 +1,7 @@
 ---
-title: Batch-előrejelzések futtatása big data
+title: Kötegelt előrejelzések futtatása big data-adatokon
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet aszinkron módon kikövetkeztetni nagy mennyiségű adattal a Azure Machine Learning ParallelRunStep használatával. A ParallelRunStep párhuzamos feldolgozási képességeket biztosít a dobozból, és optimalizálja a nagy adatátviteli sebesség, a tűz és a felejtsd a Big-adatok használati eseteit.
+description: Megtudhatja, hogyan juthat el aszinkron módon nagy mennyiségű adatról az Azure Machine Learning ParallelRunStep használatával. A ParallelRunStep a teljes dobozból kiindulva biztosít párhuzamos feldolgozási lehetőségeket, és optimalizálja a nagy átviteli sebességű, tűzvédelmi és felejtési következtetéseket a big data használati esetekhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,48 +11,48 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037344"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477187"
 ---
-# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
+# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Kötegelt következtetés futtatása nagy mennyiségű adaton az Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Megtudhatja, hogyan dolgozhat fel aszinkron módon és párhuzamosan nagy mennyiségű adatfeldolgozást Azure Machine Learning használatával. Az itt ismertetett ParallelRunStep-képesség nyilvános előzetes verzióban érhető el. Nagy teljesítményű és nagy átviteli sebességű módszer az adatok előállítására és feldolgozására. Aszinkron funkciókat biztosít a dobozból.
+Ismerje meg, hogyan dolgozhat fel nagy mennyiségű adatot aszinkron módon és párhuzamosan az Azure Machine Learning használatával. Az itt ismertetett ParallelRunStep képesség nyilvános előzetes verzióban érhető el. Ez egy nagy teljesítményű és nagy átviteli rendszerű módja a következtetések létrehozásának és az adatok feldolgozásának. Ez biztosítja az aszinkron képességek ki a dobozból.
 
-A ParallelRunStep segítségével egyszerűen méretezheti az offline következtetéseket a nagy mennyiségű, terabájtos üzemi adatokkal rendelkező gépekre, ami jobb termelékenységet és optimalizált költségeket eredményez.
+A ParallelRunStep segítségével egyszerű az offline következtetések nagy fürtjeire skálázható a több terabájt nyi termelési adatokon, ami nagyobb termelékenységet és optimalizált költséget eredményez.
 
-Ez a cikk a következő feladatokat ismerteti:
+Ebben a cikkben a következő feladatokat ismerheti meg:
 
 > * Hozzon létre egy távoli számítási erőforrást.
-> * Egyéni következtetési parancsfájlt írhat.
-> * Hozzon létre egy [gépi tanulási folyamatot](concept-ml-pipelines.md) , amely a [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) adatkészlet alapján regisztrálja az előre betanított képbesorolási modellt. 
-> * A modell használatával futtathat batch-következtetéseket az Azure Blob Storage-fiókjában elérhető mintaképeken. 
+> * Írjon egy egyéni következtetési parancsfájlt.
+> * Hozzon létre egy [gépi tanulási folyamatot](concept-ml-pipelines.md) az [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) adatkészleten alapuló előre betanított rendszerkép-besorolási modell regisztrálásához. 
+> * A modell használatával kötegelt következtetéseket futtathatja az Azure Blob storage-fiókjában elérhető mintaképeken. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
 
-* Az interaktív gyors útmutatóhoz végezze el a [telepítési oktatóanyagot](tutorial-1st-experiment-sdk-setup.md) , ha még nem rendelkezik Azure Machine learning munkaterülettel vagy notebook virtuális géppel. 
+* Az irányított rövid útmutató, töltse ki a [telepítő oktatóanyag,](tutorial-1st-experiment-sdk-setup.md) ha még nem rendelkezik egy Azure Machine Learning-munkaterület vagy notebook virtuális gép. 
 
-* A saját környezetének és függőségeinek kezeléséhez tekintse meg a saját környezet konfigurálásának [útmutatója](how-to-configure-environment.md) című témakört. Futtassa `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` a környezetben a szükséges függőségek letöltéséhez.
+* A saját környezet és függőségek kezeléséhez tekintse meg a [útmutatót](how-to-configure-environment.md) a saját környezet konfigurálásához. Futtassa `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` a környezetben a szükséges függőségek letöltéséhez.
 
-## <a name="set-up-machine-learning-resources"></a>Állítsa be a machine learning-erőforrások
+## <a name="set-up-machine-learning-resources"></a>Gépi tanulási erőforrások beállítása
 
-A következő műveletek a Batch-következtetési folyamat futtatásához szükséges erőforrásokat határozzák meg:
+A következő műveletek beállítják a kötegkövetkeztetési folyamat futtatásához szükséges erőforrásokat:
 
-- Hozzon létre egy adattárolót, amely olyan blob-tárolóra mutat, amely tartalmaz képeket a következtetésekhez.
-- Állítsa be az adathivatkozásokat bemenetként és kimenetként a Batch következtetési folyamat lépéséhez.
-- Állítson be egy számítási fürtöt a Batch következtetési lépés futtatásához.
+- Hozzon létre egy adattár, amely rámutat egy blob tároló, amely a következtetéseket tartalmazó lemezképeket.
+- Állítsa be az adathivatkozásokat bemenetként és kimenetként a kötegkövetkeztetési folyamat lépéséhez.
+- Állítson be egy számítási fürtöt a kötegkövetkeztetési lépés futtatásához.
 
-### <a name="create-a-datastore-with-sample-images"></a>Adattár létrehozása minta-lemezképekkel
+### <a name="create-a-datastore-with-sample-images"></a>Adattár létrehozása mintaképekkel
 
-Szerezze be a MNIST kiértékelését a nyilvános blob-tárolóból `sampledata` egy `pipelinedata`nevű fiókban. Hozzon létre egy `mnist_datastore`nevű adattárt, amely erre a tárolóra mutat. A következő hívásban, hogy `register_azure_blob_container`, a `overwrite` jelzőt úgy állítsa be, hogy `True` felülírja a korábban ezzel a névvel létrehozott adattárat. 
+Az MNIST kiértékelési készlet beolvasása a nyilvános blobtárolóból `sampledata` egy nevű `pipelinedata`fiókon. Hozzon létre egy `mnist_datastore`adattár a nevét, amely rámutat arra, hogy a tároló. A következő hívásban `register_azure_blob_container`a `overwrite` jelző `True` beállításával felülírja a korábban ezzel a névvel létrehozott adattaránkat. 
 
-Ezt a lépést módosíthatja úgy, hogy a blob-tárolóra mutasson úgy, hogy megadja a saját értékeit `datastore_name`, `container_name`és `account_name`.
+Ezt a lépést módosíthatja úgy, hogy a blobtárolóra mutasson, ha saját értékeket ad meg a `datastore_name` `container_name`számára. `account_name`
 
 ```python
 from azureml.core import Datastore
@@ -68,33 +68,33 @@ mnist_blob = Datastore.register_azure_blob_container(ws,
                       overwrite=True)
 ```
 
-Ezután adja meg a munkaterület alapértelmezett adattárát kimeneti adattárként. Ezt fogja használni a következtetési kimenethez.
+Ezután adja meg a munkaterület alapértelmezett adattárát kimeneti adattárként. Akkor használja a következtetés kimenet.
 
-A munkaterület létrehozásakor [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és a [blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez van csatolva. Azure Files a munkaterület alapértelmezett adattára, de a blob Storage-t is használhatja adattárként. További információ: [Azure Storage-beállítások](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+A munkaterület létrehozásakor az [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és a [Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez csatlakozik. Az Azure Files a munkaterület alapértelmezett adattára, de a Blob storage-t adattárként is használhatja. További információ: [Azure storage options](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-inputs-and-outputs"></a>Adatbemenetek és kimenetek konfigurálása
+### <a name="configure-data-inputs-and-outputs"></a>Adatbevitelek és -kimenetek konfigurálása
 
-Most be kell állítania az adatbemeneteket és kimeneteket, beleértve a következőket:
+Most konfigurálnia kell az adatbeviteleket és -kimeneteket, többek között a következőket:
 
-- A bemeneti képeket tartalmazó könyvtár.
-- Az a könyvtár, ahol az előre betanított modellt tárolják.
+- A bemeneti lemezképeket tartalmazó könyvtár.
+- Az előre betanított modell tankönyvtára.
 - A címkéket tartalmazó könyvtár.
 - A kimenet könyvtára.
 
-a [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) egy olyan osztály, amely a Azure Machine Learningban lévő adatelemzést, átalakítást és felügyeletet végzi. Ennek az osztálynak két típusa van: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) és [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). Ebben a példában a `FileDataset` fogja használni bemenetként a Batch következtetési folyamatának lépéséhez. 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)Az Azure Machine Learning ben az adatok feltárására, átalakítására és kezelésére szolgáló osztály. Ennek az osztálynak [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)két típusa van: és . Ebben a példában a `FileDataset` kötegkövetkeztetési lépés bemeneteként fogja használni. 
 
 > [!NOTE] 
-> a Batch-következtetések `FileDataset` támogatása jelenleg az Azure Blob Storage-ra korlátozódik. 
+> `FileDataset`a kötegelt következtetésben nyújtott támogatás egyelőre az Azure Blob storage-ra korlátozódik. 
 
-Az egyéni következtetési parancsfájlban más adatkészletekre is hivatkozhat. Használhatja például a parancsfájlban lévő feliratok elérését a képek címkézéséhez `Dataset.register` és `Dataset.get_by_name`használatával.
+Az egyéni következtetési parancsfájlban más adatkészletekre is hivatkozhat. Használhatja például a parancsfájl címkéinek elérésére a `Dataset.register` képek `Dataset.get_by_name`címkézésére a és a használatával.
 
-További információ a Azure Machine Learning adatkészletekről: [adatkészletek létrehozása és elérése (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
+Az Azure Machine Learning-adatkészletekről az [Adatkészletek létrehozása és elérése (előzetes verzió) című témakörben](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)talál további információt.
 
-a köztes adatátviteli folyamat lépései között [`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektumok használhatók. Ebben a példában a következtetést a kimenetek megjelenítéséhez használja.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)az objektumok köztes adatok átvitelére szolgálnak a folyamatlépései között. Ebben a példában azt a kimenetek következtetése.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -113,7 +113,7 @@ output_dir = PipelineData(name="inferences",
 
 ### <a name="set-up-a-compute-target"></a>Számítási cél beállítása
 
-Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Futtassa a következő kódot egy CPU-alapú [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) -cél létrehozásához.
+Az Azure Machine Learningben *a számítási* (vagy *számítási cél)* azokra a gépekre vagy fürtökre utal, amelyek a gépi tanulási folyamat számítási lépéseit hajtják végre. Futtassa a következő kódot egy CPU-alapú [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) cél létrehozásához.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -151,7 +151,7 @@ else:
 
 ## <a name="prepare-the-model"></a>A modell előkészítése
 
-[Töltse le az előre betanított rendszerkép besorolási modelljét](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz), majd bontsa ki a `models` könyvtárba.
+[Töltse le az előre betanított lemezkép-besorolási modellt,](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)majd bontsa ki a `models` címtárba.
 
 ```python
 import os
@@ -168,7 +168,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-Ezután regisztrálja a modellt a munkaterületén, hogy elérhető legyen a távoli számítási erőforrás számára.
+Ezután regisztrálja a modellt a munkaterülettel, hogy a távoli számítási erőforrás elérhető legyen.
 
 ```python
 from azureml.core.model import Model
@@ -181,16 +181,16 @@ model = Model.register(model_path="models/",
                        workspace=ws)
 ```
 
-## <a name="write-your-inference-script"></a>Következtetési parancsfájl írása
+## <a name="write-your-inference-script"></a>Írja meg a következtetési szkriptet
 
 >[!Warning]
->A következő kód csak egy minta, amelyet a [mintaként használt jegyzetfüzet](https://aka.ms/batch-inference-notebooks) használ. Saját parancsfájlt kell létrehoznia a forgatókönyvhöz.
+>A következő kód csak egy minta, amely a [minta notebook](https://aka.ms/batch-inference-notebooks) használ. Létre kell hoznia a saját forgatókönyvet a forgatókönyvhöz.
 
-A parancsfájlnak két függvényt *kell tartalmaznia* :
-- `init()`: használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba. Ezt a függvényt a rendszer csak egyszer hívja meg a folyamat elején.
--  `run(mini_batch)`: a függvény minden egyes `mini_batch` példánynál futni fog.
-    -  `mini_batch`: a párhuzamos futtatási lépés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át argumentumként a metódusnak. Min_batch minden bejegyzése – egy fájl elérési útja, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet TabularDataset.
-    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti elem egy sikeres futtatását jelzi a bemenet mini-batchben. Győződjön meg arról, hogy elegendő adat szerepel a futtatási eredményben, hogy leképezi a bemenetet az eredmény futtatásához. A futtatási kimenet a kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
+A *parancsfájlnak* két függvényt kell tartalmaznia:
+- `init()`: Ezt a funkciót a későbbi következtetések költséges vagy gyakori előkészítéséhez használja. Például használja a modell betöltéséhez egy globális objektumba. Ez a függvény csak egyszer lesz meghívva a folyamat kezdetén.
+-  `run(mini_batch)`: A függvény minden `mini_batch` példányhoz futni fog.
+    -  `mini_batch`: A párhuzamos futtatási lépés elindítja a futtatási metódust, és a metódus argumentumaként egy listát vagy a Pandas DataFrame-et adja át. Minden bejegyzés min_batch lesz - a fájl elérési útja, ha a bemenet egy FileDataset, a Pandas DataFrame, ha a bemenet egy TabularDataset.
+    -  `response`: a run() metódusnak Pandas DataFrame-et vagy tömböt kell visszaadnia. A append_row output_action esetében ezek a visszaadott elemek hozzáfűzve lesznek a közös kimeneti fájlba. A summary_only esetében az elemek tartalmát a program figyelmen kívül hagyja. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti mini-köteg bemeneti elemének egy sikeres futtatását jelzi. Győződjön meg arról, hogy elegendő adat szerepel a futtatási eredmény a bemeneti eredmény leképezéséhez. Run kimenet lesz írva a kimeneti fájlt, és nem garantált, hogy annak érdekében, akkor használja néhány kulcsot a kimeneti leképezése a bemeneti.
 
 ```python
 # Snippets from a sample script.
@@ -237,22 +237,22 @@ def run(mini_batch):
     return resultList
 ```
 
-### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>Más fájlok elérése a forrás könyvtára entry_script
+### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>A forráskönyvtárban lévő többi fájl elérése entry_script
 
-Ha a bejegyzési parancsfájllal megegyező könyvtárban van egy másik fájl vagy mappa, az aktuális munkakönyvtár megkeresésével hivatkozhat rá.
+Ha a bejegyzési parancsfájllal azonos könyvtárban van egy másik fájl vagy mappa, az aktuális munkakönyvtár megkeresésével hivatkozhat rá.
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
 file_path = os.path.join(script_dir, "<file_name>")
 ```
 
-## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>ParallelRunStep tartalmazó folyamat létrehozása és futtatása
+## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>A ParallelRunStep-et tartalmazó folyamat létrehozása és futtatása
 
-Most már mindent megtalál, amire szüksége lehet a folyamat létrehozásához.
+Most már mindent meg kell építeni a csővezeték.
 
 ### <a name="prepare-the-run-environment"></a>A futtatási környezet előkészítése
 
-Először adja meg a parancsfájl függőségeit. Ezt az objektumot később kell használni, amikor létrehozza a folyamat lépését.
+Először adja meg a parancsfájl függőségeit. Ezt az objektumot később használja a folyamatlépés létrehozásakor.
 
 ```python
 from azureml.core.environment import Environment
@@ -268,24 +268,24 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Adja meg a Batch-következtetési folyamat lépésének paramétereit
+### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Adja meg a kötegkövetkeztetési folyamat lépésparamétereit
 
-a `ParallelRunConfig` az újonnan bevezetett batch következtetések `ParallelRunStep` példányának fő konfigurációja a Azure Machine Learning folyamaton belül. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve az alábbi paramétereket:
-- `entry_script`: egy felhasználói parancsfájl helyi fájl elérési útjaként, amely több csomóponton párhuzamosan fog futni. Ha `source_directory` létezik, használjon relatív elérési utat. Ellenkező esetben használja a gépen elérhető bármely elérési utat.
-- `mini_batch_size`: a mini-batch egyetlen `run()` hívásnak átadott mérete. (nem kötelező; az alapértelmezett érték `10` fájlok FileDataset és `1MB` a TabularDataset.)
-    - `FileDataset`esetén a `1`minimális értékkel rendelkező fájlok száma. Több fájlt is egyesítheti egyetlen mini-kötegbe.
-    - `TabularDataset`esetében ez az adatmennyiség. Az értékek például a következők: `1024`, `1024KB`, `10MB`és `1GB`. Az ajánlott érték `1MB`. A `TabularDataset` mini-batch soha nem keresztezi a fájlok határait. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha `mini_batch_size = 1MB`, akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
-- `error_threshold`: a feldolgozás során figyelmen kívül hagyott `FileDataset` esetén a `TabularDataset` és a fájlok meghibásodása miatti hibák száma. Ha a teljes bemenethez tartozó hibák száma meghaladja ezt az értéket, a rendszer megszakítja a feladatot. A hiba küszöbértéke a teljes bemenetre vonatkozik, nem az `run()` metódusnak eljuttatott egyes mini-kötegekhez. A tartomány `[-1, int.max]`. A `-1` rész azt jelzi, hogy a rendszer figyelmen kívül hagyja az összes hibát a feldolgozás során.
-- `output_action`: a következő értékek egyike azt jelzi, hogyan lesz rendszerezve a kimenet:
-    - `summary_only`: a felhasználói parancsfájl a kimenetet fogja tárolni. `ParallelRunStep` a kimenetet csak a hiba küszöbértékének kiszámításakor fogja használni.
-    - `append_row`: minden bemeneti fájl esetében a kimeneti mappában csak egy fájl lesz létrehozva, hogy az összes kimenetet sor szerint elválasztva fűzze hozzá. A fájl neve `parallel_run_step.txt`lesz.
-- `source_directory`: a számítási célra végrehajtandó összes fájlt tartalmazó mappák elérési útja (nem kötelező).
-- `compute_target`: csak `AmlCompute` támogatott.
-- `node_count`: a felhasználói parancsfájl futtatásához használandó számítási csomópontok száma.
-- `process_count_per_node`: a folyamatok száma egy csomóponton.
-- `environment`: a Python-környezet definíciója. Konfigurálhatja egy meglévő Python-környezet használatára, vagy létrehozhat egy ideiglenes környezetet a kísérlethez. A definíció a szükséges alkalmazás-függőségek (opcionális) beállítására is felelős.
-- `logging_level`: részletes naplózás. A részletességgel bővülő értékek a következők: `WARNING`, `INFO`és `DEBUG`. (nem kötelező; az alapértelmezett érték `INFO`)
-- `run_invocation_timeout`: a `run()` metódus meghívásának időtúllépése másodpercben. (nem kötelező; az alapértelmezett érték `60`)
+`ParallelRunConfig`az Azure Machine Learning-folyamaton belül `ParallelRunStep` az újonnan bevezetett kötegkövetkeztetési példány fő konfigurációja. A parancsfájl burkolására és a szükséges paraméterek konfigurálására használható, beleértve az alábbi paraméterek mindegyikét:
+- `entry_script`: Felhasználói parancsfájl helyi fájlelérési útként, amely több csomóponton párhuzamosan fog futni. Ha `source_directory` van ilyen, használjon relatív elérési utat. Ellenkező esetben használjon olyan elérési utat, amely elérhető a számítógépen.
+- `mini_batch_size`: A mini-batch mérete egyetlen `run()` hívásra átadott. (nem kötelező; az `10` alapértelmezett érték a `1MB` FileDataset és a TabularDataset fájljai.)
+    - A `FileDataset`esetén a minimális értékű fájlok `1`száma. Több fájlt is egyesíthet egyetlen minikötegbe.
+    - A `TabularDataset`, ez az adatok mérete. A példaértékek `1024KB` `10MB`a `1GB`, `1024`, és . Az ajánlott `1MB`érték a . A mini-batch-től `TabularDataset` soha nem lépi át a fájlhatárokat. Ha például .csv fájlja van különböző méretben, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha a `mini_batch_size = 1MB`beállítás , majd a fájlok mérete kisebb, mint 1 MB lesz kezelni, mint egy mini-batch. Az 1 MB-nál nagyobb méretű fájlok több minikötegre lesznek felosztva.
+- `error_threshold`: A feldolgozás során `TabularDataset` figyelmen kívül `FileDataset` kell hagyni az ilyen rekordhibák és fájlhibák számát. Ha a teljes bemenet hibaszáma meghaladja ezt az értéket, a feladat megszakad. A hibaküszöb a teljes bemenetre, és nem a `run()` metódusnak küldött egyedi minikötegekre van. A tartomány `[-1, int.max]`. Az `-1` alkatrész azt jelzi, figyelmen kívül hagyva az összes hibát a feldolgozás során.
+- `output_action`: Az alábbi értékek egyike jelzi a kimenet rendszerezését:
+    - `summary_only`: A felhasználói parancsfájl tárolja a kimenetet. `ParallelRunStep`csak a hibaküszöb kiszámításához használja a kimenetet.
+    - `append_row`: Az összes bemeneti fájl hoz létre csak egy fájlt a kimeneti mappában, hogy hozzáfűzi az összes kimenetet soron ként elválasztva. A fájlnév `parallel_run_step.txt`a .
+- `source_directory`: A számítási célon végrehajtandó összes fájlt tartalmazó mappák elérési útjai (nem kötelező).
+- `compute_target`: `AmlCompute` Csak támogatott.
+- `node_count`: A felhasználói parancsfájl futtatásához használandó számítási csomópontok száma.
+- `process_count_per_node`: A folyamatok száma csomópontonként.
+- `environment`: A Python-környezet definíciója. Beállíthatja, hogy egy meglévő Python-környezetet használjon, vagy ideiglenes környezetet állítson be a kísérlethez. A definíció felelős a szükséges alkalmazásfüggőségek beállításáért is (nem kötelező).
+- `logging_level`: Részletesség naplózása. A növekvő részletességben lévő `WARNING` `INFO`értékek `DEBUG`a következők: , , és . (nem kötelező, az `INFO`alapértelmezett érték )
+- `run_invocation_timeout`: `run()` A metódus meghívási időmeghosszabbítása másodpercben. (nem kötelező; `60`az alapértelmezett érték )
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -301,16 +301,16 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>A folyamat lépés létrehozása
+### <a name="create-the-pipeline-step"></a>A folyamatlépés létrehozása
 
-Hozza létre a folyamat lépéseit a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg a munkaterülethez már csatolt számítási célt a parancsfájl végrehajtásának céljaként. A `ParallelRunStep` használatával hozza létre a Batch következtetési folyamatának lépését, amely a következő paramétereket veszi figyelembe:
-- `name`: a lépés neve a következő elnevezési korlátozásokkal: Unique, 3-32 karakter és regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
-- `models`: nulla vagy több modell neve már regisztrálva van a Azure Machine Learning modell beállításjegyzékében.
-- `parallel_run_config`: A korábban meghatározott `ParallelRunConfig` objektum.
-- `inputs`: egy vagy több egybeírt Azure Machine Learning adathalmaz.
-- `output`: a kimeneti könyvtárnak megfelelő `PipelineData` objektum.
-- `arguments`: a felhasználói parancsfájlnak átadott argumentumok listája (nem kötelező).
-- `allow_reuse`: azt határozza meg, hogy a lépés felhasználja-e a korábbi eredményeket, ha ugyanazokkal a beállításokkal/bemenetekkel futnak. Ha ez a paraméter `False`, akkor a folyamat végrehajtása során mindig létrejön egy új Futtatás a művelethez. (nem kötelező; az alapértelmezett érték `True`.)
+Hozza létre a folyamatlépés a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg a számítási célt, amely már csatolt a munkaterülethez, mint a parancsfájl végrehajtásának célja. A `ParallelRunStep` kötegelt következtetési folyamat lépésének létrehozásához használja, amely az alábbi paraméterek mindegyikét alkalmazza:
+- `name`: A lépés neve a következő elnevezési korlátozásokkal: egyedi, 3-32\[karakter,\]és regex ^ a-z ([-a-z0-9]*[a-z0-9])?$.
+- `models`: Nulla vagy több modellnév már regisztrálva van az Azure Machine Learning modell beállításjegyzékében.
+- `parallel_run_config`: `ParallelRunConfig` Egy objektum, akorábban meghatározottak szerint.
+- `inputs`: Egy vagy több egygépelt Azure Machine Learning-adatkészletek.
+- `output`: `PipelineData` A kimeneti könyvtárnak megfelelő objektum.
+- `arguments`: A felhasználói parancsfájlnak átadott argumentumok listája (nem kötelező).
+- `allow_reuse`: A lépés nek újra fel kell-e használnia a korábbi eredményeket, ha azonos beállításokkal/bemenetekkel fut. Ha ez `False`a paraméter, akkor a folyamat végrehajtása során mindig új futtatás jön létre ehhez a lépéshez. (nem kötelező; az `True`alapértelmezett érték .)
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunStep
@@ -327,13 +327,13 @@ parallelrun_step = ParallelRunStep(
 ```
 
 >[!Note]
-> A fenti lépés a `azureml-contrib-pipeline-steps`től függ, az [Előfeltételek](#prerequisites)szakaszban leírtak szerint. 
+> A fenti lépés `azureml-contrib-pipeline-steps`attól függ , ahogy azt az Előfeltételek című részben [leírtak szerint.](#prerequisites) 
 
-### <a name="run-the-pipeline"></a>A folyamat futtatása
+### <a name="submit-the-pipeline"></a>A folyamat beküldése
 
-Most futtassa a folyamatot. Először hozzon létre egy [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
+Most futtassa a vezetéket. Először hozzon létre egy [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objektumot a munkaterületi hivatkozás és a létrehozott folyamatlépés használatával. A `steps` paraméter lépések tömbje. Ebben az esetben csak egy lépés van a kötegelt pontozáshoz. Ha több lépésből álló folyamatokat szeretne építeni, helyezze a lépéseket sorrendbe ebben a tömbben.
 
-Ezután a `Experiment.submit()` függvénnyel küldje el a folyamatot végrehajtásra.
+Ezután használja `Experiment.submit()` a függvényt a folyamat végrehajtásra történő elküldéséhez.
 
 ```python
 from azureml.pipeline.core import Pipeline
@@ -343,12 +343,12 @@ pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
 pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
 ```
 
-## <a name="monitor-the-parallel-run-job"></a>A párhuzamos futtatási feladatok figyelése
+## <a name="monitor-the-parallel-run-job"></a>A párhuzamos futtatási feladat figyelése
 
-A Batch-következtetési feladatok végrehajtása hosszú időt is igénybe vehet. Ez a példa egy Jupyter Widget használatával figyeli a folyamat előrehaladását. A feladatok előrehaladását a használatával is kezelheti:
+A kötegelt következtetési feladat befejezése hosszú időt vehet igénybe. Ez a példa jupyter widget használatával figyeli a folyamatot. A projekt előrehaladását a következők használatával is kezelheti:
 
-* Az Azure Machine Learning Studióban. 
-* Konzol kimenete a [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) objektumból.
+* Azure Machine Learning Stúdió. 
+* Konzol kimenete [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) az objektumból.
 
 ```python
 from azureml.widgets import RunDetails
@@ -357,13 +357,13 @@ RunDetails(pipeline_run).show()
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://aka.ms/batch-inference-notebooks). 
+Ha látni szeretné, hogy ez a folyamat végponttól végpontig működik, próbálja meg a [kötegkövetkeztetési jegyzetfüzetet.](https://aka.ms/batch-inference-notebooks) 
 
-A ParallelRunStep kapcsolatos hibakeresési és hibaelhárítási útmutatásért lásd: [útmutató.](how-to-debug-parallel-run-step.md)
+A ParallelRunStep hibakeresésére és hibaelhárítási útmutatására [vonatkozó](how-to-debug-parallel-run-step.md)útmutatóban talál.
 
-[A folyamatok](how-to-debug-pipelines.md)hibakereséséhez és hibaelhárításához tekintse meg a útmutató útmutatását.
+A folyamatok hibakeresésére és hibaelhárítására vonatkozó útmutatást az [útmutatóban talál.](how-to-debug-pipelines.md)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

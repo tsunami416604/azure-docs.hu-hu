@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – tároló rendszerképének előkészítése üzembe helyezéshez
-description: Azure Container Instances oktatóanyag 1. rész – az alkalmazás előkészítése egy tároló-rendszerképbe az üzembe helyezéshez Azure Container Instances
+title: Oktatóanyag – A tárolórendszerkép előkészítése a telepítéshez
+description: Azure Container Instances oktatóanyag 1/3- Egy alkalmazás előkészítése egy tárolórendszerképben az Azure Container Instances üzembe helyezéséhez
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74533346"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Oktatóanyag: Hozzon létre egy tárolórendszerképet az Azure Container Instances üzembe helyezéséhez
 
 Az Azure Container Instances lehetővé teszi Docker-tárolók üzembe helyezését az Azure-infrastruktúrában anélkül, hogy ehhez virtuális gépeket kellene üzembe helyeznie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Ebben az oktatóanyagban egy kisméretű Node.js-webalkalmazást csomagolunk egy, az Azure Container Instances használatával futtatható tárolórendszerképbe.
 
@@ -24,13 +24,13 @@ A cikk, amely a sorozat első része, a következő lépésekből áll:
 
 Az oktatóanyag második és harmadik részében feltöltjük a rendszerképet az Azure Container Registrybe, majd üzembe helyezzük az Azure Container Instancesben.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="get-application-code"></a>Az alkalmazáskód letöltése
 
-Az oktatóanyagban szereplő minta alkalmazás egy [Node. js][nodejs]-ben létrehozott egyszerű webalkalmazás. Az alkalmazás egy statikus HTML-oldalt szolgál ki, és a következő képernyőképen láthatóakhoz hasonló:
+Az oktatóanyagban szereplő mintaalkalmazás egy, a [Node.js][nodejs] használatával létrehozott egyszerű webalkalmazás. Az alkalmazás egy statikus HTML-oldalt szolgál ki, és a következő képernyőképen láthatóakhoz hasonló:
 
 ![Az oktatóanyag alkalmazása böngészőben megjelenítve][aci-tutorial-app]
 
@@ -40,11 +40,11 @@ A Git használatával klónozza a mintaalkalmazás adattárát:
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-Közvetlenül a GitHubról is [letöltheti a zip-archívumot][aci-helloworld-zip] .
+Közvetlenül a GitHubról is [letöltheti a ZIP-archívumot][aci-helloworld-zip].
 
 ## <a name="build-the-container-image"></a>Építse fel a tárolórendszerképet
 
-A mintaalkalmazásban szereplő Dockerfile bemutatja a tároló összeállításának menetét. Ez egy, az [alpesi Linuxon][alpine-linux]alapuló, [hivatalos Node. js-rendszerképből][docker-hub-nodeimage] indul, amely egy kis eloszlás, amely jól használható a tárolókkal való használatra. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Managerrel, végül pedig elindítja az alkalmazást.
+A mintaalkalmazásban szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy [hivatalos Node.js-rendszerképpel][docker-hub-nodeimage] indul, amely az [Alpine Linux][alpine-linux] rendszeren alapul – ez egy kisebb kiadás, amely jól használható a tárolókkal. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Managerrel, végül pedig elindítja az alkalmazást.
 
 ```Dockerfile
 FROM node:8.9.3-alpine
@@ -55,13 +55,13 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-A [Docker Build][docker-build] parancs használatával hozza létre a tároló rendszerképét, és címkézze fel *ACI-tutorial-app*néven:
+A [docker build][docker-build] paranccsal hozza létre a tárolórendszerképet, és lássa el az *aci-tutorial-app* címkével:
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-A [Docker Build][docker-build] parancs kimenete az alábbihoz hasonló (az olvashatóság érdekében csonkítva):
+A [docker build][docker-build] parancs kimenete a következőhöz hasonló (az olvashatóság érdekében csonkolva):
 
 ```console
 $ docker build ./aci-helloworld -t aci-tutorial-app
@@ -83,7 +83,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-A beépített lemezkép megjelenítéséhez használja a [Docker images][docker-images] parancsot:
+A [docker images][docker-images] paranccsal megtekintheti az összeállított rendszerképet:
 
 ```bash
 docker images
@@ -99,7 +99,7 @@ aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 
 ## <a name="run-the-container-locally"></a>Futtassa helyileg a tárolót
 
-Mielőtt üzembe helyezi a tárolót Azure Container Instancesre, a [Docker futtatásával][docker-run] helyileg futtathatja és ellenőrizheti, hogy működik-e. A `-d` kapcsolóval a tároló a háttérben működtethető, míg a `-p` kapcsolóval leképezheti a számítógép egy tetszőleges portját a tároló 80-as portjára.
+Mielőtt megpróbálná üzembe helyezni a tárolót az Azure Container Instancesben, futtassa helyileg a [docker run][docker-run] paranccsal, hogy ellenőrizze a működését. A `-d` kapcsolóval a tároló a háttérben működtethető, míg a `-p` kapcsolóval leképezheti a számítógép egy tetszőleges portját a tároló 80-as portjára.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app
@@ -116,7 +116,7 @@ Ezután lépjen a `http://localhost:8080` címre a böngészőben, hogy ellenőr
 
 ![Az alkalmazás helyileg történő futtatása a böngészőben][aci-tutorial-app-local]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban egy, az Azure Container Instancesben üzembe helyezhető tárolórendszerképet hozott létre, és ellenőrizte, hogy helyben fut-e. Eddig a következőket hajtotta végre:
 

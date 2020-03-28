@@ -1,20 +1,20 @@
 ---
-title: PowerShell-szkript a Azure Cosmos DB API-MongoDB való listázásához és lekéréséhez
-description: Azure PowerShell script-Azure Cosmos DB-lista és-lekérési műveletek a MongoDB API-hoz
+title: PowerShell-parancsfájl az Azure Cosmos DB MongoDB-hoz való API-jában való listázáshoz és beési műveletekhez
+description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB-lista és a MongoDB API-hoz való műveletek beszerezése
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 686b140915e90adefa15084c2e8317404b91ed09
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441417"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365902"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Adatbázisok és diagramok listázása és lekérése a Azure Cosmos DB-MongoDB API-hoz
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Adatbázisok és grafikonok listázása és lehívása az Azure Cosmos DB-hoz – MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,15 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Listázza a Cosmos DB-fiókokat, vagy lead egy megadott Cosmos DB-fiókot. |
+| [Get-AzCosmosDBMongoDBAdatbázis](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Listázza a Cosmos DB MongoDB API-adatbázisokat egy fiókban, vagy lead egy adott Cosmos DB MogoDB API-adatbázist egy fiókban. |
+| [Get-AzCosmosDBMongoDBGyűjtemény](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Listázza a Cosmos DB MongoDB API-gyűjteményeket, vagy lekap egy megadott Cosmos DB MongoDB API-gyűjteményt egy adatbázisban |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

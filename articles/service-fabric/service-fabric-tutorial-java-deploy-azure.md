@@ -1,17 +1,17 @@
 ---
-title: Java-alkalmazás üzembe helyezése Service Fabric-fürtön az Azure-ban
+title: Java-alkalmazás üzembe helyezése egy Azure-beli Service Fabric-fürtre
 description: Ez az oktatóanyag azt mutatja be, hogyan kell üzembe helyezni egy Java Service Fabric-alkalmazást egy Azure Service Fabric-fürtön.
 author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252803"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292036"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 
@@ -26,7 +26,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * [Java Service Fabric Reliable Services-alkalmazás létrehozása](service-fabric-tutorial-create-java-app.md)
+> * [Service Fabric Reliable Services Java-alkalmazás létrehozása](service-fabric-tutorial-create-java-app.md)
 > * [Az alkalmazás üzembe helyezése és hibakeresése egy helyi fürtön](service-fabric-tutorial-debug-log-local-cluster.md)
 > * Alkalmazás üzembe helyezése egy Azure-fürtön
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-java-elk.md)
@@ -36,8 +36,8 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 Az oktatóanyag elkezdése előtt:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Telepítse a Service Fabric SDK [Mac](service-fabric-get-started-mac.md) vagy [Linux](service-fabric-get-started-linux.md) rendszerhez való változatát.
 * [Telepítse a Python 3-at.](https://wiki.python.org/moin/BeginnersGuide/Download)
 
@@ -162,7 +162,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    A EventHubs SAS URL-címe a következő struktúrát követi: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Például: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
+    Az EventHubs SAS-URL-címe a `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`következő struktúrát követi: . Például: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
 12. Nyissa meg az *sfdeploy.parameters.json* fájlt, és cserélje le a következő tartalmakat az előző lépésekből származó értékekre. [SAS-URL-STORAGE-ACCOUNT] – a 8. lépésben feljegyezve. [SAS-URL-EVENT-HUBS] – a 11. lépésben feljegyezve.
 
@@ -217,11 +217,11 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     ./install.sh
     ```
 
-5. A Service Fabric Explorer eléréséhez nyisson meg egy böngészőt, és írja be a következőt: https://testlinuxcluster.westus.cloudapp.azure.com:19080. A tanúsítványtárolóból válassza ki a tanúsítványt, amellyel csatlakozni szeretne ehhez a végponthoz. Linux-rendszerek esetében a *new-service-fabric-cluster-certificate.sh* szkripttel létrehozott tanúsítványokat a Chrome-ba kell importálni, hogy a Service Fabric Explorert meg lehessen jeleníteni. Mac gépek esetében a PFX-fájlt telepíteni kell a kulcskarikában. A rendszer jelzi, ha az alkalmazás települt a fürtre.
+5. A Service Fabric Explorer eléréséhez nyisson meg egy böngészőt, és írja be a következőt: `https://testlinuxcluster.westus.cloudapp.azure.com:19080`. A tanúsítványtárolóból válassza ki a tanúsítványt, amellyel csatlakozni szeretne ehhez a végponthoz. Linux-rendszerek esetében a *new-service-fabric-cluster-certificate.sh* szkripttel létrehozott tanúsítványokat a Chrome-ba kell importálni, hogy a Service Fabric Explorert meg lehessen jeleníteni. Mac gépek esetében a PFX-fájlt telepíteni kell a kulcskarikában. A rendszer jelzi, ha az alkalmazás települt a fürtre.
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. Az alkalmazás megnyitásához írja be a következőt: https://testlinuxcluster.westus.cloudapp.azure.com:8080
+6. Az alkalmazás megnyitásához írja be a következőt: `https://testlinuxcluster.westus.cloudapp.azure.com:8080`
 
     ![Szavazóalkalmazás – Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
@@ -231,7 +231,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     ./uninstall.sh
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

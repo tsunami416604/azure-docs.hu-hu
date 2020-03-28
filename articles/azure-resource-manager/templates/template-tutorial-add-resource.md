@@ -1,67 +1,67 @@
 ---
-title: Oktatóanyag – erőforrás hozzáadása sablonhoz
-description: Az első Azure Resource Manager-sablon létrehozásának lépéseit ismerteti. Megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
+title: Oktatóanyag – Erőforrás hozzáadása a sablonhoz
+description: Az első Azure Resource Manager-sablon létrehozásának lépéseit ismerteti. Megtudhatja, hogy a sablonfájl szintaxisa és hogyan telepítheti a tárfiókot.
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e533b70ba713b8c52a29cfbcc1cd8ccb99b8543f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370695"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371736"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Oktatóanyag: erőforrás hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Oktatóanyag: Erőforrás hozzáadása az ARM-sablonhoz
 
-Az [előző oktatóanyagban](template-tutorial-create-first-template.md)megtanulta, hogyan hozhat létre üres sablont, és hogyan telepítheti azt. Most már készen áll egy tényleges erőforrás üzembe helyezésére. Ebben az oktatóanyagban egy Storage-fiókot fog hozzáadni. Az oktatóanyag elvégzése körülbelül **9 percet** vesz igénybe.
+Az [előző oktatóanyagból](template-tutorial-create-first-template.md)megtanulta, hogyan hozhat létre üres sablont, és hogyan telepítheti azt. Most már készen áll egy tényleges erőforrás üzembe helyezésére. Ebben az oktatóanyagban egy tárfiókot ad hozzá. Az oktatóanyag körülbelül **9 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Javasoljuk, hogy végezze el a [sablonokkal kapcsolatos bevezető oktatóanyagot](template-tutorial-create-first-template.md), de ez nem kötelező.
+Javasoljuk, hogy töltse ki a [sablonokról szóló bevezető oktatóanyagot,](template-tutorial-create-first-template.md)de ez nem kötelező.
 
-A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítménylel, valamint az Azure PowerShell vagy az Azure CLI használatával. További információt a [sabloneszközök című témakörben talál.](template-tutorial-create-first-template.md#get-tools)
 
 ## <a name="add-resource"></a>Erőforrás hozzáadása
 
-A Storage-fiók definíciójának meglévő sablonhoz való hozzáadásához tekintse meg a Kiemelt JSON-t a következő példában. A sablon részeinek másolása helyett másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
+Tárfiók-definíció hozzáadása a meglévő sablonhoz, tekintse meg a kiemelt JSON a következő példában. Ahelyett, hogy a sablon szakaszait másolná, másolja a teljes fájlt, és cserélje le a sablon tartalmát.
 
-Cserélje le a **{ad-Unique-Name}** nevet egy egyedi Storage-fiók nevére.
+Cserélje le **a(z) {provide-unique-name}** nevet egy egyedi tárfióknévre.
 
 > [!IMPORTANT]
-> A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűvel vagy számmal kell rendelkeznie. Nem lehet hosszabb 24 karakternél. Lehet, hogy megpróbál egy elnevezési mintát használni, például a **store1** előtagként való használatát, majd hozzáadja a monogramját és a mai dátumot. A használt név például a következőhöz hasonló: **store1abc09092019**.
+> A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűs vagy számok lehetnek. Nem lehet hosszabb 24 karakternél. Megpróbálhat egy elnevezési mintát, például **a store1** előtagként való használatát, majd a monogram és a mai dátum hozzáadását. A használt név például úgy nézhet ki, mint **a store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
-A Storage-fiókok egyedi nevének kitalálása nem egyszerű, és nem jól működik a nagyméretű központi telepítések automatizálásához. Az oktatóanyag-Sorozat későbbi részében olyan sablon-funkciókat fog használni, amelyek megkönnyítik egy egyedi név létrehozását.
+A tárfiók egyedi nevének kitalálása nem könnyű, és nem működik jól a nagy méretű telepítések automatizálásához. Az oktatóanyag-sorozat későbbi részében olyan sablonfunkciókat fog használni, amelyek megkönnyítik az egyedi név létrehozását.
 
 ## <a name="resource-properties"></a>Erőforrás tulajdonságai
 
-Lehet, hogy kíváncsi, hogyan lehet megkeresni az egyes erőforrástípusok által használandó tulajdonságokat. A [Resource Manager-sablonok hivatkozásával](/azure/templates/) megkeresheti a telepíteni kívánt erőforrásokat.
+Lehet, hogy kíváncsi, hogyan lehet megtalálni az egyes erőforrás-típusok használandó tulajdonságokat. Az ARM [sablonhivatkozás segítségével](/azure/templates/) megkeresheti a telepíteni kívánt erőforrástípusokat.
 
-Minden üzembe helyezett erőforrás rendelkezik legalább a következő tulajdonságokkal:
+Minden üzembe helyezett erőforrás legalább a következő három tulajdonsággal rendelkezik:
 
-- **típus**: az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrás típusának (például a Microsoft. Storage/storageAccounts) a kombinációja.
-- **apiVersion**: az erőforrás létrehozásához használandó REST API verziója. Minden erőforrás-szolgáltató közzétette saját API-verzióit, így ez az érték a típusra jellemző.
-- **Name (név**): az erőforrás neve.
+- **típus**: Az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrástípusnak (például A Microsoft.Storage/storageAccounts) kombinációja.
+- **apiVersion**: A REST API-t az erőforrás létrehozásához használandó verzió. Minden erőforrás-szolgáltató saját API-verziókat tett közzé, így ez az érték a típusra jellemző.
+- **name**: Az erőforrás neve.
 
-A legtöbb erőforráshoz tartozik egy **Location** tulajdonság is, amely azt a régiót állítja be, ahol az erőforrás telepítve van.
+A legtöbb erőforrás rendelkezik egy **helytulajdonsággal** is, amely beállítja azt a régiót, ahol az erőforrás telepítve van.
 
-A többi tulajdonság az erőforrás típusa és az API-verzió szerint változhat. Fontos tisztában lenni az API-verzió és a rendelkezésre álló tulajdonságok közötti kapcsolattal, így részletesebben is megtudhatja.
+A többi tulajdonság az erőforrás típusától és az API-verziótól függően változik. Fontos, hogy tisztában legyen az API-verzió és a rendelkezésre álló tulajdonságok közötti kapcsolat megértéséhez, ezért ugorjunk be részletesebben.
 
-Ebben az oktatóanyagban egy Storage-fiókot adott hozzá a sablonhoz. Ezt az API-verziót a következő helyen tekintheti meg: [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Figyelje meg, hogy az összes tulajdonságot nem adta hozzá a sablonhoz. A tulajdonságok többsége nem kötelező. A Microsoft. Storage erőforrás-szolgáltató egy új API-verziót szabadíthat fel, de a telepítendő verziónak nem kell megváltoznia. Továbbra is használhatja ezt a verziót, és biztos lehet benne, hogy a telepítés eredményei konzisztensek lesznek.
+Ebben az oktatóanyagban egy tárfiókot adott hozzá a sablonhoz. Ezt az API-verziót a [storageAccounts 2019-04-01 oldalon láthatja.](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) Figyelje meg, hogy nem adta hozzá az összes tulajdonságot a sablonhoz. Számos tulajdonság nem kötelező. A Microsoft.Storage erőforrás-szolgáltató feladhat egy új API-verziót, de a telepített verziónak nem kell módosulnia. Továbbra is használhatja ezt a verziót, és tudja, hogy a központi telepítés eredményei konzisztensek lesznek.
 
-Ha egy régebbi API-verziót (például [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)) tekint meg, láthatja, hogy a tulajdonságok kisebb készlete áll rendelkezésre.
+Ha egy régebbi API-verziót, például [a storageAccounts 2016-05-01-et](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)tekint meg, láthatja, hogy kisebb tulajdonságok érhetők el.
 
-Ha úgy dönt, hogy megváltoztatja egy erőforrás API-verzióját, ügyeljen rá, hogy kiértékelje az adott verzió tulajdonságait, és megfelelően módosítsa a sablont.
+Ha úgy dönt, hogy módosítja egy erőforrás API-verzióját, győződjön meg arról, hogy kiértékeli az adott verzió tulajdonságait, és megfelelően módosítja a sablont.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-A sablont üzembe helyezheti a Storage-fiók létrehozásához. Adjon egy másik nevet az üzembe helyezésnek, hogy könnyen megtalálja az előzményekben.
+A tárfiók létrehozásához telepítheti a sablont. Adjon a központi telepítésnek egy másik nevet, hogy könnyen megtalálhassa azt az előzményekben.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -72,6 +72,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+A központi telepítési parancs futtatásához az Azure CLI [legújabb verziójával](/cli/azure/install-azure-cli) kell rendelkeznie.
+
 ```azurecli
 az deployment group create \
   --name addstorage \
@@ -81,42 +83,42 @@ az deployment group create \
 
 ---
 
-Két lehetséges üzembe helyezési hiba merülhet fel:
+Két lehetséges üzembe helyezési hiba, amely nek találkozhat:
 
-- Hiba: code = AccountNameInvalid; Az üzenet = {adjon meg egyedi nevet} nem érvényes Storage-fióknév. A Storage-fiók nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon.
+- Hiba: Code=AccountNameInvalid; A Message={provide-unique-name} nem érvényes tárfióknév. A tárfiók nevének 3 és 24 karakter közötti hosszúságúnak kell lennie, és csak számokat és kisbetűket használhat.
 
-    A sablonban cserélje le a **{ad-Unique-Name}** nevet egy egyedi Storage-fiók nevére.  Lásd: [erőforrás hozzáadása](#add-resource).
+    A sablonban cserélje le **{provide-unique-name}** elemet egy egyedi tárfióknévre.  Lásd: [Erőforrás hozzáadása](#add-resource).
 
-- Hiba: code = StorageAccountAlreadyTaken; Üzenet = a store1abc09092019 nevű Storage-fiók már használatban van.
+- Hiba: Code=StorageAccountAlreadyTaken; Message=A store1abc09092019 nevű tárfiók már foglalt.
 
-    A sablonban próbálkozzon egy másik Storage-fiók nevével.
+    A sablonban próbálkozzon egy másik tárfiók névvel.
 
-Ez a telepítés hosszabb időt vesz igénybe, mint az üres sablon üzembe helyezése, mivel a rendszer létrehozza a Storage-fiókot. Körülbelül egy percet is igénybe vehet, de általában gyorsabb.
+Ez a központi telepítés hosszabb időt vesz igénybe, mint az üres sablon központi telepítése, mert a tárfiók jön létre. Ez eltarthat körülbelül egy percig, de általában gyorsabb.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
-A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
+Az üzembe helyezést az Azure Portalon található erőforráscsoport feltárásával ellenőrizheti.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
-1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
-1. Láthatja, hogy a Storage-fiók telepítve van.
-1. Figyelje meg, hogy az üzembe helyezési címke most már azt mondja: **központi telepítések: 2 sikeres**.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. A bal oldali menüben válassza az **Erőforráscsoportok**lehetőséget.
+1. Válassza ki azt az erőforráscsoportot, amelybe telepítette.
+1. Láthatja, hogy egy tárfiók telepítve van.
+1. Figyelje meg, hogy a központi telepítési címke most azt mondja: **Telepítések: 2 sikeres.**
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
+Ha most leáll, érdemes lehet az erőforráscsoport törlésével felvetheti a telepített erőforrásokat.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
+1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Létrehozott egy egyszerű sablont egy Azure Storage-fiók üzembe helyezéséhez.  A későbbi oktatóanyagokban megtudhatja, hogyan adhat hozzá paramétereket, változókat, erőforrásokat és kimeneteket egy sablonhoz. Ezek a funkciók sokkal összetettebb sablonok építőelemei.
+Létrehozott egy egyszerű sablont egy Azure storage-fiók üzembe helyezéséhez.  A későbbi oktatóanyagokból megtudhatja, hogyan adhat hozzá paramétereket, változókat, erőforrásokat és kimeneteket egy sablonhoz. Ezek a funkciók sokkal összetettebb sablonok építőkövei.
 
 > [!div class="nextstepaction"]
 > [Paraméterek hozzáadása](template-tutorial-add-parameters.md)

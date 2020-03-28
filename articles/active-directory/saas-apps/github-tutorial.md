@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a GitHubmal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a GitHub között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a GitHubbal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a GitHub között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,138 +16,138 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79138977"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a GitHubbal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a GitHubot Azure Active Directory (Azure AD-val). Ha a GitHubot az Azure AD-vel integrálja, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a GitHubot az Azure Active Directoryval (Azure AD). Ha integrálja a GitHubot az Azure AD-vel, a következőket teheti:
 
-* A GitHub Enterprise Cloud Organization szolgáltatáshoz hozzáférő Azure AD-beli vezérlés.
-* A GitHub Enterprise Cloud Organization elérésének kezelése egyetlen központi helyen – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a GitHub Enterprise Cloud Organization.Control in Azure AD who has access to your GitHub Enterprise Cloud Organization.
+* A GitHub Enterprise Cloud Organization egyetlen központi helyen – az Azure Portalon – való hozzáférés kezelése.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció a GitHubral való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához a GitHubbal a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* GitHub [vállalati felhőben](https://help.github.com/articles/github-s-products/#github-enterprise)létrehozott GitHub-szervezet, amelyhez a [GitHub Enterprise számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) szükséges
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* A [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)szolgáltatásban létrehozott GitHub-szervezet, amelyhez a [GitHub Enterprise számlázási csomagszükséges](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A GitHub támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A GitHub támogatja az **SP** által kezdeményezett SSO-t
 
-* A GitHub támogatja a felhasználók automatikus kiépítését [ **Automated** (a szervezeti meghívókat)](github-provisioning-tutorial.md)
-* A GitHub konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A GitHub támogatja [ **az automatikus** felhasználói kiépítést (szervezeti meghívók)](github-provisioning-tutorial.md)
+* A GitHub konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-github-from-the-gallery"></a>A GitHub hozzáadása a gyűjteményből
+## <a name="adding-github-from-the-gallery"></a>GitHub hozzáadása a galériából
 
 A GitHub Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a GitHubot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **GitHub** kifejezést a keresőmezőbe.
-1. Válassza ki a **GitHub** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a katalógusból szakaszban** írja be a **GitHub** a keresőmezőbe.
+1. Válassza ki a **GitHub** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a GitHubhoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését a GitHubhoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a GitHubon egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a GitHubon lévő kapcsolódó felhasználó között.
+Konfigurálja és tesztelje az Azure AD SSO-t a GitHubbal egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a GitHub kapcsolódó felhasználója között.
 
-Az Azure AD SSO és a GitHub használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO githubbal való konfigurálásához és teszteléséhez hajtsa végre az alábbi építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[GITHUB SSO konfigurálása](#configure-github-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre egy GitHub-teszt felhasználót](#create-github-test-user)** – hogy a githubon lévő B. Simon-nek egy, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerét társítsa.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja a GitHub SSO-t](#configure-github-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+    * **[Hozzon létre GitHub-tesztfelhasználót](#create-github-test-user)** – b.Simon megfelelőjével a GitHubon, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)a **GitHub** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)a **GitHub-alkalmazásintegrációs** lapon keresse meg a **Kezelés szakaszt,** és válassza ki **az egyszeri bejelentkezést.**
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-   a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://github.com/orgs/<entity-id>/sso`
+   a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://github.com/orgs/<entity-id>/sso`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://github.com/orgs/<entity-id>`
+    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://github.com/orgs/<entity-id>`
 
     > [!NOTE]
-    > Vegye figyelembe, hogy ezek nem valódi értékek. Ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval kell frissítenie. Itt javasoljuk, hogy a karakterlánc egyedi értékét használja az azonosítóban. Az értékek beolvasásához lépjen a GitHub-adminisztrátor szakaszra.
+    > Kérjük, vegye figyelembe, hogy ezek nem a valós értékek. Ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval kell frissítenie. Itt azt javasoljuk, hogy használja a karakterlánc egyedi értékét az azonosítóban. Nyissa meg a GitHub Felügyeleti szakaszt, és olvassa el ezeket az értékeket.
 
-5. A GitHub-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A GitHub-alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
+5. A GitHub-alkalmazás elvárja az SAML-állításokat egy adott formátumban, amely megköveteli, hogy egyéni attribútum-hozzárendelések hozzáadása az SAML token attribútumok konfigurációjához. A következő képernyőképen az alapértelmezett attribútumok listája látható, ahol a **nameidentifier** a **user.userprincipalname**. A GitHub-alkalmazás elvárja, hogy a **névazonosító** le legyen képezve **a user.mail alkalmazással,** ezért az attribútumleképezést a **Szerkesztés** ikonra kattintva kell módosítania, és módosítania kell az attribútumleképezést.
 
     ![image](common/edit-attribute.png)
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. A **GitHub beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+7. A **GitHub beállítása** szakaszban másolja a megfelelő URL-cím(ek) a követelmény szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure ad-azonosító
+    b. Azure-hirdetésazonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a GitHubhoz való hozzáférés biztosításával.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés használatával a GitHub hoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **GitHub**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **GitHub**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-github-sso"></a>GitHub SSO konfigurálása
+## <a name="configure-github-sso"></a>A GitHub SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a GitHub-szervezeti webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a GitHub-szervezeti webhelyére rendszergazdaként.
 
-2. Navigáljon a **beállításokhoz** , és kattintson a **Biztonság** elemre.
+2. Keresse meg a **Beállítások lapot,** és kattintson a Biztonság gombra. **Security**
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-3. Jelölje be az **SAML-hitelesítés engedélyezése** jelölőnégyzetet, amely az egyszeri bejelentkezés konfigurációs mezőit mutatja be. Ezután az egyszeri bejelentkezési URL-cím használatával frissítse az egyszeri bejelentkezési URL-címet az Azure AD-konfigurációban.
+3. Jelölje be az **SAML-hitelesítés engedélyezése** jelölőnégyzetet, és felfedje az egyszeri bejelentkezés konfigurációs mezőket. Ezután használja az egyszeri bejelentkezési URL-cím érték az egyszeri bejelentkezési URL-cím az Azure AD-konfigurációban.
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_13.png)
 
@@ -155,70 +155,70 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_051.png)
 
-    a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portal másolt.
+    a. A **Bejelentkezés url-cím** szövegmezőbe illessze be **a bejelentkezési URL-cím,** amely et az Azure Portalról másolt.
 
-    b. A **kiállító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
+    b. A **Kiállító** szövegmezőbe illessze be az **Azure AD-azonosító** értékét, amelyet az Azure Portalról másolt.
 
-    c. Nyissa meg a letöltött tanúsítványt Azure Portal a Jegyzettömbben, illessze be a tartalmat a **nyilvános tanúsítvány** szövegmezőbe.
+    c. Nyissa meg a letöltött tanúsítványt az Azure Portalról a jegyzettömbben, illessze be a tartalmat a **Nyilvános tanúsítvány** szövegmezőbe.
 
-    d. Kattintson az **Edit (Szerkesztés** ) ikonra **az aláírási módszer** és a **kivonatoló módszer** **RSA-SHA1** és **SHA1** – **RSA-sha256** és **sha256** szerinti szerkesztéséhez az alább látható módon.
+    d. Kattintson a **Szerkesztés** ikonra az **aláírási módszer** és a **kivonatolási módszer** **RSA-SHA1** és **SHA1-ről** **RSA-SHA256** és **SHA256-ra** történő szerkesztéséhez az alábbiak szerint.
     
-    e. Frissítse az **állítási fogyasztói szolgáltatás URL-címét (válasz URL-címe)** az alapértelmezett URL-címről, hogy a GitHub URL-címe megfeleljen az Azure-alkalmazás REGISZTRÁCIÓjának URL-címének.
+    e. Frissítse a **helyességi feltétel fogyasztói szolgáltatás URL-címét (Válasz URL-cím)** az alapértelmezett URL-címről, hogy a Github URL-címe megegyezik az Azure-alkalmazás regisztrációjában lévő URL-címmel.
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 
-5. Kattintson a **SAML-konfiguráció tesztelése** elemre annak ellenőrzéséhez, hogy nincs-e érvényesítési hiba vagy hiba az egyszeri bejelentkezés során.
+5. Kattintson az **SAML-konfiguráció tesztelése** elemre annak ellenőrzéséhez, hogy az SSO során nem történt-e érvényesítési hiba vagy hiba.
 
     ![Beállítások](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Kattintson a **Mentés gombra**
 
 > [!NOTE]
-> Az egyszeri bejelentkezés a GitHubon egy adott szervezetbe történik a GitHubon, és nem helyettesíti a GitHub hitelesítését. Ezért ha a felhasználó github.com-munkamenete lejárt, előfordulhat, hogy az egyszeri bejelentkezés során a GitHub AZONOSÍTÓját/jelszavát kell hitelesítenie.
+> Egyszeri bejelentkezés a GitHubon hitelesíti magát egy adott szervezet a GitHubon, és nem helyettesíti a GitHub hitelesítését. Ezért ha a felhasználó github.com munkamenete lejárt, előfordulhat, hogy a rendszer a GitHub azonosítójával/jelszavával kell hitelesítenie magát az egyszeri bejelentkezési folyamat során.
 
-### <a name="create-github-test-user"></a>GitHub-teszt felhasználó létrehozása
+### <a name="create-github-test-user"></a>GitHub-tesztfelhasználó létrehozása
 
-A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a GitHubban. A GitHub támogatja a felhasználók automatikus üzembe helyezését, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](github-provisioning-tutorial.md) felhasználó-kiépítés konfigurálását ismertető témakört.
+Ez a szakasz célja, hogy hozzon létre egy felhasználó nevű Britta Simon a GitHubon. A GitHub támogatja az automatikus felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Az automatikus felhasználói [here](github-provisioning-tutorial.md) kiépítés konfigurálásáról itt olvashat bővebben.
 
-**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre a következő lépéseket:**
+**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be a GitHub vállalati webhelyére rendszergazdaként.
 
-2. Kattintson a **személyek**elemre.
+2. Kattintson **a Személyek gombra.**
 
-    ![Személyek](./media/github-tutorial/tutorial_github_config_github_08.png "Személyek")
+    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "People")
 
-3. Kattintson a **tag meghívása**elemre.
+3. Kattintson **a Tag meghívása gombra.**
 
     ![Felhasználók meghívása](./media/github-tutorial/tutorial_github_config_github_09.png "Felhasználók meghívása")
 
-4. A **tag meghívása** párbeszédpanelen hajtsa végre a következő lépéseket:
+4. A **Tag meghívása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    a. Az **e-mail** szövegmezőbe írja be a Britta Simon-fiók e-mail-címét.
+    a. Az **E-mail** mezőbe írja be Britta Simon-fiók e-mail címét.
 
     ![Személyek meghívása](./media/github-tutorial/tutorial_github_config_github_10.png "Személyek meghívása")
 
-    b. Kattintson a **Meghívás küldése**gombra.
+    b. Kattintson **a Meghívó küldése gombra.**
 
     ![Személyek meghívása](./media/github-tutorial/tutorial_github_config_github_11.png "Személyek meghívása")
 
     > [!NOTE]
-    > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve erősítse meg a fiókját, mielőtt az aktívvá válna.
+    > Az Azure Active Directory-fiók tulajdonosa kap egy e-mailt, és kövesse a hivatkozást, hogy erősítse meg a fiók, mielőtt aktívvá válik.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Amikor a hozzáférési panelen a GitHub csempére kattint, automatikusan be kell jelentkeznie a GitHubba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a GitHub csempére kattint, automatikusan be kell jelentkeznie arra a GitHubra, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A GitHub kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a GitHubot az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

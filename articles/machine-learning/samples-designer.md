@@ -1,7 +1,7 @@
 ---
 title: Példa tervezői folyamatokra
 titleSuffix: Azure Machine Learning
-description: A Azure Machine Learning Designerben mintákat használhat a gépi tanulási folyamatok elindításához.
+description: Az Azure Machine Learning tervezőjének mintáival elindíthatja a gépi tanulási folyamatokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,33 +10,33 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/10/2020
 ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79037401"
 ---
-# <a name="designer-sample-pipelines"></a>Tervezői mintavételi folyamatok
+# <a name="designer-sample-pipelines"></a>Tervezői mintafolyamatok
 
-A Azure Machine Learning Designer beépített példái segítségével gyorsan megkezdheti saját gépi tanulási folyamatainak kialakítását. A Azure Machine Learning Designer [GitHub-tárház](https://github.com/Azure/MachineLearningDesigner) részletes dokumentációt tartalmaz, amely megkönnyíti a gyakori gépi tanulási forgatókönyvek megismerését.
+Az Azure Machine Learning-tervező beépített példáival gyorsan elkezdheti saját gépi tanulási folyamatai készítését. Az Azure Machine Learning [tervezője, a GitHub-tárház](https://github.com/Azure/MachineLearningDesigner) részletes dokumentációt tartalmaz, amely segít megérteni néhány gyakori gépi tanulási forgatókönyvet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
-* Azure Machine Learning munkaterület a vállalati SKU-val.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://aka.ms/AMLFree)
+* Egy Azure Machine Learning-munkaterület a vállalati termékváltozattal.
 
 
-## <a name="how-to-use-sample-pipelines"></a>A mintavételi folyamatok használata
+## <a name="how-to-use-sample-pipelines"></a>Mintafolyamatok használata
 
-A tervező elmenti a mintavételi folyamatok egy példányát a Studio-munkaterületre. A folyamat szerkesztésével módosíthatja az igényeinek megfelelően, és mentheti a folyamatot. A projektek kiindulási pontként használhatók.
+A tervező a mintafolyamatok egy példányát menti a stúdió munkaterületére. A folyamat ot szerkesztheti, hogy az igényeihez igazítsa, és mentse a sajátjaként. Használja őket kiindulási pontként a projektek indításához.
 
-1. Jelentkezzen be a <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>-be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
+1. Jelentkezzen be <a href="https://ml.azure.com?tabs=jre" target="_blank">a ml.azure.com,</a>és válassza ki azt a munkaterületet, amelyen dolgozni szeretne.
 
-1. Válassza a **tervező**lehetőséget.
+1. Válassza **a Tervező**lehetőséget.
 
-1. Válasszon egy minta folyamatot az **új folyamat** szakaszban.
+1. Jelöljön ki egy mintafolyamatot az **Új csővezeték** szakasz alatt.
 
-    Válassza a **további minták megjelenítése** lehetőséget a minták teljes listájához.
+    Válassza a **További minták megjelenítése** lehetőséget a minták teljes listájához.
 
 ## <a name="regression-samples"></a>Regressziós minták
 
@@ -44,44 +44,44 @@ További információ a beépített regressziós mintákról.
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [1. példa: regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
-| [2. minta: regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
+| [1. minta: Regresszió - Autóár-előrejelzés (Alap)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autóárak előrejelzése lineáris regresszióval. |
+| [2. minta: Regresszió - Autóár-előrejelzés (Haladó)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Tippelje meg az autóárakat a döntési erdő használatával, és növelte a döntési fa regresszióit. Hasonlítsa össze a modelleket, hogy megtalálja a legjobb algoritmust.
 
-## <a name="classification-samples"></a>Besorolási minták
+## <a name="classification-samples"></a>Osztályozási minták
 
-További információ a beépített besorolási mintákról. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
-
-| Mintacím | Leírás | 
-| --- | --- |
-| [3. minta: bináris besorolás a funkciók kiválasztásával – bevétel előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | A bevételt magas vagy alacsony értékűre becsülheti, kétosztályos kibővített döntési fában. A Pearson korreláció használatával válassza ki a funkciókat.
-| [4. minta: bináris besorolás egyéni Python-parancsfájllal – hitelkockázat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Magas vagy alacsony kockázatú kredit alkalmazások besorolása. Az adatai súlyozásához használja a Python-szkript végrehajtása modult.
-| [5. példa: bináris besorolás – ügyfélkapcsolatok előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | A kétosztályos, megnövelt döntési fák használatával megjósolhatja az ügyfelek adatforgalmát. A ARCUL ütötte használata az elfogult adatértékek megkóstolására.
-| [7. minta: szöveges besorolás – wikipedia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Vállalati típusok besorolása a wikipedia-cikkekből többosztályos logisztikai regresszióval. |
-| 12. példa: többosztályos besorolás – levél-felismerés | Hozzon létre a bináris osztályozók együttesét írásos betűk besorolásához. |
-
-## <a name="recommender-samples"></a>Ajánlott minták
-
-További információ a beépített Ajánlói mintákról. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
+További információ a beépített besorolási mintákról. A minták dokumentációs hivatkozások nélkül többet is megtudhat, ha megnyitja a mintákat, és helyette a modul megjegyzéseit tekinti meg.
 
 | Mintacím | Leírás | 
 | --- | --- |
-| 10. minta: javaslat – film minősítési tweetek | Hozzon létre egy Movie ajánló motort a film címei és minősítése alapján. |
+| [3. minta: Bináris osztályozás a funkcióválasztással - Jövedelem-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Tippelje meg a jövedelmet magasvagy alacsony, egy kétosztályos kiemelt döntési fa használatával. A Pearson korreláció segítségével válasszon ki funkciókat.
+| [4. minta: Bináris besorolás egyéni Python-parancsfájllal – Hitelkockázat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | A hitelkérelmek besorolása magas vagy alacsony kockázatúként. A Python-parancsfájl végrehajtása modul segítségével súlyozzák az adatokat.
+| [5. minta: Bináris besorolás - Ügyfélkapcsolat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Az ügyféllemorzsolódás előrejelzése kétosztályos kiemelt döntési fák használatával. Az SMOTE használatával minta elfogult adatok.
+| [7. minta: Szövegosztályozás – Wikipédia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Osztályozza a vállalattípusokat a Wikipédia cikkeiből a többosztályos logisztikai regresszióval. |
+| 12. minta: Többosztályos osztályozás – betűfelismerés | Hozzon létre egy együttest a bináris osztályozók osztályozni írott betűket. |
 
-## <a name="utility-samples"></a>Segédprogram-minták
+## <a name="recommender-samples"></a>Ajánlói minták
 
-További információ a Machine learning segédprogramokat és szolgáltatásokat bemutató mintákról. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
+További információ a beépített ajánlómintákról. A minták dokumentációs hivatkozások nélkül többet is megtudhat, ha megnyitja a mintákat, és helyette a modul megjegyzéseit tekinti meg.
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [6. példa: egyéni R-szkript használata – repülési késleltetés előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| 8\. példa: a bináris besorolások átellenőrzése – felnőtt bevétel előrejelzése | Használjon kereszt-érvényesítést a felnőtt jövedelmek bináris besorolásának kiépítéséhez.
-| 9\. példa: a permutáció funkció fontossága | Az adatkészlethez tartozó számítási fontossági pontszámok kiszámításához használja a permutáció funkció fontosságát. 
-| 11. minta: a bináris besorolás paramétereinek hangolása – felnőtt jövedelem előrejelzése | A Hiperparaméterek beállítása hangolása segítségével optimális hiperparaméterek beállítása találhat a bináris osztályozók létrehozásához. |
+| 10. minta: Ajánlás - Movie Rating Tweets | Készíts egy filmajánló motort a filmcímekből és az értékelésből. |
+
+## <a name="utility-samples"></a>Közüzemi minták
+
+További információ a gépi tanulási segédprogramokat és -szolgáltatásokat szemléltető mintákról. A minták dokumentációs hivatkozások nélkül többet is megtudhat, ha megnyitja a mintákat, és helyette a modul megjegyzéseit tekinti meg.
+
+| Mintacím | Leírás | 
+| --- | --- |
+| [6. minta: Egyéni R-parancsfájl használata – Járatkésleltetés-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
+| 8. minta: Keresztérvényesítés bináris osztályozáshoz - Felnőtt jövedelem előrejelzése | Használja a keresztérvényesítést, hogy hozzon létre egy bináris osztályozó felnőtt jövedelem.
+| 9. minta: Permutációs funkció fontossága | A permutációs funkció fontossága segítségével számítsa ki a tesztadatkészlet fontossági pontjait. 
+| 11. minta: A bináris osztályozás paramétereinek finomhangolása - Felnőtt jövedelem-előrejelzés | A Tune Model Hyperparameters segítségével optimális hiperparamétereket találhat bináris osztályozó létrehozásához. |
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan hozhat létre és helyezhet üzembe gépi tanulási modelleket [oktatóanyaggal: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
+Ismerje meg, hogyan hozhat létre és helyezhet üzembe gépi tanulási modelleket [az oktatóanyaggal: Az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)

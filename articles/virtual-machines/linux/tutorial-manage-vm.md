@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
+title: Oktatóanyag – Linuxos virtuális gépek létrehozása és kezelése az Azure CLI-vel
 description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI-t Linux rendszerű Azure-beli virtuális gépek létrehozásához és kezeléséhez
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e5474387933404c29536759d383a4f2c85236949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034416"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060196"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -33,7 +33,7 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 > * Virtuális gép átméretezése
 > * Virtuális gép állapotának áttekintése és értelmezése
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -43,7 +43,7 @@ Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microso
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. Ebben a példában egy *myResourceGroupVM* nevű erőforráscsoportot hozunk létre az *eastus* régióban. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupVM --location eastus
 ```
 
@@ -53,7 +53,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 Hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm) paranccsal. 
 
-Virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre, mely Ubuntu Server rendszert futtat. Ezen a virtuális gépen létrehozunk egy *azureuser* nevű felhasználói fiókot, illetve SSH-kulcsokat generálunk, ha még nem léteznek a kulcsok alapértelmezett helyén ( *~/.ssh*):
+Virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre, mely Ubuntu Server rendszert futtat. Ezen a virtuális gépen létrehozunk egy *azureuser* nevű felhasználói fiókot, illetve SSH-kulcsokat generálunk, ha még nem léteznek a kulcsok alapértelmezett helyén (*~/.ssh*):
 
 ```azurecli-interactive
 az vm create \
@@ -66,7 +66,7 @@ az vm create \
 
 A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép létrehozása után az Azure CLI a virtuális géppel kapcsolatos adatokat jelenít meg. Jegyezze fel a `publicIpAddress` címet, amelynek segítségével a virtuális gép elérhető. 
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -105,7 +105,7 @@ az vm image list --output table
 
 A parancs kimenete a legnépszerűbb Azure-beli virtuálisgép-rendszerképeket adja vissza.
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
@@ -129,7 +129,7 @@ az vm image list --offer CentOS --all --output table
 
 Részleges kimenet:
 
-```azurecli-interactive 
+```output
 Offer             Publisher         Sku   Urn                                     Version
 ----------------  ----------------  ----  --------------------------------------  -----------
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201501         6.5.201501
@@ -142,7 +142,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207     
 
 A virtuális gép egy adott rendszerkép használatával való üzembe helyezéséhez jegyezze fel az *Urn* oszlopban lévő értéket, amely a közzétevőből, az ajánlatból, az SKU-ból és opcionálisan a rendszerkép [azonosításához](cli-ps-findimage.md#terminology) használható verziószámból áll. A rendszerkép megadásakor a rendszerkép verziószáma kicserélhető a „latest” (legújabb) kifejezésre, amely a disztribúció legújabb verzióját választja ki. Ebben a példában az `--image` argumentum használatával egy CentOS 6.5-rendszerkép legújabb verzióját adjuk meg.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
@@ -157,9 +157,9 @@ Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.
 | Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
-| [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
+| [Számításra optimalizált](sizes-compute.md)   | Fsv2 között          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
 | [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, Ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
 | [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
@@ -174,7 +174,7 @@ az vm list-sizes --location eastus --output table
 
 Részleges kimenet:
 
-```azurecli-interactive 
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  2          3584  Standard_DS1                          1           1047552                    7168
@@ -199,7 +199,7 @@ Részleges kimenet:
 
 Az előző virtuálisgép-létrehozási példában a méretet nem adtuk meg, így az alapértelmezett méret lett alkalmazva. A virtuális gép létrehozásakor a méret az [az vm create](/cli/azure/vm) paranccsal és a `--size` argumentummal adható meg. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupVM \
     --name myVM3 \
@@ -221,6 +221,7 @@ A virtuális gép átméretezése előtt ellenőrizze, hogy a kívánt méret az
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
+
 Ha a kívánt méret elérhető, a virtuális gépet bekapcsolt állapotban is át lehet méretezni, de a művelet során újraindul. Az átméretezést az [az vm resize]( /cli/azure/vm) paranccsal hajthatja végre.
 
 ```azurecli-interactive 
@@ -229,19 +230,19 @@ az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_
 
 Ha a kívánt méret nem érhető el az aktuális fürtön, a virtuális gépet fel kell szabadítani az átméretezés végrehajtása előtt. Az [az vm deallocate]( /cli/azure/vm) paranccsal állíthatja le és szabadíthatja fel a virtuális gépet. Fontos megjegyezni, hogy a virtuális gép visszakapcsolásakor az ideiglenes lemezen lévő adatok törlődhetnek. A nyilvános IP-cím is megváltozik, ha nem statikus IP-címet használ. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupVM --name myVM
 ```
 
 Az átméretezés a felszabadítást követően hajtható végre. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
 ```
 
 Az átméretezést követően a virtuális gép elindítható.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -261,11 +262,11 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Felszabadítva | Azt jelzi, hogy a virtuális gép el lett távolítva a hipervizorról, a vezérlősíkon azonban továbbra is elérhető. A felszabadított állapotban lévő virtuális gépekért nem kell díjat fizetni. |
 | - | Azt jelzi, hogy a virtuális gép energiaállapota ismeretlen. |
 
-### <a name="find-the-power-state"></a>Energiaellátás állapotának megállapítása
+### <a name="find-the-power-state"></a>Az energiaállapot megkeresése
 
 Egy adott virtuális gép állapotát az [az vm get-instance-view](/cli/azure/vm) paranccsal kérheti le. Ügyeljen arra, hogy egy érvényes nevet adjon meg a virtuális géphez és az erőforráscsoporthoz. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm get-instance-view \
     --name myVM \
     --resource-group myResourceGroupVM \
@@ -274,7 +275,7 @@ az vm get-instance-view \
 
 Kimenet:
 
-```azurecli-interactive 
+```output
 ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
@@ -288,19 +289,19 @@ A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok f
 
 A parancs a virtuális gép privát és nyilvános IP-címeit adja vissza.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
 ### <a name="stop-virtual-machine"></a>Virtuális gép leállítása
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="start-virtual-machine"></a>Virtuális gép indítása
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -308,11 +309,11 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás is törölve lesz, azaz a virtuális gépek, a virtuális hálózat és a lemezek. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a virtuális gépek létrehozásának és kezelésének alapvető műveleteivel ismerkedett meg, például:
 

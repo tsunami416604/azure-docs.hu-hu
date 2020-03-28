@@ -1,20 +1,20 @@
 ---
-title: PowerShell-parancsfájl a Azure Cosmos DB Cassandra API erőforrásaihoz tartozó átviteli sebesség (RU/s) lekéréséhez
-description: Azure PowerShell script-Azure Cosmos DB beolvasási átviteli sebesség (RU/s) a Cassandra API
+title: PowerShell-parancsfájl az Azure Cosmos DB Cassandra API-erőforrások átviteli teljesítményének (RU/s) lehívásához
+description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB átviteli sebességű (RU/s) cassandra API-hoz
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9386b95bbc2a3bfd3e3ea362488fcfcdd0a98299
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f1cae958fce1de000ee4349a2fe8229d69f1a0ae
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441574"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366170"
 ---
-# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Átviteli sebesség (RU/s) beolvasása a Azure Cosmos DB Cassandra API
+# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Átviteli (RU/s) beszerezni egy kulcsterületet vagy táblát az Azure Cosmos DB - Cassandra API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBCassandraKeyspaceThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Leadja a megadott Cassandra API Keyspace átviteli értékét. |
+| [Get-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Leadja a megadott Cassandra API-tábla átviteli értékét. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
