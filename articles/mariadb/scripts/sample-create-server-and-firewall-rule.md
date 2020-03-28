@@ -1,6 +1,6 @@
 ---
-title: CLI-szkript – kiszolgáló létrehozása – Azure Database for MariaDB
-description: Ez a CLI-parancsfájl egy Azure Database for MariaDB-kiszolgálót hoz létre, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi.
+title: CLI-parancsfájl – Kiszolgáló létrehozása – Azure-adatbázis a MariaDB-hez
+description: Ez a minta CLI-parancsfájl létrehoz egy Azure-adatbázist a MariaDB-kiszolgálószámára, és konfigurál egy kiszolgálószintű tűzfalszabályt.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -9,14 +9,14 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: 3e0c17bbb413c2036ad1a3794dc029aaef0fe68c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771738"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>MariaDB-kiszolgáló létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
-Ez a CLI-parancsfájl egy Azure Database for MariaDB-kiszolgálót hoz létre, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi. A szkript sikeres futtatása után a MariaDB-kiszolgálót az összes Azure-szolgáltatás és a konfigurált IP-cím is elérhetővé teszi.
+Ez a minta CLI-parancsfájl létrehoz egy Azure-adatbázist a MariaDB-kiszolgálószámára, és konfigurál egy kiszolgálószintű tűzfalszabályt. A parancsfájl sikeres futtatása után a MariaDB-kiszolgáló elérhető az összes Azure-szolgáltatás és a konfigurált IP-cím számára.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,10 +36,10 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | **Parancs** | **Megjegyzések** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
-| [az MariaDB Server Firewall Create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgáló és az azon lévő adatbázisok elérését a megadott IP-címtartományból. |
+| [az mariadb kiszolgáló létrehozása](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
+| [az mariadb kiszolgáló tűzfala létrehozása](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgáló és az azon lévő adatbázisok elérését a megadott IP-címtartományból. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
-- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+- További parancsfájlok kipróbálása: [Azure CLI-minták a MariaDB Azure Database-hez](../sample-scripts-azure-cli.md)

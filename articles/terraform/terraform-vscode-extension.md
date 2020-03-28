@@ -1,24 +1,24 @@
 ---
-title: Oktatóanyag – az Azure Terraform Visual Studio Code-bővítmény konfigurálása
+title: Oktatóanyag – Az Azure Terraform Visual Studio kódbővítmény konfigurálása
 description: Itt elsajátíthatja a Visual Studio Code Azure Terraform bővítményének telepítését és használatát.
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472281"
 ---
-# <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Oktatóanyag: az Azure Terraform Visual Studio Code-bővítmény konfigurálása
+# <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Oktatóanyag: Konfigurálja az Azure Terraform Visual Studio kódbővítményt
 
-Az Azure Terraform Visual Studio Code bővítmény lehetővé teszi, hogy a szerkesztőben működjön együtt a Terraform. Ezzel a bővítménnyel a Terraform-konfigurációkat hozhatja létre, tesztelheti és futtathatja. A bővítmény támogatja az erőforrás-gráf vizualizációját is.
+Az Azure Terraform Visual Studio kódbővítmény lehetővé teszi, hogy a szerkesztőtől a Terraform segítségével dolgozzon. Ezzel a kiterjesztéssel terraform-konfigurációkat hozhat létre, tesztelhet és futtathat. A bővítmény támogatja az erőforrásgráf-megjelenítést is.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Az Azure-szolgáltatások üzembe helyezésének automatizálása a Terraform használatával
-> * Telepítse és használja a Terraform Visual Studio Code-bővítményt az Azure-szolgáltatásokhoz.
-> * A Visual Studio Code segítségével írhat, tervezhet és futtathat Terraform terveket.
+> * Az Azure-szolgáltatások kiépítésének automatizálása a Terraform használatával
+> * telepítse és használja az Azure-szolgáltatások Terraform Visual Studio Kód bővítményét.
+> * A Visual Studio-kód használatával Terraform-terveket írhat, tervezhat és hajthat végre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -44,7 +44,7 @@ Kövesse a HashiCorp [a Terraform telepítését](https://www.terraform.io/intro
 >[!Tip]
 >Mindenképp hajtsa végre a PATH rendszerváltozó beállítására vonatkozó utasításokat.
 
-### <a name="install-nodejs"></a>Node.js telepítése
+### <a name="install-nodejs"></a>A Node.js telepítése
 
 A Terraform Cloud Shellben való használatához [telepítenie kell a Node.js](https://nodejs.org/) 6.0-s vagy újabb verzióját.
 
@@ -62,7 +62,7 @@ A Terraform vizualizációs funkciójának használatához [telepítenie kell a 
 
 1. Indítsa el a Visual Studio Code-ot.
 
-1. Kattintson az **Extensions** (Bővítmények) gombra.
+1. Válassza **a Bővítmények lehetőséget**.
 
     ![Extensions (Bővítmények) gomb](media/terraform-vscode-extension/tf-vscode-extensions-button.png)
 
@@ -77,7 +77,7 @@ A Terraform vizualizációs funkciójának használatához [telepítenie kell a 
 
 #### <a name="verify-the-terraform-extension-is-installed-in-visual-studio-code"></a>A Terraform-bővítmény Visual Studio Code-ban való telepítésének ellenőrzése
 
-1. Kattintson az **Extensions** (Bővítmények) gombra.
+1. Válassza **a Bővítmények lehetőséget**.
 
 1. Írja be az `@installed` kifejezést a keresőmezőbe.
 
@@ -89,7 +89,7 @@ Az Azure Terraform-bővítmény megjelenik a telepített bővítmények listáj�
 
 Az összes támogatott Terraform-parancsot futtathatja a Cloud Shell-környezetben a Visual Studio Code-ból.
 
-## <a name="exercise-1-basic-terraform-commands-walk-through"></a>1\. gyakorlat: Alapvető Terraform-parancsok áttekintése
+## <a name="exercise-1-basic-terraform-commands-walk-through"></a>1. gyakorlat: Alapvető Terraform-parancsok áttekintése
 
 Ebben a gyakorlatban egy olyan alapszintű Terraform konfigurációs fájlt hozunk létre és hajtunk végre, amely egy Azure-erőforráscsoport kiosztását végzi.
 
@@ -138,7 +138,7 @@ Ebben a gyakorlatban egy olyan alapszintű Terraform konfigurációs fájlt hozu
 
     ![Meg kívánja nyitni a Cloud Shellt?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloud-shell.png)
 
-1. Amikor először indítja el Cloud Shell egy új mappából, a rendszer kéri, hogy hozzon létre egy webalkalmazást. Válassza az **Open** (Megnyitás) elemet.
+1. Amikor először indítel el cloud shell-t egy új mappából, a rendszer kéri, hogy hozzon létre egy webalkalmazást. Válassza az **Open** (Megnyitás) elemet.
 
     ![A Cloud Shell első indítása](media/terraform-vscode-extension/tf-first-launch-of-cloud-shell.png)
 
@@ -159,7 +159,7 @@ Ebben a gyakorlatban egy olyan alapszintű Terraform konfigurációs fájlt hozu
 
 1. Ekkor kiléphet a Cloud Shellből
 
-1. A menüsávon kattintson a **View (Nézet)**  > **Command Palette (Parancskatalógus)**  > **Azure Terraform: init** elemre.
+1. A menüsorban válassza a**Command Palette** >  **megtekintése** > **Az Azure Terraform: init**lehetőséget.
 
     ![A Terraform sikeresen inicializálva lett](media/terraform-vscode-extension/tf-terraform-has-been-successfully-initialized.png)
 
@@ -178,7 +178,7 @@ A *plan* Terraform-parancs segítségével ellenőrizheti, hogy egy adott módos
 >[!NOTE]
 >A *plan* Terraform-parancs ténylegesen nem módosítja az Azure-erőforrásokat. A tervben foglalt módosítások tényleges végrehajtásához az *apply* Terraform-parancsot használjuk.
 
-- A menüsávon kattintson a **View (Nézet)**  > **Command Palette (Parancskatalógus)**  > **Azure Terraform: plan** elemre.
+- A menüsorban válassza a**Command Palette** >  **megtekintése** > **Az Azure Terraform: terv**lehetőséget.
 
     ![Terraform plan](media/terraform-vscode-extension/tf-terraform-plan.png)
 
@@ -186,7 +186,7 @@ A *plan* Terraform-parancs segítségével ellenőrizheti, hogy egy adott módos
 
 Ha elégedett a *plan* Terraform-parancs eredményeivel, futtathatja az *apply* parancsot.
 
-1. A menüsávon kattintson a **View (Nézet)**  > **Command Palette (Parancskatalógus)**  > **Azure Terraform: apply** elemre.
+1. A menüsorban válassza a**Command Palette** >  **megtekintése** > **Az Azure Terraform lehetőséget: apply**.
 
     ![Terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
@@ -211,7 +211,7 @@ Az új erőforráscsoportnak meg kell jelennie a **NÉV** oszlopban.
 
 ### <a name="run-terraform-destroy-command"></a>A *destroy* Terraform-parancs futtatása
 
-1. A menüsávon kattintson a **View (Nézet)**  > **Command Palette (Parancskatalógus)**  > **Azure Terraform: destroy** elemre.
+1. A menüsorban válassza a**Command Palette** >  **megtekintése** > **Az Azure Terraform: destroy**lehetőséget.
 
     ![Terraform destroy](media/terraform-vscode-extension/tf-terraform-destroy.png)
 
@@ -229,7 +229,7 @@ Az új erőforráscsoport Terraform általi sikeres törlésének ellenőrzése:
 
     ![Az erőforráscsoport törlésének ellenőrzése](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
-## <a name="exercise-2-terraform-compute-module"></a>2\. gyakorlat: Terraform *compute* modul
+## <a name="exercise-2-terraform-compute-module"></a>2. gyakorlat: Terraform *compute* modul
 
 Ebből a gyakorlatból megtudhatja, hogyan töltheti be a Terraform *compute* modult a Visual Studio Code-környezetbe.
 
@@ -300,6 +300,6 @@ Rövid idő múlva egy, az alábbihoz hasonló felsorolás jelenik meg a Termina
 
 ![Teszteredmények](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Az Azure-hoz (és más támogatott szolgáltatókhoz) elérhető Terraform-modulok listája](https://registry.terraform.io/)
