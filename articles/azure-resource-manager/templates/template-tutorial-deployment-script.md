@@ -1,6 +1,6 @@
 ---
-title: Sablon-telepítési parancsfájlok használata | Microsoft Docs
-description: Ismerje meg, hogyan használhatók a központi telepítési parancsfájlok Azure Resource Manager-sablonokban.
+title: Sablontelepítési parancsfájlok használata | Microsoft dokumentumok
+description: Ismerje meg, hogyan használhatja a központi telepítési parancsfájlokat az Azure Resource Manager-sablonokban.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,25 +10,22 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561459"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239211"
 ---
-# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához (előzetes verzió)
+# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: Üzembe helyezési parancsfájlok használatával önaláírt tanúsítványt hozhat létre (előzetes verzió)
 
-Megtudhatja, hogyan használhatja az üzembe helyezési parancsfájlokat az Azure-erőforrások kezelése sablonban. Az üzembe helyezési parancsfájlok olyan egyéni lépések elvégzésére használhatók, amelyek nem hajthatók végre Resource Manager-sablonok használatával. Például hozzon létre egy önaláírt tanúsítványt.  Ebben az oktatóanyagban létrehoz egy sablont az Azure Key Vault üzembe helyezéséhez, majd egy sablonban egy `Microsoft.Resources/deploymentScripts` erőforrást használ egy tanúsítvány létrehozásához, majd hozzáadja a tanúsítványt a kulcstartóhoz. További információ az üzembe helyezési parancsfájlról: [telepítési parancsfájlok használata Azure Resource Manager-sablonokban](./deployment-script-template.md).
-
-> [!NOTE]
-> Az üzembe helyezési parancsfájl jelenleg előzetes verzióban érhető el. A használatához regisztrálnia kell [az előzetes](https://aka.ms/armtemplatepreviews)verzióra.
+Ismerje meg, hogyan használhatja a központi telepítési parancsfájlokat az Azure Resource Manage (ARM) sablonokban. A központi telepítési parancsfájlok olyan egyéni lépések végrehajtására használhatók, amelyeket az ARM-sablonok nem hajthatnak végre. Például önaláírt tanúsítvány létrehozása.  Ebben az oktatóanyagban hozzon létre egy sablont egy `Microsoft.Resources/deploymentScripts` Azure-kulcstartó üzembe helyezéséhez, majd ugyanabban a sablonban lévő erőforrás használatával hozzon létre egy tanúsítványt, majd adja hozzá a tanúsítványt a key vaulthoz. A központi telepítési parancsfájlról a [Központi telepítési parancsfájlok használata ARM-sablonokban (Arm-sablonok) (Központi telepítési parancsfájlok használata ARM-sablonokban) témakörben olvashat bővebben.](./deployment-script-template.md)
 
 > [!IMPORTANT]
-> A parancsfájlok végrehajtásához és a hibaelhárításhoz két üzembe helyezési parancsfájl-erőforrás, egy Storage-fiók és egy tároló-példány jön létre ugyanabban az erőforráscsoporthoz. Ezeket az erőforrásokat általában a parancsfájl-szolgáltatás törli, ha a parancsfájl végrehajtása terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](./deployment-script-template.md#clean-up-deployment-script-resources).
+> Két központi telepítési parancsfájl-erőforrás, egy tárfiók és egy tárolópéldány jön létre ugyanabban az erőforráscsoportban a parancsfájlok végrehajtásához és hibaelhárításához. Ezeket az erőforrásokat általában törli a parancsfájlszolgáltatás, amikor a parancsfájl végrehajtása terminálállapotba kerül. Az erőforrásokért az erőforrások törléséig számlázunk. További információ: [Karbantartás központi telepítési parancsfájl-erőforrások](./deployment-script-template.md#clean-up-deployment-script-resources).
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -36,22 +33,22 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Gyorsindítási sablon megnyitása
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
-> * A sikertelen parancsfájl hibakeresése
+> * Hibakeresés a sikertelen parancsfájl
 > * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* **[Visual Studio Code](https://code.visualstudio.com/) a Resource Manager-eszközök bővítménnyel**. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](./use-vs-code-to-create-template.md).
+* ** [Visual Studio-kód](https://code.visualstudio.com/) a Resource Manager Tools kiterjesztéssel.** Lásd: [A Visual Studio-kód használata ARM-sablonok létrehozásához.](./use-vs-code-to-create-template.md)
 
-* **Felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkörrel az előfizetés szintjén**. Ez az identitás az üzembe helyezési parancsfájlok végrehajtásához használatos. A létrehozáshoz tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
+* **A felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkör előfizetési szinten**. Ez az identitás központi telepítési parancsfájlok végrehajtásához használatos. A létrehozáshoz olvassa el [a Felhasználó által hozzárendelt felügyelt identitás című témakört.](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity) A sablon telepítésekor szüksége van az identitásazonosítóra. Az identitás formátuma:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Használja az alábbi PowerShell-szkriptet az azonosító beszerzéséhez az erőforráscsoport nevének és az identitás nevének megadásával.
+  Használja a következő PowerShell-parancsfájlt az azonosító leküzdéséhez az erőforráscsoport nevének és az identitás nevének megadásával.
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -62,11 +59,11 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
-Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) közül. Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza.
+Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) közül. Az Azure quickstart sablonok egy tárház ARM sablonok.
 
-Az ebben a rövid útmutatóban használt sablon [létrehozásához Azure Key Vault és titkos kulcsot](https://azure.microsoft.com/resources/templates/101-key-vault-create/)kell meghívni. A sablon létrehoz egy kulcstartót, majd hozzáadja a titkos kulcsot a kulcstartóhoz.
+A rövid útmutatóban használt sablon neve [Létrehoz egy Azure Key Vault és egy titkos.](https://azure.microsoft.com/resources/templates/101-key-vault-create/) A sablon létrehoz egy key vault, majd hozzáad egy titkos kulcsot a key vaulthoz.
 
-1. A Visual Studio Code-ban válassza a **File** (Fájl) >**Open File** (Fájl megnyitása) elemet.
+1. A Visual Studio-kódból válassza a **Fájlmegnyitása**>**fájl**lehetőséget.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -74,30 +71,30 @@ Az ebben a rövid útmutatóban használt sablon [létrehozásához Azure Key Va
     ```
 
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. A **File** (Fájl) >**Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
+4. Válassza a **Fájlmentés**>**másként** lehetőséget a fájl **azuredeploy.json néven** a helyi számítógépre történő mentéséhez.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-Végezze el a következő módosításokat a sablonon:
+Hajtsa végre a következő módosításokat a sablonon:
 
-### <a name="clean-up-the-template-optional"></a>A sablon törlése (nem kötelező)
+### <a name="clean-up-the-template-optional"></a>A sablon karbantartása (nem kötelező)
 
-Az eredeti sablon egy titkos kulcsot helyez el a kulcstartóhoz.  Az oktatóanyag leegyszerűsítése érdekében távolítsa el a következő erőforrást:
+Az eredeti sablon egy titkos kulcsot ad a key vaulthoz.  Az oktatóanyag egyszerűsítése érdekében távolítsa el a következő erőforrást:
 
-* **Microsoft. kulcstartó/tárolók/titkos kódok**
+* **Microsoft.KeyVault/vaults/secrets**
 
-Távolítsa el a következő két paraméter-definíciót:
+Távolítsa el a következő két paraméterdefiníciót:
 
-* **secretName**
-* **secretValue**
+* **titkosnév**
+* **titkosÉrték**
 
-Ha úgy dönt, hogy nem távolítja el ezeket a definíciókat, meg kell adnia a paraméter értékeit a telepítés során.
+Ha úgy dönt, hogy nem távolítja el ezeket a definíciókat, meg kell adnia a paraméterértékeket a központi telepítés során.
 
-### <a name="configure-the-key-vault-access-policies"></a>A Key Vault hozzáférési házirendjeinek konfigurálása
+### <a name="configure-the-key-vault-access-policies"></a>A key vault-hozzáférési házirendek konfigurálása
 
-Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz. Konfigurálja a Key Vault hozzáférési szabályzatait, hogy engedélyt adjanak a felügyelt identitásnak:
+A központi telepítési parancsfájl egy tanúsítványt ad hozzá a key vaulthoz. Konfigurálja a key vault hozzáférési szabályzatokat, hogy a felügyelt identitás engedélyt adjon:
 
-1. Adjon hozzá egy paramétert a felügyelt azonosító AZONOSÍTÓjának beolvasásához:
+1. Adjon hozzá egy paramétert a felügyelt identitásazonosító leéséhez:
 
     ```json
     "identityId": {
@@ -109,9 +106,9 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     ```
 
     > [!NOTE]
-    > A Visual Studio Code Resource Manager-sablon bővítménye nem képes még a telepítési parancsfájlok formázására. Ne használja a [SHIFT] + [ALT] + F billentyűkombinációt a deploymentScripts-erőforrások formázásához, például a következőhöz.
+    > A Visual Studio-kód Resource Manager-sablonbővítménye még nem képes a központi telepítési parancsfájlok formázására. Ne használja a [SHIFT]+[ALT]+F parancsot a deploymentScripts erőforrások formázásához, például az alábbiakat.
 
-1. Adjon hozzá egy paramétert a Key Vault hozzáférési házirendjeinek konfigurálásához, hogy a felügyelt identitás hozzá tudja adni a tanúsítványokat a kulcstartóhoz.
+1. Adjon hozzá egy paramétert a key vault hozzáférési szabályzatok konfigurálásához, hogy a felügyelt identitás tanúsítványokat adhat hozzá a key vaulthoz.
 
     ```json
     "certificatesPermissions": {
@@ -128,7 +125,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     }
     ```
 
-1. A meglévő Key Vault-hozzáférési házirendek frissítése a következőre:
+1. Frissítse a meglévő kulcstartó-hozzáférési házirendeket:
 
     ```json
     "accessPolicies": [
@@ -153,11 +150,11 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     ],
     ```
 
-    Két házirend van definiálva, egyet a bejelentkezett felhasználó számára, a másik pedig a felügyelt identitáshoz.  A bejelentkezett felhasználónak csak a *listázási* engedélyre van szüksége az üzemelő példány ellenőrzéséhez.  Az oktatóanyag leegyszerűsítése érdekében ugyanaz a tanúsítvány van hozzárendelve a felügyelt identitáshoz és a bejelentkezett felhasználókhoz is.
+    Két házirend van definiálva, az egyik a bejelentkezett felhasználó, a másik pedig a felügyelt identitás.  A bejelentkezett felhasználónak csak a *lista* engedélyére van szüksége a központi telepítés ellenőrzéséhez.  Az oktatóanyag egyszerűsítése érdekében ugyanaz a tanúsítvány van hozzárendelve mind a felügyelt identitáshoz, mind a bejelentkezett felhasználókhoz.
 
-### <a name="add-the-deployment-script"></a>Az üzembe helyezési parancsfájl hozzáadása
+### <a name="add-the-deployment-script"></a>A központi telepítési parancsfájl hozzáadása
 
-1. Adja hozzá az üzembehelyezési parancsfájl által használt három paramétert.
+1. Adjon hozzá három paramétert, amelyeket a központi telepítési parancsfájl használ.
 
     ```json
     "certificateName": {
@@ -174,10 +171,10 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     }
     ```
 
-1. DeploymentScripts erőforrás hozzáadása:
+1. DeploymentScript-erőforrás hozzáadása:
 
     > [!NOTE]
-    > Mivel a beágyazott telepítési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő karakterláncokat csak egyszeres idézőjelek közé kell foglalni. A PowerShell escape-karaktere **&#92;** .
+    > Mivel a szövegközi központi telepítési parancsfájlok idézőjelek közé vannak zárva, a központi telepítési parancsfájlokban lévő karakterláncokat inkább idézőjelek közé kell tenni. A PowerShell escape karaktere **&#92;. **
 
     ```json
     {
@@ -257,38 +254,38 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     }
     ```
 
-    A `deploymentScripts` erőforrás a Key Vault erőforrástól és a szerepkör-hozzárendelési erőforrástól függ.  Ezek a tulajdonságok a következő tulajdonságokkal rendelkeznek:
+    Az `deploymentScripts` erőforrás a key vault-erőforrástól és a szerepkör-hozzárendelési erőforrástól függ.  Ez a következő tulajdonságokkal rendelkezik:
 
-    * **identitás**: az üzembe helyezési parancsfájl felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához.
-    * **Típus: adja**meg a parancsfájl típusát. Jelenleg csak a PowerShell-szkriptek támogatottak.
-    * **forceUpdateTag**: annak meghatározása, hogy a telepítési parancsfájlt akkor is kell-e végrehajtani, ha a parancsfájl forrása nem módosult. Lehet aktuális időbélyeg vagy GUID. További információ: [parancsfájl futtatása](./deployment-script-template.md#run-script-more-than-once)többször.
-    * **azPowerShellVersion**: a használni kívánt Azure PowerShell modul verziószámát adja meg. Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 verziót támogatja.
-    * **időtúllépés**: adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
-    * **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
-    * **scriptContent**: adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja helyette a **primaryScriptURI** . További információ: [külső parancsfájl használata](./deployment-script-template.md#use-external-scripts).
-        **$DeploymentScriptOutputs** deklarálása csak akkor szükséges, ha a parancsfájlt egy helyi gépen teszteli. A változó deklarálása lehetővé teszi, hogy a parancsfájl egy helyi gépen és egy deploymentScript-erőforráson fusson anélkül, hogy módosítani kellene. Az $DeploymentScriptOutputshoz rendelt érték az üzemelő példányokban kimenetként érhető el. További információkért lásd a [PowerShell üzembe helyezési parancsfájlokból származó kimenetek használata](./deployment-script-template.md#work-with-outputs-from-powershell-script) , illetve a [CLI üzembe helyezési parancsfájlokból származó kimenetek használata](./deployment-script-template.md#work-with-outputs-from-cli-script)című témakört.
-    * **cleanupPreference**: adja meg a telepítési parancsfájl erőforrásainak törlésére vonatkozó beállítást.  Az alapértelmezett érték **mindig**, ami azt jelenti, hogy az üzembe helyezési parancsfájl erőforrásai törlődnek a terminál állapota (sikeres, sikertelen, megszakított) ellenére. Ebben az oktatóanyagban a **OnSuccess** -t használjuk, így a szkriptek végrehajtási eredményei is megtekinthetők.
-    * **retentionInterval**: adja meg azt az intervallumot, ameddig a szolgáltatás megőrzi a parancsfájl erőforrásait, miután elérte a terminál állapotát. Az erőforrások az adott időtartam lejárta után törlődnek. Az időtartam az ISO 8601 mintán alapul. Ez az oktatóanyag P1D használ, ami egy napot jelent.  Ezt a tulajdonságot akkor használja a rendszer, ha a **cleanupPreference** értéke **OnExpiration**. Ez a tulajdonság jelenleg nincs engedélyezve.
+    * **identity**: A központi telepítési parancsfájl egy felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához.
+    * **kind**: Adja meg a parancsfájl típusát. Jelenleg csak a PowerShell-parancsfájl támogatott.
+    * **forceUpdateTag**: Határozza meg, hogy a központi telepítési parancsfájlt végre kell-e hajtani, még akkor is, ha a parancsfájl forrása nem változott. Lehet aktuális időbélyegző vagy GUID. További információért olvassa el a [Parancsfájl többszöri futtatása témakört.](./deployment-script-template.md#run-script-more-than-once)
+    * **azPowerShellVersion:** Megadja az Azure PowerShell-modul használandó verzióját. A központi telepítési parancsfájl jelenleg a 2.7.0- s, a 2.8.0-s és a 3.0.0-s verziót támogatja.
+    * **időtúltöltés**: Adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett **érték: P1D**.
+    * **argumentumok**: Adja meg a paraméterértékeket. Az értékeket szóközök választják el egymástól.
+    * **scriptContent**: Adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja inkább **a primaryScriptURI-t.** További információ: [Külső parancsfájl használata](./deployment-script-template.md#use-external-scripts).
+        Deklarálása **$DeploymentScriptOutputs** csak akkor szükséges, ha a parancsfájl tesztelése a helyi számítógépen. A változó deklarálása lehetővé teszi, hogy a parancsfájl egy helyi gépen és egy deploymentScript-erőforrásban fusson, anélkül, hogy módosításokat kellene végrehajtania. A $DeploymentScriptOutputs-hez rendelt érték kimenetként érhető el a központi telepítésekben. További információ: [A PowerShell központi telepítési parancsfájljaiból származó kimenetek megmunkálása](./deployment-script-template.md#work-with-outputs-from-powershell-script) vagy [a CLI központi telepítési parancsfájljaiból származó kimenetek alkalmazása.](./deployment-script-template.md#work-with-outputs-from-cli-script)
+    * **cleanupPreference**: Adja meg a központi telepítési parancsfájl-erőforrások törlésének beállítását.  Az alapértelmezett érték **mindig**, ami azt jelenti, hogy a központi telepítési parancsfájl erőforrásai törlődnek a terminálállapot ellenére (Sikeres, Sikertelen, Megszakítva). Ebben az oktatóanyagban az **OnSuccess** használatos, így lehetősége van a parancsfájl végrehajtási eredményeinek megtekintésére.
+    * **retentionInterval**: Adja meg azt az időközt, amelyalatt a szolgáltatás megtartja a parancsfájl-erőforrásokat, miután elérte a terminálállapotot. Az erőforrások törlődnek, amikor ez az időtartam lejár. Az időtartam az ISO 8601 mintán alapul. Ez az oktatóanyag p1D-t használ, ami egy napot jelent.  Ez a tulajdonság akkor használatos, ha a **cleanupPreference** beállítása **OnExpiration**. Ez a tulajdonság jelenleg nincs engedélyezve.
 
-    Az üzembe helyezési parancsfájl három paramétert fogad: a kulcstároló nevét, a tanúsítvány nevét és a tulajdonos nevét.  Létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a kulcstartóhoz.
+    A központi telepítési parancsfájl három paramétert vesz igénybe: a kulcstároló nevét, a tanúsítvány nevét és a tulajdonos nevét.  Létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a key vaulthoz.
 
-    A **$DeploymentScriptOutputs** a kimeneti érték tárolására szolgál.  További információért lásd: [a PowerShell telepítési parancsfájljai kimenetének használata](./deployment-script-template.md#work-with-outputs-from-powershell-script) vagy [a parancssori felületi telepítési parancsfájlok kimenetének használata](./deployment-script-template.md#work-with-outputs-from-cli-script).
+    **$DeploymentScriptOutputs** a kimeneti érték tárolására szolgál.  További információ: [A PowerShell központi telepítési parancsfájljaiból származó kimenetek alkalmazása](./deployment-script-template.md#work-with-outputs-from-powershell-script) vagy [a CLI központi telepítési parancsfájljaiból származó kimenetek alkalmazása.](./deployment-script-template.md#work-with-outputs-from-cli-script)
 
     Az elkészült sablon [itt](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)található.
 
-1. A hibakeresési folyamat megtekintéséhez helyezzen el egy hibát a kódban a következő sor hozzáadásával az üzembe helyezési parancsfájlba:
+1. A hibakeresési folyamat megtekintéséhez helyezzen el egy hibát a kódban a következő sor hozzáadásával a központi telepítési parancsfájlhoz:
 
     ```powershell
     Write-Output1 $keyVaultName
     ```
 
-    A megfelelő parancs a Write- **Output1**helyett az **írási kimenet** .
+    A helyes parancs a **Write-Output1** helyett a **Write-Output1**.
 
-1. A fájl mentéséhez válassza a **Fájl**>**Mentés** lehetőséget.
+1. A fájl mentéséhez válassza a>**Fájlmentés** lehetőséget. **File**
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A Cloud Shell megnyitásához és a sablon fájljának a rendszerhéjba való feltöltéséhez tekintse meg a [sablon telepítése](./quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template) című szakaszt a Visual Studio Code-ban. Ezután futtassa a következő PowerShell-parancsfájlt:
+Tekintse meg [a sablon telepítése](./quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template) szakasza a Visual Studio-kód rövid útmutató a felhőbeli rendszerhéj megnyitásához, és töltse fel a sablonfájlt a rendszerhéjba. Ezután futtassa a következő PowerShell-parancsfájlt:
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
@@ -307,48 +304,48 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFil
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-A telepítési parancsfájl-szolgáltatásnak további üzembe helyezési parancsfájl-erőforrásokat kell létrehoznia a parancsfájlok végrehajtásához. Az előkészítés és a tisztítás folyamata akár egy percet is igénybe vehet a parancsfájl végrehajtásának tényleges végrehajtási ideje mellett.
+A központi telepítési parancsfájlszolgáltatásnak további központi telepítési parancsfájl-erőforrásokat kell létrehoznia a parancsfájlok végrehajtásához. Az előkészítés és a tisztítási folyamat a parancsfájl tényleges végrehajtási ideje mellett akár egy percet is igénybe vehet.
 
-Az üzembe helyezés nem sikerült, mert érvénytelen parancs, a **Write-Output1** a parancsfájlban van használatban. A következő hibaüzenetet kapja:
+A központi telepítés sikertelen, mert az érvénytelen parancs, **Write-Output1** a parancsfájlban használatos. Meg kell kapnia egy hiba mondván:
 
 ```error
 The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
 program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
 ```
 
-A telepítési parancsfájl végrehajtási eredménye a hibaelhárítási célból a telepítési parancsfájl erőforrásaiban tárolódik.
+A központi telepítési parancsfájl végrehajtási eredménye a központi telepítési parancsfájl erőforrásaiban tárolja a hibaelhárításcéljából.
 
-## <a name="debug-the-failed-script"></a>A sikertelen parancsfájl hibakeresése
+## <a name="debug-the-failed-script"></a>Hibakeresés a sikertelen parancsfájl
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Nyissa meg az erőforráscsoportot. Ez a projekt neve, **RG** hozzáfűzéssel. Az erőforráscsoport két további erőforrást fog látni. Ezeket az erőforrásokat *telepítési parancsfájl-erőforrásoknak*nevezzük.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Nyissa meg az erőforráscsoportot. Ez a projekt neve **rg** csatolt. Az erőforráscsoportban két további erőforrás jelenik meg. Ezeket az erőforrásokat *központi telepítési parancsfájl-erőforrásoknak nevezzük.*
 
-    ![Resource Manager-sablon üzembe helyezési parancsfájl erőforrásai](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
+    ![Az Erőforrás-kezelő sablon telepítési parancsfájljának erőforrásai](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Mindkét fájl **azscripts** utótaggal rendelkezik. Az egyik a Storage-fiók, a másik pedig egy tároló példány.
+    Mindkét fájl rendelkezik az **azscripts** utótaggal. Az egyik egy tárfiók, a másik pedig egy tárolópéldány.
 
-    Válassza a **rejtett típusok megjelenítése** lehetőséget a deploymentScripts-erőforrás listázásához.
+    Válassza **a Rejtett típusok megjelenítése** lehetőséget a deploymentScripts erőforrás listázásához.
 
-1. Válassza ki a **azscripts** utótaggal rendelkező Storage-fiókot.
-1. Válassza ki a **fájlmegosztás** csempét. Egy **azscripts** mappát kell látnia.  A mappa tartalmazza a telepítési parancsfájl végrehajtási fájljait.
-1. Válassza a **azscripts**lehetőséget. Két **azscriptinput** és **azscriptoutput**kell látnia.  A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A kimeneti mappa egy **executionresult. JSON** fájlt és a parancsfájl kimeneti fájlját tartalmazza. A hibaüzenetet a **executionresult. JSON**fájlban tekintheti meg. A kimeneti fájl nem létezik, mert a végrehajtás nem sikerült.
+1. Válassza ki a tárfiókot az **azscriptek** utótag.
+1. Válassza a **Fájlmegosztáscsempe** lehetőséget. Látni fog egy **azscripts mappát.**  A mappa tartalmazza a központi telepítési parancsfájl-végrehajtási fájlokat.
+1. Válassza az **azscripts**lehetőséget . Két mappaJelenik megL **azscriptinput** és **azscriptoutput**.  A bemeneti mappa egy rendszer PowerShell-parancsfájlt és a felhasználói központi telepítési parancsfájlokat tartalmazza. A kimeneti mappa **egy executionresult.json** fájlt és a parancsfájl kimeneti fájlját tartalmazza. A hibaüzenet a **executionresult.json**. A kimeneti fájl nincs ott, mert a végrehajtás nem sikerült.
 
 Távolítsa el a **Write-Output1** sort, és telepítse újra a sablont.
 
-A második központi telepítés sikeres futtatásakor a szkript szolgáltatás eltávolítja a telepítési parancsfájl erőforrásait, mivel a **cleanupPreference** tulajdonság értéke **OnSuccess**.
+A második központi telepítés sikeres futtatásakor a parancsfájlszolgáltatás nak el kell távolítania a központi telepítési parancsfájl erőforrásait, mert a **cleanupPreference** tulajdonság **OnSuccess**lesz állítva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
+1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja az üzembe helyezési parancsfájlt Azure Resource Manager-sablonokban. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a központi telepítési parancsfájlt az ARM-sablonokban. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
 
 > [!div class="nextstepaction"]
 > [Feltételek használata](./template-tutorial-use-conditions.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Webalkalmazás létrehozása (gyorsítótár-félretéve) – Azure cache a Redis-hez'
-description: Ismerje meg, hogyan hozhat létre egy webalkalmazást az Azure cache használatával a gyorsítótár-feltöltési mintát használó Redis.
+title: 'Oktatóanyag: Webalkalmazás létrehozása (gyorsítótár-félre) – Azure-gyorsítótár a Redis számára'
+description: Ismerje meg, hogyan hozhat létre egy webalkalmazást az Azure Cache for Redis, amely a gyorsítótár-félre mintát használja.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411939"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
-Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.net-webalkalmazást, amely az [Azure cache](cache-web-app-howto.md)-hez készült ASP.net-útmutatóban jön létre a Redis-hez, hogy tartalmazzon egy olyan Leaderboard-t, amely az Azure cache-t használó [gyorsítótár-](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) feltöltési mintát használja Redis A minta alkalmazás megjeleníti a csapat statisztikáit egy adatbázisból, és bemutatja, hogyan használhatja az Azure cache-t a Redis tárolt adatok tárolására és lekérésére a teljesítmény javítása érdekében. Az oktatóanyag elvégzése után egy futó webalkalmazás rendelkezik, amely egy adatbázisba olvas és ír, amely az Azure cache-vel és az Azure-ban üzemeltetett Redis van optimalizálva.
+Ebben az oktatóanyagban frissíteni fogja a *ContosoTeamStats* ASP.NET webapp, az [ASP.NET az Azure Cache for Redis,](cache-web-app-howto.md)hogy tartalmazza a ranglistán, amely a [cache-félre mintát](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) az Azure Cache for Redis. A mintaalkalmazás megjeleníti a csoport statisztikák egy adatbázisból, és bemutatja a különböző módon azure cache for Redis tárolására és lekérésre adatokat a gyorsítótárból a teljesítmény javítása érdekében. Amikor befejezi az oktatóanyagot, rendelkezik egy futó webalkalmazással, amely beolvassa és írja az adatbázisba, optimalizált Azure Cache for Redis, és az Azure-ban üzemeltetett.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Javítsa az adatok átviteli sebességét, és csökkentse az adatbázis terhelését azáltal, hogy az Azure cache használatával tárolja és beolvassa az Redis.
+> * Az Azure Cache for Redis használatával az adatok tárolásával és lekérésével javíthatja az adatátviteli forgalmat, és csökkentheti az adatbázis betöltését.
 > * Egy rendezett Redis-készlet használata az öt legjobb csoport lekérdezéséhez.
 > * Azure-erőforrások kiépítése egy Resource Manager-sablont használó alkalmazás számára.
 > * Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
@@ -32,8 +32,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
-* Ez az oktatóanyag folytatja, ahol abbahagyta a [Redis Azure cache](cache-web-app-howto.md)-hez készült ASP.net gyors üzembe helyezését. Ha még nem tette meg, kövesse a rövid útmutató utasításait.
-* Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
+* Ez az oktatóanyag ott folytatódik, ahol abbahagyta [ASP.NET Azure Cache for Redis rövid útmutatójában.](cache-web-app-howto.md) Ha még nem tette meg, kövesse a rövid útmutató utasításait.
+* Telepítse a [Visual Studio 2019-et](https://www.visualstudio.com/downloads/) az alábbi munkaterhelésekkel:
     * ASP.NET és webfejlesztés
     * Azure-fejlesztés
     * .NET asztali fejlesztés az SQL Server Express LocalDB vagy az [SQL Server 2017 Express kiadásának](https://www.microsoft.com/sql-server/sql-server-editions-express) használatával.
@@ -44,7 +44,7 @@ Az oktatóanyag ezen szakaszában a *ContosoTeamStats* projektet fogja konfigur�
 
 ### <a name="add-the-entity-framework-to-the-project"></a>Az Entity Framework hozzáadása a projekthez
 
-1. A Visual Studióban nyissa meg a Redis-hez készült [Azure Cache ASP.net](cache-web-app-howto.md)-útmutatójában létrehozott *ContosoTeamStats* -megoldást.
+1. A Visual Studióban nyissa meg a *ContosoTeamStats* megoldást, amelyet a [ASP.NET az Azure Cache for Redisstartjában](cache-web-app-howto.md)hozott létre.
 2. Válassza az **Eszközök > NuGet-csomagkezelő > Csomagkezelő konzol** elemet.
 3. Az EntityFramework telepítéséhez futtassa a következő parancsot a **Csomagkezelő konzol** ablakából:
 
@@ -148,7 +148,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
 1. A `configuration` szakaszon belül adja hozzá a következő `connectionStrings` szakaszt. A kapcsolati sztring nevének meg kell egyeznie az Entity Framework-adatbáziskörnyezet osztályának nevével, amely a következő: `TeamContext`.
 
-    Ez a kapcsolati karakterlánc azt feltételezi, hogy teljesítette az [előfeltételeket](#prerequisites) , és telepítette SQL Server Express LocalDB, amely a Visual Studio 2019-mel telepített *.net Desktop-fejlesztési* számítási feladathoz tartozik.
+    Ez a kapcsolati karakterlánc feltételezi, hogy teljesítette az [Előfeltételeket](#prerequisites) és telepítette az SQL Server Express LocalDB-t, amely *a* Visual Studio 2019-es .
 
     ```xml
     <connectionStrings>
@@ -226,7 +226,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
     <title>@ViewBag.Title - Contoso Team Stats</title>
     ```
 
-1. A `body` szakaszban adja hozzá az alábbi új `Html.ActionLink` utasítást a *contoso-csapat statisztikáit* közvetlenül az *Azure cache Redis-teszthez*való hivatkozás alatt.
+1. A `body` szakaszban adja hozzá `Html.ActionLink` a következő új utasítást *a Contoso Team Stats-hoz* az *Azure Cache for Redis Test*hivatkozása alatt.
 
     ```csharp
     @Html.ActionLink("Contoso Team Stats", "Index", "Teams", new { area = "" }, new { @class = "navbar-brand" })`
@@ -234,13 +234,13 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Kódmódosítások](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása**, a **Szerkesztés**, a **Részletek**és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában hozzáadja az Azure cache-t a Redis-hez az adathozzáférés optimalizálása érdekében, és további funkciókat biztosít az alkalmazás számára.
+1. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása**, a **Szerkesztés**, a **Részletek**és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában hozzáadja az Azure Cache for Redis-t az adathozzáférés optimalizálásához és az alkalmazás további funkcióinak biztosításához.
 
     ![Kezdő szintű alkalmazás](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
-## <a name="configure-the-app-for-azure-cache-for-redis"></a>Az Azure cache Redis-alkalmazás konfigurálása
+## <a name="configure-the-app-for-azure-cache-for-redis"></a>Az alkalmazás konfigurálása a Redis-hez való Azure Cache szolgáltatáshoz
 
-Az oktatóanyag ezen szakaszában úgy konfigurálja a minta alkalmazást, hogy a Redis-példányhoz tartozó contoso-csapat statisztikáit a [StackExchange. Redis](https://github.com/StackExchange/StackExchange.Redis) cache-ügyféllel tárolja és beolvassa egy Azure cache-ből.
+Az oktatóanyag ebben a szakaszában konfigurálja a mintaalkalmazást a Contoso-csapat statisztikák tárolására és lekérésére egy Azure-gyorsítótárból a Redis-példányból a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) gyorsítótár-ügyfél használatával.
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Gyorsítótár-kapcsolat hozzáadása a Teams Controllerhez
 
@@ -250,7 +250,7 @@ A gyors útmutató során már telepítette a *StackExchange.Redis* ügyfélolda
 
     ![Csoportvezérlő](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Adja hozzá az alábbi két `using`-utasítást a **TeamsController.cs** fájlhoz:
+1. A következő `using` két állítás tadja **hozzá a TeamsController.cs:**
 
     ```csharp
     using System.Configuration;
@@ -280,7 +280,7 @@ A gyors útmutató során már telepítette a *StackExchange.Redis* ügyfélolda
 
 Jelen példában a csapatstatisztikák az adatbázisból vagy a gyorsítótárból is lekérdezhetők. A csapatstatisztikák a gyorsítótárban szerializált `List<Team>`, illetve (Redis adattípusok használatával) rendezett készlet formájában vannak tárolva. Rendezett készletből történő lekérdezéskor egyes, az összes vagy bizonyos feltételnek megfelelő elemek lekérésére van lehetőség. Ebben a mintában a győzelmek száma szerint rangsorolt 5 legjobb csapatot kérdezzük le egy rendezett készletből.
 
-A csapat statisztikáit nem szükséges a gyorsítótárban több formátumban tárolni ahhoz, hogy használni lehessen az Azure cache-t a Redis. Ez az oktatóanyag többféle formátumot használ az adatok gyorsítótárazásához használható különböző módszerek és adattípusok példáinak bemutatására.
+Nem szükséges a csapatstatisztikákat több formátumban tárolni a gyorsítótárban az Azure Cache for Redis használatához. Ez az oktatóanyag többféle formátumot használ az adatok gyorsítótárazásához használható különböző módszerek és adattípusok példáinak bemutatására.
 
 1. Adja hozzá az alábbi `using`-utasításokat a `TeamsController.cs` fájl elejéhez, a többi `using`-utasítással együtt:
 
@@ -408,7 +408,7 @@ A csapat statisztikáit nem szükséges a gyorsítótárban több formátumban t
     }
     ```
 
-    A `GetFromList` módszer szerializált `List<Team>` formájában olvassa be a csapatstatisztikákat a gyorsítótárból. Ha a statisztikák nem jelennek meg a gyorsítótárban, akkor gyorsítótár-tévesztés történik. Gyorsítótár-tévesztés esetén a rendszer az adatbázisból olvassa be a statisztikákat, és a gyorsítótárba menti őket a következő kérés számára. Ebben a mintában JSON.NET-szerializálást használunk a .NET-objektumok gyorsítótárba és gyorsítótárból történő szerializálására. További információkért lásd: [.net-objektumok használata az Azure cache-ben a Redis-hez](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+    A `GetFromList` módszer szerializált `List<Team>` formájában olvassa be a csapatstatisztikákat a gyorsítótárból. Ha a statisztikák nem jelennek meg a gyorsítótárban, akkor gyorsítótár-tévesztés történik. Gyorsítótár-tévesztés esetén a rendszer az adatbázisból olvassa be a statisztikákat, és a gyorsítótárba menti őket a következő kérés számára. Ebben a mintában JSON.NET-szerializálást használunk a .NET-objektumok gyorsítótárba és gyorsítótárból történő szerializálására. További információ: [.NET objektumok használata az Azure Cache for Redis alkalmazásban.](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)
 
     ```csharp
     List<Team> GetFromList()
@@ -615,7 +615,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     </table>
     ```
 
-1. Görgessen lefelé az **Index.cshtml** fájl aljához, és vegye fel az alábbi `tr` elemet, így ez lesz a fájl utolsó táblájának utolsó sora:
+1. Görgessen az **Index.cshtml** fájl aljára, és adja hozzá a következő `tr` elemet, hogy az legyen a fájl utolsó táblázatának utolsó sora:
 
     ```html
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
@@ -630,7 +630,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
 
 Futtassa az alkalmazást a helyi számítógépen a csapatok támogatása érdekében hozzáadott funkció ellenőrzéséhez.
 
-Ebben a tesztben az alkalmazás és az adatbázis is helyben fut. A Redis Azure cache-t azonban távolról az Azure-ban üzemeltetjük. Ezért valószínű, hogy a gyorsítótár teljesítménye az adatbázisénál kisebb lesz. A legjobb teljesítmény érdekében az ügyfélalkalmazás és az Azure cache for Redis-példánynak ugyanazon a helyen kell lennie. A következő szakaszban a gyorsítótár használatával járó nagyobb teljesítmény kipróbálása érdekében minden erőforrást az Azure-ban fog üzembe helyezni.
+Ebben a tesztben az alkalmazás és az adatbázis is helyben fut. Azonban az Azure Cache for Redis távolról üzemelteti az Azure-ban. Ezért valószínű, hogy a gyorsítótár teljesítménye az adatbázisénál kisebb lesz. A legjobb teljesítmény érdekében az ügyfélalkalmazás és az Azure Cache for Redis példány ugyanazon a helyen kell lennie. A következő szakaszban a gyorsítótár használatával járó nagyobb teljesítmény kipróbálása érdekében minden erőforrást az Azure-ban fog üzembe helyezni.
 
 Az alkalmazás helyi futtatása:
 
@@ -657,16 +657,16 @@ Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-b
    | **Adatbázis neve** | *ContosoTeamsDatabase* | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
    | **Előfizetés** | *Az Ön előfizetése*  | Válassza ki ugyanazt az előfizetést, amelyet a gyorsítótár létrehozásához és az App Service futtatásához használt. |
    | **Erőforráscsoport**  | *TestResourceGroup* | Kattintson a **Meglévő használata** elemre, és használja ugyanazt az erőforráscsoportot, amelyen a gyorsítótárat és az App Service-t elhelyezte. |
-   | **Forrás kiválasztása** | **Üres adatbázis** | Kezdje egy üres adatbázissal. |
+   | **Forrás kijelölése** | **Üres adatbázis** | Kezdje egy üres adatbázissal. |
 
 1. A **Kiszolgáló** területen kattintson a **Kötelező beállítások konfigurálása** > **Új kiszolgáló létrehozása** elemre, és adja meg az alábbi információkat, majd kattintson a **Kiválasztás** gombra:
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
+   | **Kiszolgáló neve** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
+   | **Kiszolgálórendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
    | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább 8 karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
-   | **Hely** | *USA keleti régiója* | Válassza ki ugyanazt a régiót, amelyben a gyorsítótárat és az App Service-t létrehozta. |
+   | **Helyen** | *USA keleti régiója* | Válassza ki ugyanazt a régiót, amelyben a gyorsítótárat és az App Service-t létrehozta. |
 
 1. Kattintson a **Rögzítés az irányítópulton** elemre, majd a **Létrehozás** gombra az új adatbázis és kiszolgáló létrehozásához.
 
@@ -733,7 +733,7 @@ Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- �
 
     A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure cache méretezése a Redis](./cache-how-to-scale.md)
+> [Az Azure-gyorsítótár méretezése a Redis-hez](./cache-how-to-scale.md)

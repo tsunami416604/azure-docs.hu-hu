@@ -2,25 +2,19 @@
 title: Azure CLI-példaszkript – Tárolók törlése előtag alapján | Microsoft Docs
 description: Azure Storage-blobtárolók törlése a nevük előtagja alapján.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 01187a4dbcd8333f95cf20b5956b7b81559a19a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 391cc4c08b7067ef388c2130cb340fb5597c843f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61232285"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067022"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Tárolók törlése a nevük előtagja alapján
 
@@ -34,7 +28,7 @@ Ez a szkript először létrehoz néhány példatárolót egy Azure-blobtároló
 
 [!code-azurecli-interactive[main](../../../cli_scripts/storage/delete-containers-by-prefix/delete-containers-by-prefix.sh?highlight=2-3 "Delete containers by prefix")]
 
-## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
+## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a maradék tárolók és az összes kapcsolódó erőforrás.
 

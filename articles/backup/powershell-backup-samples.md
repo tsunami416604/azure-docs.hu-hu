@@ -1,14 +1,14 @@
 ---
 title: PowerShell-minták
-description: Ez a cikk olyan PowerShell-parancsfájlokra mutató hivatkozásokat tartalmaz, amelyek Azure Backupt használnak az adatbiztonsági mentéshez és visszaállításhoz.
+description: Ez a cikk az Azure Backup használatával az adatok biztonsági mentéséhez és visszaállításához használt PowerShell-parancsfájlmintákra mutató hivatkozásokat tartalmaz.
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: ebe89a22639e94d8c2ef0e8e5354176f6d04ad8d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76768083"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell-minták
@@ -18,4 +18,4 @@ Az alábbi táblázat az Azure Backupot adatok biztonsági mentésére és helyr
 | |                                                              |
 |---|---|
 | [Titkosított virtuális gépek biztonsági mentése az Azure-ba](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | A titkosított virtuális gép összes adatának biztonsági mentése.|
-| [Regisztrált Storage-fiók keresése](./scripts/backup-powershell-script-find-recovery-services-vault.md) | Azon Recovery Services-tároló megkeresése, ahol a Storage-fiók regisztrálva van |
+| [Regisztrált tárfiók keresése](./scripts/backup-powershell-script-find-recovery-services-vault.md) | Keresse meg a helyreállítási szolgáltatások tárolóját, ahol a tárfiók regisztrálva van |

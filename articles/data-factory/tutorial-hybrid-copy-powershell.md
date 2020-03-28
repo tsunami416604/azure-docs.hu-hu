@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása SQL Serverról blob Storage-ba a PowerShell használatával
+title: Adatok másolása az SQL Serverből a Blob storage-ba a PowerShell használatával
 description: Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű Integration Runtime átjáróval történő másolásának folyamatát.
 services: data-factory
 author: nabhishek
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 61ee9e46b1c1d4c1e1ec4815c7a88de921650230
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982605"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
@@ -41,7 +41,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 Ha még nem rendelkezik Azure-előfizetéssel, első lépésként [hozzon létre egy ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ### <a name="azure-roles"></a>Azure-szerepkörök
-Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel bejelentkezik az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
+Adat-előállító példányok létrehozásához az Azure-ba való bejelentkezéshez használt felhasználói fióknak *közreműködői* vagy *tulajdonosi* szerepkört kell rendelnie, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
 
 Az előfizetésben található engedélyek megtekintéséhez kattintson az Azure Portalon a felhasználónevére a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md) című cikket.
 
@@ -56,7 +56,7 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forr
 
 1. Az **New Database** (Új adatbázis) ablakban adjon nevet az új adatbázisnak, majd kattintson az **OK** gombra.
 
-1. Az **emp** tábla létrehozásához és néhány mintaadat beszúrásához futtassa a következő lekérdezési szkriptet az adatbázison. A fanézetben kattintson a jobb gombbal a létrehozott adatbázisra, majd válassza a **New Query** (Új lekérdezés) elemet.
+1. Az **emp** tábla létrehozásához és néhány mintaadat beszúrásához futtassa a következő lekérdezési parancsfájlt az adatbázisban. A fanézetben kattintson a jobb gombbal a létrehozott adatbázisra, majd válassza a **New Query** (Új lekérdezés) elemet.
 
     ```sql
     CREATE TABLE dbo.emp
@@ -92,7 +92,7 @@ Ebben az oktatóanyagban az Azure Storage-fiók nevét és kulcsát használjuk.
 1. Másolja a **Tárfiók neve** és **1. kulcs** mező értékét, majd illessze be őket egy jegyzettömbbe vagy más szerkesztőbe az oktatóanyag későbbi részeiben történő használatra.
 
 #### <a name="create-the-adftutorial-container"></a>Adftutorial tároló létrehozása
-Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban.
+Ebben a szakaszban hozzon létre egy **adftutorial** nevű blobtárolót az Azure Blob storage-ban.
 
 1. A **Tárfiók** ablakban váltson át az **Áttekintés** panelre, majd válassza a **Blobok** elemet.
 
@@ -106,7 +106,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure B
 
 1. A tárolók listájában kattintson az **adftutorial** elemre.  
 
-1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
+1. Tartsa nyitva az **adftutorial** **tárolóablakát.** A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
 
 ### <a name="windows-powershell"></a>Windows PowerShell
@@ -127,7 +127,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
     Connect-AzAccount
     ```        
 
-1. Ha több Azure-előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
+1. Ha több Azure-előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId azonosítóját** az Azure-előfizetésazonosítójára:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -269,7 +269,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     ![Integrációs modul regisztrálása](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. Az **új Integration Runtime (helyi) csomópont** ablakban válassza a **Befejezés**lehetőséget.
+1. Az **Új integrációs futásidejű (saját üzemeltetésű) csomópontablakban** válassza a **Befejezés**lehetőséget.
 
     ![Integration Runtime új csomópontja ablak](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -300,7 +300,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
     g. Adja meg a felhasználónévhez tartozó jelszót.
 
     h. Annak ellenőrzéséhez, hogy az Integration Runtime kapcsolódik-e az SQL Serverhez, kattintson a **Teszt** gombra.  
-    a ![kapcsolódás sikeres volt](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    ![A kapcsolat sikeresen sikerült](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     Sikeres csatlakozás esetén egy zöld pipa jelenik meg. Sikertelen csatlakozás esetén a hibához kapcsolódó hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az Integration Runtime kapcsolódik-e az SQL Server-példányhoz.
 
@@ -411,9 +411,9 @@ Ebben a lépésben a helyszíni SQL Server-példányt társítja az adat-előál
 
     > [!IMPORTANT]
     > - Válassza ki az SQL Server-példányhoz való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
-    > - Cserélje le az **\<integration runtime name>** értéket az Integration Runtime nevére.
-    > - A fájl mentése előtt a **\<servername>** , **\<databasename>** , **\<username>** és **\<password>** értékeket cserélje le az SQL Server-példány értékeire.
-    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *sajáttartomány\\\\sajátfelhasználó* értéket.
+    > - Cserélje le ** \<az integrációs futásidejű>az** integrációs futásidejű nevét.
+    > - A fájl mentése előtt ** \<** cserélje le ** \< **a kiszolgálónév>, ** \<az adatbázisnév>**, ** \<a felhasználónév>** és a jelszó>az SQL Server-példány értékeire.
+    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például *a\\\\mydomain myuser t.*
 
 1. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
     A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű integrációs modul csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
@@ -714,7 +714,7 @@ A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `a
     ![Kimeneti fájl](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
@@ -726,7 +726,7 @@ A példában szereplő folyamat adatokat másol az egyik helyről egy másikra e
 > * Folyamat futásának indítása
 > * A folyamat futásának monitorozása.
 
-A Data Factory által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) cikk tartalmazza.
+A Data Factory által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszés szerint.
 
 Folytassa a következő oktatóanyaggal, amelyben az adatok egy forrásból egy célhelyre történő tömeges másolását ismerheti meg:
 

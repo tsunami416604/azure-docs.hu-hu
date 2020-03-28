@@ -1,20 +1,20 @@
 ---
-title: PowerShell-szkript az átviteli sebesség (RU/s) beszerzéséhez Azure Cosmos DB Gremlin API-hoz
-description: Azure PowerShell script-Azure Cosmos DB Gremlin API-hoz tartozó átviteli sebesség (RU/s)
+title: PowerShell-parancsfájl az Azure Cosmos DB Gremlin API átviteli teljesítményének (RU/s) lehívásához
+description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB átviteli sebességű (RU/s) a Gremlin API-hoz
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: de02a524e163c1843e5117e8a4471e686a2f5764
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa376aff9c127d5792da9e0489079ca3a1c67cf2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441458"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366027"
 ---
-# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Teljesítmény (RU/s) beszerzése egy adatbázishoz vagy gráfhoz Azure Cosmos DB-Gremlin API-hoz
+# <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Átviteli (RU/s) beszerezni egy adatbázist vagy grafikont az Azure Cosmos DB-hoz – Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBGremlinDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabasethroughput) | Leadja a megadott Gremlin API-adatbázis átviteli értékét. |
+| [Get-AzCosmosDBGremlinGraphThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | Leadja a megadott Gremlin API Graph átviteli értékét. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

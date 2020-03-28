@@ -5,54 +5,54 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67179197"
 ---
-## <a name="c-program-example"></a>C#program példa
+## <a name="c-program-example"></a>Például C# program
 
-A következő szakaszok a jelen cikk egy C# program, amely az SQL database Transact-SQL (T-SQL) utasításokat küldeni az ADO.NET használatával. A C# program mutatja be a következő műveleteket:
+A cikk következő szakasza egy C# programot mutat be, amely ADO.NET a Transact-SQL (T-SQL) utasítások SQL-adatbázisba küldésére használja. A C# program a következő műveleteket mutatja be:
 
-- [Csatlakozás SQL Database adatbázishoz az ADO.NET használatával](#cs_1_connect)
-- [Metod, které vracejí a T-SQL-utasítások](#cs_2_return)
-    - Táblák létrehozása
-    - Töltse fel az adatokat tartalmazó táblák
-    - Frissítési, törlési és kiválasztja az adatokat
-- [Küldje el a T-SQL az adatbázishoz](#cs_3_submit)
+- [Csatlakozás SQL-adatbázishoz ADO.NET használatával](#cs_1_connect)
+- [T-SQL utasításokat visszaadó metódusok](#cs_2_return)
+    - Táblázatok létrehozása
+    - Táblák feltöltése adatokkal
+    - Adatok frissítése, törlése és kijelölése
+- [T-SQL küldése az adatbázisba](#cs_3_submit)
 
-### <a name="entity-relationship-diagram-erd"></a>Entitás kapcsolati Diagram (helyreállító lemez)
+### <a name="entity-relationship-diagram-erd"></a>Entitáskapcsolati diagram (ERD)
 
-A `CREATE TABLE` utasításokat tartalmaznak a **hivatkozások** kulcsszó használatával hozzon létre egy *idegen kulcs* (FK) kapcsolatnak két táblázat között. Ha használ *tempdb*, tegye megjegyzésbe a `--REFERENCES` kulcsszó használatával vezető kötőjelek párjai.
+Az `CREATE TABLE` utasítások a **REFERENCES kulcsszót** is magukban foglalják, hogy idegen *kulcs* (FK) kapcsolatot hozzanak létre két tábla között. Ha *tempdb-t*használ, megjegyzést `--REFERENCES` fűzzön a kulcsszóhoz egy pár vezető kötőjel használatával.
 
-A helyreállító lemez jeleníti meg a kapcsolat a két táblázat között. Az értékeket a **tabEmployee.DepartmentCode** *gyermek* oszlop értékeit a korlátozódnak a **tabDepartment.DepartmentCode** *szülő*oszlop.
+Az ERD a két tábla közötti kapcsolatot jeleníti meg. A **tabEmployee.DepartmentCode** *gyermekoszlop* értékei a **tabDepartment.DepartmentCode** *szülőoszlop* értékeire korlátozódnak.
 
-![Helyreállító lemez ábrázoló idegen kulcs](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
+![Az idegen kulcsot megjelenítő ERD](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Lehetősége van módosítani a T-SQL egy bevezető hozzáadandó `#` a táblanevek, amely létrehozza őket az ideiglenes táblák *tempdb*. Ez akkor hasznos, bemutatási célokra, amikor nincs teszt adatbázisa nem érhető el. Minden hivatkozás külső kulcsok használata során nem lépnek érvénybe, és az ideiglenes táblák automatikusan a rendszer törli, ha a kapcsolat bezárása után a program futtatása befejeződik.
+> Lehetősége van a T-SQL szerkesztésére, `#` hogy egy vezetőt adjon a táblanevekhez, amely ideiglenes táblákként hozza létre őket *a tempdb*programban. Ez szemléltetési célokra hasznos, ha nem áll rendelkezésre tesztadatbázis. Az idegen kulcsokra való hivatkozások nem lépnek érvénybe használatuk során, és az ideiglenes táblák automatikusan törlődnek, amikor a kapcsolat a program futásának befejezése után bezárul.
 
-### <a name="to-compile-and-run"></a>Fordítása és futtatása
+### <a name="to-compile-and-run"></a>Fordítás és futtatás
 
-A C# program logikailag egy .cs fájlt, és számos kódblokkok, hogy minden egyes megérteni a fizikailag oszlik. Fordítsa le és futtassa a programot, hajtsa végre a következő lépéseket:
+A C# program logikailag egy .cs fájl, és fizikailag több kódblokkra van osztva, hogy minden blokk könnyebben érthető legyen. A program fordításához és futtatásához tegye a következő lépéseket:
 
-1. Hozzon létre egy C# projektre a Visual Studióban. A projekt típusúnak kell lennie egy *konzol*, alatt található **sablonok** > **Visual C#**   >  **Windows asztali**  >  **Console App (.NET Framework)** .
+1. Hozzon létre egy C# projektet a Visual Studióban. A projekttípusnak *egy konzolnak*kell lennie, amely a **Templates** > **Visual C#** > **Windows Desktop** > **Console App (.NET Framework)** csoportban található.
 
-1. A fájl *Program.cs*, az alapszintű kódsorokat cserélje le az alábbi lépéseket:
+1. A fájlban *Program.cs*cserélje le a kezdő kódsorokat a következő lépésekre:
 
-    1. Másolás és beillesztés, az alábbi kódblokkok, ugyanabban a sorrendben, megjelenik, lásd: [csatlakozhat az adatbázishoz](#cs_1_connect), [készítése a T-SQL](#cs_2_return), és [küldése adatbázisba](#cs_3_submit).
+    1. Másolja és illessze be a következő kódblokkokat ugyanabban a sorrendben, amelyet a program bemutat, olvassa el a [Csatlakozás az adatbázishoz](#cs_1_connect), [A T-SQL létrehozása](#cs_2_return)és az [Elküldés adatbázisba](#cs_3_submit)című témakört.
 
-    1. A következő értékeket módosítsa a `Main` módszer:
+    1. Módosítsa a következő `Main` értékeket a metódusban:
 
-        - *cb.DataSource*
-        - *cb.UserID*
-        - *cb.Password*
-        - *cb.InitialCatalog*
+        - *Cb. Datasource*
+        - *Cb. Userid*
+        - *Cb. Jelszó*
+        - *Cb. InitialCatalog (Kezdeti katalógus)*
 
-1. Ellenőrizze a szerelvény *System.Data.dll* hivatkozik. Annak ellenőrzéséhez, bontsa ki a **hivatkozások** csomópontja a **Megoldáskezelőben** ablaktáblán.
+1. Ellenőrizze, hogy a *System.Data.dll* kódösszeállításra hivatkozik-e. Az ellenőrzéshez **bontsa** ki a Hivatkozás csomópontot a **Megoldáskezelő** ablaktáblában.
 
-1. Buildjének elkészítéséhez, és futtassa a programot a Visual Studióban, a **Start** gombra. A jelentés kimenete egy program ablakban jelenik meg, ha GUID értékek tesztelések között változhat.
+1. Ha a programot a Visual Studio programból szeretné felépíteni és futtatni, kattintson a **Start** gombra. A jelentés kimenete egy programablakban jelenik meg, bár a GUID értékek tesztfuttatások között változnak.
 
     ```Output
     =================================
@@ -82,7 +82,7 @@ A C# program logikailag egy .cs fájlt, és számos kódblokkok, hogy minden egy
 
 <a name="cs_1_connect"/>
 
-### <a name="connect-to-sql-database-using-adonet"></a>Csatlakozás SQL Database adatbázishoz az ADO.NET használatával
+### <a name="connect-to-sql-database-using-adonet"></a>Csatlakozás SQL-adatbázishoz ADO.NET használatával
 
 ```csharp
 using System;
@@ -132,7 +132,7 @@ namespace csharp_db_test
 
 <a name="cs_2_return"/>
 
-### <a name="methods-that-return-t-sql-statements"></a>Metod, které vracejí a T-SQL-utasítások
+### <a name="methods-that-return-t-sql-statements"></a>T-SQL utasításokat visszaadó metódusok
 
 ```csharp
 static string Build_2_Tsql_CreateTables()
@@ -240,7 +240,7 @@ static string Build_6_Tsql_SelectEmployees()
 
 <a name="cs_3_submit"/>
 
-### <a name="submit-t-sql-to-the-database"></a>Küldje el a T-SQL az adatbázishoz
+### <a name="submit-t-sql-to-the-database"></a>T-SQL küldése az adatbázisba
 
 ```csharp
 static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)

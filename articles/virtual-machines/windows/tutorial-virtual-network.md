@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure-beli virtuális hálózatok létrehozása és kezelése Windows rendszerű virtuális gépekhez
+title: Oktatóanyag – Azure virtuális hálózatok létrehozása és kezelése Windows virtuális gépekhez
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet Azure-beli virtuális hálózatokat Windows rendszerű virtuális gépekhez az Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,15 +16,15 @@ ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 67cfb04f67e3454bde25969b634116f2871cbeb5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238341"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és felügyelete Windows rendszerű virtuális gépeken az Azure PowerShell-lel
 
-Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák azt feltételezik, hogy a virtuális gépek egy adatbázis-háttérrel rendelkező webalkalmazást üzemeltetnek, azonban az oktatóanyagban nincs telepítve az alkalmazás. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyag példái feltételezik, hogy a virtuális gépek egy adatbázis-háttér-tartalékprogrammal rendelkező webalkalmazást üzemeltetnek, azonban egy alkalmazás nincs telepítve az oktatóanyagban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális hálózat és alhálózat létrehozása
@@ -57,20 +57,20 @@ Az oktatóanyag végrehajtása során a következő erőforrások jönnek létre
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához csak kattintson a kódblokk jobb felső sarkában található **Kipróbálás** elemre. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 
 ## <a name="create-subnet"></a>Alhálózat létrehozása 
 
 Ebben az oktatóanyagban egy virtuális hálózatot hozunk létre két alhálózattal, egy előtérbeli alhálózatot egy webalkalmazás üzemeltetéséhez, és egy háttérbeli alhálózatot egy adatbázis-kiszolgáló üzemeltetéséhez.
 
-A virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az *EastUS* régióban:
+Virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az *EastUS* régióban:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Hozzon létre egy *myFrontendSubnet* nevű alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
+Hozzon létre egy *nFrontendSubnet* nevű alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig használatával:](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -88,7 +88,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy *myVNet* nevű VNET a *MyFrontendSubnet* és a *MyBackendSubnet* használatával a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)használatával:
+Hozzon létre egy *myVNet* nevű virtuális hálózatot *a myFrontendSubnet* és *a myBackendSubnet* használatával a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)használatával:
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -105,9 +105,9 @@ Ekkorra létrehoztunk egy hálózatot, és két alhálózatra osztottuk, amelyek
 
 A nyilvános IP-cím lehetővé teszi, hogy az Azure-erőforrások elérhetők legyenek az interneten. A nyilvános IP-cím kiosztási módszere konfigurálható dinamikusnak vagy statikusnak. Alapértelmezés szerint a rendszer dinamikusan osztja ki a nyilvános IP-címeket. A dinamikus IP-címek az egyes virtuális gépek felszabadításakor felszabadulnak. Ennek következtében az IP-cím minden, virtuálisgép-felszabadítást is tartalmazó művelet során módosul.
 
-A kiosztási módszer statikus értékre állítható, amely biztosítja, hogy az IP-cím egy virtuális géphez legyen hozzárendelve, még akkor is, ha a felszabadítási állapotban van. Ha statikus IP-címet használ, maga az IP-cím nem adható meg. Ehelyett a rendszer kiosztja az elérhető címek készletét.
+A foglalási módszer statikus, amely biztosítja, hogy az IP-cím marad hozzárendelve egy virtuális gép, még egy felszabadított állapotban is. Ha statikus IP-címet használ, maga az IP-cím nem adható meg. Ehelyett a rendelkezésre álló címek készletéből van lefoglalva.
 
-Hozzon létre egy *myPublicIPAddress* nevű nyilvános IP [-címet a New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
+Hozzon létre egy nyilvános IP-címet *nevű myPublicIPAddress* használatával [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -121,7 +121,7 @@ Ha az -AllocationMethod paramétert `Static` értékre állítja, egy statikus n
 
 ## <a name="create-a-front-end-vm"></a>Előtérbeli virtuális gép létrehozása
 
-Ahhoz, hogy a virtuális gép kommunikálhasson a virtuális hálózatban, szüksége van egy virtuális hálózati adapterre (NIC). Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)használatával:
+Ahhoz, hogy a virtuális gép kommunikálhasson a virtuális hálózatban, szüksége van egy virtuális hálózati adapterre (NIC). Hálózati adapter létrehozása a [New-AzNetworkInterface segítségével:](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)
 
 ```azurepowershell-interactive
 $frontendNic = New-AzNetworkInterface `
@@ -154,13 +154,13 @@ New-AzVM `
 
 ## <a name="secure-network-traffic"></a>Biztonságos hálózati adatforgalom
 
-A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatók alhálózatokhoz vagy egyedi hálózati adapterekhez. Egy hálózati adapterhez tartozó NSG csak a társított virtuális gépre vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra.
+A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatók alhálózatokhoz vagy egyedi hálózati adapterekhez. Az NSG hálózati adapterhez társítva csak a társított virtuális gépre vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra.
 
 ### <a name="network-security-group-rules"></a>Hálózat biztonsági csoportok szabályai
 
 Az NSG-szabályok határozzák meg azokat a hálózatkezelési portokat, amelyeken engedélyezett vagy tiltott a forgalom. A szabályok között szerepelhetnek forrás és cél IP-címtartományok, így szabályozható az adatforgalom adott rendszerek vagy alhálózatok között. Az NSG-szabályok között megadható a prioritás is (1–4096). A szabályokat a rendszer prioritás szerinti sorrendben értékeli. A 100-as prioritású szabályt a rendszer a 200-as prioritású szabály előtt ellenőrzi.
 
-Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritáshoz vannak rendelve, a létrehozott szabályok felülbírálják őket.
+Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályok nem törölhetők, de mivel a legalacsonyabb prioritással vannak elrendelve, a létrehozott szabályok felülbírálhatók.
 
 - **Virtuális hálózat** – A virtuális hálózatból kiinduló és oda érkező forgalom a bejövő és kimenő irányban is engedélyezve van.
 - **Internet** – A kimenő forgalom engedélyezett, de a bejövő forgalom le van tiltva.
@@ -168,7 +168,7 @@ Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezet
 
 ### <a name="create-network-security-groups"></a>Hálózati biztonsági csoportok létrehozása
 
-Hozzon létre egy *myFrontendNSGRule* nevű bejövő szabályt, hogy engedélyezze a bejövő webes forgalmat a *myFrontendVM* a [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig)használatával:
+Hozzon létre egy bejövő szabály nevű *myFrontendNSGRule,* hogy a bejövő webes forgalmat *myFrontendVM* segítségével [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig):
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -198,7 +198,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Vegyen fel egy *myFrontendNSG* nevű hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup):
+*SajátFrontendNSG* nevű hálózati biztonsági csoport hozzáadása a [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup)használatával:
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `
@@ -208,7 +208,7 @@ $nsgFrontend = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgFrontendRule
 ```
 
-Most adjon hozzá egy *myBackendNSG* nevű hálózati biztonsági csoportot a New-AzNetworkSecurityGroup:
+Most adjon hozzá egy *myBackendNSG* nevű hálózati biztonsági csoportot a New-AzNetworkSecurityGroup használatával:
 
 ```azurepowershell-interactive
 $nsgBackend = New-AzNetworkSecurityGroup `
@@ -272,7 +272,7 @@ New-AzVM `
    -VirtualNetworkName myVNet
 ```
 
-Ebben a példában a rendszerkép SQL Server telepítve van, de ez az oktatóanyag nem használható. Ennek részeként megtudhatja, hogyan konfigurálhat egy virtuális gépet a webes forgalom és az adatbázis-kezelés kezelésére szolgáló virtuális gép használatával.
+Ebben a példában az SQL Server telepítve van, de ez az oktatóanyag nem használatos. Ez tartalmazza, hogy hogyan konfigurálhatja a virtuális gép kezelésére webes forgalom és a virtuális gép az adatbázis-kezelés kezelésére.
 
 ## <a name="next-steps"></a>További lépések
 

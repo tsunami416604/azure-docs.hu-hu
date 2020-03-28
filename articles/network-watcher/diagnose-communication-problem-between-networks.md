@@ -1,7 +1,7 @@
 ---
-title: Oktatóanyag – kommunikációs problémák diagnosztizálása a hálózatok között a Azure Portal használatával
+title: Oktatóanyag – Az Azure Portal használatával a hálózatok közötti kommunikációs probléma diagnosztizálása
 titleSuffix: Azure Network Watcher
-description: Ebből az oktatóanyagból megtudhatja, hogyan diagnosztizálhatja a kommunikációs problémát egy helyszíni vagy más virtuális hálózathoz csatlakoztatott Azure-beli virtuális hálózat között egy Azure-beli virtuális hálózati átjárón keresztül, Network Watcher VPN-diagnosztika funkciójának használatával.
+description: Ebben az oktatóanyagban megtudhatja, hogyan diagnosztizálhatja a hálózati figyelő VPN-diagnosztikai képességével egy helyszíni vagy más virtuális hálózathoz csatlakoztatott Azure virtuális hálózat közötti kommunikációs problémát.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,10 +15,10 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76834684"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Oktatóanyag: Hálózatok közötti kommunikációs probléma diagnosztizálása az Azure Portal használatával
@@ -30,7 +30,7 @@ A virtuális hálózati átjárók egy Azure Virtual Networköt kapcsolnak össz
 > * Átjárókapcsolattal kapcsolatos problémák diagnosztizálása
 > * Átjárókkal kapcsolatos problémák megoldása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,14 +38,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 A VPN-diagnosztika használatához rendelkeznie kell egy meglévő, futó VPN Gatewayjel. Ha nem rendelkezik meglévő VPN Gatewayjel, amelyet diagnosztizálhatna, egy [PowerShell-szkript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) használatával üzembe helyezhet egyet. A PowerShell-szkriptet innen futtathatja:
-- **Helyi PowerShell-telepítés**: a parancsfájlhoz a Azure PowerShell `Az` modul szükséges. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- **Helyi PowerShell-telepítés:** A parancsfájlhoz `Az` az Azure PowerShell-modul szükséges. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - **Az Azure Cloud Shell**: Az [Azure Cloud Shell](https://shell.azure.com/powershell) a PowerShell legfrissebb verziójával rendelkezik, amely telepítve és konfigurálva is van, és belépteti Önt az Azure-ba.
 
 A szkript nagyjából egy óra alatt hozza létre a VPN Gatewayt. A további lépések azt feltételezik, hogy a diagnosztizálni kívánt átjáró megegyezik a szkript által üzembe helyezettel. Ha saját meglévő átjáróját diagnosztizálja, az eredmények eltérőek lehetnek.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
 ## <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
@@ -73,9 +73,9 @@ Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytas
 8. Amíg a teszt fut, a **Fut** érték látható a **HIBAELHÁRÍTÁSI ÁLLAPOT** oszlopban, ahol az előző képen még **Nem indult el** szerepelt. A teszt futtatása több percig is eltarthat.
 9. Tekintse meg az elvégzett teszt állapotát. Az alábbi képen egy befejezett diagnosztikai teszt állapoteredményei láthatók:
 
-    ![Állapot](./media/diagnose-communication-problem-between-networks/status.png)
+    ![status](./media/diagnose-communication-problem-between-networks/status.png)
 
-    Látható, hogy a **HIBAELHÁRÍTÁSI ÁLLAPOT** **Nem kifogástalan**, illetve a probléma **Összegzése** és **Részletei** is láthatók az **Állapot** lapon.
+    Látható, hogy a **HIBAELHÁRÍTÁSI ÁLLAPOT****Nem kifogástalan**, illetve a probléma **Összegzése** és **Részletei** is láthatók az **Állapot** lapon.
 10. A **Művelet** lap kiválasztásakor a VPN-diagnosztika további információkkal szolgál. Az alábbi képen látható példában a VPN-diagnosztikából megtudhatja, hogy ellenőriznie kell az összes kapcsolat állapotát:
 
     ![Műveletek](./media/diagnose-communication-problem-between-networks/action.png)
@@ -109,7 +109,7 @@ Ha csak az oktatóanyag elvégzése érdekében hozott létre egy VPN Gatewayt a
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *TestRG1* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag a virtuális hálózati átjárókkal kapcsolatos problémák diagnosztizálását mutatta be. Érdemes naplózni a virtuális gépek bejövő és kimenő hálózati kommunikációját, hogy átnézhesse a naplókat rendellenességek után kutatva. Ennek megismeréséhez folytassa a következő oktatóanyaggal.
 

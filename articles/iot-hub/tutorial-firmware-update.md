@@ -1,6 +1,6 @@
 ---
 title: Az eszköz belső vezérlőprogramjának frissítése az Azure IoT Hubon keresztül | Microsoft Docs
-description: Ismerje meg, hogyan valósítható meg az eszköz belső vezérlőprogram-frissítési folyamata, amely az IoT hub-hoz csatlakoztatott háttér-alkalmazásból indítható el.
+description: Ismerje meg, hogyan valósíthatja meg az eszköz belső vezérlőprogramjának frissítési folyamatát, amely az IoT hubhoz csatlakoztatott háttéralkalmazásból indítható.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.custom: mvc
 ms.openlocfilehash: fdd2eb2ca1a0e6b93cd3f7a75beeb8057a4ea19c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674381"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Eszközök belsővezérlőprogram-frissítési folyamatának implementálása
@@ -34,11 +34,11 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges.
+A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. Szüksége van node.js v10.x.x vagy újabb a fejlesztői gépen.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -50,7 +50,7 @@ node --version
 
 Töltse le a Node.js-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
 
-Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. Az oktatóanyagban szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
 
 ## <a name="set-up-azure-resources"></a>Az Azure-erőforrások beállítása
 
@@ -185,7 +185,7 @@ A következő képernyőkép a háttéralkalmazás kimenetét mutatja, és kieme
 
 ![Háttéralkalmazás](./media/tutorial-firmware-update/BackEnd2.png)
 
-Mivel az automatikus eszköz-konfigurációk a létrehozáskor futnak, majd öt percenként nem láthatók a háttérbeli alkalmazásnak elküldett összes állapot-frissítés. A mérőszámokat a portálon is megtekintheti az IoT Hub **Automatikus eszközkezelés -> IoT-eszköz konfigurációja** szakaszában:
+Mivel az automatikus eszközkonfigurációk a létrehozás időpontjában, majd ötpercenként futnak, előfordulhat, hogy nem jelenik meg minden állapotfrissítés, amelyet a háttéralkalmazásnak küldenek. A mérőszámokat a portálon is megtekintheti az IoT Hub **Automatikus eszközkezelés -> IoT-eszköz konfigurációja** szakaszában:
 
 ![A konfiguráció megtekintése a portálon](./media/tutorial-firmware-update/portalview.png)
 
@@ -204,7 +204,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan használható az Azure IoT Hub Portal-eszközök és az Azure CLI-parancsok az eszközök kapcsolatának teszteléséhez.
+Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. A következő oktatóanyagra az Azure IoT Hub portáleszközeinek és az Azure CLI-parancsoknak az eszközkapcsolat teszteléséhez való használatának megismeréséhez továbbjut.
 
 > [!div class="nextstepaction"]
 > [Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez](tutorial-connectivity.md)

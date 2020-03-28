@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – frissítés leküldése a földrajzilag replikált beállításjegyzékbe
-description: Küldjön le egy frissített Docker-rendszerképet a Geo-replikált Azure Container registrybe, majd tekintse meg a több régióban futó webalkalmazások automatikusan telepített módosításait. Ez egy háromrészes sorozat harmadik része.
+title: Oktatóanyag – Frissítés leküldése a georeplikált rendszerleíró adatbázisba
+description: Küldjön le egy frissített Docker-lemezképet a georeplikált Azure-tároló beállításjegyzékébe, majd tekintse meg a több régióban futó webalkalmazásokban automatikusan üzembe helyezett módosításokat. Ez egy háromrészes sorozat harmadik része.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74454689"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: frissített tároló-rendszerkép leküldése a földrajzi helyről replikált tároló-beállításjegyzékbe a regionális webalkalmazások üzembe helyezéséhez
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: Egy frissített tárolórendszerkép leküldése egy georeplikált tároló beállításjegyzékbe a regionális webalkalmazás-telepítésekhez
 
 Ez egy háromrészes sorozat harmadik része. Az [előző oktatóanyagban](container-registry-tutorial-deploy-app.md) a georeplikációt két különböző régióban üzembe helyezett webalkalmazáshoz konfigurálta. Ebben az oktatóanyagban először az alkalmazást módosítjuk, majd egy új tárolórendszerképet hozunk létre, és leküldjük azt a georeplikált beállításjegyzékbe. Végül megtekintjük az Azure Container Registry webhookok által automatikusan üzembe helyezett módosításokat mind a két webalkalmazás esetében.
 
@@ -125,7 +125,7 @@ Győződjön meg arról, hogy a frissített tárolórendszerkép az *USA keleti 
 
 Egyetlen `docker push`, lehetővé tette mindkét regionális Web App üzemelő példányában futó webalkalmazás automatikus frissítését. És az Azure Container Registry az egyes üzemelő példányokhoz legközelebb eső adattárakból szolgáltatta a tárolólemezképeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban frissítette és leküldte a webalkalmazás tárolójának egy új verzióját a georeplikált beállításjegyzékbe. Az Azure Container Registry webhookjai értesítették a Web Apps for Containers alkalmazást a frissítésről, amely egy helyi lekérést indított a beállításjegyzékek legközelebbi replikájából.
 

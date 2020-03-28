@@ -1,24 +1,24 @@
 ---
-title: A Service Catalog felügyelt alkalmazás közzététele
+title: Szolgáltatáskatalógus felügyelt alkalmazásának közzététele
 description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 13c45bc6e67d9d3d06a70b7cf3326cc112cd7829
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903272"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473013"
 ---
-# <a name="create-and-publish-a-managed-application-definition"></a>Felügyelt alkalmazás definíciójának létrehozása és közzététele
+# <a name="tutorial-create-and-publish-a-managed-application-definition"></a>Oktatóanyag: Felügyelt alkalmazásdefiníció létrehozása és közzététele
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Létrehozhat és közzétehet a vállalat tagjainak szánt Azure-beli [felügyelt alkalmazásokat](overview.md). Az informatikai részleg közzétehet például olyan felügyelt alkalmazásokat, amelyek megfelelnek a vállalati szabványoknak. Ezeket a felügyelt alkalmazásokat a szolgáltatáskatalóguson keresztül lehet elérni az Azure Marketplace helyett.
 
-A felügyelt alkalmazások Azure-szolgáltatásbeli katalógusba való közzétételéhez a következőket kell tennie:
+Felügyelt alkalmazás azure-katalógusban való közzétételéhez a következőket kell tennie:
 
 * Létre kell hoznia egy sablont, amely meghatározza a felügyelt alkalmazással üzembe helyezendő erőforrásokat.
 * Meg kell határoznia a felhasználói felület elemeit a portál számára, amikor üzembe helyezi a felügyelt alkalmazást.
@@ -81,13 +81,13 @@ Adja hozzá az alábbi JSON-kódot a fájlhoz. Ez a kód határozza meg a tárfi
 
 Mentse a mainTemplate.json fájlt.
 
-## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>A létrehozási élmény meghatározása a CreateUiDefinition. JSON használatával
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>A létrehozási élmény meghatározása a CreateUiDefinition.json használatával
 
-Közzétevőként a létrehozási élményt a **createUiDefinition. JSON** fájl használatával határozhatja meg, amely a felügyelt alkalmazásokat létrehozó felhasználók felületét hozza létre. Meghatározhatja, hogy a felhasználók hogyan biztosítanak bemenetet az egyes paraméterekhez a [vezérlési elemek](create-uidefinition-elements.md) , például a legördülő listák, a szövegmezők és a jelszó mezők használatával.
+Közzétevőként a **createUiDefinition.json** fájl segítségével határozhatja meg a létrehozási élményt, amely létrehozza a felügyelt alkalmazásokat létrehozó felhasználók felületét. A [vezérlőelemek](create-uidefinition-elements.md) , például a legördülő listák, a szövegmezők és a jelszómezők segítségével meghatározhatja, hogy a felhasználók hogyan adjanak meg bemenetet az egyes paraméterekhez.
 
-Hozzon létre egy **createUiDefinition. JSON** nevű fájlt (ez a név megkülönbözteti a kis-és nagybetűket)
+**CreateUiDefinition.json** nevű fájl létrehozása (Ez a név nem tartalmazza a kis- és nagybetűket)
 
-Adja hozzá a következő kezdő JSON-fájlt a fájlhoz, és mentse azt.
+Adja hozzá a következő kezdő JSON-t a fájlhoz, és mentse.
 
 ```json
 {
@@ -138,7 +138,7 @@ Adja hozzá a következő kezdő JSON-fájlt a fájlhoz, és mentse azt.
 }
 ```
 
-További információ: Ismerkedés [a CreateUiDefinition szolgáltatással](create-uidefinition-overview.md).
+További információ: [Első lépések a CreateUiDefinition segítségével](create-uidefinition-overview.md)című témakörben olvashat.
 
 ## <a name="package-the-files"></a>A fájlok becsomagolása
 
@@ -208,30 +208,30 @@ New-AzManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Saját tárterület használata a felügyelt alkalmazás definíciója számára
-Megadhatja, hogy a felügyelt alkalmazás definícióját a létrehozás során megadott Storage-fiókon belül tárolja, hogy a hely és a hozzáférés teljes körűen kezelhető legyen a szabályozási igényei szerint.
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Saját tárhely használata a felügyelt alkalmazásdefinícióhoz
+Dönthet úgy, hogy a felügyelt alkalmazásdefiníciót az Ön által a létrehozás során biztosított tárfiókban tárolja, hogy az a helyét és a hozzáférést teljes körűen kezelhesse a szabályozási igényeinek megfelelően.
 
 > [!NOTE]
-> Saját tárterület használata csak a felügyelt alkalmazás definíciójának ARM-sablonnal vagy REST API-példányával támogatott.
+> Hozza a saját tároló csak a felügyelt alkalmazásdefiníció ARM-sablon vagy REST API-központi telepítései által támogatott.
 
-### <a name="select-your-storage-account"></a>Válassza ki a Storage-fiókját
-Létre kell [hoznia egy Storage-fiókot](../../storage/common/storage-account-create.md) , amely tartalmazza a felügyelt alkalmazás definícióját a Service Catalog szolgáltatással való használatra.
+### <a name="select-your-storage-account"></a>Válassza ki tárfiókját
+Létre kell [hoznia egy tárfiókot,](../../storage/common/storage-account-create.md) hogy tartalmazza a felügyelt alkalmazás definícióját a Szolgáltatáskatalógus használatával való használatra.
 
-Másolja a Storage-fiók erőforrás-AZONOSÍTÓját. A definíció telepítésekor később lesz használatban.
+Másolja a tárfiók erőforrás-azonosítóját. A definíció telepítésekor később lesz használva.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>A "készülék erőforrás-szolgáltatója" szerepkör-hozzárendelésének beállítása a Storage-fiókban
-Mielőtt a felügyelt alkalmazás definíciója üzembe helyezhető a Storage-fiókjában, közreműködői engedélyeket kell adnia a **készülék erőforrás-szolgáltatói** szerepkörének, hogy a definiált fájlokat a Storage-fiók tárolójában lehessen írni.
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>A "Appliance Resource Provider" szerepkör-hozzárendelésének beállítása a tárfiókban
+Mielőtt a felügyelt alkalmazásdefiníció telepíthető a tárfiókba, meg kell adnia a közreműködői engedélyeket a **készülék erőforrás-szolgáltató** szerepkörhöz, hogy a definíciós fájlokat a tárfiók tárolóba írhassa.
 
-1. Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókra.
-1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a Storage-fiók hozzáférés-vezérlési beállításainak megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
-1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **közreműködő** szerepkört. 
-1. A **hozzáférés kiosztása** mezőben válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**elemet.
-1. Válassza ki a **készülék erőforrás-szolgáltatói** szerepkörének keresése **lehetőséget** , majd jelölje ki.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg a tárfiókot.
+1. Válassza a **Hozzáférés-vezérlés (IAM) lehetőséget** a tárfiók hozzáférés-vezérlési beállításainak megjelenítéséhez. A **szerepkör-hozzárendelések** listájának megtekintéséhez válassza a Szerepkör-hozzárendelések lapot.
+1. A **Szerepkör-hozzárendelés hozzáadása** ablakban válassza a **Közreműködői** szerepkört. 
+1. A **Hozzáférés hozzárendelése a** mezőben válassza az **Azure AD felhasználó, csoport vagy egyszerű szolgáltatás lehetőséget.**
+1. A **Készülékerőforrás-szolgáltató** szerepkör keresése **csoportban** válassza ki azt.
 1. Mentse a szerepkör-hozzárendelést.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>A felügyelt alkalmazás definíciójának üzembe helyezése ARM-sablonnal 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>A felügyelt alkalmazásdefiníció üzembe helyezése ARM sablonnal 
 
-A következő ARM-sablon segítségével telepítheti a csomagolt felügyelt alkalmazást új felügyelt alkalmazás-definícióként a Service Catalog szolgáltatásban, amelynek a definíciós fájljait a saját Storage-fiókjában tárolja és tartja karban:
+A következő ARM-sablon segítségével telepítheti a csomagolt felügyelt alkalmazást új felügyelt alkalmazásdefinícióként a Service Catalog szolgáltatásban, amelynek definíciós fájljait a saját tárfiókjában tárolják és karbantartják:
    
 ```json
     {
@@ -303,18 +303,18 @@ A következő ARM-sablon segítségével telepítheti a csomagolt felügyelt alk
 }
 ```
 
-Hozzáadunk egy **storageAccountId** nevű új tulajdonságot a applicationDefintion tulajdonságaihoz, és megadják a Storage-fiók azonosítóját, amelyben a definícióját a következőképpen szeretné tárolni:
+Hozzáadtunk egy **új, storageAccountId** nevű tulajdonságot az alkalmazáshozDefintion tulajdonságaihoz, és biztosítjuk a definíciót tárolni kívánt tárfiók-azonosítót értékként:
 
-Ellenőrizheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiókban vannak-e mentve a **applicationdefinitions**című tárolóban.
+Ellenőrizheti, hogy az alkalmazásdefiníciós fájlok a megadott tárfiókba vannak-e mentve egy **alkalmazásdefiníciós**tárolóba.
 
 > [!NOTE]
-> A további biztonság érdekében létrehozhat egy felügyelt alkalmazások definícióját egy [Azure Storage-fiók blobjában, ahol engedélyezve](../../storage/common/storage-service-encryption.md)van a titkosítás. A definíció tartalmának titkosítása a Storage-fiók titkosítási beállításain keresztül történik. Csak a fájlra vonatkozó engedélyekkel rendelkező felhasználók tekinthetik meg a szolgáltatás-katalógus definícióját.
+> A nagyobb biztonság érdekében létrehozhat egy felügyelt alkalmazásdefiníciót, amely egy [Azure-tárfiók blobjában](../../storage/common/storage-service-encryption.md)tárolja, ahol engedélyezve van a titkosítás. A definíció tartalma a tárfiók titkosítási beállításaival vannak titkosítva. Csak a fájlhoz engedéllyel rendelkező felhasználók láthatják a definíciót a Szolgáltatáskatalógusban.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Győződjön meg arról, hogy a definíció a felhasználók számára látható
 
 Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. A definíció elérésének ellenőrzésével, valamint további felhasználók és csoportok hozzáadásával kapcsolatban lásd: [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](publish-marketplace-app.md) című témakört.
 * A felügyelt alkalmazás egy példányának üzembe helyezéséről további információt [a szolgáltatáskatalógusban elérhető alkalmazás az Azure Portalon keresztül történő üzembe helyezését](deploy-service-catalog-quickstart.md) ismertető cikkben találhat.

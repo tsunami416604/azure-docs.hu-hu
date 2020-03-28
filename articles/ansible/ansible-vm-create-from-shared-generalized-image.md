@@ -1,51 +1,51 @@
 ---
-title: Oktatóanyag – virtuális gép vagy virtuálisgép-méretezési csoport létrehozása az Azure megosztott rendszerkép-katalógusból a Ansible használatával
-description: Ismerje meg, hogyan hozhat létre virtuális gépeket vagy virtuálisgép-méretezési csoportokat a Ansible használatával a megosztott képtárban lévő általánosított rendszerkép alapján.
-keywords: Ansible, Azure, devops, bash, ötletekbõl, virtuális gép, virtuálisgép-méretezési csoport, megosztott képgyűjtemény
+title: Oktatóanyag – Virtuálisgép- vagy virtuálisgép-méretezési csoport létrehozása az Azure megosztott képtárából az Ansible használatával
+description: Ismerje meg, hogyan használhatja az Ansible segítségével virtuális gép vagy virtuálisgép-méretezési készlet et egy általános ított képa megosztott képtárban alapuló létrehozása.
+keywords: ansible, azúr, devops, bash, ötletekbõl, virtuális gép, virtuális gép méretezési készlet, megosztott képgaléria
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155836"
 ---
-# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Oktatóanyag: virtuális gép vagy virtuálisgép-méretezési csoport létrehozása az Azure megosztott rendszerkép-katalógusból a Ansible használatával
+# <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Oktatóanyag: Hozzon létre egy virtuális gép vagy virtuális gép méretezési készletaz Azure megosztott képtár használatával Ansible
 
 [!INCLUDE [ansible-29-note.md](../../includes/ansible-29-note.md)]
 
-A [megosztott](/azure/virtual-machines/windows/shared-image-galleries) képkatalógus egy olyan szolgáltatás, amellyel könnyedén kezelheti, megoszthatja és rendszerezheti az egyéni felügyelt képeket. Ez a funkció hasznos lehet olyan forgatókönyvek esetén, ahol sok lemezképet tartanak karban és osztanak meg. Az egyéni lemezképek az előfizetések között és Azure Active Directory bérlők között oszthatók meg. A lemezképek több régióba is replikálhatók a gyorsabb üzembe helyezési skálázás érdekében.
+[A Megosztott képtár](/azure/virtual-machines/windows/shared-image-galleries) egy olyan szolgáltatás, amely lehetővé teszi az egyénileg kezelt képek egyszerű kezelését, megosztását és rendszerezését. Ez a funkció olyan esetekben hasznos, ahol sok kép karbantartása és megosztása. Egyéni lemezképek között megoszthatók előfizetések és az Azure Active Directory-bérlők között. A lemezképek több régióba is replikálhatók a gyorsabb üzembe helyezési méretezés érdekében.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Általánosított virtuális gép és egyéni rendszerkép létrehozása
-> * Megosztott Képtár létrehozása
-> * Megosztott rendszerkép és rendszerkép-verzió létrehozása
-> * Virtuális gép létrehozása az általánosított rendszerkép használatával
-> * Virtuálisgép-méretezési csoport létrehozása az általánosított képpel
-> * A megosztott képkatalógus, a rendszerkép és a verzió adatainak beolvasása.
+> * Általános virtuális gép és egyéni lemezkép létrehozása
+> * Megosztott képtár létrehozása
+> * Megosztott kép- és képverzió létrehozása
+> * Virtuális gép létrehozása az általános rendszerkép használatával
+> * Virtuálisgép-méretezési készlet létrehozása az általános képet használva
+> * Információ a megosztott képtárról, a képről és a verziószámról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="get-the-sample-playbooks"></a>A minta forgatókönyvek beolvasása
+## <a name="get-the-sample-playbooks"></a>A minta forgatókönyveinek beszereznie
 
-A minta-forgatókönyvek teljes készletét kétféleképpen szerezheti be:
+Két módja van, hogy a teljes sor minta forgatókönyvek:
 
-- [Töltse le a SIG mappát](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) , és mentse a helyi gépre.
-- Hozzon létre egy új fájlt az egyes szakaszokhoz, és másolja ki a minta-forgatókönyvet.
+- [Töltse le a SIG mappát,](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) és mentse a helyi számítógépre.
+- Hozzon létre egy új fájlt minden szakaszhoz, és másolja a minta forgatókönyvét.
 
-A `vars.yml` fájl tartalmazza az oktatóanyaghoz tartozó összes minta forgatókönyv által használt változókat. A fájl szerkesztésével egyedi neveket és értékeket adhat meg.
+A `vars.yml` fájl tartalmazza az összes minta forgatókönyv által használt változókat ehhez az oktatóanyaghoz. A fájl szerkeszthető, hogy egyedi neveket és értékeket adjon meg.
 
-Az első példaként szolgáló forgatókönyv `00-prerequisites.yml` létrehozza az oktatóanyag elvégzéséhez szükséges tudnivalókat:
-- Egy erőforráscsoport, amely egy olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik.
-- Egy virtuális hálózat; alhálózat a virtuális gép nyilvános IP-címe és hálózati adaptere.
-- A forrásként szolgáló virtuális gép, amely az általánosított rendszerkép létrehozásához használatos.
+Az első minta forgatókönyv `00-prerequisites.yml` létrehozza, mi szükséges az oktatóanyag befejezéséhez:
+- Egy erőforráscsoport, amely egy logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése.
+- Virtuális hálózat; alhálózat; nyilvános IP-cím és hálózati kártya a virtuális gép számára.
+- A forrás virtuális gép, amely létrehozásához használt általánosított lemezkép.
 
 ```yml
 - hosts: localhost
@@ -100,17 +100,17 @@ Az első példaként szolgáló forgatókönyv `00-prerequisites.yml` létrehozz
           version: latest
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 00-prerequisites.yml
 ```
 
-A [Azure Portal](https://portal.azure.com)ellenőrizze a `vars.yml`ban megadott erőforráscsoportot az új virtuális gép és a létrehozott különböző erőforrások megtekintéséhez.
+Az [Azure Portalon](https://portal.azure.com)ellenőrizze a megadott `vars.yml` erőforráscsoportot az új virtuális gép és a létrehozott különböző erőforrások megtekintéséhez.
 
-## <a name="generalize-the-vm-and-create-a-custom-image"></a>A virtuális gép általánosítása és egyéni rendszerkép létrehozása
+## <a name="generalize-the-vm-and-create-a-custom-image"></a>A virtuális gép általánosítása és egyéni lemezkép létrehozása
 
-A következő forgatókönyv, `01a-create-generalized-image.yml`, általánosítja az előző lépésben létrehozott forrás virtuális gépet, majd létrehoz egy egyéni rendszerképet a alapján.
+A következő forgatókönyv, `01a-create-generalized-image.yml`általánosítja az előző lépésben létrehozott forrásvirtuális gép, majd hozzon létre egy egyéni lemezképet alapján.
 
 ```yml
 - hosts: localhost
@@ -132,17 +132,17 @@ A következő forgatókönyv, `01a-create-generalized-image.yml`, általánosít
         source: "{{ source_vm_name }}"
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Ellenőrizze az erőforráscsoportot, és ellenőrizze, hogy `testimagea` megjelenik-e.
+Ellenőrizze az erőforráscsoportot, `testimagea` és győződjön meg arról, hogy megjelenik.
 
-## <a name="create-the-shared-image-gallery"></a>A megosztott Képtár létrehozása
+## <a name="create-the-shared-image-gallery"></a>A megosztott képtár létrehozása
 
-A képkatalógus a lemezképek megosztására és kezelésére szolgáló tárház. A `02-create-shared-image-gallery.yml` példaként szolgáló forgatókönyv-programkódja létrehoz egy megosztott képtárat az erőforráscsoporthoz.
+A képgaléria a képek megosztására és kezelésére szolgáló tárház. A minta forgatókönyv-kód `02-create-shared-image-gallery.yml` létrehoz egy megosztott képtár az erőforráscsoportban.
 
 ```yml
 - hosts: localhost
@@ -159,19 +159,19 @@ A képkatalógus a lemezképek megosztására és kezelésére szolgáló tárh�
         description: This is the gallery description.
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-Ekkor megjelenik egy új katalógus, `myGallery`az erőforráscsoporthoz.
+Most egy új gyűjtemény `myGallery`jelenik meg az erőforráscsoportban.
 
-## <a name="create-a-shared-image-and-image-version"></a>Megosztott rendszerkép és rendszerkép-verzió létrehozása
+## <a name="create-a-shared-image-and-image-version"></a>Megosztott kép- és képverzió létrehozása
 
-A következő forgatókönyvben `03a-create-shared-image-generalized.yml` létrehoz egy rendszerkép-definíciót és egy rendszerkép-verziót.
+A következő forgatókönyv, `03a-create-shared-image-generalized.yml` létrehoz egy kép definícióés egy kép változat.
 
-A képdefiníciók közé tartoznak a rendszerképek típusa (Windows vagy Linux), a kibocsátási megjegyzések, valamint a minimális és a maximális memória-követelmények. A rendszerkép verziója a rendszerkép verziója. A katalógus, a kép definíciója és a lemezkép verziója segít a logikai csoportokba tartozó képek rendszerezésében. 
+A képdefiníciók közé tartozik a képtípus (Windows vagy Linux), a kiadási megjegyzések, valamint a minimális és maximális memóriakövetelmények. A képverzió a kép verziója. A galéria, a képdefiníció és a képverzió segítségével logikai csoportokba rendezheti a képeket. 
 
 ```yml
 - hosts: localhost
@@ -221,17 +221,17 @@ A képdefiníciók közé tartoznak a rendszerképek típusa (Windows vagy Linux
         var: output
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 03a-create-shared-image-generalized.yml
 ```
 
-Az erőforráscsoport már rendelkezik rendszerkép-definícióval és a katalógushoz tartozó rendszerkép-verzióval.
+Az erőforráscsoport most már rendelkezik egy képdefinícióval és egy képverzióval a katalógushoz.
 
-## <a name="create-a-vm-based-on-the-generalized-image"></a>Hozzon létre egy virtuális gépet az általánosított rendszerkép alapján
+## <a name="create-a-vm-based-on-the-generalized-image"></a>Virtuális gép létrehozása az általánosított lemezkép alapján
 
-Végül a `04a-create-vm-using-generalized-image.yml` futtatásával hozzon létre egy virtuális gépet az előző lépésben létrehozott általánosított rendszerkép alapján.
+Végül futtassa `04a-create-vm-using-generalized-image.yml` a virtuális gép létrehozásához az előző lépésben létrehozott általánosított lemezkép alapján.
 
 ```yml
 - hosts: localhost
@@ -252,15 +252,15 @@ Végül a `04a-create-vm-using-generalized-image.yml` futtatásával hozzon lét
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 04a-create-vm-using-generalized-image.yml
 ```
 
-## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Virtuálisgép-méretezési csoport létrehozása az általánosított rendszerkép alapján
+## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Virtuálisgép-méretezési készletek létrehozása az általánosított lemezkép alapján
 
-Egy virtuálisgép-méretezési csoport is létrehozható az általánosított rendszerkép alapján. Ehhez futtassa `05a-create-vmss-using-generalized-image.yml`.
+Az általánosított lemezkép alapján virtuálisgép-méretezési készletet is létrehozhat. Fuss `05a-create-vmss-using-generalized-image.yml` erre.
 
 ```yml
 - hosts: localhost
@@ -285,15 +285,15 @@ Egy virtuálisgép-méretezési csoport is létrehozható az általánosított r
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 05a-create-vmss-using-generalized-image.yml
 ```
 
-## <a name="get-information-about-the-gallery"></a>A katalógussal kapcsolatos információk beolvasása
+## <a name="get-information-about-the-gallery"></a>Információ a galériáról
 
-A katalógussal, a képdefinícióval és a verzióval kapcsolatos információkat a `06-get-info.yml`futtatásával kérheti le.
+A gyűjteményről, a képdefinícióról és a `06-get-info.yml`verzióról a futva kaphat információt.
 
 ```yml
 - hosts: localhost
@@ -319,15 +319,15 @@ A katalógussal, a képdefinícióval és a verzióval kapcsolatos információk
       name: "{{ shared_image_version }}"
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 06-get-info.yml
 ```
 
-## <a name="delete-the-shared-image"></a>Megosztott rendszerkép törlése
+## <a name="delete-the-shared-image"></a>A megosztott kép törlése
 
-A katalógus erőforrásainak törléséhez tekintse meg a példa forgatókönyvek `07-delete-gallery.yml`. Erőforrások törlése fordított sorrendben. Először törölje a rendszerkép verzióját. Az összes rendszerkép-verzió törlése után törölheti a rendszerkép definícióját. Az összes rendszerkép-definíció törlését követően törölheti a katalógust.
+A galéria erőforrásainak törléséhez tekintse `07-delete-gallery.yml`meg a forgatókönyv-mintát. Erőforrások törlése fordított sorrendben. Először is, ha ki kell hagyni a lemezkép-verziót. A kép összes verziójának törlése után törölheti a képdefiníciót. Az összes képdefiníció törlése után törölheti a gyűjteményt.
 
 ```yml
 - hosts: localhost
@@ -358,7 +358,7 @@ A katalógus erőforrásainak törléséhez tekintse meg a példa forgatókönyv
       state: absent
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook 07-delete-gallery.yml
@@ -368,9 +368,9 @@ ansible-playbook 07-delete-gallery.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
+Az ebben a szakaszban található mintaforgatókönyv-kód a következőkre szolgál:
 
-- Törölje a korábban létrehozott két erőforrás-csoportot.
+- A korábban létrehozott két erőforráscsoport törlése
 
 Mentse a következő forgatókönyvet `cleanup.yml` néven:
 
@@ -386,18 +386,18 @@ Mentse a következő forgatókönyvet `cleanup.yml` néven:
         state: absent
 ```
 
-Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
+Íme néhány fontos megjegyzés, amelyet figyelembe kell venni a minta forgatókönyvével való munka során:
 
-- Cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
-- A két megadott erőforráscsoport összes erőforrása törölve lesz.
+- Cserélje `{{ resource_group_name }}` le a helyőrzőt az erőforráscsoport nevére.
+- A két megadott erőforráscsoporton belüli összes erőforrás törlődik.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

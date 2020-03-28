@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: linuxos webkiszolgáló védelme SSL-tanúsítványokkal az Azure-ban'
+title: 'Oktatóanyag: TLS-/SSL-tanúsítványokkal rendelkező Linux-webkiszolgáló biztonságossá tétele az Azure-ban'
 description: Ez az oktatóanyag bemutatja, hogyan védheti meg az NGINX-webkiszolgálót futtató Linux rendszerű virtuális gépet az Azure Key Vaultban tárolt SSL-tanúsítványok és az Azure CLI használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,23 +15,23 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aaa3f32cc48c6d051a2ff2a959372886435e5dcb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b51d0747a4ffa08bc230b33cd416986dda1e1908
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976162"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154304"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló védelme Linux rendszerű virtuális gépen az Azure-ban, a Key Vaultban tárolt SSL-tanúsítványok segítségével
-A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánnyal titkosítható a webes adatforgalom. Ezek az SSL-tanúsítványok az Azure Key Vaultban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését a Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló biztonságossá tétele linuxos virtuális gépen az Azure-ban a Key Vaultban tárolt TLS/SSL-tanúsítványokkal
+A webkiszolgálók, a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL) biztonságos sáfására vonatkozó tanúsítvány használható a webes forgalom titkosítására. Ezek a TLS/SSL-tanúsítványok tárolhatók az Azure Key Vaultban, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését linuxos virtuális gépekre (VM-ek) az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Azure Key Vault létrehozása;
 > * tanúsítvány létrehozása vagy feltöltése a Key Vaultba;
 > * virtuális gép létrehozása és az NGINX-webkiszolgáló telepítése;
-> * a tanúsítvány elhelyezése a virtuális gépen és az NGINX konfigurálása SSL-kötéssel.
+> * Adja be a tanúsítványt a virtuális gépbe, és konfigurálja az NGINX-et TLS-kötéssel
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -49,7 +49,7 @@ Mielőtt létrehozhatna egy Key Vaultot és a tanúsítványokat, létre kell ho
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le *\<mykeyvault >* a következő példában a saját egyedi Key Vault nevére:
+Ezután hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje * \<* le a mykeyvault>a következő példában a saját egyedi Key Vault nevére:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -136,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a *https:\/\/\<publicIpAddress >* a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
+Most megnyithat egy webböngészőt, és beírhatja *a https:\/\/\<publicIpAddress>* a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
 
 ![Webböngésző biztonsági figyelmeztetésének elfogadása](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -145,15 +145,15 @@ Ekkor a biztonságos NGINX-webhely a következő példához hasonlóan jelenik m
 ![Futó biztonságos NGINX-webhely megtekintése](./media/tutorial-secure-web-server/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban beállította egy NGINX-webkiszolgáló védelmét az Azure Key Vaultban tárolt SSL-tanúsítvánnyal. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy NGINX webkiszolgálót biztosított az Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Azure Key Vault létrehozása;
 > * tanúsítvány létrehozása vagy feltöltése a Key Vaultba;
 > * virtuális gép létrehozása és az NGINX-webkiszolgáló telepítése;
-> * a tanúsítvány elhelyezése a virtuális gépen és az NGINX konfigurálása SSL-kötéssel.
+> * Adja be a tanúsítványt a virtuális gépbe, és konfigurálja az NGINX-et TLS-kötéssel
 
 Kövesse ezt a hivatkozást az előre felépített virtuálisgép-szkriptek mintáinak megtekintéséhez.
 

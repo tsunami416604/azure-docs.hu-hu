@@ -1,33 +1,33 @@
 ---
-title: Oktatóanyag – virtuálisgép-méretezési csoportok kiosztása az Azure-ban a Ansible használatával
-description: Ismerje meg, hogyan méretezheti a Ansible a virtuálisgép-méretezési csoportok méretezésére az Azure-ban az autoscale használatával
-keywords: Ansible, Azure, devops, bash, ötletekbõl, skála, automata méretezés, virtuális gép, virtuálisgép-méretezési csoport, vmss
+title: Oktatóanyag – Automatikus skálázású virtuálisgép-méretezési készletek az Azure-ban az Ansible használatával
+description: Megtudhatja, hogyan méretezhető keleszthető k e-műveletek automatikus skálázási funkcióval az Ansible segítségével az Azure-ban
+keywords: ansible, azúr, devops, bash, ötletekbõl, skála, automatikus skálázás, virtuális gép, virtuális gép méretezési készlet, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156813"
 ---
-# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: virtuálisgép-méretezési csoportok autoskálázása az Azure-ban a Ansible használatával
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: Automatikus skálázású virtuálisgép-méretezési csoportok az Azure-ban az Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-A virtuálisgép-példányok számának automatikus [méretezése](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)automatikusan történik. Az autoscale előnye, hogy csökkenti a felügyeleti terhelést az alkalmazás teljesítményének monitorozásához és optimalizálásához. Az autoskálázás konfigurálható igény szerint vagy meghatározott ütemezés szerint. A Ansible használatával megadhatja az autoskálázási szabályokat, amelyek meghatározzák a pozitív felhasználói élmény elfogadható teljesítményét.
+A virtuálisgép-példányok számának automatikus beállítását [automatikus skálázásnak](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)nevezzük. Az automatikus skálázás előnye, hogy csökkenti a felügyeleti terhelést az alkalmazás teljesítményének figyeléséhez és optimalizálásához. Az automatikus skálázás konfigurálható az igényekre adott válaszként vagy egy meghatározott ütemezés szerint. Az Ansible használatával megadhatja az automatikus skálázási szabályokat, amelyek meghatározzák a pozitív felhasználói élmény elfogadható teljesítményét.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Automatikus skálázási profil meghatározása
-> * Az autoskálázás ismétlődő ütemterv alapján
-> * Az alkalmazások teljesítményén alapuló autoskálázás
-> * Az automatikusan méretezhető beállítások adatainak beolvasása 
-> * Egy autoskálázási beállítás letiltása
+> * Automatikus méretezés ismétlődő ütemezés alapján
+> * Automatikus méretezés az alkalmazás teljesítménye alapján
+> * Automatikus skálázási beállítások adatainak beolvasása 
+> * Automatikus skálázási beállítás letiltása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,13 +35,13 @@ A virtuálisgép-példányok számának automatikus [méretezése](/azure/virtua
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 
-## <a name="autoscale-based-on-a-schedule"></a>Ütemterv alapján történő autoskálázás
+## <a name="autoscale-based-on-a-schedule"></a>Automatikus méretezés ütemezés alapján
 
-Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségeket a virtuálisgép-példányok folyamatos létrehozásával, valamint az elfogadható teljesítmény elosztásával, amely egy méretezési eseményen maradó példányok minimális száma. 
+Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségek szabályozását azáltal, hogy nem folyamatosan hozza létre a virtuálisgép-példányokat, és egyensúlyt teremt az elfogadható teljesítmény és a horizontális felskálázási eseményben maradó példányok minimális számával. 
 
-A Ansible lehetővé teszi a méretezési csoportok méretezését egy adott dátumra vagy ismétlődő ütemtervre.
+Az Ansible lehetővé teszi a méretezési csoportok méretezését egy adott dátumra vagy ismétlődő ütemezésre.
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a virtuálisgép-példányok számát a hétfő 10:00-kor növeli.
+Ebben a szakaszban a forgatókönyv-kód növeli a virtuálisgép-példányok számát három ra 10:00 minden hétfőn.
 
 Mentse a következő forgatókönyvet `vmss-auto-scale.yml` néven:
 
@@ -77,22 +77,22 @@ Mentse a következő forgatókönyvet `vmss-auto-scale.yml` néven:
               - '10'
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="autoscale-based-on-performance-data"></a>Az autoskálázás a teljesítményadatok alapján
+## <a name="autoscale-based-on-performance-data"></a>Automatikus skálázás teljesítményadatok alapján
 
-Ha az alkalmazás igénye növekszik, a méretezési csoportokban lévő virtuálisgép-példányok terhelése növekszik. Ha a megnövekedett terhelés állandó, nem csak pillanatnyi igény, akkor megadhatja, hogy az automatikus skálázási szabály növelje meg a virtuálisgép-példányok számát a méretezési csoportban. Ezen virtuálisgép-példányok létrehozását és az alkalmazások telepítését követően a méretezési csoport megkezdi a forgalom elosztását közöttük a terheléselosztón keresztül. A Ansible lehetővé teszi a figyelni kívánt mérőszámok, például a CPU-használat, a lemezhasználat és az alkalmazás-betöltési idő szabályozását. A méretezési csoportok méretezése és méretezése a teljesítmény mérőszámának küszöbértékei, ismétlődő ütemterv vagy egy adott dátum alapján végezhető el. 
+Ha az alkalmazás igénye nő, a méretezési csoportokban a virtuálisgép-példányok terhelése nő. Ha a megnövekedett terhelés állandó, nem csak pillanatnyi igény, akkor megadhatja, hogy az automatikus skálázási szabály növelje meg a virtuálisgép-példányok számát a méretezési csoportban. Ezen virtuálisgép-példányok létrehozását és az alkalmazások telepítését követően a méretezési csoport megkezdi a forgalom elosztását közöttük a terheléselosztón keresztül. Az Ansible lehetővé teszi, hogy szabályozhatja, hogy milyen metrikákat figyeljen, például a PROCESSZOR-használatot, a lemezhasználatot és az alkalmazás betöltési idejét. Skálázási csoportokban skálázhatja és skálázhatja a teljesítménymetrika küszöbértékei, egy ismétlődő ütemezés vagy egy adott dátum alapján. 
 
-Az ebben a szakaszban szereplő forgatókönyv-kód az előző 10 percben, 18:00 minden hétfőn ellenőrzi a processzor munkaterhelését. 
+Ebben a szakaszban a forgatókönyv-kód ellenőrzi a CPU számítási az előző 10 perc 18:00 minden hétfőn. 
 
-A CPU-százalékos mérőszámok alapján a forgatókönyv a következő műveletek egyikét hajtja végre:
+A PROCESSZOR százalékos mérőszámai alapján a forgatókönyv az alábbi műveletek egyikét végzi:
 
-- A VM-példányok számának kiméretezése négyre
-- A virtuálisgép-példányok számának méretezése egy értékre
+- A virtuálisgép-példányok számát négyre méretezi
+- A virtuálisgép-példányok számát egyre méretezi
 
 Mentse a következő forgatókönyvet `vmss-auto-scale-metrics.yml` néven:
 
@@ -171,15 +171,15 @@ Mentse a következő forgatókönyvet `vmss-auto-scale-metrics.yml` néven:
             value: '1'
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-autoscale-settings-information"></a>Az autoskálázási beállítások adatainak beolvasása 
+## <a name="get-autoscale-settings-information"></a>Automatikus skálázási beállítások adatainak beszereznie 
 
-Az ebben a szakaszban található forgatókönyv-kód a `azure_rm_autoscale_facts` modul használatával kéri le az autoskálázási beállítás részleteit.
+Ebben a szakaszban a `azure_rm_autoscale_facts` forgatókönyv-kód a modul segítségével lekéri az automatikus skálázási beállítás részleteit.
 
 Mentse a következő forgatókönyvet `vmss-auto-scale-get-settings.yml` néven:
 
@@ -199,17 +199,17 @@ Mentse a következő forgatókönyvet `vmss-auto-scale-get-settings.yml` néven:
         var: autoscale_query.autoscales[0]
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook vmss-auto-scale-get-settings.yml
 ```
 
-## <a name="disable-autoscale-settings"></a>Az autoskálázási beállítások letiltása
+## <a name="disable-autoscale-settings"></a>Automatikus skálázási beállítások letiltása
 
-Az autoscale-beállítások letiltása kétféleképpen lehetséges. Az egyik módszer a `enabled` kulcs módosítása `true`ról `false`ra. A második módszer a beállítás törlése.
+Az automatikus skálázási beállítások kétféleképpen tiltható le. Ennek egyik módja, `enabled` hogy `true` `false`a kulcsot a -ra változtassa. A második módszer a beállítás törlése.
 
-Az ebben a szakaszban található forgatókönyv-kód törli az autoskálázási beállítást. 
+Az ebben a szakaszban található forgatókönyvkód törli az automatikus skálázási beállítást. 
 
 Mentse a következő forgatókönyvet `vmss-auto-scale-delete-setting.yml` néven:
 
@@ -226,13 +226,13 @@ Mentse a következő forgatókönyvet `vmss-auto-scale-delete-setting.yml` néve
          state: absent
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 vmss-auto-scale-delete-setting.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: Azure-beli virtuálisgép-méretezési csoportok egyéni rendszerképének frissítése a Ansible használatával](./ansible-vmss-update-image.md)
+> [Oktatóanyag: Az Azure virtuálisgép-méretezési készletek egyéni lemezképének frissítése az Ansible használatával](./ansible-vmss-update-image.md)

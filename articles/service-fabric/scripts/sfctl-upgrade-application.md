@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás frissítése fürtön a sfctl-ben
+title: Alkalmazás frissítése fürtön sfctl-ben
 description: Service Fabric parancssori felület példaszkriptje – Alkalmazás frissítése egy új verzióval. Ez a példa egy üzembe helyezett alkalmazást is frissít az új elemekkel.
 services: service-fabric
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614723"
 ---
-# <a name="update-an-application-using-the-service-fabric-cli"></a>Alkalmazás frissítése a Service Fabric parancssori felület használatával
+# <a name="update-an-application-using-the-service-fabric-cli"></a>Alkalmazás frissítése a Service Fabric CLI használatával
 
 Ez a példaszkript egy meglévő alkalmazás új verzióját tölti fel, majd frissíti az üzembe helyezett alkalmazást az új elemekkel.
 
@@ -31,7 +31,7 @@ Ez a példaszkript egy meglévő alkalmazás új verzióját tölti fel, majd fr
 
 [!code-sh[main](../../../cli_scripts/service-fabric/upgrade-application/upgrade-application.sh "Upload and update an application on a Service Fabric cluster")]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [A Service Fabric parancssori felületének dokumentációja](../service-fabric-cli.md).
 

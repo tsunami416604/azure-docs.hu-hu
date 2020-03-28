@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: e5166934c4f7e1ecc917d2a5afcbb26ea9a637a2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67178923"
 ---
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A példaszkript futtatása után az alábbi parancs segítségével távolítsa el az erőforráscsoport az erőforráscsoport, a Redis-példányt az Azure Cache és a kapcsolódó erőforrásokat.
+A parancsfájlminta futtatása után a következő parancs az erőforráscsoport, az Azure Cache for Redis-példány és az erőforráscsoport kapcsolódó erőforrásainak eltávolítására használható.
 
 ```azurecli
 az group delete --name contosoGroup

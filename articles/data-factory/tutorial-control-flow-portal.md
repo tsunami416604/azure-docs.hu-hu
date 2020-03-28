@@ -1,5 +1,5 @@
 ---
-title: A folyamat elágazási és láncolási tevékenységei Azure Portal használatával
+title: Elágazási és láncolási tevékenységek egy folyamatban az Azure Portal használatával
 description: Megismerheti, hogyan vezérelheti az adatok folyamát az Azure Data Factoryben elágaztatási és láncolási tevékenységekkel.
 services: data-factory
 author: djpmsft
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 3fe4dc76e8ece0d525f307626b1772a3239805db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977508"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
@@ -40,13 +40,13 @@ Ez az oktatóanyag az Azure Portalt használja. Az Azure Data Factoryvel való i
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
-* **Azure Storage-fiók** A blobtárolót használjuk **forrás** adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
-* **Azure SQL Database** Ezt az adatbázist használjuk **fogadó** adattárként. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+* **Az Azure Storage-fiók.** A blobtárolót használjuk **forrás** adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
+* **Az Azure SQL Database .** Ezt az adatbázist használjuk **fogadó** adattárként. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
 
 ### <a name="create-blob-table"></a>Blobtábla létrehozása
 
-1. Nyissa meg a Jegyzettömböt. Másolja be az alábbi szöveget, és mentse egy **input.txt** nevű fájlként a lemezen.
+1. Indítsa el a Jegyzettömböt. Másolja be az alábbi szöveget, és mentse egy **input.txt** nevű fájlként a lemezen.
 
     ```
     John,Doe
@@ -127,7 +127,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás létrehozása** > **adatok és Analitika** > **Data Factory**:
+1. A bal oldali menüben válassza az > **Erőforrás-adatok létrehozása + Analytics** > **Data Factory** **lehetőséget:**
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -135,21 +135,21 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
      ![Új adat-előállító lap](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-adat-előállító nevének **globálisan egyedinek**kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
-4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
+4. Az **erőforráscsoport esetében**tegye az alábbi lépések egyikét:
 
-      - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
-      - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
+      - Válassza **a Meglévő használata**lehetőséget, és válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+      - Válassza **az Új létrehozása**lehetőséget, és írja be egy erőforráscsoport nevét.   
          
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Create** (Létrehozás) gombra.      
-8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**.
+7. Kattintson **a Létrehozás gombra.**      
+8. Az irányítópulton a következő csempe jelenik meg állapottal: **Adatgyár telepítése**.
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -173,7 +173,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     - **sourceBlobContainer** – a folyamat ezen paraméterét a forrás blob-adatkészlet használja fel.
     - **sinkBlobContainer** – a folyamat ezen paraméterét a fogadó blob-adatkészlet használja fel
-    - **receiver** – ezt a paramétert a folyamatban lévő két webes tevékenység használja, amelyek sikerrel vagy hibával kapcsolatos e-maileket küldenek a paraméter által meghatározott e-mail-címmel rendelkező címzettnek.
+    - **fogadó** – ezt a paramétert a folyamatban lévő két webes tevékenység használja, amelyek sikeres vagy sikertelen e-maileket küldenek annak a fogadónak, akinek az e-mail címét ez a paraméter megvan adva.
 
    ![Új folyamat menü](./media/tutorial-control-flow-portal/pipeline-parameters.png)
 4. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** elemet, és húzza át a **Másolás** tevékenységet a folyamat tervezőfelületére.
@@ -193,7 +193,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
    ![Adatkészlet kapcsolata – új társított szolgáltatás](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
 9. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
-    1. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet.
+    1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
     3. Kattintson a **Mentés** gombra.
 
@@ -245,7 +245,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 19. Kapcsolja össze a **Másolás** tevékenységet a **Webes** tevékenységgel úgy, hogy a másolási tevékenység melletti zöld gombot a webes tevékenységre húzza.
 
     ![A másolási tevékenység összekapcsolása az első webes tevékenységgel](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)
-20. Húzzon át egy másik **webes** tevékenységet a Tevékenységek eszközkészletből a folyamat tervezőfelületére, és adja meg a **SendFailureEmailActivity** **nevet**.
+20. Húzzon át egy másik **webes** tevékenységet a Tevékenységek eszközkészletből a folyamat tervezőfelületére, és adja meg a **SendFailureEmailActivity****nevet**.
 
     ![A második webes tevékenység neve](./media/tutorial-control-flow-portal/web-activity2-name.png)
 21. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket:
@@ -272,7 +272,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 23. Húzza a másolási tevékenység melletti **piros** gombot a **SendFailureEmailActivity** nevű második webes tevékenységre. Szabadon áthelyezheti a tevékenységeket, így a folyamat a következő képhez hasonlóan fog kinézni:
 
     ![A teljes folyamat az összes tevékenységgel](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. A folyamat érvényesítéséhez kattintson a **Validation** (Érvényesítés) gombra az eszköztáron. Zárja be a **Folyamatérvényesítés kimenete** ablakot a **>>** gombra kattintva.
+24. A folyamat érvényesítéséhez kattintson a **Érvényesítés** gombra az eszköztáron. Zárja be a **Folyamatérvényesítés kimenete** ablakot a **>>** gombra kattintva.
 
     ![Folyamat érvényesítése](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Ha közzé szeretné tenni az entitásokat (adatkészleteket, folyamatokat stb.) a Data Factory szolgáltatásban, válassza az **Összes közzététele** elemet. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
@@ -287,7 +287,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     1. A **sourceBlobContainer** paraméterhez adja meg az **adftutorial/adfv2branch/input** értéket.
     2. A **sinkBlobContainer** paraméterhez adja meg az **adftutorial/adfv2branch/output** értéket.
-    3. Adja meg a **címzett** **e-mail-címét**.
+    3. Adja meg a **címzett****e-mail-címét**.
     4. Kattintson a **Befejezés** gombra.
 
         ![Folyamatfuttatás paraméterei](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
@@ -308,7 +308,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     1. A **sourceBlobContainer** paraméterhez adja meg az **adftutorial/dummy/input** értéket. Győződjön meg arról, hogy a helyőrző mappa nem létezik az adftutorial tárolóban.
     2. A **sinkBlobContainer** paraméterhez adja meg az **adftutorial/dummy/output** értéket.
-    3. Adja meg a **címzett** **e-mail-címét**.
+    3. Adja meg a **címzett****e-mail-címét**.
     4. Kattintson a **Befejezés** gombra.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>A sikertelen folyamatfuttatás monitorozása
@@ -326,7 +326,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     ![Tevékenységfuttatási hiba](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés Key Vault tűzfal mögött – Azure Key Vault | Microsoft Docs
+title: Hozzáférés a Key Vaulthoz tűzfal mögött – Azure Key Vault | Microsoft dokumentumok
 description: Megtudhatja, hogyan lehet elérni a tűzfal mögötti Azure Key Vaultot egy alkalmazásból
 services: key-vault
 author: amitbapat
@@ -10,28 +10,28 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 36dada57e587da6e023a83c8ebb6555abe44b9ba
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 42b4eab5f2417f97ab3d37274e6fca1965eca95f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184846"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457457"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Az Azure Key Vault elérése tűzfal mögött
 
-## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Milyen portokat, gazdagépeket vagy IP-címeket kell megnyitnia a Key Vault-ügyfélalkalmazás tűzfal mögötti engedélyezéséhez a Key Vault eléréséhez?
+## <a name="what-ports-hosts-or-ip-addresses-should-i-open-to-enable-my-key-vault-client-application-behind-a-firewall-to-access-key-vault"></a>Milyen portokat, gazdagépeket vagy IP-címeket nyissak meg, hogy a tűzfal mögötti key vault-ügyfélalkalmazás hozzáférjen a kulcstartóhoz?
 
 A kulcstároló eléréséhez a kulcstároló-ügyfélalkalmazásnak a különféle funkciók biztosításához képesnek kell lennie több végpont elérésére:
 
 * Hitelesítés az Azure Active Directory (Azure AD) használatával.
 * Az Azure Key Vault kezelése. Ide tartozik a hozzáférési szabályzatok létrehozása, olvasása, frissítése, törlése és beállítása az Azure Resource Manageren keresztül.
-* A magában a Key Vaultban tárolt objektumok (kulcsok és titkos kulcsok) elérése és kezelése a Key Vault speciális végpontján (pl. [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)) keresztül.  
+* A Key Vaultban tárolt objektumok (kulcsok és titkos kulcsok) elérése és kezelése, a [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)Key Vault-specifikus végponton (például) keresztül.  
 
 A konfigurációtól és a környezettől függően lehetnek bizonyos eltérések.
 
 ## <a name="ports"></a>Portok
 
-Mindhárom funkció (a hitelesítés, a felügyelet és az adatsíkhoz való hozzáférés) Key Vault felé irányuló összes forgalma a 443-as HTTPS-porton keresztül zajlik. A CRL használata esetén azonban alkalmanként HTTP-forgalom is előfordul (a 80-as porton keresztül). Az OCSP protokollhoz hozzáférő ügyfeleknek nem szabad elérniük a CRL-t, azonban alkalmanként elérhetik a [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) címet.  
+Mindhárom funkció (a hitelesítés, a felügyelet és az adatsíkhoz való hozzáférés) Key Vault felé irányuló összes forgalma a 443-as HTTPS-porton keresztül zajlik. A CRL használata esetén azonban alkalmanként HTTP-forgalom is előfordul (a 80-as porton keresztül). Az OCSP-t támogató ügyfelek nem érhetik el [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl)a visszavont tanúsítványok listájának elérését, de esetenként elérhetik a .  
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -39,8 +39,8 @@ A Key Vault-ügyfélalkalmazásoknak a hitelesítés érdekében hozzá kell fé
 
 | Résztvevő típusa | Végpont:port |
 | --- | --- |
-| A Microsoft-fiókot használó felhasználó<br> (például: user@hotmail.com) |**Globálisan:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> és <br>login.live.com:443 |
-| Az Azure AD-vel munkahelyi vagy iskolai fiókot használó felhasználó vagy szolgáltatás (például user@contoso.com) |**Globálisan:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
+| A Microsoft-fiókot használó felhasználó<br> (például: user@hotmail.com) |**Globális:**<br> login.microsoftonline.com:443<br><br> **Azure Kína:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Németország:**<br> login.microsoftonline.de:443<br><br> és <br>login.live.com:443 |
+| Az Azure AD-vel munkahelyi vagy iskolai fiókot használó felhasználó vagy szolgáltatás (például user@contoso.com) |**Globális:**<br> login.microsoftonline.com:443<br><br> **Azure Kína:**<br> login.chinacloudapi.cn:443<br><br>**Amerikai Egyesült Államok kormánya által használt Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Németország:**<br> login.microsoftonline.de:443 |
 | Munkahelyi vagy iskolai fiókot és az Active Directory Federation Servicest (AD FS) vagy más összevont végpontot (például: user@contoso.com) használó felhasználó vagy szolgáltatás. |A munkahelyi vagy iskolai fiókhoz tartozó valamennyi végpont plusz az AD FS vagy más összevont végpontok |
 
 Más összetett forgatókönyvek is előfordulhatnak. További információkért tekintse meg az [Azure Active Directory hitelesítési folyamatát](../active-directory/develop/authentication-scenarios.md), az [alkalmazások Azure Active Directoryval való integrálását](../active-directory/develop/active-directory-how-to-integrate.md) és [az Active Directory hitelesítési protokolljait ismertető cikket](https://msdn.microsoft.com/library/azure/dn151124.aspx).  
@@ -51,16 +51,16 @@ A Key Vault felügyeletéhez (CRUD és hozzáférési házirend beállítása) a
 
 | Művelet típusa | Végpont:port |
 | --- | --- |
-| A Key Vault vezérlési síkjával végzett műveletek<br> az Azure Resource Manager használatával |**Globálisan:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |
-| Azure Active Directory – Graph API |**Globálisan:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> graph.windows.net:443<br><br> **Azure Germany:**<br> graph.cloudapi.de:443 |
+| A Key Vault vezérlési síkjával végzett műveletek<br> az Azure Resource Manager használatával |**Globális:**<br> management.azure.com:443<br><br> **Azure Kína:**<br> management.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Németország:**<br> management.microsoftazure.de:443 |
+| Microsoft Graph API |**Globális:**<br> graph.microsoft.com:443<br><br> **Azure Kína:**<br> graph.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> graph.microsoft.com:443<br><br> **Azure Németország:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Key Vault-műveletek
 
-Az összes Key Vault-objektummal (kulcsok és titkos kulcsok) végzett felügyeleti és titkosítási művelethez a Key Vault-ügyfélnek el kell érnie a Key Vault-végpontot. A végpont DNS-utótagja a Key Vault helyétől függően eltérő. A Key Vault-végpont formátuma az alábbi táblázatban látható módon: *<tároló-neve>* . *<területspecifikus-dns-utótag>* .  
+Az összes Key Vault-objektummal (kulcsok és titkos kulcsok) végzett felügyeleti és titkosítási művelethez a Key Vault-ügyfélnek el kell érnie a Key Vault-végpontot. A végpont DNS-utótagja a Key Vault helyétől függően eltérő. A Key Vault-végpont formátuma az alábbi táblázatban látható módon: *<tároló-neve>*.*<területspecifikus-dns-utótag>*.  
 
 | Művelet típusa | Végpont:port |
 | --- | --- |
-| A kulcsokon végzett műveletek, beleértve a titkosítási műveleteket is; kulcsok és titkos létrehozása, olvasása, frissítése és törlése; címkék és egyéb attribútumok beállítása és olvasása kulcstároló-objektumokon (kulcsokon vagy titkokon) |**Globálisan:**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 |
+| A kulcsokon végzett műveletek, beleértve a titkosítási műveleteket is; kulcsok és titkos létrehozása, olvasása, frissítése és törlése; címkék és egyéb attribútumok beállítása és olvasása kulcstároló-objektumokon (kulcsokon vagy titkokon) |**Globális:**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure Kína:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Németország:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>IP-címtartományok
 
@@ -68,4 +68,4 @@ A Key Vault szolgáltatás egyéb Azure-erőforrásokat is használ, amilyen pé
 
 ## <a name="next-steps"></a>További lépések
 
-Amennyiben a Key Vault szolgáltatással kapcsolatban kérdése merülne fel, tekintse meg az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Ha kérdése van a Key Vault, keresse fel az [Azure Key Vault fórumait.](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)

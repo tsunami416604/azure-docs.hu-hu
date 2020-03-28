@@ -15,47 +15,47 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79129530"
 ---
 ## <a name="test-your-code"></a>A kód tesztelése
 
-A projekt futtatásához a Visual Studióban válassza az **F5**lehetőséget. Az alkalmazás **MainWindow** megjelenik, ahogy az itt látható:
+A projekt futtatásához a Visual Studióban válassza az **F5**lehetőséget. Az alkalmazás **MainWindow** jelenik meg, ahogy itt látható:
 
 ![Az alkalmazás tesztelése](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-Amikor első alkalommal futtatja az alkalmazást, és kiválasztja a **Microsoft Graph API meghívása** gombot, a rendszer felszólítja, hogy jelentkezzen be. A teszteléshez használjon Azure Active Directory fiókot (munkahelyi vagy iskolai fiókot) vagy egy Microsoft-fiók (live.com, outlook.com).
+Amikor először futtatja az alkalmazást, és kiválasztja a **Microsoft Graph API hívása** gombot, a rendszer kéri a bejelentkezést. Azure Active Directory-fiók (munkahelyi vagy iskolai fiók) vagy Microsoft-fiók (live.com, outlook.com) használatával tesztelhében.
 
 ![Bejelentkezés az alkalmazásba](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
-### <a name="provide-consent-for-application-access"></a>Adja meg az alkalmazás-hozzáférés beleegyezikét
+### <a name="provide-consent-for-application-access"></a>Hozzájárulás hozzájárulása az alkalmazáshoz való hozzáféréshez
 
-Amikor először jelentkezik be az alkalmazásba, a rendszer arra kéri, hogy engedélyezze az alkalmazás számára a profil elérését, és jelentkezzen be, ahogy az itt látható:
+Amikor először jelentkezik be az alkalmazásba, a rendszer arra is kéri, hogy adja meg a beleegyezését ahhoz, hogy az alkalmazás hozzáférhessen a profiljához, és bejelentkezhessen Önbe, ahogy az itt látható:
 
-![Adja meg az alkalmazás-hozzáféréshez szükséges engedélyt](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
+![Adja meg hozzájárulását az alkalmazáshoz való hozzáféréshez](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
-### <a name="view-application-results"></a>Alkalmazás eredményeinek megtekintése
+### <a name="view-application-results"></a>Alkalmazáseredmények megtekintése
 
-A bejelentkezést követően meg kell jelennie a Microsoft Graph API-nak a hívás által visszaadott felhasználói profil adatainak. Az eredmények az **API-hívás eredményei** mezőben jelennek meg. Az `AcquireTokenInteractive` vagy `AcquireTokenSilent` hívásakor beszerzett jogkivonatra vonatkozó alapszintű információk a **jogkivonat-információ** mezőben láthatók. Az eredmények a következő tulajdonságokat tartalmazzák:
+A bejelentkezés után meg kell jelennie a Microsoft Graph API-hoz való hívás által visszaadott felhasználói profiladatoknak. Az eredmények az **API-hívás eredménye** mezőben jelennek meg. Alapvető információkat a jogkivonat, amely a `AcquireTokenInteractive` `AcquireTokenSilent` hívás on keresztül szerzett, vagy láthatónak kell lennie a **Token Info** mezőben. Az eredmények a következő tulajdonságokat tartalmazzák:
 
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|
-|**Felhasználónév** |<span>user@domain.com</span> |A felhasználó azonosítására szolgáló Felhasználónév.|
-|**A jogkivonat lejár** |DateTime |A jogkivonat lejárati ideje. A MSAL a jogkivonatot szükség szerint megújítva kiterjeszti a lejárati dátumot.|
+|**Felhasználónév** |<span>user@domain.com</span> |A felhasználó azonosítására használt felhasználónév.|
+|**A token lejár** |DateTime |A jogkivonat lejárati időpontja. Az MSAL szükség esetén meghosszabbítja a lejárati dátumot a jogkivonat megújításával.|
 
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 
-A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelkeznie a felhasználói profil olvasásához. A rendszer alapértelmezés szerint automatikusan hozzáadja ezt a hatókört az alkalmazás regisztrációs portálján regisztrált összes alkalmazáshoz. A Microsoft Graph egyéb API-jai, valamint a háttér-kiszolgálóhoz tartozó egyéni API-k további hatóköröket is igényelhetnek. A Microsoft Graph API-nak szüksége van a *naptárak. Read* hatókörre a felhasználó naptárának listázásához.
+A Microsoft Graph API-nak a *user.read* hatókörre van szüksége a felhasználói profil olvasásához. Ez a hatókör alapértelmezés szerint automatikusan hozzáadódik az alkalmazásregisztrációs portálon regisztrált minden alkalmazáshoz. A Microsoft Graph egyéb API-k, valamint a háttérkiszolgáló egyéni API-jai további hatóköröket igényelhetnek. A Microsoft Graph API-nak a *Naptárak.Read* hatókörszükséges a felhasználó naptárai listázásához.
 
-Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a *naptárakat. olvassa el* a delegált jogosultságokat az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a *naptárak. Read* hatókört a `acquireTokenSilent` híváshoz.
+Ha egy alkalmazás környezetében szeretné elérni a felhasználó naptárait, adja hozzá a *Calendars.Read* delegált engedélyt az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a *Calendars.Read* hatókört a `acquireTokenSilent` híváshoz.
 
 >[!NOTE]
->A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználótól.
+>A rendszer további jóváhagyásokat kérhet a felhasználótól, ahogy növeli a hatókörök számát.
 
 <!--end-collapse-->
 

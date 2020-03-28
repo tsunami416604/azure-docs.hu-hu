@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Fürtözött modell üzembe helyezése az R-ben'
+title: 'Oktatóanyag: Fürtmodell telepítése r-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A jelen háromrészes oktatóanyag-sorozat harmadik részében egy Azure SQL Database Machine Learning Services (előzetes verzió) üzembe helyez egy fürtszolgáltatási modellt az R-ben.
+description: A három részes oktatóanyag-sorozat harmadik részében egy fürtözési modellt telepít az R-ben az Azure SQL Database Machine Learning Services segítségével (előzetes verzió).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,44 +13,46 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: d67f007ac91d4830557a2cae646698b130b02314
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640907"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345791"
 ---
-# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Fürtözött modell üzembe helyezése az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
+# <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Fürthálózati modell üzembe helyezése az R-ben az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
 
-A jelen háromrészes oktatóanyag-sorozat harmadik részében az R-ben kifejlesztett, Azure SQL Database Machine Learning Services (előzetes verzió) használatával egy SQL-adatbázisba helyez üzembe egy fürtözött modellt.
+A három részes oktatóanyag-sorozat harmadik részében egy R-ben kifejlesztett fürtözési modellt telepít egy SQL-adatbázisba az Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
 
-Hozzon létre egy tárolt eljárást egy olyan beágyazott R-parancsfájllal, amely fürtözést végez. Mivel a modell végrehajtása az Azure SQL Database-ben történik, könnyen kitanítható az adatbázisban tárolt adataival.
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Hozzon létre egy tárolt eljárást egy beágyazott R-parancsfájllal, amely fürtözést hajt végre. Mivel a modell végrehajtása az Azure SQL-adatbázisban, könnyen betanítható az adatbázisban tárolt adatok ellen.
+
+Ebben a cikkben megtudhatja, hogyan:
 
 > [!div class="checklist"]
-> * Modellt létrehozó tárolt eljárás létrehozása
-> * Fürtözés végrehajtása a SQL Databaseban
+> * A modellt létrehozó tárolt eljárás létrehozása
+> * Fürtözés végrehajtása az SQL Database-ben
 > * A fürtözési adatok használata
 
-Az első [részben](sql-database-tutorial-clustering-model-prepare-data.md)megtanulta, hogyan készítse elő az adatok előkészítését egy Azure SQL Database-adatbázisból a fürtözés végrehajtásához.
+Az [első részben](sql-database-tutorial-clustering-model-prepare-data.md)megtanulta, hogyan készítse elő az adatokat egy Azure SQL-adatbázis fürtözés végrehajtásához.
 
-A [második részben](sql-database-tutorial-clustering-model-build.md)megtanulta, hogyan hozhat létre és taníthat egy k-csoportosítási modellt az R-ben.
+A [második részben](sql-database-tutorial-clustering-model-build.md)megtanulta, hogyan kell létrehozni és beképezni a K-Means fürtözési modellt az R-ben.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az [**oktatóanyag-Sorozat**](sql-database-tutorial-clustering-model-build.md)harmadik része feltételezi, hogy elvégezte az első [**részt**](sql-database-tutorial-clustering-model-prepare-data.md) , és a második részt.
+* Az oktatóanyag-sorozat harmadik része feltételezi, hogy befejezte [**az első**](sql-database-tutorial-clustering-model-prepare-data.md) és a [**második részt.**](sql-database-tutorial-clustering-model-build.md)
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Modellt létrehozó tárolt eljárás létrehozása
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>A modellt létrehozó tárolt eljárás létrehozása
 
-Futtassa az alábbi T-SQL-szkriptet a tárolt eljárás létrehozásához. Az eljárás újból létrehozza az oktatóanyag-sorozat első és második részében létrehozott lépéseket:
+A tárolt eljárás létrehozásához futtassa a következő T-SQL-parancsfájlt. Az eljárás újralétrehozza az oktatóanyag-sorozat első és második részében kifejlesztett lépéseket:
 
-* ügyfelek osztályozása a vásárlási és visszatérési előzmények alapján
-* négy fürt létrehozása a K-means algoritmust használó ügyfelek számára
+* a vevők besorolása a vásárlási és visszaküldési előzményeik alapján
+* négy ügyfélcsoportot hoz létre egy K-Means algoritmus segítségével
 
-Az eljárás az eredményül kapott ügyfél-fürt leképezéseit tárolja az **customer_return_clusters**adatbázis táblában.
+Az eljárás az eredményül kapott vevőfürt-hozzárendeléseket az **adatbázistáblában tárolja customer_return_clusters**.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -175,7 +177,7 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>Fürtözés végrehajtása a SQL Databaseban
+## <a name="perform-clustering-in-sql-database"></a>Fürtözés végrehajtása az SQL Database-ben
 
 Most, hogy létrehozta a tárolt eljárást, hajtsa végre a következő parancsfájlt a fürtözés végrehajtásához.
 
@@ -188,7 +190,7 @@ TRUNCATE TABLE customer_return_clusters;
 EXECUTE [dbo].[generate_customer_return_clusters];
 ```
 
-Ellenőrizze, hogy működik-e, és hogy valóban van-e az ügyfelek és a fürthöz tartozó hozzárendelések listája.
+Ellenőrizze, hogy működik-e, és hogy valóban rendelkezünk-e az ügyfelek és fürtleképezéseik listájával.
 
 ```sql
 --Select data from table customer_return_clusters
@@ -208,9 +210,9 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 
 ## <a name="use-the-clustering-information"></a>A fürtözési adatok használata
 
-Mivel az adatbázisban tárolta a fürtszolgáltatási eljárást, az képes a fürtözést hatékonyan végrehajtani az ugyanabban az adatbázisban tárolt ügyféladatokat illetően. Az eljárást akkor hajthatja végre, amikor frissíti az ügyféladatokat, és a frissített fürtszolgáltatási információkat használja.
+Mivel a fürtözési eljárást az adatbázisban tárolta, hatékonyan képes fürtözést végrehajtani az ugyanabban az adatbázisban tárolt ügyféladatokkal szemben. Az eljárást az ügyféladatok frissítésekor végrehajthatja, és használhatja a frissített fürtözési adatokat.
 
-Tegyük fel, hogy egy promóciós e-mailt szeretne küldeni a 3. fürtben lévő ügyfeleknek, az aktívabb visszatérési viselkedésű csoportnál (láthatja, hogyan írták le a négy fürtöt a [második részben](sql-database-tutorial-clustering-model-build.md#analyze-the-results)). A következő kód kiválasztja a 3. fürtben lévő ügyfelek e-mail-címeit.
+Tegyük fel, hogy promóciós e-mailt szeretne küldeni a 3-as fürtben lévő ügyfeleknek, az a csoport, amely aktívabb visszatérési viselkedéssel rendelkezik (láthatja, hogy a négy fürtet hogyan írták le a [második részben).](sql-database-tutorial-clustering-model-build.md#analyze-the-results) A következő kód kiválasztja a 3-as fürtben lévő ügyfelek e-mail címét.
 
 ```sql
 USE [tpcxbb_1gb]
@@ -222,30 +224,30 @@ JOIN [dbo].[customer_return_clusters] AS r ON r.customer = customer.c_customer_s
 WHERE r.cluster = 3
 ```
 
-Az **r. cluster** érték módosításával visszatérhet a más fürtökben lévő ügyfelek e-mail-címeire.
+Módosíthatja az **r.cluster** értékét, hogy más fürtökben lévő ügyfelek e-mail címét adja vissza.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült ezzel az Oktatóanyaggal, törölheti a tpcxbb_1gb-adatbázist a Azure SQL Database-kiszolgálóról.
+Ha befejezte az oktatóanyag, törölheti a tpcxbb_1gb adatbázist az Azure SQL Database-kiszolgálóról.
 
-A Azure Portal hajtsa végre az alábbi lépéseket:
+Az Azure Portalon kövesse az alábbi lépéseket:
 
-1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** vagy **SQL-adatbázis**lehetőséget.
-1. A **szűrés név szerint...** mezőbe írja be a **tpcxbb_1gb**nevet, és válassza ki az előfizetését.
-1. Válassza ki a **tpcxbb_1gb** -adatbázist.
+1. Az Azure Portal bal oldali menüjében válassza az **Összes erőforrás** vagy **SQL-adatbázis lehetőséget.**
+1. A **Szűrés név szerint...** mezőbe írja be **tpcxbb_1gb,** és válassza ki az előfizetést.
+1. Válassza ki a **tpcxbb_1gb** adatbázist.
 1. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag-sorozat harmadik része a következő lépéseket végezte el:
+Az oktatóanyag-sorozat harmadik részében az alábbi lépéseket hajtotta végre:
 
-* Modellt létrehozó tárolt eljárás létrehozása
-* Fürtözés végrehajtása a SQL Databaseban
+* A modellt létrehozó tárolt eljárás létrehozása
+* Fürtözés végrehajtása az SQL Database-ben
 * A fürtözési adatok használata
 
-Ha többet szeretne megtudni az R Azure SQL Database Machine Learning Services (előzetes verzió) használatáról, tekintse meg a következőt:
+Ha többet szeretne tudni az R azure-beli SQL Database Machine Learning Services használatáról (előzetes verzió), olvassa el a következő témakört:
 
-* [Oktatóanyag: A prediktív modell az R-ben való betanításának előkészítése Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-tutorial-predictive-model-prepare-data.md)
-* [Speciális R függvények írása a Azure SQL Database Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
-* [R-és SQL-adatmennyiség használata Azure SQL Database Machine Learning Servicesban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)
-* [R-csomag hozzáadása Azure SQL Database Machine Learning Services (előzetes verzió)](sql-database-machine-learning-services-add-r-packages.md)
+* [Oktatóanyag: Adatok előkészítése az R-ben egy prediktív modell betanításához az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)](sql-database-tutorial-predictive-model-prepare-data.md)
+* [Speciális R-függvények írása az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)
+* [R- és SQL-adatok kal való kapcsolat az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)
+* [R-csomag hozzáadása az Azure SQL Database Machine Learning Services szolgáltatáshoz (előzetes verzió)](sql-database-machine-learning-services-add-r-packages.md)

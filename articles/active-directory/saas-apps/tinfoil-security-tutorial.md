@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SZTANIOL BIZTONSÁGgal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és SZTANIOL biztonság között.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a TINFOIL SECURITY-vel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a TINFOIL SECURITY között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,182 +17,182 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71d3078b553843922cd51e4e0f43ea84b6dcde16
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74170765"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SZTANIOL BIZTONSÁGgal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a TINFOIL SECURITY-szel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SZTANIOL biztonságot Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a SZTANIOL-biztonságot, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a TINFOIL SECURITY-t az Azure Active Directoryval (Azure AD). Ha integrálja a TINFOIL SECURITY-t az Azure AD-vel, a következőket teheti:
 
-* A SZTANIOL BIZTONSÁGhoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy SZTANIOL a biztonságot az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a TINFOIL SECURITY szolgáltatáshoz.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve tinfoil security az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* SZTANIOL biztonsági egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* A TINFOIL SECURITY egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* A SZTANIOL SECURITY támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A TINFOIL SECURITY támogatja az **IDP** által kezdeményezett SSO-t
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egy bérlőben.
 
-## <a name="adding-tinfoil-security-from-the-gallery"></a>SZTANIOL biztonság hozzáadása a katalógusból
+## <a name="adding-tinfoil-security-from-the-gallery"></a>A TINFOIL SECURITY hozzáadása a galériából
 
-A SZTANIOL biztonság Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a SZTANIOL biztonságot a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A TINFOIL SECURITY Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a TINFOIL SECURITY-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **sztaniol Security** kifejezést a keresőmezőbe.
-1. Válassza a **SZTANIOL biztonság** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **Hozzáadás a gyűjteményből szakaszban** írja be a **TINFOIL SECURITY kifejezést** a keresőmezőbe.
+1. Válassza a **TINFOIL SECURITY lehetőséget** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-tinfoil-security"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a SZTANIOL BIZTONSÁGhoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-tinfoil-security"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a TINFOIL SECURITY számára
 
-Konfigurálja és tesztelje az Azure AD SSO-t a SZTANIOL BIZTONSÁGgal egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SZTANIOL BIZTONSÁGban.
+Konfigurálja és tesztelje az Azure AD SSO-t a TINFOIL SECURITY szolgáltatással egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a TINFOIL SECURITY-ben.
 
-Az Azure AD SSO SZTANIOL-BIZTONSÁGgal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a TINFOIL SECURITY segítségével hajtsa végre az alábbi építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[SZTANIOL Security SSO konfigurálása](#configure-tinfoil-security-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre SZTANIOL biztonsági teszt felhasználót](#create-tinfoil-security-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-sztaniol rendelkezik.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja a TINFOIL SECURITY SSO-t](#configure-tinfoil-security-sso)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalán.
+    * **[Hozzon létre TINFOIL SECURITY teszt felhasználó](#create-tinfoil-security-test-user)** - hogy egy megfelelője B.Simon a TINFOIL SECURITY, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)a **sztaniol biztonsági** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)a **TINFOIL SECURITY** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
+1. Az **alapszintű SAML-konfiguráció szakaszban** az alkalmazás előre konfigurált, és a szükséges URL-címek már előre kitöltött az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Mentés** gombra kattintva.
 
-1. A felkeresett alkalmazás meghatározott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Visitly alkalmazás egy adott formátumban várja az SAML-állításokat, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentieken kívül a felkeresett alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A fentieken kívül a Visitly alkalmazás azt várja, hogy néhány további attribútumot kell visszaadni az SAML válaszban, amelyek az alábbiakban láthatók. Ezek az attribútumok is előre ki vannak töltve, de áttekintheti őket a követelmények nek megfelelően.
 
-    | Name (Név) | Forrás attribútum |
+    | Név | Forrás attribútuma |
     | ------------------- | -------------|
     | accountid | UXXXXXXXXXXXXX |
 
     > [!NOTE]
-    > Az oktatóanyag későbbi részében ismertetett accountid érték jelenik meg.
+    > Kapsz a beszámoló értékét kifejtette később a tutorial.
 
-1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
+1. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
     ![SAML aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
 
-1. Az **SAML aláíró tanúsítvány** szakaszban másolja az **ujjlenyomat értékét** , és mentse a számítógépre.
+1. Az **SAML aláíró tanúsítvány szakaszban** másolja a **hüvelykujj értékét,** és mentse a számítógépre.
 
-    ![Ujjlenyomat értékének másolása](common/copy-thumbprint.png)
+    ![Ujjlenyomat másolása érték](common/copy-thumbprint.png)
 
-1. A **SZTANIOL Biztonság beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
+1. A **TINFOIL SECURITY beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a SZTANIOL BIZTONSÁGhoz.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés tinfoil security hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **SZTANIOL biztonság**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **TINFOIL SECURITY lehetőséget.**
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-tinfoil-security-sso"></a>SZTANIOL biztonsági egyszeri bejelentkezés konfigurálása
+## <a name="configure-tinfoil-security-sso"></a>Alufólia biztonsági sso konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a SZTANIOL biztonsági céges webhelyre.
+1. Egy másik böngészőablakban jelentkezzen be a TINFOIL SECURITY cég webhelyére rendszergazdaként.
 
-1. A felső eszköztáron kattintson a **My Account (saját fiók**) elemre.
+1. A felső eszköztáron kattintson a **Saját fiók gombra.**
 
     ![Irányítópult](./media/tinfoil-security-tutorial/ic798971.png "Irányítópult")
 
-1. Kattintson a **biztonsági**.
+1. Kattintson a **Biztonság gombra.**
 
     ![Biztonság](./media/tinfoil-security-tutorial/ic798972.png "Biztonság")
 
-1. Az **egyszeri bejelentkezés** konfigurálása lapon hajtsa végre a következő lépéseket:
+1. Az **Egyszeri bejelentkezés** konfigurációs lapon hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés](./media/tinfoil-security-tutorial/ic798973.png "Egyszeri bejelentkezés")
 
-    a. Válassza az **SAML engedélyezése**lehetőséget.
+    a. Válassza **az SAML engedélyezése**lehetőséget.
 
-    b. Kattintson a **manuális konfiguráció**elemre.
+    b. Kattintson **a Kézi konfiguráció gombra.**
 
-    c. Az **SAML post URL** szövegmezőben illessze be azt a **bejelentkezési URL-címet** , amelyet átmásolt Azure Portal
+    c. Az **SAML Közzététel URL-címmezőjébe** illessze be az Azure Portalról másolt **bejelentkezési URL-cím** értékét
 
-    d. Az **SAML-Tanúsítvány ujjlenyomata** szövegmezőbe illessze be a **SAML-aláíró tanúsítvány** szakaszból másolt **ujjlenyomat** értékét.
+    d. Az **SAML tanúsítvány ujjlenyomat** szövegdobozában illessze be az **SAML aláíró tanúsítvány** szakaszból másolt **ujjlenyomat** értékét.
   
-    e. Másolja **a fiókazonosító** értékét, és illessze be az értéket a **forrás attribútum** szövegmezőbe a Azure Portal a **felhasználói attribútumok & jogcímek** szakaszban.
+    e. Másolja **a fiókazonosító** értékét, és illessze be az értéket a **Forrás attribútum** szövegmezőjébe az Azure Portal Felhasználói **attribútumok & jogcímek** szakaszában.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
-### <a name="create-tinfoil-security-test-user"></a>SZTANIOL biztonsági teszt felhasználó létrehozása
+### <a name="create-tinfoil-security-test-user"></a>A TINFOIL SECURITY tesztfelhasználólétrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a SZTANIOL BIZTONSÁGba, a SZTANIOL-BIZTONSÁGban kell kiépíteni őket. SZTANIOL biztonság esetén a kiépítés manuális feladat.
+Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek a TINFOIL SECURITY szolgáltatásba, ki kell építeni őket a TINFOIL SECURITY-be. A TINFOIL SECURITY esetében a kiépítés manuális feladat.
 
-**A felhasználó kiépített állapotának beszerzéséhez hajtsa végre a következő lépéseket:**
+**A felhasználó kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Ha a felhasználó egy vállalati fiók része, a létrehozott felhasználói fiók beszerzéséhez [kapcsolatba kell lépnie a SZTANIOL biztonsági támogatási csapatával](https://www.tinfoilsecurity.com/contact) .
+1. Ha a felhasználó egy vállalati fiók része, a felhasználói fiók létrehozásához kapcsolatba kell [lépnie a TINFOIL BIZTONSÁGI támogatási csapatával.](https://www.tinfoilsecurity.com/contact)
 
-1. Ha a felhasználó rendszeres SZTANIOL biztonsági SaaS-felhasználó, akkor a felhasználó hozzáadhat egy közreműködőt a felhasználó webhelyeihez. Ez elindítja a folyamatot, amely meghívót küld a megadott e-mailben egy új SZTANIOL biztonsági felhasználói fiók létrehozásához.
+1. Ha a felhasználó rendszeres TINFOIL SECURITY SaaS-felhasználó, akkor a felhasználó a felhasználó bármely webhelyéhez hozzáadhat egy munkatársat. Ez elindítja azt a folyamatot, amelynek során meghívót küldanek a megadott e-mailnek egy új TINFOIL SECURITY felhasználói fiók létrehozására.
 
 > [!NOTE]
-> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a SZTANIOL által biztosított SZTANIOL biztonsági felhasználóifiók-létrehozási eszközt vagy API-t használhat.
+> A TINFOIL SECURITY felhasználói fiók létrehozási eszközeinek vagy API-inak a TINFOIL SECURITY által biztosított bármely más használatával azure AD felhasználói fiókokat hozhat létre.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a SZTANIOL biztonsági csempére kattint, automatikusan be kell jelentkeznie arra a SZTANIOL-BIZTONSÁGra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a TINFOIL SECURITY csempére kattint, automatikusan be kell jelentkeznie a TINFOIL SECURITY-be, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A SZTANIOL biztonság kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a TINFOIL SECURITY-t az Azure AD-vel](https://aad.portal.azure.com/)

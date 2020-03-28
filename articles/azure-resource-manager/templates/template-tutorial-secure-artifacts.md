@@ -1,61 +1,61 @@
 ---
 title: Biztonságos összetevők a sablonokban
-description: Ismerje meg, hogyan védheti meg az Azure Resource Manager-sablonokkal a használt összetevőket.
+description: Ismerje meg, hogyan biztosíthatja az Azure Resource Manager-sablonokban használt összetevőket.
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ad6ea3c68ed6f48ac48bbbdafed7f8660df23937
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250114"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239232"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: Biztonságos összetevők az Azure Resource Manager-sablon-üzembehelyezések
+# <a name="tutorial-secure-artifacts-in-arm-template-deployments"></a>Oktatóanyag: Biztonságos összetevők az ARM-sablontelepítésekben
 
-Megtudhatja, hogyan védheti meg a Azure Resource Manager-sablonokban használt összetevőket egy közös hozzáférési aláírásokkal (SAS) rendelkező Azure Storage-fiókkal. Üzembe helyezési összetevők olyan fájlok, a fő sablonfájl mellett a telepítés befejezéséhez szükséges. Például az [oktatóanyagban: SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal](./template-tutorial-deploy-sql-extensions-bacpac.md)a fő sablon egy Azure SQL Database példányt hoz létre. Egy BACPAC-fájlt is meghív a táblák létrehozásához és az adatbeszúráshoz. A BACPAC-fájl egy összetevő, és egy Azure Storage-fiókban tárolódik. A rendszer egy Storage-fiók kulcsát használta a lelet eléréséhez. 
+Megtudhatja, hogyan biztosíthatja az Azure Resource Manager (ARM) sablonjaiban használt összetevőket egy Megosztott hozzáférésű aláírásokkal (SAS) rendelkező Azure Storage-fiók használatával. A központi telepítési összetevők a központi sablonfájlon kívül olyan fájlok, amelyek a központi telepítés végrehajtásához szükségesek. Például az [oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal,](./template-tutorial-deploy-sql-extensions-bacpac.md)a fő sablon létrehoz egy Azure SQL Database-példányt. Azt is kéri a BACPAC fájlt létrehozni táblázatok és beszúrni az adatokat. A BACPAC-fájl egy összetevő, és egy Azure Storage-fiókban tárolja. A tárfiók kulcs a műtermék eléréséhez használt.
 
-Ebben az oktatóanyagban SAS használhatja a BACPAC-fájlba korlátozott hozzáférés adható a saját Azure Storage-fiókban. További információ az SAS-ról: [közös hozzáférésű aláírások (SAS) használata](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Ebben az oktatóanyagban a SAS használatával korlátozott hozzáférést biztosít a BACPAC-fájlhoz a saját Azure Storage-fiókjában. A SAS-ről a [Megosztott hozzáférésű aláírások (SAS) használata című](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)témakörben talál további információt.
 
-A csatolt sablonok biztonságossá tételéhez tekintse meg az [oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./template-tutorial-create-linked-templates.md)című témakört.
+A csatolt sablonok védelméről az [Oktatóanyag: Csatolt ARM-sablonok létrehozása című témakörben olvashat.](./template-tutorial-create-linked-templates.md)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Készítse elő a BACPAC-fájlt.
+> * BACPAC-fájl előkészítése.
 > * Nyisson meg egy meglévő sablont.
-> * Szerkessze a sablont.
-> * A sablon üzembe helyezése.
-> * A telepítés ellenőrzése.
+> * A sablon szerkesztése.
+> * Telepítse a sablont.
+> * Ellenőrizze a központi telepítést.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code egy Resource Manager-eszközök bővítménnyel. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](./use-vs-code-to-create-template.md).
-* [Oktatóanyag áttekintése: SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal](./template-tutorial-deploy-sql-extensions-bacpac.md). Ebben az oktatóanyagban használt sablon fejlesztett ki, hogy az oktatóanyag lesz. Ebben a cikkben egy letöltési hivatkozást a befejezett sablon áll rendelkezésre.
-* A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót az SQL Server rendszergazdai fiókjához. Az alábbi példa segítségével hozhatja meg a jelszót:
+* Visual Studio-kód Erőforráskezelő eszközök kiterjesztéssel. Lásd: [A Visual Studio-kód használata ARM-sablonok létrehozásához.](./use-vs-code-to-create-template.md)
+* Bemutató [anyag áttekintése: SQL BACPAC fájlok importálása ARM sablonokkal.](./template-tutorial-deploy-sql-extensions-bacpac.md) A sablon használt bemutató az egyik kifejlesztett, hogy a bemutató. A kitöltött sablon letöltési linkje ebben a cikkben található.
+* A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót az SQL Server rendszergazdai fiókjához. Íme egy példa, amelynek segítségével jelszót hozhat létre:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd [Oktatóanyag: Az Azure Key Vault integrálása a Resource Manager-sablon üzembehelyezési folyamatába](./template-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információ: [Az Azure Key Vault integrálása az ARM-sablon üzembe helyezésében](./template-tutorial-use-key-vault.md)című témakörben olvashat. Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="prepare-a-bacpac-file"></a>A BACPAC-fájl előkészítése
 
-Ebben a szakaszban előkészíti a BACPAC-fájlt, hogy a fájl biztonságosan elérhető legyen a Resource Manager-sablon telepítésekor. Ez a szakasz öt eljárás szerepelnek:
+Ebben a szakaszban előkészíti a BACPAC-fájlt, hogy a fájl biztonságosan elérhető legyen az ARM sablon telepítésekor. Ebben a szakaszban öt eljárás található:
 
-* Töltse le a BACPAC-fájlba.
+* Töltse le a BACPAC fájlt.
 * Azure Storage-fiók létrehozása.
-* Hozzon létre egy Storage-fiók blob-tárolóját.
+* Hozzon létre egy tárfiók blob tároló.
 * Töltse fel a BACPAC-fájlt a tárolóba.
-* A SAS-jogkivonat a BACPAC-fájl lekérése.
+* A BACPAC-fájl SAS-tokenjének beolvasása.
 
-1. Válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához. Ezután illessze be a következő PowerShell-szkriptet a rendszerhéj ablakába.
+1. Válassza **a Próbálja ki** a felhőhéj megnyitásához válassza a Próbálja ki. Ezután illessze be a következő PowerShell-parancsfájlt a rendszerhéj ablakába.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -111,13 +111,13 @@ Ebben a szakaszban előkészíti a BACPAC-fájlt, hogy a fájl biztonságosan el
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Jegyezze fel a BACPAC fájl URL-címét és az SAS-tokent. A sablon telepítésekor ezeket az értékeket kell megadnia.
+1. Írja le a BACPAC-fájl URL-címét és a SAS-tokent. A sablon telepítésekor ezekre az értékekre van szükség.
 
-## <a name="open-an-existing-template"></a>Nyisson meg egy meglévő sablon
+## <a name="open-an-existing-template"></a>Meglévő sablon megnyitása
 
-Ebben a munkamenetben módosítja az [oktatóanyagban létrehozott sablont: az SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal](./template-tutorial-deploy-sql-extensions-bacpac.md) a BACPAC-fájl sas-tokenrel való meghívásához. Az SQL-bővítmény oktatóanyagában kifejlesztett sablon meg van osztva a [githubban](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+Ebben a munkamenetben módosítja az [oktatóanyagban létrehozott sablont: SQL BACPAC-fájlok importálása ARM sablonokkal](./template-tutorial-deploy-sql-extensions-bacpac.md) a BACPAC-fájl SAS-jogkivonattal történő hívásához. Az SQL bővítmény oktatóanyagában kifejlesztett sablon meg van osztva a [GitHubon.](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json)
 
-1. A Visual Studio Code-ban válassza a **File** (Fájl)  > **Open File** (Fájl megnyitása) elemet.
+1. A Visual Studio-kódból válassza a **Fájlmegnyitása** > **fájl**lehetőséget.
 1. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -133,12 +133,12 @@ Ebben a munkamenetben módosítja az [oktatóanyagban létrehozott sablont: az S
    * `Microsoft.SQL/servers/databases`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
    * `Microsoft.SQL/server/databases/extensions`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
-        A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
-1. A **File** (Fájl)  > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, *azuredeploy.json* néven.
+        A sablon testreszabása előtt hasznos lehet a sablon alapvető ismerete.
+1. Válassza a **Fájlmentés** > **másként** lehetőséget, ha a fájl egy példányát az *azuredeploy.json*nevű számítógépre szeretné menteni.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-1. Cserélje le a storageAccountKey paraméter definícióját a következő paraméter-definícióra: 
+1. Cserélje le a storageAccountKey paraméterdefiníciót a következő paraméterdefinícióra:
 
     ```json
         "_artifactsLocationSasToken": {
@@ -149,9 +149,9 @@ Ebben a munkamenetben módosítja az [oktatóanyagban létrehozott sablont: az S
         },
     ```
 
-    ![Erőforrás-kezelő oktatóanyag biztonságos összetevők paramétereit](./media/template-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+    ![Az Erőforrás-kezelő oktatóanyaga biztonságos összetevők paraméterei](./media/template-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-1. Frissítse az SQL-bővítmény erőforrásának következő három elemének értékét:
+1. Frissítse az SQL-bővítmény erőforrás következő három elemének értékét:
 
     ```json
     "storageKeyType": "SharedAccessKey",
@@ -167,7 +167,7 @@ A befejezett sablon ehhez hasonlóan néz ki:
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tekintse meg a telepítési folyamat [sablonjának központi telepítése](./template-tutorial-create-multiple-instances.md#deploy-the-template) című szakaszát. Használja helyette a következő PowerShell üzembe helyezési parancsfájlt.
+Tekintse meg a telepítési eljárás [a sablon telepítése](./template-tutorial-create-multiple-instances.md#deploy-the-template) szakaszban. Használja inkább a következő PowerShell-telepítési parancsfájlt.
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the project name that is used earlier"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -191,27 +191,27 @@ New-AzResourceGroupDeployment `
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-Használni létrehozott jelszót. Lásd: [Előfeltételek](#prerequisites).
-_ArtifactsLocation, _artifactsLocationSasToken és bacpacFileName értékeit lásd: [BACPAC-fájl előkészítése](#prepare-a-bacpac-file).
+Generált jelszó használata. Lásd: [Előfeltételek](#prerequisites).
+A _artifactsLocation, _artifactsLocationSasToken és bacpacFileName értékekről a [BACPAC-fájl előkészítése](#prepare-a-bacpac-file)című témakörben látható.
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-A portálon válassza ki az SQL Database-adatbázist az újonnan üzembe helyezett erőforráscsoportból. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Ekkor két, az adatbázisba importált tábla jelenik meg.
+A portálon válassza ki az SQL Database-adatbázist az újonnan üzembe helyezett erőforráscsoportból. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Az adatbázisba importálva két táblát fog látni.
 
-![Lekérdezés-szerkesztő (előzetes verzió)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+![Lekérdezésszerkesztő (előzetes verzió)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
-1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
+1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
-3. Válassza ki az erőforráscsoport nevét. Az erőforráscsoport összesen hat erőforrást fog látni.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+3. Válassza ki az erőforráscsoport nevét. Az erőforráscsoportban összesen hat erőforrás jelenik meg.
+4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy SQL-kiszolgálót és egy SQL-adatbázist helyezett üzembe, és egy SAS-token használatával importált egy BACPAC-fájlt. A Resource Manager-sablonok folyamatos fejlesztéséhez és üzembe helyezéséhez szükséges Azure-folyamat létrehozásáról további információt a következő témakörben talál:
+Ebben az oktatóanyagban egy SQL-kiszolgálót és egy SQL-adatbázist telepített, és Egy BACPAC-fájlt importált Egy SAS-jogkivonat használatával. Annak megismeréséhez, hogyan lehet Azure-erőforrásokat több régióban üzembe helyezni, és hogyan alkalmazhat biztonságos üzembehelyezési gyakorlatokat, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Folyamatos integráció az Azure-folyamattal](./template-tutorial-use-azure-pipelines.md)
+> [Biztonságos üzembehelyezési gyakorlatok](./deployment-manager-tutorial.md)

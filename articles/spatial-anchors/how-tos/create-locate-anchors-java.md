@@ -1,6 +1,6 @@
 ---
-title: Horgonyok létrehozása & Java-ban
-description: Részletes leírás arról, hogyan hozhatók létre és találhatók az Azure térbeli horgonyokat használó horgonyok a javában.
+title: Horgonyok létrehozása & java-ban
+description: Részletes magyarázat a horgonyok létrehozásáról és megkereséséről az Azure Spatial Anchors java-beli használatával.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,37 +9,37 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: e03fb8bfc221edf209fd2480eedad822983d59a9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74270176"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával javában
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Horgonyok létrehozása és megkeresése az Azure Spatial Anchors használatával Java-ban
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
-> * [Objective-C](create-locate-anchors-objc.md)
+> * [Célkitűzés-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Az Azure térbeli horgonyok lehetővé teszik, hogy a különböző eszközök között ossza meg a világbeli horgonyokat. Számos különböző fejlesztési környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használhatja a javában az Azure térbeli horgonyok SDK-t a következőhöz:
+Az Azure Spatial Anchors lehetővé teszi, hogy a világ horgonyait különböző eszközök között ossza meg. Számos különböző fejlesztői környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használhatja az Azure Spatial Anchors SDK Java-ban, hogy:
 
-- Az Azure térbeli horgonyok munkamenetének megfelelő beállítása és kezelése.
-- Hozzon létre és állítson be tulajdonságokat a helyi horgonyokon.
+- Az Azure Spatial Anchors munkamenet ek megfelelő beállítása és kezelése.
+- Helyi horgonyok tulajdonságainak létrehozása és beállítása.
 - Töltse fel őket a felhőbe.
-- Felhőbeli térbeli horgonyok megkeresése és törlése.
+- Keresse meg és törölje a felhőbeli térbeli horgonyokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
+Az útmutató kitöltéséhez győződjön meg arról, hogy:
 
-- Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
-- Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
-- Alapszintű ismeret a Java-on.
-- A <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a>alapszintű ismerete.
+- Olvassa el az [Azure Spatial Anchors áttekintését.](../overview.md)
+- Az 5 [perces rövid összefoglalók egyike befejeződött.](../index.yml)
+- Alapvető ismeretek a Java.Basic knowledge on Java.
+- Alapismeretek az <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore-on.</a>
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
@@ -67,7 +67,7 @@ További információ a [SessionConfiguration](https://docs.microsoft.com/java/a
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-További információ az [TokenRequiredListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.tokenrequiredlistener) felületről.
+További információ a [TokenRequiredListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.tokenrequiredlistener) felületről.
 
 ```java
     mCloudSession.addTokenRequiredListener(args -> {
@@ -115,7 +115,7 @@ További információ az [TokenRequiredListener](https://docs.microsoft.com/java
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-További információ az [indítási](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.start) módszerről.
+További információ a [kezdő](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.start) módszerről.
 
 ```java
     mCloudSession.setSession(mSession);
@@ -124,7 +124,7 @@ További információ az [indítási](https://docs.microsoft.com/java/api/com.mi
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-További információ a [processFrame](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) metódusról.
+További információ a [processFrame](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) módszerről.
 
 ```java
     mCloudSession.processFrame(mSession.update());
@@ -132,7 +132,7 @@ További információ a [processFrame](https://docs.microsoft.com/java/api/com.m
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-További információ az [SessionUpdatedListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.sessionupdatedlistener) felületről.
+További információ a [SessionUpdatedListener](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.sessionupdatedlistener) felületről.
 
 ```java
     mCloudSession.addSessionUpdatedListener(args -> {
@@ -229,7 +229,7 @@ További információ a [getSessionStatusAsync](https://docs.microsoft.com/java/
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-További információ a [getAppProperties](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.getappproperties) metódusról.
+További információ a [getAppProperties](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchor.getappproperties) módszerről.
 
 ```java
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor();
@@ -243,7 +243,7 @@ További információ a [getAppProperties](https://docs.microsoft.com/java/api/c
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-További információ a [updateAnchorPropertiesAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metódusról.
+További információ az [updateAnchorPropertiesAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metódusról.
 
 ```java
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -320,7 +320,7 @@ További információ a [setExpiration](https://docs.microsoft.com/java/api/com.
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-További információ a [createWatcher](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) metódusról.
+További információ a [createWatcher](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) módszerről.
 
 ```java
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -357,7 +357,7 @@ További információ az [AnchorLocatedListener](https://docs.microsoft.com/java
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-További információ a [deleteAnchorAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metódusról.
+További információ az [AnchorAsync deleteAsync](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metódusról.
 
 ```java
     Future deleteAnchorFuture = mCloudSession.deleteAnchorAsync(cloudAnchor);
@@ -366,7 +366,7 @@ További információ a [deleteAnchorAsync](https://docs.microsoft.com/java/api/
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a [leállítási](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) módszerről.
+További információ a [stop](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) módszerről.
 
 ```java
     mCloudSession.stop();
@@ -382,7 +382,7 @@ További információ az [alaphelyzetbe állítási](https://docs.microsoft.com/
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-java.md)]
 
-További információ a [Bezárás](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.close) módszerről.
+További információ a [bezárási](https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors.cloudspatialanchorsession.close) módszerről.
 
 ```java
     mCloudSession.close();

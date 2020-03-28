@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a Coupa szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Coupa között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Coupával | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Coupa között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,243 +17,243 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227650"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Azure Active Directory a Coupa-integrációval
+# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Az Azure Active Directory integrációja a Coupával
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Coupa Azure Active Directory (Azure AD) szolgáltatással.
-A Coupa az Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Coupát az Azure Active Directoryval (Azure AD).
+A Coupa integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Megadhatja az Azure AD-t, aki hozzáfér a Coupa szolgáltatáshoz.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Coupa (egyszeri bejelentkezés) szolgáltatásba az Azure AD-fiókkal.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Coupához.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve coupa (Single Sign-On) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció és a Coupa konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához a Coupa szolgáltatással a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Coupa egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* Coupa egyszeri bejelentkezéssel rendelkező előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A coupa támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Coupa támogatja az **SP** által kezdeményezett SSO-t
 
-## <a name="adding-coupa-from-the-gallery"></a>A Coupa hozzáadása a katalógusból
+## <a name="adding-coupa-from-the-gallery"></a>Coupa hozzáadása a galériából
 
-A Coupa Azure AD-integrációjának konfigurálásához hozzá kell adnia a Coupa elemet a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Coupa azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Coupa-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Coupa a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**Ha a Coupát a galériából szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **coupa**kifejezést, válassza a **coupa** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Coupa**, válassza **a Coupa** lehetőséget az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![A coupa az eredmények listájában](common/search-new-app.png)
+     ![Coupa az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Coupa szolgáltatással egy **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Coupa-beli kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítésére van szükség.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Coupa-val egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó coupa közötti kapcsolat létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés a Coupa szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Coupa szolgáltatással a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[coupa egyszeri bejelentkezésének konfigurálása](#configure-coupa-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Coupa-teszt felhasználó létrehozása](#create-coupa-test-user)** – ha a coupa-ben a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon partnere van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Állítsa be a Coupa Single Sign-On](#configure-coupa-single-sign-on)** -, hogy konfigurálja az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Coupa teszt felhasználó](#create-coupa-test-user)** - egy megfelelője Britta Simon a Coupa, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Ha az Azure AD egyszeri bejelentkezést a Coupe használatával szeretné konfigurálni, hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének a Coupa szolgáltatással való konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Coupe** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Coupa** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![A coupa tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
+    ![Coupa Domain és URL-címek egyszeri bejelentkezési információk](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.coupahost.com`
+    a. A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<companyname>.coupahost.com`
 
     > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [coupa ügyfél-támogatási csapatához](https://success.coupa.com/Support/Contact_Us?) .
+    > A bejelentkezési URL-érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [a Coupa ügyféltámogatási csapatával,](https://success.coupa.com/Support/Contact_Us?) hogy megkapja ezt az értéket.
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet:
+    b. Az **Azonosító** mezőbe írjon be egy URL-címet:
 
-    | Környezet  | URL |
+    | Környezet  | URL-cím |
     |:-------------|----|
-    | Védőfal | `sso-stg1.coupahost.com`|
-    | Éles üzem | `sso-prd1.coupahost.com`|
+    | Tesztkörnyezet | `sso-stg1.coupahost.com`|
+    | Production | `sso-prd1.coupahost.com`|
     | | |
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
+    c. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet:
 
-    | Környezet | URL |
+    | Környezet | URL-cím |
     |------------- |----|
-    | Védőfal | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
-    | Éles üzem | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
+    | Tesztkörnyezet | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Production | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **coupa beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **Coupa beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure ad-azonosító
+    b. Azure-hirdetésazonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-coupa-single-sign-on"></a>A Coupa egyszeri bejelentkezésének konfigurálása
+### <a name="configure-coupa-single-sign-on"></a>Coupa egyszeri bejelentkezés konfigurálása
 
-1. Jelentkezzen be a Coupa vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be a Coupa vállalati webhelyére rendszergazdaként.
 
-2. Nyissa meg a **telepítő \> biztonsági vezérlőt**.
+2. Nyissa meg a **Beállítási \> biztonsági vezérlő t.**
 
     ![Biztonsági vezérlők](./media/coupa-tutorial/ic791900.png "Biztonsági vezérlők")
 
-3. A **Bejelentkezés a coupa hitelesítő adatokkal** szakaszban hajtsa végre a következő lépéseket:
+3. A **Coupa hitelesítő adatokkal való bejelentkezésszakaszban hajtsa** végre az alábbi lépéseket:
 
-    ![Coupa SP-metaadatok](./media/coupa-tutorial/ic791901.png "Coupa SP-metaadatok")
+    ![Coupa SP metaadatok](./media/coupa-tutorial/ic791901.png "Coupa SP metaadatok")
 
-    a. Válassza **a bejelentkezés az SAML használatával**lehetőséget.
+    a. Válassza **a Bejelentkezés SAML használatával**lehetőséget.
 
-    b. Kattintson a **Tallózás** gombra a Azure Portal letöltött metaadatok feltöltéséhez.
+    b. Kattintson a **Tallózás** gombra az Azure Portalról letöltött metaadatok feltöltéséhez.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Coupa elérésének biztosításával.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés a Coupa hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **coupa**elemet.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Coupa**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **coupa**elemet.
+2. Az alkalmazások listájában válassza a **Coupa**lehetőséget.
 
-    ![A Coupa hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A Coupa link az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-coupa-test-user"></a>Coupa-teszt felhasználó létrehozása
+### <a name="create-coupa-test-user"></a>Coupa tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Coupa-be, a Coupa-be kell építeni.  
+Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek a Coupa-ba, ki kell építeni őket a Coupa-ba.  
 
 * A Coupa esetében a kiépítés manuális feladat.
 
-**A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:**
+**A felhasználói kiépítés konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **coupa** vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be **a Coupa** cég webhelyére rendszergazdaként.
 
-2. A felső menüben kattintson a **telepítés**elemre, majd kattintson a **felhasználók**elemre.
+2. A felső menüben kattintson a **Telepítés**menü gombra, majd a **Felhasználók parancsra.**
 
     ![Felhasználók](./media/coupa-tutorial/ic791908.png "Felhasználók")
 
-3. Kattintson a **Létrehozás** elemre.
+3. Kattintson **a Létrehozás gombra.**
 
     ![Felhasználók létrehozása](./media/coupa-tutorial/ic791909.png "Felhasználók létrehozása")
 
-4. A **felhasználó létrehozása** szakaszban hajtsa végre a következő lépéseket:
+4. A **Felhasználó létrehozása** csoportban hajtsa végre az alábbi lépéseket:
 
-    ![Felhasználó adatai](./media/coupa-tutorial/ic791910.png "Felhasználó adatai")
+    ![Felhasználói adatok](./media/coupa-tutorial/ic791910.png "Felhasználói adatok")
 
-    a. Írja be a **bejelentkezési nevet**, az **Utónév**, a **vezetéknév**, az **egyszeri bejelentkezési azonosító**, a kapcsolódó szövegmezőbe felvenni kívánt érvényes Azure Active Directory fiók **e-mail** attribútumait.
+    a. Írja be a **bejelentkezési**, **utónév**, **vezetéknév**, egyszeri bejelentkezési azonosító , **e-mail**attribútumok egy érvényes Azure Active Directory-fiók kiépíteni a kapcsolódó szövegdobozok. **Email**
 
-    b. Kattintson a **Létrehozás** elemre.
+    b. Kattintson **a Létrehozás gombra.**
 
     >[!NOTE]
-    >A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely egy hivatkozással megerősíti a fiókot, mielőtt az aktívvá válna.
+    >Az Azure Active Directory-fiók tulajdonosa kap egy e-mailt egy hivatkozást, hogy erősítse meg a fiókot, mielőtt aktívvá válik.
     >
 
 >[!NOTE]
->Az Azure AD felhasználói fiókjainak kiépítéséhez a Coupa által biztosított bármely egyéb felhasználói fiók létrehozási eszközét vagy API-t használhatja.
+>A Coupa által biztosított bármely más Coupa felhasználói fiók-létrehozási eszközzel vagy API-val azure AD-felhasználói fiókok at hozhat létre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Amikor a hozzáférési panelen a Coupa csempére kattint, automatikusan be kell jelentkeznie arra a Puccsba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panel Coupa csempéjére kattint, automatikusan be kell jelentkeznie a Coupába, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

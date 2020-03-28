@@ -1,5 +1,5 @@
 ---
-title: CLI-szkript – kiszolgáló visszaállítása – Azure Database for MySQL
+title: CLI-parancsfájl - Kiszolgáló visszaállítása - Azure Database for MySQL
 description: Ez az Azure CLI-példaszkript bemutatja egy Azure Database for MySQL-kiszolgáló és a hozzá tartozó adatbázisok visszaállítását egy korábbi időpontra.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: 5a84a44a4ea941bf3b77f0762fc764ec069919c7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771328"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure Database for MySQL-kiszolgáló visszaállítása az Azure CLI-vel
@@ -40,6 +40,6 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) | Visszaállít egy kiszolgálót egy biztonsági másolatból. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
 - További szkripteket az [Azure Database for MySQL-hez való Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.

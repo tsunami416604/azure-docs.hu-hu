@@ -1,24 +1,25 @@
 ---
-title: Storage-fiók hozzáférési kulcsainak elforgatása a PowerShell-lel
+title: Tárfiók-hozzáférési kulcsok elforgatása a PowerShell használatával
 titleSuffix: Azure Storage
-description: Hozzon létre egy Azure Storage-fiókot, majd kérje le és forgassa el a fiók hozzáférési kulcsainak egyikét.
+description: Hozzon létre egy Azure Storage-fiókot, majd olvassa be és forgassa el az egyik fiókhozzáférési kulcsát.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894922"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060815"
 ---
-# <a name="rotate-storage-account-access-keys-with-powershell"></a>Storage-fiók hozzáférési kulcsainak elforgatása a PowerShell-lel
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Tárfiók-hozzáférési kulcsok elforgatása a PowerShell használatával
 
-Ez a szkript létrehoz egy Azure Storage-fiókot, megjeleníti az új Storage-fiók elsődleges elérési kulcsát, majd megújítja (elforgatja) a kulcsot.
+Ez a parancsfájl létrehoz egy Azure Storage-fiókot, megjeleníti az új tárfiók elsődleges hozzáférési kulcsát, majd megújítja (elforgatja) a kulcsot.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -38,17 +39,17 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja a Storage-fiók létrehozásához és az egyik hozzáférési kulcs lekéréséhez és elforgatásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja a tárfiók létrehozásához, valamint az egyik hozzáférési kulcsának beolvasásához és elforgatásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Az összes hely és a támogatott erőforrás-szolgáltatók beolvasása az egyes helyekhez. |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Lekéri az összes helyet és a támogatott erőforrás-szolgáltatókat az egyes helyekhez. |
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot. |
-| [Új – AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
+| [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Beszerzi egy Azure Storage-fiók hozzáférési kulcsait. |
-| [Új – AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Egy Azure Storage-fiókhoz tartozó hozzáférési kulcs újralétrehozása. |
+| [Új-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Újragenerálja az Azure Storage-fiók hozzáférési kulcsát. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

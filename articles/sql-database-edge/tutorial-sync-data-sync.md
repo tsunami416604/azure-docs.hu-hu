@@ -1,7 +1,7 @@
 ---
-title: Adatok szinkronizálása Azure SQL Database Edge-ből SQL-adatszinkronizálás használatával | Microsoft Docs
-description: Tudnivalók az adatok Azure SQL Database Edge használatával történő szinkronizálásáról az Azure SQL-adatszinkronizálás
-keywords: SQL Database Edge, adatok szinkronizálása az SQL Database Edge-ből, az SQL Database Edge adatszinkronizálása
+title: Adatok szinkronizálása az Azure SQL Database Edge-ből az SQL Data Sync használatával | Microsoft dokumentumok
+description: Ismerje meg az Azure SQL Database Edge adatainak szinkronizálását az Azure SQL Data Sync használatával
+keywords: SQL adatbázis széle,adatok szinkronizálása az SQL adatbázis pereméről, sql adatbázis peremhálózati adatszinkronizálása
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: tutorial
@@ -10,54 +10,54 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 7c38ba6dbabef4affd8672295a93d46fd4b0e494
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74384183"
 ---
-# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: adatok szinkronizálása SQL Database Edge-ből Azure SQL Database a SQL-adatszinkronizálás használatával
+# <a name="tutorial-sync-data-from-sql-database-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: Adatok szinkronizálása az SQL Database Edge-ről az Azure SQL Database-re az SQL Data Sync használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure SQL-adatszinkronizálás *Sync Group* az adatok növekményes szinkronizálására Azure SQL Database Edge-ből Azure SQL Databasere. Az SQL Data Sync egy szolgáltatás, amely az Azure SQL Database, amely lehetővé teszi az adatokat több SQL-adatbázisok és az SQL Server-példányok kiválasztása kétirányúan szinkronizálja. További információ a SQL-adatszinkronizálásről: [Azure SQL-adatszinkronizálás](../sql-database/sql-database-sync-data.md).
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure SQL Data Sync *szinkronizálási csoportot* az Azure SQL Database Edge-ből az Azure SQL Database-adatbázisból az Azure SQL Database-re vonatkozó adatok növekményes szinkronizálásához. Az SQL Data Sync egy Azure SQL Database-re épülő szolgáltatás, amely lehetővé teszi a kiválasztott adatok kétirányú szinkronizálását több SQL-adatbázis és SQL Server-példány között. Az SQL Data Sync szolgáltatásról az [Azure SQL Data Sync](../sql-database/sql-database-sync-data.md)című témakörben talál további információt.
 
-Mivel az SQL Database Edge az [SQL Server adatbázismotor](/sql/sql-server/sql-server-technical-documentation/)legújabb verziójára épül, a helyszíni SQL Server példányra alkalmazható adatszinkronizálási mechanizmusok is használhatók az adatok szinkronizálására egy Edge-eszközön futó SQL Database Edge-példányon.
+Mivel az SQL Database Edge az [SQL Server Database Engine](/sql/sql-server/sql-server-technical-documentation/)legújabb verzióira épül, a helyszíni SQL Server-példányokra alkalmazható adatszinkronizálási mechanizmus sal is használható az sql database edge-példányok peremhálózati példányai számára történő szinkronizáláshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyaghoz az [Azure SQL-adatszinkronizálás adatszinkronizálási ügynökével](../sql-database/sql-database-data-sync-agent.md)konfigurált Windows-számítógép szükséges.
+Ez az oktatóanyag hoz szükség egy Windows-számítógépre, amely az [Azure SQL Data Sync adatszinkronizálási adatszinkronizálási ügynökkel](../sql-database/sql-database-data-sync-agent.md)van konfigurálva.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Hozzon létre egy Azure SQL-adatbázist. Az Azure SQL Database Azure Portal használatával történő létrehozásával kapcsolatos információkért lásd: [önálló adatbázis létrehozása Azure SQL Databaseban](../sql-database/sql-database-single-database-get-started.md?tabs=azure-portal).
+* Hozzon létre egy Azure SQL-adatbázist. Az Azure SQL-adatbázis Azure Portal on keresztül történő létrehozásáról az [Egyetlen adatbázis létrehozása az Azure SQL Database-ben című témakörben](../sql-database/sql-database-single-database-get-started.md?tabs=azure-portal)talál további információt.
 
-* Hozza létre a táblákat és az egyéb szükséges objektumokat a Azure SQL Database üzemelő példányában.
+* Hozza létre a táblákat és más szükséges objektumokat az Azure SQL Database központi telepítésében.
 
-* Hozza létre a szükséges táblákat és objektumokat a Azure SQL Database Edge-telepítésben. További információ: [SQL Database DAC-csomagok használata SQL Database Edge használatával](stream-analytics.md).
+* Hozza létre a szükséges táblákat és objektumokat az Azure SQL Database Edge központi telepítésében. További információt az [SQL Database DAC-csomagok használata az SQL Database Edge-el című témakörben talál.](stream-analytics.md)
 
-* Regisztrálja az Azure SQL Database Edge-példányt az Azure SQL-adatszinkronizálás adatszinkronizálási ügynökével. További információ: [helyszíni SQL Server-adatbázis hozzáadása](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
+* Regisztrálja az Azure SQL Database Edge-példányt az Azure SQL Data Sync adatszinkronizálási adatszinkronizálási ügynökével. További információt a [Helyszíni SQL Server-adatbázis hozzáadása](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem)című témakörben talál.
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-database-edge"></a>Az Azure SQL Database és a SQL Database Edge közötti adatszinkronizálás
+## <a name="sync-data-between-an-azure-sql-database-and-sql-database-edge"></a>Adatok szinkronizálása Azure SQL-adatbázis és SQL Database Edge között
 
-Az Azure SQL Database-adatbázisok és az SQL Database Edge-példányok SQL-adatszinkronizálás használatával történő szinkronizálásának beállítása három fő lépést foglal magában:  
+Az Azure SQL-adatbázis és az SQL Database Edge-példány közötti szinkronizálás beállítása az SQL Data Sync használatával három kulcsfontosságú lépést foglal magában:  
 
-1. Szinkronizálási csoport létrehozásához használja a Azure Portal. További információ: [szinkronizálási csoport létrehozása](../sql-database/sql-database-get-started-sql-data-sync.md#create-sync-group). Egyetlen *központi* adatbázis használatával több szinkronizálási csoportot is létrehozhat, hogy a különböző SQL Database peremhálózati példányokból származó adatokat szinkronizálja egy vagy több Azure-beli SQL-adatbázisba.
+1. Az Azure Portal segítségével hozzon létre egy szinkronizálási csoportot. További információt a [Szinkronizálási csoport létrehozása](../sql-database/sql-database-get-started-sql-data-sync.md#create-sync-group)című témakörben talál. Egyetlen *központi* adatbázis használatával több szinkronizálási csoportot hozhat létre a különböző SQL Database Edge-példányok adatainak szinkronizálásához az Azure-ban egy vagy több SQL-adatbázissal.
 
-2. Szinkronizált Tagok hozzáadása a szinkronizálási csoporthoz. További információ: [szinkronizálási Tagok hozzáadása](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
+2. Szinkronizálási tagok hozzáadása a szinkronizálási csoporthoz. További információt a [Szinkronizálási tagok hozzáadása című](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members)témakörben talál.
 
-3. Állítsa be úgy a szinkronizálási csoportot, hogy kiválassza a szinkronizálás részét képező táblákat. További információ: [szinkronizálási csoport konfigurálása](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members).
+3. Állítsa be a szinkronizálási csoportot a szinkronizálás részét játszó táblák kijelöléséhez. További információt a [Szinkronizálási csoport konfigurálása](../sql-database/sql-database-get-started-sql-data-sync.md#add-sync-members)című témakörben talál.
 
-Az előző lépések végrehajtása után egy szinkronizálási csoporttal rendelkezik, amely egy Azure SQL Database-adatbázist és egy SQL Database Edge-példányt tartalmaz.
+Az előző lépések elvégzése után egy szinkronizálási csoportot, amely tartalmaz egy Azure SQL-adatbázis és egy SQL Database Edge-példányt.
 
-A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
+Az SQL Data Sync programról az alábbi cikkekben talál további információt:
 
-* [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](../sql-database/sql-database-data-sync-agent.md)
+* [Adatszinkronizáló ügynök az Azure SQL Data Sync-hez](../sql-database/sql-database-data-sync-agent.md)
 
-* [Ajánlott eljárások](../sql-database/sql-database-best-practices-data-sync.md) és [az Azure-SQL-adatszinkronizálás kapcsolatos problémák elhárítása](../sql-database/sql-database-troubleshoot-data-sync.md)
+* [Gyakorlati tanácsok](../sql-database/sql-database-best-practices-data-sync.md) és [az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](../sql-database/sql-database-troubleshoot-data-sync.md)
 
-* [SQL-adatszinkronizálás figyelése Azure Monitor naplókkal](../sql-database/sql-database-sync-monitor-oms.md)
+* [SQL-adatszinkronizálás figyelése az Azure Figyelő naplóival](../sql-database/sql-database-sync-monitor-oms.md)
 
-* [A szinkronizálási séma frissítése a Transact-SQL vagy a](../sql-database/sql-database-update-sync-schema.md) [PowerShell használatával](../sql-database/scripts/sql-database-sync-update-schema.md)
+* [A szinkronizálási séma frissítése transact-SQL vagy](../sql-database/sql-database-update-sync-schema.md) [PowerShell használatával](../sql-database/scripts/sql-database-sync-update-schema.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure SQL Database és Azure SQL Database Edge közötti szinkronizáláshoz használja a PowerShellt](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md). Ebben az oktatóanyagban cserélje le a `OnPremiseServer` adatbázis részleteit az Azure SQL Database Edge részleteire.
+* [A PowerShell segítségével szinkronizálhatja az Azure SQL Database és az Azure SQL Database Edge között.](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md) Ebben az oktatóanyagban cserélje le az `OnPremiseServer` adatbázis részleteit az Azure SQL Database Edge részleteire.

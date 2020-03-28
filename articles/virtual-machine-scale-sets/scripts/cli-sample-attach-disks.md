@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-minták – adatlemezek csatolása és használata
-description: Ez a szkript létrehoz egy Azure virtuálisgép-méretezési készletet, és csatlakoztatja és előkészíti az adatlemezeket az Azure CLI-vel.
+title: Azure CLI-minták – Adatlemezek csatolása és használata
+description: Ez a parancsfájl létrehoz egy Azure virtuálisgép-méretezési készletet, és csatolja és előkészíti az adatok lemezeit az Azure CLI-vel.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6243899183bfbdf07aa9417d654e62b4b6cb548a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277669"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Adatlemezek csatolása és használata virtuálisgép-méretezési csoportokkal az Azure CLI használatával
@@ -44,7 +44,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vmss extension set](/cli/azure/vmss/extension) | Telepíti az Azure egyéni szkriptek futtatására szolgáló bővítményét azon szkript futtatásához, amely előkészíti az adatlemezeket az egyes virtuálisgép-példányokon. |
 | [az group delete](/cli/azure/ad/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
 A virtuálisgép-méretezési csoportokhoz kapcsolódó további Azure CLI-példaszkripteket az [Azure virtuálisgép-méretezési csoportok dokumentációjában](../cli-samples.md) találhat.

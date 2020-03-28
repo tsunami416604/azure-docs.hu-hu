@@ -1,22 +1,23 @@
 ---
-title: BLOB-tároló méretének kiszámítása a PowerShell-lel
+title: Blob-tároló méretének kiszámítása a PowerShell használatával
 titleSuffix: Azure Storage
-description: Egy tároló méretének kiszámítása az Azure Blob Storage-ban az egyes Blobok méretének összesítésével.
+description: Számítsa ki egy tároló méretét az Azure Blob storage-ban az egyes blobok méretének összesítésével.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 890da96ac1d97a2eb84f5296c74a02824d657273
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895044"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067078"
 ---
-# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>BLOB-tároló méretének kiszámítása a PowerShell-lel
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Blob-tároló méretének kiszámítása a PowerShell használatával
 
 Ez a szkript kiszámítja egy Azure-blobtároló méretét a tárolóban lévő blobok méretének összeadásával.
 
@@ -25,13 +26,13 @@ Ez a szkript kiszámítja egy Azure-blobtároló méretét a tárolóban lévő 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> Ez a PowerShell-parancsfájl a tároló becsült méretét biztosítja, és nem használható a számlázási számításokhoz. Egy olyan parancsfájl esetében, amely kiszámítja a tároló méretét a számlázási célokra, tekintse meg [a blob Storage-tároló méretének kiszámítása számlázási célokra](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)című témakört. 
+> Ez a PowerShell-parancsfájl a tároló becsült méretét biztosítja, és nem használható számlázási számításokhoz. A tároló méretét számlázási célokra kiszámító parancsfájlról a [Blob storage-tároló méretének kiszámítása számlázási célokra című témakörben.](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)
 
 ## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size.ps1 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
+## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a tároló és az összes kapcsolódó erőforrás.
 
@@ -45,13 +46,13 @@ Ez a szkript a következő parancsokat használja a Blob Storage-tároló méret
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | A megadott Storage-fiók vagy az erőforráscsoport vagy az előfizetés összes tárolási fiókjának beolvasása. |
-| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Egy tárolóban lévő Blobok felsorolása. |
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Beszerzi a megadott tárfiókot vagy az erőforráscsoport vagy az előfizetés összes Tárfiókját. |
+| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | A tárolóban lévő blobok listázása. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Egy olyan parancsfájl esetében, amely kiszámítja a tároló méretét a számlázási célokra, tekintse meg [a blob Storage-tároló méretének kiszámítása számlázási célokra](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)című témakört.
+A tároló méretét számlázási célokra kiszámító parancsfájlról a [Blob storage-tároló méretének kiszámítása számlázási célokra című témakörben.](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További Storage PowerShell-szkriptek az Azure Storage-hoz készült [PowerShell-mintákban](../blobs/storage-samples-blobs-powershell.md)találhatók.
+További tárolási PowerShell-parancsfájlminták találhatók az [Azure Storage PowerShell-mintáiban.](../blobs/storage-samples-blobs-powershell.md)

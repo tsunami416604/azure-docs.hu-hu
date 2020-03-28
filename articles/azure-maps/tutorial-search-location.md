@@ -1,24 +1,24 @@
 ---
-title: 'Oktatóanyag: a közeli helyszínek keresése térképen | Microsoft Azure térképek'
-description: Ebből az oktatóanyagból megtudhatja, hogyan keresheti meg a térképen Microsoft Azure térképeket használó érdekes helyeket.
-author: farah-alyasari
-ms.author: v-faalya
+title: 'Oktatóanyag: Közeli helyek keresése a térképen | Microsoft Azure Maps'
+description: Ebben az oktatóanyagban megtudhatja, hogyan kereshet érdekes pontokat egy térképen a Microsoft Azure Maps használatával.
+author: philmea
+ms.author: philmea
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1035f9c8284f3acf2667d93ce257039defeb3c71
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209511"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333634"
 ---
-# <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
+# <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: Közeli érdekes helyek keresése az Azure Maps használatával
 
-Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps használatához, és hogyan használhatja a Maps API-kat egy hasznos hely kereséséhez. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps használatához, és hogyan használhatja a Maps API-kat egy hasznos hely kereséséhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Maps-fiók létrehozása
@@ -26,11 +26,11 @@ Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps has
 > * Új weblap létrehozása a térképkezelési API használatával
 > * A Maps keresőszolgáltatásának használata egy közeli hasznos hely kereséséhez
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
 <a id="createaccount"></a>
 
@@ -45,31 +45,31 @@ Hozzon létre egy új Maps-fiókot az alábbi lépésekkel:
     * A fiókhoz használni kívánt *előfizetés*.
     * A fiókhoz tartozó *erőforráscsoport* neve. Választhat, hogy *létrehoz egy új erőforráscsoportot*, vagy egy *meglévő erőforráscsoportot használ*.
     * Az új fiók *neve*.
-    * A fiók *díjszabási szintje* .
+    * A fiók *díjszabási szintje.*
     * Olvassa el a *licencfeltételeket* és az *adatvédelmi nyilatkozatot*, és jelölje be az azok elfogadását jelző jelölőnégyzetet.
     * Kattintson a **Létrehozás** gombra.
 
-![Azure Maps fiók létrehozása Azure Portal](./media/tutorial-search-location/create-account.png)
+![Azure Maps-fiók létrehozása az Azure Portalon](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
 ## <a name="get-the-primary-key-for-your-account"></a>A fiók elsődleges kulcsának lekérése
 
-A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely lehetővé teszi a Maps API-k lekérdezését. Azure Maps szolgáltatások meghívásakor azt javasoljuk, hogy a fiók elsődleges kulcsát használja előfizetési kulcsként.
+A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely lehetővé teszi a Maps API-k lekérdezését. Azt javasoljuk, hogy az Azure Maps-szolgáltatások hívásakor használja a fiók elsődleges kulcsát előfizetési kulcsként.
 
 1. Nyissa meg a Maps-fiókot a portálon.
-2. A beállítások szakaszban válassza a **hitelesítés**lehetőséget.
+2. A beállítások csoportban válassza a **Hitelesítés**lehetőséget.
 3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse a helyi gépre, hogy később felhasználhassa ebben az oktatóanyagban.
 
-![Elsődleges kulcs lekérése Azure Portal](./media/tutorial-search-location/get-key.png)
+![Elsődleges kulcs beszereznie az Azure Portalon](./media/tutorial-search-location/get-key.png)
 
-A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+Az Azure Maps hitelesítéssel kapcsolatos további tudnivalókról az [Azure Maps hitelesítésének kezelése](how-to-manage-authentication.md)című témakörben talál.
 
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>Új térkép létrehozása
 
-A térképkezelés API kényelmes ügyféloldali kódtár. Ez az API lehetővé teszi, hogy könnyedén integrálja a térképeket a webalkalmazásba. Elrejti az operációs rendszer nélküli REST-szolgáltatás meghívásának összetettségét, és a testre szabható összetevőkkel növeli a termelékenységet. Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt, amelybe be van ágyazva a térképkezelési API.
+A Map Control API egy kényelmes ügyfélkönyvtár. Ez az API lehetővé teszi a Térképek egyszerű integrálását a webes alkalmazásba. Elrejti a csupasz REST szolgáltatáshívások összetettségét, és testre szabható összetevőkkel növeli a termelékenységet. Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt, amelybe be van ágyazva a térképkezelési API.
 
 1. A helyi gépén hozzon létre egy új fájlt **MapSearch.html** néven.
 2. Adja a következő HTML-összetevőket a fájlhoz:
@@ -116,9 +116,9 @@ A térképkezelés API kényelmes ügyféloldali kódtár. Ez az API lehetővé 
     </html>
     ```
 
-   Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Tekintse meg a laptörzs `onload` eseményét, amely a laptörzs betöltését követően meghívja a `GetMap` függvényt. A `GetMap` függvény a beágyazott JavaScript-kódot fogja tartalmazni a Azure Maps API-k eléréséhez.
+   Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Tekintse meg a laptörzs `onload` eseményét, amely a laptörzs betöltését követően meghívja a `GetMap` függvényt. A `GetMap` függvény tartalmazza a inline JavaScript-kódot az Azure Maps API-k eléréséhez.
 
-3. Adja hozzá a következő JavaScript-kódot a HTML-fájl `GetMap` függvényéhez. Cserélje le a `<Your Azure Maps Key>` karakterláncot a Maps-fiókból másolt elsődleges kulcsra.
+3. Adja hozzá a következő JavaScript-kódot a HTML-fájl `GetMap` függvényéhez. Cserélje le `<Your Azure Maps Key>` a karakterláncot a Térkép-fiókból másolt elsődleges kulcsra.
 
     ```JavaScript
     //Instantiate a map object
@@ -131,9 +131,9 @@ A térképkezelés API kényelmes ügyféloldali kódtár. Ez az API lehetővé 
     });
     ```
 
-   Ez a szakasz inicializálja az Azure Maps-fiók kulcsához tartozó térképkezelési API-t. `atlas` az API-t és a kapcsolódó vizuális összetevőket tartalmazó névtér. `atlas.Map` biztosítja a vezérlőt a vizualizációs és interaktív webes térképekhez.
+   Ez a szakasz inicializálja az Azure Maps-fiók kulcsához tartozó térképkezelési API-t. `atlas`Az API-t és a kapcsolódó vizuális összetevőket tartalmazó névtér. `atlas.Map`vizuális és interaktív webes térkép vezérlését biztosítja.
 
-4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. A Térkép a alapszintű Térkép, amelyet a `atlas.Map` hívásával hívhat meg a fiók kulcsa alapján.
+4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. A térkép látható a legalapvetőbb térkép, amit `atlas.Map` a fiókkulcs használatával hívhat.
 
    ![A térkép megtekintése](./media/tutorial-search-location/basic-map.png)
 
@@ -163,17 +163,17 @@ A térképkezelés API kényelmes ügyféloldali kódtár. Ez az API lehetővé 
     });
     ```
 
-   Ebben a kódrészletben egy `ready` eseményt adnak hozzá a térképhez, amely a Térkép erőforrásainak betöltését követően indul, és a Térkép készen áll a hozzáférésre. A Map `ready` eseménykezelőben létrejön egy adatforrás, amely az eredmény-adatforrást tárolja. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg, hogy az adatforráson milyen eredményeket kell megjeleníteni. Ebben az esetben az eredmény egy sötét kék kerek PIN-ikonnal jelenik meg, középpontba kerül az eredmények koordinátáin, és lehetővé teszi más ikonok átfedését. A rendszer hozzáadja az eredmény réteget a Térkép rétegeihez.
+   Ebben a kódszegmensben egy `ready` esemény kerül a térképre, amely akkor jelenik meg, amikor a térkép erőforrásai betöltődtek, és a térkép készen áll a elérésre. A leképezési `ready` eseménykezelőben egy adatforrás jön létre az eredményadatok tárolására. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg, hogyan kell megjeleníteni az adatforrás eredményadatait. Ebben az esetben az eredmény egy sötétkék kerek tűikonnal jelenik meg, amely az eredmények koordinátája fölé kerül, és lehetővé teszi más ikonok átfedését. Az eredményréteg hozzáadódik a térképrétegekhez.
 
 <a id="usesearch"></a>
 
 ## <a name="add-search-capabilities"></a>Keresési képességek hozzáadása
 
-Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) -t egy hasznos hely megtalálásához a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search szolgáltatás szélességi és hosszúsági koordinátákat rendel egy adott címhez. Az alább ismertetett **Szolgáltatásmodul** segítségével helyekre kereshet a Maps Search API használatával.
+Ez a szakasz bemutatja, hogyan használhatja a [Térkép-keresési API-t](https://docs.microsoft.com/rest/api/maps/search) egy érdekes hely megkeresésére a térképen. Ez az API egy fejlesztőknek szánt RESTful API, amely lehetővé teszi a címek, hasznos helyek és egyéb földrajzi adatok keresését. A Search szolgáltatás szélességi és hosszúsági koordinátákat rendel egy adott címhez. Az alább ismertetett **Szolgáltatásmodul** segítségével helyekre kereshet a Maps Search API használatával.
 
 ### <a name="service-module"></a>Szolgáltatásmodul
 
-1. A Map `ready`-eseménykezelőben hozza létre a keresési szolgáltatás URL-címét a következő JavaScript-kód hozzáadásával.
+1. A térkép `ready` eseménykezelőben a következő Javascript-kód hozzáadásával hozd létre a keresési szolgáltatás URL-címét.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -186,9 +186,9 @@ Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.mi
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` a HTTP-kérések hitelesítéséhez az előfizetési kulccsal Azure Maps. A `atlas.service.MapsURL.newPipeline()` a `SubscriptionKeyCredential` szabályzatot veszi fel, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) -példányt. A `searchURL` Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveletekhez tartozó URL-címet jelöli.
+   A `SubscriptionKeyCredential` létrehoz `SubscriptionKeyCredentialPolicy` egy hitelesítési HTTP-kérelmek et az Azure Maps az előfizetési kulcs. A `atlas.service.MapsURL.newPipeline()` házirend `SubscriptionKeyCredential` veszi, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) példányt. Az `searchURL` Azure Maps [Search-műveletek](https://docs.microsoft.com/rest/api/maps/search) URL-címét jelöli.
 
-2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a megadott szélességi és hosszúsági fok megadott sugarában keresi a közeli benzin-állomásokat. Ezután a válaszból kinyert egy GeoJSON-gyűjteményt, amely a `geojson.getFeatures()` metódussal lett kibontva, és hozzáadva az adatforráshoz, amely automatikusan az ábrán megjelenített adatokkal jeleníti meg a térképet. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával.
+2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a megadott szélességi és hosszúsági körön belül keresi a közeli benzinkutakat. A válaszból származó GeoJSON-szolgáltatásgyűjteményt `geojson.getFeatures()` ezután kinyeri a metódus, és hozzáadja az adatforráshoz, ami automatikusan azt eredményezi, hogy az adatok a szimbólumrétegen keresztül jelennek meg a térképen. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -215,7 +215,7 @@ Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.mi
     });
     ```
 
-3. Mentse a **MapSearch.html** fájlt, és frissítse a böngészőt. A térképen a Seattle-ben középre igazított, kerek kék PIN-kódokkal láthatja el a terület benzines helyeinek helyét.
+3. Mentse a **MapSearch.html** fájlt, és frissítse a böngészőt. Meg kell jelennie a térkép közepén Seattle kerek kék csapok helyeken benzinkutak a környéken.
 
    ![A keresési eredményeket tartalmazó térkép megtekintése](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Ezen a ponton a MapSearch lap meg tudja jeleníteni az intelligens keresési lek
 
 ## <a name="add-interactive-data"></a>Interaktív adatok hozzáadása
 
-A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszúsági/szélességi adatait vizsgálja. A Maps Search szolgáltatás által visszaadott nyers JSON azonban további információkat tartalmaz az egyes gázüzemű állomásokról. A név és az utca címe is. Ezeket az adatokat interaktív felugró ablakokkal beépítheti a térképbe.
+A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszúsági/szélességi adatait vizsgálja. A Térkép-keresés szolgáltatás által visszaadott nyers JSON azonban további információkat tartalmaz az egyes benzinkutakról. Beleértve a nevet és az utcanevet. Ezeket az adatokat interaktív felugró ablakokkal beépítheti a térképbe.
 
-1. Adja hozzá a következő sornyi kódot a térképen `ready` eseménykezelőt, miután a kód lekérdezte a fuzzy keresési szolgáltatást. Ez a kód létrehoz egy felugró példányt, és felvesz egy mouseover eseményt a szimbólum rétegbe.
+1. Adja hozzá a következő kódsorokat a térképesemény-kezelőben `ready` a kód után az intelligens keresési szolgáltatás lekérdezéséhez. Ez a kód létrehoz egy előugró ablakot, és egy egérmutatós eseményt ad hozzá a szimbólumréteghez.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -241,9 +241,9 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Az API `*atlas.Popup` egy információs ablakot biztosít a térképen a szükséges pozícióval. 
+    Az `*atlas.Popup` API egy információs ablakot biztosít a térképen a kívánt helyen rögzítve. 
 
-2. Adja hozzá a következő kódot a `GetMap` függvényben, hogy megjelenjen az egérmutatót az előugró ablakon belül.
+2. Adja hozzá a `GetMap` következő kódot a függvényben, hogy megjelenítse az egérmutatót az eredményadatokközött az előugró ablakban.
 
     ```JavaScript
     function showPopup(e) {
@@ -275,7 +275,7 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
 
     ![Azure Térkép vezérlőelem és Search Service](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

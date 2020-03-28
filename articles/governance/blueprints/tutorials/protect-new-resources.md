@@ -1,62 +1,62 @@
 ---
-title: 'Oktatóanyag: új erőforrások megvédése zárolásokkal'
-description: Ebben az oktatóanyagban az Azure-tervrajzok erőforrás-zárolási lehetőségeit csak olvasható módon használja, és nem törli az újonnan telepített erőforrások elleni védelemhez.
+title: 'Oktatóanyag: Új erőforrások védelme zárolásokkal'
+description: Ebben az oktatóanyagban az Azure Blueprints erőforrás zárolási lehetőségek csak olvasható és a Ne törölje az újonnan üzembe helyezett erőforrások védelme.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327448"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: Új erőforrások védelme az Azure Blueprints erőforrászárolásokkal
 
-Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Resource Manager-sablon által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá.
+Az Azure Blueprints [erőforrás-zárolások](../concepts/resource-locking.md)használatával megvédheti az újonnan üzembe helyezett erőforrásokat attól, hogy illetéktelenül illetéktelenül módosítsák őket, még a _Tulajdonos_ szerepkörrel rendelkező fiókkal is. Ezt a védelmet hozzáadhatja az Erőforrás-kezelő sablonösszetevő által létrehozott erőforrások tervezetdefinícióiban.
 
-Ebben az oktatóanyagban a következő lépéseket hajtja végre:
+Ebben az oktatóanyagban hajtsa végre az alábbi lépéseket:
 
 > [!div class="checklist"]
-> - Terv definíciójának létrehozása
-> - A terv definíciójának megjelölése **közzétettként**
-> - A terv definíciójának társítása meglévő előfizetéshez
+> - Tervdefiníció létrehozása
+> - A tervrajz definíciójának **megjelölése közzétettként**
+> - A tervezetdefiníció hozzárendelése meglévő előfizetéshez
 > - Az új erőforráscsoport vizsgálata
-> - A terv hozzárendelésének megszüntetése a zárolások eltávolításához
+> - A zárolások eltávolításához rendelje vissza a tervrajzot
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) mielőtt elkezdené.
 
-## <a name="create-a-blueprint-definition"></a>Terv definíciójának létrehozása
+## <a name="create-a-blueprint-definition"></a>Tervdefiníció létrehozása
 
-Először hozza létre a terv definícióját.
+Először hozza létre a tervrajz-definíciót.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
 
-1. Az **első lépések** oldalon, a bal oldalon válassza a **Létrehozás** **a terv létrehozása**alatt lehetőséget.
+1. A bal oldali **Első lépések** lapon válassza a **Létrehozás** a **tervrajz létrehozása**csoportban lehetőséget.
 
-1. Keresse meg az oldal tetején található **üres terv** tervezetét. Válassza **az indítás üres tervtel**lehetőséget.
+1. Keresse meg a **Blank Blueprint** tervrajz minta tetején az oldal. Válassza **a Kezdés üres tervrajzsal**lehetőséget.
 
-1. Adja meg ezt az információt az **alapok** lapon:
+1. Adja meg ezt az információt az **Alapok** lapon:
 
-   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a **zárolt storageaccount**nevet fogjuk használni.
-   - **Terv leírása**: adja meg a terv definíciójának leírását. **Az üzembe helyezett erőforrásokra vonatkozó terv-erőforrás-zárolás tesztelésére**használható.
-   - **Definíció helye**: kattintson a három pontot ábrázoló gombra (...), majd válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a terv definícióját.
+   - **Tervrajz neve:** Adja meg a tervezet minta példányának nevét. Ebben az oktatóanyagban a **zárolt tárfiók nevet használjuk.**
+   - **Terv leírása**: Adjon meg egy leírást a terv definícióját. Az **üzembe helyezett erőforrások tervezetének zárolásának teszteléséhez**használható.
+   - **Definíció helye:** Jelölje ki a három pontot gombot (...), majd válassza ki a felügyeleti csoportot vagy előfizetést a tervezet definíciójának mentéséhez.
 
-1. Válassza ki az oldal tetején található **összetevők fület** , vagy válassza a Next (tovább) gombot **:** az oldal alján található összetevők.
+1. Válassza az **Eltérések** lapot a lap tetején, vagy válassza a **Tovább: Eltérések** elemet a lap alján.
 
-1. Erőforráscsoport hozzáadása az előfizetési szinten:
-   1. Válassza ki az összetevő **hozzáadása** sort az **előfizetés**alatt.
-   1. Válassza az **erőforráscsoport** elemet az összetevő **típusa**területen.
-   1. Állítsa az összetevő **megjelenítendő nevét** **RGtoLock**értékre.
-   1. Hagyja üresen az **erőforráscsoport neve** és **helye** mezőket, de győződjön meg arról, hogy az egyes tulajdonságokon a jelölőnégyzet be van jelölve, hogy **dinamikus paramétereket**lehessen használni.
-   1. A **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
+1. Erőforráscsoport hozzáadása az előfizetés szintjén:
+   1. Válassza a **Műtermék hozzáadása** sor lehetőséget az **Előfizetés csoportban.**
+   1. Válassza az **Erőforráscsoport** lehetőséget **a Műtermék típus csoportban.**
+   1. Állítsa a **műtermék megjelenítendő nevét** **RGtoLock**-ra.
+   1. Hagyja üresen az **Erőforráscsoport neve** és **helye** jelölőnégyzetet, de győződjön meg arról, hogy a jelölőnégyzet minden tulajdonságon be van jelölve, hogy **azok dinamikus paraméterek legyenek.**
+   1. Válassza **a Hozzáadás** lehetőséget, ha hozzá szeretné adni az összetevőt a tervrajzhoz.
 
-1. Sablon hozzáadása az erőforráscsoport alatt:
-   1. Válassza a **RGtoLock** bejegyzés alatt az összetevők **hozzáadása** sort.
-   1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusa**területen, állítsa a **lelet megjelenítendő nevét** **StorageAccount**értékre, és hagyja üresen a **leírást** .
-   1. A **sablon** lapon illessze be az alábbi Resource Manager-sablont a szerkesztő mezőbe.
-      A sablon beillesztése után a **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
+1. Sablon hozzáadása az erőforráscsoport hoz:
+   1. Jelölje ki az **RGtoLock** bejegyzés alatt a **Műtermék hozzáadása** sort.
+   1. Válassza az **Azure Resource Manager sablont** **a Műtermék típus csoportban,** állítsa be a **műtermék megjelenítendő nevét** **storageaccount**értékre, és hagyja üresen **a Leírás lehetőséget.**
+   1. A **Sablon** lapon illessze be a következő Erőforrás-kezelő sablont a szerkesztőmezőbe.
+      Miután beillesztte a sablont, válassza a **Hozzáadás** lehetőséget, hogy hozzáadja az összetevőt a tervrajzhoz.
 
    ```json
    {
@@ -100,132 +100,132 @@ Először hozza létre a terv definícióját.
    }
    ```
 
-1. Válassza a lap alján található **Piszkozat mentése** elemet.
+1. Válassza a **Piszkozat mentése** lehetőséget a lap alján.
 
-Ez a lépés létrehozza a terv definícióját a kiválasztott felügyeleti csoportban vagy előfizetésben.
+Ez a lépés létrehozza a tervezet definícióját a kiválasztott felügyeleti csoportban vagy előfizetésben.
 
-A **terv mentése sikeres** portál értesítése után lépjen a következő lépésre.
+Miután a **mentési tervezet definíciója sikeres** portál értesítés jelenik meg, folytassa a következő lépéssel.
 
-## <a name="publish-the-blueprint-definition"></a>A terv definíciójának közzététele
+## <a name="publish-the-blueprint-definition"></a>A tervezetdefiníció közzététele
 
-A terv definíciója már létre lett hozva a környezetben. A rendszer **Piszkozat** módban jön létre, és közzé kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen.
+A tervmeghatározás létrehozása a környezetben. **Vázlat** módban jön létre, és közzé kell tenni, mielőtt hozzárendelhető és üzembe helyezhető.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
 
-1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők segítségével keresse meg a **zárolt storageaccount** terv definícióját, majd jelölje ki.
+1. Válassza ki a **blueprint definíciók** lap a bal oldalon. A szűrők segítségével keresse meg a **zárolt tárfiók** tervrajz-definícióját, majd jelölje ki.
 
-1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldali új ablaktáblán adja meg a **1,0** -as **verziót**. Ez a tulajdonság akkor hasznos, ha később módosítja a módosításokat. Adja meg a **módosítási megjegyzéseket**, például az **első verziót, amelyet a tervbe helyezett erőforrások zárolásához kell közzétenni**. Ezután válassza a **Közzététel** elemet az oldal alján.
+1. Válassza a **Tervrajz közzététele** lehetőséget a lap tetején. A jobb oldali új ablaktáblában írja be az **1.0** értéket **verzióként.** Ez a tulajdonság akkor hasznos, ha később módosítja a hibát. Írja be **a Változások megjegyzéseket**, például **az első közzétett verzió talapzaton üzembe helyezett erőforrások zárolásához.** Ezután válassza a **Közzététel** lehetőséget a lap alján.
 
-Ez a lépés lehetővé teszi a terv hozzárendelését egy előfizetéshez. A terv definíciójának közzététele után továbbra is végezhet módosításokat. Ha módosítja a módosításokat, közzé kell tennie a definíciót egy új verzió értékkel, hogy nyomon követhesse az azonos terv definíciójának verziói közötti különbségeket.
+Ez a lépés lehetővé teszi, hogy a tervezet egy előfizetéshez. A tervezetdefiníció közzététele után is módosíthatja. Ha módosításokat hajt végre, közzé kell tennie a definíciót egy új verzióértékkel az ugyanazon tervezetdefiníció verziói közötti különbségek nyomon követéséhez.
 
-Ha megjelenik a **közzétételi terv definíciója sikeres** portál értesítése, lépjen a következő lépésre.
+Miután a **közzétételi tervezet definíciója sikeres** portál értesítés jelenik meg, folytassa a következő lépéssel.
 
-## <a name="assign-the-blueprint-definition"></a>A terv definíciójának kiosztása
+## <a name="assign-the-blueprint-definition"></a>A tervezetdefiníció hozzárendelése
 
-A terv definíciójának közzététele után hozzárendelheti azt egy előfizetéshez a felügyeleti csoporton belül, ahol mentette. Ebben a lépésben paramétereket biztosít a tervrajz-definíció egyedi telepítésének elvégzéséhez.
+A tervezet definíciójának közzététele után hozzárendelheti egy előfizetéshez a felügyeleti csoporton belül, ahol mentette. Ebben a lépésben paramétereket ad meg, hogy a tervezet definíciójának minden egyes központi telepítése egyedi legyen.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
 
-1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők segítségével keresse meg a **zárolt storageaccount** terv definícióját, majd jelölje ki.
+1. Válassza ki a **blueprint definíciók** lap a bal oldalon. A szűrők segítségével keresse meg a **zárolt tárfiók** tervrajz-definícióját, majd jelölje ki.
 
-1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
+1. Válassza **a Blueprint hozzárendelése** lehetőséget a tervezetdefiníciós lap tetején.
 
-1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
+1. Adja meg a tervezet hozzárendelésének paraméterértékeit:
 
    - **Alapvető beállítások**
 
-     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban található, ahol a terv definícióját mentette. Ha egynél több előfizetést választ ki, az egyes előfizetésekhez hozzárendelés jön létre a beírt paraméterek használatával.
-     - **Hozzárendelés neve**: a név előre fel van töltve a terv definíciójának neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviseljék, ezért módosítsa a hozzárendelés nevét a **hozzárendelés-zárolt-storageaccount-TestingBPLocks**értékre.
-     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Ebben az oktatóanyagban válassza az **USA 2. keleti**régióját.
-     - **Terv definíciójának verziója**: válassza ki a közzétett **1,0** -es verziót a terv definíciójában.
+     - **Előfizetések:** Válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban található, ahol a tervezetdefiníciót mentette. Ha egynél több előfizetést választ ki, minden egyes előfizetéshez létrehoz egy hozzárendelést a megadott paraméterek használatával.
+     - **Hozzárendelés neve**: A név előre ki van töltve a tervezetdefiníció neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviselje, ezért módosítsa a hozzárendelés nevét **hozzárendelés-zárolt-storageaccount-TestingBPLocks**-ra.
+     - **Hely**: Válassza ki azt a régiót, ahol létre szeretné hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [Felügyelt identitások az Azure-erőforrásokhoz.](../../../active-directory/managed-identities-azure-resources/overview.md)
+       Ehhez az oktatóanyaghoz válassza **az USA keleti része 2**lehetőséget.
+     - **Blueprint definíciós verzió:** Válassza ki a tervezet definíciójának közzétett **1.0-s** verzióját.
 
    - **Hozzárendelés zárolása**
 
-     Válassza a **csak olvasható** terv zárolási módot. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+     Válassza az **Írásvédett** tervzárolási módot. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
    - **Felügyelt identitás**
 
-     Használja az alapértelmezett beállítást: **rendszer rendelve**. További információ: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Használja az alapértelmezett beállítást: **Rendszer hozzárendelt**. További információt a felügyelt identitások című [témakörben talál.](../../../active-directory/managed-identities-azure-resources/overview.md)
 
-   - **Összetevő paramétereinek**
+   - **Műtermék-paraméterek**
 
-     Az ebben a szakaszban meghatározott paraméterek arra a tárgyra vonatkoznak, amelyben definiálva vannak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az **érték** oszlopban látható értékre.
+     Az ebben a szakaszban meghatározott paraméterek azokra a műtermékre vonatkoznak, amelyek alatt definiálva vannak. Ezek a paraméterek [dinamikus paraméterek,](../concepts/parameters.md#dynamic-parameters) mert a terv hozzárendelése során vannak definiálva. Minden egyes műtermékhez állítsa be a paraméter értékét az **Érték** oszlopban látható értékre.
 
-     |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
+     |Műtermék neve|Műtermék típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Name (Név)|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
-     |StorageAccount|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték _Standard_LRS_.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Név|TESZTELÉSBPLock|Az új erőforráscsoport nevét határozza meg, amelyre a tervezetzárolásokat alkalmazni szeretné.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Az új erőforráscsoport helyét határozza meg, amelyre a tervezetzárolásokat alkalmazni szeretné.|
+     |StorageAccount|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|A tároló termékváltozat. Az alapértelmezett érték _a Standard_LRS_.|
 
-1. Miután megadta az összes paramétert, válassza az oldal alján található **hozzárendelés** elemet.
+1. Miután megadta az összes paramétert, válassza a **Hozzárendelés** lehetőséget a lap alján.
 
-Ez a lépés telepíti a definiált erőforrásokat, és konfigurálja a kiválasztott **zárolási hozzárendelést**. A tervbeli zárolások alkalmazása akár 30 percet is igénybe vehet.
+Ez a lépés telepíti a definiált erőforrásokat, és konfigurálja a kijelölt **Zárolási hozzárendelést.** A tervrajz zárolásának alkalmazása akár 30 percet is igénybe vehet.
 
-A **terv kiosztásának meghatározása sikeres** portál értesítése után lépjen a következő lépésre.
+Miután a **hozzárendelési tervezet definíciója sikerült** portál értesítés jelenik meg, folytassa a következő lépéssel.
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>A hozzárendelés által üzembe helyezett erőforrások vizsgálata
 
-A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és a Resource Manager-sablon összetevő által üzembe helyezett Storage-fiókot. Az új erőforráscsoport és a kiválasztott zárolási állapot a hozzárendelés részletei lapon látható.
+A hozzárendelés létrehozza a _TestingBPLocks_ erőforráscsoportot és az Erőforrás-kezelő sablonmű által üzembe helyezett tárfiókot. Az új erőforráscsoport és a kijelölt zárolási állapot megjelenik a hozzárendelés részletei lapon.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
 
-1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** terv-hozzárendelést, majd jelölje ki.
+1. Válassza ki a **Hozzárendelt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** tervezet hozzárendelés, majd jelölje ki azt.
 
-   Ebből a lapról láthatjuk, hogy a hozzárendelés sikeres volt, és az erőforrások az új terv zárolási állapotával lettek telepítve. Ha a hozzárendelés frissül, a **hozzárendelési művelet** legördülő lista az egyes definíciós verziók telepítésének részleteit jeleníti meg. A tulajdonságlap megnyitásához kiválaszthatja az erőforráscsoportot.
+   Ebből a lapból láthatjuk, hogy a hozzárendelés sikeres volt, és hogy az erőforrások at az új tervezet zárolási állapottal telepítették. Ha a hozzárendelés frissül, a **Hozzárendelési művelet** legördülő menü az egyes definíciós verziók központi telepítésével kapcsolatos részleteket jeleníti meg. A tulajdonságlap megnyitásához kiválaszthatja az erőforráscsoportot.
 
 1. Válassza ki a **TestingBPLocks** erőforráscsoportot.
 
-1. Válassza a bal oldali **hozzáférés-vezérlés (iam)** lapot. Ezután válassza ki a **szerepkör-hozzárendelések** lapot.
+1. Válassza a **hozzáférés-vezérlés (IAM)** lapot a bal oldalon. Ezután válassza a **Szerepkör-hozzárendelések** lapot.
 
-   Itt láthatjuk, hogy a _hozzárendelés-zárolt-storageaccount-TestingBPLocks_ terv-hozzárendelés _tulajdonosi_ szerepkörrel rendelkezik. Ez a szerepkör azért van, mert ez a szerepkör az erőforráscsoport üzembe helyezésére és zárolására szolgál.
+   Itt azt látjuk, hogy a _hozzárendelés-zárolt-storageaccount-TestingBPLocks_ tervezet hozzárendelés a _tulajdonos_ szerepkört. Ez a szerepkör, mert ezt a szerepkört használták az erőforráscsoport üzembe helyezéséhez és zárolásához.
 
-1. Jelölje be a **megtagadási hozzárendelések** lapot.
+1. Válassza a **Hozzárendelések megtagadása** lapot.
 
-   A terv-hozzárendelés [megtagadási hozzárendelést](../../../role-based-access-control/deny-assignments.md) hozott létre a központilag telepített erőforráscsoporthoz, hogy kikényszerítse az **írásvédett** terv zárolási módját. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogokkal rendelkezik a **szerepkör-hozzárendelések** lapon bizonyos műveletek elvégzéséhez. A Megtagadás hozzárendelés az _összes rendszerbiztonsági tagra_hatással van.
+   A tervezet-hozzárendelés létrehozott egy [megtagadási hozzárendelést](../../../role-based-access-control/deny-assignments.md) az üzembe helyezett erőforráscsoporton az **írásvédett** tervezet zárolási mód kényszerítéséhez. A megtagadási hozzárendelés megakadályozza, hogy a **szerepkör-hozzárendelések** lapon megfelelő jogosultságokkal rendelkező személy meghatározott műveleteket hajtson végre. A megtagadási hozzárendelés _az összes megbízóra_hatással van.
 
-   További információ a megtagadási hozzárendelésből származó rendszerbiztonsági tag kizárásáról: [tervrajzok erőforrás-zárolás](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+   A tagmegbízásból való kizárásáról a [tervrajzok erőforrászárolás című](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment)témakörben talál tájékoztatást.
 
-1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza ki a **megtagadott engedélyek** lapot.
+1. Jelölje ki a megtagadási **hozzárendelést,** majd a bal oldalon a Megtagadott engedélyek lapot.
 
-   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de az olvasási hozzáférés engedélyezése a **\*/Read** kizárásával **.**
+   A megtagadási hozzárendelés megakadályozza az **\*** összes műveletet a és a **művelet** konfigurációval, de lehetővé teszi az olvasási hozzáférést a ** \*/read** via **NotActions**kizárásával.
 
-1. A Azure Portal navigációs menüben válassza a **TestingBPLocks-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a **TestingBPLocks** nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
+1. Az Azure Portalon a zsemlemorzsa válassza **tesztelésBPLocks - hozzáférés-vezérlés (IAM)** lehetőséget. Ezután válassza az **Áttekintés** lapot a bal oldalon, majd az **Erőforráscsoport törlése** gombot. Írja be a **TestingBPLocks** nevet a törlés megerősítéséhez, majd válassza a **Törlés** lehetőséget az ablaktábla alján.
 
-   A portál értesítésének **törlési erőforráscsoport-TestingBPLocks sikertelen** . A hiba azt jelzi, hogy a fióknak van engedélye az erőforráscsoport törlésére, a hozzáférés megtagadva a terv-hozzárendeléssel. Ne feledje, hogy a terv hozzárendelése során a **csak olvasható** terv zárolási módot jelöltük ki. A terv zárolása megakadályozza, hogy egy olyan fiók, amely nem rendelkezik engedéllyel, akár _tulajdonossal_is, törölheti az erőforrást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+   Megjelenik a portál **értesítése: A TestingBPLocks erőforráscsoport törlése sikertelen.** A hiba azt állítja, hogy bár a fiók rendelkezik engedéllyel az erőforráscsoport törléséhez, a hozzáférést a tervezet hozzárendelése megtagadja. Ne feledje, hogy az **írásvédett** tervrögzítési módot választottuk a tervleési hozzárendelés során. A tervezet zárolása megakadályozza, hogy egy engedéllyel rendelkező fiók , még _a Tulajdonos_is , de az erőforrás törlése. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
-Ezek a lépések bemutatják, hogy a telepített erőforrások mostantól a nem kívánt törlést megakadályozó, olyan fiókkal is védve vannak, amelyik jogosult az erőforrások törlésére.
+Ezek a lépések azt mutatják, hogy az üzembe helyezett erőforrások most már védett tervezet zárolások, amelyek megakadályozzák a nem kívánt törlés, még egy fiók, amely rendelkezik az erőforrások törlésére engedéllyel.
 
-## <a name="unassign-the-blueprint"></a>A terv hozzárendelésének megszüntetése
+## <a name="unassign-the-blueprint"></a>A tervrajz hozzárendelésének visszavonása
 
-Az utolsó lépés a terv definíciójának hozzárendelésének eltávolítása. A hozzárendelés eltávolítása nem távolítja el a társított összetevőket.
+Az utolsó lépés a tervezetdefiníció hozzárendelésének eltávolítása. A hozzárendelés eltávolítása nem távolítja el a társított összetevőket.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
 
-1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** terv-hozzárendelést, majd jelölje ki.
+1. Válassza ki a **Hozzárendelt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** tervezet hozzárendelés, majd jelölje ki azt.
 
-1. Válassza az oldal tetején található **terv megszüntetése** elemet. Olvassa el a figyelmeztetést a megerősítő párbeszédpanelen, majd kattintson az **OK gombra**.
+1. A lap tetején válassza a **Hozzárendelés visszavonása tervrajz** lehetőséget. Olvassa el a figyelmeztetést a megerősítést kérő párbeszédpanelen, majd kattintson az **OK gombra.**
 
-   A terv-hozzárendelés eltávolításakor a terv zárolásait is eltávolítja a rendszer. Az erőforrásokat újra törölheti egy megfelelő engedélyekkel rendelkező fiókkal.
+   A tervrajz-hozzárendelés eltávolításakor a tervrajzzárolások is törlődnek. Az erőforrásokat ismét törölheti a megfelelő engedélyekkel rendelkező fiók.
 
-1. Az Azure menüben válassza az **erőforráscsoportok** lehetőséget, majd válassza a **TestingBPLocks**lehetőséget.
+1. Válassza az Azure menü **Erőforráscsoportok parancsát,** majd a **TestingBPLocks**lehetőséget.
 
-1. Válassza a bal oldali **hozzáférés-vezérlés (iam)** lapot, majd válassza ki a **szerepkör-hozzárendelések** lapot.
+1. Válassza a bal oldali **Hozzáférés-vezérlés (IAM)** lapot, majd a **Szerepkör-hozzárendelések** lapot.
 
-Az erőforráscsoport biztonsága azt mutatja, hogy a terv hozzárendelése már nem rendelkezik _tulajdonosi_ hozzáféréssel.
+Az erőforráscsoport biztonsága azt mutatja, hogy a tervezet-hozzárendelés már nem rendelkezik _tulajdonosi_ hozzáféréssel.
 
-Ha a **terv-hozzárendelés eltávolítása sikeres** portál értesítés jelenik meg, lépjen a következő lépésre.
+Miután a **tervhozzárendelés eltávolítása sikeres** portálértesítés jelenik meg, folytassa a következő lépéssel.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
+Ha befejezte az oktatóanyagot, törölje ezeket az erőforrásokat:
 
-- Erőforráscsoport _TestingBPLocks_
-- Terv definíciója _zárolva – storageaccount_
+- Erőforráscsoport _TesztelésBPLocks_
+- Blueprint-definíció _zárolt tárolófiók_
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan teheti elérhetővé az Azure-tervezetekkel üzembe helyezett új erőforrásokat. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
+Ebben az oktatóanyagban megtanulta, hogyan védheti meg az Azure Blueprints használatával üzembe helyezett új erőforrásokat. Ha többet szeretne megtudni az Azure Blueprints, folytassa a blueprint életciklus-cikk.
 
 > [!div class="nextstepaction"]
-> [A terv életciklusának megismerése](../concepts/lifecycle.md)
+> [További információ a tervterv életciklusáról](../concepts/lifecycle.md)

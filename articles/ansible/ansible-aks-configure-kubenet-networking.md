@@ -1,35 +1,35 @@
 ---
-title: Oktatóanyag – kubenet hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
-description: Ismerje meg, hogyan konfigurálhatja a kubenet hálózatkezelést az Azure Kubernetes Service (ak) fürtben a Ansible használatával
-keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes
+title: Oktatóanyag – Kubenet-hálózat konfigurálása az Azure Kubernetes szolgáltatásban (AKS) az Ansible használatával
+description: Ismerje meg, hogyan konfigurálhatja az Ansible használatával a kubenet-hálózatszolgáltatást az Azure Kubernetes-szolgáltatás (AKS) fürtjében
+keywords: ansible, azúr, devops, bash, cloudshell, ötletekbõl, aks, konténer, aks, kubernetes
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156891"
 ---
-# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: a kubenet hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
+# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: Kubenet-hálózat konfigurálása az Azure Kubernetes szolgáltatásban (AKS) az Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Az AK-t használva a következő hálózati modellekkel telepíthet fürtöt:
+Az AKS használatával a következő hálózati modellek használatával telepíthet fürtöt:
 
-- [Kubenet hálózatkezelés](/azure/aks/configure-kubenet) – a hálózati erőforrások általában az AK-fürt üzembe helyezésekor jönnek létre és konfigurálhatók.
-- Az [Azure Container Network Interface (CNI) hálózatkezelési](/azure/aks/configure-azure-cni) -AK-fürt a meglévő virtuális hálózati erőforrásokhoz és konfigurációkhoz csatlakozik.
+- [Kubenet-hálózatkezelés](/azure/aks/configure-kubenet) – A hálózati erőforrások általában az AKS-fürt telepítésekor jönnek létre és konfigurálnak.
+- [Azure Container Networking Interface (CNI) hálózati](/azure/aks/configure-azure-cni) – AKS-fürt csatlakozik a meglévő virtuális hálózati erőforrások és konfigurációk.
 
-További információ az alkalmazásokkal való hálózatkezelésről az AK-ban: az AK-beli [alkalmazások hálózati fogalmai](/azure/aks/concepts-network).
+Az Alkalmazások AKS-ben való hálózattal kapcsolatos további tudnivalókért olvassa el az [AKS-alkalmazások hálózati fogalmait.](/azure/aks/concepts-network)
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * AKS-fürt létrehozása
-> * Az Azure kubenet hálózatkezelésének konfigurálása
+> * Az Azure kubenet hálózatkonfigurálása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ További információ az alkalmazásokkal való hálózatkezelésről az AK-ban:
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
-Az ebben a szakaszban található forgatókönyv-kód a következő Azure-erőforrásokat hozza létre:
+Ebben a szakaszban a forgatókönyv-kód a következő Azure-erőforrásokat hozza létre:
 
 - Virtuális hálózat
 - A virtuális hálózaton belüli alhálózat
@@ -63,9 +63,9 @@ Mentse a következő forgatókönyvet `vnet.yml` néven:
   register: subnet
 ```
 
-## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AK-fürt létrehozása a virtuális hálózaton
+## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AKS-fürt létrehozása a virtuális hálózatban
 
-Az ebben a szakaszban szereplő forgatókönyv-kód egy AK-fürtöt hoz létre egy virtuális hálózaton belül. 
+Ebben a szakaszban a forgatókönyv-kód létrehoz egy AKS-fürtöt egy virtuális hálózaton belül. 
 
 Mentse a következő forgatókönyvet `aks.yml` néven:
 
@@ -101,29 +101,29 @@ Mentse a következő forgatókönyvet `aks.yml` néven:
   register: aks
 ```
 
-Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
+Íme néhány fontos megjegyzés, amelyet figyelembe kell venni a minta forgatókönyvével való munka során:
 
-- Használja `azure_rm_aks_version` modult a támogatott verzió megkereséséhez.
-- A `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
-- A `network_profile` a kubenet hálózati beépülő moduljának tulajdonságait határozza meg.
-- A `service_cidr` az AK-fürt belső szolgáltatásainak IP-címhez való hozzárendelésére szolgál. Ez az IP-címtartomány olyan címterület, amelyet a hálózat máshol nem használ. 
-- A `dns_service_ip` címnek a szolgáltatás IP-címtartomány ". 10" címének kell lennie.
-- A `pod_cidr`nak olyan nagy címtartománynek kell lennie, amely nem a hálózati környezet más részében van használatban. A címtartománynek elég nagynak kell lennie ahhoz, hogy megfeleljen a felskálázásra várt csomópontok számának. Ez a címtartomány a fürt üzembe helyezése után nem módosítható.
-- A pod IP-címtartomány egy/24 címterület hozzárendelésére szolgál a fürt mindegyik csomópontján. A következő példában a 192.168.0.0/16 `pod_cidr` az első csomópontot (192.168.0.0/24), a második csomópontot 192.168.1.0/24, a harmadik pedig a 192.168.2.0/24 csomópontot rendeli hozzá.
-- A fürt méretezése vagy frissítése során az Azure továbbra is egy Pod IP-címtartományt rendel minden új csomóponthoz.
-- A forgatókönyv betölti `ssh_key`t a `~/.ssh/id_rsa.pub`ból. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
-- A `client_id` és `client_secret` értékek betöltődik a `~/.azure/credentials`ból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
+- A `azure_rm_aks_version` támogatott verzió megkereséséhez használja a modult.
+- Az `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
+- A `network_profile` kubenet hálózati beépülő modul tulajdonságait határozza meg.
+- Az `service_cidr` az AKS-fürt belső szolgáltatásainak IP-címhez rendelésére szolgál. Ennek az IP-címtartománynak olyan címterületnek kell lennie, amelyet a hálózat más részein nem használnak. 
+- A `dns_service_ip` címnek a szolgáltatás IP-címtartományának ".10" címének kell lennie.
+- A `pod_cidr` kell egy nagy címtér, amely nem használatos máshol a hálózati környezetben. A címtartománynak elég nagynak kell lennie ahhoz, hogy elférjen a csomópontok száma, amely várhatóan felskálázási. A fürt telepítése után ez a címtartomány nem módosítható.
+- A pod IP-címtartománya /24 címterület hozzárendelésére szolgál a fürt minden csomópontjéhez. A következő példában `pod_cidr` a 192.168.0.0/16-os csomópont az első 192.168.0.0/24 csomópontot, a második csomópontot 192.168.1.0/24, a harmadik csomópontot pedig 192.168.2.0/24.
+- A fürt méretezése vagy frissítése, az Azure továbbra is hozzárendelegy pod IP-címtartományminden új csomóponthoz.
+- A forgatókönyv `ssh_key` betöltődik `~/.ssh/id_rsa.pub`. Ha módosítja, használja az egysoros formátumot - kezdve az "ssh-rsa" (idézőjelek nélkül).
+- A `client_id` `client_secret` és az `~/.azure/credentials`értékek betöltődnek a programból, amely az alapértelmezett hitelesítő adatok fájlja. Ezeket az értékeket beállíthatja a szolgáltatásnévhez, vagy betöltheti ezeket az értékeket a környezeti változókból:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-## <a name="associate-the-network-resources"></a>Hálózati erőforrások hozzárendelése
+## <a name="associate-the-network-resources"></a>A hálózati erőforrások társítása
 
-AK-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és egy útválasztási tábla. Ezeket az erőforrásokat az AK felügyeli, és frissülnek a szolgáltatások létrehozásakor és közzétételekor. A következőképpen társítsa a hálózati biztonsági csoportot és az útválasztási táblázatot a virtuális hálózati alhálózatához. 
+AKS-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és útvonaltábla. Ezeket az erőforrásokat az AKS kezeli, és a szolgáltatások létrehozásakor és elérhetővé teszi. Társítsa a hálózati biztonsági csoportot és az útvonaltáblát a virtuális hálózati alhálózathoz az alábbiak szerint. 
 
-Mentse a következő forgatókönyvet `associate.yml`ként.
+Mentse a következő `associate.yml`forgatókönyvet a módon.
 
 ```yml
 - name: Get route table
@@ -155,15 +155,15 @@ Mentse a következő forgatókönyvet `associate.yml`ként.
       route_table: "{{ routetable.route_tables[0].id }}"
 ```
 
-Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
+Íme néhány fontos megjegyzés, amelyet figyelembe kell venni a minta forgatókönyvével való munka során:
 
-- A `node_resource_group` az az erőforráscsoport-név, amelyben az AK-csomópontok létre lettek hozva.
-- A `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
+- Az `node_resource_group` az erőforráscsoport neve, amelyben az AKS-csomópontok létrejönnek.
+- Az `vnet_subnet_id` az előző szakaszban létrehozott alhálózat.
 
 
-## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
+## <a name="run-the-sample-playbook"></a>A mintaforgatókönyv futtatása
 
-Ez a szakasz felsorolja az ebben a cikkben létrehozott feladatokat meghívó teljes minta-forgatókönyveket. 
+Ez a szakasz a jelen cikkben létrehozott feladatokat meghívja teljes mintaforgatókönyvet sorolja fel. 
 
 Mentse a következő forgatókönyvet `aks-kubenet.yml` néven:
 
@@ -206,19 +206,19 @@ Mentse a következő forgatókönyvet `aks-kubenet.yml` néven:
            var: output.aks[0]
 ```
 
-A `vars` szakaszban végezze el a következő módosításokat:
+A `vars` szakaszban hajtsa végre a következő módosításokat:
 
-- A `resource_group` kulcsnál módosítsa a `aksansibletest` értéket az erőforráscsoport nevére.
-- A `name` kulcsnál módosítsa a `aksansibletest` értéket az AK-névre.
-- A `Location` kulcsnál módosítsa a `eastus` értéket az erőforráscsoport helyére.
+- A `resource_group` kulcs esetében `aksansibletest` módosítsa az értéket az erőforráscsoport nevére.
+- A `name` kulcs esetében `aksansibletest` módosítsa az értéket az AKS-névre.
+- A `Location` kulcs esetében `eastus` módosítsa az értéket az erőforráscsoport helyére.
 
-Futtassa a teljes forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a teljes `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook aks-kubenet.yml
 ```
 
-A forgatókönyv futtatása a következő kimenethez hasonló eredményeket mutat:
+A forgatókönyv futtatása a következő kimenethez hasonló eredményeket jelenít meg:
 
 ```Output
 PLAY [localhost] 
@@ -327,7 +327,7 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`ként:
+Mentse a következő `cleanup.yml`kódot:
 
 ```yml
 ---
@@ -342,15 +342,15 @@ Mentse a következő kódot `cleanup.yml`ként:
             force: yes
 ```
 
-A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+A `vars` szakaszban cserélje `{{ resource_group_name }}` le a helyőrzőt az erőforráscsoport nevére.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag – az Azure Container Network Interface (CNI) hálózatkezelés konfigurálása az AK-ban a Ansible használatával](./ansible-aks-configure-cni-networking.md)
+> [Oktatóanyag – Konfigurálja az Azure Container Networking Interface (CNI) hálózati hálózatát az AKS-ben az Ansible használatával](./ansible-aks-configure-cni-networking.md)

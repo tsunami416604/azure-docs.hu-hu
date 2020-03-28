@@ -1,6 +1,6 @@
 ---
-title: Adatlekérdezés Azure Cosmos DB API-val a MongoDB-hez
-description: Megtudhatja, hogyan kérdezheti le az Azure Cosmos DB API-MongoDB a MongoDB rendszerhéj parancsaival
+title: Adatok lekérdezése az Azure Cosmos DB MongoDB-hoz készült API-jával
+description: Ismerje meg, hogyan kérdezheti le az adatokat az Azure Cosmos DB MongoDB-hoz készült API-jából a MongoDB rendszerhéj-parancsok használatával
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870139"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatlekérdezés Azure Cosmos DB API-MongoDB használatával
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lekérdezése az Azure Cosmos DB MongoDB-hoz készült API-jával
 
-A [Azure Cosmos db API-MongoDB](mongodb-introduction.md) támogatja a [MongoDB-lekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+Az [Azure Cosmos DB MongoDB API-ja](mongodb-introduction.md) támogatja a [MongoDB-lekérdezéseket.](https://docs.mongodb.com/manual/tutorial/query-documents/) 
 
 Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * A Cosmos-adatbázisban tárolt adatlekérdezés a MongoDB Shell használatával
+> * A Cosmos-adatbázisban tárolt adatok lekérdezése a MongoDB rendszerhéj használatával
 
 Az első lépésekhez segítséget nyújtanak a jelen dokumentum példái és az alábbi videó, amely az [Azure Cosmos DB MongoDB-felületről történő lekérdezését](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/) ismerteti.
 
@@ -58,7 +58,7 @@ A cikkben szereplő lekérdezések a következő mintadokumentumot használják.
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a> 1. példalekérdezés 
+## <a name="example-query-1"></a><a id="examplequery1"></a> 1. példalekérdezés 
 
 A fenti mintacsalád-dokumentumban a következő lekérdezés olyan dokumentumokat ad vissza, amelyek azonosítót tartalmazó mezői megegyeznek a következővel: `WakefieldFamily`.
 
@@ -66,7 +66,7 @@ A fenti mintacsalád-dokumentumban a következő lekérdezés olyan dokumentumok
     
     db.families.find({ id: "WakefieldFamily"})
 
-**Results**
+**Results (Eredmények)**
 
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
@@ -108,7 +108,7 @@ A fenti mintacsalád-dokumentumban a következő lekérdezés olyan dokumentumok
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a> 2. példalekérdezés 
+## <a name="example-query-2"></a><a id="examplequery2"></a>2. példalekérdezés 
 
 A következő lekérdezés a család összes gyermekét adja vissza. 
 
@@ -116,7 +116,7 @@ A következő lekérdezés a család összes gyermekét adja vissza.
     
     db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
-**Results**
+**Results (Eredmények)**
 
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
@@ -141,7 +141,7 @@ A következő lekérdezés a család összes gyermekét adja vissza.
     }
 
 
-## <a id="examplequery3"></a> 3. példalekérdezés 
+## <a name="example-query-3"></a><a id="examplequery3"></a> 3. példalekérdezés 
 
 A következő lekérdezés az összes regisztrált családot adja vissza. 
 
@@ -150,14 +150,14 @@ A következő lekérdezés az összes regisztrált családot adja vissza.
     db.families.find( { "isRegistered" : true })
 **Eredmények** Egyetlen dokumentumot sem ad vissza. 
 
-## <a id="examplequery4"></a> 4. példalekérdezés
+## <a name="example-query-4"></a><a id="examplequery4"></a> 4. példalekérdezés
 
 A következő lekérdezés az összes nem regisztrált családot adja vissza. 
 
 **Lekérdezés**
     
     db.families.find( { "isRegistered" : false })
-**Results**
+**Results (Eredmények)**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -194,7 +194,7 @@ A következő lekérdezés az összes nem regisztrált családot adja vissza.
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a> 5. példalekérdezés
+## <a name="example-query-5"></a><a id="examplequery5"></a> 5. példalekérdezés
 
 A következő lekérdezés visszaadja az összes olyan családot, amelyik nincs regisztrálva, és állam attribútumértéke: NY. 
 
@@ -202,7 +202,7 @@ A következő lekérdezés visszaadja az összes olyan családot, amelyik nincs 
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
-**Results**
+**Results (Eredmények)**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -240,7 +240,7 @@ A következő lekérdezés visszaadja az összes olyan családot, amelyik nincs 
 }
 
 
-## <a id="examplequery6"></a> 6. példalekérdezés
+## <a name="example-query-6"></a><a id="examplequery6"></a> 6. példalekérdezés
 
 A következő lekérdezés visszaadja az összes olyan családot, amelyben van 8. osztályos gyermek.
 
@@ -248,7 +248,7 @@ A következő lekérdezés visszaadja az összes olyan családot, amelyben van 8
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
-**Results**
+**Results (Eredmények)**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -285,7 +285,7 @@ A következő lekérdezés visszaadja az összes olyan családot, amelyben van 8
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a> 7. példalekérdezés
+## <a name="example-query-7"></a><a id="examplequery7"></a> 7. példalekérdezés
 
 A következő lekérdezés visszaadja az összes olyan családot, ahol a gyermek tömb mérete 3.
 
@@ -293,16 +293,16 @@ A következő lekérdezés visszaadja az összes olyan családot, ahol a gyermek
   
       db.Family.find( {children: { $size:3} } )
 
-**Results**
+**Results (Eredmények)**
 
 Nem ad vissza értéket, mivel nincs olyan család, amelyben kettőnél több gyermek van. Ez a lekérdezés csak akkor lesz sikeres, és adja vissza a teljes dokumentumot, ha a paraméter értéke 2.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtanultuk, hogyan lehet lekérdezni a Cosmos DB API-ját a MongoDB-hez
+> * Megtanulta, hogyan kell lekérdezni a Cosmos DB API-ját a MongoDB-hoz
 
 Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 

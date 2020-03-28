@@ -1,50 +1,50 @@
 ---
-title: Oktatóanyag – paraméterek hozzáadása a sablonhoz
-description: Adja hozzá a paramétereket a Azure Resource Manager-sablonhoz, hogy az újrafelhasználható legyen.
+title: Oktatóanyag - paraméterek hozzáadása a sablonhoz
+description: Paraméterek hozzáadása az Azure Resource Manager-sablonhoz, hogy újrafelhasználható legyen.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 930ae27acf09dfa54638e27c938d7680817cbbab
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: b4f8d5098fc9cf2f91139979cae430594edac5af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370746"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369867"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Oktatóanyag: paraméterek hozzáadása a Resource Manager-sablonhoz
+# <a name="tutorial-add-parameters-to-your-arm-template"></a>Oktatóanyag: Paraméterek hozzáadása az ARM-sablonhoz
 
-Az [előző oktatóanyagban](template-tutorial-add-resource.md)megtanulta, hogyan adhat hozzá Storage-fiókot a sablonhoz, és hogyan telepítheti azt. Ebből az oktatóanyagból megtudhatja, hogyan javíthatja a sablont paraméterek hozzáadásával. Ez az oktatóanyag körülbelül **14 percet** vesz igénybe.
+Az [előző oktatóanyagból](template-tutorial-add-resource.md)megtanulta, hogyan adhat hozzá tárfiókot a sablonhoz, és hogyan telepítheti azt. Ebben az oktatóanyagban megtudhatja, hogyan fejlesztheti az Azure Resource Manager (ARM) sablont paraméterek hozzáadásával. Ez az oktatóanyag körülbelül **14 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Javasoljuk, hogy fejezze be az [erőforrásokkal kapcsolatos oktatóanyagot](template-tutorial-add-resource.md), de nem szükséges.
+Azt javasoljuk, hogy töltse ki az [oktatóanyagot az erőforrásokról,](template-tutorial-add-resource.md)de ez nem szükséges.
 
-A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővítménnyel, valamint Azure PowerShell vagy az Azure CLI-vel. További információ: [sablon eszközei](template-tutorial-create-first-template.md#get-tools).
+A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítménylel, valamint az Azure PowerShell vagy az Azure CLI használatával. További információt a [sabloneszközök című témakörben talál.](template-tutorial-create-first-template.md#get-tools)
 
-## <a name="review-template"></a>Sablon áttekintése
+## <a name="review-template"></a>Véleményezési sablon
 
-Az előző oktatóanyag végén a sablon a következő JSON-t használta:
+Végén az előző bemutató, a sablon volt a következő JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
-Előfordulhat, hogy észrevette, hogy probléma merült fel ezzel a sablonnal. A Storage-fiók neve nem rögzített. Ezt a sablont csak akkor használhatja, ha minden alkalommal ugyanazt a Storage-fiókot telepíti. Egy másik névvel rendelkező Storage-fiók üzembe helyezéséhez létre kell hoznia egy új sablont, ami nyilvánvalóan nem praktikus módszer az üzemelő példányok automatizálására.
+Lehet, hogy észrevette, hogy van egy probléma ezzel a sablonnal. A tárfiók neve kódolva van. Ezt a sablont csak akkor használhatja, ha mindig ugyanazt a tárfiókot telepíti. Egy más nevű tárfiókot üzembe helyezéséhez létre kell hoznia egy új sablont, amely nyilvánvalóan nem praktikus módja az üzemelő példányok automatizálásának.
 
-## <a name="make-template-reusable"></a>Sablon újrafelhasználhatóvé tétele
+## <a name="make-template-reusable"></a>Sablon újrafelhasználhatóvá tegyük
 
-A sablon újrafelhasználhatóvé tételéhez vegyünk fel egy paramétert, amely segítségével átadható a Storage-fiók neve. A következő példában szereplő JSON-fájl azt mutatja, hogy mi változott a sablonban. A **storageName** paraméter karakterláncként van azonosítva. A maximális hossz 24 karakter, ami megakadályozza a túl hosszú nevek megadását.
+A sablon újrafelhasználhatóvá tenni, adjunk hozzá egy paramétert, amely segítségével adja át a tárfiók nevét. A következő példában kiemelt JSON bemutatja, hogy mi változott a sablonban. A **storageName** paraméter karakterláncként van azonosítva. A maximális hossz 24 karakterre van állítva, hogy megakadályozza a túl hosszú neveket.
 
-Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
+Másolja a teljes fájlt, és cserélje le a sablontartalmát.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Végezzük el a sablon üzembe helyezését. Az alábbi példa telepíti a sablont az Azure CLI vagy a PowerShell használatával. Figyelje meg, hogy a Storage-fiók nevét a telepítési parancs egyik értékeként adja meg. A Storage-fiók neve mezőben adja meg az előző oktatóanyagban használt nevet.
+Telepítsük a sablont. A következő példa telepíti a sablont az Azure CLI vagy a PowerShell használatával. Figyelje meg, hogy a tárfiók nevét adja meg a központi telepítési parancs egyik értékeként. A tárfiók nevéhez adja meg az előző oktatóanyagban használt nevet.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -55,6 +55,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A központi telepítési parancs futtatásához az Azure CLI [legújabb verziójával](/cli/azure/install-azure-cli) kell rendelkeznie.
 
 ```azurecli
 az deployment group create \
@@ -68,27 +70,27 @@ az deployment group create \
 
 ## <a name="understand-resource-updates"></a>Az erőforrás-frissítések ismertetése
 
-Az előző szakaszban a korábban létrehozott nevű Storage-fiókot telepítette. Előfordulhat, hogy kíváncsi, hogy az erőforrás milyen hatással van az újratelepítésre.
+Az előző szakaszban üzembe helyezett egy tárfiókot a korábban létrehozott nevű tárfiókot. Lehet, hogy vajon hogyan befolyásolja az erőforrás az átcsoportosítás.
 
-Ha az erőforrás már létezik, és a tulajdonságok között nem észlelhető változás, a rendszer nem végez műveletet. Ha az erőforrás már létezik, és a tulajdonság módosult, az erőforrás frissül. Ha az erőforrás nem létezik, akkor létrejön.
+Ha az erőforrás már létezik, és a tulajdonságokban nem észlelváltozás, a rendszer nem tesz műveletet. Ha az erőforrás már létezik, és egy tulajdonság megváltozott, az erőforrás frissül. Ha az erőforrás nem létezik, létrejön.
 
-A frissítések kezelési módja azt jelenti, hogy a sablon tartalmazhatja az Azure-megoldáshoz szükséges összes erőforrást. Biztonságosan újra üzembe helyezheti a sablont, és biztos lehet benne, hogy az erőforrások módosulnak, vagy csak szükség esetén jönnek létre. Ha például hozzáadta a fájlokat a Storage-fiókjához, akkor a fájlok elvesztése nélkül újra üzembe helyezheti a Storage-fiókot.
+A frissítések kezelésének ezen módja azt jelenti, hogy a sablon az Azure-megoldáshoz szükséges összes erőforrást tartalmazhatja. Biztonságosan újratelepítheti a sablont, és tudja, hogy az erőforrások csak szükség esetén módosulnak vagy jönnek létre. Ha például fájlokat adott hozzá a tárfiókhoz, újratelepítheti a tárfiókot anélkül, hogy elveszítené ezeket a fájlokat.
 
 ## <a name="customize-by-environment"></a>Testreszabás környezet szerint
 
-Paraméterek megadásával testreszabhatja az üzemelő példányt úgy, hogy az adott környezetnek megfelelő értékeket ad meg. Például különböző értékeket adhat át, attól függően, hogy fejlesztési, tesztelési és éles környezetben végzi-e a telepítést.
+Paraméterek megadásával testreszabhatja az üzemelő példányt úgy, hogy az adott környezetnek megfelelő értékeket ad meg. Például különböző értékeket adhat át attól függően, hogy fejlesztési, tesztelési és éles környezetbe telepít-e.
 
-Az előző sablon mindig Standard_LRS Storage-fiókot telepített. A környezettől függően előfordulhat, hogy a rugalmasságot a különböző SKU-ket érdemes telepíteni. Az alábbi példa bemutatja, hogyan adhat hozzá egy paramétert az SKU-hoz. Másolja a teljes fájlt, és illessze be a sablont.
+Az előző sablon mindig Standard_LRS tárfiókot telepített. Előfordulhat, hogy a környezettől függően rugalmasan szeretné üzembe helyezni a különböző sus-okat. A következő példa a termékváltozat paraméterének hozzáadásához végrehajtott módosításokat mutatja be. Másolja a teljes fájlt, és illessze be a sablont.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-A **storageSKU** paraméter alapértelmezett értékkel rendelkezik. Ezt az értéket akkor kell használni, ha nincs megadva érték az üzemelő példányban. Emellett az engedélyezett értékek listája is szerepel. Ezek az értékek megegyeznek a Storage-fiók létrehozásához szükséges értékekkel. Nem szeretné, hogy a sablon felhasználói ne adjanak át olyan SKU-ket, amelyek nem működnek.
+A **storageSKU** paraméter alapértelmezett értékkel rendelkezik. Ez az érték akkor használatos, ha a központi telepítés során nincs megadva érték. Az engedélyezett értékek listája is szerepel benne. Ezek az értékek megfelelnek a tárfiók létrehozásához szükséges értékeknek. Nem szeretné, hogy a sablon felhasználói átmenjenek a nem működik, nem használható sk-ekben.
 
 ## <a name="redeploy-template"></a>Sablon ismételt üzembe helyezése
 
-Most már készen áll a telepítésre. Mivel az alapértelmezett SKU a **Standard_LRS**értékre van állítva, nem kell megadnia a paraméter értékét.
+Készen áll a bevetésre. Mivel az alapértelmezett termékváltozat **értéke Standard_LRS,** nem kell értéket megadnia az adott paraméterhez.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -110,9 +112,9 @@ az deployment group create \
 
 ---
 
-A sablon rugalmasságának megtekintéséhez próbálkozzon újra a telepítéssel. Ezúttal állítsa az SKU paramétert **Standard_GRSra**. Átadhat egy új nevet egy másik Storage-fiók létrehozásához, vagy használhatja ugyanazt a nevet a meglévő Storage-fiók frissítéséhez. Mindkét beállítás működik.
+A sablon rugalmasságának megtekintéséhez telepítse újra a webhelyet. Ezúttal állítsa a termékváltozat paramétert **Standard_GRS**. Átadhat egy új nevet egy másik tárfiók létrehozásához, vagy ugyanazt a nevet használhatja a meglévő tárfiók frissítéséhez. Mindkét lehetőség működik.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -135,9 +137,9 @@ az deployment group create \
 
 ---
 
-Végül futtasson még egy tesztet, és nézze meg, mi történik, ha olyan SKU-t továbbít, amely nem a megengedett értékek egyike. Ebben az esetben teszteljük azt a forgatókönyvet, amelyben a sablon felhasználója azt gondolja, hogy az **alapszintű** az egyik SKU.
+Végül futtasson még egy tesztet, és nézze meg, mi történik, ha egy termékváltozatban, amely nem az engedélyezett értékek egyike. Ebben az esetben teszteljük azt a forgatókönyvet, amelyben a sablon felhasználója úgy gondolja, hogy az **alapvető** a termék- és termékkészlet egyike.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -160,22 +162,22 @@ az deployment group create \
 
 ---
 
-A parancs azonnali hibát jelez, amely jelzi, hogy mely értékek engedélyezettek. A Resource Manager a telepítés megkezdése előtt azonosítja a hibát.
+A parancs azonnal sikertelen lesz egy hibaüzenettel, amely kimondja, hogy mely értékek engedélyezettek. Az Erőforrás-kezelő a telepítés megkezdése előtt azonosítja a hibát.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
-Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőforráscsoport törlésével.
+Ha most leáll, érdemes lehet az erőforráscsoport törlésével felvetheti a telepített erőforrásokat.
 
-1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
+1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
-4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
+4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Javította az [első oktatóanyagban](template-tutorial-create-first-template.md) létrehozott sablont paraméterek hozzáadásával. A következő oktatóanyagban megismerheti a sablon funkcióit.
+Paraméterek hozzáadásával javította az [első oktatóanyagban](template-tutorial-create-first-template.md) létrehozott sablont. A következő oktatóanyagban megismerheti a sablonfüggvényeket.
 
 > [!div class="nextstepaction"]
-> [Sablon funkcióinak hozzáadása](template-tutorial-add-functions.md)
+> [Sablonfüggvények hozzáadása](template-tutorial-add-functions.md)

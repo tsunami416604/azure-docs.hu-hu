@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` felügyelt identitás használata a Azure Data Lake Store eléréséhez – Windows-Azure AD
+title: Oktatóanyag`:` Felügyelt identitás használata az Azure Data Lake Store eléréséhez – Windows – Azure AD
 description: Ez az oktatóanyag bemutatja, hogyan használhat Windows VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Data Lake Storage eléréséhez.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977878"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Oktatóanyag: Hozzáférés az Azure Data Lake Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
@@ -38,7 +38,7 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt fel�
 
 
 
-## <a name="enable"></a>Engedélyezés
+## <a name="enable"></a>Bekapcsolás
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -54,7 +54,7 @@ A Data Lake Storage-ban hozzon létre egy új mappát, és adjon engedélyt a VM
 2. Kattintson az oktatóanyaghoz használni kívánt Data Lake Store-ra.
 3. Kattintson a parancssávon az **Adatkezelő** lehetőségre.
 4. A Data Lake Store gyökérmappája van kiválasztva.  Kattintson a **Hozzáférés** elemre a parancssávon.
-5. Kattintson a **Hozzáadás** parancsra.  A **Kiválasztás** mezőbe írja be a virtuális gép nevét (például **DevTestVM**).  Kattintson a virtuális gép kiválasztásához a keresési eredmények közül, majd kattintson a **Kiválasztás** lehetőségre.
+5. Kattintson a **Hozzáadás** gombra.  A **Kiválasztás** mezőbe írja be a virtuális gép nevét (például **DevTestVM**).  Kattintson a virtuális gép kiválasztásához a keresési eredmények közül, majd kattintson a **Kiválasztás** lehetőségre.
 6. Kattintson az **Engedélyek kiválasztása** elemre.  Válassza ki az **Olvasás** és a **Végrehajtás** lehetőséget, adja hozzá **ehhez a mappához**, és adja hozzá **csak hozzáférési engedélyként**.  Kattintson az **OK** gombra.  Ezzel elvileg sikeresen hozzáadta az engedélyt.
 7. Zárja be a **Hozzáférés** panelt.
 8. Ebben az oktatóanyagban egy új mappát hozunk létre.  Kattintson a parancssáv **Új mappa** elemére, és adjon nevet az új mappának (például **TestFolder**).  Kattintson az **OK** gombra.
@@ -76,7 +76,7 @@ Ebben az oktatóanyagban a Data Lake Store-fájlrendszer REST API-jában fog hit
 1. A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben. 
-4. A Powershell `Invoke-WebRequest` parancsával küldjön kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot az Azure Data Lake Storage-hoz.  A Data Lake Store erőforrás-azonosítója `https://datalake.azure.net/`.  A Data Lake az erőforrás-azonosítót pontosan egyezteti, így a záró perjel nem hagyható el.
+4. A Powershell `Invoke-WebRequest` parancsával küldjön kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot az Azure Data Lake Storage-hoz.  A Data Lake Store `https://datalake.azure.net/`erőforrás-azonosítója a.  A Data Lake az erőforrás-azonosítót pontosan egyezteti, így a záró perjel nem hagyható el.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
@@ -188,7 +188,7 @@ A Data Lake Store-fájlrendszer más API-jaival fájlokhoz végezhet hozzáfűz�
 [!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használhat rendszer által hozzárendelt felügyelt identitást egy Windows rendszerű virtuális gépen egy Azure Data Lake Storage eléréséhez. További információ az Azure Data Lake Store-ról:
 

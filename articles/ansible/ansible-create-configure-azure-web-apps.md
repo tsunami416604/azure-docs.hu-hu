@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – alkalmazások konfigurálása Azure App Service Ansible használatával
-description: Megtudhatja, hogyan hozhat létre alkalmazást a Azure App Service Java 8 és a Tomcat Container Runtime használatával
+title: Oktatóanyag – Alkalmazások konfigurálása az Azure App Service-ben az Ansible használatával
+description: Megtudhatja, hogyan hozhat létre alkalmazást az Azure App Service-ben a Java 8-mal és a Tomcat-tároló futásidejével
 keywords: ansible, azure, devops, bash, forgatókönyv, Azure App Service, webalkalmazás, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156566"
 ---
-# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Oktatóanyag: alkalmazások konfigurálása Azure App Service Ansible használatával
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Oktatóanyag: Alkalmazások konfigurálása az Azure App Service-ben az Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,21 +21,21 @@ ms.locfileid: "74156566"
 
 > [!div class="checklist"]
 >
-> * Alkalmazás létrehozása Azure App Service Java 8 és a Tomcat Container Runtime futtatásával
+> * Alkalmazás létrehozása az Azure App Service-ben a Java 8-mal és a Tomcat-tároló futásidejével
 > * Azure Traffic Manager-profil létrehozása
-> * Traffic Manager végpont definiálása a létrehozott alkalmazás használatával
+> * Traffic Manager-végpont definiálása a létrehozott alkalmazás sal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-basic-app-service"></a>Alapszintű app Service létrehozása
+## <a name="create-a-basic-app-service"></a>Egyszerű alkalmazásszolgáltatás létrehozása
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a következő erőforrásokat határozza meg:
+Ebben a szakaszban a forgatókönyv-kód a következő erőforrásokat határozza meg:
 
-* Azure-erőforráscsoport, amelyen belül a App Service terv és alkalmazás telepítve van
-* App Service Linuxon a Java 8 és a Tomcat Container Runtime futtatásával
+* Az Azure-erőforráscsoport, amelyen belül az App Service-csomag és az alkalmazás telepítve van
+* Alkalmazásszolgáltatás Linuxon Java 8-mal és a Tomcat tároló runtime-mal
 
 Mentse a következő forgatókönyvet `firstwebapp.yml` néven:
 
@@ -71,7 +71,7 @@ Mentse a következő forgatókönyvet `firstwebapp.yml` néven:
               java_container_version: 8.5
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook firstwebapp.yml
@@ -99,18 +99,18 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="create-an-app-and-use-azure-traffic-manager"></a>Alkalmazás létrehozása és az Azure Traffic Manager használata
 
-Az [Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) lehetővé teszi annak szabályozását, hogy a webes ügyfelektől érkező kérések hogyan legyenek kiosztva a Azure app Service alkalmazásokban. Amikor App Service-végpontokat ad egy Azure Traffic Manager-profilhoz, a Traffic Manager nyomon követi az App Service-alkalmazások állapotát. Az állapotok lehetnek: fut, leállítva és törölve. A Traffic Manager segítségével eldöntheti, hogy mely végpontoknak kell fogadnia a forgalmat.
+[Az Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) lehetővé teszi annak szabályozását, hogy a webes ügyfelektől érkező kérések hogyan kerülnek elosztásra az Azure App Service-beli alkalmazások között. Amikor App Service-végpontokat ad egy Azure Traffic Manager-profilhoz, a Traffic Manager nyomon követi az App Service-alkalmazások állapotát. Az állapotok lehetnek: fut, leállítva és törölve. A Traffic Manager annak eldöntésére szolgál, hogy mely végpontok fogadják a forgalmat.
 
-Az App Service-ben az alkalmazások [App Service-csomagban](/azure/app-service/overview-hosting-plans) futnak. Az App Service-csomag számítási erőforrásokat határoz meg az alkalmazás futtatásához. Különböző csoportokban kezelheti az App Service-csomagot és a webalkalmazást.
+Az App Service-ben az alkalmazások [App Service-csomagban](/azure/app-service/overview-hosting-plans) futnak. Az App Service-csomag határozza meg az alkalmazás futtatásához szükséges számítási erőforrások készletét. Különböző csoportokban kezelheti az App Service-csomagot és a webalkalmazást.
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a következő erőforrásokat határozza meg:
+Ebben a szakaszban a forgatókönyv-kód a következő erőforrásokat határozza meg:
 
-* Az Azure-erőforráscsoport, amelyen belül a App Service-csomag telepítve van
+* Az Azure-erőforráscsoport, amelyen belül az App Service-csomag telepítve van
 * App Service-csomag
 * Az Azure-erőforráscsoport, amelyen belül az alkalmazás telepítve van
-* App Service Linuxon a Java 8 és a Tomcat Container Runtime futtatásával
+* Alkalmazásszolgáltatás Linuxon Java 8-mal és a Tomcat tároló runtime-mal
 * Traffic Manager-profil
-* Traffic Manager végpont a létrehozott alkalmazás használatával
+* Traffic Manager-végpont a létrehozott alkalmazás használatával
 
 Mentse a következő forgatókönyvet `webapp.yml` néven:
 
@@ -195,7 +195,7 @@ Mentse a következő forgatókönyvet `webapp.yml` néven:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook webapp.yml
@@ -241,7 +241,7 @@ PLAY RECAP
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: alkalmazások méretezése Azure App Service Ansible használatával](/azure/ansible/ansible-scale-azure-web-apps)
+> [Oktatóanyag: Alkalmazások méretezése az Azure App Service-ben az Ansible használatával](/azure/ansible/ansible-scale-azure-web-apps)

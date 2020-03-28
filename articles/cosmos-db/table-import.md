@@ -1,6 +1,6 @@
 ---
-title: Meglévő adatok áttelepítése az Azure Cosmos DB Table API-fiókot
-description: Ismerje meg, hogyan áttelepítése vagy importálása a helyszíni vagy felhőalapú adatok Azure Table API-fiókba az Azure Cosmos DB-ben.
+title: Meglévő adatok áttelepítése table API-fiókba az Azure Cosmos DB-ben
+description: Megtudhatja, hogyan miként telepítheti vagy importálhatja a helyszíni vagy felhőbeli adatokat az Azure Cosmos DB Azure Table API-fiókjába.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,15 +9,15 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66242574"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Adatok migrálása az Azure Cosmos DB Table API-fiókba
 
-Ez az oktatóanyag útmutatást nyújt az adatok importálásához az Azure Cosmos DB [Table API](table-introduction.md)-val való használatra. Ha az Azure Table Storage-ban tárolja az adatokat, az adatmigrálási eszközzel vagy az AzCopy segítségével importálhatja azokat az Azure Cosmos DB Table API-ba. Ha az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott fiókban tárolja az adatokat, az adatmigrálási eszközt kell használnia az adatok migrálásához. 
+Ez az oktatóanyag az Azure Cosmos DB [Table API-val](table-introduction.md)használható adatok importálásával kapcsolatos utasításokat tartalmaz. Ha az Azure Table Storage-ban tárolja az adatokat, az adatmigrálási eszközzel vagy az AzCopy segítségével importálhatja azokat az Azure Cosmos DB Table API-ba. Ha az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott fiókban tárolja az adatokat, az adatmigrálási eszközt kell használnia az adatok migrálásához. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -28,9 +28,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Átviteli sebesség növelése:** Az adatok migrálása idejére az átviteli sebesség beállítása egy egyéni tároló mennyiségét vagy egy tárolók függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információk az átviteli sebesség növeléséről az Azure Portalon: Teljesítményszintek és tarifacsomagok az Azure Cosmos DB-ben.
+* **Átviteli ciklus növelése:** Az adatáttelepítés időtartama az egyes tárolókhoz vagy tárolók készletéhez beállított átviteli mennyiségtől függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. Az átviteli sebesség Azure Portalon való növeléséről bővebben Az Azure Cosmos DB teljesítményszintjei és tarifacsomagjai című cikkben olvashat.
 
-* **Azure Cosmos DB-erőforrások létrehozása:** Adatok áttelepítése előtt előre létrehozni az Azure Portalról a táblák. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-táblák létrehozásakor mindenképp adjon meg egy partíciókulcsot.
+* **Azure Cosmos DB-erőforrások létrehozása:** Az adatok migrálásának indítása előtt hozza létre előre az összes táblát az Azure Portalról. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-táblák létrehozásakor mindenképp adjon meg egy partíciókulcsot.
 
 ## <a name="data-migration-tool"></a>Adatmigrálási eszköz
 
@@ -66,13 +66,13 @@ Használja az alábbi forrásbeállításokat, amikor egy Azure Table Storage-t�
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Az Azure Table Storage-ból való importáláskor a forrás kapcsolati sztring lekéréséhez nyissa meg az Azure Portalt, kattintson a **Tárfiókok** > **Fiók** > **Hozzáférési kulcs** elemre, majd kattintson a másolásra szolgáló gombra a **Kapcsolati sztring** másolásához.
+Ha az Azure Table storage-ból történő importáláskor le szeretné kérni a forráskapcsolati karakterláncot, nyissa meg az Azure Portalt, és kattintson a **Storage-fiókok** > **fiókhozzáférési** > **kulcsai elemre,** majd a másolás gombbal másolja a **Kapcsolati karakterláncot.**
 
-![Képernyőkép a HBase forrásbeállításairól](./media/table-import/storage-table-access-key.png)
+![Képernyőkép a HBase forrás beállításairól](./media/table-import/storage-table-access-key.png)
 
-Az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott fiókból való importáláskor a forrás kapcsolati sztring lekéréséhez nyissa meg az Azure Portalt, kattintson az **Azure Cosmos DB** > **Fiók** > **Kapcsolati sztring** elemre, majd kattintson a másolásra szolgáló gombra a **Kapcsolati sztring** másolásához.
+Ha egy Azure Cosmos DB Table API-fiókból (előzetes verzió) származó forráskapcsolati karakterláncot szeretne beolvasni, nyissa meg az Azure Portalt, kattintson az **Azure Cosmos** > **DB-fiók** > **kapcsolati karakterláncára,** és a másolásgombbal másolja a **kapcsolati karakterláncot.**
 
-![Képernyőkép a HBase forrásbeállításairól](./media/table-import/cosmos-connection-string.png)
+![Képernyőkép a HBase forrás beállításairól](./media/table-import/cosmos-connection-string.png)
 
 [Példaparancs az Azure Table Storage esetén](#azure-table-storage)
 
@@ -91,7 +91,7 @@ Használja az alábbi célbeállításokat, amikor az Azure Cosmos DB Table API-
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>Mintául szolgáló parancs: Forrás az Azure Table storage
+### <a name="sample-command-source-is-azure-table-storage"></a>Példaparancs: a forrás az Azure Table Storage
 
 Ez a parancssori példa bemutatja, hogyan importálhatók adatok az Azure Table Storage-ból a Table API-ba:
 
@@ -99,7 +99,7 @@ Ez a parancssori példa bemutatja, hogyan importálhatók adatok az Azure Table 
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Mintául szolgáló parancs: Forrás az Azure Cosmos DB Table API (előzetes verzió)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Példaparancs: a forrás az Azure Cosmos DB Table API (előzetes verzió)
 
 Ez a parancssori példa bemutatja, hogyan importálhatók adatok a Table API előzetes verziójából a Table API általánosan elérhető verziójába:
 
@@ -137,7 +137,7 @@ Migrálás a Table API előzetes verziójából a Table API általánosan elérh
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adatok importálása az adatmigrálási eszközzel.

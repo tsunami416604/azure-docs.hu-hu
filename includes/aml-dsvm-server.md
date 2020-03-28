@@ -9,31 +9,31 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
-ms.openlocfilehash: e289cf7aea6e0ea46ff049f3ea8bf9e1517e8aaf
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673648"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79486033"
 ---
-1. [Hozzon létre egy Azure Machine learning munkaterületet](../articles/machine-learning/how-to-manage-workspace.md).
+1. [Hozzon létre egy Azure Machine Learning-munkaterületet.](../articles/machine-learning/how-to-manage-workspace.md)
 
-1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+1. Klónozza [a GitHub-tárházat.](https://aka.ms/aml-notebooks)
 
-    ```CLI
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Vegyen fel egy munkaterület-konfigurációs fájlt a klónozott könyvtárba a következő módszerek bármelyikével:
+1. Vegyen fel egy munkaterület-konfigurációs fájlt a klónozott könyvtárba az alábbi módszerek egyikével:
 
-    * A [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget. 
+    * Az [Azure Portalon](https://ms.portal.azure.com)válassza **a Config.json letöltése lehetőséget** a munkaterület **Áttekintés szakaszában.** 
 
-    ![A config. JSON fájl letöltése](./media/aml-dsvm-server/download-config.png)
+    ![Config.json letöltése](./media/aml-dsvm-server/download-config.png)
 
-    * Hozzon létre egy új munkaterületet a Code ( [konfiguráció. ipynb)](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) jegyzetfüzetben a klónozott címtárban.
+    * Hozzon létre egy új munkaterületet a klónozott könyvtárban lévő [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) jegyzetfüzetben lévő kód használatával.
 
 1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
 
-    ```shell
+    ```bash
     jupyter notebook
     ```

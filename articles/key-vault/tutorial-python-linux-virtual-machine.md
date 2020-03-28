@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a Linux rendszerű virtuális gépek és a Python-alkalmazások használata a titkok tárolására Azure Key Vaultban | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Python-alkalmazást a Azure Key Vault titkos kódjának beolvasásához.
+title: Oktatóanyag – Linux os virtuális gép és Python-alkalmazás használata titkos kulcsok tárolására az Azure Key Vaultban | Microsoft dokumentumok
+description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhat egy Python-alkalmazást az Azure Key Vault titkos adatainak olvasására.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,73 +10,73 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 59b8abf59212d9cfb0719b6b76e9542249ee4c41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198150"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472690"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és egy Python-alkalmazás használata a titkok tárolására Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux os virtuális gép és Python-alkalmazás használata titkok tárolására az Azure Key Vaultban
 
-A Azure Key Vault segítségével megvédheti a titkokat, például az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges API-kulcsokat és adatbázis-kapcsolati karakterláncokat.
+Az Azure Key Vault segítségével megvédheti a titkos kulcsokat, például az API-kulcsokat és az adatbázis-kapcsolati karakterláncokat, amelyek az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükségesek.
 
-Ebben az oktatóanyagban egy Azure-webalkalmazást állít be, amely az Azure-erőforrások felügyelt identitások használatával olvassa be a Azure Key Vault információit. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebben az oktatóanyagban egy Azure-webalkalmazást állít be az Azure Key Vaultból származó információk olvasásához az Azure-erőforrások felügyelt identitások használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Kulcstartó létrehozása
 > * Titkos kulcs tárolása a kulcstartóban
 > * Linuxos virtuális gép létrehozása
-> * [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a virtuális géphez
-> * Adja meg a konzol alkalmazás szükséges engedélyeit a Key Vault adatainak olvasásához
-> * Titkos kód beolvasása a kulcstartóból
+> * Felügyelt [identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a virtuális gépszámára
+> * Adja meg a szükséges engedélyeket a konzolalkalmazás számára az adatok key vaultból történő olvasásához
+> * Titok lekérése a kulcstartóból
 
-Mielőtt továbblépne, tájékozódjon a [Key Vault kapcsolatos alapfogalmakról](basic-concepts.md).
+Mielőtt tovább menne, győződjön meg róla, hogy ismeri a [Key Vault alapvető fogalmait.](basic-concepts.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Git](https://git-scm.com/downloads).
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-* Az [Azure CLI verziója 2.0.4 vagy újabb](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vagy Azure Cloud shell.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+* [Az Azure CLI 2.0.4-es vagy újabb verziója](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vagy az Azure Cloud Shell.
 
 [!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="understand-managed-service-identity"></a>A Managed Service Identity megismerése
+## <a name="understand-managed-service-identity"></a>A felügyelt szolgáltatás identitásának megismerése
 
-Azure Key Vault a hitelesítő adatokat biztonságosan tárolhatja, hogy ne legyenek a kódban. A lekéréséhez hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez azonban szükség van egy hitelesítő adatra. Ez egy klasszikus rendszertöltő probléma. Az Azure és a Azure Active Directory (Azure AD) segítségével a Managed Service Identity (MSI) egy rendszerindítási identitást biztosít, amely egyszerűbbé teszi a dolgok megkezdését.
+Az Azure Key Vault biztonságosan tárolhatja a hitelesítő adatokat, így azok nem a kódban. A beolvasásukhoz hitelesítenie kell magát az Azure Key Vaultban. Azonban a Key Vault hitelesítéséhez, szüksége van egy hitelesítő adatokat. Ez egy klasszikus bootstrap probléma. Az Azure-on és az Azure Active Directoryn (Azure AD) keresztül a felügyelt szolgáltatásidentitás (MSI) egy rendszerindítási identitást biztosít, amely egyszerűbbé teszi a dolgok megkezdését.
 
-Ha az MSI-t olyan Azure-szolgáltatáshoz engedélyezi, mint például a Virtual Machines, a App Service vagy a functions, az Azure létrehoz egy szolgáltatásnevet a szolgáltatás példányához az Azure AD-ben. Az egyszerű szolgáltatásnév hitelesítő adatait a szolgáltatás egy példányához adja.
+Ha engedélyezi az MSI-t egy Azure-szolgáltatáshoz, például a virtuális gépekhez, az App Service-hez vagy a Functionshez, az Azure létrehoz egy egyszerű szolgáltatást a szolgáltatás azure AD-ben. A szolgáltatásnév hitelesítő adatait adja a szolgáltatás példányába.
 
 ![MSI](media/MSI.png)
 
-Ezután a kód meghívja az Azure-erőforráson elérhető helyi metaadat-szolgáltatást egy hozzáférési jogkivonat beszerzéséhez. A kód a helyi MSI-végponttól kapott hozzáférési jogkivonatot használja a Azure Key Vault szolgáltatásba való hitelesítéshez.
+Ezután a kód meghívja az Azure-erőforráson elérhető helyi metaadat-szolgáltatást egy hozzáférési jogkivonat lekéréséhez. A kód a helyi MSI-végponttól kapott hozzáférési jogkivonatot használja az Azure Key Vault-szolgáltatás hitelesítéséhez.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Ha az Azure CLI használatával szeretne bejelentkezni az Azure-ba, írja be a következőt:
+Ha az Azure CLI használatával szeretne bejelentkezni az Azure CLI-be, írja be a következőt:
 
 ```azurecli-interactive
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az USA nyugati régiójában található `az group create` parancs használatával a következő kóddal. Cserélje le a `YourResourceGroupName`t az Ön által választott névre.
+Hozzon létre egy `az group create` erőforráscsoportot az USA nyugati részén található parancs használatával a következő kóddal. Cserélje `YourResourceGroupName` le az Ön által választott nevet.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-Ezt az erőforráscsoportot az oktatóanyag során használhatja.
+Ezt az erőforráscsoportot használja az oktatóanyagban.
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-Ezután létre kell hoznia egy kulcstartót az előző lépésben létrehozott erőforráscsoporthoz. Adja meg az alábbi információkat:
+Ezután hozzon létre egy key vault az erőforráscsoportban, amely az előző lépésben létrehozott. Adja meg az alábbi információkat:
 
-* Key Vault neve: a névnek 3-24 karakterből álló karakterláncnak kell lennie, és csak 0-9, a-z, A-Z és kötőjeleket (-) tartalmazhat.
+* Key vault neve: A névnek 3-24 karakterből álló karakterláncnak kell lennie, és csak 0-9, a-z, A-Z és kötőjeleket (-) tartalmazhat.
 * Az erőforráscsoport neve.
 * Hely: **USA nyugati régiója**.
 
@@ -88,7 +88,7 @@ Jelenleg az Ön Azure-fiókja az egyetlen fiók, amelyik jogosult műveleteket v
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Titkos kulcs hozzáadása a kulcstartóhoz
 
-Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Előfordulhat, hogy egy SQL-alapú kapcsolódási sztringet vagy bármely más olyan információt szeretne tárolni, amelyet mind biztonságos, mind elérhetővé kell tenni az alkalmazás számára.
+Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Előfordulhat, hogy egy SQL-kapcsolati karakterláncot vagy bármely más olyan információt szeretne tárolni, amelyet biztonságosnak és az alkalmazás számára elérhetőnek kell tartani.
 
 Írja be az alábbi parancsokat, amelyek egy titkos kulcsot hoznak létre az *AppSecret* nevű kulcstartóban. A titkos kulcs értéke **MySecret** lesz.
 
@@ -98,9 +98,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet a `az vm create` parancs használatával.
+Hozzon létre egy `az vm create` virtuális gép a parancs segítségével.
 
-A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan létrehoz egy SSH-kulcsot, és azt az alapértelmezett kulcs helyén ( **~/.ssh**) helyezi el. Ha ehelyett a kulcsok adott készletét szeretné létrehozni, használja a `--ssh-key-value` kapcsolót.
+A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan létrehoz egy SSH kulcsot, és az alapértelmezett kulcshelyre (**~/.ssh )** helyezi. Ha ehelyett egy adott kulcskészletet `--ssh-key-value` szeretne létrehozni, használja ezt a lehetőséget.
 
 ```azurecli-interactive
 az vm create \
@@ -111,9 +111,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő példa kimenete azt mutatja, hogy a virtuális gép létrehozása sikeres volt:
+A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő példa kimenetazt mutatja, hogy a virtuális gép létrehozása sikeres volt:
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -126,11 +126,11 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 }
 ```
 
-Jegyezze fel a saját `publicIpAddress` a virtuális gép kimenetében. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
+Jegyezze fel a `publicIpAddress` saját a kimeneti a virtuális gép. Ezt a címet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
 
-## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
+## <a name="assign-an-identity-to-the-vm"></a>Identitás hozzárendelése a virtuális géphez
 
-Hozzon létre egy rendszer által hozzárendelt identitást a virtuális géphez a következő parancs futtatásával:
+Hozzon létre egy rendszeráltal hozzárendelt identitást a virtuális géphez a következő parancs futtatásával:
 
 ```azurecli-interactive
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -138,24 +138,24 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 A parancs kimenete a következő.
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
 }
 ```
 
-Jegyezze fel a `systemAssignedIdentity`. Ezt a következő lépéssel használhatja.
+Jegyezze fel `systemAssignedIdentity`a . Használja a következő lépést.
 
-## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép személyazonosságának engedélyezése Key Vault
+## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép identitásának engedélyezése a Key Vaultnak
 
-Most Key Vault engedélyt adhat a létrehozott identitásnak. Futtassa az alábbi parancsot:
+Most már engedélyt adhat a Key Vaultnak a létrehozott identitáshoz. Futtassa az alábbi parancsot:
 
 ```azurecli-interactive
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-in-to-the-vm"></a>Bejelentkezés a virtuális gépre
+## <a name="log-in-to-the-vm"></a>Bejelentkezés a virtuális gépbe
 
 Jelentkezzen be a virtuális gépre egy terminál használatával.
 
@@ -163,15 +163,15 @@ Jelentkezzen be a virtuális gépre egy terminál használatával.
 ssh azureuser@<PublicIpAddress>
 ```
 
-## <a name="install-python-library-on-the-vm"></a>A Python-könyvtár telepítése a virtuális gépre
+## <a name="install-python-library-on-the-vm"></a>Python-könyvtár telepítése a virtuális gépre
 
-Töltse le és telepítse [a Python-függvénytárat a http](https://pypi.org/project/requests/2.7.0/) Get-hívások létrehozásához.
+Töltse le és telepítse a [kérelmeket](https://pypi.org/project/requests/2.7.0/) Python könyvtár, hogy HTTP GET hívásokat.
 
-## <a name="create-edit-and-run-the-sample-python-app"></a>A Python-alkalmazás létrehozása, szerkesztése és futtatása
+## <a name="create-edit-and-run-the-sample-python-app"></a>A minta Python-alkalmazás létrehozása, szerkesztése és futtatása
 
-Hozzon létre egy **sample.py**nevű Python-fájlt.
+Hozzon létre egy **Sample.py**nevű Python-fájlt.
 
-Nyissa meg a Sample.py, és szerkessze úgy, hogy az tartalmazza a következő kódot:
+Nyissa meg Sample.py, és a következő kódot tartalmazza:
 
 ```python
 # importing the requests library
@@ -193,24 +193,24 @@ kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer "
 print(kvSecret.json()["value"])
 ```
 
-Az előző kód kétlépéses folyamatot hajt végre:
+Az előző kód kétlépésben hajt végre:
 
-   1. A virtuális gép helyi MSI-végpontján lévő jogkivonat beolvasása. Ezután a végpont beolvassa a tokent Azure Active Directoryból.
-   1. Átadja a tokent a kulcstartónak, és beolvassa a titkot.
+   1. Lekéri a jogkivonatot a helyi MSI-végpont a virtuális gép. A végpont ezután lekéri a jogkivonatot az Azure Active Directoryból.
+   1. Átadja a tokent a kulcstárolónak, és beolvassa a titkos kulcsot.
 
-Futtassa a következő parancsot. Ekkor meg kell jelennie a titkos értéknek.
+Futtassa a következő parancsot. Látnod kellene a titkos értéket.
 
 ```console
 python Sample.py
 ```
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja a Azure Key Vaultt egy Linux rendszerű virtuális gépen futó Python-alkalmazással.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az Azure Key Vaultot egy Linux-virtuális gépen futó Python-alkalmazással.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportot, és válassza a **Törlés**lehetőséget.
+Törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást, ha már nincs rájuk szüksége. Ehhez jelölje ki a virtuális gép erőforráscsoportját, és válassza a **Törlés** lehetőséget.
 
-Törölje a Key vaultot a `az keyvault delete` parancs használatával:
+Törölje a kulcstartót `az keyvault delete` a következő paranccsal:
 
 ```azurecli-interactive
 az keyvault delete --name
