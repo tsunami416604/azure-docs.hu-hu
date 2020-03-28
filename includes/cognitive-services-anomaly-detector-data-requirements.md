@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/20/2019
 ms.openlocfilehash: 41ac1478b1028a847fc0d5e7e70802375e910837
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179453"
 ---
 > [!NOTE]
-> A [a legjobb eredmények](../articles/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices.md) tartalmaznia kell az Anomáliadetektálási detector használatával API használata esetén a JSON-formátumú idősorozat-adatok:
-> * az adatpontok ugyanolyan időköz, a hiányzó pontok várt száma legfeljebb 10 %-os elválasztva.
-> * legalább 12 az adatpontok, ha az adatok nem rendelkezik egyértelmű szezonális mintát.
-> * legalább 4 minta események Ha az adatok törlése szezonális mintát. 
+> Az Anomáliadetektor API használatakor a [legjobb eredmény](../articles/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices.md) érdekében a JSON-formátumú idősorozat-adatoknak a következőket kell tartalmazniuk:
+> * adatpontokat azonos intervallummal választanak el, és a várható anammára legfeljebb 10%-a hiányzik.
+> * legalább 12 adatpont, ha az adatok nem rendelkeznek egyértelmű szezonális mintával.
+> * legalább 4 minta előfordulása, ha az adatok nem egyértelmű szezonális mintát. 

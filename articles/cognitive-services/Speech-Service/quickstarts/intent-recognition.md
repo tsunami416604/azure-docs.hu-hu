@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszédek, szándékok és entitások felismerése – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszéd, szándékok és entitások felismerése – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Speech SDK használatával interaktívan felismerheti a mikrofonból rögzített hangadatokból származó beszédet.
+description: Ebben a rövid útmutatóban a Beszéd sdk segítségével interaktívan felismerheti a mikrofonból rögzített hangadatokból érkező beszédeket.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 01/27/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: aed998c5980b390d0c1cdafe6ac9ea9d28bc51f6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900479"
 ---
-# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>Gyors útmutató: beszédek, szándékok és entitások felismerése Language Understanding (LUIS)
+# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>Rövid útmutató: A beszéd, a szándékok és az entitások felismerése a nyelvi ismeretek (LUIS) segítségével
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/intent-recognition/header.md)]

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c180a5d751b44346760706b1bd3d1e8acb70099d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837526"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
@@ -31,7 +31,7 @@ Ezekre a modulokra a HTTP-kérelem és az `'X-ClientTraceId'` fejléc egyedi azo
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Az előfizetési kulcs és a végpont beállítása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből a környezeti változókból: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` és a `endpoint` karakterláncokat, és megjegyzéseket fűzhet a feltételes utasításokhoz.
+Ez a minta megpróbálja elolvasni a Translator Text előfizetési `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` `TRANSLATOR_TEXT_ENDPOINT`kulcsot és végpontot az alábbi környezeti változókból: és . Ha nem ismeri a környezeti változókat, `subscriptionKey` `endpoint` beállíthatja, karakterláncként, és megjegyzést fűzhet a feltételes utasításokhoz.
 
 Másolja a projektbe a következő kódot:
 
@@ -73,7 +73,7 @@ let options = {
 ```
 A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából.
 
-Ha Cognitive Services többszolgáltatásos előfizetést használ, a kérések fejlécében szerepelnie kell a `Ocp-Apim-Subscription-Region` értéknek is.
+Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem fejlécében is szerepelnie kell.
 
 További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
@@ -100,10 +100,10 @@ node detect.js
 
 ## <a name="sample-response"></a>Mintaválasz
 
-A minta futtatása után a következőnek kell megjelennie a terminálon:
+A minta futtatása után a következő nyomtatott feliratot kell látnia a terminálra:
 
 > [!NOTE]
-> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Keresse meg az ország/régió rövidítését ebben [a nyelveklistájában.](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)
 
 ```json
 [
@@ -136,7 +136,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

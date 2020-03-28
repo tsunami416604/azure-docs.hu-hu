@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: képek keresése REST API és PHP-Bing Image Search'
+title: 'Rövid útmutató: Képek keresése REST API és PHP – Bing képkeresés'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API PHP használatával, és JSON-válaszokat kaphat.
+description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API-nak a PHP használatával, és JSON-válaszokat kaphat.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -13,13 +13,13 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930752"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search REST API és a PHP használatával
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Gyorsútmutató: Képek keresése a Bing Image Search REST API és a PHP használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Az ebben a cikkben található egyszerű alkalmazás keresési lekérdezést küld, majd megjeleníti a nyers adatokat.
 
@@ -33,7 +33,7 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Lásd még: [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
@@ -41,7 +41,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
 1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása engedélyezve legyen a `php.ini` fájlban. Windowson ez a fájl a `C:\windows` mappában található.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
-3. Adja meg az API-végpontot, az előfizetési kulcsot és a keresési kifejezést. a végpont lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont.
+3. Adja meg az API-végpontot, az előfizetési kulcsot és a keresési kifejezést. a végpont lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -50,9 +50,9 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
     $term = 'tropical ocean';
     ```
 
-## <a name="construct-and-perform-an-http-request"></a>HTTP-kérelem létrehozása és végrehajtása
+## <a name="construct-and-perform-an-http-request"></a>HTTP-kérelem összeállítása és végrehajtása
 
-1. Az utolsó lépésből származó változók használatával készítse elő a HTTP-kérelmeket a Image Search API-ra.
+1. Az utolsó lépés változóival http-kérelmet készíthet a képkeresési API-hoz.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -61,7 +61,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
                             'method' => 'GET' ));
     ```
 
-2. Küldje el a webes kérést, és kérje le a JSON-választ.
+2. Küldje el a webes kérelmet, és kérje a JSON választ.
 
     ```php
     $context = stream_context_create($options);
@@ -131,16 +131,16 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* A Bing Search API-k [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) . 
+* A Bing Search API-k [díjszabási részletei.](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

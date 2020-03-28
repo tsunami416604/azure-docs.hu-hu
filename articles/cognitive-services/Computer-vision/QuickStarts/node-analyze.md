@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: távoli rendszerkép elemzése a REST API és a Node. js-sel'
+title: 'Rövid útmutató: Távoli lemezkép elemzése a REST API-val és a Node.js'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision API és a Node.js segítségével.
 services: cognitive-services
@@ -12,29 +12,29 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019
 ms.openlocfilehash: 98fb7eab52c710d9008aafefc50c2d00979d3350
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973832"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Gyors útmutató: távoli rendszerkép elemzése a Computer Vision REST API a Node. js használatával
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Rövid útmutató: Távoli lemezkép elemzése a Computer Vision REST API-val a Node.js használatával
 
-Ebben a rövid útmutatóban egy távolról tárolt rendszerképet elemez, hogy kinyerje a vizualizációs funkciókat a Computer Vision REST API a Node. js használatával. Az [Analyze Image metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) vizuális jellemzőket nyerhet ki a képek tartalma alapján.
+Ebben a rövid útmutatóban egy távolról tárolt lemezképet elemezhet a Visual Features kinyeréséhez a Computer Vision REST API-val a Node.js használatával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [Node.js](https://nodejs.org) 4.x-es vagy újabb verziójával kell rendelkeznie.
 - Rendelkeznie kell az [npm-mel](https://www.npmjs.com/).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`néven.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `COMPUTER_VISION_ENDPOINT`a.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Telepítse az npm [`request`](https://www.npmjs.com/package/request) csomagot.
+1. Telepítse az [`request`](https://www.npmjs.com/package/request) npm csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
    1. Futtassa az alábbi parancsot:
 
@@ -48,7 +48,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik elemzendő kép URL-címére.
 1. Igény szerint cserélje le a `language` kérésparaméter értékét egy másik nyelvre.
 1. Mentse a kódot fájlként `.js` kiterjesztéssel. Például: `analyze-image.js`.
-1. Nyisson meg egy parancssort.
+1. Nyisson meg egy parancsablakot.
 1. Amikor a rendszer kéri, a `node` paranccsal futtassa a fájlt. Például: `node analyze-image.js`.
 
 ```javascript
@@ -176,7 +176,7 @@ Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `req
 
 3. A csomag sikeres eltávolítása után zárja be a parancssori ablakot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a Computer Vision API-kat, amelyekkel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

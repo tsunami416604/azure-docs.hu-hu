@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: képelemzések beolvasása a REST API és a go-Bing Visual Search használatával'
+title: 'Rövid útmutató: Képelemzésbe való betekintés a REST API és az Ugrás használatával – Bing Visual Search'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
+description: Megtudhatja, hogy miként tölthet fel képet a Bing Visual Search API-ba, és hogyan kaphat betekintést.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446645"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a go használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Rövid útmutató: Képelemzési adatok beszereznie a Bing Visual Search REST API és az Go használatával
 
-Ez a rövid útmutató a go programozási nyelv használatával hívja meg a Bing Visual Search API és megjeleníti az eredményeket. A POST-kérelem feltölt egy rendszerképet az API-végpontba. Az eredmények közé tartoznak a feltöltött képhez hasonló képek URL-címei és leíró információi.
+Ez a rövid útmutató az Ugrás programozási nyelvet használja a Bing Visual Search API hívásához és az eredmények megjelenítéséhez. A POST-kérelem feltöltegy lemezképet az API-végpontra. Az eredmények tartalmazzák az URL-címeket és a feltöltött képhez hasonló képekre vonatkozó leíró információkat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a [Go bináris fájlokat](https://golang.org/dl/).
-* Az eredmények megjelenítéséhez a go-spew Deep-nyomtató használatos. A go-köp a `$ go get -u https://github.com/davecgh/go-spew` parancs használatával telepíthető.
+* A go-spew mély szép nyomtató megjelenítésére használják eredményeket. Telepítheti go-spew a `$ go get -u https://github.com/davecgh/go-spew` parancsot.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Projekt és könyvtárak
 
-Hozzon létre egy go-projektet az IDE vagy a szerkesztőben. Ezután importálja `net/http` a kérelmekhez, `ioutil` a válasz olvasásához, és `encoding/json` az eredmények JSON-szövegének kezeléséhez. A `go-spew` könyvtár a JSON-eredmények elemzésére szolgál.
+Hozzon létre egy Go projektet az IDE-ben vagy a szerkesztőben. Ezután `net/http` importálja `ioutil` a kérelmeket, `encoding/json` olvassa el a választ, és kezelje a JSON találatszövegét. A `go-spew` függvénytár a JSON-eredmények elemzésére szolgál.
 
 ```go
 package main
@@ -50,9 +50,9 @@ import (
 
 ```
 
-## <a name="struct-to-format-results"></a>Az eredmények formázására szolgáló struct
+## <a name="struct-to-format-results"></a>Struct az eredmények formázásához
 
-A `BingAnswer` struktúra formázza a JSON-válaszban visszaadott adatmennyiséget, amely többszintű és összetett. A következő implementáció az alapvető tudnivalókat ismerteti:
+A `BingAnswer` struktúra formázza a JSON-válaszban visszaadott adatokat, amely többszintű és összetett. A következő végrehajtás néhány alapvető dologra vonatkozik:
 
 ```go
 type BingAnswer struct {
@@ -107,9 +107,9 @@ type BingAnswer struct {
 
 ```
 
-## <a name="main-function-and-variables"></a>Fő függvény és változók  
+## <a name="main-function-and-variables"></a>Fő funkció és változók  
 
-A következő kód deklarálja a fő függvényt, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Az `batchNumber` egy GUID-azonosító szükséges a POST-adat kezdő és záró határaihoz. A `fileName` változó azonosítja a bejegyzés képfájlját. `endpoint` lehet az alábbi globális végpont, vagy az erőforrás Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
+A következő kód deklarálja a fő funkciót, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. `batchNumber` A a POST-adatok vezető és záró határaihoz szükséges GUID. A `fileName` változó azonosítja a POST képfájlját. `endpoint`lehet az alábbi globális végpont, vagy az erőforráshoz az Azure Portalon megjelenő [egyéni altartomány-végpont:](../../../cognitive-services/cognitive-services-custom-subdomains.md)
 
 ```go
 func main() {
@@ -157,9 +157,9 @@ func main() {
 
 ```
 
-## <a name="boundaries-of-post-body"></a>A POST törzs határai
+## <a name="boundaries-of-post-body"></a>A POST-szervezet határai
 
-Az Visual Search végpontra irányuló POST-kérelemhez a POST-adatokat tartalmazó, kezdő és záró határok szükségesek. A kezdő határ tartalmaz egy batch-számot, a tartalom típusát azonosító `Content-Disposition: form-data; name="image"; filename=`, valamint a közzétenni kívánt rendszerkép fájlnevét. A záró határ egyszerűen a Batch szám. Ezek a függvények nem szerepelnek a `main` blokkban:
+A Vizuális keresés végpontjára irányuló POST-kérelemhez a POST-adatokat tartalmazó kezdő és záró határokra van szükség. A kezdő határ tartalmaz egy kötegszámot, a tartalomtípus-azonosítót `Content-Disposition: form-data; name="image"; filename=`, valamint a postai kép fájlnevét. A záró határ egyszerűen a kötegszám. Ezek a funkciók nem `main` szerepelnek a blokkban:
 
 ```go
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -176,9 +176,9 @@ func BuildFormDataEnd(batNum string) string{
 }
 
 ```
-## <a name="add-image-bytes-to-post-body"></a>Képbájtok hozzáadása a szövegtörzs feladásához
+## <a name="add-image-bytes-to-post-body"></a>Képbájtok hozzáadása a POST törzshöz
 
-Ez a kódrészlet a képadatokat tartalmazó POST kérelmet hozza létre:
+Ez a kódszegmens létrehozza a POST kérelmet, amely képadatokat tartalmaz:
 
 ```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -207,7 +207,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ## <a name="send-the-request"></a>A kérelem elküldése
 
-A következő kód elküldi a kérést, és beolvassa az eredményeket:
+A következő kód elküldi a kérelmet, és beolvassa az eredményeket:
 
 ```go
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A `Unmarshall` függvény kinyeri az adatokat a Visual Search API által visszaadott JSON-szövegből. A `go-spew` Pretty nyomtató az eredményeket jeleníti meg:
+A `Unmarshall` függvény a Visual Search API által visszaadott JSON-szövegből nyeri ki az információkat. A `go-spew` szép nyomtató megjeleníti az eredményeket:
 
 ```go
     // Create a new answer.  
@@ -245,11 +245,11 @@ A `Unmarshall` függvény kinyeri az adatokat a Visual Search API által visszaa
 
 ```
 > [!NOTE]
-> Francesco Giordano ehhez a példához járul hozzá.
+> Francesco Giordano hozzájárult a kód ehhez a példához.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-Az eredmények a POST törzsében található képhez hasonló képeket azonosítanak. A hasznos mezők `WebSearchUrl` és `Name`:
+Az eredmények a POST törzsében található képhez hasonló képeket azonosítanak. A hasznos `WebSearchUrl` mezők `Name`a következők:
 
 ```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -284,8 +284,8 @@ Az eredmények a POST törzsében található képhez hasonló képeket azonosí
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Mi a Bing Visual Search API?](../overview.md) [a Go
-> Bing Web Search](../../Bing-Web-Search/quickstarts/go.md)
+> [Mi a Bing Visual Search API?](../overview.md) 
+>  [A Bing Web Search rövid útmutatója az Ugrásban](../../Bing-Web-Search/quickstarts/go.md)

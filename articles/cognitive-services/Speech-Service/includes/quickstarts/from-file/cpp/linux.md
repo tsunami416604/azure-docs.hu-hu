@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 8890cb515d39d47a5f5cfa4e4309d0191477acdd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082228"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -29,12 +29,12 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) **azonosítójával** (például `westus` az ingyenes próbaverziós előfizetéshez).
+1. Cserélje le `YourServiceRegion` a karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) `westus` **régiórégió régióból** származó régióra (például az ingyenes próba-előfizetéshez).
 
-1. Cserélje le a karakterláncot a saját fájlnévre `whatstheweatherlike.wav`.
+1. Cserélje le `whatstheweatherlike.wav` a karakterláncot a saját fájlnevére.
 
 > [!NOTE]
-> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+> A beszédsdk alapértelmezés szerint felismeri a nyelv en-us használatát, olvassa el a forrásnyelv megadása a [beszéd szöveghez című témakört](../../../../how-to-specify-source-language.md) a forrásnyelv kiválasztásával kapcsolatos információkért.
 
 ## <a name="build-the-app"></a>Alkalmazás készítése
 
@@ -53,7 +53,7 @@ Az első lépések előtt ügyeljen a következőre:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* **ARM64** (64 bites) rendszeren futtassa az alábbi parancsot az alkalmazás létrehozásához.
+* **ARM64** (64 bites) rendszeren futtassa a következő parancsot az alkalmazás létrehozásához.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -87,13 +87,13 @@ Az első lépések előtt ügyeljen a következőre:
    ./helloworld
    ```
 
-1. A rendszer továbbítja a hangfájlt a beszédfelismerési szolgáltatásnak, és a fájl első kiírása szövegbe kerül, amely ugyanabban az ablakban jelenik meg.
+1. A hangfájl továbbítása a beszédfelismerési szolgáltatásba kerül, és a fájl első kimondott szöveggé lesz átírva, amely ugyanabban az ablakban jelenik meg.
 
    ```text
    Recognizing first result...
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

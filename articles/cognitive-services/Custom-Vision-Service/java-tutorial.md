@@ -11,28 +11,28 @@ ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: areddish
 ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77616350"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Rövid útmutató: Képosztályozási projekt létrehozása a Javához készült Custom Vision SDK-val
 
-Ez a cikk bemutatja, hogyan kezdheti el a Custom Vision Java SDK-t a rendszerkép-besorolási modell létrehozásához. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
+Ez a cikk bemutatja, hogyan kezdheti el használni a Custom Vision Java SDK egy lemezkép besorolási modell létrehozásához. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy tetszőleges Java IDE
 - Telepített [JDK 7 vagy 8](https://aka.ms/azure-jdks).
-- Telepített [Maven](https://maven.apache.org/)
+- [Maven](https://maven.apache.org/) telepítve
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>A Custom Vision SDK és a mintakód letöltése
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK és mintakód beszerzése
 
 A Custom Visiont használó Java-alkalmazás megírásához a Custom Vision Maven-csomagokra lesz szüksége. Ezek a csomagok a letöltött minta projekt részét képezik, de ezeket külön-külön is elérheti.
 
-A Custom Vision SDK a Maven központi adattárában található:
+A Custom Vision SDK a maven központi adattárban található:
 
 - [Betanítási SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Előrejelzési SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
@@ -43,10 +43,10 @@ Ez a Java-projekt létrehoz egy új képosztályozási Custom Vision-projektet _
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-A program úgy van konfigurálva, hogy környezeti változókként hivatkozzon a legfontosabb adataira. Lépjen a **jövőkép/CustomVision** mappára, és adja meg a következő PowerShell-parancsokat a környezeti változók beállításához. 
+A program úgy van beállítva, hogy a kulcsadatokra környezeti változókként hivatkozzon. Nyissa meg a **Vision/CustomVision** mappát, és írja be a következő PowerShell-parancsokat a környezeti változók beállításához. 
 
 > [!NOTE]
-> Ha nem Windows operációs rendszert használ, tekintse meg a [környezeti változók konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) az utasításokhoz című témakört.
+> Ha nem Windows operációs rendszert használ, olvassa el a [Környezeti változók konfigurálása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) című témakört.
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -55,11 +55,11 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Keresse meg a **runSample** metódust, és véleményezze a **ObjectDetection_Sample** metódus hívását&mdash;ez a metódus végrehajtja az objektum-észlelési forgatókönyvet, amely nem szerepel ebben az útmutatóban. Az **ImageClassification_Sample** metódus valósítja meg ennek a példának az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot.
+Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Keresse meg a **runSample** metódust,&mdash;és megjegyzést fűzzön a metódus **ObjectDetection_Sample** metódus hívása, ez a metódus végrehajtja az objektumészlelési forgatókönyvet, amelyet ez az útmutató nem fedez fel. Az **ImageClassification_Sample** metódus valósítja meg ennek a példának az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot.
 
 ### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service-projekt létrehozása
 
-Az első kódrészlet létrehoz egy képosztályozási projektet. A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. A projekt létrehozásakor további beállítások megadásához tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódus túlterhelését (az [osztályozó webportál összeállításának](getting-started-build-a-classifier.md) útmutatója).
+Az első kódrészlet létrehoz egy képosztályozási projektet. A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) jelenik meg, amelyet korábban felkeresett. Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódus túlterhelését, ha a projekt létrehozásakor további beállításokat is megadhat (ezt az [Osztályozó webportál készítése](getting-started-build-a-classifier.md) című útmutató ismerteti).
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 
@@ -73,13 +73,13 @@ A mintaképeket a projekt **src/main/resources** mappája tartalmazza. Innen les
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload)]
 
-Az előző kódrészlet két segítő függvényt használ, amely erőforrás-adatfolyamként kéri le a lemezképeket, és feltölti őket a szolgáltatásba (egy kötegben akár 64 képet is feltölthet).
+Az előző kódrészlet két segítő függvényt használ, amelyek erőforrás-adatfolyamként kérik le a képeket, és feltöltik őket a szolgáltatásba (legfeljebb 64 lemezképet tölthet fel egyetlen kötegben).
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
+### <a name="train-the-classifier-and-publish"></a>Az osztályozó betanítása és közzététele
 
-Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi az előrejelzési végpontra vonatkozó iterációt. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Iteráció nem érhető el az előrejelzési végpontban, amíg közzé nem teszik.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train)]
 
@@ -91,7 +91,7 @@ Az előrejelzési végpont (itt a `predictor` objektum jelöli) az a hivatkozás
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A megoldás a Maven használatával történő fordításához és futtatásához navigáljon a Project Directory (**jövőkép/CustomVision**) parancssorba, és hajtsa végre a Run parancsot:
+A megoldás maven használatával történő fordításához és futtatásához keresse meg a projektkönyvtárat (**Vision/CustomVision**) egy parancssorban, és hajtsa végre a futtatási parancsot:
 
 ```bash
 mvn compile exec:java
@@ -135,7 +135,7 @@ Ezután ellenőrizheti, hogy a tesztkép előrejelzése (a kimenet utolsó sorai
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Láthatta, hogyan hajthatók végre a képosztályozási folyamat lépései kód használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt.
 

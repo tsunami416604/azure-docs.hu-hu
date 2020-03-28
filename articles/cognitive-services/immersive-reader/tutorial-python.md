@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a lebilincselő olvasó elindítása a Python használatával'
+title: 'Oktatóanyag: Indítsa el a magával ragadó olvasót a Python használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy olyan Python-alkalmazást fog létrehozni, amely elindítja a magával ragadó olvasót.
+description: Ebben az oktatóanyagban egy Python-alkalmazást hoz létre, amely elindítja a Magával ragadó olvasót.
 services: cognitive-services
 author: dylankil
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.openlocfilehash: a252afae0a007ee0b791b56d19ffb0685848d30a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844360"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Oktatóanyag: a részletes olvasó elindítása a Python Sample Project használatával
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Oktatóanyag: Indítsa el a Magával ragadó olvasót a Python mintaprojekt teljben
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Python-webalkalmazást, amely elindítja a magával ragadó olvasót. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [áttekintésben](./overview.md)megtanulta, hogy mi a magával ragadó olvasó, és hogyan valósítja meg a bevált technikákat, hogy javítsa az olvasás megértését a nyelvtanulók, a feltörekvő olvasók és a tanulási különbségekkel rendelkező diákok számára. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Python webes alkalmazást, amely elindítja a Magával ragadó olvasót. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Python-Webalkalmazás létrehozása a pip, a lombik, a Jinja és a virtualenv használatával egy minta projekt segítségével
+> * Python-webalkalmazás létrehozása Pip, Flask, Jinja és virtualenv segítségével mintaprojekt teljben
 > * Hozzáférési jogkivonat beszerzése
-> * A részletes olvasó a minta tartalmának elindítása
+> * A Magával ragadó olvasó elindítása mintatartalommal
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* Az Azure Active Directory-hitelesítéshez konfigurált magával ragadó reader-erőforrás. A beállításhoz kövesse [az alábbi utasításokat.](./how-to-create-immersive-reader.md) A környezeti tulajdonságok konfigurálásakor szüksége lesz néhány itt létrehozott értékre. Mentse a munkamenet kimenetét egy szöveges fájlba későbbi használatra.
 * [Git](https://git-scm.com/)
-* [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Python](https://www.python.org/downloads/) és [pip](https://docs.python.org/3/installing/index.html). A Python 3,4-től kezdődően a pip alapértelmezés szerint a Python bináris telepítők részét képezi.
-* [Flask](https://flask.palletsprojects.com/en/1.0.x/)
-* [Jinja](http://jinja.pocoo.org/docs/2.10/)
-* [virtualenv](https://virtualenv.pypa.io/en/latest/) és [virtualenvwrapper – Win for Windows](https://pypi.org/project/virtualenvwrapper-win/) vagy [virtualenvwrapper for OSX](https://virtualenvwrapper.readthedocs.io/en/latest/)
-* [kérelmek modulja](https://pypi.org/project/requests/2.7.0/)
-* IDE, például a [Visual Studio Code](https://code.visualstudio.com/)
+* [Magával ragadó olvasó SDK](https://github.com/microsoft/immersive-reader-sdk)
+* [Python](https://www.python.org/downloads/) és [pip](https://docs.python.org/3/installing/index.html). A Python 3.4-től kezdve a pip alapértelmezés szerint a Python bináris telepítőihez tartozik.
+* [Lombikot](https://flask.palletsprojects.com/en/1.0.x/)
+* [Jinja között](http://jinja.pocoo.org/docs/2.10/)
+* [virtualenv](https://virtualenv.pypa.io/en/latest/) és [virtualenvwrapper-win Windows](https://pypi.org/project/virtualenvwrapper-win/) vagy [virtualenvwrapper osx](https://virtualenvwrapper.readthedocs.io/en/latest/)
+* [kérések modul](https://pypi.org/project/requests/2.7.0/)
+* Egy IDE, mint például a [Visual Studio kód](https://code.visualstudio.com/)
 
-## <a name="configure-authentication-credentials"></a>Hitelesítő adatok konfigurálása
+## <a name="configure-authentication-credentials"></a>Hitelesítési hitelesítő adatok konfigurálása
 
-Hozzon létre egy _. env_nevű új fájlt, és illessze be a következő kódot, és adja meg a magával ragadó olvasó erőforrás létrehozásakor megadott értékeket.
+Hozzon létre egy _.env_nevű új fájlt, és illessze be a következő kódot, amely a Immersive Reader erőforrás létrehozásakor megadott értékeket adja meg.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -51,17 +51,17 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
+Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a forrásvezérlőbe, mivel olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
 
-A **getimmersivereadertoken** API-végpontot biztonságossá kell tennie valamilyen hitelesítési módszer (például [OAuth](https://oauth.net/2/)) mögött, hogy megakadályozza a jogosulatlan felhasználók számára a jogkivonatok beszerzését a felhasználatlan olvasó szolgáltatás és a számlázás során. Ez a munka meghaladja az oktatóanyag hatókörét.
+A **getimmersivereadertoken** API-végpontot valamilyen hitelesítési forma (például [OAuth)](https://oauth.net/2/)mögött kell biztosítani annak érdekében, hogy illetéktelen felhasználók ne szerezzenek be jogkivonatokat a Immersive Reader szolgáltatás és a számlázás ellen; hogy a munka túlmutat a bemutató.
 
-## <a name="create-a-python-web-app-on-windows"></a>Python-Webalkalmazás létrehozása Windows rendszeren
+## <a name="create-a-python-web-app-on-windows"></a>Python-webalkalmazás létrehozása windowsos környezetben
 
-Python-Webalkalmazás létrehozása a Windows `flask` használatával.
+Hozzon létre egy `flask` Python-webalkalmazást a Windows rendszeren.
 
-Telepítse a [Git](https://git-scm.com/) szoftvert.
+Telepítse [a Git](https://git-scm.com/)- alkalmazást.
 
-Miután telepítette a git alkalmazást, nyisson meg egy parancssort, és a "klónozás" nevű, a "klónozott" olvasói SDK git-tárházat a számítógép egyik mappájába
+A Git telepítése után nyisson meg egy parancssort, és "klónozza" a Magával ragadó olvasó SDK Git tárházat a számítógép egy mappájába
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -69,73 +69,73 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Telepítse a [Pythont](https://www.python.org/downloads/).
 
-Jelölje be a Python – ELÉRÉSi út hozzáadása jelölőnégyzetet.
+Jelölje be a Python hozzáadása a PATH-hoz jelölőnégyzetet.
 
-![Python Windows telepítési párbeszédpanel 1. lépés](./media/pythoninstallone.jpg)
+![Python Windows Install párbeszédpanel 1.](./media/pythoninstallone.jpg)
 
-A választható funkciók hozzáadásához jelölje be a jelölőnégyzeteket, majd kattintson a Next (tovább) gombra.
+A választható funkciók hozzáadása a jelölőnégyzetek bejelölésével, majd a "Tovább" gombra kattintva.
 
-![Python Windows telepítési párbeszédpanel 2. lépés](./media/pythoninstalltwo.jpg)
+![Python Windows Install párbeszédpanel 2.](./media/pythoninstalltwo.jpg)
 
-Válassza az "egyéni telepítés" lehetőséget, és állítsa be a telepítési útvonalat a gyökérmappa fölé, például `C:\Python37-32\`, majd kattintson a telepítés gombra.
+Válassza az "Egyéni telepítés" lehetőséget, és állítsa be `C:\Python37-32\` a telepítési útvonalat gyökérmappaként, pl. majd kattintson a "Telepítés" gombra.
 
-![Python Windows telepítési párbeszédpanel 3. lépés](./media/pythoninstallthree.jpg)
+![Python Windows Install párbeszédpanel 3.](./media/pythoninstallthree.jpg)
 
-A Python telepítésének befejezése után nyisson meg egy parancssort, és `cd` a Python-parancsfájlok mappába.
+A Python-telepítés befejezése után nyisson meg egy parancssort, és `cd` a Python Scripts mappába.
 
 ```cmd
 cd C:\Python37-32\Scripts
 ```
 
-A lombik telepítése.
+Telepítse a Flask-ot.
 
 ```cmd
 pip install flask
 ```
 
-Telepítse a Jinja2. Egy teljes körű funkcionalitású sablon a Pythonhoz.
+Telepítse Jinja2. A Python teljes értékű sablonmotorja.
 
 ```cmd
 pip install jinja2
 ```
 
-Telepítse a virtualenv. Egy eszköz elszigetelt Python-környezetek létrehozásához.
+Telepítse virtualenv. Egy eszköz, amely elszigetelt Python-környezeteket hoz létre.
 
 ```cmd
 pip install virtualenv
 ```
 
-Telepítse a virtualenvwrapper-Win-t. A virtualenvwrapper mögötti ötlet a virtualenv használatának egyszerűsége.
+Telepítse virtualenvwrapper-win. Az ötlet mögött virtualenvwrapper, hogy megkönnyítse használatát virtualenv.
 
 ```cmd
 pip install virtualenvwrapper-win
 ```
 
-Telepítse a kérelmek modult. A kérések egy Pythonban írt, Apache licenccel rendelkező HTTP-könyvtár.
+Telepítse a kérelmek modult. A kérelmek egy Apache2 licencelt HTTP-könyvtár, Pythonnyelven írva.
 
 ```cmd
 pip install requests
 ```
 
-Telepítse a Python-dotenv modult. Ez a modul beolvassa a kulcs-érték párokat a. env fájlból, és hozzáadja azokat a környezeti változóhoz.
+Telepítse a python-dotenv modult. Ez a modul beolvassa a kulcs-érték párt az .env fájlból, és hozzáadja őket a környezeti változóhoz.
 
 ```cmd
 pip install python-dotenv
 ```
 
-Virtuális környezet létrehozása
+Virtuális környezet átalakítása
 
 ```cmd
 mkvirtualenv advanced-python
 ```
 
-`cd` a minta projekt gyökérmappa mappájába.
+`cd`a mintaprojekt gyökérmappájába.
 
 ```cmd
 cd C:\immersive-reader-sdk\js\samples\advanced-python
 ```
 
-A minta projekt összekötése a környezettel. Ezzel leképezi az újonnan létrehozott virtuális környezetet a minta projekt gyökérkönyvtárára.
+Csatlakoztassa a mintaprojektet a környezettel. Ez leképezi az újonnan létrehozott virtuális környezetet a mintaprojekt gyökérmappájához.
 
 ```cmd
 setprojectdir .
@@ -147,39 +147,39 @@ Aktiválja a virtuális környezetet.
 activate
 ```
 
-A projektnek most aktívnak kell lennie, és a parancssorban hasonló `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` fog megjelenni.
+A projektnek most aktívnak kell lennie, és a parancssorban valami hasonlót `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` fog látni.
 
-A környezet inaktiválása.
+Kapcsolja ki a környezetet.
 
 ```cmd
 deactivate
 ```
 
-A `(advanced-python)` előtagot most el kell tűnni, mert a környezet már inaktiválva van.
+Az `(advanced-python)` előtagnak most el kell tűnnie, mivel a környezet inaktívvá vált.
 
-A környezet újraaktiválásához futtassa `workon advanced-python` alkalmazást a Project root mappából.
+A környezet újraaktiválásához futtassa `workon advanced-python` a mintaprojekt gyökérmappájából.
 
 ```cmd
 workon advanced-python
 ```
 
-### <a name="launch-the-immersive-reader-with-sample-content"></a>A részletes olvasó a minta tartalmának elindítása
+### <a name="launch-the-immersive-reader-with-sample-content"></a>A Magával ragadó olvasó elindítása mintatartalommal
 
-Ha a környezet aktív, futtassa a minta projektet úgy, hogy beírja a `flask run` a Project root mappájából.
+Ha a környezet aktív, futtassa `flask run` a mintaprojektet a mintaprojekt gyökérmappájából való beírással.
 
 ```cmd
 flask run
 ```
 
-Nyissa meg a böngészőt, és navigáljon _http://localhost:5000_ .
+Nyissa meg a _http://localhost:5000_böngészőt, és keresse meg a t.
 
-## <a name="create-a-python-web-app-on-osx"></a>Python-Webalkalmazás létrehozása az OSX-ben
+## <a name="create-a-python-web-app-on-osx"></a>Python-webalkalmazás létrehozása az OSX-en
 
-Python-Webalkalmazás létrehozása az OSX-`flask` használatával.
+Hozzon létre egy `flask` Python-webalkalmazást az OSX-en.
 
-Telepítse a [Git](https://git-scm.com/) szoftvert.
+Telepítse [a Git](https://git-scm.com/)- alkalmazást.
 
-Miután a git telepítve van a nyílt terminálon és a "Clone" a belső olvasó SDK git-tárházát a számítógép egyik mappájába
+A Git telepítése után nyissa meg a terminált, és "klónozza" a Magával ragadó olvasó SDK Git adattárat a számítógép egy mappájába
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -187,9 +187,9 @@ git clone https://github.com/microsoft/immersive-reader-sdk.git
 
 Telepítse a [Pythont](https://www.python.org/downloads/).
 
-A Python gyökérkönyvtárának (például `Python37-32` kell lennie az Applications (alkalmazások) mappában.
+A Python gyökérmappának `Python37-32` például most az Alkalmazások mappában kell lennie.
 
-A Python telepítésének befejeződése után nyissa meg a Terminal és a `cd` a Python-parancsfájlok mappába.
+A Python-telepítés befejezése után `cd` nyissa meg a Terminált és a Python Scripts mappát.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -201,7 +201,7 @@ Telepítse a pipet.
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ```
 
-Ezután futtassa a következőt a pip telepítéséhez a jelenleg bejelentkezett felhasználó számára az engedélyek elkerülése érdekében.
+Ezután futtassa az alábbi parancsot a pip telepítéséhez a jelenleg bejelentkezett felhasználó számára az engedélyekkel kapcsolatos problémák elkerülése érdekében.
 
 ```bash
 python get-pip.py --user
@@ -211,68 +211,68 @@ python get-pip.py --user
 sudo nano /etc/paths
 ```
 
-- Ha a rendszer kéri, adja meg a jelszavát.
-- Adja hozzá a pip-telepítés elérési útját az ELÉRÉSIÚT-változóhoz.
-- Nyissa meg a fájl alját, és adja meg a lista utolsó elemeként hozzáadni kívánt elérési utat (például `PATH=$PATH:/usr/local/bin`.
-- Nyomja meg a Control-x gombot a kilépéshez.
-- Adja meg `Y` a módosított puffer mentéséhez.
-- Ennyi az egész! A teszteléshez az új terminál ablakban írja be a következőt: `echo $PATH`.
+- Amikor a rendszer kéri, adja meg a jelszavát.
+- Adja hozzá a pip telepítés útvonalát a PATH változóhoz.
+- Lépjen a fájl aljára, és adja meg a lista utolsó elemeként hozzáadni `PATH=$PATH:/usr/local/bin`kívánt elérési utat, például .
+- Nyomja meg a control-x-et, hogy kilépjen.
+- Adja `Y` meg a módosított puffer mentéséhez.
+- Ennyi az egész! A teszteléshez az új Terminál `echo $PATH`ablakban írja be a következőt: .
 
-A lombik telepítése.
+Telepítse a Flask-ot.
 
 ```bash
 pip install flask --user
 ```
 
-Telepítse a Jinja2. Egy teljes körű funkcionalitású sablon a Pythonhoz.
+Telepítse Jinja2. A Python teljes értékű sablonmotorja.
 
 ```bash
 pip install Jinja2 --user
 ```
 
-Telepítse a virtualenv. Egy eszköz elszigetelt Python-környezetek létrehozásához.
+Telepítse virtualenv. Egy eszköz, amely elszigetelt Python-környezeteket hoz létre.
 
 ```bash
 pip install virtualenv --user
 ```
 
-Telepítse a virtualenvwrapper. A virtualenvwrapper mögötti ötlet a virtualenv használatának egyszerűsége.
+Telepítse virtualenvwrapper. Az ötlet mögött virtualenvwrapper, hogy megkönnyítse használatát virtualenv.
 
 ```bash
 pip install virtualenvwrapper --user
 ```
 
-Telepítse a kérelmek modult. A kérések egy Pythonban írt, Apache licenccel rendelkező HTTP-könyvtár.
+Telepítse a kérelmek modult. A kérelmek egy Apache2 licencelt HTTP-könyvtár, Pythonnyelven írva.
 
 ```bash
 pip install requests --user
 ```
 
-Telepítse a Python-dotenv modult. Ez a modul beolvassa a kulcs-érték párokat a. env fájlból, és hozzáadja azokat a környezeti változóhoz.
+Telepítse a python-dotenv modult. Ez a modul beolvassa a kulcs-érték párt az .env fájlból, és hozzáadja őket a környezeti változóhoz.
 
 ```bash
 pip install python-dotenv --user
 ```
 
-Válasszon egy mappát, ahol meg szeretné tartani a virtuális környezeteket, és futtassa ezt a parancsot
+Válassza ki azt a mappát, ahol meg szeretné tartani a virtuális környezeteket, és futtatni szeretné ezt a parancsot
 
 ```bash
 mkdir ~/.virtualenvs
 ```
 
-`cd` a részletes olvasó SDK Python minta alkalmazás mappájába.
+`cd`a Magával ragadó Reader SDK Python minta alkalmazás mappájába.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
 ```
 
-Virtuális környezet létrehozása
+Virtuális környezet átalakítása
 
 ```bash
 mkvirtualenv -p /usr/local/bin/python3 advanced-python
 ```
 
-A minta projekt összekötése a környezettel. Ezzel leképezi az újonnan létrehozott virtuális környezetet a minta projekt gyökérkönyvtárára.
+Csatlakoztassa a mintaprojektet a környezettel. Ez leképezi az újonnan létrehozott virtuális környezetet a mintaprojekt gyökérmappájához.
 
 ```bash
 setprojectdir .
@@ -284,33 +284,33 @@ Aktiválja a virtuális környezetet.
 activate
 ```
 
-A projektnek most aktívnak kell lennie, és a parancssorban hasonló `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` fog megjelenni.
+A projektnek most aktívnak kell lennie, és a parancssorban valami hasonlót `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` fog látni.
 
-A környezet inaktiválása.
+Kapcsolja ki a környezetet.
 
 ```bash
 deactivate
 ```
 
-A `(advanced-python)` előtagot most el kell tűnni, mert a környezet már inaktiválva van.
+Az `(advanced-python)` előtagnak most el kell tűnnie, mivel a környezet inaktívvá vált.
 
-A környezet újraaktiválásához futtassa `workon advanced-python` alkalmazást a Project root mappából.
+A környezet újraaktiválásához futtassa `workon advanced-python` a mintaprojekt gyökérmappájából.
 
 ```bash
 workon advanced-python
 ```
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>A részletes olvasó a minta tartalmának elindítása
+## <a name="launch-the-immersive-reader-with-sample-content"></a>A Magával ragadó olvasó elindítása mintatartalommal
 
-Ha a környezet aktív, futtassa a minta projektet úgy, hogy beírja a `flask run` a Project root mappájából.
+Ha a környezet aktív, futtassa `flask run` a mintaprojektet a mintaprojekt gyökérmappájából való beírással.
 
 ```bash
 flask run
 ```
 
-Nyissa meg a böngészőt, és navigáljon _http://localhost:5000_ .
+Nyissa meg a _http://localhost:5000_böngészőt, és keresse meg a t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
-* Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)
+* Fedezze fel a [magával ragadó Reader SDK-t](https://github.com/microsoft/immersive-reader-sdk) és a [magával ragadó Reader SDK-referenciát](./reference.md)
+* Kódminták megtekintése a [GitHubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/)

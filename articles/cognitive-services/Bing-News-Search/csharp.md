@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hírek keresése a C# -Bing News Search REST API'
+title: 'Rövid útmutató: Hírkeresés végrehajtása c# - Bing News Search REST API-val'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API a C#használatával, és JSON-választ kap.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak C# használatával, és JSON-választ kaphat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448481"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a C# és a Bing News Search használatával REST API
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírek keresése a C# és a Bing News Search REST API használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az C# egyszerű alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta teljes kódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)érhető el.
+Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing News Search API-t, és megtekintheti a JSON-választ. Ez az egyszerű C# alkalmazás hírkeresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta teljes kódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)
 
 Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
+* A [Visual Studio 2017-es vagy újabb verzióinak](https://www.visualstudio.com/downloads/)bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
@@ -34,7 +34,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre C# egy új konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
+1. hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
     
     ```csharp
     using System;
@@ -44,14 +44,14 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     using System.Collections.Generic;
     ```
 
-2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
     ```csharp
     const string accessKey = "enter key here";
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>A Bing News Search-válasz formázására szolgáló struct létrehozása
+   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Struct létrehozása a Bing News Search válasz formázásához
 
 1. Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
 
@@ -63,9 +63,9 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
     }
     ```
 
-## <a name="create-and-handle-a-news-search-request"></a>Hírek keresési kérelmének létrehozása és kezelése
+## <a name="create-and-handle-a-news-search-request"></a>Hírkeresési kérelem létrehozása és kezelése
 
-Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára. A metódusban hajtsa végre a következő lépéseket:
+Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára. A módszerben hajtsa végre a következő lépéseket:
 
 1. Hozza létre a keresési kérés URI-ját. Tartsa észben, hogy a `toSearch` keresési kifejezést a sztringhez való hozzáfűzés előtt kell formáznia.
 
@@ -106,7 +106,7 @@ Hozzon létre egy `BingNewsSearch` nevű metódust, amely meghívja az API-t, ma
 
 ## <a name="process-the-response"></a>A válasz feldolgozása
 
-1. A fő metódusban hívja meg a `BingNewsSearch()` elemet, és tárolja a kapott választ. Ezután deszerializálja a JSON-fájlt egy objektumba. Ekkor megtekintheti a válasz értékeit.
+1. A fő metódusban hívja meg a `BingNewsSearch()` elemet, és tárolja a kapott választ. Ezután deszerializálja a JSON-fájlt egy objektumba. Ezután megtekintheti a válasz értékeit.
 
     ```csharp
     SearchResult result = BingNewsSearch(searchTerm);
@@ -210,7 +210,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

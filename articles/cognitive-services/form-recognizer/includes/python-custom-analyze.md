@@ -6,20 +6,20 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446442"
 ---
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>A kulcs-érték párok és táblák űrlapjainak elemzése
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Kulcsérték-párok és táblák űrlapjainak elemzése
 
-Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. A következő kód egy új Python-parancsfájlban történő futtatásával hívja meg az elemzési **[űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API-ját. A szkript futtatása előtt végezze el a következő módosításokat:
+Ezután az újonnan betanított modell segítségével elemezhet egy dokumentumot, és kulcsérték-párokat és táblákat nyerhet ki belőle. Hívja meg az **[Űrlap elemzése](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API-t a következő kód futtatásával egy új Python-parancsfájlban. A parancsfájl futtatása előtt hajtsa végre a következő módosításokat:
 
-1. Cserélje le a `<file path>`t az űrlap fájljának elérési útjára (például C:\temp\file.pdf). Ez egy távoli fájl URL-címe is lehet. Ebben a rövid útmutatóban a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található fájlokat használhatja.
-1. Cserélje le a `<model_id>`t az előző szakaszban kapott modell-AZONOSÍTÓra.
-1. Cserélje le a `<endpoint>`t arra a végpontra, amelyet az űrlap-felismerő előfizetési kulcsával kapott. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje le a `<file type>`t a fájl típusára. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. Cserélje `<file path>` le az űrlap fájlelérési útját (például C:\temp\file.pdf). Ez lehet egy távoli fájl URL-címe is. Ehhez a rövid útmutatóhoz használhatja a [mintaadatkészlet](https://go.microsoft.com/fwlink/?linkid=2090451) **Teszt** mappájában lévő fájlokat.
+1. Cserélje `<model_id>` le az előző szakaszban kapott modellazonosítóra.
+1. Cserélje `<endpoint>` le a kapott végpontra az Űrlapfelismerő előfizetési kulccsal. Ezt az Űrlapfelismerő erőforrás **áttekintése** lapon találja.
+1. Cserélje `<file type>` le a fájltípusra. Támogatott `application/pdf`típusok: `image/jpeg` `image/png`, `image/tiff`, , .
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
     ```python
@@ -58,15 +58,15 @@ Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzés
         quit() 
     ```
 
-1. Mentse a kódot egy. file kiterjesztésű fájlba. Például: *Form-Recognizer-Analyze.py*.
+1. Mentse a kódot egy .py kiterjesztésű fájlba. Például *form-recognizer-analyze.py*.
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognizer-analyze.py`.
 
-Amikor meghívja az elemzési **űrlap** API-t, egy `201 (Success)` választ kap egy **művelet-hely** fejléctel. Ennek a fejlécnek az értéke egy azonosító, amelyet az elemzési művelet eredményeinek nyomon követéséhez fog használni. A fenti szkript kinyomtatja a fejléc értékét a konzolra.
+Amikor meghívja az **Űrlap elemzése** API-t, `201 (Success)` egy **Operation-Location** fejléccel választ fog kapni. A fejléc értéke egy azonosító, amelyet az Elemzés művelet eredményeinek nyomon követésére használhat. A fenti parancsfájl kinyomtatja a fejléc értékét a konzolra.
 
-## <a name="get-the-analyze-results"></a>Az elemzés eredményeinek beolvasása
+## <a name="get-the-analyze-results"></a>Az Elemzés eredményeinek beszereznie
 
-Adja hozzá a következő kódot a Python-szkript aljához. Ez az előző hívás azonosító értékét használja egy új API-hívásban az elemzési eredmények lekéréséhez. Az elemzési **űrlap** művelete aszinkron módon történik, így a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
+Adja hozzá a következő kódot a Python-parancsfájl aljához. Ez az új API-hívás előző hívásának azonosítóértékét használja az elemzési eredmények lekéréséhez. Az **Űrlap elemzése** művelet aszinkron, így ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válikk. Javasoljuk, hogy egy másodperc vagy több időközt.
 
 ```python 
 n_tries = 15

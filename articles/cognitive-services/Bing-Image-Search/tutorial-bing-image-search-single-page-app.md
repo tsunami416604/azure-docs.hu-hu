@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943891"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
@@ -34,13 +34,13 @@ Az oktatóanyaghoz tartozó teljes forráskód elérhető a [GitHubon](https://g
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js](https://nodejs.org/) legújabb verziója.
-* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési utasításai a GitHub-minta readme fájlban érhetők el.
+* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési utasításai a GitHub mintareadme fájlban érhetők el.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Felhasználó előfizetési kulcsainak kezelése és tárolása
 
-Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból. Ez a példa a globális végpontot használja. Használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot is.
+Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból. Ez a minta a globális végpontot használja. Az azure portalon az erőforráshoz megjelenített [egyéni altartomány-végpontot](../../cognitive-services/cognitive-services-custom-subdomains.md) is használhatja.
 
 
 Definiálja a `storeValue` és a `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amennyiben a böngésző ezt támogatja), vagy cookie-kat.
@@ -379,14 +379,14 @@ Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egy
 
 Egyrészt lehetővé teszi, hogy a Bing keresőmotorja korábbi kontextusokat is alkalmazzon a keresésekhez olyan találatok megjelenítése érdekében, amelyek jobban megfelelnek a felhasználó igényeinek. Ha például a felhasználó korábban vitorlázáshoz kapcsolódó kifejezésekre keresett rá, egy későbbi keresés a „csomó” kifejezésre nagy valószínűséggel a vitorlázásban használt csomókkal kapcsolatos információkat fog eredményezni.
 
-Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanazt az ügyfél-azonosítót adja meg, akkor azok a felhasználók, akiket kijelölt a funkció megtekintésére, mindig látni fogják. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
+Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanaz az ügyfél-azonosító van megadva, akkor azok a felhasználók, akik ki lettek választva egy funkció használatára, mindig látják azt. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
 
 A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a JavaScript hozzáférjen az `X-MSEdge-ClientID` fejléchez. Ez a korlátozás akkor léphet életbe, ha a keresési válasz eredete különbözik az azt lekérő oldalétól. Éles környezetben egy olyan kiszolgálóoldali szkript futtatásával oldhatja fel a szabályzat okozta korlátozást, amely a weboldaléval megegyező tartományból hívja meg az API-t. Mivel a szkript eredete megegyezik a weboldaléval, az `X-MSEdge-ClientID` fejléc elérhető lesz a JavaScript számára.
 
 > [!NOTE]
-> Éles webalkalmazásban egyébként is a kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
+> Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely lehetővé teszi a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxy válasza `Access-Control-Expose-Headers` fejléccel rendelkezik, amely lehetővé teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
@@ -409,4 +409,4 @@ Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak
 
 ## <a name="see-also"></a>Lásd még
 
-* [Bing Image Search API – referenciaanyag](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

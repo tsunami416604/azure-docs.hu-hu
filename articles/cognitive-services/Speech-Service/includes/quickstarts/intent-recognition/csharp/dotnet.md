@@ -7,19 +7,19 @@ ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 4f8fe92a0a36bae2d5e7595bee7bf71fcd926da9
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924753"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt:
+Mielőtt elkezdene járni:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Telepítse a fejlesztői környezethez készült SPEECH SDK-t egy Create és üres<span class="docon docon-navigate-external x-hidden-focus"></span>minta projektbe</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Telepítse a beszédfelismerési SDK-t a<span class="docon docon-navigate-external x-hidden-focus"></span>fejlesztői környezethez egy létrehozási és üres mintaprojekthez.</a>
 
-## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándék-felismeréshez
+## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándékfelismeréshez
 
 [!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
@@ -27,83 +27,83 @@ Az első lépések előtt:
 
 Ezután nyissa meg a projektet a Visual Studióban.
 
-1. Indítsa el a Visual Studio 2019-es kiadását.
-2. Töltse be a projektet, és nyissa meg `Program.cs`.
+1. Indítsa el a Visual Studio 2019-et.
+2. Töltse be a `Program.cs`projektet, és nyissa meg a programot.
 
-## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
+## <a name="start-with-some-boilerplate-code"></a>Kezdje néhány sablonkóddal.
 
-Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegyezze fel, hogy létrehozott egy `RecognizeIntentAsync()`nevű aszinkron metódust.
+Adjunk hozzá néhány kódot, ami csontvázként működik a projektünkhöz. Vegye figyelembe, hogy létrehozott egy aszinkron metódust, amelynek neve `RecognizeIntentAsync()`.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-17,77-86)]
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-`IntentRecognizer` objektum inicializálásához létre kell hoznia egy olyan konfigurációt, amely a LUIS-előrejelzési erőforrás kulcsát és helyét használja.
+Egy `IntentRecognizer` objektum inicializálása előtt létre kell hoznia egy konfigurációt, amely a LUIS előrejelzési erőforrás kulcsát és helyét használja.
 
 > [!IMPORTANT]
-> Az alapszintű kulcs és a szerzői kulcsok nem fognak működni. A korábban létrehozott előrejelzési kulcsot és helyet kell használnia. További információ: LUIS- [alkalmazás létrehozása a szándék-felismeréshez](#create-a-luis-app-for-intent-recognition).
+> Az indítókulcs és a szerzői kulcsok nem fognak működni. Az előrejelzési kulcsot és a korábban létrehozott helyet kell használnia. További információ: [Létrehozás egy LUIS alkalmazás szándékfelismerés.](#create-a-luis-app-for-intent-recognition)
 
-Szúrja be ezt a kódot a `RecognizeIntentAsync()` metódusba. Győződjön meg róla, hogy frissíti ezeket az értékeket:
+Szúrja be ezt `RecognizeIntentAsync()` a kódot a metódusba. Győződjön meg arról, hogy frissíti ezeket az értékeket:
 
-* Cserélje le a `"YourLanguageUnderstandingSubscriptionKey"`t a LUIS-előrejelzési kulcsra.
-* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére. Régió **azonosítójának** használata [.](https://aka.ms/speech/sdkregion)
+* Cserélje `"YourLanguageUnderstandingSubscriptionKey"` le a LUIS előrejelzési kulcs.
+* Cserélje `"YourLanguageUnderstandingServiceRegion"` le a LUIS helyét. Használja a [region](https://aka.ms/speech/sdkregion)régiórégiórégióból származó **régióazonosítót.**
 
 >[!TIP]
-> Ha segítségre van szüksége ezeknek az értékeknek a megtalálásához, tekintse meg [a Luis-alkalmazás létrehozása a szándék felismeréséhez](#create-a-luis-app-for-intent-recognition)című témakört.
+> Ha segítségre van szüksége ezen értékek megkereséséhez, olvassa [el a LEKÉPEZési alkalmazás létrehozása című témakört.](#create-a-luis-app-for-intent-recognition)
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=26)]
 
-Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Ez a `FromSubscription()` minta a `SpeechConfig`módszerrel építi a. Az elérhető módszerek teljes listáját a [SpeechConfig Class ( Beszédkonfigurációs osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)) tartalmazza.
 
-A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+A beszédsdk alapértelmezés szerint felismeri a nyelv en-us használatát, olvassa el a forrásnyelv megadása a [beszéd szöveghez című témakört](../../../../how-to-specify-source-language.md) a forrásnyelv kiválasztásával kapcsolatos információkért.
 
-## <a name="initialize-an-intentrecognizer"></a>IntentRecognizer inicializálása
+## <a name="initialize-an-intentrecognizer"></a>Szándékfelismerő inicializálása
 
-Most hozzon létre egy `IntentRecognizer`. Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeIntentAsync()` metódusba, közvetlenül a beszédfelismerési konfiguráció alatt.
+Most hozzunk létre `IntentRecognizer`egy . Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt `RecognizeIntentAsync()` a kódot a metódusba, közvetlenül a beszédfelismerési konfiguráció alatt.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=29-30,76)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel és szándékok hozzáadása
 
-Hozzá kell rendelnie egy `LanguageUnderstandingModel`t a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket. Az előre elkészített tartományból szándékait fogjuk használni a Home Automation számára. Szúrja be ezt a kódot az előző szakasz using utasításában. Győződjön meg arról, hogy a `"YourLanguageUnderstandingAppId"`t a LUIS-alkalmazás azonosítójával helyettesíti.
+Társítson egy `LanguageUnderstandingModel` et a szándékfelismerőhöz, és adja hozzá a felismert szándékokat. Az előre összeállított tartomány leképezéseit fogjuk használni az otthoni automatizáláshoz. Szúrja be ezt a kódot az előző szakasz ban található felhasználási utasításba. Győződjön meg `"YourLanguageUnderstandingAppId"` arról, hogy lecseréli a LUIS-alkalmazásazonosítóját.
 
 >[!TIP]
-> Ha segítségre van szüksége az érték megkereséséhez, tekintse meg [a Luis-alkalmazás létrehozása a szándék-felismeréshez](#create-a-luis-app-for-intent-recognition)című témakört.
+> Ha segítségre van szüksége ennek az értéknek a megkereséséhez, olvassa [el a LEKÉPEZési alkalmazás létrehozása című témakört.](#create-a-luis-app-for-intent-recognition)
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>Szándék felismerése
 
-A `IntentRecognizer` objektumban meg kell hívnia a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
+Az `IntentRecognizer` objektumból meg kell adni `RecognizeOnceAsync()` a metódust. Ez a módszer lehetővé teszi a beszédszolgáltatás számára, hogy egyetlen kifejezést küld a felismeréshez, és hogy miután a kifejezés azonosítása után a beszéd felismerésének leállítására kerül.
 
-A using utasításon belül adja hozzá ezt a kódot a modellhez.
+A using utasításon belül adja hozzá ezt a kódot a modell alatt.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=46)]
 
-## <a name="display-recognition-results-or-errors"></a>Megjelenítés felismerési eredményei (vagy hibák)
+## <a name="display-recognition-results-or-errors"></a>Megjelenítési eredmények (vagy hibák) megjelenítése
 
-Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, érdemes megtennie a dolgot. Megtartjuk az egyszerűséget, és kinyomtathatjuk az eredményeket a konzolon.
+Amikor a beszédfelismerési szolgáltatás visszaadja az elismerés eredményét, érdemes valamit kezdenie vele. Egyszerűnek fogjuk tartani, és kinyomtatjuk az eredményeket a konzolra.
 
-A using utasításon belül `RecognizeOnceAsync()`alatt adja hozzá a következő kódot:
+Belül a használó `RecognizeOnceAsync()`utasítás, az alábbi , add meg ezt a kódot:
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=49-75)]
 
-## <a name="check-your-code"></a>A kód megkeresése
+## <a name="check-your-code"></a>A kód ellenőrzése
 
 Ezen a ponton a kódnak így kell kinéznie:
 
 > [!NOTE]
-> Ehhez a verzióhoz hozzáadott néhány megjegyzést.
+> Van hozzá néhány megjegyzést, hogy ezt a verziót.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-86)]
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
+Most már készen áll arra, hogy létrehozza az alkalmazást, és tesztelje a beszédfelismerést a Beszédszolgáltatás használatával.
 
-1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **Build megoldás**elemet.
-2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az <kbd>F5</kbd>billentyű lenyomása lehetőséget.
-3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
+1. **A kód fordítása** - A Visual Studio menüsorából válassza a Build Solution **(Build** > Solution )**lehetőséget.**
+2. **Az alkalmazás indítása** – A menüsorban válassza a Debug Start Debugging **(Hibakeresés** > **indítása)** lehetőséget, vagy nyomja le az <kbd>F5 billentyűt</kbd>.
+3. **Start felismerés** - Ez kérni fogja, hogy beszéljen egy mondatot angolul. A rendszer elküldi a beszédfelismerési szolgáltatást, szövegként átírja, és megjeleníti a konzolon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

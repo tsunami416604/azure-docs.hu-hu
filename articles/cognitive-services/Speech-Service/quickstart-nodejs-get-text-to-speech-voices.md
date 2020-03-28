@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: szöveg-beszéd hangok listázása, Node. js – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Szövegfelolvasó hangok listázása, Node.js - Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a standard és a neurális hangok teljes listáját a Node. js-t használó régió/végpont számára. A rendszer JSON-ként adja vissza a listát, és a hang elérhetősége régiónként változik.
+description: Ebben a rövid útmutatóban megtudhatja, hogyan szerezheti le egy régió/végpont standard és neurális hangok teljes listáját a Node.js használatával. A lista JSON-ként jelenik meg, és a hang elérhetősége régiónként változik.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976570"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Rövid útmutató: a szöveg-beszéd hangok listájának lekérése a Node. js használatával
+# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Rövid útmutató: A szövegfelolvasó hangok listájának beolvasása a Node.js használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a standard és a neurális hangok teljes listáját a Node. js-t használó régió/végpont számára. A rendszer JSON-ként adja vissza a listát, és a hang elérhetősége régiónként változik. A támogatott régiók listáját a [régiók](regions.md)című részben tekintheti meg.
+Ebben a rövid útmutatóban megtudhatja, hogyan szerezheti le egy régió/végpont standard és neurális hangok teljes listáját a Node.js használatával. A lista JSON-ként jelenik meg, és a hang elérhetősége régiónként változik. A támogatott régiók listáját a Régiók című [témakörben található.](regions.md)
 
-Ehhez a rövid útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
+Ez a rövid útmutató egy [Azure Cognitive Services-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) igényel egy beszédszolgáltatási erőforrással. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Node 8.12.x vagy újabb](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy a kedvenc szövegszerkesztője
-* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be ingyen!](get-started.md)
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy kedvenc szövegszerkesztő
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Kap egy részére szabad!](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Projekt létrehozása és függőségek megkövetelése
 
-Hozzon létre egy új Node. js-projektet a kedvenc IDE vagy szerkesztő használatával. Ezután másolja a következő kódrészletet egy `get-voices.js` nevű fájlba a projektjében.
+Hozzon létre egy új Node.js projektsegítségével a kedvenc IDE vagy szerkesztő. Ezután másolja a következő kódrészletet egy `get-voices.js` nevű fájlba a projektjében.
 
 ```javascript
 // Requires request and request-promise for HTTP requests
@@ -48,9 +48,9 @@ const fs = require('fs');
 
 ## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-A szöveg-beszéd REST APIhoz hozzáférési jogkivonat szükséges a hitelesítéshez. Hozzáférési jogkivonat lekéréséhez Exchange szükséges. Ez a függvény az `issueToken`-végpont használatával cseréli le egy hozzáférési tokenhez tartozó beszédfelismerési szolgáltatás előfizetési kulcsát.
+A szöveg-beszéd REST API hitelesítéshez hozzáférési jogkivonatot igényel. A hozzáférési jogkivonat beszerezéséhez cserére van szükség. Ez a függvény a beszédfelismerési szolgáltatás előfizetési kulcsát egy hozzáférési jogkivonata a `issueToken` végpont használatával cseréli.
 
-Ez a példa azt feltételezi, hogy a Speech Service-előfizetés az USA nyugati régiójában található. Ha más régiót használ, frissítse a `uri`értékét. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Ez a minta feltételezi, hogy a beszédfelismerési szolgáltatás előfizetése az USA nyugati régiójában található. Ha másik régiót használ, frissítse a `uri`értékét. A teljes listát a [Régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Másolja a projektbe a következő kódot:
 
@@ -69,15 +69,15 @@ function getAccessToken(subscriptionKey) {
 ```
 
 > [!NOTE]
-> A hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférési jogkivonattal](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
+> A hitelesítéssel kapcsolatos további információkért lásd: [Hitelesítés hozzáférési jogkivonattal](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token).
 
-A következő szakaszban létrehozjuk a függvényt a hangok listájának lekéréséhez és a JSON-kimenet fájlba mentéséhez.
+A következő szakaszban létrehozunk egy függvényt a hangok listájának leéséhez, és a JSON kimenetet fájlba mentjük.
 
-## <a name="make-a-request-and-save-the-response"></a>Kérelem elkészítése és a válasz mentése
+## <a name="make-a-request-and-save-the-response"></a>Kérés kérése és mentése
 
-Itt fogja felépíteni a kérést, és menti a visszaadott hangok listáját. Ez a példa feltételezi, hogy az USA nyugati végpontját használja. Ha az erőforrás egy másik régióban van regisztrálva, ellenőrizze, hogy a `uri`frissíti-e. További információ: [Speech Service Regions](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Itt fogja felépíteni a kérelmet, és mentse a visszaküldött hangok listáját. Ez a minta feltételezi, hogy a nyugat-amerikai végpontot használja. Ha az erőforrás egy másik régióban van `uri`regisztrálva, győződjön meg arról, hogy frissíti a . További információt a [Beszédszolgáltatási területek című témakörben talál.](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)
 
-Ezután adja hozzá a kéréshez szükséges fejléceket. Végül egy kérést küld a szolgáltatásnak. Ha a kérelem sikeres, és a rendszer egy 200 állapotkódot ad vissza, a válasz fájlba lesz írva.
+Ezután adja hozzá a szükséges fejléceket a kérelemhez. Végül, akkor, hogy egy kérelmet a szolgáltatás. Ha a kérelem sikeres, és egy 200-as állapotkódot ad vissza, a válasz fájlba kerül.
 
 ```javascript
 function textToSpeech(accessToken) {
@@ -104,9 +104,9 @@ function textToSpeech(accessToken) {
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Már majdnem kész. Az utolsó lépés egy aszinkron függvény létrehozása. Ez a függvény beolvassa az előfizetési kulcsot egy környezeti változóból, lekérdezi a jogkivonatot, várja meg, amíg befejeződik a kérelem, majd a JSON-választ írja a fájlra.
+Már majdnem kész. Az utolsó lépés egy aszinkron függvény létrehozása. Ez a függvény egy környezeti változóból olvassa be az előfizetési kulcsot, lekérést kap, megvárja a kérés befejezését, majd írja be a JSON-választ a fájlba.
 
-Ha nem ismeri a környezeti változókat, vagy inkább az előfizetési kulcs hardcoded használja karakterláncként, cserélje le a `process.env.SPEECH_SERVICE_KEY`t az előfizetési kulcsra karakterláncként.
+Ha nem ismeri a környezeti változókat, vagy inkább az előfizetési kulcs `process.env.SPEECH_SERVICE_KEY` karakterláncként kódolt tesztelése, cserélje le az előfizetési kulcsot karakterláncként.
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -133,7 +133,7 @@ main()
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-Ekkor készen áll a minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
+Ez az, készen áll a mintaalkalmazás futtatására. A parancssorból (vagy terminálmunkamenetből) keresse meg a projektkönyvtárat, és futtassa a következőket:
 
 ```console
 node get-voices.js
@@ -141,15 +141,15 @@ node get-voices.js
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
+Győződjön meg arról, hogy eltávolít minden bizalmas információt a mintaalkalmazás forráskódjából, például az előfizetési kulcsokból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Node. js-minták megismerése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
+> [Node.js minták felfedezése a GitHubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Szöveget beszéddé átalakító API-referencia](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)
+* [Szövegfelolvasó API-hivatkozások](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Egyéni hangbetűtípusok létrehozása](how-to-customize-voice-font.md)
 * [Hangminták rögzítése egyéni hang létrehozásához](record-custom-voice-samples.md)

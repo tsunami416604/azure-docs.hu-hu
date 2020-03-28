@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Face ügyféloldali kódtár a .NET-hez'
-description: Ismerkedjen meg a .NET-hez készült Face ügyféloldali kódtár ezzel a rövid útmutatóval.
+title: 'Rövid útmutató: Face ügyféltár a .NET-hez'
+description: Ezzel a rövid útmutatóval ismerkedje meg a .NET Face ügyféltárával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,59 +10,59 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78401754"
 ---
-# <a name="quickstart-face-client-library-for-net"></a>Gyors útmutató: Face ügyféloldali kódtár a .NET-hez
+# <a name="quickstart-face-client-library-for-net"></a>Rövid útmutató: Face ügyféltár a .NET-hez
 
-Ismerkedés a .NET-hez készült Face ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
+Ismerkedés a .NET Face ügyféltárával. Az alábbi lépésekkel telepítheti a csomagot, és kipróbálhatja az alapvető feladatok példakódját. A Face szolgáltatás hozzáférést biztosít a képeken lévő emberi arcok észlelésére és felismerésére szolgáló speciális algoritmusokhoz.
 
-A .NET-hez készült Face ügyféloldali kódtár a következőhöz használható:
+A .NET Face ügyféltár segítségével:
 
-* [Képeken lévő arcok észlelése](#detect-faces-in-an-image)
+* [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [Személycsoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
+* [Pillanatkép készítése az adatáttelepítésről](#take-a-snapshot-for-data-migration)
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | [minták](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Referenciadokumentációkönyvtár](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [forráskódjának](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | [mintái](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
+* Azure-előfizetés – [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* A [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója .
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
 ### <a name="create-a-face-azure-resource"></a>Face Azure-erőforrás létrehozása
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a helyi gépen a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure parancssori](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) felület használatával. További lehetőségek:
+Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a Face az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. További lehetőségek:
 
-* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
+* Kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services/#decision) érvényes részére hét napok részére szabad. A regisztráció után elérhető lesz az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
+* Tekintse meg az erőforrást az [Azure Portalon.](https://portal.azure.com/)
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és végpont URL-címéhez, amelynek neve `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`.
+Miután bekésel egy kulcsot a próba-előfizetésvagy erőforrás, [hozzon létre egy környezeti változóak](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címet, nevű, `FACE_SUBSCRIPTION_KEY` illetve. `FACE_ENDPOINT`
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. 
+Hozzon létre egy új .NET Core alkalmazást a kívánt szerkesztőben vagy IDE-ben. 
 
-Egy konzolablak (például cmd, PowerShell vagy bash) használatával hozzon létre egy új, `face-quickstart`nevű Console-alkalmazást a `dotnet new` paranccsal. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: *program.cs*. 
+Egy konzolablakban (például cmd, PowerShell vagy `dotnet new` Bash) a paranccsal `face-quickstart`hozhat létre egy új konzolalkalmazást a .. Ez a parancs egy egyszerű "Hello World" C# projektet hoz létre egyetlen forrásfájllal: *Program.cs*. 
 
 ```dotnetcli
 dotnet new console -n face-quickstart
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+Módosítsa a könyvtárat az újonnan létrehozott alkalmazásmappára. Az alkalmazást a következőkkel hozhatja létre:
 
 ```dotnetcli
 dotnet build
 ```
 
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát. 
+A build kimenetnem tartalmazhat figyelmeztetéseket vagy hibákat. 
 
 ```output
 ...
@@ -72,195 +72,195 @@ Build succeeded.
 ...
 ```
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using` irányelveket:
+A projekt könyvtárából nyissa meg a *Program.cs* fájlt a kívánt szerkesztőben vagy IDE-ben. Adja hozzá `using` a következő irányelveket:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_using)]
 
-Az alkalmazás `Main` metódusában hozzon létre változókat az erőforrás Azure-végpontja és kulcsa számára.
+Az alkalmazás metódusában `Main` hozzon létre változókat az erőforrás Azure-végpontjának és kulcsának.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_mainvars)]
 
-### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
+### <a name="install-the-client-library"></a>Az ügyféltár telepítése
 
-Az alkalmazás könyvtárában telepítse a .NET-hez készült Face ügyféloldali kódtárat a következő paranccsal:
+Az alkalmazáskönyvtáron belül telepítse a Face client library for .NET programot a következő paranccsal:
 
 ```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0-preview.1
 ```
 
-Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
+Ha a Visual Studio IDE-t használja, az ügyfélkönyvtár letölthető NuGet csomagként érhető el.
 
 ## <a name="object-model"></a>Objektummodell
 
-A következő osztályok és felületek kezelik a Face .NET SDK főbb funkcióit:
+A face .NET SDK néhány főbb jellemzőjét a következő osztályok és felületek kezelik:
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
-|[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
-|[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|Ez az osztály a rendszerkép egyetlen arca által észlelt összes adatmennyiséget jelképezi. Ezzel az oldallal kapcsolatos részletes információkat kérhet le.|
-|[FaceListOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|Ez az osztály kezeli a felhőben tárolt **FaceList** -szerkezeteket, amelyek az arcok válogatott készleteit tárolják. |
-|[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Ez az osztály kezeli a felhőalapú tárolt **személyek** szerkezetét, amelyek egyetlen személyhez tartozó arcok készletét tárolják.|
-|[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** -szerkezeteket, amelyek a különböző **személyre** kiterjedő objektumok készletét tárolják. |
-|[ShapshotOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Ez az osztály kezeli a pillanatkép funkcióit. A használatával ideiglenesen mentheti az összes felhőalapú Arcfelismerés, és áttelepítheti az adott adatait egy új Azure-előfizetésbe. |
+|[FaceClient (FaceClient)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden Face funkcióhoz szüksége van rá. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket. |
+|[FaceOperations (FaceOperations)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Ez az osztály kezeli az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat. |
+|[DetectedFace (DetectedFace)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|Ez az osztály a kép egyetlen arcáról észlelt összes adatot jelöli. Segítségével részletes információkat kérhet az arcról.|
+|[FaceListOperations (FaceListOperations)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|Ez az osztály kezeli a felhőben tárolt **FaceList** konstrukciók, amely tárolja a válogatott lapok. |
+|[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Ez az osztály kezeli a felhőben tárolt **személy** konstrukciók, amely tárolja a lapok, amelyek egyetlen személyhez tartozik.|
+|[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** konstrukciókat, amelyek válogatott **személyobjektumokkészletét** tárolják. |
+|[ShapshotOperations (ShapshotOperations)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Ez az osztály kezeli a Pillanatkép funkciót. Segítségével ideiglenesen mentheti az összes felhőalapú Face-adatát, és áttelepítheti ezeket az adatokat egy új Azure-előfizetésbe. |
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a .NET-hez készült Face ügyféloldali kódtár használatával:
+Az alábbi kódrészletek megmutatják, hogyan kell elvégezni a következő feladatokat a .NET Face ügyféltárával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Képeken lévő arcok észlelése](#detect-faces-in-an-image)
+* [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
-* [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
+* [Személycsoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
+* [Pillanatkép készítése az adatáttelepítésről](#take-a-snapshot-for-data-migration)
 
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az arc kulcsához és a végponthoz, amelynek neve `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`.
+> Ez a rövid útmutató feltételezi, hogy [környezeti változókat hozott](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `FACE_SUBSCRIPTION_KEY` létre `FACE_ENDPOINT`a Face kulcshoz és a végponthoz, amelynek neve és.
 
-Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozzon létre egy **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** objektumot a kulccsal, és használja a végpontján egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektum létrehozásához.
+Egy új módszer, példányosítja az ügyfél a végpont és a kulcs. Hozzon létre egy **[ApiKeyServiceClients objektumot](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** a kulccsal, és használja azt a végponttal egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektum létrehozásához.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
-Valószínűleg ezt a metódust szeretné hívni a `Main` metódusban.
+Ezt a módszert valószínűleg meg `Main` szeretné hívni a metódusban.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
 ## <a name="detect-faces-in-an-image"></a>Arcok felismerése a képeken
 
-Az osztály gyökérkönyvtárában adja meg a következő URL-karakterláncot. Ez az URL-cím egy minta lemezképek halmazára mutat.
+Az osztály gyökerében adja meg a következő URL-karakterláncot. Ez az URL-cím mintaképek rekedésére mutat.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-Opcionálisan kiválaszthatja, hogy melyik AI-modellt használja az észlelt arc (ok) ből származó adatok kinyeréséhez. A beállításokkal kapcsolatos információkért tekintse [meg a felismerési modell megadása](../Face-API-How-to-Topics/specify-recognition-model.md) című témakört.
+Tetszés szerint kiválaszthatja, hogy melyik AI-modellt használja az észlelt arc(ok) adatainak kinyeréséhez. Ezekről a beállításokról a [Felismerési modell megadása](../Face-API-How-to-Topics/specify-recognition-model.md) című témakörben talál tájékoztatást.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-A végső észlelési művelet egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektumot, egy képurl-címet és egy felismerési modellt fog elkészíteni.
+A végső észlelési művelet egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektumot, egy kép URL-címét és egy felismerési modellt vesz igénybe.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-### <a name="get-detected-face-objects"></a>Észlelt Arcfelismerés-objektumok
+### <a name="get-detected-face-objects"></a>Észlelt arcobjektumok
 
-A kód következő blokkjában a `DetectFaceExtract` metódus észleli az adott URL-címen található képek három képét, és létrehoz egy listát a **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** objektumokról a program memóriájában. A **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** értékek listája határozza meg a kinyerni kívánt szolgáltatásokat. 
+A következő kódblokkban `DetectFaceExtract` a módszer három kép arcát észleli az adott URL-címen, és létrehozza az **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** objektumok listáját a program memóriájában. A **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** értékek listája határozza meg, hogy mely szolgáltatásokat kell kibontani. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
-### <a name="display-detected-face-data"></a>Észlelt Arcfelismerés
+### <a name="display-detected-face-data"></a>Észlelt arcadatok megjelenítése
 
-A többi `DetectFaceExtract` metódus elemzi és kinyomtatja az összes észlelt arc attribútum-adatát. Minden attribútumot külön kell megadni az eredeti Arcfelismerés API-hívásban (a **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listában). A következő kód dolgozza fel az összes attribútumot, de valószínűleg csak egy vagy néhányat kell használnia.
+A `DetectFaceExtract` metódus többi része elemzi és kinyomtatja az attribútumadatokat az egyes észlelt arcokhoz. Minden attribútumot külön kell megadni az eredeti arcfelismerő API-hívásban (a **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listában). A következő kód feldolgoz minden attribútumot, de valószínűleg csak egyet vagy néhányat kell használnia.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
-A következő kód egyetlen észlelt arcot (forrást) használ, és a találatok kereséséhez más arcok (TARGET) készletet keres. Ha egyezést talál, kinyomtatja az egyeztetett arc AZONOSÍTÓját a konzolon.
+A következő kód egyetlen észlelt arcot (forrást) vesz igénybe, és más arcok (cél) egy csoportjában keres egyezést. Ha egyezést talál, kinyomtatja az egyező arc azonosítóját a konzolra.
 
 ### <a name="detect-faces-for-comparison"></a>Arcok észlelése összehasonlításhoz
 
-Először határozza meg a második Arcfelismerés módszert. A képek összevetése előtt fel kell ismernie az arcokat, és ez az észlelési módszer összehasonlítási műveletekre van optimalizálva. Nem kibontja a részletes Arcfelismerés-attribútumokat, például a fenti részben, és egy másik felismerési modellt használ.
+Először definiáljon egy második arcfelismerési módszert. Az összehasonlítás előtt észlelnie kell a képeken lévő arcokat, és ez az észlelési módszer az összehasonlítási műveletekre van optimalizálva. Nem bontja ki a részletes arcattribútumokat, mint a fenti szakaszban, és más felismerési modellt használ.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_face_detect_recognize)]
 
-### <a name="find-matches"></a>Egyezések keresése
+### <a name="find-matches"></a>Találat keresése
 
-A következő metódus észleli a megcélzott lemezképekben található arcokat és egyetlen forrás képét. Ezután összehasonlítja őket, és megkeresi a forrás képéhez hasonló összes megcélzott képet.
+A következő módszer észleli az arcokat a célképek készletében és egyetlen forrásképen. Ezután összehasonlítja őket, és megkeresi az összes olyan célképet, amely hasonlít a forrásképhez.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar)]
 
-### <a name="print-matches"></a>Egyezések nyomtatása
+### <a name="print-matches"></a>Találatok nyomtatása
 
-A következő kód a megfeleltetés részleteit jeleníti meg a konzolon:
+A következő kód kinyomtatja az egyezés részleteit a konzolra:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Személy csoport létrehozása és betanítása
+## <a name="create-and-train-a-person-group"></a>Személycsoport létrehozása és betanítása
 
-A következő kód egy **PersonGroup** hoz létre hat különböző **személy** objektummal. Az egyes **személyeket** a képek egy halmazával társítja, majd az egyes személyeket az arc jellemzői alapján elismerik. A **személy** -és **PersonGroup** objektumok az ellenőrzési, azonosítási és csoportosítási műveletekben használatosak.
+A következő kód létrehoz egy **PersonGroup** hat különböző **személy** objektumok. Minden **egyes személyt** egy példaképhez társít, majd kiképzi, hogy minden egyes személyt az arcvonásai alapján ismerjen fel. **A Személy** és **a PersonGroup** objektumok az Ellenőrzés, azonosítás és csoport műveletekben használatosak.
 
-Ha még nem tette meg, adja meg a következő URL-karakterláncot az osztály gyökerénél. Ez egy minta lemezképek halmazára mutat.
+Ha még nem tette meg, adja meg a következő URL-karakterláncot az osztály gyökerében. Ez mintaképek rekedésére utal.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-A szakasz későbbi részében az adatok az arcokból való kinyerésére szolgáló felismerési modell fog megjelenni, és az alábbi kódrészlet az elérhető modellekre mutató hivatkozásokat hoz létre. A felismerési modellekkel kapcsolatos információkért tekintse [meg a felismerési modell megadása](../Face-API-How-to-Topics/specify-recognition-model.md) című témakört.
+A jelen szakasz későbbi részében található kód egy felismerési modellt határoz meg az arcok adatainak kinyeréséhez, és a következő kódrészlet hivatkozásokat hoz létre a rendelkezésre álló modellekre. A felismerési modellekkel kapcsolatos információkért [lásd: Felismerési modell megadása.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-### <a name="create-persongroup"></a>PersonGroup létrehozása
+### <a name="create-persongroup"></a>Személycsoport létrehozása
 
-Deklaráljon egy karakterlánc-változót az osztály gyökérkönyvtárában, hogy az a létrehozandó **PERSONGROUP** azonosítóját jelöli.
+Deklaráljon egy karakterlánc-változót az osztály gyökerében, amely a létrehozandó **Személycsoport** azonosítóját jelöli.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
 
-Új metódusban adja hozzá a következő kódot. Ez a kód a személyek nevét társítja a képekkel.
+Új módszerrel adja hozzá a következő kódot. Ez a kód a személyek nevét társítja a példaképeikkel.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
-Ezután adja hozzá a következő kódot egy **személy** objektum létrehozásához a szótárban, és adja hozzá a megfelelő rendszerképekből a Face (adatok) elemet. Minden **személy** objektum ugyanahhoz a **PersonGroup** van társítva egyedi azonosító sztringje alapján. Ne felejtse el átadni a változókat `client`, `url`és `RECOGNITION_MODEL1` ebbe a metódusba.
+Ezután adja hozzá a következő kódot, hogy hozzon létre egy **személy** objektumot minden egyes személy számára a szótárban, és adja hozzá az arcadatokat a megfelelő képekből. Minden **személy** objektum ugyanahhoz a **PersonGrouphoz** van társítva az egyedi azonosítókarakterláncán keresztül. Ne felejtse el `client` `url`átadni `RECOGNITION_MODEL1` a változókat , és adja át ezt a módszert.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
-### <a name="train-persongroup"></a>PersonGroup betanítása
+### <a name="train-persongroup"></a>Betanítási személycsoport
 
-Miután kibontotta az adatokból a képeket, és azokat különböző **személy** objektumokra rendezi, be kell tanítania a **PersonGroup** , hogy azonosítsa az egyes **személy** objektumaihoz társított vizuális funkciókat. A következő kód meghívja az aszinkron **betanítási** módszert, és lekérdezi az eredményeket, kinyomtatja az állapotot a konzolra.
+Miután kivette a képadatokat a képekből, és különböző **személyobjektumokba** rendezte azokat, be kell tanítania a **PersonGroup ot,** hogy azonosítsa az egyes személyobjektumaihoz társított vizuális funkciókat. **Person** A következő kód meghívja az aszinkron **vonat** metódust, és lekérdezi az eredményeket, és kinyomtatja az állapotot a konzolra.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
-Most már készen áll arra, hogy az ellenőrzési, azonosítási vagy csoportosítási műveletekben felhasználja ezt a **személy** csoportot és a hozzá tartozó **személyeket** .
+Ez **a személycsoport** és a hozzá tartozó **Személy** objektumok készen állnak az Ellenőrzés, az Azonosítás vagy a Csoport műveletekben való használatra.
 
 ## <a name="identify-a-face"></a>Arc azonosítása
 
-Az azonosítási művelet egy személy (vagy több személy) képét veszi fel, és megkeresi a képen látható összes arc identitását. Összehasonlítja az észlelt elemeket egy **PersonGroup**, egy olyan, a különböző **személy** objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek.
+Az Azonosítás művelet egy személy (vagy több személy) képét veszi fel, és a képen lévő egyes arcok identitását keresi. Összehasonlítja az egyes észlelt arc egy **PersonGroup**, egy adatbázis a különböző **személy** objektumok, amelyek arcvonásai ismertek.
 
 > [!IMPORTANT]
-> A példa futtatásához először futtatnia kell a kódot [egy személy csoport létrehozása és betanítása csoportban](#create-and-train-a-person-group). Az ebben a szakaszban használt változók&mdash;`client`, `url`és `RECOGNITION_MODEL1`&mdash;itt is elérhetőnek kell lenniük.
+> A példa futtatásához először futtatnia kell a kódot a [Létrehozás és a személycsoport betanítása mezőben.](#create-and-train-a-person-group) Az adott szakaszban&mdash;`client`használt `url`változóknak itt `RECOGNITION_MODEL1` &mdash;kell rendelkezésre állniuk.
 
-### <a name="get-a-test-image"></a>Tesztelési rendszerkép beolvasása
+### <a name="get-a-test-image"></a>Tesztkép beszereznie
 
-Figyelje meg, hogy a [személy csoport létrehozásához és betanításához](#create-and-train-a-person-group) használt kód `sourceImageFileName`változót határoz meg. Ez a változó megfelel a forrás rendszerképének&mdash;az azonosított személyeket tartalmazó rendszerképnek.
+Figyelje meg, hogy egy [személycsoport létrehozása és betanítása](#create-and-train-a-person-group) kódja változót `sourceImageFileName`határoz meg. Ez a változó annak&mdash;a forrásképnek felel meg, amelyazonosítja az azonosításra alkalmas személyeket.
 
 ### <a name="identify-faces"></a>Arcok azonosítása
 
-A következő kód a forrás képét veszi fel, és létrehozza a rendszerképben észlelt összes arc listáját. Ezek az arcok lesznek azonosítva a **PersonGroup**.
+A következő kód veszi a forrásképet, és létrehoz egy listát a képen észlelt összes arcról. Ezek azok az arcok, amelyeket a **PersonGroup**ellen azonosítanak.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
 
-A következő kódrészlet meghívja az azonosítási műveletet, és kiírja az eredményeket a-konzolra. Itt a szolgáltatás megkísérli a forrás-rendszerképből származó összes arc egyeztetését az adott **PersonGroup**lévő **személynek** .
+A következő kódrészlet meghívja az Azonosítás műveletet, és kinyomtatja az eredményeket a konzolra. Itt a szolgáltatás megkísérli a forráskép minden arcának egyeztetését az adott **személycsoportban**lévő **személlyel.**
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatok áttelepítéséhez
+## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatáttelepítésről
 
-A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Érdemes lehet ezt a funkciót használni, ha például egy ingyenes próbaverziós előfizetéssel létrehozott egy **PersonGroup** objektumot, és szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek funkció áttekintését lásd: [az arc-információk migrálása](../Face-API-How-to-Topics/how-to-migrate-face-data.md) .
+A Pillanatképek funkció lehetővé teszi, hogy a mentett Face-adatokat, például egy betanított **PersonGroupot**áthelyezi egy másik Azure Cognitive Services Face-előfizetésbe. Ezt a funkciót akkor érdemes használnia, ha például létrehozott egy **PersonGroup** objektumot egy ingyenes próba-előfizetéssel, és át szeretné telepíteni egy fizetős előfizetésbe. A Pillanatképek funkció áttekintése az [arcadatok áttelepítése](../Face-API-How-to-Topics/how-to-migrate-face-data.md) című témakörben található.
 
-Ebben a példában a [személy csoport létrehozása és betanítása](#create-and-train-a-person-group)során létrehozott **PersonGroup** kell áttelepítenie. Először hajtsa végre az adott szakaszt, vagy hozzon létre egy saját Face adatszerkezetet az áttelepítéshez.
+Ebben a példában áttelepíti a [Személycsoport létrehozása és betanítása csoportban](#create-and-train-a-person-group)létrehozott **személycsoportot.** Ezt a szakaszt először befejezheti, vagy létrehozhatja saját Face-adatkonstrukcióit az áttelepítéshez.
 
 ### <a name="set-up-target-subscription"></a>Cél-előfizetés beállítása
 
-Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. ezt a [beállítás](#setting-up) szakasz lépéseit követve teheti meg. 
+Először is egy második Azure-előfizetéssel kell rendelkeznie egy Face-erőforrással; ezt a Beállítás szakaszban ismertetett lépések végrehajtásával teheti [meg.](#setting-up) 
 
-Ezután adja meg a következő változókat a program `Main` metódusában. Új környezeti változókat kell létrehoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcsát, végpontját és előfizetési AZONOSÍTÓját. 
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
-
-Ebben a példában deklaráljon egy változót a célként megadott **PERSONGROUP** azonosítójának&mdash;az új előfizetéshez tartozó objektumra, amelyet az adatai másolásához fog másolni.
+Ezután adja meg a `Main` következő változókat a program metódusában. Új környezeti változókat kell létrehoznia az Azure-fiók előfizetési azonosítójához, valamint az új (cél) fiók kulcsához, végpontjához és előfizetési azonosítóhoz. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
 
-### <a name="authenticate-target-client"></a>A célként megadott ügyfél hitelesítése
+Ebben a példában deklaráljon egy változót a **célszemélycsoport**&mdash;azonosítójára, amelyaz új előfizetéshez tartozó objektumot, amelybe az adatokat másolni fogja.
 
-Ezután adja hozzá a kódot a másodlagos arc-előfizetés hitelesítéséhez.
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
+
+### <a name="authenticate-target-client"></a>Célügyfél hitelesítése
+
+Ezután adja hozzá a kódot a másodlagos Face-előfizetés hitelesítéséhez.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_client)]
 
 ### <a name="use-a-snapshot"></a>Pillanatkép használata
 
-A pillanatképek további műveleteinek egy aszinkron metóduson belül kell megvalósulnia. 
+A pillanatkép-műveletek többi részének aszinkron metóduson belül kell zajlania. 
 
-1. Első lépésként **készítse el a** pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
+1. Az első lépés a pillanatkép **készítése,** amely az eredeti előfizetés arcadatait egy ideiglenes felhőbe menti. Ez a módszer egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take)]
 
@@ -268,7 +268,7 @@ A pillanatképek további műveleteinek egy aszinkron metóduson belül kell meg
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take_wait)]
 
-1. Ezután az **alkalmazás** művelet használatával írja a Face-adatait a cél előfizetésbe. Ez a metódus egy azonosító értéket is visszaad.
+1. Ezután az **alkalmazási** művelettel írja be az arcadatokat a cél-előfizetésbe. Ez a módszer azonosító értéket is ad vissza.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
 
@@ -276,15 +276,15 @@ A pillanatképek további műveleteinek egy aszinkron metóduson belül kell meg
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
 
-1. Végül fejezze be a try/catch blokkot, és fejezze be a metódust.
+1. Végül fejezze be a try/catch blokkot, és fejezze be a módszert.
 
     [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_trycatch)]
 
-Ezen a ponton az új **PersonGroup** -objektumnak ugyanazokkal az adatokkal kell rendelkeznie, mint az eredetinek, és elérhetőnek kell lennie az új (cél) Azure Face-előfizetésből.
+Ezen a ponton az új **PersonGroup-objektumnak** ugyanazokat az adatokat kell mutatnia, mint az eredetinek, és elérhetőnek kell lennie az új (cél) Azure Face-előfizetésből.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást az alkalmazás könyvtárából az `dotnet run` paranccsal.
+Futtassa az alkalmazást az `dotnet run` alkalmazáskönyvtárból a paranccsal.
 
 ```dotnetcli
 dotnet run
@@ -292,12 +292,12 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
+Ha azt szeretné, hogy tisztítsák meg, és távolítsa el a Cognitive Services-előfizetés, törölheti az erőforrás vagy erőforráscsoport. Az erőforráscsoport törlése a hozzá társított egyéb erőforrásokat is törli.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, futtassa a következő kódot a programban:
+Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup csoportot,** és törölni szeretné, futtassa a következő kódot a programban:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_delete)]
 
@@ -305,16 +305,16 @@ Adja meg a törlési módszert a következő kóddal:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_deletepersongroup)]
 
-Ha ezen a rövid útmutatóban a pillanatkép-szolgáltatás használatával áttelepítette az adatáttelepítést, akkor a cél előfizetésbe mentett **PersonGroup** is törölnie kell.
+Továbbá ha ebben a rövid útmutatóban a Pillanatkép szolgáltatás használatával telepítette át az adatokat, törölnie kell a cél-előfizetésbe mentett **PersonGroup-ot** is.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_target_persongroup_delete)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a .NET-hez készült Face Library-t a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Face könyvtárat a .NET-hez alapfeladatok elvégzésére. Ezután tekintse meg a referenciadokumentációt, ha többet szeretne megtudni a könyvtárról.
 
 > [!div class="nextstepaction"]
 > [Face API-hivatkozás (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [Mi az a Face szolgáltatás?](../overview.md)
-* A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)található.
+* A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)

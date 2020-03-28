@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: keresési kérelem küldése a REST APInak PHP-Bing Entity Search használatával'
+title: 'Rövid útmutató: Keresési kérelem küldése a REST API-nak php használatával – Bing entity search'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API PHP használatával, és JSON-választ kap.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API-nak a PHP használatával, és JSON-választ kaphat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383944"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API PHP használatával
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rövid útmutató: Keresési kérelem küldése a Bing Entity Search REST API-nak a PHP használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű PHP-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. 
+Ezzel a rövid útmutatóval első ként hívhatja meg a Bing Entity Search API-t, és megtekintheti a JSON-választ. Ez az egyszerű PHP alkalmazás hírkeresési lekérdezést küld az API-nak, és megjeleníti a választ. 
 
-Az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Bár ez az alkalmazás php-ben íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [PHP 5.6.x-es](https://php.net/downloads.php) vagy újabb verziója
+* [PHP 5.6.x](https://php.net/downloads.php) vagy újabb
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -36,7 +36,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
 3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+4. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 5. Futtassa a programot.
 
 ```php
@@ -148,10 +148,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-entities-search-single-page-app.md)
+> [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Mi a Bing Entity Search API?](../overview.md )
-* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing entitáskeresési API– referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

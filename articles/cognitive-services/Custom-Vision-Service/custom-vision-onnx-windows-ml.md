@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 3b56cd12aec21cffd98a0143f5cf3f083ec55e94
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74960553"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Custom Vision ONNX modell használata Windows ML-lel (előzetes verzió)
@@ -33,7 +33,7 @@ A dokumentum bemutatja, hogyan lehet a Custom Vision Service-ből exportált ONN
 
 * Windows 10 1809-es vagy újabb verzió
 
-* Windows SDK Build 17763 vagy újabb verzióra
+* 17763-as vagy újabb buildre szánt Windows SDK
 
 * Visual Studio 2017 15.7-es vagy újabb verzió engedélyezett __Univerzális Windows-platform fejlesztési__ tevékenységprofillal.
 
@@ -45,7 +45,7 @@ Az alkalmazás általános Windows UWP alkalmazás. Lehetővé teszi, hogy kivá
 
 ## <a name="get-the-example-code"></a>A példa kódjának letöltése
 
-A mintaalkalmazás itt érhető el: [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample).
+A példaalkalmazás a [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample)következő helyen érhető el: .
 
 ## <a name="run-the-example"></a>A példa futtatása
 
@@ -59,7 +59,7 @@ Saját modell esetén a következőképpen járjon el:
 
 1. Besoroló [létrehozása és betanítása](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) a Custom Vision Service használatával. A modell exportálásához válasszon ki egy __kompakt__ tartományt, például az **Általános (kompakt)** tartományt. Egy meglévő besoroló exportálásához alakítsa kompakttá a tartományt a jobb felső részen lévő fogaskerék kiválasztásával. A __Beállítások__ területen válasszon egy kompakt modellt, mentse, majd tanítsa be a projektet.  
 
-1. [Exportálja a modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) úgy, hogy a teljesítmény lapra kattint. Válasszon ki egy kompakt tartománnyal betanított iterációt, ekkor megjelenik az "Exportálás" gomb. Válassza az *Exportálás*, a *ONNX*, majd az *Exportálás*lehetőséget. Amikor a fájl elkészült, kattintson a *Letöltés* gombra.
+1. [Exportálja a modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) a Teljesítmény lapra. Válasszon egy kompakt tartománnyal betanított ismétlést, és megjelenik egy "Exportálás" gomb. Válassza *az Exportálás*, *ONNX*, majd *az Exportálás*lehetőséget. Amikor a fájl elkészült, kattintson a *Letöltés* gombra.
 
 1. Helyezze az ONNX-fájlt a projekt __Assets__ (Objektumok) mappájába. 
 
@@ -67,8 +67,8 @@ Saját modell esetén a következőképpen járjon el:
 
 1. A Megoldáskezelőben válassza ki az ONNX-fájlt az Assets mappából. Módosítsa a fájl következő tulajdonságait:
 
-    * __Build Action (Felépítési művelet)__  -> __Content (Tartalom)__
-    * __Copy to Output Directory (Másolás a kimeneti könyvtárba)__  -> __Copy if newer (Másolás, ha újabb)__
+    * __Művelettartalom__ -> __Content__ létrehozása
+    * __Másolás a kimeneti könyvtárba__ -> __másolásra, ha újabb__
 
 1. Módosítsa az `_onnxFileNames` változót az ONNX-fájl nevére. A `ClassLabel` értékét is módosítsa a modellben szereplő címkék számára.
 
@@ -76,7 +76,7 @@ Saját modell esetén a következőképpen járjon el:
 
 1. Kattintson a gombra az értékelni kívánt kép kiválasztásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéb exportálási lehetőségekről és a Custom Vision modell használatáról bővebb információt a következő dokumentumokban talál:
 

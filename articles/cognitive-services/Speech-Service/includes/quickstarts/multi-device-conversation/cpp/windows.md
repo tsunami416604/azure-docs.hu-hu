@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: e2c4530dbd5fa8b65e149e7467ce0f27adc15782
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925504"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=windows)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. A Visual Studióban nyissa meg a forrásfájl **HelloWorld. cpp**fájlt.
+1. A Visual Studio programból nyissa meg a **helloworld.cpp**forrásfájlt.
 
 1. Cserélje le az összes kódot a következő kódrészletre:
 
@@ -201,27 +201,27 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. A menüsávban válassza a **fájl** > **az összes mentése**lehetőséget.
+1. A menüsorban válassza az > **Összes** **fájlmentése**lehetőséget.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Az alkalmazás felépítése és futtatása új beszélgetés létrehozásához
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Új beszélgetés létrehozásához és futtatásához hozza létre és futtassa az alkalmazást
 
-1. A menüsávban válassza a **build** > Build **megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. A **HelloWorld** alkalmazás **indításához válassza a hibakeresés > ** a **hibakeresés indítása** (vagy az <kbd>F5</kbd>billentyű lenyomása) lehetőséget.
+1. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy <kbd>az F5)</kbd>billentyűt.
 
-1. Ha megjelenik a `Started transcribing` üzenet, megkezdheti a beszédet. Láthatja, hogy az átiratok úgy jelennek meg, ahogy beszél
-    - Ha a beszélgetési kódot másokkal is megosztja, és a beszélgetéshez csatlakoznak, az átiratokat is látni fogja.
+1. Ha megjelenik `Started transcribing` az üzenet, elkezdheti a beszédet. Látni fogja, ahogy az átiratok megjelennek, miközben beszélsz.
+    - Ha megosztja a beszélgetési kódot a többiekkel, és ők csatlakoznak a beszélgetéshez, az átirataik is megjelennek.
 
-1. Ha elkészült, nyomja le a <kbd>CTRL + C</kbd> billentyűkombinációt a billentyűzeten a hangrögzítés leállításához.
+1. Ha befejezte a beszédet, nyomja le a <kbd>Ctrl+C billentyűkombinációt</kbd> a billentyűzeten a hangrögzítés leállításához.
 
     > [!NOTE]
-    > Előfordulhat, hogy a Visual Studióban egy üzenet jelenik meg, amely a következőhöz hasonló: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` nyugodtan figyelmen kívül hagyhatja ezt.
+    > A Visual Studio a következőhöz hasonló kivételről szól, amely a következőkhöz hasonló: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` Ezt nyugodtan figyelmen kívül hagyhatja.
     > <br/> <br/>
     > A folytatáshoz nyomja le az <kbd>F5</kbd> billentyűt.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Az alkalmazás létrehozása és futtatása egy meglévő beszélgetéshez való csatlakozáshoz
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Meglévő beszélgetéshez való csatlakozáshoz az alkalmazás létrehozása és futtatása
 
-1. Másolja és illessze be a következő függvényt a **HelloWorld. cpp** eszközbe közvetlenül a `int main()` függvény előtt:
+1. Másolja és illessze be a következő függvényt `int main()` a **helloworld.cpp-be** közvetlenül a függvény előtt:
 
     ```cpp
     void JoinExistingConversation(const std::string& conversationId)
@@ -274,7 +274,7 @@ Az első lépések előtt ügyeljen a következőre:
     }
     ```
 
-2. Cserélje le a `StartNewConversation();`t a `int main()` függvényben a következőket:
+2. Cserélje `StartNewConversation();` ki `int main()` a funkciót a következőre:
 
     ```cpp
     // Set this to the conversation you want to join
@@ -283,24 +283,24 @@ Az első lépések előtt ügyeljen a következőre:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Lépjen vissza a Visual studióhoz, és cserélje le a `YourConversationId`t a `int main()` függvényben az előző lépés beszélgetési azonosítójával.
+4. Lépjen vissza a Visual `YourConversationId` Studióba, és cserélje le a `int main()` függvényt az előző lépés ből származó beszélgetési azonosítóra.
 
-5. A menüsávban válassza a **build** > Build **megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül kell végbe mennie.
+5. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül kell végbe mennie.
 
-6. A **HelloWorld** alkalmazás **indításához válassza a hibakeresés > ** a **hibakeresés indítása** (vagy az <kbd>F5</kbd>billentyű lenyomása) lehetőséget.
+6. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy <kbd>az F5)</kbd>billentyűt.
 
-7. Ha megjelenik a `Started transcribing` üzenet, megkezdheti a beszédet. Ekkor megjelenik az átiratok, ahogy beszél.
-    - Ha visszatér a böngészőbe, az átírásokat is látni fogja, ahogy beszél.
+7. Ha megjelenik `Started transcribing` az üzenet, elkezdheti a beszédet. Látni fogja, ahogy az átiratok megjelennek, miközben beszél.
+    - Ha visszatér a böngészőjéhez, akkor az átiratok is megjelennek ott, miközben beszél.
 
-8.  Ha elkészült, nyomja le a <kbd>CTRL + C</kbd> billentyűkombinációt a hangrögzítés leállításához és a beszélgetés befejezéséhez.
+8.  Ha végzett a beszédel, nyomja le a <kbd>Ctrl+C billentyűkombinációt</kbd> a hangrögzítés leállításához, és fejezze be a beszélgetést.
 
     > [!NOTE]
-    > Előfordulhat, hogy a Visual Studióban egy üzenet jelenik meg, amely a következőhöz hasonló: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` nyugodtan figyelmen kívül hagyhatja ezt.
+    > A Visual Studio a következőhöz hasonló kivételről szól, amely a következőkhöz hasonló: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` Ezt nyugodtan figyelmen kívül hagyhatja.
     > <br/> <br/>
     > A folytatáshoz nyomja le az <kbd>F5</kbd> billentyűt.
 
-9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található Exit (Kilépés) gomb használatával.
+9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található kilépésgombbal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

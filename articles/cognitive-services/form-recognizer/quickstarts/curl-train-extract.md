@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: modell betanítása és űrlapos adatok kinyerése a cURL-Form felismerő használatával'
+title: 'Rövid útmutató: Modell betanítása és űrlapadatok kinyerése cURL használatával - Űrlapfelismerő'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az űrlap-felismerő REST API a cURL használatával betaníthatja a modelleket, és kinyerheti az adatok űrlapokból való kinyerését.
+description: Ebben a rövid útmutatóban a formfelismerő REST API-t cURL-lel fogja használni egy modell betanításához és az űrlapok ból származó adatok kinyeréséhez.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,62 +10,62 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118393"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rövid útmutató: Űrlapfelismerő modell betanítása és űrlapadatok kinyerése a REST API cURL használatával
 
-Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a cURL használatával betanítási és pontszám-űrlapok segítségével kinyerheti a kulcs-érték párokat és táblákat.
+Ebben a rövid útmutatóban az Azure Form Recognizer REST API cURL-lel a kulcs-érték párok és táblák kinyeréséhez használja az űrlapokat és a pontozást.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőket kell tennie:
-- a [fürt](https://curl.haxx.se/windows/) telepítve van.
-- Legalább hat egyforma típusú formátumból álló készlet. Ezek közül öt a modell betanításához, majd a hatodik űrlappal való teszteléséhez fog használni. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumnak kell lenniük. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban. A tesztelési fájlokat külön mappában helyezheti el.
+A rövid útmutató végrehajtásához a következőkre van szüksége:
+- [cURL](https://curl.haxx.se/windows/) telepítve.
+- Legalább hat azonos típusú formaból áll. Ezek közül ötöt fogsz használni a modell betanításához, majd teszteled a hatodik űrlappal. Az űrlapok különböző fájltípusok lehetnek, de azonos típusú dokumentumoknak kell lenniük. Ehhez a rövid útmutatóhoz [mintaadatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) használhat. Töltse fel a betanítási fájlokat egy blob storage-tároló egy Azure Storage-fiók ban. A tesztfájlokat külön mappába helyezheti.
 
-## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
+## <a name="create-a-form-recognizer-resource"></a>Űrlapfelismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Űrlap-felismerő modell betanítása
+## <a name="train-a-form-recognizer-model"></a>Űrlapfelismerő modell betanítása
 
-Először is szüksége lesz egy Azure Storage-blobban található betanítási adathalmazra. Legalább öt kitöltött űrlapot (PDF-dokumentumot és/vagy képet) kell tartalmaznia a fő bemeneti adatokhoz hasonló típusú vagy szerkezetű űrlapokon. Vagy egyetlen üres űrlapot is használhat két kitöltött űrlap használatával. Az üres űrlap fájlnevének tartalmaznia kell a "Empty" szót. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört.
+Először is szüksége lesz egy betanítási adatok egy Azure Storage-blobban egy készlet. Legalább öt kitöltött űrlapnak (PDF-dokumentumnak és/vagy képnek) kell lennie, amelyek típusa/szerkezete megegyezik a fő bemeneti adatokéval. Vagy használhat egyetlen üres űrlapot két kitöltött űrlappal. Az üres űrlap fájlnevének tartalmaznia kell az "üres" szót. Lásd: [Betanítási adatkészlet létrehozása egyéni modellhez](../build-training-data-set.md) tippeket és lehetőségeket a betanítási adatok összeállításához.
 
 > [!NOTE]
-> A címkézett adatszolgáltatással manuálisan is felcímkézheti a betanítási adatait. Ez egy összetettebb folyamat, de jobban betanított modellt eredményez. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
+> A címkézett adatfunkció segítségével manuálisan címkézheti a betanítási adatok egy részét vagy egészét. Ez egy összetettebb folyamat, de egy jobban képzett modellt eredményez. Tekintse meg a [Vonat címkékkel](../overview.md#train-with-labels) szakaszaz áttekintés, hogy többet tudjon meg ezt a funkciót.
 
-Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-ját a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
+Űrlapfelismerő modell betanításához az Azure blob tárolójában lévő dokumentumokkal, hívja meg a **[Betanítási egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t a következő cURL parancs futtatásával. A parancs futtatása előtt hajtsa végre a következő módosításokat:
 
-1. Cserélje le a `<Endpoint>`t arra a végpontra, amelyet az űrlap-felismerő előfizetésével kapott.
-1. Cserélje le a `<subscription key>`t az előző lépésből másolt előfizetési kulccsal.
-1. Cserélje le a `<SAS URL>`t az Azure Blob Storage-tároló megosztott hozzáférési aláírási (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Cserélje `<Endpoint>` le a Form Recognizer-előfizetéssel kapott végpontra.
+1. Cserélje `<subscription key>` le az előző lépésből másolt előfizetési kulcsot.
+1. Cserélje `<SAS URL>` le az Azure Blob storage tároló megosztott hozzáférésű aláírás (SAS) URL-címét. A SAS URL-címének beolvasásához nyissa meg a Microsoft Azure Storage Exploreralkalmazást, kattintson a jobb gombbal a tárolóra, és válassza **a Megosztott hozzáférésű aláírás beolvasása parancsot.** Ellenőrizze, hogy az **Olvasás** és **a Lista** engedélyek be vannak-e jelölve, majd kattintson a **Létrehozás gombra.** Ezután másolja az **URL-cím** szakasz értékét. Meg kell a `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`forma: .
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Egy `201 (Success)` választ kap a **hely** fejlécében. Ennek a fejlécnek az értéke a betanított új modell azonosítója. 
+A `201 (Success)` **helyfejléces** választ kapja. A fejléc értéke a betanított új modell azonosítója. 
 
-## <a name="get-training-results"></a>Képzési eredmények beolvasása
+## <a name="get-training-results"></a>Képzési eredmények beszerezni
 
-Miután elindította a vonatok műveletét, új műveletet fog használni, **[Egyéni modell beszerzésével](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** ellenőrizhető a betanítási állapot. Adja át a modell AZONOSÍTÓját ebbe az API-hívásba a betanítási állapot megtekintéséhez:
+Miután elindította a vonat működését, egy új művelet, **[Az egyéni modell beszerezni](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** e betanítási állapotának ellenőrzéséhez használja. Adja át a modellazonosítót az API-hívásba a betanítási állapot ellenőrzéséhez:
 
-1. Cserélje le a `<Endpoint>`t arra a végpontra, amelyet az űrlap-felismerő előfizetési kulcsával kapott.
-1. `<subscription key>` cseréje az előfizetési kulccsal
-1. Cserélje le a `<model ID>`t az előző lépésben kapott modell-AZONOSÍTÓra.
+1. Cserélje `<Endpoint>` le a kapott végpontra az Űrlapfelismerő előfizetési kulccsal.
+1. Csere `<subscription key>` az előfizetési kulcsra
+1. Csere `<model ID>` az előző lépésben kapott modellazonosítóra
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-A következő formátumban kap egy `200 (Success)` választ egy JSON-törzstel. Figyelje meg a `"status"` mezőt. Ez az érték `"ready"` a betanítás befejezése után. Ha a modell nem fejeződött be, a parancs újbóli futtatásával újra le kell kérdezni a szolgáltatást. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
+A `200 (Success)` következő formátumban kap választ egy JSON-törzsnél. Figyelje `"status"` meg a mezőt. Ez lesz az `"ready"` érték, ha a képzés befejeződött. Ha a modell nem fejeződött be a betanítás, a parancs ismételt futtatásával újra le kell kérdeznie a szolgáltatást. Azt javasoljuk, hogy a hívások között egy másodperces vagy több időközt.
 
-A `"modelId"` mező tartalmazza a betanított modell AZONOSÍTÓját. Ezt a következő lépéshez kell megadnia.
+A `"modelId"` mező tartalmazza a betanítás alatt álló modell azonosítóját. Erre szükséged lesz a következő lépéshez.
 
 ```json
 { 
@@ -133,36 +133,36 @@ A `"modelId"` mező tartalmazza a betanított modell AZONOSÍTÓját. Ezt a köv
 }
 ```
 
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>A kulcs-érték párok és táblák űrlapjainak elemzése
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Kulcsérték-párok és táblák űrlapjainak elemzése
 
-Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. Hívja meg az **[elemzés űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API-t a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
+Ezután az újonnan betanított modell segítségével elemezhet egy dokumentumot, és kulcsérték-párokat és táblákat nyerhet ki belőle. Hívja meg az **[Űrlap elemzése](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API-t a következő cURL parancs futtatásával. A parancs futtatása előtt hajtsa végre a következő módosításokat:
 
-1. Cserélje le a `<Endpoint>`t az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje le a `<model ID>`t az előző szakaszban kapott modell-AZONOSÍTÓra.
-1. Cserélje le a `<SAS URL>`t egy SAS URL-címmel az Azure Storage-ban található fájlra. Kövesse a betanítás szakasz lépéseit, de ahelyett, hogy a teljes blob-tároló SAS URL-címét beolvassa, szerezze be egyet az elemezni kívánt fájlhoz.
+1. Cserélje `<Endpoint>` le az Űrlapfelismerő előfizetési kulcsból kapott végpontra. Ezt az Űrlapfelismerő erőforrás **áttekintése** lapon találja.
+1. Cserélje `<model ID>` le az előző szakaszban kapott modellazonosítóra.
+1. Cserélje `<SAS URL>` le egy SAS URL-címet a fájlhoz az Azure storage-ban. Kövesse a betanítási szakasz lépéseit, de ahelyett, hogy a teljes blobtároló SAS-URL-címét kapna, szerezzen be egyet az elemezni kívánt fájlhoz.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-Egy `202 (Success)` választ kap egy **művelet – hely** fejléctel. Ennek a fejlécnek az értéke tartalmazza az elemzési művelet eredményeinek nyomon követésére használt eredmény-azonosítót. Mentse a következő lépés eredmény-AZONOSÍTÓját.
+A `202 (Success)` **művelet-hely fejléccel** választ fog kapni. A fejléc értéke tartalmazza az Elemzés művelet eredményeinek nyomon követéséhez használt eredményazonosítót. Mentse ezt az eredményazonosítót a következő lépéshez.
 
-## <a name="get-the-analyze-results"></a>Az elemzés eredményeinek beolvasása
+## <a name="get-the-analyze-results"></a>Az Elemzés eredményeinek beszereznie
 
-A következő API használatával kérdezheti le az elemzési művelet eredményét.
+A következő API-val lekérdezheti az Elemzés művelet eredményeit.
 
-1. Cserélje le a `<Endpoint>`t az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje le a `<result ID>`t az előző szakaszban kapott AZONOSÍTÓra.
+1. Cserélje `<Endpoint>` le az Űrlapfelismerő előfizetési kulcsból kapott végpontra. Ezt az Űrlapfelismerő erőforrás **áttekintése** lapon találja.
+1. Cserélje `<result ID>` le az előző szakaszban kapott azonosítóra.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-A következő formátumban kap egy `200 (Success)` választ egy JSON-törzstel. A kimenet lerövidítve az egyszerűség kedvéért. Figyelje meg a lenti `"status"` mezőt. Az elemzési művelet befejezésekor `"succeeded"` érték lesz. Ha az elemzési művelet nem fejeződött be, újra le kell kérdezni a szolgáltatást a parancs újbóli futtatásával. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
+A `200 (Success)` következő formátumban kap választ egy JSON-törzsnél. A kimenet az egyszerűség kedvéért lerövidült. Figyelje `"status"` meg a mező alján. Ez lesz az `"succeeded"` érték, ha az Elemzés művelet befejeződött. Ha az Elemzés művelet nem fejeződött be, a parancs ismételt futtatásával újra le kell kérdeznie a szolgáltatást. Azt javasoljuk, hogy a hívások között egy másodperces vagy több időközt.
 
-A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópontban találhatók. Ha a *includeTextDetails* URL paraméterrel is megadja az egyszerű szöveg kibontását, akkor a `"readResults"` csomópont megjeleníti a dokumentumban lévő összes szöveg tartalmát és pozícióit.
+A fő kulcs/értékpár társítások `"pageResults"` és táblák a csomópontban találhatók. Ha az *includeTextDetails* URL-paraméteren keresztül is megadtál egyszerű szövegkinyerést, akkor a `"readResults"` csomópont a dokumentum teljes szövegének tartalmát és pozícióját jeleníti meg.
 
 ```json
 {
@@ -417,9 +417,9 @@ A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomópo
 
 [!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban az űrlap-felismerő REST API és a cURL használatával végezte el a modell betanítását, és egy minta forgatókönyvben futtatja azt. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
+Ebben a rövid útmutatóban a formfelismerő REST API-t cURL-lel használta egy modell betanításához és mintaforgatókönyvben való futtatásához. Ezután tekintse meg a referenciadokumentációt a Form Recognizer API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API referenciadokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési beszéd – beszédfelismerés, Python – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszédfelolvasás fordítása, Python – beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
 ms.openlocfilehash: 03042cef3e5b5fb4360223e3c804f1ed2e24c97f
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924940"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=python)
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -90,17 +90,17 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](../../../../regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Mentse a `quickstart.py`végzett módosításokat.
+1. Mentse a módosításokat. `quickstart.py`
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Futtassa a mintát a konzolról vagy az IDE-ben:
+1. Futtassa a mintát a konzolról vagy az IDE-ből:
 
    ```
    python quickstart.py
    ```
 
-1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás elküldi a beszédét a Speech szolgáltatásnak, amely szöveget (ebben az esetben a németre) fordítja le és írja át. A beszédfelismerési szolgáltatás ezután a szintetizált hangot és a szöveget visszaküldi az alkalmazásnak a megjelenítéshez.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a beszéd szolgáltatás, amely lefordítja és átírja a szöveget (ebben az esetben, a német). A beszédszolgáltatás ezután elküldi a szintetizált hangot és a szöveget az alkalmazásnak a megjelenítéshez.
 
    ```
    Say something...
@@ -110,6 +110,6 @@ Az első lépések előtt ügyeljen a következőre:
    TRANSLATED into 'de': Wie ist das Wetter in Seattle?
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

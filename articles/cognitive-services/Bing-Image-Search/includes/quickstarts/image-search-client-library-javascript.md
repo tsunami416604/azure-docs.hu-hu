@@ -1,5 +1,5 @@
 ---
-title: Bing Image Search JavaScript ügyféloldali kódtár gyors üzembe helyezése
+title: Bing Image Search JavaScript-ügyféltár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a37439d24a39a16e8bb51a09c9a33abecfa36fc0
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899586"
 ---
-Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával, amely az API burkolója, és ugyanazokat a szolgáltatásokat tartalmazza. Ez az egyszerű JavaScript-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+Ezzel a rövid útmutatóval első képkeresést tehet a Bing Image Search ügyfélkódtárhasználatával, amely az API burkolója, és ugyanazokat a funkciókat tartalmazza. Ez az egyszerű JavaScript-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
-A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js).
+A minta forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) további hibakezeléssel és jegyzetekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js-hez készült Cognitive Services Image Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * Végezze el a telepítést az `npm install @azure/cognitiveservices-imagesearch` paranccsal.
+    * Végezze el a telepítést a `npm install @azure/cognitiveservices-imagesearch` paranccsal
 * A [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) modul
-    * Végezze el a telepítést az `npm install ms-rest-azure` paranccsal.
+    * Végezze el a telepítést a `npm install ms-rest-azure` paranccsal
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -98,4 +98,4 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Node.js-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

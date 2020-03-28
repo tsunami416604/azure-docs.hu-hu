@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a PHP-val a Face REST API segítségével azonosíthatja a képekből származó arcokat.
+description: Ebben a rövid útmutatóban a Face REST API-val a PHP-vel rendelkező Face REST API használatával észleli a lemezképek arcát.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 0f76ec4ce1072b247be7f46610d37190cd282a22
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169739"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával
 
-Ebben a rövid útmutatóban az Azure Face REST APIt és a PHP-t fogja használni a képeken található emberi arcok észlelésére.
+Ebben a rövid útmutatóban az Azure Face REST API-t a PHP-vel fogja használni a lemezkép emberi arcok észleléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
-- Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
+- Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot.
+- Egy kódszerkesztő, például [a Visual Studio-kód](https://code.visualstudio.com/download).
 - A PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) csomag.
-- Egy PHP-kompatibilis webböngésző. Ha nem állította be ezt a beállítást, a [XAMPP](https://www.apachefriends.org/) telepítésével és beállításával telepítheti a számítógépét.
+- PHP-kompatibilis webböngésző. Ha még nem állította be ezt, ezt a [XAMPP](https://www.apachefriends.org/) telepítésével és beállításával teheti meg a számítógépen.
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 
-Hozzon létre egy új HTML-fájlt, a *detectFaces. html*fájlt, és adja hozzá a következő kódot.
+Hozzon létre egy új HTML-fájlt, *detectFaces.html*, és adja hozzá a következő kódot.
 
 ```html
 <html>
@@ -41,9 +41,9 @@ Hozzon létre egy új HTML-fájlt, a *detectFaces. html*fájlt, és adja hozzá 
 </html>
 ```
 
-## <a name="write-the-php-script"></a>A PHP-szkript írása
+## <a name="write-the-php-script"></a>Írja meg a PHP script
 
-Adja hozzá a következő kódot a dokumentum `body` eleméhez. Ez a kód egy alapszintű felhasználói felületet állít be egy URL-mezővel, egy **elemező arc** gomb, egy válasz ablaktáblával és egy képmegjelenítő ablaktáblával.
+Adja hozzá a `body` következő kódot a dokumentum eleméhez. Ez a kód egy egyszerű felhasználói felületet állít be URL-mezővel, egy **Arcelemzés** gombbal, egy válaszablaktáblával és egy képmegjelenítő ablaktáblával.
 
 ```php
 <?php
@@ -99,13 +99,13 @@ catch (HttpException $ex)
 ?>
 ```
 
-Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; Előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
+Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és `uriBase` módosítania kell a karakterláncot, hogy az a megfelelő végponti karakterláncot tartalmazzon. A `returnFaceAttributes` mező határozza meg, hogy mely arcattribútumokat kell beolvasni; a kívánt használattól függően módosíthatja ezt a karakterláncot.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>A szkript futtatása
 
-Nyissa meg a fájlt egy PHP-kompatibilis böngészőben. Az alábbihoz hasonló JSON-karakterláncot kell kapnia.
+Nyissa meg a fájlt egy PHP-kompatibilis webböngészőben. A következőhez hasonlóan egy JSON-karakterláncot kell kapnia.
 
 ```json
 [
@@ -286,9 +286,9 @@ Nyissa meg a fájlt egy PHP-kompatibilis böngészőben. Az alábbihoz hasonló 
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a képen látható emberi arcok észleléséhez használt Face APIekkel, körzet határának kijelölésében az arcokat a téglalapokkal, és olyan attribútumokat ad vissza, mint például az Age és a gender.
+Fedezze fel a Face API-t, amellyel észlelheti az emberi arcokat egy képen, téglalapokkal határolja el az arcokat, és olyan attribútumokat ad vissza, mint az életkor és a nem.
 
 > [!div class="nextstepaction"]
 > [Face API-k](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

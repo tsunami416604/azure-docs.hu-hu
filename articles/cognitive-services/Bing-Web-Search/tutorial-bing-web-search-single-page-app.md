@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943881"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
@@ -37,7 +37,7 @@ Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiók
 Néhány dolog, amire az alkalmazás futtatásához szüksége lesz:
 
 * A Node.js 8-as vagy újabb verziója
-* A Bing Search API-hoz tartozó előfizetési kulcs. Ha még nem rendelkezik ilyennel, [hozzon létre egy Bing Search v7-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)is.
+* A Bing Search API előfizetési kulcsa. Ha még nem rendelkezik ilyen, [Hozzon létre egy Bing Search v7 erőforrást.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) Próbakulcsot is [trial key](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)használhat.
 ## <a name="get-the-source-code-and-install-dependencies"></a>A forráskód és a telepítési függőségek beszerzése
 
 Az első lépés az adattár klónozása a mintaalkalmazás forráskódjával.
@@ -66,7 +66,7 @@ Ennek az oktatóanyagnak a fő témája a `scripts.js` fájl, valamint a Bing We
 
 ## <a name="html-form"></a>A HTML-űrlap
 
-Az `index.html` tartalmaz egy űrlapot, amelyen a felhasználók keresést végezhetnek, és keresési beállításokat választhatnak. Az `onsubmit` attribútum az űrlap elküldésekor aktiválódik, és meghívja a `bingWebSearch()` fájlban definiált `scripts.js` metódust. Három argumentuma van:
+Az `index.html` tartalmaz egy űrlapot, amelyen a felhasználók keresést végezhetnek, és keresési beállításokat választhatnak. Az `onsubmit` attribútum az űrlap elküldésekor aktiválódik, és meghívja a `scripts.js` fájlban definiált `bingWebSearch()` metódust. Három argumentuma van:
 
 * Keresési lekérdezés
 * Kijelölt beállítások
@@ -127,9 +127,9 @@ function bingSearchOptions(form) {
 }
 ```
 
-A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web Search alapértelmezett beállítása `moderate`. Ez az űrlap egy jelölőnégyzetet használ, amelynek két állapota van: `strict` vagy `moderate`.
+A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web Search alapértelmezett beállítása `moderate`. Ez az űrlap egy jelölőnégyzetet használ, amelykét állapotból áll: `strict` vagy `moderate`.
 
-Ha az **Előléptetés** jelölőnégyzetek bármelyike be van jelölve, akkor a lekérdezéshez az `answerCount` paraméter is hozzá lesz fűzve. A `answerCount` paraméter használata mellett az `promote` is kötelező. Ebben a kódrészletben `9` értékre van beállítva, hogy minden elérhető eredménytípus vissza legyen adva.
+Ha az **Előléptetés** jelölőnégyzetek bármelyike be van jelölve, akkor a lekérdezéshez az `answerCount` paraméter is hozzá lesz fűzve. A `promote` paraméter használata mellett az `answerCount` is kötelező. Ebben a kódrészletben `9` értékre van beállítva, hogy minden elérhető eredménytípus vissza legyen adva.
 > [!NOTE]
 > Egy eredménytípus előléptetése nem *garantálja*, hogy az szerepelni fog a keresési eredmények között. Az előléptetés csak az ilyen típusú eredmények rangját növeli a szokásos rangjukhoz képest. A keresések egy adott eredménytípusra korlátozásához a `responseFilter` lekérdezési paraméter használható, vagy meghívható egy olyan meghatározott végpont, mint a Bing Image Search vagy a Bing News Search.
 
@@ -162,7 +162,7 @@ function getSubscriptionKey() {
 }
 ```
 
-Korábban már volt szó arról, hogy az űrlap beküldésekor aktiválódik a `onsubmit`-t meghívó `bingWebSearch`. Ez a függvény inicializálja és küldi el a kérést. A kérés hitelesítéséhez minden beküldésekor meg lesz hívva a `getSubscriptionKey`.
+Korábban már volt szó arról, hogy az űrlap beküldésekor aktiválódik a `bingWebSearch`-t meghívó `onsubmit`. Ez a függvény inicializálja és küldi el a kérést. A kérés hitelesítéséhez minden beküldésekor meg lesz hívva a `getSubscriptionKey`.
 
 ## <a name="call-bing-web-search"></a>A Bing Web Search hívása
 
@@ -331,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-A `renderResultsItems()` függvény sorra veszi az egyes `RankingResponse` gyűjtemények elemeit, minden rangsorolási eredményt leképez egy keresési eredményre az `answerType` és a `resultIndex` értéke alapján, majd meghívja a megfelelő renderelő függvényt a HTML előállításához. Ha egy elemhez nincs megadva a `resultIndex`, a `renderResultsItems()` végiglépked minden adott típusú eredményen, és minden elemhez meghívja a renderelő függvényt. Az így előállított HTML az `<div>` megfelelő `index.html` elemébe lesz beszúrva.
+A `renderResultsItems()` függvény sorra veszi az egyes `RankingResponse` gyűjtemények elemeit, minden rangsorolási eredményt leképez egy keresési eredményre az `answerType` és a `resultIndex` értéke alapján, majd meghívja a megfelelő renderelő függvényt a HTML előállításához. Ha egy elemhez nincs megadva a `resultIndex`, a `renderResultsItems()` végiglépked minden adott típusú eredményen, és minden elemhez meghívja a renderelő függvényt. Az így előállított HTML az `index.html` megfelelő `<div>` elemébe lesz beszúrva.
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and
@@ -390,7 +390,7 @@ A környezeti argumentumok a következők:
 | `section` | Az eredményeknek az a szakasza (`pole`, `mainline` vagy `sidebar`), amelyben az elem megjelenik. |
 | `index`<br>`count` | Akkor érhető el, ha a `RankingResponse` elem megadja, hogy egy adott gyűjtemény összes eleme megjelenítendő; ellenkező esetben `undefined`. Az elem gyűjteményen belüli indexe és a gyűjteményben lévő elemek teljes száma. Ez az információ felhasználható az eredmények számozására, eltérő HTML generálására az első és az utolsó HTML-hez, és sok másra is. |
 
-Ugyanebben az alkalmazásban az `images` és a `relatedSearches` renderelő is környezeti argumentumokat használ a generált HTML testre szabására. Nézzük meg közelebbről a `images` leképezőt:
+Ugyanebben az alkalmazásban az `images` és a `relatedSearches` renderelő is környezeti argumentumokat használ a generált HTML testre szabására. Vizsgáljuk meg alaposabban az `images` renderelőt:
 
 ```javascript
 searchItemRenderers = {
@@ -419,7 +419,7 @@ A képrenderelő:
 
 * Kiszámítja a kép miniatűrjének méretét (a szélesség változó, a magasság mindig 60 képpont).
 * Beszúrja a képtalálatot megelőző HTML-t a környezet alapján.
-* Létrehozza az `<a>` HTML-címkét, amely a képet tartalmazó oldalra hivatkozik.
+* Létrehozza a képet tartalmazó oldalra hivatkozó `<a>` HTML -címkét.
 * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez.
 
 A képrenderelő a `section` és az `index` változó alapján, a helytől függő módon jeleníti meg az eredményeket. Az oldalsávon a képtalálatok közé sortörés (`<br>` címke) van beszúrva, hogy a képek az oldalsávon egy oszlopban jelenjenek meg. Más szakaszokban az első képtalálatot `(index === 0)` egy `<p>` címke előzi meg.
@@ -439,7 +439,7 @@ Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egy
 Az olyan böngészőbiztonsági-szabályzatok, mint az Eltérő eredetű erőforrások megosztása (CORS) megakadályozhatják, hogy a mintaalkalmazás hozzáférjen az `X-MSEdge-ClientID` fejléchez. Ez a korlátozás akkor léphet életbe, ha a keresési válasz eredete különbözik az azt lekérő oldalétól. Éles környezetben egy olyan kiszolgálóoldali szkript futtatásával oldhatja fel a szabályzat okozta korlátozást, amely a weboldaléval megegyező tartományból hívja meg az API-t. Mivel a szkript eredete megegyezik a weboldaléval, az `X-MSEdge-ClientID` fejléc elérhető lesz a JavaScript számára.
 
 > [!NOTE]
-> Éles webalkalmazásban egyébként is a kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API előfizetési kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
+> Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API előfizetési kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
 Fejlesztési célokból egy CORS-proxyn keresztül is küldhet kérést. Az ilyen típusú proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 

@@ -1,5 +1,5 @@
 ---
-title: Bing Image Search Java ügyféloldali kódtár gyors üzembe helyezése
+title: Bing Image Search Java ügyfélkönyvtár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 4656d8116ddd2e618adad97aeea576e88bc8785f
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899579"
 ---
-Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával, amely az API burkolója, és ugyanazokat a szolgáltatásokat tartalmazza. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
+Ezzel a rövid útmutatóval első képkeresést tehet a Bing Image Search ügyfélkódtárhasználatával, amely az API burkolója, és ugyanazokat a funkciókat tartalmazza. Ez az egyszerű Java-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart).
 
@@ -23,7 +23,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 A [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) legfrissebb verziója
 
-Telepítse az Bing Image Search ügyféloldali függvénytár-függőségeit Maven, Gradle vagy más függőségi felügyeleti rendszer használatával. A Maven POM-fájlhoz a következő deklarációra van szükség:
+Telepítse a Bing Image Search ügyfélkönyvtár-függőségeket a Maven, a Gradle vagy más függőségkezelő rendszer használatával. A Maven POM-fájlhoz a következő deklarációra van szükség:
 
 ```xml
  <dependencies>
@@ -39,7 +39,7 @@ Telepítse az Bing Image Search ügyféloldali függvénytár-függőségeit Mav
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat az osztály implementációhoz:
+1. Hozzon létre egy új Java-projektet kedvenc IDE-jében vagy szerkesztőjében, és adja hozzá a következő importálást az osztály megvalósításához:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -71,7 +71,7 @@ Telepítse az Bing Image Search ügyféloldali függvénytár-függőségeit Mav
 ## <a name="parse-and-view-the-result"></a>Az eredmények elemzése és megjelenítése
 
 Elemezze a válaszban visszaadott képtalálatokat.
-Ha a válasz keresési eredményeket tartalmaz, tárolja az első eredményt, és nyomtassa ki a részleteket, például egy miniatűr URL-címet, az eredeti URL-címet, valamint a visszaadott lemezképek teljes számát.  
+Ha a válasz keresési eredményeket tartalmaz, tárolja az első találatot, és nyomtassa ki annak részleteit, például a miniatűr URL-t, az eredeti URL-t, valamint a visszaadott képek teljes számát.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {
@@ -100,4 +100,4 @@ else {
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Java-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

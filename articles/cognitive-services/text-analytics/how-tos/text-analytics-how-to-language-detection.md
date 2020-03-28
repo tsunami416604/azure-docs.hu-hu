@@ -1,7 +1,7 @@
 ---
-title: Nyelv felismerése a Text Analytics REST API
+title: Nyelv felismerése a Text Analytics REST API-val
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Text Analytics REST API használatával azonosíthatja a nyelvet.
+description: Az Azure Cognitive Services Text Analytics REST API-jával észlelheti a nyelvet.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70387794"
 ---
-# <a name="example-detect-language-with-text-analytics"></a>Példa: Nyelv felismerése Text Analytics
+# <a name="example-detect-language-with-text-analytics"></a>Példa: Nyelv felismerése a Szövegelemzéssel
 
-Az Azure REST API Text Analytics [nyelvfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkciója minden dokumentumhoz kiértékeli a szövegbeviteli adatokat, és egy olyan pontszámmal rendelkező nyelvi azonosítót ad vissza, amely az elemzés erősségét jelzi.
+Az Azure Text Analytics REST API [Nyelvfelismerési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) szolgáltatás a szövegbevitelt minden dokumentumhoz kiértékeli, és az elemzés erősségét jelző pontszámmal adja vissza a nyelvi azonosítókat.
 
-Ez a funkció véletlen szöveget gyűjtő tartalom áruházak számára hasznos, amikor a nyelv ismeretlen. Az analízis eredményei elemezhetők annak meghatározására, hogy milyen nyelvet használ a bemeneti dokumentum. A válasz a modell megbízhatóságát tükröző pontszámot is visszaad. A pontszám értéke 0 és 1 között van.
+Ez a funkció véletlen szöveget gyűjtő tartalom áruházak számára hasznos, amikor a nyelv ismeretlen. Az analízis eredményei elemezhetők annak meghatározására, hogy milyen nyelvet használ a bemeneti dokumentum. A válasz is ad vissza egy pontszámot, amely tükrözi a modell bizalmát. A pontszám értéke 0 és 1 között van.
 
-A Nyelvfelismerés funkció számos nyelvet, változatot, dialektust és néhány regionális vagy kulturális nyelvet képes felderíteni. A szolgáltatáshoz tartozó nyelvek pontos listája nincs közzétéve.
+A Nyelvfelismerés szolgáltatás számos nyelvet, változatot, dialektust, valamint néhány regionális vagy kulturális nyelvet képes észlelni. A szolgáltatás nyelveinek pontos listája nincs közzétéve.
 
-Ha a tartalom ritkábban használt nyelven van kifejezve, kipróbálhatja a Nyelvfelismerés funkciót, és megtekintheti, hogy visszaadja-e a kódot. A nem észlelhető `unknown`nyelvek válasza a következő:.
+Ha a tartalmat ritkábban használt nyelven fejezi k, próbálja meg a Nyelvfelismerés funkciót, és ellenőrizheti, hogy az visszaad-e egy kódot. A nem észlelhető nyelvekre a `unknown`válasz a .
 
 > [!TIP]
-> A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a nyelvfelismerés számára, így a Text Analytics tárolót az adatokhoz közelebb is [telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
+> A Text Analytics egy Linux-alapú Docker-tárolórendszerképet is biztosít a nyelvfelismeréshez, így [telepítheti és futtathatja a Text Analytics-tárolót az](text-analytics-how-to-install-containers.md) adatok közelében.
 
 ## <a name="preparation"></a>Előkészítés
 
-A következő formátumú JSON-dokumentumok szükségesek: AZONOSÍTÓ és szöveg.
+A JSON-dokumentumoknak ebben a formátumban kell lennie: azonosító és szöveg.
 
-A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentumban. Egy gyűjteményhez legfeljebb 1 000 elem (azonosító) tartozhat. A kollekció elküldése a kérelem törzsében történik. A következő minta egy példa arra, hogy milyen tartalmat lehet beküldeni a nyelvfelismerés számára:
+A dokumentum méretének dokumentumonként 5120 karakternél nem lehet nagyobb. Gyűjteményenként legfeljebb 1000 elem (azonosítók) lehet. A kollekció elküldése a kérelem törzsében történik. A következő minta egy példa a nyelvfelismerésre beküldhető tartalomra:
 
 ```json
     {
@@ -63,35 +63,35 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem szerkezete
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
 
-A kérelem meghatározásával kapcsolatos további információkért lásd [a Text Analytics API meghívása](text-analytics-how-to-call-api.md)című témakört. A következő pontokat a kényelem kedvéért itt megismételjük:
+A kérésdefinícióról további információt [a Szövegelemzési API felhívása című témakörben talál.](text-analytics-how-to-call-api.md) A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy POST-kérelmet. A kérelem API-dokumentációjának áttekintéséhez tekintse meg a [NYELVFELISMERÉS API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)-t.
++ Hozzon létre egy POST kérést. A kérelem API-dokumentációjának megtekintéséhez tekintse meg a [Language Detection API-t.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 
-+ Állítsa be a HTTP-végpontot a nyelvfelismeréshez. Használjon Text Analytics erőforrást az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md). Meg kell `/text/analytics/v2.1/languages` adnia az URL-címet. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Állítsa be a HTTP-végpontot a nyelvfelismeréshez. Használjon Text Analytics-erőforrást az Azure-ban vagy egy példányosított [Text Analytics-tárolót.](text-analytics-how-to-install-containers.md) Az URL-címben szerepelnie `/text/analytics/v2.1/languages` kell. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
-+ Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
++ Állítsa be a kérelem fejlécét, hogy tartalmazza a szövegelemzési műveletek [hozzáférési kulcsát.](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem közzététele
+## <a name="step-2-post-the-request"></a>2. lépés: Post a kérelmet
 
-Az elemzés a kérelem megkapásakor történik meg. További információ a másodpercenként elküldhető kérelmek méretéről és számáról: az [adatkorlátozások](../overview.md#data-limits) szakasz az áttekintésben.
+Az elemzés a kérelem megkapásakor történik meg. A percenként és másodpercenként küldhető kérelmek méretéről és számáról az [áttekintés adatkorlátok](../overview.md#data-limits) című részében olvashat.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
 
-## <a name="step-3-view-the-results"></a>3\. lépés: Eredmények megtekintése
+## <a name="step-3-view-the-results"></a>3. lépés: Az eredmények megtekintése
 
-Az összes POST kérelem egy JSON-formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
+Minden POST-kérelem JSON-formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
 
-A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat.
+A kimenetet visszaadása azonnali. Az eredményeket streamelheti egy olyan alkalmazásba, amely elfogadja a JSON-t, vagy mentheti a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy alkalmazásba, amellyel rendezheti, keresheti és kezelheti az adatokat.
 
-A példa kérés eredményének a következő JSON-hoz hasonlóan kell kinéznie. Figyelje meg, hogy egyetlen dokumentum több elemmel. A kimenet angol nyelvű. A nyelvi azonosító rövid nevet és [ISO 639-1](https://www.iso.org/standard/22109.html) formátumú nyelvkódot tartalmaz.
+A példa kérés eredményének a következő JSON-hoz hasonlóan kell kinéznie. Figyelje meg, hogy ez egy dokumentum, több elemet tartalmazó. A kimenet angol nyelvű. A nyelvi azonosító rövid nevet és [ISO 639-1](https://www.iso.org/standard/22109.html) formátumú nyelvkódot tartalmaz.
 
 Az 1.0 pozitív pontszám a lehetséges legnagyobb megbízhatósági szintet jelenti az elemzésre.
 
@@ -155,11 +155,11 @@ Az 1.0 pozitív pontszám a lehetséges legnagyobb megbízhatósági szintet jel
 
 ### <a name="ambiguous-content"></a>Nem egyértelmű tartalom
 
-Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter használatával kétbetűs országkód adható meg. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre `countryHint = ""` állítja.
+Bizonyos esetekben nehéz lehet a bevitel alapján félretenni a nyelveket. A `countryHint` paraméter segítségével kétbetűs országkódot adhat meg. Alapértelmezés szerint az API az "US" az alapértelmezett countryHint, hogy távolítsa el ezt a `countryHint = ""` viselkedést vissza állíthatja ezt a paramétert beállításával ezt az értéket üres karakterlánc .
 
-Előfordulhat például, hogy a "Impossible" kifejezés az angol és a francia nyelvre is vonatkozik, és ha korlátozott kontextusban van megadva, akkor a válasz az "USA" országra utal. Ha a szöveg eredete ismert, hogy olyan Franciaországból érkezik, amely tippként is megadható.
+Például a "Lehetetlen" közös mind az angol, mind a francia nyelvben, és ha korlátozott kontextusban adják meg, a válasz az "USA" ország tippén alapul. Ha ismert, hogy a szöveg eredete Franciaország, ez megadható tippként.
 
-**Input** (Bemenet)
+**Bemenet**
 
 ```json
     {
@@ -177,7 +177,7 @@ Előfordulhat például, hogy a "Impossible" kifejezés az angol és a francia n
     }
 ```
 
-A szolgáltatás most már rendelkezik további kontextussal a jobb döntés érdekében: 
+A szolgálat nak most további kontextusa van ahhoz, hogy jobban megítélje: 
 
 **Kimenet**
 
@@ -209,7 +209,7 @@ A szolgáltatás most már rendelkezik további kontextussal a jobb döntés ér
     }
 ```
 
-Ha az analizátor nem tudja elemezni a bemenetet `(Unknown)`, a függvény visszaadja. Ilyen például, ha olyan szöveges blokkot küld be, amely kizárólag Arab számokból áll.
+Ha az analizátor nem tudja elemezni `(Unknown)`a bemenetet, akkor visszaadja. Ilyen például az, ha olyan szövegblokkot küld be, amely kizárólag arab számokból áll.
 
 ```json
     {
@@ -224,11 +224,11 @@ Ha az analizátor nem tudja elemezni a bemenetet `(Unknown)`, a függvény vissz
     }
 ```
 
-### <a name="mixed-language-content"></a>Vegyes nyelvi tartalom
+### <a name="mixed-language-content"></a>Vegyes nyelvű tartalom
 
-Az ugyanabban a dokumentumban található vegyes nyelvi tartalom a tartalom legnagyobb ábrázolását, de alacsonyabb pozitív minősítéssel rendelkező nyelvet ad vissza. A minősítés az értékelés marginális erősségét tükrözi. A következő példában a bemeneti adat angol, német és francia nyelv kombinációja. Az elemző minden szegmensben megszámolja a karakterek számát az uralkodó nyelv meghatározásához.
+Az ugyanazon a dokumentumon belüli vegyes nyelvű tartalom azt a nyelvet adja vissza, amelynek a legnagyobb reprezentációja van a tartalomban, de alacsonyabb pozitív minősítéssel rendelkezik. A minősítés az értékelés marginális erejét tükrözi. A következő példában a bemeneti adat angol, német és francia nyelv kombinációja. Az elemző minden szegmensben megszámolja a karakterek számát az uralkodó nyelv meghatározásához.
 
-**Input** (Bemenet)
+**Bemenet**
 
 ```json
     {
@@ -243,7 +243,7 @@ Az ugyanabban a dokumentumban található vegyes nyelvi tartalom a tartalom legn
 
 **Kimenet**
 
-Az eredményül kapott kimenet a domináns nyelvből áll, amelynek a pontszáma kisebb, mint 1,0, ami gyengébb megbízhatósági szintet jelez.
+Az eredmény az uralkodó nyelvből áll, 1,0-nál kisebb pontszámmal, ami gyengébb megbízhatósági szintet jelez.
 
 ```json
     {
@@ -263,18 +263,18 @@ Az eredményül kapott kimenet a domináns nyelvből áll, amelynek a pontszáma
     }
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben az Azure-Cognitive Services Text Analytics használatával megtanulta a nyelvfelismerés fogalmait és munkafolyamatát. A következő pontokat ismertették és mutatták be:
+Ebben a cikkben az Azure Cognitive Services Text Analytics használatával ismertetheti a nyelvfelismerés fogalmait és munkafolyamatait. A következő pontokat magyarázták és mutatták be:
 
-+ A [nyelvfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) számos nyelven, változatban, dialektusban, illetve egyes regionális vagy kulturális nyelveken érhető el.
-+ A kérelem törzsében található JSON-dokumentumok közé tartozik egy azonosító és egy szöveg.
-+ A post kérelem `/languages` a végponthoz egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használ.
-+ A válasz kimenete az egyes dokumentumok AZONOSÍTÓinak nyelvi azonosítóit tartalmazza. A kimenet továbbítható bármely olyan alkalmazás számára, amely elfogadja a JSON-t. Az alkalmazások közé tartoznak például az Excel és a Power BI, hogy csak néhányat említsünk.
++ [A nyelvfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) számos nyelven, változatban, dialektusban, valamint néhány regionális vagy kulturális nyelven elérhető.
++ A kérelemtörzsben lévő JSON-dokumentumok azonosítót és szöveget tartalmaznak.
++ A POST-kérelem `/languages` egy végponthoz egy személyre szabott [hozzáférési kulcs és egy végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával, amely érvényes az előfizetéshez.
++ A válaszkimenet az egyes dokumentumazonosítók nyelvi azonosítóiból áll. A kimenet bármely olyan alkalmazásba streamelhető, amely elfogadja a JSON-t. Példa: az Excel és a Power BI, hogy csak néhányat említsünk.
 
 ## <a name="see-also"></a>Lásd még
 
- [Text Analytics áttekintése](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
+ [Szövegelemzés – áttekintés](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>További lépések

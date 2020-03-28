@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: beszéd felismerése mikrofonból C++ , (Linux) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszédfelismerés mikrofonból, C++ (Linux) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: wolfma61
@@ -10,20 +10,20 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
 ms.openlocfilehash: 1ba1f2a61a293880e81dde0ce1f93460a555fa62
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924747"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt:
+Mielőtt elkezdene járni:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=linux)
-> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -33,10 +33,10 @@ Az első lépések előtt:
 
 1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) **azonosítójával** (például `westus` az ingyenes próbaverziós előfizetéshez).
+1. Cserélje le `YourServiceRegion` a karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) `westus` **régiórégió régióból** származó régióra (például az ingyenes próba-előfizetéshez).
 
 > [!NOTE]
-> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+> A beszédsdk alapértelmezés szerint felismeri a nyelv en-us használatát, olvassa el a forrásnyelv megadása a [beszéd szöveghez című témakört](../../../../how-to-specify-source-language.md) a forrásnyelv kiválasztásával kapcsolatos információkért.
 
 ## <a name="build-the-app"></a>Alkalmazás készítése
 
@@ -55,7 +55,7 @@ Az első lépések előtt:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* **ARM64** (64 bites) rendszeren futtassa az alábbi parancsot az alkalmazás létrehozásához.
+* **ARM64** (64 bites) rendszeren futtassa a következő parancsot az alkalmazás létrehozásához.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -96,6 +96,6 @@ Az első lépések előtt:
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

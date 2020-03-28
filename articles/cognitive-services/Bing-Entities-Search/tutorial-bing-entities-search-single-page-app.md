@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Bing Entity Search egyoldalas webalkalmazás'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag bemutatja, hogyan használható a Bing Entity Search API egy egyoldalas webalkalmazásban.
+description: Ez az oktatóanyag bemutatja, hogyan használhatja a Bing Entity Search API-t egyegyoldalas webalkalmazásban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943137"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
@@ -58,7 +58,7 @@ Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüksége a Bing Search API-hoz és a Bing Maps API-hoz. Ha nem rendelkezik ezekkel, használhat egy [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és egy [alapszintű Bing Maps-kulcsot](https://www.microsoft.com/maps/create-a-bing-maps-key).
+Az oktatóanyag követéséhez előfizetési kulcsokra van szükség a Bing Search API-hoz és a Bing Maps API-hoz. Ha nem rendelkezik velük, használhat [próbakulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és [egy egyszerű Bing Térképek-kulcsot.](https://www.microsoft.com/maps/create-a-bing-maps-key)
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
 
@@ -90,7 +90,7 @@ A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekbe
 
 Annak érdekében, hogy a Bing Search és a Bing Térképek API előfizetői kulcsait ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk a kulcsokat. Ha a rendszer nem tárolta valamelyik kulcsot, akkor rákérdezünk, és tároljuk későbbi használatra. Ha az API később elutasítja a kulcsot, akkor érvénytelenítjük a tárolt kulcsot, ezért a következő keresésnél újra rá kell kérdeznünk a felhasználónál.
 
-Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
 ```javascript
 // cookie names for data we store
@@ -163,11 +163,11 @@ function bingSearchOptions(form) {
 
 A SafeSearch funkció értéke például `strict`, `moderate` vagy `off` lehet. Ezek közül a `moderate` az alapértelmezett. A mi űrlapunk viszont egy jelölőnégyzetet használ, amelynek csak két állapota van. A JavaScript-kód ezt a beállítást `strict` vagy `off` értékké alakítja (a `moderate` nem használatos).
 
-A `mapquery` nem kezeli a `bingSearchOptions()` mezőt, mert a rendszer ezt a Bing Térképek helylekérdezésekben használja, nem a Bing Entity Searchnél.
+A `bingSearchOptions()` nem kezeli a `mapquery` mezőt, mert a rendszer ezt a Bing Térképek helylekérdezésekben használja, nem a Bing Entity Searchnél.
 
 ## <a name="obtaining-a-location"></a>Hely koordinátáinak beszerzése
 
-A Bing Térképek API-nak van egy [`locationQuery` metódusa](//msdn.microsoft.com/library/ff701711.aspx), amellyel meg tudjuk határozni a felhasználó által megadott hely szélességi és hosszúsági koordinátáit. Ezeket a koordinátákat ezután a Bing Entity Search API-nak továbbítjuk a felhasználó kérésével együtt. A keresési eredmények a fontossági sorrendben előbbre helyezik azokat a helyeket, amelyek a megadott helyhez közel találhatók.
+A Bing Maps [ `locationQuery` ](//msdn.microsoft.com/library/ff701711.aspx)API egy módszert kínál, amelyet a felhasználó által megadott hely szélességének és hosszúságának megtalálására használunk. Ezeket a koordinátákat ezután a Bing Entity Search API-nak továbbítjuk a felhasználó kérésével együtt. A keresési eredmények a fontossági sorrendben előbbre helyezik azokat a helyeket, amelyek a megadott helyhez közel találhatók.
 
 A Bing Térképek API nem érhető el egy átlagos `XMLHttpRequest` lekérdezéssel egy webalkalmazásban, mert a szolgáltatás nem támogatja az eltérő eredetű lekérdezéseket. Szerencsére viszont támogatja a JSONP-t (a „P” a „padded”, azaz kitöltött szót jelöli). A JSONP-válasz egy függvényhívásba ágyazott, átlagos JSON-válasz. A kérelem létrehozásához a rendszer egy `<script>` címkét szúr be a dokumentumba. (A szkriptek betöltését nem befolyásolják a böngésző biztonsági szabályzatai.)
 
@@ -408,7 +408,7 @@ A `rankingResponse` gyűjtemények minden eleme a valós keresési eredményekre
 
 | | |
 |-|-|
-|`id`|Az `id` úgy néz ki, mint egy URL, de nem célszerű hivatkozásokhoz használni. A rangsoroló eredmények `id` típusa megegyezik egy válaszgyűjtemény keresési eredményeinek eleméhez `id`vagy*egy teljes válaszgyűjteményhez (mint például*) tartozó `Entities` típussal.
+|`id`|Az `id` úgy néz ki, mint egy URL, de nem célszerű hivatkozásokhoz használni. A rangsoroló eredmények `id` típusa megegyezik egy válaszgyűjtemény keresési eredményeinek eleméhez *vagy* egy teljes válaszgyűjteményhez (mint például `Entities`) tartozó `id` típussal.
 |`answerType`<br>`resultIndex`|Az `answerType` azt a legfelső szintű válaszgyűjteményt jelenti, amely az eredményt tartalmazza (például `Entities`). A `resultIndex` az eredmény adott gyűjteményen belüli indexét jelenti. Ha a `resultIndex` kimarad, a rangsorolási eredmény az egész gyűjteményre vonatkozik.
 
 > [!NOTE]
@@ -455,7 +455,7 @@ A leképező függvények a következő paramétereket fogadhatják el:
 
 Az `index` és `count` paraméterek használhatók a találatok megszámozására, egy gyűjtemény elején vagy végén egy speciális HTML létrehozására, egy bizonyos számú elem utáni sortörés beszúrására és így tovább. Ha egy leképezőnek nincs szüksége erre a funkcióra, akkor nem kell elfogadnia ezt a két paramétert. Ami azt illeti, az oktatóanyag alkalmazásában nem is használjuk őket a leképezőknél.
 
-Nézzük meg közelebbről a `entities` leképezőt:
+Vizsgáljuk meg alaposabban az `entities` renderelőt:
 
 ```javascript
     entities: function(item) {
@@ -510,7 +510,7 @@ Az entitásleképező függvény:
 
 > [!div class="checklist"]
 > * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez, ha van. 
-> * Létrehozza az `<a>` HTML-címkét, amely a képet tartalmazó oldalra hivatkozik.
+> * Létrehozza a képet tartalmazó oldalra hivatkozó `<a>` HTML -címkét.
 > * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 > * Magában foglalja az entitás besorolását a megjelenített tippekkel, ha vannak.
 > * Tartalmaz egy Bing-keresésre mutató hivatkozást, ahol további információt talál az entitásról.
@@ -524,12 +524,12 @@ Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egy
 
 Egyrészt lehetővé teszi, hogy a Bing keresőmotorja korábbi kontextusokat is alkalmazzon a keresésekhez olyan találatok megjelenítése érdekében, amelyek jobban megfelelnek a felhasználó igényeinek. Ha például a felhasználó korábban vitorlázáshoz kapcsolódó kifejezésekre keresett rá, egy későbbi keresés a „dokkok” kifejezésre nagy valószínűséggel a vitorlások kikötésére alkalmas dokkokkal kapcsolatos információkat fog eredményezni.
 
-Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanazt az ügyfél-azonosítót adja meg, akkor azok a felhasználók, akiket kijelölt a funkció megtekintésére, mindig látni fogják. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
+Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanaz az ügyfél-azonosító van megadva, akkor azok a felhasználók, akik ki lettek választva egy funkció használatára, mindig látják azt. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
 
 A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a JavaScript hozzáférjen az `X-MSEdge-ClientID` fejléchez. Ez a korlátozás akkor léphet életbe, ha a keresési válasz eredete különbözik az azt lekérő oldalétól. Éles környezetben egy olyan kiszolgálóoldali szkript futtatásával oldhatja fel a szabályzat okozta korlátozást, amely a weboldaléval megegyező tartományból hívja meg az API-t. Mivel a szkript eredete megegyezik a weboldaléval, az `X-MSEdge-ClientID` fejléc elérhető lesz a JavaScript számára.
 
 > [!NOTE]
-> Éles webalkalmazásban egyébként is a kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
+> Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
 Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 

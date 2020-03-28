@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Bing Visual Search SDK, Python'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing Visual Search szolgáltatásból a Python SDK használatával.
+description: Ezzel a rövid útmutatóval a Python SDK használatával megkezdheti a rendszerelemzéseket a Bing Visual Search szolgáltatásból.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 2a5fb6d72ab2259b2c11d1d71e93aa635da36946
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446553"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Gyors útmutató: képelemzések lekérése a Pythonhoz készült Bing Visual Search SDK használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Rövid útmutató: Képelemzési adatok beszereznie a Bing Visual Search SDK python-hoz használatával
 
-Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing Visual Search szolgáltatásból a Python SDK használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az SDK egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
+Ezzel a rövid útmutatóval a Python SDK használatával megkezdheti a rendszerelemzéseket a Bing Visual Search szolgáltatásból. Bár a Bing Visual Search a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az SDK segítségével egyszerűen integrálhatja a szolgáltatást az alkalmazásokba. A minta forráskódja megtalálható a [GitHubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python](https://www.python.org/) 2. x vagy 3. x
-* A [virtuális környezet](https://docs.python.org/3/tutorial/venv.html)használatát javasoljuk. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv).
-* A Pythonhoz készült Bing Visual Search SDK. A következő parancsokkal telepítheti:
+* [Piton](https://www.python.org/) 2.x vagy 3.x
+* Javasoljuk, hogy használja a [virtuális környezetben](https://docs.python.org/3/tutorial/venv.html). Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv).
+* A Bing Visual Search SDK python. A következő parancsokkal telepítheti:
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`
 
@@ -34,7 +34,7 @@ Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing V
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálási utasításokat. 
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE-ben vagy szerkesztőjében, és adja hozzá a következő importálási kimutatásokat. 
 
     ```python
     import http.client, urllib.parse
@@ -50,7 +50,7 @@ Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing V
     )
     from msrest.authentication import CognitiveServicesCredentials
     ```
-2. Hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs AZONOSÍTÓhoz és a feltölteni kívánt képhez. 
+2. Hozzon létre változókat az előfizetési kulcshoz, az egyéni konfigurációs azonosítóhoz és a feltölteni kívánt lemezképhez. 
     
     ```python
     subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
@@ -67,7 +67,7 @@ Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing V
 
 ## <a name="send-the-search-request"></a>A keresési kérelem elküldése
 
-1. Nyissa meg a lemezképfájlt, szerializálja `VisualSearchRequest()`, és adja át a `visual_search()``knowledge_request` paramétereként.
+1. Nyissa meg a képfájlt, `VisualSearchRequest()`szerializálja `knowledge_request` a `visual_search()`t, és adja át a paraméterként.
 
     ```python
     with open(image_path, "rb") as image_fd:
@@ -78,7 +78,7 @@ Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing V
         result = client.images.visual_search(image=image_fd, knowledge_request=knowledge_request)
     ```
 
-2. Ha bármilyen eredményt adott vissza, nyomtassa ki őket, a címkéket és az első címke műveleteit.
+2. Ha bármilyen eredményt adott vissza, nyomtassa ki őket, a címkéket és az első címkében lévő műveleteket.
 
     ```python
     if not result:
@@ -106,7 +106,7 @@ Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing V
             print("Couldn't find image tags!")
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)
+> [Egyoldalas webalkalmazás készítése](tutorial-bing-visual-search-single-page-app.md)

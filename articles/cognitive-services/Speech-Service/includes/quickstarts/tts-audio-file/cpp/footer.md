@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: hangfelismerés a hangfájlba C++ , beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszéd szintezése hangfájllá, C++ – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 3fe0d5e74e31f39daf0cac13110f17412e40e6c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468415"
 ---
 > [!div class="nextstepaction"]
-> [Minták C++ feltárása a githubon](https://aka.ms/speech/github-cpp)
+> [C++ minták felfedezése a GitHubon](https://aka.ms/speech/github-cpp)

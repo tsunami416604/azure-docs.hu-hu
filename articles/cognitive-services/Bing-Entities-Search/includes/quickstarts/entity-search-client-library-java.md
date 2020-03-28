@@ -1,5 +1,5 @@
 ---
-title: Bing Entity Search Java ügyféloldali kódtár gyors üzembe helyezése
+title: Bing entity Search Java ügyféltár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 8c987aa14e922573d01aa35fab609edf01e109b4
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79136773"
 ---
-Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Javához készült Bing Entity Search ügyféloldali kódtár használatával. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)található.
+Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Java-hoz a Bing Entity Search ügyfélkódtárban. Bár a Bing Entity Search a legtöbb programozási nyelvvel kompatibilis REST API-val rendelkezik, az ügyfélkódtár egyszerű módot kínál a szolgáltatás alkalmazásokba való integrálására. A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* A [Java Fejlesztői Készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
-* A Javához készült Bing Entity Search ügyféloldali kódtár
+* A Bing Entity Search ügyfélkönyvtár java-hoz
 
-Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Maven, Gradle vagy más függőségi felügyeleti rendszer használatával. A Maven POM-fájlhoz a következő deklarációra van szükség:
+Telepítse a Bing Entity Search ügyfélkönyvtár-függőségeket a Maven, a Gradle vagy más függőségkezelő rendszer használatával. A Maven POM-fájlhoz a következő deklarációra van szükség:
 
 ```xml
 <dependency>
@@ -63,7 +63,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
 
 ## <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. Implementálja az `dominantEntityLookup`-ügyfelet, amely az API-végpontot és a `ServiceClientCredentials` osztály egy példányát igényli. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+1. Valósítsa meg az `dominantEntityLookup` ügyfelet, amely az `ServiceClientCredentials` API-végpontot és az osztály egy példányát igényli. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -74,9 +74,9 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
     )};
     ```
 
-    A `ServiceClientCredentials`megvalósításához kövesse az alábbi lépéseket:
+    A végrehajtásához hajtsa végre az `ServiceClientCredentials`alábbi lépéseket:
 
-   1. felülbírálja a `applyCredentialsFilter()` függvényt egy `OkHttpClient.Builder` objektum paraméterként. 
+   1. felülírja `applyCredentialsFilter()` a függvényt, paraméterként egy `OkHttpClient.Builder` objektummal. 
         
        ```java
        //...
@@ -88,7 +88,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
        //...
        ```
     
-   2. A `applyCredentialsFilter()`on belül hívja meg `builder.addNetworkInterceptor()`. Hozzon létre egy új `Interceptor` objektumot, és bírálja felül a `intercept()` metódust egy `Chain` Interceptor objektum elvégzéséhez.
+   2. Belül `applyCredentialsFilter()`, `builder.addNetworkInterceptor()`hívja . Hozzon `Interceptor` létre egy új `intercept()` objektumot, `Chain` és felülbírálja a metódust, hogy elfogó objektumot vegyen.
 
        ```java
        //...
@@ -102,7 +102,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
        ///...
        ```
 
-   3. A `intercept` függvényben hozzon létre változókat a kérelemhez. A kérés létrehozásához használja a `Request.Builder()`. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és adja vissza `chain.proceed()` a kérelem objektumon.
+   3. A `intercept` funkción belül hozzon létre változókat a kéréshez. A `Request.Builder()` kérelem összeállításához használható. Adja hozzá az `Ocp-Apim-Subscription-Key` előfizetési kulcsot `chain.proceed()` a fejléchez, és adja vissza a kérelemobjektumot.
             
        ```java
        //...
@@ -116,9 +116,9 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
        }
        //...
        ```
-## <a name="send-a-request-and-receive-a-response"></a>Kérelem küldése és válasz fogadása
+## <a name="send-a-request-and-receive-a-response"></a>Kérés küldése és válasz fogadása
 
-1. Hozzon létre egy új példányt a keresési ügyfélhez az előfizetési kulccsal. a `client.entities().search()` használatával küldhet keresési kéréseket a keresési lekérdezéshez `satya nadella`és választ kaphat. 
+1. Hozzon létre egy új példányt a keresési ügyfél az előfizetési kulcs. keresési `client.entities().search()` kérelmet küldhet a keresési `satya nadella`lekérdezéshez, és választ kaphat. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);
@@ -126,7 +126,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-1. Ha bármelyik entitást visszaadott, alakítsa át őket egy listára. Ismételje meg őket, és nyomtassa ki a domináns entitást.
+1. Ha entitásokat adott vissza, alakítsa át őket listává. Iterate rajtuk keresztül, és nyomtassa ki az erőfölényben lévő szervezet.
 
     ```java
     if (entityData.entities().value().size() > 0){
@@ -143,9 +143,9 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](../../tutorial-bing-entities-search-single-page-app.md)
+> [Egyoldalas webalkalmazás készítése](../../tutorial-bing-entities-search-single-page-app.md)
 
 * [Mi a Bing Entity Search API?](../../overview.md)

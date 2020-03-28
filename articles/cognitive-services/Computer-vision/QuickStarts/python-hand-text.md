@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Computer Vision 2,0 és 2,1 – nyomtatott és kézzel írott szöveg kinyerése – REST, Python'
+title: 'Rövid útmutató: Computer Vision 2.0 és 2.1 - Nyomtatott és kézzel írt szöveg kinyerése - REST, Python'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a Computer Vision API a Python használatával.
+description: Ebben a rövid útmutatóban kibontja a nyomtatott és kézzel írt szöveget egy képből a Computer Vision API pythonnal.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f0b8cac2cc26b2fab7255a7e7587985a5425485
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566199"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244801"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision 2,0 és 2,1 REST API és a Python használatával
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision 2.0 és 2.1 REST API és a Python használatával
 
-Ebben a rövid útmutatóban Kinyeri a nyomtatott és/vagy kézzel írott szöveget a Computer Vision REST API használatával. A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási műveletének eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszereivel a képeken lévő szövegeket azonosíthatja, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba. Az API meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, így a nyomtatott és a kézírásos szöveggel is támogatja a lemezképeket.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyeri a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. Az API határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
 
-A Computer Vision 2,0-es és 2,1-as verzióhoz képest a Computer Vision 3,0 nyilvános előzetes verziója a következőket biztosítja:
+A Computer Vision 2.0-val és 2.1-es verziójával összehasonlítva a Computer Vision 3.0 Nyilvános előzetes verzió a következőket biztosítja:
 
-* még jobb pontosság
-* módosított kimeneti formátum
-* a szavak megbízhatósági pontszáma
-* a spanyol és az angol nyelv támogatása a további nyelvi paraméterrel
+* még nagyobb pontosság
+* megváltozott kimeneti formátum
+* megbízhatósági pontszám a szavakhoz
+* spanyol és angol nyelvek támogatása a kiegészítő nyelvi paraméterrel
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
 > [!IMPORTANT]
-> A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` válasz fejlécének értékében. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t jelöli, és a kötegelt olvasási metódus hívásának eredményeit is visszaadja.
+> A [Kötegelt olvasás](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Kötegelt olvasás metódus egy `Operation-Location` URI-t ad vissza a válaszfejléc mező értékében. Ezután meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t jelöli, hogy ellenőrizze az állapotát, és visszaadja a Batch Read metódus hívásának eredményeit.
 
 #### <a name="version-3-public-preview"></a>[3. verzió (nyilvános előzetes verzió)](#tab/version-3)
 
 > [!IMPORTANT]
-> A [Batch olvasási](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` válasz fejlécének értékében. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API-t jelöli, és a kötegelt olvasási metódus hívásának eredményeit is visszaadja.
+> A [Kötegelt olvasás](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Kötegelt olvasás metódus egy `Operation-Location` URI-t ad vissza a válaszfejléc mező értékében. Ezután meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API-t jelöli, hogy ellenőrizze az állapotát, és visszaadja a Batch Read metódus hívásának eredményeit.
 
 ---
 
 Ezt a rövid útmutatót futtathatja lépésenként egy Jupyter-notebook segítségével a [MyBinderben](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
 
-[![a kötés elindítása gomb](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Az indító iratgyűjtő gomb](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 
-- A [Pythonnak](https://www.python.org/downloads/) telepítve kell lennie, ha a mintát helyben szeretné futtatni.
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`néven.
+- A minta helyi futtatásához rendelkeznie kell a [Pythonnal](https://www.python.org/downloads/).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `COMPUTER_VISION_ENDPOINT`a.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -59,12 +59,14 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Szükség esetén cserélje le a `image_url` értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
-1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-text.py`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-text.py`.
+1. Szükség esetén cserélje le `image_url` az értékét egy másik kép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-text.py`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python get-text.py`.
 
 ```python
+import os
+import sys
 import requests
 import time
 # If you are using a Jupyter notebook, uncomment the following line.
@@ -139,10 +141,10 @@ for polygon in polygons:
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Szükség esetén cserélje le a `image_url` értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
-1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-text.py`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-text.py`.
+1. Szükség esetén cserélje le `image_url` az értékét egy másik kép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-text.py`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python get-text.py`.
 
 ```python
 import json
@@ -236,7 +238,7 @@ plt.show()
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kielemez és megjelenít egy sikeres, az alábbihoz hasonló választ a parancsablakban:
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 

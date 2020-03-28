@@ -11,29 +11,31 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9a76d4f083c791bb1e3c29b4068c2f82f3cd0bc5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973696"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244681"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a Python használatával
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Rövid útmutató: Miniatűr létrehozása a Computer Vision REST API és a Python használatával
 
-Ebben a rövid útmutatóban egy miniatűrt fog létrehozni egy képből a Computer Vision REST API használatával. A [miniatűr beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) módszerrel megadhatja a kívánt magasságot és szélességet, a Computer Vision pedig intelligens levágást használ a fontos terület intelligens azonosításához és az adott régió alapján történő levágási koordináták létrehozásához.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával létrehoz egy képminiatűrt. A [Miniatűrök beérkezése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) módszerrel megadhatja a kívánt magasságot és szélességet, és a Computer Vision intelligens vágással intelligensen azonosítja a fontos területet, és az adott terület alapján vágási koordinátákat hoz létre.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/try/cognitive-services/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`néven.
-- Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `COMPUTER_VISION_ENDPOINT`a.
+- Egy kódszerkesztő, például [a Visual Studio-kód](https://code.visualstudio.com/download).
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-A minta létrehozásához és futtatásához másolja a következő kódot a kódszerkesztőba. 
+A minta létrehozásához és futtatásához másolja a következő kódot a kódszerkesztőbe. 
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -75,23 +77,23 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 
 Ezután tegye a következőket:
 1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyhez miniatűrt szeretne létrehozni.
-1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-thumbnail.py`.
-1. Nyisson meg egy parancssort.
-1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-thumbnail.py`.
+1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `get-thumbnail.py`.
+1. Nyisson meg egy parancsablakot.
+1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python get-thumbnail.py`.
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer sikeres választ ad vissza bináris adatként, amely a miniatűr képéneket jelöli. A mintának ezt a képet kell megjelenítenie. Ha a kérelem sikertelen, a válasz megjelenik a parancssorablakban, és tartalmaznia kell egy hibakódot.
+A sikeres válasz bináris adatként kerül ad vissza, amely a miniatűr képadatait jelöli. A mintának meg kell jelenítenie ezt a képet. Ha a kérés sikertelen, a válasz megjelenik a parancssorablakban, és hibakódot kell tartalmaznia.
 
-## <a name="run-in-jupyter-optional"></a>Futtatás a Jupyter (nem kötelező)
+## <a name="run-in-jupyter-optional"></a>Futtatás Jupyterben (nem kötelező)
 
-A rövid útmutató lépésről lépésre elindítható a [MyBinder](https://mybinder.org)Jupyter notebookjának használatával. A Binder indításához válassza az alábbi gombot:
+Ezt a rövid útmutatót lépésről lépésre futtathatja a [MyBinder](https://mybinder.org)Jupyter notebookjával. A Binder indításához válassza az alábbi gombot:
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Iratgyűjtő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Következő lépésként tájékozódjon részletesebben a miniatűr generálási funkciójával kapcsolatban.
+Ezután további részletes információkat talál a miniatűrök létrehozásáról.
 
 > [!div class="nextstepaction"]
 > [Miniatűrök létrehozása](../concept-generating-thumbnails.md)

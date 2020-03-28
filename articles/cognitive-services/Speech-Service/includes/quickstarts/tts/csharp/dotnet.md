@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési hangszintézis, C# (Windows) – Speech Service'
+title: 'Rövid útmutató: Beszéd szintetizálása, C# (Windows) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ez az útmutató egy szöveg-beszédes konzol alkalmazás létrehozására használható a .NET-keretrendszer for Windows és a Speech SDK használatával. Ha elkészült, a beszédet a szövegből is szintetizálhatja, és valós időben hallhatja a beszédet a beszélőn.
+description: Ez az útmutató a . Ha elkészült, a szövegből szintetizálhatja a beszédet, és valós időben hallhatja a beszédeket a hangszórón.
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
 ms.openlocfilehash: b615ba8085650e9aa686fb4a229d9752c4f6e2ce
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925331"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg a **program.cs** , és cserélje le az automatikusan generált kódot a következő mintára:
+1. Nyissa **meg Program.cs,** és cserélje le az automatikusan létrehozott kódot erre a mintára:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Keresse meg a `YourSubscriptionKey`karakterláncot, és cserélje le a Speech Service előfizetési kulcsára.
+1. Keresse meg `YourSubscriptionKey`a karakterláncot , és cserélje le a beszédszolgáltatás-előfizetési kulcsra.
 
-1. Keresse meg a `YourServiceRegion`karakterláncot, és cserélje le az előfizetéséhez tartozó [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . Ha például az ingyenes próbaverziós előfizetést használja, akkor a régió `westus`.
+1. Keresse meg `YourServiceRegion`a karakterláncot , és cserélje le az előfizetéshez társított [régióra.](~/articles/cognitive-services/Speech-Service/regions.md) Ha például az ingyenes próba-előfizetést használja, `westus`a régió a .
 
-1. A menüsávban válassza a **fájl** > **az összes mentése**lehetőséget.
+1. A menüsorban válassza az > **Összes** **fájlmentése**lehetőséget.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a **build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. A menüsorban válassza a Build megoldás **összeállítása** > **Build Solution** az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. A **HelloWorld** alkalmazás indításához válassza a hibakeresés > a **hibakeresés megkezdése** (vagy az **F5**kiválasztása **) lehetőséget.**
+1. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5**) lehetőséget.
 
-1. Írjon be egy angol kifejezést vagy mondatot. Az alkalmazás továbbítja a szöveget a beszédfelismerési szolgáltatásnak, amely szintetizált beszédet küld az alkalmazásnak a beszélőn való lejátszáshoz.
+1. Írjon be egy angol kifejezést vagy mondatot. Az alkalmazás továbbítja a szöveget a beszédszolgáltatás, amely elküldi a szintetizált beszéd az alkalmazás játszani a hangszórón.
 
-   ![Speech szintézis felhasználói felület](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
+   ![Beszédszintézis felhasználói felülete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]
 

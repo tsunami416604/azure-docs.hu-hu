@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837513"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "71837513"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új go-projektet a kedvenc IDE vagy szerkesztő használatával. Ezután másolja a következő kódrészletet egy `detect-language.go` nevű fájlba a projektjében.
+Hozzon létre egy új Go projektet kedvenc IDE vagy szerkesztő használatával. Ezután másolja a következő kódrészletet egy `detect-language.go` nevű fájlba a projektjében.
 
 ```go
 package main
@@ -33,9 +33,9 @@ import (
 )
 ```
 
-## <a name="create-the-main-function"></a>A fő függvény létrehozása
+## <a name="create-the-main-function"></a>A fő funkció létrehozása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből a környezeti változókból: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` és a `endpoint` karakterláncokat, és megjegyzéseket fűzhet a feltételes utasításokhoz.
+Ez a minta megpróbálja elolvasni a Translator Text előfizetési `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` `TRANSLATOR_TEXT_ENDPOINT`kulcsot és végpontot az alábbi környezeti változókból: és . Ha nem ismeri a környezeti változókat, `subscriptionKey` `endpoint` beállíthatja, karakterláncként, és megjegyzést fűzhet a feltételes utasításokhoz.
 
 Másolja a projektbe a következő kódot:
 
@@ -65,9 +65,9 @@ func main() {
 }
 ```
 
-## <a name="create-a-function-to-detect-the-text-language"></a>Függvény létrehozása a szöveg nyelvének észleléséhez
+## <a name="create-a-function-to-detect-the-text-language"></a>A szöveg nyelvének észlelésére szolgáló függvény létrehozása
 
-Hozzunk létre egy függvényt a szöveg nyelvének észleléséhez. Ez a függvény egyetlen argumentumot, a Translator Text előfizetési kulcsot fogja megtenni.
+Hozzunk létre egy függvényt a szöveg nyelvének észlelésére. Ez a függvény egyetlen argumentumot, a Translator Text előfizetési kulcsot vesz igénybe.
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -78,9 +78,9 @@ func detect(subscriptionKey string, uri string) {
 }
 ```
 
-Ezután hozzon létre egy URL-címet. Az URL-cím a `Parse()` és a `Query()` metódusok használatával készült.
+Ezután készítsük el az URL-címet. Az URL-cím `Parse()` a `Query()` és a módszerek használatával épül fel.
 
-Másolja ezt a kódot a `detect` függvénybe.
+Másolja ezt a `detect` kódot a függvénybe.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
@@ -90,11 +90,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: Észlelés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd a [Translator Text API 3.0 felismerési funkcióját ismertető részt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
-## <a name="create-a-struct-for-your-request-body"></a>Struct létrehozása a kérés törzséhez
+## <a name="create-a-struct-for-your-request-body"></a>Struct létrehozása a kérelem törzséhez
 
-Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, és kódolja JSON-ként `json.Marshal()` értékkel. Adja hozzá ezt a kódot a `detect` függvényhez.
+Ezután hozzon létre egy névtelen struktúrát a kérelemtörzsszámára, és kódolja JSON-ként a segítségével. `json.Marshal()` Adja hozzá ezt `detect` a kódot a függvényhez.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -106,9 +106,9 @@ body := []struct {
 b, _ := json.Marshal(body)
 ```
 
-## <a name="build-the-request"></a>A kérelem létrehozása
+## <a name="build-the-request"></a>A kérelem felépítése
 
-Most, hogy kódolta a kérés törzsét JSON-ként, felépítheti a POST-kérést, és meghívhatja a Translator Text API.
+Most, hogy jsonként kódolta a kérelemtörzset, létrehozhatja a POST-kérelmet, és meghívhatja a Translator Text API-t.
 
 ```go
 // Build the HTTP POST request
@@ -127,11 +127,11 @@ if err != nil {
 }
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem paramétereit is meg kell egyeznie. [További információ a többszolgáltatásos előfizetés hitelesítéséről.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
-## <a name="handle-and-print-the-response"></a>A válasz kezelése és nyomtatása
+## <a name="handle-and-print-the-response"></a>A válasz leírója és nyomtatása
 
-Adja hozzá ezt a kódot a `detect` függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
+Adja hozzá ezt `detect` a kódot a függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
 
 ```go
 // Decode the JSON response
@@ -156,10 +156,10 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-A minta futtatása után a következőnek kell megjelennie a terminálon:
+A minta futtatása után a következő nyomtatott feliratot kell látnia a terminálra:
 
 > [!NOTE]
-> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Keresse meg az ország/régió rövidítését ebben [a nyelveklistájában.](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)
 
 
 ```json
@@ -189,7 +189,7 @@ A minta futtatása után a következőnek kell megjelennie a terminálon:
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

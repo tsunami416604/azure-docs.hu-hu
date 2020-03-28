@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 636669ee4284d218d5ac2c6e2e7cdb37b00b3a5b
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77279456"
 ---
 1. A LUIS-webhely jobb felső részén kattintson a **Train** (Betanítás) gombra.
 
     ![Betanítás gomb](../media/train-button-preview.png)
 
-2. A betanítás akkor fejeződik be, amikor megjelenik az állapot megerősítésének sikeressége.
+2. Az edzés akkor fejeződik be, ha látja a sikeresállapotot.
 
     > [!Tip]
-    > Az **értesítések** a jobb felső navigációs sávon érhetők el, és előzményeket tartalmaznak.
+    > **Az értesítések** a jobb felső navigációs sávon érhetők el, és egy előzményt is tartalmaznak.

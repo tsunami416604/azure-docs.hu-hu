@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: TensorFlow-modell Python nyelven – Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: TensorFlow-modell futtatása Python nyelven. Ez a cikk csak a Custom Vision szolgáltatás képbesorolási projektjeiből exportált modellekre vonatkozik.
+description: TensorFlow-modell futtatása Python nyelven. Ez a cikk csak a Custom Vision szolgáltatásképbesorolási projektjeiből exportált modellekre vonatkozik.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74969839"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
@@ -22,16 +22,16 @@ ms.locfileid: "74969839"
 Miután [exportálta a TensorFlow-modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) a Custom Vision Service-ből, ez a rövid útmutató azt fogja bemutatni, hogyan használhatja a modellt képek helyi besorolására.
 
 > [!NOTE]
-> Ez az oktatóanyag csak a képbesorolási projektekben exportált modellekre vonatkozik.
+> Ez az oktatóanyag csak a képbesorolási projektekből exportált modellekre vonatkozik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag használatához a következőkre lesz szüksége:
+Az oktatóanyag használatához a következőket kell tennie:
 
 - Vagy Python 2.7 + vagy Python 3.5+ telepítése.
-- Pip telepítése.
+- Telepítse a pipet.
 
-Ezután telepítenie kell a következő csomagokat:
+Ezután a következő csomagokat kell telepítenie:
 
 ```
 pip install tensorflow
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Kép előkészítése előrejelzéshez
 
-A rendszerkép előkészítéséhez néhány lépést el kell végeznie. Ezek a lépések a betanítás során végrehajtott képkezeléshez hasonlítanak:
+Van néhány lépés, amit meg kell tennie, hogy előkészítse a képet az előrejelzéshez. Ezek a lépések a betanítás során végrehajtott képkezeléshez hasonlítanak:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Nyissa meg a fájlt, és hozzon létre egy képet BGR színtérrel
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Képek kezelése > 1600 dimenzióval
+### <a name="handle-images-with-a-dimension-1600"></a>1600 >méretű képek kezelése
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Kép előrejelzése
 
-Miután a képet felkészítette a tenser-ként, elküldheti azt a modellen keresztül az előrejelzéshez:
+Miután a kép előkészíti, mint egy tenzor, tudjuk küldeni a modellen keresztül egy előrejelzés:
 
 ```Python
 
@@ -208,9 +208,9 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
         label_index += 1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Következő lépésként megtudhatja, hogyan csomagolhatja be a modellt egy mobil alkalmazásba:
+Ezután ismerje meg, hogyan csomagolhatja be a modellt egy mobilalkalmazásba:
 * [Az exportált TensorFlow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Az exportált CoreML-modell használata Swift nyelvű iOS-alkalmazásban](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Az exportált CoreML-modell használata iOs-alkalmazásban a Xamarinnal](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

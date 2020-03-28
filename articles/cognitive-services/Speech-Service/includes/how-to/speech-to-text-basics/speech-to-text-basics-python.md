@@ -5,53 +5,53 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
 ms.openlocfilehash: c8354a67d26210035355f4947cb5f17cee934508
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79372822"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk a következőket feltételezi:
 
-* Azure-fiókkal és Speech Service-előfizetéssel rendelkezik. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../get-started.md).
+* Rendelkezik egy Azure-fiókkal és beszédszolgáltatás-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel – [próbálja ki ingyen a Beszéd szolgáltatást.](../../../get-started.md)
 
-## <a name="install-and-import-the-speech-sdk"></a>A Speech SDK telepítése és importálása
+## <a name="install-and-import-the-speech-sdk"></a>A beszédfelismerési SDK telepítése és importálása
 
-Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t.
+Mielőtt bármit is tehetne, telepítenie kell a beszédfelismerési SDK-t.
 
 ```Python
 pip install azure-cognitiveservices-speech
 ```
 
-Ha macOS rendszeren fut, és telepítési problémákba ütközik, előfordulhat, hogy először futtatnia kell ezt a parancsot.
+Ha macOS rendszert futtat, és telepítési problémákba ütközik, előfordulhat, hogy először futtatnia kell ezt a parancsot.
 
 ```Python
 python3 -m pip install --upgrade pip
 ```
 
-A Speech SDK telepítését követően importálja azt a Python-projektbe ezzel az utasítással.
+A beszédbeszéd SDK telepítése után importálja azt a Python-projektbe ezzel a kijelentéssel.
 
 ```Python
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
+## <a name="create-a-speech-configuration"></a>Beszédkonfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python). Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás hívásához létre kell hoznia [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)egy . Ez az osztály az előfizetéssel kapcsolatos információkat is tartalmaz, például a kulcsot és a kapcsolódó régiót, végpontot, állomást vagy engedélyezési jogkivonatot.
 
 > [!NOTE]
-> Függetlenül attól, hogy elvégezte-e a beszédfelismerést, a beszédfelismerést, a fordítást vagy a szándék felismerését, mindig hozzon létre egy konfigurációt.
+> Függetlenül attól, hogy beszédfelismerést, beszédszintetizálást, fordítást vagy szándékfelismerést végez, mindig létrehoz egy konfigurációt.
 
-A [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)inicializálása többféleképpen is elvégezhető:
+Többféleképpen is inicializálhatja a következőket: [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)
 
-* Előfizetéssel: adjon egy kulcsot és a hozzá tartozó régiót.
-* Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
-* Gazdagép esetén: adjon meg egy gazdagép-címeket. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
-* Engedélyezési jogkivonattal: adjon meg egy engedélyezési jogkivonatot és a hozzá tartozó régiót.
+* Előfizetéssel: adja át a kulcsot és a társított régióban.
+* Végpont: adja át a beszédszolgáltatás végpont. A kulcs vagy engedélyezési jogkivonat nem kötelező.
+* Állomással: adja át az állomáscímet. A kulcs vagy engedélyezési jogkivonat nem kötelező.
+* Egy engedélyezési jogkivonattal: adja át egy engedélyezési jogkivonatot és a társított régiót.
 
-Vessünk egy pillantást arra, hogyan jön létre egy [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) egy kulcs és egy régió használatával.
+Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) hogyan jön létre az a egy kulcs és régió használatával.
 
 ```Python
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
@@ -60,25 +60,25 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 
 ## <a name="initialize-a-recognizer"></a>Felismerő inicializálása
 
-[`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)létrehozása után a következő lépés egy [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)inicializálása. [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)inicializálásakor át kell adnia a `speech_config`. Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
+Miután létrehozott egy [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)t, a következő lépés [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)a . inicializálása. Amikor inicializál egy, [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)akkor át `speech_config`kell adnia a . Ez biztosítja a hitelesítő adatokat, amelyek a beszédszolgáltatás érvényesítéséhez szükséges.
 
-Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a [`SpeechRecognizer`nek](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) a következőképpen kell kinéznie:
+Ha az eszköz alapértelmezett mikrofonjával ismeri fel a beszédet, [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python) a következőket kell tennie:
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 ```
 
-Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) , és meg kell adnia a `audio_config` paramétert a [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)inicializálásakor.
+Ha meg szeretné adni a hangbemeneti eszközt, akkor [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python) létre `audio_config` kell hoznia [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)egy és meg kell adnia a paramétert a inicializálásakor.
 
 > [!TIP]
-> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
+> [További információ arról, hogyan szerezheti be a hangbemeneti eszköz eszközazonosítóját.](../../../how-to-select-audio-input-devices.md)
 
 ```Python
 audio_config = AudioConfig(device_name="<device id>");
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 ```
 
-Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia egy `audio_config`. Ha azonban a `device_name`megadása helyett [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python)hoz létre, akkor a `filename` paramétert fogja használni.
+Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor is meg `audio_config`kell adnia egy . Ha azonban létrehoz [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python)egy , ahelyett, `device_name`hogy a, `filename` akkor használja a paramétert.
 
 ```Python
 audio_filename = "whatstheweatherlike.wav"
@@ -88,35 +88,35 @@ speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audi
 
 ## <a name="recognize-speech"></a>Beszéd felismerése
 
-A Pythonhoz készült Speech SDK [felismerő osztálya](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python) néhány olyan módszert tesz elérhetővé, amelyet a beszédfelismeréshez használhat.
+A Speech SDK python-hoz tartozó [Recognizer osztály](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python) néhány olyan módszert tár fel, amelyeket a beszédfelismeréshez használhat.
 
-* Single-shot felismerés (szinkronizálás) – az elismerést blokkolja (szinkron) módban hajtja végre. A függvény egyetlen Kimondás után ad vissza értéket. Az egyetlen kiírás végének meghatározása úgy történik, hogy a csendet figyeli a végén, vagy legfeljebb 15 másodperces hangot dolgoz fel. A feladat eredményként visszaadja az elismerés szövegét.
-* Single-shot felismerés (aszinkron) – az elismerést nem blokkoló (aszinkron) módban végzi. Ez egyetlen Kimondás felismerését fogja felismerni. Az egyetlen kiírás végének meghatározása úgy történik, hogy a csendet figyeli a végén, vagy legfeljebb 15 másodperces hangot dolgoz fel.
-* Folyamatos felismerés (szinkronizálás) – a folyamatos felismerést szinkron módon kezdeményezi. Az ügyfélnek csatlakoznia kell `EventSignal`hoz a felismerési eredmények fogadásához. Az felismerés leállításához hívja meg [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--).
-* Folyamatos felismerés (aszinkron) – aszinkron módon kezdeményezi a folyamatos felismerési műveletet. A felhasználónak csatlakoznia kell a EventSignal az elismerés eredményeinek fogadásához. Az aszinkron folyamatos felismerés leállításához hívja meg a [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--)metódust.
+* Egylövéses felismerés (szinkronizálás) – A felismerést blokkoló (szinkron) módban hajtja végre. Egyetlen utterance (kifejezés) felismerése után adja vissza. Az egyetlen utterance (kifejezés) végét a csend figyelése határozza meg a végén, vagy amíg legfeljebb 15 másodpercnyi hang feldolgozása meg nem történik. A tevékenység eredményként adja vissza a felismerés szövegét.
+* Egylövéses felismerés (aszinkron) – Nem blokkoló (aszinkron) módban végzi a felismerést. Ez felismeri az egyetlen utterance (kifejezés). Az egyetlen utterance (kifejezés) végét a csend figyelése határozza meg a végén, vagy amíg legfeljebb 15 másodpercnyi hang feldolgozása meg nem történik.
+* Folyamatos felismerés (szinkronizálás) – Szinkron módon folyamatos felismerést kezdeményez. Az ügyfélnek `EventSignal` csatlakoznia kell a felismerési eredmények fogadásához. A felismerés leállításához hívjuk a [stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--).
+* Folyamatos felismerés (aszinkron) – Aszinkron módon folyamatos felismerési műveletet kezdeményez. A felhasználónak csatlakoznia kell az EventSignal-hoz, hogy megkapja a felismeréseredményeit. Az aszinkron folyamatos felismerés leállításához hívja meg [a stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--).
 
 > [!NOTE]
-> További információ a [beszédfelismerési mód kiválasztásáról](../../../how-to-choose-recognition-mode.md).
+> További információ a [beszédfelismerési mód kiválasztásáról.](../../../how-to-choose-recognition-mode.md)
 
-### <a name="single-shot-recognition"></a>Egyszeri felvétel felismerése
+### <a name="single-shot-recognition"></a>Egylövetű felismerés
 
-Íme egy példa arra, hogy hogyan történik a szinkron egylépéses felismerés a [`recognize_once()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once)használatával:
+Íme egy példa a szinkron egylövéses felismerésre a következők használatával: [`recognize_once()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once)
 
 ```Python
 result = speech_recognizer.recognize_once()
 ```
 
-Íme egy példa arra, hogy hogyan történik a szinkron egylépéses felismerés a [`recognize_once_async()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once-async------azure-cognitiveservices-speech-resultfuture)használatával:
+Íme egy példa a szinkron egylövéses felismerésre a következők használatával: [`recognize_once_async()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once-async------azure-cognitiveservices-speech-resultfuture)
 
 ```Python
 result = speech_recognizer.recognize_once_async()
 ```
 
-Függetlenül attól, hogy a szinkron vagy az aszinkron módszert használta-e, meg kell írnia egy kódot, hogy megismételje az eredményt. Ez a példa a [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python)értékeli ki:
+Függetlenül attól, hogy a szinkron vagy aszinkron módszert használta, az eredményen keresztül valamilyen kódot kell írnia. Ez a minta a [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python)következőket értékeli:
 
-* Kinyomtatja a felismerés eredményét: `speechsdk.ResultReason.RecognizedSpeech`
-* Ha nincs felismerési egyezés, tájékoztassa a felhasználót: `speechsdk.ResultReason.NoMatch `
-* Ha hiba történt, nyomtassa ki a következő hibaüzenetet: `speechsdk.ResultReason.Canceled`
+* Kinyomtatja a felismerés eredményét:`speechsdk.ResultReason.RecognizedSpeech`
+* Ha nincs egyezés a felismeréssel, értesítse a felhasználót:`speechsdk.ResultReason.NoMatch `
+* Ha hiba történik, nyomtassa ki a hibaüzenetet:`speechsdk.ResultReason.Canceled`
 
 ```Python
 if result.reason == speechsdk.ResultReason.RecognizedSpeech:
@@ -132,26 +132,26 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="continuous-recognition"></a>Folyamatos felismerés
 
-A folyamatos felismerés valamivel többet vesz igénybe, mint a single-shot felismerés. Ehhez a `EventSignal`hoz kell csatlakoznia az eredmények felismeréséhez, és az felismerés leállításához meg kell hívnia a [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) vagy a [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--)függvényt. Íme egy példa arra, hogyan történik a folyamatos felismerés egy hangbemeneti fájlon.
+Folyamatos felismerés egy kicsit több szó, mint egy-shot felismerés. Ez megköveteli, hogy `EventSignal` csatlakozzon a, hogy a felismerés eredményeit, és a stop felismerés, meg kell hívni [stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) vagy [stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--). Íme egy példa arra, hogyan történik a folyamatos felismerés egy hangbemeneti fájlban.
 
-Kezdjük azzal, hogy meghatározza a bemenetet, és inicializál egy [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python):
+Kezdjük a bemenet meghatározásával és a [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python)következő inicializálásával:
 
 ```Python
 audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 ```
 
-Ezután hozzon létre egy változót a beszédfelismerés állapotának kezeléséhez. A kezdéshez be kell állítani ezt `False`re, mert az elismerés elején nyugodtan feltételezhető, hogy nem fejeződött be.
+Ezután hozzunk létre egy változót a beszédfelismerés állapotának kezeléséhez. Először is ezt úgy `False`állítjuk be, hogy az elismerés kezdetén nyugodtan feltételezhetjük, hogy még nincs kész.
 
 ```Python
 done = False
 ```
 
-Most létrehozunk egy visszahívást a folyamatos felismerés leállításához, amikor egy `evt` érkezik. Van néhány dolog, amit érdemes szem előtt tartani.
+Most létrehozunk egy visszahívást, hogy leállítsuk `evt` a folyamatos felismerést, amikor egy fogadás érkezik. Van néhány dolog, amit észben kell tartanod.
 
-* `evt` fogadásakor a rendszer kinyomtatja a `evt` üzenetet.
-* Egy `evt` fogadása után a rendszer meghívja a [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) metódust az elismerés leállítására.
-* Az felismerési állapot `True`ra módosul.
+* Amikor `evt` egy fogadásérkezik, a rendszer kinyomtatja az `evt` üzenetet.
+* A `evt` fogadásután [a stop_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) a felismerés leállítására van hivatott.
+* A felismerési állapot `True`a ikonra változik.
 
 ```Python
 def stop_cb(evt):
@@ -161,13 +161,13 @@ def stop_cb(evt):
     done = True
 ```
 
-Ez a mintakód azt mutatja be, hogyan csatlakoztathatók a visszahívások a [`SpeechRecognizer`ból ](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#start-continuous-recognition--)eljuttatott eseményekhez.
+Ez a kódminta bemutatja, hogyan lehet [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#start-continuous-recognition--)visszahívásokat csatlakoztatni a rendszerből küldött eseményekhez.
 
-* [`recognizing`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognizing): a köztes felismerési eredményeket tartalmazó események jelzése.
-* [`recognized`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognized): a végső felismerési eredményeket tartalmazó események jelzése (sikeres felismerési kísérletet jelezve).
-* [`session_started`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-started): a felismerési munkamenet kezdetét jelző események jelzése (művelet).
-* [`session_stopped`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped): az elismerési munkamenet végét jelző események jelzése (művelet).
-* [`canceled`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#canceled): a megszakított felismerési eredményeket tartalmazó események jelzése (olyan felismerési kísérletet jelez, amelyet a rendszer az eredmény vagy a közvetlen törlési kérelem miatt megszakított, vagy ha egy átviteli vagy protokollhiba történt).
+* [`recognizing`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognizing): Jelzés a közbenső felismerési eredményeket tartalmazó eseményekre.
+* [`recognized`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognized): Jelzés a végső felismerési eredményeket tartalmazó eseményekre (sikeres felismerési kísérlet jelzése).
+* [`session_started`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-started): A felismerési munkamenet (művelet) kezdetét jelző események jelzése.
+* [`session_stopped`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped): A felismerési munkamenet (művelet) végét jelző események jelzése.
+* [`canceled`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#canceled): Jelzés a visszavont felismerési eredményeket tartalmazó eseményekhez (olyan felismerési kísérlet jelzése, amelyet ennek eredményeként vagy közvetlen törlési kérelem, vagy átvitel- vagy protokollhiba miatt töröltek).
 
 ```Python
 speech_recognizer.recognizing.connect(lambda evt: print('RECOGNIZING: {}'.format(evt)))
@@ -180,7 +180,7 @@ speech_recognizer.session_stopped.connect(stop_cb)
 speech_recognizer.canceled.connect(stop_cb)
 ```
 
-Minden beállítással meghívhatjuk [start_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped).
+Minden létre, hívhatjuk [start_continuous_recognition()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped).
 
 ```Python
 speech_recognizer.start_continuous_recognition()
@@ -190,49 +190,49 @@ while not done:
 
 ### <a name="dictation-mode"></a>Diktálási mód
 
-Folyamatos felismerés használatakor engedélyezheti a diktálás feldolgozását a megfelelő "diktálás engedélyezése" funkció használatával. Ez a mód azt eredményezi, hogy a beszédfelismerési konfigurációs példány értelmezi a mondatok (például a központozás) szövegének leírását. A "Do You Live in Town kérdőjel" kifejezés például "a városban él?" szöveget fogja értelmezni.
+Folyamatos felismerés használataesetén engedélyezheti a diktálás feldolgozását a megfelelő "Diktálás engedélyezése" funkcióval. Ezzel a móddal a beszédfelismerési konfigurációs példány értelmezi a mondatstruktúrák, például az írásjelek szóleírását. Például a "A városban él" kimondott szöveget a "A városban él?" szövegként értelmezi.
 
-A diktálási mód engedélyezéséhez használja a [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) [`enable_dictation()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--) metódusát.
+A diktálási mód engedélyezéséhez használja a [`enable_dictation()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--) módszerét a on. [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)
 
 ```Python 
 SpeechConfig.enable_dictation()
 ```
 
-## <a name="change-source-language"></a>Forrás nyelvének módosítása
+## <a name="change-source-language"></a>Forrásnyelv módosítása
 
-A beszédfelismerés általános feladata, hogy megadja a bemeneti (vagy a forrás) nyelvet. Vessünk egy pillantást arra, hogyan változtathatja meg a szövegbeviteli nyelvet németre. A kódban keresse meg a SpeechConfig, majd adja hozzá közvetlenül a sort.
+A beszédfelismerés gyakori feladata a bemeneti (vagy forrás) nyelv megadása. Vessünk egy pillantást arra, hogyan változtatná meg a beviteli nyelvet németre. A kódban keresse meg a SpeechConfig-ot, majd adja hozzá ezt a sort közvetlenül alatta.
 
 ```Python
 speech_config.speech_recognition_language="de-DE"
 ```
 
-[`speech_recognition_language`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-recognition-language) egy paraméter, amely argumentumként egy karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
+[`speech_recognition_language`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-recognition-language)egy olyan paraméter, amely egy karakterláncot argumentumként vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
 
-## <a name="improve-recognition-accuracy"></a>Az elismerés pontosságának javítása
+## <a name="improve-recognition-accuracy"></a>A felismerés pontosságának javítása
 
-A Speech SDK-val többféleképpen javítható az elismerés pontossága. Vessünk egy pillantást a kifejezések listájára. A kifejezések listája a hangadatokban található ismert kifejezések azonosítására szolgál, például egy személy nevéhez vagy egy adott helyhez. Az egyes szavak vagy teljes kifejezések hozzáadhatók egy kifejezési listához. Az elismerés során a rendszer a kifejezések listájában szereplő bejegyzést használja, ha a teljes kifejezés pontos egyezése szerepel a hangban. Ha a kifejezés pontos egyezése nem található, az elismerés nem támogatott.
+A beszédfelismerési SDK segítségével többféleképpen is javíthatja a felismerés pontosságát. Vessünk egy pillantást a kifejezéslistákra. A Kifejezéslisták kifejezéssel azonosítják a hangadatokban szereplő ismert kifejezéseket, például egy személy nevét vagy egy adott helyet. A kifejezéslistához egyetlen szó vagy teljes kifejezés adható. Az elismerés során a kifejezéslista egy bejegyzését használja, ha a teljes kifejezés pontos egyezése szerepel a hangban. Ha nem talál pontos egyezést a kifejezéssel, az elismerés nem segít.
 
 > [!IMPORTANT]
-> A kifejezés lista szolgáltatás csak angol nyelven érhető el.
+> A Kifejezéslista szolgáltatás csak angol nyelven érhető el.
 
-A kifejezések listájának használatához először hozzon létre egy [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) objektumot, majd adjon hozzá konkrét szavakat és kifejezéseket a [`addPhrase`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-).
+Kifejezéslista használatához először hozzon létre egy [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) objektumot, [`addPhrase`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-)majd adjon hozzá konkrét szavakat és kifejezéseket a használatával.
 
-A [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) változásai a következő felismeréskor vagy a beszédfelismerési szolgáltatáshoz való Újrakapcsolódás után lépnek érvénybe.
+A következő [`PhraseListGrammar`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python) felismerésre vagy a beszédfelismerési szolgáltatáshoz való újracsatlakozást követően végrehajtott módosítások.
 
 ```Python
 phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
 phrase_list_grammar.addPhrase("Supercalifragilisticexpialidocious")
 ```
 
-Ha törölnie kell a kifejezések listáját: 
+Ha törölnie kell a kifejezéslistát: 
 
 ```Python
 phrase_list_grammar.clear()
 ```
 
-### <a name="other-options-to-improve-recognition-accuracy"></a>Egyéb lehetőségek az elismerés pontosságának növeléséhez
+### <a name="other-options-to-improve-recognition-accuracy"></a>Egyéb lehetőségek a felismerés pontosságának javítására
 
-A kifejezések listája csak egyetlen lehetőség az elismerés pontosságának javítására. További lehetőségek: 
+A kifejezéslisták csak egy lehetőség a felismerés pontosságának javítására. További lehetőségek: 
 
-* [A pontosság javítása Custom Speech](../../../how-to-custom-speech.md)
-* [A pontosság javítása a bérlői modellekkel](../../../tutorial-tenant-model.md)
+* [Pontosság javítása Custom Speech segítségével](../../../how-to-custom-speech.md)
+* [Pontosság javítása bérlőmodellekkel](../../../tutorial-tenant-model.md)

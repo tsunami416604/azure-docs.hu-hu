@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: alkalmazás üzembe helyezése a LUIS-portálon'
+title: 'Rövid útmutató: Alkalmazás üzembe helyezése a LUIS-portállal'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alkalmazást az előrejelzési végpontok erőforrásának létrehozásával, az erőforrás hozzárendelésével, a képzéssel és az alkalmazás közzétételével.
+description: Ez a rövid útmutató bemutatja, hogyan telepíthet egy alkalmazást előrejelzési végpont-erőforrás létrehozásával, az erőforrás hozzárendelésével, a képzéssel és az alkalmazás közzétételével.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,72 +11,72 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79241779"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rövid útmutató: Alkalmazás üzembe helyezése a LUIS-portálon
 
-Ha a LUIS-alkalmazás készen áll arra, hogy egy ügyfélalkalmazás (például egy csevegési robot) teljes beolvasását adja vissza, az alkalmazást az előrejelzési végpontra kell telepítenie.
+Amikor a LUIS-alkalmazás készen áll az utterance (nedv) egy ügyfélalkalmazás (például egy csevegőrobot) visszaadására, telepítenie kell az alkalmazást az előrejelzési végpontra.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy alkalmazást. Létrehoz egy előrejelzési végpont-erőforrást, hozzárendeli az erőforrást az alkalmazáshoz, betanítja az alkalmazást, és közzéteszi az alkalmazást.
+Ebben a rövid útmutatóban megtudhatja, hogy egy alkalmazás üzembe helyezése. Hozzon létre egy előrejelzési végpont erőforrást, rendelje hozzá az erőforrást az alkalmazáshoz, tanítsa be az alkalmazást, és tegye közzé az alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure- [előfizetés](https://azure.microsoft.com/free)beszerzése.
-* Fejezze be az [előző portál](get-started-portal-build-app.md) rövid útmutatóját [, vagy töltse le és importálja az alkalmazást](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
-* Ha olyan alkalmazásokkal rendelkezik, amelyek előzetes Azure-erőforrás-hitelesítést végeznek, váltson [át egy Azure-erőforrásra](luis-migration-authoring.md). Egyes portál oldalak eltérőek, ha az e-mail-hitelesítés érvényben van.
+* Szerezzen be egy [Azure-előfizetést.](https://azure.microsoft.com/free)
+* Töltse ki az [előző portál gyorsindítását,](get-started-portal-build-app.md) illetve [töltse le és importálja az alkalmazást.](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)
+* Ha olyan alkalmazásokkal rendelkezik, amelyek megelőzik az Azure-erőforrások hitelesítését, [migráljon egy Azure-erőforrásra.](luis-migration-authoring.md) Egyes portáloldalak máshogy néznek ki, ha az e-mail-hitelesítés érvényben van.
 
-## <a name="create-the-endpoint-resource"></a>A végpont erőforrásának létrehozása
+## <a name="create-the-endpoint-resource"></a>Végponterőforrás létrehozása
 
-Az előrejelzési végpont erőforrását a Azure Portal hozza létre. Ez az erőforrás csak végpont-előrejelző lekérdezésekhez használható. Ne használja ezt az erőforrást az alkalmazás módosításainak létrehozásához.
+Az előrejelzési végpont erőforrást az Azure Portalon hozza létre. Ezt az erőforrást csak végpont-előrejelzési lekérdezésekhez szabad használni. Ne használja ezt az erőforrást az alkalmazás módosításaihoz.
 
-1. Jelentkezzen be, és hozzon létre egy erőforrást a [Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
+1. Jelentkezzen be, és hozzon létre egy erőforrást az [Azure Portalon.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 
 1. Konfigurálja az előfizetést a következő beállításokkal:
 
    |Beállítás|Érték|Cél|
    |--|--|--|
-   |Name (Név)|`my-luis-resource`|Az Azure-Erőforrás neve. Erre a névre akkor van szükség, amikor az erőforrást az alkalmazáshoz rendeli a LUIS portálon.|
-   |Előfizetést|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
-   |Erőforráscsoport|`my-resource-group`|Hozzon létre egy új erőforráscsoportot az összes kognitív szolgáltatás erőforrásaihoz. Ha elkészült az erőforrásokkal, törölheti az erőforráscsoportot az előfizetés tisztításához. |
-   |Szerzői hely|**USA nyugati régiója**|Az Azure-régió létrehozásához.|
-   |A szerzői díjak szintjei|**F0**|A szerzői műveletek alapértelmezett díjszabási szintje.|
-   |Futtatókörnyezet helye|**USA nyugati régiója**|Az Azure-régió az előrejelzési végpontok lekérdezéséhez.|
-   |Futtatókörnyezet árképzési szintje|**S0**|Ez az árképzési csomag nagy forgalmú webhelyeket biztosít.|
+   |Név|`my-luis-resource`|Az Azure-erőforrás neve. Erre a névre akkor van szüksége, amikor hozzárendeli az erőforrást az alkalmazáshoz a LUIS-portálon.|
+   |Előfizetés|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
+   |Erőforráscsoport|`my-resource-group`|Hozzon létre egy új erőforráscsoportot az összes kognitív szolgáltatási erőforráshoz. Ha végzett az erőforrásokkal, törölheti az erőforráscsoportot az előfizetés karbantartásához. |
+   |Szerzői hely|**USA nyugati régiója**|Az Azure-régió a szerzői.|
+   |Szerzői tarifacsomag|**F0**|A szerzői jog alapértelmezett tarifacsomagja.|
+   |Futásidejű hely|**USA nyugati régiója**|Az Azure-régió előrejelzési végpontlekérdezések.|
+   |Futásidejű tarifacsomag|**S0**|Ez az árképzési szint nagy forgalmú webhelyeket biztosít.|
    | | | |
 
 
-   ![Azure API választása](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
+   ![Az Azure API-választás](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
 1. Válassza a **Létrehozás** lehetőséget az Azure-erőforrás létrehozásához.
 
-   A következő szakaszban megtudhatja, hogyan csatlakoztatható az új erőforrás egy LUIS-alkalmazáshoz a LUIS-portálon.
+   A következő szakaszban megtudhatja, hogyan kapcsolhatja össze ezt az új erőforrást egy LUIS-alkalmazással a LUIS-portálon.
 
-## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Az erőforrás-kulcs kiosztása a LUIS-alkalmazáshoz a LUIS-portálon
+## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Az erőforráskulcs hozzárendelése a LUIS-alkalmazáshoz a LUIS-portálon
 
-Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. A hozzárendelés után ezt a lépést csak akkor kell végrehajtania, ha új erőforrást hoz létre. Létrehozhat egy új erőforrást az alkalmazás régiói kibontásához, vagy nagyobb számú előrejelzési lekérdezés támogatásához.
+Minden alkalommal, amikor új erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. Miután hozzávan rendelve, nem kell újra megtennie ezt a lépést, hacsak nem hoz létre egy új erőforrást. Előfordulhat, hogy hozzon létre egy új erőforrást az alkalmazás régióinak bővítéséhez vagy az előrejelzési lekérdezések nagyobb számának támogatásához.
 
-1. Jelentkezzen be a [Luis-portálra](https://preview.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
+1. Jelentkezzen be az [előzetes LUIS portálra,](https://preview.luis.ai) és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listájából.
 
-1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza az **Azure-erőforrások**lehetőséget.
+1. Válassza a jobb felső menü **Kezelés parancsát,** majd az **Azure Resources parancsot.**
 
-1. A LUIS hozzáadásához válassza az **előrejelzési erőforrás hozzáadása**lehetőséget.
+1. A LUIS hozzáadásához válassza az **Előrejelzési erőforrás hozzáadása**lehetőséget.
 
-    ![A LUIS-előrejelzési erőforrás hozzáadásához válassza az előrejelzési erőforrás hozzáadása lehetőséget.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
+    ![A LUIS-előrejelzési erőforrás hozzáadásához válassza az Előrejelzési erőforrás hozzáadása lehetőséget.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
+1. Válassza ki a bérlő, az előfizetés és az erőforrás nevét. Válassza **az Erőforrás hozzárendelése**lehetőséget.
 
-   ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
+   ![Erőforrás hozzárendelése az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
+1. Hajtsa végre ugyanezeket a lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 
-1. Keresse meg az új sort a táblában az új előrejelzési erőforráshoz, és másolja a végpont URL-címét. A rendszer megfelelően van kiépítve, hogy egy előrejelzéshez `HTTP GET` kérelmet hozzon létre a LUIS API-végpontnak.
+1. Keresse meg az új előrejelzési erőforrás táblájának új sorát, és másolja a végpont URL-címét. Megfelelően van kialakítva, `HTTP GET` hogy egy kérelmet a LUIS API-végpont egy előrejelzést.
 
 > [!TIP]
-> Ha a LUIS-alkalmazás fejlesztéséhez aktív tanulást szeretne használni, válassza a **lekérdezési paraméterek módosítása** lehetőséget, majd a **naplók mentése**lehetőséget. Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
+> Ha az Aktív tanulás továbbfejlesztett használatával szeretné javítani a LUIS alkalmazást, válassza **a Lekérdezési paraméterek módosítása** lehetőséget, és válassza a Naplók **mentése**lehetőséget. Ez a művelet módosítja `log=true` a példa URL-címét a querystring paraméter hozzáadásával. Másolja és használja a módosított példa lekérdezési URL-cím, amikor előrejelzési lekérdezéseket a futásidejű végpontra.
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
@@ -86,9 +86,9 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
 
-## <a name="prediction-endpoint-request"></a>Előrejelzési végpont kérése
+## <a name="prediction-endpoint-request"></a>Előrejelzési végpont-kérelem
 
-A betekintő portálon `query=` az URL-cím végére, ahol a rendszer hozzáfűzi a felhasználót a GET kérelemhez. A `query=`után adja meg az előző rövid útmutató végén használt felhasználói kiírást:
+Az előzetes verziós `query=` portálon az URL végén, ahol a felhasználó utterance (kifejezés) hozzáfűzi a GET kérés. A `query=`után a , adja meg ugyanazt a felhasználói utterances használt végén az előző rövid útmutató:
 
 ```Is there a form named hrf-234098```
 
@@ -97,7 +97,7 @@ Győződjön meg arról, hogy a lekérdezési karakterlánc a következő párok
 * `show-all-intents=true`
 * `verbose=true`
 
-A böngésző megjeleníti a választ:
+A böngésző a következő választ jeleníti meg:
 
 ```JSON
 {
@@ -136,15 +136,15 @@ A böngésző megjeleníti a választ:
 }
 ```
 
-Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közzé kell tennie az alkalmazást. Az alkalmazás közzététele után válassza az **összehasonlítás a közzétételsel** a teszt ablaktáblán. A közzétett teszt ablaktáblán a **JSON megjelenítése nézet** használatával megtekintheti az előző lépéssel MEGegyező JSON-t. Így összehasonlíthatja a jelenlegi alkalmazás azon módosításait, amelyeket a végponton közzétett alkalmazással használ.
+Ha ugyanilyen szintű információkat szeretne látni a tesztablakban, közzé kell tennie az alkalmazást. Az alkalmazás közzététele után válassza az **Összehasonlítás a közzétetttel** lehetőséget a tesztablaktáblán. Használja **a JSON-nézet megjelenítése** a közzétett tesztablakban, hogy ugyanazt a JSON-t láthassa, mint az előző lépés. Ily módon összehasonlíthatja az aktuális alkalmazás módosításait, amelyen dolgozik egy olyan alkalmazással, amely a végponton közzétett.
 
-[![a jelenleg szerkesztés és az alkalmazás közzétett verziójának összehasonlítása](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Az alkalmazás jelenleg szerkesztése és közzétett verziójának összehasonlítása](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
+Ha végzett ezzel a rövid útmutatóval, válassza a Felső navigációs menü **Saját alkalmazások** parancsát. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista feletti környezeti eszköztáron.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)

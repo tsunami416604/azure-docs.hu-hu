@@ -1,7 +1,7 @@
 ---
 title: A HeadPose attribútum használata
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan használhatja a HeadPose attribútumot az arc téglalap automatikus elforgatásához vagy a Head kézmozdulatok észleléséhez egy videó-hírcsatornában.
+description: Ismerje meg, hogyan használhatja a HeadPose attribútumot az arc téglalapjának automatikus elforgatására vagy a videohírfolyamban lévő fejkézmozdulatok észlelésére.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,25 +10,25 @@ ms.topic: sample
 ms.date: 05/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 534846044770d66ec5171ad4f61de921d2d5d194
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169787"
 ---
 # <a name="use-the-headpose-attribute"></a>A HeadPose attribútum használata
 
-Ebből az útmutatóból megtudhatja, hogyan használhatja az észlelt arc HeadPose attribútumát bizonyos kulcsfontosságú forgatókönyvek engedélyezéséhez.
+Ebben az útmutatóban láthatja, hogyan használhatja az észlelt arc HeadPose attribútumát néhány kulcsfontosságú forgatókönyv engedélyezéséhez.
 
-## <a name="rotate-the-face-rectangle"></a>Az arc téglalap elforgatása
+## <a name="rotate-the-face-rectangle"></a>Az arc téglalapjának elforgatása
 
-Az összes észlelt képpel visszaadott arc téglalap jelzi a képen látható arc helyét és méretét. Alapértelmezés szerint a téglalap mindig a képhez van igazítva (az oldala függőleges és vízszintes); Ez nem hatékony a szögben lévő arcok kialakításához. Olyan helyzetekben, amikor programozott módon kívánja kivágni a képeket a képeken, jobb, ha el szeretné forgatni a téglalapot.
+Az arc téglalapja, amelyet minden észlelt arckal visszaadnak, jelzi az arc helyét és méretét a képen. Alapértelmezés szerint a téglalap mindig a képhez igazodik (oldalai függőlegesek és vízszintesek); ez nem hatékony a ferde lapok kialakításához. Olyan esetekben, amikor programozott módon szeretné körülvágni a képek et, jobb, ha a téglalapot elforgatja a körülvágáshoz.
 
-A [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) minta alkalmazás a HeadPose attribútumot használja az észlelt arc téglalapok elforgatásához.
+A [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) mintaalkalmazás a HeadPose attribútumot használja az észlelt arctéglalapok elforgatásához.
 
-### <a name="explore-the-sample-code"></a>A mintakód megismerése
+### <a name="explore-the-sample-code"></a>A mintakód felfedezése
 
-Az HeadPose attribútum használatával programozott módon elforgathatja az arc téglalapot. Ha az arcok észlelése során megadja ezt az attribútumot (lásd: [arcok észlelése](HowtoDetectFacesinImage.md)), később is lekérdezheti. A [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) alkalmazás következő metódusa a **DetectedFace** objektumok listáját jeleníti meg, és visszaadja a **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** Object objektumok listáját. Az **arc** itt egy olyan egyéni osztály, amely az arc-és a frissített téglalap-koordinátákat is tárolja. A rendszer kiszámítja az új értékeket a **felül**, a **bal**, a **szélesség**és a **magasság**értéknél, és egy új mező **FaceAngle** határozza meg az elforgatást.
+A HeadPose attribútum segítségével programozottmódon elforgathatja az arctéglalapot. Ha ezt az attribútumot az arcok észlelésekor adja meg (lásd: [Arcok észlelése),](HowtoDetectFacesinImage.md)később lekérdezheti azt. A cognitive [services face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) alkalmazás következő módszere az **DetectedFace objektumok** listáját tartalmazza, és visszaadja az **[Arcobjektumok](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** listáját. **A Face** itt egy egyéni osztály, amely arcadatokat tárol, beleértve a frissített téglalap koordinátákat is. A program a **felső,** **bal**, **szélesség**és **magasság**értéket, az új **FaceAngle** mező pedig az elforgatást határozza meg.
 
 ```csharp
 /// <summary>
@@ -108,7 +108,7 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 
 ### <a name="display-the-updated-rectangle"></a>A frissített téglalap megjelenítése
 
-Innen a visszaadott **Face** objektumokat használhatja a képernyőn. Az [FaceDetectionPage. XAML](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) következő soraiban látható, hogyan jelennek meg az új négyszög az adatokból:
+Itt használhatja a visszaadott **Face** objektumokat a kijelzőn. A [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) következő sorai bemutatják, hogyan jelenik meg az új téglalap ezekből az adatokból:
 
 ```xaml
  <DataTemplate>
@@ -120,17 +120,17 @@ Innen a visszaadott **Face** objektumokat használhatja a képernyőn. Az [FaceD
 </DataTemplate>
 ```
 
-## <a name="detect-head-gestures"></a>Fő kézmozdulatok észlelése
+## <a name="detect-head-gestures"></a>Fejmozdulatok észlelése
 
-A HeadPose-változások valós idejű nyomon követésével észlelhetők a fej-kézmozdulatok, például az bólintott és a fej rázása. Ezt a funkciót egyéni élettartam-detektorként is használhatja.
+A HeadPose változások valós idejű követésével észlelheti az olyan fejmozdulatokat, mint a bólintás és a fejremegés. Ezt a funkciót egyéni élősség-érzékelőként is használhatja.
 
-Az azonnali észlelés feladata annak megállapítása, hogy a tárgy valódi személy-e, nem pedig képvagy videós ábrázolás. A fej-kézmozdulatok detektora az élőság ellenőrzésének egyik módjaként szolgálhat, különösen egy személy képének ábrázolásával szemben.
+A liveness észlelése annak meghatározása, hogy a téma valós személy-e, és nem kép- vagy videoábrázolás. A fejgesztus-detektor az egyik módja annak, hogy segítsen ellenőrizni az élést, különösen, ellentétben egy személy képábrázolásával.
 
 > [!CAUTION]
-> A Head kézmozdulatok valós idejű észleléséhez a Face API magas arányban kell meghívnia (másodpercenként többször). Ha ingyenes szintű (F0) előfizetéssel rendelkezik, ez a megoldás nem lesz lehetséges. Ha fizetős szintű előfizetéssel rendelkezik, győződjön meg róla, hogy kiszámította a gyors API-hívások fő kézmozdulat-észleléshez való feltételeit.
+> A fejkézmozdulatok valós idejű észleléséhez a Face API-t magas (másodpercenként több mint egyszer) kell meghívnia. Ha ingyenes (f0) előfizetéssel rendelkezik, ez nem lehetséges. Ha fizetős szintű előfizetéssel rendelkezik, győződjön meg arról, hogy kiszámította a gyors API-hívások költségeit a fejgesztus-észleléshez.
 
-Tekintse meg az [Face HeadPose mintát](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) a githubon a fő kézmozdulatok észlelésére szolgáló példaként.
+Tekintse meg a [Face HeadPose minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) a GitHubon egy működő példa a fejgesztus-észlelés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) alkalmazást a githubon az elforgatott arc téglalapok működéséhez. Vagy tekintse meg a [Face HeadPose minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) alkalmazást, amely valós időben követi nyomon a HeadPose attribútumot a fő mozgások észlelése érdekében.
+Tekintse meg a [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) alkalmazást a GitHubon egy működő példa az elforgatott arc téglalapok. Vagy tekintse meg a [Face HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) alkalmazást, amely valós időben követi nyomon a HeadPose attribútumot a fejmozgások észleléséhez.

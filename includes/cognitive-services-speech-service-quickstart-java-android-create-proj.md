@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
 ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383815"
 ---
-1. Indítsa el Android Studio, majd válassza az **új Android Studio projekt indítása** lehetőséget az **üdvözlő** ablakban.
+1. Indítsa el az Android Studio alkalmazást, és válassza az **Új Android Studio-projekt indítása lehetőséget** az **Üdvözlőablakban.**
 
     ![Az Android Studio üdvözlőablakának képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Megjelenik a **projekt kiválasztása** varázsló. A tevékenység kiválasztása mezőben válassza a **telefon és a tábla** és az **üres tevékenység** lehetőséget. Kattintson a **Tovább** gombra.
+1. Megjelenik **a Projekt kiválasztása** varázsló. A tevékenységkijelölési mezőben válassza a **Telefon és táblagép** és a Tevékenység **kiürítése** jelölőnégyzetet. Válassza a **Tovább lehetőséget.**
 
-   ![A projekt kiválasztása varázsló képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
+   ![Képernyőkép: A projekt kiválasztása varázsló](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. A **projekt konfigurálása** *képernyőn írja be* a gyors útmutató **nevet** , és írja be a *Samples.Speech.cognitiveservices.microsoft.com* **nevet.** Ezután válasszon ki egy projekt könyvtárat. A **minimális API-szint**esetében válassza az **API 23: Android 6,0 (Marshmallow)** elemet. Hagyja üresen az összes többi jelölőnégyzetet, és válassza a **Befejezés**lehetőséget.
+1. A **Projekt konfigurálása** képernyőn írja be a *Rövid útmutató* **nevet,** és írja be *samples.speech.cognitiveservices.microsoft.com* **csomagnévként.** Ezután jelöljön ki egy projektkönyvtárat. A **Minimális API szint**hez válassza az API **23: Android 6.0 (Marshmallow)** lehetőséget. Hagyja az összes többi jelölőnégyzetet, és válassza a **Befejezés gombot.**
 
-   ![A projekt konfigurálása varázsló képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-03-create-android-project.png)
+   ![Képernyőkép: A projekt konfigurálása varázsló](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-03-create-android-project.png)
 
-Az Android Studio előkészíti az új Android-projektet. Ezután konfigurálja a projektet, és Ismerje meg az Azure Cognitive Services Speech SDK-t és a Java 8 használatát.
+Az Android Studio előkészíti az új Android-projektet. Ezután konfigurálja a projektet az Azure Cognitive Services Speech SDK-ról való tudnivalókszerint, és használja a Java 8-at.
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK aktuális verziója 1.10.0.
+A Cognitive Services beszédstka jelenlegi verziója 1.10.0.
 
-Az Androidhoz készült Speech SDK a szükséges kódtárakat és a szükséges [Android-engedélyeket](https://developer.android.com/studio/projects/android-library)tartalmazza.
-A szolgáltatás egy Maven-tárházban üzemel, https:\//csspeechstorage.blob.core.windows.net/maven/.
+Az Android-alapú beszédsdkát [AAR (Android Library)](https://developer.android.com/studio/projects/android-library)néven csomagolják, amely tartalmazza a szükséges könyvtárakat és a szükséges Android-engedélyeket.
+A maven-tárházban található https:\//csspeechstorage.blob.core.windows.net/maven/.
 
-Készítse elő a projektet a Speech SDK használatára. Nyissa meg a **projekt szerkezete** ablakot a Android Studio menüsávon a **fájl** > **projekt szerkezete** lehetőség kiválasztásával. A **projekt szerkezete** ablakban végezze el a következő módosításokat:
+Készítse elő a projektet a Speech SDK használatára. Nyissa meg a **Projektstruktúra** ablakot az Android Studio menüsor > **Fájlprojekt-struktúra parancsára** kattintva. **File** A **Projektszerkezet ablakban** hajtsa végre a következő módosításokat:
 
-1. Az ablak bal oldalán található listából válassza ki a **Project** (Projekt) elemet. Szerkessze az **alapértelmezett függvénytár-tárház** beállításait úgy, hogy hozzáfűz egy vesszőt és a Maven-tárház URL-címét szimpla idézőjelek közé: "https:\//csspeechstorage.blob.Core.Windows.net/Maven/"
+1. Az ablak bal oldalán található listából válassza ki a **Project** (Projekt) elemet. Az **alapértelmezett tártárház** beállításainak szerkesztése egy vessző és a Maven-tárház URL-címének\/egyszeres idézőjelek közé ágyazásával: 'https: /csspeechstorage.blob.core.windows.net/maven/'
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-06-add-maven-repository.png)
 
-1. Ugyanazon a képernyőn a bal oldalon válassza az **alkalmazás**lehetőséget. Ezután kattintson a **Dependencies** (Függőségek) fülre az ablak felső részén. Válassza ki a zöld pluszjelet ( **+** ), majd a legördülő menüből válassza ki a **könyvtár függőség** elemet.
+1. Ugyanazon a képernyőn, a bal oldalon válassza az **alkalmazást**. Ezután kattintson a **Dependencies** (Függőségek) fülre az ablak felső részén. Jelölje ki a**+** zöld pluszjelet ( ), majd a legördülő menü **könyvtári függőségparancsát.**
 
-   ![A könyvtár függőségének képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
+   ![Képernyőkép a Könyvtár-függőségről](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.10.0*). Ezután kattintson az **OK** gombra.
-   A beszédfelismerési SDK-t most a következő módon kell hozzáadni a függőségek listájához:
+1. A megjelenő ablakban adja meg az Android-alapú Beszéd sdk nevét és verzióját, *com.microsoft.cognitiveservices.speech:client-sdk:1.10.0*. Ezután kattintson az **OK** gombra.
+   A beszédsdk-et most kell hozzáadni a függőségek listájához, ahogy az látható:
 
-   ![Képernyőkép a Speech SDK-ról a függőségek listájában](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
+   ![Képernyőkép a beszédfelismerési SDK-ról a függőségek listájában](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
 
-1. Válassza a **Tulajdonságok** lapot. A **forrás-kompatibilitás** és a **cél kompatibilitás**érdekében válassza a **1,9**lehetőséget.
+1. Válassza a **Tulajdonságok** lapot. A **forráskompatibilitás** és **a célkompatibilitás érdekében**válassza az **1.9**lehetőséget.
 
-   ![Képernyőkép a forrás kompatibilitásáról és a cél kompatibilitásáról](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
+   ![Képernyőkép a forráskompatibilitásról és a célkompatibilitásról](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
 
-1. Kattintson az **OK** gombra a **projekt szerkezete** ablak bezárásához, és alkalmazza a módosításokat a projektre.
+1. Az **OK gombra választva** zárja be a **Projektszerkezet ablakot,** és alkalmazza a módosításokat a projektre.

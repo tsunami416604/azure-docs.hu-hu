@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: adatok észlelése és megjelenítése egy rendszerképben a .NET SDK használatával'
+title: 'Oktatóanyag: Arcadatok észlelése és megjelenítése a .NET SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban létre fog hozni egy Windows-alkalmazást, amely a Face szolgáltatást használja az arcok észlelésére és a képek keretének megjelenítésére.
+description: Ebben az oktatóanyagban egy Windows-alkalmazást hoz létre, amely a Face szolgáltatást használja a kép arcok észlelésére és keretezésére.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: a5cf3c59c94134e1d0751c1467cd324a95c366eb
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78898819"
 ---
-# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Hozzon létre egy Windows-bemutatókeret (WPF) alkalmazást a kép arcadatainak megjelenítéséhez
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Face szolgáltatást a .NET Client SDK-n keresztül, hogy felderítse a képekben lévő arcokat, majd a felhasználói felületen megjelenő információkat. Létre fog hozni egy olyan WPF-alkalmazást, amely észleli az arcokat, egy keretet rajzol az egyes arcok körül, és megjeleníti az állapotsorban található arc leírását. 
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja az Azure Face szolgáltatást a .NET ügyfél SDK-n keresztül a lemezkép arcok észlelésére, majd az adatok bemutatására a felhasználói felületen. Hozzon létre egy WPF alkalmazást, amely észleli az arcokat, keretet rajzol az egyes lapok köré, és megjeleníti az arc leírását az állapotsorban. 
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > - WPF-alkalmazás létrehozása
-> - Az arc ügyféloldali kódtár telepítése
+> - A Face ügyféltár telepítése
 > - Az ügyfélkódtár használata a képeken lévő arcok észleléséhez
 > - Keret rajzolása minden észlelt arc köré
-> - Az állapotsorban található kijelölt arc leírásának megjelenítése
+> - A kiemelt lap leírásának megjelenítése az állapotsoron
 
 ![Képernyőfelvétel téglalappal bekeretezett arcokról](../Images/getting-started-cs-detected.png)
 
-A teljes mintakód elérhető a GitHubon a [kognitív Face csharp minta](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) adattárában.
+A teljes mintakód érhető el a [Cognitive Face CSharp mintatár](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) a GitHubon.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`néven.
-- A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+- Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `FACE_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `FACE_ENDPOINT`a.
+- A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/)bármely kiadása.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-Az alábbi lépéseket követve hozzon létre egy új WPF-alkalmazás projektjét.
+Új WPF alkalmazásprojekt létrehozásához kövesse az alábbi lépéseket.
 
-1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített**, majd a **vizualizáció C#** , majd a **WPF-alkalmazás (.NET-keretrendszer)** elemet.
+1. A Visual Studióban nyissa meg az Új projekt párbeszédpanelt. Bontsa **ki a Telepített**elemet, majd a Visual **C#** elemet, majd válassza a **WPF-alkalmazást (.NET Framework)**.
 1. Adja a **FaceTutorial** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
-1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Ezután keresse meg és telepítse a következő csomagot:
-    - [Microsoft. Azure. CognitiveServices. vízió. Face 2.5.0 – előzetes verzió. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
+1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza **a NuGet csomagok kezelése parancsot**; ezután keresse meg és telepítse a következő csomagot:
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.5.0-preview.1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>Kezdeti kód hozzáadása
 
-Ebben a szakaszban az alkalmazás alapszintű keretrendszerét fogja hozzáadni az arca-specifikus szolgáltatásai nélkül.
+Ebben a szakaszban az alkalmazás alapvető keretrendszerét az arcspecifikus funkciók nélkül adja hozzá.
 
 ### <a name="create-the-ui"></a>A felhasználói felület létrehozása
 
-Nyissa meg a *MainWindow. XAML* mappát, és cserélje le a tartalmát a következő kódra,&mdash;ez a kód létrehozza a felhasználói felület ablakát. A `FacePhoto_MouseMove` és `BrowseButton_Click` metódusok azok az eseménykezelők, amelyeket később meg fog adni.
+Nyissa meg *a MainWindow.xaml fájlt,* és cserélje le a tartalmát a következő kódra,&mdash;ez a kód létrehozza a felhasználói felület ablakát. A `FacePhoto_MouseMove` `BrowseButton_Click` és a metódusok olyan eseménykezelők, amelyeket később definiál.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
-### <a name="create-the-main-class"></a>A Main osztály létrehozása
+### <a name="create-the-main-class"></a>A főosztály létrehozása
 
-Nyissa meg a *MainWindow.XAML.cs* , és adja hozzá az ügyféloldali kódtár névtereit, valamint az egyéb szükséges névtereket. 
+Nyissa *meg MainWindow.xaml.cs,* és adja hozzá az ügyféltár névtereit más szükséges névterekkel együtt. 
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
-Ezután szúrja be a következő kódot a **MainWindow** osztályban. Ez a kód egy **FaceClient** -példányt hoz létre az előfizetési kulcs és a végpont használatával.
+Ezután szúrja be a következő kódot a **MainWindow** osztályba. Ez a kód létrehoz egy **FaceClient-példányt** az előfizetési kulcs és a végpont használatával.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_fields)]
 
-Ezután adja hozzá a **MainWindow** konstruktort. Ellenőrzi a végpont URL-karakterláncát, majd hozzárendeli azt az ügyfél-objektumhoz.
+Ezután adja hozzá a **MainWindow** konstruktora. Ellenőrzi a végpont URL-karakterláncát, majd társítja azt az ügyfélobjektumhoz.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Végül adja hozzá a **BrowseButton_Click** és a **FacePhoto_MouseMove** metódusokat a osztályhoz. Ezek a módszerek megfelelnek az *MainWindow. XAML*által deklarált eseménykezelőknek. A **BrowseButton_Click** metódus létrehoz egy **OpenFileDialog**, amely lehetővé teszi a felhasználó számára egy. jpg-rendszerkép kiválasztását. Ezután megjeleníti a rendszerképet a főablakban. A további kódokat be kell szúrni **BrowseButton_Click** és **FacePhoto_MouseMove** a későbbi lépésekben. Jegyezze fel az `faceList`-referenciát is&mdash;a **DetectedFace** objektumok listáját. Ez a hivatkozás azt adja meg, hogy az alkalmazás hogyan fogja tárolni és meghívni a tényleges adatokat.
+Végül adja hozzá a **BrowseButton_Click** és **FacePhoto_MouseMove** metódust az osztályhoz. Ezek a módszerek megfelelnek a *MainWindow.xaml-ben*deklarált eseménykezelőknek. A **BrowseButton_Click** metódus **openfiledialog**-ot hoz létre, amely lehetővé teszi a felhasználó számára . jpg kép kiválasztását. Ezután megjeleníti a képet a főablakban. A **BrowseButton_Click** és **FacePhoto_MouseMove** fennmaradó kódját a későbbi lépésekbe szúrja be. Is vegye `faceList` &mdash;figyelembe a hivatkozás listáját **DetectedFace** objektumok. Ez a hivatkozás az a hely, ahol az alkalmazás tárolja és meghívja a tényleges arcadatokat.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -87,46 +87,46 @@ Végül adja hozzá a **BrowseButton_Click** és a **FacePhoto_MouseMove** metó
 
 ### <a name="try-the-app"></a>Próbálja ki az alkalmazást
 
-Nyomja meg a **Start** (Indítás) gombot a menüben az alkalmazás teszteléséhez. Amikor megnyílik az alkalmazás ablaka, kattintson a bal alsó sarokban található **Tallózás** gombra. Meg kell jelennie egy **fájl megnyitása** párbeszédpanelnek. Válasszon ki egy rendszerképet a fájlrendszerből, és ellenőrizze, hogy az megjelenik-e az ablakban. Ezután zárjuk be az alkalmazást, és folytassa a következő lépéssel.
+Nyomja meg a **Start** (Indítás) gombot a menüben az alkalmazás teszteléséhez. Amikor megnyílik az alkalmazásablak, kattintson a Bal alsó sarokban a **Tallózás** gombra. Meg kell jelennie **egy Fájlmegnyitás** párbeszédpanelnek. Jelöljön ki egy képet a fájlrendszerből, és ellenőrizze, hogy az megjelenik-e az ablakban. Ezután zárja be az alkalmazást, és lépjen tovább a következő lépésre.
 
 ![Képernyőfelvétel arcokat ábrázoló képről, amely nem lett módosítva](../Images/getting-started-cs-ui.png)
 
-## <a name="upload-image-and-detect-faces"></a>Rendszerkép feltöltése és arcok észlelése
+## <a name="upload-image-and-detect-faces"></a>Kép feltöltése és arcok észlelése
 
-Az alkalmazás az **FaceClient. Face. DetectWithStreamAsync** metódus meghívásával fogja felderíteni az arcokat, amely a helyi rendszerképek feltöltésének [észlelését](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API.
+Az alkalmazás észleli az arcokat a **FaceClient.Face.DetectWithStreamAsync** metódus hívásával, amely a [REST-észlelési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-t egy helyi lemezkép feltöltéséhez csomagolja.
 
-Szúrja be a következő metódust a **MainWindow** osztályban a **FacePhoto_MouseMove** metódus alá. Ez a metódus a beolvasott képfájl egy **adatfolyamba**való beolvasására és beolvasására szolgáló arc-attribútumok listáját határozza meg. Ezután mindkét objektumot átadja a **DetectWithStreamAsync** metódus hívásának.
+Szúrja be a következő módszert a **MainWindow** osztályba, az **FacePhoto_MouseMove** módszer alá. Ez a módszer az arcattribútumok listáját határozza meg a beküldött képfájl beolvasásához és **beolvasásához.** Ezután mindkét objektumot továbbítja a **DetectWithStreamAsync** metódushíváshoz.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_uploaddetect)]
 
-## <a name="draw-rectangles-around-faces"></a>Téglalapok rajzolása az arcok köré
+## <a name="draw-rectangles-around-faces"></a>Téglalapok rajzolása arcok köré
 
-Ezután adja hozzá a kódot a képen látható összes észlelt arc körüli téglalap rajzolásához. A **MainWindow** osztályban szúrja be a következő kódot a **BrowseButton_Click** metódus végén a `FacePhoto.Source = bitmapSource` sor után. Ez a kód feltölti az észlelt arcok listáját a **UploadAndDetectFaces**-hívásból. Ezután egy téglalapot rajzol az egyes arcok körül, és megjeleníti a módosított képet a főablakban.
+Ezután hozzáadja a kódot, hogy egy téglalapot rajzoljon a kép minden észlelt arca körül. A **MainWindow** osztályba szúrja be a következő **BrowseButton_Click** kódot a `FacePhoto.Source = bitmapSource` BrowseButton_Click módszer végén, a sor után. Ez a kód feltölti az észlelt arcok listáját az **UploadAndDetectFaces**hívásból. Ezután rajzol egy téglalapot az egyes lapok köré, és megjeleníti a módosított képet a főablakban.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
-## <a name="describe-the-faces"></a>Az arcok leírása
+## <a name="describe-the-faces"></a>Írja le az arcokat
 
-Adja hozzá a következő metódust a **MainWindow** osztályhoz a **UploadAndDetectFaces** metódus alatt. Ez a metódus a beolvasott arc attribútumokat egy olyan karakterlánccá alakítja, amely leírja az arcot.
+Adja hozzá a következő módszert a **MainWindow** osztályhoz az **UploadAndDetectFaces** metódus alatt. Ez a módszer a beolvasott arcattribútumokat az arcot leíró karakterláncsá alakítja.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_facedesc)]
 
 ## <a name="display-the-face-description"></a>Az arc leírásának megjelenítése
 
-Adja hozzá a következő kódot a **FacePhoto_MouseMove** metódushoz. Ez az eseménykezelő megjeleníti a Face Description karakterláncot `faceDescriptionStatusBar`, ha a kurzor egy észlelt arc négyszög fölé mutat.
+Adja hozzá a következő kódot a **FacePhoto_MouseMove** metódushoz. Ez az eseménykezelő akkor `faceDescriptionStatusBar` jeleníti meg az arcleíró karakterláncot, amikor a kurzor egy észlelt arctéglalap fölé viszi az egérmutatót.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. Várjon néhány másodpercet, amíg az arcfelismerési szolgáltatás válaszol. A képen egy piros négyszögnek kell megjelennie. Ha az egérmutatót egy arc négyszög fölé viszi, az adott arc leírásának meg kell jelennie az állapotsorban.
+Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. Várjon néhány másodpercet, amíg az arcfelismerési szolgáltatás válaszol. A képen lévő lapokon piros téglalapjelenik meg. Ha az egeret egy arctéglalap fölé mozgatja, az adott lap leírásának meg kell jelennie az állapotsorban.
 
 ![Képernyőfelvétel téglalappal bekeretezett arcokról](../Images/getting-started-cs-detected.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta a Face Service .NET SDK használatának alapszintű folyamatát, és létrehozott egy alkalmazást az arcok észleléséhez és a képek keretének megjelenítéséhez. Következő lépésként tekintse meg a Arcfelismerés részletes adatait.
+Ebben az oktatóanyagban megtanulta a Face service .NET SDK használatának alapvető folyamatát, és létrehozott egy alkalmazást a lemezképek arcának észlelésére és keretezésére. Ezután tudjon meg többet az arcfelismerés részleteiről.
 
 > [!div class="nextstepaction"]
 > [Arcok észlelése egy képen](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

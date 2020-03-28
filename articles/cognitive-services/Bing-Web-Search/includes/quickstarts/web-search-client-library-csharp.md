@@ -1,5 +1,5 @@
 ---
-title: Az C# ügyféloldali kódtár Bing Web Search
+title: Bing Web Search C# ügyféltár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924902"
 ---
-Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását az C# alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
+A Bing Web Search ügyfélkönyvtár megkönnyíti a Bing Web Search integrálását a C# alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
-Szeretné most rögtön megtekinteni a kódot? A .NET- [hez készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) mintái a githubon érhetők el.
+Szeretné most rögtön megtekinteni a kódot? A [.NET Bing Search ügyfélkódtárak mintái](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) elérhetők a GitHubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -33,9 +33,9 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 ## <a name="create-a-project-and-install-dependencies"></a>Projekt létrehozása és a függőségek telepítése
 
 > [!TIP]
-> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> A legújabb kód beszerezni e Visual Studio-megoldásként a [GitHubról.](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
 
-Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a "Helló világ!" alkalmazás – azC# első programja (programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)című témakört. Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
+Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzolprojekt beállításához, olvassa el [a Hello World -- Your First Program (C# Programming Guide) című témakört.](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 
 A [Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) a követezőket is telepíti:
 
@@ -57,7 +57,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Projektszerkezet létrehozása
 
-Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A programnak a következő példához hasonlóan kell kinéznie:
+Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A programnak így kell kinéznie:
 
 ```csharp
 namespace WebSearchSDK
@@ -269,7 +269,7 @@ Ebben a példában a `count` és az `offset` paramétert használjuk a „Best r
     }
     ```
 
-2. A `WebResultsWithCountAndOffset` metódushoz adja hozzá a következőt: `main`.
+2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
 
     ```csharp
     static void Main(string[] args)
@@ -330,7 +330,7 @@ Ez a minta a `response_filter` paraméter segítségével szűri a keresési ere
     }
     ```
 
-2. A `WebResultsWithCountAndOffset` metódushoz adja hozzá a következőt: `main`.
+2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
 
     ```csharp
     static void Main(string[] args)
@@ -392,7 +392,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
     }
     ```
 
-2. A `WebResultsWithCountAndOffset` metódushoz adja hozzá a következőt: `main`.
+2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
 
     ```csharp
     static void Main(string[] args)
@@ -418,7 +418,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót az alkalmazás kódjából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

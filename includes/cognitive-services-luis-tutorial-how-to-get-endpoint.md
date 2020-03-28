@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: diberry
 ms.openlocfilehash: 4ada2e36f067db685944c683de8cc36d3bbf8cf6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179421"
 ---
 A **Manage** (Kezelés) szakaszban (jobb felső menü), a **Keys and endpoints** (Kulcsok és végpontok) lapon (bal oldali menü) kattintson a lap alján található **végpont** URL-címére. Ez a művelet megnyit egy másik böngészőfület, amelynek címsorában a végpont URL-címe látható. 

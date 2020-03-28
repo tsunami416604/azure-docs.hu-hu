@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési beszéd – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszédfelolvasás fordítása – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Speech SDK használatával interaktív módon fordíthatja le a beszédet az egyik nyelvről a másik nyelvre.
+description: Ebben a rövid útmutatóban a Beszéd sdk segítségével interaktívan lefordítja a beszédeket az egyik nyelvről a másik nyelvű szövegre.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 8babb8b096f815bfd8d9da4c3e8040e650952544
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119296"
 ---
-# <a name="quickstart-translate-speech-to-speech"></a>Gyors útmutató: beszéd és beszéd fordítása
+# <a name="quickstart-translate-speech-to-speech"></a>Rövid útmutató: Beszédfelolvasás fordítása
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/translate-sts/header.md)]

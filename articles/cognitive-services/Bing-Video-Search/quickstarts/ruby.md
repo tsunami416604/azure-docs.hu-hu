@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: videók keresése a REST API és a Ruby-Bing Video Search használatával'
+title: 'Rövid útmutató: Videók keresése a REST API és a Ruby – Bing videokeresés használatával'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval videó-keresési kéréseket küldhet a Bing Video Search REST API a Ruby használatával.
+description: Ezzel a rövid útmutatóval videokeresési kérelmeket küldhet a Bing Video Search REST API-nak a Ruby használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448380"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a Ruby használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Rövid útmutató: Videók keresése a Bing Video Search REST API-val és a Ruby
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű Ruby-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb).
+Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű Ruby alkalmazás http-videokeresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ruby 2,4 vagy újabb
+* A Ruby 2.4-es vagy újabb verziója
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -37,7 +37,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
     require 'json'
     ```
 
-2. Hozzon létre változókat az API-végponthoz, a video API keresési elérési útjához, az előfizetési kulcshoz és a keresési kifejezéshez. `uri` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont.
+2. Hozzon létre változókat az API-végponthoz, a videó API keresési útvonalához, az előfizetési kulcshoz és a keresési kifejezéshez. `uri`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -46,22 +46,22 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
     accessKey = "your-subscription-key" 
     ```
 
-## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és elküldése
+## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és küldése
 
-1. Az utolsó lépésből származó változók használatával formázhatja a kérelem keresési URL-címét. Egyesítse az URI-t és az elérési utat, majd URL-kódolással kódolja a keresési kifejezést, mielőtt hozzáfűzi a `?q=` paraméterhez.
+1. Az utolsó lépés változóival formázza a kérelem keresési URL-címét. Kombinálja az uri és az elérési utat, majd url-kódolja a keresési kifejezést, mielőtt hozzáfűzi a `?q=` paraméterhez.
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
     ```
 
-2. Adja hozzá a teljes keresési URL-címet a kérelemhez, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
+2. Adja hozzá a teljes keresési URL-címet a `Ocp-Apim-Subscription-Key` kérelemhez, és adja hozzá az előfizetési kulcsot a fejléchez.
     
     ``` ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. Küldje el a kérést, és mentse a választ.
+3. Küldje el a kérelmet, és mentse a választ.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -71,7 +71,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
 
 ## <a name="process-and-view-the-response"></a>A válasz feldolgozása és megtekintése
 
-1. A válasz fogadása után kinyomtathatja a JSON-választ.
+1. A válasz megérkezése után kinyomtathatja a JSON-választ.
 
     ```ruby
     puts JSON::pretty_generate(JSON(response.body))
@@ -188,12 +188,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még: 
+## <a name="see-also"></a>Lásd még 
 
- [Mi a Bing Video Search API?](../overview.md)
+ [Mi az a Bing Video Search API?](../overview.md)
 

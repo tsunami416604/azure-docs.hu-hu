@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: objektum-észlelési projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
+title: 'Rövid útmutató: Objektumészlelési projekt létrehozása a Node.js egyéni vision SDK-js-szel'
 titleSuffix: Azure Cognitive Services
-description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és felderítheti az objektumokat a Node. js SDK használatával.
+description: Hozzon létre egy projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet, és észlelje az objektumokat a Node.js SDK használatával.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705717"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: objektum-észlelési projekt létrehozása a Custom Vision Node. js SDK-val
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása az egyéni látótérnok.js SDK-val
 
-Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Node. js-hez készült Custom Vision SDK-val egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához.
+Ez a cikk bemutatja, hogyan kezdheti el használni a Custom Vision SDK node.js egy objektumészlelési modell létrehozásához. Létrehozása után hozzáadhat címkézett régiókat, képeket tölthet fel, betaníthatja a projektet, beszerezheti a projekt közzétett előrejelzési végpontURL-címét, és a végpont ot használhatja egy kép programozott teszteléséhez. Ebben a példában sablonként hozhatja fel saját Node.js alkalmazását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
-- a [NPM](https://www.npmjs.com/) telepítve van.
+- [Node.js 8](https://www.nodejs.org/en/download/) vagy újabb telepítve.
+- [npm](https://www.npmjs.com/) telepítve.
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Node. js-hez kés
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-A (z) Node. js-hez készült Custom Vision Service SDK-k a projektben való telepítéséhez futtassa a következő parancsokat:
+A Project ben a Node.js egyéni vision szolgáltatás SDK-inak telepítéséhez futtassa a következő parancsokat:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -43,11 +43,11 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
-Hozzon létre egy *sample. js* nevű új fájlt a kívánt Project-címtárban.
+Hozzon létre egy *új fájlt sample.js* néven az előnyben részesített projektkönyvtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
-Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Szúrja be az előfizetési kulcsokat a megfelelő definíciók között, és állítsa a sampleDataRoot Path értéket a rendszerkép mappájának elérési útjára. Győződjön meg arról, hogy a végpont értéke megegyezik a [Customvision.ai](https://www.customvision.ai/)címen létrehozott betanítási és előrejelzési végpontokkal. Vegye figyelembe, hogy az objektum-észlelés és a képbesorolási projekt létrehozása közötti különbség a **createProject** -hívásban megadott tartomány.
+Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Szúrja be az előfizetési kulcsokat a megfelelő definíciókba, és állítsa be a sampleDataRoot elérési útját a képmappa elérési útjához. Győződjön meg arról, hogy a végpont értéke megegyezik a [Customvision.ai](https://www.customvision.ai/)létrehozott betanítási és előrejelzési végpontokkal. Vegye figyelembe, hogy az objektumészlelési és a képbesorolási projekt létrehozása közötti különbség a **createProject** hívásban megadott tartomány.
 
 ```javascript
 const fs = require('fs');
@@ -86,7 +86,7 @@ async function asyncForEach (array, callback) {
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample. js*végéhez:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.js végéhez:*
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -95,12 +95,12 @@ Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a köve
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Ha képeket címkéz meg az objektumészlelési projektekben, meg kell adnia a címkével ellátott objektumok régióját a normalizált koordináták használatával. 
+Ha képeket címkéz az objektum-észlelési projektekben, az egyes címkézett objektumok régióját normalizált koordináták használatával kell megadnia. 
 
 > [!NOTE]
-> Ha nem rendelkezik kattintással és húzással a régiók koordinátáinak megjelöléséhez, használhatja a webes felhasználói felületet a következő címen: [Customvision.ai](https://www.customvision.ai/). Ebben a példában a koordináták már meg vannak biztosítva.
+> Ha nem rendelkezik kattintással és húzással a régiók koordinátáinak megjelöléséhez, használhatja a webes felhasználói felületet [a Customvision.ai.](https://www.customvision.ai/) Ebben a példában a koordináták már meg vannak adva.
 
-A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye észre, hogy ebben az oktatóanyagban a régiókat a kódon belül fixen beprogramoztuk. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság. Egyetlen kötegben akár 64 képet is feltölthet.
+A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye észre, hogy ebben az oktatóanyagban a régiókat a kódon belül fixen beprogramoztuk. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság. Egy kötegben legfeljebb 64 képet tölthet fel.
 
 ```javascript
 const forkImageRegions = {
@@ -179,9 +179,9 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététel
+### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététele
 
-Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi az előrejelzési végpontra vonatkozó iterációt. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Iteráció nem érhető el az előrejelzési végpontban, amíg közzé nem teszik.
 
 ```javascript
 console.log("Training...");
@@ -201,7 +201,7 @@ console.log("Training status: " + trainingIteration.status);
 await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció beszerezni és használata az előrejelzési végponton
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -221,7 +221,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa a *sample. js fájlt*.
+*Futtassa a sample.js .*
 
 ```shell
 node sample.js
@@ -231,7 +231,7 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Láthatta, hogyan hajthatók végre az objektumészlelési folyamat lépései kódok használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 

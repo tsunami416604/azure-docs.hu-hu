@@ -1,7 +1,7 @@
 ---
-title: Bérlői modell létrehozása (előzetes verzió) – beszédfelismerési szolgáltatás
+title: Bérlői modell létrehozása (előzetes verzió) – Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A biztonságos, kompatibilis bérlői modell (Custom Speech Office 365-adataival) automatikus létrehozása, amely az Office 365-adatait használja a szervezetre vonatkozó feltételek optimális beszédfelismeréséhez.
+description: Automatikusan létrehoz egy biztonságos, megfelelő bérlői modellt (Egyéni beszéd az Office 365-adatokkal), amely az Office 365-adatokat használja az optimális beszédfelismerés biztosítására a szervezetspecifikus kifejezésekhez.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,100 +11,100 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
 ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469017"
 ---
-# <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
+# <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: Bérlői modell létrehozása (előzetes verzió)
 
-A bérlői modell (Custom Speech Office 365-adatokkal) egy, az Office 365 vállalati ügyfelei számára elérhető, a szervezet Office 365-adataiból automatikusan egyéni beszédfelismerési modellt generáló szolgáltatás. A modell a technikai feltételekre, a zsargonra és az emberek nevére van optimalizálva, mindezt biztonságos és megfelelő módon.
+A bérlői modell (Egyéni beszéd felismerés az Office 365-adatokkal) az Office 365 nagyvállalati ügyfeleinek olyan opt-in szolgáltatása, amely automatikusan létrehoz egy egyéni beszédfelismerési modellt a szervezet Office 365-adataiból. A modell a technikai kifejezésekre, a zsargonra és az emberek nevére van optimalizálva, mindezt biztonságos és megfelelő módon.
 
 > [!IMPORTANT]
-> Ha a szervezet a bérlői modell szolgáltatással regisztrálja magát, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét. A modell az Office 365 nyilvános csoportbeli e-mailek és dokumentumok alapján jön létre, amelyeket bárki láthat a szervezetében. A szervezet Office 365-rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát az Office 365 felügyeleti portálján.
+> Ha a szervezet a bérlői modell szolgáltatás használatával iratkozik be, a Beszédszolgáltatás hozzáférhet a szervezet nyelvi modelljéhez. A modell az Office 365 nyilvános csoportos e-mailjeiből és dokumentumaiból jön létre, amelyeket a szervezet en belül bárki láthatja. A szervezet Office 365-rendszergazdája az Office 365 felügyeleti portálról be- vagy kikapcsolhatja a szervezeti szintű nyelvi modell használatát.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Regisztrálás a bérlői modellben a Microsoft 365 felügyeleti központ használatával
-> * Beszédfelismerési előfizetés kulcsának beolvasása
+> * Igénylés a bérlői modellbe a Microsoft 365 felügyeleti központ használatával
+> * Beszédfelismerési előfizetési kulcs beolvasása
 > * Bérlői modell létrehozása
 > * Bérlői modell üzembe helyezése
-> * A bérlői modell használata a Speech SDK-val
+> * A bérlői modell használata a beszédbeszéd SDK-val
 
-## <a name="enroll-in-the-tenant-model-service"></a>Regisztrálás a bérlői modell szolgáltatásban
+## <a name="enroll-in-the-tenant-model-service"></a>Igénylés a bérlői modell szolgáltatásba
 
-A bérlői modell üzembe helyezése előtt regisztrálni kell a bérlői modell szolgáltatásban. A regisztráció a Microsoft 365 felügyeleti központban végezhető el, és csak a Microsoft 365 rendszergazdája végezhető el.
+A bérlői modell üzembe helyezése előtt be kell iratkoznia a bérlői modell szolgáltatásba. A regisztráció a Microsoft 365 Felügyeleti központban fejeződik be, és csak a Microsoft 365 rendszergazdája végezheti el.
 
-1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com).
+1. Jelentkezzen be a [Microsoft 365 Felügyeleti központba](https://admin.microsoft.com).
 
-1. A bal oldali ablaktáblán válassza a **Beállítások**lehetőséget, majd a beágyazott menüben válassza a **Beállítások** lehetőséget, majd válassza az **Azure Speech Services** lehetőséget a főablakban.
+1. A bal oldali ablaktáblában válassza a **Beállítások**lehetőséget, majd válassza a beágyazott menü **Beállítások parancsát,** majd válassza az Azure **Speech Services** elemet a főablakból.
 
-   ![A "szolgáltatások & beépülő modulok" panel](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![A "Szolgáltatások & bővítmények" ablaktábla](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. Jelölje be a **szervezeti szintű nyelvi modell engedélyezése** jelölőnégyzetet, majd kattintson a **módosítások mentése**gombra.
+1. Jelölje be **a Szervezeti szintű nyelvi modell engedélyezése** jelölőnégyzetet, majd a Módosítások mentése **lehetőséget.**
 
-   ![Az Azure Speech Services ablaktábla](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Az Azure Beszédszolgáltatások ablaktábla](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
-A bérlői modell példányának kikapcsolása:
-1. Ismételje meg az előző 1. és 2. lépést.
-1. Törölje a **szervezeti szintű nyelvi modell engedélyezése** jelölőnégyzet jelölését, majd kattintson a **módosítások mentése**gombra.
+A bérlői modellpéldány kikapcsolása:
+1. Ismételje meg az előző 1.
+1. Törölje **a** jelet a Szervezeti szintű nyelvi modell engedélyezése jelölőnégyzetből, majd válassza **a Módosítások mentése lehetőséget.**
 
-## <a name="get-a-speech-subscription-key"></a>Beszédfelismerési előfizetés kulcsának beolvasása
+## <a name="get-a-speech-subscription-key"></a>Beszédfelismerési előfizetési kulcs beolvasása
 
-Ha a Speech SDK-val szeretné használni a bérlői modellt, szüksége lesz egy beszédfelismerési erőforrásra és a hozzá tartozó előfizetési kulcsra.
+A bérlői modell használata a speech SDK, szüksége van egy beszédfelismerési erőforrás és a társított előfizetési kulcs.
 
-1. Jelentkezzen be az [Azure Portal](https://aka.ms/azureportal).
-1. Válassza **az erőforrás létrehozása**lehetőséget.
-1. A **keresőmezőbe** írja be a **Speech**kifejezést.
-1. Az eredmények listájában válassza a **beszéd**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ügyeljen rá, hogy:
-   * A **hely** a **eastus** vagy a **westus**értékre van beállítva.
-   * A **díjszabás** a **S0**értékre van állítva.
+1. Jelentkezzen be az [Azure Portalra.](https://aka.ms/azureportal)
+1. Válassza az **Erőforrás létrehozása** lehetőséget.
+1. A **Keresés mezőbe** írja be a **Beszéd**szót .
+1. Az eredménylistában válassza a **Beszéd**lehetőséget, majd a **Létrehozás gombot.**
+1. Kövesse a képernyőn megjelenő utasításokat az erőforrás létrehozásához. Ellenőrizze a következőket:
+   * **A helyszín** eastus vagy **westus.** **westus**
+   * **A tarifacsomag** **S0-re**van állítva.
 1. Kattintson a **Létrehozás** gombra.
 
-   Néhány perc elteltével létrejön az erőforrás. Az előfizetési kulcs az erőforrás **Áttekintés** szakaszában érhető el.
+   Néhány perc múlva létrejön az erőforrás. Az előfizetési kulcs az **erőforrás áttekintése** szakaszban érhető el.
 
 ## <a name="create-a-language-model"></a>Nyelvi modell létrehozása
 
-Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, létrehozhatja az Office 365-adatain alapuló nyelvi modellt.
+Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, létrehozhat egy nyelvi modellt, amely az Office 365-adatokon alapul.
 
-1. Jelentkezzen be a [Speech studióba](https://speech.microsoft.com/).
-1. A jobb felső sarokban válassza a **Beállítások** (fogaskerék ikon) lehetőséget, majd válassza ki a **bérlői modell beállításait**.
+1. Jelentkezzen be a [Beszédstúdióba](https://speech.microsoft.com/).
+1. A jobb felső sarokban válassza a **Beállítások** (fogaskerék ikon) lehetőséget, majd a **Bérlői modell beállításai lehetőséget.**
 
-   ![A "bérlői modell beállításai" hivatkozás](media/tenant-language-model/tenant-language-settings.png)
+   ![A "Bérlői modell beállításai" hivatkozás](media/tenant-language-model/tenant-language-settings.png)
 
-   A Speech Studio megjelenít egy üzenetet, amelyből megtudhatja, hogy jogosult-e a bérlői modell létrehozására.
+   A Speech Studio egy üzenetet jelenít meg, amely lehetővé teszi, hogy jogosult-e a bérlői modell létrehozására.
 
    > [!NOTE]
-   > Az Office 365 Enterprise ügyfelei Észak-Amerika jogosultak a bérlői modell (angol) létrehozására. Ha Ön Ügyfélszéf, az ügyfél kulcsa vagy az Office 365 Government-ügyfél, akkor ez a funkció nem érhető el. A következő témakörben találhatja meg, hogy Ügyfélszéf vagy az ügyfél kulcsának ügyfele-e:
+   > Az észak-amerikai Office 365 nagyvállalati ügyfelek jogosultak bérlői modell (angol nyelven) létrehozására. Ha Ön ügyfélszéf, ügyfélkulcs vagy Office 365 Government-ügyfél, ez a funkció nem érhető el. Annak megállapításához, hogy Ön ügyfélszéf vagy ügyfélkulcs-ügyfél, a következő témakörben találja:
    > * [Ügyfélszéf](/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Ügyfél kulcsa](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365-kormány](https://www.microsoft.com/microsoft-365/government)
+   > * [Vevőkulcs](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365 Kormányzati](https://www.microsoft.com/microsoft-365/government)
 
 1. Válassza a **jóváhagyási** lehetőséget.
 
-   Ha a bérlői modell elkészült, egy megerősítő e-mail-üzenetet kap további utasításokkal.
+   Amikor a bérlői modell készen áll, kap egy visszaigazoló e-mailt a további utasításokat.
 
 ## <a name="deploy-your-tenant-model"></a>A bérlői modell üzembe helyezése
 
-Ha a bérlői modell példánya elkészült, telepítse azt a következő módon:
+Ha a bérlői modellpéldány készen áll, telepítse az alábbi módon:
 
-1. A megerősítő e-mail-üzenetben kattintson a **modell megtekintése** gombra. Vagy jelentkezzen be a [Speech studióba](https://speech.microsoft.com/).
-1. A jobb felső sarokban válassza a **Beállítások** (fogaskerék ikon) lehetőséget, majd válassza ki a **bérlői modell beállításait**.
+1. A visszaigazoló e-mailben válassza a **Modell megtekintése** gombot. Vagy jelentkezzen be a [Speech Studio](https://speech.microsoft.com/).
+1. A jobb felső sarokban válassza a **Beállítások** (fogaskerék ikon) lehetőséget, majd a **Bérlői modell beállításai lehetőséget.**
 
-   ![A "bérlői modell beállításai" hivatkozás](media/tenant-language-model/tenant-language-settings.png)
+   ![A "Bérlői modell beállításai" hivatkozás](media/tenant-language-model/tenant-language-settings.png)
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
-   A modell üzembe helyezése után az állapot *üzembe helyezésre*változik.
+   A modell üzembe helyezése után az állapot telepítve lévő állapotra *változik.*
 
-## <a name="use-your-tenant-model-with-the-speech-sdk"></a>A bérlői modell használata a Speech SDK-val
+## <a name="use-your-tenant-model-with-the-speech-sdk"></a>A bérlői modell használata a beszédbeszéd SDK-val
 
-Most, hogy üzembe helyezte a modellt, használhatja azt a Speech SDK-val. Ebben a szakaszban mintakód használatával hívja meg a beszédfelismerési szolgáltatást Azure Active Directory (Azure AD) hitelesítés használatával.
+Most, hogy üzembe helyezte a modellt, használhatja azt a beszédfelismerési SDK-val. Ebben a szakaszban mintakódot használ a Speech Service hívásához az Azure Active Directory (Azure AD) hitelesítés használatával.
 
-Nézzük meg azt a kódot, amelyet a Speech SDK meghívásához fog használni C#. Ebben a példában a beszédfelismerést a bérlői modell használatával hajtja végre. Ez az útmutató feltételezi, hogy a platform már be van állítva. Ha segítségre van szüksége a telepítéshez, tekintse meg [a C# következőt: gyors útmutató: beszédfelismerés felismerése (.net Core)](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+Nézzük meg a kód, amelyet a beszédsdk c#-ban való hívásához használni fog. Ebben a példában a bérlői modell használatával beszédfelismerést hajt végre. Ez az útmutató feltételezi, hogy a platform már be van állítva. Ha telepítési segítségre van szüksége, olvassa [el a Rövid útmutató: Beszéd felismerése, C# (.NET Core) című témakört.](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
 
 Másolja a projektbe a következő kódot:
 
@@ -287,11 +287,11 @@ namespace PrincetonSROnly.FrontEnd.Samples
 }
 ```
 
-Ezután újra kell építenie és futtatnia a projektet a parancssorból. A parancs futtatása előtt frissítsen néhány paramétert a következő módon:
+Ezután újra kell építenie és futtatnia kell a projektet a parancssorból. A parancs futtatása előtt frissítsen néhány paramétert az alábbi módon:
 
-1. Cserélje le a `<Username>` és `<Password>` egy érvényes bérlői felhasználó értékeit.
-1. Cserélje le a `<Subscription-Key>`t a beszédfelismerési erőforráshoz tartozó előfizetési kulcsra. Ez az érték a [Azure Portal](https://aka.ms/azureportal)beszédfelismerési erőforrásának **Áttekintés** szakaszában érhető el.
-1. Cserélje le a `<Endpoint-Uri>`t a következő végpontra. Győződjön meg arról, hogy lecserélte `{your region}`t arra a régióra, ahol a beszédfelismerési erőforrás létrejött. Ezek a régiók támogatottak: `westus`, `westus2`és `eastus`. A régióval kapcsolatos információk a [Azure Portal](https://aka.ms/azureportal)beszédfelismerési erőforrásának **Áttekintés** szakaszában találhatók.
+1. Cserélje `<Username>` `<Password>` le, és az értékeket egy érvényes bérlői felhasználó.
+1. Cserélje `<Subscription-Key>` le a beszédfelismerési erőforrás előfizetési kulcsára. Ez az érték az [Azure Portalon](https://aka.ms/azureportal)a beszédfelismerési erőforrás **áttekintése** szakaszában érhető el.
+1. Cserélje `<Endpoint-Uri>` le a következő végpontra. Győződjön meg `{your region}` arról, hogy lecseréli azt a régiót, ahol a beszédfelismerési erőforrást létrehozták. Ezek a régiók `westus` `westus2`támogatottak: , , és `eastus`. A régióadatai az [Azure Portalon](https://aka.ms/azureportal)a Beszédfelismerés-erőforrás **Áttekintés szakaszában** érhetők el.
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
@@ -301,9 +301,9 @@ Ezután újra kell építenie és futtatnia a projektet a parancssorból. A para
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egyéni beszédfelismerési modellt az Office 365-ben, hogyan helyezheti üzembe, és hogyan használhatja azt a Speech SDK-val.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egyéni beszédfelismerési modellt az Office 365-adatokkal egyéni beszédfelismerési modell létrehozásához, üzembe helyezéséhez és a beszédfelismerési SDK-val való használatához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Speech Studio](https://speech.microsoft.com/)
+* [Beszéd Stúdió](https://speech.microsoft.com/)
 * [Beszéd SDK](speech-sdk.md)

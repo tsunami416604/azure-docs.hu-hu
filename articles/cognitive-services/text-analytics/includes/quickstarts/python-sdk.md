@@ -2,49 +2,49 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0803a847e9e864b361917df9f1a9c6b059ca2fe9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203413"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240117"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-[3-as verzió referenciadokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [3-as verzió kódtárforráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [3-as verzió csomagja (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [3-as verzió mintái](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 Referenciadokumentáció](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 Könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 csomag (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-[2-es verzió referenciadokumentációja](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [2-es verzió kódtárforráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [2-es verzió csomagja (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [2-es verzió mintái](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[v2 Referenciadokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [v2 Könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [v2 csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [Ingyenes létrehozás](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Hozzon létre egy Text Analytics-erőforrást,"  target="_blank">hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span></a> az Azure Portalon a kulcs és a végpont beszerzéséhez. 
-    * Ahhoz, hogy az alkalmazást a Text Analytics API-hoz csatlakoztathassa, szüksége lesz egy kulcsra és egy végpontra a létrehozott erőforrásból. Ezt a rövid útmutató egy későbbi részében teheti meg.
-    * A szolgáltatás kipróbálásához használhatja az ingyenes tarifacsomagot, amelyet frissíthet fizetős szintre az éles használathoz.
+* Miután rendelkezik az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure-előfizetéssel, hozzon <span class="docon docon-navigate-external x-hidden-focus"></span> </a> létre egy Text Analytics-erőforrást"  target="_blank">az Azure Portalon a kulcs és a végpont leéséhez. Üzembe helyezése után kattintson **az Ugrás az erőforrásra**gombra.
+    * Szüksége lesz a kulcs és a végpont a létrehozott erőforrásból az alkalmazás és a Text Analytics API csatlakoztatásához. A kulcs és a végpont beillesztése az alábbi kódba később a rövid útmutatóban.
+    * Használhatja az ingyenes tarifacsomag ( )`F0`kipróbálni a szolgáltatást, és frissítse később egy fizetett szint éles környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
-### <a name="install-the-client-library"></a>Telepítse az ügyfélkódtárat
+### <a name="install-the-client-library"></a>Az ügyféltár telepítése
 
-A Python telepítése után az ügyfélkódtárat a következővel telepítheti:
+A Python telepítése után telepítheti az ügyfélkönyvtárat a következőkkel:
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
 ```console
 pip install azure-ai-textanalytics
 ```
 
 > [!TIP]
-> Szeretné egyben megtekinteni a teljes gyorsútmutatós kódfájlt? Megtalálhatja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py), amely a gyorsútmutató kódmintáit is tartalmazza. 
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódfájlt? Ebben a rövid útmutatóban a kódpéldákat tartalmazó [gitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py)található. 
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
@@ -53,13 +53,13 @@ pip install --upgrade azure-cognitiveservices-language-textanalytics
 ```
 
 > [!TIP]
-> Szeretné egyben megtekinteni a teljes gyorsútmutatós kódfájlt? Megtalálhatja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py), amely a gyorsútmutató kódmintáit is tartalmazza. 
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódfájlt? Ebben a rövid útmutatóban a kódpéldákat tartalmazó [gitHubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)található. 
 
 ---
 
-### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
+### <a name="create-a-new-python-application"></a>Új python-alkalmazás létrehozása
 
-Hozzon létre egy új Python-fájlt, és hozzon létre változókat az erőforrás Azure-végpontjához és előfizetési kulcsához.
+Hozzon létre egy új Python-fájlt, és hozzon létre változókat az erőforrás Azure-végpont- és előfizetési kulcsához.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -71,38 +71,38 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>Objektummodell
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-A Text Analytics ügyfél egy `TextAnalyticsClient` objektum, amely a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a kötegelt szövegelemzéshez. 
+A Text Analytics-ügyfél egy `TextAnalyticsClient` olyan objektum, amely a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szöveg kötegként történő elemzéséhez. 
 
-Kötegelt feldolgozás során a rendszer az API-nak `documents` listaként küldi el a szöveget, amely a használt módszertől függően `id`, `text` és `language` attribútumok kombinációját tartalmazó `dictionary` objektumokból áll. A `text` attribútum az elemzendő szöveget tárolja az eredeti `language` nyelven, az `id` bármilyen érték lehet. 
+Ha a kötegelt feldolgozás szövegét `documents`az API-nak a rendszer `id`listájaként küldi el, amelyek a használt módszertől függően a , a és `text`az `language` attribútumok kombinációját tartalmazó `dictionary` objektumok. Az `text` attribútum az eredeti `language`helyen tárolja az elemzendő szöveget, és az `id` bármilyen érték lehet. 
 
-A válaszobjektum az egyes dokumentumok elemzési információit tartalmazó lista. 
+A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tartalmazza. 
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-A Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) objektum, amely a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szövegelemzéshez, egyetlen sztringként vagy kötegelve. 
+A Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) objektum, amely a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szöveg elemzésére, egyetlen karakterláncként vagy kötegként. 
 
-A rendszer az API-nak `documents` listájaként küldi el a szöveget, amely a használt módszertől függően `id`, `text` és `language` attribútumok kombinációját tartalmazó `dictionary` objektumokból áll. A `text` attribútum az elemzendő szöveget tárolja az eredeti `language` nyelven, az `id` bármilyen érték lehet. 
+A program a szöveget a `documents`használt `dictionary` módszertől függően `id`a `text`, `language` a kombinációját és attribútumokat tartalmazó objektumok listájaként küldi el az API-nak. Az `text` attribútum az eredeti `language`helyen tárolja az elemzendő szöveget, és az `id` bármilyen érték lehet. 
 
 ---
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek megmutatják, hogyan végezheti el a következő feladatokat a Python Text Analytics ügyfélkódtára segítségével:
+Ezek a kódrészletek bemutatják, hogyan kell elvégezni a következő feladatokat a Pythonszöveg-elemzési ügyfélkódtárjával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
 * [Nyelvfelismerés](#language-detection)
-* [Nevesített entitások felismerése](#named-entity-recognition-ner) 
-* [Entitáskapcsolás](#entity-linking)
-* [Kulcskifejezések kinyerése](#key-phrase-extraction)
+* [Elnevezett entitás felismerése](#named-entity-recognition-ner) 
+* [Entitáscsatolás](#entity-linking)
+* [Kulcskifejezés kinyerése](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-Függvény létrehozása a `TextAnalyticsClient` objektum példányosításához a fenti `key` és `endpoint` segítségével. Ezután hozzon létre egy új ügyfelet. 
+Hozzon létre egy függvényt, amely az objektumot a `TextAnalyticsClient` fent létrehozott `key` és `endpoint` alkalmazással hozza létre. Ezután hozzon létre egy új ügyfelet. 
 
 ```python
 from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
@@ -120,7 +120,7 @@ client = authenticate_client()
 
 [!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-Függvény létrehozása a `TextAnalyticsClient` objektum példányosításához a fenti `key` és `endpoint` segítségével. Ezután hozzon létre egy új ügyfelet. 
+Hozzon létre egy függvényt, amely az objektumot a `TextAnalyticsClient` fent létrehozott `key` és `endpoint` alkalmazással hozza létre. Ezután hozzon létre egy új ügyfelet. 
 
 [!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 
@@ -128,9 +128,9 @@ Függvény létrehozása a `TextAnalyticsClient` objektum példányosításához
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-Hozzon létre egy új függvényt `sentiment_analysis_example()` néven, amely az ügyfelet használja argumentumként, majd meghívja az `analyze_sentiment()` függvényt. A visszaadott válaszobjektum tartalmazni fogja a teljes bemeneti dokumentum hangulati címkéjét és pontszámát, illetve az egyes mondatokhoz tartozó hangulatelemzést.
+Hozzon létre `sentiment_analysis_example()` egy új függvényt, amely az `analyze_sentiment()` ügyfelet argumentumként veszi fel, majd meghívja a függvényt. A visszaadott válaszobjektum tartalmazza a teljes bemeneti dokumentum hangulatfeliratát és pontszámát, valamint az egyes mondatok hangulatelemzését.
 
 
 ```python
@@ -180,7 +180,7 @@ Negative=0.02
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-Hitelesítsen egy ügyfélobjektumot és hívja meg a [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt. Haladjon végig az eredményeken, és jelenítse meg az egyes dokumentumok azonosítóit és a dokumentumszintű hangulati pontszámot. A 0-hoz közelebbi értékek negatív, az 1-hez közelebbiek pozitív érzelmekre utalnak.
+Hitelesítsen egy ügyfélobjektumot, és hívja meg a [sentiment()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt. Végighaladhat az eredményekközött, és kinyomtathatja az egyes dokumentumok azonosítóját és a hangulatpontszámát. A 0-hoz közelebbi pontszám negatív érzést, míg az 1-hez közelebbi pontszám pozitív véleményt jelez.
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
@@ -197,12 +197,12 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-Hozzon létre egy új függvényt `language_detection_example()` néven, amely az ügyfelet használja argumentumként, majd meghívja az `detect_language()` függvényt. A visszaadott válaszobjektum tartalmazza az észlelt nyelvet a `primary_language` alatt, ha sikeres volt, és egy `error` objektumot, ha nem.
+Hozzon létre `language_detection_example()` egy új függvényt, amely az `detect_language()` ügyfelet argumentumként veszi fel, majd meghívja a függvényt. A visszaadott válaszobjektum tartalmazza `primary_language` az észlelt nyelvet, ha sikeres, és ha `error` nem.
 
 > [!Tip]
-> Bizonyos esetekben nehéz lehet a nyelveket megkülönböztetni a bemenet alapján. A `country_hint` paraméterrel megadhat egy 2 karakteres országkódot. Alapértelmezés szerint az API a „US” országkódot használja alapértelmezett countryHint paraméterként. Ha ez a működés nem megfelelő, állítsa az értéket üres karakterláncra (`country_hint : ""`). 
+> Bizonyos esetekben nehéz lehet a bevitel alapján félretenni a nyelveket. A `country_hint` paraméter segítségével kétbetűs országkódot adhat meg. Alapértelmezés szerint az API az "US" az alapértelmezett countryHint, hogy távolítsa el ezt a `country_hint : ""`viselkedést vissza állíthatja ezt a paramétert beállításával ezt az értéket üres karakterlánc . 
 
 ```python
 def language_detection_example(client):
@@ -225,7 +225,7 @@ Language:  French
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-Az előbb létrehozott ügyfél segítségével hívja meg a [detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és kérje le az eredményt. Ezután haladjon végig az eredményeken, és jelenítse meg az egyes dokumentumok azonosítóit és elsőként visszaadott nyelvét.
+A korábban létrehozott ügyfél használatával hívja meg [a detect_language()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) és az eredmény. Ezután végighaladhat az eredményeken, és nyomtassa ki az egyes dokumentumok azonosítóját és az első visszaadott nyelvet.
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -240,16 +240,16 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Nevesített entitások felismerése (NER)
+## <a name="named-entity-recognition-ner"></a>Elnevezett entitás felismerése (NER)
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
 > [!NOTE]
-> A `3.0-preview`-s verzióban:
-> * A NER külön módszereket tartalmaz a személyes adatok észlelésére. 
-> * Az entitáskapcsolás és a NER két külön kérés.
+> Verzióban `3.0-preview`:
+> * A NER külön módszereket tartalmaz a személyes adatok felderítésére. 
+> * Az entitásösszekapcsolás külön kérés, mint a NER.
 
-Hozzon létre egy új függvényt `entity_recognition_example` néven, amely az ügyfelet használja argumentumként, majd meghívja a `recognize_entities()` függvényt, és végighalad az eredményeken. A visszaadott válaszobjektum tartalmazza az észlelt entitások listáját az `entity` alatt, ha sikeres volt, és egy `error` objektumot, ha nem. Minden észlelt entitás esetében jelenítse meg az entitás kategóriáját és alkategóriáját, ha létezik.
+Hozzon létre `entity_recognition_example` egy új függvényt, amely az `recognize_entities()` ügyfelet argumentumként veszi fel, majd meghívja a függvényt, és végigvezeti az eredményeket. A visszaadott válaszobjektum tartalmazza az észlelt `entity` entitások listáját, ha sikeres, és egy `error` ha nem. Minden észlelt entitáshoz nyomtassa ki a kategória és az alkategória, ha létezik.
 
 ```python
 def entity_recognition_example(client):
@@ -280,9 +280,9 @@ Named Entities:
     Length:          9      Confidence Score:        0.8
 ```
 
-## <a name="using-ner-to-detect-personal-information"></a>A NER használata személyes adatok észlelésére
+## <a name="using-ner-to-detect-personal-information"></a>A NER használata a személyes adatok felderítésére
 
-Hozzon létre egy új függvényt `entity_pii_example()` néven, amely az ügyfelet használja argumentumként, majd meghívja a `recognize_pii_entities()` függvényt, és lekéri az eredményt. Ezután haladjon végig az eredményeken, és jelenítse meg az entitásokat.
+Hozzon létre `entity_pii_example()` egy új függvényt, amely az `recognize_pii_entities()` ügyfelet argumentumként veszi fel, majd meghívja a függvényt, és megkapja az eredményt. Ezután végighaladaz eredményeken, és nyomtassa ki az entitásokat.
 
 ```python
 def entity_pii_example(client):
@@ -311,7 +311,7 @@ Personally Identifiable Information Entities:
 
 ## <a name="entity-linking"></a>Entitáskapcsolás
 
-Hozzon létre egy új függvényt `entity_linking_example()` néven, amely az ügyfelet használja argumentumként, majd meghívja a `recognize_linked_entities()` függvényt, és végighalad az eredményeken. A visszaadott válaszobjektum tartalmazza az észlelt entitások listáját az `entities` alatt, ha sikeres volt, és egy `error` objektumot, ha nem. Mivel a társított entitások egyedileg vannak azonosítva, ugyanannak az entitásnak az előfordulásai egy `entity` objektum alatt vannak csoportosítva, `match` objektumok listájaként.
+Hozzon létre `entity_linking_example()` egy új függvényt, amely az `recognize_linked_entities()` ügyfelet argumentumként veszi fel, majd meghívja a függvényt, és végigvezeti az eredményeket. A visszaadott válaszobjektum tartalmazza az észlelt `entities` entitások listáját, ha sikeres, és egy `error` ha nem. Mivel a csatolt entitások egyedi azonosítása történik, ugyanazon entitás `entity` előfordulásai `match` objektum alatt objektumok listájaként vannak csoportosítva.
 
 ```python
 def entity_linking_example(client):
@@ -390,9 +390,9 @@ Linked Entities:
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
 > [!NOTE]
-> A 2.1-es verzióban az entitáskapcsolás a NER-válasz részét képezi.
+> A 2.1-es verzióban az entitásösszekapcsolás szerepel a NER-válaszban.
 
-Az előbb létrehozott ügyfél segítségével hívja meg az [entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és kérje le az eredményt. Ezután haladjon végig az eredményeken, és jelenítse meg az egyes dokumentumok azonosítóját és a benne található entitásokat.
+A korábban létrehozott ügyfél használatával hívja meg az [entities()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját és a benne lévő entitásokat.
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
@@ -440,9 +440,9 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
 
-#### <a name="version-30-preview"></a>[3.0-s előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-Hozzon létre egy új függvényt `key_phrase_extraction_example()` néven, amely az ügyfelet használja argumentumként, majd meghívja az `extract_key_phrases()` függvényt. Az eredmény tartalmazza az észlelt kulcskifejezések listáját a `key_phrases` alatt, ha sikeres volt, és egy `error` objektumot, ha nem. Jelenítse meg az észlelt kulcskifejezéseket.
+Hozzon létre `key_phrase_extraction_example()` egy új függvényt, amely az `extract_key_phrases()` ügyfelet argumentumként veszi fel, majd meghívja a függvényt. Az eredmény tartalmazza az észlelt kulcskifejezések `key_phrases` listáját, ha `error` sikeresek, és ha nem. Nyomtasson ki minden észlelt kulcskifejezést.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -476,7 +476,7 @@ key_phrase_extraction_example(client)
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-Az előbb létrehozott ügyfél segítségével hívja meg a [key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és kérje le az eredményt. Ezután haladjon végig az eredményeken, és jelenítse meg az egyes dokumentumok azonosítóját és a bennük található kulcskifejezéseket.
+A korábban létrehozott ügyfél használatával hívja meg a [key_phrases()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) függvényt, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és nyomtassa ki az egyes dokumentumok azonosítóját és a benne található legfontosabb kifejezéseket.
 
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 

@@ -1,5 +1,5 @@
 ---
-title: Bing Web Search JavaScript ügyféloldali kódtár gyors üzembe helyezése
+title: Bing Web Search JavaScript-ügyféltár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924864"
 ---
-Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Node. js-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
+A Bing Web Search ügyféltár megkönnyíti a Bing Web Search integrálását a Node.js alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
-Szeretné most rögtön megtekinteni a kódot? A [javascripthez készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) mintái a githubon érhetők el.
+Szeretné most rögtön megtekinteni a kódot? A [JavaScript-alapú Bing Search ügyfélkódtárak](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) mintái elérhetők a GitHubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -99,7 +99,7 @@ Az utolsó lépés a program futtatása.
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

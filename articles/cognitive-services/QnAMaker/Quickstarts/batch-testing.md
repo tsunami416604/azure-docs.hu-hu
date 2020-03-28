@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel'
+title: 'Rövid útmutató: Tudásbázis tesztelése kötegelt kérdésekkel'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -11,202 +11,202 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77108990"
 ---
-# <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
+# <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rövid útmutató: Tudásbázis tesztelése kötegelt kérdésekkel és várt válaszokkal
 
-A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tudásbázisait a várt válaszok, a megbízhatósági pontszámok és a több bekapcsolási kérések esetében.
+A QnA Maker kötegelt tesztelési eszközzel tesztelheti a QnA Maker erőforrás tudásalapjait a várt válaszok, megbízhatósági pontszámok és többfordulatos kérések szempontjából.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Hozzon létre egy QnA Maker szolgáltatást](create-publish-knowledge-base.md) , vagy használjon egy meglévő szolgáltatást, amely az angol nyelvet használja.
-* A [multi-turn minta `.docx` fájl](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) letöltése
-* Töltse le a [Batch Testing eszközt](https://aka.ms/qnamakerbatchtestingtool), bontsa ki a végrehajtható fájlt a `.zip` fájlból.
+* [Hozzon létre egy QnA Maker szolgáltatást,](create-publish-knowledge-base.md) vagy használjon egy meglévő szolgáltatást, amely az angol nyelvet használja.
+* A [többfordulatos `.docx` mintafájl letöltése](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
+* Töltse le a [kötegelt tesztelési eszközt,](https://aka.ms/qnamakerbatchtestingtool)és bontsa ki a végrehajtható fájlt a `.zip` fájlból.
 
-## <a name="sign-into-qna-maker-portal"></a>Bejelentkezés QnA Maker portálra
+## <a name="sign-into-qna-maker-portal"></a>Bejelentkezés a QnA Maker portálra
 
 [Jelentkezzen be](https://www.qnamaker.ai/) a QnA Maker portálra.
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Hozzon létre egy új tudásbázist a multi-turn sample. docx fájlból
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Új tudásbázis létrehozása a többfordulatos sample.docx fájlból
 
-1. Válassza a **Tudásbázis létrehozása** elemet az eszköztáron.
-1. Hagyja ki az **1. lépést** , mert már rendelkeznie kell egy QnA Maker erőforrással, a **2. lépésre** való áttéréssel pedig kiválaszthatja a meglévő erőforrás-információkat:
-    * Azure Active Directory azonosítója
-    * Azure-előfizetés neve
-    * Azure QnA szolgáltatás neve
-    * Nyelv – az angol nyelv
-1. Adja meg a Tudásbázis neve `Multi-turn batch test quickstart` nevet.
+1. Válassza **a Tudásbázis létrehozása** az eszköztáron lehetőséget.
+1. **Lépés** kihagyása, mert már rendelkeznie kell egy QnA Maker erőforrással, majd a **2.**
+    * Az Azure Active Directory azonosítója
+    * Az Azure-előfizetés neve
+    * Az Azure QnA szolgáltatás neve
+    * Nyelv - az angol nyelv
+1. Írja be `Multi-turn batch test quickstart` a nevét a tudásbázis neveként.
 
-1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
+1. **A 4.**
 
     |Beállítás|Érték|
     |--|--|
-    |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
-    |**Alapértelmezett válasz szövege**| `Batch test - default answer not found.`|
-    |**+ Fájl hozzáadása**|Az előfeltételek között válassza ki a letöltött `.docx` fájl listáját.|
-    |**Chit-csevegés**|**Professional** kiválasztása|
+    |**Többfordulatos kinyerés engedélyezése URL-címekből, .pdf vagy .docx fájlokból.**|Bejelölve|
+    |**Alapértelmezett válaszszöveg**| `Batch test - default answer not found.`|
+    |**+ Fájl hozzáadása**|Válassza ki `.docx` a letöltött fájl listát az előfeltételek között.|
+    |**Chit-chat**|Válassza a **Professional** lehetőséget|
 
-1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
+1. **Az 5.** **Create your KB**
 
-    A létrehozási folyamat befejeződése után a portálon megjelenik a szerkeszthető Tudásbázis.
+    Amikor a létrehozási folyamat befejeződik, a portál megjeleníti a szerkeszthető tudásbázist.
 
 ## <a name="save-train-and-publish-knowledge-base"></a>Tudásbázis mentése, betanítása és közzététele
 
-1. A Tudásbázis mentéséhez válassza a **Mentés és a betanítás** lehetőséget az eszköztárból.
-1. Válassza a **Közzététel** lehetőséget az eszköztáron, majd válassza a **Közzététel** újra lehetőséget a Tudásbázis közzétételéhez. A közzététel elérhetővé teszi a tudásbázist egy nyilvános URL-végpontról érkező lekérdezések számára. A közzététel befejezésekor mentse a **közzétételi lapon** megjelenő gazdagép URL-címét és a végponti kulcs információit.
+1. A tudásbázis mentéséhez válassza a **Mentés és betanítás** lehetőséget az eszköztáron.
+1. Válassza a **Közzététel** lehetőséget az eszköztáron, majd a tudásbázis közzétételéhez kattintson ismét a **Közzététel** gombra. A közzététel elérhetővé teszi a tudásbázist egy nyilvános URL-végpontlekérdezéseihez. Ha a közzététel befejeződött, mentse a gazdaURL-cím- és végpontkulcs-adatokat a **Közzététel** lapon.
 
-    |Szükséges adatértékek| Példa|
+    |Kötelező adatok| Példa|
     |--|--|
-    |Közzétett gazdagép|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Közzétett kulcs|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (a `Endpoint` után megjelenő 32 karakteres karakterlánc)|
-    |Alkalmazásazonosító|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (a `POST`részeként megjelenő 36 karakteres karakterlánc) |
+    |Közzétett állomás|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
+    |Közzétett kulcs|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karaktersorozat `Endpoint` után )|
+    |Alkalmazásazonosító|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakteres karakterlánc `POST`a) részeként |
 
-## <a name="create-batch-test-file-with-question-ids"></a>Batch-tesztkörnyezet létrehozása a kérdés-azonosítókkal
+## <a name="create-batch-test-file-with-question-ids"></a>Kötegelt tesztfájl létrehozása kérdésazonosítókkal
 
-A Batch test eszköz használatához hozzon létre egy `batch-test-data-1.tsv` nevű fájlt egy szövegszerkesztővel. A fájlnak a következő oszlopokat kell elválasztania egy lapon.
+A kötegteszteszköz használatához hozzon létre `batch-test-data-1.tsv` egy szövegszerkesztővel megnevezett fájlt. A fájlnak a következő oszlopokat egy lappal kell elválasztania.
 
-|TSV bemeneti fájl mezői|Megjegyzések|Példa|
+|TSV bemeneti fájl mezők|Megjegyzések|Példa|
 |--|--|--|
-|Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (a `POST`részeként megjelenő 36 karakteres karakterlánc) |
-|Kérdés|A felhasználó által megadott kérdés szövege. 1 000 karakter max.|`How do I sign out?`|
-|Metaadatcímkék|választható|`topic:power` a _kulcsot használja: Value_ Format|
+|Tudásbázis azonosítója|A tudásbázis-azonosító a Közzététel lapon található. Egyszerre több tudásbázist teszteljen ugyanabban a szolgáltatásban egyetlen fájlban, különböző tudásbázisazonosítók használatával egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakteres karakterlánc `POST`a) részeként |
+|Kérdés|A felhasználó által beírt kérdésszöveg. Legfeljebb 1000 karakter.|`How do I sign out?`|
+|Metaadatcímkék|választható|`topic:power`a _kulcs:érték_ formátumot használja|
 |Felső paraméter|választható|`25`|
-|Várt válasz azonosítója|választható|`13`|
+|Várt válaszazonosító|választható|`13`|
 
-Ebben a Tudásbázisban vegyen fel 3 sort csak a 2 szükséges oszlopból a fájlba. Az első oszlop a Tudásbázis-azonosító, a második oszlop pedig a következő kérdéseket tartalmazza:
+Ehhez a tudásbázishoz adjon hozzá 3 sort a fájlhoz a 2 szükséges oszlopból. Az első oszlop a tudásbázis-azonosító, a második oszlop pedig a következő kérdéslista:
 
-|2\. oszlop – kérdések|
+|2. oszlop - kérdések|
 |--|
 |`Use Windows Hello to sign in`|
 |`Charge your Surface Pro 4`|
 |`Get to know Windows 10`|
 
-Ezek a kérdések a Tudásbázis pontos szövege, és a 100 értéket kell visszaadni a megbízhatósági pontszámnak.
+Ezek a kérdések a tudásbázis pontos megfogalmazásai, és a megbízhatósági pontszámként 100-at kell visszaadniuk.
 
-Ezután vegyen fel néhány kérdést, amely hasonló a kérdésekhez, de nem pontosan ugyanaz, mint 3 további sorban, ugyanazzal a Tudásbázis-AZONOSÍTÓval:
+Ezután adjunk hozzá néhány kérdést, hasonlóan ezekhez a kérdésekhez, de nem pontosan ugyanaz a 3 további sorok, ugyanazt a tudásbázis-azonosítót használva:
 
-|2\. oszlop – kérdések|
+|2. oszlop - kérdések|
 |--|
 |`What is Windows Hello?`|
 |`How do I charge the laptop?`|
 |`What features are in Windows 10?`|
 
 > [!CAUTION]
-> Győződjön meg arról, hogy az egyes oszlopok csak tabulátorral vannak elválasztva. A kezdő vagy záró szóközök bekerülnek az oszlopba, és a program kivételeket okoz, ha a típus vagy a méret helytelen.
+> Győződjön meg arról, hogy minden oszlopot csak tabulátorral választanak el. A program kezdő vagy záró szóközöket ad az oszlopadatokhoz, és a program kivételeket okoz, ha a típus vagy a méret helytelen.
 
-A Batch-tesztüzenet az Excelben való megnyitásakor az alábbi képhez hasonlóan néz ki. A Tudásbázis AZONOSÍTÓját a rendszer a biztonság `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` váltotta fel. Saját batch-teszt esetén győződjön meg arról, hogy az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
+A kötegelt tesztfájl az Excel programban való megnyitásakor az alábbi képhez hasonlóan néz ki. A tudásbázis-azonosítót biztonsági `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` okokból kicserélték. A saját kötegteszthez győződjön meg arról, hogy az oszlop megjeleníti a tudásbázis-azonosítót.
 
 > [!div class="mx-imgBorder"]
-> ![a. TSV fájl első verzióját a Batch-tesztből](../media/batch-test/batch-test-1-input.png)
+> ![A .tsv fájl első verziójának bevitele kötegelt tesztből](../media/batch-test/batch-test-1-input.png)
 
-## <a name="test-the-batch-file"></a>A batch-fájl tesztelése
+## <a name="test-the-batch-file"></a>A kötegfájl tesztelése
 
-Futtassa a Batch Testing programot a parancssorban az alábbi CLI-formátum használatával.
+Futtassa a kötegelt tesztelési programot a következő CLI formátumban a parancssorból.
 
-Cserélje le a `YOUR-RESOURCE-NAME` és a `ENDPOINT-KEY`t a szolgáltatás nevére és a végponti kulcsra vonatkozó saját értékekre. Ezek az értékek a QnA Maker portál **Beállítások** lapján találhatók.
+Cserélje `YOUR-RESOURCE-NAME` `ENDPOINT-KEY` le, és a saját értékeit a szolgáltatás nevét és végpontkulcs. Ezek az értékek a QnA Maker portál **Beállítások** lapján találhatók.
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
 ```
-A teszt befejeződött, és létrehozza a `out.tsv` fájlt:
+A teszt befejeződik, `out.tsv` és létrehozza a fájlt:
 
 > [!div class="mx-imgBorder"]
-> ![a. TSV fájl kimeneti első verzióját a Batch testből](../media/batch-test/batch-test-1-output.png)
+> ![A .tsv fájl első verziójának kimenete kötegelt tesztből](../media/batch-test/batch-test-1-output.png)
 
-A Tudásbázis AZONOSÍTÓját a rendszer a biztonság `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` váltotta fel. A saját batch-teszt esetében az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
+A tudásbázis-azonosítót biztonsági `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` okokból kicserélték. A saját kötegteszthez az oszlop a tudásbázis-azonosítót jeleníti meg.
 
-A megbízhatósági pontszám teszt kimenete, a 4. oszlopban látható, hogy az első 3 kérdés a várt 100 pontszámot adta vissza, mivel minden kérdés pontosan ugyanaz, mint a Tudásbázisban. Az utolsó 3 kérdés, amelynek új szövege a kérdés, a 100 nem ad vissza megbízhatósági pontszámként. Ahhoz, hogy a teszthez és a felhasználókhoz is növelje a pontszámot, további alternatív kérdéseket kell felvennie a tudásbázisba.
+Oszlopban a megbízhatósági pontszám tesztkimenete a vártnak megfelelően 100-as pontszámot adott vissza az első 3 kérdésre, mert minden kérdés pontosan ugyanaz, mint a tudásbázisban. Az utolsó 3 kérdés, az új megfogalmazás a kérdés, nem tér vissza 100, mint a bizalom pontszámot. Annak érdekében, hogy növelje a pontszám mind a teszt, és a felhasználók, hozzá kell adnia további alternatív kérdéseket a tudásbázishoz.
 
-## <a name="testing-with-the-optional-fields"></a>Tesztelés a választható mezőkkel
+## <a name="testing-with-the-optional-fields"></a>Tesztelés az opcionális mezőkkel
 
-Ha megértette a formátumot és a folyamatot, létrehozhat egy tesztelési fájlt, amellyel a Tudásbázisban futtathat egy adatforrásból, például a csevegési naplókból.
+Miután megértette a formátumot és a folyamatot, létrehozhat egy tesztfájlt, amely a tudásbázison keresztül fut egy adatforrásból, például a csevegési naplókból.
 
-Mivel az adatforrás és a folyamat automatizált, a tesztoldal többször is futtatható különböző beállításokkal a megfelelő értékek meghatározásához.
+Mivel az adatforrás és a folyamat automatizált, a tesztfájl többször is futtatható különböző beállításokkal a helyes értékek meghatározásához.
 
-Ha például van egy csevegési naplója, és meg szeretné határozni, hogy mely csevegési szöveg vonatkozzon a metaadatok mezőire, hozzon létre egy tesztoldalt, és állítsa be az összes sor metaadat-mezőit. Futtassa a tesztet, majd tekintse át a metaadatoknak megfelelő sorokat. Általában a egyezéseknek pozitívnak kell lenniük, de érdemes áttekintenie a hamis pozitív eredményeket. A hamis pozitív érték egy olyan sor, amely megfelel a metaadatoknak, de a szöveg alapján nem egyezik.
+Ha például rendelkezik csevegőnaplóval, és meg szeretné határozni, hogy melyik csevegőnapló szövege melyik metaadatmezőkre vonatkozik, hozzon létre egy tesztfájlt, és állítsa be a metaadatmezőket minden sorhoz. Futtassa a tesztet, majd tekintse át a metaadatoknak megfelelő sorokat. Általában a mérkőzések pozitívnak kell lenniük, de felül kell vizsgálnia az eredményeket a hamis pozitív. A hamis pozitív egy sor, amely megfelel a metaadatoknak, de a szöveg alapján nem egyezhet.
 
-## <a name="using-optional-fields-in-the-input-batch-test-file"></a>Választható mezők használata a bemeneti batch-teszt fájlban
+## <a name="using-optional-fields-in-the-input-batch-test-file"></a>Választható mezők használata a bemeneti kötegtesztfájlban
 
-A következő diagram segítségével megismerheti, hogyan keresheti meg a választható adatokhoz tartozó mezőértékeket.
+Az alábbi diagram segítségével megtudhatja, hogyan keresheti meg a választható adatok mezőértékeit.
 
-|Oszlop száma|Nem kötelező oszlop|Az adatok helye|
+|Oszlop száma|Választható oszlop|Az adatok helye|
 |--|--|--|
-|3|metaadatok|Meglévő Tudásbázis exportálása a meglévő _kulcshoz: érték_ párok.|
-|4|Top|Az `25` alapértelmezett értéke ajánlott.|
-|5|Kérdés-és Levelesláda-készlet azonosítója|A meglévő Tudásbázis exportálása az azonosító értékekhez. Azt is figyelje meg, hogy az azonosítók a kimeneti fájlban lettek visszaadva.|
+|3|metaadatok|Meglévő tudásbázis exportálása meglévő _kulcs:értékpárokhoz._|
+|4|felül|Az alapértelmezett `25` érték ajánlott.|
+|5|Kérdés-válasz készlet azonosítója|Meglévő tudásbázis exportálása azonosítóértékekhez. Azt is figyelje meg, hogy az azonosítók visszakerültek a kimeneti fájlba.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Metaadatok hozzáadása a tudásbázishoz
 
-1. A QnA-portál **Szerkesztés** lapján adja hozzá a `topic:power` metaadatokat a következő kérdésekre:
+1. A QnA portál **Szerkesztés** lapján adja hozzá a `topic:power` következő kérdések metaadatait:
 
     |Kérdések|
     |--|
-    |A Surface Pro 4 feltöltése|
-    |Az akkumulátor szintjének ellenõrzése|
+    |A Surface Pro 4 töltése|
+    |Az akkumulátor töltöttségi szintjének ellenőrzése|
 
-    Két QnA-készlet rendelkezik a metaadatok készletével.
+    Két QnA-készlet metaadat-készlettel rendelkezik.
 
     > [!TIP]
-    > Az egyes készletekhez tartozó metaadatok és QnA-azonosítók megtekintéséhez exportálja a tudásbázist. Válassza a **Beállítások** lapot, majd válassza az **Exportálás** `.xls` fájlként lehetőséget. Keresse meg ezt a letöltött fájlt, és nyissa meg az Excel-áttekintés a metaadatokhoz és az AZONOSÍTÓhoz.
+    > Az egyes csoportok metaadatait és QnA-azonosítóit exportálni a tudásbázist. Jelölje ki a **Beállítások** lapot, `.xls` majd az **Exportálás** fájlként lehetőséget. Keresse meg ezt a letöltött fájlt, és nyissa meg az Excel metaadatokat és -azonosítót.
 
-1. Válassza a **Mentés és a betanítás**lehetőséget, majd válassza ki a **közzétételi** lapot, majd kattintson a **Közzététel** gombra. Ezek a műveletek a Batch-teszt számára elérhetővé teszik a módosítást. Töltse le a tudásbázist a **Beállítások** lapról.
+1. Válassza a **Mentés és betanítás**lehetőséget, majd a **Közzététel** lapot, majd a **Közzététel** gombot. Ezek a műveletek elérhetővé teszik a módosítást a kötegteszt számára. Töltse le a tudásbázist a **Beállítások** lapról.
 
-    A letöltött fájl formátuma megfelelő a metaadatokhoz, valamint a helyes kérdés-és válaszfájl-AZONOSÍTÓhoz. Használja ezeket a mezőket a következő szakaszban
-
-    > [!div class="mx-imgBorder"]
-    > ![exportált Tudásbázis metaadatokkal](../media/batch-test/exported-knowledge-base-with-metadata.png)
-
-## <a name="create-a-second-batch-test"></a>Második batch-teszt létrehozása
-
-A Batch tesztelésének két fő forgatókönyve van:
-* **Csevegési naplófájlok feldolgozása** – a leggyakoribb válasz egy korábban láthatatlan kérdés – a leggyakoribb eset az, amikor a feldolgozáshoz a lekérdezéseket tartalmazó naplófájlt kell használnia, például egy csevegési robot felhasználói kérdéseit. Hozzon létre egy batch-fájl tesztet, amely csak a szükséges oszlopokkal rendelkezik. A teszt az egyes kérdések legfelső szintű válaszát adja vissza. Ez nem jelenti azt, hogy a legjobb válasz a helyes válasz. A teszt befejezése után lépjen be az érvényesítési tesztbe.
-* **Ellenőrzési teszt** – a várt válasz ellenőrzése. Ehhez a teszthez meg kell határozni, hogy a Batch-tesztben szereplő összes kérdés és a hozzá tartozó várt válasz érvényesítve lett. Ehhez manuális folyamatra lehet szükség.
-
-A következő eljárás azt feltételezi, hogy az a forgatókönyv a csevegési naplók feldolgozására
-
-1. Hozzon létre egy új batch-tesztelési fájlt, amely tartalmazza a választható adat`batch-test-data-2.tsv`. Adja hozzá a 6 sort az eredeti batch test bemeneti fájljához, majd adja hozzá a metaadatokat, a Top és a QnA set ID-t az egyes sorokhoz.
-
-    Ha szimulálni szeretné az új szövegnek a tudásbázisból való beolvasása a csevegési naplókból lehetőséget, állítsa az egyes oszlopok metaadatait ugyanarra az értékre: `topic:power`.
+    A letöltött fájl megfelelő formátumú a metaadatokhoz, és a helyes kérdés-válasz azonosító. A következő szakaszban lévő mezők használata
 
     > [!div class="mx-imgBorder"]
-    > ![. TSV fájl bemeneti második verziója a Batch test](../media/batch-test/batch-test-2-input.png)
+    > ![Exportált tudásbázis metaadatokkal](../media/batch-test/exported-knowledge-base-with-metadata.png)
 
-1. Futtassa újra a tesztet, és módosítsa a bemeneti és kimeneti fájlneveket, hogy jelezze a második tesztet.
+## <a name="create-a-second-batch-test"></a>Második kötegteszt létrehozása
+
+A kötegelt tesztelésnek két fő forgatókönyve van:
+* **Folyamat chat log fájlok -** Határozza meg a felső válasz egy korábban nem látott kérdés - a leggyakoribb helyzet az, amikor fel kell dolgozni a naplófájl a lekérdezések, mint például a chat bot felhasználói kérdéseire. Kötegfájl-teszt létrehozása, csak a szükséges oszlopokkal. A teszt minden kérdésre a legjobb választ adja vissza. Ez nem jelenti azt, hogy a legjobb válasz a helyes válasz. Miután befejezte ezt a tesztet, lépjen tovább az érvényesítési tesztre.
+* **Érvényesítési teszt** – A várt válasz ellenőrzése. Ez a teszt megköveteli, hogy a kötegtesztben a várt összes kérdés és egyeztetési válasz érvényesítve legyen. Ehhez szükség lehet némi kézi folyamatra.
+
+A következő eljárás feltételezi, hogy a forgatókönyv a csevegési naplók
+
+1. Hozzon létre egy új kötegtesztfájlt, amely nem kötelező adatokat tartalmaz, `batch-test-data-2.tsv`. Adja hozzá az eredeti kötegelt tesztbemeneti fájl 6 sorát, majd adja hozzá a metaadatokat, a felső és a QnA-készletazonosítót minden sorhoz.
+
+    A csevegőnaplókból származó új szövegek tudásbázissal való ellenőrzésének automatikus szimulálásához állítsa az `topic:power`egyes oszlopok metaadatait ugyanarra az értékre: .
 
     > [!div class="mx-imgBorder"]
-    > a. TSV fájl kimeneti második verziójának ![a Batch testből](../media/batch-test/batch-test-2-output.png)
+    > ![A .tsv fájl második verziójának bevitele kötegelt tesztből](../media/batch-test/batch-test-2-input.png)
 
-## <a name="test-results-and-an-automated-test-system"></a>Tesztelési eredmények és automatizált tesztelési rendszer
+1. Futtassa újra a tesztet, és módosítsa a bemeneti és kimeneti fájlneveket, jelezve, hogy ez a második teszt.
 
-Ez a teszt kimeneti fájl egy automatizált folyamatos tesztelési folyamat részeként elemezhető.
+    > [!div class="mx-imgBorder"]
+    > ![A .tsv fájl második verziójának kimenete kötegelt tesztből](../media/batch-test/batch-test-2-output.png)
 
-Az adott teszt kimenetét a következőként kell értelmezni: az egyes sorok metaadatokkal vannak szűrve, és mivel az egyes sorok nem egyeznek a tudásbázisban található metaadatokkal, az alapértelmezett válasz a nem egyező sorokhoz ("nem található megfelelő egyezés a KB-ban"). Azok a sorok, amelyek megfelelnek a egyezésnek, a QnA AZONOSÍTÓját és pontszámát adja vissza.
+## <a name="test-results-and-an-automated-test-system"></a>Vizsgálati eredmények és automatizált vizsgálati rendszer
 
-Az összes sor helytelen címkét adott vissza, mert egyetlen sor sem felelt meg a válasz AZONOSÍTÓjának.
+Ez a tesztkimeneti fájl egy automatizált folyamatos tesztfolyamat részeként elemezhető.
 
-Ezekkel az eredményekkel láthatja, hogy csevegési naplót szeretne készíteni, és a szöveget használja az egyes sorok lekérdezéséhez. Az eredmények nem ismerik fel az adatmennyiséget, így az eredmények sokat mondanak arról, hogy milyen információkat használhat a mozgó továbbítás:
+Ezt a konkrét tesztkimenetet a következőképpen kell értelmezni: minden sor metaadatokkal lett szűrve, és mivel minden sor nem felelt meg a tudásbázis metaadatainak, a visszaadott nem egyező sorokra vonatkozó alapértelmezett válasz ("nem található megfelelő egyezés a kb-ban"). Azok közül a sorok közül, amelyek megegyeztek, a QnA-azonosítót és a pontszámot visszaadták.
 
-* meta-adatszolgáltatások
-* QnA-azonosító
+Minden sor helytelen címkét adott vissza, mert egyetlen sor sem felelt meg a várt válaszazonosítónak.
+
+Ezekkel az eredményekkel látnia kell, hogy csevegőnaplót vehet fel, és a szöveget használhatja az egyes sorok lekérdezéseként. Anélkül, hogy bármit is tudnánk az adatokról, az eredmények sokat elárulnak azokról az adatokról, amelyeket aztán használhat az előrelépéshez:
+
+* metaadatok
+* QnA azonosító
 * pontszám
 
-A teszteléshez jó ötlet volt a meta-adattal való szűrés? Igen és nem. A tesztelési rendszernek létre kell hoznia minden egyes meta-adatpárokhoz tartozó tesztelési fájlt, valamint egy olyan tesztet, amely nem tartalmaz meta-adatpárokat.
+Jó ötlet volt a metaadatokkal történő szűrés a teszthez? Igen és nem. A tesztrendszernek tesztfájlokat kell létrehoznia minden egyes metaadat-párhoz, valamint egy metaadat-pár nélküli tesztet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja a Tudásbázis tesztelését, törölje a Batch file eszközt és a tesztelési fájlokat.
+Ha nem folytatja a tudásbázis tesztelését, törölje a kötegfájl-eszközt és a tesztfájlokat.
 
 Ha nem fogja tovább használni ezt a tudásbázist, törölje a tudásbázist a következő lépésekkel:
 
-1. A QnA Maker portálon válassza a **saját Tudásbázis** lehetőséget a felső menüben.
+1. A QnA Maker portálon válassza a Legfelső menü **Saját tudásbázisok** lehetőséget.
 1. A tudásbázisok listájában válassza a **Törlés** ikont a rövid útmutató tudásbázisának sorában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

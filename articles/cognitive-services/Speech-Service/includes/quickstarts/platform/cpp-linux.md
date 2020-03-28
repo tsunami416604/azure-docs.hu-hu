@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Speech C++ SDK (Linux) platform beállítása – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Speech SDK C++ (Linux) platform beállítása – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platformját C++ Linux rendszeren a SPEECH Service SDK-val.
+description: Ezzel az útmutatóval beállíthatja a platform C++ Linuxon a beszédszolgáltatás SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383965"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t
+Ez az útmutató bemutatja, hogyan kell telepíteni a [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) linuxos
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
+Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
+A rövid útmutató végrehajtásához a következőkre van szükség:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-* A támogatott linuxos platformokhoz telepíteni kell bizonyos könyvtárakat (`libssl` a Secure Sockets Layer támogatáshoz, és `libasound2` a hangtámogatáshoz). A könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért tekintse meg az alábbi disztribúciót.
+* A támogatott Linux platformokon`libssl` bizonyos könyvtárak at kell `libasound2` telepíteni (a biztonságos aljzatok réteg támogatásához és a hangtámogatáshoz). Az alábbi terjesztésben tájékatosan tájékasztok a könyvtárak megfelelő verzióinak telepítéséhez szükséges parancsokért.
 
-   * On Ubuntu:
+   * Ubuntu:On Ubuntu:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * Debian 9 rendszeren:
+   * A Debian 9-en:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
-   * RHEL/CentOS 8 rendszeren:
+   * A RHEL/CentOS 8-on:
 
      ```sh
      sudo yum update
@@ -56,11 +56,11 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
      ```
 
 > [!NOTE]
-> A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
+> Az RHEL/CentOS 8 rendszeren kövesse az [OpenSSL linuxos beállítására](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)vonatkozó utasításokat.
 
 ## <a name="install-speech-sdk"></a>A Speech SDK telepítése
 
-A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárak és fejlécek a https://aka.ms/csspeech/linuxbinary-ból tölthetők le tar-fájlként.
+A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges tárak és fejlécfájlok kátrányfájlként tölthetők le a programból. https://aka.ms/csspeech/linuxbinary
 
 Az SDK letöltése és telepítése a következőképpen történik:
 
@@ -89,12 +89,12 @@ Az SDK letöltése és telepítése a következőképpen történik:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   A könyvtárlistának tartalmaznia kell a harmadik felekkel kapcsolatos közleményt, a licencfájlokat, valamint a fejlécfájlokat (`include`) tartalmazó `.h` könyvtárat, és a kódtárakat tartalmazó `lib` könyvtárat.
+   A könyvtárlistának tartalmaznia kell a harmadik felekkel kapcsolatos közleményt, a licencfájlokat, valamint a fejlécfájlokat (`.h`) tartalmazó `include` könyvtárat, és a kódtárakat tartalmazó `lib` könyvtárat.
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
+Most továbbléphet az alábbi [következő lépésekre.](#next-steps)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

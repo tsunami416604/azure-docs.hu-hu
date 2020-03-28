@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszéd felismerése mikrofonból C++ , (Windows) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszédfelismerés mikrofonból, C++ (Windows) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan ismerheti fel a beszédfelismerést C++ a Windows asztalon a Speech SDK használatával
+description: Megtudhatja, hogy miként ismerheti fel a beszédfelismerést a C++ rendszerben a Windows Asztalon a Beszéd SDK használatával
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
 ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925358"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt:
+Mielőtt elkezdene járni:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -36,23 +36,23 @@ Az első lépések előtt:
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) **azonosítójával** (például `westus` az ingyenes próbaverziós előfizetéshez).
+1. Cserélje le `YourServiceRegion` a karakterláncot az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) `westus` **régiórégió régióból** származó régióra (például az ingyenes próba-előfizetéshez).
 
-1. A menüsávban válassza a **fájl** > **az összes mentése**lehetőséget.
+1. A menüsorban válassza az > **Összes** **fájlmentése**lehetőséget.
 
 > [!NOTE]
-> A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
+> A beszédsdk alapértelmezés szerint felismeri a nyelv en-us használatát, olvassa el a forrásnyelv megadása a [beszéd szöveghez című témakört](../../../../how-to-specify-source-language.md) a forrásnyelv kiválasztásával kapcsolatos információkért.
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. A menüsávban válassza a **build** > Build **megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
+1. A menüsorban válassza **buildmegoldás összeállítása** > **az** alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. A **HelloWorld** alkalmazás **indításához válassza a hibakeresés > ** a **hibakeresés indítása** (vagy az **F5**billentyű lenyomása) lehetőséget.
+1. A **helloworld** alkalmazás elindításához válassza a **Debug** > **Start Debugging** (vagy **az F5)** billentyűt.
 
-1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszédet a Speech szolgáltatásnak, amely szöveget ad át, és visszaküldi az alkalmazásnak a megjelenítéshez.
+1. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. Az alkalmazás továbbítja a beszéda beszéd a beszédszolgáltatás, amely átírja a szöveget, és elküldi azt vissza az alkalmazás megjelenítésére.
 
-   ![A sikeres felismerést követően a konzol kimenete](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
+   ![Konzolkimenet a sikeres felismerés után](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

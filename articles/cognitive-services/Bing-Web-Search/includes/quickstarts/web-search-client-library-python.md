@@ -1,5 +1,5 @@
 ---
-title: Bing Web Search Python ügyféloldali kódtár gyors üzembe helyezése
+title: Bing Web Search Python-ügyféltár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 019abc79091527b105238ef83bfca1913fae600b
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925396"
 ---
-Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Python-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
+A Bing Web Search ügyféltár megkönnyíti a Bing Web Search integrálását a Python-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
-Szeretné most rögtön megtekinteni a kódot? A [Pythonhoz készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) mintái a githubon érhetők el.
+Szeretné most rögtön megtekinteni a kódot? A [Python Bing Search ügyfélkódtárak mintái](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) elérhetők a GitHubon.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -83,7 +83,7 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
 
 1. Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 
-1. Másolja a mintát a projektbe. `endpoint` lehet az alábbi globális végpont, vagy az erőforrás Azure Portal megjelenő [Egyéni altartomány](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) végpontja:  
+1. Másolja ezt a mintakódot a projektbe. `endpoint`lehet az alábbi globális végpont, vagy az erőforrás hoz az Azure Portalon megjelenő [egyéni altartomány-végpont.:](~/articles/cognitive-services/cognitive-services-custom-subdomains.md)  
 
     ```python
     # Import required modules.
@@ -167,17 +167,17 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
 
 1. Cserélje le a `SUBSCRIPTION_KEY` értékét egy érvényes előfizetői azonosítóra.
 
-1. Cserélje le a `YOUR_ENDPOINT`t a végpont URL-címére a portálon.
+1. Cserélje `YOUR_ENDPOINT` le a végpont url-címét a portálon.
 
 1. Futtassa a programot. Például: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Függvények definiálása és az eredmények szűrése
 
-Most, hogy elvégezte az első hívását a Bing Web Search APIra, nézzük meg néhány funkciót. A következő részekben a lekérdezések finomítására és az eredmények szűrésére szolgáló SDK-funkciók vannak kiemelve. Az egyes függvények hozzáadhatók az előző szakaszban létrehozott Python-programhoz.
+Most, hogy első hívást intézett a Bing Web Search API-hoz, nézzünk meg néhány funkciót. A következő szakaszok kiemelik az SDK-funkciókat a lekérdezések finomításához és az eredmények szűréséhez. Minden függvény hozzáadható az előző szakaszban létrehozott Python-programhoz.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>A Bing által visszaadott eredmények számának korlátozása
 
-Ebben a példában a `count` és az `offset` paramétert használjuk az SDK [`search` metódusa](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) által visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
+Ez a `count` minta a és `offset` a paraméterek et használja az SDK-módszerrel visszaadott eredmények számának korlátozására. [ `search` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
 
@@ -216,7 +216,7 @@ Ebben a példában a `count` és az `offset` paramétert használjuk az SDK [`se
 
 ### <a name="filter-for-news-and-freshness"></a>Hírek és frissesség szűrése
 
-Ez a példa a `response_filter` és a `freshness` paraméter segítségével szűri az SDK [`search` metódusa](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) által visszaadott keresési eredményeket. A visszaadott keresési eredmények a sajtóhírekre, azon belül pedig a Bing által az elmúlt 24 órában észlelt oldalakra van korlátozva. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
+Ez a `response_filter` minta a és `freshness` a paraméterek segítségével szűri a keresési eredményeket az SDK [ `search` módszerével.](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) A visszaadott keresési eredmények a sajtóhírekre, azon belül pedig a Bing által az elmúlt 24 órában észlelt oldalakra van korlátozva. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
 
@@ -266,7 +266,7 @@ Ez a példa a `response_filter` és a `freshness` paraméter segítségével sz�
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>A biztonságos keresés, a válaszszám és az előléptetés szűrő használata
 
-Ez a példa a `answer_count`, a `promote` és a `safe_search` paraméter segítségével szűri az SDK [`search` metódusa](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) által visszaadott keresési eredményeket. A kód megjeleníti az első eredmény `name` és `url` értékét.
+Ez a `answer_count`minta a , `promote`és `safe_search` paramétereket használja a keresési eredmények sdk-módszerrel történő szűréséhez [ `search` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python). A kód megjeleníti az első eredmény `name` és `url` értékét.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
 
@@ -313,7 +313,7 @@ Ez a példa a `answer_count`, a `promote` és a `safe_search` paraméter segíts
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából és inaktiválni a virtuális környezetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)

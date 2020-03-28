@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszéd felismerése mikrofonból C# (Xamarin) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszédfelismerés mikrofonból, C# (Xamarin) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben egy platformfüggetlen C# Xamarin-alkalmazást hoz létre a univerzális Windows-platform (UWP), az Android és az iOS rendszerhez a Cognitive Services Speech SDK használatával. A beszédet valós időben, az eszköz vagy a szimulátor mikrofonja alapján is átmásolhatja. Az alkalmazás a Speech SDK NuGet csomagjával és a Microsoft Visual Studio 2019-mel készült.
+description: Ebben a cikkben hozzon létre egy platformfüggetlen C# Xamarin alkalmazást az univerzális Windows-platformhoz (UWP), Androidhoz és iOS-hez a Cognitive Services Speech SDK használatával. A beszéd eket valós időben írja át az eszköz vagy a szimulátor mikrofonjából. Az alkalmazás a Speech SDK NuGet csomaggal és a Microsoft Visual Studio 2019-tel készült.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,139 +11,139 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 2ed41f424dfe985cc078314da5b138c7d7bcdf37
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925763"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt:
+Mielőtt elkezdene járni:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=xamarin)
-> * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
 
-Ha már megtette ezt, remek. Folytasd a munkát.
+Ha ezt már megtetted, remek. Menjünk tovább.
 
-## <a name="add-sample-code-for-the-common-helloworld-project"></a>Mintakód hozzáadása a Common HelloWorld projekthez
+## <a name="add-sample-code-for-the-common-helloworld-project"></a>Mintakód hozzáadása a közös helloworld projekthez
 
-Az általános HelloWorld projekt platform-független implementációkat tartalmaz a platformfüggetlen alkalmazásokhoz. Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-kódot, és adja hozzá a C# megvalósítás mögötti kódot.
+A közös helloworld projekt platformfüggetlen implementációkat tartalmaz a platformfüggetlen alkalmazáshoz. Most adja hozzá az XAML-kódot, amely meghatározza az alkalmazás felhasználói felületét, és adja hozzá a C# kódot a megvalósítás mögött.
 
-1. **Megoldáskezelő**a Common HelloWorld projekt alatt nyissa meg `MainPage.xaml`.
+1. A **Solution Explorer**programban a közös `MainPage.xaml`helloworld projekt alatt nyissa meg a .
 
-1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe `<StackLayout>` és `</StackLayout>`között:
+1. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Rács** címkébe a következők között: `<StackLayout>` `</StackLayout>`
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/MainPage.xaml)]
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájl `MainPage.xaml.cs`. A csoport a `MainPage.xaml`alatt van csoportosítva.
+1. A **Megoldáskezelőben**nyissa meg a `MainPage.xaml.cs`mögötti kód forrásfájlt. A csoport ban `MainPage.xaml`van csoportosítva.
 
-1. Cserélje le az összes kódot a következő kódrészletre:
+1. Cserélje le az összes benne lévő kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/MainPage.xaml.cs)]
 
-1. A forrásfájl `OnRecognitionButtonClicked` kezelőjében keresse meg a karakterláncot `YourSubscriptionKey`, és cserélje le az előfizetési kulcsra.
+1. A forrásfájl kezelőjében `OnRecognitionButtonClicked` keresse `YourSubscriptionKey`meg a karakterláncot , és cserélje le az előfizetési kulcsra.
 
 
-1. A `OnRecognitionButtonClicked` kezelőben keresse meg a karakterláncot `YourServiceregion`, és cserélje le az előfizetéséhez [tartozó régió](https://aka.ms/speech/sdkregion) - **azonosítóra** . (Például az ingyenes próbaverziós előfizetés `westus` használata.)
+1. A `OnRecognitionButtonClicked` kezelőben keresse `YourServiceregion`meg a karakterláncot , és cserélje le az előfizetéshez társított [régió](https://aka.ms/speech/sdkregion) **régiórégiórégiórégióból** származó régióra. (Például használja `westus` az ingyenes próba-előfizetéshez.)
 
-1. Ezután létre kell hoznia egy [Xamarin szolgáltatást](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), amely a különböző platform-projektekben, például a UWP, az Androidban és az iOS-ben lévő mikrofon-engedélyek lekérdezésére szolgál. Ehhez vegyen fel egy új, *Services* nevű mappát a HelloWorld projekt alatt, és hozzon létre C# egy új forrásfájlt. Kattintson a jobb gombbal a *szolgáltatások* mappára, és válassza az **új elem** **hozzáadása** > a **fájl** > elemet. Nevezze át a fájlt `IMicrophoneService.cs`, és az alábbi kódrészletből helyezze el az összes kódot:
+1. Ezután létre kell [hoznia egy Xamarin-szolgáltatást,](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)amely különböző platformprojektek, például UWP, Android és iOS mikrofonengedélyeinek lekérdezésére szolgál. Ehhez adjon hozzá egy új mappát *Szolgáltatások* a helloworld projekt alatt, és hozzon létre egy új C# forrásfájlt alatta. Kattintson a jobb gombbal a *Szolgáltatások* mappára, és válassza **az** > **Új cikkkódfájl** > hozzáadása**parancsot**. Nevezze át `IMicrophoneService.cs`a fájlt , és helyezze az összes kódot a következő kódrészletből a fájlba:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 #### <a name="android"></a>[Android](#tab/x-android)
-## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Mintakód hozzáadása a `helloworld.Android` projekthez
+## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Mintakód hozzáadása `helloworld.Android` a projekthez
 
-Most adja hozzá C# a kódot, amely meghatározza az alkalmazás Android-specifikus részét.
+Most adja hozzá a C# kódot, amely meghatározza az android-specifikus része az alkalmazás.
 
-1. **Megoldáskezelő**a HelloWorld alatt. Android-projekt, `MainActivity.cs`megnyitása.
+1. A **Solution Explorer**, a helloworld alatt. Android projekt, `MainActivity.cs`nyitott .
 
-1. Cserélje le az összes kódot a következő kódrészletre:
+1. Cserélje le az összes benne lévő kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/MainActivity.cs)]
 
-1. Következő lépésként adja hozzá az Android-specifikus implementációt `MicrophoneService`hoz az új HelloWorld létrehozásához. Android-projekt. Ezután hozzon létre egy új C# forrásfájlt. Nevezze át a fájlt `MicrophoneService.cs`. Másolja és illessze be a következő kódrészletet a fájlba:
+1. Ezután add android-specifikus `MicrophoneService` megvalósítás létrehozásával az új mappa *Szolgáltatások* a helloworld. Android projekt. Ezután hozzon létre egy új C# forrásfájlt alatta. Nevezze át `MicrophoneService.cs`a fájlt . Másolja a fájlt a következő kódrészletbe, és illessze be a fájlt:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/Services/MicrophoneService.cs)]
 
-1. Ezután nyissa meg `AndroidManifest.xml` a *Properties (Tulajdonságok* ) mappában. Adja hozzá a következő használati engedélyek beállítást a mikrofonhoz `<manifest>` és `</manifest>`között:
+1. Ezután nyissa `AndroidManifest.xml` meg a *Tulajdonságok* mappát. Adja hozzá a mikrofon következő felhasználás-engedély beállítását a következők közé: `<manifest>` `</manifest>`
 
    ```xml
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
 #### <a name="ios"></a>[iOS](#tab/ios)
-## <a name="add-sample-code-for-the-helloworldios-project"></a>Mintakód hozzáadása a `helloworld.iOS` projekthez
+## <a name="add-sample-code-for-the-helloworldios-project"></a>Mintakód hozzáadása `helloworld.iOS` a projekthez
 
-Most adja hozzá C# a kódot, amely meghatározza az alkalmazás iOS-specifikus részét. Hozzon létre az Apple Device-specifikus konfigurációkat is az HelloWorld. iOS projekthez.
+Most adja hozzá a C# kódot, amely meghatározza az alkalmazás iOS-specifikus részét. Hozzon létre Apple-eszközspecifikus konfigurációkat is a helloworld.iOS projekthez.
 
-1. **Megoldáskezelő**a HelloWorld. iOS projekt alatt nyissa meg `AppDelegate.cs`.
+1. A **Solution Explorer**programban a helloworld.iOS projekt alatt nyissa meg a megnyitását. `AppDelegate.cs`
 
-1. Cserélje le az összes kódot a következő kódrészletre:
+1. Cserélje le az összes benne lévő kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/AppDelegate.cs)]
 
-1. Ezután adja hozzá a `MicrophoneService` iOS-specifikus implementációját az helloworld.iO projektben *található új Mappabeállítások* létrehozásával. Ezután hozzon létre egy új C# forrásfájlt. Nevezze át a fájlt `MicrophoneService.cs`. Másolja és illessze be a következő kódrészletet a fájlba:
+1. Ezután adja hozzá az `MicrophoneService` iOS-specifikus implementációt az új mappa *szolgáltatások* helloworld.iO projekt alatt történő létrehozásával. Ezután hozzon létre egy új C# forrásfájlt alatta. Nevezze át `MicrophoneService.cs`a fájlt . Másolja a fájlt a következő kódrészletbe, és illessze be a fájlt:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/Services/MicrophoneService.cs)]
 
-1. Nyissa meg `Info.plist` a HelloWorld. iOS projekt alatt a szövegszerkesztőben. Adja hozzá a következő kulcs-érték párokat a dict szakaszban:
+1. Nyissa `Info.plist` meg a helloworld.iOS projekt alatt a szövegszerkesztőben. Adja hozzá a következő kulcsértékpárt a diktálási szakaszhoz:
 
    <key>NSMicrophoneUsageDescription</key>
-   <string>a minta alkalmazáshoz mikrofon-hozzáférés szükséges</string>
+   <string>Ez a mintaalkalmazás mikrofonhozzáférést igényel</string>
 
    > [!NOTE]
-   > Ha iPhone-eszközt épít, győződjön meg arról, hogy `Bundle Identifier` megfelel az eszköz kiépítési profiljának alkalmazás-AZONOSÍTÓjának. Ellenkező esetben a Build sikertelen lesz. A iPhoneSimulator-mel a következőképpen hagyhatja.
+   > Ha iPhone-eszközhöz épít, győződjön `Bundle Identifier` meg arról, hogy az megfelel az eszköz kiépítési profilalkalmazás-azonosítójának. Ellenkező esetben a build sikertelen lesz. Az iPhoneSimulator, akkor hagyja, ahogy van.
 
-1. Ha Windows rendszerű számítógépet használ, hozzon létre egy kapcsolatot a Mac-eszközzel **a > ** **iOS** - > **pár Mac-re való**létrehozásához. A Mac-eszközhöz való kapcsolódás engedélyezéséhez kövesse a Visual Studio által biztosított utasítások varázslót.
+1. Ha Windows RENDSZERű számítógépre épít, hozzon létre kapcsolatot a Mac-eszközzel az**IOS-pár** >  **mac-es eszközökkel** > történő**kiépítéséhez.** A Mac-eszközzel való csatlakozás engedélyezéséhez kövesse a Visual Studio által biztosított utasításvarázslót.
 
 #### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Mintakód hozzáadása a `helloworld.UWP` projekthez
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Mintakód hozzáadása `helloworld.UWP` a projekthez
 
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Mintakód hozzáadása a HelloWorld. UWP projekt
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Adja hozzá a helloworld mintakódját. UWP-projekt
 
-Most adja hozzá C# a kódot, amely meghatározza az alkalmazás UWP-specifikus részét.
+Most adja hozzá a C# kódot, amely meghatározza az alkalmazás UWP-specifikus részét.
 
-1. **Megoldáskezelő**a HelloWorld alatt. UWP projekt, `MainPage.xaml.cs`megnyitása.
+1. A **Solution Explorer**, a helloworld alatt. UWP projekt, `MainPage.xaml.cs`megnyitás.
 
-1. Cserélje le az összes kódot a következő kódrészletre:
+1. Cserélje le az összes benne lévő kódot a következő kódrészletre:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/MainPage.xaml.cs)]
 
-1. Ezután adjon hozzá egy UWP-specifikus implementációt a `MicrophoneService`hoz, ehhez hozza létre az új HelloWorld *a mappában.* UWP projekt. Ezután hozzon létre egy új C# forrásfájlt. Nevezze át a fájlt `MicrophoneService.cs`. Másolja és illessze be a következő kódrészletet a fájlba:
+1. Ezután adjon hozzá egy UWP-specifikus implementációt `MicrophoneService` az új szolgáltatás mappa létrehozásával a helloworld alatt. *Services* UWP projekt. Ezután hozzon létre egy új C# forrásfájlt alatta. Nevezze át `MicrophoneService.cs`a fájlt . Másolja a fájlt a következő kódrészletbe, és illessze be a fájlt:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
 
-1. Ezután kattintson duplán a HelloWorld alatt található `Package.appxmanifest` fájlra. UWP-projekt a Visual studión belül. A **képességek**területen győződjön meg arról, hogy a **mikrofon** be van jelölve, és mentse a fájlt.
+1. Ezután kattintson `Package.appxmanifest` duplán a helloworld alatti fájlra. UWP-projekt a Visual Studio-ban. A **Képességek csoportban**győződjön meg arról, hogy a **Mikrofon** jelölőnégyzet be van jelölve, és mentse a fájlt.
 
-1. Ezután kattintson duplán `Package.appxmanifest` fájlra a Visual Studióban a `helloworld.UWP` projekt alatt, és a **képességek** területen jelölje be a következőt: > a **mikrofont** , és mentse a fájlt.
-   > Megjegyzés: Ha a figyelmeztetést látja, a tanúsítványfájl nem létezik: HelloWorld. UWP_TemporaryKey. pfx, további információért tekintse [meg a beszédfelismerés szövegbe](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) mintát.
+1. Következő dupla `Package.appxmanifest` kattintás `helloworld.UWP` a fájl alatt a projekt belül Visual Studio és a **Képességek** > **mikrofon** ellenőrzi, és mentse a fájlt.
+   > Megjegyzés: Abban az esetben, ha megjelenik figyelmeztetés : Tanúsítvány fájl nem létezik: helloworld. UWP_TemporaryKey.pfx, kérjük, ellenőrizze [beszéd szöveges](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) minta további információkért.
 
-1. A menüsávban válassza a **fájl** > az **összes mentése** lehetőséget a módosítások mentéséhez.
+1. A módosítások mentéséhez válassza a **menüsorban** > az**Összes mentése** lehetőséget.
 
-## <a name="build-and-run-the-uwp-application"></a>A UWP-alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-uwp-application"></a>Az UWP-alkalmazás létrehozása és futtatása
 
-1. HelloWorld beállítása. A UWP indítási projektként szolgál. Kattintson a jobb gombbal a HelloWorld. UWP projekt, majd válassza a **Build** elemet az alkalmazás létrehozásához.
+1. Állítsa be a helloworld-öt. UWP indítási projektként. Kattintson a jobb gombbal a helloworldre. UWP-projekt, és válassza **a Build az** alkalmazás létrehozásához.
 
-1. Az alkalmazás indításához válassza a **hibakeresés** > a **hibakeresés megkezdése** (vagy az **F5 billentyű**kiválasztása) lehetőséget. Megjelenik a **HelloWorld** ablak.
+1. Az alkalmazás elindításához válassza a **Hibakeresési** > **indítás i munkógombot** (vagy az **F5)** lehetőséget. Megjelenik **a helloworld** ablak.
 
-   ![Példa UWP Speech Recognition C# -alkalmazásra – gyors üzembe helyezés](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
+   ![Minta UWP beszédfelismerő alkalmazás C# nyelven – rövid útmutató](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
 
-1. Válassza a **mikrofon engedélyezése**lehetőséget. Ha megjelenik a hozzáférési engedélyre vonatkozó kérelem, válassza az **Igen**lehetőséget.
+1. Válassza **a Mikrofon engedélyezése**lehetőséget. Amikor megjelenik a hozzáférési engedélykérelem, válassza az **Igen**lehetőséget.
 
-   ![Mikrofon-hozzáférési engedély kérése](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
+   ![Mikrofonhozzáférési engedély kérése](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Válassza a **beszédfelismerés elindítása**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
+1. Válassza **a Beszédfelismerés indítása**lehetőséget, és beszéljen egy angol kifejezést vagy mondatot az eszköz mikrofonjába. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
 
    ![Beszédfelismerés felhasználói felülete](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *
 
-## <a name="build-and-run-the-android-and-ios-applications"></a>Android-és iOS-alkalmazások létrehozása és futtatása
+## <a name="build-and-run-the-android-and-ios-applications"></a>Android- és iOS-alkalmazások készítése és futtatása
 
-Az Android-és iOS-alkalmazások kiépítése és futtatása az eszközön vagy a szimulátoron hasonló módon történik a UWP. Győződjön meg arról, hogy az összes SDK megfelelően van telepítve a jelen cikk "Előfeltételek" szakaszában.
+Az Android és iOS alkalmazások létrehozása és futtatása a készülékben vagy szimulátorban hasonló módon történik, mint az UWP. Győződjön meg arról, hogy az összes SDK megfelelően van telepítve a cikk "Előfeltételek" című részében előírt módon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: webes keresés végrehajtása Ruby-Bing Web Search API'
+title: 'Rövid útmutató: Webes keresés végrehajtása a Ruby – Bing Web Search API-val'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API Ruby használatával, és JSON-választ kap
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API-nak a Ruby használatával, és JSON-választ kaphat
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169541"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Ruby segítségével  
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Ruby-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Web Search API-t, és megkaphatja a JSON-választ. Ez a Ruby alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Mielőtt folytatnánk, meg kell adni néhány változót. `uri` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont. Ellenőrizze, hogy a `uri` és a `path` értéke érvényes-e, és cserélje le a `accessKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `term` értékének lecserélésével.
+Mielőtt folytatnánk, meg kell adni néhány változót. `uri`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján. Ellenőrizze, hogy a `uri` és a `path` értéke érvényes-e, és cserélje le a `accessKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `term` értékének lecserélésével.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -261,7 +261,7 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)

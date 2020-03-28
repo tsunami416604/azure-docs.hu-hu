@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71837497"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -31,7 +31,7 @@ Az első megjegyzés arra utasítja a Python-értelmezőt, hogy UTF-8 kódolást
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Az előfizetési kulcs, a végpont és az elérési út beállítása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot a környezeti változóktól: `TRANSLATOR_TEXT_KEY` és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja a `subscription_key` és a `endpoint` karakterláncot, és megjegyzéseket fűzhet a feltételes utasításokhoz.
+Ez a minta megpróbálja olvasni a Translator Text előfizetési `TRANSLATOR_TEXT_KEY` kulcsot `TRANSLATOR_TEXT_ENDPOINT`és végpontot a környezeti változókból: és . Ha nem ismeri a környezeti változókat, `subscription_key` `endpoint` beállíthatja, és karakterláncként, és megjegyzést a feltételes utasítások.
 
 Másolja a projektbe a következő kódot:
 
@@ -47,10 +47,10 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-A Translator Text globális végpont beállítása `endpoint`. A `path` tulajdonság a `detect` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A fordítószöveg globális végpontja `endpoint`a . A `path` tulajdonság a `detect` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 >[!NOTE]
-> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: Észlelés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd a [Translator Text API 3.0 felismerési funkcióját ismertető részt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ```python
 path = '/detect?api-version=3.0'
@@ -71,7 +71,7 @@ headers = {
 }
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem paramétereit is meg kell egyeznie. [További információ a többszolgáltatásos előfizetés hitelesítéséről.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
 ## <a name="create-a-request-to-detect-text-language"></a>Kérelem létrehozása szöveg nyelvének felismeréséhez
 
@@ -112,10 +112,10 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-A minta futtatása után a következőnek kell megjelennie a terminálon:
+A minta futtatása után a következő nyomtatott feliratot kell látnia a terminálra:
 
 > [!NOTE]
-> Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Keresse meg az ország/régió rövidítését ebben [a nyelveklistájában.](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)
 
 ```json
 [
@@ -148,7 +148,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

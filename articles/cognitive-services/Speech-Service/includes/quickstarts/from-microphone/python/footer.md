@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszéd felismerése egy mikrofon-beszédfelismerési szolgáltatásból'
+title: 'Rövid útmutató: Beszédfelismerés mikrofonból – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 88df2b1fb6cbdb844616c06695b9f114978129b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467005"
 ---
 > [!div class="nextstepaction"]
-> [Python-minták megismerése a GitHubon](https://aka.ms/speech/github-python)
+> [Python-minták felfedezése a GitHubon](https://aka.ms/speech/github-python)

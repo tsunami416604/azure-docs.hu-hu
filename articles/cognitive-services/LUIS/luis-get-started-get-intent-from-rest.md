@@ -1,17 +1,17 @@
 ---
-title: 'Gyors útmutató: leképezés a REST API-kkal – LUIS'
-description: Ebben a REST API rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
+title: 'Rövid útmutató: Leképezés rest API-kkal - LUIS'
+description: Ebben a REST API-gyorsindításban egy elérhető nyilvános LUIS-alkalmazás segítségével határozza meg a felhasználó szándékát a társalgási szövegből.
 ms.topic: quickstart
 ms.date: 02/03/2020
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4e2c32b2eaf8cd6935e8e6b45bf79a1f3c756316
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77524665"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Gyors útmutató: leképezés a REST API-kkal
+# <a name="quickstart-get-intent-with-rest-apis"></a>Rövid útmutató: Leképezés rest API-kkal
 
 Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 

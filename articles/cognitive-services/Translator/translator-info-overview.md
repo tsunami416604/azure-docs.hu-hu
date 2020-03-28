@@ -1,5 +1,5 @@
 ---
-title: Mi a Translator Text API? – Translator Text API
+title: Mi a Translator Text API? - Fordító szöveges API
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba való integrálásával többnyelvű felhasználói felületeket hozhat létre.
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78331042"
 ---
 # <a name="what-is-the-translator-text-api"></a>Mi a Translator Text API?
@@ -28,7 +28,7 @@ A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligen
 
 A Microsoft Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a Translator Text API, amely a Microsoft számos termékét és szolgáltatását szolgálja ki, és amelyeket világszerte vállalkozások ezrei használnak alkalmazásaikban és munkafolyamataikban, hogy tartalmaikat a globális közönség elé tárják.
 
-A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban. A Speech Service lecseréli a Translator Speech API, amelyet a rendszer a 2019. október 15-én leszerel.
+A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. Egyesíti a Translator Speech API és az egyéni beszédszolgáltatás funkcióit egy egységes és teljesen testreszabható szolgáltatássá.A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -52,8 +52,8 @@ A Custom Translator használatával olyan fordítási rendszereket állíthat ö
 
 További információk [a nyelvi testreszabásról](customization.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Regisztráljon](translator-text-how-to-signup.md) egy hozzáférési kulcs beszerzéséhez.
-- Az [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) az API-k műszaki dokumentációját biztosítják.
+- [Regisztráljon](translator-text-how-to-signup.md) egy hozzáférési kulcsra.
+- [Az API-referencia](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) az API-k műszaki dokumentációját tartalmazza.
 - [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

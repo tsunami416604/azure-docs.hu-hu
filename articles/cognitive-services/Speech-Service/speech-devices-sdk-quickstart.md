@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: a Speech Devices SDK futtatása Windows, Linux vagy Android rendszeren – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: A beszédfelismerési eszközök SDK futtatása Windows, Linux vagy Android rendszeren – Beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Előfeltételek és utasítások a Windows, a Linux vagy az Android Speech Devices SDK használatának első lépéseihez.
+description: Előfeltételek és utasítások a Windows, Linux vagy Android beszédeszközök SDK- hoz való ismerkedéshez.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/20/2020
 ms.author: dapine
 zone_pivot_groups: platforms-set-of-three
 ms.openlocfilehash: 598a40e0a76606a0fec8f8a029ac08c0d6e9696e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77563226"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Windows, Linux vagy Android rendszeren
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Rövid útmutató: A beszédfelismerési eszközök SDK mintaalkalmazás futtatása Windows, Linux vagy Android rendszeren
 
 ::: zone pivot="platform-windows"
 [!INCLUDE [Windows platform](includes/speech-devices-sdk-windows-quickstart.md)]

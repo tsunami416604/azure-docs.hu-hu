@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Spell Check-eredmények lekérése a Bing Spell Check API használatával'
+title: 'Oktatóanyag: Helyesírás-ellenőrzési eredmények a Bing Spell Check API használatával'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az Oktatóanyaggal létrehozhat egy olyan weblapot, amely lekérdezést küld a Bing Spell Check APInak, és megjeleníti az eredményeket.
+description: Az oktatóanyag segítségével olyan weblapot hozhat létre, amely lekérdezéseket küld a Bing helyesírás-ellenőrző API-nak, és megjeleníti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943094"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Spell Check-ügyfél weboldalának létrehozása
 
-Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
+Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html)
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Annak érdekében, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Spell Check API-hoz. Ha még nem rendelkezik ilyennel, [hozzon létre egy Bing Spell Check erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) a Azure Portalban. használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)is.
+Annak érdekében, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Spell Check API-hoz. Ha nem rendelkezik ilyen, [hozzon létre egy Bing helyesírás-ellenőrző erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) az Azure Portalon. Próbakulcsot is [trial key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)használhat.
 
 ## <a name="create-a-new-web-page"></a>Új weboldal létrehozása
 
@@ -118,7 +118,7 @@ A getSubscriptionKeyLocalStorage segítő függvény először megpróbálja lek
     }
 ```
 
-A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** (érvénytelenítés) szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
+A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -148,7 +148,7 @@ Adja vissza a getSubscriptionKey segítő függvényt a külső getSubscriptionK
 
 ## <a name="helper-functions"></a>Segítő függvények
 
-A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címkével előre formázott adott szöveget.
+A pre segítő függvény visszaadja a [pre](https://www.w3schools.com/tags/tag_pre.asp) HTML-címke segítségével előre formázott, megadott szöveget.
 
 ```html
 function pre(text) {
@@ -164,7 +164,7 @@ function renderSearchResults(results) {
 }
 ```
 
-A renderErrorMessage függvény az adott hibaüzenetet és hibakódot jeleníti meg.
+A renderErrorMessage függvény a megadott hibaüzenetet és a hibakódot jeleníti meg.
 
 ```html
 function renderErrorMessage(message, code) {
@@ -283,7 +283,7 @@ Mentse a fájlt.
 
 ## <a name="display-results"></a>Eredmények megjelenítése
 
-Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing Spell Check API előfizetői azonosítóját. Adjon meg egy lekérdezést (például a „Hollo, wrld!” kifejezést) a **Spell Check** szövegmezőben, majd nyomja le az **ENTER** billentyűt. A weboldal ezután megjeleníti a lekérdezési eredményeket.
+Nyissa meg a weboldalt a böngészőben. Ha a rendszer kéri, adja meg a Bing Spell Check API előfizetői azonosítóját. Adjon meg egy lekérdezést (például a „Hollo, wrld!” kifejezést) a **Spell Check** szövegmezőben, majd nyomja le az **ENTER** billentyűt. A weboldal ezután megjeleníti a lekérdezési eredményeket.
 
 ```json
 {
@@ -322,4 +322,4 @@ Nyissa meg a weboldalt a böngészőjében. Ha a rendszer kéri, adja meg a Bing
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Használati és megjelenítési követelmények](../UseAndDisplayRequirements.md)
+> [Felhasználási és megjelenítési követelmények](../UseAndDisplayRequirements.md)

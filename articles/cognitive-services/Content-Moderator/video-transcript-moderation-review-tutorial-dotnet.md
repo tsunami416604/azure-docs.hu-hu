@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Videók és átiratok moderálása a .NET-ben – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre teljes videó-és átirat-moderálási megoldást a gépi támogatással rendelkező moderálással és az emberi-in-the-loop felülvizsgálat létrehozásával.
+description: Ez az oktatóanyag segít megérteni, hogyan hozhat létre egy teljes videó- és átiratmoderálási megoldást a gépi támogatású moderálással és a teljes cikluson felülértékelés-készítéssel.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976978"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre teljes videó-és átirat-moderálási megoldást gépi támogatású moderálással és emberi felülvizsgálati integrációval.
+Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre teljes videó- és átiratmoderálási megoldást gépi támogatású moderálással és emberi felülvizsgálati integrációval.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -34,17 +34,17 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Regisztráljon a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyére, és hozzon létre egyéni címkéket. Ha segítségre van szüksége ehhez a lépéshez, tekintse meg a [címkék használata](Review-Tool-User-Guide/tags.md) című témakört.
+- Regisztráljon a [Tartalommoderátor-ellenőrző eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyére, és hozzon létre egyéni címkéket. Lásd: [Címkék használata,](Review-Tool-User-Guide/tags.md) ha segítségre van szüksége ezzel a lépéssel kapcsolatban.
 
-    ![képernyőkép a videó-moderálás egyéni címkékről](images/video-tutorial-custom-tags.png)
-- A minta alkalmazás futtatásához Azure-fiókra, Azure Media Services erőforrásra, Azure Content Moderator erőforrásra és Azure Active Directory hitelesítő adatokra van szükség. Az erőforrások beszerzésével kapcsolatos tudnivalókat a [videó moderálási API](video-moderation-api.md) -útmutatója tartalmazza.
-- Töltse le a [videó-felülvizsgálati konzol alkalmazást](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) a githubról.
+    ![képernyőkép a Videómoderálás egyéni címkéiről](images/video-tutorial-custom-tags.png)
+- A mintaalkalmazás futtatásához szüksége van egy Azure-fiókra, egy Azure Media Services-erőforrásra, egy Azure-tartalommoderátor-erőforrásra és az Azure Active Directory hitelesítő adataira. Az erőforrások beelérésével kapcsolatos tudnivalókért tekintse meg a [Videó moderálás API-útmutatót.](video-moderation-api.md)
+- Töltse le a [Videó-ellenőrző konzol alkalmazást](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) a GitHubról.
 
 ## <a name="enter-credentials"></a>Hitelesítő adatok megadása
 
-Szerkessze a `App.config` fájlt, és adja hozzá a Active Directory bérlő nevét, a szolgáltatási végpontokat és a `#####`által jelzett előfizetési kulcsokat. A következő adatokra lesz szüksége:
+Szerkessze a `App.config` fájlt, és adja hozzá az Active `#####`Directory bérlői nevét, a szolgáltatásvégpontokat és az előfizetési kulcsokat. A következő adatokra lesz szüksége:
 
-|Jelmagyarázat|Leírás|
+|Kulcs|Leírás|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
 |`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
@@ -58,7 +58,7 @@ Szerkessze a `App.config` fájlt, és adja hozzá a Active Directory bérlő nev
 
 A `Program` osztály a `Program.cs` fájlban a videomoderálási alkalmazás fő belépési pontja.
 
-### <a name="methods-of-program-class"></a>A program osztály metódusai
+### <a name="methods-of-program-class"></a>A Programosztály módszerei
 
 |Módszer|Leírás|
 |-|-|
@@ -82,7 +82,7 @@ A `Main()` a következő parancssori argumentumokat kezeli:
 Ha nincs parancssori argumentum, a `Main()` meghívja a `GetUserInputs()` parancsot. Ez a metódus arra kéri a felhasználót, hogy adja meg egy videofájl elérési útvonalát, valamint szabja meg, hogy készüljön-e szöveges átirat.
 
 > [!NOTE]
-> A konzol alkalmazás a [Azure Media INDEXER API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzolalkalmazás az [Azure Media Indexer API-t](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) használja a feltöltött videó hangsávjából származó átiratok létrehozásához. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ### <a name="initialize-and-processvideo-methods"></a>Inicializálás és ProcessVideo-módszerek
 
@@ -115,9 +115,9 @@ A következő szakaszok a `ProcessVideo()` által meghívott folyamatokat részl
 A hálózati forgalom minimalizálása érdekében az alkalmazás H.264 (MPEG-4 AVC) formátumba konvertálja a videofájlokat, és 640 képpontos maximum szélességűre méretezi őket. A H.264 kodek rendkívül hatékony (magas tömörítési aránnyal bír), ezért javasolt a használata. A tömörítés az ingyenes `ffmpeg` parancssori eszközzel történik, amely a Visual Studio szolgáltatás `Lib` mappájában található. A bemeneti fájlok bármilyen, `ffmpeg` által támogatott formátumúak lehetnek, beleértve a leggyakrabban használt videoformátumokat és kodekeket.
 
 > [!NOTE]
-> Amikor a parancssorral indítja el a programot, megadja a videofájlokat tartalmazó könyvtárat, amelyet moderálásra küld. A program a könyvtár összes, `.mp4` kiterjesztésű fájlját feldolgozza. A fájlkiterjesztések feldolgozásához frissítse úgy a `Program.cs` `Main()` metódusát, hogy az tartalmazza a kívánt bővítményeket.
+> Amikor a parancssorral indítja el a programot, megadja a videofájlokat tartalmazó könyvtárat, amelyet moderálásra küld. A program a könyvtár összes, `.mp4` kiterjesztésű fájlját feldolgozza. A fájlkiterjesztések feldolgozásához frissítse úgy a `Program.cs``Main()` metódusát, hogy az tartalmazza a kívánt bővítményeket.
 
-Az egyetlen videofájlt tömörítő kód az `AMSComponent.cs` `AmsComponent` osztálya. Ezért a funkcióért a `CompressVideo()` metódus felelős, amely itt látható.
+Az egyetlen videofájlt tömörítő kód az `AMSComponent.cs``AmsComponent` osztálya. Ezért a funkcióért a `CompressVideo()` metódus felelős, amely itt látható.
 
 [!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
@@ -135,9 +135,9 @@ A kód a következő lépéseket hajtja végre:
 
 A metódus visszaadja a tömörített kimeneti fájl fájlnevét.
 
-## <a name="upload-and-moderate-the-video"></a>Videó feltöltése és moderálása
+## <a name="upload-and-moderate-the-video"></a>A videó feltöltése és moderálása
 
-Ahhoz, hogy egy videót feldolgozhasson a Content Moderation szolgáltatással, az Azure Media Servicesben kell tárolni. A `Program.cs` `Program` osztály egy `CreateVideoStreamingRequest()` rövid metódust tartalmaz, amely a videó feltöltéséhez használt streamelési kérelmet képviselő objektumot adja vissza.
+Ahhoz, hogy egy videót feldolgozhasson a Content Moderation szolgáltatással, az Azure Media Servicesben kell tárolni. A `Program.cs``Program` osztály egy `CreateVideoStreamingRequest()` rövid metódust tartalmaz, amely a videó feltöltéséhez használt streamelési kérelmet képviselő objektumot adja vissza.
 
 [!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
@@ -151,7 +151,7 @@ Ezek a sorok a következő feladatokat hajtják végre:
 - Beállítja a kérés `GenerateVTT` jelölőjét, ha a felhasználó szöveges átiratot kért
 - Az `CreateAzureMediaServicesJobToModerateVideo()` parancsot meghívva elvégzi a feltöltést és megkapja az eredményt
 
-## <a name="examine-video-moderation-code"></a>Videó moderálási kódjának vizsgálata
+## <a name="examine-video-moderation-code"></a>Videómoderációs kód vizsgálata
 
 A `CreateAzureMediaServicesJobToModerateVideo()` metódus a `VideoModerator.cs` fájlban található, amely az Azure Media Services szolgáltatással kommunikáló kódok nagy részét tartalmazza. A metódus forráskódja a következő kivonatban látható.
 
@@ -164,7 +164,7 @@ A kód a következő feladatokat hajtja végre:
 - Elküldi a feladatot, feltölti a fájlt és megkezdi a feldolgozást
 - Lekéri a moderálás eredményeit, a szöveges átiratot (amennyiben a felhasználó kérte), és egyéb adatokat
 
-## <a name="sample-video-moderation-output"></a>Minta videó-moderálás kimenete
+## <a name="sample-video-moderation-output"></a>Minta videó moderálási kimenet
 
 A videomoderálási feladat eredménye (lásd: [videomoderálás gyors útmutatója](video-moderation-api.md)) egy JSON-adatstruktúra, amely a moderálás eredményeit tartalmazza. Az eredmények részletezik a videó töredékeit (jeleneteit), amelyek kulcskockákból álló, felülvizsgálatra megjelölt eseményeket (klipeket) tartalmaznak. A kulcskockák aszerint vannak pontozva, hogy milyen valószínűséggel tartalmaznak felnőtt vagy kényes tartalmat. A következő példa egy JSON-válasz:
 
@@ -223,20 +223,20 @@ A videomoderálási feladat eredménye (lásd: [videomoderálás gyors útmutat�
 A `GenerateVTT` jelölő használatakor hangátirat is készül.
 
 > [!NOTE]
-> A konzol alkalmazás a [Azure Media INDEXER API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) -t használja átiratok létrehozásához a feltöltött videó hangsávján. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzolalkalmazás az [Azure Media Indexer API-t](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) használja a feltöltött videó hangsávjából származó átiratok létrehozásához. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
-## <a name="create-a-human-review"></a>Emberi felülvizsgálat létrehozása
+## <a name="create-a-human-review"></a>Emberi vélemény létrehozása
 
-A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint a hangsávok átiratát. A következő lépés egy emberi moderátoroknak szóló értékelés elkészítése a Content Moderator felülvizsgálati eszközben. Ha visszatér a `Program.cs` `ProcessVideo()` metódusához, láthatja a `CreateVideoReviewInContentModerator()` metódus meghívását. Ez a metódus a `videoReviewApi` osztályba tartozik, amely a `VideoReviewAPI.cs` fájlban található, és itt látható.
+A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint a hangsávok átiratát. A következő lépés egy emberi moderátoroknak szóló értékelés elkészítése a Content Moderator felülvizsgálati eszközben. Ha visszatér a `Program.cs``ProcessVideo()` metódusához, láthatja a `CreateVideoReviewInContentModerator()` metódus meghívását. Ez a metódus a `videoReviewApi` osztályba tartozik, amely a `VideoReviewAPI.cs` fájlban található, és itt látható.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
 A `CreateVideoReviewInContentModerator()` számos egyéb metódust meghív a következő feladatok elvégzéséhez:
 
 > [!NOTE]
-> A konzolalkalmazás az [FFmpeg](https://ffmpeg.org/) könyvtárat használja a miniatűrök létrehozásához. Ezek a miniatűrök (képek) megfelelnek a videó moderálási kimenetében lévő keret időbélyegének.
+> A konzolalkalmazás az [FFmpeg](https://ffmpeg.org/) könyvtárat használja a miniatűrök létrehozásához. Ezek a miniatűrök (képek) a videomoderálási kimenet képkockáihoz tartozó időbélyegeknek felelnek meg.
 
-|Tevékenység|Metódusok|File|
+|Tevékenység|Metódusok|Fájl|
 |-|-|-|
 |Kinyeri a kulcskockákat a videóból, és miniatűr képeket hoz létre róluk|`CreateVideoFrames()`<br>`GenerateFrameImages()`|`FrameGeneratorServices.cs`|
 |Átvizsgálja a szöveges átiratot (amennyiben elérhető), és felnőtt vagy kényes hangtartalmat keres|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
@@ -246,13 +246,13 @@ A következő kép egy az előző lépések eredményeit mutatja.
 
 ![Videoértékelés – alapértelmezett nézet](images/video-tutorial-default-view.PNG)
 
-## <a name="process-the-transcript"></a>A átirat feldolgozása
+## <a name="process-the-transcript"></a>Az átirat feldolgozása
 
 Az oktatóanyagban használt kódok eddig a vizuális tartalmakhoz tartoztak. A beszédtartalom értékelése egy különálló (de nem kötelező) folyamat, amely – ahogyan korábban említettük – a hangsávból kinyert átiratot alkalmazza. Ideje megvizsgálnunk a szöveges átiratok készítési folyamatát, valamint azok felhasználását a felülvizsgálat során. Az átiratok készítése az [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content) szolgáltatás szerepköre.
 
 Az alkalmazás a következő feladatokat hajtja végre:
 
-|Tevékenység|Metódusok|File|
+|Tevékenység|Metódusok|Fájl|
 |-|-|-|
 |Meghatározza, hogy szükséges-e szöveges átiratok készítése|`Main()`<br>`GetUserInputs()`|`Program.cs`|
 |Ha igen, hozzáad egy átírás feladatot a moderálás részeként|`ConfigureTranscriptTask()`|`VideoModerator.cs`|
@@ -314,7 +314,7 @@ Következő lépésként beolvassuk az elemzett szöveges feliratokat a Content 
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
-### <a name="text-moderation-breakdown"></a>Szöveges moderálás bontása
+### <a name="text-moderation-breakdown"></a>Szövegmoderálás szerinti bontása
 
 A `TextScreen()` egy összetett metódus, ezért részletesen ismertetjük.
 
@@ -357,9 +357,9 @@ Video review successfully completed...
 Total Elapsed Time: 00:05:56.8420355
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban olyan alkalmazást állít be, amely a videó tartalmának moderálását&mdash;, beleértve az átirat tartalmát&mdash;és a felülvizsgálati eszközben hozza létre az értékeléseket. Következő lépésként tekintse meg a videó moderálásának részleteit.
+Ebben az oktatóanyagban olyan alkalmazást állít&mdash;be,&mdash;amely moderálja a videotartalmat, beleértve az átirat tartalmát is, és véleményeket hoz létre a Véleményezés eszközben. Ezután tudjon meg többet a videómoderálás részleteiről.
 
 > [!div class="nextstepaction"]
 > [Videomoderálás](./video-moderation-human-review.md)

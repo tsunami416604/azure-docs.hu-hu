@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: webes keresés végrehajtása Node. js-Bing Web Search REST API'
+title: 'Rövid útmutató: Webes keresés végrehajtása a Node.js - Bing Web Search REST API-val'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérelmeket küldhet a Bing Web Search REST API Node. js használatával, és JSON-választ kap
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API-nak a Node.js fájl használatával, és JSON-választ kaphat
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76168805"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és a Node. js használatával
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rövid útmutató: Keresés az interneten a Bing Web Search REST API és a Node.js használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Node. js-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Web Search API-t, és megkaphatja a JSON-választ. Ez a Node.js alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Az előfizetői azonosító megadása
 
-Ez a kódrészlet az `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetői azonosító tárolásához, ami célszerű megoldás az azonosítók véletlen felfedésének megakadályozására a kód telepítése során. Az előfizetési kulcs megkereséséhez nyissa meg az API-k [lapot](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) .
+Ez a kódrészlet az `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetői azonosító tárolásához, ami célszerű megoldás az azonosítók véletlen felfedésének megakadályozására a kód telepítése során. Az előfizetési kulcs megkereséséhez lépjen az [API-k lapjára.](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)
 
 Amennyiben nem ismeri a környezeti változók használatát, vagy minél előbb futtatni szeretné az alkalmazást, sztringként is lecserélheti a `process.env['AZURE_SUBSCRIPTION_KEY']` értékét az előfizetői azonosítóra.
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Függvény létrehozása a kérés végrehajtásához
 
-A függvény egy biztonságos GET kérést hajt végre, és a keresési lekérdezést lekérdezési paraméterként menti az elérési úthoz. `hostname` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont.  Az `encodeURIComponent` az érvénytelen karakterek feloldására szolgál, az előfizetői azonosító átadása pedig a fejlécben történik. A visszahívásra adott [válasz](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) feliratkozik a `data` eseményre a JSON-törzs összesítéséhez, az `error` eseményre az esetleges hibák naplózásához, és az `end` eseményre az üzenet befejezési időpontjának lekéréséhez. Amikor végzett, az alkalmazás kinyomtatja az érdekesebb fejléceket és az üzenet törzsét. Kedve szerint kísérletezhet a színekkel, és beállíthatja a részletességet. `1` részletességgel remek összegzést készíthet a válaszról.
+A függvény egy biztonságos GET kérést hajt végre, és a keresési lekérdezést lekérdezési paraméterként menti az elérési úthoz. `hostname`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.  Az `encodeURIComponent` az érvénytelen karakterek feloldására szolgál, az előfizetői azonosító átadása pedig a fejlécben történik. A visszahívásra adott [válasz](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) feliratkozik a `data` eseményre a JSON-törzs összesítéséhez, az `error` eseményre az esetleges hibák naplózásához, és az `end` eseményre az üzenet befejezési időpontjának lekéréséhez. Amikor végzett, az alkalmazás kinyomtatja az érdekesebb fejléceket és az üzenet törzsét. Kedve szerint kísérletezhet a színekkel, és beállíthatja a részletességet. `1` részletességgel remek összegzést készíthet a válaszról.
 
 ```javascript
 function bingWebSearch(query) {
@@ -266,7 +266,7 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)

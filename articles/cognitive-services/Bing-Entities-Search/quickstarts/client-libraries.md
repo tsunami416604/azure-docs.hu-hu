@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: az Bing Entity Search ügyféloldali kódtár használata'
+title: 'Rövid útmutató: A Bing entitáskeresés ügyféltár használata'
 titleSuffix: Azure Cognitive Services
-description: A Entity Search API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
+description: Az Entity Search API ügyfélkódtárakat kínál, amelyek megkönnyítik a keresési képességek integrálását az alkalmazásokba. Ezzel a rövid útmutatóval elindíthatja a keresési kérelmek küldését, és visszaszerezheti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 206d3514e231fdedc6c13592da0c51d2f93bbe84
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79136752"
 ---
-# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Gyors útmutató: az Bing Entity Search ügyféloldali kódtár használata
+# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Rövid útmutató: A Bing entitáskeresés ügyféltár használata
 
 ::: zone pivot="programming-language-csharp"
 

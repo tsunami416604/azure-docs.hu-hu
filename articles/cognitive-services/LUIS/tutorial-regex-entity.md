@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: reguláris kifejezésű entitás – LUIS'
+title: 'Oktatóanyag: Reguláris kifejezés entitás - LUIS'
 titleSuffix: Azure Cognitive Services
-description: Következetesen formázott adatok kinyerése a reguláris kifejezés entitás használatával.
+description: Konzisztensen formázott adatok kinyerése egy utterance (kifejezés) kifejezés a reguláris entitás használatával.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,45 +12,45 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75381512"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: jól formázott adatok beolvasása a teljes területről
-Ebben az oktatóanyagban hozzon létre egy reguláris kifejezés entitást, amely Kinyeri a következetesen formázott adatok részleteit.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Jól formázott adatok beszereznie az utterance (kifejezés)
+Ebben az oktatóanyagban hozzon létre egy reguláris kifejezés entitás következetesen formázott adatokat egy utterance (kifejezés) kinyerése.
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Alkalmazás importálása
 > * Szándék hozzáadása
 > * Reguláriskifejezés-entitás hozzáadása
-> * Betanítás, közzététel és lekérdezés alkalmazás a kinyert adatgyűjtéshez
+> * Kinyert adatok betanítása, közzététele és lekérdezése
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="regular-expression-entities"></a>Reguláriskifejezés-entitások
 
-A reguláris kifejezés entitásával jól formázott szöveget lehet kihúzni a teljes szövegből. Bár a kimondott szöveg szándékát mindig gépi tanulás határozza meg, ez az entitástípus nem gép által tanult. A reguláris kifejezéssel rendelkező entitások megfelelő használata bármely olyan szöveg, amely következetesen egy [reguláris kifejezés](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)által megjeleníthető.
+A reguláris kifejezés entitás segítségével húzza ki a jól formázott szöveget egy utterance (kifejezés). Bár a kimondott szöveg szándékát mindig gépi tanulás határozza meg, ez az entitástípus nem gép által tanult. A reguláris kifejezés entitás hoz megfelelően használható minden olyan szöveg, amelyet következetesen [reguláris kifejezés](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)sel ábrázolhat .
 
 `Send pizza delivery time to x123432`
 
-Ez a példa egy _rövid kódot_ használ a szöveges üzenetek küldéséhez. Ez a rövid kód egy 5 vagy 6 számjegyből álló numerikus kód, amely x előtaggal van ellátva, és a reguláris kifejezéssel `x\d{5,6}`is leírható.
+Ez a példa _egy rövid kódot_ használ a szöveges üzenetek küldéséhez. Ez a rövid kód egy 5 vagy 6 jegyű numerikus kód, amely `x\d{5,6}`x előtaggal van ellátva, és a reguláris kifejezéssel írható le.
 
-Amikor egy reguláris kifejezés entitást ad hozzá egy LUIS-alkalmazáshoz, nem kell [felcímkézni](label-entity-example-utterance.md) a szöveget a normál expressz entitással. A rendszer az összes cél összes hosszúságú kimondott szöveg alkalmazza.
+Amikor egy reguláris kifejezés entitást ad hozzá egy LUIS-alkalmazáshoz, nem kell [a](label-entity-example-utterance.md) szöveget a normál expressz entitással címkézni. Minden szándékban minden kimondott szövegre vonatkozik.
 
-## <a name="import-example-json-to-begin-app"></a>Importálja például a. JSON fájlt az alkalmazás megkezdéséhez
+## <a name="import-example-json-to-begin-app"></a>Példát importálhat.json alkalmazás kezdéséhez
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
+1.  Töltse le és mentse az [alkalmazás JSON fájlt](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="create-intent-for-sending-confirmation-text-messages"></a>Szándék létrehozása a megerősítő szöveges üzenetek küldéséhez
+## <a name="create-intent-for-sending-confirmation-text-messages"></a>Szándék létrehozása megerősítő szöveges üzenetek küldéséhez
 
-1. Válassza a **+ Létrehozás** lehetőséget, hogy új szándékot hozzon létre egy megerősítő szöveg küldésére vonatkozó szándék besorolásához.
+1. Válassza a **+ Create** lehetőséget, ha új szándékot szeretne létrehozni egy megerősítési szöveg küldésére vonatkozó utterance (kifejezés) szándékának osztályozásához.
 
 1. Az előugró párbeszédpanelen írja be a `ConfirmationText` karakterláncot, majd válassza a **Kész** elemet.
 
@@ -58,53 +58,53 @@ Amikor egy reguláris kifejezés entitást ad hozzá egy LUIS-alkalmazáshoz, ne
 
     |Példák kimondott szövegekre|
     |--|
-    |Pizzás kézbesítési idő küldése a x123432|
-    |Txt-x234567 idő|
-    |a hirdetmény x23987|
+    |Pizza szállítási idő küldése az x123432-re|
+    |Txt x234567 az idő|
+    |x23987 a hirdetmény|
 
-    A géppel megtanult entitások kinyeréséhez olyan példákat kell megadnia, amelyek tartalmazzák az entitást számos hosszúságú kimondott szöveg, de ezzel a nem géppel megismert entitással, a variáció nem fontos. Ha a szöveg megfelel a reguláris kifejezésnek, akkor a rendszer kinyeri.
+    Gépben tanult entitások kinyeréséhez meg kell adnia példákat, amelyek tartalmazzák az entitás tav-ban a különböző kimondott szöveg, de ezzel a nem gép-megtanult entitás, a változás nem fontos. Mindaddig, amíg a szöveg megegyezik a reguláris kifejezéssel, a program kinyeri.
 
-## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>A reguláris kifejezés entitás használata jól formázott adathoz
-Hozzon létre egy reguláris kifejezés entitást a szöveges számnak megfelelően. Ez a reguláris kifejezés megfelel a szövegnek, de figyelmen kívül hagyja a Case és a kulturális változatot.
+## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>A reguláris kifejezés entitás használata jól formázott adatokhoz
+Hozzon létre egy reguláris kifejezés entitást, amely megfelel a szövegszámnak. Ez a reguláris kifejezés megfelel a szövegnek, de figyelmen kívül hagyja a kis- és nagybetűket és a kulturális környezet változatait.
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali ablaktáblán.
 
-1. Válassza a **+ Létrehozás** lehetőséget az entitások listája lapon.
+1. Válassza a **+ Create** lehetőséget az Entitások listalapon.
 
-1. Az előugró ablakban adja meg az új entitás nevét `ConfirmationTextRegEx`, válassza a **regex** elemet az entitás típusaként, majd kattintson a **tovább**gombra.
-
-    > [!div class="mx-imgBorder"]
-    > ![megkezdeni az entitások létrehozásának lépéseit a reguláris kifejezés entitásához](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
-
-1. A **regex létrehozása entitásban**adja meg a `x\d{5,6}` a **regex** értékeként, majd válassza a **Létrehozás**lehetőséget.
+1. Az előugró párbeszédpanelen adja meg `ConfirmationTextRegEx`az új entitás nevét, válassza a **RegEx** entitástípust, majd kattintson a **Tovább gombra.**
 
     > [!div class="mx-imgBorder"]
-    > ![adjon meg reguláris kifejezést az adatok kinyerésére példaként](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
+    > ![Entitáslétrehozási lépések indítása reguláris kifejezésentitáshoz](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
 
-1. Válassza a bal oldali menüben a **leképezések** lehetőséget, majd a **ConfirmationText** szándékot, hogy megtekintse a hosszúságú kimondott szöveg címkével ellátott reguláris kifejezést.
+1. A **Regex létrehozása entitáson**adja meg `x\d{5,6}` a **Regex** értéket, majd válassza a **Létrehozás lehetőséget.**
 
     > [!div class="mx-imgBorder"]
-    > ![például a hosszúságú kimondott szöveg található reguláris kifejezést](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+    > ![Reguláris kifejezés megadása a példa utterance (kifejezés) kinyeréséhez.](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
 
-    Mivel az entitás nem egy géppel megtanult entitás, az entitás a hosszúságú kimondott szöveg lesz alkalmazva, és a LUIS-portálon jelenik meg, amint létrejött.
+1. Válassza **leképezések** a bal oldali menüből, majd a **ConfirmationText** szándék, hogy a reguláris kifejezés feliratú.
+
+    > [!div class="mx-imgBorder"]
+    > ![Példakimondott szövegben megjelölt reguláris kifejezés megtekintése](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+
+    Mivel az entitás nem egy gép által megtanult entitás, az entitás a kimondott szövegre lesz alkalmazva, és a LUIS-portálon jelenik meg, amint létrejön.
 
 ## <a name="train-the-app-before-testing-or-publishing"></a>Az alkalmazás betanítása tesztelés vagy közzététel előtt
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele a végpontról történő lekérdezéshez
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Az alkalmazás közzététele lekérdezéshez a végpontról
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Cél-és entitás-előrejelzés beolvasása a végpontról
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és entitás-előrejelzés beszerezni a végponttól
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Nyissa meg a címet az URL-cím végére, és adja meg a következő értéket:
+2. Lépjen az URL-cím végére a címben, és adja meg a következő utterance (kifejezés) értéket:
 
     `Text my pizza delivery to x23456 x234567 x12345`
 
-    Az utolsó lekérdezésisztring-paraméter `query`, a kimondott szöveg pedig a **query**.
+    Az utolsó querystring `query`paraméter a ( utterance ( kifejezés ) **lekérdezés.**
 
     ```json
     {
@@ -189,11 +189,11 @@ Hozzon létre egy reguláris kifejezés entitást a szöveges számnak megfelel�
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Koncepció – entitások](luis-concept-entity-types.md)
+* [Koncepció - entitások](luis-concept-entity-types.md)
 * [A reguláris kifejezés entitás JSON-hivatkozása](reference-entity-regular-expression.md?tabs=V3)
 * [Entitások hozzáadása adatok kinyeréséhez](luis-how-to-add-entities.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag létrehozott egy új szándékot, példaszándékokat adott hozzá, majd létrehozott egy reguláriskifejezés-entitást a helyesen formázott adatok kimondott szövegből történő kinyerésének céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
 
 > [!div class="nextstepaction"]

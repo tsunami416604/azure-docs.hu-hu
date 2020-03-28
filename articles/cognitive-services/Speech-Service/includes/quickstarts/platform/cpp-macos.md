@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Speech C++ SDK (MacOS) platform beállítása – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Speech SDK C++ (macOS) platform beállítása – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platformot C++ MacOS rendszeren a SPEECH Service SDK használatával.
+description: Ezzel az útmutatóval beállíthatja a C++ platformot macOS rendszeren a Beszédszolgáltatás SDK-val.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: d0f9bc44145f75d7c3b503fffe43042c650025f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467147"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) C++ -t MacOS 10,13-es vagy újabb verzióra.
+Ez az útmutató bemutatja, hogyan telepítheti a [C++ beszédfelismerési SDK-t](~/articles/cognitive-services/speech-service/speech-sdk.md) macOS 10.13-as és újabb rendszerre.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 
-macOS 10,13 és újabb verziók
+macOS 10.13 és újabb
 
 ## <a name="install-speech-sdk"></a>A Speech SDK telepítése
 
@@ -39,7 +39,7 @@ macOS 10,13 és újabb verziók
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Töltse le és csomagolja ki a Speech SDK-keretrendszert tartalmazó `.zip` archívumot:
+1. Töltse le `.zip` és bontsa ki a speech SDK keretrendszert tartalmazó archívumot:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -52,10 +52,10 @@ macOS 10,13 és újabb verziók
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   A címtár listaelemének tartalmaznia kell a harmadik féltől származó és a licenceket, valamint a `MicrosoftCognitiveServicesSpeech.framework` könyvtárat.
+   A könyvtárlistának tartalmaznia kell a harmadik fél értesítési és licencfájljait, valamint egy `MicrosoftCognitiveServicesSpeech.framework` könyvtárat.
 
-Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
+Most továbbléphet az alábbi [következő lépésekre.](#next-steps)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

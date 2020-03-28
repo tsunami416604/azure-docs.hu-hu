@@ -1,36 +1,36 @@
 ---
-title: 'Gyors útmutató: keresési lekérdezések Bing Autosuggest REST API ésC#'
+title: 'Rövid útmutató: Keresési lekérdezések javaslata a Bing Autosuggest REST API-val és a C-vel #'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API valós időben.
+description: Ismerje meg, hogyan kezdheti el gyorsan a keresési kifejezések et valós időben javasolni a Bing Autosuggest API-val.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 281286eb497e52d4553ac539d647625e49f3df9d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c60516a87dbdc51e19bac5ee9b30f2f1a8b0254
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448824"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239022"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Gyors útmutató: keresési lekérdezések Bing Autosuggest REST API ésC#
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Rövid útmutató: Keresési lekérdezések javaslata a Bing Autosuggest REST API-val és a C-vel #
 
-Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdeményezését és a JSON-válasz beszerzését. Ez az C# egyszerű alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) érhető el.
+Ezzel a rövid útmutatóval kezdeményezhet hívásokat a Bing Autosuggest API-hoz, és megkezdheti a JSON-választ. Ez az egyszerű C# alkalmazás részleges keresési lekérdezést küld az API-nak, és javaslatokat ad vissza a kereséshez. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
+* A [Visual Studio 2017-es vagy újabb verzióinak](https://www.visualstudio.com/downloads/)bármely kiadása.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="create-a-visual-search-solution"></a>Visual Search megoldás létrehozása
+## <a name="create-a-visual-search-solution"></a>Vizuális keresési megoldás létrehozása
 
-1. Hozzon létre egy új konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
+1. Hozzon létre egy új konzolmegoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
 
     ```csharp
     using System;
@@ -40,7 +40,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
     using System.Text;
     ```
 
-2. Egy új osztályban hozzon létre változókat az API-gazdagép és elérési út, a [piaci kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és a részleges keresési lekérdezés számára. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Egy új osztályban hozzon létre változókat az API-állomáshoz és elérési úthoz, [a piaci kódhoz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)és egy részleges keresési lekérdezéshez. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -52,9 +52,9 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
     ```
 
 
-## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és elküldése
+## <a name="create-and-send-an-api-request"></a>API-kérelem létrehozása és küldése
 
-1. Hozzon létre egy `Autosuggest()` nevű függvényt, amely egy kérést küld az API-nak. Hozzon létre egy új `HttpClient()`, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
+1. Hozzon létre `Autosuggest()` egy függvényt, amelynek célja, hogy küldjön egy kérelmet az API-t. Hozzon `HttpClient()`létre egy újat, `Ocp-Apim-Subscription-Key` és adja hozzá az előfizetési kulcsot a fejléchez.
 
     ```csharp
     async static void Autosuggest()
@@ -65,13 +65,13 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
     }
     ```
 
-2. Ugyanebben a függvényben hozzon létre egy kérelem URI-t az API-állomás és az elérési út kombinálásával. Fűzze hozzá a piacot a `?mkt=` paraméterhez, és a lekérdezést a `&query=` paraméterhez. Ügyeljen arra, hogy URL-kódolással kódolja a lekérdezést. 
+2. Ugyanebben a fenti függvényben hozzon létre egy kérelem URI-t az API-állomás és az elérési út kombinálásával. Fűzze hozzá a `?mkt=` piacot a paraméterhez, és a lekérdezést a `&query=` paraméterhez. Ügyeljen arra, hogy URL-kódolja a lekérdezést. 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
     ```
 
-3. Küldje el a kérelmet a fent létrehozott URI-nak, és nyomtassa ki a választ.
+3. Küldje el a kérelmet a fent kialakított uri-nak, és nyomtassa ki a választ.
 
     ```csharp
     HttpResponseMessage response = await client.GetAsync(uri);
@@ -80,7 +80,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Autosuggest API hívások kezdem
     Console.WriteLine(contentString);
     ```
 
-4. A program fő metódusában hívja meg a `Autosuggest()`.
+4. A program fő metódusában `Autosuggest()`hívja meg a .
 
     ```csharp
     static void Main(string[] args)
@@ -158,12 +158,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-- [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
+- [Mi a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

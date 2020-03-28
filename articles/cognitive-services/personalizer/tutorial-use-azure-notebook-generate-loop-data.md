@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Azure notebook – személyre szabott'
+title: 'Oktatóanyag: Azure Notebook – Personalizer'
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag szimulál egy személyre szabott hurkot _system egy Azure jegyzetfüzetben, amely azt jelzi, hogy az ügyfél milyen típusú kávét rendel. A felhasználókat és azok beállításait egy felhasználói adatkészletben tárolja a rendszer. A kávéval kapcsolatos információk a Coffee-adatkészletekben is elérhetők és tárolhatók.
+description: Ez az oktatóanyag egy Azure-jegyzetfüzetben _system személyre szabászati hurkot szimulál, amely azt javasolja, hogy az ügyfélnek milyen típusú kávét kell rendelnie. A felhasználók és beállításaik egy felhasználói adatkészletben tárolódnak. A kávéval kapcsolatos információk egy kávé adatkészletében is rendelkezésre állnak.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,96 +11,96 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986835"
 ---
-# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: személyre szabott használata az Azure jegyzetfüzetben
+# <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: Personalizer használata az Azure Notebookban
 
-Ez az oktatóanyag egy személyre szabott hurkot futtat egy Azure-jegyzetfüzetben, amely egy személyre szabott hurok teljes életciklusának végét szemlélteti.
+Ez az oktatóanyag egy Personalizer hurkot futtat egy Azure-jegyzetfüzetben, amely bemutatja a Personalizer hurok életciklusának végét.
 
-A hurok azt sugallja, hogy az ügyfélnek milyen típusú kávét kell megrendelnie. A felhasználókat és azok beállításait egy felhasználói adatkészletben tárolja a rendszer. A kávéval kapcsolatos információkat a rendszer egy kávét tartalmazó adatkészletben tárolja.
+A hurok azt javasolja, hogy az ügyfélnek milyen típusú kávét kell rendelnie. A felhasználók és beállításaik egy felhasználói adatkészletben tárolódnak. A kávéval kapcsolatos információkat egy kávéadatkészlet tárolja.
 
 ## <a name="users-and-coffee"></a>Felhasználók és kávé
 
-A notebook, amely szimulálja a felhasználói interakciót egy webhellyel, kiválasztja a véletlenszerű felhasználót, napszakot és az adatkészletből származó időjárási típust. A felhasználói adatok összegzése:
+A jegyzetfüzet, szimulálva a felhasználói interakció egy weboldal, kiválasztegy véletlenszerű felhasználó, a napszak, és az időjárás típusa az adatkészletből. A felhasználói adatok összegzése:
 
-|Ügyfelek – környezeti funkciók|Napszakok|Időjárási típusok|
+|Ügyfelek - környezeti funkciók|A nap szakai|Az időjárás típusai|
 |--|--|--|
-|Alice<br>Bob<br>Cathy<br>Dave|Reggel<br>Délután<br>Esténként|Sunny<br>Rainy<br>Havas|
+|Alice<br>Bob<br>Cathy<br>Dave|Reggel<br>Délután<br>Este|Napos<br>Esős<br>Havas|
 
-Ha segítségre van a személyre szabott tanulásban, akkor a _rendszer_ az egyes személyek kávé-kiválasztási adatait is ismeri.
+Annak érdekében, hogy a Personalizer megtanulhassa, a _rendszer_ idővel részleteket is tud az egyes személyek kávéválasztásáról.
 
-|Kávé-műveleti funkciók|Hőmérsékleti típusok|Származási hely|A sült típusok|Organikus|
+|Kávé - akciófunkciók|A hőmérséklet típusai|Származási helyek|A pörkölés típusai|organikus|
 |--|--|--|--|--|
-|Cappacino|Gyakori|Kenya|Sötét|Organikus|
-|Hideg főzet|Hideg|Brazília|Világos|Organikus|
-|Jeges Mocha|Hideg|Etiópia|Világos|Nem ökológiai|
-|Tejeskávé|Gyakori|Brazília|Sötét|Nem ökológiai|
+|Cappacino között|Gyakori|Kenya|Sötét|organikus|
+|Hideg sör|Ritka elérésű|Brazília|Világos|organikus|
+|Jeges mokka|Ritka elérésű|Etiópia|Világos|Nem szerves|
+|Latte|Gyakori|Brazília|Sötét|Nem szerves|
 
-A személyre szabott hurok **célja** , hogy a lehető legnagyobb mértékben megkeresse a felhasználók és a kávé közötti legjobb egyezést.
+A Personalizer hurok **célja,** hogy a lehető legtöbb időt megtalálja a felhasználók és a kávé között.
 
-A jelen oktatóanyaghoz tartozó kód a [megszemélyesítő minták GitHub-tárházában](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook)érhető el.
+Az oktatóanyag kódja a [Personalizer Samples GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook)érhető el.
 
 ## <a name="how-the-simulation-works"></a>A szimuláció működése
 
-A futó rendszer elején a személyre szabott javaslatok csak 20 – 30%-kal sikeresek. Ezt a sikert a személyre szabott jutalom API-ra visszaküldő jutalom jelzi, amelynek pontszáma 1. Néhány rang és jutalmazási hívás után a rendszeren is javul.
+A futó rendszer kezdetén a Personalizer javaslatai csak 20% és 30% között sikeresek. Ezt a sikert a Personalizer Reward API-nak küldött jutalom jelzi, 1 ponttal. Miután néhány Rang és Jutalom hívások, a rendszer javul.
 
-A kezdeti kérelmek után futtasson egy offline kiértékelést. Ez lehetővé teszi, hogy a személy megtekintse az adatelemzést, és jobb tanulási szabályzatot javasoljon. Alkalmazza az új képzési szabályzatot, és futtassa újra a jegyzetfüzetet az előző kérelmek számának 20%-ában. A hurok jobb teljesítményt nyújt az új tanulási szabályzattal.
+A kezdeti kérelmek után futtasson egy offline kiértékelést. Ez lehetővé teszi a Personalizer számára, hogy áttekintse az adatokat, és jobb tanulási szabályzatot javasoljon. Alkalmazza az új tanulási szabályzatot, és futtassa újra a jegyzetfüzetet az előző kérelmek számának 20%-ával. A hurok jobban teljesít az új tanulási szabályzattal.
 
-## <a name="rank-and-reward-calls"></a>Rangsorolási és jutalmazási hívások
+## <a name="rank-and-reward-calls"></a>Rang és jutalom hívások
 
-A személyre szabott szolgáltatáshoz tartozó néhány ezer hívás esetében az Azure notebook a **rangsorra** vonatkozó kérelmet küld a REST APInak:
+A Personalizer szolgáltatás néhány ezer hívása esetén az Azure Notebook elküldi a **Rank** kérést a REST API-nak:
 
-* A rangsor/kérelem esemény egyedi azonosítója
-* Környezeti funkciók – a felhasználó véletlenszerű választása, időjárás és napszak – felhasználók szimulálása webhelyeken vagy mobileszközökön
-* Funkciókkal rendelkező műveletek – az _összes_ Coffee-adatok – amelyből a személyre szabott javaslat
+* Egyedi azonosító a Rang/Kérés eseményhez
+* Kontextus funkciók - A felhasználó véletlenszerű kiválasztása, időjárás és napszak - a felhasználó szimulálása egy webhelyen vagy mobileszközön
+* Funkciókkal kapcsolatos műveletek - _Az összes_ kávéadat - amelyből a Personalizer javaslatot tesz
 
-A rendszer megkapja a kérést, majd összehasonlítja az előrejelzést a felhasználó ismert választási lehetőségével a nap és az idő azonos időpontjában. Ha az ismert választási lehetőség megegyezik az előre jelzett választási lehetőséggel, az 1 **jutalmat** a személyre szabott értékre küldi vissza. Ellenkező esetben a jutalom visszaküldve 0.
+A rendszer megkapja a kérést, majd összehasonlítja az előrejelzést a felhasználó ismert választásával ugyanebben az időpontban és az időjárás. Ha az ismert választás megegyezik az előre jelzett választás, a **Jutalom** 1 küld vissza Personalizer. Ellenkező esetben a visszaküldött jutalom 0.
 
 > [!Note]
-> Ez egy szimuláció, így a jutalom algoritmusa egyszerű. Egy valós forgatókönyv esetén az algoritmusnak az üzleti logikát kell használnia, amely valószínűleg az ügyfél felhasználói élményének különböző szempontjait használja fel a jutalom pontszámának meghatározásához.
+> Ez egy szimuláció, így az algoritmus a jutalom egyszerű. Egy valós forgatókönyv, az algoritmus kell használnia az üzleti logika, esetleg súlyok különböző aspektusait az ügyfél tapasztalata, a jutalom pontszám meghatározásához.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Azure notebook](https://notebooks.azure.com/) -fiók.
-* Egy [Azure-beli személyre szabott erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
-    * Ha már használta a személyre szabott erőforrást, ügyeljen arra, hogy törölje az erőforráshoz tartozó Azure Portal lévő [adatforrást](how-to-settings.md#clear-data-for-your-learning-loop) .
-* Töltse fel a [minta](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) összes fájlját egy Azure notebook-projektbe.
+* Egy [Azure Notebook-fiók.](https://notebooks.azure.com/)
+* Egy [Azure Personalizer erőforrás.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)
+    * Ha már használta a Personalizer erőforrást, győződjön meg arról, hogy [törölje az adatokat](how-to-settings.md#clear-data-for-your-learning-loop) az Azure Portalon az erőforrás.
+* Töltse fel a minta összes [fájlját](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) egy Azure Notebook-projektbe.
 
-Fájl leírása:
+Fájlleírások:
 
-* A [személyre szabott. ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) az oktatóanyaghoz tartozó Jupyter-jegyzetfüzet.
-* A [felhasználói adatkészletet](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) egy JSON-objektum tárolja.
-* A [kávé-adatkészlet](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) egy JSON-objektumban tárolódik.
-* [Példa a JSON-kérelemre](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) a post-kérések várt formátuma a Rank API-hoz.
+* [Personalizer.ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) a Jupyter notebook ez a bemutató.
+* [A felhasználói adatkészlet](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) egy JSON-objektumban van tárolva.
+* [A kávéadatkészlet](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) egy JSON-objektumban van tárolva.
+* [Példa: JSON-kérelem](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) a várt formátum a RANG API-hoz küldött POST-kérelemhez.
 
-## <a name="configure-personalizer-resource"></a>Személyre szabott erőforrás konfigurálása
+## <a name="configure-personalizer-resource"></a>Personalizer erőforrás konfigurálása
 
-A Azure Portalban konfigurálja a [személyre szabott erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) a **frissítési modell gyakorisága** beállításnál 15 másodpercre, a **jutalom várakozási idejét** pedig 15 másodpercre. Ezek az értékek a **[konfiguráció](how-to-settings.md#configure-service-settings-in-the-azure-portal)** oldalon találhatók.
+Az Azure Portalon konfigurálja a [Personalizer erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) a **frissítési modell gyakorisága** 15 másodpercre van állítva, és a **jutalom várakozási idő** 15 másodperc. Ezek az értékek a **[Konfiguráció](how-to-settings.md#configure-service-settings-in-the-azure-portal)** lapon találhatók.
 
-|Beállítás|Value (Díj)|
+|Beállítás|Érték|
 |--|--|
-|modell frissítési gyakorisága|15 másodperc|
-|Jutalom várakozási ideje|15 másodperc|
+|modell gyakoriságának frissítése|15 másodperc|
+|jutalom várakozási idő|15 másodperc|
 
-Ezeknek az értékeknek nagyon rövid az időtartama, hogy megjelenjenek az oktatóanyag változásai. Ezeket az értékeket nem ajánlott éles környezetben használni, ha nem ellenőrzi, hogy a cél a személyre szabott hurok használatával van-e megvalósítva.
+Ezek az értékek nagyon rövid időtartamúak, hogy megjelenítsék az oktatóanyag változásait. Ezeket az értékeket nem szabad éles környezetben használni anélkül, hogy a Personalizer-ciklussal elérné a célját.
 
-## <a name="set-up-the-azure-notebook"></a>Az Azure notebook beállítása
+## <a name="set-up-the-azure-notebook"></a>Az Azure-jegyzetfüzet beállítása
 
-1. Módosítsa a kernelt `Python 3.6`ra.
+1. Módosítsa a `Python 3.6`kernelt a -ra.
 1. Nyissa meg az `Personalizer.ipynb` fájlt.
 
 ## <a name="run-notebook-cells"></a>Jegyzetfüzet-cellák futtatása
 
-Futtassa az egyes végrehajtható cellákat, és várjon, amíg vissza nem tér. Tudja, hogy a cella melletti szögletes zárójelek egy `*`helyett egy számot jelenítenek meg. A következő szakaszokból megtudhatja, hogy az egyes cellák hogyan végzik el programozott módon, és mire számíthatnak a kimenetre.
+Futtasson minden végrehajtható cellát, és várja meg, amíg visszatér. Tudod, hogy ez történik, ha a zárójelben a `*`cella mellett kijelző egy számot, hanem a . A következő szakaszok ismertetik, hogy az egyes sejtek mit csinálnak programozott módon, és mire számíthatnak a kimenethez.
 
-### <a name="include-the-python-modules"></a>A Python-modulok belefoglalása
+### <a name="include-the-python-modules"></a>A python modulok belefoglalása
 
-Adja meg a szükséges Python-modulokat. A cellának nincs kimenete.
+Adja meg a szükséges python modulokat. A cella nem rendelkezik kimenettel.
 
 ```python
 import json
@@ -111,9 +111,9 @@ import time
 import uuid
 ```
 
-### <a name="set-personalizer-resource-key-and-name"></a>Személyre szabott erőforrás kulcsának és nevének megadása
+### <a name="set-personalizer-resource-key-and-name"></a>Personalizer erőforráskulcs és -név beállítása
 
-A Azure Portal keresse meg a kulcsot és a végpontot a személyre szabott erőforrás rövid **útmutató lapján.** Módosítsa `<your-resource-name>` értékét a személyre szabott erőforrás nevére. Módosítsa a `<your-resource-key>` értékét a személyre szabott kulcsra.
+Az Azure Portalon keresse meg a kulcsot és a végpontot a Personalizer-erőforrás **gyorsútmutató** lapján. Módosítsa a `<your-resource-name>` Personalizer erőforrás nevének értékét. Módosítsa a `<your-resource-key>` Personalizer kulcs értékét.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -122,9 +122,9 @@ resource_key = "<your-resource-key>"
 ```
 
 ### <a name="print-current-date-and-time"></a>Aktuális dátum és idő nyomtatása
-Ezzel a függvénnyel megjegyezheti az iterációs függvény kezdési és befejezési időpontját.
+Ezzel a funkcióval jegyezze fel az iteratív függvény kezdési és befejezési időpontjait.
 
-Ezek a cellák nem rendelkeznek kimenettel. A függvény az aktuális dátumot és időpontot jeleníti meg a híváskor.
+Ezeknek a celláknak nincs kimenetük. A függvény az aktuális dátumot és időt adja ki a hívott időpontban.
 
 ```python
 # Print out current datetime
@@ -133,13 +133,13 @@ def currentDateTime():
     print (str(currentDT))
 ```
 
-### <a name="get-the-last-model-update-time"></a>Az utolsó modell frissítési időpontjának beolvasása
+### <a name="get-the-last-model-update-time"></a>A modell utolsó frissítési idejének betöltése
 
-A függvény (`get_last_updated`) hívásakor a függvény kiírja a modell frissítésének utolsó módosításának dátumát és időpontját.
+A függvény `get_last_updated`, a , a függvény kinyomtatja a modell frissítésének utolsó módosított dátumát és időpontját.
 
-Ezek a cellák nem rendelkeznek kimenettel. A függvény az utolsó modell tanítási dátumát jeleníti meg a híváskor.
+Ezeknek a celláknak nincs kimenetük. A függvény az utolsó modell betanítási dátumát adja ki, amikor hívják.
 
-A függvény a GET REST API használatával kérdezi le a [modell tulajdonságait](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties).
+A függvény GET REST API-t használ a [modell tulajdonságok lehívásához.](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties)
 
 ```python
 # ititialize variable for model's last modified date
@@ -165,11 +165,11 @@ def get_last_updated(currentModifiedDate):
         print(f'-----model updated: {lastModifiedTime}')
 ```
 
-### <a name="get-policy-and-service-configuration"></a>Házirend és szolgáltatás konfigurációjának beolvasása
+### <a name="get-policy-and-service-configuration"></a>Házirend- és szolgáltatáskonfiguráció beszereznie
 
-Ellenőrizze a szolgáltatás állapotát a következő két REST-hívással.
+Ellenőrizze a szolgáltatás állapotát ezzel a két REST-hívással.
 
-Ezek a cellák nem rendelkeznek kimenettel. A függvény kiírja a szolgáltatás értékeit a híváskor.
+Ezeknek a celláknak nincs kimenetük. A függvény a szolgáltatás értékeit adja ki, amikor hívják.
 
 ```python
 def get_service_settings():
@@ -189,18 +189,18 @@ def get_service_settings():
     print(response.json())
 ```
 
-### <a name="construct-urls-and-read-json-data-files"></a>URL-címek kiépítése és JSON-adatfájlok olvasása
+### <a name="construct-urls-and-read-json-data-files"></a>URL-címek összeállítása és JSON-adatfájlok olvasása
 
 Ez a cella
 
-* felépíti a REST-hívásokban használt URL-címeket
-* a biztonsági fejléc beállítása a személyre szabott erőforrás kulcsa alapján
-* a rangsorolási esemény AZONOSÍTÓjának véletlenszerű magot állítja be
-* beolvasás a JSON-adatfájlokban
-* hívások `get_last_updated` metódus – a tanulási szabályzat el lett távolítva a kimenetben
-* hívások `get_service_settings` metódus
+* létrehozza a REST-hívásokban használt URL-eket
+* beállítja a biztonsági fejlécet a Personalizer erőforráskulcs használatával
+* beállítja a rangsorolási eseményazonosító véletlenszerű magját
+* olvasás a JSON adatfájlokban
+* hívások `get_last_updated` módszere - a tanulási szabályzatot eltávolították a példa kimenetben
+* hívások `get_service_settings` módja
 
-A cella kimenete `get_last_updated` és `get_service_settings` függvények hívásával.
+A cella kimenettel `get_last_updated` rendelkezik a hívásból és `get_service_settings` a funkciókból.
 
 ```python
 # build URLs
@@ -244,7 +244,7 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Ellenőrizze, hogy a kimeneti `rewardWaitTime` és `modelExportFrequency` mindkettő 15 másodpercre van-e állítva.
+Ellenőrizze, hogy a `rewardWaitTime` `modelExportFrequency` kimenet 15 másodpercre van-e beállítva.
 
 ```console
 -----checking model
@@ -262,29 +262,29 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Az első REST-hívás hibaelhárítása
 
-Ez az előző cella az első olyan cella, amely a személyre irányuló hívást kéri. Győződjön meg arról, hogy a kimeneti állapot kódja `<Response [200]>`. Ha hibaüzenet jelenik meg (például 404), de biztos benne, hogy az erőforrás kulcsa és neve helyes, töltse be újra a jegyzetfüzetet.
+Ez az előző cella az első cella, amely a Personalizer-t hívja. Győződjön meg arról, hogy `<Response [200]>`a REST állapotkódja a kimenetben . Ha hibaüzenetet kap, például a 404-es, de biztos benne, hogy az erőforráskulcs és a név helyes, töltse be újra a jegyzetfüzetet.
 
-Győződjön meg arról, hogy a kávé és a felhasználók száma 4. Ha hibaüzenetet kap, ellenőrizze, hogy az összes 3 JSON-fájlt feltöltötte-e.
+Győződjön meg róla, hogy a kávé és a felhasználók száma egyaránt 4. Ha hibaüzenetet kap, ellenőrizze, hogy feltöltötte-e az összes 3 JSON fájlt.
 
-### <a name="set-up-metric-chart-in-azure-portal"></a>Metrikus diagram beállítása a Azure Portalban
+### <a name="set-up-metric-chart-in-azure-portal"></a>Metrikadiagram beállítása az Azure Portalon
 
-Az oktatóanyag későbbi részében az 10 000-kérelmek hosszú futású folyamata látható a böngészőben egy frissítési szövegmezővel. Előfordulhat, hogy egy diagramon vagy teljes összegen belül könnyebben látható, ha a hosszan futó folyamat véget ér. Ezen információk megtekintéséhez használja az erőforráshoz megadott metrikákat. Létrehozhatja a diagramot most, hogy elvégezte a kérést a szolgáltatáshoz, majd rendszeresen frissíti a diagramot, amíg a hosszú ideig futó folyamat zajlik.
+Az oktatóanyag későbbi részében a 10 000 kérelem hosszú ideig futó folyamata látható a böngészőből egy frissítő szövegdobozzal. Előfordulhat, hogy könnyebben látható a diagramon vagy teljes összegként, amikor a hosszú ideig futó folyamat véget ér. Az információk megtekintéséhez használja az erőforráshoz mellékelt mutatókat. Létrehozhatja a diagramot most, hogy befejezte a szolgáltatásra vonatkozó kérést, majd rendszeresen frissítheti a diagramot, amíg a hosszú ideig futó folyamat tart.
 
-1. A Azure Portal válassza ki a személyre szabott erőforrást.
-1. Az erőforrás-navigáció területen válassza a **mérőszámok** lehetőséget a figyelés alatt.
-1. A diagramon válassza a **metrika hozzáadása**elemet.
-1. Az erőforrás és a metrika névtere már be van állítva. Csak a **sikeres hívások** mérőszámát és az **összeg**összesítését kell kiválasztania.
-1. Módosítsa az időszűrőt az utolsó 4 órára.
+1. Az Azure Portalon válassza ki a Personalizer erőforrást.
+1. Az erőforrás-navigáció, **válassza metrikák** alatt figyelés.
+1. A diagramon válassza a **Metrika hozzáadása lehetőséget.**
+1. Az erőforrás és a metrika névtér már be van állítva. Csak a **sikeres hívások** mérőszámát és az összegösszesítést kell kiválasztania. **sum**
+1. Módosítsa az időszűrőt az elmúlt 4 órára.
 
-    ![Metrikus diagram beállítása a Azure Portalban, metrika hozzáadása a sikeres hívásokhoz az elmúlt 4 órában.](./media/tutorial-azure-notebook/metric-chart-setting.png)
+    ![Állítsa be a metrikadiagramot az Azure Portalon, és adja hozzá az elmúlt 4 óra sikeres hívásainak metrikáját.](./media/tutorial-azure-notebook/metric-chart-setting.png)
 
-    Három sikeres hívást kell látnia a diagramon.
+    A diagramon három sikeres hívást kell látnia.
 
 ### <a name="generate-a-unique-event-id"></a>Egyedi eseményazonosító létrehozása
 
-Ez a függvény egyedi azonosítót hoz létre az egyes rangsorolási hívásokhoz. Az azonosító a Range és a jutalmazási hívás adatainak azonosítására szolgál. Ez az érték olyan üzleti folyamatokból származhat, mint a webes nézet azonosítója vagy a tranzakció azonosítója.
+Ez a funkció egyedi azonosítót hoz létre minden rangsorolási híváshoz. Az azonosító a rang és a jutalom hívásadatainak azonosítására szolgál. Ez az érték származhat egy üzleti folyamatból, például egy webnézet-azonosítóból vagy egy tranzakcióazonosítóból.
 
-A cellának nincs kimenete. A függvény az egyedi azonosítót adja meg a híváskor.
+A cella nem rendelkezik kimenettel. A függvény a hívott azonosítót adja ki.
 
 ```python
 def add_event_id(rankjsonobj):
@@ -293,13 +293,13 @@ def add_event_id(rankjsonobj):
     return eventid
 ```
 
-### <a name="get-random-user-weather-and-time-of-day"></a>Véletlenszerű felhasználói, időjárási és napszakok beolvasása
+### <a name="get-random-user-weather-and-time-of-day"></a>Véletlenszerű felhasználó, időjárás és napszak
 
-Ez a függvény kiválaszt egy egyedi felhasználót, időjárást és időpontot, majd hozzáadja ezeket az elemeket a JSON-objektumhoz, hogy elküldhesse a rangsor kérését.
+Ez a funkció kiválaszt egy egyedi felhasználót, időjárást és napszakot, majd hozzáadja ezeket az elemeket a JSON-objektumhoz, hogy elküldhesse a Rangsorolás iráskéréshez.
 
-A cellának nincs kimenete. A függvény meghívásakor a rendszer visszaadja a véletlenszerű felhasználó nevét, a véletlenszerű időjárási időt és a nap véletlenszerű időpontját.
+A cella nem rendelkezik kimenettel. Amikor a függvény neve, a véletlenszerű felhasználó nevét, véletlenszerű időjárását és véletlenszerű napszakát adja vissza.
 
-A 4 felhasználó és az azokhoz tartozó beállítások listája – csak bizonyos beállítások láthatók a rövid távú megjelenítéshez:
+A lista 4 felhasználó és preferenciáik - csak néhány preferenciák jelennek meg a rövidség:
 
 ```json
 {
@@ -344,14 +344,14 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 ```
 
 
-### <a name="add-all-coffee-data"></a>Az összes Coffee-érték hozzáadása
+### <a name="add-all-coffee-data"></a>Az összes kávéadat hozzáadása
 
-Ez a függvény hozzáadja a teljes listát a kávéhoz a JSON-objektumhoz, amely a rangsorba küldi a kérelmet.
+Ez a függvény hozzáadja a kávé teljes listáját a JSON-objektumhoz, amelyet a Rang kéréshez kell küldeni.
 
-A cellának nincs kimenete. A függvény a híváskor megváltoztatja a `rankjsonobj`.
+A cella nem rendelkezik kimenettel. A függvény módosítja a `rankjsonobj` hívott funkciót.
 
 
-Az egyetlen kávé funkcióinak példája:
+Egyetlen kávé jellemzőinek példája:
 
 ```json
 {
@@ -372,11 +372,11 @@ def add_action_features(rankjsonobj):
     rankjsonobj["actions"] = actionfeaturesobj
 ```
 
-### <a name="compare-prediction-with-known-user-preference"></a>Az előrejelzés összehasonlítása ismert felhasználói beállításokkal
+### <a name="compare-prediction-with-known-user-preference"></a>Előrejelzés összehasonlítása az ismert felhasználói preferenciával
 
-Ezt a függvényt a Rank API meghívása után hívja meg az egyes iterációk esetében.
+Ezt a függvényt a Rang API hívása után hívják meg minden egyes iteráció.
 
-Ez a függvény összehasonlítja a felhasználót a kávéra, az időjárási és a napszakok alapján, valamint a felhasználóra vonatkozó javaslattal a szűrőkhöz. Ha a javaslat megfelel az értéknek, az 1. pontszámot adja vissza, ellenkező esetben a pontszám 0. A cellának nincs kimenete. A függvény kiírja a pontszámot a híváskor.
+Ez a funkció összehasonlítja a felhasználó által előnyben részesített kávé, az időjárás és a napszak, a Personalizer javaslatát a felhasználó számára ezeket a szűrőket. Ha a javaslat megegyezik, 1-es pontszámot ad vissza, ellenkező esetben a pontszám 0. A cella nem rendelkezik kimenettel. A függvény a hívott pontszám kimenetével rendelkezik.
 
 ```python
 def get_reward_from_simulated_data(name, weather, timeofday, prediction):
@@ -385,15 +385,15 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
     return 0
 ```
 
-### <a name="loop-through-calls-to-rank-and-reward"></a>A rangsorban és a jutalomban megjelenő hívások ismétlése
+### <a name="loop-through-calls-to-rank-and-reward"></a>Hurok keresztül kéri, hogy rang és jutalom
 
-A következő cella a notebook _fő_ munkája, amely egy véletlenszerű felhasználó beszerzése, a kávék listájának beolvasása, valamint a rangsor API-nak való küldése. Hasonlítsa össze az előrejelzést a felhasználó ismert beállításaival, majd küldje vissza a jutalmat a személyre szabott szolgáltatásnak.
+A következő cella a jegyzetfüzet _fő_ munkája, egy véletlenszerű felhasználó beszerzése, a kávélista beszerzése, mindkettő küldése a Rank API-ba. Az előrejelzés összehasonlítása a felhasználó ismert preferenciáival, majd a jutalom visszaküldése a Personalizer szolgáltatásba.
 
-A hurok `num_requests` alkalommal fut. A személyre szabottan néhány ezer hívást kell megkövetelni a modell létrehozásához és Jutalmazásához.
+A hurok `num_requests` az időkig fut. Personalizer szüksége van néhány ezer hívások rank and reward létrehozni egy modellt.
 
-A Range API-nak eljuttatott JSON-példa a következő:. A kávé listája nem fejeződött be, a rövidség kedvéért. Megtekintheti a `coffee.json`ban található kávé teljes JSON-fájlját.
+Egy példa a JSON küldött a Rang API következik. A kávé lista nem teljes, a rövidség. Láthatjuk az egész JSON kávé `coffee.json`.
 
-A Range API-nak eljuttatott JSON:
+JSON sent to the Rank API:
 
 ```json
 {
@@ -441,7 +441,7 @@ JSON-válasz a Rank API-tól:
 }
 ```
 
-Végezetül minden hurok a felhasználó, időjárás, napszak és meghatározott jutalom véletlenszerű kiválasztását mutatja be. Az 1. jutalom azt jelzi, hogy a személyre szabott erőforrás kiválasztotta a megfelelő kávét a megadott felhasználóhoz, időjáráshoz és napszakhoz.
+Végül, minden hurok mutatja a felhasználó véletlenszerű kiválasztását, az időjárást, a napszakot és a meghatározott jutalmat. Az 1-es jutalom azt jelzi, hogy a Personalizer erőforrás a megfelelő kávétípust választotta ki az adott felhasználónak, az időjárásnak és a napszaknak.
 
 ```console
 1 Alice Rainy Morning Latte 1
@@ -449,8 +449,8 @@ Végezetül minden hurok a felhasználó, időjárás, napszak és meghatározot
 
 A függvény a következőket használja:
 
-* Rank: egy POST REST API a [rangsor beszerzéséhez](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
-* Jutalom: a POST REST API a [jutalom jelentéséhez](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
+* Rang: a POST REST [API-t kap rangot](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
+* Jutalom: a POST REST [API-t jelenteni jutalom](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
 
 ```python
 def iterations(n, modelCheck, jsonFormat):
@@ -528,8 +528,8 @@ def iterations(n, modelCheck, jsonFormat):
     return [count, rewards]
 ```
 
-## <a name="run-for-10000-iterations"></a>Futtatás 10 000 iterációk esetén
-Futtassa a személyre szabott hurok 10 000-es ismétlését. Ez egy hosszú ideig futó esemény. Ne zárjuk be a jegyzetfüzetet futtató böngészőt. Rendszeresen frissítse a metrikák diagramot a Azure Portal a szolgáltatás összes hívásának megtekintéséhez. Ha körülbelül 20 000 hívása van, az ismétlések rangsora és jutalma a hurok minden egyes iterációja esetén.
+## <a name="run-for-10000-iterations"></a>Futtatás 10 000 ismétlésért
+Futtassa a Personalizer hurkot 10 000 iterációhoz. Ez egy hosszú ideig futó esemény. Ne zárja be a notebookot futtató böngészőt. Frissítse a metrikadiagramot az Azure Portalon rendszeresen a szolgáltatás összes hívásának megtekintéséhez. Ha körülbelül 20.000 hívása van, a hurok minden egyes ismétlésére rang és jutalom hívás, az ismétlések megtörténnek.
 
 ```python
 # max iterations
@@ -546,9 +546,9 @@ jsonTemplate = rankactionsjsonobj
 
 
 
-## <a name="chart-results-to-see-improvement"></a>A diagram eredményeinek megjelenítésével megtekintheti a fejlesztést
+## <a name="chart-results-to-see-improvement"></a>Diagram eredmények, hogy javulást
 
-Hozzon létre egy diagramot a `count` és a `rewards`.
+Hozzon létre `count` egy `rewards`diagramot a és a ból.
 
 ```python
 def createChart(x, y):
@@ -558,9 +558,9 @@ def createChart(x, y):
     plt.show()
 ```
 
-## <a name="run-chart-for-10000-rank-requests"></a>Diagram futtatása 10 000 Rank-kérelmekhez
+## <a name="run-chart-for-10000-rank-requests"></a>10 000 rangsorolási kérelem diagramjának futtatása
 
-Futtassa az `createChart` függvényt.
+Futtassa a `createChart` funkciót.
 
 ```python
 createChart(count,rewards)
@@ -568,46 +568,46 @@ createChart(count,rewards)
 
 ## <a name="reading-the-chart"></a>A diagram olvasása
 
-Ez a diagram a modell sikerességét mutatja az aktuális alapértelmezett tanulási szabályzat esetében.
+Ez a diagram a modell sikeresaz aktuális alapértelmezett tanulási szabályzat.
 
-![Ez a diagram a jelenlegi tanulási szabályzat sikerességét mutatja be a teszt időtartamára.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
+![Ez a diagram az aktuális tanulási szabályzat sikerességét mutatja a teszt időtartama alatt.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Az ideális cél, amely a teszt végére esik, a hurok átlagosan 100%-os sikerességi arányt eredményez, amely mínusz a feltárás. A feltárás alapértelmezett értéke 20%.
+Az ideális cél, hogy a végén a vizsgálat, a hurok átlagosan a siker aránya, amely közel 100 százalék mínusz a feltárás. A feltárás alapértelmezett értéke 20%.
 
 `100-20=80`
 
-Ez a kutatási érték a személyre szabott erőforráshoz tartozó Azure Portal található a **konfiguráció** lapon.
+Ez a feltárási érték megtalálható az Azure Portalon, a Personalizer erőforrás, a **konfiguráció lapon.**
 
-Ha jobb tanulási szabályzatot szeretne találni a rangsor API adatai alapján, a személyre szabott hurokhoz futtasson egy [Offline értékelést](how-to-offline-evaluation.md) a portálon.
+Annak érdekében, hogy jobb tanulási szabályzatot találjon a Rank API-ra vonatkozó adatai alapján, futtasson [offline értékelést](how-to-offline-evaluation.md) a portálon a Personalizer hurokhoz.
 
-## <a name="run-an-offline-evaluation"></a>Offline kiértékelés futtatása
+## <a name="run-an-offline-evaluation"></a>Kapcsolat nélküli kiértékelés futtatása
 
-1. A Azure Portal nyissa meg a személyre szabott erőforrás- **értékelések** lapot.
-1. Válassza az **Értékelés létrehozása**lehetőséget.
-1. Adja meg a kiértékelési név és a dátumtartomány értékeit a hurok kiértékeléséhez. A dátumtartomány csak azokat a napokat tartalmazza, amelyeknek a kiértékelésére koncentrál.
-    ![a Azure Portalban nyissa meg a személyre szabott erőforrás értékeléseit ismertető lapot. Válassza az értékelés létrehozása lehetőséget. Adja meg a kiértékelés nevét és a dátumtartományt.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+1. Az Azure Portalon nyissa meg a Personalizer erőforrás **kiértékelések lapját.**
+1. Válassza **a Kiértékelés létrehozása**lehetőséget.
+1. Adja meg a kiértékelés nevének és dátumtartományának szükséges adatait a ciklus kiértékeléséhez. A dátumtartománynak csak azokra a napokra kell kiterjednie, amelyekre az értékeléshez összpontosít.
+    ![Az Azure Portalon nyissa meg a Personalizer erőforrás kiértékelések lapját. Válassza a Kiértékelés létrehozása lehetőséget. Adja meg a kiértékelés nevét és a dátumtartományt.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Az offline értékelés futtatásának célja annak megállapítása, hogy van-e jobb tanulási szabályzat az ebben a hurokban használt funkciókhoz és műveletekhez. Ha szeretné megkeresni a jobb tanulási szabályzatot, ellenőrizze, hogy az **optimalizálási felderítés** be van-e kapcsolva.
+    Az offline kiértékelés futtatásának célja annak megállapítása, hogy van-e jobb tanulási szabályzat az ebben a ciklusban használt funkciókhoz és műveletekhez. A jobb tanulási szabályzat megkereséséhez győződjön meg arról, hogy az **optimalizálási felderítés** be van kapcsolva.
 
-1. A kiértékelés elindításához kattintson **az OK gombra** .
-1. Ez az **értékelési** oldal felsorolja az új értékelést és a jelenlegi állapotát. Attól függően, hogy mennyi adattal rendelkezik, ez a kiértékelés hosszabb időt is igénybe vehet. A találatok megjelenítéséhez néhány perc múlva visszatérhet erre az oldalra.
-1. A kiértékelés befejezése után válassza ki a kiértékelést, majd válassza a **különböző képzési szabályzatok összehasonlítását**. Ez megjeleníti a rendelkezésre álló képzési szabályzatokat, valamint azt, hogy azok hogyan viselkedjenek az adatkezelés során.
-1. Válassza ki a legfelső szintű tanulási szabályzatot a táblázatban, és válassza az **alkalmaz**lehetőséget. Ez a _legjobb_ tanulási szabályzatot alkalmazza a modellre, és áttanítja őket.
+1. A kiértékelés megkezdéséhez válassza az **OK gombot.**
+1. **Ez az Értékelések** lap felsorolja az új értékelést és annak aktuális állapotát. Attól függően, hogy mennyi adatvan, ez a kiértékelés eltarthat egy ideig. Néhány perc múlva visszatérhet erre az oldalra, hogy lássa az eredményeket.
+1. Amikor az értékelés befejeződött, válassza ki az értékelést, majd válassza **a Különböző tanulási irányelvek összehasonlítása**lehetőséget. Ez bemutatja a rendelkezésre álló tanulási szabályzatokat, és hogyan viselkednének az adatokkal.
+1. Válassza ki a táblázatban a legfelső tanulási szabályzatot, és válassza az **Alkalmaz**lehetőséget. Ez a legjobb tanulási szabályzatot alkalmazza a modellre és a retrains.This applies the _best_ learning policy to your model and retrains.
 
-## <a name="change-update-model-frequency-to-5-minutes"></a>Frissítési modell gyakoriságának módosítása 5 percre
+## <a name="change-update-model-frequency-to-5-minutes"></a>A frissítési modell gyakoriságának módosítása 5 percre
 
-1. A Azure Portal továbbra is a személyre szabott erőforrás lapon válassza a **konfiguráció** lapot.
-1. Módosítsa a **modell frissítési gyakoriságát** és a **jutalmazási várakozási időt** 5 percre, majd válassza a **Mentés**lehetőséget.
+1. Az Azure Portalon, még mindig a Personalizer erőforrás, válassza ki a **konfigurációs** lapot.
+1. Módosítsa a **modell frissítési gyakoriságát,** és **a jutalom várakozási idejét** 5 percre módosítsa, és válassza a Mentés **lehetőséget.**
 
-További információ a [jutalmazási várakozási idő](concept-rewards.md#reward-wait-time) és a [modell frissítési gyakoriságáról](how-to-settings.md#model-update-frequency).
+További információ a [jutalom várakozási idejéről](concept-rewards.md#reward-wait-time) és a [modellfrissítés gyakoriságáról.](how-to-settings.md#model-update-frequency)
 
 ```python
 #Verify new learning policy and times
 get_service_settings()
 ```
 
-Győződjön meg arról, hogy a kimeneti `rewardWaitTime` és `modelExportFrequency` mindkettő 5 percre van beállítva.
+Ellenőrizze, hogy a `rewardWaitTime` `modelExportFrequency` kimenet és mindkettő 5 percre van-e beállítva.
 ```console
 -----checking model
 <Response [200]>
@@ -622,9 +622,9 @@ User count 4
 Coffee count 4
 ```
 
-## <a name="validate-new-learning-policy"></a>Új képzési szabályzat érvényesítése
+## <a name="validate-new-learning-policy"></a>Új tanulási szabályzat érvényesítése
 
-Térjen vissza az Azure jegyzetfüzetbe, és folytassa ugyanezt a hurkot, de csak 2 000 iteráció esetén. Rendszeresen frissítse a metrikák diagramot a Azure Portal a szolgáltatás összes hívásának megtekintéséhez. Ha körülbelül 4 000 hívása van, az ismétlések rangsora és jutalma a hurok minden egyes iterációja esetén.
+Térjen vissza az Azure-jegyzetfüzetbe, és folytassa ugyanazt a hurkot, de csak 2000 iterációesetén. Frissítse a metrikadiagramot az Azure Portalon rendszeresen a szolgáltatás összes hívásának megtekintéséhez. Ha körülbelül 4000 hívása van, a hurok minden egyes ismétlésére rang és jutalom hívás, az ismétlések megtörténnek.
 
 ```python
 # max iterations
@@ -639,9 +639,9 @@ jsonTemplate2 = rankactionsjsonobj
 [count2, rewards2] = iterations(num_requests, lastModCheck2, jsonTemplate)
 ```
 
-## <a name="run-chart-for-2000-rank-requests"></a>Diagram futtatása 2 000 Rank-kérelmekhez
+## <a name="run-chart-for-2000-rank-requests"></a>2000 rangsorolási kérelem diagramjának futtatása
 
-Futtassa az `createChart` függvényt.
+Futtassa a `createChart` funkciót.
 
 ```python
 createChart(count2,rewards2)
@@ -649,18 +649,18 @@ createChart(count2,rewards2)
 
 ## <a name="review-the-second-chart"></a>A második diagram áttekintése
 
-A második diagramon látható növekedés jelenik meg a rangsorban a felhasználói beállításokkal összehangoló rangsorolási előrejelzések között.
+A második diagramon látható annektálási növekedést kell mutatnia a Rangsorolási előrejelzésekben, a felhasználói beállításokkal igazodva.
 
-![A második diagramon látható növekedés jelenik meg a rangsorban a felhasználói beállításokkal összehangoló rangsorolási előrejelzések között.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
+![A második diagramon látható annektálási növekedést kell mutatnia a Rangsorolási előrejelzésekben, a felhasználói beállításokkal igazodva.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem kívánja folytatni az oktatóanyag-sorozatot, törölje a következő erőforrásokat:
 
-* Törölje az Azure notebook-projektet.
-* A személyre szabott erőforrás törlése.
+* Törölje az Azure Notebook-projektet.
+* Törölje a Personalizer erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az ebben a mintában használt [Jupyter-jegyzetfüzet és-adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) elérhetők a GitHub-tárházban a személyre szabáshoz.
+A mintában használt [Jupyter-jegyzetfüzet és adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) a GitHub-tárházban érhetők el a Personalizer számára.
 

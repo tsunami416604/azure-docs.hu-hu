@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: rendszerképek észlelése az Azure REST API és a cURL'
+title: 'Rövid útmutató: Arcok észlelése egy lemezképben az Azure REST API-val és a cURL-lel'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az Azure Face REST API és a cURL használatával fogja felderíteni a képekben lévő arcokat.
+description: Ebben a rövid útmutatóban az Azure Face REST API cURL-lel egy lemezkép arcok észlelésére.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 6a1a6d1fdce4853a2ac73f10eb4cf0a0505fa4c7
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165907"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és a cURL használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rövid útmutató: Arcok észlelése egy lemezképben a Face REST API és a cURL használatával
 
-Ebben a rövid útmutatóban az Azure Face REST API és a cURL használatával fogja felderíteni az emberi arcokat egy képben.
+Ebben a rövid útmutatóban az Azure Face REST API cURL-lel az emberi arcok észleléséhez egy kép.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
+- Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot.
 
-## <a name="write-the-command"></a>A parancs írása
+## <a name="write-the-command"></a>Írja meg a parancsot
  
-A következőhöz hasonló parancsot kell használnia a Face API meghívásához és a Face attribútum adatainak a rendszerképből való lekéréséhez. Először másolja a kódot egy szövegszerkesztőbe&mdash;módosítania kell a parancs egyes részeit ahhoz, hogy futtatni lehessen.
+A következőhöz hasonló parancsot fog használni a Face API hívásához és arcattribútum-adatok behívásához egy lemezképből. Először másolja a kódot&mdash;egy szövegszerkesztőbe, és a futtatás előtt módosítania kell a parancs bizonyos részeit.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Előfizetői azonosító
-Cserélje le a `<Subscription Key>`t az érvényes Face előfizetési kulccsal.
+Cserélje `<Subscription Key>` le érvényes Face-előfizetési kulcsát.
 
-### <a name="face-endpoint-url"></a>Szembenéző végpont URL-címe
+### <a name="face-endpoint-url"></a>Face végpont URL-címe
 
-A lekérdezni kívánt Azure Face végpontot a `https://<My Endpoint String>.com/face/v1.0/detect` URL-cím határozza meg. Előfordulhat, hogy módosítania kell az URL első részét, hogy az megfeleljen az előfizetési kulcsnak megfelelő végpontnak.
+Az `https://<My Endpoint String>.com/face/v1.0/detect` URL-cím azt jelzi, hogy az Azure Face-végpont lekérdezésre. Előfordulhat, hogy módosítania kell az URL-cím első részét, hogy megfeleljen az előfizetési kulcsnak megfelelő végpontnak.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ### <a name="url-query-string"></a>URL-lekérdezési karakterlánc
 
-Az arc végpont URL-címének lekérdezési karakterlánca határozza meg, hogy melyik arc-attribútumokat kell lekérni. Előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
+A Face végpont URL-címének lekérdezési karakterlánca határozza meg, hogy mely arcattribútumokat kell beolvasni. Előfordulhat, hogy a kívánt használattól függően módosítani szeretné ezt a karakterláncot.
 
 ```
 ?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
 ```
 
-### <a name="image-source-url"></a>Rendszerkép forrásának URL-címe
-A forrás URL-címe jelzi a bemenetként használandó képet. Ezt úgy változtathatja meg, hogy bármely elemezni kívánt képre mutasson.
+### <a name="image-source-url"></a>Képforrás URL-címe
+A forrás URL-címe azt jelzi, hogy a képet bemenetként kell használni. Ezt módosíthatja úgy, hogy az elemezni kívánt képekre mutasson.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
@@ -61,7 +61,7 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
 ## <a name="run-the-command"></a>Futtassa a
 
-Miután elvégezte a módosításokat, nyisson meg egy parancssort, és írja be az új parancsot. A konzol ablakában a JSON-adatokként megjelenő arc információit kell látnia. Példa:
+A módosítások végrehajtása után nyisson meg egy parancssort, és írja be az új parancsot. A konzolablakban json-adatként megjelenő arcadatoknak kell megjelennie. Példa:
 
 ```json
 [
@@ -155,9 +155,9 @@ Miután elvégezte a módosításokat, nyisson meg egy parancssort, és írja be
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy cURL-parancsot írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaállítsa az attribútumokat. További információért olvassa el a Face API dokumentációját.
+Ebben a rövid útmutatóban írt egy cURL-parancsot, amely meghívja az Azure Face szolgáltatást a rendszerképek arcok észleléséhez és az attribútumok visszaadásához. Ezután további információért tekintse meg a Face API referenciadokumentációját.
 
 > [!div class="nextstepaction"]
-> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Arcfelismerési API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

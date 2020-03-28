@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: webes keresés végrehajtása Java-Bing Web Search REST API'
+title: 'Rövid útmutató: Webes keresés végrehajtása a Java – Bing Web Search REST API-val'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API Javával, és JSON-választ kap.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak Java használatával, és JSON-választ kaphat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383612"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Java és a Bing News Search használatával REST API
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírkeresés végrehajtása java és bing news search rest api-val
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az egyszerű Java-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ.
+Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing News Search API-t, és megtekintheti a JSON-választ. Ez az egyszerű Java-alkalmazás hírkeresési lekérdezést küld az API-nak, és megjeleníti a választ.
 
 Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
+A minta forráskódja elérhető [a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre egy új osztályt az API-végpont, az előfizetési kulcs és a keresési kifejezés változók használatával. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre egy új osztályt, az API-végpont, az előfizetési kulcs és a keresési kifejezés változóival. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -62,7 +62,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     }
     ```
 
-## <a name="construct-the-search-request-and-receive-a-json-response"></a>A keresési kérelem létrehozása és JSON-válasz fogadása
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>A keresési kérelem összeállítása, és JSON-válasz fogadása
 
 1. Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Ne feledje, hogy a keresési kifejezésnek URL-kódolásúnak kell lennie, mielőtt a kérelemhez hozzáfűzné azt.
 
@@ -75,7 +75,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     }
     ```
 
-2. Fogadja a JSON-választ a Bing News Search APIból, és hozza létre az eredmény objektumot.
+2. A JSON-válasz fogadása a Bing News Search API-tól, és az eredményobjektum összeállítása.
 
     ```java
     // receive JSON body
@@ -87,7 +87,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
 
 ## <a name="process-the-json-response"></a>A JSON-válasz feldolgozása
 
-1. Válassza el a Binggel kapcsolatos HTTP-fejléceket a JSON-törzstől, majd a stream bezárásával és az API-válasz visszaadásával.
+1. Válassza el a Binggel kapcsolatos HTTP-fejléceket a JSON-törzstől, majd zárja be az adatfolyamot, és adja vissza az API-választ.
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -101,7 +101,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     return results;
     ```
 
-2. Metódus létrehozása a JSON elemzéséhez és újraszerializálásához
+2. A JSON elemzési és újraszeriaiizálására irányuló módszer létrehozása
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -222,7 +222,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

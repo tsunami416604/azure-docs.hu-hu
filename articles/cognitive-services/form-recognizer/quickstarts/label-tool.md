@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: űrlapok címkézése, modell betanítása és az űrlap elemzése a minta feliratozási eszköz – űrlap felismerő használatával'
+title: 'Rövid útmutató: Űrlapok címkézése, modell betanítása és űrlap elemzése a mintacímkéző eszközzel – Űrlapfelismerő'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az űrlap-felismerő minta címkézési eszköz használatával manuálisan címkézheti az űrlapos dokumentumokat. Ezután betanít egy egyéni modellt a címkével ellátott dokumentumokkal, és a modell használatával kinyerheti a kulcs/érték párokat.
+description: Ebben a rövid útmutatóban az Űrlapfelismerő mintacímkéző eszközzel manuálisan címkézheti az űrlapdokumentumokat. Ezután betanít egy egyéni modellt a címkézett dokumentumokkal, és a modell segítségével kulcs/érték párok kinyerése.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,187 +9,192 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: ad074ca2cc9cd335d6697a2383998246468907ad
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205822"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052447"
 ---
-# <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
+# <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlapfelismerő modell betanítása címkékkel a mintacímkéző eszközzel
 
-Ebben a rövid útmutatóban az űrlap-felismerő REST API és a minta feliratozási eszköz használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
+Ebben a rövid útmutatóban a Form Recognizer REST API-t a mintacímkéző eszközzel fogja használni egy egyéni modell manuálisan címkézett adatokkal történő betanításához. Tekintse meg a [Vonat címkékkel](../overview.md#train-with-labels) szakaszaz áttekintés, hogy többet tudjon meg ezt a funkciót.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőket kell tennie:
+A rövid útmutató végrehajtásához a következőkre van szüksége:
 
-- Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
+- Legalább hat azonos típusú formaból áll. Ezeket az adatokat a modell betanításához és az űrlap teszteléséhez fogja használni. Ehhez a rövid útmutatóhoz [mintaadatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) használhat. Töltse fel a betanítási fájlokat egy blob storage-tároló egy Azure Storage-fiók ban.
 
-## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
+## <a name="create-a-form-recognizer-resource"></a>Űrlapfelismerő erőforrás létrehozása
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="set-up-the-sample-labeling-tool"></a>A minta feliratozási eszköz beállítása
+## <a name="set-up-the-sample-labeling-tool"></a>A mintacímkéző eszköz beállítása
 
-A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Docker-tároló beállításához kövesse az alábbi lépéseket. A Docker és a Container alapjairól a [Docker áttekintésében](https://docs.docker.com/engine/docker-overview/)talál további információt.
-1. Először telepítse a Docker-t egy gazdagépre. Ez az útmutató bemutatja, hogyan használható a helyi számítógép gazdagépként. Ha Docker-üzemeltetési szolgáltatást szeretne használni az Azure-ban, tekintse meg a [minta címkézési eszköz üzembe helyezése](../deploy-label-tool.md) útmutató című témakört. 
+A Docker-motorsegítségével futtathatja a mintacímkéző eszközt. Kövesse az alábbi lépéseket a Docker-tároló beállításához. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).
 
-   A gazdagépnek meg kell felelnie a következő hardverkövetelmények követelményeinek:
+> [!TIP]
+> Az OCR-űrlapcímkéző eszköz nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy webes alkalmazás segítségével készült React + Redux, és meg van írva TypeScript. További információért vagy közreműködésért olvassa el [az OCR-űrlapcímkéző eszköz .](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)
+
+1. Először telepítse a Dockert egy gazdaszámítógépen. Ez az útmutató bemutatja, hogyan használhatja a helyi számítógépet állomásként. Ha docker-üzemeltetési szolgáltatást szeretne használni az Azure-ban, tekintse [meg a mintacímkézési eszköz útmutatóüzembe helyezése](../deploy-label-tool.md) című témakört. 
+
+   A gazdaszámítógépnek a következő hardverkövetelményeknek kell megfelelnie:
 
     | Tároló | Minimális | Ajánlott|
     |:--|:--|:--|
-    |Minta címkéző eszköz|2 mag, 4 GB memória|4 mag, 8 GB memória|
+    |Mintacímkéző eszköz|2 mag, 4 GB memória|4 mag, 8 GB memória|
 
-   Telepítse a Docker-t a gépre az operációs rendszerének megfelelő utasítások követésével: 
+   Telepítse a Docker-t a gépére az operációs rendszerhez megfelelő utasításokat követve: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Macos](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/).
 
-1. Szerezze be a minta címkéző eszköz tárolóját a `docker pull` paranccsal.
+1. A mintacímkéző eszköz `docker pull` tárolójának beszereznie a paranccsal.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-1. Most már készen áll a tároló futtatására `docker run`használatával.
+1. Most már készen áll a `docker run`tároló futtatására.
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
-   Ezzel a paranccsal a minta feliratozási eszköz elérhetővé válik egy webböngészőn keresztül. Nyissa meg a következőt: [http://localhost:3000](http://localhost:3000).
+   Ez a parancs webböngészőn keresztül teszi elérhetővé a mintacímkéző eszközt. Nyissa [http://localhost:3000](http://localhost:3000)meg a.
 
 > [!NOTE]
-> A dokumentumokat és a betanítási modelleket a Form felismerő REST API használatával is címkézheti. A REST API betanításához és elemzéséhez lásd: [a betanítás a REST API és a Python használatával](./python-labeled-data.md).
+> A dokumentumokat és a modelleket a Form Recognizer REST API használatával is címkézheti. Betanításához és elemzéséhez a REST API-val című [témakörben a Betanítás címkékhasználatával a REST API és a Python használatával](./python-labeled-data.md)című témakörben található.
 
 ## <a name="set-up-input-data"></a>Bemeneti adatok beállítása
 
-Először győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha több formátumban is rendelkezik űrlapokkal, a közös formátum alapján rendezheti őket almappákba. A betanítás során az API-t egy almappába kell irányítani.
+Először győződjön meg arról, hogy az összes képzési dokumentum azonos formátumú. Ha az űrlapok több formátumban vannak, a közös formátum alapján almappákba rendezheti őket. A betanításkor az API-t egy almappába kell irányítania.
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>Tartományok közötti erőforrás-megosztás (CORS) konfigurálása
 
-Engedélyezze a CORS a Storage-fiókban. Válassza ki a Storage-fiókját a Azure Portalban, és kattintson a bal oldali ablaktábla **CORS** fülére. Az alsó sorban adja meg a következő értékeket. Ezután kattintson a felső **Mentés** gombra.
+Engedélyezze a CORS-t a tárfiókban. Válassza ki a tárfiókot az Azure Portalon, és kattintson a **CORS** fülre a bal oldali ablaktáblán. Az alsó sorban töltse ki a következő értékeket. Ezután kattintson a mentés **gombra** a tetején.
 
-* Engedélyezett Origins = * 
-* Engedélyezett metódusok = \[az összes kijelölése\]
+* Megengedett eredete = * 
+* Engedélyezett módszerek \[= az összes kijelölése\]
 * Engedélyezett fejlécek = *
-* Elérhető fejlécek = * 
-* Max Age = 200
+* Kitett fejlécek = * 
+* Maximális életkor = 200
 
 > [!div class="mx-imgBorder"]
-> ![CORS beállítása a Azure Portal](../media/label-tool/cors-setup.png)
+> ![CORS-beállítás az Azure Portalon](../media/label-tool/cors-setup.png)
 
-## <a name="connect-to-the-sample-labeling-tool"></a>Kapcsolódás a minta feliratozási eszközhöz
+## <a name="connect-to-the-sample-labeling-tool"></a>Csatlakozás a mintacímkéző eszközhöz
 
-A minta feliratozási eszköz egy forráshoz (az eredeti űrlapokhoz) és egy célhoz (ahol a létrehozott címkék és a kimeneti adatokat exportálja) csatlakozik.
+A mintacímkéző eszköz egy forráshoz (ahol az eredeti űrlapok vannak) és egy célhoz (ahol a létrehozott címkéket és kimeneti adatokat exportálja).
 
-A kapcsolatok beállítható és megoszthatók a projektek között. Egy bővíthető szolgáltatói modellt használnak, így egyszerűen hozzáadhat új forrás-és célkiszolgáló-szolgáltatókat.
+A kapcsolatok beállíthatók és megoszthatók a projektek között. Bővíthető szolgáltatói modellt használnak, így egyszerűen hozzáadhat új forrás-/célszolgáltatókat.
 
-Új kapcsolat létrehozásához kattintson az **új kapcsolatok** (beépülő) ikonra a bal oldali navigációs sávon.
+Új kapcsolat létrehozásához kattintson az **Új kapcsolatok** (dugó) ikonra a bal oldali navigációs sávon.
 
 Töltse ki a mezőket a következő értékekkel:
 
-* **Megjelenítendő név** – a kapcsolatok megjelenítendő neve.
-* **Leírás** – a projekt leírása.
-* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A szolgáltatás használatának elkezdése után állítsa be a lejárati időt. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Megjelenítendő név** - A kapcsolat megjelenítendő neve.
+* **Leírás** - A projekt leírása.
+* **SAS URL-cím** – Az Azure Blob Storage-tároló megosztott hozzáférésű url-címe. A SAS URL-címének beolvasásához nyissa meg a Microsoft Azure Storage Exploreralkalmazást, kattintson a jobb gombbal a tárolóra, és válassza **a Megosztott hozzáférésű aláírás beolvasása parancsot.** Állítsa be a lejárati időt egy időre a szolgáltatás használatba helyezését követően. Győződjön meg arról, hogy az **Olvasás**, **Írás**, **Törlés**és **Lista** engedélyek be vannak jelölve, majd kattintson a **Létrehozás gombra.** Ezután másolja az **URL-cím** szakasz értékét. Meg kell a `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`forma: .
 
-![A minta-címkéző eszköz csatlakoztatási beállításai](../media/label-tool/connections.png)
+![A mintacímkéző eszköz kapcsolati beállításai](../media/label-tool/connections.png)
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A minta feliratozási eszközben a projektek a konfigurációkat és a beállításokat tárolják. Hozzon létre egy új projektet, és töltse ki a mezőket a következő értékekkel:
+A mintacímkéző eszközben a projektek a konfigurációkat és a beállításokat tárolják. Hozzon létre egy új projektet, és töltse ki a mezőket a következő értékekkel:
 
-* **Megjelenítendő név** – a projekt megjelenítendő neve
-* **Biztonsági jogkivonat** – egyes Project-beállítások bizalmas értékeket is tartalmazhatnak, például API-kulcsokat vagy más közös titkokat. Minden projekt egy biztonsági jogkivonatot állít elő, amely a bizalmas projektek beállításainak titkosítására és visszafejtésére használható. A biztonsági jogkivonatokat a bal oldali navigációs sáv alsó sarkában található fogaskerék ikonra kattintva érheti el.
-* **Forrásoldali kapcsolódás** – a projekthez használni kívánt előző lépésben létrehozott Azure Blob Storage-kapcsolódás.
-* **Mappa elérési útja** – nem kötelező – ha a forrás űrlapjai a blob tároló egyik mappájában találhatók, itt adja meg a mappa nevét.
-* **Űrlap-felismerő szolgáltatás URI-ja** – az űrlap-felismerő végpontjának URL-címe.
-* **API-kulcs** – az űrlap-felismerő előfizetési kulcsa.
-* **Leírás** – nem kötelező – a projekt leírása
+* **Megjelenítendő név** - a projekt megjelenítendő neve
+* **Biztonsági jogkivonat** – Egyes projektbeállítások tartalmazhatnak bizalmas értékeket, például API-kulcsokat vagy más megosztott titkos kulcsokat. Minden projekt létrehoz egy biztonsági jogkivonatot, amely a bizalmas projektbeállítások titkosítására/visszafejtésére használható. A biztonsági jogkivonatokat az Alkalmazásbeállítások ban találhatja meg, ha a bal oldali navigációs sáv alsó sarkában lévő fogaskerék ikonra kattint.
+* **Forráskapcsolat** – Az előző lépésben létrehozott Azure Blob Storage-kapcsolat, amelyet ehhez a projekthez szeretne használni.
+* **Mappa elérési útja** – Nem kötelező – Ha a forrásűrlapok a blobtároló egyik mappájában találhatók, itt adja meg a mappa nevét
+* **Form Recognizer Service Uri** – Az űrlapfelismerő végpont URL-címe.
+* **API-kulcs** – Az űrlapfelismerő előfizetési kulcsa.
+* **Leírás** - Nem kötelező - projekt leírása
 
-![Új projekt lap a minta címkézési eszközön](../media/label-tool/new-project.png)
+![Új projektlap a mintacímkéző eszközön](../media/label-tool/new-project.png)
 
-## <a name="label-your-forms"></a>Űrlapok címkézése
+## <a name="label-your-forms"></a>Az űrlapok címkézése
 
-Amikor létrehoz vagy megnyit egy projektet, megnyílik a fő címke-szerkesztő ablak. A címke szerkesztője három részből áll:
+Projekt létrehozásakor vagy megnyitásakor megnyílik a fő címkeszerkesztő ablak. A címkeszerkesztő három részből áll:
 
-* Egy átméretezhető betekintő ablaktábla, amely a forrás-és az űrlapok görgethető listáját tartalmazza.
-* A főszerkesztő ablaktábla, amely lehetővé teszi a címkék alkalmazását.
-* A címkék szerkesztő panelje lehetővé teszi a felhasználók számára címkék módosítását, zárolását, átrendezését és törlését. 
+* Átméretezhető előnézeti ablaktábla, amely a forráskapcsolatból származó űrlapok görgethető listáját tartalmazza.
+* A fő szerkesztő ablaktábla, amely lehetővé teszi a címkék alkalmazását.
+* A címkék szerkesztője ablaktábla, amely lehetővé teszi a felhasználók számára a címkék módosítását, zárolását, átrendezését és törlését. 
 
-### <a name="identify-text-elements"></a>Szöveges elemek azonosítása
+### <a name="identify-text-elements"></a>Szövegelemek azonosítása
 
-Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján** az egyes dokumentumok szöveg-elrendezési adatainak lekéréséhez. A címkézési eszköz az egyes szöveges elemek köré rajzolja meg a határoló mezőket.
+Kattintson **az OCR futtatása gombra** a bal oldali ablaktáblában lévő összes fájlon az egyes dokumentumok szövegelrendezési adatainak lekérni. A címkéző eszköz határolókereteket rajzol az egyes szövegelemek köré.
 
-### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
+### <a name="apply-labels-to-text"></a>Címkék alkalmazása szövegre
 
-Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket fel szeretne ismerni a modellből.
+Ezután címkéket (címkéket) hoz létre, és alkalmazza őket a modell által felismert szövegelemekre.
 
-1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
-  1. Új címke létrehozásához kattintson a **+** elemre.
-  1. Adja meg a címke nevét.
-  1. Nyomja le az ENTER billentyűt a címke mentéséhez.
-1. A fő szerkesztőben kattintson és húzással jelöljön ki egy vagy több szót a Kiemelt szöveges elemek közül.
-1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
+1. Először a címkék szerkesztőablakában hozza létre az azonosítandó címkéket.
+  1. Ide **+** kattintva új címkét hozhat létre.
+  1. Írja be a címke nevét.
+  1. A címke mentéséhez nyomja le az Enter billentyűt.
+1. A főszerkesztőben kattintással és húzással jelöljön ki egy vagy több szót a kiemelt szövegelemekközül.
+1. Kattintson az alkalmazni kívánt címkére, vagy nyomja meg a megfelelő billentyűzetbillentyűt. A számkulcsok az első 10 címke gyorsbillentyűjeként vannak hozzárendelve. A címkéket átrendezheti a címkeszerkesztő ablaktáblában található fel és le nyíl ikonnal.
     > [!Tip]
-    > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket.
-    > * Csak egy címkét alkalmazhat az egyes kijelölt szöveges elemekre.
-    > * Az egyes címkék csak egyszer alkalmazhatók oldalanként. Ha egy érték többször is megjelenik ugyanazon az űrlapon, hozzon létre különböző címkéket az egyes példányokhoz. Például: "számla # 1", "számla # 2" és így tovább.
-    > * A címkék nem terjedhetnek át a lapokra.
-    > * Az űrlapon megjelenő címkézett értékek ne próbáljon két részre osztani egy értéket két különböző címkével. Például egy cím mezőt egyetlen címkével kell megcímkézni, még akkor is, ha több sort is felölel.
-    > * A címkézett mezőkben ne szerepeljenek kulcsok,&mdash;csak az értékeket.
-    > * A tábla adatokat automatikusan kell észlelni, és a végső kimeneti JSON-fájlban lesznek elérhetők. Ha azonban a modell nem ismeri fel az összes tábla adatait, manuálisan is címkézheti ezeket a mezőket. Címkézze fel a tábla minden celláját egy másik címkével. Ha az űrlapok különböző számú sort tartalmazó táblázatokkal rendelkeznek, ügyeljen arra, hogy legalább egy űrlapot címkével lássa el a lehető legnagyobb táblázattal.
+    > Az űrlapok címkézésekénél tartsa szem előtt az alábbi tippeket.
+    > * Minden kijelölt szövegelemre csak egy címkét alkalmazhat.
+    > * Minden címke oldalanként csak egyszer alkalmazható. Ha egy érték többször is megjelenik ugyanazon az űrlapon, hozzon létre különböző címkéket minden példányhoz. Például: "számla# 1", "számla# 2" és így tovább.
+    > * A címkék nem terjedhetnek át az oldalakon.
+    > * Az űrlapon megjelenő feliratok értékei; ne próbáljon meg két részre osztani egy értéket két különböző címkével. Egy címmezőt például egyetlen címkével kell ellátni, még akkor is, ha az több sorra terjed ki.
+    > * Ne adjon meg csak az&mdash;értékeket a címkézett mezőkben.
+    > * A táblaadatokat a rendszer automatikusan észleli, és a végső kimeneti JSON-fájlban is elérhetővé teszi. Ha azonban a modell nem észleli az összes táblaadatot, manuálisan is címkézheti ezeket a mezőket. A táblázat minden celláját más címkével címkézze fel. Ha az űrlapokon különböző számú sorú táblák vannak, győződjön meg arról, hogy legalább egy űrlapot a lehető legnagyobb táblával címkéz.
 
 
-Kövesse a fenti lépéseket az űrlapok öt megjelöléséhez, majd folytassa a következő lépéssel.
+A fenti lépéseket követve címkézze fel az öt űrlapot, majd lépjen tovább a következő lépésre.
 
-![A minta-címkéző eszköz főszerkesztő ablaka](../media/label-tool/main-editor.png)
+![A mintacímkéző eszköz főszerkesztőablaka](../media/label-tool/main-editor.png)
 
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
-A betanítási oldal megnyitásához kattintson a bal oldali panel vonat ikonjára (a vonat autója). Ezután kattintson a **vonat** gombra a modell tanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk láthatók:
+A vonat ikonra (a vonatautóra) kattintva nyissa meg a Betanítás lapot a bal oldali ablaktáblán. Ezután kattintson a **Vonat** gombra a modell betanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk jelennek meg:
 
-* **Modell azonosítója** – a létrehozott és betanított modell azonosítója. Minden betanítási hívás létrehoz egy új modellt a saját azonosítójával. A karakterlánc másolása biztonságos helyre; szüksége lesz rá, ha előrejelzési hívásokat kíván végrehajtani a REST APIon keresztül.
-* **Átlagos pontosság** – a modell átlagos pontossága. A modell pontosságát úgy javíthatja, ha további űrlapokat és képzést is felcímkéz, és új modellt hoz létre. Javasoljuk, hogy öt űrlap feliratozásával kezdjen hozzá, és szükség esetén további űrlapokat adjon hozzá.
-* A címkék és a becsült pontosság a címkén.
+* **Modellazonosító** – a létrehozott és betanított modell azonosítója. Minden betanítási hívás létrehoz egy új modellt saját azonosítóval. Másolja ezt a karakterláncot biztonságos helyre; szüksége lesz rá, ha előrejelzési hívásokat szeretne tenni a REST API-n keresztül.
+* **Átlagos pontosság** – A modell átlagos pontossága. A modell pontosságát további űrlapok címkézésével és új modell létrehozásához újra betanítással javíthatja. Javasoljuk, hogy öt űrlap címkézésével és szükség szerint további űrlapok hozzáadásával kezdje.
+* A címkék listája és a címkénkénti becsült pontosság.
 
-![képzés nézet](../media/label-tool/train-screen.png)
+![képzési nézet](../media/label-tool/train-screen.png)
 
-A betanítás befejezése után vizsgálja meg az **átlagos pontossági** értéket. Ha alacsony, adjon hozzá további bemeneti dokumentumokat, és ismételje meg a fenti lépéseket. A már címkézett dokumentumok a projekt indexében maradnak.
+A betanítás befejezése után vizsgálja meg az **Átlagos pontosság értékét.** Ha alacsony, adjon hozzá további bemeneti dokumentumokat, és ismételje meg a fenti lépéseket. A már címkézett dokumentumok a projektindexben maradnak.
 
 > [!TIP]
-> A betanítási folyamatot REST API hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](./python-labeled-data.md)ismertető témakört.
+> A betanítási folyamat ot rest API-hívással is futtathatja. Ennek módjáról a [Vonat címkék python használatával](./python-labeled-data.md).
 
 ## <a name="analyze-a-form"></a>Űrlap elemzése
 
-Kattintson a bal oldali előrejelzés (téglalapok) ikonra a modell teszteléséhez. Töltse fel a betanítási folyamatban még nem használt űrlap-dokumentumot. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlaphoz tartozó kulcs/érték előrejelzések beszerzéséhez. Az eszköz címkét fog alkalmazni a határolókeret mezőiben, és az egyes címkék megbízhatóságát fogja jelenteni.
+Kattintson a modell teszteléséhez kattintson a bal oldali Előrejelzés (téglalapok) ikonra. Töltsön fel egy olyan űrlapdokumentumot, amelyet nem használt a betanítási folyamat során. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlap kulcs-/érték-előrejelzésének leéséhez. Az eszköz címkéket alkalmaz a határolódobozokban, és minden címke megbízhatóságát jelenti.
 
 > [!TIP]
-> Az elemzés API-t REST-hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](./python-labeled-data.md)ismertető témakört.
+> Az Elemzés API-t rest-hívással is futtathatja. Ennek módjáról a [Vonat címkék python használatával](./python-labeled-data.md).
 
 ## <a name="improve-results"></a>Az eredmények javítása
 
-A jelentett pontosságtól függően érdemes lehet további képzést végezni a modell fejlesztéséhez. Miután elvégezte az előrejelzést, vizsgálja meg az egyes alkalmazott címkék megbízhatósági értékeit. Ha az átlagos pontossági érték magas volt, de a megbízhatósági pontszámok alacsonyak (vagy az eredmények pontatlanok), adja hozzá az előrejelzéshez használt fájlt a betanítási készlethez, címkézze fel, és ismételje meg a betanítást.
+A jelentett pontosságtól függően érdemes lehet további képzést végezni a modell javítása érdekében. Miután elvégezte az előrejelzést, vizsgálja meg az alkalmazott címkék megbízhatósági értékeit. Ha az átlagos pontosságbetanítási érték magas volt, de a megbízhatósági pontszámok alacsonyak (vagy az eredmények pontatlanok), hozzá kell adnia az előrejelzéshez használt fájlt a betanítási készletbe, címkézze fel, és újra betanítsa.
 
-A jelentett átlagos pontosság, a megbízhatósági pontszám és a tényleges pontosság inkonzisztens lehet, ha az elemzett dokumentumok eltérnek a betanításban használt adatoktól. Ne feledje, hogy egyes dokumentumok ugyanúgy néznek ki, mint a felhasználók, de az AI-modellre is kitűnnek. Előfordulhat például, hogy a betanítás két változattal rendelkezik, ahol a betanítási készlet 20%-os és 80%-os változatot tartalmaz. Az előrejelzés során az A variációs dokumentumok megbízhatósági pontszámai valószínűleg alacsonyabbak lesznek.
+A jelentett átlagos pontosság, megbízhatósági pontszámok és a tényleges pontosság lehet inkonzisztens, ha az elemzett dokumentumok eltérnek a képzés során használt. Ne feledje, hogy egyes dokumentumok hasonlóak, ha az emberek megtekintik, de az AI-modellhez képest különbözőek lehetnek. Például betanítása két változatból álló űrlaptípussal, ahol a betanítási készlet 20%- os A és 80%-os B változatból áll. Az előrejelzés során az A változat dokumentumainak megbízhatósági pontszámai valószínűleg alacsonyabbak lesznek.
 
-## <a name="save-a-project-and-resume-later"></a>Projekt mentése és későbbi folytatás
+## <a name="save-a-project-and-resume-later"></a>Projekt mentése és folytatása később
 
-Ha a projektet egy másik időpontban vagy egy másik böngészőben szeretné folytatni, mentse a projekt biztonsági jogkivonatát, és később adja meg újra. 
+Ha a projektet egy másik időpontban vagy egy másik böngészőben szeretné folytatni, mentenie kell a projekt biztonsági jogkivonatát, és később újra be kell írnia. 
 
-### <a name="get-project-credentials"></a>Projekt hitelesítő adatainak beolvasása
-Lépjen a Project Settings (csúszka ikon) lapra, és jegyezze fel a biztonsági jogkivonat nevét. Ezután nyissa meg az alkalmazás beállításait (fogaskerék ikon), amely megjeleníti az aktuális böngésző-példány összes biztonsági jogkivonatát. Keresse meg a projekt biztonsági jogkivonatát, és másolja a nevét és a kulcs értékét egy biztonságos helyre.
+### <a name="get-project-credentials"></a>Projekthitelesítő adatok beszerezése
+Lépjen a projektbeállítások lapra (csúszkaikon), és vegye figyelembe a biztonsági jogkivonat nevét. Ezután lépjen az alkalmazás beállításaihoz (fogaskerék ikon), amely az aktuális böngészőpéldány összes biztonsági jogkivonatát megjeleníti. Keresse meg a projekt biztonsági jogkivonatát, és másolja a nevét és a kulcsértékét egy biztonságos helyre.
 
-### <a name="restore-project-credentials"></a>A projekt hitelesítő adatainak visszaállítása
-Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy kapcsolódást ugyanahhoz a blob Storage-tárolóhoz. Ehhez ismételje meg a fenti lépéseket. Ezután nyissa meg az Alkalmazásbeállítások lapot (fogaskerék ikon), és ellenőrizze, hogy van-e a projekt biztonsági jogkivonata. Ha nem, adjon hozzá egy új biztonsági jogkivonatot, és másolja át a token nevét és kulcsát az előző lépésből. Ezután kattintson a beállítások mentése gombra. 
+### <a name="restore-project-credentials"></a>Projekthitelesítő adatok visszaállítása
+Ha folytatni szeretné a projektet, először létre kell hoznia egy kapcsolatot ugyanahhoz a blobstorage-tárolóhoz. Ehhez ismételje meg a fenti lépéseket. Ezután lépjen az alkalmazás beállítások oldalra (fogaskerék ikon), és nézd meg, hogy a projekt biztonsági jogkivonata ott van-e. Ha nem, adjon hozzá egy új biztonsági jogkivonatot, és másolja át a jogkivonat nevét és kulcsát az előző lépésből. Ezután kattintson a Beállítások mentése gombra. 
 
 ### <a name="resume-a-project"></a>Projekt folytatása
-Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. vott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+Végül lépjen a főoldalra (ház ikon), és kattintson a Felhőprojekt megnyitása gombra. Ezután válassza ki a blob tárolási kapcsolatot, és válassza ki a projekt *.vott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert rendelkezik a biztonsági jogkivonatkal.
 
-Ebből a rövid útmutatóból megtudhatta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha szeretné integrálni a címkéző eszközt a saját alkalmazásba, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
+## <a name="next-steps"></a>További lépések
+
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Űrlapfelismerő mintacímkéző eszközt a modell manuálisan címkézett adatokkal történő betanításához. Ha szeretné integrálni a címkézési eszközt a saját alkalmazásába, használja a REST API-kat, amelyek a címkézett adatoktatással foglalkoznak.
 
 > [!div class="nextstepaction"]
-> [Betanítás címkékkel a Python használatával](./python-labeled-data.md)
+> [Vonat címkékkel python használatával](./python-labeled-data.md)

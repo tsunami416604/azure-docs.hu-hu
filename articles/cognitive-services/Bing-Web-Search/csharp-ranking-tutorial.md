@@ -1,7 +1,7 @@
 ---
-title: A rangsor használata a keresési eredmények megjelenítéséhez
+title: Rangsorolás használata a keresési eredmények megjelenítéséhez
 titleSuffix: Azure Cognitive Services
-description: Azt mutatja be, hogyan használható a Bing RankingResponse válasz a keresési eredmények rangsorolási sorrendben való megjelenítéséhez.
+description: Bemutatja, hogyan jelenítheti meg a keresési eredmények rangsorolási sorrendjében a Bing RankingResponse választ.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,65 +12,65 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382327"
 ---
-# <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozásaC#
+# <a name="build-a-console-app-search-client-in-c"></a>Konzolalkalmazás-kereső ügyfél létrehozása C-ben #
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy egyszerű .NET Core Console-alkalmazást, amely lehetővé teszi a felhasználóknak a Bing Web Search API lekérdezését és a rangsorolt eredmények megjelenítését.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy egyszerű .NET Core konzolalkalmazást, amely lehetővé teszi a felhasználók számára a Bing Web Search API lekérdezését és a rangsorolt eredmények megjelenítését.
 
-Ez az oktatóanyag a következőket mutatja be:
+Ez az oktatóanyag bemutatja, hogyan:
 
-- Egyszerű lekérdezés készítése a Bing Web Search API
+- Egyszerű lekérdezés a Bing Web Search API-ra
 - Lekérdezési eredmények megjelenítése rangsorolt sorrendben
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy követni tudja az oktatóanyagot, a következőkre lesz szüksége:
+Követni együtt a bemutató, meg kell:
 
-- Visual Studio. Ha nem rendelkezik ezzel, [töltse le és telepítse az ingyenes Visual Studio 2017 Community Edition verziót](https://www.visualstudio.com/downloads/).
-- A Bing Web Search APIhoz tartozó előfizetési kulcs. Ha nem rendelkezik ilyennel, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+- Visual Studio. Ha még nincs meg, [töltse le és telepítse az ingyenes Visual Studio 2017 Community Edition alkalmazást.](https://www.visualstudio.com/downloads/)
+- A Bing Web Search API előfizetési kulcsa. Ha nem rendelkezik ilyennel, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-## <a name="create-a-new-console-app-project"></a>Új konzolos alkalmazás projekt létrehozása
+## <a name="create-a-new-console-app-project"></a>Új konzolalkalmazás-projekt létrehozása
 
 Hozzon létre egy projektet a Visual Studióban a `Ctrl`+`Shift`+`N` billentyűparancs lenyomásával.
 
-Az **új projekt** párbeszédpanelen kattintson a **Visual C# > Windows klasszikus asztali > Console app (.NET-keretrendszer)** elemre.
+Az **Új projekt** párbeszédpanelen kattintson a **Visual C# > Windows Classic Desktop > Console App (.NET Framework)** elemre.
 
-Nevezze el az alkalmazás **MyConsoleSearchApp**, majd kattintson **az OK**gombra.
+Nevezze el az alkalmazást **MyConsoleSearchApp**néven, majd kattintson **az OK gombra.**
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>A JSON.net Nuget-csomag hozzáadása a projekthez
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>A JSON.net Nuget csomag hozzáadása a projekthez
 
-A JSON.net lehetővé teszi az API által visszaadott JSON-válaszok használatát. Adja hozzá a NuGet-csomagot a projekthez:
+JSON.net lehetővé teszi az API által visszaadott JSON-válaszok. Adja hozzá NuGet csomagját a projekthez:
 
-- **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése...** lehetőséget.
-- A **Tallózás** lapon keressen rá a `Newtonsoft.Json`ra. Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
-- Kattintson a **módosítások áttekintése** ablak **OK** gombjára.
-- Zárjuk be a Visual Studio fület a **NuGet: MyConsoleSearchApp**címen.
+- A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza **a NuGet csomagok kezelése...** lehetőséget.
+- A **Tallózás** lapon `Newtonsoft.Json`keresse meg a keresett gombot. Válassza ki a legújabb verziót, majd kattintson a **Telepítés gombra.**
+- Kattintson az **OK** gombra a **Változások áttekintése** ablakban.
+- Zárja be a Visual Studio **nuget: MyConsoleSearchApp**című lapját.
 
-## <a name="add-a-reference-to-systemweb"></a>A System. Web referenciájának hozzáadása
+## <a name="add-a-reference-to-systemweb"></a>Hivatkozás hozzáadása a System.Web fájlhoz
 
-Ez az oktatóanyag a `System.Web` szerelvényre támaszkodik. Adjon hozzá egy hivatkozást ehhez a szerelvényhez a projekthez:
+Ez az oktatóanyag `System.Web` a szerelvényre támaszkodik. Hivatkozás hozzáadása ehhez a szerelvényhez a projekthez:
 
-- A **megoldáskezelő**kattintson a jobb gombbal a **hivatkozások** elemre, és válassza a **hivatkozás hozzáadása..** . lehetőséget.
-- Válassza a **szerelvények > Framework**elemet, majd görgessen le, és jelölje be a **System. Web**
+- A **Megoldáskezelőben**kattintson a jobb gombbal a **Hivatkozások** elemre, és válassza a Hivatkozás **hozzáadása parancsot...**
+- Válassza **az Összeállítások > Framework**lehetőséget, majd görgessen le, és ellenőrizze a **System.Web**
 - Kattintson az **OK** gombra.
 
-## <a name="add-some-necessary-using-statements"></a>Néhány szükséges utasítás hozzáadása
+## <a name="add-some-necessary-using-statements"></a>Néhány szükséges hozzáadása utasítások használatával
 
-Az oktatóanyagban szereplő kódnak három további utasítást kell használnia. Adja hozzá az alábbi utasításokat a **program.cs**felső részén található meglévő `using` utasításokhoz:
+Az oktatóanyagban szereplő kód három további utasítást igényel. Adja hozzá ezeket `using` a nyilatkozatokat a meglévő utasítások alá **a Program.cs**tetején:
 
 ```csharp
 using System.Web;
 using System.Net.Http;
 ```
 
-## <a name="ask-the-user-for-a-query"></a>Kérje meg a felhasználót a lekérdezésre
+## <a name="ask-the-user-for-a-query"></a>Lekérdezés lekérdezésének lekérdezése a felhasználótól
 
-**Megoldáskezelő**nyissa meg a **program.cs**. A `Main()` metódus frissítése:
+A **Megoldáskezelőben**nyissa meg **a Program.cs.** Frissítse `Main()` a módszert:
 
 ```csharp
 static void Main()
@@ -89,11 +89,11 @@ static void Main()
 }
 ```
 
-Ez a metódus:
+Ez a módszer:
 
-- Kéri a felhasználót a lekérdezésre
-- A lekérdezés végrehajtásának és az eredmények megjelenítésének `RunQueryAndDisplayResults(userQuery)` meghívása
-- Megvárja a felhasználói bevitelt, hogy megakadályozza a konzol ablakának azonnali bezárását.
+- Lekérdezést kér a felhasználótól
+- A `RunQueryAndDisplayResults(userQuery)` lekérdezés végrehajtására és az eredmények megjelenítésére irányuló hívások
+- Megvárja a felhasználói bevitelt, hogy megakadályozza a konzolablak azonnali bezárását.
 
 ## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Lekérdezési eredmények keresése a Bing Web Search API használatával
 
@@ -135,18 +135,18 @@ static void RunQueryAndDisplayResults(string userQuery)
 }
 ```
 
-Ez a metódus:
+Ez a módszer:
 
-- Egy `HttpClient` hoz létre a Web Search API lekérdezéséhez
-- Beállítja a `Ocp-Apim-Subscription-Key` HTTP-fejlécet, amelyet a Bing a kérelem hitelesítéséhez használ
-- Végrehajtja a kérést, és a JSON.net használatával deszerializálja az eredményeket
-- Meghívja a `DisplayAllRankedResults(responseObjects)` az összes eredmény rangsorolt sorrendben való megjelenítéséhez
+- Létrehoz `HttpClient` egy lekérdezést a Web Search API-t
+- Beállítja a HTTP-fejlécet, amelyet a `Ocp-Apim-Subscription-Key` Bing a kérelem hitelesítésére használ
+- Végrehajtja a kérést, és JSON.net az eredmények deszerializálására használja.
+- Hívások `DisplayAllRankedResults(responseObjects)` az összes eredmény rangsorolt sorrendben való megjelenítéséhez
 
-Ügyeljen arra, hogy a `Ocp-Apim-Subscription-Key` értékét állítsa be az előfizetési kulcsra.
+Győződjön meg arról, hogy az előfizetési kulcs értékét állítja `Ocp-Apim-Subscription-Key` be.
 
 ## <a name="display-ranked-results"></a>Rangsorolt eredmények megjelenítése
 
-Mielőtt bemutatjuk, hogyan jeleníti meg az eredményeket rangsorolt sorrendben, tekintse meg a minta webes keresési választ:
+Mielőtt megmutatna, hogyan jelenítheti meg az eredményeket rangsorolt sorrendben, tekintse meg a mintainternetes keresési válaszát:
 
 ```json
 {
@@ -221,15 +221,15 @@ Mielőtt bemutatjuk, hogyan jeleníti meg az eredményeket rangsorolt sorrendben
 }
 ```
 
-A `rankingResponse` JSON-objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) a keresési eredmények megfelelő megjelenítési sorrendjét ismerteti. A következő, rangsorolt csoportok közül egyet vagy többet tartalmaz:
+A `rankingResponse` JSON objektum ([dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) leírja a keresési eredmények megfelelő megjelenítési sorrendjét. Ez magában foglalja egy vagy több, a következő, kiemelt csoportok:
 
-- `pole`: a keresési eredmények a legjobban látható kezelést kapják meg (például a fővonalon és az oldalsávon).
-- `mainline`: a keresési eredmények megjelennek a fővonalban.
-- `sidebar`: az oldalsávon megjelenítendő keresési eredmények. Ha nincs oldalsáv, jelenítse meg az eredményeket a fővonal alatt.
+- `pole`: A keresési eredmények, hogy a leginkább látható kezelés (például felett jelenik meg a fővonal és az oldalsáv).
+- `mainline`: A fővonalon megjelenítendő keresési eredmények.
+- `sidebar`: Az oldalsávon megjelenítendő keresési eredmények. Ha nincs oldalsáv, jelenítse meg az eredményeket a fővonal alatt.
 
-A besorolási válasz JSON-je tartalmazhat egy vagy több csoportot is.
+A JSON rangsorolási válasza egy vagy több csoportot tartalmazhat.
 
-A **program.cs**-ben adja hozzá a következő metódust az eredmények megfelelően rangsorolt sorrendben való megjelenítéséhez:
+A **Program.cs**adja hozzá a következő módszert az eredmények megfelelő en rangsorolási sorrendjének megjelenítéséhez:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -271,12 +271,12 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 }
 ```
 
-Ez a metódus:
+Ez a módszer:
 
-- A válasz által tartalmazott `rankingResponse` csoportok közötti hurkok
-- Megjeleníti az egyes csoportok elemeit a `DisplaySpecificResults(...)` meghívásával
+- Hurkok a `rankingResponse` válaszok által tartalmazott csoportok felett
+- Az egyes csoportok elemeinek megjelenítése hívással`DisplaySpecificResults(...)`
 
-A **program.cs**-ben adja hozzá a következő két módszert:
+A **Program.cs**adja hozzá a következő két módszert:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)
@@ -305,7 +305,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 }
 ```
 
-Ezek a módszerek együttműködve a keresési eredményeket a konzolra exportálják.
+Ezek a módszerek együttműködnek a keresési eredmények konzolra való kimenetével.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -329,6 +329,6 @@ WebPage:
 ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [rangsor használatáról az eredmények megjelenítéséhez](rank-results.md).
+További információ a [rangsorolás használatáról az eredmények megjelenítéséhez.](rank-results.md)

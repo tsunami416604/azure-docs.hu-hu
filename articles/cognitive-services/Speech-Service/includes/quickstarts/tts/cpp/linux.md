@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: szintetizáló beszéd C++ , (Linux) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszéd szintetizálása, C++ (Linux) – beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan szintetizálhatja C++ a beszédfelismerést Linux rendszeren a Speech SDK használatával
+description: A beszédfelismerési SDK használatával megtudhatja, hogyan szintetizálható a beszéd c++ alatt Linuxon
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
 ms.openlocfilehash: 40befc98c2280418a443ff80e4d246b6e2957e56
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925761"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=linux)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -52,7 +52,7 @@ Az első lépések előtt ügyeljen a következőre:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* **ARM64** (64 bites) rendszeren futtassa az alábbi parancsot az alkalmazás létrehozásához.
+* **ARM64** (64 bites) rendszeren futtassa a következő parancsot az alkalmazás létrehozásához.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -86,7 +86,7 @@ Az első lépések előtt ügyeljen a következőre:
    ./helloworld
    ```
 
-1. A konzol ablakában megjelenik egy üzenet, amely felszólítja, hogy írjon be egy szöveget. Írjon be néhány szót vagy mondatot. A beírt szöveg a beszédfelismerési szolgáltatáshoz lesz továbbítva, és a beszédre lett szintetizálva, amely a beszélőn játszik.
+1. A konzolablakban megjelenik egy üzenet, amely szöveg beírását kéri. Írjon be néhány szót vagy egy mondatot. A beírt szöveg et a rendszer továbbítja a beszédfelismerési szolgáltatásba, és beszédre szintetizálódik, amely a hangszórón szól.
 
    ```text
    Type some text that you want to speak...
@@ -95,7 +95,7 @@ Az első lépések előtt ügyeljen a következőre:
    Press enter to exit...
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]
 

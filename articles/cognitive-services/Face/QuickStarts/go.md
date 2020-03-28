@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Face szolgáltatás és a go használatával azonosíthatja a képekből származó arcokat.
+description: Ebben a rövid útmutatóban észlelheti a face szolgáltatás go használatával a képek arcát.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 246b9c81e3cb726236143b9749486ba362128756
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165838"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával
 
-Ebben a rövid útmutatóban az Azure Face REST API a go használatával ismeri fel az emberi arcokat a képen.
+Ebben a rövid útmutatóban az Azure Face REST API-t a Go használatával észlelheti az emberi arcok egy lemezképben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
-- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
+- Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot.
+- Kódszerkesztő, például [Visual Studio-kód](https://code.visualstudio.com/download)
 
-## <a name="write-the-script"></a>A parancsfájl írása
+## <a name="write-the-script"></a>Írja meg a forgatókönyvet
 
-Hozzon létre egy új fájlt, _faceDetection. go_, és adja hozzá a következő kódot. Ez meghívja a Face API egy adott képurl-címhez.
+Hozzon létre egy új fájlt, _faceDetection.go_, és adja hozzá a következő kódot. Ez meghívja a Face API-t egy adott kép URL-címéhez.
 
 ```go
 package main
@@ -108,15 +108,15 @@ func main() {
 }
 ```
 
-A `subscriptionKey` értéket frissítenie kell az előfizetési kulccsal, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot.
+Frissítenie kell az `subscriptionKey` értéket az előfizetési kulccsal, és úgy kell módosítania a `uriBase` karakterláncot, hogy az a megfelelő végponti karakterláncot tartalmazzon.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Előfordulhat, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson. Előfordulhat, hogy módosítani kívánja a lekérdezni kívánt arc-attribútumokat megadó `returnFaceAttributes` mezőt is.
+Azt is megteheti, `imageUrl` hogy a mezőt úgy szeretné módosítani, hogy a saját bemeneti lemezképére mutasson. Érdemes lehet módosítani azt `returnFaceAttributes` a mezőt is, amely meghatározza, hogy mely arcattribútumokat szeretné beolvasni.
 
 ## <a name="run-the-script"></a>A szkript futtatása
 
-Nyisson meg egy parancssort, és hozza létre a programot a következő paranccsal:
+Nyisson meg egy parancssort, és építse fel a programot a következő paranccsal:
 
 ```shell
 go build faceDetection.go
@@ -128,7 +128,7 @@ Ezután futtassa a programot:
 detect-face
 ```
 
-Meg kell jelennie a konzolon kinyomtatott, észlelt arc típusú információk JSON-karakterláncának. A következő példa egy sikeres JSON-választ mutat be.
+A konzolra nyomtatott JSON-karakterláncnak kell lennie. Az alábbi példa egy sikeres JSON-válasz.
 
 ```json
 [
@@ -309,9 +309,9 @@ Meg kell jelennie a konzolon kinyomtatott, észlelt arc típusú információk J
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy go-konzol alkalmazást írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaállítsa az attribútumokat. További információért olvassa el a Face API dokumentációját.
+Ebben a rövid útmutatóban írt egy Go Console-alkalmazást, amely meghívja az Azure Face szolgáltatást a rendszerképek arcok észleléséhez és az attribútumok visszaadásához. Ezután további információért tekintse meg a Face API referenciadokumentációját.
 
 > [!div class="nextstepaction"]
-> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Arcfelismerési API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

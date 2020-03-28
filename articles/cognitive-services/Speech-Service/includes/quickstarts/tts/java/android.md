@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési beszéd, Java (Android) – Speech Service'
+title: 'Rövid útmutató: Beszéd szintetizálása, Java (Android) – beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan szintetizálhatja a beszédfelismerést Java nyelven Androidon a Speech SDK használatával
+description: A beszédfelismerési SDK használatával megtudhatja, hogyan szintetizálható a beszéd nyelvbeszéd e-alapú nyelvben Android on
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -11,38 +11,38 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
 ms.openlocfilehash: 230b4abb9a740e830392a92369477c7dc44f60ee
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78926006"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=android)
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=android)
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje el szerkeszteni a fő tevékenység (`activity_main.xml`) elrendezését. Kezdetben az elrendezés tartalmaz egy címsort az alkalmazás nevével, valamint egy olyan TextView, amely a ""Helló világ!"alkalmazás!" szöveget tartalmazza.
+Létrehozunk egy alapvető felhasználói felületet az alkalmazáshoz. Kezdje el szerkeszteni a fő tevékenység (`activity_main.xml`) elrendezését. Kezdetben az elrendezés tartalmaz egy címsort az alkalmazás nevével, és egy TextView nézetet, amely a "Hello World!" szöveget tartalmazza.
 
-1. Kattintson a TextView elemre. Módosítsa a jobb felső sarokban lévő ID attribútumot a `outputMessage`ra, és húzza az alsó képernyőre. Törölje a szövegét.
+1. Kattintson a TextView elemre. Módosítsa az azonosító attribútumát a jobb `outputMessage`felső sarokban a lehetőségre, és húzza az alsó képernyőre. Törölje a szöveget.
 
 1. Az `activity_main.xml` ablak bal felső részén található Palette (Paletta) részről húzzon át egy gombot a szöveg fölötti üres részre.
 
 1. A gomb attribútumai jobb oldalon láthatók. Az `onClick` attribútum értékét állítsa a következőre: `onSpeechButtonClicked`. Ezen a néven írni fogunk később egy metódust, amely kezelni fogja a gombeseményt.  Módosítsa a jobb felső sarokban található ID (azonosító) attribútumot a következőre: `button`.
 
-1. Húzzon egy egyszerű szöveget a gomb fölé a szóköz fölé. módosítsa az ID attribútumát `speakText`re, és módosítsa a Text (szöveg) attribútumot `Hi there!`re.
+1. Húzzon egy egyszerű szöveget a gomb feletti helyre; módosítsa az ID `speakText`attribútumát a -ra, `Hi there!`és módosítsa a szöveges attribútumot .
 
 1. A tervező felső részén található varázspálca ikonra kattintva kikövetkeztetheti az elrendezés korlátozásait.
 
 
     ![A varázspálca ikon képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-10-infer-layout-constraints.png)
 
-A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
+A felhasználói felület szövegének és grafikus ábrázolásának így kell kinéznie:
 
 ![](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-11-2-tts-gui.png)
 
@@ -54,7 +54,7 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/android/text-to-speech/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
-   * Ahogy korábban már említettük, az `onSpeechButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gombnyomással megnyomhatja A beszédfelismerési szintézist.
+   * Ahogy korábban már említettük, az `onSpeechButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gombnyomással elindítja a beszédszintézist.
 
 1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
@@ -62,21 +62,21 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Csatlakoztassa az Android-eszközt a fejlesztői számítógéphez. Győződjön meg róla, hogy engedélyezte a [fejlesztői módot és az USB-hibakeresést](https://developer.android.com/studio/debug/dev-options) az eszközön. Alternatív megoldásként hozzon létre egy [Android-emulátort](https://developer.android.com/studio/run/emulator).
+1. Csatlakoztassa az Android-eszközt a fejlesztői számítógéphez. Győződjön meg róla, hogy engedélyezte a [fejlesztői módot és az USB-hibakeresést](https://developer.android.com/studio/debug/dev-options) az eszközön. Másik lehetőségként hozzon létre egy [Android emulátort](https://developer.android.com/studio/run/emulator).
 
-1. Az alkalmazás kiépítéséhez nyomja le a Ctrl+F9 billentyűparancsot, vagy válassza a **Build (Kiépítés)**  > **Make Project (Projekt létrehozása)** elemet a menüsávon.
+1. Az alkalmazás létrehozásához nyomja le a Ctrl+F9 billentyűkombinációt, vagy válassza a menüsor > **Project** **összeállítása**parancsát.
 
-1. Az alkalmazás futtatásához nyomja le a Shift+F10 billentyűparancsot, vagy válassza a **Run (Futtatás)**  > **Run 'app' („Alkalmazás” futtatása)** elemeket.
+1. Az alkalmazás elindításához nyomja le a Shift+F10 billentyűkombinációt, vagy válassza a Run**Run 'app' (Alkalmazás futtatása)** **lehetőséget.** > 
 
-1. A megjelenő központi telepítési cél ablakban válassza ki az androidos eszközt vagy emulátort.
+1. A megjelenő központi telepítési célablakban válassza ki az Android-eszközt vagy az emulátort.
 
    ![A Select Deployment Target (Üzembehelyezési cél kiválasztása) ablak képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 
-Írjon be egy szöveget, és nyomja meg az alkalmazás gombját a beszédfelismerési szintézis szakasz megkezdéséhez. A szintetizált hang az alapértelmezett beszélőtől fog megjelenni, és megtekintheti a képernyőn megjelenő `speech synthesis succeeded` információt.
+Írjon be egy szöveget, és nyomja meg a gombot az alkalmazásban a beszédszintézis szakasz megkezdéséhez. A szintetizált hangot az alapértelmezett hangszóróból fogja `speech synthesis succeeded` hallani, és látni fogja az adatokat a képernyőn.
 
 ![Az Android-alkalmazás képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-2-gui-on-device-tts.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]
 

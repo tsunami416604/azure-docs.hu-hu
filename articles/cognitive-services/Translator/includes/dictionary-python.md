@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6c72cd270e634ca0aebff7c17d5663241428e182
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69907081"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -17,7 +17,7 @@ ms.locfileid: "69907081"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új Python-projektet a kedvenc IDE vagy szerkesztő használatával, vagy hozzon létre egy új mappát az asztalon. Másolja ezt a kódrészletet a projektbe vagy mappájába egy nevű `dictionary-lookup.py`fájlba.
+Hozzon létre egy új Python-projektet kedvenc IDE- vagy szerkesztőjével, vagy hozzon létre egy új mappát az asztalon. Másolja ezt a kódrészletet a projektbe/mappába egy fájlba, amelynek neve `dictionary-lookup.py`.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -31,7 +31,7 @@ Az első megjegyzés arra utasítja a Python-értelmezőt, hogy UTF-8 kódolást
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Az előfizetési kulcs, a végpont és az elérési út beállítása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot a környezeti `TRANSLATOR_TEXT_KEY` változóktól: és `TRANSLATOR_TEXT_ENDPOINT`. Ha nem ismeri a környezeti változókat, beállíthatja `subscription_key` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat.
+Ez a minta megpróbálja olvasni a Translator Text előfizetési `TRANSLATOR_TEXT_KEY` kulcsot `TRANSLATOR_TEXT_ENDPOINT`és végpontot a környezeti változókból: és . Ha nem ismeri a környezeti változókat, `subscription_key` `endpoint` beállíthatja, és karakterláncként, és megjegyzést a feltételes utasítások.
 
 Másolja a projektbe a következő kódot:
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-A Translator Text globális végpont beállítása `endpoint`. A `path` tulajdonság a `dictionary/lookup` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A fordítószöveg globális végpontja `endpoint`a . A `path` tulajdonság a `dictionary/lookup` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 A paraméterekkel (`params`) állítható be a forrás- és a célnyelv. Ebben a példában az angol és a spanyol nyelvet használjuk: `en` és `es`.
 
 >[!NOTE]
-> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: Szótár keresése](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információkért lásd a [Translator Text API 3.0 keresési funkcióját](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) ismertető témakört.
 
 ```python
 path = '/dictionary/lookup?api-version=3.0'
@@ -74,7 +74,7 @@ headers = {
 }
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem paramétereit is meg kell egyeznie. [További információ a többszolgáltatásos előfizetés hitelesítéséről.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
 ## <a name="create-a-request-to-find-alternate-translations"></a>Kérelem létrehozása alternatív fordítások kereséséhez
 
@@ -147,7 +147,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

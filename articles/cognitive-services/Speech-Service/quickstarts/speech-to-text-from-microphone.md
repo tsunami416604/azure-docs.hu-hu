@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszéd felismerése egy mikrofon-beszédfelismerési szolgáltatásból'
+title: 'Rövid útmutató: Beszédfelismerés mikrofonból – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Speech SDK használatával interaktívan felismerheti a mikrofonból rögzített hangadatokból származó beszédet.
+description: Ebben a rövid útmutatóban a Beszéd sdk segítségével interaktívan felismerheti a mikrofonból rögzített hangadatokból érkező beszédeket.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: eb02f273e66266b1e445df73aea61610640e9868
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119523"
 ---
-# <a name="quickstart-recognize-speech-from-a-microphone"></a>Gyors útmutató: beszéd felismerése mikrofonból
+# <a name="quickstart-recognize-speech-from-a-microphone"></a>Rövid útmutató: Beszéd felismerése mikrofonból
 
 ::: zone pivot="programming-language-csharp"
 

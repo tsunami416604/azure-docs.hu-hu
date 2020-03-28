@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: a Bing Web Search meghívása a Java használatával REST API'
+title: 'Rövid útmutató: A Bing Web Search REST API-jának hívása java használatával'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérelmeket küldhet a Bing Web Search REST API Javával, és JSON-választ kap
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API-nak Java használatával, és JSON-választ kaphat
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166732"
 ---
-# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rövid útmutató: a Java használatával megkeresheti a webet a Bing Web Search REST API egy Azure kognitív szolgáltatással
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rövid útmutató: A Java használatával kereshet az interneten a Bing Web Search REST API-val, amely egy Azure kognitív szolgáltatás
 
-Ebben a rövid útmutatóban egy Java-alkalmazást fog használni a Bing Web Search API első meghívásához és a JSON-válasz fogadásához. Ez a Java-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ebben a rövid útmutatóban egy Java-alkalmazást fog használni a Bing Web Search API első hívásához, és megkapja a JSON-választ. Ez a Java alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. `host` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont. Cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Ne felejtse el hozzáadni ezt a kódot a `BingWebSearch` osztályhoz a fentiekben leírtak szerint.
+Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. `host`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján. Cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Ne feledje, hogy `BingWebSearch` adja hozzá ezt a kódot az osztály, mint fentebb említettük.
 
 ```java
 // Enter a valid subscription key.
@@ -317,7 +317,7 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)

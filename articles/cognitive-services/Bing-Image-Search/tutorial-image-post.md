@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a rendszerkép részleteinek kinyerése C# a REST API és a-Bing Image Search'
+title: 'Oktatóanyag: A lemezkép részleteinek kinyerése a REST API-val és a C# - Bing képkereséssel'
 titleSuffix: Azure Cognitive Services
-description: Ezzel az Oktatóanyaggal olyan C# alkalmazást hozhat létre, amely a Bing Image Search API használatával kibontja a képrészleteket.
+description: Az oktatóanyag használatával létrehozhat egy C# alkalmazást, amely kinyeri a lemezkép részleteit a Bing Image Search API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383875"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Oktatóanyag: Képadatok kinyerése a Bing Image Search API és a C# használatával
@@ -32,17 +32,17 @@ Ez az oktatóanyag a következőket ismerteti:
 > * Képadatok feltöltése és `POST`-kérelem küldése
 > * JSON-találatok megjelenítése a konzolban
 
-A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs) érhető el.
+A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual studio 2017 vagy újabb](https://visualstudio.microsoft.com/downloads/)verziójának bármely kiadása.
+* A [Visual Studio 2017-es vagy újabb verzióinak](https://visualstudio.microsoft.com/downloads/)bármely kiadása.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="construct-an-image-details-search-request"></a>Kérelem létrehozása képek részleteinek kereséséhez
 
-Lentebb látható a `/details` végpont, amely olyan POST-kérelmet fogad el, amelynek a törzse képadatokat tartalmaz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+Lentebb látható a `/details` végpont, amely olyan POST-kérelmet fogad el, amelynek a törzse képadatokat tartalmaz. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -106,11 +106,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 
 Ha azonosítható személyek vagy helyek szerepelnek a képen, a kérelem rájuk vonatkozó információkat fog visszaadni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Képek és keresési beállítások megjelenítése egyoldalas webalkalmazásban](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

@@ -1,7 +1,7 @@
 ---
-title: Projekt akusztikai útmutatója egységgel
+title: A Project Acoustics rövid útmutatója az Egységgel
 titlesuffix: Azure Cognitive Services
-description: A mintaadatok használatával kísérletezzen a Project akusztikai tervezési vezérlőkkel az egységben, és telepítse a Windows asztalra.
+description: A mintatartalom malmára használhatja a Project Acoustics tervezési vezérlőivel való kísérletezést az Unity programban, és telepítheti őket a Windows Asztali számítógépre.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,89 +12,89 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fabdd221ef99414eae0156babbd76dedb1f0745d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72243025"
 ---
-# <a name="project-acoustics-unity-quickstart"></a>Projekt akusztikai egység – rövid útmutató
-A Project akusztikai minta tartalmának használata az egységhez a szimulált kialakítási vezérlőkkel való kísérletezéshez.
+# <a name="project-acoustics-unity-quickstart"></a>Project Acoustics Unity rövid útmutató
+A Project Acoustics mintatartalommal kísérletezhet a szimulációáltal támogatott tervezési vezérlőkkel.
 
-A szoftverre vonatkozó követelmények:
-* [Unity 2018.2 +](https://unity3d.com) Windowshoz
-* [Projekt akusztikai minta Content Package](https://www.microsoft.com/download/details.aspx?id=57346)
+Szoftverkövetelmények:
+* [Unity 2018.2+](https://unity3d.com) Windows-hoz
+* [Project Acoustics mintatartalom-csomag](https://www.microsoft.com/download/details.aspx?id=57346)
 
-Mit tartalmaz a minta csomag?
-* Egységbeli jelenet geometria, hangforrások és gameplay-vezérlőkkel
-* Projekt akusztikai beépülő modulja
-* A jelenethez készült sült akusztikai eszközök
+Mit tartalmaz a mintacsomag?
+* Egységjelenet geometriával, hangforrásokkal és játékmenet-vezérlőkkel
+* Project Akusztika beépülő modul
+* Sült akusztikai eszközök a jelenet
 
-## <a name="import-the-sample-package"></a>A mintavételi csomag importálása
-Importálja a mintavételi csomagot egy új Unity-projektbe.
-1. Az egység területen lépjen az **eszközök** > **Importálás csomag** > **Egyéni csomag**elemre.
+## <a name="import-the-sample-package"></a>A mintacsomag importálása
+Importálja a mintacsomagot egy új Unity projektbe.
+1. A Unity, go to **Assets** > **Import Package** > **Custom Package**.
 
-    ![Az egység importálása csomag beállításai](media/import-package.png)  
+    ![Az Egység importálási csomag beállításai](media/import-package.png)  
 
-1. Válassza a **ProjectAcoustics. unitypackage**elemet.
+1. Válassza **a ProjectAcoustics.unitypackage lehetőséget.**
 
-1. Válassza az **Importálás** gombot az egység csomag projektbe való integrálásához.  
+1. Az **Importálás** gombra kattintva integrálhatja az Egység csomagot a projektbe.  
   
-    ![Az egység importálása csomag párbeszédpanel](media/import-dialog.png)  
+    ![A Unity importálási csomag párbeszédpanel](media/import-dialog.png)  
 
-Ha a csomagot egy meglévő projektbe szeretné importálni, tekintse meg a további lépések és megjegyzések [Unity Integration](unity-integration.md) című témakört.
+A csomag importálásához egy meglévő projektbe, [lásd: Unity integráció](unity-integration.md) további lépéseket és megjegyzéseket.
 
 >[!NOTE]
->Az importálás befejezése után több hibaüzenet fog megjelenni a konzol naplójában. Folytassa a következő lépéssel, és indítsa újra az egységet.
+>Az importálás befejezése után több hibaüzenet jelenik meg a konzolnaplóban. Folytassa a következő lépéssel, és indítsa újra az Egységet.
 
 ## <a name="restart-unity"></a>Egység újraindítása
-A akusztikai eszközkészlet sütni részében a .NET 4 szükséges. *x* parancsfájl-futtatókörnyezet verziója. A csomag importálása frissíti az egység lejátszójának beállításait. A beállítás érvénybe léptetéséhez indítsa újra az egységet. A beállítás érvénybe léptetésének ellenőrzéséhez nyissa meg a **lejátszó** beállításait:
+Az akusztikai eszközkészlet sütni része a .NET 4.the bake portion of the acoustics toolkit requires the .NET 4. *x* scripting runtime verzió. A csomagimportálás frissíti a Unity lejátszó beállításait. A beállítás érvénybe léptetéséhez indítsa újra az Egységet. A beállítás érvénybe lépésének ellenőrzéséhez nyissa meg a **Lejátszó** beállításait:
 
-![Az Unity Project Settings menü](media/player-settings.png)  
+![A Unity projekt beállítások menüje](media/player-settings.png)  
 
-![A Unity Player Settings panel és a .NET 4. x kiválasztva](media/net45.png)  
+![A Unity Player Settings panel en .NET 4.x van kiválasztva](media/net45.png)  
 
 >[!NOTE]
->Ez a képernyőkép a 2018-es egységből készült. *x*. A rendszerkép eltérő lehet az Unity újabb verzióiban.
+>Ez a képernyőkép a Unity 2018-ból készült. *x*. A kép eltérhet az Unity újabb verzióiban.
 
-## <a name="open-the-project-acoustics-bake-window"></a>A Project akusztikai sütni ablak megnyitása
-Az egység területen válassza az **akusztika** elemet az **ablak** menüben.
+## <a name="open-the-project-acoustics-bake-window"></a>A Project Acoustics bake ablakának megnyitása
+A Unity menüben válassza az **Ablak** menü **Akusztika** parancsát.
 
-![Az egység-szerkesztő az ablak menüjében Kiemelt akusztikai lehetőséggel](media/window-acoustics.png)
+![Az Ablak menüBen kiemelt Akusztika beállítással ellátott Unity-szerkesztő](media/window-acoustics.png)
 
-Ekkor megnyílik egy lebegő **akusztikai** ablak. Ebben az ablakban állíthatja be az akusztikus szimuláció tulajdonságait.
+Megnyílik egy lebegő **akusztikaablak.** Ebben az ablakban állíthatja be az akusztikai szimuláció tulajdonságait.
 
-![Megnyitotta az akusztikai ablakban lévő Unity-szerkesztőt](media/unity-editor-plugin-window.png)  
+![A Unity szerkesztő nyitott Akusztika ablakkal](media/unity-editor-plugin-window.png)  
 
-## <a name="experiment-with-the-design-controls"></a>Kísérletezés a tervezési vezérlőkkel
-Nyissa meg a minta jelenetet a *ProjectAcousticsSample* mappában, és kattintson a Play (lejátszás) gombra az Unity Editorban. A W, A, S és D billentyűk és az egér használatával mozoghat. Ha össze szeretné hasonlítani, hogy a jelenet akusztika nélkül szólaljon meg, válassza az R-kulcsot, amíg az átfedésben lévő szöveg pirosra vált, és az "Akusztika: letiltva" felirat jelenik meg. A további vezérlőkhöz tartozó billentyűparancsok megjelenítéséhez válassza az F1 lehetőséget. Azt is megteheti, hogy a jobb gombbal rákattint egy művelet kiválasztására, majd a művelet elvégzéséhez kattintson rá.
+## <a name="experiment-with-the-design-controls"></a>Kísérletezzen a tervezési vezérlőkkel
+Nyissa meg a mintajelenetet a *ProjectAcousticsSample* mappában, és válassza ki a lejátszás gombot az Egység szerkesztőben. Használja a W, A, S, és D gombokat, és az egér mozogni. Ha össze szeretné hasonlítani, hogy a jelenet hogyan szólal jon fel akusztikával és anélkül, válassza az R billentyűt, amíg az átfedési szöveg pirosra nem vált, és az "Akusztika: Letiltva" szöveg jelenik meg. További vezérlők billentyűparancsainak megtekintéséhez válassza az F1 lehetőséget. A művelet jobb gombbal való kijelöléséhez, majd a művelet hez a bal gombbal kattintva is kattinthat.
 
-A *AcousticsAdjust* parancsfájl a minta jelenet hangforrásaihoz van csatolva. Lehetővé teszi a forrásként szolgáló tervezési paramétereket.
+Az *AcousticsAdjust* parancsfájl a mintajelenet hangforrásaihoz van csatolva. Lehetővé teszi a forrásonkénti tervezési paramétereket.
 
-![Az Unity AcousticsAdjust-szkript](media/acoustics-adjust.png)
+![A Unity AcousticsAdjust szkript](media/acoustics-adjust.png)
 
-Az alábbi részekben néhány olyan effektust ismertetünk, amelyeket a rendelkezésre álló vezérlők használatával lehet létrehozni. Az egyes vezérlőkkel kapcsolatos részletes információkért tekintse meg a [projekt akusztikai egységének kialakítását ismertető oktatóanyagot](unity-workflow.md).
+A következő szakaszok a rendelkezésre álló vezérlők használatával létrehozható hatások némelyikét ismertetik. Az egyes vezérlőkről a [Project Acoustics Unity Design oktatóanyaga című](unity-workflow.md)témakörben talál részletes információt.
 
-### <a name="modify-distance-based-attenuation"></a>Távolságon alapuló csillapítás módosítása
-A **Project akusztikai** egység spatializer beépülő moduljának hangvezérelt digitális jelfeldolgozása az egység-szerkesztőbe beépített, forrásként szolgáló távolságon alapuló csillapítást veszi figyelembe. A távolságon alapuló csillapításhoz tartozó vezérlők az **audio forrás** összetevőben találhatók, amely a **3D hangbeállításokban**a hangforrások **felügyelő** paneljén található:
+### <a name="modify-distance-based-attenuation"></a>Távolságalapú csillapítás módosítása
+A **Project Acoustics** Unity spatializer plug-in audio digitális jelfeldolgozása tiszteletben tartja az Egység szerkesztőbe beépített, forrásonkénti távolságalapú csillapítást. A távolságalapú csillapítás vezérlői az **Audio Source** összetevőben találhatók, amely a **3D hangbeállítások**alatt található a hangforrások **felügyelő** paneljén:
 
-![Az Unity Distance csillapítási beállítások panel](media/distance-attenuation.png)
+![Az Egység távolságcsillapítási beállítások panel](media/distance-attenuation.png)
 
-A Project akusztikai számítások egy "szimulációs régió" mezőben, amely a lejátszó helyét középpontba kerül. A mintavételi csomagban található akusztikai eszközök egy 45 méteres méretű szimulációs régióba kerültek a lejátszó körül. Így a hangcsillapítást úgy kell kialakítani, hogy az 45 m körüli érték 0 legyen.
+A Project Acoustics egy "szimulációs régió" mezőben számít, amely a játékos helye köré épül. A mintacsomagban lévő akusztikai eszközök a lejátszó körül 45 méter hosszú szimulációs régióban sültek. Tehát a hangcsillapítást úgy kell megtervezni, hogy körülbelül 45 m-re csökkenjen.
 
-### <a name="modify-occlusion-and-transmission"></a>Elzáródás és átvitel módosítása
-* Ha az **elzáródási** szorzó nagyobb, mint 1 (az alapértelmezett érték 1), a elzáródás eltúlzott. Annak érdekében, hogy az elzáródás hatása finomabb legyen, állítsa azt 1-nél kisebbre.
+### <a name="modify-occlusion-and-transmission"></a>Az elzáródás és az átvitel módosítása
+* Ha az **Okkluziós** szorzó nagyobb, mint 1 (az alapértelmezett érték 1), az elzáródás eltúlzott. Az elzáródási hatás finomabbá tenni, állítsa be kevesebb, mint 1.
 
-* A falon belüli átvitel engedélyezéséhez helyezze át az **átviteli (db)** csúszkát a legalacsonyabb beállítással.
+* A falon keresztüli átvitel engedélyezéséhez mozgassa a **Sebességváltó (dB)** csúszkát a legalacsonyabb beállítástól.
 
-### <a name="modify-wetness-for-a-source"></a>A nedvesség módosítása a forrásnál
-* Ha módosítani szeretné, hogy a nedvesség milyen gyorsan változik a távolsággal, használja az **észlelési távolságot**. A szimuláción keresztül a Project Acoustics a nedves szintet is kiszámítja, ami érzékelhető távolsági jelzéseket biztosít, és a távolságtól zökkenőmentesen változhat. A távolsági lánc növelésével a távolsághoz kapcsolódó nedves szintek egyre nagyobb mértékben eltúlozzák ezt a hatást. 1-nél kisebb értékek hajlításával a távolságon alapuló visszaverődés-változás finomabb.
+### <a name="modify-wetness-for-a-source"></a>Forrás nedvességének módosítása
+* Ha módosítani szeretné, hogy a távolsággyorsan változik-e a nedvesség, használja **az Észlelési távolsághajlítást**. A szimuláció révén a Project Acoustics kiszámítja a nedves szinteket, amelyek észlelési távolságjelzéseket biztosítanak, és a távolságtól függően zökkenőmentesen változnak. A távolságnövelés eltúlozza ezt a hatást a távolsággal kapcsolatos nedves szintek növelésével. Az 1-nél kisebb hajlítási értékek finomabbá teszik a távolságalapú visszhangváltozást.
 
-   A hatás finomabb finomításához módosítsa a **nedvesség (adatbázis)** beállítást.
+   Ennek finomabb beállításához módosítsa a **Wetness (dB)** beállítást.
 
-* A teljes terület romlási idejének növeléséhez állítsa be a **romlási idő skáláját**. Ha egy adott forrás-figyelő elhelyezési pár esetében a szimulációs eredmény 1,5 másodperces bomlási idő, a **romlási idő mérete** pedig 2, a forrásra alkalmazott bomlási idő 3 másodperc.
+* A bomlási idő növeléséhez állítsa be a **bomlási időskálát.** Ha egy adott forrásfigyelő helypár szimulációs eredménye 1,5 másodperces bomlási idő, és a **bomlási időskála** 2, a forrásra alkalmazott bomlási idő 3 másodperc.
 
-## <a name="next-steps"></a>Következő lépések
-* Az [Unity-alapú Project akusztikai tervezési vezérlők](unity-workflow.md)részleteinek olvasása.
-* Ismerje meg a [tervezési folyamat](design-process.md)hátterében rejlő fogalmakat.
-* [Hozzon létre egy Azure-fiókot](create-azure-account.md) az előzetesen sütni és a sütni folyamatok megismeréséhez.
+## <a name="next-steps"></a>További lépések
+* Olvassa el az [Unity-alapú Project Acoustics tervezési vezérlők részleteit.](unity-workflow.md)
+* A [tervezési folyamat](design-process.md)mögött megmaradtak fogalmak további feltárása .
+* [Hozzon létre egy Azure-fiókot](create-azure-account.md) az elősütési és sütési folyamatok felfedezéséhez.

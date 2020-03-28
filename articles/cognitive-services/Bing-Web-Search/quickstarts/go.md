@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: webes keresés végrehajtása a go-Bing Web Search REST API'
+title: 'Rövid útmutató: Webes keresés végrehajtása a Go – Bing Web Search REST API-val'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API a go használatával, és JSON-választ kap
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API-nak a Go használatával, és JSON-választ kaphat
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -13,15 +13,15 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978798"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és a go használatával
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rövid útmutató: Keresés az interneten a Bing Web Search REST API és az Go használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Go-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Amíg az alkalmazás be van írva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Web Search API-t, és megkaphatja a JSON-választ. Ez a Go alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás go nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -111,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>A fő függvény deklarálása és a változók megadása  
 
-Ez a kód deklarálja a fő függvényt, és megadja a szükséges változókat. `endpoint` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
+Ez a kód deklarálja a fő függvényt, és megadja a szükséges változókat. `endpoint`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -307,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Mintaválasz  
 
-A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a példa a `BingAnswer` struct használatával lett formázva, és megjeleníti a `result.Name` és `result.URL`.
+A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a mintaválasz a `BingAnswer` struct használatával `result.Name` `result.URL`lett formázva, és a és a .
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
@@ -321,7 +321,7 @@ Microsoft Cognitive Services || https://westus.dev.cognitive.microsoft.com/docs/
 Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/mt742868.aspx  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)

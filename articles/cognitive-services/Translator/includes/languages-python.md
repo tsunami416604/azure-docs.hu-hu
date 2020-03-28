@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906982"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -31,7 +31,7 @@ Az első megjegyzés arra utasítja a Python-értelmezőt, hogy UTF-8 kódolást
 
 ## <a name="set-the-endpoint-and-path"></a>A végpont és az elérési út beállítása
 
-Ez a minta megpróbálja beolvasni a Translator Text végpontot egy környezeti változóból `TRANSLATOR_TEXT_ENDPOINT`:. Ha még nem ismeri a környezeti változókat, beállíthatja a `endpoint` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+Ez a minta megpróbálja olvasni a fordító szövegvégpontját egy környezeti változóból: `TRANSLATOR_TEXT_ENDPOINT`. Ha még nem ismeri a környezeti változókat, beállíthatja a `endpoint` sztringet, és megjegyzéssé teheti a feltételes utasítást.
 
 ```python
 endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
@@ -40,10 +40,10 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-A Translator Text globális végpont beállítása `endpoint`. A `path` tulajdonság a `languages` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+A fordítószöveg globális végpontja `endpoint`a . A `path` tulajdonság a `languages` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
 
 >[!NOTE]
-> További információ a végpontokról, az útvonalakról és a kérelmek paraméteréről [: Translator Text API 3,0: Nyelvek](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd a [Translator Text API 3.0 által támogatott nyelvek lekérését](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) ismertető témakört.
 
 ```python
 path = '/languages?api-version=3.0'
@@ -52,7 +52,7 @@ constructed_url = endpoint + path
 
 ## <a name="add-headers"></a>Fejlécek hozzáadása
 
-A támogatott nyelvek beszerzésére irányuló kérelem nem igényel hitelesítést. Állítsa be `Content-type` a `application/json` as és `X-ClientTraceId` a Hozzáadás lehetőséget a kérelem egyedi azonosításához.
+A támogatott nyelvek bekéréséhez nem igényel hitelesítést. Állítsa `Content-type` be `application/json` a `X-ClientTraceId` mint és hozzá, hogy egyedileg azonosítani a kérelmet.
 
 Másolja a projektbe a következő kódrészletet:
 
@@ -63,7 +63,7 @@ headers = {
 }
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem paramétereit is meg kell egyeznie. [További információ a többszolgáltatásos előfizetés hitelesítéséről.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
 ## <a name="create-a-request-to-get-a-list-of-supported-languages"></a>Kérelem létrehozása a támogatott nyelvek listájának lekérésére
 
@@ -95,7 +95,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Keresse meg az ország/régió rövidítését ebben [a nyelveklistájában.](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)
 
 A mintát csonkoltuk, hogy az eredményeknek csak egy részletét mutassa:
 
@@ -189,7 +189,7 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

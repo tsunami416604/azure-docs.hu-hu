@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: hozzon létre egy iOS-alkalmazást, amely elindítja a részletes olvasót (Swift)'
+title: 'Rövid útmutató: Hozzon létre egy iOS-alkalmazást, amely elindítja a Magával ragadó olvasót (Swift)'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban egy teljesen új iOS-alkalmazást fog létrehozni, és hozzáadja a magával ragadó olvasó funkcióit.
+description: Ebben a rövid útmutatóban teljesen új iOS-alkalmazást hozhat létre, és hozzáadhatja a Magával ragadó olvasó funkciót.
 author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
@@ -9,46 +9,46 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 9003eb85938cc3afaad7fef341b1ed2826e8fbc9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841609"
 ---
-# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Gyors útmutató: hozzon létre egy iOS-alkalmazást, amely elindítja a részletes olvasót (Swift)
+# <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Rövid útmutató: Hozzon létre egy iOS-alkalmazást, amely elindítja a Magával ragadó olvasót (Swift)
 
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A [Magával ragadó olvasó](https://www.onenote.com/learningtools) egy inkluzívan tervezett eszköz, amely bevált technikákat valósít meg az olvasás megértésének javítása érdekében.
 
-Ebben a rövid útmutatóban egy iOS-alkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)egy teljes körű működő minta érhető el.
+Ebben a rövid útmutatóban teljesen új iOS-alkalmazást hozhat létre, és integrálhatja a Magával ragadó olvasót. A rövid útmutató teljes munkamintája [itt](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [XCode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./how-to-create-immersive-reader.md) . A minta projekt tulajdonságainak konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+* Az Azure Active Directory-hitelesítéshez konfigurált magával ragadó reader-erőforrás. A beállításhoz kövesse [az alábbi utasításokat.](./how-to-create-immersive-reader.md) A mintaprojekt tulajdonságainak konfigurálásakor szüksége lesz néhány itt létrehozott értékre. Mentse a munkamenet kimenetét egy szöveges fájlba későbbi használatra.
 
-## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
+## <a name="create-an-xcode-project"></a>Xcode projekt létrehozása
 
-Hozzon létre egy új projektet a Xcode-ben.
+Hozzon létre egy új projektet az Xcode-ban.
 
 ![Új projekt](./media/ios/xcode-create-project.png)
 
-Válassza az **Egynézetes alkalmazás**lehetőséget.
+Válassza **az Egynézetű alkalmazás lehetőséget.**
 
 ![Új egynézetes alkalmazás](./media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Hitelesítés beállítása
 
-A felső menüben kattintson a **termék > séma > a séma szerkesztése..** . elemre.
+A felső menüben kattintson **a Termék > rendszer > szerkesztési séma...**.
 
 ![Séma szerkesztése](./media/ios/quickstart-ios-edit-scheme.png)
 
-A **Futtatás** nézetben kattintson az **argumentumok** fülre.
+A **Futtatás** nézetben kattintson az **Argumentumok** fülre.
 
 ![Séma szerkesztése](./media/ios/quickstart-ios-env-vars.png)
 
-A **környezeti változók** szakaszban adja meg a következő neveket és értékeket, és adja meg a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+A **Környezeti változók** szakaszban adja hozzá a következő neveket és értékeket, megadva a Immersive Reader erőforrás létrehozásakor megadott értékeket.
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -57,9 +57,9 @@ CLIENT_SECRET<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
 
-## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Az alkalmazás beállítása storyboard nélkül való futtatásra
+## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Az alkalmazás beállítása történet nélküli futtatásra
 
-Nyissa meg a *AppDelegate. Swift* fájlt, és cserélje le az alábbi kódra.
+Nyissa meg *az AppDelegate.swift* fájlt, és cserélje le a fájlt a következő kódra.
 
 ```swift
 import UIKit
@@ -108,9 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-## <a name="create-the-view-controllers-and-add-sample-content"></a>A View Controllers létrehozása és a minta tartalmának hozzáadása
+## <a name="create-the-view-controllers-and-add-sample-content"></a>A nézetvezérlők létrehozása és mintatartalom hozzáadása
 
-Nevezze át a *ViewController. Swift* fájlt a *LaunchViewController. Swift* névre, és cserélje le a fájlt a következő kódra.
+Nevezze át a *ViewController.swift* fájlt *LaunchViewController.swift* fájlra, és cserélje le a fájlt a következő kódra.
 
 ```swift
 import UIKit
@@ -259,7 +259,7 @@ class LaunchViewController: UIViewController {
 }
 ```
 
-Vegyen fel egy új fájlt a *ImmersiveReaderViewController. Swift* nevű Project root mappába, és adja hozzá a következő kódot.
+Adjon hozzá egy új fájlt a *ImmersiveReaderViewController.swift* nevű projektgyökér mappához, és adja hozzá a következő kódot.
 
 ```swift
 import UIKit
@@ -438,7 +438,7 @@ extension ImmersiveReaderViewController: WKScriptMessageHandler {
 }
 ```
 
-Adjon hozzá egy másik új fájlt a *LaunchImmersiveReader. Swift* nevű Project root mappához, és adja hozzá a következő kódot.
+Adjon hozzá egy másik új fájlt a *LaunchImmersiveReader.swift* nevű projektgyökér mappához, és adja hozzá a következő kódot.
 
 ```swift
 import UIKit
@@ -528,7 +528,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 }
 ```
 
-Adjon hozzá egy fájlt a *iFrameMessaging. js* nevű *erőforrások* mappájához, és adja hozzá a következő kódot.
+Adjon hozzá egy fájlt az *Erőforrások* mappához *iFrameMessaging.js* néven, és adja hozzá a következő kódot.
 
 ```javascript
 window.addEventListener("message", function(message) {
@@ -556,22 +556,22 @@ function sendContentToReader(message) {
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-Állítsa be az archiválási sémát a Xcode-ben egy szimulátor vagy egy eszköz céljának kiválasztásával.
+Állítsa be az archív sémát az Xcode-ban egy szimulátor vagy eszközcél kiválasztásával.
 
 ![Archiválási séma](./media/ios/xcode-archive-scheme.png)
 
 ![Cél kiválasztása](./media/ios/xcode-select-target.png)
 
-A Xcode nyomja le a **CTRL + R billentyűkombinációt** , vagy kattintson a lejátszás gombra a projekt futtatásához. Az alkalmazásnak a megadott szimulátoron vagy eszközön kell elindulnia.
+Az Xcode-ban nyomja le a **Ctrl+R billentyűkombinációt,** vagy kattintson a lejátszás gombra a projekt futtatásához. Az alkalmazásnak a megadott szimulátoron vagy eszközön kell elindulnia.
 
 Az alkalmazásban a következőket kell látnia:
 
-![Minta alkalmazás](./media/ios/sample-app-ipad.png)
+![Mintaalkalmazás](./media/ios/sample-app-ipad.png)
 
-Ha a **magától** megjelenő olvasó gombra kattint, megjelenik az alkalmazásban a tartalommal megjelenő lebilincselő olvasó.
+Ha a **Magával ragadó olvasó gombra** kattint, látni fogja a Magával ragadó olvasót, amelyet az alkalmazás tartalmával indítanak el.
 
-![Immersive Reader](./media/ios/immersive-reader-ipad.png)
+![Modern olvasó](./media/ios/immersive-reader-ipad.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerje meg az [olvasói SDK-referenciát](./reference.md)
+* Fedezze fel a [magával ragadó Reader SDK-referenciát](./reference.md)

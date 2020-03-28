@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: a blob Storage szolgáltatásban tárolt beszéd felismerése'
+title: 'Rövid útmutató: A blobstorageban tárolt beszédfelismerés – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -12,12 +12,12 @@ ms.date: 03/13/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: a7fa1813eec8e73f4cc937062ad4374aef93e6e0
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79381993"
 ---
-Ebben a rövid útmutatóban egy REST API fogja felismerni a Batch-folyamatokban lévő fájlok beszédét. A Batch-folyamatok felhasználói interakció nélkül hajtják végre a beszéd átírását. Egyszerű programozási modellt biztosít, anélkül, hogy a párhuzamosságot, az egyéni beszédfelismerési modelleket vagy egyéb részleteket kellene kezelnie. Speciális vezérlési lehetőségeket is magában foglal, miközben az Azure Speech Service-erőforrások hatékony használatát teszi elérhetővé.
+Ebben a rövid útmutatóban egy REST API-t fog használni a kötegelt folyamat fájljaiból származó beszédfelismeréshez. A kötegelt folyamat felhasználói beavatkozás nélkül hajtja végre a beszédátírást. Ez ad egy egyszerű programozási modell, anélkül, hogy kezelni egyidejűség, egyéni beszéd modellek, vagy egyéb részleteket. Ez speciális vezérlési lehetőségeket foglal magában, miközben hatékonyan használja az Azure beszédszolgáltatási erőforrásait.
 
-A következő rövid útmutató végigvezeti a használati példákon.
+A következő rövid útmutató végigvezeti a használati minta.

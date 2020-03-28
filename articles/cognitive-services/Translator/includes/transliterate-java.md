@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: ad5c51b3d373947e8a09762b0cb27afff990e6da
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906645"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
 [!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
-## <a name="initialize-a-project-with-gradle"></a>Projekt inicializálása a Gradle
+## <a name="initialize-a-project-with-gradle"></a>Projekt inicializálása a Gradle programmal
 
-Kezdjük egy munkakönyvtár létrehozásával ehhez a projekthez. Futtassa a következő parancsot a parancssorból (vagy a terminálból):
+Kezdjük azzal, hogy létrehoz egy munkakönyvtárat ehhez a projekthez. A parancssorból (vagy terminálból) futtassa a következő parancsot:
 
 ```console
 mkdir transliterate-sample
 cd transliterate-sample
 ```
 
-Ezután egy Gradle-projektet fog inicializálni. Ez a parancs a Gradle nélkülözhetetlen Build-fájljait hozza létre, ami a `build.gradle.kts`legfontosabb: a, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához. Futtassa ezt a parancsot a munkakönyvtárból:
+Ezután egy Gradle projektet fog inicializálni. Ez a parancs alapvető buildfájlokat hoz létre `build.gradle.kts`a Gradle számára, ami a legfontosabb, a , amelyet futásidőben az alkalmazás létrehozásához és konfigurálásához használnak. Futtassa ezt a parancsot a munkakönyvtárából:
 
 ```console
 gradle init --type basic
@@ -32,9 +32,9 @@ gradle init --type basic
 
 Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**lehetőséget.
 
-## <a name="configure-the-build-file"></a>A Build fájl konfigurálása
+## <a name="configure-the-build-file"></a>A buildfájl konfigurálása
 
-Keresse `build.gradle.kts` meg és nyissa meg kedvenc ide-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba:
+Keresse `build.gradle.kts` meg és nyissa meg kedvenc IDE-jével vagy szövegszerkesztőjével. Ezután másolja a másolást ebben a buildkonfigurációban:
 
 ```
 plugins {
@@ -53,21 +53,21 @@ dependencies {
 }
 ```
 
-Vegye figyelembe, hogy ez a minta a HTTP-kérések OkHttp, valamint a JSON kezelésére és elemzésére szolgáló Gson-függőségekkel rendelkezik. Ha többet szeretne megtudni a Build konfigurációkról, tekintse meg az [új Gradle-buildek létrehozását](https://guides.gradle.org/creating-new-gradle-builds/)ismertető témakört.
+Vegye figyelembe, hogy ez a minta függőségek OkHttp HTTP-kérelmek, és Gson kezelésére és elemzésére JSON. Ha többet szeretne megtudni a buildkonfigurációkról, olvassa el [az Új színátmenetes buildek létrehozása (Új színátmenetek) témakört.](https://guides.gradle.org/creating-new-gradle-builds/)
 
-## <a name="create-a-java-file"></a>Hozzon létre egy Java-fájlt
+## <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Hozzon létre egy mappát a minta alkalmazáshoz. A munkakönyvtárból futtassa a következőt:
+Hozzunk létre egy mappát a mintaalkalmazáshoz. A munkakönyvtárból futtassa a következőt:
 
 ```console
 mkdir -p src\main\java
 ```
 
-Ezután a mappában hozzon létre egy nevű `Transliterate.java`fájlt.
+Ezután ebben a mappában `Transliterate.java`hozzon létre egy nevű fájlt.
 
-## <a name="import-required-libraries"></a>Szükséges kódtárak importálása
+## <a name="import-required-libraries"></a>Szükséges tárak importálása
 
-Nyissa meg `Transliterate.java` és adja hozzá a következő importálási utasításokat:
+Nyissa `Transliterate.java` meg és adja hozzá ezeket az importálási kimutatásokat:
 
 ```java
 import java.io.*;
@@ -80,7 +80,7 @@ import com.squareup.okhttp.*;
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Először létre kell hoznia egy nyilvános osztályt a projekthez:
+Először is létre kell hoznia egy nyilvános osztályt a projekthez:
 
 ```java
 public class Transliterate {
@@ -88,25 +88,25 @@ public class Transliterate {
 }
 ```
 
-Adja hozzá ezeket a sorokat `Transliterate` a osztályhoz. Először is az előfizetési kulcsot és a végpontot olvassa a rendszer környezeti változókból. Ezt követően láthatja, hogy a `api-version`-val együtt két további paraméter van hozzáfűzve a `url`következőhöz:. Ezek a paraméterek a szövegbeviteli nyelv és az írásos parancsfájlok beállítására szolgálnak. Ebben a példában a japán (`jpan`) és a latin (`latn`) értékre van állítva. 
+Adja hozzá ezeket a sorokat az `Transliterate` osztályhoz. Először is, az előfizetési kulcs és a végpont a környezeti változókból olvashatók. Ezután észre fogja venni, `api-version`hogy a , két további paraméterrel együtt hozzáfűzve a `url`hoz. Ezek a paraméterek a bemeneti nyelv és a parancsfájlok átírásához használt. Ebben a mintában japán (`jpan`) és`latn`latin ( ). 
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
 private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
 ```
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha egy Cognitive Services többszolgáltatásos előfizetést használ, `Ocp-Apim-Subscription-Region` a kérelem paramétereit is meg kell egyeznie. [További információ a többszolgáltatásos előfizetés hitelesítéséről.](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)
 
-## <a name="create-a-client-and-build-a-request"></a>Ügyfél létrehozása és kérelem készítése
+## <a name="create-a-client-and-build-a-request"></a>Ügyfél létrehozása és kérelem létrehozása
 
-Adja hozzá ezt a sort `Transliterate` a osztályhoz a következő `OkHttpClient`létrehozásához:
+Adja hozzá ezt `Transliterate` a sort az `OkHttpClient`osztályhoz a következők példányosításához:
 
 ```java
 // Instantiates the OkHttpClient.
 OkHttpClient client = new OkHttpClient();
 ```
 
-Ezután készítse el a POST kérést. Nyugodtan módosíthatja az írás szövegét.
+Ezután építsük fel a POST-kérelmet. Nyugodtan változtassa meg a szöveget az átíráshoz.
 
 ```java
 // This function performs a POST request.
@@ -123,9 +123,9 @@ public String Post() throws IOException {
 }
 ```
 
-## <a name="create-a-function-to-parse-the-response"></a>Függvény létrehozása a válasz elemzéséhez
+## <a name="create-a-function-to-parse-the-response"></a>A válasz elemzéséhez hozzon létre egy függvényt
 
-Ez az egyszerű függvény elemzi és prettifies a Translator Text szolgáltatás JSON-válaszát.
+Ez az egyszerű függvény elemzi és támogatja a Fordító szöveg szolgáltatásJSON-válaszát.
 
 ```java
 // This function prettifies the json response.
@@ -139,7 +139,7 @@ public static String prettify(String json_text) {
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a kérelem elkészítése és a válasz beolvasása. Adja hozzá ezeket a sorokat a projekthez:
+Az utolsó lépés az, hogy egy kérelmet, és kap választ. Adja hozzá ezeket a sorokat a projekthez:
 
 ```java
 public static void main(String[] args) {
@@ -155,13 +155,13 @@ public static void main(String[] args) {
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
-Ekkor készen áll a minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a munkakönyvtár gyökeréhez, és futtassa a következőt:
+Ez az, készen áll a mintaalkalmazás futtatására. A parancssorból (vagy terminálmunkamenetből) keresse meg a munkakönyvtár gyökerét, és futtassa a következőket:
 
 ```console
 gradle build
 ```
 
-A létrehozás befejeződése után futtassa a következőket:
+Amikor a build befejeződik, futtassa a következőket:
 
 ```console
 gradle run
@@ -180,7 +180,7 @@ gradle run
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-hivatkozást, hogy megértse, mit tehet a Translator Text API-val.
 
 > [!div class="nextstepaction"]
 > [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

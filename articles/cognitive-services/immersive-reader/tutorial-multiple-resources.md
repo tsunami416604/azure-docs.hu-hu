@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: több, magával ragadó olvasó erőforrásainak integrálása'
+title: 'Oktatóanyag: Több magával ragadó olvasóerőforrás integrálása'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy Node. js-alkalmazást fog létrehozni, amely a sokrétű olvasót több, az olvasó erőforrásainak használatával indítja el.
+description: Ebben az oktatóanyagban egy Node.js alkalmazást hoz létre, amely elindítja a Magával ragadó olvasót több magával ragadó olvasóerőforrás használatával.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -10,31 +10,31 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76046274"
 ---
-# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Oktatóanyag: több, magával ragadó olvasó erőforrásainak integrálása
+# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Oktatóanyag: Több magával ragadó olvasóerőforrás integrálása
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. A [Node. js](./quickstart-nodejs.md)rövid útmutatójában megtanulta, hogyan használhatja a lebilincselő olvasót egyetlen erőforrással. Ez az oktatóanyag azt ismerteti, hogyan integrálható egyszerre több, az olvasóhoz tartozó erőforrás ugyanabban az alkalmazásban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [áttekintésben](./overview.md)megtanulta, hogy mi a magával ragadó olvasó, és hogyan valósítja meg a bevált technikákat, hogy javítsa az olvasás megértését a nyelvtanulók, a feltörekvő olvasók és a tanulási különbségekkel rendelkező diákok számára. A [Node.js rövid útmutatóban](./quickstart-nodejs.md)megtanulta, hogyan használhatja a Immersive Reader-t egyetlen erőforrással. Ez az oktatóanyag bemutatja, hogyan integrálható több Immersive Reader erőforrás ugyanabban az alkalmazásban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Több alámerülés-olvasó erőforrás létrehozása egy meglévő erőforráscsoport alatt
-> * A sokrétű olvasó elindítása több erőforrás használatával
+> * Több magával ragadó reader-erőforrás létrehozása meglévő erőforráscsoportban
+> * Indítsa el a Magával ragadó olvasót több erőforrás használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A rövid [útmutató segítségével](./quickstart-nodejs.md) hozzon létre egy webalkalmazást, amely elindítja a NodeJS-mel ellátott olvasót. Ebben a rövid útmutatóban egy egyszerű olvasó erőforrást konfigurál. Ezen az oktatóanyagon felül fogunk építeni.
+* Kövesse a [rövid útmutatót,](./quickstart-nodejs.md) és hozzon létre egy webes alkalmazást, amely elindítja a Magával ragadó olvasót a NodeJS-sel. Ebben a rövid útmutatóban egyetlen Immersive Reader erőforrást konfigurál. Fogunk építeni a tetején, hogy ez a bemutató.
 
-## <a name="create-the-immersive-reader-resources"></a>A lebilincselő olvasó erőforrásainak létrehozása
+## <a name="create-the-immersive-reader-resources"></a>A Magával ragadó olvasó erőforrásainak létrehozása
 
-Az [alábbi útmutatást](./how-to-create-immersive-reader.md) követve hozzon létre minden magától elolvasó erőforrást. A **create-ImmersiveReaderResource** parancsfájl `ResourceName`, `ResourceSubdomain`és `ResourceLocation` paramétereket tartalmaz. Ezeknek egyedieknek kell lenniük minden létrehozott erőforráshoz. A többi paraméternek azonosnak kell lennie, mint amit az első, az olvasói erőforrás beállításakor használt. Így minden erőforrás ugyanahhoz az Azure-erőforráscsoporthoz és Azure AD-alkalmazáshoz is csatolható.
+Kövesse [ezeket](./how-to-create-immersive-reader.md) az utasításokat az egyes Immersive Reader-erőforrások létrehozásához. A **Create-ImmersiveReaderResource** `ResourceName`parancsfájl `ResourceSubdomain`, `ResourceLocation` és paraméterként rendelkezik. Ezeknek minden létrehozott erőforrásesetében egyedinek kell lenniük. A fennmaradó paramétereknek meg kell egyeznie az első Immersive Reader erőforrás beállításakor használt paraméterekével. Így minden erőforrás ugyanahhoz az Azure-erőforráscsoporthoz és az Azure AD-alkalmazáshoz kapcsolható.
 
-Az alábbi példa bemutatja, hogyan hozhat létre két erőforrást, egyet a WestUS és egy másikat a EastUS-ben. Figyelje meg `ResourceName`, `ResourceSubdomain`és `ResourceLocation`egyedi értékeit.
+Az alábbi példa bemutatja, hogyan hozhat létre két erőforrást, az egyik a WestUS-ban, a másik az EastUS-ban. Figyelje meg `ResourceName`a `ResourceSubdomain`és `ResourceLocation`a egyedi értékét.
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -62,11 +62,11 @@ Create-ImmersiveReaderResource
   -AADAppClientSecret <AAD_APP_CLIENT_SECRET>
 ```
 
-## <a name="add-resources-to-environment-configuration"></a>Erőforrások hozzáadása a környezeti konfigurációhoz
+## <a name="add-resources-to-environment-configuration"></a>Erőforrások hozzáadása a környezet konfigurációjához
 
-A rövid útmutatóban létrehozott egy környezeti konfigurációs fájlt, amely tartalmazza a `TenantId`, `ClientId`, `ClientSecret`és `Subdomain` paramétereket. Mivel az összes erőforrás ugyanazt az Azure AD-alkalmazást használja, a `TenantId`, `ClientId`és `ClientSecret`esetében ugyanazokat az értékeket is használhatja. Az egyetlen szükséges módosítás az egyes altartományok listázása az egyes erőforrásokhoz.
+A rövid útmutatóban létrehozott egy környezeti konfigurációs `ClientId` `ClientSecret`fájlt, `Subdomain` amely a `TenantId`, , , és paramétereket tartalmazza. Mivel az összes erőforrás ugyanazt az Azure AD-alkalmazást használja, ugyanazokat az értékeket használhatjuk a `TenantId` `ClientId`, és `ClientSecret`a hoz. Az egyetlen módosítás, amit el kell tenni, hogy felsorolja az egyes altartományok at minden erőforráshoz.
 
-Az új __. env__ fájlnak ekkor a következőhöz hasonlóan kell kinéznie:
+Az új __.env__ fájl most a következőhez hasonlónak kell lennie:
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -76,11 +76,11 @@ SUBDOMAIN_WUS={YOUR_WESTUS_SUBDOMAIN}
 SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 ```
 
-Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
+Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a forrásvezérlőbe, mivel olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
 
-A következő lépés a több erőforrás támogatásához létrehozott _routes\index.js_ -fájl módosítása. Cserélje le a tartalmát a következő kódra.
+Ezután módosítjuk a _routes\index.js_ fájlt, amelyet a több erőforrás unk támogatása érdekében hoztunk létre. Cserélje le a tartalmát a következő kódra.
 
-Ahogy korábban is, ez a kód olyan API-végpontot hoz létre, amely Azure AD-hitelesítési tokent vásárol az egyszerű szolgáltatásnév jelszavával. Ezúttal lehetővé teszi, hogy a felhasználó megadjon egy erőforrás-helyet, és lekérdezési paraméterként adja át azt. Ezután egy olyan objektumot ad vissza, amely tartalmazza a tokent és a megfelelő altartományt.
+A kód hoz létre egy API-végpontot, amely beszerzi az Azure AD hitelesítési jogkivonatot az egyszerű szolgáltatás jelszavával. Ez úttal lehetővé teszi a felhasználó számára, hogy adjon meg egy erőforrás helyét, és adja át a lekérdezési paraméterként. Ezután egy olyan objektumot ad vissza, amely tartalmazza a jogkivonatot és a megfelelő altartományt.
 
 ```javascript
 var express = require('express');
@@ -143,11 +143,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie valamilyen hitelesítési módszer (például [OAuth](https://oauth.net/2/)) mögött, hogy megakadályozza a jogosulatlan felhasználók számára a jogkivonatok beszerzését a felhasználatlan olvasó szolgáltatás és a számlázás során. Ez a munka meghaladja az oktatóanyag hatókörét.
+A **getimmersivereaderlaunchparams** API-végpontot valamilyen hitelesítési forma (például [OAuth)](https://oauth.net/2/)mögött kell biztosítani annak érdekében, hogy illetéktelen felhasználók ne szerezzenek be jogkivonatokat a Immersive Reader szolgáltatás és a számlázás ellen; hogy a munka túlmutat a bemutató.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>A részletes olvasó a minta tartalmának elindítása
+## <a name="launch-the-immersive-reader-with-sample-content"></a>A Magával ragadó olvasó elindítása mintatartalommal
 
-1. Nyissa meg a _views\index.PUG_, és cserélje le a tartalmát a következő kódra. Ez a kód feltölti a lapot néhány minta tartalommal, és két, a magával ragadó olvasót elindító gombot hoz létre. Az egyik a EastUS-erőforrás magával ragadó olvasójának elindításához, egy másik pedig a WestUS-erőforráshoz.
+1. Nyissa meg _a views\index.pug_, és cserélje le annak tartalmát a következő kódra. Ez a kód feltölti az oldalt néhány mintatartalommal, és két gombot ad hozzá, amelyek elindítják a Magával ragadó olvasót. Az egyik a Immersive Reader az EastUS erőforráshoz, a másik pedig a WestUS erőforrás.
 
     ```pug
     doctype html
@@ -252,15 +252,15 @@ A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie 
         }
     ```
 
-3. A webalkalmazás most már készen áll. Indítsa el az alkalmazást a futtatásával:
+3. A webalkalmazás unk készen áll. Indítsa el az alkalmazást a következő futtatásával:
 
     ```bash
     npm start
     ```
 
-4. Nyissa meg a böngészőt, és navigáljon [http://localhost:3000](http://localhost:3000). A fenti tartalomnak a lapon kell megjelennie. Kattintson a EastUS- **Megölelő olvasó** gombra vagy a **WestUS magával ragadó olvasó** gombra, hogy a megfelelő erőforrásokkal elindítsa a magával ragadó olvasót.
+4. Nyissa meg a [http://localhost:3000](http://localhost:3000)böngészőt, és keresse meg a t. A fenti tartalomnak látnia kell az oldalon. Kattintson az **EastUS Immersive Reader** gombra vagy a **WestUS Immersive Reader** gombra, hogy elindítsa a Magával ragadó olvasót a megfelelő erőforrások használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
-* Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)
+* Fedezze fel a [magával ragadó Reader SDK-t](https://github.com/microsoft/immersive-reader-sdk) és a [magával ragadó Reader SDK-referenciát](./reference.md)
+* Kódminták megtekintése a [GitHubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

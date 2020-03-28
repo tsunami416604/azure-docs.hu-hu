@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hírek keresése a Ruby és a Bing News Search REST API'
+title: 'Rövid útmutató: Hírkeresés végrehajtása a Ruby és a Bing News Search REST API-val'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API Ruby használatával, és JSON-választ kap.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API-nak a Ruby használatával, és JSON-választ kaphat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448551"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Ruby és a Bing News Search használatával REST API
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rövid útmutató: Hírkeresés végrehajtása a Ruby és a Bing News Search REST API használatával
 
-Ezzel a rövid útmutatóval megteheti az első hívását a Bing News Search API, és JSON-választ kap. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza az eredményeket.
+Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing News Search API-t, és JSON-választ kaphat. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza az eredményeket.
 
-Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) érhető el.
+Bár ez az alkalmazás python nyelven íródott, az API egy RESTful webszolgáltatás kompatibilis a legtöbb programozási nyelvek. A minta forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ruby [2,4 vagy újabb](https://www.ruby-lang.org/en/downloads/)
+* Ruby [2.4 vagy újabb](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -40,7 +40,7 @@ Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgál
     require 'json'
     ```
 
-2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
     ```ruby
     accessKey = "enter key here"
@@ -64,7 +64,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>A JSON-válasz feldolgozása és nyomtatása
 
-A válasz fogadása után elemezheti a JSON-t, és kinyomtathatja a válasz törzsét és fejléceit is:
+A válasz beérkezése után elemezheti a JSON-t, és kinyomtathatja a választörzset és annak fejléceit is:
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -174,7 +174,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ```
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyszeri-alkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Signle-page alkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

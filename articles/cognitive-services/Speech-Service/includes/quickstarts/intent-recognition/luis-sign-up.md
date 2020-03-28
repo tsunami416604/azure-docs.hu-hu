@@ -6,45 +6,45 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: dapine
 ms.openlocfilehash: 58122066e65fbcb02b6b4333985785b219d3dbbd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900308"
 ---
-A szándék-felismerési útmutató befejezéséhez létre kell hoznia egy LUIS-fiókot és egy projektet a LUIS betekintő portál használatával. Ehhez a rövid útmutatóhoz csak LUIS-előfizetés szükséges. *Nincs* szükség beszédfelismerési szolgáltatás előfizetésére.
+A szándékfelismerés iszatának befejezéséhez létre kell hoznia egy LUIS-fiókot és egy projektet a LUIS előzetes verzióportál használatával. Ez a rövid útmutató csak LUIS-előfizetést igényel. A beszédfelismerési szolgáltatás *előfizetése nem* szükséges.
 
-Első lépésként létre kell hoznia egy LUIS-fiókot és-alkalmazást a LUIS betekintő portál használatával. A létrehozott LUIS-alkalmazás egy előre elkészített tartományt fog használni a Home Automation számára, amely a leképezéseket, az entitásokat és a példa hosszúságú kimondott szöveg biztosítja. Ha elkészült, egy, a felhőben futó LUIS-végponttal fog rendelkezni, amely a Speech SDK használatával hívható meg. 
+Az első dolog, amit meg kell tennie, hogy hozzon létre egy LUIS-fiókot és alkalmazást a LUIS előzetes verzióportál használatával. A létrehozott LUIS-alkalmazás egy előre összeállított tartományt fog használni az otthoni automatizáláshoz, amely leképezéseket, entitásokat és példakimondott szövegeket biztosít. Ha elkészült, egy LUIS-végpont fut a felhőben, amely a beszédska használatával hívható. 
 
 A LUIS-alkalmazás létrehozásához kövesse az alábbi utasításokat:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Gyors útmutató: előre elkészített tartományi alkalmazás készítése<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Rövid útmutató: Előre összeállított tartományi alkalmazás létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-Ha elkészült, négy dolgot kell megadnia:
+Ha végeztél, négy dologra lesz szükséged:
 
-* Újbóli közzététel a **beszédfelismerési alapozóval**
+* Közzététel újra a **Beszéd alapozásával**
 * A LUIS **elsődleges kulcsa**
-* A LUIS **helye**
-* A LUIS- **alkalmazás azonosítója**
+* Az Ön **LUIS-helye**
+* A **LUIS-alkalmazásazonosító**
 
-Itt találja ezt az információt a [Luis betekintő portálon](https://preview.luis.ai/):
+Itt találja ezeket az információkat a [LUIS előnézeti portálján:](https://preview.luis.ai/)
 
-1. A LUIS betekintő portálon válassza ki az alkalmazást, majd kattintson a **Közzététel** gombra.
+1. A LUIS előnézeti portálján jelölje ki az alkalmazást, majd válassza a **Közzététel** gombot.
 
-2. Válassza ki az **üzemi** tárolóhelyet, ha `en-US` használja a **beszédfelismerési** alapbeállítást a **be** állásba. Ezután kattintson a **Közzététel** gombra.
+2. Válassza ki a **Termelés** helyet, `en-US` ha a **Beszédalapozás** beállítást a **Be** állásra kapcsolja. Ezután kattintson a **Közzététel** gombra.
 
     > [!IMPORTANT]
-    > A **beszédfelismerési** alapértékek erősen ajánlottak, mivel ez javítja a beszédfelismerés pontosságát.
+    > **A beszédfelismerés használata** erősen ajánlott, mivel javítja a beszédfelismerés pontosságát.
 
     > [!div class="mx-imgBorder"]
-    > ![LUIS közzététele a végponton](../../../media/luis/publish-app-popup.png)
+    > ![Luis közzététele a végponton](../../../media/luis/publish-app-popup.png)
 
-3. A LUIS betekintő portálon válassza a **kezelés**, majd az **Azure-erőforrások**lehetőséget. Ezen az oldalon megtalálja a LUIS-kulcsot és-helyet (más néven _régiót_).
-
-   > [!div class="mx-imgBorder"]
-   > ![LUIS-kulcs és-hely](../../../media/luis/luis-key-region.png)
-
-4. Miután megkapta a kulcsot és a helyet, szüksége lesz az alkalmazás AZONOSÍTÓJÁRA. **Alkalmazás-beállítások** kiválasztása – az alkalmazás azonosítója elérhető ezen az oldalon.
+3. A LUIS előzetes portálján válassza a **Kezelés**lehetőséget, majd válassza az **Azure Resources lehetőséget.** Ezen az oldalon megtalálja a LUIS-kulcsot és a helyet (más néven _régiót)._
 
    > [!div class="mx-imgBorder"]
-   > ![LUIS-alkalmazás azonosítója](../../../media/luis/luis-app-id.png)
+   > ![LUIS-kulcs és hely](../../../media/luis/luis-key-region.png)
+
+4. Miután megszerezte a kulcsot és a tartózkodási helyet, szüksége lesz az alkalmazásazonosítóra. Válassza **az Alkalmazásbeállítások** lehetőséget – az alkalmazásazonosító jave érhető el ezen az oldalon.
+
+   > [!div class="mx-imgBorder"]
+   > ![LUIS-alkalmazásazonosító](../../../media/luis/luis-app-id.png)

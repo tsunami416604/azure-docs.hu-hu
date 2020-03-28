@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Computer Vision 2,0 és 2,1 – nyomtatott és kézzel írott szöveg kinyerése – REST, Java'
+title: 'Rövid útmutató: Computer Vision 2.0 és 2.1 - Nyomtatott és kézzel írt szöveg kinyerése - REST, Java'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban Kinyeri a nyomtatott és a kézírásos szöveget a Computer Vision API Java használatával.
+description: Ebben a rövid útmutatóban kibontja a nyomtatott és kézzel írt szöveget egy képből a Computer Vision API Java használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,41 +12,41 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 15c84b0c4cd4311300b951c3bf86b2bd62d48bfd
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566131"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision 2,0 és a 2,1 REST API és a Java használatával
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision 2.0 és 2.1 REST API és a Java használatával
 
-Ebben a rövid útmutatóban Kinyeri a nyomtatott és/vagy kézzel írott szöveget a Computer Vision REST API használatával. A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási műveletének eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszereivel a képeken lévő szövegeket azonosíthatja, és kinyerheti a felismert karaktereket egy géppel olvasható karakteres adatfolyamba. Az API meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, így a nyomtatott és a kézírásos szöveggel is támogatja a lemezképeket.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyeri a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. Az API határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
 
-A Computer Vision 2,0-es és 2,1-as verzióhoz képest a Computer Vision 3,0 nyilvános előzetes verziója a következőket biztosítja:
+A Computer Vision 2.0-val és 2.1-es verziójával összehasonlítva a Computer Vision 3.0 Nyilvános előzetes verzió a következőket biztosítja:
 
-* még jobb pontosság
-* módosított kimeneti formátum
-* a szavak megbízhatósági pontszáma
-* a spanyol és az angol nyelv támogatása a további nyelvi paraméterrel
+* még nagyobb pontosság
+* megváltozott kimeneti formátum
+* megbízhatósági pontszám a szavakhoz
+* spanyol és angol nyelvek támogatása a kiegészítő nyelvi paraméterrel
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
 > [!IMPORTANT]
-> A [Batch olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` válasz fejlécének értékében. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t jelöli, és a kötegelt olvasási metódus hívásának eredményeit is visszaadja.
+> A [Kötegelt olvasás](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Kötegelt olvasás metódus egy `Operation-Location` URI-t ad vissza a válaszfejléc mező értékében. Ezután meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t jelöli, hogy ellenőrizze az állapotát, és visszaadja a Batch Read metódus hívásának eredményeit.
 
 #### <a name="version-3-public-preview"></a>[3. verzió (nyilvános előzetes verzió)](#tab/version-3)
 
 > [!IMPORTANT]
-> A [Batch olvasási](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) metódusa aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Batch olvasási metódus egy URI-t ad vissza a `Operation-Location` válasz fejlécének értékében. Ezt követően meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API-t jelöli, és a kötegelt olvasási metódus hívásának eredményeit is visszaadja.
+> A [Kötegelt olvasás](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a Kötegelt olvasás metódus egy `Operation-Location` URI-t ad vissza a válaszfejléc mező értékében. Ezután meghívhatja ezt az URI-t, amely az [olvasási művelet eredménye](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API-t jelöli, hogy ellenőrizze az állapotát, és visszaadja a Batch Read metódus hívásának eredményeit.
 
 ---
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 
 - A gépén telepítve kell lennie a [Java&trade;-platformhoz készült Standard Edition Development Kit 7-es vagy 8-as verziójának](https://aka.ms/azure-jdks) (JDK 7 vagy 8).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`néven.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `COMPUTER_VISION_ENDPOINT`a.
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -76,8 +76,8 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
    import org.json.JSONObject;
    ```
 
-1. Cserélje le a `Main` nyilvános osztályt a következő kódra.
-1. Szükség esetén cserélje le a `imageToAnalyze` értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Cserélje `Main` le a nyilvános osztályt a következő kódra.
+1. Szükség esetén cserélje le `imageToAnalyze` az értékét egy másik kép URL-címére, amelyből szöveget szeretne kinyerni.
 1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
 1. Ha IDE-t használ, futtassa a `Main` metódust. Egyéb esetben nyisson meg egy parancssori ablakot, majd a `java` paranccsal futtassa a lefordított osztályt. Például: `java Main`.
 
@@ -218,9 +218,9 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
     import org.json.JSONObject;
     ```
 
-1. Cserélje le a `Main` nyilvános osztályt a következő kódra.
-1. Szükség esetén cserélje le a `language` értékét a felismerni kívánt nyelvre. Az elfogadott értékek: "en" angol és "es" a spanyol nyelvhez.
-1. Szükség esetén cserélje le a `imageToAnalyze` értékét egy másik olyan rendszerkép URL-címére, amelyből szöveget szeretne kinyerni.
+1. Cserélje `Main` le a nyilvános osztályt a következő kódra.
+1. Szükség esetén cserélje le `language` az felismerni kívánt nyelv értékét. Az elfogadott értékek az "en" az angol és az "es" a spanyol.
+1. Szükség esetén cserélje le `imageToAnalyze` az értékét egy másik kép URL-címére, amelyből szöveget szeretne kinyerni.
 1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
 1. Ha IDE-t használ, futtassa a `Main` metódust. Egyéb esetben nyisson meg egy parancssori ablakot, majd a `java` paranccsal futtassa a lefordított osztályt. Például: `java Main`.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszéd-szöveg fordítása C# (.NET-keretrendszer Windows) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszéd-szöveg váltás, C# (.NET Framework Windows) – Beszédszolgáltatás fordítása'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: a04932f409b97cd3e4e1991e51968de1f9e15184
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75467091"
 ---
 > [!div class="nextstepaction"]
-> [Minták C# feltárása a githubon](https://aka.ms/speech/github-csharp)
+> [C# minták felfedezése a GitHubon](https://aka.ms/speech/github-csharp)

@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Keresés PHP használatával – Bing Web Search API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API PHP használatával, és JSON-választ kap
+description: Ezzel a rövid útmutatóval kéréseket küldhet a Bing Web Search REST API-nak a PHP használatával, és JSON-választ kaphat
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169727"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a PHP segítségével  
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Node. js-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval elsőalkalommal hívhatja meg a Bing Web Search API-t, és megkaphatja a JSON-választ. Ez a Node.js alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy RESTful webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
-* A [PHP 5.6.x-es](https://php.net/downloads.php) vagy újabb verziója
+* [PHP 5.6.x](https://php.net/downloads.php) vagy újabb
 * Egy előfizetői azonosító  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -43,7 +43,7 @@ Kezdés előtt keresse meg a `php.ini` fájlt, és távolítsa el a megjegyzés 
 
 Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ne felejtse el beírni a nyitó és záró `<?php` és `?>` címkét.
 
-Mielőtt folytatnánk, meg kell adni néhány változót. `$endpoint` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont. Győződjön meg arról, hogy helyes az `$endpoint`, és cserélje le az `$accesskey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `$term` értékének lecserélésével.
+Mielőtt folytatnánk, meg kell adni néhány változót. `$endpoint`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján. Győződjön meg arról, hogy helyes az `$endpoint`, és cserélje le az `$accesskey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `$term` értékének lecserélésével.
 
 ```php
 $accessKey = 'enter key here';
@@ -281,7 +281,7 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)

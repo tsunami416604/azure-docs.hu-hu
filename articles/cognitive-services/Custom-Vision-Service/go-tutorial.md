@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: rendszerkép-besorolási projekt létrehozása az Custom Vision SDK for go használatával'
+title: 'Rövid útmutató: Hozzon létre egy képbesorolási projektet az egyéni vision SDK for Go'
 titleSuffix: Azure Cognitive Services
-description: Projekt létrehozása, Címkék hozzáadása, képek feltöltése, a projekt betanítása és előrejelzés készítése a go SDK használatával.
+description: Hozzon létre egy projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet, és készítsen előrejelzést a Go SDK használatával.
 services: cognitive-services
 author: areddish
 manager: daauld
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: f8391818ebf13afb3b07eead55133aadde6158f0
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170101"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rövid útmutató: rendszerkép-besorolási projekt létrehozása a Custom Vision go SDK-val
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Rövid útmutató: Hozzon létre egy képbesorolási projektet a Custom Vision Go SDK-val
 
-Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével megkezdheti a Custom Vision SDK és a go használatával való ismerkedést a rendszerkép-besorolási modell létrehozásával. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját Go-alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
+Ez a cikk információkat és mintakódot tartalmaz, amelyek segítséget nyújtanak a Custom Vision SDK with Go használatával egy lemezkép-besorolási modell létrehozásához. Létrehozása után hozzáadhat címkéket, képeket tölthet fel, betaníthatja a projektet, beszerezheti a projekt közzétett előrejelzési végpont URL-címét, és a végpont segítségével programozott módon tesztelhet egy képet. Használja ezt a példát sablonként saját Go-alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Go 1.8 +](https://golang.org/doc/install)
+- [Ugrás 1,8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-Az Custom Vision Service SDK for go telepítéséhez futtassa a következő parancsot a PowerShellben:
+Az SDK-hoz egyéni vision szolgáltatás telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-vagy ha `dep`használ, a tárházon belül futtassa a következőket:
+vagy ha `dep`a , a tárpadattárban használja:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -45,13 +45,13 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
-Hozzon létre egy *sample. go* nevű új fájlt a kívánt Project-címtárban.
+Hozzon létre egy *sample.go* nevű új fájlt az előnyben részesített projektkönyvtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
-Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódust a projekt létrehozásakor a többi beállítás megadásához (az [osztályozó webportál összeállításával](getting-started-build-a-classifier.md) foglalkozó útmutatóban).
+A [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódusból további beállításokat adhat meg a projekt létrehozásakor (ez a magyarázat az [Osztályozó webportál készítése](getting-started-build-a-classifier.md) útmutatóban található).
 
 ```go
 import(
@@ -91,7 +91,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *minta végéhez. Ugrás*:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.go*végéhez:
 
 ```go
 // Make two tags in the new project
@@ -101,10 +101,10 @@ cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
+A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egy kötegben legfeljebb 64 képet tölthet fel.
 
 > [!NOTE]
-> A lemezképek elérési útját módosítania kell, attól függően, hogy a Cognitive Services go SDK Samples projektet korábban letöltötte.
+> Módosítania kell a képek elérési útját a cognitive Services Go SDK-minták projekt korábbi letöltési helye alapján.
 
 ```go
 fmt.Println("Adding images...")
@@ -132,9 +132,9 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
+### <a name="train-the-classifier-and-publish"></a>Az osztályozó betanítása és közzététele
 
-Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi az előrejelzési végpontra vonatkozó iterációt. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Iteráció nem érhető el az előrejelzési végpontban, amíg közzé nem teszik.
 
 ```go
 fmt.Println("Training...")
@@ -152,7 +152,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció beszerezni és használata az előrejelzési végponton
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -172,7 +172,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa a *sample. go*parancsot.
+*Futtassa a sample.go*.
 
 ```shell
 go run sample.go
@@ -197,7 +197,7 @@ Ezután ellenőrizheti, hogy a tesztkép (az **<base_image_url>/Images/Test/** m
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Láthatta, hogyan hajthatók végre a képosztályozási folyamat lépései kód használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt.
 

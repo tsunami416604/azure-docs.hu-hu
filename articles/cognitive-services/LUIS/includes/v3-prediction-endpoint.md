@@ -1,5 +1,5 @@
 ---
-title: A v3 előrejelzési végpont beszerzése
+title: A V3 előrejelzési végpontjának be- és bekésezése
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: bc6e43faca47e360daa8214e6b9f6e9df4a2f130
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23e7f88b23ac7af7470183877eeb1be89e79779c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495442"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287747"
 ---
-1. A LUIS portál kezelés szakaszában (a jobb felső menüben), a kulcsok és végpontok lapon (bal oldali menü) válassza ki a végpont URL-címét az oldal alján.
+1. A LUIS portálon a **Kezelés** szakaszban (jobb felső menü), az **Azure Resources** lapon (bal oldali menüben), az **Előrejelzés ierőforrások** lapon másolja a **példa lekérdezés** a lap alján.
 
-    Ez a művelet megnyitja a böngésző fület a címsorban található végpont URL-címmel.
+    Illessze be az URL-címet egy új böngészőlapra.
 
-    Az URL-címben az alkalmazás azonosítója, kulcsa és a tárolóhely neve szerepel. A v3 előrejelzési végpont URL-címe a következőre hasonlít:
+    Az URL-cím rendelkezik az alkalmazásazonosítóval, a kulcsés a helyhely nevével. A V3 előrejelzési végpont URL-címe így néz ki:
 
-    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=UTTERANCE-TEXT.`
+    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=YOUR_QUERY_HERE`
 

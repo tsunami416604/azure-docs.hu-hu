@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési hangszintézis C# (.net Core) – Speech Service'
+title: 'Rövid útmutató: Beszéd szintetizálása, C# (.NET Core) – beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan szintetizálhat C# beszédet a .net Core alatt a Windowson a Speech SDK használatával
+description: Megtudhatja, hogy miként szintetizálható a beszéd c# alatt a .NET Core alatt Windows rendszeren a Beszéd SDK használatával
 services: cognitive-services
 author: yinhew
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 6/24/2019
 ms.author: yinhew
 ms.openlocfilehash: ba6a373f678f8d34b34a669b3fbb3b570c90ed0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925861"
 ---
 > [!NOTE]
@@ -22,11 +22,11 @@ ms.locfileid: "78925861"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az első lépések előtt ügyeljen a következőre:
+Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+> * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
@@ -42,19 +42,19 @@ Az első lépések előtt ügyeljen a következőre:
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül kell végbe mennie.
+1. Hozza létre az alkalmazást. A menüsorban válassza a > **Build Solution buildelési megoldás lehetőséget.** **Build** A kód fordításának hiba nélkül kell végbe mennie.
 
-    ![Képernyőkép a Visual Studio alkalmazásról, kiemelve a megoldás kiemelése lehetőséggel](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Sikeres létrehozás")
+    ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-05-build.png "Sikeres összeállítás")
 
-1. Indítsa el az alkalmazást. A menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** lehetőséget, vagy nyomja le az **F5** billentyűt.
+1. Indítsa el az alkalmazást. A menüsorban válassza a **Hibakeresés** > **indítása hibakeresés**lehetőséget, vagy nyomja **le az F5 billentyűt.**
 
-    ![Képernyőkép a Visual Studio alkalmazásról, a hibakeresés elindítása lehetőség kiemelve](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Az alkalmazás elindítása hibakereséshez")
+    ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Az alkalmazás indítása hibakeresésbe")
 
-1. Megjelenik egy konzolablak, amely felszólítja, hogy írjon be egy szöveget. Írjon be néhány szót vagy mondatot. A beírt szöveg a beszédfelismerési szolgáltatáshoz lesz továbbítva, és a beszédre lett szintetizálva, amely a beszélőn játszik.
+1. Megjelenik egy konzolablak, amely arra kéri, hogy írjon be valamilyen szöveget. Írjon be néhány szót vagy egy mondatot. A beírt szöveg et a rendszer továbbítja a beszédfelismerési szolgáltatásba, és beszédre szintetizálódik, amely a hangszórón szól.
 
-    ![A sikeres szintézis után a konzol kimenetének képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "A sikeres szintézis után a konzol kimenete")
+    ![Képernyőkép a konzol kimenetéről a sikeres szintézis után](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "Konzolkimenet a sikeres szintézis után")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]
 

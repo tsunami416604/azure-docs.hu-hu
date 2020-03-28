@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszéd készítése a beszélők számára – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszéd szintezése beszélőhöz – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Speech SDK segítségével konvertálja a szöveget a szintetizált beszédbe, és játssza le a kimenetet egy beszélőn.
+description: Ebben a rövid útmutatóban a Beszéd SDK-val konvertálhatja a szöveget szintetizált beszédté, és lejátszhatja a kimenetet egy hangszórón.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 95cf6ea645e4a9a769e95692e1116ec2f1ac8c61
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119406"
 ---
-# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Gyors útmutató: beszéd hangszintézise egy beszélő számára
+# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Rövid útmutató: Beszéd szintezése beszélőhöz
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts/header.md)]

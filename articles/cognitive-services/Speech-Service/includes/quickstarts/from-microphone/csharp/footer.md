@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszéd felismerése mikrofonból C# , beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Beszéd felismerése mikrofonból, C# – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 74327bd3798179ef99d3e97c714b5d79e366402a
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75928213"
 ---
 > [!div class="nextstepaction"]
-> [Minták C# feltárása a githubon](https://aka.ms/speech/github-csharp)
+> [C# minták felfedezése a GitHubon](https://aka.ms/speech/github-csharp)

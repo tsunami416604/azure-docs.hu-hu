@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszéd fordítása több nyelvre, Java-Speech szolgáltatás'
+title: 'Rövid útmutató: Beszéd fordítása több nyelvre, Java – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 73e0bf9bc0d659c2847bc2133b470fee3b748b63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75468086"
 ---
-Ha szeretné azonnal beugrani, tekintse meg vagy töltse le az összes <a href="https://aka.ms/speech/github-java">SPEECH SDK Java-mintát</a> a githubon. Ellenkező esetben kezdjük a kezdéssel.
+Ha jobban be szeretne ugrani, tekintse meg vagy töltse le az összes <a href="https://aka.ms/speech/github-java">beszédsdk Java-mintát</a> a GitHubon. Máskülönben, kezdjük.

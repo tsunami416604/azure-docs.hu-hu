@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Bing Web Search ügyféloldali kódtár használata'
+title: 'Rövid útmutató: Bing Web Search-ügyféltár használata'
 titleSuffix: Azure Cognitive Services
-description: A Bing Web Search API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
+description: A Bing Web Search API ügyféltárakat kínál, amelyek megkönnyítik a keresési lehetőségek integrálását az alkalmazásokba. Ezzel a rövid útmutatóval elindíthatja a keresési kérelmek küldését, és visszaszerezheti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 5bbf3dcd6fff7bc93fb76b3e79ec7d4e4fa690ed
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78402575"
 ---
-# <a name="quickstart-use-a-bing-web-search-client-library"></a>Gyors útmutató: Bing Web Search ügyféloldali kódtár használata
+# <a name="quickstart-use-a-bing-web-search-client-library"></a>Rövid útmutató: Bing Web Search-ügyféltár használata
 
 ::: zone pivot="programming-language-csharp"
 

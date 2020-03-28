@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Text Analytics ügyféloldali kódtár a Go-hoz | Microsoft Docs'
+title: 'Rövid útmutató: Text Analytics ügyféltár gohoz | Microsoft dokumentumok'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a nyelvet az Azure Cognitive Services go Text Analytics ügyféloldali kódtár használatával ismerheti meg.
+description: Ebben a rövid útmutatóban észlelheti a nyelvet az Azure Cognitive Services Go Text Analytics ügyfélkönyvtárának használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,100 +11,100 @@ ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
 ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77912640"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata a Go-hoz
+# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Rövid útmutató: A Text Analytics ügyféltár használata az ugráshoz
 
-[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [csomag (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[Referenciadokumentációs](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [függvénytár forráskódcsomagjának](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [(GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [mintái](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
-> Ez a rövid útmutató csak az Text Analytics 2,1-es verziójára vonatkozik. Jelenleg nem érhető el a v3-es ügyféloldali kódtár.
+> Ez a rövid útmutató csak a Text Analytics 2.1-es verziójára vonatkozik. Jelenleg egy v3-as ügyféltár go nem érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * A [Go](https://golang.org/dl/) legújabb verziója
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon létre egy Text Analytics-erőforrást,"  target="_blank">hozzon létre egy Text Analytics erőforrás <span class="docon docon-navigate-external x-hidden-focus"></span> -</a> a Azure Portal a kulcs és a végpont beszerzéséhez. 
-    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
-    * Az ingyenes díjszabási csomaggal kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Miután rendelkezik az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure-előfizetéssel, hozzon <span class="docon docon-navigate-external x-hidden-focus"></span> </a> létre egy Text Analytics-erőforrást"  target="_blank">az Azure Portalon a kulcs és a végpont leéséhez. 
+    * Szüksége lesz a kulcs és a végpont a létrehozott erőforrásból az alkalmazás és a Text Analytics API csatlakoztatásához. Ezt később a rövid útmutatóban fogja megtenni.
+    * Használhatja az ingyenes tarifacsomag a szolgáltatás kipróbálásához, és frissítse később egy fizetett szint éles környezetben.
 
-## <a name="setting-up"></a>Beállítás
+## <a name="setting-up"></a>Beállítása
 
-### <a name="create-a-new-go-project"></a>Új go-projekt létrehozása
+### <a name="create-a-new-go-project"></a>Új Go-projekt létrehozása
 
-A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt számára, és navigáljon hozzá. A munkaterület három mappát fog tartalmazni: 
+Egy konzolablakban (cmd, PowerShell, Terminál, Bash) hozzon létre egy új munkaterületet a Go-projekthez, és keresse meg azt. A munkaterület három mappát tartalmaz: 
 
-* **src** – ez a könyvtár forráskódot és csomagokat tartalmaz. A `go get` paranccsal telepített csomagok itt fognak megjelenni.
-* **pkg** – ez a könyvtár tartalmazza a lefordított go csomag objektumait. Ezek a fájlok `.a` kiterjesztéssel rendelkeznek.
-* **bin** – ez a könyvtár tartalmazza a `go install`futtatásakor létrehozott bináris végrehajtható fájlokat.
+* **src** - Ez a könyvtár forráskódot és csomagokat tartalmaz. A `go get` paranccsal telepített csomagok itt fognak elhelyeződni.
+* **pkg** - Ez a könyvtár tartalmazza a lefordított Go csomag objektumokat. Ezek a fájlok `.a` mind rendelkeznek kiterjesztéssel.
+* **bin** - Ez a könyvtár a futtatáskor `go install`létrehozott bináris végrehajtható fájlokat tartalmazza.
 
 > [!TIP]
-> További információ a [Go-munkaterület](https://golang.org/doc/code.html#Workspaces)struktúrájáról. Ez az útmutató a `$GOPATH` és `$GOROOT`beállításával kapcsolatos információkat tartalmaz.
+> További információ a [Go-munkaterület](https://golang.org/doc/code.html#Workspaces)szerkezetéről. Ez az útmutató `$GOPATH` a `$GOROOT`beállítással és a beállításával kapcsolatos információkat tartalmazza.
 
-Hozzon létre egy `my-app` nevű munkaterületet, valamint a `src`, `pkg`és `bin`szükséges alkönyvtárakat:
+Hozzon létre `my-app` egy munkaterületet, amelynek `pkg`neve `bin`és a szükséges alkönyvtárak a `src`hoz létre, és:
 
 ```console
 $ mkdir -p my-app/{src, bin, pkg}  
 $ cd my-app
 ```
 
-### <a name="install-the-text-analytics-client-library-for-go"></a>Az Text Analytics ügyféloldali kódtár telepítése a Go-hoz
+### <a name="install-the-text-analytics-client-library-for-go"></a>A Text Analytics-ügyféltár telepítése az ugráshoz
 
-Telepítse az ügyféloldali kódtárat a Go-hoz: 
+Az ügyfélkódtár telepítése az ugráshoz: 
 
 ```console
 $ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
 ```
 
-vagy ha a DEP-t használja a tárházon belül, futtassa a következőket:
+vagy ha dep-t használ, a társzalag-futtatáson belül:
 
 ```console
 $ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
 ```
 
-### <a name="create-your-go-application"></a>Go-alkalmazás létrehozása
+### <a name="create-your-go-application"></a>A Go alkalmazás létrehozása
 
-Ezután hozzon létre egy `src/quickstart.go`nevű fájlt:
+Ezután hozzon `src/quickstart.go`létre egy fájl neve :
 
 ```bash
 $ cd src
 $ touch quickstart.go
 ```
 
-Nyissa meg `quickstart.go` a kedvenc IDE-vagy szövegszerkesztőben. Ezután adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
+Nyissa `quickstart.go` meg kedvenc IDE-jét vagy szövegszerkesztőjét. Ezután adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
 
 [!code-go[Import statements](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=imports)]
 
 ## <a name="object-model"></a>Objektummodell 
 
-Az Text Analytics-ügyfél egy [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként. 
+A Text Analytics-ügyfél egy [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) objektum, amely a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szöveg elemzésére, egyetlen karakterláncként vagy kötegként. 
 
-A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a használt módszertől függően `id`, `text`és `language` attribútumok kombinációját tartalmazó objektumokat `dictionary`. A `text` attribútum tárolja a forrás `language`elemezni kívánt szöveget, és a `id` értéke lehet. 
+A program a szöveget a `documents`használt `dictionary` módszertől függően `id`a `text`, `language` a kombinációját és attribútumokat tartalmazó objektumok listájaként küldi el az API-nak. Az `text` attribútum az eredeti `language`helyen tárolja az elemzendő szöveget, és az `id` bármilyen érték lehet. 
 
-A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
+A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tartalmazza. 
 
-## <a name="code-examples"></a>Példák a kódokra
+## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Text Analytics ügyféloldali kódtár használatával:
+Ezek a kódrészletek bemutatják, hogyan kell a következőket a Pythonszöveg-elemzési ügyfélkódtárban végezni:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)
 * [Nyelvfelismerés](#language-detection)
 * [Entitások felismerése](#entity-recognition)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezés kinyerése](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 
-Egy új függvényben hozzon létre változókat az erőforrás Azure-végpontja és előfizetési kulcsa számára.
+Egy új függvényben hozzon létre változókat az erőforrás Azure-végpontjának és előfizetési kulcsának.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-Hozzon létre egy új [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) objektumot. Adja át a kulcsát az [autorest-nek. A NewCognitiveServicesAuthorizer ()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) függvény, amelyet a rendszer az ügyfél `authorizer` tulajdonságának továbbít.
+Hozzon létre egy új [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) objektumot. Add át a kulcsot az [autorestnek. NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) függvény, amely ezután át kerül `authorizer` az ügyfél tulajdonsága.
 
 ```go
 func GetTextAnalyticsClient() textanalytics.BaseClient {
@@ -120,13 +120,13 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-Hozzon létre egy `SentimentAnalysis()` nevű új függvényt, és hozzon létre egy ügyfelet a korábban létrehozott `GetTextAnalyticsClient()` metódus használatával. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objektumok listáját. Minden objektum tartalmaz egy `id`, `Language` és egy `text` attribútumot. A `text` attribútum az elemezni kívánt szöveget tárolja, `language` a dokumentum nyelve, a `id` pedig bármilyen érték lehet. 
+Hozzon létre `SentimentAnalysis()` egy új függvényt, amelyet úgy hívnak, és hozzon létre egy ügyfelet a `GetTextAnalyticsClient()` korábban létrehozott módszerrel. Hozzon létre egy listát a [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) objektumok, amely tartalmazza a dokumentumokat szeretne elemezni. Minden objektum tartalmaz `id` `Language` egy `text` t és egy attribútumot. Az `text` attribútum tárolja az elemzendő szöveget, `language` a dokumentum `id` nyelve, és bármilyen érték lehet. 
 
-Hívja meg az ügyfél [hangulata ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) függvényt, és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint a hangulat pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
+Hívja meg az ügyfél [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) függvényét, és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját és a hangulatpontszámát. A 0-hoz közelebbi pontszám negatív érzést, míg az 1-hez közelebbi pontszám pozitív véleményt jelez.
 
 [!code-go[Sentiment analysis sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=sentimentAnalysis)]
 
-Hívja meg `SentimentAnalysis()` a projektben.
+behívásra. `SentimentAnalysis()`
 
 ### <a name="output"></a>Kimenet
 
@@ -139,13 +139,13 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-Hozzon létre egy `LanguageDetection()` nevű új függvényt, és hozzon létre egy ügyfelet a korábban létrehozott `GetTextAnalyticsClient()` metódus használatával. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) -objektumok listáját. Mindegyik objektum egy `id` és egy `text` attribútumot fog tartalmazni. A `text` attribútum tárolja az elemezni kívánt szöveget, és a `id` bármilyen érték lehet. 
+Hozzon létre `LanguageDetection()` egy új függvényt, amelyet úgy hívnak, és hozzon létre egy ügyfelet a `GetTextAnalyticsClient()` korábban létrehozott módszerrel. Hozzon létre egy listát a [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) objektumok, amely tartalmazza a dokumentumokat szeretne elemezni. Minden objektum tartalmaz `id` egy `text` attribútumot és egy attribútumot. Az `text` attribútum tárolja az elemzendő `id` szöveget, és bármilyen érték lehet. 
 
-Hívja meg az ügyfél [DetectLanguage ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt nyelvet.
+Hívja meg az ügyfél [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) és az eredmény. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját, és észlelte a nyelvet.
 
 [!code-go[Language detection sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=languageDetection)]
 
-Hívja meg `LanguageDetection()` a projektben.
+Hívja `LanguageDetection()` be a projektet.
 
 ### <a name="output"></a>Kimenet
 
@@ -157,13 +157,13 @@ Document ID: 2 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Entitások felismerése
 
-Hozzon létre egy `ExtractEntities()` nevű új függvényt, és hozzon létre egy ügyfelet a korábban létrehozott `GetTextAnalyticsClient()` metódus használatával. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objektumok listáját. Minden objektum tartalmaz egy `id`, `language`és egy `text` attribútumot. A `text` attribútum az elemezni kívánt szöveget tárolja, `language` a dokumentum nyelve, a `id` pedig bármilyen érték lehet. 
+Hozzon létre `ExtractEntities()` egy új függvényt, amelyet úgy hívnak, és hozzon létre egy ügyfelet a `GetTextAnalyticsClient()` korábban létrehozott módszerrel. Hozzon létre egy listát a [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) objektumok, amely tartalmazza a dokumentumokat szeretne elemezni. Minden objektum tartalmaz `id` `language`egy , `text` és egy attribútumot. Az `text` attribútum tárolja az elemzendő szöveget, `language` a dokumentum `id` nyelve, és bármilyen érték lehet. 
 
-Hívja meg az ügyfél [entitásait ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és a kinyert entitások pontszámát.
+Hívja meg az ügyfél [entitásait()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) és kapja meg az eredményt. Ezután végighaladhat az eredményeken, és nyomtassa ki az egyes dokumentumok azonosítóját, és a kinyert entitások pontszám.
 
 [!code-go[entity recognition sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=entityRecognition)]
 
-Hívja meg `ExtractEntities()` a projektben.
+behívásra. `ExtractEntities()`
 
 ### <a name="output"></a>Kimenet
 
@@ -197,13 +197,13 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
-Hozzon létre egy `ExtractKeyPhrases()` nevű új függvényt, és hozzon létre egy ügyfelet a korábban létrehozott `GetTextAnalyticsClient()` metódus használatával. Hozza létre az elemezni kívánt dokumentumokat tartalmazó [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objektumok listáját. Minden objektum tartalmaz egy `id`, `language`és egy `text` attribútumot. A `text` attribútum az elemezni kívánt szöveget tárolja, `language` a dokumentum nyelve, a `id` pedig bármilyen érték lehet.
+Hozzon létre `ExtractKeyPhrases()` egy új függvényt, amelyet úgy hívnak, és hozzon létre egy ügyfelet a `GetTextAnalyticsClient()` korábban létrehozott módszerrel. Hozzon létre egy listát a [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) objektumok, amely tartalmazza a dokumentumokat szeretne elemezni. Minden objektum tartalmaz `id` `language`egy , `text` és egy attribútumot. Az `text` attribútum tárolja az elemzendő szöveget, `language` a dokumentum `id` nyelve, és bármilyen érték lehet.
 
-Hívja meg az ügyfél [Alkifejezéseit ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) , és szerezze be az eredményt. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és a kinyert fő kifejezéseket.
+Hívja fel az ügyfél [KeyPhrases()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) és kap az eredmény. Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját, és kibonthatja a kulcskifejezéseket.
 
 [!code-go[key phrase extraction sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=keyPhrases)]
 
-Hívja meg `ExtractKeyPhrases()` a projektben.
+Hívja `ExtractKeyPhrases()` be a projektet.
 
 ### <a name="output"></a>Kimenet
 

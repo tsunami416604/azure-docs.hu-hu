@@ -1,7 +1,7 @@
 ---
-title: A Project akusztikai Unreal design oktatóanyaga
+title: Projekt akusztika Unreal Design oktatóanyag
 titlesuffix: Azure Cognitive Services
-description: Ez az oktatóanyag az Unreal és a Wwise projekt-akusztikai tervezési munkafolyamatát ismerteti.
+description: Ez az oktatóanyag az Unreal és a Wwise Project Acoustics tervezési munkafolyamatát ismerteti.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,135 +12,135 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854247"
 ---
-# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Projekt akusztikai Unreal/Wwise tervezési oktatóanyag
-Ez az oktatóanyag az Unreal és a Wwise projekt-akusztikai tervezési beállításait és munkafolyamatait ismerteti.
+# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Project Akusztika Unreal / Wwise Design tutorial
+Ez az oktatóanyag ismerteti az Unreal és a Wwise Project Acoustics tervezési beállítását és munkafolyamatát.
 
 Szoftver előfeltételei:
-* Egy Unreal-projekt a Project Acoustics Wwise és az Unreal plugins
+* Egy Unreal projekt a Project Acoustics Wwise és Unreal dugó
 
-Ahhoz, hogy egy Unreal-projektet a Project Acoustics használatával kapjon, a következőket teheti:
-* Kövesse a [Project Acoustics Unreal integrációs](unreal-integration.md) utasításait, hogy a projekt akusztikai adatait hozzáadja az Unreal projekthez
-* Vagy használja a [Project akusztikai minta projektjét](unreal-quickstart.md).
+Ha egy Unreal projektet szeretne a Project Acoustics programmal, a következőket teheti:
+* Kövesse a [Project Acoustics Unreal integrációs](unreal-integration.md) utasításait, hogy a Project Acoustics-t hozzáadja az Unreal projekthez
+* Vagy használja a [Project Acoustics mintaprojektet.](unreal-quickstart.md)
 
-## <a name="setup-project-wide-wwise-properties"></a>Az egész projektre kiterjedő Wwise tulajdonságainak beállítása
-A Wwise globális akadályt és elzáródási görbéket tartalmaz, amelyek befolyásolják, hogy a Project akusztikai beépülő modulja hogyan vezeti a Wwise audio DSP-t.
+## <a name="setup-project-wide-wwise-properties"></a>Projektszintű Wwise-tulajdonságok beállítása
+A Wwise globális obstrukciós és elzáródási görbéi befolyásolják, hogy a Project Acoustics plugin hogyan hajtja a Wwise audio DSP-t.
 
-### <a name="design-wwise-occlusion-curves"></a>Tervezési Wwise elzáródás görbék
-Ha a Project Acoustics aktív, az a Wwise-ben beállított elzáródási kötetre, a kis pass szűrőre (LPF) és a nagy pass szűrőre (HPF) vonatkozó görbékre reagál. Azt javasoljuk, hogy a kötet-görbe típusát állítsa lineárisra a-100 dB értékkel a 100-es Elzáródási értékhez.
+### <a name="design-wwise-occlusion-curves"></a>Tervezzen Wwise elzáródási görbéket
+Ha a Project Acoustics aktív, az a Wwise-ban beállított elzáródási térfogatra, alulátadó szűrőre (LPF) és hpf-görbére reagál. Azt javasoljuk, hogy a térfogatgörbe típusát -100 dB értékkel lineárisra állítja egy 100-as okklúziós értékesetén.
 
-Ezzel a beállítással, ha a projekt akusztikai szimulációja a-18 dB elzáródását számítja ki, az alábbi görbét adja az X = 18 értéknél, a megfelelő Y érték pedig a csillapítást alkalmazza. A Half elzáródás elvégzéséhez állítsa a végpontot-50 dB-re a-100 dB helyett, vagy a-200 dB-t az eltúlzott elzáródáshoz. Testre szabhatja és finomíthatja a játékhoz legjobban illeszkedő görbéket.
+Ezzel a beállítással, ha a Project Acoustics szimuláció -18 dB elzáródást számít ki, akkor az X=18-nál az alábbi görbére kerül, és a megfelelő Y érték az alkalmazott csillapítás. A fél elzáródáshoz állítsa a végpontot -50 dB-re a -100 dB helyett, vagy -200 dB-re az elzáródás eltúlzására. Testre szabhatja és finomhangolhatja a játékához leginkább megfelelő görbéket.
  
-![Képernyőfelvétel a Wwise elzáródási görbe szerkesztőjéről](media/wwise-occlusion-curve.png)
+![A Wwise elzáródási görbe szerkesztőjének képernyőképe](media/wwise-occlusion-curve.png)
 
-### <a name="disable-wwise-obstruction-curves"></a>Wwise-elzáródási görbék letiltása
-A Wwise-elzáródási görbék elkülönítik a száraz szintet, de a Project Acoustics a tervezési vezérlők és a szimuláció használatával kényszeríti ki a nedves/száraz arányt. Javasoljuk, hogy tiltsa le az akadályozási kötet görbéjét. A nedvesség megtervezéséhez használja a később ismertetett nedvesség-módosítási vezérlőt.
+### <a name="disable-wwise-obstruction-curves"></a>Wwise akadálygörbék letiltása
+A Wwise akadálygörbék elszigetelten befolyásolják a száraz szintet, de a Project Acoustics tervezési vezérlőket és szimulációt használ a nedves/száraz arányok kikényszerítésére. Javasoljuk, hogy tiltsa le az akadály térfogatgörbéjét. A nedvesség megtervezéséhez használja a később ismertetett Wetness Adjust vezérlőt.
  
-Ha más célra akadályozó LPF/HPF görbéket használ, győződjön meg róla, hogy az Y = 0 értéknél beállította az X = 0 értéket (azaz nincs LPF vagy HPF, ha nincs akadály).
+Ha más célokra használja az akadályLPF/HPF görbéket, győződjön meg arról, hogy azokat Y=0 értékre állította x=0-nál (azaz nincs LPF vagy HPF, ha nincs akadály).
 
-![Képernyőkép a Wwise-elzáródási görbe szerkesztőjéről](media/wwise-obstruction-curve.png)
+![Képernyőkép a Wwise akadálygörbe szerkesztőjéről](media/wwise-obstruction-curve.png)
 
-### <a name="design-project-acoustics-mixer-parameters"></a>Projekt akusztikai keverő paramétereinek megtervezése
-A globális reverb-tulajdonságokat a Project akusztikai Buszjának keverő beépülő modul lapján érheti el. A keverő beépülő modul beállításainak paneljének megnyitásához kattintson duplán a "Project akusztikai keverő (egyéni)" elemre.
+### <a name="design-project-acoustics-mixer-parameters"></a>Project Acoustics mixer paramétereinek tervezése
+A globális zengetési tulajdonságokat a Project Acoustics Bus keverőbeépülő lapján szabályozhatja. Kattintson duplán a "Project Acoustics Mixer (Custom)" elemre a keverőbővítmény beállítási paneljének megnyitásához.
 
-Azt is láthatja, hogy a keverő beépülő modul "spatialization végrehajtása" lehetőséget is tartalmaz. Ha inkább a Project Acoustic beépített spatialization használja, jelölje be a "spatialization végrehajtása" jelölőnégyzetet, és válasszon a HRTF vagy a pásztázás közül. Ügyeljen arra, hogy tiltsa le a beállított összes száraz Aux-buszt, ellenkező esetben a közvetlen elérési utat kétszer fogja hallani. A "nedvesség-módosítás" és a "reverb időméretezési tényező" használatával globálisan vezérelheti a reverb-kombinációt. Megjegyzés: a soundbanks újraindításához újra kell indítania az Unreal-t, majd újra létre kell hoznia a lejátszást a keverő beépülő modul konfigurációs módosításaival, például az "spatialization végrehajtása" jelölőnégyzettel.
+Azt is láthatja, hogy a keverő beépülő modul "Térterület-kezelés végrehajtása" opcióval rendelkezik. Ha inkább a Project Acoustic beépített térbelivét, jelölje be a "Térterület-kezelés végrehajtása" jelölőnégyzetet, és válasszon a HRTF vagy a Pásztázás közül. Győződjön meg róla, hogy tiltsa le a Száraz Aux buszok van beállítva, különben hallani fogja a közvetlen utat kétszer. Használja a "Wetness Adjust" és a "Reverb Time Scale Factor" gyakorolni a globális ellenőrzést a zengetés mix. Ne feledje, hogy újra kell indítania az Unreal-t, majd regenerálnia kell a soundbanks-t, mielőtt a lejátszást megnyomná, hogy felvegye a mixer plugin konfigurációs változásokat, például a "Térterület-kezelés végrehajtása" jelölőnégyzetet.
 
-![Képernyőfelvétel a Project akusztikai Wwise keverő beépülő moduljának beállításairól](media/mixer-plugin-global-settings.png)
+![Képernyőkép a Project Acoustics Wwise mixer beépülő modul beállításairól](media/mixer-plugin-global-settings.png)
 
-## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>A Project Acoustics tervezési vezérlőinek beállítása a Wwise Actor-mixer hierarchiában
-Az egyes Actors-keverő paramétereinek szabályozásához kattintson duplán a Actor-mixer elemre, majd kattintson a keverő beépülő modul fülére. Itt bármilyen paramétert módosíthat a hangszintesen. Ezek az értékek kombinálva vannak az Unreal oldalon beállított értékekkel (lásd alább). Ha például a Project Acoustics Unreal beépülő modulja egy objektumon a 0,5-re állítja a kivetítési beállítást, és a Wwise beállítja a-0,25 értékre, az adott hangra alkalmazott, eredményül kapott stabilitási beállítás 0,25.
+## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>A Project Akusztika tervezési vezérlőinek beállítása a Wwise aktakeverő hierarchiában
+Az egyes aktorkeverők paramétereinek szabályozásához kattintson duplán a Actor-Mixer billentyűt, majd kattintson a Mixer beépülő modul fülre. Itt bármilyen paramétert módosíthat a hangszinten. Ezek az értékek az Unreal oldalról beállított értékekkel kombinálódnak (lásd alább). Ha például a Project Acoustics Unreal beépülő modul 0,5-re állítja a Kültéri korrekció beállítást egy objektumon, és a Wwise -0,25-re állítja, akkor az adott hangra alkalmazott kültéri korrekció 0,25 lesz.
 
-![Képernyőfelvétel a hangkeverők beállításairól a Wwise Actor-mixer-hierarchia esetében](media/per-sound-mixer-settings.png)
+![Képernyőkép a Wwise akta-keverő hierarchia hangkeverő-beállításairól](media/per-sound-mixer-settings.png)
 
-### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Győződjön meg arról, hogy az AUX-busz rendelkezik a száraz küldéssel, és a kimeneti busz nedves küldéssel rendelkezik
-Ne feledje, hogy a szükséges Actor-mixer-telepítő megváltoztatja a szokásos száraz és nedves útválasztást a Wwise-ben. Reverb-jeleket állít elő a Actor-mixer kimeneti buszján (a Project Acoustics Bus beállítása) és a száraz jelet a felhasználó által megadott Aux-buszon. Ez az útválasztás szükséges ahhoz, hogy a Wwise keverő beépülő modul API-ját a Project Acoustics Wwise beépülő modulja használja.
+### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Győződjön meg róla, hogy az aux busz száraz küldést biztosít, és a kimeneti busz nedves küldési
+Ne feledje, hogy a szükséges aktorkeverő beállítás a wwise-ban a szokásos száraz és nedves útválasztást cseréli. Zengetésjelet hoz létre az aktorkeverő kimeneti buszán (a Project Acoustics Bus-ra állítva), és száraz jelet a felhasználó által definiált aux busz mentén. Ez az útválasztás szükséges a Wwise mixer plugin API funkciói miatt, amelyeket a Project Acoustics Wwise plugin használ.
 
-![Képernyőkép a Wwise-Szerkesztőről a Project Acoustics hangtervezési iránymutatásainak megjelenítéséhez](media/voice-design-guidelines.png)
+![Képernyőkép a Wwise szerkesztőről, amely a Project Acoustics hangtervezési irányelveit mutatja be](media/voice-design-guidelines.png)
  
-### <a name="set-up-distance-attenuation-curves"></a>Távolsági gyengítő görbék beállítása
-Győződjön meg arról, hogy az Actors-keverők által használt összes gyengítő görbe a Project Acoustics használatával felhasználó által definiált Aux küldési készlettel rendelkezik a kimeneti busz kötetéhez. A Wwise alapértelmezés szerint az újonnan létrehozott gyengítő görbékre vonatkozik. Ha meglévő projektet telepít át, ellenőrizze a görbe beállításait.
+### <a name="set-up-distance-attenuation-curves"></a>Távolságcsillapítási görbék beállítása
+Győződjön meg arról, hogy a Project Acoustics használatával az aktorkeverők által használt csillapítási görbék a felhasználó által definiált aux küldési beállítással rendelkeznek a "kimeneti busz térfogata" beállításra. A Wwise alapértelmezés szerint ezt teszi az újonnan létrehozott csillapítási görbék esetében. Ha meglévő projektet telepít át, ellenőrizze a görbe beállításait.
 
-Alapértelmezés szerint a projekt akusztikai szimulációja 45 méteres sugarú, amely a játékos helye körül van. Általában azt javasoljuk, hogy a gyengítő görbét a-200 dB értékre állítsa a távolság körül. Ez a távolság nem rögzített korlátozás. Bizonyos hangok, például a fegyverek esetében érdemes nagyobb sugarat használni. Ilyen esetekben a kikötés azt eredményezi, hogy csak a játékos helyének 45 m-en belüli geometriák fognak részt venni. Ha a lejátszó egy helyiségben található, és a hangforrás a helyiségen kívül esik, és 100 méter távolságra van, akkor a rendszer megfelelően kikerül. Ha a forrás egy helyiségben van, és a lejátszó kívül van, és 100 m távolságban van, nem lesz megfelelően leállítva.
+Alapértelmezés szerint a Project Acoustics szimuláció sugara 45 méter a játékos helye körül. Általában azt javasoljuk, hogy a csillapítási görbét -200 dB-re kell alapozni a távolság körül. Ez a távolság nem egy nehéz megkötés. Néhány úgy hangzik, mint a fegyverek érdemes egy nagyobb sugarú. Ilyen esetekben, a kikötés, hogy csak a geometria belül 45 m a játékos helyét vesz részt. Ha a játékos egy szobában van, és a hangforrás a szobán kívül van, és 100 méterre van, akkor megfelelően ellesz zárva. Ha a forrás egy szobában van, és a játékos kívül van, és 100 méterre van, akkor nem lesz megfelelően elzárva.
 
-![Képernyőkép a Wwise csillapítási görbékről](media/atten-curve.png)
+![A Wwise csillapítási görbéinek képernyőképe](media/atten-curve.png)
 
-### <a name="post-mixer-equalization"></a>Keverő utáni kiegyenlítő ###
- Egy másik dolog, amit érdemes megtennie, vegyen fel egy post mixer Equalizert. A projekt akusztikai buszát tipikus reverb-buszként kezelheti (alapértelmezett reverb módban), és egy szűrőt is beállíthat, hogy kiegyenlítő legyen. Ebből a projektből megtekintheti ezt a mintát a Project Acoustics Wwise.
+### <a name="post-mixer-equalization"></a>Mixer kiegyenlítése utáni ###
+ Egy másik dolog, amit érdemes csinálni, hogy adjunk egy post mixer equalizer. A Project Acoustics buszt tipikus zengetős buszként kezelheti (alapértelmezett zengetés módban), és szűrőt helyezhet rá a kiegyenlítéshez. Ennek egy mintája látható a Project Acoustics Wwise mintaprojektben.
 
-![Képernyőfelvétel a Wwise utáni EQ-ról](media/wwise-post-mixer-eq.png)
+![Képernyőkép a Wwise keverő utáni EQ-ról](media/wwise-post-mixer-eq.png)
 
-A magas szintű pass szűrő például segít kezelni a mélyhang-felvételt, amely a boom, a nem reális reverb. Több post-Bake-szabályozást is elérhet, ha az EQ-t a RTPCs-on keresztül állítja be, így a játék időpontjában megváltoztathatja a reverb színét.
+Például egy magas áteresztőszűrő segíthet kezelni a basszust a közeli hangfelvételekből, amelyek boomy, irreális zengetést eredményeznek. Az EQ rtpc-ken keresztüli beállításával több post-bake vezérlést is elérhetsz, lehetővé téve a zengetés színének megváltoztatását a játék időben.
 
-## <a name="set-up-scene-wide-project-acoustics-properties"></a>Scene-Wide Project akusztikai tulajdonságok beállítása
+## <a name="set-up-scene-wide-project-acoustics-properties"></a>A project akusztikai tulajdonságainak beállítása az egész jelenetre kiterjedően
 
-Az akusztikai terület színésze számos olyan vezérlőelemet tesz elérhetővé, amelyek a rendszer viselkedését módosítják, és a hibakeresés során hasznosak.
+Az Akusztikai terület szereplője számos olyan vezérlőt tár fel, amelyek módosítják a rendszer működését, és hasznosak a hibakeresésben.
 
-![Az Unreal akusztikai Space Controls képernyőképe](media/acoustics-space-controls.png)
+![Képernyőkép az Unreal Acoustics térvezérléséről](media/acoustics-space-controls.png)
 
-* **Akusztikai adatvédelem:** Ezt a mezőt a Content/akusztikai könyvtárból származó, sült akusztikai eszközhöz kell rendelni. A Project Acoustics beépülő modul automatikusan hozzáadja a tartalom/akusztikai könyvtárat a projekt csomagolt könyvtáraihoz.
-* **Csempe mérete:** A figyelő azon területének a mérete, amelyre az akusztikai adatmennyiséget szeretné betölteni a MEMÓRIÁba. Ha a figyelő a lejátszót közvetlenül a játékos betöltésével tölti be, az eredmények ugyanazok, mint az összes mintavétel akusztikai adatai. Nagyobb méretű csempék több MEMÓRIÁT használnak, de csökkentik a lemez I/O-t
-* **Automatikus stream:** Ha engedélyezve van, a automatikusan betölti az új csempéket, mivel a figyelő eléri egy betöltött régió szegélyét. Ha le van tiltva, az új csempéket kód vagy tervrajzok használatával manuálisan kell betölteni
-* **Gyorsítótár-méretezés:** az akusztikai lekérdezésekhez használt gyorsítótár méretét szabályozza. A kisebb gyorsítótár kevesebb MEMÓRIÁT használ, de az egyes lekérdezéseknél növelheti a CPU-használatot is.
-* **Akusztika engedélyezve:** Hibakeresési vezérlő, amely lehetővé teszi az akusztikai szimuláció gyors A/B-es kapcsolását. A rendszer figyelmen kívül hagyja ezt a vezérlőt a szállítási konfigurációkban. A vezérlő hasznos lehet annak megállapításához, hogy egy adott hanghiba az akusztikai számításokban vagy valamilyen más, a Wwise-projektben található problémából származik-e.
-* **Frissítési távolságok:** Akkor használja ezt a beállítást, ha a távolsági lekérdezésekhez az előre lesütött akusztikai adatokat szeretné használni. Ezek a lekérdezések hasonlóak a Ray-öntvényekhez, de előre kiszámítva lettek, így sokkal kevesebb CPU-t vesznek igénybe. A használati példa a legközelebbi felületről a figyelőre irányuló diszkrét reflexiók esetében használható. A teljes körű kihasználása érdekében programkódot vagy tervrajzokat kell használnia a távolságok lekérdezéséhez.
-* **Statisztikák rajzolása:** Míg az UE `stat Acoustics` -k a CPU-adatokat is megadhatják, ez az állapot jelenik meg a képernyő bal felső részén a jelenleg betöltött Ace-fájl, a RAM-használat és egyéb állapotadatok megjelenítésével.
-* **Voxels rajzolása:** Az átfedésben lévő voxels ahhoz a figyelőhöz közeledik, amely a futásidejű interpoláció során használt Voxel-rácsot mutatja. Ha a kibocsátó egy futásidejű Voxel belül van, akkor az akusztikai lekérdezések sikertelenek lesznek.
-* **Mintavételek rajzolása:** A jelenet összes mintavételének megjelenítése. A betöltési állapotuktól függően eltérő színűek lesznek.
-* **Távolságok rajzolása:** Ha a frissítési távolságok engedélyezve vannak, a figyelő a legközelebbi felületen jeleníti meg a figyelőt a figyelő által megjelenő kvantálási irányban.
+* **Akusztikai adatok:** Ezt a mezőt a Content/Acoustics könyvtárból egy sült akusztikai eszközhöz kell rendelni. A Project Acoustics beépülő modul automatikusan hozzáadja a Content/Acoustics könyvtárat a projekt csomagolt könyvtáraihoz.
+* **Csempe mérete:** A figyelő körüli terület terjedelmei, amelyeket a RAM-ba akusztikai adatokbe szeretne betölteni. Mindaddig, amíg a figyelő szondák azonnal a lejátszó körül van betöltve, az eredmények ugyanazok, mint az akusztikai adatok betöltése az összes mintavételek. A nagyobb csempék több RAM-ot használnak, de csökkentik a lemez I/O-ját
+* **Automatikus adatfolyam:** Ha engedélyezve van, automatikusan betöltődik az új csempékbe, ahogy a figyelő eléri a betöltött terület szélét. Ha le van tiltva, az új csempéket manuálisan kell betöltenie kód vagy tervrajzok segítségével
+* **Gyorsítótár-méretezés:** az akusztikai lekérdezésekhez használt gyorsítótár méretét szabályozza. A kisebb gyorsítótár kevesebb RAM-ot használ, de növelheti a PROCESSZOR-használatot az egyes lekérdezéseknél.
+* **Akusztika engedélyezve:** Hibakeresési vezérlő az Akusztika szimuláció gyors A/B-váltásának lehetővé tétele érdekében. Ezt a vezérlőt a rendszer figyelmen kívül hagyja a szállítási konfigurációkban. A vezérlő akkor hasznos, ha megállapíthatja, hogy egy adott hanghiba származik-e az akusztikai számításokból vagy a Wwise projekt más hibájából.
+* **Távolságok frissítése:** Akkor használja ezt a beállítást, ha az előre megsült akusztikai információkat szeretné használni a távolságlekérdezésekhez. Ezek a lekérdezések hasonlóak a ray casts, de már előre kiszámított, így sokkal kevesebb CPU. Egy példa használat diszkrét reflexiók ki a legközelebbi felületre, hogy a figyelő. Ennek teljes kihasználásához kód vagy tervrajzok használatával kell lekérdezni a távolságokat.
+* **Döntetlen statisztika:** Míg az UE-k `stat Acoustics` cpu-információkat tudnak nyújtani, ez az állapotkijelző a képernyő bal felső részén megjeleníti az aktuálisan betöltött ACE-fájlt, a RAM-használatot és az egyéb állapotinformációkat.
+* **Voxels rajzolása:** A figyelő höz közeli fedvényvoxelek, amelyek a futásidejű interpoláció során használt voxel rácsot mutatják. Ha egy emitter egy futásidejű voxel belsejében van, sikertelen lesz a kusza lekérdezések.
+* **Mintavételezés:** Mutasd meg az összes szondát ehhez a jelenethez. Ezek különböző színekben attól függően, hogy a terhelés állapotát.
+* **Távolságok rajzolása:** Ha a Távolságok frissítése engedélyezve van, ez egy mezőt jelenít meg a figyelőhöz legközelebbi felületen a figyelő kvantált útvonalaiban.
 
-## <a name="actor-specific-acoustics-design-controls"></a>Actor-specifikus akusztikai tervezési vezérlők
-Ezek a kialakítási vezérlők hatóköre az Unreal egyedi hangösszetevője.
+## <a name="actor-specific-acoustics-design-controls"></a>Aktor-specifikus akusztikatervezési vezérlők
+Ezek a tervezési vezérlők az Unreal egy adott audioösszetevőjére vannak kitéve.
 
-![Képernyőkép az Unreal audio Component Controls szolgáltatásról](media/audio-component-controls.png)
+![Képernyőkép az Unreal Audio Component Controls](media/audio-component-controls.png)
 
-* **Elzáródási szorzó:** Az elzáródás hatásának szabályozása. Az 1. > értékek kiegészítik a elzáródást. Az 1 érték < a lehető legkisebbre állítja.
-* **Nedvesség-beállítás:** További reverb dB
-* **Romlási idő szorzója:** A RT60 multiplicatively vezérli az akusztikai szimuláció kimenete alapján
-* **A belső beállítás beállítása:** Meghatározza, hogy a visszaverődés milyen módon legyen a szabadban. A 0 értékkel közelebbi értékek több beltérben találhatók, és az 1-nél közelebb vannak a szabadban. Ez a beállítás adalékanyag, ezért ha az-1 értékre állítja a beállítást, a rendszer a + 1 értékre állítja a szabadban.
-* **Átviteli adatbázis:** Az ezzel a hangerővel ellátott, a szemtől távol álló távolság csillapításával kombinálva jeleníthető meg egy további, a falra épülő hang.
-* **Nedves arány távolságának hajlítása:** A forráshoz tartozó visszaverődési tulajdonságokat úgy állítja be, hogy az a közvetlen elérési úttal nem befolyásolható legyen, és hogy közelebb/távolabb lenne.
-* **Lejátszás a Start menüben:** Váltás annak megadásához, hogy a hangot automatikusan le kell-e játszani a jelenet indításakor. Alapértelmezés szerint engedélyezve van.
-* **Akusztikai paraméterek megjelenítése:** Hibakeresési információk megjelenítése közvetlenül a játékon belüli összetevő tetején. (csak a nem szállítási konfigurációk esetében)
+* **Okklúziós szorzó:** Szabályozza az elzáródási hatást. Az 1 > értékek felerősítik az elzáródást. Az 1 <értékek minimálisra csökkentik azt.
+* **Nedvesség beállítása:** További zengetés dB
+* **Bomlási idő szorzója:** Az RT60-at multiplikatív módon vezérli az akusztikai szimuláció kimenete alapján
+* **Kültéri alkalmazkodás:** Szabályozza, hogy a szabadban a visszhang. A 0-hoz közelebbi értékek beltérben, az 1-hez közelebbiek a szabadban is. Ez a kiigazítás additív, így a -1 beállítás beltérben érvényes, a +1 beállítás pedig a szabadban.
+* **Átviteli db:** Renderelj egy további falon keresztül hangot ezzel a hangossággal kombinálva a látótávolságon alapuló távolságcsillapítással.
+* **Nedves áttételi távolság lánc:** Úgy állítja be a forrás visszhangjának jellemzőit, mintha közelebb/távolabb lenne, anélkül, hogy befolyásolná a közvetlen útvonalat.
+* **Lejátszás a kezdőképernyőn:** Váltás: annak megadása, hogy a hang automatikusan lelegyen-e játszva a jelenet indításakor. Alapértelmezés szerint engedélyezett.
+* **Akusztikus paraméterek megjelenítése:** A hibakeresési információk megjelenítése közvetlenül a játékban lévő összetevő tetején. (csak nem szállítási konfigurációk esetén)
 
-## <a name="blueprint-functionality"></a>A terv funkciói
-Az akusztikai terület színésze a tervrajzon keresztül érhető el, és olyan funkciókat biztosít, mint például a Térkép betöltése vagy a beállítások módosítása a szintű parancsfájlok használatával. Két példát is biztosítunk.
+## <a name="blueprint-functionality"></a>A tervezet funkciói
+Az Acoustics Space szereplője a blueprint-en keresztül érhető el, amely olyan funkciókat biztosít, mint a térkép betöltése vagy a beállítások módosítása szintalapú parancsfájlok on keresztül. Itt két példát mutatunk be.
 
-### <a name="add-finer-grained-control-over-streaming-load"></a>Az adatfolyam terhelésének finomabb szintű szabályozása
-Ha az adatfolyamot nem a lejátszó pozíciója alapján automatikusan szeretné felügyelni, hanem saját maga is kezelheti az akusztikus adatfolyamot, használja a Force Load csempe Blueprint függvényt:
+### <a name="add-finer-grained-control-over-streaming-load"></a>Finomabb szemcsés vezérlést adhat hozzá a streamelési terheléshez
+Ha az akusztikai adatfolyam-továbbítást saját kezűleg szeretné kezelni, és nem szeretné automatikusan, a lejátszó pozíciója alapján, használhatja a Force Load Tile blueprint funkciót:
 
-![Képernyőkép a Blueprint streaming lehetőségeiről az Unreal-ben](media/blueprint-streaming.png)
+![Képernyőkép az Unreal Blueprint Streamelési beállításairól](media/blueprint-streaming.png)
 
-* **Cél** A AcousticsSpace Actor
-* **Középpont pozíciója:** A régió középpontja, amelyhez be kell tölteni az adatmennyiséget
-* **A csempén kívüli mintavételek eltávolítása:** Ha be van jelölve, az új régióban nem szereplő összes mintavétel el lesz távolítva a MEMÓRIÁból. Ha nincs bejelölve, a rendszer betölti az új régiót a memóriába, miközben a meglévő mintavételek is betöltődik a memóriába.
-* **Blokkolás befejezésekor:** A csempe egy szinkron művelet betöltését teszi lehetővé
+* **Cél:** Az AcousticsSpace színésze
+* **Középre helyezkedik el:** Az adatokat betöltődő régió középpontja
+* **Mintavételek eltávolítása a csempén kívül:** Ha be van jelölve, az új régióban nem található összes mintavétel törlődik a RAM memóriából. Ha nincs bejelölve, az új terület betöltődik a memóriába, miközben a meglévő mintavételek is betöltődnek a memóriába
+* **Befejezéskori blokkolás:** Szinkron műveletté teszi a csempe betöltését
 
-A csempe méretét már be kell állítani a kényszerített betöltési csempe hívása előtt. Például az alábbihoz hasonló módon teheti meg az ACE-fájlok betöltését, a csempék méretét és a streamet egy adott régióban:
+A Korostra terhelési csempe hívása előtt a mozaikméretét már be kell állítani. Például ilyesmivel tölthet be egy ACE-fájlt, beállíthatja a csempeméretét, és streamelhet egy régióban:
 
-![Képernyőkép a streaming telepítési beállításairól az Unreal-ben](media/streaming-setup.png)
+![Képernyőkép az Unreal Streamelési beállításairól](media/streaming-setup.png)
 
-A példában használt Load akusztikai adattervi függvény a következő paraméterekkel rendelkezik:
+Az ebben a példában használt Akusztikai adatok tervezetének függvénye a következő paraméterekkel rendelkezik:
 
-* **Cél** A AcousticsSpace színész.
-* **Új sütni:** A betöltendő akusztikai adategység. Ha ezt a mezőt üresen hagyja, vagy nullára állítja, akkor az aktuális sütjük nem töltődik be újra.
+* **Cél:** Az AcousticsSpace színésze.
+* **Új Bake:** A betöltendő akusztikai adateszköz. Ha üresen hagyja/null értékre állítja, az új sütni enélkül üríti ki az aktuális sütést.
 
-### <a name="optionally-query-for-surface-proximity"></a>Opcionális lekérdezés a felszíni közelséghez
-Ha szeretné megtekinteni, hogy a felületek milyen közel vannak a figyelőhöz, használhatja a lekérdezési távolság funkciót. Ez a függvény hasznos lehet az irányított késleltetett reflexiók, illetve a felszíni közelség által vezérelt más játékokhoz. A lekérdezés kevésbé költséges, mint a Ray Cast, mert az eredmények az akusztikai keresési táblázatból származnak.
+### <a name="optionally-query-for-surface-proximity"></a>Opcionálisan lekérdezheti a felület idomait
+Ha meg szeretné tekinteni, hogy a figyelő körül milyen közeli felületek vannak egy adott irányban, használhatja a Lekérdezési távolság funkciót. Ez a funkció hasznos lehet az irányított késleltetett visszaverődések vezetéséhez, vagy más, a felületi közelség által vezérelt játéklogikához. A lekérdezés olcsóbb, mint a sugárküldés, mert az eredmények lekérése az akusztikai keresési táblából történik.
 
-![Képernyőkép – példa a terv távolságára – lekérdezés](media/distance-query.png)
+![Képernyőkép a Blueprint-távolság lekérdezéspéldáról](media/distance-query.png)
 
-* **Cél** A AcousticsSpace Actor
-* **Nézet iránya:** A lekérdezés iránya, középpontban a Figyelőnél
-* **Távolság** Ha a lekérdezés sikeres, a legközelebbi felület távolsága
-* **Visszatérési érték:** Logikai – igaz, ha a lekérdezés sikeres, ellenkező esetben hamis
+* **Cél:** Az AcousticsSpace színésze
+* **Irány:** A lekérdezés iránya, a figyelő középre igazítása
+* **Távolság:** Ha a lekérdezés sikeres, a legközelebbi felülethez való távolság
+* **Visszatérési érték:** Logikai – igaz, ha a lekérdezés sikeres volt, egyébként hamis
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg a [tervezési folyamat](design-process.md) hátterében rejlő fogalmakat
-* [Hozzon létre egy Azure-fiókot](create-azure-account.md) saját jelenetének sütni
+* Fedezze fel a [tervezési folyamat](design-process.md) mögött imitojókat
+* [Hozzon létre egy Azure-fiókot,](create-azure-account.md) hogy saját jelenetet süssön
 
 

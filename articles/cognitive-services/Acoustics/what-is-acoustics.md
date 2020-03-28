@@ -1,7 +1,7 @@
 ---
-title: A Project akusztika áttekintése
+title: A projekt akusztikája – áttekintés
 titlesuffix: Azure Cognitive Services
-description: A Project Acoustics egy akusztikus motor a 3D interaktív funkciókhoz, amely a kisült hullámos fizika szimulációját interaktív tervezési vezérlőkkel integrálja.
+description: A Project Acoustics egy akusztikai motor a 3D interaktív élményekhez, amely a sült hullámfizika szimulációt interaktív tervezési vezérlőkkel integrálja.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,58 +12,58 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71351148"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
-A Project Acoustics egy Wave akusztikus motor a 3D interaktív élményekhez. Olyan hullám-effektusokat modellez, mint például az elzáródás, az elzáródás, a portál és a visszaverődés hatása az összetett jeleneteknél anélkül, hogy manuális zónát kellene megjelölni vagy a CPU-igényes raytracing. Emellett magában foglalja a Game Engine és a audio middleware integrációját is. A Project Acoustics filozófiája hasonló a statikus világításhoz: a részletes fizikát offline állapotba helyezheti a fizikai alapkonfiguráció biztosításához, és egy egyszerű, kifejező tervezési vezérlőkkel rendelkező, a virtuális világ akusztikai céljaihoz alkalmazkodó, könnyű kialakítást biztosít.
+A Project Acoustics egy hullámakusztikamotor a 3D interaktív élményekhez. Ez modellek hullám hatások, mint az elzáródás, akadály, portaling és visszhanghatások összetett jelenetek nélkül kézi zóna jelölés vagy CPU intenzív raytracing. Ez is magában foglalja a játék motor és audio middleware integráció. A Project Acoustics filozófiája hasonló a statikus megvilágításhoz: részletes fizikát sütni offline, hogy fizikai alapvonalat biztosítson, és használjon könnyű futásidőt kifejező tervezési vezérlőkkel, hogy megfeleljen a művészi céloknak a virtuális világ akusztikája számára.
 
-![Képernyőkép a Gears of War 4-ről, amely akusztikai voxels](media/gears-with-voxels.jpg)
+![Képernyőkép a Gears of War 4-ből, amely enikókusz voxeleket mutat](media/gears-with-voxels.jpg)
 
-## <a name="using-wave-physics-for-interactive-acoustics"></a>A Wave Physics használata az interaktív akusztika számára
-A Ray-alapú akusztikai módszerek egyetlen forrás – figyelő Ray Cast használatával is ellenőrizhetők, a helyi jelenet kötetének becslésével. Ezek a technikák azonban megbízhatatlanok lehetnek, mert egy kavicsos occludes, mint a Boulder. A sugarak nem veszik figyelembe, hogy a hang meghajlítja az objektumok körét, ami a diffrakciós néven ismert jelenség. A Project akusztikai szimulációja ezeket a hatásokat a Wave-alapú szimulációk használatával rögzíti. Az akusztika sokkal kiszámítható, pontos és zökkenőmentes.
+## <a name="using-wave-physics-for-interactive-acoustics"></a>Hullámfizika használata interaktív akusztikához
+A sugáralapú akusztikai módszerek egyetlen forrás-figyelő sugárleadott sugárzással ellenőrizhetik az elzáródást, vagy a helyi jelenet térfogatának néhány sugarlal történő becslésével meghajthatják az elzáródást. De ezek a technikák megbízhatatlanok lehetnek, mert egy kavics elzár, mint egy szikla. A sugarak nem veszik figyelembe, ahogy a hang a tárgyak körül hajlik, ezt a jelenséget diffrakciónak nevezik. A Project Acoustics szimulációja ezeket a hatásokat egy hullámalapú szimulációval rögzíti. Az akusztika kiszámíthatóbb, pontosabb és zökkenőmentesebb.
 
-A Project akusztika kulcsfontosságú újítása a valós hanghullám-alapú akusztikus szimulációk és a hagyományos hangtervezési fogalmak összevetése. A szimuláció eredményeit hagyományos hangalapú DSP-paraméterekre fordítja az elzáródás, a portál és a reverb számára. A tervező ezeket a fordítási folyamatokat használja. A Project Acoustics mögötti alapvető technológiákkal kapcsolatos további információkért látogasson el a [kutatási projekt lapra](https://www.microsoft.com/en-us/research/project/project-triton/).
+A Project Acoustics legfontosabb újítása, hogy a valódi hanghullám-alapú akusztikus szimulációt a hagyományos hangtervezési koncepciókkal párosítsa. Ez fordítja szimulációs eredmények et hagyományos audio DSP paraméterek elzáródás, portaling és zengetés. A tervező vezérlőket használ a fordítási folyamathoz. A Project Acoustics mögött megtalálható alapvető technológiákról a [kutatási projekt oldalán](https://www.microsoft.com/en-us/research/project/project-triton/)talál további információt.
 
-![Animáció, amely egy jeleneten keresztüli hullámos propagálás vízszintes 2D szeletét ábrázolja](media/wave-simulation.gif)
+![Vízszintes 2D hullámterjedési szeletet megjelenítő animáció egy jeleneten keresztül](media/wave-simulation.gif)
 
-## <a name="video-presentation-from-gdc-2019-30-min"></a>Videós bemutató a GDC 2019 (~ 30 perc)
-[![Project akusztikai videó](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Kattintson ide a videó lejátszásához")
+## <a name="video-presentation-from-gdc-2019-30-min"></a>Videó bemutató a GDC 2019-ből (~30 min)
+[![Projekt akusztikavideó](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Kattintson a videó lejátszásához")
 
 ## <a name="setup"></a>Telepítés
-A [Project akusztikai egység integrációja](unity-integration.md) a drag-and-drop, és tartalmaz egy Unity audio Engine beépülő modult. Fokozza az egység hangforrásának vezérlőit úgy, hogy egy Project C# akusztikai vezérlőt csatlakoztat egy adott hangobjektumhoz.
+[Project Acoustics Unity integráció](unity-integration.md) drag-and-drop, és tartalmaz egy Unity audio motor plugin. Bővítse a Unity hangforrás-vezérlőket úgy, hogy a Project Acoustics C# vezérlőelemet minden egyes hangobjektumhoz csatlakoztatja.
 
-A [Project akusztikai Unreal Integration](unreal-integration.md) az Unreal-hez készült szerkesztő és game plugins, valamint egy Wwise keverő beépülő modult tartalmaz. Az egyéni hangösszetevő kibővíti az Wwise funkcióit az Unreal-en belül az élő akusztikai kialakítási vezérlőkkel. A tervezési vezérlők a keverő beépülő modul Wwise is elérhetők.
+[Project Acoustics Unreal integráció](unreal-integration.md) magában foglalja a szerkesztő és a játék dugó az Unreal, és a Wwise mixer plugin. Az egyéni audiokomponens ekként bővíti az Unreal on-n belül a jól ismert Wwise funkciókat az élő akusztikai tervezési vezérlőkkel. Design ellenőrzések is ki vannak téve a Wwise a mixer plugin.
 
 ## <a name="workflow"></a>Munkafolyamat
-* **Előre sütjük:** Kezdje a sütni beállításával, és válassza ki, hogy mely geometria reagál az akusztikara, például a könnyű tengelyek figyelmen kívül hagyásával. Ezután szerkessze az automatikus anyag-hozzárendeléseket, és válassza a navigációs területek lehetőséget a figyelő mintavételezéséhez. A reverb/Portal/Room zónákhoz nem tartozik kézi jelölés.
-* **Sütni:** Egy elemzési lépés helyileg fut, amely a voxelization és más geometriai elemzéseket végez a jeleneten a fenti beállítások alapján. Az eredmények a szerkesztőben láthatók a jelenet telepítőjének ellenőrzéséhez. A sütni-beküldéskor a rendszer az Voxel adatokat az Azure-ba küldi, és egy akusztikai játékbeli eszközt kap vissza.
-* **Futtatókörnyezet:** Töltse be az eszközt a szintjébe, és készen áll arra, hogy meghallgassa az akusztikai szintet. Megtervezheti az akusztikai működést a szerkesztőben, és részletesen használhatja a forráskódot. A vezérlőelemek a szint parancsfájljaiból is futtathatók.
+* **Elősütni:** Kezdje a sütés beállításával, és válassza ki, hogy melyik geometria reagál az akusztikára, például a fénytengelyek figyelmen kívül hagyásával. Ezután szerkesztse az automatikus anyag-hozzárendeléseket, és válassza ki a navigációs területeket a figyelőmintavétel irányításához. Nincs manuális jelölés a zengetésre/portálra/helyiségzónára.
+* **Sütés:** Az elemzési lépés helyileg fut, amely voxelization és egyéb geometriai elemzés a jelenet alapján a fenti kiválasztás. Az eredmények a szerkesztőben láthatók a jelenet beállításának ellenőrzéséhez. A sütni beküldött, voxel adatok at küld ki az Azure-ba, és kapsz vissza egy akusztikai játék eszköz.
+* **Futási idő:** Töltse be az eszközt a szintjére, és készen áll arra, hogy meghallgassa az akusztikát a szintjén. Tervezze meg az akusztikát élőben a szerkesztőben a forrásonkénti részletes vezérlők használatával. A vezérlők szintalapú parancsfájlokból is vezérelhetők.
 
-## <a name="runtime-platforms"></a>Futtatókörnyezeti platformok
-A Project akusztikai futtatókörnyezet beépülő modulja jelenleg a következő platformokon telepíthető:
+## <a name="runtime-platforms"></a>Futásidejű platformok
+A Project Acoustics futásidejű beépülő moduljai jelenleg a következő platformokra telepíthetők:
 * Windows
 * MacOS
 * Android
 * Xbox One
 
-## <a name="editor-platforms"></a>Szerkesztői platformok
-A Project akusztikai szerkesztő beépülő modulja a következő platformokon érhető el:
+## <a name="editor-platforms"></a>Szerkesztő platformok
+A Project Acoustics editor beépülő modul a következő platformokon érhető el:
 * Windows
 * MacOS (csak Unity)
 
 ## <a name="download"></a>Letöltés
-* [Project akusztikai egység beépülő modul és minták](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
-* [Projekt-akusztikai Unreal & Wwise beépülő modulok és minták](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Xbox bináris fájlok és egyéb támogatás esetén vegye fel velünk a kapcsolatot a [fórumon](https://github.com/microsoft/ProjectAcoustics/issues)keresztül.
+* [Project Acoustics Unity plugin és minták](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Project Acoustics Unreal & Wwise dugó és minták](https://www.microsoft.com/download/details.aspx?id=58090)
+  * Az Xbox bináris okait és egyéb támogatást, lépjen kapcsolatba velünk a [fórumon](https://github.com/microsoft/ProjectAcoustics/issues)keresztül .
 
 ## <a name="contact-us"></a>Kapcsolat
-* [A Project akusztikai vitafórum és a jelentések kiadása](https://github.com/microsoft/ProjectAcoustics/issues)
+* [A Project Akusztikai vita és a problémajelentés](https://github.com/microsoft/ProjectAcoustics/issues)
 
-## <a name="next-steps"></a>Következő lépések
-* Próbálja ki a [projekt akusztikai útmutatóját az Unity](unity-quickstart.md) vagy az [Unreal](unreal-quickstart.md) számára
-* Ismerje meg a [Project Acoustics hangkialakítási filozófiáját](design-process.md)
+## <a name="next-steps"></a>További lépések
+* Próbálja ki a [Project Acoustics rövid útmutatóját az Unity](unity-quickstart.md) vagy az [Unreal](unreal-quickstart.md) számára
+* Fedezze fel a [Project Acoustics hangtervezési filozófiáját](design-process.md)
 

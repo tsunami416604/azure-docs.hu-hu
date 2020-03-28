@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: összetett entitások oktatóanyaga – LUIS'
+title: 'Oktatóanyag: Összetett entitás oktatóanyaga – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy összetett entitást ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
+description: Ebben az oktatóanyagban adjon hozzá egy összetett entitást a kinyert adatok kötegeléséhez különböző típusú egyetlen entitásba. Az adatok kötegelésével az ügyfélalkalmazás könnyen kinyerheti a kapcsolódó adatokat a különböző adattípusokban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,115 +12,115 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447949"
 ---
-# <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: kapcsolódó adatok csoportosítása és kinyerése
-Ebben az oktatóanyagban egy összetett entitást ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
+# <a name="tutorial-group-and-extract-related-data"></a>Oktatóanyag: Kapcsolódó adatok csoportosítása és kinyerése
+Ebben az oktatóanyagban adjon hozzá egy összetett entitást a kinyert adatok kötegeléséhez különböző típusú egyetlen entitásba. Az adatok kötegelésével az ügyfélalkalmazás könnyen kinyerheti a kapcsolódó adatokat a különböző adattípusokban.
 
-Az összetett entitás célja, hogy a kapcsolódó entitásokat egy szülő kategóriába tartozó entitásba csoportosítsa. Az információk különálló entitásként léteznek az összetett létrehozása előtt.
+Az összetett entitás célja, hogy a kapcsolódó entitásokat egy fölérendelt kategória entitásba csoportosítsa. Az információ különálló entitásokként létezik az összetett elem létrehozása előtt.
 
-Az összetett entitás jól illeszkedik az ilyen típusú adattípusokhoz, mert az alábbi adatmennyiségeket adja meg:
+Az összetett entitás jól illeszkedik az ilyen típusú adatokhoz, mivel az adatok:
 
 * Kapcsolódnak egymáshoz.
-* Többféle típusú entitást használhat.
+* Használjon különböző entitástípusokat.
 * Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Alkalmazás importálása – példa
+> * Példaalkalmazás importálása
 > * Szándék létrehozása
 > * Összetett entitás hozzáadása
-> * Tanítás
+> * Betanítás
 > * Közzététel
 > * Szándék és entitások lekérése a végpontról
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Alkalmazás importálása – példa
+## <a name="import-example-app"></a>Példaalkalmazás importálása
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](
-https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) az entitás listázása oktatóanyagból.
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) a List entitás oktatóanyagából.
 
-2. Importálja a JSON-t egy új alkalmazásba a [Luis portál](https://www.luis.ai)használatával.
+2. Importálja a JSON-t egy új alkalmazásba a [LUIS portál](https://www.luis.ai)használatával.
 
 3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `composite` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
 ## <a name="composite-entity"></a>Összetett entitás
 
-Ebben az alkalmazásban a részleg neve a **Department** List entitásban van definiálva, és szinonimákat tartalmaz.
+Ebben az alkalmazásban a részleg neve a **Részleg** lista entitásban van definiálva, és szinonimákat tartalmaz.
 
-A **TransferEmployeeToDepartment** célja, hogy egy alkalmazott hosszúságú kimondott szöveg egy új részlegbe.
+A **TransferEmployeeToDepartment** szándék példakimondott szöveggel rendelkezik, amely egy alkalmazott áthelyezését kéri egy új részlegbe.
 
-Példa erre a szándékra a következő hosszúságú kimondott szöveg:
+Példa utterances for this intent include:
 
 |Példák kimondott szövegekre|
 |--|
-|John W. Smith áthelyezése a nyilvántartási részlegbe|
-|Jill Jones átvitele az R & D-re|
+|John W. Smith áthelyezése a számviteli osztályra|
+|át Jill Jones-tól az R&D|
 
 Az áthelyezési kérelemnek tartalmaznia kell a részleg nevét és az alkalmazott nevét.
 
-## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Adja hozzá a PersonName előre összeépített entitást, amely segítséget nyújt a közös adattípusok kinyeréséhez
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>A PersonName előre összeállított entitás hozzáadása a gyakori adattípus-kinyeréshez
 
 A LUIS számos előre összeállított entitást biztosít a gyakori adatok kinyeréséhez.
 
-1. Válassza a **Létrehozás** lehetőséget a felső navigációs menüben, majd válassza az **entitások** lehetőséget a bal oldali navigációs menüből.
+1. Válassza a legfelső navigációs sáv **Build parancsát,** majd a bal oldali navigációs menü **Entitások** parancsát.
 
 1. Válassza a **Manage prebuilt entity** (Előre összeállított entitás kezelése) gombot.
 
-1. Válassza a **[PersonName](luis-reference-prebuilt-person.md)** lehetőséget az előre elkészített entitások listájából, majd válassza a **kész**lehetőséget.
+1. Válassza a **[Személynév](luis-reference-prebuilt-person.md)** elemet az előre összeállított entitások listájában, majd válassza a **Kész**lehetőséget.
 
     ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-    Ez az entitás segít felvenni a nevek felismerését az ügyfélalkalmazás számára.
+    Ez az entitás segít a névfelismerés hozzáadásában az ügyfélalkalmazáshoz.
 
-## <a name="create-composite-entity-from-example-utterances"></a>Összetett entitás létrehozása példa hosszúságú kimondott szöveg
+## <a name="create-composite-entity-from-example-utterances"></a>Összetett entitás létrehozása példakimondottszövegből
 
 1. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget.
 
-1. Válassza a **TransferEmployeeToDepartment** lehetőséget a cél listából.
+1. Válassza a **TransferEmployeeToDepartment** elemet a szándékok listájából.
 
-1. A részletek `place John Jackson in engineering`válassza ki a personName entitást, `John Jackson`, majd válassza a **tördelés az összetett entitásban** lehetőséget az előugró menü listában a következő kifejezéshez.
+1. Az utterance `place John Jackson in engineering`(kifejezés) menüben `John Jackson`válassza ki a personName entitást, majd válassza a **Wrap in composite entity (Összetett entitás) elemet** a következő kimondott szöveg legördülő listában.
 
-    ![Képernyőkép a wrap Composite kiválasztásáról a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
+    ![Képernyőkép: a körbefolyatási kompozit kijelölése a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Ezután azonnal válassza ki az utolsó entitást, `engineering` a teljes verzióban. Az összetett entitást jelölő kijelölt szavak alatt egy zöld sáv található. Az előugró menüben adja meg az összetett nevet `TransferEmployeeInfo` majd válassza az ENTER billentyűt.
+1. Ezután azonnal válassza ki `engineering` az utolsó entitás, az utterance (kifejezés). A kijelölt szavak alatt egy zöld sáv rajzolódik, amely összetett entitást jelöl. A legördülő menüben írja be `TransferEmployeeInfo` az összetett nevet, majd válassza a Belépés lehetőséget.
 
-    ![Képernyőkép az összetett név beírásáról a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
+    ![Képernyőkép: összetett név beírása a legördülő menüből](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. **Milyen típusú entitást kíván létrehozni?** az összes szükséges mező a következő listában szerepel: `personName` és `Department`. Válassza a **Done** (Kész) lehetőséget. Figyelje meg, hogy az előre összeállított entitás (personName) hozzá lett adva az összetett entitáshoz. Ha egy összetett entitás kezdő és záró jogkivonatai között egy előre összeállított entitás látható, az összetett entitásnak tartalmaznia kell az előre elkészített entitásokat. Ha az előre elkészített entitások nem szerepelnek a csomagban, az összetett entitás nem megfelelően van megjósolva, hanem minden egyes elem.
+1. A **Milyen típusú entitást szeretne létrehozni?** `personName` `Department` Válassza a **Done** (Kész) lehetőséget. Figyelje meg, hogy az előre összeállított entitás, personName, hozzá lett adva az összetett entitáshoz. Ha egy összetett entitás kezdő és záró jogkivonatai között egy előre összeállított entitás jelenhet meg, az összetett entitásnak tartalmaznia kell ezeket az előre összeállított entitásokat. Ha az előre összeállított entitások nem szerepelnek, az összetett entitás nem megfelelően előre jelzett, de minden egyes elem.
 
-    ![Képernyőkép az összetett név beírásáról a legördülő párbeszédpanelen](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
+    ![Képernyőkép: összetett név beírása a legördülő menüből](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
-## <a name="label-example-utterances-with-composite-entity"></a>Címke – példa hosszúságú kimondott szöveg összetett entitással
+## <a name="label-example-utterances-with-composite-entity"></a>Címkepélda kimondott szöveg kompozit entitással
 
-1. Az egyes példákban válassza ki a bal szélső entitást, amely a kompozitban legyen. Ezután válassza **a tördelés az összetett entitásban**lehetőséget.
+1. Minden példa utterance (kifejezés) válassza ki a bal szélső entitás, amely az összetettben kell lennie. Ezután válassza **a Körbefolyatás elemet összetett entitásban**.
 
-1. Válassza ki az összetett entitás utolsó szavát, majd az előugró menüből válassza a **TransferEmployeeInfo** lehetőséget.
+1. Jelölje ki az utolsó szót az összetett entitásban, majd válassza a **TransferEmployeeInfo** lehetőséget a legördülő menüből.
 
-1. Győződjön meg arról, hogy a szándékban lévő összes hosszúságú kimondott szöveg az összetett entitással van megjelölve.
+1. Ellenőrizze, hogy a szándék összes utterances a szándék van címkézve az összetett entitás.
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása, hogy tesztelni lehessen a szándék változásait
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása a szándék módosításai tesztelése érdekében
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Tegye közzé az alkalmazást, hogy a betanított modell lekérdezhető legyen a végpontról.
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Az alkalmazás közzététele, hogy a betanított modell lekérdezhető a végpontról
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Cél-és entitás-előrejelzés beolvasása a végpontról
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és entitás-előrejelzés beszerezni a végponttól
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Jill Jones to DevOps`. Az utolsó querystring paraméter `q`, a teljes lekérdezés.
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move Jill Jones to DevOps`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a query.
 
-    Mivel ez a teszt azt ellenőrzi, hogy a kompozit helyesen van-e kibontva, a tesztek tartalmazhatnak egy meglévő minta-kivonást vagy egy új megnyilatkozás. Egy jó teszt az összetett entitásban lévő összes alárendelt entitás belefoglalása.
+    Mivel ez a teszt a kompozit megfelelő kibontásának ellenőrzése, a teszt tartalmazhat egy meglévő minta utterance (kifejezés) vagy egy új utterance (kifejezés) is. Egy jó teszt, hogy tartalmazza az összes gyermek entitások az összetett entitás.
 
     ```json
     {
@@ -184,7 +184,7 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
     }
     ```
 
-   Ez a Kimondás egy összetett entitások tömbjét adja vissza. Minden entitás típust és értéket kap. Az egyes alárendelt entitások pontosabb megkereséséhez használja az összetett tömb elemében a típus és az érték kombinációját, hogy megtalálja a megfelelő elemet az entitások tömbben.
+   Ez az utterance (kifejezés) egy összetett entitástömböt ad vissza. Minden entitás kap egy típust és értéket. Ha minden egyes alárendelt entitáshoz pontosabb anamforitást szeretne találni, az összetett tömbelem típus- és értékkombinációjával keresse meg a megfelelő elemet az entitástömbben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -192,16 +192,16 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-* [Entitások listázása – oktatóanyag](luis-quickstart-intents-only.md)
-* [Összetett entitás](luis-concept-entity-types.md) fogalmi információi
-* [Betanítás](luis-how-to-train.md)
+* [Entitás oktatóanyagának listázása](luis-quickstart-intents-only.md)
+* [Összetett entitás](luis-concept-entity-types.md) koncepcionális információi
+* [Hogyan kell a vonat](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag egy összetett entitást hozott létre a meglévő entitások beágyazásához. Ez lehetővé teszi az ügyfélalkalmazás számára, hogy a beszélgetés folytatásához különböző adattípusokban lévő kapcsolódó adat csoportját keresse. Az emberi erőforrások alkalmazáshoz tartozó ügyfélalkalmazás megkérdezheti, hogy milyen napra és időpontra van szükség a költözés kezdéséhez és befejezéséhez. Azt is megteheti, hogy az áthelyezés más logisztikai adatait, például egy fizikai telefont.
+Ez az oktatóanyag létrehozott egy összetett entitást a meglévő entitások beágyazására. Ez lehetővé teszi, hogy az ügyfélalkalmazás megtalálja a különböző adattípusokkapcsolódó adatainak egy csoportját a beszélgetés folytatásához. Az emberi erőforrások alkalmazás ügyfélalkalmazása megkérdezheti, hogy az áthelyezés nek mikor és mikor kell elkezdenie és le kell tennie. Azt is kérdezni más logisztikai a lépés, mint például a fizikai telefon.
 
 > [!div class="nextstepaction"]
-> [A nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével](luis-tutorial-review-endpoint-utterances.md)
+> [Bizonytalan előrejelzések javítása a végpontkimondott szöveg áttekintésével](luis-tutorial-review-endpoint-utterances.md)

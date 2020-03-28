@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: szöveg lefordítása – Translator Text'
+title: 'Rövid útmutató: Szöveg fordítása - Fordító szövege'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtanulhatja szöveg fordítását a Translator Text API használatával.
+description: Ebben a rövid útmutatóban megtudhatja, hogyan fordíthatja le a szöveget a Translator Text API használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 3be05a6c4005b79a3fcde6a71e663f5f70d4d61e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525175"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Gyors útmutató: szöveg fordítása a Translator Text API használatával
+# <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Rövid útmutató: Szöveg fordításához használja a Fordító szöveg API-ját
 
-Ebből a rövid útmutatóból megtudhatja, hogyan fordítható le egy szöveges karakterlánc angolról német, olasz, Japán és thai nyelvre a Translator Text REST API használatával.
+Ebben a rövid útmutatóban megtudhatja, hogyan fordíthat le egy szöveges karakterláncot angolról németre, olaszra, japánra és thaira a Translator Text REST REST API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 

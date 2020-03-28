@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hírek beolvasása Bing News Search REST API és go használatával'
+title: 'Rövid útmutató: Hírek beszereznia a Bing News Search REST API és az Go használatával'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató a go nyelvet használja a Bing News Search API meghívásához. Az eredmények közé tartoznak a lekérdezési karakterlánc által azonosított hírforrások nevei és URL-címei.
+description: Ez a rövid útmutató az Ugrás nyelvet használja a Bing News Search API hívásához. Az eredmények közé tartoznak a lekérdezési karakterlánc által azonosított hírforrások nevei és URL-címei.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448528"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053807"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Rövid útmutató: Hírek eredményeinek beolvasása a Bing News Search REST API és go használatával
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Rövid útmutató: Hírek beszerezni a Bing News Search REST API-val és az Ugrás funkcióval
 
-Ez a rövid útmutató a go nyelvet használja a Bing News Search API meghívásához. Az eredmények közé tartoznak a lekérdezési karakterlánc által azonosított hírforrások nevei és URL-címei.
+Ez a rövid útmutató az Ugrás nyelvet használja a Bing News Search API hívásához. Az eredmények közé tartoznak a lekérdezési karakterlánc által azonosított hírforrások nevei és URL-címei.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A [Go bináris fájljainak](https://golang.org/dl/) telepítése
-* Az eredmények megjelenítéséhez telepítse a go-köp függvénytárat az IT szép nyomtatóhoz
-    * A könyvtár telepítése: `$ go get -u https://github.com/davecgh/go-spew`
+* Az [Go bináris fájlok](https://golang.org/dl/) telepítése
+* Telepítse a go-spew könyvtárat, hogy szép nyomtató megjelenítéséhez eredmények
+    * A tár telepítése:`$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="create-a-project-and-import-libraries"></a>Projekt létrehozása és kódtárak importálása
+## <a name="create-a-project-and-import-libraries"></a>Projekt létrehozása és tárak importálása
 
-Hozzon létre egy új go-projektet az IDE vagy a szerkesztőben. Ezután importálja `net/http` a kérelmekhez, `ioutil` a válasz olvasásához, és `encoding/json` az eredmények JSON-szövegének kezeléséhez. A go-köp függvénytár a JSON elemzéséhez szükséges. 
+Hozzon létre egy új Go projektet az IDE-ben vagy a szerkesztőben. Ezután `net/http` importálja `ioutil` a kérelmeket, `encoding/json` olvassa el a választ, és kezelje a JSON találatszövegét. A go-spew könyvtár szükséges a JSON elemzéséhez. 
 
 ```go
 package main
@@ -45,9 +45,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>A Hírek keresési eredményeinek formázásához hozzon létre egy struct-t
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Struct létrehozása a Hírek keresési eredményeinek formázásához
 
-A `NewsAnswer` struktúra formázza a válaszban megadott adatokat. A válasz JSON többszintű és meglehetősen összetett.  A következő implementáció az alapvető tudnivalókat tartalmazza.
+A `NewsAnswer` struktúra formázza a válaszban megadott adatokat. A válasz JSON többszintű és meglehetősen összetett.  A következő végrehajtás a lényegre terjed ki.
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -73,13 +73,13 @@ type NewsAnswer struct {
                 Width   int  `json: "width"`
                 Height  int   `json: "height"`
             } `json: "thumbnail"` 
+            } `json: "image"` 
             Description  string  `json: "description"`
             Provider  []struct   {
                 Type   string    `json: "_type"`
                 Name  string     `json: "name"`
             } `json: "provider"` 
             DatePublished   string   `json: "datePublished"`
-        } `json: "image"` 
     } `json: "value"` 
 }
 
@@ -87,7 +87,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>A fő függvény deklarálása és a változók megadása  
 
-A következő kód deklarálja a fő függvényt, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+A következő kód deklarálja a fő funkciót, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Használhatja az alábbi globális végpontot, vagy az [egyéni altartomány-végpontot,](../../cognitive-services/cognitive-services-custom-subdomains.md) amely az azure-portálon jelenik meg az erőforráshoz.
 
 ```go
 func main() {
@@ -108,7 +108,7 @@ func main() {
 
 ## <a name="query-and-header"></a>Lekérdezés és fejléc
 
-A lekérdezési karakterlánc és az elérési kulcs fejlécének hozzáadása
+A lekérdezési karakterlánc és a hozzáférési kulcs fejlécének hozzáadása
 
 ```go
 // Add the query to the request.  
@@ -121,9 +121,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Kérelem kérése
+## <a name="get-request"></a>Kérés kérése
 
-Hozza létre az ügyfelet, és küldje el a Get kérelmet. 
+Hozza létre az ügyfelet, és küldje el a Get kérést. 
 
 ```go
 // Instantiate a client.  
@@ -139,7 +139,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>A kérelem elküldése
 
-Küldje el a kérést, és olvassa el az eredményeket `ioutil`használatával.
+Küldje el a kérelmet, és olvassa el az eredményeket a használatával. `ioutil`
 
 ```go
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A `Unmarshall` függvény kinyeri az adatokat a News Search API által visszaadott JSON-szövegből.  Ezután az eredmények csomópontjait a `go-spew` Pretty nyomtató használatával jelenítheti meg.
+A `Unmarshall` függvény a Hírkeresési API által visszaadott JSON-szövegből nyeri ki az információkat.  Ezután a `go-spew` szép nyomtató segítségével megjelenítheti az eredmények csomópontjait.
 
 ```go
 // Create a new answer object 
@@ -179,9 +179,9 @@ spew.Dump(result.Name, result.URL)
 
 ```
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-Az eredmény az egyes eredmények nevét és URL-címét tartalmazza.
+Az eredmények tartalmazzák az egyes eredmények nevét és URL-címét.
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"
@@ -203,7 +203,7 @@ Az eredmény az egyes eredmények nevét és URL-címét tartalmazza.
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Mi az Bing News Search?](search-the-web.md)
+> [Mi a Bing News Search](search-the-web.md)

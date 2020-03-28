@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: objektum-észlelési projekt létrehozása a go-Custom Vision SDK-val'
+title: 'Rövid útmutató: Objektumészlelési projekt létrehozása az SDK for Go alkalmazással – Egyéni jövőkép'
 titleSuffix: Azure Cognitive Services
-description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és felderítheti az objektumokat a go SDK használatával.
+description: Hozzon létre egy projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet, és észlelje az objektumokat a Go SDK használatával.
 services: cognitive-services
 author: areddish
 ms.author: areddish
@@ -11,30 +11,30 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170132"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Gyors útmutató: objektum-észlelési projekt létrehozása a Custom Vision go SDK-val
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása a Custom Vision Go SDK-val
 
-Ez a cikk információkat és mintakódeket tartalmaz, amelyek segítségével megkezdheti a Custom Vision SDK-val való ismerkedést az objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható saját Go-alkalmazás létrehozásához.
+Ez a cikk információkat és mintakódot tartalmaz, amelyek segítséget nyújtanak a Custom Vision SDK with Go használatával egy objektumészlelési modell létrehozásához. Létrehozása után hozzáadhat címkézett régiókat, képeket tölthet fel, betaníthatja a projektet, beszerezheti a projekt közzétett előrejelzési végpontURL-címét, és a végpont ot használhatja egy kép programozott teszteléséhez. Használja ezt a példát sablonként saját Go-alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Go 1.8 +](https://golang.org/doc/install)
+- [Ugrás 1,8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-Az Custom Vision Service SDK for go telepítéséhez futtassa a következő parancsot a PowerShellben:
+Az SDK-hoz egyéni vision szolgáltatás telepítéséhez futtassa a következő parancsot a PowerShellben:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-vagy ha `dep`használ, a tárházon belül futtassa a következőket:
+vagy ha `dep`a , a tárpadattárban használja:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -45,13 +45,13 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
-Hozzon létre egy *sample. go* nevű új fájlt a kívánt Project-címtárban.
+Hozzon létre egy *sample.go* nevű új fájlt az előnyben részesített projektkönyvtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
-Tekintse meg a [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódust a projekt létrehozásakor a további beállítások megadásához (lásd: a detektor webportáljának [összeállítása](get-started-build-detector.md) útmutató).
+A [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) metódusból további beállításokat adhat meg a projekt létrehozásakor (ezt a forrás az [Érzékelő](get-started-build-detector.md) webportál-útmutatójában ismerteti).
 
 ```go
 import(
@@ -99,7 +99,7 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *minta végéhez. Ugrás*:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.go*végéhez:
 
 ```Go
 # Make two tags in the new project
@@ -109,12 +109,12 @@ scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of sciss
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Ha képeket címkéz meg az objektumészlelési projektekben, meg kell adnia a címkével ellátott objektumok régióját a normalizált koordináták használatával.
+Ha képeket címkéz az objektum-észlelési projektekben, az egyes címkézett objektumok régióját normalizált koordináták használatával kell megadnia.
 
 > [!NOTE]
-> Ha nem rendelkezik kattintással és húzással a régiók koordinátáinak megjelöléséhez, használhatja a webes felhasználói felületet a következő címen: [Customvision.ai](https://www.customvision.ai/). Ebben a példában a koordináták már meg vannak biztosítva.
+> Ha nem rendelkezik kattintással és húzással a régiók koordinátáinak megjelöléséhez, használhatja a webes felhasználói felületet [a Customvision.ai.](https://www.customvision.ai/) Ebben a példában a koordináták már meg vannak adva.
 
-A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye figyelembe, hogy ebben az oktatóanyagban a régiók rögzített beágyazottak. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
+A képek, címkék és régiók projekthez való hozzáadásához szúrja be az alábbi kódot a címke létrehozása után. Vegye figyelembe, hogy ebben az oktatóanyagban a régiók kódolva vannak a szövegközi. A régiók normalizált koordinátákban adják meg a határolókeretet, és a következő sorrendben adják meg a koordinátákat: bal oldali, felső, szélesség, magasság.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -163,10 +163,10 @@ scissorsImageRegions := map[string][4]float64{
     "scissors_20.jpg": [4]float64{ 0.158088237, 0.04047389, 0.6691176, 0.843137264 },
 }
 ```
-Ezután a társítások ezen térképével feltöltheti az egyes mintaképeket a régió koordinátáival (legfeljebb 64 lemezképet tölthet fel egyetlen kötegben). Adja hozzá a következő kódot.
+Ezután használja ezt a társítási térképet az egyes mintaképek feltöltéséhez a régió koordinátáival (legfeljebb 64 képet tölthet fel egy kötegben). Adja hozzá a következő kódot.
 
 > [!NOTE]
-> A lemezképek elérési útját módosítania kell, attól függően, hogy a Cognitive Services go SDK Samples projektet korábban letöltötte.
+> Módosítania kell a képek elérési útját a cognitive Services Go SDK-minták projekt korábbi letöltési helye alapján.
 
 ```Go
 // Go through the data table above and create the images
@@ -226,9 +226,9 @@ if (!*scissor_batch.IsBatchSuccessful) {
 }     
 ```
 
-### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététel
+### <a name="train-the-project-and-publish"></a>A projekt betanítása és közzététele
 
-Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi az előrejelzési végpontra vonatkozó iterációt. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
@@ -245,7 +245,7 @@ for {
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció lekérése és használata az előrejelzési végponton
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>A közzétett iteráció beszerezni és használata az előrejelzési végponton
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -273,7 +273,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa a *sample. go*parancsot.
+*Futtassa a sample.go*.
 
 ```shell
 go run sample.go
@@ -283,7 +283,7 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Láthatta, hogyan hajthatók végre az objektumészlelési folyamat lépései kódok használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
 

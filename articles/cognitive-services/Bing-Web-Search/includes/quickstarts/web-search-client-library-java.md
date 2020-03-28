@@ -1,5 +1,5 @@
 ---
-title: Bing Web Search Java ügyféloldali kódtár gyors üzembe helyezése
+title: Bing Web Search Java ügyféltár – rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924887"
 ---
-Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Java-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
+A Bing Web Search ügyféltár megkönnyíti a Bing Web Search integrálását a Java-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
-Szeretné most rögtön megtekinteni a kódot? A [Javához készült Bing Search-ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) mintái a githubon érhetők el.
+Szeretné most rögtön megtekinteni a kódot? A [Java-alapú Bing Search ügyfélkódtárak mintái](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search) elérhetők a GitHubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Projekt létrehozása és a POM-fájl beállítása
 
-Hozzon létre egy új Java-projektet a Mavennel vagy a kedvenc buildelést automatizáló eszközével. Feltételezve, hogy Mavent használ, adja hozzá a következő sorokat a [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) fájlhoz. A `mainClass` összes példányát cserélje le az alkalmazására.
+Hozzon létre egy új Java-projektet a Mavennel vagy a kedvenc buildelést automatizáló eszközével. Feltételezve, hogy a Mavent használja, adja hozzá a következő sorokat a [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) fájlhoz. A `mainClass` összes példányát cserélje le az alkalmazására.
 
 ```xml
 <build>
@@ -121,7 +121,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Ha a projektet Maven használatával hozta létre, a csomagnak már deklarálva kell lennie. Ha nem, deklarálja a csomagot most. Például:
+Ha a projektet Maven használatával hozta létre, a csomagnak már deklarálva kell lennie. Ha nem, deklarálja a csomagot most. Példa:
 
 ```java
 package com.bingwebsearch.app
@@ -141,7 +141,7 @@ public class BingWebSearchSample {
 
 ## <a name="construct-a-request"></a>Kérés létrehozása
 
-A `runSample` osztályban található `BingWebSearchSample` metódus létrehozza a kérést. Másolja ezt a kódot az alkalmazásba:
+A `BingWebSearchSample` osztályban található `runSample` metódus létrehozza a kérést. Másolja ezt a kódot az alkalmazásba:
 
 ```java
 public static boolean runSample(BingWebSearchAPI client) {
@@ -287,7 +287,7 @@ mvn compile exec:java
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)

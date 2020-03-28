@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: az Bing Image Search ügyféloldali kódtár használata'
+title: 'Rövid útmutató: A Bing képkereső ügyféltár használata'
 titleSuffix: Azure Cognitive Services
-description: A Image Search API olyan ügyféloldali kódtárakat kínál, amelyek megkönnyítik a keresési funkciók integrálását az alkalmazásokba. Ezzel a rövid útmutatóval megkezdheti a keresési kérelmek küldését, és visszatekintheti az eredményeket.
+description: Az Image Search API ügyfélkódtárakat kínál, amelyek megkönnyítik a keresési képességek integrálását az alkalmazásokba. Ezzel a rövid útmutatóval elindíthatja a keresési kérelmek küldését, és visszaszerezheti az eredményeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 4fa00a3f218276804c80229affb23e99e7994cb3
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899565"
 ---
-# <a name="quickstart-use-the-bing-image-search-client-library"></a>Gyors útmutató: az Bing Image Search ügyféloldali kódtár használata
+# <a name="quickstart-use-the-bing-image-search-client-library"></a>Rövid útmutató: A Bing képkereső ügyféltár használata
 
 ::: zone pivot="programming-language-csharp"
 

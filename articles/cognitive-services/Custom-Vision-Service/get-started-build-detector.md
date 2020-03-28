@@ -1,7 +1,7 @@
 ---
-title: Egy objektum-detektor létrehozása – Custom Vision Service
+title: Rövid útmutató Objektumdetektor létrehozása – Egyéni látásszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy rendszerkép-besorolási modellt a Custom Vision webhellyel.
+description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja a Custom Vision webhelyet egy lemezkép-besorolási modell létrehozásához.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -11,108 +11,108 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169995"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rövid útmutató: Objektumdetektor létrehozása egyéni látással
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. A detektor modell létrehozása után használhatja a Custom Vision szolgáltatást az objektumok észleléséhez.
+Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre objektumdetektort a Custom Vision webhelyen keresztül. Miután létrehozegy detektormodellt, használhatja a Custom Vision szolgáltatást az objektumészleléshez.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Lemezképek készlete, amelyekkel betaníthatja a detektor modelljét. A GitHubon használhatja a [minta lemezképek](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) készletét. Emellett az alábbi tippek alapján is kiválaszthatja saját képeit.
+- Az érzékelő modell betanításához készült képkészlet. A GitHubon használhatja a [mintaképek](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) készletét. Vagy kiválaszthatja saját képeit az alábbi tippek segítségével.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision erőforrások létrehozása a Azure Portal
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Egyéni Vision-erőforrások létrehozása az Azure Portalon
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) , és válassza a __Bejelentkezés__lehetőséget. Jelentkezzen be ugyanazzal a fiókkal, amelyet a Azure Portalba való bejelentkezéshez használt.
+A webböngészőben keresse meg a [Custom Vision weblapot,](https://customvision.ai) és válassza __a Bejelentkezés__lehetőséget. Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure Portalon használt.
 
 ![A bejelentkezési oldal képe](./media/browser-home.png)
 
 
-1. Az első projekt létrehozásához válassza az **új projekt**lehetőséget. Ekkor megjelenik az **új projekt létrehozása** párbeszédpanel.
+1. Az első projekt létrehozásához válassza az **Új projekt**lehetőséget. Megjelenik **az Új projekt létrehozása** párbeszédpanel.
 
-    ![Az új projekt párbeszédpanelen a név, a leírás és a tartományok mezői láthatók.](./media/get-started-build-detector/new-project.png)
+    ![Az új projekt párbeszédpanelen a név, a leírás és a tartományok mezői vannak.](./media/get-started-build-detector/new-project.png)
 
-1. Adja meg a projekt nevét és leírását. Ezután válasszon ki egy erőforráscsoportot. Ha a bejelentkezett fiók egy Azure-fiókhoz van társítva, az erőforráscsoport legördülő lista megjeleníti az összes olyan Azure-erőforráscsoportot, amely Custom Vision Service erőforrást tartalmaz. 
+1. Adja meg a projekt nevét és leírását. Ezután válasszon egy erőforráscsoportot. Ha a bejelentkezett fiók egy Azure-fiókhoz van társítva, az erőforráscsoport legördülő menü megjeleníti az összes Azure-erőforráscsoportok, amelyek tartalmazzák a Custom Vision Service Resource. 
 
    > [!NOTE]
-   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Győződjön meg arról is, hogy a Custom Vision-portálon ugyanazt a "könyvtárat" választotta, mint a Azure Portal, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
+   > Ha nem áll rendelkezésre erőforráscsoport, ellenőrizze, hogy ugyanazzal a fiókkal jelentkezett-e be [customvision.ai,](https://customvision.ai) mint amelyet az [Azure Portalra](https://portal.azure.com/)való bejelentkezéshez használt. Azt is ellenőrizze, hogy ugyanazt a "Címt" választotta-e az egyéni látásportálon, mint az Azure portalon, ahol az egyéni látási erőforrások találhatók. Mindkét oldalon kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő fiók menüből. 
 
-1. Válassza az __objektum felismerése__ a __projektek típusai__alatt lehetőséget.
+1. Válassza az __Objektumészlelés__ lehetőséget a __Projekttípusok csoportban.__
 
-1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek detektorát. Ha szeretné, később is megváltoztathatja a tartományt.
+1. Ezután válassza ki az elérhető tartományok egyikét. Minden tartomány az alábbi táblázatban leírtak szerint optimalizálja az érzékelőt bizonyos típusú képekhez. Ön képes lesz arra, hogy módosítsa a domain később, ha szeretné.
 
-    |Domain|Rendeltetés|
+    |Domain|Cél|
     |---|---|
-    |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
-    |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
-    |__Kompakt tartományok__| A mobileszközök valós idejű objektum-észlelésének korlátaira optimalizált. A kompakt tartományok által generált modellek helyileg is futtathatók.|
+    |__Általános__| Objektumészlelési feladatok széles körére optimalizálva. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos abban, hogy melyik tartományt válassza, válassza az Általános tartományt. |
+    |__Embléma__|Márkalogók keresésére optimalizálva a képeken.|
+    |__Tömörített tartományok__| A mobileszközökön történő valós idejű objektumészlelés korlátaira optimalizálva. A kompakt tartományok által létrehozott modellek exportálhatók helyi futtatásra.|
 
-1. Végül válassza a __projekt létrehozása__lehetőséget.
+1. Végül válassza a __Projekt létrehozása lehetőséget.__
 
-## <a name="choose-training-images"></a>Képzési lemezképek kiválasztása
+## <a name="choose-training-images"></a>Képzési képek kiválasztása
 
 [!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-Ebben a szakaszban fel kell töltenie és manuálisan kell címkézni a képeket, hogy segítse a detektor betanítását. 
+Ebben a részben feltöltési és manuális címke képeket, hogy segítsen a vonat az érzékelő. 
 
-1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__lehetőséget. A Képek feltöltéséhez kattintson a __Megnyitás__ gombra.
+1. Képek hozzáadásához kattintson a __Képek hozzáadása__ gombra, majd a __Helyi fájlok tallózása parancsra.__ A képek feltöltéséhez válassza a __Megnyitás__ lehetőséget.
 
-    ![A képek hozzáadása vezérlő megjelenik a bal felső sarokban, és az alsó középen lévő gomb.](./media/get-started-build-detector/add-images.png)
+    ![A képek hozzáadása vezérlő a bal felső sarokban, alul középen pedig gombként jelenik meg.](./media/get-started-build-detector/add-images.png)
 
-1. A feltöltött képeket a felhasználói felület **címkézetlen** szakaszában tekintheti meg. A következő lépés az, hogy manuálisan címkézze azokat az objektumokat, amelyeket el szeretne sajátítani a detektorban. Kattintson az első képre a címkézési párbeszédpanel megnyitásához. 
+1. A feltöltött képek a felhasználói felület **Címkézetlen** szakaszában jelennek meg. A következő lépés az, hogy manuálisan tag az objektumokat, amelyeket meg szeretne tanulni az érzékelő felismerni. Kattintson az első képre a címkézési párbeszédpanel ablakának megnyitásához. 
 
-    ![Feltöltött képek a címkézett szakaszban](./media/get-started-build-detector/images-untagged.png)
+    ![Feltöltött képek a Címkézetlen szakaszban](./media/get-started-build-detector/images-untagged.png)
 
-1. Kattintson és húzzon egy téglalapot az objektum körül a képen. Ezután adjon meg egy új címke nevet a **+** gombbal, vagy válasszon ki egy meglévő címkét a legördülő listából. Nagyon fontos, hogy az összes érzékelni kívánt objektum (ok) példányát felcímkézje, mivel az érzékelő a címkézetlen háttér területét használja negatív példaként a betanításban. Ha elkészült a címkézéssel, kattintson a jobb oldalon található nyílra a címkék mentéséhez és a következő képre való áttéréshez.
+1. Kattintson a kép objektuma köré, és húzzon egy téglalapot. Ezután írjon be egy **+** új címkenevet a gombbal, vagy jelöljön ki egy meglévő címkét a legördülő listából. Nagyon fontos, hogy a felcímkézni kívánt objektum(ok) minden példányát megcímkézze, mert az érzékelő a címkézetlen háttérterületet használja negatív példaként a betanítássorán. Ha végzett a címkézéssel, kattintson a jobb oldali nyílra a címkék mentéséhez, és lépjen tovább a következő képre.
 
     ![Objektum címkézése téglalap alakú kijelöléssel](./media/get-started-build-detector/image-tagging.png)
 
-Egy másik rendszerkép feltöltéséhez térjen vissza a szakasz elejére, és ismételje meg a lépéseket.
+Egy másik képkészlet feltöltéséhez térjen vissza a szakasz tetejére, és ismételje meg a lépéseket.
 
-## <a name="train-the-detector"></a>A detektor betanítása
+## <a name="train-the-detector"></a>Az érzékelő betanítása
 
-Az érzékelő modell betanításához kattintson a **vonat** gombra. A detektor az összes aktuális lemezképet és azok címkéit használja az egyes címkézett objektumok azonosítására szolgáló modell létrehozásához.
+Az érzékelő modell betanításához válassza a **Vonat** gombot. Az érzékelő az összes aktuális képet és azok címkéit egy olyan modell létrehozásához használja, amely azonosítja az egyes címkézett objektumokat.
 
-![A weblap fejlécének jobb felső részén található vonat gomb](./media/getting-started-build-a-classifier/train01.png)
+![A betanítás gomb a weblap fejlécének eszköztárának jobb felső részén](./media/getting-started-build-a-classifier/train01.png)
 
-A betanítási folyamat csak néhány percet vesz igénybe. Ebben az időszakban a betanítási folyamattal kapcsolatos információk a **teljesítmény** lapon jelennek meg.
+A képzési folyamat csak néhány percet vesz igénybe. Ez alatt az idő alatt a betanítási folyamattal kapcsolatos információk a **Teljesítmény** lapon jelennek meg.
 
-![A böngészőablakban a főszakasz betanítási párbeszédablaka](./media/get-started-build-detector/training.png)
+![A főszakaszban található oktatópárbeszédpanellel rendelkező böngészőablak](./media/get-started-build-detector/training.png)
 
-## <a name="evaluate-the-detector"></a>A detektor kiértékelése
+## <a name="evaluate-the-detector"></a>Az érzékelő értékelése
 
-A betanítás befejezése után a modell teljesítménye kiszámítva és megjelenik. A Custom Vision szolgáltatás a képzéshez elküldött rendszerképeket használja a pontosság, a visszahívás és az átlagos pontosság kiszámításához. A pontosság és a visszahívás két különböző mérést végez a detektor hatékonyságát illetően:
+A betanítás befejezése után a modell teljesítményét kiszámítja és megjeleníti. A Custom Vision szolgáltatás a betanításra beküldött képek alapján kiszámítja a pontosságot, a visszahívást és az átlagos átlagos pontosságot. A precizitás és a visszahívás a detektor hatékonyságának két különböző mérése:
 
-- A **pontosság** a megfelelő azonosított besorolások töredékét jelzi. Ha például a modell 100 lemezképeket azonosított, és 99 közülük valójában kutyák voltak, akkor a pontosság 99% lenne.
-- A **visszahívás** azt jelzi, hogy a tényleges besorolások hányada helyesen azonosítható. Ha például valóban 100-es Alma-lemezképek voltak, és a modellben a 80 as Alma szerepel, a visszahívás 80% lenne.
+- **A pontosság** az azonosított osztályozások helyes hányadát jelzi. Például, ha a modell azonosított 100 kép, mint a kutyák, és 99 közülük valójában a kutyák, akkor a pontosság lenne 99%.
+- **A Visszahívás** a tényleges osztályozások helyesen azonosított hányadát jelzi. Például, ha valóban 100 kép az alma, és a modell azonosított 80 alma, a visszahívás lenne 80%.
 
-![A betanítási eredmények a teljes pontosságot és a visszahívást, valamint az átlagos pontosságot mutatják.](./media/get-started-build-detector/trained-performance.png)
+![Az edzéseredmények az általános pontosságot és visszahívást, valamint az átlagos átlagos pontosságot mutatják.](./media/get-started-build-detector/trained-performance.png)
 
 ### <a name="probability-threshold"></a>Valószínűségi határérték
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
-## <a name="manage-training-iterations"></a>Tanítási ismétlések kezelése
+## <a name="manage-training-iterations"></a>Képzési ismétlések kezelése
 
-Minden alkalommal, amikor betanítja a detektort, létrehoz egy új _iterációt_ a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. A bal oldali panelen a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
+Minden alkalommal, amikor betanítja az érzékelőt, új _iterációt_ hoz létre a saját frissített teljesítménymutatóival. Az összes ismétlést megtekintheti a **Teljesítmény** lap bal oldali ablaktáblájában. A bal oldali ablaktáblában található a **Törlés** gomb is, amellyel törölheti az ismétlést, ha az elavult. Az iteráció törlésekor törli az egyedileg társított képeket.
 
-A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
+Lásd: [A modell használata az előrejelzési API-val](./use-prediction-api.md) a betanított modellek programozott elérésének megismerése című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre és taníthat egy Object detektor-modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre és taníthat be egy objektumérzékelő-modellt a Custom Vision webhely használatával. Ezután további információt kaphat a modell fejlesztésének iteratív folyamatáról.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)

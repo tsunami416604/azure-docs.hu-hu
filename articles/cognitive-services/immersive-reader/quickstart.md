@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: hozzon létre egy webalkalmazást, amely elindítja a magával ragadó olvasótC#'
+title: 'Rövid útmutató: Hozzon létre egy webes alkalmazást, amely elindítja a Magával ragadó olvasót C-vel #'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és hozzáadhatja a magával ragadó olvasó API funkcióját.
+description: Ebben a rövid útmutatóban teljesen új webalkalmazást hozhat létre, és hozzáadhatja a Magával ragadó Olvasó API-funkciót.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 8dd8459922caa9f765d59bc28fbf050b86834b46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845241"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Gyors útmutató: hozzon létre egy webalkalmazást, amely elindítjaC#az olvasót ()
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Rövid útmutató: Hozzon létre egy webes alkalmazást, amely elindítja a Magával ragadó olvasót (C#)
 
-A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
+A [Magával ragadó olvasó](https://www.onenote.com/learningtools) egy inkluzívan tervezett eszköz, amely bevált technikákat valósít meg az olvasás megértésének javítása érdekében.
 
-Ebben a rövid útmutatóban egy webalkalmazást hoz létre a semmiből, és integrálja a magával ragadó olvasót a saját olvasó SDK használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)egy teljes körű működő minta érhető el.
+Ebben a rövid útmutatóban teljesen új webes alkalmazást hozhat létre, és integrálhatja a Magával ragadó olvasót a Magával ragadó olvasó SDK használatával. A rövid útmutató teljes munkamintája [itt](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
-* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./how-to-create-immersive-reader.md) . A minta projekt tulajdonságainak konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* Az Azure Active Directory-hitelesítéshez konfigurált magával ragadó reader-erőforrás. A beállításhoz kövesse [az alábbi utasításokat.](./how-to-create-immersive-reader.md) A mintaprojekt tulajdonságainak konfigurálásakor szüksége lesz néhány itt létrehozott értékre. Mentse a munkamenet kimenetét egy szöveges fájlba későbbi használatra.
 
 ## <a name="create-a-web-app-project"></a>Webalkalmazás-projekt létrehozása
 
-Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazás-sablon használatával, beépített modell-vezérlővel, és ASP.NET Core 2,1. Nevezze el a "QuickstartSampleWebApp" projektet.
+Hozzon létre egy új projektet a Visual Studióban a beépített model-view-vezérlővel rendelkező ASP.NET Core webalkalmazás sablonnal és ASP.NET Core 2.1-es sel. Nevezze el a projektet "QuickstartSampleWebApp".Name the project "QuickstartSampleWebApp".
 
 ![Új projekt](./media/quickstart-csharp/1-createproject.png)
 
@@ -44,7 +44,7 @@ Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazá
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése**lehetőséget. Ekkor megnyílik egy _Secrets. JSON_nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információkat [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) talál. Cserélje le a _Secrets. JSON_ fájl tartalmát a következőre, és adja meg a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+Kattintson a jobb gombbal a projektre a _Megoldáskezelőben,_ és válassza **a Felhasználói titkok kezelése parancsot**. Ekkor megnyílik a _secrets.json_nevű fájl. Ez a fájl nincs bevéve a forrásvezérlőbe. Tudjon meg többet [itt](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Cserélje le a _secrets.json_ tartalmát a következőkre, és adja meg a Immersive Reader erőforrás létrehozásakor megadott értékeket.
 
 ```json
 {
@@ -55,25 +55,25 @@ Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Adja hozzá a Microsoft. IdentityModel. clients. ActiveDirectory NuGet-csomagot
+### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>A Microsoft.IdentityModel.Clients.ActiveDirectory NuGet csomag hozzáadása
 
-A következő kód a **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet-csomag objektumait használja, ezért hozzá kell adnia egy hivatkozást az adott csomaghoz a projektben.
+A következő kód a **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet csomag objektumait használja, ezért hozzá kell adnia egy hivatkozást a csomagra a projektben.
 
-Nyissa meg a NuGet csomagkezelő konzolt a **Tools-> NuGet csomagkezelő-> Package Manager konzolon** , és futtassa a következő parancsot:
+Nyissa meg a NuGet Package Manager konzolt a **Tools -> NuGet Package Manager -> Csomagkezelő konzolról,** és futtassa a következő parancsot:
 
 ```powershell
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.2.0
 ```
 
-### <a name="update-the-controller-to-acquire-the-token"></a>A vezérlő frissítése a jogkivonat beszerzéséhez 
+### <a name="update-the-controller-to-acquire-the-token"></a>A vezérlő frissítése a token beszerzéséhez 
 
-Nyissa meg a _Controllers\HomeController.cs_, és adja hozzá a következő kódot a fájl elején található _using_ utasítások után.
+Nyissa _meg a Controllers\HomeController.cs_fájlt, és adja hozzá a következő kódot a fájl tetején _lévő utasítások_ használata után.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Most a vezérlőt úgy konfigurálja, hogy az Azure AD-értékeket beszerezze a _Secrets. JSON_fájlból. A _HomeController_ osztály tetején a ```public class HomeController : Controller {```után adja hozzá a következő kódot.
+Most konfiguráljuk a vezérlőt, hogy az Azure AD-értékeket a _secrets.json.now._ A _HomeController_ osztály tetején, ```public class HomeController : Controller {```miután a , adja hozzá a következő kódot.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -143,14 +143,14 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 }
 ```
 
-## <a name="add-sample-content"></a>Minta tartalmának hozzáadása
-Először nyissa meg a _Views\Shared\Layout.cshtml_. A sor ```</head>```előtt adja hozzá a következő kódot:
+## <a name="add-sample-content"></a>Mintatartalom hozzáadása
+Először nyissa meg a _Nézetek\Megosztott\Layout.cshtml fájlt._ A sor ```</head>```előtt adja hozzá a következő kódot:
 
 ```html
 @RenderSection("Styles", required: false)
 ```
 
-Most hozzáadunk egy minta tartalmat ehhez a webalkalmazáshoz. Nyissa meg a _Views\Home\Index.cshtml_ , és cserélje le az összes automatikusan generált kódot a következő mintára:
+Most hozzáadjuk a mintatartalmat ehhez a webalkalmazáshoz. Nyissa meg _a Nézetek\Kezdőlap\Index.cshtml fájlt,_ és cserélje le az összes automatikusan létrehozott kódot erre a mintára:
 
 ```html
 @{
@@ -216,13 +216,13 @@ Most hozzáadunk egy minta tartalmat ehhez a webalkalmazáshoz. Nyissa meg a _Vi
 </div>
 ```
 
-Figyelje meg, hogy az összes szöveg **lang** attribútummal rendelkezik, amely a szöveg nyelveit írja le. Ez az attribútum segíti a magával ragadó olvasót a megfelelő nyelvi és nyelvtani funkciók biztosításában.
+Figyelje meg, hogy az egész szöveg nek van **egy lang** attribútuma, amely leírja a szöveg nyelveit. Ez az attribútum segít a Magával ragadó olvasó nak a megfelelő nyelvi és nyelvtani funkciók biztosításában.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>JavaScript hozzáadása a magára ejtő olvasó indításának kezeléséhez
+## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Add JavaScript kezelni indít a magával ragadó olvasó
 
-A részletes olvasó függvénytár olyan funkciókat biztosít, mint például a magával ragadó olvasó elindítása és a magára ejtő olvasó gombok megjelenítése. További információkat [itt](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) talál.
+A Magával ragadó olvasó könyvtár olyan funkciókat kínál, mint a Magával ragadó olvasó elindítása és a Magával ragadó olvasó gombok renderelése. Tudjon meg többet [itt](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference).
 
-A _Views\Home\Index.cshtml_alján adja hozzá a következő kódot:
+A _Nézetek\Kezdőlap\Index.cshtml_oldal alján adja meg a következő kódot:
 
 ```html
 @section Scripts
@@ -294,21 +294,21 @@ A _Views\Home\Index.cshtml_alján adja hozzá a következő kódot:
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-A menüsávban válassza a **hibakeresés > a hibakeresés elindítása**lehetőséget, vagy nyomja le az **F5** billentyűt az alkalmazás elindításához.
+A menüsorban válassza a **Debug > Start Debugging (Hibakeresés) lehetőséget,** vagy nyomja le az **F5** billentyűt az alkalmazás elindításához.
 
-A böngészőben a következőknek kell megjelennie:
+A böngészőben a következőket kell látnia:
 
-![Minta alkalmazás](./media/quickstart-csharp/4-buildapp.png)
+![Mintaalkalmazás](./media/quickstart-csharp/4-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>A lebilincselő olvasó elindítása
+## <a name="launch-the-immersive-reader"></a>Indítsa el a magával ragadó olvasót
 
-Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon található tartalommal ellátott olvasó.
+Ha a "Magával ragadó olvasó" gombra kattint, látni fogja a Magával ragadó olvasót, amelyet az oldalon lévő tartalommal indít.
 
-![Immersive Reader](./media/quickstart-csharp/5-viewimmersivereader.png)
+![Modern olvasó](./media/quickstart-csharp/5-viewimmersivereader.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Tekintse meg a [Node. js](./quickstart-nodejs.md) rövid útmutatóját, amelyből megtudhatja, hogy mit tehet a magával az olvasó SDK-val a Node. js használatával
-* Tekintse meg a [Python-oktatóanyagot](./tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
-* Tekintse meg az [iOS-oktatóanyagot](./tutorial-ios-picture-immersive-reader.md) , amelyből megtudhatja, mit tehet a gyors
-* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
+* Tekintse meg a [Node.js rövid útmutatót,](./quickstart-nodejs.md) hogy mi mást tehet a Magával ragadó Reader SDK segítségével Node.js
+* Tekintse meg a [Python oktatóanyag,](./tutorial-python.md) hogy mi mást tehet ünk a magával ragadó Reader SDK python használatával
+* Tekintse meg az [iOS bemutató,](./tutorial-ios-picture-immersive-reader.md) hogy mi mást tehetünk a magával ragadó Reader SDK swift
+* Fedezze fel a [magával ragadó Reader SDK-t](https://github.com/microsoft/immersive-reader-sdk) és a [magával ragadó Reader SDK-referenciát](./reference.md)

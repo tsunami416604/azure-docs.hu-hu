@@ -1,22 +1,14 @@
 ---
-title: 'Gyors útmutató: alkalmazás létrehozása – LUIS'
-titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre olyan LUIS-alkalmazást, amely az előre elkészített tartományi `HomeAutomation` használja a fények és a készülékek be-és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
+title: 'Rövid útmutató: alkalmazás létrehozása - LUIS'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat `HomeAutomation` létre egy LUIS-alkalmazást, amely az előre összeállított tartományt használja a fények és berendezések be- és kikapcsolására. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/24/2020
+ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241751"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287798"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -29,60 +21,62 @@ Ebben a rövid útmutatóban egy LUIS-alkalmazást hoz létre, amely az előre �
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alkalmazásokat.
 
-1. A LUIS portál saját alkalmazások listájában válassza a **+ Létrehozás**elemet.
+1. A Saját alkalmazások listában válassza a **+ Új alkalmazás a beszélgetéshez**lehetőséget.
 
-    ![A LUIS portál saját alkalmazások listájában válassza a + létrehozás elemet.](./media/create-app-in-portal.png)
+1. A párbeszédpanelen nevezze el `Home Automation`az alkalmazást . Válassza az **angol nyelvet** kultúraként. A leírás nem kötelező, és nem használható a szerzői vagy előrejelzési. Az előrejelzési erőforrás is nem kötelező, ha egy LUIS-alkalmazás létrehozásakor. Válassza a **Done** (Kész) lehetőséget.
 
-1. A párbeszédpanelen nevezze el az alkalmazást `Home Automation` majd válassza a **kész**lehetőséget. LUIS létrehozza az alkalmazást. A leírás nem kötelező, és nem használható szerzői vagy előrejelzési műveletekhez. LUIS-alkalmazás létrehozásakor az előrejelzési erőforrás is opcionális. Ha az alkalmazást éles környezetben teszi közzé, egy előrejelzési erőforrást kell rendelnie, hogy az alkalmazás képes legyen sok kérést kezelni.
+    A LUIS létrehozza az alkalmazást. Amikor éles környezetben teszi közzé az alkalmazást, hozzá kell rendelnie egy előrejelzési erőforrást, hogy az alkalmazás számos kérést kezelni tudja.
 
-    ![A párbeszédpanelen nevezze el az alkalmazás "Home Automation"](./media/create-new-app-details.png)
+    ![A párbeszédpanelen nevezze el az alkalmazást "Home Automation"](./media/create-new-app-details.png)
 
     >[!NOTE]
     >A kulturális környezet az alkalmazás létrehozása után nem módosítható.
 
 ## <a name="add-prebuilt-domain"></a>Előre összeállított tartomány hozzáadása
 
-Válassza az **előre elkészített tartományok** lehetőséget, majd keressen rá a **HomeAutomation**kifejezésre. Válassza a **tartomány hozzáadása** elemet a HomeAutomation kártyán.
+Válassza **az Előre összeállított tartományok lehetőséget,** majd keresse meg a **HomeAutomation**kifejezést. Válassza a **Tartomány hozzáadása lehetőséget** a HomeAutomation-kártyán.
 
-![Válassza az "előre elkészített tartományok" lehetőséget, majd keressen rá a "HomeAutomation" kifejezésre. Válassza a "tartomány hozzáadása" lehetőséget a HomeAutomation kártyán.](media/luis-quickstart-new-app/home-automation.png)
+![Válassza az "Előre összeállított tartományok" lehetőséget, majd keresse meg a "HomeAutomation" kifejezést. Válassza a "Tartomány hozzáadása" lehetőséget a HomeAutomation kártyán.](media/luis-quickstart-new-app/home-automation.png)
 
 A tartomány sikeres hozzáadása után az előre összeállított tartomány mezőben megjelenik egy **Remove domain** (Tartomány eltávolítása) gomb.
 
 ## <a name="intents-and-entities"></a>Szándékok és entitások
 
-Válassza a **leképezések** lehetőséget a HomeAutomation-tartomány szándékának áttekintéséhez. Az előre elkészített tartomány-leképezések minta hosszúságú kimondott szöveg rendelkeznek.
+Válassza **a Leképezések** lehetőséget a HomeAutomation tartományi leképezések áttekintéséhez. Az előre összeállított tartományi leképezések minta utterances rendelkezik.
 
-![Képernyőkép a HomeAutomation-leképezések listájáról](media/luis-quickstart-new-app/home-automation-intents.png "Képernyőkép a HomeAutomation-leképezések listájáról")
+![Képernyőkép a HomeAutomation leképezések listájáról](media/luis-quickstart-new-app/home-automation-intents.png "Képernyőkép a HomeAutomation leképezések listájáról")
 
 > [!NOTE]
 > A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak.
 
 Válassza a **HomeAutomation.TurnOff** szándékot. Láthatja, hogy a szándék olyan kimondott szövegek listáját tartalmazza, amelyek entitásokkal vannak feliratozva.
 
-[![Képernyőkép a HomeAutomation. kanyart szándékáról](media/luis-quickstart-new-app/home-automation-turnoff.png "Képernyőkép a HomeAutomation. kanyart szándékáról")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+[![A HomeAutomation.TurnOff szándék képernyőképe](media/luis-quickstart-new-app/home-automation-turnoff.png "A HomeAutomation.TurnOff szándék képernyőképe")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
-Miután betanította az alkalmazását, tesztelheti is. Válassza a **teszt**lehetőséget. Írjon be egy tesztet, például `Turn off the lights` az interaktív teszt ablaktáblába, majd nyomja le az ENTER billentyűt.
+Miután betanította az alkalmazását, tesztelheti is.
 
-```
-Turn off the lights
-```
+1. Válassza a jobb felső navigációs sáv **Teszt elemének** kiválasztását. 1. Írjon be egy `Turn off the lights` tesztutteranceance like az interaktív tesztablaktáblába, és nyomja le az Enter billentyűt.
 
-Ellenőrizze, hogy a legmagasabb pontszámú leképezés megfelel-e az egyes kimondott tesztszövegek várt leképezésének.
+    ```
+    Turn off the lights
+    ```
 
-Ebben a példában a `Turn off the lights` helyesen van azonosítva, mint a **HomeAutomation. kanyart**felső pontozási szándéka.
+    Ellenőrizze, hogy a legmagasabb pontszámú leképezés megfelel-e az egyes kimondott tesztszövegek várt leképezésének.
 
-![Képernyőkép a teszt panelről a kiemeléssel kiemelve](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
+    Ebben a `Turn off the lights` példában helyesen azonosítja a **HomeAutomation.TurnOff**legmagasabb pontozási szándékát.
 
-Az előrejelzéssel kapcsolatos további információk áttekintéséhez válassza a **vizsgálat** lehetőséget.
+    ![A tesztelési ablaktábla képernyőképe a kiemelt kimondott szöveggel](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-![A teszt panel képernyőképe ellenőrzési információkkal](media/luis-quickstart-new-app/test.png)
+1. Válassza **a Vizsgálat** lehetőséget az előrejelzéssel kapcsolatos további információk áttekintéséhez.
 
-Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
+    ![Képernyőkép a Teszt panelről az ellenőrzési információkkal](media/luis-quickstart-new-app/test.png)
+
+1. Zárja be a tesztablakot.
 
 <a name="publish-your-app"></a>
 
@@ -96,14 +90,14 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
 
 [!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
-1. A böngésző címsorába a lekérdezési karakterlánchoz ellenőrizze, hogy a következő név és érték sávok szerepelnek-e az URL-címben. Ha nem szerepelnek a lekérdezési karakterláncban, adja hozzá őket:
+2. A böngésző címsorában a lekérdezési karakterláncesetében győződjön meg arról, hogy a következő név- és értéksávok találhatók az URL-címben. Ha nem szerepelnek a lekérdezési karakterláncban, adja hozzá őket:
 
-    |Név/érték párok|
+    |Név/érték pár|
     |--|
     |`verbose=true`|
     |`show-all-intents=true`|
 
-1. A böngésző címsorába lépjen az URL-cím végére, és írja be `turn off the living room light` értéket a _lekérdezési_ értékhez, majd nyomja le az ENTER billentyűt.
+3. A böngésző címsorában lépjen az URL végére, és írja be `turn off the living room light` a _lekérdezési_ értéket, majd nyomja le az Enter billentyűt.
 
     ```json
     {
@@ -194,14 +188,14 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
     }
     ```
 
-    További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+    További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Behívhatja a végpontot kódból:
 

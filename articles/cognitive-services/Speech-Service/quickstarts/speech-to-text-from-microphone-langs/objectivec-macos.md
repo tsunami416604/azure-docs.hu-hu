@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: beszéd felismerése mikrofonból, Objective-C-Speech szolgáltatás'
+title: 'Rövid útmutató: Beszéd felismerése mikrofonból, Objective-C - Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerheti fel a beszédfelismerést a macOS-ben a Speech SDK használatával
+description: A beszédfelismerési SDK használatával ismerje fel a beszédfelismerést a C-es célban macOS rendszeren
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -11,85 +11,85 @@ ms.topic: quickstart
 ms.date: 12/23/2019
 ms.author: chlandsi
 ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75380592"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Gyors útmutató: beszéd felismerése a macOS-ben a "Objective-C"-ben a Speech SDK használatával
+# <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Rövid útmutató: Beszédfelismerés a C-ben macOS rendszeren a Beszéd SDK használatával
 
-A hangfelismerések is elérhetők a [Speech szintézishez](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-macos.md).
+Rövid útmutatók is rendelkezésre állnak a [beszédszintézishez.](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-macos.md)
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy macOS-alkalmazást az Objective-C-ben az Azure Cognitive Services Speech SDK használatával, amely a mikrofonról szövegre rögzített beszédet mutatja be.
+Ebben a cikkben megtudhatja, hogyan hozhat létre egy macOS-alkalmazást a C-ben az Azure Cognitive Services Speech SDK használatával a mikrofonból szöveggé rögzített beszéd átírásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Kezdés előtt a következőkre lesz szüksége:
+Mielőtt elkezdene, a következőkre lesz szüksége:
 
-* A beszédfelismerési szolgáltatáshoz tartozó [előfizetési kulcs](~/articles/cognitive-services/Speech-Service/get-started.md) .
-* MacOS rendszerű gép [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb verzióval, MacOS 10,13 vagy újabb verzióval.
+* A beszédfelismerési szolgáltatás [előfizetési kulcsa.](~/articles/cognitive-services/Speech-Service/get-started.md)
+* [Xcode 9.4.1-es](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb és macOS 10.13-as vagy újabb rendszerű macOS-gép.
 
-## <a name="get-the-speech-sdk-for-macos"></a>A macOS-hez készült Speech SDK beszerzése
+## <a name="get-the-speech-sdk-for-macos"></a>A beszédfelismerési SDK beolvasása macOS-hez
 
 [!INCLUDE [License notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-A Mac rendszerhez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik. Xcode-projektekben használható [CocoaPod](https://cocoapods.org/) , és manuálisan is letölthetők a https://aka.ms/csspeech/macosbinary ból. Ez a cikk egy CocoaPod használ.
+A Cognitive Services Mac-hez futó beszédbeszéd SDK-ja keretrendszercsomagként van elosztva. Ezt fel lehet használni az Xcode projektek, https://aka.ms/csspeech/macosbinary mint a [CocoaPod](https://cocoapods.org/) vagy letölthető és manuálisan kapcsolódik. Ez a cikk cocoapodot használ.
 
-## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
+## <a name="create-an-xcode-project"></a>Xcode projekt létrehozása
 
-Indítsa el a Xcode, és indítson el egy új projektet a **fájl** > **új** > **projekt**kiválasztásával. A sablon kiválasztása párbeszédpanelen válassza ki a kakaó- **alkalmazás** sablonját.
+Indítsa el az Xcode programot, és indítson új projektet az**Új** > **projekt** **fájlja** > gombra kattintva. A sablonkijelölési párbeszédpanelen jelölje ki a **Kakaóalkalmazás** sablont.
 
-Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
+A következő párbeszédpaneleken adja meg a következő beállításokat.
 
-1. A **Project Options (projekt beállításai** ) párbeszédpanelen:
-    1. Adja meg a Gyorsindítás alkalmazás nevét, például *HelloWorld*.
-    1. Ha már rendelkezik Apple Developer-fiókkal, adja meg a megfelelő szervezet nevét és a szervezet azonosítóját. Tesztelési célból használjon olyan nevet, mint például a *testorg*. Az alkalmazás aláírásához megfelelő kiépítési profilra van szükség. További információt az [Apple fejlesztői webhelyén](https://developer.apple.com/)talál.
-    1. Ügyeljen arra, hogy a projekt nyelve legyen a **Objective-C** beállítás.
-    1. Törölje a jelölést a forgatókönyvek használatához, és hozzon létre egy dokumentum alapú alkalmazást. A minta alkalmazás egyszerű felhasználói felületét programozott módon hozza létre.
-    1. Törölje az összes jelölőnégyzetet a tesztekhez és az alapértékekhez.
+1. A **Projekt beállításai** párbeszédpanelen:
+    1. Adja meg a rövid útmutató alkalmazás nevét, például *helloworld*.
+    1. Ha már rendelkezik Apple fejlesztői fiókkal, adja meg a megfelelő szervezetnevet és a szervezeti azonosítót. Tesztelési célokra használjon olyan nevet, mint a *testorg*. Az alkalmazás aláírásához megfelelő létesítési profilra van szükség. További információt az [Apple fejlesztői webhelyén talál.](https://developer.apple.com/)
+    1. Győződjön meg arról, hogy a **C célkitűzés** van kiválasztva a projekt nyelveként.
+    1. Törölje a jelet a jelölőnégyzetekből a szövegegység használatához és dokumentumalapú alkalmazás létrehozásához. A mintaalkalmazás egyszerű felhasználói felülete programozott módon jön létre.
+    1. Törölje a jelet a tesztek és az alapadatok jelölőnégyzetéből.
 
-    ![Projektbeállítások](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
+    ![Projekt beállításai](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
 
-1. Válasszon egy projekt könyvtárat:
-    1. Válassza ki azt a könyvtárat, ahová a projektet be szeretné állítani. Ez a lépés létrehoz egy HelloWorld könyvtárat a saját könyvtárában, amely a Xcode projekt összes fájlját tartalmazza.
+1. Projektkönyvtár kiválasztása:
+    1. Válassza ki azt a könyvtárat, amelybe a projektet be szeretné helyezni. Ez a lépés létrehoz egy helloworld könyvtárat a kezdőkönyvtárban, amely tartalmazza az Xcode projekt összes fájlját.
     1. Ennél a próbaprojektnél tiltsa le a Git-adattár létrehozását.
-1. Állítsa be a jogosultságokat a hálózati és a mikrofonhoz való hozzáféréshez. Válassza ki az alkalmazás nevét a bal oldali áttekintés első sorában az alkalmazás konfigurációjának megismeréséhez. Ezután válassza a **képességek** fület.
-    1. Engedélyezze az alkalmazáshoz tartozó **sandbox** -beállítást.
-    1. Jelölje be a **Kimenő kapcsolatok** és a **mikrofon** -hozzáférés jelölőnégyzetét.
+1. Állítsa be a hálózati és mikrofon-hozzáférési jogosultságokat. Válassza ki az alkalmazás nevét az első sorban a bal oldali áttekintésben az alkalmazás konfigurációjának. Ezután válassza a **Képességek** lapot.
+    1. Engedélyezze az **alkalmazás sandbox-beállítását** az alkalmazáshoz.
+    1. Jelölje be a **Kimenő kapcsolatok** és **a Mikrofon** eléréséhez jelölőnégyzetet.
 
-    ![A homokozó beállításai](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-sandbox.png)
+    ![Sandbox-beállítások](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-sandbox.png)
 
-1. Az alkalmazásnak be kell jelentenie a mikrofon használatát a `Info.plist` fájlban. Válassza ki a fájlt az áttekintésben, és adja hozzá az **Adatvédelem-mikrofon használati Leírás** kulcsát egy olyan értékkel, mint például a *beszédfelismeréshez a mikrofon szükséges*.
+1. Az alkalmazásnak deklarálnia kell `Info.plist` a mikrofon használatát a fájlban. Jelölje ki a fájlt az áttekintésben, és adja hozzá az **Adatvédelem – Mikrofon használati leírás** gombot egy olyan értékkel, mint a Mikrofon a *beszédfelismeréshez*.
 
-    ![Beállítások az info. plist fájlban](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-info-plist.png)
+    ![Beállítások az Info.plist-ben](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-info-plist.png)
 
-1. A Xcode projekt lezárása. A CocoaPods beállítása után később egy másik példányt fog használni.
+1. Zárja be az Xcode projektet. A CocoaPods beállítása után később egy másik példányt is használhat.
 
-## <a name="install-the-sdk-as-a-cocoapod"></a>Az SDK telepítése CocoaPod
+## <a name="install-the-sdk-as-a-cocoapod"></a>Telepítse az SDK-t CocoaPod-ként
 
-1. Telepítse a CocoaPod-függőség kezelőjét a [telepítési utasításokban](https://guides.cocoapods.org/using/getting-started.html)leírtak szerint.
-1. Nyissa meg a HelloWorld, amely a minta alkalmazás könyvtára. Helyezzen egy *cocoapods* nevű szövegfájlt és a következő tartalmat a könyvtárba:
+1. Telepítse a CocoaPod függőségkezelőt a [telepítési útmutatóban](https://guides.cocoapods.org/using/getting-started.html)leírtak szerint.
+1. Nyissa meg a mintaalkalmazás könyvtárát, amely a helloworld. Helyezzen el egy *Podfile* nevű szövegfájlt és a könyvtárban a következő tartalmat:
 
    [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/Podfile)]
-1. Nyissa meg a HelloWorld könyvtárat egy terminálon, és futtassa a parancsot `pod install`. Ez a parancs egy `helloworld.xcworkspace` Xcode-munkaterületet hoz létre, amely a minta alkalmazást és a Speech SDK-t is tartalmazza függőségként. Ezt a munkaterületet a következő lépésekben lehet használni.
+1. Nyissa meg a helloworld könyvtárat egy `pod install`terminálon, és futtassa a parancsot . Ez a parancs `helloworld.xcworkspace` létrehoz egy Xcode munkaterületet, amely a mintaalkalmazást és a beszédfelismerési SDK-t függőségként is tartalmazza. Ez a munkaterület a következő lépésekben használatos.
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Nyissa meg a munkaterület `helloworld.xcworkspace` a Xcode.
-1. Cserélje le az automatikusan generált `AppDelegate.m` fájl tartalmát a következő kódra:
+1. Nyissa meg `helloworld.xcworkspace` a munkaterületet Xcode-ban.
+1. Cserélje le az automatikusan `AppDelegate.m` létrehozott fájl tartalmát a következő kódra:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/helloworld/AppDelegate.m#code)]
 1. Cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](~/articles/cognitive-services/Speech-Service/regions.md) . Használja például az ingyenes próba-előfizetéshez `westus`.
+1. Cserélje le `YourServiceRegion` a karakterláncot az előfizetéshez társított [régióra.](~/articles/cognitive-services/Speech-Service/regions.md) Például használja `westus` az ingyenes próba-előfizetés.
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. A hibakeresési kimenet láthatóvá tételéhez válassza a > **hibakeresési területek** **megtekintése** lehetőséget > **aktiválja a konzolt**.
-1. Hozza létre és futtassa a példaként szolgáló kódot a menüből válassza a **termék** > **Futtatás** lehetőséget. Választhatja a **Lejátszás**lehetőséget is.
-1. Miután kiválasztotta a gombot, és mondjuk egy pár szót, látnia kell a képernyő alsó részén megjelenő szöveget. Amikor első alkalommal futtatja az alkalmazást, a rendszer kérni fogja, hogy az alkalmazás hozzáférjen a számítógép mikrofonja számára.
+1. Tegye láthatóvá a hibakeresési kimenetet a **Konzol megtekintése** > terület**aktiválása** > **lehetőséget**választva.
+1. A példakód létrehozása és futtatása a menü **Termékfuttatás** > **parancsának** kiválasztásával. A Lejátszás lehetőséget is **választhatja.**
+1. Miután kiválasztotta a gombot, és mondott néhány szót, a képernyő alsó részén láthatja a kimondott szöveget. Amikor első alkalommal futtatja az alkalmazást, a rendszer kéri, hogy adjon hozzáférést az alkalmazásnak a számítógép mikrofonjához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)
+> [Objektív C-minták felfedezése a GitHubon](https://aka.ms/csspeech/samples)

@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: videók keresése a REST API és a Python használatával – Bing Video Search'
+title: 'Rövid útmutató: Videók keresése a REST API és a Python használatával – Bing videokeresés'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval videó-keresési kéréseket küldhet a Bing Video Search REST API a Python használatával.
+description: Ezzel a rövid útmutatóval videokeresési kérelmeket küldhet a Bing Video Search REST API-nak a Python használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,36 +11,36 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382684"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a Python használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Rövid útmutató: Videók keresése a Bing Video Search REST API-val és a Pythonnal
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű Python-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py).
+Ezzel a rövid útmutatóval elsőként hívhatja meg a Bing Video Search API-t, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű Python-alkalmazás http-videokeresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py).
 
-Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva: 
+Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva. 
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
+[![Iratgyűjtő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Python [2. x vagy 3. x](https://python.org)
+* Python [2.x vagy 3.x](https://python.org)
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a következő kódtárakat:
+1. Hozzon létre egy új Python fájlt a kedvenc IDE vagy szerkesztő, és importálja a következő könyvtárak,
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  Hozzon létre változókat az előfizetési kulcshoz, a keresési végponthoz és egy keresési kifejezéshez. `search_url` lehet az alábbi globális végpont, vagy az erőforráshoz tartozó Azure Portal megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont.
+2.  Hozzon létre változókat az előfizetési kulcshoz, a keresési végponthoz és egy keresési kifejezéshez. `search_url`lehet az alábbi globális végpont, vagy az [egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpont jatthatja az erőforrás azure portalján.
     
     ```python
     subscription_key = None
@@ -49,21 +49,21 @@ Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder
     search_term = "kittens"
     ```
 
-3. Adja hozzá az előfizetési kulcsot egy `Ocp-Apim-Subscription-Key` fejléchez egy új szótár létrehozásával, amely a fejléc sztringjét a kulcshoz rendeli.
+3. Adja hozzá az `Ocp-Apim-Subscription-Key` előfizetési kulcsot egy fejléchez egy új szótár létrehozásával, amely a fejléckarakterláncot társítja a kulcshoz.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="send-your-request"></a>Kérelem küldése
+## <a name="send-your-request"></a>Küldje el a kérését
 
-1. Adja hozzá a paramétereket a kérelemhez egy `params`nevű szótár létrehozásával. Adja hozzá a keresési kifejezést a `q` paraméterhez, amely 5, `free` a visszaadott videók díjszabását, és `short` a videó hosszát.
+1. Adja hozzá a paramétereket a kéréshez `params`egy szótár nevű szótár létrehozásával. Adja hozzá a `q` keresési kifejezést a paraméterhez, az 5-ös videószámhoz, `free` a visszaküldött videók árához és `short` a videó hosszához.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
     ```
 
-2. A Bing Video Search API meghívásához használja a Python `requests` könyvtárát. Adja át az API-kulcsot és a keresési paramétereket a `headers` és `params` szótár használatával.
+2. A `requests` Python könyvtára segítségével hívja meg a Bing Video Search API-t. Adja át az API-kulcs és `headers` `params` a keresési paraméterek et a és a szótár használatával.
     
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -71,7 +71,7 @@ Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder
     search_results = response.json()
     ```
 
-3. Ha meg szeretné tekinteni a visszaadott videók egyikét, szerezze be a `search_results` objektum keresési eredményét. Szúrja be az eredmény `embedHtml` tulajdonságát egy `IFrame`ba.  
+3. A visszaadott videók megtekintéséhez kapjon keresési `search_results` eredményt az objektumról. Szúrja be az `embedHtml` eredmény `IFrame`tulajdonságát egy be.  
     
     ```python
     HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
@@ -188,11 +188,11 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas Webalkalmazás létrehozása](../tutorial-bing-video-search-single-page-app.md)
+> [Egyoldalas webalkalmazás készítése](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még: 
+## <a name="see-also"></a>Lásd még 
 
- [Mi a Bing Video Search API?](../overview.md)
+ [Mi az a Bing Video Search API?](../overview.md)
