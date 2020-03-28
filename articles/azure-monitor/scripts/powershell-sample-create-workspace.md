@@ -1,21 +1,21 @@
 ---
-title: Azure PowerShell-Példaszkript – Log Analytics-munkaterület létrehozása |} A Microsoft Docs
-description: Azure PowerShell-Példaszkript – a Log Analytics-munkaterület létrehozása
+title: Log Analytics-munkaterület létrehozása – Azure PowerShell
+description: Azure PowerShell-parancsfájlminta – Log Analytics-munkaterület létrehozása
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: fc60be2364e80c288300d78cc5dd23eed4ea9e62
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658149"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80054629"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Log Analytics-munkaterület létrehozása a PowerShell használatával
 
-Ez a szkript beolvassa, és gyorsan az Azure Log Analytics-munkaterület, amely van szükség, ha az adatok gyűjtése, elemzése és az intézkedést elindítja a.  
+Ez a parancsfájl gyorsan működésbe hozza az Azure Log Analytics munkaterületet, amely szükséges, ha meg szeretné kezdeni az adatok gyűjtését, elemzését és az adatokkal kapcsolatos műveleteket.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -29,15 +29,15 @@ Ez a szkript beolvassa, és gyorsan az Azure Log Analytics-munkaterület, amely 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Hozzon létre egy új Log Analytics-munkaterületet az előfizetésében, a következő parancsokat használja ezt a szkriptet. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja egy új Log Analytics-munkaterület létrehozásához az előfizetésben. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Egy meglévő munkaterületet adatainak beolvasása. |
-| [Új – AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | A megadott erőforráscsoportban és helyen hoz létre egy munkaterületet. |
+| [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Információt kap egy meglévő munkaterületről. |
+| [Új-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Munkaterületet hoz létre a megadott erőforráscsoportban és helyen. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Apache Storm Apache Kafka-Azure HDInsight'
+title: 'Oktatóanyag: Apache Storm az Apache Kafkával – Azure HDInsight'
 description: Megtudhatja, hogyan hozhat létre streamelési folyamatot az Apache Storm és az Apache Kafka on HDInsight használatával. Ebben az oktatóanyagban a KafkaBolt és a KafkaSpout összetevőkkel streamel adatokat a Kafkából.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494356"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Storm használata az Apache Kafka on HDInsighttal
 
-Ez az oktatóanyag azt mutatja be, hogyan használhatók a [Apache Storm](https://storm.apache.org/) topológiák az adatolvasásra és a HDInsight [Apache Kafkaával](https://kafka.apache.org/) történő írására. Ez az oktatóanyag azt is bemutatja, hogyan tárolhatja az adatmegőrzést a [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilis tárolóban a Storm-fürtön.
+Ez az oktatóanyag bemutatja, hogyan használhatja az [Apache Storm](https://storm.apache.org/) topológiát az Adatok olvasására és írására az [Apache Kafka](https://kafka.apache.org/) segítségével a HDInsight on HDInsight segítségével. Ez az oktatóanyag azt is bemutatja, hogyan őrizhet meg adatokat az [Apache Hadoop HDFS-kompatibilis](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) tároló a Storm-fürtön.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * A Kafka-témakörök létrehozásának ismerete. További információkért lásd [a Kafka on HDInsight használatába bevezető](./kafka/apache-kafka-get-started.md) dokumentumot.
 
-* A Storm-megoldások (topológiák) létrehozásának és üzembe helyezésének ismerete. Pontosabban, [Apache Storm Flux](https://storm.apache.org/releases/current/flux.html) -keretrendszert használó topológiák. További információ: [Apache Storm topológia létrehozása Java-](./storm/apache-storm-develop-java-topology.md) dokumentumban.
+* A Storm-megoldások (topológiák) létrehozásának és üzembe helyezésének ismerete. Pontosabban az Apache Storm [Flux](https://storm.apache.org/releases/current/flux.html) keretrendszert használó topológiák. További információ: [Create an Apache Storm topology in Java](./storm/apache-storm-develop-java-topology.md) document.
 
 * [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzió. A HDInsight 3.5 vagy magasabb verziójához Java 8 szükséges.
 
@@ -58,11 +58,11 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
 > 
 > A kényelmes használat érdekében ez a dokumentum tartalmaz egy hivatkozást egy olyan sablonra, amellyel az összes szükséges Azure-erőforrás létrehozható. 
 >
-> A virtuális hálózat HDInsight használatával kapcsolatos további információkért lásd a [virtuális hálózat megtervezése HDInsight](hdinsight-plan-virtual-network-deployment.md) dokumentumhoz című témakört.
+> A HDInsight virtuális hálózatban való használatáról további információt a [HDInsight virtuális hálózat ának megtervezése](hdinsight-plan-virtual-network-deployment.md) című dokumentumban talál.
 
 ## <a name="storm-and-kafka"></a>Storm és Kafka
 
-A Apache Storm a Apache Kafka használatának számos összetevőjét biztosítja. Ebben az oktatóanyagban a következő összetevőket használjuk:
+Az Apache Storm számos összetevőt biztosít az Apache Kafka-val való munkához. Ebben az oktatóanyagban a következő összetevőket használjuk:
 
 * `org.apache.storm.kafka.KafkaSpout`: Ez az összetevő adatokat olvas be a Kafkából. Ez az összetevő a következő összetevőkre épül:
 
@@ -79,9 +79,9 @@ A Apache Storm a Apache Kafka használatának számos összetevőjét biztosítj
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Leképezi a Storm-topológiában használt rekord-adatstruktúrát a Kafkában tárolt mezőkre.
 
 Ezek az összetevők az `org.apache.storm : storm-kafka` csomagban érhetőek el. Használja a Storm-verziónak megfelelő csomagverziót. A HDInsight 3.6 esetében a Storm-verzió az 1.1.0.
-Az `org.apache.kafka : kafka_2.10` csomagra is szükség lesz, amely további Kafka összetevőket tartalmaz. Használja a Kafka-verziónak megfelelő csomagverziót. A HDInsight 3,6 esetében a Kafka verziója 1.1.1.
+Az `org.apache.kafka : kafka_2.10` csomagra is szükség lesz, amely további Kafka összetevőket tartalmaz. Használja a Kafka-verziónak megfelelő csomagverziót. A HDInsight 3.6 esetében a Kafka verzió 1.1.1.
 
-A következő XML egy [Apache Maven](https://maven.apache.org/) -projekthez tartozó `pom.xml` függőségi deklarációja:
+A következő XML az Apache `pom.xml` [Maven-projekt](https://maven.apache.org/) függőségi deklarációja:
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -115,7 +115,7 @@ A következő XML egy [Apache Maven](https://maven.apache.org/) -projekthez tart
 
 ## <a name="understanding-the-code"></a>A kód értelmezése
 
-A dokumentumban használt kód a következő helyen található: [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
+A dokumentumban használt kód [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)a következő helyen érhető el: .
 
 Az oktatóanyagban két topológia szerepel:
 
@@ -128,7 +128,7 @@ Az oktatóanyagban két topológia szerepel:
     >
     > Ha a Storm-fürt létrehozásához nem használja a dokumentumban lévő sablont, manuálisan kell alkalmaznia a szkriptműveletet a fürtre.
     >
-    > A parancsfájl művelete [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) található, és a rendszer a Storm-fürt felügyelő és Nimbus csomópontjaira alkalmazza. A szkriptműveletek használatával kapcsolatos további információkért tekintse meg [a HDInsight szkriptműveletkel való testreszabását](hdinsight-hadoop-customize-cluster-linux.md) ismertető dokumentumot.
+    > A parancsfájlművelet a [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) Storm-fürt felügyelő- és nimbus-csomópontjaiban található, és azokra vonatkozik. A szkriptműveletek használatával kapcsolatos további információkért tekintse meg [a HDInsight szkriptműveletkel való testreszabását](hdinsight-hadoop-customize-cluster-linux.md) ismertető dokumentumot.
 
 A topológiák a [Flux](https://storm.apache.org/releases/current/flux.html) használatával vannak definiálva. A Flux a Storm 0.10.x verziójával lett bevezetve, és a használatával elválaszthatja a topológia konfigurációját a kódtól. A Flux-keretrendszert használó topológiák esetében a topológia egy YAML-fájlban van definiálva. Az YAML-fájl a topológia részeként is megadható. Önálló fájlként is használható a topológia elküldésekor. A Flux támogatja a változók futásidőben való behelyettesítését is, amit ebben a példában is alkalmazunk.
 
@@ -140,11 +140,11 @@ A topológiákhoz az alábbi paramétereket vannak megadva futásidőben:
 
 * `${kafka.zookeeper.hosts}`: A gazdagépek, amelyeken a Zookeeper fut a Kafka-fürtön.
 
-* `${hdfs.url}`: A HDFSBolt összetevő fájlrendszerbeli URL-címe. Azt jelzi, hogy az adatírás egy Azure Storage-fiókba vagy Azure Data Lake Storage van-e írva.
+* `${hdfs.url}`: A HDFSBolt összetevő fájlrendszerbeli URL-címe. Azt jelzi, hogy az adatok egy Azure Storage-fiókba vagy az Azure Data Lake Storage-ba vannak-e írva.
 
 * `${hdfs.write.dir}`: A könyvtár, amelybe az adatok íródnak.
 
-A Flux-topológiákkal kapcsolatos további információkért lásd: [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html).
+A Flux topológiáiról [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)további információt a .
 
 ### <a name="kafka-writer"></a>Kafka-író
 
@@ -368,11 +368,11 @@ A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák ált
 
 | dev.properties fájl | Leírás |
 | --- | --- |
-| `kafka.zookeeper.hosts` | A Kafka-fürt [Apache ZooKeeper](https://zookeeper.apache.org/) gazdagépei. |
+| `kafka.zookeeper.hosts` | Az [Apache ZooKeeper](https://zookeeper.apache.org/) üzemelteti a Kafka-fürtöt. |
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
 | `kafka.topic` | A topológiák által használt Kafka-témakör. |
 | `hdfs.write.dir` | A könyvtár, amelybe a Kafka-olvasó topológia ír. |
-| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb://` értéket. Azure Data Lake Storage Gen2 esetén használja a `abfs://`értékét. Azure Data Lake Storage Gen1 esetén használja a `adl://`értékét. |
+| `hdfs.url` | A Storm-fürt által használt fájlrendszer. Azure Storage-fiókok esetében használja a `wasb://` értéket. Az Azure Data Lake Storage Gen2 `abfs://`esetén használja a értékét. Az Azure Data Lake Storage Gen1 `adl://`esetén használja a értékét. |
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 
@@ -383,7 +383,7 @@ Az alábbi ábra a Storm és a Kafka közötti kommunikáció áramlását mutat
 ![Azure virtuális hálózatban lévő Storm- és Kafka-fürtök ábrája](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
 
 > [!NOTE]  
-> A fürt egyéb szolgáltatásai, például az SSH és az [Apache Ambari](https://ambari.apache.org/) is elérhetők az interneten keresztül. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
+> A fürt egyéb szolgáltatásai, például az SSH és az [Apache Ambari](https://ambari.apache.org/) az interneten keresztül érhetők el. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
 Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök létrehozásához hajtsa végre a következő lépéseket:
 
@@ -391,7 +391,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Az Azure Resource Manager-sablon a következő helyen található: **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** . A következő erőforrásokat hozza létre:
+    Az Azure Resource Manager **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**sablon a helyen található. A következő erőforrásokat hozza létre:
 
     * Azure-erőforráscsoport
     * Azure Virtual Network
@@ -410,7 +410,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
       | --- | --- |
       | Előfizetés | Az Azure-előfizetése |
       | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
-      | Földrajzi egység | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
+      | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
       | Kafka-fürt neve | A Kafka-fürt neve. |
       | Storm-fürt neve | A Storm-fürt neve. |
       | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
@@ -429,7 +429,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
 ## <a name="build-the-topology"></a>A topológia létrehozása
 
-1. A fejlesztési környezetben töltse le a projektet a [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) helyről, nyisson meg egy parancssort, és módosítsa a könyvtárakat arra a helyre, ahová a projektet letöltötte.
+1. A fejlesztői környezetben töltse [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)le a projektet a ből, nyisson meg egy parancssort, és módosítsa a könyvtárakat arra a helyre, ahol letöltötte a projektet.
 
 2. A **hdinsight-storm-java-kafka** könyvtárban fordítsa le a projektet a következő parancs használatával, és hozzon létre egy telepítési csomagot:
 
@@ -514,7 +514,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
         kafka.topic: stormtopic
 
     > [!IMPORTANT]  
-    > A `hdfs.url` bejegyzés egy Azure Storage-fiókot használó fürthöz van konfigurálva. Ha Data Lake Storaget használó Storm-fürttel szeretné használni ezt a topológiát, módosítsa az értéket `wasb`ról `adl`re.
+    > A `hdfs.url` bejegyzés egy Azure Storage-fiókot használó fürthöz van konfigurálva. Ha ezt a topológiát olyan Storm-fürttel `wasb` szeretné `adl`használni, amely a Data Lake Storage-t használja, módosítsa ezt az értéket a értékre.
 
 4. Mentse a `dev.properties` fájlt, majd a következő parancs használatával töltse fel a **Storm**-fürtbe:
 
@@ -633,7 +633,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhat egy [Apache Storm](https://storm.apache.org/) topológiát a HDInsight való íráshoz és a [Apache Kafka](https://kafka.apache.org/) olvasásához. Azt is megtanulta, hogyan tárolhatók az adattárolók a HDInsight által használt [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilis tárolóban.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az [Apache Storm](https://storm.apache.org/) topológiát az [Apache Kafka hdinsight-i írásához](https://kafka.apache.org/) és olvasásához. Azt is megtanulta, hogyan tárolhatja az adatokat az [Apache Hadoop HDFS-kompatibilis](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) tárolón, amelyet a HDInsight használ.
 
 > [!div class="nextstepaction"]
-> [Apache Kafka producer és fogyasztói API használata](kafka/apache-kafka-producer-consumer-api.md)
+> [Az Apache Kafka Producer és a Consumer API használata](kafka/apache-kafka-producer-consumer-api.md)

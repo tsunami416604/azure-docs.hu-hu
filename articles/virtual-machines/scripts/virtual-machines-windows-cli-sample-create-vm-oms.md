@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-minta – Azure Monitor rendszerű Azure-beli virtuális gép létrehozása
-description: Azure CLI-minta – Windows Server 2016 rendszerű virtuális gépet és Azure Monitor futtató Azure-beli virtuális gép létrehozása.
+title: Azure CLI-minta – Azure-figyelőt futtató Azure-virtuális gép létrehozása
+description: Azure CLI-minta – Hozzon létre egy Azure virtuális gép windows Server 2016 virtuális gép és az Azure Monitor.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -17,13 +17,13 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039910"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Virtuális gép figyelése Azure Monitor naplókkal
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Virtuális gép figyelése az Azure Monitor-naplókkal
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitor szolgáltatásban.
 
@@ -54,7 +54,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

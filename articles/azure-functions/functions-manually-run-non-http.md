@@ -1,79 +1,79 @@
 ---
-title: Nem HTTP-triggerű Azure Functions manuális futtatása
-description: HTTP-kérelem használata nem HTTP-alapú aktivált Azure Functions futtatásához
+title: Nem HTTP-által aktivált Azure-függvények manuális futtatása
+description: NEM HTTP-vel aktivált Azure-függvények http-kérelem használata
 author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
 ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75769132"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
-Ez a cikk bemutatja, hogyan futtathat manuálisan egy nem HTTP-triggert futtató függvényt a speciálisan formázott HTTP-kérelem használatával.
+Ez a cikk bemutatja, hogyan manuálisan futtatható egy nem HTTP-aktivált függvény speciálisan formázott HTTP-kérelem segítségével.
 
-Bizonyos kontextusokban előfordulhat, hogy "igény szerinti" műveletet kell futtatnia egy közvetve aktivált Azure-függvényhez.  A közvetett eseményindítók például egy [olyan függvényt](./functions-create-scheduled-function.md) tartalmaznak, amely egy [másik erőforrás műveletének](./functions-create-storage-blob-triggered-function.md)eredményeképpen futó ütemezett vagy függvényeket tartalmaz. 
+Bizonyos környezetekben előfordulhat, hogy futtatnia kell egy "igény szerinti" egy Azure-függvényt, amely közvetetten aktiválódik.  A közvetett eseményindítók közé tartoznak például [az ütemezésen alapuló függvények](./functions-create-scheduled-function.md) vagy függvények, amelyek [egy másik erőforrás műveletének](./functions-create-storage-blob-triggered-function.md)eredményeként futnak . 
 
-A [Poster](https://www.getpostman.com/) a következő példában szerepel, de a [curl](https://curl.haxx.se/), a [Hegedűs](https://www.telerik.com/fiddler) vagy más hasonló eszköz is használható a HTTP-kérelmek küldéséhez.
+[Postman](https://www.getpostman.com/) használják a következő példában, de használhatja [cURL](https://curl.haxx.se/), [Hegedűs](https://www.telerik.com/fiddler) vagy bármely más hasonló eszköz küldeni HTTP kéréseket.
 
-## <a name="define-the-request-location"></a>A kérelem helyének megadása
+## <a name="define-the-request-location"></a>A kérelem helyének meghatározása
 
-A nem HTTP-triggert futtató függvények futtatásához az Azure-ba irányuló kérést kell küldenie a függvény futtatásához. A kérelem elvégzéséhez használt URL-cím egy adott űrlapot használ.
+Egy nem HTTP-aktivált függvény futtatásához kell egy módja annak, hogy küldjön egy kérést az Azure-nak a függvény futtatásához. A kérelem hez használt URL-cím egy adott formában jelenik meg.
 
-![A kérelem helyének meghatározása: állomásnév + mappa elérési útja + függvény neve](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
+![A kérelem helyének megadása: állomásnév + mappa elérési útja + függvénynév](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Állomásnév:** A Function alkalmazás nyilvános helye, amely a Function alkalmazás nevéből és *azurewebsites.net* , illetve az egyéni tartományból is elérhető.
-- **Mappa elérési útja:** Ha HTTP-kéréssel kívánja elérni a HTTP-triggert, akkor a kérést a mappák *adminisztrátora/függvényei*között kell elküldeni.
+- **Állomás neve:** A függvényalkalmazás nyilvános helye, amely a függvényalkalmazás nevéből, valamint *azurewebsites.net* vagy az egyéni tartományból áll.
+- **Mappa elérési útja:** Ahhoz, hogy http-kérelemmel férjen hozzá a nem HTTP-k által aktivált függvényekhez, a kérelmet az *admin/funkciók*mappáin keresztül kell elküldenie.
 - **Függvény neve:** A futtatni kívánt függvény neve.
 
-Ezt a kérést a Poster-ben, a függvény főkulcsával együtt használhatja az Azure-ba a függvény futtatásához.
+Használja ezt a kérési helyet a Postman együtt a függvény fő kulcsa az Azure-hoz a függvény futtatásához.
 
 > [!NOTE]
-> Helyileg futtatva a függvény főkulcsa nem szükséges. Közvetlenül [hívhatja a](#call-the-function) `x-functions-key` fejlécet kihagyó függvényt.
+> Helyi futtatás esetén a függvény főkulcsa nem szükséges. Közvetlenül `x-functions-key` [meghívhatja a fejlécet](#call-the-function) elhagyó függvényt.
 
-## <a name="get-the-functions-master-key"></a>A függvény főkulcsának beolvasása
+## <a name="get-the-functions-master-key"></a>A függvény főkulcsának beszerezése
 
-Keresse meg a függvényt a Azure Portalban, majd kattintson a **Manage (kezelés** ) gombra, és keresse meg a **gazdagép kulcsai** szakaszt. Az *_master* sorban található **Másolás** gombra kattintva másolja a főkulcsot a vágólapra.
+Keresse meg a függvényt az Azure Portalon, és kattintson a **Manage** and find the **Host Keys (Gazdakulcsok)** szakaszra. Kattintson a **másolás** gombra a *_master* sorban, hogy másolja a főkulcsot a vágólapra.
 
-![Főkulcs másolása a Function Management képernyőről](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+![Mesterkulcs másolása a Funkciókezelés képernyőről](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-A főkulcs másolása után a függvény nevére kattintva térjen vissza a kódlap ablakába. Ezután kattintson a **naplók** fülre. Az itt bejelentkezett függvény üzeneteit akkor láthatja, amikor manuálisan futtatja a függvényt a Poster szolgáltatásból.
+A főkulcs másolása után kattintson a függvény nevére a kódfájl ablakába való visszatéréshez. Ezután kattintson a **Naplók** fülre. Látni fogja az üzeneteket a funkció bejelentkezett itt, amikor manuálisan fut a funkció postás.
 
 > [!CAUTION]  
-> A főkulcs által biztosított Function app emelt szintű engedélyei miatt ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt egy alkalmazásban.
+> A főkulcs által megadott emelt szintű engedélyek miatt ne ossza meg ezt a kulcsot harmadik felekkel, és ne ossza el azt egy alkalmazásban.
 
-## <a name="call-the-function"></a>A függvény meghívása
+## <a name="call-the-function"></a>A függvény felhívása
 
-Nyissa meg a Poster-t, és kövesse az alábbi lépéseket:
+Nyissa meg a Postman t, és kövesse az alábbi lépéseket:
 
-1. Adja meg a **kérelem helyét az URL-cím**szövegmezőben.
-2. Győződjön meg arról, hogy a HTTP-metódus a **post**értékre van beállítva.
-3. **Kattintson** a **fejlécek** fülre.
-4. Adja meg az **x-functions-Key** értéket az első **kulcsként** , és illessze be a főkulcsot (a vágólapról) az **érték** mezőbe.
-5. Adja meg a **Content-Type** **karakterláncot**második **kulcsként** , és adja meg az **Application/JSON** értéket.
+1. Írja be a **kérelem helyét az URL-cím mezőbe.**
+2. Győződjön meg arról, hogy a HTTP metódus **POST**.
+3. **Kattintson** a **Fejlécek** fülre.
+4. Írja be **az x-functions-key-t** első **kulcsként,** és illessze be a főkulcsot (a vágólapról) az **értékmezőbe.**
+5. Írja be **a Content-Type értéket** második **kulcsként,** és írja be **az application/json** értéket **értékként.**
 
-    ![Poster-fejlécek beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    ![Postás fejlécek beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-6. **Kattintson** a **törzs** fülre.
-7. Adja meg a (z) **{"input": "test"}** értéket a kérelem törzse.
+6. **Kattintson** a **Törzs** fülre.
+7. Írja be **a { "input": "test" }** értéket a kérelem törzseként.
 
-    ![Poster-törzs beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    ![Postás test beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
 8. Kattintson a **Küldés** gombra.
 
-    ![Poster-kérelem küldése](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    ![Kérelem küldése a Postánál](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
-A Poster ekkor a 202-es állapotot **fogadja el**.
+Postman majd jelentést állapotban **202 Elfogadott**.
 
-Ezután térjen vissza a függvényhez a Azure Portal. Keresse meg a *naplók* ablakot, és megtekintheti a függvény manuális hívásával érkező üzeneteket.
+Ezután térjen vissza a függvényhez az Azure Portalon. Keresse meg a *Naplók ablakot,* és látni fogja a funkció kézi hívásából érkező üzeneteket.
 
-![Függvények naplójának eredményei a kézi hívásból](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+![A funkciónapló eredménye kézi hívásból](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kódtesztelési stratégiák az Azure Functions szolgáltatásban](./functions-test-a-function.md)
-- [Az Azure Function Event Grid helyi hibakeresést indít](./functions-debug-event-grid-trigger-local.md)
+- [Az Azure Függvény eseményrácsának helyi hibakeresési eseménye](./functions-debug-event-grid-trigger-local.md)

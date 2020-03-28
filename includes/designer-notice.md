@@ -7,13 +7,15 @@ ms.custom: include file
 ms.topic: include
 author: nibaccam
 ms.author: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 0802cfea424beb26f34ff2250cfd64ce69db0ca6
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 03/20/2020
+ms.openlocfilehash: 4b6275dfcac011693c2b90dce7b8d308ecec2f93
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314069"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371954"
 ---
 > [!TIP]
-> A jelenleg Machine Learning Studiot (klasszikus) használó ügyfeleket javasoljuk a [Azure Machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer)kipróbálására, amely a drag-n-drop ml modulokat, __valamint__ a skálázhatóságot, a verziókövetés és a vállalati biztonságot is biztosítja.
+> A Machine Learning Studio (klasszikus) kezelőit vagy kiértékelésére jelenleg használó vagy kiértékelő ügyfelek számára javasoljuk, hogy próbálják ki [az Azure Machine Learning designert](https://docs.microsoft.com/azure/machine-learning/concept-designer) (előzetes verzió), amely lehúzható ml-modulokat, __valamint__ méretezhetőséget, verziókövetést és vállalati biztonságot biztosít.
+>
+>További információ: [Azure Machine Learning vs Machine Learning Studio (klasszikus)](../articles/machine-learning/compare-azure-ml-to-studio-classic.md).

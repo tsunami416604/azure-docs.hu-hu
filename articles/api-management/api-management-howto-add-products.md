@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74538261"
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
@@ -52,12 +52,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     | Megjelenített név             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
     | Név                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
     | Leírás              | A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.                                                                                                                                               |
-    | Állami                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
+    | Állapot                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
     | Előfizetés szükséges    | Jelölje be az **Előfizetés szükséges** jelölőnégyzetet, ha egy felhasználónak elő kell fizetnie a termék használatára.                                                                                                                                                                                                                                   |
     | Jóváhagyást igényel        | Jelölje be a **Jóváhagyást igényel** jelölőnégyzetet, ha azt szeretné, hogy egy rendszergazda döntsön a termék előfizetésére vonatkozó kérelmek elfogadásáról vagy elutasításáról. Ha a jelölőnégyzet nincs bejelölve, a rendszer az előfizetési kísérleteket automatikusan elfogadja.                                                                                                                         |
     | Előfizetések számának korlátozása | Az egyidejű előfizetések számának korlátozásához adjon meg egy határértéket.                                                                                                                                                                                                                                |
     | Jogi feltételek              | Megadhatja a termék használati feltételeit, amelyeket az előfizetőknek el kell fogadniuk, hogy használni tudják a terméket.                                                                                                                                                                                                             |
-    | API-k                     | A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/> A termék létrehozása során hozzáadhat meglévő API-kat, Később is hozzáadhat egy API-t a termékhez a termék **Beállítások** lapján vagy egy API létrehozásakor. |
+    | API-k                     | A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/> A termék létrehozása során hozzáadhat meglévő API-kat, Később hozzáadhat egy API-t a termékhez, akár a Termék **Beállítások** lapján, akár egy API létrehozásakor. |
 
 3. Az új termék létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -67,9 +67,9 @@ A mentés után is folytathatja a termék konfigurálását a **Beállítások**
 
 A termék előfizetőit az **Előfizetések** lapon tekintheti meg, ahol új előfizetőket is megadhat.
 
-Egy termék láthatóságának beállítása a fejlesztők és a vendégek számára a **hozzáférés-vezérlés** lapon.
+A **hozzáférés-vezérlés** lapon beállíthatja egy termék láthatóságát a fejlesztők vagy a vendégek számára.
 
-## <a name="add-apis"> </a>API-k hozzáadása termékekhez
+## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>API-k hozzáadása termékekhez
 
 A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A termék létrehozása során hozzáadhat meglévő API-kat, de később is hozzáadhat API-t a termékhez a Termékek **Beállítások** lapján vagy az API-k létrehozásakor.
 
@@ -87,7 +87,7 @@ A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor
 > [!TIP]
 > [REST API-n keresztül](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

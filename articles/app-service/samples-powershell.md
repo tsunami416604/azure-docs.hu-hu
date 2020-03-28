@@ -1,45 +1,45 @@
 ---
 title: PowerShell-minták
-description: Azure PowerShell mintákat talál néhány gyakori App Service forgatókönyvhöz. Ismerje meg, hogyan automatizálhatja App Service telepítési vagy felügyeleti feladatait.
+description: Az Azure PowerShell-minták at a gyakori App Service-forgatókönyvek. Ismerje meg, hogyan automatizálhatja az App Service központi telepítési vagy felügyeleti feladatait.
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
 ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74687030"
 ---
-# <a name="powershell-samples-for-azure-app-service"></a>PowerShell-minták a Azure App Servicehoz
+# <a name="powershell-samples-for-azure-app-service"></a>PowerShell-minták az Azure App Service-hez
 
-Az alábbi táblázat a Azure PowerShell használatával létrehozott PowerShell-szkriptekre mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat az Azure PowerShell használatával készített PowerShell-parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
 |**Alkalmazás létrehozása**||
-| [Alkalmazás létrehozása a GitHubról történő üzembe helyezéssel](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, amely kódot húz le a GitHubról. |
-| [Hozzon létre egy alkalmazást a GitHubról történő folyamatos üzembe helyezéssel](./scripts/powershell-continuous-deployment-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, amely folyamatosan üzembe helyezi a kódot a GitHubról. |
-| [Alkalmazás létrehozása és kód üzembe helyezése FTP-vel](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és fájlokat tölt fel egy helyi könyvtárból FTP használatával. |
-| [Alkalmazás létrehozása és kód üzembe helyezése helyi git-tárházból](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és beállítja a kód leküldését egy helyi git-adattárból. |
-| [Alkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást egy üzembe helyezési ponttal az átmeneti kód változásaihoz. |
+| [Alkalmazás létrehozása a GitHubról történő telepítéssel](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, amely lekéri a kódot a GitHubról. |
+| [Alkalmazás létrehozása folyamatos üzembe helyezéssel a GitHubról](./scripts/powershell-continuous-deployment-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, amely folyamatosan telepíti a githubról a kódot. |
+| [Alkalmazás létrehozása és kód telepítése FTP-vel](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és ftp-n keresztül fájlokat tölt fel egy helyi könyvtárból. |
+| [Alkalmazás létrehozása és kód központi telepítése egy helyi Git-tárházból](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és konfigurálja a kódleküldéset egy helyi Git-tárházból. |
+| [Alkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást egy központi telepítési réshellyel az átmeneti kód módosításához. |
 |**Alkalmazás konfigurálása**||
-| [Egyéni tartomány leképezése egy alkalmazásra](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egyéni tartománynevet rendel hozzá. |
-| [Egyéni SSL-tanúsítvány kötése egy alkalmazáshoz](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egy egyéni tartománynév SSL-tanúsítványát köti hozzá. |
-|**Alkalmazás méretezése**||
-| [Alkalmazások manuális méretezése](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és két példány között méretezi azt. |
-| [Az alkalmazások globális skálázása magas rendelkezésre állású architektúrával](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Két App Service alkalmazást hoz létre két különböző földrajzi régióban, és egyetlen végponton keresztül elérhetővé teszi őket az Azure Traffic Manager használatával. |
+| [Egyéni tartomány hozzárendelése alkalmazáshoz](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzárendel egy egyéni tartománynevet. |
+| [Egyéni SSL-tanúsítvány kötése alkalmazáshoz](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzá köti az egyéni tartománynév SSL-tanúsítványát. |
+|**Az alkalmazás méretezése**||
+| [Alkalmazás manuális méretezése](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és két példányra méretezi azt. |
+| [Alkalmazás méretezése világszerte magas rendelkezésre állású architektúrával](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Két App Service-alkalmazást hoz létre két különböző földrajzi régióban, és elérhetővé teszi őket egyetlen végponton keresztül az Azure Traffic Manager használatával. |
 |**Az alkalmazás összekötése az erőforrásokkal**||
-| [Alkalmazás összekötése egy SQL Database](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy SQL-adatbázist, majd hozzáadja az adatbázis-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
-| [Alkalmazás összekötése egy Storage-fiókkal](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy Storage-fiókot, majd hozzáadja a Storage-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
-|**Alkalmazás biztonsági mentése és visszaállítása**||
-| [Alkalmazás biztonsági mentése](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és létrehoz egy egyszeri biztonsági mentést. |
-| [Ütemezett biztonsági mentés létrehozása egy alkalmazáshoz](./scripts/powershell-backup-scheduled.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és létrehoz egy ütemezett biztonsági mentést. |
-| [Alkalmazás biztonsági másolatának törlése](./scripts/powershell-backup-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Egy meglévő biztonsági másolat törlése az alkalmazáshoz. |
-| [Alkalmazás visszaállítása biztonsági másolatból](./scripts/powershell-backup-restore.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Egy korábban befejezett biztonsági másolatból állítja vissza az alkalmazást. |
-| [Biztonsági másolat visszaállítása előfizetések között](./scripts/powershell-backup-restore-diff-sub.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Visszaállítja egy webalkalmazást egy másik előfizetésben található biztonsági másolatból. |
-|**Alkalmazás figyelése**||
-| [Alkalmazás figyelése webkiszolgáló-naplókkal](./scripts/powershell-monitor.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, lehetővé teszi a naplózást, és letölti a naplókat a helyi gépre. |
+| [Alkalmazás csatlakoztatása SQL-adatbázishoz](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást és egy SQL-adatbázist, majd hozzáadja az adatbázis-kapcsolati karakterláncot az alkalmazásbeállításokhoz. |
+| [Alkalmazás csatlakoztatása tárfiókhoz](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást és egy tárfiókot, majd hozzáadja a tárolási kapcsolat karakterláncát az alkalmazás beállításaihoz. |
+|**Alkalmazás biztonsági és visszaállítási biztonsági őre**||
+| [Alkalmazás biztonsági mentése](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és létrehoz egy egyszeri biztonsági mentést. |
+| [Ütemezett biztonsági másolat létrehozása alkalmazáshoz](./scripts/powershell-backup-scheduled.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és létrehoz egy ütemezett biztonsági másolatot. |
+| [Alkalmazás biztonsági másolatának törlése](./scripts/powershell-backup-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Egy alkalmazás meglévő biztonsági másolatának törlése. |
+| [Alkalmazás visszaállítása biztonsági másolatból](./scripts/powershell-backup-restore.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Egy alkalmazás visszaállítása egy korábban befejezett biztonsági másolatból. |
+| [Biztonsági másolat visszaállítása az előfizetések között](./scripts/powershell-backup-restore-diff-sub.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Egy webalkalmazás visszaállítása egy másik előfizetés biztonsági mentéséből. |
+|**Alkalmazás monitorozása**||
+| [Alkalmazás figyelése webkiszolgálói naplókkal](./scripts/powershell-monitor.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, engedélyezi a naplózást, és letölti a naplókat a helyi számítógépre. |
 | | |
