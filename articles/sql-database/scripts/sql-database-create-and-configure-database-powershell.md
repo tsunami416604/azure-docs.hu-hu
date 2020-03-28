@@ -1,6 +1,6 @@
 ---
-title: PowerShell-példa – hozzon létre egyetlen adatbázist a Azure SQL Databaseban
-description: Azure PowerShell példa parancsfájlt egyetlen adatbázis létrehozásához Azure SQL Database
+title: 'PowerShell-példa: hozzon létre egyetlen adatbázist az Azure SQL Database-ben'
+description: Azure PowerShell példaparancsfájl egyetlen adatbázis létrehozásához az Azure SQL Database-ben
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 1311c14e95e709ef522fe13ce30786ce0d8fb0a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73691681"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Egyetlen Azure SQL Database-adatbázis létrehozása és SQL Database kiszolgáló tűzfalszabály konfigurálása a PowerShell használatával
+# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Egyetlen Azure SQL-adatbázis létrehozása és SQL Database-kiszolgáló tűzfalszabályának konfigurálása a PowerShell használatával
 
 Ez a PowerShell-példaszkript egyetlen Azure SQL-adatbázist hoz létre, és konfigurál egy kiszolgálószintű tűzfalszabályt. Miután a szkript sikeresen lefutott, az SQL Database elérhető lesz az összes Azure-szolgáltatásból és a konfigurált IP-címről.
 
@@ -26,7 +26,7 @@ Ez a PowerShell-példaszkript egyetlen Azure SQL-adatbázist hoz létre, és kon
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez az oktatóanyag az AZ PowerShell 1.4.0-s vagy újabb szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -34,7 +34,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -47,9 +47,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely egyetlen adatbázist vagy rugalmas készletet üzemeltet. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgálón lévő összes SQL Database-adatbázis elérését a megadott IP-címtartományból. |
-| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Egyetlen adatbázist vagy rugalmas készletet hoz létre. |
+| [Új-AzsqlServer](/powershell/module/az.sql/new-azsqlserver) | Egyetlen adatbázist vagy rugalmas készletet tartalmazó SQL Database-kiszolgálót hoz létre. |
+| [Új-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgálón lévő összes SQL Database-adatbázis elérését a megadott IP-címtartományból. |
+| [Új-AzsqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Egyetlen adatbázist vagy rugalmas készletet hoz létre. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

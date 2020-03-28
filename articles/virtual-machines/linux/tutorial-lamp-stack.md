@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – LAMP üzembe helyezése Linux rendszerű virtuális gépen az Azure-ban
+title: Oktatóanyag – A LAMP telepítése Linux os virtuális gépen az Azure-ban
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan telepíthet LAMP stacket az Azure-ban üzemeltetett linuxos virtuális gépre
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034473"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154372"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LAMP-webkiszolgáló telepítése Linux rendszerű virtuális gépre az Azure-ban
 
-Ez a cikk ismerteti, hogyan helyezhet üzembe Apache-webkiszolgálót, MySQL-t és PHP-t (a LAMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. Ha az NGINX-webkiszolgálót szeretné használni, tekintse meg a [LEMP-veremmel](tutorial-lemp-stack.md) kapcsolatos oktatóanyagot. Ha szeretné működés közben megtekinteni a LAMP-vermet, telepíthet és konfigurálhat egy WordPress-webhelyet. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez a cikk ismerteti, hogyan helyezhet üzembe Apache-webkiszolgálót, MySQL-t és PHP-t (a LAMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. Ha az NGINX-webkiszolgálót szeretné használni, tekintse meg a [LEMP-veremmel](tutorial-lemp-stack.md) kapcsolatos oktatóanyagot. Ha szeretné működés közben megtekinteni a LAMP-vermet, telepíthet és konfigurálhat egy WordPress-webhelyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Ubuntu rendszerű virtuális gép létrehozása (a LAMP-veremben az „L” betű)
@@ -35,7 +35,7 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe Apache-webkiszolgálót, MySQL-t �
 
 Ez a telepítés gyors teszteléshez és megvalósíthatósági vizsgálatokhoz használható. További információt a LAMP-veremről – beleértve az éles környezetre vonatkozó javaslatokat – az [Ubuntu dokumentációjában](https://help.ubuntu.com/community/ApacheMySQLPHP) talál.
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -55,7 +55,7 @@ A rendszer felszólítja a csomagok és más függőségek telepítésére. Ezze
 ## <a name="verify-installation-and-configuration"></a>A telepítés és a konfigurálás ellenőrzése
 
 
-### <a name="verify-apache"></a>Apache ellenőrzése
+### <a name="verify-apache"></a>Az Apache ellenőrzése
 
 Ellenőrizze az Apache verzióját a következő paranccsal:
 ```bash
@@ -75,13 +75,13 @@ Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetű
 mysql -V
 ```
 
-A MySQL telepítésének biztonságossá tételéhez, beleértve a legfelső szintű jelszó beállítását is, futtassa a `mysql_secure_installation` szkriptet. 
+A MySQL telepítésének biztosítása érdekében, beleértve a `mysql_secure_installation` gyökérjelszó beállítását, futtassa a parancsfájlt. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-Igény szerint beállíthatja a jelszó ellenőrzése beépülő modult (ajánlott). Ezután állítson be egy jelszót a MySQL root felhasználóhoz, és konfigurálja a környezete fennmaradó biztonsági beállításait. Javasoljuk, hogy az "Y" (igen) kérdésre válaszoljon az összes kérdésre.
+Beállíthatja a Jelszó érvényesítése beépülő modult (ajánlott). Ezután állítson be egy jelszót a MySQL root felhasználó, és konfigurálja a fennmaradó biztonsági beállításokat a környezetben. Javasoljuk, hogy minden kérdésre válaszoljon az "Y" (igen) gombra.
 
 Ha ki szeretné próbálni a MySQL funkcióit (MySQL-adatbázis létrehozása, felhasználók hozzáadása vagy a konfigurációs beállítások módosítása), jelentkezzen be a MySQL-be. Ez a lépés nem kötelező az oktatóanyag elvégzéséhez.
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 Amikor végzett, a `\q` parancs beírásával lépjen ki a mysql parancssorból.
 
-### <a name="verify-php"></a>A PHP ellenőrzése
+### <a name="verify-php"></a>PHP ellenőrzése
 
 Ellenőrizze a PHP verzióját a következő paranccsal:
 
@@ -111,7 +111,7 @@ Most ellenőrizheti a létrehozott PHP-információs oldalt. Nyissa meg a böng�
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy LAMP-kiszolgálót helyezett üzembe az Azure-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -122,10 +122,10 @@ Ebben az oktatóanyagban egy LAMP-kiszolgálót helyezett üzembe az Azure-ban. 
 > * A telepítés és a konfigurálás ellenőrzése
 > * A WordPress telepítése a LAMP-kiszolgálón
 
-Folytassa a következő oktatóanyaggal, amelyből megismerheti, hogyan tehetők biztonságossá a webkiszolgálók SSL-tanúsítványok használatával.
+A következő oktatóanyagra lépésként megtudhatja, hogyan biztosíthat webkiszolgálókat TLS/SSL-tanúsítványokkal.
 
 > [!div class="nextstepaction"]
-> [Webkiszolgáló biztonságossá tétele SSL használatával](tutorial-secure-web-server.md)
+> [Biztonságos webkiszolgáló a TLS-sel](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

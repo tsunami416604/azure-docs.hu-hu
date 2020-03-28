@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell parancsfájl mintája – Azure Monitor naplók
-description: Azure PowerShell parancsfájl mintája – Azure Monitor naplók
+title: Azure PowerShell-parancsfájlminta – Az Azure Monitor naplói
+description: Azure PowerShell-parancsfájlminta – Az Azure Monitor naplói
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: fdffb05ac7aff8aac2db9ac588c1dedf8f5c9ea5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74038960"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>Azure Monitor virtuális gép létrehozása a PowerShell-lel 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Hozzon létre egy Azure Monitor virtuális gép powershell 
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitorban. Emellett frissítenie kell a Log Analytics-munkaterület azonosítóját és kulcsát.
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Egy virtuálisgép-bővítményt ad hozzá a virtuális géphez. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

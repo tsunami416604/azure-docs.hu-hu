@@ -1,22 +1,22 @@
 ---
-title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
-description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
+title: 'Oktatóanyag: Lekérdezések kezelése az Azure Portalon'
+description: Ebben az oktatóanyagban hozzon létre egy Resource Graph-lekérdezést, és ossza meg az új lekérdezést másokkal az Azure Portalon.
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74303950"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása az Azure Portalon
 
-Az Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portal mentse az erőforrás-gráf lekérdezéseit. Kétféle lekérdezés létezik: _magán_ -és _megosztott_. A rendszer a Azure Portal beállításokban menti a privát lekérdezést. Míg a megosztott lekérdezés olyan Resource Manager-erőforrás, amely szerepköralapú hozzáférés-vezérléssel (RBAC) felügyelhető és erőforrás-zárolásokkal védett. Mindkét típusú lekérdezés titkosítva van a nyugalmi állapotban.
+Az Azure Resource Graph Explorer lehetővé teszi, hogy mentse a Resource Graph-lekérdezések közvetlenül az Azure Portalon. Kétféle lekérdezés létezik: _Privát_ és _Megosztott_. A privát lekérdezés tava van az Azure Portal beállításait. Mivel a megosztott lekérdezés olyan Erőforrás-kezelő erőforrás, amely szerepköralapú hozzáférés-vezérléssel (RBAC) kezelhető, és erőforrászárolással védett. Mindkét típusú lekérdezések titkosítva vannak inkamintikálva.
 
-A lekérdezéseknek a Azure Portalban való mentésével megtakaríthatja a kedvenc vagy gyakran használt lekérdezések keresésének időpontját. A lekérdezések megosztásakor segít a csapatnak megvalósítani a konzisztencia és a hatékonyság célkitűzéseit az ismétlődéssel.
+Ha lekérdezéseket ment az Azure Portalon, időt takaríthat meg, amelyet egyébként a kedvenc vagy általánosan használt lekérdezések keresésére fordíthat. Amikor megosztja a lekérdezéseket, az ismétlések révén segít a csapatnak a konzisztencia és a hatékonyság céljainak megvalósításában.
 
-Ebben az oktatóanyagban a következő feladatokat hajtja végre:
+Ebben az oktatóanyagban a következő feladatokat hajthatja végre:
 
 > [!div class="checklist"]
 > - Privát lekérdezés létrehozása és törlése
@@ -26,15 +26,15 @@ Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyen, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="create-and-delete-a-private-query"></a>Privát lekérdezés létrehozása és törlése
 
-A privát lekérdezések csak az őket létrehozó fiók számára érhetők el és láthatók. Ahogy azokat a rendszer a fiók Azure Portal beállításaiban menti, azokat csak a Azure Portal belül lehet létrehozni, használni és törölni. Egy privát lekérdezés nem Resource Manager-erőforrás. Új privát lekérdezés létrehozásához kövesse az alábbi lépéseket:
+A privát lekérdezések csak az azokat létrehozó fiók számára érhetők el és láthatók. A fiók Azure Portal beállításaiba való mentésük során csak az Azure Portalon belül hozhatók létre, használhatók és törölhetők. A privát lekérdezés nem Erőforrás-kezelő erőforrás.A Private query is nem resource manager resource. Új személyes lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
-1. A portál menüjében válassza a **minden szolgáltatás** lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt. Keresse meg és válassza ki az **Erőforrásgrafikon Explorert**.
+1. A portál menüben válassza a **Minden szolgáltatás** lehetőséget, vagy használja az Azure keresőmezőjét az összes lap tetején. Keresse meg a keresést, és válassza az **Erőforrásgráf-kezelő lehetőséget.**
 
-1. Az Azure Resource Graph Explorer **lekérdezés 1** lapján adja meg a következő lekérdezést:
+1. Az Azure Resource Graph Explorer lap **Lekérdezés 1** lapján adja meg a következő lekérdezést:
 
    ```kusto
    Resources
@@ -42,31 +42,31 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-   Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
+   Válassza a **Lekérdezés futtatása** lehetőséget, ha az alsó ablaktáblán szeretné látni a lekérdezés eredményeit.
 
-   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-virtual-machines-by-os-type).
+   A lekérdezésről további információt a [Minták – Virtuális gépek megszámlálása operációsrendszer-típus szerint című témakörben](../samples/starter.md#count-virtual-machines-by-os-type)talál.
 
 
-1. Válassza a **Mentés** vagy a **Mentés másként**lehetőséget, írja be a **virtuális gépek száma operációs rendszer** szerint a nevet, hagyja a típust **privát lekérdezésként**, majd kattintson **a Mentés gombra** a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**.
+1. Válassza a **Mentés** vagy **a Mentés másként**lehetőséget, írja be **a Gépkezelő által gépszám-számlálónevet** névként, hagyja a típust **privát lekérdezésként,** majd válassza a **Mentés** gombot a **Mentés lekérdezés** ablaktábla alján. A lap címe **lekérdezés 1-ről** **gépi rendszer által számított virtuális gépekre**változik.
 
-1. Lépjen távolabb az Azure Resource Graph Explorerben a Azure Portal, majd térjen vissza. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és az **1. lekérdezés** lapot adta vissza.
+1. Lépjen el az Azure Resource Graph Explorertől az Azure Portalon, majd térjen vissza hozzá. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és a **Lekérdezés 1** lap visszaadta.
 
-1. Válassza **a lekérdezés megnyitása**lehetőséget. Győződjön meg arról, hogy a típus **privát lekérdezés**. Az operációs rendszer most már a **lekérdezés neve** listában megjelenik a mentett nevek **száma virtuális gépek** . Amikor kiválasztja a mentett lekérdezés cím hivatkozását, a rendszer betölti egy új lapra a lekérdezés nevével.
+1. Válassza **a Lekérdezés megnyitása**lehetőséget. Győződjön meg arról, hogy a típus **privát lekérdezés.** Az **operációs rendszer által mentett virtuális gépek száma** most már megjelenik a lekérdezés **neve** listában. Amikor kiválasztja a mentett lekérdezés címhivatkozását, az egy új lapba töltődik be a lekérdezés nevével.
 
    > [!NOTE] 
-   > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Ha új mentett lekérdezést szeretne létrehozni ebből a nyílt lekérdezésből, válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
+   > Ha egy mentett lekérdezés meg van nyitva, és a lapon megjelenik a neve, a **Mentés** gomb kiválasztásával frissíti a végrehajtott módosításokat. Ha új mentett lekérdezést szeretne létrehozni ebből a megnyitott lekérdezésből, válassza a **Mentés másként** lehetőséget, és folytassa úgy, mintha egy teljesen új lekérdezést mentene.
 
-1. A mentett lekérdezés törléséhez válassza ismét **a lekérdezés megnyitása** lehetőséget, és ellenőrizze, hogy a **Type (típus** ) mező **privát lekérdezésre**van-e beállítva. A mentett `Count VMs by OS` lekérdezés sorában válassza a **Törlés** lehetőséget (Lomtár ikon). A megerősítő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
-   Ezután zárjuk be a **lekérdezés megnyitása** ablaktáblát.
+1. A mentett lekérdezés törléséhez jelölje be ismét a **Lekérdezés megnyitása jelölőnégyzetet,** és ellenőrizze, hogy a **Típus** mező beállítása **Privát lekérdezés.** A mentett `Count VMs by OS` lekérdezés sorában válassza a **Törlés** (Lomtár ikon) lehetőséget. A megerősítést kérő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
+   Ezután zárja be a **Lekérdezés megnyitása** ablaktáblát.
 
 ## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
 
-Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoporthoz lesz mentve, felügyelhető és vezérelhető a RBAC, és az erőforrás-zárolásokkal is védhető. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt.
+A privát lekérdezésektől eltérően a megosztott lekérdezés erőforrás-kezelői erőforrás. Ez a tény azt jelenti, hogy a lekérdezés egy erőforráscsoportba kerül, az RBAC-kal kezelhető és vezérelhető, és akár erőforrászárolásokkal is védhető. Erőforrásként bárki láthatja és használhatja, aki rendelkezik a megfelelő engedélyekkel.
 Új megosztott lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
-1. A portál menüjében válassza a **minden szolgáltatás**lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt, és válassza ki az **Erőforrásgrafikon-kezelőt**.
+1. A portál menüben válassza a **Minden szolgáltatás**lehetőséget, vagy használja az Összes lap tetején található Azure keresőmezőt az **Erőforrásgráf-kezelő**kereséséhez és kiválasztásához.
 
-1. Az Azure Resource Graph Explorer **lekérdezés 1** lapján adja meg a következő lekérdezést:
+1. Az Azure Resource Graph Explorer lap **Lekérdezés 1** lapján adja meg a következő lekérdezést:
 
    ```kusto
    Resources
@@ -74,62 +74,62 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
     
-   Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
+   Válassza a **Lekérdezés futtatása** lehetőséget, ha az alsó ablaktáblán szeretné látni a lekérdezés eredményeit.
 
-   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-virtual-machines-by-os-type).
+   A lekérdezésről további információt a [Minták – Virtuális gépek megszámlálása operációsrendszer-típus szerint című témakörben](../samples/starter.md#count-virtual-machines-by-os-type)talál.
 
 1. Válassza a **Mentés** vagy **a Mentés másként**lehetőséget.
 
    
-   ![Az új lekérdezés mentése a Save (Mentés) gomb használatával](../media/create-share-query/save-shared-query-buttons.png)
+   ![Az új lekérdezés mentése a Mentés gombbal](../media/create-share-query/save-shared-query-buttons.png)
 
-1. A **lekérdezés mentése** ablaktáblán adja meg a **virtuális gépek száma operációs rendszer szerint** a nevet.
+1. A **Lekérdezés mentése** ablaktáblán adja meg a **virtuális gépek száma operációs rendszerenként** a nevet.
 
-1. Módosítsa a típust **megosztott lekérdezésre**, állítsa a leírást a **virtuális gépek számának az operációs rendszer típusa**szerint, és állítsa be az **előfizetést** a lekérdezési erőforrás létrehozási helyének megadásához.
+1. Módosítsa a típust **Megosztott lekérdezésre**, állítsa a leírást **a virtuális gépek száma operációsrendszer-típus szerint**, és állítsa be az **Előfizetés** t, hogy megadja, hol jön létre a lekérdezési erőforrás.
 
-1. Hagyja bejelölve a **Közzététel az erőforráshoz – Graph – lekérdezések erőforráscsoport** jelölőnégyzetet, és az **erőforráscsoport helye** az USA **nyugati középső**régiója.
+1. Hagyja bejelölve a **Közzététel erőforrásgráfra lekérdezések erőforráscsoportra** jelölőnégyzetet, és az **Erőforráscsoport helye** **(US) Usa nyugati középső régiója**értékre van állítva.
 
-1. Kattintson a Save ( **Mentés** ) gombra a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**. Az erőforrás **-gráf-lekérdezések** erőforráscsoport első használatakor a Mentés a vártnál hosszabb időt vesz igénybe, mert az erőforráscsoport létrejön.
+1. A **Mentés lekérdezés** ablaktábla alján válassza a **Mentés** lehetőséget. A lap címe **lekérdezés 1-ről** **gépi rendszer által számított virtuális gépekre**változik. Az **erőforrásgráf-lekérdezések** erőforráscsoport első használatakor a mentés a vártnál tovább tart, amikor az erőforráscsoport létrejön.
    
    ![Az új lekérdezés mentése megosztott lekérdezésként](../media/create-share-query/save-shared-query-window.png)
 
    > [!NOTE] 
-   > Ha meg szeretné adni egy meglévő erőforráscsoport nevét, akkor törölheti a **Közzététel az erőforrás-gráf-lekérdezések erőforráscsoporthoz** jelölőnégyzetet. A lekérdezések alapértelmezett megnevezett erőforráscsoport használatával könnyebben derítheti fel a megosztott lekérdezéseket. Emellett nyilvánvalóvá teszi az erőforráscsoport célját. A meglévő engedélyek alapján azonban dönthet úgy, hogy egy meglévő erőforráscsoportot választ ki biztonsági okokból.
+   > Törölheti a jelet a **Közzététel erőforrásgráfon lekérdezések erőforráscsoport** jelölőnégyzetből, ha meg szeretné adni egy meglévő erőforráscsoport nevét a megosztott lekérdezés mentéséhez. Az alapértelmezett nevű erőforráscsoport használata a lekérdezésekhez megkönnyíti a megosztott lekérdezések felderítését. Emellett az erőforráscsoport célját is nyilvánvalóbbá teszi. Biztonsági okokból azonban dönthet úgy, hogy egy meglévő erőforráscsoportot választ a meglévő engedélyek alapján.
 
-1. Lépjen távolabb az Azure Resource Graph Explorerben a Azure Portal, majd térjen vissza. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és az **1. lekérdezés** lapot adta vissza.
+1. Lépjen el az Azure Resource Graph Explorertől az Azure Portalon, majd térjen vissza hozzá. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és a **Lekérdezés 1** lap visszaadta.
 
-1. Válassza **a lekérdezés megnyitása**lehetőséget. Ellenőrizze, hogy a típus a **megosztott lekérdezésre** van-e beállítva, és hogy az **előfizetés** és az **erőforráscsoport** kombinációja egyezik-e a lekérdezés mentésekor. A mentett **darabszámú virtuális gépek operációsrendszer** -elem alapján most megjelenik a **lekérdezés neve** listában. Válassza ki a mentett lekérdezés cím hivatkozását egy új lapra való betöltéshez a lekérdezés nevével. Megosztott lekérdezésként megjelenít egy ikont a cím melletti lapon, és megoszthatja azt.
+1. Válassza **a Lekérdezés megnyitása**lehetőséget. Ellenőrizze, hogy a típus **megosztott lekérdezésre van-e** állítva, és az **Előfizetés** és az **Erőforrás csoport** kombinációja megegyezik a lekérdezés mentési helyével. A mentett **darabszám virtuális gépek operációs rendszer** szerint elem most megjelenik a lekérdezés **neve** listában. A mentett lekérdezés címhivatkozásának kiválasztásával töltse be egy új lapra, amelynek neve a lekérdezés neve. Megosztott lekérdezésként egy ikont jelenít meg a cím melletti lapon, amely megosztottként jelöli.
 
-   ![A megosztott lekérdezés ikonjának megjelenítése](../media/create-share-query/show-saved-shared-query.png)
+   ![A megosztott lekérdezés megjelenítése ikonnal](../media/create-share-query/show-saved-shared-query.png)
 
    > [!NOTE] 
-   > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Új mentett lekérdezés létrehozásához válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
+   > Ha egy mentett lekérdezés meg van nyitva, és a lapon megjelenik a neve, a **Mentés** gomb frissíti az elvégzett módosításokat. Új mentett lekérdezés létrehozásához válassza a **Mentés másként** lehetőséget, és folytassa úgy, mintha egy teljesen új lekérdezést mentene.
 
 ## <a name="discover-shared-queries"></a>Megosztott lekérdezések felderítése
 
-Mivel a megosztott lekérdezés egy Resource Manager-erőforrás, többféleképpen is megtalálhatja a következőt:
+Mivel a megosztott lekérdezés erőforrás-kezelői erőforrás, többféleképpen is megkereshetegyet:
 
-- A Resource Graph Explorerben válassza a **lekérdezés megnyitása** lehetőséget, és állítsa a típust **megosztott lekérdezésre**.
-- Az erőforrás-gráf lekérdezési portál oldalán.
-- Azt az erőforráscsoportot, amelyben a megosztott lekérdezés el lett mentve.
-- Lekérdezésen keresztül az erőforrás-gráfon.
+- Az Erőforrásgráf-kezelőben válassza **a Lekérdezés megnyitása** lehetőséget, és állítsa a típust Megosztott **lekérdezésre**.
+- Az Erőforrásgráf lekérdezések portállapon.
+- Abból az erőforráscsoportból, amelyben a megosztott lekérdezést mentette.
+- Az Erőforrás-grafikon lekérdezésén keresztül.
 
-### <a name="view-resource-graph-queries"></a>Resource Graph-lekérdezések megtekintése
+### <a name="view-resource-graph-queries"></a>Erőforrásgráf-lekérdezések megtekintése
 
-A Azure Portal az Erőforrásgrafikon-lekérdezések lap azokat a megosztott lekérdezéseket jeleníti meg, amelyekhez a bejelentkezett fiók hozzáfér. Ezen a lapon engedélyezheti a szűrést név, előfizetés, erőforráscsoport és az Erőforrásgrafikon-lekérdezés egyéb tulajdonságai alapján. Az erőforrás-gráf lekérdezéseit az interfész használatával is címkézheti, exportálhatja és törölheti.
+Az Azure Portalon az Erőforrás-gráf lekérdezések lap megjeleníti a megosztott lekérdezések, amelyek a bejelentkezett fiók hozzáféréssel rendelkezik. Ez a lap lehetővé teszi a szűrést név, előfizetés, erőforráscsoport és az Erőforrásgráf lekérdezés egyéb tulajdonságai szerint. Az Erőforrásgráf-lekérdezéseket ezen a felületen is megcímkézheti, exportálhatja és törölheti.
 
-A lekérdezések egyikének kiválasztásával megnyílik az erőforrás-gráf lekérdezési lapja. A többi Resource Manager-erőforráshoz hasonlóan ez az oldal interaktív áttekintést nyújt a műveletnapló, a hozzáférés-vezérlés és a címkék mellett. Ezen a lapon közvetlenül is alkalmazhat erőforrás-zárolást.
+Az egyik lekérdezés kiválasztása megnyitja az Erőforrásgráf lekérdezési lapot. Más Erőforrás-kezelő idokhoz hasonlóan ez a lap is interaktív áttekintést nyújt a tevékenységnaplóval, a hozzáférés-vezérléssel és a címkékkel együtt. Az erőforrás-zárolást közvetlenül erről az oldalról is alkalmazhatja.
 
-Az összes szolgáltatás vagy az összes oldal tetején található Azure Search (az összes **szolgáltatás** ) lehetőség kiválasztásával szerezze be az Erőforrásgrafikon-lekérdezések lapot a portál menüjében. Keresse meg és válassza ki a **Resource Graph Explorert**.
+A portál menüjében a Forrásgráf lekérdezések lapját a **Minden szolgáltatás** kiválasztásával vagy az összes lap tetején található Azure keresőmező használatával szerezheti meg. Keresse meg és válassza az **Erőforrásgráf-kezelőt.**
 
-### <a name="list-resource-groups-resources"></a>Erőforráscsoportok erőforrásainak listázása
+### <a name="list-resource-groups-resources"></a>Erőforráscsoportok erőforrások listázása
 
-Az erőforrás-gráf lekérdezés az erőforráscsoport részét képező egyéb erőforrások mellett szerepel.
-Ha kijelöli az Erőforrásgrafikon-lekérdezést, megnyílik a lekérdezés lapja. A három pont és a helyi menü beállításai (a jobb gombbal kattintva) ugyanúgy működnek, mint az erőforrás-gráf lekérdezése lapon.
+Az Erőforrásgráf lekérdezés az erőforráscsoport részét játszó egyéb erőforrások mellett jelenik meg.
+Az Erőforrásgráf lekérdezés kijelölésével megnyílik a lekérdezés lapja. A három pont és a helyi menü beállításai (amelyeket a jobb gombbal történő kattintás indít el) ugyanúgy működnek, mint az Erőforrásgráf lekérdezési lapon.
 
-### <a name="query-resource-graph"></a>Erőforrás-diagram lekérdezése
+### <a name="query-resource-graph"></a>Lekérdezési erőforrás grafikonja
 
-Az erőforrás-gráf lekérdezéseit egy lekérdezésen keresztül keresheti meg az erőforrás-diagramon. A következő erőforrás-gráf lekérdezési határértékek `Microsoft.ResourceGraph/queries`szerint vannak korlátozva, majd a `project` használatával csak a nevet, a módosított időpontot és a lekérdezéseket listázza:
+Az Erőforrásgráf lekérdezéseit az Erőforrásgráf lekérdezésein keresztül találhatja meg. A következő Resource Graph `Microsoft.ResourceGraph/queries`lekérdezés típus `project` szerint korlátoz, majd csak a név, a módosított idő és maga a lekérdezés felsorolásával jelenik meg:
 
 ```kusto
 Resources
@@ -139,21 +139,21 @@ Resources
 
 ## <a name="delete-a-shared-query"></a>Megosztott lekérdezés törlése
 
-Ha már nincs szükség megosztott lekérdezésre, törölje azt. Egy megosztott lekérdezés törlésével eltávolítja a megfelelő Resource Manager-erőforrást. Minden olyan irányítópult, amelyre az eredmények diagramja be lett rögzítve, hibaüzenet jelenik meg. Ha ez a hibaüzenet jelenik meg, a **Eltávolítás az irányítópultról** gombbal törölje az irányítópultot.
+Ha a megosztott lekérdezésre már nincs szükség, törölje azt. Megosztott lekérdezés törlésével eltávolítja a megfelelő Erőforrás-kezelő erőforrást. Azok az irányítópultok, amelyekhez az eredménydiagramot rögzítették, hibaüzenetet jelenítenek meg. Amikor megjelenik ez a hibaüzenet, az Eltávolítás az **irányítópultról** gombbal megtisztíthatja az irányítópultot.
 
-A megosztott lekérdezéseket az alábbi felületeken törölheti:
-- Resource Graph-lekérdezések lap
-- Erőforrás-diagram lekérdezési lapja
-- A **lekérdezés megnyitása** lap a Resource Graph Explorerben
+Megosztott lekérdezést a következő felületeken keresztül törölheti:
+- Az Erőforrásgráf lekérdezések lapja
+- Az Erőforrásgráf lekérdezési lapja
+- Lekérdezés **megnyitása** lap az Erőforrásgráf kezelőben
 - Erőforráscsoportok lap
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült az Oktatóanyaggal, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nem szeretné őket.
+Ha befejezte az oktatóanyagot, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nincs rájuk szüksége.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban privát és megosztott lekérdezéseket hozott létre. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
+Ebben az oktatóanyagban privát és megosztott lekérdezéseket hozott létre. Ha többet szeretne megtudni az Erőforrás-diagram nyelvéről, folytassa a lekérdezésnyelv részletei lappal.
 
 > [!div class="nextstepaction"]
-> [További információ a lekérdezési nyelvről](../concepts/query-language.md)
+> [További információ a lekérdezés nyelvéről](../concepts/query-language.md)

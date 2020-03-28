@@ -1,6 +1,6 @@
 ---
-title: Tartomány geoszűrése az Azure Front Door Service-ben | Microsoft Docs
-description: Ebben a cikkben megismerkedhet az Azure Front Door Service geoszűrési szabályzatával
+title: Geoszűrés az Azure Bejárati ajtajának tartományában | Microsoft dokumentumok
+description: Ebben a cikkben az Azure Bejárati ajtó geoszűrési szabályzatát
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -13,24 +13,24 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 80641ca27949435f65222ecab17cc3079e2a6359
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846414"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471608"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mi az a földrajzi szűrés Azure bejárati ajtajának tartomány?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mit jelent az Azure Front Door egyik tartományán végzett geoszűrés?
 
-Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Azonban bizonyos esetekben előfordulhat, hogy szeretné a webes alkalmazásokhoz való hozzáférés korlátozása ország/régió szerint. Webes alkalmazás tűzfal (WAF) szolgáltatás, bejárati ajtajának lehetővé teszi egy adott elérési úthoz, a végpont egyéni hozzáférési szabályok segítségével engedélyezheti vagy letilthatja a hozzáférést a megadott országok/régiók szabályzat meghatározása. 
+Alapértelmezés szerint az Azure Bejárati ajtajának válaszol a felhasználói kérelmekre, függetlenül a ttól, hogy a felhasználó a kérelmet küldi.Default Azure Front Door responds to user requests regardless the location of the request. Bizonyos esetekben azonban ország/régió szerint korlátozhatja a webes alkalmazásokhoz való hozzáférést. Webalkalmazás tűzfal (WAF) szolgáltatás a Bejárati ajtó lehetővé teszi, hogy meghatározza a házirend et használó egyéni hozzáférési szabályok at adott elérési a végponton, hogy engedélyezze vagy blokkolja a hozzáférést a megadott országok/régiók. 
 
-A WAF-szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
+A WAF-házirendek általában egyéni szabályokkészletét tartalmazzák. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
-Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajának vagy a [Azure PowerShell-lel](front-door-tutorial-geo-filtering.md) vagy a [gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+A bejárati ajtó geoszűrési szabályzatát az [Azure PowerShell](front-door-tutorial-geo-filtering.md) használatával vagy [a rövid útmutató sablonhasználatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)konfigurálhatja.
 
-## <a name="country-code-reference"></a>Ország kódok referenciája
+## <a name="country-code-reference"></a>Országkód hivatkozása
 
-|Országkód | Ország neve |
+|Országhívószám | Ország neve |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Egyesült Arab Emírségek|
@@ -53,7 +53,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | BH | Bahrein|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint-Barthélemy|
+| BL | Szent Barthélemy|
 | BN | Brunei Szultanátus|
 | BO | Bolívia|
 | BR | Brazília|
@@ -66,7 +66,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | CD | Kongói Demokratikus Köztársaság|
 | CF | Közép-afrikai Köztársaság|
 | CH | Svájc|
-| CI | Côte d’Ivoire|
+| CI | Elefántcsontpart|
 | CL | Chile|
 | CM | Kamerun|
 | CN | Kína|
@@ -103,7 +103,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| id | Indonézia|
+| ID (Azonosító) | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|
@@ -206,11 +206,11 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | VG | Brit Virgin-szigetek|
 | VI | Amerikai Virgin-szigetek|
 | VN | Vietnam|
-| ZA | Dél-Afrika|
+| ZA | Dél-afrikai Köztársaság|
 | ZM | Zambia|
 | ZW | Zimbabwe|
 
 ## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Front Door alkalmazási rétegbeli biztonságáról](front-door-application-security.md).
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

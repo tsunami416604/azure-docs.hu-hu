@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 5330c99f4d42f591944ddc5c58ac98bea6387da5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74278148"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Oktatóanyag: Azure CDN-gyorsítótárazási szabályok beállítása
 
 > [!NOTE] 
-> A gyorsítótárazási szabályok csak a **Verizon Azure CDN standard** csomagból és a Akamai-profilokból **Azure CDN standard** csomagból érhetők el. A **Microsoft** -profilokból Azure CDN a [standard szintű szabályok motorját](cdn-standard-rules-engine-reference.md) kell használnia a Verizon-profilokkal való **Azure CDN premiumhoz** , a **felügyeleti portálon** a hasonló funkciókhoz a [Verizon Premium Rules motort](cdn-rules-engine.md) kell használnia.
+> A gyorsítótárazási szabályok csak a **Verizon azure CDN Standard és** az **Akamai-profilokból származó Azure CDN Standard esetén** érhetők el. A **Microsoft-profilokból származó Azure CDN** esetében a **Verizon-profilokból származó Azure CDN Premium** [standard szabálymotorját](cdn-standard-rules-engine-reference.md) kell használnia, hasonló funkciókhoz a [Verizon Premium-szabályok motorját](cdn-rules-engine.md) kell **használnia** a Kezelés portálon.
  
 
 Ez az oktatóanyag leírja, hogyan használhatók az Azure Content Delivery Network (CDN) gyorsítótárazási szabályai az alapértelmezett gyorsítótár-lejárati viselkedés globális vagy egyéni feltételek megadásával, például URL-elérési úttal vagy fájlkiterjesztéssel történő módosítására. Az Azure CDN két gyorsítótárazási szabálytípust biztosít:
@@ -79,7 +79,7 @@ Hozzon létre egy egyéni gyorsítótárszabályt a következők szerint:
     
 2. Adja meg a **Gyorsítótárazás működése** beállításaként a **Felülbírálás** lehetőséget, és írja be, hogy 30 a **Napok** mezőbe.
        
-    Ezzel az egyéni szabállyal 30 napos gyorsítótár-élettartamot állít be a végpont `.jpg` mappájának bármely `/images` képfájljához. Ezzel felülbírálja a forráskiszolgáló által küldött bármely `Cache-Control` vagy `Expires` HTTP-fejlécet.
+    Ezzel az egyéni szabállyal 30 napos gyorsítótár-élettartamot állít be a végpont `/images` mappájának bármely `.jpg` képfájljához. Ezzel felülbírálja a forráskiszolgáló által küldött bármely `Cache-Control` vagy `Expires` HTTP-fejlécet.
 
     ![Egyéni gyorsítótárszabályok](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 

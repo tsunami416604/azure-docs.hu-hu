@@ -5,51 +5,51 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72933476"
 ---
-Válassza a **Létrehozás**lehetőséget. A megnyíló párbeszédpanelen válasszon ki egy mappát, amelybe exportálni szeretné a Xcode projektet.
+Válassza **a Build**lehetőséget. A megnyíló párbeszédpanelen jelölje ki azt a mappát, amelybe az Xcode projektet exportálni szeretné.
 
-Az Exportálás befejeztével megjelenik az exportált Xcode projektet tartalmazó mappa.
+Amikor az exportálás befejeződött, megjelenik egy mappa, amely az exportált Xcode projektet tartalmazza.
 
 > [!NOTE]
-> Ha megjelenik egy ablak, amely rákérdez, hogy szeretné-e cserélni vagy hozzáfűzni, javasoljuk, hogy a **hozzáfűzést** válassza, mert gyorsabb. Csak akkor kell kiválasztania a **replace (csere** ) lehetőséget, ha az eszközeit megváltoztatja a jelenetben. (Például a szülő-gyermek kapcsolatok hozzáadásával, eltávolításával vagy módosításával, illetve a tulajdonságok hozzáadásával, eltávolításával vagy módosításával.) Ha csak a forráskód módosításait hajtja végre, a **hozzáfűzésnek** elegendőnek kell lennie.
+> Ha megjelenik egy ablak, amely megkérdezi, hogy cserélni vagy hozzáfűzni szeretne-e, javasoljuk, hogy válassza a **Hozzáfűzés** lehetőséget, mert az gyorsabb. Csak akkor kell a **Csere** lehetőséget választania, ha a jelenetben eszközcserét módosít. (Például szülő-gyermek kapcsolatok hozzáadása, eltávolítása vagy módosítása, illetve tulajdonságok hozzáadása, eltávolítása vagy módosítása esetén.) Ha csak a forráskód módosítása, **hozzáfűzés** e kell lennie.
 
-### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>A Xcode-projekt átalakítása az Azure térbeli horgonyokra mutató hivatkozásokat tartalmazó xcworkspace
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Az Xcode-projekt átalakítása Az Azure Spatial Anchors-hivatkozásokat tartalmazó xcworkspace-té
 
-Az exportált Xcode-projekt mappában futtassa ezt a parancsot a terminálon a projekthez szükséges CocoaPods telepítéséhez:
+Az exportált Xcode projekt mappában futtassa ezt a parancsot a terminálon a projekthez szükséges CocoaPods telepítéséhez:
 
 ```bash
 pod install --repo-update
 ```
 
-Most megnyithatja `Unity-iPhone.xcworkspace` a projekt megnyitásához a Xcode:
+Most megnyithatja `Unity-iPhone.xcworkspace` a projekt megnyitását Xcode-ban:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Tekintse meg a hibaelhárítási lépéseket [itt](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) , ha a MacOS Catalina (10,15) verzióra történő frissítés után CocoaPod problémák léptek fel.
+> A hibaelhárítási lépéseket [itt](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) olvashatja, ha a macOS Catalina (10.15) rendszerre való frissítés után a CocoaPod-problémákkal kapcsolatos problémákat okoz.
 
-Válassza ki a root **Unity-iPhone** csomópontot a projekt beállításainak megtekintéséhez, majd válassza az **általános** lapot.
+A projektbeállítások megtekintéséhez válassza a gyökér **Unity-iPhone** csomópontot, majd válassza az **Általános** lapot.
 
-Az **aláírás**területen győződjön meg arról, hogy az **aláírás automatikus kezelése** engedélyezve van. Ha nem, engedélyezze, majd válassza az **automatikus engedélyezése** lehetőséget a létrehozási beállítások alaphelyzetbe állításához megjelenő párbeszédpanelen.
+Az **Aláírás csoportban**győződjön meg arról, hogy az **Aláírás automatikus kezelése** engedélyezve van. Ha nem, engedélyezze, majd válassza az **Automatikus engedélyezés lehetőséget** a buildbeállítások visszaállításához megjelenő párbeszédpanelen.
 
-Győződjön meg arról, hogy a központi **telepítési információ** **területen az `11.0`** érték van beállítva.
+A **Telepítési adatok csoportban**győződjön `11.0`meg arról, hogy a telepítési **cél** beállítása a.
 
-### <a name="deploy-the-app-to-your-ios-device"></a>Az alkalmazás üzembe helyezése iOS-eszközön
+### <a name="deploy-the-app-to-your-ios-device"></a>Az alkalmazás telepítése iOS-készülékre
 
-Az iOS-eszköz csatlakoztatása a Mac számítógéphez, és az **aktív séma** beállítása az iOS-eszközre.
+Csatlakoztassa az iOS-készüléket a Machez, és állítsa be az **aktív sémát** az iOS-készülékre.
 
-![Válassza ki az eszközt](./media/spatial-anchors-unity/select-device.png)
+![Eszköz kiválasztása](./media/spatial-anchors-unity/select-device.png)
 
-Válassza **a létrehozás lehetőséget, majd futtassa az aktuális sémát**.
+Válassza **a Build( Build, majd az aktuális séma) lehetőséget.**
 
-![Üzembe helyezés és Futtatás](./media/spatial-anchors-unity/deploy-run.png)
+![Telepítés és futtatás](./media/spatial-anchors-unity/deploy-run.png)
 
 > [!NOTE]
-> Ha `library not found for -lPods-Unity-iPhone` hiba jelenik meg, akkor az `.xcworkspace` fájl helyett valószínűleg megnyitotta a `.xcodeproj` fájlt.
+> Ha hibaüzenetet `library not found for -lPods-Unity-iPhone` lát, valószínűleg `.xcodeproj` a fájlt `.xcworkspace` nyitotta meg a fájl helyett.

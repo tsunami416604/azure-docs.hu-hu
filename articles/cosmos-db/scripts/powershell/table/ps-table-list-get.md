@@ -1,20 +1,20 @@
 ---
-title: PowerShell-szkript a Azure Cosmos DB Table API műveletek listázásához és lekéréséhez
-description: Azure PowerShell parancsfájl-Azure Cosmos DB lista és műveletek lekérése Table API
+title: PowerShell-parancsfájl az Azure Cosmos DB Table API-műveletek listázásához és beírásához
+description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB-lista és a Table API műveleteinek beírása
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9e904bdb635111b3fb0c3120be08f26e2e097236
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166b9c2d6b20fbd6a71ba5df17e049838038617d
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444946"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365909"
 ---
-# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB-Table API táblázatok listázása és lekérése
+# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Táblák listája és lehívása az Azure Cosmos DB - Table API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Listázza a Cosmos DB-fiókokat, vagy lead egy megadott Cosmos DB-fiókot. |
+| [Get-AzCosmosDBTable tábla](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Listázza a Cosmos DB Table API-táblákat egy fiókban, vagy lead egy adott Cosmos DB Table API-táblát egy fiókban. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: f37288cb028a3965dfa5b880f0f8c7de35728ba9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039861"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Windows rendszerű virtuális gép titkosítása az Azure-ban
@@ -58,7 +58,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy Azure
 | [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | Megmutatja a virtuális gép titkosítási folyamatának állapotát. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

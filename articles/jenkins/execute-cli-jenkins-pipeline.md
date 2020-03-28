@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, app service, cli
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158818"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Üzembe helyezés az Azure App Service-ben a Jenkinsszel és az Azure CLI használatával
@@ -22,18 +22,18 @@ Java-webalkalmazás Azure-beli üzembe helyezéséhez használhatja az Azure CLI
 > * Jenkins-folyamat létrehozása
 > * A folyamat futtatása és a webalkalmazás ellenőrzése
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Jenkins-példány létrehozása és konfigurálása
-Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldás sablonnal](install-jenkins-solution-template.md), amely alapértelmezés szerint tartalmazza a szükséges Azure-beli [hitelesítő adatok](https://plugins.jenkins.io/azure-credentials) beépülő modult. 
+Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldássablonnal,](install-jenkins-solution-template.md)amely alapértelmezés szerint tartalmazza a szükséges [Azure-hitelesítő adatok](https://plugins.jenkins.io/azure-credentials) beépülő modult. 
 
-Az Azure hitelesítő adatok beépülő modulja lehetővé teszi Microsoft Azure egyszerű hitelesítő adatok tárolását a Jenkins szolgáltatásban. Az 1.2-es verzió támogatja, hogy a Jenkins-folyamat lekérje az Azure-beli hitelesítő adatokat. 
+Az Azure Credential beépülő modul lehetővé teszi a Microsoft Azure egyszerű szolgáltatáshitelesítő adatainak jenkinsben való tárolását. Az 1.2-es verzió támogatja, hogy a Jenkins-folyamat lekérje az Azure-beli hitelesítő adatokat. 
 
 Győződjön meg róla, hogy 1.2-es vagy újabb verziót használ:
 * A Jenkins irányítópultján kattintson a **Manage Jenkins (Jenkins kezelése) -> Plugin Manager (Beépülőmodul-kezelő)** lehetőségre, és keressen az **Azure Credential** kifejezésre. 
-* Frissítse a beépülő modult, ha a verzió 1,2-nál korábbi.
+* Frissítse a beépülő modult, ha a verzió korábbi, mint 1.2.
 
 A Jenkins-főkiszolgálóban emellett a Java JDK és a Maven is szükséges. A telepítéshez jelentkezzen be a Jenkins-főkiszolgálóra SSH használatával, és futtassa a következő parancsokat:
 ```bash
@@ -46,13 +46,13 @@ sudo apt-get install -y maven
 Az Azure CLI végrehajtásához Azure-beli hitelesítő adatok szükségesek.
 
 * A Jenkins irányítópultján kattintson a **Credentials (Hitelesítő adatok) -> System (Rendszer)** lehetőségre. Kattintson a **Global credentials (unrestricted) (Globális hitelesítő adatok (korlátlan))** elemre.
-* **Microsoft Azure-szolgáltatásnév** hozzáadásához kattintson az [Add Credentials (Hitelesítő adatok hozzáadása)](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) lehetőségre, és töltse ki a következő mezőket: Subscription ID (Előfizetés azonosítója), Client ID (Ügyfél-azonosító), Client Secret (Titkos ügyfélkód) és OAuth 2.0 Token Endpoint (Jogkivonatcserélő OAuth 2.0-végpont). Adjon meg egy azonosítót a következő lépésekben történő használathoz.
+* [Microsoft Azure-szolgáltatásnév](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) hozzáadásához kattintson az **Add Credentials (Hitelesítő adatok hozzáadása)** lehetőségre, és töltse ki a következő mezőket: Subscription ID (Előfizetés azonosítója), Client ID (Ügyfél-azonosító), Client Secret (Titkos ügyfélkód) és OAuth 2.0 Token Endpoint (Jogkivonatcserélő OAuth 2.0-végpont). Adjon meg egy azonosítót a következő lépésekben történő használathoz.
 
 ![Hitelesítő adatok hozzáadása](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Azure App Service létrehozása Java-webalkalmazás üzembe helyezéséhez
 
-Az **az appservice plan create** parancssori felületi paranccsal hozzon létre egy Azure App Service-csomagot az [INGYENES](/cli/azure/appservice/plan#az-appservice-plan-create) tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek. 
+Az [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) parancssori felületi paranccsal hozzon létre egy Azure App Service-csomagot az **INGYENES** tarifacsomaggal. Az App Service-csomag határozza meg az alkalmazások üzemeltetéséhez használt fizikai erőforrásokat. Az App Service-csomaghoz rendelt összes alkalmazás ugyanezeket az erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -148,7 +148,7 @@ Nyissa meg a Jenkinst egy webböngészőben, és kattintson a **New Item** (Új 
 * A **Definition (Definíció)** értékeként válassza a **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
 * Az **SCM** értékeként válassza a **Git** lehetőséget.
 * Adja meg az elágaztatott adattár GitHub URL-címét: https:\<elágaztatott adattár\>.git
-* Kattintson a **Mentés** gombra.
+* Kattintson a **Mentés gombra**
 
 ## <a name="test-your-pipeline"></a>A folyamat tesztelése
 * Lépjen a létrehozott folyamatra, majd kattintson a **Build Now** (Buildelés most) lehetőségre.
@@ -170,7 +170,7 @@ A következőt fogja látni:
 ## <a name="deploy-to-azure-web-app-on-linux"></a>Üzembe helyezés az Azure Web App on Linuxban
 Most, hogy megismerkedett az Azure CLI használatával Jenkins-folyamatban, módosíthatja a szkriptet az Azure Web App on Linuxba való üzembe helyezéshez.
 
-A Web App on Linux egy eltérő üzembehelyezési módszert támogat: a Docker használatát. Az üzembe helyezéshez meg kell adnia egy Docker-fájlt, amely a webalkalmazást a szolgáltatási futtatókörnyezettel együtt egy Docker-rendszerképbe csomagolja. A beépülő modul létrehozza a rendszerképet, leküldi a Docker-beállításjegyzékbe, és telepíti a rendszerképet a webalkalmazásba.
+A Web App on Linux egy eltérő üzembehelyezési módszert támogat: a Docker használatát. Az üzembe helyezéshez meg kell adnia egy Docker-fájlt, amely a webalkalmazást a szolgáltatási futtatókörnyezettel együtt egy Docker-rendszerképbe csomagolja. A beépülő modul ezután létrehozza a lemezképet, leküldi egy Docker-beállításjegyzékbe, és telepíti a lemezképet a webalkalmazásba.
 
 * Kövesse az [itt](../app-service/containers/quickstart-nodejs.md) megadott lépéseket Linuxon futó Azure-webalkalmazás létrehozásához.
 * Telepítse a Dockert a Jenkins-példányon [ezen cikk](https://docs.docker.com/engine/installation/linux/ubuntu/) utasításait követve.
@@ -211,7 +211,7 @@ A Web App on Linux egy eltérő üzembehelyezési módszert támogat: a Docker h
 
     Lépjen a http://&lt;alkalmazás_neve>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> helyre (&lt;x> és &lt;y> helyére írjon be egy-egy tetszőleges számot), hogy megkapja x és y összegét.
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy Jenkins-folyamatot konfigurált, amely ellenőrzi a forráskódot a GitHub-adattárban. A Maven futtatásával létrehoz egy War-fájlt, majd az Azure CLI használatával üzembe helyezést végez az Azure App Service-be. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

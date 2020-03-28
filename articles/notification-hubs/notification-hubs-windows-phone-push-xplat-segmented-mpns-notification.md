@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése adott Windows Phone-telefonokra az Azure Notification Hubs használatával | Microsoft Docs
+title: Leküldéses értesítések küldése adott Windows-telefonokra az Azure Értesítési központok használatával | Microsoft dokumentumok
 description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére adott (vagyis nem az összes), az alkalmazás háttérrendszerében regisztrált, Windows Phone 8 és Windows Phone 8.1 rendszert futtató eszközökre.
 services: notification-hubs
 documentationcenter: windows
@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213393"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126943"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése adott Windows Phone-telefon-eszközökre az Azure-Notification Hubs használatával
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése adott Windows Phone-telefonokra az Azure Értesítési központok használatával
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -45,13 +45,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejezze be [az oktatóanyagot: Leküldéses értesítések Windows Phone-telefon alkalmazások számára az Azure](notification-hubs-windows-mobile-push-notifications-mpns.md)Notification Hubs használatával. Ebben az oktatóanyagban frissíteni fogja a mobilalkalmazást, hogy regisztrálhasson az Önt érdeklő frisshír-kategóriákra, és csak az ezekre a kategóriákra vonatkozó leküldéses értesítéseket kapja meg.
+Végezze el az [Oktatóanyag: Leküldéses értesítések küldése Windows Phone-alkalmazásokba az Azure Notification Hubs használatával](notification-hubs-windows-mobile-push-notifications-mpns.md) című oktatóanyagot. Ebben az oktatóanyagban frissíteni fogja a mobilalkalmazást, hogy regisztrálhasson az Önt érdeklő frisshír-kategóriákra, és csak az ezekre a kategóriákra vonatkozó leküldéses értesítéseket kapja meg.
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>Választott kategória hozzáadása a mobilalkalmazáshoz
 
 Az első lépésben hozzá kell adni a felhasználói felületi elemeket a meglévő főoldalhoz, amely lehetővé teszi a felhasználó számára a regisztrálni kívánt kategóriák kiválasztását. A felhasználó által kiválasztott kategóriákat az eszköz tárolja. Az alkalmazás indításakor egy eszközregisztráció jön létre az értesítési központban, amely címkeként tartalmazza a választott kategóriákat.
 
-1. Nyissa `MainPage.xaml` meg a fájlt, majd `Grid` cserélje le `TitlePanel` a `ContentPanel` named (elemek) nevű elemet a következő kódra:
+1. Nyissa `MainPage.xaml` meg a fájlt, `TitlePanel` majd `ContentPanel` cserélje le a `Grid` megnevezett elemeket és a következő kódot:
 
     ```xml
     <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
@@ -79,7 +79,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
         <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-2. Adjon hozzá egy nevű `Notifications` osztályt a projekthez. Adja hozzá `public` a módosítót az osztály definícióhoz. Ezután adja hozzá a következő `using` utasításokat az új fájlhoz:
+2. Adjon hozzá `Notifications` egy nevű osztályt a projekthez. Adja `public` hozzá a módosítót az osztálydefinícióhoz. Ezután adja `using` hozzá a következő állításokat az új fájlhoz:
 
     ```csharp
     using Microsoft.Phone.Notification;
@@ -87,7 +87,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     using System.IO.IsolatedStorage;
     using System.Windows;
     ```
-3. Másolja az alábbi kódot az új `Notifications` osztályba:
+3. Másolja a következő kódot `Notifications` az új osztályba:
 
     ```csharp
     private NotificationHub hub;
@@ -207,7 +207,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     ```
 
     Ez az osztály az elszigetelt tárolót használja azon hírkategóriák tárolására, amelyeket az eszköznek meg kell kapnia. Ezenkívül tartalmaz a szóban forgó kategóriákra való regisztrációra szolgáló metódusokat is, amelyek [sablonalapú](notification-hubs-templates-cross-platform-push-messages.md) értesítésregisztrációt használnak.
-4. A Project fájlban adja hozzá a következő tulajdonságot a `App` osztályhoz. `App.xaml.cs` A `<hub name>` és a `<connection string with listen access>` helyőrzőt cserélje le az értesítési központ nevére és a *DefaultListenSharedAccessSignature* korábban beszerzett kapcsolati sztringjére.
+4. A `App.xaml.cs` projektfájlban adja hozzá a `App` következő tulajdonságot az osztályhoz. A `<hub name>` és a `<connection string with listen access>` helyőrzőt cserélje le az értesítési központ nevére és a *DefaultListenSharedAccessSignature* korábban beszerzett kapcsolati sztringjére.
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -216,7 +216,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
    > [!NOTE]
    > Mivel az ügyfélalkalmazással terjesztett hitelesítő adatok általában nem biztonságosak, csak a figyelési hozzáférés kulcsát terjessze az ügyfélalkalmazással. A figyelési hozzáférés lehetővé teszi, hogy az alkalmazás regisztráljon értesítésekre, a meglévő regisztrációkat azonban nem lehet módosítani, és értesítéseket sem lehet küldeni. A teljes körű hozzáférési kulcsot egy biztonságos háttérszolgáltatásban használja a rendszer értesítések kiküldésére és a meglévő regisztrációk módosítására.
 
-5. A `MainPage.xaml.cs`alkalmazásban adja hozzá a következő sort:
+5. A `MainPage.xaml.cs`a, adja hozzá a következő sort:
 
     ```csharp
     using Windows.UI.Popups;
@@ -241,7 +241,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     }
     ```
 
-    Ez a módszer kategóriákat hoz létre, és a `Notifications` osztály használatával tárolja a listát a helyi tárolóban, és regisztrálja a megfelelő címkéket az értesítési központban. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
+    Ez a módszer létrehoz egy listát `Notifications` a kategóriák, és használja az osztály tárolja a listát a helyi tárolóés regisztrálja a megfelelő címkéket az értesítési központ. A kategóriák módosításakor a rendszer újra létrehozza a regisztrációt az új kategóriákkal.
 
 Az alkalmazás most már képes egy kategóriakészlet tárolására az eszköz helyi tárterületén, és az értesítési központban is regisztrálhat, ha a felhasználó módosítja a kiválasztott kategóriákat.
 
@@ -252,7 +252,7 @@ Ezek a lépések végzik az értesítési központban való regisztrációt az i
 > [!NOTE]
 > Mivel a Microsoft Push Notification Service (MPNS) által hozzárendelt csatorna URI bármikor megváltozhat, gyakran regisztráljon az értesítésekre, hogy elkerülhesse az értesítési hibákat. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran, naponta egynél többször futtatott alkalmazások esetén a sávszélesség megőrzése érdekében akár ki is hagyhatja a regisztrációt, ha kevesebb mint egy nap telt el az előző regisztráció óta.
 
-1. Nyissa meg a app.XAML.cs fájlt, `async` és adja hozzá `Application_Launching` a módosítót a metódushoz, és cserélje le a [Ismerkedés a Notification Hubs szolgáltatással] hozzáadott Notification Hubs regisztrációs kódot a következő kóddal:
+1. Nyissa meg a App.xaml.cs `async` fájlt, `Application_Launching` és adja hozzá a módosítót a metódushoz, és cserélje le az Értesítési központok első lépései című könyvében hozzáadott értesítési központ regisztrációs [kódját] a következő kóddal:
 
     ```csharp
     private async void Application_Launching(object sender, LaunchingEventArgs e)
@@ -268,7 +268,7 @@ Ezek a lépések végzik az értesítési központban való regisztrációt az i
     ```
 
     Ez a kód biztosítja, hogy az alkalmazás minden egyes indításkor lekéri a kategóriákat a helyi tárterületből, és regisztrációt kérelmez ezekre a kategóriákra vonatkozóan.
-2. A MainPage.XAML.cs projekt fájljában adja hozzá a következő kódot, amely megvalósítja `OnNavigatedTo` a metódust:
+2. A MainPage.xaml.cs projektfájlban adja hozzá a `OnNavigatedTo` módszert megvalósító következő kódot:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)

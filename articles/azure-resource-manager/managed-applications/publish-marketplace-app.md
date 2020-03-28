@@ -1,18 +1,18 @@
 ---
-title: Felügyelt alkalmazások a piactéren
+title: Felügyelt alkalmazások a Piactéren
 description: A cikk a Marketplace piactéren elérhető Azure-beli felügyelt alkalmazásokat ismerteti.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650260"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472996"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Azure-beli felügyelt alkalmazások a Marketplace piactéren
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Oktatóanyag: Azure által felügyelt alkalmazások közzététele a Marketplace-en
 
 A szállítók Azure-beli felügyelt alkalmazások segítségével kínálhatják megoldásaikat az Azure Marketplace ügyfeleinek mindegyike számára. Ezek a szállítók lehetnek felügyelt szolgáltatások szolgáltatói (MSP-k), független szoftverszállítók (ISV-k) és rendszerintegrátorok (SI-k). A felügyelt alkalmazások csökkentik a karbantartás és a szervizelés miatt az ügyfelekre háruló terheket. A szállítók infrastruktúrát és szoftvert értékesíthetnek a piactéren. Szolgáltatásokat és működtetéshez kapcsolódó támogatást kínálhatnak a felügyelt alkalmazásokkal. További információért tekintse meg a [felügyelt alkalmazások áttekintésével](overview.md) foglalkozó cikket.
 
@@ -22,9 +22,9 @@ Ez a cikk azt ismerteti, hogy hogyan tehet közzé egy alkalmazást a piactéren
 
 Az oktatóanyag elvégzéséhez szüksége lesz a felügyelt alkalmazás definíciójához tartozó .zip fájlra. További információért tekintse meg a [szolgáltatáskatalógusban elérhető alkalmazás létrehozásával](publish-service-catalog-app.md) foglalkozó cikket.
 
-Számos üzleti előfeltétel van. Ezek a következők:
+Számos üzleti előfeltétele van. Ezek a következők:
 
-* A vállalatnak vagy leányvállalatának olyan országban vagy régióban kell lennie, ahol a piactér támogatja az értékesítést.
+* A vállalatnak vagy leányvállalatának olyan országban/régióban kell lennie, ahol a piactér támogatja az értékesítést.
 * A terméket olyan módon kell licencelni, amely kompatibilis a piactér által támogatott számlázási modellekkel.
 * Műszaki támogatást kell biztosítania az ügyfelek számára üzleti szempontból észszerű módon. A támogatás lehet ingyenes, fizetős vagy közösség által nyújtott támogatás.
 * Licencelnie kell a szoftvert, valamint a külső szoftverfüggőségeket.
@@ -32,7 +32,7 @@ Számos üzleti előfeltétel van. Ezek a következők:
 * El kell fogadnia az Azure Marketplace részvételi szabályzatának és a közzétevői megállapodásnak a feltételeit.
 * El kell fogadnia a használati feltételeket, a Microsoft adatvédelmi nyilatkozatát és a Microsoft Azure Certified Program Agreement feltételeit.
 
-Emellett piactér-fiókkal is rendelkeznie kell. A fiók létrehozásával kapcsolatban lásd: [kereskedelmi piactér fiók létrehozása a partner Centerben](../../marketplace/partner-center-portal/create-account.md).
+Rendelkeznie kell egy Marketplace-fiókkal is. Fiók létrehozásáról a [Kereskedelmi piactér-fiók létrehozása a Partnerközpontban című témakörben.](../../marketplace/partner-center-portal/create-account.md)
 
 ## <a name="create-a-new-azure-application-offer"></a>Új Azure-alkalmazásajánlat létrehozása
 
@@ -44,7 +44,7 @@ A felügyelt alkalmazásra vonatkozó ajánlat a közzétevőtől származó ter
 
 1. Jelentkezzen be a [Felhőpartnerportálra](https://cloudpartner.azure.com/).
 
-1. A bal oldali navigációs panelen válassza a **+ New offer** > **Azure Applications** (+ Új ajánlat > Azure alkalmazások) lehetőséget.
+1. A bal oldali navigációs ablakban válassza a **+ Új ajánlat** > **Azure Applications lehetőséget.**
 
 1. Az **Editor** (Szerkesztő) nézetben láthatja a szükséges űrlapokat. Az egyes űrlapokat a cikk alábbi részei ismertetik.
 
@@ -70,7 +70,7 @@ Az SKU egy ajánlat legkisebb megvásárolható egysége. Az SKU-kat ugyanazon a
 
 Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolható entitásként jelennek meg az Azure Portalon.
 
-1. Válassza az **SKUs** > **New SKU** (SKU-k > Új SKU) elemet.
+1. Válassza **a SKUs** > **New SKU**lehetőséget.
 
 1. Adjon meg egy értéket az **SKU ID** (SKU-azonosító) mezőben. Az SKU-azonosító egy adott SKU egyedi azonosítója az ajánlaton belül. Az azonosító a termék URL-címeiben, a Resource Manager-sablonokban és a számlázási jelentésekben látható. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakterből állhat. Miután egy ajánlat elérhetővé válik, ezt a mezőt zárolja a rendszer. Több SKU-val is rendelkezhet egy ajánlaton belül. Minden közzétenni kívánt rendszerkép esetében külön SKU-t kell megadni.
 
@@ -82,21 +82,21 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
    * **Summary** (Összefoglalás): Adja meg az SKU rövid összefoglalását. Ez a szöveg a cím alatt jelenik meg.
    * **Description** (Leírás): Adja meg az SKU részletes leírását.
    * **SKU Type** (SKU típusa): A megengedett értékek: *Managed Application* (Felügyelt alkalmazás) és *Solution Templates* (Megoldássablonok). Ebben az esetben a *Managed Application* (Felügyelt alkalmazás) lehetőséget válassza.
-   * **Ország/régió elérhetősége**: válassza ki azokat az országokat/régiókat, ahol a felügyelt alkalmazás elérhető.
-   * **Pricing** (Díjszabás): Adja meg az alkalmazás felügyeletének árát. Az ár beállítása előtt válassza ki az elérhető országokat/régiókat.
+   * **Ország/régió elérhetősége**: Válassza ki azokat az országokat/régiókat, ahol a felügyelt alkalmazás elérhető.
+   * **Pricing** (Díjszabás): Adja meg az alkalmazás felügyeletének árát. Az ár beállítása előtt válassza ki a rendelkezésre álló országokat/régiókat.
 
 1. Adjon hozzá egy új csomagot. Töltse ki a következő űrlapon található **Package Details** (Csomag részletei) szakaszt:
 
    Töltse ki az alábbi mezőket:
 
    * **Verzió**: Adja a feltöltött csomag verzióját. A következő formátumban kell lennie: `{number}.{number}.{number}{number}`.
-   * **Csomagfájl (.zip)** : Ez a csomag két szükséges fájlt tartalmaz, amelyek egy .zip csomagba vannak tömörítve. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
-   * **Bérlő azonosítója**: a fiókhoz tartozó bérlő azonosítója, amelyhez hozzáférést szeretne kapni.
-   * **JIT-hozzáférés engedélyezése**: válassza az **Igen** lehetőséget a fiók igény szerinti [hozzáférés-vezérlésének](request-just-in-time-access.md) engedélyezéséhez. Ha engedélyezve van, egy adott időszakra kéri a fogyasztó fiókjához való hozzáférést. Ha szeretné megkövetelni, hogy a felügyelt alkalmazás felhasználói hozzáférhessenek a fiók állandó eléréséhez, válassza a **nem**lehetőséget.
-   * **Testreszabhatja az engedélyezett ügyfelek műveleteit?** : válassza az **Igen** lehetőséget annak megadásához, hogy a felhasználók milyen műveleteket hajthatnak végre a felügyelt erőforrásokon.
-   * **Engedélyezett felhasználói műveletek**: Ha az előző beállításnál az **Igen** lehetőséget választja, megadhatja, hogy mely műveletek legyenek engedélyezve a felhasználók számára az [Azure-erőforrások megtagadási hozzárendeléseinek](../../role-based-access-control/deny-assignments.md)használatával.
+   * **Csomagfájl (.zip)**: Ez a csomag két szükséges fájlt tartalmaz, amelyek egy .zip csomagba vannak tömörítve. Az egyik fájl a Resource Manager-sablon, amely a felügyelt alkalmazáshoz üzembe helyezendő erőforrásokat határozza meg. A másik fájl a [felhasználói felületet](create-uidefinition-overview.md) határozza meg a felügyelt alkalmazást a portálon keresztül üzembe helyező felhasználók számára. A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+   * **Bérlőazonosító:** A fiók hozzáféréséhez való bérlői azonosító.
+   * **JIT-hozzáférés engedélyezése:** Válassza az **Igen** lehetőséget a fiók [just-in-time hozzáférés-vezérlésének](request-just-in-time-access.md) engedélyezéséhez. Ha engedélyezve van, egy adott időszakra hozzáférést kér az ügyfél fiókjához. Ha azt szeretné, hogy a kezelt alkalmazás fogyasztói állandó hozzáférést biztosítsanak a fiókhoz, válassza a **Nem**lehetőséget.
+   * **Az engedélyezett ügyfélműveletek testreszabása?**: **Az Igen** lehetőséget választva megadhatja, hogy a fogyasztók milyen műveleteket hajthatnak végre a felügyelt erőforrásokon.
+   * **Engedélyezett ügyfélműveletek:** Ha az előző beállításhoz az **Igen** lehetőséget választja, megadhatja, hogy mely műveletek engedélyezettek a fogyasztók számára [az Azure-erőforrások megtagadási hozzárendelései](../../role-based-access-control/deny-assignments.md)használatával.
 
-     Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveletekhez. A `*/read` művelet automatikusan engedélyezve van, így nem kell felvennie ezt a beállítást.
+     Az elérhető műveletekről az [Azure Resource Manager erőforrás-szolgáltató műveletei ben](../../role-based-access-control/resource-provider-operations.md)található. Ha például engedélyezni szeretné a fogyasztóknak `Microsoft.Compute/virtualMachines/restart/action` a virtuális gépek újraindítását, adja hozzá az engedélyezett műveletekhez. A `*/read` művelet automatikusan engedélyezett, így nem kell megadnia ezt a beállítást.
    * **PrincipalId** (Résztvevő-azonosító): Ez a tulajdonság egy olyan felhasználó, felhasználócsoport vagy alkalmazás Azure Active Directory- (Azure AD-) azonosítója, amely az ügyfél előfizetésén belüli erőforrásokhoz kap hozzáférést. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
    * **Role Definition** (Szerepkör-definíció): Ez a tulajdonság a beépített szerepkör-alapú hozzáférés-vezérlési (RBAC) szerepkörök listája, amelyet az Azure AD biztosít. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
    * **Szabályzatbeállítások**: Alkalmazzon egy [Azure-szabályzatot](../../governance/policy/overview.md) a felügyelt alkalmazásokra az üzembe helyezett megoldások megfelelőségi követelményeinek megadásához. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-sztringet a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../../governance/policy/samples/index.md).
@@ -111,7 +111,7 @@ A Marketplace (Piactér) űrlap az [Azure Marketplace](https://azuremarketplace.
 
 ### <a name="preview-subscription-ids"></a>Preview subscription IDs (Előzetes verzióhoz hozzáférő azonosítók)
 
-Adja meg azon Azure-előfizetések azonosítóinak listáját, amelyek hozzáférhetnek az ajánlathoz, miután közzétette azt. Az engedélyezési listán szereplő előfizetéseket az ajánlat előzetes verziójának teszteléséhez használhatja, mielőtt elérhetővé tenné az ajánlatot mindenki számára. A partner portálon akár 100-előfizetés engedélyezési listáját is lefordíthatja.
+Adja meg azon Azure-előfizetések azonosítóinak listáját, amelyek hozzáférhetnek az ajánlathoz, miután közzétette azt. Az engedélyezési listán szereplő előfizetéseket az ajánlat előzetes verziójának teszteléséhez használhatja, mielőtt elérhetővé tenné az ajánlatot mindenki számára. Legfeljebb 100 előfizetést tartalmazó engedélyezési listát állíthat össze a partnerportálon.
 
 ### <a name="suggested-categories"></a>Suggested categories (Javasolt kategóriák)
 
@@ -125,7 +125,7 @@ A felügyelt alkalmazás összefoglalása az alábbi mezőket jeleníti meg:
 
 A felügyelt alkalmazás **Overview** (Áttekintés) lapján az alábbi mezők jelennek meg:
 
-![A Piactér áttekintése](./media/publish-marketplace-app/publishvm11.png)
+![Piactér áttekintése](./media/publish-marketplace-app/publishvm11.png)
 
 A felügyelt alkalmazás **Plans + Pricing** (Csomagok és díjszabás) lapján az alábbi mezők jelennek meg:
 
@@ -170,8 +170,8 @@ A **Support** (Támogatás) űrlapon a vállalat támogatási csapatának kapcso
 
 Miután az összes szakaszt kitöltötte, válassza a **Publish** (Közzététel) lehetőséget azon folyamat elindításához, amely elérhetővé teszi az ajánlatot az ügyfelek számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ arról, hogy mi történik a **Közzététel**gombra kattintás után: [Azure-alkalmazási ajánlat közzététele](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+* Ha további információra van szüksége arról, hogy mi történik, miután a **Közzététel**gombra kattint, olvassa el [az Azure-alkalmazásajánlat közzététele című témakört.](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban tekintse meg a [szolgáltatáskatalógusban elérhető felügyelt alkalmazások létrehozását és közzétételét](publish-service-catalog-app.md) ismertető témakört.

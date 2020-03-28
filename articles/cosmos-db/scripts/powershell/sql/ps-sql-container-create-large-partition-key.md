@@ -1,20 +1,20 @@
 ---
-title: PowerShell-szkript egy nagy partíciós kulccsal rendelkező Azure Cosmos-tároló létrehozásához
-description: Azure PowerShell parancsfájl-minta – hozzon létre egy tárolót egy nagy partíciós kulccsal egy Azure Cosmos-fiókban
+title: PowerShell-parancsfájl egy Azure Cosmos DB-tároló létrehozásához egy nagy partíciós kulccsal
+description: Azure PowerShell-parancsfájlminta – Hozzon létre egy nagy partíciós kulcsot tartalmazó tárolót egy Azure Cosmos DB-fiókban
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: ecc5e7c13d898f89bbd6b542faf69834de26e0e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7746154fe89b655d09345a2de655fa85a0d4cbae
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444979"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365931"
 ---
-# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>Tároló létrehozása nagyméretű partíciós kulccsal egy Azure Cosmos-fiókban a PowerShell használatával
+# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>Hozzon létre egy tárolót egy nagy partíciós kulccsal egy Azure Cosmos DB-fiókban a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,13 +38,15 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
-|**Azure-erőforráscsoportok**| |
+|**Azure Cosmos DB**| |
+| [Új-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Új Cosmos DB-fiókot hoz létre. |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB SQL-adatbázis. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Új at hoz létre, vagy frissíti a meglévő Cosmos DB SQL Container. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

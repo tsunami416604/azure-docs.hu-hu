@@ -10,67 +10,67 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67179739"
 ---
-1. A böngészőben nyissa meg a [Jenkins Azure Marketplace-beli rendszerképét](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
+1. A böngészőben nyissa meg az [Azure Marketplace-lemezképet a Jenkins számára.](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)
 
-1. Válassza ki **első most**.
+1. Válassza **a GET IT NOW lehetőséget.**
 
-    ![Válassza ki a GIT IT most már a Jenkins Piactéri lemezképhez a telepítési folyamat elindításához.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
+    ![Válassza a GIT IT NOW lehetőséget a Jenkins Piactér lemezkép telepítési folyamatának elindításához.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-get-it-now.png)
 
-1. A díjszabás részleteit és használati információk áttekintése után válassza ki a **Folytatás**.
+1. Miután áttekintette az árképzésrészleteit és a feltételekkel kapcsolatos információkat, válassza a **Folytatás**lehetőséget.
 
-    ![A Jenkins-piactér kép díjak és feltételek adatait.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-pricing-and-terms.png)
+    ![Jenkins Marketplace-lemezkép-díjszabás és szerződési feltételek.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-pricing-and-terms.png)
 
-1. Válassza ki **létrehozás** a Jenkins-kiszolgáló konfigurálása az Azure Portalon. 
+1. Válassza a **Létrehozás** lehetőséget a Jenkins-kiszolgáló konfigurálásához az Azure Portalon. 
 
-    ![Telepítse a Jenkins Piactéri lemezképhez.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-create.png)
+    ![Telepítse a Jenkins Piactér lemezképet.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-create.png)
 
-1. Az a **alapjai** lapra, adja meg a következő értékeket:
+1. Az **Alapok** lapon adja meg a következő értékeket:
 
-   - **Név** – adja meg `Jenkins`.
-   - **Felhasználónév** – adja meg a felhasználónevet, a virtuális gép, amelyen fut a Jenkins való bejelentkezéskor használandó. A felhasználónévnek [egyedi követelményeknek](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) kell megfelelnie.
-   - **Hitelesítési típus** – ki **nyilvános SSH-kulcs**.
-   - **Nyilvános SSH-kulcs** – másolás és beillesztés nyilvános RSA-kulcsot az egysoros (kezdve `ssh-rsa`) vagy többsoros PEM formátumban. A Linux és macOS vagy Windows puttygen eszközzel az ssh-keygen eszközzel is létrehozhat. SSH-kulcsokat és az Azure kapcsolatos további információkért lásd: a cikk [az SSH-kulcsok az Azure-ban a Windows hogyan](/azure/virtual-machines/linux/ssh-from-windows).
-   - **Előfizetés** – válassza ki az Azure-előfizetést, amelybe a Jenkins telepíteni szeretné.
-   - **Erőforráscsoport** – ki **új létrehozása**, és adjon meg egy nevet az erőforráscsoport, amely a gyűjteményt, amely a Jenkins-telepítés alkotó erőforrások logikai tárolója.
-   - **Hely** – ki **USA keleti Régiójában**.
+   - **Név** - `Jenkins`Írja be a be írást.
+   - **Felhasználónév** – Adja meg a felhasználónevet, amelyet használni kell, amikor bejelentkezik a virtuális gépre, amelyen a Jenkins fut. A felhasználónévnek [egyedi követelményeknek](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) kell megfelelnie.
+   - **Hitelesítés típusa** - Válassza az **SSH nyilvános kulcsot.**
+   - **SSH nyilvános kulcs** – RsA nyilvános kulcs másolása és beillesztése egysoros formátumban `ssh-rsa`(kezdve) vagy többsoros PEM formátumban. SSH kulcsokat ssh-keygen linuxos és macOS, vagy PuTTYGen windowsos puttygen használatával hozhat létre. Az SSH-kulcsokról és az Azure-ról további információt a [SSH-kulcsok használata az Azure-ban a Windows rendszerrel](/azure/virtual-machines/linux/ssh-from-windows)című cikkben talál.
+   - **Előfizetés** – Válassza ki azt az Azure-előfizetést, amelybe telepíteni szeretné a Jenkinst.
+   - **Erőforráscsoport** – Válassza **az Új létrehozása**lehetőséget, és adja meg annak az erőforráscsoportnak a nevét, amely a Jenkins-telepítést létrehozó erőforrások gyűjtésének logikai tárolójaként szolgál.
+   - **Hely** - Válassza ki **az USA keleti részét.**
 
-     ![Az alapszintű lapon adja meg a Jenkins hitelesítés- és erőforrás csoport adatait.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
+     ![Adja meg a Jenkins hitelesítési és erőforráscsoport-adatait az Alapszintű lapon.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-basic.png)
 
-1. Válassza ki **OK** lépjen a **további beállítás** fülre. 
+1. A **További beállítások** lapra való továbblépéshez válassza az **OK** gombot. 
 
-1. Az a **további beállítás** lapra, adja meg a következő értékeket:
+1. A **További beállítások** lapon adja meg a következő értékeket:
 
-   - **Méret** – válassza ki a megfelelő méretezési lehetőséget a Jenkins virtuális gép.
-   - **Virtuális merevlemez típusa** – adja meg vagy HDD (merevlemez-meghajtó) vagy SSD (SSD-meghajtóra), mely tárolólemez-típusba jelzi a Jenkins virtuális gép használata engedélyezett.
-   - **Virtuális hálózat** – (nem kötelező) jelölje ki **virtuális hálózati** módosíthatja az alapértelmezett beállításokat.
-   - **Alhálózatok** – ki **alhálózatok**, ellenőrizze az adatokat, és válassza ki **OK**.
-   - **Nyilvános IP-cím** – az IP-cím neve alapértelmezés szerint a Jenkins - IP-cím utótaggal az előző lapon megadott név. Kiválaszthatja, hogy az alapértelmezett módosíthatja.
-   - **Tartománynévcímke** -értéket adja meg a Jenkins virtuális gép teljes URL-címe.
-   - **A Jenkins kiadási típusa** – a lehetőségek közül válassza ki a kívánt kiadási típusa: `LTS`, `Weekly build`, vagy `Azure Verified`. A `LTS` és `Weekly build` beállítások magyarázatát a cikk [Jenkins LTS kiadási sor](https://jenkins.io/download/lts/). A `Azure Verified` beállítás hivatkozik egy [Jenkins LTS verzióját](https://jenkins.io/download/lts/) , amely az Azure-on futtatott jóvá lett hagyva. 
-   - **JDK típus** -JDK kell telepíteni. Alapértelmezés szerint a Zulu teszteltük, minősített buildjei openjdk csomagját.
+   - **Méret** – Válassza ki a megfelelő méretezési lehetőséget a Jenkins virtuális gép.
+   - **Virtuálisgép-lemez típusa** – Adja meg a HDD (merevlemez- meghajtó) vagy az SSD (SSD) értéket annak jelzésére, hogy melyik tárolólemez-típus engedélyezett a Jenkins virtuális gépen.
+   - **Virtuális hálózat** - (Nem kötelező) Válassza ki a **virtuális hálózatot** az alapértelmezett beállítások módosításához.
+   - **Alhálózatok** – Válassza **az Alhálózatok**lehetőséget, ellenőrizze az adatokat, és válassza az **OK**gombot.
+   - **Nyilvános IP-cím** – Az IP-cím neve alapértelmezés szerint az előző lapon megadott Jenkins-névre , -IP utótaggal. Kiválaszthatja az alapértelmezett módosítás lehetőségét.
+   - **Tartománynév-címke** – Adja meg a Jenkins virtuális gép teljesen minősített URL-címének értékét.
+   - **Jenkins kiadási típus** - Válassza ki a `LTS` `Weekly build`kívánt `Azure Verified`kiadási típust a következő lehetőségek közül: , , vagy . A `LTS` `Weekly build` beállításokat a cikk ismerteti a [Jenkins LTS Release Line](https://jenkins.io/download/lts/). A `Azure Verified` beállítás egy [Jenkins LTS-verzióra](https://jenkins.io/download/lts/) hivatkozik, amely az Azure-ban való futtatásra lett ellenőrizve. 
+   - **JDK típusa** - JDK kell telepíteni. Az alapértelmezett érték az OpenJDK Zulu által tesztelt, tanúsított buildje.
 
-     ![A beállítások lapon adja meg a Jenkins virtuális gép beállításait.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
+     ![Adja meg a Jenkins virtuálisgép-beállításait a Beállítások lapon.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-settings.png)
 
-1. Válassza ki **OK** lépjen a **integrációs beállítások** fülre.
+1. Az **OK gombra** választva lépjen tovább az **Integrációs beállítások** lapra.
 
-1. Az a **integrációs beállítások** lapra, adja meg a következő értékeket:
+1. Az **Integrációs beállítások** lapon adja meg a következő értékeket:
 
-    - **Egyszerű szolgáltatás** – az egyszerű szolgáltatás adnak hozzá a Jenkins, a hitelesítés az Azure-ral hitelesítő adatot. `Auto` azt jelenti, hogy az egyszerű MSI (Felügyeltszolgáltatás-identitás) fogja létrehozni. `Manual` azt jelenti, hogy Ön az egyszerű kell létrehozni. 
-        - **Alkalmazásazonosító** és **titkos** – Ha a `Manual` első számú megoldás a **egyszerű szolgáltatás** lehetőségnél kell adja meg a `Application ID` és `Secret` a a egyszerű szolgáltatás. Amikor [egyszerű szolgáltatás létrehozása](/cli/azure/create-an-azure-service-principal-azure-cli), vegye figyelembe, hogy az alapértelmezett szerepkör **közreműködői**, azaz elegendő az Azure-erőforrások használatára.
-    - **Lehetővé teszik az ügynökök felhőalapú** -ügynökök esetében adja meg a felhő alapértelmezett sablon ahol `ACI` hivatkozik az Azure-Tárolópéldányon, és `VM` hivatkozik a virtuális gépek. Azt is megadhatja `No` Ha nem kívánja azt egy felhő-ügynök engedélyezése.
+    - **Egyszerű szolgáltatás** – A szolgáltatás névadó jave van hozzáadva a Jenkins hitelesítő adatokként az Azure-ral való hitelesítéshez. `Auto`azt jelenti, hogy a főtag az MSI (Managed Service Identity) által jön létre. `Manual`azt jelenti, hogy a megbízó kell létrehozni az Ön által. 
+        - **Alkalmazásazonosító** és **titkos** – Ha `Manual` az Egyszerű szolgáltatás beállítás kiválasztásával választja `Application ID` `Secret` a **szolgáltatást,** meg kell adnia a és a szolgáltatásnévhez. Egyszerű [szolgáltatás létrehozásakor](/cli/azure/create-an-azure-service-principal-azure-cli)vegye figyelembe, hogy az alapértelmezett szerepkör **közreműködő**, amely elegendő az Azure-erőforrásokkal való munkához.
+    - **Felhőügynökök engedélyezése** – Adja meg az `ACI` alapértelmezett felhősablont az `VM` ügynökök, ahol az Azure Container Instance hivatkozik, és virtuális gépekre hivatkozik. Azt is `No` megadhatja, ha nem szeretné engedélyezni a felhőalapú ügynök.
 
-1. Válassza ki **OK** lépjen a **összefoglalás** fülre.
+1. Az **OK gombra** választva lépjen tovább az **Összegzés** lapra.
 
-1. Ha a **összefoglalás** lapot jelenít meg, a megadott adatok érvényesítése. Ha már látja a **ellenőrzésen** üzenet (a lap tetején), válassza ki **OK**. 
+1. Amikor megjelenik az **Összegzés** lap, a beírt adatok érvényesítésre kerülnek. Miután megjelenik az **Érvényesítés átadott** üzenet (a lap tetején), válassza az **OK gombot.** 
 
-     ![Az összefoglaló lapon jeleníti meg, és érvényesíti a kiválasztott beállításokat.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
+     ![Az Összegzés lap megjeleníti és érvényesíti a kiválasztott beállításokat.](./media/jenkins-install-from-azure-marketplace-image/jenkins-configure-summary.png)
 
-1. Ha a **létrehozás** lap megjelenik, válassza ki **létrehozás** a Jenkins virtuális gép létrehozásához. A kiszolgáló készen áll, amikor egy értesítés jeleníti meg az Azure Portalon.
+1. Amikor megjelenik a **Létrehozás** lap, válassza a **Létrehozás** gombot a Jenkins virtuális gép létrehozásához. Amikor a kiszolgáló készen áll, egy értesítés jelenik meg az Azure Portalon.
 
-     ![A Jenkins készen értesítési.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)
+     ![Jenkins készen áll az értesítésre.](./media/jenkins-install-from-azure-marketplace-image/jenkins-install-notification.png)

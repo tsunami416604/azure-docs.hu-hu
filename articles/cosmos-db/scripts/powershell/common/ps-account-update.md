@@ -1,19 +1,19 @@
 ---
-title: PowerShell-parancsfájl Azure Cosmos-fiók frissítéséhez
-description: Azure PowerShell parancsfájl-minta – Azure Cosmos-fiók frissítése vagy régiók módosítása
+title: PowerShell-parancsfájl az Azure Cosmos-fiók alapértelmezett konzisztenciaszintjének frissítéséhez
+description: Azure PowerShell-parancsfájlminta – Alapértelmezett konzisztenciaszint frissítése egy Azure Cosmos DB-fiókon a PowerShell használatával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 075c33b0818aa3ec8b16158f538ae302446ff5f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d3df2e91624f9b5d82d534a1d525fa6866f1a489
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445023"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366076"
 ---
-# <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>Azure Cosmos-fiók frissítése vagy régiók módosítása a PowerShell használatával
+# <a name="update-the-regions-on-an-azure-cosmos-db-account-using-powershell"></a>Az Azure Cosmos DB-fiók régióinak frissítése a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,11 +22,11 @@ ms.locfileid: "75445023"
 ## <a name="sample-script"></a>Példaszkript
 
 > [!NOTE]
-> A régiók nem módosíthatók, és más Cosmos-fiókok tulajdonságai nem módosíthatók ugyanabban a műveletben. Ezeket két külön műveletnek kell elvégeznie.
+> A régiók nem módosíthatók, és a Cosmos-fiók más tulajdonságai nem módosíthatók ugyanabban a műveletben. Ezeket két külön műveletként kell elvégezni.
 > [!NOTE]
-> Ez a példa egy SQL-(Core-) API-fiók használatát mutatja be. Ha más API-khoz szeretné használni ezt a mintát, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra.
+> Ez a minta egy SQL API-fiók használatával szemlélteti. Ha ezt a mintát más API-khoz szeretné használni, másolja a kapcsolódó tulajdonságokat, és alkalmazza az API-specifikus parancsfájlra.
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Update an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -42,15 +42,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-|**Azure-erőforrások**| |
-| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hozzon létre egy erőforrást. |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Erőforrás frissítése. |
-|**Azure-erőforráscsoportok**| |
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Listázza a Cosmos DB-fiókokat, vagy lead egy megadott Cosmos DB-fiókot. |
+| [Update-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | Frissítse a Cosmos DB-fiókját. |
+|**Azure erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

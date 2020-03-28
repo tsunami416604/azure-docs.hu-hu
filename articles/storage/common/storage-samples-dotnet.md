@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-minták .NET használatával | Microsoft Docs
-description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A .NET Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
+title: Azure Storage-minták a .NET | használatával Microsoft dokumentumok
+description: Tekintse meg, töltse le és futtassa az Azure Storage-hoz készült mintakódot és alkalmazásokat. Fedezze fel a blobok, várólisták, táblák és fájlok első lépésekre vonatkozó mintáit a .NET tárolóügyfél-kódtárak használatával.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,42 +8,42 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77486117"
 ---
-# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-minták a V12 .NET ügyféloldali kódtárak használatával
+# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Az Azure Storage-minták a v12 .NET ügyfélkódtárak használatával
 
-A következő táblázat áttekintést nyújt a minták tárházáról, valamint az egyes mintákban szereplő forgatókönyvekről. A hivatkozásokra kattintva megtekintheti a megfelelő mintakód-kódot a GitHubon.
+Az alábbi táblázat áttekintést nyújt a mintatárházunkról és az egyes mintákban szereplő forgatókönyvekről. Kattintson a hivatkozásokra a megfelelő mintakód megtekintéséhez a GitHubon.
 
 > [!NOTE]
-> Ezek a minták a legújabb Azure Storage .NET V12 könyvtárat használják. Az örökölt v11-kódokért lásd: [Azure Blob Storage Samples for .net](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started) a GitHub-tárházban.
+> Ezek a minták a legújabb Azure Storage .NET v12-kódtárat használják. Az örökölt v11-es kód: [Azure Blob Storage minták a GitHub-tárházban .](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started)
 
-## <a name="blob-samples"></a>BLOB-minták
+## <a name="blob-samples"></a>Blob minták
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Hitelesítés a kapcsolatok karakterláncának használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
+      [Hitelesítés kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
+      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hitelesítés az Azure Identity használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
+      [Hitelesítés az Azure Identity szolgáltatással](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés Active Directory jogkivonat használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L177)
+      [Hitelesítés Active Directory-jogkivonat használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L177)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Névtelen hozzáférés nyilvános blobhoz](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
+      [Nyilvános blob névtelen elérése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
    :::column-end:::
 :::row-end:::
 
@@ -54,15 +54,15 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Több blob törlése egy kérelemben](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Több blob-hozzáférési réteg beállítása egy kérelemben](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [Több blob-hozzáférési szint beállítása egy kérelemben](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Részletes vezérlés egy batch-kérelemben](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [Részletes ellenőrzés kötegelt kérelemben](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [Sikertelen alműveletből származó hibák elfogása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [Sikertelen alművelet ből származó felzárkózási hibák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 
@@ -73,43 +73,43 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Fájl feltöltése blobba](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L21)
    :::column-end:::
    :::column span="":::
-      [BLOB letöltése fájlba](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L66)
+      [Blob letöltése fájlba](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Rendszerkép letöltése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L109)
+      [Kép letöltése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L109)
    :::column-end:::
    :::column span="":::
-      [A tárolóban lévő összes blob listázása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
+      [Az összes blob listázása egy tárolóban](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Hibakeresés
+### <a name="troubleshooting"></a>Hibaelhárítás
 :::row:::
    :::column span="2":::
-      [Helyreállítható hiba kiváltása tároló-ügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
+      [Helyreállítható hiba aktiválása tárolóügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
    :::column-end:::
 :::row-end:::
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 minták
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Névtelen hozzáférés nyilvános fájlhoz](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L28)
+      [Nyilvános fájl névtelen elérése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L28)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
+      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hitelesítés közös hozzáférésű aláírás (SAS) használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
+      [Hitelesítés megosztott hozzáférésű aláírással (SAS)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés Active Directory jogkivonat használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L164)
+      [Hitelesítés Active Directory-jogkivonat használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L164)
    :::column-end:::
 :::row-end:::
 
@@ -119,7 +119,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Fájl létrehozása fájlrendszer-ügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Fájl és könyvtár tulajdonságainak beolvasása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
+      [Fájl és könyvtár tulajdonságainak beszereznie](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -135,12 +135,12 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Könyvtár létrehozása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L93)
    :::column-end:::
    :::column span="":::
-      [Fájl létrehozása címtár-ügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
+      [Fájl létrehozása címtárügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Címtárak listázása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
+      [Könyvtárak listázása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
    :::column-end:::
    :::column span="":::
       [Fájlok és könyvtárak bejárása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L318)
@@ -153,7 +153,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Fájl feltöltése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
    :::column-end:::
    :::column span="":::
-      [Feltöltés egy fájl hozzáfűzésével](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L169)
+      [Feltöltés fájlhoz fűzéssel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L169)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -163,14 +163,14 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Fájl-hozzáférés-vezérlési lista beállítása és lekérése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L468)
+      [Fájlhozzáférés-vezérlőlista beállítása és bekéselése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L468)
    :::column-end:::
    :::column span="":::
-      [Fájl engedélyeinek beállítása és lekérése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
+      [Fájl engedélyeinek beállítása és bekésezése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Hibakeresés
+### <a name="troubleshooting"></a>Hibaelhárítás
 
 :::row:::
    :::column span="2":::
@@ -178,21 +178,21 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Azure Files minták
+## <a name="azure-files-samples"></a>Az Azure Files mintái
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Hitelesítés a kapcsolatok karakterláncának használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
+      [Hitelesítés kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
+      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Hitelesítés közös hozzáférésű aláírás (SAS) használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
+      [Hitelesítés megosztott hozzáférésű aláírással (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
    :::column-end:::
 :::row-end:::
 
@@ -212,7 +212,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Hibakeresés
+### <a name="troubleshooting"></a>Hibaelhárítás
 
 :::row:::
    :::column span="2":::
@@ -220,29 +220,29 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Üzenetsor-minták
+## <a name="queue-samples"></a>Várólista-minták
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 :::row:::
    :::column span="":::
-      [Hitelesítés Azure Active Directory használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L167)
+      [Hitelesítés az Azure Active Directory használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L167)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés a kapcsolatok karakterláncának használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
+      [Hitelesítés kapcsolati karakterlánc használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hitelesítés megosztott kulcsú hitelesítő adatok használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
+      [Hitelesítés megosztott kulcshitelesítő adatokkal](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
    :::column-end:::
    :::column span="":::
-      [Hitelesítés közös hozzáférésű aláírás (SAS) használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
+      [Hitelesítés megosztott hozzáférésű aláírással (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Hitelesítés Active Directory jogkivonat használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L140)
+      [Hitelesítés Active Directory-jogkivonat használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L140)
    :::column-end:::
 :::row-end:::
 
@@ -250,7 +250,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
 
 :::row:::
    :::column span="2":::
-      [Üzenetsor létrehozása és üzenet hozzáadása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L24)
+      [Várólista létrehozása és üzenet hozzáadása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L24)
    :::column-end:::
 :::row-end:::
 
@@ -261,23 +261,23 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Üzenetek fogadása és feldolgozása](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L61)
    :::column-end:::
    :::column span="":::
-      [Betekintés üzenetekben](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
+      [Betekintés az üzenetekbe](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Üzenetek fogadása és a frissítés láthatóságának időtúllépése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
+      [Üzenetek fogadása és láthatósági időeltetés frissítése](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Hibakeresés 
+### <a name="troubleshooting"></a>Hibaelhárítás 
 :::row:::
    :::column span="2":::
-      [Helyreállítható hiba kiváltása üzenetsor-ügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
+      [Helyreállítható hiba kiváltása várólista-ügyfél használatával](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
    :::column-end:::
 :::row-end:::
 
-## <a name="table-samples-v11"></a>Table Samples (v11)
+## <a name="table-samples-v11"></a>Táblázatminták (v11)
 
 :::row:::
    :::column span="":::
@@ -292,15 +292,15 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
       [Entitás beszúrása/egyesítése/cseréje](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/SamplesUtils.cs#L41)
    :::column-end:::
    :::column span="":::
-      [Lekérdezési entitások](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L672)
+      [Entitások lekérdezése](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L672)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Lekérdezési táblázatok](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
+      [Táblák lekérdezése](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
    :::column-end:::
    :::column span="":::
-      [Táblázat ACL/Properties](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L224)
+      [Tábla ACL/tulajdonságok](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L224)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -309,31 +309,31 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Azure code-minta kódtárak
+## <a name="azure-code-sample-libraries"></a>Azure-kódmintatárak
 
-A teljes .NET-minta kódtárak megtekintéséhez lépjen a következőre:
+A teljes .NET mintatárak megtekintéséhez nyissa meg a következő tárat:
 
-* [Azure Blob Code-minták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
-* [Azure Data Lake kód mintái](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
-* [Azure Files kód mintái](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
-* [Azure üzenetsor-kódok mintái](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+* [Az Azure blob-kódminták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+* [Az Azure Data Lake kódmintái](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+* [Az Azure Files kódmintái](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
+* [Az Azure-várólista-kódminták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
-Az egyes tárakhoz tartozó GitHub-tárházat tallózással és klónozással is megtekintheti.
+A GitHub-tárminden tárban tallózhat és klónozhatja az egyes tárakat.
 
-## <a name="getting-started-guides"></a>Első lépések útmutatók
+## <a name="getting-started-guides"></a>Útmutatók az első lépésekhez
 
-A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage ügyféloldali kódtárait, és hogyan kezdheti meg az első lépéseket.
+Tekintse meg az alábbi útmutatókat, ha az Azure Storage ügyfélkódtárak telepítésével és használatának megkezdésével kapcsolatos útmutatást keresi.
 
-* [Első lépések az Azure Blob Service-szel a .NET-ben](../blobs/storage-quickstart-blobs-dotnet.md)
-* [Első lépések az Azure üzenetsor-szolgáltatással a .NET-ben](../queues/storage-quickstart-queues-dotnet.md)
-* [Első lépések az Azure Table Service-ben a .NET-ben](../../cosmos-db/tutorial-develop-table-dotnet.md)
-* [Első lépések az Azure file Service-ben a .NET-ben](../files/storage-dotnet-how-to-use-files.md)
+* [Az Azure Blob Szolgáltatás első lépései a .NET-en](../blobs/storage-quickstart-blobs-dotnet.md)
+* [Az Azure Queue Service – első lépések a .NET-en](../queues/storage-quickstart-queues-dotnet.md)
+* [Az Azure Table Service – első lépések a .NET-en](../../cosmos-db/tutorial-develop-table-dotnet.md)
+* [Az Azure File Service – első lépések a .NET-en](../files/storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a mintákról más nyelveken:
+A más nyelvekre vonatkozó mintákkal kapcsolatos információk:
 
 * Java: [Azure Storage-minták Java használatával](storage-samples-java.md)
-* Python: [Azure Storage-minták a Python használatával](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
+* Python: [Azure Storage-minták python használatával](storage-samples-python.md)
+* JavaScript/Node.js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

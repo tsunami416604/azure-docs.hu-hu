@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – méretezési csoport autoskálázása Azure-sablonokkal
+title: Oktatóanyag – Méretezési csoport automatikus skálázása Azure-sablonokkal
 description: Ismerje meg, hogyan méretezhet automatikusan egy virtuálisgép-méretezési csoportot az Azure Resource Manager-sablonok segítségével a processzorterhelés növekedésének vagy csökkenésének megfelelően
 author: cynthn
 tags: azure-resource-manager
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9d7e0a99a7ba2c00b2ebe5ea8c77d527765ead67
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f9b60ca31765ac52f4693e4efaac09af2ec2f293
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271430"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062770"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
-Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Automatikus skálázás használata méretezési csoportokkal
@@ -24,7 +24,7 @@ Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuál
 > * Virtuálisgép-példányok és automatikus skálázás-aktiválási szabályok terhelési tesztje
 > * Visszaméretezés, ha az igény csökken
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -63,16 +63,16 @@ Az alábbi példában egy olyan szabály van meghatározva, amely megnöveli a m
 
 Ez a szabály az alábbi paramétereket tartalmazza:
 
-| Paraméter         | Magyarázat                                                                                                         | Value (Díj)           |
+| Paraméter         | Magyarázat                                                                                                         | Érték           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat  |
 | *timeGrain*       | Az elemzendő metrikák gyűjtési gyakorisága.                                                                   | 1 perc        |
 | *timeAggregation* | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag         |
 | *timeWindow*      | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 5 perc       |
-| *operator*        | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint    |
+| *Üzemeltető*        | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint    |
 | *threshold*       | Az érték, amely esetén az automatikus skálázási szabály aktivál egy műveletet.                                                      | 70%             |
 | *direction*       | Meghatározza, hogy a méretezési csoport a szabály alkalmazásakor horizontálisan le- vagy fel legyen skálázva.                                              | Növelés        |
-| *type*            | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása    |
+| *Típus*            | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása    |
 | *value*           | Hány virtuálisgép-példány legyen horizontálisan le- vagy felskálázva a szabály alkalmazásakor.                                             | 3               |
 | *cooldown*        | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc       |
 
@@ -136,7 +136,7 @@ Az alábbi példában egy olyan szabályt határozunk meg, amely horizontálisan
 ## <a name="create-an-autoscaling-scale-set"></a>Automatikus skálázást végző méretezési csoport létrehozása
 A mintasablon segítségével hozzunk létre egy méretezési csoportot, és alkalmazzuk az automatikus skálázási szabályokat. [Áttekintheti az elkészült sablont](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json), vagy [megtekintheti a sablon *Microsoft.insights/autoscalesettings* erőforrás-szolgáltató](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) szakaszát.
 
-Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -175,13 +175,13 @@ Az alábbi kimenetpélda a példány nevét, a terheléselosztó nyilvános IP-c
 
 SSH-n keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét és portszámát a `-p` paraméterrel az ezt megelőző parancsban látható módon:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-A bejelentkezést követően telepítse a **stress** segédprogramot. A CPU-terhelést előidéző *10* **stressz** -feldolgozók indítása. Ezek a feldolgozók *420* másodpercig futnak. Ez elegendő idő ahhoz, hogy az automatikus méretezési szabályok alkalmazzák a kívánt műveletet.
+A bejelentkezést követően telepítse a **stress** segédprogramot. Indítson el *10* **terhelési** feldolgozót, amelyek processzorterhelést hoznak létre. Ezek a feldolgozók *420* másodpercig futnak. Ez elegendő idő ahhoz, hogy az automatikus méretezési szabályok alkalmazzák a kívánt műveletet.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -190,26 +190,26 @@ Ha a **stress** segédprogram a *stress: info: [2688] dispatching hogs: 10 cpu, 
 
 Annak megerősítéséhez, hogy a **stress** segédprogram processzorterhelést hoz létre, vizsgálja meg az aktív rendszerterhelést a **top** segédprogram segítségével:
 
-```azurecli-interactive
+```console
 top
 ```
 
 Lépjen ki a **top** segédprogramból, majd zárja be a virtuálisgép-példánnyal létesített kapcsolatot. A **stress** segédprogram továbbra is fut a virtuálisgép-példányon.
 
-```azurecli-interactive
+```console
 Ctrl-c
 exit
 ```
 
 Csatlakozzon a másik virtuálisgép-példányhoz az előző [az vmss list-instance-connection-info](/cli/azure/vmss) paranccsal listázott portszám segítségével:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 Telepítse és futtassa a **stress** segédprogramot, majd indítson el tíz feldolgozót a második virtuálisgép-példányon.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -218,7 +218,7 @@ Ismét, ha a **stress** segédprogram a *stress: info: [2713] dispatching hogs: 
 
 Zárja be a második virtuálisgép-példánnyal létesített kapcsolatot. A **stress** segédprogram továbbra is fut a virtuálisgép-példányon.
 
-```azurecli-interactive
+```console
 exit
 ```
 
@@ -234,7 +234,7 @@ watch az vmss list-instances \
 
 Ha elérte a processzor küszöbértékét, az automatikus méretezési szabályok megnövelik a méretezési csoportban lévő virtuálisgép-példányok számát. Az alábbi kimenet három virtuális gép létrejöttét mutatja, amint a méretezési csoport automatikusan felskálázódik:
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -248,7 +248,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 Amint a **stress** segédprogram leáll a kezdeti virtuálisgép-példányokon, az átlagos processzorterhelés visszatér a normális szintre. Újabb 5 perc elteltével az automatikus méretezési szabályok horizontálisan leskálázzák a virtuálisgép-példányok számát. A horizontális leskálázási műveletek először a legmagasabb azonosítóval rendelkező virtuálisgép-példányokat távolítják el. Ha egy méretezési csoport az Availability Sets vagy az Availability Zones funkciót használja, a horizontális leskálázási műveletek egyenletesen lesznek elosztva a virtuálisgép-példányok között. Az alábbi kimeneti példa egy virtuálisgép-példány törlését mutatja, ahogy a méretezési csoport automatikusan leskálázódik:
 
-```bash
+```output
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
@@ -263,7 +263,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure CLI használatával:
 
 > [!div class="checklist"]

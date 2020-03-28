@@ -1,29 +1,29 @@
 ---
-title: 'Oktatóanyag: Linux ASP.NET Core SQL-ADATBÁZISsal'
-description: Megtudhatja, hogyan szerezhet be olyan adatvezérelt linuxos ASP.NET Core alkalmazást, amely Azure App Serviceben működik, SQL Databasehoz való kapcsolódással.
+title: 'Oktatóanyag: Linux ASP.NET Core SQL DB-vel'
+description: Megtudhatja, hogyan juthat be egy adatközpontú Linux-ASP.NET Core alkalmazás beszereznie az Azure App Service-ben, egy SQL-adatbázishoz való csatlakozással.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 4de30b45aac9bb6b27474b1eaa0e8917760a6928
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524087"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045618"
 ---
-# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>ASP.NET Core-és SQL Database-alkalmazás létrehozása Linux rendszeren Azure App Service
+# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>ASP.NET Core és SQL Database alkalmazás létrehozása linuxos Azure App Service-ben
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windows_rendszeren való app Service telepítéséhez lásd: [.net Core-és SQL Database-alkalmazás létrehozása Azure app Serviceban](../app-service-web-tutorial-dotnetcore-sqldb.md).
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windows_App Service szolgáltatásba való üzembe helyezésről a [.NET Core és AZ SQL Database alkalmazás létrehozása az Azure App Service szolgáltatásban](../app-service-web-tutorial-dotnetcore-sqldb.md)című témakörben található.
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez az oktatóanyag bemutatja, hogyan hozhat létre .NET Core-alkalmazást, és hogyan csatlakoztatható SQL Databasehoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó .NET Core MVC-alkalmazás lesz.
+[App Service linuxos](app-service-linux-intro.md) nyújt egy jól skálázható, önjavító web hosting szolgáltatás segítségével a Linux operációs rendszer. Ez az oktatóanyag bemutatja, hogyan hozhat létre .NET Core alkalmazást, és hogyan csatlakoztathatja egy SQL-adatbázishoz. Az oktatóanyag eredménye egy, a Linux App Service-ben futó .NET Core MVC-alkalmazás lesz.
 
 ![Linux App Service-ben futó alkalmazás](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * SQL Database-adatbázis létrehozása az Azure-ban
@@ -40,7 +40,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 Az oktatóanyag elvégzéséhez:
 
 * [A Git telepítése](https://git-scm.com/)
-* [Telepítés .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+* [A .NET Core SDK 2.2 telepítése](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
 ## <a name="create-local-net-core-app"></a>Helyi .NET Core-alkalmazás létrehozása
 
@@ -83,15 +83,15 @@ Ebben a lépésben egy SQL Database-adatbázist hozhat létre az Azure-ban. Miut
 
 Ez az oktatóanyag az SQL-adatbázisokhoz az [Azure SQL Database-t](/azure/sql-database/) használja.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
 ### <a name="create-a-sql-database-logical-server"></a>SQL Database logikai kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy SQL Database logikai kiszolgálót az [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) paranccsal.
+A Cloud Shell, hozzon létre egy [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) SQL Database logikai kiszolgáló a parancsot.
 
-Cserélje le az *\<Server-name >* helyőrzőt egyedi SQL Database nevére. Ezt a nevet a rendszer SQL Database-végpontként (`<server-name>.database.windows.net`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli logikai kiszolgálóban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet. Továbbá cserélje le *\<db-username >* és *\<db-Password >t* a választott felhasználónévvel és jelszóval. 
+Cserélje le a * \<kiszolgálónevet>* helyőrzőt egy egyedi SQL Database-névre. Ezt a nevet a rendszer SQL Database-végpontként (`<server-name>.database.windows.net`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli logikai kiszolgálóban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet. Cserélje le * \<a db-username>* és * \<a db-password>-t* egy ön által választott felhasználónévvel és jelszóval. 
 
 
 ```azurecli-interactive
@@ -136,7 +136,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Kapcsolati sztring létrehozása
 
-Cserélje le a következő karakterláncot a *\<Server-name >* , *\<db-username >* , és *\<db-Password >* , amelyet korábban használt.
+Cserélje le a * \< *következő karakterláncot a korábban használt kiszolgálónévi>, * \<db-felhasználónév>* és * \<db-jelszó>.*
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -160,29 +160,29 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
 
-### <a name="configure-connection-string"></a>A kapcsolatok karakterláncának konfigurálása
+### <a name="configure-connection-string"></a>Kapcsolati karakterlánc konfigurálása
 
-Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. A következő parancsban cserélje le az *\<app-name >* , valamint a *\<a kapcsolatok-karakterlánc >* paramétert a korábban létrehozott,
+Az Azure-alkalmazás kapcsolati karakterláncok [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) beállításához használja a parancsot a Cloud Shellben. A következő parancsban * \< *cserélje le az alkalmazásnév>, valamint a * \<kapcsolat-karakterlánc>* paramétert a korábban létrehozott kapcsolati karakterláncra.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
-ASP.NET Core a standard minta használatával, például az *appSettings. JSON*fájlban megadott kapcsolatok karakterláncával (`MyDbConnection`) elnevezett kapcsolatok karakterláncát használhatja. Ebben az esetben a `MyDbConnection` a *appSettings. JSON*fájlban is meg van adva. Ha App Service fut, a App Serviceban definiált kapcsolati karakterlánc elsőbbséget élvez a *appSettings. JSON*fájlban megadott kapcsolati karakterlánccal szemben. A kód a *appSettings. JSON* értéket használja a helyi fejlesztés során, és ugyanaz a kód a app Service értéket használja az üzembe helyezéskor.
+A Core ASP.NET ezt az elnevezett`MyDbConnection`kapcsolati karakterláncot ( ) használhatja a szabványos minta használatával, mint az *appsettings.json*ban megadott bármely kapcsolati karakterlánc. Ebben az `MyDbConnection` esetben az *appsettings.json*is definiálva van. Az App Service szolgáltatásban való futtatáskor az App Service szolgáltatásban definiált kapcsolati karakterlánc elsőbbséget élvez az *appsettings.json*ban definiált kapcsolati karakterlánccal szemben. A kód az *appsettings.json* értéket használja a helyi fejlesztés során, és ugyanaz a kód az App Service-értéket használja üzembe helyezve.
 
-Ha szeretné megtudni, hogyan hivatkoznak a kapcsolati karakterláncra a kódban, tekintse meg a [kapcsolódás SQL Database éles](#connect-to-sql-database-in-production)környezetben című témakört.
+A kapcsolati karakterlánc kódban való hivatkozásáról a [Csatlakozás éles környezetben című témakörben](#connect-to-sql-database-in-production)látható.
 
 ### <a name="configure-environment-variable"></a>Környezeti változó konfigurálása
 
-Következő lépésként állítsa az `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást _Éles_ értékre. Ezzel a beállítással megtudhatja, hogy az Azure-ban fut-e, mert az SQLite-t használja a helyi fejlesztési környezethez, és SQL Database az Azure-környezethez.
+Következő lépésként állítsa az `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást _Éles_ értékre. Ez a beállítás lehetővé teszi, hogy tudja, hogy fut-e az Azure-ban, mert az SQLite-ot használja a helyi fejlesztési környezethez és az SQL Database-t az Azure-környezethez.
 
-Az alábbi példa egy `ASPNETCORE_ENVIRONMENT` alkalmazás beállítását konfigurálja az Azure-alkalmazásban. Cserélje le az *\<app-name >* helyőrzőt.
+A következő példa `ASPNETCORE_ENVIRONMENT` konfigurálja az Azure-alkalmazás egyik beállítását. Cserélje le az * \<alkalmazásnevet>* helyőrzőt.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
-Ha szeretné megtudni, hogyan hivatkoznak a környezeti változóra a kódban, tekintse meg a [kapcsolódás SQL Database éles](#connect-to-sql-database-in-production)környezetben című témakört.
+A környezeti változó kódban való hivatkozásáról a [Csatlakozás éles környezetben című témakörben](#connect-to-sql-database-in-production)látható.
 
 ### <a name="connect-to-sql-database-in-production"></a>Csatlakozás SQL Database-hez éles környezetben
 
@@ -208,9 +208,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Ha ez a kód azt észleli, hogy éles üzemben fut (amely az Azure-környezetet jelzi), akkor a SQL Databasehoz való kapcsolódáshoz konfigurált kapcsolati karakterláncot használja. További információ az Alkalmazásbeállítások eléréséről App Serviceban: [hozzáférés környezeti változókhoz](configure-language-dotnetcore.md#access-environment-variables).
+Ha ez a kód észleli, hogy éles környezetben fut (ami az Azure-környezetet jelzi), akkor az SQL-adatbázishoz való csatlakozáshoz konfigurált kapcsolati karakterláncot használja. Az App Service alkalmazásbeállításainak eléréséről az [Access környezeti változói](configure-language-dotnetcore.md#access-environment-variables)című témakörben olvashat.
 
-A `Database.Migrate()` hívás segít, ha az Azure-ban fut, mert automatikusan létrehozza a .NET Core-alkalmazás által igényelt adatbázisokat az áttelepítési konfiguráció alapján.
+A `Database.Migrate()` hívás segít, ha fut az Azure-ban, mert automatikusan létrehozza az adatbázisokat, hogy a .NET Core alkalmazás igényeinek alapján az áttelepítési konfiguráció.
 
 Mentse a módosításokat, majd véglegesítse őket a Git adattárban.
 
@@ -249,9 +249,9 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
+### <a name="browse-to-the-azure-app"></a>Tallózás az Azure alkalmazásban
 
-Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
+Tallózással keresse meg a telepített alkalmazást a webböngészővel.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -261,7 +261,7 @@ Adjon hozzá néhány teendőt.
 
 ![Linux App Service-ben futó alkalmazás](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**Gratulálunk!** Egy adatvezérelt .NET Core-alkalmazást futtat a Linuxon futó App Service-ben.
+**Gratulálok!** Egy adatvezérelt .NET Core-alkalmazást futtat a Linuxon futó App Service-ben.
 
 ## <a name="update-locally-and-redeploy"></a>Frissítés helyileg és ismételt üzembe helyezés
 
@@ -303,7 +303,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Nyissa meg a _Views\Todos\Create.cshtml_ fájlt.
 
-A Razor-kódban látnia kell a `<div class="form-group">` alá tartozó `Description` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
+A Razor-kódban látnia kell a `Description` alá tartozó `<div class="form-group">` elemet és egy másik, `<div class="form-group">` elemet a `CreatedDate` részhez. Közvetlenül ezután a két elem után adjon hozzá egy `<div class="form-group">` elemet a `Done` részhez:
 
 ```csharp
 <div class="form-group">
@@ -325,7 +325,7 @@ Keresse meg az üres `<th></th>` elemet. Az elem felett adja hozzá a következ�
 </th>
 ```
 
-Keresse meg a `<td>` címke-segítőket tartalmazó `asp-action` elemet. Az elem felett adja hozzá a következő Razor-kódot:
+Keresse meg a `asp-action` címke-segítőket tartalmazó `<td>` elemet. Az elem felett adja hozzá a következő Razor-kódot:
 
 ```csharp
 <td>
@@ -353,43 +353,43 @@ git commit -m "added done field"
 git push azure master
 ```
 
-A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és próbálja ki az új funkciókat.
+Miután `git push` elkészült, keresse meg az Azure-alkalmazást, és próbálja ki az új funkciót.
 
-![Azure-alkalmazás a kód első áttelepítése után](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
+![Azure-alkalmazás az első áttelepítés kódja után](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
-A meglévő teendők továbbra is megjelennek. A .NET Core-alkalmazás újbóli közzétételekor a SQL Database meglévő adatai nem vesznek el. Emellett az Entity Framework Core Migrations csak az adatsémát módosítja, a meglévő adatokat érintetlenül hagyja.
+A meglévő teendők továbbra is megjelennek. A .NET Core alkalmazás újbóli közzétételekor az SQL-adatbázisban meglévő adatok nem vesznek el. Emellett az Entity Framework Core Migrations csak az adatsémát módosítja, a meglévő adatokat érintetlenül hagyja.
 
 ## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
-A minta projekt már a következő útmutatást követi: [ASP.net Core naplózás az Azure-ban](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) két konfigurációs módosítással:
+A mintaprojekt már követi az [Azure-beli core naplózás ASP.NETra vonatkozó útmutatást,](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) két konfigurációs módosítással:
 
-- Hivatkozást tartalmaz a *DotNetCoreSqlDb. csproj*`Microsoft.Extensions.Logging.AzureAppServices`.
-- Meghívja `loggerFactory.AddAzureWebAppDiagnostics()` a *Startup.cs*.
+- Tartalmaz egy `Microsoft.Extensions.Logging.AzureAppServices` hivatkozást a *DotNetCoreSqlDb.csproj*.
+- A `loggerFactory.AddAzureWebAppDiagnostics()` *Startup.cs*hívások .
 
 > [!NOTE]
-> A projekt naplózási szintje a *appSettings. JSON*fájlban `Information`ra van beállítva.
+> A projekt naplószintje az `Information` *appsettings.json fájlban*van beállítva.
 >
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-A ASP.NET Core naplók testreszabásával kapcsolatos további információkért tekintse meg a [ASP.net Core naplózása](https://docs.microsoft.com/aspnet/core/fundamentals/logging)című témakört.
+A ASP.NET Core naplók testreszabásáról a [Naplózás ASP.NET Core című témakörben](https://docs.microsoft.com/aspnet/core/fundamentals/logging)talál.
 
 ## <a name="manage-your-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás megjelenítéséhez nyissa meg a [Azure Portal](https://portal.azure.com) .
+Nyissa meg az [Azure Portalon](https://portal.azure.com) a létrehozott alkalmazást.
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson az **App Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jeleníti meg. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
+Alapértelmezés szerint a portál megjeleníti az alkalmazás **áttekintése** lapot. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
 ![Az App Service lap az Azure Portalon](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 
@@ -401,12 +401,12 @@ Az alábbiak elvégzését ismerte meg:
 > * Naplók streamelése az Azure-ból a saját terminálba
 > * Az alkalmazás kezelése az Azure Portalon
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
+A következő oktatóanyagra lépve megtudhatja, hogyan képezhet egyéni DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egyéni DNS-név leképezése az alkalmazáshoz](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név hozzárendelése az alkalmazáshoz](../app-service-web-tutorial-custom-domain.md)
 
-Vagy tekintse meg a többi erőforrást:
+Vagy, nézd meg más források:
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core alkalmazás konfigurálása](configure-language-dotnetcore.md)
+> [Konfigurálja ASP.NET Core alkalmazást](configure-language-dotnetcore.md)

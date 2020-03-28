@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-parancsfájl – példa: virtuális gépek újraindítása'
+title: Azure CLI-parancsfájlminta – virtuális gépek újraindítása
 description: Azure CLI-példaszkript – Virtuális gépek újraindítása címke és azonosító alapján
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 47a6db8d554cd0e6b913e887a4dd3d7bdc438ed0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040246"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066460"
 ---
 # <a name="restart-vms"></a>Virtuális gépek újraindítása
 
@@ -33,13 +33,13 @@ Ez a példa néhány módszert mutat be virtuális gépek lekérdezésére és �
 
 Az első az erőforráscsoportban lévő összes virtuális gépet újraindítja.
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 A második az `az resource list` segítségével lekérdezi a címkézett virtuális gépeket, rászűr a virtuálisgép-erőforrásokra, majd újraindítja a virtuális gépeket.
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,7 +77,7 @@ Ez a szkript újraindítja az erőforráscsoportban lévő összes virtuális g�
 
 A példaszkript futtatása után a következő paranccsal távolíthatók el az erőforráscsoportok, a virtuális gépek és az összes kapcsolódó erőforrás.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
@@ -94,7 +94,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Újraindítja a virtuális gépeket. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

@@ -1,40 +1,40 @@
 ---
-title: Oktatóanyag – hub virtuális hálózati berendezés létrehozása az Azure-ban a Terraform használatával
-description: Az oktatóanyag olyan hub-VNet létrehozását valósítja meg, amely az összes többi hálózat között közös kapcsolódási pontként működik
+title: Oktatóanyag – Hub virtuális hálózati berendezés létrehozása az Azure-ban a Terraform használatával
+description: Az oktatóanyag a Hub Virtuálishálózat létrehozását valósítja meg, amely az összes többi hálózat közötti közös kapcsolódási pontként működik
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 28ccb89d237cbe21dd0433da5f7fbb32883f6550
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159252"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Oktatóanyag: hub virtuális hálózati berendezés létrehozása az Azure-ban a Terraform használatával
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Oktatóanyag: Hub virtuális hálózati berendezés létrehozása az Azure-ban a Terraform használatával
 
-A **VPN-eszköz** olyan eszköz, amely külső kapcsolatot biztosít a helyszíni hálózattal. A VPN-eszköz lehet hardveres eszköz vagy szoftveres megoldás. Egy szoftveres megoldás például az Útválasztás és távelérés szolgáltatás (RRAS) a Windows Server 2012 rendszerben. A VPN-készülékekről további információt a [helyek közötti VPN Gateway kapcsolatok VPN-eszközeinek ismertetése](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)című témakörben talál.
+A **VPN-eszköz** olyan eszköz, amely külső kapcsolatot biztosít a helyszíni hálózathoz. A VPN-eszköz lehet hardvereszköz vagy szoftvermegoldás. A szoftvermegoldások egyik példája a Windows Server 2012 útválasztási és távelérési szolgáltatása(RRAS). A VPN-eszközökről a Helyek közötti [VPN-átjárókapcsolatok VPN-eszközei című témakörben](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)talál további információt.
 
-Az Azure olyan hálózati virtuális berendezések széles választékát támogatja, amelyekből ki kell választania. Ebben az oktatóanyagban egy Ubuntu-rendszerképet használunk. Ha többet szeretne megtudni az Azure-ban támogatott eszközök széles választékáról, tekintse meg a [hálózati berendezések kezdőlapját](https://azure.microsoft.com/solutions/network-appliances/).
+Az Azure a hálózati virtuális készülékek széles skáláját támogatja, amelyekközül kiválasztható. Ehhez a bemutatóhoz ubuntus képet használnak. Ha többet szeretne megtudni az Azure-ban támogatott eszközmegoldások széles köréről, olvassa el a [Hálózati eszközök kezdőlapját.](https://azure.microsoft.com/solutions/network-appliances/)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * A HCL (HashiCorp Language) használata a hub-VNet megvalósításához küllős topológiában
-> * A Terraform használata olyan központi hálózati virtuális gép létrehozásához, amely készülékként működik
-> * Útvonalak engedélyezése a Terraform használatával CustomScript-bővítményekkel
-> * A Terraform használata a sugaras átjáró útválasztási tábláinak létrehozásához
+> * HCL (HashiCorp language) használata a Hub Virtuális hálózat hubküllős topológiában való megvalósításához
+> * Terraform segítségével hozzon létre hub hálózati virtuális gépet, amely készülékként működik
+> * Útvonalak engedélyezése a Terraform segítségével CustomScript-bővítmények használatával
+> * Hub és Küllős átjáróútvonal-táblák létrehozása a Terraform segítségével
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Hozzon létre egy sugaras hibrid hálózati topológiát az Azure-beli Terraform](./terraform-hub-spoke-introduction.md).
-1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
-1. [Hozzon létre egy hub virtuális hálózatot a Terraform az Azure-ban](./terraform-hub-spoke-hub-network.md).
+1. [Hozzon létre egy hub ot és a küllős hibrid hálózati topológiát a Terraform segítségével az Azure-ban.](./terraform-hub-spoke-introduction.md)
+1. [Hozzon létre helyszíni virtuális hálózatot a Terraform segítségével az Azure-ban.](./terraform-hub-spoke-on-prem.md)
+1. [Hozzon létre egy központi virtuális hálózatot a Terraform segítségével az Azure-ban.](./terraform-hub-spoke-hub-network.md)
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
-1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
+1. Nyissa meg [az Azure Cloud Shell](/azure/cloud-shell/overview)t. Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
     ![Cloud Shell-parancssor](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -50,11 +50,11 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-network-appliance"></a>A hub hálózati berendezés deklarálása
+## <a name="declare-the-hub-network-appliance"></a>A központi hálózati készülék deklarálása
 
-Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform-konfigurációs fájlt.
+Hozza létre azt a Terraform konfigurációs fájlt, amely deklarálja a helyszíni virtuális hálózatot.
 
-1. Cloud Shell hozzon létre egy `hub-nva.tf`nevű új fájlt.
+1. A Cloud Shellben hozzon `hub-nva.tf`létre egy új fájlt, amelynek neve .
 
     ```bash
     code hub-nva.tf
@@ -268,7 +268,7 @@ Hozza létre a helyszíni virtuális hálózatot deklaráló Terraform-konfigur�
 
 1. Mentse a fájlt, és zárja be a szerkesztőt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Küllős virtuális hálózatok létrehozása a Terraform az Azure-ban](./terraform-hub-spoke-spoke-network.md)
+> [Küllővirtuális hálózatok létrehozása a Terraform segítségével az Azure-ban](./terraform-hub-spoke-spoke-network.md)

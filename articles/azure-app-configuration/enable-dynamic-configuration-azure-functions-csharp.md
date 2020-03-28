@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure-alkalmazások konfigurációjának dinamikus konfigurációjának használatához egy Azure Functions alkalmazásban | Microsoft Docs
-description: Ez az oktatóanyag azt ismerteti, hogyan lehet dinamikusan frissíteni a Azure Functions-alkalmazások konfigurációs információit
+title: Oktatóanyag az Azure App Configuration dinamikus konfigurációjának azure Functions alkalmazásában való használatához | Microsoft dokumentumok
+description: Ebben az oktatóanyagban megtudhatja, hogyan frissítheti dinamikusan az Azure Functions-alkalmazások konfigurációs adatait
 services: azure-app-configuration
 documentationcenter: ''
 author: zhenlan
@@ -16,39 +16,39 @@ ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74185449"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy Azure Functions alkalmazásban
+# <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Oktatóanyag: Dinamikus konfiguráció használata egy Azure Functions alkalmazásban
 
-Az App Configuration .NET Standard konfigurációs szolgáltatója támogatja a gyorsítótárazást és a konfiguráció frissítését dinamikusan vezérelt alkalmazási tevékenységgel. Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfigurációs frissítések a kódban. Ez a rövid útmutatókban bemutatott Azure Functions alkalmazásra épül. Mielőtt továbblépne, először [hozzon létre egy Azure functions-alkalmazást az Azure app Configuration szolgáltatással](./quickstart-azure-functions-csharp.md) .
+Az Alkalmazáskonfiguráció .NET Standard konfigurációszolgáltató támogatja a gyorsítótárazást és a dinamikusan vezérelt konfigurációt az alkalmazástevékenység által vezérelve. Ez az oktatóanyag bemutatja, hogyan valósíthatja meg a dinamikus konfigurációs frissítéseket a kódban. A rövid útmutatókban bevezetett Azure Functions alkalmazásra épül. Mielőtt folytatna, először fejezze be [az Azure-függvények létrehozása alkalmazást az Azure App Configuration alkalmazással.](./quickstart-azure-functions-csharp.md)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Állítsa be a Azure Functions alkalmazást, hogy frissítse a konfigurációját az alkalmazás konfigurációs tárolójának változásaira válaszul.
-> * Adja meg a legújabb konfigurációt a Azure Functions-hívásokhoz.
+> * Állítsa be az Azure Functions alkalmazást, hogy frissítse a konfigurációját az alkalmazáskonfigurációs áruház változásaira válaszul.
+> * Adja be a legújabb konfigurációt az Azure Functions-hívások.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) az **Azure-fejlesztési** számítási feladattal
-- [Eszközök Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
-- [Azure functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával –](./quickstart-azure-functions-csharp.md) gyors üzembe helyezési útmutató
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) az **Azure fejlesztési** munkaterhelésével
+- [Az Azure Functions eszközei](../azure-functions/functions-develop-vs.md#check-your-tools-version)
+- A gyorsindítás befejezése [Azure-függvényalkalmazás létrehozása az Azure App konfigurációjával](./quickstart-azure-functions-csharp.md)
 
-## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
+## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazáskonfigurációból
 
-1. Nyissa meg a *Function1.cs*. A `static` tulajdonság `Configuration`mellett vegyen fel egy új `static` tulajdonságot `ConfigurationRefresher`, hogy megtartsa a `IConfigurationRefresher` egy példányát, amelyet a rendszer a függvények hívásakor a konfigurációs frissítések ellenőrzéséhez használ majd később.
+1. Nyissa *meg Function1.cs.* A `static` tulajdonságon `Configuration`kívül adjon `static` hozzá `ConfigurationRefresher` egy új tulajdonságot, `IConfigurationRefresher` amely megtartja a konfigurációs frissítések jelzéséhez használt singleton példányt a Functions későbbi hívásai során.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
     private static IConfigurationRefresher ConfigurationRefresher { set; get; }
     ```
 
-2. Frissítse a konstruktort, és használja a `ConfigureRefresh` metódust az alkalmazás konfigurációs tárolójából frissíteni kívánt beállítás megadásához. `IConfigurationRefresher` egy példánya `GetRefresher` metódussal lett beolvasva. Szükség esetén a konfigurációs gyorsítótár lejárati idejének időablakát is módosítjuk az alapértelmezett 30 másodperctől számított 1 percre.
+2. Frissítse a konstruktot, és a `ConfigureRefresh` módszerrel adja meg az alkalmazáskonfigurációs tárolóból frissítendő beállítást. A rendszer `IConfigurationRefresher` metódussal `GetRefresher` olvassa be a rendszer egy példányát. Opcionálisan a konfigurációs gyorsítótár lejárati idejét is módosítjuk 1 percre az alapértelmezett 30 másodpercről.
 
     ```csharp
     static Function1()
@@ -67,7 +67,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
     }
     ```
 
-3. Frissítse a `Run` metódust és a jelet a konfiguráció frissítéséhez a függvények hívásának elején található `Refresh` metódus használatával. Ez nem lesz-op, ha a gyorsítótár lejárati ideje nem érhető el. Távolítsa el a `await` operátort, ha a konfigurációt blokkolás nélkül szeretné frissíteni.
+3. Frissítse `Run` a metódust és a `Refresh` jelet a konfiguráció frissítéséhez a Függvényhívás elején lévő módszerrel. Ez nem lesz operatív, ha a gyorsítótár lejárati időablak nem éri el. Távolítsa `await` el az operátort, ha azt szeretné, hogy a konfiguráció torlaszoló dulakozó nélkül frissüljön.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -88,49 +88,49 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
-1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows parancssorát használja, futtassa a következő parancsot, és indítsa újra a parancssort a módosítás érvénybe léptetéséhez:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
+    Ha windows PowerShellt használ, futtassa a következő parancsot:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
+    MacOS vagy Linux használata esetén futtassa a következő parancsot:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studiótól érkező kérést **Azure functions Core (CLI)** eszközök letöltéséhez és telepítéséhez. Előfordulhat, hogy egy tűzfal-kivételt is engedélyeznie kell, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
+2. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a Visual Studio kérését az **Azure Functions Core (CLI)** eszközök letöltésére és telepítésére. Előfordulhat, hogy engedélyeznie kell egy tűzfalkivételt is, hogy az eszközök kezelni tudják a HTTP-kérelmeket.
 
 3. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.
 
-    ![Gyors üzembe helyezési funkció hibakeresése a VS-ben](./media/quickstarts/function-visual-studio-debugging.png)
+    ![Gyorsindítási függvény hibakeresése a VS-ben](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az alábbi képen a böngészőben a függvény által visszaadott helyi GET kérelemre adott válasz látható.
+4. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az alábbi képen a böngészőben a függvény által visszaadott helyi GET-kérésre adott válasz látható.
 
-    ![A Gyorsindítás funkció helyi elindítása](./media/quickstarts/dotnet-core-function-launch-local.png)
+    ![A Quickstart függvény helyi indítása](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+5. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza az **Összes erőforrás**lehetőséget, és válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
 
 6. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcs értékeit:
 
-    | Paraméter | Érték |
+    | Kulcs | Érték |
     |---|---|
-    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjában – frissítve |
+    | TestApp:Beállítások:Üzenet | Az Azure App konfigurációjából származó adatok – frissítve |
 
-7. Frissítse a böngészőt néhányszor. Ha a gyorsítótárazott beállítás egy perc elteltével lejár, az oldal megjeleníti a függvények a frissített értékkel való hívásának válaszát.
+7. Frissítse a böngészőt néhányszor. Ha a gyorsítótárazott beállítás egy perc múlva lejár, a lapon a Függvények hívásának válasza frissített értékkel jelenik meg.
 
-    ![A gyors üzembe helyezési funkció helyi frissítése](./media/quickstarts/dotnet-core-function-refresh-local.png)
+    ![A gyorsindításfunkció helyi frissítése](./media/quickstarts/dotnet-core-function-refresh-local.png)
 
-Az oktatóanyagban használt példa kód letölthető az [alkalmazás-konfiguráció GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction) -tárházból
+Az oktatóanyagban használt példakód letölthető [az alkalmazáskonfigurációs GitHub-tárból](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban engedélyezte a Azure Functions alkalmazást, hogy dinamikusan frissítse a konfigurációs beállításokat az alkalmazás konfigurációjában. Ha meg szeretné tudni, hogyan használható az Azure felügyelt identitása az alkalmazás-konfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban engedélyezte az Azure Functions alkalmazás dinamikusan frissíti a konfigurációs beállításokat az alkalmazáskonfigurációból. Ha meg szeretné tudni, hogyan használhatja az Azure felügyelt identitást az alkalmazáskonfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Felügyelt identitások integrációja](./howto-integrate-azure-managed-service-identity.md)
+> [Felügyelt identitásintegráció](./howto-integrate-azure-managed-service-identity.md)

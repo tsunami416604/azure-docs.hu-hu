@@ -1,6 +1,6 @@
 ---
-title: PowerShell-példa a Geo-Backup visszaállítására – Azure SQL Database
-description: Azure PowerShell példa parancsfájlt egy Azure SQL felügyelt példány-adatbázis visszaállítására egy geo-redundáns biztonsági mentésből.
+title: PowerShell példa a geobiztonsági mentés visszaállítására – Azure SQL Database
+description: Az Azure PowerShell példaparancsfájlja az Azure SQL felügyelt példányadatbázisának helyreállítása georedundáns biztonsági másolatból.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,21 +12,21 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: f1b4166df2290c1250e3807b4a7133c3afae8e44
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74304069"
 ---
-# <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példány-adatbázis visszaállítása másik földrajzi régióra a PowerShell használatával
+# <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példány-adatbázis visszaállítása a PowerShell használatával egy másik földrajzi régióba
 
-Ez a PowerShell-parancsfájl például visszaállítja egy Azure SQL felügyelt példány adatbázisát egy távoli földrajzi régióból (Geo-visszaállítás).  
+Ez a PowerShell-parancsfájl-példa egy Azure SQL felügyelt példány adatbázisát állítja vissza egy távoli georégióból (geo-visszaállítás).  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz AZ AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez az oktatóanyag az AZ PowerShell 1.4.0-s vagy újabb verziót igényel. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -61,7 +61,7 @@ $backup | Restore-AzSqlInstanceDatabase -FromGeoBackup `
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást.
+Az erőforráscsoport és a hozzá tartozó összes erőforrás eltávolításához használja a következő parancsot.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
@@ -74,12 +74,12 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | A felügyelt példány adatbázisának geo-redundáns biztonsági mentését hozza létre. |
-| [Visszaállítás – AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Létrehoz egy adatbázist a felügyelt példányon a Geo biztonsági mentésből. |
+| [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Georedundáns biztonsági másolatot hoz létre a felügyelt példányadatbázisról. |
+| [Visszaállítás-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Létrehoz egy adatbázist egy felügyelt példányon a geo-backup ból. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
+A PowerShellről az [Azure PowerShell dokumentációjában](/powershell/azure/overview)olvashat bővebben.
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../sql-database-powershell-samples.md).

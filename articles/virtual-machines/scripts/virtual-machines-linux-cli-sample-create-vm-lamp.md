@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript mintája – a LAMP-verem üzembe helyezése elosztott terhelésű virtuálisgép-méretezési csoportokban
+title: Azure CLI-parancsfájlminta – A LAMP verem üzembe helyezése terheléselosztásos virtuálisgép-méretezési készletben
 description: Egy egyéni szkriptbővítmény használatával helyezheti üzembe a LAMP-vermet az Azure-on egy elosztott terhelésű virtuálisgép-méretezési csoportban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
 ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039115"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>A LAMP-verem üzembe helyezése egy elosztott terhelésű virtuálisgép-méretezési csoportban
@@ -59,7 +59,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | Lekéri a példaszkript által létrehozott virtuális gépek IP-címét. |
 | [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | Lekéri a terheléselosztó által használt előtér- és háttérportokat. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

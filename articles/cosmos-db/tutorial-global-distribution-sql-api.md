@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: Azure Cosmos DB globális terjesztési oktatóanyag az SQL API-hoz'
-description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be Azure Cosmos DB globális terjesztést az SQL API-val a .net, a Java, a Python és számos más SDK használatával'
+title: 'Oktatóanyag: Az Azure Cosmos DB globális disztribúciós oktatóanyaga az SQL API-hoz'
+description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális disztribúciót az SQL API használatával .Net, Java, Python és számos más SDK-val'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79238460"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80295528"
 ---
-# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB globális disztribúció beállítása az SQL API használatával
 
 Ebben a cikkben bemutatjuk, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az Azure Portallal, és hogyan csatlakozhat az SQL API használatával.
 
@@ -47,7 +47,7 @@ Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális
 ## <a name="net-sdk"></a>.NET SDK
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A karakterlánc-értékek az [Azure-régiók][regions] lap régió neve oszlopában vannak formázva, az első és az utolsó karakter előtt vagy után szóközök nélkül.
+A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A sztringértékek formázása [Az Azure régiói][regions] oldalon található Régiónév oszlop alapján történik, és az első karakter előtt, illetve az utolsó karakter után nincs szóköz.
 
 Az aktuális írási és olvasási végpontokat a DocumentClient.WriteEndpoint és a DocumentClient.ReadEndpoint tulajdonság tartalmazza.
 
@@ -78,14 +78,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node. js/JavaScript
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
 
 > [!NOTE]
 > A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
 >
 
-Alább látható egy példa a Node. js-hez vagy a Javascripthez.
+Az alábbiakban egy kód példa Node.js /Javascript.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -100,7 +100,7 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 
 ## <a name="python-sdk"></a>Python SDK
 
-A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Python SDK használatával:
+A következő kód bemutatja, hogyan állíthat be előnyben részesített helyeket a Python SDK használatával:
 
 ```python
 
@@ -110,9 +110,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java v2 SDK
+## <a name="java-v2-sdk"></a>Java V2 SDK
 
-A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Java SDK használatával:
+A következő kód bemutatja, hogyan állíthat be előnyben részesített helyeket a Java SDK használatával:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -167,15 +167,15 @@ Példaválasz
 
 
 * Az összes PUT, POST és DELETE kérelemnek a megadott írási URI-ra kell érkeznie
-* A GET-ek és más csak olvasási kérelmek (például a lekérdezések) az ügyfél által kiválasztott bármelyik végpontra érkezhetnek
+* Minden GET és egyéb írásvédett kérés (például lekérdezések) az ügyfél által választott bármely végpontra kerülhet.
 
 A csak olvasási régiókba érkező írási kérelmek a 403-as HTTP-hibakóddal („Tiltott”) hiúsulnak meg.
 
-Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, az előző írási régióba érkező későbbi írások a 403-as HTTP-hibakóddal („Tiltott”) hiúsulnak meg. Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
+Ha az írási régió az ügyfél kezdeti felderítési fázisa után megváltozik, az előző írási régióba történő későbbi írások sikertelenek lesznek a 403 HTTP-hibakóddal ("Tiltott"). Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

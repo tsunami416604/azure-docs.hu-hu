@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a MyWorkDrive-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és MyWorkDrive között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a MyWorkDrive-val | Microsoft dokumentumok'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a MyWorkDrive között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,157 +16,157 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74074086"
 ---
-# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Oktatóanyag: a MyWorkDrive és a Azure Active Directory integrálása
+# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Oktatóanyag: A MyWorkDrive integrálása az Azure Active Directoryval
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a MyWorkDrive a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az MyWorkDrive-t az Azure AD-vel, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a MyWorkDrive-ot az Azure Active Directoryval (Azure AD). Ha integrálja a MyWorkDrive-ot az Azure AD-vel, a következőket teheti:
 
-* A MyWorkDrive-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a MyWorkDrive az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, hogy ki férhet hozzá a MyWorkDrive-hoz.
+* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkezve a MyWorkDrive az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
-* MyWorkDrive egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)egy hónapos ingyenes próbaverziót kaphat.
+* MyWorkDrive egyszeri bejelentkezés (SSO) engedélyezve van az előfizetéssel.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A MyWorkDrive támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben. A MyWorkDrive támogatja az **SP** és **az IDP** által kezdeményezett sso-t
 
 ## <a name="adding-myworkdrive-from-the-gallery"></a>MyWorkDrive hozzáadása a gyűjteményből
 
-A MyWorkDrive Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a MyWorkDrive a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A MyWorkDrive azure AD-be való integrációjának konfigurálásához hozzá kell adnia a MyWorkDrive-ot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **MyWorkDrive** kifejezést a keresőmezőbe.
-1. Válassza ki a **MyWorkDrive** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **Hozzáadás a gyűjteményből szakaszban** írja be a **MyWorkDrive** kifejezést a keresőmezőbe.
+1. Válassza a **MyWorkDrive** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t a MyWorkDrive a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a MyWorkDrive-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a MyWorkDrive-on egy **Britta Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a myWorkDrive kapcsolódó felhasználója között.
 
-Az Azure AD SSO és a MyWorkDrive konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO beállítása és tesztelése a MyWorkDrive-on hajtsa végre a következő építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-2. **[MYWORKDRIVE SSO konfigurálása](#configure-myworkdrive-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre MyWorkDrive-teszt felhasználót](#create-myworkdrive-test-user)** – hogy a MyWorkDrive Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[A MyWorkDrive Egyszeri bejelentkezés konfigurálása](#configure-myworkdrive-sso)** – az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre MyWorkDrive tesztfelhasználót](#create-myworkdrive-test-user)** – ha britta Simon megfelelője van a MyWorkDrive-on, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+6. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/) **MyWorkDrive** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)a **MyWorkDrive-alkalmazásintegrációs** lapon keresse meg a **Kezelés szakaszt,** és válassza **az Egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** lapon adja meg a következő mező értékét:
+1. Az **Egyszerű SAML-konfiguráció** lapon, Ha az alkalmazást **IDP** által kezdeményezett módban kívánja konfigurálni, adja meg a következő mező értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
+    A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SERVER.DOMAIN.COM>/Account/Login-saml`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Adja meg saját vállalata MyWorkDrive-kiszolgálójának állomásnevét: például
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és bejelentkezési URL-címmel. Adja meg saját vállalata MyWorkDrive Server állomásnevét: pl.
     > 
     > Válasz URL: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
-    > Bejelentkezési URL-cím:`https://yourserver.yourdomain.com/Account/Login-saml`
+    > Bejelentkezési URL:Bejelentkezési URL:Sign-on URL:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Ha nem tudja, hogyan állítson be saját állomásnevet és SSL-tanúsítványt az értékekhez, lépjen kapcsolatba a [MyWorkDrive támogatási csoportjával](mailto:support@myworkdrive.com) .
+    > Ha nem biztos abban, hogy miként állíthatja be saját állomásnevét és SSL-tanúsítványát ezekhez az értékekhez, forduljon a [MyWorkDrive támogatási csapatához.](mailto:support@myworkdrive.com)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** vágólapra másolásához.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** kattintson a Másolás gombra az **Alkalmazásösszevonás metaadat-címének** a vágólapra másolásához.
 
-    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
+    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-myworkdrive-sso"></a>MyWorkDrive SSO konfigurálása
+### <a name="configure-myworkdrive-sso"></a>A MyWorkDrive sso konfigurálása
 
-1. A MyWorkDrive belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A MyWorkDrive konfigurációjának automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés MyWorkDrive** gombra a MyWorkDrive alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a MyWorkDrive való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-4-es lépést.
+1. Miután hozzáadja a bővítményt a böngészőhöz, kattintson a **Setup MyWorkDrive** gombra, amely a MyWorkDrive alkalmazáshoz irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a MyWorkDrive-ra való bejelentkezéshez. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-4 lépéseket.
 
-    ![Telepítési konfiguráció](common/setup-sso.png)
+    ![Beállítási konfiguráció](common/setup-sso.png)
 
-1. Ha manuálisan szeretné beállítani a MyWorkDrive, egy másik böngészőablakban jelentkezzen be a MyWorkDrive biztonsági rendszergazdaként.
+1. Ha a MyWorkDrive-ot manuálisan szeretné beállítani, egy másik böngészőablakban jelentkezzen be a MyWorkDrive-ba biztonsági rendszergazdaként.
 
-1. A MyWorkDrive-kiszolgálón a felügyeleti panelen kattintson a **vállalati** elemre, és hajtsa végre a következő lépéseket:
+1. A Felügyeleti panel MyWorkDrive kiszolgálóján kattintson az **ENTERPRISE** elemre, és hajtsa végre az alábbi lépéseket:
 
-    ![A rendszergazda](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
+    ![Az admin](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
-    a. **SAML/ADFS SSO**engedélyezése.
+    a. **Saml/ADFS sso**engedélyezése .
 
-    b. **SAML-Azure ad** kiválasztása
+    b. **Válassza az SAML - Azure AD lehetőséget**
 
-    c. Az **Azure app Federation metadata URL** szövegmezőben illessze be az **alkalmazás összevonási metaadat URL-címének** értékét, amelyet a Azure Portal másolt.
+    c. Az **Azure App Federation metaadat-url-cím** szövegdobozába illessze be az **App Federation metaadat-url-címének** értékét, amelyet az Azure Portalról másolt.
 
-    d. Kattintson a **Mentés** gombra.
+    d. Kattintson a **Mentés gombra**
 
     > [!NOTE]
-    > További információkért tekintse át a [MyWorkDrive Azure ad-támogatását ismertető cikket](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
+    > További információkért tekintse át a [MyWorkDrive Azure AD támogatási cikkét.](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon Britta Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `BrittaSimon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a MyWorkDrive hozzáférésének biztosításával.
+Ebben a szakaszban engedélyezheti Britta Simon számára, hogy egyetlen bejelentkezéssel használja az Azure egyszeri bejelentkezést a MyWorkDrive-hoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **MyWorkDrive**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **MyWorkDrive**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a Felhasználó lista **Britta Simon** elemet, majd kattintson a képernyő alján található **Kijelölés** gombra.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-myworkdrive-test-user"></a>MyWorkDrive-tesztelési felhasználó létrehozása
+### <a name="create-myworkdrive-test-user"></a>MyWorkDrive-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a MyWorkDrive-ben. Együttműködik a [MyWorkDrive támogatási csapatával](mailto:support@myworkdrive.com) , hogy hozzáadja a felhasználókat a MyWorkDrive platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a MyWorkDrive-on. A [MyWorkDrive támogatási csapatával](mailto:support@myworkdrive.com) együttműködve vegye fel a felhasználókat a MyWorkDrive platformra. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-sso"></a>SSO tesztelése
 
-Amikor kiválasztja a MyWorkDrive csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a MyWorkDrive, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen kiválasztja a MyWorkDrive csempét, automatikusan be kell jelentkeznie arra a MyWorkDrive-ra, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

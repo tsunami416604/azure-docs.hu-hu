@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése Windows Phone-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
+title: Leküldéses értesítések küldése Windows Phone-alkalmazásokba az Azure Értesítési központok használatával| Microsoft dokumentumok
 description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Windows Phone 8 és Windows Phone 8.1 rendszeren futó Silverlight-alkalmazásokba.
 services: notification-hubs
 documentationcenter: windows
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7f026dd5953dd233b0183d8ce7978f647fb8c6af
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9cad4bfc474ef23492858ed3b0a6447932b589b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213468"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127088"
 ---
-# <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések Windows Phone-telefon alkalmazások számára az Azure-Notification Hubs használatával
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Windows Phone-alkalmazásoknak az Értesítési központok használatával
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt [hozzon létre egy ingyenes Azure-fiókot.](https://azure.microsoft.com/free/)
 * [Visual Studio 2015 Express mobilfejlesztési összetevőkkel](https://www.visualstudio.com/vs/older-downloads/)
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Windows Phone 8-alkalmazásokkal kapcsolatos Notification Hubs-oktatóanyag elvégzéséhez.
@@ -86,7 +86,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
-5. Adja hozzá a következő kódot a `Application_Launching` `App.xaml.cs`metódus tetején:
+5. A `Application_Launching` módszer tetején a következő `App.xaml.cs`kódot kell megadni:
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -114,13 +114,13 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
     ```
 
    > [!NOTE]
-   > Az érték `MyPushChannel` egy olyan index, amely a [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) -gyűjtemény meglévő csatornájának keresésére szolgál. Amennyiben nem létezik ott ilyen, hozzon létre egy bejegyzést ezen a néven.
+   > Az `MyPushChannel` érték egy index, amely a [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) gyűjtemény meglévő csatornáinak felkeresésére szolgál. Amennyiben nem létezik ott ilyen, hozzon létre egy bejegyzést ezen a néven.
 
-    Szúrja be a központ nevét és az előző szakaszban feljegyzett, a kapcsolatok karakterláncát `DefaultListenSharedAccessSignature` .
+    Szúrja be a hub nevét és `DefaultListenSharedAccessSignature` az előző szakaszban feljegyzett kapcsolati karakterláncot.
     Ez a kód lekéri a csatorna URI azonosítóját az alkalmazás számára az MPNS-ből, majd regisztrálja a csatorna URI azonosítóját az értesítési központban. Emellett biztosítja azt, hogy a csatorna URI azonosítója legyen regisztrálva az értesítési központban az alkalmazás minden indításakor.
 
    > [!NOTE]
-   > Ez az oktatóanyag egy bejelentési értesítést küld az eszközre. Csempe-értesítés küldésekor Ehelyett a `BindToShellTile` metódust kell meghívnia a csatornán. A Toast és a csempe értesítések támogatásához hívja a `BindToShellTile` és `BindToShellToast`a-t is.
+   > Ez az oktatóanyag egy bejelentési értesítést küld az eszközre. Csempeértesítést küldesz, ehelyett meg kell `BindToShellTile` hívnod a metódust a csatornán. A bejelentési és csempeértesítések `BindToShellTile` támogatásához hívja meg a és `BindToShellToast`a hívását is.
 
 6. A Megoldáskezelőben bontsa ki a **Tulajdonságok** csomópontot, nyissa meg a `WMAppManifest.xml` fájlt, kattintson a **Képességek** fülre, és jelölje be az **ID_CAP_PUSH_NOTIFICATION** képességet. Az alkalmazás mostantól képes leküldéses értesítések fogadására.
 
@@ -177,4 +177,4 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
 [toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[Notification Hubs – Windows Phone Silverlight-oktatóanyag]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+[Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp

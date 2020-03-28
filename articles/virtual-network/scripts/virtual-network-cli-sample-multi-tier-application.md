@@ -1,5 +1,5 @@
 ---
-title: Többrétegű alkalmazások VNet létrehozása – Azure CLI parancsfájl minta
+title: Virtuális hálózat létrehozása többrétegű alkalmazásokhoz – Azure CLI-parancsfájlminta
 description: Azure CLI-példaszkript – Virtuális hálózat létrehozása többrétegű alkalmazásokhoz.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 39a993324a476f0e1f1d17858ae126742e4f69f9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74083851"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Hálózat létrehozása többszintű alkalmazásokhoz – példaszkript
@@ -57,7 +57,7 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [az vm create](/cli/azure/vm) | Virtuális gépeket hoz létre, és minden virtuális géphez csatol egy NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
 | [az group delete](/cli/azure/group) | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

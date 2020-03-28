@@ -1,22 +1,22 @@
 ---
-title: 'CLI: egyéni tartomány hozzárendelése egy alkalmazáshoz'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan képezhető le egy egyéni tartomány egy alkalmazáshoz.
+title: 'CLI: Egyéni tartomány leképezése egy alkalmazáshoz'
+description: Ismerje meg, hogyan használhatja az Azure CLI-t az App Service-alkalmazás üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan lehet egy egyéni tartományt egy alkalmazáshoz hozzárendelve.
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.custom: seodec18
-ms.openlocfilehash: 2f96acf6a57ab254d975d827a3493420dde0662f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 888e0e66c4dafbe7d2613a4b92b1f7b0dfd55eab
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686701"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058605"
 ---
-# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Egyéni tartomány leképezése egy App Service alkalmazáshoz a parancssori felület használatával
+# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Egyéni tartomány hozzárendelése App Service-alkalmazáshoz a CLI használatával
 
-Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd leképezi `www.<yourdomain>`.
+Ez a mintaparancsfájl létrehoz egy alkalmazást az App `www.<yourdomain>` Service-ben a kapcsolódó erőforrásokkal, majd leképezi azt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,10 +38,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Egyéni tartomány leképezése egy App Service alkalmazásra. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Egyéni tartományt rendel egy App Service-alkalmazáshoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

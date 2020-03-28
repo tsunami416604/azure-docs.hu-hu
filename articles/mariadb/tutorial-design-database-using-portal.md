@@ -1,18 +1,18 @@
 ---
-title: 'Oktatóanyag: Azure Database for MariaDB-Azure Portal tervezése'
+title: 'Oktatóanyag: Azure-adatbázis tervezése a MariaDB-hez – Azure portal'
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető egy Azure Database for MariaDB-kiszolgáló és -adatbázis az Azure Portalon.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776708"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80063782"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Oktatóanyag: Azure Database for MariaDB-adatbázis tervezése az Azure Portalon
 
@@ -41,40 +41,40 @@ Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőfor
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-2. Válassza az **adatbázisok** > **Azure Database for MariaDB**lehetőséget. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
-   
+2. Válassza **az Adatbázisok** > **Azure-adatbázisa a MariaDB-hez**lehetőséget. A **mariadb** beírásával is keresheti a szolgáltatást.
+
    ![Ugrás a MySQL-hez](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. Válassza az **Azure Database for MariaDB** csempét, majd a **Létrehozás** lehetőséget. Adja meg vagy válassza ki a kért információkat.
-   
+3. Válassza ki az **Azure Database for MariaDB** csempét. Adja meg vagy válassza ki a kért információkat.
+
    ![Űrlap létrehozása](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-    Beállítás | Ajánlott érték | Mező leírása 
+    Beállítás | Ajánlott érték | Mező leírása
     ---|---|---
-    Kiszolgálónév | *egyedi kiszolgálónév* | Válasszon egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. Ilyen név lehet például a **mydemoserver**. A rendszer hozzáfűzi a *.mariadb.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
-    Előfizetés | *az Ön előfizetése* | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel is rendelkezik, válassza ki azt az előfizetést, amelynek a keretében az erőforrásért fizet.
-    Erőforráscsoport | **myresourcegroup** | Adjon meg egy új erőforráscsoport-nevet, vagy válasszon egy meglévő erőforráscsoportot.
+    Kiszolgálónév | *egyedi kiszolgálónév* | Válasszon egy egyedi nevet, amely azonosítja az Azure Database for MariaDB-kiszolgálót. Például, **mydemoserver**. A rendszer hozzáfűzi a *.mariadb.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.
+    Előfizetés | *az előfizetés* | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel is rendelkezik, válassza ki azt az előfizetést, amelynek a keretében az erőforrásért fizet.
+    Erőforráscsoport | **myResourceGroup** | Adjon meg egy új erőforráscsoport-nevet, vagy válasszon egy meglévő erőforráscsoportot.
     Forrás kiválasztása | **Üres** | Válassza az **Üres** lehetőséget egy új kiszolgáló létrehozásához. (Ha egy meglévő Azure Database for MariaDB-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a **Biztonsági mentés** lehetőséget).
     Kiszolgáló-rendszergazdai bejelentkezés | **myadmin** | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
     Jelszó | *tetszés szerinti* | Adjon meg a kiszolgálói rendszergazdai fiókhoz egy új jelszót. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
     Jelszó megerősítése | *tetszés szerinti*| Erősítse meg a rendszergazdafiók jelszavát.
-    Földrajzi egység | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
+    Hely | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *a legújabb verzió*| A legújabb verzió (ha nincsenek olyan egyedi igényei, amelyek miatt egy másikat kell kiválasztania).
-    Díjcsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** > **Általános célú** lehetőséget. A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**virtuális mag** (4 virtuális mag)</li><li>**Tárterület** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Tarifacsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza **a Tarifacsomag** > **általános célú beállítását.** A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**virtuális mag** (4 virtuális mag)</li><li>**Tárhely** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
     
-   ![Díjcsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+   ![Tarifacsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > Az **automatikus növekedés** lehetővé teszi, hogy a kiszolgáló növelje a tárterületet, ha közeledik a lefoglalt korláthoz, anélkül, hogy ez befolyásolná a munkaterhelést.
+   > Az **automatikus növekedés** engedélyezve a kiszolgáló növeli a tárhelyet, amikor közeledik a lefoglalt korlátot, anélkül, hogy befolyásolná a számítási feladatok.
 
-4. Kattintson a **Létrehozás** gombra. Egy-két percen belül már fut a felhőben egy új Azure Database for MariaDB-kiszolgáló. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat nyomon követéséhez.
+4. Kattintson az **Áttekintés + létrehozás** elemre. A telepítési folyamat figyeléséhez kattintson az eszköztár **Értesítések** gombjára. Az üzembe helyezés akár 20 percet is igénybe vehet.
 
 ## <a name="configure-the-firewall"></a>A tűzfal konfigurálása
 
 Az Azure Database for MariaDB-t egy tűzfal védi. A rendszer alapértelmezés szerint elutasítja a kiszolgálóra és a kiszolgálón lévő adatbázisokra irányuló összes kapcsolatot. Mielőtt először csatlakozna az Azure Database for MariaDB-hez, konfigurálja a tűzfalat úgy, hogy adja meg az ügyfél gépének nyilvános hálózati IP-címét (vagy IP-címtartományát).
 
 1. Válassza ki az újonnan létrehozott kiszolgálót, majd a **Kapcsolatbiztonság** elemet.
-   
+
    ![Kapcsolatbiztonság](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. **Saját IP-címet is megadhat**, vagy konfigurálhatja a tűzfalszabályokat. Ne felejtsen a **Mentés** gombra kattintani, miután létrehozta a szabályokat.
 
@@ -85,7 +85,7 @@ Most már csatlakozhat a mysql parancssori eszközzel vagy a MySQL Workbench esz
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Kérje le az Azure Database for MariaDB-kiszolgáló teljes **kiszolgálónevét** és **kiszolgáló-rendszergazdai bejelentkezési nevét** az Azure Portalon. A teljes kiszolgálónévvel csatlakozhat a kiszolgálóhoz a mysql parancssori eszközben. 
+Kérje le az Azure Database for MariaDB-kiszolgáló teljes **kiszolgálónevét** és **kiszolgáló-rendszergazdai bejelentkezési nevét** az Azure Portalon. A teljes kiszolgálónévvel csatlakozhat a kiszolgálóhoz a mysql parancssori eszközben.
 
 1. Az [Azure Portal](https://portal.azure.com/) bal oldali menüjében válassza a **Minden erőforrás** elemet. Adja meg a kiszolgáló nevét, és keresse meg Azure Database for MariaDB-kiszolgálóját. Válassza ki a kiszolgáló nevét a kiszolgálóadatok megtekintéséhez.
 
@@ -93,21 +93,21 @@ Kérje le az Azure Database for MariaDB-kiszolgáló teljes **kiszolgálónevét
 
    ![Kiszolgáló tulajdonságai](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-A példánkban a kiszolgáló neve **mydemoserver.MariaDB.database.Azure.com** , a kiszolgáló-rendszergazdai bejelentkezési név pedig **myadmin\@mydemoserver**.
+A mi példánkban a szerver neve **mydemoserver.mariadb.database.azure.com** és a szerver admin bejelentkezési név **myadmin\@mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Csatlakozás a kiszolgálóhoz a mysql használatával
 
-A [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) építsen ki egy kapcsolatot az Azure Database for MariaDB-kiszolgálóhoz. A mysql parancssori eszköz a böngészőben az Azure Cloud Shell-lel, a saját számítógépén pedig a helyileg telepített mysql-eszközökkel futtatható. Az Azure Cloud Shell megnyitásához válassza a **Próbálja ki** gombot ennek a cikknek valamelyik kódblokkjában, vagy lépjen az Azure Portalra, és kattintson a **>_** ikonra a jobb felső eszköztárban. 
+A [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) építsen ki egy kapcsolatot az Azure Database for MariaDB-kiszolgálóhoz. A mysql parancssori eszköz a böngészőben az Azure Cloud Shell-lel, a saját számítógépén pedig a helyileg telepített mysql-eszközökkel futtatható. Az Azure Cloud Shell megnyitásához válassza a **Próbálja ki** gombot ennek a cikknek valamelyik kódblokkjában, vagy lépjen az Azure Portalra, és kattintson a **>_** ikonra a jobb felső eszköztárban.
 
 A csatlakozáshoz írja be a következő parancsot:
 
-```azurecli-interactive
+```bash
 mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
 
-Amikor csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amellyel dolgozhat:
+Amikor csatlakozik a kiszolgálóhoz, hozzon létre egy üres adatbázist, amelyen dolgozhat:
 
 ```sql
 CREATE DATABASE mysampledb;
@@ -171,7 +171,7 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
    ![Adatbázis helyreállítása](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. A **Visszaállítás** lapon adja meg vagy válassza ki a következő információkat:
-   
+
    ![Visszaállítás űrlap](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **Visszaállítási pont**: A jelzett időkereten belül válasszon ki egy időpontot, amelyre vissza kívánja állítani az adatbázist. Ne felejtse el UTC időre átalakítani a helyi időzóna szerinti időt.
@@ -181,7 +181,7 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
    
 3. Az **OK** gomb kiválasztásával [állítsa vissza a kiszolgálót egy időpontra](./howto-restore-server-portal.md), amely megelőzi a tábla törlését. A kiszolgáló visszaállítása egy olyan új másolatot hoz létre a kiszolgálóról, amely a megadott időpontban aktuális állapotát tükrözi. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban a következők elvégzését sajátította el az Azure Portallal:
 
 > [!div class="checklist"]

@@ -1,29 +1,29 @@
 ---
-title: Oktatóanyag – Azure Cosmos DB fiókok konfigurálása a Ansible használatával
-description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy Azure Cosmos DB a Ansible használatával
-keywords: Ansible, Azure, devops, bash, ötletekbõl, Cosmo db, adatbázis
+title: Oktatóanyag – Konfigurálja az Azure Cosmos DB-fiókjait az Ansible használatával
+description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy Azure Cosmos DB-t az Ansible használatával
+keywords: ansible, azúr, devops, bash, ötletekbõl, cosmo db, adatbázis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156470"
 ---
-# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Oktatóanyag: Azure Cosmos DB-fiókok konfigurálása a Ansible használatával
+# <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Oktatóanyag: Konfigurálja az Azure Cosmos DB-fiókjait az Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure Cosmos db](/azure/cosmos-db/) egy olyan adatbázis-szolgáltatás, amely több adatbázis-típust is támogat. Ezek az adatbázisok típusai a következők: dokumentum, kulcs-érték, széles oszlop és gráf. A Ansible segítségével automatizálhatja a környezet erőforrásainak üzembe helyezését és konfigurálását.
+[Az Azure Cosmos DB](/azure/cosmos-db/) egy adatbázis-szolgáltatás, amely számos adatbázistípust támogat. Ezek az adatbázistípusok közé tartozik a dokumentum, a kulcsérték, a széles oszlop és a grafikon. Az Ansible használatával automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetben.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Fiók létrehozása
-> * A fiók kulcsainak beolvasása
-> * Fiók törlése
+> * A fiókkulcsok lekérése
+> * A fiók törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,9 +31,9 @@ ms.locfileid: "74156470"
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-random-postfix"></a>Véletlenszerű Postfix létrehozása
+## <a name="create-a-random-postfix"></a>Véletlenszerű utójavítás létrehozása
 
-A példaként szolgáló forgatókönyv egy véletlenszerű Postfix-t hoz létre. A Postfix a Azure Cosmos DB fiók nevének részeként van használatban.
+A minta forgatókönyv-kódrészlet létrehoz egy véletlenszerű utójavítást. A postfix az Azure Cosmos DB-fiók nevének részeként használatos.
 
 ```yml
   - hosts: localhost
@@ -57,7 +57,7 @@ A minta forgatókönyv-kódrészlet létrehoz egy Azure-erőforráscsoportot. Az
 
 ## <a name="create-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
-A következő kód egy virtuális hálózatot és alhálózatot hoz létre a Azure Cosmos DB fiókhoz:
+A következő kód létrehoz egy virtuális hálózatot és alhálózatot az Azure Cosmos DB-fiókjához:
 
 ```yml
   - name: Create virtual network
@@ -81,7 +81,7 @@ A következő kód egy virtuális hálózatot és alhálózatot hoz létre a Azu
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-A következő kód létrehozza a Cosmos DB fiókot:
+A következő kód létrehozza a Cosmos DB-fiókot:
 
 ```yml
   - name: Create instance of Cosmos DB Account
@@ -106,11 +106,11 @@ A következő kód létrehozza a Cosmos DB fiókot:
       enable_automatic_failover: yes
 ```
 
-A fiók létrehozása eltarthat néhány percig.
+A fiók létrehozása néhány percet vesz igénybe.
 
-## <a name="retrieve-the-keys"></a>A kulcsok beolvasása
+## <a name="retrieve-the-keys"></a>A billentyűk beolvasása
 
-A következő kód beolvassa az alkalmazásban használandó kulcsokat.
+A következő kód lekéri az alkalmazásban használandó kulcsokat.
 
 ```yml
   - name: Get Cosmos DB Account facts with keys
@@ -125,9 +125,9 @@ A következő kód beolvassa az alkalmazásban használandó kulcsokat.
       var: output
 ```
 
-## <a name="delete-the-azure-cosmos-db-account"></a>Azure Cosmos DB fiók törlése
+## <a name="delete-the-azure-cosmos-db-account"></a>Az Azure Cosmos DB-fiók törlése
 
-Végül az utolsó kódrészletből megtudhatja, hogyan törölhet egy Azure Cosmos DB fiókot.
+Végül az utolsó kódrészlet bemutatja, hogyan törölheti az Azure Cosmos DB-fiókját.
 
 ```yml
   - name: Delete instance of Cosmos DB Account
@@ -137,11 +137,11 @@ Végül az utolsó kódrészletből megtudhatja, hogyan törölhet egy Azure Cos
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
+## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beszereznie
 
-A teljes példa a következő két módon szerezhető be:
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) forgatókönyvet, és mentse a `cosmosdb.yml`ba.
-- Hozzon létre egy `cosmosdb.yml` nevű új fájlt, és másolja bele a következő tartalomba:
+A teljes forgatókönyv kétféleképpen szerezhető be:
+- [Töltse le a forgatókönyvet,](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml) és mentse el `cosmosdb.yml`.
+- Hozzon létre `cosmosdb.yml` egy új fájl nevű és másolja be a következő tartalmat:
 
 ```yml
 ---
@@ -225,15 +225,15 @@ A teljes példa a következő két módon szerezhető be:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
+## <a name="run-the-sample-playbook"></a>A mintaforgatókönyv futtatása
 
-Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
+Ebben a szakaszban futtassa a forgatókönyvet a cikkben bemutatott különböző funkciók teszteléséhez.
 
-A forgatókönyv futtatása előtt végezze el a következő módosításokat:
-- A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
-- Győződjön meg arról, hogy a "cosmosdbaccount_name csak kisbetűket tartalmaz, és globálisan egyedi.
+A forgatókönyv futtatása előtt hajtsa végre a következő módosításokat:
+- A `vars` szakaszban cserélje `{{ resource_group_name }}` le a helyőrzőt az erőforráscsoport nevére.
+- Győződjön meg arról, hogy a cosmosdbaccount_name csak kisbetűket tartalmaz, és globálisan egyedi.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -243,7 +243,7 @@ ansible-playbook cosmosdb.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`ként:
+Mentse a következő `cleanup.yml`kódot:
 
 ```yml
 - hosts: localhost
@@ -257,13 +257,13 @@ Mentse a következő kódot `cleanup.yml`ként:
         state: absent
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

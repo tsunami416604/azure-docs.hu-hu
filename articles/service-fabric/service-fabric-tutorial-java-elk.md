@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások monitorozása Service Fabric az Azure-ban a ELK használatával
+title: Az alkalmazások figyelése a Service Fabricben az ELK használatával az Azure-ban
 description: Ez az oktatóanyag azt mutatja be, hogyan állíthatja be az ELK-t és monitorozhatja Service Fabric-alkalmazásait.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376658"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val
@@ -25,7 +25,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Java Service Fabric Reliable Services-alkalmazás létrehozása](service-fabric-tutorial-create-java-app.md)
+> * [Service Fabric Reliable Services Java-alkalmazás létrehozása](service-fabric-tutorial-create-java-app.md)
 > * [Az alkalmazás üzembe helyezése és hibakeresése egy helyi fürtön](service-fabric-tutorial-debug-log-local-cluster.md)
 > * [Alkalmazás üzembe helyezése egy Azure-fürtön](service-fabric-tutorial-java-deploy-azure.md)
 > * Monitorozás és diagnosztika beállítása az alkalmazáshoz
@@ -35,14 +35,14 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 Az oktatóanyag elkezdése előtt:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Állítsa be úgy az alkalmazást, hogy a [második részben](service-fabric-tutorial-debug-log-local-cluster.md) megadott helyen hozzon létre naplókat.
 * Teljesítse a [harmadik részt](service-fabric-tutorial-java-deploy-azure.md), hogy legyen egy működő Service Fabric-fürtje, amely naplókat küld az Event Hubsnak.
 * Szükség van arra az Event Hubs-szabályzatra, amely figyelési engedéllyel rendelkezik, valamint a hozzá tartozó, a harmadik részből származó elsődleges kulcsra.
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
-Ha nem hozta létre a mintául szolgáló szavazóalkalmazást [az oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md), akkor le is töltheti. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
+Ha nem az [oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md)építette fel a szavazási mintaalkalmazást, letöltheti azt. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
@@ -140,11 +140,11 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Nyissa meg a Kibana irányítópultját **http:\//Server-IP** , és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
+8. Hozzáférés a Kibana irányítópulton **a http:\//SERVER-IP címen,** és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

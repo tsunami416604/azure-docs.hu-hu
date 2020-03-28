@@ -1,5 +1,5 @@
 ---
-title: Java-alkalmazás hibakeresése helyi Service Fabric fürtön
+title: Java-alkalmazás hibakeresése helyi Service Fabric-fürtön
 description: Ez az oktatóanyag azt ismerteti, hogyan végezhet hibakeresést és kérhet le naplókat egy helyi fürtön futó Service Fabric Java-alkalmazásból.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465382"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Oktatóanyag: Helyi Service Fabric-fürtön üzembe helyezett Java-alkalmazás hibakeresése
@@ -19,7 +19,7 @@ Ez az oktatóanyag egy sorozat második része. Megtudhatja, hogyan csatolhat eg
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Java Service Fabric Reliable Services-alkalmazás létrehozása](service-fabric-tutorial-create-java-app.md)
+> * [Service Fabric Reliable Services Java-alkalmazás létrehozása](service-fabric-tutorial-create-java-app.md)
 > * Az alkalmazás üzembe helyezése és hibakeresése egy helyi fürtön
 > * [Alkalmazás üzembe helyezése egy Azure-fürtön](service-fabric-tutorial-java-deploy-azure.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-java-elk.md)
@@ -40,13 +40,13 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
-Ha nem hozta létre a mintául szolgáló szavazóalkalmazást [az oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md), akkor le is töltheti. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
+Ha nem az [oktatóanyag-sorozat első részében](service-fabric-tutorial-create-java-app.md)építette fel a szavazási mintaalkalmazást, letöltheti azt. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-Az alkalmazás [létrehozása és üzembe helyezése](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) a helyi fejlesztési fürtön.
+[Az](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) alkalmazás létrehozása és üzembe helyezése a helyi fejlesztési fürtre.
 
 ## <a name="debug-java-application-using-eclipse"></a>Hibakeresés Java-alkalmazásokban az Eclipse használatával
 
@@ -56,7 +56,7 @@ Az alkalmazás [létrehozása és üzembe helyezése](service-fabric-tutorial-cr
 
 3. Az Import Projects (Projektek importálása) ablakban válassza a **Select root directory** (Gyökérkönyvtár kiválasztása) lehetőséget, majd válassza a **Voting** könyvtárat. Ha követte az első oktatóanyag-sorozatot, a **Voting** könyvtár az **Eclipse-workspace** könyvtárban található.
 
-4. Frissítse azon szolgáltatás entryPoint.sh fájlját, amelyben hibakeresést szeretne végezni, hogy távoli hibakeresési paraméterekkel indítsa el a Java-folyamatot. Ehhez az oktatóanyaghoz az állapot nélküli előtér használatos: *szavazás/VotingApplication/VotingWebPkg/Code/BelépésiPont. sh*. Ebben a példában a 8001-es port hibakeresésre van beállítva.
+4. Frissítse azon szolgáltatás entryPoint.sh fájlját, amelyben hibakeresést szeretne végezni, hogy távoli hibakeresési paraméterekkel indítsa el a Java-folyamatot. Ehhez az oktatóanyaghoz az állapotmentes előtér használatos: *Szavazás/VotingApplication/VotingWebPkg/Code/entryPoint.sh*. A 8001-es port ebben a példában hibakeresésre van beállítva.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
@@ -82,15 +82,15 @@ Az alkalmazás [létrehozása és üzembe helyezése](service-fabric-tutorial-cr
 
 10. Az Eclipse IDE-ben válassza a **Run -> Debug Configurations -> Remote Java Application** (Futtatás -> Konfigurációk hibakeresése -> Távoli Java-alkalmazás) elemet, kattintson a létrehozott **Voting** (Szavazás) konfigurációra, és kattintson a **Debug** (Hibakeresés) gombra.
 
-11. Nyissa meg a webböngészőt, és lépjen a következő **helyre: 8080**. Ekkor a rendszer automatikusan megnyomja a töréspontot, és az Eclipse megadja a **hibakeresési perspektívát**.
+11. Nyissa meg a webböngészőt, és férjen hozzá **a localhost:8080**. Ez automatikusan eléri a töréspontot, és az Eclipse belép a **Debug perspektívába**.
 
-Most ugyanezeket a lépéseket alkalmazhatja az összes Service Fabric alkalmazás hibakereséséhez az Eclipse-ben.
+Most már ugyanazokat a lépéseket, hogy hibakeresés bármely Service Fabric-alkalmazás Eclipse.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Alkalmazásnaplók átirányítása egyéni helyre
 
 Az alábbi lépések bemutatják, hogyan irányíthatja át az alkalmazásnaplókat az alapértelmezett */var/log/syslog* helyről egy egyéni helyre.
 
-1. A Service Fabric Linux-fürtökön futó alkalmazások jelenleg csak egyetlen naplófájl felszedését támogatják. Ha egy alkalmazást úgy szeretne beállítani, hogy a naplók mindig a */tmp/mysfapp0.0.log*legyenek, hozzon létre egy naplózás. properties nevű fájlt a következő helyen: *szavazó/VotingApplication/VotingWebPkg/Code/fakitermelés. properties* , és adja hozzá a következő tartalmat.
+1. Jelenleg a Service Fabric Linux-fürtökben futó alkalmazások csak egyetlen naplófájl felvétele támogatja. Ha úgy szeretne beállítani egy alkalmazást, hogy a naplók mindig a */tmp/mysfapp0.0.log*könyvtárba lépjenek, hozzon létre egy logging.properties nevű fájlt a következő helyen *Voting/VotingApplication/VotingWebPkg/Code/logging.properties néven,* és adja hozzá a következő tartalmat.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -109,7 +109,7 @@ Az alábbi lépések bemutatják, hogyan irányíthatja át az alkalmazásnapló
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    Az alábbi példa egy minta-végrehajtást mutat be a hibakeresővel, amely az előző szakaszban leírt végrehajtáshoz hasonló.
+    A következő példa egy mintavégrehajtást mutat be a hibakeresővel, hasonlóan az előző szakaszban lévő végrehajtáshoz.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar
@@ -117,7 +117,7 @@ Az alábbi lépések bemutatják, hogyan irányíthatja át az alkalmazásnapló
 
 Megismerkedett vele, hogyan végezhet hibakeresést, és hogyan érheti el az alkalmazásnaplókat a Service Fabric Java-alkalmazások fejlesztésekor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

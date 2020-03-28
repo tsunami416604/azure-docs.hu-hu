@@ -1,84 +1,69 @@
 ---
-title: Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
-description: A jelen oktatóanyagban összetett lekérdezési műveleteket fog végrehajtani felhasználói JavaScript-függvényekkel.
-author: rodrigoamicrosoft
+title: Az Azure Stream Analytics JavaScript által definiált függvényei
+description: Ez a cikk a Stream Analytics JavaScript-felhasználó által definiált függvényeinek bemutatása.
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 04/01/2018
-ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/23/2020
+ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851163"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235392"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei
+# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>JavaScript-felhasználó által definiált függvények az Azure Stream Analytics szolgáltatásban
  
-Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **String**, **RegExp**, **Math**, **Array** és **Date** metódusok széles választékának köszönhetően könnyebben hozhatók létre összetett adatátalakítások Stream Analytics-feladatokkal.
+Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **karakterlánc,** **RegExp**, **Math**, **Tömb**és **Dátum** metódusok gazdag készletével a Stream Analytics-feladatokkal végzett összetett adatátalakítások egyszerűbbé válnak.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+## <a name="overview"></a>Áttekintés
 
-> [!div class="checklist"]
-> * Felhasználói JavaScript-függvények definiálása
-> * A függvény hozzáadása a portálhoz
-> * A függvényt futtató lekérdezés definiálása
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-## <a name="javascript-user-defined-functions"></a>Felhasználói JavaScript-függvények
-A felhasználói JavaScript-függvények támogatják a külső kapcsolatokat nem igénylő, állapot nélküli, csak számítási skaláris függvényeket. Egy függvény visszaadott értéke csak skaláris (egyetlen) érték lehet. Miután hozzáadott egy felhasználói JavaScript-függvényt egy feladathoz, bárhol használhatja a függvényt a lekérdezésben, egy beépített skaláris függvényhez hasonlóan.
+A JavaScript-felhasználó által definiált függvények támogatják az állapotnélküli, csak számítási skaláris függvényeket, amelyek nem igényelnek külső kapcsolatot. Egy függvény visszaadott értéke csak skaláris (egyetlen) érték lehet. Miután hozzáadott egy felhasználói JavaScript-függvényt egy feladathoz, bárhol használhatja a függvényt a lekérdezésben, egy beépített skaláris függvényhez hasonlóan.
 
 Az alábbiakban bemutatunk néhány forgatókönyvet, amelyekben hasznosnak találhatja a felhasználói JavaScript-függvényeket:
-* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()** ) tartalmazó sztringek elemzése és módosítása.
+* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()**) tartalmazó sztringek elemzése és módosítása.
 * Adatok dekódolása és kódolása, például bináris adatok átalakítása hexadecimális adatokká.
-* Matematikai számítások végrehajtása JavaScript **Math** függvényekkel.
-* Tömbműveletek, például rendezés, összekapcsolás, keresés és kitöltés végrehajtása.
+* Matematikai számítások végzett a JavaScript **Matematikai** függvényekkel
+* Tömbműveletek, például rendezés, illesztés, keresés és kitöltés
 
-Néhány dolog, amely nem hajtható végre felhasználói JavaScript-függvényekkel a Stream Analytics szolgáltatásban:
-* Külső REST-végpontok meghívása, például fordított IP-keresés végrehajtása vagy referenciaadatok lekérése külső forrásból.
+Íme néhány dolog, amit nem tehet meg egy JavaScript-felhasználó által definiált funkcióval a Stream Analytics szolgáltatásban:
+* Külső REST-végpontok kihívása, például fordított IP-keresési lekérdezés vagy referenciaadatok lekérdezése külső forrásból
 * Egyéni eseményformátum szerializálása vagy deszerializálása bemenetekben/kimenetekben.
 * Egyéni összesítések létrehozása.
 
-Jóllehet az olyan függvények, mint a **Date.GetDate()** vagy a **Math.random()** nincsenek blokkolva a függvénydefinícióban, kerülje a használatukat. Ezek a függvények **nem** minden alkalommal ugyanazt az eredményt adják vissza a meghívásukkor, az Azure Stream Analytics szolgáltatás pedig nem naplózza a függvények meghívását és a visszaadott eredményeket. Ha egy függvény eltérő eredményeket ad vissza ugyanazon eseményekre vonatkozóan, az ismételhetőség nem garantált, ha Ön vagy a Stream Analytics szolgáltatás újraindítja a feladatot.
+Bár a függvények, például **a Date.GetDate()** vagy a **Math.random()** függvények definíciója nincs letiltva, kerülje a használatukat. Ezek a függvények **nem** ugyanazt az eredményt adják vissza minden alkalommal, amikor meghívja őket, és az Azure Stream Analytics szolgáltatás nem vezet naplót a függvény-meghívások és a visszaadott eredmények. Ha egy függvény ugyanazon eseményeken eltérő eredményt ad vissza, az ismételhetőség nem garantált, ha ön vagy a Stream Analytics szolgáltatás újraindítja a feladatot.
 
-## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Felhasználói JavaScript-függvény hozzáadása az Azure Portalon
-Az alábbi lépéseket követve hozhat létre egyszerű JavaScript felhasználó által definiált függvényt egy meglévő Stream Analytics feladat alatt:
+## <a name="add-a-javascript-user-defined-function-to-your-job"></a>JavaScript-felhasználó által definiált függvény hozzáadása a feladathoz
 
 > [!NOTE]
-> Ezek a lépések a felhőben való futtatásra konfigurált Stream Analytics-feladatokon működnek. Ha a Stream Analytics-feladat úgy van konfigurálva, hogy Azure IoT Edgeon fusson, Ehelyett használja a Visual studiót, és [írja a felhasználó által definiált függvényt a használatával C# ](stream-analytics-edge-csharp-udf.md).
+> Ezek a lépések a felhőben való futtatásra konfigurált Stream Analytics-feladatokon működnek. Ha a Stream Analytics-feladat úgy van beállítva, hogy az Azure IoT Edge-en fusson, használja a Visual Studio-t, és [írja meg a felhasználó által definiált függvényt a C# használatával.](stream-analytics-edge-csharp-udf.md)
 
-1.  Keresse meg a Stream Analytics-feladatot az Azure Portalon.
+Ha JavaScript-felhasználó által definiált függvényt szeretne létrehozni a Stream Analytics-feladatban, válassza **a Funkciók** lehetőséget a **Feladattopológia**csoportban. Ezután válassza a **JavaScript UDF** lehetőséget a **+Add** legördülő menüből. 
 
-2. A **feladatok topológiája** szakaszban válassza a **függvények**elemet. Megjelenik egy üres függvénylista.
+![JavaScript UDF hozzáadása](./media/javascript/stream-analytics-jsudf-add.png)
 
-3.  Új, felhasználó által definiált függvény létrehozásához válassza a **+ Hozzáadás**lehetőséget.
+Ezután meg kell adnia a következő tulajdonságokat, és válassza a **Mentés lehetőséget.**
 
-4.  Az **Új függvény** panel **Függvénytípus** részén válassza a **JavaScript** lehetőséget. A szerkesztőben megjelenik egy alapértelmezett függvénysablon.
+|Tulajdonság|Leírás|
+|--------|-----------|
+|Függvény aliasa|Írjon be egy nevet a függvény meghívásához a lekérdezésben.|
+|Kimenet típusa|Írja be, amelyet a JavaScript felhasználó által definiált függvény visszaad a Stream Analytics-lekérdezésnek.|
+|Függvény definíciója|A JavaScript-függvény implementációja, amely minden alkalommal végrehajtásra kerül, amikor az UDF meghívást kap a lekérdezésből.|
 
-5.  Az **UDF-alias** mezőben adja meg a **hex2Int** értéket, és módosítsa a függvény implementálását az alábbiak szerint:
+## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF-ek tesztelése és hibaelhárítása 
 
-    ```javascript
-    // Convert Hex value to integer.
-    function hex2Int(hexValue) {
-        return parseInt(hexValue, 16);
-    }
-    ```
+A JavaScript UDF logikát bármely böngészőben tesztelheti és debugolhatja. A felhasználó által definiált függvények logikájának hibakeresésés tesztelése jelenleg nem támogatott a Stream Analytics portálon. Miután a függvény a várt módon működik, hozzáadhatja a stream analytics-feladathoz a fent említettek szerint, majd közvetlenül a lekérdezésből hívhatja meg. A lekérdezési logikát javaScript UDF-fel tesztelheti [a Visual Studio Stream Analytics eszközeivel.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)
 
-6.  Kattintson a **Mentés** gombra. A függvény megjelenik a függvénylistában.
-7.  Válassza ki az új **hex2int** függvényt, és ellenőrizze a függvény definícióját. Minden függvény az aliasához hozzáadott **UDF** előtaggal rendelkezik. Ezt az *előtagot meg kell adni*, amikor a Stream Analytics-lekérdezésben meghívja a függvényt. Ebben az esetben az **UDF.hex2Int** függvényt hívjuk meg.
-
-## <a name="testing-javascript-udfs"></a>JavaScript-UDF tesztelése 
-A JavaScript UDF-logikát bármely böngészőben tesztelheti és hibakeresést végezhet. A felhasználó által definiált függvények logikájának hibakeresése és tesztelése jelenleg nem támogatott a Stream Analytics portálon. Ha a függvény a várt módon működik, a fentiekben leírtak szerint adhatja hozzá a Stream Analytics feladathoz, majd közvetlenül a lekérdezésből hívhatja meg.
+A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységnaplóban tekinthetők meg. A napló lekéréséhez lépjen a feladatra az Azure Portalon, és válassza a **Tevékenységnapló** elemet.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Felhasználói JavaScript-függvény meghívása lekérdezésben
 
-1. A lekérdezés-szerkesztőben a **feladatok topológiájának** fejléce alatt válassza a **lekérdezés**lehetőséget.
-2.  Módosítsa a lekérdezést, majd hívja meg a felhasználói függvényt az alábbiak szerint:
+Könnyedén meghívhatja a JavaScript függvényt a lekérdezésben az **udf**előtaggal ellátott függvény alias használatával. Íme egy példa egy JavaScript UDF-re, amely hexadecimális értékeket egész számmá alakít egy Stream Analytics-lekérdezésben.
 
-    ```SQL
+```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -86,13 +71,10 @@ A JavaScript UDF-logikát bármely böngészőben tesztelheti és hibakeresést 
         output
     FROM
         InputStream
-    ```
-
-3.  A mintaadatfájl feltöltéséhez kattintson a jobb gombbal a feladat bemenetére.
-4.  A lekérdezés teszteléséhez válassza a **Teszt** elemet.
-
+```
 
 ## <a name="supported-javascript-objects"></a>Támogatott JavaScript-objektumok
+
 Az Azure Stream Analytics felhasználói JavaScript-függvényei támogatják a szabványos, beépített JavaScript-objektumokat. Az objektumok listáját a [globális objektumokkal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) foglalkozó cikkben tekintheti meg.
 
 ### <a name="stream-analytics-and-javascript-type-conversion"></a>Típusátalakítás a Stream Analytics és a JavaScript között
@@ -109,9 +91,7 @@ Record | Objektum
 Tömb | Tömb
 NULL | Null
 
-
 A JavaScriptről a Stream Analyticsre történő átalakítások:
-
 
 JavaScript | Stream Analytics
 --- | ---
@@ -123,14 +103,12 @@ Tömb | Tömb
 Null, nem definiált | NULL
 Bármely más típus (például függvény vagy hiba) | Nem támogatott (futásidejű hibát eredményez)
 
-A JavaScript-nyelv megkülönbözteti a kis-és nagybetűket, és a JavaScript-kódban lévő Object mezőinek meg kell egyeznie a beérkező adatok mezőinek a házával. Vegye figyelembe, hogy a 1,0 kompatibilitási szintű feladatok esetében az SQL SELECT utasítás mezőinek kisbetűsnek kell lennie. A 1,1-es és magasabb kompatibilitási szint alatt a SELECT utasítás mezőinek az SQL-lekérdezésben megadottal azonos burkolattal kell rendelkezniük.
-
-## <a name="troubleshooting"></a>Hibakeresés
-A JavaScript futásidejű hibái végzetesnek minősülnek, és a tevékenységnaplóban tekinthetők meg. A napló lekéréséhez lépjen a feladatra az Azure Portalon, és válassza a **Tevékenységnapló** elemet.
+A JavaScript nyelve a kis- és nagybetűket, és a JavaScript-kódban lévő objektummezők burkolatának meg kell egyeznie a bejövő adatok mezőinek burkolatával. Az 1.0-s kompatibilitási szinttel rendelkező feladatok az SQL SELECT utasításmezőit kisbetűssé alakítják. Az 1.1-es és újabb kompatibilitási szint esetén a SELECT utasítás mezőinek az SQL-lekérdezésben megadott akta lesz.
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Egyéb felhasználói JavaScript-függvényminták
 
 ### <a name="write-nested-json-to-output"></a>Beágyazott JSON írása a kimenetbe
+
 Ha van még egy további feldolgozási lépés, amely a Stream Analytics-feladat kimenetét használja a bemeneteként, és JSON-formátumot igényel, a kimenetbe írhat JSON-sztringet. A következő példa a **JSON.stringify()** függvény meghívásával becsomagolja a bemenetben lévő összes név/érték párt, majd egyetlen sztringértékként írja őket a kimenetbe.
 
 **Felhasználói JavaScript-függvény definíciója:**
@@ -154,19 +132,7 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a streamelési feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megelőzheti a feladat által használt streamelési egységek kiszámlázását. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha többé már nem kívánja használni ezt a feladatot, az alábbi lépéseket követve törölheti a gyors útmutató által létrehozott összes erőforrást:
-
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
-2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
-
-## <a name="get-help"></a>Segítségkérés
-További segítségért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy egyszerű felhasználói JavaScript-függvényt futtató Stream Analytics-feladatot. A Stream Analytics szolgáltatással kapcsolatos további információkért folytassa a valós idejű forgatókönyveket ismertető cikkekkel:
-
-> [!div class="nextstepaction"]
-> [Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban](stream-analytics-twitter-sentiment-analysis-trends.md)
+* [Gépi tanulási UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
+* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

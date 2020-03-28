@@ -1,6 +1,6 @@
 ---
-title: 'CLI: alkalmazás méretezése Traffic Manager'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan méretezhető világszerte a Traffic Manager.
+title: 'CLI: Alkalmazás méretezése a Traffic Managerrel'
+description: Ismerje meg, hogyan használhatja az Azure CLI-t az App Service-alkalmazás üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan skálázható egy világszerte a Traffic Manager.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 82845977efe3141dda8c0f0f05c1fbcb3f741bd2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: fcd82297ae698707503a69d9e47f6ca4241d6db9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689371"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044873"
 ---
 # <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>App Service-alkalmazás méretezése világszerte magas rendelkezésre állású architektúrával az Azure CLI használatával
 
-Ez a parancsfájl létrehoz egy erőforráscsoportot, két App Service tervet, két alkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. A gyakorlat befejezése után egy magas rendelkezésre állású architektúrával rendelkezik, amely a legkisebb hálózati késés alapján biztosítja az alkalmazás globális elérhetőségét.
+Ez a mintaparancsfájl létrehoz egy erőforráscsoportot, két App Service-csomag, két alkalmazás, egy forgalomkezelő profil és két forgalomkezelő végpontot. Miután a gyakorlat befejeződött, magas rendelkezésre állású architektúrával rendelkezik, amely a legalacsonyabb hálózati késés alapján biztosítja az alkalmazás globális rendelkezésre állását.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,17 +34,17 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás, Traffic Manager-profil és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás, a forgalomkezelő profil és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
 | [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) | Létrehoz egy Azure Traffic Manager-profilt. |
 | [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

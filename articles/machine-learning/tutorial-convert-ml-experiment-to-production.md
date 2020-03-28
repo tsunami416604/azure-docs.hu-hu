@@ -1,40 +1,40 @@
 ---
-title: Machine learning-kísérlet kódjának átalakítása éles kódra
+title: Gépi tanulási kísérlet kódjának átalakítása éles kóddá
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alakíthatja át a gépi tanulás kísérleti kódját a termelési kódra a MLOpsPython-kód sablonnal.
+description: Ismerje meg, hogyan konvertálhatja a gépi tanulási kísérleti kódot éles kódtá az MLOpsPython kódsablon használatával.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/13/2020
+ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301845"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477136"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Oktatóanyag: ML kísérleti kód átalakítása üzemi kódra
+# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Oktatóanyag: Ml kísérleti kód átalakítása éles kódra
 
-A Machine learning-projektek kísérletezést igényelnek, ahol a hipotézisek olyan agilis eszközökkel vannak tesztelve, mint a valós adathalmazok használatával Jupyter Notebook. Miután a modell készen áll az éles üzemre, a modell kódját egy üzemi programkódba kell helyezni. Bizonyos esetekben a modell kódját át kell alakítani Python-szkriptekre az üzemi programkódba való adattárházba való helyezéshez. Ez az oktatóanyag a kísérletezési kódok Python-szkriptekre való exportálásának ajánlott módszerét ismerteti.
+Egy gépi tanulási projekt kísérletezést igényel, ahol a hipotéziseket olyan agilis eszközökkel tesztelik, mint a Jupyter Notebook valós adatkészletek használatával. Miután a modell készen áll az éles használatra, a modellkódot egy termelésikód-tárházba kell helyezni. Bizonyos esetekben a modellkódot python-parancsfájlokká kell konvertálni, hogy a termelésikód-tárházban legyenek elhelyezve. Ez az oktatóanyag ismerteti a kísérletezési kód Python-parancsfájlokba történő exportálásának ajánlott megközelítését.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> * Nem nélkülözhetetlen kód tisztítása
-> * Refactor Jupyter Notebook kódot a functions szolgáltatásba
+> * Nem alapvető fontosságú kód tisztítása
+> * Refactor Jupyter Notebook kód függvények
 > * Python-parancsfájlok létrehozása kapcsolódó feladatokhoz
-> * Egység tesztek létrehozása
+> * Egységtesztek létrehozása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [MLOpsPython-sablon](https://github.com/microsoft/MLOpsPython/generate) előállítása és a `experimentation/Diabetes Ridge Regression Training.ipynb` és `experimentation/Diabetes Ridge Regression Scoring.ipynb` jegyzetfüzetek használata. Ezek a jegyzetfüzetek példaként szolgálnak a kísérletezésről a termelésre való áttérésre.
-- Telepítse a nbconvert. [A telepítés lapon csak](https://nbconvert.readthedocs.io/en/latest/install.html) a telepítési utasításokat kövesse a __nbconvert telepítése__ című részben.
+- Hozza létre az [MLOpsPython sablont,](https://github.com/microsoft/MLOpsPython/generate) és használja a és `experimentation/Diabetes Ridge Regression Training.ipynb` `experimentation/Diabetes Ridge Regression Scoring.ipynb` a notebookokat. Ezek a jegyzetfüzetek példaként szolgálnak a kísérletezésből az éles környezetbe való konvertáláshoz. Ezeket a jegyzetfüzeteket [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation)a.
+- Telepítse nbconvert. Csak a telepítési utasításokat kövesse __az Nbconvert telepítése__ a [telepítési](https://nbconvert.readthedocs.io/en/latest/install.html) oldalon című szakaszban.
 
-## <a name="remove-all-nonessential-code"></a>Az összes nem nélkülözhetetlen kód eltávolítása
+## <a name="remove-all-nonessential-code"></a>Az összes nem alapvető fontosságú kód eltávolítása
 
-A kísérletezés során írt kódok némelyike csak tájékozódási célokra szolgál. Ezért a kísérleti kód éles kódban való átalakításának első lépése a nem nélkülözhetetlen kód eltávolítása. A nem nélkülözhetetlen kód eltávolításával a kód még karbantartható lesz. Ebben a szakaszban a `experimentation/Diabetes Ridge Regression Training.ipynb` jegyzetfüzetből eltávolítja a kódot. A `X` és `y` alakját, valamint a `features.describe` cellát jelölő utasítások csak az adatfeltáráshoz használhatók, és eltávolíthatók. A nem nélkülözhetetlen kód eltávolítását követően `experimentation/Diabetes Ridge Regression Training.ipynb` a következő kódhoz hasonlóan kell kinéznie, Markdown nélkül:
+A kísérletezés során írt egyes kódok csak feltáró célokra szolgálnak. Ezért a kísérleti kód éles kóddá történő átalakításának első lépése a nem alapvető fontosságú kód eltávolítása. A nem alapvető fontosságú kód eltávolítása a kód karbantartását is lehetővé teszi. Ebben a szakaszban eltávolíthatja a `experimentation/Diabetes Ridge Regression Training.ipynb` kódot a jegyzetfüzetből. Az alakot `X` és `y` a cellahívást `features.describe` kinyomtató utasítások csak az adatok feltárására szolgálnak, és eltávolíthatók. A nem létfontosságú kód `experimentation/Diabetes Ridge Regression Training.ipynb` eltávolítása után a következő kódnak kell kinéznie jelölés nélkül:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -62,19 +62,19 @@ model_name = "sklearn_regression_model.pkl"
 joblib.dump(value=reg, filename=model_name)
 ```
 
-## <a name="refactor-code-into-functions"></a>Újrabontási kód a függvényekbe
+## <a name="refactor-code-into-functions"></a>Újrafaktoroló kód függvényekké
 
-Másodszor, a Jupyter-kódot át kell alakítani a függvényekbe. A kód into functions-re való újrabontása megkönnyíti az egységek tesztelését, és a kód karbantartását is lehetővé teszi. Ebben a szakaszban a következőt fogja újraválasztani:
+Másodszor, a Jupyter-kódot függvényekké kell alakítani. A kód függvényekbe való újrabontása megkönnyíti az egységtesztelést, és karbantarthatóbbá teszi a kódot. Ebben a részben a következőket kell figyelembe venni:
 
-- A diabetes Ridge regressziós betanítása notebook (`experimentation/Diabetes Ridge Regression Training.ipynb`)
-- A diabetes Ridge regressziós pontozási notebookja (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
+- A Diabetes Ridge regressziós képzés notebook(`experimentation/Diabetes Ridge Regression Training.ipynb`)
+- A Diabetes Ridge regresszió pontozási notebook(`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
-### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refaction diabetes Ridge regressziós betanítási jegyzetfüzet a functions szolgáltatásba
+### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refactor Diabetes Ridge regressziós képzés notebook funkciók
 
-A `experimentation/Diabetes Ridge Regression Training.ipynb`on hajtsa végre a következő lépéseket:
+A `experimentation/Diabetes Ridge Regression Training.ipynb`alkalmazásban hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy `train_model`nevű függvényt, amely végrehajtja a paramétereket `data` és `alpha`, és visszaadja a modellt.
-1. Másolja a kódot a "Train Model on Training set" és a "validate Model on validate set" (modell ellenőrzése az érvényesítési csoporton) elemre a `train_model` függvénybe.
+1. Hozzon létre `train_model`egy függvényt, `data` `alpha` amely a paramétereket veszi, és egy modellt ad vissza.
+1. Másolja a kódot a "Train Model on Training Set" és a `train_model` "Validate Model on Validation Set" fejlécalá.
 
 A `train_model` függvénynek a következő kódhoz hasonlóan kell kinéznie:
 
@@ -88,19 +88,19 @@ def train_model(data, alpha):
     return reg
 ```
 
-Miután létrehozta a `train_model` függvényt, cserélje le a kódot a "Train Model on Training set" és a "validate Model on validate set" kifejezésre a következő utasítással:
+A `train_model` függvény létrehozása után cserélje le a "Train Model on Training Set" és a "Validate Model on Validation Set" fejlécek alatti kódot a következő utasításra:
 
 ```python
 reg = train_model(data, alpha)
 ```
 
-Az előző utasítás meghívja a `train_model` függvényt a `data` és `alpha` paraméterek átadásával, és visszaadja a modellt.
+Az előző utasítás `train_model` meghívja `data` `alpha` a függvény t és paramétereket, és adja vissza a modellt.
 
-A `experimentation/Diabetes Ridge Regression Training.ipynb`on hajtsa végre a következő lépéseket:
+A `experimentation/Diabetes Ridge Regression Training.ipynb`alkalmazásban hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy `main`nevű új függvényt, amely nem tartalmaz paramétereket, és nem ad vissza semmit.
-1. Másolja a kódot a fejlécek alatt a "betöltési adat", az "adat felosztása a betanítási és érvényesítési készletekbe" és a "modell mentése" kifejezést a `main` függvénybe.
-1. Másolja `train_model` az újonnan létrehozott hívást a `main` függvénybe.
+1. Hozzon létre `main`egy új függvényt, amely nem vesz igénybe paramétereket, és nem ad vissza semmit.
+1. Másolja a kódot a "Adatok betöltése", "Adatok felosztása betanítási és `main` érvényesítési készletekre" és a "Modell mentése" fejléc alá a függvénybe.
+1. Másolja az újonnan `train_model` létrehozott `main` hívást a függvénybe.
 
 A `main` függvénynek a következő kódhoz hasonlóan kell kinéznie:
 
@@ -122,13 +122,13 @@ def main():
     joblib.dump(value=reg, filename=model_name)
 ```
 
-Az `main` függvény létrehozása után cserélje le az összes kódot az "adatok betöltése", az "adatok felosztása a betanítási és érvényesítési készletekbe" és a "modell mentése" lehetőségre, valamint az újonnan létrehozott hívást a `train_model`ra a következő utasítással:
+A `main` függvény létrehozása után cserélje le az összes kódot az "Adatok betöltése", az "Adatok felosztása betanítási `train_model` és érvényesítési készletekre" és a "Modell mentése" címszó alatt, valamint az újonnan létrehozott hívást a következő utasítással:
 
 ```python
 main()
 ```
 
-Az újrabontás után a `experimentation/Diabetes Ridge Regression Training.ipynb` a következő kódhoz hasonlóan kell kinéznie a Markdown nélkül:
+A refactoring `experimentation/Diabetes Ridge Regression Training.ipynb` után a következő kódnak kell kinéznie a jelnélkül:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -165,12 +165,12 @@ def main():
 main()
 ```
 
-### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refaction diabetes Ridge regressziós pontozási jegyzetfüzet into functions
+### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refactor Diabetes Ridge regresszió pontozási notebook funkciók
 
-A `experimentation/Diabetes Ridge Regression Scoring.ipynb`on hajtsa végre a következő lépéseket:
+A `experimentation/Diabetes Ridge Regression Scoring.ipynb`alkalmazásban hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy `init`nevű új függvényt, amely nem tartalmaz paramétereket, és nem ad vissza semmit.
-1. Másolja a kódot a "betöltési modell" fejléc alá a `init` függvénybe.
+1. Hozzon létre `init`egy új függvényt, amely nem vesz igénybe paramétereket, és nem ad vissza semmit.
+1. Másolja a kódot a "Modell betöltése" fejléc alá a `init` függvénybe.
 
 A `init` függvénynek a következő kódhoz hasonlóan kell kinéznie:
 
@@ -181,23 +181,23 @@ def init():
     model = joblib.load(model_path)
 ```
 
-Az `init` függvény létrehozása után cserélje le az összes kódot a "modell betöltése" fejléc alá egyetlen hívással, hogy `init` a következőképpen:
+A `init` funkció létrehozása után cserélje le a "Modell betöltése" alatt `init` lévő összes kódot egyetlen hívásra az alábbiak szerint:
 
 ```python
 init()
 ```
 
-A `experimentation/Diabetes Ridge Regression Scoring.ipynb`on hajtsa végre a következő lépéseket:
+A `experimentation/Diabetes Ridge Regression Scoring.ipynb`alkalmazásban hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy új, `run`nevű függvényt, amely `raw_data` és `request_headers` paramétereket fogad el, és a következő módon adja vissza az eredményeket:
+1. Hozzon létre `run`egy új `raw_data` `request_headers` függvényt, amely paraméterekként és paraméterekként az eredmények szótárát adja vissza az alábbiak szerint:
 
     ```python
     {"result": result.tolist()}
     ```
 
-1. Másolja az "adatelőkészítés" és az "adat pontszáma" fejléc alatti kódot a `run` függvénybe.
+1. Másolja a kódot az "Adatok előkészítése" és a `run` "Pontszámadatok" fejléc alá a függvénybe.
 
-    A `run` függvénynek a következő kódhoz hasonlóan kell kinéznie (ne felejtse el eltávolítani a változókat a `raw_data` és a `request_headers`változóknál, amelyeket később a `run` függvény hívásakor fog használni):
+    A `run` függvénynek a következő kódhoz hasonlóan kell kinéznie (Ne `request_headers`felejtse el eltávolítani `run` a változókat beállító állításokat, `raw_data` és a , amelyet később fog használni, amikor a függvényt hívják):
 
     ```python
     def run(raw_data, request_headers):
@@ -208,7 +208,7 @@ A `experimentation/Diabetes Ridge Regression Scoring.ipynb`on hajtsa végre a k�
         return {"result": result.tolist()}
     ```
 
-Miután létrehozta az `run` függvényt, cserélje le az "adatelőkészítés" és az "adat pontszáma" fejléc alatti kódot az alábbi kódra:
+A `run` függvény létrehozása után cserélje le az "Adatok előkészítése" és a "Pontszámadatok" fejlécben lévő összes kódot a következő kódra:
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'
@@ -217,9 +217,9 @@ prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
 
-Az előző kód beállítja a változókat `raw_data` és `request_header`, meghívja az `run` függvényt `raw_data` és `request_header`, és kinyomtatja az előrejelzéseket.
+Az előző kód `raw_data` beállítja `run` a `raw_data` változókat, és `request_header`a függvényt a és `request_header`a lehetőséggel hívja meg, és kinyomtatja az előrejelzéseket.
 
-Az újrabontás után a `experimentation/Diabetes Ridge Regression Scoring.ipynb` a következő kódhoz hasonlóan kell kinéznie a Markdown nélkül:
+A refactoring `experimentation/Diabetes Ridge Regression Scoring.ipynb` után a következő kódnak kell kinéznie a jelnélkül:
 
 ```python
 import json
@@ -248,20 +248,20 @@ print("Test result: ", prediction)
 
 ## <a name="combine-related-functions-in-python-files"></a>Kapcsolódó függvények kombinálása Python-fájlokban
 
-A harmadik, kapcsolódó függvényeket a Python-fájlokba kell egyesíteni a kód újrafelhasználásának jobb elősegítése érdekében. Ebben a szakaszban Python-fájlokat fog létrehozni a következő jegyzetfüzetekhez:
+Harmadszor, a kapcsolódó funkciókat össze kell vonni a Python fájlokba, hogy jobban segítse a kód újrafelhasználását. Ebben a szakaszban python-fájlokat fog létrehozni a következő jegyzetfüzetekhez:
 
-- A diabetes Ridge regressziós betanítása notebook (`experimentation/Diabetes Ridge Regression Training.ipynb`)
-- A diabetes Ridge regressziós pontozási notebookja (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
+- A Diabetes Ridge regressziós képzés notebook(`experimentation/Diabetes Ridge Regression Training.ipynb`)
+- A Diabetes Ridge regresszió pontozási notebook(`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Python-fájl létrehozása a diabetes Ridge regressziós betanítási jegyzetfüzethez
+### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Python-fájl létrehozása a Diabetes Ridge regressziós képzés jegyzetfüzetéhez
 
-Alakítsa át a jegyzetfüzetet egy végrehajtható parancsfájlba úgy, hogy futtatja a következő utasítást egy parancssorban, amely a nbconvert csomagot és a `experimentation/Diabetes Ridge Regression Training.ipynb`elérési útját használja:
+A jegyzetfüzetet végrehajtható parancsfájllá konvertálhatja a parancssorban a következő utasítás futtatásával, amely `experimentation/Diabetes Ridge Regression Training.ipynb`az nbconvert csomagot és az elérési utat használja:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
 ```
 
-Miután a jegyzetfüzetet átalakította `train.py`re, távolítsa el az összes megjegyzést. A `train.py` fájlnak a következő kódhoz hasonlóan kell kinéznie:
+Miután a jegyzetfüzetet `train.py`konvertálta, távolítsa el az összes megjegyzést. A `train.py` fájlnak a következő kódnak kell lennie:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -297,17 +297,17 @@ def main():
 main()
 ```
 
-A MLOpsPython-tárház `diabetes_regression/training` könyvtárában található `train.py` fájl támogatja a parancssori argumentumokat (azaz `build_id`, `model_name`és `alpha`). Parancssori argumentumok támogatása a `train.py`-fájlhoz a dinamikus modellek nevének és `alpha` értékének támogatásához, de a kód sikeres végrehajtásához nem szükséges.
+Az `train.py` MLOpsPython `diabetes_regression/training` tárházban található könyvtárban található fájl támogatja a parancssori argumentumokat (nevezetesen `build_id`a `model_name`, és `alpha`a ) A dinamikus modellnevek és `train.py` `alpha` -értékek támogatásához a parancssori argumentumok támogatása hozzáadható a fájlhoz, de a kód sikeres végrehajtásához nem szükséges.
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Python-fájl létrehozása a diabetes Ridge regressziós pontozási jegyzetfüzethez
+### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Python-fájl létrehozása a Diabetes Ridge regressziós pontozási jegyzetfüzethez
 
-A jegyzetfüzetet egy végrehajtható parancsfájlba úgy állítsa be, hogy a következő utasítást futtatja egy parancssorban, amely a nbconvert csomagot és a `experimentation/Diabetes Ridge Regression Scoring.ipynb`elérési útját használja:
+A jegyzetfüzetet egy végrehajtható parancsfájlba rejtette, ha a következő utasítást futtatja `experimentation/Diabetes Ridge Regression Scoring.ipynb`egy parancssorban, amely az nbconvert csomagot és az elérési utat használja:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
 ```
 
-Miután a jegyzetfüzetet átalakította `score.py`re, távolítsa el az összes megjegyzést. A `score.py` fájlnak a következő kódhoz hasonlóan kell kinéznie:
+Miután a jegyzetfüzetet `score.py`konvertálta, távolítsa el az összes megjegyzést. A `score.py` fájlnak a következő kódnak kell lennie:
 
 ```python
 import json
@@ -334,13 +334,13 @@ prediction = run(test_row, request_header)
 print("Test result: ", prediction)
 ```
 
-A `train_model` függvénynek módosítást kell létrehoznia egy globális változó modell létrehozásához, hogy az a parancsfájlban látható legyen. Adja hozzá a következő utasítást a `init` függvény elején:
+A `train_model` függvény módosításra van szükség, hogy példányosítani egy globális változó modell, hogy látható legyen az egész parancsfájlt. Adja hozzá a következő utasítást a `init` függvény elejére:
 
 ```python
 global model
 ```
 
-Az előző utasítás hozzáadása után a `init` függvénynek a következő kódhoz hasonlóan kell kinéznie:
+Az előző utasítás hozzáadása `init` után a függvénynek a következő kódhoz hasonlóan kell kinéznie:
 
 ```python
 def init():
@@ -352,19 +352,19 @@ def init():
     model = joblib.load(model_path)
 ```
 
-## <a name="create-unit-tests-for-each-python-file"></a>Egységbeli tesztek létrehozása minden Python-fájlhoz
+## <a name="create-unit-tests-for-each-python-file"></a>Egységtesztek létrehozása minden Python-fájlhoz
 
-Negyedszer minden Python-fájlhoz létre kell hozni az Unit-teszteket, ami megbízhatóbb és könnyebben karbantartható kódot tesz lehetővé. Ebben a szakaszban a `train.py`egyik funkciójának egy egységének tesztelését fogja létrehozni.
+Negyedszer, egységteszteket kell létrehozni minden Python-fájlhoz, ami robusztusabbá és könnyebben karbantarthatóvá teszi a kódot. Ebben a szakaszban `train.py`egységtesztet fog létrehozni a függvények egyikéhez.
 
-`train.py` két függvényt tartalmaz: `train_model` és `main`. Minden függvénynek szüksége van egy egység tesztre, de csak egyetlen egység tesztet hozunk létre a `train_model` függvényhez az oktatóanyag Pytest keretrendszere használatával. A Pytest nem az egyetlen Python-egység tesztelési keretrendszere, de az egyik leggyakrabban használt. További információért látogasson el a [Pytest](https://pytest.org)webhelyre.
+`train.py`két függvényt `train_model` `main`tartalmaz: és . Minden függvénynek szüksége van egy egységtesztre, de csak `train_model` egy egységtesztet hozunk létre a függvényhez az oktatóanyag Pytest keretrendszerhasználatával. Pytest nem az egyetlen Python egység tesztelési keretrendszer, de ez az egyik leggyakrabban használt. További információkért látogasson el [Pytest](https://pytest.org).
 
-Az egységek tesztelése általában három fő műveletet tartalmaz:
+Az egységvizsgálat általában három fő műveletet tartalmaz:
 
-- Objektum elrendezése – szükséges objektumok létrehozása és beállítása
-- Objektum megvonása
+- Objektum rendezése - szükséges objektumok létrehozása és beállítása
+- Cselekvés egy objektumra
 - A várt érték érvényesítése
 
-A `train_model` általános feltétele `data` és `alpha` érték átadása. A várt eredmény az `Ridge.train` és `Ridge.predict` függvények hívása. Mivel a gépi tanulási tanítási módszerek gyakran nem gyorsan futnak, a `Ridge.train` meghívása lesz kigúnyolva. Mivel a `Ridge.train` visszatérési értéke egy kigúnyolt objektum, `Ridge.predict`is kigúnyoljuk. A `train_model` teszteléséhez `data` és `alpha` érték elküldésének tesztelése a `Ridge.train` és `Ridge.predict` függvények elvárt eredményével, és a Pytest-keretrendszernek a következő kódhoz hasonlóan kell kinéznie:
+Az `alpha` érték `train_model` átadása `data` gyakran megszokott feltétele. A várt eredmény `Ridge.train` az, hogy a és `Ridge.predict` a függvényeket meg kell hívni. Mivel a gépi tanulási képzési módszerek gyakran `Ridge.train` nem gyorsan futnak, a hívás mocked. Mivel a visszatérési `Ridge.train` értéke egy kigúnyolt tárgy, `Ridge.predict`mi is gúnyolódni . A gúnyos `train_model` és a `data` Pytest `alpha` keretrendszer által `Ridge.train` várt `Ridge.predict` eredményés függvények várható eredményével és funkcióival végzett érték ellenőrzésére szolgáló egységvizsgálatnak a következő kódhoz hasonlóan kell kinéznie:
 
 ```python
 import pytest
@@ -389,46 +389,46 @@ class TestTrain:
         mock_ridge_predict.assert_called()
 ```
 
-## <a name="use-your-own-model-with-mlopspython-code-template"></a>Saját modell használata a MLOpsPython-kód sablonnal
+## <a name="use-your-own-model-with-mlopspython-code-template"></a>Saját modell használata mlOpsPython kódsablonnal
 
-Ha követte az útmutató lépéseit, a MLOpsPython-tárházban elérhető, a vonat/pontszám/tesztelési szkriptekhez kapcsolódó parancsfájlok is rendelkezésre állnak.  A fent említett struktúra alapján a következő lépések végigvezetik a saját gépi tanulási projekthez szükséges fájlok használatának lépésein:
+Ha követte az útmutatóban leírt lépéseket, parancsfájlok készletével fog rendelkezni, amelyek korrelálnak az MLOpsPython-tárházban elérhető train/score/test parancsfájlokkal.  A fent említett struktúra szerint a következő lépések végigvezetik a fájlok saját gépi tanulási projektjéhez szükséges lépéseken:
 
-1. Kövesse a MLOpsPython [első lépések](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) útmutatót
-2. A projekt kiindulási pontjának létrehozásához kövesse a MLOpsPython rendszerindítási [utasításait](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)
-3. A betanítási kód cseréje
-4. A pontszám kód cseréje
-5. A kiértékelési kód frissítése
+1. Kövesse az MLOpsPython [első lépései](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) című útmutatóját
+2. A projekt kiindulópontjának létrehozásához kövesse az MLOpsPython [rendszerindítási utasításokat](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md)
+3. A képzési kód cseréje
+4. A pontszámkód cseréje
+5. Az értékelési kód frissítése
 
-### <a name="follow-the-getting-started-guide"></a>Kövesse a Első lépések útmutatót
-A [első lépések](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) útmutatót követve szükség van a támogató infrastruktúrára és a folyamatokra a MLOpsPython végrehajtásához.
+### <a name="follow-the-getting-started-guide"></a>Kövesse az Első lépések útmutatót
+Az [Első lépések](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) útmutatót követve szükség van a támogató infrastruktúra és a folyamatok végrehajtásához MLOpsPython.
 
-### <a name="follow-the-bootstrap-instructions"></a>Kövesse a bootstrap utasításait
+### <a name="follow-the-bootstrap-instructions"></a>Kövesse a Bootstrap utasításokat
 
-A [MLOpsPython adattár](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) útmutatójának rendszerindítási útmutatója segítséget nyújt a projekt tárházának gyors előkészítéséhez.
+A [Bootstrap az MLOpsPython tárház](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) útmutató segít gyorsan előkészíti a tárház a projekt.
 
-**Megjegyzés:** Mivel a rendszerindítási parancsfájl átnevezi a diabetes_regression mappát a választott projekt nevére, a rendszer `[project name]`, ha az elérési utak részt vesznek, a projektre hivatkozunk.
+**Megjegyzés:** Mivel a rendszerindítási parancsfájl átnevezi a diabetes_regression mappát az Ön által választott `[project name]` projektnévre, a projektre úgy hivatkozunk, mint amikor elérési utakról van szó.
 
-### <a name="replace-training-code"></a>Betanítási kód cseréje
+### <a name="replace-training-code"></a>Képzési kód cseréje
 
-A modell betanításához használt kód cseréje, valamint a megfelelő egység tesztek eltávolítása vagy cseréje szükséges ahhoz, hogy a megoldás működjön a saját kódjával. Kövesse az alábbi lépéseket kifejezetten:
+A modell betanításához használt kód cseréje, valamint a megfelelő egységtesztek eltávolítása vagy cseréje szükséges ahhoz, hogy a megoldás a saját kódjával működjön. Kövesse az alábbi lépéseket kifejezetten:
 
-1. Cserélje le a `[project name]/training/train.py`. Ez a szkript helyileg vagy az Azure ML számítási feladatokon is betanítja a modellt.
-1. A `[project name]/training/test_train.py`ban található képzési egységhez tartozó tesztek eltávolítása vagy cseréje
+1. Csere `[project name]/training/train.py`. Ez a parancsfájl helyileg vagy az Azure ML-számításra bevonata a modellt.
+1. Távolítsa el vagy cserélje ki a képzési egység tesztjeit, amelyek`[project name]/training/test_train.py`
 
-### <a name="replace-score-code"></a>Pontszám kód cseréje
+### <a name="replace-score-code"></a>Pontszámkód cseréje
 
-Ahhoz, hogy a modell valós idejű következtetési képességeket nyújtson, le kell cserélni a pontszám kódját. A MLOpsPython sablon a pontszám kód használatával helyezi üzembe a modellt, hogy valós idejű pontozást végezzen az ACI, az AK vagy a Web Apps szolgáltatásban. Ha meg szeretné tartani a pontozást, cserélje le `[project name]/scoring/score.py`.
+Ahhoz, hogy a modell valós idejű következtetési képességeket biztosítson, a pontszámkódot le kell cserélni. Az MLOpsPython-sablon a pontszámkódot használja a modell üzembe helyezéséhez az ACI, az AKS vagy a webalkalmazások valós idejű pontozásához. Ha továbbra is gólt szeretne `[project name]/scoring/score.py`szerezni, cserélje ki a .
 
 ### <a name="update-evaluation-code"></a>Értékelési kód frissítése
 
-A MLOpsPython sablon a evaluate_model szkripttel hasonlítja össze az újonnan betanított modell teljesítményét, valamint az aktuális üzemi modellt az átlagos négyzetes hiba alapján. Ha az újonnan betanított modell teljesítménye jobb, mint az aktuális üzemi modell, akkor a folyamatok folytatódnak. Ellenkező esetben a folyamatokat a rendszer megszakítja. Az értékelés megtartásához cserélje le a `mse` összes példányát `[project name]/evaluate/evaluate_model.py` a kívánt metrikára.
+Az MLOpsPython sablon a evaluate_model parancsfájl t használja az újonnan betanított modell és az aktuális termelési modell teljesítményének összehasonlításához a Mean Squared Error alapján. Ha az újonnan betanított modell teljesítménye jobb, mint az aktuális termelési modell, majd a folyamatok folytatódnak. Ellenkező esetben a folyamatok megszakadnak. A kiértékelés megtartásához cserélje `mse` `[project name]/evaluate/evaluate_model.py` le az összes példányt a kívánt metrikával.
 
-A kiértékelés megszerzéséhez állítsa a DevOps pipeline változót `RUN_EVALUATION` `.pipelines/[project name]-variables-template.yml` a `false`re.
+A kiértékelés megszüntetéséhez állítsa a `RUN_EVALUATION` DevOps-folyamat `.pipelines/[project name]-variables-template.yml` változót a értékre. `false`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megértette, hogyan alakíthat át kísérletből termelési kódra, az alábbi hivatkozások segítségével megtudhatja, hogyan figyelheti a kísérlet futtatását és a webszolgáltatásként telepített modelleket:
+Most, hogy már tisztában van azzal, hogyan konvertálhat kísérletből éles kódra, az alábbi hivatkozások segítségével megtudhatja, hogyan figyelheti a kísérletfuttatásokat és a webszolgáltatásként telepített modelleket:
 
 > [!div class="nextstepaction"]
-> Az [Azure ml-kísérletek futtatásának és metrikáinak monitorozása](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-> [a ml webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
+> [Az Azure ML-kísérletek futásának és metrikáinak](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
+> [figyelése és az ML webszolgáltatás végpontjaiból származó adatok gyűjtése figyelése](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

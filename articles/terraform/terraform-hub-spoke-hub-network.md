@@ -1,45 +1,45 @@
 ---
-title: Oktatóanyag – hub virtuális hálózat létrehozása az Azure-ban a Terraform használatával
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan központi virtuális hálózatot az Azure-ban, amely közös kapcsolódási pontként működik más hálózatok között
+title: Oktatóanyag – Központi virtuális hálózat létrehozása az Azure-ban a Terraform használatával
+description: Oktatóanyag, amely bemutatja, hogyan hozhat létre olyan központi virtuális hálózatot az Azure-ban, amely közös kapcsolódási pontként működik más hálózatok között
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 6669e90c3d12fcf55bcb1ad69c3b275c5117a8fc
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159048"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Oktatóanyag: hub virtuális hálózat létrehozása az Azure-ban a Terraform használatával
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Oktatóanyag: Hub virtuális hálózat létrehozása az Azure-ban a Terraform használatával
 
-A hub virtuális hálózat központi kapcsolódási pontként működik a helyszíni hálózathoz. A virtuális hálózat a küllős virtuális hálózatokban üzemeltetett munkaterhelések által használt megosztott szolgáltatásokat üzemelteti. Bemutató célból egyetlen megosztott szolgáltatás sincs implementálva ebben az oktatóanyagban.
+A központi virtuális hálózat a helyszíni hálózattal való kapcsolat központi pontjaként működik. A virtuális hálózat a küllővirtuális hálózatokban üzemeltetett számítási feladatok által igénybe adott megosztott szolgáltatásokat üzemelteti. Ebben az oktatóanyagban nem valósítmeg megosztott szolgáltatásokat bemutató céljából.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * A HashiCorp konfigurációs nyelv (HCL) használatával implementálhatja a hub virtuális hálózatot egy sugaras topológiában.
-> * A Terraform használatával hozzon létre egy hub Jumpbox virtuális gépet.
-> * A Terraform használatával hozzon létre egy hub virtuális magánhálózati átjárót.
-> * Hub-és helyszíni átjáró-kapcsolatok létrehozásához használja a Terraform.
+> * A HashiCorp konfigurációs nyelv (HCL) segítségével valósítsa meg a hub virtuális hálózat egy hub-and-küllős topológiában.
+> * A Terraform segítségével hozzon létre egy hub jumpbox virtuális gépet.
+> * A Terraform segítségével hozzon létre egy központi virtuális magánhálózati átjárót.
+> * A Terraform segítségével hub- és helyszíni átjárókapcsolatokat hozhat létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Hozzon létre egy sugaras hibrid hálózati topológiát a Terraform az Azure-ban](./terraform-hub-spoke-introduction.md).
-1. Helyszíni [virtuális hálózat létrehozása az Azure-beli Terraform](./terraform-hub-spoke-on-prem.md).
+1. [Hozzon létre egy küllős hibrid hálózati topológiát az Azure Terraform szolgáltatásával.](./terraform-hub-spoke-introduction.md)
+1. [Hozzon létre egy helyszíni virtuális hálózatot a Terraform segítségével az Azure-ban.](./terraform-hub-spoke-on-prem.md)
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
-A hub-hálózat a következő összetevőkből áll:
+A központi hálózat a következő összetevőkből áll:
 
-- Egy hub virtuális hálózat
-- Hub virtuális hálózati átjáró
-- Hub Gateway-kapcsolatok 
+- A hub virtuális hálózat
+- Központi virtuális hálózati átjáró
+- Hub átjárókapcsolatok 
 
-A következő Terraform-konfigurációs fájl határozza meg az erőforrásokat:
+A következő Terraform konfigurációs fájl határozza meg az erőforrásokat:
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
-1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
+1. Nyissa meg [az Azure Cloud Shell](/azure/cloud-shell/overview)t. Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
     ![Cloud Shell-parancssor](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -49,15 +49,15 @@ A következő Terraform-konfigurációs fájl határozza meg az erőforrásokat:
     cd clouddrive
     ```
 
-1. Módosítsa a címtárakat az új könyvtárba.
+1. Könyvtárak módosítása az új könyvtárra.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-virtual-network"></a>A hub virtuális hálózat deklarálása
+## <a name="declare-the-hub-virtual-network"></a>A központi virtuális hálózat deklarálása
 
-Hozza létre a hub virtuális hálózatot deklaráló Terraform-konfigurációs fájlt.
+Hozza létre a központi virtuális hálózatot deklaráló Terraform konfigurációs fájlt.
 
 1. Hozzon létre egy `hub-vnet.tf` nevű fájlt a Cloud Shellben.
 
@@ -223,9 +223,9 @@ Hozza létre a hub virtuális hálózatot deklaráló Terraform-konfigurációs 
     }
     ```
     
-3. Mentse a fájlt, és zárja be a szerkesztőt.
+3. Mentse a fájlt, és lépjen ki a szerkesztőből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Hub virtuális hálózati berendezés létrehozása Terraform az Azure-ban](./terraform-hub-spoke-hub-nva.md)
+> [Hub virtuális hálózati berendezés létrehozása a Terraform segítségével az Azure-ban](./terraform-hub-spoke-hub-nva.md)

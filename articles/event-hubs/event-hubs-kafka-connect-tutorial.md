@@ -1,6 +1,6 @@
 ---
-title: Integrálás a Apache Kafka összekapcsolásával – Azure Event Hubs | Microsoft Docs
-description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Apache Spark az Azure Event Hubs for Kafka szolgáltatással.
+title: Integrálás az Apache Kafka Connect- Azure Event Hubs szolgáltatással | Microsoft dokumentumok
+description: Ez a cikk az Apache Spark használatáról nyújt tájékoztatást a Kafka Azure Event Hubs szolgáltatással.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -10,20 +10,20 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 94b7ff7d240716b513ebb124de84b622866623d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119516"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80283616"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Az Apache Kafka Connect-támogatás és az Azure Event Hubs integrálása (előzetes verzió)
-Az üzleti igények növekedésével arra is egyre nagyobb igény jelentkezik, hogy a rendszer képes legyen különböző külső források és fogadók betöltésére. Az [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) által biztosított keretrendszer egy Kafka-fürtön keresztül képes csatlakozni és adatokat importálni/exportálni olyan külső rendszerekből, mint a MySQL, a HDFS és különböző fájlrendszerek. Ez az oktatóanyag azt mutatja be, hogyan használható a Kafka Connect keretrendszere a Kafka-kompatibilis Event Hubs szolgáltatással.
+Az üzleti igények növekedésével arra is egyre nagyobb igény jelentkezik, hogy a rendszer képes legyen különböző külső források és fogadók betöltésére. Az [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) által biztosított keretrendszer egy Kafka-fürtön keresztül képes csatlakozni és adatokat importálni/exportálni olyan külső rendszerekből, mint a MySQL, a HDFS és különböző fájlrendszerek. Ez az oktatóanyag végigvezeti a Kafka Connect keretrendszer és az Event Hubs használatával.
 
-Végigvezeti a Kafka Connect Kafka-kompatibilis Azure-eseményközponttal való integrálásának, valamint az alapszintű FileStreamSource és FileStreamSink összekötők üzembe helyezésének lépésein. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Bár ezeket az összekötőket nem éles környezetben való használatra szánták, egy olyan teljes körű Kafka Connect-forgatókönyvet mutatnak be, amelyben az Azure Event Hubs Kafka-közvetítőként működik.
+Ez az oktatóanyag végigvezeti a Kafka Connect eseményközponttal való integrálásán, valamint az alapvető FileStreamSource és FileStreamSink-összekötők üzembe helyezésén. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Bár ezeket az összekötőket nem éles környezetben való használatra szánták, egy olyan teljes körű Kafka Connect-forgatókönyvet mutatnak be, amelyben az Azure Event Hubs Kafka-közvetítőként működik.
 
 > [!NOTE]
-> Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect).
+> Ez a minta elérhető a [GitHubon.](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect)
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -107,9 +107,9 @@ Ebben a lépésben helyileg el fog indítani egy Kafka Connect-feldolgozót elos
 4. Futtassa az `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` parancsot.  A Connect-feldolgozó REST API akkor áll készen az interakcióra, amikor meglátja az `'INFO Finished starting connectors and tasks'` szöveget. 
 
 > [!NOTE]
-> A Kafka-kapcsolat a Kafka AdminClient API-val automatikusan hozza létre a javasolt konfigurációkat tartalmazó témákat, beleértve a tömörítést is. A névtérből az Azure Portalon gyorsan ki lehet deríteni, hogy a Connect-feldolgozó belső témakörei automatikusan jöttek létre.
+> A Kafka Connect a Kafka AdminClient API-t használja az ajánlott konfigurációkkal rendelkező témakörök automatikus létrehozásához, beleértve a tömörítést is. A névtérből az Azure Portalon gyorsan ki lehet deríteni, hogy a Connect-feldolgozó belső témakörei automatikusan jöttek létre.
 >
->A Kafka-kapcsolat belső témaköreinek **tömörítést kell használniuk**.  A Event Hubs csapat nem felelős a nem megfelelő konfigurációk kijavításában, ha a belső csatlakozási témakörök helytelenül vannak konfigurálva.
+>A Kafka Connect belső témakörei **tömörödést kell használniuk.**  Az Event Hubs csapata nem felelős a nem megfelelő konfigurációk javításáért, ha a belső Connect témakörök helytelenül vannak konfigurálva.
 
 ### <a name="create-connectors"></a>Összekötők létrehozása
 Ez a szakasz végigvezeti a FileStreamSource és a FileStreamSink összekötő elindításán. 
@@ -157,16 +157,16 @@ Ez a szakasz végigvezeti a FileStreamSource és a FileStreamSink összekötő e
 ### <a name="cleanup"></a>Felesleges tartalmak törlése
 A Kafka Connect olyan eseményközpont-témaköröket hoz létre a konfigurációk, eltolások és állapotok tárolására, amelyek a Connect-fürt leállítása után is megmaradnak. Ha nem kívánja megőrizni ezeket, javasoljuk, hogy törölje a témaköröket. A bemutató során létrehozott `connect-quickstart` eseményközpontot is érdemes törölni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 - [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create-kafka-enabled.md)
+- [Eseményközpont létrehozása](event-hubs-create.md)
 - [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka-közvetítő tükrözése egy Kafka-kompatibilis eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Az Apache Spark csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
-- [Az Apache Flink csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
-- [Az Akka Streams csatlakoztatása egy Kafka-kompatibilis eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
+- [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)

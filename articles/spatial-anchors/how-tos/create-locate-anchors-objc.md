@@ -1,6 +1,6 @@
 ---
-title: '& Létrehozása az Objective-C-ben'
-description: Részletesen ismerteti, hogyan hozhatók létre és találhatók az Azure térbeli horgonyok az Objective-C szolgáltatásban.
+title: Horgonyok létrehozása & a C célkitűzésben
+description: Részletes magyarázat a horgonyok létrehozásáról és megkereséséről az Azure Spatial Anchors használatával a C-ben.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,41 +9,41 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 119cf971a18ce7a9c2f2c22aba18d4dd3d9642ec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74277334"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Horgonyok létrehozása és megkeresése az Objective-C-ben az Azure térbeli horgonyok használatával
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Horgonyok létrehozása és megkeresése az Azure Spatial Anchors használatával a C-célban
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
-> * [Objective-C](create-locate-anchors-objc.md)
+> * [Célkitűzés-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
 > * [Android Java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Az Azure térbeli horgonyok lehetővé teszik, hogy a különböző eszközök között ossza meg a világbeli horgonyokat. Számos különböző fejlesztési környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használhatja az Azure térbeli horgonyok SDK-t az Objective-C-ben:
+Az Azure Spatial Anchors lehetővé teszi, hogy a világ horgonyait különböző eszközök között ossza meg. Számos különböző fejlesztői környezetet támogat. Ebben a cikkben bemutatjuk, hogyan használhatja az Azure Spatial Anchors SDK-t a C célkitűzésben a következőkre:
 
-- Az Azure térbeli horgonyok munkamenetének megfelelő beállítása és kezelése.
-- Hozzon létre és állítson be tulajdonságokat a helyi horgonyokon.
+- Az Azure Spatial Anchors munkamenet ek megfelelő beállítása és kezelése.
+- Helyi horgonyok tulajdonságainak létrehozása és beállítása.
 - Töltse fel őket a felhőbe.
-- Felhőbeli térbeli horgonyok megkeresése és törlése.
+- Keresse meg és törölje a felhőbeli térbeli horgonyokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
+Az útmutató kitöltéséhez győződjön meg arról, hogy:
 
-- Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
-- Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
-- Az Objective-C alapszintű ismerete.
-- A <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>alapszintű ismerete.
+- Olvassa el az [Azure Spatial Anchors áttekintését.](../overview.md)
+- Az 5 [perces rövid összefoglalók egyike befejeződött.](../index.yml)
+- Alapvető ismeretek a C célkitűzéssel kapcsolatosismeretekről.
+- Alapismeretek az <a href="https://developer.apple.com/arkit/" target="_blank">ARKit-ról.</a>
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-További információ a [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) osztályról.
+További információ az [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) osztályról.
 
 ```objc
     ASACloudSpatialAnchorSession *_cloudSession;
@@ -53,7 +53,7 @@ További információ a [ASACloudSpatialAnchorSession](https://docs.microsoft.co
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-További információ a [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) osztályról.
+További információ az [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) osztályról.
 
 ```objc
     _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -67,7 +67,7 @@ További információ a [ASASessionConfiguration](https://docs.microsoft.com/obj
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-További információ a [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokoll módszeréről.
+További információ a [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokollmetódusról.
 
 ```objc
     - (void)tokenRequired:(ASACloudSpatialAnchorSession *)cloudSession :(ASATokenRequiredEventArgs *)args {
@@ -115,7 +115,7 @@ További információ a [tokenRequired](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
-További információ az [indítási](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) módszerről.
+További információ a [kezdő](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) módszerről.
 
 ```objc0
     _cloudSession.session = self.sceneView.session;
@@ -125,7 +125,7 @@ További információ az [indítási](https://docs.microsoft.com/objectivec/api/
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-További információ a [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) metódusról.
+További információ a [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) módszerről.
 
 ```objc
     [_cloudSession processFrame:_sceneView.session.currentFrame];
@@ -133,7 +133,7 @@ További információ a [processFrame](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-További információ a [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokoll módszeréről.
+További információ a [munkamenetfrissítve](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokollmódszerről.
 
 ```objc
     - (void)sessionUpdated:(ASACloudSpatialAnchorSession *)cloudSession :(ASASessionUpdatedEventArgs *)args {
@@ -148,7 +148,7 @@ További információ a [sessionUpdated](https://docs.microsoft.com/objectivec/a
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-További információ a [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) osztályról.
+További információ az [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) osztályról.
 
 ```objc
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -190,7 +190,7 @@ További információ a [getSessionStatusWithCompletionHandler](https://docs.mic
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-További információ a [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) tulajdonságról.
+További információ az [alkalmazásTulajdonságok](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) tulajdonságról.
 
 ```objc
     ASACloudSpatialAnchor *cloudAnchor = [[ASACloudSpatialAnchor alloc] init];
@@ -203,7 +203,7 @@ További információ a [appProperties](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-További információ a [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metódusról.
+További információ az [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metódusról.
 
 ```objc
     ASACloudSpatialAnchor *anchor = /* locate your anchor */;
@@ -234,7 +234,7 @@ További információ a [getAnchorProperties](https://docs.microsoft.com/objecti
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-További információ a [lejárat](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) tulajdonságról.
+További információ a [lejárati](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) tulajdonságról.
 
 ```objc
     int secondsInAWeek = 60 * 60 * 24 * 7;
@@ -244,7 +244,7 @@ További információ a [lejárat](https://docs.microsoft.com/objectivec/api/spa
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-További információ a [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) metódusról.
+További információ a [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) módszerről.
 
 ```objc
     ASAAnchorLocateCriteria *criteria = [ASAAnchorLocateCriteria new];
@@ -254,7 +254,7 @@ További információ a [createWatcher](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-További információ a [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokoll módszeréről.
+További információ a [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokoll módszerről.
 
 ```objc
     - (void)anchorLocated:(ASACloudSpatialAnchorSession *)cloudSession :(ASAAnchorLocatedEventArgs *)args {
@@ -282,7 +282,7 @@ További információ a [anchorLocated](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-További információ a [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) metódusról.
+További információ az [Anchor-módszer törléséről.](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor)
 
 ```objc
     [_cloudSession deleteAnchor:cloudAnchor withCompletionHandler:^(NSError *error) {
@@ -292,7 +292,7 @@ További információ a [deleteAnchor](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-További információ a [leállítási](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) módszerről.
+További információ a [stop](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) módszerről.
 
 ```objc
     [_cloudSession stop];

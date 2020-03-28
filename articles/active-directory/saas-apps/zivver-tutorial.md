@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a ZIVVER-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ZIVVER között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a ZIVVER-rel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a ZIVVER között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,221 +16,221 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233244"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Oktatóanyag: Azure Active Directory integráció a ZIVVER
+# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Oktatóanyag: Az Azure Active Directory integrációja a ZIVVER-rel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ZIVVER a Azure Active Directory (Azure AD) szolgáltatással.
-A ZIVVER és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a ZIVVER-t az Azure Active Directoryval (Azure AD).
+A ZIVVER integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a ZIVVER.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a ZIVVER (egyszeri bejelentkezés) az Azure AD-fiókokkal.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a ZIVVER-hez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve zivver (Single Sign-On) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció ZIVVER való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához a ZIVVER-lel a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
-* ZIVVER egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
+* ZIVVER egyszeri bejelentkezéses előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A ZIVVER támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A ZIVVER támogatja az **IDP** által kezdeményezett SSO-t
 
-## <a name="adding-zivver-from-the-gallery"></a>ZIVVER hozzáadása a gyűjteményből
+## <a name="adding-zivver-from-the-gallery"></a>ZIVVER hozzáadása a galériából
 
-A ZIVVER Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a ZIVVER a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A ZIVVER azure AD-be való integrálásának konfigurálásához hozzá kell adnia a ZIVVER-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha ZIVVER szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+**A ZIVVER katalógusból való hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **ZIVVER**kifejezést, válassza a **ZIVVER** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **ZIVVER**parancsot, válassza a **ZIVVER** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![ZIVVER az eredmények listájában](common/search-new-app.png)
+     ![ZIVVER az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az ZIVVER-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a ZIVVER kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a ZIVVER-lel egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó a ZIVVER-ben létre kell hozni egy kapcsolat kapcsolatot.
 
-Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a ZIVVER-lel a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[ZIVVER egyszeri bejelentkezés konfigurálása](#configure-zivver-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre ZIVVER-teszt felhasználót](#create-zivver-test-user)** – hogy a ZIVVER Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[A ZIVVER Single Sign-On konfigurálásával](#configure-zivver-single-sign-on)** konfigurálhatja az egyszeri bejelentkezés beállításait az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre ZIVVER tesztfelhasználót](#create-zivver-test-user)** - hogy britta Simon megfelelője legyen a ZIVVER-ben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a ZIVVER-lel hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **ZIVVER** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **ZIVVER** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![ZIVVER tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
+    ![ZIVVER Domain és URL-ek egyszeri bejelentkezési információk](common/idp-identifier.png)
 
-    Az **azonosító** szövegmezőbe írja be a következő URL-címet: `https://app.zivver.com/SAML/Zivver`
+    Az **Azonosító** mezőbe írjon be egy URL-címet:`https://app.zivver.com/SAML/Zivver`
 
-5. A ZIVVER alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A ZIVVER alkalmazás a **NameIdentifier** a **User. mail**használatával rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
+5. A ZIVVER alkalmazás egy adott formátumban várja az SAML-állításokat, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. A következő képernyőképen az alapértelmezett attribútumok listája látható, ahol a **nameidentifier** a **user.userprincipalname**. A ZIVVER alkalmazás elvárja, hogy a **névazonosító** le legyen képezve **a user.mail-lel,** ezért az attribútumleképezést a **Szerkesztés** ikonra kattintva és az attribútumleképezés módosításával kell módosítania.
 
     ![image](common/edit-attribute.png)
 
-6. A fentieken kívül a ZIVVER alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+6. A fentieken kívül a ZIVVER alkalmazás arra számít, hogy néhány további attribútum ot visszaad az SAML válaszban. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában hajtsa végre az alábbi lépéseket az SAML token attribútum hozzáadásához az alábbi táblázatban látható módon:
 
-    | Név | Névtér | Forrás attribútum|
+    | Név | Névtér | Forrás attribútuma|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
-    >Ha Active Directory helyszíni és Azure AD Connect eszközzel rendelkező hibrid beállítást használ, az értéket a következőre kell állítani: `user.objectGUID`
+    >Ha hibrid beállítást használ az Active Directory helyszíni és az Azure AD Connect eszközzel, az ÉRTÉK értékét`user.objectGUID`
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Kattintson **az Új jogcím hozzáadása** gombra a Felhasználói **jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+    b. A **Név** mezőbe írja be a sor attribútumnevét.
 
-    c. Hagyja üresen a **névteret** .
+    c. Hagyja üresen a **névteret.**
 
-    d. Válassza a forrás **attribútumként**lehetőséget.
+    d. Válassza a Forrás **attribútumként lehetőséget.**
 
-    e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
+    e. A **Forrás attribútumlistában** írja be a sor attribútumértékét.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-kódjának** letöltéséhez, majd kattintson a **Másolás** ikonra az **alkalmazás-összevonási metaadatok URL-címének** a megadott beállítások alapján történő másolásához, és mentse a számítógépre.
+7. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson az **SAML aláíró tanúsítvány** csoportjában a **Letöltés** gombra az **összevonási metaadat-XML** letöltéséhez, majd a **Másolás** ikonra kattintva másolja az **Alkalmazásösszevonás metaadat-url-címét** a megadott beállításokból a követelmény nek megfelelően, és mentse a számítógépre.
 
     ![A tanúsítvány URL-címének letöltési hivatkozása](./media/zivver-tutorial/metadataxmlurl.png)
 
-8. A **ZIVVER beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+8. A **ZiVVER beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-zivver-single-sign-on"></a>ZIVVER egyszeri bejelentkezés konfigurálása
+### <a name="configure-zivver-single-sign-on"></a>A ZIVVER egyszeri bejelentkezéskonfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a ZIVVER vállalati [webhelyre](https://app.zivver.com/login) rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a ZIVVER vállalati [webhelyére](https://app.zivver.com/login) rendszergazdaként.
 
-2. A böngészőablak bal alsó sarkában kattintson a **szervezeti beállítások** ikonra.
+2. Kattintson a **böngészőablak** bal alsó sarkában található Szervezeti beállítások ikonra.
 
-3. Ugrás az **egyszeri bejelentkezésre**.
+3. Nyissa meg **az Egyszeri bejelentkezés**t.
 
-4. Nyissa meg a Azure Portalról letöltött összevonási metaadat XML-fájlt.
+4. Nyissa meg az Azure Portalról letöltött összevonási metaadat-XML-fájlt.
 
-5. Az **Identitáskezelés metaadatainak URL-címe** szövegmezőbe illessze be a korábban a Azure Portalból mentett **alkalmazás-összevonási metaadatok URL-címét** .
+5. Az **Identitásszolgáltató metaadat-URL-címmezőjébe** illessze be az Azure-portálról korábban mentett **alkalmazásösszevonási metaadat-URL-címet.**
 
 6. Jelölje be az **SSO bekapcsolása**jelölőnégyzetet.
 
-7. Kattintson a **SAVE** (Mentés) gombra.
+7. Kattintson **a MENTÉS gombra.**
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a ZIVVER hozzáférésének biztosításával.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával a ZIVVER hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ZIVVER**lehetőséget.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **ZIVVER**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **ZIVVER**lehetőséget.
+2. Az alkalmazások listájában válassza a **ZIVVER**lehetőséget.
 
-    ![Az ZIVVER hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A ZIVVER hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-zivver-test-user"></a>ZIVVER-tesztelési felhasználó létrehozása
+### <a name="create-zivver-test-user"></a>ZIVVER tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a ZIVVER-ben. Együttműködik a [ZIVVER támogatási csapatával](https://support.zivver.com/) , hogy hozzáadja a felhasználókat a ZIVVER platformhoz. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a ZIVVER-ben. Működjön együtt a [ZIVVER támogatási csapatával](https://support.zivver.com/) a ZIVVER platform felhasználóinak hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a ZIVVER csempére kattint, automatikusan be kell jelentkeznie arra a ZIVVER, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen a ZIVVER csempére kattint, automatikusan be kell jelentkeznie arra a ZIVVER-be, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

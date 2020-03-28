@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Feloldási GmbH által az Azure Active Directory-integráció bambusz a SAML SSO-val |} A Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálása egyszeri bejelentkezéshez bambusz a SAML SSO és az Azure Active Directory közötti GmbH felbontása.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az SAML SSO for Bamboo for Bamboo by resolution GmbH-val | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az SAML SSO for Bamboo by Resolution GmbH között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,229 +17,229 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 044a2f9a9ecd0ccceb99ce7999af7e2c8578950d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67106540"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Oktatóanyag: Feloldási GmbH által az Azure Active Directory-integráció bambusz a SAML SSO-val
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Oktatóanyag: Az Azure Active Directory integrációja az SAML SSO for Bamboo for Bamboo szolgáltatással a resolution GmbH felbontásban
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja a bambusz SAML SSO GmbH az Azure Active Directoryval (Azure AD-) megoldás.
-Bambusz a SAML SSO integrálása a megoldás az Azure ad-vel GmbH nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az SAML SSO for Bamboo-t megoldásszerint GmbH az Azure Active Directoryval (Azure AD).
+A SAML SSO for Bamboo megoldásszerint történő integrálása az Azure AD-vel a következő előnyökkel jár:
 
-* Szabályozhatja, ki férhet hozzá SAML SSO a bambusz felbontása GmbH Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve bambusz a SAML SSO felbontása GmbH (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az SAML SSO for Bamboo szolgáltatáshoz a Resolution GmbH megoldása szerint.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek az SAML SSO for Bamboo szolgáltatásba a Resolution GmbH (Single Sign-On) által az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálja az Azure AD-integrációs bambusz a SAML SSO-val feloldási GmbH, a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához az SAML SSO for Bamboo by Resolution GmbH-val a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* SAML SSO bambusz felbontása GmbH egyszeri bejelentkezés az előfizetés engedélyezve van
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
+* SAML SSO for Bamboo by resolution GmbH egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Bambusz felbontása GmbH támogatja az SAML SSO **SP és IDP** által kezdeményezett egyszeri bejelentkezés
-* Bambusz felbontása GmbH támogatja az SAML SSO **igény szerinti** felhasználók átadása
+* SAML SSO for Bamboo by resolution GmbH támogatja **az SP-t és az IDP** által kezdeményezett SSO-t
+* SAML SSO for Bamboo by resolution GmbH támogatja **a Just In Time** felhasználói kiépítést
 
-## <a name="adding-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>Feloldási GmbH bambusz a SAML SSO hozzáadását a katalógusból
+## <a name="adding-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>SAML SSO hozzáadása a Bamboo számára határozat szerint GmbH a galériából
 
-Integráció konfigurálásához a bambusz SAML SSO-feloldási GmbH által az Azure AD-be, hozzá kell bambusz a SAML SSO GmbH felbontása a galériából a felügyelt SaaS-alkalmazások listájára.
+Az SAML SSO for Bamboo by resolution GmbH Azure AD-be történő integrálásának konfigurálásához hozzá kell adnia az SAML SSO for Bamboo by resolution GmbH-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Adja hozzá a SAML SSO a bambusz felbontása GmbH a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Saml SSO for Bamboo by resolution GmbH hozzáadásához a galériából hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **bambusz feloldási GmbH által a SAML SSO**, jelölje be **bambusz feloldási GmbH által a SAML SSO** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+4. A keresőmezőbe írja be az **SAML SSO for Bamboo by resolution GmbH parancsot,** válassza **az SAML SSO for Bamboo by resolution GmbH** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![SAML SSO a bambusz felbontása GmbH, a találatok listájában](common/search-new-app.png)
+    ![SAML SSO for Bamboo felbontásban GmbH az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a SAML SSO nevű tesztfelhasználó alapján felbontása GmbH bambusz **Britta Simon**.
-Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználót és a kapcsolódó felhasználó a SAML SSO bambusz a megoldás által hivatkozás kapcsolatának GmbH kell létrehozni.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését az SAML SSO for Bamboo by resolution GmbH-val egy **Britta Simon**nevű tesztfelhasználó alapján.
+Az egyszeri bejelentkezés hez létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAML SSO for Bamboo by resolution GmbH-ban.
 
-Az Azure AD egyszeri bejelentkezés bambusz a SAML SSO-val felbontása GmbH tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a SAML SSO for Bamboo by resolution GmbH szolgáltatással a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[SAML SSO bambusz a feloldási GmbH egyszeri bejelentkezés konfigurálásához](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre bambusz feloldási GmbH teszt felhasználó által a SAML SSO](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)**  – bambusz a SAML SSO-megfelelője a Britta Simon van megoldás, amely kapcsolódik az Azure AD felhasználói ábrázolása GmbH által.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja az SAML SSO for Bamboo by resolution GmbH Single Sign-On](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)** --t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre SAML SSO for Bamboo by resolution GmbH tesztfelhasználót](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** – hogy brit tasimon megfelelője legyen az SAML SSO for Bamboo by resolution GmbH-ban, amely a felhasználó Azure AD-reprezentációjához kapcsolódik.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés bambusz a SAML SSO-val feloldási GmbH, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a SAML SSO for Bamboo by resolution GmbH szolgáltatással hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **bambusz feloldási GmbH által a SAML SSO** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az [Azure Portalon](https://portal.azure.com/)az **SAML SSO for Bamboo by resolution GmbH** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A felbontása GmbH tartomány bambusz SAML SSO és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
+    ![SAML SSO for Bamboo by resolution GmbH Domain és URL-ek egyszeri bejelentkezési információk](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/samlsso`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/samlsso`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    ![A felbontása GmbH tartomány bambusz SAML SSO és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+    ![SAML SSO for Bamboo by resolution GmbH Domain és URL-ek egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<server-base-url>/plugins/servlet/samlsso`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [bambusz feloldási GmbH ügyfél által a SAML SSO támogatási csoportjának](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [az SAML SSO for Bamboo by resolution GmbH Ügyféltámogatási csapatával,](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. Az a **állítsa be a bambusz SAML SSO felbontása GmbH** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. Az **SAML SSO for Bamboo by resolution GmbH** szakaszon másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>SAML SSO bambusz a feloldási GmbH egyszeri bejelentkezés konfigurálása
+### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>Saml SSO for Bamboo konfigurálása megoldás szerint GmbH Single Sign-On
 
-1. Bejelentkezés a SAML SSO bambusz feloldási GmbH vállalati hely által a rendszergazdaként.
+1. Jelentkezzen be az SAML SSO for Bamboo-ba a resolution GmbH cég webhelyére rendszergazdaként.
 
-1. A fő eszköztár jobb oldalán kattintson a **beállítások** > **bővítmények**.
+1. A fő eszköztár jobb oldalán kattintson a **Beállítások** > **bővítmények gombra.**
 
     ![A beállítások](./media/bamboo-tutorial/tutorial_bamboo_setings.png)
 
-1. BIZTONSÁG szakaszában keresse meg, kattintson a **SAML egyszeri bejelentkezés** a menüsávon a.
+1. Ugrás a BIZTONSÁG részre, kattintson az **SAML SingleSignOn gombra** a menüsávon.
 
     ![A Samlsingle](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
 
-1. Az a **SAML egyszeri bejelentkezés beépülő modul konfigurációs lapon**, kattintson a **identitásszolgáltató hozzáadása**.
+1. Az **SAML SIngleSignOn plugin konfigurációja lapon**kattintson az **IDP hozzáadása gombra.**
 
-    ![Az identitásszolgáltató hozzáadása](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
+    ![Az idp hozzáadása](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
 
-1. Az a **válassza ki a SAML-identitásszolgáltató** lapon tegye a következőket:
+1. Az **SAML-identitásszolgáltató kiválasztása** lapon hajtsa végre az alábbi lépéseket:
 
     ![Az identitásszolgáltató](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
 
-    a. Válassza ki **identitásszolgáltató típusa** , **AZURE ad-ben**.
+    a. Válassza az **Idp-típust** **AZURE AD néven.**
 
-    b. Az a **neve** szövegmezőbe írja be a nevét.
+    b. A **Név** mezőbe írja be a nevet.
 
-    c. Az a **leírás** szövegmezőbe írja be a leírást.
+    c. A **Leírás** mezőbe írja be a leírást.
 
-    d. Kattintson a **tovább**.
+    d. Kattintson a **Tovább** gombra.
 
-1. Az a **identitás-szolgáltató konfigurációjának** lapon kattintson **tovább**.
+1. Az **Identitásszolgáltató konfigurációja** lapon kattintson a **Tovább gombra.**
 
-    ![Az identitás-config](./media/bamboo-tutorial/tutorial_bamboo_identityconfig.png)
+    ![A személyazonossági konfiguráció](./media/bamboo-tutorial/tutorial_bamboo_identityconfig.png)
 
-1. A a **SAML-identitásszolgáltató metaadatok importálása** kattintson **fájl betöltése** feltölteni a **METAADATAINAK XML** fájlt, amely az Azure Portalról letöltött.
+1. Az **SAML Idp metaadat-adatok importálása** lapon kattintson a **Fájl betöltése** gombra az Azure Portalról letöltött **METADATA XML-fájl** feltöltéséhez.
 
-    ![A idpmetadata](./media/bamboo-tutorial/tutorial_bamboo_idpmetadata.png)
+    ![Az idpmetadata](./media/bamboo-tutorial/tutorial_bamboo_idpmetadata.png)
 
-1. Kattintson a **tovább**.
+1. Kattintson a **Tovább** gombra.
 
 1. Kattintson a **Beállítások mentése** lehetőségre.
 
-    ![A Mentés](./media/bamboo-tutorial/tutorial_bamboo_save.png)
+    ![A mentés](./media/bamboo-tutorial/tutorial_bamboo_save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés bambusz a SAML SSO felbontása GmbH Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít az SAML SSO for Bamboo-hoz a megoldás gmbH által.
 
-1. Az Azure Portalon válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **bambusz feloldási GmbH által a SAML SSO**.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza **az SAML SSO for Bamboo by resolution GmbH lehetőséget.**
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **bambusz feloldási GmbH által a SAML SSO**.
+2. Az alkalmazások listájában válassza a **SAML SSO for Bamboo by resolution GmbH lehetőséget.**
 
-    ![Az SAML egyszeri bejelentkezés az alkalmazásainak listájában feloldási GmbH csatlakozásonkénti bambusz](common/all-applications.png)
+    ![A SAML SSO for Bamboo by resolution GmbH link az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>Hozzon létre bambusz feloldási GmbH teszt felhasználó által a SAML SSO
+### <a name="create-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>SAML SSO for Bamboo létrehozása felbontás szerint GmbH tesztfelhasználó
 
-Ez a szakasz célja egy nevű felhasználó létrehozásához Britta Simon a SAML SSO a bambusz GmbH felbontása. SAML SSO felbontása GmbH bambusz támogatja a létesítést igény és a felhasználók is manuálisan is létrehozhatók, lépjen kapcsolatba [bambusz feloldási GmbH ügyfél által a SAML SSO támogatási csoportjának](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) a követelmény alapján.
+Ennek a szakasznak az a célja, hogy a GmbH határozattal létrehozza a Britta Simon nevű felhasználót a SAML SSO for Bamboo-ban. A SAML SSO for Bamboo by resolution GmbH támogatja a just-in-time kiépítést, és a felhasználók manuálisan is létrehozhatók, lépjen kapcsolatba [a SAML SSO for Bamboo by resolution GmbH Ügyfél támogatási csapatával](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) az Ön igényei nek megfelelően.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Feloldási GmbH csempe a hozzáférési panelen által a SAML egyszeri bejelentkezés az bambusz kattintva, meg kell automatikusan megtörténik a, a SAML egyszeri bejelentkezés az bambusz feloldási GmbH, amelynek beállítása egyszeri bejelentkezés által. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a Hozzáférési panelen az SAML SSO for Bamboo by resolution GmbH csempére kattint, automatikusan be kell jelentkeznie az SAML SSO for Bamboo-ba a Resolution GmbH által, amelyre beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
