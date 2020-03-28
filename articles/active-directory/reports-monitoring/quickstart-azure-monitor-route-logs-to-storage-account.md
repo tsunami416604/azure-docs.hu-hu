@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a címtár naplófájljainak archiválása egy Storage-fiókba | Microsoft Docs
-description: Megtudhatja, hogyan állíthat be Azure Diagnostics a Azure Active Directory naplók Storage-fiókba való leküldéséhez
+title: Oktatóanyag - Archívum könyvtár naplók egy tárfiók | Microsoft dokumentumok
+description: Megtudhatja, hogy miként állíthatja be az Azure Diagnostics szolgáltatást az Azure Active Directory-naplók tárfiókba történő leküldéses hez
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007865"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Oktatóanyag: Azure AD-naplók archiválása Azure Storage-fiókba
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Oktatóanyag: Az Azure AD-naplók archiválása egy Azure-tárfiókba
 
 Az oktatóanyagból megtudhatja, hogyan konfigurálhatja úgy az Azure Monitort, hogy az Azure Active Directory- (Azure AD-) naplókat egy Azure-tárfiókba irányítsa.
 
@@ -38,9 +38,9 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Tevékenységnaplók archiválása egy Azure-tárfiókba
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
 
-2. Válassza az **Azure Active Directory** > **Tevékenység** > **Auditnaplók** elemet. 
+2. Válassza az **Azure Active Directory** > **tevékenységnaplózási** > **naplóit.** 
 
 3. Válassza a **Beállítások exportálása** lehetőséget. 
 
@@ -73,8 +73,8 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 
     ![Tárfiók](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az auditnaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
+* [Naplónaplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-audit-log-schema.md)
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)
 * [Gyakori kérdések és ismert hibák](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

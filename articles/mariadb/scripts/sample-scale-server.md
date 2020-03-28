@@ -1,6 +1,6 @@
 ---
-title: CLI-parancsfájl – méretezési kiszolgáló – Azure Database for MariaDB
-description: Ez a CLI-parancsfájl a metrikák lekérdezése után átméretezi Azure Database for MariaDB kiszolgálót egy másik teljesítményszint.
+title: CLI-parancsfájl – Kiszolgáló méretezése – Azure-adatbázis a MariaDB-hez
+description: Ez a minta CLI-parancsfájl a Metrikák lekérdezése után egy másik teljesítményszintre méretezi a MariaDB-kiszolgáló Azure-adatbázisát.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -9,14 +9,14 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: 562f265cccf444740c177a41e516f9066188613e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771635"
 ---
-# <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure Database for MariaDB-kiszolgáló monitorozása és méretezése az Azure CLI-vel
-Ez a CLI-parancsfájl a metrikák lekérdezése után egy Azure Database for MariaDB kiszolgáló számítási és tárolási kapacitását méretezi. A számítás vertikális fel-vagy leskálázást végez. A tárterület csak vertikális felskálázásra használható.
+# <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure-adatbázis figyelése és méretezése a MariaDB-kiszolgálóhoz az Azure CLI használatával
+Ez a minta CLI-parancsfájl egyetlen Azure-adatbázis számítási és tárolási méretezését a MariaDB-kiszolgálószámára a metrikák lekérdezése után méretezi. A számítás fel- vagy leskálázható. A tárhely csak felskálázható.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,12 +36,12 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | **Parancs** | **Megjegyzések** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
-| [az MariaDB Server Update](/cli/azure/mariadb/server#az-mariadb-server-update) | Frissíti a MariaDB-kiszolgáló tulajdonságait. |
+| [az mariadb kiszolgáló létrehozása](/cli/azure/mariadb/server#az-mariadb-server-create) | Létrehoz egy MariaDB-kiszolgálót, amely az adatbázisokat üzemelteti. |
+| [az mariadb kiszolgáló frissítése](/cli/azure/mariadb/server#az-mariadb-server-update) | Frissíti a MariaDB-kiszolgáló tulajdonságait. |
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | Listázza az erőforrások metrikaértékét. |
 | [az group delete](/cli/azure/group#az-group-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a [Azure Database for MariaDB számítási és tárolási](../concepts-pricing-tiers.md) feladatokról
-- További parancsfájlok kipróbálása: [Azure CLI-minták a Azure Database for MariaDB](../sample-scripts-azure-cli.md)
-- További információ az [Azure CLI](/cli/azure) -ről
+## <a name="next-steps"></a>További lépések
+- További információ [az Azure Database for MariaDB számítási és tárolási adatbázisáról](../concepts-pricing-tiers.md)
+- További parancsfájlok kipróbálása: [Azure CLI-minták a MariaDB Azure Database-hez](../sample-scripts-azure-cli.md)
+- További információ az [Azure CLI-ről](/cli/azure)

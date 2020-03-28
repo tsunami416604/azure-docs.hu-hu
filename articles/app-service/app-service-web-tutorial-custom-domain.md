@@ -1,26 +1,26 @@
 ---
-title: 'Oktatóanyag: meglévő egyéni DNS-név leképezése'
+title: 'Oktatóanyag: Meglévő egyéni DNS-név leképezése'
 description: Megtudhatja, hogyan adhat hozzá meglévő egyéni DNS-tartománynevet (egyéni tartományt) egy webalkalmazáshoz, egy mobilalkalmazás hátérrendszeréhez vagy egy API-alkalmazáshoz az Azure App Service-ben.
 keywords: app service, azure app service, tartomány-hozzárendelés, tartománynév, meglévő tartomány, gazdagépnév
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239727"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80047212"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név hozzárendelése az Azure App Service-hez
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név a Azure App Service.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan képezheti le a meglévő egyéni DNS-nevet az Azure App Service-hez.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Altartomány hozzárendelése (például `www.contoso.com`) CNAME rekorddal
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="prepare-the-app"></a>Az alkalmazás előkészítése
 
-Ha egyéni DNS-nevet szeretne hozzárendelni egy webalkalmazáshoz, a webalkalmazás [app Service csomagjának](https://azure.microsoft.com/pricing/details/app-service/) fizetős szintnek kell lennie (**közös**, **alapszintű**, **standard**, **prémium** **vagy Azure functions** ). Ebben a lépésben ellenőrzi, hogy az App Service-alkalmazás a támogatott tarifacsomagban van-e.
+Egyéni DNS-név leképezése egy webalkalmazáshoz, a webalkalmazás [App Service-csomagjának](https://azure.microsoft.com/pricing/details/app-service/) fizetős szintnek kell lennie **(Megosztott**, **Alapszintű,** **Standard**, **Prémium** vagy Azure Functions **felhasználás).** Ebben a lépésben ellenőrzi, hogy az App Service-alkalmazás a támogatott tarifacsomagban van-e.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -51,13 +51,13 @@ Ha egyéni DNS-nevet szeretne hozzárendelni egy webalkalmazáshoz, a webalkalma
 
 Nyissa meg az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-### <a name="select-the-app-in-the-azure-portal"></a>Válassza ki az alkalmazást a Azure Portal
+### <a name="select-the-app-in-the-azure-portal"></a>Válassza ki az alkalmazást az Azure Portalon
 
-Keresse meg és válassza ki a **app Services**.
+Keresse meg és válassza **az App Services**lehetőséget.
 
-![App Services kiválasztása](./media/app-service-web-tutorial-custom-domain/app-services.png)
+![Alkalmazásszolgáltatások kiválasztása](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
-A **app Services** lapon válassza ki az Azure-alkalmazás nevét.
+Az **App Services** lapon válassza ki az Azure-alkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -97,8 +97,8 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 
 Az egyéni DNS-neveket **CNAME rekordok** vagy **A rekordok** használatával is leképezheti az App Service-re. Hajtsa végre a megfelelő lépéseket:
 
-- [CNAME-rekord leképezése](#map-a-cname-record)
-- [A-rekord leképezése](#map-an-a-record)
+- [CNAME rekord hozzárendelése](#map-a-cname-record)
+- [A rekord hozzárendelése](#map-an-a-record)
 - [Helyettesítő karaktert tartalmazó tartomány leképezése (CNAME-rekorddal)](#map-a-wildcard-domain)
 
 > [!NOTE]
@@ -114,7 +114,7 @@ Az oktatóanyag példájában a `www` altartományhoz (például `www.contoso.co
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Adjon hozzá egy CNAME-rekordot egy altartománynak az alkalmazás alapértelmezett tartománynevéhez való hozzárendeléséhez (`<app_name>.azurewebsites.net`, ahol a `<app_name>` az alkalmazás neve).
+CNAME rekord hozzáadásával rendeljen hozzá egy altartományt`<app_name>.azurewebsites.net`az `<app_name>` alkalmazás alapértelmezett tartománynevéhez ( , hol van az alkalmazás neve).
 
 A `www.contoso.com` tartomány példája esetében adjon hozzá egy CNAME rekordot, amely a `www` előtagot az `<app_name>.azurewebsites.net` elemre képezi le.
 
@@ -130,7 +130,7 @@ Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tarto
 
 Az alkalmazás **Egyéni tartományok** oldalán adja hozzá a teljes egyéni DNS-nevet (`www.contoso.com`) a listához.
 
-Válassza az **egyéni tartomány hozzáadása**elem melletti **+** ikont.
+Jelölje **+** ki az **Egyéni tartomány hozzáadása**ikont.
 
 ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -138,20 +138,20 @@ Válassza az **egyéni tartomány hozzáadása**elem melletti **+** ikont.
 
 Válassza az **Érvényesítés** lehetőséget.
 
-Megjelenik az **egyéni tartomány hozzáadása** lap.
+Megjelenik **az Egyéni tartomány hozzáadása** lap.
 
-Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME (www\.example.com vagy bármely altartomány)** értékre van beállítva.
+Győződjön meg arról, hogy a **Hostname rekordtípus** **\.CNAME (www example.com vagy bármely altartomány)** értékre van állítva.
 
-Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
+Válassza **az Egyéni tartomány hozzáadása**lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Eltarthat egy ideig, amíg az új egyéni tartomány megjelennek az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, amíg az új egyéni tartomány megjelenik az alkalmazás **egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nem kötődik SSL-tanúsítványhoz, és a böngészőtől az egyéni tartományba IRÁNYULó HTTPS-kérések a böngészőtől függően kapnak, illetve hibát vagy figyelmeztetést kapnak. SSL-kötés hozzáadásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
+> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. SSL-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -186,7 +186,7 @@ Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 Ha egy A rekordot egy alkalmazásra kíván leképezni, az App Service-nek **két** DNS-rekordra van szüksége:
 
 - egy **A** rekordra, amelyet leképezhet az alkalmazás IP-címére.
-- Egy **txt** -rekord, amely az alkalmazás alapértelmezett tartománynevéhez `<app_name>.azurewebsites.net`képezhető le. Az App Service ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
+- **TXT** rekord, amelyet az alkalmazás alapértelmezett `<app_name>.azurewebsites.net`tartománynevére kell leképezni. Az App Service ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
 
 Az `contoso.com` tartomány példájában a következő táblának megfelelően hozza létre az A és a TXT típusú rekordot (a `@` általában a gyökértartományt jelöli).
 
@@ -196,7 +196,7 @@ Az `contoso.com` tartomány példájában a következő táblának megfelelően 
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
 > [!NOTE]
-> Egy altartomány (például `www.contoso.com`) egy, az ajánlott [CNAME-rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
+> Ha az ajánlott `www.contoso.com` [CNAME rekord](#map-a-cname-record)helyett A rekordot szeretne hozzáadni altartományhoz (például) az A rekord hoz, az A rekordnak és a TXT rekordnak az alábbi táblázatnak kell lennie:
 >
 > | Rekordtípus | Gazdagép | Érték |
 > | - | - | - |
@@ -214,7 +214,7 @@ A rekordok hozzáadása után a DNS-rekordok oldala a következő példához has
 
 Az Azure Portalon az alkalmazás **Egyéni tartományok** oldalán adja hozzá a teljes egyéni DNS-nevet (például `contoso.com`) a listához.
 
-Válassza az **egyéni tartomány hozzáadása**elem melletti **+** ikont.
+Jelölje **+** ki az **Egyéni tartomány hozzáadása**ikont.
 
 ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -222,20 +222,20 @@ Válassza az **egyéni tartomány hozzáadása**elem melletti **+** ikont.
 
 Válassza az **Érvényesítés** lehetőséget.
 
-Megjelenik az **egyéni tartomány hozzáadása** lap.
+Megjelenik **az Egyéni tartomány hozzáadása** lap.
 
-Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **A rekord (example.com)** .
+Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **A rekord (example.com)**.
 
-Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
+Válassza **az Egyéni tartomány hozzáadása**lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Eltarthat egy ideig, amíg az új egyéni tartomány megjelennek az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, amíg az új egyéni tartomány megjelenik az alkalmazás **egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
 ![A rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nem kötődik SSL-tanúsítványhoz, és a böngészőtől az egyéni tartományba IRÁNYULó HTTPS-kérések a böngészőtől függően kapnak, illetve hibát vagy figyelmeztetést kapnak. SSL-kötés hozzáadásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
+> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. SSL-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -253,7 +253,7 @@ Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-neve
 
 #### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
 
-Adjon hozzá egy CNAME-rekordot a helyettesítő karakter nevének az alkalmazás alapértelmezett tartománynevéhez (`<app_name>.azurewebsites.net`) való leképezéséhez.
+CNAME rekord hozzáadásával helyettesítő nevet szeretne leképezni az alkalmazás`<app_name>.azurewebsites.net`alapértelmezett tartománynevére ( ).
 
 A `*.contoso.com` tartomány példájában a CNAME rekord a `*` előtagot a `<app_name>.azurewebsites.net` elemre képezi le.
 
@@ -269,28 +269,28 @@ Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tarto
 
 ![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Válassza az **egyéni tartomány hozzáadása**elem melletti **+** ikont.
+Jelölje **+** ki az **Egyéni tartomány hozzáadása**ikont.
 
 ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Írjon be egy olyan teljes tartománynevet, amely megfelel a helyettesítő karaktert tartalmazó tartománynak (például `sub1.contoso.com`), majd válassza az **Érvényesítés** lehetőséget.
 
-Az **egyéni tartomány hozzáadása** gomb aktiválva van.
+Az **Egyéni tartomány hozzáadása** gomb aktiválva van.
 
-Győződjön meg arról, hogy az **állomásnév bejegyzéstípusa** **CNAME rekord (www\.example.com vagy bármely altartomány)** .
+Győződjön meg arról, hogy a **Hostname rekordtípus** CNAME rekordra van állítva **\.(www example.com vagy bármely altartományra).**
 
-Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
+Válassza **az Egyéni tartomány hozzáadása**lehetőséget.
 
 ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-Eltarthat egy ideig, amíg az új egyéni tartomány megjelennek az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+Eltarthat egy ideig, amíg az új egyéni tartomány megjelenik az alkalmazás **egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
-Kattintson ismét a **+** ikonra egy másik olyan egyéni tartomány hozzáadásához, amely megfelel a helyettesítő karakteres tartománynak. Például adja hozzá a következőt: `sub2.contoso.com`.
+Az **+** ikon ismét kiválasztva egy másik, a helyettesítő tartománynak megfelelő egyéni tartományt szeretne hozzáadni. Például adja hozzá a következőt: `sub2.contoso.com`.
 
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Megjegyzés: az egyéni tartományhoz tartozó **biztonságos** címke azt jelenti, hogy még nincs SSL-tanúsítvány kötve, és a böngészőtől az egyéni tartományba IRÁNYULó HTTPS-kérések a böngészőtől függően megérkeznek, illetve hibákba vagy figyelmeztetésbe kerülnek. SSL-kötés hozzáadásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
+> Az egyéni tartomány hoz tartozó **Megjegyzés biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. SSL-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 
 ## <a name="test-in-browser"></a>Tesztelés a böngészőben
 
@@ -298,7 +298,7 @@ Keresse meg a korábban konfigurált DNS-neve(ke)t (például `contoso.com`, `ww
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-## <a name="resolve-404-not-found"></a>404-es „Nem található” hiba feloldása
+## <a name="resolve-404-not-found"></a>404"Nem található" feloldása
 
 Ha HTTP 404-es (nem található) hiba történik az egyéni tartomány URL-címének megnyitásakor, a <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére van-e feloldva. Ha nem, azt a következők okozhatják:
 
@@ -321,7 +321,7 @@ A lap alján, a virtuális gyökérkönyvtár (`/`) alapértelmezés szerint a `
 
 ![A virtuális könyvtár testreszabása](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-A művelet befejezése után az alkalmazásnak vissza kell adni a jobb oldalt a gyökér elérési útjában (például `http://contoso.com`).
+A művelet befejezése után az alkalmazásnak a megfelelő oldalt kell `http://contoso.com`visszaadnia a gyökérelérési úton (például ).
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
@@ -355,7 +355,7 @@ Set-AzWebApp `
 
 További információ: [Egyéni tartomány hozzárendelése egy webalkalmazáshoz](scripts/powershell-configure-custom-domain.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

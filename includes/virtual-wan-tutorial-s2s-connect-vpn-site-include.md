@@ -9,37 +9,37 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75450830"
 ---
-1. Válassza a **VPN-helyek összekapcsolása** lehetőséget a **helyek összekapcsolását** ismertető lap megnyitásához.
+1. Válassza **a VPN-helyek csatlakoztatása** lehetőséget a **Helyek csatlakoztatása** lap megnyitásához.
 
-    ![csatlakozni](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "csatlakozásra")
+    ![Csatlakoztassa](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "csatlakozásra")
 
-   Hajtsa végre a következő mezőket:
+   Töltse ki a következő mezőket:
 
    * Adjon meg egy előmegosztott kulcsot. Ha nem ad meg kulcsot, az Azure automatikusan létrehoz egyet.
-   * Válassza ki a protokollt és az IPsec-beállításokat. Tekintse meg az [alapértelmezett/egyéni IPSec-részletek] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
-   * Válassza ki a megfelelő beállítást az **alapértelmezett útvonal propagálásához**. Az **Engedélyezés** beállítás lehetővé teszi, hogy a virtuális központ a megtanult alapértelmezett útvonalat propagálja ehhez a kapcsolódáshoz. Ez a jelző az alapértelmezett útvonal-propagálást csak akkor engedélyezi egy kapcsolathoz, ha az alapértelmezett útvonalat már megismerte a virtuális WAN-központ a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely kényszerített bújtatást engedélyez. Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik.
+   * Válassza ki a Protokoll és az IPsec beállításait. Lásd az [alapértelmezett/egyéni IPSec-adatok] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
+   * Válassza ki az **Alapértelmezett útvonal propagálása**megfelelő beállítást. Az **Engedélyezés** beállítás lehetővé teszi, hogy a virtuális elosztó egy megtanult alapértelmezett útvonalat továbbítson ehhez a kapcsolathoz. Ez a jelző csak akkor engedélyezi az alapértelmezett útvonal-terjesztést egy kapcsolatra, ha a Virtual WAN hub már megtanulta az alapértelmezett útvonalat a tűzfal központi telepítésének eredményeként, vagy ha egy másik csatlakoztatott hely kényszerített bújtatása engedélyezve van. Az alapértelmezett útvonal nem a Virtual WAN hubból származik.
 
 2. Kattintson a **Csatlakozás** gombra.
-3. Néhány percen belül a hely megjeleníti a kapcsolat és a kapcsolat állapotát.
+3. Néhány perc múlva a webhely megmutatja a kapcsolat és a kapcsolat állapotát.
 
-   ![állapota](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![Állapot](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
-   A **kapcsolatok állapota:** Ez a kapcsolat Azure-erőforrásának állapota, amely összekapcsolja a VPN-helyet az Azure hub VPN-átjáróján. Ha a vezérlési sík működése sikeres, az Azure VPN Gateway és a helyszíni VPN-eszköz továbbra is kapcsolatot létesít.
+   **Kapcsolat állapota:** Ez az Azure-erőforrás állapota a kapcsolat, amely összeköti a VPN-hely az Azure hub VPN-átjáró. Miután ez a vezérlősík-művelet sikeres, az Azure VPN-átjáró és a helyszíni VPN-eszköz folytatja a kapcsolatot.
 
-   **Kapcsolat állapota:** Ez az Azure VPN Gateway és a VPN-hely közötti tényleges kapcsolat (adatelérési út) állapota. A következő állapotok bármelyikét megjelenítheti:
+   **Kapcsolat állapota:** Ez a tényleges kapcsolat (adatelérési út) állapota az Azure VPN-átjárója és a VPN-hely között. A következő állapotok bármelyikét megmutathatja:
 
-    * **Ismeretlen**: ez az állapot általában akkor látható, ha a háttérrendszer más állapotba való áttérésre is alkalmas.
-    * **Csatlakozás**: az Azure VPN Gateway megpróbálja elérni a tényleges helyszíni VPN-helyet.
-    * **Csatlakoztatva**: kapcsolat létrejött az Azure VPN Gateway és a helyszíni VPN-hely között.
-    * **Leválasztva**: ez az állapot akkor látható, ha valamilyen okból (a helyszínen vagy az Azure-ban) a kapcsolat megszakadt.
-4. Egy központi VPN-helyen belül a következőket teheti: 
+    * **Ismeretlen**: Ez az állapot általában akkor látható, ha a háttérrendszerek egy másik állapotra való áttérésen dolgoznak.
+    * **Csatlakozás:** Az Azure VPN-átjáró megpróbálja elérni a tényleges helyszíni VPN-hely.
+    * **Csatlakoztatva:** Az Azure VPN-átjáró és a helyszíni VPN-hely között létrejön a kapcsolat.
+    * **Leválasztva:** Ez az állapot akkor látható, ha bármilyen okból (a helyszínen vagy az Azure-ban), a kapcsolat megszakadt.
+4. A központi VPN-webhelyen belül a következőket is megteheti: 
 
    * A VPN-kapcsolat szerkesztése vagy törlése.
-   * Törölje a helyet a Azure Portal.
-   * Töltse le az adott ág-specifikus konfigurációt az Azure-oldalról a hely melletti Context (...) menü használatával. Ha a hub összes csatlakoztatott helyének konfigurációját le szeretné tölteni, válassza a felső menüben a **VPN-konfiguráció letöltése** lehetőséget.
+   * Törölje a webhelyet az Azure Portalon.
+   * Töltse le az azure-i oldal részleteit a hely melletti környezet (...) menü használatával. Ha a központ összes csatlakoztatott webhelyének konfigurációját szeretné letölteni, válassza a **vpn-konfiguráció letöltése parancsot** a felső menüben.

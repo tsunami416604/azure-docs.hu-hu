@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: c5ca85c0dfe8d601821a78c02b2230c0909c8003
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67178830"
 ---
-Horgonyra helye nem frissíthető, miután a szolgáltatás létrehozása – létre kell hoznia egy új forráshorgony és törölje a régit, új beosztás nyomon követésére.
+A horgony helyét nem frissítheti, miután létrehozta a szolgáltatáson – létre kell hoznia egy új horgonyt, és törölnie kell a régit az új pozíció nyomon követéséhez.
 
-Ha nincs szüksége, keresse meg a tulajdonságait frissíteni horgonyra, használhatja a `GetAnchorPropertiesAsync()` metódussal, amely adja vissza egy `CloudSpatialAnchor` tulajdonsággal rendelkező objektumot.
+Ha nem kell megkeresnie egy horgonyt a tulajdonságainak `GetAnchorPropertiesAsync()` frissítéséhez, `CloudSpatialAnchor` használhatja a metódust, amely tulajdonságokkal rendelkező objektumot ad vissza.

@@ -1,16 +1,16 @@
 ---
-title: Felügyelt erőforráscsoport beolvasása & virtuális gépek átméretezése – Azure CLI
-description: Olyan Azure CLI-parancsfájlt biztosít, amely felügyelt erőforráscsoportot kap egy Azure által felügyelt alkalmazásban. A szkript átméretezi a virtuális gépeket.
+title: Felügyelt erőforráscsoport & virtuális gépek átméretezése – Azure CLI
+description: Azure CLI mintaparancsfájlt biztosít, amely egy felügyelt erőforráscsoportot kap egy Azure felügyelt alkalmazásban. A parancsfájl újraméretezi a virtuális gépeket.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75650057"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése az Azure CLI használatával
@@ -38,7 +38,7 @@ Ez a szkript a következő parancsokat használja egy felügyelt alkalmazás üz
 | [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | Frissíti egy virtuális gép méretét. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
 * Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).

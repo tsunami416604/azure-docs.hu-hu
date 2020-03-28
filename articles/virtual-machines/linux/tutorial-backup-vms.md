@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gépek biztonsági mentése a Azure Portal
+title: Oktatóanyag – Linuxos virtuális gépek biztonsági és biztonsági másolatot készítése az Azure Portalon
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan védheti a Linux rendszerű virtuális gépeket az Azure Portal használatával az Azure Backup szolgáltatással.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034579"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066498"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
-Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy bizonyos fájlokat. Ez a cikk azt ismerteti, hogyan állíthat vissza egy fájlt egy nginxet futtató Linux rendszerű virtuális gépre. Ha még nem rendelkezik virtuális géppel, a [linuxos rövid útmutatóval](quick-create-cli.md) létrehozhat egyet. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy bizonyos fájlokat. Ez a cikk azt ismerteti, hogyan állíthat vissza egy fájlt egy nginxet futtató Linux rendszerű virtuális gépre. Ha még nem rendelkezik virtuális géppel, a [linuxos rövid útmutatóval](quick-create-cli.md) létrehozhat egyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Biztonsági másolat készítése egy virtuális gépről
@@ -43,16 +43,16 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 ## <a name="create-a-backup"></a>Biztonsági mentés létrehozása
 Hozzon létre ütemezett napi biztonsági másolatot egy Recovery Services-tárolóba:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 2. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 3. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
-4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **Biztonsági mentés engedélyezése** panel.
+4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik **a Biztonsági másolat engedélyezése** panel.
 5. A **Recovery Services-tárolóban** kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Az új tároló ugyanabban az Erőforráscsoportban és ugyanazon a helyen jön létre, ahol a virtuális gép is van.
 6. Kattintson a **Biztonsági mentési szabályzat** lehetőségre. Ehhez a példához hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 7. A **Biztonsági mentés engedélyezése** panelen kattintson a **Biztonsági mentés engedélyezése** elemre. Ez létrehoz egy napi biztonsági mentést az alapértelmezett ütemezés alapján.
 10. Az első helyreállítási pont létrehozásához a **Biztonsági mentés** panelen kattintson a **Biztonsági mentés most** elemre.
-11. A **Biztonsági mentés most** panelen kattintson a naptár ikonra, használja a naptárvezérlőt annak kiválasztására, hogy meddig kívánja megőrizni a helyreállítási pontot, majd kattintson a **Biztonsági mentés** elemre.
-12. A virtuális géphez tartozó **Biztonsági mentés** panelen láthatja a kész helyreállítási pontok számát.
+11. A **Biztonsági másolat most** panelen kattintson a naptár ikonra, a naptár vezérlővel jelölje ki a helyreállítási pont utolsó megőrzésének utolsó napját, majd kattintson a **Biztonsági másolat**gombra.
+12. A virtuális géphez tartozó **Biztonsági másolat** panelen látni fogja a kész helyreállítási pontok számát.
 
     ![Helyreállítási pontok](./media/tutorial-backup-vms/backup-complete.png)
 
@@ -64,7 +64,7 @@ Ha véletlenül törölt vagy módosított egy fájlt, a fájlhelyreállítási 
 
 Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /var/www/html/index.nginx-debian.html nginx-weblapot. A virtuális gép nyilvános IP-címe ebben a példában a következő: *13.69.75.209*. A virtuális gép IP-címét a következő paranccsal találhatja meg:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /v
     ```bash
     ssh 13.69.75.209
     ```
+
 2. Törölje a /var/www/html/index.nginx-debian.html fájlt.
 
     ```bash
@@ -122,7 +123,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /v
     
 12. A szkript kimenetében megtalálható a csatlakoztatási pont elérési útja. A kimeneti ehhez hasonlóan néz ki:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
@@ -158,7 +159,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /v
 18. A helyi számítógépen térjen vissza az Azure Portal böngészőlapjára, és a **3. lépés: Válassza le a lemezeket a helyreállítás után** lépésben kattintson a **Lemezek leválasztása** gombra. Ha elfelejti elvégezni ezt a lépést, a csatlakoztatási ponttal létesített kapcsolat 12 óra elteltével automatikusan lezárul. Amikor letelik a 12 óra, le kell töltenie egy új szkriptet az új csatlakoztatási pont létrehozásához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

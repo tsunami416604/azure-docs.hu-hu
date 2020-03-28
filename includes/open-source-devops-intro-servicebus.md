@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: eb96027351cf244e9cd4404f702544411130db5e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67179809"
 ---
-[Az Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview) vállalat [integrációs](https://azure.microsoft.com/product-categories/integration/) közvetítő. A Service bus a kommunikációt két típusát támogatja: üzenetsorokat és témaköröket. 
+[Az Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview) egy vállalati [integrációs](https://azure.microsoft.com/product-categories/integration/) üzenetközvetítő. A szolgáltatásbusz kétféle kommunikációt támogat: várólistákat és témaköröket. 
 
-Üzenetsorok aszinkron típusú kommunikációs alkalmazások közötti támogatja. Egy alkalmazás üzenetet küld egy üzenetsorba, amely tárolja az üzeneteket. A fogadó alkalmazásnak ezután csatlakozik, és beolvassa az üzeneteket az üzenetsorból.
+A várólisták támogatják az alkalmazások közötti aszinkron kommunikációt. Az alkalmazás üzeneteket küld egy várólistába, amely tárolja az üzeneteket. A fogadó alkalmazás ezután csatlakozik a várólistából érkező üzenetekhez, és beolvassa azokat.
 
-Témakörök támogatják a közzétételi-feliratkozási mintát, amely lehetővé teszi, hogy az üzenet létrehozója és a Üzenő receiver(s) között egy-a-többhöz kapcsolat.
+A témakörök támogatják a közzététel-előfizetési mintát, amely lehetővé teszi az üzenetlétrehozó és az üzenetküldő(k) közötti egy-a-többhöz kapcsolatot.

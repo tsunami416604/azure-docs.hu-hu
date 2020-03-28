@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Linux rendszerű virtuális gép testreszabása a Cloud-init használatával az Azure-ban
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Cloud-init és a Key Vaultt a linuxos virtuális gépek testreszabásához az Azure-ban való első rendszerindítás alkalmával
+title: Oktatóanyag – Linuxos virtuális gép testreszabása felhőalapú inittel az Azure-ban
+description: Ebben az oktatóanyagban megtudhatja, hogyan használhatja a felhőalapú init et és a Key Vaultot a Linux-virtuális gépek testreszabásához az Azure-ban való első indításkor.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 62a8c68b11562cac7bb9e8a318cbe08084449423
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034642"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066507"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
 
-Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuális gépekhez, és hogyan telepítheti manuálisan az NGINX-et. A virtuális gépek gyors és következetes létrehozásához általában valamilyen automatizálásra van szükség. A virtuális gépek első rendszerindításkor való testreszabásának általánosan használt megközelítése a [cloud-init](https://cloudinit.readthedocs.io) használata. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuális gépekhez, és hogyan telepítheti manuálisan az NGINX-et. A virtuális gépek gyors és következetes létrehozásához általában valamilyen automatizálásra van szükség. A virtuális gépek első rendszerindításkor való testreszabásának általánosan használt megközelítése a [cloud-init](https://cloudinit.readthedocs.io) használata. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Cloud-init konfigurációs fájl létrehozása
@@ -42,23 +42,23 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
 
-| Közzétevő | Ajánlat | SKU | Verzió | a cloud-init kész |
+| Közzétevő | Ajánlat | SKU | Verzió | felhő-init kész |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |Legújabb |igen | 
-|Canonical |UbuntuServer |16.04-LTS |Legújabb |igen | 
-|Canonical |UbuntuServer |14.04.5-LTS |Legújabb |igen |
-|CoreOS |CoreOS |Stable |Legújabb |igen |
-|OpenLogic 7,6 |CentOS |7-CI |Legújabb |előzetes verzió |
+|Canonical |UbuntuServer |18.04-LTS |legújabb |igen | 
+|Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
+|Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
+|CoreOS |CoreOS |Stable |legújabb |igen |
+|OpenLogic 7,6 |CentOS |7-CI |legújabb |Előnézet |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |előzetes verzió |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |Előnézet |
 
 
 ## <a name="create-cloud-init-config-file"></a>Cloud-init konfigurációs fájl létrehozása
 A cloud-init működés közbeni megtekintéséhez hozzon létre egy virtuális gépet, amely telepíti az NGINX-et, és egy egyszerű „Hello World” Node.js-alkalmazást futtat. Az alábbi cloud-init konfiguráció telepíti a szükséges csomagokat, létrehoz egy Node.js-alkalmazást, majd inicializálja és elindítja azt.
 
-A bash-parancssorban vagy a Cloud Shell hozzon létre egy *Cloud-init. txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be például a következőt: `sensible-editor cloud-init.txt` a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+A bash-parancssorban vagy a Cloud Shellben hozzon létre egy *cloud-init.txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be `sensible-editor cloud-init.txt` például a fájl létrehozásához, és tekintse meg az elérhető szerkesztők listáját. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
-```azurecli-interactive
+```bash
 #cloud-config
 package_upgrade: true
 packages:
@@ -109,7 +109,7 @@ Mielőtt létrehozhatna egy virtuális gépet, létre kell hoznia egy erőforrá
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. A következő példa létrehoz egy *myVM*nevű virtuális gép:
 
 ```azurecli-interactive
 az vm create \
@@ -130,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a következőt *: http:\/\/\<publicIpAddress >* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
+Most megnyithat egy webböngészőt, és beírhatja *a http:\/\/\<publicIpAddress>* a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
 
 ![Futó NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -184,7 +184,7 @@ vm_secret=$(az vm secret format --secret "$secret" --output json)
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Cloud-init konfiguráció létrehozása az NGINX védelméhez
 Virtuális gép létrehozásakor a tanúsítványokat és a kulcsokat a védett */var/lib/waagent/* könyvtár tárolja. A tanúsítvány virtuális géphez való hozzáadásának automatizálásához és az NGINX konfigurálásához használhat egy frissített cloud-init konfigurációt az előző példából.
 
-Hozzon létre egy *cloud-init-secured.txt* nevű fájlt, és illessze be a következő konfigurációt. Ha a Cloud Shell használja, hozza létre a Cloud-init konfigurációs fájlt, és ne a helyi gépen. Írja be például a következőt: `sensible-editor cloud-init-secured.txt` a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+Hozzon létre egy *cloud-init-secured.txt* nevű fájlt, és illessze be a következő konfigurációt. Ha a Cloud Shell, hozzon létre a cloud-init konfigurációs fájlt ott, és nem a helyi gépen. Írja be `sensible-editor cloud-init-secured.txt` például a fájl létrehozásához, és tekintse meg az elérhető szerkesztők listáját. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -261,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a *https:\/\/\<publicIpAddress >* a címsorba. Adja meg a saját nyilvános IP-címét, amelyet az előző virtuálisgép-létrehozási folyamat kimeneteként kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
+Most megnyithat egy webböngészőt, és beírhatja *a https:\/\/\<publicIpAddress>* a címsorba. Adja meg a saját nyilvános IP-címét, amelyet az előző virtuálisgép-létrehozási folyamat kimeneteként kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
 
 ![Webböngésző biztonsági figyelmeztetésének elfogadása](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
@@ -270,7 +270,7 @@ Ekkor a biztonságos NGINX-webhely és a Node.js-alkalmazás a következő péld
 ![Futó biztonságos NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban virtuális gépeket konfigurált az első rendszerindításkor a cloud-init használatával. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

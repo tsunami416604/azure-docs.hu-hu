@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – Azure virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
-description: Ebben az oktatóanyagban a Terraform-modulok használatával hoz létre egy Windows rendszerű virtuálisgép-fürtöt az Azure-ban
-keywords: Azure devops Terraform virtuális gép virtuálisgép-fürt moduljának beállításjegyzéke
+title: Oktatóanyag – Hozzon létre egy Azure Virtuálisgép-fürtet a Terraform segítségével a modulbeállítási jegyzék használatával
+description: Ebben az oktatóanyagban terraform-modulok at használ egy Windows virtuálisgép-fürt létrehozásához az Azure-ban
+keywords: azure devops terraform vm virtuálisgép-modul modul rendszerleíró adatbázisa
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945288"
 ---
-# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform a modul beállításjegyzékének használatával
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Oktatóanyag: Hozzon létre egy Azure Virtuálisgép-fürtet a Terraform segítségével a modulbeállítási
 
-Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre kisméretű virtuálisgép-fürt a Terraform [Azure Compute-moduljával](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket: 
+Ez a cikk lépésről lépésre bemutatja, hogyan hozható létre kisméretű virtuálisgép-fürt a Terraform [Azure Compute-moduljával](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ezen oktatóanyag segítségével megtanulhatja a következőket: 
 
 > [!div class="checklist"]
 > * Hitelesítés beállítása az Azure-ral
@@ -103,4 +103,4 @@ Futtassa a `terraform apply` parancsot a virtuális gépek kiépítéséhez az A
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Az Azure Terraform-modulok listájának tallózása](https://registry.terraform.io/modules/Azure)
+> [Tallózás az Azure Terraform modulok listájában](https://registry.terraform.io/modules/Azure)

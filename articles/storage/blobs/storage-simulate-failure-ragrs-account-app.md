@@ -1,43 +1,44 @@
 ---
-title: Oktatóanyag – hiba szimulálása az adatoknak az elsődleges régióból való beolvasásakor
+title: Oktatóanyag – Hiba szimulálása az elsődleges régióból származó adatok olvasása esetén
 titleSuffix: Azure Storage
-description: Az elsődleges régió adatainak olvasásakor észlelt hiba szimulálása, ha az olvasási hozzáférés geo-redundáns tároló (RA-GRS) engedélyezve van a Storage-fiókhoz.
+description: Szimulálja a hibát az adatok olvasása az elsődleges régióból, ha olvasási hozzáférésű georedundáns tárolás (RA-GRS) engedélyezve van a tárfiók.
 services: storage
 author: tamram
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 3693ae8c9c425c35ab1a4ebf88b6cd3dfb58f92c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162701"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80061289"
 ---
-# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Oktatóanyag: hiba szimulálása az adatoknak az elsődleges régióból való beolvasása során
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Oktatóanyag: Hiba szimulálása az elsődleges régióból származó adatok olvasásakor
 
-Ez az oktatóanyag egy sorozat második része. Ebben az útmutatóban megismerheti az [olvasási hozzáférésű geo-redundáns tárolás](../common/storage-redundancy.md) (ra-GRS) előnyeit a hibák szimulálása révén.
+Ez az oktatóanyag egy sorozat második része. Ebben megismerheti az [olvasási hozzáférésű georedundáns tárolás](../common/storage-redundancy.md) (RA-GRS) előnyeit egy hiba szimulálásával.
 
-A hiba szimulálása érdekében [statikus útválasztást](#simulate-a-failure-with-an-invalid-static-route) vagy [hegedűst](#simulate-a-failure-with-fiddler)is használhat. Mindkét módszer lehetővé teszi, hogy szimulálja a kéréseket az [olvasási hozzáférésű geo-redundáns](../common/storage-redundancy.md) (ra-GRS) Storage-fiók elsődleges végpontjának, így helyette az alkalmazást a másodlagos végpontról olvashatja.
+A hiba szimulálásához használhatja a [Statikus műveletterv](#simulate-a-failure-with-an-invalid-static-route) vagy a [Fiddler műveletet.](#simulate-a-failure-with-fiddler) Mindkét módszer lehetővé teszi, hogy szimulálja a hibákat az [olvasási hozzáférés georedundáns](../common/storage-redundancy.md) (RA-GRS) tárfiók elsődleges végpontjára irányuló kérelmek, ami az alkalmazást a másodlagos végpontról olvassa be.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az alkalmazás futtatása és szüneteltetése
-> * [Érvénytelen statikus útvonal](#simulate-a-failure-with-an-invalid-static-route) vagy [Hegedűs](#simulate-a-failure-with-fiddler) hibájának szimulálása
+> * Hiba [szimulálása érvénytelen statikus útvonallal](#simulate-a-failure-with-an-invalid-static-route) vagy [Hegedűsrel](#simulate-a-failure-with-fiddler)
 > * Elsődleges végpont visszaállításának szimulálása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt végezze el az előző oktatóanyagot: az [alkalmazásadatok elérhetővé tétele az Azure Storage][previous-tutorial]szolgáltatással.
+Az oktatóanyag megkezdése előtt töltse ki az előző oktatóanyagot: [Az alkalmazásadatok elérhetővé az Azure Storage szolgáltatással.][previous-tutorial]
 
-Ha statikus útválasztással szeretne hibát szimulálni, egy rendszergazda jogú parancssort fog használni.
+A statikus útválasztással történő hiba szimulálásához emelt szintű parancssort kell használnia.
 
-Ha a Hegedűs használatával nem sikerül szimulálni a hibát, töltse le és [telepítse a hegedűst](https://www.telerik.com/download/fiddler)
+A Fiddler használatával történő hiba szimulálásához töltse le és [telepítse a Fiddler-t](https://www.telerik.com/download/fiddler)
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Hiba szimulálása érvénytelen statikus útvonallal
 
@@ -45,13 +46,13 @@ Létrehozhatja az [írásvédett georedundáns](../common/storage-redundancy.md)
 
 ### <a name="start-and-pause-the-application"></a>Az alkalmazás elindítása és szüneteltetése
 
-Az [előző oktatóanyag][previous-tutorial] utasításait követve elindíthatja a mintát, és letöltheti a teszt fájlt, amely megerősíti, hogy az elsődleges tárolóból származik. A célként megadott platformtól függően manuálisan is szüneteltetheti a mintát, vagy megvárhatja a kérdést.
+Az [előző oktatóanyagutasításaival][previous-tutorial] indítsa el a mintát, és töltse le a tesztfájlt, és ellenőrizze, hogy az elsődleges tárolóból származik-e. A célplatformtól függően manuálisan szüneteltetheti a mintát, vagy megvárhatja a kérdést.
 
 ### <a name="simulate-failure"></a>Hibaszimuláció
 
-Amíg az alkalmazás szüneteltetve van, nyisson meg egy parancssort a Windows rendszergazdaként, vagy futtassa a terminált Linux rendszeren root-ként.
+Amíg az alkalmazás szünetel, nyisson meg egy parancssort a Windows rendszeren rendszergazdaként, vagy futtasson terminált linuxos gyökérként.
 
-A Storage-fiók elsődleges végpontjának tartományára vonatkozó információk lekéréséhez írja be a következő parancsot egy parancssorba vagy terminálba, és cserélje le a `STORAGEACCOUNTNAME` a Storage-fiók nevére.
+A tárfiók elsődleges végponttartományával kapcsolatos információk a következő parancs parancssorba vagy terminálra történő beírásával, a tárfiók nevének cseréjével. `STORAGEACCOUNTNAME`
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -61,7 +62,7 @@ A későbbi lépésekhez másolja a tárfiók IP-címét egy szövegszerkesztőb
 
 A helyi gazdagép IP-címének lekéréséhez írja be az `ipconfig` parancsot a Windows-parancssorba vagy az `ifconfig` parancsot a Linux-terminálba.
 
-Ha statikus útvonalat szeretne hozzáadni a cél gazdagéphez, írja be a következő parancsot egy Windows-parancssorba vagy Linux-terminálba, és cserélje le a `<destination_ip>`t a Storage-fiók IP-címére, és `<gateway_ip>` a helyi gazdagép IP-címével.
+Statikus útvonal hozzáadásához írja be a következő parancsot egy Windows parancssorba vagy Linux-terminálba, és cserélje ki `<destination_ip>` a tárfiók IP-címét és `<gateway_ip>` a helyi állomás IP-címét.
 
 #### <a name="linux"></a>Linux
 
@@ -75,11 +76,11 @@ route add <destination_ip> gw <gateway_ip>
 route add <destination_ip> <gateway_ip>
 ```
 
-A futó mintát tartalmazó ablakban folytassa az alkalmazást, vagy nyomja le a megfelelő kulcsot a minta fájl letöltéséhez, és ellenőrizze, hogy az a másodlagos tárolóból származik-e. Ezután szüneteltetheti a mintát, vagy megvárhatja a kérést.
+A futó mintával rendelkező ablakban folytassa az alkalmazást, vagy nyomja meg a megfelelő billentyűt a mintafájl letöltéséhez, és ellenőrizze, hogy az másodlagos tárolóból származik-e. Ezután szüneteltetheti a mintát, vagy megvárhatja a kérdést.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Elsődleges végpont visszaállításának szimulálása
 
-Ha újra szeretné szimulálni az elsődleges végpont működőképességét, törölje az érvénytelen statikus útvonalat az útválasztási táblából. Ez lehetővé teszi, hogy az elsődleges végpont az alapértelmezett átjárón keresztül legyen irányítva. Írja be a következő parancsot egy Windows-parancssorba vagy Linux-terminálba.
+Ha azt szeretné szimulálni, hogy az elsődleges végpont ismét működőképessé váljon, törölje az érvénytelen statikus útvonalat az útválasztási táblából. Ez lehetővé teszi, hogy az elsődleges végpont az alapértelmezett átjárón keresztül legyen irányítva. Írja be a következő parancsot egy Windows parancssorba vagy Linux-terminálba.
 
 #### <a name="linux"></a>Linux
 
@@ -93,13 +94,13 @@ route del <destination_ip> gw <gateway_ip>
 route delete <destination_ip>
 ```
 
-Ezután folytathatja az alkalmazást, vagy lenyomhatja a megfelelő kulcsot a minta fájl újbóli letöltéséhez, ezzel megerősítve, hogy ismét az elsődleges tárolóból származik.
+Ezután folytathatja az alkalmazást, vagy megnyomhatja a megfelelő kulcsot a mintafájl újbóli letöltéséhez, ezúttal meggyőződve arról, hogy az ismét az elsődleges tárolóból származik.
 
 ## <a name="simulate-a-failure-with-fiddler"></a>Hiba szimulálása a Fiddlerrel
 
-A Hegedűs hibájának szimulálása érdekében az RA-GRS Storage-fiók elsődleges végpontjának küldött kérések sikertelen válaszát adja meg.
+A Fiddler hiba szimulálása érdekében sikertelen választ kell adnia az RA-GRS tárfiók elsődleges végpontjára érkező kérelmekre.
 
-Az alábbi fejezetek azt mutatják be, hogyan szimulálható a hiba és az elsődleges végpont visszaállítása a hegedűsrel.
+A következő szakaszok bemutatják, hogyan lehet szimulálni egy hiba és az elsődleges végpont helyreállítása hegedűs.
 
 ### <a name="launch-fiddler"></a>A Fiddler elindítása
 
@@ -107,11 +108,11 @@ Nyissa meg a Fiddlert, és válassza a **Rules** (Szabályok), majd a **Cutomize
 
 ![Fiddler-szabályok testreszabása](media/storage-simulate-failure-ragrs-account-app/figure1.png)
 
-A Hegedűs ScriptEditor elindítja és megjeleníti a **SampleRules. js** fájlt. Ezzel a fájllal szabható testre a Fiddler.
+A Fiddler ScriptEditor elindítja és megjeleníti a **SampleRules.js** fájlt. Ezzel a fájllal szabható testre a Fiddler.
 
-Illessze be a következő kódot a `OnBeforeResponse` függvénybe, és cserélje le a `STORAGEACCOUNTNAME`t a Storage-fiók nevére. A mintától függően előfordulhat, hogy le kell cserélnie `HelloWorld`t a letölteni kívánt tesztoldal (vagy egy előtag, például `sampleFile`) nevével. Az új kód megjegyzésbe kerül, hogy a szolgáltatás ne fusson azonnal.
+Illessze be a `OnBeforeResponse` következő kódmintát a függvénybe, és cserélje le `STORAGEACCOUNTNAME` a tárfiók nevét. A mintától függően előfordulhat, `HelloWorld` hogy a letöltött tesztfájl (vagy egy `sampleFile`előtag) nevére is le kell cserélnie. Az új kódot megjegyzéssel kell elhangolni annak érdekében, hogy ne fusson azonnal.
 
-Ha elkészült, válassza a **fájl** és **Mentés** lehetőséget a módosítások mentéséhez. Hagyja nyitva a ScriptEditor ablakot a következő lépésekben való használatra.
+Miután elkészült, válassza **a Fájl** és **mentés** lehetőséget a módosítások mentéséhez. Hagyja nyitva a ScriptEditor ablakot a következő lépésekben való használatra.
 
 ```javascript
     /*
@@ -133,25 +134,25 @@ Ha elkészült, válassza a **fájl** és **Mentés** lehetőséget a módosít�
 
 ### <a name="start-and-pause-the-application"></a>Az alkalmazás elindítása és szüneteltetése
 
-Az [előző oktatóanyag][previous-tutorial] utasításait követve elindíthatja a mintát, és letöltheti a teszt fájlt, amely megerősíti, hogy az elsődleges tárolóból származik. A célként megadott platformtól függően manuálisan is szüneteltetheti a mintát, vagy megvárhatja a kérdést.
+Az [előző oktatóanyagutasításaival][previous-tutorial] indítsa el a mintát, és töltse le a tesztfájlt, és ellenőrizze, hogy az elsődleges tárolóból származik-e. A célplatformtól függően manuálisan szüneteltetheti a mintát, vagy megvárhatja a kérdést.
 
 ### <a name="simulate-failure"></a>Hibaszimuláció
 
-Amíg az alkalmazás szüneteltetve van, váltson vissza a Hegedűsre, és írja be a megjegyzésbe az `OnBeforeResponse` függvényben mentett egyéni szabályt. Ügyeljen arra, hogy a **fájl** és **Mentés** lehetőség kiválasztásával mentse a módosításokat, így a szabály érvénybe lép. Ez a kód az RA-GRS Storage-fiókra irányuló kéréseket keres, és ha az elérési út tartalmazza a minta fájl nevét, a `503 - Service Unavailable`válasz kódját adja vissza.
+Amíg az alkalmazás szünetel, váltson vissza a Fiddler-re, és ne fűzzön megjegyzést a `OnBeforeResponse` függvényben mentett egyéni szabályról. A módosítások mentéséhez válassza a **Fájl** és **mentés** lehetőséget, hogy a szabály érvénybe lépjen. Ez a kód az RA-GRS tárfiókba irányuló kérelmeket keresi, és ha az `503 - Service Unavailable`elérési út tartalmazza a mintafájl nevét, a válaszkódját adja vissza.
 
-A futó mintát tartalmazó ablakban folytassa az alkalmazást, vagy nyomja le a megfelelő kulcsot a minta fájl letöltéséhez, és ellenőrizze, hogy az a másodlagos tárolóból származik-e. Ezután szüneteltetheti a mintát, vagy megvárhatja a kérést.
+A futó mintával rendelkező ablakban folytassa az alkalmazást, vagy nyomja meg a megfelelő billentyűt a mintafájl letöltéséhez, és ellenőrizze, hogy az másodlagos tárolóból származik-e. Ezután szüneteltetheti a mintát, vagy megvárhatja a kérdést.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Elsődleges végpont visszaállításának szimulálása
 
-A Hegedűsben távolítsa el, vagy véleményezze az egyéni szabályt. A **fájl** és **Mentés** lehetőség kiválasztásával győződjön meg arról, hogy a szabály már nem lesz érvényben.
+A Fiddler, távolítsa el vagy véleményezze ki az egyéni szabály újra. Válassza a **Fájl** és **mentés** lehetőséget, ha azt szeretné, hogy a szabály ne legyen érvényben.
 
-A futó mintát tartalmazó ablakban folytassa az alkalmazást, vagy nyomja le a megfelelő kulcsot a minta fájl letöltéséhez, és győződjön meg arról, hogy az elsődleges tárolóból származik. Ezután kilép a mintából.
+A futó mintával rendelkező ablakban folytassa az alkalmazást, vagy nyomja meg a megfelelő billentyűt a mintafájl letöltéséhez, és ellenőrizze, hogy az elsődleges tárolóból származik-e ismét. Ezután kilépa mintából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A sorozat második részében megtanulta, hogyan szimulálhatja az olvasási hozzáférés földrajzi redundáns tárolásának tesztelési hibáját.
+A második részben a sorozat, megtanulta, hogy szimulálja a hiba az olvasási hozzáférés georedundáns tárolás.
 
-Ha többet szeretne megtudni az RA-GRS tárolás működéséről, valamint a kapcsolódó kockázatokról, olvassa el a következő cikket:
+Ha többet szeretne megtudni az RA-GRS storage működéséről, valamint a kapcsolódó kockázatokról, olvassa el a következő cikket:
 
 > [!div class="nextstepaction"]
 > [HA-alkalmazások tervezése RA-GRS használatával](../common/storage-designing-ha-apps-with-ragrs.md)

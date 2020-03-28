@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: webalkalmazás-hozzáférés fejlesztése – Azure Application Gateway'
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy automatikus skálázási, zóna-redundáns Application Gateway-t a fenntartott IP-címmel Azure PowerShell használatával.
+title: 'Oktatóanyag: A webalkalmazások hozzáférésének javítása - Azure Application Gateway'
+description: Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy automatikus skálázás, zónaredundáns alkalmazásátjáró egy fenntartott IP-címet az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,34 +9,34 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74011371"
 ---
-# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Oktatóanyag: webalkalmazás-hozzáférés fejlesztését javító Application Gateway létrehozása
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Oktatóanyag: Hozzon létre egy alkalmazásátjárót, amely javítja a webalkalmazás-hozzáférést
 
-Ha Ön rendszergazda, aki a webalkalmazások hozzáférésének fejlesztését illeti, optimalizálhatja az Application Gateway-t az ügyfelek igényei szerint méretezhetővé, és több rendelkezésre állási zónára is kiterjedhet. Ez az oktatóanyag segítséget nyújt az Azure Application Gateway szolgáltatásainak konfigurálásához: automatikus skálázás, zóna-redundancia és fenntartott VIP-EK (statikus IP-cím). A probléma megoldásához Azure PowerShell parancsmagokat és a Azure Resource Manager üzembe helyezési modellt kell használnia.
+Ha Ön a webalkalmazások elérésének javításával foglalkozó informatikai rendszergazda, optimalizálhatja az alkalmazásátjárót az ügyféligények alapján történő méretezéshez és a több rendelkezésre állási zónára kiterjedő méretezéshez. Ez az oktatóanyag segít az Azure Application Gateway ezen funkciók konfigurálása: automatikus skálázás, zónaredundancia és fenntartott IP-k (statikus IP). Az Azure PowerShell-parancsmagokkal és az Azure Resource Manager üzembe helyezési modelljével oldhatja meg a problémát.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Önaláírt tanúsítvány létrehozása
-> * Autoscale virtuális hálózat létrehozása
+> * Automatikus skálázású virtuális hálózat létrehozása
 > * Fenntartott nyilvános IP-cím létrehozása
-> * Az Application Gateway-infrastruktúra beállítása
+> * Az alkalmazásátjáró-infrastruktúra beállítása
 > * Automatikus méretezés megadása
 > * Application Gateway létrehozása
-> * Az Application Gateway tesztelése
+> * Az alkalmazásátjáró tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ehhez az oktatóanyaghoz az Azure PowerShellt helyileg kell futtatnia. Telepítenie kell a Azure PowerShell modul 1.0.0 vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Connect-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez az oktatóanyaghoz az Azure PowerShellt helyileg kell futtatnia. Az Azure PowerShell-modul 1.0.0-s vagy újabb verziójával kell rendelkeznie. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Connect-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot az elérhető helyek egyikén.
 
 ```azurepowershell
@@ -89,7 +89,7 @@ Export-PfxCertificate `
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy dedikált alhálózattal rendelkező virtuális hálózatot egy automatikus skálázási Application Gateway számára. Jelenleg az egyes dedikált alhálózatokon csak egy automatikus skálázású Application Gateway helyezhető üzembe.
+Hozzon létre egy virtuális hálózatot egy dedikált alhálózattal egy automatikus skálázási alkalmazásátjáróhoz. Jelenleg az egyes dedikált alhálózatokon csak egy automatikus skálázású Application Gateway helyezhető üzembe.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -101,7 +101,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Fenntartott nyilvános IP-cím létrehozása
 
-A PublicIPAddress kiosztási módszerének meghatározása **statikusként**. Az automatikus skálázású Application Gateway virtuális IP-címe csak statikus lehet. A dinamikus IP-címek nem használhatók. Csak a standard PublicIPAddress termékváltozat támogatott.
+Adja meg a PublicIPAddress felosztási módját **statikusként.** Az automatikus skálázású Application Gateway virtuális IP-címe csak statikus lehet. A dinamikus IP-címek nem használhatók. Csak a standard PublicIPAddress termékváltozat támogatott.
 
 ```azurepowershell
 #Create static public IP
@@ -111,7 +111,7 @@ $pip = New-AzPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Részletek beolvasása
 
-Egy helyi objektumban található erőforráscsoport, alhálózat és IP adatainak beolvasása az Application Gateway IP-konfigurációs adatainak létrehozásához.
+Az erőforráscsoport, az alhálózat és az IP egy helyi objektumban található adatok beolvasása az alkalmazásátjáró IP-konfigurációs részleteinek létrehozásához.
 
 ```azurepowershell
 $resourceGroup = Get-AzResourceGroup -Name $rg
@@ -122,7 +122,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork
 
 ## <a name="configure-the-infrastructure"></a>Az infrastruktúra konfigurálása
 
-Konfigurálja az IP-konfigurációt, az előtér-IP-konfigurációt, a háttér-készletet, a HTTP-beállításokat, a tanúsítványt, a portot, a figyelőt és a szabályt azonos formátumban a meglévő standard Application Gateway-átjáróra. Az új termékváltozat a standard termékváltozattal megegyező objektummodellt követi.
+Konfigurálja az IP-konfigurációt, az előtér-IP-konfigurációt, a háttérkészletet, a HTTP-beállításokat, a tanúsítványt, a portot, a figyelőt és a szabályt a meglévő szabványos alkalmazásátjáróval azonos formátumban. Az új termékváltozat a standard termékváltozattal megegyező objektummodellt követi.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -150,7 +150,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleType bas
 
 ## <a name="specify-autoscale"></a>Automatikus méretezés megadása
 
-Most megadhatja az Application Gateway automatikus skálázási konfigurációját. Az Application Gateway két automatikus skálázási típust támogat:
+Most megadhatja az alkalmazásátjáró automatikus skálázási konfigurációját. Az Application Gateway két automatikus skálázási típust támogat:
 
 * **Rögzített kapacitású mód**. Ebben a módban az Application Gateway nem automatikus skálázású, és rögzített skálázásiegység-kapacitással működik.
 
@@ -167,7 +167,7 @@ Most megadhatja az Application Gateway automatikus skálázási konfigurációj�
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Hozza létre az Application Gatewayt, és tartalmazzon redundancia-zónákat és az automatikus skálázási konfigurációt.
+Hozza létre az alkalmazásátjárót, és tartalmazza a redundanciazónákat és az automatikus skálázási konfigurációt.
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
@@ -178,19 +178,19 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
   -Sku $sku -sslCertificates $sslCert01 -AutoscaleConfiguration $autoscaleConfig
 ```
 
-## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az Application Gateway nyilvános IP-címének lekéréséhez használja a Get-AzPublicIPAddress. Másolja a nyilvános IP-címet vagy a DNS nevét, majd illessze be a böngésző címsorába.
+A Get-AzPublicIPAddress használatával leszeretné késni az alkalmazásátjáró nyilvános IP-címét. Másolja a nyilvános IP-címet vagy a DNS nevét, majd illessze be a böngésző címsorába.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Először vizsgálja meg az Application Gateway használatával létrehozott erőforrásokat. Ha már nincs rájuk szükség, a `Remove-AzResourceGroup` paranccsal távolíthatja el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást.
+Először vizsgálja meg az alkalmazásátjáróval létrehozott erőforrásokat. Ezt követően, ha már nincs rájuk `Remove-AzResourceGroup` szükség, a paranccsal eltávolíthatja az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást.
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

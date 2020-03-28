@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108492"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API-alkalmazás importálása API-ként
@@ -32,12 +32,12 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-+ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információ: [app Service dokumentáció](https://docs.microsoft.com/azure/app-service/)
++ A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
++ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információ: [App Service Documentation](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Háttérrendszeri API importálása és közzététele
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Háttér-API importálása és közzététele
 
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
 2. Válasszon ki egy **API-alkalmazást** az **Új API hozzáadása** listából.
@@ -58,7 +58,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
     * **Korlátlan**   
 7. Kattintson a **Létrehozás** gombra.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése az Azure Portalon
 
 A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.  
 
@@ -75,7 +75,7 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

@@ -1,16 +1,16 @@
 ---
 ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79382274"
 ---
 ## <a name="app-configuration"></a>Alkalmazás konfigurációja
 
 [!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
 
-## <a name="app-platform"></a>Alkalmazás-platform
+## <a name="app-platform"></a>Alkalmazásplatform
 
 [!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
 
@@ -18,11 +18,11 @@ ms.locfileid: "79382274"
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
 
-## <a name="automation"></a>Automatizálás
+## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
 [!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "79382274"
 
 [!INCLUDE [azure-policy-samples-policies-cache](azure-policy-samples-policies-cache.md)]
 
-## <a name="compute"></a>Számítás
+## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
 
@@ -82,7 +82,7 @@ ms.locfileid: "79382274"
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes-service](azure-policy-samples-policies-kubernetes-service.md)]
 
-## <a name="lighthouse"></a>Világítótorony
+## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](azure-policy-samples-policies-lighthouse.md)]
 
@@ -98,7 +98,7 @@ ms.locfileid: "79382274"
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](azure-policy-samples-policies-monitoring.md)]
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "79382274"
 
 [!INCLUDE [azure-policy-samples-policies-sql](azure-policy-samples-policies-sql.md)]
 
-## <a name="storage"></a>Tárterület
+## <a name="storage"></a>Storage
 
 [!INCLUDE [azure-policy-samples-policies-storage](azure-policy-samples-policies-storage.md)]
 

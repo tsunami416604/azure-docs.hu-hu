@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: ec1579792a6e247bf49946bb8609a626154fbd46
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74037362"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Az Azure Data Explorerből származó adatok megjelenítése a Power BI használatával
@@ -20,7 +20,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Ha nem regisztrált a Power BI Próra, a kezdés előtt [regisztráljon az ingyenes próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web).
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Vizualizációk renderelése az Azure Data Explorerben
@@ -33,17 +33,17 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Az Azure- és Power BI-előfizetések mellett a következőkre lesz szüksége az oktatóanyag elvégzéséhez:
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy tesztfürt és egy adatbázis](create-cluster-database-portal.md)
 
-* [A StormEvents mintaadatok](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+* [A StormEvents mintaadatai](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power bi Desktop](https://powerbi.microsoft.com/get-started/) (válassza az **ingyenes letöltés**lehetőséget)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (válasz: **LETÖLTÉS INGYENES)**
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Vizualizációk renderelése az Azure Data Explorerben
 
 Mielőtt belekezdenénk a Power BI használatába, nézzük meg, hogyan renderelhetők vizualizációk az Azure Data Explorerben. Ez nagyszerű gyors elemzésekhez.
 
-1. Jelentkezzen be itt: [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Jelentkezzen be [https://dataexplorer.azure.com](https://dataexplorer.azure.com)a ikonra.
 
 1. A bal oldali panelen válassza ki a StormEvents mintaadatokat tartalmazó tesztadatbázist.
 
@@ -81,17 +81,17 @@ Ideje a Power BI-ra váltanunk, azonban érdemes észben tartania, hogy számos 
 
 Most már csatlakozhat az Azure Data Explorerhez a Power BI Desktopból.
 
-1. Power BI Desktop a **Kezdőlap** lapon válassza az **adatlekérdezés** **lehetőséget.**
+1. A **Kezdőlap** lap Power BI Desktop területén válassza az **Adatok beszerezni,** majd **az Egyebek**lehetőséget.
 
     ![Adatok lekérése](media/visualize-power-bi/get-data-more.png)
 
-1. Keresse meg az *azure adatkezelőt*, válassza az **Azure adatkezelő (bétaverzió)** lehetőséget, majd a **kapcsolatot**.
+1. Keressen az *Azure Data Explorer*, válassza az Azure Data Explorer **(Béta)**, majd **a Csatlakozás**lehetőséget.
 
     ![Adatok keresése és lekérése](media/visualize-power-bi/search-get-data.png)
 
 1. Az **Összekötő előnézete** képernyőn válassza a **Folytatás** lehetőséget.
 
-1. A következő képernyőn adja meg a tesztelési fürt és az adatbázis nevét. A fürtnek a következő formátumban kell lennie: `https://<ClusterName>.<Region>.kusto.windows.net`. A tábla nevének írja be a *StormEvents* kifejezést. A többi beállítást hagyja az alapértelmezett értékükön, majd válassza az **OK** lehetőséget.
+1. A következő képernyőn adja meg a tesztfürt és az adatbázis nevét. A fürtnek a következő formátumban kell lennie: `https://<ClusterName>.<Region>.kusto.windows.net`. A tábla nevének írja be a *StormEvents* kifejezést. A többi beállítást hagyja az alapértelmezett értékükön, majd válassza az **OK** lehetőséget.
 
     ![Fürt-, adatbázis- és táblázatbeállítások](media/visualize-power-bi/cluster-database-table.png)
 
@@ -111,7 +111,7 @@ Most, hogy csatlakozott az Azure Data Explorerhez, szerkesztheti az adatokat a P
 
     ![Oszlop eltávolítása](media/visualize-power-bi/remove-column.png)
 
-1. A **LEKÉRDEZÉS BEÁLLÍTSAI** panelen módosítsa a nevet *Query1-ről* *StormEventsre*.
+1. A **LEKÉRDEZÉS BEÁLLÍTSAI** panelen módosítsa a nevet *Query1-ről**StormEventsre*.
 
     ![Lekérdezésnév módosítása](media/visualize-power-bi/query-name.png)
 
@@ -219,13 +219,13 @@ Ha nem szeretné megőrizni a létrehozott jelentést, egyszerűen törölje a *
 
 1. A **Saját munkaterületen** görgessen a **JELENTÉSEK** szakaszig, és keresse meg **storm-events** fájlt.
 
-1. Kattintson a **storm-events** melletti három pontra ( **. . .** ), majd válassza az **ELTÁVOLÍTÁS** lehetőséget.
+1. Kattintson a **storm-events** melletti három pontra (**. . .**), majd válassza az **ELTÁVOLÍTÁS** lehetőséget.
 
     ![Jelentés eltávolítása](media/visualize-power-bi/remove-report.png)
 
 1. Erősítse meg az eltávolítást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Lekérdezések írása](write-queries.md)

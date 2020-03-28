@@ -1,6 +1,6 @@
 ---
-title: SQL ServerWindows-felhasználók és-csoportok migrálása felügyelt példányra T-SQL használatával
-description: Ismerje meg, hogyan telepítheti át SQL Server helyszíni Windows-felhasználókat és-csoportokat a felügyelt példányra
+title: SQL ServerWindows felhasználók és csoportok áttelepítése felügyelt példányba a T-SQL használatával
+description: Tudnivalók az SQL Server helyszíni Windows-felhasználók és -csoportok felügyelt példányba való áttelepítéséről
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,47 +11,47 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: 2c8d7252b4e4ca8caa465727c0d2328c4aafaefb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227925"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: SQL Server helyszíni Windows-felhasználók és-csoportok migrálása Azure SQL Database felügyelt példányra T-SQL DDL-szintaxis használatával
+# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: Sql Server áttelepítése helyszíni Windows-felhasználók és -csoportok áttelepítése az Azure SQL Database felügyelt példányába a T-SQL DDL szintaxis használatával
 
 > [!NOTE]
-> A jelen cikkben a felhasználók és csoportok felügyelt példányra való átirányításához használt szintaxis **nyilvános előzetes**verzióban érhető el.
+> A felhasználók és csoportok felügyelt példányba való áttelepítéséhez használt szintaxis **nyilvános előzetes verzióban**érhető el.
 
-Ez a cikk végigvezeti a helyi Windows-felhasználók és-csoportok áttelepítésének folyamatán a SQL Server egy meglévő Azure SQL Database felügyelt példányon a T-SQL szintaxis használatával.
+Ez a cikk végigvezeti a folyamat áttelepítése a helyszíni Windows-felhasználók és csoportok az SQL Server egy meglévő Azure SQL Database felügyelt példány t-SQL szintaxis használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> - Bejelentkezések létrehozása a SQL Serverhoz
-> - Tesztelési adatbázis létrehozása az áttelepítéshez
+> - Bejelentkezések létrehozása az SQL Server kiszolgálóhoz
+> - Tesztadatbázis létrehozása áttelepítéshez
 > - Bejelentkezések, felhasználók és szerepkörök létrehozása
-> - Az adatbázis biztonsági mentése és visszaállítása felügyelt példányra (MI)
-> - Felhasználók manuális migrálása az ALTER USER szintaxis használatával
-> - A hitelesítés tesztelése az új leképezett felhasználókkal
+> - Az adatbázis biztonsági mentése és visszaállítása felügyelt példányba (MI)
+> - Felhasználók manuális áttelepítése a hibajelzőbe az ALTER USER szintaxis használatával
+> - Hitelesítés tesztelése az új leképezett felhasználókkal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következő előfeltételek érvényesek:
+Az oktatóanyag befejezéséhez a következő előfeltételek érvényesek:
 
-- A Windows-tartományt összevonták a Azure Active Directory (Azure AD) szolgáltatással.
-- Hozzáférés Active Directory felhasználók/csoportok létrehozásához.
-- Meglévő SQL Server a helyszíni környezetben.
-- Egy meglévő felügyelt példány. Lásd [: gyors útmutató: Azure SQL Database felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
-  - Azure AD-bejelentkezések létrehozásához a felügyelt példányon `sysadmin` kell használni.
-- [Hozzon létre egy Azure ad-rendszergazdát a felügyelt példányhoz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
-- Kapcsolódhat a felügyelt példányhoz a hálózaton belül. További információkat a következő cikkekben talál: 
-    - [Az alkalmazás összekötése Azure SQL Database felügyelt példánnyal](sql-database-managed-instance-connect-app.md)
-    - [Gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből](sql-database-managed-instance-configure-p2s.md)
+- A Windows-tartomány az Azure Active Directory (Azure AD) összevont.
+- Hozzáférés az Active Directoryhoz felhasználók/csoportok létrehozásához.
+- A helyszíni környezetben már meglévő SQL Server.
+- Egy meglévő felügyelt példány. Lásd: [Rövid útmutató: Hozzon létre egy Azure SQL Database felügyelt példányt.](sql-database-managed-instance-get-started.md)
+  - A `sysadmin` a felügyelt példányban azure AD bejelentkezések létrehozásához kell használni.
+- [Hozzon létre egy Azure AD-rendszergazdát a felügyelt példányhoz.](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)
+- Csatlakozhat a felügyelt példányhoz a hálózaton belül. További információt az alábbi cikkekben talál: 
+    - [Alkalmazás csatlakoztatása felügyelt Azure SQL Database-példányhoz](sql-database-managed-instance-connect-app.md)
+    - [Rövid útmutató: Pont-hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből](sql-database-managed-instance-configure-p2s.md)
     - [Nyilvános végpont konfigurálása felügyelt Azure SQL Database-példányban](sql-database-managed-instance-public-endpoint-configure.md)
 
-## <a name="t-sql-ddl-syntax"></a>A T-SQL DDL szintaxisa
+## <a name="t-sql-ddl-syntax"></a>T-SQL DDL szintaxis
 
-Az alábbiakban látható a T-SQL DDL szintaxisa, amely a felügyelt példányok Azure AD-hitelesítéssel történő áttelepítésének támogatásához használható SQL Server helyszíni Windows-felhasználók és-csoportok számára.
+Az alábbiakban a T-SQL DDL szintaxis támogatja az SQL Server helyszíni Windows-felhasználók és csoportok áttelepítése felügyelt példány az Azure AD-hitelesítéssel.
 
 ```sql
 -- For individual Windows users with logins 
@@ -63,26 +63,26 @@ ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 
 ## <a name="arguments"></a>Argumentumok
 
-_domainName_</br>
-A felhasználó tartománynevét adja meg.
+_Tartománynév_</br>
+Megadja a felhasználó tartománynevét.
 
-_userName_</br>
-Megadja az adatbázison belül azonosított felhasználó nevét.
+_Felhasználónév_</br>
+Megadja az adatbázisban azonosított felhasználó nevét.
 
 _= loginName\@domainName.com_</br>
-Felhasználó újraleképezése az Azure AD-bejelentkezésre
+Felhasználó újraképezése az Azure AD bejelentkezéshez
 
-_groupName_</br>
-Megadja az adatbázison belül azonosított csoport nevét.
+_csoportneve_</br>
+Megadja az adatbázisban azonosított csoport nevét.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>1\. rész: bejelentkezések létrehozása SQL Server helyszíni felhasználók és csoportok számára
+## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>1. rész: Bejelentkezések létrehozása az SQL Server helyszíni felhasználói és csoportjai számára
 
 > [!IMPORTANT]
-> A következő szintaxis egy felhasználót és egy csoportos bejelentkezést hoz létre a SQL Serverban. Az alábbi szintaxis végrehajtása előtt meg kell győződnie arról, hogy a felhasználó és a csoport a Active Directory (AD) belül található. </br> </br>
+> A következő szintaxis létrehoz egy felhasználót és egy csoport bejelentkezést az SQL Server kiszolgálón. Az alábbi szintaxis végrehajtása előtt meg kell győződnie arról, hogy a felhasználó és a csoport az Active Directoryban (AD) belül van. </br> </br>
 > Felhasználók: testUser1, testGroupUser </br>
-> Csoport: Migrálás – a testGroupUser az Active Directory-beli áttelepítési csoporthoz kell tartoznia
+> Csoport: áttelepítés - a testGroupUser nek az AD áttelepítési csoportjához kell tartoznia
 
-Az alábbi példa létrehoz egy bejelentkezést SQL Server a _testUser1_ nevű fiókhoz a _aadsqlmi_tartomány alatt. 
+Az alábbi példa létrehoz egy bejelentkezési sql server egy fiókot nevű _testUser1_ tartományban _aadsqlmi_. 
 
 ```sql
 -- Sign into SQL Server as a sysadmin or a user that can create logins and databases
@@ -114,9 +114,9 @@ create database migration
 go
 ```
 
-## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>2\. rész: Windows-felhasználók és-csoportok létrehozása, szerepkörök és engedélyek hozzáadása
+## <a name="part-2-create-windows-users-and-groups-then-add-roles-and-permissions"></a>2. rész: Windows-felhasználók és -csoportok létrehozása, majd szerepkörök és engedélyek hozzáadása
 
-A teszt felhasználó létrehozásához használja a következő szintaxist.
+A tesztfelhasználó létrehozásához használja az alábbi szintaxist.
 
 ```sql
 use migration;  
@@ -127,7 +127,7 @@ create user [aadsqlmi\testUser1] from login [aadsqlmi\testUser1];
 go 
 ```
 
-A felhasználói engedélyek keresése:
+Ellenőrizze a felhasználói engedélyeket:
 
 ```sql
 -- Check the user in the Metadata 
@@ -139,7 +139,7 @@ select user_name(grantee_principal_id), * from sys.database_permissions;
 go
 ```
 
-Hozzon létre egy szerepkört, és rendelje hozzá a tesztelési felhasználót a következő szerepkörhöz:
+Hozzon létre egy szerepkört, és rendelje hozzá a tesztfelhasználót ehhez a szerepkörhöz:
 
 ```sql 
 -- Create a role with some permissions and assign the user to the role
@@ -153,7 +153,7 @@ alter role UserMigrationRole add member [aadsqlmi\testUser1];
 go 
 ``` 
 
-A következő lekérdezés használatával jelenítheti meg az adott szerepkörhöz rendelt felhasználóneveket:
+Az alábbi lekérdezéssel megjelenítheti az adott szerepkörhöz rendelt felhasználóneveket:
 
 ```sql
 -- Display user name assigned to a specific role 
@@ -168,7 +168,7 @@ WHERE DP1.type = 'R'
 ORDER BY DP1.name; 
 ```
 
-Csoport létrehozásához használja a következő szintaxist. Ezután vegye fel a csoportot a szerepkör `db_owner`ba.
+Csoport létrehozásához használja az alábbi szintaxist. Ezután adja hozzá `db_owner`a csoportot a szerepkörhöz.
 
 ```sql
 -- Create Windows group
@@ -185,7 +185,7 @@ go
 -- Output  ( 1 means YES) 
 ```
 
-Hozzon létre egy tesztelési táblát, és adjon hozzá néhányat a következő szintaxis használatával:
+Hozzon létre egy teszttáblát, és adjon hozzá néhány adatot az alábbi szintaxissal:
 
 ```sql
 -- Create a table and add data 
@@ -200,9 +200,9 @@ select * from test;
 go
 ```
 
-## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>3\. rész: az egyéni felhasználói adatbázis biztonsági mentése és visszaállítása felügyelt példányra
+## <a name="part-3-backup-and-restore-the-individual-user-database-to-managed-instance"></a>3. rész: Az egyes felhasználói adatbázis biztonsági mentése és visszaállítása a felügyelt példányba
 
-Készítsen biztonsági másolatot az áttelepítési adatbázisról az [adatbázisok másolása biztonsági mentéssel és visszaállítással](/sql/relational-databases/databases/copy-databases-with-backup-and-restore), vagy használja a következő szintaxist:
+Készítsen biztonsági másolatot az áttelepítési adatbázisról az [Adatbázisok másolása biztonsági másolattal és visszaállítással](/sql/relational-databases/databases/copy-databases-with-backup-and-restore)című cikksegítségével, vagy használja az alábbi szintaxist:
 
 ```sql
 use master; 
@@ -211,16 +211,16 @@ backup database migration to disk = 'C:\Migration\migration.bak';
 go
 ```
 
-Kövesse a rövid útmutatót [: adatbázis visszaállítása felügyelt példányra](sql-database-managed-instance-get-started-restore.md).
+Kövesse [a rövid útmutató: Adatbázis visszaállítása felügyelt példányra.](sql-database-managed-instance-get-started-restore.md)
 
-## <a name="part-4-migrate-users-to-managed-instance"></a>4\. rész: a felhasználók migrálása felügyelt példányra
+## <a name="part-4-migrate-users-to-managed-instance"></a>4. rész: Felhasználók áttelepítése felügyelt példányba
 
 > [!NOTE]
-> Az Azure AD-rendszergazda felügyelt példányok esetében a létrehozás után módosult. További információ: [új Azure ad-rendszergazdai funkciók a mi számára](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+> Az Azure AD-rendszergazda felügyelt példány funkció létrehozása után megváltozott. További információ: [New Azure AD admin functionality for MI.](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi)
 
-Hajtsa végre az ALTER USER parancsot az áttelepítési folyamat végrehajtásához a felügyelt példányon.
+Az ALTER USER parancs végrehajtása az áttelepítési folyamat befejezéséhez a felügyelt példányon.
 
-1. Jelentkezzen be a felügyelt példányba a felügyelt példányhoz tartozó Azure AD-rendszergazdai fiók használatával. Ezután hozza létre az Azure AD-bejelentkezést a felügyelt példányon a következő szintaxissal. További információ: [oktatóanyag: felügyelt példányok biztonsága Azure SQL Database az Azure ad-kiszolgáló résztvevői (bejelentkezések) használatával](sql-database-managed-instance-aad-security-tutorial.md).
+1. Jelentkezzen be a felügyelt példány az Azure AD-rendszergazdai fiók felügyelt példány használatával. Ezután hozza létre az Azure AD bejelentkezést a felügyelt példányban a következő szintaxis használatával. További információ: [Oktatóanyag: Felügyelt példány biztonsága az Azure SQL Database-ben az Azure AD-kiszolgálói egyszerű (bejelentkezési adatok) használatával című témakörben.](sql-database-managed-instance-aad-security-tutorial.md)
 
     ```sql
     use master 
@@ -239,7 +239,7 @@ Hajtsa végre az ALTER USER parancsot az áttelepítési folyamat végrehajtás�
     go
     ```
 
-1. Győződjön meg arról, hogy a megfelelő adatbázishoz, táblához és résztvevőhöz tartozó áttelepítés megvalósul.
+1. Ellenőrizze az áttelepítést a megfelelő adatbázis, tábla és rendszerbiztonsági tagok között.
 
     ```sql
     -- Switch to the database migration that is already restored for MI 
@@ -257,7 +257,7 @@ Hajtsa végre az ALTER USER parancsot az áttelepítési folyamat végrehajtás�
     -- the old group aadsqlmi\migration should be there
     ```
 
-1. Használja az ALTER USER szintaxist a helyszíni felhasználó Azure AD-bejelentkezésre való leképezéséhez.
+1. Az ALTER USER szintaxissal leképezze a helyszíni felhasználót az Azure AD bejelentkezéshez.
 
     ```sql
     /** Execute the ALTER USER command to alter the Windows user [aadsqlmi\testUser1]
@@ -288,7 +288,7 @@ Hajtsa végre az ALTER USER parancsot az áttelepítési folyamat végrehajtás�
     ORDER BY DP1.name;
     ```
 
-1. Használja az ALTER USER szintaxist a helyszíni csoport Azure AD-bejelentkezésre való leképezéséhez.
+1. Az ALTER USER szintaxissal rendelje le a helyszíni csoportot az Azure AD bejelentkezéshez.
 
     ```sql
     /** Execute ALTER USER command to alter the Windows group [aadsqlmi\migration]
@@ -312,26 +312,26 @@ Hajtsa végre az ALTER USER parancsot az áttelepítési folyamat végrehajtás�
     -- Output 1 means 'YES'
     ```
 
-## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>5\. rész: az Azure AD-felhasználó vagy-csoport hitelesítésének tesztelése
+## <a name="part-5-testing-azure-ad-user-or-group-authentication"></a>5. rész: Az Azure AD-felhasználó vagy -csoport hitelesítésének tesztelése
 
-Tesztelje a felügyelt példány hitelesítését az ALTER USER szintaxissal korábban az Azure AD-bejelentkezéshez hozzárendelt felhasználó használatával.
+Tesztelje a felügyelt példány hitelesítését az Azure AD bejelentkezéshez korábban leképezett felhasználó használatával az ALTER USER szintaxis használatával.
  
-1. Jelentkezzen be az összevont virtuális gépre a MI előfizetése használatával `aadsqlmi\testUser1`
-1. SQL Server Management Studio (SSMS) használatával jelentkezzen be a felügyelt példányba **Active Directory integrált** hitelesítéssel, és csatlakozzon az adatbázishoz `migration`.
-    1. A testUser1@aadsqlmi.net hitelesítő adataival is bejelentkezhet a SSMS beállítással **Active Directory – univerzális, MFA-támogatással**. Ebben az esetben azonban nem használhatja az egyszeri bejelentkezési mechanizmust, és jelszót kell beírnia. Nem kell összevont virtuális gépet használnia a felügyelt példányba való bejelentkezéshez.
-1. A **szerepkör tagjaként válassza ki**a `test` táblát.
+1. Jelentkezzen be az összevont virtuális gépbe az MI-előfizetés használatával`aadsqlmi\testUser1`
+1. Az SQL Server Management Studio (SSMS) használatával jelentkezzen be a felügyelt `migration`példányba az Active Directory **integrált** hitelesítésével, amely csatlakozik az adatbázishoz.
+    1. A testUser1@aadsqlmi.net hitelesítő adatokkal is bejelentkezhet az **Active Directory – Universal sSMS opcióval, amely mfa-támogatással rendelkezik.** Ebben az esetben azonban nem használhatja az egyszeri bejelentkezés i mechanizmust, és be kell írnia egy jelszót. Nem kell egy összevont virtuális gép a felügyelt példányba való bejelentkezéshez.
+1. A **SELECT**szerepkörtag részeként a `test` táblából választhatunk.
 
     ```sql
     Select * from test  --  and see one row (1,10)
     ```
 
 
-A felügyelt példányok hitelesítésének tesztelése egy Windows-csoport tagjainak `migration`használatával. Az áttelepítés előtt fel kell venni a felhasználót `aadsqlmi\testGroupUser` a csoportba `migration`.
+Felügyelt példány hitelesítésének tesztelése egy Windows-csoport `migration`tagjával . A `aadsqlmi\testGroupUser` felhasználót az áttelepítés `migration` előtt hozzá kellett volna adni a csoporthoz.
 
-1. Jelentkezzen be az összevont virtuális gépre a MI előfizetése használatával `aadsqlmi\testGroupUser` 
-1. A SSMS használata **Active Directory integrált** hitelesítéssel, kapcsolódás a mi kiszolgálóhoz és az adatbázishoz `migration`
-    1. A testGroupUser@aadsqlmi.net hitelesítő adataival is bejelentkezhet a SSMS beállítással **Active Directory – univerzális, MFA-támogatással**. Ebben az esetben azonban nem használhatja az egyszeri bejelentkezési mechanizmust, és jelszót kell beírnia. Nem kell összevont virtuális gépet használnia a felügyelt példányba való bejelentkezéshez. 
-1. A `db_owner` szerepkör részeként létrehozhat egy új táblázatot.
+1. Jelentkezzen be az összevont virtuális gépbe az MI-előfizetés használatával`aadsqlmi\testGroupUser` 
+1. Az SSMS active **directory integrált** hitelesítéssel történő használata, csatlakozás az mi-kiszolgálóhoz és az adatbázishoz`migration`
+    1. A testGroupUser@aadsqlmi.net hitelesítő adatokkal is bejelentkezhet az **Active Directory – Universal sSMS opcióval, amely mfa-támogatással rendelkezik.** Ebben az esetben azonban nem használhatja az egyszeri bejelentkezés i mechanizmust, és be kell írnia egy jelszót. Nem kell egy összevont virtuális gép a felügyelt példány ba való bejelentkezéshez. 
+1. A `db_owner` szerepkör részeként új táblát hozhat létre.
 
     ```sql
     -- Create table named 'new' with a default schema
@@ -339,11 +339,11 @@ A felügyelt példányok hitelesítésének tesztelése egy Windows-csoport tagj
     ```
                              
 > [!NOTE] 
-> Az Azure SQL DB ismert tervezési problémái miatt a csoport tagjaként végrehajtott Create an Table utasítás sikertelen lesz a következő hibával: </br> </br>
+> Az Azure SQL DB ismert tervezési problémája miatt a csoport tagjaként végrehajtott táblautasítás létrehozása a következő hibával sikertelen lesz: </br> </br>
 > `Msg 2760, Level 16, State 1, Line 4 
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
-> Az aktuális megkerülő megoldás egy meglévő sémával rendelkező tábla létrehozása a fenti esetben < dbo. New >
+> Az aktuális megoldás az, hogy hozzon létre egy táblázatot egy meglévő sémát a fenti esetben <dbo.new>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)
+- [Oktatóanyag: Az SQL Server áttelepítése egy Azure SQL Database felügyelt példányba offline állapotban a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

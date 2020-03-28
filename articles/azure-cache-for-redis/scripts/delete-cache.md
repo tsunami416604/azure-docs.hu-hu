@@ -1,6 +1,6 @@
 ---
-title: Azure cache törlése a Redis – Azure CLI
-description: Ez az Azure CLI-mintakód azt mutatja be, hogyan törölhet egy Azure cache-t a Redis-példányhoz az az Redis delete paranccsal.
+title: Azure-gyorsítótár törlése a Redis-hez – Azure CLI
+description: Ez az Azure CLI-kódminta bemutatja, hogyan törölheti az Azure Cache for Redis példány az az redis delete paranccsal.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: e5178ab4069cc5ffa8607c5feea6ffac86284a5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411075"
 ---
-# <a name="delete-an-azure-cache-for-redis"></a>Azure cache törlése a Redis-hez
+# <a name="delete-an-azure-cache-for-redis"></a>A Redis Azure-gyorsítótárának törlése
 
-Ebből a forgatókönyvből megtudhatja, hogyan törölhet egy Azure-gyorsítótárat a Redis.
+Ebben a forgatókönyvben megtudhatja, hogyan törölheti az Azure-gyorsítótár redis.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,15 +29,15 @@ Ebből a forgatókönyvből megtudhatja, hogyan törölhet egy Azure-gyorsítót
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja a Redis-példány Azure-gyorsítótárának törléséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja a Redis-példány Azure-gyorsítótárának törléséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az Redis delete](https://docs.microsoft.com/cli/azure/redis) | Törölje az Azure cache-t a Redis-példányhoz. |
+| [az redis törlés](https://docs.microsoft.com/cli/azure/redis) | Törölje az Azure Cache a Redis-példány. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Azure cache a Redis CLI-szkriptekhez az [Azure cache Redis dokumentációjában](../cli-samples.md)található.
+További Azure Cache for Redis CLI script minták találhatók az [Azure Cache for Redis dokumentációban.](../cli-samples.md)

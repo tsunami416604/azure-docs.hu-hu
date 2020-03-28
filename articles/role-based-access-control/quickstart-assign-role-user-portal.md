@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal '
-description: Ebből az oktatóanyagból megtudhatja, hogyan biztosíthat felhasználói hozzáférést az Azure-erőforrásokhoz a Azure Portal szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+title: 'Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC-mal és az Azure Portalon '
+description: Ebben az oktatóanyagban megtudhatja, hogyan adhat hozzáférést egy felhasználónak az Azure-erőforrásokhoz szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure Portalon.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
 ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77138090"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal használatával
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és az Azure Portal használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban felhasználói hozzáférést biztosít a virtuális gépek egy erőforráscsoporthoz való létrehozásához és kezeléséhez.
+[Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelése. Ebben az oktatóanyagban hozzáférést biztosít a felhasználóknak virtuális gépek létrehozásához és kezeléséhez egy erőforráscsoportban.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzáférés biztosítása egy erőforráscsoport-hatókörben lévő felhasználó számára
+> * Hozzáférés megadása egy felhasználószámára egy erőforráscsoport hatókörén
 > * Hozzáférés eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -38,19 +38,19 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-1. A navigációs listában kattintson az **erőforráscsoportok**elemre.
+1. A navigációs listában kattintson az **Erőforráscsoportok** elemre.
 
-1. Kattintson a **Hozzáadás** elemre az **erőforráscsoport** panel megnyitásához.
+1. Kattintson a **Hozzáadás** gombra az **Erőforráscsoport** panel megnyitásához.
 
    ![Új erőforráscsoport hozzáadása](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. Az **erőforráscsoport neve**mezőbe írja be a következőt: **RBAC-Resource-Group**.
+1. Az **Erőforráscsoport nevéhez**adja meg **az rbac-resource-group értéket.**
 
 1. Válasszon egy előfizetést és a egy helyet.
 
-1. Az erőforráscsoport létrehozásához kattintson a **Létrehozás** gombra.
+1. Az erőforráscsoport létrehozásához kattintson a **Létrehozás** lehetőségre.
 
-1. Az erőforráscsoportok listájának frissítéséhez kattintson a **frissítés** gombra.
+1. Kattintson a **Frissítés** gombra az erőforráscsoportok listájának frissítéséhez.
 
    Az új erőforráscsoport az erőforráscsoportok listájában jelenik meg.
 
@@ -60,29 +60,29 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik.
 
-1. Az **erőforráscsoportok**listájában kattintson az új **RBAC-Resource-Group** erőforráscsoport elemre.
+1. Az **Erőforráscsoportok**listájában kattintson az új **rbac-erőforráscsoport** erőforráscsoportra.
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. Kattintson a **szerepkör-hozzárendelések** lapra a szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
+1. A szerepkör-hozzárendelések aktuális listájának megtekintéséhez kattintson a **Szerepkör-hozzárendelés** fülre.
 
    ![Hozzáférés-vezérlés (IAM) panel erőforráscsoporthoz](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Kattintson a **hozzáadás** > **szerepkör-hozzárendelés hozzáadása** elemre a szerepkör-hozzárendelés hozzáadása ablaktábla megnyitásához.
+1. A Szerepkör-hozzárendelés **hozzáadása** > ablaktábla megnyitásához kattintson a**Szerepkör-hozzárendelés hozzáadása** gombra.
 
-   Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
+   Ha nincs engedélye a szerepkörök hozzárendeléséhez, a Szerepkör-hozzárendelés hozzáadása beállítás le lesz tiltva.
 
-   ![Menü hozzáadása](./media/role-assignments-portal/add-menu.png)
+   ![Hozzáadás menü](./media/role-assignments-portal/add-menu.png)
 
-   ![Szerepkör-hozzárendelési ablaktábla hozzáadása](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+   ![Szerepkör-hozzárendelés hozzáadása ablaktábla](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
 1. A **Szerepkör** legördülő listájában válassza a **Virtuális gépek közreműködője** szerepkört.
 
 1. A **Kiválasztás** listában válassza ki saját magát vagy egy másik felhasználót.
 
-1. A szerepkör-hozzárendelés létrehozásához kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra a szerepkör-hozzárendelés létrehozásához.
 
-   Néhány pillanat elteltével a felhasználónak hozzá kell rendelnie a virtuálisgép-közreműködő szerepkört a RBAC-Resource-Group erőforráscsoport-hatókörhöz.
+   Néhány pillanat múlva a felhasználó a virtuális gép közreműködői szerepkört rendeli hozzá az rbac-erőforrás-csoport erőforráscsoport hatókörén.
 
    ![Virtuális gépek közreműködője szerepkör hozzárendelése](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
@@ -90,29 +90,29 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 
 Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania.
 
-1. A szerepkör-hozzárendelések listájában vegyen fel egy pipát a felhasználó mellett a virtuális gép közreműködői szerepkörével.
+1. A szerepkör-hozzárendelések listájában jelölje be a virtuálisgép közreműködői szerepkörrel rendelkező felhasználót.
 
-1. Kattintson az **Eltávolítás**gombra.
+1. Kattintson az **Eltávolítás** lehetőségre.
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. A megjelenő szerepkör-hozzárendelés eltávolítása üzenetben kattintson az **Igen**gombra.
+1. A megjelenő szerepkör-hozzárendelési üzenet eltávolítása korválassza az **Igen**gombot.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-1. A navigációs listában kattintson az **erőforráscsoportok**elemre.
+1. A navigációs listában kattintson az **Erőforráscsoportok** elemre.
 
-1. Kattintson a **RBAC-Resource-Group (csoport** ) elemre az erőforráscsoport megnyitásához.
+1. Kattintson **az rbac-resource-group** elemre az erőforráscsoport megnyitásához.
 
-1. Az erőforráscsoport törléséhez kattintson az **erőforráscsoport törlése** elemre.
+1. Kattintson az **Erőforráscsoport törlése** gombra az erőforráscsoport törléséhez.
 
    ![Erőforráscsoport törlése](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
-1. A biztosan **törölni** kívánja a panelt, írja be az erőforráscsoport nevét: **RBAC-Resource-Group**.
+1. A **Győződjön meg róla, hogy törölni szeretné** a panelt, írja be az erőforráscsoport nevét: **rbac-resource-group**.
 
 1. Az erőforráscsoport törléséhez kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+> [Oktatóanyag: Felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
