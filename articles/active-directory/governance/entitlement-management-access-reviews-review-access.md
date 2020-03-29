@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési csomag hozzáférésének áttekintése az Azure AD-jogosultságok kezelésében
-description: Megtudhatja, hogyan végezheti el a jogosultságok felügyeleti hozzáférési csomagjainak hozzáférési felülvizsgálatát Azure Active Directory hozzáférési felülvizsgálatokban (előzetes verzió).
+title: Hozzáférési csomag hozzáférésének áttekintése az Azure AD-jogosultságkezelésben
+description: Megtudhatja, hogyan végezheti el a jogosultságkezelési hozzáférési csomagok hozzáférés-felülvizsgálatát az Azure Active Directory hozzáférési felülvizsgálatokban (előzetes verzió).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,90 +17,90 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968749"
 ---
-# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzáférésének áttekintése az Azure AD-jogosultságok kezelésében
+# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzáférésének áttekintése az Azure AD-jogosultságkezelésben
 
-Az Azure AD jogosultság-kezelési szolgáltatás leegyszerűsíti, hogy a vállalatok hogyan kezelhetik a csoportokat, az alkalmazásokat és a SharePoint-webhelyeket. Ez a cikk azt ismerteti, hogyan hajtható végre a hozzáférési felülvizsgálatok olyan más felhasználók számára, akik hozzá vannak rendelve egy hozzáférési csomaghoz a kijelölt felülvizsgáló.
+Az Azure AD jogosultságkezelés leegyszerűsíti, hogy a vállalatok hogyan kezeljék a csoportokhoz, alkalmazásokhoz és SharePoint-webhelyekhez való hozzáférést. Ez a cikk azt ismerteti, hogyan végezheti el a hozzáférési felülvizsgálathoz kijelölt véleményezőként hozzárendelt más felhasználók hozzáférési felülvizsgálatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A felhasználók aktív hozzáférési csomagjának hozzárendeléseinek áttekintéséhez meg kell felelnie a hozzáférési felülvizsgálat előfeltételeinek:
+A felhasználók aktív hozzáférési csomag-hozzárendeléseinek áttekintéséhez meg kell felelnie a hozzáférés felülvizsgálatának előfeltételeinek:
 - Prémium szintű Azure AD P2
 - Globális rendszergazda
-- Kijelölt felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
+- Kijelölt felhasználói rendszergazda, katalógustulajdonos vagy Access-csomagkezelő
 
-További információkért lásd a [licencekre vonatkozó követelményeket](entitlement-management-overview.md#license-requirements).
+További információt a [Licenckövetelmények című témakörben talál.](entitlement-management-overview.md#license-requirements)
 
 
 ## <a name="open-the-access-review"></a>A hozzáférési felülvizsgálat megnyitása
 
 A hozzáférési felülvizsgálat megkereséséhez és megnyitásához kövesse az alábbi lépéseket:
 
-1. Előfordulhat, hogy a Microsoft e-mailt kap, amely arra kéri, hogy tekintse át a hozzáférést. Keresse meg az e-mailt a hozzáférési felülvizsgálat megnyitásához. Íme egy példa e-mailben a hozzáférés áttekintéséhez:
+1. E-mailt kaphat a Microsofttól, amely a hozzáférés áttekintését kéri. Keresse meg az e-mailt a hozzáférési felülvizsgálat megnyitásához. Íme egy példa e-mail ben átnézni hozzáférést:
     
-    ![Hozzáférési felülvizsgálati felülvizsgáló e-mail-címe](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
+    ![Access-ellenőrző e-mail](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
 
-1. A hozzáférési felülvizsgálat megnyitásához kattintson a **felhasználói hozzáférés áttekintése** hivatkozásra. 
+1. A **hozzáférés-ellenőrzés** megnyitásához kattintson a Felhasználói hozzáférés áttekintése hivatkozásra. 
 
-1. Ha nem rendelkezik az e-mail-címmel, a függőben lévő hozzáférési felülvizsgálatokat közvetlenül a https://myaccess.microsoft.comra navigálva érheti el.  (Az USA kormánya számára Ehelyett használja a `https://myaccess.microsoft.us`.)
+1. Ha nem rendelkezik az e-maillel, a függőben https://myaccess.microsoft.comlévő hozzáférési véleményeket úgy találhatja meg, hogy közvetlenül a rendszerre navigál.  (Az Egyesült Államok `https://myaccess.microsoft.us` kormánya, használja helyette.)
 
-1. A bal oldali navigációs sávon kattintson a **hozzáférési felülvizsgálatok** lehetőségre az Önhöz rendelt hozzáférési felülvizsgálatok listájának megtekintéséhez.
+1. Kattintson az **Access-ellenőrzések** elemre a bal oldali navigációs sávon a függőben lévő hozzáférési ellenőrzések listájának megtekintéséhez.
     
-    ![Hozzáférési felülvizsgálatok kiválasztása a saját hozzáférés lehetőségnél](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
+    ![Hozzáférési vélemények kiválasztása a Saját hozzáférés ben](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
 
-1. Kattintson a megkezdeni kívánt áttekintésre.
+1. Kattintson a megkezdeni kívánt értékelésre.
     
-    ![Hozzáférési felülvizsgálat kiválasztása](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
+    ![A hozzáférési felülvizsgálat kiválasztása](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
 
-## <a name="perform-the-access-review"></a>A hozzáférési felülvizsgálat végrehajtása
+## <a name="perform-the-access-review"></a>A hozzáférés-ellenőrzés végrehajtása
 
-A hozzáférési felülvizsgálat megnyitása után megtekintheti azoknak a felhasználóknak a nevét, amelyeknek át kell tekintenie. Két módon engedélyezheti vagy tilthatja le a hozzáférést:
-- Egy vagy több felhasználóhoz manuálisan is jóváhagyhatja vagy megtagadhatja a hozzáférést
-- Elfogadhatja a rendszerjavaslatokat
+Miután megnyitotta a hozzáférési felülvizsgálatot, látni fogja azoknak a felhasználóknak a nevét, akiknek át kell tekintenie. Kétféleképpen hagyhatja jóvá vagy tagadhatja meg a hozzáférést:
+- Manuálisan jóváhagyhatja vagy megtagadhatja a hozzáférést egy vagy több felhasználó számára
+- Elfogadhatja a rendszer javaslatokat
 
-### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>Egy vagy több felhasználó hozzáférésének manuális jóváhagyása vagy megtagadása
-1. Tekintse át a felhasználók listáját, és határozza meg, hogy mely felhasználóknak kell továbbra is hozzáférése.
+### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>Hozzáférés manuális jóváhagyása vagy megtagadása egy vagy több felhasználó számára
+1. Tekintse át a felhasználók listáját, és határozza meg, hogy mely felhasználóknak kell továbbra is hozzáférniük.
 
-    ![A megtekinteni kívánt felhasználók listája](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
+    ![Az átnézandó felhasználók listája](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
 
-1. A hozzáférés jóváhagyásához vagy megtagadásához válassza a felhasználó neve bal oldalán található választógombot.
+1. A hozzáférés jóváhagyásához vagy megtagadásához jelölje ki a felhasználó nevétől balra található választógombot.
 
-1. A felhasználónevek feletti sávban válassza a **jóváhagyás** vagy a **Megtagadás** lehetőséget.
+1. A felhasználónevek feletti sávon válassza a **Jóváhagyás** vagy a **Megtagadás** lehetőséget.
 
-    ![Válassza ki a felhasználót](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
+    ![A felhasználó kijelölése](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
 
-1. Ha nem biztos benne, akkor kattintson a **nem tud** gombra.
+1. Ha nem biztos benne, kattintson a **Nem tudom** gombra.
 
-    Ha ezt a beállítást választja, a felhasználó fenntartja a hozzáférést, és ez a kijelölés a naplókba kerül. A napló megjeleníti azokat a véleményezőket, amelyeken még befejezte a felülvizsgálatot.
+    Ha ezt a beállítást adja meg, a felhasználó fenntartja a hozzáférést, és ez a beállítás megjelenik a naplónaplókban. A napló ban látható a többi ellenőrző, hogy még mindig befejezte az ellenőrzés.
 
-1. Előfordulhat, hogy meg kell adnia a döntés okát. Írjon be egy okot, és kattintson a **Submit (Küldés**) gombra.
+1. Előfordulhat, hogy meg kell indokolnia döntését. Írjon be egy okot, és kattintson a **Küldés gombra.**
 
     ![Hozzáférés jóváhagyása vagy megtagadása](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
 
-1. A döntés a felülvizsgálat vége előtt bármikor módosítható. Ehhez válassza ki a felhasználót a listából, és változtassa meg a döntést. Jóváhagyhatja például a korábban megtagadott felhasználó hozzáférését.
+1. A döntést bármikor módosíthatja az értékelés vége előtt. Ehhez jelölje ki a felhasználót a listából, és módosítsa a döntést. Jóváhagyhatja például egy korábban elutasított felhasználó hozzáférését.
 
-Ha több felülvizsgáló is van, a rendszer rögzíti a legutóbbi elküldött választ. Vegyünk például egy olyan példát, amelyben a rendszergazda két véleményezőt jelöl ki: Alice és Bob. Alice először megnyitja a felülvizsgálatot, és jóváhagyja a hozzáférést. A felülvizsgálat vége előtt Bob megnyitja a felülvizsgálatot, és megtagadja a hozzáférést. Ebben az esetben az utolsó megtagadási hozzáférési döntés rögzítve lesz.
+Ha több véleményező van, a felvétel az utolsó elküldött választ rögzíti. Vegyünk egy példát, amikor a rendszergazda két véleményezőt jelöl ki – Alice és Bob. Alice megnyitja először az értékelést, és jóváhagyja a hozzáférést. Az ellenőrzés befejezése előtt Bob megnyitja az értékelést, és megtagadja a hozzáférést. Ebben az esetben az utolsó megtagadási hozzáférési döntés rögzítésre kerül.
 
 >[!NOTE]
->Ha a felhasználó hozzáférése megtagadva, a rendszer nem távolítja el azonnal a hozzáférési csomagból. A rendszer eltávolítja a felhasználót a hozzáférési csomagból, ha a felülvizsgálat véget ér, vagy a rendszergazda befejezi a felülvizsgálatot.
+>Ha egy felhasználó nak meg tagadja a hozzáférést, a rendszer nem távolítja el azonnal a hozzáférési csomagból. A felhasználó a felülvizsgálat befejezésekor törlődik a hozzáférési csomagból, vagy a rendszergazda befejezi az értékelést.
 
 ### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>Hozzáférés jóváhagyása vagy megtagadása a rendszer által létrehozott javaslatok használatával
 
-Ha több felhasználó hozzáférését szeretné áttekinteni, használja a rendszer által létrehozott javaslatokat, és fogadja el a javaslatokat egyetlen kattintással. A javaslatok a felhasználó bejelentkezési tevékenysége alapján jönnek létre.
+Több felhasználó hozzáférésének gyorsabb áttekintéséhez használhatja a rendszer által létrehozott javaslatokat, és egyetlen kattintással elfogadhatja a javaslatokat. A javaslatok a felhasználó bejelentkezési tevékenysége alapján jönnek létre.
 
-1.  A lap tetején található sávban kattintson a **javaslatok elfogadása**elemre.
+1.  A lap tetején lévő sávon kattintson a **Javaslatok elfogadása gombra.**
     
-    ![Javaslatok fogadásának kiválasztása](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
+    ![Válassza a Javaslatok elfogadása lehetőséget.](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
     
-    Ekkor megjelenik a javasolt műveletek összegzése.
+    Megjelenik az ajánlott műveletek összegzése.
 
-1.  A javaslatok elfogadásához kattintson a **Submit (Küldés** ) gombra.
+1.  A javaslatok elfogadásához kattintson a **Küldés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Hozzáférési csomagok önálló felülvizsgálata](entitlement-management-access-reviews-self-review.md)
+- [A hozzáférési csomagok önellenőrzése](entitlement-management-access-reviews-self-review.md)

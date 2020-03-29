@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub-feladatok ismertetése |} A Microsoft Docs
-description: Az IoT hub fejlesztői útmutató – több eszközön futtatandó feladatok ütemezése csatlakoztatva. Feladatok frissítheti a címkéket és kívánt tulajdonságok és több eszközön közvetlen metódusok meghívása.
+title: Az Azure IoT Hub-feladatok megismerése | Microsoft dokumentumok
+description: Fejlesztői útmutató – ütemezési feladatok futtatásához több eszközön csatlakozik az IoT hub. A feladatok frissíthetik a címkéket és a kívánt tulajdonságokat, és közvetlen metódusokat hívhatnak meg több eszközön.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,34 +9,34 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65409065"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
-Az Azure IoT Hub lehetővé teszi, hogy a építőelemek, például számos [eszköz-ikertulajdonságok és címkék](iot-hub-devguide-device-twins.md) és [közvetlen metódusok](iot-hub-devguide-direct-methods.md). Általában a háttér-alkalmazások engedélyezése eszközadminisztrátorok és üzemeltetői, módosíthatja és használhatja az IoT-eszközök tömeges és a egy megadott időpontban. Feladatok ütemezett időpontban ikereszköz-frissítések és az eszközök ellen közvetlen metódusok végrehajtása. Az operátor például egy háttér-alkalmazást, amely kezdeményezi és követi nyomon egy feladatot, amely az eszközök, amelyek nem lenne zavaró a az épület a műveletek egyszerre 43 és emelet 3 épületben újraindítás használja.
+Az Azure IoT Hub számos építőelem, például [az ikereszköz-tulajdonságokat, a címkéket és](iot-hub-devguide-device-twins.md) [a közvetlen metódusokat](iot-hub-devguide-direct-methods.md)teszi lehetővé. A háttéralkalmazások általában lehetővé teszik az eszközadminisztrátorok és -üzemeltetők számára az IoT-eszközök tömeges és ütemezett frissítését és azokkal való interakciót. A feladatok eszköziker-frissítéseket és közvetlen metódusokat hajtanak végre egy eszközkészleten ütemezett időpontban. Például egy operátor egy háttéralkalmazás, amely kezdeményezi és nyomon követi a feladatot, hogy indítsa újra az eszközök egy sor eszközt az épület 43 és a 3.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Vegye figyelembe, hogy bármelyikével feladatok ütemezését és nyomon követheti a szolgálatot a következő tevékenységeket meg az eszközök:
+Fontolja meg a feladatok használatát, amikor az alábbi tevékenységek bármelyikét ütemezi és nyomon követi egy eszközcsoporton:
 
 * Eszköz kívánt tulajdonságainak frissítése
-* A címkék frissítése
+* Címkék frissítése
 * Közvetlen metódusok meghívása
 
 ## <a name="job-lifecycle"></a>Feladat életciklusa
 
-Feladatok a megoldás háttérrendszere által kezdeményezett, és az IoT Hub által karbantartott. Egy feladat keresztül a szolgáltatás által használt URI-t is kezdeményezhető (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`), és folyamatban van egy végrehajtó feladaton keresztül a szolgáltatás által használt URI lekérdezése (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`). Feladat lekérdezés futtatása a futó feladatok, ha egy feladat állapotának frissítéséhez.
+A feladatokat a megoldás háttér-tartalék vége kezdeményezi, és az IoT Hub karbantartja. A feladatot szolgáltatásfelé néző URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) keresztül kezdeményezheti, és a szolgáltatás felé`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`néző URI ( keresztül lekérdezheti a végrehajtó feladat előrehaladását. A feladatok futtatása a feladat indítása után a futó feladatok állapotának frissítéséhez futtasson egy feladatlekérdezést.
 
 > [!NOTE]
-> Ha olyan feladatot kezdeményez, nevét és értékeit tartalmazhat US-ASCII nyomtatható alfanumerikus, kivéve az alábbi: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Feladat kezdeményezésekénél a tulajdonságnevek és értékek csak US-ASCII nyomtatható alfanumerikus értékeket tartalmazhatnak, kivéve a következő készletben szereplő értékeket:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
-## <a name="jobs-to-execute-direct-methods"></a>Közvetlen metódusok végrehajtása feladatok
+## <a name="jobs-to-execute-direct-methods"></a>Közvetlen metódusok végrehajtásának feladatai
 
-Az alábbi kódrészlet bemutatja a HTTPS 1.1 a kérelem részletes adatainak végre egy [közvetlen metódus](iot-hub-devguide-direct-methods.md) meg az eszközök egy feladat használatával:
+A következő kódrészlet a HTTPS 1.1 kérelem részleteit mutatja be a [közvetlen metódus végrehajtásához](iot-hub-devguide-direct-methods.md) egy feladatot használó eszközökön:
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -58,7 +58,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-A lekérdezési feltétel is lehet egyetlen Eszközazonosítót vagy eszköz a következő példákban szemléltetett módon azonosítók listáját:
+A lekérdezési feltétel lehet egyetlen eszközazonosítón vagy az eszközazonosítók listáján is, ahogy az a következő példákban látható:
 
 ```
 "queryCondition" = "deviceId = 'MyDevice1'"
@@ -66,9 +66,9 @@ A lekérdezési feltétel is lehet egyetlen Eszközazonosítót vagy eszköz a k
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
 
-[IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) IoT Hub lekérdezési nyelv további részletesen ismerteti.
+[Az IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) e további részletekben ismerteti az IoT Hub lekérdezési nyelvét.
 
-A következő kódrészlet azt mutatja be, a kérés- és egy közvetlen metódus meghívása a contoso-hub-1, minden eszközön testMethod nevű ütemezett feladat:
+A következő kódrészlet a contoso-hub-1 összes eszközén egy testMethod nevű közvetlen metódus hívására ütemezett feladat kérését és válaszát jeleníti meg:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -100,9 +100,9 @@ Date: Fri, 03 May 2019 01:46:18 GMT
 {"jobId":"job01","type":"scheduleDeviceMethod","status":"queued"}
 ```
 
-## <a name="jobs-to-update-device-twin-properties"></a>Eszköz-ikertulajdonságok frissíteni feladatok
+## <a name="jobs-to-update-device-twin-properties"></a>Az ikereszköz tulajdonságainak frissítéséhez
 
-A következő kódrészlet azt mutatja be, HTTPS 1.1 kérés részleteinek frissítése egy feladat használatával eszköz-ikertulajdonságok:
+A következő kódrészlet a HTTPS 1.1 kérelem részleteit mutatja az ikereszköz tulajdonságainak feladat használatával történő frissítéséhez:
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -121,9 +121,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> A *updateTwin* tulajdonság érvényes etag egyezést igényel; például `etag="*"`.
+> Az *updateTwin* tulajdonsághoz érvényes etag-egyezés szükséges; például `etag="*"`.
 
-A következő kódrészlet azt mutatja be, a kérés- és frissíteni a teszt-device-contoso-hub-1 eszköz-ikertulajdonságok ütemezett feladat:
+A következő kódrészlet a contoso-hub-1 teszteszköz ikereszköz-tulajdonságainak frissítésére ütemezett feladatra vonatkozó kérést és választ mutatja be:
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -158,9 +158,9 @@ Date: Fri, 03 May 2019 22:45:13 GMT
 {"jobId":"job02","type":"scheduleUpdateTwin","status":"queued"}
 ```
 
-## <a name="querying-for-progress-on-jobs"></a>A folyamatban lévő feladatok lekérdezése
+## <a name="querying-for-progress-on-jobs"></a>Feladatok előrehaladásának lekérdezése
 
-Az alábbi kódrészlet bemutatja a feladatok lekérdezése HTTPS 1.1 kérelem részletei:
+A következő kódrészlet a HTTPS 1.1 kérelem részleteit jeleníti meg a feladatok lekérdezéséhez:
 
 ```
 GET /jobs/v2/query?api-version=2018-06-30[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
@@ -169,53 +169,53 @@ Authorization: <config.sharedAccessSignature>
 Content-Type: application/json; charset=utf-8
 ```
 
-A válaszból biztosítja a continuationtoken argumentumot használja.
+A continuationToken a válaszból származik.
 
-A feladat végrehajtási állapotát minden egyes eszköz segítségével lekérdezhető a [az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása](iot-hub-devguide-query-language.md).
+A feladat-végrehajtási állapot lekérdezése az egyes eszközöken az [IOt Hub lekérdezési nyelv az eszköz twins, feladatok és üzenet-útválasztás.](iot-hub-devguide-query-language.md)
 
-## <a name="jobs-properties"></a>Feladat tulajdonságai
+## <a name="jobs-properties"></a>Feladatok tulajdonságai
 
-Az alábbi lista a tulajdonságait, és a vonatkozó leírásokat, amely használható lekérdezésekor feladatok vagy a feladat eredményeinek tartalmazza.
+Az alábbi lista a tulajdonságokat és a megfelelő leírásokat tartalmazza, amelyek a feladatok vagy a feladateredmények lekérdezésekor használhatók.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| **jobId** |Alkalmazás azonosítója a feladatra vonatkozóan megadott. |
-| **startTime** |Alkalmazás a megadott kezdési idő (ISO-8601) a feladathoz. |
-| **endTime** |Az IoT Hub dátuma (ISO-8601) amikor a feladat befejeződött-e megadva. Csak azt követően a feladat eléri a "kész" állapot érvényes. |
-| **type** |Feladatok típusai: |
-| | **scheduleUpdateTwin**: Egy feladat, kívánt tulajdonságok vagy címkék frissítése. |
-| | **scheduleDeviceMethod**: Ikereszközök különböző eszköz metódus meghívásához használt feladat. |
-| **status** |A feladat jelenlegi állapota. Lehetséges értékek a állapota: |
-| | **Függőben lévő**: Ütemezett és váró észlelnie kell a feladatokat végző szolgáltatás. |
-| | **Ütemezett**: Ütemezi későbbi időpontra. |
-| | **Futó**: A jelenleg aktív feladat. |
-| | **Meg lett szakítva**: Feladat meg lett szakítva. |
-| | **Nem sikerült**: Nem sikerült végrehajtani a feladatot. |
-| | **Befejezett**: Feladat befejeződött. |
-| **deviceJobStatistics** |A feladat-végrehajtási statisztikája. |
+| **jobId** |Az alkalmazás azonosítót adott meg a feladathoz. |
+| **startTime** |Alkalmazás biztosított kezdési időpont (ISO-8601) a feladathoz. |
+| **endTime** |Az IoT Hub megadott dátum (ISO-8601) a feladat befejezésének időpontjára. Csak akkor érvényes, ha a feladat eléri a "befejezett" állapotot. |
+| **Típus** |Típusú feladatok: |
+| | **scheduleUpdateTwin**: A kívánt tulajdonságok vagy címkék készletének frissítésére használt feladat. |
+| | **scheduleDeviceMethod**: Eszközmetódus meghívására használt feladat az ikereszközök készletén. |
+| **Állapot** |A feladat jelenlegi állapota. Az állapot lehetséges értékei: |
+| | **függőben**: Ütemezett és arra vár, hogy a feladatszolgáltatás felvegye. |
+| | **ütemezett**: A jövőben egy időre ütemezve. |
+| | **futó**: Jelenleg aktív feladat. |
+| | **megszakítva:** A feladat megszakítva. |
+| | **nem sikerült:** A feladat nem sikerült. |
+| | **befejeződött**: A feladat befejeződött. |
+| **deviceJobStatistics (Munkastatisztika)** |Statisztika a feladat végrehajtásáról. |
 | | **deviceJobStatistics** tulajdonságai: |
-| | **deviceJobStatistics.deviceCount**: A feladat eszközök száma. |
-| | **deviceJobStatistics.failedCount**: Ha a feladat nem sikerült eszközök száma. |
-| | **deviceJobStatistics.succeededCount**: Ha a feladat sikeres eszközök száma. |
-| | **deviceJobStatistics.runningCount**: A feladat jelenleg futó eszközök száma. |
-| | **deviceJobStatistics.pendingCount**: A feladat futtatása függőben lévő eszközök száma. |
+| | **deviceJobStatistics.deviceCount**: A feladatban lévő eszközök száma. |
+| | **deviceJobStatistics.failedCount**: Azon eszközök száma, amelyeken a feladat nem sikerült. |
+| | **deviceJobStatistics.succeededCount**: Azon eszközök száma, amelyeken a feladat sikeres volt. |
+| | **deviceJobStatistics.runningCount**: A feladatot jelenleg futtató eszközök száma. |
+| | **deviceJobStatistics.pendingCount**: A feladat futtatásához függőben lévő eszközök száma. |
 
-### <a name="additional-reference-material"></a>További – referenciaanyag
+### <a name="additional-reference-material"></a>További referenciaanyagok
 
-Az IoT Hub fejlesztői útmutató más referencia témakörei a következők:
+Az IoT Hub fejlesztői útmutatójának további referenciatémakörei a következők:
 
-* [IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különféle végpontok, amely minden IoT-központ közzéteszi a futásidejű és felügyeleti műveletekhez.
+* [Az IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különböző végpontok, amelyek az egyes IoT-központok elérhetővé teszi a futásidejű és felügyeleti műveletek.
 
-* [Sávszélesség-szabályozási és kvóták](iot-hub-devguide-quotas-throttling.md) ismerteti a kvótákat, az IoT Hub szolgáltatás és a szabályozás működésék, számítson, ha a szolgáltatás használatához.
+* [Szabályozás és kvóták](iot-hub-devguide-quotas-throttling.md) ismerteti a kvótákat, amelyek az IoT Hub-szolgáltatás ra és a szabályozás viselkedése várható a szolgáltatás használatakor.
 
-* [Az Azure IoT eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md) felsorolja a különböző nyelvű SDK-ban is használhatja az IoT Hub szolgáltatással kommunikáló eszközt és szolgáltatást is alkalmazások fejlesztése során.
+* [Az Azure IoT-eszközök és szolgáltatások SDK-k](iot-hub-devguide-sdks.md) felsorolja a különböző nyelvi SDK-k segítségével, ha az IoT Hub-szolgáltatást használó eszköz- és szolgáltatásalkalmazásokat is fejleszt.
 
-* [Az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása](iot-hub-devguide-query-language.md) ismerteti az IoT Hub lekérdezési nyelv. A lekérdező nyelv használata az IoT Hub az ikereszközökhöz és feladatokhoz kapcsolatos információk lekérése.
+* [Az IoT Hub lekérdezési nyelve az eszközök twins, feladatok és üzenet-útválasztás](iot-hub-devguide-query-language.md) ismerteti az IoT Hub lekérdezési nyelv. Ezzel a lekérdezési nyelvvel információkat kérhet le az IoT Hubról az eszköztwins és a feladatok használatával.
 
-* [IoT Hub MQTT-támogatás](iot-hub-mqtt-support.md) további információ az IoT Hub-támogatásról nyújt az MQTT protokoll.
+* [Az IoT Hub MQTT-támogatása](iot-hub-mqtt-support.md) további információt nyújt az MQTT protokoll IoT Hub-támogatásáról.
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki a jelen cikkben ismertetett fogalmakat, tekintse meg a következő IoT Hub-oktatóanyag:
+A cikkben ismertetett fogalmak némelyikének kipróbálásához tekintse meg az IoT Hub következő oktatóanyagát:
 
 * [Feladatok ütemezése és szórása](iot-hub-node-node-schedule-jobs.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure diagnosztikai naplók |} A Microsoft Docs
-description: Ügyfél engedélyezheti a naplóelemzés az Azure CDN.
+title: Azure diagnosztikai naplók | Microsoft dokumentumok
+description: Az ügyfél engedélyezheti a naplóelemzést az Azure CDN számára.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,350 +15,350 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594205"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
-Az Azure diagnosztikai naplók, a core analytics tekintheti meg és mentse a fájlokat egy vagy több célhelyre többek között:
+Az Azure diagnosztikai naplóival megtekintheti az alapvető elemzéseket, és mentheti őket egy vagy több célhelyre, többek között a következőkre:
 
  - Azure Storage-fiók
  - Azure Event Hubs
  - [Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-Ez a funkció a CDN-végpontok minden árképzési szint esetében érhető el. 
+Ez a funkció az összes tarifacsomag CDN-végpontján érhető el. 
 
-Azure-beli diagnosztikai naplók alapvető használati metrikák exportálhat a CDN-végpontra többféle forrásból, így felhasználhatja őket egy személyre szabott módon teszi lehetővé. Például a következő típusú adatok exportálása teheti:
+Az Azure diagnosztikai naplók lehetővé teszik, hogy a CDN-végpontról a különböző forrásokba exportálja az alapvető használati metrikákat, így testre szabott módon használhatja fel őket. A következő adatexportálási típusokat használhatja például:
 
-- A blob storage-, csv-fájlba exportálása és diagramjait létrehozni az Excel adatok exportálása.
-- Adatok exportálása az Event hubs szolgáltatásba, és az egyéb Azure-szolgáltatásokból származó adatokkal.
-- Adatok exportálása az Azure Monitor naplóira és adatok megtekintése a saját Log Analytics-munkaterület
+- Exportálja az adatokat a blobtárolóba, exportáljon CSV-be, és hozzon létre grafikonokat az Excelben.
+- Adatok exportálása az Event Hubs-ba, és korrelál más Azure-szolgáltatásokból származó adatokkal.
+- Adatok exportálása az Azure Monitor naplóiba és az adatok megtekintése a saját Log Analytics-munkaterületén
 
-A következő ábrán egy tipikus CDN core analytics adatok nézetét.
+Az alábbi ábrán egy tipikus CDN-alapelemzési nézet látható az adatokról.
 
-![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/01_OMS-workspace.png)
+![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
-*1. ábra – CDN core analytics megtekintése*
+*1. ábra - CDN core analytics view*
 
-Diagnosztikai naplók kapcsolatos további információkért lásd: [diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+A diagnosztikai naplókról további információt a Diagnosztikai naplók című [témakörben talál.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="enable-logging-with-the-azure-portal"></a>Az Azure Portallal naplózás engedélyezése
+## <a name="enable-logging-with-the-azure-portal"></a>Az Azure Portallal való bejelentkezés engedélyezése
 
-Kövesse ezeket a CDN – egyszerűsített analitika naplózás lépéseket engedélyezése:
+Kövesse az alábbi lépéseket, engedélyezze a naplózást a CDN alapvető elemzésével:
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nincs már engedélyezte a CDN a munkafolyamathoz [Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md) a folytatás előtt.
+Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Ha még nem engedélyezte a CDN-t a munkafolyamathoz, [hozzon létre egy Azure CDN-profilt és végpontot](cdn-create-new-endpoint.md) a folytatás előtt.
 
-1. Az Azure Portalon lépjen **CDN-profil**.
+1. Az Azure Portalon keresse meg a **CDN-profilt.**
 
-2. Az Azure Portalon keresse meg a CDN-profil, vagy válasszon ki egy, az irányítópulton. Ezután válassza ki a CDN-végpontot, amelyhez szeretné engedélyezni, diagnosztikai naplók.
+2. Az Azure Portalon keressen egy CDN-profilt, vagy válasszon egyet az irányítópultról. Ezután válassza ki azt a CDN-végpontot, amelyhez engedélyezni szeretné a diagnosztikai naplókat.
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. Válassza ki **diagnosztikai naplók** területén belül.
+3. Válassza **a Diagnosztika naplók lehetőséget** a FIGYELÉS szakaszban.
 
-   A **diagnosztikai naplók** lap jelenik meg.
+   Megjelenik **a Diagnosztikai naplók** lap.
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
-### <a name="enable-logging-with-azure-storage"></a>Az Azure Storage naplózás engedélyezése
+### <a name="enable-logging-with-azure-storage"></a>Naplózás engedélyezése az Azure Storage szolgáltatással
 
-A naplók tárolásához egy storage-fiók használatához kövesse az alábbi lépéseket:
+Ha tárfiókot szeretne használni a naplók tárolására, kövesse az alábbi lépéseket:
     
-1. A **neve**, adjon meg egy nevet a diagnosztikai naplót beállítások.
+1. A **Név mezőbe**írja be a diagnosztikai naplóbeállítások nevét.
  
-2. Válassza ki **archiválás tárfiókba**, majd **CoreAnalytics**. 
+2. Válassza **az Archiválás tárfiókba**lehetőséget, majd a **CoreAnalytics**lehetőséget. 
 
-2. A **megőrzés (nap)** , válassza ki a megőrzési napok számát. Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat. 
+2. Megőrzés **(nap)** esetén adja meg a megőrzési napok számát. A nulla napok megőrzése határozatlan ideig tárolja a naplókat. 
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. Válassza ki **tárfiók**.
+3. Válassza **a Tárfiók lehetőséget.**
 
-    A **válassza ki a tárfiókot** lap jelenik meg.
+    Megjelenik **a Tárfiók kiválasztása** lap.
 
-4. Jelöljön ki egy storage-fiókot a legördülő listából, majd **OK**.
+4. Jelöljön ki egy tárfiókot a legördülő listából, majd kattintson az **OK gombra.**
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
 
-5. Miután befejezte a diagnosztikai napló beállításait, válassza ki a **mentése**.
+5. A diagnosztikai napló beállításainak megadása után válassza a **Mentés gombot.**
 
-### <a name="logging-with-azure-monitor"></a>Naplózás az Azure monitorral
+### <a name="logging-with-azure-monitor"></a>Naplózás az Azure Monitor segítségével
 
-A naplók tárolására az Azure Monitor használatához kövesse az alábbi lépéseket:
+Ha az Azure Monitort szeretné használni a naplók tárolásához, kövesse az alábbi lépéseket:
 
-1. Az a **diagnosztikai naplók** lapon jelölje be **Küldés a Log Analyticsnek**. 
+1. A **Diagnosztikai naplók** lapon válassza a **Küldés a Log Analytics szolgáltatásba**lehetőséget. 
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Válassza ki **konfigurálása** konfigurálása az Azure Monitor-naplózás. 
+2. Válassza a **Konfigurálás** lehetőséget az Azure Monitor naplózásának konfigurálásához. 
 
-   A **Log Analytics-munkaterületek** lap jelenik meg.
-
-    >[!NOTE] 
-    >Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
-
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/06_Choose-workspace.png)
-
-3. Válassza ki **új munkaterület létrehozása**.
-
-    A **Log Analytics-munkaterület** lap jelenik meg.
+   Megjelenik **a Log Analytics-munkaterületek** lap.
 
     >[!NOTE] 
     >Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/07_Create-new.png)
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-4. A **Log Analytics-munkaterület**, a Log Analytics munkaterület nevét kötelező megadni. A Log Analytics-munkaterület neve kell egyedinek lennie, és csak betűket, számokat és kötőjeleket tartalmazhat; tartalmazhat szóközöket és aláhúzásjeleket tartalmazhat nem engedélyezettek. 
+3. Válassza **az Új munkaterület létrehozása**lehetőséget.
 
-5. A **előfizetés**, válasszon ki egy meglévő előfizetést a legördülő listából. 
+    Megjelenik **a Log Analytics munkaterület** lapja.
 
-6. A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
+    >[!NOTE] 
+    >Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 
-7. A **hely**, válasszon ki egy helyet a listából.
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/07_Create-new.png)
 
-8. Válassza ki **rögzítés az irányítópulton** , ha a naplózási konfiguráció menti az irányítópultján. 
+4. A **Log Analytics-munkaterülethez**adja meg a Log Analytics munkaterület ének nevét. A Log Analytics munkaterület nevének egyedinek kell lennie, és csak betűket, számokat és kötőjeleket tartalmazhat; szóközök és aláhúzásjelek nem engedélyezettek. 
 
-9. Válassza ki **OK** konfigurálásának befejezéséhez.
+5. **Előfizetés esetén**válasszon ki egy meglévő előfizetést a legördülő listából. 
 
-10. A munkaterület létrehozását követően visszatér a **diagnosztikai naplók** lapot. Erősítse meg az új Log Analytics-munkaterület nevét.
+6. Az **Erőforráscsoport**csoportban hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/09_Return-to-logging.png)
+7. A **Hely listában**válasszon ki egy helyet a listából.
 
-11. Válassza ki **CoreAnalytics**, majd **mentése**.
+8. Ha menteni szeretné a naplókonfigurációt az irányítópultra, válassza a **Rögzítés az irányítópultra** lehetőséget. 
 
-12. Az új Log Analytics-munkaterület megtekintéséhez jelölje ki **Core analytics** a CDN-végpont oldaláról.
+9. A konfiguráció befejezéséhez válassza az **OK gombot.**
 
-    ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
+10. A munkaterület létrehozása után visszatér a **Diagnosztikai naplók** lapra. Erősítse meg az új Log Analytics-munkaterület nevét.
 
-    A Log Analytics-munkaterülethez már készen áll az adatok. Felhasználhatják az adatokat, akkor kell használnia egy [Azure Monitor-naplók megoldás](#consuming-diagnostics-logs-from-a-log-analytics-workspace), az érintett a cikk későbbi részében.
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-Naplózási adatok késések kapcsolatos további információkért lásd: [adatok késések jelentkezzen](#log-data-delays).
+11. Válassza a **CoreAnalytics**lehetőséget, majd a **Mentés**lehetőséget.
+
+12. Az új Log Analytics-munkaterület megtekintéséhez válassza **a Core analytics** a CDN-végpont oldalon.
+
+    ![portál - Diagnosztikai naplók](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
+
+    A Log Analytics-munkaterület most már készen áll az adatok naplózására. Az adatok felhasználásához az Azure [Monitor naplói megoldást kell használnia,](#consuming-diagnostics-logs-from-a-log-analytics-workspace)amelyet a cikk későbbi részében is lefedett.
+
+A naplóadatok késleltetéséről az [Adatkésések naplózása című témakörben](#log-data-delays)talál további információt.
 
 ## <a name="enable-logging-with-powershell"></a>Naplózás engedélyezése a PowerShell-lel
 
-Az alábbi példa bemutatja, hogyan engedélyezze a diagnosztikát az Azure PowerShell-parancsmagok használatával.
+A következő példa bemutatja, hogyan engedélyezheti a diagnosztikai naplók az Azure PowerShell-parancsmagokon keresztül.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>A storage-fiókban engedélyezése diagnosztikai naplók
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Diagnosztikai naplók engedélyezése tárfiókban
 
-1. Jelentkezzen be, és válasszon ki egy előfizetést:
+1. Jelentkezzen be és válasszon ki egy előfizetést:
 
     Connect-AzAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
-2. Diagnosztikai naplók engedélyezése a Storage-fiókban, adja meg ezt a parancsot:
+2. A diagnosztikai naplók storage-fiókban való engedélyezéséhez írja be ezt a parancsot:
 
     ```powershell
     Set-AzDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
-3. Ahhoz, hogy a diagnosztikai naplók a Log Analytics-munkaterületen, adja meg ezt a parancsot:
+3. A diagnosztikai naplók log analytics-munkaterületen való engedélyezéséhez írja be ezt a parancsot:
 
     ```powershell
     Set-AzDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
     ```
 
-## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Az Azure Storage-ból a felhasználó diagnosztikai naplók
-Ez a szakasz ismerteti a CDN – egyszerűsített analitika, sémája alapjait az Azure storage-fiók van rendezve, és milyen biztosít a mintakód a naplók a CSV-fájl letöltéséhez.
+## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Diagnosztikai naplók felhasználása az Azure Storage-ből
+Ez a szakasz ismerteti a CDN-alapelemzés sémáját, az Azure-tárfiókon belüli rendszerezésmódját, és mintakódot biztosít a naplók CSV-fájlban való letöltéséhez.
 
-### <a name="using-microsoft-azure-storage-explorer"></a>A Microsoft Azure Storage Explorer használatával
-Próbál hozzáférni a core analytics-adatok egy Azure storage-fiókból, szüksége lesz egy olyan eszközt, a tartalma a storage-fiók eléréséhez. Noha több eszközt érhető el a piacon, azt, amelyik javasoljuk, hogy a Microsoft Azure Storage Explorer. Az eszköz letöltéséhez keresse [Azure Storage Explorer](https://storageexplorer.com/). Szoftver letöltése és telepítése a, után konfigurálja úgy, hogy a CDN-diagnosztikai naplók a célként beállított ugyanazt az Azure storage-fiókot használja.
+### <a name="using-microsoft-azure-storage-explorer"></a>A Microsoft Azure Storage Explorer használata
+Mielőtt elérheti az alapvető elemzési adatokat egy Azure-tárfiókból, először szüksége van egy eszközre a tárfiók tartalmának eléréséhez. Bár számos eszköz érhető el a piacon, az egyik, hogy javasoljuk a Microsoft Azure Storage Explorer. Az eszköz letöltéséhez olvassa el az Azure Storage Explorer című [témakört.](https://storageexplorer.com/) A szoftver letöltése és telepítése után konfigurálja úgy, hogy ugyanazt az Azure storage-fiókot használja, amely a CDN diagnosztikai naplók célhelyeként konfigurálva volt.
 
-1.  Nyissa meg **a Microsoft Azure Storage Explorerrel**
-2.  Keresse meg a storage-fiók
-3.  Bontsa ki a **Blobtárolók** csomópont alatt ezt a tárfiókot.
-4.  Válassza ki a tárolót nevű *insights-logs-coreanalytics*.
-5.  Eredmények megjelenítése fel a jobb oldali ablaktáblán, mint az első szintű, kezdve a *resourceId =* . Folytassa az egyes fenyegetési kijelölését, amíg meg nem találja a fájl *PT1H.json*. Az elérési út egy ismertetése: [Blob elérési út formátuma](cdn-azure-diagnostic-logs.md#blob-path-format).
-6.  Minden egyes blob *PT1H.json* fájlt jelöli az elemzési naplók egy adott CDN-végpont vagy az egyéni tartomány egy órán keresztül.
-7.  A séma a JSON-fájl tartalmát, a core analytics naplók szakasz sémája ismerteti.
+1.  A **Microsoft Azure Storage Explorer megnyitása**
+2.  A tárfiók megkeresése
+3.  Bontsa ki a **Blob-tárolók** csomópontot a tárfiók alatt.
+4.  Válassza ki az *insights-logs-coreanalytics nevű tárolót.*
+5.  Az eredmények a jobb oldali ablaktáblán jelennek meg, az első szinttől *kezdve, erőforrásAzonosító=* néven. Folytassa az egyes szintek kiválasztását, amíg meg nem találja a *PT1H.json*fájlt. Az elérési út magyarázatát a Blob elérési útja formátumban című [témakörben tetszés szerint.](cdn-azure-diagnostic-logs.md#blob-path-format)
+6.  Minden blob *PT1H.json* fájl egy adott CDN-végpont vagy egyéni tartomány a analytics naplókat jelöli.
+7.  A JSON-fájl tartalmának sémája az alapvető elemzési naplók szakaszsémájában található.
 
 
-#### <a name="blob-path-format"></a>A BLOB elérési út formátuma
+#### <a name="blob-path-format"></a>Blob elérési útja formátuma
 
-Alapvető elemzési naplók óránként jönnek létre, és az adatokat gyűjt, és a egy Azure blob-belül tárolt JSON-adattartalomként. Mivel a Storage explorer eszköz értelmezi (/) directory elválasztó és jeleníti meg a hierarchiában, az Azure blob elérési útja jelenik meg, ha van olyan hierarchikus struktúra és a blob nevét jelöli. A blob nevét, az alábbi elnevezési konvenciót követi:   
+Core analytics naplók óránként jönnek létre, és az adatok gyűjtése és tárolása egyetlen Azure blobban, mint egy JSON hasznos adat. Mivel a Storage Explorer eszköz a '/' címtárelválasztót értelmezi, és megjeleníti a hierarchiát, az Azure blob elérési útja úgy jelenik meg, mintha hierarchikus struktúra lenne, és a blob nevét jelöli. A blob neve a következő elnevezési konvenciót követi:   
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
-**Mező leírása:**
+**Mezők leírása:**
 
-|Value|Leírás|
+|Érték|Leírás|
 |-------|---------|
-|Előfizetés azonosítója    |Az Azure-előfizetés Guid formátumú azonosítója.|
-|Erőforráscsoport neve |Az erőforrás nevét, amely a CDN-erőforrások tartoznak.|
+|Előfizetés azonosítója    |Az Azure-előfizetés guid formátumú azonosítója.|
+|Erőforráscsoport neve |Annak az erőforráscsoportnak a neve, amelyhez a CDN-erőforrások tartoznak.|
 |Profilnév |A CDN-profil neve|
 |Végpont neve |A CDN-végpont neve|
-|Év|  Az év, például 2017 négyjegyű ábrázolása|
-|Hónap| A hónapok sorszáma kétjegyű ábrázolása. 01 január =... 12. December =|
-|Nap|   A hónap napját kétjegyű ábrázolása|
-|PT1H.json| Tényleges JSON-fájlt az elemzési adatok tárolására|
+|Year|  Az év négyjegyű ábrázolása, például 2017|
+|Month| A hónapszám kétjegyű ábrázolása. 01=január ... 12=december|
+|Day|   A hónap napjának kétjegyű ábrázolása|
+|PT1H.json| Tényleges JSON-fájl, ahol az elemzési adatok tárolódnak|
 
-### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>A core analytics-adatok exportálása CSV-fájlba
+### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Az alapvető elemzési adatok exportálása CSV-fájlba
 
-Hogy megkönnyítse a core analytics eléréséhez, egy eszköz bemutató kódminta biztosítunk. Ez az eszköz lehetővé teszi, hogy a JSON-fájlok letöltésével egy egyszerű vesszővel tagolt fájl formátumra, amely diagramokat vagy más összesítéseket létrehozására használható.
+Az alapvető elemzések elérésének egyszerű stakarása érdekében egy eszköz mintakódját is biztosítják. Ez az eszköz lehetővé teszi a JSON fájlok letöltését egy lapos vesszővel elválasztott fájlformátumba, amelyet diagramok vagy más összesítések létrehozására lehet használni.
 
-Itt látható, hogyan használhatja az eszközt:
+Az eszköz a következőképpen használható:
 
-1.  Tekintse meg a GitHub-hivatkozás: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Látogasson el a GitHub-hivatkozásra:[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Töltse le a kódot.
-3.  Kövesse az utasításokat fordításához és konfigurálása.
+3.  Kövesse az utasításokat a fordításhoz és a konfiguráláshoz.
 4.  Futtassa az eszközt.
-5.  Az eredményül kapott CSV-fájl az elemzési adatok bemutatja egy egyszerű, egybesimított hierarchiában.
+5.  Az eredményül kapott CSV-fájl egyszerű, sima hierarchiában jeleníti meg az elemzési adatokat.
 
-## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>A Log Analytics-munkaterület fogyasztó diagnosztikai naplók
-Az Azure Monitor egy Azure-szolgáltatás, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Diagnosztikai naplók felhasználása a Log Analytics-munkaterületről
+Az Azure Monitor egy Azure-szolgáltatás, amely figyeli a felhőbeli és a helyszíni környezetben, hogy megőrizze azok rendelkezésre állását és teljesítményét. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson. 
 
-Az Azure Monitor használatával kell [naplózás engedélyezése](#enable-logging-with-azure-storage) a Azure Log Analytics-munkaterületet, amely a következő cikkben a cikk korábbi részében.
+Az Azure Monitor használatához engedélyeznie kell a [naplózást](#enable-logging-with-azure-storage) az Azure Log Analytics munkaterületre, amely et a cikk korábbi cikke tárgyalja.
 
 ### <a name="using-the-log-analytics-workspace"></a>A Log Analytics munkaterület használata
 
- Az alábbi ábrán látható, az architektúra a bemeneti adatok és a tárház kimenetek:
+ Az alábbi ábra a tárház bemeneteinek és kimeneteinek architektúráját mutatja be:
 
 ![Log Analytics-munkaterület](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
-*3. ábra – Log Analytics-adattárhoz*
+*3. ábra – Log Analytics-tárház*
 
-Felügyeleti megoldások használatával egy számos különböző módon képes megjeleníteni az adatokat. A felügyeleti megoldások szerezheti be a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
+Az adatokat a Felügyeleti megoldások segítségével többféleképpen jelenítheti meg. Felügyeleti megoldásokat az [Azure Piactérről](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)szerezhet be.
 
-Telepíthet figyelési megoldások Azure marketplace-ről kiválasztásával a **Letöltés most** hivatkozás az egyes megoldások a lap alján.
+Az Azure piactérről a **Get it now** link kiválasztásával telepítheti a figyelési megoldásokat az egyes megoldások alján.
 
-### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Az Azure Monitor CDN figyelési megoldás hozzáadása
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Azure Monitor CDN figyelési megoldás hozzáadása
 
-Kövesse az alábbi lépéseket az Azure Monitor figyelési megoldás hozzáadása:
+Az Azure Monitor figyelési megoldásának hozzáadásához kövesse az alábbi lépéseket:
 
-1.   Az Azure Portalon az Azure-előfizetés használatával jelentkezzen be, és nyissa meg az irányítópultot.
-    ![Azure-irányítópulton](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
+1.   Jelentkezzen be az Azure Portalra az Azure-előfizetéshasználatával, és lépjen az irányítópultra.
+    ![Azure-irányítópult](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. Az a **új** lap **Marketplace**válassza **figyelés + felügyelet**.
+2. Az **Új** lap **Piactér**területén válassza **a Figyelés + kezelés lehetőséget.**
 
     ![Piactér](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. Az a **figyelés + felügyelet** lapon jelölje be **összes**.
+3. A **Figyelés + kezelés** lapon válassza **az Összes megtekintése**lehetőséget.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/15_See-all.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/15_See-all.png)
 
-4. Keresse meg a CDN a keresőmezőbe.
+4. Keressen CDN-t a keresőmezőben.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/16_Search-for.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5. Válassza ki **az Azure CDN – egyszerűsített analitika**. 
+5. Válassza az **Azure CDN Core Analytics lehetőséget.** 
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/17_Core-analytics.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6. Miután kiválasztotta **létrehozás**, a rendszer felkéri hozzon létre egy új Log Analytics-munkaterületet, vagy használjon egy meglévőt. 
+6. Miután a Létrehozás lehetőséget **választja,** a rendszer kéri, hogy hozzon létre egy új Log Analytics-munkaterületet, vagy használjon egy meglévőt. 
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/18_Adding-solution.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7. Válassza ki a előtt létrehozott munkaterülethez. Majd hozzá kell egy automation-fiókot.
+7. Jelölje ki a korábban létrehozott munkaterületet. Ezután hozzá kell adnia egy automatizálási fiókot.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/19_Add-automation.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/19_Add-automation.png)
 
-8. A következő képernyőn látható az automation-fiók ki kell töltenie űrlap. 
+8. A következő képernyőn látható az automatizálási fiók űrlapki kell töltenie. 
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/20_Automation.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. Az automation-fiók létrehozását követően készen áll a megoldás hozzáadása. Válassza a **Létrehozás** gombot.
+9. Miután létrehozta az automatizálási fiókot, készen áll a megoldás hozzáadására. Válassza a **Létrehozás** gombot.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/21_Ready.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/21_Ready.png)
 
-10. A megoldás már hozzá van adva a munkaterülethez. Térjen vissza az Azure portal Irányítópultjára.
+10. A megoldás hozzáadva lett a munkaterülethez. Térjen vissza az Azure Portal irányítópultjára.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/22_Dashboard.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    Válassza ki a létrehozott nyissa meg a munkaterületet a Log Analytics-munkaterületet. 
+    Válassza ki a létrehozott Log Analytics munkaterületet a munkaterületre való ugráshoz. 
 
-11. Válassza ki a **OMS-portálon** csempére kattintva tekintse meg az új megoldásokat.
+11. Az új megoldás megtekintéséhez válassza az **OMS Portal** csempét.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/23_workspace.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. A portál a következő képernyőhöz hasonlóan kell kinéznie:
+12. A portálnak most a következő képernyőhöz hasonlóan kell kinéznie:
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/24_OMS-solution.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    Válassza ki az egyik csempét az adatok számos nézet megtekintéséhez.
+    Jelölje ki az egyik csempét, ha több nézetet szeretne látni az adatokban.
 
-    ![Az összes megtekintése](./media/cdn-diagnostics-log/25_Interior-view.png)
+    ![Az összes megjelenítése](./media/cdn-diagnostics-log/25_Interior-view.png)
 
-    További csempék jelölő egyéni nézeteket az adatokban, hogy jobbra vagy balra görgetve. 
+    Balra vagy jobbra görgetve további csempéket láthat az egyes nézetekben az adatokban. 
 
-    Válassza ki az egyik csempét az adatokkal kapcsolatos további részletek megtekintéséhez.
+    Az adatokkal kapcsolatos további részletek megtekintéséhez jelöljön ki egyet a csempék közül.
 
-     ![Az összes megtekintése](./media/cdn-diagnostics-log/26_Further-detail.png)
+     ![Az összes megjelenítése](./media/cdn-diagnostics-log/26_Further-detail.png)
 
-### <a name="offers-and-pricing-tiers"></a>Az ajánlatok és tarifacsomagok
+### <a name="offers-and-pricing-tiers"></a>Ajánlatok és tarifaszintek
 
-Láthatja, ajánlatokat és felügyeleti megoldásokat tarifacsomagok [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions).
+A felügyeleti megoldások ajánlatait és tarifacsomagjait [itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)láthatja.
 
 ### <a name="customizing-views"></a>Nézetek testreszabása
 
-Testre szabhatja a nézetet az adatok használatával a **adatforrásnézet-tervezőből**. Tervezési a kezdéshez nyissa meg a Log Analytics-munkaterületet, és válassza a **adatforrásnézet-tervezőből** csempére.
+A nézetet a **Nézettervező**segítségével szabhatja testre az adatokközött. A tervezés megkezdéséhez nyissa meg a Log Analytics-munkaterületet, és válassza a **Tervező megtekintése** csempét.
 
 ![Nézettervező](./media/cdn-diagnostics-log/27_Designer.png)
 
-És húzza a típusú diagramok, és adja meg az adatokat részletesen meg szeretnék elemezni.
+Húzza el a diagramtípusokat, és töltse ki az elemezni kívánt adatokat.
 
 ![Nézettervező](./media/cdn-diagnostics-log/28_Designer.png)
 
     
-## <a name="log-data-delays"></a>Naplózási adatok késések
+## <a name="log-data-delays"></a>Adatkésések naplózása
 
-Az alábbi táblázatban láthatók a napló adatokat késésének **Azure CDN Standard a Microsoft**, **Azure CDN Akamai Standard**, és **Azure CDN Standard/prémium verizon**.
+Az alábbi táblázat a **Microsoft Azure CDN Standard,** **az Akamai Azure CDN Standard**és a Verizon Azure **CDN Standard/Premium naplózási**adatkéseit mutatja be.
 
-Microsoft naplózási adatok késések | Verizon naplózási adatok késések | Akamai naplózási adatok késések
+Microsoft-naplóadatok késleltetése | Verizon naplóadatok késleltetése | Akamai naplóadatok késése
 --- | --- | ---
-1 órával később. | Késnek-e 1 óra, és indítsa el a végpont-propagálás befejezését követően megjelenő akár 2 órát is igénybe vehet. | Késleltetett 24 órával; Ha létrehozták a több mint 24 órával ezelőtt, elindításához megjelenő akár 2 órát vesz igénybe. Ha nemrég készült, akár 25 órát elindításához jelennek meg a naplókat is eltarthat.
+1 órát késtem. | 1 órát késlekedhet, és akár 2 órát is igénybe vehet a végpontpropagálás befejezése után megjelenő megjelenés. | 24 órát késik; ha több mint 24 órával ezelőtt hozták létre, akár 2 órát is igénybe vesz a megjelenés. Ha nemrég jött létre, akár 25 órát is igénybe vehet, amíg a naplók megjelennek.
 
-## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>CDN – egyszerűsített analitika diagnosztikai napló típusa
+## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Diagnosztikai naplótípusok a CDN magelemzéséhez
 
-A Microsoft jelenleg kínál alapvető elemzési naplók, mérőszámok HTTP-válaszok statisztikai adatainak és a kimenő forgalom statisztikák látható módon, a CDN POP-k/élek tartalmaznak.
+A Microsoft jelenleg csak alapvető elemzési naplókat kínál, amelyek a CDN POP/edges-ből látható HTTP-válaszstatisztikákat és kimenő statisztikákat megjelenítő mutatókat tartalmaznak.
 
-### <a name="core-analytics-metrics-details"></a>Core analytics metrikák részletei
-Az alábbi táblázat az alapvető elérhető metrikáinak listája látható az elemzési naplók **Azure CDN Standard a Microsoft**, **Azure CDN Akamai Standard**, és **Standard/prémium szintű Azure CDN a Verizontól**. Nem minden metrikák érhetők el minden szolgáltató, bár ezek a különbségek minimálisak. A tábla szintén elérhető-e egy metrika szolgáltatói jeleníti meg. Csak ezek CDN-végpontok, amelyeken az adatforgalom őket a metrikák érhetők el.
+### <a name="core-analytics-metrics-details"></a>Alapvető elemzési mutatók részletei
+Az alábbi táblázat az **Azure CDN Standard microsoftos,** Azure **CDN Standard akamai Azure CDN Standard**és a **Verizon Azure CDN Standard/Premium**alapelemzési naplóiban elérhető mérőszámokat tartalmazza. Nem minden mérőszám érhető el az összes szolgáltatótól, bár ezek a különbségek minimálisak. A táblázat azt is megjeleníti, hogy egy adott metrika elérhető-e a szolgáltatótól. A metrikák csak azokra a CDN-végpontokra érhetők el, amelyek forgalmat használnak.
 
 
 |Metrika                     | Leírás | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | Ebben az időszakban kérést találatok teljes száma. | Igen | Igen |Igen |
-| RequestCountHttpStatus2xx | Minden a HTTP-kód (Ha például 200-as, 202) a 2xx eredményező kérések száma. | Igen | Igen |Igen |
-| RequestCountHttpStatus3xx | Minden a HTTP-kód (Ha például 300, 302) egy 3xx eredményező kérések száma. | Igen | Igen |Igen |
-| RequestCountHttpStatus4xx | Minden a HTTP-kód (például a 400-as, a 404-es) egy 4xx eredményező kérések száma. | Igen | Igen |Igen |
-| RequestCountHttpStatus5xx | Minden (például 500-as, 504) egy 5XX kódú HTTP-kód a eredményező kérelmek száma. | Igen | Igen |Igen |
-| RequestCountHttpStatusOthers | Minden más HTTP-kód (kívül 2xx-5xx) száma. | Igen | Igen |Igen |
-| RequestCountHttpStatus200 | Minden, a HTTP 200 kód választ eredményező kérelmek száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus206 | Az összes, a 206-os HTTP-kód választ eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus302 | Az összes HTTP 302 kód választ eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus304 | Minden, a 304-es HTTP-kód választ eredményező kérések száma. | Igen | Nem  |Igen |
-| RequestCountHttpStatus404 | Az összes kérelem a 404-es HTTP-kód választ eredményező száma. | Igen | Nem  |Igen |
-| RequestCountCacheHit | Nyomja le az összes, a gyorsítótár eredményező kérelmek száma. Az eszköz az ügyfél közvetlenül a jelenléti pontra Irányíthatja a kiszolgálása. | Igen | Igen | Nem  |
-| RequestCountCacheMiss | Minden, a gyorsítótár-tévesztés eredményező kérelmek száma. Gyorsítótár-tévesztés azt jelenti, az eszköz nem található a jelenléti pont az ügyfél legközelebb a, és ezért a forrásból beolvasott. | Igen | Igen | Nem |
-| RequestCountCacheNoCache | Az eszköz minden kérést, ami megakadályozta a peremhálózaton egy felhasználói konfiguráció miatt a gyorsítótárba száma. | Igen | Igen | Nem |
-| RequestCountCacheUncacheable | Minden kérelemhez, amely ebben az esetben a gyorsítótárba helyezésből parancsra az eszköz Cache-Control és Expires fejlécek, amely jelzi, hogy azt nem gyorsítótárazza a csatlakozási pont vagy a HTTP-alapú eszközök száma. | Igen | Igen | Nem |
-| RequestCountCacheOthers | A gyorsítótár állapot szerint a fent nem említett összes kérelem száma. | Nem | Igen | Nem  |
-| EgressTotal | Kimenő adatforgalom GB-ban | Igen |Igen |Igen |
-| EgressHttpStatus2xx | Kimenő adatok átviteli * jelöli a 2xx HTTP-állapotkódok GB-ban. | Igen | Igen | Nem  |
-| EgressHttpStatus3xx | A válaszok 3xx HTTP-állapotkódok GB-ban a kimenő adatforgalom. | Igen | Igen | Nem  |
-| EgressHttpStatus4xx | Kimenő adatforgalom a válaszok a 4xx HTTP-állapotkódok GB-ban. | Igen | Igen | Nem  |
-| EgressHttpStatus5xx | Válaszok az 5XX kódú HTTP-állapotkódok GB kimenő adatforgalom. | Igen | Igen | Nem |
-| EgressHttpStatusOthers | A válaszok más HTTP-állapotkódok GB-ban a kimenő adatforgalom. | Igen | Igen | Nem  |
-| EgressCacheHit | Kimenő adatforgalom a válaszok, amelyek kézbesítése közvetlenül a CDN-gyorsítótárból a CDN POP-k és élek. | Igen | Igen | Nem |
-| EgressCacheMiss. | Kimenő adatforgalom a válaszok nem található a legközelebbi POP-kiszolgálón, és a forrás-kiszolgálóról való lekérdezés. | Igen | Igen | Nem |
-| EgressCacheNoCache | Kimenő adatforgalom az eszközök, amelyek ebben az esetben a gyorsítótárba helyezésből parancsra a peremhálózaton egy felhasználói konfiguráció miatt. | Igen | Igen | Nem |
-| EgressCacheUncacheable | Kimenő adatforgalom az eszközök, amelyek ebben az esetben az eszköz Cache-Control és/vagy a lejárat fejlécek alapján a gyorsítótárba. Azt jelzi, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által. | Igen | Igen | Nem |
+| RequestCountTotal         | A kérelmek lekéréseinek teljes száma ebben az időszakban. | Igen | Igen |Igen |
+| RequestCountHttpStatus2xx | A 2xx HTTP-kódot eredményező kérelmek száma (például 200, 202). | Igen | Igen |Igen |
+| RequestCountHttpStatus3xx | A 3xx HTTP-kódot eredményező kérelmek száma (például 300, 302). | Igen | Igen |Igen |
+| RequestCountHttpStatus4xx | 4xx HTTP-kódot eredményező kérelmek száma (például 400, 404). | Igen | Igen |Igen |
+| RequestCountHttpStatus5xx | Az 5xx HTTP-kódot eredményező kérelmek száma (például 500, 504). | Igen | Igen |Igen |
+| RequestCountHttpStatusOthers | Az összes többi HTTP-kód megszámlálása (a 2xx-5xx-en kívül). | Igen | Igen |Igen |
+| RequestCountHttpStatus200 | A 200-as HTTP-kódra adott választ eredményező kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus206 | A 206-os HTTP-kódra adott választ eredményező kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpstatus302 | A 302-es HTTP-kódra adott választ eredményező kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpstatus304 | A 304-es HTTP-kódra adott válaszhoz eredményező kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus404 | A 404-es HTTP-kódra adott válaszhoz eredményező kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountCacheHit | A gyorsítótár-lekérést eredményező összes kérelem száma. Az eszköz közvetlenül a POP-ból került kiszolgálásra az ügyfélnek. | Igen | Igen | Nem  |
+| RequestCountCacheMiss | A gyorsítótár-tévesztést eredményező kérelmek száma. A gyorsítótár-tévesztés azt jelenti, hogy az eszköz nem található az ügyfélhez legközelebb eső POP-on, ezért az Originből lett leolvasva. | Igen | Igen | Nem |
+| RequestCountCacheNoCache | Az eszközhöz érkező összes olyan kérelem száma, amely a felhasználói konfiguráció miatt nem gyorsítótárazható a peremhálózaton. | Igen | Igen | Nem |
+| RequestCountCacheUncacheable | Az eszközökre irányuló összes olyan kérelem megszámlálása, amelyet az eszköz Gyorsítótár-vezérlési és lejárati fejlécei nem gyorsítótáraznak, ami azt jelzi, hogy nem szabad gyorsítótárazni a POP-on vagy a HTTP-ügyfélen. | Igen | Igen | Nem |
+| RequestCountCacheOthers | A fenti által nem érintett gyorsítótár-állapotú kérelmek száma. | Nem | Igen | Nem  |
+| Kimenő forgalomÖsszes | Kimenő adatátvitel GB-ban | Igen |Igen |Igen |
+| Kimenő forgalomHttpStatus2xx | Kimenő adatátvitel* a GB-ban 2xx HTTP állapotkóddal rendelkező válaszokhoz. | Igen | Igen | Nem  |
+| Kimenő forgalomHttpStatus3xx | Kimenő adatátvitel a 3xx HTTP állapotkóddal rendelkező válaszokhoz GB-ban. | Igen | Igen | Nem  |
+| Kimenő forgalomHttpStatus4xx | Kimenő adatátvitel a GB-ban 4xx HTTP állapotkóddal rendelkező válaszokhoz. | Igen | Igen | Nem  |
+| Kimenő forgalomHttpStatus5xx | Kimenő adatátvitel a GB-ban lévő 5xx HTTP-állapotkóddal rendelkező válaszokhoz. | Igen | Igen | Nem |
+| Kimenő forgalomHttpStatusOthers | Kimenő adatátvitel a GB-ban található más HTTP-állapotkódokkal rendelkező válaszokhoz. | Igen | Igen | Nem  |
+| EgressCacheHit | Kimenő adatátvitel a közvetlenül a CDN POP/Edges CDN gyorsítótárából kézbesített válaszokhoz. | Igen | Igen | Nem |
+| EgressCacheMiss. | Kimenő adatátvitel olyan válaszok esetén, amelyek nem találhatók meg a legközelebbi POP-kiszolgálón, és amelyeket az eredeti kiszolgálóról kérnek be. | Igen | Igen | Nem |
+| EgressCacheNoCache | Kimenő adatátvitel olyan eszközök esetében, amelyek a felhasználói konfiguráció miatt nem gyorsítótárazhatók a peremhálózaton lévő eszközök esetében. | Igen | Igen | Nem |
+| EgressCacheUngyorsítótárazható | Kimenő adatátvitel olyan eszközök esetében, amelyeket az eszköz Gyorsítótár-vezérlésés/vagy Lejárfejlécei nem gyorsítótáraznak. Azt jelzi, hogy nem kell gyorsítótárazza a POP vagy a HTTP-ügyfél. | Igen | Igen | Nem |
 | EgressCacheOthers | Kimenő adatátvitel más gyorsítótár-forgatókönyvekhez. | Nem | Igen | Nem |
 
-\* Kimenő adatátviteli forgalom CDN POP-kiszolgálókról továbbítja az ügyfélnek hivatkozik.
+*A kimenő adatátvitel a CDN POP-kiszolgálókról az ügyfélnek érkező forgalomra vonatkozik.
 
 
-### <a name="schema-of-the-core-analytics-logs"></a>A core analytics naplók sémája 
+### <a name="schema-of-the-core-analytics-logs"></a>Az alapvető elemzési naplók sémája 
 
-Az összes napló JSON formátumban vannak tárolva, és mindegyik bejegyzés rendelkezik karakterlánc típusú mezők alapján a következő mintát követik:
+Minden napló JSON formátumban van tárolva, és minden bejegyzés karakterláncmezőkkel rendelkezik a következő séma szerint:
 
 ```json
     "records": [
@@ -403,7 +403,7 @@ Az összes napló JSON formátumban vannak tárolva, és mindegyik bejegyzés re
 }
 ```
 
-Ahol *idő* az óra határ, amelynek a statisztikáit jelentett kezdési idejét jelzi. Ha egy metrika használata nem támogatott egy CDN-szolgáltató helyett a dupla vagy egész érték, nincs null értékű. A null érték érhető el a metrika azt jelzi, és eltér a 0 értéket. Nincs a végponthoz tartományonként ezeket a metrikákat egy készletét.
+Ahol *az idő* annak az órahatárnak a kezdési idejét jelöli, amelyről a statisztikákat jelentik. Ha egy metrikát nem támogat egy CDN-szolgáltató, dupla vagy egész érték helyett null érték van. Ez a null érték egy metrika hiányát jelzi, és eltér a 0 értéktől. A végponton konfigurált tartományonként ezek ből egy készlet van konfigurálva.
 
 Példa tulajdonságai:
 
@@ -443,10 +443,10 @@ Példa tulajdonságai:
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [Egyszerűsített analitika az Azure CDN-t kiegészítő portálon keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitor-naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Az Azure Log Analytics REST API-val](https://docs.microsoft.com/rest/api/loganalytics)
+* [Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Alapvető elemzések az Azure CDN kiegészítő portálján keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
+* [Az Azure Monitor naplói](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 
 

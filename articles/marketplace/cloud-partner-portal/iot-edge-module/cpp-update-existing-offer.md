@@ -1,103 +1,102 @@
 ---
-title: Meglévő Azure IoT Edge modul-ajánlat frissítése | Azure piactér
-description: Meglévő IoT Edge modul frissítése az Azure Marketplace-en.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Meglévő Azure IoT Edge-modulajánlat frissítése | Azure Piactér
+description: Meglévő IoT Edge-modulajánlat frissítése az Azure Marketplace-en.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: cd0167e1af5bf8ef667df88237d83e9f33ed41f9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813396"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286489"
 ---
-# <a name="update-an-existing-iot-edge-module-offer"></a>Meglévő IoT Edge modul-ajánlat frissítése
+# <a name="update-an-existing-iot-edge-module-offer"></a>Meglévő IoT Edge-modulajánlat frissítése
 
-Ez a cikk a IoT Edge modul ajánlatának a [Cloud Partner Portalban](https://cloudpartner.azure.com/) történő frissítésének különböző szempontjait ismerteti, majd újból közzéteszi az ajánlatot.
+Ez a cikk az IoT Edge-modulajánlat frissítésének különböző szempontjait lépteti át a [Cloud Partner Portalon,](https://cloudpartner.azure.com/) majd az ajánlat újbóli közzétételét.
 
-Számos oka lehet annak, hogy az ajánlatát szeretné frissíteni, például:
+Számos oka lehet annak, hogy miért szeretné frissíteni az ajánlatot, például:
 
--  Új IoT Edge modul rendszerkép-verziójának hozzáadása meglévő SKU-hoz.
--  Új SKU-ket ad hozzá.
--  A piactér metaadatainak frissítése az ajánlathoz vagy az egyedi SKU-hoz.
+-  Új IoT Edge-modulkép-verzió hozzáadása a meglévő változathoz.
+-  Új ska hozzáadása.
+-  Az ajánlat vagy az egyes sk-ek piactéri metaadatainak frissítése.
 
-A fenti módosításokkal kapcsolatban a portál az **összehasonlítási** és **előzményi** funkciókat kínálja.  
+A módosítások segítése érdekében a portál az **Összehasonlítás** és az **Előzmények** funkciókat kínálja.  
 
 
-## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>IoT Edge modul ajánlatának vagy SKU-nak nem engedélyezett módosításai
+## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>Az IoT Edge modulajánlat vagy termékváltozat nem engedélyezett módosításai
 
-A IoT Edge modul ajánlata vagy SKU attribútuma nem módosítható, miután az ajánlat az Azure Marketplace-en üzemel. A következő beállítások nem módosíthatók:
+Vannak olyan attribútumok, amelyek egy IoT Edge-modul ajánlat vagy termékváltozat, amely nem módosítható, miután az ajánlat él az Azure Marketplace-en. A következő beállítások nem módosíthatók:
 
--  Az ajánlat **azonosítója** és **közzétevő-azonosítója**
--  Meglévő SKU-i **SKU-azonosító**
--  Verziók címkéi, például: `1.0.1`
--  Számlázási/licencelési modell módosítása a meglévő SKU-ra
+-  Az ajánlat **ajánlatazonosítója** és **közzétevőazonosítója**
+-  **Meglévő** termékváltozatok termékazonosítója
+-  Verziócímkék, például:`1.0.1`
+-  A meglévő sk-ek számlázási/licencmodell-módosításai
 
 ## <a name="common-update-operations"></a>Gyakori frissítési műveletek
 
 A következő frissítési műveletek gyakoriak.
 
-### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>SKU-hoz tartozó IoT Edge-modul rendszerkép-verziójának frissítése
+### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>Az IoT Edge modul képverziójának frissítése termékváltozathoz
 
-Gyakori, hogy egy IoT Edge modul rendszerképét rendszeresen frissíteni kell a biztonsági javításokkal, a további funkciókkal és így tovább. Ebben a forgatókönyvben frissíteni szeretné az SKU-ra hivatkozó IoT Edge-modul rendszerképét az alábbi lépések végrehajtásával:
+Gyakori, hogy az IoT Edge-modul lemezképét rendszeresen frissítik a biztonsági javításokkal, a további funkciókkal és így tovább. Ebben az esetben a következő lépésekkel szeretné frissíteni az IoT Edge modullemezképét, amelyet az Termékváltozat hivatkozik:
 
-1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+1.  Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
 
-2.  A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+2.  A **Minden ajánlat csoportban**keresse meg a frissíteni kívánt ajánlatot.
 
-3.  A **SKU** -i lapon válassza ki a frissíteni kívánt IoT Edgei modulhoz társított SKU-t.
+3.  A **Termékváltozatok** lapon válassza ki a frissítéshez az IoT Edge modul lemezképéhez társított termékváltozatot.
 
-4.  Az **Edge-modul képe**alatt válassza az **+ új rendszerkép verziója** lehetőséget új IoT Edge-modul rendszerképének hozzáadásához.
+4.  Az **Edge modul képalatt**válassza **a + Új képverzió** lehetőséget egy új IoT Edge modulkép hozzáadásához.
 
-5.  Adja meg az új IoT Edge modul **rendszerképének verzióját**. A rendszerkép verziójának ugyanazokat a címkéket kell követnie, mint a korábbi verziókat. A verziószámnak X. Y. Z formátumúnak kell lennie, ahol az X, az Y és a Z egész számok. Ellenőrizze, hogy a megadott új verzió nagyobb-e az összes korábbi verziónál.
+5.  Adja meg az új IoT Edge **modulkép-verziókat.** A lemezkép-verziónak ugyanazokat a címkékre vonatkozó irányelveket kell követnie, mint a korábbi verzióknak. A verziócímkéknek X.Y.Z formátumúnak kell lenniük, ahol X, Y és Z egész számok. Ellenőrizze, hogy a megadott új verzió nagyobb-e, mint az összes korábbi verzió.
 
-6.  Válassza a **Közzététel** lehetőséget, hogy elindítsa a munkafolyamatot az új IoT Edge modul verziójának az Azure Marketplace-en való közzétételéhez.
+6.  Válassza **a Közzététel** lehetőséget az új IoT Edge-modulverzió azure Piactérre való közzétételéhez.
 
-### <a name="add-a-new-sku"></a>Új SKU hozzáadása
+### <a name="add-a-new-sku"></a>Új termékváltozat hozzáadása
 
-Az alábbi lépéseket követve új SKU-t hozhat elérhetővé az ajánlatához: 
+Az alábbi lépésekkel elérhetővé tehet egy új termékváltozatot az ajánlathoz: 
 
-1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+1.  Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
 
-2.  A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+2.  A **Minden ajánlat csoportban**keresse meg a frissíteni kívánt ajánlatot.
 
-3.  A **SKU** -i lapon válassza az **új SKU hozzáadása** lehetőséget, és adjon meg egy **SKU azonosítót** az előugró ablakban.
+3.  A **Termékváltozatok** lapon válassza az **Új termékváltozat hozzáadása** lehetőséget, és adja meg a **termékváltozat-azonosítót** az előugró ablakban.
 
-4.  Tegye közzé újból a IoT Edge modult a [IoT Edge modul közzététele az Azure Marketplace](./cpp-publish-offer.md)-en című témakörben ismertetett lépések segítségével.
+4.  Tegye közzé újra az IoT Edge-modult az [IoT Edge-modul közzététele az Azure Marketplace-en](./cpp-publish-offer.md)című részben leírt lépésekkel.
 
-5.  Válassza a **Közzététel** lehetőséget, hogy elindítsa a munkafolyamatot az új SKU közzétételéhez.
-
-
-### <a name="update-offer-marketplace-metadata"></a>Ajánlat Marketplace-metaadatok frissítése
-
-Az alábbi lépésekkel frissítheti az ajánlathoz tartozó Piactéri metaadatokat. (Például: vállalat neve, emblémák stb.)
-
-1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
-
-2.  A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
-
-3.  Lépjen a **piactér** lapra. a metaadatok módosításához kövesse az [IoT Edge-modul közzététele az Azure piactéren](./cpp-publish-offer.md) című cikket.
-
-4.  Válassza a **Közzététel** lehetőséget a munkafolyamat elindításához a módosítások közzétételéhez.
-
-## <a name="compare-feature"></a>Szolgáltatás összehasonlítása
-
-Amikor módosításokat végez egy közzétett ajánlaton, az **összehasonlítás** funkcióval naplózhatja a végrehajtott módosításokat. 
-
-**Az összehasonlítás funkció használata:**
-
-1.  A szerkesztési folyamat bármely pontján válassza az **összehasonlítás** lehetőséget az ajánlathoz.
-
-    ![Funkció összehasonlítása gomb](./media/iot-edge-module-compare.png)
+5.  Válassza **a Közzététel** lehetőséget az új termékváltozat közzétételéhez a munkafolyamat elindításához.
 
 
-2.  Tekintse meg a marketing eszközök és metaadatok egymás melletti verzióit.
+### <a name="update-offer-marketplace-metadata"></a>Ajánlatpiactér metaadatainak frissítése
+
+Az alábbi lépésekkel frissítheti az ajánlathoz társított piactér metaadatait. (Például: cégnév, logók stb.)
+
+1.  Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
+
+2.  A **Minden ajánlat területen**keresse meg a frissíteni kívánt ajánlatot.
+
+3.  Nyissa meg a **Piactér** lap. Az Utasításokat az IoT Edge modul közzététele az [Azure Marketplace-en](./cpp-publish-offer.md) cikk metaadatok módosításához.
+
+4.  A **közzététel gombra** a munkafolyamat elindításához válassza a módosítások közzétételét.
+
+## <a name="compare-feature"></a>Jellemző összehasonlítása
+
+Ha módosítja a közzétett ajánlatot, az **Összehasonlítás** funkcióval naplózhatja a végrehajtott módosításokat. 
+
+**Az Összehasonlítás funkció használata:**
+
+1.  A szerkesztési folyamat bármely pontján válassza az Összehasonlítás az ajánlathoz **lehetőséget.**
+
+    ![Jellemző összehasonlítása gomb](./media/iot-edge-module-compare.png)
+
+
+2.  Tekintse meg a marketingeszközök és metaadatok egymás melletti verzióit.
 
 
 ## <a name="history-of-publishing-actions"></a>Közzétételi műveletek előzményei
 
-A korábbi közzétételi tevékenységek megtekintéséhez válassza az **Előzmények** fület a bal oldali navigációs menüsorban Cloud Partner Portal. Az Azure Marketplace-ajánlatok élettartama alatt megtekintheti az időbélyegzővel ellátott műveleteket.  <!-- Need to find correct link here:  legal time windowsFor more information, see [History page](cpp-history-page.md) -->
+A korábbi közzétételi tevékenység megtekintéséhez válassza az **Előzmények** lapot a Cloud Partner Portal bal oldali navigációs menüsorában. Megtekintheti az Azure Marketplace-ajánlatok élettartama során végrehajtott időbélyeggel ellátott műveleteket.  <!-- Need to find correct link here:  legal time windowsFor more information, see [History page](cpp-history-page.md) -->

@@ -1,27 +1,27 @@
 ---
 title: Titkosítási tanúsítvány beállítása Linux-fürtökön
-description: Megtudhatja, hogyan állíthat be titkosítási tanúsítványt, és hogyan titkosíthatja a titkokat Linux-fürtökön.
+description: Ismerje meg, hogyan állíthat be egy titkosítási tanúsítványt, és titkos kulcsoktitkosításlinuxos fürtökön.
 author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969032"
 ---
-# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Titkosítási tanúsítvány beállítása és a titkok titkosítása Linux-fürtökön
-Ez a cikk bemutatja, hogyan állíthat be titkosítási tanúsítványt, és hogyan titkosíthatja a titkokat a Linux-fürtökön. Windows-fürtök esetén lásd: [titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön][secret-management-windows-specific-link].
+# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Titkosítási tanúsítvány beállítása és titkos kulcsok titkosítása Linux-fürtökön
+Ez a cikk bemutatja, hogyan állíthat be egy titkosítási tanúsítványt, és használja a linuxos fürtök titkos kulcsainak titkosítására. Windows-fürtök esetén olvassa el A [titkosítási tanúsítvány beállítása és titkos kulcsok titkosítása Windows-fürtökön című témakört.][secret-management-windows-specific-link]
 
-## <a name="obtain-a-data-encipherment-certificate"></a>Titkosítási-tanúsítvány beszerzése
-Az titkosítási-tanúsítvány szigorúan a szolgáltatás beállításaiban található [Paraméterek][parameters-link] titkosítására és visszafejtésére szolgál. az XML-és [környezeti változók][environment-variables-link] a szolgáltatás ServiceManifest. XML fájljában jelennek meg. Nem használatos a titkosított szöveg hitelesítéséhez vagy aláírásához. A tanúsítványnak meg kell felelnie a következő követelményeknek:
+## <a name="obtain-a-data-encipherment-certificate"></a>Adattitkosítási tanúsítvány beszerzése
+Az adattitkosítási tanúsítvány szigorúan a szolgáltatás Settings.xml és [a][environment-variables-link] service ServiceManifest.xml fájlban lévő [paraméterek][parameters-link] titkosítására és visszafejtésére szolgál. Nem használható a titkosítási szöveg hitelesítésére vagy aláírására. A bizonyítványnak a következő követelményeknek kell megfelelnie:
 
-* A tanúsítványnak tartalmaznia kell egy titkos kulcsot.
-* A tanúsítvány használatának tartalmaznia kell az adatok titkosítási (10), és nem tartalmazhat kiszolgálói hitelesítést vagy ügyfél-hitelesítést.
+* A tanúsítványnak titkos kulcsot kell tartalmaznia.
+* A tanúsítványkulcs használatának tartalmaznia kell az adattitkosítást (10), és nem tartalmazhat kiszolgálói hitelesítést vagy ügyfélhitelesítést.
 
-  Például a következő parancsokat használhatja a szükséges tanúsítvány létrehozásához az OpenSSL használatával:
+  A következő parancsok például a szükséges tanúsítvány openSSL használatával történő létrehozásához használhatók:
   
   ```console
   user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
@@ -29,23 +29,23 @@ Az titkosítási-tanúsítvány szigorúan a szolgáltatás beállításaiban ta
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>A tanúsítvány telepítése a fürtben
-A tanúsítványnak telepítve kell lennie a fürt minden csomópontján `/var/lib/sfcerts`alatt. A felhasználói fiók, amelyben a szolgáltatás fut (alapértelmezés szerint sfuser) **olvasási hozzáféréssel kell rendelkeznie** a telepített tanúsítványhoz (azaz `/var/lib/sfcerts/TestCert.pem` az aktuális példához).
+A tanúsítványt a fürt minden csomópontjára `/var/lib/sfcerts`telepíteni kell a területen. Annak a felhasználói fióknak, `/var/lib/sfcerts/TestCert.pem` amely alatt a szolgáltatás fut (alapértelmezés szerint sfuser) **olvasási hozzáféréssel kell rendelkeznie** a telepített tanúsítványhoz (azaz az aktuális példában).
 
 ## <a name="encrypt-secrets"></a>Titkos kulcsok titkosítása
-A titkos kód titkosításához a következő kódrészlet használható. Ez a kódrészlet csak az értéket titkosítja; **nem** írja alá a titkosítási szöveget. Ugyanazt a titkosítási-tanúsítványt **kell használnia** , amely a fürtbe van telepítve, hogy rejtjelezett hozzon létre a titkos értékekhez.
+A következő kódrészlet egy titkos titok titkosítására használható. Ez a kódrészlet csak az értéket titkosítja; **nem** írja alá a rejtjel szöveget. **A** titkos értékek titkosítási szövegének létrehozásához ugyanazt a titkosítási tanúsítványt kell használnia, amely a fürtben van telepítve.
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
 user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
-Az eredményül kapott Base-64 kódolású karakterlánc kimenete titkosítva. txt tartalmazza a titkos rejtjelezett, valamint a titkosításhoz használt tanúsítvánnyal kapcsolatos információkat is. Az érvényességét az OpenSSL-vel való visszafejtéssel ellenőrizheti.
+Az eredményül kapott base-64 kódolású karakterlánc-kimenet a titkosított.txt fájlba tartalmazza a titkos titkosítást, valamint a titkosításhoz használt tanúsítványadatait. Érvényességét az OpenSSL segítségével visszafejtheti.
 ```console
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```
 
-## <a name="next-steps"></a>Következő lépések
-Megtudhatja, hogyan [határozhat meg titkosított titkot egy alkalmazásban.][secret-management-specify-encrypted-secrets-link]
+## <a name="next-steps"></a>További lépések
+Ismerje meg, hogyan [adhat meg titkosított titkos kulcsokat egy alkalmazásban.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

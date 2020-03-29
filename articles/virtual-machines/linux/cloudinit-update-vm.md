@@ -1,25 +1,25 @@
 ---
-title: A Cloud-init használata Linux rendszerű virtuális gépen az Azure-ban
-description: A Cloud-init használata csomagok frissítésére és telepítésére Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
+title: Felhőalapú init használata Linuxos virtuális gépben az Azure-ban
+description: A felhőalapú init használata csomagok frissítéséhez és telepítéséhez Linux os virtuális gépben az Azure CLI-vel való létrehozás során
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
 ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969154"
 ---
-# <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Csomagok frissítése és telepítése a Cloud-init használatával Linux rendszerű virtuális gépen az Azure-ban
-Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.io) használatával frissíteni a csomagokat egy linuxos virtuális GÉPEN (VM) vagy virtuálisgép-méretezési csoportokban az Azure üzembe helyezési ideje alatt. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
+# <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>A cloud-init használatával frissítheti és telepítheti a csomagokat linuxos virtuális gépben az Azure-ban
+Ez a cikk bemutatja, hogyan használhatja [a cloud-init](https://cloudinit.readthedocs.io) csomagok frissítésére egy Linux virtuális gépen (VM) vagy virtuálisgép-méretezési csoportok kiépítése során az Azure-ban. Ezek a felhőalapú init-parancsfájlok az azure-beli erőforrások kiépítése után futnak az első rendszerindításkor. Ha többet szeretne tudni arról, hogy a cloud-init hogyan működik natívan az Azure-ban és a támogatott Linux-disztribúciókban, tekintse meg a [cloud-init áttekintését.](using-cloud-init.md)
 
-## <a name="update-a-vm-with-cloud-init"></a>Virtuális gép frissítése a Cloud-init használatával
-Biztonsági okokból érdemes lehet úgy konfigurálni a virtuális gépet, hogy az első rendszerindításkor alkalmazza a legújabb frissítéseket. Mivel a Cloud-init a különböző Linux-disztribúciókban működik, nem kell megadnia `apt` vagy `yum` a csomagkezelő számára. Ehelyett definiálja `package_upgrade`, és hagyja, hogy a Cloud-init folyamat meghatározza a megfelelő mechanizmust a használatban lévő disztribúcióhoz. Ez a munkafolyamat lehetővé teszi, hogy ugyanazt a Cloud-init parancsfájlt használja a disztribúciók között.
+## <a name="update-a-vm-with-cloud-init"></a>Virtuális gép frissítése felhőalapú inittel
+Biztonsági okokból érdemes konfigurálni a virtuális gép, hogy alkalmazza a legújabb frissítéseket az első rendszerindításkor. Mivel a cloud-init különböző Linux disztribúciók `apt` között `yum` működik, nincs szükség a csomagkezelő megadására vagy megadására. Ehelyett definiálja, `package_upgrade` és hagyja, hogy a felhő-init folyamat határozza meg a megfelelő mechanizmust a distro használatban. Ez a munkafolyamat lehetővé teszi, hogy ugyanazokat a felhő-init parancsfájlokat használja a disti-k között.
 
-A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt a *cloud_init_upgrade. txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_upgrade.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  
+A frissítési folyamat működés közbeni megtekintéséhez hozzon létre egy fájlt az *aktuális rendszerhéjban, amelynek neve cloud_init_upgrade.txt,* és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_upgrade.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki #1 a **nanoszerkesztő** használatához. Győződjön meg arról, hogy a teljes felhő-init fájl másolása helyesen, különösen az első sorban.  
 
 ```yaml
 #cloud-config
@@ -28,13 +28,13 @@ packages:
 - httpd
 ```
 
-A rendszerkép telepítése előtt létre kell hoznia egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A lemezkép telepítése előtt létre kell hoznia egy erőforráscsoportot az [az csoport létrehozása](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm) paranccsal, és határozza meg a Cloud-init fájlt `--custom-data cloud_init_upgrade.txt` a következőképpen:
+Most hozzon létre egy virtuális gép [az vm létrehozása,](/cli/azure/vm) és adja meg a cloud-init fájlt `--custom-data cloud_init_upgrade.txt` az alábbiak szerint:
 
 ```azurecli-interactive 
 az vm create \
@@ -45,19 +45,19 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-SSH-t az előző parancs kimenetében látható virtuális gép nyilvános IP-címére. Adja meg saját **publicIpAddress** a következőképpen:
+SSH a virtuális gép nyilvános IP-címét az előző parancs kimenetén látható. Adja meg saját **nyilvánosIpAddress** az alábbiak szerint:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Futtassa a csomagkezelő eszközt, és keressen frissítéseket.
+Futtassa a csomagkezelő eszközt, és ellenőrizze a frissítéseket.
 
 ```bash
 sudo yum update
 ```
 
-Mivel a Cloud-init bejelölte és telepítette a frissítéseket a rendszerindításhoz, nem kell további frissítéseket alkalmaznia.  Ekkor megjelenik a frissítési folyamat, a módosított csomagok száma, valamint az `httpd` telepítése `yum history` futtatásával, és az alábbihoz hasonló kimenet tekinthető meg.
+Mivel a cloud-init ellenőrizte és telepítette a frissítéseket a rendszerindításkor, nem kell további frissítéseket alkalmaznia.  Láthatja a frissítési folyamatot, a módosított csomagok `httpd` számát, `yum history` valamint a telepítést az alábbihoz hasonló kimenet futtatásával és felülvizsgálatával.
 
 ```bash
 Loaded plugins: fastestmirror, langpacks
@@ -68,10 +68,10 @@ ID     | Command line             | Date and time    | Action(s)      | Altered
      1 |                          | 2017-12-12 20:32 | Install        |  522
 ```
 
-## <a name="next-steps"></a>Következő lépések
-További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
+## <a name="next-steps"></a>További lépések
+A konfigurációs módosításokra vonatkozó további felhőalapú init példákat az alábbi témakörben talál:
  
-- [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)
-- [Csomagkezelő futtatása a meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
-- [Virtuális gép helyi gazdagépének módosítása](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok behelyezése](tutorial-automate-vm-deployment.md)
+- [További Linux-felhasználó hozzáadása a virtuális géphez](cloudinit-add-user.md)
+- [Csomagkezelő futtatása meglévő csomagok frissítéséhez az első rendszerindításkor](cloudinit-update-vm.md)
+- [A virtuális gép helyi állomásnevének módosítása](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, konfigurációs fájlok frissítése és kulcsok befecskendezése](tutorial-automate-vm-deployment.md)

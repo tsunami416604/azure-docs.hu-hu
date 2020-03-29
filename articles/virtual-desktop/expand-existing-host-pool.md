@@ -1,6 +1,6 @@
 ---
-title: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel – Azure
-description: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel a Windows Virtual Desktopban.
+title: Meglévő gazdagépkészlet bővítése új munkamenet-gazdagépekkel - Azure
+description: Meglévő gazdagépkészlet kibontása új munkamenet-gazdagépekkel a Windows Virtuális asztal rendszerben.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,126 +9,126 @@ ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79365219"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
+# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagépkészlet kibontása új munkamenet-gazdagépekkel
 
-A gazdagépen belüli használat során előfordulhat, hogy a meglévő gazdagépet új munkamenet-gazdagépekkel kell bővíteni az új terhelés kezeléséhez.
+A gazdagépkészleten belüli használat felgyorsítása során előfordulhat, hogy az új terhelés kezeléséhez ki kell bővítenie a meglévő gazdagépkészletét az új munkamenet-gazdagépekkel.
 
-Ebből a cikkből megtudhatja, hogyan bővítheti a meglévő gazdagépeket új munkamenet-gazdagépekkel.
+Ez a cikk bemutatja, hogyan bonthatja ki a meglévő gazdakészletet az új munkamenet-gazdagépekkel.
 
-## <a name="what-you-need-to-expand-the-host-pool"></a>Mire van szükség a gazdagép kibontásához
+## <a name="what-you-need-to-expand-the-host-pool"></a>Mire van szükség a gazdakészlet bővítéséhez?
 
-Mielőtt elkezdené, győződjön meg arról, hogy létrehozta a gazdagép-készletet és a munkamenet-gazda virtuális gépeket (VM) az alábbi módszerek egyikének használatával:
+Mielőtt elkezdené, győződjön meg arról, hogy létrehozott egy gazdakészletet és munkamenetgazda virtuális gépeket (VM-ek) az alábbi módszerek egyikével:
 
-- [Azure Marketplace-ajánlat](./create-host-pools-azure-marketplace.md)
-- [GitHub Azure Resource Manager sablon](./create-host-pools-arm-template.md)
-- [Gazdagép létrehozása a PowerShell-lel](./create-host-pools-powershell.md)
+- [Az Azure Piactér ajánlata](./create-host-pools-azure-marketplace.md)
+- [GitHub Azure Resource Manager-sablon](./create-host-pools-arm-template.md)
+- [Gazdagépcsoport létrehozása a PowerShell-lel](./create-host-pools-powershell.md)
 
-A következő információkra is szüksége lesz a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor:
+A következő információkra is szüksége lesz a gazdakészlet és a munkamenetgazda virtuális gépének első létrehozásakor:
 
-- VM-méret,-rendszerkép és-név előtagja
-- Tartományhoz való csatlakozás és a Windows virtuális asztali bérlői rendszergazdai hitelesítő adatai
+- Virtuális gép mérete, lemezképe és névelőtagja
+- Tartományi csatlakozás és a Windows virtuális asztal bérlői hitelesítő adatai
 - Virtuális hálózat neve és alhálózatának neve
 
-A következő három szakaszban három módszer használható a címkészlet kibontására. Bármely, az Ön számára kényelmes üzembe helyezési eszközzel elvégezhető.
+A következő három szakasz három módszer, amelyekkel kibonthatja a gazdakészletet. Bármelyik üzembe helyezési eszközzel megteheti, amivel elégedett.
 
 >[!NOTE]
->Az üzembe helyezési fázisban hibaüzenetek jelennek meg az előző munkamenet-gazdagép virtuálisgép-erőforrásaihoz, ha éppen leállnak. Ezek a hibák azért történnek, mert az Azure nem tudja futtatni a PowerShell DSC bővítményt annak ellenőrzéséhez, hogy a munkamenet-gazda virtuális gépek megfelelően vannak-e regisztrálva a meglévő gazdagépen Ezeket a hibákat nyugodtan figyelmen kívül hagyhatja, vagy elkerülheti a hibákat úgy, hogy a telepítési folyamat megkezdése előtt elindítja az összes munkamenet-gazda virtuális gépet a meglévő gazdagép-készletben.
+>A központi telepítési fázisban hibaüzenetek jelennek meg az előző munkamenet gazdagép virtuális gép erőforrásaihoz, ha azok jelenleg le vannak állítva. Ezek a hibák azért fordulnak elő, mert az Azure nem tudja futtatni a PowerShell DSC-bővítményt annak ellenőrzéséhez, hogy a munkamenetgazda virtuális gépei megfelelően vannak-e regisztrálva a meglévő gazdakészlethez. Nyugodtan figyelmen kívül hagyhatja ezeket a hibákat, vagy elkerülheti a hibákat a meglévő gazdagépkészlet összes munkamenet-gazdagépvirtuális gépének elindításával a központi telepítési folyamat megkezdése előtt.
 
-## <a name="redeploy-from-azure"></a>Újraüzembe helyezés az Azure-ból
+## <a name="redeploy-from-azure"></a>Újratelepítés az Azure-ból
 
-Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagép virtuális gépet az [Azure Marketplace-ajánlat](./create-host-pools-azure-marketplace.md) vagy a [GitHub Azure Resource Manager-sablon](./create-host-pools-arm-template.md)segítségével, akkor a Azure Portalból is újratelepítheti ugyanazt a sablont. A sablon újbóli üzembe helyezése automatikusan visszaadja az eredeti sablonba beírt összes információt, kivéve a jelszavakat.
+Ha már létrehozott egy gazdakészletet és munkamenetgazda virtuális gépeket az [Azure Marketplace-ajánlat](./create-host-pools-azure-marketplace.md) vagy a [GitHub Azure Resource Manager sablon](./create-host-pools-arm-template.md)használatával, újratelepítheti ugyanazt a sablont az Azure Portalról. A sablon újratelepítése automatikusan újraírja az eredeti sablonba megadott összes információt, kivéve a jelszavakat.
 
-A következőképpen telepítheti újra a Azure Resource Manager sablont a gazdagépek kibontásához:
+Az alábbiakban bemutatja, hogyan helyezheti üzembe újra az Azure Resource Manager-sablont a gazdakészlet bővítéséhez:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-2. A Azure Portal tetején található keresősáv alatt keresse meg az **erőforráscsoportok** kifejezést, és válassza ki az elemet a **szolgáltatások**területen.
-3. Keresse meg és válassza ki azt az erőforráscsoportot, amelyet a gazdagép-készlet létrehozásakor hozott létre.
-4. A böngésző bal oldalán lévő panelen válassza a **központi telepítések**lehetőséget.
-5. Válassza ki a gazdagép-készlet létrehozási folyamatának megfelelő központi telepítését:
-     - Ha az eredeti alkalmazáskészletet az Azure Marketplace-ajánlattal hozta létre, válassza ki az **RDS. WVD-kiépítés-gazdagép-készletet**.
-     - Ha az eredeti címkészletet a GitHub Azure Resource Manager sablonnal hozta létre, válassza ki a **Microsoft. template**nevű központi telepítést.
-6. Válassza az **újratelepítés**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+2. Az Azure Portal tetején található keresősávban keresse meg az **Erőforráscsoportok at,** és válassza ki az elemet a **Szolgáltatások**csoportban.
+3. Keresse meg és jelölje ki azt az erőforráscsoportot, amelyet a gazdagépkészlet létrehozásakor hozott létre.
+4. A böngésző bal oldalán lévő panelen válassza a **Központi telepítések**lehetőséget.
+5. Válassza ki a gazdakészlet létrehozásának folyamatához megfelelő központi telepítést:
+     - Ha az eredeti gazdakészletet az Azure Marketplace-ajánlattal hozta létre, válassza ki az **rds.wvd-provision-host-pool**kezdetű központi telepítést.
+     - Ha az eredeti gazdakészletet a GitHub Azure Resource Manager sablonnal hozta létre, válassza ki a Microsoft.Template nevű központi **telepítést.**
+6. Válassza **az Újratelepítés**lehetőséget.
      
      >[!NOTE]
-     >Ha a sablon nem kerül automatikusan újratelepítésre az **újratelepítési**lehetőség kiválasztásakor, válassza a **sablon** lehetőséget a böngésző bal oldalán lévő panelen, majd válassza a **telepítés**lehetőséget.
+     >Ha a sablon nem települ újra automatikusan, amikor az Újratelepítés lehetőséget **választja,** válassza a **Sablon** lehetőséget a böngésző bal oldalán lévő panelen, majd a **Telepítés**lehetőséget.
 
-7. Válassza ki azt az erőforráscsoportot, amely a meglévő gazdagép-készletben lévő aktuális munkamenet-gazda virtuális gépeket tartalmazza.
+7. Válassza ki azt az erőforráscsoportot, amely a meglévő gazdakészletben lévő aktuális munkamenetgazda virtuális gépeket tartalmazza.
      
      >[!NOTE]
-     >Ha olyan hibaüzenetet lát, amely azt jelzi, hogy egy másik erőforráscsoportot választ, még ha a beírt érték is helyes, válasszon másik erőforráscsoportot, majd válassza ki az eredeti erőforráscsoportot.
+     >Ha olyan hibaüzenet et lát, amely arra utasítja, hogy válasszon másik erőforráscsoportot annak ellenére, hogy a megadott helyes, válasszon egy másik erőforráscsoportot, majd válassza ki az eredeti erőforráscsoportot.
 
-8. Adja meg a következő URL-címet a *_artifactsLocationhoz*: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
-9. Adja meg a *Rdsh-példányok számának*megadásához használni kívánt munkamenet-gazdagépek új teljes számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket.
-10. Adja meg ugyanazt a meglévő tartományi jelszót, amelyet a meglévő tartományi UPN-hez használt. Ne változtassa meg a felhasználónevet, mert a sablon futtatásakor hibaüzenetet fog okozni.
-11. Adja meg ugyanazt a bérlői rendszergazdai jelszót, amelyet a *bérlői rendszergazdai UPN-hez vagy az alkalmazás-azonosítóhoz*megadott felhasználóhoz vagy alkalmazás-azonosítóhoz használt. Ha újra, ne módosítsa a felhasználónevet.
-12. Fejezze be a küldést a címkészlet kibontásához.
+8. Adja meg a következő URL-címet a *_artifactsLocation:*`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+9. Adja meg a kívánt munkamenet-állomások új számát az *Rdsh Példányok száma mezőbe.* Ha például a gazdakészletet öt munkamenet-házigazdáról nyolcra bővíti, írja be a **8**értéket.
+10. Adja meg ugyanazt a meglévő tartományjelszót, amelyet a meglévő tartomány egyszerű kiszolgálóújához használt. Ne módosítsa a felhasználónevet, mert az hibát fog okozni a sablon futtatásakor.
+11. Adja meg ugyanazt a bérlői rendszergazdai jelszót, amelyet a *bérlői rendszergazdai upn vagy alkalmazásazonosítóhoz*megadott felhasználó- vagy alkalmazásazonosítóhoz használt. Még egyszer, ne változtassa meg a felhasználónevet.
+12. Töltse ki a beküldést a gazdagépkészlet bővítéséhez.
 
 ## <a name="run-the-azure-marketplace-offering"></a>Az Azure Marketplace-ajánlat futtatása
 
-Kövesse az [alkalmazáskészlet létrehozása az Azure Marketplace](./create-host-pools-azure-marketplace.md) -en című témakör utasításait, amíg el nem éri [Az Azure Marketplace-ajánlat futtatását az új címkészlet](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)kiépítéséhez. Amikor erre a pontra kerül, meg kell adnia az alábbi adatokat az egyes lapokon:
+Kövesse a [Host Pool létrehozása az Azure Marketplace használatával című](./create-host-pools-azure-marketplace.md) útmutató utasításait, amíg el nem éri az Azure [Marketplace-ajánlat futtatását egy új gazdakészlet kiépítéséhez.](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool) Amikor eljut arra a pontra, meg kell adnia a következő információkat minden laphoz:
 
 ### <a name="basics"></a>Alapvető beállítások
 
-Az ebben a szakaszban szereplő összes értéknek egyeznie kell azzal, amit a gazdagép és a munkamenet-gazda virtuális gépei első létrehozásakor adott meg, kivéve az *alapértelmezett asztali felhasználók*számára:
+Az ebben a szakaszban szereplő összes értéknek meg kell egyeznie azzal, amit a gazdakészlet és a munkamenetgazda virtuális gépeinek első létrehozásakor megadott, kivéve az *alapértelmezett asztali felhasználókat:*
 
-1.    Az *előfizetés*mezőben válassza ki azt az előfizetést, amelybe először létrehozta a gazdagép-készletet.
-2.    Az *erőforráscsoport*mezőben válassza ki ugyanazt az erőforráscsoportot, ahol a meglévő gazdagép-készlethez tartozó virtuális gépek találhatók.
-3.    A *régió*mezőben válassza ki azt a régiót, ahol a meglévő gazdagép-munkamenet-gazdagép virtuális gépei találhatók.
-4.    A *Hostpool neve*mezőbe írja be a meglévő címkészlet nevét.
-5.    Az *asztal típusa*mezőben válassza ki azt az asztal-típust, amely megegyezik a meglévő gazdagép-készlettel.
-6.    Az *alapértelmezett asztali felhasználók beállításnál*adja meg azokat a további felhasználókat, akik be kívánnak jelentkezni a Windows rendszerű virtuális asztali ügyfelekbe, és az Azure Marketplace-ajánlat befejezése után férnek hozzá az asztalhoz. Ha például user3@contoso.com és user4@contoso.com hozzáférést szeretne hozzárendelni, adja meg user3@contoso.comuser4@contoso.com.
-7.    Válassza a Next (tovább) lehetőséget **: virtuális gép konfigurálása**.
+1.    *Előfizetés esetén*válassza ki azt az előfizetést, amelyhez először létrehozta a gazdakészletet.
+2.    *Az Erőforráscsoport*esetében válassza ki ugyanazt az erőforráscsoportot, ahol a meglévő gazdakészlet munkamenet-gazdagépei találhatók.
+3.    *A Régió*területen válassza ki ugyanazt a régiót, ahol a meglévő gazdakészlet munkamenet-gazdavirtuális gépei találhatók.
+4.    A *Hostpool-név mezőbe*írja be a meglévő állomáskészlet nevét.
+5.    *Az Asztal típusnál*válassza ki a meglévő állomáskészletnek megfelelő asztaltípust.
+6.    *Az alapértelmezett asztali felhasználók*számára adja meg azoknak a további felhasználóknak a vesszővel elválasztott listáját, akik be szeretné jelentkezni a Windows virtuális asztali ügyfelekbe, és az Azure Marketplace-ajánlat befejezése után hozzáférhet az asztalhoz. Ha például hozzá szeretne user3@contoso.com user4@contoso.com rendelni és user3@contoso.comuser4@contoso.comel szeretne érni, írja be a .
+7.    Válassza a **Tovább lehetőséget : A virtuális gép konfigurálása**.
 
 >[!NOTE]
->Az *alapértelmezett asztali felhasználók*kivételével minden mezőnek pontosan egyeznie kell a meglévő gazdagép-készletben megadott beállításokkal. Ha eltérés van, akkor az új gazdagépet fog eredményezni.
+>Az *alapértelmezett asztali felhasználók*kivételével minden mezőnek pontosan meg kell egyeznie a meglévő állomáskészletben beállított beállításokkal. Ha eltérés van, az új gazdagépkészletet eredményez.
 
 ### <a name="configure-virtual-machines"></a>Virtuális gépek konfigurálása
 
-Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor megadott értékekkel, kivéve a virtuális gépek teljes számát. A virtuális gépek száma a kibontott gazdagép-készletben lévő virtuális gépek száma lesz:
+Ebben a szakaszban minden paraméterértéknek meg kell egyeznie azzal, amit a gazdakészlet és a munkamenetgazda virtuális gépeinek első létrehozásakor megadott, kivéve a virtuális gépek teljes számát. A megadott virtuális gépek száma a kibontott gazdakészletben lévő virtuális gépek száma lesz:
 
-1. Válassza ki a virtuálisgép-méretet, amely megfelel a meglévő munkamenet-gazda virtuális gépeknek.
+1. Válassza ki a virtuális gép méretét, amely megfelel a meglévő munkamenet-gazdavirtuális gépek.
     
     >[!NOTE]
-    >Ha a keresett virtuálisgép-méret nem jelenik meg a virtuálisgép-méret választóban, ennek az az oka, hogy még nem készítettük üzembe az Azure Marketplace eszközre. A virtuális gép méretének igényléséhez hozzon létre egy kérést, vagy egy meglévő kérelmet a [Windows virtuális asztali UserVoice fórumában](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Ha a keresett virtuális gép mérete nem jelenik meg a virtuális gép méretválasztójában, annak az az oka, hogy még nem vettük volna be az Azure Marketplace-eszközbe. Virtuális gép méretének igényléséhez hozzon létre egy kérést, vagy szavazzon egy meglévő kérelmet a [Windows Virtual Desktop UserVoice fórumon.](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)
 
-2. Szabja testre a *használati profilt*, az *összes felhasználót*és a virtuálisgép-paraméterek *számát* , hogy kiválassza a gazdagép készletében lévő összes munkamenet-gazdagép számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, ezeket a beállításokat a 8 virtuális gép számára konfigurálja.
-3. Adja meg a virtuális gépek neveinek előtagját. Ha például a "prefix" nevet adja meg, akkor a virtuális gépek "előtag-0", "előtag-1" és így tovább.
-4. Válassza a **Tovább: virtuális gép beállításai**lehetőséget.
+2. A *Használati profil*, *az Összes felhasználó*és a Virtuális gépek *paramétereinek száma* testreszabásával megadhatja, hogy a gazdagépkészletben hány munkamenet-gazdagépet szeretne használni. Ha például a gazdakészletöt öt munkamenet-állomásról nyolcra bővíti, konfigurálja ezeket a beállításokat úgy, hogy 8 virtuális gépre jusson.
+3. Adjon meg egy előtagot a virtuális gépek nevéhez. Ha például az "előtag" nevet adja meg, a virtuális gépek neve "előtag-0", "előtag-1" és így tovább lesz.
+4. Válassza a **Tovább : Virtuálisgép beállításai**lehetőséget .
 
 ### <a name="virtual-machine-settings"></a>A virtuális gép beállításai
 
-Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor megadott értékekkel:
+Ebben a szakaszban az összes paraméterértéknek meg kell egyeznie azzal, amit a gazdakészlet és a munkamenetgazda virtuális gépeinek első létrehozásakor megadott:
 
-1. A *képforrásra* és a *rendszerkép operációsrendszer-verziójára*vonatkozóan adja meg ugyanazokat az adatokat, amelyeket a gazdagép első létrehozásakor adott meg.
-2. Az *ad-tartományhoz való JOIN UPN* és a társított jelszavak esetében adja meg ugyanazt az információt, amelyet akkor adott meg, amikor a gazdagépet először hozta létre a virtuális gépekhez a Active Directory tartományhoz való csatlakozáshoz. A rendszer ezeket a hitelesítő adatokat fogja használni helyi fiók létrehozásához a virtuális gépeken. Ezeket a helyi fiókokat alaphelyzetbe állíthatja, hogy később megváltoztassák a hitelesítő adataikat.
-3. A virtuális hálózat adatainál válassza ki ugyanazt a virtuális hálózatot és alhálózatot, ahol a meglévő gazdagép-készlethez tartozó virtuális gépek találhatók.
-4. Válassza a Next (tovább) lehetőséget **: konfigurálja a Windows rendszerű virtuális asztali adatokat**.
+1. A *Lemezképforrás* és *a Kép-operációs rendszer verziójához*adja meg ugyanazokat az adatokat, amelyeket a gazdagépkészlet első létrehozásakor megadott.
+2. *AD tartomány csatlakozzon* az egyszerű névhez és a kapcsolódó jelszavakhoz, adja meg ugyanazokat az adatokat, amelyeket a gazdakészlet első létrehozásakor megadott, hogy csatlakozzon a virtuális gépekhez az Active Directory tartományhoz. Ezeket a hitelesítő adatokat a virtuális gépeken egy helyi fiók létrehozásához használjuk. Ezek a helyi fiókok alaphelyzetbe állítása a hitelesítő adatok későbbi módosításához.
+3. A virtuális hálózati információk, válassza ki ugyanazt a virtuális hálózatot és alhálózatot, ahol a meglévő gazdagépkészlet munkamenet gazdagép virtuális gépek találhatók.
+4. Válassza a **Tovább lehetőséget: A Windows virtuális asztal adatainak konfigurálása**.
 
-### <a name="windows-virtual-desktop-information"></a>Windows rendszerű virtuális asztali információk
+### <a name="windows-virtual-desktop-information"></a>A Windows virtuális asztal adatai
 
-Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor megadott értékekkel:
+Ebben a szakaszban az összes paraméterértéknek meg kell egyeznie azzal, amit a gazdakészlet és a munkamenetgazda virtuális gépeinek első létrehozásakor megadott:
 
-1. A *Windows rendszerű virtuális asztali bérlői csoport neve*mezőbe írja be a bérlőt tartalmazó bérlői csoport nevét. Hagyja meg az alapértelmezett értéket, ha megadott egy bérlői csoport nevét.
-2. A *Windows rendszerű virtuális asztali bérlő neve*mezőbe írja be annak a bérlőnek a nevét, ahol a gazdagépet létrehozza.
-3. Megadhatja ugyanazokat a hitelesítő adatokat, amelyeket a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor használt. Ha egyszerű szolgáltatásnevet használ, adja meg annak a Azure Active Directory-példánynak az AZONOSÍTÓját, amelyben a szolgáltatásnév található.
-4. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet.
+1. A *Windows virtuális asztal bérlői csoport nevéhez*adja meg a bérlői csoportot tartalmazó bérlői csoport nevét. Hagyja, hogy az alapértelmezett, kivéve, ha adott bérlői csoport nevét.
+2. A *Windows virtuális asztal bérlői neve*esetén adja meg annak a bérlőnek a nevét, amelynek létrehozza ezt a gazdakészletet.
+3. Adja meg ugyanazokat a hitelesítő adatokat, amelyeket a gazdakészlet és a munkamenetgazda virtuális gépének első létrehozásakor használt. Ha egyszerű szolgáltatásszolgáltatást használ, adja meg az Azure Active Directory-példány azonosítóját, ahol az egyszerű szolgáltatás található.
+4. Válassza a **Tovább lehetőséget : Véleményezés + létrehozás**lehetőséget.
 
 ## <a name="run-the-github-azure-resource-manager-template"></a>A GitHub Azure Resource Manager-sablon futtatása
 
-Kövesse a [Azure Resource Manager sablon futtatása új címkészlet kiépítési céljára](./create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) című témakör utasításait, és adja meg az összes azonos paraméter-értéket, kivéve a *Rdsh-példányok számát*. A sablon futtatása után adja meg a gazdagép-készletben használni kívánt munkamenet-gazda virtuális gépek számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket.
+Kövesse az [Azure Resource Manager sablon futtatása az új gazdagépkészlet kiépítéséhez,](./create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) és adja meg az összes azonos paraméterértékeket, kivéve az *Rdsh példányok száma.* Adja meg a munkamenet gazdagépvirtuális gépeinek számát a gazdakészletben a sablon futtatása után. Ha például a gazdakészletet öt munkamenet-házigazdáról nyolcra bővíti, írja be a **8**értéket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
+Most, hogy bővítette a meglévő gazdakészletét, bejelentkezhet egy Windows virtuális asztali ügyfélprogramba, hogy tesztelje őket egy felhasználói munkamenet részeként. A munkamenethez az alábbi ügyfelek bármelyikével csatlakozhat:
 
-- [Kapcsolat a Windows asztali ügyféllel](./connect-windows-7-and-10.md)
-- [A webes ügyféllel való kapcsolat](./connect-web.md)
-- [Az Android-ügyféllel való kapcsolat](./connect-android.md)
-- [A macOS-ügyféllel való kapcsolat](./connect-macos.md)
-- [Az iOS-ügyféllel való kapcsolat](./connect-ios.md)
+- [Kapcsolódás a Windows asztali ügyféllel](./connect-windows-7-and-10.md)
+- [Kapcsolódás a webügyféllel](./connect-web.md)
+- [Kapcsolódás az Android-ügyféllel](./connect-android.md)
+- [Kapcsolódás a macOS-ügyfélhez](./connect-macos.md)
+- [Kapcsolódás az iOS-ügyfélhez](./connect-ios.md)

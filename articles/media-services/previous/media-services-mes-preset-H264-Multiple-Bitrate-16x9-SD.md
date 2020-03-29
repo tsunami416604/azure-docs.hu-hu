@@ -1,6 +1,6 @@
 ---
-title: H264 Több sávszélességű 16 x 9 SD |} A Microsoft Docs
-description: A témakör áttekintést nyújt a **H264 Multiple Bitrate 16 x 9 SD** feladat előbeállítást.
+title: H264 Többszörös bitráta 16x9 SD| Microsoft dokumentumok
+description: A témakör áttekintést ad a **H264 többszörös bitráta 16x9 SD** feladatkészletről.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a0d272a01a6969f702ff4eedf05660833ba1f531
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463712"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd"></a>H264 Multiple Bitrate 16x9 SD
-`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
   
- Ez a témakör bemutatja a `H264 Multiple Bitrate 16x9 SD` előre definiált XML és JSON formátumban.  
+ Ez a `H264 Multiple Bitrate 16x9 SD` témakör az előre beállított xml és JSON formátumban jelenik meg.  
   
- Ez a előbeállítás 5 Képcsoporttal igazított MP4-fájlokat, és a 1900 kbps 400 kb/s és sztereó AAC hang hoz létre. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes milyen egyes elemei, és ezen készletek azt jelenti, hogy az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md) témakör.  
+ Ez az előre beállított készlet 5 GOP-hoz igazított MP4-fájlt hoz létre, 1900 kbit/s-tól 400 kbps-ig, valamint sztereó AAC hangot. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. A készletek egyes elemeinek és az egyes elemek érvényes értékeinek magyarázatát a [Media Encoder Standard séma](media-services-mes-schema.md) témakörében talál.  
   
 > [!NOTE]
->  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Példa: 1920x1080, 1280x720, 1080x576, 640x360. Vegyes nézik, például ne használja: 1280x720, 720x480, 640x360.  
+>  A rétegek `Width` közötti `Height` értékek és értékek módosításakor győződjön meg arról, hogy a méretarány konzisztens marad. Például: 1920x1080, 1280x720, 1080x576, 640x360. Ne használjon képarányok keverékét, például: 1280x720, 720x480, 640x360.  
   
  XML  
   
