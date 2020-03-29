@@ -1,6 +1,6 @@
 ---
-title: Földrajzi útválasztás által használt ország/régió-hierarchia – Azure Traffic Manager
-description: Ez a cikk felsorolja az Azure Traffic Manager földrajzi útválasztási típus által használt ország/régió hierarchiát
+title: Földrajzi útválasztás által használt ország/régió hierarchia – Azure Traffic Manager
+description: Ez a cikk az Azure Traffic Manager Geographic útválasztási típusa által használt ország-/régióhierarchiát sorolja fel
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,681 +13,681 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938649"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Az Azure Traffic Manager által a földrajzi forgalom útválasztási módszeréhez használt ország/régió-hierarchia
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Az Azure Traffic Manager által földrajzi forgalom-útválasztási módszerhez használt ország-/régióhierarchia
 
-Ez a cikk felsorolja azokat az országokat és régiókat, amelyeket a **földrajzi** forgalom útválasztási módszere használ az Azure Traffic Managerban. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)meghívásával. 
+Ez a cikk felsorolja az Azure Traffic Manager **földrajzi** forgalomútválasztási módszer által használt országokat és régiókat. Ezeket az információkat programozott módon is beszerezheti az [Azure Traffic Manager REST API-jának felhívásával.](https://docs.microsoft.com/rest/api/trafficmanager/) 
 
-- VILÁG (világ)
+- VILÁG(Világ)
 
-    - GEO-EU (Európa)
+    - GEO-EU(Európa)
 
-        - AD (Andorra)
+        - AD(Andorra)
 
-        - AL (Albánia)
+        - AL(Albánia)
 
-        - Itt (Ausztria)
+        - AT(Ausztria)
 
-        - AX (Åland-szigetek)
+        - AX(Åland-szigetek)
 
         - BA (Bosznia-Hercegovina)
 
-        - BE (Belgium)
+        - BE(Belgium)
 
-        - BG (Bulgária)
+        - BG(Bulgária)
 
-        - (Fehéroroszország)
+        - BY(Fehéroroszország)
 
-        - CH (Svájc)
+        - CH(Svájc)
 
         - CY (Ciprus)
 
-        - CZ (Cseh Köztársaság)
+        - CZ(Cseh Köztársaság)
 
-        - NÉMET (németországi)
+        - DE(Németország)
 
-        - DK (Dánia)
+        - DK(Dánia)
 
         - EE (Észtország)
 
-        - ES (Spanyolország)
+        - ES(Spanyolország)
 
-        - FI (Finnország)
+        - FI(Finnország)
 
-        - FO (Feröer-szigetek)
+        - FO(Feröer-szigetek)
 
-        - FR (Franciaország)
+        - FR(Franciaország)
 
-        - GB (Egyesült Királyság)
+        - GB(Egyesült Királyság)
 
-        - GG (Guernsey)
+        - GG(Guernsey)
 
-        - GI (Gibraltár)
+        - GI(Gibraltár)
 
-        - GR (Görögország)
+        - GR(Görögország)
 
-        - HR (Horvátország)
+        - HR(Horvátország)
 
-        - HU (Magyarország)
+        - HU(Magyarország)
 
-        - IE (Írország)
+        - IE(Írország)
 
-        - IM (Man-sziget)
+        - IM (Man-szigetek)
 
-        - (Izland)
+        - IS(Izland)
 
-        - IT (Olaszország)
+        - IT(Olaszország)
 
-        - JE (Jersey)
+        - JE(Mez)
 
-        - LI (Liechtenstein)
+        - LI(Liechtenstein)
 
-        - LT (Litvánia)
+        - LT(Litvánia)
 
-        - LU (Luxemburg)
+        - LU(Luxemburg)
 
-        - LV (Lettország)
+        - LV(Lettország)
 
-        - MC (Monaco)
+        - MC(Monaco)
 
-        - MD (Moldova)
+        - MD(Moldova)
 
-        - ME (Montenegró)
+        - ME(Montenegró)
 
-        - MK (Észak-Macedónia)
+        - MK(Észak-Macedónia)
 
-        - MT (Málta)
+        - MT(Málta)
 
-        - NL (Hollandia)
+        - NL(Hollandia)
 
-        - NEM (Norvégia)
+        - (Norvégia)
 
-        - PL (Lengyelország)
+        - PL(Lengyelország)
 
-        - PT (Portugália)
+        - PT(Portugália)
 
-        - RO (Románia)
+        - RO(Románia)
 
-        - RS (Szerbia)
+        - RS(Szerbia)
 
-        - RU (Oroszország)
+        - RU(Oroszország)
 
-        - SE (Svédország)
+        - SE(Svédország)
 
-        - SI (Szlovénia)
+        - SI(Szlovénia)
 
         - SJ (Svalbard)
 
-        - SK (Szlovákia)
+        - SK(Szlovákia)
 
-        - SM (San Marino)
+        - SM(San Marino)
 
-        - UA (Ukrajna)
-            - Krím régiója
+        - UA(Ukrajna)
+            - Krím régió
 
-        - VA (Vatikánváros)
+        - VA (Vatikán)
 
-        - XJ (Jan Mayen)
+        - XJ(Jan Mayen)
 
-        - XK (Koszovó)
+        - XK(Koszovó)
 
-    - GEO-ME (közel-Kelet)
+    - GEO-ME(Közel-Kelet)
 
         - AE (Egyesült Arab Emírségek)
 
-        - BH (Bahrein)
+        - BH(Bahrein)
 
-        - IL (Izrael)
+        - IL(Izrael)
 
-        - IQ (Irak)
+        - IQ(Irak)
 
-        - IR (Irán)
+        - IR(Irán)
 
-        - JO (Jordánia)
+        - JO(Jordánia)
 
-        - KW (Kuvait)
+        - KW(Kuvait)
 
-        - LB (Libanon)
+        - LB(Libanon)
 
-        - OM (Omán)
+        - OM(Omán)
 
-        - PS (palesztin hatóság)
+        - PS (Palesztin Hatóság)
 
-        - QA (Katar)
+        - Minőségbiztosítás (Katar)
 
-        - SY (Szíria)
+        - SY(Szíria)
 
         - SA (Szaúd-Arábia)
 
-        - TR (Törökország)
+        - TR(Törökország)
 
-        - YE (Jemen)
+        - YE(Jemen)
 
-    - GEO-NA (Észak-Amerika/Közép-Amerika/Karib-térség)
+    - GEO-NA(Észak-Amerika / Közép-Amerika / Karib-térség)
 
         - AG (Antigua és Barbuda)
 
-        - AI (Anguilla)
+        - AI(Anguilla)
 
-        - AW (Aruba)
+        - AW(Aruba)
 
-        - BB (Barbados)
+        - BB(Barbados)
 
-        - BL (Saint Barthélemy)
+        - BL(Szent Barthélemia)
 
-        - BM (Bermuda)
+        - BM(Bermuda)
 
-        - BQ (Bonaire)
+        - BQ(Bonaire)
 
-        - BS (Bahama-szigetek)
+        - BS(Bahamák)
 
-        - BZ (Belize)
+        - BZ(Belize)
 
-        - CA (Kanada)
+        - CA(Kanada)
 
-            - CA-AB (Alberta)
+            - CA-AB(Alberta)
 
-            - CA-BC (British Columbia)
+            - CA-BC (Brit Columbia)
 
-            - CA-MB (Manitoba)
+            - CA-MB(Manitoba)
 
-            - CA-NB (új-Brunswick)
+            - CA-NB(Új-Brunswick)
 
-            - CA-NL (Fundland és Labrador)
+            - CA-NL (Új-Fundland és Labrador)
 
-            - CA-NS (Nova Scotia)
+            - CA-NS (Új-Skócia)
 
             - CA-NT (északnyugati területek)
 
-            - CA-NU (Nunavut)
+            - CA-NU(Nunavut)
 
-            - CA-ON (Ontario)
+            - CA-ON(Ontario)
 
-            - CA-PE (Prince Edward-sziget)
+            - CA-PE (Edward herceg-sziget)
 
-            - CA-QC (Québec)
+            - CA-QC(Québec)
 
-            - CA-SK (Saskatchewan)
+            - CA-SK(Saskatchewan)
 
-            - CA-YT (Yukon terület)
+            - CA-YT(Yukon terület)
 
         - CR (Costa Rica)
 
-        - CU (Kuba)
+        - CU(Kuba)
 
-        - CW (CuraÃ § Ao)
+        - TÉNYLEGES SÚLY (CuraÃ§ao)
 
-        - DM (Dominikai)
+        - DM (Dominika)
 
         - DO (Dominikai Köztársaság)
 
-        - GD (Grenada)
+        - GD(Grenada)
 
-        - GL (Grönland)
+        - GL(Grönland)
 
-        - GP (Guadeloupe)
+        - GP(Guadeloupe)
 
-        - GT (Guatemala)
+        - GT(Guatemala)
 
-        - HN (Honduras)
+        - HN(Honduras)
 
         - HT (Haiti)
 
-        - JM (Jamaica)
+        - JM(Jamaica)
 
         - KN (Saint Kitts és Nevis)
 
         - KY (Kajmán-szigetek)
 
-        - LC (Saint Lucia)
+        - LC(Saint Lucia)
 
-        - MF (Saint Martin)
+        - MF(Szent Márton)
 
         - MQ (Martinique)
 
-        - MS (Montserrat)
+        - MS(Montserrat)
 
-        - MX (Mexikó)
+        - MX(Mexikó)
 
-        - NI (Nicaragua)
+        - NI(Nicaragua)
 
-        - PA (Panama)
+        - PA(Panama)
 
-        - MINISZTERELNÖK (Saint-Pierre és Miquelon)
+        - PM (Saint Pierre és Miquelon)
 
-        - PR (Puerto Rico)
+        - PR(Puerto Rico)
 
-        - SV (Salvador)
+        - SV(El Salvador)
 
         - SX (Sint Maarten)
 
-        - TC (Turks-és Caicos-szigetek)
+        - TC (Turks- és Caicos-szigetek)
 
         - TT (Trinidad és Tobago)
 
-        - UM (az Egyesült Államok lakatlan külbirtokai)
+        - UM(Amerikai Egyesült Államok külső szigetei)
 
-        - Egyesült Államok (Egyesült Államok)
+        - USA (Egyesült Államok)
 
-            - USA – AK (Alaszka)
+            - US-AK(Alaszka)
 
-            - USA – AL (Alabama)
+            - US-AL(Alabama)
 
-            - USA – AR (Arkansas)
+            - US-AR(Arkansas)
 
-            - USA – AZ (Arizona)
+            - US-AZ(Arizona)
 
-            - USA – CA (Kalifornia)
+            - US-CA (Kalifornia)
 
-            - USA – CO (Colorado)
+            - US-CO(Colorado)
 
-            - USA – CT (Connecticut)
+            - AMERIKAI CT (Connecticut)
 
             - US-DC (Columbia körzet)
 
-            - USA – DE (Delaware)
+            - US-DE(Delaware)
 
             - US-FL (Florida)
 
-            - USA – GA (Georgia)
+            - US-GA(Grúzia)
 
-            - USA – HI (Hawaii)
+            - US-HI (Hawaii)
 
-            - USA – IA (Iowa)
+            - US-IA(Iowa)
 
             - US-ID (Idaho)
 
-            - USA – IL (Illinois)
+            - US-IL(Illinois)
 
-            - US-IN (Indiana)
+            - US-IN(Indiana)
 
-            - USA – KS (Kansas)
+            - US-KS(Kansas)
 
-            - USA – KY (Kentucky)
+            - US-KY (Kentucky)
 
-            - USA – LA (Louisiana)
+            - AMERIKAI-LA(Louisiana)
 
-            - USA – MA (Massachusetts)
+            - AMERIKAI(Massachusetts)
 
-            - US-MD (Maryland)
+            - AMERIKAI MD (Maryland)
 
-            - USA – ME (Maine)
+            - US-ME(Maine)
 
-            - USA – MI (Michigan)
+            - US-MI (Michigan)
 
-            - USA – MN (Minnesota)
+            - US-MN(Minnesota)
 
-            - USA – MO (Missouri)
+            - US-MO(Missouri)
 
-            - USA – MS (Mississippi)
+            - USA-MS (Mississippi)
 
-            - USA – MT (Montana)
+            - US-MT(Montana)
 
-            - USA – NC (Észak-Karolina)
+            - USA-NC (Észak-Karolina)
 
-            - USA – ND (Észak-Dakota)
+            - US-ND (Észak-Dakota)
 
-            - USA – NE (Nebraska)
+            - US-NE(Nebraska)
 
-            - USA – NH (New Hampshire)
+            - AMERIKAI-NH(New Hampshire)
 
-            - USA – NJ (New Jersey)
+            - EGYESÜLT ÁLLAMOK-NJ (New Jersey)
 
-            - USA – NM (Új-Mexikó)
+            - US-NM (Új-Mexikó)
 
-            - USA – NV (Nevada)
+            - US-NV(Nevada)
 
-            - USA – NY (New York)
+            - US-NY (New York)
 
-            - USA – OH (Ohio)
+            - US-OH (Ohio)
 
-            - USA – OK (Oklahoma)
+            - US-OK (Oklahoma)
 
-            - USA – vagy (Oregon)
+            - US-OR(Oregon)
 
-            - USA – PA (Pennsylvania)
+            - US-PA (Pennsylvania)
 
-            - USA – RI (Rhode Island)
+            - US-RI (Rhode Island)
 
-            - USA – SC (Dél-Karolina)
+            - US-SC(Dél-Karolina)
 
-            - USA – SD (Dél-Dakota)
+            - US-SD (Dél-Dakota)
 
-            - USA – TN (Tennessee)
+            - AMERIKAI-TN(Tennessee)
 
-            - USA – TX (Texas)
+            - US-TX (Texas)
 
-            - USA – UT (Utah)
+            - USA-UT(Utah)
 
-            - USA – VA (Virginia)
+            - AMERIKAI VA(Virginia)
 
-            - USA – VT (Vermont)
+            - US-VT(Vermont)
 
-            - USA – WA (Washington)
+            - US-WA(Washington)
 
-            - USA – WI (Wisconsin)
+            - AMERIKAI-WI (Wisconsin)
 
-            - USA – WV (Nyugat-Virginia)
+            - US-WV (Nyugat-Virginia)
 
-            - USA – WY (Wyoming)
+            - US-WY(Wyoming)
 
         - VC (Saint Vincent és Grenadine-szigetek)
 
         - VG (Brit Virgin-szigetek)
 
-        - VI (Amerikai Virgin-szigetek)
+        - VI(Amerikai Virgin-szigetek)
 
-        - XE (Sint Eustatius)
+        - XE(Sint Eustatius)
 
-        - XS (Saba)
+        - XS(Saba)
 
-    - GEO-AS (Ázsia)
+    - GEO-AS(Ázsia)
 
         - AF (Afganisztán)
 
         - AM (Örményország)
 
-        - AZ (Azerbajdzsán)
+        - AZ(Azerbajdzsán)
 
-        - BD (Banglades)
+        - BD(Banglades)
 
-        - BN (Brunei)
+        - BN(Brunei)
 
         - BT (Bhután)
 
-        - CC (Kókusz-szigetek)
+        - CC(Kókusz-szigetek)
 
-        - CN (Kína)
+        - CN(Kína)
 
         - CX (Karácsony-sziget)
 
-        - GE (Georgia)
+        - GE (Grúzia)
 
         - HK (Hongkong KKT)
 
-        - AZONOSÍTÓ (Indonézia)
+        - Azonosító(Indonézia)
 
-        - (India)
+        - IN(India)
 
-        - IO (brit indiai-óceáni terület)
+        - IO (Brit Indiai-óceáni Terület)
 
-        - JP (Japán)
+        - JP(Japán)
 
-        - KG (Kirgizisztán)
+        - KG(Kirgizisztán)
 
-        - KH (Kambodzsa)
+        - KH(Kambodzsa)
 
         - KP (Észak-Korea)
 
-        - KR (Korea)
+        - KR(Korea)
 
-        - KZ (Kazahsztán)
+        - KZ(Kazahsztán)
 
-        - LA (Laosz)
+        - LA(Laosz)
 
-        - LK (Sri Lanka)
+        - LK(Srí Lanka)
 
-        - PP (Mianmar)
+        - MM(Mianmar)
 
-        - MN (Mongólia)
+        - Mongólia)
 
-        - MO (Makaó KKT)
+        - MO(Makaó KKT)
 
-        - MV (Maldív-szigetek)
+        - MV(Maldív-szigetek)
 
-        - SAJÁT (Malajzia)
+        - MY(Malajzia)
 
         - NP (Nepál)
 
-        - PH (Fülöp-szigetek)
+        - PH(Fülöp-szigetek)
 
-        - PK (Pakisztán)
+        - PK(Pakisztán)
 
         - SG (Szingapúr)
 
-        - TH (Thaiföld)
+        - TH(Thaiföld)
 
-        - TJ (Tádzsikisztán)
+        - TJ(Tádzsikisztán)
 
-        - TL (Timor_Leste)
+        - TL(Timor_Leste)
 
         - TM (Türkmenisztán)
 
-        - TW (Tajvan)
+        - TW(Tajvan)
 
         - UZ (Üzbegisztán)
 
-        - VN (Vietnam)
+        - VN(Vietnam)
 
-    - GEO-AF (Afrika)
+    - GEO-AF(Afrika)
 
-        - AO (Angola)
+        - AO(Angola)
 
-        - BF (Burkina Faso)
+        - BF(Burkina Faso)
 
-        - BI (Burundi)
+        - BI(Burundi)
 
-        - BJ (Benin)
+        - BJ(Benin)
 
-        - BV (Bouvet-sziget)
+        - BV(Bouvet-sziget)
 
-        - BW (Botswana)
+        - BW(Botswana)
 
-        - CD (Kongói Demokratikus Köztársaság)
+        - CD(Kongó (KDK))
 
-        - CF (Közép-afrikai Köztársaság)
+        - KTF (Közép-afrikai Köztársaság)
 
-        - Côte d'Ivoire
+        - CI(Elefántcsontpart)
 
-        - CM (Kamerun)
+        - CM(Kamerun)
 
-        - CV (Cabo Verde)
+        - Önéletrajz(Cabo Verde)
 
         - DJ (Dzsibuti)
 
-        - DZ (Algéria)
+        - DZ(Algéria)
 
-        - PÉLDÁUL (Egyiptom)
+        - EG(Egyiptom)
 
-        - ER (Eritrea)
+        - ER(Eritrea)
 
-        - ET (Etiópia)
+        - ET(Etiópia)
 
-        - GA (Gabon)
+        - GA(gabon)
 
-        - GH (Ghána)
+        - GH(Ghána)
 
-        - GM (Gambia)
+        - GM(Gambia)
 
-        - GN (Guinea)
+        - GN(Guinea)
 
-        - GQ (Egyenlítői-Guinea)
+        - GQ(Egyenlítői-Guinea)
 
-        - GW (Guinea_Bissau)
+        - GW(Guinea_Bissau)
 
         - KE (Kenya)
 
-        - KM (Comore-szigetek)
+        - KM(Cososz)
 
-        - LR (Libéria)
+        - LR(Libéria)
 
         - LS (Lesotho)
 
-        - LY (Líbia)
+        - LY(Líbia)
 
-        - MA (Marokkó)
+        - MA(Marokkó)
 
-        - MG (Madagaszkár)
+        - MG(Madagaszkár)
 
-        - ML (Mali)
+        - ML(Mali)
 
-        - Úr (Mauritánia)
+        - MR(Mauritánia)
 
-        - MU (Mauritius)
+        - MU(Mauritius)
 
-        - MW (Malawi)
+        - MW(Malawi)
 
-        - MZ (Mozambik)
+        - MZ(Mozambik)
 
-        - NA (Namíbia)
+        - NA(Namíbia)
 
-        - NE (Niger)
+        - NE(Niger)
 
         - NG (Nigéria)
 
-        - ÚJRA (Réunion)
+        - RE(Réunion)
 
-        - RW (Ruanda)
+        - RW(Ruanda)
 
         - SC (Seychelle-szigetek)
 
-        - SD (Szudán)
+        - SD(Szudán)
 
-        - SH (Szent Ilona, Ascension, Tristan da Cunha)
+        - SH(Szent Ilona, Mennybemenetel, Tristan da Cunha)
 
-        - SL (Sierra Leone)
+        - SL(Sierra Leone)
 
-        - SOROZATSZÁM (Szenegál)
+        - SN(Szenegál)
 
-        - Tehát (Szomália)
+        - SO(Szomália)
 
-        - SS (Dél-Szudán)
+        - SS(Dél-Szudán)
 
-        - ST (São Tomé és Príncipe)
+        - ST(São Tomé és Príncipe)
 
-        - SZ (Szváziföld)
+        - SZ(Szváziföld)
 
         - TD (Csád)
 
         - TF (francia déli területek)
 
-        - TG (Togo)
+        - TG(Togo)
 
         - TN (Tunézia)
 
-        - TZ (Tanzánia)
+        - TZ(Tanzánia)
 
-        - UG (Uganda)
+        - UG(Uganda)
 
-        - YT (Mayotte)
+        - YT(Mayotte)
 
-        - ZA (Dél-Afrika)
+        - ZA(Dél-Afrika)
 
-        - ZM (Zambia)
+        - ZM(Zambia)
 
-        - ZW (Zimbabwe)
+        - ZW(Zimbabwe)
 
-    - GEO-AN (Antarktisz)
+    - GEO-AN(Antarktisz)
 
         - AQ (Antarktisz)
 
-    - GEO-SA (Dél-Amerika)
+    - GEO-SA(Dél-Amerika)
 
-        - AR (Argentína)
+        - AR(Argentína)
 
-        - BO (Bolívia)
+        - BO(Bolívia)
 
-        - BR (Brazília)
+        - BR(Brazília)
 
-        - CL (Chile)
+        - CL(Chile)
 
-        - CO (Kolumbia)
+        - CO(Kolumbia)
 
-        - EK (Ecuador)
+        - EK(Ecuador)
 
-        - FK (Falkland-szigetek)
+        - FK(Falkland-szigetek)
 
         - GF (Francia Guyana)
 
-        - GS (Dél-Georgia és Déli-Sandwich-szigetek)
+        - GS (Dél-Georgia és Dél-Sandwich-szigetek)
 
         - GY (Guyana)
 
-        - PE (Peru)
+        - PE(Peru)
 
-        - (Paraguay)
+        - PY(Paraguay)
 
-        - SR (Suriname)
+        - SR(Suriname)
 
-        - UY (Uruguay)
+        - UY(Uruguay)
 
         - VE (Venezuela)
 
-    - GEO-AP (Ausztrália/csendes-óceáni régió)
+    - GEO-AP(Ausztrália / Csendes-óceáni)
 
         - AS (Amerikai Szamoa)
 
-        - AU (Ausztrália)
+        - AU(Ausztrália)
 
-            - AU-CSELEKEDJ (Ausztráliai fővárosi terület)
+            - AU-ACT (ausztrál fővárosi terület)
 
-            - AU-NSW (új-Dél-Wales)
+            - AU-NSW (Új-Dél-Wales)
 
-            - AU-NT (északi terület)
+            - AU-NT (Északi terület)
 
-            - AU-QLD (Queensland)
+            - AU-QLD(Queensland)
 
             - AU-SA (Dél-Ausztrália)
 
-            - AU-TAS (Tasmania)
+            - AU-TAS(Tasmánia)
 
-            - AU-VIC (Victoria)
+            - AU-VIC(Viktória)
 
             - AU-WA (Nyugat-Ausztrália)
 
-        - CK (Cook-szigetek)
+        - CK(Cook-szigetek)
 
-        - FJ (Fidzsi)
+        - FJ(Fidzsi-szigetek)
 
-        - FM (Mikronézia)
+        - FM(Mikronézia)
 
-        - GU (Guam)
+        - GU(Guam)
 
         - HM (Heard-sziget és McDonald-szigetek)
 
-        - Ki (Kiribati)
+        - KI(Kiribati)
 
-        - MH (Marshall-szigetek)
+        - MH(Marshall-szigetek)
 
-        - MP (Észak-Mariana-szigetek)
+        - MP (Északi-Mariana-szigetek)
 
-        - NC (Új-Kaledónia)
+        - NC(Új-Kaledónia)
 
-        - NF (Norfolk-sziget)
+        - NF(Norfolk-sziget)
 
-        - NR (Nauru)
+        - NR(Nauru)
 
-        - NU (Niue)
+        - NU(Niue)
 
-        - NZ (új-zélandi)
+        - ÚJ-Zéland (Új-Zéland)
 
-        - PF (Francia Polinézia)
+        - PF(Francia Polinézia)
 
         - PG (Pápua Új-Guinea)
 
-        - PN (Pitcairn-szigetek)
+        - PN(Pitcairn-szigetek)
 
-        - PW (Palau)
+        - PW(Palau)
 
-        - SB (Salamon-szigetek)
+        - SB(Salamon-szigetek)
 
-        - TK (Tokelau)
+        - TK(Tokelau)
 
-        - – (Tonga)
+        - TO(Tonga)
 
-        - TV (Tuvalu)
+        - TV(Tuvalu)
 
-        - VU (Vanuatu)
+        - JE(Vanuatu)
 
-        - WF (Wallis és Futuna)
+        - WF(Wallis és Futuna)
 
-        - WS (Szamoa)
+        - WS(Szamoa)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [földrajzi forgalom útválasztási módszeréről az Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).
+- További információ a [földrajzi forgalomútválasztási módszeréről az Azure Traffic Managerben.](traffic-manager-routing-methods.md#geographic)

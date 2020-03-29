@@ -1,7 +1,7 @@
 ---
-title: Azure NSG flow-naplók megjelenítése – Power BI
+title: Az Azure NSG-folyamatnaplók megjelenítése – Power BI
 titleSuffix: Azure Network Watcher
-description: Ez a lap leírja, hogyan jelenítheti meg a NSG-folyamat naplóit a Power BI.
+description: Ez a lap bemutatja, hogyan jelenítheti meg az NSG-folyamatnaplókat a Power BI-val.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,115 +13,115 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840604"
 ---
-# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Hálózati biztonsági csoport folyamatábráinak megjelenítése Power BI
+# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>A Hálózati biztonság csoport folyamatnaplóinak megjelenítése a Power BI segítségével
 
-A hálózati biztonsági csoport folyamatábrái lehetővé teszik a hálózati biztonsági csoportokon található bejövő és kimenő IP-forgalomra vonatkozó információk megtekintését. Ezek a flow-naplók a kimenő és bejövő folyamatokat jelenítik meg egy szabály alapján, a flow a folyamatra vonatkozik, 5 rekordos információ a folyamatról (forrás/cél IP-címe, forrás/célport, protokoll), és ha a forgalmat engedélyezték vagy megtagadták.
+A hálózati biztonsági csoport folyamatnaplói lehetővé teszik a hálózati biztonsági csoportok be- és kimenő IP-forgalmával kapcsolatos információk megtekintését. Ezek a folyamatnaplók szabályonként jelenítik meg a kimenő és bejövő folyamatokat, a folyamatáltal alkalmazott hálózati adaptert, a folyamat 5-hangú adatait (Forrás/cél IP, Forrás/cél port, Protokoll), valamint azt, hogy a forgalmat engedélyezték vagy megtagadták-e.
 
-A naplófájlok manuális keresésével nehéz lehet betekintést nyerni a flow naplózási adataiba. Ebben a cikkben egy megoldást biztosítunk a legutóbbi flow-naplók megjelenítésére és a hálózat forgalmának megismerésére.
+A naplófájlok manuális keresésével nehéz lehet betekintést nyerni a folyamatnaplózási adatokba. Ebben a cikkben megoldást kínálunk a legutóbbi folyamatnaplók megjelenítésére és a hálózati forgalom megismerésére.
 
 > [!Warning]  
-> Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
+> A következő lépések az 1-es verziójú folyamatnaplókkal működnek. További információt a [Hálózati biztonsági csoportok folyamatnaplózásának bemutatása című témakörben talál.](network-watcher-nsg-flow-logging-overview.md) A következő utasítások módosítás nélkül nem működnek a naplófájlok 2-es verziójával.
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 
-Az alábbi forgatókönyvben a NSG-flow naplózási adataihoz tartozó fogadóként konfigurált Storage-fiókhoz csatlakozik Power BI asztal. A Storage-fiókhoz való kapcsolódás után Power BI letölti és elemzi a naplókat a hálózati biztonsági csoportok által naplózott forgalom vizuális megjelenítéséhez.
+A következő esetben a Power BI desktopot az NSG-folyamatnaplózási adatok fogadójaként konfigurált tárfiókhoz kapcsoljuk. Miután csatlakoztunk a tárfiókunkhoz, a Power BI letölti és elemzi a naplókat, hogy vizuálisan reprezentálta a hálózati biztonsági csoportok által naplózott forgalmat.
 
-A sablonban megadott vizualizációk használatával ellenőrizheti a következőket:
+A sablonban megadott vizualizációk segítségével megvizsgálhatja a következőket:
 
-* Leggyakoribb beszélők
-* Az idősorozat folyamatábrája irány és szabály alapján
+* Legjobb beszélők
+* Idősorozat-folyami adatok irány- és szabálydöntés szerint
 * Folyamatok hálózati adapter MAC-címe szerint
-* Folyamatok NSG és szabály szerint
+* NSG és szabály szerint zajló folyamatok
 * Folyamatok célport szerint
 
-A megadott sablon szerkeszthető, így az igényeinek megfelelően módosíthatja az új adatelemek, vizualizációk vagy szerkesztési lekérdezések hozzáadását.
+A megadott sablon szerkeszthető, így módosíthatja, hogy új adatokat, vizualizációkat adjon hozzá, vagy az igényeinek megfelelően módosítsa a lekérdezéseket.
 
 ## <a name="setup"></a>Telepítés
 
-Mielőtt elkezdené, a fiókjában egy vagy több hálózati biztonsági csoporton engedélyezni kell a hálózati biztonsági csoport folyamatának naplózását. A hálózati biztonsági folyamatok naplófájljainak engedélyezésével kapcsolatos utasításokért tekintse meg a következő cikket: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md).
+Mielőtt elkezdené, a fiók egy vagy több hálózati biztonsági csoportjában engedélyeznie kell a hálózati biztonsági csoport folyamatnaplózását. A hálózati biztonsági folyamatnaplók engedélyezésével kapcsolatos tudnivalókat a következő cikkben találja: Bevezetés a [hálózati biztonsági csoportok folyamatnaplózásába.](network-watcher-nsg-flow-logging-overview.md)
 
-Az Power BI Desktop-ügyfélnek telepítve kell lennie a gépen, és elegendő szabad területtel kell rendelkeznie a gépen a Storage-fiókban található naplófájlok letöltéséhez és betöltéséhez.
+A Power BI Desktop ügyfélnek is telepítve kell lennie a számítógépen, és elegendő szabad helyet kell tárolnia a számítógépen a tárfiókban található naplóadatok letöltéséhez és betöltéséhez.
 
 ![Visio-diagram][1]
 
 ### <a name="steps"></a>Lépések
 
-1. Töltse le és nyissa meg a következő Power BI sablont a Power BI Desktop alkalmazásban [Network Watcher PowerBI flow-naplók sablonja](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
+1. A Power BI Alkalmazás [hálózati figyelője PowerBI-folyamatnaplók sablonjának](https://aka.ms/networkwatcherpowerbiflowlogstemplate) letöltése és megnyitása a következő Power BI-sablonban
 1. Adja meg a szükséges lekérdezési paramétereket
-   1. **StorageAccountName** – annak a Storage-fióknak a nevét adja meg, amely tartalmazza a betölteni és megjeleníteni kívánt NSG flow-naplókat.
-   1. **NumberOfLogFiles** – megadja, hogy hány naplófájlt szeretne letölteni és megjeleníteni Power BIban. Ha például 50 van megadva, a 50 legújabb naplófájlok. Ha 2 NSG engedélyezve van, és úgy van konfigurálva, hogy NSG-flow-naplókat küldjön erre a fiókra, akkor az elmúlt 25 órányi napló megtekinthető.
+   1. **StorageAccountName** – Megadja a betölteni és vizualizálni kívánt NSG-folyamatnaplókat tartalmazó tárfiók nevét.
+   1. **NumberOfLogFiles** – Megadja a Power BI-ban letölteni és megjeleníteni kívánt naplófájlok számát. Ha például 50 van megadva, az 50 legújabb naplófájl. Ha 2 NSG-t engedélyeztünk és konfiguráltunk úgy, hogy NSG-folyamatnaplókat küldjünk erre a fiókra, akkor az elmúlt 25 órányi napló megtekinthető.
 
-      ![Power BI – fő][2]
+      ![power BI fő][2]
 
-1. Adja meg a Storage-fiók elérési kulcsát. Az érvényes hozzáférési kulcsok megkereséséhez navigáljon a Storage-fiókjához a Azure Portal, és válassza a **hozzáférési kulcsok** lehetőséget a beállítások menüből. Kattintson a **kapcsolat** , majd a módosítások alkalmazása lehetőségre.
+1. Adja meg a tárfiók hozzáférési kulcsát. Az érvényes hozzáférési kulcsokat úgy találhatja meg, hogy az Azure Portalon navigál a tárfiókra, és a Beállítások menü **hozzáférési kulcsok parancsát** választja. Kattintson a **Csatlakozás gombra,** majd alkalmazza a módosításokat.
 
     ![hozzáférési kulcsok][3]
 
-    ![2\. hozzáférési kulcs][4]
+    ![2. hozzáférési kulcs][4]
 
-4. A rendszer letölti és elemzi a naplókat, és mostantól használhatja az előre létrehozott vizualizációkat.
+4. A naplók letöltése és elemzésre kerülnek, és most már használhatja az előre létrehozott vizualizációkat.
 
-## <a name="understanding-the-visuals"></a>A vizualizációk megismerése
+## <a name="understanding-the-visuals"></a>A vizualizációk ismertetése
 
-A sablonban megadott elemek olyan vizualizációk összessége, amelyek segítenek megérteni a NSG folyamat naplójának információit. Az alábbi képek egy mintát mutatnak arról, hogy az irányítópult hogyan néz ki az adatokkal való feltöltésekor. Alább részletesebben vizsgáljuk meg az egyes vizualizációkat 
+A sablonban olyan vizualizációk találhatók, amelyek segítenek megérteni az NSG-folyamatnapló adatait. Az alábbi képek en látható, hogy hogyan néz ki az irányítópult, amikor adatokkal van feltöltve. Az alábbiakban megvizsgáljuk az egyes vizuális részletesebb 
 
 ![powerbi][5]
  
-A legfontosabb beszélők vizualizációja azokat az IP-címeket mutatja be, amelyek a legtöbb kapcsolatot kezdeményezték a megadott időszakban. A mezők mérete megfelel a kapcsolatok relatív számának. 
+A Top Talkers vizualizáció azokat az IP-ket jeleníti meg, amelyek a legtöbb kapcsolatot kezdeményezték a megadott időszakban. A dobozok mérete a kapcsolatok relatív számának felel meg. 
 
 ![toptalkers][6]
 
-A következő idősorozat-diagramok az időszakon belül a folyamatok számát mutatják. A felső diagramot a folyamat iránya szegmentálja, és az alacsonyabb érték a döntés által meghozott (Engedélyezés vagy megtagadás). Ezzel a vizualizációval az idő múlásával megvizsgálhatja a forgalmi trendeket, és megfigyelheti a forgalom vagy a forgalom szegmentálását.
+A következő idősorozat-grafikonok az időszak során a folyamatok számát mutatják. A felső grafikon tágítja az áramlás irányát, és az alsó szegmentált a döntés (engedélyezése vagy megtagadása). Ezzel a vizualizációval megvizsgálhatja a forgalmi trendeket az idő múlásával, és észlelheti a forgalom vagy a forgalom szegmentálásának rendellenes csúcsait vagy csökkenését.
 
-![flowsoverperiod][7]
+![flowoverperiod][7]
 
-A következő diagramok a folyamatokat a hálózati felületen mutatják be, a felső szegmenst a flow irányával és a meghozott döntés alapján. Ezekkel az információkkal betekintést nyerhet, hogy a virtuális gépek közül melyik a legtöbbet, másokhoz képest, és ha egy adott virtuális gépre irányuló forgalom engedélyezése vagy elutasítása folyamatban van.
+A következő grafikonok a hálózati interfészenkénti folyamatokat mutatják, a felső toldalékot áramlásirány szerint szegmentálva, az alsót pedig döntés szerint szegmentálva. Ezekkel az információkkal betekintést nyerhet abba, hogy a virtuális gépek közül melyik kommunikált a legtöbbet másokhoz képest, és ha egy adott virtuális gép forgalmat engedélyeznek vagy megtagadnak.
 
-![flowspernic][8]
+![áramlásperonikus][8]
 
-A következő fánk-kerék diagram a folyamatok lebontását mutatja meg a célport alapján. Ezekkel az információkkal megtekintheti a megadott időszakon belül leggyakrabban használt rendeltetési portokat.
+A következő fánkkerék-diagram a Folyamatok célport szerinti bontását mutatja. Ezzel az információval megtekintheti a megadott időszakban használt leggyakrabban használt célportokat.
 
-![fánk][9]
+![gyűrű][9]
 
-A következő sávdiagram a folyamatot a NSG és a Rule alapján mutatja. Ezen információk alapján megtekintheti a legtöbb forgalomért felelős NSG, valamint a NSG szabály szerinti bontását.
+A következő sávdiagramon a Flow by NSG és a Rule látható. Ezzel az információval láthatja a legnagyobb forgalomért felelős NSG-ket, valamint az NSG-n a forgalom szabályok szerinti bontását.
 
-![barchart][10]
+![sávdiagram][10]
  
-A következő tájékoztató diagramok információkat jelenítenek meg a naplókban található NSG, az adott időszakban rögzített folyamatok számáról és a legkorábbi napló rögzítésének dátumáról. Ez az információ a naplózott NSG és a folyamatok időtartományát ismerteti.
+A következő információs diagramok a naplókban szereplő NSG-k adatait, az időszak során rögzített folyamatok számát és a legkorábbi rögzített napló dátumát jelenítik meg. Ez az információ képet ad arról, hogy milyen NSG-ket naplóznak, és milyen dátumtartományt tartalmaz a folyamatok.
 
-![infochart1][11]
+![infodiagram1][11]
 
-![infochart2][12]
+![infodiagram2][12]
 
-Ez a sablon a következő szeletelőket tartalmazza, hogy csak azokat az adattartalmakat tekintse meg, amelyek érdeklik. Az erőforráscsoportok, a NSG és a szabályok szűrésére is lehetőség van. A szűrés 5 rekordos információ, döntés és a napló írásának időpontja alapján is végezhető.
+Ez a sablon a következő szeletelőket tartalmazza, amelyek lehetővé teszik, hogy csak azönt érdeklő adatokat tekintse meg. Szűrhet az erőforráscsoportokra, az NSG-kre és a szabályokra. Szűrhet 5-tuple információkra, döntésre és a napló írásának időpontjára is.
 
 ![Szeletelők][13]
 
 ## <a name="conclusion"></a>Összegzés
 
-Ebben a forgatókönyvben azt mutatták, hogy Network Watcher és Power BI által biztosított hálózati biztonsági csoport Folyamatábráinak használatával képesek vagyunk megjeleníteni és értelmezni a forgalmat. A megadott sablon használatával Power BI letölti a naplókat közvetlenül a tárolóból, és helyileg dolgozza fel őket. A sablon betöltéséhez szükséges idő a kért fájlok számától és a letöltött fájlok teljes méretétől függően változhat.
+Ebben a forgatókönyvben megmutattuk, hogy a Network Watcher és a Power BI által biztosított Network Security Group Flow naplók használatával képesek vagyunk megvizelni és megérteni a forgalmat. A megadott sablon használatával a Power BI közvetlenül letölti a naplókat a tárolóból, és helyileg dolgozza fel azokat. A sablon betöltéséhez szükséges idő a kért fájlok számától és a letöltött fájlok teljes méretétől függ.
 
-Nyugodtan testreszabhatja ezt a sablont az igényeinek megfelelően. Számos módon használhatja a Power BIt a hálózati biztonsági csoport adatfolyam-naplóival. 
+Nyugodtan testre szabhatja ezt a sablont az Ön igényeinek. A Power BI számos módon használható a hálózati biztonsági csoport folyamatnaplóival. 
 
 ## <a name="notes"></a>Megjegyzések
 
-* A naplók alapértelmezés szerint a `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`ban tárolódnak
+* A naplók alapértelmezés szerint a`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
-    * Ha más címtárban található egyéb adatkönyvtár is, a lekérdezéseket a lekéréses és az adatfeldolgozási folyamatnak módosítania kell.
+    * Ha más adatok is léteznek egy másik könyvtárban, módosítani kell az adatok lekérése és feldolgozása érdekében lekérik és feldolgozzák az adatokat.
 
-* A megadott sablon több mint 1 GB-nál több napló használata esetén nem ajánlott.
+* A megadott sablon nem ajánlott 1 GB-nál több naplóval való használatra.
 
-* Ha nagy mennyiségű naplót használ, javasoljuk, hogy egy másik adattárral (például Data Lake vagy SQL Server) vizsgálja meg a megoldást.
+* Ha nagy mennyiségű naplóval rendelkezik, azt javasoljuk, hogy vizsgálja meg a megoldást egy másik adattár, például a Data Lake vagy az SQL-kiszolgáló használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan jelenítheti meg a NSG-flow-naplókat a rugalmas Veremtel az [Azure Network WATCHER NSG flow-naplók vizualizációs megnyitása nyílt forráskódú eszközök használatával](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Ismerje meg, hogyan jelenítheti meg az NSG-folyamatnaplókat a rugalmas veremsegítségével, ha ellátogat a [Visualize Azure Network Watcher NSG folyamatnaplóiba nyílt forráskódú eszközök használatával](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

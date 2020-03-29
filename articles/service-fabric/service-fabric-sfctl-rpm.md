@@ -1,96 +1,96 @@
 ---
-title: Azure Service Fabric CLI – sfctl rpm
-description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Tartalmazza a Repair Manager szolgáltatáshoz tartozó parancsok listáját.
+title: Azure Service Fabric CLI- sfctl fordulatszám
+description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. A javításkezelő szolgáltatásparancsainak listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904946"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
-Parancsok lekérdezése és küldése a Repair Manager szolgáltatásnak.
+Parancsok lekérdezése és küldése a javításkezelő szolgáltatásnak.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| jóváhagyás – kényszerít | Kényszeríti a megadott javítási feladat jóváhagyását. |
-| delete | Töröl egy befejezett javítási feladatot. |
-| lista | Lekéri a megadott szűrőknek megfelelő javítási feladatok listáját. |
+| jóváhagyó-erő | Kényszeríti az adott javítási feladat jóváhagyását. |
+| delete | Törölt egy befejezett javítási feladatot. |
+| lista | Beszerzi az adott szűrőknek megfelelő javítási feladatok listáját. |
 
-## <a name="sfctl-rpm-approve-force"></a>sfctl rpm jóváhagyása-Force
-Kényszeríti a megadott javítási feladat jóváhagyását.
+## <a name="sfctl-rpm-approve-force"></a>sfctl rpm jóváhagyó erő
+Kényszeríti az adott javítási feladat jóváhagyását.
 
-Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból való használatra készült.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --Task-ID [kötelező] | A javítási feladat azonosítója. |
-| --Version | A javítási feladat aktuális verziószáma. Ha nullától eltérő értéket ad meg, a kérelem csak akkor lesz sikeres, ha ez az érték megegyezik a javítási feladat aktuális verziójával. Ha nulla, akkor a rendszer nem hajtja végre a verzió-ellenőrzéseket. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-rpm-delete"></a>sfctl rpm törlése
-Töröl egy befejezett javítási feladatot.
-
-Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból való használatra készült.
+Ez az API támogatja a Service Fabric platformot; ez nem azt jelentette, hogy közvetlenül a kódot.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Task-ID [kötelező] | A törlendő befejezett javítási feladat azonosítója. |
-| --Version | A javítási feladat aktuális verziószáma. Ha nullától eltérő értéket ad meg, a kérelem csak akkor lesz sikeres, ha ez az érték megegyezik a javítási feladat aktuális verziójával. Ha nulla, akkor a rendszer nem hajtja végre a verzió-ellenőrzéseket. |
+| --feladat-azonosító [Kötelező] | A javítási feladat azonosítója. |
+| --verzió | A javítási feladat aktuális verziószáma. Ha nem nulla, akkor a kérelem csak akkor lesz sikeres, ha ez az érték megegyezik a javítási feladat aktuális verziójával. Ha nulla, akkor a verzióellenőrzés nem történik meg. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-rpm-list"></a>sfctl rpm-lista
-Lekéri a megadott szűrőknek megfelelő javítási feladatok listáját.
+## <a name="sfctl-rpm-delete"></a>sfctl fordulatszám törlése
+Törölt egy befejezett javítási feladatot.
 
-Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból való használatra készült.
+Ez az API támogatja a Service Fabric platformot; ez nem azt jelentette, hogy közvetlenül a kódot.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --végrehajtó-szűrő | Annak a javítási végrehajtónak a neve, amelynek az igényelt feladatait fel kell venni a listára. |
-| --állapot-szűrő | Egy bitenkénti – vagy a következő értékek közül, amelyek meghatározzák, hogy mely feladatok szerepeljenek az eredmények listájában. <ul><li>1 – létrehozva</li><li>2 – igényelt</li><li>4 – felkészülés</li><li>8 – jóváhagyott</li><li>16 – végrehajtás</li><li>32 – visszaállítás</li><li>64 – befejezett</li></ul>
-| --Task-ID-Filter | A kijavítási feladat AZONOSÍTÓjának előtagja. |
+| --feladat-azonosító [Kötelező] | A törölendő befejezett javítási feladat azonosítója. |
+| --verzió | A javítási feladat aktuális verziószáma. Ha nem nulla, akkor a kérelem csak akkor lesz sikeres, ha ez az érték megegyezik a javítási feladat aktuális verziójával. Ha nulla, akkor a verzióellenőrzés nem történik meg. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-rpm-list"></a>sfctl rpm lista
+Beszerzi az adott szűrőknek megfelelő javítási feladatok listáját.
+
+Ez az API támogatja a Service Fabric platformot; ez nem azt jelentette, hogy közvetlenül a kódot.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --végrehajtó-szűrő | Annak a javítóvégrehajtónak a nevét, akinek az igényelt feladatait fel kell venni a listára. |
+| --állapotszűrő | Az alábbi értékek bitenkénti VAGY értéke, amely meghatározza, hogy mely tevékenységállapotokat kell felvenni az eredménylistában. <ul><li>1 - Létrehozva</li><li>2 - Igényelt</li><li>4 - Felkészülés</li><li>8 - Jóváhagyva</li><li>16 - Végrehajtás</li><li>32 - Visszaállítás</li><li>64 - Kész</li></ul>
+| --feladat-id-szűrő | Az egyeztetendő javítási feladatazonosító előtagja. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
-- [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+## <a name="next-steps"></a>További lépések
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

@@ -1,60 +1,60 @@
 ---
 title: Gyakori automatikus méretezési minták áttekintése
-description: Ismerje meg az Azure-beli erőforrás automatikus méretezésének leggyakoribb mintáit.
+description: Ismerje meg a közös minták automatikus méretezése az erőforrás az Azure-ban.
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75396094"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Gyakori automatikus méretezési minták áttekintése
-Ez a cikk az Azure-beli erőforrások méretezésének általános mintáit ismerteti.
+Ez a cikk ismerteti az azure-beli erőforrás méretezéséhez használt közös mintákat.
 
-Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
+Az Azure Monitor automatikus skálázása csak [a virtuális gép méretezési készleteire,](https://azure.microsoft.com/services/virtual-machine-scale-sets/) [a felhőszolgáltatásokra,](https://azure.microsoft.com/services/cloud-services/) [az appszolgáltatásra – webalkalmazásokra](https://azure.microsoft.com/services/app-service/web/)és [az API-kezelési szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
 
-## <a name="lets-get-started"></a>Lehetővé teszi az első lépéseket
+## <a name="lets-get-started"></a>Lehetővé teszi, hogy az induláshoz
 
-Ez a cikk azt feltételezi, hogy már ismeri az automatikus skálázást. [Itt megkezdheti az erőforrás skálázását][1]. Az alábbiakban néhány gyakori méretezési minta látható.
+Ez a cikk feltételezi, hogy ismeri az automatikus skálázást. Itt [kezdheti el az erőforrás méretezését.][1] Az alábbiakban néhány közös méretezési minták.
 
-## <a name="scale-based-on-cpu"></a>Skálázás CPU alapján
+## <a name="scale-based-on-cpu"></a>Méretezés a CPU alapján
 
-Van egy webalkalmazása (/VMSS/cloud szolgáltatási szerepkör) és
+Van egy webalkalmazás (/VMSS/cloud service szerepkör) és
 
-- A PROCESSZORon alapuló méretezést vagy méretezést szeretné elvégezni.
-- Emellett biztosítani szeretné, hogy a példányok minimális száma legyen.
-- Továbbá győződjön meg arról, hogy maximális korlátot adott meg a méretezhető példányok számára.
+- A processzor alapján szeretné bővíteni/skálázni.
+- Emellett azt szeretné, hogy a példányok minimális száma is legyen.
+- Azt is biztosítani szeretné, hogy a méretezhető példányok maximális számát állítsa be.
 
-![Skálázás CPU alapján][2]
+![Méretezés a CPU alapján][2]
 
-## <a name="scale-differently-on-weekdays-vs-weekends"></a>Eltérő méretezés hétköznapokon és hétvégeken
+## <a name="scale-differently-on-weekdays-vs-weekends"></a>A hétköznapokon és a hétvégéken eltérő méretezés
 
-Van egy webalkalmazása (/VMSS/cloud szolgáltatási szerepkör) és
+Van egy webalkalmazás (/VMSS/cloud service szerepkör) és
 
-- Alapértelmezés szerint 3 példányt kíván használni (hétköznapokon)
-- Nem várható, hogy a forgalom a hétvégén történik, és így hétvégeken 1 példányra szeretné méretezni.
+- Alapértelmezés szerint 3 példányt szeretne (hétköznap)
+- Nem számít a forgalom a hétvégén, és ezért azt szeretné, hogy skála le 1 esetben hétvégén.
 
-![Eltérő méretezés hétköznapokon és hétvégeken][3]
+![A hétköznapokon és a hétvégéken eltérő méretezés][3]
 
-## <a name="scale-differently-during-holidays"></a>Eltérő skálázás a munkaszüneti napokon
+## <a name="scale-differently-during-holidays"></a>Másképpen méretezhető ünnepnapokon
 
-Van egy webalkalmazása (/VMSS/cloud szolgáltatási szerepkör) és
+Van egy webalkalmazás (/VMSS/cloud service szerepkör) és
 
-- Alapértelmezés szerint a CPU-használat alapján szeretné felskálázást végezni
-- Azonban az ünnepi időszakban (vagy a vállalat számára fontos meghatározott napokon) felül szeretné bírálni az alapértékeket, és nagyobb kapacitással kell rendelkeznie az Ön rendelkezésére.
+- Alapértelmezés szerint a PROCESSZOR-használat alapján fel-le szeretne skálázni
+- Az ünnepi időszakban (vagy a vállalkozás számára fontos adott napokon) azonban felül szeretné bírni az alapértelmezett értékeket, és több kapacitással kíván rendelkezni.
 
-![Eltérő méretezés a munkaszüneti napokon][4]
+![Eltérő méretezés ünnepnapokon][4]
 
-## <a name="scale-based-on-custom-metric"></a>Méretezés egyéni metrika alapján
+## <a name="scale-based-on-custom-metric"></a>Méretezés egyéni mérőszám alapján
 
-Van egy webes kezelőfelülete és egy API-szintje, amely kommunikál a háttérrel.
+Van egy webes előtér-és egy API-réteg, amely kommunikál a háttér.
 
-- Az API-szintet az előtérben lévő egyéni események alapján szeretné méretezni (például: szeretné méretezni a fizetési folyamatot a bevásárlókocsi elemeinek száma alapján)
+- Az API-réteget az előtérben lévő egyéni események alapján szeretné méretezni (például: A pénztári folyamatot a bevásárlókosárban lévő cikkek száma alapján szeretné méretezni)
 
-![Méretezés egyéni metrika alapján][5]
+![Méretezés egyéni mérőszám alapján][5]
 
 <!--Reference-->
 [1]: ./autoscale-get-started.md

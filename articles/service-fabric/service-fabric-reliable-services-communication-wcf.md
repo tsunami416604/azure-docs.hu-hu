@@ -1,24 +1,24 @@
 ---
-title: Reliable Services – WCF-alapú kommunikációs verem
-description: A Service Fabricban a beépített WCF kommunikációs verem a Reliable Services ügyfél-szolgáltatás WCF-kommunikációját biztosítja.
+title: Megbízható szolgáltatások WCF kommunikációs verem
+description: A Service Fabric beépített WCF kommunikációs verem je ügyfél-szolgáltatás WCF kommunikációt biztosít a megbízható szolgáltatásokhoz.
 author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
 ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433868"
 ---
-# <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-alapú kommunikációs verem a Reliable Serviceshoz
-A Reliable Services-keretrendszer lehetővé teszi, hogy a szolgáltatás szerzője kiválassza a szolgáltatáshoz használni kívánt kommunikációs veremet. A [CreateServiceReplicaListeners vagy a CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metódusok által visszaadott **ICommunicationListener** keresztül képesek a választás kommunikációs verembe való csatlakoztatására. A keretrendszer a kommunikációs verem megvalósítását biztosítja azon szolgáltatás-szerzők Windows Communication Foundation (WCF) alapján, akik WCF-alapú kommunikációt kívánnak használni.
+# <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-alapú kommunikációs verem megbízható szolgáltatásokhoz
+A Megbízható szolgáltatások keretrendszer lehetővé teszi a szolgáltatás szerzők számára, hogy válassza ki a kommunikációs verem, amely et használni kívánnak a szolgáltatáshoz. Csatlakoztathatják az általuk választott kommunikációs vermet a [CreateServiceReplicaListeners vagy a CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metódusoktól visszaadott **ICommunicationListener** segítségével. A keretrendszer a Windows Kommunikációs Alapítvány (WCF) alapján biztosítja a kommunikációs verem megvalósítását azon szolgáltatásszerzők számára, akik WCF-alapú kommunikációt szeretnének használni.
 
 ## <a name="wcf-communication-listener"></a>WCF kommunikációs figyelő
-A **ICOMMUNICATIONLISTENER** WCF-specifikus implementációját a **Microsoft. ServiceFabric. Services. Communication. WCF. Runtime. WcfCommunicationListener** osztály nyújtja.
+Az **ICommunicationListener** WCF-specifikus implementációját a **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** osztály biztosítja.
 
-Tegyük fel, hogy a szolgáltatási szerződés típusa `ICalculator`
+Nehogy azt mondják, hogy van egy szolgáltatási szerződés ünk.`ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -29,7 +29,7 @@ public interface ICalculator
 }
 ```
 
-A következő módon hozhatunk létre WCF kommunikációs figyelőt a szolgáltatásban.
+A következő módon hozhatunk létre egy WCF kommunikációs figyelőt a szolgáltatásban.
 
 ```csharp
 
@@ -55,8 +55,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-the-wcf-communication-stack"></a>Ügyfelek írása a WCF kommunikációs verembe
-Ahhoz, hogy az ügyfelek a WCF használatával kommunikáljanak a szolgáltatásokkal, a keretrendszer biztosítja a **WcfClientCommunicationFactory**, amely a [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md)WCF-specifikus implementációja.
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>Ügyfelek írása a WCF kommunikációs veremhez
+Az ügyfelek wcf használatával történő kommunikációjának írásához a keretrendszer biztosítja a **WcfClientCommunicationFactory**programot, amely a [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md)WCF-specifikus implementációja.
 
 ```csharp
 
@@ -68,7 +68,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-A WCF kommunikációs csatornája a **WcfCommunicationClientFactory**által létrehozott **WcfCommunicationClient** érhető el.
+A WCF kommunikációs csatorna a **WcfCommunicationClientFactory**által létrehozott **WcfCommunicationClient** rendszerről érhető el.
 
 ```csharp
 
@@ -82,7 +82,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-Az ügyfél kódja használhatja a **WcfCommunicationClientFactory** , valamint a **WcfCommunicationClient** , amely a szolgáltatás végpontjának meghatározására és a szolgáltatással való kommunikációra szolgáló **ServicePartitionClient** implementálja.
+Az ügyfélkód használhatja a **WcfCommunicationClientFactory-t** a **WcfCommunicationClient-lel** együtt, amely a **ServicePartitionClient** szolgáltatást implementálja a szolgáltatás végpontjának meghatározásához és a szolgáltatással való kommunikációhoz.
 
 ```csharp
 // Create binding
@@ -110,12 +110,12 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ```
 > [!NOTE]
-> Az alapértelmezett ServicePartitionResolver feltételezi, hogy az ügyfél ugyanazon a fürtön fut, mint a szolgáltatás. Ha ez nem igaz, hozzon létre egy ServicePartitionResolver objektumot, és adja át a fürt kapcsolatainak végpontját.
+> Az alapértelmezett ServicePartitionResolver feltételezi, hogy az ügyfél ugyanabban a fürtben fut, mint a szolgáltatás. Ha nem ez a helyzet, hozzon létre egy ServicePartitionResolver objektumot, és adja át a fürt kapcsolati végpontok.
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
-* [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
-* [Webes API a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md)
-* [A Reliable Services kommunikációjának biztonságossá tétele](service-fabric-reliable-services-secure-communication-wcf.md)
+## <a name="next-steps"></a>További lépések
+* [Távoli eljáráshívás megbízható szolgáltatások távoli hívásával](service-fabric-reliable-services-communication-remoting.md)
+* [Webes API az OWIN szolgáltatással a megbízható szolgáltatásokban](service-fabric-reliable-services-communication-webapi.md)
+* [Kommunikáció biztonságossá tétele megbízható szolgáltatásokhoz](service-fabric-reliable-services-secure-communication-wcf.md)
 

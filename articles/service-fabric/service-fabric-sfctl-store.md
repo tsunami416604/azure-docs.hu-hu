@@ -1,94 +1,94 @@
 ---
-title: Azure Service Fabric CLI – sfctl-tároló
-description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Tartalmazza a fürt rendszerkép-tárolójában a fájl szintű műveletek végrehajtásához szükséges parancsok listáját.
+title: Az Azure Service Fabric CLI- sfctl áruház
+description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. A fürtképtárban a fájlszintű műveletek végrehajtásához szükséges parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905623"
 ---
 # <a name="sfctl-store"></a>sfctl-tároló
-Hajtsa végre az alapszintű fájl szintű műveleteket a fürt rendszerkép-tárolóján.
+Alapvető fájlszintű műveletek végrehajtása a fürtképtárolón.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| delete | Törli a meglévő rendszerkép-tároló tartalmát. |
-| gyökér – információ | Lekéri a tartalom adatait a rendszerkép-tároló gyökerében. |
-| stat | A rendszerkép-tároló tartalmának adatainak beolvasása. |
+| delete | Törli a meglévő képtár tartalmát. |
+| gyökér-info | Leveszi a tartalominformációt a képtároló gyökerében. |
+| Stat | Leveszi a képtároló tartalomadatait. |
 
-## <a name="sfctl-store-delete"></a>sfctl-tároló törlése
-Törli a meglévő rendszerkép-tároló tartalmát.
+## <a name="sfctl-store-delete"></a>sfctl áruház törlése
+Törli a meglévő képtár tartalmát.
 
-Törli az adott rendszerkép-tároló relatív elérési útjában található meglévő rendszerkép-tároló tartalmát. Ezzel a paranccsal törölhetők a feltöltött alkalmazáscsomag az üzembe helyezésük után.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --Content-Path [kötelező] | A fájl vagy mappa relatív elérési útja a rendszerkép-tárolóban a gyökeréből. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-store-root-info"></a>sfctl-tároló gyökerének adatai
-Lekéri a tartalom adatait a rendszerkép-tároló gyökerében.
-
-A rendszerkép-tároló gyökerénél lévő rendszerkép-tároló tartalmának adatait adja vissza.
+Törli az adott képtár relatív elérési útján található meglévő képtár-tartalmat. Ez a parancs a feltöltött alkalmazáscsomagok törlésére használható, miután kivannak építve.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --content-path [Kötelező] | A képtárolóban lévő fájl vagy mappa relatív elérési útja a gyökérből. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-store-stat"></a>sfctl Store-stat
-A rendszerkép-tároló tartalmának adatainak beolvasása.
+## <a name="sfctl-store-root-info"></a>sfctl áruház gyökér-info
+Leveszi a tartalominformációt a képtároló gyökerében.
 
-A megadott contentPath lévő rendszerkép-tároló tartalmának adatait adja vissza. A contentPath a rendszerkép-tároló gyökeréhez viszonyítva.
+A képtároló tartalmával kapcsolatos információkat adja vissza a képtároló gyökerében.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Content-Path [kötelező] | A fájl vagy mappa relatív elérési útja a rendszerkép-tárolóban a gyökeréből. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-store-stat"></a>sfctl áruház stat
+Leveszi a képtároló tartalomadatait.
+
+A megadott contentPath-on lévő képtároló tartalomadatait adja eredményül. A contentPath a képtároló gyökeréhez viszonyítva érhető el.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --content-path [Kötelező] | A képtárolóban lévő fájl vagy mappa relatív elérési útja a gyökérből. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
-- [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+## <a name="next-steps"></a>További lépések
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

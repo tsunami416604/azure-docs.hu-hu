@@ -1,60 +1,60 @@
 ---
-title: Az Azure Service Fabricban az állapot-nyilvántartó szervezeti egységek tesztelése
-description: Ismerje meg az egység tesztelési Service Fabric állapot-nyilvántartó szolgáltatásainak fogalmait és gyakorlatát.
+title: Állapotalapú szolgáltatások tesztelése az Azure Service Fabricben
+description: Ismerje meg a fogalmakat és gyakorlatokat az egység tesztelése Service Fabric állapotalapú szolgáltatások.
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433915"
 ---
-# <a name="unit-testing-stateful-services-in-service-fabric"></a>Állapot-nyilvántartó Service Fabric egység tesztelése
+# <a name="unit-testing-stateful-services-in-service-fabric"></a>Állapotalapú szolgáltatások tesztelése a Service Fabricben
 
-Ez a cikk az egység tesztelési Service Fabric állapot-nyilvántartó szolgáltatásaival kapcsolatos fogalmakat és gyakorlatokat ismerteti. A Service Fabricon belüli egység tesztelése a saját szempontjait is megőrzi, mivel az alkalmazás kódja aktívan fut több különböző kontextusban. Ez a cikk az alkalmazás kódjának biztosítására szolgáló eljárásokat ismerteti a különböző környezetekben futtatott alkalmazások esetében.
+Ez a cikk ismerteti a fogalmak és gyakorlatok az egység tesztelése Service Fabric állapotalapú szolgáltatások. A Service Fabric-en belüli egységtesztelés saját szempontokat érdemel, mivel az alkalmazáskód aktívan fut több különböző környezetben. Ez a cikk ismerteti a használt eljárások biztosítása alkalmazáskód a különböző környezetek futtatható tartozó.
 
-## <a name="unit-testing-and-mocking"></a>Egység tesztelése és modellezése
-Az egység tesztelése ebben a cikkben olyan automatizált tesztelést végez, amely egy tesztelési futó (például MSTest vagy NUnit) kontextusában hajtható végre. A jelen cikkben szereplő mértékegység-tesztek nem végeznek műveleteket egy távoli erőforráson, például egy adatbázison vagy REST API-n. Ezeket a távoli erőforrásokat ki kell gúnyolni. Ennek a cikknek a kontextusában hamis, rögzíthető és szabályozható a távoli erőforrások visszatérési értékei.
+## <a name="unit-testing-and-mocking"></a>Egységtesztelés és gúnyolódás
+Az egységtesztelés e cikk kontextusában olyan automatizált tesztelés, amely egy tesztfutó, például az MSTest vagy az NUnit környezetében hajtható végre. Az ebben a cikkben található egységtesztek nem hajtanak végre műveleteket egy távoli erőforrás, például egy adatbázis vagy restful API ellen. Ezeket a távoli erőforrásokat ki kell gúnyolni. A cikk kontextusában a gúnyolódás hamis, rekord és vezérlő a távoli erőforrások visszatérési értékeit.
 
-### <a name="service-fabric-considerations"></a>Service Fabric megfontolások
-Service Fabric állapot-nyilvántartó szolgáltatás tesztelési egysége több szempontot tartalmaz. Első lépésként a szolgáltatási kód több csomóponton, de különböző szerepköröknél fut. Az egység-tesztek kiértékelik az egyes szerepkörök kódját a teljes lefedettség eléréséhez. A különböző szerepkörök elsődleges, aktív másodlagos, üresjárati másodlagos és ismeretlenek. A none szerepkörhöz általában nincs szükség különleges lefedettségre, mivel Service Fabric úgy véli, hogy ez a szerepkör érvénytelen vagy NULL értékű szolgáltatás. Másodszor, minden egyes csomópont megváltoztatja a szerepkörét egy adott ponton. A teljes lefedettség elérése érdekében a kód végrehajtásának elérési útját a szerepkör változásaival kell tesztelni.
+### <a name="service-fabric-considerations"></a>A Service Fabric szempontjai
+A Service Fabric állapotalapú szolgáltatás egy adott állapotú szolgáltatás tesztelése számos szempontot. Először is, a szolgáltatáskód végrehajtása több csomóponton, de különböző szerepkörök alatt. Az egységteszteknek ki kell értékelniük az egyes szerepkörek szerinti kódot a teljes lefedettség elérése érdekében. A különböző szerepkörök az elsődleges, az aktív másodlagos, az alapjárati másodlagos és az ismeretlen szerepkör ök. A Nincs szerepkör általában nem igényel speciális lefedettséget, mivel a Service Fabric ezt a szerepkört érvénytelennek vagy null szolgáltatásnak tekinti. Másodszor, minden csomópont megváltoztatja a szerepét egy adott ponton. A teljes lefedettség elérése érdekében a kódvégrehajtási útvonalat a szerepkör-változások kal kell tesztelni.
 
-## <a name="why-unit-test-stateful-services"></a>Miért van az egység tesztelése állapot-nyilvántartó szolgáltatások? 
-Az állapot-nyilvántartó szervezeti egységek tesztelésével feltárhatja az olyan gyakori hibákat, amelyeket az alkalmazás vagy a tartomány-specifikus egység tesztelése nem feltétlenül okoz. Ha például az állapot-nyilvántartó szolgáltatás memóriában lévő állapottal rendelkezik, akkor az ilyen típusú tesztelés ellenőrzi, hogy a memóriában tárolt állapot szinkronban van-e az egyes replikák között. Ez a típusú tesztelés azt is ellenőrizheti, hogy egy állapot-nyilvántartó szolgáltatás válaszol-e a Service Fabric-előkészítés által átadott lemondási jogkivonatokra. A lemondások elindításakor a szolgáltatásnak le kell állítania a hosszú ideig futó és/vagy aszinkron műveleteket.  
+## <a name="why-unit-test-stateful-services"></a>Miért érdemes az egységteszt állapotalapú szolgáltatásait? 
+Az állapotalapú szolgáltatások egységtesztelése segíthet feltárni néhány olyan gyakori hibát, amelyek et nem feltétlenül a hagyományos alkalmazás vagy a tartományspecifikus egységtesztelés fog. Ha például az állapotalapú szolgáltatás nak van-e memóriabeli állapota, az ilyen típusú tesztelés ellenőrizheti, hogy ez a memórián belüli állapot szinkronban van-e az egyes replika között. Az ilyen típusú tesztelés is ellenőrizheti, hogy egy állapotalapú szolgáltatás megfelelően reagál-e a Service Fabric vezénylési által átadott megszakítási jogkivonatokra. A lemondások aktiválásakor a szolgáltatásnak le kell állítania minden hosszú futást és/vagy aszinkron műveletet.  
 
-## <a name="common-practices"></a>Gyakori eljárások
+## <a name="common-practices"></a>Közös gyakorlat
 
-A következő szakasz az állapot-nyilvántartó szolgáltatások tesztelésével kapcsolatos leggyakoribb eljárásokról ad tájékoztatást. Azt is javasolja, hogy a kigúnyoló rétegnek hogyan kell szorosan összehangolni a Service Fabric-előkészítéssel és az állami felügyelettel. A [ServiceFabric. mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) (3.3.0 vagy újabb) egy olyan függvénytár, amely a javasolt modellezési funkciókat biztosítja, és követi az alább vázolt eljárásokat.
+A következő szakasz tanácsot ad az állapotalapú szolgáltatás egységtesztelésének leggyakoribb gyakorlatával kapcsolatban. Azt is javasolja, hogy mi a gúnyos réteg kell szorosan igazodnia a Service Fabric vezénylési és állapotkezelés. [ServiceFabric.Mocks,](https://www.nuget.org/packages/ServiceFabric.Mocks/) mint a 3.3.0 vagy újabb egy ilyen könyvtár, amely biztosítja a gúnyos funkció ajánlott, és követi az alábbi eljárásokat.
 
-### <a name="arrangement"></a>Megállapodás
+### <a name="arrangement"></a>Elrendezése
 
-#### <a name="use-multiple-service-instances"></a>Több szolgáltatási példány használata
-Az egységek teszteléséhez egy állapot-nyilvántartó szolgáltatás több példányának kell futnia. Ez szimulálja, hogy mi történik valójában a fürtön, ahol Service Fabric kiépíti több replikát, amely a szolgáltatást futtatja a különböző csomópontok között. Ezek a példányok azonban eltérő kontextusban lesznek végrehajtva. A teszt futtatásakor minden példánynak a fürtben várt szerepkör-konfigurációval kell rendelkeznie. Ha például a szolgáltatásnak meg kell egyeznie a cél replikájának 3. méretével, Service Fabric három replikát fog kiépíteni a különböző csomópontokon. Az egyik az elsődleges, a másik kettő pedig aktív másodlagos.
+#### <a name="use-multiple-service-instances"></a>Több szolgáltatáspéldány használata
+Az egységteszteknek egy állapotalapú szolgáltatás több példányát kell végrehajtaniuk. Ez szimulálja, hogy ténylegesen mi történik a fürtön, ahol a Service Fabric a szolgáltatás különböző csomópontokon futó több replikákat tartalmaz. Ezen példányok mindegyike azonban más-más környezetben lesz végrehajtva. A teszt futtatásakor minden példányt a fürtön várt szerepkör-konfigurációval kell alapba venni. Például ha a szolgáltatás várhatóan 3-as célreplika mérete, a Service Fabric három replikák különböző csomópontokon. Az egyik az elsődleges, a másik kettő pedig az Aktív Középfokú.
 
-A legtöbb esetben a szolgáltatás végrehajtási útvonala némileg eltér az egyes szerepköröknél. Ha például a szolgáltatás nem fogadja el az aktív Másodlagostól érkező kéréseket, akkor előfordulhat, hogy a szolgáltatás egy olyan tájékoztató kivételt ad vissza, amely azt jelzi, hogy a kérést másodlagosan próbálták meg. Több példány esetén a rendszer teszteli a helyzetet.
+A legtöbb esetben a szolgáltatás végrehajtási útvonal a kismértékben változik az egyes szerepkörök. Ha például a szolgáltatás nem fogadja el az aktív másodlagos tól érkező kéréseket, előfordulhat, hogy a szolgáltatás ellenőrzi ezt az esetet, hogy visszadobjon egy tájékoztató kivételt, amely azt jelzi, hogy egy másodlagos kérést kíséreltek meg. Több példány esetén ez a helyzet tesztelése lehetővé teszi.
 
-Emellett több példány is lehetővé teszi a tesztek számára, hogy az egyes példányok szerepköreit átállítsa, hogy a válaszok konzisztensek legyenek a szerepkör változásai ellenére.
+Emellett több példány lehetővé teszi, hogy a tesztek váltsa nak a szerepkörök szerepkörei, hogy ellenőrizze a válaszok konzisztensek ellenére a szerepkör-változások.
 
-#### <a name="mock-the-state-manager"></a>A State Manager kigúnyolása
-A State Managert távoli erőforrásként kell kezelni, ezért a rendszer kigúnyolja. A State Manager kiírásakor szükség van néhány, a memóriában tárolt tárterületre, amellyel nyomon követhető, hogy a rendszer milyen adatokat ment az állami kezelőbe, hogy azok olvashatók és ellenőrizhetők legyenek. Ez egy egyszerű módja annak, hogy a megbízható gyűjtemények egyes típusaihoz hozzon létre mintául szolgáló példányokat. Ezekben a modellekben olyan adattípust használjon, amely szorosan igazodik az adott gyűjteményen végrehajtott műveletekhez. Az alábbiakban néhány javasolt adattípust ismertetünk az egyes megbízható gyűjteményekhez
+#### <a name="mock-the-state-manager"></a>Gúnyolódni az államvezetővel
+Az állapotkezelőt távoli erőforrásként kell kezelni, ezért gúnyolni kell. Ha kigúnyolja az állapotkezelőt, a memórián belüli tárolónak kell lennie ahhoz, hogy nyomon követhesse, mi menthető az állapotkezelőbe, hogy olvasható és ellenőrizhető legyen. Ennek eléréséhez egyszerű, hogy hozzon létre modell példányok az egyes típusú megbízható gyűjtemények. Ezeken a gúnyolódásokon belül használjon olyan adattípust, amely szorosan igazodik a gyűjteményhez végrehajtott műveletekhez. Az alábbiakban néhány javasolt adattípust taszunk fel minden egyes megbízható
 
-- IReliableDictionary < TKey, TValue >-> System. Collections. párhuzamos. ConcurrentDictionary < TKey, TValue >
-- IReliableQueue\<T >-> System. Collections. Generic. üzenetsor\<T >
-- IReliableConcurrentQueue\<T >-> System. Collections. párhuzamos. ConcurrentQueue\<T >
+- IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
-#### <a name="many-state-manager-instances-single-storage"></a>Számos State Manager-példány, egyetlen tárterület
-Ahogy azt korábban említettük, a State Managert és a megbízható gyűjteményeket távoli erőforrásként kell kezelni. Ezért ezeket az erőforrásokat az egységen belüli tesztek során kell kitalálni. Azonban egy állapot-nyilvántartó szolgáltatás több példányának futtatásakor a rendszer kihívást jelent, hogy minden egyes kigúnyolt állapotú kezelőt szinkronizáljon a különböző állapot-nyilvántartó szolgáltatási példányok között. Ha az állapot-nyilvántartó szolgáltatás a fürtön fut, a Service Fabric gondoskodik az egyes másodlagos replikák állapot-kezelőjének az elsődleges replikával való összhangban tartásáról. Ezért a teszteknek ugyanúgy kell működniük, hogy szimulálják a szerepkör módosításait.
+#### <a name="many-state-manager-instances-single-storage"></a>Számos state manager-példány, egyetlen tároló
+Mint már említettük, az állapotkezelő és a megbízható gyűjtemények kell kezelni, mint egy távoli erőforrás. Ezért ezeket az erőforrásokat az egységteszteken belül meg kell és kell kigúnyolni. Azonban egy állapotalapú szolgáltatás több példányának futtatásakor kihívást jelent az egyes kigúnyolt állapotkezelők szinkronizálása a különböző állapotalapú szolgáltatáspéldányok között. Ha az állapotalapú szolgáltatás fut a fürtön, a Service Fabric gondoskodik attól, hogy minden másodlagos replika állapotkezelő konzisztens az elsődleges replika. Ezért a teszteknek ugyanúgy kell viselkedniük, hogy szimulálhassák a szerepkör-módosításokat.
 
-A szinkronizálás egyszerű módja, ha a mögöttes objektumra egyedi mintát használ, amely az egyes megbízható gyűjteményeknek írt adatokat tárolja. Ha például egy állapot-nyilvántartó szolgáltatás egy `IReliableDictionary<string, string>`használ. A kigúnyolt állapot-kezelőnek `IReliableDictionary<string, string>`mintáját kell visszaadnia. A modell egy `ConcurrentDictionary<string, string>` segítségével nyomon követheti a megírt kulcs/érték párokat. A `ConcurrentDictionary<string, string>`nek a szolgáltatásnak átadott állami vezetők összes példánya által használt egyedinek kell lennie.
+Egy egyszerű módja ennek a szinkronizálás érhető el, az, hogy egy singleton mintát az alapul szolgáló objektum, amely tárolja az egyes megbízható gyűjteményírási adatokat. Ha például egy állapotalapú szolgáltatás `IReliableDictionary<string, string>`a . A modell állami menedzser vissza `IReliableDictionary<string, string>`kell adnia egy ál -ból. Ez a mock `ConcurrentDictionary<string, string>` használhatja az a nyomon követni a kulcs / érték párok írt. A `ConcurrentDictionary<string, string>` kell egy singleton által használt összes példánya a szolgáltatásnak átadott állapotkezelők.
 
-#### <a name="keep-track-of-cancellation-tokens"></a>A lemondási tokenek nyomon követése
-A lemondási jogkivonatok az állapot-nyilvántartó szolgáltatások fontos, de gyakran megtekinthető aspektusa. Ha Service Fabric egy állapot-nyilvántartó szolgáltatás elsődleges replikáját indítja el, a rendszer lemondási jogkivonatot biztosít. Ez a lemondási token arra szolgál, hogy jelezze a szolgáltatásnak, amikor a rendszer eltávolítja vagy lefokozza egy másik szerepkört. Az állapot-nyilvántartó szolgáltatásnak le kell állítania a hosszú ideig futó vagy aszinkron műveleteket, hogy a Service Fabric el tudja végezni a szerepkör-módosítási munkafolyamatot.
+#### <a name="keep-track-of-cancellation-tokens"></a>A törlési tokenek nyomon követése
+A törlési jogkivonatok az állapotalapú szolgáltatások fontos, de gyakran figyelmen kívül hagyott aspektusai. Amikor a Service Fabric elindítja az állapotalapú szolgáltatás elsődleges replikát, egy lemondási jogkivonat biztosított. Ez a törlési jogkivonat a szolgáltatás nak jelez, ha eltávolítják vagy lefokozzák egy másik szerepkörbe. Az állapotalapú szolgáltatás le kell állítania minden hosszú ideig futó vagy aszinkron műveleteket, hogy a Service Fabric befejezhesse a szerepkör-módosítási munkafolyamatot.
 
-Az RunAsync, a ChangeRoleAsync, a OpenAsync és a CloseAsync számára biztosított törlési jogkivonatokat a tesztek végrehajtása során kell megtartani. Ha ezeket a jogkivonatokat megtartja, a teszt szimulálhatja a szolgáltatás leállítását vagy lefokozását, és ellenőrizheti, hogy a szolgáltatás megfelelően válaszol-e.
+Az egységtesztek futtatásakor a RunAsync, A ChangeRoleAsync, az OpenAsync és a CloseAsync számára biztosított törlési jogkivonatokat a tesztvégrehajtása során kell tartani. Ezek a jogkivonatok megtartása lehetővé teszi, hogy a teszt szimulálja a szolgáltatás leállítását vagy lefokozását, és ellenőrizze, hogy a szolgáltatás megfelelően reagál-e.
 
-#### <a name="test-end-to-end-with-mocked-remote-resources"></a>Teljes körű tesztelés a kigúnyolt távoli erőforrásokkal
-Az egységek teszteléséhez az alkalmazás kódjának nagy részét kell végrehajtani, amely módosíthatja az állapot-nyilvántartó szolgáltatás állapotát. Javasoljuk, hogy a tesztek több végpontok közötti természetű legyenek. Az egyetlen létező modell a távoli erőforrás-interakciók rögzítése, szimulálása és/vagy ellenőrzése. Ez magában foglalja az állapot-kezelővel és a megbízható gyűjteményekkel folytatott interakciókat. Az alábbi kódrészlet egy példa a teljes körű tesztelést bemutató uborka vizsgálatra:
+#### <a name="test-end-to-end-with-mocked-remote-resources"></a>Végpontok utáni tesztelés kigúnyolt távoli erőforrásokkal
+Az egységteszteknek annyi alkalmazáskódot kell végrehajtaniuk, amely a lehető legnagyobb mértékben módosíthatja az állapotalapú szolgáltatás állapotát. Javasoljuk, hogy a tesztek több end-to-end jellegű. A létezési csak a távoli erőforrás-interakciók rögzítése, szimulálása és/vagy ellenőrzése. Ez magában foglalja az állapotkezelővel és a megbízható gyűjteményekkel folytatott interakciókat. A következő kódrészlet egy példa az usirta egy teszt, amely bemutatja a végpontok között végzett vizsgálat:
 
 ```
     Given stateful service named "fabric:/MyApp/MyService" is created
@@ -68,48 +68,48 @@ Az egységek teszteléséhez az alkalmazás kódjának nagy részét kell végre
     Then the request should should return the "John Smith" employee
 ```
 
-Ez a teszt azt állítja be, hogy az egyik replikán rögzített adattárolók elérhetők legyenek egy másodlagos replika számára, ha az elsődlegesre van előléptetve. Feltételezve, hogy a megbízható gyűjtemény az alkalmazotti adataihoz tartozó tároló, a teszttel esetlegesen fellépő esetleges sikertelenek, ha az alkalmazás kódja nem hajtotta végre `CommitAsync` a tranzakción az új alkalmazott mentéséhez. Ebben az esetben az alkalmazottak beszerzésére irányuló második kérelem nem adja vissza az első kérelem által felvett alkalmazottat.
+Ez a teszt azt állítja, hogy az egyik replika rögzített adatok elérhetők egy másodlagos replika, amikor előléptetik az elsődleges. Feltételezve, hogy egy megbízható gyűjtemény az alkalmazotti adatok háttértárolója, az Aa potenciális hiba, `CommitAsync` amely ezzel a teszttel elkapható, ha az alkalmazáskód nem hajtott végre a tranzakción az új alkalmazott mentéséhez. Ebben az esetben az alkalmazottak lekérésére irányuló második kérelem nem ad vissza az első kérésáltal hozzáadott alkalmazottat.
 
-### <a name="acting"></a>Működő
-#### <a name="mimic-service-fabric-replica-orchestration"></a>Service Fabric replika összehangolása
-Több szolgáltatási példány kezelésekor a teszteknek ugyanúgy kell inicializálnia és lebontaniuk ezeket a szolgáltatásokat, mint a Service Fabrict. Ha például egy új elsődleges replikán hoz létre egy szolgáltatást, Service Fabric meghívja a CreateServiceReplicaListener, a OpenAsync, a ChangeRoleAsync és a RunAsync. Az életciklus eseményei a következő cikkekben vannak dokumentálva:
+### <a name="acting"></a>Eljáró
+#### <a name="mimic-service-fabric-replica-orchestration"></a>Mimiszta Service Fabric replika vezénylési
+Több szolgáltatáspéldány kezelése esetén a tesztek inicializálni, és bontsa le ezeket a szolgáltatásokat ugyanúgy, mint a Service Fabric vezénylési. Ha például egy szolgáltatás jön létre egy új elsődleges replika, Service Fabric meghívja CreateServiceReplicaListener, OpenAsync, ChangeRoleAsync és RunAsync. Az életciklus-eseményeket a következő cikkek dokumentálják:
 
-- [Állapot-nyilvántartó szolgáltatás indítása](service-fabric-reliable-services-lifecycle.md#stateful-service-startup)
-- [Állapot-nyilvántartó szolgáltatás leállítása](service-fabric-reliable-services-lifecycle.md#stateful-service-shutdown)
-- [Állapot-nyilvántartó szolgáltatás elsődleges felcserélése](service-fabric-reliable-services-lifecycle.md#stateful-service-primary-swaps)
+- [Állapotalapú szolgáltatás indítása](service-fabric-reliable-services-lifecycle.md#stateful-service-startup)
+- [Állapotalapú szolgáltatás leállítása](service-fabric-reliable-services-lifecycle.md#stateful-service-shutdown)
+- [Állapotalapú szolgáltatás elsődleges csereügyletei](service-fabric-reliable-services-lifecycle.md#stateful-service-primary-swaps)
 
-#### <a name="run-replica-role-changes"></a>Replika szerepkör módosításainak futtatása
-Az egység tesztek a szolgáltatási példányok szerepköreit ugyanúgy kell megváltoztatni, mint a Service Fabric-előkészítést. A szerepkör állapotára szolgáló számítógép a következő cikkben van dokumentálva:
+#### <a name="run-replica-role-changes"></a>Replikaszerepkör-módosítások futtatása
+Az egységteszteknek a service-példányok szerepköreit ugyanúgy kell módosítaniuk, mint a Service Fabric vezénylési. A szerepkör állapotgép a következő cikkben van dokumentálva:
 
-[Replika szerepkör állapotának gépe](service-fabric-concepts-replica-lifecycle.md#replica-role)
+[Replika szerepkör állapotának számítógépe](service-fabric-concepts-replica-lifecycle.md#replica-role)
 
-A szerepkör-változások szimulálása a tesztelés kritikus szempontjainak egyike, és képes felfedni azokat a problémákat, amelyekben a replika állapota nem konzisztens egymással. A replika állapotának inkonzisztensnek kell lennie, mert a memóriában lévő állapot tárolása statikus vagy osztály szintű példány változókban történik. Ilyen lehet például a lemondási tokenek, az enumerálások és a konfigurációs objektumok/értékek. Ez azt is biztosítja, hogy a szolgáltatás tiszteletben tartsa a RunAsync során megadott törlési jogkivonatokat, hogy engedélyezze a szerepkör módosítását. A szerepkör-változások szimulálása olyan problémákat is felfedi, amelyek felmerülhetnek, ha a kód nem íródik, hogy a RunAsync többször is meghívást lehessen tenni.
+A szerepkör-módosítások szimulálása a tesztelés egyik kritikusabb aspektusa, és feltárhatja azokat a problémákat, amelyeknél a replika állapota nem egyezik meg egymással. Inkonzisztens replikaállapot a memórián belüli állapot statikus vagy osztályszintű példányváltozókban való tárolása miatt fordulhat elő. Ilyenek lehetnek például a érvénytelenítési jogkivonatok, felsorakat és konfigurációs objektumok/értékek. Ez azt is biztosítja, hogy a szolgáltatás tiszteletben tartja a RunAsync során biztosított megszakítási jogkivonatokat, hogy a szerepkör módosítása bekövetkezzen. A szerepkör-módosítások szimulálása olyan problémákat is feltárhat, amelyek akkor merülhetnek fel, ha a kód nincs megírva, hogy a RunAsync többszöris meghívást engedélyezzen.
 
-#### <a name="cancel-cancellation-tokens"></a>Visszavonási tokenek megszakítása
-Léteznie kell olyan egység-teszteknek, amelyekben a RunAsync megadott törlési tokent megszakították. Ez lehetővé teszi a teszt számára, hogy ellenőrizze, hogy a szolgáltatás szabályosan leáll-e. A rendszer leállítja a hosszú ideig futó vagy aszinkron műveleteket. Egy olyan hosszú ideig futó folyamat, amely egy szolgáltatáson létezhet, egy megbízható várólistán lévő üzenetek figyelésére szolgál. Ez közvetlenül a RunAsync vagy egy háttérbeli szálon belül létezhet. A megvalósításnak tartalmaznia kell a művelet kilépéséhez szükséges logikát, ha a megszakítási tokent megszakították.
+#### <a name="cancel-cancellation-tokens"></a>Lemondási tokenek visszavonása
+Léteznie kell olyan egységteszteknek, ahol a RunAsync számára biztosított megszakítási jogkivonat megszakad. Ez lehetővé teszi a teszt, hogy ellenőrizze, hogy a szolgáltatás szabályosan leáll. Ez alatt a leállítás során minden hosszú ideig futó vagy aszinkron műveleteket le kell állítani. Például egy szolgáltatáson esetleg létező hosszú ideig futó folyamat az, amely egy megbízható várólistán lévő üzeneteket figyel. Ez közvetlenül a RunAsync-en vagy egy háttérszálon belül is létezhet. A megvalósításnak tartalmaznia kell a műveletből való kilépés logikáját, ha a megszakítási jogkivonat ot megszakítja.
 
-Ha az állapot-nyilvántartó szolgáltatások olyan gyorsítótár-vagy memórián kívüli állapotot használnak, amelynek csak az elsődlegesen kell szerepelnie, akkor azt el kell végezni. Ezzel a beállítással biztosíthatja, hogy ez az állapot konzisztens legyen, ha a csomópont később válik újra. A lemondás tesztelése lehetővé teszi, hogy a teszt megfelelően ellenőrizze ezt az állapotot.
+Ha az állapotalapú szolgáltatások olyan gyorsítótárat vagy memórián belüli állapotot használnak, amely csak az elsődleges en létezhet, akkor ebben az időben kell ártalmatlanítani. Ez biztosítja, hogy ez az állapot konzisztens legyen, ha a csomópont később ismét elsődlegesvé válik. A törlési vizsgálat lehetővé teszi a vizsgálat számára, hogy ellenőrizze, hogy az állapot megfelelően van-e ártalmatlanítva.
 
-#### <a name="execute-requests-against-multiple-replicas"></a>Kérelmek végrehajtása több replikán
-Az állítási teszteknek ugyanazt a kérelmet kell végrehajtaniuk a különböző replikák ellen. A szerepkör változásaival párosítva a konzisztencia-problémák feloldhatók. Egy példa teszt a következő lépéseket hajthatja végre:
-1. Írási kérelem végrehajtása az aktuális elsődleges
-2. Olyan olvasási kérelem végrehajtása, amely az 1. lépésben írt adatok beolvasása az aktuális elsődleges értékre
-3. Másodlagos elsődlegesre előléptetése. Az aktuális elsődlegesről másodlagosra is le kell fokozni
-4. Hajtsa végre ugyanazt az olvasási kérést a 2. lépésben az új másodlagosra vonatkozóan.
+#### <a name="execute-requests-against-multiple-replicas"></a>Kérések végrehajtása több replikára
+Az érvényesítési teszteknek ugyanazt a kérést kell végrehajtaniuk a különböző replika ellen. Ha a szerepkör-módosításokkal párosítva a konzisztenciaproblémák at fedezheti fel. Egy példateszt a következő lépéseket hajthatja végre:
+1. Írási kérelem végrehajtása az aktuális elsődleges sel szemben
+2. Az 1.
+3. Másodlagos elsődlegeselőléptetés. Ennek le kell fokoznia az aktuális elsődleges és másodlagos
+4. Hajtsa végre ugyanazt az olvasási kérelmet a 2.
 
-Az utolsó lépésben a teszt képes érvényesíteni a visszaadott adathalmazt. Lehetséges, hogy ez a probléma feltárhatja, hogy a szolgáltatás által visszaadott adatmennyiség a memóriában, de végül egy megbízható gyűjtemény által. Előfordulhat, hogy a memóriában tárolt adatmennyiségek nem megfelelően szinkronizálva vannak a megbízható gyűjteményben találhatókkal.
+Az utolsó lépésben a teszt azt érvényesítheti, hogy a visszaadott adatok konzisztensek. Egy lehetséges probléma, hogy ez feltárhatja, hogy a szolgáltatás által visszaadott adatok lehetnek a memóriában, de végül egy megbízható gyűjtemény által támogatott. Előfordulhat, hogy a memóriában lévő adatok nem lesznek megfelelően szinkronban a megbízható gyűjteményben található adatokkal.
 
-A memóriában tárolt adatmennyiségeket általában másodlagos indexek vagy a megbízható gyűjteményben található adatösszesítések létrehozására használják.
+A memórián belüli adatokat általában másodlagos indexek vagy megbízható gyűjteményben lévő adatok összesítésének létrehozására használják.
 
-### <a name="asserting"></a>Megkér
+### <a name="asserting"></a>Azt állítja
 #### <a name="ensure-responses-match-across-replicas"></a>A válaszok egyezésének biztosítása a replikák között
-Az egységbeli teszteknek azt kell megadniuk, hogy egy adott kérelemre adott válasz konzisztens legyen több replikán az elsődlegesre való áttérés után. Ez felszíni lehetséges problémákat okozhat, ha a válaszban megadott adatokat nem egy megbízható gyűjtemény támogatja, vagy a memóriában tárolva van, és nincs olyan mechanizmus, amely az adatokat replikák között szinkronizálja. Ezzel biztosíthatja, hogy a szolgáltatás konzisztens válaszokat küldjön a Service Fabric újraelosztása után, vagy feladatátvételt hajt végre egy új elsődleges replikán.
+Az egységteszteknek azt kell állítaniuk, hogy egy adott kérelemre adott válasz konzisztens több replikák között az elsődlegesre való áttérés után. Ez felszínre potenciális problémák, ahol a válaszban megadott adatok vagy nem támogatja a megbízható gyűjtemény, vagy a memóriában tárolt mechanizmus nélkül, hogy az adatok replikák között. Ez biztosítja, hogy a szolgáltatás konzisztens válaszokat küld, miután a Service Fabric újraegyensúlyozza, vagy átadja a feladatát egy új elsődleges replika.
 
 #### <a name="verify-service-respects-cancellation"></a>A szolgáltatás tiszteletben tartásának ellenőrzése
-Hosszú ideig futó vagy aszinkron folyamatok, amelyeket meg kell szüntetni, ha a lemondási tokent megszakították, ellenőrizni kell, hogy a lemondás után ténylegesen le lettek-e állítva. Ezzel biztosíthatja, hogy a replika megváltozása ellenére a nem elsődleges replikán futó folyamatok ne maradjanak le az áttérés befejeződése előtt. Ezzel a megoldással olyan problémák is felhasználhatók, amelyekben a folyamat letilt egy szerepkör-módosítási vagy leállítási kérést a Service Fabricból.
+A hosszú ideig futó vagy aszinkron folyamatokat, amelyeket meg kell szüntetni, amikor egy megszakítási jogkivonatot megszakítanak, ellenőrizni kell, hogy azok a megszakítás után ténylegesen megszűntek-e. Ez biztosítja, hogy a replika változó szerepkörök, folyamatok, amelyek nem célja, hogy továbbra is fut a nem elsődleges replika leállítása, mielőtt az átmenet befejeződik. Ez is feltárhatja azokat a problémákat, ahol egy ilyen folyamat blokkolja a Service Fabric szerepkör-változási vagy leállítási kérelmét.
 
-#### <a name="verify-which-replicas-should-serve-requests"></a>A kérelmeket kézbesítő replikák ellenőrzése
-A teszteknek meg kell tenniük a várt viselkedést, ha egy kérés nem elsődleges replikához van irányítva. A Service Fabric lehetővé teszi a másodlagos replikák kérések kiszolgálását. A megbízható gyűjteményekbe való írás azonban csak az elsődleges replikából történhet. Ha az alkalmazás csak elsődleges replikákat szándékozik kézbesíteni a kérések kiszolgálásához, vagy csak a kérelmek egy részhalmazát tudja kezelni egy másodlagos, akkor a tesztek a pozitív és a negatív esetek esetében is a várt viselkedést fogják érvényesíteni. A rendszer egy olyan replikára irányítja át a negatív esetet, amely nem kezeli a kérést, és a pozitív az ellenkezője.
+#### <a name="verify-which-replicas-should-serve-requests"></a>Annak ellenőrzése, hogy mely replikák szolgálják a kérelmeket
+A teszteknek érvényesíteniük kell a várt viselkedést, ha egy kérelem nem elsődleges replikára van irányítva. A Service Fabric lehetővé teszi, hogy másodlagos replikák szolgálják a kérelmeket. Azonban a megbízható gyűjtemények írási adatok csak az elsődleges replika. Ha az alkalmazás célja csak az elsődleges replikák a kérelmek kiszolgálására, vagy csak egy részhalmaza a kérelmek kezelhető egy másodlagos, majd a tesztek érvényesítenie kell a várt viselkedést mind a pozitív és negatív esetekben. A negatív eset, hogy egy kérelem van irányítva egy replika, amely nem kezeli a kérelmet, és a pozitív, hogy az ellenkezője.
 
-## <a name="next-steps"></a>Következő lépések
-Ismerje meg, hogyan [tesztelheti az állapot-nyilvántartó szolgáltatásokat](service-fabric-how-to-unit-test-stateful-services.md).
+## <a name="next-steps"></a>További lépések
+További információ az [állapotalapú szolgáltatások egységes teszteléséről.](service-fabric-how-to-unit-test-stateful-services.md)

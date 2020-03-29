@@ -1,8 +1,8 @@
 ---
-title: Felhasználói adatvédelem és Azure Active Directory átmenő hitelesítés | Microsoft Docs
-description: Ez a cikk Azure Active Directory (Azure AD) átmenő hitelesítéssel és GDPR-megfelelőséggel foglalkozik.
+title: A felhasználók adatvédelme és az Azure Active Directory átmenő hitelesítése | Microsoft dokumentumok
+description: Ez a cikk az Azure Active Directory (Azure AD) átmenő hitelesítéssel és a GDPR-megfelelőséggel foglalkozik.
 services: active-directory
-keywords: Azure AD Connect átmenő hitelesítés, GDPR, szükséges összetevők az Azure AD-hez, egyszeri bejelentkezéshez, egyszeri bejelentkezéshez
+keywords: Azure AD Connect áthárítású hitelesítés, GDPR, szükséges összetevők az Azure AD, Egyszeri bejelentkezés, Egyszeri bejelentkezés
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,40 +18,40 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76931007"
 ---
-# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatvédelem és Azure Active Directory átmenő hitelesítés
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése
 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure AD átmenő hitelesítés a következő napló típusát hozza létre, amely személyes adattartalmakat tartalmazhat:
+Az Azure AD áteresztő hitelesítésa a következő naplótípust hozza létre, amely személyes adatokat tartalmazhat:
 
-- Azure AD Connect nyomkövetési naplófájlok.
-- A hitelesítési ügynök nyomkövetési naplófájljai.
-- Windows-Eseménynapló fájljai.
+- Az Azure AD Connect nyomkövetési naplófájljai.
+- Hitelesítési ügynök nyomkövetési naplófájljai.
+- Windows eseménynaplófájlok.
 
-Az átmenő hitelesítés felhasználói adatainak fejlesztése kétféleképpen történhet:
+A felhasználók adatvédelmének javítása az átmenő hitelesítéshez két módon:
 
-1.  Kérelem esetén kinyerheti egy személy adatait, és eltávolíthatja az adott személy adatait a telepítésből.
-2.  Ügyeljen arra, hogy a 48 órán túli adatmegőrzés ne legyen megtartva.
+1.  Kérésre kikell nyerni egy személy adatait, és el kell távolítani az adatokat az adott személytől a létesítményekből.
+2.  Győződjön meg arról, hogy 48 órán túl nem őriz meg adatokat.
 
-Erősen ajánljuk a második lehetőséget, mivel egyszerűbb megvalósítani és karbantartani. Az egyes naplókhoz az alábbi utasításokat kell megírni:
+Javasoljuk, hogy a második lehetőség, mivel könnyebb végrehajtani és fenntartani. Az egyes naplótípusokra vonatkozó utasítások az alábbiakban találhatók:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect nyomkövetési naplófájlok törlése
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Az Azure AD Connect nyomkövetési naplófájljainak törlése
 
-Tekintse át a **%ProgramData%\AADConnect** mappa tartalmát, és törölje a mappa nyomkövetési naplójának tartalmát (**trace-\*. log** fájlok) a Azure ad Connect telepítésének vagy frissítésének 48 órán belül vagy az átmenő hitelesítés konfigurációjának módosításával, mivel ez a művelet a GDPR által érintett adatmennyiséget hozhat létre.
+Ellenőrizze a **%ProgramData%\AADConnect** mappa tartalmát, és törölje a mappa nyomkövetési naplótartalmát (**trace-\*.log** files) az Azure AD Connect telepítését vagy frissítését vagy az átmenő hitelesítéskonfiguráció módosítását követő 48 órán belül, mivel ez a művelet a GDPR hatálya alá tartozó adatokat hozhat létre.
 
 >[!IMPORTANT]
->Ne törölje a **PersistedState. XML** fájlt ebben a mappában, mivel ez a fájl a Azure ad Connect korábbi telepítésének állapotát fogja használni, és a rendszer a frissítés telepítésének befejezésekor használja. Ez a fájl soha nem tartalmaz semmilyen információt egy személyről, és soha nem törölhető.
+>Ne törölje a **PersistedState.xml** fájlt ebben a mappában, mivel ez a fájl az Azure AD Connect előző telepítésének állapotának fenntartására szolgál, és a frissítés telepítésekor használatos. Ez a fájl soha nem tartalmaz semmilyen adatot egy személy, és soha nem kell törölni.
 
-Áttekintheti és törölheti ezeket a nyomkövetési naplófájlokat a Windows Intézőben, vagy a következő PowerShell-parancsfájl használatával elvégezheti a szükséges műveleteket:
+Áttekintheti és törölheti ezeket a nyomkövetési naplófájlokat a Windows Intézővel, vagy a következő PowerShell-parancsfájl segítségével hajthatja végre a szükséges műveleteket:
 
 ```
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -61,24 +61,24 @@ Foreach ($file in $Files) {
 }
 ```
 
-Mentse a parancsfájlt egy fájlban a következővel:. PS1 "bővítmény. Szükség szerint futtassa ezt a parancsfájlt.
+Mentse a parancsfájlt egy fájlba a ". PS1" kiterjesztés. Szükség szerint futtassa ezt a parancsfájlt.
 
-Ha többet szeretne megtudni a kapcsolódó Azure AD Connect GDPR vonatkozó követelményekről, tekintse meg [ezt a cikket](reference-connect-user-privacy.md).
+Ha többet szeretne megtudni a kapcsolódó Azure AD Connect GDPR-követelményekről, olvassa el [ezt a cikket.](reference-connect-user-privacy.md)
 
 ### <a name="delete-authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplóinak törlése
 
-Ez a termék Windows- **eseménynaplókat**is létrehozhat. További információért olvassa el [ezt a cikket](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Ez a termék **Windows eseménynaplókat**is létrehozhat. Ha többet szeretne megtudni, kérjük, olvassa el [ezt a cikket](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
 
-A továbbított hitelesítési ügynökhöz kapcsolódó naplók megtekintéséhez nyissa meg a **Eseménynapló** alkalmazást a kiszolgálón, és keresse meg az **alkalmazás és szolgáltatás Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
+Az átmenő hitelesítési ügynökhöz kapcsolódó naplók megtekintéséhez nyissa meg az **Eseménynapló** alkalmazást a kiszolgálón, és ellenőrizze az **Alkalmazás- és szolgáltatásnaplók\Microsoft\AzureAdConnect\AuthenticationAgent\Admin mappában.**
 
-### <a name="delete-authentication-agent-trace-log-files"></a>A hitelesítési ügynök nyomkövetési naplófájljainak törlése
+### <a name="delete-authentication-agent-trace-log-files"></a>Hitelesítési ügynök nyomkövetési naplófájljainak törlése
 
-Rendszeresen ellenőriznie kell a **%PROGRAMDATA%\MICROSOFT\AZURE ad-kapcsolat hitelesítési Agent\Trace** tartalmát, és 48 óránként törölni kell a mappa tartalmát. 
+Rendszeresen ellenőrizze a **%ProgramData%\Microsoft\Azure AD Connect authentication agent\Trace** tartalmát, és 48 óránként törölje a mappa tartalmát. 
 
 >[!IMPORTANT]
->Ha a hitelesítési ügynök szolgáltatás fut, nem fogja tudni törölni az aktuális naplófájlt a mappában. Próbálkozzon újra a szolgáltatás leállításával. Ha el szeretné kerülni a felhasználók bejelentkezési hibáit, akkor a [magas rendelkezésre állás](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)érdekében már be kell állítani az átmenő hitelesítést.
+>Ha a Hitelesítési ügynök szolgáltatás fut, nem tudja törölni a mappában lévő aktuális naplófájlt. Állítsa le a szolgáltatást, mielőtt újra próbálkozna. A felhasználói bejelentkezési hibák elkerülése érdekében már konfigurálta az átmenő hitelesítést a [magas rendelkezésre állás érdekében.](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
-Ezeket a fájlokat áttekintheti és törölheti a Windows Intézőben, vagy a következő parancsfájl használatával elvégezheti a szükséges műveleteket:
+Áttekintheti és törölheti ezeket a fájlokat a Windows Intézővel, vagy a következő parancsfájl segítségével hajthatja végre a szükséges műveleteket:
 
 ```
 $Files = ((Get-childitem -Path "$env:programdata\microsoft\azure ad connect authentication agent\trace" -Recurse).VersionInfo).FileName 
@@ -88,23 +88,23 @@ Foreach ($file in $files) {
 }
 ```
 
-A parancsfájl 48 óránkénti futtatásához kövesse az alábbi lépéseket:
+Ha 48 óránként szeretné futtatni ezt a parancsfájlt, kövesse az alábbi lépéseket:
 
-1.  Mentse a parancsfájlt egy fájlban a következővel:. PS1 "bővítmény.
-2.  Nyissa meg a **Vezérlőpultot** , és kattintson a **rendszer és biztonság**elemre.
-3.  A **felügyeleti eszközök** fejléc alatt kattintson a**feladatok ütemezhetnek**elemre.
-4.  A **Feladatütemezőben**kattintson a jobb gombbal a "**feladatütemezés könyvtára**" elemre, majd kattintson az "**alapszintű feladat létrehozása..** ." elemre.
-5.  Adja meg az új feladat nevét, majd kattintson a **tovább**gombra.
-6.  Válassza a "**napi**" lehetőséget a **feladat-triggerhez** , majd kattintson a **tovább**gombra.
-7.  Állítsa be az ismétlődést két napra, és kattintson a **tovább**gombra.
-8.  Válassza a**program indítása**műveletet, és kattintson a **tovább**gombra.
-9.  Írja be a "**PowerShell**" kifejezést a program/parancsfájl mezőjébe, és az "**argumentumok hozzáadása (nem kötelező)** " feliratú mezőben adja meg a korábban létrehozott parancsfájl teljes elérési útját, majd kattintson a **tovább**gombra.
-10. A következő képernyőn a létrehozandó feladat összegzése látható. Ellenőrizze az értékeket, és kattintson a **Befejezés** gombra a feladat létrehozásához:
+1.  Mentse a parancsfájlt egy fájlba a ". PS1" kiterjesztés.
+2.  Nyissa meg **a Vezérlőpultot,** és kattintson a **Rendszer és biztonság gombra.**
+3.  A **Felügyeleti eszközök** fejlécben kattintson a **"Feladatok ütemezése"** elemre.
+4.  A **Feladatütemezőben**kattintson a jobb gombbal a **"Feladatütemezés könyvtára"** elemre, és kattintson az **"Alapfeladat létrehozása...**" parancsra.
+5.  Írja be az új feladat nevét, majd kattintson a **Tovább gombra.**
+6.  A **Feladateseményindítóhoz** válassza a **"Napi"** lehetőséget, majd kattintson a **Tovább**gombra.
+7.  Állítsa az ismétlődést két napra, majd kattintson a **Tovább**gombra.
+8.  Válaszd a **"Program indítása"** lehetőséget műveletként, majd kattintson a **Tovább**gombra.
+9.  Írja be a "**PowerShell**" kifejezést a Program/parancsfájl mezőjébe, és az "**Arguments (nem kötelező)**" mezőbe írja be a korábban létrehozott parancsfájl teljes elérési útját, majd kattintson a **Tovább**gombra.
+10. A következő képernyőn a létrehozni kívánt tevékenység összegzése látható. Ellenőrizze az értékeket, és kattintson a **Befejezés** gombra a feladat létrehozásához:
  
-### <a name="note-about-domain-controller-logs"></a>Megjegyzés a tartományvezérlő naplóiról
+### <a name="note-about-domain-controller-logs"></a>Megjegyzés a tartományvezérlői naplókról
 
-Ha a naplózás engedélyezve van, ez a termék biztonsági naplókat hozhat a tartományvezérlőkhöz. Ha többet szeretne megtudni a naplózási házirendek konfigurálásáról, olvassa el ezt a [cikket](https://technet.microsoft.com/library/dd277403.aspx).
+Ha a naplózás engedélyezve van, a termék biztonsági naplókat hozhat létre a tartományvezérlők számára. A naplózási házirendek konfigurálásáról a cikkben olvashat [bővebben.](https://technet.microsoft.com/library/dd277403.aspx)
 
-## <a name="next-steps"></a>Következő lépések
-* [A Microsoft adatvédelmi szabályzatának áttekintése a megbízhatósági központban](https://www.microsoft.com/trustcenter)
-* [**Hibaelhárítás**](tshoot-connect-pass-through-authentication.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.
+## <a name="next-steps"></a>További lépések
+* [A Microsoft adatvédelmi irányelveinek áttekintése az Adatvédelmi központban](https://www.microsoft.com/trustcenter)
+* [**Hibaelhárítás**](tshoot-connect-pass-through-authentication.md) – Ismerje meg, hogyan oldhatja meg a szolgáltatással kapcsolatos gyakori problémákat.

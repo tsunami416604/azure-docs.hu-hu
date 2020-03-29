@@ -1,6 +1,6 @@
 ---
-title: Biztonsági üzeneteinek elküldése a IoT Azure Security Center részére | Microsoft Docs
-description: Megtudhatja, hogyan küldhet biztonsági üzeneteket Azure Security Center használatával a IoT.
+title: A biztonsági üzenetek küldése az Azure Security Center for IoT| Microsoft dokumentumok
+description: Ismerje meg, hogyan küldhetbiztonsági üzeneteket az Azure Security Center for IoT használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,50 +16,50 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963818"
 ---
-# <a name="send-security-messages-sdk"></a>Biztonsági üzenetek SDK küldése
+# <a name="send-security-messages-sdk"></a>Biztonsági üzenetek küldése SDK
 
-Ez a útmutató a IoT szolgáltatás képességeinek Azure Security Center ismerteti, ha úgy dönt, hogy az eszköz biztonsági üzeneteit a IoT-ügynök Azure Security Center használata nélkül gyűjti és küldi el, és elmagyarázza ennek módját.  
+Ez az útmutató ismerteti az Azure Security Center for IoT szolgáltatás képességeit, amikor úgy dönt, hogy összegyűjti és elküldi az eszköz biztonsági üzeneteket az Azure Security Center for IoT-ügynök használata nélkül, és elmagyarázza, hogyan kell ezt megtenni.  
 
 Ebből az útmutatóból a következőket tanulhatja meg: 
 > [!div class="checklist"]
 > * Biztonsági üzenetek küldése az Azure IoT C SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT C# SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT Python SDK használatával
-> * Biztonsági üzenetek küldése az Azure IoT Node. js SDK használatával
+> * Biztonsági üzenetek küldése az Azure IoT-node.js SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT Java SDK használatával
 
 
-## <a name="azure-security-center-for-iot-capabilities"></a>A IoT képességeinek Azure Security Center
+## <a name="azure-security-center-for-iot-capabilities"></a>Az Azure Security Center az IoT-képességekhez
 
-Azure Security Center a IoT képes feldolgozni és elemezni a biztonsági üzenetek bármilyen típusát, feltéve, hogy az elküldött adatmennyiség megfelel a [IoT-séma Azure Security Centernak](https://aka.ms/iot-security-schemas) , és az üzenet biztonsági üzenetként van beállítva.
+Az Azure Security Center for IoT bármilyen típusú biztonsági üzenetadatot feldolgozhat és elemezhet, amennyiben az elküldött adatok megfelelnek az [Azure Security Center for IoT-sémának,](https://aka.ms/iot-security-schemas) és az üzenet biztonsági üzenetként van beállítva.
 
 ## <a name="security-message"></a>Biztonsági üzenet
 
-A IoT-Azure Security Center a következő feltételekkel határozzák meg a biztonsági üzenetet:
-- Ha az üzenet el lett küldve az Azure IoT SDK-val
-- Ha az üzenet megfelel a [biztonsági üzenet sémájának](https://aka.ms/iot-security-schemas)
-- Ha az üzenet a küldés előtt biztonsági üzenetként lett beállítva
+Az Azure Security Center for IoT a következő feltételekkel definiál egy biztonsági üzenetet:
+- Ha az üzenetet az Azure IoT SDK-val küldték
+- Ha az üzenet megfelel a [biztonsági üzenetsémának](https://aka.ms/iot-security-schemas)
+- Ha az üzenet biztonsági üzenetként lett beállítva a küldés előtt
 
-Minden biztonsági üzenet tartalmazza a küldő metaadatait, például `AgentId`, `AgentVersion`, `MessageSchemaVersion` és a biztonsági események listáját.
+Minden biztonsági üzenet tartalmazza a feladó metaadatait, például `AgentId`a `AgentVersion`, a, `MessageSchemaVersion` és a biztonsági események listáját.
 A séma határozza meg a biztonsági üzenet érvényes és szükséges tulajdonságait, beleértve az események típusait is.
 
 >[!Note]
-> A rendszer figyelmen kívül hagyja az elküldött üzeneteket, amelyek nem felelnek meg a sémának. Győződjön meg arról, hogy az adatküldés megkezdése előtt ellenőrizze a sémát, mivel a rendszer jelenleg nem tárolja a figyelmen kívül hagyott üzeneteket. 
+> A sémának meg nem felelő üzeneteket a rendszer figyelmen kívül hagyja. Győződjön meg arról, hogy ellenőrizze a sémát, mielőtt az adatok küldését figyelmen kívül hagyott üzenetekként való indítása jelenleg nem tárolja. 
 
 >[!Note]
-> Azok az üzenetek, amelyek nem biztonsági üzenetként lettek beállítva az Azure IoT SDK használatával, nem lesznek átirányítva a IoT-folyamathoz tartozó Azure Security Center.
+> Az Azure IoT SDK használatával nem biztonsági üzenetként beállított üzenetek nem lesznek átirányítva az Azure Security Center for IoT-folyamathoz.
 
-## <a name="valid-message-example"></a>Érvényes üzenet – példa
+## <a name="valid-message-example"></a>Példa érvényes üzenetre
 
-Az alábbi példa egy érvényes biztonsági üzenet objektumot mutat be. A példa tartalmazza az üzenet metaadatait és egy `ProcessCreate` biztonsági eseményt.
+Az alábbi példa egy érvényes biztonsági üzenetobjektumot mutat be. A példa az üzenet metaadatait és egy `ProcessCreate` biztonsági eseményt tartalmaz.
 
-Ha biztonsági üzenetként van beállítva, és a rendszer elküldte ezt az üzenetet, a IoT Azure Security Center fogja feldolgozni.
+Miután beállította a biztonsági üzenetet, és elküldte, ezt az üzenetet az Azure Security Center for IoT dolgozza fel.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -91,15 +91,15 @@ Ha biztonsági üzenetként van beállítva, és a rendszer elküldte ezt az üz
 
 ## <a name="send-security-messages"></a>Biztonsági üzenetek küldése 
 
-Az Azure [IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)eszközoldali SDK, az [Azure C# IoT Device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), az [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node), az [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)vagy az [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)használatával küldhet biztonsági üzeneteket a IoT-ügynök Azure Security Center használata *nélkül* .
+Biztonsági üzenetek küldése az Azure Security Center for IoT-ügynök használata *nélkül* az [Azure IoT C-eszköz SDK,](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) [Az Azure IoT C# eszköz SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node.js SDK,](https://github.com/Azure/azure-iot-sdk-node) [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)vagy [az Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)használatával.
 
-Ha az eszköz adatait az eszközökről a IoT Azure Security Center történő feldolgozásra szeretné elküldeni, a következő API-k egyikével kell megjelölnie az üzeneteket a megfelelő útválasztáshoz, hogy a IoT feldolgozási folyamathoz Azure Security Center. 
+Ha az eszközök adatait az Azure Security Center for IoT-hoz történő feldolgozásra elküldi, az alábbi API-k egyikével jelölje meg az üzeneteket az Azure Security Center ioT-feldolgozási folyamathoz történő helyes útválasztáshoz. 
 
-Az összes elküldött, még akkor is, ha a megfelelő fejléccel van megjelölve, meg kell felelnie a [IoT-üzenet sémájának Azure Security Center](https://aka.ms/iot-security-schemas). 
+Minden elküldött adatnak, még akkor is, ha a megfelelő fejléccel van megjelölve, meg kell felelnie az [Azure Security Center for IoT üzenetsémának](https://aka.ms/iot-security-schemas)is. 
 
-### <a name="send-security-message-api"></a>Biztonsági üzenet API-nak küldése 
+### <a name="send-security-message-api"></a>Biztonsági üzenet küldése API 
 
-A **biztonsági üzenetek küldése** API jelenleg a C és C#a Python, a Node. js és a Java nyelven érhető el.  
+A **biztonsági üzenetek küldése** API jelenleg C és C#, Python, Node.js és Java nyelven érhető el.  
 
 #### <a name="c-api"></a>C API
 
@@ -157,7 +157,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
-#### <a name="nodejs-api"></a>Node. js API
+#### <a name="nodejs-api"></a>Node.js API
 
 ```typescript
 var Protocol = require('azure-iot-device-mqtt').Mqtt
@@ -192,9 +192,9 @@ function SendSecurityMessage(messageContent)
 
 #### <a name="python-api"></a>Python API
 
-A Python API használatához telepítenie kell az [Azure-IOT-Device](https://pypi.org/project/azure-iot-device/)csomagot.
+A Python API használatához telepítenie kell a csomagot [az azure-iot-device.](https://pypi.org/project/azure-iot-device/)
 
-A Python API használatakor a biztonsági üzenetet elküldheti a modulon keresztül, vagy az eszközön keresztül az egyedi eszköz vagy modul kapcsolódási karakterláncát használva. Ha a következő Python-parancsfájlt használja például egy eszközön, használja a **IoTHubDeviceClient**-t, és egy modullal használja a **IoTHubModuleClient**. 
+A Python API használatakor elküldheti a biztonsági üzenetet a modulon keresztül vagy az eszközön keresztül az egyedi eszköz vagy modul kapcsolati karakterlánc használatával. Ha a következő Python-parancsfájlpéldát használja egy eszközzel, használja **az IoTHubDeviceClient**programot, és egy modullal használja az **IoTHubModuleClient programot.** 
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -225,11 +225,11 @@ public void SendSecurityMessage(string message)
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
-- A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
-- További információ a IoT- [architektúra](architecture.md) Azure Security Center
+## <a name="next-steps"></a>További lépések
+- Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
+- További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
 - A [szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése
-- A [GYIK](resources-frequently-asked-questions.md) áttekintése
-- Ismerje meg, hogyan érheti el a [nyers biztonsági információkat](how-to-security-data-access.md)
-- [Javaslatok](concept-recommendations.md) ismertetése
-- A [riasztások](concept-security-alerts.md) ismertetése
+- Olvassa el a [GYIK-et](resources-frequently-asked-questions.md)
+- További információ a [nyers biztonsági adatok](how-to-security-data-access.md) eléréséről
+- Az [ajánlások megismerése](concept-recommendations.md)
+- A [riasztások ismertetése](concept-security-alerts.md)

@@ -1,7 +1,7 @@
 ---
-title: Ml modellek üzembe helyezése Azure Functions alkalmazásokban (előzetes verzió)
+title: Ml-modellek üzembe helyezése az Azure Functions-alkalmazásokban (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezhet üzembe modelleket Azure Functions alkalmazásokban a Azure Machine Learning használatával.
+description: Ismerje meg, hogyan helyezhet üzembe egy modellt az Azure Functions alkalmazásba az Azure Machine Learning használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,57 +11,57 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927443"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
+# <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése az Azure Functions szolgáltatásban (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Megtudhatja, hogyan helyezhet üzembe egy modellt Azure Machine Learning alkalmazásból Azure Functions.
+Ismerje meg, hogyan helyezhet üzembe egy modellt az Azure Machine Learning ből függvényalkalmazásként az Azure Functionsben.
 
 > [!IMPORTANT]
-> Noha a Azure Machine Learning és az Azure Functions általánosan elérhető, az Machine Learning Service for functions-modell csomagjának lehetősége előzetes verzióban érhető el.
+> Bár az Azure Machine Learning és az Azure Functions általánosan elérhető, a machine learning szolgáltatás a funkciók hoz egy modellt előzetes verzióban.
 
-A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a képzett gépi tanulási modellekből. Azure Machine Learning mostantól az előzetes verzió funkciójának használatával felépítheti ezeket a gépi tanulási modelleket a Function appsbe, amelyek üzembe helyezhetők [a Azure Functionsban](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container).
+Az Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre betanított gépi tanulási modellekből. Az Azure Machine Learning most már rendelkezik az előzetes verziófunkcióval, amelyekkel ezeket a gépi tanulási modelleket függvényalkalmazásokká alakíthatja, amelyek [telepíthetők az Azure Functionsbe.](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
-* A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](tutorial-train-models-with-aml.md) betanítása és regisztrálása.
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* A munkaterületen regisztrált gépi tanulási modell. Ha nem rendelkezik modellel, használja a [Képbesorolás oktatóanyag: vonat modell](tutorial-train-models-with-aml.md) betanításához és regisztrációhoz.
 
     > [!IMPORTANT]
-    > A cikkben szereplő kódrészletek azt feltételezik, hogy a következő változókat állította be:
+    > A cikkben szereplő kódrészletek feltételezik, hogy a következő változókat állította be:
     >
-    > * `ws` – a Azure Machine Learning munkaterülete.
-    > * `model` – a regisztrált modell, amelyet telepíteni kíván.
-    > * `inference_config` – a modellre vonatkozó következtetési konfiguráció.
+    > * `ws`- Az Azure Machine Learning-munkaterület.
+    > * `model`- A regisztrált modell, amely et telepíti.
+    > * `inference_config`- A következtetés konfigurációja a modell.
     >
-    > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
+    > A változók beállításáról a [Modellek üzembe helyezése az Azure Machine Learning szolgáltatással](how-to-deploy-and-where.md)című témakörben talál további információt.
 
 ## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
 
-A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges alapvető elemeket ismerteti:
+Üzembe helyezés előtt meg kell határoznia, hogy mi szükséges a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges alapvető elemeket ismerteti:
 
-* Egy __bejegyzési parancsfájl__. Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
+* Egy __beviteli parancsfájl__. Ez a parancsfájl elfogadja a kérelmeket, a modell használatával pontozza a kérelmet, és visszaadja az eredményeket.
 
     > [!IMPORTANT]
-    > A bejegyzési parancsfájl a modellre jellemző. meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
+    > A bejegyzésparancsfájl a modellre jellemző; meg kell értenie a bejövő kérelemadatok formátumát, a modell által várt adatok formátumát és az ügyfeleknek visszaadott adatok formátumát.
     >
-    > Ha a kérelem adatai olyan formátumban vannak, amely nem használható a modellben, a parancsfájl elfogadható formátumba alakíthatja át. A válasz is át lehet alakítani, mielőtt visszatért az ügyfélhez.
+    > Ha a kérelem adatok olyan formátumban, amely nem használható a modell, a parancsfájl átalakíthatja azt elfogadható formátumban. Azt is átalakíthatja a választ, mielőtt visszatérne az ügyfélnek.
     >
-    > Alapértelmezés szerint a függvények csomagolásakor a rendszer a bemenetet szövegként kezeli. Ha érdekli a bemenet (például blob-eseményindítók) nyers bájtjainak használata, a [AMLRequest használatával fogadja el a nyers adatokat](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data).
+    > Alapértelmezés szerint a függvények csomagolásakor a program szövegként kezeli a bemenetet. Ha a bemenet nyers bájtjainak (például a Blob-eseményindítóknak) a felhasználásában szeretne vásárolni, az AMLRequest segítségével fogadja el a [nyers adatokat.](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)
 
 
-* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok szükségesek a bejegyzési parancsfájl vagy modell futtatásához
 
-Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik.
+Ezek az entitások következtetési __konfigurációba__vannak ágyazva. A következtetés konfigurációja a bejegyzésparancsfájlra és más függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a > = 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Az Azure Functions használatával használható következtetési konfiguráció létrehozásakor egy környezeti objektumot kell [használnia.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) Kérjük, vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor az azureml-defaults-t a >= 1.0.45 verzióval kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. A következő példa bemutatja egy környezeti objektum létrehozását és használatát következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -77,16 +77,16 @@ Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A k
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
+A környezetekkel kapcsolatos további információkért olvassa el a [Környezetek létrehozása és kezelése a betanításhoz és telepítéshez című témakört.](how-to-use-environments.md)
 
-További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
+A konfigurációval kapcsolatos további információkért lásd: Modellek telepítése az Azure Machine Learning használatával című [témakörben.](how-to-deploy-and-where.md)
 
 > [!IMPORTANT]
-> A függvények telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
+> A Functions szolgáltatásba való telepítéskor nem kell __központi telepítési konfigurációt létrehoznia.__
 
-## <a name="install-the-sdk-preview-package-for-functions-support"></a>Az SDK előzetes csomagjának telepítése a függvények támogatásához
+## <a name="install-the-sdk-preview-package-for-functions-support"></a>Telepítse az SDK előnézeti csomagját a funkciók támogatásához
 
-Azure Functions csomagok létrehozásához telepítenie kell az SDK előzetes csomagját.
+Az Azure Functions csomagjainak létrehozásához telepítenie kell az SDK előzetes csomag.
 
 ```bash
 pip install azureml-contrib-functions
@@ -94,10 +94,10 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet azt mutatja be, hogyan hozhat létre egy új csomagot a modellből és a következtetések konfigurációjában a blob triggerrel:
+Az Azure Functionsben üzembe helyezett Docker-rendszerkép létrehozásához használja [az azureml.contrib.functions.package vagy](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) az adott csomagfüggvényt az eseményindítóhoz, amelyet használni szeretne. A következő kódrészlet bemutatja, hogyan hozhat létre új csomagot egy blob-eseményindítóval a modellből és a következtetéskonfigurációból:
 
 > [!NOTE]
-> A kódrészlet feltételezi, hogy `model` tartalmaz egy regisztrált modellt, és az `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
+> A kódrészlet azt feltételezi, hogy `model` egy regisztrált `inference_config` modellt tartalmaz, és amely tartalmazza a következtetési környezet konfigurációját. További információ: Modellek telepítése az Azure Machine Learning használatával című [témakörben.](how-to-deploy-and-where.md)
 
 ```python
 from azureml.contrib.functions import package
@@ -108,23 +108,23 @@ blob.wait_for_creation(show_output=True)
 print(blob.location)
 ```
 
-`show_output=True`kor megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<hash>`.
+Amikor `show_output=True`a Docker-buildfolyamat kimenete megjelenik. Miután a folyamat befejeződött, a rendszerkép az Azure Container Registry a munkaterületre. Miután a rendszerkép már elkészült, a hely az Azure Container Registry jelenik meg. A visszaadott hely `<acrinstance>.azurecr.io/package@sha256:<hash>`formátumú.
 
 > [!NOTE]
-> A függvények csomagolása jelenleg támogatja a HTTP-eseményindítókat, a blob-eseményindítókat és a Service Bus-eseményindítókat. További információ az eseményindítókkal kapcsolatban: [Azure functions kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns).
+> A függvények csomagolása jelenleg támogatja a HTTP-eseményindítók, Blob-eseményindítók és a Service bus eseményindítók. Az eseményindítókról az [Azure Functions kötései](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)című témakörben talál további információt.
 
 > [!IMPORTANT]
-> Mentse a hely adatait, ahogy azt a lemezkép telepítésekor használják.
+> Mentse a helyadatokat, ahogy az a lemezkép telepítésekor használatos.
 
-## <a name="deploy-image-as-a-web-app"></a>Rendszerkép üzembe helyezése webalkalmazásként
+## <a name="deploy-image-as-a-web-app"></a>Lemezkép webalkalmazásként történő telepítése
 
-1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje le a `<myacr>` értéket a korábban `package.location`visszaadott értékre: 
+1. A következő paranccsal lekérni a bejelentkezési hitelesítő adatokat az Azure Container Registry, amely tartalmazza a lemezképet. Cserélje `<myacr>` le a korábban visszaadott értékre: `package.location` 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
     ```
 
-    A parancs kimenete a következő JSON-dokumentumhoz hasonló:
+    A parancs kimenete hasonló a következő JSON-dokumentumhoz:
 
     ```json
     {
@@ -142,21 +142,21 @@ print(blob.location)
     }
     ```
 
-    Mentse a __Felhasználónév__ és az egyik __jelszó__értékét.
+    Mentse a __felhasználónév__ és az egyik __jelszó__értékét.
 
-1. Ha még nem rendelkezik erőforráscsoport-vagy app Service-csomaggal a szolgáltatás telepítéséhez, a következő parancsok azt mutatják be, hogyan hozható létre egyszerre:
+1. Ha még nem rendelkezik erőforráscsoporttal vagy alkalmazásszolgáltatási csomaggal a szolgáltatás üzembe helyezéséhez, a következő parancsok bemutatják, hogyan hozhat létre mindkettőt:
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Ebben a példában egy _Linux alapszintű_ díjszabási szintet (`--sku B1`) használunk.
+    Ebben a példában egy Linux`--sku B1` _alapszintű_ tarifacsomag ( ) használatos.
 
     > [!IMPORTANT]
-    > A Azure Machine Learning által létrehozott rendszerképek Linux rendszert használnak, ezért a `--is-linux` paramétert kell használnia.
+    > Az Azure Machine Learning által létrehozott rendszerképek `--is-linux` Linuxot használnak, ezért a paramétert kell használnia.
 
-1. Hozza létre a web Job Storage szolgáltatáshoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncát. Cserélje le a `<webjobStorage>`t a használni kívánt névre.
+1. Hozza létre a webes feladat tárolásához használandó tárfiókot, és vegye le a kapcsolati karakterláncot. Cserélje `<webjobStorage>` le a használni kívánt névre.
 
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -165,16 +165,16 @@ print(blob.location)
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. A Function alkalmazás létrehozásához használja a következő parancsot. Cserélje le a `<app-name>`t a használni kívánt névre. Cserélje le a `<acrinstance>` és a `<imagename>` értéket a korábban visszaadott `package.location` értékekre. Cserélje le a `<webjobStorage>`t az előző lépésben szereplő Storage-fiók nevére:
+1. A függvényalkalmazás létrehozásához használja a következő parancsot. Cserélje `<app-name>` le a használni kívánt névre. Cserélje `<acrinstance>` `<imagename>` le és az `package.location` értékeket vissza korábban. Cserélje `<webjobStorage>` le az előző lépésből származó tárfiók nevére:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
     ```
 
     > [!IMPORTANT]
-    > Ezen a ponton a Function alkalmazás létrejött. Mivel azonban nem biztosította a blob triggerhez vagy a hitelesítő adatokhoz tartozó kapcsolódási karakterláncot a képet tartalmazó Azure Container Registryhoz, a Function alkalmazás nem aktív. A következő lépésekben meg kell adnia a kapcsolatok karakterláncát és a tároló-beállításjegyzék hitelesítési adatait. 
+    > Ezen a ponton a függvényalkalmazás létrejött. Azonban mivel nem adta meg a blob-eseményindító vagy hitelesítő adatok a blob eseményindító vagy hitelesítő adatokat az Azure Container Registry, amely a rendszerképet tartalmaz, a függvényalkalmazás nem aktív. A következő lépésekben adja meg a kapcsolati karakterláncot és a tároló beállításjegyzékének hitelesítési adatait. 
 
-1. Hozza létre a blob trigger-tárolóhoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncát. Cserélje le a `<triggerStorage>`t a használni kívánt névre.
+1. Hozza létre a blob-eseményindító tárterülethez használandó tárfiókot, és vegye le a kapcsolati karakterláncot. Cserélje `<triggerStorage>` le a használni kívánt névre.
 
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -182,9 +182,9 @@ print(blob.location)
     ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
-    Jegyezze fel ezt a kapcsolódási karakterláncot a Function alkalmazás számára történő biztosításhoz. Később fogjuk használni `<triggerConnectionString>`
+    Rögzítse ezt a kapcsolati karakterláncot a függvényalkalmazásszámára. Majd később használjuk, amikor kérjük`<triggerConnectionString>`
 
-1. Hozza létre a tárolót a bemenethez és a kimenethez a Storage-fiókban. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterlánccá:
+1. Hozza létre a tárolók a bemeneti és kimeneti a tárfiókban. Cserélje `<triggerConnectionString>` le a korábban visszaadott kapcsolati karakterláncra:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -193,25 +193,25 @@ print(blob.location)
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Ha az trigger-kapcsolódási karakterláncot a Function alkalmazáshoz szeretné rendelni, használja a következő parancsot. Cserélje le a `<app-name>`t a Function alkalmazás nevére. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterlánccá:
+1. Az eseményindító kapcsolati karakterlánc társításához a függvényalkalmazáshoz a következő paranccsal. Cserélje `<app-name>` le a függvényalkalmazás nevére. Cserélje `<triggerConnectionString>` le a korábban visszaadott kapcsolati karakterláncra:
 
     ```azurecli-interactive
     az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
     ```
-1. A létrehozott tárolóhoz tartozó címkét a következő parancs használatával kell lekérnie. Cserélje le a `<username>`t a korábban a tároló-beállításjegyzékből visszaadott felhasználónévre:
+1. A létrehozott tárolóhoz társított címkét a következő paranccsal kell beolvasnia. Cserélje `<username>` le a tároló beállításjegyzékéből korábban visszaadott felhasználónévre:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Mentse a visszaadott értéket, a rendszer a következő lépésben `imagetag` fogja használni.
+    Mentse el a visszaadott értéket, `imagetag` akkor a következő lépésben lesz használva.
 
-1. A következő parancs használatával biztosíthatja a Function alkalmazást a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokkal. Cserélje le a `<app-name>`t a Function alkalmazás nevére. Cserélje le a `<acrinstance>` és a `<imagetag>` értéket az előző lépésben az az CLI hívás értékével. Cserélje le a `<username>` és a `<password>`t a korábban beolvasott ACR bejelentkezési adatokkal:
+1. Ha a függvényalkalmazást a tároló beállításjegyzékének eléréséhez szükséges hitelesítő adatokkal szeretné biztosítani, használja a következő parancsot. Cserélje `<app-name>` le a függvényalkalmazás nevére. Cserélje `<acrinstance>` `<imagetag>` le és az az előző lépésben az AZ CLI hívásának értékeit. Cserélje `<username>` `<password>` ki és írja be a korábban beolvasott ACR bejelentkezési adatokat:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
     ```
 
-    Ez a parancs a következő JSON-dokumentumhoz hasonló adatokat ad vissza:
+    Ez a parancs a következő JSON-dokumentumhoz hasonló információkat ad vissza:
 
     ```json
     [
@@ -242,31 +242,31 @@ print(blob.location)
     ]
     ```
 
-Ezen a ponton a Function alkalmazás elkezdi betölteni a rendszerképet.
+Ezen a ponton a függvényalkalmazás megkezdi a lemezkép betöltését.
 
 > [!IMPORTANT]
-> A rendszerkép betöltése előtt több percet is igénybe vehet. Az Azure Portalon nyomon követheti a folyamat előrehaladását.
+> A kép betöltése több percig is eltarthat. Az Azure Portal használatával figyelheti a folyamatot.
 
 ## <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 
-Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, a következő lépésekkel aktiválhatja az alkalmazást:
+Miután a kép betöltődött, és az alkalmazás elérhetővé vált, az alábbi lépésekkel indíthatja el az alkalmazást:
 
-1. Hozzon létre egy szövegfájlt, amely tartalmazza azokat az adatok, amelyeket a score.py-fájl elvár. A következő példa egy olyan score.py fog működni, amely 10 számból álló tömböt vár:
+1. Hozzon létre egy olyan szövegfájlt, amely a score.py fájl által elvárt adatokat tartalmazza. A következő példa egy 10 számból álló tömböt váró score.py működik:
 
     ```json
     {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
     ```
 
     > [!IMPORTANT]
-    > Az adatok formátuma attól függ, hogy mit vár a score.py és a modell.
+    > Az adatok formátuma attól függ, hogy a score.py és a modell mire számít.
 
-2. A következő parancs használatával töltse fel ezt a fájlt a korábban létrehozott trigger Storage-blob bemeneti tárolójába. Cserélje le a `<file>`t az adathalmazt tartalmazó fájl nevére. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterláncára. Ebben a példában a `input` a korábban létrehozott bemeneti tároló neve. Ha más nevet használt, cserélje le ezt az értéket:
+2. A következő paranccsal töltse fel ezt a fájlt a bemeneti tárolóba az eseményindító tárolási blob korábban létrehozott. Cserélje `<file>` le az adatokat tartalmazó fájl nevére. Cserélje `<triggerConnectionString>` le a korábban visszaadott kapcsolati karakterláncra. Ebben a `input` példában a korábban létrehozott bemeneti tároló neve. Ha más nevet használt, cserélje le ezt az értéket:
 
     ```azurecli-interactive
     az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
     ```
 
-    A parancs kimenete a következő JSON-hoz hasonló:
+    A parancs kimenete hasonló a következő JSON-hoz:
 
     ```json
     {
@@ -275,28 +275,28 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
     }
     ```
 
-3. A függvény által létrehozott kimenet megtekintéséhez használja az alábbi parancsot a létrehozott kimeneti fájlok listázásához. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterláncára. Ebben a példában a `output` a korábban létrehozott kimeneti tároló neve. Ha más nevet használt, cserélje le a következő értéket:
+3. A függvény által létrehozott kimenet megtekintéséhez használja a következő parancsot a létrehozott kimeneti fájlok listázásához. Cserélje `<triggerConnectionString>` le a korábban visszaadott kapcsolati karakterláncra. Ebben a `output` példában a korábban létrehozott kimeneti tároló neve. Ha más nevet használt, cserélje le ezt az értéket::
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
     ```
 
-    A parancs kimenete hasonló a `sample_input_out.json`hoz.
+    A parancs kimenete hasonló `sample_input_out.json`a hoz.
 
-4. A fájl letöltéséhez és a tartalom vizsgálatához használja a következő parancsot. Cserélje le a `<file>`t az előző parancs által visszaadott fájlnévre. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterlánccá: 
+4. A fájl letöltéséhez és a tartalom vizsgálatához használja a következő parancsot. Cserélje `<file>` le az előző parancs által visszaadott fájlnévre. Cserélje `<triggerConnectionString>` le a korábban visszaadott kapcsolati karakterláncra: 
 
     ```azurecli-interactive
     az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
     ```
 
-    A parancs befejeződése után nyissa meg a fájlt. A modell által visszaadott adathalmazokat tartalmazza.
+    A parancs befejezése után nyissa meg a fájlt. A modell által visszaadott adatokat tartalmazza.
 
-A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob Storage által aktivált függvények létrehozását](/azure/azure-functions/functions-create-storage-blob-triggered-function) ismertető cikket.
+A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob storage-cikk által aktivált függvény létrehozása című témakört.](/azure/azure-functions/functions-create-storage-blob-triggered-function)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](/azure/azure-functions/functions-create-function-linux-custom-image) dokumentációjában.
-* További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
-* [A modell üzembe helyezése Azure app Service](how-to-deploy-app-service.md).
-* [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
+* Ismerje meg a Functions alkalmazás konfigurálását a [Functions](/azure/azure-functions/functions-create-function-linux-custom-image) dokumentációban.
+* További információ a Blob storage-eseményindítók [Az Azure Blob storage-kötések.](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)
+* [Telepítse a modellt az Azure App Service szolgáltatásba.](how-to-deploy-app-service.md)
+* [Webszolgáltatásként üzembe helyezett ml-modell felhasználása](how-to-consume-web-service.md)
 * [API-referencia](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

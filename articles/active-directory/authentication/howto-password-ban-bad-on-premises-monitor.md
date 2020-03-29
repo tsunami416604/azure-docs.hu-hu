@@ -1,6 +1,6 @@
 ---
-title: Helyszíni Azure AD jelszavas védelem figyelése
-description: Ismerje meg, hogyan figyelheti és tekintheti át az Azure AD jelszavas védelem naplóit egy helyszíni Active Directory tartományi szolgáltatások-környezetben
+title: Helyszíni Azure AD-jelszóvédelem figyelése
+description: Megtudhatja, hogy miként figyelheti és tekintheti át az Azure AD-jelszóvédelem naplóit egy helyszíni Active Directory tartományi szolgáltatások környezetéhez
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,21 +12,21 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671657"
 ---
-# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Helyszíni Azure AD password protection környezetek naplóinak figyelése és áttekintése
 
-Az Azure AD jelszavas védelem üzembe helyezése után a figyelés és a jelentéskészítés elengedhetetlen feladat. Ez a cikk részletesen ismerteti a különböző figyelési technikákat, beleértve az egyes szolgáltatások adatainak naplózását és az Azure AD jelszavas védelem használatára vonatkozó jelentések módját.
+Az Azure AD password protection üzembe helyezése után a figyelés és a jelentéskészítés alapvető feladatok. Ez a cikk részletesen ismerteti a különböző figyelési technikák, beleértve, ahol az egyes szolgáltatások naplózza az információkat, és hogyan kell jelenteni az Azure AD password protection használatával.
 
-A figyelést és a jelentéskészítést az Eseménynapló üzenetei vagy a PowerShell-parancsmagok futtatásával végezheti el. A DC-ügynök és a proxy szolgáltatás naplózza az Eseménynapló-üzeneteket. Az alább ismertetett PowerShell-parancsmagok csak a proxykiszolgálón érhetők el (lásd a AzureADPasswordProtection PowerShell-modult). A DC-ügynök szoftvere nem telepít PowerShell-modult.
+A figyelés és a jelentéskészítés eseménynapló-üzenetek vagy PowerShell-parancsmagok futtatásával történik. A tartományvezérlő-ügynök és a proxyszolgáltatások egyaránt naplózzák az eseménynapló-üzeneteket. Az alábbiakban ismertetett összes PowerShell-parancsmag csak a proxykiszolgálón érhető el (lásd az AzureADPasswordProtection PowerShell modult). A tartományvezérlő-ügynök szoftvere nem telepít PowerShell-modult.
 
-## <a name="dc-agent-event-logging"></a>TARTOMÁNYVEZÉRLŐ ügynök eseménynaplózása
+## <a name="dc-agent-event-logging"></a>Tartományvezérlő-ügynök eseménynaplózása
 
-Minden egyes tartományvezérlőn a DC Agent Service szoftver az egyes jelszó-ellenőrzési műveletek (és más állapotok) eredményeit egy helyi eseménynaplóba írja:
+A tartományvezérlő-ügynök szolgáltatásszoftverminden tartományvezérlőn egy helyi eseménynaplóba írja az egyes jelszó-érvényesítési műveletek (és egyéb állapotok) eredményeit:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
@@ -34,52 +34,52 @@ Minden egyes tartományvezérlőn a DC Agent Service szoftver az egyes jelszó-e
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-A tartományvezérlő ügynökének felügyeleti naplója az elsődleges információforrás a szoftver működésének módjával kapcsolatban.
+A tartományvezérlő-ügynök admin naplója a szoftver működésének elsődleges információforrása.
 
-Vegye figyelembe, hogy a nyomkövetési napló alapértelmezés szerint ki van kapcsolva.
+Vegye figyelembe, hogy a Nyomkövetési napló alapértelmezés szerint ki van kapcsolva.
 
-A különböző DC-ügynök összetevői által naplózott események a következő tartományokon belül vannak:
+A különböző egyenáramú ügynök-összetevők által naplózott események a következő tartományokba esnek:
 
 |Összetevő |Eseményazonosító tartománya|
 | --- | --- |
-|TARTOMÁNYVEZÉRLŐi ügynök jelszavas szűrője dll| 10000-19999|
-|TARTOMÁNYVEZÉRLŐ ügynök szolgáltatás üzemeltetési folyamata| 20000-29999|
-|A tartományvezérlő ügynök szolgáltatási házirendjének érvényesítési logikája| 30000-39999|
+|Tartományvezérlő-ügynök jelszószűrődlle| 10000-19999|
+|TARTOMÁNYVEZÉRLŐ-ügynök szolgáltatásüzemeltetési folyamata| 20000-29999|
+|Tartományvezérlő-ügynök szolgáltatásházirend-ellenőrzési logikája| 30000-39999|
 
-## <a name="dc-agent-admin-event-log"></a>TARTOMÁNYVEZÉRLŐi ügynök rendszergazdai eseménynaplója
+## <a name="dc-agent-admin-event-log"></a>Tartományvezérlő-ügynök felügyeleti eseménynaplója
 
-### <a name="password-validation-outcome-events"></a>Jelszó-ellenőrzés eredményének eseményei
+### <a name="password-validation-outcome-events"></a>Jelszó-érvényesítési eredményesemények
 
-Minden egyes tartományvezérlőn a DC Agent szolgáltatás szoftvere az egyes jelszavak ellenőrzésének eredményét írja a DC-ügynök rendszergazdai eseménynaplóba.
+A tartományvezérlő-ügynök szolgáltatásszoftverminden tartományvezérlőn minden egyes jelszó-érvényesítés eredményét a tartományvezérlő-ügynök felügyeleti eseménynaplójába írja.
 
-Sikeres jelszó-ellenőrzési művelet esetén a rendszer általában egy eseményt naplóz a TARTOMÁNYVEZÉRLŐi ügynök jelszavas szűrő DLL-fájljában. Sikertelen jelszó-ellenőrzési művelet esetén a rendszer általában két eseményt naplóz, egyet a DC Agent szolgáltatásból, egyet pedig a tartományvezérlő ügynök jelszavas szűrő DLL-fájljában.
+A sikeres jelszó-érvényesítési művelethez általában egy esemény van bejelentkezve a tartományvezérlő-ügynök jelszószűrődlési dll-jéből. A sikertelen jelszó-ellenőrzési művelet hez általában két esemény van naplózva, egy a tartományvezérlő-ügynök szolgáltatásból, a másik pedig a tartományvezérlő-ügynök jelszószűrő dll-jéből.
 
-Az ilyen helyzetek rögzítésére szolgáló diszkrét események naplózása a következő tényezők alapján történik:
+Az ilyen helyzetek rögzítésére szolgáló különálló eseményeket a rendszer a következő tényezők alapján naplózza:
 
-* Azt jelzi, hogy be van-e állítva vagy módosult-e egy adott jelszó.
-* Megadja, hogy egy adott jelszó érvényesítése sikeres volt-e vagy sem.
-* Azt határozza meg, hogy a Microsoft globális házirendje, a szervezeti házirend vagy egy kombináció miatt sikertelen volt-e az érvényesítés.
-* Azt jelzi, hogy a naplózási mód jelenleg be van-e kapcsolva az aktuális jelszóházirend esetében.
+* Azt jelzi, hogy egy adott jelszó be van-e állítva vagy módosult-e.
+* Azt jelzi, hogy egy adott jelszó érvényesítése átment-e vagy sem.
+* Azt jelzi, hogy az érvényesítés a Microsoft globális házirendje, a szervezeti házirend vagy egy kombináció miatt nem sikerült.Whether validation failed due to the Microsoft global policy, the organization policy, or a combination.
+* Azt jelzi, hogy a csak naplózási mód be van-e kapcsolva vagy ki van-e kapcsolva az aktuális jelszóházirendhez.
 
-A kulcs jelszava – az érvényesítéssel kapcsolatos események a következők:
+A kulcsjelszó-ellenőrzéssel kapcsolatos események a következők:
 
-|   |Jelszó módosítása |Jelszó beállítva|
+|   |Jelszó módosítása |Jelszó beállítása|
 | --- | :---: | :---: |
-|Pass |10014 |10015|
-|Sikertelen (az ügyfél jelszavas házirendje miatt)| 10016, 30002| 10017, 30003|
-|Sikertelen (a Microsoft jelszavas házirend miatt)| 10016, 30004| 10017, 30005|
-|Sikertelen (a Microsoft és az ügyfél jelszavas házirendjének együttese miatt)| 10016, 30026| 10017, 30027|
-|Csak naplózási pass (sikertelen ügyfél-jelszavas házirend)| 10024, 30008| 10025, 30007|
-|Csak naplózási pass (sikertelen volt a Microsoft jelszavas házirendje)| 10024, 30010| 10025, 30009|
-|Csak naplózási pass (a Microsoft és az ügyfél jelszavas házirendjeit nem sikerült egyesíteni)| 10024, 30028| 10025, 30029|
+|Át |10014 |10015|
+|Sikertelen (ügyféljelszó-házirend miatt)| 10016, 30002| 10017, 30003|
+|Sikertelen (a Microsoft jelszóházirendje miatt)| 10016, 30004| 10017, 30005|
+|Sikertelen (a Microsoft és az ügyfél jelszóra vonatkozó kombinált házirendek miatt)| 10016, 30026| 10017, 30027|
+|Csak naplózási pass (meghiúsult volna az ügyféljelszó-házirend)| 10024, 30008| 10025, 30007|
+|Csak naplózási pass (meghiúsult volna a Microsoft jelszóházirendje)| 10024, 30010| 10025, 30009|
+|Csak naplózási pass (nem sikerült volna a Microsoft és az ügyféljelszó-házirendek kombinálása)| 10024, 30028| 10025, 30029|
 
-A fenti táblázatban a "kombinált házirendek" kifejezésre hivatkozó esetek olyan helyzetekben fordulnak elő, amikor egy felhasználó jelszava legalább egy jogkivonatot tartalmaz a Microsoft által tiltott jelszavak listájáról és az ügyfél által tiltott jelszavak listájáról.
+A fenti táblázatban szereplő, "kombinált szabályzatokra" hivatkozó esetek olyan helyzetekre vonatkoznak, amikor a felhasználó jelszaváról megállapították, hogy legalább egy tokent tartalmaz mind a Microsoft tiltott jelszavak listájából, mind az ügyfél által tiltott jelszólistából.
 
-Ha a rendszer egyszerre több eseményt naplóz, mindkét eseményt explicit módon társítja ugyanahhoz a CorrelationId.
+Ha egy pár esemény van bejelentkezve együtt, mindkét esemény explicit módon társítva ugyanazt a Korrelációs azonosítót.
 
-### <a name="password-validation-summary-reporting-via-powershell"></a>Jelszó-ellenőrzés összegző jelentése a PowerShell használatával
+### <a name="password-validation-summary-reporting-via-powershell"></a>Jelszóérvényesítési összefoglaló jelentés készítés a PowerShellen keresztül
 
-A `Get-AzureADPasswordProtectionSummaryReport` parancsmag használható a jelszó-ellenőrzési tevékenységek összegző nézetének elkészítéséhez. A parancsmag kimenete például a következő:
+A `Get-AzureADPasswordProtectionSummaryReport` parancsmag a jelszó-érvényesítési tevékenység összefoglaló nézetének létrehozásához használható. A parancsmag kimenetének egyik példája a következő:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -94,32 +94,32 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-A parancsmag jelentéskészítési hatóköre befolyásolhatja az – erdő, a tartomány vagy a – tartományvezérlő paraméterek egyikét. A paraméter nem adható meg – erdő.
+A parancsmag jelentésének hatóköre a –Erdő, -Tartomány vagy –DomainController paraméterek egyikével befolyásolható. Nem adja meg a paraméter t -Erdő.
 
-A `Get-AzureADPasswordProtectionSummaryReport` parancsmag a DC-ügynök rendszergazdai eseménynaplójának lekérdezésével működik, majd megszámolja az összes megjelenített eredmény kategóriának megfelelő események teljes számát. A következő táblázat az egyes eredmények és a hozzá tartozó eseményazonosító közötti leképezéseket tartalmazza:
+A `Get-AzureADPasswordProtectionSummaryReport` parancsmag úgy működik, hogy lekérdezi a tartományvezérlő-ügynök felügyeleti eseménynaplóját, majd megszámolja az egyes megjelenített eredménykategóriáknak megfelelő események teljes számát. Az alábbi táblázat az egyes eredmények és a hozzájuk tartozó eseményazonosító közötti leképezéseket tartalmazza:
 
-|Get-AzureADPasswordProtectionSummaryReport property |Megfelelő eseményazonosító|
+|Get-AzureADPasswordProtectionSummaryReport tulajdonság |Megfelelő eseményazonosító|
 | :---: | :---: |
-|PasswordChangesValidated |10014|
-|PasswordSetsValidated |10015|
-|PasswordChangesRejected |10016|
-|PasswordSetsRejected |10017|
+|PasswordChangesValidates |10014|
+|PasswordSetsÉrvényesítve |10015|
+|PasswordChangesElutasított |10016|
+|PasswordSetsElutasított |10017|
 |PasswordChangeAuditOnlyFailures |10024|
 |PasswordSetAuditOnlyFailures |10025|
-|PasswordChangeErrors |10012|
-|PasswordSetErrors |10013|
+|PasswordChangeErrors (Jelszómódosítási hibák) |10012|
+|PasswordSetErrors (PasswordSetErrors) |10013|
 
-Vegye figyelembe, hogy a `Get-AzureADPasswordProtectionSummaryReport` parancsmag PowerShell-parancsfájl formájában van elküldve, és szükség esetén közvetlenül a következő helyen lehet hivatkozni:
+Vegye figyelembe, hogy a `Get-AzureADPasswordProtectionSummaryReport` parancsmag a PowerShell parancsfájl formájában kerül kiszállításra, és szükség esetén közvetlenül a következő helyen hivatkozhat:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
 > [!NOTE]
-> Ez a parancsmag úgy működik, hogy egy PowerShell-munkamenetet nyit meg az egyes tartományvezérlők számára. A sikeres végrehajtás érdekében engedélyezni kell a PowerShell távoli munkamenet-támogatást minden egyes tartományvezérlőn, és az ügyfélnek megfelelő jogosultságokkal kell rendelkeznie. A PowerShell távoli munkamenetekre vonatkozó követelményeivel kapcsolatos további információkért futtassa a "Get-Help about_Remote_Troubleshooting" parancsot egy PowerShell-ablakban.
+> Ez a parancsmag úgy működik, hogy minden tartományvezérlőszámára megnyit egy PowerShell-munkamenetet. A siker érdekében a PowerShell távoli munkamenet-támogatását minden tartományvezérlőn engedélyezni kell, és az ügyfélnek megfelelő jogosultságokkal kell rendelkeznie. A PowerShell távoli munkamenet-követelményeiről további információt a "Get-Help about_Remote_Troubleshooting" futtatásához egy PowerShell-ablakban.
 
 > [!NOTE]
-> Ez a parancsmag a TARTOMÁNYVEZÉRLŐi ügynök szolgáltatásának rendszergazdai eseménynaplójának távoli lekérdezésével működik. Ha az eseménynaplók nagy számú eseményt tartalmaznak, a parancsmag hosszú időt is igénybe vehet. Emellett a nagyméretű adatkészletek tömeges hálózati lekérdezései befolyásolhatják a tartományvezérlő teljesítményét. Ezért ezt a parancsmagot körültekintően kell használni éles környezetekben.
+> Ez a parancsmag úgy működik, hogy távolról lekérdezi az egyes tartományvezérlő-ügynökszolgáltatás felügyeleti eseménynaplóját. Ha az eseménynaplók nagy számú eseményt tartalmaznak, a parancsmag befejezése hosszú időt vehet igénybe. Ezenkívül a nagy adatkészletek tömeges hálózati lekérdezései hatással lehetnek a tartományvezérlő teljesítményére. Ezért ezt a parancsmagát éles környezetben gondosan kell használni.
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Példa Eseménynapló-üzenetre az 10014-as AZONOSÍTÓJÚ eseményhez (sikeres jelszó-módosítás)
+### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Mintaeseménynapló-üzenet az 10014-es azonosítójú eseményhez (sikeres jelszómódosítás)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
@@ -128,7 +128,7 @@ The changed password for the specified user was validated as compliant with the 
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Példa Eseménynapló-üzenetre a 10017-es és 30003-es azonosítójú eseményhez (sikertelen jelszó beállítása)
+### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Mintaeseménynapló-üzenet az 10017-es és 30003-as eseményazonosítóhoz (sikertelen jelszóbeállítás)
 
 10017:
 
@@ -148,7 +148,7 @@ The reset password for the specified user was rejected because it matched at lea
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Példa Eseménynapló-üzenetre az 30001-as AZONOSÍTÓJÚ eseményhez (jelszó elfogadva, mert nincs elérhető házirend)
+### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Mintaeseménynapló-üzenet a 30001-es azonosítójú eseményhez (jelszó elfogadva, mert nincs elérhető házirend)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -175,7 +175,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Példa Eseménynapló-üzenetre a 30006-as AZONOSÍTÓJÚ eseményhez (az új szabályzat érvénybe lép)
+### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>A 30006-os eseményazonosítójú esemény naplójának mintanaplója (az új házirend kényszerítése)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -187,7 +187,7 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Példa a 30019-as AZONOSÍTÓJÚ esemény Eseménynapló-üzenetére (az Azure AD jelszavas védelme le van tiltva)
+### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>A 30019-es eseményazonosítójú esemény naplójának mintaüzenete (az Azure AD jelszavas védelem le van tiltva)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
@@ -196,63 +196,63 @@ No further events will be logged until the policy is changed.%n
 
 ```
 
-## <a name="dc-agent-operational-log"></a>TARTOMÁNYVEZÉRLŐi ügynök működési naplója
+## <a name="dc-agent-operational-log"></a>TARTOMÁNYVEZÉRLŐ-ügynök működési naplója
 
-A DC Agent szolgáltatás az operatív eseményeket is naplózza a következő naplóba:
+A tartományvezérlő-ügynök szolgáltatás a működéssel kapcsolatos eseményeket is naplózza a következő naplóba:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-## <a name="dc-agent-trace-log"></a>TARTOMÁNYVEZÉRLŐ ügynök nyomkövetési naplója
+## <a name="dc-agent-trace-log"></a>Tartományvezérlő-ügynök nyomkövetési naplója
 
-A DC Agent szolgáltatás a következő naplóba is naplózhatja a részletes hibakeresési szintű nyomkövetési eseményeket:
+A tartományvezérlő-ügynök szolgáltatás részletes hibakeresési szintű nyomkövetési eseményeket is naplózhat a következő naplóba:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
 A nyomkövetési naplózás alapértelmezés szerint le van tiltva.
 
 > [!WARNING]
-> Ha engedélyezve van, a nyomkövetési napló nagy mennyiségű eseményt kap, és hatással lehet a tartományvezérlő teljesítményére. Ezért ezt a kibővített naplót csak akkor szabad engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, majd csak minimális ideig.
+> Ha engedélyezve van, a nyomkövetési napló nagy mennyiségű eseményt kap, és hatással lehet a tartományvezérlő teljesítményére. Ezért ezt a továbbfejlesztett naplót csak akkor kell engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, és csak minimális ideig.
 
-## <a name="dc-agent-text-logging"></a>DC-ügynök szöveges naplózása
+## <a name="dc-agent-text-logging"></a>Tartományvezérlő-ügynök szövegnaplózása
 
-A DC Agent szolgáltatás beállítható úgy, hogy szöveges naplóba írja a következő beállításazonosító beállításával:
+A tartományvezérlő-ügynök szolgáltatás beállítható úgy, hogy a következő beállítási értékkel írjon a szöveges naplóba:
 
 ```text
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 ```
 
-A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvénybe léptetéséhez újra kell indítani a DC Agent szolgáltatást. Ha engedélyezve van, a DC Agent szolgáltatás a következő helyen fogja írni a naplófájlba:
+A szövegnaplózás alapértelmezés szerint le van tiltva. A tartományvezérlő-ügynök szolgáltatás újraindítása szükséges az érték módosításához. Ha engedélyezve van, a tartományvezérlő-ügynök szolgáltatás a következő helyen található naplófájlba fog írni:
 
 `%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
 
 > [!TIP]
-> A szöveges napló ugyanazokat a hibakeresési szintű bejegyzéseket kapja meg, amelyek a nyomkövetési naplóba naplózhatók, de általában könnyebben áttekinthetők és elemezhetők.
+> A szöveges napló ugyanazokat a hibakeresési szintű bejegyzéseket kapja, amelyek naplózhatók a nyomkövetési naplóba, de általában egyszerűbb formátumban tekinthetők át és elemezhetők.
 
 > [!WARNING]
-> Ha engedélyezve van, ez a napló nagy mennyiségű eseményt fogad, és hatással lehet a tartományvezérlő teljesítményére. Ezért ezt a kibővített naplót csak akkor szabad engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, majd csak minimális ideig.
+> Ha engedélyezve van, ez a napló nagy mennyiségű eseményt kap, és hatással lehet a tartományvezérlő teljesítményére. Ezért ezt a továbbfejlesztett naplót csak akkor kell engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, és csak minimális ideig.
 
-## <a name="dc-agent-performance-monitoring"></a>DC-ügynök teljesítményének figyelése
+## <a name="dc-agent-performance-monitoring"></a>Tartományvezérlő-ügynök teljesítményének figyelése
 
-A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem**nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
+A TARTOMÁNYVEZÉRLŐ-ügynök szolgáltatásszoftver egy **Azure AD Password Protection**nevű teljesítményszámláló-objektumot telepít. Jelenleg a következő perf számlálók érhetők el:
 
-|Teljesítményszámláló neve | Leírás|
+|Perf számláló neve | Leírás|
 | --- | --- |
-|Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy visszautasított) jelszavak teljes számát jeleníti meg.|
+|Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy elutasított) jelszavak teljes számát jeleníti meg.|
 |Elfogadott jelszavak |Ez a számláló a legutóbbi újraindítás óta elfogadott jelszavak teljes számát jeleníti meg.|
-|Elutasított jelszavak |Ez a számláló a legutóbbi újraindítás óta visszautasított jelszavak teljes számát jeleníti meg.|
-|A jelszó-szűrési kérelmek folyamatban vannak |Ez a számláló a jelenleg folyamatban lévő jelszó-szűrési kérelmek számát jeleníti meg.|
-|Jelszó-szűrési kérelmek maximális száma |Ez a számláló a legutóbbi újraindítás óta az egyidejű jelszavas szűrési kérelmek maximális számát jeleníti meg.|
-|A jelszó-szűrési kérelmekkel kapcsolatos hibák |Ez a számláló a legutóbbi újraindítás óta fellépett hiba miatt sikertelen jelszó-szűrési kérelmek teljes számát jeleníti meg. Hibák akkor fordulhatnak elő, ha az Azure AD jelszavas védelem tartományvezérlő ügynöke nem fut.|
-|Jelszó-szűrési kérelmek/másodperc |Ez a számláló a jelszavak feldolgozásának sebességét jeleníti meg.|
-|Jelszó-szűrési kérelem feldolgozási ideje |Ez a számláló a jelszó-szűrési kérelem feldolgozásához szükséges átlagos időt jeleníti meg.|
-|Jelszó-szűrési kérelem feldolgozási ideje |Ez a számláló a legutóbbi újraindítás óta a maximális jelszó-szűrési kérelmek feldolgozási idejét jeleníti meg.|
-|A naplózási üzemmód miatt elfogadott jelszavak |Ez a számláló a szokásosan visszautasított jelszavak teljes számát jeleníti meg, de elfogadták, mert a jelszóházirend naplózási módban lett konfigurálva (a legutóbbi újraindítás óta).|
+|Elutasított jelszavak |Ez a számláló a legutóbbi újraindítás óta elutasított jelszavak teljes számát jeleníti meg.|
+|Folyamatban lévő jelszószűrő-kérelmek |Ez a számláló a folyamatban lévő jelszószűrő-kérelmek számát jeleníti meg.|
+|Jelszószűrő-kérelmek maximális száma |Ez a számláló az egyidejű jelszószűrő-kérelmek maximális számát jeleníti meg a legutóbbi újraindítás óta.|
+|Jelszószűrő-kérelem hibái |Ez a számláló azoknak a jelszószűrő-kérelmeknek a teljes számát jeleníti meg, amelyek a legutóbbi újraindítás óta hiba miatt sikertelenek voltak. Hibák fordulhatnak elő, ha az Azure AD Password Protection DC ügynök szolgáltatás nem fut.|
+|Jelszószűrő-kérelmek/mp |Ez a számláló a jelszavak feldolgozásának sebességét jeleníti meg.|
+|Jelszószűrő-kérelmek feldolgozási ideje |Ez a számláló a jelszószűrő-kérelmek feldolgozásához szükséges átlagos időt jeleníti meg.|
+|A jelszószűrő-kérelmek feldolgozásának csúcsideje |Ez a számláló a legutóbbi újraindítás óta eltelt maximális jelszószűrő-kérelem feldolgozási idejét jeleníti meg.|
+|A rendszervizsgálati mód miatt elfogadott jelszavak |Ez a számláló azoknak a jelszavaknak a teljes számát jeleníti meg, amelyeket egyébként elutasított volna, de a rendszer azért lett elfogadva, mert a jelszóházirend naplózási módban volt konfigurálva (az utolsó újraindítás óta).|
 
-## <a name="dc-agent-discovery"></a>TARTOMÁNYVEZÉRLŐ ügynökének felderítése
+## <a name="dc-agent-discovery"></a>Tartományvezérlő-ügynök felderítése
 
-A `Get-AzureADPasswordProtectionDCAgent` parancsmag a tartományban vagy erdőben futó különböző TARTOMÁNYVEZÉRLŐi ügynökökkel kapcsolatos alapvető információk megjelenítésére használható. Ezek az információk a futó tartományvezérlő ügynök szolgáltatás (ok) által regisztrált serviceConnectionPoint-objektum (ok) ból kérhetők le.
+A `Get-AzureADPasswordProtectionDCAgent` parancsmag a tartományban vagy erdőben futó különböző tartományvezérlő-ügynökök alapvető információinak megjelenítésére használható. Ezt az információt a futó tartományvezérlő-ügynökszolgáltatás(ok) által regisztrált ConnectionPoint-objektum(ok) a rendszer olvassa be.
 
-A parancsmag kimenete például a következő:
+A parancsmag kimenetének egyik példája a következő:
 
 ```powershell
 Get-AzureADPasswordProtectionDCAgent
@@ -263,17 +263,17 @@ PasswordPolicyDateUTC : 2/16/2018 8:35:01 AM
 HeartbeatUTC          : 2/16/2018 8:35:02 AM
 ```
 
-A különböző tulajdonságokat az egyes tartományvezérlő ügynöki szolgáltatások frissítik, óránkénti rendszerességgel. Az adatai továbbra is Active Directory replikációs késésnek vannak kitéve.
+A különböző tulajdonságokat az egyes tartományvezérlő-ügynök-szolgáltatások körülbelül óránként frissítik. Az adatok továbbra is az Active Directory replikációs késésének vannak kitéve.
 
-Lehetséges, hogy a parancsmag lekérdezésének hatóköre az – erdő vagy – tartomány paraméterek használatával befolyásolható.
+A parancsmag lekérdezésének hatóköre a –Erdő vagy –Tartomány paraméterekkel is befolyásolható.
 
-Ha a HeartbeatUTC értéke elavult, ez az egyik tünet lehet, hogy az adott tartományvezérlőn az Azure AD jelszavas védelem tartományvezérlő ügynöke nem fut, vagy el lett távolítva, vagy a gép le lett tiltva, és már nem tartományvezérlő.
+Ha a HeartbeatUTC érték elavult, ez annak a tünete lehet, hogy az Azure AD password protection dc-ügynök az adott tartományvezérlőn nem fut, vagy eltávolították, vagy a gép lelett fokozva, és már nem tartományvezérlő.
 
-Ha a PasswordPolicyDateUTC értéke elavult, akkor lehet, hogy az Azure AD jelszavas védelem tartományvezérlő ügynöke nem működik megfelelően.
+Ha a PasswordPolicyDateUTC érték elavultlesz, ez lehet a tünete, hogy az Azure AD password protection DC-ügynök a számítógépen nem működik megfelelően.
 
-## <a name="dc-agent-newer-version-available"></a>A DC Agent újabb verziója érhető el
+## <a name="dc-agent-newer-version-available"></a>Dc-ügynök újabb verziója érhető el
 
-A DC Agent szolgáltatás 30034 figyelmeztetési eseményt naplóz az operatív naplóba, amikor észleli, hogy a tartományvezérlő-ügynök szoftverének újabb verziója érhető el, például:
+A tartományvezérlő-ügynök szolgáltatás naplóz egy 30034-es figyelmeztető eseményt a működési naplóba, amikor észleli, hogy a tartományvezérlő-ügynök szoftverének egy újabb verziója érhető el, például:
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,14 +287,14 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-A fenti esemény nem határozza meg az újabb szoftver verzióját. Az adott információhoz tartozó üzenetben keresse meg a hivatkozást.
+A fenti esemény nem határozza meg az újabb szoftver verzióját. Meg kell menni a linkre az esemény üzenetben az információt.
 
 > [!NOTE]
-> Annak ellenére, hogy a fenti üzenetben az "autoupgrade" kifejezésre hivatkozik, a DC-ügynök szoftvere jelenleg nem támogatja ezt a funkciót.
+> Annak ellenére, hogy a fenti eseményüzenetben az "automatikus frissítésre" hivatkoznak, a DC-ügynök szoftver jelenleg nem támogatja ezt a funkciót.
 
-## <a name="proxy-service-event-logging"></a>Proxy szolgáltatás eseménynaplózása
+## <a name="proxy-service-event-logging"></a>Proxyszolgáltatás eseménynaplózása
 
-A proxy szolgáltatás egy minimális eseményt bocsát ki a következő eseménynaplóba:
+A proxyszolgáltatás a következő eseménynaplókban az események minimális készletét bocsátja ki:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
 
@@ -302,50 +302,50 @@ A proxy szolgáltatás egy minimális eseményt bocsát ki a következő esemén
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
 
-Vegye figyelembe, hogy a nyomkövetési napló alapértelmezés szerint ki van kapcsolva.
+Vegye figyelembe, hogy a Nyomkövetési napló alapértelmezés szerint ki van kapcsolva.
 
 > [!WARNING]
-> Ha engedélyezve van, a nyomkövetési napló nagy mennyiségű eseményt kap, és ez hatással lehet a proxykiszolgáló teljesítményére. Ezért ez a napló csak akkor engedélyezhető, ha egy probléma mélyebb vizsgálatot igényel, majd csak minimális ideig.
+> Ha engedélyezve van, a nyomkövetési napló nagy mennyiségű eseményt kap, és ez hatással lehet a proxyállomás teljesítményére. Ezért ezt a naplót csak akkor kell engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, és csak minimális ideig.
 
-Az eseményeket a különböző proxy-összetevők naplózzák a következő tartományok használatával:
+Az eseményeket a különböző proxyösszetevők naplózzák a következő tartományok használatával:
 
 |Összetevő |Eseményazonosító tartománya|
 | --- | --- |
 |Proxy szolgáltatás üzemeltetési folyamata| 10000-19999|
-|Proxy szolgáltatás alapszintű üzleti logikája| 20000-29999|
+|Proxyszolgáltatás alapvető üzleti logikája| 20000-29999|
 |PowerShell-parancsmagok| 30000-39999|
 
-## <a name="proxy-service-text-logging"></a>Proxy szolgáltatás szöveges naplózása
+## <a name="proxy-service-text-logging"></a>Proxyszolgáltatás szövegének naplózása
 
-A proxy szolgáltatás úgy konfigurálható, hogy egy szöveges naplóba írja a következő beállításazonosító beállításával:
+A proxyszolgáltatás beállítható úgy, hogy a következő beállítási értékkel írjon a szöveges naplóba:
 
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (REG_DWORD érték)
 
-A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvénybe léptetéséhez a proxy szolgáltatás újraindítása szükséges. Ha engedélyezve van, a proxy szolgáltatás a következő helyen fogja írni a naplófájlba:
+A szövegnaplózás alapértelmezés szerint le van tiltva. Az érték módosításához újra kell indítani a proxyszolgáltatást. Ha engedélyezve van, a proxyszolgáltatás a következő helyen található naplófájlba ír:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
 > [!TIP]
-> A szöveges napló ugyanazokat a hibakeresési szintű bejegyzéseket kapja meg, amelyek a nyomkövetési naplóba naplózhatók, de általában könnyebben áttekinthetők és elemezhetők.
+> A szöveges napló ugyanazokat a hibakeresési szintű bejegyzéseket kapja, amelyek naplózhatók a nyomkövetési naplóba, de általában egyszerűbb formátumban tekinthetők át és elemezhetők.
 
 > [!WARNING]
-> Ha engedélyezve van, a napló nagy mennyiségű eseményt kap, és hatással lehet a gép teljesítményére. Ezért ezt a kibővített naplót csak akkor szabad engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, majd csak minimális ideig.
+> Ha engedélyezve van, ez a napló nagy mennyiségű eseményt fogad, és hatással lehet a gép teljesítményére. Ezért ezt a továbbfejlesztett naplót csak akkor kell engedélyezni, ha egy probléma mélyebb vizsgálatot igényel, és csak minimális ideig.
 
 ## <a name="powershell-cmdlet-logging"></a>PowerShell-parancsmag naplózása
 
-Az állapot változását eredményező PowerShell-parancsmagok (például a Register-AzureADPasswordProtectionProxy) általában egy eredmény-eseményt naplóznak az operatív naplóba.
+Az állapotváltozást eredményező PowerShell-parancsmagok (például Register-AzureADPasswordProtectionProxy) általában egy eredményeseményt naplóznak a működési naplóba.
 
-Emellett az Azure AD jelszavas védelmi PowerShell-parancsmagjai többsége a következő helyen található szöveges naplóba fog írni:
+Emellett az Azure AD Password Protection PowerShell-parancsmagok többsége a következő helyen található szöveges naplóba fog írni:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
-Ha hiba történik, és a and\or-megoldás oka nem látható, akkor a szöveges naplók is megtekinthetők.
+Ha parancsmaghiba lép fel, és az ok és a megoldás nem egyértelmű, akkor ezek a szövegnaplók is megtekinthetők.
 
-## <a name="proxy-discovery"></a>Proxy felderítése
+## <a name="proxy-discovery"></a>Proxyfelderítés
 
-A `Get-AzureADPasswordProtectionProxy` parancsmag használható a tartományban vagy erdőben futó különböző Azure AD-alapú jelszavas védelmi proxy-szolgáltatásokkal kapcsolatos alapvető információk megjelenítésére. Ezek az adatok a futó proxy szolgáltatás (ok) által regisztrált serviceConnectionPoint-objektum (ok) ból kérhetők le.
+A `Get-AzureADPasswordProtectionProxy` parancsmag segítségével alapvető információkat jeleníthet meg a tartományban vagy erdőben futó különböző Azure AD jelszóvédelmi proxy szolgáltatások. Ezt az információt a futó proxyszolgáltatás(ok) által regisztrált ConnectionPoint-objektum(ok) a rendszer olvassa be.
 
-A parancsmag kimenete például a következő:
+A parancsmag kimenetének egyik példája a következő:
 
 ```powershell
 Get-AzureADPasswordProtectionProxy
@@ -355,15 +355,15 @@ Forest                : bplRootDomain.com
 HeartbeatUTC          : 12/25/2018 6:35:02 AM
 ```
 
-Az egyes proxy szolgáltatások a különböző tulajdonságokat hozzávetőlegesen óránként frissítik. Az adatai továbbra is Active Directory replikációs késésnek vannak kitéve.
+A különböző tulajdonságokat az egyes proxyszolgáltatások körülbelül óránként frissítik. Az adatok továbbra is az Active Directory replikációs késésének vannak kitéve.
 
-Lehetséges, hogy a parancsmag lekérdezésének hatóköre az – erdő vagy – tartomány paraméterek használatával befolyásolható.
+A parancsmag lekérdezésének hatóköre a –Erdő vagy –Tartomány paraméterekkel is befolyásolható.
 
-Ha a HeartbeatUTC értéke elavult, lehet, hogy az Azure AD jelszavas védelmi proxyja nem fut vagy el lett távolítva a számítógépen.
+Ha a HeartbeatUTC érték elavult, ez lehet a tünete, hogy az Azure AD password protection proxy az adott gépen nem fut, vagy eltávolították.
 
-## <a name="proxy-agent-newer-version-available"></a>A proxy Agent újabb verziója érhető el
+## <a name="proxy-agent-newer-version-available"></a>Proxyügynök újabb verziója érhető el
 
-A proxy szolgáltatás 20002 figyelmeztetési eseményt fog naplózni az operatív naplóba, amikor észleli, hogy a proxy szoftver újabb verziója érhető el, például:
+A proxyszolgáltatás 20002-es figyelmeztető eseményt naplóz az operatív naplóba, amikor észleli, hogy a proxyszoftver újabb verziója érhető el, például:
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,12 +378,12 @@ Current version: 1.2.116.0
 .
 ```
 
-A fenti esemény nem határozza meg az újabb szoftver verzióját. Az adott információhoz tartozó üzenetben keresse meg a hivatkozást.
+A fenti esemény nem határozza meg az újabb szoftver verzióját. Meg kell menni a linkre az esemény üzenetben az információt.
 
-Ezt az eseményt akkor is kibocsátja a rendszer, ha a proxykiszolgáló engedélyezve van az automatikus frissítés beállítással.
+Ez az esemény akkor is megjelenik, ha a proxyügynök automatikus frissítés engedélyezve van.
 
 ## <a name="next-steps"></a>További lépések
 
-[Hibaelhárítás az Azure AD jelszavas védelméhez](howto-password-ban-bad-on-premises-troubleshoot.md)
+[Az Azure AD jelszóvédelem hibaelhárítása](howto-password-ban-bad-on-premises-troubleshoot.md)
 
-A globális és az egyéni tiltott jelszavakkal kapcsolatos további információkért tekintse meg a [helytelen jelszavakat](concept-password-ban-bad.md) tartalmazó cikket.
+A globális és egyéni tiltott jelszólistákról a Rossz jelszavak tiltása című cikkben olvashat [bővebben.](concept-password-ban-bad.md)

@@ -1,6 +1,6 @@
 ---
-title: A FreeBSD bemutatása az Azure-ban
-description: Tudnivalók a FreeBSD rendszerű virtuális gépek használatáról az Azure-ban
+title: Bevezetés a FreeBSD Azure-on való használatába
+description: Tudjon meg többet a FreeBSD virtuális gépek azure-beli használatáról
 author: thomas1206
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -8,42 +8,42 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
 ms.openlocfilehash: fe64418e254289a29aafd155b92396082bff5b6a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945087"
 ---
-# <a name="introduction-to-freebsd-on-azure"></a>A FreeBSD bemutatása az Azure-ban
-Ez a cikk áttekintést nyújt a FreeBSD rendszerű virtuális gépek Azure-ban való futtatásáról.
+# <a name="introduction-to-freebsd-on-azure"></a>Bevezetés a FreeBSD Azure-on való használatába
+Ez a cikk áttekintést nyújt a FreeBSD virtuális gépek Azure-beli futtatásáról.
 
 ## <a name="overview"></a>Áttekintés
-A FreeBSD for Microsoft Azure a modern kiszolgálók, asztali számítógépek és beágyazott platformok teljesítményére szolgáló fejlett számítógépes operációs rendszer.
+A FreeBSD for Microsoft Azure egy fejlett számítógépes operációs rendszer, amely modern szerverek, asztali számítógépek és beágyazott platformok működtetésére szolgál.
 
-A Microsoft Corporation az Azure-ban elérhető FreeBSD-lemezképeket készít az Azure-beli [virtuális gép vendég ügynökével](https://github.com/Azure/WALinuxAgent/) előre konfigurálva. A Microsoft jelenleg a következő FreeBSD-verziókat kínálja lemezképként:
+A Microsoft Corporation előre konfigurált [azure-vendégügynökkel](https://github.com/Azure/WALinuxAgent/) teszi elérhetővé a FreeBSD lemezképeit az Azure-ban. Jelenleg a Microsoft a következő FreeBSD verziókat kínálja képként:
 
-- [A FreeBSD 10,4 Az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [A FreeBSD 11,2 Az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
-- [A FreeBSD 12,0 az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
+- [FreeBSD 10.4 az Azure Piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+- [FreeBSD 11.2 az Azure Piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
+- [FreeBSD 12.0 az Azure Piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
 
-Az ügynök feladata a FreeBSD virtuális gép és az Azure-háló közötti kommunikáció, például a virtuális gép üzembe helyezése az első használatnál (Felhasználónév, jelszó vagy SSH-kulcs, állomásnév stb.), valamint a szelektív virtuálisgép-bővítmények funkcióinak engedélyezése.
+Az ügynök felelős a FreeBSD VM és az Azure-háló közötti kommunikációért olyan műveletek esetén, mint például a virtuális gép első használatkor történő kiépítése (felhasználónév, jelszó vagy SSH-kulcs, állomásnév stb.), valamint a virtuális gép szelektív bővítményei funkcióinak engedélyezése.
 
-A FreeBSD jövőbeli verzióihoz hasonlóan a stratégia is naprakész marad, és hamarosan elérhetővé teszi a legújabb kiadásokat a FreeBSD Release Engineering csapatának közzétételekor.
+Ami a FreeBSD jövőbeli verzióit illeti, a stratégia az, hogy naprakészek maradjanak, és röviddel a FreeBSD kiadásmérnöki csapata által kiadott kiadás után elérhetővé tegyék a legújabb kiadásokat.
 
-### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD-alapú virtuális gép létrehozása az Azure CLI-vel a FreeBSD-n
-Először telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t, de a következő parancsot egy FreeBSD-gépen.
+### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD Virtuális gép létrehozása az Azure CLI-n keresztül freeBSD-n
+Először telepítenünk kell az [Azure CLI-t,](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ha a parancsot követjük freeBSD-gépen.
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Ha a bash nincs telepítve a FreeBSD rendszerű gépen, futtassa a következő parancsot a telepítés előtt. 
+Ha a bash nincs telepítve a FreeBSD készülékünkre, futtassuk a következő parancsot a telepítés előtt. 
 
 ```bash
 sudo pkg install bash
 ```
 
-Ha a Python nincs telepítve a FreeBSD rendszerű gépen, futtassa a következő parancsokat a telepítés előtt. 
+Ha a Python nincs telepítve a FreeBSD készülékünkre, a telepítés előtt futtassuk a következő parancsokat. 
 
 ```bash
 sudo pkg install python35
@@ -52,9 +52,9 @@ sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-A telepítés során a rendszer megkérdezi `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Ha `y` választ, és `a path to an rc file to update`ként adja meg a `/etc/rc.conf`, akkor előfordulhat, hogy a probléma `ERROR: [Errno 13] Permission denied`. A probléma megoldásához meg kell adnia az írási jogot az aktuális felhasználónak a fájl `etc/rc.conf`.
+A telepítés során a `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`rendszer megkérdezi, hogy. Ha `y` válaszol, `/etc/rc.conf` és `a path to an rc file to update`adja meg a `ERROR: [Errno 13] Permission denied`, akkor felel meg a problémát . A probléma megoldásához adja meg az írási jogot `etc/rc.conf`az aktuális felhasználónak a fájllal szemben.
 
-Most már bejelentkezhet az Azure-ba, és létrehozhatja a FreeBSD rendszerű virtuális gépet. Az alábbi példa egy FreeBSD 11,0 virtuális gép létrehozását mutatja be. Hozzáadhat egy globálisan egyedi DNS-névvel rendelkező `--public-ip-address-dns-name` paramétert is az újonnan létrehozott nyilvános IP-címekhez. 
+Most bejelentkezhet az Azure-ba, és létrehozhatja FreeBSD virtuális gépét. Az alábbiakban egy példa a FreeBSD 11.0 VM létrehozására. A paramétert `--public-ip-address-dns-name` globálisan egyedi DNS-névvel is hozzáadhatja egy újonnan létrehozott nyilvános IP-címhez. 
 
 ```azurecli
 az login 
@@ -66,57 +66,57 @@ az vm create --name myFreeBSD11 \
     --generate-ssh-keys
 ```
 
-Ezután bejelentkezhet a FreeBSD rendszerű virtuális gépre a fenti üzemelő példány kimenetében kinyomtatott IP-cím használatával. 
+Ezután bejelentkezhetünk a FreeBSD Virtuális Gépünkre azon az IP-címen keresztül, amely a fenti telepítés kimenetében jelent meg. 
 
 ```bash
 ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
 ```   
 
 ## <a name="vm-extensions-for-freebsd"></a>VM-bővítmények a FreeBSD-hez
-A következő a FreeBSD-ben támogatott virtuálisgép-bővítmények.
+A FreeBSD-ben a következőek támogatott virtuális gépbővítmények.
 
 ### <a name="vmaccess"></a>VMAccess
-A [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) bővítmény a következőket teheti:
+A [VMAccess-bővítmény:](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
-* Az eredeti sudo-felhasználó jelszavának alaphelyzetbe állítása.
-* Hozzon létre egy új sudo-felhasználót a megadott jelszóval.
-* Állítsa a nyilvános gazda kulcsot a megadott kulccsal.
-* Állítsa alaphelyzetbe a virtuális gép kiépítés során megadott nyilvános gazdagép kulcsát, ha nincs megadva a gazdagép kulcsa.
-* Nyissa meg az SSH-portot (22), és állítsa vissza a sshd_config, ha reset_ssh True (igaz) értékre van állítva.
+* Állítsa alaphelyzetbe az eredeti sudo felhasználó jelszavát.
+* Hozzon létre egy új sudo felhasználót a megadott jelszóval.
+* Állítsa be a nyilvános állomáskulcsot a megadott kulccsal.
+* Állítsa alaphelyzetbe a virtuális gép kiépítése során biztosított nyilvános állomáskulcsot, ha az állomáskulcs nincs megadva.
+* Nyissa meg az SSH portot (22), és állítsa vissza a sshd_config, ha reset_ssh igaz értékre van állítva.
 * Távolítsa el a meglévő felhasználót.
-* Lemezek ellenőrzéséhez.
-* Javítsa ki a hozzáadott lemezt.
+* Ellenőrizze a lemezeket.
+* Hozzáadott lemez javítása.
 
 ### <a name="customscript"></a>CustomScript
-A [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) bővítmény a következőket teheti:
+A [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) bővítmény:
 
-* Ha meg van adni, töltse le a testreszabott parancsfájlokat az Azure Storage-ból vagy a külső nyilvános tárolóból (például GitHub).
-* Futtassa a belépési pont parancsfájlját.
-* A beágyazott parancsok támogatása.
-* A Windows stílusú sortörést a rendszerhéjban és a Python-szkriptekben automatikusan konvertálhatja.
-* Az ANYAGJEGYZÉK eltávolítása a rendszerhéjból és a Python-parancsfájlokból automatikusan történik.
-* Bizalmas adatok védelme a CommandToExecute-ben.
+* Ha meg van adva, töltse le a testreszabott parancsfájlokat az Azure Storage-ból vagy a külső nyilvános tárhelyről (például a GitHubról).
+* Futtassa a belépési pont parancsfájlt.
+* Támogatja a szövegközi parancsokat.
+* Windows-stílusú újvonal konvertálása a rendszerhéjban és a Python-parancsfájlokban automatikusan.
+* Távolítsa el az anyagjegyzéket és a Python-parancsfájlokat automatikusan.
+* Bizalmas adatok védelme a CommandToExecute fájlban.
 
 > [!NOTE]
-> A FreeBSD VM jelenleg csak az 1. x verziójú CustomScript támogatja.  
+> A FreeBSD VM mostanra már csak a CustomScript 1.x verzióját támogatja.  
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Hitelesítés: felhasználónevek, jelszavak és SSH-kulcsok
-Ha a Azure Portal használatával hoz létre egy FreeBSD rendszerű virtuális gépet, meg kell adnia a felhasználónevet, a jelszót vagy az SSH nyilvános kulcsát.
-A FreeBSD rendszerű virtuális gépek Azure-beli üzembe helyezéséhez használt felhasználónevek nem egyeznek meg a virtuális gépen (például "root") már meglévő rendszerfiókok (UID < 100) neveivel.
-Jelenleg csak az RSA SSH-kulcs támogatott. A többsoros SSH-kulcsnak a `---- BEGIN SSH2 PUBLIC KEY ----`vel kell kezdődnie, és `---- END SSH2 PUBLIC KEY ----`kell végződnie.
+Amikor az Azure Portalon keresztül hozunk létre FreeBSD virtuális gépet, meg kell adnod egy felhasználónevet, jelszót vagy SSH nyilvános kulcsot.
+A FreeBSD virtuális gépek Azure-beli telepítéséhez használt felhasználónevek nem egyeznek meg a virtuális gépben már jelen lévő rendszerfiókok (UID <100) neveivel (például a gyökér).
+Jelenleg csak az RSA SSH kulcs támogatott. A többsoros SSH-kulcsnak a-val `---- BEGIN SSH2 PUBLIC KEY ----` kell kezdődnie és végződnie. `---- END SSH2 PUBLIC KEY ----`
 
 ## <a name="obtaining-superuser-privileges"></a>Rendszergazdai jogosultságok beszerzése
-Az Azure-beli virtuálisgép-példány üzembe helyezése során megadott felhasználói fiók egy kiemelt fiók. A sudo csomag a közzétett FreeBSD-rendszerképbe lett telepítve.
-Miután bejelentkezett ezzel a felhasználói fiókkal, a parancs szintaxisa segítségével root-ként futtathatja a parancsokat.
+A virtuálisgép-példány Azure-beli üzembe helyezése során megadott felhasználói fiók egy kiemelt jogosultságú fiók. A sudo csomag a közzétett FreeBSD lemezképbe lett telepítve.
+Miután bejelentkezett ezen a felhasználói fiókon keresztül, a parancsokat gyökérként futtathatja a parancs szintaxisával.
 
 ```
 $ sudo <COMMAND>
 ```
 
-`sudo -s`használatával beszerezheti a legfelső szintű rendszerhéjt is.
+A használatával tetszés szerint `sudo -s`beszerezhetgyökér-héjat.
 
 ## <a name="known-issues"></a>Ismert problémák
-Az [Azure VM-vendég ügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2-es verziója [ismert hibát](https://github.com/Azure/WALinuxAgent/pull/517) tartalmaz, amely az Azure-beli FreeBSD rendszerű virtuális gépek üzembe helyezési hibáját okozza. A javítást az [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) 2.2.3-es és újabb kiadásaiban rögzítettük. 
+Az [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) 2.2.2-es verziójának van egy ismert [problémája,](https://github.com/Azure/WALinuxAgent/pull/517) amely a FreeBSD virtuális gép azure-beli üzembe építési hibáját okozza. A javítást az [Azure VM Vendégügynök](https://github.com/Azure/WALinuxAgent/) 2.2.3-as és újabb verziójú verziói rögzítették. 
 
 ## <a name="next-steps"></a>További lépések
-* Nyissa meg az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112) -t egy FreeBSD rendszerű virtuális gép létrehozásához.
+* A FreeBSD Virtuális gép létrehozásához látogasson el az [Azure Piactérre.](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)

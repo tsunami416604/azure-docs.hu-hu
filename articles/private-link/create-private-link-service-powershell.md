@@ -1,6 +1,6 @@
 ---
-title: Azure Private link szolgáltatás létrehozása a Azure PowerShell használatával | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre Azure Private link Service-t a Azure PowerShell használatával
+title: Hozzon létre egy Azure-beli privát kapcsolati szolgáltatást az Azure PowerShell használatával| Microsoft dokumentumok
+description: Ismerje meg, hogyan hozhat létre azure-beli privát kapcsolati szolgáltatást az Azure PowerShell használatával
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76932082"
 ---
-# <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával
-Ez a cikk bemutatja, hogyan hozhat létre egy privát link szolgáltatást az Azure-ban Azure PowerShell használatával.
+# <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolatszolgáltatás létrehozása az Azure PowerShell használatával
+Ez a cikk bemutatja, hogyan hozhat létre egy privát kapcsolatszolgáltatás az Azure-ban az Azure PowerShell használatával.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, ez a cikk a legújabb Azure PowerShell modul verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk a legújabb Azure PowerShell-modulverziót igényli. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-A privát hivatkozás létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestCentralUS* helyen:
+A privát hivatkozás létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)segítségével. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *WestCentralUS* helyen:
 
 ```azurepowershell
 $location = "westcentralus"
@@ -33,7 +33,7 @@ New-AzResourceGroup `
   -Location $location
 ```
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy virtuális hálózatot a privát kapcsolathoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myvnet* nevű virtuális hálózatot a frontend (*frontendSubnet*), a háttér (*backendsubnet változóhoz*), a Private link (*otherSubnet*) alhálózattal:
+Hozzon létre egy virtuális hálózatot a privát kapcsolatot [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példa létrehoz egy virtuális hálózat nevű *myvnet* alhálózat előtérrel (*előtérSubnet),* háttérrendszer (*backendSubnet),* privát kapcsolat *(otherSubnet*):
 
 ```azurepowershell
 $virtualNetworkName = "myvnet"
@@ -62,8 +62,8 @@ $vnet = New-AzVirtualNetwork `
 -AddressPrefix "10.0.0.0/16" `
 -Subnet $frontendSubnet,$backendSubnet,$otherSubnet 
 ```
-## <a name="create-internal-load-balancer"></a>Belső Load Balancer létrehozása
-Hozzon létre egy belső standard Load Balancer a [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Az alábbi példa belső standard Load Balancer hoz létre az előző lépésekben létrehozott előtéri IP-konfiguráció, mintavétel, szabály és háttér-készlet használatával:
+## <a name="create-internal-load-balancer"></a>Belső terheléselosztó létrehozása
+Hozzon létre egy belső standard terheléselosztót a [New-AzLoadBalancer segítségével.](/powershell/module/az.network/new-azloadbalancer) A következő példa létrehoz egy belső standard terheléselosztót az előző lépésekben létrehozott előtér-IP-konfiguráció, mintavétel, szabály és háttérkészlet használatával:
 
 ```azurepowershell
 
@@ -79,8 +79,8 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 $NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard 
 ```
-## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
-Hozzon létre egy privát link Service-t a [New-AzPrivateLinkService](/powershell/module/az.network/new-azloadbalancer).  Ez a példa létrehoz egy *myPLS* nevű privát hivatkozás szolgáltatást a *myResourceGroup*nevű erőforráscsoport standard Load Balancer használatával. 
+## <a name="create-a-private-link-service"></a>Privát kapcsolatszolgáltatás létrehozása
+Hozzon létre egy privát kapcsolatszolgáltatást a [New-AzPrivateLinkService szolgáltatással.](/powershell/module/az.network/new-azloadbalancer)  Ez a példa létrehoz egy *myPLS* nevű privát kapcsolatszolgáltatást a standard terheléselosztó használatával a *myResourceGroup*nevű erőforráscsoportban. 
 ```azurepowershell
 
 $plsIpConfigName = "PLS-ipconfig" 
@@ -102,20 +102,20 @@ $privateLinkService = New-AzPrivateLinkService `
 -IpConfiguration $IPConfig 
 ```
 
-### <a name="get-private-link-service"></a>Privát link szolgáltatás beolvasása
-A [Get-AzPrivateLinkService által](/powershell/module/az.network/get-azprivatelinkservice) a Private link Service szolgáltatással kapcsolatos részletek a következőképpen olvashatók:
+### <a name="get-private-link-service"></a>Privát hivatkozásszolgáltatás beszereznie
+A [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) szolgáltatással kapcsolatos részletek az alábbiak szerint:
 
 ```azurepowershell
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-Ebben a szakaszban a privát kapcsolati szolgáltatás sikeresen létrejött, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a Private link Service PowerShell használatával történő létrehozását mutatja be.  Nem konfiguráltuk a terheléselosztó-háttér készleteit vagy bármely alkalmazást a háttér-készleteken a forgalom figyelésére. Ha meg szeretné tekinteni a végpontok közötti forgalmat, javasoljuk, hogy az alkalmazást a standard Load Balancer mögött konfigurálja. 
+Ebben a szakaszban a Privát kapcsolat szolgáltatás sikeresen létrejön, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a Privát kapcsolat szolgáltatás létrehozása a PowerShell használatával.  Még nem konfigurálta a terheléselosztó háttérkészletek vagy bármely alkalmazás a háttérkészletek a forgalom figyelésére. Ha azt szeretné, hogy a végpontok közötti forgalom folyamatok, javasoljuk, hogy konfigurálja az alkalmazást a standard terheléselosztó mögött. 
 
-A következő lépésben bemutatjuk, hogyan képezhető le a szolgáltatás a különböző VNet lévő privát végpontokra a PowerShell használatával. Ez a példa a privát végpont létrehozására és a fent létrehozott privát kapcsolati szolgáltatáshoz való csatlakozásra korlátozódik. Létrehozhat Virtual Machineseket a Virtual Network a forgatókönyv létrehozásához a privát végpont felé irányuló adatforgalom küldéséhez/fogadásához. 
+Ezután bemutatjuk, hogyan képezze le ezt a szolgáltatást egy privát végponthoz a PowerShell használatával különböző virtuális hálózatban. A példa ismét a privát végpont létrehozására és a fent létrehozott privát kapcsolatszolgáltatáshoz való csatlakozásra korlátozódik. Virtuális gépek a virtuális hálózatban a forgalom küldése/fogadása a privát végpont a forgatókönyv létrehozásához. 
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy *vnetPE* nevű virtuális hálózatot az erőforráscsoport nevű *myResourceGroup*:
+Hozzon létre egy virtuális hálózatot a saját végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)segítségével. Ez a példa egy *vnetPE* nevű virtuális hálózatot hoz létre *a myResourceGroup*nevű erőforráscsoportban:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -135,7 +135,7 @@ $vnetPE = New-AzVirtualNetwork `
 ```
 
 ### <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
-Hozzon létre egy privát végpontot a virtuális hálózaton fent létrehozott privát kapcsolati szolgáltatás fogyasztásához:
+Hozzon létre egy privát végpontot a virtuális hálózatban a fent létrehozott privát kapcsolatszolgáltatás elhasználódásához:
  
 ```azurepowershell
  
@@ -146,8 +146,8 @@ $plsConnection= New-AzPrivateLinkServiceConnection `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest 
 ```
  
-### <a name="get-private-endpoint"></a>Privát végpont beszerzése
-Szerezze be a privát végpont IP-címét `Get-AzPrivateEndpoint` a következőképpen:
+### <a name="get-private-endpoint"></a>Privát végpont beszereznie
+A privát végpont IP-címének `Get-AzPrivateEndpoint` beszerezése az alábbiak szerint:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 
@@ -160,8 +160,8 @@ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
 
 ```
 
-### <a name="approve-the-private-endpoint-connection"></a>A magánhálózati végponti kapcsolatok jóváhagyása
-Hagyja jóvá a privát végponti kapcsolatot a Private link Service-szel a "jóváhagyás – AzPrivateEndpointConnection" értékkel.
+### <a name="approve-the-private-endpoint-connection"></a>A privát végpontkapcsolat jóváhagyása
+Hagyja jóvá a privát végpontkapcsolatot a privát kapcsolatszolgáltatással a "Approve-AzPrivateEndpointConnection" segítségével.
 
 ```azurepowershell   
 
@@ -173,6 +173,6 @@ Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[
 
 ``` 
 
-## <a name="next-steps"></a>Következő lépések
-- További információ az [Azure Private linkről](private-link-overview.md)
+## <a name="next-steps"></a>További lépések
+- További információ az [Azure privát hivatkozásáról](private-link-overview.md)
  

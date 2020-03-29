@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az SAP ECC-ból
-description: Megtudhatja, hogyan másolhat adatokat az SAP ECC-ból egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
+title: Adatok másolása az SAP ECC-ből
+description: Megtudhatja, hogyan másolhatja az adatokat az SAP ECC-ről a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,72 +12,72 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931170"
 ---
-# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
+# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ből az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factory az SAP Enterprise Central Component (ECC) adatainak másolásához. További információ: [másolási tevékenység áttekintése](copy-activity-overview.md).
+Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása az SAP Enterprise Central Component (ECC). További információt a [Tevékenység másolása – áttekintés című témakörben talál.](copy-activity-overview.md)
 
 >[!TIP]
->Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
+>Ha meg szeretné tudni, hogy az ADF általános támogatást nyújt az SAP-adatintegrációs forgatókönyvhöz, tekintse meg az [SAP-adatok integrálását az Azure Data Factory használatával című tanulmányban,](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetéssel, összevetéssel és útmutatással.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az SAP ECC-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az SAP ECC-adatok bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+Az SAP ECC-ből adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában láthatja.
 
-Ez az SAP ECC-összekötő a következőket támogatja:
+Ez az SAP ECC-összekötő kifejezetten a következőket támogatja:
 
-- Adatok másolása az SAP ECC-on az SAP NetWeaver 7,0-es és újabb verzióiban.
-- Adatok másolása az SAP ECC OData Services által elérhető bármely objektumból, például:
+- Adatok másolása az SAP ECC-ből az SAP NetWeaver 7.0-s és újabb verzióján.
+- Adatok másolása az SAP ECC OData-szolgáltatások által elérhetővé tett objektumokról, például:
 
-  - SAP-táblák vagy-nézetek.
-  - Üzleti alkalmazások programozási felülete [BAPI] objektumok.
-  - Adatkivonatok.
-  - Az SAP Process Integration (PI) szolgáltatásba küldött adatvagy köztes dokumentumok (IDOCs-EK), amelyek relatív adaptereken keresztül OData fogadhatók.
+  - SAP-táblák vagy nézetek.
+  - Üzleti alkalmazásprogramozási felület [BAPI] objektumai.
+  - Adatkivonók.
+  - Az SAP-folyamatintegrációba (PI) küldött adatok vagy köztes dokumentumok, amelyek relatív adaptereken keresztül OData-ként fogadhatók.
 
-- Adatok másolása egyszerű hitelesítés használatával.
+- Adatok másolása egyszerű hitelesítéssel.
 
 >[!TIP]
->Az SAP ECC-adatok SAP-táblán vagy nézeten keresztüli másolásához használja az [SAP Table](connector-sap-table.md) Connectort, amely gyorsabb és skálázható.
+>Az SAP ECC-ből származó adatok SAP-táblán vagy nézeten keresztül történő másolásához használja az [SAP-táblaösszekötőt,](connector-sap-table.md) amely gyorsabb és méretezhetőbb.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az SAP ECC általában az SAP Gateway használatával teszi elérhetővé az entitásokat a OData-szolgáltatásokon keresztül. Az SAP ECC-összekötő használatához a következőket kell tennie:
+Általában az SAP ECC az SAP Gateway-en keresztül teszi elérhetővé az entitásokat az OData-szolgáltatásokon keresztül. Az SAP ECC-összekötő használatához a következőket kell használnia:
 
-- **Állítsa be az SAP Gatewayt**. Az SAP NetWeaver 7,4-nál újabb verzióval rendelkező kiszolgálók esetében az SAP Gateway már telepítve van. A korábbi verziók esetében telepítenie kell a beágyazott SAP-átjárót vagy az SAP Gateway hub-rendszerét, mielőtt az SAP ECC-adatok OData-szolgáltatásokon keresztül elérhetővé tehetők. Az SAP Gateway beállításához tekintse meg a [telepítési útmutatót](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **Állítsa be az SAP Gateway -t.** Az SAP NetWeaver 7.4-nél későbbi verzióval rendelkező kiszolgálók esetében az SAP Gateway már telepítve van. A korábbi verziók, telepítenie kell a beágyazott SAP Gateway vagy az SAP Gateway hub rendszer, mielőtt az SAP ECC-adatok az OData-szolgáltatásokon keresztül. Az SAP Gateway beállításához olvassa el a [telepítési útmutatót.](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm)
 
-- **Aktiválja és konfigurálja az SAP OData szolgáltatást**. A OData szolgáltatást másodpercek alatt aktiválhatja a TCODE SICF használatával. Azt is beállíthatja, hogy mely objektumokat kell elérhetővé tenni. További információ: [lépésenkénti útmutató](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **Az SAP OData szolgáltatás aktiválása és konfigurálása**. Az OData szolgáltatást másodpercek alatt aktiválhatja a TCODE SICF-en keresztül. Azt is beállíthatja, hogy mely objektumok legyenek elérhetők. További információt a [részletes útmutatóban](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük az SAP ECC-összekötőre jellemző Data Factory entitások definiálásához használt tulajdonságokat.
+A következő szakaszok az SAP ECC-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
+Az SAP ECC csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot `SapEcc`értékre kell beállítani. | Igen |
+| `type` | A `type` tulajdonságot a `SapEcc`ikonra kell állítani. | Igen |
 | `url` | Az SAP ECC OData szolgáltatás URL-címe. | Igen |
-| `username` | Az SAP ECC-hoz való kapcsolódáshoz használt Felhasználónév. | Nem |
-| `password` | Az SAP ECC-hoz való kapcsolódáshoz használt egyszerű szöveges jelszó. | Nem |
-| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | Nem |
+| `username` | Az SAP ECC-hez való csatlakozáshoz használt felhasználónév. | Nem |
+| `password` | Az SAP ECC-hez való csatlakozáshoz használt egyszerű szöveges jelszó. | Nem |
+| `connectVia` | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nem ad meg futásidejű, az alapértelmezett Azure-integrációs futásidejű használatos. | Nem |
 
 ### <a name="example"></a>Példa
 
@@ -104,13 +104,13 @@ Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). A következő szakasz az SAP ECC-adatkészlet által támogatott tulajdonságokat tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az Adatkészletek című [témakörben található.](concepts-datasets-linked-services.md) A következő szakasz az SAP ECC adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az SAP ECC-ból származó adatok másolásához állítsa `SapEccResource`értékre az adatkészlet `type` tulajdonságát.
+Ha adatokat szeretne másolni `type` az SAP ECC-ből, állítsa az adatkészlet tulajdonságát a-ra. `SapEccResource`
 
 A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | `path` | Az SAP ECC OData entitás elérési útja. | Igen |
 
@@ -135,18 +135,18 @@ A következő tulajdonságok támogatottak:
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [folyamatok](concepts-pipelines-activities.md). A következő szakasz az SAP ECC-forrás által támogatott tulajdonságokat tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a Folyamatok című [témakörben található.](concepts-pipelines-activities.md) A következő szakasz az SAP ECC-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="sap-ecc-as-a-source"></a>SAP ECC forrásként
+### <a name="sap-ecc-as-a-source"></a>SAP ECC mint forrás
 
-Az SAP ECC-ból származó adatok másolásához állítsa a másolási tevékenység `source` szakaszának `type` tulajdonságát a következőre: `SapEccSource`.
+Ha adatokat szeretne másolni `type` az SAP `source` ECC-ből, `SapEccSource`állítsa a tulajdonságot a másolási tevékenység szakaszában a-ra.
 
 A másolási tevékenység `source` szakasza a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A másolási tevékenység `source` szakaszának `type` tulajdonságát `SapEccSource`értékre kell beállítani. | Igen |
-| `query` | Az OData lekérdezési beállításai az adatszűréshez. Példa:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| `type` | A `type` másolási tevékenység szakaszának tulajdonságát `source` `SapEccSource`a beállításra kell állítani. | Igen |
+| `query` | Az Adatok lekérdezési beállításai az adatok szűréséhez. Példa:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő adatokat másol a kombinált URL-címről:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 ### <a name="example"></a>Példa
 
@@ -180,11 +180,11 @@ A másolási tevékenység `source` szakasza a következő tulajdonságokat tám
 ]
 ```
 
-## <a name="data-type-mappings-for-sap-ecc"></a>Az SAP ECC adattípus-hozzárendelései
+## <a name="data-type-mappings-for-sap-ecc"></a>Adattípus-leképezések az SAP ECC-hez
 
-Az SAP ECC-ból történő adatmásoláskor a következő leképezések használatosak az SAP ECC-adatok OData adattípusaiból Azure Data Factory ideiglenes adattípusokhoz. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md)
+Amikor adatokat másol az SAP ECC-ről, a következő leképezések az SAP ECC-adatok OData-adattípusaiból az Azure Data Factory köztes adattípusaihoz használatosak. Ha meg szeretné tudni, hogy a másolási tevékenység hogyan rendeli le a forrássémát és az adattípust a fogadóhoz, olvassa el a [Séma- és adattípus-hozzárendelések című témakört.](copy-activity-schema-and-type-mapping.md)
 
-| OData adattípusa | Data Factory időközi adattípus |
+| OData-adattípus | Adatgyár köztes adattípusa |
 |:--- |:--- |
 | `Edm.Binary` | `String` |
 | `Edm.Boolean` | `Bool` |
@@ -205,10 +205,10 @@ Az SAP ECC-ból történő adatmásoláskor a következő leképezések használ
 > [!NOTE]
 > Az összetett adattípusok jelenleg nem támogatottak.
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Azure Data Factoryban a másolási tevékenység által a forrásként és a nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+Az Azure Data Factory másolási tevékenysége által forrásként és fogadóként támogatott adattárak listáját a [Támogatott adattárak című témakörben tetszését.](copy-activity-overview.md#supported-data-stores-and-formats)

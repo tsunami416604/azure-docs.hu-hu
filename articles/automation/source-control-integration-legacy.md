@@ -1,138 +1,138 @@
 ---
-title: Verziókövetés integrációja Azure Automation örökölt
-description: Ez a cikk ismerteti a verziókövetés integrációját a GitHubon Azure Automationban.
+title: Forrásvezérlésintegráció az Azure Automationben – Örökölt
+description: Ez a cikk ismerteti a forrásvezérlés integrációja a GitHub az Azure Automationben.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 651b97dabfd3cce858ea1f905a39c10bd7d81c41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75417442"
 ---
-# <a name="source-control-integration-in-azure-automation---legacy"></a>Verziókövetés integrációja Azure Automation örökölt
+# <a name="source-control-integration-in-azure-automation---legacy"></a>Forrásvezérlésintegráció az Azure Automationben – Legacy
 
 > [!NOTE]
-> A verziókövetés új felülettel rendelkezik. További információ az új felületről: [verziókövetés (előzetes verzió)](source-control-integration.md).
+> Új felület áll a forrásellenőrzésre. Az új élményről a [Forrásvezérlés (előzetes verzió)](source-control-integration.md)című témakörben olvashat bővebben.
 
-A verziókövetés integrációja lehetővé teszi, hogy az Automation-fiókban runbookok rendeljen egy GitHub-forrás vezérlőelem-tárházhoz. A verziókövetés segítségével könnyedén együttműködhet a csapatával, követheti a változásokat, és visszatérhet a runbookok korábbi verzióihoz. A verziókövetés lehetővé teszi például, hogy a verziókövetés különböző ágait szinkronizálja fejlesztési, tesztelési vagy üzemi automatizálási fiókjaiba, így könnyen előléptetheti a fejlesztési környezetben tesztelt kódokat az éles automatizáláshoz fiók.
+A forrásvezérlésintegráció lehetővé teszi, hogy az Automation-fiókban lévő runbookokat egy GitHub-forrásvezérlő tárházhoz társítsa. A forrásvezérlés lehetővé teszi, hogy könnyedén együttműködjön a csapatával, nyomon követhesse a változásokat, és visszaváltson a runbookok korábbi verzióira. A forrásvezérlés például lehetővé teszi, hogy a forrásvezérlés különböző ágait szinkronizálja a fejlesztési, tesztelési vagy éles automatizálási fiókokhoz, így egyszerűen előléptetheti a fejlesztői környezetben tesztelt kódot a termelési automatizálásra Számla.
 
-A verziókövetés lehetővé teszi a kód leküldését Azure Automationról a forrás vezérlőelemre, vagy lekéri a runbookok a forrás vezérlőelemről a Azure Automationra. Ez a cikk azt ismerteti, hogyan állítható be a verziókövetés a Azure Automation-környezetben. Kezdjük azzal, hogy Azure Automation konfiguráljuk a GitHub-tárház elérését, és különböző műveleteket hajtanak végre, amelyeket a verziókövetés integrálásával lehet elvégezni. 
+A forrásvezérlés lehetővé teszi, hogy kódot nyomtasson az Azure Automationből a forrásvezérléshez, vagy lekéri a runbookokat a forrásvezérlésből az Azure Automationbe. Ez a cikk ismerteti, hogyan állíthatja be a forrásvezérlést az Azure Automation-környezetben. Azzal kezdjük, hogy konfiguráljuk az Azure Automationt a GitHub-tárház eléréséhez, és végigvezeti a különböző műveleteket, amelyek a forrásvezérlési integráció használatával elvégezhetők. 
 
 > [!NOTE]
-> A verziókövetés támogatja a PowerShell- [munkafolyamatok runbookok](automation-runbook-types.md#powershell-workflow-runbooks) , valamint a [PowerShell-runbookok](automation-runbook-types.md#powershell-runbooks). A [grafikus runbookok](automation-runbook-types.md#graphical-runbooks) még nem támogatottak.
+> A forrásvezérlés támogatja a [PowerShell-munkafolyamat runbookjainak,](automation-runbook-types.md#powershell-workflow-runbooks) valamint a [PowerShell runbookjainak lehúzását](automation-runbook-types.md#powershell-runbooks)és lenyomását. [A grafikus runbookok](automation-runbook-types.md#graphical-runbooks) még nem támogatottak.
 
-Két egyszerű lépés szükséges az Automation-fiókhoz tartozó verziókövetés konfigurálásához, és csak akkor, ha már rendelkezik egy GitHub-fiókkal. Ezek a következők:
+Két egyszerű lépés szükséges az Automation-fiók forrásvezérlésének konfigurálásához, és csak egy, ha már rendelkezik Egy GitHub-fiókkal. Ezek a következők:
 
-## <a name="step-1--create-a-github-repository"></a>1\. lépés – GitHub-adattár létrehozása
+## <a name="step-1--create-a-github-repository"></a>1. lépés – GitHub-tárház létrehozása
 
-Ha már rendelkezik egy GitHub-fiókkal és egy Azure Automationhoz csatolni kívánt adattárral, jelentkezzen be a meglévő fiókjába, és kezdje az alábbi 2. lépéssel. Ellenkező esetben navigáljon a [githubra](https://github.com/), regisztráljon egy új fiókot, és [hozzon létre egy új tárházat](https://help.github.com/articles/create-a-repo/).
+Ha már rendelkezik egy GitHub-fiókkal és egy tárházzal, amelyet az Azure Automationhez szeretne kapcsolni, majd jelentkezzen be a meglévő fiókjába, és kezdje az alábbi 2. Ellenkező esetben keresse meg a [GitHubot,](https://github.com/)regisztráljon egy új fiókot, és [hozzon létre egy új tárházat.](https://help.github.com/articles/create-a-repo/)
 
-## <a name="step-2--set-up-source-control-in-azure-automation"></a>2\. lépés – a verziókövetés beállítása a Azure Automationban
+## <a name="step-2--set-up-source-control-in-azure-automation"></a>2. lépés – Forrásvezérlés beállítása az Azure Automationben
 
-1. A Azure Portal Automation-fiók lapjának **Fiókbeállítások**területén kattintson a verziókövetés elemre **.**
+1. Az Azure Portal Automation-fiók lapján a **Fiókbeállítások**csoportban kattintson a **Forrásvezérlés elemre.**
 
-2. Megnyílik a **verziókövetés** oldal, ahol beállíthatja a GitHub-fiók adatait. Alább látható a konfigurálandó paraméterek listája:  
+2. Megnyílik **a Forrásvezérlő** lap, ahol konfigurálhatja a GitHub-fiók adatait. Alább látható a konfigurálandó paraméterek listája:  
 
    | **Paraméter** | **Leírás** |
    |:--- |:--- |
-   | Forrás kiválasztása |Válassza ki a forrást. Jelenleg csak a **GitHub** támogatott. |
-   | Engedélyezés |Kattintson az **Engedélyezés** gombra, és adja meg Azure Automation hozzáférést a GitHub-tárházhoz. Ha már bejelentkezett a GitHub-fiókjába egy másik ablakban, akkor a rendszer a fiók hitelesítő adatait használja. Az engedélyezés sikerességét követően az oldal az **engedélyezési tulajdonság**alatt megjeleníti a GitHub-felhasználónevét. |
-   | Adattár kiválasztása |Válasszon egy GitHub-tárházat az elérhető Tárházak listájából. |
-   | Ág kiválasztása |Válasszon ki egy ágat az elérhető ágak listájából. Ha nem hozott létre ágakat, csak a **fő** ág jelenik meg. |
-   | Runbook mappa elérési útja |A runbook mappa elérési útja meghatározza a GitHub-tárház azon elérési útját, amelyről le kívánja küldeni vagy le szeretné kérni a kódot. Ezt a formátumot **/FOLDERNAME/subfoldername**formátumban kell megadni. Az Automation-fiókjába csak a runbook mappa elérési útjának runbookok lesznek szinkronizálva. A runbook mappa elérési útjának almappáiban lévő runbookok **nem** lesznek szinkronizálva. A **/** használatával szinkronizálhatja az adattár alatt lévő összes runbookok. |
-3. Ha például rendelkezik egy **PowerShellScripts** nevű adattárral, amely egy **gyökérmappa**nevű mappát tartalmaz, amely egy almappa nevű mappát **tartalmaz.** Az egyes mappák szintjének szinkronizálásához a következő sztringeket használhatja:
+   | Forrás kiválasztása |Jelölje ki a forrást. Jelenleg csak a **GitHub** támogatott. |
+   | Engedélyezés |Kattintson az **Engedélyezés** gombra, ha hozzáférést biztosít az Azure Automation-nek a GitHub-tárházhoz. Ha már be van jelentkezve a GitHub-fiókjába egy másik ablakban, majd a fiók hitelesítő adatait használja. Ha az engedélyezés sikeres, a lap a GitHub-felhasználónevét az **Engedélyezési tulajdonság alatt**jeleníti meg. |
+   | Tárház kiválasztása |Válasszon ki egy GitHub-tárházat az elérhető tárházak listájából. |
+   | Ág kiválasztása |Válasszon ki egy ágat az elérhető ágak listájából. Csak a **főág** jelenik meg, ha még nem hozott létre ágakat. |
+   | Runbook mappa elérési útja |A runbook mappa elérési útja megadja az elérési utat a GitHub-tárházban, amelyből le szeretné nyomni vagy le szeretné húzni a kódot. A **/foldername/subfoldername**formátumban kell megadni. Csak a runbook mappa elérési útján lévő runbookok lesznek szinkronizálva az Automation-fiókkal. A runbook mappa elérési útjának almappáiban lévő runbookok **nem** lesznek szinkronizálva. A **/** tárház alatti összes runbook szinkronizálására használható. |
+3. Ha például van egy **PowerShellScripts** nevű tárháza, amely egy **Gyökérmappa**nevű mappát tartalmaz, amely egy **Almappa**nevű mappát tartalmaz. Az egyes mappaszinteket a következő karakterláncokkal szinkronizálhatja:
 
-   1. A runbookok az **adattárból**való szinkronizálásához a runbook mappa elérési útja */*
-   2. A runbookok **gyökérmappa**-ből való szinkronizálásához a runbook mappa elérési útja */RootFolder*
-   3. A runbookok az **almappából**való szinkronizálásához a runbook mappa elérési útja */RootFolder/SubFolder*.
-4. A paraméterek konfigurálása után ezek megjelennek a **verziókövetés beállítása** lapon.  
+   1. A runbookok **tárházból**való szinkronizálásához a runbook-mappa elérési útja*/*
+   2. Runbookok **RootFolder**mappából történő szinkronizálásához a runbook mappa elérési útja */RootFolder*
+   3. A runbookok **Almappából**történő szinkronizálásához a runbook mappa elérési útja *a /RootFolder/AlFolder*.
+4. A paraméterek konfigurálása után azok a **Forrásvezérlő beállítása** lapon jelennek meg.  
 
-    ![A beállításokat megjelenítő forrásoldali vezérlő lap](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
-5. Miután rákattintott az **OK**gombra, a verziókövetés integrációja már konfigurálva van az Automation-fiókjához, és frissítenie kell a GitHub-információkkal. Erre a részre kattintva megtekintheti a verziókövetés összes szinkronizálási feladatainak előzményeit.  
+    ![A Beállításokat megjelenítő Forrásvezérlő lap](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
+5. Miután az **OK**gombra kattintott, a forrásvezérlési integráció most már konfigurálva van az Automation-fiókhoz, és frissíteni kell a GitHub-adatokkal. Most már erre a részre kattintva megtekintheti az összes forrásvezérlő szinkronizálási feladatelőzményét.  
 
-    ![A jelenlegi konfigurált verziókövetés konfigurációjának értékei](media/source-control-integration-legacy/automation-RepoValues.png)
-6. A verziókövetés beállítása után két [változó eszköz](automation-variables.md) jön létre az Automation-fiókban. Emellett a rendszer hozzáad egy, a GitHub-fiókhoz egy erre a jogosultsággal rendelkező alkalmazást.
+    ![Az aktuálisan konfigurált forrásvezérlő konfigurációjának értékei](media/source-control-integration-legacy/automation-RepoValues.png)
+6. A forrásellenőrzés beállítása után két [változóeszköz](automation-variables.md) jön létre az Automation-fiókban. Emellett egy engedélyezett alkalmazás hozzáadódik a GitHub-fiókhoz.
 
-   * A **Microsoft. Azure. Automation. SourceControl. link** változó a következő ábrán látható módon tartalmazza a kapcsolatok karakterláncának értékeit.  
+   * A **Microsoft.Azure.Automation.SourceControl.Connection** változó a kapcsolati karakterlánc értékeit tartalmazza, az alábbiak szerint.  
 
      | **Paraméter** | **Érték** |
      |:--- |:--- |
-     | `Name`  |Microsoft. Azure. Automation. SourceControl.-kapcsolatok |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
      | `Type`  |Sztring |
-     | `Value` |{"Ág":\<*az ág neve*>, "RunbookFolderPath":\<*Runbook mappa elérési útja*> "ProviderType":\<*értéke 1 a GitHub*>, "adattár":\<*neve a tárház*>, "Username":\<*a GitHub-Felhasználónév*>} |
+     | `Value` |{"Ág":\<*Az ág neve*>,"RunbookFolderPath":\<*Runbook mappa elérési útja*>,"ProviderType":\<*1-es értékkel rendelkezik a GitHub*>,"Repository":\<A*tárház neve*>,"Felhasználónév":\<A*GitHub felhasználói neve*>} |
 
-   * A **Microsoft. Azure. Automation. SourceControl. OAuthToken**változó a OAuthToken biztonságos titkosított értékét tartalmazza.  
+   * A **Microsoft.Azure.Automation.SourceControl.OAuthToken**változó tartalmazza az OAuthToken biztonságos titkosított értékét.  
 
      |**Paraméter**            |**Érték** |
      |:---|:---|
-     | `Name`  | Microsoft. Azure. Automation. SourceControl. OAuthToken |
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
      | `Type`  | Ismeretlen (titkosított) |
-     | `Value` | <*titkosított OAuthToken*> |  
+     | `Value` | <*Titkosított OAuthToken*> |  
 
-     ![A verziókövetés változóit megjelenítő ablak](media/source-control-integration-legacy/automation-Variables.png)  
+     ![Forrásvezérlő változókkal rendelkező ablak](media/source-control-integration-legacy/automation-Variables.png)  
 
-   * Az **Automation-verziókövetés** a GitHub-fiókjának megfelelő alkalmazásként lesz hozzáadva. Az alkalmazás megtekintéséhez: a GitHub kezdőlapján navigáljon a **profil** > **Beállítások** > **alkalmazások**elemre. Ez az alkalmazás lehetővé teszi, hogy Azure Automation szinkronizálja a GitHub-tárházat egy Automation-fiókkal.  
+   * **Automation Source Control** hozzá adódik egy engedélyezett alkalmazás a GitHub-fiókhoz. Az alkalmazás megtekintéséhez: A GitHub kezdőlapján keresse meg a **profil** > **beállítások** > **alkalmazások**. Ez az alkalmazás lehetővé teszi, hogy az Azure Automation szinkronizálja a GitHub-tárházat egy Automation-fiókkal.  
 
      ![Alkalmazásbeállítások a GitHubon](media/source-control-integration-legacy/automation-GitApplication.png)
 
-## <a name="using-source-control-in-automation"></a>Verziókövetés használata az Automationben
+## <a name="using-source-control-in-automation"></a>A forrásvezérlés használata az automatizálásban
 
-### <a name="check-in-a-runbook-from-azure-automation-to-source-control"></a>Runbook ellenőrzése Azure Automationról a forrás vezérlőelemre
+### <a name="check-in-a-runbook-from-azure-automation-to-source-control"></a>Runbook beadása az Azure Automationből a forrásvezérlőbe
 
-A Runbook beadásával leküldheti az Azure Automationban végrehajtott módosításokat a Runbook a forrás vezérlő tárházba. A következő lépésekkel ellenőrizheti a runbook:
+A Runbook-beadás lehetővé teszi, hogy az Azure Automationben egy runbookon végrehajtott módosításokat a forrásvezérlő tárházba tolja le. Az alábbiakban a runbook okán kell beadni a lépéseket:
 
-1. Az Automation-fiókból [hozzon létre egy új szöveges runbook](automation-first-runbook-textual.md), vagy [szerkesszen egy meglévő, szöveges runbook](automation-edit-textual-runbook.md). Ez a runbook egy PowerShell-munkafolyamat vagy egy PowerShell-parancsfájl runbook lehet.  
-2. A runbook szerkesztése után mentse azt, és kattintson a **beadás** lehetőségre a **Szerkesztés** lapon.  
+1. Az Automation-fiókból [hozzon létre egy új szöveges runbookot,](automation-first-runbook-textual.md)vagy [szerkesztsen egy meglévő, szöveges runbookot.](automation-edit-textual-runbook.md) Ez a runbook lehet egy PowerShell-munkafolyamat vagy egy PowerShell-parancsfájl runbook.  
+2. A runbook szerkesztése után mentse, és kattintson a **Beadás** **gombra** a Szerkesztés lapon.  
 
-    ![A GitHub beadásának gombját megjelenítő ablak](media/source-control-integration-legacy/automation-CheckinButton.png)
+    ![A beadás a GitHubra gombbal megjelenítő ablak](media/source-control-integration-legacy/automation-CheckinButton.png)
 
      > [!NOTE] 
-     > A beadás Azure Automation felülírja a verziókövetés jelenleg létező kódját. A git-ekvivalens parancssori útmutató a bejelentkezéshez **git Hozzáadás + git commit + git push**  
+     > Az Azure Automation-ből történő bejelentkezés felülírja a forrásvezérlőben jelenleg létező kódot. A Git egyenértékű parancssori utasítás a check-in **a git add + git commit + git push**  
 
-3. Ha a **Bejelentkezés**gombra kattint, a rendszer megerősítő üzenetet kér, és a folytatáshoz kattintson az **Igen** gombra.  
+3. Amikor **a beadásgombra**kattint, a program megerősítő üzenetet kér, a folytatáshoz kattintson az **Igen** gombra.  
 
-    ![Egy párbeszédpanel, amely megerősíti a beadást a verziókövetés számára](media/source-control-integration-legacy/automation-CheckinMessage.png)
-4. A beadás elindítja a verziókövetés runbook: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Ez a runbook csatlakozik a GitHubhoz, és leküldi a változásokat Azure Automationról a tárházba. A bejelentkezett feladatok előzményeinek megtekintéséhez lépjen vissza a **verziókövetés integrációja** lapra, és kattintson az adattár-szinkronizálás lap megnyitásához. Ezen az oldalon az összes verziókövetés feladatát láthatja.  Válassza ki a megtekinteni kívánt feladatot, és kattintson ide a részletek megtekintéséhez.  
+    ![A forrásvezérlőbe való befizetést megerősítő párbeszédpanel](media/source-control-integration-legacy/automation-CheckinMessage.png)
+4. A beadás elindítja a forrásvezérlő runbookját: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Ez a runbook csatlakozik a GitHubhoz, és leküldéses módosításokat az Azure Automation a tárház. A beadott feladatelőzmények megtekintéséhez lépjen vissza a **Forrásvezérlés integrációja** lapra, és kattintson ide a Tártár szinkronizálása lap megnyitásához. Ezen a lapon az összes forrásvezérlő feladat látható.  Jelölje ki a megtekinteni kívánt feladatot, és kattintson a részletek megtekintéséhez.  
 
-    ![Egy szinkronizálási feladatok eredményét megjelenítő ablak](media/source-control-integration-legacy/automation-CheckinRunbook.png)
+    ![Szinkronizálási feladat eredményeit megjelenítő ablak](media/source-control-integration-legacy/automation-CheckinRunbook.png)
 
    > [!NOTE]
-   > A verziókövetés runbookok olyan speciális Automation-runbookok, amelyeket nem lehet megtekinteni vagy szerkeszteni. Habár a runbook listáján nem jelennek meg, a feladatok listájában megjelenik a szinkronizálási feladatok.
+   > A forrásvezérlő runbookok speciális Automation runbookok, amelyeket nem tekinthet meg és nem szerkeszthet. Bár nem jelennek meg a runbook-listán, a feladatok szinkronizálási listájában megjelennek a szinkronizálási feladatok.
 
-5. A módosított runbook neve bemeneti paraméterként lesz elküldve a bejelentkezett runbook. [A feladatok részleteit](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) a runbook kibontásával tekintheti meg a **tárház szinkronizációs** lapján.  
+5. A módosított runbook nevét a rendszer a beadott runbook bemeneti paramétereként küldi el. A [feladat részleteit a](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) Runbook kibontásával tekintheti meg a **Tárház szinkronizálása** lapon.  
 
-    ![A szinkronizálási feladatok bemenetét bemutató ablak](media/source-control-integration-legacy/automation-CheckinInput.png)
-6. Frissítse a GitHub-tárházat, miután a feladatok befejeződik a módosítások megtekintéséhez.  A tárházban véglegesíteni kell egy véglegesítő üzenettel: a **frissített *Runbook neve* Azure Automationban.**  
+    ![Egy szinkronizálási feladat bemenetét megjelenítő ablak](media/source-control-integration-legacy/automation-CheckinInput.png)
+6. Frissítse a GitHub-tárházat, amint a feladat befejeződik a módosítások megtekintéséhez.  A tárházban véglegesítési üzenettel kell elkövetni: **Frissített *Runbook-név* az Azure Automationben.**  
 
-### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Runbookok szinkronizálása a forrás vezérlőelemről a Azure Automationba
+### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Runbookok szinkronizálása a forrásvezérlőtől az Azure Automationig
 
-Az adattár-szinkronizálás lapon található szinkronizálás gomb lehetővé teszi, hogy a tárház runbook mappájában lévő összes runbookok lekérje az Automation-fiókba. Ugyanaz a tárház több Automation-fiókkal is szinkronizálható. A runbook szinkronizálásának lépései a következők:
+A szinkronizálás gomb a repository szinkronizálási lapon lehetővé teszi, hogy lekéri az összes runbookok a tárház elérési útja a tárház az Automation-fiók. Ugyanaz a tárház több Automation-fiókkal is szinkronizálható. Az alábbiakban a runbookok szinkronizálásának lépéseit olvashatja:
 
-1. Az Automation-fiókban, ahol a verziókövetés beállítását választotta, nyissa meg a **verziókövetés integráció/tárház szinkronizálása** lapot, és kattintson a **szinkronizálás**elemre.  A rendszer megerősítő üzenetet kér, és a folytatáshoz kattintson az **Igen** gombra.  
+1. Az Automation-fiókból, amelybe forrásvezérlőt állított be, nyissa meg a **Forrásvezérlés integrációs/adattár-szinkronizálási lapját,** és kattintson a **Szinkronizálás gombra.**  A folytatáshoz a rendszer megerősítő üzenetet küld, és kattintson az **Igen** gombra.  
 
-    ![Szinkronizálás gomb üzenettel, amely megerősíti, hogy minden runbookok szinkronizálva lesz](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
+    ![Szinkronizálás gomb üzenettel, amely megerősíti, hogy az összes runbook szinkronizálva lesz](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. A szinkronizálás elindítja a runbook: **Sync-MicrosoftAzureAutomationAccountFromGitHubV1**. Ez a runbook csatlakozik a GitHubhoz, és lekéri a tárházban bekövetkező változásokat Azure Automationra. Ehhez a művelethez egy új feladatot kell megjelennie az **adattár szinkronizációs** lapján. A szinkronizálási feladattal kapcsolatos részletek megtekintéséhez kattintson a feladatok részletei lap megnyitásához.  
+2. A Szinkronizálás elindítja a runbookot: **Sync-MicrosoftAzureAutomationAccountFromGitHubV1**. Ez a runbook csatlakozik a GitHubhoz, és lekéri a módosításokat a tárházból az Azure Automationbe. Ekkor megjelenik egy új feladat a **tárház szinkronizálása** lapon ehhez a művelethez. A szinkronizálási feladat részleteinek megtekintéséhez kattintson ide a feladat részletei lap megnyitásához.  
 
-    ![Egy GitHub-adattár szinkronizálási feladatainak szinkronizálási eredményeit bemutató ablak](media/source-control-integration-legacy/automation-SyncRunbook.png)
+    ![Egy szinkronizálási feladat szinkronizálási eredményeit megjelenítő ablak egy GitHub-tárházban](media/source-control-integration-legacy/automation-SyncRunbook.png)
 
     > [!NOTE]
-    > A verziókövetés szinkronizálása felülírja az Automation-fiókban jelenleg létező runbookok-Piszkozat verzióját az **összes** olyan runbookok esetében, amely jelenleg a verziókövetés részét képezi. A git-ekvivalens parancssori útmutató a szinkronizáláshoz **git pull**
+    > A forrásvezérlőből származó szinkronizálás felülírja a runbookok vázlatverzióját, amely jelenleg az Automation-fiókban létezik a forrásvezérlésben lévő **összes** runbookhoz. A Git egyenértékű parancssori utasítás a **git pull**
 
-![A felfüggesztett forrásoldali vezérlők szinkronizálási feladataiból származó összes naplót megjelenítő ablak](media/source-control-integration-legacy/automation-AllLogs.png)
+![Felfüggesztett forrásvezérlő szinkronizálási feladat összes naplóját megjelenítő ablak](media/source-control-integration-legacy/automation-AllLogs.png)
 
-## <a name="disconnecting-source-control"></a>Verziókövetés leválasztása
+## <a name="disconnecting-source-control"></a>Forrásvezérlő leválasztása
 
-A GitHub-fiókból való leválasztáshoz nyissa meg az adattár szinkronizálása lapot, és kattintson a **Leválasztás**elemre. A verziókövetés leválasztása után a korábban szinkronizált runbookok továbbra is az Automation-fiókban maradnak, de az adattár szinkronizációs lapja nem lesz engedélyezve.  
+Ha le szeretne választani a GitHub-fiókról, nyissa meg a Tárház szinkronizálása lapot, és kattintson a **Kapcsolat bontása**gombra. A forrásvezérlő leválasztása után a korábban szinkronizált runbookok továbbra is az Automation-fiókban maradnak, de a Tárház szinkronizálási lapja nem lesz engedélyezve.  
 
-  ![Egy ablak, amely a leválasztás gombot mutatja a verziókövetés leválasztásához](media/source-control-integration-legacy/automation-Disconnect.png)
+  ![A forrásvezérlő leválasztásához a Kapcsolat bontása gombbal](media/source-control-integration-legacy/automation-Disconnect.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A verziókövetés integrálásával kapcsolatos további információkért tekintse meg a következő forrásokat:  
+A forrásvezérlés integrációjáról az alábbi forrásokban talál további információt:  
 
-* [Azure Automation: verziókövetés integrációja Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Automation: a Runbook-verziókövetés integrálása az Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* [Azure Automation: Forrásvezérlésintegráció az Azure Automationben](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Automation: A Runbook-forrásvezérlés integrálása az Azure DevOps használatával](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

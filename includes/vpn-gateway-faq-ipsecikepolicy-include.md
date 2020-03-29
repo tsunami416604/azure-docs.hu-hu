@@ -9,14 +9,14 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74903109"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
-Az Egyéni IPsec/IKE-házirendet az alapszintű SKU kivételével az összes Azure-beli SKU támogatja.
+Egyéni IPsec/IKE-szabályzat támogatja az összes Azure Termékváltozatok kivételével az alapszintű termékváltozat.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hány házirendeket adhatok meg egy kapcsolathoz?
 Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
@@ -42,7 +42,7 @@ Az alábbi táblázatban megtekintheti az ügyfelek által konfigurálható, tá
 > [!IMPORTANT]
 > 1. A DHGroup2048 és PFS2048 megegyeznek az IKE és IPsec PFS **14-es** Diffie-Hellman csoportjával. A teljes leképezések megtekintéséhez lásd: [Diffie-Hellman csoport](#DH).
 > 2. GCMAES-algoritmusok esetében ugyanazt a GCMAES-algoritmust és kulcshosszt kell megadnia az IPsec-titkosítás és -integritás esetében.
-> 3. A IKEv2 fő módú SA élettartama 28 800 másodpercen belül megoldódott az Azure VPN Gateway-átjárók esetében.
+> 3. Az IKEv2 alapmódú biztonsági hálózat élettartama 28 800 másodpercaz Azure VPN-átjárókon.
 > 4. A gyorsmódú biztonsági társítás élettartama paraméter megadása opcionális. Ha nem ad meg értéket, a rendszer az alapértelmezett értékeket használja: 27 000 másodperc (7,5 óra) és 102 400 000 kB (102 GB).
 > 5. A UsePolicyBasedTrafficSelector a kapcsolat egy opcionális paramétere. Tekintse meg a „UsePolicyBasedTrafficSelectors” paraméterre vonatkozó következő GYIK elemet
 
@@ -67,10 +67,10 @@ Ha engedélyezi az **UsePolicyBasedTrafficSelectors** lehetőséget, meg kell gy
 
 További információ: [Több helyszíni házirendalapú VPN-eszköz csatlakoztatása](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-### <a name ="DH"></a>Mely Diffie-Hellman csoportok támogatottak?
+### <a name="which-diffie-hellman-groups-are-supported"></a><a name ="DH"></a>Mely Diffie-Hellman csoportok támogatottak?
 Az alábbi táblázat az IKE (DHGroup) és IPsec (PFSGroup) esetében támogatott Diffie-Hellman csoportokat tartalmazza:
 
-| **Diffie-Hellman csoport**  | **DH-csoport**              | **PFS-csoport** | **A kulcs hossza** |
+| **Diffie-Hellman Group**  | **DH-csoport**              | **PFS-csoport** | **A kulcs hossza** |
 | ---                       | ---                      | ---          | ---            |
 | 1                         | DHGroup1                 | PFS1         | 768 bites MODP   |
 | 2                         | DHGroup2                 | PFS2         | 1024 bites MODP  |
@@ -103,17 +103,17 @@ Igen. A virtuális hálózatok közötti alagút két kapcsolati erőforrásból
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Működik az egyéni IPsec/IKE-házirend az ExpressRoute-kapcsolatokkal?
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.
 
-### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hogyan kapcsolatok létrehozása IKEv1 vagy IKEv2 protokoll-típussal?
-Az IKEv1-kapcsolatok az alapszintű SKU kivételével minden Útvonalalapú VPN-típusban létrehozhatók. Kapcsolatok létrehozásakor megadhatja a IKEv1 vagy a IKEv2 kapcsolati protokoll típusát is. Ha nem adja meg a kapcsolati protokoll típusát, a rendszer a IKEv2 alapértelmezett beállításként használja, ahol alkalmazható. További információt a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) dokumentációjában talál. Az SKU-típusok és a IKEv1/IKEv2 támogatásával kapcsolatban lásd: [átjárók csatlakoztatása házirend alapú VPN-eszközökhöz](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hogyan hozhatok létre kapcsolatokat az IKEv1 vagy IKEv2 protokolltípussal?
+Az IKEv1-kapcsolatok az egyszerű termékváltozat kivételével az összes RouteBased VPN típusú termékváltozaton létrehozhatók. Kapcsolatok létrehozásakor megadhatja az IKEv1 vagy IKEv2 kapcsolatprotokoll-típusát. Ha nem ad meg kapcsolatprotokoll-típust, a rendszer az IKEv2 protokollt használja alapértelmezett beállításként, ahol alkalmazható. További információt a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) dokumentációjában talál. A Termékváltozat-típusok és az IKEv1/IKEv2 támogatása az [Átjárók csatlakoztatása házirendalapú VPN-eszközökhöz című témakörben](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)található.
 
-### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Engedélyezett a IKEv1 és a IKEv2 közötti kapcsolatok közötti átvitel?
-Igen. A IKEv1 és a IKEv2 kapcsolatok közötti átvitel támogatott.
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Engedélyezett az IKEv1 és az IKEv2-kapcsolatok közötti átvitel?
+Igen. Az IKEv1 és IKEv2 kapcsolatok közötti tranzit támogatott.
 
-### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Használhatok IKEv1 helyek közötti kapcsolatokat a Útvonalalapú VPN-típusának alapszintű SKU-ban?
-Nem. Az alapszintű SKU nem támogatja ezt.
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Lehet-e IKEv1 helyek közötti kapcsolat a RouteBased VPN típusú egyszerű termékkitöltőkön?
+Nem. Az alapszintű termékváltozat ezt nem támogatja.
 
-### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Módosíthatom a kapcsolati protokoll típusát a kapcsolat létrehozása után (IKEv1 a IKEv2 és fordítva)?
-Nem. A létrehozást követően a IKEv1/IKEv2 protokollok nem módosíthatók. Törölje, majd hozza létre újra a kívánt protokolltípus új kapcsolatát.
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Módosíthatom a kapcsolat protokolltípusát a kapcsolat létrehozása után (IKEv1-RŐL IKEv2-re és fordítva)?
+Nem. A kapcsolat létrehozása után az IKEv1/IKEv2 protokollok nem módosíthatók. Törölnie kell, majd újra létre kell hoznia egy új kapcsolatot a kívánt protokolltípussal.
 
-### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Hol találhatok további konfigurációs adatokat az IPsec szolgáltatáshoz?
-Lásd: [IPSec/IKE-szabályzat konfigurálása S2S vagy VNet – VNet kapcsolatok számára](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Hol találhatok további konfigurációs információkat az IPsec-hez?
+Lásd: [IPsec/IKE-házirend konfigurálása S2S- vagy VNet-to-VNet-kapcsolatokhoz](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

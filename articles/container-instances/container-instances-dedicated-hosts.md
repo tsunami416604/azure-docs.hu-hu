@@ -1,46 +1,46 @@
 ---
-title: Üzembe helyezés dedikált gazdagépen
-description: Dedikált gazdagép használata a Azure Container Instances számítási feladatokhoz való valódi gazda szintű elkülönítés érdekében
+title: Telepítés dedikált gazdagépen
+description: Dedikált gazdagép használata az Azure Container Instances számítási feladataivalódi gazdagép-elkülönítésének eléréséhez
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934147"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Üzembe helyezés dedikált gazdagépeken
 
-A "dedikált" egy Azure Container Instances (ACI) SKU, amely elkülönített és dedikált számítási környezetet biztosít a biztonságosan futó tárolók számára. A dedikált SKU-eredmények használata minden olyan tároló csoportban, amely egy Azure-adatközpontban dedikált fizikai kiszolgálóval rendelkezik, így teljes munkaterhelés-elkülönítést biztosít a szervezet biztonsági és megfelelőségi követelményeinek kielégítése érdekében. 
+A "dedikált" egy Azure Container Instances (ACI) termékváltozat, amely egy elkülönített és dedikált számítási környezetet biztosít a biztonságosan futó tárolók számára. A dedikált termékváltozat-eredmények használata minden egyes tárolócsoportban, amely egy dedikált fizikai kiszolgálóegy Azure-adatközpontban, biztosítva a teljes számítási feladatok elkülönítését, hogy megfeleljen a szervezet biztonsági és megfelelőségi követelményeinek. 
 
-A dedikált SKU megfelelő olyan tároló-munkaterhelésekhez, amelyek a fizikai kiszolgáló szemszögéből elkülönítik a számítási feladatokat.
+A dedikált termékváltozat megfelelő a tároló számítási feladatok, amelyek megkövetelik a számítási feladatok elkülönítését a fizikai kiszolgáló szempontjából.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A dedikált SKU használatára vonatkozó előfizetések alapértelmezett korlátja 0. Ha ezt az SKU-t az üzemi tároló üzembe helyezéséhez szeretné használni, hozzon létre egy [Azure-support Request][azure-support] a korlát növeléséhez.
+* A dedikált termékváltozat használatára szolgáló előfizetések alapértelmezett korlátja 0. Ha szeretné használni ezt a termékváltozatot az éles tároló központi telepítések, hozzon létre egy [Azure-támogatási kérelmet][azure-support] a korlát növeléséhez.
 
-## <a name="use-the-dedicated-sku"></a>A dedikált SKU használata
+## <a name="use-the-dedicated-sku"></a>A dedikált termékváltozat használata
 
 > [!IMPORTANT]
-> A dedikált SKU használata csak a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg folyamatban van. Adja meg ezt az API-verziót a telepítési sablonban.
+> A dedikált termékváltozat használata csak a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg be van vezetve. Adja meg ezt az API-verziót a központi telepítési sablonban.
 >
 
-Az API 2019-12-01-es verziójától kezdve a központi telepítési sablon tároló csoport tulajdonságai szakaszában található egy `sku` tulajdonság, amely egy ACI-telepítéshez szükséges. Jelenleg ezt a tulajdonságot használhatja egy Azure Resource Manager központi telepítési sablonhoz az ACI-hoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+A 2019-12-01 API-verzióval `sku` kezdődően van egy tulajdonság a telepítési sablon tárolócsoport-tulajdonságok szakasza alatt, amely az ACI központi telepítéséhez szükséges. Jelenleg használhatja ezt a tulajdonságot egy Azure Resource Manager üzembe helyezési sablon részeként az ACI.Currently, you can use this property as part of an Azure Resource Manager deployment template for ACI. További információ az ACI-erőforrások sablonnal történő központi telepítéséről az [oktatóanyagban: Többtárolós csoport telepítése Erőforrás-kezelő sablon használatával.](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group) 
 
-A `sku` tulajdonság a következő értékek egyikét veheti fel:
-* `Standard` – a standard ACI üzembe helyezési lehetőség, amely továbbra is garantálja a hypervisor szintű biztonságot 
-* `Dedicated` – a számítási feladatok szintjének elkülönítése dedikált fizikai gazdagépekkel a tároló csoport számára
+A `sku` tulajdonság az alábbi értékek egyikével rendelkezhet:
+* `Standard`- a standard ACI telepítési választás, amely még mindig garantálja a hipervizor szintű biztonságot 
+* `Dedicated`- számítási feladatok szintjének elkülönítésére szolgál dedikált fizikai gazdagépekkel a tárolócsoporthoz
 
 ## <a name="modify-your-json-deployment-template"></a>A JSON-telepítési sablon módosítása
 
 A központi telepítési sablonban módosítsa vagy adja hozzá a következő tulajdonságokat:
-* A `resources`alatt állítsa be a `apiVersion` a `2012-12-01`re.
-* A tároló csoport tulajdonságai területen adjon hozzá egy `sku` tulajdonságot `Dedicated`értékkel.
+* A `resources`területen `apiVersion` `2012-12-01`a beállítás a.
+* A tárolócsoport tulajdonságai alatt `sku` adjon `Dedicated`hozzá egy értékű tulajdonságot.
 
-Íme egy példa a tároló csoport központi telepítési sablonjának erőforrások szakaszára, amely a dedikált SKU-t használja:
+Íme egy példa egy tárolócsoport központi telepítési sablonerőforrás-szakaszának, amely a dedikált termékváltozatot használja:
 
 ```json
 [...]
@@ -60,7 +60,7 @@ A központi telepítési sablonban módosítsa vagy adja hozzá a következő tu
 ]
 ```
 
-A következő egy teljes sablon, amely egyetlen tároló-példányt futtató minta tároló csoportot telepít:
+A következőkben egy teljes sablon, amely egyetlen tárolópéldányt futtató mintatárolócsoportot telepít:
 
 ```json
 {
@@ -127,9 +127,9 @@ A következő egy teljes sablon, amely egyetlen tároló-példányt futtató min
 }
 ```
 
-## <a name="deploy-your-container-group"></a>A tároló csoport üzembe helyezése
+## <a name="deploy-your-container-group"></a>A tárolócsoport üzembe helyezése
 
-Ha létrehozta és szerkesztette a telepítési sablon fájlját az asztalon, feltöltheti azt a Cloud Shell könyvtárba a fájl húzásával. 
+Ha létrehozta és szerkesztette a központi telepítési sablonfájlt az asztalon, feltöltheti azt a Cloud Shell könyvtárába a fájl húzásával. 
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal.
 
@@ -137,7 +137,7 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 az group create --name myResourceGroup --location eastus
 ```
 
-Telepítse a sablont az az [Group Deployment Create][az-group-deployment-create] paranccsal.
+Telepítse a sablont az [az csoport telepítési létrehozási][az-group-deployment-create] parancsával.
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json

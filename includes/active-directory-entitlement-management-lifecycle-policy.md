@@ -9,36 +9,36 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76694339"
 ---
 ## <a name="lifecycle"></a>Életciklus
 
-Az **életciklus** lapon megadhatja, hogy mikor járjon le egy felhasználó a hozzáférési csomaghoz. Megadhatja azt is, hogy a felhasználók ki tudják-e terjeszteni a hozzárendeléseiket.
+Az Életciklus lapon **megadhatja,** hogy egy felhasználó hozzárendelése a hozzáférési csomaghoz mikor jár le. Azt is megadhatja, hogy a felhasználók meghosszabbíthatják-e hozzárendeléseiket.
 
-1. A **lejárat** szakaszban adja meg a **hozzáférési csomag hozzárendeléseinek érvényességét** **dátum**, **nap**vagy **soha**értékre.
+1. A **Lejárat** szakaszban állítsa be az **Access csomag-hozzárendelések dátuma kor** **,** **Napok száma**vagy **Soha**.
 
-    A **on Date (dátum**) beállításnál válassza ki a lejárati dátumot a jövőben.
+    A **Dátum lehetőséget**válassza ki a jövőben egy lejárati dátumot.
 
-    A **napok számának**megadásához 0 és 3660 nap közötti számot kell megadni.
+    A **Napok száma**területen adjon meg 0 és 3660 nap közötti számot.
 
-    A kiválasztás alapján a felhasználó a hozzáférési csomaghoz való hozzárendelése egy adott napon lejár, bizonyos számú nappal a jóváhagyás után, vagy soha nem.
+    A választás alapján a felhasználó hozzáférési csomaghoz való hozzárendelése egy bizonyos napon, a jóváhagyásuk után bizonyos számú napon lejár, vagy soha.
 
-1. További beállítások megjelenítéséhez kattintson a **speciális lejárati beállítások megjelenítése** lehetőségre.
+1. Kattintson **a Speciális elévülési beállítások megjelenítése** gombra a további beállítások megjelenítéséhez.
 
-    ![Hozzáférési csomag – életciklus-lejárati beállítások](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
+    ![Access csomag – Életciklus-elévülési beállítások](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
 
-1. Annak engedélyezéséhez, hogy a felhasználó kiterjessze a hozzárendeléseket, állítsa a **felhasználók számára az** **Igen**értékre való kiterjesztést.
+1. Ha engedélyezni szeretné a felhasználóknak a hozzárendelések bővítését, állítsa be a **Hozzáférés engedélyezése** a felhasználók nak az **Igen**beállításra.
 
-    Ha a kiterjesztések engedélyezve vannak a szabályzatban, a felhasználó 14 napig, a hozzáférési csomag hozzárendelésének megkezdése előtt pedig 1 nappal e-mailt kap, hogy lejárja a hozzárendelés kiterjesztését. Ha a felhasználó a hozzáférés kiterjesztésére vonatkozó kérést küld, a bővítmény dátumának vagy annál korábbinak kell lennie, mint a hozzáférési csomaghoz a felhasználói hozzáférés biztosításához használt Szabályzatban meghatározottak szerint. Ha például a házirend azt jelzi, hogy a hozzárendelések június 30-án lejárnak, a felhasználó által igényelhető maximális kiterjesztés június 30-ig tart.
+    Ha a bővítmények engedélyezettek a házirendben, a felhasználó 14 nappal és 1 nappal a hozzáférési csomag-hozzárendelés lejárta előtt e-mailt kap, amelyben a hozzárendelés meghosszabbítására kéri őket. Ha a felhasználó a hozzáférés kiterjesztésére vonatkozó kérelmet küld, a kiterjesztés dátumának a hozzáférési csomaghoz való hozzáférés biztosításához használt házirendben meghatározott hozzárendelések lejártakor vagy azt megelőzően kell lennie. Ha például a házirend azt jelzi, hogy a hozzárendelések június 30-án lejárnak, a felhasználó által igényelhető maximális bővítmény június 30.
 
-    Ha a felhasználó hozzáférése ki van bővítve, a megadott kiterjesztési dátum (a szabályzatot létrehozó felhasználó időzónájában beállított dátum) után nem fogja tudni kérni a hozzáférési csomagot.
+    Ha a felhasználó hozzáférése meghosszabbodik, nem fogja tudni kérni a hozzáférési csomagot a megadott kiterjesztési dátum után (a házirendet létrehozó felhasználó időzónájában beállított dátum).
 
-1. Ha jóváhagyásra van szüksége a bővítmény megadásához, állítsa a **jóváhagyás megkövetelése lehetőséget az** **Igen**értékre való kiterjesztés megadásához.
+1. Ha a kiterjesztés megadásához jóváhagyást szeretne igényelni, állítsa be a Jóváhagyás megkövetelése az **Igen** **kiterjesztés megadásához.**
 
-    A rendszer a **kérelmek** lapon megadott jóváhagyási beállításokat fogja használni.
+    A kérelmek lapon megadott jóváhagyási beállítások at fogja használni **a(z) .**
 
-1. Kattintson a **tovább** vagy a **frissítés**gombra.
+1. Kattintson a **Tovább** gombra vagy **a Frissítés gombra.**

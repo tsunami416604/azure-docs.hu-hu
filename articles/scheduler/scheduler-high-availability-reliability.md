@@ -1,6 +1,6 @@
 ---
 title: Magas rendelkezésre állás és megbízhatóság
-description: Tudnivalók a magas rendelkezésre állásról és a megbízhatóságról az Azure Schedulerben
+description: Ismerje meg a magas rendelkezésre állást és megbízhatóságot az Azure Scheduler ben
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -9,67 +9,67 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
 ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898566"
 ---
-# <a name="high-availability-and-reliability-for-azure-scheduler"></a>Magas rendelkezésre állás és megbízhatóság az Azure Schedulerben
+# <a name="high-availability-and-reliability-for-azure-scheduler"></a>Magas rendelkezésre állás és megbízhatóság az Azure Scheduler számára
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+> [Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) felváltja az Azure Scheduler programot, [amelyet megszüntetnek.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Ha továbbra is szeretne dolgozni az Ütemezőben beállított feladatokkal, a lehető leghamarabb [telepítse át az Azure Logic Apps-alkalmazásokba.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
 >
-> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
+> Az Ütemező már nem érhető el az Azure Portalon, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagok](scheduler-powershell-reference.md) jelenleg elérhetők maradnak, így kezelheti a feladatokat és a feladatgyűjteményeket.
 
-Az Azure Scheduler [magas rendelkezésre állást](https://docs.microsoft.com/azure/architecture/framework/#resiliency) és megbízhatóságot biztosít a feladatokhoz. További információ: [a Feladatütemező SLA](https://azure.microsoft.com/support/legal/sla/scheduler)-ja.
+Az Azure Scheduler [magas rendelkezésre állást](https://docs.microsoft.com/azure/architecture/framework/#resiliency) és megbízhatóságot biztosít a feladatokhoz. További információ: [SLA for Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-Az Azure Scheduler [kiválóan elérhető], és a Geo-redundáns szolgáltatások üzembe helyezését és a földrajzilag regionális feladatok replikálását is alkalmazza.
+Az Azure Scheduler [magas rendelkezésre állású], és georedundáns szolgáltatás telepítését és georegionális feladatreplikációt is használ.
 
-### <a name="geo-redundant-service-deployment"></a>Geo-redundáns szolgáltatás központi telepítése
+### <a name="geo-redundant-service-deployment"></a>Georedundáns szolgáltatás telepítése
 
-Az Azure Scheduler csaknem minden, [Az Azure által támogatott földrajzi régióban](https://azure.microsoft.com/global-infrastructure/regions/#services)elérhető. Ha tehát egy üzemeltetett régióban lévő Azure-adatközpont elérhetetlenné válik, továbbra is használhatja az Azure Schedulert, mert a szolgáltatás feladatátvételi képességei elérhetővé teszik a Scheduler szolgáltatást egy másik adatközpontból.
+Az Azure Scheduler ma már szinte minden földrajzi régióban elérhető, [amelyet az Azure támogat.](https://azure.microsoft.com/global-infrastructure/regions/#services) Így ha egy üzemeltetett régióban egy Azure-adatközpont elérhetetlenné válik, továbbra is használhatja az Azure Scheduler-t, mert a szolgáltatás feladatátvételi képességei egy másik adatközpontból teszik elérhetővé a Scheduler-t.
 
-### <a name="geo-regional-job-replication"></a>Földrajzilag regionális feladatok replikációja
+### <a name="geo-regional-job-replication"></a>Területi alapú feladatreplikáció
 
-Az Azure Scheduler saját feladatait az Azure-régiók között replikálja a rendszer. Így ha az egyik régió leáll, az Azure Scheduler feladatátvételt hajt végre, és gondoskodik arról, hogy a feladata a párosított földrajzi régió egy másik adatközpontjában fusson.
+Saját feladatok az Azure Scheduler replikálódik az Azure-régiókban. Így ha egy régió ban van egy kimaradás, az Azure Scheduler átadja a feladatát, és gondoskodik arról, hogy a feladat fut egy másik adatközponta a párosított földrajzi régióban.
 
-Ha például az USA déli középső régiójában hoz létre feladatot, az Azure Scheduler automatikusan replikálja ezt a feladatot az USA északi középső régiójában. Ha hiba történik az USA déli középső régiójában, az Azure Scheduler az USA északi középső régiójában futtatja a feladatot. 
+Ha például létrehoz egy feladatot az USA déli középső részén, az Azure Scheduler automatikusan replikálja a feladatot az USA északi középső részén. Ha hiba történik az USA déli középső részén, az Azure Scheduler futtatja a feladatot az USA északi középső részén. 
 
-![Földrajzilag regionális feladatok replikációja](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
+![Területi alapú feladatreplikáció](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png)
 
-Az Azure Scheduler azt is biztosítja, hogy az adatai ugyanabban a régióban maradnak, mint az Azure-ban. Így nem kell megdupláznia a feladatokat, amikor csak magas rendelkezésre állást szeretne. Az Azure Scheduler automatikusan magas rendelkezésre állást biztosít a feladatokhoz.
+Az Azure Scheduler azt is gondoskodik arról, hogy az adatok ugyanabban a, de szélesebb földrajzi régióban maradnak, csak abban az esetben, ha hiba történik az Azure-ban. Így nem kell lemásolnia a munkáját, ha csak magas rendelkezésre állást szeretne. Az Azure Scheduler automatikusan magas rendelkezésre állást biztosít a feladatokhoz.
 
 ## <a name="reliability"></a>Megbízhatóság
 
-Az Azure Scheduler garantálja a saját magas rendelkezésre állását, de a felhasználó által létrehozott feladatokhoz más megközelítést is igénybe vesz. Tegyük fel például, hogy a feladata egy nem elérhető HTTP-végpontot hív meg. Az Azure Scheduler továbbra is megkísérli a feladatok sikeres futtatását azáltal, hogy alternatív módszereket biztosít a hibák kezelésére: 
+Az Azure Scheduler garantálja a saját magas rendelkezésre állású, de más megközelítést alkalmaz a felhasználó által létrehozott feladatokhoz. Tegyük fel például, hogy a feladat meghívja a HTTP-végpont, amely nem érhető el. Az Azure Scheduler továbbra is megpróbálja sikeresen futtatni a feladatot azáltal, hogy alternatív módszereket biztosít a hibák kezelésére: 
 
-* Újrapróbálkozási szabályzatok beállítása.
+* Állítsa be az újrapróbálkozási házirendeket.
 * Alternatív végpontok beállítása.
 
 <a name="retry-policies"></a>
 
-### <a name="retry-policies"></a>Újrapróbálkozási szabályzatok
+### <a name="retry-policies"></a>Házirendek újrapróbálkozása
 
-Az Azure Scheduler lehetővé teszi az újrapróbálkozási szabályzatok beállítását. Ha a feladatok sikertelenek, akkor alapértelmezés szerint a Scheduler még négy alkalommal újra próbálkozik a feladattal, 30 másodperces időközönként. Ezt az újrapróbálkozási szabályzatot agresszíven is megteheti, például 10-szer, 30 másodperces időközönként, vagy kevésbé agresszív, például naponta kétszer.
+Az Azure Scheduler lehetővé teszi az újrapróbálkozási szabályzatok beállítását. Ha egy feladat sikertelen, akkor alapértelmezés szerint az Ütemező újrapróbálkozik a feladattal még négyszer 30 másodperces időközönként. Ezt az újrapróbálkozási házirendet agresszívebbé teheti, például 10-szer 30 másodperces időközönként, vagy kevésbé agresszív, például napi időközönként kétszer.
 
-Tegyük fel például, hogy egy heti feladatot hoz létre, amely egy HTTP-végpontot hív meg. Ha a HTTP-végpont néhány óráig elérhetetlenné válik a feladat futása közben, akkor előfordulhat, hogy nem szeretné, hogy a feladat újra fusson egy másik héten, ami azért történik, mert az alapértelmezett újrapróbálkozási házirend ebben az esetben nem fog működni. Ezért előfordulhat, hogy módosítani szeretné a normál újrapróbálkozási házirendet, hogy az újrapróbálkozások megtörténjenek, például 3 óránként, nem pedig 30 másodpercenként. 
+Tegyük fel például, hogy létrehoz egy heti feladatot, amely http-végpontot hív meg. Ha a HTTP-végpont néhány óráig elérhetetlenné válik a feladat futtatásakor, előfordulhat, hogy nem szeretne várni még egy hetet a feladat újbóli futtatására, ami azért történik, mert ebben az esetben az alapértelmezett újrapróbálkozási házirend nem fog működni. Ezért érdemes lehet módosítani a szabványos újrapróbálkozási házirendet, hogy az újrapróbálkozások például háromóránként történjenek, ne pedig 30 másodpercenként. 
 
-Az újrapróbálkozási szabályzatok beállításával kapcsolatos további információkért lásd: [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
+Az újrapróbálkozási házirend beállításáról az [Újrapróbálkozási házirend című](scheduler-concepts-terms.md#retrypolicy)témakörben olvashat.
 
-### <a name="alternate-endpoints"></a>Másodlagos végpontok
+### <a name="alternate-endpoints"></a>Alternatív végpontok
 
-Ha az Azure Scheduler-feladat olyan végpontot hív meg, amely nem érhető el, még az újrapróbálkozási szabályzat követése után sem, a Scheduler visszatérhet egy másik végpontra, amely képes kezelni az ilyen hibákat. Így ha beállítja ezt a végpontot, a Scheduler meghívja ezt a végpontot, amely a hibák bekövetkezésekor a saját feladatok számára is kiemelkedően elérhetővé válik.
+Ha az Azure Scheduler-feladat olyan végpontot hív meg, amely nem érhető el, még az újrapróbálkozási szabályzat követése után is, az ütemező egy másik végpontra kerül, amely képes kezelni az ilyen hibákat. Tehát ha ezt a végpontot állítja be, az Ütemező meghívja azt a végpontot, ami a saját feladatok at magas rendelkezésre állású, ha hibák történnek.
 
-Ez az ábra például azt mutatja be, hogyan követi az ütemező az újrapróbálkozási szabályzatot a webszolgáltatás New Yorkban való meghívásakor. Ha az újrapróbálkozások sikertelenek, a Scheduler egy másik végpontot keres. Ha a végpont létezik, a Scheduler elkezdi elküldeni a kérelmeket a másodlagos végpontnak. Ugyanez az újrapróbálkozási szabályzat az eredeti műveletre és a másodlagos műveletre is vonatkozik.
+Ez az ábra például azt mutatja be, hogy a Scheduler hogyan követi az újrapróbálkozási házirendet, amikor new yorki webszolgáltatást hív fel. Ha az újrapróbálkozások sikertelenek, az ütemező egy alternatív végpontot keres. Ha a végpont létezik, az Ütemező megkezdi a kérelmek küldését a másodlagos végpontra. Ugyanaz az újrapróbálkozási házirend az eredeti és az alternatív műveletre is vonatkozik.
 
-![A Scheduler viselkedése az újrapróbálkozási szabályzattal és a másodlagos végponttal](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
+![Az ütemező viselkedése újrapróbálkozási házirenddel és alternatív végponttal](./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png)
 
-Az alternatív művelet Művelettípus eltérhet az eredeti művelettől. Ha például az eredeti művelet HTTP-végpontot hív meg, akkor a másodlagos művelet egy tárolási üzenetsor, Service Bus üzenetsor vagy Service Bus témakör művelet használatával naplózhatja a hibákat.
+Az alternatív művelet művelettípusa eltérhet az eredeti művelettől. Például, bár az eredeti művelet HTTP-végpontot hív meg, az alternatív művelet naplózhatja a hibákat egy Storage-várólista, a Service Bus-várólista vagy a Service Bus témakör művelet használatával.
 
-A másodlagos végpontok beállításával kapcsolatos további információkért lásd: [errorAction](scheduler-concepts-terms.md#error-action).
+Az alternatív végpontok beállításáról az [errorAction (Hibaművelet)](scheduler-concepts-terms.md#error-action)témakörben olvashat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,79 +1,79 @@
 ---
-title: Azure Migrate GYIK
-description: Választ kaphat a Azure Migrate szolgáltatással kapcsolatos gyakori kérdésekre.
+title: Azure áttelepítése – gyakori kérdések
+description: Válaszok az Azure Migrate szolgáltatással kapcsolatos gyakori kérdésekre.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
 ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926731"
 ---
-# <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
+# <a name="azure-migrate-common-questions"></a>Azure Migrate: Gyakori kérdések
 
-Ez a cikk a Azure Migrateával kapcsolatos gyakori kérdésekre ad választ. Ha kérdései vannak a cikk elolvasása után, közzéteheti azokat a [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum). A következő cikkeket is ellenőrizheti:
+Ez a cikk az Azure Áttelepítésével kapcsolatos gyakori kérdésekre ad választ. Ha a cikk elolvasása után kérdései vannak, közzéteheti őket az [Azure Migrate fórumon.](https://aka.ms/AzureMigrateForum) Az alábbi cikkeket is áttekintheti:
 
-- Az [Azure Migrate berendezéssel](common-questions-appliance.md) kapcsolatos kérdések
-- A [felderítéssel, az értékeléssel és a függőségi vizualizációval](common-questions-discovery-assessment.md) kapcsolatos kérdések
+- Kérdések az [Azure Migrate készülékkel kapcsolatban](common-questions-appliance.md)
+- Kérdések [a felderítéssel, értékeléssel és függőségi megjelenítéssel kapcsolatban](common-questions-discovery-assessment.md)
 
 ## <a name="what-is-azure-migrate"></a>Mi az az Azure Migrate?
 
-Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információk](migrate-services-overview.md).
+Az Azure Migrate központi központot biztosít a helyszíni alkalmazások és számítási feladatok, valamint a magán- és nyilvános felhőbeli virtuális gépek Azure-ba való felderítésének, értékelésének és áttelepítésének nyomon követéséhez. A központ Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső szoftvergyártói ajánlatokhoz. [További információ](migrate-services-overview.md).
 
-## <a name="what-can-i-do-with-azure-migrate"></a>Mire használhatom a Azure Migrate?
+## <a name="what-can-i-do-with-azure-migrate"></a>Mit tehetek az Azure Migrate?
 
-A Azure Migrate használatával felderítheti, elemezheti és áttelepítheti a helyszíni infrastruktúráját, alkalmazásait és az Azure-ba irányuló alkalmazásokat. Azure Migrate támogatja a helyszíni VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, a más virtualizált virtuális gépek, az adatbázisok, a webalkalmazások és a virtuális asztalok értékelését és áttelepítését. 
+Az Azure Migrate használatával felderítheti, felmérheti és áttelepítheti a helyszíni infrastruktúrát, alkalmazásokat és adatokat az Azure-ba. Az Azure Migrate támogatja a helyszíni VMware virtuális gépek, a Hyper-V vm-ek, a fizikai kiszolgálók, más virtualizált virtuális gépek, adatbázisok, webalkalmazások és virtuális asztalok értékelését és áttelepítését. 
 
-## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Mi a különbség a Azure Migrate és az Azure Site Recovery között?
+## <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Mi a különbség az Azure Migrate és az Azure Site Recovery között?
 
-A [Azure Migrate](migrate-services-overview.md) központosított hubot biztosít az Azure-ba történő értékeléshez és áttelepítéshez. 
+[Az Azure Migrate](migrate-services-overview.md) egy központi központot biztosít az azure-ba való kiértékeléshez és áttelepítéshez. 
 
-[Azure site Recovery](../site-recovery/site-recovery-overview.md) vész-helyreállítási megoldás. 
+[Az Azure Site Recovery](../site-recovery/site-recovery-overview.md) egy vész-helyreállítási megoldás. 
 
-A Azure Migrate: a kiszolgáló áttelepítési eszköze néhány háttér-Site Recovery funkciót használ néhány helyszíni gép áttelepítésének áttelepítéséhez.
+Az Azure Áttelepítés: Kiszolgálóáttelepítés eszköz néhány háttér-site recovery funkciót használ egyes helyszíni gépek lift-és-shift áttelepítése.
 
-## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Mi a különbség a Azure Migrate: Server Assessment és a MAP Toolkit között?
+## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Mi a különbség az Azure Áttelepítés: Kiszolgálófelmérés és a MAP-eszközkészlet között?
 
-A kiszolgáló értékelése értékelést nyújt az áttelepítésre való felkészüléshez és az Azure-ba való áttelepítéshez szükséges munkaterhelések kiértékeléséhez. A [Microsoft Assessment and Planning (MAP) eszközkészlet](https://www.microsoft.com/download/details.aspx?id=7826) más feladatokkal is segít, beleértve a Windows ügyfél és kiszolgáló operációs rendszereinek újabb verzióinak áttelepítésének megtervezését, valamint a szoftverek használatának nyomon követését. Ezekben a forgatókönyvekben folytassa a MAP Toolkit használatát.
+A Server Assessment értékelést nyújt az áttelepítésre való felkészültség és az Azure-ba való áttelepítéshez kapcsolódó munkaterhelések kiértékeléséhez. A [Microsoft Assessment and Planning (MAP) eszközkészlet](https://www.microsoft.com/download/details.aspx?id=7826) e feladatok elvégzését is segíti, beleértve a Windows ügyfél- és kiszolgálóoperációs rendszerek újabb verzióinak áttelepítési tervezését, valamint a szoftverhasználat nyomon követését. Ezekben a forgatókönyvekben továbbra is használja a MAP-eszközkészletet.
 
-## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Mi a különbség a kiszolgálók értékelése és a Site Recovery Deployment Planner között?
+## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Mi a különbség a kiszolgálófelmérés és a hely-helyreállítási telepítéstervező között?
 
-A kiszolgáló értékelése egy áttelepítési tervező eszköz. A Site Recovery Deployment Planner vész-helyreállítási tervezési eszköz.
+A Kiszolgálóértékelés áttelepítési tervezési eszköz. A Hely-helyreállítási telepítés tervezője egy vész-helyreállítási tervezési eszköz.
 
-Válassza ki az eszközt a kívánt műveletek alapján:
+Válassza ki az eszközt a kívánt teendők alapján:
 
-- Helyszíni **áttelepítés megtervezése az Azure-** ba: Ha a helyszíni kiszolgálókat az Azure-ba szeretné áttelepíteni, használja az áttelepítés megtervezésére szolgáló kiszolgáló-értékelést. A kiszolgáló értékelése a helyszíni számítási feladatokat értékeli, és útmutatást és eszközöket biztosít a Migrálás megkönnyítéséhez. Az áttelepítési terv érvénybe lépését követően a Azure Migrate: kiszolgáló áttelepítése a gépek Azure-ba való áttelepítéséhez.
-- Vész- **helyreállítási terv az Azure**-ba: Ha a helyszíni rendszerről az Azure-ba történő vész-helyreállítást tervezi a site Recovery használatával, használja a site Recovery Deployment Planner. A Deployment Planner a helyi környezet alapos, Site Recovery-specifikus értékelését biztosítja a vész-helyreállítási célra. A vész-helyreállítással kapcsolatos ajánlásokat, például a replikálást és a feladatátvételt ismerteti.
+- **Helyszíni áttelepítés tervezése az Azure-ba:** Ha azt tervezi, hogy áttelepíti a helyszíni kiszolgálókat az Azure-ba, használja a Kiszolgálóértékelése az áttelepítés tervezéséhez. A Kiszolgálófelmérés felméri a helyszíni számítási feladatokat, és útmutatást és eszközöket biztosít az áttelepítéshez. Miután az áttelepítési terv a helyén van, használhatja az olyan eszközöket, mint az Azure Áttelepítés: Kiszolgálóáttelepítés a gépek azure-ba való áttelepítéséhez.
+- **Tervezze meg a vészhelyreállítást az Azure-ba:** Ha a helyszíni és az Azure-beli vészhelyreállítást a Site Recovery segítségével kívánja beállítani, használja a Site Recovery Deployment Planner t. A Deployment Planner egy mély, site recovery-specifikus értékelést biztosít a helyszíni környezetvész-helyreállítás céljából. A vész-helyreállítási javaslatokkal kapcsolatos, például a replikáció és a feladatátvétel.
 
-## <a name="how-does-server-migration-work-with-site-recovery"></a>Hogyan működik a kiszolgáló áttelepítése a Site Recovery?
+## <a name="how-does-server-migration-work-with-site-recovery"></a>Hogyan működik a kiszolgálóáttelepítés a hely-helyreállítással?
 
-- Ha Azure Migrate-t használ: a kiszolgáló áttelepítése a helyszíni VMware virtuális gépek *ügynök* nélküli áttelepítésének elvégzésére, a Migrálás natív, Azure Migrate és site Recovery nincs használatban.
-- Ha Azure Migrate-t használ: a kiszolgáló áttelepítése a VMware virtuális gépek *ügynök-alapú* áttelepítésének elvégzésére, illetve Hyper-V virtuális gépek vagy fizikai kiszolgálók áttelepítésére Azure Migrate: a kiszolgáló áttelepítése a Azure site Recovery replikációs motort használja.
+- Ha az Azure Áttelepítés: Server Migration a helyszíni vmware virtuális gépek *ügynök nélküli* áttelepítéséhez használja, az áttelepítés az Azure Áttelepítése és a Site Recovery nem használható.
+- Ha az Azure Migrate: Server Migration használatával hajthatja végre a VMware virtuális gépek *ügynökalapú* áttelepítését, vagy ha hyper-v virtuális gépeket vagy fizikai kiszolgálókat telepít át, az Azure Migrate: Server Migration az Azure Site Recovery replikációs motorját használja.
 
 ## <a name="which-geographies-are-supported"></a>Mely földrajzi területek támogatottak?
 
-- **VMWare virtuális gépek**: Tekintse át a VMWare virtuális gépek Azure Migrate [támogatott földrajzi](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) területeit.
-- **Hyper-v virtuális gépek**: Tekintse át a Hyper-v virtuális gépek Azure Migrate [támogatott földrajzi](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) területeit.
+- **VMware virtuális gépek:** Tekintse át az Azure Migrate [támogatott földrajzi vmware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) virtuális gépek.
+- **Hyper-V virtuális gépek:** tekintse át az Azure Migrate [támogatott földrajzi hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) virtuális gépek.
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 
 Azonosítsa a szükséges eszközt, majd adja hozzá az eszközt egy Azure Migrate projekthez. 
 
-ISV-eszköz vagy-mozgató hozzáadása:
+Független eszköz vagy Movere hozzáadása:
 
-1. Első lépésként szerezze be a licencet, vagy regisztráljon az ingyenes próbaverzióra az eszköz házirendjének megfelelően. Az eszközök licencelése az ISV vagy az eszköz licencelési modelljének megfelelően történik.
-2. Minden eszközön lehetőség van a Azure Migratehoz való kapcsolódásra. Az eszköz Azure Migrate való összekapcsolásához kövesse az eszköz útmutatásait és dokumentációját.
+1. Első lépések: licencet szerez, vagy az eszközszabályzatnak megfelelően regisztrál egy ingyenes próbaverzióra. Az eszközök engedélyezése összhangban van az ISV vagy a szerszámlicencelési modellel.
+2. Az egyes eszközökben van egy lehetőség az Azure Migrate való csatlakozáshoz. Kövesse az eszköz utasításait és dokumentációját az eszköz és az Azure Migrate csatlakoztatásához.
 
-Az áttelepítési utat nyomon követheti a Azure Migrate projekt, az Azure és más eszközök között.
+Nyomon követheti az áttelepítési útvonalat az Azure Migrate projektből, az Azure-ban és más eszközökben.
 
-## <a name="how-do-i-delete-a-project"></a>Hogyan törölni a projektet?
+## <a name="how-do-i-delete-a-project"></a>Hogyan törölhetek egy projektet?
 
-További információ a [projektek törléséről](how-to-delete-project.md). 
+További információ a [projekt törléséről.](how-to-delete-project.md) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).
+Olvassa el az [Azure Migrate áttekintését.](migrate-services-overview.md)

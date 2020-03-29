@@ -1,6 +1,6 @@
 ---
-title: Azure webalkalmazási tűzfal (WAF) Geomatch egyéni szabályok
-description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfal (WAF) geomatch egyéni szabályairól az Azure Application Gateway-on.
+title: Az Azure webalkalmazás-tűzfal (WAF) geoegyezésegyéni szabályai
+description: Ez a cikk áttekintést nyújt a webalkalmazás-tűzfal (WAF) geoegyezésegyéni szabályairól az Azure Application Gateway-en.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,26 +8,26 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961087"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Egyéni Geomatch-szabályok (előzetes verzió)
+# <a name="geomatch-custom-rules-preview"></a>Földrajzi egyezés egyéni szabályai (előzetes verzió)
 
-Az egyéni szabályok lehetővé teszik a testreszabott szabályok létrehozását az alkalmazások és a biztonsági szabályzatok pontos igényeinek megfelelően. Mostantól az ország/régió alapján korlátozhatja a webalkalmazásokhoz való hozzáférést. Az összes egyéni szabályhoz hasonlóan ez a logika más szabályokkal is felhasználható az alkalmazás igényeinek megfelelően.
+Az egyéni szabályok lehetővé teszik, hogy az alkalmazások és a biztonsági házirendek pontos igényeinek megfelelő, testre szabott szabályokat hozzon létre. Mostantól ország/régió szerint korlátozhatja a webes alkalmazásokhoz való hozzáférést. Mint minden egyéni szabályok, ez a logika is súlyosbítható más szabályokkal, hogy megfeleljen az alkalmazás igényeinek.
 
-A Geo-szűrés egyéni szabály létrehozásához egyszerűen válassza a *földrajzi hely* elemet a egyezés típusaként, majd válassza ki az alkalmazásból engedélyezni vagy letiltani kívánt országot vagy országokat. További információkért lásd: [Egyéni szabályok létrehozása a PowerShell-ben](configure-waf-custom-rules.md) és az egyéni szabályokra vonatkozó példák (create-Custom-waf-rules.MD).
+Geoszűrő egyéni szabály létrehozásához egyszerűen válassza a *Földrajzi hely* lehetőséget egyezési típusként, majd válassza ki azt az országot vagy országokat, amelyet engedélyezni/blokkolni szeretne az alkalmazásból. [Tekintse meg, hogyan hozhat létre egyéni szabályokat a Powershellben,](configure-waf-custom-rules.md) és további egyéni szabálypéldákat (create-custom-waf-rules.md) további információkért.
 
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Országkódok
 
-Ha a Geomatch operátort használja, a választókat a következő kétszámjegyű országkódok bármelyike lehet. 
+Ha a Geomatch operátort használja, a választók az alábbi kétjegyű országkódok bármelyike lehetnek. 
 
-|Országkód | Ország neve |
+|Országhívószám | Ország neve |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Egyesült Arab Emírségek|
@@ -50,7 +50,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | BH | Bahrein|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Saint Barthélemy|
+| BL | Szent Barthélemy|
 | BN | Brunei Szultanátus|
 | BO | Bolívia|
 | BR | Brazília|
@@ -72,7 +72,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | CU | Kuba|
 | CV | Cabo Verde|
 | CY | Ciprus|
-| CZ | Csehország|
+| CZ | Cseh Köztársaság|
 | DE | Németország|
 | DK | Dánia|
 | DO | Dominikai Köztársaság|
@@ -121,7 +121,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | KW | Kuvait|
 | KY | Kajmán-szigetek|
 | KZ | Kazahsztán|
-| LATIN-AMERIKA | Laoszi Népi Demokratikus Köztársaság|
+| LA | Laoszi Népi Demokratikus Köztársaság|
 | LB | Libanon|
 | LI | Liechtenstein|
 | LK | Srí Lanka|
@@ -138,7 +138,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | ML | Mali|
 | MM | Mianmar|
 | MN | Mongólia|
-| MO | Makaó KKT|
+| MO | Makaó (KKT)|
 | MQ | Martinique|
 | MR | Mauritánia|
 | MT | Málta|
@@ -147,7 +147,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | MX | Mexikó|
 | MY | Malajzia|
 | MZ | Mozambik|
-| n/a | Namíbia|
+| NA | Namíbia|
 | NE | Niger|
 | NG | Nigéria|
 | NI | Nicaragua|
@@ -195,7 +195,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | TZ | Tanzániai Egyesült Köztársaság|
 | UA | Ukrajna|
 | UG | Uganda|
-| Egyesült Államok | Egyesült Államok|
+| USA | Egyesült Államok|
 | UY | Uruguay|
 | UZ | Üzbegisztán|
 | VC | Saint Vincent és Grenadine-szigetek|
@@ -207,6 +207,6 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | ZM | Zambia|
 | ZW | Zimbabwe|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az egyéni szabályok megismerése után [hozza létre saját egyéni szabályait](create-custom-waf-rules.md).
+Miután tudomást szerzett az egyéni szabályokról, [hozzon létre saját egyéni szabályokat.](create-custom-waf-rules.md)

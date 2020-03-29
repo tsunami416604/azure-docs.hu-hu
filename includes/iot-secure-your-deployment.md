@@ -9,106 +9,106 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76748752"
 ---
-Ez a cikk az Azure IoT-alapú eszközök internetes hálózata (IoT) infrastruktúra biztonságossá tételének következő részletességi szintjét ismerteti. Az egyes összetevők konfigurálásának és telepítésének megvalósítási szintjére mutató hivatkozásokat tartalmaz. Emellett összehasonlításokat és választási lehetőségeket is biztosít a különböző versengő módszerek között.
+Ez a cikk az Azure IoT-alapú eszközök internetes hálózatának (IoT) infrastruktúrájának védelméhez a következő részletességi szintet tartalmazza. Az egyes összetevők konfigurálásához és üzembe helyezéséhez a megvalósítási szint részleteire hivatkozik. Összehasonlításokat és választási lehetőségeket is biztosít a különböző versengő módszerek között.
 
-Az Azure IoT üzembe helyezésének biztonságossá tételét a következő három biztonsági területre lehet osztani:
+Az Azure IoT üzembe helyezésének biztonságossá tétele a következő három biztonsági területre osztható:
 
-* **Eszköz biztonsága**: a IoT-eszköz védelme a vadonban történő üzembe helyezés közben.
+* **Eszközbiztonság:** Az IoT-eszköz biztonságossá tétele a vadonban üzembe helyezett állapotban.
 
-* **Kapcsolat biztonsága**: a IoT-eszköz és a IoT hub között továbbított összes adat bizalmas és illetéktelen hozzáférést biztosít.
+* **Kapcsolatbiztonság:** Az IoT-eszköz és az IoT Hub között továbbított összes adat bizalmas és hamisíthatatlan.
 
-* **Felhőbeli biztonság**: az adatátvitelt és a felhőben tárolt adatvédelmet biztosító eszköz.
+* **Felhőbiztonság:** Az adatok védelmének eszköze, miközben azok áthaladnak, és a felhőben tárolják.
 
 ![Három biztonsági terület](./media/iot-secure-your-deployment/overview.png)
 
-## <a name="secure-device-provisioning-and-authentication"></a>Biztonságos eszközök kiépítés és hitelesítés
+## <a name="secure-device-provisioning-and-authentication"></a>Biztonságos eszközkiépítés és hitelesítés
 
-A IoT-megoldás gyorsítja a IoT-eszközök biztonságos használatát a következő két módszer használatával:
+Az IoT-megoldásgyorsítók az alábbi két módszerrel biztosítják az IoT-eszközöket:
 
-* Egyedi azonosító kulcs (biztonsági jogkivonatok) biztosításával minden eszközhöz, amelyet az eszköz használhat a IoT Hubsal való kommunikációhoz.
+* Azáltal, hogy egy egyedi identitáskulcs (biztonsági jogkivonatok) minden eszköz, amely az eszköz által az IoT Hub kommunikációra használható.
 
-* Az eszközön az [X. 509 tanúsítvány](https://www.itu.int/rec/T-REC-X.509-201210-S) és a titkos kulcs használatával hitelesítheti az eszközt a IoT hub. Ez a hitelesítési módszer biztosítja, hogy az eszközön található titkos kulcs ne legyen ismert az eszközön kívül, magasabb szintű biztonságot biztosítva.
+* Az eszközön lévő [X.509-es tanúsítvány](https://www.itu.int/rec/T-REC-X.509-201210-S) és a személyes kulcs használatával az eszköz hitelesítéséhez az IT Hub. Ez a hitelesítési módszer biztosítja, hogy az eszközön lévő személyes kulcs az eszközön kívül bármikor ne legyen ismert, magasabb szintű biztonságot nyújtva.
 
-A biztonsági jogkivonat módszere hitelesítést biztosít az eszköz által a IoT Hubhoz végrehajtott minden egyes híváshoz, ha a szimmetrikus kulcsot az egyes hívásokhoz társítja. Az X. 509-alapú hitelesítés lehetővé teszi egy IoT-eszköz hitelesítését a fizikai rétegen a TLS-kapcsolat létesítésének részeként. A biztonsági jogkivonat-alapú módszer az X. 509 hitelesítés nélkül is használható, amely kevésbé biztonságos minta. A két módszer közötti választást elsősorban az eszköz hitelesítésének biztonságossá tételére és az eszközön rendelkezésre álló biztonságos tárterületre (a titkos kulcs biztonságos tárolására) kell meghatározni.
+A biztonsági jogkivonat-módszer hitelesítést biztosít az eszköz által az IoT Hubhoz intézett minden egyes híváshoz azáltal, hogy a szimmetrikus kulcsot társítja az egyes hívásaihoz. Az X.509-alapú hitelesítés lehetővé teszi az IoT-eszközök hitelesítését a fizikai rétegen a TLS-kapcsolat létrehozása részeként. A biztonsági token-alapú módszer az X.509-es hitelesítés nélkül is használható, ami kevésbé biztonságos minta. A két módszer közötti választást elsősorban az határozza meg, hogy mennyire kell biztonságosnak lennie az eszköz hitelesítésének, és a biztonságos tárolás rendelkezésre állása az eszközön (a személyes kulcs biztonságos tárolásához).
 
-## <a name="iot-hub-security-tokens"></a>Biztonsági jogkivonatok IoT Hub
+## <a name="iot-hub-security-tokens"></a>Az IoT Hub biztonsági jogkivonatai
 
-A IoT Hub biztonsági jogkivonatokat használ az eszközök és szolgáltatások hitelesítéséhez, hogy elkerülje a kulcsok küldését a hálózaton. Emellett a biztonsági jogkivonatok időbeli érvényessége és hatóköre korlátozott. Az Azure IoT SDK-k automatikusan állítanak elő jogkivonatokat anélkül, hogy speciális konfigurációra lenne szükség. Bizonyos esetekben azonban a felhasználónak a biztonsági jogkivonatok közvetlen létrehozását és használatát kell megkövetelni. Ezek a forgatókönyvek magukban foglalják a MQTT, a AMQP vagy a HTTP-felületek közvetlen használatát, vagy a jogkivonat-szolgáltatási minta megvalósítását.
+Az IoT Hub biztonsági jogkivonatokat használ az eszközök és szolgáltatások hitelesítéséhez, hogy elkerülje a kulcsok küldését a hálózaton. Emellett a biztonsági jogkivonatok időérvényessége és hatóköre korlátozott. Az Azure IoT SDK-k automatikusan generálnak jogkivonatokat anélkül, hogy bármilyen speciális konfigurációt. Egyes forgatókönyvek azonban megkövetelik a felhasználótól, hogy közvetlenül hozzon létre és használjon biztonsági jogkivonatokat. Ezek a forgatókönyvek közé tartozik az MQTT, AMQP vagy HTTP felületek közvetlen használata, vagy a jogkivonat-szolgáltatás minta megvalósítása.
 
-A biztonsági jogkivonat struktúrájával és használatával kapcsolatos további részletek a következő cikkekben találhatók:
+A biztonsági jogkivonat szerkezetéről és használatáról további részletek a következő cikkekben találhatók:
 
-* [Biztonsági jogkivonat szerkezete](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
+* [Biztonsági jogkivonat-struktúra](../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure)
 
 * [SAS-tokenek használata eszközként](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
 
-Minden IoT Hub rendelkezik egy [azonosító-beállításjegyzékkel](../articles/iot-hub/iot-hub-devguide-identity-registry.md) , amely a szolgáltatásban eszközönkénti erőforrások létrehozására használható, például egy üzenetsor, amely a felhőből az eszközre irányuló üzeneteket tartalmaz, és lehetővé teszi az eszközre irányuló végpontok elérését. A IoT Hub Identity Registry biztonságos tárolót biztosít az eszközök identitásai és biztonsági kulcsai számára a megoldáshoz. Az eszközök hozzáférésének teljes körű szabályozása lehetővé teszi, hogy egy engedélyezési listához vagy egy adott csoporthoz tartozó identitásokat lehessen hozzáadni. A következő cikkek további részleteket tartalmaznak az Identity Registry és a támogatott műveletek struktúrájáról.
+Minden IoT Hub rendelkezik egy [identitás-beállításjegyzék,](../articles/iot-hub/iot-hub-devguide-identity-registry.md) amely segítségével hozzon létre egy eszközön ként i erőforrást a szolgáltatásban, például egy várólistát, amely tartalmazza a repülés közbeni felhőből az eszközre üzeneteket, és az eszköz felé néző végpontok elérésének engedélyezéséhez. Az IoT Hub identitásjegyzék biztonságos tárolását biztosítja az eszközidentitások és a biztonsági kulcsok a megoldás. Az egyes vagy eszközidentitások csoportjai hozzáadhatók egy engedélyezési listához vagy egy tiltólistához, amely lehetővé teszi az eszközhozzáférés teljes körű szabályozását. Az alábbi cikkek további részleteket tartalmaznak az identitásjegyzék és a támogatott műveletek szerkezetéről.
 
-[A IoT hub olyan protokollokat támogat, mint például a MQTT, a AMQP és a http](../articles//iot-hub/iot-hub-devguide-security.md). A protokollok mindegyike biztonsági jogkivonatokat használ a IoT-eszközről, hogy IoT Hub másképpen:
+[Az IoT Hub támogatja az olyan protokollokat, mint az MQTT, az AMQP és a HTTP.](../articles//iot-hub/iot-hub-devguide-security.md) Ezek a protokollok mindegyike az IoT-eszköz biztonsági jogkivonatait használja az IoT Hubhoz másképpen:
 
-* AMQP: SASL PLAIN és AMQP a jogcímek alapú biztonságot (`{policyName}@sas.root.{iothubName}` IoT hub-szintű jogkivonatokkal, `{deviceId}` az eszközre hatókörrel rendelkező tokenekkel).
+* AMQP: SASL PLAIN és AMQP`{policyName}@sas.root.{iothubName}` jogcímeken alapuló biztonság ( IoT hub szintű jogkivonatok; `{deviceId}` az eszközható jellegű tokenekkel).
 
-* MQTT: a csatlakozási csomag `{deviceId}` használja `{ClientId}`ként, `{IoThubhostname}/{deviceId}` a **Felhasználónév** mezőben és egy sas-tokent a **jelszó** mezőben.
+* MQTT: A `{deviceId}` CONNECT `{ClientId}`csomag `{IoThubhostname}/{deviceId}` a , a **Felhasználónév** mezőben és egy SAS-jogkivonatként használatos a **Jelszó** mezőben.
 
-* HTTP: az érvényes jogkivonat az engedélyezési kérelem fejlécében található.
+* HTTP: Az érvényes jogkivonat az engedélyezési kérelem fejlécében található.
 
-A IoT Hub Identity Registry használatával eszközönkénti biztonsági hitelesítő adatokat és hozzáférés-vezérlést konfigurálhat. Ha azonban egy IoT-megoldás már jelentős befektetéssel rendelkezik egy [Egyéni eszköz-identitási beállításjegyzékben és/vagy hitelesítési sémában](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication), akkor a IoT hub a jogkivonat-szolgáltatás létrehozásával integrálható egy meglévő infrastruktúrába.
+Az IoT Hub identitásjegyzéke eszközenkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés konfigurálására használható. Ha azonban egy IoT-megoldás már jelentős befektetéssel rendelkezik egy [egyéni eszközidentitás-beállításjegyzékbe és/vagy hitelesítési sémába,](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)integrálható egy meglévő infrastruktúrába az IoT Hub-szolgáltatással egy jogkivonat-szolgáltatás létrehozásával.
 
-### <a name="x509-certificate-based-device-authentication"></a>X. 509 tanúsítvány alapú eszköz hitelesítése
+### <a name="x509-certificate-based-device-authentication"></a>X.509 tanúsítványalapú eszközhitelesítés
 
-Az [eszközön alapuló X. 509 tanúsítvány](../articles/iot-hub/iot-hub-devguide-security.md) és a hozzá tartozó magán-és nyilvános kulcspár további hitelesítést tesz lehetővé a fizikai rétegben. A titkos kulcsot a rendszer biztonságosan tárolja az eszközön, és az eszközön kívül nem felderíthető. Az X. 509 tanúsítvány az eszközre vonatkozó információkat, például az eszköz AZONOSÍTÓját és egyéb szervezeti adatokat tartalmaz. A tanúsítvány aláírása a titkos kulcs használatával jön létre.
+Az [eszközalapú X.509-es tanúsítvány](../articles/iot-hub/iot-hub-devguide-security.md) és a hozzá tartozó személyes és nyilvános kulcspár használata további hitelesítést tesz lehetővé a fizikai rétegen. A személyes kulcs biztonságosan tárolódik az eszközön, és nem észlelhető az eszközön kívül. Az X.509 tanúsítvány információkat tartalmaz az eszközről, például az eszközazonosítót és egyéb szervezeti részleteket. A tanúsítvány aláírása a személyes kulcs használatával jön létre.
 
-Magas szintű eszközök kiépítési folyamata:
+Magas szintű eszközkiépítési folyamat:
 
-* Rendeljen egy azonosítót egy fizikai eszközhöz – eszköz-identitás és/vagy X. 509 tanúsítvány társítva az eszközhöz a gyártás vagy az üzembe helyezés során.
+* Azonosító társítása fizikai eszközhöz – eszközidentitáshoz és/vagy Az eszközgyártás vagy üzembe helyezés során az eszközhöz társított X.509 tanúsítványhoz.
 
-* Hozzon létre egy megfelelő identitás bejegyzést a IoT Hub – eszköz identitása és a hozzá tartozó eszköz adatai között a IoT Hub Identity registryben.
+* Hozzon létre egy megfelelő identitásbejegyzést az IoT Hubban – eszközidentitás és a kapcsolódó eszközadatok az IoT Hub identitásjegyzékben.
 
-* Az X. 509 tanúsítvány ujjlenyomatának biztonságos tárolása IoT Hub Identity registryben.
+* Biztonságosan tárolja az X.509 tanúsítvány ujjlenyomatát az IoT Hub identitásjegyzékében.
 
 ### <a name="root-certificate-on-device"></a>Főtanúsítvány az eszközön
 
-A biztonságos TLS-kapcsolat IoT Hub használatával történő létrehozása közben a IoT-eszköz hitelesíti IoT Hub az eszköz SDK részét képező főtanúsítvánnyal. A C Client SDK esetében a tanúsítvány a tárház gyökerében, a "\\C\\tanúsítványok" mappában található. Habár ezek a főtanúsítványok hosszú életűek, azok továbbra is lejárnak vagy visszavonhatók. Ha a tanúsítvány nem frissíthető az eszközön, előfordulhat, hogy az eszköz nem tud majd csatlakozni a IoT Hubhoz (vagy bármely más felhőalapú szolgáltatáshoz). Ha azt szeretné, hogy a IoT-eszköz üzembe helyezése után a főtanúsítványt frissíteni lehessen, a rendszer hatékonyan csökkenti ezt a kockázatot.
+Biztonságos TLS-kapcsolat létrehozása közben az IoT Hub, az IoT-eszköz hitelesíti az IoT Hub egy főtanúsítvány, amely része az eszköz SDK használatával. A C ügyfél SDK esetében a tanúsítvány\\a\\"c certs" mappában található a tárház gyökere alatt. Bár ezek a főtanúsítványok hosszú élettartamúak, még mindig lejárhatnak vagy visszavonhatók. Ha nincs mód a tanúsítvány frissítésére az eszközön, előfordulhat, hogy az eszköz később nem tud csatlakozni az IoT Hubhoz (vagy bármely más felhőszolgáltatáshoz). Az IoT-eszköz üzembe helyezése után a főtanúsítvány frissítésére szolgáló eszköz hatékonyan csökkenti ezt a kockázatot.
 
-## <a name="securing-the-connection"></a>A kapcsolatok biztonságossá tétele
+## <a name="securing-the-connection"></a>A kapcsolat biztonságossá tétele
 
-A IoT-eszköz és a IoT Hub közötti internetkapcsolat a Transport Layer Security (TLS) szabvány használatával biztosítva van. Az Azure IoT ebben a sorrendben támogatja a [tls 1,2](https://tools.ietf.org/html/rfc5246), a TLS 1,1 és a TLS 1,0 használatát. A TLS 1,0-támogatás csak visszamenőleges kompatibilitás érdekében biztosított. Ellenőrizze a [TLS-támogatást IoT Hubban](../articles/iot-hub/iot-hub-tls-support.md) , hogy megtudja, hogyan konfigurálhatja a HUBOT a TLS 1,2 használatára, mivel ez biztosítja a legtöbb biztonságot.
+Az IoT-eszköz és az IoT-központ közötti internetkapcsolat a Transport Layer Security (TLS) szabvány használatával védett. Az Azure IoT ebben a sorrendben támogatja a [TLS 1.2,](https://tools.ietf.org/html/rfc5246)TLS 1.1 és TLS 1.0.Azure IoT. A TLS 1.0 támogatása csak a visszamenőleges kompatibilitást biztosítja. Ellenőrizze [a TLS-támogatás az IoT Hub,](../articles/iot-hub/iot-hub-tls-support.md) hogyan konfigurálhatja a hub tls 1.2, mivel ez biztosítja a legnagyobb biztonságot.
 
-## <a name="securing-the-cloud"></a>A felhő biztonságossá tétele
+## <a name="securing-the-cloud"></a>A felhő védelme
 
-Az Azure IoT Hub lehetővé teszi az egyes biztonsági kulcsok [hozzáférés-vezérlési házirendjeinek](../articles/iot-hub/iot-hub-devguide-security.md) meghatározását. A következő engedélyeket használja az egyes IoT Hub végpontokhoz való hozzáférés biztosításához. Az engedélyek a funkciókon alapuló IoT Hubhoz való hozzáférést korlátozzák.
+Az Azure IoT Hub lehetővé teszi a [hozzáférés-vezérlési szabályzatok](../articles/iot-hub/iot-hub-devguide-security.md) meghatározását minden egyes biztonsági kulcshoz. A következő engedélykészletet használja az IoT Hub egyes végpontjaihoz való hozzáférés engedélyezéséhez. Az engedélyek a funkciók alapján korlátozzák az IoT Hubhoz való hozzáférést.
 
-* **RegistryRead**. Olvasási hozzáférést biztosít az identitás-beállításjegyzékhez. További információ: [Identity Registry](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+* **RegistryRead**. Olvasási hozzáférést biztosít az identitás-beállításjegyzékhez. További információt az [identitásjegyzék ben](../articles/iot-hub/iot-hub-devguide-identity-registry.md)talál.
 
-* **RegistryReadWrite**. Olvasási és írási hozzáférést biztosít az identitás-beállításjegyzékhez. További információ: [Identity Registry](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
+* **RegistryReadWrite**. Olvasási és írási hozzáférést biztosít az identitásjegyzékhez. További információt az [identitásjegyzék ben](../articles/iot-hub/iot-hub-devguide-identity-registry.md)talál.
 
-* **ServiceConnect**. Hozzáférést biztosít a felhőalapú szolgáltatások felé irányuló kommunikációs és figyelési végpontokhoz. Például engedélyt ad a háttérbeli felhőalapú szolgáltatásoknak az eszközről a felhőbe irányuló üzenetek fogadására, a felhőből az eszközre irányuló üzenetek küldésére és a megfelelő kézbesítési visszaigazolások beolvasására.
+* **ServiceConnect**. Hozzáférést biztosít a felhőszolgáltatás felé irányuló kommunikációhoz és a végpontok figyeléséhez. Például engedélyt ad a háttér-felhőszolgáltatásoknak az eszközről a felhőbe irányuló üzenetek fogadására, a felhőből az eszközre irányuló üzenetek küldésére és a megfelelő kézbesítési nyugták lekérésére.
 
-* **DeviceConnect**. Hozzáférést biztosít az eszköz felé irányuló végpontokhoz. Engedélyt ad például az eszközről a felhőbe irányuló üzenetek küldésére és a felhőből az eszközre irányuló üzenetek fogadására. Ezt az engedélyt az eszközök használják.
+* **DeviceConnect**lehetőséget. Hozzáférést biztosít az eszközfelé néző végpontokhoz. Például engedélyt ad az eszközről a felhőbe irányuló üzenetek küldésére és a felhőből az eszközre irányuló üzenetek fogadására. Ezt az engedélyt az eszközök használják.
 
-A **DeviceConnect** -engedélyeket kétféleképpen lehet megszerezni IoT hub [biztonsági jogkivonatokkal](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): eszköz-azonosító kulcs vagy megosztott elérési kulcs használatával. Azt is fontos megjegyezni, hogy az eszközökről elérhető összes funkció a `/devices/{deviceId}`előtaggal rendelkező végpontokon van kitéve.
+Kétféleképpen szerezhet be **DeviceConnect-engedélyeket** az IoT Hubbal [biztonsági jogkivonatokkal:](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)eszközidentitás-kulcs vagy megosztott hozzáférési kulcs használatával. Fontos megjegyezni továbbá, hogy az eszközökről elérhető összes funkció az előtaggal `/devices/{deviceId}`rendelkező végpontokon való tervezés sel rendelkezik.
 
-A szolgáltatás-összetevők csak a megfelelő engedélyeket biztosító megosztott hozzáférési szabályzatok segítségével hozhatnak [elő biztonsági jogkivonatokat](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) .
+A szolgáltatás-összetevők csak a megfelelő engedélyeket biztosító megosztott hozzáférési házirendek használatával [hozhatnak létre biztonsági jogkivonatokat.](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)
 
-Az Azure IoT Hub és más, a megoldás részét képező szolgáltatások lehetővé teszik a felhasználók felügyeletét a Azure Active Directory használatával.
+Az Azure IoT Hub és más szolgáltatások, amelyek a megoldás részét képezik, lehetővé teszik a felhasználók kezelését az Azure Active Directory használatával.
 
-Az Azure IoT Hub által betöltött adatmennyiség számos szolgáltatás, például a Azure Stream Analytics és az Azure Blob Storage használatával is felhasználható. Ezek a szolgáltatások lehetővé teszik a felügyeleti hozzáférést. További információ ezekről a szolgáltatásokról és a rendelkezésre álló lehetőségekről:
+Az Azure IoT Hub által bevitt adatokat számos szolgáltatás, például az Azure Stream Analytics és az Azure blob storage is felhasználhatja. Ezek a szolgáltatások lehetővé teszik a felügyeleti hozzáférést. További információ ezekről a szolgáltatásokról és a rendelkezésre álló lehetőségekről:
 
-* [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/): méretezhető, teljes mértékben indexelt adatbázis-szolgáltatás a részben strukturált adatokhoz, amelyek a kiépített eszközök metaadatait kezelik, például attribútumok, konfiguráció és biztonsági tulajdonságok. A Azure Cosmos DB nagy teljesítményű és nagy adatátviteli sebességű feldolgozást, sémát és részletes SQL-lekérdezési felületet kínál.
+* [Azure Cosmos DB:](https://azure.microsoft.com/services/cosmos-db/)A méretezhető, teljes indexelt adatbázis-szolgáltatás félig strukturált adatok, amely kezeli a metaadatokat a kihelyezett eszközök, például attribútumok, konfigurációs és biztonsági tulajdonságok. Az Azure Cosmos DB nagy teljesítményű és nagy átviteli sebességű feldolgozást, séma-független adatindexelést és gazdag SQL-lekérdezési felületet kínál.
 
-* [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/): valós idejű adatfolyam-feldolgozás a felhőben, amely lehetővé teszi, hogy gyorsan fejlesszen és helyezzen üzembe egy alacsony költséghatékonyságú elemzési megoldást az eszközökről, érzékelőkről, infrastruktúrából és alkalmazásokból származó valós idejű elemzések felfedéséhez. A teljes körűen felügyelt szolgáltatásból származó adatok bármilyen kötetre méretezhetők, miközben továbbra is nagy átviteli sebességet, kis késést és rugalmasságot biztosítanak.
+* [Azure Stream Analytics:](https://azure.microsoft.com/services/stream-analytics/)Valós idejű adatfolyam-feldolgozás a felhőben, amely lehetővé teszi, hogy gyorsan fejlesszen ki és telepítsen egy alacsony költségű elemzési megoldást az eszközök, érzékelők, infrastruktúra és alkalmazások valós idejű elemzéseinek feltárására. A teljes körűen felügyelt szolgáltatásból származó adatok bármely kötetre skálázhatók, miközben továbbra is nagy átviteli, alacsony késésű és rugalmasság érhető el.
 
-* [Azure app Services](https://azure.microsoft.com/services/app-service/): felhőalapú platform olyan hatékony webes és mobil alkalmazások létrehozásához, amelyek bárhonnan csatlakozhatnak az adatkapcsolatokhoz; a felhőben vagy a helyszínen. Vonzó mobil alkalmazások készítése iOS, Android és Windows rendszerre. A szolgáltatásként (SaaS) és nagyvállalati alkalmazásokkal is integrálható, és a beépített kapcsolattal több tucat felhőalapú szolgáltatáshoz és nagyvállalati alkalmazáshoz is csatlakozhat. A kód a kedvenc nyelvén és az IDE (.NET, Node. js, PHP, Python vagy Java) használatával minden eddiginél gyorsabban hozhat létre webalkalmazásokat és API-kat.
+* [Azure App Services:](https://azure.microsoft.com/services/app-service/)Felhőalapú platform, amely hatékony webes és mobilalkalmazásokat hozhat létre, amelyek bárhol csatlakozhatnak az adatokhoz; a felhőben vagy a helyszínen. Vonzó mobilalkalmazásokat készíthet iOS, Android és Windows rendszerre. Integrálja szoftverét szolgáltatásként (SaaS) és vállalati alkalmazásokkal, és minden hatóel őket képes kapcsolattal több tucat felhőalapú szolgáltatással és vállalati alkalmazással. Kód a kedvenc nyelv és IDE (.NET, Node.js, PHP, Python, vagy Java), hogy építsenek webes alkalmazások és API-k gyorsabb, mint valaha.
 
-* [Logic apps](https://azure.microsoft.com/services/app-service/logic/): a Azure app Service Logic apps szolgáltatása segít a IoT-megoldás integrálásában a meglévő üzletági rendszerekre, és automatizálni a munkafolyamatok folyamatait. Logic Apps lehetővé teszi a fejlesztők számára, hogy olyan munkafolyamatokat tervezzenek, amelyek egy eseményindítóból kezdődnek, majd végrehajtanak egy sor lépést – olyan szabályokat és műveleteket, amelyek hatékony összekötőket használnak az üzleti folyamatokkal való integrációhoz. A Logic Apps a SaaS-, felhőalapú és helyszíni alkalmazások hatalmas ökoszisztémájának megfelelő kapcsolattal rendelkezik.
+* [Logic Apps:](https://azure.microsoft.com/services/app-service/logic/)Az Azure App Service Logikai alkalmazások funkciója segít integrálni az IoT-megoldást a meglévő üzletági rendszerekbe, és automatizálni a munkafolyamatokat. A Logic Apps lehetővé teszi a fejlesztők számára, hogy olyan munkafolyamatokat tervezzenek, amelyek egy eseményindítóból indulnak ki, majd egy sor lépést hajtanak végre – olyan szabályokat és műveleteket, amelyek hatékony összekötőket használnak az üzleti folyamatokba való integráláshoz. A Logic Apps beépített kapcsolatot biztosít az SaaS, a felhőalapú és a helyszíni alkalmazások hatalmas ökoszisztémájához.
 
-* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): megbízható, gazdaságos Felhőbeli tárolás az eszközök által a felhőbe küldött adatai számára.
+* [Azure Blob storage:](https://azure.microsoft.com/services/storage/)Megbízható, gazdaságos felhőalapú tárhely az eszközök által a felhőbe küldött adatok számára.
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez a cikk áttekintést nyújt a IoT-infrastruktúra Azure IoT használatával történő tervezéséről és üzembe helyezéséről. Az egyes összetevők biztonságossá tétele kulcsfontosságú a teljes IoT-infrastruktúra biztonságossá tételéhez. Az Azure IoT elérhető tervezési lehetőségek bizonyos fokú rugalmasságot és választékot biztosítanak; azonban minden választási lehetőség biztonsági következményekkel járhat. Javasoljuk, hogy ezeket a döntéseket a kockázat/költséghatékonyság értékelésével értékelje ki.
+Ez a cikk áttekintést nyújt az IoT-infrastruktúra Azure IoT-n keresztüli tervezéséhez és üzembe helyezéséhez szükséges megvalósítási szint részleteiről. Az egyes összetevők biztonságosbeállítása kulcsfontosságú a teljes IoT-infrastruktúra biztosításához. Az Azure IoT-ben elérhető tervezési lehetőségek bizonyos szintű rugalmasságot és választási lehetőséget biztosítanak; azonban minden választásnak biztonsági következményei lehetnek. Javasoljuk, hogy ezeket a döntéseket kockázat-/költségértékeléssel értékeljék.

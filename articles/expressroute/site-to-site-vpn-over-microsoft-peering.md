@@ -1,6 +1,6 @@
 ---
-title: 'Azure-ExpressRoute: S2S VPN konfigurálása Microsoft-partneri kapcsolaton keresztül'
-description: Az IPsec/IKE-kapcsolat konfigurálása az Azure-hoz egy ExpressRoute-alapú Microsoft-partneri áramkör használatával helyek közötti VPN-átjáróval.
+title: 'Azure ExpressRoute: Az S2S VPN konfigurálása a Microsoft társviszony-létesítésén keresztül'
+description: Konfigurálja az IPsec/IKE-kapcsolatot az Azure-ral egy ExpressRoute-alapú Microsoft-társviszony-létesítési kapcsolati kapcsolaton keresztül egy helyek közötti VPN-átjáró használatával.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,89 +9,89 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436814"
 ---
-# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Helyek közötti VPN konfigurálása ExpressRoute Microsoft-partneri kapcsolaton keresztül
+# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Helyek közötti VPN konfigurálása ExpressRoute-on Microsoft társviszony-létesítés
 
-Ez a cikk segítséget nyújt a biztonságos titkosított kapcsolatok konfigurálásához a helyszíni hálózat és az Azure Virtual Network (virtuális hálózatok) között egy ExpressRoute privát kapcsolaton keresztül. A Microsoft társközi szolgáltatásával létrehozhat egy helyek közötti IPsec/IKE VPN-alagutat a kiválasztott helyszíni hálózatok és az Azure-virtuális hálózatok között. A biztonságos alagút ExpressRoute-en keresztüli konfigurálása lehetővé teszi az adatcserét a bizalmas kezelés, a visszajátszás elleni védelem, a hitelesség és az integritás érdekében.
+Ez a cikk segít a helyszíni hálózat és az Azure virtuális hálózatok (VNets) közötti biztonságos titkosított kapcsolat konfigurálásában ExpressRoute-alapú privát kapcsolaton keresztül. A Microsoft társviszony-létesítés segítségével hozhat létre egy hely-to-site IPsec/IKE VPN-alagút a kiválasztott helyszíni hálózatok és az Azure virtuális hálózatok között. A biztonságos alagút konfigurálása az ExpressRoute-on lehetővé teszi az adatcserét titkossággal, visszajátszás-ellenességgel, hitelességgel és sértetlenséggel.
 
 >[!NOTE]
->A helyek közötti VPN Microsoft-kapcsolaton keresztüli beállításakor a VPN-átjáró és a VPN kimenő forgalom díját számítjuk fel. További információ: [VPN Gateway díjszabása](https://azure.microsoft.com/pricing/details/vpn-gateway).
+>Ha a Microsoft-társviszony-létesítésen keresztül állítja be a helyek közötti VPN-t, a VPN-átjáróért és a VPN-kimenő forgalomért díjat kell fizetnie. További információ: [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="architecture"></a>Architektúra
+## <a name="architecture"></a><a name="architecture"></a>Architektúra
 
 
-  ![a kapcsolatok áttekintése](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
+  ![kapcsolat – áttekintés](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 
 
-A magas rendelkezésre állás és a redundancia érdekében több alagutat is beállíthat egy ExpressRoute-áramkör két MSEE-PE pár felett, és engedélyezheti az alagutak közötti terheléselosztást.
+A magas rendelkezésre állás és a redundancia érdekében több alagutat is konfigurálhat egy ExpressRoute-kapcsolat két MSEE-PE párján, és engedélyezheti a terheléselosztást az alagutak között.
 
   ![magas rendelkezésre állási lehetőségek](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
 
-A Microsoft-partneri VPN-alagutak a VPN Gateway használatával vagy az Azure Marketplace-en keresztül elérhető megfelelő hálózati virtuális berendezéssel (NVA) állíthatók le. Az útvonalakat statikusan vagy dinamikusan is átválthatja a titkosított alagutakon anélkül, hogy az átirányítja az alapul szolgáló Microsoft-társat. A jelen cikkben szereplő példákban a BGP (a Microsoft-társ létrehozásához használt BGP-munkamenettől eltérő) használatával dinamikusan cseréli az előtagokat a titkosított alagutakon.
+A Microsoft-társviszony-létesítésen keresztüli VPN-alagutak letilthatók a VPN-átjáró használatával, vagy az Azure Marketplace-en elérhető megfelelő hálózati virtuális berendezés (NVA) használatával. Az útvonalakat statikusan vagy dinamikusan cserélheti a titkosított alagutakon anélkül, hogy az útvonalcserét az alapul szolgáló Microsoft-társviszony-létesítésnek tenné ki. Ebben a cikkben a BGP (eltér a Microsoft társviszony-létesítéshez használt BGP-munkamenettől) dinamikusan cserélhet előtagokat a titkosított alagutakon keresztül.
 
 >[!IMPORTANT]
->A helyszíni oldalon általában a Microsoft-társak megszakadnak a DMZ-ben, és az alaphálózati zónában megszűnik a privát levelezés. A két zóna el lesz különítve a tűzfalak használatával. Ha kizárólag a biztonságos bújtatás ExpressRoute való engedélyezését konfigurálja a Microsoft-társak számára, ne feledje, hogy csak azon nyilvános IP-címekre kell szűrnie, amelyeket a Microsoft-társon keresztül hirdettek meg.
+>A helyszíni oldalon általában a Microsoft-társviszony-létesítés leáll a DMZ és a privát társviszony-létesítés leáll a törzs hálózati zónában. A két zóna tűzfalakkal lenne elkülönítve. Ha a Microsoft társviszony-létesítése kizárólag a biztonságos bújtatás engedélyezése expressRoute-on keresztül, ne feledje, hogy szűrje át csak a nyilvános IP-k, amelyek egyre hirdetett microsoftos társviszony-létesítési keresztül.
 >
 >
 
-## <a name="workflow"></a>Munkafolyamat
+## <a name="workflow"></a><a name="workflow"></a>Munkafolyamat
 
-1. Konfigurálja a Microsoft-társat a ExpressRoute-áramkörhöz.
-2. A kiválasztott Azure regionális nyilvános előtagok reklámozása a helyszíni hálózatra Microsoft-partneri kapcsolaton keresztül.
+1. Konfigurálja a Microsoft társviszony-létesítését az ExpressRoute-kapcsolatcsoporthoz.
+2. A microsoftos társviszony-létesítésen keresztül hirdethet kiválasztott Azure regionális nyilvános előtagokat a helyszíni hálózatra.
 3. VPN-átjáró konfigurálása és IPsec-alagutak létrehozása
 4. Konfigurálja a helyszíni VPN-eszközt.
-5. Hozza létre a helyek közötti IPsec/IKE-kapcsolatokat.
-6. Választható Konfigurálja a tűzfalakat és a szűrést a helyszíni VPN-eszközön.
-7. Tesztelje és ellenőrizze az IPsec-kommunikációt a ExpressRoute áramkörön.
+5. Hozza létre a helyek közötti IPsec/IKE-kapcsolatot.
+6. (Nem kötelező) Konfigurálja a tűzfalakat/szűrést a helyszíni VPN-eszközön.
+7. Tesztelje és érvényesítse az IPsec-kommunikációt az ExpressRoute-kapcsolaton keresztül.
 
-## <a name="peering"></a>1. a Microsoft-társak konfigurálása
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. A Microsoft társviszony-létesítéskonfigurálása
 
-A helyek közötti VPN-kapcsolat ExpressRoute-en keresztüli konfigurálásához a ExpressRoute Microsoft-társait kell használnia.
+A helyek közötti VPN-kapcsolat ExpressRoute-on keresztüli konfigurálásához ki kell használnia az ExpressRoute Microsoft társviszony-létesítését.
 
-* Új ExpressRoute-kör konfigurálásához Kezdje a [ExpressRoute előfeltételeinek](expressroute-prerequisites.md) leírásával, majd [hozzon létre és módosítson egy ExpressRoute-áramkört](expressroute-howto-circuit-arm.md).
+* Új ExpressRoute-kapcsolat konfigurálásához kezdje az [ExpressRoute előfeltételeiről](expressroute-prerequisites.md) szóló cikket, majd [hozzon létre és módosítson egy ExpressRoute-áramkört.](expressroute-howto-circuit-arm.md)
 
-* Ha már van ExpressRoute-áramköre, de nincs Microsoft-társa konfigurálva, konfigurálja a Microsoft-társat a [ExpressRoute-áramkör létrehozási és módosítási társításának](expressroute-howto-routing-arm.md#msft) használatával.
+* Ha már rendelkezik ExpressRoute-kapcsolati kapcsolatokkal, de nincs konfigurálva a Microsoft társviszony-létesítése, konfigurálja a Microsoft társviszony-létesítést az [ExpressRoute-kapcsolatlétesítés létrehozása és módosítása segítségével egy ExpressRoute-kapcsolatlétesítési cikkhez.](expressroute-howto-routing-arm.md#msft)
 
-Miután konfigurálta az áramkört és a Microsoft-társat, könnyedén megtekintheti a Azure Portal **Áttekintés** lapján.
+Miután konfigurálta a körhálózatot és a Microsoft-társviszony-létesítést, könnyedén megtekintheti azt az Azure Portal **Áttekintés lapján.**
 
-![kapcsolatcsoport](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
+![Áramkör](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="routefilter"></a>2. útválasztási szűrők konfigurálása
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. Útvonalszűrők konfigurálása
 
-Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez lényegében egy engedélyezési lista az összes BGP közösségi értékről. 
+Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez lényegében egy engedélyezési lista az összes BGP közösségi értékeket. 
 
-![útvonal szűrője](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
+![útvonalszűrő](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-Ebben a példában a központi telepítés csak az *USA 2. nyugati* régiójában található. Az útvonal-szűrési szabály hozzáadása lehetővé teszi, hogy csak az Azure West US 2 regionális előtagjainak hirdetményét engedélyezze, amelynek a BGP közösségi értéke *12076:51026*. A **szabály kezelése**lehetőség kiválasztásával adhatja meg a regionális előtagokat, amelyeket engedélyezni szeretne.
+Ebben a példában a központi telepítés csak az *Azure West US 2* régióban. Egy útvonalszűrő-szabály hozzáadódik, hogy csak az Azure West USA 2 regionális előtagok hirdetését engedélyezze, amely a BGP-közösség *12076:51026*közösségi értéke. A Szabály kezelése lehetőség kiválasztásával megadhatja az engedélyezni kívánt területi **előtagokat.**
 
-Az útvonal-szűrőn belül ki kell választania azokat a ExpressRoute-áramköröket, amelyekhez az útválasztási szűrő vonatkozik. A ExpressRoute-áramköröket az **áramkör hozzáadása**lehetőség kiválasztásával választhatja ki. Az előző ábrán az útválasztási szűrő a példa ExpressRoute áramkörhöz van társítva.
+Az útvonalszűrőn belül ki kell választania azokat az ExpressRoute-áramköröket is, amelyekre az útvonalszűrő vonatkozik. Az ExpressRoute-áramkörök et az **Áramkör hozzáadása**lehetőséget választva választhatja ki. Az előző ábrán az útvonalszűrő az ExpressRoute-körhöz van társítva.
 
-### <a name="configfilter"></a>2,1 az útvonal-szűrő konfigurálása
+### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2.1 Az útvonalszűrő konfigurálása
 
-Útválasztási szűrő konfigurálása A lépéseket lásd: [útválasztási szűrők konfigurálása a Microsoft-társak számára](how-to-routefilter-portal.md).
+Útvonalszűrő konfigurálása. A lépéseket a [Microsoft társviszony-létesítési útvonalszűrőinek konfigurálása](how-to-routefilter-portal.md)című témakörben található.
 
-### <a name="verifybgp"></a>2,2 BGP-útvonalak ellenőrzése
+### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2.2 A BGP-útvonalak ellenőrzése
 
-Miután sikeresen létrehozott egy Microsoft-társat a ExpressRoute áramkörön, és hozzárendelt egy útvonal-szűrőt az áramkörhöz, ellenőrizheti, hogy a Msee érkező BGP-útvonalak a Msee-vel egyenrangú PE-eszközökön találhatók-e. Az ellenőrzési parancs a PE-eszközök operációs rendszerének függvényében változhat.
+Miután sikeresen létrehozta a Microsoft társviszony-létesítését az ExpressRoute-kapcsolaton keresztül, és hozzárendelt egy útvonalszűrőt az áramkörhöz, ellenőrizheti a kis- és nagytest-összeget a kis- és nagytest-összeget létesítő pe-eszközökről kapott BGP-útvonalakat. Az ellenőrzési parancs a PE-eszközök operációs rendszerétől függően változik.
 
-#### <a name="cisco-examples"></a>Cisco-példák
+#### <a name="cisco-examples"></a>Cisco példák
 
-Ez a példa egy Cisco IOS-XE parancsot használ. A példában a rendszer egy virtuális útválasztási és továbbítási (VRF) példányt használ a társítási forgalom elkülönítésére.
+Ez a példa Cisco IOS-XE parancsot használ. A példában egy virtuális útválasztási és továbbítási (VRF) példány a társviszony-létesítési forgalom elkülönítésére szolgál.
 
 ```
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-A következő részleges kimenet azt mutatja, hogy 68 előtag érkezett a szomszéd \*. 243.229.34 az ASN 12076 (MSEE)-vel:
+A következő részleges kimenet azt mutatja, hogy 68 előtag érkezett a szomszédtól \*.243.229.34 az ASN 12076 (MSEE):
 
 ```
 ...
@@ -100,50 +100,50 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 X.243.229.34    4        12076   17671   17650    25228    0    0 1w4d           68
 ```
 
-A szomszédból fogadott előtagok listájának megtekintéséhez használja a következő példát:
+A szomszédtól kapott előtagok listájának megtekintéséhez használja a következő példát:
 
 ```
 sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 ```
 
-Annak ellenőrzéséhez, hogy az előtagok megfelelő készletét kapja-e, megtekintheti a többit. A következő Azure PowerShell parancs kimenete felsorolja az egyes szolgáltatásokhoz és az egyes Azure-régiókhoz tartozó Microsoft-társon keresztül meghirdetett előtagokat:
+Annak ellenőrzéséhez, hogy a megfelelő előtagokat kapja-e, ellenőrizheti a keresztellenőrzést. A következő Azure PowerShell-parancskimenet felsorolja a Microsoft-társviszony-létesítésen keresztül hirdetett előtagokat az egyes szolgáltatásokhoz és az Azure-régiókhoz:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="vpngateway"></a>3. a VPN-átjáró és az IPsec-alagutak konfigurálása
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. Konfigurálja a VPN-átjárót és az IPsec-alagutakat
 
-Ebben a szakaszban az IPsec VPN-alagutak jönnek létre az Azure VPN Gateway és a helyszíni VPN-eszköz között. A példák a Cisco Cloud Service router (CSR1000) VPN-eszközöket használják.
+Ebben a szakaszban az IPsec VPN-alagutak jönnek létre az Azure VPN-átjáró és a helyszíni VPN-eszköz között. A példák a Cisco Cloud Service Router (CSR1000) VPN-eszközeit használják.
 
-Az alábbi ábrán a helyszíni VPN-eszköz 1 és az Azure VPN Gateway instance pár között létrejött IPsec VPN-alagutak láthatók. A helyszíni VPN-eszköz 2 és az Azure VPN Gateway instance pár között létrejött két IPsec VPN-alagút nem szerepel a diagramon, és a konfigurációs adatok nem szerepelnek a felsorolásban. Ugyanakkor a további VPN-alagutak is javítják a magas rendelkezésre állást.
+Az alábbi ábrán a helyszíni VPN-eszköz 1 és az Azure VPN-átjárópéldány pár között létrehozott IPsec VPN-bújtatások láthatók. A helyszíni VPN-eszköz 2 és az Azure VPN-átjárópéldány-pár között létrehozott két IPsec-VPN-bújtatás nem jelenik meg az ábrán, és a konfigurációs részletek nem szerepelnek. Azonban a további VPN-alagutak javítása a magas rendelkezésre állást.
 
   ![VPN-alagutak](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
 
-Az IPsec-alagút pár alatt létrejön egy eBGP-munkamenet a magánhálózati útvonalak cseréjéhez. Az alábbi ábrán az IPsec-alagút pár alatt létesített eBGP-munkamenet látható:
+Az IPsec-alagútpáron keresztül eBGP-munkamenet jön létre a magánhálózati útvonalak cseréjéhez. Az alábbi ábra az IPsec-alagútpár felett létrehozott eBGP-munkamenetet mutatja be:
 
-  ![eBGP-munkamenetek bújtatási párral](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
+  ![eBGP-munkamenetek alagútpáron](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
 
-Az alábbi ábrán a példa hálózatának absztrakt áttekintése látható:
+Az alábbi ábra a példahálózat absztrakt áttekintését mutatja be:
 
-  ![Példa hálózatra](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
+  ![példa hálózat](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
 
-### <a name="about-the-azure-resource-manager-template-examples"></a>Példák a Azure Resource Manager sablonra
+### <a name="about-the-azure-resource-manager-template-examples"></a>Példák az Azure Resource Manager sablonról
 
-A példákban a VPN-átjáró és az IPsec-alagút megszakításai egy Azure Resource Manager sablonnal konfigurálhatók. Ha a Resource Manager-sablonokkal kapcsolatos újdonságokkal vagy a Resource Manager-sablonok alapjaival kapcsolatos ismeretekkel rendelkezik, tekintse meg [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](../azure-resource-manager/templates/template-syntax.md)ismertető cikket. Az ebben a szakaszban található sablon egy zöldmezős Azure-környezetet (VNet) hoz létre. Ha azonban van meglévő VNet, hivatkozhat rá a sablonban. Ha nem ismeri a VPN Gateway IPsec/IKE helyek közötti konfigurációkat, tekintse meg [a helyek közötti kapcsolat létrehozása](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)című témakört.
+A példákban a VPN-átjáró és az IPsec-alagút végződések konfigurálva egy Azure Resource Manager sablon használatával. Ha még nem használja az Erőforrás-kezelő sablonokat, vagy ismeri az Erőforrás-kezelő sablon alapjait, [olvassa el az Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakört.](../azure-resource-manager/templates/template-syntax.md) Ebben a szakaszban a sablon zöldmezős Azure-környezetet (VNet) hoz létre. Azonban ha rendelkezik egy meglévő virtuális hálózat, hivatkozhat rá a sablonban. Ha nem ismeri a [VPN-átjáró](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)IPsec/IKE helyek közötti konfigurációit, olvassa el a Helyek közötti kapcsolat létrehozása című témakört.
 
 >[!NOTE]
->Ennek a konfigurációnak a létrehozásához nincs szükség Azure Resource Manager-sablonok használatára. Ezt a konfigurációt a Azure Portal vagy a PowerShell használatával is létrehozhatja.
+>A konfiguráció létrehozásához nem kell Azure Resource Manager-sablonokat használnia. Ezt a konfigurációt az Azure Portalon vagy a PowerShell használatával hozhatja létre.
 >
 >
 
-### <a name="variables3"></a>3,1 a változók deklarálása
+### <a name="31-declare-the-variables"></a><a name="variables3"></a>3.1 A változók deklarálása
 
-Ebben a példában a változó deklarációi a példában szereplő hálózatnak felelnek meg. Változók deklarálása esetén módosítsa ezt a szakaszt a környezetének megfelelően.
+Ebben a példában a változó deklarációk megfelelnek a példa hálózat. Változók deklarálásakor módosítsa ezt a szakaszt a környezetének megfelelően.
 
-* A **localAddressPrefix** változó a helyszíni IP-címek egy tömbje, amely megszünteti az IPSec-alagutakat.
-* A **gatewaysku paraméterben** határozza meg a VPN átviteli sebességét. A Gatewaysku paraméterben és a vpnType kapcsolatos további információkért lásd: [VPN Gateway konfigurációs beállítások](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). A díjszabással kapcsolatban lásd: [VPN Gateway díjszabása](https://azure.microsoft.com/pricing/details/vpn-gateway).
-* Állítsa a **VpnType** **útvonalalapú**értékre.
+* A **variable localAddressPrefix** egy helyszíni IP-címek tömbje az IPsec-alagutak leállításához.
+* A **gatewaySku** határozza meg a VPN átviteli. A gatewaySku és a vpnType alkalmazásról a [VPN-átjáró konfigurációs beállításai című](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)témakörben olvashat bővebben. Az árakról a [VPN-átjáró díjszabása](https://azure.microsoft.com/pricing/details/vpn-gateway)látható.
+* Állítsa a **vpnType-ot** **RouteBased -re.**
 
 ```json
 "variables": {
@@ -175,9 +175,9 @@ Ebben a példában a változó deklarációi a példában szereplő hálózatnak
 },
 ```
 
-### <a name="vnet"></a>3,2 virtuális hálózat létrehozása (VNet)
+### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3.2 Virtuális hálózat létrehozása (VNet)
 
-Ha egy meglévő VNet társít a VPN-alagutakhoz, akkor kihagyhatja ezt a lépést.
+Ha egy meglévő virtuális hálózatot társít a VPN-alagutakkal, kihagyhatja ezt a lépést.
 
 ```json
 {
@@ -210,9 +210,9 @@ Ha egy meglévő VNet társít a VPN-alagutakhoz, akkor kihagyhatja ezt a lépé
 },
 ```
 
-### <a name="ip"></a>3,3 nyilvános IP-címek kiosztása VPN Gateway-példányokhoz
+### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3.3 Nyilvános IP-címek hozzárendelése VPN-átjárópéldányokhoz
  
-Rendeljen hozzá egy nyilvános IP-címet a VPN-átjáró minden példányához.
+Rendeljen nyilvános IP-címet a VPN-átjáró minden egyes példányához.
 
 ```json
 {
@@ -237,9 +237,9 @@ Rendeljen hozzá egy nyilvános IP-címet a VPN-átjáró minden példányához.
   },
 ```
 
-### <a name="termination"></a>3,4 a helyszíni VPN-alagút lezárásának (helyi hálózati átjáró) meghatározása
+### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3.4 Adja meg a helyszíni VPN-alagút befejezését (helyi hálózati átjáró)
 
-A helyszíni VPN-eszközöket a **helyi hálózati átjárónak**nevezzük. A következő JSON-kódrészlet a távoli BGP-társak adatait is megadja:
+A helyszíni VPN-eszközöket helyi hálózati **átjárónak**nevezzük. A következő jsonkódrészlet a távoli BGP-társ adatait is meghatározza:
 
 ```json
 {
@@ -262,13 +262,13 @@ A helyszíni VPN-eszközöket a **helyi hálózati átjárónak**nevezzük. A k�
 },
 ```
 
-### <a name="creategw"></a>3,5 a VPN-átjáró létrehozása
+### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3.5 A VPN-átjáró létrehozása
 
-A sablon ezen szakasza konfigurálja a VPN-átjárót az aktív-aktív konfigurációhoz szükséges beállításokkal. Tartsa szem előtt az alábbi követelményeket:
+A sablon ezen szakasza konfigurálja a VPN-átjárót az aktív-aktív konfigurációhoz szükséges beállításokkal. Ne feledje az alábbi követelményeket:
 
-* Hozza létre a VPN-átjárót egy **"útvonalalapú"** VpnType. Ez a beállítás kötelező, ha engedélyezni szeretné a BGP-útválasztást a VPN-átjáró és a helyszíni VPN között.
-* Ahhoz, hogy VPN-alagutakat hozzon létre a VPN-átjáró két példánya és egy adott helyszíni eszköz aktív-aktív módban, a **"aktív"** paraméter **true** értékre van állítva a Resource Manager-sablonban. Ha többet szeretne megtudni a rendelkezésre álló VPN-átjárókkal kapcsolatban, tekintse meg a [rendelkezésre álló VPN Gateway-kapcsolat](../vpn-gateway/vpn-gateway-highlyavailable.md)című témakört.
-* A VPN-alagutak közötti eBGP-munkamenetek konfigurálásához két különböző ASN kell megadnia mindkét oldalon. A privát ASN-számok megadására érdemes. További információ: [a BGP és az Azure VPN Gateway áttekintése](../vpn-gateway/vpn-gateway-bgp-overview.md).
+* Hozza létre a VPN-átjárót egy **"RouteBased"** VpnType típussal. Ez a beállítás kötelező, ha engedélyezni szeretné a BGP-útválasztást a VPN-átjáró és a helyszíni VPN között.
+* A VPN-átjáró két példánya és egy adott helyszíni eszköz aktív-aktív módban történő létrehozása érdekében az **"activeActive"** paraméter **true** értékre van állítva az Erőforrás-kezelő sablonban. Ha többet szeretne megtudni a magas rendelkezésre állású VPN-átjárókról, olvassa [el a Magas rendelkezésre állású VPN-átjáró-kapcsolat.](../vpn-gateway/vpn-gateway-highlyavailable.md)
+* A VPN-alagutak közötti eBGP-munkamenetek konfigurálásához mindkét oldalon két különböző ASN-t kell megadnia. Célszerű megadni a privát ASN-számokat. További információ: [BGP- és Azure VPN-átjárók áttekintése.](../vpn-gateway/vpn-gateway-bgp-overview.md)
 
 ```json
 {
@@ -324,9 +324,9 @@ A sablon ezen szakasza konfigurálja a VPN-átjárót az aktív-aktív konfigur�
   },
 ```
 
-### <a name="ipsectunnel"></a>3,6 az IPsec-alagutak létrehozása
+### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3.6 Az IPsec-alagutak létrehozása
 
-A szkript végső művelete IPsec-alagutakat hoz létre az Azure VPN Gateway és a helyszíni VPN-eszköz között.
+A parancsfájl végső művelete IPsec-alagutakat hoz létre az Azure VPN-átjáró és a helyszíni VPN-eszköz között.
 
 ```json
 {
@@ -354,20 +354,20 @@ A szkript végső művelete IPsec-alagutakat hoz létre az Azure VPN Gateway és
   }
 ```
 
-## <a name="device"></a>4. a helyszíni VPN-eszköz konfigurálása
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. Konfigurálja a helyszíni VPN-eszközt
 
-Az Azure VPN Gateway számos különböző gyártótól származó VPN-eszközzel kompatibilis. A VPN-átjáróval való együttműködésre ellenőrzött konfigurációs információk és eszközök: [Tudnivalók a VPN-eszközökről](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
+Az Azure VPN-átjáró kompatibilis számos VPN-eszközzel különböző gyártóktól. A VPN-átjáróval való együttműködésre ellenőrzött konfigurációs információkat és eszközöket [a VPN-eszközök – betekintés című témakörben talál.](../vpn-gateway/vpn-gateway-about-vpn-devices.md)
 
-A VPN-eszköz konfigurálásakor a következő elemek szükségesek:
+A VPN-eszköz konfigurálásakor a következő elemekre van szükség:
 
-* Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor adott meg. A példák egy Alapszintű megosztott kulcsot használnak. Javasoljuk egy ennél összetettebb kulcs létrehozását.
-* A VPN-átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. A VPN-átjáró nyilvános IP-címének a Azure Portal használatával történő megkereséséhez navigáljon a virtuális hálózati átjárók elemre, majd kattintson az átjáró nevére.
+* Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor megadott. A példák egy alapvető megosztott kulcsot használnak. Javasoljuk egy ennél összetettebb kulcs létrehozását.
+* A VPN-átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. A VPN-átjáró nyilvános IP-címének Azure Portal használatával történő megkereséséhez válassza a Virtual network gateways (Virtuális hálózati átjárók) elemet, majd kattintson az átjárója nevére.
 
-Általában a eBGP-partnerek közvetlenül kapcsolódnak (gyakran WAN-kapcsolaton keresztül). Ha azonban IPsec VPN-alagutakon keresztül konfigurálja az eBGP-t a Microsoft ExpressRoute keresztül, több útválasztási tartomány van a eBGP-partnerek között. A **ebgp-multihop** parancs használatával hozza létre a két nem közvetlenül csatlakoztatott társ közötti ebgp szomszédos kapcsolatot. Az ebgp-multihop parancsot követő egész szám határozza meg a BGP-csomagok ÉLETTARTAMának értékét. A parancs **maximális elérési útjai eibgp 2** lehetővé teszi a forgalom terheléselosztását a két BGP-útvonal között.
+Az eBGP-partnerek általában közvetlenül kapcsolódnak (gyakran WAN-kapcsolaton keresztül). Ha azonban az eBGP-t IPsec VPN-alagutakon keresztül konfigurálja expressroute-i Microsoft társviszony-létesítésen keresztül, az eBGP-partnerek között több útválasztási tartomány van. Az **ebgp-multihop** paranccsal hozza létre az eBGP szomszédkapcsolatot a két nem közvetlenül csatlakoztatott társ között. Az ebgp-multihop parancsot követő egész szám a BGP-csomagok TTL értékét adja meg. Az **ebbgp 2 parancs maximális elérési útjalehetővé** teszi a két BGP-útvonal közötti forgalom terheléselosztását.
 
-### <a name="cisco1"></a>Cisco CSR1000 – példa
+### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Példa Cisco CSR1000
 
-Az alábbi példa a Cisco CSR1000 konfigurációját mutatja be egy Hyper-V virtuális gépen a helyszíni VPN-eszközként:
+A következő példa bemutatja a Cisco CSR1000 konfigurációját egy Hyper-V virtuális gépen, mint a helyszíni VPN-eszközt:
 
 ```
 !
@@ -475,13 +475,13 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="firewalls"></a>5. konfigurálja a VPN-eszközök szűrését és a tűzfalakat (nem kötelező)
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. A VPN-eszközszűrés és a tűzfalak konfigurálása (nem kötelező)
 
-Konfigurálja a tűzfalat és a szűrést az igényeinek megfelelően.
+Konfigurálja a tűzfalat és a szűrést az Ön igényeinek megfelelően.
 
-## <a name="testipsec"></a>6. az IPsec-alagút tesztelése és érvényesítése
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. Tesztelje és érvényesítse az IPsec-alagutat
 
-Az IPsec-alagutak állapota ellenőrizhető az Azure VPN-átjárón a PowerShell-parancsok használatával:
+Az IPsec-alagutak állapotát powershell-parancsokkal ellenőrizhetik az Azure VPN-átjárón:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
@@ -495,7 +495,7 @@ EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
 ```
 
-Ha az Azure VPN Gateway-példányokon lévő alagutak állapotát egymástól függetlenül szeretné megnézni, használja a következő példát:
+Az Azure VPN-átjárópéldányokon lévő alagutak állapotának független ellenőrzéséhez használja a következő példát:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
@@ -517,9 +517,9 @@ EgressBytesTransferred           : 8980589
 LastConnectionEstablishedUtcTime : 11/04/2017 17:03:13
 ```
 
-Az alagút állapotát a helyszíni VPN-eszközön is megtekintheti.
+A helyszíni VPN-eszközön ellenőrizheti az alagút állapotát is.
 
-Cisco CSR1000-példa:
+Cisco CSR1000 példa:
 
 ```
 show crypto session detail
@@ -571,7 +571,7 @@ Peer: 52.175.253.112 port 4500 fvrf: (none) ivrf: (none)
         Outbound: #pkts enc'ed 477 drop 0 life (KB/Sec) 4607953/437
 ```
 
-A virtuális alagút felületén (VTI) lévő Line protokoll nem módosul "up" értékre, amíg az IKE 2. fázisa nem fejeződött be. A következő parancs ellenőrzi a biztonsági társítást:
+A virtuális alagút kapcsolatának (VTI) vonalprotokollja nem változik "fel" értékre, amíg az IKE 2. A következő parancs ellenőrzi a biztonsági társítást:
 
 ```
 csr1#show crypto ikev2 sa
@@ -597,9 +597,9 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verifye2e"></a>A helyszíni hálózaton belüli és az Azure-VNet közötti végpontok közötti kapcsolat ellenőrzése
+### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>A helyszíni belső hálózat és az Azure virtuális hálózat közötti végpontok közötti kapcsolat ellenőrzése
 
-Ha az IPsec-alagutak működnek, és a statikus útvonalak megfelelően vannak beállítva, a távoli BGP-társ IP-címének pingelését el kell tudnia érni:
+Ha az IPsec-alagutak felvannak állítva, és a statikus útvonalak megfelelően vannak beállítva, akkor a távoli BGP-társ IP-címét pingelheti:
 
 ```
 csr1#ping 10.2.0.228
@@ -615,9 +615,9 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verifybgp"></a>A BGP-munkamenetek ellenőrzése az IPsec protokollon keresztül
+### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>A BGP-munkamenetek ellenőrzése IPsec-en keresztül
 
-Az Azure VPN gatewayben ellenőrizze a BGP-társ állapotát:
+Az Azure VPN-átjárón ellenőrizze a BGP-társ állapotát:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
@@ -633,13 +633,13 @@ Példa a kimenetre:
 65000 07:13:51.0109601  10.2.0.228              507          500   10.2.0.229               6 Connected
 ```
 
-A VPN-sűrítőtől a helyszíni eBGP keresztül fogadott hálózati előtagok listájának ellenőrzéséhez a "forrás" attribútum alapján szűrheti a következőt:
+Az eBGP-n keresztül a VPN-koncentrátor helyszíni rendszeréből kapott hálózati előtagok listájának ellenőrzéséhez szűrhet az "Origin" attribútum szerint:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
-A példában a kimenetben az ASN 65010 a helyi VPN-ben lévő BGP autonóm rendszer száma.
+A példakimeneti, az ASN 65010 a BGP autonóm rendszer száma a VPN helyszíni.
 
 ```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
@@ -648,7 +648,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 65010  10.2.0.228   10.0.0.0/24  172.16.0.10 EBgp   172.16.0.10  32768
 ```
 
-A hirdetett útvonalak listájának megtekintéséhez:
+A meghirdetett útvonalak listájának megtekintése:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
@@ -667,7 +667,7 @@ AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 65010  10.2.0.229   10.0.0.0/24    10.2.0.229 Igp                  0
 ```
 
-Példa a helyszíni Cisco CSR1000:
+Példa a helyszíni Cisco CSR1000-re:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 routes
@@ -688,7 +688,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 4
 ```
 
-A helyszíni Cisco CSR1000 az Azure VPN Gateway-be hirdetett hálózatok listája a következő paranccsal listázható:
+A helyszíni Cisco CSR1000 és az Azure VPN-átjáró között meghirdetett hálózatok listája a következő paranccsal sorolható:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
@@ -707,8 +707,8 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 2
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Network Performance Monitor for ExpressRoute konfigurálása](how-to-npm.md)
 
-* [Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [Helyek közötti kapcsolat hozzáadása meglévő VPN-átjárókapcsolattal rendelkező virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

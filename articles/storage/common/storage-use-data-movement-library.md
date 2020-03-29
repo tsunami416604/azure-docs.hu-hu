@@ -1,7 +1,7 @@
 ---
-title: Adatok átvitele a .NET-hez készült adatáthelyezési függvénytárral
+title: Adatok átvitele a .NET adatmozgatási tárával
 titleSuffix: Azure Storage
-description: Az adatátviteli függvénytár segítségével áthelyezheti vagy átmásolhatja az adatokat a blob-és fájl-tartalmakba. Adatok másolása az Azure Storage-ba helyi fájlokból, illetve adatok másolása a Storage-fiókokba vagy azok között. Egyszerűen migrálhatja adatait az Azure Storage-ba.
+description: Az Adatmozgatás tárral adatokat helyezhet át vagy másolhat blob- és fájltartalomba. Adatok másolása az Azure Storage-ba helyi fájlokból, vagy adatok másolása a tárfiókokon belül vagy között. Egyszerűen áttelepítheti adatait az Azure Storage-ba.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,48 +11,48 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942909"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Adatok átvitele az adatátviteli kódtárral
 
-Az Azure Storage adatátviteli könyvtára egy többplatformos nyílt forráskódú kódtár, amely nagy teljesítményű blobok és fájlok feltöltésére, letöltésére és másolására szolgál. Az adatáthelyezési függvénytár olyan kényelmes metódusokat biztosít, amelyek nem érhetők el az Azure Storage .NET-hez készült ügyféloldali kódtáraban. Ezekkel a módszerekkel beállíthatja a párhuzamos műveletek számát, nyomon követheti a folyamat előrehaladását, egyszerűen folytathatja a megszakított átvitelt, és még sok más lehetőséget is.
+Az Azure Storage Data Movement könyvtár egy platformfüggetlen nyílt forráskódú könyvtár, amely et a blobok és fájlok nagy teljesítményű feltöltésére, letöltésére és másolására terveztek. Az adatmozgatási könyvtár kényelmes módszereket biztosít, amelyek nem érhetők el az Azure Storage-ügyfélkódtárban . Ezek a módszerek lehetővé teszik a párhuzamos műveletek számának beállítását, az átvitel előrehaladásának nyomon követését, a visszavont átvitel egyszerű folytatását és még sok mást.
 
-Ez a könyvtár a .NET Core-t is használja, ami azt jelenti, hogy Windows, Linux és macOS rendszerű .NET-alkalmazások létrehozásakor használható. Ha többet szeretne megtudni a .NET Core-ról, tekintse meg a [.net Core dokumentációját](https://dotnet.github.io/). Ez a könyvtár a Windows hagyományos .NET-keretrendszerbeli alkalmazásaihoz is használható.
+Ez a könyvtár a .NET Core-t is használja, ami azt jelenti, hogy használhatja a .NET alkalmazások készítéséhez Windows, Linux és macOS rendszeren. A .NET Core-ról a [.NET Core dokumentációjában](https://dotnet.github.io/)olvashat bővebben. Ez a könyvtár a windowsos .
 
-Ebből a dokumentumból megtudhatja, hogyan hozhat létre Windows, Linux és macOS rendszeren futó .NET Core Console-alkalmazást, és hogyan hajtja végre az alábbi eseteket:
+Ez a dokumentum bemutatja, hogyan hozhat létre Windows, Linux és macOS rendszeren futó .NET Core konzolalkalmazást, és hogyan hajthatja végre a következő eseteket:
 
-- Fájlok és könyvtárak feltöltése a Blob Storageba.
-- A párhuzamos műveletek számának meghatározása az adatok átvitele során.
-- Az adatátviteli folyamat nyomon követése.
-- A megszakított adatátvitel folytatása.
-- Fájl másolása URL-címről Blob Storagera.
-- Másolás Blob Storageról Blob Storagera.
+- Fájlok és könyvtárak feltöltése a Blob Storage szolgáltatásba.
+- Adja meg a párhuzamos műveletek számát az adatok átvitelekekekekén.
+- Az adatátvitel folyamatának nyomon követése.
+- Folytassa a visszavont adatátvitelt.
+- Fájl másolása URL-címről blob storage-ba.
+- Másolás a Blob Storage-ból a Blob Storage-ba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Visual Studio Code](https://code.visualstudio.com/)
+- [Visual Studio kód](https://code.visualstudio.com/)
 - Egy [Azure-tárfiók](storage-account-create.md)
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
-1. A .net Core telepítéséhez látogasson el a [.net Core telepítési útmutatóba](https://www.microsoft.com/net/core) . A környezet kiválasztásakor válassza a parancssori kapcsolót.
-2. A parancssorból hozzon létre egy könyvtárat a projekthez. Navigáljon a címtárba, majd írja be a `dotnet new console -o <sample-project-name>`t a C# konzolos projekt létrehozásához.
-3. Nyissa meg ezt a könyvtárat a Visual Studio Code-ban. Ez a lépés gyorsan elvégezhető a parancssorból, ha beírja a `code .` a Windowsba.
-4. Telepítse a [ C# bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) a Visual Studio Code Piactérről. Indítsa újra a Visual Studio Code-ot.
-5. Ekkor két kérdést kell látnia. Az egyik a "szükséges eszközök létrehozása és hibakeresése". Kattintson az Igen gombra. Egy másik kérdés a feloldatlan függőségek visszaállítása. Kattintson a visszaállítás gombra.
-6. Módosítsa `launch.json` a `.vscode` alatt a külső terminál konzolként való használatához. Ennek a beállításnak a következőképpen kell beolvasnia `"console": "externalTerminal"`
-7. A Visual Studio Code lehetővé teszi a .NET Core-alkalmazások hibakeresését. Nyomja meg `F5` az alkalmazás futtatásához, és ellenőrizze, hogy a telepítés működik-e. A ""Helló világ!"alkalmazás!" kifejezésnek kell megjelennie kinyomtatva a konzolra.
+1. A [.NET Core](https://www.microsoft.com/net/core) telepítéséhez látogasson el a .NET Core telepítési útmutatóba. A környezet kiválasztásakor válassza a parancssori kapcsolót.
+2. A parancssorból hozzon létre egy könyvtárat a projekthez. Navigáljon ebbe a `dotnet new console -o <sample-project-name>` könyvtárba, majd írja be a C# konzolprojekt létrehozásához.
+3. Nyissa meg ezt a könyvtárat a Visual Studio-kódban. Ez a lépés gyorsan elvégezhető `code .` a parancssorból a Windows beírásával.
+4. Telepítse a [C# bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) a Visual Studio Kódpiactérről. Indítsa újra a Visual Studio kódját.
+5. Ezen a ponton két kérdést kell látnia. Az egyik a "szükséges eszközök létrehozásához és hibakereséséhez" való hozzáadása. Kattintson az "igen" gombra. Egy másik kérdés a feloldatlan függőségek visszaállítása. Kattintson a "visszaállítás" gombra.
+6. Módosítsa `launch.json` `.vscode` a külső terminálkonzolként való használatához. Ez a beállítás a következőként`"console": "externalTerminal"`
+7. A Visual Studio Code lehetővé teszi a .NET Core alkalmazások hibakeresését. Nyomja `F5` meg az alkalmazás futtatásához, és ellenőrizze, hogy a beállítás működik.Hit to run your application and verify that your setup is working. Látnod kellene a "Hello World!"-et. a konzolra.
 
-## <a name="add-the-data-movement-library-to-your-project"></a>Adatátviteli függvénytár hozzáadása a projekthez
+## <a name="add-the-data-movement-library-to-your-project"></a>Az Adatmozgatás könyvtár hozzáadása a projekthez
 
-1. Adja hozzá az adatátviteli függvénytár legújabb verzióját a `<project-name>.csproj` fájljának `dependencies` szakaszához. Az írás időpontjában ez a verzió `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
-2. A projekt visszaállítására figyelmeztető üzenetnek kell megjelennie. Kattintson a visszaállítás gombra. A projektet a parancssorból is visszaállíthatja úgy, hogy beírja a `dotnet restore` parancsot a projekt könyvtára gyökerébe.
+1. Adja hozzá az Adatmozgatás `dependencies` könyvtár legújabb `<project-name>.csproj` verzióját a fájl szakaszához. Abban az időben az írás, ez a verzió lenne`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+2. A projekt visszaállításához egy üzenet jelenik meg. Kattintson a "visszaállítás" gombra. A projektet a parancssorból is visszaállíthatja, ha beírja a parancsot `dotnet restore` a projektkönyvtár gyökerébe.
 
-`<project-name>.csproj`módosítása:
+Módosítás `<project-name>.csproj`:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -66,11 +66,11 @@ Ebből a dokumentumból megtudhatja, hogyan hozhat létre Windows, Linux és mac
     </Project>
 ```
 
-## <a name="set-up-the-skeleton-of-your-application"></a>Az alkalmazás csontvázának beállítása
+## <a name="set-up-the-skeleton-of-your-application"></a>Az alkalmazás vázának beállítása
 
-Az első lépés az alkalmazás "csontváz" kódjának beállítása. Ez a kód a Storage-fiók nevét és a fiók kulcsát kéri, és ezeket a hitelesítő adatokat használja egy `CloudStorageAccount` objektum létrehozásához. Ez az objektum a Storage-fiókkal való interakcióra szolgál az összes adatátviteli helyzetben. A kód arra is felszólítja, hogy válassza ki a végrehajtani kívánt átviteli művelet típusát.
+Az első dolog, amit teszünk, hogy felállítjuk az alkalmazásunk "csontváz" kódját. Ez a kód egy tárfiók nevét és fiókkulcsát kéri, `CloudStorageAccount` és ezeket a hitelesítő adatokat használja egy objektum létrehozásához. Ez az objektum a storage-fiókunkkal való interakcióra szolgál minden átviteli forgatókönyvben. A kód arra is kéri, hogy válasszuk ki az átviteli művelet típusát, amelyet végre szeretnénk hajtani.
 
-`Program.cs`módosítása:
+Módosítás `Program.cs`:
 
 ```csharp
 using System;
@@ -145,9 +145,9 @@ namespace DMLibSample
 }
 ```
 
-## <a name="upload-a-local-file-to-a-blob"></a>Helyi fájl feltöltése egy blobba
+## <a name="upload-a-local-file-to-a-blob"></a>Helyi fájl feltöltése blobba
 
-Adja hozzá a metódusokat `GetSourcePath` és `GetBlob` a `Program.cs`:
+Adja hozzá `GetSourcePath` `GetBlob` a `Program.cs`módszereket, és :
 
 ```csharp
 public static string GetSourcePath()
@@ -175,7 +175,7 @@ public static CloudBlockBlob GetBlob(CloudStorageAccount account)
 }
 ```
 
-Módosítsa a `TransferLocalFileToAzureBlob` metódust:
+Módosítsa `TransferLocalFileToAzureBlob` a módszert:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -189,19 +189,19 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Ez a kód egy helyi fájl elérési útját, egy új vagy egy meglévő tároló nevét, valamint egy új blob nevét kéri tőlünk. A `TransferManager.UploadAsync` metódus ezt az információt használja a feltöltéshez.
+Ez a kód egy helyi fájl elérési útját, egy új vagy meglévő tároló nevét és egy új blob nevét kéri. A `TransferManager.UploadAsync` metódus ezen információk alapján hajtja végre a feltöltést.
 
-Az alkalmazás futtatásához nyomja meg `F5`. A feltöltési folyamat ellenőrzéséhez tekintse meg a Storage-fiókját a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+Hit `F5` futtatni a kérelmet. A feltöltés tanuskodhat, ha megtekinti a Tárfiókot a [Microsoft Azure Storage Explorer](https://storageexplorer.com/)programban.
 
 ## <a name="set-the-number-of-parallel-operations"></a>A párhuzamos műveletek számának beállítása
 
-Az adatátviteli függvénytár által kínált egyik funkció lehetővé teszi a párhuzamos műveletek számának beállítását az adatátvitel sebességének növelése érdekében. Alapértelmezés szerint az adatáthelyezési függvénytár beállítja a párhuzamos műveletek számát a gépen lévő magok számával.
+Az adatmozgatási függvénytár által kínált egyik funkció a párhuzamos műveletek számának beállítása az adatátviteli átviteli sebesség növelése érdekében. Alapértelmezés szerint az Adatmozgatás könyvtár a párhuzamos műveletek számát 8 *-ra állítja a számítógépen lévő magok számára.
 
-Ne feledje, hogy az alacsony sávszélességű környezetekben számos párhuzamos művelet megterhelheti a hálózati kapcsolatát, és ténylegesen megakadályozhatja a műveletek teljes befejezését. Ezzel a beállítással kell kísérletezni annak meghatározásához, hogy mi működik a legjobban az elérhető hálózati sávszélesség alapján.
+Ne feledje, hogy az alacsony sávszélességű környezetben számos párhuzamos művelet túlterhelheti a hálózati kapcsolatot, és ténylegesen megakadályozhatja a műveletek teljes befejezését. Ezzel a beállítással kell kísérleteznie, hogy a rendelkezésre álló hálózati sávszélesség alapján meghatározza, hogy mi működik a legjobban.
 
-Vegyünk fel egy olyan kódot, amely lehetővé teszi a párhuzamos műveletek számának beállítását. Vegyünk fel olyan kódot is, amely az átvitel befejezéséhez szükséges időt veszi igénybe.
+Adjunk hozzá néhány kódot, amely lehetővé teszi számunkra, hogy állítsa be a párhuzamos műveletek számát. Adjunk hozzá olyan kódot is, amely megkeresi, hogy mennyi ideig tart az átvitel befejezése.
 
-`SetNumberOfParallelOperations` metódus hozzáadása a `Program.cs`hoz:
+Adjon `SetNumberOfParallelOperations` hozzá `Program.cs`egy módszert a következőhöz:
 
 ```csharp
 public static void SetNumberOfParallelOperations()
@@ -212,7 +212,7 @@ public static void SetNumberOfParallelOperations()
 }
 ```
 
-Módosítsa a `ExecuteChoice` módszert a `SetNumberOfParallelOperations`használatára:
+A `ExecuteChoice` használni `SetNumberOfParallelOperations`kívánt módszer módosítása:
 
 ```csharp
 public static void ExecuteChoice(CloudStorageAccount account)
@@ -241,7 +241,7 @@ public static void ExecuteChoice(CloudStorageAccount account)
 }
 ```
 
-A `TransferLocalFileToAzureBlob` metódus módosítása időzítő használatára:
+Módosítsa `TransferLocalFileToAzureBlob` a módszert időzítő használatára:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -257,11 +257,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="track-transfer-progress"></a>Adatátviteli folyamat nyomon követése
+## <a name="track-transfer-progress"></a>A nyomon követése átvitel folyamata
 
-Annak ismerete, hogy mennyi ideig tartott az adatok átvitele. Az átvitel *közbeni* előrehaladást azonban még jobbá teheti az átvitel során. Ennek a forgatókönyvnek a megvalósításához létre kell hozni egy `TransferContext` objektumot. A `TransferContext` objektum két formát tartalmaz: `SingleTransferContext` és `DirectoryTransferContext`. A korábbi egy egyetlen fájl átadására szolgál, és az utóbbi a fájlok könyvtárának továbbítására szolgál.
+Az adatok átvitelének ideje segít. Azonban, hogy képes látni a haladást az átadás *során* az átadási művelet még jobb lenne. Ennek a forgatókönyvnek az eléréséhez létre kell hoznunk egy `TransferContext` objektumot. Az `TransferContext` objektum két formában `SingleTransferContext` `DirectoryTransferContext`kapható: és . Az előbbi egy fájl átvitelére szolgál, az utóbbi pedig a fájlok könyvtárának átvitelére.
 
-Adja hozzá a metódusokat `GetSingleTransferContext` és `GetDirectoryTransferContext` a `Program.cs`:
+Adja hozzá `GetSingleTransferContext` `GetDirectoryTransferContext` a `Program.cs`módszereket, és :
 
 ```csharp
 public static SingleTransferContext GetSingleTransferContext(TransferCheckpoint checkpoint)
@@ -289,7 +289,7 @@ public static DirectoryTransferContext GetDirectoryTransferContext(TransferCheck
 }
 ```
 
-Módosítsa a `TransferLocalFileToAzureBlob` módszert a `GetSingleTransferContext`használatára:
+A `TransferLocalFileToAzureBlob` használni `GetSingleTransferContext`kívánt módszer módosítása:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -307,11 +307,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="resume-a-canceled-transfer"></a>Megszakított átvitel folytatása
+## <a name="resume-a-canceled-transfer"></a>Visszavont átvitel folytatása
 
-Az adatátviteli függvénytár által kínált másik kényelmi funkció lehetővé teszi a megszakított átvitel folytatását. Vegyünk fel egy olyan kódot, amely lehetővé teszi, hogy ideiglenesen megszakítsa az átvitelt a `c`beírásával, majd folytassa az átvitelt 3 másodperccel később.
+Az Adatmozgalom könyvtár a törölt átvitel folytatásának képessége. Adjunk hozzá néhány kódot, amely lehetővé teszi számunkra, hogy ideiglenesen megszünteti az átvitel tírja be, `c`majd folytassa az átvitel 3 másodperccel később.
 
-`TransferLocalFileToAzureBlob`módosítása:
+Módosítás `TransferLocalFileToAzureBlob`:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -363,13 +363,13 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Eddig a `checkpoint` érték mindig `null`re lett állítva. Most, ha megszakítottuk az átvitelt, beolvasjuk az átvitel utolsó ellenőrzőpontját, majd ezt az új ellenőrzőpontot használjuk az adatátviteli kontextusban.
+Eddig az értékünk `checkpoint` mindig is `null`a . Ha töröljük az átvitelt, visszaszerezzük az átszállítás unk utolsó ellenőrzőpontját, és ezt az új ellenőrzőpontot használjuk az átigazolási környezetünkben.
 
-## <a name="transfer-a-local-directory-to-blob-storage"></a>Helyi könyvtár átvitele a blob Storage-ba
+## <a name="transfer-a-local-directory-to-blob-storage"></a>Helyi könyvtár átvitele a Blob storage-ba
 
-Kiábrándító lenne, ha az adatátviteli függvénytár egyszerre csak egy fájlt tud átvinni. Szerencsére ez nem így van. Az adatáthelyezési függvénytár lehetővé teszi a fájlok és az alkönyvtárak könyvtárának átadását. Vegyünk fel egy olyan kódot, amely lehetővé teszi számunkra, hogy ezt megtegyük.
+Kiábrándító lenne, ha az adatmozgalom-könyvtár egyszerre csak egy fájlt tudna átvinni. Szerencsére nem ez a helyzet. Az Adatmozgatás könyvtár lehetővé teszi a fájlok könyvtárának és az összes alkönyvtárának átvitelét. Adjunk hozzá néhány kódot, amely lehetővé teszi számunkra, hogy nem csak ezt.
 
-Először adja hozzá a `GetBlobDirectory` metódust a `Program.cs`hoz:
+Először adja `GetBlobDirectory` hozzá `Program.cs`a módszert a következőhöz:
 
 ```csharp
 public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
@@ -387,7 +387,7 @@ public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
 }
 ```
 
-Ezután módosítsa `TransferLocalDirectoryToAzureBlobDirectory`:
+Ezután `TransferLocalDirectoryToAzureBlobDirectory`módosítsa:
 
 ```csharp
 public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorageAccount account)
@@ -444,13 +444,13 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 }
 ```
 
-A metódus és az egyetlen fájl feltöltési módszere között van néhány különbség. Most a `TransferManager.UploadDirectoryAsync` és a korábban létrehozott `getDirectoryTransferContext` metódust használjuk. Emellett `options` értéket is biztosítunk a feltöltési művelethez, ami lehetővé teszi számunkra, hogy a feltöltéshez alkönyvtárakat is szeretnénk foglalni.
+Van néhány különbség ez a módszer és az egyetlen fájl feltöltésének módja között. Most használjuk, `TransferManager.UploadDirectoryAsync` és `getDirectoryTransferContext` a módszer hoztunk létre korábban. Ezen kívül, most `options` egy értéket a mi feltöltési művelet, amely lehetővé teszi számunkra, hogy jelezze, hogy szeretnénk felvenni alkönyvtárak a mi feltölteni.
 
-## <a name="copy-a-file-from-url-to-a-blob"></a>Fájl másolása az URL-címről egy blobba
+## <a name="copy-a-file-from-url-to-a-blob"></a>Fájl másolása URL-címből blobba
 
-Most vegyünk fel egy olyan kódot, amely lehetővé teszi, hogy egy fájlt egy URL-címről egy Azure-Blobba másoljon.
+Most adjunk hozzá kódot, amely lehetővé teszi számunkra, hogy másolja a fájlt egy URL-t egy Azure Blob.
 
-`TransferUrlToAzureBlob`módosítása:
+Módosítás `TransferUrlToAzureBlob`:
 
 ```csharp
 public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
@@ -502,13 +502,13 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 }
 ```
 
-Ennek a funkciónak az egyik fontos felhasználási esete, ha egy másik felhőalapú szolgáltatásból (pl. AWS) az Azure-ba kell áthelyeznie az adatátvitelt. Ha olyan URL-címmel rendelkezik, amely hozzáférést biztosít az erőforráshoz, egyszerűen áthelyezheti az erőforrást az Azure-Blobokra az `TransferManager.CopyAsync` metódus használatával. Ez a metódus egy új logikai paramétert is bevezet. Ha ezt a paramétert `true` állítja be, azt jelzi, hogy aszinkron kiszolgálóoldali másolást szeretnénk végrehajtani. Ha ezt a paramétert úgy állítja be, hogy `false` szinkronizálja azt, akkor a rendszer először a helyi gépre tölti le az erőforrást, majd feltölti az Azure-Blobba. A szinkron másolás azonban jelenleg csak az egyik Azure Storage-erőforrásból a másikba való másoláshoz érhető el.
+A szolgáltatás egyik fontos használati esete, amikor adatokat kell áthelyeznie egy másik felhőszolgáltatásból (pl. AWS) az Azure-ba. Mindaddig, amíg rendelkezik egy URL-címet, amely hozzáférést biztosít az erőforráshoz, `TransferManager.CopyAsync` könnyen áthelyezheti az erőforrást az Azure Blobs-ba a módszer használatával. Ez a módszer egy új logikai paramétert is bevezet. Ha ezt `true` a paramétert állítja be, az azt jelzi, hogy aszinkron kiszolgálóoldali másolatot szeretnénk készíteni. Ha ezt `false` a paramétert egy szinkron példányra állítja, azaz az erőforrást először letölti a helyi gépre, majd feltölti az Azure Blobba. Azonban szinkron másolat jelenleg csak az egyik Azure Storage-erőforrásból a másikba történő másoláshoz érhető el.
 
-## <a name="copy-a-blob"></a>BLOB másolása
+## <a name="copy-a-blob"></a>Blob másolása
 
-Az adatátviteli függvénytár által egyedileg biztosított másik funkció az egyik Azure Storage-erőforrásból a másikba való másolás lehetősége.
+Egy másik funkció, amely egyedülálló módon az adatmozgatási könyvtár az egyik Azure Storage-erőforrásból a másikba történő másolása.
 
-`TransferAzureBlobToAzureBlob`módosítása:
+Módosítás `TransferAzureBlobToAzureBlob`:
 
 ```csharp
 public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount account)
@@ -560,12 +560,12 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Ebben a példában a logikai paramétert `TransferManager.CopyAsync` értékre állítjuk, hogy a `false` jelezze, hogy szinkron másolatot szeretne készíteni. Ez azt jelenti, hogy az erőforrást először a helyi gépre tölti le a rendszer, majd feltölti az Azure-Blobba. A szinkron másolási lehetőséggel biztosíthatja, hogy a másolási művelet konzisztens sebességgel legyen. Ezzel szemben az aszinkron kiszolgálóoldali másolás sebessége a kiszolgálón elérhető hálózati sávszélességtől függ, ami ingadozhat. A szinkron másolás azonban további kimenő forgalmat eredményezhet az aszinkron másoláshoz képest. Az ajánlott módszer az, ha szinkron másolást használ egy olyan Azure-beli virtuális gépen, amely ugyanabban a régióban található, mint a forrásként szolgáló Storage-fiók, hogy elkerülje a kimenő forgalom költségeit.
+Ebben a példában `TransferManager.CopyAsync` a logikai `false` paramétert úgy állítjuk be, hogy azt jelzi, hogy szinkron másolatot szeretnénk készíteni. Ez azt jelenti, hogy az erőforrás először a helyi gépre töltődik le, majd feltölti az Azure Blobba. A szinkron másolási lehetőség nagyszerű módja annak, hogy a másolási művelet egyenletes sebességgel rendelkezzen. Ezzel szemben az aszinkron kiszolgálóoldali másolat sebessége a kiszolgálón rendelkezésre álló hálózati sávszélességtől függ, amely ingadozhat. A szinkron másolat azonban további kimenő forgalom költséget eredményezhet az aszinkron másolathoz képest. Az ajánlott megközelítés a szinkron példány használata egy Azure virtuális gép, amely ugyanabban a régióban, mint a forrás tárfiók a kimenő költségek elkerülése érdekében.
 
-Az adatáthelyezési alkalmazás már befejeződött. [A teljes kód minta elérhető a githubon](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
+Az adatmozgatási alkalmazás befejeződött. [A teljes kódminta elérhető a GitHubon.](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Storage adatáthelyezési függvénytárának dokumentációja](https://azure.github.io/azure-storage-net-data-movement).
+[Az Azure Storage Data Movement függvénytár referenciadokumentációja.](https://azure.github.io/azure-storage-net-data-movement)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

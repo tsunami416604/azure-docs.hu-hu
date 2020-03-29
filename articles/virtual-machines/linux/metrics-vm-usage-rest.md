@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuálisgép-használati adatok beszerzése a REST API használatával
-description: Használja az Azure REST API-kat a virtuális gépek kihasználtsági metrikáinak összegyűjtéséhez.
+title: Az Azure virtuálisgép-használati adatok beszereznie a REST API-val
+description: Az Azure REST API-k segítségével egy virtuális gép kihasználtsági metrikák gyűjtéséhez.
 author: rloutlaw
 ms.service: virtual-machines
 ms.subservice: monitoring
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944751"
 ---
-# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Virtuális gépek használati metrikáinak beolvasása a REST API használatával
+# <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Virtuálisgép-használati metrikák begyűjtése a REST API használatával
 
-Ez a példa bemutatja, hogyan kérhető le egy [linuxos virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) CPU-használata az [Azure REST API](/rest/api/azure/)használatával.
+Ez a példa bemutatja, hogyan lehet lekérni egy [Linux virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) processzorhasználatát az Azure REST API [használatával.](/rest/api/azure/)
 
-A REST API dokumentációja és a további minták a [Azure monitor Rest-referenciában](/rest/api/monitor)érhetők el. 
+A REST API-hoz teljes körű referenciadokumentáció és további minták érhetők el az [Azure Monitor REST-hivatkozásában.](/rest/api/monitor) 
 
-## <a name="build-the-request"></a>A kérelem létrehozása
+## <a name="build-the-request"></a>A kérelem felépítése
 
-Az alábbi GET kérelem használatával gyűjtheti össze a [CPU-metrika százalékos arányát](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) egy virtuális gépről.
+A következő GET-kérelem segítségével gyűjtse össze a [Százalékos CPU-metrikát](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) egy virtuális gépről
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
 ```
 
-### <a name="request-headers"></a>Kérelemfejlécek
+### <a name="request-headers"></a>Kérésfejlécek
 
 A következő fejlécek megadása kötelező: 
 
@@ -42,21 +42,21 @@ A következő fejlécek megadása kötelező:
 
 | Név | Leírás |
 | :--- | :---------- |
-| subscriptionId | Az Azure-előfizetést azonosító előfizetés azonosítója. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. |
-| resourceGroupName | Az erőforráshoz társított Azure-erőforráscsoport neve. Ezt az értéket a Azure Resource Manager API, a CLI vagy a portál használatával szerezheti be. |
-| vmname | Az Azure-beli virtuális gép neve. |
-| metricnames | Az érvényes [Load Balancer metrikák](/azure/load-balancer/load-balancer-standard-diagnostics)vesszővel tagolt listája. |
-| api-version | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum a fenti URL-cím részét képező API-Version `2018-01-01`tartalmazza.  |
-| TimeSpan | A következő formátumú karakterlánc `startDateTime_ISO/endDateTime_ISO`, amely a visszaadott metrikák időtartományát határozza meg. Ez a választható paraméter úgy van beállítva, hogy a példában egy nap értékű adatot adja vissza. |
+| subscriptionId | Az Azure-előfizetést azonosító előfizetés-azonosító. Ha több előfizetéssel rendelkezik, olvassa el [a Több előfizetés sel végzett témakört.](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) |
+| resourceGroupName | Az erőforráshoz társított Azure-erőforráscsoport neve. Ezt az értéket az Azure Resource Manager API-ból, a CLI-ből vagy a portálról szerezheti be. |
+| vmname | Az Azure virtuális gép neve. |
+| metrikák neve | Az érvényes [terheléselosztó mérőszámok](/azure/load-balancer/load-balancer-standard-diagnostics)vesszővel tagolt listája . |
+| api-verzió | A kérelemhez használandó API-verzió.<br /><br /> Ez a dokumentum `2018-01-01`a fenti URL-ben található api-verzióra vonatkozik.  |
+| időtartomány | Karakterlánc a következő `startDateTime_ISO/endDateTime_ISO` formátumban, amely meghatározza a visszaadott metrikák időtartományát. Ez a választható paraméter úgy van beállítva, hogy egy napi adatait adja vissza a példában. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse
 
-Ehhez a művelethez nem szükséges a kérelem törzse.
+Ehhez a művelethez nincs szükség kéréstörzsre.
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A rendszer a 200-as állapotkódot adja vissza, ha a metrikai értékek listáját sikeresen visszaadja. A hibakódok teljes listája megtalálható a [dokumentációban](/rest/api/monitor/metrics/list#errorresponse).
+A 200-as állapotkódot a rendszer akkor adja vissza, amikor a metrikaértékek listáját sikeresen visszaadja. A hibakódok teljes listája a [referenciadokumentációban](/rest/api/monitor/metrics/list#errorresponse)található .
 
 ## <a name="example-response"></a>Példaválasz 
 

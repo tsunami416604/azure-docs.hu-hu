@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946123"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure Data Box Gateway-felhasználók kezelése az Azure Portalon
@@ -33,7 +33,7 @@ A felhasználók csak olvasási vagy teljes körű jogosultsággal rendelkezhetn
  - **Teljes körű jogosultsággal rendelkező felhasználó** – Teljes körű hozzáféréssel rendelkező helyi felhasználó.
  - **Csak olvasási jogosultsággal rendelkező felhasználó** – Csak olvasási hozzáféréssel rendelkező helyi felhasználó. Ezek a felhasználók csak olvasási műveleteket megengedő megosztásokhoz vannak társítva.
 
-A felhasználói engedélyek első alkalommal a megosztás létrehozása során, a felhasználó létrehozásakor lesznek meghatározva. A megosztási szintű engedélyek módosítása jelenleg nem támogatott.
+A felhasználói engedélyek első alkalommal a megosztás létrehozása során, a felhasználó létrehozásakor lesznek meghatározva. A megosztásszintű engedélyek módosítása jelenleg nem támogatott.
 
 ## <a name="add-a-user"></a>Felhasználó hozzáadása
 
@@ -41,11 +41,11 @@ Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Por
 
 1. Az Azure Portalon keresse meg a Data Box Gateway-erőforrást, majd lépjen az **Áttekintés** területre. A parancssávon kattintson a **+ Felhasználó hozzáadása** gombra.
 
-    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-manage-users/add-user-1.png)
+    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-manage-users/add-user-1.png)
 
 2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, majd kattintson a **Hozzáadás** gombra.
 
-    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > A következő rendszer által lefoglalt felhasználók nem használhatóak: Rendszergazda, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Vendég.  

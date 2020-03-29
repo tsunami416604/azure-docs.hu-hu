@@ -1,6 +1,6 @@
 ---
 title: A sablonok áttekintése
-description: Megtudhatja, hogyan használható előre definiált sablon a Azure Data Factory gyors megkezdéséhez.
+description: Ismerje meg, hogyan használhat előre definiált sablont az Azure Data Factory gyors használatához.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,81 +12,81 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927345"
 ---
 # <a name="templates"></a>Sablonok
 
-A sablonok előre meghatározott Azure Data Factory folyamatok, amelyek lehetővé teszik a Data Factory gyors megkezdését. A sablonok akkor hasznosak, ha új Data Factory, és gyors kezdésre van szükség. Ezek a sablonok csökkentik az adatintegrációs projektek kiépítésének fejlesztési idejét, ezáltal javítják a fejlesztői hatékonyságot.
+A sablonok előre definiált Azure Data Factory-folyamatok, amelyek lehetővé teszik a Data Factory gyors megkezdését. A sablonok akkor hasznosak, ha most ismerkedik a Data Factoryval, és gyorsan szeretné elkezdeni. Ezek a sablonok csökkentik az adatintegrációs projektek fejlesztési idejét, ezáltal javítva a fejlesztők termelékenységét.
 
-## <a name="create-data-factory-pipelines-from-templates"></a>Data Factory folyamatok létrehozása sablonokból
+## <a name="create-data-factory-pipelines-from-templates"></a>Adatfeldolgozó folyamatok létrehozása sablonokból
 
-A következő két módon teheti meg a Data Factory folyamat létrehozását a sablonból:
+A Data Factory-folyamat létrehozásának megkezdése egy sablonból az alábbi két módon:
 
-1.  Válassza a **folyamat létrehozása sablonból** lehetőséget az Áttekintés lapon a sablon-gyűjtemény megnyitásához.
+1.  Válassza a Folyamat létrehozása lehetőséget a **sablonból** az Áttekintés lapon a sablongyűjtemény megnyitásához.
 
-    ![A sablon-gyűjtemény megnyitása az Áttekintés lapról](media/solution-templates-introduction/templates-intro-image1.png)
+    ![A sablongyűjtemény megnyitása az Áttekintés lapon](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  A erőforrás-kezelő szerző lapján válassza a **+** , majd a **folyamat sablonból** lehetőséget a sablon-gyűjtemény megnyitásához.
+1.  Az Erőforrás-kezelő Szerző lapján válassza a Lehetőséget, **+** majd a Folyamat **sablonból a** sablongyűjtemény megnyitásához.
 
-    ![A sablon-gyűjtemény megnyitása a szerző lapról](media/solution-templates-introduction/templates-intro-image2.png)
+    ![A sablongyűjtemény megnyitása a Szerző lapon](media/solution-templates-introduction/templates-intro-image2.png)
 
-## <a name="template-gallery"></a>Sablon gyűjteménye
+## <a name="template-gallery"></a>Sablongyűjtemény
 
-![A sablon gyűjteménye](media/solution-templates-introduction/templates-intro-image3.png)
+![A sablongyűjtemény](media/solution-templates-introduction/templates-intro-image3.png)
 
-### <a name="out-of-the-box-data-factory-templates"></a>Data Factory sablonok
+### <a name="out-of-the-box-data-factory-templates"></a>A data factory sablonok
 
-A Data Factory Azure Resource Manager sablonokat használ a következő adattároló-sablonok mentéséhez:. Megtekintheti az összes Resource Manager-sablont, valamint a Data Factory sablonokhoz használt jegyzékfájlt a GitHub-tárház [hivatalos Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/templates). A Microsoft által biztosított előre definiált sablonok közé tartoznak a következők, de nem korlátozódnak a következő elemekre:
+A Data Factory az Azure Resource Manager-sablonokat használja az adatgyári folyamatsablonok mentéséhez. A [hivatalos Azure Data Factory GitHub-tárházban](https://github.com/Azure/Azure-DataFactory/tree/master/templates)megtekintheti az összes Erőforrás-kezelő sablont, valamint a Data Factory-sablonokhoz használt jegyzékfájlt. A Microsoft által biztosított előre definiált sablonok közé tartoznak többek között a következő elemek:
 
 -   Sablonok másolása:
 
     -   [Tömeges másolás az adatbázisból](solution-template-bulk-copy-with-control-table.md)
     
-    -   [Új fájlok másolása a LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
+    -   [Új fájlok másolása az utolsó módosítás dátuma szerint](solution-template-copy-new-files-lastmodifieddate.md)
 
-    -   [Több file-tároló másolása a fájl alapú tárolók között](solution-template-copy-files-multiple-containers.md)
+    -   [Több fájltároló másolása fájlalapú tárolók között](solution-template-copy-files-multiple-containers.md)
 
     -   [Fájlok áthelyezése](solution-template-move-files.md)
 
-    -   [Különbözeti másolat az adatbázisból](solution-template-delta-copy-with-control-table.md)
+    -   [Különbözeti másolás az adatbázisból](solution-template-delta-copy-with-control-table.md)
 
-    -   Másolás \<forrás\>ról \<célhelyre\>
+    -   Másolás \<\> forrásról \<célra\>
 
-        -   [Amazon S3-ról Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
+        -   [Az Amazon S3-tól az Azure Data Lake Store Gen 2-ig](solution-template-migration-s3-azure.md)
 
-        -   A Google Big Queryből a 2. generációs Azure Data Lake Store
+        -   A Google Big Querytől az Azure Data Lake Store Gen 2-ig
 
-        -   HDF-ről Azure Data Lake Store Gen 2-re
+        -   A HDF-től az Azure Data Lake Store Gen 2-ig
 
-        -   Netezza-ről Azure Data Lake Store Gen 1
+        -   Netezza-tól az Azure Data Lake Store Gen 1-ig
 
-        -   SQL Server a helyszínen Azure SQL Database
+        -   A helyszíni SQL Serverről az Azure SQL Database-re
 
-        -   SQL Server a helyszínen Azure SQL Data Warehouse
+        -   A helyszíni SQL Serverről az Azure SQL Data Warehouse-ra
 
-        -   A helyszíni Oracle-ből Azure SQL Data Warehouse
+        -   A helyszíni Oracle-től az Azure SQL Data Warehouse-ig
 
 -   SSIS-sablonok
 
-    -   SSIS-csomagok végrehajtásának ütemezett Azure-SSIS Integration Runtime
+    -   Az Azure-SSIS-integrációs futásidő ütemezése SSIS-csomagok végrehajtásához
 
 -   Sablonok átalakítása
 
-    -   [ETL Azure Databricks](solution-template-databricks-notebook.md)
+    -   [ETL az Azure Databricks](solution-template-databricks-notebook.md)
 
 ### <a name="my-templates"></a>Saját sablonok
 
-A folyamatokat sablonként is mentheti a folyamat lapon a **Mentés sablonként** lehetőség kiválasztásával.
+A folyamatsablonként is menthető, ha a Folyamat lapon a **Mentés sablonként** lehetőséget választja.
 
 ![Folyamat mentése sablonként](media/solution-templates-introduction/templates-intro-image4.png)
 
-Megtekintheti a sablonokként mentett folyamatokat a sablon-gyűjtemény **saját sablonok** szakaszában. Ezeket a erőforrás-kezelő **sablonok** szakaszában is megtekintheti.
+A sablonként mentett folyamatokat a Sablontár **Saját sablonok** szakaszában tekintheti meg. Ezeket az **Erőforrás-kezelő Sablonok** szakaszában is megtekintheti.
 
 ![Saját sablonok](media/solution-templates-introduction/templates-intro-image5.png)
 
 > [!NOTE]
-> A saját sablonok funkció használatához engedélyeznie kell a GIT-integrációt. Az Azure DevOps GIT és a GitHub is támogatott.
+> A Saját sablonok szolgáltatás használatához engedélyeznie kell a GIT-integrációt. Az Azure DevOps GIT és a GitHub egyaránt támogatottak.

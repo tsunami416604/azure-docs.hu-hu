@@ -1,75 +1,75 @@
 ---
-title: A fájl tartalmának változásainak megtekintése Azure Automation
-description: A Change Tracking file Content Change funkciójának használatával megtekintheti egy módosított fájl tartalmát.
+title: Fájltartalom-módosítások megtekintése az Azure Automation segítségével
+description: A módosításkövetés fájltartalom-módosítási funkciójával megtekintheti a módosított fájl tartalmát.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
 ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75418810"
 ---
-# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Change Tracking által nyomon követett fájl tartalmának megtekintése
+# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>A változások követésével nyomon követett fájl tartalmának megtekintése
 
-A fájl tartalmának nyomon követése lehetővé teszi egy fájl tartalmának megtekintését a Change Tracking követésével követett változtatások előtt és után. Ennek elvégzéséhez a fájl tartalmát egy Storage-fiókba menti, miután minden módosítás bekövetkezik.
+A fájltartalom-követés lehetővé teszi a fájl tartalmának megtekintését a módosításkövetés lelt követése előtt és után. Ehhez minden módosítás után a fájl tartalmát egy tárfiókba menti.
 
 ## <a name="requirements"></a>Követelmények
 
-* A fájl tartalmának tárolásához a Resource Manager-alapú üzemi modellt használó standard Storage-fiók szükséges. A prémium és a klasszikus üzembe helyezési modell Storage-fiókjait nem szabad használni. További információ a Storage-fiókokról: [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md)
+* A fájltartalom tárolásához szabványos tárfiók ra van szükség az Erőforrás-kezelő központi telepítési modelljét használó szabványos tárfiókhoz. Prémium szintű és klasszikus üzembe helyezési modell tárfiókok at nem kell használni. A tárfiókokról az [Azure storage-fiókok – további](../storage/common/storage-create-storage-account.md) információ
 
-* A használt Storage-fióknak csak 1 Automation-fiókja lehet csatlakoztatva.
+* A használt tárfiókhoz csak 1 Automation-fiók csatlakoztatható.
 
-* [Change Tracking](automation-change-tracking.md) engedélyezve van az Automation-fiókjában.
+* [A változáskövetés](automation-change-tracking.md) engedélyezve van az Automatizálási fiókban.
 
-## <a name="enable-file-content-tracking"></a>Fájl tartalmának követésének engedélyezése
+## <a name="enable-file-content-tracking"></a>Fájltartalom-követés engedélyezése
 
-1. A Azure Portal nyissa meg Automation-fiókját, majd válassza a **change Tracking (változások nyomon követése**) lehetőséget.
-2. A felső menüben válassza a **beállítások szerkesztése**lehetőséget.
-3. Válassza a **fájl tartalma** lehetőséget, majd kattintson a **hivatkozás**gombra. Ekkor megnyílik a **tartalom hozzáadása hely Change Tracking** ablaktáblán.
+1. Az Azure Portalon nyissa meg az Automation-fiókot, és válassza **a Követés módosítása**lehetőséget.
+2. A felső menüben válassza a **Beállítások szerkesztése parancsot.**
+3. Válassza **a Fájltartalom lehetőséget,** és kattintson **a Hivatkozás gombra.** Ezzel megnyitja a **Tartalomhely hozzáadása a változáskövetéshez** ablaktáblát.
 
-   ![engedélyezés](./media/change-tracking-file-contents/enable.png)
+   ![Engedélyezi](./media/change-tracking-file-contents/enable.png)
 
-4. Válassza ki azt az előfizetést és a Storage-fiókot, amelyet a fájl tartalmának tárolására kíván használni. Ha engedélyezni szeretné a fájl tartalmának nyomon követését az összes meglévő követett fájlnál, válassza **a be** lehetőséget a **fájl tartalmának feltöltéséhez az összes beállításnál**. Ezt később is megváltoztathatja az egyes fájlok elérési útjára.
+4. Válassza ki azt az előfizetési és tárfiókot, amelynek a fájl tartalmát tárolni szeretné. Ha engedélyezni szeretné a fájltartalom-követést az összes meglévő nyomon követett fájlesetében, válassza **a Be** lehetőséget **a Fájltartalom feltöltéséhez az összes beállításhoz**. Ezt követően minden fájlelérési út esetében módosíthatja ezt.
 
-   ![Storage-fiók beállítása](./media/change-tracking-file-contents/storage-account.png)
+   ![tárfiók beállítása](./media/change-tracking-file-contents/storage-account.png)
 
-5. Ha engedélyezve van, a Storage-fiók és a SAS URI-k láthatók. Az SAS URI-k 365 nap után lejárnak, és **az újbóli Létrehozás gombra kattintva** újra létrehozhatók.
+5. Ha engedélyezve van, a tárfiók és a SAS Uris jelennek meg. A SAS Uris 365 nap után lejár, és újra létrehozható a **Regenerate** gombra kattintva.
 
-   ![fiók kulcsainak listázása](./media/change-tracking-file-contents/account-keys.png)
+   ![fiókkulcsok listázása](./media/change-tracking-file-contents/account-keys.png)
 
 ## <a name="add-a-file"></a>Fájl hozzáadása
 
-A következő lépések végigvezetik a fájlok változás-követésének bekapcsolásán:
+A következő lépések végigvezetik a fájl módosítás-nyomon követésének bekapcsolásán:
 
-1. A Change Tracking **beállítások szerkesztése** lapján válasszaa **Windows-fájlok** vagy a **Linux-fájlok** fület, majd kattintson a **Hozzáadás** gombra.
+1. A **Változások követés** **szerkesztése** lapon válassza a **Windows-fájlok** vagy **a Linux-fájlok** lapot, és kattintson a **Hozzáadás** gombra.
 
-1. Adja meg a fájl elérési útjának adatait, és válassza az **igaz** értéket a **fájl tartalmának feltöltése az összes beállításnál**. Ezzel a beállítással engedélyezhető a fájl tartalmának követése a fájl elérési útjához.
+1. Töltse ki a fájl elérési útjának adatait, és válassza a **Fájltartalom feltöltése**csoport **Igaz csoportban** az összes beállításhoz lehetőséget. Ez a beállítás csak az adott fájlelérési úton engedélyezi a fájltartalom-követést.
 
-   ![Linux-fájl hozzáadása](./media/change-tracking-file-contents/add-linux-file.png)
+   ![linux fájl hozzáadása](./media/change-tracking-file-contents/add-linux-file.png)
 
-## <a name="viewing-the-contents-of-a-tracked-file"></a>Egy követett fájl tartalmának megtekintése
+## <a name="viewing-the-contents-of-a-tracked-file"></a>Nyomon követett fájl tartalmának megtekintése
 
-1. Miután észlelte a fájl vagy az elérési út egy fájljának változását, az a portálon jelenik meg. A módosítások listájában válassza a fájl módosítása lehetőséget. Megjelenik a **változás részletei** ablaktábla.
+1. Ha a rendszer változást észlelt a fájlhoz vagy az elérési úthoz, az megjelenik a portálon. Jelölje ki a fájlmódosítást a módosítások listájából. Megjelenik a **Részletek módosítása** ablaktábla.
 
-   ![változások listázása](./media/change-tracking-file-contents/change-list.png)
+   ![lista módosításai](./media/change-tracking-file-contents/change-list.png)
 
-1. A **change Details (részletek módosítása** ) lapon megtekintheti a fájlok előtt és után megjelenő szabványos adatokat, a bal felső sarokban kattintson a **fájl tartalmának módosítása** elemre a fájl tartalmának megtekintéséhez.
+1. A **Részletek módosítása** lapon a fájladatok előtti és utáni szabvány látható, a bal felső sarokban kattintson a **Fájltartalom-módosítások megtekintése** gombra a fájl tartalmának megtekintéséhez.
 
-   ![változás részletei](./media/change-tracking-file-contents/change-details.png)
+   ![részletek módosítása](./media/change-tracking-file-contents/change-details.png)
 
-1. Az új lapon a fájl tartalmait jelenítheti meg egymás melletti nézetben. A **beágyazott** nézetet is kiválaszthatja a módosítások beágyazott nézetének megtekintéséhez.
+1. Az új lapon a fájl tartalma egymás mellett látható. A **Szövegközi** lehetőséget választva a módosítások szövegközi nézetét is megtekintheti.
 
-   ![fájl változásainak megtekintése](./media/change-tracking-file-contents/view-file-changes.png)
+   ![fájlmódosítások megtekintése](./media/change-tracking-file-contents/view-file-changes.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A megoldás használatával kapcsolatos további információkért tekintse meg az Change Tracking szóló oktatóanyagot:
+Látogasson el a változáskövetés ről szóló oktatóanyagba, ha többet szeretne megtudni a megoldás használatáról:
 
 > [!div class="nextstepaction"]
-> [A környezet változásainak megoldása](automation-tutorial-troubleshoot-changes.md)
+> [A környezet változásainak hibaelhárítása](automation-tutorial-troubleshoot-changes.md)
 
-* A [naplóbeli keresések használata Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md) a részletes változások követésére szolgáló információk megtekintéséhez.
+* Az [Azure Monitor naplóiban végzett naplókeresések](../log-analytics/log-analytics-log-searches.md) használatával részletes változáskövetési adatokat tekinthet meg.
 

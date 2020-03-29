@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása a Google BigQuery a Azure Data Factory használatával
-description: Megtudhatja, hogyan másolhat adatokat a Google BigQuery a fogadó adattárakba egy másolási tevékenység használatával egy adatfeldolgozó-folyamatban.
+title: Adatok másolása a Google BigQueryből az Azure Data Factory használatával
+description: Megtudhatja, hogy miként másolhat adatokat a Google BigQueryből a támogatott fogadó adattárolókba egy adatfeldolgozó folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,59 +13,59 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929423"
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQuery a Azure Data Factory használatával
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQueryből az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Google BigQuery való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása a Google BigQuery. A [Másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez a Google BigQuery-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az adatok a Google BigQuery bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A Google BigQuery adatai bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában láthatja.
 
-A Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez. Ezért nem kell manuálisan telepítenie az illesztőprogramot az összekötő használatához.
+A Data Factory beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez. Ezért nem kell manuálisan telepítenie egy illesztőprogramot az összekötő használatához.
 
 >[!NOTE]
->Ez a Google BigQuery-összekötő a BigQuery API-kra épül. Ügyeljen arra, hogy a BigQuery korlátozza a bejövő kérések maximális számát, és a megfelelő kvótákat a projekten kívüli alapon kényszeríti ki, a [kvóták & korlátozások – API-kérelmek](https://cloud.google.com/bigquery/quotas#api_requests)esetében. Győződjön meg arról, hogy nem indít túl sok egyidejű kérelmet a fiókhoz.
+>Ez a Google BigQuery-összekötő a BigQuery API-k ra épül. Ne feledje, hogy a BigQuery korlátozza a bejövő kérelmek maximális arányát, és projektenként érvényesíti a megfelelő kvótákat, olvassa el [a Kvóták & korlátok – API-kérelmeket.](https://cloud.google.com/bigquery/quotas#api_requests) Győződjön meg arról, hogy nem indít túl sok egyidejű kérelmet a fiókhoz.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek a Google BigQuery-összekötőhöz kapcsolódó entitások definiálásához használhatók Data Factory.
+A következő szakaszok a Data Factory-entitások a Google BigQuery-összekötőre jellemző definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A Google BigQuery társított szolgáltatás a következő tulajdonságokat támogatja.
+A google BigQuery csatolt szolgáltatás a következő tulajdonságokat támogatja.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot **GoogleBigQuery**értékre kell beállítani. | Igen |
-| kivetítés | A lekérdezéshez használt alapértelmezett BigQuery-projekt azonosítója.  | Igen |
-| additionalProjects | A nyilvános BigQuery-projektek eléréséhez használandó projekt-azonosítók vesszővel tagolt listája.  | Nem |
-| requestGoogleDriveScope | Azt határozza meg, hogy hozzáférést kér-e a Google Drive-hoz. A Google Drive-hozzáférés engedélyezése lehetővé teszi az összevont táblázatok támogatását, amelyek a Google Drive-ból származó adatokkal ötvözik a BigQuery adatait. Az alapértelmezett érték **false (hamis**).  | Nem |
-| authenticationType | A hitelesítéshez használt OAuth 2,0 hitelesítési mechanizmus. A ServiceAuthentication csak saját üzemeltetésű Integration Runtime használható. <br/>Az engedélyezett értékek a következők: **UserAuthentication** és **ServiceAuthentication**. A hitelesítési típusokra vonatkozó további tulajdonságokért és JSON-mintákért tekintse meg a táblázat alatti szakaszt. | Igen |
+| type | A típustulajdonságot **GoogleBigQuery**beállításra kell állítani. | Igen |
+| projekt | Az alapértelmezett BigQuery projekt projektazonosítója, amelyhez le kell kérdezni.  | Igen |
+| további projektek | A nyilvános BigQuery-projektek hozzáféréssel rendelkező projektazonosítóinak vesszővel elválasztott listája.  | Nem |
+| kérésGoogleDriveScope | A Google Drive-hoz való hozzáférés kérése. A Google Drive-hozzáférés engedélyezése lehetővé teszi az összevont táblázatok támogatását, amelyek a BigQuery-adatokat a Google Drive-ról származó adatokkal kombinálják. Az alapértelmezett érték: **hamis**.  | Nem |
+| authenticationType | A hitelesítéshez használt OAuth 2.0 hitelesítési mechanizmus. A ServiceAuthentication csak saját üzemeltetésű integrációs futtatási futtatási rendszeren használható. <br/>Az engedélyezett értékek: **UserAuthentication** és **ServiceAuthentication**. Tekintse meg az alábbi szakaszokat a táblázat ban több tulajdonság és JSON-minták az adott hitelesítési típusok, illetve. | Igen |
 
 ### <a name="using-user-authentication"></a>Felhasználói hitelesítés használata
 
-Állítsa a "authenticationType" tulajdonságot **UserAuthentication**értékre, és adja meg a következő tulajdonságokat az előző szakaszban leírt általános tulajdonságokkal együtt:
+Állítsa a "authenticationType" tulajdonságot **UserAuthentication**tulajdonságra, és adja meg a következő tulajdonságokat az előző szakaszban ismertetett általános tulajdonságokkal együtt:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | ügyfél-azonosító | A frissítési jogkivonat létrehozásához használt alkalmazás azonosítója. | Nem |
-| clientSecret | A frissítési jogkivonat létrehozásához használt alkalmazás titka. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
-| refreshToken | A Google által a BigQuery való hozzáférés engedélyezéséhez használt frissítési jogkivonat. Ismerje meg, hogyan [szerezhet be egyet a OAuth 2,0 hozzáférési jogkivonatok](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) és [a közösségi blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)beszerzéséhez. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
+| ügyféltitkos | A frissítési jogkivonat létrehozásához használt alkalmazás titkos kulcsa. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |
+| refreshToken | A Google-tól kapott frissítési token a BigQuery-hez való hozzáférés engedélyezésére szolgál. Ismerje meg, hogyan szerezhet be egyet [az OAuth 2.0 hozzáférési tokenek és](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) [a közösségi blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)beszerzéséből. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -91,18 +91,18 @@ A Google BigQuery társított szolgáltatás a következő tulajdonságokat tám
 }
 ```
 
-### <a name="using-service-authentication"></a>A szolgáltatás hitelesítésének használata
+### <a name="using-service-authentication"></a>Szolgáltatáshitelesítés használata
 
-Állítsa a "authenticationType" tulajdonságot **ServiceAuthentication**értékre, és adja meg a következő tulajdonságokat, valamint az előző szakaszban leírt általános tulajdonságokat. Ez a hitelesítési típus csak saját üzemeltetésű Integration Runtime használható.
+Állítsa a "authenticationType" tulajdonságot **ServiceAuthentication**tulajdonságra, és adja meg a következő tulajdonságokat az előző szakaszban ismertetett általános tulajdonságokkal együtt. Ez a hitelesítési típus csak saját üzemeltetésű integrációs futásidejű en használható.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| e-mail | A ServiceAuthentication használt szolgáltatásfiók e-mail azonosítója. Csak saját üzemeltetésű Integration Runtime használható.  | Nem |
-| keyFilePath | A szolgáltatásfiók e-mail-címének hitelesítéséhez használt. P12-kulcsfájl teljes elérési útja. | Nem |
-| trustedCertPath | A. PEM fájl teljes elérési útja, amely a kiszolgáló SSL-kapcsolaton keresztüli hitelesítéséhez használt megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazza. Ez a tulajdonság csak akkor állítható be, ha az SSL-t használja a saját üzemeltetésű Integration Runtime. Az alapértelmezett érték a hitesítésszolgáltatói. PEM fájl, amelyet az Integration Runtime telepített.  | Nem |
-| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott. PEM fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték **false (hamis**).  | Nem |
+| e-mail | A ServiceAuthentication szolgáltatásfiók e-mail azonosítója. Csak önkiszolgáló integrációs futásidejű en használható.  | Nem |
+| keyFilePath | A szolgáltatási fiók e-mail címének hitelesítésére használt .p12 kulcsfájl teljes elérési útja. | Nem |
+| trustedCertPath | Az SSL-en keresztüli csatlakozáskor a kiszolgáló ellenőrzésére használt megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható be, ha ssl-t használ a saját üzemeltetésű integrációs futásidőben. Az alapértelmezett érték az integrációs futásidejűsel telepített cacerts.pem fájl.  | Nem |
+| useSystemTrustStore | Itt adható meg, hogy a rendszermegbízhatósági tárolóból vagy egy megadott .pem fájlból származó hitelesítésszolgáltatói tanúsítványt használjon.Specifies whether to use a ca certificate from the system trust store or from a specified .pem file. Az alapértelmezett érték: **hamis**.  | Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -126,16 +126,16 @@ A Google BigQuery társított szolgáltatás a következő tulajdonságokat tám
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Google BigQuery adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [Adatkészletek](concepts-datasets-linked-services.md) című cikkben olvashatja. Ez a szakasz a Google BigQuery adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Ha adatokat szeretne másolni a Google BigQuery, állítsa az adatkészlet Type (típus) tulajdonságát **GoogleBigQueryObject**értékre. A következő tulajdonságok támogatottak:
+Ha adatokat szeretne másolni a Google BigQuery programból, állítsa az adatkészlet típustulajdonságát **a GoogleBigQueryObject objektumra.** A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GoogleBigQueryObject** | Igen |
-| adatkészlet | A Google BigQuery-adatkészlet neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tableName | A tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `dataset` és a `table`. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **GoogleBigQueryObject** | Igen |
+| Adatkészlet | A Google BigQuery adatkészlet neve. |Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva)  |
+| tábla | A tábla neve. |Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva)  |
+| tableName | A tábla neve. Ez a tulajdonság a visszamenőleges kompatibilitás érdekében támogatott. Az új számítási `dataset` `table`feladatokhoz használja és használja. | Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva) |
 
 **Példa**
 
@@ -156,18 +156,18 @@ Ha adatokat szeretne másolni a Google BigQuery, állítsa az adatkészlet Type 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Google BigQuery-Forrástípus által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a Google BigQuery forrástípusa által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="googlebigquerysource-as-a-source-type"></a>GoogleBigQuerySource
+### <a name="googlebigquerysource-as-a-source-type"></a>GoogleBigQuerySource forrástípusként
 
-Az adatok Google BigQuery való másolásához állítsa a forrás típusát a másolás tevékenység **GoogleBigQuerySource**értékére. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
+Ha adatokat szeretne másolni a Google BigQuery ből, állítsa be a forrástípusát a másolási tevékenységben a **GoogleBigQuerySource elemre.** A következő tulajdonságokat a másolási tevékenység **forrása** szakasz támogatja.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát **GoogleBigQuerySource**értékre kell állítani. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| type | A másolási tevékenységforrás típustulajdonságát **a GoogleBigQuerySource**beállításra kell állítani. | Igen |
+| lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"SELECT * FROM MyTable"`. | Nem (ha az adatkészletben a "tableName" van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -199,9 +199,9 @@ Az adatok Google BigQuery való másolásához állítsa a forrás típusát a m
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
-## <a name="next-steps"></a>Következő lépések
-A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A Data Factory másolási tevékenysége által forrásként és fogadóként támogatott adattárak listáját a Támogatott adattárak című témakörben [tetszését.](copy-activity-overview.md#supported-data-stores-and-formats)

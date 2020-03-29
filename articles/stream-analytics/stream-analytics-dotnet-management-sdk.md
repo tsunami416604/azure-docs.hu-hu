@@ -1,6 +1,6 @@
 ---
-title: Felügyeleti .NET SDK a Azure Stream Analyticshoz
-description: Ismerkedés a Stream Analytics Management .NET SDK-val. Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat. Hozzon létre egy projektet, bemeneteket, kimeneteket és átalakításokat.
+title: Felügyeleti .NET SDK az Azure Stream Analytics szolgáltatáshoz
+description: Ismerkedés a Stream Analytics Management .NET SDK szolgáltatással. Ismerje meg, hogyan állíthat be és futtathat elemzési feladatokat. Hozzon létre egy projektet, bemeneteket, kimeneteket és átalakításokat.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426261"
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyelet .NET SDK: elemzési feladatok beállítása és futtatása a .NET-hez készült Azure Stream Analytics API-val
-Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat a .NET Stream Analytics API-val a felügyeleti .NET SDK használatával. Projekt beállítása, bemeneti és kimeneti források, átalakítások, valamint indítási és leállítási feladatok létrehozása. Az elemzési feladatokhoz blob Storage-ból vagy Event hub-ból továbbíthatja az adatait.
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyeleti .NET SDK: Elemzési feladatok beállítása és futtatása az Azure Stream Analytics API-val .
+Ismerje meg, hogyan állíthatja be és futtathat elemzési feladatokat a .NET Stream Analytics API-jával a Management .NET SDK használatával. Állítson be egy projektet, hozzon létre bemeneti és kimeneti forrásokat, átalakításokat, valamint indítsa el és állítsa le a feladatokat. Az elemzési feladatokhoz adatokat streamelhet a Blob storage-ból vagy egy eseményközpontból.
 
-Tekintse [meg a .net-hez készült stream Analytics API kezelési útmutatójának dokumentációját](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Tekintse meg a [.NET Stream Analytics API felügyeleti referenciadokumentációját.](https://msdn.microsoft.com/library/azure/dn889315.aspx)
 
-A Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely kis késleltetésű, magasan elérhető, méretezhető, összetett eseményt biztosít a felhőben tárolt adatfolyam-adatfeldolgozáshoz. Stream Analytics lehetővé teszi az ügyfeleknek, hogy az adatfolyamok elemzéséhez beállítsák a folyamatos átviteli feladatokat, és lehetővé teszik a közel valós idejű elemzések elvégzését.  
+Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely alacsony késleltetésű, magas rendelkezésre állású, méretezhető, összetett eseményfeldolgozást biztosít a felhőben lévő streamelési adatokon keresztül. A Stream Analytics lehetővé teszi az ügyfelek számára, hogy streamelési feladatokat állítsanak be az adatfolyamok elemzéséhez, és lehetővé teszi számukra, hogy közel valós idejű elemzéseket vezessenek.  
 
 > [!NOTE]
-> Ebben a cikkben a Azure Stream Analytics Management .NET SDK v2. x verziójával frissítettük a mintakód-kódot. A lagecy (1. x) SDK-verziót használó mintakód esetében lásd: [a felügyeleti .net SDK v1. x használata a stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Ebben a cikkben frissítettük a mintakódot az Azure Stream Analytics Management .NET SDK v2.x verzióval. A késés (1.x) SDK-verziót használó mintakódot [a Management .NET SDK v1.x használata a Stream Analytics szolgáltatáshoz című témakörben tartalmazza.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)
 
 ## <a name="prerequisites"></a>Előfeltételek
-A cikk elkezdése előtt a következő követelményeknek kell megfelelnie:
+A cikk megkezdése előtt a következő követelményekkel kell rendelkeznie:
 
-* Telepítse a Visual Studio 2019 vagy a 2015 programot.
-* Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
-* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. A következő példa egy minta Azure PowerShell szkript. Azure PowerShell információ: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview);  
+* Telepítse a Visual Studio 2019-et vagy 2015-öt.
+* Töltse le és telepítse [az Azure .NET SDK](https://azure.microsoft.com/downloads/)alkalmazást.
+* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. A következő példa egy minta Azure PowerShell-parancsfájl. Az Azure PowerShell-információkról az [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál.  
 
    ```powershell
    # Log in to your Azure account
@@ -46,20 +46,20 @@ A cikk elkezdése előtt a következő követelményeknek kell megfelelnie:
    New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
    ```
 
-* Állítson be egy bemeneti forrást és egy kimeneti célt ahhoz, hogy a feladathoz kapcsolódjon.
+* Állítson be egy bemeneti forrás- és kimeneti célt a feladathoz, amelyhez csatlakozni szeretne.
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
-Elemzési feladatok létrehozásához használja a .NET-hez készült Stream Analytics API-t, majd állítsa be a projektet.
+Elemzési feladat létrehozásához használja a Stream Analytics API-t a .NET-hez, és először állítsa be a projektet.
 
-1. Hozzon létre egy C# Visual Studio .net-konzol alkalmazást.
-2. A Package Manager konzolon futtassa a következő parancsokat a NuGet-csomagok telepítéséhez. Az első a Azure Stream Analytics Management .NET SDK. A második az Azure ügyfél-hitelesítés.
+1. Hozzon létre egy Visual Studio C# .NET konzolalkalmazást.
+2. A Package Manager konzolon futtassa a következő parancsokat a NuGet csomagok telepítéséhez. Az első az Azure Stream Analytics Management .NET SDK. A második az Azure-ügyfél hitelesítése.
 
    ```powershell   
    Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 2.0.0
    Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
    ```
 
-3. Adja hozzá a következő **appSettings** szakaszt az app. config fájlhoz:
+3. Adja hozzá a következő **appBeállítások** szakaszt az App.config fájlhoz:
    
    ```powershell
    <appSettings>
@@ -70,19 +70,19 @@ Elemzési feladatok létrehozásához használja a .NET-hez készült Stream Ana
    </appSettings>
    ```
 
-    Cserélje le az **SubscriptionId** és a **ActiveDirectoryTenantId** értékeit az Azure-előfizetéssel és a bérlői azonosítókkal. Ezeket az értékeket a következő Azure PowerShell parancsmag futtatásával érheti el:
+    A **SubscriptionId** és az **ActiveDirectoryTenantId** értékeit az Azure-előfizetésés a bérlői azonosítók helyére cserélheti. Ezeket az értékeket a következő Azure PowerShell-parancsmag futtatásával szerezheti be:
 
    ```powershell
       Get-AzureAccount
    ```
 
-4. Adja hozzá a következő hivatkozást a. csproj fájlban:
+4. Adja meg a következő hivatkozást a .csproj fájlban:
 
    ```csharp
    <Reference Include="System.Configuration" />
    ```
 
-5. Adja hozzá a következő **using** utasításokat a forrásfájlban (program.cs) a projektben:
+5. Adja hozzá a következőket a projekt forrásfájljába (Program.cs) a következő **utasítások használatával:**
    
    ```csharp
    using System;
@@ -97,7 +97,7 @@ Elemzési feladatok létrehozásához használja a .NET-hez készült Stream Ana
    using Microsoft.Rest;
    ```
 
-6. Hitelesítési segítő módszer hozzáadása:
+6. Adjon hozzá egy hitelesítési segítő módszert:
 
    ```csharp
    private static async Task<ServiceClientCredentials> GetCredentials()
@@ -109,10 +109,10 @@ Elemzési feladatok létrehozásához használja a .NET-hez készült Stream Ana
     }
    ```
 
-## <a name="create-a-stream-analytics-management-client"></a>Stream Analytics Management-ügyfél létrehozása
-A **StreamAnalyticsManagementClient** -objektumok lehetővé teszik a feladatok és a feladatok összetevőinek, például a bevitel, a kimenet és az átalakítás kezelését.
+## <a name="create-a-stream-analytics-management-client"></a>Stream Analytics felügyeleti ügyfél létrehozása
+A **StreamAnalyticsManagementClient** objektum lehetővé teszi a feladat és a feladat-összetevők, például a bemenet, a kimenet és az átalakítás kezelését.
 
-Adja hozzá a következő kódot a **Main** metódus elejéhez:
+Adja hozzá a következő kódot a **fő** módszer elejéhez:
 
    ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -133,14 +133,14 @@ Adja hozzá a következő kódot a **Main** metódus elejéhez:
     };
    ```
 
-A **resourceGroupName** változó értékének meg kell egyeznie az előfeltételként létrehozott vagy a kiválasztott erőforráscsoport nevével.
+A **resourceGroupName** változó értékének meg kell egyeznie az előfeltételként leírt lépésekben létrehozott vagy kiválasztott erőforráscsoport nevével.
 
-A feladatok létrehozásához szükséges hitelesítő adatok megjelenítésének automatizálásához tekintse meg az [egyszerű szolgáltatás hitelesítése Azure Resource Managerkal](../active-directory/develop/howto-authenticate-service-principal-powershell.md)című témakört.
+A feladatalapítás hitelesítő adatok megjelenítésének elemének automatizálásához olvassa el az egyszerű szolgáltatás hitelesítése az Azure Resource Manager segítségével című [dokumentumban.](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-A cikk hátralévő fejezetei azt feltételezik, hogy ez a kód a **Main** metódus elején található.
+A cikk további szakaszai azt feltételezik, hogy ez a kód a **Fő** módszer elején található.
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
-A következő kód létrehoz egy Stream Analytics feladatot a definiált erőforráscsoport alatt. Később egy bemeneti, kimeneti és átalakítási feladatot fog hozzáadni a feladathoz.
+A következő kód létrehoz egy Stream Analytics-feladatot a megadott erőforráscsoport alatt. Később hozzáad egy bemeneti, kimeneti és átalakítási adatokat a feladathoz.
 
    ```csharp
    // Create a streaming job
@@ -166,8 +166,8 @@ A következő kód létrehoz egy Stream Analytics feladatot a definiált erőfor
    StreamingJob createStreamingJobResult = streamAnalyticsManagementClient.StreamingJobs.CreateOrReplace(streamingJob, resourceGroupName, streamingJobName);
    ```
 
-## <a name="create-a-stream-analytics-input-source"></a>Stream Analytics bemeneti forrás létrehozása
-A következő kód egy Stream Analytics bemeneti forrást hoz létre a blob bemeneti forrás típusával és a CSV-szerializálással. Az Event hub bemeneti forrásának létrehozásához használja a **EventHubStreamInputDataSource** -t a **BlobStreamInputDataSource**helyett. Hasonlóképpen testreszabhatja a bemeneti forrás szerializálási típusát is.
+## <a name="create-a-stream-analytics-input-source"></a>Stream Analytics-bemeneti forrás létrehozása
+A következő kód létrehoz egy Stream Analytics bemeneti forrást a blob bemeneti forrástípussal és a CSV-szerializálással. Eseményközpont-bemeneti forrás létrehozásához használja **az EventHubStreamInputDataSource** metódust a **BlobStreamInputDataSource**helyett. Hasonlóképpen testreszabhatja a bemeneti forrás szerializálási típusát is.
 
    ```csharp
    // Create an input
@@ -199,10 +199,10 @@ A következő kód egy Stream Analytics bemeneti forrást hoz létre a blob beme
    Input createInputResult = streamAnalyticsManagementClient.Inputs.CreateOrReplace(input, resourceGroupName, streamingJobName, inputName);
    ```
 
-A bemeneti források, legyenek a blob Storage vagy az Event hub, egy adott feladathoz vannak kötve. Ha ugyanazt a bemeneti forrást szeretné használni a különböző feladatokhoz, újra kell hívnia a metódust, és meg kell adnia egy másik feladatnév nevet.
+A blobstorage-ból vagy egy eseményközpontból származó bemeneti források egy adott feladathoz vannak kötve. Ha ugyanazt a bemeneti forrást szeretné használni a különböző feladatokhoz, újra meg kell hívnia a metódust, és másik feladatnevet kell megadnia.
 
-## <a name="test-a-stream-analytics-input-source"></a>Stream Analytics bemeneti forrás tesztelése
-A **TestConnection** metódus ellenőrzi, hogy a stream Analytics-feladathoz tud-e csatlakozni a bemeneti forráshoz, valamint a bemeneti forrás típusára vonatkozó egyéb szempontokat. Egy korábbi lépésben létrehozott blob bemeneti forrásban például a metódus azt fogja ellenőriznie, hogy a Storage-fiók neve és a kulcspár használható-e a Storage-fiókhoz való kapcsolódáshoz, valamint annak ellenőrzéséhez, hogy a megadott tároló létezik-e.
+## <a name="test-a-stream-analytics-input-source"></a>Stream Analytics-bemeneti forrás tesztelése
+A **TestConnection** metódus azt teszteli, hogy a Stream Analytics-feladat képes-e csatlakozni a bemeneti forráshoz, valamint a bemeneti forrás típusának egyéb szempontjaihoz. Például a blob bemeneti forrás egy korábbi lépésben létrehozott, a módszer ellenőrzi, hogy a storage-fiók neve és kulcspár használható-e a storage-fiókhoz való csatlakozáshoz, valamint ellenőrizze, hogy a megadott tároló létezik-e.
 
    ```csharp
    // Test the connection to the input
@@ -210,9 +210,9 @@ A **TestConnection** metódus ellenőrzi, hogy a stream Analytics-feladathoz tud
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics kimeneti cél létrehozása
-A kimeneti cél létrehozása hasonló egy Stream Analytics bemeneti forrás létrehozásához. A bemeneti forrásokhoz hasonlóan a kimeneti célok egy adott feladathoz vannak kötve. Ha ugyanazt a kimeneti célt szeretné használni a különböző feladatokhoz, újra kell hívnia a metódust, és meg kell adnia egy másik feladat nevét.
+A kimeneti cél létrehozása hasonló a Stream Analytics bemeneti forrás létrehozásához. A bemeneti forrásokhoz hasonlóan a kimeneti célok egy adott feladathoz vannak kötve. Ha ugyanazt a kimeneti célt szeretné használni a különböző feladatokhoz, újra meg kell hívnia a metódust, és másik feladatnevet kell megadnia.
 
-A következő kód létrehoz egy kimeneti célt (Azure SQL Database). Testreszabhatja a kimeneti cél adattípusát és/vagy szerializálási típusát.
+A következő kód létrehoz egy kimeneti cél (Azure SQL-adatbázis). Testreszabhatja a kimeneti cél adattípusát és/vagy szerializálási típusát.
 
    ```csharp
    // Create an output
@@ -230,16 +230,16 @@ A következő kód létrehoz egy kimeneti célt (Azure SQL Database). Testreszab
    Output createOutputResult = streamAnalyticsManagementClient.Outputs.CreateOrReplace(output, resourceGroupName, streamingJobName, outputName);
    ```
 
-## <a name="test-a-stream-analytics-output-target"></a>Stream Analytics kimeneti cél tesztelése
-A Stream Analytics kimeneti célpont a kapcsolatok tesztelésére szolgáló **TestConnection** metódussal is rendelkezik.
+## <a name="test-a-stream-analytics-output-target"></a>Stream Analytics kimeneti céltesztelése
+A Stream Analytics kimeneti cél is rendelkezik a **TestConnection** módszer rel a kapcsolatok teszteléséhez.
 
    ```csharp
    // Test the connection to the output
    ResourceTestStatus testOutputResult = streamAnalyticsManagementClient.Outputs.Test(resourceGroupName, streamingJobName, outputName);
    ```
 
-## <a name="create-a-stream-analytics-transformation"></a>Stream Analytics átalakítás létrehozása
-A következő kód egy Stream Analytics átalakítást hoz létre a "Select * in input" lekérdezéssel, és megadja, hogy egy folyamatos átviteli egységet foglaljon le a Stream Analytics feladathoz. A folyamatos átviteli egységek beállításával kapcsolatos további információkért lásd: [Azure stream Analytics feladatok skálázása](stream-analytics-scale-jobs.md).
+## <a name="create-a-stream-analytics-transformation"></a>Stream Analytics-átalakítás létrehozása
+A következő kód létrehoz egy Stream Analytics-átalakítást a "select * from Input" lekérdezéssel, és meghatározza, hogy egy streamelési egységet foglaljon le a Stream Analytics-feladathoz. A streamelési egységek módosításáról az [Azure Stream Analytics-feladatok méretezése című témakörben](stream-analytics-scale-jobs.md)talál további információt.
 
    ```csharp
    // Create a transformation
@@ -251,12 +251,12 @@ A következő kód egy Stream Analytics átalakítást hoz létre a "Select * in
    Transformation createTransformationResult = streamAnalyticsManagementClient.Transformations.CreateOrReplace(transformation, resourceGroupName, streamingJobName, transformationName);
    ```
 
-A bemenethez és a kimenethez hasonlóan a transzformáció is a-ben létrehozott konkrét Stream Analytics-feladathoz kötődik.
+A bemeneti és kimeneti adatokhoz hasonlóan az átalakítás is az adott Stream Analytics-feladathoz van kötve, amely alatt jött létre.
 
 ## <a name="start-a-stream-analytics-job"></a>Stream Analytics-feladat elindítása
-Miután létrehozta a Stream Analytics feladatot és annak bemenetét, kimenetét és átalakítását, a **Start** metódus meghívásával indíthatja el a feladatot.
+A Stream Analytics-feladat és annak bemenetei, kimenetei és átalakítása létrehozása után a **Start** metódus hívásával indíthatja el a feladatot.
 
-Az alábbi mintakód egy Stream Analytics feladatot indít el egy egyéni kimeneti kezdési idővel, amely a 2012, 12:12:12 UTC értékre van beállítva.
+A következő mintakód elindítja a Stream Analytics-feladatot, amelynek egyéni kimeneti kezdési időpontja 2012.
 
    ```csharp
    // Start a streaming job
@@ -268,16 +268,16 @@ Az alábbi mintakód egy Stream Analytics feladatot indít el egy egyéni kimene
    streamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, streamingJobName, startStreamingJobParameters);
    ```
 
-## <a name="stop-a-stream-analytics-job"></a>Stream Analytics feladatok leállítása
-A **leállítási** metódus meghívásával leállíthatja a futó stream Analytics feladatot.
+## <a name="stop-a-stream-analytics-job"></a>Stream Analytics-feladat leállítása
+A Stream Analytics-feladat futtatását leállíthatja a **Stop** metódus hívásával.
 
    ```csharp
    // Stop a streaming job
    streamAnalyticsManagementClient.StreamingJobs.Stop(resourceGroupName, streamingJobName);
    ```
 
-## <a name="delete-a-stream-analytics-job"></a>Stream Analytics-feladatok törlése
-A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőforrásokat, beleértve a bemeneti (ka) t, a kimenetet és a feladat átalakítását is.
+## <a name="delete-a-stream-analytics-job"></a>Stream Analytics-feladat törlése
+A **Törlés** metódus törli a feladatot, valamint az alapul szolgáló alerőforrásokat, beleértve a bemenet(ek)et, a kimenet(ek)et és a feladat átalakítását.
 
    ```csharp
    // Delete a streaming job
@@ -285,16 +285,16 @@ A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőfo
    ```
 
 ## <a name="get-support"></a>Támogatás kérése
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki [az Azure Stream Analytics fórumunkat.](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Következő lépések
-Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK használatával. További információt a következő cikkekben talál:
+## <a name="next-steps"></a>További lépések
+Megtanulta a .NET SDK elemzési feladatok létrehozásának és futtatásának alapjait. További információ: a következő cikkek:
 
-* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
+* [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure stream Analytics Management .net SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)-t.
-* [Azure Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
+* [Az Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

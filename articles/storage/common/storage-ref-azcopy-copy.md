@@ -1,6 +1,6 @@
 ---
-title: azcopy másolás | Microsoft Docs
-description: Ez a cikk a azcopy másolási parancsra vonatkozó tudnivalókat tartalmazza.
+title: azcopy másolata| Microsoft dokumentumok
+description: Ez a cikk az azcopy copy parancs ra vonatkozó információkat tartalmaz.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,51 +9,51 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933786"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
-A forrásadatok másolása a célhelyre.
+Forrásadatok másolása a célhelyre.
 
 ## <a name="synopsis"></a>Áttekintés
 
-A forrásadatok másolása a célhelyre. A támogatott utasítások a következők:
+Forrásadatok másolása a célhelyre. A támogatott irányok a következők:
 
-  - helyi < – > Azure Blob (SAS vagy OAuth Authentication)
-  - helyi <-> Azure Files (megosztás/könyvtár SAS-hitelesítése)
-  - helyi < – > ADLS Gen 2 (SAS, OAuth vagy SharedKey Authentication)
-  - Azure Blob (SAS vagy Public) – > Azure Blob (SAS vagy OAuth Authentication)
-  - Azure Blob (SAS vagy Public) – > Azure Files (SAS)
-  - Azure Files (SAS) – > Azure Files (SAS)
-  - Azure Files (SAS) – > Azure-Blob (SAS vagy OAuth-hitelesítés)
-  - AWS S3 (hozzáférési kulcs) – > Azure Block blob (SAS vagy OAuth Authentication)
+  - helyi < > Azure Blob (SAS vagy OAuth hitelesítés)
+  - helyi < > Azure-fájlok (Megosztás/címtár SAS-hitelesítés)
+  - helyi < > ADLS Gen 2 (SAS, OAuth vagy SharedKey hitelesítés)
+  - Azure Blob (SAS vagy nyilvános) -> Azure Blob (SAS vagy OAuth hitelesítés)
+  - Azure Blob (SAS vagy nyilvános) -> Azure Files (SAS)
+  - Azure Files (SAS) -> Azure Files (SAS)
+  - Azure Files (SAS) -> Azure Blob (SAS vagy OAuth hitelesítés)
+  - AWS S3 (access key) –> Azure Block Blob (SAS vagy OAuth hitelesítés)
 
-További információért tekintse meg a példákat.
+További információkért olvassa el a példákat.
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
 
-- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
-- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
+- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
+- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
+- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Speciális
 
-A AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
+AzAzCopy automatikusan felismeri a fájlok tartalomtípusát a helyi lemezről való feltöltéskor a fájlkiterjesztés vagy -tartalom alapján (ha nincs megadva kiterjesztés).
 
-A beépített keresési táblázat kicsi, de UNIX rendszeren a helyi rendszer MIME. types fájl (ok), ha az alábbi nevek közül egy vagy több található:
+A beépített keresendő tábla kicsi, de unix esetén a helyi rendszer mime.types fájljai egészítik ki, ha egy vagy több ilyen név alatt elérhető:
 
 - /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-Windows rendszeren a MIME-típusokat a rendszer kinyeri a beállításjegyzékből. Ez a funkció egy jelző segítségével kapcsolható ki. Tekintse meg a jelző szakaszt.
+Windows rendszerben a MIME-típusok kibontása a beállításjegyzékből lesz kivonva. Ez a funkció egy zászló segítségével kikapcsolható. Kérjük, olvassa el a zászló részt.
 
-Ha egy környezeti változót a parancssor használatával állít be, akkor ez a változó a parancssori előzményekben olvasható. Érdemes lehet a parancssori előzményekből származó hitelesítő adatokat tartalmazó változókat törölni. Ahhoz, hogy a változók megjelenjenek az előzményekben, egy parancsfájl használatával megkérheti a felhasználótól a hitelesítő adataikat, és beállíthatja a környezeti változót.
+Ha egy környezeti változót a parancssorból állít be, az a változó olvasható lesz a parancssori előzményekben. Fontolja meg a parancssori előzmények hitelesítő adatait tartalmazó változók törlését. Ha meg szeretné tartani, hogy a változók ne jelenjenek meg az előzményekben, parancsfájl segítségével kérheti a felhasználótól a hitelesítő adatait, és beállíthatja a környezeti változót.
 
 ```
 azcopy copy [source] [destination] [flags]
@@ -61,185 +61,185 @@ azcopy copy [source] [destination] [flags]
 
 ## <a name="examples"></a>Példák
 
-Töltsön fel egyetlen fájlt a OAuth-hitelesítés használatával. Ha még nem jelentkezett be a AzCopy-ba, futtassa a AzCopy login parancsot a következő parancs futtatása előtt.
+Töltsön fel egyetlen fájlt OAuth-hitelesítéssel. Ha még nem jelentkezett be az AzCopy programba, a következő parancs futtatása előtt futtassa az azcopy bejelentkezési parancsot.
 
-- azcopy CP "/Path/to/file.txt" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]"
+- azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 
-Ugyanaz, mint a fenti, de ezúttal is számításba kell vennie a fájl MD5-kivonatát, és mentenie kell a blob Content-MD5 tulajdonságának:
+Ugyanaz, mint fent, de ezúttal is kiszámítja MD5 kivonat a fájl tartalmát, és mentse el a blob Content-MD5 tulajdonság:
 
-- azcopy CP "/Path/to/file.txt" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési út/a blob]"--Put-MD5
+- azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 
-Egyetlen fájl feltöltése SAS-token használatával:
+Töltsön fel egyetlen fájlt SAS-jogkivonat használatával:
 
-- azcopy CP "/Path/to/file.txt" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] "
+- azcopy cp "/path/to/file.txt" "https://[account]blob.core.windows.net/[container]/[path/to/blob]? [SAS]"
 
-Egyetlen fájl feltöltése SAS-token és-csővezeték használatával (csak a Blobok blokkolása):
+Töltsön fel egyetlen fájlt SAS-jogkivonat és -csővezeték használatával (csak blokkblobok esetén):
   
-- Cat "/Path/to/file.txt" | azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] "
+- cat "/path/to/file.txt" | azcopy cp "https://[[account]blob.core.windows.net/[container]/[path/to/blob]? [SAS]"
 
-Teljes könyvtár feltöltése SAS-token használatával:
+Töltsön fel egy teljes könyvtárat SAS-jogkivonat használatával:
   
-- azcopy CP "/Path/to/dir" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
+- azcopy cp "/path/to/dir" "https://[account]blob.core.windows.net/[container]/[path/to/directory]? [SAS]" --rekurzív=igaz
 
-or
+vagy
 
-- azcopy CP "/Path/to/dir" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True--Put-MD5
+- azcopy cp "/path/to/dir" "https://[account]blob.core.windows.net/[container]/[path/to/directory]? [SAS]" --rekurzív=igaz --put-md5
 
-Fájlok készletének feltöltése SAS-token és helyettesítő karakter (*) karakterek használatával:
+Fájlok készletének feltöltése SAS-jogkivonat és helyettesítő karakterek (*) használatával:
 
-- azcopy CP "/Path/*foo/* Bar/*. pdf" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "
+- azcopy cp "/path/*foo/* bar/*.pdf" "https://[account]blob.core.windows.net/[container]/[path/to/directory]? [SAS]"
 
-Fájlok és könyvtárak feltöltése SAS-token és helyettesítő karakter (*) karakterek használatával:
+Fájlok és könyvtárak feltöltése SAS-jogkivonat és helyettesítő karakterek használatával:
 
-- azcopy CP "/Path/*foo/* Bar *" "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
+- azcopy cp "/path/*foo/* bar*" "https://[account]blob.core.windows.net/[container]/[path/to/directory]? [SAS]" --rekurzív=igaz
 
-Töltsön le egyetlen fájlt a OAuth-hitelesítés használatával. Ha még nem jelentkezett be a AzCopy-ba, futtassa a AzCopy login parancsot a következő parancs futtatása előtt.
+Egyetlen fájl letöltése OAuth-hitelesítéssel. Ha még nem jelentkezett be az AzCopy programba, a következő parancs futtatása előtt futtassa az azcopy bejelentkezési parancsot.
 
-- azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]" "/Path/to/file.txt"
+- azcopy cp "https://[[account].blob.core.windows.net/[container]/[path/to/blob]" "/path/to/file.txt"
 
-Egyetlen fájl letöltése SAS-token használatával:
+Egyetlen fájl letöltése SAS-jogkivonat használatával:
 
-- azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] ""/Path/to/file.txt "
+- azcopy cp "https://[[account]blob.core.windows.net/[container]/[path/to/blob]? [SAS]" "/path/to/file.txt"
 
-Egyetlen fájl letöltése SAS-token használatával, majd a kimenet fájlba állítása (csak a Blobok blokkolása esetén):
+Egyetlen fájl letöltése SAS-jogkivonat használatával, majd a kimenet fájlba való letiltása (csak a blokkblobok esetén):
   
-- azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] ">"/Path/to/file.txt "
+- azcopy cp "https://[[account]blob.core.windows.net/[container]/[path/to/blob]? [SAS]" > "/path/to/file.txt"
 
-Teljes könyvtár letöltése SAS-token használatával:
+Töltsön le egy teljes könyvtárat Egy SAS-jogkivonat használatával:
   
-- azcopy CP "https://[fiók]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] ""/Path/to/dir "--rekurzív = True
+- azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]? [SAS]" "/path/to/dir" --rekurzív=true
 
-Megjegyzés a helyettesítő karakter (*) URL-címekben való használatáról:
+Megjegyzés a helyettesítő karakter (*) URL-ekben való használatáról:
 
-Egy URL-címben csak két támogatott módon használható helyettesítő karakter. 
+Az URL-címekben csak két támogatott módszer létezik a helyettesítő karakterek használatában. 
 
-- Egy URL-cím utolsó perjel (/) utáni végét is használhat. Ez egy címtárban lévő összes fájlt átmásolja közvetlenül a célhelyre anélkül, hogy egy alkönyvtárba helyezzük őket.
+- Használhatja az egyik közvetlenül az URL végső perjel (/) után. Ez a könyvtárban lévő összes fájlt közvetlenül a célkönyvtárba másolja anélkül, hogy alkönyvtárba helyezne.
 
-- A tároló nevében is használhat egyet, ha az URL-cím csak egy tárolóra hivatkozik, és nem a blobra. Ezt a módszert használhatja a tárolók egy részhalmazában lévő fájlok beszerzésére.
+- Egy tároló nevében is használhat egyet, feltéve, hogy az URL-cím csak egy tárolóra vonatkozik, és nem egy blobra. Ezzel a módszerrel fájlokat szerezhet be a tárolók egy részhalmazából.
 
-Töltse le a könyvtár tartalmát anélkül, hogy magáról a tartalmazó könyvtárat másolja.
+Töltse le a könyvtár tartalmát anélkül, hogy magához a könyvtárat másolna.
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[elérési út/mappa]/*? [SAS] ""/Path/to/dir "
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/folder]/*? [SAS]" "/elérési út//dir"
 
-Töltse le a teljes Storage-fiókot.
+Töltsön le egy teljes tárfiókot.
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net/" "/Path/to/dir"--rekurzív
+- azcopy cp "https://[srcaccount].blob.core.windows.net/" "/path/to/dir" --rekurzív
 
-A Storage-fiókban lévő tárolók egy részhalmazát letöltheti egy helyettesítő karakter (*) használatával a tároló nevében.
+Töltse le a tárolók egy tárfiókon belüli egy részhalmazát egy helyettesítő szimbólum (*) használatával a tároló nevében.
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net/[tároló * neve]" "/Path/to/dir"--rekurzív
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[container*name]" "/path/to/dir" --rekurzív
 
-Egyetlen blob másolása egy másik blobba SAS-token használatával.
+Egyetlen blob másolása egy másik blob egy SAS-jogkivonat használatával.
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] "" https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] "
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]? [SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]? [SAS]"
 
-Egyetlen blob másolása egy másik blobba SAS-jogkivonat és egy OAuth-jogkivonat használatával. A forrásoldali fiók URL-címének végén egy SAS-tokent kell használnia, de a AzCopy a AzCopy login paranccsal kell bejelentkeznie. 
+Egyetlen blob másolása egy másik blob egy SAS-jogkivonat és egy OAuth-jogkivonat használatával. A forrásfiók URL-címének végén sas-jogkivonatot kell használnia, de a célfióknak nincs szüksége erre, ha az azcopy bejelentkezési paranccsal jelentkezik be az AzCopy-ba. 
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[elérési_út/to/blob]? [SAS] "" https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/blob] "
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]? [SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]"
 
-Egy blob virtuális könyvtár másolása egy másikba SAS-token használatával:
+Egy blob virtuális könyvtár másolása a másikra egy SAS-jogkivonat használatával:
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "" https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
+- azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/directory]? [SAS]" "https://[destaccount]blob.core.windows.net/[container]/[path/to/directory]? [SAS]" --rekurzív=igaz
 
-Az összes blob-tároló,-könyvtár és-blob másolása a Storage-fiókból egy másikba SAS-token használatával:
+Másolja az összes blobtárolót, könyvtárat és blobot a tárfiókból egy másikba egy SAS-jogkivonat használatával:
 
-- azcopy CP "https://[srcaccount]. blob. Core. Windows. net? [SAS] "" https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy cp "https://[srcaccount].blob.core.windows.net? [SAS]" "https://[destaccount].blob.core.windows.net? [SAS]" --rekurzív=igaz
 
-Egyetlen objektum másolása Amazon Web Services (AWS) S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Egyetlen objektum másolása a Blob Storage-ba az Amazon Web Services (AWS) S3 szolgáltatásból egy hozzáférési kulcs és egy SAS-jogkivonat használatával. Először állítsa be a AWS_ACCESS_KEY_ID környezeti változót, és AWS_SECRET_ACCESS_KEY az AWS S3 forráshoz.
   
-- azcopy CP "https://s3.amazonaws.com/[gyűjtő]/[objektum]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/to/blob]? [SAS] "
+- azcopy cphttps://s3.amazonaws.com/" [bucket]/[object]" "https://[destaccount]blob.core.windows.net/[container]/[path/to/blob]? [SAS]"
 
-Egy teljes könyvtár másolása az AWS S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Egy teljes könyvtár másolása a Blob Storage-ból AWS S3 egy hozzáférési kulcs és egy SAS-jogkivonat használatával. Először állítsa be a AWS_ACCESS_KEY_ID környezeti változót, és AWS_SECRET_ACCESS_KEY az AWS S3 forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[mappa]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
+- azcopy cphttps://s3.amazonaws.com/" [bucket]/[folder]" "https://[destaccount]blob.core.windows.net/[container]/[path/to/directory]? [SAS]" --rekurzív=igaz
 
-A [mappa] helyőrző jobb megismeréséhez tekintse meg a https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html.
+A [mappa] helyőrzőjének jobb https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html megértéséhez olvassa el a [mappa] helyőrzőt.
 
-Másolja az összes gyűjtőt a Amazon Web Services (AWS) Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Másolja az összes gyűjtőt a Blob Storage-ba az Amazon Web Services (AWS) egy hozzáférési kulcs és egy SAS-jogkivonat használatával. Először állítsa be a AWS_ACCESS_KEY_ID környezeti változót, és AWS_SECRET_ACCESS_KEY az AWS S3 forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy cphttps://s3.amazonaws.com/" " "https://[destaccount]blob.core.windows.net? [SAS]" --rekurzív=igaz
 
-Másolja az összes gyűjtőt egy Amazon Web Services (AWS) régióból Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
+Másolja az összes gyűjtőt a Blob Storage-ba egy Amazon Web Services (AWS) régióból egy hozzáférési kulcs és egy SAS-jogkivonat használatával. Először állítsa be a AWS_ACCESS_KEY_ID környezeti változót, és AWS_SECRET_ACCESS_KEY az AWS S3 forráshoz.
 
-- azcopy CP "https://s3-[régió]. Amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy cphttps://s3-" [region].amazonaws.com/" "https://[destaccount]blob.core.windows.net? [SAS]" --rekurzív=igaz
 
-Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimbólum használatával a gyűjtő nevében. Az előző példákhoz hasonlóan egy hozzáférési kulcsra és egy SAS-jogkivonatra is szüksége lesz. Ügyeljen arra, hogy az AWS S3-forráshoz AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót állítsa be.
+Gyűjtők egy részhalmazának másolása helyettesítő szimbólummal (*) a gyűjtő névben. Az előző példákhoz hasonlóan egy hozzáférési kulcsra és egy SAS-jogkivonatra is szüksége lesz. Ügyeljen arra, hogy az AWS S3 forráshoz AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY állítsa be.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket * name]/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy cphttps://s3.amazonaws.com/" [bucket*name]/" "https://[destaccount]blob.core.windows.net? [SAS]" --rekurzív=igaz
 
 ## <a name="options"></a>Beállítások
 
-**--a blob-Type** karakterlánc határozza meg a blob típusát a célhelyen. Ez a Blobok feltöltésére és a fiókok közötti másolásra használatos (az alapértelmezett "észlelés"). Az érvényes értékek közé tartozik az "észlelés", a "BlockBlob", a "PageBlob" és a "AppendBlob". A fiókok közötti másoláskor az "észlelés" érték azt eredményezi, hogy a AzCopy a forrás blob típusát használja a cél blob típusának meghatározásához. Egy fájl feltöltésekor az "észlelés" meghatározza, hogy a fájl egy VHD vagy egy VHDX-fájl a fájlkiterjesztés alapján. Ha a fájl az éter VHD-vagy VHDX-fájlja, a AzCopy oldal blobként kezeli a fájlt. (alapértelmezett "észlelés")
+**--blob-típusú** karakterlánc Határozza meg a blob típusát a cél. Ez blobok feltöltésére és fiókok közötti másolásra szolgál (alapértelmezett "Detect"). Az érvényes értékek a következők: "Detect", "BlockBlob", "PageBlob" és "AppendBlob". A fiókok közötti másoláskor az "Észlelés" érték hatására az AzCopy a forrásblob típusát használja a célblob típusának meghatározásához. Fájl feltöltésekor a "Detect" határozza meg, hogy a fájl vhd vagy VHDX fájl-e a fájlkiterjesztés alapján. Ha a fájl ether egy VHD vagy VHDX fájl, az AzCopy a fájlt lapblobként kezeli. (alapértelmezett "Észlelés")
 
-**--Block-blob-réteg** sztring a blokk Blobok feltöltése közvetlenül a választott [hozzáférési rétegre](../blobs/storage-blob-storage-tiers.md) . (alapértelmezett "nincs"). Az érvényes értékek a következők: "None", "forró", "cool" és "Archive". Ha a "None" vagy egyetlen szint sem lett átadva, akkor a blob örökli a Storage-fiók szintjét.
+**--block-blob-tier** string Feltöltésblokk blobok közvetlenül a [hozzáférési szint](../blobs/storage-blob-storage-tiers.md) az Ön által kiválasztott. (alapértelmezett "Nincs"). Az érvényes értékek a következők: "Nincs", "Forró", "Hűvös" és "Archívum". Ha "Nincs" vagy nincs réteg kerül átadásra, a blob örökli a tárfiók rétegét.
 
-**--Block-Size-MB** lebegőpontos használata esetén ez a blokk mérete (a MIB-ben van megadva) az Azure Storage-ba való feltöltéskor és az Azure Storage-ból való letöltéssel. Az alapértelmezett értéket a rendszer automatikusan kiszámítja a fájl mérete alapján. Tizedes törtek engedélyezettek (például: 0,25).
+**--block-size-mb** úszó: Használja ezt a blokkméretet (mib-ben megadva) az Azure Storage-ba való feltöltéséskor és az Azure Storage-ból való letöltéskor. Az alapértelmezett értéket a program automatikusan kiszámítja a fájlméret alapján. Tizedes törttörtek megengedettek (például: 0,25).
 
-**--Cache-Control** sztring a Cache-Control fejlécet adja meg. A letöltés után tért vissza.
+**--cache-control** string Állítsa be a cache-control fejlécet. Letöltéskor visszaküldve.
 
-**--ellenőrzési hossz**                         Az átvitel után a célhelyen lévő fájl hosszának ellenőrzését. Ha eltérés van a forrás és a cél között, az átvitel sikertelenként van megjelölve. (alapértelmezett true)
+**--ellenőrzés hossza**                         Ellenőrizze a fájl hosszát a célállomáson az átvitel után. Ha eltérés van a forrás és a cél között, az átvitel sikertelenként lesz megjelölve. (alapértelmezett igaz)
 
-**--ellenőrzés-MD5** karakterlánc megadja, hogy a letöltéskor milyen szigorúan kell ellenőrizni az MD5-kivonatok érvényességét. Csak a letöltéskor érhető el. Elérhető lehetőségek: nincs vizsgálat, bejelentkezés, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett "FailIfDifferent")
+**--check-md5** string Itt adhatja meg, hogy a szigorúan MD5-hash-okat hogyan kell érvényesíteni a letöltéskor. Csak letöltéskor érhető el. Elérhető lehetőségek: NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett "FailIfDifferent")
 
-**--Content-hajlam** sztring beállítja a Content-hajlam fejlécet. A letöltés után tért vissza.
+**--content-disposition** string Állítsa be a content-disposition fejlécet. Letöltéskor visszaküldve.
 
-**--Content-Encoding** string beállítja a Content-Encoding fejlécet. A letöltés után tért vissza.
+**--content-encoding** string Állítsa be a tartalomkódolási fejlécet. Letöltéskor visszaküldve.
 
-**--Content-Language** karakterlánc a Content-Language fejlécet adja meg. A letöltés után tért vissza.
+**--content-language** string Állítsa be a tartalom-nyelvi fejlécet. Letöltéskor visszaküldve.
 
-**--Content-Type** karakterlánc megadja a fájl tartalomtípusát. A nem-GUESS-MIME-típust jelenti. A letöltés után tért vissza.
+**--content-type** string A fájl tartalomtípusát adja meg. Azt jelenti, nem-találgatás-pantomim-típus. Letöltéskor visszaküldve.
 
-**– Kibontás**                           Fájlok automatikus kibontása letöltéskor, ha a tartalmuk kódolása azt jelzi, hogy tömörítve vannak. A támogatott Content-Encoding érték a "gzip" és a "deflate". A ". gz"/". gzip" vagy a ". ZZ" fájlkiterjesztések nem szükségesek, de ha van, el lesznek távolítva.
+**--kicsomagolás**                           A fájlok automatikus kibontása letöltéskor, ha azok tartalomkódolása azt jelzi, hogy tömörítettek. A támogatott tartalomkódolási értékek a "gzip" és a "deflate". A '.gz'/'.gzip' vagy a '.zz' fájlkiterjesztések nem szükségesek, de ha vannak ilyenek.
 
-**– kizárás – attribútumok** karakterlánca (csak Windows) kizárhatja azokat a fájlokat, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
+**--exclude-attributes** string (csak Windows) Kizárhatja azokat a fájlokat, amelyek attribútumai megegyeznek az attribútumlistával. Például: A; S; R
 
-**--kizárás-blob-Type** karakterlánc opcionálisan megadja a blob (BlockBlob/PageBlob/AppendBlob) típusát, amelyet a rendszer a tárolóból vagy a fiókból származó Blobok másolásakor figyelmen kívül hagy. A jelző használata nem alkalmazható az adatok nem Azure-szolgáltatásból szolgáltatásba történő másolására. Több blobot ";" karakterrel kell elválasztani.
+**--exclude-blob-type** string Optionally adja meg a blob típusát (BlockBlob/ PageBlob/ AppendBlob), hogy kizárja a blobok másolásakor a tárolóból vagy a fiókból. A jelző használata nem alkalmazható adatok másolása nem azure-szolgáltatás szolgáltatás. Egynél több blobot kell elválasztani a ";"
 
-**--kizárás – az elérési út** karakterlánca kizárja ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file. pdf). Ha a fiókhoz való bejárással együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
+**--exclude-path** string Kizárni ezeket az elérési utakat másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagot(Például: myFolder;myFolder/subDirName/file.pdf). Ha a fiók sokszögelésével együtt használja, az elérési utak nem tartalmazzák a tároló nevét.
 
-**--kizárás-Pattern** sztring kizárja ezeket a fájlokat másoláskor. Ez a beállítás támogatja a helyettesítő karaktereket (*)
+**--exclude-pattern** string Kizárhatja ezeket a fájlokat másolás közben. Ez a beállítás támogatja a helyettesítő karaktereket (*)
 
-**– követés – symlinks**                      A helyi fájlrendszerből való feltöltéskor kövesse a szimbolikus hivatkozásokat.
+**---follow-symlinks**                      Kövesse a szimbolikus hivatkozásokat, amikor helyi fájlrendszerből töltődik fel.
 
-**--from-to** karakterlánc opcionálisan megadja a forrás céljának kombinációját. Például: LocalBlob, BlobLocal, LocalBlobFS.
+**--from-to** string Opcionálisan megadja a forrás cél kombinációt. Például: LocalBlob, BlobLocal, LocalBlobFs.
 
-**-h,--Súgó** a másoláshoz
+**-h, --segítség** a másoláshoz
 
-**--include-attributes** sztring (csak Windows) olyan fájlokat tartalmaz, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
+**--include-attributes** string (csak Windows) Olyan fájlokat is tartalmaz, amelyek attribútumai megfelelnek az attribútumlistának. Például: A; S; R
 
-a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési utakat. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: myFolder; myFolder/subDirName/file. pdf).
+**--include-path** string Csak ezeket az elérési utakat tartalmazza másoláskor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagot (például: myFolder;myFolder/subDirName/file.pdf).
 
-**--include-Pattern** sztring csak a másoláskor tartalmazza ezeket a fájlokat. Ez a beállítás támogatja a helyettesítő karaktereket (*). A fájlokat a ";" használatával válassza el.
+**--include-pattern** string Csak ezeket a fájlokat tartalmazza másoláskor. Ez a beállítás támogatja a helyettesítő karaktereket (*). A fájlokat a ";" használatával kell elválasztani.
 
-**--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett "információ")
+**--log-level** string Adja meg a napló részletességét a naplófájlhoz, elérhető szintek: INFO(minden kérés/válasz), FIGYELEM(lassú válaszok), HIBA(csak sikertelen kérelmek) és NONE (nincs kimeneti napló). (alapértelmezett "INFO")
 
-**--a metaadatok** karakterláncának feltöltése az Azure Storage-ba ezekkel a kulcs-érték párokkal.
+**--metaadat-karakterlánc** feltöltése az Azure Storage-ba ezekkel a kulcs-érték pármetaadatokkal.
 
-**--nem-GUESS-MIME-típus**                   Megakadályozza, hogy a AzCopy a fájl kiterjesztése vagy tartalma alapján észlelje a tartalom típusát.
+**--no-guess-mime-típus**                   Megakadályozza, hogy az AzCopy észlelje a tartalomtípust a fájl kiterjesztése vagy tartalma alapján.
 
-**– a karakterlánc felülírása** felülírja az ütköző fájlokat és blobokat a célhelyen, ha a jelző értéke TRUE (igaz). A lehetséges értékek a következők: "true", "false", "ifSourceNewer" és "prompt". (alapértelmezett érték: "true")
+**--felülírja** a karakterláncot Felülírja az ütköző fájlokat és blobokat a célon, ha a jelző értéke igaz. A lehetséges értékek a következők: "true", "false", "ifSourceNewer" és "prompt". (alapértelmezett "igaz")
 
-**--Page-blob-rétegbeli** karakterlánc feltöltése oldal blob az Azure Storage-ba ezen blob-réteg használatával. (alapértelmezett "nincs")
+**--page-blob-tier** string Oldalblob feltöltése az Azure Storage-ba ezzel a blobréteghasználatával. (alapértelmezett "Nincs")
 
-**--megőrzés-utolsó módosítás időpontja**          Csak akkor érhető el, ha a cél fájlrendszer.
+**--megőrzés-utolsó-módosított-idő**          Csak akkor érhető el, ha a cél fájlrendszer.
 
-**--put-MD5**                             Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.
+**--put-md5**                             Hozzon létre egy MD5-kivonatot minden fájlból, és mentse a kivonatot a célblob vagy -fájl Content-MD5 tulajdonságaként. (Alapértelmezés szerint a kivonat NEM jön létre.) Csak feltöltéskor érhető el.
 
-**– rekurzív**                            A helyi fájlrendszerből való feltöltéskor a rendszer rekurzív módon vizsgálja az alkönyvtárakat.
+**--rekurzív**                            Vizsgálja meg az alkönyvtárakre rekurzívan, amikor feltölti a helyi fájlrendszerből.
 
-**--S2S-Detect-Source-changed**           Ellenőrizze, hogy a forrás módosult-e az enumerálás után.
+**--s2s-detect-source-megváltozott**           Ellenőrizze, hogy a forrás megváltozott-e a számbavétel után.
 
-**--S2S-Handle-érvénytelen – a metaadatok** karakterlánca megadja, hogy a rendszer hogyan kezelje az érvénytelen metaadat-kulcsokat. Elérhető lehetőségek: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (alapértelmezett "ExcludeIfInvalid")
+**--s2s-handle-invalid-metadata** karakterlánc: Az érvénytelen metaadatkulcsok kezelésének módját adja meg. Elérhető lehetőségek: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (alapértelmezett "ExcludeIfInvalid")
 
-**--S2S-megőrzés – hozzáférési réteg**             A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, használja a s2sPreserveAccessTier = false kapcsolót a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett true)
+**--s2s-preserve-access-tier**             A hozzáférési szint megőrzése a szolgáltatás-szolgáltatás másolása során. Tekintse meg az [Azure Blob storage: gyakori elérésű és archív hozzáférési szintek](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) győződjön meg arról, céltárfiók támogatja a hozzáférési szint beállítása. Abban az esetben, ha a hozzáférési szint beállítása nem támogatott, használja s2sPreserveAccessTier=false a másolási hozzáférési szint megkerüléséhez. (alapértelmezett igaz)
 
-**--S2S-megőrzése-Properties**              A szolgáltatás és a szolgáltatás közötti másolás során megőrzi a teljes tulajdonságokat. Az AWS S3 és az Azure file nem single file Source esetében a List művelet nem ad vissza objektumok és fájlok teljes tulajdonságait. A teljes tulajdonságok megőrzése érdekében a AzCopy egy további kérelmet kell küldenie egy objektumra vagy fájlra vonatkozóan. (alapértelmezett true)
+**--s2s-megőrzési tulajdonságok**              A teljes tulajdonságok megőrzése a szolgáltatás másolása során. Az AWS S3 és az Azure File nem egyfájlos forrás, a lista művelet nem adja vissza az objektumok és fájlok teljes tulajdonságait. A teljes tulajdonságok megőrzése érdekében az AzCopy-nak objektumonként vagy fájlonként egy további kérelmet kell küldenie. (alapértelmezett igaz)
 
-## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
 
-**--Cap-Mbps UInt32**      Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
+**--sapka-mbps uint32**      Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.
 
-**--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
+**--output-type** string A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg". (alapértelmezett "szöveg")
 
 ## <a name="see-also"></a>Lásd még
 

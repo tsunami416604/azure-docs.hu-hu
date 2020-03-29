@@ -1,6 +1,6 @@
 ---
-title: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
-description: A Azure Data Factory használatával telepítheti át a helyszíni Netezza-kiszolgálóról az Azure-ba történő adatátvitelt.
+title: Adatok áttelepítése a helyszíni Netezza kiszolgálóról az Azure-ba
+description: Az Azure Data Factory segítségével adatokat telepítheti át egy helyszíni Netezza kiszolgálóról az Azure-ba.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,198 +12,198 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74922115"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
+# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Adatok áttelepítése a helyszíni Netezza kiszolgálóról az Azure-ba az Azure-ba az Azure-ban 
 
-A Azure Data Factory a helyszíni Netezza-kiszolgálóról az Azure Storage-fiókjába vagy a Azure SQL Data Warehouse-adatbázisba való áttelepítését végző, hatékony és költséghatékony mechanizmust biztosít az adatok áttelepítésére. 
+Az Azure Data Factory egy teljesítmény, robusztus és költséghatékony mechanizmust biztosít az adatok nagy méretekben történő áttelepítéséhez egy helyszíni Netezza kiszolgálóról az Azure storage-fiókjába vagy az Azure SQL Data Warehouse adatbázisába. 
 
-Ez a cikk a következő információkat tartalmazza az adatmérnökök és a fejlesztők számára:
+Ez a cikk a következő információkat tartalmazza az adatmérnökök és -fejlesztők számára:
 
 > [!div class="checklist"]
 > * Teljesítmény 
 > * Rugalmasság másolása
 > * Hálózati biztonság
-> * Magas szintű megoldás-architektúra 
-> * Gyakorlati tanácsok a megvalósításhoz  
+> * Magas szintű megoldásarchitektúra 
+> * A végrehajtás sal kapcsolatos bevált gyakorlatai  
 
 ## <a name="performance"></a>Teljesítmény
 
-Azure Data Factory olyan kiszolgáló nélküli architektúrát kínál, amely különböző szinteken teszi lehetővé a párhuzamosságot. Ha Ön fejlesztő, ez azt jelenti, hogy a hálózat és az adatbázis sávszélességének teljes kihasználásához folyamatokat hozhat létre, hogy maximalizálja a környezet adatátviteli sebességét.
+Az Azure Data Factory egy kiszolgáló nélküli architektúrát kínál, amely lehetővé teszi a párhuzamosságkülönböző szinteken. Ha Ön fejlesztő, ez azt jelenti, hogy folyamatokat hozhat létre a hálózati és az adatbázis sávszélességének teljes kihasználásához, hogy maximalizálja a környezet adatmozgatási átviteli sebességet.
 
-![Teljesítmény diagram](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+![Teljesítménydiagram](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
 
-Az előző ábrát a következőképpen lehet értelmezni:
+Az előző ábra a következőképpen értelmezhető:
 
-- Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit. Azure Integration Runtime használatakor az egyes másolási tevékenységeknél [akár 256 DIUs-t](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) is megadhat kiszolgáló nélküli módon. Ha saját üzemeltetésű integrációs modult (helyi IR) használ, manuálisan méretezheti a gépet, vagy akár több gépre is kiterjesztheti ([legfeljebb négy csomópontot](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), és egyetlen másolási tevékenység osztja el a partíciókat az összes csomópont között. 
+- Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit. Az Azure-integrációs runtime használatakor kiszolgáló nélküli módon [legfeljebb 256 DIUs-t](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) adhat meg minden egyes másolási tevékenységhez. A saját üzemeltetésű integrációs futásidejű (saját üzemeltetésű infravörös) manuálisan skálázhatja fel a gépet, vagy horizontális felskálázás több gépre[(legfeljebb négy csomópontra),](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)és egyetlen másolási tevékenység osztja el a partíciót az összes csomópont között. 
 
-- Egy másolási tevékenység több szál használatával olvas be és ír az adattárba. 
+- Egyetlen másolási tevékenység beolvassa az adattárból, és több szál használatával írja az adattárba. 
 
-- Azure Data Factory a vezérlés folyamata egyszerre több másolási tevékenységet is elindíthat. Például elindíthatja őket az [egyes hurkok](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)használatával. 
+- Az Azure Data Factory vezérlőfolyamat a párhuzamos tevékenységek et párhuzamosan több másolási tevékenységet is elindíthat. Például, akkor indítsa el őket egy [for each hurok](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
-További információ: [másolási tevékenység teljesítményének és méretezhetőségének útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
+További információt a [Tevékenység teljesítményének és méretezhetőségének másolásához című témakörben talál.](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 
 ## <a name="resilience"></a>Rugalmasság
 
-Egy másolási tevékenység futtatásakor Azure Data Factory rendelkezik egy beépített újrapróbálkozási mechanizmussal, amely lehetővé teszi, hogy az informatikai központ bizonyos szintű átmeneti hibákat kezeljen az adattárakban vagy a mögöttes hálózaton.
+Egyetlen példányon belül futó Azure Data Factory egy beépített újrapróbálkozási mechanizmus, amely lehetővé teszi, hogy az adattárakban vagy az alapul szolgáló hálózatban egy bizonyos szintű átmeneti hibák kezelésére.
 
-A másolási tevékenység Azure Data Factory a forrás és a fogadó adattárolók közötti adatmásoláskor két módon kezelheti a nem kompatibilis sorokat. Megszakíthatja, és elvégezheti a másolási tevékenységet, vagy folytathatja a többi adat másolását úgy, hogy kihagyja a nem kompatibilis adatsorokat. Emellett a hiba okának megismeréséhez naplózhatja a nem kompatibilis sorokat az Azure Blob Storage-ban vagy a Azure Data Lake Storeban, kijavíthatja az adatforráson lévő adatok mennyiségét, majd újra próbálkozhat a másolási tevékenységgel.
+Az Azure Data Factory másolási tevékenység, amikor adatokmásolása forrás és a fogadó adattárak, két módon kezelheti inkompatibilis sorokat. A nem kompatibilis adatsorok kihagyásával megszakíthatja és meghiúsíthatja a másolási tevékenységet, vagy folytathatja a többi adat másolását. Emellett a hiba okának megismeréséhez naplózhatja az inkompatibilis sorokat az Azure Blob storage-ban vagy az Azure Data Lake Store-ban, rögzítheti az adatokat az adatforráson, és újra próbálkozhat a másolási tevékenységgel.
 
 ## <a name="network-security"></a>Hálózati biztonság 
 
-Alapértelmezés szerint a Azure Data Factory a helyszíni Netezza-kiszolgálóról egy Azure Storage-fiókba vagy Azure SQL Data Warehouse-adatbázisba küldi át az adatátvitelt Hypertext Transfer Protocol Secure (HTTPS) protokollon keresztüli titkosított kapcsolat használatával. A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a belső támadásokat.
+Alapértelmezés szerint az Azure Data Factory adatokat továbbít a helyszíni Netezza kiszolgálóról egy Azure-tárfiókba vagy az Azure SQL Data Warehouse adatbázisába a Hypertext Transfer Protocol Secure (HTTPS) protokollon keresztüli titkosított kapcsolat használatával. A HTTPS adattitkosítást biztosít az átvitel során, és megakadályozza a lehallgatást és a köztes támadásokat.
 
-Ha nem szeretné, hogy a rendszer a nyilvános interneten keresztül továbbítsa az adatátvitelt, nagyobb biztonságot érhet el azáltal, hogy az Azure Express Route használatával áthelyezi az adatátvitelt egy privát kapcsolaton keresztül. 
+Ha nem szeretné, hogy az adatok átvitele nyilvános interneten keresztül kerülhet, nagyobb biztonságot érhet el, ha az Azure Express Route-on keresztül privát társviszony-létesítési kapcsolaton keresztül továbbítja az adatokat. 
 
-A következő szakasz azt ismerteti, hogyan lehet magasabb szintű biztonságot elérni.
+A következő szakasz bemutatja, hogyan érhető el a nagyobb biztonság.
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
-Ez a szakasz az adatáttelepítés két módját tárgyalja.
+Ez a szakasz az adatok áttelepítési módját ismerteti.
 
-### <a name="migrate-data-over-the-public-internet"></a>Az adatáttelepítés a nyilvános interneten keresztül
+### <a name="migrate-data-over-the-public-internet"></a>Adatok áttelepítése a nyilvános interneten keresztül
 
-![Az adatáttelepítés a nyilvános interneten keresztül](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+![Adatok áttelepítése a nyilvános interneten keresztül](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
 
-Az előző ábrát a következőképpen lehet értelmezni:
+Az előző ábra a következőképpen értelmezhető:
 
-- Ebben az architektúrában biztonságosan továbbíthatja az adatátvitelt a HTTPS használatával a nyilvános interneten keresztül.
+- Ebben az architektúrában biztonságosan továbbíthatja az adatokat https használatával a nyilvános interneten keresztül.
 
-- Ennek az architektúrának a megvalósításához telepítenie kell a Azure Data Factory Integration Runtime (helyi) szolgáltatást egy vállalati tűzfal mögött található Windows rendszerű gépre. Győződjön meg arról, hogy az integrációs modul közvetlenül tud hozzáférni a Netezza-kiszolgálóhoz. A hálózat és az adattárolók adatmásolási sávszélességének teljes kihasználásához manuálisan méretezheti a gépet, vagy akár több gépre is kibővítheti azokat.
+- Ennek az architektúrának az eléréséhez telepítenie kell az Azure Data Factory integrációs futásidejű (saját üzemeltetésű) egy Windows-gépen egy vállalati tűzfal mögött. Győződjön meg arról, hogy ez az integrációs futásidejű közvetlenül hozzáférhet a Netezza kiszolgálóhoz. A hálózat és az adattárolók sávszélességének teljes használatához manuálisan skálázhatja a gépet, vagy több gépre skálázható.
 
-- Ennek az architektúrának a használatával áttelepítheti a kezdeti Pillanatképek és a különbözeti adatok eredeti értékeit is.
+- Ezzel az architektúrával a kezdeti pillanatkép-adatok és a különbözeti adatok áttelepítése is.
 
-### <a name="migrate-data-over-a-private-network"></a>Az adatáttelepítés magánhálózati hálózaton keresztül 
+### <a name="migrate-data-over-a-private-network"></a>Adatok áttelepítése magánhálózaton keresztül 
 
-![Az adatáttelepítés magánhálózati hálózaton keresztül](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+![Adatok áttelepítése magánhálózaton keresztül](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
 
-Az előző ábrát a következőképpen lehet értelmezni:
+Az előző ábra a következőképpen értelmezhető:
 
-- Ebben az architektúrában az Azure Express Route használatával áttelepítheti az adatátvitelt privát kapcsolaton keresztül, az adatforgalom pedig soha nem halad át a nyilvános interneten. 
+- Ebben az architektúrában az adatokat az Azure Express Route-on keresztül privát társviszony-létesítési kapcsolaton keresztül telepíti át, és az adatok soha nem haladnak át a nyilvános interneten. 
 
-- Az architektúra eléréséhez telepítenie kell a Azure Data Factory Integration Runtime (helyi) szolgáltatást egy Windows rendszerű virtuális gépre (VM) az Azure-beli virtuális hálózaton belül. A hálózat és az adattárolók adatmásolási sávszélességének teljes kihasználásához manuálisan méretezheti a virtuális gépet, vagy akár több virtuális gépre is kibővítheti azokat.
+- Ennek az architektúrának az eléréséhez telepítenie kell az Azure Data Factory integrációs futásidejű (saját üzemeltetésű) egy Windows virtuális gépen (VM) az Azure virtuális hálózaton belül. A hálózati és adattárolók sávszélességének teljes kihasználásához manuálisan skálázhatja fel a virtuális gépet, vagy több virtuális gépre skálázhat.
 
-- Ennek az architektúrának a használatával áttelepítheti a kezdeti Pillanatképek és a különbözeti adatok eredeti értékeit is.
+- Ezzel az architektúrával a kezdeti pillanatkép-adatok és a különbözeti adatok áttelepítése is.
 
-## <a name="implement-best-practices"></a>Ajánlott eljárások implementálása 
+## <a name="implement-best-practices"></a>Bevált módszerek megvalósítása 
 
-### <a name="manage-authentication-and-credentials"></a>A hitelesítés és a hitelesítő adatok kezelése 
+### <a name="manage-authentication-and-credentials"></a>Hitelesítés és hitelesítő adatok kezelése 
 
-- A Netezza való hitelesítéshez használhatja az ODBC- [hitelesítést a kapcsolódási karakterláncon keresztül](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties). 
+- A Netezza hitelesítéséhez használhatja az [ODBC-hitelesítést a kapcsolati karakterláncon keresztül.](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties) 
 
-- Hitelesítés az Azure Blob Storage-ban: 
+- Hitelesítés az Azure Blob-tárolóban: 
 
-   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). A Azure Active Directory (Azure AD) automatikusan felügyelt Azure Data Factory identitására épülő felügyelt identitások lehetővé teszik a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadniuk a társított szolgáltatás definíciójában.  
+   - Javasoljuk, hogy [az Azure-erőforrások felügyelt identitások](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)használatát. Az Azure Active Directoryban (Azure AD) automatikusan felügyelt Azure Data Factory-identitásra épülő felügyelt identitások lehetővé teszik a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadnia a csatolt szolgáltatás definíciójában.  
 
-   - Azt is megteheti, hogy az Azure Blob Storage-ban az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), a [közös hozzáférési aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)segítségével végez hitelesítést. 
+   - Másik lehetőségként hitelesítheti magát az Azure Blob storage-ban [egyszerű szolgáltatás,](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication) [egy közös hozzáférésű aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy egy [tárfiókkulcs](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)használatával. 
 
-- Hitelesítés Azure Data Lake Storage Gen2: 
+- Hitelesítés az Azure Data Lake Storage Gen2 szolgáltatásban: 
 
-   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
+   - Javasoljuk, hogy [az Azure-erőforrások felügyelt identitások](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)használatát.
    
-   - Használhatja a [szolgáltatásnevet](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy a [Storage-fiók kulcsát](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)is. 
+   - Egyszerű szolgáltatás [vagy](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) [tárfiókkulcs](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)is használható. 
 
-- Hitelesítés Azure SQL Data Warehouse:
+- Hitelesítés az Azure SQL Data Warehouse-ban:
 
-   - Kifejezetten ajánlott [felügyelt identitásokat használni az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
+   - Javasoljuk, hogy [az Azure-erőforrások felügyelt identitások](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)használatát.
    
-   - Használhatja az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) vagy az [SQL-hitelesítés](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)szolgáltatást is.
+   - Egyszerű [szolgáltatás-](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) vagy [SQL-hitelesítést](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)is használhat.
 
-- Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, javasoljuk, hogy [a hitelesítő adatokat a Azure Key Vaultban tárolja](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , hogy egyszerűbb legyen a kulcsok központi kezelése és elforgatása anélkül, hogy módosítani kellene Azure Data Factory társított szolgáltatásokat. Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyike is. 
+- Ha nem használja az Azure-erőforrások felügyelt identitásait, javasoljuk, hogy [tárolja a hitelesítő adatokat az Azure Key Vaultban,](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) hogy megkönnyítse a kulcsok központi kezelését és elforgatását az Azure Data Factory-hoz csatolt szolgáltatások módosítása nélkül. Ez a [CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyik legjobb gyakorlata is. 
 
-### <a name="migrate-initial-snapshot-data"></a>Kezdeti pillanatkép-adatok migrálása 
+### <a name="migrate-initial-snapshot-data"></a>Kezdeti pillanatképadatok áttelepítése 
 
-Kis tábláknál (azaz a 100 GB-nál kisebb mennyiségű, illetve az Azure-ba áttelepíthető, két órán belül elérhető) táblákon minden egyes másolási feladatot betöltenek. A nagyobb átviteli sebesség érdekében több Azure Data Factory másolási feladatot is futtathat a különálló táblák egyidejű betöltéséhez. 
+Kis táblák (azaz a 100 GB-nál kisebb kötetű vagy két órán belül az Azure-ba áttelepíthető táblák esetében) minden egyes másolási feladatbetöltési adatot készíthet táblázatonként. A nagyobb átviteli azért több Azure Data Factory másolási feladatok futtatásához külön táblák egyidejű betöltéséhez. 
 
-Az egyes másolási feladatokon belül a párhuzamos lekérdezések futtatásához és az adatok partíciók szerinti másolásához a [`parallelCopies` tulajdonság beállításával](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) is elérheti a következő adatpartíciós beállítások valamelyikét:
+Az egyes másolási feladatokkal párhuzamos lekérdezések futtatásához és az adatok partíciók szerinti másolásához a [ `parallelCopies` tulajdonságbeállítás](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) használatával is elérheti a párhuzamosság bizonyos szintjét az alábbi adatpartíció-beállításokkal:
 
-- A nagyobb hatékonyság érdekében javasoljuk, hogy egy adatszeletből induljon el.  Győződjön meg arról, hogy a `parallelCopies` beállításban szereplő érték kisebb, mint az Netezza-kiszolgálón lévő tábla adatszelet partícióinak teljes száma.  
+- A nagyobb hatékonyság érdekében javasoljuk, hogy egy adatszeletből induljon ki.  Győződjön meg arról, hogy a `parallelCopies` beállítás értéke kisebb, mint a Netezza kiszolgálón lévő táblában lévő adatszelet-partíciók teljes száma.  
 
-- Ha az egyes adatszelet-partíciók mennyisége továbbra is nagy (például 10 GB vagy nagyobb), javasoljuk, hogy váltson dinamikus tartományú partícióra. Ez a beállítás nagyobb rugalmasságot biztosít a partíciók számának és az egyes partíciók mennyiségének a partíciós oszlop, a felső határ és az alsó határ alapján történő meghatározásához.
+- Ha az egyes adatszelet-partíciók kötete még mindig nagy (például 10 GB vagy nagyobb), javasoljuk, hogy váltson dinamikus tartománypartícióra. Ez a beállítás nagyobb rugalmasságot biztosít a partíciók számának és az egyes partíciók mennyiségének meghatározásához partícióoszlop, felső és alsó határ szerint.
 
-Nagyobb táblák esetén (azaz 100 GB-os vagy annál nagyobb mennyiségű, illetve két órán belül *nem* telepíthető Azure-ba történő Migrálás esetén) ajánlott az adatok egyéni lekérdezéssel történő particionálása, majd minden egyes másolási feladatot egyszerre egy partíció másolása. A jobb teljesítmény érdekében több Azure Data Factory másolási feladatot is futtathat egyszerre. Az egyes partíciók egyéni lekérdezéssel való betöltéséhez szükséges minden egyes másolási feladatsor esetében növelheti az átviteli sebességet, ha az adatszelet vagy a dinamikus tartomány használatával engedélyezi a párhuzamosságot. 
+Nagyobb táblák (azaz a 100 GB-os vagy nagyobb kötetű, vagy két órán belül *nem* telepíthető táblák) esetén azt javasoljuk, hogy az adatokat egyéni lekérdezéssel particionálja, majd minden egyes másolási feladatpéldányt egyszerre egy partícióval készítsen. A jobb átviteli, futtathat több Azure Data Factory másolási feladatok egyidejűleg futtatható. Minden egyes copy-job cél betöltése egy partíciót egyéni lekérdezéssel, növelheti az átviteli forgalmat azáltal, hogy engedélyezi a párhuzamosság keresztül adatszelet vagy dinamikus tartomány. 
 
-Ha egy hálózati vagy adattár-átmeneti probléma miatt nem sikerül a másolási feladatok végrehajtása, újrafuttathatja a sikertelen másolási feladatot, hogy az adott partíciót a táblából töltse újra. Más partíciókat betöltő más másolási feladatok nem érintettek.
+Ha egy másolási feladat egy hálózati vagy adattárbeli átmeneti probléma miatt sikertelen, újrafuttathatja a sikertelen másolási feladatot, hogy újrabetöltse az adott partíciót a táblából. Más más partíciókat betöltő másolási feladatokat nem érint.
 
-Amikor az adatok betöltését egy Azure SQL Data Warehouse adatbázisba, javasoljuk, hogy a másolási feladaton belül engedélyezze az Azure Blob Storage-ba történő előkészítést átmenetiként.
+Amikor adatokat tölt be egy Azure SQL Data Warehouse-adatbázisba, azt javasoljuk, hogy engedélyezze a PolyBase-t a másolási feladaton belül az Azure Blob storage-szal átmenetiként.
 
-### <a name="migrate-delta-data"></a>Különbözeti adatáttelepítés 
+### <a name="migrate-delta-data"></a>Különbözeti adatok áttelepítése 
 
-A táblából származó új vagy frissített sorok azonosításához használjon időbélyeg-oszlopot vagy egy növekményes kulcsot a sémán belül. Ezt követően a legújabb értéket magas vízjelként is tárolhatja egy külső táblában, majd a következő betöltéskor felhasználhatja a különbözeti értékek szűrésére. 
+A tábla új vagy frissített sorainak azonosításához használjon időbélyegoszlopot vagy növekménykulcsot a sémán belül. Ezután a legújabb értéket magas vízjelként tárolhatja egy külső táblában, majd az adatok következő betöltésekkor szűrheti azt a különbözeti adatokszűrésére. 
 
-Minden táblázat egy másik vízjel oszlopot használhat az új vagy frissített sorainak azonosításához. Javasoljuk, hogy hozzon létre egy külső vezérlőelem-táblázatot. A táblázatban minden egyes sor a Netezza-kiszolgáló egy tábláját jelöli az adott vízjel-oszlop nevével és a magas küszöbértékkel. 
+Minden tábla más vízjeloszlopot használhat az új vagy frissített sorok azonosítására. Javasoljuk, hogy hozzon létre egy külső vezérlőtáblát. A táblában minden sor egy táblát jelöl a Netezza kiszolgálón, amelynek fajlagos vízjeloszlop-neve és magas vízjelértéke van. 
 
-### <a name="configure-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul konfigurálása
+### <a name="configure-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs futásidő konfigurálása
 
-Ha a Netezza-kiszolgálóról az Azure-ba végzi az adatok áttelepítését, függetlenül attól, hogy a kiszolgáló a vállalati tűzfal mögött vagy egy virtuális hálózati környezetben található, akkor a saját üzemeltetésű integrációs modult egy Windows rendszerű gépre vagy virtuális gépre kell telepítenie, amely a következőhöz használt motor: Helyezze át az adatátvitelt. A saját üzemeltetésű integrációs modul telepítésekor a következő módszert javasoljuk:
+Ha adatokat telepít át a Netezza kiszolgálóról az Azure-ba, függetlenül attól, hogy a kiszolgáló a vállalati tűzfal mögött vagy egy virtuális hálózati környezetben található, telepítenie kell egy saját üzemeltetésű infravörös szolgáltatást egy Windows-gépen vagy virtuális gépen, amely a használt motor adatok mozgatása. Az önkiszolgáló infravörös szolgáltatás telepítésekor a következő megközelítést javasoljuk:
 
-- Minden Windows rendszerű gép vagy virtuális gép esetében a 32 vCPU és a 128-GB memória konfigurációját kell kezdeni. Az adatáttelepítés során megtarthatja az IR-gép processzor-és memóriahasználat figyelését, és megtekintheti, hogy szükség van-e a gép jobb teljesítményének növelésére vagy a számítógép méretezésére a költség megtakarítása érdekében.
+- Minden egyes Windows-gép vagy virtuális gép esetén 32 vCPU és 128 GB-os memóriával kezdje. Az adatáttelepítés során folyamatosan figyelheti az infravörös gép processzor- és memóriahasználatát, így megállapíthatja, hogy a jobb teljesítmény érdekében tovább kell-e bővítenie a gépet, vagy csökkentenie kell a gépet a költségek csökkentése érdekében.
 
-- Azt is megteheti, hogy legfeljebb négy csomópontot társít, egyetlen saját üzemeltetésű IR-vel. A saját üzemeltetésű integrációs modulon futó egyetlen másolási feladattípus automatikusan alkalmazza az összes virtuálisgép-csomópontot az adatok párhuzamos másolására. A magas rendelkezésre állás érdekében kezdjen el négy virtuálisgép-csomóponttal, hogy elkerülje a meghibásodást az adatáttelepítés során.
+- Horizontális felskálázhatja is, ha egyetlen saját üzemeltetésű infravörös kapcsolattal legfeljebb négy csomópontot társít. Egy önkiszolgáló infravörös kapcsolaton futó egyetlen másolási feladat automatikusan alkalmazza az összes virtuálisgép-csomópontot az adatok párhuzamos másolásához. A magas rendelkezésre állás érdekében kezdje négy virtuálisgép-csomóponttal, hogy elkerülje az adatáttelepítés során egyetlen meghibásodási pontot.
 
-### <a name="limit-your-partitions"></a>Partíciók korlátozása
+### <a name="limit-your-partitions"></a>A partíciók korlátozása
 
-A bevált gyakorlat szerint a megvalósíthatósági koncepciót (POC) egy reprezentatív minta adatkészlettel kell elvégeznie, hogy minden egyes másolási tevékenységhez megfelelő partíciós méretet lehessen meghatározni. Javasoljuk, hogy az egyes partíciókat két órán belül töltse be az Azure-ba.  
+Ajánlott eljárásként végezzen teljesítményigazolást (POC) egy reprezentatív mintaadatkészlettel, hogy minden egyes másolási tevékenységhez meghatározhassa a megfelelő partícióméretet. Azt javasoljuk, hogy töltse be az egyes partíciókat az Azure-ba két órán belül.  
 
-Egy tábla másolásához kezdjen egyetlen másolási tevékenységgel egyetlen, saját üzemeltetésű IR-géppel. Fokozatosan növelje a `parallelCopies` beállítást a tábla adatszeleti partícióinak száma alapján. Megtudhatja, hogy a teljes tábla betölthető-e két órán belül az Azure-ba a másolási feladatokból származó átviteli sebességnek megfelelően. 
+Táblázat másolásához kezdje egyetlen másolási tevékenységgel egyetlen, saját üzemeltetésű infravörös géppel. Fokozatosan `parallelCopies` növelje a beállítást a táblázatban lévő adatszelet-partíciók száma alapján. Tekintse meg, hogy a teljes tábla két órán belül betölthető-e az Azure-ba a másolási feladatból eredő átviteli terhelésnek megfelelően. 
 
-Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetésű IR-csomópont és az adattár kapacitása nincs teljesen használatban, fokozatosan növelje az egyidejű másolási tevékenységek számát, amíg el nem éri a hálózat korlátját vagy az adattár sávszélesség-korlátját. s. 
+Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetésű infravörös csomópont és az adattár kapacitása nincs teljes mértékben kihasználva, fokozatosan növelje az egyidejű másolási tevékenységek számát, amíg el nem éri a hálózat korlátját vagy az adatok sávszélesség-korlátját. Üzletek. 
 
-Tartsa figyelemmel a CPU-és memóriahasználat figyelését a saját üzemeltetésű IR-gépen, és készen áll a gép vertikális felskálázására vagy a több gépre való skálázásra, amikor azt látja, hogy a processzor és a memória teljes mértékben használatban van. 
+Figyelje a cpu- és memóriahasználatot a saját üzemeltetésű infravörös gépen, és készen áll a gép méretezésére vagy több gépre való horizontális felskálázásra, amikor látja, hogy a processzor és a memória teljes mértékben kihasználva van. 
 
-Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység jelzi, csökkentse a párhuzamosságot vagy a `parallelCopies` beállítást a Azure Data Factory, vagy növelje a hálózat és az adattárak sávszélességének vagy I/O-műveleteinek másodpercenkénti (IOPS) korlátait. 
+Ha az Azure Data Factory másolási tevékenysége által jelentett szabályozási hibákat `parallelCopies` észlel, vagy csökkentse az egyidejűséget vagy a beállítást az Azure Data Factoryban, vagy fontolja meg a hálózati és adattárak másodpercenkénti sávszélesség- vagy I/O-műveleteinek növelését. 
 
 
-### <a name="estimate-your-pricing"></a>A díjszabás becslése 
+### <a name="estimate-your-pricing"></a>Becsülje meg az árakat 
 
-Vegye figyelembe a következő folyamatot, amely az adatok helyszíni Netezza-kiszolgálóról egy Azure SQL Data Warehouse adatbázisba való átköltöztetésére szolgál:
+Vegye figyelembe a következő folyamatot, amely úgy van kialakítva, hogy adatokat telepítsen át a helyszíni Netezza kiszolgálóról egy Azure SQL Data Warehouse-adatbázisba:
 
-![A díjszabási folyamat](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+![Az árképzési folyamat](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
-Tegyük fel, hogy az alábbi utasítások teljesülnek: 
+Tegyük fel, hogy a következő állítások igazak: 
 
 - A teljes adatmennyiség 50 terabájt (TB). 
 
-- Az első megoldási architektúra használatával migráljuk az adatáttelepítést (a Netezza-kiszolgáló a tűzfal mögött található).
+- Az adatokat az első megoldás architektúrájának használatával telepítjük át (a Netezza kiszolgáló a helyszíni, a tűzfal mögött található).
 
-- Az 50 TB-os kötet 500 partícióra van osztva, és mindegyik másolási tevékenység egy partíciót helyez el.
+- Az 50 TB-os kötet 500 partícióra van osztva, és minden másolási tevékenység egy partíciót mozgat.
 
-- Minden másolási tevékenység egy saját üzemeltetésű, négy gépen üzemelő IR-vel van konfigurálva, és 20 megabájt/másodperc (MB/s) sebesség elérését éri el. (Másolási tevékenységen belül a `parallelCopies` 4 értékre van állítva, és az adatok a táblából való betöltéséhez szükséges minden szál 5 MB/s adatátviteli sebességet érhet el.)
+- Minden másolási tevékenység egy saját üzemeltetésű infravörös kapcsolattal van konfigurálva négy gép ellen, és másodpercenként 20 megabájt (MBps) átviteli sebességet ér el. (A másolási `parallelCopies` tevékenységen belül 4-re van állítva, és a táblából betöltő minden szál 5 Mb/s átviteli sebességet ér el.)
 
-- A ForEach Egyidejűség értéke 3, az összesített átviteli sebesség pedig 60 MBps.
+- A ForEach egyidejűség 3- ra van állítva, és az összesített átviteli sebesség 60 Mb/s.
 
-- Összesen 243 órát vesz igénybe az áttelepítés befejezéséhez.
+- Az áttelepítés összesen 243 órát vesz igénybe.
 
-Az előző feltételezések alapján itt látható a becsült ár: 
+Az előző feltételezések alapján, itt a becsült ár: 
 
-![A díjszabási táblázat](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+![Az árképzési táblázat](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> Az előző táblázatban látható díjszabás feltételezett. A tényleges díjszabás a környezet tényleges átviteli sebességével függ. A Windows rendszerű gép (a saját üzemeltetésű IR-vel telepített) díja nem található. 
+> Az előző táblázatban szereplő árképzés hipotetikus. A tényleges díjszabás a környezet tényleges átviteli átmenő eszköztől függ. A Windows-gép ára (a saját üzemeltetésű infravörös telepítéssel) nem tartalmazza. 
 
 ### <a name="additional-references"></a>További referenciák
 
-További információt a következő cikkekben és útmutatókban talál:
+További információt az alábbi cikkekben és útmutatókban talál:
 
-- [Adatok migrálása helyszíni adattárház-adatbázisból az Azure-ba Azure Data Factory használatával](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza-összekötő](https://docs.microsoft.com/azure/data-factory/connector-netezza)
+- [Adatok áttelepítése helyszíni relációs adattárház-adatbázisból az Azure-ba az Azure Data Factory használatával](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
+- [Netezza csatlakozó](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC-összekötő](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Blob storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Data Warehouse-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [Azure SQL Data Warehouse összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Tevékenységteljesítmény-hangolási útmutató másolása](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Helyi integrációs modul létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Saját üzemeltetésű integrációs modul, HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Self-hosted integrációs futásidejű HA és méretezhetőség](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Az adatáthelyezés biztonsági szempontjai](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Hitelesítő adatok tárolása Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+- [Hitelesítő adatok tárolása az Azure Key Vaultban](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
 - [Adatok növekményes másolása egy táblából](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
 - [Adatok növekményes másolása több táblából](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
-- [Azure Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+- [Az Azure Data Factory díjszabási lapja](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Több tárolóból származó fájlok másolása Azure Data Factory használatával](solution-template-copy-files-multiple-containers.md)
+- [Fájlok másolása több tárolóból az Azure Data Factory használatával](solution-template-copy-files-multiple-containers.md)

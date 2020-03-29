@@ -1,6 +1,6 @@
 ---
-title: SSIS Migrálás Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként
-description: A SSIS áttelepítése Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként.
+title: SSIS-áttelepítés az Azure SQL Database által felügyelt példánysal az adatbázis számítási feladatának célhelyeként
+description: SSIS-áttelepítés az Azure SQL Database felügyelt példány, mint az adatbázis számítási feladatok cél.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -12,35 +12,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929782"
 ---
-# <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS Migrálás Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként
+# <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS-áttelepítés az Azure SQL Database által felügyelt példánysal az adatbázis számítási feladatának célhelyeként
 
-Ha az adatbázis-munkaterheléseket a helyszíni SQL Serverról Azure SQL Database felügyelt példányra telepíti át, ismernie kell az [Azure adatáttelepítési szolgáltatást](https://docs.microsoft.com/azure/dms/dms-overview)(DMS), valamint a [Azure SQL Database felügyelt példányok áttelepítéséhez szükséges hálózati topológiákat a DMS használatával](https://docs.microsoft.com/azure/dms/resource-network-topologies).
+Amikor adatbázis-számítási feladatokat telepít át az SQL Serverből az Azure SQL Database által felügyelt példányba, ismernie kell az [Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) szolgáltatást és az Azure SQL Database [dms-es felügyelt példányok áttelepítésének hálózati topológiáit.](https://docs.microsoft.com/azure/dms/resource-network-topologies)
 
-Ez a cikk a SSIS-katalógusban (SSISDB) tárolt SQL Server Integration Service (SSIS) csomagok áttelepítését, valamint a SSIS-csomagok végrehajtását ütemezhető SQL Server Agent feladatokat ismerteti.
+Ez a cikk az SSIS-katalógusban (SSIS) tárolt SQL Server Integration Service (SSIS) csomagok és az SSIS-csomagvégrehajtás-végrehajtást ütemező SQL Server Agent-feladatokban tárolt csomagok áttelepítésére összpontosít.
 
-## <a name="migrate-ssis-catalog-ssisdb"></a>SSIS-katalógus migrálása (SSISDB)
+## <a name="migrate-ssis-catalog-ssisdb"></a>SSIS-katalógus áttelepítése (SSISDB)
 
-A SSISDB áttelepítését a DMS használatával végezheti el a következő cikkben leírtak szerint: [SSIS-csomagok áttelepítése Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance).
+Az SSISDB-áttelepítés a DMS használatával végezhető el, a cikkben leírtak szerint: [SSIS-csomagok áttelepítése egy Azure SQL Database által felügyelt példányba.](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 
-## <a name="ssis-jobs-to-azure-sql-database-managed-instance-agent"></a>SSIS feladatok Azure SQL Database felügyelt példány ügynökének
+## <a name="ssis-jobs-to-azure-sql-database-managed-instance-agent"></a>SSIS-feladatok az Azure SQL Database felügyelt példányügynökéhez
 
-Azure SQL Database felügyelt példány natív, első osztályú ütemező, akárcsak SQL Server Agent a helyszínen.  Mivel a SSIS-feladatok áttelepítési eszköze még nem érhető el, át kell telepíteni őket SQL Server Agentról a helyszínről Azure SQL Database felügyelt példány-ügynöknek a parancsfájlok/manuális másolás használatával.
+Az Azure SQL Database által felügyelt példány rendelkezik egy natív, első osztályú ütemező, csakúgy, mint az SQL Server Agent a helyszínen.  Mivel az SSIS-feladatok áttelepítési eszköze még nem érhető el, azokat a helyszíni SQL Server Agentből az Azure SQL Database által felügyelt példányügynökbe parancsfájlokon/manuális másoláson keresztül kell áttelepíteni.
 
 ## <a name="additional-resources"></a>További források
 
-- [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
-- [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+- [Azure-adatgyár](https://docs.microsoft.com/azure/data-factory/introduction)
+- [Azure-SSIS integrációs futásidejű](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
 - [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)
-- [Hálózati topológiák Azure SQL Database felügyelt példányok áttelepítéséhez a DMS használatával](https://docs.microsoft.com/azure/dms/resource-network-topologies)
-- [SSIS-csomagok migrálása Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [Az Azure SQL Database által felügyelt példányok DMS használatával történő áttelepítésének hálózati topológiái](https://docs.microsoft.com/azure/dms/resource-network-topologies)
+- [SSIS-csomagok migrálása az Azure SQL Database felügyelt példányára](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Kapcsolódás a SSISDB az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
-- [Az Azure-ban üzembe helyezett SSIS-csomagok futtatása](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)
+- [Csatlakozás az SSISDB-hez az Azure-ban](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
+- [Az Azure-ban telepített SSIS-csomagok futtatása](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)

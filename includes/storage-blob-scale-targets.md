@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
 ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75392289"
 ---
 | Erőforrás | Cél        |
 |----------|---------------|
-| Egy blob-tároló maximális mérete | Ugyanaz, mint a Storage-fiókok maximális kapacitása |
-| Blokkok maximális száma egy blokk blobban vagy a blob hozzáfűzése | 50 000 blokk |
-| Blokk maximális mérete egy blokk blobban | 100 MiB |
-| Blokk blob maximális mérete | 50 000 X 100 MiB (körülbelül 4,75 TiB) |
-| Blokk maximális mérete egy hozzáfűző blobban | 4 MiB |
-| Hozzáfűző blob maximális mérete | 50 000 x 4 MiB (körülbelül 195 GiB) |
-| Oldal blobjának maximális mérete | 8 TiB |
-| Tárolt hozzáférési szabályzatok maximális száma blob-tárolón | 5 |
-|Egy blobhoz tartozó célalkalmazás-kérelmek sebessége | Legfeljebb 500 kérelem másodpercenként |
-|Cél átviteli sebesség egy egyoldalas blobhoz | Akár 60 MiB másodpercenként |
-|Cél átviteli sebesség egyetlen blokk blobhoz |Legfeljebb Storage-fiók bejövő/kimenő korlátja<sup>1</sup> |
+| Egyetlen blobtároló maximális mérete | Megegyezik a tárfiók maximális kapacitással |
+| A blokkblobban vagy hozzáfűző blobban lévő blokkok maximális száma | 50 000 háztömb |
+| Blokkméretének maximális mérete egy blokkblobban | 100 mib |
+| Egy blokkblob maximális mérete | 50 000 X 100 MiB (kb. 4,75 TiB) |
+| Egy blokk maximális mérete hozzáfűző blobban | 4 MiB |
+| Hozzáfűző blob maximális mérete | 50 000 x 4 Millió (kb. 195 GiB) |
+| Egy lapblob maximális mérete | 8 TiB |
+| A tárolt hozzáférési házirendek maximális száma blobtárolónként | 5 |
+|Egyetlen blob célkérelem-aránya | Másodpercenként legfeljebb 500 kérelem |
+|Egyetlen lapblob átviteli átviteli célja | Akár 60 MiB másodpercenként |
+|Egyetlen blokkblob célátviteli-átatot használ |A tárfiók be- és kilépési<sup>korlátaiig 1</sup> |
 
-<sup>1</sup> az egyes Blobok átviteli sebessége több tényezőtől függ, többek között a következőktől: Egyidejűség, kérelmek mérete, teljesítményszint, a feltöltések forrása, valamint a letöltés céljának célja. A [nagy átviteli sebességű blokkos Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)teljesítményének növelésével kihasználhatja a nagyobb méretű Blobok vagy blokkok feltöltését. Pontosan hívja meg a [put blobot](/rest/api/storageservices/put-blob) vagy a [Letiltás](/rest/api/storageservices/put-block) műveletet egy olyan blob-vagy blokk-mérettel, amely nagyobb, mint 4 MIB a standard Storage-fiókokhoz. A Premium Block blob vagy a Data Lake Storage Gen2 Storage-fiókok esetében használjon 256 KiB-nál nagyobb blokk-vagy blob-méretet.
+<sup>1</sup> Egy blob átviteli sebessége több tényezőtől függ, többek között, de nem kizárólagosan: egyidejűség, kérelem mérete, teljesítményszint, a feltöltések forrásának sebessége és a letöltések célja. A [nagy átviteli sebességű blokkblobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)teljesítménybeli javításai nak kihasználásához töltsön fel nagyobb blobokat vagy blokkokat. Pontosabban hívja meg a [Put Blob](/rest/api/storageservices/put-blob) vagy [put block](/rest/api/storageservices/put-block) műveletet egy blob vagy blokk mérete, amely nagyobb, mint 4 MiB a standard szintű tárfiókok. Prémium szintű blokkblobhoz vagy Data Lake Storage Gen2 storage-fiókokhoz használjon 256 KiB-nél nagyobb blokk- vagy blobméretet.

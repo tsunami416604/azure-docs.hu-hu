@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása Sybase használatával Azure Data Factory
-description: Megtudhatja, hogyan másolhatja át a Sybase adatait egy Azure Data Factoryi folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
+title: Adatok másolása a Sybase-ből az Azure Data Factory használatával
+description: Megtudhatja, hogyan másolhatja az adatokat a Sybase-ről a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,61 +12,61 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 0552cdc50e2b760600ad8c58bd3d1cd4d2dc50a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930979"
 ---
-# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása Sybase használatával Azure Data Factory
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása a Sybase-ből az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-onprem-sybase-connector.md)
 > * [Aktuális verzió](connector-sybase.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factory egy Sybase-adatbázisból származó adatok másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása egy Sybase-adatbázisból. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez a Sybase-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-A Sybase-adatbázisból bármilyen támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A Sybase adatbázisból adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
-Ez a Sybase-összekötő a következőket támogatja:
+Ez a Sybase-összekötő különösen a következőket támogatja:
 
-- SAP Sybase SQL Anywhere (ASA) **16. és újabb verzió**; Az IQ és a bemutató nem támogatott.
-- Adatok másolása az **alapszintű** vagy a **Windows** -hitelesítéssel.
+- SAP Sybase SQL Anywhere (ASA) **16-os és újabb verzió;** Az IQ és az ASE nem támogatott.
+- Adatok másolása **alapfokú** vagy Windows-hitelesítéssel. **Windows**
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Sybase-összekötő használatához a következőket kell tennie:
+A Sybase-összekötő használatához a következőket kell használnia:
 
-- Saját üzemeltetésű Integration Runtime beállítása. További részletekért tekintse meg a saját üzemeltetésű [Integration Runtime](create-self-hosted-integration-runtime.md) szóló cikket.
-- Telepítse az [adatszolgáltatót a Sybase iAnywhere. SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 vagy újabb verzióra a Integration Runtime gépen.
+- Állítsa be a saját üzemeltetésű integrációs futásidejű. A [részleteket a saját üzemeltetésű integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben találja.
+- Telepítse a [Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 vagy újabb rendszer adatszolgáltatóját az integrációs futásidejű gépen.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük a Sybase-összekötőhöz tartozó Data Factory-entitások definiálásához használt tulajdonságokat.
+A következő szakaszok a Sybase-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-A Sybase társított szolgáltatás a következő tulajdonságokat támogatja:
+A Sybase csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Sybase** | Igen |
+| type | A típustulajdonságot a következőre kell állítani: **Sybase** | Igen |
 | kiszolgáló | A Sybase-kiszolgáló neve. |Igen |
-| adatbázis | A Sybase-adatbázis neve. |Igen |
-| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű**és **Windows**. |Igen |
-| felhasználónév | Adja meg a Sybase-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| adatbázis | A Sybase adatbázis neve. |Igen |
+| authenticationType | A Sybase adatbázishoz való csatlakozáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű**és **Windows**. |Igen |
+| felhasználónév | Adja meg a Sybase adatbázishoz való csatlakozáshoz kívánt felhasználónevet. |Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) |Igen |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Az előfeltételek ben említettek szerint saját üzemeltetésű [integrációs](#prerequisites)futásidejű re van szükség. |Igen |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -93,14 +93,14 @@ A Sybase társított szolgáltatás a következő tulajdonságokat támogatja:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Sybase-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz a Sybase adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-A Sybase-adatok másolásához a következő tulajdonságok támogatottak:
+Adatok Sybase-ből történő másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SybaseTable** | Igen |
-| tableName | A Sybase-adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **SybaseTable** | Igen |
+| tableName | A Sybase adatbázisban lévő tábla neve. | Nem (ha a "lekérdezés" a tevékenységforrásban meg van adva) |
 
 **Példa**
 
@@ -119,22 +119,22 @@ A Sybase-adatok másolásához a következő tulajdonságok támogatottak:
 }
 ```
 
-Ha `RelationalTable` gépelt adatkészletet használ, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha gépelt adatkészletet használt, `RelationalTable` továbbra is támogatott, amíg a rendszer az újat a jövőben használja.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Sybase-forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz a Sybase-forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="sybase-as-source"></a>Sybase forrásként
+### <a name="sybase-as-source"></a>Sybase mint forrás
 
-A Sybase adatainak másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
+Adatok Sybase-ből történő másolásához a következő tulajdonságokat támogatja a másolási tevékenység **forrása** szakasz:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SybaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **SybaseSource** | Igen |
+| lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"SELECT * FROM MyTable"`. | Nem (ha az adatkészletben a "tableName" van megadva) |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -166,19 +166,19 @@ A Sybase adatainak másolásához a másolási tevékenység **forrása** szakas
 ]
 ```
 
-Ha `RelationalSource` gépelt forrást használ, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha gépelt forrást használt, `RelationalSource` akkor továbbra is támogatott, amíg az újat a jövőben is használhatja.
 
-## <a name="data-type-mapping-for-sybase"></a>Sybase adattípusának leképezése
+## <a name="data-type-mapping-for-sybase"></a>A Sybase adattípus-leképezése
 
-A Sybase-adatok másolása során a rendszer a következő leképezéseket használja a Sybase-adattípusokból Azure Data Factory ideiglenes adattípusokra. A másolási tevékenység a forrás sémájának és adattípusának a fogadóba való leképezésével kapcsolatos tudnivalókat lásd: [séma-és adattípus-leképezések](copy-activity-schema-and-type-mapping.md) .
+Adatok másolásakor a Sybase, a következő leképezések a Sybase adattípusok az Azure Data Factory köztes adattípusok. A [Séma- és adattípus-hozzárendelések](copy-activity-schema-and-type-mapping.md) című témakörből megtudhatja, hogy a másolási tevékenység hogyan képezi le a forrássémát és az adattípust a fogadóhoz.
 
-A Sybase támogatja a T-SQL-típusokat. Az SQL-típusokból Azure Data Factory köztes adattípusokra vonatkozó leképezési táblázathoz lásd: [Azure SQL Database Connector-adattípus-leképezési](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) szakasz.
+A Sybase támogatja a T-SQL típusokat. Az SQL-típusoktól az Azure Data Factory köztes adattípusaiig lévő leképezési tábláról az [Azure SQL Database Connector – adattípus-leképezés](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) című szakaszban.
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
 
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

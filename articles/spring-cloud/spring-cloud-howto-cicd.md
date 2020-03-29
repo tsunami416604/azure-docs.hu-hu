@@ -1,31 +1,31 @@
 ---
-title: CI/CD az Azure Spring Cloud-hoz
-description: CI/CD az Azure Spring Cloud-hoz
+title: CI/CD az Azure Spring Cloud szolgáltatáshoz
+description: CI/CD az Azure Spring Cloud szolgáltatáshoz
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278515"
 ---
-# <a name="cicd-for-azure-spring-cloud"></a>CI/CD az Azure Spring Cloud-hoz
+# <a name="cicd-for-azure-spring-cloud"></a>CI/CD az Azure Spring Cloud szolgáltatáshoz
 
-A folyamatos integráció és a folyamatos kézbesítési eszközök lehetővé teszik a fejlesztők számára, hogy minimális erőfeszítéssel és kockázattal gyorsan telepíthessék a meglévő alkalmazások frissítéseit. Az Azure DevOps segítségével rendszerezheti és kezelheti ezeket a kulcsfontosságú feladatokat. Az Azure Spring Cloud jelenleg nem biztosít konkrét Azure DevOps beépülő modult.  A Spring Cloud-alkalmazásokat azonban integrálhatja a DevOps egy [Azure CLI-feladat](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)használatával. Ebből a cikkből megtudhatja, hogyan használhatja az Azure Spring Cloud Azure CLI-feladatait az Azure DevOps való integráláshoz.
+A folyamatos integráció és a folyamatos kézbesítési eszközök lehetővé teszik a fejlesztők számára, hogy a meglévő alkalmazások frissítéseit gyorsan, minimális erőfeszítéssel és kockázattal telepítsék. Az Azure DevOps segítségével rendszerezheti és vezérelheti ezeket a kulcsfontosságú feladatokat. Jelenleg az Azure Spring Cloud nem kínál egy adott Azure DevOps-bővítményt.  A Spring Cloud-alkalmazásokat azonban integrálhatja a DevOps-szal egy [Azure CLI-feladat](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)használatával. Ez a cikk bemutatja, hogyan használhatja az Azure CLI-feladatot az Azure Spring Cloud szolgáltatással az Azure DevOps-szal való integrációhoz.
 
-## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager szolgáltatási kapcsolatok létrehozása
+## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager szolgáltatáskapcsolat létrehozása
 
-[Ebből a cikkből](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) megtudhatja, hogyan hozhat létre Azure Resource Manager szolgáltatás-kapcsolódást az Azure DevOps-projekthez. Ügyeljen arra, hogy ugyanazt az előfizetést válassza, amelyet az Azure Spring Cloud Service-példányhoz használ.
+[Ebből a cikkből](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) megtudhatja, hogyan hozhat létre Azure Resource Manager-szolgáltatáskapcsolatot az Azure DevOps-projekttel. Ügyeljen arra, hogy ugyanazt az előfizetést válassza ki, amelyet az Azure Spring Cloud szolgáltatáspéldányához használ.
 
-## <a name="azure-cli-task-templates"></a>Azure CLI-feladatok sablonjai
+## <a name="azure-cli-task-templates"></a>Azure CLI feladatsablonok
 
-### <a name="deploy-artifacts"></a>Összetevők üzembe helyezése
+### <a name="deploy-artifacts"></a>Összetevők telepítése
 
-Projektjeit `tasks`egy sorozatán keresztül hozhatja létre és helyezheti üzembe. Ez a kódrészlet először definiál egy Maven-feladatot az alkalmazás létrehozásához, majd egy második feladatot, amely az Azure Spring Cloud Azure CLI-bővítmény használatával telepíti a JAR-fájlt.
+A projekteket a használatával hozhatlétre `tasks`és telepítheti. Ez a kódrészlet először egy Maven-feladatot határoz meg az alkalmazás létrehozásához, majd egy második feladatot, amely telepíti a JAR-fájlt az Azure Spring Cloud Azure CLI bővítmény használatával.
 
 ```yaml
 steps:
@@ -42,9 +42,9 @@ steps:
       # deploy other app
 ```
 
-### <a name="deploy-from-source"></a>Üzembe helyezés forrásból
+### <a name="deploy-from-source"></a>Telepítés forrásból
 
-A közvetlenül az Azure-ba történő üzembe helyezése külön fordítási lépés nélkül lehetséges.
+Lehetőség van közvetlenül az Azure-ba külön build lépés nélkül telepíthető.
 
 ```yaml
 - task: AzureCLI@1

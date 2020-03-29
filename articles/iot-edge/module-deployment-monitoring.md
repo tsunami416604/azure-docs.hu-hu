@@ -1,6 +1,6 @@
 ---
-title: Eszközkezelés automatikus központi telepítése – Azure IoT Edge | Microsoft Docs
-description: A Azure IoT Edgeban található automatikus központi telepítések használata a megosztott címkéken alapuló eszközök csoportjai kezelésére
+title: Automatikus üzembe helyezés eszközcsoportokhoz – Azure IoT Edge | Microsoft dokumentumok
+description: Az Azure IoT Edge automatikus telepítéseinek használata az eszközök csoportjainak megosztott címkék alapján történő kezeléséhez
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,129 +9,129 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76895965"
 ---
-# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>IoT Edge automatikus központi telepítések ismertetése egyetlen eszközön vagy nagy méretekben
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Az IoT Edge automatikus üzembe helyezésének ismertetése egyetlen eszközre vagy nagy méretekben
 
-Az automatikus telepítések és a rétegzett üzembe helyezés segít nagy számú IoT Edge eszközön lévő modulok felügyeletében és konfigurálásában.
+Az automatikus központi telepítések és a réteges központi telepítés segítségével nagy számú IoT Edge-eszközön kezelheti és konfigurálhatja a modulokat.
 
-Azure IoT Edge kétféle módon konfigurálhatja a modulokat IoT Edge eszközökön való futtatáshoz. Az első módszer a modulok eszközönkénti üzembe helyezése. Hozzon létre egy üzembe helyezési jegyzéket, majd alkalmazza azt egy adott eszközre név szerint. A második módszer a modulok automatikus telepítése bármely regisztrált eszközre, amely megfelel a megadott feltételeknek. Létre kell hoznia egy üzembe helyezési jegyzéket, majd meg kell határoznia, hogy mely eszközökre vonatkozik az eszköz Twin- [címkék](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) alapján.
+Az Azure IoT Edge két lehetőséget biztosít a modulok IoT Edge-eszközökön való futtatására. Az első módszer a modulok eszközönkénti üzembe helyezése. Hozzon létre egy központi telepítési jegyzékfájlt, majd alkalmazza azt egy adott eszközre név szerint. A második módszer a modulok automatikus üzembe helyezése bármely regisztrált eszközre, amely megfelel a meghatározott feltételeknek. Hozzon létre egy központi telepítési jegyzékfájlt, majd határozza meg, hogy mely eszközökre vonatkozik az ikereszköz [címkéi](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) alapján.
 
-Ez a cikk az eszközök flottáinak konfigurálását és monitorozását ismerteti, amelyeket közösen a *IoT Edge automatikus központi telepítésnek*nevezünk. Az alapszintű üzembe helyezés lépései a következők:
+Ez a cikk az eszközök flottáinak konfigurálására és figyelésére összpontosít, amelyeket együttesen *IoT Edge automatikus központi telepítésnek neveznek.*Az alapvető telepítési lépések a következők:
 
-1. Az operátorok olyan központi telepítést határoznak meg, amely modulokat és a megcélzott eszközöket ismerteti. Minden központi telepítéshez tartozik egy üzembe helyezési jegyzék, amely tükrözi ezt az információt.
-2. A IoT Hub szolgáltatás az összes megadott eszközzel kommunikál a deklarált modulokkal.
-3. A IoT Hub szolgáltatás lekérdezi az állapotot a IoT Edge eszközökről, és elérhetővé teszi őket a kezelő számára.  Egy operátor például akkor láthatja, ha egy peremhálózati eszköz nincs megfelelően konfigurálva, vagy ha egy modul meghibásodik a futtatókörnyezet során.
-4. Az új IoT Edge-eszközök, amelyek megfelelnek a célzási feltételeknek, konfigurálva vannak a központi telepítéshez.
+1. Az operátor határozza meg a központi telepítést, amely leírja a modulok és a céleszközök készletét.Minden központi telepítés rendelkezik egy központi telepítési jegyzékfájl, amely tükrözi ezt az információt.
+2. Az IoT Hub szolgáltatás kommunikál az összes célzott eszközzel a deklarált modulokkal konfigurálásukhoz.
+3. Az IoT Hub-szolgáltatás lekéri az IoT Edge-eszközök állapotát, és elérhetővé teszi azokat az üzemeltető számára.Például egy operátor láthatja, ha egy Edge-eszköz nincs sikeresen konfigurálva, vagy ha egy modul futásközben meghibásodik.
+4. Bármikor új IoT Edge-eszközök, amelyek megfelelnek a célzási feltételek et konfigurálva vannak a központi telepítéshez.
 
-Ez a cikk a központi telepítés konfigurálásának és figyelésének minden összetevőjét ismerteti. A központi telepítések létrehozásának és frissítésének bemutatóját lásd: [IoT Edge modulok üzembe helyezése és figyelése nagy léptékben](how-to-deploy-monitor.md).
+Ez a cikk a központi telepítés konfigurálásában és figyelésében részt vevő minden egyes összetevőt ismerteti. A központi telepítés létrehozásának és frissítésének forgatókönyve: [IoT Edge-modulok üzembe helyezése és figyelése nagy méretekben.](how-to-deploy-monitor.md)
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
-Az IoT Edge automatikus központi telepítése IoT Edge modul rendszerképeit rendeli hozzá példányként a IoT Edge eszközök egy meghatározott készletén. Úgy működik, hogy egy IoT Edge telepítési jegyzéket konfigurál, hogy tartalmazza a megfelelő inicializálási paraméterekkel rendelkező modulok listáját. A központi telepítés egyetlen eszközhöz (az eszköz azonosítója alapján) vagy eszközök egy csoportjára (címkék alapján) is hozzárendelhető. Miután egy IoT Edge eszköz megkapja az üzembe helyezési jegyzéket, letölti és telepíti a tároló lemezképeit a megfelelő tároló-tárházból, és ennek megfelelően konfigurálja azokat. A központi telepítés létrehozása után az operátor figyelheti a központi telepítés állapotát, és ellenőrizheti, hogy megfelelően vannak-e konfigurálva a meglevő eszközök.
+Az IoT Edge automatikus üzembe helyezése hozzárendeli az IoT Edge-modullemezeit az IoT Edge-eszközök célzott készletén való futtatáshoz. Úgy működik, hogy konfigurálja az IoT Edge központi telepítési jegyzékfájl modulok listáját a megfelelő inicializálási paraméterekkel.A központi telepítés hozzárendelhető egyetlen eszközhöz (az eszközazonosító alapján) vagy eszközök egy csoportjához (címkék alapján).Miután egy IoT Edge-eszköz megkapja a központi telepítési jegyzékfájl, letölti és telepíti a tárolórendszerképeket a megfelelő tárolótárolókból, és ennek megfelelően konfigurálja őket.A központi telepítés létrehozása után az operátor figyelheti a központi telepítés állapotát, és ellenőrizheti, hogy a célzott eszközök megfelelően vannak-e konfigurálva.
 
-Csak IoT Edge eszköz konfigurálható központi telepítéssel. A telepítés megkezdése előtt a következő előfeltételeknek kell megfelelnie az eszközön:
+Csak Az IoT Edge-eszközök konfigurálhatók egy központi telepítéssel. A következő előfeltételeknek kell lenniük az eszközön, mielőtt a központi telepítést kapnák:
 
 * Az alap operációs rendszer
-* Egy tároló-felügyeleti rendszer, például a Moby vagy a Docker
-* Az IoT Edge futtatókörnyezet kiépítés
+* Tárolókezelő rendszer, például a Moby vagy a Docker
+* Az IoT Edge-futásidejű ek kiépítése
 
 ### <a name="deployment-manifest"></a>Üzembehelyezési jegyzék
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja a célként IoT Edge eszközökön konfigurálandó modulokat. Tartalmazza az összes modul konfigurációs metaadatait, beleértve a szükséges rendszermodulokat (különösen a IoT Edge ügynököt és IoT Edge hubot).  
+A központi telepítési jegyzékfájl egy JSON-dokumentum, amely leírja a megcélzott IoT Edge-eszközökön konfigurálandó modulokat. Az összes modul konfigurációs metaadatait tartalmazza, beleértve a szükséges rendszermodulokat (különösen az IoT Edge-ügynököt és az IoT Edge hubot).  
 
-Az egyes modulok konfigurációs metaadatai a következők:
+Az egyes modulok konfigurációs metaadatai a következőket tartalmazzák:
 
 * Verzió
-* Type (Típus)
-* Állapot (például fut vagy leállítva)
+* Típus
+* Állapot (például futás vagy leállítva)
 * Újraindítási szabályzat
-* Rendszerkép és tároló beállításjegyzéke
-* Az adatbevitelhez és a kimenethez tartozó útvonalak
+* Lemezkép- és tárolóbeállítás-nyilvántartás
+* Adatbeviteli és -kimeneti útvonalak
 
-Ha a modul képe egy privát tároló beállításjegyzékében van tárolva, a IoT Edge ügynök tárolja a beállításjegyzékbeli hitelesítő adatokat.
+Ha a modullemezt egy privát tároló beállításjegyzékben tárolja, az IoT Edge-ügynök rendelkezik a rendszerleíró hitelesítő adatokat.
 
-### <a name="target-condition"></a>Cél feltétel
+### <a name="target-condition"></a>Célfeltétel
 
-A cél feltételét a rendszer folyamatosan kiértékeli az üzemelő példány teljes élettartama során. A rendszer minden olyan új eszközt tartalmaz, amely megfelel a követelményeknek, és minden olyan meglévő eszköz törlődik, amely már nem végezhető el. A rendszer újraaktiválja a központi telepítést, ha a szolgáltatás észleli a megcélzott feltételek változását.
+A célfeltétel folyamatosan kiértékelése a központi telepítés teljes időtartama alatt. A rendszer tartalmazza a követelményeknek megfelelő új eszközöket, és eltávolítja azokat a meglévő eszközöket, amelyek már nem működnek. A központi telepítés újraaktiválódik, ha a szolgáltatás észleli a célfeltétel változását.
 
-Tegyük fel, hogy van egy központi telepítés, amelynek a célja feltétele. környezet = "Prod". Az üzembe helyezés elindítását követően 10 éles eszköz található. A modulok sikeresen telepítve vannak a 10 eszközön. A IoT Edge ügynök állapota 10 összes eszközt, 10 sikeres választ, 0 sikertelen választ és 0 függőben lévő választ jelenít meg. Most öt további eszközt ad hozzá címkékkel. environment = "Prod". A szolgáltatás észleli a változást, és a IoT Edge ügynök állapota 15 teljes eszköz, 10 sikeres válasz, 0 sikertelen válasz és 5 függőben lévő válasz lesz, miközben az öt új eszközre települ.
+Például van egy központi telepítését a cél feltétel tags.environment = "prod". Amikor elindítja a központi telepítést, 10 éles eszköz van. A modulok telepítése sikeresen megtörtént ebben a 10 eszközben. Az IoT Edge-ügynök állapota 10 összes eszközt, 10 sikeres választ, 0 hibaválaszt és 0 függőben lévő választ jelenít meg. Most még öt eszközt ad hozzá a tags.environment = 'prod' eszközzel. A szolgáltatás észleli a változást, és az IoT Edge-ügynök állapota lesz 15 teljes eszközök, 10 sikeres válaszok, 0 hiba válaszok és 5 függőben lévő válaszok, amíg az öt új eszközökre telepíti.
 
-A cél eszközök kiválasztásához használjon bármilyen logikai feltételt az eszköz Twin-címkék, az eszköz Twin jelentett tulajdonságai vagy a deviceId használatával. Ha címkével szeretné feltételt használni, hozzá kell adnia a "címkék":{} szakaszt az eszköz twin (a tulajdonságok között azonos szinten). [További információ a címkékről az eszköz Twin-ben](../iot-hub/iot-hub-devguide-device-twins.md)
+Használja a logikai feltétel az eszköz ikercímkék, az eszköz iker jelentett tulajdonságai, vagy deviceId a céleszközök kiválasztásához. Ha a feltételeket címkékkel szeretné használni, hozzá{} kell adnia a "címkéket": az ikereszköz szakaszát a tulajdonságok szintjén. [További információ az ikereszköz-címkékről](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Példák a megcélzott feltételekre:
+Példák a célfeltételekre:
 
-* deviceId = ' linuxprod1 '
-* Címkék. környezet = "Prod"
-* Tags. environment = ' Prod ' és Tags. location = ' westus '
-* Tags. environment = ' Prod ' vagy Tags. location = ' westus '
-* Tags. operator = ' John ' és Tags. environment = "Prod" nem deviceId = "linuxprod1"
-* tulajdonságok. jelentett. devicemodel = ' 4000x '
+* deviceId ='linuxprod1'
+* címkék.környezet ='prod'
+* tags.environment = 'prod' ÉS tags.location = 'westus'
+* tags.environment = 'prod' OR tags.location = 'westus'
+* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* properties.reported.devicemodel = "4000x"
 
-A cél feltételének létrehozásakor vegye figyelembe ezeket a korlátozásokat:
+A célfeltétel összeállításakor vegye figyelembe ezeket a kényszereket:
 
-* A Device Twin eszközben csak címkék, jelentett tulajdonságok vagy deviceId használatával hozhat létre célként feltételt.
-* Idézőjelek nem engedélyezettek a megcélzott feltétel bármely részén. Használjon aposztrófokat.
-* Az aposztrófok a célként megadott feltétel értékeit jelölik. Ezért el kell kerülnie az egyetlen idézőjelet egy másik aposztróftal, ha az eszköz neve része. Ha például egy `operator'sDevice`nevű eszközt szeretne megcélozni, írja be a `deviceId='operator''sDevice'`.
-* A megcélzott feltételi értékekben a számok, betűk és a következő karakterek engedélyezettek: `-:.+%_#*?!(),=@;$`.
+* Az ikereszközben csak címkék, jelentett tulajdonságok vagy deviceId használatával hozhat létre célfeltételt.
+* A célfeltétel egyetlen részében sem lehet dupla idézőjeleket engedélyezni. Használjon egyszeres idézőjeleket.
+* Az egyszeres idézőjelek a célfeltétel értékeit jelölik. Ezért ki kell kerülnie az egyetlen idézőjelből egy másik egyidézőjellel, ha az eszköz nevének része. Például a rendszer nevű `operator'sDevice`eszköz `deviceId='operator''sDevice'`célzásához írja be a írást.
+* Számok, betűk és a következő karakterek megengedettek `-:.+%_#*?!(),=@;$`a célfeltétel-értékekben: .
 
 ### <a name="priority"></a>Prioritás
 
-A prioritás határozza meg, hogy a központi telepítést a többi központi telepítéshez képest a célként megadott eszközre kell-e alkalmazni. A központi telepítés prioritása pozitív egész szám, amely nagyobb prioritást jelöl. Ha egy IoT Edge eszközt egynél több üzemelő példány céloz meg, akkor a legmagasabb prioritású üzemelő példány érvényes.  Az alacsonyabb prioritású központi telepítések nincsenek alkalmazva, és nincsenek egyesítve.  Ha egy eszközhöz két vagy több, azonos prioritású üzemelő példány van rendelve, a rendszer a legutóbb létrehozott központi telepítést (a létrehozási időbélyeg alapján határozza meg) alkalmazza.
+A prioritás határozza meg, hogy a központi telepítést kell-e alkalmazni a célzott eszközre más központi telepítésekhez képest. A telepítési prioritás pozitív egész szám, a nagyobb számok nagyobb prioritást jelentenek. Ha egy IoT Edge-eszköz több üzembe helyezés által célzott, a legmagasabb prioritású központi telepítés érvényes.Az alacsonyabb prioritású központi telepítések nem kerülnek alkalmazásra, és nem is egyesülnek.Ha egy eszköz két vagy több, azonos prioritású központi telepítéssel van megcélozva, a legutóbb létrehozott központi telepítés (a létrehozási időbélyeg határozza meg) a következőt alkalmazza.
 
 ### <a name="labels"></a>Címkék
 
-A címkék olyan karakterlánc-kulcs/érték párok, amelyek segítségével szűrheti és csoportosíthatja a központi telepítéseket. Egy üzemelő példány több címkével is rendelkezhet. A címkék nem kötelezőek, és nem befolyásolják IoT Edge eszközök tényleges konfigurációját.
+A címkék karakterlánckulcs-/értékpárok, amelyek segítségével szűrheti és csoportosíthatja a központi telepítéseket.Egy központi telepítés több címkével is rendelkezhet. A címkék nem kötelezőek, és nincsenek hatással az IoT Edge-eszközök tényleges konfigurációjára.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
-Alapértelmezés szerint az összes központi telepítés négy mérőszámon jelent meg:
+Alapértelmezés szerint az összes központi telepítés négy mérőszámról számol be:
 
-* A **célként** megadott IoT Edge eszközök megfelelnek a központi telepítés célcsoportjának.
-* **Alkalmazva** : azokat a célként IoT Edge eszközöket jeleníti meg, amelyeket nem a magasabb prioritású másik telepítés céloz meg.
-* A **sikeres jelentéskészítés** megjeleníti azokat a IoT Edge-eszközöket, amelyek jelentette, hogy a modulok telepítése sikeresen megtörtént.
-* A **jelentéskészítési hiba** megjeleníti azokat a IoT Edge eszközöket, amelyek azt jelentették, hogy egy vagy több modul telepítése nem sikerült. A hiba további kivizsgálásához kapcsolódjon távolról az eszközökhöz, és tekintse meg a naplófájlokat.
+* **Célzott** jeleníti meg az IoT Edge-eszközök, amelyek megfelelnek a központi telepítési célzási feltétel.
+* **Alkalmazott** jeleníti meg a célzott IoT Edge-eszközök, amelyek nem célzott egy másik központi telepítés magasabb prioritású.
+* **A sikeres jelentéskészítési** sikeres az IoT Edge-eszközök, amelyek arról számoltak be, hogy a modulok sikeresen telepítve vannak.
+* **Jelentési hiba** azt mutatja, az IoT Edge-eszközök, amelyek arról számoltak be, hogy egy vagy több modul nem lett sikeresen telepítve. A hiba további kivizsgálásához csatlakozzon távolról ezekhez az eszközökhöz, és tekintse meg a naplófájlokat.
 
-Emellett saját egyéni metrikákat is meghatározhat a telepítés figyeléséhez és kezeléséhez.
+Emellett megadhatja a saját egyéni metrikákat, hogy segítsen a központi telepítés figyelése és kezelése.
 
-A metrikák összegző számlálást biztosítanak azon különböző állapotok számára, amelyeket az eszközök jelenthetnek a telepítési konfiguráció alkalmazásának eredményeképpen. A metrikák lekérhetik a [edgeHub-modul két jelentett tulajdonságát](module-edgeagent-edgehub.md#edgehub-reported-properties), például a *LastDesiredStatus* vagy a *lastConnectTime*. Példa:
+A metrikák a központi telepítési konfiguráció alkalmazása során jelenthető különböző állapotok összesített számát biztosítják. A metrikák lekérdezhetik [az edgeHub modul ikerjelentett tulajdonságait,](module-edgeagent-edgehub.md#edgehub-reported-properties)például *a lastDesiredStatus* vagy *a lastConnectTime tulajdonságot.* Példa:
 
 ```sql
 SELECT deviceId FROM devices
   WHERE properties.reported.lastDesiredStatus.code = 200
 ```
 
-A saját mérőszámok hozzáadása nem kötelező, és nem befolyásolja IoT Edge eszközök tényleges konfigurációját.
+A saját metrikák hozzáadása nem kötelező, és nem befolyásolja az IoT Edge-eszközök tényleges konfigurációját.
 
-## <a name="layered-deployment"></a>Rétegzett üzembe helyezés
+## <a name="layered-deployment"></a>Réteges telepítés
 
-A többrétegű központi telepítések olyan automatikus központi telepítések, amelyek kombinálhatók a létrehozandó egyedi központi telepítések számának csökkentése érdekében. A többrétegű központi telepítések olyan helyzetekben hasznosak, amelyekben ugyanazokat a modulokat használják újra a különböző kombinációkban számos automatikus központi telepítésben.
+A réteges központi telepítések automatikus központi telepítések, amelyek kombinálhatók a létrehozandó egyedi telepítések számának csökkentése érdekében. A réteges központi telepítések olyan esetekben hasznosak, ahol ugyanazokat a modulokat számos automatikus központi telepítésben különböző kombinációkban használják fel újra.
 
-A többrétegű központi telepítések azonos alapszintű összetevőkkel rendelkeznek, mint bármely automatikus központi telepítés. Az eszközök az ikreken alapuló címkék alapján célozzák meg az eszközöket, és ugyanazokat a funkciókat biztosítják, mint a címkék, a metrikák és az állapotjelentések. A többrétegű központi telepítések a hozzájuk rendelt prioritásokat is magukban foglalják, de ahelyett, hogy az adott eszközre alkalmazza a központi telepítést, a prioritás határozza meg, hogy a rendszer hogyan rangsorolja az adott eszközön a különböző központi telepítéseket. Ha például két rétegzett üzemelő példánynak van egy modulja vagy azonos nevű útvonala, akkor a magasabb prioritású rétegzett üzemelő példány lesz alkalmazva, miközben a rendszer felülírja az alacsonyabb prioritást.
+A réteges központi telepítések ugyanazokaz alapvető összetevőkkel rendelkeznek, mint bármely automatikus központi telepítés. Az eszközök az ikereszközök ben lévő címkék alapján célozzák meg az eszközöket, és ugyanazokat a funkciókat biztosítják a címkék, a metrikák és az állapotjelentések körül. A réteges központi telepítések prioritásokkal is rendelkeznek, de ahelyett, hogy a prioritást használnáannak meghatározására, hogy melyik központi telepítés van alkalmazva egy eszközre, a prioritás határozza meg, hogy több központi telepítés hogyan van rangsorolva egy eszközön. Ha például két réteges központi telepítés rendelkezik egy modullal vagy egy azonos nevű útvonallal, a magasabb prioritású réteges központi telepítés lesz alkalmazva, miközben az alacsonyabb prioritás felülíródik.
 
-A rendszer-futtatókörnyezeti modulok, a edgeAgent és a edgeHub nem egy rétegzett telepítés részeként vannak konfigurálva. A többrétegű üzemelő példány által megszabott IoT Edge-eszközökre először a szabványos automatikus telepítést kell alkalmazni. Az automatikus központi telepítés biztosítja azt az alapot, amelyre a rétegzett központi telepítések hozzáadhatók.
+A rendszer futásidejű modulok, edgeAgent és edgeHub, nincsenek konfigurálva egy réteges központi telepítés részeként. Bármely, réteges központi telepítés által megcélzott IoT Edge-eszköznek először egy szabványos automatikus üzembe helyezést kell alkalmaznia. Az automatikus központi telepítés biztosítja az alapot, amelyen réteges központi telepítések adhatók hozzá.
 
-Egy IoT Edge eszköz csak egy szabványos automatikus központi telepítést alkalmazhat, de több rétegzett automatikus telepítést is alkalmazhat. Az eszközt célzó minden rétegzett központi telepítésnek magasabb prioritással kell rendelkeznie, mint az adott eszköz automatikus központi telepítése.
+Egy IoT Edge-eszköz egy és csak egy szabványos automatikus üzembe helyezést alkalmazhat, de több réteges automatikus központi telepítést is alkalmazhat. Az eszközt célzó réteges központi telepítések prioritásának magasabb prioritással kell rendelkezniük, mint az adott eszköz automatikus központi telepítésének.
 
-Vegyünk például egy olyan vállalat következő forgatókönyvét, amely az épületeket kezeli. IoT Edge modulokat fejlesztettek ki a biztonsági kamerákból, a mozgásérzékelők és a felvonók adatainak gyűjtésére. Azonban nem minden épület képes mindhárom modul használatára. A standard automatikus központi telepítések esetében a vállalatnak egyedi központi telepítéseket kell létrehoznia az összes olyan modul-kombinációhoz, amelyhez az épületeknek szüksége van.
+Vegyük például a következő forgatókönyvet egy olyan vállalatnál, amely épületeket kezel. IoT Edge modulokat fejlesztettek ki a biztonsági kamerák, mozgásérzékelők és felvonók adatainak gyűjtésére. Azonban nem minden épület használhatja mindhárom modult. A szabványos automatikus üzembe helyezésekkel a vállalatnak egyedi üzembe helyezéseket kell létrehoznia az összes olyan modulkombinációhoz, amelyre az épületeknek szüksége van.
 
-![A standard szintű automatikus központi telepítéseknek minden modul-kombinációt el kell fogadniuk](./media/module-deployment-monitoring/standard-deployment.png)
+![A szabványos automatikus üzembe helyezésekhez minden modulkombinációhoz be kell fogadni](./media/module-deployment-monitoring/standard-deployment.png)
 
-Ha azonban a vállalat többrétegű automatikus központi telepítésre vált, úgy találják, hogy ugyanazon modul-kombinációkat hozhatnak létre a felügyelethez kevesebb központi telepítéssel rendelkező épületekhez. Mindegyik modul saját rétegzett üzemelő példányával rendelkezik, és az eszköz címkéi határozzák meg, hogy mely modulok legyenek hozzáadva az egyes felépítésekhez.
+Azonban, ha a vállalat átvált a réteges automatikus központi telepítések azt találják, hogy létrehozhatnak ugyanazokat a modulkombinációkat az épületek kevesebb központi telepítések kezelésére. Minden modul saját réteges központi telepítéssel rendelkezik, és az eszközcímkék azonosítják, hogy mely modulok kerülnek hozzáadásra az egyes épületekhez.
 
-![A többrétegű automatikus központi telepítések egyszerűbbé teszik az olyan forgatókönyveket, amelyekben ugyanazok a modulok különböző módokon kombinálhatók](./media/module-deployment-monitoring/layered-deployment.png)
+![A réteges automatikus központi telepítések leegyszerűsítik azokat a forgatókönyveket, amelyekben ugyanazokat a modulokat különböző módokon kombinálják](./media/module-deployment-monitoring/layered-deployment.png)
 
-### <a name="module-twin-configuration"></a>Modul – különálló konfiguráció
+### <a name="module-twin-configuration"></a>Ikermodul konfigurációja
 
-Többrétegű központi telepítések esetén előfordulhat, hogy szándékosan vagy más módon két üzemelő példánya van ugyanazzal a modullal, amely egy eszközt céloz meg. Ezekben az esetekben eldöntheti, hogy a magasabb prioritású központi telepítés felülírja-e a modult (Twin), vagy hozzáfűzi azt. Előfordulhat például, hogy olyan központi telepítéssel rendelkezik, amely ugyanazt a modult alkalmazza 100 különböző eszközökre. Az eszközök közül 10 azonban biztonságos létesítményekben van, és további konfigurációra van szükség a proxykiszolgálók közötti kommunikációhoz. Többrétegű üzembe helyezéssel olyan modulokat adhat hozzá, amelyek lehetővé teszik, hogy a 10 eszköz biztonságosan kommunikáljon anélkül, hogy felülírja a meglévő modul különálló információit az alapszintű telepítésből.
+Ha réteges központi telepítésekkel dolgozik, előfordulhat, hogy szándékosan vagy más módon két központi telepítést is elvégezhet ugyanazzal a modullal, amelyek egy eszközt céloznak meg. Ezekben az esetekben eldöntheti, hogy a magasabb prioritású központi telepítés felülírja-e a modul iker- vagy hozzáfűzi azt. Előfordulhat például, hogy egy központi telepítés, amely ugyanazt a modult alkalmazza 100 különböző eszközökre. Ezen eszközök közül azonban 10 biztonságos létesítményben van, és további konfigurációra van szükség a proxykiszolgálókon keresztüli kommunikációhoz. A réteges központi telepítés segítségével hozzáadhat ikermodul-tulajdonságokat, amelyek lehetővé teszik, hogy a 10 eszköz biztonságosan kommunikáljon anélkül, hogy felülírná a meglévő modul ikeradatait az alap központi telepítésből.
 
-Az üzembe helyezési jegyzékben hozzáfűzheti a modulhoz tartozó, a kívánt tulajdonságokat. A standard szintű üzembe helyezés során a tulajdonságok **.** a modul egy különálló, többrétegű központi telepítésben való hozzáadásával a tulajdonságokat a kívánt tulajdonságok új részhalmaza deklarálhatja.
+Hozzáfűzheti a modul iker kívánt tulajdonságait a központi telepítési jegyzékben. Ahol egy szabványos központi telepítésben tulajdonságokat ad hozzá a **properties.desired** szakasza a modul iker, egy réteges központi telepítés deklarálhatja a kívánt tulajdonságok új részhalmazát.
 
-Normál telepítés esetén például hozzáadhatja a szimulált hőmérséklet-érzékelő modult a következő kívánt tulajdonságokkal, amelyek azt jelzik, hogy az adatküldés 5 másodperces időközönként történik:
+Egy szabványos központi telepítésben például hozzáadhatja a szimulált hőmérséklet-érzékelő modult a következő kívánt tulajdonságokkal, amelyek azt mondják, hogy 5 másodperces időközönként küldjön adatokat:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -142,7 +142,7 @@ Normál telepítés esetén például hozzáadhatja a szimulált hőmérséklet-
 }
 ```
 
-Egy rétegzett központi telepítésben, amely egy vagy több azonos eszközt céloz meg, hozzáadhat egy olyan tulajdonságot, amely közli a szimulált érzékelővel, hogy 1000 üzenetet küldjön, majd leállíthatja. Nem kívánja felülírni a meglévő tulajdonságokat, ezért hozzon létre egy új szakaszt a `layeredProperties`nevű, az új tulajdonságot tartalmazó kívánt tulajdonságon belül:
+Egy réteges központi telepítés, amely célja néhány vagy az összes azonos eszközök, hozzáadhat egy tulajdonságot, amely megmondja a szimulált érzékelő 1000 üzeneteket küldeni, majd állítsa le. Nem szeretné felülírni a meglévő tulajdonságokat, ezért hozzon létre egy `layeredProperties`új szakaszt a kívánt tulajdonságokon belül, amely az új tulajdonságot tartalmazza:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -152,7 +152,7 @@ Egy rétegzett központi telepítésben, amely egy vagy több azonos eszközt c�
 }
 ```
 
-Az olyan eszközök, amelyeken mindkét üzemelő példány van alkalmazva, a szimulált hőmérséklet-érzékelőhöz tartozó 2. modul következő tulajdonságait fogja tartalmazni:
+A szimulált hőmérséklet-érzékelő ikermodulának következő tulajdonságait fogja tükrözni a két üzembe helyezést alkalmazó eszköz:
 
 ```json
 "properties": {
@@ -166,36 +166,36 @@ Az olyan eszközök, amelyeken mindkét üzemelő példány van alkalmazva, a sz
 }
 ```
 
-Ha a modul `properties.desired` mezőjét egy többrétegű központi telepítésben állítja be, a modul minden alacsonyabb prioritású üzemelő példányban felül fogja írni a kívánt tulajdonságokat.
+Ha a `properties.desired` modul ikermezőjét egy réteges központi telepítésben állítja be, felülírja az adott modul kívánt tulajdonságait bármely alacsonyabb prioritású központi telepítésben.
 
-## <a name="phased-rollout"></a>Szakaszos bevezetés
+## <a name="phased-rollout"></a>Fokozatos bevezetés
 
-A többfázisú bevezetés egy átfogó folyamat, amellyel a kezelők a IoT Edge-eszközök bővítési csoportjának módosításait helyezik üzembe. A cél az, hogy fokozatosan végezze el a módosításokat, hogy csökkentse a nagy léptékű törések változásának kockázatát. Az automatikus központi telepítések segítik a többfázisú bevezetések kezelését IoT Edge-eszközök flottáján keresztül.
+A fokozatos bevezetés egy olyan átfogó folyamat, amelynek során egy operátor telepíti a módosításokat az IoT Edge-eszközök kiszélesítése. A cél az, hogy fokozatosan változtatásokat, hogy csökkentsék a kockázatát, hogy széles körű törés változásokat. Az automatikus üzembe helyezések segítségével kezelheti a szakaszos bevezetéseket az IoT Edge-eszközök flottájában.
 
-A szakaszos bevezetést a következő fázisokban és lépésekben hajtja végre:
+A fokozatos bevezetés a következő fázisokban és lépésekben hajtható végre:
 
-1. Hozzon létre egy tesztkörnyezet IoT Edge eszközök kiépítésével, és az eszköz kettős címkéjét (például `tag.environment='test'`). A tesztkörnyezetben tükröznie kell azt a éles környezetet, amelyet a központi telepítés végül megcéloz.
-2. Hozzon létre egy központi telepítést, beleértve a kívánt modulokat és konfigurációkat. A célzási feltételnek meg kell céloznia a teszt IoT Edge eszköz környezetét.
-3. Az új modul konfigurációjának ellenőrzése a tesztkörnyezetben.
-4. Frissítse a központi telepítést, hogy az éles IoT Edge-eszközök egy részhalmazát adja hozzá egy új címke hozzáadásával a célzási feltételhez. Ügyeljen arra is, hogy a központi telepítés prioritása nagyobb legyen, mint a jelenleg az eszközökre irányuló egyéb központi telepítések
-5. A központi telepítés állapotának megtekintésével ellenőrizze, hogy a központi telepítés sikeresen megtörtént-e a megcélozott IoT-eszközökön.
-6. Frissítse a központi telepítést az összes fennmaradó éles IoT Edge eszköz megcélzásához.
+1. Hozzon létre egy tesztkörnyezetet az IoT Edge-eszközök `tag.environment='test'`kiépítése, és az eszköz ikercímke, mint például.A tesztkörnyezetnek tükröznie kell az éles környezetet, amelyet a központi telepítés végül megcéloz.
+2. Hozzon létre egy központi telepítést, beleértve a kívánt modulokat és konfigurációkat. A célzási feltételnek meg kell céloznia a teszt IoT Edge-eszköz környezetben.
+3. Ellenőrizze az új modulkonfigurációt a tesztkörnyezetben.
+4. Frissítse a központi telepítést, hogy tartalmazza az éles IoT Edge-eszközök egy részhalmazát egy új címke hozzáadásával a célzási feltételhez. Győződjön meg arról is, hogy a központi telepítés prioritása magasabb, mint az ezen eszközökre jelenleg célzott többi központi telepítés.
+5. Ellenőrizze, hogy a központi telepítés sikeres volt-e a megcélzott IoT-eszközökön a központi telepítési állapot megtekintésével.
+6. Frissítse a központi telepítést az összes fennmaradó éles IoT Edge-eszközök célzásához.
 
-## <a name="rollback"></a>Visszaállítás
+## <a name="rollback"></a>Visszagurítás
 
-A központi telepítések visszaállíthatók, ha hibákat vagy helytelen konfigurációkat kap. Mivel a központi telepítés egy IoT Edge eszköz abszolút moduljának konfigurációját definiálja, egy további központi telepítésnek is ugyanazt az eszközt kell céloznia, ha a cél az összes modul eltávolítása.  
+A központi telepítések visszaállíthatók, ha hibákat vagy helytelen konfigurációkat kap.Mivel egy központi telepítés határozza meg az IoT Edge-eszköz abszolút modulkonfigurációját, egy további üzembe helyezést is alacsonyabb prioritású eszközre kell megcélozni, még akkor is, ha a cél az összes modul eltávolítása.  
 
-A központi telepítés törlése nem távolítja el a modulokat a célként megadott eszközökről. Egy másik központi telepítésnek kell lennie, amely új konfigurációt határoz meg az eszközökhöz, még akkor is, ha ez egy üres telepítés.
+A központi telepítés törlése nem távolítja el a modulokat a célzott eszközökről. Kell lennie egy másik központi telepítésnek, amely meghatározza az eszközök új konfigurációját, még akkor is, ha üres központi telepítésről van szó.
 
-Hajtsa végre a visszaállításokat a következő sorozatban:
+Visszaállításokat hajtson végre a következő sorrendben:
 
-1. Győződjön meg arról, hogy egy második központi telepítés is meg van célozva ugyanarra az eszközre. Ha a visszaállítás célja az összes modul eltávolítása, a második telepítés nem tartalmazhat modulokat.
-2. Módosítsa vagy távolítsa el annak a központi telepítésnek a cél feltételét, amelyet vissza szeretne állítani, hogy az eszközök többé ne legyenek kielégítve a célzási feltételnek.
-3. A telepítés állapotának megtekintésével ellenőrizze, hogy a visszaállítás sikeres volt-e.
-   * A visszaállított központi telepítésnek többé nem kell megjelennie a visszaállított eszközök állapotának megjelenítéséhez.
-   * A második központi telepítésnek ekkor tartalmaznia kell a visszaállított eszközök telepítési állapotát.
+1. Győződjön meg arról, hogy egy második központi telepítés is ugyanarra az eszközkészletre irányul. Ha a visszaállítás célja az összes modul eltávolítása, a második központi telepítés nem tartalmazhat modulokat.
+2. Módosítsa vagy távolítsa el a visszagörgetni kívánt központi telepítés célfeltétel-kifejezését, hogy az eszközök már nem felelnek meg a célzási feltételnek.
+3. Ellenőrizze, hogy a visszaállítás sikeres volt-e a központi telepítés állapotának megtekintésével.
+   * A visszaállított központi telepítés már nem jelenik meg a visszaállított eszközök állapota.
+   * A második központi telepítésnek tartalmaznia kell a visszaállított eszközök telepítési állapotát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Végigvezeti a központi telepítések létrehozásához, frissítéséhez vagy törléséhez szükséges lépéseket a [IoT Edge modulok nagy léptékű üzembe helyezéséhez és figyeléséhez](how-to-deploy-monitor.md).
-* További információ a [IoT Edge futtatókörnyezettel](iot-edge-runtime.md) és a [IoT Edge modulokkal](iot-edge-modules.md)kapcsolatos egyéb IoT Edge fogalmakról.
+* Az [IoT Edge-modulok nagy méretekben történő](how-to-deploy-monitor.md)telepítésével és figyelésével végigvezeti a központi telepítés lépéseit.
+* További információ az IoT Edge-fogalmakról, például az [IoT Edge futásidejű](iot-edge-runtime.md) és az [IoT Edge-modulokról.](iot-edge-modules.md)

@@ -1,7 +1,7 @@
 ---
-title: A API Management fejlesztői portál testreszabása sablonok használatával
+title: Az API Management fejlesztői portál testreszabása sablonok használatával
 titleSuffix: Azure API Management
-description: Megtudhatja, hogyan szabhatja testre az Azure API Management fejlesztői portált sablonok használatával.
+description: Ismerje meg, hogyan szabhatja testre az Azure API Management fejlesztői portálsablonok használatával.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430793"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Az Azure API Management fejlesztői portál testreszabása sablonok használatával
@@ -26,46 +26,46 @@ ms.locfileid: "75430793"
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
 
 * [A statikus oldalak tartalmának és oldalelrendezési elemeinek szerkesztése][modify-content-layout]
-* [Az oldal elemeihez használt stílusok frissítése a fejlesztői portálon][customize-styles]
-* A [portál által létrehozott lapokhoz használt sablonok módosítása][portal-templates] (az útmutatóban ismertetett)
+* [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
+* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (ez az útmutató magyarázata)
 
-A sablonok segítségével testre szabhatja a rendszer által létrehozott fejlesztői portál lapjainak tartalmát (például API-dokumentumok, termékek, felhasználói hitelesítés stb.). A [DotLiquid](http://dotliquidmarkup.org/) szintaxissal, valamint a honosított karakterlánc-erőforrások, ikonok és lapok vezérlőelemek egy adott halmazával nagy rugalmassággal konfigurálhatja a lapok tartalmát, ahogy az illik.
+A sablonok a rendszer által létrehozott fejlesztői portállapok (például API-dokumentumok, termékek, felhasználói hitelesítés stb.) tartalmának testreszabására szolgálnak. [A DotLiquid](http://dotliquidmarkup.org/) szintaxis, valamint a honosított karakterlánc-erőforrások, ikonok és oldalvezérlők készletének használatával nagy rugalmasságot biztosít az oldalak tartalmának beállításához, ahogy azt jónak látja.
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="developer-portal-templates-overview"></a>A fejlesztői portál sablonjainak áttekintése
+## <a name="developer-portal-templates-overview"></a>Fejlesztői portálsablonok – áttekintés
 
-A sablonok szerkesztését a **fejlesztői portálon** végezheti el, miközben rendszergazdaként jelentkezett be. Először nyissa meg a Azure Portal, majd kattintson a **fejlesztői portál** elemre az API Management példányának szolgáltatás eszköztárán.
+A szerkesztési sablonok a **fejlesztői portálról** történnek, miközben rendszergazdaként jelentkezik be. Ahhoz, hogy ott először nyissa meg az Azure Portalon, és kattintson a **Fejlesztői portál** az API Management-példány szolgáltatáseszköztáráról.
 
-A fejlesztői portál sablonjainak eléréséhez kattintson a bal oldali Testreszabás ikonra a Testreszabás menü megjelenítéséhez, majd kattintson a **sablonok**elemre.
+A fejlesztői portál sablonjainak eléréséhez kattintson a testreszabási menü bal oldalán látható testreszabási ikonra, majd a **Sablonok parancsra.**
 
 ![Fejlesztői portál sablonjai][api-management-customize-menu]
 
-A sablonok listája a fejlesztői portál különböző lapjaira kiterjedő sablonok különböző kategóriáit jeleníti meg. Az egyes sablonok eltérőek, de a szerkesztési lépések és a módosítások közzétételének lépései megegyeznek. Sablon szerkesztéséhez kattintson a sablon nevére.
+A sablonok listája a fejlesztői portál különböző lapjait lefedő sablonok több kategóriáját jeleníti meg. Minden sablon más, de a szerkesztésük és a módosítások közzétételének lépései megegyeznek. Sablon szerkesztéséhez kattintson a sablon nevére.
 
 ![Fejlesztői portál sablonjai][api-management-templates-menu]
 
-A sablonra kattintva a sablon által testreszabható fejlesztői portálra kerül. Ebben a példában a **Terméklista** sablon jelenik meg. A **Terméklista** sablon a vörös téglalap által jelzett képernyő területét szabályozza.
+Egy sablonra kattintva megnyílik a fejlesztői portál azon lapja, amely az adott sablon által testreszabható. Ebben a példában megjelenik a **Terméklista** sablon. A **Terméklista** sablon a képernyő piros téglalap által jelzett részét szabályozza.
 
 ![Terméklista sablon][api-management-developer-portal-templates-overview]
 
-Egyes sablonok, például a **felhasználói profilok** sablonjai, testre szabják ugyanazon oldal különböző részeit.
+Egyes sablonok, például a **Felhasználói profil** sablonok, ugyanazon lap különböző részeit szabják testre.
 
-![Felhasználói profil sablonjai][api-management-user-profile-templates]
+![Felhasználói profilsablonok][api-management-user-profile-templates]
 
-Az egyes fejlesztői portálokhoz tartozó szerkesztő két szakaszt tartalmaz, amelyek az oldal alján jelennek meg. A bal oldali oldalon a sablon szerkesztési ablaktáblája látható, a jobb oldalon pedig a sablon adatmodellje látható.
+Az egyes fejlesztői portálsablonok szerkesztője két szakaszt jelenít meg az oldal alján. A bal oldali megjeleníti a sablon szerkesztőablakát, a jobb oldalon pedig a sablon adatmodelljét.
 
-A sablon szerkesztése ablaktábla tartalmazza azt a jelölést, amely a fejlesztői portál megfelelő oldalának megjelenését és viselkedését szabályozza. A sablonban lévő kód a [DotLiquid](http://dotliquidmarkup.org/) szintaxist használja. A DotLiquid egyik népszerű szerkesztője a [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). A sablonban a szerkesztés során végrehajtott módosítások valós időben jelennek meg a böngészőben, de nem láthatók az ügyfelek számára, amíg nem [menti](#to-save-a-template) és nem [teszi közzé](#to-publish-a-template) a sablont.
+A sablonszerkesztő ablaktábla tartalmazza azt a jelölést, amely a fejlesztői portál megfelelő lapjának megjelenését és viselkedését szabályozza. A sablonban lévő jelölés a [DotLiquid szintaxist](http://dotliquidmarkup.org/) használja. A DotLiquid egyik népszerű szerkesztője a [DotLiquid a tervezők számára.](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) A sablonszerkesztés során végzett módosítások valós időben jelennek meg a böngészőben, de a sablon [mentéséig](#to-save-a-template) és [közzétételéig](#to-publish-a-template) nem láthatók az ügyfelek számára.
 
 ![Sablon jelölése][api-management-template]
 
-A **sablon adatai** ablaktábla egy adott sablonban használható entitások adatmodelljének útmutatóját mutatja be. Ez az útmutató a fejlesztői portálon jelenleg megjelenített élő adatértékek megjelenítésével érhető el. A sablon ablaktáblák kibontásához kattintson a **sablon** adatpaneljének jobb felső sarkában található négyszögre.
+A **Sablon adatablaka** útmutatást nyújt az adott sablonban használható entitások adatmodelljéhez. Ezt az útmutatót a fejlesztői portálon jelenleg megjelenített élő adatok megjelenítésével biztosítja. A sablonablaktáblák kibontásához kattintson a **Sablon adatablakának** jobb felső sarkában lévő téglalapra.
 
-![Sablon adatmodellje][api-management-template-data]
+![Sablonadatmodell][api-management-template-data]
 
-Az előző példában két olyan termék jelenik meg a fejlesztői portálon, amely a **sablon adatainak** ablaktáblájában megjelenő adatokból lett lekérve, ahogy az az alábbi példában is látható:
+Az előző példában két olyan termék jelenik meg a fejlesztői portálon, amelyek a **Sablon adatok** ablaktáblában megjelenített adatokból származnak, ahogy az a következő példában látható:
 
 ```json
 {
@@ -103,7 +103,7 @@ Az előző példában két olyan termék jelenik meg a fejlesztői portálon, am
 }
 ```
 
-A **Terméklista** sablonban szereplő jelölés feldolgozza az adatokat, hogy a termékek gyűjteményén keresztül megismételve adja meg a kívánt kimenetet, valamint az egyes termékekre mutató hivatkozást. Jegyezze fel a jelölés `<search-control>` és `<page-control>` elemeit. Ezek vezérlik a keresés és a lapozás vezérlőelem megjelenítését az oldalon. `ProductsStrings|PageTitleProducts` egy honosított karakterlánc-hivatkozás, amely az oldal `h2` fejlécének szövegét tartalmazza. A fejlesztői portál sablonjaiban használható karakterlánc-erőforrások, oldal-vezérlőelemek és ikonok listáját itt tekintheti meg: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
+A **terméklista** sablonban szereplő jelölés úgy dolgozza fel az adatokat, hogy a kívánt kimenetet a termékek gyűjtésén keresztül iterálja, hogy információkat jelenítsen meg, és egy hivatkozást az egyes termékekre. Figyelje `<search-control>` `<page-control>` meg a jelölés és elemeit. Ezek szabályozzák a keresés és a lapozás vezérlőelemeinek megjelenítését az oldalon. `ProductsStrings|PageTitleProducts`Egy honosított karakterlánc-hivatkozás, amely az `h2` oldal fejlécszövegét tartalmazza. A fejlesztői portálsablonjaiban használható karakterlánc-erőforrások, lapvezérlők és ikonok listáját az [API Management fejlesztői portálsablonjainak hivatkozása tartalmazza.](api-management-developer-portal-templates-reference.md)
 
 ```html
 <search-control></search-control>
@@ -132,61 +132,61 @@ A **Terméklista** sablonban szereplő jelölés feldolgozza az adatokat, hogy a
 ```
 
 ## <a name="to-save-a-template"></a>Sablon mentése
-Sablon mentéséhez kattintson a Save (Mentés) gombra a sablon szerkesztőjében.
+Sablon mentéséhez kattintson a Mentés gombra a sablonszerkesztőben.
 
 ![Sablon mentése][api-management-save-template]
 
-A mentett módosítások a fejlesztői portálon nem jelennek meg, amíg közzé nem tesznek.
+A mentett módosítások közzétételükig nem jelennek meg a fejlesztői portálon.
 
 ## <a name="to-publish-a-template"></a>Sablon közzététele
-A mentett sablonok egyenként vagy akár egyszerre is közzétehető. Egyéni sablon közzétételéhez kattintson a közzététel elemre a sablon szerkesztőjében.
+A mentett sablonok egyenként vagy együtt is közzétehetők. Egyedi sablon közzétételéhez kattintson a közzététel gombra a sablonszerkesztőben.
 
 ![Sablon közzététele][api-management-publish-template]
 
-Az **Igen** gombra kattintva erősítse meg, hogy a sablon élő legyen a fejlesztői portálon.
+Kattintson **az Igen** gombra a sablon megerősítéséhez és élővé a fejlesztői portálon való élővé.
 
 ![Közzététel megerősítése][api-management-publish-template-confirm]
 
-A jelenleg közzé nem tett sablonok összes verziójának közzétételéhez kattintson a **Közzététel** elemre a sablonok listájában. A nem közzétett sablonokat a sablon nevét követő csillag jelöli. Ebben a példában a **Terméklista** **és a** sablonfájlok közzététel alatt állnak.
+Az összes jelenleg közzé nem tett sablonverzió közzétételéhez kattintson a sablonok listájában a **Közzététel** gombra. A közzé nem tett sablonokat a sablon neve után csillag jelöli. Ebben a példában a **terméklista** és a **terméksablonok** közzétételre kerülnek.
 
 ![Sablonok közzététele][api-management-publish-templates]
 
-A megerősítéshez kattintson a **testreszabások közzététele** elemre.
+A megerősítéshez kattintson a **Testreszabások közzététele gombra.**
 
 ![Közzététel megerősítése][api-management-publish-customizations]
 
-Az újonnan közzétett sablonok azonnal érvénybe lépnek a fejlesztői portálon.
+Az újonnan közzétett sablonok azonnal hatályba lépnek a fejlesztői portálon.
 
 ## <a name="to-revert-a-template-to-the-previous-version"></a>Sablon visszaállítása az előző verzióra
-Ha vissza szeretne állítani egy sablont az előző közzétett verzióra, kattintson a Recover (vissza) gombra a sablon szerkesztőjében.
+Ha vissza szeretne állítani egy sablont az előző közzétett verzióra, kattintson a sablonszerkesztő visszaváltása elemre.
 
 ![Sablon visszaállítása][api-management-revert-template]
 
 Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
-![Megerősítés][api-management-revert-template-confirm]
+![Jóváhagyás][api-management-revert-template-confirm]
 
-A sablon korábban közzétett verziója a fejlesztői portálon érhető el, miután a visszavert művelet befejeződött.
+A sablon korábban közzétett verziója a visszaállítási művelet befejezése után a fejlesztői portálon is megjelenik.
 
 ## <a name="to-restore-a-template-to-the-default-version"></a>Sablon visszaállítása az alapértelmezett verzióra
-A sablonok alapértelmezett verzióra való visszaállítása kétlépéses folyamat. Először a sablonokat kell visszaállítani, majd közzé kell tenni a visszaállított verziókat.
+A sablonok visszaállítása az alapértelmezett verziójukra két lépésből áll. Először vissza kell állítani a sablonokat, majd közzé kell tenni a visszaállított verziókat.
 
-Ha egyetlen sablont szeretne visszaállítani az alapértelmezett verzióra, kattintson a visszaállítás elemre a sablon szerkesztőjében.
+Ha egyetlen sablont szeretne visszaállítani az alapértelmezett verzióra, kattintson a visszaállítás gombra a sablonszerkesztőben.
 
 ![Sablon visszaállítása][api-management-reset-template]
 
 Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
-![Megerősítés][api-management-reset-template-confirm]
+![Jóváhagyás][api-management-reset-template-confirm]
 
-Ha az összes sablont az alapértelmezett verzióra szeretné visszaállítani, kattintson az **alapértelmezett sablonok visszaállítása** lehetőségre a sablon listán.
+Ha az összes sablont vissza szeretné állítani az alapértelmezett verzióra, kattintson a sablonlista **Alapértelmezett sablonok visszaállítása** gombjára.
 
 ![Sablonok visszaállítása][api-management-restore-templates]
 
-A visszaállított sablonokat ezután egyenként vagy egyszerre kell közzétenni a [sablon közzétételéhez](#to-publish-a-template)szükséges lépések követésével.
+A visszaállított sablonokat ezután egyenként vagy egyszerre kell közzétenni a [Sablon közzététele](#to-publish-a-template)című részben leírt lépéseket követve.
 
-## <a name="next-steps"></a>Következő lépések
-A fejlesztői portál sablonjaival, karakterlánc-erőforrásaival, ikonjaival és oldal-vezérlőelemekkel kapcsolatos információkért lásd: [API Management fejlesztői portál sablonok referenciája](api-management-developer-portal-templates-reference.md).
+## <a name="next-steps"></a>További lépések
+A fejlesztői portálsablonokkal, karakterlánc-erőforrásokkal, ikonokkal és lapvezérlőkkel kapcsolatos további tudnivalókért olvassa el [az API Management fejlesztői portálsablonjainak hivatkozási hivatkozását.](api-management-developer-portal-templates-reference.md)
 
 [modify-content-layout]: api-management-modify-content-layout.md
 [customize-styles]: api-management-customize-styles.md
