@@ -1,6 +1,6 @@
 ---
-title: Megismerheti az Azure IoT Hub az egyedi végpontok |} A Microsoft Docs
-description: Fejlesztői útmutató – az egyedi végpontok juthatnak eszköz – felhő üzenetek útválasztási lekérdezések segítségével.
+title: Az Azure IoT Hub egyéni végpontjainak megismerése | Microsoft dokumentumok
+description: Fejlesztői útmutató – útválasztási lekérdezések használata az eszközről a felhőbe irányuló üzenetek egyéni végpontokhoz történő továbbításához.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,53 +9,53 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244344"
 ---
-# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Üzenet útvonalak és az egyedi végpontok használata az eszköz a felhőbe irányuló üzenetek
+# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Üzenetútvonalak és egyéni végpontok használata az eszközről a felhőbe irányuló üzenetekhez
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Az IoT Hub [üzenet-útválasztása](iot-hub-devguide-routing-query-syntax.md) lehetővé teszi a felhasználók eszköz – felhő üzeneteket irányíthatja a szolgáltatás felé néző végpontok. Útválasztás is lehetőséget biztosít egy lekérdezési szűrje az adatokat az Útválasztás, a végpontok előtt. Minden útválasztási lekérdezés konfigurálja a következő tulajdonságokkal rendelkezik:
+Az IoT Hub [üzenet-útválasztáslehetővé](iot-hub-devguide-routing-query-syntax.md) teszi a felhasználók számára, hogy az eszköz-felhő üzeneteket a szolgáltatás felé néző végpontok. Az Útválasztás lekérdezési lehetőséget is biztosít az adatok szűrésére, mielőtt a végpontokhoz irányítanák. Minden konfigurált útválasztási lekérdezés a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság      | Leírás |
 | ------------- | ----------- |
-| **Name (Név)**      | Az egyedi név, amely azonosítja a lekérdezést. |
-| **Forrás**    | Az adatfolyam intézkedni forrása. Ha például eszköz telemetriai adatokat. |
-| **a feltétel** | A lekérdezési kifejezésben az útválasztási lekérdezés, amely az üzenet alkalmazás tulajdonságai, Rendszertulajdonságok, üzenet szövegét, device twin címkék és állapítsa meg, hogy a végpont egyezést eszköz-ikertulajdonságok vonatkozóan fut le. Hozhat létre, a lekérdezés kapcsolatos további információkért lásd: a lásd [üzenet útválasztási lekérdezési szintaxis](iot-hub-devguide-routing-query-syntax.md) |
-| **Végpont**  | A végpont arról, hogy az IoT Hub hová küldi az üzeneteket, amelyek megfelelnek a lekérdezés neve. Azt javasoljuk, hogy a végpont ugyanabban a régióban, mint az IoT hub kiválasztása. |
+| **Név**      | A lekérdezést azonosító egyedi név. |
+| **Forrás**    | A reagáló adatfolyam eredete. Például az eszköz telemetriai adatok. |
+| **Állapot** | Az útválasztási lekérdezés, amely az üzenetalkalmazás tulajdonságain, a rendszertulajdonságain, az üzenettörzsén, az ikereszköz-címkéken és az ikereszköz tulajdonságain fut, és megállapítja, hogy megegyezik-e a végpont. A lekérdezések létrehozásáról további információt az [üzenet-útválasztási lekérdezés szintaxisa című](iot-hub-devguide-routing-query-syntax.md) témakörben talál. |
+| **Végpont**  | Annak a végpontnak a neve, ahol az IoT Hub a lekérdezésnek megfelelő üzeneteket küld. Azt javasoljuk, hogy válasszon egy végpontot ugyanabban a régióban, mint az IoT hub. |
 
-Egy üzenet, amelyben az IoT Hub eset kézbesíti az üzenetet a végponthoz társított minden egyező lekérdezés több útválasztási lekérdezés podmínky előfordulhat, hogy egyezik. Az IoT Hub adattömbökbe megfelelően automatikusan is az üzenetek kézbesítését, így ha egy üzenet, amelyek ugyanahhoz a célhoz több lekérdezés megegyezik, csak írás után, hogy a cél.
+Egyetlen üzenet több útválasztási lekérdezés esetén is megfelelhet a feltételnek, amely esetben az IoT Hub az üzenetet az egyes egyező lekérdezésekhez társított végpontnak kézbesíti. Az IoT Hub is automatikusan deduplicates üzenet kézbesítése, így ha egy üzenet megfelel több lekérdezések, amelyek ugyanazt a célt, csak egyszer írt, hogy a cél.
 
-## <a name="endpoints-and-routing"></a>Végpontok és útválasztási
+## <a name="endpoints-and-routing"></a>Végpontok és útválasztás
 
-Az IoT hub tartalmaz egy alapértelmezett [beépített végpont](iot-hub-devguide-messages-read-builtin.md). Az előfizetés többi szolgáltatása a hub kapcsolásával üzeneteknek az egyedi végpontok is létrehozhat. Az IoT Hub jelenleg támogatja az Azure Storage-tárolók, az Event Hubs, Service Bus-üzenetsorok és Service Bus-üzenettémakörök egyéni Végpontokként.
+Az IoT-központ alapértelmezett [beépített végponttal rendelkezik.](iot-hub-devguide-messages-read-builtin.md) Egyéni végpontokat hozhat létre az üzenetek továbbításához az előfizetésben lévő más szolgáltatások hubhoz csatolásával. Az IoT Hub jelenleg egyéni végpontként támogatja az Azure Storage-tárolókat, az Event Hubs-t, a Service Bus-várólistákat és a Service Bus-témaköröket.
 
-Útválasztási és egyéni végpontok használata esetén üzenetek jelenjenek meg csak a beépített végpont, ha minden lekérdezés nem egyeznek. A beépített végpont, valamint egy egyéni végpont esetleges szabályozási hiányosságok elhárítását kézbesíti az üzeneteket, adjon hozzá egy útvonalat, amely üzeneteket küld a beépített **események** végpont.
+Útválasztási és egyéni végpontok használata esetén az üzenetek csak akkor kerülnek kézbesítésre a beépített végponthoz, ha azok nem egyeznek meg egyetlen lekérdezéssel sem. Üzenetek kézbesítése a beépített végpont, valamint egy egyéni végpont, adjon hozzá egy útvonalat, amely üzeneteket küld a beépített **események** végpont.
 
 > [!NOTE]
-> * Az IoT Hub csak akkor támogatja a Azure Storage-tárolók, blobok írja az adatokat.
-> * A Service Bus üzenetsorainak és témáinak **munkamenetek** vagy **duplikáltelem-észlelési** engedélyezve van, az egyedi végpontok nem támogatottak.
+> * Az IoT Hub csak az Azure Storage-tárolókba blobként való adatok írását támogatja.
+> * A Service Bus-várólisták és a **munkamenetek** vagy **a duplikáltelem-észlelés** engedélyezésével rendelkező témakörök egyéni végpontként nem támogatottak.
 
-Az IoT Hub az egyedi végpontok létrehozásával kapcsolatos további információkért lásd: [IoT Hub-végpontok](iot-hub-devguide-endpoints.md).
+Az egyéni végpontok IoT Hubban való létrehozásáról az [IoT Hub végpontjai](iot-hub-devguide-endpoints.md)című témakörben talál további információt.
 
-Egyéni végpontok olvasásakor kapcsolatos további információkért lásd:
+Az egyéni végpontok olvasásáról a következő témakörben talál további információt:
 
-* A olvasásakor [Azure Storage-tárolók](../storage/blobs/storage-blobs-introduction.md).
+* Olvasás [az Azure Storage-tárolókból.](../storage/blobs/storage-blobs-introduction.md)
 
-* A olvasásakor [az Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
+* Olvasás az [Event Hubs-ból](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
-* A olvasásakor [Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+* Olvasás a [Service Bus várólistáiból](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-* A olvasásakor [Service Bus-üzenettémakörök](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
+* Olvasás a [Service Bus témaköreiből](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* IoT Hub-végpontok kapcsolatos további információkért lásd: [IoT Hub-végpontok](iot-hub-devguide-endpoints.md).
+* Az IoT Hub végpontjairól az [IoT Hub végpontjai](iot-hub-devguide-endpoints.md)című témakörben talál további információt.
 
-* Útválasztási lekérdezések meghatározásához használhatja a lekérdezési nyelv kapcsolatos további információkért lásd: [üzenet útválasztási lekérdezési szintaxis](iot-hub-devguide-routing-query-syntax.md).
+* Az útválasztási lekérdezések definiálásához használt lekérdezési nyelvről az [Üzenetküldés lekérdezésszintaxiscímű témakörben](iot-hub-devguide-routing-query-syntax.md)talál további információt.
 
-* A [folyamat az IoT Hub eszköz – felhő üzenetek útvonalak](tutorial-routing.md) oktatóanyag bemutatja, hogyan használhatja az útválasztási lekérdezések és az egyedi végpontok.
+* Az [IoT Hub-eszközök közötti eszközök](tutorial-routing.md) közötti üzenetek feldolgozása útvonalak használatával oktatóanyag bemutatja, hogyan használhatja útválasztási lekérdezések és egyéni végpontok használatával.

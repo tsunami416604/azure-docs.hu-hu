@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka számítási feladatok migrálása az Azure HDInsight 4,0
-description: Megtudhatja, hogyan telepítheti át Apache Kafka számítási feladatait a 3,6-es HDInsight a HDInsight 4,0-ra.
+title: Apache Kafka számítási feladatok áttelepítése az Azure HDInsight 4.0-ra
+description: Ismerje meg, hogyan telepítheti át az Apache Kafka számítási feladatokat a HDInsight 3.6-on a HDInsight 4.0-s rendszerbe.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,81 +8,81 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76548084"
 ---
-# <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka számítási feladatok migrálása az Azure HDInsight 4,0
+# <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka számítási feladatok áttelepítése az Azure HDInsight 4.0-ra
 
-Az Azure HDInsight 4,0 a legújabb nyílt forráskódú összetevőket kínálja a teljesítmény, a kapcsolat és a biztonság jelentős fejlesztésével. Ez a dokumentum ismerteti, hogyan telepítheti át Apache Kafka számítási feladatait a 3,6-HDInsight a HDInsight 4,0-es verzióra. A számítási feladatok HDInsight 4,0-re való áttelepítését követően számos olyan új funkciót is használhat, amelyek nem érhetők el a HDInsight 3,6-es verziójában.
+Az Azure HDInsight 4.0 a legújabb nyílt forráskódú összetevőket kínálja, amelyek jelentős mértékben tovább növelik a teljesítményt, a kapcsolatot és a biztonságot. Ez a dokumentum bemutatja, hogyan telepítheti át az Apache Kafka számítási feladatokat a HDInsight 3.6-on a HDInsight 4.0-ra. Miután áttelepítette a számítási feladatokat a HDInsight 4.0-s verzióra, számos olyan új funkciót használhat, amelyek nem érhetők el a HDInsight 3.6-on.
 
-## <a name="hdinsight-36-kafka-migration-paths"></a>HDInsight 3,6 Kafka-áttelepítési útvonalak
+## <a name="hdinsight-36-kafka-migration-paths"></a>HDInsight 3.6 Kafka áttelepítési útvonalak
 
-A HDInsight 3,6 a Kafka két verzióját támogatja: 1.0.0 és 1.1.0. A HDInsight 4,0 a 1.1.0 és a 2.1.0 verziót támogatja. Attól függően, hogy a Kafka melyik verzióját és a HDInsight melyik verzióját szeretné futtatni, több támogatott áttelepítési útvonal is létezik. Ezeket az elérési utakat alább ismertetjük, és az alábbi ábrán látható.
+A HDInsight 3.6 a Kafka két verzióját támogatja: az 1.0.0 és az 1.1.0. A HDInsight 4.0 támogatja az 1.1.0-s és a 2.1.0-s verziót. Attól függően, hogy a Kafka melyik verzióját és a HDInsight melyik verzióját szeretné futtatni, több támogatott áttelepítési útvonal található. Ezeket a görbéket az alábbi ábrán ismertetjük és szemléltetjük.
 
-* **A Kafka és a HDInsight futtatása a legújabb verziókon (ajánlott)** : telepítse át a HDInsight 3,6-es és a Kafka 1.0.0-vagy 1.1.0-alkalmazást a HDInsight 4,0-re a Kafka-2.1.0 (a D és az E útvonalon).
-* **Futtassa a HDInsight a legújabb verzión, de Kafka-t csak egy újabb verzióban**: telepítse át a HDInsight 3,6 és a Kafka 1.0.0 alkalmazást a HDInsight 4,0-re a Kafka 1.1.0-vel (a lenti útvonalon).
-* **HDInsight futtatása a legújabb verzióban, a Kafka verziójának megőrzése**: HDInsight 3,6-es és Kafka 1.1.0-alkalmazás migrálása a HDInsight 4,0-be a Kafka 1.1.0-vel (a lenti elérési úttal).
-* A **Kafka futtatása újabb verzióban, a HDInsight verziójának megőrzése**: Kafka 1.0.0-alkalmazás migrálása a 1.1.0-re, és maradjon a HDInsight 3,6 (az alábbi útvonalon). Vegye figyelembe, hogy ez a beállítás továbbra is új fürt üzembe helyezését igényli. A Kafka verziójának meglévő fürtön való frissítése nem támogatott. Miután létrehozta a kívánt verziót tartalmazó fürtöt, telepítse át a Kafka-ügyfeleket az új fürt használatára.
+* **Futtassa a Kafka és a HDInsight alkalmazást a legújabb verziókon (ajánlott)**: A HDInsight 3.6-os és a Kafka 1.0.0- vagy 1.1.0-s alkalmazás áttelepítése a HDInsight 4.0-ra a Kafka 2.1.0-s verziójával (a D és az E elérési utak alatt).
+* **Futtassa a HDInsight alkalmazást a legújabb verzióra, de a Kafka csak egy újabb verzión:** A HDInsight 3.6 és a Kafka 1.0.0 alkalmazás áttelepítése a HDInsight 4.0-ra a Kafka 1.1.0-s verziójával (az alábbi B elérési út).
+* **Futtassa a HDInsight alkalmazást a legújabb verzióra, tartsa meg a Kafka verzióját:** Migráljon egy HDInsight 3.6-os és Kafka 1.1.0-s alkalmazást a HDInsight 4.0-ra a Kafka 1.1.0-s verziójával (az alábbi C elérési út).
+* **Futtassa a Kafka alkalmazást egy újabb verzión, tartsa meg a HDInsight-verziót:** Telepítse na egy Kafka 1.0.0-s alkalmazást az 1.1.0-s verziójára, és maradjon a HDInsight 3.6-on (az alábbi A elérési út). Vegye figyelembe, hogy ez a beállítás továbbra is új fürt telepítését igényli. A Kafka-verzió frissítése egy meglévő fürtön nem támogatott. Miután létrehozott egy fürtöt a kívánt verzióval, telepítse át a Kafka-ügyfeleket az új fürt használatára.
 
-![A 3,6-es Apache Kafka frissítési útvonalai](./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png)
+![Frissítési útvonalak apache Kafka a 3,6](./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png)
 
 ## <a name="apache-kafka-versions"></a>Apache Kafka verziók
 
 ### <a name="kafka-110"></a>Kafka 1.1.0
   
-Ha a Kafka 1.0.0-ról a 1.1.0-re telepít át, akkor a következő új funkciók előnyeit veheti igénybe:
+Ha a Kafka 1.0.0-ról az 1.1.0-ra költözik, a következő új funkciókat használhatja ki:
 
-* A Kafka-vezérlő javította a vezérelt leállítást, így a brókerek újraindíthatók, és gyorsabban helyreállíthatók a problémák. 
-* A [FetchRequests logikájának](https://issues.apache.org/jira/browse/KAFKA-6254) fejlesztése, amely lehetővé teszi, hogy több partíciót (és így több témakört) is kibővítse a fürtön. 
-* A Kafka-kapcsolat támogatja a témakörök [fejléceit](https://issues.apache.org/jira/browse/KAFKA-5142) és [reguláris kifejezéseit](https://issues.apache.org/jira/browse/KAFKA-3073) . 
+* A Kafka vezérlő fejlesztései felgyorsítják a szabályozott leállítást, így újraindíthatja a brókereket, és gyorsabban helyreállíthatja a problémákat. 
+* A [FetchRequests logika fejlesztései,](https://issues.apache.org/jira/browse/KAFKA-6254) amelyek lehetővé teszik, hogy több partíciót (és így több témakört) a fürtön. 
+* A Kafka Connect támogatja a [rekordfejléceket](https://issues.apache.org/jira/browse/KAFKA-5142) és a [témakörök reguláris](https://issues.apache.org/jira/browse/KAFKA-3073) kifejezéseit. 
 
-A frissítések teljes listáját a [Apache Kafka 1,1 kibocsátási megjegyzései](https://archive.apache.org/dist/kafka/1.1.0/RELEASE_NOTES.html)című témakörben tekintheti meg.
+A frissítések teljes listáját az [Apache Kafka 1.1 kiadási megjegyzésekben található.](https://archive.apache.org/dist/kafka/1.1.0/RELEASE_NOTES.html)
 
 ### <a name="apache-kafka-210"></a>Apache Kafka 2.1.0
 
-Ha a Kafka 2,1-re telepít át, a következő funkciók közül választhat:
+Ha áttelepül a Kafka 2.1-re, az alábbi szolgáltatásokat használhatja ki:
 
-* Jobb közvetítői rugalmasság a továbbfejlesztett replikációs protokoll miatt.
-* Új funkciók a KafkaAdminClient API-ban.
-* Konfigurálható kvóta-kezelés.
-* Zstandard-tömörítés támogatása.
+* Jobb közvetítői rugalmasság a továbbfejlesztett replikációs protokoll nak köszönhetően.
+* Új funkció a KafkaAdminClient API-ban.
+* Konfigurálható kvótakezelés.
+* Zstandard tömörítés támogatása.
 
-A frissítések teljes listáját a [Apache Kafka 2,0 kibocsátási megjegyzései](https://archive.apache.org/dist/kafka/2.0.0/RELEASE_NOTES.html) és [Apache Kafka 2,1 kibocsátási megjegyzései](https://archive.apache.org/dist/kafka/2.1.0/RELEASE_NOTES.html)című témakörben tekintheti meg.
+A frissítések teljes listáját az [Apache Kafka 2.0 kiadási megjegyzések](https://archive.apache.org/dist/kafka/2.0.0/RELEASE_NOTES.html) és az Apache [Kafka 2.1 kiadási megjegyzések között található.](https://archive.apache.org/dist/kafka/2.1.0/RELEASE_NOTES.html)
 
-## <a name="kafka-client-compatibility"></a>Kafka-ügyfél kompatibilitása
+## <a name="kafka-client-compatibility"></a>Kafka ügyfélkompatibilitás
 
-Az új Kafka-közvetítők támogatják a régebbi ügyfeleket. A [KIP-35 – a protokoll verziójának lekérése](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) bevezetett egy mechanizmust a Kafka-közvetítő és a KIP-97 funkciójának dinamikus meghatározásához [: a továbbfejlesztett KAFKA-ügyfél RPC-kompatibilitási szabályzata](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) új kompatibilitási szabályzatot és garanciákat vezetett be a Java-ügyfél számára. Korábban egy Kafka-ügyfélnek ugyanazzal a verzióval vagy újabb verzióval kellett kommunikálnia. A Java-ügyfelek és a KIP-35-et támogató egyéb ügyfelek (például a `librdkafka`) újabb verziói visszatérhetnek a régebbi típusú kérelmekhez, vagy elhelyezhetik a megfelelő hibákat, ha a funkció nem érhető el.
+Az új Kafka brókerek támogatják az idősebb ügyfeleket. [KIP-35 - A protokollverzió lekérése](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) egy kafka bróker és a KIP-97 funkcióinak dinamikus meghatározására szolgáló mechanizmust vezetett [be: A Továbbfejlesztett Kafka Client RPC kompatibilitási házirend](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) új kompatibilitási szabályzatot és garanciákat vezetett be a Java ügyfél számára. Korábban egy Kafka ügyfélnek kapcsolatba kellett lépnie egy ugyanazzal a verzióval vagy egy újabb verzióval rendelkező brókerrel. Mostantól a Java-ügyfelek és a KIP-35-öt `librdkafka` támogató egyéb ügyfelek újabb verziói, például visszaléphetnek a régebbi kérelemtípusokra, vagy megfelelő hibákat okozhatnak, ha a funkciók nem érhetők el.
 
 ![A Kafka-ügyfél kompatibilitásának frissítése](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 
-Ne feledje, hogy az ügyfél támogatja a régebbi közvetítőket.  További információ: [kompatibilitási mátrix](https://cwiki.apache.org/confluence/display/KAFKA/Compatibility+Matrix).
+Vegye figyelembe, hogy ez nem jelenti azt, hogy az ügyfél támogatja a régebbi brókerek.  További információt a [Kompatibilitási mátrix című témakörben talál.](https://cwiki.apache.org/confluence/display/KAFKA/Compatibility+Matrix)
 
 ## <a name="general-migration-process"></a>Általános áttelepítési folyamat
 
-A következő áttelepítési útmutató feltételezi, hogy egy virtuális hálózatban egy HDInsight 3,6-es verzióban telepített Apache Kafka 1.0.0 vagy 1.1.0-fürt. A meglévő közvetítőnek van néhány témája, és aktívan használják a gyártók és a fogyasztók.
+A következő áttelepítési útmutató feltételezi, hogy egy Apache Kafka 1.0.0 vagy 1.1.0 fürt hdinsight 3.6-on egyetlen virtuális hálózatban üzembe helyezett. A meglévő brókernek van néhány témája, és aktívan használják a termelők és a fogyasztók.
 
-![Aktuális Kafka feltételezett környezet](./media/upgrade-threesix-to-four/apache-kafka-presumed-environment.png)
+![Jelenlegi Kafka feltételezett környezet](./media/upgrade-threesix-to-four/apache-kafka-presumed-environment.png)
 
-Az áttelepítés befejezéséhez hajtsa végre a következő lépéseket:
+Az áttelepítés végrehajtásához hajtsa végre az alábbi lépéseket:
 
-1. **Helyezzen üzembe egy új HDInsight 4,0-fürtöt és-ügyfelet a teszteléshez.** Helyezzen üzembe egy új HDInsight 4,0 Kafka-fürtöt. Ha több Kafka-fürt is kiválasztható, a legújabb verziót ajánlott kiválasztani. Az üzembe helyezés után szükség szerint állítsa be a paramétereket, és hozzon létre egy, a meglévő környezettel megegyező nevű témakört. Igény szerint állítsa be az SSL és a saját kulcsú (BYOK) titkosítást is. Ezután ellenőrizze, hogy megfelelően működik-e az új fürttel.
+1. **Telepítsen egy új HDInsight 4.0-s fürtöt és ügyfeleket tesztelésre.** Telepítsen egy új HDInsight 4.0 Kafka fürtöt. Ha több Kafka-fürtverzió is kijelölhető, ajánlott a legújabb verzió kiválasztása. Üzembe helyezés után szükség szerint állítson be néhány paramétert, és hozzon létre egy témakört a meglévő környezettel azonos nevű témakörrel. Is, állítsa be az SSL és hozd-your-own-key (BYOK) titkosítást, ha szükséges. Ezután ellenőrizze, hogy megfelelően működik-e az új fürttel.
 
-    ![Új HDInsight 4,0-fürtök üzembe helyezése](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
+    ![Új HDInsight 4.0-fürtök telepítése](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 
-1. **Állítsa át a fürtöt a gyártó alkalmazás számára, és várjon, amíg a jelenlegi fogyasztók az összes üzenetsor-adatmennyiséget felhasználják.** Ha az új HDInsight 4,0 Kafka-fürt készen áll, váltson át a meglévő gyártó célhelyére az új fürtre. Hagyja azt addig, amíg a meglévő fogyasztói alkalmazás a meglévő fürt összes adatait felhasználta.
+1. **Váltson át a fürtre a termelői alkalmazáshoz, és várja meg, amíg az aktuális fogyasztók felhasználják az összes várólista-adatot.** Amikor az új HDInsight 4.0 Kafka fürt készen áll, váltson át a meglévő gyártói célaz új fürtre. Hagyja, ahogy van, amíg a meglévő Consumer alkalmazás fel nem használja a meglévő fürt összes adatát.
 
-    ![Fürt váltása a producer alkalmazáshoz](./media/upgrade-threesix-to-four/switch-cluster-producer-app.png)
+    ![Fürt váltás a termelői alkalmazáshoz](./media/upgrade-threesix-to-four/switch-cluster-producer-app.png)
 
-1. **Állítsa át a fürtöt a fogyasztói alkalmazásban.** Miután megerősítette, hogy a meglévő fogyasztói alkalmazás befejezte a meglévő fürt összes adatainak felhasználását, váltson át az új fürthöz.
+1. **Kapcsolja be a fürtöt a fogyasztói alkalmazásban.** Miután meggyőződött arról, hogy a meglévő fogyasztói alkalmazás befejezte a meglévő fürt összes adatának fogyasztását, váltson át a kapcsolatot az új fürtre.
 
-    ![Fürt váltása a fogyasztói alkalmazásban](./media/upgrade-threesix-to-four/switch-cluster-consumer-app.png)
+    ![Fürt bekapcsolása a fogyasztói alkalmazáson](./media/upgrade-threesix-to-four/switch-cluster-consumer-app.png)
 
-1. **Szükség szerint távolítsa el a régi fürtöt, és tesztelje az alkalmazásokat.** Ha a kapcsoló elkészült, és megfelelően működik, távolítsa el a régi HDInsight 3,6 Kafka-fürtöt, valamint a tesztben használt gyártókat és fogyasztókat igény szerint.
+1. **Távolítsa el a régi fürtöt, és szükség szerint tesztelje az alkalmazásokat.** Miután a kapcsoló befejeződött és megfelelően működik, távolítsa el a régi HDInsight 3.6 Kafka fürtés a gyártók és a felhasználók által használt teszt szükség szerint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Apache Kafka HDInsight-fürtök teljesítményoptimalizálása](apache-kafka-performance-tuning.md)
-* [Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával](apache-kafka-get-started.md)
+* [Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsightban az Azure Portal használatával](apache-kafka-get-started.md)

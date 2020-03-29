@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403369"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
@@ -33,7 +33,7 @@ Az alábbiakat sajátítja majd el:
 
 Az oktatóanyagban egy Azure-felhőszolgáltatásban hozza létre és futtatja majd a többrétegű alkalmazást. Az előtér egy ASP.NET MVC webes szerepkör, a háttér pedig egy Service Bus-üzenetsort használó feldolgozói szerepkör. Ugyanezen többrétegű alkalmazást létrehozhatja úgy is, hogy az előtér olyan webes projekt legyen, amely a felhőszolgáltatás helyett egy Azure-webhelyen helyezhető üzembe. Elvégezheti a [.NET helyszíni/felhőalapú hibridalkalmazással](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) foglalkozó oktatóanyagot is.
 
-Az alábbi képernyőfelvételen a kész alkalmazás látható.
+A következő képernyőképen látható a kitöltött alkalmazás.
 
 ![][0]
 
@@ -58,7 +58,7 @@ Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 
 ## <a name="create-a-namespace"></a>Névtér létrehozása
 
-Az első lépés az, hogy hozzon létre egy *névtér*, és szerezze be a [közös hozzáférésű Jogosultságkód (SAS)](service-bus-sas.md) kulcs a névtér számára. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtérnév és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
+Az első lépés egy *névtér*létrehozása , és a [névtérhez egy SAS-kulcs](service-bus-sas.md) beszerzése. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtérnév és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -72,13 +72,13 @@ Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzene
 1. Rendszergazdai jogosultságokkal indítsa el a Visual Studio alkalmazást: kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
    
    A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
-2. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Cloud** (Felhő), majd az **Azure Cloud Service** (Azure-felhőszolgáltatás) elemre. Adja a projektnek a **MultiTierApp** nevet. Ezután kattintson az **OK** gombra.
+2. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Cloud** (Felhő), majd az **Azure Cloud Service** (Azure-felhőszolgáltatás) elemre. Adja a projektnek a **MultiTierApp** nevet. Ezt követően kattintson az **OK** gombra.
    
    ![][9]
 3. A **Roles** (Szerepkörök) panelen kattintson duplán az **ASP.NET webes szerepkörre**.
    
    ![][10]
-4. Vigye a mutatót a **WebRole1** elem fölé az **Azure Cloud Service solution** (Azure-felhőszolgáltatási megoldás) alatt, kattintson a ceruza ikonra, és írja át a webes szerepkör nevét a következőre: **FrontendWebRole**. Ezután kattintson az **OK** gombra. (Ügyeljen, hogy a „Frontend” nevet kis „e” betűvel írja, és ne „FrontEnd” formában.)
+4. Vigye a mutatót a **WebRole1** elem fölé az **Azure Cloud Service solution** (Azure-felhőszolgáltatási megoldás) alatt, kattintson a ceruza ikonra, és írja át a webes szerepkör nevét a következőre: **FrontendWebRole**. Ezt követően kattintson az **OK** gombra. (Ügyeljen, hogy a „Frontend” nevet kis „e” betűvel írja, és ne „FrontEnd” formában.)
    
    ![][11]
 5. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanel **Select a template** (Sablon kiválasztása) listáján kattintson az **MVC** elemre.
@@ -177,7 +177,7 @@ Ebben a szakaszban az alkalmazás által megjelenített különféle oldalakat h
 6. Megjelenik egy párbeszédpanel a nézet létrehozásához. A **Template** (Sablon) listában válassza a **Create** (Létrehozás) lehetőséget. A **Model class** (Modellosztály) listában válassza az **OnlineOrder** osztályt.
    
    ![][15]
-7. Kattintson a **Hozzáadás**lehetőségre.
+7. Kattintson a **Hozzáadás** gombra.
 8. Módosítsa az alkalmazás megjelenő nevét. A **Megoldáskezelőben** kattintson duplán a **Views\Shared\\_Layout.cshtml** fájlra a Visual Studio-szerkesztőben való megnyitásához.
 9. Cserélje le a **My ASP.NET Application** (Saját ASP.NET-alkalmazás) minden előfordulását **Northwind Traders Products** (Northwind Traders-termékek) értékre.
 10. Távolítsa el a **Home** (Kezdőlap), **About** (Névjegy) és **Contact** (Kapcsolatfelvétel) hivatkozásokat. Törölje a kiemelt kódot:
@@ -319,7 +319,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
 5. A **Name** (Név) mezőben adja az **OrderProcessingRole** nevet a projektnek. Ezután kattintson az **Add** (Hozzáadás) gombra.
 6. Másolja a „Service Bus-névtér létrehozása” szakasz 9. lépésében beszerzett kapcsolati sztringet a vágólapra.
 7. A **Megoldáskezelőben** kattintson a jobb gombbal az 5. lépésben létrehozott **OrderProcessingRole** szerepkörre (az **OrderProcessingRole** szerepkörre kattintson a jobb gombbal a **Roles** (Szerepkörök) részen, és ne az osztályra). Ezután kattintson a **Properties** (Tulajdonságok) elemre.
-8. A **Properties** (Tulajdonságok) párbeszédpanel **Settings** (Beállítások) lapján kattintson a **Microsoft.ServiceBus.ConnectionString** **Value** (Érték) mezőjébe, és illessze be a 6. lépésben másolt végpontértéket.
+8. A **Properties** (Tulajdonságok) párbeszédpanel **Settings** (Beállítások) lapján kattintson a **Microsoft.ServiceBus.ConnectionString****Value** (Érték) mezőjébe, és illessze be a 6. lépésben másolt végpontértéket.
    
    ![][25]
 9. Hozza létre az **OnlineOrder** osztályt az üzenetsorból feldolgozott rendelések jelölésére. Használhat egy korábban létrehozott osztályt. A **Megoldáskezelőben** kattintson a jobb gombbal az **OrderProcessingRole** osztályra (az osztály ikonjára, ne a szerepkörre kattintson a jobb gombbal). Kattintson az **Add** (Hozzáadás), majd az **Existing Item** (Meglévő elem) elemre.

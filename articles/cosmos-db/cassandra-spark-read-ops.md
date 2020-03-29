@@ -1,7 +1,7 @@
 ---
-title: Olvassa el a Cassandra API tábla adatok Spark segítségével
+title: Cassandra API-táblaadatok olvasása a Spark használatával
 titleSufix: Azure Cosmos DB
-description: Ez a cikk ismerteti, hogyan lehet adatokat olvasni az Azure Cosmos DB Cassandra API-táblákat.
+description: Ez a cikk ismerteti, hogyan olvashatadatokat Cassandra API-táblák az Azure Cosmos DB.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893400"
 ---
-# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Adatok Spark segítségével Azure Cosmos DB Cassandra API-táblák beolvasása
+# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Adatok olvasása az Azure Cosmos DB Cassandra API-tábláiból a Spark használatával
 
- Ez a cikk ismerteti, hogyan olvashatja be a Spark az Azure Cosmos DB Cassandra API-ban tárolt adatokkal.
+ Ez a cikk ismerteti, hogyan olvassa el az Azure Cosmos DB Cassandra API-ban a Spark tárolt adatokat.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
+## <a name="cassandra-api-configuration"></a>Cassandra API-konfiguráció
 ```scala
 import org.apache.spark.sql.cassandra._
 //Spark connector
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="dataframe-api"></a>Adathalmaz API
+## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="read-table-using-sessionreadformat-command"></a>Olvasási tábla session.read.format paranccsal
+### <a name="read-table-using-sessionreadformat-command"></a>Táblázat olvasása a session.read.format paranccsal
 
 ```scala
 val readBooksDF = sqlContext
@@ -60,13 +60,13 @@ val readBooksDF = sqlContext
 readBooksDF.explain
 readBooksDF.show
 ```
-### <a name="read-table-using-sparkreadcassandraformat"></a>Olvasási tábla spark.read.cassandraFormat segítségével 
+### <a name="read-table-using-sparkreadcassandraformat"></a>Táblázat olvasása a spark.read.cassandraFormat használatával 
 
 ```scala
 val readBooksDF = spark.read.cassandraFormat("books", "books_ks", "").load()
 ```
 
-### <a name="read-specific-columns-in-table"></a>Olvassa el az adott tábla oszlopai
+### <a name="read-specific-columns-in-table"></a>Adott oszlopok olvasása a táblázatban
 
 ```scala
 val readBooksDF = spark
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Szűrők alkalmazása
 
-Jelenleg nem támogatott a predikátum legördülő lista, az alábbi minták az ügyféloldali szűrésen tükrözik. 
+Jelenleg predikátum leküldéses nem támogatott, az alábbi minták ügyféloldali szűrést tükröznek. 
 
 ```scala
 val readBooksDF = spark
@@ -103,24 +103,24 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-## <a name="rdd-api"></a>RDD-API
+## <a name="rdd-api"></a>RDD API
 
-### <a name="read-table"></a>Olvasási tábla
+### <a name="read-table"></a>Táblázat olvasása
 ```scala
 val bookRDD = sc.cassandraTable("books_ks", "books")
 bookRDD.take(5).foreach(println)
 ```
 
-### <a name="read-specific-columns-in-table"></a>Olvassa el az adott tábla oszlopai
+### <a name="read-specific-columns-in-table"></a>Adott oszlopok olvasása a táblázatban
 
 ```scala
 val booksRDD = sc.cassandraTable("books_ks", "books").select("book_id","book_name").cache
 booksRDD.take(5).foreach(println)
 ```
 
-## <a name="sql-views"></a>Az SQL-nézetek 
+## <a name="sql-views"></a>SQL nézetek 
 
-### <a name="create-a-temporary-view-from-a-dataframe"></a>A dataframe egy ideiglenes nézet létrehozása
+### <a name="create-a-temporary-view-from-a-dataframe"></a>Ideiglenes nézet létrehozása adatkeretből
 
 ```scala
 spark
@@ -130,7 +130,7 @@ spark
   .load.createOrReplaceTempView("books_vw")
 ```
 
-### <a name="run-queries-against-the-view"></a>Futtasson lekérdezéseket a nézet
+### <a name="run-queries-against-the-view"></a>Lekérdezések futtatása a nézetben
 
 ```sql
 select * from books_vw where book_pub_year > 1891
@@ -138,10 +138,10 @@ select * from books_vw where book_pub_year > 1891
 
 ## <a name="next-steps"></a>További lépések
 
-További cikkek az Azure Cosmos DB Cassandra API a Spark a következők:
+Az alábbiakban további cikkeket tartalmaz az Azure Cosmos DB Cassandra API használatával kapcsolatos munkáról a Sparktól:
  
- * [Upsert művelet](cassandra-spark-upsert-ops.md)
- * [Törlési műveletek](cassandra-spark-delete-ops.md)
+ * [Upsert műveletek](cassandra-spark-upsert-ops.md)
+ * [Műveletek törlése](cassandra-spark-delete-ops.md)
  * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
- * [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
+ * [Táblamásolási műveletek](cassandra-spark-table-copy-ops.md)
 

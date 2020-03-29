@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Műszaki fogalmak |} A Microsoft Docs'
-description: Ismerteti a technikai Azure AD Connect szinkronizálása.
+title: 'Azure AD Connect szinkronizálása: Technikai fogalmak | Microsoft dokumentumok'
+description: Az Azure AD Connect szinkronizálásának technikai fogalmait ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,77 +17,77 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347574"
 ---
-# <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: Műszaki fogalmak
-Ebben a cikkben található egy összefoglaló az a témakör [ismertetése architektúra](how-to-connect-sync-technical-concepts.md).
+# <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak
+Ez a cikk az [Architektúra ismertetése](how-to-connect-sync-technical-concepts.md)című témakör összefoglalója.
 
-Az Azure AD Connect szinkronizálása egy szilárd metakönyvtár szinkronizálási platformra épít.
-Az alábbi szakaszok a metakönyvtár szinkronizálási fogalmak vezetnek be.
-Építve a MIIS ILM és FIM, az Azure Active Directory Sync szolgáltatás a következő adatforráshoz csatlakozik, adatforrások, valamint a kiépítés közötti szinkronizálása és -megszüntetés identitások platformot kínál a.
+Az Azure AD Connect szinkronizálása szilárd metatár-szinkronizálási platformra épül.
+A következő szakaszok bemutatják a metatár-szinkronizálás fogalmait.
+A MIIS, AZ ILM és a FIM szolgáltatásra építve az Azure Active Directory-szinkronizálási szolgáltatások a következő platformot biztosít az adatforrásokhoz való csatlakozáshoz, az adatforrások közötti adatok szinkronizálásához, valamint az identitások kiépítéséhez és kiépítéséhez.
 
 ![Műszaki fogalmak](./media/how-to-connect-sync-technical-concepts/scenario.png)
 
-A következő szakaszok további információt a FIM szinkronizálási szolgáltatás a következő szempontokat:
+A következő szakaszok további részleteket tartalmaznak a FIM-szinkronizálási szolgáltatás következő szempontjairól:
 
 * Összekötő
 * Attribútumfolyam
-* Összekötő-térben
-* Metaverzum
+* Összekötő tér
+* Metaverse
 * Kiépítés
 
 ## <a name="connector"></a>Összekötő
-A csatlakoztatott címtárban folytatott kommunikációhoz használt kódmodulokat összekötők (korábbi nevén felügyeleti ügynökök (MAs)) nevezzük.
+A csatlakoztatott könyvtárral való kommunikációhoz használt kódmodulokat összekötőknek (korábbi nevén felügyeleti ügynököknek (MA)-nak nevezzük).
 
-Az Azure AD Connect szinkronizálási futtató számítógépen van telepítve. Az összekötők lehetővé az ügynök nélküli kivételfigyelés Serverhez helyett speciális ügynökök telepítését a távoli rendszer protokollok használatával. Ez azt jelenti, hogy csökkent kockázat és üzembe helyezéshez szükséges idő, különösen akkor, ha a kritikus fontosságú alkalmazások és rendszerek.
+Ezek az Azure AD Connect szinkronizálást futtató számítógépre vannak telepítve. Az összekötők biztosítják az ügynök nélküli képes beszélgetni távoli rendszerprotokollok használatával, ahelyett, hogy a speciális ügynökök telepítésére támaszkodna. Ez azt jelenti, hogy csökken a kockázat és a telepítési idő, különösen a kritikus alkalmazások és rendszerek kezelése során.
 
-A fenti képen az összekötő azonos a az összekötőtérben, de magában foglalja a külső rendszer folytatott minden kommunikáció.
+A fenti képen a csatlakozó egyet jelent a csatlakozó tér, de magában foglalja az összes kommunikációt a külső rendszer.
 
-Az összekötő felelős az összes importálás és exportálás funkció a rendszer, és fejlesztői számára való csatlakozás minden rendszer natív módon használata a deklaratív kiépítés adatátalakítások testreszabásához kellene szabadít.
+Az összekötő felelős a rendszer összes importálási és exportálási funkciójáért, és leszabadítja a fejlesztőket attól, hogy megértsék, hogyan csatlakozhatnak az egyes rendszerhez natív módon, amikor deklaratív kiépítéssel testreszabják az adatátalakításokat.
 
-Import és export csak fordulhat elő, ha ütemezett, ami lehetővé teszi a változások a rendszer, mivel a módosítások nem automatikusan továbbítódik a csatlakoztatott adatforráshoz további szigetelése. Emellett a fejlesztők is hozzon létre saját összekötőket az olyan gyakorlatilag bármilyen adatforráshoz való kapcsolódáshoz.
+Az import és az exportálás csak ütemezett időpontban történik, ami lehetővé teszi a rendszeren belül bekövetkező változások tól való további szigetelést, mivel a változások nem terjednek át automatikusan a csatlakoztatott adatforrásra. Ezenkívül a fejlesztők saját összekötőket is létrehozhatnak gyakorlatilag bármilyen adatforráshoz való csatlakozáshoz.
 
 ## <a name="attribute-flow"></a>Attribútumfolyam
-A metaverzum az összes csatlakoztatott identitások a szomszédos összekötőterek összevont nézetet. A fenti ábrán a kimenő és bejövő folyamathoz nyílhegy vonalak Attribútumfolyam megfelelőként jelenik. Attribútumfolyam másolása és a egy másikra rendszer adatok átalakítása és az összes attribútum folyamatok (bejövő vagy kimenő).
+A metaverzum a szomszédos összekötőterekösszes illesztett identitásának összevont nézete. A fenti ábrán az attribútumfolyamatot nyílhegyekkel ellátott vonalak ábrázolják mind a bejövő, mind a kimenő folyamathoz. Az attribútumfolyamat az adatok egyik rendszerből a másikba történő másolásának vagy átalakításának folyamata, és az összes attribútumfolyam (bejövő vagy kimenő).
 
-Attribútumfolyam esetén az összekötőtérben, és a metaverzum között kétirányúan szinkronizálási (teljes vagy különbözeti) műveletek ütemezésére.
+Attribútumfolyam az összekötő tér és a metaverzum kétirányú között történik, amikor a szinkronizálási (teljes vagy delta) műveletek futtatására vannak ütemezve.
 
-Attribútumfolyam csak akkor történik meg, ezek szinkronizálások futtatásakor. Szinkronizálási szabályok attribútumfolyamok vannak definiálva. Ezek lehetnek a bejövő (ISR a fenti képen) vagy a kimenő (OSR a fenti képen).
+Az attribútumfolyamat csak akkor fordul elő, ha ezek a szinkronizálások futnak. Az attribútumfolyamatok a szinkronizálási szabályokban vannak definiálva. Ezek lehetnek bejövő (ISR a fenti képen) vagy kimenő (OSR a fenti képen).
 
 ## <a name="connected-system"></a>Csatlakoztatott rendszer
-Csatlakoztatott rendszer (más néven csatlakoztatott címtárhoz) címre a távoli rendszer az Azure AD Connect szinkronizálási csatlakozik-e, és olvasott és írt azonosító adatok, illetve onnan.
+Csatlakoztatott rendszer (más néven csatlakoztatott könyvtár) hivatkozik a távoli rendszer Azure AD Connect szinkronizálás csatlakozik, és az identitásadatok olvasása és írása identitásadatokat, és onnan.
 
-## <a name="connector-space"></a>Összekötő-térben
-Csatlakoztatott adatforrások jelenik meg az objektumok és attribútumok az összekötőtérben egy szűrt részét.
-Ez lehetővé teszi a szinkronizálási szolgáltatás kizárólag a helyi anélkül, hogy lépjen kapcsolatba a távoli rendszer, amikor az objektumok szinkronizálásának kellene, és korlátozza az import való interakció, és csak exportálja.
+## <a name="connector-space"></a>Összekötő tér
+Minden csatlakoztatott adatforrás az összekötő térben lévő objektumok és attribútumok szűrt részhalmazaként jelenik meg.
+Ez lehetővé teszi, hogy a szinkronizálási szolgáltatás helyileg működjön anélkül, hogy kapcsolatba kellene lépnie a távoli rendszerrel az objektumok szinkronizálásakor, és csak az importálásra és exportálásra korlátozza az interakciót.
 
-Ha az adatforrás és az összekötő módosításait (egy különbözeti importálást) biztosítani, majd a működési hatékonyságot jelentősen megnő, csak a változásokat, mivel a legutolsó lekérdezési ciklust cserélt. Az összekötő-térben insulates a csatlakoztatott adatforráshoz, a módosítások propagálása automatikusan úgy, hogy az összekötő ütemezés importálja és exportálja. A hozzáadott biztosítási biztosít Önnek adó megoldás tesztelése, megtekintés vagy a következő frissítés megerősítése közben.
+Ha az adatforrás és az összekötő képes a változások listájának (különbözeti importálás) megadására, akkor a működési hatékonyság drámaian megnő, mivel csak a legutóbbi lekérdezési ciklus óta bekövetkezett változások. Az összekötő tér szigeteli a csatlakoztatott adatforrást a módosítások automatikus propagálása megkövetelve, hogy az összekötő ütemezése import és exportálás. Ez a hozzáadott biztosítás nyugalmat biztosít a következő frissítés tesztelése, előnézete vagy megerősítése során.
 
-## <a name="metaverse"></a>Metaverzum
-A metaverzum az összes csatlakoztatott identitások a szomszédos összekötőterek összevont nézetet.
+## <a name="metaverse"></a>Metaverse
+A metaverzum a szomszédos összekötőterekösszes illesztett identitásának összevont nézete.
 
-Identitások össze vannak kapcsolva, és a szolgáltató különböző attribútumok importálás megfeleltetéseket keresztül van hozzárendelve, a központi metaverzum-objektum elkezdi összesített adatokat több rendszer. Az ezen objektum Attribútumfolyam leképezések végrehajtott műveletek közül sokat kimenő információt.
+Mivel az identitások össze vannak kapcsolva, és a különböző attribútumokhoz importfolyamat-leképezések en keresztül van hozzárendelve a jogosultság, a központi metaverzum-objektum elkezdi összesíteni a több rendszerből származó információkat. Ebből az objektumattribútum-folyamatból a leképezések adatokat szállítanak a kimenő rendszerekhez.
 
-Objektumok jönnek létre, amikor egy mérvadó rendszer-projektek, azokat a metaverzumba. Amint megtörtént az összes kapcsolat, a rendszer törli a metaverzum-objektum.
+Az objektumok akkor jönnek létre, amikor egy mérvadó rendszer kivetíti őket a metaverzumba. Amint az összes kapcsolat törlődik, a metaverzum-objektum törlődik.
 
-Közvetlenül a metaverzumban található objektumok nem szerkesztheti. Az objektum összes adatot kell lennie viszonyított Attribútumfolyam keresztül. A metaverzum kezeli az állandó összekötőik összes összekötőtérbe. Ezek az összekötők nem igényelnek újrakiértékelési minden egyes szinkronizálás futtatása. Ez azt jelenti, hogy az Azure AD Connect szinkronizálása nem kell minden alkalommal, amikor a megfelelő távoli objektum kereséséhez. Ezzel elkerülhető, hogy megakadályozza a módosítását az attribútumokat, amelyek általában felelős az objektumok naplókezelője költséges ügynökök van szükség.
+A metaverzumban lévő objektumok nem szerkeszthetők közvetlenül. Az objektumban lévő összes adatot attribútumfolyamaton keresztül kell hozzátenni. A metaverzum minden összekötő térben állandó összekötőket tart fenn. Ezek az összekötők nem igényelnek újraértékelést minden szinkronizálási futtatáshoz. Ez azt jelenti, hogy az Azure AD Connect szinkronizálási nem kell minden alkalommal megtalálni a megfelelő távoli objektumot. Így nincs szükség költséges ügynökökre, hogy megakadályozzák az olyan attribútumok módosítását, amelyek általában felelősek az objektumok korrelációért.
 
-Amelyek esetlegesen már létező objektumokat, amelyeket kezelni kell új adatforrások felfedezésére, amikor az Azure AD Connect szinkronizálása a join szabály nevű folyamat, amellyel kapcsolatot létesít a lehetséges jelöltek kiértékelheti, hogy használja.
-A kapcsolat létrejött, az értékelés indítást, és a normál Attribútumfolyam kerül sor a távoli csatlakoztatott adatforráshoz, és a metaverzumba.
+Amikor olyan új adatforrásokat fedez fel, amelyek már meglévő, már kezelhető objektumokkal rendelkeznek, az Azure AD Connect szinkronizálása egy csatlakozási szabálynak nevezett folyamatot használ a potenciális jelöltek kiértékelésére, amelyekkel kapcsolatot hozhat létre.
+A kapcsolat létrehozása után ez a kiértékelés nem fordul elő újra, és normál attribútumfolyamat fordulhat elő a távoli csatlakoztatott adatforrás és a metaverzum között.
 
 ## <a name="provisioning"></a>Kiépítés
-Ha egy mérvadó forrás projektek a metaverzumba egy új összekötőtér objektuma új objektumot egy másik összekötőt képviselő egy alsóbb rétegbeli csatlakoztatott adatforrás is létrehozható.
+Amikor egy mérvadó forrás egy új objektumot vetít ki a metaverzumba, egy másik összekötőben új összekötő térobjektum hozható létre, amely egy alsóbb rétegbeli csatlakoztatott adatforrást jelöl.
 
-Ez természetüknél fogva hoz létre hivatkozást, és Attribútumfolyam kétirányúan folytathatja.
+Ez eredendően kapcsolatot hoz létre, és az attribútumfolyamat kétirányúan haladhat tovább.
 
-Minden alkalommal, amikor egy szabály határozza meg, hogy egy új összekötőtér objektuma kell létrehozni, kiépítés nevezzük. Azonban ez a művelet csak kerül sor az összekötőtérben belül, mert azt nem vállalunk a csatlakoztatott adatforrásba mindaddig, amíg az exportálás történik.
+Amikor egy szabály azt állapítja meg, hogy egy új összekötő tér objektumot kell létrehozni, azt kiépítésnek nevezzük. Mivel azonban ez a művelet csak az összekötő térben történik, az exportálás végrehajtásáig nem kerül át a csatlakoztatott adatforrásba.
 
 ## <a name="additional-resources"></a>További források
-* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [Azure AD Connect Sync: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 <!--Image references-->

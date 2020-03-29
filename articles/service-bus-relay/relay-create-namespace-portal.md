@@ -1,6 +1,6 @@
 ---
 title: Továbbítónévtér létrehozása az Azure Portal használatával | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre Relay-névteret a Azure Portal használatával.
+description: Ez a cikk egy forgatókönyvet, amely bemutatja, hogyan hozhat létre egy továbbító névtér az Azure Portalhasználatával.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: b9811ef92aba4891627c20e0269be136582a3304
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514663"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Továbbítónévtér létrehozása az Azure Portal használatával
@@ -26,7 +26,7 @@ ms.locfileid: "76514663"
 A névtér egy hatókörkezelési tároló az Azure Relay valamennyi összetevője számára. Egyetlen névtér több Relayt is tartalmazhat, és a névterek gyakran alkalmazástárolóként is szolgálnak. A Relay-névterek létrehozásának jelenleg két különböző módja van:
 
 1. Azure Portal (ez a cikk).
-2. [Azure Resource Manager](../azure-resource-manager/management/overview.md)-sablonok.
+2. [Azure Resource](../azure-resource-manager/management/overview.md) Manager-sablonok.
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 
@@ -34,9 +34,9 @@ A névtér egy hatókörkezelési tároló az Azure Relay valamennyi összetevő
 
 Gratulálunk! Ezzel létrehozott egy új Relay-névteret.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Továbbító – gyakori kérdések](relay-faq.md)
+* [Relay – gyakori kérdések](relay-faq.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)
 

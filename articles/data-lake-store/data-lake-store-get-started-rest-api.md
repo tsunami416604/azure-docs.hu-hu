@@ -1,6 +1,6 @@
 ---
-title: 'REST API: Fiókkezelési műveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
-description: Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 fiók az Azure Data Lake Storage Gen1 és a WebHDFS REST API használatával
+title: 'REST API: Fiókkezelési műveletek az Azure Data Lake Storage Gen1 szolgáltatáson | Microsoft dokumentumok'
+description: Az Azure Data Lake Storage Gen1 és a WebHDFS REST API használatával fiókkezelési műveleteket hajthat végre a Data Lake Storage Gen1 fiókban
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877105"
 ---
-# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 REST API használatával
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 szolgáltatáson a REST API használatával
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -27,24 +27,24 @@ ms.locfileid: "60877105"
 >
 >
 
-Ebben a cikkben megismerheti, hogyan hajthat végre a fiókkezelési műveletek az Azure Data Lake Storage Gen1 a REST API használatával. Fiókkezelési műveletek közé tartozik, egy Data Lake Storage Gen1 törlése egy Data Lake Storage Gen1 fiók, stb-fiók létrehozása. Hogyan hajthat végre fájlrendszerműveleteket a Data Lake Storage Gen1 REST API-val kapcsolatos utasításokért lásd: [fájlrendszerműveletek a Data Lake Storage Gen1 REST API-val](data-lake-store-data-operations-rest-api.md).
+Ebben a cikkben megtudhatja, hogyan hajthatja végre a fiókkezelési műveleteket az Azure Data Lake Storage Gen1 a REST API használatával. A fiókkezelési műveletek közé tartozik a Data Lake Storage Gen1 fiók létrehozása, a Data Lake Storage Gen1 fiók törlése stb. A DATA Lake Storage Gen1 FÁJLrendszer-műveleteinek REST API használatával történő végrehajtásáról a [Data Lake Storage Gen1 fájlrendszer-műveletei REST API használatával kapcsolatos tudnivalókat.](data-lake-store-data-operations-rest-api.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **[cURL](https://curl.haxx.se/)** . Ez a cikk a curl használatával bemutatják, hogyan lehet REST API-hívásokat a Data Lake Storage Gen1 fiók ellen.
+* **[cURL .](https://curl.haxx.se/)** Ez a cikk cURL-t használ, hogy bemutassa, hogyan lehet REST API-hívásokat egy Data Lake Storage Gen1 fiók ellen.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
 Az Azure Active Directory használatával történő hitelesítést két módon végezheti el.
 
-* Az alkalmazás (interaktív) végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-rest-api.md).
-* (Nem interaktív) az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-rest-api.md).
+* Az alkalmazás (interaktív) végfelhasználói hitelesítése a [Végfelhasználói hitelesítés a Data Lake Storage Gen1 használatával .NET SDK használatával](data-lake-store-end-user-authenticate-rest-api.md)című témakörben található.
+* Az alkalmazás szolgáltatás-szolgáltatás hitelesítése (nem interaktív) a [Szolgáltatás-szolgáltatás hitelesítése a Data Lake Storage Gen1 szolgáltatással a .NET SDK használatával](data-lake-store-service-to-service-authenticate-rest-api.md)című témakörben található.
 
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Hozzon létre egy Data Lake Storage Gen1 fiókot
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
 Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) definiált REST API-híváson alapul.
 
-Használja a következő cURL-parancsot. Cserélje le  **\<yourstoragegen1name >** a Data Lake Storage Gen1 nevére.
+Használja a következő cURL-parancsot. Cserélje ** \<le storagegen1name>** a Data Lake Storage Gen1 nevét.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
@@ -58,10 +58,10 @@ A fenti parancsban cserélje le a(z) \<`REDACTED`\> részt a korábban kapott en
     "properties": {}
     }    
 
-## <a name="delete-a-data-lake-storage-gen1-account"></a>Törölheti a Data Lake Storage Gen1
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 fiók törlése
 Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) definiált REST API-híváson alapul.
 
-A következő cURL-parancs segítségével törölheti a Data Lake Storage Gen1. Cserélje le  **\<yourstoragegen1name >** a Data Lake Storage Gen1 fiók nevére.
+A következő cURL-paranccsal törölheti a Data Lake Storage Gen1-fiókot. Cserélje ** \<le storagegen1name>-t** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
 
@@ -72,9 +72,9 @@ A következő kódrészlethez hasonló kimenetnek kell megjelennie:
     ...
 
 ## <a name="next-steps"></a>További lépések
-* [Fájlrendszerműveletek a Data Lake Storage Gen1 REST API-val](data-lake-store-data-operations-rest-api.md).
+* [A Data Lake Storage Gen1 fájlrendszer-műveletei REST API használatával.](data-lake-store-data-operations-rest-api.md)
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Storage Gen1 REST API-referencia](https://docs.microsoft.com/rest/api/datalakestore/)
-* [Nyílt forráskódú Big Data-alkalmazások kompatibilis az Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage Gen1 REST API-referencia](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Az Azure Data Lake Storage Gen1-tal kompatibilis nyílt forráskódú Big Data-alkalmazások](data-lake-store-compatible-oss-other-applications.md)
 

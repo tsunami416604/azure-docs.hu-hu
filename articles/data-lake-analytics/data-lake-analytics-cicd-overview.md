@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása
-description: Megtudhatja, hogyan állíthat be folyamatos integrációt és folyamatos üzembe helyezés az Azure Data Lake Analytics.
+title: CI/CD-folyamat beállítása az Azure Data Lake Analytics szolgáltatáshoz
+description: Ismerje meg, hogyan állíthatja be a folyamatos integrációt és a folyamatos üzembe helyezést az Azure Data Lake Analytics számára.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60333860"
 ---
-# <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása  
+# <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>CI/CD-folyamat beállítása az Azure Data Lake Analytics szolgáltatáshoz  
 
-Ebből a cikkből megismerheti, hogyan állítható be a folyamatos integráció és készregyártás (CI/CD) a U-SQL-feladatok és a U-SQL-adatbázisok.  
+Ebben a cikkben megtudhatja, hogyan állíthat be egy folyamatos integrációs és üzembe helyezési (CI/CD) folyamat u-SQL feladatok és U-SQL adatbázisok.  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-cicd-for-u-sql-jobs"></a>CI/CD használata a U-SQL-feladatok
+## <a name="use-cicd-for-u-sql-jobs"></a>Ci/CD használata U-SQL feladatokhoz
 
-Az Azure Data Lake Tools for Visual Studio biztosít a U-SQL projekt típusa, amely segítséget nyújt a U-SQL-parancsfájlok rendszerezheti. A U-SQL projekt használata kezelheti a U-SQL kód egyszerűen további CI/CD-forgatókönyvekhez.
+Az Azure Data Lake Tools for Visual Studio biztosítja az U-SQL projekttípust, amely segít az U-SQL-parancsfájlok rendszerezésében. Az U-SQL projekt használata az U-SQL-kód kezeléséhez megkönnyíti a további CI/CD-forgatókönyveket.
 
-## <a name="build-a-u-sql-project"></a>A U-SQL projekt létrehozása
+## <a name="build-a-u-sql-project"></a>U-SQL projekt létrehozása
 
-A U-SQL projekt építhetők fel a Microsoft Build Engine (MSBuild) a megfelelő paraméter átadásával. Kövesse a cikkben egy U-SQL projekt buildelési folyamat beállítása.
+Az U-SQL-projekt a Microsoft Build Engine (MSBuild) segítségével a megfelelő paraméterek átadásával is létrehozható. A cikkben ismertetett lépéseket követve állítsa be az U-SQL-projektek létrehozási folyamatát.
 
-### <a name="project-migration"></a>Migrálási projekt
+### <a name="project-migration"></a>A projekt áttelepítése
 
--Létrehozási feladat egy U-SQL projekt beállítása előtt győződjön meg arról, hogy a legújabb verzióra a U-SQL projekt. Nyissa meg a U-SQL projekt fájlt a saját szerkesztőben, és ellenőrizze, hogy rendelkezik ezen elemek importálásához:
+Mielőtt létrehozna egy létrehozási feladatot egy U-SQL projekthez, győződjön meg arról, hogy az U-SQL projekt legújabb verziójával rendelkezik. Nyissa meg az U-SQL projektfájlt a szerkesztőben, és ellenőrizze, hogy vannak-e az alábbi importálási elemek:
 
 ```   
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
@@ -41,16 +41,16 @@ A U-SQL projekt építhetők fel a Microsoft Build Engine (MSBuild) a megfelelő
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
 ``` 
 
-Ha nem, a projekt áttelepítése két lehetősége van:
+Ha nem, két lehetősége van a projekt áttelepítésére:
 
-- Option 1: Módosítsa a régi importálás elem az előző egy.
-- Option 2: Nyissa meg a régi projekttel az Azure Data Lake Tools for Visual Studio. 2\.3.3000.0 frissebb verzióját használja. A régi projektsablonnal automatikusan frissül a legújabb verzióra. 2\.3.3000.0 frissebb verziójával létrehozott új projektek használja az új sablon.
+- 1. lehetőség: Módosítsa a régi importálási elemet az előzőre.
+- 2. lehetőség: Nyissa meg a régi projektet az Azure Data Lake Tools for Visual Studio alkalmazásban. A 2.3.3000.0-nál újabb verziót használjon. A régi projektsablon automatikusan frissül a legújabb verzióra. A 2.3.3000.0-nál újabb verziókkal létrehozott új projektek az új sablont használják.
 
-### <a name="get-nuget"></a>NuGet beolvasása
+### <a name="get-nuget"></a>A NuGet beszereznie
 
-MSBuild nem beépített támogatást nyújt a U-SQL-projekteket. Ez segítségre van szüksége, adjon hozzá egy hivatkozást a megoldáshoz való kell a [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet-csomagot, amely hozzáadja a szükséges nyelvi szolgáltatás.
+Az MSBuild nem nyújt beépített támogatást az U-SQL-projektekhez. A támogatás lekérni, hozzá kell adnia egy hivatkozást a megoldáshoz a [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet csomaghoz, amely hozzáadja a szükséges nyelvi szolgáltatást.
 
-A NuGet-csomag hivatkozás hozzáadásához kattintson a jobb gombbal a megoldást a Visual Studio Solution Explorerben, és válassza a **NuGet-csomagok kezelése**. Hozzáadhat egy nevű fájlt, vagy `packages.config` a megoldás mappában, és a put, a következő részből álló tartalmat a fájlba:
+A NuGet csomaghivatkozás hozzáadásához kattintson a jobb gombbal a megoldásra a Visual Studio Solution Explorer alkalmazásban, és válassza **a NuGet-csomagok kezelése parancsot.** Vagy hozzáadhat egy fájlnak a megoldás mappájában, `packages.config` és a következő tartalmat helyezheti el benne:
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -59,73 +59,73 @@ A NuGet-csomag hivatkozás hozzáadásához kattintson a jobb gombbal a megoldá
 </packages>
 ``` 
 
-### <a name="manage-u-sql-database-references"></a>U-SQL-adatbázis hivatkozások kezelése
+### <a name="manage-u-sql-database-references"></a>U-SQL adatbázis-hivatkozások kezelése
 
-Előfordulhat, hogy az U-SQL projekt U-SQL-parancsfájlok lekérdezési utasítás a U-SQL-adatbázis-objektumok. Ebben az esetben, hivatkoznia kell a megfelelő U-SQL database-projekt, amely tartalmazza az objektum definíciója a U-SQL projekt elkészítése előtt. Ez például akkor, amikor egy U-SQL-táblából, vagy egy szerelvény hivatkozik. 
+Az U-SQL-projektek U-SQL-parancsfájljai rendelkezhetnek az U-SQL adatbázis-objektumok lekérdezési utasításával. Ebben az esetben az U-SQL-projekt létrehozása előtt hivatkoznia kell a megfelelő U-SQL adatbázis-projektre, amely tartalmazza az objektumok definícióját. Ilyen például egy U-SQL tábla lekérdezése vagy egy összeállításra való hivatkozás. 
 
-Tudjon meg többet [U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+További információ az [U-SQL adatbázis-projektről.](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 
 >[!NOTE]
->DROP utasítást objektuma tárolótörlési hiba okozhatja. Ahhoz, hogy a DROP utasítást, explicit módon adja meg az MSBuild-argumentumok kell. **AllowDropStatement** lehetővé teszi a-data kapcsolódó ELDOBÁSI művelet, például a drop assembly és a drop táblázat értékű függvény. **AllowDataDropStatement** lehetővé teszi a kapcsolódó adatok ELDOBÁSI művelet, például a drop table és a drop schema. Mielőtt AllowDataDropStatement AllowDropStatement engedélyeznie kell.
+>A DROP utasítás balesettörlési problémát okozhat. A DROP utasítás engedélyezéséhez explicit módon meg kell adnia az MSBuild argumentumokat. **Az AllowDropStatement** engedélyezi a nem adatokkal kapcsolatos DROP-műveletet, például a drop assembly és a drop table valued függvényt. **Az AllowDataDropStatement** engedélyezi az adatokkal kapcsolatos DROP-műveletet, például a drop table és a drop sémát. Az AllowDataDropStatement használata előtt engedélyeznie kell az AllowDropStatement utasítást.
 >
 
-### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Az MSBuild parancssorral a U-SQL projekt létrehozása
+### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>U-SQL projekt létrehozása az MSBuild parancssorból
 
-Először a projekt áttelepítése, és lekérése a NuGet-csomagot. Ezután hívja meg a standard szintű MSBuild-parancssorból a következő további argumentumok a U-SQL projekt: 
+Először telepítse át a projektet, és kapja meg a NuGet csomagot. Ezután hívja meg a szabványos MSBuild parancssort a következő további argumentumokkal az U-SQL projekt létrehozásához: 
 
 ``` 
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
-Az argumentumok definíció- és értékek a következők:
+Az argumentumok meghatározása és értékei a következők:
 
-* **USQLSDKPath =\<U-SQL Nuget-csomag > \build\runtime**. Ezt a paramétert a telepítési útvonalat a NuGet-csomag az U-SQL nyelvi szolgáltatás hivatkozik.
-* **USQLTargetType = egyesítési vagy SyntaxCheck**:
-    * **Egyesítse**. Egyesítéssel lefordítja a háttérkód-fájlokat. Példa **.cs**, **.py**, és **.r** fájlokat. Ez a U-SQL-parancsfájlt az eredményül kapott felhasználói kód kódtár inlines. Példák: egy dll bináris, Python vagy R kódot.
-    * **SyntaxCheck**. SyntaxCheck mód a U-SQL parancsfájl először egyesít háttérkód-fájlokat. Majd azt állítja össze a kódot a U-SQL parancsfájl.
-* **DataRoot =\<DataRoot elérési út >** . DataRoot csak SyntaxCheck mód van szükség. Ha, létrehozta a parancsfájl SyntaxCheck móddal, MSBuild ellenőrzi, adatbázis-objektumok a szkriptben mutató hivatkozásokat. Épület, mielőtt a U-SQL-adatbázis a build gép DataRoot mappában található a hivatkozott objektumokat tartalmazó egyező helyi környezet beállítása. Is kezelheti a adatbázis függőségek szerint [hivatkozik egy U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild csak adatbázis-objektum hivatkozik rá, fájlok nem ellenőrzi.
-* **EnableDeployment = true** vagy **hamis**. EnableDeployment azt jelzi, ha engedélyezett üzembe helyezése a hivatkozott U-SQL-adatbázisok az összeállítási folyamat során. Hivatkozhat egy U-SQL database-projektet, és az adatbázis-objektumok használata a U-SQL-szkript, ha a paraméter értéke **igaz**.
+* **USQLSDKPath=\<U-SQL Nuget csomag>\build\runtime**. Ez a paraméter az U-SQL nyelvi szolgáltatás NuGet csomagjának telepítési útvonalára hivatkozik.
+* **USQLTargetType=Merge vagy SyntaxCheck**:
+    * **Egyesítés**. Az Egyesítési mód lefordítja a mögötti kódfájlokat. Ilyenek például **a .cs**, **.py**és **.r** fájlok. Az eredményül kapott felhasználó által definiált kódkönyvtárat az U-SQL parancsfájlba inlinek. Ilyenek például a dll bináris, Python vagy R-kód.
+    * **Szintaxisellenőrzése**. A SyntaxCheck mód először egyesíti a mögötti kódfájlokat az U-SQL parancsfájlba. Ezután lefordítja az U-SQL parancsfájlt a kód érvényesítéséhez.
+* **DataRoot=\<DataRoot elérési út>. ** A DataRoot csak syntaxCheck módban szükséges. Amikor syntaxCheck móddal építi fel a parancsfájlt, az MSBuild ellenőrzi a parancsfájlban lévő adatbázis-objektumokra mutató hivatkozásokat. A létrehozás előtt állítson be egy megfelelő helyi környezetet, amely a buildgép DataRoot mappájában található U-SQL adatbázis hivatkozott objektumait tartalmazza. Ezeket az adatbázis-függőségeket [egy U-SQL adatbázis-projektre hivatkozva](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)is kezelheti. Az MSBuild csak az adatbázis-objektumhivatkozásokat ellenőrzi, a fájlokat nem.
+* **EnableDeployment=true** vagy **false**. EnableDeployment jelzi, ha a hivatkozott U-SQL-adatbázisok telepítése a létrehozási folyamat során engedélyezett. Ha u-SQL adatbázis-projektre hivatkozik, és felhasználja az U-SQL parancsfájladatbázis-objektumait, állítsa ezt a paramétert **true**értékre.
 
-### <a name="continuous-integration-through-azure-pipelines"></a>Folyamatos integráció révén az Azure-folyamatok
+### <a name="continuous-integration-through-azure-pipelines"></a>Folyamatos integráció az Azure-folyamatokon keresztül
 
-A parancssor mellett is használhatja a Visual Studio-Build vagy az MSBuild feladat létrehozásához U-SQL-projektek Azure folyamatokban. A buildelési folyamat beállítása, hogy ne felejtse el hozzáadni a két feladatot a buildelési folyamat: NuGet visszaállítási feladat és a egy MSBuild feladatot.
+A parancssor mellett a Visual Studio Build vagy egy MSBuild feladat segítségével is létrehozhat U-SQL-projekteket az Azure Pipelines-ban. Build-folyamat beállításához győződjön meg arról, hogy két feladatot ad hozzá a buildfolyamathoz: egy NuGet-visszaállítási feladatot és egy MSBuild feladatot.
 
-![MSBuild-feladat U-SQL projekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+![MSTevékenység létrehozása U-SQL projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  Adja hozzá a megoldás által hivatkozott NuGet-csomagot, amely tartalmazza az első NuGet visszaállítási feladat `Azure.DataLake.USQL.SDK`, hogy az MSBuild megtalálhatja a U-SQL nyelv célokat. Állítsa be **speciális** > **célkönyvtárban duplikátum** való `$(Build.SourcesDirectory)/packages` Ha közvetlenül a 2. lépésben az MSBuild-argumentumok minta használni szeretne.
+1.  NuGet-visszaállítási feladat hozzáadásával leszeretné kelni a `Azure.DataLake.USQL.SDK`megoldásra hivatkozott NuGet csomagot, amely tartalmazza a t, hogy az MSBuild megtalálja az U-SQL nyelvi célokat. Állítsa **az** > Advanced `$(Build.SourcesDirectory)/packages` Destination**könyvtárat,** ha az MSBuild argumentumok mintáját közvetlenül a 2.
 
-    ![U-SQL projekt NuGet-visszaállítási feladat](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+    ![NuGet visszaállítási feladat egy U-SQL projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  Állítsa be MSBuild-argumentumok a Visual Studio build tools vagy az MSBuild feladat a következő példában látható módon. Vagy ezek az argumentumok változóival adhatja meg az Azure-folyamatok buildelési folyamat.
+2.  MsBuild argumentumok beállítása a Visual Studio buildeszközeiben vagy egy MSBuild feladatban az alábbi példában látható módon. Vagy ezekhez az argumentumokhoz változókat definiálhat az Azure-folyamatok buildfolyamatában.
 
-    ![U-SQL projekt CI/CD MSBuild változókat határozhat meg](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
+    ![CI/CD MSBuild változók definiálása U-SQL projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
     ```
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
-### <a name="u-sql-project-build-output"></a>U-SQL projekt felépítési művelet kimenetében
+### <a name="u-sql-project-build-output"></a>U-SQL projektbuild kimenet
 
-Miután lefuttatta a build, az összes parancsfájl a U-SQL projekt fejlesztett és nevű zip-fájlba való `USQLProjectName.usqlpack`. A mappastruktúra a projektben a tömörített felépítési művelet kimenetében másolatok.
+A build futtatása után az U-SQL projekt összes parancsfájlja létrejöjjön, és egy zip nevű fájlba adja ki a kimenetet. `USQLProjectName.usqlpack` A projekt mappastruktúrája a tömörített build kimenetben marad.
 
 > [!NOTE]
 >
-> Háttérkód fájlok az egyes U-SQL-szkript, parancsfájl kimenete egy beágyazott utasítást összevonva fogja tartalmazni.
+> Az egyes U-SQL-parancsfájlok háttérkódfájljai szövegközi utasításként egyesülnek a parancsfájl buildkimenetéhez.
 >
 
-## <a name="test-u-sql-scripts"></a>U-SQL-parancsfájlok tesztelése
+## <a name="test-u-sql-scripts"></a>U-SQL-szkriptek tesztelése
 
-Az Azure Data Lake U-SQL-parancsfájlok és C# UDO/UDAG/UDF tesztelési projekt tartalmazza:
-* Ismerje meg, hogyan [vizsgálati eset a U-SQL-parancsfájlok és a kiterjesztett C#-kód hozzáadása](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
-* Ismerje meg, hogyan [vizsgálati eset futtatása az Azure-folyamatok](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops).
+Az Azure Data Lake tesztprojekteket biztosít u-SQL-parancsfájlok és C# UDO/UDAG/UDF:
+* További információ az [U-SQL-parancsfájlok és a kiterjesztett C# kód teszteseteinek hozzáadásáról.](data-lake-analytics-cicd-test.md#test-u-sql-scripts)
+* Ismerje meg, hogyan [futtathat teszteseteket az Azure Pipelines-ban.](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops)
 
-## <a name="deploy-a-u-sql-job"></a>A U-SQL-feladat telepítése
+## <a name="deploy-a-u-sql-job"></a>U-SQL-feladat telepítése
 
-Miután ellenőrizte a kódot a build és a vizsgálati folyamat során, elküldheti a közvetlenül az Azure-folyamatok keresztül az Azure PowerShell-feladat U-SQL feladatok. A szkript üzembe helyezése az Azure Data Lake Store vagy az Azure Blob storage- és [az ütemezett feladatok futtatása az Azure Data factoryvel](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
+Miután ellenőrizte a kódot a létrehozási és tesztelési folyamat során, elküldheti az U-SQL-feladatokat közvetlenül az Azure Pipelines-ból egy Azure PowerShell-feladaton keresztül. A parancsfájlt az Azure Data Lake Store vagy az Azure Blob storage-ba is telepítheti, és [az Azure Data Factory-n keresztül futtathatja az ütemezett feladatokat.](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 
-### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>Az Azure-folyamatok keretében U-SQL-feladatok elküldése
+### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>U-SQL-feladatok küldése az Azure-folyamatokon keresztül
 
-A build kimenetét a U-SQL projekt egy zip-fájl neve **USQLProjectName.usqlpack**. A zip-fájl tartalmazza a projekt összes U-SQL-parancsfájlok. Használhatja a [Azure PowerShell-lel feladat](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) közvetlenül az Azure-folyamatok U-SQL-feladatok elküldése a következő PowerShell-parancsfájlt a folyamatokban.
+Az U-SQL projekt buildkimenete egy **USQLProjectName.usqlpack**nevű zip fájl. A zip fájl tartalmazza az összes U-SQL szkriptek a projektben. Használhatja az [Azure PowerShell-feladatot](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) a folyamatokban a következő minta PowerShell-parancsfájllal, hogy u-SQL-feladatokat küldjön közvetlenül az Azure Pipelines-ból.
 
 ```powershell
 <#
@@ -230,11 +230,11 @@ Function Main()
 Main
 ```
 
-### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Azure Data factoryvel U-SQL feladatok üzembe helyezése
+### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>U-SQL-feladatok telepítése az Azure Data Factory-n keresztül
 
-U-SQL feladatok közvetlenül az Azure-folyamatok küldhet. A kész parancsprogramok feltöltheti az Azure Data Lake Store vagy az Azure Blob storage- vagy és [az ütemezett feladatok futtatása az Azure Data factoryvel](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics).
+Az U-SQL-feladatokat közvetlenül az Azure Pipelines-ból küldheti el. Vagy feltöltheti a beépített parancsfájlokat az Azure Data Lake Store vagy az Azure Blob storage szolgáltatásba, és [futtathatja az ütemezett feladatokat az Azure Data Factory-n keresztül.](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 
-Használja a [Azure PowerShell-lel feladat](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) a U-SQL-parancsfájlokat tölthet fel egy Azure Data Lake Store-fiókot a következő PowerShell-parancsfájlt az Azure-folyamatokban:
+Használja az [Azure PowerShell-feladatot](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts) az Azure-folyamatokban a következő PowerShell-parancsfájlokkal az U-SQL-parancsfájlok feltöltéséhez egy Azure Data Lake Áruházbeli fiókba:
 
 ```powershell
 <#
@@ -292,17 +292,17 @@ Function GetUsqlFiles()
 UploadResources
 ```
 
-## <a name="cicd-for-a-u-sql-database"></a>CI/CD-U-SQL-adatbázis
+## <a name="cicd-for-a-u-sql-database"></a>CI/CD U-SQL adatbázishoz
 
-Az Azure Data Lake Tools for Visual Studio biztosít a U-SQL database projektsablonjai, amelyek segítségével fejlesztése, kezelése és üzembe helyezése a U-SQL-adatbázisok. Tudjon meg többet a [U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+Az Azure Data Lake Tools for Visual Studio U-SQL adatbázis-projektsablonokat biztosít, amelyek segítségével fejlesztheti, kezelheti és telepítheti az U-SQL-adatbázisokat. További információ az [U-SQL adatbázis-projektekről.](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 
-## <a name="build-u-sql-database-project"></a>U-SQL database-projekt létrehozása
+## <a name="build-u-sql-database-project"></a>U-SQL adatbázis-projekt létrehozása
 
-### <a name="get-the-nuget-package"></a>A NuGet-csomag beszerzése
+### <a name="get-the-nuget-package"></a>Szerezd meg a NuGet csomagot
 
-MSBuild nem beépített támogatást nyújt a U-SQL database-projektek. Első ezt a lehetőséget, adjon hozzá egy hivatkozást a megoldáshoz való kell a [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet-csomagot, amely hozzáadja a szükséges nyelvi szolgáltatás.
+Az MSBuild nem nyújt beépített támogatást az U-SQL adatbázis-projektekhez. Ennek a képességnek a megsegítéséhez hozzá kell adnia egy hivatkozást a megoldáshoz a [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet csomaghoz, amely hozzáadja a szükséges nyelvi szolgáltatást.
 
-A NuGet-csomag hivatkozás hozzáadásához kattintson a jobb gombbal a megoldást a Visual Studio Megoldáskezelőjében. Válasszon **NuGet-csomagok kezelése**. Majd keresse meg és telepítse a NuGet-csomagot. Hozzáadhat egy nevű fájlt, vagy **packages.config** a megoldás mappában, és a put, a következő részből álló tartalmat a fájlba:
+A NuGet csomaghivatkozás hozzáadásához kattintson a jobb gombbal a megoldásra a Visual Studio Solution Explorer alkalmazásban. Válassza **a NuGet-csomagok kezelése**lehetőséget. Ezután keresse meg és telepítse a NuGet csomagot. Vagy hozzáadhat egy **packages.config** nevű fájlt a megoldás mappába, és a következő tartalmat helyezheti el benne:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -311,59 +311,59 @@ A NuGet-csomag hivatkozás hozzáadásához kattintson a jobb gombbal a megoldá
 </packages>
 ```
 
-### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>U-SQL az MSBuild parancssorral adatbázis a projekt létrehozása
+### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>Az U-SQL adatbázis-projektjének létrehozása az MSBuild parancssorból
 
-A U-SQL database-projekt létrehozásához, a standard szintű MSBuild parancssor hívja, és adja át a U-SQL SDK NuGet-csomag hivatkozás a további argumentumként. Lásd a következő példát: 
+Az U-SQL adatbázis-projekt létrehozásához hívja meg a szabványos MSBuild parancssort, és adja át az U-SQL SDK NuGet csomaghivatkozást további argumentumként. Lásd a következő példát: 
 
 ```
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
-Az argumentum `USQLSDKPath=<U-SQL Nuget package>\build\runtime` telepítési elérési útját a NuGet-csomagot a U-SQL nyelvi szolgáltatás hivatkozik.
+Az `USQLSDKPath=<U-SQL Nuget package>\build\runtime` argumentum az U-SQL nyelvi szolgáltatás NuGet csomagjának telepítési útvonalára hivatkozik.
 
-### <a name="continuous-integration-with-azure-pipelines"></a>Folyamatos integráció Azure folyamatok
+### <a name="continuous-integration-with-azure-pipelines"></a>Folyamatos integráció az Azure Pipelinesszal
 
-A parancssor mellett használhatja a Visual Studio Build vagy egy MSBuild feladat létrehozásához U-SQL database-projektek az Azure-folyamatok. Szeretne beállítani egy összeállítási feladat, ne felejtse el hozzáadni a két feladatot a buildelési folyamat: NuGet visszaállítási feladat és a egy MSBuild feladatot.
+A parancssor mellett a Visual Studio Build vagy egy MSBuild feladat segítségével u-SQL adatbázis-projekteket hozhat létre az Azure Pipelines-ban. Buildfeladat beállításához győződjön meg arról, hogy két feladatot ad hozzá a buildfolyamathoz: egy NuGet-visszaállítási feladatot és egy MSBuild feladatot.
 
-   ![CI/CD MSBuild feladat U-SQL projekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+   ![CI/CD MSFeladat létrehozása U-SQL projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1. Adja hozzá a NuGet visszaállítási feladat lekérése a megoldás hivatkozott NuGet-csomagot, amely tartalmazza a `Azure.DataLake.USQL.SDK`, hogy az MSBuild megtalálhatja a U-SQL nyelv célokat. Állítsa be **speciális** > **célkönyvtárban duplikátum** való `$(Build.SourcesDirectory)/packages` Ha közvetlenül a 2. lépésben az MSBuild-argumentumok minta használni szeretne.
+1. NuGet-visszaállítási feladat hozzáadásával leszeretné kelni a `Azure.DataLake.USQL.SDK`megoldásra hivatkozott NuGet csomagot, amely tartalmazza a t, hogy az MSBuild megtalálja az U-SQL nyelvi célokat. Állítsa **az** > Advanced `$(Build.SourcesDirectory)/packages` Destination**könyvtárat,** ha az MSBuild argumentumok mintáját közvetlenül a 2.
 
-   ![CI/CD NuGet-feladat U-SQL projekt](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+   ![CI/CD NuGet feladat egy U-SQL projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2. Állítsa be MSBuild-argumentumok a Visual Studio build tools vagy az MSBuild feladat a következő példában látható módon. Vagy ezek az argumentumok változóival adhatja meg az Azure-folyamatok buildelési folyamat.
+2. MsBuild argumentumok beállítása a Visual Studio buildeszközeiben vagy egy MSBuild feladatban az alábbi példában látható módon. Vagy ezekhez az argumentumokhoz változókat definiálhat az Azure-folyamatok buildfolyamatában.
 
-   ![U-SQL-adatbázis projekt CI/CD MSBuild változókat határozhat meg](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![CI/CD MSDefiniálÁs Változók létrehozása U-SQL adatbázis-projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
    ```
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
  
-### <a name="u-sql-database-project-build-output"></a>U-SQL database projekt felépítési művelet kimenetében
+### <a name="u-sql-database-project-build-output"></a>U-SQL adatbázis-projekt build kimenete
 
-A U-SQL database-projekt van egy U-SQL-adatbázis központi telepítési csomagot, az utótag nevű kimeneti build `.usqldbpack`. A `.usqldbpack` csomag egy zip-fájlt, amely tartalmazza az összes DDL-utasítást egy U-SQL parancsfájl egy DDL-mappában. Ez tartalmazza az összes **.dll** és további fájlokat egy ideiglenes mappába a szerelvény.
+Az U-SQL adatbázis-projekt buildkimenete egy U-SQL adatbázis-telepítési csomag, amelynek neve az utótaggal van elnevezve. `.usqldbpack` A `.usqldbpack` csomag egy zip fájl, amely tartalmazza az összes DDL utasítást egyetlen U-SQL parancsfájlban egy DDL mappában. Ez magában foglalja az összes **.dlls** és további fájlokat összeszerelés egy ideiglenes mappában.
 
-## <a name="test-table-valued-functions-and-stored-procedures"></a>Táblázat értékű függvények és tárolt eljárások tesztelése
+## <a name="test-table-valued-functions-and-stored-procedures"></a>Teszttábla-értékű függvények és tárolt eljárások
 
-A táblázat értékű függvények és tárolt eljárások teszteseteket közvetlenül hozzáadása jelenleg nem támogatott. Áthidaló megoldásként létrehozhat egy U-SQL projekt, amely rendelkezik a U-SQL-parancsfájlok meg az ezekhez a függvényekhez teszteseteket írni a számukra. A következő lépésekkel állíthatja be a táblázat értékű függvények és tárolt eljárások a U-SQL-adatbázis projektben meghatározott esetek:
+A táblaértékű függvényekhez és a tárolt eljárásokhoz való tesztesetek hozzáadása jelenleg nem támogatott. Kerülő megoldásként létrehozhat egy U-SQL-projektet, amely U-SQL parancsfájlokkal rendelkezik, amelyek meghívják ezeket a függvényeket, és teszteseteket írnak nekik. A következő lépésekkel állítsa be a táblaértékű függvények és az U-SQL adatbázis-projektben definiált tárolt eljárások teszteseteit:
 
-1.  Hozzon létre egy U-SQL projekt tesztelési célokra, és a táblázat értékű függvények és tárolt eljárások hívása U-SQL-parancsfájlokat írhat.
-2.  Vegyen fel egy adatbázis hivatkozást a U-SQL projekt. A táblázat értékű függvény és a tárolt eljárás definíció lekéréséhez, hivatkoznia kell az adatbázis-projektje, amely tartalmazza a DDL-utasítást. Tudjon meg többet [adatbázis-hivatkozások](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
-3.  Adja hozzá a U-SQL-parancsprogramokat, táblázat értékű függvények és tárolt eljárások hívása vizsgálati eset. Ismerje meg, hogyan [adja hozzá a U-SQL-parancsfájlok esetek](data-lake-analytics-cicd-test.md#test-u-sql-scripts).
+1.  Hozzon létre egy U-SQL projektet tesztelési célokra, és írjon U-SQL parancsfájlokat, amelyek meghívják a tábla értékű függvényeket és a tárolt eljárásokat.
+2.  Adatbázis-hivatkozás hozzáadása az U-SQL projekthez. A táblaértékű függvény és a tárolt eljárásdefiníció lekért szeretné, hivatkoznia kell a DDL utasítást tartalmazó adatbázisprojektre. További információ az [adatbázis-referenciákról.](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)
+3.  Adja meg a teszteseteket az U-SQL parancsfájlokhoz, amelyek táblaértékű függvényeket és tárolt eljárásokat hívnak meg. További információ az [U-SQL-parancsfájlok teszteseteinek hozzáadásáról.](data-lake-analytics-cicd-test.md#test-u-sql-scripts)
 
-## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Az Azure-folyamatok keretében U-SQL-adatbázis üzembe helyezése
+## <a name="deploy-u-sql-database-through-azure-pipelines"></a>U-SQL-adatbázis telepítése az Azure-folyamatokon keresztül
 
-`PackageDeploymentTool.exe` biztosítja a programozás és parancssori felületek, amelyek segítenek a U-SQL-adatbázis központi telepítési csomagok üzembe helyezése **.usqldbpack**. Az SDK tartalmazza a [U-SQL SDK NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), a következő helyen található **build/runtime/PackageDeploymentTool.exe**. Használatával `PackageDeploymentTool.exe`, telepítheti a U-SQL-adatbázisok az Azure Data Lake Analytics és a helyi fiókok.
+`PackageDeploymentTool.exe`biztosítja a programozási és parancssori felületeket, amelyek segítenek az U-SQL adatbázis-telepítési csomagok telepítésében, **.usqldbpack**. Az SDK az [U-SQL SDK NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)része, amely a **build/runtime/PackageDeploymentTool.exe fájl/futásidejű/packagedeploymenttool.exe helyen**található. A `PackageDeploymentTool.exe`használatával a használatával u-SQL adatbázisok at telepítheti az Azure Data Lake Analytics és a helyi fiókok.
 
 > [!NOTE]
 >
-> A U-SQL-adatbázis üzembe helyezése folyamatban a PowerShell parancssori támogatással és a feladatkiadási tevékenység Azure folyamatok támogatása.
+> A PowerShell parancssori támogatása és az Azure Pipelines kiadási feladattámogatása az U-SQL-adatbázis üzembe helyezéséhez jelenleg függőben van.
 >
 
-Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyamatok beállítása:
+Az alábbi lépésekkel hozzon létre egy adatbázis-telepítési feladatot az Azure-folyamatokban:
 
-1. PowerShell-parancsprogram feladat hozzáadása a build vagy kibocsátásában, és hajtsa végre a következő PowerShell-parancsfájlt. Ez a feladat segít az Azure SDK-függőségek első `PackageDeploymentTool.exe` és `PackageDeploymentTool.exe`. Beállíthatja a **- AzureSDK** és **- DBDeploymentTool** betölteni a függőségeket és a központi telepítési eszköz bizonyos mappákra paramétereket. Adja át a **- AzureSDK** elérési útját `PackageDeploymentTool.exe` , a **- AzureSDKPath** paraméter a 2. lépésben. 
+1. Adjon hozzá egy PowerShell-parancsfájl-feladatot egy build- vagy kiadási folyamathoz, és hajtsa végre a következő PowerShell-parancsfájlt. Ez a feladat segít az Azure `PackageDeploymentTool.exe` SDK-függőségek be- és `PackageDeploymentTool.exe`. Az **-AzureSDK** és a **-DBDeploymentTool** paraméterek et beállíthatja a függőségek és a központi telepítési eszköz adott mappákba való betöltéséhez. Adja át az **-AzureSDK** elérési utat az `PackageDeploymentTool.exe` **-AzureSDKPath** paraméterként a 2. 
 
     ```powershell
     <#
@@ -424,67 +424,67 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Adjon hozzá egy **parancssori feladatot** egy build és kiadás folyamat, és adja meg a szkript hívásával `PackageDeploymentTool.exe`. `PackageDeploymentTool.exe` található a meghatározott alatt **$DBDeploymentTool** mappát. A minta parancsfájl a következőképpen történik: 
+2. Adjon hozzá **egy parancssori feladatot** egy build- vagy `PackageDeploymentTool.exe`kiadási folyamathoz, és töltse ki a parancsfájlt a hívásával. `PackageDeploymentTool.exe`a megadott **$DBDeploymentTool** mappa alatt található. A minta szkript a következő: 
 
-    * U-SQL-adatbázis helyi üzembe helyezése:
+    * U-SQL-adatbázis helyi telepítése:
 
         ```
         PackageDeploymentTool.exe deploylocal -Package <package path> -Database <database name> -DataRoot <data root path>
         ```
 
-    * Interaktív hitelesítés üzemmód használata a U-SQL-adatbázis üzembe helyezése egy Azure Data Lake Analytics-fiókhoz:
+    * Az Interaktív hitelesítési mód használatával telepíthet egy U-SQL-adatbázist egy Azure Data Lake Analytics-fiókba:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
         ```
 
-    * Használat **secrete** U-SQL-adatbázis üzembe helyezése egy Azure Data Lake Analytics-fiókhoz való hitelesítés:
+    * Az U-SQL-adatbázis Azure Data Lake Analytics-fiókba való üzembe helyezéséhez használjon **titkos** hitelesítést:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
-    * Használat **tanúsítványfájl** U-SQL-adatbázis üzembe helyezése egy Azure Data Lake Analytics-fiókhoz való hitelesítés:
+    * A **certFile-hitelesítés** használatával telepíthet egy U-SQL-adatbázist egy Azure Data Lake Analytics-fiókba:
 
         ```
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
-### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>PackageDeploymentTool.exe paraméter leírása
+### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>A PackageDeploymentTool.exe paraméter leírása
 
-#### <a name="common-parameters"></a>Az általános paraméterek
+#### <a name="common-parameters"></a>Gyakori paraméterek
 
 | Paraméter | Leírás | Alapértelmezett érték | Kötelező |
 |---------|-----------|-------------|--------|
-|Csomag|A U-SQL-adatbázis központi telepítési csomag telepítendő elérési útja.|NULL|true|
-|Adatbázis|A telepített vagy létrehozott adatbázis neve.|master|false|
-|LogFile|A fájl elérési útját a naplózást. Alapértelmezés szerint ki (konzol) standard.|NULL|false|
-|LogLevel|Naplózási szint: Részletes, normál, figyelmeztetés vagy hiba.|LogLevel.Normal|false|
+|Csomag|A telepítendő U-SQL-adatbázis központi telepítési csomagjának elérési útja.|null|igaz|
+|Adatbázis|A telepítendő vagy létrehozandó adatbázisnév.|master|hamis|
+|Logfile|A naplózatra szolgáló fájl elérési útja. Alapértelmezés szerint a standard out (konzol).|null|hamis|
+|Naplózási szint|Naplószint: Részletes, Normál, Figyelmeztetés vagy Hiba.|LogLevel.Normál|hamis|
 
-#### <a name="parameter-for-local-deployment"></a>Helyi telepítés paraméter
-
-|Paraméter|Leírás|Alapértelmezett érték|Kötelező|
-|---------|-----------|-------------|--------|
-|DataRoot|A helyi adatok gyökérmappa elérési útja.|NULL|true|
-
-#### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Az Azure Data Lake Analytics üzembe helyezési paraméterek
+#### <a name="parameter-for-local-deployment"></a>Helyi telepítés paramétere
 
 |Paraméter|Leírás|Alapértelmezett érték|Kötelező|
 |---------|-----------|-------------|--------|
-|Fiók|Itt adhatja meg, amely az Azure Data Lake Analytics-fiók telepíteni a fiók nevét.|NULL|true|
-|ResourceGroup|Az Azure erőforráscsoport nevét az Azure Data Lake Analytics-fiók.|NULL|true|
-|SubscriptionId|Az Azure Data Lake Analytics-fiók Azure-előfizetés azonosítója.|NULL|true|
-|Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartománynév. Az előfizetés-kezelési oldalán, az Azure Portalon keresse meg azt.|NULL|true|
-|AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|NULL|true|
-|Interaktív|E interaktív módban használja a hitelesítéshez.|false|false|
-|ClientID|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|NULL|Nem interaktív hitelesítés szükséges.|
-|Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|NULL|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
-|SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|NULL|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
-|Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|NULL|false|
-| JobPrefix | Az előtag, az adatbázis DDL U-SQL feladatok üzembe helyezéséhez. | Deploy_ + DateTime.Now | false |
+|DataRoot|A helyi adatgyökérmappa elérési útja.|null|igaz|
+
+#### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Az Azure Data Lake Analytics telepítésének paraméterei
+
+|Paraméter|Leírás|Alapértelmezett érték|Kötelező|
+|---------|-----------|-------------|--------|
+|Fiók|Megadja, hogy melyik Azure Data Lake Analytics-fiókra telepítse a fiók nevét.|null|igaz|
+|ResourceGroup|Az Azure Data Lake Analytics-fiók Azure-erőforráscsoport neve.|null|igaz|
+|SubscriptionId|Az Azure Data Lake Analytics-fiók Azure-előfizetés-azonosítója.|null|igaz|
+|Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartományneve. Keresse meg az előfizetés-felügyeleti lapon az Azure Portalon.|null|igaz|
+|AzureSDKPath|A függő szerelvények azure SDK-ban való keresésének elérési útja.|null|igaz|
+|Interaktív|A hitelesítéshez az interaktív mód használata.|hamis|hamis|
+|ClientID|Az Azure AD alkalmazásazonosító ja nem interaktív hitelesítéshez szükséges.|null|Nem interaktív hitelesítéshez szükséges.|
+|Titkos|A nem interaktív hitelesítés titkos sága vagy jelszava. Csak megbízható és biztonságos környezetben használható.|null|A nem interaktív hitelesítéshez szükséges, vagy használja a SecreteFile fájlt.|
+|Titkos fájl|A fájl menti a titkos kulcsot vagy a jelszót a nem interaktív hitelesítéshez. Ügyeljen arra, hogy csak az aktuális felhasználó legyen olvasható.|null|Nem interaktív hitelesítéshez szükséges, vagy használja a Titkos kulcsot.|
+|Bizonyítványfájl|A fájl elmenti az X.509 tanúsítványt a nem interaktív hitelesítéshez. Az alapértelmezett beállítás az ügyféltitkos hitelesítés használata.|null|hamis|
+| JobPrefix | Az U-SQL DDL-feladat adatbázis-központi telepítésének előtagja. | Deploy_ + DateTime.Now | hamis |
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md).
-- [U-SQL-szkript futtatása helyi gépen](data-lake-analytics-data-lake-tools-local-run.md).
-- [U-SQL adatbázis projekt használata a U-SQL-adatbázis fejleszthet](data-lake-analytics-data-lake-tools-develop-usql-database.md).
+- [Az Azure Data Lake Analytics-kód tesztelése.](data-lake-analytics-cicd-test.md)
+- [Futtassa az U-SQL parancsfájlt a helyi számítógépen.](data-lake-analytics-data-lake-tools-local-run.md)
+- [U-SQL adatbázis-projekt használata U-SQL adatbázis fejlesztéséhez.](data-lake-analytics-data-lake-tools-develop-usql-database.md)

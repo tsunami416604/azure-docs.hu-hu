@@ -1,6 +1,6 @@
 ---
-title: Átjárók alsóbb rétegbeli eszközökhöz – Azure IoT Edge | Microsoft Docs
-description: A Azure IoT Edge használatával olyan transzparens, átlátszatlan vagy proxy átjárót hozhat létre, amely több alsóbb rétegbeli eszközről küld adatokat a felhőbe, vagy helyileg dolgozza fel azokat.
+title: Átjárók alsóbb rétegbeli eszközökhöz - Azure IoT Edge | Microsoft dokumentumok
+description: Az Azure IoT Edge használatával átlátható, átlátszatlan vagy proxyátjáró-eszközt hozhat létre, amely több alsóbb rétegbeli eszközről küld adatokat a felhőbe, vagy helyileg dolgozza fel azt.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,56 +9,56 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: cbca0c2509e74a7debf5ba26b361c79b9b208f08
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76547115"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge-eszköz használata átjáróként
 
-Az IoT Edge-megoldások átjárói az eszköz kapcsolatát és az Edge Analytics szolgáltatást biztosítják, hogy IoT azokat az eszközöket, amelyek egyébként nem rendelkeznek ilyen képességekkel. Azure IoT Edge a IoT-átjárók bármilyen igényének kielégítésére használható, függetlenül attól, hogy kapcsolódik-e a kapcsolathoz, az identitáshoz vagy a peremhálózati elemzésekhez. A cikkben szereplő átjárói minták csak az alsóbb rétegbeli eszköz kapcsolatának és az eszköz identitásának jellemzőire vonatkoznak, nem az eszköz adatainak feldolgozására az átjárón.
+Az IoT Edge-megoldások átjárói eszközkapcsolatot és peremhálózati elemzést biztosítanak olyan IoT-eszközökhöz, amelyek egyébként nem rendelkeznek ezekkel a képességekkel. Az Azure IoT Edge használható az IoT-átjáró iránti bármilyen igény kielégítésére, függetlenül attól, hogy az kapcsolattal, identitással vagy peremhálózati elemzéssel kapcsolatos. Ebben a cikkben az átjáróminták csak az alsóbb rétegbeli eszközkapcsolat és az eszközidentitás jellemzőire vonatkoznak, az átjárón az eszközadatok feldolgozásának módjára nem.
 
 ## <a name="patterns"></a>Minták
 
-Az IoT Edge eszköz átjáróként való használatának három mintája van: transzparens, protokoll fordítása és az identitás fordítása:
+Az IoT Edge-eszközök átjáróként való használatának három mintázata létezik: átlátszó, protokollfordítás és identitásfordítás:
 
-* **Transzparens** – azok az eszközök, amelyek elméletileg csatlakozhatnak IoT hub csatlakozhatnak egy átjáró-eszközhöz. Az alsóbb rétegbeli eszközök saját IoT Hub identitással rendelkeznek, és a MQTT, a AMQP vagy a HTTP protokollt használják. Az átjáró egyszerűen továbbítja az eszközök és a IoT Hub közötti kommunikációt. Az eszközök és a velük kommunikáló felhasználók IoT Hub nem biztos, hogy az átjáró közvetíti a kommunikációt. Ez a tájékoztatás hiánya azt jelenti, hogy az átjáró *transzparensnek*tekintendő. A IoT Edge-eszköz transzparens átjáróként való használatával kapcsolatos részletekért lásd: [transzparens átjáró létrehozása](how-to-create-transparent-gateway.md) .
-* **Protokoll fordítása** – más néven átlátszatlan átjáró mintája, a MQTT, a AMQP vagy a http-t nem támogató eszközök egy átjáró-eszköz használatával küldhetnek adatIoT Hubt a nevükben. Az átjáró megérti az alárendelt eszközök által használt protokollt, és az egyetlen olyan eszköz, amely IoT Hub identitással rendelkezik. Minden információ úgy tűnik, hogy egy eszközről, az átjáróról származik. Az alárendelt eszközöknek további azonosítási információkat kell tartalmazniuk az üzeneteiben, ha a Felhőbeli alkalmazások eszközönkénti alapon szeretnék elemezni az adatokat. Emellett a IoT Hub primitívek, például az ikrek és a metódusok csak az átjáró-eszközhöz érhetők el, nem az alsóbb rétegbeli eszközökhöz.
-* **Identitás fordítása** – az IoT hubhoz nem csatlakoztatható eszközök nem tudnak csatlakozni az átjáró-eszközökhöz. Az átjáró IoT Hub identitást és a protokoll fordítását biztosítja az alárendelt eszközök nevében. Az átjáró elég intelligens ahhoz, hogy tisztában legyen az alsóbb rétegbeli eszközök által használt protokollal, megismertesse azokat az identitással, és lefordítsa IoT Hub primitíveket. Az alsóbb szintű eszközök IoT Hub az ikrek és a metódusok első osztályú eszközeiként jelennek meg. A felhasználók kezelhetik IoT Hub eszközeit, és nem ismerik a köztes átjáró eszközét.
+* **Átlátszó** – Eszközök, amelyek elméletileg csatlakozhatnak az IoT Hub csatlakozhat egy átjáró eszköz helyett. Az alsóbb rétegbeli eszközök saját IoT Hub-identitással rendelkeznek, és az MQTT, Az AMQP vagy a HTTP protokollok bármelyikét használják. Az átjáró egyszerűen továbbítja az eszközök és az IoT Hub közötti kommunikációt. Az eszközök és a felhasználók az IoT Hubon keresztül kommunikálnak velük, és nincsenek tudatában annak, hogy egy átjáró közvetíti a kommunikációjukat. Ez a tudatosság hiánya azt jelenti, hogy a portál *átláthatónak*tekinthető . Tekintse [meg: Egy transzparens átjáró](how-to-create-transparent-gateway.md) létrehozása a részletek hez egy IoT Edge-eszköz átlátszó átjáróként való használatával.
+* **Protokollfordítás** – más néven átlátszatlan átjáróminta, eszközök, amelyek nem támogatják az MQTT, AMQP vagy HTTP segítségével egy átjáró eszköz adatokat küldeni az IoT Hub a nevükben. Az átjáró megérti az alsóbb rétegbeli eszközök által használt protokollt, és az egyetlen olyan eszköz, amely identitással rendelkezik az IoT Hubban. Minden információ úgy néz ki, mintha egy eszközről, az átjáróból érkezne. Az alsóbb rétegbeli eszközöknek további azonosító adatokat kell beágyazniuk az üzeneteikbe, ha a felhőalapú alkalmazások eszközenként szeretnék elemezni az adatokat. Emellett az IoT Hub primitívek, például az ikrek és a módszerek csak az átjáró eszköz, nem alsóbb rétegbeli eszközök.
+* **Identitásfordítás** – Az IoT Hubhoz nem tudó eszközök ehelyett csatlakozhatnak egy átjáróeszközhöz. Az átjáró az IoT Hub identitás- és protokollfordítást biztosít az alsóbb rétegbeli eszközök nevében. Az átjáró elég intelligens ahhoz, hogy megértse az alsóbb rétegbeli eszközök által használt protokollt, identitást biztosítson számukra, és lefordítsa az IoT Hub primitívjeit. Az alsóbb rétegbeli eszközök első osztályú eszközökként jelennek meg az IoT Hubban, ikerpárokkal és módszerekkel. A felhasználó az IoT Hub ban kommunikálhat az eszközökkel, és nincs tisztában a köztes átjáróeszközzel.
 
-![Diagram – transzparens, protokoll és Identity Gateway-minták](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![Diagram – Átlátszó, protokoll- és identitásátjáró-minták](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
-## <a name="use-cases"></a>Használati példák
+## <a name="use-cases"></a>Használati esetek
 
-Az átjáró összes mintázata a következő előnyöket biztosítja:
+Minden átjáróminta a következő előnyöket biztosítja:
 
-* **Elemzések az Edge** -ben – a mesterséges intelligenciát használó eszközök használatával helyileg dolgozhat fel adatokat, anélkül, hogy teljes hűségű telemetria küldene a felhőbe. Megkeresheti és reagálhat helyi elemzésekre, és csak az adathalmazt küldheti IoT Hubba.
-* **Alsóbb rétegbeli eszközök elkülönítése** – az átjáró eszköz az összes alsóbb rétegbeli eszközt megvédi az internet felé. A szolgáltatás olyan hálózati hozzáférési pont között tud ülni, amely nem rendelkezik kapcsolattal és olyan informatikai hálózattal, amely hozzáférést biztosít a webhelyhez.
-* **Kapcsolat – többszörös** használat – az IoT hub IoT Edge átjárón keresztül csatlakozó összes eszköz ugyanazt az alapul szolgáló kapcsolatot használja.
-* **Forgalom simítása** – a IoT Edge eszköz automatikusan végrehajtja az exponenciális leállítási, ha IoT hub szabályozza a forgalmat, miközben az üzeneteket helyileg tartja fenn. Ezzel a megoldással rugalmasan teheti meg a megoldást a forgalomban lévő csúcsokra.
-* **Offline támogatás** – az átjáró eszköz olyan üzeneteket és kettős frissítéseket tárol, amelyek nem továbbíthatók IoT hubba.
+* **Analytics a peremhálózaton** – Az AI-szolgáltatások helyi használatával az alsóbb rétegbeli eszközökről érkező adatok feldolgozásához teljes hűségű telemetriai adatok küldése nélkül a felhőbe. Helyi elemzéseket kereshet és reagálhat, és csak az adatok egy részét küldheti el az IoT Hubnak.
+* **Alsóbb rétegbeli eszköz elkülönítése** – Az átjáró eszköz képes megvédeni az összes downstream eszközök az internetnek való kitettség. Ülhet között OT hálózat, amely nem rendelkezik kapcsolattal, és egy informatikai hálózat, amely hozzáférést biztosít az internethez.
+* **Kapcsolat multiplexelés** – Az IoT Edge-átjárón keresztül az IoT Hubhoz csatlakozó összes eszköz ugyanazt az alapul szolgáló kapcsolatot használja.
+* **Forgalomsimítás** – Az IoT Edge-eszköz automatikusan végrehajtja az exponenciális visszamaradást, ha az IoT Hub szabályozza a forgalmat, miközben helyileg megőrzi az üzeneteket. Ez az előny rugalmassá teszi a megoldást a forgalom csúcsaival szemben.
+* **Offline támogatás** – Az átjáróeszköz tárolja az okat az üzeneteket és az ikerfrissítéseket, amelyek nem kézbesíthetők az IoT Hubra.
 
-A protokollok fordítását végző átjáró a peremhálózat-elemzést, az eszközök elkülönítését, a forgalom simítását és az offline támogatást a meglévő eszközökre és az erőforrás által korlátozott új eszközökre is képes elvégezni. Számos meglévő eszköz olyan adatmennyiséget állít elő, amely az üzleti elemzéseket képes kiszolgálni. azonban nem a Felhőbeli kapcsolattal lettek tervezve. Az átlátszatlan átjárók lehetővé teszik, hogy ezeket az adatfájlokat egy IoT-megoldásban feloldják és használják.
+A protokollfordítást végző átjáró peremhálózati elemzéseket, eszközelkülönítést, forgalomsimítást és offline támogatást is végezhet a meglévő eszközökön és az erőforrások korlátozottan korlátozott eszközein. Számos meglévő eszköz olyan adatokat hoz létre, amelyek üzleti elemzéseket képesek beáramazni; azonban nem a felhőalapú kapcsolatot szem előtt tartva tervezték őket. Az átlátszatlan átjárók lehetővé teszik, hogy ezeket az adatokat feloldják és iot-megoldásban használják.
 
-Az identitások fordítását végző átjáró biztosítja a protokollok fordításának előnyeit, továbbá lehetővé teszi a folyamaton kívüli eszközök teljes kezelhetőségét a felhőből. A IoT-megoldásban lévő összes eszköz megjelenik a IoT Hub az általuk használt protokolltól függetlenül.
+Az identitásfordítást lehetővé thoz óvó átjáró biztosítja a protokollfordítás előnyeit, és emellett lehetővé teszi a felhőből származó alsóbb rétegbeli eszközök teljes körű kezelhetőségét. Az IoT-megoldásban lévő összes eszköz megjelenik az IoT Hubban, függetlenül attól, hogy az általuk használt protokollt használják.All devices in your IoT solution show up in IoT Hub regardless of the protocol they use.
 
-## <a name="cheat-sheet"></a>Adatlap
+## <a name="cheat-sheet"></a>Hasznos tanácsok
 
-Itt található egy gyors Cheat-táblázat, amely összehasonlítja IoT Hub primitíveket transzparens, átlátszatlan (protokoll) és proxy átjárók használata esetén.
+Itt van egy gyors cheat sheet, amely összehasonlítja az IoT Hub primitívek, ha átlátszó, átlátszatlan (protokoll) és proxy átjárók használata.
 
-| &nbsp; | Transzparens átjáró | Protokoll fordítása | Identitás fordítása |
+| &nbsp; | Átlátszó átjáró | Protokoll fordítása | Identitás fordítása |
 |--------|-------------|--------|--------|
-| A IoT Hub Identity registryben tárolt identitások | Az összes csatlakoztatott eszköz identitása | Csak az átjáró eszközének identitása | Az összes csatlakoztatott eszköz identitása |
-| Ikereszközök | Minden csatlakoztatott eszközhöz saját eszköz tartozik | Csak az átjáró rendelkezik egy eszköz és egy modul ikrekkel | Minden csatlakoztatott eszközhöz saját eszköz tartozik |
-| Közvetlen metódusok és a felhőből az eszközre irányuló üzenetek | A felhő minden egyes csatlakoztatott eszközt külön tud kezelni | A felhő csak az átjáró eszközét tudja kezelni | A felhő minden egyes csatlakoztatott eszközt külön tud kezelni |
-| [IoT Hub szabályozások és kvóták](../iot-hub/iot-hub-devguide-quotas-throttling.md) | Alkalmazás minden eszközre | Alkalmazás az átjáró eszközre | Alkalmazás minden eszközre |
+| Az IoT Hub identitásbeállítás-nyilvántartásában tárolt identitások | Az összes csatlakoztatott eszköz identitása | Csak az átjáróeszköz identitása | Az összes csatlakoztatott eszköz identitása |
+| Ikereszközök | Minden csatlakoztatott eszköz saját eszköz iker | Csak az átjáró rendelkezik egy eszköz és modul ikrek | Minden csatlakoztatott eszköz saját eszköz iker |
+| Közvetlen módszerek és felhőből az eszközre irányuló üzenetek | A felhő minden csatlakoztatott eszközt külön-külön kezelhet | A felhő csak az átjáróeszközt tudja megcímezni | A felhő minden csatlakoztatott eszközt külön-külön kezelhet |
+| [Az IoT Hub szabályozása és kvótái](../iot-hub/iot-hub-devguide-quotas-throttling.md) | Alkalmazás minden eszközre | Alkalmazás az átjáróeszközre | Alkalmazás minden eszközre |
 
-Ha átlátszatlan átjáró (protokoll fordítása) mintát használ, az átjárón keresztül csatlakozó összes eszköz ugyanazzal a felhőből az eszközre irányuló várólistára kerül, amely legfeljebb 50 üzenetet tartalmazhat. Ebből következik, hogy az átlátszatlan átjáró mintázatát csak akkor kell használni, ha kevés eszköz csatlakozik az egyes mezők átjáróján, és a felhőből az eszközre irányuló forgalom alacsony.
+Átlátszatlan átjáró (protokollfordítás) minta használata esetén az átjárón keresztül csatlakozó összes eszköz ugyanazt a felhőből az eszközre irányuló várólistát használja, amely legfeljebb 50 üzenetet tartalmazhat. Ebből következik, hogy az átlátszatlan átjárómintát csak akkor kell használni, ha kevés eszköz csatlakozik az egyes helyszíni átjárókon keresztül, és a felhőből az eszközre irányuló forgalom alacsony.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan állíthat be transzparens átjárót:
+További információ az átlátszó átjáró beállításáról:
 
 * [IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez](how-to-create-transparent-gateway.md)
 * [Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon](how-to-authenticate-downstream-device.md)

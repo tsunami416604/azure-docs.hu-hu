@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció módosításának |} A Microsoft Docs'
-description: Az Azure AD Connect szinkronizálása az alapértelmezett konfiguráció módosításának ajánlott eljárásokat biztosít.
+title: 'Azure AD Connect szinkronizálás: Az alapértelmezett konfiguráció módosítása | Microsoft dokumentumok'
+description: Ajánlott eljárások az Azure AD Connect szinkronizálásalapértelmezett konfigurációjának módosításához.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 940a35d89996b1eb9600fe4214863d2b5304750e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60242118"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció módosításának ajánlott eljárásai
-Ez a témakör az a célja, hogy támogatott és nem támogatott az Azure AD Connect szinkronizálási módosításait ismertetik.
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect szinkronizálása: Gyakorlati tanácsok az alapértelmezett konfiguráció módosításához
+Ez a témakör célja az Azure AD Connect szinkronizálástámogatott és nem támogatott módosításai leírása.
 
-Az Azure AD Connect által létrehozott "formájában is működik", amely a helyszíni Active Directory szinkronizálását az Azure AD legtöbb környezet számára. Azonban bizonyos esetekben, szükség egy adott lenne szükség, vagy a követelmény teljesítéséhez konfiguráció egyes módosítások alkalmazásához.
+Az Azure AD Connect által létrehozott konfiguráció "a hogy van" működik a legtöbb olyan környezetben, amely szinkronizálja a helyszíni Active Directoryt az Azure AD-vel. Bizonyos esetekben azonban egy adott igény vagy követelmény kielégítése érdekében néhány módosítást kell alkalmazni a konfigurációban.
 
-## <a name="changes-to-the-service-account"></a>A szolgáltatás fiók módosítása
-Az Azure AD Connect szinkronizálása a telepítési varázsló által létrehozott szolgáltatásfiók alatt fut. Ez a szolgáltatás fiók tárolja a titkosítási kulcsokat a sync által használt adatbázis. A létrehozást és 127 karakter hosszú jelszót, és a jelszó nem járnak le van állítva.
+## <a name="changes-to-the-service-account"></a>A szolgáltatásfiók módosításai
+Az Azure AD Connect szinkronizálása a telepítővarázsló által létrehozott szolgáltatásfiók alatt fut. Ez a szolgáltatásfiók tartalmazza a szinkronizálás által használt adatbázis titkosítási kulcsait. Jön létre egy 127 karakter hosszú jelszót, és a jelszó van beállítva, hogy nem jár le.
 
-* Ez **nem támogatott** módosítása vagy a fiók jelszavának alaphelyzetbe állítása. Így megsemmisít a titkosítási kulcsokat és a szolgáltatás nem tud hozzáférni az adatbázishoz, és nem sikerül elindítani.
+* A szolgáltatásfiók jelszavának módosítása vagy alaphelyzetbe állítása **nem támogatott.** Ezzel elpusztítja a titkosítási kulcsokat, és a szolgáltatás nem tud hozzáférni az adatbázishoz, és nem tud elindítani.
 
 ## <a name="changes-to-the-scheduler"></a>Az ütemező módosításai
-A kiadások, a build 1.1 kezdve (2016. február) konfigurálhatja a [scheduler](how-to-connect-sync-feature-scheduler.md) szeretné, hogy egy másik szinkronizálási ciklust, mint az alapértelmezett 30 perc.
+A build 1.1-es kiadásaival kezdve (2016. február) beállíthatja, hogy az [ütemező](how-to-connect-sync-feature-scheduler.md) az alapértelmezett 30 perctől eltérő szinkronizálási ciklussal rendelkezzen.
 
-## <a name="changes-to-synchronization-rules"></a>Szinkronizálási szabályok módosítása
-A telepítővarázsló biztosít egy konfigurációs fájlját a leggyakoribb forgatókönyvek esetén működik. Abban az esetben módosítania kell a konfigurációt, hogy ezek a szabályok továbbra is fennáll egy támogatott konfigurációra kell követnie.
-
-> [!WARNING]
-> Ha módosítja az alapértelmezett szinkronizálási szabályok majd ezeket a módosításokat felülírja a következő frissítésekor az Azure AD Connect, nem várt és nagy valószínűséggel nem kívánt szinkronizálási eredmények eredményez.
-
-* Is [attribútumfolyamok módosítása](how-to-connect-sync-change-the-configuration.md#other-common-attribute-flow-changes) , ha az alapértelmezett közvetlen attribútumfolyamok nem alkalmasak a szervezet számára.
-* Ha azt szeretné, hogy [attribútum nem flow](how-to-connect-sync-change-the-configuration.md#do-not-flow-an-attribute) , és távolítsa el minden meglévő attribútumértékek az Azure ad-ben, akkor hozzon létre egy szabályt, ehhez a forgatókönyvhöz szükséges.
-* [Egy nemkívánatos szinkronizálási szabály letiltása](#disable-an-unwanted-sync-rule) annak törlése helyett. A rendszer a frissítés során újra szabály törölve.
-* A [az out-of-box szabály módosítása](#change-an-out-of-box-rule), készítsen másolatot az eredeti szabályt kell és out-of-box szabály letiltása. A szinkronizálási Szabályszerkesztő kér, és segítséget.
-* Exportálja a szinkronizálási Szabályszerkesztővel használatával egyéni szinkronizálási szabályait. A szerkesztőben egy PowerShell-parancsprogram segítségével könnyedén létrehozhatja a vész-helyreállítási helyzetekre kínál.
+## <a name="changes-to-synchronization-rules"></a>A szinkronizálási szabályok módosításai
+A telepítővarázsló olyan konfigurációt biztosít, amely a leggyakoribb esetekben is működik. Abban az esetben, ha módosítania kell a konfigurációt, akkor kövesse ezeket a szabályokat, hogy továbbra is támogatott konfigurációval rendelkezik.
 
 > [!WARNING]
-> A beépített szinkronizálási szabályokat rendelkezik egy ujjlenyomatot. Ha egy módosítást hajt végre ezeket a szabályokat, az ujjlenyomat nem egyeznek meg. A jövőben, ha a alkalmazni az Azure AD Connect új kiadása próbál problémák léphetnek fel. Csak módosításokat a leírt módon ebben a cikkben.
+> Ha módosítja az alapértelmezett szinkronizálási szabályokat, majd ezeket a módosításokat a rendszer felülírja az Azure AD Connect következő frissítésekor, ami váratlan és valószínűleg nem kívánt szinkronizálási eredményeket eredményez.
 
-### <a name="disable-an-unwanted-sync-rule"></a>Egy nemkívánatos szinkronizálási szabály letiltása
-Ne törölje az out-of-box szinkronizálási szabály. A rendszer tovább a frissítés során újra.
+* [Módosíthatja az attribútumfolyamatokat,](how-to-connect-sync-change-the-configuration.md#other-common-attribute-flow-changes) ha az alapértelmezett közvetlen attribútumfolyamatok nem megfelelőek a szervezet számára.
+* Ha azt szeretné, hogy [ne folytassa az attribútumot,](how-to-connect-sync-change-the-configuration.md#do-not-flow-an-attribute) és távolítsa el a meglévő attribútumértékeket az Azure AD-ben, majd létre kell hoznia egy szabályt ehhez a forgatókönyvhöz.
+* Törlés helyett [tiltson le egy nem kívánt szinkronizálási szabályt.](#disable-an-unwanted-sync-rule) A törölt szabály újra létrejön a frissítés során.
+* [A beépített szabály módosításához](#change-an-out-of-box-rule)készítsen másolatot az eredeti szabályról, és tiltsa le a beépített szabályt. A Szinkronizálási szabályszerkesztő kéri, és segít.
+* Exportálja az egyéni szinkronizálási szabályokat a Szinkronizálási szabályok szerkesztővel. A szerkesztő egy PowerShell-parancsfájlt biztosít, amelyekkel könnyedén újra létrehozhatja őket egy vész-helyreállítási forgatókönyvben.
 
-Bizonyos esetekben a telepítési varázsló által előállított olyan konfigurációt, amely a topológia nem működik. Például ha egy fiók-erőforrás erdő topológiával rendelkezik, de a sémát a fiókerdőben az Exchange-séma ki van bővítve, majd szabályokat az Exchange-hez jönnek létre az erdő és az erőforráserdőben. Ebben az esetben szükséges a szinkronizálási szabály letiltása az Exchange-hez.
+> [!WARNING]
+> A beépített szinkronizálási szabályok ujjlenyomattal rendelkeznek. Ha módosítja ezeket a szabályokat, az ujjlenyomat már nem egyezik. Előfordulhat, hogy a jövőben problémák merülnek fel, amikor megpróbálja alkalmazni az Azure AD Connect új kiadását. Csak a cikkben leírt módon módosítsa a cikket.
+
+### <a name="disable-an-unwanted-sync-rule"></a>Nem kívánt szinkronizálási szabály letiltása
+Ne töröljön egy beépített szinkronizálási szabályt. A következő frissítés során újra létrejön.
+
+Bizonyos esetekben a telepítővarázsló olyan konfigurációt hozott létre, amely nem működik a topológiában. Ha például rendelkezik egy fiók-erőforrás erdőtopológiával, de a fiókerdő sémáját kiterjesztette az Exchange-sémával, akkor az Exchange-szabályok jönnek létre a fiókerdőhöz és az erőforráserdőhöz. Ebben az esetben le kell tiltania az Exchange szinkronizálási szabályát.
 
 ![Letiltott szinkronizálási szabály](./media/how-to-connect-sync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-A fenti ábrán a telepítési varázsló talált egy régi Exchange 2003 séma fiókerdőben. A séma kiterjesztése lett hozzáadva, mielőtt az erőforráserdőben jelent meg a Fabrikam repülőmotorjai környezetben. Annak érdekében, nincsenek attribútumai a régi Exchange végrehajtását a rendszer szinkronizálja, a szinkronizálási szabályt le kell tiltani látható módon.
+A fenti képen a telepítővarázsló egy régi Exchange 2003-as sémát talált a fiókerdőben. Ez a sémabővítmény az erőforráserdő Fabrikam környezetében való bevezetése előtt lett hozzáadva. Annak érdekében, hogy a régi Exchange-implementáció egyetlen attribútuma se legyen szinkronizálva, a szinkronizálási szabályt le kell tiltani az ábrán látható módon.
 
-### <a name="change-an-out-of-box-rule"></a>-Out-of-box szabály módosítása
-Csak akkor kell megváltoztatnia az out-of-box szabály, amikor meg kell változtatnia a join szabály. Ha egy Attribútumfolyam módosítani szeretné, majd létre kell hoznia egy szinkronizálási szabály a magasabb, mint az out-of-box szabályok. Az egyetlen szabály klónozásához gyakorlatilag szüksége a szabály **az AD - felhasználó csatlakozzon-ből**. Minden más szabállyal, a magasabb prioritású szabályt felül lehet bírálni.
+### <a name="change-an-out-of-box-rule"></a>Beépített szabály módosítása
+Csak akkor kell módosítania egy beépített szabályt, amikor módosítania kell az illesztési szabályt. Ha módosítania kell egy attribútumfolyamatot, akkor hozzon létre egy szinkronizálási szabályt, amelynek magasabb a prioritása, mint a beépített szabályoknak. Az egyetlen szabály, amit gyakorlatilag klónoznia kell, az **AD - User Join**. Az összes többi szabályt felülbírálhatja magasabb prioritási szabállyal.
 
-Ha módosítania kell egy out-of-box szabályt, majd kell másolatot készít az out-of-box szabályt és az eredeti szabály letiltása. A klónozott szabály végezze el a módosításokat. A szinkronizálási Szabályszerkesztő elősegíti az ezeket a lépéseket. Amikor megnyit egy out-of-box szabályt, lehetősége lesz ezen a párbeszédpanelen:  
-![Box szabály kívül figyelmeztetés](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
+Ha módosítania kell egy beépített szabályt, akkor készítsen másolatot a beépített szabályról, és tiltsa le az eredeti szabályt. Ezután hajtsa végre a klónozott szabály módosításait. A szinkronizálási szabályszerkesztő segít a lépések megoldásában. Amikor megnyit egy beépített szabályt, a következő párbeszédpanel jelenik meg:  
+![Figyelmeztetés dobozon kívüli szabály](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-Válassza ki **Igen** másolatot készítsen a szabály. A klónozott szabály nyitja meg.  
+A szabály másolatának létrehozásához válassza az **Igen** lehetőséget. A klónozott szabály ezután megnyílik.  
 ![Klónozott szabály](./media/how-to-connect-sync-best-practices-changing-default-configuration/clonedrule.png)
 
-A klónozott erről a szabályról a hatókör, illesztés és átalakítások végezze el a szükséges módosításokat.
+Ebben a klónozott szabály, hogy a szükséges módosításokat a hatókör, illesztés, és átalakítások.
 
 ## <a name="next-steps"></a>További lépések
-**Áttekintő témakör**
+**Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés a Pythonnal és az Azure Cloud Serviceszel | Microsoft Docs
-description: Annak áttekintése, hogy miként hozhatók létre Azure-felhőszolgáltatások (például webes vagy feldolgozói szerepkörök) a Visual Studióhoz készült Python Tools eszközzel.
+description: Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel.
 services: cloud-services
 documentationcenter: python
 author: tgore03
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360718"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
@@ -25,13 +25,13 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 * [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS)
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] vagy  
 [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] vagy  
-[Azure SDK-eszközök a VS 2017-hoz][Azure SDK Tools for VS 2017]
-* [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5, 32 bites][Python 3.5 32-bit]
+[Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
+* [Python 2.7 32 bites][Python 2.7 32-bit] vagy [Python 3.5 32 bites][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Mik a Python webes és feldolgozói szerepkörök?
-Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps funkció Azure app Service, az][execution model-web sites] [Azure Virtual Machines][execution model-vms]és az [Azure Cloud Services][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
+Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service-ben][execution model-web sites], [Azure Virtual Machines][execution model-vms] és [Azure Cloud Services][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 
@@ -323,9 +323,9 @@ Egy folyamatjelző jelenik meg a kimeneti ablakban, majd megnyílik a Microsoft 
 Az üzembe helyezés néhány percet vesz igénybe, majd a webes és/vagy feldolgozói szerepkörök el is indulnak az Azure-ban!
 
 ### <a name="investigate-logs"></a>Naplók vizsgálata
-A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\\{szerepkör}\LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba található, amely akkor keletkezik, amikor a szkript megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
+A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\\{role}\LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba található, amely akkor keletkezik, amikor a szkript megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A PVTS dokumentációban további információkat találhat a webes és feldolgozói szerepkörök használatáról Python Tools for Visual Studio eszközben:
 
 * [Cloud Service-projektek][Cloud Service Projects]

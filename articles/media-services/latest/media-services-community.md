@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 Közösség áttekintése
-description: Ez a Azure Media Services közösségi oldal a különböző módszereket tárgyalja, amelyekkel kérdéseket tehet fel, visszajelzést adhat, és frissítéseket kaphat a Media Servicesról.
+title: Az Azure Media Services v3-as közösségének áttekintése
+description: Ez az Azure Media Services-közösségi oldal különböző módokon ismerteti a kérdéseket, visszajelzést adhat, és frissítéseket kaphat a Media Services szolgáltatásról.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,38 +14,38 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
 ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545925"
 ---
-# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 Közösség  
+# <a name="azure-media-services-v3-community"></a>Az Azure Media Services v3-as közössége  
 
-Ez a Azure Media Services közösségi oldal a különböző módszereket tárgyalja, amelyekkel kérdéseket tehet fel, visszajelzést adhat, és frissítéseket kaphat a Media Servicesról.
+Ez az Azure Media Services-közösségi oldal különböző módokon ismerteti a kérdéseket, visszajelzést adhat, és frissítéseket kaphat a Media Services szolgáltatásról.
 
-## <a name="provide-feedback-and-make-suggestions"></a>Visszajelzés küldése és javaslatok készítése
+## <a name="provide-feedback-and-make-suggestions"></a>Visszajelzés küldése és javaslatok megküldése
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Vitafórum
+## <a name="discussion"></a>Vita
 
 ### <a name="twitter"></a>Twitter
 
-A [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter-leíróval kapcsolatba léphet velünk, vagy követheti a Twitteren lévő frissítéseket. A Twitteren a [@AzureSupport](https://twitter.com/azuresupport) Twitter-leíró használatával kérhet támogatást.  
+Használhatja a [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter kezelni a kapcsolatot velünk, vagy kövesse a frissítéseket a Twitter. Használja [@AzureSupport](https://twitter.com/azuresupport) a Twitter fogantyút, hogy támogatást kérjen a Twitteren.  
 
 ### <a name="online-forums"></a>Online fórumok
 
-Az alábbi fórumok az aktuális termékekkel és szolgáltatásokkal kapcsolatos kérdéseket tehetnek fel.
+Az aktuális termékekkel és funkciókkal kapcsolatos kérdések feltevésére a következő fórumokon lehet érdeklődni.
 
-Az MSDN jelenleg Media Services csapat elsődleges közösségi fóruma.
+Jelenleg az MSDN a Media Services csapata elsődleges közösségi fóruma.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-A csapat az Azure-Media-Services szolgáltatással Stack Overflow címkézett kérdéseket is figyeli.
+A csapat az "azure-media-services" használatával a Stack Overflow címkével ellátott kérdéseket is figyeli.
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![Stackoverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Azure Media Services áttekintése](media-services-overview.md)
+[Az Azure Media Services áttekintése](media-services-overview.md)
