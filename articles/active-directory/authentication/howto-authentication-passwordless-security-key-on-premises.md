@@ -1,6 +1,6 @@
 ---
-title: Jelszó nélküli biztonsági kulcs bejelentkezés a helyszíni erőforrásokra (előzetes verzió) – Azure Active Directory
-description: Megtudhatja, hogyan engedélyezheti a jelszó nélküli biztonsági kulcsok bejelentkezését a helyszíni erőforrásokra Azure Active Directory használatával (előzetes verzió)
+title: Jelszó nélküli biztonsági kulcs bejelentkezés a helyszíni erőforrásokba (előzetes verzió) – Azure Active Directory
+description: Megtudhatja, hogy miként engedélyezheti a jelszó nélküli biztonsági kulcs bejelentkezését a helyszíni erőforrásokba az Azure Active Directory használatával (előzetes verzió)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,76 +12,76 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b29f84931c169ffe1c2c81d5e32201cbc63fc88
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942877"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezés engedélyezése a helyszíni erőforrásokba az Azure Active Directoryval (előzetes verzió)
 
-Ez a dokumentum az **Azure ad** -hez csatlakoztatott és a **hibrid Azure ad-hez csatlakoztatott** Windows 10 rendszerű eszközökön a helyi erőforrásokhoz való jelszavas hitelesítés engedélyezését összpontosítja. Ez a funkció zökkenőmentes egyszeri bejelentkezést (SSO) biztosít a helyszíni erőforrásokhoz a Microsoft-kompatibilis biztonsági kulcsok használatával.
+Ez a dokumentum arra összpontosít, hogy jelszó nélküli hitelesítést engedélyezaa helyszíni erőforrások környezetekben, mind **az Azure AD csatlakozott,** mind **a hibrid Azure AD csatlakozott** a Windows 10-eszközök. Ez a funkció zökkenőmentes egyszeri bejelentkezést (SSO) biztosít a helyszíni erőforrások számára a Microsoft-kompatibilis biztonsági kulcsok használatával.
 
 |     |
 | --- |
-| A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| A FIDO2 biztonsági kulcsok az Azure Active Directory nyilvános előzetes verziójú szolgáltatásai. Az előzetes verziókról további információt a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz című](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) témakörben talál.|
 |     |
 
-## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Egyszeri bejelentkezés a helyszíni erőforrásokhoz FIDO2-kulcsok használatával
+## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Egyszeri erőforrás a helyszíni erőforrásokhoz FIDO2 kulcsok használatával
 
-Azure Active Directory (AD) kiállíthat egy vagy több Active Directory-tartomány Kerberos-jegyét megadó jegyet (TGT). Ez a funkció lehetővé teszi, hogy a felhasználók modern hitelesítő adatokkal jelentkezzenek be a Windowsba, mint például a FIDO2 biztonsági kulcsai és a hagyományos Active Directory-alapú erőforrások A Kerberos szolgáltatási jegyeit és az engedélyezést továbbra is a helyszíni Active Directory tartományvezérlők ellenőrzik.
+Az Azure Active Directory (AD) kerberos jegymegadási jegyeket (TGT) adhat ki egy vagy több Active Directory-tartományszámára. Ez a funkció lehetővé teszi a felhasználók számára, hogy modern hitelesítő adatokkal, például FIDO2 biztonsági kulcsokkal jelentkezzenek be a Windows rendszerbe, és hozzáférjenek a hagyományos Active Directory-alapú erőforrásokhoz. A Kerberos szolgáltatásjegyeket és az engedélyezést továbbra is a helyszíni Active Directory tartományvezérlők szabályozzák.
 
-Létrejön egy Azure AD Kerberos-kiszolgálói objektum a helyszíni Active Directory, majd biztonságosan közzétéve Azure Active Directory. Az objektum nincs fizikai kiszolgálókhoz társítva. Ez egyszerűen egy olyan erőforrás, amelyet a Azure Active Directory használhat a Active Directory-tartomány Kerberos-TGT létrehozásához.
+Egy Azure AD Kerberos Server objektum jön létre a helyszíni Active Directoryban, majd biztonságosan közzé az Azure Active Directoryban. Az objektum nincs fizikai kiszolgálókhoz társítva. Ez egyszerűen egy olyan erőforrás, amelyet az Azure Active Directory kerberos TGT-k létrehozásához használhat az Active Directory tartományi szolgáltatásokhoz.
 
-![Jegy beszerzése (TGT) az Azure AD-ből és AD DS](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
+![Jegymegadási jegy (TGT) beszerzése az Azure AD-től és az AD DS-ből](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
 
-1. A felhasználó egy FIDO2 biztonsági kulccsal jelentkezik be a Windows 10-es eszközre, és hitelesíti magát az Azure AD-ben.
-1. Az Azure AD ellenőrzi a felhasználó helyszíni AD-tartományának megfelelő Kerberos-kiszolgálói kulcs címtárát.
-   1. Az Azure AD egy Kerberos-TGT hoz létre a felhasználó helyszíni AD-tartományához. A TGT csak a felhasználó SID-azonosítóját tartalmazza. A TGT nem tartalmaz engedélyezési adatértéket.
-1. A TGT az Azure AD elsődleges frissítési jogkivonatával (PRT) együtt visszaadja az ügyfélnek.
-1. Az ügyfélszámítógép kapcsolatba lép egy helyszíni AD-tartományvezérlővel, és a részleges TGT kereskedik egy teljesen formázott TGT.
-1. Az ügyfélgépen már van egy Azure AD-PRT és egy teljes Active Directory TGT, és a Felhőbeli és a helyszíni erőforrások elérésére is képes.
+1. A felhasználó fido2 biztonsági kulccsal jelentkezik be Windows 10-es eszközükre, és hitelesíti magát az Azure AD-ben.
+1. Az Azure AD ellenőrzi a címtárban a felhasználó helyszíni AD-tartományának megfelelő Kerberos-kiszolgálókulcs átnézését.
+   1. Az Azure AD kerberos TGT-t hoz létre a felhasználó helyszíni AD-tartományában. A TGT csak a felhasználó SID-jét tartalmazza. A TGT nem tartalmaz engedélyezési adatokat.
+1. A TGT az Azure AD elsődleges frissítési jogkivonatával (PRT) együtt kerül vissza az ügyfélhez.
+1. Az ügyfélgép kapcsolatba lép egy helyszíni AD-tartományvezérlővel, és elcseréli a részleges TGT-t egy teljesen formázott TGT-re.
+1. Az ügyfélgép most már rendelkezik egy Azure AD PRT-vel és egy teljes Active Directory TGT-vel, és hozzáférhet a felhőbeli és a helyszíni erőforrásokhoz.
 
 ## <a name="requirements"></a>Követelmények
 
-A szervezeteknek el kell végezniük a [jelszó nélküli biztonsági kulcs aláírásának engedélyezése a Windows 10-es eszközökön (előzetes verzió)](howto-authentication-passwordless-security-key.md) a jelen cikkben ismertetett lépések végrehajtása előtt.
+A szervezeteknek a cikkben ismertetett lépések végrehajtása előtt végre kell hajtozniuk a Jelszó nélküli biztonsági kulcs jel engedélyezésének lépéseit a [Windows 10-es eszközökre (előzetes verzió).](howto-authentication-passwordless-security-key.md)
 
-A szervezeteknek a következő szoftverekre vonatkozó követelményeket is meg kell felelniük.
+A szervezeteknek az alábbi szoftverkövetelményeknek is meg kell felelniük.
 
-- Az eszközökön a Windows 10 belső Build 18945-es vagy újabb verziójának kell futnia.
-- A [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)1.4.32.0 vagy újabb verziójának kell lennie.
-  - További információ az elérhető Azure AD hibrid hitelesítési lehetőségekről: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../../security/fundamentals/choose-ad-authn.md) , és [válassza ki, hogy melyik telepítési típust szeretné használni a Azure ad Connecthoz](../hybrid/how-to-connect-install-select-installation.md).
-- A Windows Server-tartományvezérlőkhöz a következő javításokat kell telepíteni:
-    - Windows Server 2016 – https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Windows Server 2019 – https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+- Az eszközöknek Windows 10 Insider Build 18945 vagy újabb rendszert kell futtatniuk.
+- Az [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)1.4.32.0-s vagy újabb verziójával kell rendelkeznie.
+  - A rendelkezésre álló Azure AD hibrid hitelesítési beállításokról az [Azure Active Directory hibrid identitáskezelési megoldásmegfelelő hitelesítési módszerének kiválasztása](../../security/fundamentals/choose-ad-authn.md) és az Azure AD Connect hez használni kívánt telepítési típus kiválasztása című [témakörben](../hybrid/how-to-connect-install-select-installation.md)talál további információt.
+- A Windows Server tartományvezérlőkön telepítve kell lennie a következő javításoknak:
+    - Windows Server 2016 esetén –https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Windows Server 2019 esetén –https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Támogatott esetek
 
-A forgatókönyv az egyszeri bejelentkezést (SSO) is támogatja a következő esetekben:
+A forgatókönyv támogatja az egyszeri bejelentkezést (SSO) mindkét alábbi esetben:
 
-- Felhőbeli erőforrások, például az Office 365 és más SAML-kompatibilis alkalmazások esetében.
-- Helyszíni erőforrásokhoz és a Windows-alapú hitelesítéshez a webhelyek számára. Az erőforrások tartalmazhatnak olyan webhelyeket és SharePoint-webhelyeket, amelyekhez IIS-hitelesítés szükséges, illetve az NTLM-hitelesítést használó erőforrások is.
+- Felhőalapú erőforrások, például az Office 365 és más SAML-kompatibilis alkalmazások esetén.
+- Helyszíni erőforrások és Windows-integrált hitelesítés webhelyeken. Az erőforrások tartalmazhatnak olyan webhelyeket és SharePoint-webhelyeket, amelyek IIS-hitelesítést igényelnek, valamint / vagy ntlm-hitelesítést használó erőforrásokat.
 
 ### <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
-A következő forgatókönyvek nem támogatottak:
+A következő esetekben nem támogatottak:
 
-- Windows Server Active Directory tartományi szolgáltatások (AD DS) tartományhoz csatlakoztatott (csak helyszíni eszközök) központi telepítés.
-- RDP-, VDI-és Citrix-forgatókönyvek biztonsági kulccsal.
-- S/MIME biztonsági kulccsal.
-- "Run as" (Futtatás másként) biztonsági kulcs használatával.
-- Jelentkezzen be egy kiszolgálóra a biztonsági kulcs használatával.
+- A Windows Server Active Directory tartományi szolgáltatások (AD DS) tartomány a központi telepítéshez csatlakozott (csak helyszíni eszközökön).
+- RDP, VDI és Citrix forgatókönyvek biztonsági kulccsal.
+- Biztonsági kulccsal.
+- "Futtatás másként" egy biztonsági kulccsal.
+- Bejelentkezés a kiszolgálóra biztonsági kulccsal.
 
-## <a name="create-kerberos-server-object"></a>Kerberos-kiszolgáló objektum létrehozása
+## <a name="create-kerberos-server-object"></a>Kerberos-kiszolgálóobjektum létrehozása
 
-A rendszergazdák a Azure AD Connect kiszolgáló PowerShell-eszközeivel hozhatnak létre egy Azure AD Kerberos-kiszolgálói objektumot a helyszíni címtárban. Futtassa az alábbi lépéseket a szervezet minden olyan tartományában és erdőben, amely Azure AD-felhasználókat tartalmaz:
+A rendszergazdák az Azure AD Connect-kiszolgálóN i PowerShell-eszközök használatával hoznak létre egy Azure AD Kerberos Server-objektumot a helyszíni címtárban. Futtassa a következő lépéseket a szervezet minden olyan tartományában és erdőjében, amely Az Azure AD-felhasználókat tartalmazza:
 
-1. Frissítsen a Azure AD Connect legújabb verziójára. Az utasítások feltételezik, hogy már konfigurálta Azure AD Connect a hibrid környezet támogatásához.
-1. Nyisson meg egy rendszergazda jogú PowerShell-parancssort a Azure AD Connect-kiszolgálón, és navigáljon a `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
-1. A következő PowerShell-parancsok futtatásával hozzon létre egy új Azure AD Kerberos-kiszolgálói objektumot a helyszíni Active Directory tartományban és Azure Active Directory bérlőben.
+1. Frissítsen az Azure AD Connect legújabb verziójára. Az utasítások feltételezik, hogy már konfigurálta az Azure AD Connectet a hibrid környezet támogatására.
+1. Az Azure AD Connect Server ben nyisson meg egy emelt szintű PowerShell-kérdést, és keresse meg a`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Futtassa a következő PowerShell-parancsokat egy új Azure AD Kerberos-kiszolgálóobjektum létrehozásához a helyszíni Active Directory-tartományban és az Azure Active Directory-bérlőben.
 
 > [!NOTE]
-> Cserélje le a `contoso.corp.com`t a következő példában a helyszíni Active Directory tartománynevére.
+> Cserélje `contoso.corp.com` le a következő példában a helyszíni Active Directory tartománynevét.
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -103,34 +103,34 @@ Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 ### <a name="viewing-and-verifying-the-azure-ad-kerberos-server"></a>Az Azure AD Kerberos-kiszolgáló megtekintése és ellenőrzése
 
-Az újonnan létrehozott Azure AD Kerberos-kiszolgálót az alábbi parancs használatával tekintheti meg és ellenőrizheti:
+Az újonnan létrehozott Azure AD Kerberos-kiszolgálót a következő paranccsal tekintheti meg és ellenőrizheti:
 
 ```powerShell
 Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
-Ez a parancs kiírja az Azure AD Kerberos-kiszolgáló tulajdonságait. A tulajdonságok áttekintésével ellenőrizheti, hogy minden jó sorrendben van-e.
+Ez a parancs az Azure AD Kerberos-kiszolgáló tulajdonságait adja ki. A tulajdonságok áttekintésével ellenőrizheti, hogy minden rendben van-e.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ID | Az AD DS tartományvezérlő objektum egyedi azonosítója. Ezt az azonosítót más néven "slot"-nak vagy "ág-AZONOSÍTÓnak" is nevezzük. |
-| DomainDnsName | A Active Directory-tartomány DNS-tartományneve. |
-| ComputerAccount | Az Azure AD Kerberos-kiszolgáló objektum számítógépfiók-objektuma (a tartományvezérlő). |
-| Felhasználóifiók | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
-| Verziószám | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának verziószáma. A verzió a kulcs létrehozásakor lesz hozzárendelve. Ekkor a rendszer a kulcs elforgatásakor minden alkalommal megnöveli a verziót. A növekmények a replikálási metaadatokon alapulnak, és valószínűleg nagyobbak. A kezdeti *verzió* például *192272*lehet. A kulcs első elforgatásakor a verzió a *212621*-as értékre léphet. A legfontosabb, hogy ellenőrizze, hogy a helyszíni objektum és a *CloudKeyVersion* a Felhőbeli objektumhoz tartozó *verziószáma* azonos-e. |
-| KeyUpdatedOn | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának dátuma és időpontja. |
-| KeyUpdatedFrom | Az a tartományvezérlő, ahol az Azure AD Kerberos-kiszolgáló TGT-titkosítási kulcsa utoljára frissült. |
-| CloudId | Az Azure AD-objektumból származó azonosító. Meg kell egyeznie a fenti AZONOSÍTÓval. |
-| CloudDomainDnsName | Az Azure AD-objektum *DomainDnsName* . Meg kell egyeznie a fenti *DomainDnsName* . |
-| CloudKeyVersion | Az Azure AD-objektum *verziószáma* . A fenti *verziónak* meg kell egyeznie. |
-| CloudKeyUpdatedOn | Az Azure AD-objektum *KeyUpdatedOn* . Meg kell egyeznie a fenti *KeyUpdatedOn* . |
+| ID (Azonosító) | Az AD DS DC-objektum egyedi azonosítója. Ezt az azonosítót néha "bővítőhelynek" vagy "fiókazonosítónak" is nevezik. |
+| DomainDnsName | Az Active Directory tartomány DNS-tartományneve. |
+| Számítógépfiók | Az Azure AD Kerberos Server objektum (a tartományvezérlő) számítógépfiók-objektuma. |
+| Felhasználói fiók | A letiltott felhasználói fiók objektum, amely rendelkezik az Azure AD Kerberos Server TGT titkosítási kulcs. A számla DN-je`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| Kulcsverzió | Az Azure AD Kerberos Server TGT titkosítási kulcs kulcsverziója. A verzió a kulcs létrehozásakor lesz hozzárendelve. A kulcs minden elforgatásakor a verzió minden egyes lépésnél növekszik. A növekmények replikációs metaadatokon alapulnak, és valószínűleg nagyobbak, mint egy. Például, a kezdeti *KeyVersion* lehet *192272*. Az első alkalommal, amikor a kulcs elfordul, a verzió előre *212621*. A fontos dolog, hogy ellenőrizze, hogy a *KeyVersion* a helyszíni objektum és a *CloudKeyVersion* a felhőobjektum ugyanaz. |
+| Kulcsfrissítés | Az Azure AD Kerberos Server TGT titkosítási kulcsának frissítése vagy létrehozása dátuma és időpontja. |
+| KeyUpdatedFrom | A tartományvezérlő, ahol az Azure AD Kerberos Server TGT titkosítási kulcs utoljára frissült. |
+| Felhőazonosító | Az Azure AD-objektum azonosítója. Meg kell egyeznie a fenti azonosítóval. |
+| CloudDomainDnsName | A *DomainDnsName* az Azure AD-objektumból. Meg kell egyeznie a fenti *DomainDnsName.Must* match the DomainDnsName above. |
+| CloudKeyVersion (Felhőkulcs-verzió) | A *KeyVersion* az Azure AD-objektumból. Meg kell egyeznie a fenti *KeyVersion.Must* Match the KeyVersion above. |
+| CloudKeyUpdatedon között | A *KeyUpdatedOn* az Azure AD-objektumból. Meg kell egyeznie a *fenti KeyUpdatedOn.Must* match the KeyUpdatedOn above. |
 
-### <a name="rotating-the-azure-ad-kerberos-server-key"></a>Az Azure AD Kerberos-kiszolgáló kulcsának elforgatása
+### <a name="rotating-the-azure-ad-kerberos-server-key"></a>Az Azure AD Kerberos Server kulcs ának elforgatása
 
-Az Azure AD Kerberos-kiszolgáló titkosítási krbtgt kulcsait rendszeresen el kell forgatni. Azt javasoljuk, hogy kövesse ugyanazt az ütemtervet, amelyet az összes többi Active Directory-tartomány vezérlő krbtgt kulcsának elforgatásához használ.
+Az Azure AD Kerberos Server titkosítási krbtgt kulcsokat kell forgatni rendszeresen. Javasoljuk, hogy kövesse az összes többi Active Directory tartományvezérlő krbtgt kulcs elforgatásához használt ütemezést.
 
 > [!WARNING]
-> Vannak olyan eszközök, amelyek elforgatják a krbtgt kulcsokat, azonban a dokumentumban említett eszközöket kell használniuk az Azure AD Kerberos-kiszolgáló krbtgt kulcsainak elforgatásához. Ez biztosítja, hogy a kulcsok naprakészek legyenek a helyszíni AD-ben és az Azure AD-ben is.
+> Vannak más eszközök, amelyek elforgatják a krbtgt kulcsokat, azonban az ebben a dokumentumban említett eszközökkel kell forgatni az Azure AD Kerberos Server krbtgt kulcsokat. Ez biztosítja, hogy a kulcsok a helyszíni AD és az Azure AD frissítése.
 
 ```powerShell
 Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred -RotateServerKey
@@ -138,67 +138,67 @@ Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 ### <a name="removing-the-azure-ad-kerberos-server"></a>Az Azure AD Kerberos-kiszolgáló eltávolítása
 
-Ha szeretné visszaállítani a forgatókönyvet, és távolítsa el az Azure AD Kerberos-kiszolgálót mind a helyszíni Active Directory, mind Azure Active Directory, futtassa a következő parancsot:
+Ha vissza szeretné állítani a forgatókönyvet, és el szeretné távolítani az Azure AD Kerberos-kiszolgálót a helyszíni Active Directoryból és az Azure Active Directoryból, futtassa a következő parancsot:
 
 ```powerShell
 Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
-### <a name="multi-forest-and-multi-domain-scenarios"></a>Több erdőből és több tartományból álló forgatókönyvek
+### <a name="multi-forest-and-multi-domain-scenarios"></a>Többerdős és többtartományos forgatókönyvek
 
-Az Azure AD Kerberos-kiszolgáló objektum az Azure AD-ben *KerberosDomain* objektumként jelenik meg. Az egyes helyszíni Active Directory tartományok egyetlen *KerberosDomain* -objektumként jelennek meg az Azure ad-ben.
+Az Azure AD Kerberos-kiszolgáló objektum *kerberosdomain* objektumként jelenik meg az Azure AD-ben. Minden helyszíni Active Directory-tartomány egyetlen *KerberosDomain* objektumként jelenik meg az Azure AD-ben.
 
-A szervezete például Active Directory erdőben két tartománnyal rendelkezik, `contoso.com` és `fabrikam.com`. Ha úgy dönt, hogy engedélyezi az Azure AD számára a teljes erdő Kerberos-TGT, két *KerberosDomain* objektum van az Azure ad-ben. Egy *KerberosDomain* objektum a `contoso.com`hoz, egy pedig a `fabrikam.com`hoz. Ha több Active Directory erdővel rendelkezik, az egyes erdők mindegyik tartományához egy *KerberosDomain* objektum tartozik.
+A szervezet például két tartománnyal rendelkezik `contoso.com` `fabrikam.com`egy Active Directory erdővel, és . Ha úgy dönt, hogy engedélyezi az Azure AD kerberos TGT-k kiadását a teljes erdőre vonatkozóan, az Azure AD-ben két *KerberosDomain-objektum* található. Egy *KerberosDomain* `contoso.com`objektum a `fabrikam.com`és egy a számára. Ha több Active Directory-erdővel rendelkezik, minden erdő minden tartományához tartozik egy *KerberosDomain* objektum.
 
-Futtatnia kell a [Kerberos-kiszolgáló objektum létrehozásához](#create-kerberos-server-object) szükséges lépéseket a szervezet minden olyan tartományában és erdőben, amely tartalmazza az Azure ad-felhasználókat.
+A [Kerberos-kiszolgálóobjektum létrehozásához](#create-kerberos-server-object) szükséges lépéseket a szervezet minden olyan tartományában és erdőjében, amely Az Azure AD-felhasználókat tartalmaz.
 
 ## <a name="known-behavior"></a>Ismert viselkedés
 
-Ha a jelszó lejárt, a-vel való bejelentkezés le van tiltva. A várt érték a felhasználó számára a jelszó alaphelyzetbe állítása, mielőtt be tudná jelentkezni a következő használatával:.
+A FIDO-val való bejelentkezés le van tiltva, ha a jelszó lejárt. A elvárás van részére felhasználó -hoz orrgazdaság -uk jelszó előtt lét képes -hoz fatörzs -ban használ FIDO.
 
 ## <a name="troubleshooting-and-feedback"></a>Hibaelhárítás és visszajelzés
 
-Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a funkció megtekintése közben, ossza meg a Windows visszajelzési központ alkalmazáson keresztül a következő lépésekkel:
+Ha a szolgáltatás megtekintése közben szeretné megosztani a visszajelzéseket, vagy problémákba ütközik, az alábbi lépésekkel megoszthatja a Windows Visszajelzési központ alkalmazáson keresztül:
 
-1. Indítsa el a **visszajelzési** központot, és ellenőrizze, hogy be van-e jelentkezve.
-1. Küldjön visszajelzést a következő kategorizálás alá:
-   - Kategória: biztonság és adatvédelem
-   - Alkategória:
-1. A naplók rögzítéséhez használja a problémát a **probléma újbóli létrehozásához** .
+1. Indítsa el **a Visszajelzési központot,** és győződjön meg arról, hogy be van jelentkezve.
+1. Visszajelzés küldése a következő kategorizálás alatt:
+   - Kategória: Biztonság és adatvédelem
+   - Alkategória: FIDO
+1. A naplók rögzítéséhez használja a **probléma újbóli létrehozását**
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="does-this-work-in-my-on-premises-environment"></a>Működik ez a helyszíni környezetben?
 
-Ez a funkció nem működik tiszta helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetben.
+Ez a szolgáltatás nem működik tiszta helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetben.
 
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>A szervezetem két faktoros hitelesítést igényel az erőforrásokhoz való hozzáféréshez. Mit tehetek a követelmény támogatásához?
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>A szervezetnek kétfaktoros hitelesítésre van szüksége az erőforrások eléréséhez. Mit tehetek, hogy támogassa ezt a követelményt?
 
-A biztonsági kulcsok különféle formában jelennek meg. Vegye fel a kapcsolatot az eszköz gyártójával, és beszéljen arról, hogy az eszközük hogyan engedélyezhető PIN-kód vagy biometrikus azonosító használatával második tényezőként.
+A biztonsági kulcsok számos formatényezőből származnak. Lépjen kapcsolatba az eszköz gyártójával, és beszélhesse meg, hogyan engedélyezhetők az eszközeik pin-kóddal vagy biometrikus adatokkal.
 
-### <a name="can-admins-set-up-security-keys"></a>A rendszergazdák beállítják a biztonsági kulcsokat?
+### <a name="can-admins-set-up-security-keys"></a>A rendszergazdák beállíthatnak biztonsági kulcsokat?
 
-Ezen funkció általánosan elérhetővé vált ezen a lehetőségen.
+Dolgozunk ezen a képességen az általános elérhetőség (GA) a funkció.
 
-### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Hol találhatom meg a megfelelő biztonsági kulcsokat?
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Hol találhatok megfelelő biztonsági kulcsokat?
 
 [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
 
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Mi a teendő, ha elveszítem a biztonsági kulcsot?
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Mit tegyek, ha elveszítem a biztonsági kulcsot?
 
-A kulcsokat a Azure Portalból távolíthatja el, ha a **biztonsági adatok** lapra navigál, és eltávolítja a biztonsági kulcsot.
+A kulcsokat eltávolíthatja az Azure Portalról, ha a **Biztonsági adatok** lapra navigál, és eltávolítja a biztonsági kulcsot.
 
-### <a name="im-not-able-to-use-fido-immediately-after-i-create-a-hybrid-azure-ad-joined-machine"></a>Nem tudom azonnal használni a következőt a hibrid Azure AD-hez csatlakoztatott gép létrehozása után
+### <a name="im-not-able-to-use-fido-immediately-after-i-create-a-hybrid-azure-ad-joined-machine"></a>Nem tudom használni a FIDO-t közvetlenül azután, hogy létrehoztam egy hibrid Azure AD-illesztésű gépet
 
-Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a tartományhoz való csatlakozás és az újraindítási folyamat után be kell jelentkeznie egy jelszóval, és meg kell várnia a házirend szinkronizálását, mielőtt használni tudná a bejelentkezést.
+Ha tiszta telepítése hibrid Azure AD-hez csatlakozott gép, miután a tartomány hoz és újraindítási folyamat be kell jelentkeznie egy jelszót, és várja meg a szabályzat szinkronizálását, mielőtt a FIDO-t használni a bejelentkezéshez.
 
-- Az aktuális állapot ellenőrzéséhez írja be `dsregcmd /status` egy parancssorablakba, és győződjön meg arról, hogy mind a *AzureAdJoined* , mind a *DomainJoined* *Igen értéket*jelenít meg.
-- Ez a késés a tartományhoz csatlakoztatott eszközök ismert korlátozása, és nem a rendszer-specifikus.
+- Ellenőrizze az aktuális állapotát `dsregcmd /status` a parancsablakbe való beírással, és ellenőrizze, hogy mind az *AzureAdJoined,* mind *a DomainJoined* igen t mutat-e. *YES*
+- Ez a késleltetés a tartományhoz csatlakozó eszközök ismert korlátozása, és nem FIDO-specifikus.
 
-### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Nem tudom beolvasni az SSO-t az NTLM hálózati erőforráshoz a parancssori felülettel való bejelentkezés után, és hitelesítő adatok kérése
+### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Nem tudok SSO-t az NTLM hálózati erőforráshoz, miután bejelentkeztem a FIDO-val, és hitelesítő adatokat kaptam
 
-Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a `nltest /dsgetdc:contoso /keylist /kdc`kimenetét.
+Győződjön meg arról, hogy elegendő tartományvezérlő van javítva ahhoz, hogy időben válaszoljon az erőforrás-kérelem kiszolgálásához. Annak ellenőrzéséhez, hogy a szolgáltatást futtató tartományvezérlő látható-e, tekintse át a kimenetét. `nltest /dsgetdc:contoso /keylist /kdc`
 
 ## <a name="next-steps"></a>További lépések
 
-[További információ a jelszóval nem rendelkező](concept-authentication-passwordless.md)
+[További információ a jelszó nélküli nyelvről](concept-authentication-passwordless.md)

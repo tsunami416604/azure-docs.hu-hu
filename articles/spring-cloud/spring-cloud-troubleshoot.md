@@ -1,166 +1,166 @@
 ---
-title: Az Azure Spring Cloud hibaelhárítási útmutatója | Microsoft Docs
-description: Az Azure Spring Cloud hibaelhárítási útmutatója
+title: Hibaelhárítási útmutató az Azure Spring Cloud szolgáltatáshoz | Microsoft dokumentumok
+description: Hibaelhárítási útmutató az Azure Spring Cloud szolgáltatáshoz
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277580"
 ---
-# <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
+# <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Gyakori Azure Spring Cloud-problémák elhárítása
 
-Ez a cikk útmutatást nyújt az Azure Spring Cloud Development-problémák megoldásához. További információ: [Azure Spring Cloud – gyakori kérdések](spring-cloud-faq.md).
+Ez a cikk az Azure Spring Cloud fejlesztési problémáinak elhárítására vonatkozó utasításokat tartalmazza. További információ: [Azure Spring Cloud GYAKORI KÉRDÉSEK](spring-cloud-faq.md).
 
-## <a name="availability-performance-and-application-issues"></a>Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos problémák
+## <a name="availability-performance-and-application-issues"></a>Rendelkezésre állási, teljesítménybeli és alkalmazásproblémák
 
-### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Az alkalmazás nem indítható el (például a végpont nem csatlakoztatható, vagy egy 502 értéket ad vissza néhány újrapróbálkozás után)
+### <a name="my-application-cant-start-for-example-the-endpoint-cant-be-connected-or-it-returns-a-502-after-a-few-retries"></a>Az alkalmazás nem indítható el (például a végpont nem csatlakoztatható, vagy néhány újrapróbálkozás után 502-es értéket ad vissza)
 
-Exportálja a naplókat az Azure Log Analyticsba. A rugós alkalmazások naplóihoz tartozó tábla neve *AppPlatformLogsforSpring*. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md).
+Exportálja a naplókat az Azure Log Analytics szolgáltatásba. A tavaszi alkalmazásnaplók táblájának neve *AppPlatformLogsforSpring.* További információ: [Naplók és metrikák elemzése diagnosztikai beállításokkal című témakörben.](diagnostic-services.md)
 
-A naplókban a következő hibaüzenet jelenhet meg:
+A következő hibaüzenet jelenhet meg a naplókban:
 
-> "org. springframework. Context. ApplicationContextException: nem sikerült elindítani a webkiszolgálót"
+> "org.springframework.context.ApplicationContextException: Nem lehet elindítani a webkiszolgálót"
 
-Az üzenet a két valószínű probléma egyikét jelzi: 
-* Hiányzik az egyik bab vagy annak valamelyik függősége.
-* A bean egyik tulajdonsága hiányzik vagy érvénytelen. Ebben az esetben a "Java. lang. IllegalArgumentException" valószínűleg meg fog jelenni.
+Az üzenet két valószínű probléma egyikét jelzi: 
+* Az egyik bab vagy az egyik függősége hiányzik.
+* A bean egyik tulajdonsága hiányzik vagy érvénytelen. Ebben az esetben valószínűleg a "java.lang.IllegalArgumentException" jelenik meg.
 
-A szolgáltatási kötések az alkalmazás indítási hibáját is okozhatják. A naplók lekérdezéséhez használja a kötött szolgáltatásokhoz kapcsolódó kulcsszavakat. Tegyük fel például, hogy az alkalmazásnak van egy kötése egy helyi rendszeridőre beállított MySQL-példánnyal. Ha az alkalmazás nem indul el, a következő hibaüzenet jelenhet meg a naplóban:
+A szolgáltatáskötések az alkalmazások indítási hibáit is okozhatják. A naplók lekérdezéséhez használjon a kötött szolgáltatásokhoz kapcsolódó kulcsszavakat. Például tegyük fel, hogy az alkalmazás rendelkezik egy kötést egy MySQL-példány, amely a helyi rendszer idő beállítása. Ha az alkalmazás nem indul el, a következő hibaüzenet jelenhet meg a naplóban:
 
-> "Java. SQL. SQLException: a kiszolgáló időzóna-értéke" egyezményes világidő "nem ismerhető fel, vagy egynél több időzónát jelöl."
+> "java.sql.SQLException: A kiszolgáló "Koordinált világidő" időzóna-értéke ismeretlen, vagy egynél több időzónát jelöl."
 
-A hiba elhárításához lépjen a MySQL-példány `server parameters`ére, és módosítsa a `time_zone` értéket a *rendszerről* a *+ 0:00*értékre.
+A hiba kijavításához `server parameters` nyissa meg a MySQL-példányát, és módosítsa az `time_zone` értéket *SYSTEM* értékről *+0:00-ra.*
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Az alkalmazás összeomlik, vagy váratlan hibát ad vissza
 
-Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az alkalmazás futási állapotát és felderítési állapotát. Ehhez nyissa meg a Azure Portal _alkalmazás-kezelés_ elemét, és győződjön meg arról, hogy az összes alkalmazás állapota _fut_ és _fel van állítva_.
+Amikor hibakeresési alkalmazás összeomlik, először ellenőrizze az alkalmazás futó állapotát és felderítési állapotát. Ehhez nyissa meg az _Alkalmazáskezelés_ az Azure Portalon annak érdekében, hogy az összes alkalmazás állapota _fut,_ és _up._
 
-* Ha az állapot _fut_ , de a felderítési állapot nem áll _fenn, lépjen_a ["saját alkalmazás nem regisztrálható"](#my-application-cant-be-registered) szakaszra.
+* Ha az állapot _fut,_ de a felderítés állapota nem _UP,_ lépjen a ["Saját alkalmazás nem regisztrálható"](#my-application-cant-be-registered) szakaszra.
 
-* Ha a felderítés állapota _fel van állítva_, a metrikák elemre kattintva ellenőrizze az alkalmazás állapotát. Vizsgálja meg a következő metrikákat:
+* Ha a felderítési állapot _UP,_ tekintse meg a Metrikák az alkalmazás állapotának ellenőrzéséhez. Vizsgálja meg a következő mutatókat:
 
 
-  - `TomcatErrorCount` (_tomcat. Global. Error_): az összes Spring Application-kivételt itt számoljuk el. Ha ez a szám nagy, nyissa meg az Azure Log Analytics az alkalmazás naplófájljainak vizsgálatához.
+  - `TomcatErrorCount`_(tomcat.global.error):_ Az összes tavaszi alkalmazáskivétel itt van számítva. Ha ez a szám nagy, az Azure Log Analytics az alkalmazásnaplók vizsgálatához.
 
-  - `AppMemoryMax` (_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy a lefoglalt memória `OutOfMemoryError` üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy a *> véglegesítése*is megtörténjen, még akkor is, ha az *< = Max* értéke továbbra is igaz. Ilyen esetben próbálja meg a `-Xmx` paraméter használatával megnövelni a halom maximális méretét.
+  - `AppMemoryMax`(_jvm.memory.max):_ Az alkalmazás számára rendelkezésre álló maximális memóriamennyiség. Lehet, hogy az összeg nincs definiálva, vagy idővel változhat, ha meg van határozva. Ha meg van adva, a felhasznált és a lekötött memória mennyisége mindig kisebb vagy egyenlő, mint max. A memórialefoglalás azonban sikertelen `OutOfMemoryError` lehet egy üzenettel, ha a foglalás megpróbálja növelni a felhasznált memóriát, > *a véglegesítést,* még akkor is, ha *a használt <= max* még mindig igaz. Ilyen esetben próbálja meg növelni a maximális halomméret `-Xmx` a paraméter használatával.
 
-  - `AppMemoryUsed` (_JVM. Memory. használt_): az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. A normál betöltésű Java-alkalmazások esetében ez a metrika egy *fűrészfog* mintát alkot, ahol a memóriahasználat folyamatosan nő és csökken, és hirtelen leesik, majd a mintázat ismétlődik. Ez a metrikai sorozat a Java virtuális gépen belüli adatgyűjtési művelet miatt következik be, ahol a gyűjtési műveletek a fűrészfog mintában lévő cseppeket jelölik.
+  - `AppMemoryUsed`(_jvm.memory.used_): Az alkalmazás által jelenleg használt memória bájtban lévő memóriája. Egy normál terhelés Java alkalmazás, ez a metrikus sorozat alkot *egy fűrészfog* mintát, ahol a memória használat folyamatosan növekszik és csökken a kis lépésekben, és hirtelen csökken sokat, majd a minta ismétlődik. Ez a metrikus sorozat a Jávai virtuális gépen belüli szemétgyűjtés miatt következik be, ahol a gyűjtési műveletek a fűrészfogminta cseppjeit jelölik.
     
-    Ez a mérőszám fontos a memóriával kapcsolatos problémák azonosításához, például:
-    * A memória alábontása a legelején.
-    * A túlterhelési memória kiosztása egy adott logikai útvonalhoz.
+    Ez a mérőszám fontos a memóriaproblémák azonosításához, például:
+    * Egy memória robbanás a legelején.
+    * Egy adott logikai útvonal túlfeszültség-memória-lefoglalása.
     * Fokozatos memóriavesztés.
 
-  További információ: [mérőszámok](spring-cloud-concept-metrics.md).
+  További információ: [Metrics](spring-cloud-concept-metrics.md).
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört.
+Ha többet szeretne megtudni az Azure Log Analytics szolgáltatásról, olvassa el a [Log Analytics első lépéseit az Azure Monitorban.](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Az alkalmazás CPU- vagy memóriahasználata magas
 
-Ha az alkalmazás magas CPU-vagy memóriahasználat-használatot tapasztal, az egyik két dolog igaz:
-* Az összes alkalmazás-példány magas CPU-vagy memóriahasználat-használattal rendelkezik.
-* Néhány alkalmazás-példány magas CPU-vagy memóriahasználat-használatot tapasztal.
+Ha az alkalmazás magas processzor- vagy memóriahasználatot tapasztal, két dolog egyike igaz:
+* Az összes alkalmazáspéldány magas processzor- vagy memóriahasználatot tapasztal.
+* Az alkalmazáspéldányok egy része magas processzor- vagy memóriahasználatot tapasztal.
 
-A következő esetekben érdemes megállapítani, hogy melyik helyzet érvényes:
+Annak megállapításához, hogy melyik helyzet alkalmazandó, tegye a következőket:
 
-1. Lépjen a **metrikák**elemre, majd válassza ki a **szolgáltatás CPU-kihasználtságának százalékos arányát** vagy a **használt szolgáltatási memóriát**.
-2. Adjon hozzá egy **app =** filtert a figyelni kívánt alkalmazás megadásához.
-3. A metrikák felosztása **példány**szerint.
+1. Nyissa meg **a Metrikák**lehetőséget, majd válassza a **Szolgáltatás cpu-használati százaléka** vagy a használt **szolgáltatásmemória lehetőséget.**
+2. Adjon hozzá egy **App=** szűrőt, amely meghatározza, hogy melyik alkalmazást szeretné figyelni.
+3. A mérőszámok felosztása **példány**szerint .
 
-Ha az *összes példány* magas CPU-vagy memóriahasználat-használatot tapasztal, ki kell bővíteni az alkalmazást, vagy fel kell mérnie a processzor vagy a memória használatát. További információ: [oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban](spring-cloud-tutorial-scale-manual.md).
+Ha *az összes példány* magas processzor- vagy memóriahasználatot tapasztal, vagy horizontálisfelskálázást kell végeznie, vagy fel kell skáláznia a processzor- vagy memóriahasználatot. További információ: [Oktatóanyag: Alkalmazás méretezése az Azure Spring Cloud ban.](spring-cloud-tutorial-scale-manual.md)
 
-Ha *egyes példányok* magas CPU-vagy memóriahasználat-használatot tapasztalnak, ellenőrizze a példány állapotát és a felderítési állapotát.
+Ha *egyes példányok* nagy processzor- vagy memóriahasználatot tapasztalnak, ellenőrizze a példány állapotát és felderítési állapotát.
 
-További információ: [mérőszámok az Azure Spring Cloud](spring-cloud-concept-metrics.md)-hoz.
+További információ: [Metrics for Azure Spring Cloud](spring-cloud-concept-metrics.md).
 
-Ha minden példány fut, lépjen az Azure Log Analyticsra az alkalmazás naplófájljainak lekérdezéséhez, és tekintse át a kód logikáját. Ez segít megtekinteni, hogy ezek bármelyike érintheti-e a méretezési particionálást. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md).
+Ha az összes példány működik, az Azure Log Analytics az alkalmazásnaplók lekérdezéséhez és a kódlogika áttekintéséhez. Ez segít annak megtekintésében, hogy ezek bármelyike hatással lehet-e a méretezési particionálásra. További információt a [Naplók és metrikák elemzése diagnosztikai beállításokkal](diagnostic-services.md)című témakörben talál.
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört. A naplókat a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával kérdezheti le.
+Ha többet szeretne megtudni az Azure Log Analytics szolgáltatásról, olvassa el a [Log Analytics első lépéseit az Azure Monitorban.](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) A naplók lekérdezése a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával.
 
-### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Ellenőrzőlista a Spring-alkalmazás üzembe helyezéséhez az Azure Spring Cloud-ban
+### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Ellenőrzőlista a tavaszi alkalmazás Azure Spring Cloud szolgáltatásba való üzembe helyezéséhez
 
-Az alkalmazás előkészítése előtt győződjön meg arról, hogy az megfelel a következő feltételeknek:
+Az alkalmazás bedeszkázása előtt győződjön meg arról, hogy az megfelel az alábbi feltételeknek:
 
-* Az alkalmazás helyileg futtatható a Java futtatókörnyezet megadott verziójával.
-* A környezeti konfiguráció (CPU/RAM/példányok) megfelel az alkalmazás szolgáltatója által beállított minimális követelménynek.
-* A konfigurációs elemek a várt értékekkel rendelkeznek. További információ: [konfigurációs kiszolgáló](spring-cloud-tutorial-config-server.md).
-* A környezeti változókhoz a várt értékek tartoznak.
-* A JVM paraméterei a várt értékekkel rendelkeznek.
-* Javasoljuk, hogy tiltsa le vagy távolítsa el a beágyazott _konfigurációs kiszolgálót_ és a _Spring Service Registry_ Servicest az alkalmazáscsomag alapján.
+* Az alkalmazás helyileg futtatható a megadott Java futásidejű verzióval.
+* A környezeti konfiguráció (CPU/RAM/Instances) megfelel az alkalmazásszolgáltató által meghatározott minimális követelménynek.
+* A konfigurációs elemek a várt értékekkel rendelkeznek. További információt a [Config Server című témakörben talál.](spring-cloud-tutorial-config-server.md)
+* A környezeti változók rendelkeznek a várt értékekkel.
+* A JVM-paraméterek nek meg vannak a várt értékei.
+* Azt javasoljuk, hogy tiltsa le vagy távolítsa el a beágyazott _Config Server_ és _a Spring Service Registry_ szolgáltatásokat az alkalmazáscsomagból.
 * Ha vannak _szolgáltatáskötéssel_ kötni kívánt Azure-erőforrások, ellenőrizze, hogy a célerőforrások működnek-e.
 
 ## <a name="configuration-and-management"></a>Konfigurálás és felügyelet
 
-### <a name="i-encountered-a-problem-with-creating-an-azure-spring-cloud-service-instance"></a>Probléma merült fel egy Azure Spring Cloud Service-példány létrehozásával
+### <a name="i-encountered-a-problem-with-creating-an-azure-spring-cloud-service-instance"></a>Probléma merült fel az Azure Spring Cloud szolgáltatáspéldány létrehozásával kapcsolatban
 
-Ha az Azure Spring Cloud Service-példányt a Azure Portal használatával állítja be, az Azure Spring Cloud végrehajtja az érvényesítést.
+Amikor az Azure Spring Cloud szolgáltatáspéldányát az Azure Portal használatával állítja be, az Azure Spring Cloud elvégzi az ellenőrzést.
 
-Ha azonban az Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) vagy a [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/)használatával próbálja beállítani az Azure Spring Cloud Service-példányt, ellenőrizze a következőket:
+Ha azonban az Azure Spring Cloud szolgáltatáspéldányt az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) vagy az [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/)használatával próbálja beállítani, ellenőrizze, hogy:
 
 * Az előfizetés aktív.
-* A helyet az Azure Spring Cloud [támogatja](spring-cloud-faq.md) .
-* A példányhoz tartozó erőforráscsoport már létre van hozva.
-* Az erőforrás neve megfelel az elnevezési szabálynak. Csak kisbetűket, számokat és kötőjeleket tartalmazhat. Az első karakternek betűnek kell lennie. Az utolsó karakternek betűnek vagy számnak kell lennie. Az értéknek 2 és 32 karakter közöttinek kell lennie.
+* A helyet az Azure Spring Cloud [támogatja.](spring-cloud-faq.md)
+* A példány erőforráscsoportja már létrejött.
+* Az erőforrás neve megfelel az elnevezési szabálynak. Csak kisbetűket, számokat és kötőjeleket tartalmazhat. Az első karakternek betűnek kell lennie. Az utolsó karakternek betűnek vagy számnak kell lennie. Az értéknek 2 és 32 karakter között kell lennie.
 
-Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretné beállítani, először olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)ismertető témakört.
+Ha az Azure Spring Cloud szolgáltatáspéldányt az Erőforrás-kezelő sablon használatával szeretné beállítani, először olvassa el [az Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)című részét.
 
-A rendszer az Azure Spring Cloud Service-példány nevét fogja használni a `azureapps.io`alatti altartomány nevének megadásához, így a telepítés sikertelen lesz, ha a név ütközik egy meglévővel. Előfordulhat, hogy további részleteket talál a tevékenység naplóiban.
+Az Azure Spring Cloud szolgáltatáspéldány nevét fogja használni egy altartománynév kéréséhez a alatt, `azureapps.io`így a beállítás sikertelen lesz, ha a név ütközik egy meglévővel. További részleteket a tevékenységnaplókban találhat.
 
-### <a name="i-cant-deploy-a-jar-package"></a>Nem tudok telepíteni egy JAR-csomagot
+### <a name="i-cant-deploy-a-jar-package"></a>Nem tudok JAR-csomagot telepíteni
 
-A Java Archive file (JAR)/Source csomag nem tölthető fel a Azure Portal vagy a Resource Manager-sablon használatával.
+Java archív fájl (JAR)/forráscsomag nem tölthető fel az Azure Portalon vagy az Erőforrás-kezelő sablonhasználatával.
 
-Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
+Amikor az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)használatával telepíti az alkalmazáscsomagot, az Azure CLI rendszeres időközönként lekérdezi a központi telepítés előrehaladását, és végül megjeleníti a központi telepítés eredményét.
 
 Ha a lekérdezés megszakad, továbbra is használhatja a következő parancsot az üzembehelyezési naplók lekéréséhez:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Győződjön meg arról, hogy az alkalmazás a megfelelő [végrehajtható jar-formátumban](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html)van csomagolva. Ha nem megfelelően van csomagolva, a következőhöz hasonló hibaüzenet jelenik meg:
+Győződjön meg arról, hogy az alkalmazás a megfelelő [végrehajtható JAR formátumban](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html)van csomagolva. Ha nincs megfelelően csomagolva, az alábbihoz hasonló hibaüzenet jelenik meg:
 
-> "Hiba: érvénytelen vagy sérült jarfile/jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714"
+> "Hiba: Érvénytelen vagy sérült jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714"
 
-### <a name="i-cant-deploy-a-source-package"></a>Nem tudom üzembe helyezni a forrásoldali csomagot
+### <a name="i-cant-deploy-a-source-package"></a>Nem tudok forráscsomagot telepíteni
 
-A Azure Portal vagy a Resource Manager-sablon használatával nem tölthet fel JAR/forrásoldali csomagot.
+Jar/source csomagot nem tölthet fel az Azure Portal vagy az Erőforrás-kezelő sablon használatával.
 
-Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
+Amikor az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)használatával telepíti az alkalmazáscsomagot, az Azure CLI rendszeres időközönként lekérdezi a központi telepítés előrehaladását, és végül megjeleníti a központi telepítés eredményét.
 
 Ha a lekérdezés megszakad, továbbra is használhatja a következő parancsot a buildelési és üzembehelyezési naplók lekéréséhez:
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Vegye figyelembe azonban, hogy egy Azure Spring Cloud Service-példány egyszerre csak egy felépítési feladatot tud kiváltani egy adott csomagra. További információ: [alkalmazás üzembe helyezése](spring-cloud-quickstart-launch-app-portal.md) és [átmeneti környezet beállítása az Azure Spring Cloud-ban](spring-cloud-howto-staging-environment.md).
+Azonban vegye figyelembe, hogy egy Azure Spring Cloud-szolgáltatáspéldány egyszerre csak egy buildelési feladatot indíthat el egy forráscsomaghoz. További információ: [Deploy an application](spring-cloud-quickstart-launch-app-portal.md) and [Set up a staging environment in Azure Spring Cloud](spring-cloud-howto-staging-environment.md).
 
-### <a name="my-application-cant-be-registered"></a>Az alkalmazásom nem regisztrálható
+### <a name="my-application-cant-be-registered"></a>A jelentkezésem nem regisztrálható
 
-A legtöbb esetben ez a helyzet akkor fordul elő, ha a *szükséges függőségek* és a *szolgáltatások felderítése* nem megfelelően van konfigurálva a Project Object Model (POM) fájlban. A konfigurálását követően a beépített szolgáltatás beállításjegyzék-kiszolgálói végpontja környezeti változóként van befecskendezve az alkalmazással. Az alkalmazások ezután regisztrálják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást.
+A legtöbb esetben ez a helyzet akkor fordul elő, ha *a szükséges függőségek* és *a szolgáltatásfelderítés* nincs megfelelően konfigurálva a PROJEKTobjektum-modell (POM) fájlban. Konfigurálása után a beépített Service Registry kiszolgáló végpont javitott környezet változóként az alkalmazással. Az alkalmazások ezután regisztrálják magukat a Szolgáltatás beállításjegyzék-kiszolgálón, és felderítenek más függő mikroszolgáltatásokat.
 
 Várjon legalább két percet, mielőtt egy újonnan regisztrált példány megkezdi a forgalom fogadását.
 
-Ha egy meglévő Spring Cloud-alapú megoldást telepít át az Azure-ba, győződjön meg arról, hogy az ad-hoc _szolgáltatás beállításjegyzék_ -és _konfigurációs kiszolgálói_ példányai el lesznek távolítva (vagy le vannak tiltva) az Azure Spring Cloud által biztosított felügyelt példányok ütközésének elkerülése érdekében.
+Ha egy meglévő tavaszi felhőalapú megoldást telepít át az Azure-ba, győződjön meg arról, hogy az ad hoc _szolgáltatásbeállítási_ és _a Config_ Server-példányokat eltávolítja (vagy letiltja), hogy elkerülje az Azure Spring Cloud által biztosított felügyelt példányok ütközését.
 
-A _szolgáltatás beállításjegyzékbeli_ ügyfél-naplófájljait is megtekintheti az Azure log Analyticsban. További információ: [naplók és mérőszámok elemzése diagnosztikai beállításokkal](diagnostic-services.md)
+A _Service Registry_ ügyfélnaplók az Azure Log Analytics is ellenőrizheti. További információ: [Naplók és metrikák elemzése diagnosztikai beállításokkal](diagnostic-services.md)
 
-Ha többet szeretne megtudni az Azure Log Analytics-ról, tekintse meg a [log Analytics beszerzése a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)című témakört. A naplókat a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával kérdezheti le.
+Ha többet szeretne megtudni az Azure Log Analytics szolgáltatásról, olvassa el a [Log Analytics első lépéseit az Azure Monitorban.](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) A naplók lekérdezése a [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával.
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Meg szeretném vizsgálni az alkalmazás környezeti változóit
 
-A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolgáltatást, hogy az Azure tisztában legyen azzal, hol és hogyan konfigurálhatja az alkalmazást alkotó szolgáltatásokat. A környezeti változók helyességének biztosításához szükséges első lépés a lehetséges problémák elhárítása.  A Spring boot indítószerkezet végpontja segítségével áttekintheti a környezeti változókat.  
+A környezeti változók tájékoztatják az Azure Spring Cloud keretrendszert, biztosítva, hogy az Azure megértse, hol és hogyan konfigurálhatja az alkalmazást kikészítő szolgáltatásokat. A lehetséges problémák elhárításának első lépése annak ellenőrzése, hogy a környezeti változók helyesek-e.  A tavaszi rendszerindítási aktuátor végpont segítségével áttekintheti a környezeti változókat.  
 
 > [!WARNING]
-> Ez az eljárás a környezeti változókat a tesztelési végpont használatával teszi elérhetővé.  Ne folytassa, ha a tesztelési végpont nyilvánosan elérhető, vagy ha tartománynevet rendelt hozzá az alkalmazáshoz.
+> Ez az eljárás a tesztvégpont használatával teszi elérhetővé a környezeti változókat.  Ne folytassa, ha a tesztvégpont nyilvánosan elérhető, vagy ha tartománynevet rendelt az alkalmazáshoz.
 
 1. Nyissa meg a következőt: `https://<your application test endpoint>/actuator/health`.  
-    - A `{"status":"UP"}`hoz hasonló válasz azt jelzi, hogy a végpont engedélyezve van.
-    - Ha a válasz negatív, vegye fel a következő függőséget a *Pom. XML* fájlba:
+    - A válasz `{"status":"UP"}` hasonló azt jelzi, hogy a végpont engedélyezve van.
+    - Ha a válasz negatív, a *POM.xml* fájlba adja meg a következő függőséget:
 
         ```xml
             <dependency>
@@ -169,11 +169,11 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
             </dependency>
         ```
 
-1. Ha engedélyezve van a Spring boot indítószerkezet végpontja, lépjen a Azure Portalra, és keresse meg az alkalmazás konfigurációs lapját.  Adjon hozzá egy `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` nevű környezeti változót és a `*` értéket. 
+1. Ha a tavaszi rendszerindítási aktuátor végpont engedélyezve van, nyissa meg az Azure Portalon, és keresse meg az alkalmazás konfigurációs lapját.  Adjon hozzá egy környezeti `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` változót `*` a nevével és értékével. 
 
 1. Indítsa újra az alkalmazást.
 
-1. Lépjen a `https://<your application test endpoint>/actuator/env`ra, és vizsgálja meg a választ.  A listának így kell kinéznie:
+1. Menjen `https://<your application test endpoint>/actuator/env` és vizsgálja meg a választ.  A listának így kell kinéznie:
 
     ```json
     {
@@ -189,16 +189,16 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
     }
     ```
 
-Keresse meg a `systemEnvironment`nevű gyermek csomópontot.  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
+Keresse meg a gyermekcsomópontot. `systemEnvironment`  Ez a csomópont az alkalmazás környezeti változóit tartalmazza.
 
 > [!IMPORTANT]
-> Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
+> Ne feledje, hogy fordított az expozíció a környezeti változók, mielőtt az alkalmazás nyilvánosan hozzáférhetővé.  Nyissa meg az Azure Portalon, keresse meg az alkalmazás konfigurációs lapját, és törölje ezt a környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
-### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nem találom az alkalmazás metrikáit vagy naplóit
+### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nem találom az alkalmazáshoz vezető mutatókat és naplókat
 
-Az alkalmazások **felügyeletének** megtartásával _ellenőrizze, hogy_ _fut_ -e az alkalmazás állapota.
+Nyissa meg **az Alkalmazáskezelés** lapot, és győződjön meg arról, hogy az alkalmazásállapotok _futnak,_ és _a UP_.
 
-Ha a _JVM_ mérőszámai láthatók, de nem a _tomcat_metrikája, ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
+Ha a _JVM-ből_ származó metrikákat lát, de a `spring-boot-actuator` _Tomcat_metrikáit, ellenőrizze, hogy a függőség engedélyezve van-e az alkalmazáscsomagban, és hogy sikeresen elindul-e.
 
 ```xml
 <dependency>
@@ -207,4 +207,4 @@ Ha a _JVM_ mérőszámai láthatók, de nem a _tomcat_metrikája, ellenőrizze, 
 </dependency>
 ```
 
-Ha az alkalmazás naplói archiválható egy Storage-fiókba, de az Azure Log Analyticsba nem küldték, ellenőrizze, hogy [helyesen állította-e be a munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatói szerződést (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Ha az alkalmazásnaplók archiválhatók egy tárfiókba, de nem küldhetők el az Azure Log Analytics szolgáltatásba, ellenőrizze, hogy [megfelelően állította-e be a munkaterületet.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) Ha az Azure Log Analytics ingyenes szintjét használja, vegye figyelembe, hogy [az ingyenes szint nem biztosít szolgáltatásiszint-szerződést (SLA).](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)

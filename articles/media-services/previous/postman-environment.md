@@ -1,6 +1,6 @@
 ---
-title: A Poster-környezet importálása Azure Media Services REST-hívásokhoz
-description: Ez a témakör a Poster-környezet definícióját ismerteti Azure Media Services REST-hívásokhoz.
+title: A Postman-környezet importálása az Azure Media Services REST-hívásaihoz
+description: Ez a témakör az Azure Media Services REST-hívások Postman-környezetének definícióját tartalmazza.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926715"
 ---
-# <a name="import-the-postman-environment"></a>A Poster-környezet importálása  
+# <a name="import-the-postman-environment"></a>A Postman környezet importálása  
 
-Ez a cikk **a Poster-környezet azon** változóinak definícióját tartalmazza, amelyek a Media Services REST API-kat meghívó CSOPORTOSÍTott http-kérelmeket tartalmazó [Poster-gyűjteményt](postman-collection.md) használják. A környezet és a gyűjtemény fájljait a [Poster beállítása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyagához használja.
+Ez a cikk a Media Services REST API-kat hívó, csoportosított HTTP-kérelmeket tartalmazó [Postman-környezetváltozók](postman-collection.md) definícióját tartalmazza. **Postman** A környezet et és a gyűjteményfájlokat a [Postás konfigurálása a Media Services REST API-hívásokhoz oktatóanyag](media-rest-apis-with-postman.md) használja.
 
 > [!NOTE]
-> `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`értéke. A bérlői azonosító lekéréséhez vigye az egérmutatót a saját felhasználónevére a portálon (a jobb felső sarokban), és a "címtár: Microsoft ({{TENANTID}})" könyvtárba kerül.
+> Az `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`értéke. A bérlői azonosító lekért eszközével az egérmutatót a portálon (a jobb felső sarokban) a felhasználónév fölé irányíthatja, és az a "Directory: Microsoft ( {{TENANTID}} ) könyvtárban lesz.
 
 ```
 {

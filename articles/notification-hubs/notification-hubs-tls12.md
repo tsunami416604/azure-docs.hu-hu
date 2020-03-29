@@ -1,6 +1,6 @@
 ---
-title: TLS-frissítések Notification Hubs
-description: Ismerkedjen meg a TLS támogatásával az Azure Notification Hubsban.
+title: Értesítési központok TLS-frissítései
+description: Ismerje meg a TLS támogatását az Azure Értesítési központokban.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,28 +17,28 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/28/2020
 ms.openlocfilehash: 87309e20efd9d6f8bd1a659451e5a603e6b95bc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76908526"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-A magasabb szintű biztonság érdekében Notification Hubs letiltja a 1,0-es és 1,1-es TLS-verziók támogatását 2020. április 30-án. Ezek a régebbi protokollok gyenge titkosítást biztosítanak, és ki vannak téve a VADÁLLATok és az USZKÁR elleni támadásoknak. Az Android 5-ös vagy újabb verzióját, vagy az iOS 5-ös vagy újabb verzióját futtató eszközökre telepített alkalmazások nem érintik ezt a változást, mivel ezek az operációs rendszerek támogatják a TLS 1,2-et, és az ügyfél és a kiszolgáló egyeztetni fogja a legmagasabb, kölcsönösen támogatott verzióját protokoll kapcsolat esetén.
+A magasabb szintű biztonság érdekében az értesítési központok 2020. Ezek a régebbi protokollok gyenge kriptográfia, és ki vannak téve a BEAST és uszkár támadások. Az 5-ös vagy újabb verziójú Android-verziót vagy iOS 5-ös vagy nagyobb verziót futtató eszközökre telepített alkalmazásokat ez a változás nem érinti, mivel ezek az operációs rendszerek támogatják a TLS 1.2-t, és az ügyfél és a kiszolgáló a rendszer legmagasabb, kölcsönösen támogatott verzióját egyezteti. protokollt a csatlakozáskor.
 
-Javasoljuk, hogy tekintse át az Azure Notification Hubst használó összes alkalmazást, és győződjön meg arról, hogy a legalkalmasabb kódtárak és TLS-csomagok a TLS 1,2-et támogatják.
+Azt javasoljuk, hogy tekintse át az összes, az Azure Notification Hubs-ot használó alkalmazást, hogy a tls 1.2-es részét támogató tls-t és TLS-veremeket használják.
 
 ## <a name="update-apps"></a>Alkalmazások frissítése
 
-Gondoskodhat arról, hogy az iOS-alkalmazások a TLS 1,2-et használják az Apple hálózatkezelési biztonsági funkciója, az App Transport Security (ATS) használatával. Az ATS nem használható iOS 9,0 vagy macOS 10,11 rendszernél régebbi SDK-k esetében, és az [Apple dokumentációjában](https://developer.apple.com/documentation/security/preventing_insecure_network_connections)olvashat bővebben.
+Az Apple alkalmazásközlekedés biztonsága (APP Transport Security, ATS) nevű hálózati biztonsági funkciójával biztosíthatja, hogy az iOS-alkalmazások a TLS 1.2-t használják. Az ATS nem használható az iOS 9.0-nál vagy a macOS 10.11-nél régebbi SDK-knál, és erről bővebben olvashat az [Apple dokumentációjában](https://developer.apple.com/documentation/security/preventing_insecure_network_connections).
 
-SSLSocket-példányokat használó Android-alkalmazások esetén az összes SSLSocket-példányon állítsa be az engedélyezett protokollokat a [setEnabledProtocols](https://developer.android.com/reference/javax/net/ssl/SSLSocket#setEnabledProtocols(java.lang.String%5B%5D))feljegyzett módon.
+Az SSLSocket-példányokat használó Android-alkalmazások esetében állítsa be az engedélyezett protokollokat minden SSLSocket példányon a [setEnabledProtocols](https://developer.android.com/reference/javax/net/ssl/SSLSocket#setEnabledProtocols(java.lang.String%5B%5D)).
 
-A [TLS protokoll kompatibilitási](https://support.globalsign.com/customer/portal/articles/2934392-tls-protocol-compatibility) támogatás lapján található táblázat a kompatibilis TLS-verziókkal rendelkező operációs rendszerek feltérképezését segíti.
+A [TLS protokollkompatibilitási](https://support.globalsign.com/customer/portal/articles/2934392-tls-protocol-compatibility) támogatási lapon található táblázat segít a kompatibilis TLS-verziókkal rendelkező operációs rendszerek leképezésében.
 
-További információ: a [Windowson futó TLS protokollok támogatásának](https://docs.microsoft.com/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)áttekintése.
+További információt a [Windows TLS protokolljainak támogatásáról](https://docs.microsoft.com/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)szóló áttekintésben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)
+- [Értesítési központok – áttekintés](notification-hubs-push-notification-overview.md)

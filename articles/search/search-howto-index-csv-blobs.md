@@ -1,7 +1,7 @@
 ---
-title: Keresés CSV-Blobok között
+title: Keresés csv-blobok között
 titleSuffix: Azure Cognitive Search
-description: CSV-fájl kinyerése és importálása az Azure Blob Storage-ból a delimitedText-elemzési mód használatával.
+description: CsV-t kinyerhet és importálhat az Azure Blob storage-ból a dekaktálási mód használatával.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,27 +10,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bf600890bfed570e712a159005b8ef5267298cc0
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122321"
 ---
-# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>CSV-Blobok indexelése delimitedText-elemzési mód és blob-indexek használatával az Azure-ban Cognitive Search
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>CSV-blobok indexelése a dekaktálási móddal és a Blob-indexelőkkel az Azure Cognitive Search szolgáltatásban
 
-Alapértelmezés szerint az [Azure Cognitive Search blob indexelő](search-howto-indexing-azure-blob-storage.md) egy különálló szövegként elemzi a tagolt szöveges blobokat. A CSV-fájlokat tartalmazó Blobokkal azonban gyakran a blob minden sorát külön dokumentumként kell kezelni. Például a következő tagolt szöveg esetében érdemes lehet két dokumentumra elemezni, melyek mindegyike "id", "datePublished" és "Tags" mezőket tartalmaz: 
+Alapértelmezés szerint [az Azure Cognitive Search blob indexelő](search-howto-indexing-azure-blob-storage.md) elemzi a tagolt szöveges blobokat egyetlen szövegtömbként. Azonban a blobok tartalmazó CSV-adatok, gyakran szeretné kezelni a blob minden egyes sora külön dokumentumként. A következő tagolt szöveg et tekintve például két dokumentumra érdemes elemezni, amelyek mindegyike "id", "datePublished" és "tags" mezőket tartalmaz: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Ebből a cikkből megtudhatja, hogyan elemezheti a CSV-blobokat egy Azure Cognitive Search blob-indexelő használatával a `delimitedText` elemzési mód beállításával. 
+Ebben a cikkben megtudhatja, hogyan elemezheti a CSV-blobok egy Azure `delimitedText` Cognitive Search blob indexelő az elemzési mód beállításával. 
 
 > [!NOTE]
-> Kövesse az indexelő konfigurációs javaslatait az [egy-a-többhöz indexelésben](search-howto-index-one-to-many-blobs.md) , hogy egyetlen Azure-blobból végezzen több keresési dokumentumot.
+> Kövesse az indexelő konfigurációs [javaslatokat az egy-a-többhöz indexelés](search-howto-index-one-to-many-blobs.md) több keresési dokumentumok egy Azure blobkimeneti.
 
-## <a name="setting-up-csv-indexing"></a>CSV-indexelés beállítása
-CSV-Blobok indexeléséhez hozzon létre vagy frissítsen egy indexelő definíciót a [create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -kérelem `delimitedText` elemzési módjával:
+## <a name="setting-up-csv-indexing"></a>CsV indexelés beállítása
+CsV-blobok indexeléséhez hozzon létre `delimitedText` vagy frissítsen egy indexelő-definíciót az elemzési móddal egy [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer) kérésen:
 
     {
       "name" : "my-csv-indexer",
@@ -38,27 +38,27 @@ CSV-Blobok indexeléséhez hozzon létre vagy frissítsen egy indexelő definíc
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-`firstLineContainsHeaders` azt jelzi, hogy az egyes Blobok első (nem üres) sora fejléceket tartalmaz.
-Ha a Blobok nem tartalmaznak kezdeti fejlécet, a fejléceket az indexelő konfigurációjában kell megadni: 
+`firstLineContainsHeaders`azt jelzi, hogy az egyes blobok első (nem üres) sora fejléceket tartalmaz.
+Ha a blobok nem tartalmaznak kezdeti fejlécsort, a fejléceket meg kell adni az indexelő konfigurációjában: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-A elválasztó karakter testreszabható a `delimitedTextDelimiter` konfigurációs beállítás használatával. Példa:
+A határoló karaktert a `delimitedTextDelimiter` konfigurációs beállítással szabhatja testre. Példa:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> Jelenleg csak az UTF-8 kódolás támogatott. Ha más kódolások támogatására van szüksége, szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search)-on.
+> Jelenleg csak az UTF-8 kódolás támogatott. Ha más kódolások támogatására van szüksége, szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search)-
 
 > [!IMPORTANT]
-> Ha a tagolt szöveges elemzési módot használja, az Azure Cognitive Search feltételezi, hogy az adatforrásban lévő összes blob CSV-fájl lesz. Ha a CSV-és a nem CSV-Blobok együttes használatát is meg kell adni ugyanabban az adatforrásban, akkor szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> A tagolt szövegelemzési mód használatakor az Azure Cognitive Search feltételezi, hogy az adatforrás összes blobja CSV lesz. Ha ugyanabban az adatforrásban a CSV és a nem CSV-blobok keverékét kell támogatnia, kérjük, szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 > 
 > 
 
 ## <a name="request-examples"></a>Példák kérése
-Mindez együttesen a teljes hasznos adatokat mutatja. 
+Összerakva ezt az egészet, itt vannak a teljes hasznos teher példák. 
 
-DataSource 
+Datasource: 
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -71,7 +71,7 @@ DataSource
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
-Indexelő
+Indexelő:
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -84,6 +84,6 @@ Indexelő
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
-Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk az Azure Cognitive Search jobbá tenni
+Ha javítási funkciókérései vagy ötletei vannak, adja meg a [uservoice-ra](https://feedback.azure.com/forums/263029-azure-search/)vonatkozó véleményét.
 

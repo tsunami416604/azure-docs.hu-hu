@@ -1,6 +1,6 @@
 ---
-title: Elosztott terhelésű Azure Web Apps a zóna csúcsán
-description: Azure DNS alias rekord használata elosztott terhelésű webalkalmazások üzemeltetéséhez a zóna csúcsán
+title: A terheléselosztással elhatárolt Azure-webalkalmazások üzemeltetése a zóna csúcsán
+description: Azure DNS-aliasrekord használata a terheléselosztásos webalkalmazások üzemeltetéséhez a zóna csúcsán
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937365"
 ---
-# <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure Web Apps a zóna csúcsán
+# <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>A terheléselosztással elhatárolt Azure-webalkalmazások üzemeltetése a zóna csúcsán
 
-A DNS protokoll megakadályozza, hogy a zóna csúcsán lévő egy vagy AAAA típusú rekord ne legyen hozzárendelve. Egy példa zóna csúcsa a contoso.com. Ez a korlátozás olyan alkalmazás-tulajdonosokkal kapcsolatos problémát jelent, akik Traffic Manager mögötti elosztott terhelésű alkalmazásokkal rendelkeznek. Nem lehetséges a zóna APEX-rekord Traffic Manager profiljára mutatni. Ennek eredményeképpen az alkalmazás tulajdonosai megkerülő megoldást kell használniuk. Az alkalmazási réteg átirányítását át kell irányítani a zóna csúcsáról egy másik tartományba. Ilyen például a contoso.com és a www\.contoso.com átirányítása. Ez a megoldás az átirányítási függvény egyetlen meghibásodási pontját mutatja be.
+A DNS-protokoll megakadályozza, hogy a zóna csúcsán ne adjon le más, mint egy A vagy AAAA rekordot. Egy példa zóna csúcsa contoso.com. Ez a korlátozás problémát jelent az alkalmazástulajdonosok számára, akik terheléselosztásos alkalmazásokkal rendelkeznek a Traffic Manager mögött. A Traffic Manager-profilra nem lehet rámutatni a zóna csúcsrekordjából. Ennek eredményeképpen az alkalmazástulajdonosoknak egy kerülő megoldást kell használniuk. Az alkalmazásrétegátirányításnak át kell irányítania a zóna csúcsáról egy másik tartományba. Erre példa a contoso.com-ról\.a www contoso.com-ra történő átirányítás. Ez a megállapodás egyetlen meghibásodási pontot jelent az átirányítási függvényhez.
 
-Alias-rekordokkal ez a probléma már nem létezik. Az alkalmazások tulajdonosai a zóna csúcspont-rekordját egy olyan Traffic Manager-profilra helyezhetik, amely külső végpontokkal rendelkezik. Az alkalmazások tulajdonosai ugyanarra a Traffic Manager-profilra mutatnak, amelyet a DNS-zónán belüli bármely más tartományhoz is használnak.
+Aliasrekordok nál ez a probléma már nem áll fenn. Most antól az alkalmazástulajdonosok a zónacsúcsrekordjukat egy külső végponttal rendelkező Traffic Manager-profilra irányíthatják. Az alkalmazástulajdonosok rámutathatnak arra a Traffic Manager-profilra, amelyet a DNS-zónájuk bármely más tartományához használnak.
 
-Például a contoso.com és a www\.contoso.com ugyanarra a Traffic Manager-profilra mutathat. Ebben az esetben, ha a Traffic Manager profilhoz csak külső végpontok vannak konfigurálva.
+Például contoso.com és\.a www contoso.com ugyanarra a Traffic Manager-profilra mutathatnak. Ez a helyzet mindaddig, amíg a Traffic Manager-profil csak külső végpontok konfigurálva.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre alias-rekordot a tartományhoz, és hogyan konfigurálhatja Traffic Manager profiljának végpontját a webalkalmazásokhoz.
+Ebből a cikkből megtudhatja, hogyan hozhat létre aliasrekordot a tartomány csúcspontjához, és hogyan konfigurálhatja a Traffic Manager-profil végpontjait a webalkalmazásokhoz.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,130 +34,130 @@ A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért l
 
 Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön használja a saját tartománynevét.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot, amely az ebben a cikkben használt összes erőforrást tárolni fogja.
+Hozzon létre egy erőforráscsoportot a cikkben használt összes erőforrás tárolására.
 
-## <a name="create-app-service-plans"></a>App Service csomagok létrehozása
+## <a name="create-app-service-plans"></a>App-szolgáltatási csomagok létrehozása
 
-Hozzon létre két webes App Service sémát az erőforráscsoporthoz az alábbi táblázat alapján a konfigurációs információkhoz. App Service terv létrehozásával kapcsolatos további információkért lásd: [app Service-terv kezelése az Azure-ban](../app-service/app-service-plan-manage.md).
+Hozzon létre két Web App Service-sémát az erőforráscsoportban az alábbi táblázat segítségével a konfigurációs információkhoz. Az App Service-csomag létrehozásáról az [App Service-csomag kezelése az Azure-ban](../app-service/app-service-plan-manage.md)című témakörben talál további információt.
 
 
-|Name (Név)  |Operációs rendszer  |Földrajzi egység  |Díjcsomag  |
+|Név  |Operációs rendszer  |Hely  |Tarifacsomag  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|USA keleti régiója|Fejlesztési/tesztelési D1 – közös|
-|ASP-02     |Windows|USA középső régiója|Fejlesztési/tesztelési D1 – közös|
+|ASP-01     |Windows|USA keleti régiója|Fejlesztés/tesztelés D1-megosztva|
+|ASP-02     |Windows|USA középső régiója|Fejlesztés/tesztelés D1-megosztva|
 
-## <a name="create-app-services"></a>App Services létrehozása
+## <a name="create-app-services"></a>Alkalmazásszolgáltatások létrehozása
 
-Hozzon létre két webalkalmazást, egyet az egyes App Service-csomagokban.
+Hozzon létre két webalkalmazást, egyet-egyet az Egyes App Service-csomagban.
 
-1. Az Azure Portal lap bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget.
-2. Írja be a **webalkalmazás** kifejezést a keresősávba, majd nyomja le az ENTER billentyűt.
-3. Válassza a **webalkalmazás**lehetőséget.
+1. Az Azure Portal lap bal felső sarkában válassza az **Erőforrás létrehozása lehetőséget.**
+2. Írja be a **Webapp kifejezést** a keresősávba, és nyomja le az Enter billentyűt.
+3. Válassza a **Web App lehetőséget**.
 4. Kattintson a **Létrehozás** gombra.
-5. Fogadja el az alapértelmezett értékeket, és a következő táblázat segítségével konfigurálja a két webalkalmazást:
+5. Fogadja el az alapértelmezett beállításokat, és az alábbi táblázat segítségével konfigurálja a két webalkalmazást:
 
-   |Name (Név)<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |Futásidejű verem|Region (Régió)|App Service csomag/hely
+   |Név<br>(egyedinek kell lennie a .azurewebsites.net)(unique within .azurewebsites.net)|Erőforráscsoport |Futtatókörnyezet verme|Régió|App Service-csomag/hely
    |---------|---------|-|-|-------|
-   |App-01|Meglévő használata<br>Válassza ki az erőforráscsoportot|.NET Core 2.2|USA keleti régiója|ASP-01 (D1)|
-   |App-02|Meglévő használata<br>Válassza ki az erőforráscsoportot|.NET Core 2.2|USA középső régiója|ASP-02 (D1)|
+   |Alkalmazás-01|Meglévő használata<br>Az erőforráscsoport kiválasztása|.NET Core 2.2|USA keleti régiója|ASP-01(D1)|
+   |Alkalmazás-02|Meglévő használata<br>Az erőforráscsoport kiválasztása|.NET Core 2.2|USA középső régiója|ASP-02(D1)|
 
-### <a name="gather-some-details"></a>Részletek összegyűjtése
+### <a name="gather-some-details"></a>Gyűjtsön össze néhány részletet
 
-Most fel kell jegyeznie a webalkalmazások IP-címét és állomásnevét.
+Most meg kell jegyeznie a webalkalmazások IP-címét és állomásnevét.
 
-1. Nyissa meg az erőforráscsoportot, és válassza ki az első webalkalmazását (ebben a példában az**app-01** fájl).
-2. A bal oldali oszlopban válassza a **Tulajdonságok**lehetőséget.
-3. Jegyezze fel az **URL**-cím alatti címet, és a **kimenő IP-címek** területen jegyezze fel a lista első IP-címét. Ezt az információt később a Traffic Manager végpontok konfigurálásakor fogja használni.
-4. Ismételje meg az **app-02-** et.
+1. Nyissa meg az erőforráscsoportot, és válassza ki az első webalkalmazást (Ebben a példában az**App-01).**
+2. A bal oldali oszlopban válassza a **Tulajdonságok lehetőséget.**
+3. Vegye figyelembe az **URL alatt**található címet, a **Kimenő IP-címek** csoportban pedig jegyezze fel a lista első IP-címét. Ezt az információt később fogja használni, amikor konfigurálja a Traffic Manager végpontjait.
+4. Ismételje meg a műveletet a **02-es alkalmazással.**
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-Hozzon létre egy Traffic Manager profilt az erőforráscsoporthoz. Használja az alapértelmezett értékeket, és adjon meg egy egyedi nevet a trafficmanager.net névtérben.
+Hozzon létre egy Traffic Manager-profilt az erőforráscsoportban. Használja az alapértelmezett beállításokat, és írjon be egy egyedi nevet a trafficmanager.net névtérbe.
 
-Traffic Manager profil létrehozásával kapcsolatos információkért tekintse meg a rövid [útmutató: Traffic Manager-profil létrehozása egy kiválóan elérhető webalkalmazáshoz](../traffic-manager/quickstart-create-traffic-manager-profile.md)című témakört.
+A Traffic Manager-profilok létrehozásáról további információt a [Rövid útmutató: Traffic Manager-profil létrehozása magas rendelkezésre állású webalkalmazáshoz](../traffic-manager/quickstart-create-traffic-manager-profile.md)című témakörben talál.
 
 ### <a name="create-endpoints"></a>Végpontok létrehozása
 
-Most már létrehozhatja a két webalkalmazáshoz tartozó végpontokat.
+Most már létrehozhatja a két webalkalmazás végpontjait.
 
 1. Nyissa meg az erőforráscsoportot, és válassza ki a Traffic Manager-profilt.
-2. A bal oldali oszlopban válassza a **végpontok**lehetőséget.
+2. A bal oldali oszlopban válassza a **Végpontok**lehetőséget.
 3. Válassza a **Hozzáadás** lehetőséget.
-4. A végpontok konfigurálásához használja a következő táblázatot:
+4. A végpontok konfigurálásához használja az alábbi táblázatot:
 
-   |Type (Típus)  |Name (Név)  |Cél  |Földrajzi egység  |Egyéni fejléc beállításai|
+   |Típus  |Név  |Cél  |Hely  |Egyéni fejléc beállításai|
    |---------|---------|---------|---------|---------|
-   |Külső végpont     |Vége – 01|Az App-01-ben rögzített IP-cím|USA keleti régiója|gazdagép:\<az App-01\> rögzített URL-címet<br>Példa: **Host: app-01.azurewebsites.net**|
-   |Külső végpont     |Záró 02|Az App-02-hez rögzített IP-cím|USA középső régiója|gazdagép:\<az App-02\> rögzített URL-címet<br>Példa: **Host: app-02.azurewebsites.net**
+   |Külső végpont     |01. vége|Az App-01-hez rögzített IP-cím|USA keleti régiója|host:\<az App-01-hez rögzített URL-cím\><br>Példa: **állomás:alkalmazás-01.azurewebsites.net**|
+   |Külső végpont     |02. vége|Az App-02-hez rögzített IP-cím|USA középső régiója|host:\<az App-02-hez rögzített URL-cím\><br>Példa: **állomás:alkalmazás-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zóna létrehozása
 
-Egy meglévő DNS-zónát is használhat teszteléshez, vagy létrehozhat egy új zónát is. Ha új DNS-zónát szeretne létrehozni és delegálni az Azure-ban, tekintse meg az [oktatóanyag: a tartomány üzemeltetése Azure DNSban](dns-delegate-domain-azure-dns.md)című témakört.
+A teszteléshez használhat egy meglévő DNS-zónát, vagy létrehozhat egy új zónát. Új DNS-zóna létrehozásához és delegálásához az [Azure-ban az Oktatóanyag: A tartomány üzemeltetése az Azure DNS-ben](dns-delegate-domain-azure-dns.md)című témakörben található.
 
-## <a name="add-a-txt-record-for-custom-domain-validation"></a>TXT-rekord hozzáadása az egyéni tartomány érvényesítéséhez
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>TXT rekord hozzáadása egyéni tartomány-érvényesítéshez
 
-Ha egyéni állomásnevet ad hozzá a webalkalmazásokhoz, az egy adott TXT-rekordot fog keresni a tartomány érvényesítéséhez.
+Amikor egyéni állomásnevet ad hozzá a webalkalmazásokhoz, egy adott TXT-rekordot fog keresni a tartomány érvényesítéséhez.
 
 1. Nyissa meg az erőforráscsoportot, és válassza ki a DNS-zónát.
 2. Válassza a **Rekordhalmaz** elemet.
-3. Adja hozzá a rekordot a következő táblázat használatával. Az értéknél használja a korábban rögzített webalkalmazás URL-címét:
+3. Adja hozzá a rekordkészletet az alábbi táblázat segítségével. Az értékhez használja a korábban rögzített webalkalmazás-URL-címet:
 
-   |Name (Név)  |Type (Típus)  |Value (Díj)|
+   |Név  |Típus  |Érték|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
 
 ## <a name="add-a-custom-domain"></a>Egyéni tartomány hozzáadása
 
-Adjon hozzá egy egyéni tartományt mindkét webalkalmazáshoz.
+Egyéni tartomány hozzáadása mindkét webalkalmazáshoz.
 
-1. Nyissa meg az erőforráscsoportot, és válassza ki az első webalkalmazását.
-2. A bal oldali oszlopban válassza az **Egyéni tartományok**elemet.
-3. Az **Egyéni tartományok**területen válassza az **egyéni tartomány hozzáadása**elemet.
-4. Az **egyéni tartomány**területen adja meg az egyéni tartomány nevét. Például: contoso.com.
+1. Nyissa meg az erőforráscsoportot, és válassza ki az első webalkalmazást.
+2. A bal oldali oszlopban válassza az **Egyéni tartományok**lehetőséget.
+3. Az **Egyéni tartományok csoportban**válassza **az Egyéni tartomány hozzáadása**lehetőséget.
+4. Az **Egyéni tartomány**csoportban adja meg az egyéni tartománynevét. Például adja meg a contoso.com nevet.
 5. Válassza az **Érvényesítés** lehetőséget.
 
-   A tartománynak át kell adnia az érvényesítést, és zöld pipa jeleket kell megadnia az **állomásnév elérhetősége** és a **tartomány tulajdonjoga**mellett.
-5. Válassza az **Egyéni tartomány hozzáadása** lehetőséget.
-6. Ha meg szeretné tekinteni az új gazdagépet a **helyhez rendelt állomásnevek**alatt, frissítse a böngészőt. A lapon lévő frissítés nem mindig azonnal mutatja a módosításokat.
-7. Ismételje meg ezt az eljárást a második webalkalmazás esetében.
+   A tartománynak át kell mennie az ellenőrzésen, és zöld pipákat kell megjelenítenie a **Állomásnév elérhetősége** és **a tartomány tulajdonjoga**mellett.
+5. Válassza **az Egyéni tartomány hozzáadása**lehetőséget.
+6. Ha az új állomásnevet a **webhelyhez rendelt állomásnevek**között szeretné látni, frissítse a böngészőt. Az oldalon lévő frissítés nem mindig jelenik meg azonnal a módosítások között.
+7. Ismételje meg ezt az eljárást a második webalkalmazásban.
 
-## <a name="add-the-alias-record-set"></a>Az alias-rekord hozzáadása
+## <a name="add-the-alias-record-set"></a>Alias rekordkészlet hozzáadása
 
-Most adjon hozzá egy alias-rekordot a zóna csúcsához.
+Most adjon hozzá egy alias rekordot a zóna csúcsa.
 
 1. Nyissa meg az erőforráscsoportot, és válassza ki a DNS-zónát.
 2. Válassza a **Rekordhalmaz** elemet.
-3. Adja hozzá a rekordot a következő táblázat használatával:
+3. Adja hozzá a rekordkészletet az alábbi táblázat segítségével:
 
-   |Name (Név)  |Type (Típus)  |Alias-rekord készlete  |Alias típusa  |Azure-erőforrás|
+   |Név  |Típus  |Alias rekordkészlet  |Alias típusa  |Azure-erőforrás|
    |---------|---------|---------|---------|-----|
-   |@     |A|Igen|Azure-erőforrás|Traffic Manager – a profil|
+   |@     |A|Igen|Azure-erőforrás|Traffic Manager - a profil|
 
 
-## <a name="test-your-web-apps"></a>Webes alkalmazások tesztelése
+## <a name="test-your-web-apps"></a>A webalkalmazások tesztelése
 
-Most már ellenőrizheti, hogy elérhető-e a webalkalmazás, és hogy terheléselosztás alatt áll-e.
+Most tesztelheti, hogy biztosan elérheti-e a webalkalmazást, és hogy a terhelés elosztása folyamatban van.Now you can test to make sure you can reach your web app and that it's being being load balanced.
 
-1. Nyisson meg egy webböngészőt, és keresse meg a tartományt. Például: contoso.com. Ekkor megjelenik az alapértelmezett webalkalmazás lap.
+1. Nyisson meg egy webböngészőt, és keresse meg a tartományt. Például adja meg a contoso.com nevet. Meg kell jelennie az alapértelmezett webalkalmazás-lapnak.
 2. Állítsa le az első webalkalmazást.
-3. Zárjunk be egy webböngészőt, és várjon néhány percet.
-4. Indítsa el a böngészőt, és keresse meg a tartományt. Az alapértelmezett webalkalmazás lap továbbra is megjelenik.
+3. Zárja be a webböngészőt, és várjon néhány percet.
+4. Indítsa el a webböngészőt, és keresse meg a tartományt. Továbbra is látnia kell az alapértelmezett webalkalmazás-lapot.
 5. Állítsa le a második webalkalmazást.
-6. Zárjunk be egy webböngészőt, és várjon néhány percet.
-7. Indítsa el a böngészőt, és keresse meg a tartományt. A 403-es hiba jelenik meg, amely azt jelzi, hogy a webalkalmazás leáll.
+6. Zárja be a webböngészőt, és várjon néhány percet.
+7. Indítsa el a webböngészőt, és keresse meg a tartományt. Meg kell jelennie a 403-as hiba, jelezve, hogy a webalkalmazás le van állítva.
 8. Indítsa el a második webalkalmazást.
-9. Zárjunk be egy webböngészőt, és várjon néhány percet.
-10. Indítsa el a böngészőt, és keresse meg a tartományt. Ekkor meg kell jelennie az alapértelmezett webalkalmazás-oldalnak.
+9. Zárja be a webböngészőt, és várjon néhány percet.
+10. Indítsa el a webböngészőt, és keresse meg a tartományt. Újra meg kell jelennie az alapértelmezett webalkalmazás-lapnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alias-rekordokkal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Az aliasrekordokról az alábbi cikkekben olvashat bővebben:
 
-- [Oktatóanyag: alias-rekord konfigurálása egy Azure nyilvános IP-címre való hivatkozáshoz](tutorial-alias-pip.md)
-- [Oktatóanyag: alias-rekord konfigurálása a APEX-tartománynevek támogatásához Traffic Manager](tutorial-alias-tm.md)
+- [Oktatóanyag: Állítson be egy aliasrekordot egy azure-beli nyilvános IP-címre való hivatkozáshoz](tutorial-alias-pip.md)
+- [Oktatóanyag: aliasrekord konfigurálása a hogy, támogassa a legfelső szintű tartományneveket a Traffic Managerrel](tutorial-alias-tm.md)
 - [DNS – gyakori kérdések](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 
-Az aktív DNS-nevek áttelepítésének megismeréséhez tekintse meg [az aktív DNS-név Áttelepítését Azure app Servicere](../app-service/manage-custom-dns-migrate-domain.md)című témakört.
+Az aktív DNS-név áttelepítése című témakörben [olvashat: Aktív DNS-név áttelepítése az Azure App Service szolgáltatásba című témakörben.](../app-service/manage-custom-dns-migrate-domain.md)

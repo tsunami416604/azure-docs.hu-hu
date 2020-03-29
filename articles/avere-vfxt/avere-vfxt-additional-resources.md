@@ -1,36 +1,36 @@
 ---
-title: További hivatkozások az Azure-hoz készült avere-vFXT
-description: Az Azure-hoz készült avere-vFXT kapcsolatos további információkra mutató hivatkozások
+title: További linkek az Avere vFXT for Azure-ról
+description: Az Azure-hoz való Avere vFXT szolgáltatással kapcsolatos további információkra mutató hivatkozások
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153768"
 ---
 # <a name="additional-documentation"></a>További dokumentáció
 
-Ez a cikk a avere Vezérlőpult felügyeleti felületével és a kapcsolódó témakörökkel kapcsolatos további dokumentációra mutató hivatkozásokat tartalmaz.
+Ez a cikk az Avere Vezérlőpult kezelőfelületével és a kapcsolódó témakörökkel kapcsolatos további dokumentációra mutató hivatkozásokat tartalmaz.
 
-## <a name="avere-cluster-documentation"></a>Avere-fürt dokumentációja
+## <a name="avere-cluster-documentation"></a>Avere fürt dokumentáció
 
-További avere-fürt dokumentációja a következő webhelyen található: <https://azure.github.io/Avere/>. Ezek a dokumentumok segítenek megérteni a fürt képességeit, valamint a beállítások konfigurálásának módját.
+Az Avere fürt további dokumentációja <https://azure.github.io/Avere/>megtalálható a webhelyen: . Ezek a dokumentumok segítenek megérteni a fürt képességeit és beállításainak konfigurálását.
 
-* A [FXT-fürt létrehozási útmutatója](<https://azure.github.io/Avere/#fxt_cluster>) olyan fürtökhöz lett tervezve, amelyek fizikai hardveres csomópontokból állnak, de a dokumentumban található információk a vFXT-fürtökhöz is relevánsak. Az új vFXT-fürt rendszergazdái az alábbi fejezetek elolvasását élvezhetik:
-  * A [támogatási és figyelési beállítások testreszabása](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) elmagyarázza, hogyan szabhatja testre a támogatás feltöltési beállításait és engedélyezheti a távoli figyelést.
-  * A [VServers és a globális névtér konfigurálása](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) az ügyfélre irányuló névtér létrehozásával kapcsolatos információkat tartalmaz.
-  * [A DNS konfigurálása a AVERE-fürthöz](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) elmagyarázza, hogyan kell konfigurálni a ciklikus multiplexelés DNS-t.
-  * [Háttérbeli tárolási dokumentumok hozzáadása](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) a Core filers hozzáadásához.
+* Az [FXT-fürtlétrehozási útmutató](<https://azure.github.io/Avere/#fxt_cluster>) fizikai hardvercsomópontokból álló fürtökhöz készült, de a dokumentumban szereplő egyes információk a vFXT-fürtök esetében is relevánsak. Az új vFXT-fürtrendszergazdái nak különösen az alábbi szakaszok olvasása előnyeit élvezhetik:
+  * [A Támogatási és figyelési beállítások testreszabása](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) a támogatási feltöltési beállítások testreszabását és a távoli figyelés engedélyezését ismerteti.
+  * [A VServers és a globális névtér konfigurálása](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) az ügyfélfelé néző névtér létrehozásáról tartalmaz információkat.
+  * [A DNS konfigurálása az Avere fürthöz](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) a ciklikus multiplexeléses DNS konfigurálása.
+  * [Háttérrendszerű tárolási](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) dokumentumok hozzáadása alapvető fájlkezelők hozzáadásához.
 
-* A [fürt konfigurációs útmutatója](<https://azure.github.io/Avere/#operations>) egy avere-fürt beállításainak és beállításainak teljes referenciája. A vFXT-fürtök ezen beállítások egy részhalmazát használják, de a legtöbb esetben ugyanazok a konfigurációs lapok érvényesek.
+* A [fürtkonfigurációs útmutató](<https://azure.github.io/Avere/#operations>) az Avere-fürt beállításainak és beállításainak teljes hivatkozása. A vFXT-fürt a beállítások egy részét használja, de ugyanazon konfigurációs lapok többsége érvényes.
 
-* Az [irányítópult-útmutató](<https://azure.github.io/Avere/#operations>) ismerteti, hogyan használható a avere Vezérlőpult fürt figyelési funkciói.
+* Az [Irányítópult-útmutató](<https://azure.github.io/Avere/#operations>) bemutatja, hogyan használható az Avere vezérlőpult fürtfigyelő szolgáltatásai.
 
-## <a name="vfxt-creation-and-management-documentation"></a>vFXT-létrehozási és-kezelési dokumentáció
+## <a name="vfxt-creation-and-management-documentation"></a>vFXT létrehozási és kezelési dokumentáció
 
-A vfxt.py, egy parancsfájl-alapú felhőalapú fürt létrehozási és felügyeleti segédprogramjának használatával kapcsolatos teljes útmutató a GitHubon érhető el: [felhőalapú fürt kezelése a vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)-mel.
+A Vfxt.py, egy parancsfájlalapú felhőfürt-létrehozási és -felügyeleti segédprogram használatának teljes útmutatója a GitHubon található: [A felhőalapú fürtkezelés vfxt.py.](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)

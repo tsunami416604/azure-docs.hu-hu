@@ -1,6 +1,6 @@
 ---
-title: Nem csatlakoztatott Azure hálózati adapterek keresése és törlése
-description: Virtuális gépekhez nem csatlakoztatott Azure hálózati adapterek keresése és törlése az Azure CLI-vel
+title: Nem csatlakoztatott Azure-hálózati adapterek keresése és törlése
+description: Az Azure CLI-vel nem virtuális gépekhez nem csatolt Azure hálózati adapterek megkeresése és törlése
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: networking
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
 ms.openlocfilehash: 8142b95ee666e205a8328eafd5930f1f386e49af
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945135"
 ---
-# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Nem csatlakoztatott hálózati adapterek (NIC-EK) keresése és törlése Azure-beli virtuális gépekhez
-Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati adapterek (NIC) alapértelmezés szerint nem törlődnek. Ha több virtuális gépet hoz létre és töröl, a nem használt hálózati adapterek továbbra is a belső IP-címbérleteket használják. Más virtuálisgép-hálózati adapterek létrehozásakor előfordulhat, hogy nem tudnak IP-címbérletet szerezni az alhálózat címterület számára. Ez a cikk bemutatja, hogyan lehet megkeresni és törölni a nem csatolt hálózati adaptereket.
+# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Nem csatlakoztatott hálózati csatolókártyák (NIC-k) megkeresése és törlése az Azure virtuális gépeihez
+Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati csatolókártyák (NIC-k) alapértelmezés szerint nem törlődnek. Ha több virtuális gépet hoz létre és töröl, a nem használt hálózati adapterek továbbra is a belső IP-címbérleteket használják. Más virtuálisgép-hálózati adapterek létrehozásakor előfordulhat, hogy nem tudnak IP-címbérletet szerezni az alhálózat címterében. Ez a cikk bemutatja, hogyan keresheti meg és törölheti a nem csatlakoztatott hálózati adaptereket.
 
 ## <a name="find-and-delete-unattached-nics"></a>Nem csatolt hálózati adapterek keresése és törlése
 
-A hálózati adapter *virtualMachine* tulajdonsága tárolja annak a virtuális GÉPNEK az azonosítóját és erőforrás-csoportját, amelyhez a hálózati adapter csatlakozik. Az alábbi szkript hurkokat hajt végre az előfizetésben található összes hálózati adapteren, és ellenőrzi, hogy a *virtualMachine* tulajdonság null értékű-e. Ha ez a tulajdonság null értékű, a hálózati adapter nincs virtuális géphez csatlakoztatva.
+A hálózati adapter *virtualMachine* tulajdonsága tárolja annak a virtuális gépnek az azonosítóját és erőforráscsoportját, amelyhez a hálózati adapter kapcsolódik. A következő parancsfájl hurkok között az összes hálózati adapterek egy előfizetésben, és ellenőrzi, ha a *VirtualMachine* tulajdonság null. Ha ez a tulajdonság null értékű, a hálózati adapter nem kapcsolódik a virtuális géphez.
 
-Az összes nem csatolt hálózati adapter megtekintéséhez erősen ajánlott a parancsfájlt a *deleteUnattachedNics* változóval *0-ra*futtatni. Ha törölni szeretné az összes nem csatolt hálózati adaptert a lista kimenetének áttekintése után, futtassa a szkriptet a *deleteUnattachedNics* *1*értékre.
+Az összes független hálózati adapter megtekintéséhez javasoljuk, hogy először futtassa a parancsfájlt a *deleteUnattachedNics* változóval *0-ra*. Ha a listakimenet áttekintése után törölni szeretné az összes nem csatlakoztatott hálózati adaptert, futtassa a parancsfájlt *unattachedNics* értékkel *1-re*.
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs
@@ -46,4 +46,4 @@ done
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure-beli virtuális hálózatok létrehozásával és kezelésével kapcsolatos további információkért lásd: virtuálisgép- [hálózatok létrehozása és kezelése](tutorial-virtual-network.md).
+A virtuális hálózatok Azure-beli létrehozásáról és kezeléséről a [Virtuálisgép-hálózatok létrehozása és kezelése](tutorial-virtual-network.md)című témakörben talál további információt.

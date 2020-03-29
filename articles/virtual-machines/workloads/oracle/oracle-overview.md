@@ -1,6 +1,6 @@
 ---
-title: Oracle-megoldások a Microsoft Azureon | Microsoft Docs
-description: Ismerkedjen meg az Oracle-alkalmazások és-megoldások Microsoft Azureon történő üzembe helyezési lehetőségeivel, beleértve a teljes körű Azure-infrastruktúrán való futtatást vagy az Oracle Cloud Infrastructure (OCI) Felhőbeli kapcsolatait is.
+title: Oracle megoldások a Microsoft Azure-on | Microsoft dokumentumok
+description: Ismerje meg az Oracle Applications és megoldások Microsoft Azure-on történő telepítésének lehetőségeit, beleértve a teljes körű Azure-infrastruktúrán való futtatást vagy a felhőközi kapcsolatot az Oracle Cloud Infrastructure (OCI) szolgáltatással.
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -14,82 +14,82 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806609"
 ---
-# <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
+# <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Oracle alkalmazások és megoldások áttekintése az Azure-ban
 
-Ez a cikk az Oracle-megoldások Azure-infrastruktúra használatával történő futtatásának lehetőségeit mutatja be. Tekintse meg az Azure Marketplace-en elérhető [Oracle VM-rendszerképek](oracle-vm-solutions.md) részletes bevezetését, valamint az [Azure-t az Oracle Cloud Infrastructure (OCI)](oracle-oci-overview.md)segítségével.
+Ez a cikk bemutatja az Oracle-megoldások Azure-infrastruktúrát használó futtatásának lehetőségeit. Tekintse meg az Azure Piactéren elérhető [Oracle virtuálisgép-lemezképek](oracle-vm-solutions.md) részletes bemutatkozását, valamint az Azure és az [Oracle Cloud Infrastructure (OCI) közötti kapcsolat előnézeti](oracle-oci-overview.md)képességét.
 
-## <a name="oracle-databases-on-azure-infrastructure"></a>Oracle-adatbázisok az Azure-infrastruktúrában
+## <a name="oracle-databases-on-azure-infrastructure"></a>Oracle-adatbázisok az Azure-infrastruktúrán
 
-Oracle-adatbázisok futtatása Azure-infrastruktúrán az Azure Marketplace-en elérhető Oracle Linux-lemezképek Oracle Database használatával:
+Oracle-adatbázisok futtatása az Azure-infrastruktúrán az Oracle Database on Oracle Linux-lemezképek használatával, amelyek az Azure Marketplace-en érhetők el:
 
-* Oracle Database 12,1, 12,2 és 18,3 Enterprise Edition 
+* Oracle Database 12.1, 12.2 és 18.3 Enterprise Edition 
 
-* Oracle Database 12,1, 12,2 és 18,3 Standard Edition 
+* Oracle Database 12.1, 12.2 és 18.3 Standard Edition 
 
-Azt is megteheti, hogy az Azure-ban elérhető nem Oracle Linux rendszerképeken beállít egy olyan megoldást, amely a teljesen új Azure-ban létrehozott, vagy a helyszíni környezetből származó egyéni rendszerkép feltöltésével Oracle Database.
+Dönthet úgy is, hogy az Oracle Database-t az Azure-ban elérhető, nem Oracle Linux-lemezképre állítja, és a megoldást egy olyan egyéni lemezképre alapozza, amelyet az Azure-ban a semmiből hoz létre, vagy egyéni lemezképet tölt fel a helyszíni környezetből.
 
-Opcionálisan konfigurálhat több csatlakoztatott lemezzel, és javíthatja az adatbázis teljesítményét az Oracle automatizált Storage Management (ASM) telepítésével.
+Az Oracle Automated Storage Management (ASM) telepítésével konfigurálhatja a több csatlakoztatott lemezt, és javíthatja az adatbázis teljesítményét.
 
-## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Alkalmazások Oracle Linux-és WebLogic-kiszolgálón
+## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Alkalmazások Oracle Linux és WebLogic Server rendszeren
 
-Vállalati alkalmazások futtatása az Azure-ban támogatott Oracle operációs rendszereken. Az Azure Marketplace-en az alábbi rendszerképek érhetők el:
+Nagyvállalati alkalmazások futtatása az Azure-ban a támogatott Oracle operációs rendszereken. A következő képek érhetők el az Azure Marketplace-en:
 
-* Oracle WebLogic-kiszolgáló 12.1.2
+* Oracle WebLogic Server 12.1.2
 
-* Oracle Linux a nem törhető vállalati rendszermaggal (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 és 7,6 
+* Oracle Linux a Törhetetlen Enterprise Kernel (UEK) 6.8, 6.9, 6.10, 7.3, 7.4, 7.5 és 7.6 
 
-## <a name="high-availability-and-disaster-recovery-options"></a>Magas rendelkezésre állás és vész-helyreállítási lehetőségek
+## <a name="high-availability-and-disaster-recovery-options"></a>Magas rendelkezésre állás és vészhelyreállítási lehetőségek
 
-* Az [Oracle-adatvédelmet](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956) [, az](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) [aktív adatvédelmet az](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)Azure-infrastruktúra FSFO, horizontális Felskálázási vagy [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) szolgáltatásával együtt [Availability Zones](../../../availability-zones/az-overview.md) magas rendelkezésre állást biztosít a régióban. Ezeket a konfigurációkat több Azure-régióban is beállíthatja a rendelkezésre állás és a katasztrófa utáni helyreállítás érdekében.
+* Konfigurálja [az Oracle Data Guard,](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956) [Active Data Guard with FSFO,](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html) [Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) vagy [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) az Azure-infrastruktúrát a [rendelkezésre állási zónákkal](../../../availability-zones/az-overview.md) együtt a régióban rendelkezésre álló magas rendelkezésre állás érdekében. Ezeket a konfigurációkat több Azure-régióban is beállíthatja a további rendelkezésre állás és a vészhelyreállítás érdekében.
 
-* A [Azure site Recovery](../../../site-recovery/site-recovery-overview.md) segítségével összehangolhatja és kezelheti az Azure-beli és a helyszíni vagy fizikai kiszolgálókon futó Oracle Linux virtuális gépek vész-helyreállítását. 
+* Az [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) használatával az Azure-beli Oracle Linux-beli virtuális gépek vészutáni helyreállítását vezényelheti és kezelheti. 
 
-* Az Oracle Real Application Clusters (RAC) engedélyezése az Azure-ban az [Azure VMware megoldás](https://docs.azure.cloudsimple.com/oracle-rac/) vagy a [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)használatával.
+* Engedélyezze az Oracle Real Application Clusters (RAC) szolgáltatást az Azure-ban az [Azure VMWare-megoldásvagy](https://docs.azure.cloudsimple.com/oracle-rac/) a [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)használatával.
 
-## <a name="backup-oracle-workloads"></a>Oracle számítási feladatok biztonsági mentése
+## <a name="backup-oracle-workloads"></a>Oracle-munkaterhelések biztonsági mentése
 
-* Oracle-alapú virtuális gépek biztonsági mentése [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) használatával
+* Készítsen biztonsági másolatot oracle virtuális gépeiről az [Azure Backup használatával](https://docs.microsoft.com/azure/backup/backup-overview)
 
-* Készítsen biztonsági másolatot a Oracle Database Oracle Oláh Anna, és opcionálisan az [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) használatával csatlakoztathat egy nagyvállalati szintű [Azure Blob Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-redundancy) , és a Oláh Anna biztonsági másolatait is megírhatja a rugalmasság érdekében.
+* Készítsen biztonsági másolatot oracle-adatbázisairól az Oracle RMAN használatával, és az [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) használatával csatlakoztatjon egy [erősen redudant Azure Blob Storage-fiókot,](https://docs.microsoft.com/azure/storage/common/storage-redundancy) és írja meg rman biztonsági másolatait a további rugalmasság érdekében.
 
-## <a name="integration-of-azure-with-oci-preview"></a>Az Azure integrálása a OCI (előzetes verzió)
+## <a name="integration-of-azure-with-oci-preview"></a>Az Azure integrációja az OCI-vel (előzetes verzió)
 
-Oracle-alkalmazások futtatása Azure-infrastruktúrában, háttér-adatbázisokhoz csatlakoztatva az Oracle Cloud Infrastructure (OCI) szolgáltatásban. Ez a megoldás a következő képességeket használja: 
+Oracle-alkalmazások futtatása az Azure-infrastruktúrában, háttér-adatbázisokhoz csatlakoztatva az Oracle Cloud Infrastructure (OCI) alkalmazásban. Ez a megoldás a következő képességeket használja: 
 
-* **Felhőbeli hálózatkezelés** – az Azure ExpressRoute és az Oracle FastConnect között elérhető közvetlen összekötő használatával nagy sávszélességű, privát és kis késleltetésű kapcsolat hozható létre az alkalmazás és az adatbázis réteg között.
-* **Integrált identitás** – összevont identitást állíthat be az Azure ad és az Oracle IDCS között, hogy egyetlen identitási forrást hozzon létre a megoldásokhoz. Az egyszeri bejelentkezés lehetővé teszi az erőforrások kezelését a OCI és az Azure között.
+* **Felhőközi hálózat –** Az Azure ExpressRoute és az Oracle FastConnect között elérhető közvetlen kapcsolattal nagy sávszélességű, privát és alacsony késésű kapcsolatokat létesíthet az alkalmazás és az adatbázisréteg között.
+* **Integrált identitás** – Az Azure AD és az Oracle IDCS közötti összevont identitás beállítása a megoldások egyetlen identitásforrásának létrehozásához. Egyszeri bejelentkezés engedélyezése az erőforrások oci és az Azure-ban való kezeléséhez.
 
-### <a name="deploy-oracle-applications-on-azure"></a>Oracle-alkalmazások üzembe helyezése az Azure-ban
+### <a name="deploy-oracle-applications-on-azure"></a>Oracle-alkalmazások telepítése az Azure-ban
 
-A Terraform-sablonok használatával beállíthatja az Azure-infrastruktúrát, és telepítheti a hitelesített és támogatott Oracle-alkalmazásokat:
+Terraform-sablonok használatával állíthatja be az Azure-infrastruktúrát, és telepítheti az Oracle Applications validált és támogatott alkalmazásokat a felhőközi konfigurációban való futtatáshoz:
 
-* E-Business csomag
-* JD Edwards EnterpriseOne
-* PeopleSoft
-* Oracle kereskedelmi alkalmazások
-* Oracle Hyperion pénzügyi felügyelet
+* E-Business lakosztály
+* JD Edwards Vállalat
+* Peoplesoft
+* Oracle kiskereskedelmi alkalmazások
+* Oracle Hyperion pénzügyi menedzsment
 
-Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI és más Azure-szolgáltatásokhoz kapcsolódnak.
+Egyéni alkalmazásokat is üzembe helyezhet az Azure-ban, amelyek OCI-vel és más Azure-szolgáltatásokkal kapcsolódnak.
 
-### <a name="set-up-oracle-databases-in-oci"></a>Oracle-adatbázisok beállítása a OCI-ben
+### <a name="set-up-oracle-databases-in-oci"></a>Oracle-adatbázisok beállítása oci-ben
 
-Az Azure-ban futó Oracle-alkalmazásokkal együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
+Az Oracle Database Cloud Services (Autonomous Database, RAC, Exadata, DBaaS, Single Node) és az Azure-ban futó Oracle-alkalmazások használata. További információ az [OCI adatbázis beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
-Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
+Az Oracle Applications azure-beli telepítése a "saját licenccel" modellen alapul. Feltételezhető, hogy ön megfelelő licenccel rendelkezik az Oracle szoftver használatára, és hogy jelenleg támogatási megállapodás van érvényben az Oracle-lel. Az Oracle garantált licenchordozhatósággal rendelkezik a helyszíni azure-ból. Tekintse meg az Oracle-Azure [gyakori kérdéseket.](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ az [Oracle VM-rendszerképek](oracle-vm-solutions.md) Azure-infrastruktúrában történő üzembe helyezéséről.
+* További információ az [Oracle Virtuálisgép-lemezképek](oracle-vm-solutions.md) Azure-infrastruktúrában való üzembe helyezéséről.
 
-* További információ az [Azure OCI-vel](oracle-oci-overview.md)való összekapcsolódásáról.
+* További információ az Azure és az [OCI összekapcsolásáról.](oracle-oci-overview.md)
 
-* Tekintse meg az Azure-beli [Oracle-áttekintést](https://myignite.techcommunity.microsoft.com/sessions/82915) az Ignite 2019-ről. 
+* Tekintse meg az [Oracle on Azure áttekintő munkamenetét](https://myignite.techcommunity.microsoft.com/sessions/82915) az Ignite 2019-ből. 

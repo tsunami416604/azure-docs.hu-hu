@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés használata a felhőalapú kiépítés során
-description: Ez a cikk bemutatja, hogyan telepítheti és használhatja az SSO-t a felhőalapú kiépítés során.
+title: Az egyszeri bejelentkezés használata a felhőalapú kiépítéssel
+description: Ez a cikk ismerteti, hogyan telepítheti és használhatja az sso a felhőkiépítés.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3667dd529ce5542be84c5e357053d8cd11eb91e9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76908989"
 ---
-# <a name="using-single-sign-on-with-cloud-provisioning"></a>Egyszeri bejelentkezés használata a felhőalapú kiépítés használatával
-Az alábbi dokumentum azt ismerteti, hogyan használhatja az egyszeri bejelentkezést a felhőalapú kiépítés során.
+# <a name="using-single-sign-on-with-cloud-provisioning"></a>Egyszeri bejelentkezés használata felhőalapú kiépítéssel
+A következő dokumentum ismerteti, hogyan használhatja az egyszeri bejelentkezés a felhőkiépítés.
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]
 
@@ -27,7 +27,7 @@ Az alábbi dokumentum azt ismerteti, hogyan használhatja az egyszeri bejelentke
 
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
-- [Mi a kiépítés?](what-is-provisioning.md)
-- [Mi az Azure AD Connect Cloud kiépítés?](what-is-cloud-provisioning.md)
+- [Mi az az üzembe helyezés?](what-is-provisioning.md)
+- [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Alkalmazás-vagy felhasználóspecifikus Marathon-szolgáltatás
+title: (ELAVULT) Alkalmazás- vagy felhasználóspecifikus Marathon szolgáltatás
 description: Alkalmazás- vagy felhasználóspecifikus Marathon-szolgáltatás létrehozása
 author: rgardler
 ms.service: container-service
@@ -8,13 +8,13 @@ ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 423dc7f62806f774a5ec4855faa8be9001292773
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277717"
 ---
-# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>ELAVULT Alkalmazás-vagy felhasználóspecifikus Marathon-szolgáltatás létrehozása
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(ELAVULT) Alkalmazás vagy felhasználóspecifikus Marathon szolgáltatás létrehozása
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -25,7 +25,7 @@ Ebben a cikkben elmagyarázzuk, hogyan adhat meg alkalmazás- vagy felhasználó
 Mivel ez a szolgáltatás egyetlen felhasználóhoz vagy csapathoz fog tartozni, tetszés szerint konfigurálható. Az Azure Container Service gondoskodik arról, hogy a szolgáltatás futása ne szakadjon meg. Ha a szolgáltatás meghiúsul, az Azure Container Service újraindul. Az esetek többségében nem is lehet észrevenni a kiesést.
 
 ## <a name="prerequisites"></a>Előfeltételek
-[Helyezze üzembe az Azure Container Service egy példányát](container-service-deployment.md) DC/OS típusú vezénylővel, és [győződjön meg róla, hogy az ügyfél képes csatlakozni a fürthöz](../container-service-connect.md). Végezze el a következő lépéseket is.
+[Telepítse az Azure Container Service egy példányát](container-service-deployment.md) az orchestrator dc/os típusával, és [győződjön meg arról, hogy az ügyfél csatlakozni tud a fürthöz.](../container-service-connect.md) Végezze el a következő lépéseket is.
 
 [!INCLUDE [install the DC/OS CLI](../../../includes/container-service-install-dcos-cli-include.md)]
 

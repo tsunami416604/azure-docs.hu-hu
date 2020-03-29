@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs – Resource Manager-kivételek | Microsoft Docs
-description: A Azure Resource Manager és a javasolt műveletek által felszínben lévő Azure Event Hubs-kivételek listája.
+title: Azure Event Hubs – Erőforrás-kezelő kivételek | Microsoft dokumentumok
+description: Az Azure Event Hubs-kivételek listája az Azure Resource Manager által felszínre, és a javasolt műveletek.
 services: service-bus-messaging
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,52 @@ ms.workload: na
 ms.date: 12/08/2019
 ms.author: spelluru
 ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74936086"
 ---
-# <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – Resource Manager-kivételek
-Ez a cikk azokat a kivételeket sorolja fel, amelyeket az Azure Event Hubs a Azure Resource Manager-sablonokkal vagy közvetlen hívásokkal való interakció során generáltak.
+# <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs – Erőforrás-kezelő isztikányi kivételek
+Ez a cikk az Azure Event Hubs azure-beli erőforrás-kezelővel való interakció során létrehozott kivételeket sorolja fel – sablonok vagy közvetlen hívások révén.
 
 > [!IMPORTANT]
-> Ez a dokumentum gyakran frissül. Tekintse át a frissítéseket.
+> Ez a dokumentum gyakran frissül. Kérjük, látogasson vissza a frissítéseket.
 
-A következő szakaszokban különböző kivételek/hibák jelennek meg Azure Resource Manageron.
+A következő szakaszok különböző kivételeket/hibákat tartalmaznak, amelyek az Azure Resource Manageren keresztül jelennek meg.
 
-## <a name="error-code-conflict"></a>Hibakód: ütközés
+## <a name="error-code-conflict"></a>Hibakód: Ütközés
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkód | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Ütközés | 40300 | Elérte vagy túllépte a EventHub típusú erőforrások maximális számát. Tényleges: #, Max megengedett: # | A névtér elérte a [kvótáját](event-hubs-quotas.md) a benne foglalt Event Hubs számára. | Törölje a fel nem használt vagy idegen típusú esemény-hubokat a névtérből, vagy vegye fontolóra a [dedikált fürtre](event-hubs-dedicated-overview.md)való frissítését. |
-| Ütközés | Nincs | Nem lehet törölni a vész-helyreállítási (DR) konfigurációt, mert a replikáció folyamatban van. A DR-konfiguráció törlésének megkísérlése előtt hajtsa végre a feladatátvételt, vagy szakítsa meg a párosítást. | A [GeoDR replikációja](event-hubs-geo-dr.md) folyamatban van, így a konfiguráció jelenleg nem törölhető. | A konfiguráció törlésének feloldásához várjon, amíg a replikáció befejeződik, indítson el egy feladatátvételt, vagy szüntesse meg a GeoDR párosítását. |
-| Ütközés | Nincs | A névtér frissítése a háttérbeli ütközéssel meghiúsult. | Jelenleg folyamatban van egy másik művelet végrehajtása ezen a névtéren. | Várjon, amíg a jelenlegi művelet befejeződik, majd próbálkozzon újra. |
+| Ütközés | 40300 | Az EventHub típusú erőforrások maximális száma elérte vagy túllépte. Tényleges: #, Max megengedett: # | A névtér elérte a [kvótáját](event-hubs-quotas.md) a tartalmazhat ónevű eseményközpontok száma miatt. | Törölje a nem használt vagy idegen eseményközpontokat a névtérből, vagy fontolja meg a [dedikált fürtre](event-hubs-dedicated-overview.md)való frissítést. |
+| Ütközés | Nincs | A vész-helyreállítási (DR) konfiguráció nem törölhető, mert a replikáció folyamatban van. A DR Config törlése előtt feladatátvételt vagy megszakítást. | [GeoDR replikáció](event-hubs-geo-dr.md) folyamatban van, így a konfiguráció nem törölhető ebben az időben. | A konfiguráció törlésének feloldásához várjon, amíg a replikáció befejeződik, indítsa el a feladatátvételt, vagy szakítsa meg a GeoDR-párosítást. |
+| Ütközés | Nincs | A névtér frissítése nem sikerült, mert ütközött a háttérrendszerben. | Ezen a névtéren jelenleg egy másik művelet van folyamatban. | Várjon, amíg az aktuális művelet befejeződik, majd próbálkozzon újra. |
 
 ## <a name="error-code-429"></a>Hibakód: 429
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkód | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | Nincs | Névtér kiépítés átmenet alatt | Jelenleg folyamatban van egy másik művelet végrehajtása ezen a névtéren. | Várjon, amíg a jelenlegi művelet befejeződik, majd próbálkozzon újra. |
-| 429 | Nincs | A vész-helyreállítási művelet folyamatban van. | Folyamatban van egy [GeoDR](event-hubs-geo-dr.md) művelet végrehajtása ezen a névtéren vagy párosításon. | Várjon, amíg a jelenlegi GeoDR művelet befejeződik, majd próbálkozzon újra. |
+| 429 | Nincs | Áttűnésben lévő névtér-kiépítés | Ezen a névtéren jelenleg egy másik művelet van folyamatban. | Várjon, amíg az aktuális művelet befejeződik, majd próbálkozzon újra. |
+| 429 | Nincs | Vész-helyreállítási művelet folyamatban van. | Jelenleg [geoDR-művelet](event-hubs-geo-dr.md) van folyamatban ezen a névtéren vagy párosításon. | Várjon, amíg az aktuális GeoDR-művelet befejeződik, majd próbálkozzon újra. |
 
 ## <a name="error-code-badrequest"></a>Hibakód: BadRequest
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkód | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| BadRequest | 40000 | A PartitionCount nem módosítható az Event hub esetében. | Az Azure Event Hubs alapszintű vagy standard szintje nem támogatja a partíciók módosítását. | Hozzon létre egy új Event hub-t a kívánt számú partícióval az alapszintű vagy standard szintű névtérben. A particionálási felskálázás a [dedikált fürtök](event-hubs-dedicated-overview.md)esetében támogatott. |
-| BadRequest | 40000 | A MessageRetentionInDays "#" értéke nem érvényes az alapszintű csomag esetében. az érték nem lehet nagyobb, mint 1 nap. | Az alapszintű Event Hubs névterek csak legfeljebb 1 napig támogatják az üzenetek megőrzését. | Ha a rendszer több mint egy nappal az üzenetek megőrzését szeretné megtartani, [hozzon létre egy standard Event Hubs névteret](event-hubs-create.md). | 
-| BadRequest | Nincs | A megadott név nem érhető el. | A névtér nevének egyedinek kell lennie, és a megadott név már használatban van. | Ha a meglévő névtér tulajdonosa a megadott névvel rendelkezik, törölheti is, ami adatvesztést okoz. Ezután próbálkozzon újra ugyanazzal a névvel. Ha a névtér nem törölhető (vagy nem a tulajdonos), válasszon egy másik névtér-nevet. |
-| BadRequest | Nincs | A megadott előfizetés elérte a névterek kvótáját. | Az előfizetése elérte az általa tárolható névterek számára vonatkozó [kvótát](event-hubs-quotas.md) . | Érdemes lehet törölni a nem használt névtereket ebben az előfizetésben, egy másik előfizetést létrehozni vagy egy [dedikált fürtre](event-hubs-dedicated-overview.md)frissíteni. |
-| BadRequest | Nincs | Másodlagos névtér nem frissíthető. | A névtér nem frissíthető, mert ez a másodlagos névtér egy [GeoDR-párosításban](event-hubs-geo-dr.md). | Ha szükséges, végezze el a módosítást az elsődleges névtérben a párosítás helyett. Ellenkező esetben szüntesse meg a GeoDR párosítását a módosítás elvégzéséhez. |
-| BadRequest | Nincs | Az alapszintű SKU-ban nem állítható be az automatikus kiemelés | Az automatikus feltöltés nem engedélyezhető az alapszintű Event Hubs névterek esetében. | Ha [engedélyezni](event-hubs-auto-inflate.md) szeretné az automatikus kikapcsolást a névtérben, győződjön meg arról, hogy az a standard szintű csomag. |
-| BadRequest | Nincs | Nincs elegendő kapacitás a névtér létrehozásához. Forduljon a Event Hubs rendszergazdájához. | A kiválasztott régió kapacitása és további névterek nem hozhatók létre. | Válasszon másik régiót a névtér kiválasztásához. |
-| BadRequest | Nincs | A művelet nem hajtható végre a (z) "ConsumerGroup" típusú entitáson, mert a névtér neve "Basic" szintet használ.  | Az alapszintű Event Hubs névterek [kvóta] ((Event-hubok-kvóták. MD # Event-hubok – alapszintű és-standard---kvóta-és korlát) egy felhasználói csoport számára (alapértelmezett). További fogyasztói csoportok létrehozása nem támogatott. | Folytassa az alapértelmezett fogyasztói csoport ($Default) használatát, vagy ha többre van szükség, érdemes lehet egy standard szintű Event Hubs névteret használni. | 
-| BadRequest | Nincs | A névtér neve nem létezik. | A megadott névtér nem található. | Ellenőrizze, hogy helyes-e a névtér neve, és megtalálható-e az előfizetésében. Ha nem, [hozzon létre egy Event Hubs névteret](event-hubs-create.md). | 
-| BadRequest | Nincs | Az erőforrás Location tulajdonsága nem felel meg a benne található névtérnek. | Az Event hub egy adott régióban való létrehozása nem sikerült, mert nem felelt meg a névtér régiójának. | Próbálja meg létrehozni az Event hub-t ugyanabban a régióban, mint a névteret. | 
+| BadRequest (Hibás kérés) | 40000 | A PartitionCount nem módosítható egy eseményközpont esetében. | Az Azure Event Hubs alapszintű vagy szabványos szintje nem támogatja a partíciók módosítását. | Hozzon létre egy új eseményközpontot az alapszintű vagy szabványos szintű névtérben lévő partíciók kívánt számával. A partíciós horizontális felskálázás [dedikált fürtök](event-hubs-dedicated-overview.md)számára támogatott. |
+| BadRequest (Hibás kérés) | 40000 | A MessageRetentionInDays '#' értéke nem érvényes az alapszintű rétegre. az érték nem haladhatja meg az "1" napot. | Az alapszintű event hubs névterek csak legfeljebb 1 napig támogatják az üzenetek megőrzését. | Ha egynél több üzenetmegőrzésre van szükség, [hozzon létre egy szabványos Event Hubs névteret.](event-hubs-create.md) | 
+| BadRequest (Hibás kérés) | Nincs | A megadott név nem érhető el. | A névtérneveknek egyedinek kell lenniük, és a megadott név már foglalt. | Ha ön a megadott nevű meglévő névtér tulajdonosa, törölheti azt, ami adatvesztést okoz. Ezután próbálkozzon újra ugyanazzal a névvel. Ha a névtér törlése nem biztonságos (vagy nem Ön a tulajdonos), válasszon másik névtérnevet. |
+| BadRequest (Hibás kérés) | Nincs | A megadott előfizetés elérte a névterek kvótáját. | Az előfizetés elérte a [megtartható](event-hubs-quotas.md) névterek számát. | Fontolja meg a nem használt névterek törlését ebben az előfizetésben, hozzon létre egy másik előfizetést vagy frissítsen egy [dedikált fürtre.](event-hubs-dedicated-overview.md) |
+| BadRequest (Hibás kérés) | Nincs | Másodlagos névtér nem frissíthető | A névtér nem frissíthető, mert ez a [GeoDR-párosítás](event-hubs-geo-dr.md)másodlagos névtere. | Ha szükséges, módosítsa az elsődleges névteret ebben a párosításban. Ellenkező esetben szakítsa meg a GeoDR párosítást a módosításhoz. |
+| BadRequest (Hibás kérés) | Nincs | Az automatikus felfújás nem állítható be az alaptermékváltozatban | Az automatikus felfújás nem engedélyezhető az alapvető szintű Eseményközpontok névterein. | Ha [engedélyezni szeretné az automatikus felfújni](event-hubs-auto-inflate.md) egy névtérben, győződjön meg arról, hogy a standard szintű. |
+| BadRequest (Hibás kérés) | Nincs | Nincs elég kapacitás a névtér létrehozásához. Forduljon az Eseményközpontok rendszergazdájához. | A kijelölt terület kapacitása van, és több névterek nem hozhatók létre. | Válasszon másik területet a névtér elhelyezésére. |
+| BadRequest (Hibás kérés) | Nincs | A művelet nem végezhető el a "ConsumerGroup" entitástípuson, mert a "névtér neve" "Alapszintű" réteget használ.  | Az alapszintű Event Hubs névterek [quot]((event-hubs-quotas.md#event-hubs-basic-and-standard---quots-and-limits) egy fogyasztói csoportból (az alapértelmezett). További fogyasztói csoportok létrehozása nem támogatott. | Folytassa az alapértelmezett fogyasztói csoport ($Default) használatát, vagy ha többre van szükség, fontolja meg egy szabványos szintű Event Hubs névtér használatát. | 
+| BadRequest (Hibás kérés) | Nincs | A "névtér neve" névtér nem létezik. | A megadott névtér nem található. | Ellenőrizze, hogy a névtér neve helyes-e, és megtalálható-e az előfizetésben. Ha nem, [hozzon létre egy Event Hubs névteret.](event-hubs-create.md) | 
+| BadRequest (Hibás kérés) | Nincs | Az erőforrás helytulajdonsága nem egyezik meg a névteret tartalmazó tulajdonságával. | Egy eseményközpont létrehozása egy adott régióban nem sikerült, mert nem felel meg a névtér régiójának. | Próbálja meg létrehozni az eseményközpontot ugyanabban a régióban, mint a névtér. | 
 
-## <a name="error-code-internal-server-error"></a>Hibakód: belső kiszolgálóhiba
+## <a name="error-code-internal-server-error"></a>Hibakód: Belső kiszolgálóhiba
 
-| Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
+| Hibakód | Hiba alkód | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Belső kiszolgálóhiba | Nincs | Belső kiszolgálóhiba. | A Event Hubs szolgáltatás belső hibával rendelkezett. | Próbálja megismételni a sikertelen műveletet. Ha a művelet továbbra is sikertelen, forduljon az ügyfélszolgálathoz. |
+| Belső kiszolgálóhiba | Nincs | Belső kiszolgálóhiba. | Az Event Hubs szolgáltatás belső hibával rendelkezett. | Próbálkozzon újra a sikertelen művelettel. Ha a művelet továbbra is sikertelen, forduljon az ügyfélszolgálathoz. |

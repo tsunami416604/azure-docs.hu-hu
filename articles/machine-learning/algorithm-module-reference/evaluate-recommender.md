@@ -1,7 +1,7 @@
 ---
-title: 'Az ajánló értékelése: modulok leírása'
+title: 'Ajánló értékelése: Modul hivatkozása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja az Azure Machine Learning kiértékelése modult az Ajánlói modellre vonatkozó előrejelzések pontosságának kiértékeléséhez.
+description: Ismerje meg, hogyan használhatja az Ajánló kiértékelése modult az Azure Machine Learningben az ajánlómodell-előrejelzések pontosságának kiértékeléséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,85 +9,85 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76312260"
 ---
 # <a name="evaluate-recommender"></a>Ajánló értékelése
 
-Ez a cikk azt ismerteti, hogyan használható a kiértékelési ajánló modul a Azure Machine Learning Designerben. A cél az, hogy megmérjük a javaslati modell által készített előrejelzések pontosságát. A modul használatával különböző típusú ajánlásokat lehet kiértékelni:  
+Ez a cikk ismerteti, hogyan használhatja az Ajánló kiértékelése modul az Azure Machine Learning designer (előzetes verzió). A cél az, hogy az előrejelzések pontosságának mérése, hogy egy javaslat modell tett. Ezzel a modullal különböző típusú javaslatokat értékelhet ki:  
   
--   A felhasználóra és egy tételre előrejelzett minősítések    
--   Felhasználó számára ajánlott elemek  
+-   Egy felhasználóra és egy elemre előre jelzett minősítések    
+-   Felhasználónak ajánlott elemek  
   
-Ha egy javaslati modell használatával hoz létre előrejelzéseket, a rendszer némileg eltérő eredményt ad vissza minden egyes támogatott előrejelzési típushoz. Az értékelést ajánló modul a pontozásos adathalmaz oszlopainak formátumát határozza meg. A pontszámmal rendelkező adatkészlet például a következőket tartalmazhatja:
+Ha egy javaslati modell használatával hoz létre előrejelzéseket, a rendszer kissé eltérő eredményeket ad vissza a támogatott előrejelzési típusok mindegyikéhez. A Kiértékelés ajánló modul a pontozott adatkészlet oszlopformátumából származó előrejelzés típusát következtele. A pontozott adatkészlet például a következőket tartalmazhatja:
 
-- Felhasználói elemek minősítésének háromszorosa
+- A felhasználó-cikk-értékelés megháromszorozódik
 - Felhasználók és az ajánlott elemek
 
-A modul a megfelelő teljesítmény-mérőszámokat is alkalmazza az előrejelzés típusa alapján. 
+A modul a megfelelő teljesítménymutatókat is alkalmazza, az előrejelzés típusa alapján. 
 
   
-## <a name="how-to-configure-evaluate-recommender"></a>A kiértékelési ajánló konfigurálása
+## <a name="how-to-configure-evaluate-recommender"></a>Az ajánló kiértékelése
 
-A kiértékelést ajánló modul összehasonlítja az előrejelzési kimenetet egy, a megfelelő "alapvető igazság" adatokat tartalmazó javaslati modellel. A [score SVD ajánló](score-svd-recommender.md) modul például a kiértékeléssel elemezhető, kiértékelt adatkészleteket hoz létre.
+Az Ajánló kiértékelése modul összehasonlítja az előrejelzési kimenet et egy ajánlási modell használatával a megfelelő "földi igazság" adatokkal. Például a [Score SVD ajánló](score-svd-recommender.md) modul pontozott adatkészleteket hoz létre, amelyeket az Ajánló kiértékelése használatával elemezhet.
 
 ### <a name="requirements"></a>Követelmények
 
-Az ajánlás kiértékeléséhez a következő adatkészleteket kell bemenetként megadni. 
+Kiértékelése Ajánló szükséges a következő adatkészletek bemenetként. 
   
-#### <a name="test-dataset"></a>Adatkészlet tesztelése
+#### <a name="test-dataset"></a>Teszt adatkészlet
 
-A tesztelési adatkészlet tartalmazza a "alapvető igazság" adatokat a felhasználó-elem minősítési háromszorosa formájában.  
+A tesztadatkészlet tartalmazza a "ground truth" adatok formájában felhasználói cikk-értékelés háromszorosára.  
 
-#### <a name="scored-dataset"></a>Pontozásos adatkészlet
+#### <a name="scored-dataset"></a>Pontozott adatkészlet
 
-A pontozásos adatkészlet tartalmazza azokat az előrejelzéseket, amelyeket az ajánlási modell generált.  
+A pontozott adatkészlet tartalmazza a javaslatmodell által létrehozott előrejelzéseket.  
   
-A második adatkészlet oszlopai a pontozási folyamat során végrehajtott előrejelzéstől függenek. A pontozásos adatkészlet például a következők egyikét tartalmazhatja:
+A második adatkészlet oszlopai a pontozási folyamat során végrehajtott előrejelzés típusától függenek. A pontozott adatkészlet például a következők valamelyikét tartalmazhatja:
 
-- Azok a felhasználók, elemek és minősítések, amelyeket a felhasználó valószínűleg az elemhez adna
-- A felhasználók és az azokhoz ajánlott elemek listája 
+- Felhasználók, elemek és a minősítések, hogy a felhasználó valószínűleg ad az elem
+- A számukra ajánlott felhasználók és elemek listája 
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
-A modell teljesítmény-metrikái a bemenet típusa alapján jönnek létre. A következő fejezetekben részletes információkat talál.
+A modell teljesítménymutatói a bemenet típusa alapján jönnek létre. A következő szakaszok részletesen ismertetik.
 
-## <a name="evaluate-predicted-ratings"></a>Előre jelzett minősítések kiértékelése  
+## <a name="evaluate-predicted-ratings"></a>Az előre jelzett minősítések értékelése  
 
-A prediktív minősítések kiértékelése során a pontszámmal rendelkező adatkészlet (az ajánló második bemenete) a következő igényeknek megfelelő, felhasználó által értékelt hármasokat kell tartalmaznia:
+Az előre jelzett minősítések kiértékelésekor a pontozott adatkészletnek (az ajánló kiértékelése második bemenetének) olyan felhasználói cikk-minősítési háromszorosokat kell tartalmaznia, amelyek megfelelnek ezeknek a követelményeknek:
   
 -   Az adatkészlet első oszlopa tartalmazza a felhasználói azonosítókat.    
--   A második oszlop az elemek azonosítóit tartalmazza.  
--   A harmadik oszlop a megfelelő felhasználói elemek minősítéseit tartalmazza.  
+-   A második oszlop a cikkazonosítókat tartalmazza.  
+-   A harmadik oszlop a megfelelő felhasználói cikk minősítéseket tartalmazza.  
   
 > [!IMPORTANT] 
-> A sikeres értékeléshez az oszlopnevek `User`, `Item`és `Rating`nak kell lenniük.  
+> A sikeres kiértékeléshez az `User`oszlopneveknek a , `Item`és `Rating`a , a, a, a, a, illetve.  
   
-A kiértékeléshez az ajánló összehasonlítja a "alapvető igazság" adatkészletben szereplő minősítéseket a pontozásos adatkészlet előrejelzett minősítésével. Ezután kiszámítja az átlagos abszolút hibát (MAE) és a legfelső szintű, négyzetes hibát (GYÖKÁTLAGOS).
+Értékelje az ajánló a "ground truth" adatkészlet minősítéseit a pontozott adatkészlet előre jelzett minősítéseivel. Ezután kiszámítja az átlagos abszolút hibát (MAE) és a gyökerű átlagos négyzetes hibát (RMSE).
 
 
 
-## <a name="evaluate-item-recommendations"></a>Elemek kiértékelése javaslatok
+## <a name="evaluate-item-recommendations"></a>Elemjavaslatok kiértékelése
 
-Amikor kiértékeli az elemek javaslatait, használjon egy pontozásos adatkészletet, amely tartalmazza az egyes felhasználók ajánlott elemeit:
+Az elemjavaslatok kiértékelésekor használjon pontozott adatkészletet, amely tartalmazza az egyes felhasználók számára ajánlott elemeket:
   
 -   Az adatkészlet első oszlopának tartalmaznia kell a felhasználói azonosítót.    
--   Az összes további oszlopnak tartalmaznia kell a megfelelő ajánlott elem-azonosítókat, amelyeket az adott elem a felhasználónak kell megrendelnie. 
+-   Minden további oszlopnak tartalmaznia kell a megfelelő ajánlott cikkazonosítókat, amelyek et az alapján kell megrendelni, hogy egy elem mennyire releváns a felhasználó számára. 
 
-Az adatkészlet csatlakoztatása előtt azt javasoljuk, hogy rendezze az adatkészletet úgy, hogy a legfontosabb elemek először is megtörténjenek.  
+Az adatkészlet csatlakoztatása előtt azt javasoljuk, hogy rendezze az adatkészletet úgy, hogy a legfontosabb elemek az elsők.  
 
 > [!IMPORTANT] 
-> Az ajánló működésének kiértékeléséhez az oszlopnevek `User`, `Item 1`, `Item 2`, `Item 3` stb.  
+> A Kiértékelendő ajánló működéséhez `User`az `Item 1` `Item 2`oszlopneveknek , , és `Item 3` így tovább kell lenniük.  
   
-Az ajánló kiértékelésével kiszámítja a normalizált diszkontált összesített nyereség (NDCG) átlagát, és visszaadja a kimeneti adatkészletben.  
+Értékelje ki az ajánló kiszámítja az átlagos normalizált diszkontált kumulatív nyereség (NDCG) és adja vissza a kimeneti adatkészletben.  
   
-Mivel az ajánlott elemek esetében nem lehetséges a tényleges "alapvető igazság", értékelje ki a felhasználó-elem minősítéseket a tesztelési adatkészletben a NDCG kiszámítása során. A kiértékeléshez az Ajánlói pontozási modulnak csak a "alapvető igazság" minősítéssel rendelkező elemekre vonatkozó javaslatokat kell létrehoznia (a tesztelési adatkészletben).  
+Mivel nem lehet tudni, hogy a tényleges "földi igazság" az ajánlott elemek, Kiértékelés ajánló használja a felhasználói elem minősítések a teszt adatkészletben, mint nyereség a számítás az NDCG. A kiértékeléshez az ajánló pontozási modulcsak ajánlásokat kell készítenie a "földi igazság" minősítéssel rendelkező elemekre (a teszt adatkészletben).  
   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

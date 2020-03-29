@@ -1,7 +1,7 @@
 ---
-title: Azure AD FS-támogatás (MSAL Python)
+title: Az Azure AD FS támogatása (MSAL Python)
 titleSuffix: Microsoft identity platform
-description: Tudnivalók a Pythonhoz készült Microsoft Authentication Library Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatásáról
+description: Tudnivalók az Active Directory összevonási szolgáltatások (AD FS) támogatásáról a Microsoft Authentication Library for Python szolgáltatásban
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -14,51 +14,51 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699546"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL for Pythonban
+# <a name="active-directory-federation-services-support-in-msal-for-python"></a>Az Active Directory összevonási szolgáltatások támogatása az MSAL for Python ban
 
-A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés hozzáadását, valamint az alkalmazások engedélyezését a Pythonhoz készült Microsoft Authentication Library (MSAL) használatával. Az alkalmazás a Python-kódtár MSAL használatával közvetlenül hitelesítheti a felhasználókat AD FS. További információ a forgatókönyvekről: [AD FS forgatókönyvek fejlesztőknek](/windows-server/identity/ad-fs/ad-fs-development).
+Az Active Directory összevonási szolgáltatások (AD FS) a Windows Server rendszerben lehetővé teszi az OpenID Connect és az OAuth 2.0 alapú hitelesítés és engedélyezés hozzáadását az alkalmazásokhoz a Microsoft Authentication Library (MSAL) for Python használatával. Az MSAL python-kódtár használatával az alkalmazás közvetlenül az AD FS-en keresztül hitelesítheti a felhasználókat. A forgatókönyvekről az [AD FS-forgatókönyvek fejlesztőknek](/windows-server/identity/ad-fs/ad-fs-development)című témakörben talál további információt.
 
-A AD FSon általában kétféleképpen lehet hitelesíteni:
+Az AD FS-hez való hitelesítésnek általában két módja van:
 
-- A MSAL Python a Azure Active Directoryra beszél, amely más identitás-szolgáltatókkal összevont. Az összevonás AD FSon történik. A MSAL Python csatlakozik az Azure AD-hez, amely az Azure AD-ben (felügyelt felhasználók) felügyelt felhasználók vagy más identitás-szolgáltató, például AD FS (összevont felhasználók) által felügyelt felhasználók számára jelentkezik be. A MSAL Python nem tudja, hogy egy felhasználó összevont. Egyszerűen beszél az Azure AD-ről. Az ebben az esetben [használt szolgáltató a](msal-client-application-configuration.md#authority) szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
-- A MSAL Python közvetlenül egy AD FS-szolgáltatóhoz beszél. Ezt csak a AD FS 2019-es és újabb verziói támogatják.
+- Az MSAL Python az Azure Active Directoryval beszél, amely maga is más identitásszolgáltatókkal van összeegyezve. Az összevonás az AD FS-en keresztül történik. Az MSAL Python csatlakozik az Azure AD-hez, amely az Azure AD-ben (felügyelt felhasználók) vagy egy másik identitásszolgáltató, például az AD FS (összevont felhasználók) által felügyelt felhasználókat ír alá. Az MSAL Python nem tudja, hogy a felhasználó össze van-e minősítve. Egyszerűen beszél az Azure AD.It simply talks to Azure AD. Ebben [authority](msal-client-application-configuration.md#authority) az esetben a szokásos jogosultságot használja (a hatóság gazdagépneve + bérlő, közös vagy szervezet).
+- Az MSAL Python közvetlenül egy AD FS-jogosultsággal beszél. Ezt csak az AD FS 2019 és újabb verziói támogatják.
 
-## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Kapcsolódás Active Directory összevont AD FS
+## <a name="connect-to-active-directory-federated-with-ad-fs"></a>Csatlakozás az Active Directoryhoz az AD FS szolgáltatással összevont
 
-### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Jogkivonat interaktív beszerzése egy összevont felhasználó számára
+### <a name="acquire-a-token-interactively-for-a-federated-user"></a>Jogkivonat interaktív beszerzése összevont felhasználó számára
 
-Az alábbiak azt jelzik, hogy közvetlenül a Active Directory összevonási szolgáltatások (AD FS) (AD FS) vagy a Active Directoryon keresztül csatlakoznak-e.
+Az alábbiak vonatkoznak arra, hogy közvetlenül az Active Directory összevonási szolgáltatásokhoz (AD FS) vagy az Active Directoryn keresztül csatlakozik.
 
-`acquire_token_by_authorization_code` vagy `acquire_token_by_device_flow`meghívásakor a felhasználói élmény általában a következő:
+Amikor felhívja `acquire_token_by_authorization_code` `acquire_token_by_device_flow`a vagy a , a felhasználói élmény általában a következő:
 
-1. A felhasználó megadja a fiók AZONOSÍTÓját.
-2. Az Azure AD röviden megjeleníti a "saját szervezet lapja" üzenetet, és a felhasználó átirányítja az azonosító bejelentkezési oldalára. A bejelentkezési oldal általában a szervezet emblémájának megfelelően van testreszabva.
+1. A felhasználó megadja a fiókazonosítóját.
+2. Az Azure AD röviden megjeleníti a "A szervezet oldalára való átirányítás" üzenetet, és a felhasználó átlesz irányítva az identitásszolgáltató bejelentkezési oldalára. A bejelentkezési lap általában a szervezet emblémájával van testreszabva.
 
-Az összevont forgatókönyvben támogatott AD FS verziók a következők:
-- Active Directory összevonási szolgáltatások (AD FS) FS v2
-- Active Directory összevonási szolgáltatások (AD FS) v3 (Windows Server 2012 R2)
-- Active Directory összevonási szolgáltatások (AD FS) v4 (AD FS 2016)
+Ebben az összevont forgatókönyvben a támogatott AD FS-verziók a következők:
+- Active Directory összevonási szolgáltatások FS v2
+- Active Directory összevonási szolgáltatások 3.
+- Active Directory összevonási szolgáltatások 4- es v4-es (AD FS 2016)
 
-### <a name="acquire-a-token-via-username-and-password"></a>Token beszerzése Felhasználónév és jelszó használatával
+### <a name="acquire-a-token-via-username-and-password"></a>Token beszerzése felhasználónévvel és jelszóval
 
-Az alábbiak azt jelzik, hogy közvetlenül a Active Directory összevonási szolgáltatások (AD FS) (AD FS) vagy a Active Directoryon keresztül csatlakoznak-e.
+Az alábbiak vonatkoznak arra, hogy közvetlenül az Active Directory összevonási szolgáltatásokhoz (AD FS) vagy az Active Directoryn keresztül csatlakozik.
 
-Ha `acquire_token_by_username_password`használatával szerez be tokent, a MSAL Python beolvassa az identitás-szolgáltatót a Felhasználónév alapján. A MSAL Python [SAML 1,1-tokent](reference-saml-tokens.md) kap az identitás-szolgáltatótól, amelyet ezután az Azure ad-nek küld, amely visszaadja a JSON web token (JWT).
+Amikor beszerez egy `acquire_token_by_username_password`jogkivonatot a használatával, az MSAL Python leveszi az identitásszolgáltatót, hogy kapcsolatba lépjen a felhasználónév alapján. MSAL Python lekérést kap egy [SAML 1.1-es jogkivonatot](reference-saml-tokens.md) az identitásszolgáltatótól, amelyezután biztosítja az Azure AD, amely a JSON webtoken (JWT) ad vissza.
 
-## <a name="connecting-directly-to-ad-fs"></a>Közvetlen csatlakozás AD FS
+## <a name="connecting-directly-to-ad-fs"></a>Csatlakozás közvetlenül az AD FS-hez
 
-Ha a címtárat AD FShoz kapcsolódik, az alkalmazás létrehozásához használni kívánt szolgáltató a következőhöz hasonló lesz: `https://somesite.contoso.com/adfs/`
+Amikor a könyvtárat az AD FS-hez csatlakoztatja, az alkalmazás létrehozásához használni kívánt jogosultság a hasonló lesz:`https://somesite.contoso.com/adfs/`
 
-A MSAL Python az ADFS 2019-et támogatja.
+Az MSAL Python támogatja az ADFS 2019-et.
 
-Nem támogatja a közvetlen kapcsolódást az ADFS 2016 vagy az ADFS v2 szolgáltatáshoz. Ha olyan forgatókönyveket kell támogatnia, amelyek közvetlen kapcsolatban állnak az ADFS 2016-tel, használja a ADAL Python legújabb verzióját. Miután frissítette a helyszíni rendszert az ADFS 2019-re, használhatja a MSAL Pythont.
+Nem támogatja az ADFS 2016-hoz vagy az ADFS 2-es v2-hez való közvetlen kapcsolatot. Ha olyan forgatókönyveket kell támogatnia, amelyek közvetlen kapcsolatot igényelnek az ADFS 2016-tal, használja az ADAL Python legújabb verzióját. Miután frissítette a helyszíni rendszert az ADFS 2019-re, használhatja az MSAL Pythont.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](../manage-apps/configure-authentication-for-federated-users-portal.md)
+- Az összevont esetről az [Azure Active Directory bejelentkezési viselkedésének konfigurálása egy alkalmazáshoz home realm felderítési szabályzat használatával című](../manage-apps/configure-authentication-for-federated-users-portal.md) témakörben található.

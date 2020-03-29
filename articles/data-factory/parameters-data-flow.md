@@ -1,6 +1,6 @@
 ---
 title: Leképezési adatfolyamok paraméterezése
-description: Ismerje meg, hogyan parametrizálja egy leképezési adatfolyamot a adatfeldolgozó-folyamatokból
+description: További információ az adat-előállító folyamatokból származó leképezési adatfolyam paraméterezéséről
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,67 +8,67 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760215"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Leképezési adatfolyamok paraméterezése
 
-A Azure Data Factory adatforgalmának leképezése támogatja a paraméterek használatát. A paramétereket definiálhatja az adatfolyam-definícióban, amelyet aztán használhat a kifejezésekben. A paraméterek értékeit a hívó folyamat állíthatja be az adatfolyam végrehajtása tevékenységen keresztül. Az adatáramlási tevékenység kifejezésekben az értékek beállítására három lehetőség áll rendelkezésre:
+Az Azure Data Factory adatfolyamainak leképezése támogatja a paraméterek használatát. Paramétereket definiálhat az adatfolyam-definícióban, amelyeket aztán a kifejezések ben használhat. A paraméterértékeket a hívó folyamat állíthatja be az adatfolyam-végrehajtás tevékenységen keresztül. Az adatfolyam-tevékenység kifejezésekben három lehetőség közül választhat:
 
-* Dinamikus érték beállítása a folyamat-vezérlési folyamat kifejezésének nyelvén
+* Dinamikus érték beállítása a folyamatvezérlési folyamat kifejezés nyelvén
 * Dinamikus érték beállítása az adatfolyam-kifejezés nyelvén
-* A kifejezés nyelvének használata statikus literál érték megadásához
+* Statikus literális érték beállítása a kifejezésnyelv bármelyikének beállításához
 
-Ezzel a képességgel általános célú, rugalmas és újrahasznosítható adatfolyamatokat végezhet. Ezekkel a paraméterekkel parametrizálja az adatáramlási beállításokat és kifejezéseket.
+Ezzel a funkcióval általános, rugalmas és újrafelhasználhatóvá teheti az adatfolyamokat. Ezekkel a paraméterekkel paraméterezheti az adatfolyam-beállításokat és kifejezéseket.
 
-## <a name="create-parameters-in-a-mapping-data-flow"></a>Paraméterek létrehozása egy leképezési adatfolyamban
+## <a name="create-parameters-in-a-mapping-data-flow"></a>Paraméterek létrehozása leképezési adatfolyamban
 
-Ha paramétereket szeretne adni az adatfolyamathoz, kattintson az adatáramlási vászon üres részére az általános tulajdonságok megtekintéséhez. A beállítások ablaktáblán egy **paraméter**nevű lap jelenik meg. Új paraméter létrehozásához válassza az **új** lehetőséget. Minden paraméterhez hozzá kell rendelnie egy nevet, ki kell választania egy típust, és opcionálisan meg kell adnia egy alapértelmezett értéket.
+Ha paramétereket szeretne hozzáadni az adatfolyamhoz, kattintson az adatfolyam vászon üres részére az általános tulajdonságok megtekintéséhez. A beállítások ablaktáblán megjelenik egy **Parameter**nevű lap. Új paraméter létrehozásához válassza az **Új** lehetőséget. Minden paraméterhez hozzá kell rendelnie egy nevet, ki kell választania egy típust, és szükség esetén meg kell állítania egy alapértelmezett értéket.
 
-![Adatfolyam paramétereinek létrehozása](media/data-flow/create-params.png "Adatfolyam paramétereinek létrehozása")
+![Adatfolyam-paraméterek létrehozása](media/data-flow/create-params.png "Adatfolyam-paraméterek létrehozása")
 
-## <a name="use-parameters-in-a-mapping-data-flow"></a>Paraméterek használata egy leképezési adatfolyamban 
+## <a name="use-parameters-in-a-mapping-data-flow"></a>Paraméterek használata leképezési adatfolyamban 
 
-A paraméterek bármely adatfolyam-kifejezésben szerepelhetnek. A paraméterek a $-vel kezdődnek, és nem változtathatók meg. Az elérhető paraméterek listáját a **Parameters (paraméterek** ) lapon találja a Expression builden belül.
+A paraméterek rekretárda bármely adatfolyam-kifejezésben megtalálhatók. A paraméterek $ -mal kezdődnek, és nem módosíthatók. A rendelkezésre álló paraméterek listáját a Kifejezésszerkesztőben, a **Paraméterek** lapon találja.
 
-![Adatfolyam paraméterének kifejezése](media/data-flow/parameter-expression.png "Adatfolyam paraméterének kifejezése")
+![Adatfolyam paraméterkifejezése](media/data-flow/parameter-expression.png "Adatfolyam paraméterkifejezése")
 
-Az **új paraméter** kiválasztásával és a név és a típus megadásával gyorsan hozzáadhat további paramétereket.
+Az **Új paraméter** kiválasztásával, a név és a típus megadásával gyorsan hozzáadhat további paramétereket.
 
-![Adatfolyam paraméterének kifejezése](media/data-flow/new-parameter-expression.png "Adatfolyam paraméterének kifejezése")
+![Adatfolyam paraméterkifejezése](media/data-flow/new-parameter-expression.png "Adatfolyam paraméterkifejezése")
 
-### <a name="passing-in-a-column-name-as-a-parameter"></a>Oszlop nevének átadása paraméterként
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Oszlopnév megadása paraméterként
 
-Egy általános minta egy oszlop neve paraméterként való továbbítása. A paraméterhez társított oszlopra való hivatkozáshoz használja a `byName()` függvényt. Ne felejtse el átadni az oszlopot a megfelelő típusra egy Casting függvénnyel, például `toString()`.
+A gyakori minta az, hogy az oszlopnevet paraméterértékként adja át. A paraméterhez társított oszlopra való `byName()` hivatkozáshoz használja a függvényt. Ne felejtse el az oszlopot a megfelelő `toString()`típusra vetni egy öntési funkcióval, például .
 
-Ha például egy karakterlánc-oszlopot szeretne leképezni egy `columnName`paraméter alapján, akkor a származtatott oszlop átalakítását `toString(byName($columnName))`értékkel is hozzáadhatja.
+Ha például egy paraméter `columnName`en alapuló karakterláncoszlopot szeretne leképezni, hozzáadhat `toString(byName($columnName))`egy származtatott oszlop átalakítást, amely megegyezik a.-val.
 
-![Oszlop nevének átadása paraméterként](media/data-flow/parameterize-column-name.png "Oszlop nevének átadása paramete")
+![Oszlopnév megadása paraméterként](media/data-flow/parameterize-column-name.png "Oszlopnév átadása parametaként")
 
-## <a name="assign-parameter-values-from-a-pipeline"></a>Paraméterek értékének kiosztása egy folyamatból
+## <a name="assign-parameter-values-from-a-pipeline"></a>Paraméterértékek hozzárendelése csővezetékből
 
-Miután létrehozta az adatfolyamatot a paraméterekkel, végrehajthatja azt egy folyamaton az adatfolyam végrehajtása tevékenységgel. Miután hozzáadta a tevékenységet a folyamat vásznon, megjelenik a tevékenység **Paraméterek** lapján elérhető adatfolyam-paraméterek.
+Miután létrehozta az adatfolyamot paraméterekkel, végrehajthatja azt egy folyamatból az adatfolyam-tevékenység végrehajtása segítségével. Miután hozzáadta a tevékenységet a folyamatvászonhoz, megjelennek a rendelkezésre álló adatfolyam-paraméterek a tevékenység **Paraméterei** lapján.
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-assign.png "Adatfolyam-paraméter beállítása")
 
-Ha a paraméter adattípusa karakterlánc, akkor a paraméterek értékének megadásához kattintson a szövegmezőre, és megadhat egy folyamatot vagy egy adatfolyam-kifejezést. Ha a folyamat kifejezés lehetőséget választja, a folyamat kifejezés panel jelenik meg. Győződjön meg arról, hogy az adatátviteli függvények szerepelnek a karakterlánc-interpolációs szintaxisban `'@{<expression>}'`használatával, például:
+Ha a paraméter adattípusa karakterlánc, amikor a szövegmezőre kattint a paraméterértékek beállításához, megadhatja a folyamat vagy az adatfolyam-kifejezés megadását. Ha a folyamatkifejezés lehetőséget választja, megjelenik a folyamatkifejezés panel. Győződjön meg arról, hogy a `'@{<expression>}'`csővezeték-függvényeket a karakterlánc interpolációs szintaxisában a használatával kell szerepeltetni, például:
 
 ```'@{pipeline().RunId}'```
 
-Ha a paraméter nem karakterlánc típusú, mindig az adatfolyam-kifejezés-szerkesztő jelenik meg. Itt megadhat bármely olyan kifejezést vagy literál értéket, amelyet szeretne, amely megfelel a paraméter adattípusának. Az alábbi példák az adatfolyamatok kifejezésére és a kifejezés-szerkesztőből származó szöveges karakterláncra mutatnak:
+Ha a paraméter nem karakterlánc típusú, mindig megjelenik az Adatfolyam-kifejezésszerkesztő. Itt bármilyen olyan kifejezést vagy konstans értéket megadhat, amely megfelel a paraméter adattípusának. Az alábbiakban példákat talál az adatfolyam-kifejezésre és a kifejezésszerkesztő literális karakterláncára:
 
 * ```toInteger(Role)```
 * ```'this is my static literal string'```
 
-Az egyes leképezési adatfolyamok a folyamat és az adatfolyam-kifejezés paramétereinek bármely kombinációját tartalmazhatják. 
+Minden leképezési adatfolyam a folyamat- és adatfolyam-kifejezés paramétereinek bármilyen kombinációjával rendelkezhet. 
 
 ![Adatfolyam-paraméterek mintája](media/data-flow/parameter-example.png "Adatfolyam-paraméterek mintája")
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Adatfolyam-tevékenység végrehajtása](control-flow-execute-data-flow-activity.md)
-* [Vezérlési folyamat kifejezései](control-flow-expression-language-functions.md)
+* [Folyamatkifejezések vezérlése](control-flow-expression-language-functions.md)

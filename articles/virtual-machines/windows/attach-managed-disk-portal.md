@@ -1,6 +1,6 @@
 ---
-title: Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez – Azure
-description: Hogyan lehet egy Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával.
+title: Felügyelt adatlemez csatolása Windows virtuális géphez – Azure
+description: Felügyelt adatlemez csatolása Windows virtuális géphez az Azure Portal használatával.
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
@@ -8,44 +8,44 @@ ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919379"
 ---
-# <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Windows virtuális gép felügyelt adatlemez csatolása az Azure portal használatával
+# <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Felügyelt adatlemez csatolása Windows virtuális géphez az Azure Portal használatával
 
-Ez a cikk bemutatja, hogyan kell új felügyelt adatlemez csatolása egy Windows virtuális gép (VM) az Azure portal használatával. A virtuális gép mérete határozza meg, hány adatlemez csatolható. További információ: [virtuális gépek méretei](sizes.md).
+Ez a cikk bemutatja, hogyan csatolhat egy új felügyelt adatlemezt egy Windows virtuális géphez (VM) az Azure Portal használatával. A virtuális gép mérete határozza meg, hogy hány adatlemezek csatolható. További információ: [Méretek a virtuális gépekhez.](sizes.md)
 
 
 ## <a name="add-a-data-disk"></a>Adatlemez hozzáadása
 
-1. Adatlemez hozzáadásához nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális gépeket**.
-2. Válasszon egy virtuális gépet a listából.
-3. A **virtuális gép** lapon válassza a **lemezek**lehetőséget.
-4. A **lemezek** oldalon válassza az **adatlemez hozzáadása**elemet.
-5. Az új lemez legördülő menüjében válassza a **lemez létrehozása**lehetőséget.
-6. A **felügyelt lemez létrehozása** lapon írja be a lemez nevét, és szükség szerint módosítsa a többi beállítást. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
-7. A **lemezek** lapon válassza a **Mentés** lehetőséget a virtuális gép új lemez-konfigurációjának mentéséhez.
-8. Miután az Azure létrehozta a lemezt, és csatolja a virtuális géphez, az új lemez megjelenik a virtuális gép lemez-beállításaiban az **adatlemezek**területen.
+1. Az [Azure Portalon](https://portal.azure.com) hozzáadhat egy adatlemezt. Keressen és válasszon **virtuális gépek**lehetőséget.
+2. Válasszon ki egy virtuális gépet a listából.
+3. A **Virtuálisgép** lapon válassza a **Lemezek**lehetőséget.
+4. A **Lemezek** lapon válassza az **Adatlemez hozzáadása**lehetőséget.
+5. Az új lemez legördülő legördülő menüben válassza a **Lemez létrehozása lehetőséget.**
+6. A **Felügyelt lemez létrehozása** lapon írja be a lemez nevét, és szükség szerint módosítsa a többi beállítást. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+7. A **Lemezek** lapon válassza a **Mentés** lehetőséget a virtuális gép új lemezkonfigurációjának mentéséhez.
+8. Miután az Azure létrehozza a lemezt, és csatolja a virtuális géphez, az új lemez megjelenik a virtuális gép lemezbeállításai között **Adatlemezek**.
 
 
 ## <a name="initialize-a-new-data-disk"></a>Új adatlemez inicializálása
 
 1. Csatlakozzon a virtuális géphez.
-1. Válassza ki a Windows **Start** menüt a futó virtuális gépen, és írja be a **diskmgmt. msc** kifejezést a keresőmezőbe. Megnyílik a **Lemezkezelés** konzol.
-2. A Lemezkezelés felismeri, hogy új, nem inicializált lemezzel és a **lemez inicializálása** ablak jelenik meg.
-3. Ellenőrizze, hogy az új lemez van-e kiválasztva, majd kattintson **az OK gombra** az inicializáláshoz.
-4. Az új lemez nem **lefoglaltként**jelenik meg. Kattintson a jobb gombbal a lemezen bárhová, és válassza az **új egyszerű kötet**lehetőséget. Megnyílik az **új egyszerű kötet varázsló** ablak.
-5. Folytassa a varázslót, és őrizze meg az összes alapértelmezett értéket, és ha elkészült, válassza a **Befejezés**gombot.
-6. A **Lemezkezelés**ablak bezárásához.
-7. Egy előugró ablak jelenik meg, hogy arról tájékoztatja, az új lemez formázásához, mielőtt használhatná azt kell. Válassza a **lemez formázása**lehetőséget.
-8. Az **új lemez formázása** ablakban jelölje be a beállításokat, majd kattintson a **Start**gombra.
-9. Megjelenik egy figyelmeztetés értesíti, hogy a lemezek formázása törli az összes adatot. Kattintson az **OK** gombra.
-10. Ha a formázás elkészült, kattintson **az OK gombra**.
+1. Válassza ki a Windows **Start** menüt a futó virtuális gépbelsejében, és írja be a **diskmgmt.msc értéket** a keresőmezőbe. Megnyílik **a Lemezkezelés** konzol.
+2. A Lemezkezelés felismeri, hogy új, inicializálatlan lemeze van, és megjelenik a **Lemez inicializálása** ablak.
+3. Ellenőrizze, hogy az új lemez ki van-e **jelölve,** majd az OK gombra kell-e választva inicializálni.
+4. Az új lemez **nem lefoglalt**lemezként jelenik meg. Kattintson a jobb gombbal a lemez tetszőleges pontjára, és válassza az **Új egyszerű kötet**lehetőséget. Megnyílik **az Új egyszerű kötet varázsló** ablaka.
+5. Folytassa a varázslót az összes alapértelmezett beállítás megtartásával, és amikor elkészült, válassza a **Befejezés gombot.**
+6. A **Lemezkezelés bezárása**.
+7. Megjelenik egy előugró ablak, amely értesíti, hogy használat előtt formáznia kell az új lemezt. Válassza **a Lemez formázása**lehetőséget.
+8. Az **Új lemez formázása** ablakban ellenőrizze a beállításokat, majd válassza a **Start**gombot.
+9. Egy figyelmeztetés figyelmezteti, hogy a lemezek formázása törli az összes adatot. Válassza **az OK gombot.**
+10. Ha a formázás befejeződött, kattintson az **OK gombra.**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az [adatlemezeket a PowerShell használatával is csatlakoztathatja](attach-disk-ps.md).
-- Ha az alkalmazásnak a *D:* meghajtót kell használnia az adattároláshoz, [módosíthatja a Windows ideiglenes lemez meghajtóbetűjelét](change-drive-letter.md).
+- [Adatlemezt](attach-disk-ps.md)a PowerShell használatával is csatolhat.
+- Ha az alkalmazásnak a *D:* meghajtót kell használnia az adatok tárolásához, [módosíthatja a Windows ideiglenes lemez meghajtóbetűjelét.](change-drive-letter.md)

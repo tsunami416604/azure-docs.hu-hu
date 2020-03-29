@@ -1,6 +1,6 @@
 ---
-title: Átalakítás szűrése a leképezési adatfolyamban
-description: Sorok kiszűrése a szűrő átalakításával Azure Data Factory leképezési adatfolyamban
+title: Transzformáció szűrése az adatfolyam leképezésében
+description: Sorok kiszűrése az Azure Data Factory adatfolyamatának szűrőtranszformációjával
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: 84b935d1646ea4f13d5926fc68797fd8efd03dea
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930357"
 ---
-# <a name="filter-transformation-in-mapping-data-flow"></a>Átalakítás szűrése a leképezési adatfolyamban
+# <a name="filter-transformation-in-mapping-data-flow"></a>Transzformáció szűrése az adatfolyam leképezésében
 
-A szűrő átalakítások lehetővé teszik a sorok szűrését egy adott feltétel alapján. A kimeneti adatfolyam tartalmazza a szűrési feltételnek megfelelő összes sort. A szűrő átalakítása hasonló a WHERE záradékhoz az SQL-ben.
+A Szűrő átalakítások lehetővé teszik a sorszűrést egy feltétel alapján. A kimeneti adatfolyam tartalmazza a szűrési feltételnek megfelelő összes sort. A szűrőátalakítás hasonló az SQL WHERE záradékához.
 
 ## <a name="configuration"></a>Konfiguráció
 
-A szűrési feltétel kifejezésének megadásához használja az adatfolyam-Kifejezésszerkesztő kifejezést. A Kifejezésszerkesztő megnyitásához kattintson a kék mezőre. A szűrési feltételnek logikai típusúnak kell lennie. A kifejezések létrehozásával kapcsolatos további tudnivalókért tekintse meg a Kifejezésszerkesztő [dokumentációját](concepts-data-flow-expression-builder.md) .
+Az adatfolyam-kifejezésszerkesztővel adjon meg egy kifejezést a szűrőfeltételhez. A kifejezéskészítő megnyitásához kattintson a kék mezőre. A szűrőfeltételnek logikai típusúnak kell lennie. A kifejezések létrehozásáról a [kifejezésszerkesztő](concepts-data-flow-expression-builder.md) dokumentációjában olvashat bővebben.
 
 ![Szűrő átalakítása](media/data-flow/filter1.png "Szűrő átalakítása")
 
@@ -38,13 +38,13 @@ A szűrési feltétel kifejezésének megadásához használja az adatfolyam-Kif
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `FilterBefore1960` nevű szűrő-átalakítás, amely bekerül a bejövő stream `CleanData`ba. A szűrési feltétel a `year <= 1960`kifejezés.
+Az alábbi példa egy `FilterBefore1960` szűrőátalakítás nevű, `CleanData`amely a bejövő stream . A szűrőfeltétel a `year <= 1960`kifejezés.
 
-Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
+A Data Factory UX-ben ez az átalakítás az alábbi képre hasonlít:
 
 ![Szűrő átalakítása](media/data-flow/filter1.png "Szűrő átalakítása")
 
-Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
+Az átalakítás adatfolyam-parancsfájlja az alábbi kódrészletben található:
 
 ```
 CleanData
@@ -54,6 +54,6 @@ CleanData
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Oszlopok kiszűrése az [átalakítás kiválasztása](data-flow-select.md)
+Oszlopok kiszűrése a [kijelölési átalakítással](data-flow-select.md)

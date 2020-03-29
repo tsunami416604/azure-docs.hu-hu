@@ -1,6 +1,6 @@
 ---
-title: Módosítása és ismételt üzembe helyezése a mikroszolgáltatások – Azure |} A Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan módosíthatja, és telepítse újra a távoli figyelési mikroszolgáltatások
+title: Mikroszolgáltatás módosítása és újratelepítése - Azure | Microsoft dokumentumok
+description: Ez az oktatóanyag bemutatja, hogyan módosíthatja és helyezheti át a mikroszolgáltatást a távoli figyelésben
 author: dominicbetts
 ms.author: dobett
 ms.service: iot-accelerators
@@ -8,194 +8,194 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447624"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
 
-Ez az oktatóanyag bemutatja, hogyan szerkesztheti az egyik a [mikroszolgáltatások](https://azure.com/microservices) a távoli figyelési megoldás létrehozása a mikroszolgáltatási képe, a rendszerkép üzembe helyezése a docker hub és indítására használhatja a távoli figyelési megoldás. Bevezetni a fogalom, az oktatóanyagban egy egyszerű forgatókönyvet, amelyen mikroszolgáltatások API hívása és módosíthatja az állapotüzenet tartalmazza a "Tartási és jól" "Új szerkeszti Made itt!"
+Ez az oktatóanyag bemutatja, hogyan szerkesztheti a távoli figyelési megoldás egyik [mikroszolgáltatását,](https://azure.com/microservices) hogyan hozhat létre egy mikroszolgáltatás ról, telepítheti a lemezképet a docker hubra, majd használhatja azt a távoli figyelési megoldásban. Ennek a koncepciónak a bevezetéséhez az oktatóanyag egy alapvető forgatókönyvet használ, ahol meghívja a mikroszolgáltatás API-ját, és az állapotüzenetet "Élő és jól" állapotról "Új szerkesztések itt készült!"
 
-Távoli megfigyelési megoldás használ, amelyek felhasználásával történik, amely a docker hub kikerülnek docker-rendszerképeket. 
+A távoli figyelési megoldás olyan mikroszolgáltatásokat használ, amelyek docker-lemezképek használatával készültek, amelyek et egy docker hubból leállítottak. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 >[!div class="checklist"]
-> * Szerkesztheti, és a távoli figyelési megoldásban mikroszolgáltatások készítése
-> * Elkészíthet egy docker-rendszerképet
-> * Docker-rendszerkép leküldése a docker hub
-> * Kérje le az új docker-rendszerképet
+> * Mikroszolgáltatás szerkesztése és létrehozása a távoli figyelési megoldásban
+> * Docker-rendszerkép létrehozása
+> * Docker-rendszerkép leküldése a docker-központba
+> * Az új docker-lemezkép lekérése
 > * A változások megjelenítése 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag az alábbiak szükségesek:
+Az oktatóanyag követéséhez a következőkre van szükség:
 
 >[!div class="checklist"]
-> * [A távoli figyelési megoldásgyorsító helyileg üzembe helyezése](iot-accelerators-remote-monitoring-deploy-local.md)
-> * [Egy Docker-fiók](https://hub.docker.com/)
-> * [Postman](https://www.getpostman.com/) – az API-válasz megtekintéséhez szükséges
+> * [A távfigyelési megoldás gyorsítójának helyi telepítése](iot-accelerators-remote-monitoring-deploy-local.md)
+> * [Docker-fiók](https://hub.docker.com/)
+> * [Postman](https://www.getpostman.com/) - Az API-válasz megtekintéséhez szükséges
 
-## <a name="call-the-api-and-view-response-status"></a>Hívja az API-t és a nézet válasz állapota
+## <a name="call-the-api-and-view-response-status"></a>Az API hívása és a válasz állapotának megtekintése
 
-Ez a rész az alapértelmezett IoT hub manager mikroszolgáltatás API hívható meg. Az API-t adja vissza egy állapotüzenetet, amely szerint a mikroszolgáltatás testreszabása később módosíthatja.
+Ebben a részben az alapértelmezett IoT hub-kezelő mikroszolgáltatás-API-t hívja meg. Az API egy állapotüzenetet ad vissza, amelyet később a mikroszolgáltatás testreszabásával módosít.
 
-1. Győződjön meg arról, hogy a távoli figyelési megoldás helyben fut a gépen.
-2. Keresse meg a letöltött Postman, és nyissa meg.
-3. A Postman adja meg a következő GET: `http://localhost:8080/iothubmanager/v1/status`.
-4. A visszaadandó megtekintése, és megjelenik, "Állapot": "OK: tartási és jól".
+1. Győződjön meg arról, hogy a távoli figyelési megoldás helyileg fut a számítógépen.
+2. Keresse meg, hol töltötte le a Postmant, és nyissa meg.
+3. A Postman mezőbe írja be `http://localhost:8080/iothubmanager/v1/status`a következőt a GET mezőbe: .
+4. Tekintse meg a visszatérést, és látnia kell, "Állapot": "OK:Élő és jól".
 
-    ![Tartási és jól Postman-üzenet](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+    ![Él és jól postás üzenet](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
-## <a name="change-the-status-and-build-the-image"></a>Az állapotváltás és a rendszerkép létrehozásához
+## <a name="change-the-status-and-build-the-image"></a>Az állapot módosítása és a kép létrehozása
 
-Módosítsa az "Új módosításokat az itt végzett!" az Iot Hub-kezelőből mikroszolgáltatás állapotüzenet és ezután építse újra az új állapot a docker-rendszerképet. Ha itt problémákat tapasztal, tekintse meg a [hibaelhárítás](#Troubleshoot) szakaszban.
+Most módosítsa az Iot Hub Manager mikroszolgáltatás állapotüzenetét "Új szerkesztések itt történt!" majd újra a docker-rendszerképet ezzel az új állapottal. Ha itt problémákba ütközik, olvassa el [a Hibaelhárítás](#Troubleshoot) című szakaszt.
 
-1. Ellenőrizze, hogy meg nyitva a terminált, és váltson arra a könyvtárra, amelybe klónozta van a távoli figyelési megoldás. 
-1. Módosítsa a címtárban "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services".
-1. Nyissa meg StatusService.cs bármilyen szövegszerkesztővel, vagy IDE, adja meg. 
+1. Győződjön meg arról, hogy a terminál meg van nyitva, és váltson arra a könyvtárra, ahol klónozta a távoli figyelési megoldást. 
+1. Módosítsa a könyvtárat "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services" névre.
+1. Nyissa meg StatusService.cs bármely szövegszerkesztőben vagy IDE-ben, amely tetszik. 
 1. Keresse meg a következő kódrészletet:
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
-    és módosítsa az alábbi kódot, és mentse azt.
+    és változtassa meg az alábbi kódot, és mentse el.
 
     ```csharp
     var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
-5. Lépjen vissza a terminálban, de módosítsa a következő könyvárra: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
-6. Írja be az új docker-rendszerkép létrehozásához
+5. Lépjen vissza a terminálra, de most váltson a következő könyvtárra: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
+6. Az új docker-lemezkép létrehozásához írja be a
 
     ```sh
     sh build
     ```
     
-    vagy a Windows:
+    vagy Windows rendszeren:
     
     ```cmd
     ./build.cmd
     ```
 
-7. Annak ellenőrzéséhez, hogy az új rendszerkép sikeresen létrejött, írja be a
+7. Az új lemezkép sikeres létrehozásának ellenőrzéséhez írja be a következőt:
 
     ```cmd/sh
     docker images 
     ```
 
-A tárház "azureiotpcs/iothub-kezelője – dotnet" kell lennie.
+A tárháznak "azureiotpcs/iothub-manager-dotnet" legyen.
 
-![A sikeres docker-rendszerkép](./media/iot-accelerators-microservices-example/successful-docker-image.png)
+![Sikeres docker-rendszerkép](./media/iot-accelerators-microservices-example/successful-docker-image.png)
 
 ## <a name="tag-and-push-the-image"></a>A rendszerkép címkézése és leküldése
-Az új docker-rendszerkép leküldése a docker hub, előtt a Docker vár a képek lesz megjelölve. Ha itt problémákat tapasztal, tekintse meg a [hibaelhárítás](#Troubleshoot) szakaszban.
+Mielőtt lelökheti az új docker-rendszerképet egy docker hubra, a Docker elvárja, hogy a rendszerképek címkével legyenek ellátva. Ha itt problémákba ütközik, olvassa el [a Hibaelhárítás](#Troubleshoot) című szakaszt.
 
-1. Keresse meg a lemezkép-azonosító, a docker-rendszerkép létrehozott beírásával:
+1. Keresse meg a beírással létrehozott docker-lemezkép képazonosítóját:
 
     ```cmd/sh
     docker images
     ```
 
-2. A címke a rendszerkép "tesztelés" típusú
+2. A kép megjelölése "tesztelés" típusúra
 
     ```cmd/sh
     docker tag [Image ID] [docker ID]/iothub-manager-dotnet:testing 
     ```
 
-3. Az újonnan címkézett rendszerkép leküldése a docker hub, írja be a következőt
+3. Ha az újonnan címkézett lemezképet a docker hubra szeretné leadni, írja be a
 
     ```cmd/sh
     docker push [docker ID]/iothub-manager-dotnet:testing
     ```
 
-4. Nyissa meg a webböngészőben, és nyissa meg a [docker hub](https://hub.docker.com/) , és jelentkezzen be.
-5. Meg kell jelennie az újonnan leküldött docker-rendszerképet a docker hubon.
-![Docker-rendszerképet a docker hubon](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
+4. Nyissa meg az internetböngészőt, és lépjen a [docker hubra,](https://hub.docker.com/) és jelentkezzen be.
+5. Most már látnia kell az újonnan leküldéses docker-rendszerképet a docker hubon.
+![Docker-rendszerkép a docker-központban](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
 
-## <a name="update-your-remote-monitoring-solution"></a>A távoli figyelési megoldás frissítése
-Akkor most frissítenie kell a helyi docker-compose.yml lekérni az új docker-rendszerképet a docker hubról. Ha itt problémákat tapasztal, tekintse meg a [hibaelhárítás](#Troubleshoot) szakaszban.
+## <a name="update-your-remote-monitoring-solution"></a>A távfigyelési megoldás frissítése
+Most frissítenie kell a helyi docker-compose.yml az új docker-rendszerképet a docker hubból. Ha itt problémákba ütközik, olvassa el [a Hibaelhárítás](#Troubleshoot) című szakaszt.
 
-1. Lépjen vissza a terminálon, és módosítsa a következő könyvtárban: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
-2. Nyissa meg a docker-compose.yml bármilyen szövegszerkesztővel, vagy IDE, adja meg.
+1. Lépjen vissza a terminálra, és váltson a következő könyvtárra: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
+2. Nyissa meg a docker-compose.yml fájlt bármely szövegszerkesztőben vagy IDE-ben, amely tetszik.
 3. Keresse meg a következő kódrészletet:
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
-    és módosítsa az alábbi képhez hasonlóan, és mentse azt.
+    és változtassa meg, hogy néz ki, mint az alábbi képet, és mentse el.
 
     ```yml
     image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
-## <a name="view-the-new-response-status"></a>Az új válasz állapotának megtekintése
-Végül újbóli üzembe helyezés a távoli figyelési megoldás helyi példányát, és az új válasz állapotának megtekintése a Postman.
+## <a name="view-the-new-response-status"></a>Az új válaszállapot megtekintése
+Fejezze be a távoli figyelési megoldás helyi példányának újratelepítésével és az új állapotválasz postásban való megtekintésével.
 
-1. Lépjen vissza a terminált, és módosítsa a következő könyvárra: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
-2. Indítsa el a távoli figyelési megoldás a helyi példányát, írja be a következő parancsot a terminálon:
+1. Lépjen vissza a terminálra, és váltson a következő könyvtárra: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
+2. Indítsa el a távoli figyelési megoldás helyi példányát a következő parancs beírásával a terminálba:
 
     ```cmd/sh
     docker-compose up
     ```
 
-3. Keresse meg a letöltött Postman, és nyissa meg.
-4. A Postman adja meg a következő GET kérelmet: `http://localhost:8080/iothubmanager/v1/status`. Meg kell jelennie, "Állapot": "OK: Új, az itt végzett módosítások! ".
+3. Keresse meg, hol töltötte le a Postmant, és nyissa meg.
+4. A Postman mezőbe írja be a `http://localhost:8080/iothubmanager/v1/status`következő kérést a GET mezőbe: . Most látnia kell az "Állapot" szót: "OK: New Edits Made Here!".
 
-![Új szerkesztése Itt a végrehajtott postman üzenet](./media/iot-accelerators-microservices-example/new-postman-message.png)
+![Új szerkesztések Made Here postman üzenet](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="Troubleshoot"></a>Hibaelhárítása
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>Elhárítása
 
-Ha problémákat futtatja, távolítsa el a docker-rendszerképeket és a tárolók a helyi gépen.
+Ha problémákba ütközik, próbálja meg eltávolítani a docker-rendszerképeket és -tárolókat a helyi számítógépen.
 
-1. Szeretné eltávolítani az összes tárolót, először szüksége minden futó tárolók leállításához. Nyissa meg a terminált, és típusa
+1. Az összes tároló eltávolításához először le kell állítania az összes futó tárolót. Nyissa meg a terminált és írja be
 
     ```cmd/sh
     docker stop $(docker ps -aq)
     docker rm $(docker ps -aq)
     ```
     
-2. Távolítsa el az összes rendszerkép, nyissa meg a terminált, és írja be 
+2. Az összes kép eltávolításához nyissa meg a terminált, és írja be a 
 
     ```cmd/sh
     docker rmi $(docker images -q)
     ```
 
-3. Ellenőrizheti, hogy van-e bármilyen tárolók a gépen beírásával
+3. Ellenőrizheti, hogy vannak-e konténerek a gépen, ha beírja a
 
     ```cmd/sh
     docker ps -aq 
     ```
 
-    Sikerült eltávolítani az összes tárolót, ha semmit nem kell jelennek meg.
+    Ha sikeresen eltávolította az összes tárolót, semmi sem jelenik meg.
 
-4. Ellenőrizheti, hogy van-e képeket a gépen beírásával
+4. Ellenőrizheti, hogy vannak-e képek a készüléken, ha beírja a
 
     ```cmd/sh
     docker images
     ```
 
-    Sikerült eltávolítani az összes tárolót, ha semmit nem kell jelennek meg.
+    Ha sikeresen eltávolította az összes tárolót, semmi sem jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan lehet:
+Ebben a bemutatóban látta, hogyan:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Szerkesztheti, és a távoli figyelési megoldásban mikroszolgáltatások készítése
-> * Elkészíthet egy docker-rendszerképet
-> * Docker-rendszerkép leküldése a docker hub
-> * Kérje le az új docker-rendszerképet
+> * Mikroszolgáltatás szerkesztése és létrehozása a távoli figyelési megoldásban
+> * Docker-rendszerkép létrehozása
+> * Docker-rendszerkép leküldése a docker-központba
+> * Az új docker-lemezkép lekérése
 > * A változások megjelenítése 
 
-Próbálkozzon a következő lépésben hozzunk [a távoli figyelési megoldásban az eszköz szimulátor mikroszolgáltatás testreszabása](iot-accelerators-microservices-example.md)
+A következő dolog, hogy megpróbálja [az eszköz szimulátor mikroszolgáltatás a távoli figyelési megoldás](iot-accelerators-microservices-example.md)
 
-A távoli figyelési megoldás fejlesztői ismertetését lásd:
+A távoli figyelési megoldással kapcsolatos fejlesztői információk a következő témakörben találhatóak:
 
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 <!-- Next tutorials in the sequence -->

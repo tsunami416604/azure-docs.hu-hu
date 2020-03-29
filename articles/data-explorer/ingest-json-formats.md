@@ -1,6 +1,6 @@
 ---
-title: JSON formátumú adat betöltése az Azure-ba Adatkezelő
-description: Ismerje meg, hogyan lehet JSON formátumú adatot betölteni az Azure Adatkezelőba.
+title: JSON-formátumú adatok betöltése az Azure Data Explorerbe
+description: Ismerje meg, hogyan lehet json formázott adatokat beadni az Azure Data Explorerbe.
 author: orspod
 ms.author: orspodek
 ms.reviewer: kerend
@@ -8,33 +8,33 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772331"
 ---
-# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON formátumú mintaadatok betöltése az Azure-ba Adatkezelő
+# <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON-formázott mintaadatok betöltése az Azure Data Explorerbe
 
-Ez a cikk bemutatja, hogyan végezheti el a JSON formátumú adatbevitelt egy Azure Adatkezelő-adatbázisba. A RAW és a leképezett JSON egyszerű példáit fogja használni, folytassa a többsoros JSON-t, majd kezelje a tömböket és szótárakat tartalmazó összetettebb JSON-sémákat.  A példák részletezik a JSON formátumú adatok Kusto lekérdezési nyelv (KQL), C#vagy Python használatával történő betöltésének folyamatát. A Kusto lekérdezési nyelv `ingest` vezérlési parancsokat közvetlenül a motor végpontja hajtja végre. Éles környezetben a rendszer a betöltést az adatkezelés szolgáltatáshoz az ügyfél-kódtárak vagy az adatkapcsolatok használatával hajtja végre. Az [azure adatkezelő Python Library használatával](/azure/data-explorer/python-ingest-data) beolvashatja az adatgyűjtést, és [Az Azure adatkezelő .NET Standard SDK használatával](/azure/data-explorer/net-standard-ingest-data) betöltheti az adatgyűjtést az ezekkel az ügyféloldali kódtárakkal történő adatfeldolgozással kapcsolatban.
+Ez a cikk bemutatja, hogyan json formázott adatok at egy Azure Data Explorer adatbázisba. A nyers és leképezett JSON egyszerű példáival kezdi, folytatja a többvonalas JSON-t, majd összetettebb JSON-sémákat kezel, amelyek tömböket és szótárakat tartalmaznak.  A példák részletezik a JSON-formátumú adatok Kusto lekérdezési nyelv (KQL), C#vagy Python használatával történő betöltésének folyamatát. A Kusto `ingest` lekérdezési nyelv vezérlési parancsok végrehajtása közvetlenül a motor végpontjára. Éles környezetben a betöltés az adatkezelési szolgáltatásba ügyfélkódtárak vagy adatkapcsolatok használatával történik. Olvassa [el a betöltési adatokat az Azure Data Explorer Python-kódtár használatával,](/azure/data-explorer/python-ingest-data) és [az adatok betöltése az Azure Data Explorer .NET standard SDK használatával](/azure/data-explorer/net-standard-ingest-data) az adatok ezen ügyfélkódtárakkal való betöltésére vonatkozó végigolvasáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [Egy tesztfürt és egy adatbázis](create-cluster-database-portal.md)
 
-## <a name="the-json-format"></a>A JSON formátuma
+## <a name="the-json-format"></a>A JSON formátum
 
-Az Azure Adatkezelő két JSON fájlformátumot támogat:
-* `json`: sorok elválasztva JSON. A bemeneti adatok minden sora pontosan egy JSON-rekorddal rendelkezik.
-* `multijson`: többsoros JSON. Az elemző figyelmen kívül hagyja a sorok elválasztóit, és beolvas egy rekordot az előző pozícióból egy érvényes JSON végére.
+Az Azure Data Explorer két JSON fájlformátumot támogat:
+* `json`: A vonal elválasztotta a JSON-t. A bemeneti adatok minden sora pontosan egy JSON-rekorddal rendelkezik.
+* `multijson`: Többvonalú JSON. Az elemző figyelmen kívül hagyja a sorelválasztókat, és beolvas egy rekordot az előző pozícióból egy érvényes JSON végéig.
 
-### <a name="ingest-and-map-json-formatted-data"></a>JSON formátumú adat betöltése és leképezése
+### <a name="ingest-and-map-json-formatted-data"></a>JSON-formátumú adatok betöltése és leképezése
 
-A JSON formátumú adat betöltéséhez meg kell adnia a *formátumot* a betöltési [tulajdonság](/azure/kusto/management/data-ingestion/index#ingestion-properties)használatával. A JSON-adat betöltéséhez [leképezés](/azure/kusto/management/mappings)szükséges, amely egy JSON-forrás bejegyzést képez a célként megadott oszlopra. Az adatfeldolgozás során használja az előre definiált `jsonMappingReference` betöltési tulajdonságot, vagy a `jsonMapping`betöltés tulajdonságot. Ez a cikk a betöltéshez használt táblázaton előre definiált `jsonMappingReference` betöltési tulajdonságot fogja használni. Az alábbi példákban először a JSON-rekordok nyers adatként való betöltését fogjuk egy egyoszlopos táblába. Ezután a leképezés használatával betöltjük az egyes tulajdonságokat a leképezett oszlopba. 
+A JSON formátumú adatok betöltéséhez meg kell adnia a *formátumot* a [betöltési tulajdonság használatával.](/azure/kusto/management/data-ingestion/index#ingestion-properties) A JSON-adatok betöltéséhez [le képezésre](/azure/kusto/management/mappings)van szükség, amely egy JSON-forrásbejegyzést képez le a céloszlophoz. Adatok betöltésekor használja az előre `jsonMappingReference` meghatározott betöltési `jsonMapping`tulajdonságot, vagy adja meg a betöltési tulajdonságot. Ez a cikk `jsonMappingReference` a betöltési tulajdonságot fogja használni, amely előre definiálva van a betöltéshez használt táblában. Az alábbi példákban a JSON-rekordok nyers adatokként történő betöltésével kezdjük egyetlen oszloptáblába. Ezután a leképezés t használjuk az egyes tulajdonságok leképezett oszlopba történő betöltéséhez. 
 
-### <a name="simple-json-example"></a>Egyszerű JSON-példa
+### <a name="simple-json-example"></a>Egyszerű JSON példa
 
-Az alábbi példa egy egyszerű JSON, amely lapos struktúrával rendelkezik. Az adatok hőmérséklet-és páratartalom-információval rendelkeznek, amelyet számos eszköz gyűjt. Minden rekord AZONOSÍTÓval és időbélyeggel van megjelölve.
+A következő példa egy egyszerű JSON, egy lapos szerkezetű. Az adatok hőmérsékleti és páratartalom-információkat tartalmaznak, amelyeket több eszköz gyűjt. Minden rekord azonosítóval és időbélyegzővel van megjelölve.
 
 ```json
 {
@@ -46,27 +46,27 @@ Az alábbi példa egy egyszerű JSON, amely lapos struktúrával rendelkezik. Az
 }
 ```
 
-## <a name="ingest-raw-json-records"></a>Nyers JSON-rekordok beolvasása 
+## <a name="ingest-raw-json-records"></a>Nyers JSON-rekordok betöltése 
 
-Ebben a példában a JSON-rekordokat nyers adatként kell bevenni egy egyoszlopos táblába. Az adatfeldolgozás, a lekérdezések használata és a frissítési szabályzat az adatgyűjtés után történik.
+Ebben a példában a JSON rekordokat nyers adatként egy oszloptáblába tollazhatja be. Az adatok kezelése, a lekérdezések használata és a frissítési házirend az adatok betöltése után történik.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-A Kusto lekérdezési nyelv használatával nyers JSON formátumú adatbevitelt végezhet.
+A Kusto lekérdezési nyelv használatával nyers JSON-formátumban szeretne adatokat beadni.
 
-1. Jelentkezzen be itt: [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+1. Jelentkezzen be [https://dataexplorer.azure.com](https://dataexplorer.azure.com)a ikonra.
 
 1. Válassza a **Fürt hozzáadása** lehetőséget.
 
-1. A **fürt hozzáadása** párbeszédpanelen adja meg a fürt URL-címét az űrlapon `https://<ClusterName>.<Region>.kusto.windows.net/`, majd válassza a **Hozzáadás**lehetőséget.
+1. A **Fürt hozzáadása** párbeszédpanelen adja meg a `https://<ClusterName>.<Region>.kusto.windows.net/`fürt URL-címét az űrlapon, majd válassza a **Hozzáadás lehetőséget.**
 
-1. Illessze be a következő parancsot, és válassza a **Futtatás** elemet a tábla létrehozásához.
+1. Illessze be a következő parancsot, és a táblázat létrehozásához válassza a **Futtatás** gombot.
 
     ```Kusto
     .create table RawEvents (Event: dynamic)
     ```
 
-    Ez a lekérdezés egy olyan táblát hoz létre, amely egy [dinamikus](/azure/kusto/query/scalar-data-types/dynamic) adattípus egyetlen `Event` oszlopát tartalmazza.
+    Ez a lekérdezés [dinamikus](/azure/kusto/query/scalar-data-types/dynamic) `Event` adattípusú egyetlen oszlopot tartalmazó táblát hoz létre.
 
 1. Hozza létre a JSON-leképezést.
 
@@ -74,19 +74,19 @@ A Kusto lekérdezési nyelv használatával nyers JSON formátumú adatbevitelt 
     .create table RawEvents ingestion json mapping 'RawEventMapping' '[{"column":"Event","path":"$"}]'
     ```
 
-    Ez a parancs létrehoz egy leképezést, és leképezi a JSON-gyökér elérési útját `$` a `Event` oszlopra.
+    Ez a parancs létrehoz egy leképezést, és leképezi a JSON gyökérelérési útját `$` az `Event` oszlophoz.
 
-1. Adatbevitel a `RawEvents` táblába.
+1. Adatok betöltése `RawEvents` a táblába.
 
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Nyers C# JSON formátumú adatbevitelre használható.
+A C# függesztse fel az adatok nyers JSON formátumban történő betöltését.
 
-1. Hozza létre a `RawEvents` táblát.
+1. Hozza `RawEvents` létre a táblát.
 
     ```C#
     var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -128,9 +128,9 @@ Nyers C# JSON formátumú adatbevitelre használható.
 
     kustoClient.ExecuteControlCommand(command);
     ```
-    Ez a parancs létrehoz egy leképezést, és leképezi a JSON-gyökér elérési útját `$` a `Event` oszlopra.
+    Ez a parancs létrehoz egy leképezést, és leképezi a JSON gyökérelérési útját `$` az `Event` oszlophoz.
 
-1. Adatbevitel a `RawEvents` táblába.
+1. Adatok betöltése `RawEvents` a táblába.
 
     ```C#
     var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -157,13 +157,13 @@ Nyers C# JSON formátumú adatbevitelre használható.
     ```
 
 > [!NOTE]
-> Az adatokat a [kötegelt házirend](/azure/kusto/concepts/batchingpolicy)alapján összesíti a rendszer, ami néhány perc késéssel jár.
+> Az adatok [kötegelési házirend](/azure/kusto/concepts/batchingpolicy)szerint összesítve vannak, ami néhány perces késést eredményez.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-A Python használatával nyers JSON formátumú adatbevitelt használhat.
+A Python használatával nyers JSON formátumban szeretne adatokat beadni.
 
-1. Hozza létre a `RawEvents` táblát.
+1. Hozza `RawEvents` létre a táblát.
 
     ```Python
     KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -185,7 +185,7 @@ A Python használatával nyers JSON formátumú adatbevitelt használhat.
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Adatbevitel a `RawEvents` táblába.
+1. Adatok betöltése `RawEvents` a táblába.
 
     ```Python
     INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
@@ -200,17 +200,17 @@ A Python használatával nyers JSON formátumú adatbevitelt használhat.
     ```
 
     > [!NOTE]
-    > Az adatokat a [kötegelt házirend](/azure/kusto/concepts/batchingpolicy)alapján összesíti a rendszer, ami néhány perc késéssel jár.
+    > Az adatok [kötegelési házirend](/azure/kusto/concepts/batchingpolicy)szerint összesítve vannak, ami néhány perces késést eredményez.
 
 ---
 
-## <a name="ingest-mapped-json-records"></a>Leképezett JSON-rekordok betöltése
+## <a name="ingest-mapped-json-records"></a>Betöltési leképezett JSON-rekordok
 
-Ebben a példában a JSON-rekordok adatait tölti be. Az egyes JSON-tulajdonságok a tábla egyetlen oszlopára vannak leképezve. 
+Ebben a példában a JSON rekordok rekordok rekordok adatokat. Minden JSON tulajdonság egyetlen oszlophoz van rendelve a táblázatban. 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-1. Hozzon létre egy új táblázatot, amely hasonló sémával rendelkezik a JSON bemeneti adatokhoz. Ezt a táblázatot a következő példákhoz fogjuk használni, és betöltjük a parancsokat. 
+1. Hozzon létre egy új táblát, amely a JSON bemeneti adatokhoz hasonló sémával van elsajátítva. Ezt a táblázatot az alábbi példákhoz és a betöltési parancsokhoz használjuk. 
 
     ```Kusto
     .create table Events (Time: datetime, Device: string, MessageId: string, Temperature: double, Humidity: double)
@@ -222,19 +222,19 @@ Ebben a példában a JSON-rekordok adatait tölti be. Az egyes JSON-tulajdonság
     .create table Events ingestion json mapping 'FlatEventMapping' '[{"column":"Time","path":"$.timestamp"},{"column":"Device","path":"$.deviceId"},{"column":"MessageId","path":"$.messageId"},{"column":"Temperature","path":"$.temperature"},{"column":"Humidity","path":"$.humidity"}]'
     ```
 
-    Ebben a leképezésben a tábla sémája által meghatározottak szerint a `timestamp` bejegyzések az oszlopba lesznek betöltve, `Time` `datetime` adattípusként.
+    Ebben a leképezésben a táblaséma `timestamp` meghatározása szerint a bejegyzések `Time` adattípusként `datetime` kerülnek az oszlopba.
 
-1. Adatbevitel a `Events` táblába.
+1. Adatok betöltése `Events` a táblába.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=FlatEventMapping)
     ```
 
-    Az "Simple. JSON" fájl néhány vesszővel elválasztott JSON-rekordot tartalmaz. A formátum `json`, és a betöltési parancsban használt leképezés a létrehozott `FlatEventMapping`.
+    A fájl "simple.json" van néhány vonal-elválasztott JSON rekordokat. A formátum `json`a , és a betöltési `FlatEventMapping` parancsban használt leképezés a létrehozott.
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Hozzon létre egy új táblázatot, amely hasonló sémával rendelkezik a JSON bemeneti adatokhoz. Ezt a táblázatot a következő példákhoz fogjuk használni, és betöltjük a parancsokat. 
+1. Hozzon létre egy új táblát, amely a JSON bemeneti adatokhoz hasonló sémával van elsajátítva. Ezt a táblázatot az alábbi példákhoz és a betöltési parancsokhoz használjuk. 
 
     ```C#
     var table = "Events";
@@ -273,9 +273,9 @@ Ebben a példában a JSON-rekordok adatait tölti be. Az egyes JSON-tulajdonság
     kustoClient.ExecuteControlCommand(command);
     ```
 
-    Ebben a leképezésben a tábla sémája által meghatározottak szerint a `timestamp` bejegyzések az oszlopba lesznek betöltve, `Time` `datetime` adattípusként.    
+    Ebben a leképezésben a táblaséma `timestamp` meghatározása szerint a bejegyzések `Time` adattípusként `datetime` kerülnek az oszlopba.    
 
-1. Adatbevitel a `Events` táblába.
+1. Adatok betöltése `Events` a táblába.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -289,11 +289,11 @@ Ebben a példában a JSON-rekordok adatait tölti be. Az egyes JSON-tulajdonság
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-    Az "Simple. JSON" fájl néhány vesszővel elválasztott JSON-rekordot tartalmaz. A formátum `json`, és a betöltési parancsban használt leképezés a létrehozott `FlatEventMapping`.
+    A fájl "simple.json" van néhány vonal-elválasztott JSON rekordokat. A formátum `json`a , és a betöltési `FlatEventMapping` parancsban használt leképezés a létrehozott.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Hozzon létre egy új táblázatot, amely hasonló sémával rendelkezik a JSON bemeneti adatokhoz. Ezt a táblázatot a következő példákhoz fogjuk használni, és betöltjük a parancsokat. 
+1. Hozzon létre egy új táblát, amely a JSON bemeneti adatokhoz hasonló sémával van elsajátítva. Ezt a táblázatot az alábbi példákhoz és a betöltési parancsokhoz használjuk. 
 
     ```Python
     TABLE = "RawEvents"
@@ -311,7 +311,7 @@ Ebben a példában a JSON-rekordok adatait tölti be. Az egyes JSON-tulajdonság
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Adatbevitel a `Events` táblába.
+1. Adatok betöltése `Events` a táblába.
 
     ```Python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D'
@@ -322,24 +322,24 @@ Ebben a példában a JSON-rekordok adatait tölti be. Az egyes JSON-tulajdonság
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-    Az "Simple. JSON" fájl néhány sorba bontott JSON-rekordot tartalmaz. A formátum `json`, és a betöltési parancsban használt leképezés a létrehozott `FlatEventMapping`.    
+    A fájl "simple.json" van néhány sor elválasztott JSON rekordokat. A formátum `json`a , és a betöltési `FlatEventMapping` parancsban használt leképezés a létrehozott.    
 ---
 
-## <a name="ingest-multi-lined-json-records"></a>Többsoros JSON-rekordok beolvasása
+## <a name="ingest-multi-lined-json-records"></a>Többvonalas JSON-rekordok betöltése
 
-Ebben a példában a többsoros JSON-rekordok betöltését végezheti el. Az egyes JSON-tulajdonságok a tábla egyetlen oszlopára vannak leképezve. A "többsoros. JSON" fájl néhány behúzott JSON-rekordot tartalmaz. A formátum `multijson` azt jelzi, hogy a motor a JSON-struktúra alapján olvassa be a rekordokat.
+Ebben a példában többvonalú JSON-rekordokat kell betöltése. Minden JSON tulajdonság egyetlen oszlophoz van rendelve a táblázatban. A fájl "multilined.json" van néhány behúzott JSON rekordokat. A `multijson` formátum arra utasítja a motort, hogy olvassa el a JSON-struktúra rekordjait.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-Adatbevitel a `Events` táblába.
+Adatok betöltése `Events` a táblába.
 
 ```Kusto
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-Adatbevitel a `Events` táblába.
+Adatok betöltése `Events` a táblába.
 
 ```C#
 var tableMapping = "FlatEventMapping";
@@ -354,9 +354,9 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Adatbevitel a `Events` táblába.
+Adatok betöltése `Events` a táblába.
 
 ```Python
 MAPPING = "FlatEventMapping"
@@ -371,7 +371,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ## <a name="ingest-json-records-containing-arrays"></a>Tömböket tartalmazó JSON-rekordok betöltése
 
-A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb betöltését [frissítési szabályzat](/azure/kusto/management/update-policy)végzi. A JSON-t egy közbenső táblába tölti be. A frissítési szabályzat egy előre definiált függvényt futtat a `RawEvents` táblában, és visszatölti az eredményeket a célként megadott táblába. Az alábbi struktúrával rendelkező adatmennyiséget fogjuk bevezetni:
+A tömbadattípusok értékek rendezett gyűjteményei. A JSON-tömb betöltését [frissítési házirend](/azure/kusto/management/update-policy)végzi. A JSON-t ugyanúgy kell bedolgozni, ahogy van egy köztes táblába. A frissítési házirend egy előre definiált függvényt futtat a `RawEvents` táblán, és az eredményeket a céltáblába irányítja. A következő struktúrával fogjuk betöltési adatokat:
 
 ```json
 {
@@ -395,9 +395,9 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-1. Hozzon létre egy `update policy` függvényt, amely kibővíti `records` gyűjteményét, hogy a gyűjtemény minden értéke külön sort kapjon a `mv-expand` operátor használatával. A Table `RawEvents`t használjuk forrástáblaként, és `Events` célként.
+1. Hozzon `update policy` létre egy függvényt, amely kibővíti a gyűjteményt, `records` hogy `mv-expand` a gyűjtemény minden egyes értéke külön sort kapjon az operátor használatával. A táblát `RawEvents` forrástáblaként és `Events` céltáblaként fogjuk használni.
 
     ```Kusto
     .create function EventRecordsExpand() {
@@ -412,33 +412,33 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
     }
     ```
 
-1. A függvény által fogadott sémának meg kell egyeznie a céltábla sémájával. `getschema` operátor használatával tekintse át a sémát.
+1. A függvény által fogadott sémának meg kell egyeznie a céltábla sémájával. Az `getschema` operátor segítségével tekintse át a sémát.
 
     ```Kusto
     EventRecordsExpand() | getschema
     ```
 
-1. Adja hozzá a frissítési szabályzatot a cél táblához. Ez a szabályzat automatikusan futtatja a lekérdezést a `RawEvents` köztes táblában lévő összes újonnan betöltött adattal, és betölti az eredményeket a `Events` táblába. Definiáljon egy nulla adatmegőrzési szabályt a köztes tábla megőrzése érdekében.
+1. Adja hozzá a frissítési házirendet a céltáblához. Ez a házirend automatikusan futtatja a lekérdezést `RawEvents` a köztes tábla újonnan betöltött adataiközött, és bevezeti az eredményeket a `Events` táblába. Nulla adatmegőrzési házirendet definiáljon a köztes tábla megőrzésének elkerülése érdekében.
 
     ```Kusto
     .alter table Events policy update @'[{"Source": "RawEvents", "Query": "EventRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
-1. Adatbevitel a `RawEvents` táblába.
+1. Adatok betöltése `RawEvents` a táblába.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
-1. Tekintse át az `Events` táblában található adatelemzést.
+1. Tekintse át `Events` a táblázatban szereplő adatokat.
 
     ```Kusto
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Hozzon létre egy frissítési függvényt, amely kibővíti `records` gyűjteményét, hogy a gyűjtemény minden értéke külön sort kapjon a `mv-expand` operátor használatával. A Table `RawEvents`t használjuk forrástáblaként, és `Events` célként.   
+1. Hozzon létre egy frissítési `records` függvényt, amely kibővíti a gyűjteménygyűjteményét, így a gyűjtemény minden egyes értéke külön sort kap az `mv-expand` operátor használatával. A táblát `RawEvents` forrástáblaként és `Events` céltáblaként fogjuk használni.   
 
     ```C#
     var command =
@@ -463,7 +463,7 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
     > [!NOTE]
     > A függvény által fogadott sémának meg kell egyeznie a céltábla sémájával.
 
-1. Adja hozzá a frissítési szabályzatot a cél táblához. Ez a szabályzat automatikusan futtatja a lekérdezést a `RawEvents` köztes táblában lévő összes újonnan betöltött adattal, és betölti az eredményeket a `Events` táblázatba. Definiáljon egy nulla adatmegőrzési szabályt a köztes tábla megőrzése érdekében.
+1. Adja hozzá a frissítési házirendet a céltáblához. Ez a házirend automatikusan futtatja a lekérdezést `RawEvents` a köztes tábla újonnan betöltött adataiközött, és az eredményeket a `Events` táblába betöltése. Nulla adatmegőrzési házirendet definiáljon a köztes tábla megőrzésének elkerülése érdekében.
 
     ```C#
     var command =
@@ -472,7 +472,7 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Adatbevitel a `RawEvents` táblába.
+1. Adatok betöltése `RawEvents` a táblába.
 
     ```C#
     var table = "RawEvents";
@@ -488,11 +488,11 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
     
-1. Tekintse át az `Events` táblában található adatelemzést.
+1. Tekintse át `Events` a táblázatban szereplő adatokat.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Hozzon létre egy frissítési függvényt, amely kibővíti `records` gyűjteményét, hogy a gyűjtemény minden értéke külön sort kapjon a `mv-expand` operátor használatával. A Table `RawEvents`t használjuk forrástáblaként, és `Events` célként.   
+1. Hozzon létre egy frissítési `records` függvényt, amely kibővíti a gyűjteménygyűjteményét, így a gyűjtemény minden egyes értéke külön sort kap az `mv-expand` operátor használatával. A táblát `RawEvents` forrástáblaként és `Events` céltáblaként fogjuk használni.   
 
     ```Python
     CREATE_FUNCTION_COMMAND = 
@@ -513,7 +513,7 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
     > [!NOTE]
     > A függvény által fogadott sémának meg kell egyeznie a céltábla sémájával.
 
-1. Adja hozzá a frissítési szabályzatot a cél táblához. Ez a szabályzat automatikusan futtatja a lekérdezést a `RawEvents` köztes táblában lévő összes újonnan betöltött adattal, és betölti az eredményeket a `Events` táblázatba. Definiáljon egy nulla adatmegőrzési szabályt a köztes tábla megőrzése érdekében.
+1. Adja hozzá a frissítési házirendet a céltáblához. Ez a házirend automatikusan futtatja a lekérdezést `RawEvents` a köztes tábla újonnan betöltött adataiközött, és az eredményeket a `Events` táblába betöltése. Nulla adatmegőrzési házirendet definiáljon a köztes tábla megőrzésének elkerülése érdekében.
 
     ```Python
     CREATE_UPDATE_POLICY_COMMAND = 
@@ -522,7 +522,7 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Adatbevitel a `RawEvents` táblába.
+1. Adatok betöltése `RawEvents` a táblába.
 
     ```Python
     TABLE = "RawEvents"
@@ -534,13 +534,13 @@ A tömb típusú adattípusok értékek rendezett gyűjteményei. A JSON-tömb b
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
-1. Tekintse át az `Events` táblában található adatelemzést.
+1. Tekintse át `Events` a táblázatban szereplő adatokat.
 
 ---    
 
-## <a name="ingest-json-records-containing-dictionaries"></a>Szótárakat tartalmazó JSON-rekordok beolvasása
+## <a name="ingest-json-records-containing-dictionaries"></a>Szótárakat tartalmazó JSON-rekordok betöltése
 
-A szótárban strukturált JSON kulcs-érték párokat tartalmaz. A JSON-rekordok betöltési leképezést alkalmaznak a `JsonPath`logikai kifejezés használatával. Az alábbi struktúrával végezheti el az adatgyűjtést:
+Szótár strukturált JSON tartalmaz kulcs-érték párok. A Json-rekordok a beírási `JsonPath`leképezésen mennek keresztül a logikai kifejezés használatával a ban. Az adatokat a következő struktúrával lehet betöltéssel:
 
 ```json
 {
@@ -570,23 +570,23 @@ A szótárban strukturált JSON kulcs-érték párokat tartalmaz. A JSON-rekordo
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
-1. Hozzon létre egy JSON-leképezést.
+1. JSON-leképezés létrehozása.
 
     ```Kusto
     .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'
     ```
 
-1. Adatbevitel a `Events` táblába.
+1. Adatok betöltése `Events` a táblába.
 
     ```Kusto
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C #](#tab/c-sharp)
 
-1. Hozzon létre egy JSON-leképezést.
+1. JSON-leképezés létrehozása.
 
     ```C#
     var tableName = "Events";
@@ -607,7 +607,7 @@ A szótárban strukturált JSON kulcs-érték párokat tartalmaz. A JSON-rekordo
     kustoClient.ExecuteControlCommand(command);
     ```
 
-1. Adatbevitel a `Events` táblába.
+1. Adatok betöltése `Events` a táblába.
 
     ```C#
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -621,9 +621,9 @@ A szótárban strukturált JSON kulcs-érték párokat tartalmaz. A JSON-rekordo
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-1. Hozzon létre egy JSON-leképezést.
+1. JSON-leképezés létrehozása.
 
     ```Python
     MAPPING = "KeyValueEventMapping"
@@ -632,7 +632,7 @@ A szótárban strukturált JSON kulcs-érték párokat tartalmaz. A JSON-rekordo
     dataframe_from_result_table(RESPONSE.primary_results[0])
     ```
 
-1. Adatbevitel a `Events` táblába.
+1. Adatok betöltése `Events` a táblába.
 
      ```Python
     MAPPING = "KeyValueEventMapping"
@@ -645,7 +645,7 @@ A szótárban strukturált JSON kulcs-érték párokat tartalmaz. A JSON-rekordo
 
 ---    
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatfeldolgozás áttekintése](ingest-data-overview.md)
+* [Az adatbetöltés áttekintése](ingest-data-overview.md)
 * [Lekérdezések írása](write-queries.md)

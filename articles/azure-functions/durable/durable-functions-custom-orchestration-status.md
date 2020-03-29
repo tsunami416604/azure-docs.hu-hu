@@ -1,30 +1,30 @@
 ---
-title: Egyéni összehangolás állapota a Durable Functionsban – Azure
-description: Megtudhatja, hogyan konfigurálhatja és használhatja a Durable Functions egyéni előkészítési állapotát.
+title: Egyéni vezénylési állapot a tartós függvényekben – Azure
+description: Ismerje meg, hogyan konfigurálhatja és használhatja az egyéni vezénylési állapot ot a tartós függvényekhez.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766271"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Egyéni összehangolás állapota a Durable Functionsban (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Egyéni vezénylési állapot a tartós függvényekben (Azure Functions)
 
-Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a [http GETSTATUS API](durable-functions-http-api.md#get-instance-status) -n vagy a [`GetStatusAsync` API](durable-functions-instance-management.md#query-instances) -n keresztül biztosítjuk a koordináló ügyfélen.
+Egyéni vezénylési állapot lehetővé teszi, hogy egyéni állapotértéket az orchestrator függvény. Ez az állapot a [HTTP GetStatus API-n](durable-functions-http-api.md#get-instance-status) vagy a [ `GetStatusAsync` ](durable-functions-instance-management.md#query-instances) vezénylési ügyfél API-ján keresztül érhető el.
 
-## <a name="sample-use-cases"></a>Példa használati esetekre
+## <a name="sample-use-cases"></a>Használati esetek minta
 
 > [!NOTE]
-> Az alábbi példák bemutatják, hogyan használhatja az egyéni C# állapot funkciót a és a JavaScript használatával. A C# példák a Durable functions 2. x verzióra vannak írva, és nem kompatibilisek az 1. x Durable functions. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> A következő minták bemutatják, hogyan használhatja az egyéni állapot szolgáltatás C# és JavaScript. A C# példák a Durable Functions 2.x függvényekhez íródnak, és nem kompatibilisek az 1.x tartós függvényekkel. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
 ### <a name="visualize-progress"></a>Előrehaladás megjelenítése
 
-Az ügyfelek lekérdezik az állapot végpontját, és megjelenítenek egy folyamatjelző FELÜLETET, amely megjeleníti az aktuális végrehajtási szakaszt. Az alábbi példa a folyamat megosztását mutatja be:
+Az ügyfelek lepollázhatják az állapotvégpontot, és megjeleníthetnek egy folyamatjelző felhasználói felületet, amely az aktuális végrehajtási szakaszt jeleníti meg. A következő minta bemutatja az előrehaladás megosztását:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,9 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-`E1_HelloSequence` Orchestrator függvény:
+`E1_HelloSequence`orchestrator függvény:
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello` Activity függvény:
+`E1_SayHello`tevékenység funkció:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -83,9 +83,9 @@ module.exports = async function(context, name) {
 
 ---
 
-Ezután az ügyfél csak akkor kapja meg a koordinálás kimenetét, ha `CustomStatus` mező értéke "London":
+És akkor az ügyfél csak akkor kapja `CustomStatus` meg a vezénylés kimenetét, ha a mező "London" lesz:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -148,15 +148,15 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> A JavaScriptben a következő `yield` vagy `return` művelet ütemezésekor a `customStatus` mező lesz beállítva.
+> JavaScript ben `customStatus` a mező akkor lesz `yield` `return` beállítva, amikor a következő vagy a művelet ütemezve van.
 
 ---
 
 ### <a name="output-customization"></a>Kimenet testreszabása
 
-Egy másik érdekes forgatókönyv a felhasználók szegmentálása úgy, hogy egyedi tulajdonságok vagy interakciók alapján testreszabott kimenetet ad vissza. Az egyéni előkészítési állapot segítségével az ügyféloldali kód általános marad. Az összes fő módosítás a kiszolgálóoldali oldalon fog történni, ahogy az a következő mintában látható:
+Egy másik érdekes forgatókönyv a felhasználók szegmentálása egyedi jellemzők vagy interakciók alapján, testreszabott kimenet visszaadásával. Az egyéni vezénylési állapot segítségével az ügyféloldali kód általános marad. Minden főbb módosítás a szerveroldalon történik, amint az a következő mintában látható:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -229,11 +229,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-### <a name="instruction-specification"></a>Utasítások specifikációja
+### <a name="instruction-specification"></a>Utasítás specifikációja
 
-A Orchestrator egyéni állapoton keresztül egyedi utasításokat adhat az ügyfeleknek. Az egyéni állapotra vonatkozó utasításokat a rendszer a koordináló kód lépéseihez rendeli hozzá:
+Az orchestrator egyedi utasításokat adhat az ügyfeleknek az egyéni állapoton keresztül. Az egyéni állapotutasítások a vezénylési kód lépéseihez lesznek rendelve:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -290,11 +290,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-## <a name="sample"></a>Minta
+## <a name="sample"></a>Sample
 
-Az alábbi példában az egyéni állapot beállítása először van megadva.
+A következő mintában először az egyéni állapot van beállítva;
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -327,7 +327,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-A folyamat futása közben a külső ügyfelek behívhatják ezt az egyéni állapotot:
+Avezénylés futása közben a külső ügyfelek lehívhatják ezt az egyéni állapotot:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
@@ -347,9 +347,9 @@ Az ügyfelek a következő választ kapják:
 ```
 
 > [!WARNING]
-> Az egyéni állapot adattartalma 16 KB-os UTF-16 JSON-szövegre van korlátozva, mert képesnek kell lennie arra, hogy illeszkedjen egy Azure Table Storage-oszlopba. Javasoljuk, hogy használjon külső tárterületet, ha nagyobb adattartalomra van szüksége.
+> Az egyéni állapot hasznos tartalom korlátozódik 16 KB UTF-16 JSON szöveget, mert képesnek kell lennie arra, hogy elférjen egy Azure Table Storage oszlopban. Azt javasoljuk, hogy használjon külső tárhelyet, ha nagyobb hasznos adatra van szüksége.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a tartós időzítők használatáról](durable-functions-timers.md)
+> [További információ a tartós időzítőkről](durable-functions-timers.md)

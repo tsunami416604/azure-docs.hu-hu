@@ -1,5 +1,5 @@
 ---
-title: A PhoneFactor frissítése az Azure MFA-kiszolgálóra – Azure Active Directory
+title: PhoneFactor frissítése az Azure MFA-kiszolgálóra – Azure Active Directory
 description: Az Azure MFA-kiszolgálóval kapcsolatos első lépések a régebbi Phonefactor-ügynökről való frissítés után.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd000f4b2a462e9bc9d2c54b57834b346688e6b5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848119"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
@@ -23,7 +23,7 @@ ms.locfileid: "74848119"
 A PhoneFactor-ügynök 5.x verziójáról az Azure Multi-Factor Authentication-kiszolgálóra való frissítéshez először távolítsa el a PhoneFactor-ügynököt és a kapcsolódó összetevőket. A Multi-Factor Authentication-kiszolgáló és kapcsolódó összetevői ezután telepíthetők.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
 
 ## <a name="uninstall-the-phonefactor-agent"></a>A PhoneFactor-ügynök eltávolítása
 
@@ -66,14 +66,14 @@ A rendszer a telepítési útvonalat a korábbi PhoneFactor ügynök telepítés
 
    2. A webkiszolgálón a felhasználói portál telepítéséhez nyisson meg egy parancssort rendszergazdaként, és futtassa a MultiFactorAuthenticationUserPortalSetupXX.msi fájlt.
 
-      Az alapértelmezett virtuális címtár neve mostantól **PhoneFactor** helyett **MultiFactorAuth**. Ha a korábbi nevet szeretné használni, a virtuális címtár nevét a telepítés közben módosítania kell. Ellenkező esetben, ha engedélyezi a telepítés számára az új alapértelmezett név használatát, kattintson a Multi-Factor Authentication-kiszolgáló felhasználói portál ikonjára, és frissítse a felhasználói portál URL-címét a beállítások lapon. a meglévő felhasználókat tájékoztatni kell az új URL-címről.
+      Az alapértelmezett virtuális címtár neve mostantól **PhoneFactor** helyett **MultiFactorAuth**. Ha a korábbi nevet szeretné használni, a virtuális címtár nevét a telepítés közben módosítania kell. Ellenkező esetben, ha engedélyezi a telepítés nek az új alapértelmezett név használatát, kattintson a Felhasználói portál ikonra a többtényezős hitelesítési kiszolgálón, és frissítse a Felhasználói portál URL-címét a Beállítások lapon.
 
    3. Lépjen a felhasználói portál telepítési helyére (pl. C:\inetpub\wwwroot\MultiFactorAuth), és szerkessze a web.config fájlt. Másolja az appSettings és az applicationSettings szakaszban található értékeket az eredeti web.config fájlból, amelyről a frissítés előtt biztonsági másolatot készített, az új web.config fájlba. Ha a Web Service SDK telepítésekor megtartotta az új alapértelmezett virtuális címtár nevét, módosítsa az URL-címet az applicationSettings szakaszban, hogy a megfelelő helyre mutasson. Ha bármilyen egyéb alapértelmezett értéket módosított a korábbi web.config fájlban, alkalmazza ugyanezeket a módosításokat az új web.config fájlra.
 
 > [!NOTE]
 > Ha az Azure MFA-kiszolgáló 8.0-s verziójánál régebbiről frissít 8.0-nál újabb verzióra, a mobilalkalmazás webszolgáltatását eltávolíthatja a frissítés után
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Telepítse a felhasználói portált](howto-mfaserver-deploy-userportal.md) az Azure Multi-Factor Authentication-kiszolgálóhoz.
 

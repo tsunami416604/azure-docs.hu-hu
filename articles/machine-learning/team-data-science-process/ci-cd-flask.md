@@ -1,6 +1,6 @@
 ---
-title: CI/CD-folyamat létrehozása Azure-adatcsatornákkal – csoportos adatelemzési folyamat
-description: Hozzon létre folyamatos integrációs és folyamatos átviteli folyamatot a mesterséges intelligencia (AI) alkalmazások számára a Docker és a Kubernetes használatával.
+title: CI/CD-folyamat létrehozása az Azure-folyamatok segítségével – Csapatadat-elemzési folyamat
+description: Hozzon létre egy folyamatos integrációs és folyamatos kézbesítési folyamatot a mesterséges intelligencia (AI) alkalmazásokhoz a Docker és a Kubernetes használatával.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,57 +12,57 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
 ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721829"
 ---
-# <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>CI/CD-folyamatok létrehozása AI-alkalmazásokhoz az Azure-folyamatok, a Docker és a Kubernetes használatával
+# <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>CI/CD-folyamatok létrehozása AI-alkalmazásokhoz az Azure Pipelines, a Docker és a Kubernetes használatával
 
-A mesterséges intelligencia (AI) alkalmazás olyan alkalmazási kód, amely egy előképzéssel ellátott Machine learning (ML) modellel van beágyazva. Egy AI-alkalmazásnak mindig két streamje van: az adatszakértők kiépítik a ML modellt, az alkalmazások fejlesztői pedig felépítik az alkalmazást, és teszik elérhetővé a végfelhasználók számára. Ez a cikk azt ismerteti, hogyan valósítható meg egy folyamatos integrációs és folyamatos teljesítési (CI/CD) folyamat egy olyan AI-alkalmazáshoz, amely az ML-modellt az alkalmazás forráskódjában ágyazza be. A mintakód és az oktatóanyag egy Python-lombik webalkalmazást használ, és egy saját Azure Blob Storage-fiókból beolvassa az előképzésen alapuló modellt. Egy AWS S3 Storage-fiókot is használhat.
+A mesterséges intelligencia (AI) alkalmazás egy előre betanított gépi tanulási (ML) modellbe ágyazott alkalmazáskód. Egy AI-alkalmazáshoz mindig két munkafolyam van: Az adatszakértők létreadik az ML-modell, az alkalmazásfejlesztők pedig létreépítik az alkalmazást, és elérhetővé teszik azt a végfelhasználók számára. Ez a cikk bemutatja, hogyan valósítható meg a folyamatos integrációs és folyamatos kézbesítési (CI/CD) folyamat egy AI-alkalmazás, amely beágyazza a gépi tanulási modell az alkalmazás forráskódjába. A mintakód és az oktatóanyag egy Python Flask webalkalmazást használ, és egy előre betanított modellt egy privát Azure blob storage-fiókból. Használhat Egy AWS S3 tárfiókot is.
 
 > [!NOTE]
-> A következő folyamat a CI/CD-k számos módszerének egyike. Az eszközökre és az előfeltételekre vonatkozó alternatívák is rendelkezésre állnak.
+> A következő folyamat a CI/CD számos módja. Vannak alternatívák, hogy ezt a szerszámot, és az előfeltételeket.
 
 ## <a name="source-code-tutorial-and-prerequisites"></a>Forráskód, oktatóanyag és előfeltételek
 
-A GitHubról a [forráskódot](https://github.com/Azure/DevOps-For-AI-Apps) és a [részletes oktatóanyagot](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) is letöltheti. Kövesse az oktatóanyag lépéseit egy CI/CD-folyamat megvalósításához a saját alkalmazásához.
+Letöltheti [a forráskódot](https://github.com/Azure/DevOps-For-AI-Apps) és a [részletes oktatóanyagot](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) a GitHubról. Kövesse az oktatóanyag lépéseit a CI/CD-folyamat megvalósításához a saját alkalmazásához.
 
-A letöltött forráskód és oktatóanyag használatához a következő előfeltételek szükségesek: 
+A letöltött forráskód és oktatóanyag használatához a következő előfeltételekre van szükség: 
 
-- A GitHub-fiókhoz tartozó [forráskód-tárház](https://github.com/Azure/DevOps-For-AI-Apps)
-- [Azure DevOps-szervezet](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- A GitHub-fiókhoz tartozó [forráskódtár-tárház](https://github.com/Azure/DevOps-For-AI-Apps)
+- [Egy Azure DevOps Szervezet](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Azure CLI](/cli/azure/install-azure-cli)
-- [Kubernetes-(ak-) fürt Azure Container Service](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) parancsok futtatása és a konfiguráció beolvasása az AK-fürtből 
-- Egy [Azure Container Registry (ACR) fiók](/azure/container-registry/container-registry-get-started-portal)
+- [Egy Azure Container Szolgáltatás Kubernetes (AKS) fürthöz](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) parancsok futtatásához és konfiguráció lehívásához az AKS-fürtből 
+- [Egy Azure Container Registry (ACR) fiók](/azure/container-registry/container-registry-get-started-portal)
 
-## <a name="cicd-pipeline-summary"></a>CI/CD-folyamat összegzése
+## <a name="cicd-pipeline-summary"></a>CI/CD csővezeték összegzése
 
-Minden új git-véglegesít kiindul a Build folyamatból. A Build biztonságosan lekéri a legújabb ML-modellt egy blob Storage-fiókból, és egyetlen tárolóban csomagolja azt az alkalmazás kódjába. Az alkalmazásfejlesztés és az adatelemzési workstreams leválasztása biztosítja, hogy az éles alkalmazás mindig a legújabb, a legújabb ML-modellel rendelkező kódot futtassa. Ha az alkalmazás teszteli a tesztelést, a folyamat biztonságosan tárolja a Build-képet egy Docker-tárolóban az ACR-ben. A kiadási folyamat ezután a tárolót az AK használatával helyezi üzembe. 
+Minden új Git véglegesítése elindítja a Build-folyamatot. A build biztonságosan lekéri a legújabb ml-modellt egy blob storage-fiókból, és egyetlen tárolóban csomagolja az alkalmazáskóddal. Az alkalmazásfejlesztési és adatelemzési munkafolyamok ez a függetlenítése biztosítja, hogy az éles alkalmazás mindig a legújabb kód futtatásához szükséges a legújabb rendszerértékelési modellel. Ha az alkalmazás megfelel a tesztelésen, a folyamat biztonságosan tárolja a buildrendszerképet egy Docker-tárolóban az ACR-ben. A kiadási folyamat ezután telepíti a tárolót az AKS használatával. 
 
 ## <a name="cicd-pipeline-steps"></a>CI/CD-folyamat lépései
 
-Az alábbi ábra és lépések a CI/CD folyamat architektúráját írják le:
+Az alábbi ábra és lépések a CI/CD-folyamat architektúráját ismertetik:
 
-![CI/CD-folyamat architektúrája](./media/ci-cd-flask/architecture.png)
+![CI/CD-folyamat architektúra](./media/ci-cd-flask/architecture.png)
 
-1. A fejlesztők az alkalmazás kódjában dolgoznak a választott IDE-ben.
-2. A fejlesztők véglegesítik a kódot az Azure Repos, a GitHub vagy más git-forrás vezérlőelem-szolgáltató számára. 
-3. Az adatszakértők külön dolgoznak a ML-modellek fejlesztésén.
-4. Az adatszakértők a befejezett modellt a modell adattárában teszik közzé, ebben az esetben egy blob Storage-fiókkal. 
-5. Az Azure-folyamatok elindítanak egy buildet a git-véglegesítés alapján.
-6. A build folyamat lekéri a legújabb ML-modellt a blob Storage-ból, és létrehoz egy tárolót.
-7. A folyamat leküldi a Build rendszerképet a privát rendszerkép-tárházba az ACR-ben.
-8. A kiadási folyamat a sikeres kiépítés alapján indul el.
-9. A folyamat lekéri a legújabb képet az ACR-ből, és üzembe helyezi azt a Kubernetes-fürtön az AK-on keresztül.
-10. Az alkalmazásra vonatkozó felhasználói kérések a DNS-kiszolgálón haladnak át.
-11. A DNS-kiszolgáló továbbítja a kéréseket egy terheléselosztó számára, és visszaküldi a válaszokat a felhasználóknak.
+1. A fejlesztők az általuk választott IDE-ben dolgoznak az alkalmazáskódon.
+2. A fejlesztők véglegesítik a kódot az Azure Repos, A GitHub vagy más Git forrásvezérlő szolgáltató. 
+3. Külön-külön, adatszakértők dolgoznak a fejlődő ml-modell.
+4. Az adatszakértők közzéteszik a kész modellt egy modelltárházban, ebben az esetben egy blob storage-fiókban. 
+5. Az Azure-folyamatok a Git véglegesítése alapján indítja el a buildet.
+6. A build folyamat lekéri a legújabb ML-modell blob storage-ból, és létrehoz egy tárolót.
+7. The pipeline pushes the build image to the private image repository in ACR.
+8. A kiadási folyamat elindul a sikeres build alapján.
+9. A folyamat lekéri a legújabb lemezképet az ACR-ből, és telepíti azt a Kubernetes-fürtön az AKS-en.
+10. Az alkalmazás felhasználói kérelmei a DNS-kiszolgálón keresztül haladnak.
+11. A DNS-kiszolgáló továbbítja a kérelmeket egy terheléselosztónak, és visszaküldi a válaszokat a felhasználóknak.
 
 ## <a name="see-also"></a>Lásd még
 
-- [Csoportos adatelemzési folyamat (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure Machine Learning (pénzmosás)](/azure/machine-learning/)
+- [Csapatadat-elemzési folyamat (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes-szolgáltatások (ak)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes-szolgáltatások (AKS)](/azure/aks/intro-kubernetes)

@@ -1,6 +1,6 @@
 ---
-title: Gépek elindítása a Azure DevTest Labs Automation runbookok használatával
-description: Megtudhatja, hogyan indíthatja el a virtuális gépeket Azure DevTest Labs tesztkörnyezetben Azure Automation runbookok használatával.
+title: Gépek indítása automation-runbookok használatával az Azure DevTest Labsben
+description: Ismerje meg, hogyan indíthat virtuális gépeket egy laborban az Azure DevTest Labs az Azure Automation runbookok használatával.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,26 +13,26 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166307"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuális gépek indítása tesztkörnyezetben Azure Automation runbookok használatával
-A DevTest Labs automatikus [indítási](devtest-lab-set-lab-policy.md#set-autostart) funkciója lehetővé teszi, hogy a virtuális gépek egy adott időpontban automatikusan induljon el. Ez a funkció azonban nem támogatja, hogy a gépek meghatározott sorrendben induljon el. Több esetben is hasznos lehet az ilyen típusú automatizálás.  Az egyik esetben, ha a laboron belül egy Jumpbox virtuális gépet először kell elindítani, a többi virtuális gép előtt, mivel a Jumpbox a többi virtuális géphez való hozzáférési pontként használják.  Ez a cikk bemutatja, hogyan állíthat be egy Azure Automation fiókot egy olyan PowerShell-runbook, amely egy parancsfájlt futtat. A szkript címkéket használ a virtuális gépeken a laborban, így lehetővé teszi az indítási sorrend szabályozását anélkül, hogy módosítani kellene a parancsfájlt.
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuális gépek indítása laborban az Azure Automation runbookok használatával
+A DevTest Labs [automatikus indítási](devtest-lab-set-lab-policy.md#set-autostart) funkciója lehetővé teszi a virtuális gépek automatikus indítását egy adott időpontban. Ez a funkció azonban nem támogatja a gépek indításához egy adott sorrendben. Számos olyan forgatókönyv létezik, ahol az ilyen típusú automatizálás hasznos lehet.  Az egyik forgatókönyv az, ahol egy jumpbox virtuális gép egy tesztkörnyezetben kell kezdeni először, mielőtt a többi virtuális gépek, a Jumpbox a többi virtuális gépek hozzáférési pontként használják.  Ez a cikk bemutatja, hogyan állíthat be egy Azure Automation-fiókot egy PowerShell-runbook, amely végrehajtja a parancsfájlt. A parancsfájl címkéket használ a tesztkörnyezetben lévő virtuális gépeken, hogy lehetővé tegye az indítási sorrend szabályozását a parancsfájl módosítása nélkül.
 
 ## <a name="setup"></a>Telepítés
-Ebben a példában a laborban lévő virtuális gépeknek meg kell adni a címkét a megfelelő értékkel (0, 1, 2 stb.) a **StartupOrder** . Jelölje ki azokat a gépeket, amelyek nem szükségesek az-1-es indításhoz.
+Ebben a példában a tesztkörnyezetben lévő virtuális gépeknek hozzá kell adniuk a **startuporder-címkét** a megfelelő értékkel (0,1,2 stb.). Jelöljön ki minden olyan gépet, amelyet nem kell -1-nek indítani.
 
 ## <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
-Hozzon létre egy Azure Automation fiókot a [cikk](../automation/automation-create-standalone-account.md)utasításait követve. A fiók létrehozásakor válassza a **futtató fiókok** lehetőséget. Az Automation-fiók létrehozása után nyissa meg a **modulok** lapot, és válassza az **Azure-modulok frissítése** elemet a menüsávon. Az alapértelmezett modulok több régebbi verziójúak, a frissítés nélkül pedig előfordulhat, hogy a parancsfájl nem működik.
+Hozzon létre egy Azure Automation-fiókot a [cikkben](../automation/automation-create-standalone-account.md)található utasításokat követve. A fiók létrehozásakor válassza a **Futtatás fiókként** lehetőséget. Az automatizálási fiók létrehozása után nyissa meg a **Modulok** lapot, és válassza az **Azure-modulok frissítése** lehetőséget a menüsorban. Az alapértelmezett modulok több régi verziók, és a frissítés nélkül a szkript nem fog működni.
 
 ## <a name="add-a-runbook"></a>Runbook hozzáadása
-Most, ha runbook szeretne hozzáadni az Automation-fiókhoz, válassza a bal oldali menü **runbookok** elemét. Válassza a **Runbook hozzáadása** lehetőséget a menüben, majd kövesse az utasításokat a [PowerShell-runbook létrehozásához](../automation/automation-first-runbook-textual-powershell.md).
+Most, hogy adjunk egy runbookot az automatizálási fiókhoz, válassza a **Runbooks** a bal oldali menüben. Válassza a **Runbook hozzáadása** a menüben, és kövesse az utasításokat [a PowerShell-runbook létrehozásához.](../automation/automation-first-runbook-textual-powershell.md)
 
 ## <a name="powershell-script"></a>PowerShell-szkript
-A következő szkript az előfizetés nevét, a labor nevét adja meg paraméterként. A szkript folyamata a laborban lévő összes virtuális gép lekérése, majd a címke adatainak elemzése a virtuális gépek nevének és indítási sorrendjének a létrehozásához. A szkript végigvezeti a virtuális gépeken, és elindítja a virtuális gépeket. Ha egy adott sorszám több virtuális gépet használ, a rendszer aszinkron módon indítja el a PowerShell-feladatokat. Azoknak a virtuális gépeknek, amelyek nem rendelkeznek címkével, állítsa be az indítási értéket az utolsó (10) értékre, alapértelmezés szerint a rendszer az utolsót fogja elindítani.  Ha a labor nem szeretné, hogy a virtuális gép automatikusan induljon el, állítsa a címke értéket 11-re, és figyelmen kívül hagyja a rendszer.
+A következő parancsfájl az előfizetés nevét, a labor nevét paraméterekként veszi fel. A parancsfájl folyamata az, hogy az összes virtuális gépet a laborban, majd elemezze ki a címke adatait a virtuális gép nevek és az indítási sorrend létrehozásához. A parancsfájl végigvezeti a virtuális gépek sorrendben, és elindítja a virtuális gépeket. Ha egy adott rendelési számban több virtuális gép van, a PowerShell-feladatok használatával aszinkron módon indulnak el. Azok a virtuális gépek, amelyek nem rendelkeznek címkével, állítsa be az indítási értéket, hogy az utolsó (10), alapértelmezés szerint ők indulnak el utoljára.  Ha a tesztkörnyezet nem szeretné, hogy a virtuális gép automatikusan elinduljon, állítsa a címke értékét 11-re, és figyelmen kívül hagyja.
 
 ```powershell
 #Requires -Version 3.0
@@ -132,10 +132,10 @@ While ($current -le 10) {
 }
 ```
 
-## <a name="create-a-schedule"></a>Ütemterv létrehozása
-Ahhoz, hogy ezt a szkriptet naponta végrehajtsa, [hozzon létre egy ütemtervet](../automation/shared-resources/schedules.md#creating-a-schedule) az Automation-fiókban. Az ütemterv létrehozása után [csatolja azt a runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+## <a name="create-a-schedule"></a>Ütemezés létrehozása
+A parancsfájl napi végrehajtásához [hozzon létre egy ütemezést](../automation/shared-resources/schedules.md#creating-a-schedule) az automatizálási fiókban. Az ütemezés létrehozása után [csatolja a runbookhoz.](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook) 
 
-Nagyméretű helyzetekben, ahol több előfizetés is található több laborral, a paramétereket a különböző Labs-fájlokban tárolhatja, és az egyes paraméterek helyett át kell adni a fájlt a parancsfájlba. A parancsfájlt módosítani kell, de az alapszintű végrehajtás ugyanaz lenne. Habár ez a példa a Azure Automation használja a PowerShell-parancsfájl végrehajtásához, más lehetőségek is vannak, például a feladatok felépítése egy Build/Release folyamatba.
+Egy nagyszabású helyzetben, ahol több előfizetéstöbb labs, tárolja a paraméter adatait egy fájlban a különböző labs, és adja át a fájlt a parancsfájlhelyett az egyes paramétereket. A parancsfájlt módosítani kell, de az alapvető végrehajtás ugyanaz lenne. Bár ez a minta az Azure Automation használatával hajtja végre a PowerShell-parancsfájlt, vannak más lehetőségek, például egy feladat használata egy build/kiadás folyamatában.
 
-## <a name="next-steps"></a>Következő lépések
-A következő cikkben további információt talál a Azure Automationról: [Bevezetés a Azure Automationba](../automation/automation-intro.md).
+## <a name="next-steps"></a>További lépések
+Az Azure Automationről az alábbi cikkben olvashat [bővebben: Bevezetés az Azure Automationbe.](../automation/automation-intro.md)

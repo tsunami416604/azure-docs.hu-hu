@@ -1,6 +1,6 @@
 ---
-title: H264 Single bitráta 720p Media Encoder Standard PRESET-Azure | Microsoft Docs
-description: Ez Media Encoder Standard a cikk áttekintést nyújt a "H264 Single bitráta 720p" feladatról.
+title: H264 Single Bitrate 720p Media Encoder Standard set - Azure | Microsoft dokumentumok
+description: Ez a cikk áttekintést nyújt a "H264 Single Bitrate 720p" médiakódoló szabványos beállításáról.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: e48f0c614ba7a7b4199e6ddf0050de0ae7db063f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74886829"
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 Single Bitrate 720p
-`Media Encoder Standard` meghatározza a kódolási feladatok létrehozásakor használható kódolási előkészleteket. `preset name` segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előbeállításait](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
   
- Ez a témakör a `H264 Single Bitrate 720p` XML-és JSON-formátumban történő beállítását mutatja be.  
+ Ez a `H264 Single Bitrate 720p` témakör az előre beállított xml és JSON formátumban jelenik meg.  
   
- Ez az előre definiált, 4500 kbps sebességű és sztereó AAC hangú MP4-fájlt hoz létre. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
+ Ez az előre beállított rendszer egyetlen MP4-fájlt hoz létre 4500 kbps bitrátával és sztereó AAC hanggal. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. A készletek egyes elemeinek és az egyes elemek érvényes értékeinek magyarázatát a [Media Encoder Standard séma](media-services-mes-schema.md) témakörében talál.  
   
  XML  
   

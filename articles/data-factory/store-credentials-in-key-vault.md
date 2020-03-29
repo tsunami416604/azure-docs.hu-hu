@@ -1,6 +1,6 @@
 ---
 title: Hitelesítő adatok tárolása az Azure Key Vaultban
-description: Megtudhatja, hogyan tárolhatja az Azure Key vaultban használt adattárak hitelesítő adatait, amelyek Azure Data Factory automatikusan lekérhető futásidőben.
+description: Ismerje meg, hogyan tárolhatja az Azure Data Factory által futásidőben automatikusan beolvasni képes Azure-kulcstartóban használt adattárak hitelesítő adatait.
 services: data-factory
 author: linda33wj
 manager: shwang
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
 ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122610"
 ---
-# <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása Azure Key Vaultban
+# <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása az Azure Key Vaultban
 
-Az adattárakhoz és a számítási feladatokhoz tartozó hitelesítő adatokat egy [Azure Key Vault](../key-vault/key-vault-overview.md)tárolhatja. Azure Data Factory beolvassa a hitelesítő adatokat, amikor egy adattárat/számítást használó tevékenységet hajt végre.
+Az adattárak és a számítási feladatok hitelesítő adatait az [Azure Key Vaultban](../key-vault/key-vault-overview.md)tárolhatja. Az Azure Data Factory lekéri a hitelesítő adatokat, amikor az adattárolót/számítást használó tevékenységet hajt végre.
 
-Jelenleg az egyéni tevékenység kivételével az összes tevékenységtípus támogatja ezt a funkciót. Az összekötő konfigurálásához a részletekért olvassa el az [egyes összekötők témakör](copy-activity-overview.md#supported-data-stores-and-formats) "társított szolgáltatás tulajdonságai" szakaszát.
+Jelenleg az egyéni tevékenységek kivételével minden tevékenységtípus támogatja ezt a funkciót. Az összekötő konfigurációkifejezetten ellenőrizze a "csatolt szolgáltatás tulajdonságai" szakasz [minden összekötő témakörben](copy-activity-overview.md#supported-data-stores-and-formats) a részletekért.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a funkció az adatok gyári felügyelt identitására támaszkodik. Ismerje meg, hogyan működik a [felügyelt identitás a refactoryban](data-factory-service-identity.md) , és győződjön meg arról, hogy az adatok előállítója társítva van.
+Ez a funkció az adat-előállító felügyelt identitásra támaszkodik. Ismerje meg, hogyan működik a [Felügyelt identitás data factory](data-factory-service-identity.md) és győződjön meg arról, hogy az adatgyár rendelkezik egy társított.
 
 ## <a name="steps"></a>Lépések
 
-A Azure Key Vaultban tárolt hitelesítő adatokra való hivatkozáshoz a következőket kell tennie:
+Az Azure Key Vaultban tárolt hitelesítő adatokra való hivatkozáshoz a következőket kell tenni:
 
-1. Az **adatok gyári felügyelt identitásának beolvasása** a gyári környezettel együtt generált "felügyelt identitási objektum azonosító" értékének másolásával. Ha az ADF authoring felhasználói felületét használja, akkor a felügyelt identitás objektum azonosítója megjelenik a Azure Key Vault társított szolgáltatás létrehozása ablakban; a Azure Portalból is lekérheti, ha [beolvassa az adatok gyári felügyelt identitását](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Adja meg a felügyelt identitás hozzáférését a Azure Key Vaulthoz.** A Key vaultban – > hozzáférési szabályzatok – > Új-> Keresés a felügyelt identitásban a **Get** engedély megadása a titkos engedélyek legördülő menüben. Lehetővé teszi a kijelölt gyár számára a titkos kulcs elérését a Key vaultban.
-3. **Hozzon létre egy társított szolgáltatást, amely a Azure Key Vaultre mutat.** Tekintse meg [Azure Key Vault társított szolgáltatást](#azure-key-vault-linked-service).
-4. **Hozzon létre egy adattárhoz társított szolgáltatást, amely a Key vaultban tárolt megfelelő titkos kulcsra hivatkozik.** Tekintse meg a [Key vaultban tárolt hivatkozási titkot](#reference-secret-stored-in-key-vault).
+1. **Az adat-előállító felügyelt identitás lekéréséhez** másolja a "Felügyelt identitásobjektum-azonosító" értékét a gyárral együtt. Ha ADF szerzői felhasználói felületet használ, a felügyelt identitásobjektum-azonosító megjelenik az Azure Key Vault hozadékablakában; az Azure Portalról is lekérheti, olvassa el az [adat-előállító felügyelt identitás lekérése című hivatkozást.](data-factory-service-identity.md#retrieve-managed-identity)
+2. **Adja meg a felügyelt identitás-hozzáférést az Azure Key Vaulthoz.** A key vaultban -> Access-szabályzatok -> Új -> a felügyelt identitás hozzáadása a felügyelt identitás, hogy **engedélyt kapjon** a titkos engedélyek legördülő. Ez lehetővé teszi, hogy ez a kijelölt gyár hozzáférést titkos kulcstartóban.
+3. **Hozzon létre egy összekapcsolt szolgáltatást, amely az Azure Key Vault.** Tekintse meg az [Azure Key Vault csatolt szolgáltatás.](#azure-key-vault-linked-service)
+4. **Hozzon létre adattárhoz csatolt szolgáltatást, amelyen belül hivatkozik a megfelelő titkos kulcs a key vaultban tárolt.** Tekintse meg a [key vaultban tárolt hivatkozási titkos kulcsot.](#reference-secret-stored-in-key-vault)
 
-## <a name="azure-key-vault-linked-service"></a>Társított szolgáltatás Azure Key Vault
+## <a name="azure-key-vault-linked-service"></a>Azure Key Vaulthoz társított szolgáltatás
 
-Azure Key Vault társított szolgáltatás a következő tulajdonságokat támogatja:
+Az Azure Key Vaulthoz csatolt szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AzureKeyVault**. | Igen |
-| BaseUrl | A Azure Key Vault URL-cím megadása. | Igen |
+| type | A típustulajdonságot a következőre kell állítani: **AzureKeyVault**. | Igen |
+| baseUrl | Adja meg az Azure Key Vault URL-címét. | Igen |
 
-**Szerzői felhasználói felület használata:**
+**A szerzői felhasználói felület használata:**
 
-Kattintson a **kapcsolatok** -> **társított szolgáltatások** ->  **+ New** -> a "Azure Key Vault" kifejezésre:
+Kattintson **a Kapcsolatok** -> **csatolt szolgáltatások** -> **+Új** -> keresés az "Azure Key Vault" kifejezésre:
 
-![AKV keresése](media/store-credentials-in-key-vault/search-akv.png)
+![Keresés AKV](media/store-credentials-in-key-vault/search-akv.png)
 
-Válassza ki a kiépített Azure Key Vault, ahol a hitelesítő adatait tárolja. A **kapcsolódási teszttel** ellenőrizheti, hogy a AKV-kapcsolatok érvényesek-e. 
+Válassza ki a kiosztott Azure Key Vault, ahol a hitelesítő adatok tárolása. A **Kapcsolat tesztelésével** ellenőrizheti, hogy az AKV-kapcsolat érvényes-e. 
 
 ![AKV konfigurálása](media/store-credentials-in-key-vault/configure-akv.png)
 
-**JSON-példa:**
+**JSON példa:**
 
 ```json
 {
@@ -69,27 +69,27 @@ Válassza ki a kiépített Azure Key Vault, ahol a hitelesítő adatait tárolja
 }
 ```
 
-## <a name="reference-secret-stored-in-key-vault"></a>A Key vaultban tárolt hivatkozási titok
+## <a name="reference-secret-stored-in-key-vault"></a>Hivatkozás a Key Vaultban tárolt titkos kulcsra
 
-A következő tulajdonságok támogatottak, ha olyan mezőt konfigurál a társított szolgáltatásban, amely a Key Vault-titokra hivatkozik:
+A következő tulajdonságok akkor támogatottak, ha egy mezőt konfigurál egy kulcstartó titkos kulcsára hivatkozó csatolt szolgáltatásban:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A mező Type (típus) tulajdonságát a következőre kell beállítani: **AzureKeyVaultSecret**. | Igen |
-| SecretName | A titok neve Azure Key Vaultban. | Igen |
-| Titkoskulcsverziója | A titok verziója Azure Key Vaultban.<br/>Ha nincs megadva, mindig a titkos kulcs legújabb verzióját használja.<br/>Ha meg van adva, a rendszer az adott verzióra ragaszkodik.| Nem |
-| store | Egy Azure Key Vault társított szolgáltatásra hivatkozik, amelyet a hitelesítő adatok tárolására használ. | Igen |
+| type | A mező típustulajdonságának a következő re van állítva: **AzureKeyVaultSecret**. | Igen |
+| titkosnév | A titkos kulcs neve az Azure Key Vaultban. | Igen |
+| titkosverzió | A titkos azure-kulcstárolóban a titkos verzió.<br/>Ha nincs megadva, mindig a titkos titok legújabb verzióját használja.<br/>Ha meg van adva, akkor ragaszkodik az adott verzióhoz.| Nem |
+| áruház | Egy Azure Key Vault-alapú szolgáltatás, amely a hitelesítő adatok tárolására használt. | Igen |
 
-**Szerzői felhasználói felület használata:**
+**A szerzői felhasználói felület használata:**
 
-Válassza a titkos mezők **Azure Key Vault** lehetőséget, miközben létrehozza a kapcsolódást az adattárhoz vagy a számítási feladatokhoz. Válassza ki a kiépített Azure Key Vault társított szolgáltatást, és adja meg a **titkos nevet**. Igény szerint megadhat egy titkos verziót is. 
+Válassza ki az **Azure Key Vault** titkos mezők létrehozása közben a kapcsolatot az adattár/számítási kapcsolat létrehozása közben. Válassza ki a kiépített Azure Key Vault csatolt szolgáltatást, és adja meg a **titkos nevet.** Opcionálisan titkos verziót is megadhat. 
 
 >[!TIP]
->A társított szolgáltatás kapcsolati karakterláncát (például SQL Server, blob Storage stb.) használó összekötők esetében választhat, hogy csak a titkos mezőt kívánja-e tárolni (például jelszó a AKV), vagy a teljes kapcsolati karakterláncot a AKV tárolja. Mindkét lehetőséget megtalálhatja a felhasználói felületen is.
+>A kapcsolati karakterláncot használó összekötők esetében az SQL Server, a Blob storage stb., választhat, hogy csak a titkos mezőt tárolja, például a jelszót az AKV-ban, vagy a teljes kapcsolati karakterláncot a KV-ben tárolja. Mindkét lehetőség megtalálható a felhasználói felületen.
 
-![AKV titkos kulcsának konfigurálása](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![AKV titkos kulcsot konfigurálása](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
-**JSON-példa: (lásd a "jelszó" szakaszt)**
+**JSON példa: (lásd a "jelszó" részt)**
 
 ```json
 {
@@ -114,5 +114,5 @@ Válassza a titkos mezők **Azure Key Vault** lehetőséget, miközben létrehoz
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

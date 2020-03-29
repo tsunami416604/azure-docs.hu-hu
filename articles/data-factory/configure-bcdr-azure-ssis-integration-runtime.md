@@ -1,6 +1,6 @@
 ---
-title: Azure-SSIS Integration Runtime konfigurálása SQL Database feladatátvételhez
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure-SSIS Integration Runtime Azure SQL Database geo-replikációval és feladatátvételsel a SSISDB-adatbázishoz
+title: Az Azure-SSIS-integrációs futásidő konfigurálása az SQL Database feladatátvételéhez
+description: Ez a cikk bemutatja, hogyan konfigurálható az Azure-SSIS-integrációs futásidő az Azure SQL Database georeplikációjával és feladatátvételével az SSISDB-adatbázishoz
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -13,79 +13,79 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/14/2018
 ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928501"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>A Azure-SSIS Integration Runtime konfigurálása Azure SQL Database geo-replikációval és feladatátvételsel
+# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurálja az Azure-SSIS-integrációs futásidőt az Azure SQL Database georeplikációval és feladatátvételsel
 
-Ez a cikk azt ismerteti, hogyan konfigurálható a Azure-SSIS Integration Runtime Azure SQL Database geo-replikációval a SSISDB-adatbázishoz. Feladatátvétel esetén gondoskodhat arról, hogy a Azure-SSIS IR továbbra is működjön a másodlagos adatbázissal.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure-SSIS-integrációs futásidőt az Azure SQL Database georeplikációval az SSISDB-adatbázishoz. Feladatátvétel esetén biztosíthatja, hogy az Azure-SSIS ir továbbra is működjön a másodlagos adatbázissal.
 
-A SQL Database földrajzi replikálásával és feladatátvételével kapcsolatos további információkért lásd [: az Active geo-replikáció és az automatikus feladatátvételi csoportok áttekintése](../sql-database/sql-database-geo-replication-overview.md).
+Az SQL Database georeplikációjáról és feladatátvételéről további információt [az Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok](../sql-database/sql-database-geo-replication-overview.md)című témakörben talál.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>1\. forgatókönyv – Azure-SSIS IR az írási-olvasási figyelő végpontra mutat.
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>1. forgatókönyv – Az Azure-SSIS IR az írás-olvasásfigyelő végpontra mutat
 
 ### <a name="conditions"></a>Feltételek
 
-Ez a szakasz az alábbi feltételek teljesülése esetén érvényes:
+Ez a szakasz akkor érvényes, ha a következő feltételek teljesülnek:
 
-- A Azure-SSIS IR a feladatátvételi csoport írási-olvasási figyelő végpontjának mutat.
+- Az Azure-SSIS IR a feladatátvételi csoport írás-olvasási figyelő végpontjára mutat.
 
-  ÉS
+  AND
 
-- A SQL Database-kiszolgáló *nincs konfigurálva a* virtuális hálózati szolgáltatás végponti szabályával.
+- Az SQL Database-kiszolgáló *nincs* konfigurálva a virtuális hálózati szolgáltatás végpontszabályával.
 
 ### <a name="solution"></a>Megoldás
 
-Feladatátvétel esetén a Azure-SSIS IR átlátszó. A Azure-SSIS IR automatikusan csatlakozik a feladatátvételi csoport új elsődlegeséhez.
+Feladatátvétel esetén az Azure-SSIS IR transzparens. Az Azure-SSIS ir automatikusan csatlakozik a feladatátvételi csoport új elsődleges.
 
-## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>2\. forgatókönyv – Azure-SSIS IR az elsődleges kiszolgálói végpontra mutat
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>2. forgatókönyv – Az Azure-SSIS ir az elsődleges kiszolgálóvégpontra mutat
 
 ### <a name="conditions"></a>Feltételek
 
-Ez a szakasz akkor érvényes, ha a következő feltételek valamelyike teljesül:
+Ez a szakasz akkor érvényes, ha az alábbi feltételek valamelyike teljesül:
 
-- A Azure-SSIS IR a feladatátvételi csoport elsődleges kiszolgálói végpontján mutat. Ez a végpont megváltozik a feladatátvétel bekövetkeztekor.
-
-  VAGY
-
-- A Azure SQL Database-kiszolgáló a virtuális hálózati szolgáltatás végponti szabályával van konfigurálva.
+- Az Azure-SSIS ir a feladatátvételi csoport elsődleges kiszolgálóvégpontjára mutat. Ez a végpont megváltozik, ha feladatátvétel történik.
 
   VAGY
 
-- Az adatbázis-kiszolgáló egy SQL Database felügyelt példány, amely virtuális hálózattal van konfigurálva.
+- Az Azure SQL Database-kiszolgáló a virtuális hálózati szolgáltatás végpontszabályával van konfigurálva.
+
+  VAGY
+
+- Az adatbázis-kiszolgáló egy virtuális hálózattal konfigurált SQL-adatbázis által felügyelt példány.
 
 ### <a name="solution"></a>Megoldás
 
-Feladatátvétel esetén a következő műveleteket kell végrehajtania:
+Feladatátvétel kor a következő műveleteket kell végeznie:
 
-1. Állítsa le a Azure-SSIS IR.
+1. Állítsa le az Azure-SSIS ir.
 
-2. Konfigurálja újra az IR-t úgy, hogy az új elsődleges végpontra és az új régióban lévő virtuális hálózatra mutasson.
+2. Konfigurálja újra az infravörös rendszert úgy, hogy az új elsődleges végpontra és az új régió ban lévő virtuális hálózatra mutasson.
 
-3. Indítsa újra az IR-t.
+3. Indítsa újra az infravörös rendszert.
 
 A következő szakaszok részletesebben ismertetik ezeket a lépéseket.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Győződjön meg arról, hogy engedélyezte a vész-helyreállítást a Azure SQL Database-kiszolgálónál abban az esetben, ha a kiszolgáló egyidejű leállás miatt leáll. További információ: [az üzletmenet folytonosságának áttekintése Azure SQL Database](../sql-database/sql-database-business-continuity.md).
+- Győződjön meg arról, hogy engedélyezte a vészhelyreállítást az Azure SQL Database-kiszolgáló, ha a kiszolgáló egy kimaradás egyidejű. További információ: [Az Üzletmenet-folytonosság áttekintése az Azure SQL Database-rel](../sql-database/sql-database-business-continuity.md)című témakörben talál.
 
-- Ha az aktuális régióban virtuális hálózatot használ, akkor az Azure-SSIS integrációs moduljának összekapcsolásához egy másik virtuális hálózatot kell használnia az új régióban. További információ: [Az Azure SSIS Integration Runtime csatlakoztatása egy virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
+- Ha az aktuális régióban virtuális hálózatot használ, az Azure-SSIS-integrációs futásidejű csatlakoztatásához egy másik virtuális hálózatot kell használnia az új régióban. További információ: [Csatlakozás az Azure-SSIS-integrációs futásidőhez virtuális hálózathoz.](join-azure-ssis-integration-runtime-virtual-network.md)
 
-- Ha egyéni telepítést használ, előfordulhat, hogy elő kell készítenie egy másik SAS URI-t a blob-tárolóhoz, amely az egyéni telepítési parancsfájlt és a kapcsolódó fájlokat tárolja, így a leállás során továbbra is elérhető marad. További információ: [Egyéni telepítő konfigurálása Azure-SSIS Integration Runtime-on](how-to-configure-azure-ssis-ir-custom-setup.md).
+- Ha egyéni telepítést használ, előfordulhat, hogy elő kell készítenie egy másik SAS-URI-t az egyéni beállítási parancsfájlt és a kapcsolódó fájlokat tároló blobtárolóhoz, így továbbra is elérhető lesz egy kimaradás során. További információ: [Egyéni beállítás konfigurálása Azure-SSIS-integrációs futásidőben.](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 ### <a name="steps"></a>Lépések
 
-Kövesse az alábbi lépéseket a Azure-SSIS IR leállításához, az IR átváltásához egy új régióra, majd indítsa el újra.
+Az alábbi lépésekkel állítsa le az Azure-SSIS ir-t, váltson át az infravörös szolgáltatásra egy új régióra, és indítsa újra.
 
-1. Állítsa le az IR-t az eredeti régióban.
+1. Állítsa le az infravörös szintet az eredeti régióban.
 
-2. A következő parancs meghívásával frissítse az IR-t az új beállításokkal.
+2. Hívja meg a következő parancsot a PowerShellben az infravörös kapcsolat frissítéséhez az új beállításokkal.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -96,40 +96,40 @@ Kövesse az alábbi lépéseket a Azure-SSIS IR leállításához, az IR átvál
                     -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
-    További információ erről a PowerShell-parancsról: [Az Azure-SSIS integrációs modul létrehozása a Azure Data Factory-ben](create-azure-ssis-integration-runtime.md)
+    Erről a PowerShell-parancsról további információt [az Azure-SSIS-integrációs futásidő létrehozása az Azure Data Factoryban című témakörben talál.](create-azure-ssis-integration-runtime.md)
 
-3. Indítsa újra az IR-t.
+3. Indítsa újra az infravörös szintet.
 
-## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>3\. forgatókönyv – meglévő SSISDB (SSIS-katalógus) csatolása egy új Azure-SSIS IRhoz
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>3. forgatókönyv – Meglévő SSISDB (SSIS-katalógus) csatolása egy új Azure-SSIS IR-hez
 
-Ha az aktuális régióban egy ADF-vagy Azure-SSIS IR-katasztrófa következik be, a SSISDB továbbra is dolgozhat egy új Azure-SSIS IR egy új régióban.
+Ha egy ADF vagy Az Azure-SSIS ir katasztrófa történik az aktuális régióban, beállíthatja, hogy az SSISDB továbbra is egy új Azure-SSIS IR egy új régióban.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Ha az aktuális régióban virtuális hálózatot használ, akkor az Azure-SSIS integrációs moduljának összekapcsolásához egy másik virtuális hálózatot kell használnia az új régióban. További információ: [Az Azure SSIS Integration Runtime csatlakoztatása egy virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
+- Ha az aktuális régióban virtuális hálózatot használ, az Azure-SSIS-integrációs futásidejű csatlakoztatásához egy másik virtuális hálózatot kell használnia az új régióban. További információ: [Csatlakozás az Azure-SSIS-integrációs futásidőhez virtuális hálózathoz.](join-azure-ssis-integration-runtime-virtual-network.md)
 
-- Ha egyéni telepítést használ, előfordulhat, hogy elő kell készítenie egy másik SAS URI-t a blob-tárolóhoz, amely az egyéni telepítési parancsfájlt és a kapcsolódó fájlokat tárolja, így a leállás során továbbra is elérhető marad. További információ: [Egyéni telepítő konfigurálása Azure-SSIS Integration Runtime-on](how-to-configure-azure-ssis-ir-custom-setup.md).
+- Ha egyéni telepítést használ, előfordulhat, hogy elő kell készítenie egy másik SAS-URI-t az egyéni beállítási parancsfájlt és a kapcsolódó fájlokat tároló blobtárolóhoz, így továbbra is elérhető lesz egy kimaradás során. További információ: [Egyéni beállítás konfigurálása Azure-SSIS-integrációs futásidőben.](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 ### <a name="steps"></a>Lépések
 
-Kövesse az alábbi lépéseket a Azure-SSIS IR leállításához, az IR átváltásához egy új régióra, majd indítsa el újra.
+Az alábbi lépésekkel állítsa le az Azure-SSIS ir-t, váltson át az infravörös szolgáltatásra egy új régióra, és indítsa újra.
 
-1. A tárolt eljárás végrehajtása **\<new_data_factory_name\>** vagy **\<new_integration_runtime_name\>hoz** csatolt SSISDB létrehozásához.
+1. A tárolt eljárás végrehajtásával az SSISDB ** \<csatolva\> ** legyen new_data_factory_name vagy ** \<new_integration_runtime_name.\>**
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
    ```
 
-2. Hozzon létre egy új, **\<new_data_factory_name\>** nevű adatelőállítót az új régióban. További információt az adat-előállító létrehozása című témakörben talál.
+2. Hozzon létre egy új adatgyárat, ** \<amelynek neve new_data_factory_name\> ** az új régióban. További információ: Adatgyár létrehozása.
 
      ```powershell
      Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
                          -Location "new region"`
                          -Name "<new_data_factory_name>"
      ```
-    További információ erről a PowerShell-parancsról: [Azure-beli adat-előállító létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md)
+    Erről a PowerShell-parancsról további információt a [PowerShell használatával azure-adatgyár létrehozása című témakörben](quickstart-create-data-factory-powershell.md) talál.
 
-3. Hozzon létre egy **\<new_integration_runtime_name\>** nevű új Azure-SSIS IRt az új régióban Azure PowerShell használatával.
+3. Hozzon létre egy új Azure-SSIS IR nevű ** \<new_integration_runtime_name\> ** az új régióban az Azure PowerShell használatával.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -149,16 +149,16 @@ Kövesse az alábbi lépéseket a Azure-SSIS IR leállításához, az IR átvál
                                            -CatalogPricingTier $SSISDBPricingTier
     ```
 
-    További információ erről a PowerShell-parancsról: [Az Azure-SSIS integrációs modul létrehozása a Azure Data Factory-ben](create-azure-ssis-integration-runtime.md)
+    Erről a PowerShell-parancsról további információt [az Azure-SSIS-integrációs futásidő létrehozása az Azure Data Factoryban című témakörben talál.](create-azure-ssis-integration-runtime.md)
 
-4. Indítsa újra az IR-t.
+4. Indítsa újra az infravörös szintet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Vegye figyelembe a Azure-SSIS IR következő konfigurációs beállításait:
+Vegye figyelembe az Azure-SSIS ir további konfigurációs beállításait:
 
-- [A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez](configure-azure-ssis-integration-runtime-performance.md)
+- [Konfigurálja az Azure-SSIS integrációs futástime-ot a nagy teljesítmény érdekében](configure-azure-ssis-integration-runtime-performance.md)
 
 - [Az Azure-SSIS Integration Runtime telepítésének testreszabása](how-to-configure-azure-ssis-ir-custom-setup.md)
 
-- [Enterprise Edition kiépítése a Azure-SSIS Integration Runtime számára](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Enterprise Edition kiépítése az Azure-SSIS-integrációs futásórához](how-to-configure-azure-ssis-ir-enterprise-edition.md)

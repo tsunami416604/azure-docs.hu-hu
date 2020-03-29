@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó webes API létrehozása – Microsoft Identity platform | Azure
-description: Megtudhatja, hogyan hozhat létre olyan webes API-t, amely meghívja az alárendelt webes API-kat (áttekintés).
+title: Webes API-kat megnevező webes API létrehozása – Microsoft identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre webes API-t, amely meghívja az alsóbb rétegbeli webes API-kat (áttekintés).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,33 +15,33 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 467ff2f789cc83bc5651d831838da0b5c922c839
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701739"
 ---
-# <a name="scenario-a-web-api-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó webes API
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>Eset: Webes API-kat meghívja egy webes API-k
 
-Ismerje meg, hogy mit kell tudnia a webes API-kat meghívó webes API-k létrehozásához.
+Ismerje meg, mit kell tudnia a webes API-kat meghívjaó webes API-k létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a forgatókönyv, amelyben a védett webes API meghívja a webes API-kat, a "webes API-k védelme" forgatókönyvre épül. Ha többet szeretne megtudni erről az alapvető forgatókönyvről, tekintse meg a [forgatókönyv: védett webes API](scenario-protected-web-api-overview.md)című témakört.
+Ebben a forgatókönyvben, amelyben egy védett webes API-k webes API-k, a "Web API védelme" forgatókönyv alapján épül. Ha többet szeretne megtudni erről az alapvető forgatókönyvről, olvassa el [a Forgatókönyv: Védett webes API.](scenario-protected-web-api-overview.md)
 
 ## <a name="overview"></a>Áttekintés
 
-- A webes, asztali, mobil vagy egyoldalas alkalmazás ügyfélprogram (amely nem szerepel a csatolt ábrán) meghívja a védett webes API-t, és egy JSON Web Token (JWT) tulajdonosi jogkivonatot biztosít az "engedélyezési" HTTP-fejlécben.
-- A védett webes API érvényesíti a jogkivonatot, és a Microsoft Authentication Library (MSAL) `AcquireTokenOnBehalfOf` metódust használja a Azure Active Directory (Azure AD) egy másik jogkivonatának igényléséhez, hogy a védett webes API meghívhat egy második webes API-t, vagy egy alárendelt webes API-t a felhasználó nevében.
-- A védett webes API a `AcquireTokenSilent`később is meghívhatja, hogy az ugyanazon felhasználó nevében más alsóbb rétegbeli API-kra is igényeljen jogkivonatokat. `AcquireTokenSilent` szükség esetén frissíti a tokent.
+- Egy webes, asztali, mobil vagy egyoldalas alkalmazásügyfél (amely nem szerepel a mellékelt ábrán) védett webes API-t hív meg, és JSON webtoken (JWT) tulajdonosi jogkivonatot biztosít az "Engedélyezés" HTTP fejlécében.
+- A védett webes API érvényesíti a jogkivonatot, és `AcquireTokenOnBehalfOf` a Microsoft Authentication Library (MSAL) metódus használatával kér egy másik jogkivonatot az Azure Active Directoryból (Azure AD), hogy a védett webes API-t egy második webes API-t vagy alsóbb rétegbeli webes API-t hívhasson meg a felhasználó nevében.
+- A védett webes API-t is hívhatja `AcquireTokenSilent`később, hogy kérje nek jogkivonatokat más alsóbb rétegbeli API-k nevében ugyanaz a felhasználó. `AcquireTokenSilent`szükség esetén frissíti a jogkivonatot.
 
-![Webes API-t hívó webes API diagramja](media/scenarios/web-api.svg)
+![Webes API-t hívó webes API-diagram](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>Sajátosságai
 
-Az API-engedélyekhez kapcsolódó alkalmazás-regisztrációs rész klasszikus. Az alkalmazás konfigurációja magában foglalja a OAuth 2,0-as verziójának használatát a JWT tulajdonosi jogkivonatának az alsóbb rétegbeli API-hoz való cseréjéhez. Ezt a tokent a rendszer hozzáadja a jogkivonat-gyorsítótárhoz, ahol elérhető a webes API vezérlői között, és a tokent az alsóbb rétegbeli API-k meghívásához csendesen is beszerezheti.
+Az API-engedélyekhez kapcsolódó alkalmazásregisztrációs rész klasszikus. Az alkalmazás konfigurációja magában foglalja az OAuth 2.0 a folyamat nevében a JWT-tulajdonosi jogkivonat cseréje egy jogkivonatot egy alsóbb rétegbeli API-t. Ez a jogkivonat hozzáadódik a jogkivonat-gyorsítótárhoz, ahol elérhető a webes API-vezérlők, és ezután beszerezhet egy jogkivonatot csendben az alsóbb rétegbeli API-k hívásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásregisztráció](scenario-web-api-call-api-app-registration.md)

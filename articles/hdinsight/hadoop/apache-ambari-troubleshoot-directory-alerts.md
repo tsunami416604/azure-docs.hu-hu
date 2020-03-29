@@ -1,6 +1,6 @@
 ---
-title: Apache Ambari Directory-riasztások az Azure HDInsight
-description: Az Apache Ambari Directory-riasztások lehetséges okainak és megoldásainak megvitatása és elemzése a HDInsight-ben.
+title: Apache Ambari könyvtárriasztások az Azure HDInsightban
+description: Az Apache Ambari könyvtárriasztások lehetséges okainak és megoldásainak megvitatása és elemzése a HDInsightban.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722836"
 ---
-# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Forgatókönyv: Apache Ambari Directory-riasztások az Azure HDInsight
+# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Eset: Apache Ambari címtárriasztások az Azure HDInsightban
 
-Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Az Apache Ambari az alábbihoz hasonló hibákat kap:
+Az Apache Ambari a következőhöz hasonló hibákat kap:
 
 ```
 1/1 local-dirs have errors: [ /mnt/resource/hadoop/yarn/local : Cannot create directory: /mnt/resource/hadoop/yarn/local ]
@@ -29,19 +29,19 @@ Az Apache Ambari az alábbihoz hasonló hibákat kap:
 
 ## <a name="cause"></a>Ok
 
-Az érintett munkavégző csomópont (ok) ból a Ambari-riasztásból említett könyvtárak hiányoznak.
+Az Ambari riasztás ban említett könyvtárak hiányoznak az érintett dolgozói csomópontokról.
 
 ## <a name="resolution"></a>Megoldás:
 
-Manuálisan hozza létre a hiányzó könyvtárakat az érintett munkavégző csomópont (ok) hoz.
+Az érintett munkavégző csomópont(ok)on manuálisan hozzon létre hiányzó könyvtárakat.
 
-1. SSH-t a megfelelő munkavégző csomóponthoz.
+1. SSH-t az érintett munkavégző csomópontnak.
 
-1. Root felhasználó beolvasása: `sudo su`.
+1. Root felhasználó `sudo su`beszerezni: .
 
-1. A szükséges könyvtárak rekurzív létrehozása.
+1. Rekurzívan hozzon létre szükséges könyvtárakat.
 
-1. A könyvtárak tulajdonosának és csoportjának módosítása.
+1. Tulajdonos és csoport módosítása ezekhez a könyvtárakhoz.
 
     ```bash
     chown -R yarn /mnt/resource/hadoop/yarn/local
@@ -50,14 +50,14 @@ Manuálisan hozza létre a hiányzó könyvtárakat az érintett munkavégző cs
     chgrp -R hadoop /mnt/resource/hadoop/yarn/log
     ```
 
-1. Az Apache Ambari felhasználói felületén tiltsa le, majd engedélyezze a riasztást.
+1. Az Apache Ambari felhasználói felületéről tiltsa le, majd engedélyezze a riasztást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
 
-* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
 
-* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.

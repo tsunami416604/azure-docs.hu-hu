@@ -1,6 +1,6 @@
 ---
-title: Adatfolyam-végpontok kezelése a Azure Portalokkal | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan kezelheti a folyamatos átviteli végpontokat a Azure Portal.
+title: Streamelési végpontok kezelése az Azure Portalon | Microsoft dokumentumok
+description: Ez a cikk bemutatja, hogyan kezelheti a streamelési végpontok az Azure Portalon.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,106 +16,106 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900884"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Adatfolyam-végpontok kezelése a Azure Portal 
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Streamvégpontok kezelése az Azure Portalon 
 
-Ez a cikk bemutatja, hogyan kezelhető a Azure Portal a folyamatos átviteli végpontok kezeléséhez. 
+Ez a cikk bemutatja, hogyan használhatja az Azure Portalon a streamelési végpontok kezelésére. 
 
 >[!NOTE]
->Ügyeljen rá, hogy tekintse át az [áttekintő](media-services-streaming-endpoints-overview.md) cikket. 
+>Győződjön meg róla, hogy tekintse át az [áttekintő](media-services-streaming-endpoints-overview.md) cikket. 
 
-A folyamatos átviteli végpont skálázásával kapcsolatos információkért tekintse meg [ezt](media-services-portal-scale-streaming-endpoints.md) a cikket.
+A streamelési végpont méretezéséről ebben a [cikkben](media-services-portal-scale-streaming-endpoints.md) olvashat.
 
-## <a name="start-managing-streaming-endpoints"></a>Adatfolyam-végpontok kezelésének megkezdése 
+## <a name="start-managing-streaming-endpoints"></a>A streamelési végpontok kezelésének megkezdése 
 
-A fiókhoz tartozó streaming-végpontok kezelésének megkezdéséhez tegye a következőket.
+A fiók streamelési végpontjainak kezeléséhez tegye a következőket.
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. A **Beállítások** panelen válassza a **folyamatos átviteli végpontok**lehetőséget.
+2. A **Beállítások** panelen válassza a **Streamelési végpontok**lehetőséget.
    
     ![Streamvégpont](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
-> Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont fut állapotban van.
+> A számlázás csak akkor történik meg, ha a streamelési végpont futó állapotban van.
 
-## <a name="adddelete-a-streaming-endpoint"></a>Adatfolyam-végpont hozzáadása/törlése
+## <a name="adddelete-a-streaming-endpoint"></a>Streamelési végpont hozzáadása/törlése
 
 >[!NOTE]
->Az alapértelmezett folyamatos átviteli végpont nem törölhető.
+>Az alapértelmezett streamelési végpont nem törölhető.
 
-Ha a Azure Portal használatával szeretne adatfolyam-végpontot hozzáadni/törölni, tegye a következőket:
+Streamelési végpont hozzáadása/törlése az Azure Portalon, tegye a következőket:
 
-1. Folyamatos átviteli végpont hozzáadásához kattintson a lap tetején található **+ végpontra** . 
+1. Streamelési végpont hozzáadásához kattintson a lap tetején található **+ végpontra.** 
 
-    Előfordulhat, hogy több folyamatos átviteli végpontra van szüksége, ha eltérő CDNs vagy CDN-t vagy közvetlen hozzáférést tervez.
+    Előfordulhat, hogy több streamelési végpontra van szüksége, ha különböző CDN-ekkel vagy CDN-kapcsolatokkal és közvetlen hozzáféréssel kíván rendelkezni.
 
-2. A folyamatos átviteli végpont törléséhez nyomja le a **delete (Törlés** ) gombot.      
-3. A **Start** gombra kattintva indítsa el a folyamatos átviteli végpontot.
+2. A streamelési végpont törléséhez nyomja meg a **Törlés** gombot.      
+3. Kattintson a **Start** gombra a streamelési végpont elindításához.
    
     ![Streamvégpont](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>A folyamatos átviteli végpont konfigurálása
-A folyamatos átviteli végpont lehetővé teszi a következő tulajdonságok konfigurálását:
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>A streamelési végpont konfigurálása
+A streamelési végpont lehetővé teszi a következő tulajdonságok konfigurálását:
 
 * Hozzáférés-vezérlés
 * Gyorsítótár-vezérlés
 * Helyek közötti hozzáférési házirendek
 
-További információ ezekről a tulajdonságokról: [streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Ezekről a tulajdonságokról a [StreamingEndpoint című](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)témakörben talál részletes információt.
 
 >[!NOTE]
->Ha a CDN engedélyezve van, nem férhet hozzá az IP-hozzáféréshez. Az IP-hozzáférés csak akkor érvényes, ha nem rendelkezik CDN-vel.
+>Ha a CDN engedélyezve van, nem lehet hozzáférni az IP-hozzáféréshez. Az IP-hozzáférés csak akkor alkalmazható, ha nincs CDN-je.
 
-Az adatfolyam-végpontot a következő módon konfigurálhatja:
+A streamelési végpontot az alábbi módon állíthatja be:
 
-1. Válassza ki a konfigurálni kívánt streaming-végpontot.
+1. Válassza ki a konfigurálni kívánt streamelési végpontot.
 2. Kattintson a **Beállítások** elemre.
 
 A mezők rövid leírása következik.
 
 ![Streamvégpont](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
-1. Maximális gyorsítótár-házirend: az ezen adatfolyam-végponton keresztül kiszolgált eszközök gyorsítótárazási élettartamának konfigurálására szolgál. Ha nincs megadva érték, a rendszer az alapértelmezett értéket használja. Az alapértelmezett értékek közvetlenül az Azure Storage-ban is meghatározhatók. Ha a Azure CDN engedélyezve van a folyamatos átviteli végpontnál, a gyorsítótár-házirend értékét ne állítsa 600 másodpercnél kisebbre.  
-2. Engedélyezett IP-címek: azoknak az IP-címeknek a megadására használható, amelyek számára engedélyezett a közzétett adatfolyam-végponthoz való kapcsolódás. Ha nincs megadva IP-cím, az IP-címek csatlakozni tudnak. Az IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), egy IP-cím és egy CIDR alhálózati maszk használatával (például "10.0.0.1/22"), vagy egy IP-címtartomány IP-cím és egy pontozott decimális alhálózati maszk (például "10.0.0.1 (255.255.255.0)") használatával.
-3. Konfiguráció a Akamai aláírási fejlécének hitelesítéséhez: annak megadására szolgál, hogy a Akamai-kiszolgálók aláírási fejlécének hitelesítési kérelme hogyan legyen konfigurálva. A lejárat UTC szerint történik.
+1. Gyorsítótár-házirend maximális: a gyorsítótár élettartamának konfigurálására szolgál az ezen a streamelési végponton keresztül kiszolgált eszközök számára. Ha nincs beállítva érték, a program az alapértelmezett értéket használja. Az alapértelmezett értékek közvetlenül az Azure storage-ban is definiálhatók. Ha az Azure CDN engedélyezve van a streamelési végponthoz, ne állítsa a gyorsítótár-szabályzat értékét 600 másodpercnél rövidebbre.  
+2. Engedélyezett IP-címek: olyan IP-címek megadására szolgál, amelyek a közzétett streamelési végponthoz csatlakozhatnak. Ha nincs megadva IP-cím, bármely IP-cím képes lesz csatlakozni. Az IP-címek megadhatók egyetlen IP-címként (például "10.0.0.1"), IP-címet és CIDR alhálózati maszkot használó IP-tartományként (például "10.0.0.1/22"), vagy IP-címet és pontozott decimális alhálózati maszkot használó IP-tartományként (például "10.0.0.1(255.25.25.0)).
+3. Az Akamai aláírásfejléc-hitelesítés konfigurációja: az Akamai-kiszolgálók aláírásfejléc-hitelesítési kérelmének konfigurálására szolgál. A lejárat UTC-ben van.
 
-## <a name="scale-your-premium-streaming-endpoint"></a>A prémium szintű streaming-végpont skálázása
+## <a name="scale-your-premium-streaming-endpoint"></a>A prémium szintű streamelési végpont méretezése
 
-További információkért tekintse meg [ezt](media-services-portal-scale-streaming-endpoints.md) a cikket.
+További információt [ebben a cikkben](media-services-portal-scale-streaming-endpoints.md) talál.
 
-## <a id="enable_cdn"></a>Azure CDN integráció engedélyezése
+## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>Az Azure CDN-integráció engedélyezése
 
-Új fiók létrehozásakor alapértelmezés szerint engedélyezve van az alapértelmezett folyamatos átviteli végpont Azure CDN integrációja.
+Amikor új fiókot hoz létre, alapértelmezés szerint engedélyezve van az alapértelmezett streamelési Azure CDN-integráció.
 
-Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. Akár két óráig is eltarthat, amíg a Azure CDN integrációja engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. Az adatfolyam-végpontot és a streamet azonban megszakítások nélkül is elindíthatja a streaming végpontról, és az integráció befejezését követően a stream a CDN-ből lesz továbbítva. A kiépítési időszak alatt a folyamatos átviteli végpont **kezdő** állapotba kerül, és előfordulhat, hogy megfigyelheti a teljesítményt.
+Ha később le szeretné tiltani/engedélyezni szeretné a CDN-t, a streamelési végpontnak **leállított** állapotban kell lennie. Akár két órát is igénybe vehet, amíg az Azure CDN-integráció engedélyezve van, és a módosítások az összes CDN-POP-ban aktívak lesznek. Azonban a streamelési végpont és a streamelés megszakítás nélkül a streamelési végpont, és ha az integráció befejeződött, az adatfolyam a CDN-ből. A kiépítési időszak alatt a streamelési végpont **lesz a kezdő** állapotban, és előfordulhat, hogy megfigyeli a csökkenő teljesítményt.
 
-A CDN-integráció az összes Azure-adatközpontban engedélyezve van, kivéve Kínát és a szövetségi kormányzati régiókat.
+A CDN-integráció kína és szövetségi kormányzati régiók kivételével minden Azure-adatközpontban engedélyezve van.
 
-Ha engedélyezve van, a rendszer letiltja a * * Custom hostname és **Access Control**a **Akamai aláírás-hitelesítési** konfigurációját.
+Ha engedélyezve van, a **hozzáférés-vezérlés**, **Egyéni állomásnév és **az Akamai aláírás hitelesítési** konfigurációja le lesz tiltva.
  
 > [!IMPORTANT]
-> A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming-végpontok **Azure CDNján** valósul meg. A prémium szintű streaming végpontok az összes **Azure CDN árképzési szint és szolgáltató**használatával konfigurálhatók. Azure CDN szolgáltatásokkal kapcsolatos további információkért tekintse meg a [CDN áttekintését](../../cdn/cdn-overview.md).
+> Az Azure Media Services és az Azure CDN integrációja a **Verizon Azure CDN-en** valósul meg a szabványos streamelési végpontokhoz. A prémium szintű streamelési végpontok konfigurálhatók az összes **Azure CDN-díjszabási csomag és szolgáltató**használatával. Az Azure CDN-szolgáltatásairól a [CDN áttekintése](../../cdn/cdn-overview.md)című témakörben olvashat bővebben.
  
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
-* Ha a CDN engedélyezve van egy folyamatos átviteli végponton, az ügyfelek nem igényelhetnek tartalmat közvetlenül a forrástól. Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, létrehozhat egy másik, CDN-t nem támogató streaming-végpontot.
-* A folyamatos átviteli végpont állomásneve a CDN engedélyezése után is változatlan marad. A CDN engedélyezése után nem szükséges módosítania a Media Services-munkafolyamatot. Ha például az adatfolyam-végpont állomásneve a strasbourg.streaming.mediaservices.windows.net, a CDN engedélyezése után ugyanazt a gazdagépet használja a rendszer.
-* Új folyamatos átviteli végpontok esetén a CDN-t egyszerűen új végpont létrehozásával engedélyezheti. meglévő folyamatos átviteli végpontok esetén először le kell állítania a végpontot, majd engedélyeznie/le kell tiltania a CDN-t.
-* A standard folyamatos átviteli végpontot csak a klasszikus Azure portál használatával lehet a **Verizon standard CDN-szolgáltatóval** konfigurálni. A REST API-kkal azonban más Azure CDN szolgáltatók is engedélyezhetők.
+* Ha a CDN engedélyezve van egy streamelési végponthoz, az ügyfelek nem kérhetnek tartalmat közvetlenül az eredeti forrásból. Ha a tartalom CDN-nel vagy anélkül is tesztelhető, létrehozhat egy másik streamelési végpontot, amely nincs engedélyezve a CDN-en.
+* A streamelési végpont állomásneve ugyanaz marad a CDN engedélyezése után. A CDN engedélyezése után nem kell módosítania a médiaszolgáltatások munkafolyamatát. Ha például a streamelési végpont állomásneve strasbourg.streaming.mediaservices.windows.net, a CDN engedélyezése után a cdn pontosan ugyanazt az állomásnevet használja a készülék.
+* Új streamelési végpontok esetén engedélyezheti a CDN-t egyszerűen egy új végpont létrehozásával; a meglévő streamelési végpontok esetén először le kell állítania a végpontot, majd engedélyeznie/le kell tiltania a CDN-t.
+* A szabványos streamelési végpont csak a Klasszikus Azure-portál használatával konfigurálható **a Verizon Standard CDN-szolgáltató** használatával. Azonban engedélyezheti más Azure CDN-szolgáltatók rest API-k használatával.
 
 ## <a name="configure-cdn-profile"></a>CDN-profil konfigurálása
 
-A CDN-profilt a felül található **CDN kezelése** gombra kattintva konfigurálhatja.
+A CDN-profilt a **CDN kezelése** gombra kattintva állíthatja be felülről.
 
 ![Streamvégpont](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

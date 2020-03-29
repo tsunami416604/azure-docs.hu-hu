@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs .NET Standard API-k áttekintése |} A Microsoft Docs
-description: .NET standard API – áttekintés
+title: Az Azure Event Hubs .NET standard API-k áttekintése | Microsoft dokumentumok
+description: .NET Standard API – áttekintés
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -10,32 +10,32 @@ ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
 ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60821909"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API – áttekintés
 
-Ez a cikk összefoglaltuk a kulcsot az Azure Event Hubs [.NET Standard ügyféloldali API-k](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Jelenleg két .NET Standard klienskódtárak Event hubs:
+Ez a cikk összefoglalja az Azure Event Hubs [.NET Standard ügyfélAPI-k](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)néhány kulcsfontosságú szolgáltatását. Jelenleg két .NET Standard ügyféltár van az Event Hubs-hoz:
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): Minden modul alapszintű műveleteket biztosít.
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): Hozzáadja a további funkciókat, amely lehetővé teszi, hogy a feldolgozott események szerinti nyomon követést és legegyszerűbb módja egy eseményközpontba olvasni.
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): Az összes alapvető futásidejű műveletet biztosítja.
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): További funkciókat ad hozzá, amelyek lehetővé teszik a feldolgozott események nyomon követését, és a legegyszerűbb módja az eseményközpontból történő olvasásnak.
 
-## <a name="event-hubs-client"></a>Event Hubs-ügyfél
+## <a name="event-hubs-client"></a>Eseményközpontok ügyfele
 
-[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) az elsődleges objektum eseményeket küldeni, hozzon létre a fogadók és futásidejű adatokat lekérdezni. Ez az ügyfél kapcsolódik egy adott eseményközpontban, és létrehoz egy új kapcsolatot az Event Hubs-végpontra.
+[Az EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) az elsődleges objektum, amelyet események küldésére, fogadók létrehozására és futásidejű információk leésre használ. Ez az ügyfél egy adott eseményközponthoz kapcsolódik, és új kapcsolatot hoz létre az Event Hubs végponthoz.
 
 ### <a name="create-an-event-hubs-client"></a>Event Hubs-ügyfél létrehozása
 
-Egy [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) objektum létrehozása egy kapcsolati karakterláncból. Hozza létre az új ügyfél legegyszerűbb módja a következő példában látható:
+[Az EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) objektum kapcsolati karakterláncból jön létre. Az új ügyfél példányosításlegegyszerűbb módja a következő példában látható:
 
 ```csharp
 var eventHubClient = EventHubClient.CreateFromConnectionString("Event Hubs connection string");
 ```
 
-A kapcsolati karakterláncot programozott módon szerkeszteni, használhatja a [EventHubsConnectionStringBuilder](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) osztályt, és továbbíthatja azt a kapcsolati karakterlánc paramétereként [EventHubClient.CreateFromConnectionString](/dotnet/api/microsoft.azure.eventhubs.eventhubclient).
+A kapcsolati karakterlánc programozott szerkesztéséhez használhatja az [EventHubsConnectionStringBuilder osztályt,](/dotnet/api/microsoft.azure.eventhubs.eventhubsconnectionstringbuilder) és paraméterként adhatja át a kapcsolati karakterláncot az [EventHubClient.CreateFromConnectionString paraméternek.](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)
 
 ```csharp
 var connectionStringBuilder = new EventHubsConnectionStringBuilder("Event Hubs connection string")
@@ -48,7 +48,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 
 ### <a name="send-events"></a>Események küldése
 
-Események küldése eseményközpontba, használja a [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) osztály. A szervezetnek kell lennie egy `byte` tömböt, vagy egy `byte` tömb szegmens.
+Események eseményközpontba küldéséhez használja az [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) osztályt. A törzsnek `byte` tömbnek vagy `byte` tömbszegmensnek kell lennie.
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -61,11 +61,11 @@ await eventHubClient.SendAsync(data);
 
 ### <a name="receive-events"></a>Események fogadása
 
-Események fogadása az Event Hubs javasolt módját használja a [Event Processor Host](#event-processor-host-apis), automatikusan nyomon követéséhez az event hub eltolás és a partíció információ funkciókat biztosítja. Vannak azonban bizonyos helyzetekben, amelyben az események fogadása az Event Hubs alap függvénytár rugalmasságát használatával érdemes.
+Az Event Hubs-tól érkező események fogadásának ajánlott módja az [Eseményprocesszor-állomás](#event-processor-host-apis)használata, amely az eseményközpont eltolási és partícióinformációinak automatikus nyomon követésére szolgál. Vannak azonban bizonyos helyzetek, amelyekben érdemes lehet használni a rugalmasságot az alapvető Event Hubs könyvtár események fogadására.
 
 #### <a name="create-a-receiver"></a>Fogadó létrehozása
 
-Fogadók kötődnek, adott partíciókra, így minden események fogadásához az eseményközpontokban, több példányt kell létrehoznia. Tanácsos a partíciós adatok programozott módon, lekéréséhez fix kódolása a partíció azonosítók helyett. Ehhez használhatja a [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) metódust.
+A fogadók adott partíciókhoz vannak kötve, így ahhoz, hogy egy eseményközpontban az összes eseményt megkapja, több példányt kell létrehoznia. Ez egy jó gyakorlat, hogy a partíció adatait programozott módon, ahelyett, hogy a partíció azonosítók kódolása. Ehhez használhatja a [GetRuntimeInformationAsync metódust.](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)
 
 ```csharp
 // Create a list to keep track of the receivers
@@ -82,7 +82,7 @@ foreach (var partitionId in runTimeInformation.PartitionIds)
 }
 ```
 
-Mivel események soha nem törlődnek az eseményközpontok (és csak jár le), meg kell adnia a megfelelő kiindulási pont. Az alábbi példa bemutatja a lehetséges kombinációkra:
+Mivel az események soha nem törlődnek az eseményközpontból (és csak lejárnak), meg kell adnia a megfelelő kiindulási pontot. A következő példa a lehetséges kombinációkat mutatja be:
 
 ```csharp
 // partitionId is assumed to come from GetRuntimeInformationAsync()
@@ -97,7 +97,7 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGroupName, partitionId, DateTime.Now.AddDays(-1));
 ```
 
-#### <a name="consume-an-event"></a>Egy esemény felhasználása
+#### <a name="consume-an-event"></a>Esemény felhasználása
 
 ```csharp
 // Receive a maximum of 100 messages in this call to ReceiveAsync
@@ -117,9 +117,9 @@ if (ehEvents != null)
 }       
 ```
 
-## <a name="event-processor-host-apis"></a>Event Processor állomás API-k
+## <a name="event-processor-host-apis"></a>Eseményprocesszor-gazda API-k
 
-Ezen API-k rugalmasságot biztosítanak a munkavégző folyamatok, elérhetetlenné válhatnak a, partíciók osztja meg a rendelkezésre álló feldolgozók között:
+Ezek az API-k rugalmasságot biztosítanak a rendelkezésre álló dolgozók közötti partíciók elosztásával elérhetetlenné vált munkavégző folyamatok számára:
 
 ```csharp
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
@@ -144,7 +144,7 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
-A következő egy minta megvalósítását a [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) felületen:
+Az alábbiakban az [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) felület mintaimplementációja látható:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -184,10 +184,10 @@ public class SimpleEventProcessor : IEventProcessor
 
 Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 
-* [Mi az Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
-* [Elérhető Event Hubs API-k](event-hubs-api-overview.md)
+* [Mi az az Azure Event Hubs?](event-hubs-what-is-event-hubs.md)
+* [Elérhető eseményközpontok apis](event-hubs-api-overview.md)
 
-A .NET API-referenciák jelenleg itt tart:
+A .NET API-hivatkozások itt találhatók:
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
 * [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)

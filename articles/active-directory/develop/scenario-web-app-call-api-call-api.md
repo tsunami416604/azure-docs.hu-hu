@@ -1,6 +1,6 @@
 ---
-title: Webes API meghívása egy webalkalmazásból – Microsoft Identity platform | Azure
-description: Ismerje meg, hogyan hozhat létre olyan webalkalmazást, amely webes API-kat hív meg (védett webes API-t hív meg)
+title: Webes api felhívása webalkalmazásból – Microsoft identity platform | Azure
+description: Megtudhatja, hogy miként hozhat létre webes alkalmazásokat, amelyek webes API-kat hívnak meg (védett webes API-k hívása)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758971"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: webes API meghívása
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: Webes API hívása
 
-Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
+Most, hogy rendelkezik egy jogkivonatot, meghívhat egy védett webes API-t.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Itt látható a `HomeController`műveletének egyszerűsített kódja. Ez a kód lekéri a Microsoft Graph meghívására szolgáló tokent. A kód hozzá lett adva, hogy megmutassa, hogyan hívhatja meg Microsoft Graph REST APIként. A Microsoft Graph API URL-címe a appSettings. JSON fájlban van megadva, és a rendszer egy `webOptions`nevű változóban olvassa be:
+Az alábbiakban egyszerűsített kódot olvashat `HomeController`a művelethez. Ez a kód kap egy jogkivonatot a Microsoft Graph hívásához. A kód hozzáadva megmutatja, hogyan hívhatja meg a Microsoft Graphot REST API-ként. A Microsoft Graph API URL-címe az appsettings.json fájlban található, és a következő változóban `webOptions`olvasható:
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Ugyanezt az elvet használhatja bármely webes API meghívásához.
+> Használhatja ugyanazt az elvet bármely webes API-hívásához.
 >
-> A legtöbb Azure-beli webes API egy SDK-t biztosít, amely leegyszerűsíti az API meghívását. Ez Microsoft Graph is igaz. A következő cikkben megtudhatja, hol találhat egy olyan oktatóanyagot, amely bemutatja az API-használatot.
+> A legtöbb Azure webes API-k egy SDK, amely leegyszerűsíti az API-hívás. Ez a Microsoft Graph-ra is igaz. A következő cikkben megtudhatja, hogy hol találhat olyan oktatóanyagot, amely szemlélteti az API-használatot.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -129,7 +129,7 @@ def graphcall():
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Áthelyezés éles környezetbe](scenario-web-app-call-api-production.md)
+> [Átállás éles üzemre](scenario-web-app-call-api-production.md)

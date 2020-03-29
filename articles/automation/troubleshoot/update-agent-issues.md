@@ -1,6 +1,6 @@
 ---
-title: Windows Hybrid Runbook Worker diagnosztizálása – Azure Update Management
-description: Megtudhatja, hogyan lehet elhárítani a Azure Automation hibrid Runbook-feldolgozóval kapcsolatos problémákat a Windows rendszeren, amely támogatja a Update Management.
+title: A Windows hibrid runbook-feldolgozó diagnosztizálása – Azure Update Management
+description: Megtudhatja, hogy miként háríthatja el és oldhatja meg az Okat a Windows Azure Automation hibrid runbook-feldolgozójával kapcsolatos problémákat, amelyek támogatják az Update Management szolgáltatást.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -10,105 +10,105 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153854"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>A Windows Hybrid Runbook Worker Health megismerése és megoldása Update Management
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>A Windows hibrid runbook-feldolgozóállapotának ismertetése és feloldása a frissítéskezelésben
 
-Előfordulhat, hogy a gép számos okból nem **áll készen** a Update Management. Update Management a hibrid Runbook Worker Agent állapotának ellenőrzését a probléma okának megállapításához. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
+Számos oka lehet annak, hogy a számítógép nem jelenik **meg a Ready** in Update Management szolgáltatásban. Az Update Management, ellenőrizheti a hibrid Runbook-feldolgozó ügynök állapotát az alapul szolgáló probléma meghatározásához. Ez a cikk bemutatja, hogyan futtathatja a hibaelhárító az Azure-gépek az Azure Portalon és a nem Azure-gépek az [offline forgatókönyvben.](#troubleshoot-offline)
 
-A következő lista az alábbi három felkészültségi állapotot tartalmazza:
+Az alábbi lista a három készenléti állapotok egy gép lehet:
 
-* **Kész** – a hibrid Runbook Worker üzembe helyezése megtörtént, és legalább 1 órával ezelőtt volt látható.
-* **Leválasztva** – a hibrid Runbook Worker üzembe helyezése megtörtént, és a rendszer az elmúlt 1 órája óta utoljára látott el.
-* **Nincs konfigurálva** – a hibrid Runbook Worker nem található vagy nem fejeződött be.
+* **Ready** – A hibrid Runbook-feldolgozó telepítve van, és kevesebb mint 1 órával ezelőtt látták utoljára.
+* **Leválasztva** – A hibrid Runbook-feldolgozó telepítve van, és utoljára 1 órával ezelőtt látták.
+* **Nincs konfigurálva** – a hibrid Runbook-feldolgozó nem található, vagy nem fejeződött be a bevezetés.
 
 > [!NOTE]
-> A Azure Portal és a gép aktuális állapota között enyhe késés fordulhat elő.
+> Előfordulhat, hogy az Azure Portal on-t és a gép aktuális állapotát az Azure Portal megjelenítése között kis késés.
 
-## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
+## <a name="start-the-troubleshooter"></a>A hibaelhárító indítása
 
-Az Azure-gépek esetében a portál **frissítési ügynök készültsége** oszlopának **hibakeresés** hivatkozására kattintva elindítja az **ügynök frissítése** lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
+Azure-gépek esetén a portál **frissítési ügynök-készenléte** oszlopában található **Hibaelhárítás** hivatkozásra kattintva elindul a **Frissítési ügynök hibaelhárítási ügynök e-hibaelhárítása** lap. Nem Azure-alapú gépek esetén a hivatkozás ebben a cikkben található. Tekintse meg az [offline utasításokat](#troubleshoot-offline) egy nem Azure-gép hibaelhárításához.
 
 ![Virtuális gépek felügyeleti listájának frissítése](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> A hibrid Runbook-feldolgozók állapotának vizsgálatához a virtuális gépnek futnia kell. Ha a virtuális gép nem fut, megjelenik a **virtuális gép indítása** gomb.
+> A hibrid Runbook-feldolgozó állapotának ellenőrzéséhez a virtuális gépnek futnia kell. Ha a virtuális gép nem fut, megjelenik **a Virtuálisgép indítása** gomb.
 
-Az **ügynök frissítése** lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/windows/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
+A **Frissítési ügynök hibaelhárítása** lapon jelölje be az **Ellenőrzések futtatása** a hibaelhárító elindításához jelölőnégyzetet. A hibaelhárító a [Parancs futtatása paranccsal](../../virtual-machines/windows/run-command.md) futtat egy parancsfájlt a számítógépen a függőségek ellenőrzésére. Amikor a hibaelhárító elkészült, az ellenőrzések eredményét adja vissza.
 
-![Az ügynök frissítése lap – problémamegoldás](../media/update-agent-issues/troubleshoot-page.png)
+![A Frissítési ügynök lap – Hibaelhárítás](../media/update-agent-issues/troubleshoot-page.png)
 
-Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések szakaszban látható, hogy mi szerepel az egyes ellenőrzésekben.
+Az eredmények akkor jelennek meg az oldalon, amikor készen állnak. A csekkek szakaszokban látható, hogy mi szerepel az egyes csekkekben.
 
-![Frissítési ügynök ellenőrzésének hibáinak megoldása](../media/update-agent-issues/update-agent-checks.png)
+![Frissítési ügynök-ellenőrzések – problémamegoldás](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó a következő operációs rendszerek egyikét futtatja-e:
+Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó az alábbi operációs rendszerek valamelyikét futtatja-e:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2012 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers))<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 és újabb |A . ([A .NET keretrendszer letöltése)](/dotnet/framework/install/guide-for-developers)<br/> Windows PowerShell 5.1 szükséges.  ([Letöltés Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-462"></a>.NET-4.6.2
+### <a name="net-462"></a>.NET 4.6.2
 
-A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszer legalább a [.NET-keretrendszer 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) telepítve van-e.
+A . [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345)
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával ( [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)).
+A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) – [Windows Management Framework 5.1 szükséges verziójával.](https://www.microsoft.com/download/details.aspx?id=54616)
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció titkosításához. A platform már nem támogatja a TLS 1,0-et. Javasoljuk, hogy az ügyfelek a TLS 1,2-et használják a Update Management való kommunikációhoz.
+Ez az ellenőrzés azt határozza meg, hogy a TLS 1.2-t használja-e a kommunikáció titkosításához. A Platform már nem támogatja a TLS 1.0-t. Azt javasoljuk, hogy az ügyfelek a TLS 1.2-t használják az Update Management szolgáltatással való kommunikációhoz.
 
-## <a name="connectivity-checks"></a>Kapcsolatok ellenőrzése
+## <a name="connectivity-checks"></a>Kapcsolódási ellenőrzések
 
 ### <a name="registration-endpoint"></a>Regisztrációs végpont
 
-Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni az ügynök szolgáltatással.
+Ez az ellenőrzés azt határozza meg, hogy az ügynök képes-e megfelelően kommunikálni az ügynökszolgáltatással.
 
-A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy- és tűzfal-konfigurációknak lehetővé kell tenniük, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a regisztrációs végponttal. A megnyitandó címek és portok listáját a [Hibrid dolgozók hálózattervezése (Hálózattervezés) (Hálózattervezés hibrid dolgozóknak)](../automation-hybrid-runbook-worker.md#network-planning)témakörben található.
 
 ### <a name="operations-endpoint"></a>Műveleti végpont
 
-Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
+Ez az ellenőrzés azt határozza meg, hogy az ügynök képes-e megfelelően kommunikálni a feladatfutásidejű adatszolgáltatással.
 
-A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy- és tűzfal-konfigurációknak lehetővé kell tenniük, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatfutásidejű adatszolgáltatással. A megnyitandó címek és portok listáját a [Hibrid dolgozók hálózattervezése (Hálózattervezés) (Hálózattervezés hibrid dolgozóknak)](../automation-hybrid-runbook-worker.md#network-planning)témakörben található.
 
 ## <a name="vm-service-health-checks"></a>Virtuálisgép-szolgáltatás állapotának ellenőrzése
 
-### <a name="monitoring-agent-service-status"></a>Figyelési ügynök szolgáltatásának állapota
+### <a name="monitoring-agent-service-status"></a>Figyelőügynök-szolgáltatás állapota
 
-Ez az ellenőrzés meghatározza, hogy a számítógépen fut-e a `HealthService`, a Microsoft monitoring Agent.
+Ez az ellenőrzés `HealthService`azt határozza meg, hogy a Microsoft Monitoring Agent fut-e a számítógépen.
 
-Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a Microsoft monitoring Agent nem fut](hybrid-runbook-worker.md#mma-not-running).
+Ha többet szeretne tudni a szolgáltatás hibaelhárításáról, olvassa el a Microsoft Monitoring Agent nem fut című [témakört.](hybrid-runbook-worker.md#mma-not-running)
 
-A Microsoft monitoring Agent újratelepítéséhez tekintse meg [a Microsoft monitoring Agent telepítése és konfigurálása](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakört.
+A Microsoft Monitoring Agent újratelepítéséről a [Microsoft Monitoring Agent telepítése és konfigurálása](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakörben van.
 
-### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatási eseményei
+### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatáseseményei
 
-Ez az érték határozza meg, hogy minden `4502` esemény megjelenik-e az Azure Operations Manager a gépen az elmúlt 24 órában.
+Ez az ellenőrzés `4502` határozza meg, hogy az azure Operations Manager-naplóban az elmúlt 24 órában megjelennek-e események.
 
-Az eseménnyel kapcsolatos további tudnivalókért tekintse meg az esemény [hibaelhárítási útmutatóját](hybrid-runbook-worker.md#event-4502) .
+Ha többet szeretne megtudni erről az eseményről, olvassa el az esemény [hibaelhárítási útmutatóját.](hybrid-runbook-worker.md#event-4502)
 
 ## <a name="access-permissions-checks"></a>Hozzáférési engedélyek ellenőrzése
 
-### <a name="machinekeys-folder-access"></a>Következő
+### <a name="machinekeys-folder-access"></a>MachineKeys mappa elérése
 
-A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a helyi rendszerfiók hozzáfér-e a C:\ProgramData\Microsoft\Crypto\RSA.
+A Titkosítási mappa hozzáférési ellenőrzése azt határozza meg, hogy a helyi rendszerfiók hozzáfér-e a C:\ProgramData\Microsoft\Crypto\RSA szolgáltatáshoz.
 
-## <a name="troubleshoot-offline"></a>Offline hibák
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Kapcsolat nélküli kapcsolat nélküli – problémamegoldás
 
-A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. A szkriptet, a [hibakeresést](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)és a WindowsUpdateAgentRegistration a PowerShell-galériaban érheti el. A parancsfájl futtatásához a WMF 4,0 vagy újabb rendszernek kell futnia. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+A hibaelhárító egy hibrid Runbook-feldolgozó offline használatával a parancsfájl helyi futtatásával. A [WindowsUpdateAgentRegistration hibaelhárítási](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)parancsfájlt a PowerShell-tárban szerezheti be. A parancsfájl futtatásához wmf 4.0-s vagy nagyobb telepítésben kell lennie. A PowerShell legújabb verziójának letöltéséhez olvassa [el a PowerShell különböző verzióinak telepítése című témakört.](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)
 
-A szkript kimenete a következő példához hasonlóan néz ki:
+A parancsfájl kimenete a következő példához hasonlóan néz ki:
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -202,6 +202,6 @@ CheckResultMessageId        : TlsVersionCheck.Passed.EnabledByDefault
 CheckResultMessageArguments : {}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: [hibrid Runbook-feldolgozók hibaelhárítása](hybrid-runbook-worker.md).
+A hibrid runbook-feldolgozókkal kapcsolatos további problémák elhárításához olvassa el a [Hibrid Runbook-dolgozók hibaelhárítása című témakört.](hybrid-runbook-worker.md)

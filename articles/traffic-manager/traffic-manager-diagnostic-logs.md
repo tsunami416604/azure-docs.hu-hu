@@ -1,6 +1,6 @@
 ---
-title: Diagnosztikai naplózás engedélyezése az Azure-ban Traffic Manager
-description: Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást a Traffic Manager profiljához, és hogyan férhet hozzá az eredményként létrehozott naplófájlokhoz.
+title: Diagnosztikai naplózás engedélyezése az Azure Traffic Managerben
+description: Ismerje meg, hogyan engedélyezheti a Traffic Manager-profil diagnosztikai naplózását, és hogyan érheti el az ennek eredményeként létrehozott naplófájlokat.
 services: traffic-manager
 author: rohinkoul
 manager: twooley
@@ -12,71 +12,71 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
 ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938677"
 ---
-# <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Diagnosztikai naplózás engedélyezése az Azure-ban Traffic Manager
+# <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Diagnosztikai naplózás engedélyezése az Azure Traffic Managerben
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a diagnosztikai naplózás és a hozzáférés naplózási adatai egy Traffic Manager profilhoz.
+Ez a cikk azt ismerteti, hogyan engedélyezheti a diagnosztikai naplózást és a hozzáférés naplóadatait egy Traffic Manager-profilhoz.
 
-Az Azure Traffic Manager diagnosztikai naplói betekintést nyerhetnek a Traffic Manager profil erőforrásának viselkedésére. A profil naplójának használatával például megadhatja, hogy az egyes mintavételek miért nem voltak időtúllépések egy végponton.
+Az Azure Traffic Manager diagnosztikai naplók betekintést nyújthat a Traffic Manager profilerőforrás viselkedésébe. Például használhatja a profil naplóadatait annak meghatározására, hogy az egyes mintavételek miért időzött egy végpont ellen.
 
 ## <a name="enable-diagnostic-logging"></a>Diagnosztikai naplózás engedélyezése
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0-ra vagy az újabb verzióra. `Get-Module -ListAvailable Az` futtatásával megkeresheti a telepített verziót. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor az Azure-ba való bejelentkezéshez is `Login-AzAccount` kell futtatnia.
+Futtathatja az Azure Cloud [Shellben](https://shell.azure.com/powershell)követett parancsokat, vagy a PowerShell t a számítógépről futtathatja. Az Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShell t a számítógépről futtatja, szüksége van az Azure PowerShell-modulra, az 1.0.0-s vagy újabb verzióra. Futtathatja `Get-Module -ListAvailable Az` a telepített verzió megkereséséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, `Login-AzAccount` az Azure-ba való bejelentkezéshez is futnia kell.
 
-1. **Traffic Manager profil beolvasása:**
+1. **A Traffic Manager-profil lekérése:**
 
-    A diagnosztikai naplózás engedélyezéséhez szükség van egy Traffic Manager-profil AZONOSÍTÓJÁRA. Kérje le azt a Traffic Manager-profilt, amelyen engedélyezni szeretné a diagnosztikai naplózást a [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)használatával. A kimenet tartalmazza a Traffic Manager profil AZONOSÍTÓjának adatait.
+    A diagnosztikai naplózás engedélyezéséhez szüksége van egy Traffic Manager-profil azonosítójára. A [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)segítségével engedélyezni kívánt Traffic Manager-profil lekérése. A kimenet tartalmazza a Traffic Manager-profil azonosítóadatait.
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
-2. **Diagnosztikai naplózás engedélyezése a Traffic Manager profilhoz:**
+2. **A Traffic Manager-profil diagnosztikai naplózásának engedélyezése:**
 
-    Engedélyezze a diagnosztikai naplózást a Traffic Manager profilhoz az előző lépésben a [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)paranccsal beszerzett azonosító használatával. A következő parancs a Traffic Manager profilhoz tartozó részletes naplókat tárolja egy megadott Azure Storage-fiókban. 
+    Engedélyezze a Traffic Manager-profil diagnosztikai naplózását a [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)beállítással az előző lépésben kapott azonosító használatával. A következő parancs részletes naplókat tárol a Traffic Manager-profilhoz egy megadott Azure Storage-fiókhoz. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Diagnosztikai beállítások ellenőrzése:**
 
-      Ellenőrizze a Traffic Manager-profil diagnosztikai beállításait a [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)használatával. A következő parancs megjeleníti az adott erőforráshoz naplózott kategóriákat.
+      Ellenőrizze a Traffic Manager-profil diagnosztikai beállításait a [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)segítségével. A következő parancs megjeleníti az erőforrás naplózott kategóriáit.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
      ```  
-      Győződjön meg arról, hogy az Traffic Manager profil erőforrásához társított összes naplózási kategória engedélyezve van. Ellenőrizze azt is, hogy a Storage-fiók megfelelően van-e beállítva.
+      Győződjön meg arról, hogy a Traffic Manager profilerőforráshoz társított összes naplókategória engedélyezve van. Ellenőrizze azt is, hogy a tárfiók megfelelően van-e beállítva.
 
-## <a name="access-log-files"></a>Hozzáférési naplófájlok
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
-1. Navigáljon az Azure Storage-fiókjához a portálon.
-2. Az Azure Storage-fiók **Áttekintés** lapján a **szolgáltatások** területen válassza a **Blobok**elemet.
-3. A **tárolók**területen válassza az elemzések **-naplók-probehealthstatusevents**lehetőséget, majd lépjen le a PT1H. JSON fájlhoz, és kattintson a **Letöltés** gombra a naplófájl másolatának letöltéséhez és mentéséhez.
+## <a name="access-log-files"></a>Hozzáférés naplófájlok
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Keresse meg az Azure Storage-fiókját a portálon.
+2. Az Azure storage-fiók **Áttekintés lapján** a **Szolgáltatások** csoportban válassza a **Blobok lehetőséget.**
+3. **A Tárolók**, válassza **insights-logs-probehealthstatusevents**, és keresse le a PT1H.json fájlt, és kattintson a **Letöltés** gombra a naplófájl egy példányának letöltéséhez és mentéséhez.
 
-    ![A Traffic Manager profilhoz tartozó naplófájlok elérése blob Storage-ból](./media/traffic-manager-logs/traffic-manager-logs.png)
+    ![A Traffic Manager-profil naplófájljainak elérése blobtárból](./media/traffic-manager-logs/traffic-manager-logs.png)
 
 
-## <a name="traffic-manager-log-schema"></a>Traffic Manager naplózási séma
+## <a name="traffic-manager-log-schema"></a>A Traffic Manager naplósémája
 
-Az Azure Monitoron keresztül elérhető diagnosztikai naplók közös felső szintű sémával rendelkeznek, és minden szolgáltatás számára rugalmasságot biztosítanak, hogy egyedi tulajdonságokat nyújtsanak a saját eseményeiknek. A legfelső szintű diagnosztikai naplók sémája: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../azure-monitor/platform/tutorial-dashboards.md).
+Az Azure Monitoron keresztül elérhető összes diagnosztikai napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasan bocsáthat ki egyedi tulajdonságokat a saját eseményeihez. A legfelső szintű diagnosztikai naplók sémáját lásd: [Támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplók.](../azure-monitor/platform/tutorial-dashboards.md)
 
-Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó naplók sémáját tartalmazza.
+Az alábbi táblázat az Azure Traffic Manager profilerőforrás-erőforrásra jellemző naplósémát tartalmazza.
 
 |||||
 |----|----|---|---|
-|**Mezőnév**|**Mező típusa**|**Definíció**|**Példa**|
-|Végpontneve|Sztring|Annak az Traffic Manager végpontnak a neve, amelynek az állapotát rögzíti a rendszer.|*myPrimaryEndpoint*|
-|Állapot|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
+|**Mező neve**|**Mező típusa**|**Meghatározás**|**Példa**|
+|Végpontneve|Sztring|Annak a Traffic Manager-végpontnak a neve, amelynek állapota rögzítés alatt áll.|*myPrimaryEndpoint*|
+|status|Sztring|A Traffic Manager-végpont állapotát, amely et megvizsgálták. Az állapot lehet **Fel** vagy **Le**.|**Fel**|
 |||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [Traffic Manager figyelésről](traffic-manager-monitoring.md)
+* További információ a [Traffic Manager figyeléséről](traffic-manager-monitoring.md)
 

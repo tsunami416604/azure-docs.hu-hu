@@ -1,22 +1,22 @@
 ---
-title: A Storage-fiók neve hibák
-description: Ismerteti a Storage-fiók nevének megadásakor előforduló hibákat.
+title: Tárfiók névhibáival kapcsolatos hibák
+description: Ez a témakör a tárfiók nevének megadásakor előforduló hibákat ismerteti.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 5b2706d8540ea38ef08bf7ca0f804e6811a93085
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153972"
 ---
-# <a name="resolve-errors-for-storage-account-names"></a>A Storage-fiókok neveivel kapcsolatos hibák elhárítása
+# <a name="resolve-errors-for-storage-account-names"></a>A tárfióknevek hibáinak elhárítása
 
-Ez a cikk a Storage-fiókok telepítésekor esetlegesen felmerülő elnevezési hibákat ismerteti.
+Ez a cikk a tárfiók telepítésekor előforduló elnevezési hibákat ismerteti.
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha a Storage-fiók neve tiltott karaktereket tartalmaz, a következőhöz hasonló hibaüzenetet kap:
+Ha a tárfiók neve tiltott karaktereket tartalmaz, olyan hibaüzenetet kap, mint például:
 
 ```
 Code=AccountNameInvalid
@@ -24,29 +24,29 @@ Message=S!torageckrexph7isnoc is not a valid storage account name. Storage accou
 between 3 and 24 characters in length and use numbers and lower-case letters only.
 ```
 
-A Storage-fiókok esetében meg kell adnia az Azure-ban egyedi erőforrás nevét. Ha nem egyedi nevet ad meg, ilyen hibaüzenet jelenik meg:
+A tárfiókok, meg kell adnia egy nevet az erőforrás, amely egyedi az Azure-ban. Ha nem egyedi nevet ad meg, ilyen hibaüzenet jelenik meg:
 
 ```
 Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-Ha az előfizetéshez tartozó meglévő Storage-fiókkal azonos nevű Storage-fiókot telepít, de más helyet is megadhat, akkor hibaüzenet jelenik meg, amely jelzi, hogy a Storage-fiók már létezik egy másik helyen. Törölje a meglévő Storage-fiókot, vagy adja meg a meglévő Storage-fiókkal megegyező helyet.
+Ha üzembe helyez egy tárfiókot az előfizetésben egy meglévő tárfiók nevével, de más helyet ad meg, hibaüzenetet kap, amely azt jelzi, hogy a tárfiók már létezik egy másik helyen. Törölje a meglévő tárfiókot, vagy adja meg ugyanazt a helyet, mint a meglévő tárfiók.
 
 ## <a name="cause"></a>Ok
 
-A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon. A névnek egyedinek kell lennie.
+A tárfióknevek nek 3 és 24 karakter közötti hosszúságúnak kell lenniük, és csak számokat és kisbetűket használhatnak. A névnek egyedinek kell lennie.
 
 ## <a name="solution"></a>Megoldás
 
-Győződjön meg arról, hogy a Storage-fiók neve egyedi. Egyedi nevet hozhat létre az elnevezési konvenció összefűzésével a [uniqueString](template-functions-string.md#uniquestring) függvény eredményével.
+Győződjön meg arról, hogy a tárfiók neve egyedi. Egyedi nevet hozhat létre az egyedi [karakterlánc-függvény](template-functions-string.md#uniquestring) eredményével való összefűzésével.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-Győződjön meg arról, hogy a Storage-fiók neve nem hosszabb 24 karakternél. A [uniqueString](template-functions-string.md#uniquestring) függvény 13 karaktert ad vissza. Ha egy előtagot vagy a Postfix-t ÖSSZEFŰZ a **uniqueString** eredményéhez, adjon meg egy 11 karakternél rövidebb értéket.
+Győződjön meg arról, hogy a tárfiók neve nem haladja meg a 24 karaktert. Az [uniqueString](template-functions-string.md#uniquestring) függvény 13 karaktert ad vissza. Ha összefűz egy előtagot vagy postfixet az **uniqueString** eredményéhez, adjon meg egy legkisebb karakterértékű értéket.
 
 ```json
 "parameters": {
@@ -61,4 +61,4 @@ Győződjön meg arról, hogy a Storage-fiók neve nem hosszabb 24 karakternél.
 }
 ```
 
-Győződjön meg arról, hogy a Storage-fiók neve nem tartalmaz nagybetűket vagy speciális karaktereket.
+Győződjön meg arról, hogy a tárfiók neve nem tartalmaz nagybetűs vagy speciális karaktereket.

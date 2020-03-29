@@ -1,39 +1,39 @@
 ---
-title: Örök Összehangolók a Durable Functionsban – Azure
-description: Megtudhatja, hogyan valósítható meg az örök Összehangolók a Azure Functions Durable Functions-bővítményének használatával.
+title: Örök vezénylések a tartós függvényekben - Azure
+description: Ismerje meg, hogyan valósíthatja meg az örök vezénylések használatával a Durable Functions bővítmény az Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262979"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök összeszerelések Durable Functionsban (Azure Functions)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök vezénylések a tartós függvényekben (Azure Functions)
 
-Az *örök* Összehangolók olyan Orchestrator függvények, amelyek soha nem fejeződik be. Akkor hasznosak, ha a [Durable Functionst](durable-functions-overview.md) szeretné használni a gyűjtők számára, és olyan forgatókönyveket, amelyek végtelen hurkot igényelnek.
+*Az örök vezénylések* olyan orchestrator függvények, amelyek soha nem érnek véget. Ezek akkor hasznosak, ha [tartós függvényeket](durable-functions-overview.md) szeretne használni az összesítőkhöz és minden olyan forgatókönyvhöz, amely végtelen ciklust igényel.
 
-## <a name="orchestration-history"></a>Előkészítési előzmények
+## <a name="orchestration-history"></a>Vezénylési előzmények
 
-Ahogy az a előkészítési [Előzmények](durable-functions-orchestrations.md#orchestration-history) témakörben is szerepel, a tartós feladatok keretrendszere nyomon követi az egyes függvények összehangolása előzményeit. Az előzmények folyamatosan növekednek, amíg a Orchestrator függvény továbbra is új munkát ütemezhet. Ha a Orchestrator függvény végtelen ciklusba kerül, és folyamatosan dolgozik, az előzmények kritikusan nagy mértékben növekednek, és jelentős teljesítménnyel kapcsolatos problémákat okozhatnak. Az *örök* előkészítési koncepció célja, hogy enyhítse az ilyen típusú problémákat a végtelen hurkokat igénylő alkalmazások esetében.
+Ahogy azt a [vezénylési előzmények](durable-functions-orchestrations.md#orchestration-history) témakörben, a tartós feladat keretrendszer nyomon követi az egyes függvényvezénylési előzmények. Ez az előzmények folyamatosan növekszik, amíg az orchestrator függvény továbbra is ütemezi az új munka. Ha az orchestrator függvény végtelen ciklusba kerül, és folyamatosan ütemezi a munkát, ez az előzmény kritikusan nagydá válhat, és jelentős teljesítményproblémákat okozhat. Az *örök vezénylési* koncepció célja az volt, hogy enyhítse az ilyen típusú problémákat a végtelen hurkokat igénylő alkalmazások esetében.
 
 ## <a name="resetting-and-restarting"></a>Alaphelyzetbe állítás és újraindítás
 
-A végtelen hurkok használata helyett a Orchestrator functions visszaállítja az állapotát úgy, hogy meghívja a koordinációs [trigger kötésének](durable-functions-bindings.md#orchestration-trigger)`ContinueAsNew` (.net) vagy `continueAsNew` (JavaScript) metódusát. Ez a metódus egy JSON-szerializálható paramétert használ, amely a következő Orchestrator-függvény új bemenete lesz.
+Végtelen ciklusok használata helyett az orchestrator függvények `ContinueAsNew` alaphelyzetbe állítják állapotukat a `continueAsNew` [vezénylési eseményindító kötés](durable-functions-bindings.md#orchestration-trigger)(.NET) vagy (JavaScript) metódusának meghívásával. Ez a módszer egyetlen JSON-szerializálható paramétert vesz igénybe, amely a következő orchestrator függvénygenerálás új bemenete lesz.
 
-`ContinueAsNew` hívásakor a példány enqueues egy üzenetet, mielőtt kilép. Az üzenet újraindítja a példányt az új bemeneti értékkel. A rendszer megőrzi a példány AZONOSÍTÓját, de a Orchestrator függvény előzményeit a rendszer gyakorlatilag csonkolja.
+A `ContinueAsNew` rendszer megküldésekor a példány várólistára helyezi magát, mielőtt kilépne. Az üzenet újraindítja a példányt az új bemeneti értékkel. Ugyanaz a példányazonosító megmarad, de az orchestrator függvény előzményei hatékonyan csonkulnak.
 
 > [!NOTE]
-> Az állandó feladathoz tartozó keretrendszer ugyanazokat az AZONOSÍTÓkat tartja fenn, de belsőleg létrehoz egy új *végrehajtási azonosítót* a Orchestrator függvény számára, amelyet a `ContinueAsNew`alaphelyzetbe állít. Ez a végrehajtási azonosító általában nem külsőleg van kitéve, de hasznos lehet tudni, hogy mikor kell a hibakeresést végrehajtani.
+> A tartós feladatkeretrendszer ugyanazt a példányazonosítót tartja fenn, de belsőleg létrehoz `ContinueAsNew`egy új *végrehajtási azonosítót* az orchestrator függvényhez, amelyet a rendszer alaphelyzetbe állít. Ez a végrehajtási azonosító általában nem érhető el külsőleg, de hasznos lehet tudni, ha vezénylési végrehajtás hibakeresés.
 
-## <a name="periodic-work-example"></a>Ismétlődő munka példája
+## <a name="periodic-work-example"></a>Példa időszakos munkára
 
-Az örök feldolgozók esetében az egyik használati eset olyan kód, amelynek határozatlan idejű munkát kell végeznie.
+Az örök vezénylések egyik felhasználási esete olyan kód, amelynek határozatlan ideig időszakos munkát kell végeznie.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -51,9 +51,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Az előző C# példa a Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző C# példa a Durable Functions 2.x. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -72,16 +72,16 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-A példa és az időzítő által aktivált függvény közötti különbség az, hogy a törlési kiváltó idő itt nem menetrend alapján történik. Például egy olyan CRON-ütemterv, amely óránként hajt végre egy függvényt, a 1:00-es, 2:00-es, 3:00-as és más-más időpontban hajtja végre, és az átfedésben lévő problémákba ütközik. Ebben a példában azonban, ha a tisztítás 30 percet vesz igénybe, akkor a rendszer a 1:00, 2:30, 4:00 stb. időpontban ütemezi, és az átfedés nem lehetséges.
+A különbség ebben a példában, és egy időzítő által aktivált függvény, hogy a törlési eseményindító idők itt nem ütemezés alapján. Például egy CRON ütemezés, amely óránként hajt végre egy függvényt, 1:00, 2:00, 3:00 stb. Ebben a példában azonban, ha a tisztítás 30 percet vesz igénybe, akkor 1:00, 2:30, 4:00 stb.
 
-## <a name="starting-an-eternal-orchestration"></a>Örök összehangolás indítása
+## <a name="starting-an-eternal-orchestration"></a>Örök vezénylés indítása
 
-A `StartNewAsync` (.NET) vagy a `startNew` (JavaScript) metódussal elindíthat egy örök előkészítést, ugyanúgy, mint bármely más előkészítési funkciót.  
+Használja `StartNewAsync` a (.NET) `startNew` vagy a (JavaScript) metódust egy örök vezénylési, ugyanúgy, mint bármely más vezénylési függvény.  
 
 > [!NOTE]
-> Ha meg kell győződnie arról, hogy egy egypéldányos örök előkészítést kell futtatnia, fontos, hogy ugyanazt a példányt `id` az előkészítés indításakor. További információ: [példányok kezelése](durable-functions-instance-management.md).
+> Ha biztosítania kell, hogy egy singleton örök vezénylési fut, fontos, hogy ugyanazt a példányt `id` a vezénylés indításakor. További információt a [Példánykezelés című témakörben talál.](durable-functions-instance-management.md)
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -97,9 +97,9 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Az előző kód a Durable Functions 2.x. A Durable Functions 1.x `OrchestrationClient` esetén az `DurableClient` attribútum helyett attribútumot kell `DurableOrchestrationClient` használni, és `IDurableOrchestrationClient`a paramétertípusát kell használnia a helyett. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -118,13 +118,13 @@ module.exports = async function (context, req) {
 
 ---
 
-## <a name="exit-from-an-eternal-orchestration"></a>Kilépés az örök összeszerelésből
+## <a name="exit-from-an-eternal-orchestration"></a>Kilépés az örök vezénylési
 
-Ha egy Orchestrator függvénynek végül végre kell hajtania a műveletet, akkor mindössze annyit kell tennie, hogy *nem* hívja meg a `ContinueAsNew`t, és hagyja ki a funkciót.
+Ha egy orchestrator függvényt végül be kell fejeznie, `ContinueAsNew` akkor mindössze annyit kell tennie, hogy *nem* hívja meg, és hagyja, hogy a függvény kilép.
 
-Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a beállítás leállításához használja a koordinációs [ügyfél](durable-functions-bindings.md#orchestration-client) `TerminateAsync` (.net) vagy `terminate` (JavaScript) metódusát. További információ: [példányok kezelése](durable-functions-instance-management.md).
+Ha egy orchestrator függvény végtelen ciklusban van, és `TerminateAsync` le kell `terminate` állítani, használja a [vezénylési ügyfélkötés](durable-functions-bindings.md#orchestration-client) (.NET) vagy (JavaScript) metódusát a vezénylési ügyfélkötés leállításához. További információt a [Példánykezelés című témakörben talál.](durable-functions-instance-management.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan valósítható meg az Egypéldányos előkészítés](durable-functions-singletons.md)
+> [Ismerje meg, hogyan valósítható meg a singleton vezénylések](durable-functions-singletons.md)

@@ -1,31 +1,31 @@
 ---
-title: Az Azure Service Fabric Mesh alkalmazás titkainak tárolása és használata
-description: Service Fabric Mesh a titkokat Azure-erőforrásokként támogatja. A titkok tárolása és kezelése a Service Fabric Mesh-alkalmazásokkal.
+title: Az Azure Service Fabric Mesh alkalmazásttttantitkos kulcsok tárolása és használata
+description: A Service Fabric Mesh támogatja a titkos kulcsokat Azure-erőforrásokként. A következőképpen tárolhatja és kezelheti a titkos kulcsokat a Service Fabric Mesh-alkalmazásokkal.
 author: erikadoyle
 ms.author: edoyle
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: da4eaa34840f14714616b85e24fd62cf65602b84
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277635"
 ---
-# <a name="service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-alkalmazás titkai
-Service Fabric Mesh a titkokat Azure-erőforrásokként támogatja. A Service Fabric Mesh titkos kulcsa lehet bármilyen bizalmas szöveges információ, például a tárolási kapcsolatok sztringje, jelszava vagy más olyan érték, amelyet biztonságosan kell tárolni és továbbítani.
+# <a name="service-fabric-mesh-application-secrets"></a>Service Fabric Mesh alkalmazás titkos titkai
+A Service Fabric Mesh támogatja a titkos kulcsokat Azure-erőforrásokként. A Service Fabric Mesh titkos lehet bármilyen bizalmas szöveges információkat, például a tárolási kapcsolat karakterláncok, jelszavak vagy más értékeket, amelyeket biztonságosan kell tárolni és továbbítani.
 
-![A Mesh titkainak áttekintése][sf-mesh-secrets-overview]
+![Hálótitkos ók – áttekintés][sf-mesh-secrets-overview]
 
-## <a name="mesh-secrets-resources"></a>Mesh titkok erőforrásai
-A háló alkalmazás titkos kulcsa a következőkből áll:
-* A **titkok** erőforrása, amely egy olyan tároló, amely a szöveges titkokat tárolja. A **titkok** erőforrásban található titkos kódok tárolása és továbbítása biztonságos.
-* Egy vagy több **titok/érték** erőforrás, amely a **titkok** erőforrás-tárolóban van tárolva. Az egyes **titkok/értékek** erőforrásait a verziószáma különbözteti meg.
+## <a name="mesh-secrets-resources"></a>Hálótitkos-objektumok erőforrásai
+A Mesh alkalmazás titkos sága a következőkből áll:
+* A **Titkos kulcsok** erőforrás, amely egy tároló, amely tárolja a szöveges titkokat. A Titkos **kulcsok** erőforrásban található titkos kulcsok biztonságosan tárolódnak és továbbítódnak.
+* Egy vagy több **titkos kulcsok/értékek** erőforrások, amelyek a **Titkos kulcsok** erőforrás tárolóban tárolt. Minden **Titkos kulcsok/értékek** erőforrást verziószám különböztetmeg.
 
-## <a name="next-steps"></a>Következő lépések 
-A Service Fabric Mesh-titkokkal kapcsolatos további tudnivalókért tekintse meg a következőt:
-- [Service Fabric Mesh-alkalmazás titkainak kezelése](service-fabric-mesh-howto-manage-secrets.md)
-- [A Service Fabric Resource Model bemutatása](service-fabric-mesh-service-fabric-resources.md)
+## <a name="next-steps"></a>További lépések 
+A Service Fabric hálótitkos titkairól a következő témakörökben olvashat bővebben:
+- [Szolgáltatásháló alkalmazásttkókainak kezelése](service-fabric-mesh-howto-manage-secrets.md)
+- [Bevezetés a Service Fabric erőforrás-modell](service-fabric-mesh-service-fabric-resources.md)
 
 <!-- pics -->
 [sf-mesh-secrets-overview]: ./media/service-fabric-mesh-secrets-overview/MeshAppSecretsOverview.png

@@ -1,457 +1,457 @@
 ---
-title: Azure Service Fabric CLI – sfctl-fürt
-description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A fürtök kezelésére szolgáló parancsok listáját tartalmazza.
+title: Azure Service Fabric CLI- sfctl-fürt
+description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. A fürtök kezelésére vonatkozó parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906152"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
-Service Fabric fürtök kiválasztása, kezelése és üzemeltetése.
+Válassza ki, kezelje és kezelje a Service Fabric-fürtöket.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| kód verziói | Lekéri a Service Fabric-fürtben kiépített háló-programkódok listáját. |
-| konfiguráció – verziók | Lekérdezi a Service Fabric-fürtben kiépített háló-konfigurációs verziók listáját. |
-| egészségügy | Lekéri egy Service Fabric-fürt állapotát. |
-| nyilvánvaló | A Service Fabric-fürt jegyzékfájljának beolvasása. |
-| művelet – megszakítás | Egy felhasználó által okozott hiba műveletének megszakítása. |
-| művelet – lista | Lekéri a megadott bemenet alapján szűrt, felhasználó által kiváltott hibák listáját. |
-| rendelkezés | Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése. |
-| helyreállítás – System | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum elvesztésekor jelenleg beragadt rendszerszolgáltatások helyreállításával. |
-| jelentés – állapot | Állapotjelentés küldése a Service Fabric-fürtön. |
-| Válassza | Csatlakozás egy Service Fabric-fürt végponthoz. |
-| kapcsolat megjelenítése | Annak megjelenítése Service Fabric fürt, amelyhez ez a sfctl-példány csatlakozik. |
-| leépítése | Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése. |
-| frissítés | A Service Fabric-fürt programkódjának vagy konfigurációs verziójának frissítése megkezdődött. |
-| frissítés – folytatás | A fürt frissítésének áthelyezése a következő frissítési tartományba. |
-| frissítés – visszaállítás | Service Fabric-fürt frissítésének visszaállítása. |
-| frissítés – állapot | A fürt aktuális frissítésének előrehaladását kéri le. |
-| frissítés – frissítés | Frissítse a Service Fabric-fürt frissítésének paramétereit. |
+| kódverziók | A Service Fabric-fürtben kiépített hálókód-verziók listájának letöltője. |
+| konfigurációs verziók | A Service Fabric-fürtben kiépített konfigurációs verziók listáját kapja. |
+| Egészségügyi | Egy Service Fabric-fürt állapotát kapja. |
+| manifest | A Service Fabric-fürt jegyzékfájljának beszerezni. |
+| művelet-megszakítás | Megszakítja a felhasználó által okozott hibaműveletet. |
+| műveletlista | A megadott bemenet által szűrt, a felhasználó által kiváltott hibaműveletek listájának leése. |
+| Rendelkezés | A Service Fabric-fürt kód- vagy konfigurációs csomagjainak kiépítése. |
+| visszaszerzési rendszer | Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani a kvórumveszteségben jelenleg beragadt rendszerszolgáltatásokat. |
+| jelentés-egészségügy | Állapotjelentést küld a Service Fabric-fürtről. |
+| Válassza ki | Egy Service Fabric-fürt végponthoz csatlakozik. |
+| show-kapcsolat | Annak megjelenítése, hogy melyik Service Fabric-fürthöz csatlakozik az sfctl-példány. |
+| kiépítés nélküli | A Service Fabric-fürt kód- vagy konfigurációs csomagjainak kioldása. |
+| Frissítés | Indítsa el egy Service Fabric-fürt kódjának vagy konfigurációs verziójának frissítését. |
+| frissítés-folytatás | A fürtfrissítés áthelyezése a következő frissítési tartományra. |
+| frissítés-visszaállítás | Állítsa vissza a Service Fabric-fürt frissítését. |
+| frissítési állapot | Leveszi az aktuális fürtfrissítés folyamatát. |
+| frissítés-frissítés | Frissítse a Service Fabric-fürt frissítési paramétereinek frissítési paramétereit. |
 
-## <a name="sfctl-cluster-code-versions"></a>sfctl-fürt kódja – verziók
-Lekéri a Service Fabric-fürtben kiépített háló-programkódok listáját.
+## <a name="sfctl-cluster-code-versions"></a>sfctl fürtkód-verziók
+A Service Fabric-fürtben kiépített hálókód-verziók listájának letöltője.
 
-A fürtben kiépített háló-kódokra vonatkozó információk listájának beolvasása. A CodeVersion paraméterrel a kimenetet igény szerint szűrheti csak az adott verzióra.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --Code-Version | A Service Fabric termék verziója. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-cluster-config-versions"></a>sfctl-fürt konfigurációja – verziók
-Lekérdezi a Service Fabric-fürtben kiépített háló-konfigurációs verziók listáját.
-
-Lekérdezi a fürtben kiépített háló-konfigurációs verziókról szóló információkat. A ConfigVersion paraméterrel a kimenetet igény szerint szűrheti csak az adott verzióra.
+A fürtben kiépített hálókód-verziók listájának leképezi. A CodeVersion paraméter segítségével tetszés szerint csak az adott verzióra szűrhető a kimenet.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --config-Version | Service Fabric konfigurációs verziója. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --kód-verzió | A Service Fabric termékverziója. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-health"></a>sfctl-fürt állapota
-Lekéri egy Service Fabric-fürt állapotát.
+## <a name="sfctl-cluster-config-versions"></a>sfctl fürt konfigurációs verziói
+A Service Fabric-fürtben kiépített konfigurációs verziók listáját kapja.
 
-A EventsHealthStateFilter használatával szűrheti a fürtön az állapot alapján jelentett állapotú események gyűjteményét. Hasonlóképpen, a NodesHealthStateFilter és a ApplicationsHealthStateFilter használatával szűrheti a csomópontok és a visszaadott alkalmazások gyűjteményét az összesített állapot alapján.
+A fürtben kiépített konfigurációs verziók ra vonatkozó információk listájának lesoka. A ConfigVersion paraméter segítségével a kimenet et csak az adott verzióra szűrheti.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Applications-Health-State-Filter | Engedélyezi a fürt állapotának lekérdezése során visszaadott alkalmazás-állapot objektumok szűrését az állapotuk alapján. A paraméter lehetséges értékeibe beletartozik a tagok vagy bitenkénti műveletek által a HealthStateFilter enumerálás tagjain beszerzett egész érték. Csak a szűrőnek megfelelő alkalmazások lesznek visszaadva. A rendszer minden alkalmazást felhasznál az összesített állapot kiértékelésére. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotadatok a jelölő-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az OK (2) és a figyelmeztetés (4) HealthState értékkel rendelkező alkalmazások állapotát adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
-| --Events-Health-State-Filter | Engedélyezi az állapot alapján visszaadott HealthEvent-objektumok gyűjteményének szűrését. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. Csak a szűrőnek megfelelő események lesznek visszaadva. A rendszer minden eseményt felhasznál az összesített állapot kiértékelésére. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az összes, az OK (2) és a figyelmeztetés (4) HealthState értékű eseményt adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
-| --kizárás-Health-Statistics | Azt jelzi, hogy az állapot statisztikáját a lekérdezés eredményének részeként kell-e visszaadni. Alapértelmezés szerint hamis. A statisztikákban a gyermek entitások számának állapota ok, figyelmeztetés és hiba látható. |
-| --include-System-Application-Health-Statistics | Azt jelzi, hogy az állapot statisztikájának tartalmaznia kell-e a háló\:/System-statisztikát. Alapértelmezés szerint hamis. Ha a IncludeSystemApplicationHealthStatistics értéke TRUE (igaz), az állapot statisztikája tartalmazza a háló\:/System alkalmazáshoz tartozó entitásokat. Ellenkező esetben a lekérdezési eredmény csak a felhasználói alkalmazások esetében tartalmaz állapot-statisztikát. Az állapotfigyelő statisztikának szerepelnie kell a paraméter alkalmazására vonatkozó lekérdezési eredményben. |
-| --csomópontok – állapot-állapot – szűrő | Lehetővé teszi a fürt állapotára vonatkozó lekérdezés eredményében visszaadott csomópont állapot-objektumok szűrését állapotuk alapján. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. A rendszer csak a szűrőnek megfelelő csomópontokat adja vissza. Minden csomópont az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotadatok a jelölő-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a csomópontok állapota az OK (2) és a figyelmeztetés (4) HealthState értékével történik.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --config-verzió | A Service Fabric konfigurációs verziója. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-manifest"></a>sfctl-fürt jegyzékfájlja
-A Service Fabric-fürt jegyzékfájljának beolvasása.
+## <a name="sfctl-cluster-health"></a>sfctl fürt állapota
+Egy Service Fabric-fürt állapotát kapja.
 
-A Service Fabric-fürt jegyzékfájljának beolvasása. A fürtcsomópont a fürt olyan tulajdonságait tartalmazza, amelyek különböző csomópont-típusokat tartalmaznak a fürtön, a biztonsági konfigurációkon, a hibákon és a frissítési tartomány topológiáján stb. Ezek a tulajdonságok a ClusterConfig. JSON fájl részeként vannak megadva különálló fürt telepítésekor. A fürt jegyzékfájljának nagy részét azonban a Service Fabric belsőleg hozza létre más központi telepítési forgatókönyvekben (például Azure Portal használatakor). A fürt jegyzékfájljának tartalma csak tájékoztató jellegű, és a felhasználók nem várhatóan függőséget kapnak a fájl tartalmának vagy értelmezésének formátumával.
+Az EventsHealthStateFilter használatával szűrheti a fürtön jelentett állapotesemények gyűjteményét az állapot alapján. Hasonlóképpen használja a NodesHealthStateFilter és az ApplicationsHealthStateFilter segítségével az összesített állapotuk alapján visszaadott csomópontok és alkalmazások gyűjteményének szűréséhez.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --alkalmazások-állapot-állapot-szűrő | Lehetővé teszi az alkalmazás állapotállapot-objektumainak szűrését a fürt állapotlekérdezésének eredményeként az állapotuk alapján. A paraméter lehetséges értékei közé tartoznak a HealthStateFilter enumerálási tagoktól kapott egész érték vagy bitenkénti műveletek. Csak a szűrőnek megfelelő alkalmazásokat adja vissza a rendszer. Az összes alkalmazás az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték lehet ezeknek az értékeknek a kombinációja, amelyeket bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, majd az OK (2) és a Figyelmeztetés (4) HealthState értékkel rendelkező alkalmazások állapotának állapotát adja vissza.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
+| --események-állapot-állapot-szűrő | Lehetővé teszi az állapot alapján visszaadott HealthEvent objektumok gyűjteményének szűrését. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. A rendszer csak a szűrőnek megfelelő eseményeket adja vissza. Az összes esemény az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja lehet, amelyet a bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, akkor az összes eseményt, amelynek HealthState értéke OK (2) és Figyelmeztetés (4) visszaadja.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
+| --kizárás-egészségügyi statisztikák | Azt jelzi, hogy az állapotstatisztikát vissza kell-e adni a lekérdezés eredményének részeként. Alapértelmezés szerint hamis. A statisztikák az Ok, Figyelmeztetés és Hiba állapotban lévő gyermekentitások számát mutatják. |
+| --include-system-application-health-statistics | Azt jelzi, hogy az állapotstatisztikának tartalmaznia kell-e a /Rendszeralkalmazás\:állapotstatisztikáját. Alapértelmezés szerint hamis. Ha az IncludeSystemApplicationHealthStatistics értéke igaz, az állapotstatisztika tartalmazza a\:háló /Rendszer alkalmazáshoz tartozó entitásokat. Ellenkező esetben a lekérdezés eredménye csak a felhasználói alkalmazások állapotstatisztikáit tartalmazza. A paraméter alkalmazásához az állapotstatisztikákat bele kell foglalni a lekérdezés eredményébe. |
+| --csomópontok-állapot-állapot-szűrő | Lehetővé teszi a fürt állapotlekérdezésének eredményeként visszaadott csomópontállapot-objektumok szűrését az állapotuk alapján. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. A rendszer csak a szűrőnek megfelelő csomópontokat adja vissza. Az összes csomópont az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték lehet ezeknek az értékeknek a kombinációja, amelyeket bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, majd az OK (2) és a Figyelmeztetés (4) HealthState értékkel rendelkező csomópontok állapota.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-operation-cancel"></a>sfctl-fürt művelete – Mégse
-Egy felhasználó által okozott hiba műveletének megszakítása.
+## <a name="sfctl-cluster-manifest"></a>sfctl fürtjegyzék
+A Service Fabric-fürt jegyzékfájljának beszerezni.
 
-A következő API-k elindítja a CancelOperation\: StartDataLoss, a StartQuorumLoss, a StartPartitionRestart és a StartNodeTransition használatával megszakítható hibákkal kapcsolatos műveleteket. Ha a kényszerített érték hamis, akkor a rendszer szabályosan leállítja és törli a megadott felhasználó által okozott műveletet.  Ha a Force értéke TRUE (igaz), a parancs meg lesz szakítva, és egy belső állapot is maradhat.  A True érték megadásával körültekintően kell megadnia a kényszerített értéket. Ha ezt az API-t igaz értékre állítja, akkor nem engedélyezett, amíg ezt az API-t már nem hívták meg ugyanarra a teszt parancsra, amelynél a Force false értékre van állítva, vagy ha a test parancs már rendelkezik a OperationState. RollingBack OperationState. A pontosítás\: OperationState. RollingBack azt jelenti, hogy a rendszer a parancs végrehajtása által okozott belső rendszerállapot tisztítását végzi.  Ha a tesztelési parancs adatvesztést okoz, nem fogja visszaállítani az adatvesztést.  Ha például meghívja a StartDataLoss-t, akkor hívja meg ezt az API-t, a rendszer csak a belső állapotot fogja törölni a parancs futtatásával. Nem állítja vissza a megcélzott partíción lévő adatmennyiséget, ha a parancs elég messzire ért, hogy adatvesztést okozzon. Fontos megjegyzés\: ha ezt az API-t a Force = = true értékkel hívja meg, a belső állapot maradhat.
+A Service Fabric-fürt jegyzékfájljának beszerezni. A fürtjegyzék tartalmazza a fürt tulajdonságait, amelyek különböző csomóponttípusokat tartalmaznak a fürtön, biztonsági konfigurációkat, hibát és frissítési tartomány topológiákat stb. Ezek a tulajdonságok a ClusterConfig.JSON fájl részeként vannak megadva egy önálló fürt telepítése kor. Azonban a fürtjegyzékben lévő információk nagy részét azonban a szolgáltatásháló hozza létre a fürt telepítése során más központi telepítési forgatókönyvekben (például az Azure Portal használatakor). A fürtjegyzék tartalma csak tájékoztató jellegű, és a felhasználóktól nem várható el, hogy a fájl tartalmának formátumától vagy értelmezésétől függjenek.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| – kényszerített | Azt jelzi, hogy a rendszer szabályosan visszaállítja-e a belső rendszerállapotot, és megtisztítja a felhasználó által okozott művelet végrehajtásával. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-operation-list"></a>sfctl-fürt művelete – lista
-Lekéri a megadott bemenet alapján szűrt, felhasználó által kiváltott hibák listáját.
+## <a name="sfctl-cluster-operation-cancel"></a>sfctl fürt művelet-megszakítás
+Megszakítja a felhasználó által okozott hibaműveletet.
 
-Lekéri a megadott bemenet alapján szűrt felhasználó által okozott hibák listáját.
+A következő API-k olyan hibaműveleteket indítanak\: el, amelyek a StartDataLoss, StartQuorumLoss, StartPartitionRestart és StartNodeTransition művelettel megszakíthatók. Ha az erő hamis, akkor a megadott felhasználó által kiváltott művelet szabályosan leáll és törlődik.  Ha az erő igaz, a parancs megszakad, és néhány belső állapot is hátramarad.  Az erő igazként történő megadását óvatosan kell alkalmazni. Az API true értékre beállított kényszerítéssel történő hívása nem engedélyezett, amíg ez az API-t már meg nem hívták ugyanazon a tesztparancson, amelynek kényszerítése először hamis, vagy ha a tesztparancs már rendelkezik operationstate of OperationState.RollingBack műveletállapottal. Pontosítás\: OperationState.RollingBack azt jelenti, hogy a rendszer lesz / a tisztítási belső rendszer állapota által okozott végrehajtása a parancsot.  Nem állítja vissza az adatokat, ha a tesztparancs adatvesztést okoz.  Ha például a StartDataLoss-t hívja meg, akkor ezt az API-t hívja meg, a rendszer csak a parancs futtatásából törli a belső állapotot. Nem állítja vissza a célpartíció adatait, ha a parancs elég messzire haladt ahhoz, hogy adatvesztést okozzon. Fontos\: megjegyzés, ha ezt az API-t force==true-nal hívja meg, a belső állapot hátramaradhat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --állapot-szűrő | A felhasználó által kiváltott műveletek OperationState szűrésére szolgál. -65535 – az összes kiválasztása – válassza a Futtatás – 2 elemet – válassza ki a RollingBack-8 elemet – válassza a befejezve – 16 – kiválasztva a hibás – 32 – válassza a megszakítva – 64 – ForceCancelled kiválasztása lehetőséget.  Alapértelmezett\: 65535. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
-| --Type-Filter | A felhasználó által kiváltott műveletek OperationType szűrésére szolgál. -65535 – válassza az összes – 1 – PartitionDataLoss kiválasztása lehetőséget. -2 – válassza a PartitionQuorumLoss lehetőséget. -4 – válassza a PartitionRestart lehetőséget. -8 – válassza a NodeTransition lehetőséget.  Alapértelmezett\: 65535. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --erő | Azt jelzi, hogy a rendszer a felhasználó által létrehozott művelet végrehajtásával szabályosan visszaállítja-e és törli-e a belső rendszerállapotot. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-provision"></a>sfctl-fürt kiépítése
-Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése.
+## <a name="sfctl-cluster-operation-list"></a>sfctl fürt műveletlistája
+A megadott bemenet által szűrt, a felhasználó által kiváltott hibaműveletek listájának leése.
 
-Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak érvényesítése és kiépítése.
+Leveszi a felhasználó által kiváltott hibaműveletek listája a megadott bemenet által szűrt.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --cluster-manifest-file-path | A fürt jegyzékfájljának elérési útja |
-| --Code-file-path | A fürt kódjának csomagfájl elérési útja. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --állapotszűrő | Az OperationState-műveletek szűrésére szolgál a felhasználó által kiváltott műveletekhez. - 65535 - select All - 1 - select Running - 2 - select RollingBack - 8 - select Completed - 16 - select Faulted - 32 - select Cancelled - 64 - select ForceCancelled.  Alapértelmezett\: 65535. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --típus-szűrő | Az OperationType szűrésére szolgál a felhasználó által kiváltott műveletekhez. - 65535 - válassza ki az összes - 1 - válassza PartitionDataLoss. - 2 - válassza PartitionQuorumLoss. - 4 - válassza PartitionRestart. - 8 - válassza a NodeTransition lehetőséget.  Alapértelmezett\: 65535. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-recover-system"></a>sfctl-fürt helyreállítása – System
-Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum elvesztésekor jelenleg beragadt rendszerszolgáltatások helyreállításával.
+## <a name="sfctl-cluster-provision"></a>sfctl-fürt szolgáltatás
+A Service Fabric-fürt kód- vagy konfigurációs csomagjainak kiépítése.
 
-Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum elvesztésekor jelenleg beragadt rendszerszolgáltatások helyreállításával. Ezt a műveletet csak akkor kell végrehajtani, ha ismert, hogy a leállított replikák nem állíthatók helyre. Az API helytelen használata lehetséges adatvesztést eredményezhet.
+A Service Fabric-fürt kód- vagy konfigurációs csomagjainak ellenőrzése és kiépítése.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --cluster-manifest-file-path | A fürtjegyzék fájljának elérési útja. |
+| --kód-fájl-elérési út | A fürtkódcsomag fájljának elérési útja. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-report-health"></a>sfctl-fürt jelentése – állapot
-Állapotjelentés küldése a Service Fabric-fürtön.
+## <a name="sfctl-cluster-recover-system"></a>sfctl-fürt visszaállító rendszere
+Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani a kvórumveszteségben jelenleg beragadt rendszerszolgáltatásokat.
 
-Állapotjelentés küldése Service Fabric fürtön. A jelentésnek tartalmaznia kell az állapotjelentést és a jelentést tartalmazó tulajdonság forrásával kapcsolatos információkat. A rendszer elküldi a jelentést egy Service Fabric átjáró-csomópontnak, amely továbbítja az állapot-tárolónak. Előfordulhat, hogy a jelentést az átjáró fogadja el, de a további ellenőrzés után a Health Store elutasította. Az állapotfigyelő például elutasítja a jelentést egy Érvénytelen paraméter miatt, például egy elavult sorszámot. Ha szeretné megtekinteni, hogy a jelentés alkalmazva lett-e az állapotfigyelő tárolóban, futtassa a GetClusterHealth parancsot, és ellenőrizze, hogy a jelentés megjelenik-e a HealthEvents szakaszban.
+Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani a kvórumveszteségben jelenleg beragadt rendszerszolgáltatásokat. Ezt a műveletet csak akkor kell végrehajtani, ha ismeretes, hogy a nem működő replikák nem állíthatók helyre. Az API helytelen használata adatvesztést okozhat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Health-Property [kötelező] | Az állapotadatok tulajdonsága. <br><br> Az entitások különböző tulajdonságokhoz tartozhatnak állapotjelentést. A tulajdonság egy karakterlánc, nem pedig rögzített enumerálás, amely lehetővé teszi, hogy a jelentéskészítő rugalmasan kategorizálja a jelentést kiváltó állapot feltételeit. A "LocalWatchdog" SourceId forrásazonosító rendelkező jelentéskészítő például nyomon követheti a csomópontok rendelkezésre álló lemezének állapotát, így az adott csomópont "AvailableDisk" tulajdonságát is jelentheti. Ugyanaz a riporter figyelheti a csomópontok kapcsolatát, így a "kapcsolat" tulajdonságot is jelentheti ugyanazon a csomóponton. Az állapotfigyelő szolgáltatásban ezek a jelentések különálló állapotadatokként lesznek kezelve a megadott csomópont esetében. A SourceId forrásazonosító együtt a tulajdonság egyedileg azonosítja az állapotadatok adatait. |
-| --állapotadatok [kötelező] | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "OK", "Warning", "Error", "Unknown". |
-| – forrás-azonosító [kötelező] | Az állapottal kapcsolatos adatokat létrehozó ügyfél/watchdog/rendszer összetevőt azonosító forrás neve. |
-| – Leírás | Az állapotadatok leírása. <br><br> A jelentésből származó, emberi olvasásra alkalmas adatok hozzáadására szolgáló szabad szöveget jelöli. A Leírás maximális hossza 4096 karakter. Ha a megadott karakterlánc már nem érhető el, a rendszer automatikusan csonkolja. A csonkítás során a Leírás utolsó karakterei a "[csonkolt]" jelölőt tartalmazzák, a teljes karakterlánc mérete pedig 4096 karakter. A jelölő jelenléte azt jelzi, hogy a felhasználók csonkítva lettek. Vegye figyelembe, hogy a csonkítás során a Leírás kevesebb, mint 4096 karakterből áll az eredeti sztringből. |
-| – azonnali | Egy jelző, amely jelzi, hogy a jelentést azonnal el kell-e juttatni. <br><br> Egy állapotjelentés érkezik egy Service Fabric Gateway-alkalmazásba, amely továbbítja az állapot-áruháznak. Ha az azonnali beállítás értéke TRUE (igaz), a rendszer azonnal elküldi a jelentést a HTTP-átjáróról az állapotfigyelő tárolóba, függetlenül a HTTP-átjáró alkalmazás által használt háló-ügyfél beállításaitól. Ez olyan kritikus fontosságú jelentések esetében hasznos, amelyeket a lehető leghamarabb el kell juttatni. Az Időzítéstől és az egyéb feltételektől függően előfordulhat, hogy a jelentés küldése továbbra is meghiúsul, például ha a HTTP-átjáró be van zárva, vagy az üzenet nem éri el az átjárót. Ha az azonnali beállítás hamis értékre van állítva, a rendszer a HTTP-átjáró állapot-ügyfélbeállítások alapján elküldi a jelentést. Ezért a HealthReportSendInterval-konfigurációnak megfelelően kötegbe kerül. Ez az ajánlott beállítás, mivel lehetővé teszi, hogy az állapot-ügyfél optimalizálja az állapot-jelentési üzeneteket az állapotfigyelő tárolóba, valamint az állapotjelentés feldolgozását. Alapértelmezés szerint a rendszer nem küldi el azonnal a jelentéseket. |
-| --Remove-when-lejárt | Az érték, amely azt jelzi, hogy a jelentés törlődik-e a Health Store-ból, amikor lejár. <br><br> Ha az értéke TRUE (igaz), a rendszer eltávolítja a jelentést az állapot-áruházból a lejárat után. Ha hamis értékre van állítva, a jelentés a lejártkor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeresen jelentést küldenek, a Eltávolításlejáratkor false (alapértelmezett) értéket kell beállítania. Így a riporter problémákba ütközik (például holtpont), és nem tud jelentést készíteni, az entitást a rendszer hiba esetén kiértékeli, amikor az állapotjelentés lejár. Ez az entitás a hiba állapotának megfelelően jelenik meg. |
-| --Sequence-Number | Az állapotjelentés sorszáma numerikus karakterláncként. <br><br> A jelentés sorszámát a Health Store használja az elavult jelentések észlelésére. Ha nincs megadva, a rendszer automatikusan létrehozza a sorszámot, amikor egy jelentés hozzáadása történik. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
-| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, beállíthatja, hogy az idő a végtelen értékre legyen állítva. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-select"></a>sfctl-fürt kiválasztása
-Csatlakozás egy Service Fabric-fürt végponthoz.
+## <a name="sfctl-cluster-report-health"></a>sfctl cluster jelentés-állapot
+Állapotjelentést küld a Service Fabric-fürtről.
 
-Ha a biztonságos fürthöz csatlakozik, abszolút elérési utat kell megadnia egy tanúsítványhoz (. CRT) és a kulcsfájl (. Key), vagy egyetlen fájlhoz (. PEM). Mindkettőt ne határozza meg. Ha biztonságos fürthöz csatlakozik, akkor a HITELESÍTÉSSZOLGÁLTATÓI csomag vagy a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok könyvtárának abszolút elérési útját is meg kell adni.  A parancs futtatása nélkül nem lehet fürthöz csatlakozni, beleértve a localhost-hoz való kapcsolódást is. Helyi fürthöz való csatlakozáshoz azonban nincs szükség explicit végpontra.  Ha önaláírt tanúsítványt vagy más, jól ismert HITELESÍTÉSSZOLGÁLTATÓ által nem aláírt tanúsítványt használ, a--CA paramétert kell átadnia, hogy biztosítsa az érvényesítést. Ha nem éles fürtön van, az ügyféloldali ellenőrzés megkerüléséhez (az önaláírt vagy nem jól ismert HITELESÍTÉSSZOLGÁLTATÓI aláírás esetén hasznos) használja a--No-ellenőrzés beállítást. Habár lehetséges, az éles fürtök esetében nem ajánlott. A tanúsítvány-ellenőrzési hiba másként is járhat.
+Állapotjelentést küld egy Service Fabric-fürtről. A jelentésnek tartalmaznia kell az állapotjelentés forrására és a jelentett tulajdonságra vonatkozó információkat. A jelentés egy Service Fabric átjáró csomópont, amely továbbítja a health Store. A jelentést az átjáró elfogadhatja, de az egészségügyi tároló további ellenőrzés után elutasítja. Például a health store elutasíthatja a jelentést, mert egy érvénytelen paraméter, mint például egy elavult sorszám. Ha meg szeretné tudni, hogy a jelentés alkalmazva lett-e a health store-ban, futtassa a GetClusterHealth futtatása, és ellenőrizze, hogy a jelentés megjelenik-e a HealthEvents szakaszban.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – HRE | Azure Active Directory használata a hitelesítéshez. |
-| – CA | A HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok könyvtárának abszolút elérési útja, amelyet érvényes vagy HITELESÍTÉSSZOLGÁLTATÓI csomagként kell kezelni. Ha HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó könyvtárat használ, akkor az OpenSSL által biztosított `c_rehash <directory>`nak először a tanúsítvány-kivonatok kiszámításához és a megfelelő szimbolikus hivatkozások létrehozásához kell futnia. Ennek segítségével ellenőrizhető, hogy a fürt által visszaadott tanúsítvány érvényes-e. |
-| --CERT | Az ügyféltanúsítvány-fájl abszolút elérési útja. |
-| --végpont | A fürt végpontjának URL-címe, beleértve a portot és a HTTP-vagy HTTPS-előtagot. A végpont általában úgy fog kinézni, mint a https\://< az URL-cím >\:19080. Ha nincs megadva végpont, a rendszer alapértelmezés szerint a http\://localhost\:19080.  Alapértelmezett\: http\://localhost\:19080. |
-| – kulcs | Az ügyféltanúsítvány-kulcs fájljának abszolút elérési útja. |
-| – nem – ellenőrzés | A tanúsítványok ellenőrzésének letiltása HTTPS használatakor, Megjegyzés\: ez egy nem biztonságos beállítás, és nem használható éles környezetekben. |
-| --PEM | Az ügyféltanúsítvány abszolút elérési útja. PEM-fájlként. |
+| --health-property [Kötelező] | Az egészségügyi információk tulajdonsága. <br><br> Egy entitás különböző tulajdonságokállapot-jelentésekkel rendelkezhet. A tulajdonság egy karakterlánc, és nem egy rögzített felsorolás, amely lehetővé teszi az előjelentés rugalmasságát a jelentést kiváltó állapot kategorizálására. Például egy "LocalWatchdog" SourceId azonosítóval rendelkező jelentéskészítő figyelheti a csomóponton rendelkezésre álló lemez állapotát, így jelentheti az "AvailableDisk" tulajdonságot az adott csomóponton. Ugyanaz a jelentéskészítő figyelheti a csomópont-kapcsolatot, így jelentheti a "Kapcsolat" tulajdonságot ugyanazon a csomóponton. Az állapottárolóban ezeket a jelentéseket külön állapoteseményekként kezeli a megadott csomópont. A SourceId-dal együtt a tulajdonság egyedileg azonosítja az állapotinformációkat. |
+| --állapot[Kötelező] | A lehetséges\: értékek a következők: "Érvénytelen", "Ok", "Figyelmeztetés", "Hiba", "Ismeretlen". |
+| --source-id [Kötelező] | A forrásnév, amely azonosítja az ügyfél/figyelő/rendszerösszetevő, amely létrehozta az állapotadatokat. |
+| --leírás | Az egészségügyi információk leírása. <br><br> Szabad szöveget jelöl, amely a jelentéssel kapcsolatos emberi olvasható információk hozzáadására szolgál. A leírás maximális karakterlánchossza 4096 karakter. Ha a megadott karakterlánc hosszabb, a program automatikusan csonkolja. Csonkoláskor a leírás utolsó karakterei a "[Csonka]" jelölőt tartalmazzák, a teljes karakterlánc mérete pedig 4096 karakter. A jelölő jelenléte azt jelzi a felhasználóknak, hogy csonkolás történt. Ne feledje, hogy csonkoláskor a leírás kevesebb mint 4096 karaktert tartalmaz az eredeti karakterláncból. |
+| --azonnali | Egy jelző, amely jelzi, hogy a jelentést azonnal el kell-e küldeni. <br><br> Egy állapotjelentés egy Service Fabric átjáró alkalmazás, amely továbbítja a health Store. Ha az Immediate értéke igaz, a rendszer azonnal elküldi a jelentést a HTTP-átjáróból a health Store-ba, függetlenül attól, hogy a HTTP átjáróalkalmazás által használt háló-ügyfél-beállításokat használja.If Immediate is set to true, the report is sent immediately from HTTP Gateway to the health store, regardless of the fabric client settings that the HTTP Gateway Application is using. Ez akkor hasznos, ha a kritikus jelentéseket a lehető leghamarabb el kell küldeni. Az időzítéstől és az egyéb feltételektől függően a jelentés küldése továbbra is sikertelen lehet, például ha a HTTP-átjáró be van zárva, vagy ha az üzenet nem éri el az átjárót. Ha az Immediate értéke hamis, a rendszer a http-átjáró ból származó állapotügyfél-beállítások alapján küldi el a jelentést. Ezért a rendszer a HealthReportSendInterval konfigurációnak megfelelően lesz kötegelve. Ez az ajánlott beállítás, mert lehetővé teszi, hogy az állapotjelző ügyfél optimalizálja az állapotjelentési üzeneteket az állapottárolónak, valamint az állapotjelentés feldolgozását. Alapértelmezés szerint a jelentések nem kerülnek azonnal elküldésre. |
+| --remove-when-expired | Érték, amely azt jelzi, hogy a jelentés törlődik-e az állapottárolóból, amikor lejár. <br><br> Ha értéke igaz, a jelentés törlődik a health Store lejárta után. Ha hamis ra van állítva, a jelentés lejártakor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeres időközönként jelentést, meg kell állítani a RemoveWhenExpired false (alapértelmezett). Ily módon a jelentéskészítő problémák (pl. holtpont), és nem tud jelentést, az entitás kiértékelése hiba, amikor az állapotjelentés lejár. Ez az entitást hibaállapotként jelzi. |
+| --szekvenciaszám | Az állapotjelentés sorozatszáma numerikus karakterláncként. <br><br> A jelentéssorszámot az állapottároló az elavult jelentések észlelésére használja. Ha nincs megadva, a jelentés hozzáadásakor az állapotügyfél automatikusan létrehoz egy sorszámot. |
+| --idő-out -t | Alapértelmezett\: 60. |
+| --ttl | Az az időtartam, amelyre ez az állapotjelentés érvényes. Ez a mező Az Időtartam megadásához Az ISO8601 formátumot használja. <br><br> Amikor az ügyfelek rendszeres időközönként jelentést küldenek, az életidejéneknél nagyobb gyakorisággal kell jelentéseket küldeniük. Ha az ügyfelek az átmenetről számolnak be, beállíthatják, hogy az élet ideje végtelen. Amikor lejár az életidő, az állapotadatokat tartalmazó állapotesemény törlődik az állapottárolóból, ha az RemoveWhenExpired igaz, vagy hiba esetén kiértékelve, ha az RemoveWhenExpired hamis. Ha nincs megadva, az élethez való idő nem éri el a végtelen értéket. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-show-connection"></a>sfctl-fürt megjelenítése – kapcsolat
-Annak megjelenítése Service Fabric fürt, amelyhez ez a sfctl-példány csatlakozik.
+## <a name="sfctl-cluster-select"></a>sfctl cluster kiválasztása
+Egy Service Fabric-fürt végponthoz csatlakozik.
 
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-cluster-unprovision"></a>sfctl-fürt kiépítése
-Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése.
-
-A kód és a konfiguráció külön történő kiosztása támogatott.
+Ha biztonságos fürthöz csatlakozik, adjon meg egy abszolút elérési utat egy tanúsítványhoz (.crt) és egy kulcsfájlhoz (.key) vagy egy mindkét fájlt tartalmazó fájlhoz (.pem). Ne adja meg mindkettőt. Ha biztonságos fürthöz csatlakozik, adja meg a hitelesítésszolgáltatók csomagfájljának vagy megbízható hitelesítésszolgáltatók könyvtárának abszolút elérési útját is.  Nincs kapcsolat a fürthöz anélkül, hogy először futtatna ezt a parancsot, beleértve a localhost-hoz való csatlakozást is. A helyi fürthöz való csatlakozáshoz azonban nincs szükség explicit végpontra.  Ha egy önaláírt tanúsítványt vagy más tanúsítványt nem írt alá egy jól ismert hitelesítésszolgáltató, adja át a --ca paramétert, hogy az érvényesítés sikeres legyen. Ha nem éles fürtön, az ügyféloldali érvényesítés megkerüléséhez (az önaláírt vagy nem jól ismert hitelesítésnél) használja a --no-verify kapcsolót. Bár lehetséges, éles fürtök számára nem ajánlott. A tanúsítvány-ellenőrzési hiba másként fordulhat eredmény.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Code-Version | A fürt kódjának csomagjának verziója. |
-| --config-Version | A fürt jegyzékfájljának verziója. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --aad | Az Azure Active Directory használata a hitelesítéshez. |
+| --ca | A hitelesítési adatok könyvtárának abszolút elérési útja érvényesként vagy hitelesítéshitelesítési kötegfájlként való kezeléshez. Ha a hitelesítésszolgáltatói tanúsítványok könyvtárát használja, `c_rehash <directory>` az OpenSSL által biztosított könyvtárat először futtatni kell a tanúsítványkivonatok kiszámításához és a megfelelő szimbolikus hivatkozások létrehozásához. Ezzel ellenőrizhető, hogy a fürt által visszaadott tanúsítvány érvényes-e. |
+| --tanúsítvány | Az ügyféltanúsítvány-fájl abszolút elérési útja. |
+| --végpont | Fürtvégpont URL-címe, beleértve a portot és a HTTP vagy HTTPS előtagot. A végpont általában a https\://<a-url \:>19080-hoz hasonló lesz. Ha nincs megadva végpont, akkor\:alapértelmezés szerint\:a http //localhost 19080 lesz.  Alapértelmezett\: \:http //localhost\:19080. |
+| --gomb | Az ügyféltanúsítványkulcs fájljának abszolút elérési útja. |
+| --nincs ellenőrzés | Tiltsa le a tanúsítványok\: ellenőrzését https használata esetén, vegye figyelembe, hogy ez nem biztonságos beállítás, és nem használható éles környezetben. |
+| --pem | Az ügyféltanúsítvány abszolút elérési útja .pem fájlként. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-upgrade"></a>sfctl-fürt frissítése
-A Service Fabric-fürt programkódjának vagy konfigurációs verziójának frissítése megkezdődött.
+## <a name="sfctl-cluster-show-connection"></a>sfctl cluster show-connection
+Annak megjelenítése, hogy melyik Service Fabric-fürthöz csatlakozik az sfctl-példány.
 
-Érvényesítse a megadott frissítési paramétereket, és kezdje meg a Service Fabric-fürt programkódjának vagy konfigurációs verziójának frissítését, ha a paraméterek érvényesek.
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-cluster-unprovision"></a>sfctl-fürt kioldása
+A Service Fabric-fürt kód- vagy konfigurációs csomagjainak kioldása.
+
+A szabályzat és a konfiguráció külön-külön támogatott.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --App-Health-Map | A hiba kiemelése előtt JSON-kódolású szótár az alkalmazás neve és a maximális százalékos érték nem megfelelő. |
-| --App-Type-Health-Map | A hiba kiemelése előtt JSON-kódolású, az alkalmazásnév és a maximális százalékos arányt tartalmazó szótár. |
-| --Code-Version | A fürt kódjának verziója. |
-| --config-Version | A fürtkonfiguráció verziója. |
-| --Delta-Health-kiértékelés | A különbözeti állapot kiértékelésének engedélyezése az egyes frissítési tartományok befejezése után az abszolút állapot kiértékelése helyett. |
-| --Delta-sérült-csomópontok | A csomópontok állapotának maximálisan megengedett százalékos aránya a fürt frissítéseinél.  Alapértelmezett\: 10. <br><br> A különbözetet a csomópontok állapota a frissítés elején, a csomópontok állapota pedig az állapot kiértékelésének időpontjában méri. Az ellenőrzés a frissítési tartomány összes frissítésének befejezése után történik, így biztosítva, hogy a fürt globális állapota elfogadható korlátokon belül legyen. |
-| – hiba – művelet | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "visszaállítás", "Manual". |
-| --kényszerített újraindítás | A folyamatokat a rendszer a frissítés során kényszeríti újra, még akkor is, ha a kód verziószáma nem változott. <br><br> A frissítés csak a konfigurációt vagy az adatértéket módosítja. |
-| --állapot-pipa-újrapróbálkozás | Az állapot-ellenőrzések elvégzésére irányuló kísérletek közötti időtartam, ha az alkalmazás vagy a fürt állapota nem kifogástalan. |
-| --állapot-passzolás – stabil | Az az időtartam, ameddig az alkalmazásnak vagy a fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományba kerül. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| --állapot-pipa-várakozás | Az a várakozási idő, ameddig a frissítési tartomány befejezése után meg kell várni az állapot-ellenőrzési folyamat megkezdése előtt. |
-| --replika-set-pipa-időtúllépés | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megelőzésére szolgáló maximális időtartam, ha váratlan problémák merülnek fel. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása a rendelkezésre állás elvesztésével kapcsolatos problémáktól függetlenül folytatódni fog. Az időtúllépés az egyes frissítési tartományok elején alaphelyzetbe áll. Az érvényes értékek 0 és 42949672925 között vannak. |
-| – működés közbeni frissítés – üzemmód | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "UnmonitoredAuto", "UnmonitoredManual", "figyelt".  Alapértelmezett\: UnmonitoredAuto. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
-| – nem megfelelő állapotú alkalmazások | A nem kifogástalan állapotú alkalmazások maximálisan megengedett százaléka a hiba jelentése előtt. <br><br> Ha például engedélyezni szeretné, hogy az alkalmazások 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték azt jelenti, hogy az alkalmazások maximálisan tolerálható hányada sérült, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem kifogástalan állapotú alkalmazás van, az állapot figyelmeztetésként lesz kiértékelve. Ezt úgy számítja ki, hogy a nem kifogástalan állapotú alkalmazásokat a fürtben lévő összes alkalmazás példánya fölé osztja, kivéve azokat az alkalmazásokat, amelyek nem szerepelnek a ApplicationTypeHealthPolicyMap. A számítások egy kis mennyiségű alkalmazás meghibásodását okozják. |
-| – nem megfelelő állapotú csomópontok | A nem kifogástalan állapotú csomópontok megengedett százalékos aránya a hiba jelentése előtt. <br><br> Ha például engedélyezni szeretné, hogy a csomópontok 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték a csomópontok maximálisan megengedett százalékos arányát jelöli, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem megfelelő állapotú csomópont van, az állapot figyelmeztetésként lesz kiértékelve. A százalékos arányt úgy számítjuk ki, hogy a nem kifogástalan állapotú csomópontok számát a fürtben lévő csomópontok teljes száma fölé osztja. A számítások egy kis számú csomóponton fellépő meghibásodást okoznak. A nagyméretű fürtökben egyes csomópontok mindig le-vagy kimaradnak a javításokhoz, ezért ezt a százalékos arányt úgy kell konfigurálni, hogy eltűri ezt. |
-| --upgrade-domain-Delta-sérült-csomópontok | A frissítési tartományi csomópontok maximálisan engedélyezett százalékos értéke a fürt frissítése során engedélyezett.  Alapértelmezett\: 15. <br><br> A különbözetet a frissítési tartomány csomópontjainak állapota a frissítés elején, valamint az állapot kiértékelésének időpontjában a frissítési tartomány csomópontjainak állapota alapján méri. Az ellenőrzés akkor történik meg, ha minden frissítési tartomány frissítésének befejezése befejeződött az összes befejezett frissítési tartományon, hogy a frissítési tartományok állapota elfogadható korlátokon belül legyen. |
-| – frissítés – tartomány – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a FailureAction végrehajtása előtt kell végrehajtani. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| – frissítés – időtúllépés | Az a időtartam, ameddig a teljes frissítésnek a FailureAction végrehajtása előtt el kell végeznie. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| --Figyelmeztetés – hiba | Azt jelzi, hogy a figyelmeztetések a hibákkal azonos súlyossággal vannak-e kezelve. |
+| --kód-verzió | A fürtkódcsomag verziója. |
+| --config-verzió | A fürtjegyzék verziója. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-upgrade-resume"></a>sfctl-fürt frissítése – folytatás
-A fürt frissítésének áthelyezése a következő frissítési tartományba.
+## <a name="sfctl-cluster-upgrade"></a>sfctl fürt frissítése
+Indítsa el egy Service Fabric-fürt kódjának vagy konfigurációs verziójának frissítését.
 
-Ha szükséges, végezze el a fürt kódjának vagy a konfiguráció frissítésének lépéseit a következő frissítési tartományra.
+Ellenőrizze a megadott frissítési paramétereket, és indítsa el a Service Fabric-fürt kódjának vagy konfigurációs verziójának frissítését, ha a paraméterek érvényesek.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --upgrade-domain [kötelező] | A fürt következő frissítési tartománya. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --app-egészségügyi térkép | JSON kódolt szótár az alkalmazás neve párok és a maximális százalékos nem kifogástalan, mielőtt a hiba kiemelése. |
+| --app-típus-egészségügyi térkép | JSON kódolású szótár az alkalmazás típusneve párok és a maximális százalékos nem kifogástalan, mielőtt a hiba kiemelése. |
+| --kód-verzió | A fürtkód verziója. |
+| --config-verzió | A fürt konfigurációs verziója. |
+| --delta-egészségügyi értékelés | Az egyes frissítési tartományok befejezése után az abszolút állapotkiértékelés helyett engedélyezi a különbözeti állapot kiértékelését. |
+| --delta-nem kifogástalan-csomópontok | A fürtfrissítések során engedélyezett maximális százalékos teljesítménycsökkenés.  Alapértelmezett\: 10. <br><br> A delta a frissítés kezdetén lévő csomópontok állapota és a csomópontok állapota között van az állapotkiértékelés időpontjában. Az ellenőrzés minden frissítési tartomány frissítésének befejezése után történik, hogy a fürt globális állapota a tűrhető határokon belül legyen. |
+| --hiba-művelet | A lehetséges\: értékek a következők: "Érvénytelen", "Visszaállítás", "Kézi". |
+| --erő-újraindítás | A folyamatok a frissítés során akkor is erőteljesen újraindulnak, ha a kódverzió nem változott. <br><br> A frissítés csak a konfigurációt vagy az adatokat módosítja. |
+| --health-check-retry | Az állapot-ellenőrzések végrehajtása között az állapotellenőrzések végrehajtása között, ha az alkalmazás vagy a fürt nem kifogástalan. |
+| --health-check-stable | Az az idő, amerre az alkalmazásnak vagy fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományra lépne. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
+| --health-check-wait | A frissítési tartomány befejezése után a várakozási idő időtartama az állapotellenőrzési folyamat megkezdése előtt. |
+| --replika-set-check-időout | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megakadályozására rendelkezésre álló idő letiltására rendelkezésre álló idő, ha nem várt problémák merülnek fel. <br><br> Ha ez az időbevétel lejár, a frissítési tartomány feldolgozása a rendelkezésre állási veszteségi problémáktól függetlenül folytatódik. Az időhosszabbítás minden frissítési tartomány elején alaphelyzetbe áll. Az érvényes értékek 0 és 42949672925 között vannak. |
+| --gördülő-upgrade-mód | A lehetséges\: értékek a következők: "Érvénytelen", "UnmonitoredAuto", "UnmonitoredManual", "Monitored".  Alapértelmezett\: UnmonitoredAuto. |
+| --idő-out -t | Alapértelmezett\: 60. |
+| --egészségtelen alkalmazások | A nem megfelelő állapotú alkalmazások maximálisan engedélyezett százaléka a hiba jelentésének bejelentése előtt. <br><br> Ha például az alkalmazások 10%-a nem megfelelő állapotú, ez az érték 10. A százalékos érték az alkalmazások maximális tolerálható százalékát jelöli, amelyek nem megfelelő állapotúak lehetnek, mielőtt a fürt hibásnak minősülne. Ha a százalékos érték tiszteletben van, de legalább egy nem megfelelő állapotú alkalmazás van, az állapot figyelmeztetésként lesz kiértékelve. Ezt úgy számítja ki, hogy elosztja a nem megfelelő állapotú alkalmazások számát a fürtben lévő alkalmazáspéldányok teljes számával, kivéve az ApplicationTypeHealthPolicyMap-ben szereplő alkalmazástípusok alkalmazásait. A számítás kerekíti, hogy tolerálja egy hiba kis számú alkalmazások. |
+| --nem kifogástalan-csomópontok | A nem megfelelő állapotú csomópontok maximálisan engedélyezett százaléka a hiba jelentése előtt. <br><br> Ha például a csomópontok 10%-a nem megfelelő állapotú, ez az érték 10. A százalékos érték a csomópontok maximális tolerálható százalékát jelöli, amely nem megfelelő állapotú lehet, mielőtt a fürt hibásnak minősülne. Ha a százalékos érték tiszteletben van, de legalább egy nem megfelelő állapotú csomópont van, az állapot figyelmeztetésként lesz kiértékelve. A százalékos értéket úgy számítja ki, hogy elosztja a nem megfelelő állapotú csomópontok számát a fürt ben lévő csomópontok teljes számával. A számítás kerekít, hogy tolerálja a kis számú csomópontok egy hiba. Nagy fürtök, egyes csomópontok mindig le vagy ki a javításokat, ezért ezt a százalékot úgy kell beállítani, hogy tolerálja ezt. |
+| --upgrade-domain-delta-unhealthy-csomópontok | A fürtfrissítések során a frissítési tartomány csomópontjainak maximálisan engedélyezett százalékos aránya.  Alapértelmezett\: 15. <br><br> A különbözetet a frissítési tartomány csomópontjainak állapota és a frissítési tartomány csomópontjainak állapota között méri a rendszer az állapotkiértékelés időpontjában. Az ellenőrzés az összes befejezett frissítési tartomány minden frissítési tartományának befejezése után történik, hogy megbizonyosodjon arról, hogy a frissítési tartományok állapota a tűrhető határokon belül van. |
+| --upgrade-domain-időout | Az egyes frissítési tartományoknak a FailureAction végrehajtása előtt be kell fejezniük az időt. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
+| --upgrade-időeltetés | A teljes frissítés befejezéséhez szükséges idő a FailureAction végrehajtása előtt. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
+| --figyelmeztetés hibaként | Azt jelzi, hogy a figyelmeztetések kezelése ugyanolyan súlyos, mint a hibák. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-upgrade-rollback"></a>sfctl-fürt frissítése – visszaállítás
-Service Fabric-fürt frissítésének visszaállítása.
+## <a name="sfctl-cluster-upgrade-resume"></a>sfctl fürt frissítés-folytatás
+A fürtfrissítés áthelyezése a következő frissítési tartományra.
 
-Service Fabric-fürt programkódjának vagy konfigurációs frissítésének visszaállítása.
+Szükség esetén tegye függővé a fürtkód vagy a konfigurációs frissítés áthelyezését a következő frissítési tartományra.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --upgrade-domain [Kötelező] | A fürtfrissítés következő frissítési tartománya. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-upgrade-status"></a>sfctl-fürt frissítése – állapot
-A fürt aktuális frissítésének előrehaladását kéri le.
+## <a name="sfctl-cluster-upgrade-rollback"></a>sfctl fürt frissítés-visszaállítás
+Állítsa vissza a Service Fabric-fürt frissítését.
 
-Lekéri a fürt folyamatos frissítésének aktuális állapotát. Ha jelenleg nincs folyamatban lévő frissítés, szerezze be az előző fürt frissítésének utolsó állapotát.
+Állítsa vissza a Service Fabric-fürt kódját vagy konfigurációs frissítését.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-cluster-upgrade-update"></a>sfctl-fürt frissítése – frissítés
-Frissítse a Service Fabric-fürt frissítésének paramétereit.
+## <a name="sfctl-cluster-upgrade-status"></a>sfctl fürt frissítési állapota
+Leveszi az aktuális fürtfrissítés folyamatát.
+
+Leveszi a folyamatban lévő fürtfrissítés aktuális állapotát. Ha jelenleg nincs folyamatban frissítés, az előző fürtfrissítés utolsó állapotának leése.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --App-Health-Map | A hiba kiemelése előtt JSON-kódolású szótár az alkalmazás neve és a maximális százalékos érték nem megfelelő. |
-| --App-Type-Health-Map | A hiba kiemelése előtt JSON-kódolású, az alkalmazásnév és a maximális százalékos arányt tartalmazó szótár. |
-| --Delta-Health-kiértékelés | A különbözeti állapot kiértékelésének engedélyezése az egyes frissítési tartományok befejezése után az abszolút állapot kiértékelése helyett. |
-| --Delta-sérült-csomópontok | A csomópontok állapotának maximálisan megengedett százalékos aránya a fürt frissítéseinél.  Alapértelmezett\: 10. <br><br> A különbözetet a csomópontok állapota a frissítés elején, a csomópontok állapota pedig az állapot kiértékelésének időpontjában méri. Az ellenőrzés a frissítési tartomány összes frissítésének befejezése után történik, így biztosítva, hogy a fürt globális állapota elfogadható korlátokon belül legyen. |
-| – hiba – művelet | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "visszaállítás", "Manual". |
-| --kényszerített újraindítás | A folyamatokat a rendszer a frissítés során kényszeríti újra, még akkor is, ha a kód verziószáma nem változott. <br><br> A frissítés csak a konfigurációt vagy az adatértéket módosítja. |
-| --állapot-pipa-újrapróbálkozás | Az állapot-ellenőrzések elvégzésére irányuló kísérletek közötti időtartam, ha az alkalmazás vagy a fürt állapota nem kifogástalan. |
-| --állapot-passzolás – stabil | Az az időtartam, ameddig az alkalmazásnak vagy a fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományba kerül. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| --állapot-pipa-várakozás | Az a várakozási idő, ameddig a frissítési tartomány befejezése után meg kell várni az állapot-ellenőrzési folyamat megkezdése előtt. |
-| --replika-set-pipa-időtúllépés | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megelőzésére szolgáló maximális időtartam, ha váratlan problémák merülnek fel. <br><br> Ha ez az időkorlát lejár, a frissítési tartomány feldolgozása a rendelkezésre állás elvesztésével kapcsolatos problémáktól függetlenül folytatódni fog. Az időtúllépés az egyes frissítési tartományok elején alaphelyzetbe áll. Az érvényes értékek 0 és 42949672925 között vannak. |
-| – működés közbeni frissítés – üzemmód | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "UnmonitoredAuto", "UnmonitoredManual", "figyelt".  Alapértelmezett\: UnmonitoredAuto. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
-| – nem megfelelő állapotú alkalmazások | A nem kifogástalan állapotú alkalmazások maximálisan megengedett százaléka a hiba jelentése előtt. <br><br> Ha például engedélyezni szeretné, hogy az alkalmazások 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték azt jelenti, hogy az alkalmazások maximálisan tolerálható hányada sérült, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem kifogástalan állapotú alkalmazás van, az állapot figyelmeztetésként lesz kiértékelve. Ezt úgy számítja ki, hogy a nem kifogástalan állapotú alkalmazásokat a fürtben lévő összes alkalmazás példánya fölé osztja, kivéve azokat az alkalmazásokat, amelyek nem szerepelnek a ApplicationTypeHealthPolicyMap. A számítások egy kis mennyiségű alkalmazás meghibásodását okozják. |
-| – nem megfelelő állapotú csomópontok | A nem kifogástalan állapotú csomópontok megengedett százalékos aránya a hiba jelentése előtt. <br><br> Ha például engedélyezni szeretné, hogy a csomópontok 10%-a nem kifogástalan állapotú legyen, ez az érték 10. A százalékos érték a csomópontok maximálisan megengedett százalékos arányát jelöli, mielőtt a fürt hibásnak minősül. Ha a százalékos arányt figyelembe veszi, de legalább egy nem megfelelő állapotú csomópont van, az állapot figyelmeztetésként lesz kiértékelve. A százalékos arányt úgy számítjuk ki, hogy a nem kifogástalan állapotú csomópontok számát a fürtben lévő csomópontok teljes száma fölé osztja. A számítások egy kis számú csomóponton fellépő meghibásodást okoznak. A nagyméretű fürtökben egyes csomópontok mindig le-vagy kimaradnak a javításokhoz, ezért ezt a százalékos arányt úgy kell konfigurálni, hogy eltűri ezt. |
-| --upgrade-domain-Delta-sérült-csomópontok | A frissítési tartományi csomópontok maximálisan engedélyezett százalékos értéke a fürt frissítése során engedélyezett.  Alapértelmezett\: 15. <br><br> A különbözetet a frissítési tartomány csomópontjainak állapota a frissítés elején, valamint az állapot kiértékelésének időpontjában a frissítési tartomány csomópontjainak állapota alapján méri. Az ellenőrzés akkor történik meg, ha minden frissítési tartomány frissítésének befejezése befejeződött az összes befejezett frissítési tartományon, hogy a frissítési tartományok állapota elfogadható korlátokon belül legyen. |
-| – frissítés – tartomány – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a FailureAction végrehajtása előtt kell végrehajtani. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| --upgrade-Kind | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "Rolling", "Rolling_ForceRestart".  Az alapértelmezett\: a működés közben. |
-| – frissítés – időtúllépés | Az a időtartam, ameddig a teljes frissítésnek a FailureAction végrehajtása előtt el kell végeznie. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
-| --Figyelmeztetés – hiba | Azt jelzi, hogy a figyelmeztetések a hibákkal azonos súlyossággal vannak-e kezelve. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-cluster-upgrade-update"></a>sfctl fürt frissítés-frissítés
+Frissítse a Service Fabric-fürt frissítési paramétereinek frissítési paramétereit.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --app-egészségügyi térkép | JSON kódolt szótár az alkalmazás neve párok és a maximális százalékos nem kifogástalan, mielőtt a hiba kiemelése. |
+| --app-típus-egészségügyi térkép | JSON kódolású szótár az alkalmazás típusneve párok és a maximális százalékos nem kifogástalan, mielőtt a hiba kiemelése. |
+| --delta-egészségügyi értékelés | Az egyes frissítési tartományok befejezése után az abszolút állapotkiértékelés helyett engedélyezi a különbözeti állapot kiértékelését. |
+| --delta-nem kifogástalan-csomópontok | A fürtfrissítések során engedélyezett maximális százalékos teljesítménycsökkenés.  Alapértelmezett\: 10. <br><br> A delta a frissítés kezdetén lévő csomópontok állapota és a csomópontok állapota között van az állapotkiértékelés időpontjában. Az ellenőrzés minden frissítési tartomány frissítésének befejezése után történik, hogy a fürt globális állapota a tűrhető határokon belül legyen. |
+| --hiba-művelet | A lehetséges\: értékek a következők: "Érvénytelen", "Visszaállítás", "Kézi". |
+| --erő-újraindítás | A folyamatok a frissítés során akkor is erőteljesen újraindulnak, ha a kódverzió nem változott. <br><br> A frissítés csak a konfigurációt vagy az adatokat módosítja. |
+| --health-check-retry | Az állapot-ellenőrzések végrehajtása között az állapotellenőrzések végrehajtása között, ha az alkalmazás vagy a fürt nem kifogástalan. |
+| --health-check-stable | Az az idő, amerre az alkalmazásnak vagy fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományra lépne. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
+| --health-check-wait | A frissítési tartomány befejezése után a várakozási idő időtartama az állapotellenőrzési folyamat megkezdése előtt. |
+| --replika-set-check-időout | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megakadályozására rendelkezésre álló idő letiltására rendelkezésre álló idő, ha nem várt problémák merülnek fel. <br><br> Ha ez az időbevétel lejár, a frissítési tartomány feldolgozása a rendelkezésre állási veszteségi problémáktól függetlenül folytatódik. Az időhosszabbítás minden frissítési tartomány elején alaphelyzetbe áll. Az érvényes értékek 0 és 42949672925 között vannak. |
+| --gördülő-upgrade-mód | A lehetséges\: értékek a következők: "Érvénytelen", "UnmonitoredAuto", "UnmonitoredManual", "Monitored".  Alapértelmezett\: UnmonitoredAuto. |
+| --idő-out -t | Alapértelmezett\: 60. |
+| --egészségtelen alkalmazások | A nem megfelelő állapotú alkalmazások maximálisan engedélyezett százaléka a hiba jelentésének bejelentése előtt. <br><br> Ha például az alkalmazások 10%-a nem megfelelő állapotú, ez az érték 10. A százalékos érték az alkalmazások maximális tolerálható százalékát jelöli, amelyek nem megfelelő állapotúak lehetnek, mielőtt a fürt hibásnak minősülne. Ha a százalékos érték tiszteletben van, de legalább egy nem megfelelő állapotú alkalmazás van, az állapot figyelmeztetésként lesz kiértékelve. Ezt úgy számítja ki, hogy elosztja a nem megfelelő állapotú alkalmazások számát a fürtben lévő alkalmazáspéldányok teljes számával, kivéve az ApplicationTypeHealthPolicyMap-ben szereplő alkalmazástípusok alkalmazásait. A számítás kerekíti, hogy tolerálja egy hiba kis számú alkalmazások. |
+| --nem kifogástalan-csomópontok | A nem megfelelő állapotú csomópontok maximálisan engedélyezett százaléka a hiba jelentése előtt. <br><br> Ha például a csomópontok 10%-a nem megfelelő állapotú, ez az érték 10. A százalékos érték a csomópontok maximális tolerálható százalékát jelöli, amely nem megfelelő állapotú lehet, mielőtt a fürt hibásnak minősülne. Ha a százalékos érték tiszteletben van, de legalább egy nem megfelelő állapotú csomópont van, az állapot figyelmeztetésként lesz kiértékelve. A százalékos értéket úgy számítja ki, hogy elosztja a nem megfelelő állapotú csomópontok számát a fürt ben lévő csomópontok teljes számával. A számítás kerekít, hogy tolerálja a kis számú csomópontok egy hiba. Nagy fürtök, egyes csomópontok mindig le vagy ki a javításokat, ezért ezt a százalékot úgy kell beállítani, hogy tolerálja ezt. |
+| --upgrade-domain-delta-unhealthy-csomópontok | A fürtfrissítések során a frissítési tartomány csomópontjainak maximálisan engedélyezett százalékos aránya.  Alapértelmezett\: 15. <br><br> A különbözetet a frissítési tartomány csomópontjainak állapota és a frissítési tartomány csomópontjainak állapota között méri a rendszer az állapotkiértékelés időpontjában. Az ellenőrzés az összes befejezett frissítési tartomány minden frissítési tartományának befejezése után történik, hogy megbizonyosodjon arról, hogy a frissítési tartományok állapota a tűrhető határokon belül van. |
+| --upgrade-domain-időout | Az egyes frissítési tartományoknak a FailureAction végrehajtása előtt be kell fejezniük az időt. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
+| --upgrade-típusú | A lehetséges\: értékek a következők: "Érvénytelen", "Gördülő", "Rolling_ForceRestart".  Alapértelmezett\: működés közben. |
+| --upgrade-időeltetés | A teljes frissítés befejezéséhez szükséges idő a FailureAction végrehajtása előtt. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
+| --figyelmeztetés hibaként | Azt jelzi, hogy a figyelmeztetések kezelése ugyanolyan súlyos, mint a hibák. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
-- [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+## <a name="next-steps"></a>További lépések
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

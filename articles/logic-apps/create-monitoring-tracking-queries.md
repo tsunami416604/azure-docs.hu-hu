@@ -1,69 +1,69 @@
 ---
-title: Azure Monitor naplókban található Logic apps-lekérdezések megtekintése és létrehozása
-description: Lekérdezések megtekintése és létrehozása Azure Monitor naplókban Azure Logic Apps
+title: Logikai alkalmazások lekérdezéseinek megtekintése és létrehozása az Azure Monitor naplóiban
+description: Lekérdezések megtekintése és létrehozása az Azure Logic Apps naplóiban az Azure Monitor naplóiban
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76908071"
 ---
-# <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>A Azure Monitor-naplók figyelésére és nyomon követésére szolgáló lekérdezések megtekintése és létrehozása Azure Logic Apps
+# <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Az Azure Logic Apps figyelőnaplóiban figyelési és nyomon követési lekérdezések megtekintése és létrehozása
 
-Megtekintheti azokat az alapul szolgáló lekérdezéseket, amelyek a [Azure monitor naplók](../log-analytics/log-analytics-overview.md) eredményeit eredményezik, és olyan lekérdezéseket hozhatnak létre, amelyek az adott feltételek alapján szűrik az eredményeket. Például megkeresheti az üzeneteket egy adott adatcsere-vezérlőelem száma alapján. A lekérdezések a [Kusto lekérdezési nyelvét](https://aka.ms/LogAnalyticsLanguageReference)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. További információ: [Azure monitor log lekérdezések](../azure-monitor/log-query/query-language.md).
+Megtekintheti az alapul szolgáló lekérdezések, amelyek az eredményeket az Azure Monitor naplók és [lekérdezések,](../log-analytics/log-analytics-overview.md) amelyek szűrik az eredményeket az adott feltételek alapján. Megkeresheti például az üzeneteket egy adott csomópont-vezérlőszám alapján. A lekérdezések a [Kusto lekérdezési nyelvet](https://aka.ms/LogAnalyticsLanguageReference)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. További információt az [Azure Monitor naplólekérdezései című témakörben talál.](../azure-monitor/log-query/query-language.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Log Analytics-munkaterület. Ha nem rendelkezik Log Analytics munkaterülettel, megtudhatja, [hogyan hozhat létre log Analytics-munkaterületet](../azure-monitor/learn/quick-create-workspace.md).
+* Egy Log Analytics-munkaterület. Ha nem rendelkezik Log Analytics-munkaterülettel, ismerje meg, [hogyan hozhat létre Log Analytics-munkaterületet.](../azure-monitor/learn/quick-create-workspace.md)
 
-* Azure Monitor naplózással beállított logikai alkalmazás, amely egy Log Analytics munkaterületre küldi ezt az információt. Ismerje meg [, hogyan állíthat be Azure monitor naplókat a logikai alkalmazáshoz](../logic-apps/monitor-logic-apps.md).
+* Az Azure Monitor naplózásával beállított logikai alkalmazás, amely elküldi ezeket az adatokat a Log Analytics-munkaterületre. Ismerje [meg, hogyan állíthatja be az Azure Monitor naplóit a logikai alkalmazáshoz.](../logic-apps/monitor-logic-apps.md)
 
-* Ha integrációs fiókot használ, győződjön meg arról, hogy beállította a fiókot Azure Monitor naplózással, hogy elküldje ezt az információt egy Log Analytics munkaterületre. Ismerje meg, hogyan [állíthat be Azure monitor naplózást az integrációs fiókjához](../logic-apps/monitor-b2b-messages-log-analytics.md).
+* Ha integrációs fiókot használ, győződjön meg arról, hogy beállította a fiókot az Azure Monitor naplózással, hogy ezeket az adatokat egy Log Analytics-munkaterületre küldje. Ismerje meg, hogyan állíthatja be az [Azure Monitor naplózását az integrációs fiókhoz.](../logic-apps/monitor-b2b-messages-log-analytics.md)
 
-## <a name="view-queries-behind-results"></a>Az eredmények mögötti lekérdezések megtekintése
+## <a name="view-queries-behind-results"></a>Eredmények mögötti lekérdezések megtekintése
 
-Az eredményeket a munkaterület összegzésében előállító lekérdezés megtekintéséhez vagy szerkesztéséhez kövesse az alábbi lépéseket:
+Az eredményeket a munkaterület összegzésében megjelenő lekérdezés megtekintéséhez vagy szerkesztéséhez hajtsa végre az alábbi lépéseket:
 
-1. Bármely találati oldalon, alul az **összes megtekintése**lehetőségre kattintva.
+1. Bármely eredménylapon, alul válassza az **Összes megjelenítése**lehetőséget.
 
    ![Az összes eredmény megtekintése](./media/create-monitoring-tracking-queries/logic-app-see-all.png)
 
-   Megnyílik a naplók lap, és megjeleníti az előző eredmények oldal mögötti lekérdezést.
+   Megnyílik a Naplók lap, és az előző eredményoldal mögötti lekérdezést jeleníti meg.
 
-   ![Naplók lap – Lekérdezés nézet](./media/create-monitoring-tracking-queries/view-query-behind-results.png)
+   ![Naplók lap – lekérdezési nézet](./media/create-monitoring-tracking-queries/view-query-behind-results.png)
 
-1. A **naplók** lapon a következő lehetőségek közül választhat:
+1. A **Naplók** lapon a következő beállításokat választhatja meg:
 
-   * Ha a lekérdezés eredményét táblázatként szeretné megtekinteni, a lekérdezés-szerkesztőben válassza a **tábla**lehetőséget.
+   * Ha a lekérdezés eredményeit táblaként szeretné megtekinteni, a lekérdezésszerkesztő alatt válassza a **Tábla**lehetőséget.
 
    * A lekérdezés módosításához frissítse a lekérdezési karakterláncot, és válassza a **Futtatás** lehetőséget a tábla eredményeinek megtekintéséhez.
 
 ## <a name="create-your-own-query"></a>Saját lekérdezés létrehozása
 
-Az eredmények adott tulajdonságok vagy értékek alapján történő kereséséhez vagy szűréséhez hozzon létre egy saját lekérdezést egy üres lekérdezésből, vagy használjon egy meglévő lekérdezést. További információ: Ismerkedés [a Azure monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md).
+Ha adott tulajdonságok vagy értékek alapján szeretné megkeresni vagy szűrni az eredményeket, létrehozhatja saját lekérdezését üres lekérdezésből kiindulva, vagy használhat egy meglévő lekérdezést. További információ: [Első lépések a naplólekérdezésekkel az Azure Monitorban.](../azure-monitor/log-query/get-started-queries.md)
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki log Analytics munkaterületét.
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg és válassza ki a Log Analytics-munkaterületet.
 
-1. A munkaterület menü **általános**területén válassza a **naplók**lehetőséget.
+1. A munkaterület **menüáltalános**területén válassza a **Naplók**lehetőséget.
 
-1. Egy üres lekérdezésből vagy bármely elérhető meglévő lekérdezésből indulhat.
+1. Kezdje üres lekérdezésből vagy bármely elérhető meglévő lekérdezésből.
 
-   * Annak megállapításához, hogy elérhetők-e a meglévő lekérdezések, a lekérdezés eszköztáron válassza ki a **minták lekérdezések** > **Előzmények**lehetőséget, amely megjeleníti a korábbi lekérdezési futtatások lekérdezéseit, vagy válassza a **query Explorert**, amely előre elkészített lekérdezéseket jelenít meg.
+   * Annak ellenőrzéséhez, hogy vannak-e elérhető kontrábok, a lekérdezés eszköztárán válassza a **Minták lekérdezések előzményei** > **History**lehetőséget, amely az előző lekérdezések ből származó lekérdezéseket jeleníti meg, vagy válassza a **Lekérdezéskezelő**lehetőséget, amely előre összeállított lekérdezéseket jelenít meg.
 
-     A Logic Apps B2B megoldás például a következő előre elkészített lekérdezéseket biztosítja:
+     Például a Logic Apps B2B megoldás biztosítja a következő előre összeállított lekérdezéseket:
 
-     ![Kezdés "Logic Apps B2B" megoldás előre elkészített lekérdezésekkel](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
+     ![Kezdje a "Logic Apps B2B" megoldás előre összeállított lekérdezéseivel](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * Ha üres lekérdezésből szeretne kezdeni, kezdje el beírni a lekérdezés [Kusto lekérdezési nyelvét](../azure-monitor/log-query/query-language.md) .
+   * Üres lekérdezésből való kiinduláshoz a lekérdezésszerkesztőben kezdje el beírni a [kusto lekérdezési nyelvet](../azure-monitor/log-query/query-language.md) a lekérdezéshez.
 
-     ![Indítás üres lekérdezéssel](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
+     ![Kezdés üres lekérdezéssel](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)

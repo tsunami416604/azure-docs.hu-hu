@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factory - csoportos adatelemzési folyamat SQL Azure, SQL Server-adatok
-description: Állítsa be az ADF-folyamatot, amely két együtt adatáthelyezést naponta helyszíni adatbázisok között, és a felhőbeli adatok migrálási tevékenységek composes.
+title: SQL Server-adatok az SQL Azure-ba az Azure Data Factory segítségével – Csapatadatelemzési folyamat
+description: Hozzon létre egy ADF-folyamatot, amely két adatáttelepítési tevékenységet állít össze, amelyek naponta áthelyezik az adatokat a helyszíni és a felhőbeli adatbázisok között.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,103 +12,103 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722492"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel
+# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése egy helyszíni SQL-kiszolgálóról az SQL Azure-ba az Azure Data Factory segítségével
 
-Ez a cikk bemutatja, hogyan helyezhetők át az adatok egy helyszíni SQL Server-adatbázisból egy SQL Azure-adatbázisba az Azure Blob Storage használatával a Azure Data Factory (ADF) használatával: Ez a módszer egy olyan támogatott örökölt megközelítés, amely a replikált átmeneti példányok előnyeivel rendelkezik, de [javasoljuk, hogy tekintse meg az adatáttelepítési oldalunkat a legújabb beállításokkal](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+Ez a cikk bemutatja, hogyan helyezhetát át az adatokat egy helyszíni SQL Server-adatbázisból egy SQL Azure-adatbázisba az Azure Data Storage (ADF) segítségével: ez a módszer egy támogatott örökölt megközelítés, amely a replikált átmeneti példány előnyeit kínálja, bár [javasoljuk, hogy tekintse meg az adatáttelepítési oldalunkat a legújabb lehetőségekért.](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)
 
-Az adatAzure SQL Databaseba való áthelyezés különböző lehetőségeit összefoglaló táblázatért lásd: az [adatáthelyezés egy Azure SQL Databaseba Azure Machine learning](move-sql-azure.md).
+Az Adatok Áthelyezése Azure SQL-adatbázisba való áthelyezésének különböző lehetőségeit összegző táblázatról az [Adatok áthelyezése Azure Machine Learninghez](move-sql-azure.md)című témakörben található.
 
-## <a name="intro"></a>Bevezetés: Mi az az ADF, és mikor kell használni az adatáttelepítést?
-Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatáthelyezési és -átalakítási adatok. A kulcs az ADF modell koncepciójuk folyamat. Egy folyamat olyan tevékenységek logikus csoportosításai, amelyek mindegyike meghatározza az adatkészletekben található adatokon végrehajtandó műveleteket. Társított szolgáltatások meghatározzák azokat az információkat a Data Factory az adatforrásokhoz való kapcsolódáshoz szolgálnak.
+## <a name="introduction-what-is-adf-and-when-should-it-be-used-to-migrate-data"></a><a name="intro"></a>Bevezetés: Mi az ADF, és mikor kell használni az adatok áttelepítéséhez?
+Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely vezényli és automatizálja az adatok mozgását és átalakítását. Az ADF-modell kulcsfogalma a folyamat. A folyamat a tevékenységek logikai csoportosítása, amely meghatározza az adatkészletekben lévő adatokon végrehajtandó műveleteket. A csatolt szolgáltatások segítségével határozható meg a Data Factory az adaterőforrásokhoz való csatlakozáshoz szükséges információk.
 
-Az ADF használatával a meglévő adatfeldolgozási szolgáltatások összeállítható alakíthatók ki adatcsatornák, amelyek magas rendelkezésre állású, felügyelt felhőben. Ezek adatfolyamatok ütemezhető a betöltési, előkészítése, átalakíthatja, elemezheti és adatok közzététele, és az ADF felügyeli, és az összetett adatokat és a feldolgozási függőségek koordinálja. Megoldások is gyorsan létrehozott és a felhőben üzembe helyezett helyszíni egyre nagyobb számban csatlakoztatása és felhőbeli adatforrásokból.
+Az ADF segítségével a meglévő adatfeldolgozási szolgáltatások olyan adatfolyamatokba is összeállhatnak, amelyek magas rendelkezésre állásúak és a felhőben kezelhetők. Ezek az adatfolyamatok ütemezhetők adatok betöltésére, előkészítésére, átalakítására, elemzésére és közzétételére, és az ADF kezeli és vezényli az összetett adat- és feldolgozási függőségeket. A megoldások gyorsan kiépíthetők és üzembe helyezhetők a felhőben, és egyre több helyszíni és felhőbeli adatforrást kapcsolnak össze.
 
-Vegye figyelembe, hogy az ADF használatával:
+Fontolja meg az ADF használatát:
 
-* Ha adatokat lehet áttelepíteni, a folyamatosan egy hibrid forgatókönyvben, amely egyaránt hozzáfér a helyszíni és a felhőbeli erőforrások
-* Ha az áttelepítés során az adatátalakításra vagy az üzleti logikára van szükség.
+* amikor az adatokat folyamatosan át kell telepíteni egy olyan hibrid forgatókönyvben, amely mind a helyszíni, mind a felhőbeli erőforrásokhoz hozzáfér
+* amikor az adatok átalakításra szorulnak, vagy az áttelepítés során üzleti logikát adnak hozzá.
 
-Az ADF lehetővé teszi, hogy az ütemezés és a figyelési feladatok használata kezelheti az adatmozgás rendszeres időközönként egyszerű JSON-szkript. Az ADF is tartalmaz egyéb szolgáltatásokat, például az összetett műveletek támogatása. Az ADF-vel kapcsolatos további információkért tekintse meg a dokumentációt a következő helyen: [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
+Az ADF lehetővé teszi a feladatok ütemezését és figyelését egyszerű JSON-parancsfájlok használatával, amelyek rendszeres időközönként kezelik az adatok mozgását. Az ADF más képességekkel is rendelkezik, például összetett műveletek támogatásával. Az ADF-ről az Azure [Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)dokumentációjában talál további információt.
 
-## <a name="scenario"></a>A forgatókönyv
-Beállítjuk az ADF-folyamatot, amely composes két az áttelepítési tevékenységeket. A helyszíni SQL Database és a felhőben lévő Azure SQL Database között napi szinten helyezik át az adatátvitelt. A két tevékenységek a következők:
+## <a name="the-scenario"></a><a name="scenario"></a>A forgatókönyv
+Létrehoztunk egy ADF-folyamatot, amely két adatáttelepítési tevékenységet állít össze. Együtt naponta áthelyezik az adatokat egy helyszíni SQL-adatbázis és egy Azure SQL-adatbázis között a felhőben. A két tevékenység a következő:
 
-* adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-fiók
-* adatok másolása az Azure Blob Storage-fiókhoz az Azure SQL Database.
+* adatok másolása egy helyszíni SQL Server-adatbázisból egy Azure Blob Storage-fiókba
+* adatok másolása az Azure Blob Storage-fiókból egy Azure SQL-adatbázisba.
 
 > [!NOTE]
-> Az itt bemutatott lépéseket az ADF-csapat részletesebb oktatóanyaga alapján alakítottuk ki: [adatokat másolhat egy helyszíni SQL Server-adatbázisból az Azure Blob Storage-ra](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) az adott témakör megfelelő részeire, amennyiben szükséges.
+> Az itt látható lépéseket az ADF-csapat által biztosított részletesebb oktatóanyagból igazítottuk: [Adatok másolása egy helyszíni SQL Server-adatbázisból](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) az Azure Blob storage-hivatkozásokba az adott témakör megfelelő szakaszaira, adott esetben.
 >
 >
 
-## <a name="prereqs"></a>Előfeltételek
+## <a name="prerequisites"></a><a name="prereqs"></a>Előfeltételek
 Ez az oktatóanyag feltételezi, hogy:
 
-* Egy **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Egy **Azure Storage-fiók**. Ez az oktatóanyag az adatok tárolása Azure storage-fiók használhat. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket. Miután létrehozta a tárfiókot, szerezze be a tárterület elérésére használt fiók kulcsot kell. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
-* Hozzáférés egy **Azure SQL Databasehoz**. Ha be kell állítania egy Azure SQL Database, a témakör [első lépések a Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) a Azure SQL Database új példányának kiépítésével kapcsolatos információkat nyújt.
-* **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+* **Egy Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
+* Egy **Azure-tárfiók.** Az oktatóanyagban található adatok tárolására azure-tárfiókot használ. Ha nem rendelkezik Azure-tárfiókkal, tekintse meg a [tárfiók létrehozása](../../storage/common/storage-account-create.md) cikket. Miután létrehozta a tárfiókot, be kell szereznie a tároló eléréséhez használt fiókkulcsot. Lásd: [Tárfiók hozzáférési kulcsainak kezelése.](../../storage/common/storage-account-keys-manage.md)
+* Hozzáférés egy **Azure SQL-adatbázishoz.** Ha be kell állítania egy Azure SQL-adatbázist, az Első lépések a [Microsoft Azure SQL Database-rel](../../sql-database/sql-database-get-started.md) című témakörben található, amely az Azure SQL-adatbázis új példányának kiépítéséről nyújt tájékoztatást.
+* Helyileg telepített és konfigurált **Azure PowerShell.** További információt az [Azure PowerShell telepítése és konfigurálása című témakörben talál.](/powershell/azure/overview)
 
 > [!NOTE]
-> Ez az eljárás a [Azure Portal](https://portal.azure.com/)használja.
+> Ez az eljárás az [Azure Portalt](https://portal.azure.com/)használja.
 >
 >
 
-## <a name="upload-data"></a>Töltse fel az adatait a helyszíni SQL Server
-A [New York-i taxi-adatkészletet](https://chriswhong.com/open-data/foil_nyc_taxi/) használjuk az áttelepítési folyamat bemutatására. A New York-i taxi adatkészlete az Azure Blob Storage [NYC](https://www.andresmh.com/nyctaxitrips/)-beli, a Poston megjelenő módon érhető el. Az adatok rendelkezik két fájlt, a trip_data.csv fájlt, amely trip részleteit tartalmazza, és a trip_far.csv fájlt, amely tartalmazza az egyes út fizetett diszkont részleteit. Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
+## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>Az adatok feltöltése a helyszíni SQL Server kiszolgálóra
+Az áttelepítési folyamat bemutatására a [NYC Taxi adatkészletet használjuk.](https://chriswhong.com/open-data/foil_nyc_taxi/) A NYC Taxi adatkészlet érhető el, amint azt a post, az Azure blob storage [NYC Taxi data](https://www.andresmh.com/nyctaxitrips/). Az adatok két fájlt tartalmaznak, a trip_data.csv fájlt, amely tartalmazza az utazás részleteit, és a trip_far.csv fájlt, amely az egyes utazásokért fizetett viteldíj részleteit tartalmazza. A minta és leírása ezeket a fájlokat a [nyc taxi utak adatkészlet leírása](sql-walkthrough.md#dataset).
 
-Az eljárás a saját adatok készletét használja az itt elérhető alkalmazkodik, vagy kövesse a lépéseket, a NYC Taxi adatkészlet használatával leírtak szerint. A New York-i taxi-adatkészlet helyszíni SQL Server adatbázisba való feltöltéséhez kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban leírt eljárást. Ezek az utasítások a egy SQL Server Azure virtuális gépen, de tölt fel a helyszíni SQL Server eljárás megegyezik.
+Módosíthatja az itt megadott eljárást a saját adataihoz, vagy követheti a NYC Taxi adatkészlet használatával leírt lépéseket. A NYC Taxi adatkészlet nek a helyszíni SQL Server adatbázisba való feltöltéséhez kövesse a [Tömeges adatok importálása az SQL Server adatbázisba](sql-walkthrough.md#dbload)című dokumentumban ismertetett eljárást. Ezek az utasítások egy Azure virtuális gépen lévő SQL Server, de a helyszíni SQL Server-re való feltöltési eljárás ugyanaz.
 
-## <a name="create-adf"></a>Azure Data Factory létrehozása
-Az új Azure Data Factory és egy erőforráscsoport létrehozásához szükséges útmutatást a [Azure Portal](https://portal.azure.com/) [hozzon létre Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Nevezze el az új ADF-példány *adfdsp* , és nevezze el a *adfdsprg*létrehozott erőforráscsoportot.
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure-adatgyár létrehozása
+Az [azure-portálon](https://portal.azure.com/) egy új Azure Data Factory és egy erőforráscsoport létrehozásához adott utasítások az [Azure Data Factory létrehozása](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)szolgáltatást tartalmaznak. Nevezze el az új ADF-példány *adfdsp-t,* és nevezze el az *adfdsprg-et*létrehozó erőforráscsoportot.
 
-## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Telepítse és konfigurálja az Azure Data Factory integrációs modul
-Az Integration Runtime egy ügyfél által felügyelt adatintegrációs infrastruktúra, amelyet a Azure Data Factory használ az adatintegrációs képességek különböző hálózati környezetekben történő biztosításához. Ez a modul nevén "Adatkezelési átjáró" volt.
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Az Azure Data Factory Integration Runtime telepítése és konfigurálása
+Az integrációs futásidő az Azure Data Factory által használt ügyfél által felügyelt adatintegrációs infrastruktúra, amely különböző hálózati környezetekben biztosítja az adatintegrációs képességeket. Ezt a futási időt korábban "Adatkezelési átjárónak" hívták.
 
-A beállításához [kövesse a folyamat létrehozásának utasításait](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline) .
+A beállításhoz [kövesse a csővezeték létrehozásához vezető utasításokat](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
-## <a name="adflinkedservices"></a>Társított szolgáltatások létrehozása az adaterőforrásokhoz való kapcsolódáshoz
-A társított szolgáltatás határozza meg az információkat, amelyeket az Azure Data Factory egy adatforrás, melyhez csatlakozni. Három erőforrást van ebben a forgatókönyvben, amelyhez a társított szolgáltatások szükségesek:
+## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Csatolt szolgáltatások létrehozása az adaterőforrásokhoz való csatlakozáshoz
+A csatolt szolgáltatás határozza meg az Azure Data Factory egy adaterőforráshoz való csatlakozáshoz szükséges információkat. Ebben a forgatókönyvben három erőforrással rendelkezünk, amelyekhez kapcsolódó szolgáltatásokra van szükség:
 
-1. On-premises SQL Server
+1. Helyszíni SQL Server
 2. Azure Blob Storage
 3. Azure SQL Database
 
-A társított szolgáltatások létrehozásához szükséges lépésenkénti eljárást a [társított szolgáltatások létrehozása](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)című témakörben ismertetjük.
+A csatolt szolgáltatások létrehozásának lépésről lépésre történő eljárása a [Csatolt szolgáltatások létrehozása](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)című részben található.
 
 
-## <a name="adf-tables"></a>Táblázatok definiálása és létrehozása az adatkészletek elérési módjának megadásához
-Hozzon létre táblákat, amelyek a struktúra, helyen és az adatkészletek rendelkezésre állását a parancsprogramfájlon alapuló menete. JSON-fájlok segítségével a-táblát határoz meg. További információ a fájlok struktúrájáról: [adatkészletek](../../data-factory/concepts-datasets-linked-services.md).
-
-> [!NOTE]
-> A [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) parancsmag végrehajtása előtt végre kell hajtania a `Add-AzureAccount` parancsmagot annak ellenőrzéséhez, hogy a megfelelő Azure-előfizetés van-e kiválasztva a parancs végrehajtásához. A parancsmag dokumentációját lásd: [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
->
->
-
-A táblák a JSON-alapú definíciókat használja a következő nevekkel:
-
-* a helyszíni SQL Server-kiszolgáló **neve** *nyctaxi_data*
-* a **tároló neve** az Azure Blob Storage-fiókban *ContainerName*
-
-Három tábladefiníciókat az ADF folyamat van szükség:
-
-1. [Helyszíni SQL-tábla](#adf-table-onprem-sql)
-2. [BLOB-tábla](#adf-table-blob-store)
-3. [SQL Azure táblázat](#adf-table-azure-sql)
+## <a name="define-and-create-tables-to-specify-how-to-access-the-datasets"></a><a name="adf-tables"></a>Táblák definiálása és létrehozása az adatkészletek elérésének megadásához
+Hozzon létre táblákat, amelyek az adatkészletek szerkezetét, helyét és elérhetőségét a következő parancsfájlalapú eljárásokkal határozzák meg. JSON fájlokat használnak, hogy meghatározza a táblákat. A fájlok szerkezetéről az [Adatkészletek](../../data-factory/concepts-datasets-linked-services.md)című témakörben talál további információt.
 
 > [!NOTE]
-> Ezek az eljárások az Azure PowerShell használatával határozza meg, és hozzon létre az ADF tevékenységek. Azonban ezeket a feladatokat az Azure portal használatával is elvégezhető. Részletekért lásd: [adatkészletek létrehozása](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
+> A `Add-AzureAccount` [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) parancsmag végrehajtása előtt végre kell hajtania a parancsmast, és meg kell győződnie arról, hogy a parancs végrehajtásához a megfelelő Azure-előfizetés van-e kiválasztva. A parancsmag dokumentációját az [Add-AzureAccount .For](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)documentation of this cmdlet, see Add-AzureAccount .
 >
 >
 
-### <a name="adf-table-onprem-sql"></a>Helyszíni SQL-tábla
-A helyszíni SQL Server-definíció van megadva a következő JSON-fájlban:
+A táblázatokBan szereplő JSON-alapú definíciók a következő neveket használják:
+
+* a helyszíni SQL-kiszolgálótábla **neve** *nyctaxi_data*
+* az Azure Blob Storage-fiókban lévő **tárolónév** *tárolónév*
+
+Ehhez az ADF-folyamathoz három tábladefiníció szükséges:
+
+1. [SQL helyszíni tábla](#adf-table-onprem-sql)
+2. [Blob-tábla](#adf-table-blob-store)
+3. [SQL Azure-tábla](#adf-table-azure-sql)
+
+> [!NOTE]
+> Ezek az eljárások az Azure PowerShell használatával határozzák meg és hozzák létre az ADF-tevékenységeket. De ezek a feladatok is elvégezhetők az Azure Portal használatával. További információt az [Adatkészletek létrehozása című](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)témakörben talál.
+>
+>
+
+### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>SQL helyszíni tábla
+A helyszíni SQL Server tábladefiníciója a következő JSON-fájlban van megadva:
 
 ```json
 {
@@ -136,15 +136,15 @@ A helyszíni SQL Server-definíció van megadva a következő JSON-fájlban:
 }
 ```
 
-Az oszlopnevek nem kerültek bele itt. Az oszlopnevek kiválasztásához adja meg azokat itt is (a részletekért tekintse meg az [ADF dokumentációs](../../data-factory/copy-activity-overview.md) témakört.
+Az oszlopnevek itt nem szerepeltek. Az oszlopneveken az oszlopok neveit itt mellékelheti (a részletekért tekintse meg az [ADF dokumentációs](../../data-factory/copy-activity-overview.md) témakörét.
 
-Másolja a táblázat JSON-definícióját egy *onpremtabledef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\onpremtabledef.JSON*). A tábla létrehozása az ADF-ben a következő Azure PowerShell-parancsmagot:
+Másolja a tábla JSON-definícióját egy *onpremtabledef.json* fájlba, és mentse egy ismert helyre (itt a feltételezett érték *C:\temp\onpremtabledef.json*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell-parancsmaggal:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="adf-table-blob-store"></a>BLOB-tábla
-A tábla a kimeneti blob helyének meghatározása szerepel (Ez hozzárendeli a betöltött adatok a helyszínről az Azure-blobba) a következőket:
+### <a name="blob-table"></a><a name="adf-table-blob-store"></a>Blob-tábla
+A kimeneti blob helyének a tábla definíciója a következő (ez leképezi a bevitt adatokat a helyszíni Azure blobhoz):
 
 ```json
 {
@@ -171,12 +171,12 @@ A tábla a kimeneti blob helyének meghatározása szerepel (Ez hozzárendeli a 
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *bloboutputtabledef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\bloboutputtabledef.JSON*). A tábla létrehozása az ADF-ben a következő Azure PowerShell-parancsmagot:
+Másolja a tábla JSON-definícióját egy *bloboutputtabledef.json* fájlba, és mentse egy ismert helyre (itt a tanértéke *C:\temp\bloboutputtabledef.json).* Hozza létre a táblát az ADF-ben a következő Azure PowerShell-parancsmaggal:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
-### <a name="adf-table-azure-sql"></a>SQL Azure táblázat
-Az SQL Azure-tábla definícióját, kimeneti (ebben a sémában leképezi a blob származó adatokon) a következőket:
+### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure-tábla
+Az SQL Azure-kimenet tábla definíciója a következő (ez a séma leképezi a blobból érkező adatokat):
 
 ```json
 {
@@ -203,23 +203,23 @@ Az SQL Azure-tábla definícióját, kimeneti (ebben a sémában leképezi a blo
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *tulajdonsága azuresqltable. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\AzureSqlTable.JSON*). A tábla létrehozása az ADF-ben a következő Azure PowerShell-parancsmagot:
+Másolja a tábla JSON-definícióját egy *AzureSqlTable.json* fájlba, és mentse egy ismert helyre (itt a következő a *C:\temp\AzureSqlTable.json).* Hozza létre a táblát az ADF-ben a következő Azure PowerShell-parancsmaggal:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
 
-## <a name="adf-pipeline"></a>A folyamat definiálása és létrehozása
-Adja meg a tevékenységek, amelyek az adatcsatornához tartozó, és létrehozhatja a folyamatot a parancsprogramfájlon alapuló az alábbi eljárások segítségével. Egy JSON-fájlt a folyamat tulajdonságainak definiálásához szolgál.
+## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>A folyamat definiálása és létrehozása
+Adja meg a folyamathoz tartozó tevékenységeket, és hozza létre a folyamatot a következő parancsfájlalapú eljárásokkal. A JSON-fájl a folyamat tulajdonságainak definiálására szolgál.
 
 * A parancsfájl feltételezi, hogy a **folyamat neve** *AMLDSProcessPipeline*.
-* Azt is vegye figyelembe, hogy a folyamat napi szinten kell végrehajtani, és az alapértelmezett végrehajtási idő (12 am UTC) a feladathoz a periodicitás állítottuk.
+* Azt is vegye figyelembe, hogy a folyamat napi rendszerességgel végrehajtandó gyakoriságát, és a feladat alapértelmezett végrehajtási idejét használjuk (12:00 UTC).
 
 > [!NOTE]
-> Az alábbi eljárások határozza meg, és hozhat létre az ADF-folyamatot az Azure PowerShell használatával. Azonban ez a feladat az Azure portal használatával is elvégezhető. Részletekért lásd: [folyamat létrehozása](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
+> A következő eljárások az Azure PowerShell használatával határozzák meg és hozzák létre az ADF-folyamatot. De ez a feladat is elvégezhető az Azure Portal használatával. További információt a [Folyamat létrehozása című témakörben](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)talál.
 >
 >
 
-A korábban megadott tábladefiníciókat használja, az ADF folyamat definíciója van megadva a következő:
+A korábban megadott tábladefiníciók használatával az ADF csővezeték-definíciója a következőképpen van megadva:
 
 ```json
 {
@@ -288,18 +288,18 @@ A korábban megadott tábladefiníciókat használja, az ADF folyamat definíci�
 }
 ```
 
-Másolja a folyamat JSON-definícióját egy *pipelinedef. JSON* nevű fájlba, és mentse egy ismert helyre (itt feltételezzük, hogy *C:\temp\pipelinedef.JSON*). A folyamat létrehozása az ADF-ben a következő Azure PowerShell-parancsmagot:
+Másolja a folyamat JSON-definícióját egy *pipelinedef.json* fájlba, és mentse egy ismert helyre (itt *c:\temp\pipelinedef.json).* Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell-parancsmaggal:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
 
-## <a name="adf-pipeline-start"></a>A folyamat elindítása
-Most már futtathatók a folyamat a következő paranccsal:
+## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>A folyamat indítása
+A folyamat most már futtatható a következő paranccsal:
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
 
-A *StartDate* és a *EndDate* paraméter értékeit le kell cserélni azokra a tényleges dátumokra, amelyeknek a folyamatát futtatni kívánja.
+A *kezdő és* a végpont *paraméterértékeit* le kell cserélni azokkal a tényleges dátumokkal, amelyek között a folyamatot futtatni szeretné.
 
-A folyamat végrehajtása után megtekintheti az adatok megjelennek a blob, naponta egy fájlt a kiválasztott kell lennie.
+A folyamat végrehajtása után látnia kell, hogy az adatok megjelennek a blobhoz kiválasztott tárolóban, naponta egy fájlban.
 
-Az ADF által biztosított funkcionalitást nem használjuk növekményes adatcsatornára. Ennek módjáról és az ADF által biztosított egyéb képességekről további információt az [ADF dokumentációjában](https://azure.microsoft.com/services/data-factory/)talál.
+Az ADF által nyújtott funkciókat nem használjuk ki az adatok növekményes csőzésére. Ennek módjáról és az ADF által biztosított egyéb funkciókról az [ADF dokumentációjában](https://azure.microsoft.com/services/data-factory/)olvashat bővebben.

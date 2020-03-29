@@ -1,6 +1,6 @@
 ---
-title: Eszközök regisztrálásának kezelése az Azure DPS SDK-k használatával
-description: Az eszközök regisztrálásának kezelése a IoT Hub Device Provisioning Serviceban (DPS) a Service SDK-k használatával
+title: Eszközregisztrációk kezelése az Azure DPS SDK-k használatával
+description: Eszközregisztrációk kezelése az IoT Hub-eszközkiépítési szolgáltatásban (DPS) a Service SDK-k használatával
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
@@ -8,82 +8,82 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975074"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Az eszközök regisztrálásának kezelése az Azure Device kiépítési szolgáltatás SDK-k használatával
-Az *eszközök* regisztrálása egyetlen eszköz vagy eszközök egy csoportját hozza létre, amelyek egy bizonyos ponton regisztrálhatnak az eszköz kiépítési szolgáltatásával. A beléptetési rekord tartalmazza az eszköz (ek) kezdeti kívánt konfigurációját a regisztráció részeként, beleértve a kívánt IoT hubot is. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás számára az Azure IoT-létesítési szolgáltatás SDK-k használatával programozott módon.  Az SDK-k a GitHubon érhetők el ugyanazon a tárházon, mint az Azure IoT SDK-k.
+# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Eszközregisztrációk kezelése az Azure-eszközkiépítési szolgáltatás SDK-kkal
+Az *eszközregisztráció* egyetlen eszköz vagy eszközcsoport rekordját hozza létre, amely egy bizonyos ponton regisztrálhat az eszközkiépítési szolgáltatással. A regisztrációs rekord tartalmazza az eszköz(ek) kezdeti kívánt konfigurációját a regisztráció részeként, beleértve a kívánt IoT hubot is. Ez a cikk bemutatja, hogyan kezelheti az eszközregisztrációk a létesítési szolgáltatás programozott használatával az Azure IoT-létesítési szolgáltatás SDK-k.  Az SDK-k a GitHubon érhetők el ugyanabban a tárházban, mint az Azure IoT SDK-k.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Szerezze be a kapcsolatok karakterláncát az eszköz kiépítési szolgáltatásának példányáról.
-* Szerezze be az eszköz biztonsági összetevőit a használt [igazolási mechanizmushoz](concepts-security.md#attestation-mechanism) :
-    * [**Platformmegbízhatósági modul (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * Egyéni regisztráció: regisztrációs azonosító és TPM-kiterjesztési kulcs fizikai eszközről vagy TPM-szimulátorból.
-        * A regisztrációs csoport nem vonatkozik a TPM-igazolásra.
-    * [**X. 509**](/azure/iot-dps/concepts-security):
-        * Egyéni regisztráció: a fizikai eszközről vagy az SDK [Dice](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulátorból származó [levél tanúsítványa](/azure/iot-dps/concepts-security) .
-        * Beléptetési Csoport: a [hitelesítésszolgáltató/főtanúsítvány](/azure/iot-dps/concepts-security#root-certificate) vagy a [közbenső tanúsítvány](/azure/iot-dps/concepts-security#intermediate-certificate), amely az eszköz tanúsítványának fizikai eszközön történő előállítására szolgál.  Az SDK-DICE emulátorból is létrehozható.
+* Szerezze be a kapcsolati karakterláncot az Eszközkiépítési szolgáltatás példányából.
+* Szerezze be az eszköz biztonsági összetevőit az [alkalmazott tanúsítványmechanizmushoz:](concepts-security.md#attestation-mechanism)
+    * [**Platformmegbízhatósági modul (TPM):**](/azure/iot-dps/concepts-security#trusted-platform-module)
+        * Egyéni regisztráció: Regisztrációs azonosító és TPM-ellenőrzőkulcs fizikai eszközről vagy TPM-szimulátorból.
+        * A regisztrációs csoport nem vonatkozik a TPM-tanúsítványra.
+    * [**X.509**](/azure/iot-dps/concepts-security):
+        * Egyéni regisztráció: A [Leaf tanúsítvány](/azure/iot-dps/concepts-security) fizikai eszközről vagy az SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulátor.
+        * Igénylési csoport: A [hitelesítésszolgáltatói/főtanúsítvány](/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány,](/azure/iot-dps/concepts-security#intermediate-certificate)amely eszköztanúsítvány fizikai eszközön történő előállításához használatos.  Az SDK DICE emulátorból is létrehozható.
 * A pontos API-hívások a nyelvi különbségek miatt eltérőek lehetnek. A részletekért tekintse át a GitHubon megadott mintákat:
-   * [Java-kiépítési szolgáltatás ügyféloldali mintái](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Node. js kiépítési szolgáltatás ügyféloldali mintái](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
-   * [.NET-kiépítési szolgáltatás ügyféloldali mintái](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
+   * [Java provisioning service ügyfélminták](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
+   * [Node.js kiépítési szolgáltatásügyfél-minták](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [.NET-kiépítési szolgáltatásügyfél-minták](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
-## <a name="create-a-device-enrollment"></a>Eszközök regisztrálásának létrehozása
-Az eszközöket kétféleképpen lehet regisztrálni a kiépítési szolgáltatással:
+## <a name="create-a-device-enrollment"></a>Eszközregisztráció létrehozása
+Az eszközöket kétféleképpen regisztrálhatja a kiépítési szolgáltatással:
 
-* A **beléptetési csoport** olyan eszközök csoportja, amelyek osztoznak az X. 509 tanúsítványok közös igazolási mechanizmusán, amelyet a [Főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [közbenső tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)írt alá. Azt javasoljuk, hogy nagy számú, a kívánt kezdeti konfigurációt megosztó eszközhöz használjon beléptetési csoportot, vagy ha az összes eszköz ugyanahhoz a bérlőhöz fog csatlakozni. Vegye figyelembe, hogy csak az X. 509 igazolási mechanizmust használó eszközök regisztrálása *beléptetési csoportként*. 
+* A **beléptetési csoport** olyan eszközök csoportjának bejegyzése, amelyek az X.509 tanúsítványok közös tanúsítvány-tanúsítási mechanizmusával rendelkeznek, és amelyeket a [főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [köztes tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)ír alá. Azt javasoljuk, hogy egy regisztrációs csoport nagy számú eszköz, amely a kívánt kezdeti konfigurációt, vagy az eszközök minden megy ugyanahhoz a bérlőhöz. Ne feledje, hogy az X.509 tanúsítványmechanizmust regisztrációs *csoportként*használó eszközöket csak regisztrálhatja. 
 
-    A munkafolyamatot követő SDK-k segítségével létrehozhat egy regisztrációs csoportot:
+    A munkafolyamatot követően létrehozhat egy regisztrációs csoportot az SDK-kkal:
 
-    1. Beléptetési csoport esetén az igazolási mechanizmus X. 509 főtanúsítványt használ.  Hívja meg a Service SDK API-t ```X509Attestation.createFromRootCertificate``` a főtanúsítvánnyal a regisztrációhoz szükséges igazolás létrehozásához.  Az X. 509 főtanúsítvány egy PEM-fájlban vagy karakterláncként van megadva.
-    1. Hozzon létre egy új ```EnrollmentGroup``` változót a létrehozott ```attestation``` és egy egyedi ```enrollmentGroupId```használatával.  Szükség esetén olyan paramétereket is beállíthat, mint például a ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    2. Hívja a Service SDK API-t ```createOrUpdateEnrollmentGroup``` a háttérbeli alkalmazásban a ```EnrollmentGroup``` használatával egy regisztrációs csoport létrehozásához.
+    1. Az igénylési csoport esetében az igazolási mechanizmus X.509 főtanúsítványt használ.  Hívja meg a ```X509Attestation.createFromRootCertificate``` Service SDK API-t főtanúsítvánnyal a regisztrációhoz való tanúsítvány létrehozásához.  Az X.509 főtanúsítvány PEM-fájlban vagy karakterláncként érhető el.
+    1. Hozzon ```EnrollmentGroup``` létre egy ```attestation``` új változót a létrehozott és egy egyedi ```enrollmentGroupId```használatával.  Tetszés szerint olyan ```Device ID```paramétereket is beállíthat, mint a , ```IoTHubHostName```, ```ProvisioningStatus```.
+    2. Hívja meg a ```createOrUpdateEnrollmentGroup``` Szolgáltatás SDK ```EnrollmentGroup``` API-t a háttéralkalmazásban egy regisztrációs csoport létrehozásához.
 
-* Az **Egyéni regisztráció** egy olyan bejegyzés, amely regisztrálható egyetlen eszközön. Az egyéni regisztrációk X. 509 tanúsítványokat vagy SAS-jogkivonatokat (fizikai vagy virtuális TPM-ből) is használhatnak igazolási mechanizmusként. Azt javasoljuk, hogy egyéni regisztrációkat használjon olyan eszközökhöz, amelyek egyedi kezdeti konfigurációt igényelnek, vagy olyan eszközök esetében, amelyek csak a TPM vagy a virtuális TPM modulon keresztül használhatják az igazolási mechanizmusként szolgáló SAS-jogkivonatokat. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
+* **Az egyéni regisztráció** egyetlen eszköz bejegyzése, amely regisztrálhat. Az egyéni beléptetések x.509-es tanúsítványokat vagy SAS-jogkivonatokat használhatnak (fizikai vagy virtuális TPM-ből) igazolási mechanizmusként. Azt javasoljuk, hogy egyedi regisztrációkat használjon az egyedi kezdeti konfigurációt igénylő eszközökhöz, vagy olyan eszközökhöz, amelyek csak TPM-en vagy virtuális TPM-en keresztül használhatják a SAS-jogkivonatokat igazolási mechanizmusként. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
 
-    Létrehozhat egy egyéni regisztrációt a munkafolyamatot követő SDK-k használatával:
+    A munkafolyamatot követően egyéni regisztrációt hozhat létre az SDK-kkal:
     
-    1. Válassza ki a ```attestation``` mechanizmust, amely TPM vagy X. 509 lehet.
-        1. **TPM**: egy fizikai eszközről vagy a TPM-szimulátorból bemenetként való használatakor meghívhatja a Service SDK API-```TpmAttestation``` a regisztrálási igazolás létrehozásához. 
-        2. **X. 509**: az ügyféltanúsítvány használata bemenetként hívhatja a Service SDK API-```X509Attestation.createFromClientCertificate``` a regisztrálási igazolás létrehozásához.
-    2. Hozzon létre egy új ```IndividualEnrollment``` változót a létrehozott ```attestation``` és egy egyedi ```registrationId``` bemenetként, amely az eszközön található, vagy a TPM-szimulátorból lett létrehozva.  Szükség esetén olyan paramétereket is beállíthat, mint például a ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    3. Az egyéni regisztráció létrehozásához hívja a Service SDK API-t ```createOrUpdateIndividualEnrollment``` a háttérbeli alkalmazásban ```IndividualEnrollment``` használatával.
+    1. Válassza ```attestation``` ki a mechanizmust, amely lehet TPM vagy X.509.
+        1. **TPM**: Az ellenőrzőkulcs fizikai eszközről vagy a TPM-szimulátor bemeneti, ```TpmAttestation``` hívhatja Service SDK API-t, hogy tanúsítványt hozzon létre a regisztrációhoz. 
+        2. **X.509:** Az ügyféltanúsítvány bevitele ként meghívhat Service ```X509Attestation.createFromClientCertificate``` SDK API-t a regisztrációhoz használt tanúsítvány létrehozásához.
+    2. Hozzon ```IndividualEnrollment``` létre egy ```attestation``` új változót ```registrationId``` a létrehozott és egy egyedi bemeneti, amely az eszközön, vagy generált a TPM Simulator.  Tetszés szerint olyan ```Device ID```paramétereket is beállíthat, mint a , ```IoTHubHostName```, ```ProvisioningStatus```.
+    3. Hívja meg a ```createOrUpdateIndividualEnrollment``` Service SDK ```IndividualEnrollment``` API-t a háttéralkalmazásban egy egyéni regisztráció létrehozásához.
 
-A regisztráció sikeres létrehozása után az eszköz kiépítési szolgáltatása beléptetési eredményt ad vissza. Ezt a munkafolyamatot a [korábban említett](#prerequisites)minták mutatják be.
+Miután sikeresen létrehozott egy regisztrációt, az eszközkiépítési szolgáltatás egy regisztrációs eredményt ad vissza. Ezt a munkafolyamatot a [korábban említett](#prerequisites)minták mutatják be.
 
-## <a name="update-an-enrollment-entry"></a>Beléptetési bejegyzés frissítése
+## <a name="update-an-enrollment-entry"></a>Regisztrációs bejegyzés frissítése
 
-A regisztrációs bejegyzés létrehozása után érdemes lehet frissíteni a beléptetést.  Lehetséges forgatókönyvek például a kívánt tulajdonság frissítése, az igazolási módszer frissítése vagy az eszközök hozzáférésének visszavonása.  Különböző API-k vannak az egyéni regisztrációhoz és a csoportos regisztrációhoz, de az igazolási mechanizmus nem tesz különbséget.
+Miután létrehozott egy regisztrációs bejegyzést, érdemes lehet frissíteni a regisztrációt.  A lehetséges forgatókönyvek közé tartozik a kívánt tulajdonság frissítése, az igazolási módszer frissítése vagy az eszközhozzáférés visszavonása.  Az egyéni regisztrációhoz és a csoportregisztrációhoz különböző API-k tartoznak, de a tanúsítványmechanizmus nem különbözik.
 
-A következő munkafolyamat után frissítheti a beléptetési bejegyzést:
+A regisztrációs bejegyzéseket a következő munkafolyamat ot követően frissítheti:
 * **Egyéni regisztráció**:
-    1. Először a Service SDK API ```getIndividualEnrollment```használatával szerezze be a kiépítési szolgáltatás legújabb regisztrációját.
-    2. Szükség szerint módosítsa a legújabb regisztráció paraméterét. 
-    3. A legújabb regisztrálással hívja meg a Service SDK API ```createOrUpdateIndividualEnrollment``` a beléptetési bejegyzés frissítéséhez.
+    1. Először a Service SDK API-val ```getIndividualEnrollment```szerezheti be a legújabb regisztrációt a létesítési szolgáltatásból.
+    2. Szükség szerint módosítsa a legutóbbi regisztráció paraméterét. 
+    3. A legutóbbi regisztráció használatával hívja meg ```createOrUpdateIndividualEnrollment``` a Service SDK API-t a regisztrációs bejegyzés frissítéséhez.
 * **Csoportos regisztráció**:
-    1. Először a Service SDK API ```getEnrollmentGroup```használatával szerezze be a kiépítési szolgáltatás legújabb regisztrációját.
-    2. Szükség szerint módosítsa a legújabb regisztráció paraméterét.
-    3. A legújabb regisztrálással hívja meg a Service SDK API ```createOrUpdateEnrollmentGroup``` a beléptetési bejegyzés frissítéséhez.
+    1. Először a Service SDK API-val ```getEnrollmentGroup```szerezheti be a legújabb regisztrációt a létesítési szolgáltatásból.
+    2. Szükség szerint módosítsa a legutóbbi regisztráció paraméterét.
+    3. A legutóbbi regisztráció használatával hívja meg ```createOrUpdateEnrollmentGroup``` a Service SDK API-t a regisztrációs bejegyzés frissítéséhez.
 
 Ezt a munkafolyamatot a [korábban említett](#prerequisites)minták mutatják be.
 
-## <a name="remove-an-enrollment-entry"></a>Beléptetési bejegyzés eltávolítása
+## <a name="remove-an-enrollment-entry"></a>Regisztrációs bejegyzés eltávolítása
 
-* Az **Egyéni regisztrációt** a Service SDK API ```deleteIndividualEnrollment``` a ```registrationId```használatával lehet törölni.
-* A **csoportos regisztrációt** a Service SDK API ```deleteEnrollmentGroup``` a ```enrollmentGroupId```használatával lehet törölni.
+* **Az egyéni regisztráció** a Service SDK API ```deleteIndividualEnrollment``` hívásával törölhető a használatával. ```registrationId```
+* **A csoportregisztráció** a Service SDK ```deleteEnrollmentGroup``` ```enrollmentGroupId```API hívásával törölhető a használatával.
 
 Ezt a munkafolyamatot a [korábban említett](#prerequisites)minták mutatják be.
 
-## <a name="bulk-operation-on-individual-enrollments"></a>Tömeges művelet az egyes regisztrációk esetében
+## <a name="bulk-operation-on-individual-enrollments"></a>Tömeges művelet az egyes regisztrációkon
 
-A munkafolyamatot követő több egyéni regisztráció létrehozásához, frissítéséhez vagy eltávolításához tömeges műveletet is végrehajthat:
+Tömeges műveletet hajthat végre több egyéni regisztráció létrehozására, frissítésére vagy eltávolítására a munkafolyamatot követően:
 
-1. Hozzon létre egy változót, amely több ```IndividualEnrollment```tartalmaz.  A változó megvalósítása minden nyelv esetében eltér.  A részletekért tekintse át a GitHubon a tömeges művelet mintáját.
-2. Hívja meg a Service SDK API-t ```runBulkOperation``` egy ```BulkOperationMode``` a kívánt művelethez és a változóhoz az egyes regisztrációk esetében. Négy mód támogatott: létrehozás, frissítés, updateIfMatchEtag és törlés.
+1. Hozzon létre egy ```IndividualEnrollment```több .  Ennek a változónak a megvalósítása minden nyelven eltérő.  Tekintse át a tömeges művelet minta a GitHubon a részletekért.
+2. Hívja meg a ```runBulkOperation``` Service ```BulkOperationMode``` SDK API-t a kívánt művelettel és a változóval az egyes regisztrációkhoz. Négy mód támogatott: létrehozás, frissítés, updateIfMatchEtag és törlés.
 
-A művelet sikeres elvégzése után az eszköz kiépítési szolgáltatása tömeges művelet eredményét fogja visszaadni.
+Miután sikeresen végrehajtott egy műveletet, az eszközkiépítési szolgáltatás tömeges művelet eredményt ad vissza.
 
 Ezt a munkafolyamatot a [korábban említett](#prerequisites)minták mutatják be.

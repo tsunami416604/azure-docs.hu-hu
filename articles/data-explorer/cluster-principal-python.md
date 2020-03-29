@@ -1,6 +1,6 @@
 ---
-title: Fürthöz tartozó rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a Python használatával
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá fürtöket az Azure Adatkezelőhoz a Python használatával.
+title: Fürtrendszeri tagok hozzáadása az Azure Data Explorerhez a Python használatával
+description: Ebben a cikkben megtudhatja, hogyan adhat hozzá fürtrendszeri tagokat az Azure Data Explorer python használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 637efdfe31d1f2eb0eaa5dd532dd9e9e67de5ce2
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965137"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Fürthöz tartozó rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a Python használatával
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Fürtrendszeri tagok hozzáadása az Azure Data Explorerhez a Python használatával
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Azure Resource Manager-sablon](cluster-principal-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben a Python használatával adja hozzá a fürtöket az Azure Adatkezelőhoz.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben fürtrendszeri tagok hozzáadása az Azure Data Explorer python használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Hozzon létre egy fürtöt](create-cluster-database-python.md).
+* [Fürt létrehozása](create-cluster-database-python.md).
 
 ## <a name="install-python-package"></a>Python-csomag telepítése
 
-Az Azure Adatkezelő (Kusto) Python-csomagjának telepítéséhez nyisson meg egy parancssort, amely a Python elérési útját is tartalmazni fogja. Futtassa ezt a parancsot:
+A Python-csomag azure Data Explorer (Kusto) telepítéséhez nyisson meg egy parancssort, amely a Python az útjába. Futtassa ezt a parancsot:
 
 ```
 pip install azure-common
@@ -39,9 +39,9 @@ pip install azure-mgmt-kusto
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-cluster-principal"></a>Fürthöz tartozó rendszerbiztonsági tag hozzáadása
+## <a name="add-a-cluster-principal"></a>Egyszerű fürt hozzáadása
 
-Az alábbi példa azt szemlélteti, hogyan adhat hozzá programozott módon egy fürtöt.
+A következő példa bemutatja, hogyan adhat hozzá egy fürtfőt programozott módon.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -80,18 +80,18 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 
 |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
 |---|---|---|
-| tenant_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A bérlő azonosítója. Más néven címtár-azonosító.|
-| subscription_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
-| client_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Annak az alkalmazásnak az ügyfél-azonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
-| client_secret | *XXXXXXXXXXXXXX* | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A bérlőazonosítója. Más néven könyvtárazonosító.|
+| subscription_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az alkalmazás ügyfélazonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
+| client_secret | *xxxxxxxxxxxxxx* | Az alkalmazás ügyféltka-tka, amely hozzáférhet a bérlő erőforrásaihoz. |
 | resource_group_name | *testrg* | A fürtöt tartalmazó erőforráscsoport neve.|
 | cluster_name | *mykustocluster* | A fürt neve.|
-| principal_assignment_name | *clusterPrincipalAssignment1* | A fürt elsődleges erőforrásának neve.|
-| principal_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A résztvevő azonosítója, amely lehet felhasználói e-mail-cím, alkalmazás-azonosító vagy biztonsági csoport neve.|
-| szerepkör | *AllDatabasesAdmin* | A fürt elsődleges szerepköre, amely lehet "AllDatabasesAdmin' vagy" AllDatabasesViewer ".|
-| tenant_id_for_principal | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A rendszerbiztonsági tag bérlői azonosítója.|
-| principal_type | *Alkalmazás* | A rendszerbiztonsági tag típusa, amely lehet "user", "app" vagy "Group"|
+| principal_assignment_name | *clusterPrincipalAssignment1* | A fürt fő erőforrásának neve.|
+| principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A fő azonosító, amely lehet felhasználói e-mail, alkalmazásazonosító vagy biztonsági csoport neve.|
+| Szerepet | *Mindenadatbázis-kezelő* | A fürtfőnév szerepköre, amely lehet "AllDatabasesAdmin" vagy "AllDatabasesViewer".|
+| tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A főnév bérlői azonosítója.|
+| principal_type | *Alkalmazás* | A megbízó típusa, amely lehet "Felhasználó", "Alkalmazás" vagy "Csoport"|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatbázis-rendszerbiztonsági tag hozzáadása](database-principal-python.md)
+* [Adatbázis-biztonsági tagok hozzáadása](database-principal-python.md)

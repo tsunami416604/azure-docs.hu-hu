@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API Spark rendszerből Upsert adattárházba
-description: Ez a cikk ismerteti az Azure Cosmos DB Cassandra API táblákba upsert hogyan Spark rendszerből
+title: Upsert-adatok az Azure Cosmos DB Cassandra API-ba a Sparktól
+description: Ez a cikk bemutatja, hogyan upsert a táblák az Azure Cosmos DB Cassandra API spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893414"
 ---
-# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Azure Cosmos DB Cassandra API Spark rendszerből Upsert adattárházba
+# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert-adatok az Azure Cosmos DB Cassandra API-ba a Sparktól
 
-Ez a cikk azt ismerteti, hogyan upsert adatok importálása az Azure Cosmos DB Cassandra API Spark rendszerből.
+Ez a cikk ismerteti, hogyan upsert adatokat az Azure Cosmos DB Cassandra API-t a Spark.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
+## <a name="cassandra-api-configuration"></a>Cassandra API-konfiguráció
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>Adathalmaz API
+## <a name="dataframe-api"></a>Dataframe API
 
-### <a name="create-a-dataframe"></a>Hozzon létre dataframe- 
+### <a name="create-a-dataframe"></a>Adatkeret létrehozása 
 
 ```scala
 // (1) Update: Changing author name to include prefix of "Sir"
@@ -83,14 +83,14 @@ booksUpsertDF.write
 cdbConnector.withSessionDo(session => session.execute("update books_ks.books set book_price=99.33 where book_id ='b00300';"))
 ```
 
-## <a name="rdd-api"></a>RDD-API
+## <a name="rdd-api"></a>RDD API
 > [!NOTE]
-> Az RDD-API-ból Upsert megegyezik a létrehozási művelet 
+> Upsert az RDD API ugyanaz, mint a create művelet 
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a következő cikkek az Azure Cosmos DB Cassandra API-táblákban tárolt adatokkal kapcsolatos egyéb műveletek végrehajtásához:
+Folytassa az alábbi cikkekkel az Azure Cosmos DB Cassandra API-táblákban tárolt adatokon további műveletek végrehajtásához:
  
-* [Törlési műveletek](cassandra-spark-delete-ops.md)
+* [Műveletek törlése](cassandra-spark-delete-ops.md)
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
-* [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
+* [Táblamásolási műveletek](cassandra-spark-table-copy-ops.md)

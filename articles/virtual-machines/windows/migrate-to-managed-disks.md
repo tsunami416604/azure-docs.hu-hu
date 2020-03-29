@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuális gépek migrálása a Managed Disksba
-description: Telepítse át a nem felügyelt lemezekkel létrehozott Azure-beli virtuális gépeket a Storage-fiókokban a Managed Disks használatához.
+title: Az Azure virtuális gépei áttelepítése felügyelt lemezekre
+description: Telepítse át a nem felügyelt lemezek használatával létrehozott Azure virtuális gépeket a felügyelt lemezek használatához.
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
@@ -8,31 +8,31 @@ ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: e8f2753ac9062803a2d6252eca1829cb0b168f02
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921351"
 ---
-# <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure-beli virtuális gépek migrálása az Azure-ba való Managed Disks
+# <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Az Azure-beli virtuális gépek áttelepítése felügyelt lemezekre az Azure-ban
 
-Az Azure Managed Disks leegyszerűsíti a tárolási felügyeletet, hiszen nem kell külön kezelnie a Storage-fiókokat.  A meglévő Azure-beli virtuális gépeket is áttelepítheti Managed Disks a rendelkezésre állási csoportba tartozó virtuális gépek jobb megbízhatóságának kihasználása érdekében. Biztosítja, hogy a rendelkezésre állási csoportokban lévő különböző virtuális gépek lemezei elég elszigeteltek legyenek egymástól, hogy elkerülje az egyes meghibásodási pontokat. A szolgáltatás automatikusan áthelyezi a különböző virtuális gépek lemezeit egy rendelkezésre állási csoportba a különböző tárolási skálázási egységekben (bélyegzők), ami korlátozza a hardveres és a szoftver meghibásodása miatti egyetlen tárolási skálázási egység meghibásodásának hatását.
-Az igények alapján négyféle tárolási lehetőség közül választhat. A rendelkezésre álló lemezek típusairól a [lemez típusának kiválasztása](disks-types.md) című cikkből tájékozódhat.
+Az Azure felügyelt lemezek leegyszerűsíti a tárkezelés azáltal, hogy megszünteti a tárfiókok külön-külön kezelésének szükségességét.  A meglévő Azure-beli virtuális gépek felügyelt lemezekre is áttelepítheti kondi-szolgáltatások, hogy kihasználhassa a virtuális gépek nagyobb megbízhatóságát egy rendelkezésre állási csoportban. Biztosítja, hogy a rendelkezésre állási csoportban lévő különböző virtuális gépek lemezei eléggé elkülönüljenek egymástól, hogy elkerüljék a hibák egypontját. A különböző virtuális gépek lemezeit automatikusan elhelyezi egy rendelkezésre állási csoportban a különböző tárolási méretezési egységekben (bélyegzőkben), amelyek korlátozzák a hardver- és szoftverhibák miatt okozott egyetlen tárolási méretezési egység hibáinak hatását.
+Az igényeinek megfelelően négyféle tárolási lehetőség közül választhat. A rendelkezésre álló lemeztípusokról a [Lemeztípus kiválasztása](disks-types.md) című cikkben olvashat.
 
-## <a name="migration-scenarios"></a>Áttelepítési forgatókönyvek
+## <a name="migration-scenarios"></a> Áttelepítési forgatókönyvek
 
-A következő helyzetekben telepítheti át Managed Disksre:
+A felügyelt lemezekre a következő esetekben telepítheti át a következő eseteket:
 
 |Forgatókönyv  |Cikk  |
 |---------|---------|
 |Különálló virtuális gépek és rendelkezésreállási csoportban lévő virtuális gépek konvertálása felügyelt lemezekké     |[Virtuális gépek konvertálása felügyelt lemezek használatára](convert-unmanaged-to-managed-disks.md)         |
-|Egyetlen virtuális gép konvertálása klasszikusról Resource Managerre felügyelt lemezeken     |[Virtuális gép létrehozása klasszikus VHD-ből](create-vm-specialized-portal.md)         |
-|A vNet lévő összes virtuális gép konvertálása a Klasszikusból a Resource Managerbe a felügyelt lemezeken     |[IaaS-erőforrások migrálása a Klasszikusból a Resource Managerbe](migration-classic-resource-manager-ps.md) , majd [a virtuális gép konvertálása nem felügyelt lemezekről a felügyelt lemezekre](convert-unmanaged-to-managed-disks.md)         |
-|Szabványos nem felügyelt lemezekkel rendelkező virtuális gépek frissítése felügyelt prémium szintű lemezekkel     | Először [alakítsa át a Windows rendszerű virtuális gépeket a nem felügyelt lemezekről a felügyelt lemezekre](convert-unmanaged-to-managed-disks.md). Ezután [frissítse a felügyelt lemez tárolási típusát](convert-disk-storage.md).         |
+|Egyetlen virtuális gép konvertálása klasszikusról erőforrás-kezelőre felügyelt lemezeken     |[Virtuális gép létrehozása klasszikus virtuális merevlemezről](create-vm-specialized-portal.md)         |
+|A virtuális hálózat összes virtuális gépének konvertálása klasszikusról erőforrás-kezelőre felügyelt lemezeken     |[IaaS-erőforrások áttelepítése klasszikusról erőforrás-kezelőre,](migration-classic-resource-manager-ps.md) majd [virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre](convert-unmanaged-to-managed-disks.md)         |
+|A szabványos nem felügyelt lemezekkel rendelkező virtuális gépek frissítése felügyelt prémium szintű lemezekkel rendelkező virtuális gépekre     | Először [konvertáljon egy Windows-virtuális gépet nem felügyelt lemezekből felügyelt lemezekké.](convert-unmanaged-to-managed-disks.md) Ezután [frissítse a felügyelt lemez tárolási típusát.](convert-disk-storage.md)         |
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [Managed Disks](managed-disks-overview.md)
-- Tekintse át a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/).
+- További információ a [felügyelt lemezekről](managed-disks-overview.md)
+- Tekintse át a [felügyelt lemezek díjszabását.](https://azure.microsoft.com/pricing/details/managed-disks/)

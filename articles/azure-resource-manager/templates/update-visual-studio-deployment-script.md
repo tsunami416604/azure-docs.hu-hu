@@ -1,36 +1,36 @@
 ---
-title: A Visual Studio sablon-telepítési parancsfájljának frissítése az az PowerShell használatával
-description: A Visual Studio sablon üzembe helyezési parancsfájljának frissítése a AzureRM-ből az PowerShell-be
+title: A Visual Studio sablontelepítési parancsfájljának frissítése az Az PowerShell használatához
+description: A Visual Studio-sablon telepítési parancsfájljának frissítése az AzureRM szolgáltatásból az Az PowerShellre
 author: cweining
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: cweining
 ms.openlocfilehash: 357e0289f3237ed32b0801280316225ba5530282
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963869"
 ---
-# <a name="update-visual-studio-template-deployment-script-to-use-az-powershell-module"></a>A Visual Studio sablon telepítési parancsfájljának frissítése az az PowerShell-modul használatával
+# <a name="update-visual-studio-template-deployment-script-to-use-az-powershell-module"></a>A Visual Studio-sablon központi telepítési parancsfájljának frissítése az Az PowerShell-modul használatához
 
-A Visual Studio 16,4 a sablon üzembe helyezési parancsfájljában az az PowerShell modul használatával támogatott. A Visual Studio azonban nem telepíti automatikusan ezt a modult. Az az modul használatához négy lépést kell elvégeznie:
+A Visual Studio 16.4 támogatja az Az PowerShell-modul használatát a sablon központi telepítési parancsfájljában. A Visual Studio azonban nem telepíti automatikusan a modult. Az Az modul használatához négy lépést kell tennie:
 
-1. [AzureRM modul eltávolítása](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)
-1. [Telepítés az Module](/powershell/azure/install-az-ps)
-1. A Visual Studio frissítése 16,4-re
-1. Frissítse az üzembe helyezési parancsfájlt a projektben.
+1. [Az AzureRM-modul eltávolítása](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module)
+1. [Az modul telepítése](/powershell/azure/install-az-ps)
+1. A Visual Studio frissítése a 16.4-re
+1. Frissítse a központi telepítési parancsfájlt a projektben.
 
-## <a name="update-visual-studio-to-164"></a>A Visual Studio frissítése 16,4-re
+## <a name="update-visual-studio-to-164"></a>A Visual Studio frissítése a 16.4-re
 
-Frissítse a Visual Studio telepítését a 16,4-es vagy újabb verzióra. A frissítés során győződjön meg arról, hogy a Azure PowerShell összetevő nincs bejelölve. Mivel az az modult a katalóguson keresztül telepítette, nem szeretné újratelepíteni a AzureRM modult.
+Frissítse a Visual Studio telepítését a 16.4-es vagy újabb verzióra. A frissítés során győződjön meg arról, hogy az Azure PowerShell-összetevő nincs bejelölve. Mivel az Az modult a katalóguson keresztül telepítette, nem szeretné újratelepíteni az AzureRM-modult.
 
-Ha már frissített a 16,4-es verzióra, és a Azure PowerShell összetevő be lett jelölve, akkor a Visual Studio telepítő futtatásával távolíthatja el. Ne válassza ki a Azure PowerShell összetevőt az Azure munkaterhelés vagy az egyes összetevők lapon.
+Ha már frissített a 16.4-es szintre, és az Azure PowerShell-összetevő be lett jelölve, eltávolíthatja azt a Visual Studio Installer futtatásával. Ne válassza ki az Azure PowerShell-összetevőt az Azure-számítási feladatban vagy az egyes összetevők lapon.
 
-## <a name="update-the-deployment-script-in-your-project"></a>Az üzembe helyezési parancsfájl frissítése a projektben
+## <a name="update-the-deployment-script-in-your-project"></a>A központi telepítési parancsfájl frissítése a projektben
 
-Cserélje le a "AzureRm" karakterlánc összes előfordulását az üzembe helyezési parancsfájlban az "az" értékre. A módosítások megtekintéséhez tekintse meg [a jelen](https://gist.github.com/cweining/d2da2479418ea403499c4306dcf4f619) témakörben található változatokat. A parancsfájlok az az modulra történő frissítésével kapcsolatos további információkért lásd: [Azure PowerShell migrálása a AzureRM-ről az-](/powershell/azure/migrate-from-azurerm-to-az)ra.
+Cserélje le az "AzureRm" karakterlánc összes előfordulását az "Az" kifejezésre a központi telepítési parancsfájlban. A módosítások megtekintéséhez tekintse meg a módosításokat ebben a [lényegben.](https://gist.github.com/cweining/d2da2479418ea403499c4306dcf4f619) A parancsfájlok Az modulra való frissítéséről az [Azure PowerShell áttelepítése az AzureRM-ből az Az szolgáltatásba](/powershell/azure/migrate-from-azurerm-to-az)című témakörben talál további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Visual Studio-projekt használatával kapcsolatos további információkért lásd: [Azure erőforráscsoport-projektek létrehozása és üzembe helyezése a Visual Studióval](create-visual-studio-deployment-project.md).
+A Visual Studio-projekt használatáról az [Azure-erőforráscsoport-projektek létrehozása és üzembe helyezése a Visual Studio-n keresztül című](create-visual-studio-deployment-project.md)témakörben olvashat.

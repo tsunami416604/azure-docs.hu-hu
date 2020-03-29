@@ -1,6 +1,6 @@
 ---
-title: Diagnosztikai naplók megtekintése az Azure Data Lake Storage Gen1 |} A Microsoft Docs
-description: 'Megtudhatja, hogyan beállítása és az Azure Data Lake Storage Gen1 diagnosztikai naplók elérése '
+title: Az Azure Data Lake Storage Gen1 diagnosztikai naplóinak megtekintése | Microsoft dokumentumok
+description: 'Ismerje meg, hogyan állíthatók be és érhetnek el diagnosztikai naplókat az Azure Data Lake Storage Gen1 szolgáltatáshoz '
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,83 +13,83 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878716"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 diagnosztikai naplóinak elérése
-Ismerje meg, diagnosztikai naplózás az Azure Data Lake Storage Gen1 fiókját és a fiókja gyűjtött naplók megtekintése a engedélyezéséhez.
+Ismerje meg, hogyan engedélyezheti az Azure Data Lake Storage Gen1-fiókjához tartozó diagnosztikai naplózást, és hogyan tekintheti meg a fiókjához gyűjtött naplókat.
 
-Szervezetek számára engedélyezheti a diagnosztikai naplózás az Azure Data Lake Storage Gen1 fiókjuk gyűjthet adatokat a fájlhozzáférés napló ellenőrzését, hogy a felhasználók az adatokat, hogy milyen gyakran az adatokhoz, például a lista információkat nyújt a tárolt adatok mennyiségét a fiók stb. Ha engedélyezve van, a diagnosztikai és/vagy a kérések jelentkezett be egy képességeinkhez mérten biztosítjuk. Kérelmek és a diagnosztika naplóbejegyzések jönnek létre, csak akkor, ha nincsenek a szolgáltatásvégpont kérelmekre.
+A szervezetek engedélyezhetik az Azure Data Lake Storage Gen1 fiókdiagnosztikai naplózását, hogy adatokat gyűjtsenek a naplózási naplókból, amelyek olyan információkat szolgáltatnak, mint például az adatokhoz hozzáférő felhasználók listája, az adatok elérésének gyakori, a fiókban tárolt adatok száma stb. Ha engedélyezve van, a diagnosztika és/vagy a kérelmek a legjobb erőfeszítés alapján kerülnek naplózásra. Mind a kérelmek, mind a diagnosztikai naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás végpontja ellen kérelmek vannak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Az Azure Data Lake Storage Gen1 fiók**. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md).
+* **Azure Data Lake Storage Gen1 fiók.** Kövesse az [Azure Data Lake Storage Gen1 használatának első](data-lake-store-get-started-portal.md)lépéseit az Azure Portal használatával című útmutatóban.
 
-## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>A Data Lake Storage Gen1 fiók diagnosztikai naplózás engedélyezése
+## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Diagnosztikai naplózás engedélyezése a Data Lake Storage Gen1 fiókhoz
 1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
-2. Nyissa meg a Data Lake Storage Gen1 fiókját, és a Data Lake Storage Gen1 fiók panelen kattintson az **diagnosztikai beállítások**.
-3. Az a **diagnosztikai beállítások** panelen kattintson a **diagnosztika bekapcsolása**.
+2. Nyissa meg a Data Lake Storage Gen1 fiókját, és a Data Lake Storage Gen1 fiók panelen kattintson a **Diagnosztikai beállítások gombra.**
+3. A **Diagnosztika beállításai** panelen kattintson **a Diagnosztika bekapcsolása gombra.**
 
-    ![Diagnosztikai naplózás engedélyezése](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "diagnosztikai naplók engedélyezése")
+    ![Diagnosztikai naplózás engedélyezése](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Diagnosztikai naplók engedélyezése")
 
-3. Az a **diagnosztikai beállítások** panelen a következő módosításokat a diagnosztikai naplózás beállítása.
+3. A Diagnosztikai beállítások panelen **hajtsa** végre a következő módosításokat a diagnosztikai naplózás konfigurálásához.
    
-    ![Diagnosztikai naplózás engedélyezése](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "diagnosztikai naplók engedélyezése")
+    ![Diagnosztikai naplózás engedélyezése](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Diagnosztikai naplók engedélyezése")
    
-   * A **neve**, adjon meg egy értéket a diagnosztikai naplót a konfigurációhoz.
-   * Az adatok tárolási/folyamat különböző módon lehet váltani.
+   * A **Név mezőbe**írja be a diagnosztikai napló konfigurációjának értékét.
+   * Az adatokat különböző módokon tárolhatja/dolgozhatja fel.
      
-        * Válassza a **archiválás tárfiókba** egy Azure Storage-fiókot a naplók tárolásához. Ha az adatokat, amelyek lesznek a batch-feldolgozása egy későbbi időpontban archiválni szeretné ezt a beállítást használja. Ha ezt a beállítást meg kell adnia egy Azure Storage-fiók mentése a naplókat.
+        * Válassza ki a **lehetőséget, hogy archiválja a tárfiókban** a naplók tárolására egy Azure Storage-fiók. Ezt a beállítást akkor használja, ha archiválni szeretné a kötegelt feldolgozásra kerülő adatokat egy későbbi időpontban. Ha ezt a lehetőséget választja, meg kell adnia egy Azure Storage-fiókot a naplók mentéséhez.
         
-        * Válassza a **Stream egy eseményközpontba** a naplózási adatok streamelése az Azure-Eseményközpontba. Valószínűleg ez a beállítás fogja használni, ha rendelkezik egy alárendelt feldolgozási beérkező naplók valós időben elemezheti. Ha ezt a lehetőséget választja, meg kell adnia a részletek az Azure Event Hubs is használni szeretné a.
+        * Válassza ki azt a lehetőséget, **hogy streameljen egy eseményközpontba** a naplóadatok egy Azure Event Hubba való streameléséhez. Valószínűleg akkor fogja használni ezt a lehetőséget, ha rendelkezik egy alsóbb rétegbeli feldolgozási folyamattal a bejövő naplók valós időben történő elemzéséhez. Ha ezt a lehetőséget választja, meg kell adnia a használni kívánt Azure Event Hub adatait.
 
-        * Válassza a **Küldés a Log Analyticsnek** az Azure Monitor szolgáltatás használata a létrehozott naplóadatok elemzéséhez. Ezt a beállítást, ha meg kell adnia a részletek a Log Analytics-munkaterületen, melyeket használhat a végrehajtása elemzése. Lásd: [megtekintése az Azure Monitor naplók keresése gyűjtött adatok elemzéséhez, vagy](../azure-monitor/learn/tutorial-viewdata.md) részletei az Azure Monitor használatával naplózza.
+        * Válassza ki a **küldés a Log Analytics** szolgáltatásba lehetőséget az Azure Monitor szolgáltatás használatához a létrehozott naplóadatok elemzéséhez. Ha ezt a lehetőséget választja, meg kell adnia a Log Analytics munkaterület részleteit, amelyet a naplóelemzés végrehajtásával használna. Lásd: [Az Azure Monitor naplóival gyűjtött adatok megtekintése vagy elemzése az](../azure-monitor/learn/tutorial-viewdata.md) Azure Monitor-naplók használatával kapcsolatos részletekért.
      
-   * Adja meg, hogy szeretné-e a vizsgálati naplók kérelmekről készült naplók és/vagy beolvasása.
-   * Adja meg a napok, amelynek az adatokat meg kell őrizni. Adatmegőrzési csak akkor alkalmazható, ha a Teljesítménynapló-adatok archiválása az Azure storage-fiókot használ.
-   * Kattintson a **Save** (Mentés) gombra.
+   * Adja meg, hogy naplónaplókat, vagy kérésnaplókat szeretne-e kapni, vagy mindkettőt.
+   * Adja meg, hogy hány napig őrizze meg az adatokat. Adatmegőrzés csak akkor alkalmazható, ha az Azure storage-fiók segítségével archiválja a naplóadatokat.
+   * Kattintson a **Mentés** gombra.
 
-Miután engedélyezte a diagnosztikai beállítások, a naplókat is tekintse meg a **diagnosztikai naplók** fülre.
+Miután engedélyezte a diagnosztikai beállításokat, megtekintheti a naplókat a **Diagnosztikai naplók** lapon.
 
-## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>A Data Lake Storage Gen1 fiók diagnosztikai naplók megtekintése
-Kétféleképpen a naplóadatok a Data Lake Storage Gen1 fiók megtekintéséhez.
+## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>A Data Lake Storage Gen1 fiók diagnosztikai naplóinak megtekintése
+A Data Lake Storage Gen1 fiók naplóadatainak megtekintésére kétféleképpen tekintheti meg.
 
-* A Data Lake Storage Gen1 a Fiókbeállítások megtekintéséhez
-* Az adatokat tároló Azure Storage-fiók
+* A Data Lake Storage Gen1 fiókbeállításnézetből
+* Az Azure Storage-fiókból, ahol az adatok at tárolják
 
-### <a name="using-the-data-lake-storage-gen1-settings-view"></a>A Data Lake Storage Gen1 beállítások nézettel
-1. A Data Lake Storage Gen1 fiókból **beállítások** panelen kattintson a **diagnosztikai naplók**.
+### <a name="using-the-data-lake-storage-gen1-settings-view"></a>A Data Lake Storage Gen1 beállítások nézetének használata
+1. A Data Lake Storage Gen1 fiók **beállítások** paneljén kattintson **a Diagnosztikai naplók**elemre.
    
-    ![Diagnosztikai naplók megtekintése](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "diagnosztikai naplók megtekintése") 
-2. Az a **diagnosztikai naplók** panelen megjelenik a naplókban az alapján kategorizáljuk **Auditnaplók** és **kérelem naplók**.
+    ![Diagnosztikai naplók megtekintése](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Diagnosztikai naplók megtekintése") 
+2. A **Diagnosztikai naplók** panelen a **naplók** és a naplók kérések szerint kategorizált naplókat kell **látnia.**
    
-   * Kérelmekről készült naplók rögzítése a Data Lake Storage Gen1 fiók végrehajtott minden egyes API-kérelem.
-   * Auditnaplók hasonlóak kérelem naplók, de a Data Lake Storage Gen1 fiók végrehajtott műveletek sokkal részletes áttekintést nyújt. Ha például egy egyetlen feltöltéssel kérelmekről készült naplók az API-hívással több "Hozzáfűzés" műveletek naplóiban eredményezhet.
-3. A naplók letöltéséhez kattintson a **letöltése** hivatkozás minden naplóbejegyzés ellen.
+   * A kérelemnaplók rögzítik a Data Lake Storage Gen1 fiókon elvégzett összes API-kérelmet.
+   * A naplónaplók hasonlóak a naplók kérése, de a Data Lake Storage Gen1 fiókon végrehajtott műveletek sokkal részletesebb bontását biztosítják. Például egy feltöltési API-hívás kérelem naplók eredményezhet több "hozzáfűzése" műveletek a naplónaplókban.
+3. A naplók letöltéséhez kattintson a **Letöltés** hivatkozásra az egyes naplóbejegyzésekhez.
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Az Azure Storage-fiókból naplóadatokat tartalmazó
-1. Nyissa meg a naplózási Data Lake Storage Gen1 társított Azure Storage-fiók panelen, és kattintson a Blobok. A **Blob service** panel felsorolja a két tárolót.
+### <a name="from-the-azure-storage-account-that-contains-log-data"></a>A naplóadatokat tartalmazó Azure Storage-fiókból
+1. Nyissa meg az Azure Storage-fiók panel társított Data Lake Storage Gen1 naplózáshoz, és kattintson a Blobs. A **Blob szolgáltatás** panel két tárolót sorol fel.
    
-    ![Diagnosztikai naplózás nézet](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "diagnosztikai naplók megtekintése")
+    ![Diagnosztikai naplózás megtekintése](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Diagnosztikai naplók megtekintése")
    
-   * A tároló **insights-logs-naplózási** tartalmazza a naplófájlok.
-   * A tároló **insights-logs-kérelmek** tartalmazza a kérés naplókat.
-2. Ezek a tárolók belül a naplók az alábbi struktúrával alatt tárolja.
+   * A tároló **insights-logs-audit** tartalmazza a naplónaplókat.
+   * A tároló **insights-logs-kérelmek** tartalmazzák a kérelem naplók.
+2. Ezeken a tárolókon belül a naplók a következő struktúrában tárolódnak.
    
-    ![Diagnosztikai naplózás nézet](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "diagnosztikai naplók megtekintése")
+    ![Diagnosztikai naplózás megtekintése](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Diagnosztikai naplók megtekintése")
    
-    Tegyük fel az auditnapló teljes elérési útja lehet `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Például a napló teljes elérési útja`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Hasonlóképpen egy kérelem naplófájl teljes elérési útja lehet `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Hasonlóképpen, a kérelemnapló teljes elérési útja`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
-## <a name="understand-the-structure-of-the-log-data"></a>A naplóadatok szerkezete ismertetése
-A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban azt nézzük kérelem JSON szerkezetének és naplók.
+## <a name="understand-the-structure-of-the-log-data"></a>A naplóadatok szerkezetének megismerése
+A naplózási és kérésnaplók JSON formátumúak. Ebben a szakaszban a JSON struktúráját tekintjük meg a kérelmek és a naplózási naplók.
 
-### <a name="request-logs"></a>Kérelmekről készült naplók
-Íme egy minta-bejegyzést a JSON-formátumú kérelem naplóban. Minden egyes blob van egy gyökérobjektum nevű **rekordok** log objektumok egy tömbjét tartalmazza.
+### <a name="request-logs"></a>Naplók kérése
+Az alábbiakban egy mintabejegyzés található a JSON-formátumú kérelemnaplóban. Minden blob rendelkezik egy **gyökérobjektummal, amelyet rekordoknak** neveznek, és amely naplóobjektumok tömbjét tartalmazza.
 
     {
     "records": 
@@ -112,31 +112,31 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
       ]
     }
 
-#### <a name="request-log-schema"></a>Kérelem séma
-| Name (Név) | Típus | Leírás |
+#### <a name="request-log-schema"></a>Naplóséma kérése
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| time |String |A napló időbélyegzője (az UTC) |
-| resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
-| category |String |A naplózási kategóriát. Ha például **kérelmek**. |
-| operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
-| resultType |String |A művelet, például 200-as állapotát. |
-| callerIpAddress |String |Az ügyfél a kérés IP-címe |
-| correlationId |String |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
-| identity |Object |Az identitás által generált napló |
-| properties |JSON |Részletes információkat lejjebb talál |
+| time |Sztring |A napló időbélyegzője (UTC-ben) |
+| resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyen a művelet et |
+| category |Sztring |A naplókategória. Például **a Kérések**. |
+| operationName |Sztring |A naplózott művelet neve. Például getfilestatus. |
+| resultType |Sztring |A művelet állapota, például 200. |
+| callerIpAddress |Sztring |A kérést küldő ügyfél IP-címe |
+| correlationId |Sztring |A kapcsolódó naplóbejegyzések csoportjának csoportosítására használható napló azonosítója |
+| identity |Objektum |A naplót létrehozó identitás |
+| properties |JSON |Lásd alább a részleteket |
 
-#### <a name="request-log-properties-schema"></a>Kérelem tulajdonságai séma
-| Name (Név) | Típus | Leírás |
+#### <a name="request-log-properties-schema"></a>Naplótulajdonságainak kérése sémája
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| HttpMethod |String |A művelethez használt HTTP-metódust. Például KAPHAT. |
-| Útvonal |String |Az elérési utat a művelet végrehajtásának ideje |
-| RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
-| ClientRequestId |String |Az azonosítója, amely egyedileg azonosítja ezt a kérelmet |
-| StartTime |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
-| EndTime |String |Az idő, amikor a kiszolgáló által küldött választ |
+| HttpMódszer |Sztring |A művelethez használt HTTP-módszer. Például get. |
+| Útvonal |Sztring |Az az útvonal, amelyen a műveletet végrehajtották |
+| RequestContentLength (RequestContentLength) |int |A HTTP-kérelem tartalomhossza |
+| Ügyfélkéréseazonosító |Sztring |A kérést egyedileg azonosító azonosító |
+| StartTime |Sztring |Az az időpont, amikor a kiszolgáló megkapta a kérést |
+| EndTime |Sztring |Az az időpont, amikor a szerver választ küldött |
 
 ### <a name="audit-logs"></a>Naplók
-Íme egy minta-bejegyzést a JSON-formátumú naplóban. Minden egyes blob van egy gyökérobjektum nevű **rekordok** , amely tartalmazza a napló objektumokból álló tömb
+Az alábbiakban egy mintabejegyzés található a JSON-formátumú naplóban. Minden blobhoz tartozik egy rekord **nevű** gyökérobjektum, amely naplóobjektumok tömbjét tartalmazza
 
     {
     "records": 
@@ -160,25 +160,25 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
     }
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
-| Name (Név) | Típus | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| time |String |A napló időbélyegzője (az UTC) |
-| resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
-| category |String |A naplózási kategóriát. Ha például **naplózási**. |
-| operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
-| resultType |String |A művelet, például 200-as állapotát. |
-| resultSignature |String |További információt a műveletet. |
-| correlationId |String |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
-| identity |Object |Az identitás által generált napló |
-| properties |JSON |Részletes információkat lejjebb talál |
+| time |Sztring |A napló időbélyegzője (UTC-ben) |
+| resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyen a művelet et |
+| category |Sztring |A naplókategória. **Például: Audit**. |
+| operationName |Sztring |A naplózott művelet neve. Például getfilestatus. |
+| resultType |Sztring |A művelet állapota, például 200. |
+| resultSignature |Sztring |További részletek a műveletről. |
+| correlationId |Sztring |A kapcsolódó naplóbejegyzések csoportjának csoportosítására használható napló azonosítója |
+| identity |Objektum |A naplót létrehozó identitás |
+| properties |JSON |Lásd alább a részleteket |
 
-#### <a name="audit-log-properties-schema"></a>Naplózási tulajdonságok séma
-| Name (Név) | Típus | Leírás |
+#### <a name="audit-log-properties-schema"></a>Naplótulajdonságainak sémája
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| StreamName |String |Az elérési utat a művelet végrehajtásának ideje |
+| StreamName (Adatfolyamneve) |Sztring |Az az útvonal, amelyen a műveletet végrehajtották |
 
-## <a name="samples-to-process-the-log-data"></a>A minták a naplózási adatok feldolgozása
-Amikor az Azure Data Lake Storage Gen1 naplókat küld az Azure Monitor naplóira (lásd: [nézet vagy az Azure Monitor naplók keresése gyűjtött adatok elemzése](../azure-monitor/learn/tutorial-viewdata.md) az Azure Monitor segítségével részletes naplók), a következő lekérdezést tartalmazó táblát adja vissza egy felhasználók listája megjelenített neveket, az idő az eseményeket, és az események száma egy vizuális diagramban együtt az esemény alkalommal. Könnyedén módosítható megjelenítéséhez a felhasználó GUID-azonosítója vagy más jellemzők:
+## <a name="samples-to-process-the-log-data"></a>Minták a naplóadatok feldolgozásához
+Amikor naplókat küld az Azure Data Lake Storage Gen1-től az Azure Monitor-naplókba (lásd: [Az Azure Monitor naplóival gyűjtött adatok megtekintése vagy elemzése](../azure-monitor/learn/tutorial-viewdata.md) az Azure Monitor naplóinak részleteire vonatkozóan), a következő lekérdezés egy olyan táblázatot ad vissza, amely tartalmazza a felhasználói megjelenítendő nevek listáját, az események idejét és az események számát az esemény időpontjában egy vizuális diagrammal együtt. Könnyen módosítható a felhasználói guid vagy más attribútumok megjelenítéséhez:
 
 ```
 search *
@@ -187,9 +187,9 @@ search *
 ```
 
 
-Az Azure Data Lake Storage Gen1 nyújt egy minta a naplózási adatok feldolgozásához és elemzéséhez. Találja, a minta [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+Az Azure Data Lake Storage Gen1 mintaként szolgál a naplóadatok feldolgozásához és elemzéséhez. A mintát a. [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+* [Az Azure Data Lake storage gen1 áttekintése](data-lake-store-overview.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 

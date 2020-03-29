@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Health AD FS kockázatos IP-jelentéssel | Microsoft Docs
-description: Ismerteti a Azure AD Connect Health AD FS kockázatos IP-jelentést.
+title: Azure AD Connect Health és AD FS kockázatos IP-jelentés | Microsoft dokumentumok
+description: Ismerteti az Azure AD Connect health AD FS kockázatos IP-jelentés.
 services: active-directory
 documentationcenter: ''
 ms.reviewer: zhiweiwangmsft
@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897258"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
@@ -38,14 +38,14 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 > Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges.  
 > 
 
-## <a name="what-is-in-the-report"></a>Mi a jelentés?
-A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
+## <a name="what-is-in-the-report"></a>Mi van a jelentésben?
+A sikertelen bejelentkezési tevékenységügyfél IP-címeit a webalkalmazás-proxykiszolgálók összesítik. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
 
 | Jelentéselem | Leírás |
 | ------- | ----------- |
 | Időbélyegző | Az észlelési időszak kezdetét jelző, az Azure Portal helyi ideje szerinti időbélyegző.<br /> Az összes napi eseményt UTC szerint éjfélkor állítja elő a rendszer. <br />Az óránkénti eseményeknél az időbélyeg az óra kezdetére van kerekítve. Az exportált fájlban a „firstAuditTimestamp” érték mutatja az első tevékenység kezdetét. |
 | Eseményindító típusa | Az észlelési időszak típusa. Az összesítési eseményindítók óránkénti és a napi típusúak lehetnek. Ez hasznos lehet a nagy gyakoriságú találgatásos támadások észlelésére a lassú támadásokkal szemben, ahol a kísérletek eloszlanak egy adott napon belül. |
-| IP-cím | Olyan kockázatos IP-cím, amelyről helytelen jelszót adtak meg, vagy amelyen extranet zárolást eredményező bejelentkezési tevékenység volt tapasztalható. Ez lehet IPv4 vagy IPv6-cím. |
+| IP-cím | Olyan kockázatos IP-cím, amelyről helytelen jelszót adtak meg, vagy amelyen extranet zárolást eredményező bejelentkezési tevékenység volt tapasztalható. Ez lehet IPv4-cím vagy IPv6-cím. |
 | Helytelen jelszó típusú hibák száma | Az IP-címről előforduló helytelen jelszó típusú hibák száma az észlelési időszakban. A helytelen jelszó típusú hiba többször is előfordulhat az egyes felhasználók esetében. Fontos: a lejárt jelszó miatti sikertelen bejelentkezések nem tartoznak ide. |
 | Extranet zárolási hibák száma | Az IP-címről előforduló extranet zárolási hibák száma az észlelési időszakban. Extranet zárolási hibák többször is előfordulhatnak az egyes felhasználók esetében. Ez csak akkor jelenik meg, ha az AD FS-ben konfigurálta az extranet zárolást (a 2012 R2-es és újabb verziókban). <b>Megjegyzés:</b> Ha a jelszóalapú extranet bejelentkezés engedélyezve van, erősen ajánlott bekapcsolni ezt a funkciót. |
 | Megkísérelt egyedi felhasználók | Azon egyedi felhasználói fiókok száma, amelyekbe megkíséreltek bejelentkezni az IP-címről az észlelési időszakban. Ez segíthet megkülönböztetni az egy és a több felhasználó elleni támadásokat.  |
@@ -97,25 +97,25 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 >
 >
 
-## <a name="faq"></a>Gyakori kérdések
-**Miért látok privát IP-címtartományt a jelentésben?**  <br />
+## <a name="faq"></a>GYIK
+**Miért jelennek meg magánhálózati IP-címtartományok a jelentésben?**  <br />
 A magánhálózati IP-címek (<i>10.x.x.x, 172.x.x.x és 192.168.x.x</i>) és az Exchange-IP-címek szűrve vannak, és True értékűként vannak megjelölve az IP-címek engedélyezési listáján. Ha magánhálózati IP-tartományok jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának.
 
-**Miért jelenik meg a terheléselosztó IP-címei a jelentésben?**  <br />
+**Miért jelennek meg terheléselosztói IP-címek a jelentésben?**  <br />
 Ha terheléselosztói IP-címek jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának. Konfigurálja megfelelően a terheléselosztót a továbbított ügyfél IP-címének továbbítására. 
 
-**Mi a teendő az IP-cím blokkolásához?**  <br />
+**Hogyan blokkolhatok IP-címeket?**  <br />
 Az azonosított kártevő IP-címeket érdemes hozzáadni a tűzfalhoz vagy blokkolni az Exchange-ben.   <br />
 
-**Miért nem látok semmilyen elemet ebben a jelentésben?** <br />
+**Miért nem jelenik meg egyetlen elem sem a jelentésben?** <br />
 - A sikertelen bejelentkezési tevékenységek nem érték el a beállított küszöbértéket.
 - Ellenőrizze, hogy nincsen-e aktív „Az állapotszolgáltatás nem naprakész” figyelmeztetés az AD FS-kiszolgálók listáján.  Itt további információkat olvashat [a figyelmeztetés hibaelhárításáról](how-to-connect-health-data-freshness.md).
 - Az AD FS-farmokon nincs engedélyezve a naplózás.
 
-**Miért nem látok hozzáférést a jelentéshez?**  <br />
+**Miért nem látható hozzáférés a jelentéshez?**  <br />
 Globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges. Hozzáférésért forduljon a globális rendszergazdához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)

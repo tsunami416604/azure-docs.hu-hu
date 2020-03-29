@@ -1,6 +1,6 @@
 ---
-title: Létező átalakítás a leképezési adatfolyamban
-description: Meglévő sorok ellenőrzése a létező átalakítással Azure Data Factory leképezési adatfolyamban
+title: Létezik transzformáció az adatfolyam leképezésében
+description: Meglévő sorok ellenőrzése az Azure Data Factory leképezési adatfolyamában az létező transzformáció használatával
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930407"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>Létező átalakítás a leképezési adatfolyamban
+# <a name="exists-transformation-in-mapping-data-flow"></a>Létezik transzformáció az adatfolyam leképezésében
 
-A létező transzformáció egy sor-szűrési átalakítás, amely ellenőrzi, hogy az adatai más forrásban vagy adatfolyamban léteznek-e. A kimeneti adatfolyam tartalmazza a bal oldali stream összes olyan sorát, amely vagy létezik, vagy nem létezik a megfelelő streamben. A létező átalakítás a ```SQL WHERE EXISTS``` és a ```SQL WHERE NOT EXISTS```hoz hasonló.
+A létezik transzformáció egy sorszűrési transzformáció, amely ellenőrzi, hogy az adatok léteznek-e más forrásban vagy adatfolyamban. A kimeneti adatfolyam tartalmazza a bal oldali adatfolyam minden olyan sorát, amely létezik, vagy nem létezik a jobb oldali adatfolyamban. A létezik transzformáció ```SQL WHERE NOT EXISTS```hasonló a hoz és ahoz. ```SQL WHERE EXISTS```
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Válassza ki, hogy melyik adatfolyamot kívánja megkeresni a **megfelelő stream** legördülő menüben.
-1. Adja meg, hogy szeretné-e, ha a létező vagy nem létező **adattípust** szeretné használni.
-1. Válassza ki, hogy szeretne-e **Egyéni kifejezést**használni.
-1. Válassza ki, hogy mely fő oszlopokat kívánja összehasonlítani a meglévő feltételekkel. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Számított érték alapján történő összehasonlításhoz vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop**lehetőséget.
+1. Válassza ki, hogy melyik adatfolyamot ellenőrzi a **jobb oldali adatfolyam** legördülő menüben.
+1. Adja meg, hogy az adatok létezéséhez kell-e hozzájuk, vagy sem a **Létezés típus** beállításban.
+1. Válassza ki, hogy szeretne-e **egyéni kifejezést.**
+1. Válassza ki, hogy mely kulcsoszlopokat szeretné összehasonlítani a fennálló feltételekkel. Alapértelmezés szerint az adatfolyam az egyes adatfolyamok egy oszlopa közötti egyenlőséget keresi. Ha számított értéken keresztül szeretne összehasonlítani, mutasson az oszlop legördülő menüre, és válassza a **Számított oszlop lehetőséget.**
 
 ![Létező beállítások](media/data-flow/exists.png "létezik 1")
 
-### <a name="multiple-exists-conditions"></a>Több meglévő feltétel
+### <a name="multiple-exists-conditions"></a>Több létezik feltétel
 
-Ha több oszlopot szeretne összehasonlítani az egyes adatfolyamokból, adjon hozzá egy új létező feltételt egy meglévő sor melletti plusz ikonra kattintva. Minden további feltétel egy "és" utasítással csatlakozik. A két oszlop összehasonlítása megegyezik a következő kifejezéssel:
+Ha minden adatfolyamból több oszlopot szeretne összehasonlítani, adjon hozzá egy új létezési feltételt a meglévő sor melletti plusz ikonra kattintva. Minden további feltételhez egy "és" utasítás kapcsolódik. Két oszlop összehasonlítása megegyezik a következő kifejezéssel:
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>Egyéni kifejezés
 
-Ha olyan szabad formátumú kifejezést szeretne létrehozni, amely a "és a" és az "egyenlő" operátort is tartalmazza, válassza az **egyéni kifejezés** mezőt. Adjon meg egy egyéni kifejezést az adatfolyam-kifejezés-szerkesztőn keresztül a kék mezőre kattintva.
+Ha olyan szabadkézi kifejezést szeretne létrehozni, amely nem "és" és "egyenlő" operátorokat tartalmaz, jelölje be az **Egyéni kifejezés** mezőt. A kék mezőre kattintva írjon be egy egyéni kifejezést az adatfolyam-kifejezés szerkesztőjén keresztül.
 
-![Meglévő egyéni beállítások](media/data-flow/exists1.png "létezik egyéni")
+![Létezik egyéni beállítások](media/data-flow/exists1.png "létezik egyéni")
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -55,13 +55,13 @@ Ha olyan szabad formátumú kifejezést szeretne létrehozni, amely a "és a" é
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `checkForChanges` nevű átalakítás, amely a stream `NameNorm2` és a jobb oldali stream-`TypeConversions`t veszi át.  A létező feltétel a `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` kifejezés, amely igaz értéket ad vissza, ha az egyes streamek `EMPID` és `Region` oszlopa is megegyezik. A létezés ellenőrzésekor `negate` hamis. Az optimalizálás lapon nincs engedélyezve a szórás, így `broadcast` érték `'none'`.
+Az alábbi példa egy `checkForChanges` létező átalakítás, `NameNorm2` amely `TypeConversions`bal és jobb streamet vesz igénybe.  A létezési `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` feltétel az a `EMPID` kifejezés, amely igaz értéket ad vissza, ha az egyes adatfolyamok `Region` oszlopai egyeznek. Ahogy a létezést `negate` ellenőrizzük, az hamis. Nem engedélyezzük a műsorszórást az Optimalizálás `broadcast` lapon, `'none'`így van értéke.
 
-Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
+A Data Factory UX-ben ez az átalakítás az alábbi képre hasonlít:
 
 ![Létezik példa](media/data-flow/exists-script.png "Létezik példa")
 
-Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
+Az átalakítás adatfolyam-parancsfájlja az alábbi kódrészletben található:
 
 ```
 NameNorm2, TypeConversions
@@ -72,6 +72,6 @@ NameNorm2, TypeConversions
     ) ~> checkForChanges
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Hasonló átalakítások [Keresés](data-flow-lookup.md) és [Csatlakozás](data-flow-join.md).
+Hasonló átalakítások a [Keresés](data-flow-lookup.md) és [a Csatlakozás](data-flow-join.md).

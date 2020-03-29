@@ -1,6 +1,6 @@
 ---
-title: Telepítse át az Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark
-description: A Apache Storm számítási feladatok áttelepítésének különbségei és áttelepítése a Spark streaming vagy a Spark strukturált streaming számára.
+title: Az Azure HDInsight 3.6 Apache Storm áttelepítése a HDInsight 4.0 Apache Sparkra
+description: A különbségek és a migrációs folyamat áttelepítése Apache Storm számítási feladatok Spark Streaming vagy Spark strukturált streamelés.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,148 +8,148 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.openlocfilehash: 916c54c3739d1164e4e9c1db67aa1f4e0dbd0c6c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157791"
 ---
-# <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Telepítse át az Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark
+# <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Az Azure HDInsight 3.6 Apache Storm áttelepítése a HDInsight 4.0 Apache Sparkra
 
-Ez a dokumentum ismerteti, hogyan telepítheti át Apache Storm munkaterheléseket a 3,6-es HDInsight a HDInsight 4,0-es verzióra. A HDInsight 4,0 nem támogatja a Apache Storm-fürt típusát, és át kell térnie egy másik adatfolyam-adatplatformra. Két megfelelő lehetőség Apache Spark streaming és a Spark strukturált streaming. Ez a dokumentum ismerteti a platformok közötti különbségeket, és a munkafolyamatokat is javasolja Apache Storm számítási feladatok áttelepítéséhez.
+Ez a dokumentum bemutatja, hogyan telepítheti át az Apache Storm-számítási feladatokat a HDInsight 3.6-on a HDInsight 4.0-ra. A HDInsight 4.0 nem támogatja az Apache Storm fürttípusát, és át kell telepítenie egy másik streamelési adatplatformra. Két megfelelő lehetőség az Apache Spark Streaming és a Spark structured streaming. Ez a dokumentum ismerteti a különbségeket ezek a platformok között, és azt is javasolja, hogy az Apache Storm-számítási feladatok áttelepítése munkafolyamatot.
 
-## <a name="storm-migration-paths-in-hdinsight"></a>Storm áttelepítési útvonalak a HDInsight-ben
+## <a name="storm-migration-paths-in-hdinsight"></a>Viharáttelepítési útvonalak a HDInsightban
 
-Ha a 3,6-es HDInsight-ről szeretne áttérni Apache Storm, több lehetőség közül választhat:
+Ha az Apache Stormból szeretne áttérni a HDInsight 3.6-on, több lehetősége is van:
 
-* Spark streaming on HDInsight 4,0
-* Spark strukturált streaming on HDInsight 4,0
+* Spark streaming a HDInsight 4.0-s
+* Spark strukturált streamelése a HDInsight 4.0-s
 * Azure Stream Analytics
 
-Ez a dokumentum útmutatást nyújt a Apache Storm a Spark streaming és a Spark strukturált streaming rendszerbe való áttelepítéséhez.
+Ez a dokumentum útmutatót biztosít az Apache Stormról a Spark Streaming és a Spark strukturált streamelése között való áttelepítéshez.
 
 > [!div class="mx-imgBorder"]
-> ![HDInsight Storm áttelepítési útvonala](./media/migrate-storm-to-spark/storm-migration-path.png)
+> ![HDInsight Storm áttelepítési útvonal](./media/migrate-storm-to-spark/storm-migration-path.png)
 
-## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Összehasonlítás a Apache Storm és a Spark streaming, a Spark strukturált streaming között
+## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Az Apache Storm és a Spark Streaming, a Spark strukturált streamelésének összehasonlítása
 
-Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Egy alapszintű Storm-alkalmazás például garantálhatja a legalább egyszeri feldolgozást, a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) pedig pontosan egyszeri feldolgozást tud biztosítani. A Spark streaming és a Spark strukturált streaming garantálja, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha a csomópont meghibásodik. A Storm olyan modellt használ, amely minden egyes eseményt feldolgoz, és a Micro batch-modellt a Trident használatával is használhatja. A Spark streaming és a Spark strukturált streaming biztosítja a mikro-batch feldolgozási modellt.
+Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Például egy egyszerű Storm-alkalmazás garantálja legalább egyszer feldolgozás, és [a Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) tudja garantálni, hogy pontosan egyszer feldolgozása. A Spark Streaming és a Spark strukturált streamelése garantálja, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha csomóponthiba történik. A Storm rendelkezik egy modellel, amely minden egyes eseményt feldolgoz, és használhatja a Micro Batch modellt a Tridenttel is. A Spark Streaming és a Spark strukturált streamelése mikro-kötegelt feldolgozási modellt biztosít.
 
-|  |A Storm |Spark-streamelés | Spark strukturált streaming|
+|  |Storm |Spark-streamelés | Spark strukturált streamelés|
 |---|---|---|---|
-|**Esemény-feldolgozási garancia**|Legalább egyszer <br> Pontosan egyszer (Trident) |[Pontosan egyszer](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Pontosan egyszer](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
-|**Feldolgozási modell**|Valós idejű <br> Micro batch (Trident) |Micro batch |Micro batch |
-|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|Nem|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
-|**Nyelvek**|Java stb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
+|**Eseményfeldolgozási garancia**|Legalább egyszer <br> Pontosan egyszer (Trident) |[Pontosan egyszer](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Pontosan egyszer](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Feldolgozási modell**|Valós idejű <br> Mikro köteg (szigony) |Mikro tétel |Mikro tétel |
+|**Eseményidő-támogatás**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|Nem|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Nyelvek**|Java, stb.|Scala, Jáva, Python|Python, R, Scala, Java, SQL|
 
-### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark streaming vs Spark strukturált streaming
+### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark streaming vs Spark strukturált streamelés
 
-A Spark strukturált streaming a Spark streaminget (DStreams) váltja fel. A strukturált streaming továbbra is a fejlesztéseket és a karbantartást fogja kapni, a DStreams pedig csak karbantartási módban lesznek elérhetők. **Megjegyzés: a pont kiemeléséhez hivatkozásokra van szükség**. A strukturált adatfolyamok nem rendelkeznek annyi funkcióval, mint a DStreams az általa támogatott források és nyelők számára, ezért a követelmények kiértékelésével kiválaszthatja a megfelelő Spark stream-feldolgozási lehetőséget.
+A Spark strukturált streamelése felváltja a Spark Streaming (DStreams) szolgáltatást. A strukturált streamelés továbbra is megkapja a fejlesztéseket és a karbantartást, míg a DStreams csak karbantartási módban lesz. **Megjegyzés: kell linkeket hangsúlyozni ezt a pontot**. Strukturált streamelési nem rendelkezik annyi funkcióval, mint a DStreams a források és a fogadók, hogy támogatja a dobozból, ezért értékelje ki a követelmények kiválasztásához a megfelelő Spark stream feldolgozási beállítást.
 
-## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streaming (Single Event) Processing vs Micro-batch feldolgozás
+## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streamelés (egyeseményes) feldolgozás és mikroköteges feldolgozás
 
-A Storm olyan modellt biztosít, amely minden egyes eseményt feldolgoz. Ez azt jelenti, hogy a rendszer minden bejövő rekordot feldolgoz, amint megérkeznek. A Spark streaming-alkalmazásoknak meg kell várniuk egy második töredékét az egyes mikro-köteg események összegyűjtéséhez, mielőtt elküldené a köteget a feldolgozásra. Ezzel szemben az eseményvezérelt alkalmazások azonnal feldolgozzák az egyes eseményeket. A Spark streaming késése általában néhány másodperc alatt van. A mikro-batch megközelítés előnyei hatékonyabb adatfeldolgozást és egyszerűbb összesített számításokat tesznek elérhetővé.
+A Storm olyan modellt biztosít, amely minden egyes eseményt feldolgoz. Ez azt jelenti, hogy az összes bejövő rekordot a mint megérkeznek, a mint megérkeznek, a mint megérkeznek, a mint azok megérkeznek. Spark Streaming alkalmazások nak meg kell várnia a másodperc tört részét, hogy összegyűjtse az egyes mikro-köteg események, mielőtt elküldi a kötegfeldolgozásra. Ezzel szemben egy eseményvezérelt alkalmazás minden eseményt azonnal feldolgoz. Spark Streamelés késés általában néhány másodperc alatt. A mikroköteg-megközelítés előnyei a hatékonyabb adatfeldolgozás és az egyszerűbb aggregált számítások.
 
 > [!div class="mx-imgBorder"]
-> ![streaming és mikro-batch feldolgozás](./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png)
+> ![streamelés és mikrokötegű feldolgozás](./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png)
 
-## <a name="storm-architecture-and-components"></a>Storm-architektúra és-összetevők
+## <a name="storm-architecture-and-components"></a>Vihararchitektúra és -összetevők
 
 A Storm-topológiák több összetevőből állnak, amelyek egy irányított aciklikus gráfba (DAG) vannak rendezve. Az adatáramlás a gráf összetevői között zajlik. Minden összetevőbe egy vagy több stream érkezik be, valamint egy vagy több streamet sugároz.
 
-|Component (Összetevő) |Leírás |
+|Összetevő |Leírás |
 |---|---|
-|Spout|Az adathalmazt egy topológiába hozza. Egy vagy több streamet sugároznak a topológiába.|
-|Bolt|A kiöntő vagy más boltokból kibocsátott adatfolyamokat használja fel. A boltok opcionálisan streameket is sugározhatnak a topológiába. A boltok felelősek az adatok külső szolgáltatásokba vagy tárolókba, például HDFS-, Kafka- vagy HBase-tárolókba történő kiírásáért.|
+|Kifolyó|Adatok at hoz egy topológiába. Egy vagy több streamet sugároznak a topológiába.|
+|Csavar|A spoutokból vagy más csavarokból kibocsátott adatfolyamokat használja fel. A boltok opcionálisan streameket is sugározhatnak a topológiába. A boltok felelősek az adatok külső szolgáltatásokba vagy tárolókba, például HDFS-, Kafka- vagy HBase-tárolókba történő kiírásáért.|
 
 > [!div class="mx-imgBorder"]
-> ![Storm-összetevők interakciója](./media/migrate-storm-to-spark/apache-storm-components.png)
+> ![a viharkomponensek kölcsönhatása](./media/migrate-storm-to-spark/apache-storm-components.png)
 
-A Storm a következő három démonból áll, amelyek megőrzik a Storm-fürt működését.
+A Storm a következő három démonból áll, amelyek a Storm-fürt működését tartják.
 
-|Démon |Leírás |
+|Daemon |Leírás |
 |---|---|
-|Nimbus|A Hadoop JobTracker hasonlóan a kód a fürt körének terjesztése, valamint a feladatok gépekhez és a hibák figyeléséhez való hozzárendelésének feladata.|
-|Zookeeper|A fürt koordinálásához használatos.|
-|Felügyeleti|Figyeli a géphez rendelt munkát, és elindítja és leállítja a munkavégző folyamatokat a Nimbus irányelvek alapján. Minden munkavégző folyamat végrehajtja a topológia egy részhalmazát. A felhasználó alkalmazás-logikája (kiöntő és bolt) itt fut.|
+|Nimbus|A Hadoop JobTracker-hez hasonlóan a fürt körül a kód terjesztése, valamint a feladatok gépekhez való hozzárendelése és a hibák figyelése felelős.|
+|Zookeeper|Fürtkoordinációra szolgál.|
+|Felügyelő|Figyeli a gépéhez rendelt munkát, és elindítja és leállítja a munkavégző folyamatokat a Nimbus irányelvei alapján. Minden munkavégző folyamat egy topológia egy részhalmazát hajtja végre. A felhasználó alkalmazáslogikája (spouts és bolt) itt fut.|
 
 > [!div class="mx-imgBorder"]
-> ![Nimbus, a Zookeeper és a felügyelő démonok](./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png)
+> ![nimbus, zookeeper és supervisor démonok](./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png)
 
-## <a name="spark-streaming-architecture-and-components"></a>Spark streaming-architektúra és-összetevők
+## <a name="spark-streaming-architecture-and-components"></a>Spark Streaming architektúra és összetevők
 
-A következő lépések összefoglalják, hogyan működnek együtt az összetevők a Spark Streamingben (DStreams) és a Spark strukturált Streamingben:
+A következő lépések összefoglalják, hogyan működnek együtt az összetevők a Spark Streamelésben (DStream) és a Spark strukturált streamelésében:
 
-* A Spark streaming indításakor az illesztőprogram elindítja a feladatot a végrehajtóban.
-* A végrehajtó adatfolyamot kap egy adatfolyam-adatforrásból.
-* Amikor a végrehajtó megkapja az adatfolyamokat, a leosztja a streamet a blokkokba, és megtartja őket a memóriában.
-* Az adatblokkokat más végrehajtóknak kell replikálni.
-* A rendszer ezután a feldolgozott adattárolóban tárolja a feldolgozott adattárakat.
-
-> [!div class="mx-imgBorder"]
-> ![Spark streaming elérési útja a kimenet](./media/migrate-storm-to-spark/spark-streaming-to-output.png)
-
-## <a name="spark-streaming-dstream-workflow"></a>Spark streaming-(DStream-) munkafolyamat
-
-Mivel minden egyes batch-intervallum eltelik, egy új RDD állít elő, amely az adott intervallum összes adatait tartalmazza. A RDD folyamatos készleteit egy DStream gyűjti. Ha például a Batch-intervallum egy másodperces, a DStream egy olyan köteget bocsát ki másodpercenként, amely egy RDD tartalmaz, amely tartalmazza az adott másodpercben betöltött összes adatot. A DStream feldolgozásakor a hőmérsékleti esemény a következő kötegek egyikében jelenik meg. A Spark streaming-alkalmazás dolgozza fel az eseményeket tartalmazó kötegeket, és végül az egyes RDD tárolt adategységeket is végrehajtja.
+* Spark Streaming indításakor az illesztőprogram elindítja a feladatot a végrehajtó.
+* A végrehajtó adatfolyamot fogad egy adatfolyam-adatforrásból.
+* Amikor a végrehajtó adatfolyamokat fogad, az adatfolyamot blokkokra osztja, és a memóriában tartja őket.
+* Az adatblokkok replikálódnak más végrehajtókra.
+* A feldolgozott adatok ezután a céladattárban tárolódnak.
 
 > [!div class="mx-imgBorder"]
-> ![Spark streaming-feldolgozási kötegek](./media/migrate-storm-to-spark/spark-streaming-batches.png)
+> ![szikra-streamelési útvonal a kimenethez](./media/migrate-storm-to-spark/spark-streaming-to-output.png)
 
-A Spark Streamingtel elérhető különböző átalakításokkal kapcsolatos részletekért lásd: [átalakítások a DStreams-on](https://spark.apache.org/docs/latest/streaming-programming-guide.html#transformations-on-dstreams).
+## <a name="spark-streaming-dstream-workflow"></a>Spark Streaming (DStream) munkafolyamat
 
-## <a name="spark-structured-streaming"></a>Spark strukturált streaming
-
-A Spark strukturált streaming az adatstreamet olyan táblaként jelöli, amely nincs mélységben kötve. A tábla folyamatosan növekszik, ahogy az új adatmennyiség érkezik. Ezt a bemeneti táblázatot egy hosszan futó lekérdezés folyamatosan dolgozza fel, és az eredményeket egy kimeneti táblába küldi a rendszer.
-
-A strukturált adatfolyamban az adatok beérkeznek a rendszerbe, és azonnal bekerülnek egy bemeneti táblába. Olyan lekérdezéseket írhat (a DataFrame és az adatkészlet API-k használatával), amelyek a bemeneti táblán műveleteket hajtanak végre.
-
-A lekérdezés kimenete egy *Result (eredmény) táblázatot*eredményez, amely a lekérdezés eredményét tartalmazza. A külső adattár, például a kapcsolódó adatbázis eredményeinek táblázatában is megrajzolhat egy adatforrást.
-
-Az adatok bemeneti táblából való feldolgozásának időzítését az aktiválási intervallum vezérli. Alapértelmezés szerint az trigger intervalluma nulla, így a strukturált adatfolyam a megérkezése után azonnal feldolgozza az adatfeldolgozást. A gyakorlatban ez azt jelenti, hogy amint a strukturált adatfolyam feldolgozása befejeződött az előző lekérdezés futtatásával, egy másik feldolgozást indít el az újonnan fogadott összes adattal. Az indítást beállíthatja úgy, hogy intervallumban fusson, hogy a folyamatos átviteli adatkötegek feldolgozása időalapú kötegekben történjen.
+Ahogy minden kötegelt intervallum eltelik, egy új RDD jön létre, amely az adott intervallum összes adatát tartalmazza. A rdd-k folyamatos készleteit a program egy DStream-be gyűjti. Ha például a kötegidőköz egy másodperc hosszú, a DStream minden másodpercben egy olyan RDD-t tartalmazó köteget bocsát ki, amely az adott másodperc alatt bevitt összes adatot tartalmazza. A DStream feldolgozásakor a hőmérsékleti esemény megjelenik az egyik ilyen kötegben. A Spark Streaming alkalmazás feldolgozza az eseményeket tartalmazó kötegeket, és végső soron az egyes RDD-kben tárolt adatokra hat.
 
 > [!div class="mx-imgBorder"]
-> az adatfeldolgozás ![strukturált adatfolyamban](./media/migrate-storm-to-spark/structured-streaming-data-processing.png)
+> ![szikrafolyamatos feldolgozási kötegek](./media/migrate-storm-to-spark/spark-streaming-batches.png)
+
+A Spark Streaming szolgáltatással elérhető különböző átalakításokról a [DStreamek átalakításai](https://spark.apache.org/docs/latest/streaming-programming-guide.html#transformations-on-dstreams)című témakörben talál.
+
+## <a name="spark-structured-streaming"></a>Szikra strukturált streamelés
+
+A Spark strukturált adatfolyama egy adatfolyamot jelent, amely részletesen nincs korlátozás nélkül. A tábla az új adatok megérkezésével folyamatosan növekszik. Ezt a bemeneti táblát egy hosszú ideig futó lekérdezés folyamatosan feldolgozza, és az eredményeket egy kimeneti táblába küldi.
+
+Strukturált streamelési, adatok érkeznek a rendszerbe, és azonnal egy bemeneti táblába. Olyan lekérdezéseket írhat (a DataFrame és az Adatkészlet API-k használatával), amelyek műveleteket hajtanak végre ezen a bemeneti táblán.
+
+A lekérdezés kimenete *eredménytáblát*eredményez, amely a lekérdezés eredményeit tartalmazza. Az eredmények táblájából adatokat rajzolhat egy külső adattárhoz, egy ilyen relációs adatbázishoz.
+
+A bemeneti táblából történő adatfeldolgozás időzítését az eseményindító-időköz szabályozza. Alapértelmezés szerint az eseményindító-időköz nulla, így a strukturált streamelés megpróbálja feldolgozni az adatokat, amint megérkezik. A gyakorlatban ez azt jelenti, hogy amint strukturált streamelés befejeződött az előző lekérdezés futtatásának feldolgozása, elindítja egy másik feldolgozási futtatás ellen az újonnan fogadott adatok. Beállíthatja, hogy az eseményindító időközönként fusson, így a streamelési adatok időalapú kötegekben lesznek feldolgozva.
 
 > [!div class="mx-imgBorder"]
-> ![programozási modell strukturált adatfolyam-](./media/migrate-storm-to-spark/structured-streaming-model.png)
+> ![adatok feldolgozása strukturált adatfolyamban](./media/migrate-storm-to-spark/structured-streaming-data-processing.png)
+
+> [!div class="mx-imgBorder"]
+> ![programozási modell strukturált streameléshez](./media/migrate-storm-to-spark/structured-streaming-model.png)
 
 ## <a name="general-migration-flow"></a>Általános áttelepítési folyamat
 
-A Storm-ről Spark-ra történő ajánlott áttelepítési folyamat a következő kezdeti architektúrát feltételezi:
+A Stormból a Sparkba javasolt áttelepítési folyamat a következő kezdeti architektúrát feltételezi:
 
-* A Kafka továbbítási adatforrásként szolgál
-* A Kafka és a Storm ugyanazon a virtuális hálózaton van üzembe helyezve
-* A Storm által feldolgozott adattárolók (például az Azure Storage vagy a Azure Data Lake Storage Gen2) egy adatfogadóba íródnak.
-
-    > [!div class="mx-imgBorder"]
-    > a feltételezett aktuális környezet ![ábrája](./media/migrate-storm-to-spark/presumed-current-environment.png)
-
-Ha az alkalmazást a Storm-ből az egyik Spark streaming API-ra szeretné áttelepíteni, tegye a következőket:
-
-1. **Helyezzen üzembe egy új fürtöt.** Helyezzen üzembe egy új HDInsight 4,0 Spark-fürtöt ugyanabban a virtuális hálózatban, és végezze el a Spark streaming vagy a Spark strukturált streaming-alkalmazás üzembe helyezését, és tesztelje alaposan.
+* A Kafka adatfolyam-adatforrásként
+* A Kafka és a Storm ugyanazon a virtuális hálózaton van telepítve
+* A Storm által feldolgozott adatok egy adatgyűjtőbe vannak írva, például az Azure Storage vagy az Azure Data Lake Storage Gen2.
 
     > [!div class="mx-imgBorder"]
-    > új Spark-telepítés ![a HDInsight-ben](./media/migrate-storm-to-spark/new-spark-deployment.png)
+    > ![a feltételezett aktuális környezet diagramja](./media/migrate-storm-to-spark/presumed-current-environment.png)
 
-1. **A régi Storm-fürtön való fogyasztás leállítása.** A meglévő Storm-ben állítsa le az adatok átvitelét a streaming adatforrásból, és várjon, amíg az adatok befejeződik a cél fogadóba való írás.
+Az alkalmazás Stormból a Spark streamelési API-k egyikére való áttelepítéséhez tegye a következőket:
 
-    > [!div class="mx-imgBorder"]
-    > ![leállítása az aktuális fürtön](./media/migrate-storm-to-spark/stop-consuming-current-cluster.png)
-
-1. **Az új Spark-fürtön való használat megkezdése.** Egy újonnan telepített HDInsight 4,0 Spark-fürtről származó adatfolyam-adatok indítása. Ebben az időben a folyamat a legújabb Kafka-eltoláson keresztül történik.
+1. **Új fürt telepítése.** Üzembe helyezhet egy új HDInsight 4.0 Spark-fürtöt ugyanabban a virtuális hálózatban, és telepítse a Spark Streaming vagy Spark strukturált streamelési alkalmazást, és tesztelje alaposan.
 
     > [!div class="mx-imgBorder"]
-    > ![a használat megkezdése az új fürtön](./media/migrate-storm-to-spark/start-consuming-new-cluster.png)
+    > ![új spark-telepítés a HDInsightban](./media/migrate-storm-to-spark/new-spark-deployment.png)
 
-1. **Szükség szerint távolítsa el a régi fürtöt.** Ha a kapcsoló elkészült és megfelelően működik, távolítsa el a régi HDInsight 3,6 Storm-fürtöt szükség szerint.
+1. **Ne kelljen a régi Storm-fürtön fogyasztania.** A meglévő storm, állítsa le a streamelési adatforrásból származó adatok fogyasztását, és várja meg, amíg az adatok a célfogadóba történő írás befejeződik.
 
     > [!div class="mx-imgBorder"]
-    > ![szükség szerint távolítsa el a régi HDInsight-fürtöket](./media/migrate-storm-to-spark/remove-old-clusters1.png)
+    > ![az aktuális fürt önfeledtsének leállítása](./media/migrate-storm-to-spark/stop-consuming-current-cluster.png)
 
-## <a name="next-steps"></a>Következő lépések
+1. **Kezdje el fogyasztani az új Spark-fürtön.** Indítsa el az adatok streamelését egy újonnan üzembe helyezett HDInsight 4.0 Spark-fürtről. Ebben az időben, a folyamat átveszi a fogyasztása a legújabb Kafka offset.
 
-A Storm, a Spark streaming és a Spark strukturált streaming szolgáltatással kapcsolatos további információkért tekintse meg a következő dokumentumokat:
+    > [!div class="mx-imgBorder"]
+    > ![elkezd consuming az új fürtön](./media/migrate-storm-to-spark/start-consuming-new-cluster.png)
 
-* [A Apache Spark streaming áttekintése](../spark/apache-spark-streaming-overview.md)
-* [Strukturált streaming Apache Spark áttekintése](../spark/apache-spark-structured-streaming-overview.md)
+1. **Szükség szerint távolítsa el a régi fürtöt.** Miután a kapcsoló befejeződött és megfelelően működik, távolítsa el a régi HDInsight 3.6 Storm fürt szükség szerint.
+
+    > [!div class="mx-imgBorder"]
+    > ![a régi HDInsight-fürtök eltávolítása szükség szerint](./media/migrate-storm-to-spark/remove-old-clusters1.png)
+
+## <a name="next-steps"></a>További lépések
+
+A Stormról, a Spark Streamingről és a Spark strukturált streameléséről az alábbi dokumentumokban talál további információt:
+
+* [Az Apache Spark Streaming áttekintése](../spark/apache-spark-streaming-overview.md)
+* [Az Apache Spark strukturált streamelésének áttekintése](../spark/apache-spark-structured-streaming-overview.md)

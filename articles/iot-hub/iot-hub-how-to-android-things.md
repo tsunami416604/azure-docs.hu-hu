@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés az Android-eszközökhöz az Azure IoT SDK-k használatával | Microsoft Docs
-description: Fejlesztői útmutató – Ismerje meg, hogyan fejleszthet Android-alapú dolgokon az Azure IoT Hub SDK-k használatával.
+title: Fejlesztés androidos dolgokhoz platformhoz az Azure IoT SDK-k használatával | Microsoft dokumentumok
+description: Fejlesztői útmutató – Ismerje meg, hogyan fejleszthet androidos műveleteken az Azure IoT Hub SDK-k használatával.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673382"
 ---
-# <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Android-eszközök platformon az Azure IoT SDK-k használatával
+# <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Android Things platformhoz az Azure IoT SDK-k használatával
 
-Az [Azure IoT hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) -k biztosítják az első szintű támogatást olyan népszerű platformokhoz, mint például a Windows, a Linux, az OSX, a MBED és a mobil platformok, például az Android és az iOS.  A IoT-alapú üzembe helyezések nagyobb választékának és rugalmasságának biztosítása érdekében a Java SDK is támogatja az [Android](https://developer.android.com/things/) -eszközök platformot.  A fejlesztők igénybe vehetik az Android-eszközök operációs rendszerének előnyeit az eszköz oldalán, miközben az [Azure IoT hub](about-iot-hub.md) -t használja a központi üzenetküldési központként, amely több millió egyidejű csatlakoztatott eszközre méretezhető.
+[Az Azure IoT Hub SDK-k](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) első szintű támogatást nyújtanak olyan népszerű platformokhoz, mint a Windows, linuxos, OSX, MBED és mobil platformok, például az Android és az iOS.  Az IoT-telepítések nagyobb választékának és rugalmasságának lehetővé tétele iránti elkötelezettségünk részeként a Java SDK támogatja az [Android Things](https://developer.android.com/things/) platformot is.  A fejlesztők kihasználhatják az Android Things operációs rendszer előnyeit az eszköz oldalán, miközben az [Azure IoT Hubot](about-iot-hub.md) használják központi üzenetközpontként, amely egyszerre több millió csatlakoztatott eszközre méretezhető.
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet az Azure IoT Java SDK használatával Android-eszközökön felépíteni egy eszköz oldali alkalmazást.
+Ez az oktatóanyag ismerteti az eszközoldali alkalmazás létrehozásának lépéseit az Azure IoT Java SDK használatával az Android Things szolgáltatásban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Android-eszközök által támogatott hardverek Android rendszerű operációs rendszereken.  Az Android-eszközökre vonatkozó [dokumentációt](https://developer.android.com/things/get-started/kits#flash-at) követve megtekintheti a Flash Android-eszközök operációs rendszerét.  Győződjön meg arról, hogy az Android-eszközök az internethez csatlakoznak az alapvető perifériákkal, például a billentyűzettel, a megjelenítéssel és az egérrel csatlakoztatva.  Ez az oktatóanyag a málna PI 3 szolgáltatást használja.
+* Android Things által támogatott hardver androidos operációs rendszer futtatásával.  Tudod követ [Android Dolog dokumentáció](https://developer.android.com/things/get-started/kits#flash-at) -ra hogyan -hoz villanás Android Dolog OS.  Győződjön meg arról, hogy az Android Things eszköz csatlakozik az internethez az alapvető perifériák, például a billentyűzet, a kijelző és az egér csatlakoztatva.  Ez az oktatóanyag a Raspberry Pi 3-at használja.
 
-* A [Android Studio](https://developer.android.com/studio/) legújabb verziója
+* Az [Android Studio](https://developer.android.com/studio/) legújabb verziója
 
-* A [git](https://git-scm.com/) legújabb verziója
+* A [Git](https://git-scm.com/) legújabb verziója
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -40,16 +40,16 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához.
 
-   **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
+   **YourIoTHubName** : az alábbi helyőrző helyére írja be az IoT Hubjához választott nevet.
 
-   **MyAndroidThingsDevice** : Ez a regisztrált eszköz nevét adja meg. Használja a MyAndroidThingsDevice az ábrán látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+   **MyAndroidThingsDevice** : Ez a regisztrált eszköz neve. Használja a MyAndroidThingsDevice-t az ábrán látható módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
     az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. Futtassa az alábbi parancsokat a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó *eszköz-kapcsolódási karakterlánc* beszerzéséhez. Az alábbi `YourIoTHubName` cserélje le az IoT hub-hoz kiválasztott névvel.
+2. Futtassa a következő parancsokat az Azure Cloud Shellben az *eszköz kapcsolati karakterláncának* lekérni az imént regisztrált eszközhöz. Cserélje `YourIoTHubName` le az alábbi nevet az IoT hub hoz kiválasztott.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -61,33 +61,33 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ezt az értéket használni fogja a rövid útmutató későbbi részében.
 
-## <a name="building-an-android-things-application"></a>Android Things-alkalmazások létrehozása
+## <a name="building-an-android-things-application"></a>Android Things alkalmazás létrehozása
 
-1. Az Android Things-alkalmazások létrehozásának első lépése az androidos eszközökhöz való csatlakozás. Az Android-eszközök csatlakoztatása egy kijelzőhöz és az internethez csatlakoztatása. Az Android-eszközök a Wi-Fi-hez való kapcsolódással kapcsolatos [dokumentációt](https://developer.android.com/things/get-started/kits) biztosítanak. Miután csatlakozott az internethez, jegyezze fel a hálózatok területen látható IP-címet.
+1. Az androidos things alkalmazás létrehozásának első lépése az Android Things eszközökhöz való csatlakozás. Csatlakoztassa androidos eszközök eszközét egy kijelzőhöz, és csatlakoztassa az internethez. Az Android Things [dokumentációt](https://developer.android.com/things/get-started/kits) nyújt a WiFi-hez való csatlakozásról. Miután csatlakozott az internethez, jegyezze fel a Hálózatok csoportban felsorolt IP-címet.
 
-2. Az [ADB](https://developer.android.com/studio/command-line/adb) eszköz használatával csatlakozhat az Android-eszközökhöz a fent említett IP-címmel. A terminálon a parancs használatával ellenőrizze a kapcsolatokat. Az eszközök "csatlakoztatottként" jelennek meg.
+2. Az [ADB](https://developer.android.com/studio/command-line/adb) eszközzel csatlakozzon androidos eszközökhöz a fent említett IP-címmel. Ellenőrizze a kapcsolatot ezzel a paranccsal a terminálról. Az eszközöknek "csatlakoztatva" kell lennie.
 
    ```
    adb devices
    ```
 
-3. Töltse le a mintát Android/Android rendszerű dolgokra ebből a [tárházból](https://github.com/Azure-Samples/azure-iot-samples-java) , vagy használja a git-t.
+3. Töltse le a mintát az Android / Android things ebből [a tárházból,](https://github.com/Azure-Samples/azure-iot-samples-java) vagy használja Git.
 
    ```
    git clone https://github.com/Azure-Samples/azure-iot-samples-java.git
    ```
 
-4. A Android Studioban nyissa meg az Android-projektet a "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" helyen.
+4. Az Android Studio alkalmazásban nyissa meg az Android-projektet az "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" mappában.
 
-5. Nyissa meg a gradle. properties fájlt, és cserélje le a "Device_connection_string" kifejezést a korábban feljegyzett eszköz-csatlakoztatási karakterlánccal.
+5. Nyissa meg a gradle.properties fájlt, és cserélje le a "Device_connection_string" szót a korábban feljegyzett eszközkapcsolati karakterláncra.
  
-6. Kattintson a Run-debug elemre, és válassza ki az eszközét, hogy az Android-eszközökre telepítse ezt a kódot.
+6. Kattintson a Futtatás - Hibakeresés gombra, és válassza ki a készüléket, hogy telepítse ezt a kódot az Android Things eszközökre.
 
-7. Az alkalmazás sikeres elindításakor egy, az Android-eszközökön futó alkalmazás is megjelenik. Ez a minta alkalmazás véletlenszerűen generált hőmérséklet-beolvasásokat küld.
+7. Amikor az alkalmazás sikeresen elindult, láthatja az Android Things eszközön futó alkalmazást. Ez a mintaalkalmazás véletlenszerűen generált hőmérséklet-értékeket küld.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
-Az IoT hub segítségével megtekintheti az adatait. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
+Az adatokat az IoT hubon keresztül tekintheti meg, ahogy azok fogadása történik. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
 
 Futtassa a következő parancsokat az Azure Cloud Shellben úgy, hogy a `YourIoTHubName` helyére az IoT Hub neve kerüljön:
 
@@ -101,6 +101,6 @@ az iot hub monitor-events --device-id MyAndroidThingsDevice --hub-name YourIoTHu
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [, hogyan kezelheti a kapcsolatot és a megbízható üzenetkezelést](iot-hub-reliability-features-in-sdks.md) az IoT hub SDK-k használatával.
-* Ismerje meg, hogyan [fejleszthet a mobil platformokra](iot-hub-how-to-develop-for-mobile-devices.md) , például az iOS-re és az Androidra.
-* [Azure IoT SDK-platform támogatása](iot-hub-device-sdk-platform-support.md)
+* Ismerje [meg, hogyan kezelheti a kapcsolatot és a megbízható üzenetküldést](iot-hub-reliability-features-in-sdks.md) az IoT Hub SDK-k használatával.
+* További információ [arról, hogyan fejleszthet mobilplatformokra,](iot-hub-how-to-develop-for-mobile-devices.md) például iOS-re és Androidra.
+* [Az Azure IoT SDK platformtámogatása](iot-hub-device-sdk-platform-support.md)

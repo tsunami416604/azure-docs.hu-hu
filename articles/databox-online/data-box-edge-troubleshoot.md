@@ -1,6 +1,6 @@
 ---
-title: Az Azure portal használata az Azure Data Box Edge hibaelhárítása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Azure Data Box Edge kapcsolatos problémák elhárítása.
+title: Az Azure Data Box Edge hibáinak elhárításához használja az Azure Portalon | Microsoft dokumentumok
+description: Az Azure Data Box Edge-problémák elhárításának ismertetése.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756207"
 ---
-# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Az Azure Data Box Edge hibáinak elhárítása 
+# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Az Azure Data Box Edge hibaelhárítása 
 
-Ez a cikk ismerteti az Azure Data Box Edge kapcsolatos problémák elhárítása. 
+Ez a cikk ismerteti, hogyan hárítsa el az Azure Data Box Edge-en felmerülő problémákat. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -33,15 +33,15 @@ Az eszközök diagnosztizálásához és a hibák elhárításához futtassa le 
 
 1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a tesztet a futtatáshoz, és kattintson a **Teszt futtatása** gombra. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap, hogy az eszköz teszteket futtat.
 
-    ![Válassza ki a tesztek](media/data-box-edge-troubleshoot/run-diag-1.png)
+    ![Tesztek kiválasztása](media/data-box-edge-troubleshoot/run-diag-1.png)
  
 2. A tesztek lefutása után megjelennek az eredmények. 
 
-    ![Vizsgálati eredmények áttekintése](media/data-box-edge-troubleshoot/run-diag-2.png)
+    ![A vizsgálati eredmények áttekintése](media/data-box-edge-troubleshoot/run-diag-2.png)
 
     Ha egy teszt sikertelen, megjelenik a javasolt művelet URL-címe. Az URL-címre kattintva tekintse meg a javasolt műveletet.
  
-    ![Tekintse át a figyelmeztetéseket sikertelen tesztek](media/data-box-edge-troubleshoot/run-diag-3.png)
+    ![Sikertelen tesztekre vonatkozó figyelmeztetések áttekintése](media/data-box-edge-troubleshoot/run-diag-3.png)
 
 
 ## <a name="collect-support-package"></a>Támogatási csomag összeállítása
@@ -64,9 +64,9 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
 1. A hibafájlok megtekintéséhez nyissa meg saját megosztását, majd megosztásra kattintva tekintse meg tartalmát. 
 
-      ![Csatlakozás és megosztás tartalmának megtekintése](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
+      ![Csatlakozás tartalomhoz és megosztásmegtekintése](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Kattintson a _Microsoft Data Box Edge mappa_. Ebben a mappában két almappát talál:
+2. Kattintson a _Microsoft Data Box Edge mappára_. Ebben a mappában két almappát talál:
 
     - A feltöltési mappa, amely a feltöltési hibákat tartalmazó naplófájlokat tárolja.
     - A frissítési mappa a frissítés során bekövetkezett hibák számára.

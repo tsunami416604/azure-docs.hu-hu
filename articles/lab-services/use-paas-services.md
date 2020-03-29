@@ -1,6 +1,6 @@
 ---
-title: A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
-description: Ismerje meg, hogyan használhatók a szolgáltatásként nyújtott platform (pass) szolgáltatások a Azure DevTest Labsban.
+title: Platform-szolgáltatásként (PaaS) szolgáltatások használata az Azure DevTest Labs-ben
+description: Ismerje meg, hogyan használhatja a Platform-as-a-Service (Pass) szolgáltatásokat az Azure DevTest Labs-ben.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,78 +13,78 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169192"
 ---
-# <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
-A DevTest Labs a környezetek funkció használatával támogatja a Pásti használatát. A DevTest Labs környezetei a git-tárházban előre konfigurált Azure Resource Manager-sablonokkal támogatottak. A környezetek a Pásti és a IaaS erőforrásokat is tartalmazhatják. Lehetővé teszik olyan összetett rendszerek létrehozását, amelyek olyan Azure-erőforrásokat is tartalmazhatnak, mint például a virtuális gépek, az adatbázisok, a virtuális hálózatok és a webalkalmazások, amelyek testre szabhatók a közös munkához. Ezek a sablonok lehetővé teszik az egységes üzembe helyezést és a környezetek jobb kezelését a forráskód-vezérlés használatával. 
+# <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Platform-szolgáltatásként (PaaS) szolgáltatások használata az Azure DevTest Labs-ben
+A PaaS a környezetek szolgáltatáson keresztül támogatja a DevTest Labs. A DevTest Labs környezeteit előre konfigurált Azure Resource Manager-sablonok támogatják egy Git-tárházban. A környezetek PaaS- és IaaS-erőforrásokat is tartalmazhatnak. Lehetővé teszik olyan összetett rendszerek létrehozását, amelyek azure-erőforrásokat, például virtuális gépeket, adatbázisokat, virtuális hálózatokat és webalkalmazásokat is tartalmazhatnak, amelyek testre szabottak az együttműködésre. Ezek a sablonok lehetővé teszik a környezetek konzisztens telepítését és jobb kezelését a forráskód-ellenőrzés használatával. 
 
-Egy megfelelően beállított rendszer a következő forgatókönyveket teszi lehetővé: 
+A megfelelően beállított rendszer a következő eseteket teszi lehetővé: 
 
-- A fejlesztők független és több környezettel rendelkeznek
-- Különböző konfigurációk tesztelése aszinkron módon
-- Integráció az előkészítési és a termelési folyamatba sablon módosítása nélkül
-- Az azonos laborban található fejlesztési gépek és környezetek is javítják a felügyelet és a Cost-jelentéskészítés egyszerűségét.  
+- A fejlesztők, hogy a független és több környezetben
+- Tesztelés különböző konfigurációkon aszinkron módon
+- Integráció az átmeneti és éles folyamatokba sablonmódosítások nélkül
+- Miután a fejlesztői gépek és a környezetek ugyanabban a laborban megkönnyíti a felügyeleti és költségjelentés.  
 
-A DevTest Labs erőforrás-szolgáltató erőforrásokat hoz létre a labor felhasználó nevében, így nem kell további engedélyeket adni a tesztkörnyezet felhasználójának a Pásti-erőforrások használatának engedélyezéséhez. Az alábbi képen egy Service Fabric-fürt látható környezetként a laborban.
+A DevTest Labs erőforrás-szolgáltató erőforrásokat hoz létre a labor felhasználó nevében, így nem kell további engedélyeket adni a tesztkörnyezet-felhasználó nak a PaaS-erőforrások használatának engedélyezéséhez. Az alábbi képen egy Service Fabric-fürt környezetként a laborban látható.
 
-![Service Fabric-fürt környezetként](./media/create-environment-service-fabric-cluster/cluster-created.png)
+![A Service Fabric-fürt környezetként](./media/create-environment-service-fabric-cluster/cluster-created.png)
 
-A környezetek beállításával kapcsolatos további információkért lásd: [több virtuális gépre kiterjedő környezetek létrehozása és a Azure Resource Manager-sablonokkal rendelkező Pásti-erőforrások](devtest-lab-create-environment-from-arm.md). A DevTest Labs Azure Resource Manager sablonok nyilvános tárházával rendelkezik, amelyekkel környezetek hozhatók létre anélkül, hogy saját kezűleg kellene csatlakozniuk egy külső GitHub-forráshoz. A nyilvános környezetekről további információt a [nyilvános környezetek konfigurálása és használata Azure DevTest Labsban](devtest-lab-configure-use-public-environments.md)című témakörben talál.
+A környezetek beállításával kapcsolatos további információkért [lásd: Többvirtuális gépes környezetek és PaaS-erőforrások létrehozása az Azure Resource Manager-sablonokkal című témakörben.](devtest-lab-create-environment-from-arm.md) A DevTest Labs rendelkezik az Azure Resource Manager-sablonok nyilvános tárházával, amelysegítségével környezeteket hozhat létre anélkül, hogy egyedül kellnie egy külső GitHub-forráshoz. A nyilvános környezetekkel kapcsolatos további információkért olvassa el a [Nyilvános környezetek konfigurálása és használata az Azure DevTest Labs alkalmazásban című témakört.](devtest-lab-configure-use-public-environments.md)
 
-A nagyméretű szervezeteknél a fejlesztési csapatok jellemzően olyan környezeteket biztosítanak, mint például a testreszabott/elkülönített tesztelési környezetek. Lehetnek olyan környezetek, amelyeket az összes csapat használhat egy üzleti egységben vagy egy divízióban. Előfordulhat, hogy az IT-csoport meg szeretné adni a környezetét, amelyet a szervezet összes csapata használhat.  
+A nagy szervezetekben a fejlesztői csapatok általában olyan környezeteket biztosítanak, mint például a testreszabott/elkülönített tesztelési környezetek. Előfordulhatnak olyan környezetek, amelyeket egy részlegen vagy részlegen belül minden csapatnak használnia kell. Előfordulhat, hogy az informatikai csoport szeretné biztosítani a környezetüket, amelyet a szervezet összes csapata használhat.  
 
 ## <a name="customizations"></a>Testreszabások
 
 #### <a name="sandbox"></a>Tesztkörnyezet 
-A labor tulajdonosa testreszabhatja a tesztkörnyezet környezetét, hogy megváltoztassa a felhasználó szerepkörét a **Readerből** az erőforráscsoporthoz tartozó **közreműködővé** . Ez a funkció a labor **beállításai** oldalon található a tesztkörnyezet **konfigurációjában és házirendjeiben** . A szerepkör ezen módosítása lehetővé teszi, hogy a felhasználó erőforrásokat adjon hozzá vagy távolítson el az adott környezetben. Ha továbbra is szeretné korlátozni a hozzáférést, használja az Azure-szabályzatokat. Ez a funkció lehetővé teszi az erőforrások és a konfiguráció testreszabását az előfizetés szintjén való hozzáférés nélkül.
+A labor tulajdonosa testre szabhatja a tesztkörnyezeteket a felhasználó szerepkörének **olvasóról** **közreműködőre** történő módosításához az erőforráscsoporton belül. Ez a funkció a **Labor beállítások** lap a konfiguráció és a **labor házirendek.** Ez a szerepkör-változás lehetővé teszi a felhasználó számára, hogy erőforrásokat adjon hozzá vagy távolítson el az adott környezetben. Ha tovább szeretné korlátozni a hozzáférést, használja az Azure-szabályzatokat. Ez a funkció lehetővé teszi az erőforrások vagy a konfiguráció testreszabását az előfizetési szintű hozzáférés nélkül.
 
 #### <a name="custom-tokens"></a>Egyéni tokenek
-Vannak olyan egyéni tesztkörnyezet-információk, amelyek az erőforráscsoport területén kívül esnek, és a sablon által elérhető környezetekre vonatkoznak. Íme néhány közülük: 
+Van néhány egyéni tesztkörnyezet információ, amely kívül esik az erőforráscsoport, és a sablon által elérhető környezetekre jellemző. Íme néhány közülük: 
 
-- Tesztkörnyezet hálózati azonosítása
-- Földrajzi egység
-- A Storage-fiók, amelyben a Resource Manager-sablonok fájljai vannak tárolva. 
+- Laborhálózat azonosítása
+- Hely
+- Az erőforrás-kezelői sablonok at tároló tárfiók. 
  
-#### <a name="lab-virtual-network"></a>Tesztkörnyezet virtuális hálózata
-A [Tesztkörnyezet virtuális hálózatához csatlakozó környezetek](connect-environment-lab-virtual-network.md) azt ismertetik, hogyan módosítható a Resource Manager-sablon a `$(LabSubnetId)` token használatára. Környezet létrehozásakor az `$(LabSubnetId)` tokent az első alhálózati jel váltja fel, ahol a **virtuális gép létrehozási** beállítása beállítás értéke **true (igaz**). Lehetővé teszi, hogy a környezet a korábban létrehozott hálózatokat használja. Ha ugyanazokat a Resource Manager-sablonokat szeretné használni a tesztelés előkészítési és éles környezetekben, használja a `$(LabSubnetId)` alapértelmezett értékként egy Resource Manager-sablon paraméterében. 
+#### <a name="lab-virtual-network"></a>Labor virtuális hálózat
+A [csatlakozási környezetek a labor virtuális hálózati](connect-environment-lab-virtual-network.md) cikk ismerteti, hogyan módosíthatja `$(LabSubnetId)` a Resource Manager sablont a jogkivonat használata. Környezet létrehozásakor a `$(LabSubnetId)` jogkivonatot az első alhálózati jel váltja fel, ahol a virtuális gép **létrehozási beállításában való használat** értéke **igaz.** Lehetővé teszi környezetünk számára a korábban létrehozott hálózatok használatát. Ha ugyanazokat az Erőforrás-kezelő sablonokat szeretné használni a tesztelési `$(LabSubnetId)` környezetekben, mint az előkészítés és az éles környezet, használja alapértelmezett értékként az Erőforrás-kezelő sablonparaméterében. 
 
-#### <a name="environment-storage-account"></a>Környezeti Storage-fiók
-A DevTest Labs támogatja a [beágyazott Resource Manager-sablonok](../azure-resource-manager/templates/linked-templates.md)használatát. A [[beágyazott Azure Resource Manager sablonok üzembe helyezése tesztelési környezetek számára című](deploy-nested-template-environments.md) cikk ismerteti, hogyan hozhat létre egy URI-t egy Resource Manager-sablonhoz a `_artifactsLocation` és a `_artifactsLocationSasToken` token használatával ugyanabban a mappában, vagy a fő sablon beágyazott mappájában. A két jogkivonattal kapcsolatos további információkért tekintse meg az [Azure Resource Manager – ajánlott eljárásokat ismertető útmutató](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **telepítési** összetevők című szakaszát.
+#### <a name="environment-storage-account"></a>Környezeti tárfiók
+A DevTest Labs támogatja a [beágyazott Erőforrás-kezelő sablonok](../azure-resource-manager/templates/linked-templates.md)használatát. A [[Telepítési beágyazott Azure Resource Manager sablonok tesztelése környezetek](deploy-nested-template-environments.md) cikk ismerteti, hogyan kell használni, `_artifactsLocation` és `_artifactsLocationSasToken` jogkivonatok létrehozása URI egy Resource Manager sablon ugyanabban a mappában, vagy egy beágyazott mappában a fő sablon. A két jogkivonatról az Azure Resource Manager [– Gyakorlati tanácsok című](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)témakör telepítési **összetevők** című szakaszában talál további információt.
 
-## <a name="user-experience"></a>Felhasználói feladatok
+## <a name="user-experience"></a>Felhasználó felület
 
 ## <a name="developer"></a>Fejlesztői
-A fejlesztők ugyanazt a munkafolyamatot használják egy virtuális gép létrehozásához egy adott környezet létrehozásához. Kiválasztja a környezetet és a számítógép rendszerképét, és megadja a sablonhoz szükséges szükséges adatokat. A környezet minden fejlesztője lehetővé teszi a változások telepítését és a belső hurok-hibakeresést. A környezet bármikor létrehozható a legújabb sablon használatával.  Ez a funkció lehetővé teszi a környezetek megsemmisítését és újbóli létrehozását, hogy csökkentse az állásidőt a rendszer manuális létrehozásához vagy a hibák tesztelésének helyreállításához.  
+A fejlesztők ugyanazt a munkafolyamatot használják a virtuális gép létrehozásához egy adott környezet létrehozásához. Kiválasztják a környezetet a géplemezképpel szemben, és beírják a sablon által igényelt szükséges információkat. Minden fejlesztő, amelynek környezete lehetővé teszi a módosítások telepítését és a továbbfejlesztett belső hurok hibakeresést. A környezet bármikor létrehozható a legújabb sablon használatával.  Ez a funkció lehetővé teszi a környezetek megsemmisítését és újbóli létrehozását, hogy csökkentse az állásidőt a rendszer manuális létrehozásától vagy a hibatesztelésből való helyreállítástól.  
 
 ### <a name="testing"></a>Tesztelés
-A DevTest Labs-környezetek aszinkron módon teszik lehetővé az adott kódok és konfigurációk független tesztelését. Az általános gyakorlat az, hogy a környezetet az egyéni lekéréses kérelem kódjával hozza létre, és elkezdi az automatizált tesztelést. Az automatizált tesztelés befejezését követően a manuális tesztelés végezhető el az adott környezetben. Ezt a folyamatot általában a CI/CD folyamat részeként kell elvégezni. 
+DevTest Labs környezetek lehetővé teszik a független tesztelése adott kód és konfigurációk aszinkron módon. Az általános gyakorlat az, hogy a környezet et az egyes lekéréses kérelem kódjával állítsa be, és indítsa el az automatikus tesztelést. Az automatikus tesztelés befejezését követően bármilyen manuális tesztelés végrehajtható az adott környezetben. Ez a folyamat általában a CI/CD-folyamat részeként történik. 
 
-## <a name="management-experience"></a>Kezelési élmény
+## <a name="management-experience"></a>Vezetői élmény
 
-### <a name="cost-tracking"></a>Cost Tracking
-A Cost Tracking szolgáltatás a teljes Cost trend részeként tartalmazza az Azure-erőforrásokat a különböző környezetekben. Az erőforrások díja nem szünteti meg a környezetben lévő különböző erőforrásokat, de a környezetet egyetlen díjként jeleníti meg.
+### <a name="cost-tracking"></a>Költségkövetés
+A költségkövetési funkció a teljes költségtrend részeként a különböző környezetekben lévő Azure-erőforrásokat is tartalmazza. Az erőforrások általi költség nem bontja ki a környezeten belüli különböző erőforrásokat, hanem egyetlen költségként jeleníti meg a környezetet.
 
 ### <a name="security"></a>Biztonság
-A DevTest Labs szolgáltatással megfelelően konfigurált Azure-előfizetés [csak a laboron keresztül korlátozhatja az Azure-erőforrásokhoz való hozzáférést](devtest-lab-add-devtest-user.md). A környezetek révén a labor tulajdonosa lehetővé teheti a felhasználók számára, hogy a jóváhagyott konfigurációkhoz hozzáférjenek a Pásti-erőforrásokhoz anélkül, hogy a hozzáférés bármely más Azure-erőforráshoz Abban a forgatókönyvben, ahol a labor felhasználói testreszabják a környezeteket, a tesztkörnyezet tulajdonosa engedélyezheti a közreműködők hozzáférését. A közreműködői hozzáférés lehetővé teszi, hogy a labor felhasználó csak a felügyelt erőforráscsoport keretében vegye fel vagy távolítsa el az Azure-erőforrásokat. Lehetővé teszi a könnyebb nyomon követést és felügyeletet, és lehetővé teszi a felhasználó közreműködői hozzáférését az előfizetéshez.
+A DevTest Labs megfelelően konfigurált Azure-előfizetés [csak a laboron keresztül korlátozhatja az Azure-erőforrásokhoz való hozzáférést.](devtest-lab-add-devtest-user.md) A környezetek segítségével a tesztkörnyezet tulajdonosa engedélyezheti a felhasználóknak, hogy a PaaS-erőforrások jóváhagyott konfigurációkkal való eléréséhez anélkül, hogy más Azure-erőforrásokhoz való hozzáférést engedélyezne. Abban a forgatókönyvben, ahol a tesztkörnyezet-felhasználók testre szabhatja a környezeteket, a tesztkörnyezet tulajdonosa engedélyezheti a közreműködői hozzáférést. A közreműködői hozzáférés lehetővé teszi, hogy a labor-felhasználó csak a felügyelt erőforráscsoporton belül adja hozzá vagy távolítsa el az Azure-erőforrást. Ez lehetővé teszi a könnyebb nyomon követés és kezelés, szemben lehetővé teszi a felhasználó közreműködői hozzáférést az előfizetéshez.
 
 ### <a name="automation"></a>Automation
-Az Automation a nagy méretű és hatékony ökoszisztéma egyik kulcsfontosságú összetevője. Az automatizálás a különböző környezetek előfizetések és laborok közötti felügyeletének vagy nyomon követésének kezeléséhez szükséges.
+Az automatizálás kulcsfontosságú eleme egy nagyszabású, hatékony ökoszisztémának. Automatizálás szükséges kezelésére vagy nyomon követésére több környezetben előfizetések és laborok között.
 
 ### <a name="cicd-pipeline"></a>CI/CD-folyamat
-A DevTest Labs-beli Pásti-szolgáltatások a CI/CD-folyamat fejlesztéséhez olyan fókuszált központi telepítéseket biztosítanak, amelyekben a tesztkörnyezet a hozzáférést vezérli.
+A DevTest Labs PaaS-szolgáltatásai segíthetnek a CI/CD-folyamat fejlesztésében azáltal, hogy koncentrált központi telepítéseket, ahol a hozzáférést a labor szabályozza.
 
-## <a name="next-steps"></a>Következő lépések
-A környezetekkel kapcsolatos részletekért tekintse meg a következő cikkeket: 
+## <a name="next-steps"></a>További lépések
+A környezetekkel kapcsolatos részleteket az alábbi cikkekben találja: 
 
 - 
 - [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)
-- [Nyilvános környezetek konfigurálása és használata Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
-- [Környezet létrehozása önálló Service Fabric-fürttel Azure DevTest Labs](create-environment-service-fabric-cluster.md)
-- [Környezet összekötése a tesztkörnyezet virtuális hálózatával Azure DevTest Labs](connect-environment-lab-virtual-network.md)
+- [Nyilvános környezetek konfigurálása és használata az Azure DevTest Labsben](devtest-lab-configure-use-public-environments.md)
+- [Környezet létrehozása önálló Service Fabric-fürttel az Azure DevTest Labs ben](create-environment-service-fabric-cluster.md)
+- [Környezet csatlakoztatása a labor virtuális hálózatához az Azure DevTest Labs ben](connect-environment-lab-virtual-network.md)
 - [Környezetek integrálása az Azure DevOps CI/CD-folyamatokba](integrate-environments-devops-pipeline.md)
  
 

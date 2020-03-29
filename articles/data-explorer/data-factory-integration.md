@@ -1,6 +1,6 @@
 ---
-title: Az Azure Adatkezelő integrációja Azure Data Factory
-description: Ebben a témakörben az Azure Adatkezelő és az Azure Data Factory integrálásával a másolási, keresési és parancs-tevékenységeket használhatja
+title: Az Azure Data Explorer integrációja az Azure Data Factoryval
+description: Ebben a témakörben integrálja az Azure Data Explorert az Azure Data Factoryval a másolási, kereső- és parancstevékenységek használatához.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,176 +9,176 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293623"
 ---
-# <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Az Azure Adatkezelő integrálása Azure Data Factory
+# <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Az Azure Data Explorer integrálása az Azure Data Factory-val
 
-A [Azure Data Factory](/azure/data-factory/) (ADF) egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi a különböző adattárak integrálását és az adatokon végzett tevékenységek végrehajtását. Az ADF lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés és az adatátalakítás előkészítéséhez és automatizálásához. Az Azure Adatkezelő a Azure Data Factory [által támogatott adattárak](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) egyike. 
+[Az Azure Data Factory](/azure/data-factory/) (ADF) egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi a különböző adattárak integrálását és az adatokon végzett tevékenységek elvégzését. Az ADF lehetővé teszi adatvezérelt munkafolyamatok létrehozását az adatok mozgatásának és az adatok átalakításának koordinálására és automatizálására. Az Azure Data Explorer az Azure Data Factory egyik [támogatott adattára.](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) 
 
-## <a name="azure-data-factory-activities-for-azure-data-explorer"></a>Azure Data Factory tevékenységek az Azure Adatkezelő
+## <a name="azure-data-factory-activities-for-azure-data-explorer"></a>Az Azure Data Factory tevékenységei az Azure Data Explorerhez
 
-Az Azure Adatkezelő-felhasználók számára Azure Data Factory különböző integrációk érhetők el:
+Az Azure Data Explorer felhasználói számára különböző integrációk érhetők el az Azure Data Factory szolgáltatással:
 
 ### <a name="copy-activity"></a>Másolási tevékenység
  
-Az adattárak közötti adatátvitelhez Azure Data Factory másolási tevékenység használható. Az Azure Adatkezelő forrásaként támogatott, ahol az adatok az Azure Adatkezelőból a támogatott adattárba és egy fogadóba másolódnak át, ahol az adatok a bármely támogatott adattárból az Azure Adatkezelőba másolódnak. További információ: [adatok másolása az Azure-ba vagy az Azure Adatkezelő Azure Data Factory használatával](/azure/data-factory/connector-azure-data-explorer). a részletes útmutatóért lásd: [adatok betöltése Azure Data Factoryból az Azure Adatkezelőba](data-factory-load-data.md).
-Az Azure Adatkezelőt a Azure IR (Integration Runtime) támogatja, amelyet az Azure-ban tárolt adatok és a saját üzemeltetésű integrációs modul használ, amely akkor használatos, amikor az adatok a helyszíni vagy egy hozzáférés-vezérlési szolgáltatással (például egy Azure-Virtual Network) történő adattárakba másolódnak. További információ: a [használandó IR](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
+Az Azure Data Factory Copy tevékenység az adattárak közötti adatátvitelre szolgál. Az Azure Data Explorer forrásként támogatott, ahol az adatok at az Azure Data Explorer bármely támogatott adattárba másolja, és egy fogadót, ahol az adatok at a támogatott adattárból az Azure Data Explorerbe másolja a rendszer. További információt az [Azure Data Explorer be vagy onnan történő másolása című](/azure/data-factory/connector-azure-data-explorer)témakörben talál. részletes átjárási témakörben az [Azure Data Factory adatainak betöltése az Azure Data Explorerbe.](data-factory-load-data.md)
+Az Azure Data Explorert az Azure IR (Integration Runtime) támogatja, amelyet akkor használnak, amikor az adatokat az Azure-ban másolja, és saját üzemeltetésű infravörös kapcsolatát, amelyet a helyszínen vagy hozzáférés-vezérléssel rendelkező hálózatról vagy hálózatba történő adattárolókból történő másolásakor, például egy Azure virtuális hálózaton való másolásakor használ. További információkért lásd, [hogy melyik infravörös](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
  
 > [!TIP]
-> A másolási tevékenység és a **társított szolgáltatás** vagy **adatkészlet**létrehozásakor válassza az adattár **Azure adatkezelő (Kusto)** elemet, és ne a régi adattár- **Kusto**.  
+> A másolási tevékenység használatakor és **egy csatolt szolgáltatás** vagy **adatkészlet**létrehozásakor válassza ki az Azure Data **Explorer (Kusto)** adattárát, és ne a régi **Kusto**adattára.  
 
 ### <a name="lookup-activity"></a>Keresési tevékenység
  
-A keresési tevékenység az Azure Adatkezelő lekérdezések futtatására szolgál. A lekérdezés eredményét a rendszer a keresési tevékenység kimenete adja vissza, és a folyamat következő tevékenységében használhatja az [ADF-keresési dokumentációban](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity)leírtaknak megfelelően.  
-Az 5 000-es és a 2 MB-os válasz méretén kívül a tevékenységhez a lekérdezés időtúllépési korlátja is 1 óra.
+A lookup tevékenység az Azure Data Explorer lekérdezéseinek végrehajtására szolgál. A lekérdezés eredménye a lekérdezés kimeneteként lesz visszaadva, és az [ADF-kapcsolat dokumentációjában](/azure/data-factory/control-flow-lookup-activity#use-the-lookup-activity-result-in-a-subsequent-activity)leírtak szerint használható a folyamat következő tevékenységében.  
+Az 5000 sorra és 2 MB-ra vonatkozó válaszméret-korláton kívül a tevékenység lekérdezési időkorlátja is 1 óra.
 
-### <a name="command-activity"></a>Parancs tevékenység
+### <a name="command-activity"></a>Parancstevékenység
 
-A parancs tevékenysége lehetővé teszi az Azure Adatkezelő- [vezérlési parancsok](/azure/kusto/concepts/#control-commands)végrehajtását. A lekérdezésekkel ellentétben a vezérlési parancsok módosíthatják az adatokat vagy a metaadatokat. Egyes vezérlési parancsok célja, hogy az adatok betöltését az Azure Adatkezelőba, parancsok, például `.ingest`vagy `.set-or-append`használatával, vagy az adatok másolása az Adatkezelő Azure-ból a külső adattárakba, például a `.export`parancsokkal.
-A parancs tevékenység részletes ismertetését lásd: [Azure Data Factory Command tevékenység használata az Azure adatkezelő-vezérlési parancsok futtatásához](data-factory-command-activity.md).  Az adatmásolásra szolgáló vezérlési parancs használatával időnként a másolási tevékenységnél gyorsabb és olcsóbb lehetőség is lehet. Annak megállapításához, hogy mikor kell használni a parancs tevékenységét és a másolási tevékenységet, tekintse meg az [adatok másolása során a másolás és a parancs tevékenységek közötti választást](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
+A parancstevékenység lehetővé teszi az Azure Data Explorer [vezérlőparancsainak](/azure/kusto/concepts/#control-commands)végrehajtását. A lekérdezésekkel ellentétben a vezérlőparancsok módosíthatják az adatokat vagy a metaadatokat. Néhány vezérlőparancs az Azure Data Explorer betöltésére irányul, `.ingest`például vagy `.set-or-append`) parancsokkal, vagy adatok másolása `.export`az Azure Data Explorerből külső adattárakba olyan parancsokkal, mint például a .
+A parancstevékenység részletes átjárását az [Azure Data Explorer vezérlőparancsainak futtatásához az Azure Data Factory parancstevékenysége című](data-factory-command-activity.md)témakörben található.  Az adatok másolásához használt vezérlőparancs időnként gyorsabb és olcsóbb lehet, mint a Másolás tevékenység. Ha meg szeretné tudni, hogy mikor használja a Parancstevékenységet a Másolás tevékenységgel szemben, olvassa el a [Másolás és a Parancs tevékenységek közötti másolás az adatok másolásakor című témakört.](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data)
 
-### <a name="copy-in-bulk-from-a-database-template"></a>Tömeges másolás adatbázis-sablonból
+### <a name="copy-in-bulk-from-a-database-template"></a>Másolás tömegesen adatbázissablonból
 
-Az [adatbázisból az Azure-ba adatkezelő a Azure Data Factory sablon használatával](data-factory-template.md) egy előre definiált Azure Data Factory folyamat. A sablon használatával több folyamat hozható létre adatbázisban vagy táblában a gyorsabb adatmásoláshoz. 
+A [másolás tömegesen egy adatbázisból az Azure Data Explorer az Azure Data Factory sablon használatával](data-factory-template.md) egy előre definiált Azure Data Factory-folyamat. A sablon segítségével adatbázisonként vagy táblánként több folyamatot hozhat létre a gyorsabb adatmásolás érdekében. 
 
 ### <a name="mapping-data-flows"></a>Adatfolyamok leképezése 
 
-[Azure Data Factory a leképezési adatfolyamatok](/azure/data-factory/concepts-data-flow-overview) vizuálisan tervezett adatátalakítások, amelyek lehetővé teszik az adatmérnökök számára, hogy programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az adatfolyamatok létrehozásához és az Azure Adatkezelőba való betöltéséhez használja a következő módszert:
+[Az Azure Data Factory leképezési adatfolyamok](/azure/data-factory/concepts-data-flow-overview) vizuálisan tervezett adatátalakítások, amelyek lehetővé teszik az adatmérnökök számára, hogy kód írása nélkül fejlesszenek grafikus adatátalakítási logikát. Adatfolyam létrehozásához és adatok Azure Data Explorer betöltéséhez használja a következő módszert:
 
-1. Hozza létre a [leképezési](/azure/data-factory/data-flow-create)adatfolyamot.
-1. [Exportálja az Azure blobba az adatfájlokat](/azure/data-factory/data-flow-sink). 
-1. [Event Grid](/azure/data-explorer/ingest-data-event-grid) vagy [ADF másolási tevékenység](/azure/data-explorer/data-factory-load-data) megadása az Azure Adatkezelőba való betöltéshez.
+1. Hozza létre a [leképezési adatfolyamot.](/azure/data-factory/data-flow-create)
+1. [Exportálja az adatokat az Azure Blobba.](/azure/data-factory/data-flow-sink) 
+1. [Eseményrács](/azure/data-explorer/ingest-data-event-grid) vagy [ADF másolási tevékenység definiálása](/azure/data-explorer/data-factory-load-data) az adatok Azure Data Explorerbe való betöltéséhez.
 
-## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Válassza ki a másolás és az Azure Adatkezelő parancs tevékenységeit az Adatmásolás során 
+## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Adatmásoláskor válassza a Másolás és az Azure Data Explorer parancstevékenységeit 
 
-Ez a szakasz segít az adatmásolási igényeknek megfelelő tevékenység kiválasztásában.
+Ez a rész segítséget nyújt az adatmásolási igényeknek megfelelő tevékenység kiválasztásában.
 
-Az adatok Azure Adatkezelőba való másolásakor a Azure Data Factory két lehetőség közül választhat:
+Az Azure Data Explorerből vagy az Azure Data Explorerbe történő adatmásoláskor két lehetőség közül választhat az Azure Data Factory:
 * Másolási tevékenység.
-* Az Azure Adatkezelő parancs tevékenysége, amely az Azure Adatkezelőban lévő adatok átvitelére szolgáló vezérlési parancsok egyikét hajtja végre. 
+* Az Azure Data Explorer parancstevékenysége, amely végrehajtja az Azure Data Explorer ben adatokat továbbító vezérlőparancsok egyikét. 
 
-### <a name="copy-data-from-azure-data-explorer"></a>Adatok másolása az Azure Adatkezelőból
+### <a name="copy-data-from-azure-data-explorer"></a>Adatok másolása az Azure Data Explorerből
   
-Az Azure Adatkezelőról a másolási tevékenység vagy a [`.export`](/azure/kusto/management/data-export/) parancs használatával másolhat adatok. A `.export` parancs végrehajt egy lekérdezést, majd exportálja a lekérdezés eredményeit. 
+Az Azure Data Explorer ből adatokat másolhat a másolási tevékenység vagy a [`.export`](/azure/kusto/management/data-export/) parancs használatával. A `.export` parancs végrehajt egy lekérdezést, majd exportálja a lekérdezés eredményeit. 
 
-A másolási tevékenység és a `.export` az Adatkezelő Azure-ból történő adatmásolási parancs összehasonlításához tekintse meg a következő táblázatot.
+Tekintse meg az alábbi táblázatot a `.export` másolási tevékenység és a parancs az Azure Data Explorer adatok másolása.
 
-| | Másolási tevékenység | . export parancs |
+| | Másolási tevékenység | .export parancs |
 |---|---|---|
-| **Folyamat leírása** | Az ADF végrehajt egy lekérdezést a Kusto, feldolgozza az eredményt, és elküldi azt a célként megadott adattárba. <br>(**ADX > ADF > fogadó adattár**) | Az ADF `.export` vezérlési parancsot küld az Azure Adatkezelőnak, amely végrehajtja a parancsot, és közvetlenül a célként megadott adattárba küldi az adatokat. <br>(**ADX > fogadó adattár**) |
-| **Támogatott adattárolók** | A [támogatott adattárak](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) széles választéka | ADLSv2, Azure Blob, SQL Database |
-| **Teljesítmény** | Központosított | <ul><li>Elosztott (alapértelmezett), több csomópont adatainak exportálása egyidejűleg</li><li>Gyorsabb és az ELÁBÉ hatékony.</li></ul> |
-| **Kiszolgáló korlátai** | A [lekérdezési korlátok](/azure/kusto/concepts/querylimits) bővíthetők vagy letilthatók. Alapértelmezés szerint az ADF-lekérdezések a következőket tartalmazzák: <ul><li>500 000 rekord vagy 64 MB méretű.</li><li>10 perces időkorlát.</li><li>a `noTruncation` false (hamis) értékre van állítva.</li></ul> | Alapértelmezés szerint a lekérdezési korlátok kiterjeszthetők vagy Letiltva: <ul><li>A méretkorlát le van tiltva.</li><li>A kiszolgáló időtúllépése 1 órára van kiterjesztve.</li><li>a `MaxMemoryConsumptionPerIterator` és a `MaxMemoryConsumptionPerQueryPerNode` a Max (5 GB, TotalPhysicalMemory/2) értékre van kiterjesztve.</li></ul>
+| **Folyamat leírása** | Az ADF lekérdezést hajt végre a Kusto-n, feldolgozza az eredményt, és elküldi a céladattárnak. <br>(**ADX > ADF > fogadó adattár**) | Az ADF `.export` ellenőrző parancsot küld az Azure Data Explorernek, amely végrehajtja a parancsot, és az adatokat közvetlenül a céladattárba küldi. <br>(**ADX > fogadó adattár)** |
+| **Támogatott céladat-tárolók** | A támogatott [adattárak](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) széles választéka | ADLSv2, Azure Blob, SQL-adatbázis |
+| **Teljesítmény** | Központosított | <ul><li>Elosztott (alapértelmezett), adatok exportálása egyszerre több csomópontról</li><li>Gyorsabb és CogS hatékony.</li></ul> |
+| **Kiszolgálói korlátok** | [A lekérdezési korlátok](/azure/kusto/concepts/querylimits) meghosszabbíthatók/letilthatók. Alapértelmezés szerint az ADF-lekérdezések a következőket tartalmazzák: <ul><li>500 000 rekord vagy 64 MB-os méretkorlát.</li><li>10 perces határidő.</li><li>`noTruncation`hamisra állítva.</li></ul> | Alapértelmezés szerint kiterjeszti vagy letiltja a lekérdezési korlátokat: <ul><li>A méretkorlátok le vannak tiltva.</li><li>A kiszolgáló időtúlidőpontja 1 órára van meghosszabbítva.</li><li>`MaxMemoryConsumptionPerIterator`és `MaxMemoryConsumptionPerQueryPerNode` max (5 GB, TotalPhysicalMemory/2) értékre vannak kiterjesztve.</li></ul>
 
 > [!TIP]
-> Ha a másolási célhely az `.export` parancs által támogatott adattárak egyike, és ha a másolási tevékenység egyik funkciója sem elengedhetetlen az igényeinek kielégítéséhez, válassza a `.export` parancsot.
+> Ha a másolási cél a `.export` parancs által támogatott adattárolók egyike, és ha a Másolás `.export` tevékenység funkciók egyike sem áll létfontosságú az Ön igényeinek, válassza ki a parancsot.
 
-### <a name="copying-data-to-azure-data-explorer"></a>Adatok másolása az Azure Adatkezelőba
+### <a name="copying-data-to-azure-data-explorer"></a>Adatok másolása az Azure Data Explorer be
 
-Az adatok másolása az Azure Adatkezelő a másolási tevékenység vagy a betöltési parancsok használatával, például a [lekérdezésből](/azure/kusto/management/data-ingestion/ingest-from-query) való betöltéssel (`.set-or-append`, `.set-or-replace`, `.set`, `.replace)`és [a tárolóból](/azure/kusto/management/data-ingestion/ingest-from-storage) való betöltéssel (`.ingest`). 
+Az Azure Data Explorer bemásolási tevékenységvagy betöltési parancsok, például`.set-or-append` `.set-or-replace`a `.set` `.replace)`lekérdezésből ( ,`.ingest`, , , és [a storage( betöltése](/azure/kusto/management/data-ingestion/ingest-from-storage) ( használatával) történő másolási vagy [betöltési](/azure/kusto/management/data-ingestion/ingest-from-query) parancsokkal másolhatja az adatokat. 
 
-A másolási tevékenység és az adatok Azure Adatkezelőba másolására szolgáló betöltési parancsok összehasonlítását a következő táblázat tartalmazza.
+Tekintse meg az alábbi táblázatot a másolási tevékenység összehasonlítását, és az Azure Data Explorer adatok másolására szolgáló betöltési parancsokat.
 
-| | Másolási tevékenység | Betöltés a lekérdezésből<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Betöltés a tárolóból <br> `.ingest` |
+| | Másolási tevékenység | Betöltés lekérdezésből<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Betöltés a tárolóból <br> `.ingest` |
 |---|---|---|---|
-| **Folyamat leírása** | Az ADF beolvassa az adatokat a forrás adattárból, táblázatos formátumba konvertálja, és a szükséges séma-hozzárendelési módosításokat végzi. Az ADF ezután feltölti az adatot az Azure-blobokra, felosztja őket, majd letölti a blobokat a ADX táblába való betöltéshez. <br> (**Forrás adattár > ADF > Azure-blobok > ADX**) | Ezek a parancsok futtathatnak egy lekérdezést vagy `.show` parancsot, és betöltik a lekérdezés eredményét egy táblába (**ADX > ADX**). | Ez a parancs az adatok egy táblába való betöltését végzi el egy vagy több felhőalapú tárolási összetevőből származó adatok húzásával. |
-| **Támogatott forrás adattárak** |  [különböző lehetőségek](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (a sql_request beépülő modullal), Cosmos (a cosmosdb_sql_request beépülő modullal) és bármely más, HTTP-vagy Python API-t biztosító adattár. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
-| **Teljesítmény** | A betöltések várólistára kerülnek és kezelhetők, ami biztosítja a kis méretű betöltést, és biztosítja a magas rendelkezésre állást a terheléselosztás, az újrapróbálkozások és a hibakezelés biztosításával. | <ul><li>Ezek a parancsok nem a nagy mennyiségű adatimportáláshoz lettek tervezve.</li><li>A vártnál és olcsóbban működik. Az éles környezetek esetében azonban, ha a forgalmi díjak és az adatméretek nagy méretűek, használja a másolási tevékenységet.</li></ul> |
-| **Kiszolgáló korlátai** | <ul><li>Nincs méretkorlát.</li><li>Maximális időkorlát: 1 óra/betöltött blob. |<ul><li>A lekérdezési részben csak egy méretkorlát lehet, amely `noTruncation=true`megadásával kihagyható.</li><li>Maximális időtúllépési korlát: 1 óra.</li></ul> | <ul><li>Nincs méretkorlát.</li><li>Maximális időtúllépési korlát: 1 óra.</li></ul>|
+| **Folyamat leírása** | Az ADF leváltja az adatokat a forrás-adattárból, táblázatos formátumba konvertálja azokat, és elvégzi a szükséges sémaleképezési módosításokat. Az ADF ezután feltölti az adatokat az Azure-blobokba, adattömbökre osztja fel, majd letölti a blobokat, hogy betöltse őket az ADX-táblába. <br> (**Forrásadattár > ADF > Azure blobok > ADX)** | Ezek a parancsok lekérdezést `.show` vagy parancsot hajthatnak végre, és a lekérdezés eredményét táblába (**ADX > ADX)** is belehet adni. | Ez a parancs úgy bevezeti az adatokat egy táblába, hogy "lehúzza" az adatokat egy vagy több felhőalapú tárolási összetevőből. |
+| **Támogatott forrásadat-tárolók** |  [különböző lehetőségek](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (a sql_request plugin használatával), Cosmos (a cosmosdb_sql_request plugin használatával) és bármely más adattár, amely HTTP- vagy Python API-kat biztosít. | Fájlrendszer, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
+| **Teljesítmény** | A betöltések várólistára kerülnek és kezelhetők, ami biztosítja a kis méretű betöltéseket, és magas rendelkezésre állást biztosít a terheléselosztás, az újrapróbálkozások és a hibakezelés biztosításával. | <ul><li>Ezeket a parancsokat nem nagy mennyiségű adat importálására tervezték.</li><li>A várt módon és olcsóbban működik. De éles forgatókönyvek, és ha a forgalmi sebesség és az adatok mérete nagy, használja a Másolás tevékenység.</li></ul> |
+| **Kiszolgálói korlátok** | <ul><li>Nincs méretkorlát.</li><li>Maximális időkorlát: 1 óra egy lenyelt blob. |<ul><li>A lekérdezési rész csak méretkorláttal van eladva, amely `noTruncation=true`et a megadásával lehet kihagyni.</li><li>Maximális időkorlát: 1 óra.</li></ul> | <ul><li>Nincs méretkorlát.</li><li>Maximális időkorlát: 1 óra.</li></ul>|
 
 > [!TIP]
-> * Ha az ADF-ből az Azure-ba másol adatok másolása Adatkezelő használja a `ingest from query` parancsokat.  
-> * Nagyméretű adathalmazok esetén (> 1GB) használja a másolási tevékenységet.  
+> * Amikor adatokat másol az ADF-ből az `ingest from query` Azure Data Explorer a parancsokat használja.  
+> * Nagy adatkészletek (>1 GB-os) használja a Másolás tevékenység.  
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-A következő táblázat felsorolja a Azure Data Factory integrációjának különböző lépéseihez szükséges engedélyeket.
+Az alábbi táblázat felsorolja az Azure Data Factory-val való integráció különböző lépéseihez szükséges engedélyeket.
 
-| Lépés: | Művelet | Engedélyek minimális szintje | Megjegyzések |
+| Lépés | Művelet | Az engedélyek minimális szintje | Megjegyzések |
 |---|---|---|---|
-| **Társított szolgáltatás létrehozása** | Adatbázis-navigáció | *adatbázis megjelenítője* <br>Az ADF használatával bejelentkezett felhasználó számára engedélyezni kell az adatbázis metaadatainak olvasását. | A felhasználó manuálisan is megadhatja az adatbázis nevét. |
-| | Kapcsolat tesztelése | *Adatbázis-figyelő* vagy- *tábla lenyelése* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-szint `.show` a parancsok vagy a tábla szintjének betöltését. | <ul><li>A TestConnection ellenőrzi a kapcsolódást a fürthöz, és nem az adatbázishoz. Ez akkor is sikeres lehet, ha az adatbázis nem létezik.</li><li>A tábla-rendszergazdai engedélyek nem elegendőek.</li></ul>|
-| **Adatkészlet létrehozása** | Táblázatos Navigálás | *Adatbázis-figyelő* <br>Az ADF használatával bejelentkezett felhasználónak engedélyezni kell az adatbázis-szintű `.show` parancsok futtatását. | A felhasználó manuálisan is megadhatja a táblanév nevét.|
-| **Adatkészlet** vagy **másolási tevékenység** létrehozása | Előzetes verzió | *adatbázis megjelenítője* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-metaadatok olvasását. | | 
-|   | Séma importálása | *adatbázis megjelenítője* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-metaadatok olvasását. | Ha a ADX egy táblázatos táblázatos másolás forrása, akkor az ADF automatikusan importálja a sémát, még akkor is, ha a felhasználó nem importál explicit módon sémát. |
-| **ADX fogadóként** | Név szerinti oszlop leképezésének létrehozása | *Adatbázis-figyelő* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-szintű `.show` parancsok futtatását. | <ul><li>Az összes kötelező művelet működni fog a *Table*betöltéssel.</li><li> Néhány választható művelet sikertelen lehet.</li></ul> |
-|   | <ul><li>CSV-megfeleltetés létrehozása a táblában</li><li>A leképezés eldobása</li></ul>| *Table* betöltés vagy *adatbázis-rendszergazda* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell a tábla módosítását. | |
-|   | Adatok kigyűjtése | *Table* betöltés vagy *adatbázis-rendszergazda* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell a tábla módosítását. | | 
-| **ADX forrásként** | Lekérdezés végrehajtása | *adatbázis megjelenítője* <br>Az egyszerű szolgáltatásnév számára engedélyezni kell az adatbázis-metaadatok olvasását. | |
-| **Kusto parancs** | | Az egyes parancsok engedélyei szintjének megfelelően. |
+| **Csatolt szolgáltatás létrehozása** | Adatbázis-navigáció | *adatbázis-megjelenítő* <br>Az ADF-et használó bejelentkezett felhasználónak fel kell hatalmazni az adatbázis metaadatainak olvasására. | A felhasználó manuálisan is megadhatja az adatbázis nevét. |
+| | Kapcsolat tesztelése | *adatbázis-figyelő* vagy *táblabeadás* <br>Az egyszerű szolgáltatásnak engedélyezni kell `.show` az adatbázisszintű parancsok vagy táblaszintű betöltés végrehajtását. | <ul><li>A TestConnection a fürthöz való csatlakozást ellenőrzi, nem pedig az adatbázist. Akkor is sikeres lehet, ha az adatbázis nem létezik.</li><li>A táblarendszergazdai engedélyek nem elegendőek.</li></ul>|
+| **Adatkészlet létrehozása** | Táblázatnavigáció | *adatbázis-figyelő* <br>Az ADF-et használó bejelentkezett felhasználónak jogosultnak kell lennie az adatbázisszintű `.show` parancsok végrehajtására. | A felhasználó manuálisan is megadhatja a tábla nevét.|
+| **Adatkészlet** vagy **másolási tevékenység** létrehozása | Adatok előnézete | *adatbázis-megjelenítő* <br>Az egyszerű szolgáltatásnak jogosultnak kell lennie az adatbázis metaadatainak olvasására. | | 
+|   | Séma importálása | *adatbázis-megjelenítő* <br>Az egyszerű szolgáltatásnak jogosultnak kell lennie az adatbázis metaadatainak olvasására. | Ha az ADX egy táblázatos-táblázatos másolat forrása, az ADF automatikusan importálja a sémát, még akkor is, ha a felhasználó nem importált a sémát explicit módon. |
+| **ADX mint fogadó** | Név szerint oszlopleképezés létrehozása | *adatbázis-figyelő* <br>Az egyszerű szolgáltatásnak engedélyeznie `.show` kell az adatbázisszintű parancsok végrehajtásához. | <ul><li>Minden kötelező művelet együtt fog működni *a táblabeesővel.*</li><li> Egyes választható műveletek sikertelenek lehetnek.</li></ul> |
+|   | <ul><li>CSV-hozzárendelés létrehozása a táblában</li><li>A leképezés eldobása</li></ul>| *táblabetöltés* vagy *adatbázis-rendszergazda* <br>A szolgáltatásnévnek jogosultnak kell lennie a tábla módosításához. | |
+|   | Adatok betöltése | *táblabetöltés* vagy *adatbázis-rendszergazda* <br>A szolgáltatásnévnek jogosultnak kell lennie a tábla módosításához. | | 
+| **ADX forrásként** | Lekérdezés végrehajtása | *adatbázis-megjelenítő* <br>Az egyszerű szolgáltatásnak jogosultnak kell lennie az adatbázis metaadatainak olvasására. | |
+| **Kusto parancs** | | Az egyes parancsok engedélyszintje szerint. |
 
 ## <a name="performance"></a>Teljesítmény 
 
-Ha az Azure Adatkezelő a forrás, és használja a keresési, másolási vagy parancsi tevékenységet, amely egy lekérdezést tartalmaz, a következő témakörben talál információt: a Teljesítményadatok és az ADF dokumentációjának [lekérdezése](/azure/kusto/query/best-practices) a [másolási tevékenységhez](/azure/data-factory/copy-activity-performance).
+Ha az Azure Data Explorer a forrás, és a lekérdezést tartalmazó lekérdezést tartalmazó kereső, másolási vagy parancstevékenységet használja, tekintse meg a teljesítményadatokra vonatkozó [gyakorlati tanácsok lekérdezési gyakorlati tanácsait](/azure/kusto/query/best-practices) és [a másolási tevékenység ADF dokumentációját.](/azure/data-factory/copy-activity-performance)
   
-Ez a szakasz a másolási tevékenység használatát tárgyalja, ahol az Azure Adatkezelő a fogadó. Az Azure Adatkezelő-fogadó becsült átviteli sebessége 11-13 MBps. Az alábbi táblázat az Azure Adatkezelő fogadó teljesítményét befolyásoló paramétereket ismerteti.
+Ez a szakasz a másolási tevékenység használatával foglalkozik, ahol az Azure Data Explorer a fogadó. Az Azure Data Explorer-fogadó becsült átviteli sebessége 11–13 Mb/s. Az alábbi táblázat ismerteti az Azure Data Explorer-fogadó teljesítményét befolyásoló paramétereket.
 
 | Paraméter | Megjegyzések |
 |---|---|
-| **Összetevők földrajzi közelsége** | Helyezze el az összes összetevőt ugyanabban a régióban:<ul><li>forrás-és fogadó adattárak.</li><li>ADF Integration Runtime.</li><li>A ADX-fürt.</li></ul>Győződjön meg arról, hogy legalább az integrációs modul ugyanabban a régióban található, mint a ADX-fürt. |
-| **DIUs száma** | 1 virtuális gép az ADF által használt minden 4 DIUs. <br>A DIUs növelése csak akkor segít, ha a forrás egy fájl alapú, több fájllal rendelkező tároló. Az egyes virtuális gépek ezután párhuzamosan dolgozzák fel egy másik fájlt. Ezért egyetlen nagyméretű fájl másolása nagyobb késéssel jár, mint több kisebb fájl másolása.|
-|**A ADX-fürt mennyisége és SKU-je** | A ADX-csomópontok nagy száma növeli a betöltés feldolgozásának idejét.|
-| **Párhuzamosság** | Egy adatbázisból nagyon nagy mennyiségű adatok másolásához particionálja az adatait, majd használjon egy ForEach hurkot, amely párhuzamosan másolja az egyes partíciókat, vagy használja a [tömeges másolást az adatbázisból az Azure adatkezelő sablonba](data-factory-template.md). Megjegyzés: a **beállítások** > a másolási tevékenység **párhuzamossági foka** nem vonatkozik a ADX. |
-| **Adatfeldolgozás bonyolultsága** | A késés a forrásfájl formátuma, az oszlopok leképezése és a tömörítés alapján változhat.|
-| **Az integrációs modult futtató virtuális gép** | <ul><li>Az Azure Copy esetében az ADF-alapú virtuális gépek és a gép SKU-i nem módosíthatók.</li><li> Az Azure-beli másoláshoz ellenőrizze, hogy a saját üzemeltetésű integrációs modult üzemeltető virtuális gép elég erős-e.</li></ul>|
+| **Az összetevők földrajzi közelsége** | Helyezze az összes összetevőt ugyanabban a régióban:<ul><li>forrás- és fogadó adattárolók.</li><li>ADF-integrációs futásidejű.</li><li>Az ADX-fürt.</li></ul>Győződjön meg arról, hogy legalább az integrációs futásidejű ugyanabban a régióban, mint az ADX-fürt. |
+| **DIUs-ok száma** | 1 virtuális gép az ADF által használt minden 4 DIUs-hoz. <br>A DIUs-ok növelése csak akkor segít, ha a forrás több fájlt tartalmazó fájlalapú tároló. Minden virtuális gép ezután egy másik fájlt dolgoz fel párhuzamosan. Ezért egyetlen nagy fájl másolása nagyobb késést eredményez, mint több kisebb fájl másolása.|
+|**Az ADX-fürt mennyisége és termékváltozata** | Az ADX-csomópontok nagy száma növeli a betöltési feldolgozási időt.|
+| **Párhuzamosság** | Ha nagyon nagy mennyiségű adatot szeretne másolni egy adatbázisból, particionálja az adatokat, majd használjon foreach hurkot, amely az egyes partíciókat párhuzamosan másolja, vagy használja a [Tömeges másolás adatbázisból az Azure Data Explorer sablonba](data-factory-template.md). Megjegyzés: A Másolás**tevékenységben a párhuzamosság** **foka** > nem releváns az ADX számára. |
+| **Az adatfeldolgozás összetettsége** | A késés a forrásfájl formátumáttól, az oszlopleképezéstől és a tömörítéstől függően változik.|
+| **Az integrációs futtató virtuális gép** | <ul><li>Az Azure-példány, ADF virtuális gépek és a gép idoszai nem módosíthatók.</li><li> Az Azure-példány on-prem, határozza meg, hogy a virtuális gép üzemelteti a saját üzemeltetésű infravörös elég erős.</li></ul>|
 
 ## <a name="tips-and-common-pitfalls"></a>Tippek és gyakori buktatók
 
-### <a name="monitor-activity-progress"></a>Tevékenységek előrehaladásának figyelése
+### <a name="monitor-activity-progress"></a>Tevékenységállapotának figyelése
 
-* A tevékenység előrehaladásának figyelése során az *adatírást* megadó tulajdonság sokkal nagyobb lehet az *adatolvasási* tulajdonságnál, mert a rendszer a bináris fájl mérete alapján számítja ki az *adatolvasást* , míg az *írás* a memóriában tárolt méret szerint történik, az adatmennyiség deszerializálása és kibontása után.
+* A tevékenység előrehaladásának figyelésekor az *Adatok írásbeli* tulajdonsága sokkal nagyobb lehet, mint az *Adatolvasás* tulajdonság, mivel az *adatok olvasása* a bináris fájlméret alapján kerül kiszámításra, míg a *beírt adatok* számítása a memórián belüli méret alapján történik, miután az adatokat deszimorizálták és kibontották.
 
-* A tevékenység előrehaladásának monitorozásakor láthatja, hogy az Azure Adatkezelő fogadóba írja az adott információt. Az Azure Adatkezelő tábla lekérdezésekor láthatja, hogy az adatvesztés nem érkezett meg. Ennek az az oka, hogy az Azure Adatkezelőba való másoláskor két fázis van. 
-    * Az első szakasz beolvassa a forrásadatokat, feldarabolja azt 900 MB-nyi darabokra, és feltölti az egyes adattömböket egy Azure-Blobba. Az első szakaszt az ADF tevékenység előrehaladási nézete látja. 
-    * A második szakasz akkor kezdődik, amikor az összes adattal feltölti az Azure-blobokat. Az Azure Adatkezelő Engine-csomópontok letöltik a blobokat, és betöltik az adatot a fogadó táblába. Az Azure-Adatkezelő táblázatban láthatók az adatai.
+* A tevékenység előrehaladásának figyelése során láthatja, hogy az adatok az Azure Data Explorer fogadóba írásakor. Az Azure Data Explorer tábla lekérdezésekekor láthatja, hogy az adatok nem érkeztek meg. Ennek az az oka, hogy az Azure Data Explorer be másolása két szakaszból áll. 
+    * Az első szakasz beolvassa a forrásadatokat, felosztja azokat 900 MB-os adattömbökre, és feltölti az egyes adattömböket egy Azure Blobba. Az első szakaszt az ADF tevékenységelőrehaladási nézete látja. 
+    * A második szakasz akkor kezdődik, amikor az összes adatot feltölti az Azure Blobs. Az Azure Data Explorer motorcsomópontjai letöltik a blobokat, és betöltik az adatokat a fogadótáblába. Az adatok ezután látható az Azure Data Explorer tábla.
 
-### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Nem sikerült bevenni a CSV-fájlokat a nem megfelelő Escape miatt
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>A CSV-fájlok betöltésének elmulasztása a nem megfelelő szökés miatt
 
-Az Azure Adatkezelő CSV-fájlokat vár az [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)-hez való igazításhoz.
-A következőket várja:
-* Azok a mezők, amelyek Escape-karaktert (például "és új vonalakat") tartalmazó karaktereket tartalmaznak **, egy** karakterrel kell kezdődnie és végződnie, szóköz nélkül. *A mezőben* **lévő összes karakter** megmenekül egy dupla **"** karakter (" **"** ) használatával. Például a _"Hello", "World"_ "" egy érvényes CSV-fájl, amelynek egyetlen rekordja egyetlen oszlop vagy mező a _"World"_ tartalommal.
-* A fájl összes rekordjának azonos számú oszlopot és mezőt kell tartalmaznia.
+Az Azure Data Explorer elvárja, hogy a CSV-fájlok igazodjanak az [RFC 4180-hoz.](https://www.ietf.org/rfc/rfc4180.txt)
+Arra számít, hogy:
+* A kiszökést igénylő karaktereket (például " és új sorokat) tartalmazó mezőknek **"** karakterrel kell kezdődniük és végződniük, szóköz nélkül. A *mezőn belüli* összes **"** karakter kettős **" karakterrel (** **""**) távozik. Például a _"Hello, ""World"""_ egy érvényes CSV-fájl, amelyegyetlen rekordot tartalmaz, amelynek egyetlen oszlopa vagy mezője van, amelynek tartalma _Hello, "World"_.
+* A fájlban lévő összes rekordnak azonos számú oszlopmal és mezővel kell rendelkeznie.
 
-Azure Data Factory lehetővé teszi a fordított perjel (Escape) karakter használatát. Ha Azure Data Factory használatával létrehoz egy fordított perjel karaktert tartalmazó CSV-fájlt, a fájl betöltése az Azure-ba Adatkezelő sikertelen lesz.
+Az Azure Data Factory lehetővé teszi a fordított perjel (escape) karakter. Ha az Azure Data Factory használatával fordított perszés karakterrel rendelkező CSV-fájlt hoz létre, a fájl Azure Data Explorerbe történő betöltése sikertelen lesz.
 
 #### <a name="example"></a>Példa
 
 A következő szöveges értékek: Hello, "World"<br/>
-ABC-DEF<br/>
-"ABC\D" EF<br/>
+ABC DEF<br/>
+"ABC\D"EF<br/>
 "ABC DEF<br/>
 
-A következőnek kell megjelennie egy megfelelő CSV-fájlban: "Hello", "World" ""<br/>
+Meg kell jelennie egy megfelelő CSV fájlban a következőkszerint: "Hello, ""World"""<br/>
 "ABC DEF"<br/>
-"" "ABC DEF"<br/>
-"" "ABC\D" "EF"<br/>
+""ABC DEF"<br/>
+"""ABC\D""EF"<br/>
 
-Az alapértelmezett escape-karakter (fordított perjel) használatával a következő CSV nem fog működni az Azure Adatkezelő: "Hello, \"World\""<br/>
+Az alapértelmezett escape karakter (fordított perjel) használatával a következő CSV nem \"fog\"működni az Azure Data Explorer rel: "Hello, World"<br/>
 "ABC DEF"<br/>
-"\"ABC DEF"<br/>
+"\"ABC DEF "<br/>
 "\"ABC\D\"EF"<br/>
 
 ### <a name="nested-json-objects"></a>Beágyazott JSON-objektumok
 
-JSON-fájl Azure Adatkezelőba való másolása során vegye figyelembe a következőket:
+JSON-fájl Azure Data Explorer bemásolásakor vegye figyelembe a következőket:
 * A tömbök nem támogatottak.
-* Ha a JSON-struktúra objektum adattípusokat tartalmaz, a Azure Data Factory lelapul az objektum alárendelt elemeit, és az egyes alárendelt elemeket az Azure Adatkezelő-tábla egy másik oszlopához próbálja meg leképezni. Ha azt szeretné, hogy a teljes objektum elem le legyen képezve egyetlen oszlopra az Azure Adatkezelőban:
-    * A teljes JSON-sor betöltése egyetlen dinamikus oszlopba az Azure Adatkezelőban.
-    * Manuálisan szerkessze a folyamat definícióját Azure Data Factory JSON-szerkesztő használatával. A **leképezésekben**
-       * Távolítsa el az egyes alárendelt elemekhez létrehozott több leképezést, és adjon hozzá egyetlen leképezést, amely leképezi az objektum típusát a Table (tábla) oszlophoz.
-       * A záró szögletes zárójel után adjon hozzá egy vesszőt, majd a következőt:<br/>
-       `"mapComplexValuesToString": true` kérdésre adott válaszban foglalt lépéseket.
+* Ha a JSON-struktúra objektumadat-típusokat tartalmaz, az Azure Data Factory összeolvasztja az objektum gyermekelemeit, és megpróbálja leképezni az egyes gyermekelemeket egy másik oszlophoz az Azure Data Explorer-táblázatban. Ha azt szeretné, hogy a teljes objektumelem egyetlen oszlophoz legyen hozzárendelve az Azure Data Explorerben:
+    * A teljes JSON-sor egyetlen dinamikus oszlopba történő betöltése az Azure Data Explorerben.
+    * Manuálisan szerkesztheti a folyamatdefiníciót az Azure Data Factory JSON-szerkesztőjével. A **leképezések**
+       * Távolítsa el az egyes gyermekelemekhez létrehozott több leképezést, és adjon hozzá egyetlen leképezést, amely leképezi az objektumtípusát a táblázatoszlophoz.
+       * A záró szögletes zárójel után adjunk hozzá egy vesszőt, majd:<br/>
+       `"mapComplexValuesToString": true`.
 
-### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>AdditionalProperties megadása az Azure-ba való másoláskor Adatkezelő
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>További tulajdonságok megadása az Azure Data Explorer be másolásakor
 
 > [!NOTE]
-> Ez a funkció jelenleg a JSON-adattartalom manuális szerkesztésével érhető el. 
+> Ez a funkció jelenleg a JSON-tartalom manuális szerkesztésével érhető el. 
 
-Vegyen fel egyetlen sort a másolási tevékenység "fogadó" szakaszában a következőképpen:
+Adjon hozzá egy sort a másolási tevékenység "fogadó" szakaszában az alábbiak szerint:
 
 ```json
 "sink": {
@@ -187,7 +187,7 @@ Vegyen fel egyetlen sort a másolási tevékenység "fogadó" szakaszában a kö
 },
 ```
 
-Az érték Escape-értéke trükkös lehet. A következő kódrészletet használja hivatkozásként:
+Az érték elől való menekülés trükkös lehet. Hivatkozásként használja a következő kódrészletet:
 
 ```csharp
 static void Main(string[] args)
@@ -205,18 +205,18 @@ static void Main(string[] args)
 }
 ```
 
-A kinyomtatott érték:
+A nyomtatott érték:
 
 ```json
 {"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [másolhat az Azure Adatkezelőba Azure Data Factory használatával](data-factory-load-data.md).
-* További információ az [adatbázisból az adatkezelő Azure-ba való tömeges másoláshoz Azure Data Factory sablon](data-factory-template.md)használatával.
-* Ismerje meg, hogyan használható [Azure Data Factory parancs tevékenység az Azure adatkezelő-vezérlési parancsok futtatásához](data-factory-command-activity.md).
-* Ismerje meg az Azure Adatkezelő Adatlekérdezési [lekérdezéseit](/azure/data-explorer/web-query-data) .
+* Megtudhatja, [hogyan másolhat adatokat az Azure Data Explorerbe az Azure Data Factory használatával.](data-factory-load-data.md)
+* Ismerje meg, hogyan használja az [Azure Data Factory sablont az adatbázisból az Azure Data Explorerbe történő tömeges másoláshoz.](data-factory-template.md)
+* Ismerje meg, hogy miként futtathatja [az Azure Data Explorer vezérlőparancsait az Azure Data Factory parancstevékenységével.](data-factory-command-activity.md)
+* Ismerje meg az [Azure Data Explorer adatlekérdezési lekérdezések.](/azure/data-explorer/web-query-data)
 
 
 

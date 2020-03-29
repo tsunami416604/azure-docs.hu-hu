@@ -1,6 +1,6 @@
 ---
-title: Az MPIO konfigurálása a StorSimple Linux-gazdagépen
-description: Az MPIO konfigurálása a CentOS 6,6-t futtató Linux-gazdagéphez csatlakoztatott StorSimple
+title: Konfigurálása MPIO storSimple Linux host
+description: Konfigurálja az MPIO-t a CentOS 6.6-ot futtató Linux-állomáshoz csatlakoztatott StorSimple rendszeren
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278362"
 ---
-# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
-Ez a cikk ismerteti a többutas i/o (MPIO) szolgáltatásnak a CentOS 6,6-es gazdagép-kiszolgálón való konfigurálásához szükséges lépéseket. Az iSCSI-kezdeményezők használatával a gazdagép-kiszolgáló a magas rendelkezésre állás érdekében csatlakozik a Microsoft Azure StorSimple eszközhöz. Részletesen ismerteti a Többutas eszközök automatikus észlelését és a StorSimple-kötetek adott beállítását.
+# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása CentOS-t futtató StorSimple-állomáson
+Ez a cikk a Többutas IO (MPIO) Centos 6.6 gazdakiszolgálón történő konfigurálásához szükséges lépéseket ismerteti. A gazdakiszolgáló csatlakozik a Microsoft Azure StorSimple eszközhöz az iSCSI-kezdeményezőin keresztüli magas rendelkezésre állás érdekében. Részletesen ismerteti a többutas eszközök automatikus felderítését, és csak a StorSimple kötetek konkrét beállítását.
 
-Ez az eljárás az StorSimple 8000 Series-eszközök összes modelljére érvényes.
+Ez az eljárás a StorSimple 8000 sorozatú eszközök összes modelljére vonatkozik.
 
 > [!NOTE]
-> Ez az eljárás nem használható StorSimple Cloud Appliancehoz. További információ: a gazdagép-kiszolgálók konfigurálása a felhőalapú berendezéshez.
+> Ez az eljárás nem használható StorSimple felhőalapú berendezéshez. További információ: hogyan konfigurálhatja a gazdakiszolgálókat a felhőalapú készülékhez.
 
 
-## <a name="about-multipathing"></a>Tudnivalók a többutas használatról
-A többutas szolgáltatás lehetővé teszi több I/O-útvonal konfigurálását egy gazdagép és egy tárolóeszköz között. Ezek az I/O-útvonalak olyan fizikai SAN-kapcsolatok, amelyek különálló kábeleket, kapcsolókat, hálózati adaptereket és vezérlőket tartalmazhatnak. A többútvonalas összesítések az I/O-útvonalakat összesítik az összes összesített útvonalhoz társított új eszköz konfigurálásához.
+## <a name="about-multipathing"></a>A többutas útról
+A többutas szolgáltatás lehetővé teszi több I/O-útvonal konfigurálását egy gazdakiszolgáló és egy tárolóeszköz között. Ezek az I/O-útvonalak olyan fizikai SAN-kapcsolatok, amelyek különálló kábeleket, kapcsolókat, hálózati adaptereket és vezérlőket tartalmazhatnak. A többutas összesítés az I/O-útvonalakat összesíti, így az összes összesített elérési úthoz társított új eszköz konfigurálásához.
 
-A többútvonalos elérés célja kettős:
+A többutas út kétirányú:
 
-* **Magas rendelkezésre állás**: egy másik elérési utat biztosít, ha az I/O-útvonal bármely eleme (például a kábel, a kapcsoló, a hálózati adapter vagy a vezérlő) nem sikerül.
-* **Terheléselosztás**: a tárolóeszköz konfigurációjától függően javíthatja a teljesítményt az I/O-útvonalak terhelésének észlelésével és a terhelések dinamikus kiegyensúlyozásával.
+* **Magas rendelkezésre állás**: Alternatív útvonalat biztosít, ha az I/O elérési út bármely eleme (például kábel, kapcsoló, hálózati adapter vagy vezérlő) meghibásodik.
+* **Terheléselosztás:** A tárolóeszköz konfigurációjától függően javíthatja a teljesítményt azáltal, hogy észleli a terheléseket az I/O-útvonalakon, és dinamikusan kiegyensúlyozza ezeket a terheléseket.
 
-### <a name="about-multipathing-components"></a>Tudnivalók a többutas összetevőkről
-A többszörös elérésű Linux a következő táblázatokból álló kernel-összetevőket és felhasználói felületi összetevőket tartalmaz.
+### <a name="about-multipathing-components"></a>Többutas összetevők –
+A Linux ban való többutas alkalmazás kernel összetevőkből és az alábbi táblázatos felhasználói tér-összetevőkből áll.
 
-* **Kernel**: a fő összetevő az az *eszköz-Mapper* , amely átirányítja az I/O-t, és támogatja a feladatátvételt az elérési utak és az elérésiút-csoportok számára.
+* **Kernel**: A fő összetevő az *eszköz-leképező,* amely átirányítja az I/O és támogatja a feladatátvétel az elérési utak és az elérési út csoportok.
 
-* **Felhasználói terület**: ezek a *többutas* eszközök, amelyek a Többutas eszközök felügyeletére szolgálnak az eszköz-Mapper többutas modul működésének elutasításával. Az eszközök a következőkből állnak:
+* **Felhasználói tér:** Ezek *többutas eszközök,* amelyek többutas eszközöket kezelnek az eszközleképező többutas modul utasításával, hogy mi a teendő. Az eszközök a következőkből állnak:
    
-   * **Többutas**: a többútvonalas eszközök listája és konfigurálása.
-   * **Többútvonalas**: démon, amely végrehajtja a többutas és figyeli az elérési utakat.
-   * **Devmap-Name**: a devmaps udev megfelelő eszköz-nevet biztosít.
-   * **Kpartx**: leképezi a lineáris devmaps az eszközök partíciói számára, hogy a többutas térképek particionálható legyen.
-   * **Többutas. conf**: a többutas démon konfigurációs fájlja, amely a beépített konfigurációs tábla felülírására szolgál.
+   * **Többutas**: többutas eszközöket sorol és konfigurál.
+   * **Többutas:** démon, amely többutas tanévenként hajtja végre, és figyeli az elérési utakat.
+   * **Devmap-name:** értelmes eszköznevet biztosít az udev számára a devmaps számára.
+   * **Kpartx**: a lineáris fejlesztői térképeket eszközpartíciókhoz rendeli hozzá, hogy a többutas leképezések particionálhatók legyenek.
+   * **Multipath.conf**: konfigurációs fájl többutas démonhoz, amely a beépített konfigurációs tábla felülírására szolgál.
 
-### <a name="about-the-multipathconf-configuration-file"></a>Tudnivalók a többutas. conf konfigurációs fájlról
-A konfigurációs fájl `/etc/multipath.conf` számos, felhasználó által konfigurálható többutas funkciót tesz elérhetővé. A `multipath` parancs és a kernel démon `multipathd` használja az ebben a fájlban található adatokat. A fájlt csak a Többutas eszközök konfigurálása során kell megkeresni. A `multipath` parancs futtatása előtt győződjön meg arról, hogy minden módosítást végzett. Ha ezt követően módosítja a fájlt, a módosítások érvénybe léptetéséhez le kell állítania és újra kell indítania a többutas elérési utat.
+### <a name="about-the-multipathconf-configuration-file"></a>A multipath.conf konfigurációs fájl
+A konfigurációs fájl `/etc/multipath.conf` számos többutas szolgáltatást felhasználó által konfigurálhatóvá tesz. A `multipath` parancs és a kerneldémon a fájlban található információkat `multipathd` használja. A fájl csak a többutas eszközök konfigurálása során tekinthető meg. A parancs futtatása előtt győződjön `multipath` meg arról, hogy minden módosítás megtörtént. Ha ezt követően módosítja a fájlt, le kell állítania, és újra el kell indítania a többutas utat ahhoz, hogy a módosítások érvénybe lépjenek.
 
-A többutas. conf fájl öt szakaszt tartalmaz:
+A multipath.conf öt szakaszból álló:
 
-- **Rendszerszintű alapértékek** *(alapértékek)* : felülbírálhatja a rendszerszintű alapértékeket.
-- **Feketelistán lévő eszközök** *(feketelista)* : megadhatja azoknak az eszközöknek a listáját, amelyeket az eszköz-Mapper nem szabályozhat.
-- **Kivételek feketelistája** *(blacklist_exceptions)* : azonosíthatja a többutas eszközként kezelendő egyes eszközöket, még akkor is, ha azok szerepelnek a feketelistán.
-- **Tároló-vezérlőre vonatkozó beállítások** *(eszközök)* : megadhatja azokat a konfigurációs beállításokat, amelyeket a rendszer a szállítóval és a termékkel kapcsolatos adatokkal rendelkező eszközökre alkalmaz.
-- **Eszközre vonatkozó beállítások** *(több útvonal)* : ebben a szakaszban az egyes logikai egységek konfigurációs beállításainak finomhangolásához használható.
+- **Rendszerszintű alapértelmezések** *(alapértelmezett értékek):* Felülírhatja a rendszerszintű alapértelmezéseket.
+- **Feketelistára helyezett eszközök** *(feketelista)*: Megadhatja azoknak az eszközöknek a listáját, amelyeket nem szabad eszközleképezővel vezérelni.
+- **Feketelista kivételek** *(blacklist_exceptions)*: Azonosíthatja azokat az eszközöket, amelyektöbbutas eszközként kezelendők, még akkor is, ha szerepel nek a feketelistában.
+- **A tárolóvezérlőre vonatkozó beállítások** *(eszközök)*: Megadhatja azokat a konfigurációs beállításokat, amelyek a Szállító és a Termék adatokkal tartalmazó eszközökre lesznek alkalmazva.
+- **Eszközspecifikus beállítások** *(többutas)*: Ezzel a paranchevel finomíthatja az egyes lun-ok konfigurációs beállításait.
 
-## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>A Linux-gazdagéphez csatlakoztatott StorSimple többutas elérésének konfigurálása
-A Linux-gazdagéphez csatlakoztatott StorSimple-eszközök magas rendelkezésre állást és terheléselosztást is konfigurálhat. Ha például a Linux-gazdagép két, a SAN-hoz csatlakoztatott csatolóval rendelkezik, és az eszközhöz két interfész csatlakozik a SAN hálózathoz, például hogy ezek a felületek ugyanazon az alhálózaton vannak, akkor elérhető 4 útvonal lesz. Ha azonban az eszköz és a gazdagép felületének minden adatfelülete eltérő IP-alhálózaton található (és nem irányítható), akkor csak 2 útvonal lesz elérhető. Az összes elérhető útvonal automatikus észleléséhez konfigurálhatja a többutas elérési utat, kiválaszthatja az elérési utakhoz tartozó terheléselosztási algoritmust, alkalmazhatja az adott konfigurációs beállításokat a StorSimple kötetekhez, majd engedélyezheti és ellenőrizheti a többutas elérést.
+## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Többutas üzemeltetés konfigurálása Linux-állomáshoz csatlakoztatott StorSimple-en
+A Linux-állomáshoz csatlakoztatott StorSimple-eszköz konfigurálható a magas rendelkezésre állás és a terheléselosztás érdekében. Ha például a Linux-állomás két kapcsolattal rendelkezik a SAN-hoz, és az eszköz két, a SAN-hoz csatlakoztatott felülettel rendelkezik, így ezek az összeköttetések ugyanazon az alhálózaton vannak, akkor 4 elérési út lesz elérhető. Ha azonban az eszköz és az állomáskapcsolat minden adatilleszte egy másik IP-alhálózaton található (és nem irányítható), akkor csak 2 elérési út lesz elérhető. Beállíthatja a többutas utat úgy, hogy automatikusan felderítse az összes elérhető elérési utat, válasszon egy terheléselosztási algoritmust ezekhez az elérési utakhoz, alkalmazzon konkrét konfigurációs beállításokat a csak StorSimple kötetekre, majd engedélyezze és ellenőrizze a többutas verziót.
 
-Az alábbi eljárás azt ismerteti, hogyan konfigurálhatja a többutas módszert, ha két hálózati adapterrel rendelkező StorSimple-eszköz két hálózati adapterrel rendelkező gazdagéphez csatlakozik.
+Az alábbi eljárás azt ismerteti, hogyan konfigurálható a többutas, ha egy két hálózati csatolmányral rendelkező StorSimple-eszköz két hálózati csatolmányral rendelkező állomáshoz csatlakozik.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs előfeltételeit részletezi.
+Ez a szakasz részletezi a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs előfeltételeit.
 
-### <a name="on-centos-host"></a>CentOS-gazdagépen
-1. Győződjön meg arról, hogy a CentOS-gazdagépen 2 hálózati adapter van engedélyezve. Típus:
+### <a name="on-centos-host"></a>A CentOS gazdagépen
+1. Győződjön meg arról, hogy a CentOS-állomás 2 hálózati csatolója van engedélyezve. Típus:
    
     `ifconfig`
    
-    A következő példa a kimenetet mutatja be, ha két hálózati adapter (`eth0` és `eth1`) van jelen a gazdagépen.
+    A következő példa a kimenetet mutatja`eth0` `eth1`be, ha két hálózati adapter ( és ) van jelen az állomáson.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -99,21 +99,21 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-1. Telepítse az *iSCSI-kezdeményező-utils* szolgáltatást a CentOS-kiszolgálóra. Az *iSCSI-kezdeményező-utils*telepítéséhez hajtsa végre az alábbi lépéseket.
+1. Telepítse *az iSCSI-initiator-utils-t* a CentOS kiszolgálóra. Az *iSCSI-initiator-utils*telepítéséhez hajtsa végre az alábbi lépéseket.
    
-   1. Jelentkezzen be `root`ként a CentOS-gazdagépre.
-   1. Telepítse az *iSCSI-kezdeményező-utils-* t. Típus:
+   1. Jelentkezzen be `root` a CentOS-állomásra.
+   1. Telepítse az *iSCSI-initiator-utils -t.* Típus:
       
        `yum install iscsi-initiator-utils`
-   1. Az *iSCSI-kezdeményező-utils* sikeres telepítése után indítsa el az iSCSI szolgáltatást. Típus:
+   1. Az *iSCSI-Initiator-utils* sikeres telepítése után indítsa el az iSCSI szolgáltatást. Típus:
       
        `service iscsid start`
       
-       Alkalmanként előfordulhat, hogy `iscsid` nem indul el, és a `--force` beállításra lehet szükség
-   1. Annak ellenőrzéséhez, hogy az iSCSI-kezdeményező engedélyezve van-e a rendszerindítás során, használja a `chkconfig` parancsot a szolgáltatás engedélyezéséhez.
+       Időnként előfordulhat, `iscsid` hogy nem indul `--force` el, és szükség lehet erre a lehetőségre
+   1. Annak érdekében, hogy az iSCSI-kezdeményező engedélyezve `chkconfig` legyen a rendszerindítás idikált ideje alatt, használja a parancsot a szolgáltatás engedélyezéséhez.
       
        `chkconfig iscsi on`
-   1. A megfelelő beállítás ellenőrzéséhez futtassa a következő parancsot:
+   1. Annak ellenőrzéséhez, hogy megfelelően volt-e beállítva, futtassa a következő parancsot:
       
        `chkconfig --list | grep iscsi`
       
@@ -122,80 +122,80 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
            iscsi   0:off   1:off   2:on3:on4:on5:on6:off
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
-       A fenti példát követve láthatja, hogy az iSCSI-környezet a 2., 3., 4. és 5. futtatási szinten fut a rendszerindítás során.
-1. Telepítse az *eszközt – Mapper-többutas*. Típus:
+       A fenti példában láthatja, hogy az iSCSI-környezet a 2., 3., 4.
+1. Telepítse *az eszköz-mapper-multipath*. Típus:
    
     `yum install device-mapper-multipath`
    
-    Ekkor elindul a telepítés. Ha a rendszer megerősítést kér, a folytatáshoz írja be az **Y karaktert** .
+    A telepítés elindul. Írja be az **Y** típust, amikor megerősítést kér.
 
-### <a name="on-storsimple-device"></a>StorSimple-eszközön
-A StorSimple-eszköznek a következőket kell tartalmaznia:
+### <a name="on-storsimple-device"></a>StorSimple eszközön
+A StorSimple eszköznek rendelkeznie kell:
 
-* Legalább két interfész van engedélyezve az iSCSI-hez. Annak ellenőrzéséhez, hogy a StorSimple-eszköz két csatolója iSCSI-engedélyezve van-e, hajtsa végre a következő lépéseket a StorSimple-eszköz klasszikus Azure-portálján:
+* Legalább két, az iSCSI-hez engedélyezett csatoló. Annak ellenőrzéséhez, hogy két felület iSCSI-kompatibilis-e a StorSimple-eszközön, hajtsa végre a következő lépéseket a Klasszikus Azure-portálon a StorSimple-eszközhöz:
   
-  1. Jelentkezzen be a StorSimple-eszköz klasszikus portálján.
-  1. Válassza ki a StorSimple Manager szolgáltatást, kattintson az **eszközök** elemre, és válassza ki az adott StorSimple eszközt. Kattintson a **Konfigurálás** elemre, és ellenőrizze a hálózati adapter beállításait. Alább látható egy két iSCSI-kompatibilis hálózati adapterrel rendelkező képernyőkép. Itt az adat 2 és az adat 3, mind a 10 GbE interfész engedélyezve van az iSCSI-hez.
+  1. Jelentkezzen be a StorSimple-eszköz klasszikus portáljára.
+  1. Válassza ki a StorSimple Manager szolgáltatást, kattintson **az Eszközök** elemre, és válassza ki az adott StorSimple-eszközt. Kattintson a **Konfigurálás gombra,** és ellenőrizze a hálózati adapter beállításait. Az alábbiakban egy két iSCSI-kompatibilis hálózati csatolóval ellátott képernyőkép látható. Itt a DATA 2 és a DATA 3, mindkét 10 GbE felület engedélyezve van az iSCSI számára.
      
-      ![MPIO StorsSimple-adatfájlok – 2. konfiguráció](./media/storsimple-configure-mpio-on-linux/IC761347.png)
+      ![MPIO StorsSimple DATA 2 konfiguráció](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
-      ![MPIO StorSimple-adatfájlok – 3. konfiguráció](./media/storsimple-configure-mpio-on-linux/IC761348.png)
+      ![MPIO StorSimple DATA 3 Konfiguráció](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
-      A **configure (Konfigurálás** ) lapon
+      A **Konfigurálás** lapon
      
-     1. Győződjön meg arról, hogy mindkét hálózati adapter iSCSI-kompatibilis. Az **iSCSI-kompatibilis** mezőt **Igen**értékre kell állítani.
-     1. Győződjön meg arról, hogy a hálózati adapterek azonos sebességgel rendelkeznek, mindkettőnek 1 GbE vagy 10 GbE kell lennie.
-     1. Jegyezze fel az iSCSI-kompatibilis felületek IPv4-címeit, és mentse a szolgáltatást későbbi használatra a gazdagépen.
-* A StorSimple eszközön lévő iSCSI-felületeknek elérhetőnek kell lenniük a CentOS-kiszolgálóról.
-      Ennek ellenőrzéséhez meg kell adnia a StorSimple iSCSI-kompatibilis hálózati adapterek IP-címeit a gazdagép kiszolgálóján. A használt parancsok és a DATA2 (10.126.162.25) és DATA3 (10.126.162.26) megfelelő kimenete alább látható:
+     1. Győződjön meg arról, hogy mindkét hálózati csatoló iSCSI-kompatibilis. Az **iSCSI-kompatibilis** mezőt **Igen**értékre kell állítani.
+     1. Győződjön meg arról, hogy a hálózati adapterek azonos sebességgel, mindkettő nek 1 GbE vagy 10 GbE.
+     1. Jegyezze fel az iSCSI-kompatibilis összeköttetések IPv4-címét, és mentse későbbi használatra az állomáson.
+* A StorSimple eszköz iSCSI-felületei elérhetők a CentOS-kiszolgálóról.
+      Ennek ellenőrzéséhez meg kell adnia a StorSimple iSCSI-kompatibilis hálózati adapterek IP-címét a gazdakiszolgálón. Az alkalmazott parancsok és a megfelelő kimenet a DATA2 (10.126.162.25) és a DATA3 (10.126.162.26) értékkel az alábbiak:
   
         [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
         10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
         10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
 
 ### <a name="hardware-configuration"></a>Hardverkonfiguráció
-Javasoljuk, hogy a két iSCSI hálózati adaptert külön elérési utakon kapcsolja össze a redundancia érdekében. Az alábbi ábrán a CentOS-kiszolgáló és a StorSimple-eszköz esetében a magas rendelkezésre állás és a terheléselosztás többútvonalos beállítása ajánlott.
+Javasoljuk, hogy a két iSCSI-hálózati adaptert külön elérési utakra csatlakoztassa a redundancia érdekében. Az alábbi ábra a CentOS-kiszolgáló és a StorSimple-eszköz magas rendelkezésre állásához és terheléselosztási többutas kezeléséhez ajánlott hardverkonfigurációt mutatja be.
 
-![MPIO hardver-konfiguráció a Linux-gazdagép StorSimple](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
+![MPIO hardverkonfiguráció a StorSimple–Linux állomáshoz](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
 
 Az előző ábrán látható módon:
 
-* A StorSimple-eszköz aktív-passzív konfigurációban két vezérlővel rendelkezik.
-* Két SAN-kapcsoló csatlakozik az eszköz-vezérlőkhöz.
-* A StorSimple-eszközön két iSCSI-kezdeményező van engedélyezve.
-* A CentOS-gazdagépen két hálózati adapter van engedélyezve.
+* A StorSimple-eszköz aktív-passzív konfigurációban van, két vezérlővel.
+* Két SAN kapcsoló csatlakozik az eszköz vezérlők.
+* Két iSCSI-kezdeményező engedélyezve van a StorSimple eszközön.
+* A CentOS-állomáson két hálózati kapcsolat van engedélyezve.
 
-A fenti konfiguráció 4 külön útvonalat fog eredményezni az eszköz és a gazdagép között, ha a gazdagép és az adatillesztők irányíthatók.
+A fenti konfiguráció 4 különálló elérési utat eredményez az eszköz és az állomás között, ha az állomás- és adatfelületek irányíthatóak.
 
 > [!IMPORTANT]
-> * Javasoljuk, hogy ne keverjünk össze 1 GbE és 10 GbE hálózati adaptert a többutas eléréshez. Két hálózati adapter használata esetén mindkét csatolónak azonos típusúnak kell lennie.
-> * A StorSimple-eszközön a DATA0, DATA1, DATA4 és DATA5 1 GbE felületek, míg a DATA2 és a DATA3 10 GbE hálózati adapter. |
+> * Azt javasoljuk, hogy ne keverjen 1 GbE és 10 GbE hálózati adaptert a többutas küldéshez. Két hálózati csatoló használata esetén mindkét kapcsolatnak azonos típusúnak kell lennie.
+> * A StorSimple eszközön a DATA0, A DATA1, a DATA4 és a DATA5 1 GbE-felület, míg a DATA2 és a DATA3 10 GbE hálózati interfész.|
 > 
 > 
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
-A többutas létrehozás konfigurációs lépései magában foglalják az automatikus felderítéshez elérhető elérési utakat, a használandó terheléselosztási algoritmust, valamint a többutas és végül a konfiguráció ellenőrzését. A következő szakaszokban részletesen ismertetjük ezeket a lépéseket.
+A többutas küldés konfigurációs lépései közé tartozik az automatikus felderítéshez rendelkezésre álló elérési utak konfigurálása, a használandó terheléselosztási algoritmus megadása, a többutas küldés engedélyezése és a konfiguráció végleges ellenőrzése. A lépések mindegyikét részletesen tárgyaljuk a következő szakaszokban.
 
-### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>1\. lépés: többutas automatikus észlelés konfigurálása
-A többutas által támogatott eszközök automatikusan felderíthető és konfigurálhatók.
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>1. lépés: Többutas küldés konfigurálása az automatikus felderítéshez
+A többutas támogatott eszközök automatikusan felderíthetők és konfigurálhatók.
 
-1. `/etc/multipath.conf` fájl inicializálása. Típus:
+1. Fájl `/etc/multipath.conf` inicializálása. Típus:
    
      `mpathconf --enable`
    
-    A fenti parancs egy `sample/etc/multipath.conf` fájlt fog létrehozni.
-1. A többutas szolgáltatás elindítása. Típus:
+    A fenti parancs `sample/etc/multipath.conf` létrehoz egy fájlt.
+1. Indítsa el a többutas szolgáltatást. Típus:
    
     `service multipathd start`
    
     A következő kimenet jelenik meg:
    
     `Starting multipathd daemon:`
-1. Engedélyezze a több elérési út automatikus észlelését. Típus:
+1. A többutas utak automatikus felderítésének engedélyezése. Típus:
    
     `mpathconf --find_multipaths y`
    
-    Ez a beállítás a `multipath.conf` alapértelmezett szakaszát fogja módosítani a lent látható módon:
+    Ez módosítja az alapértelmezett `multipath.conf` szakasza az alábbiak szerint:
    
         defaults {
         find_multipaths yes
@@ -203,13 +203,13 @@ A többutas által támogatott eszközök automatikusan felderíthető és konfi
         path_grouping_policy multibus
         }
 
-### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2\. lépés: a StorSimple-kötetek többutas elérésének konfigurálása
-Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlban sorolja fel, és a rendszer figyelmen kívül hagyja. A StorSimple-eszközökről származó kötetek többutas elérésének engedélyezéséhez létre kell hoznia egy feketelistán lévő kivételeket is.
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. lépés: Többutas küldés konfigurálása StorSimple kötetekhez
+Alapértelmezés szerint az összes eszköz fekete listára kerül a multipath.conf fájlban, és megkerülendő. Feketelista-kivételeket kell létrehoznia a StorSimple-eszközök köteteinek többutas lehetővé teszi.
 
-1. Szerkessze a `/etc/mulitpath.conf` fájlt. Típus:
+1. A fájl `/etc/mulitpath.conf` szerkesztése. Típus:
    
     `vi /etc/multipath.conf`
-1. Keresse meg a blacklist_exceptions szakaszt a többutas. conf fájlban. Ebben a szakaszban a StorSimple-eszköznek feketelistán lévő kivételként kell szerepelnie. A fájl megfelelő sorait a lent látható módon törölheti (csak a használt eszköz adott modelljét használja):
+1. Keresse meg a blacklist_exceptions szakaszt a multipath.conf fájlban. A StorSimple-eszköz kell szerepelnie feketelista kivételként ebben a szakaszban. A fájl megfelelő sorainak megjegyzését az alábbi módon módosíthatja (csak a használt eszköz adott modelljét használja):
    
         blacklist_exceptions {
             device {
@@ -222,13 +222,13 @@ Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlb
             }
            }
 
-### <a name="step-3-configure-round-robin-multipathing"></a>3\. lépés: a ciklikus multiplexelés többszörös elérésének konfigurálása
-Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elérési utakat az aktív vezérlőhöz a kiegyensúlyozott, ciklikus időszeleteléses módon használja.
+### <a name="step-3-configure-round-robin-multipathing"></a>3. lépés: Ciklikus multiplexelés többutas beállítása
+Ez a terheléselosztási algoritmus az aktív vezérlő höz rendelkezésre álló összes többutat kiegyensúlyozott, ciklikus multiplexelési módon használja.
 
-1. Szerkessze a `/etc/multipath.conf` fájlt. Típus:
+1. A fájl `/etc/multipath.conf` szerkesztése. Típus:
    
     `vi /etc/multipath.conf`
-1. A `defaults` szakaszban állítsa be `multibus`re a `path_grouping_policy`. A `path_grouping_policy` megadja az alapértelmezett elérési út csoportosítására vonatkozó házirendet, amely a meghatározatlan többutas elemekre vonatkozik. Az Alapértelmezések szakasz az alább látható módon jelenik meg.
+1. A `defaults` szakasz alatt `path_grouping_policy` állítsa `multibus`a beállítását a . A `path_grouping_policy` megadott alapértelmezett elérési útcsoportosítási házirend, amelyet a meghatározatlan többutas utakra kell alkalmazni. Az alapértelmezett szakaszok az alábbiak szerint jelennek meg.
    
         defaults {
                 user_friendly_names yes
@@ -236,47 +236,47 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
         }
 
 > [!NOTE]
-> A `path_grouping_policy` leggyakoribb értékei a következők:
+> A leggyakoribb értékek `path_grouping_policy` a következők:
 > 
-> * feladatátvétel = 1 elérési út/prioritási csoport
-> * Multibus = az összes érvényes elérési út 1 prioritású csoportban
+> * feladatátvétel = 1 elérési út prioritási csoportonként
+> * multibus = az összes érvényes elérési út 1 prioritási csoportban
 > 
 > 
 
-### <a name="step-4-enable-multipathing"></a>4\. lépés: a többutas működés engedélyezése
-1. Indítsa újra a `multipathd` démont. Típus:
+### <a name="step-4-enable-multipathing"></a>4. lépés: Többutas út engedélyezése
+1. Indítsa `multipathd` újra a démont. Típus:
    
     `service multipathd restart`
-1. A kimenet az alábbi módon jelenik meg:
+1. A kimenet az alábbiak szerint történik:
    
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
-### <a name="step-5-verify-multipathing"></a>5\. lépés: a többutas elérés ellenőrzése
-1. Először győződjön meg arról, hogy az iSCSI-kapcsolatok létrejöttek a StorSimple eszközzel a következőképpen:
+### <a name="step-5-verify-multipathing"></a>5. lépés: Többutas út ellenőrzése
+1. Először győződjön meg arról, hogy az iSCSI-kapcsolat létrejött a StorSimple eszközzel az alábbiak szerint:
    
-   a. A StorSimple-eszköz felderítése. Típus:
+   a. Fedezze fel a StorSimple eszközt. Típus:
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
     ```
     
-    Ha a DATA0 IP-címe 10.126.162.25, és az 3260-as port a StorSimple-eszközön van megnyitva a kimenő iSCSI-forgalomhoz, az alábbi ábrán látható:
+    Ha a DATA0 IP-címe 10.126.162.25, a 3260-as port pedig a StorSimple eszközön nyílik meg a kimenő iSCSI-forgalomszámára, az alábbi módon érhető el:
     
     ```
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Másolja a StorSimple-eszköz IQN az előző kimenetből `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`.
+    Másolja a StorSimple eszköz IQN-jét `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`az előző kimenetről.
 
-   b. Kapcsolódjon az eszközhöz a TARGET IQN használatával. Az StorSimple-eszköz itt az iSCSI-cél. Típus:
+   b. Csatlakozzon az eszközhöz a cél IQN használatával. A StorSimple eszköz itt az iSCSI-tároló. Típus:
 
     ```
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    Az alábbi példa a kimenetet mutatja `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`IQN. A kimenet azt jelzi, hogy sikeresen csatlakozott az eszköz két iSCSI-kompatibilis hálózati adapteréhez.
+    A következő példa a kimenetet `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`mutatja be a cél IQN értékével. A kimenet azt jelzi, hogy sikeresen csatlakozott az eszköz két iSCSI-kompatibilis hálózati illesztőjéhez.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -289,17 +289,17 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
     Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
     ```
 
-    Ha csak egy gazdagép-felületet és két elérési utat lát, akkor az iSCSI-gazdagéphez is engedélyeznie kell a csatolókat. A [Linux dokumentációjában találhat részletes útmutatást](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
+    Ha itt csak egy állomásfelület et és két elérési utat lát, akkor engedélyeznie kell az iSCSI gazdagépen lévő mindkét összeköttetést. Tudod követ a [részletes oktatás -ban Linux dokumentáció](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
-1. A rendszer a CentOS-kiszolgáló számára teszi elérhetővé a kötetet a StorSimple-eszközről. További információ [: 6. lépés: kötet létrehozása](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) a StorSimple-eszközön lévő Azure Portal használatával.
+1. Egy kötet a StorSimple-eszközről van kitéve a CentOS-kiszolgálónak. További információ: [6. lépés: Kötet létrehozása](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) az Azure Portalon keresztül a StorSimple-eszközön.
 
-1. Ellenőrizze az elérhető elérési utakat. Típus:
+1. Ellenőrizze a rendelkezésre álló elérési utakat. Típus:
 
       ```
       multipath -l
       ```
 
-      A következő példa egy StorSimple-eszköz két hálózati adapterének kimenetét mutatja két elérhető elérési úttal rendelkező egyetlen gazdagép hálózati adapterhez csatlakoztatva.
+      A következő példa két hálózati adapter kimenetét mutatja be egy storSimple-eszközön, amely két elérhető elérési úttal rendelkező egyetlen gazdahálózati adapterhez csatlakozik.
 
         ```
         mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
@@ -323,55 +323,55 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
 
         After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
 
-## <a name="troubleshoot-multipathing"></a>Többútvonalas hibák megoldása
-Ez a szakasz néhány hasznos tippet tartalmaz, ha a többutas konfiguráció során problémákba ütközik.
+## <a name="troubleshoot-multipathing"></a>Többutas megoldás – problémamegoldás
+Ez a szakasz néhány hasznos tippet tartalmaz, ha a többutas konfiguráció során bármilyen problémába ütközik.
 
-K. Nem látom a `multipath.conf` fájlban történt módosításokat.
+K. Nem látom, hogy `multipath.conf` a módosítások életbe lépnek.
 
-A. Ha bármilyen módosítást végzett a `multipath.conf` fájlon, újra kell indítania a többutas szolgáltatást. Írja be a következő parancsot:
+A. Ha módosította a `multipath.conf` fájlt, újra kell indítania a többutas szolgáltatást. Írja be a következő parancsot:
 
     service multipathd restart
 
-K. Engedélyeztem két hálózati adaptert a StorSimple-eszközön, és két hálózati adaptert a gazdagépen. Ha kilistázza az elérhető elérési utakat, csak két elérési utat látok. Azt vártam, hogy négy elérhető útvonal látható.
+K. Két hálózati interfészt engedélyeztem a StorSimple eszközön és két hálózati interfészt a gazdagépen. Amikor felsorolom a rendelkezésre álló elérési utakat, csak két útvonal jelenik meg. Négy elérhető utat vártam.
 
-A. Győződjön meg arról, hogy a két útvonal ugyanazon az alhálózaton van és irányítható. Ha a hálózati adapterek eltérő VLAN-ok és nem irányíthatók, csak két elérési utat fog látni. Ennek egyik módja annak ellenőrzése, hogy a StorSimple-eszköz hálózati adapteréről is elérheti-e a gazdagép-adaptereket. [Kapcsolatba kell lépnie Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) , mert ez az ellenőrzés csak támogatási munkameneten keresztül végezhető el.
+A. Győződjön meg arról, hogy a két útvonal ugyanazon az alhálózaton és irányítható. Ha a hálózati adapterek különböző vLA-kon vannak, és nem irányíthatóak, csak két elérési utat fog látni. Ennek ellenőrzésének egyik módja annak ellenőrzése, hogy a StorSimple-eszköz hálózati felületéről mindkét gazdafelület elérhető-e. Kapcsolatba kell [lépnie a Microsoft támogatási szolgálatával,](storsimple-8000-contact-microsoft-support.md) mivel ez az ellenőrzés csak támogatási munkameneten keresztül végezhető el.
 
-K. Ha elérhető útvonalakat listázok, nem látok kimenetet.
+K. Amikor felsorolom az elérhető elérési utakat, nem jelenik meg kimenet.
 
-A. Általában nem látható, hogy a többútvonalas elérési utak nem jelentenek problémát a többutas démonban, és ez valószínűleg a `multipath.conf` fájlban található problémákra utal.
+A. Általában nem lát többutas elérési utak azt sugallja, hogy a probléma a többutas démon, és ez a `multipath.conf` legvalószínűbb, hogy minden probléma itt rejlik a fájlban.
 
-Érdemes ellenőrizni azt is, hogy a célhelyhez való csatlakozás után valóban látni lehet-e lemezeket, mivel a többutas listák egyik válasza sem jelent lemezeket.
+Azt is érdemes ellenőrizni, hogy valóban látni néhány lemezt csatlakozás után a cél, mivel nincs válasz a többutas listát is azt is jelentheti, hogy nincs lemez.
 
-* Az SCSI-busz újraellenőrzéséhez használja a következő parancsot:
+* Az SCSI-busz átvizsgálatához használja a következő parancsot:
   
-    `$ rescan-scsi-bus.sh` (sg3_utils csomag része)
+    `$ rescan-scsi-bus.sh`(sg3_utils csomag része)
 * Írja be a következő parancsokat:
   
     `$ dmesg | grep sd*`
      
-     vagy
+     Vagy
   
     `$ fdisk -l`
   
     Ezek a legutóbb hozzáadott lemezek részleteit adják vissza.
-* Annak megállapításához, hogy az StorSimple-e, használja a következő parancsokat:
+* Annak megállapításához, hogy StorSimple lemezről van-e szó, használja a következő parancsokat:
   
     `cat /sys/block/<DISK>/device/model`
   
-    Ez egy karakterláncot ad vissza, amely meghatározza, hogy StorSimple-e a lemez.
+    Ez egy karakterláncot ad vissza, amely meghatározza, hogy storSimple lemezről van-e szó.
 
-A kevésbé valószínű, de lehetséges ok is elavult iSCSI-PID. Használja az alábbi parancsot az iSCSI-munkamenetből való kijelentkezéshez:
+Egy kevésbé valószínű, de lehetséges ok a skanikai iscsid pid is lehet. Az iSCSI-munkamenetekből a következő paranccsal jelentkezhet ki:
 
     iscsiadm -m node --logout -p <Target_IP>
 
-Ismételje meg ezt a parancsot az iSCSI-tároló összes csatlakoztatott hálózati adapterén, amely a StorSimple-eszköz. Miután kijelentkezett az összes iSCSI-munkamenetből, az iSCSI-tároló IQN használatával hozza létre újra az iSCSI-munkamenetet. Írja be a következő parancsot:
+Ismételje meg ezt a parancsot az iSCSI-tároló összes csatlakoztatott hálózati adapterén, amely a StorSimple-eszköz. Miután kijelentkezett az összes iSCSI-munkamenetből, az iSCSI-tároló IQN-jával állítsa létre újra az iSCSI-munkamenetet. Írja be a következő parancsot:
 
     iscsiadm -m node --login -T <TARGET_IQN>
 
 
-K. Nem biztos benne, hogy az eszközem engedélyezési listán van-e.
+K. Nem vagyok biztos benne, hogy az eszközem szerepel-e a listán.
 
-A. Annak ellenőrzéséhez, hogy az eszköz engedélyezve van-e, használja a következő hibaelhárítási interaktív parancsot:
+A. Annak ellenőrzéséhez, hogy az eszköz szerepel-e az engedélyezési listán, használja a következő hibaelhárítási interaktív parancsot:
 
     multipathd -k
     multipathd> show devices
@@ -410,33 +410,33 @@ A. Annak ellenőrzéséhez, hogy az eszköz engedélyezve van-e, használja a k�
     dm-3 devnode blacklisted, unmonitored
 
 
-További információ: [Hibaelhárítás a többutas eléréshez](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
+További információt a [többutas megoldásokkal kapcsolatos hibaelhárítás című témakörben](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)talál.
 
 ## <a name="list-of-useful-commands"></a>Hasznos parancsok listája
-| Type (Típus) | Parancs | Leírás |
+| Típus | Parancs | Leírás |
 | --- | --- | --- |
-| **iSCSI** |`service iscsid start` |ISCSI szolgáltatás indítása |
-| &nbsp; |`service iscsid stop` |Az iSCSI szolgáltatás leállítása |
-| &nbsp; |`service iscsid restart` |ISCSI szolgáltatás újraindítása |
-| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Elérhető célok felderítése a megadott címen |
+| **iSCSI** |`service iscsid start` |ISCSI-szolgáltatás indítása |
+| &nbsp; |`service iscsid stop` |Az iSCSI-szolgáltatás leállítása |
+| &nbsp; |`service iscsid restart` |Az iSCSI-szolgáltatás újraindítása |
+| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |A megadott címen elérhető célok felderítése |
 | &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |Bejelentkezés az iSCSI-tárolóba |
 | &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |Kijelentkezés az iSCSI-tárolóból |
-| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |ISCSI-kezdeményező nevének nyomtatása |
-| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |A gazdagépen felderített iSCSI-munkamenet és kötet állapotának keresése |
-| &nbsp; |`iscsi -m session` |Megjeleníti a gazdagép és a StorSimple-eszköz között létrejött összes iSCSI-munkamenetet. |
+| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |Az iSCSI-kezdeményező nevének nyomtatása |
+| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |Az állomáson felderített iSCSI-munkamenet és kötet állapotának ellenőrzése |
+| &nbsp; |`iscsi -m session` |A gazdagép és a StorSimple eszköz között létrehozott összes iSCSI-munkamenet megjelenítése |
 |  | | |
 | **Többutas** |`service multipathd start` |Többutas démon indítása |
 | &nbsp; |`service multipathd stop` |Többutas démon leállítása |
 | &nbsp; |`service multipathd restart` |Többutas démon újraindítása |
-| &nbsp; |`chkconfig multipathd on` </br> VAGY </br> `mpathconf -with_chkconfig y` |A többutas démon indításának engedélyezése rendszerindítás közben |
-| &nbsp; |`multipathd -k` |Az interaktív konzol elindítása hibaelhárításhoz |
+| &nbsp; |`chkconfig multipathd on` </br> VAGY </br> `mpathconf -with_chkconfig y` |Többutas démon indításának engedélyezése indításkor |
+| &nbsp; |`multipathd -k` |Az interaktív konzol indítása hibaelhárításhoz |
 | &nbsp; |`multipath -l` |Többutas kapcsolatok és eszközök listázása |
-| &nbsp; |`mpathconf --enable` |Hozzon létre egy minta mulitpath. conf fájlt a `/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |Minta mulitpath.conf fájl létrehozása a`/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>Következő lépések
-Az MPIO Linux-gazdagépen való konfigurálásakor előfordulhat, hogy a következő CentoS 6,6-dokumentumokra is szüksége lesz:
+## <a name="next-steps"></a>További lépések
+Az MPIO Linux-gazdagépen történő konfigurálásakor előfordulhat, hogy a következő CentoS 6.6 dokumentumokra is hivatkoznia kell:
 
-* [Az MPIO beállítása a CentOS-ben](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
-* [Linux-betanítási útmutató](http://linux-training.be/linuxsys.pdf)
+* [Az MPIO beállítása a CentOS rendszeren](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
+* [Linux képzési útmutató](http://linux-training.be/linuxsys.pdf)
 

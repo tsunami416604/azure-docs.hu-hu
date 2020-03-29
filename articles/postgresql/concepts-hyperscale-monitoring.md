@@ -1,45 +1,45 @@
 ---
-title: Monitorozás és Finomhangolás – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: Ez a cikk a Azure Database for PostgreSQL-nagy kapacitású (Citus) figyelési és hangolási funkcióit ismerteti
+title: Monitor és hangolás - Hiperskála (Citus) - Azure Database for PostgreSQL
+description: Ez a cikk az Azure Database for PostgreSQL – Hyperscale (Citus) figyelési és hangolási funkcióit ismerteti.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975516"
 ---
-# <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL figyelése és finomhangolása – nagy kapacitású (Citus)
+# <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Az Azure Database monitorozása és finomhangolása a PostgreSQL-hez – Hiperskála (Citus)
 
-A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A nagy kapacitású (Citus) különböző figyelési lehetőségeket biztosít, amelyek betekintést nyújtanak a kiszolgálói csoportok csomópontjainak viselkedésére.
+A kiszolgálók adatainak figyelése segít a számítási feladatok hibaelhárításával és optimalizálásával. A nagy kapacitású (Citus) különböző figyelési lehetőségeket biztosít a kiszolgálócsoport csomópontjainak viselkedésébe.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
-A nagy kapacitású (Citus) metrikákat biztosít a kiszolgálócsoport egyes csomópontjaihoz. A metrikák betekintést nyújtanak a támogatási erőforrások viselkedésére. Minden metrika egy egyperces gyakorisággal van kibocsátva, és akár 30 napig is eltarthat.
+A nagy kapacitású (Citus) a kiszolgálócsoport minden egyes csomópontjának metrikáját biztosítja. A mérőszámok betekintést nyújtanak a támogató erőforrások viselkedésébe. Minden metrika egy perces gyakorisággal kerül kibocsátásra, és legfeljebb 30 napos előzményeket.
 
-A metrikák diagramjainak megtekintése mellett beállíthatja a riasztásokat is. Részletes útmutatást a [riasztások beállítása](howto-hyperscale-alert-on-metric.md)című témakörben talál.  Az egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések futtatása és az archiválási előzmények. További információt az [Azure mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)című témakörben talál.
+A mérőszámok grafikonjainak megtekintése mellett riasztásokat is konfigurálhat. A részletes útmutatásról a [Riasztások beállítása témakörben talál.](howto-hyperscale-alert-on-metric.md)  Egyéb feladatok közé tartozik az automatizált műveletek beállítása, a speciális elemzések futtatása és az előzmények archiválása. További információt az [Azure Metrics áttekintése című témakörben talál.](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 
-### <a name="list-of-metrics"></a>Metrikák listája
+### <a name="list-of-metrics"></a>Mérőszámok listája
 
-Ezek a metrikák a nagy kapacitású-(Citus-) csomópontokhoz érhetők el:
+Ezek a metrikák a nagy méretű (Citus) csomópontokhoz érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Leírás|
 |---|---|---|---|
-|active_connections|Aktív kapcsolatok|Mennyiség|A kiszolgálóval létesített aktív kapcsolatok száma.|
-|cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
-|IOPS|IO|Mennyiség|Lásd a [IOPS-definíciót](../virtual-machines/linux/premium-storage-performance.md#iops) és a [nagy kapacitású átviteli sebességét](concepts-hyperscale-configuration-options.md)|
-|memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
-|network_bytes_ingress|Bejövő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
-|network_bytes_egress|Kimenő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
-|storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális száma által felhasznált tárterület százalékos aránya.|
-|storage_used|Felhasznált tárterület|Bájt|A használatban lévő tárterület mennyisége. A szolgáltatás által használt tárterület magában foglalhatja az adatbázisfájlok, a tranzakciós naplók és a kiszolgáló naplófájljait is.|
+|active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
+|cpu_percent|PROCESSZOR százalék|Százalék|A használt processzor százalékos aránya.|
+|iops|IOPS|Darabszám|Tekintse meg az [IOPS-definíciót](../virtual-machines/linux/premium-storage-performance.md#iops) és a [nagy kapacitású átviteli](concepts-hyperscale-configuration-options.md)|
+|memory_percent|Memória százaléka|Százalék|A használt memória százalékos aránya.|
+|network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati kapcsolat az aktív kapcsolatok között.|
+|network_bytes_egress|Kimenő hálózat|Bájt|Hálózat kikapcsolása az aktív kapcsolatok között.|
+|storage_percent|Tárolási százalék|Százalék|A kiszolgáló maximális tárhelyén kívüli tárhely százalékos aránya.|
+|storage_used|Használt tároló|Bájt|A használatban lévő tárhely mennyisége. A szolgáltatás által használt tároló tartalmazhat adatbázisfájlokat, tranzakciónaplókat és kiszolgálónaplókat.|
 
-Az Azure nem biztosít összesített mérőszámokat a fürt egészére vonatkozóan, de a több csomópont metrikái ugyanazon a gráfon helyezhetők el.
+Az Azure nem biztosít összesített metrikákat a fürt egészére vonatkozóan, de több csomópont metrikák at lehet helyezni ugyanazon a grafikonon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-hyperscale-alert-on-metric.md) című témakörben tekintheti meg.
+- [Tekintse meg, hogyan állíthat be riasztásokat](howto-hyperscale-alert-on-metric.md) útmutatást egy metrika riasztásának létrehozásához.

@@ -1,7 +1,7 @@
 ---
 title: SQL-átalakítás alkalmazása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használható az SQL-transzformációs modul alkalmazása Azure Machine Learning egy SQLite-lekérdezés futtatásához a bemeneti adatkészleteken az adatok átalakításához.
+description: Ismerje meg, hogyan használhatja az SQL Transformation modul t az Azure Machine Learning ben egy SQLite lekérdezés futtatásához a bemeneti adatkészleteken az adatok átalakításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,59 +9,59 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314538"
 ---
 # <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
 
-Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
+Ez a cikk ismerteti az Azure Machine Learning designer modulját (előzetes verzió).
 
-Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
+Az SQL Transformation modul alkalmazása segítségével a következőket teheti:
   
--   Hozzon létre táblázatokat az eredményekhez, és mentse az adatkészleteket egy hordozható adatbázisban.  
+-   Táblákat hozhat létre az eredményekhez, és mentheti az adatkészleteket egy hordozható adatbázisba.  
   
--   Egyéni átalakításokat végezhet az adattípusokon, vagy létrehozhat összesítéseket.  
+-   Egyéni átalakításokat hajtson végre adattípusokon, vagy hozzon létre összesítéseket.  
   
--   SQL-lekérdezési utasítások végrehajtása az adatszűréshez és az adatmódosításhoz, valamint a lekérdezés eredményének adattáblaként való visszaadása.  
+-   SQL-lekérdezési utasítások végrehajtása az adatok szűréséhez vagy módosításához, és a lekérdezés eredményének adattáblaként való visszaadása.  
 
 > [!IMPORTANT]
-> Az ebben a modulban használt SQL-motor **SQLite**. Az SQLite szintaxissal kapcsolatos további információkért lásd: az [SQL mint az SQLite által értelmezett](https://www.sqlite.org/index.html) további információ.  
+> A modulban használt SQL motor az **SQLite**. Az SQLite szintaxisról további információt az [SQL as SQLite című](https://www.sqlite.org/index.html) témakörben talál további információért.  
 
-## <a name="how-to-configure-apply-sql-transformation"></a>Az SQL-transzformáció alkalmazásának konfigurálása  
+## <a name="how-to-configure-apply-sql-transformation"></a>Az SQL-átalakítás alkalmazása konfigurálása  
 
-A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a `t1`, a `t2`és a `t3`nevet kell használnia. A tábla száma a bemeneti port indexét jelzi.  
+A modul bemenetként legfeljebb három adatkészletet vehet igénybe. Amikor az egyes bemeneti portokhoz kapcsolódó adatkészletekre `t1` `t2`hivatkozunk, a nevét a és a `t3`nevét kell használnia. A táblaszám a bemeneti port indexét jelzi.  
   
-A fennmaradó paraméter egy SQL-lekérdezés, amely az SQLite szintaxist használja. Ha több sort ír be az **SQL-parancsfájl** szövegmezőbe, használjon pontosvesszőt az egyes utasítások megszakításához. Ellenkező esetben a sortörések szóközökre lesznek konvertálva.  
+A fennmaradó paraméter egy SQL-lekérdezés, amely az SQLite szintaxist használja. Ha több sort ír be az **SQL Script** szövegmezőbe, használjon pontosvesszőt az egyes utasítások leállításához. Ellenkező esetben a sortörések szóközökké alakulnak át.  
 
-Ez a modul az SQLite szintaxis összes szabványos utasítását támogatja. A nem támogatott utasítások listáját a [technikai megjegyzések](#technical-notes) című szakaszban találja.
+Ez a modul támogatja az SQLite szintaxis összes szabványos utasítását. A nem támogatott utasítások listáját a Műszaki megjegyzések szakaszban [található.](#technical-notes)
 
 ##  <a name="technical-notes"></a>Technikai megjegyzések  
 
-Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a gyakori kérdésekre.
+Ez a szakasz a megvalósítás részleteit, tippjeit és a gyakran feltett kérdésekre adott válaszokat tartalmazza.
 
--   Az 1. porton mindig szükség van egy bemenetre.  
+-   Az 1-es porton mindig szükség van egy bevitelre.  
   
--   Szóközt vagy más speciális karaktereket tartalmazó oszlopok azonosítói esetén az oszlop azonosítóját szögletes zárójelben vagy idézőjelek között kell megadni, amikor a `SELECT` vagy `WHERE` záradékban lévő oszlopra hivatkozik.  
+-   Szóközt vagy más speciális karaktereket tartalmazó oszlopazonosítók esetén mindig tegyünk szögletes zárójelbe vagy `SELECT` idézőjelek közé, amikor a vagy `WHERE` záradékoszlopra hivatkozunk.  
   
 ### <a name="unsupported-statements"></a>Nem támogatott utasítások  
 
-Bár az SQLite az ANSI SQL standard nagy részét is támogatja, nem tartalmazza számos, a kereskedelmi kapcsolatban álló adatbázis-rendszerek által támogatott funkciót. További információ: az [SQL mint az SQLite által értelmezett](http://www.sqlite.org/lang.html). Emellett vegye figyelembe a következő korlátozásokat az SQL-utasítások létrehozásakor:  
+Bár az SQLite támogatja az ANSI SQL szabvány nagy részét, nem tartalmaz számos olyan funkciót, amelyet kereskedelmi relációs adatbázis-rendszerek támogatnak. További információ: [SQL as Stood by SQLite](http://www.sqlite.org/lang.html). Az SQL utasítások létrehozásakor vegye figyelembe az alábbi korlátozásokat is:  
   
-- A SQLite az értékek dinamikus beírását használja ahelyett, hogy egy típust egy oszlophoz társítson, mint a legtöbb kapcsolódó adatbázis-rendszerben. Ez gyenge módon van beírva, és lehetővé teszi az implicit típus-átalakítást.  
+- Az SQLite dinamikus gépelést használ az értékekhez, ahelyett, hogy egy típust hozzárendelne egy oszlophoz, mint a legtöbb relációs adatbázis-rendszerben. Gyengén gépelt, és implicit típusú konverziót tesz lehetővé.  
   
-- `LEFT OUTER JOIN` implementálva van, de nem `RIGHT OUTER JOIN` vagy `FULL OUTER JOIN`.  
+- `LEFT OUTER JOIN`végre, de `RIGHT OUTER JOIN` nem `FULL OUTER JOIN`vagy .  
 
-- A `ALTER TABLE` paranccsal `RENAME TABLE` és `ADD COLUMN` utasításokat is használhat, de más záradékok nem támogatottak, például `DROP COLUMN`, `ALTER COLUMN`és `ADD CONSTRAINT`.  
+- `RENAME TABLE` Használhatja és `ADD COLUMN` a `ALTER TABLE` parancs parancsait használhatja, de `DROP COLUMN`más `ALTER COLUMN`záradékok nem támogatottak, beleértve a , a és `ADD CONSTRAINT`a .  
   
-- Létrehozhat egy nézetet SQLite-n belül, de ezt követően a nézetek csak olvashatók. Nézeteken nem hajtható végre `DELETE`, `INSERT`vagy `UPDATE` utasítás. Létrehozhat azonban egy olyan eseményindítót, amely egy nézet `DELETE`, `INSERT`vagy `UPDATE`t próbál végrehajtani, és más műveleteket hajt végre az eseményindító törzsében.  
+- Az SQLite nézetet létrehozhatja, de ezt követően a nézetek csak olvashatók. Nézeten nem `DELETE` `INSERT`hajtható `UPDATE` végre , vagy utasítás. Létrehozhat azonban egy eseményindítót, amely `DELETE`a `INSERT`, `UPDATE` vagy egy nézetre, és az eseményindító törzsében más műveletekvégrehajtására hajt végre.  
   
 
-A hivatalos SQLite webhelyen elérhető nem támogatott függvények listája mellett a következő wiki a többi nem támogatott funkció listáját tartalmazza: [SQLite –](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql) nem támogatott SQL  
+A hivatalos SQLite oldalon található nem támogatott funkciók listáján kívül a következő wiki tartalmazza az egyéb nem támogatott funkciók listáját: [SQLite - Nem támogatott SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

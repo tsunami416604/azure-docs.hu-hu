@@ -1,6 +1,6 @@
 ---
-title: Adatátalakítás a Spark-tevékenységgel
-description: Megtudhatja, hogyan alakíthatja át az adatait Spark-programok futtatásával egy Azure-beli adatfeldolgozó-folyamatból a Spark-tevékenység használatával.
+title: Adatok átalakítása a Spark-tevékenység használatával
+description: Ismerje meg, hogyan alakíthatja át az adatokat a Spark-programok azure-beli adatfeldolgozó folyamatból való futtatásával a Spark-tevékenység használatával.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,22 +11,22 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
 ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912974"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a Spark-tevékenységgel Azure Data Factory
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factory Spark-tevékenységével
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-spark.md)
 > * [Aktuális verzió](transform-data-using-spark.md)
 
-Egy Data Factory [folyamat](concepts-pipelines-activities.md) Spark-tevékenysége egy Spark-programot hajt végre a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti HDInsight-](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) fürtön. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről. Ha igény szerinti Spark társított szolgáltatást használ, Data Factory automatikusan létrehoz egy Spark-fürtöt az adatainak feldolgozásához, majd a feldolgozás befejeződése után törli a fürtöt. 
+A Spark-tevékenység egy Data [Factory-folyamat](concepts-pipelines-activities.md) egy Spark-programot hajt végre [a saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy igény szerinti [HDInsight-fürtön.](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Ez a cikk az [adatátalakítási tevékenységek](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről. Amikor igény szerinti Spark-alapú szolgáltatást használ, a Data Factory automatikusan létrehoz egy Spark-fürtöt az adatok feldolgozásához, majd törli a fürtöt, amint a feldolgozás befejeződött. 
 
 
 ## <a name="spark-activity-properties"></a>Spark-tevékenység tulajdonságai
-Itt látható a Spark-tevékenység JSON-definíciója:    
+Itt van a Spark-tevékenység JSON-definíciója:    
 
 ```json
 {
@@ -55,39 +55,39 @@ Itt látható a Spark-tevékenység JSON-definíciója:
 }
 ```
 
-A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
+Az alábbi táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
-| Tulajdonság              | Leírás                              | Szükséges |
+| Tulajdonság              | Leírás                              | Kötelező |
 | --------------------- | ---------------------------------------- | -------- |
-| név                  | A folyamatban szereplő tevékenység neve.    | Igen      |
-| leírás           | A tevékenység működését leíró szöveg  | Nem       |
-| type                  | Spark-tevékenység esetén a tevékenység típusa HDInsightSpark. | Igen      |
-| linkedServiceName     | Azon HDInsight Spark társított szolgáltatás neve, amelyen a Spark-program fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| SparkJobLinkedService | Az Azure Storage társított szolgáltatása, amely tartalmazza a Spark-feladatot tartalmazó fájlt, a függőségeket és a naplókat.  Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. Ennek a tulajdonságnak az értéke csak Azure Storage társított szolgáltatás lehet. | Nem       |
-| rootPath              | Az Azure Blob-tároló és a Spark-fájlt tartalmazó mappa. A fájl neve megkülönbözteti a kis-és nagybetűket. A mappa struktúrájával kapcsolatos részletekért tekintse meg a mappa szerkezete szakaszt (következő szakasz). | Igen      |
-| entryFilePath         | A Spark-kód/csomag gyökérkönyvtárának relatív elérési útja. A beviteli fájlnak Python-vagy. jar-fájlnak kell lennie. | Igen      |
-| className             | Alkalmazás Java/Spark fő osztálya      | Nem       |
-| argumentumok             | A Spark programhoz tartozó parancssori argumentumok listája. | Nem       |
-| proxyUser             | A Spark-program végrehajtásához megszemélyesíteni kívánt felhasználói fiók | Nem       |
-| sparkConfig           | A Spark-konfiguráció tulajdonságainak megadása a következő témakörben: [Spark konfiguráció-alkalmazás tulajdonságai](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nem       |
-| getDebugInfo          | Megadja, hogy a rendszer mikor másolja a Spark-naplófájlokat a sparkJobLinkedService által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
+| név                  | A folyamatban lévő tevékenység neve.    | Igen      |
+| leírás           | A tevékenység tevékenységét leíró szöveg.  | Nem       |
+| type                  | A Spark-tevékenység esetén a tevékenység típusa HDInsightSpark. | Igen      |
+| linkedServiceName     | Annak a HDInsight-szikracsatolt szolgáltatásnak a neve, amelyen a Spark-program fut. A csatolt szolgáltatásról a [Csatolt szolgáltatások számítási cikkében](compute-linked-services.md) olvashat. | Igen      |
+| SparkJobLinkedService | Az Azure Storage-hoz kapcsolódó szolgáltatás, amely rendelkezik a Spark-feladat fájl, függőségek és naplók.  Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. A tulajdonság értéke csak egy Azure Storage-kapcsolt szolgáltatás. | Nem       |
+| rootPath              | Az Azure Blob-tároló és a Spark-fájlt tartalmazó mappa. A fájlnév nem imitáta a kis- és nagybetűk között. A mappa szerkezetével kapcsolatos részleteket a mappaszerkezettel kapcsolatos részben (következő szakasz) találja. | Igen      |
+| entryFilePath         | A Spark-kód/-csomag gyökérmappájának relatív elérési útja. A bejegyzésfájlnak Python vagy .jar fájlnak kell lennie. | Igen      |
+| Osztálynév             | Az alkalmazás Java/Spark főosztálya      | Nem       |
+| Érvek             | A Spark-program parancssori argumentumainak listája. | Nem       |
+| proxyUser             | A Spark-program végrehajtásához megszemélyesített felhasználói fiók | Nem       |
+| sparkConfig           | Adja meg a témakörben felsorolt Spark-konfigurációs tulajdonságok értékeit: [Spark-konfiguráció - Alkalmazás tulajdonságai.](https://spark.apache.org/docs/latest/configuration.html#available-properties) | Nem       |
+| getDebugInfo          | Itt adható meg, hogy a Spark-naplófájlok másolása a sparkJobLinkedService által megadott HDInsight-fürt (vagy) által használt Azure-tárolóba kerül-e. Engedélyezett értékek: Nincs, Mindig vagy Sikertelen. Alapértelmezett érték: Nincs. | Nem       |
 
-## <a name="folder-structure"></a>Mappa szerkezete
-A Spark-feladatok sokkal bővíthetők, mint a Pig/kaptár feladatok. A Spark-feladatok esetében több függőséget is megadhat, például a jar-csomagokat (a Java OSZTÁLYÚTVONAL helyezik el), a Python-fájlokat (a PYTHONPATH) és minden más fájlt.
+## <a name="folder-structure"></a>Mappastruktúra
+Spark-feladatok bővíthetőbbek, mint a Pig/Hive-feladatok. A Spark-feladatok, több függőségek, például jar csomagok (a java CLASSPATH helyezik el), python fájlok (a PYTHONPATH) és bármely más fájlokat.
 
-Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltatás által hivatkozott Azure Blob Storage-tárolóban. Ezután töltse fel a függő fájlokat a **entryFilePath**által jelzett gyökérmappa megfelelő almappáiba. Töltse fel például a Python-fájlokat a pyFiles almappában és a jar-fájlokba a gyökérmappa tégelyek almappájába. Futásidőben a Data Factory szolgáltatás a következő mappastruktúrát várja az Azure Blob Storage-ban:     
+Hozza létre a következő mappastruktúrát az Azure Blob storage által hivatkozott HDInsight csatolt szolgáltatás. Ezután töltse fel a függő fájlokat a filePath által képviselt gyökérmappában lévő megfelelő **almappákba.** Például töltsön fel python fájlokat a pyFiles almappába és a jar fájlokba a gyökérmappa jars almappájába. Futásidőben a Data Factory szolgáltatás a következő mappastruktúrát várja az Azure Blob storage-ban:     
 
-| Útvonal                  | Leírás                              | Szükséges | Type (Típus)   |
+| Útvonal                  | Leírás                              | Kötelező | Típus   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.` (root)            | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban | Igen      | Mappa |
-| &lt;felhasználó által definiált &gt; | A Spark-feladathoz tartozó belépési fájlra mutató elérési út | Igen      | File   |
-| ./jars                | A rendszer feltölti és elhelyezi a mappa összes fájlját a fürt Java-osztályútvonal. | Nem       | Mappa |
-| ./pyFiles             | A mappa összes fájlja fel van töltve és a fürt PYTHONPATH kerül. | Nem       | Mappa |
-| ./files               | A mappa összes fájlja fel van töltve, és a végrehajtó munkakönyvtárba kerül. | Nem       | Mappa |
-| ./archives            | A mappa összes fájlja nem tömörített | Nem       | Mappa |
-| ./logs                | A Spark-fürtből származó naplókat tartalmazó mappa. | Nem       | Mappa |
+| `.`(gyökér)            | A Spark-feladat gyökérelérési útja a storage-hoz csatolt szolgáltatásban | Igen      | Mappa |
+| &lt;felhasználó által definiált&gt; | A Spark-feladat belépési fájljára mutató elérési út | Igen      | Fájl   |
+| ./üvegek                | Az összes fájl ebben a mappában a feltöltött és elhelyezni a java classpath a fürt | Nem       | Mappa |
+| ./pyFiles             | Az ebbe a mappába rendszer az összes fájlt feltölti és a fürt PYTHONPATH-jára helyezi | Nem       | Mappa |
+| ./fájlok               | A mappa összes fájlja feltöltésre kerül, és a végrehajtó munkakönyvtárába kerül | Nem       | Mappa |
+| ./archívumok            | A mappa összes fájlja tömörítetlen | Nem       | Mappa |
+| ./naplók                | A Spark-fürtből származó naplókat tartalmazó mappa. | Nem       | Mappa |
 
-Íme egy példa egy olyan tárolóra, amely két Spark-feladatot tartalmaz a HDInsight társított szolgáltatás által hivatkozott Azure-Blob Storage.
+Íme egy példa egy tároló, amely két Spark-feladat fájlokat az Azure Blob Storage által hivatkozott HDInsight csatolt szolgáltatás.
 
 ```
 SparkJob1
@@ -107,15 +107,15 @@ SparkJob2
         script2.py
     logs
 ```
-## <a name="next-steps"></a>Következő lépések
-A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
+## <a name="next-steps"></a>További lépések
+Az alábbi cikkekben elmagyarázhatja, hogyan alakíthatja át más módon az adatokat: 
 
-* [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
-* [Pig-tevékenység](transform-data-using-hadoop-pig.md)
+* [U-SQL tevékenység](transform-data-using-data-lake-analytics.md)
+* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
+* [Sertésaktivitás](transform-data-using-hadoop-pig.md)
 * [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop streaming-tevékenység](transform-data-using-hadoop-streaming.md)
-* [Spark-tevékenység](transform-data-using-spark.md)
+* [Hadoop streaming tevékenység](transform-data-using-hadoop-streaming.md)
+* [Szikraaktivitás](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
-* [Batch-végrehajtási tevékenység Machine Learning](transform-data-using-machine-learning.md)
+* [Gépi tanulási kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

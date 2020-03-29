@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services bemeneti metaadatok sémája | Microsoft Docs
-description: Ez a cikk áttekintést nyújt Azure Media Services bemeneti metaadat-sémáról.
+title: Az Azure Media Services bemeneti metaadatsémája | Microsoft dokumentumok
+description: Ez a cikk áttekintést nyújt az Azure Media Services bemeneti metaadat-sémáról.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,205 +14,205 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a81d6edfd887dc935a53742b7bc1492651c9bda5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887118"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok 
 
-A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) vannak társítva, amelyeken bizonyos kódolási feladatokat kíván végrehajtani.  Egy feladat befejezése után a rendszer kimeneti eszközt állít elő.  A kimeneti eszköz tartalmaz videót, hangot, miniatűrt, jegyzékfájlt stb. A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a bemeneti adategység metaadatait. A metaadatok XML-fájljának neve a következő formátumú: &lt;asset_id&gt;_metadata. XML (például 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. xml), ahol &lt;asset_id&gt; a bemeneti eszköz AssetId értéke.  
+A kódolási feladat olyan bemeneti eszközhöz (vagy eszközökhöz) van társítva, amelyen bizonyos kódolási feladatokat el szeretne végezni.  A feladat befejezésekor egy kimeneti eszköz keletkezik.  A kimeneti eszköz tartalmaz videót, hangot, miniatűröket, jegyzéket stb. A kimeneti eszköz is tartalmaz egy fájlt a bemeneti eszköz metaadatait. A metaadat-XML-fájl neve a &lt;következő&gt;formátumú: asset_id _metadata.xml (például 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), ahol &lt;asset_id&gt; a bemeneti eszköz AssetId értéke.  
 
-A Media Services nem jelleggel a bemeneti eszközöket a metaadatok létrehozásához. A bemeneti metaadatok csak olyan összetevőként jönnek létre, amikor egy bemeneti objektumot dolgoz fel egy feladatban. Ezért ez az összetevő a kimeneti eszközre íródik. A bemeneti eszközök és a kimeneti eszközök metaadatainak létrehozásához különböző eszközök használhatók. Ezért a bemeneti metaadatok némileg eltérő sémával rendelkeznek, mint a kimeneti metaadatok.
+A Media Services nem szokta elő, hogy metaadatokat generáljon a bemeneti eszközökből. A bemeneti metaadatok csak összetevőként jönnek létre, ha egy bemeneti eszközt egy feladatban dolgoznak fel. Ezért ez a összetevő a kimeneti eszközbe van írva. Különböző eszközök segítségével jönnek létre metaadatok a bemeneti eszközök és a kimeneti eszközök. Ezért a bemeneti metaadatok egy kicsit eltérnek a kimeneti metaadatok.
 
-Ha meg szeretné vizsgálni a metaadat-fájlt, létrehozhat egy **sas** -keresőt, és letöltheti a fájlt a helyi számítógépre. Talál egy példát arra, hogyan hozhat létre SAS-lokátort, és hogyan tölthet le egy fájlt [a Media Services .net SDK-bővítmények használatával](media-services-dotnet-get-started.md).  
+Ha meg szeretné vizsgálni a metaadatfájlt, **SAS** létrehozhat egy SAS-lokátort, és letöltheti a fájlt a helyi számítógépre. A [Media Services .NET SDK Extensions segítségével](media-services-dotnet-get-started.md)példát találhat a SAS-lokátor létrehozására és a fájl letöltésére.  
 
-Ez a cikk az XML-séma azon elemeit és típusait ismerteti, amelyeken a bemeneti metada (&lt;asset_id&gt;_metadata. xml) alapul.  További információ a kimeneti eszköz metaadatait tartalmazó fájlról: [kimeneti metaadatok](media-services-output-metadata-schema.md).  
+Ez a cikk annak az XML-sémának az elemeit és&lt;típusait ismerteti, amelyeken a bemeneti metada ( asset_id&gt;_metadata.xml) alapul.  A kimeneti eszköz metaadatait tartalmazó fájlról a [Kimeneti metaadatok](media-services-output-metadata-schema.md)című témakörben talál további információt.  
 
-A [séma kódja](media-services-input-metadata-schema.md#code) egy [XML-példát](media-services-input-metadata-schema.md#xml) mutat be a cikk végén.  
+A [sémakód](media-services-input-metadata-schema.md#code) [xml-példa](media-services-input-metadata-schema.md#xml) a cikk végén található.  
  
 
-## <a name="AssetFiles"></a>AssetFiles elem (gyökérelem)
-A [AssetFile elemének](media-services-input-metadata-schema.md#AssetFile)gyűjteményét tartalmazza a kódolási feladatokhoz.  
+## <a name="assetfiles-element-root-element"></a><a name="AssetFiles"></a>AssetFiles elem (gyökérelem)
+A kódolási feladat hoz való [AssetFile elem](media-services-input-metadata-schema.md#AssetFile)s gyűjteményét tartalmazza.  
 
-Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 | Név | Leírás |
 | --- | --- |
-| **AssetFile**<br /><br /> minOccurs = "1" maxOccurs = "nem kötött" |Egyetlen alárendelt elem. További információ: [AssetFile elem](media-services-input-metadata-schema.md#AssetFile). |
+| **Eszközfájl**<br /><br /> minOccurs="1" maxOccurs="nem kötött" |Egyetlen gyermekelem. További információ: [AssetFile element](media-services-input-metadata-schema.md#AssetFile). |
 
-## <a name="AssetFile"></a>AssetFile elem
- Egy adatfájlt leíró attribútumokat és elemeket tartalmaz.  
+## <a name="assetfile-element"></a><a name="AssetFile"></a>AssetFile elem
+ Olyan attribútumokat és elemeket tartalmaz, amelyek egy eszközfájlt írnak le.  
 
- Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+ A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Name (Név)**<br /><br /> Szükséges |**xs: karakterlánc** |Az eszköz fájljának neve. |
-| **Méret**<br /><br /> Szükséges |**xs: hosszú** |Az adategység fájljának mérete bájtban megadva. |
-| **Időtartama**<br /><br /> Szükséges |**xs: időtartam** |Tartalom lejátszási ideje – időtartam. Példa: időtartam = "PT25M 37.757 S". |
-| **NumberOfStreams**<br /><br /> Szükséges |**xs: int** |Az adatfájlban lévő adatfolyamok száma. |
-| **FormatNames**<br /><br /> Szükséges |**xs: karakterlánc** |Formátumnevek. |
-| **FormatVerboseNames**<br /><br /> Szükséges |**xs: karakterlánc** |Részletes nevek formázása |
-| **StartTime** |**xs: időtartam** |Tartalom kezdési ideje Példa: kezdő = "PT 2.669 S". |
-| **OverallBitRate** |**xs: int** |Az eszköz fájljának átlagos bitrátája kbps-ben. |
+| **Név**<br /><br /> Kötelező |**xs:karakterlánc** |Eszközfájl neve. |
+| **Méret**<br /><br /> Kötelező |**xs:hosszú** |Az eszközfájl mérete bájtban. |
+| **Időtartam**<br /><br /> Kötelező |**xs:időtartam** |A tartalom lejátszási időtartama. Példa: Duration="PT25M37.757s". |
+| **NumberOfStreams**<br /><br /> Kötelező |**xs:int** |Az eszközfájlban lévő adatfolyamok száma. |
+| **Formátumnevek**<br /><br /> Kötelező |**xs: karakterlánc** |Nevek formázása. |
+| **FormatVerboseNames (FormátumVerboseNames)**<br /><br /> Kötelező |**xs: karakterlánc** |Részletes nevek formázása. |
+| **StartTime** |**xs:időtartam** |Tartalom kezdési ideje. Példa: StartTime="PT2.669s". |
+| **OverallBitRate** |**xs: int** |Az eszközfájl átlagos bitsebessége kbit/s-ban. |
 
 > [!NOTE]
-> A következő négy alárendelt elemnek egy sorozatban kell megjelennie.  
+> A következő négy gyermekelemnek egy sorrendben kell megjelennie.  
 > 
 > 
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Programok**<br /><br /> minOccurs = "0" | |Minden [program elem](media-services-input-metadata-schema.md#Programs) gyűjteménye, amikor az adategység fájlja MPEG-TS formátumú. |
-| **VideoTracks**<br /><br /> minOccurs = "0" | |Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videókat. Ez az elem az adatfájl részét képező összes [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) gyűjteményét tartalmazza. |
-| **AudioTracks**<br /><br /> minOccurs = "0" | |Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható hangsávot. Ez az elem az adatfájl részét képező összes [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) gyűjteményét tartalmazza. |
-| **Metaadatok**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Az adatfájl metaadatai key\value karakterláncként jelennek meg. Példa:<br /><br /> **&lt;metadata kulcs = "nyelv" érték = "ENG"/&gt;** |
+| **Programok**<br /><br /> minOccurs="0" | |Az összes [Program elem](media-services-input-metadata-schema.md#Programs) gyűjtése, ha az eszközfájl MPEG-TS formátumú. |
+| **VideoTracks**<br /><br /> minOccurs="0" | |Minden fizikai eszközfájl tartalmazhat nulla vagy több videót, amelyek megfelelő tárolóformátumba vannak átalakítva. Ez az elem az eszközfájl részét tartalmazó [összes VideoS-sáv](media-services-input-metadata-schema.md#VideoTracks) gyűjteményét tartalmazza. |
+| **Hangsávok**<br /><br /> minOccurs="0" | |Minden fizikai eszközfájl tartalmazhat nulla vagy több hangsávot a megfelelő tárolóformátumba átlapolt hangsávban. Ez az elem az eszközfájl részét tartalmazó összes [hangsáv](media-services-input-metadata-schema.md#AudioTracks) gyűjteményét tartalmazza. |
+| **Metaadatok**<br /><br /> minOccurs="0" maxOccurs="nem kötött" |[Metaadattípus](media-services-input-metadata-schema.md#MetadataType) |Az eszközfájl metaadatai kulcs\értékkarakterláncokként vannak jelölve. Példa:<br /><br /> **&lt;Metaadat-kulcs="nyelv" érték="eng" /&gt;** |
 
-## <a name="TrackType"></a>TrackType
-Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+## <a name="tracktype"></a><a name="TrackType"></a>TrackType típus
+A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosító**<br /><br /> Szükséges |**xs: int** |A hang-vagy videó nyomon követésének nulla alapú indexe.<br /><br /> Ez nem feltétlenül jelenti azt, hogy az MP4-fájlban használt TrackID. |
-| **Codec** |**xs: karakterlánc** |Videó Track kodek karakterlánca |
-| **CodecLongName** |**xs: karakterlánc** |Hang-vagy Video Track-kodek hosszú neve. |
-| **Időalap**<br /><br /> Szükséges |**xs: karakterlánc** |Idő alapja. Például: időalap = "1/48000" |
-| **NumberOfFrames** |**xs: int** |Képkockák száma (a videó sávok esetében). |
-| **StartTime** |**xs: időtartam** |A kezdési idő nyomon követése. Példa: kezdő = "PT 2.669 S" |
-| **Időtartama** |**xs: időtartam** |Követés időtartama. Példa: időtartam = "PTSampleFormat M 37.757 S". |
+| **Id**<br /><br /> Kötelező |**xs:int** |A hang- vagy videosáv nulla alapú indexe.<br /><br /> Ez nem feltétlenül, hogy a TrackID használt MP4 fájlt. |
+| **Codec** |**xs:karakterlánc** |Videopálya kodek karakterlánc. |
+| **CodecLongName (KokkHosszúnév)** |**xs: karakterlánc** |Hang- vagy videosáv-kód hosszú név. |
+| **TimeBase (Munkaidő-bázis)**<br /><br /> Kötelező |**xs:karakterlánc** |Időbázis. Példa: TimeBase="1/48000" |
+| **Frame-ek száma** |**xs:int** |Képkockák száma (videoszámok esetén jelen van). |
+| **StartTime** |**xs: időtartam** |A kezdési időpont nyomon követése. Példa: StartTime="PT2.669s" |
+| **Időtartam** |**xs:időtartam** |A műsoridő. Példa: Duration="PTSampleformat M37.757s". |
 
 > [!NOTE]
-> A következő két alárendelt elemnek egy sorozatban kell megjelennie.  
+> A következő két gyermekelemnek egymás után kell megjelennie.  
 > 
 > 
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Törlése**<br /><br /> minOccurs = "0" maxOccurs = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Megjelenítési adatokat tartalmaz (például azt, hogy egy adott hangsáv a vizuálisan korlátozott nézők számára készült-e). |
-| **Metaadatok**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Általános kulcs/érték karakterláncok, amelyek különféle információk tárolására használhatók. Például: Key = "Language", és Value = "ENG". |
+| **Hajlam**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType típus](media-services-input-metadata-schema.md#StreamDispositionType) |Bemutatóinformációkat tartalmaz (például azt, hogy egy adott hangsáv a gyengén látók számára készült-e). |
+| **Metaadatok**<br /><br /> minOccurs="0" maxOccurs="nem kötött" |[Metaadattípus](media-services-input-metadata-schema.md#MetadataType) |Általános kulcs/érték karakterláncok, amelyek különböző információk tárolására használhatók. Például key="language", és value="eng". |
 
-## <a name="AudioTrackType"></a>AudioTrackType (örököl a TrackType)
- A **AudioTrackType** egy globális összetett típus, amely a [TrackType](media-services-input-metadata-schema.md#TrackType)örököl.  
+## <a name="audiotracktype-inherits-from-tracktype"></a><a name="AudioTrackType"></a>AudioTrackType (a TrackType öröklődik)
+ **Az AudioTrackType** egy globális komplextípus, amely a [TrackType](media-services-input-metadata-schema.md#TrackType)típustól örököl.  
 
- A típus egy adott hangsávot jelöl az objektum fájljában.  
+ A típus egy adott hangsávot jelöl az eszközfájlban.  
 
- Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+ A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **SampleFormat** |**xs: karakterlánc** |Minta formátuma |
-| **ChannelLayout** |**xs: karakterlánc** |Csatorna elrendezése |
-| **Csatornák**<br /><br /> Szükséges |**xs: int** |Az audio csatornák száma (0 vagy több). |
-| **SamplingRate**<br /><br /> Szükséges |**xs: int** |Mintavételezési sebesség (minta/mp vagy Hz) |
-| **Sávszélességű** |**xs: int** |Az adatfájlból kiszámított bit/másodperc átlagos hangátviteli sebessége. A rendszer csak az elemes adatfolyam-adattartalmat számítja ki, és a csomagolási terhelés nem szerepel ebben a számban. |
-| **BitsPerSample** |**xs: int** |Bit/minta a wFormatTag formátum típushoz. |
+| **Mintaformátum** |**xs:karakterlánc** |Minta formátuma. |
+| **ChannelLayout (Csatornaelrendezés)** |**xs: karakterlánc** |Csatorna elrendezés. |
+| **Csatornák**<br /><br /> Kötelező |**xs:int** |A hangcsatornák száma (0 vagy több). |
+| **Mintavételi ráta**<br /><br /> Kötelező |**xs:int** |Hangmintavételi sebesség minták/mp-ben vagy Hz-ben. |
+| **Bitráta** |**xs:int** |Átlagos hangátviteli sebesség bit/másodpercben, az eszközfájlból számítva. Csak az elemi stream hasznos teher számít, és a csomagolási többletterhelés nem szerepel ebben a számlálóban. |
+| **BitsPerSample** |**xs:int** |A wFormatTag formátum típusának mintánkénti bitjei. |
 
-## <a name="VideoTrackType"></a>VideoTrackType (örököl a TrackType)
-A **VideoTrackType** egy globális összetett típus, amely a [TrackType](media-services-input-metadata-schema.md#TrackType)örököl.  
+## <a name="videotracktype-inherits-from-tracktype"></a><a name="VideoTrackType"></a>VideoTrackType (a TrackType öröklődik)
+**A VideoTrackType** egy globális komplextípus, amely a [TrackType](media-services-input-metadata-schema.md#TrackType)típustól örököl.  
 
-A típus egy adott videó-követési számot jelöl az objektum fájljában.  
+A típus egy adott videosávot jelöl az eszközfájlban.  
 
-Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **FourCC**<br /><br /> Szükséges |**xs: karakterlánc** |Videós kodek FourCC kódja |
-| **Profil** |**xs: karakterlánc** |A Video Track profilja. |
-| **Szint** |**xs: karakterlánc** |A videó követési szintje. |
-| **PixelFormat** |**xs: karakterlánc** |A Video Track képpontjának formátuma |
-| **Szélessége**<br /><br /> Szükséges |**xs: int** |Kódolt videó szélessége képpontban megadva |
-| **Magasság**<br /><br /> Szükséges |**xs: int** |Kódolt videó magassága képpontban megadva. |
-| **DisplayAspectRatioNumerator**<br /><br /> Szükséges |**xs: dupla** |Videó megjelenítési oldalarányának számlálója |
-| **DisplayAspectRatioDenominator**<br /><br /> Szükséges |**xs: dupla** |Videó megjelenítési méretarányának nevezője |
-| **DisplayAspectRatioDenominator**<br /><br /> Szükséges |**xs: dupla** |Videó minta oldalarányának számlálója |
-| **SampleAspectRatioNumerator** |**xs: dupla** |Videó minta oldalarányának számlálója |
-| **SampleAspectRatioNumerator** |**xs: dupla** |Videó minta oldalarányának nevezője |
-| **Frameráta**<br /><br /> Szükséges |**xs: decimális** |A képkockák sebességét. 3F formátumban mérjük. |
-| **Sávszélességű** |**xs: int** |Az adatfájlból kiszámított átlagos video átviteli sebesség (kilobit/mp). A rendszer csak az elemes adatfolyam-adattartalmat számítja ki, és a csomagolási terhelés nem szerepel benne. |
-| **MaxGOPBitrate** |**xs: int** |A videó nyomon követésére szolgáló maximális GOP-os átlagos sávszélesség (kilobit/mp). |
-| **HasBFrames** |**xs: int** |A B képkockák számának nyomon követése. |
+| **Fourcc**<br /><br /> Kötelező |**xs:karakterlánc** |Video codec FourCC kód. |
+| **Profil** |**xs: karakterlánc** |A videósáv profilja. |
+| **Szint** |**xs: karakterlánc** |A videósáv szintje. |
+| **Képpontformátum** |**xs: karakterlánc** |A videósáv képpontformátuma. |
+| **Width**<br /><br /> Kötelező |**xs:int** |Kódolt videószélesség képpontban. |
+| **Height**<br /><br /> Kötelező |**xs:int** |Kódolt videómagasság képpontban. |
+| **DisplayAspectRatioNumerator**<br /><br /> Kötelező |**xs: dupla** |Videomegjelenítési képarány számlálója. |
+| **DisplayAspectRatioDenevező**<br /><br /> Kötelező |**xs:dupla** |A videó megjelenítési képarány-nevezője. |
+| **DisplayAspectRatioDenevező**<br /><br /> Kötelező |**xs: dupla** |Videó minta képarányának számlálója. |
+| **SampleAspectRatioNumerator** |**xs: dupla** |Videó minta képarányának számlálója. |
+| **SampleAspectRatioNumerator** |**xs:dupla** |Videó minta képarányának nevezője. |
+| **Frameráta**<br /><br /> Kötelező |**xs:decimális** |Mért videó képkockasebesség .3f formátumban. |
+| **Bitráta** |**xs:int** |Átlagos videobitráta kilobit/másodpercben, az eszközfájlból számítva. Csak az elemi stream hasznos teher számít, és a csomagolási terhelés nem szerepel. |
+| **MaxGOPBitrate** |**xs: int** |Maximális GOP átlagos bitráta ehhez a videó sávhoz, kilobit/másodpercben. |
+| **HasBframes (HasBframes)** |**xs:int** |A Videó sáv száma B képkockák. |
 
-## <a name="MetadataType"></a>MetadataType
-A **MetadataType** olyan globális összetett típus, amely az adatfájlok kulcs/érték karakterláncként való metaadatait írja le. Például: Key = "Language", és Value = "ENG".  
+## <a name="metadatatype"></a><a name="MetadataType"></a>Metaadattípus
+**A MetadataType** egy globális komplextípus, amely az eszközfájl metaadatait kulcs/érték karakterláncként írja le. Például key="language", és value="eng".  
 
-Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **key**<br /><br /> Szükséges |**xs: karakterlánc** |A kulcs/érték párokban található kulcs. |
-| **value**<br /><br /> Szükséges |**xs: karakterlánc** |A kulcs/érték párokban szereplő érték. |
+| **Kulcs**<br /><br /> Kötelező |**xs:karakterlánc** |A kulcs/érték pár kulcsa. |
+| **value**<br /><br /> Kötelező |**xs:karakterlánc** |A kulcs/érték pár értéke. |
 
-## <a name="ProgramType"></a>ProgramType
-A **ProgramType** egy globális összetett típus, amely egy programot ír le.  
+## <a name="programtype"></a><a name="ProgramType"></a>Programtype (Programtype)
+**A ProgramType** egy globális komplextípus, amely egy programot ír le.  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **ProgramId**<br /><br /> Szükséges |**xs: int** |Program azonosítója |
-| **NumberOfPrograms**<br /><br /> Szükséges |**xs: int** |Programok száma. |
-| **PmtPid**<br /><br /> Szükséges |**xs: int** |A program-hozzárendelési táblázatok (PMTs-EK) a programok információit tartalmazzák.  További információ: [fiz](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
-| **PcrPid**<br /><br /> Szükséges |**xs: int** |A dekóder használja. További információ: [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
-| **StartPTS** |**xs: hosszú** |A bemutató időbélyegének indítása. |
-| **EndPTS** |**xs: hosszú** |A bemutató időbélyegzője véget ér. |
+| **Programazonosító**<br /><br /> Kötelező |**xs:int** |Programazonosító |
+| **Programok száma**<br /><br /> Kötelező |**xs:int** |Programok száma. |
+| **PmtPid között**<br /><br /> Kötelező |**xs:int** |A programtérkép-táblázatok (PMT-k) a programokkal kapcsolatos információkat tartalmaznak.  További információ: [PMt](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
+| **PcrPid**<br /><br /> Kötelező |**xs: int** |A dekóder használja. További információ: [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
+| **StartPTS** |**xs: hosszú** |Bemutató időbélyegzőjának indítása. |
+| **ENDPTS** |**xs: hosszú** |Bemutató időbélyegzőjának befejezése. |
 
-## <a name="StreamDispositionType"></a>StreamDispositionType
-A **StreamDispositionType** egy globális összetett típus, amely leírja az adatfolyamot.  
+## <a name="streamdispositiontype"></a><a name="StreamDispositionType"></a>StreamDispositionType típus
+**A StreamDispositionType** egy globális komplex típus, amely leírja az adatfolyamot.  
 
-Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Alapértelmezett**<br /><br /> Szükséges |**xs: int** |Ezt az attribútumot állítsa 1-re úgy, hogy ez az alapértelmezett bemutató. |
-| **Dub**<br /><br /> Szükséges |**xs: int** |Ezt az attribútumot állítsa 1-re úgy, hogy ez a szinkronizált bemutató legyen. |
-| **Eredeti**<br /><br /> Szükséges |**xs: int** |Állítsa az attribútumot 1-re, hogy jelezze, ez az eredeti bemutató. |
-| **Megjegyzés**<br /><br /> Szükséges |**xs: int** |Ha ezt az attribútumot 1 értékre állítja, akkor a nyomon követési magyarázatot tartalmaz. |
-| **Lyrics**<br /><br /> Szükséges |**xs: int** |Ha ezt az attribútumot 1 értékre állítja, akkor ez azt jelzi, hogy a nyomkövetés tartalmaz dalszövegeket. |
-| **Karaoke**<br /><br /> Szükséges |**xs: int** |Ha ezt az attribútumot 1-re állítja, akkor ez jelzi a karaoke-sávot (háttérzene, vokál nélkül). |
-| **Kénytelen**<br /><br /> Szükséges |**xs: int** |Ezt az attribútumot állítsa 1-re úgy, hogy jelezze ezt a kényszerített bemutatót. |
-| **HearingImpaired**<br /><br /> Szükséges |**xs: int** |Ha ezt az attribútumot 1-re állítja, akkor a nyomon követést végző személyek esetében ezt a számot kell megadni. |
-| **VisualImpaired**<br /><br /> Szükséges |**xs: int** |Ezt az attribútumot állítsa 1-re úgy, hogy jelezze, hogy ez a követés a vizuálisan korlátozott. |
-| **CleanEffects**<br /><br /> Szükséges |**xs: int** |Ezt az attribútumot 1 értékre állítva jelezheti, hogy ez a szám tiszta hatással van. |
-| **AttachedPic**<br /><br /> Szükséges |**xs: int** |Ha ezt az attribútumot 1 értékre állítja, akkor a nyomon követett képekkel jelezheti. |
+| **Alapértelmezett**<br /><br /> Kötelező |**xs: int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez az alapértelmezett bemutató. |
+| **Dub**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a szinkronizált bemutató. |
+| **Eredeti**<br /><br /> Kötelező |**xs: int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez az eredeti bemutató. |
+| **Megjegyzés**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a szám kommentárt tartalmaz. |
+| **Dalszövegei**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a szám dalszövegeket tartalmaz. |
+| **Karaoke**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a karaoke számot jelöli (háttérzene, ének nélkül). |
+| **Kényszerített**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a kényszerített bemutató. |
+| **Halláskárosult**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a pálya a nagyothallók számára van. |
+| **Látássérült**<br /><br /> Kötelező |**xs:int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy ez a pálya a gyengén látókszámára van. |
+| **CleanEffects (Tisztahatások)**<br /><br /> Kötelező |**xs: int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy a sávnak tiszta hatásai vannak. |
+| **Csatoltkép**<br /><br /> Kötelező |**xs: int** |Állítsa ezt az attribútumot 1-re, jelezve, hogy a sávnak vannak képei. |
 
-## <a name="Programs"></a>Programok elem
-A burkoló elem több **program** elemet is tárol.  
+## <a name="programs-element"></a><a name="Programs"></a>Programok elem
+Több **programelemet** tartalmazó burkolóelem.  
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Program**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Az MPEG-TS formátumú fájlok esetében az adategységben található programokkal kapcsolatos információkat tartalmaz. |
+| **Program**<br /><br /> minOccurs="0" maxOccurs="nem kötött" |[Programtype (Programtype)](media-services-input-metadata-schema.md#ProgramType) |Az MPEG-TS formátumú eszközfájlok esetében az eszközfájlban lévő programokra vonatkozó információkat tartalmaz. |
 
-## <a name="VideoTracks"></a>VideoTracks elem
- Több **VideoTrack** elemet tároló burkoló elem.  
+## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks elem
+ Több **VideoTrack-elemet** tartalmazó burkolóelem.  
 
- Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+ A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Gyermek elemek
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **VideoTrack**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[VideoTrackType (örököl a TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Az adatfájlban található videós sávokkal kapcsolatos információkat tartalmaz. |
+| **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="nem kötött" |[VideoTrackType (a TrackType öröklődik)](media-services-input-metadata-schema.md#VideoTrackType) |Az eszközfájlban lévő videosávokra vonatkozó információkat tartalmazza. |
 
-## <a name="AudioTracks"></a>AudioTracks elem
- Több **AudioTrack** elemet tároló burkoló elem.  
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a>AudioTracks elem
+ Burkolóelem, amely több **AudioTrack** elemet tartalmaz.  
 
- Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
+ A cikk végén található XML-példa: [XML példa](media-services-input-metadata-schema.md#xml).  
 
-### <a name="elements"></a>elemek
-| Név | Type (Típus) | Leírás |
+### <a name="elements"></a>Elemek
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **AudioTrack**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[AudioTrackType (örököl a TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Az adatfájlban lévő hangsávokkal kapcsolatos információkat tartalmaz. |
+| **Hangsáv**<br /><br /> minOccurs="0" maxOccurs="nem kötött" |[AudioTrackType (a TrackType öröklődik)](media-services-input-metadata-schema.md#AudioTrackType) |Az eszközfájlban lévő hangsávokkal kapcsolatos információkat tartalmazza. |
 
-## <a name="code"></a>Séma kódja
+## <a name="schema-code"></a><a name="code"></a>Sémakód
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
@@ -611,8 +611,8 @@ A burkoló elem több **program** elemet is tárol.
     </xs:schema>  
 
 
-## <a name="xml"></a>XML-példa
-A következő példa a bemeneti metaadat-fájlt szemlélteti.  
+## <a name="xml-example"></a><a name="xml"></a>PÉLDA XML-re
+Az alábbi példa a bemeneti metaadat-fájlt mutat be.  
 
     <?xml version="1.0" encoding="utf-8"?>  
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  
@@ -641,7 +641,7 @@ A következő példa a bemeneti metaadat-fájlt szemlélteti.
       </AssetFile>  
     </AssetFiles>  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

@@ -1,6 +1,6 @@
 ---
-title: Kontrasztos megjelenítés bekapcsolása a Azure Portalban | Microsoft Docs
-description: Módosítsa a Azure Portal témát, és válassza ki a háttér és a betűszín látható színeket. Kapcsolja be a kontrasztot, hogy a Azure Portal gyorsabban és könnyebben olvasható legyen.
+title: Kontrasztos megjelenítés az Azure Portalon | Microsoft dokumentumok
+description: Módosítsa az Azure Portal témát a megjelenő háttér- és betűszínek kiválasztásához. Kapcsolja be a kontrasztos megjelenítést, hogy az Azure Portal gyorsabban és könnyebben olvasható legyen.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -11,46 +11,46 @@ ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
 ms.openlocfilehash: ae135e0d7ac613d78b1c1f76e233503a60570f0f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310764"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Kapcsolja be a kontrasztot, vagy módosítsa a témát a Azure Portal
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>A kontrasztos megjelenítés bekapcsolása vagy a téma módosítása az Azure Portalon
 
-A kontrasztos beállítások a Azure Portal könnyebben olvashatók. Olyan témát is kiválaszthat, amely megváltoztatja a portál háttérszíneit.
+A kontrasztos beállítások megkönnyítik az Azure Portal olvasását. Olyan témát is választhat, amely módosítja a portál háttérszíneit.
 
-Ha nagyobb kontrasztra van szüksége, vagy módosítani szeretné a Azure Portal színsémáját, lépjen a portál beállításaira a módosítás elvégzéséhez.
+Ha több kontrasztra van szüksége, vagy módosítani szeretné a színsémát az Azure Portalon, a módosításhoz lépjen a portál beállításaihoz.
 
 ## <a name="turn-on-high-contrast"></a>Kontrasztos megjelenítés bekapcsolása
 
-1. A [Azure Portal](https://portal.azure.com)fejlécében válassza a **Beállítások**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com)fejlécében válassza a **Beállítások lehetőséget.**
 
-    ![A portál beállítások fogaskerék ikont megjelenítő képernyőkép a Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. Válassza a **fehér** vagy a **fekete**lehetőséget.
+    ![Képernyőkép, amelyen a portál beállítások fogaskerék ikonja látható az Azure Portalon](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+1. Válassza a **Fehér** vagy **a Fekete**lehetőséget.
 
-    ![A Azure Portal beállításokban található kontrasztos beállításokat bemutató képernyőkép](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Képernyőkép, amely az Azure Portal beállításainak kontrasztos beállításait jeleníti meg](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. Kattintson az **Alkalmaz** gombra.
 
 > [!NOTE]
-> Ha magas kontrasztú témát választ, az minden más téma kijelölését felülbírálja.
+> Ha nagy kontrasztú témát választ, az felülírja az összes többi témakijelölést.
 >
 >
 
 ## <a name="change-theme"></a>Téma módosítása
 
-1. A [Azure Portal](https://portal.azure.com)fejlécében válassza a **Beállítások**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com)fejlécében válassza a **Beállítások lehetőséget.**
 
-    ![A portál beállítások fogaskerék ikont megjelenítő képernyőkép a Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Képernyőkép, amelyen a portál beállítások fogaskerék ikonja látható az Azure Portalon](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
 1. Válasszon témát.
 
-    ![A Azure Portal beállításokban található téma beállításait megjelenítő képernyőkép](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
+    ![Képernyőkép, amely az Azure Portal beállításainak témabeállításait jeleníti meg](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 
 1. Kattintson az **Alkalmaz** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Billentyűparancsok a Azure Portal](azure-portal-keyboard-shortcuts.md)
+- [Billentyűparancsok az Azure Portalon](azure-portal-keyboard-shortcuts.md)
 - [Támogatott böngészők és eszközök](../azure-preview-portal-supported-browsers-devices.md)

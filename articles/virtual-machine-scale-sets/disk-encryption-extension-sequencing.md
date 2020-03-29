@@ -1,34 +1,34 @@
 ---
-title: A Azure Disk Encryption és az Azure virtuálisgép-méretezési csoportok bővítmény-sorrendje
-description: Ez a cikk a Linux IaaS virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást.
+title: Az Azure Disk Encryption és az Azure virtuálisgép-méretezési készletek bővítmény-szekvenálást állít a
+description: Ez a cikk a Microsoft Azure lemeztitkosítás linuxos IaaS virtuális gépekhez való engedélyezésével kapcsolatos utasításokat tartalmaz.
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279031"
 ---
-# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>A Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének előkészítésével
+# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Az Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének szekvenálásával
 
-A bővítmények, például az Azure Disk Encryption hozzáadhatók egy adott sorrendben elérhető Azure-beli virtuálisgép-méretezési csoportokhoz. Ehhez használja a [bővítmények sorrendjét](virtual-machine-scale-sets-extension-sequencing.md). 
+A bővítmények, például az Azure lemeztitkosítás hozzáadható egy Azure virtuális gépek méretezési készlet egy adott sorrendben. Ehhez használja [a bővítményszekvenálást](virtual-machine-scale-sets-extension-sequencing.md). 
 
-Általánosságban a titkosítást egy lemezre kell alkalmazni:
+Általában a titkosítást kell alkalmazni a lemezre:
 
 - A lemezeket vagy köteteket előkészítő bővítmények vagy egyéni parancsfájlok után.
-- Olyan bővítmények vagy egyéni parancsfájlok előtt, amelyek hozzáférnek vagy használják a titkosított lemezeken vagy köteteken tárolt adatmennyiséget.
+- A titkosított lemezeken vagy köteteken lévő adatokat elérő vagy használó bővítmények vagy egyéni parancsfájlok előtt.
 
-Mindkét esetben a `provisionAfterExtensions` tulajdonság azt jelzi, hogy melyik bővítményt kell hozzáadni később a sorozatban.
+Mindkét esetben a `provisionAfterExtensions` tulajdonság azt jelöli, hogy melyik kiterjesztést kell hozzáadni a sorozat későbbi részében.
 
-## <a name="sample-azure-templates"></a>Példa Azure-sablonokra
+## <a name="sample-azure-templates"></a>Minta Azure-sablonok
 
-Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény után is alkalmazza, helyezze a `provisionAfterExtensions` tulajdonságot a AzureDiskEncryption-bővítmény blokkba. 
+Ha azt szeretné, hogy az Azure Disk Encryption `provisionAfterExtensions` egy másik bővítmény után alkalmazva, helyezze a tulajdonságot az AzureDiskEncryption bővítmény blokkba. 
 
-Az alábbi példa egy olyan PowerShell-parancsfájlt használ, amely inicializálja és formázza a Windows lemezét, majd ezt követi a "AzureDiskEncryption":
+Íme egy példa a "CustomScriptExtension" használatával, amely egy Windows-lemezinicializáló és formázó Powershell-parancsfájl, amelyet az "AzureDiskEncryption" követ:
 
 ```json
 "virtualMachineProfile": {
@@ -84,9 +84,9 @@ Az alábbi példa egy olyan PowerShell-parancsfájlt használ, amely inicializá
 }
 ```
 
-Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény előtt is alkalmazza, helyezze a `provisionAfterExtensions` tulajdonságot a következőre a bővítmény blokkjában.
+Ha azt szeretné, hogy az Azure Disk Encryption `provisionAfterExtensions` egy másik bővítmény előtt alkalmazva, helyezze a tulajdonságot a bővítmény blokkjában, hogy kövesse.
 
-Íme egy példa a "AzureDiskEncryption" kifejezéssel, amelyet a "VMDiagnosticsSettings" követ, amely egy Windows-alapú Azure virtuális gépen a figyelési és diagnosztikai képességeket nyújtja:
+Íme egy példa az "AzureDiskEncryption" használatával, amelyet a "VMDiagnosticsSettings" bővítmény követ, amely egy Windows-alapú Azure virtuális gép figyelési és diagnosztikai képességeit biztosítja:
 
 
 ```json
@@ -151,14 +151,14 @@ Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény előtt is
 }
 ```
 
-Részletesebb sablon a következő témakörben található:
-* A Azure Disk Encryption bővítmény alkalmazása a lemezt formázó egyéni rendszerhéj-parancsfájl után (Linux): [Deploy-extseq-Linux-ade-After-customscript. JSON](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+Részletesebb sablon:
+* Alkalmazza az Azure Disk Encryption bővítményt egy egyéni rendszerhéj-parancsfájl után, amely formázza a lemezt (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
-## <a name="next-steps"></a>Következő lépések
-- További információ a bővítmények sorrendbe [állításáról: a bővítmények kiosztása a virtuálisgép-méretezési csoportokban](virtual-machine-scale-sets-extension-sequencing.md).
-- További információ a `provisionAfterExtensions` tulajdonságról: [Microsoft. számítási virtualMachineScaleSets/bővítmények sablonjának referenciája](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
-- [Azure Disk Encryption a virtuálisgép-méretezési csoportokhoz](disk-encryption-overview.md)
+## <a name="next-steps"></a>További lépések
+- További információ a bővítmény-szekvenálásról: [Sorozatbővítmény kiépítése a virtuálisgép-méretezési készletekben.](virtual-machine-scale-sets-extension-sequencing.md)
+- További információ `provisionAfterExtensions` a tulajdonságról: [Microsoft.Compute virtualMachineScaleSets/extensions template reference](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- [Azure lemeztitkosítás a virtuálisgép-méretezési készletekhez](disk-encryption-overview.md)
 - [Virtuálisgép-méretezési csoportok titkosítása az Azure CLI használatával](disk-encryption-cli.md)
-- [Virtuálisgép-méretezési csoportok titkosítása a Azure PowerShell használatával](disk-encryption-powershell.md)
-- [Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz](disk-encryption-key-vault.md)
+- [Virtuálisgép-méretezési csoportok titkosítása az Azure PowerShell használatával](disk-encryption-powershell.md)
+- [Az Azure Disk Encryption kulcstárolójának létrehozása és konfigurálása](disk-encryption-key-vault.md)

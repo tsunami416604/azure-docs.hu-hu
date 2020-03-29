@@ -1,6 +1,6 @@
 ---
-title: Webes API-kat meghívó asztali alkalmazás létrehozása – Microsoft Identity platform | Azure
-description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó asztali alkalmazást (áttekintés)
+title: Webes API-kat megnevező asztali alkalmazás létrehozása – Microsoft identity platform | Azure
+description: Megtudhatja, hogy miként hozhat létre webes API-kat meghívja asztali alkalmazást (áttekintés)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,59 +15,59 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 196102769c1f5f68df316918a63079b09baad32d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702147"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó asztali alkalmazás
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Eset: Webes API-kat meghívja ópadi alkalmazás
 
-A webes API-kat meghívó asztali alkalmazások létrehozásához szükséges tudnivalók.
+Ismerje meg mindazt, amire szüksége van egy webes API-t meghívjatartalmazó asztali alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
-Ha még nem tette meg, hozza létre első alkalmazását a .NET Desktop rövid útmutatójának, a Univerzális Windows-platform (UWP) rövid útmutatójának vagy a macOS natív alkalmazásának rövid útmutatójának használatával:
-
-> [!div class="nextstepaction"]
-> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból](./quickstart-v2-windows-desktop.md)
-
+Ha még nem tette meg, hozza létre az első alkalmazást a .NET asztali rövid útmutató, az Univerzális Windows platform (UWP) rövid útmutatója vagy a macOS natív alkalmazás rövid útmutatója szerint:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy UWP-alkalmazásból](./quickstart-v2-uwp.md)
+> [Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból](./quickstart-v2-windows-desktop.md)
+
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: token beszerzése és Microsoft Graph API meghívása macOS natív alkalmazásból](./quickstart-v2-ios.md)
+> [Rövid útmutató: Jogkivonat beszerzése és Microsoft Graph API hívása UWP-alkalmazásból](./quickstart-v2-uwp.md)
+
+> [!div class="nextstepaction"]
+> [Rövid útmutató: Jogkivonat beszerzése és microsoft graph API hívása macOS natív alkalmazásból](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Áttekintés
 
-Írhat egy asztali alkalmazást, és a felhasználók bejelentkezhetnek az alkalmazásba, és meghívhatják a webes API-kat, például a Microsoft Graph, más Microsoft API-kat vagy a saját webes API-t. Több lehetősége van:
+Asztali alkalmazást ír, és be szeretne jelentkezni a felhasználókba az alkalmazásba, és webes API-kat, például a Microsoft Graphot, más Microsoft API-kat vagy a saját webes API-kat szeretne meghívni. Számos lehetősége van:
 
-- Használhatja az interaktív jogkivonat-beszerzést:
+- Használhatja az interaktív token beszerzés:
 
-  - Ha az asztali alkalmazás támogatja a grafikus vezérlőket, például egy Windows. Form alkalmazást, egy WPF-alkalmazást vagy egy macOS natív alkalmazást.
-  - Ha pedig .NET Core-alkalmazás, és Ön vállalja, hogy a Azure Active Directory (Azure AD) hitelesítési interakciót végez a rendszerböngészőben.
+  - Ha az asztali alkalmazás támogatja a grafikus vezérlőket, például ha Windows.Form alkalmazásról, WPF-alkalmazásról vagy macOS natív alkalmazásról van szó.
+  - Vagy ha ez egy .NET Core alkalmazás, és beleegyezik abba, hogy az Azure Active Directoryval (Azure AD) a rendszerböngészőben történjen a hitelesítési interakció.
 
-- A Windowsban üzemeltetett alkalmazásokhoz a Windows-tartományhoz vagy az Azure AD-hez csatlakoztatott számítógépeken futó alkalmazások esetében is lehetséges a jogkivonat csendes beszerzése az integrált Windows-hitelesítés használatával.
-- Végül, és bár nem ajánlott, használhat egy felhasználónevet és egy jelszót a nyilvános ügyfélalkalmazások számára. Bizonyos helyzetekben, például a DevOps-ben továbbra is szükség van. A használata korlátozásokat alkalmaz az alkalmazására. Például nem tud bejelentkezni egy olyan felhasználóra, akinek többtényezős hitelesítést kell végrehajtania (feltételes hozzáférés). Az alkalmazás nem használhatja az egyszeri bejelentkezést (SSO).
+- Windows-üzemeltetésű alkalmazások esetén a Windows-tartományhoz vagy az Azure AD-hez csatlakozott számítógépeken futó alkalmazások is beszerezhetnek egy jogkivonatot az integrált Windows-hitelesítés használatával.
+- Végül, és bár ez nem ajánlott, használhatja a felhasználónevet és a jelszót a nyilvános ügyfélalkalmazásokban. Bizonyos forgatókönyvekben, például a DevOps-hoz továbbra is szükség van. Használata korlátozza az alkalmazást. Például nem tud bejelentkezni egy olyan felhasználóba, akinek többtényezős hitelesítést (feltételes hozzáférést) kell végrehajtania. Emellett az alkalmazás nem részesül egyszeri bejelentkezés (SSO).
 
-  Emellett a modern hitelesítés alapelvei is megtalálhatók, és csak az örökölt okok miatt biztosítható.
+  Ez is ellentétes a modern hitelesítés elveivel, és csak örökölt okokból biztosított.
 
   ![Asztali alkalmazás](media/scenarios/desktop-app.svg)
 
-- Ha olyan hordozható parancssori eszközt ír, amely valószínűleg Linux vagy Mac rendszerű .NET Core-alkalmazás, és ha elfogadja, hogy a hitelesítés delegálásra kerül a rendszerböngészőbe, interaktív hitelesítést használhat. A .NET Core nem biztosít [webböngészőt](https://aka.ms/msal-net-uses-web-browser), így a hitelesítés a rendszerböngészőben történik. Ellenkező esetben a legjobb megoldás az, ha az eszköz kód áramlását használja. Ez a folyamat böngésző nélküli alkalmazásokhoz is használatos, például IoT alkalmazásokhoz.
+- Ha hordozható parancssori eszközt ír, valószínűleg egy Linuxvagy Mac rendszeren futó .NET Core alkalmazást, és elfogadja, hogy a hitelesítés delegálásra kerül a rendszerböngészőben, interaktív hitelesítést használhat. A .NET Core nem biztosít [webböngészőt,](https://aka.ms/msal-net-uses-web-browser)így a hitelesítés a rendszerböngészőben történik. Ellenkező esetben a legjobb megoldás ebben az esetben az eszköz kódfolyamatának használata. Ez a folyamat böngésző nélküli alkalmazásokhoz is használható, például az IoT-alkalmazásokhoz.
 
-  ![Böngészővel nem rendelkező alkalmazás](media/scenarios/device-code-flow-app.svg)
+  ![Böngésző nélküli alkalmazás](media/scenarios/device-code-flow-app.svg)
 
 ## <a name="specifics"></a>Sajátosságai
 
-Az asztali alkalmazások számos sajátossággal rendelkeznek. Főleg attól függnek, hogy az alkalmazás interaktív hitelesítést használ-e, vagy sem.
+Asztali alkalmazások számos sajátosságait. Ezek elsősorban attól függ, hogy az alkalmazás interaktív hitelesítést használ-e vagy sem.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Asztali alkalmazás: alkalmazás regisztrálása](scenario-desktop-app-registration.md)
+> [Asztali alkalmazás: Alkalmazásregisztráció](scenario-desktop-app-registration.md)

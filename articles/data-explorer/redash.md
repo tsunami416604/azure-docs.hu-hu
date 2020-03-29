@@ -1,6 +1,6 @@
 ---
-title: Azure-Adatkezelő megjelenítése a redash segítségével
-description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg az Azure Adatkezelőban tárolt adatmegjelenítést a natív összekötővel.
+title: Az Azure Data Explorer megjelenítése a Redash segítségével
+description: Ebben a cikkben megtudhatja, hogyan vizualizálhatja az adatokat az Azure Data Explorer ben a Redash natív összekötő.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,92 +8,92 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773956"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Adatok megjelenítése az Azure Adatkezelő a redash-ben
+# <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Adatok megjelenítése az Azure Data Explorerből a Redash alkalmazásban
 
-A [redash](https://redash.io/) összekapcsolja és lekérdezi az adatforrásokat, irányítópultokat hoz létre az adatmegjelenítéshez és a társaikkal való megosztásához. Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Adatkezelőt adatforrásként a redash számára, majd megjelenítheti az adatmegjelenítést.
+[A Redash](https://redash.io/) összekapcsolja és lekérdezi az adatforrásokat, irányítópultokat hoz létre az adatok megjelenítéséhez és a társakkal való megosztásához. Ebben a cikkben megtudhatja, hogyan állíthatja be az Azure Data Exploreradatforrásként a Redash adatforrását, majd jelenítheti meg az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Hozzon létre egy fürtöt és egy adatbázist](create-cluster-database-portal.md).
-1. A mintaadatok betöltését az [Azure Adatkezelőba](ingest-sample-data.md)a beolvasott adatmennyiséggel. További betöltési lehetőségekért lásd: a betöltés [áttekintése](ingest-data-overview.md).
+1. [Fürt és adatbázis létrehozása](create-cluster-database-portal.md).
+1. Az adatok betöltése az [Azure Data Explorer betöltési mintaadatainak magyarázata szerint.](ingest-sample-data.md) További betöltési beállításokért lásd: [Betöltési áttekintés.](ingest-data-overview.md)
 
 [!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-## <a name="create-azure-data-explorer-connector-in-redash"></a>Azure Adatkezelő-összekötő létrehozása a redash-ben 
+## <a name="create-azure-data-explorer-connector-in-redash"></a>Azure Data Explorer-összekötő létrehozása a Redash programban 
 
-1. Jelentkezzen be a [redash](https://www.redash.io/)-be. Válassza az első **lépések** lehetőséget a fiók létrehozásához.
-1. Az első **lépések**szakaszban válassza az **adatforrás összekapcsolását**.
+1. Jelentkezzen be a [Redash be.](https://www.redash.io/) Fiók létrehozásához válassza az **Első lépések** lehetőséget.
+1. A **Kezdés**lehetőséget csoportban válassza **az Adatforrás csatlakoztatása**lehetőséget.
 
-    ![Adatforrás összekötése](media/redash/connect-data-source.png)
+    ![Adatforrás csatlakoztatása](media/redash/connect-data-source.png)
 
-1. Az **új adatforrás létrehozása** ablakban válassza az **Azure adatkezelő (Kusto)** lehetőséget, majd válassza a **Létrehozás**lehetőséget. 
+1. Az **Új adatforrás létrehozása** ablakban válassza az Azure Data Explorer **(Kusto)** lehetőséget, majd a **Létrehozás lehetőséget.** 
 
-    ![Válassza ki az Azure Adatkezelő adatforrást](media/redash/select-adx-data-source.png)
+    ![Válassza az Azure Data Explorer adatforrását](media/redash/select-adx-data-source.png)
 
-1. Az **Azure adatkezelő (Kusto)** ablakban végezze el a következő űrlapot, és válassza a **Létrehozás**lehetőséget.
+1. Az **Azure Data Explorer (Kusto)** ablakban töltse ki az alábbi űrlapot, és válassza a **Létrehozás gombot.**
 
-    ![Azure Adatkezelő (Kusto) beállítások ablak](media/redash/adx-settings-window.png)
+    ![Az Azure Data Explorer (Kusto) beállítási ablaka](media/redash/adx-settings-window.png)
 
-1. A **Beállítások** ablakban válassza a **Save (Mentés** ) lehetőséget, és **tesztelje** az **Azure adatkezelő (Kusto)** adatforrás-kapcsolódását.
+1. A **Beállítások** ablakban válassza **a Mentés** és a Kapcsolat **tesztelése** lehetőséget az **Azure Data Explorer (Kusto)** adatforrás-kapcsolat ának teszteléséhez.
 
-## <a name="create-queries-in-redash"></a>Lekérdezések létrehozása a redash-ben
+## <a name="create-queries-in-redash"></a>Lekérdezések létrehozása a Redash-ben
 
-1. A redash bal felső részén válassza az > **lekérdezés** **létrehozása** lehetőséget. Kattintson az **Új lekérdezés** elemre, és nevezze át a lekérdezést.
+1. Az Újravonaltól balra kattintson a**Lekérdezés** **létrehozása gombra.** >  Kattintson az **Új lekérdezés gombra,** és nevezze át a lekérdezést.
 
     ![Lekérdezés létrehozása](media/redash/create-query.png)
 
-1. Írja be a lekérdezést a felső szerkesztési ablaktáblában, majd kattintson a **Mentés** és **végrehajtás**gombra. Válassza a **Közzététel** lehetőséget a lekérdezés közzétételéhez későbbi használatra.
+1. Írja be a lekérdezést a felső szerkesztőablakba, és válassza a **Mentés** és **végrehajtás lehetőséget.** Válassza **a Közzététel** lehetőséget a lekérdezés későbbi használatához történő közzétételéhez.
 
     ![Lekérdezés mentése és végrehajtása](media/redash/save-and-execute-query.png)
 
-    A bal oldali panelen megtekintheti az adatforrás-kapcsolatok nevét (a flow-ban lévő**GitHub-összekötőt** ) a legördülő menüben, valamint a kiválasztott adatbázis tábláiban. 
+    A bal oldali ablaktáblában a legördülő menüben láthatja az adatforrás-kapcsolat nevét **(Github-összekötő** a folyamatban) és a kijelölt adatbázis tábláit. 
 
-1. Tekintse meg a lekérdezés eredményeit az alsó középső ablaktáblán. Hozzon létre egy vizualizációt a lekérdezéssel való ugráshoz az **új vizualizáció** gombra kattintva.
+1. A lekérdezés eredményeinek megtekintése az alsó középső ablaktáblán. Hozzon létre egy vizualizációt a lekérdezéshez az **Új vizualizáció** gomb kiválasztásával.
 
-    ![Új vizualizáció](media/redash/new-visualization.png)
+    ![Új képi megjelenítés](media/redash/new-visualization.png)
 
-1. A vizualizáció képernyőn válassza ki a **vizualizáció típusát** és a megfelelő mezőket (például **X oszlop** és **Y oszlop**). **Mentse** a vizualizációt.
+1. A vizualizációs képernyőn jelölje ki a **Vizualizáció típusa** és a megfelelő mezőket, például **az X oszlop** és az Y oszlop **mezőt.** **Mentse** a vizualizációt.
 
-    ![Vizualizáció konfigurálása és mentése](media/redash/configure-visualization.png)
+    ![Képi megjelenítés konfigurálása és mentése](media/redash/configure-visualization.png)
 
 ### <a name="create-a-query-using-a-parameter"></a>Lekérdezés létrehozása paraméter használatával
 
-1. **Hozzon létre** > **lekérdezést** új lekérdezés létrehozásához. Adjon hozzá egy paramétert a (z) {{}} kapcsos zárójelek használatával. Válassza a **{{}}** lehetőséget a **paraméter hozzáadása** ablak megnyitásához. A *Beállítások ikon* kiválasztásával módosíthatja a meglévő paraméterek attribútumait, és megnyithatja a **< parameter_name >** ablakot. 
+1. **Lekérdezés létrehozása** > **Query** új lekérdezés létrehozásához. Adjon hozzá egy paramétert a {{}} göndör zárójelek használatával. A **Paraméter hozzáadása** ablak megnyitásához válassza a **{{}}** lehetőséget. A *beállítások ikonra* is kiválaszthatja egy meglévő paraméter attribútumainak módosítását, és megnyithatja a **<parameter_name>** ablakban. 
 
     ![paraméter beszúrása](media/redash/insert-parameter.png)
 
-1. Nevezze el a paramétert. Válassza a **típus**: **lekérdezési alapú legördülő lista** lehetőséget a legördülő menüből. Kattintson az **OK** gombra.
+1. Nevezze el a paramétert. Válassza **a Típus**: **Lekérdezésalapú legördülő lista lehetőséget** a legördülő menüből. Kattintson az **OK** gombra.
 
-    ![lekérdezésen alapuló legördülő lista](media/redash/query-based-dropdown-list.png)
+    ![lekérdezésalapú legördülő lista](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > A lekérdezés több értéket használ, ezért a következő szintaxist kell tartalmaznia `| where Type in ((split('{{Type}}', ',')))`. További információ: [az operátor](/azure/kusto/query/inoperator). Ennek eredményeképpen a [redash alkalmazásban több lekérdezési paraméter is elérhető](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io) .
+    > A lekérdezés több értéket használ, ezért a `| where Type in ((split('{{Type}}', ',')))`következő szintaxist kell tartalmaznia. További információ: [operator](/azure/kusto/query/inoperator). Ez [több lekérdezési paraméterbeállítást](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io) eredményez a redash alkalmazásban
 
-## <a name="create-a-dashboard-in-redash"></a>Irányítópult létrehozása a redash-ben
+## <a name="create-a-dashboard-in-redash"></a>Irányítópult létrehozása a Redash-ben
 
-1. Az irányítópult létrehozásához **hozzon létre** > **irányítópultot**. Másik lehetőségként válassza a meglévő irányítópultot, az **irányítópultok** > a listából válassza ki az irányítópultot.
+1. Az irányítópult létrehozásához hozza létre az Irányítópult **létrehozása című.** > **Dashboard** Másik lehetőségként válassza ki a meglévő **irányítópultokat, az Irányítópultokat** > válassza ki az irányítópultot a listából.
 
     ![Irányítópult létrehozása](media/redash/create-dashboard.png)
 
-1. Az **új irányítópult** ablakban nevezze el az irányítópultot, és kattintson a **Mentés**gombra. **< Dashboard_name >** ablakban válassza a **widget hozzáadása** lehetőséget az új widget létrehozásához. 
+1. Az **Új irányítópult** ablakban nevezze el az irányítópultot, és válassza a Mentés **gombot.** Az Dashboard_name **>Dashboard_name ablakban** válassza<a **Widget hozzáadása** lehetőséget új widget létrehozásához. 
 
-1. A **widget hozzáadása** ablakban válassza a lekérdezés neve lehetőséget, majd a **vizualizáció**és a **Paraméterek**elemet. **A Hozzáadás az irányítópulthoz** lehetőség kiválasztása
+1. A **Widget hozzáadása** ablakban válassza a lekérdezés nevét, a Megjelenítés **és**a **Paraméterek lehetőséget.** Válassza **a Hozzáadás az irányítópulthoz lehetőséget**
 
-   ![Vizualizációk kiválasztása és Hozzáadás az irányítópulthoz](media/redash/add-widget-window.png)
+   ![Képi megjelenítések kiválasztása és hozzáadás az irányítópulthoz](media/redash/add-widget-window.png)
 
-1. Válassza a **Szerkesztés kész** lehetőséget az irányítópultok létrehozásának befejezéséhez.
+1. Válassza a **Kész szerkesztés lehetőséget** az irányítópult létrehozásának befejezéséhez.
 
-1.  Az irányítópult szerkesztési módjában válassza az **irányítópult szintű szűrők használata** **lehetőséget a korábban definiált típusparaméter használatához** .
+1.  Az irányítópult szerkesztési módjában válassza az **Irányítópultszint-szűrők használata lehetőséget** a korábban definiált **Típus** paraméter használatához.
 
-    ![Irányítópult-létrehozás befejezése](media/redash/complete-dashboard.png)
+    ![Az irányítópult létrehozása teljes](media/redash/complete-dashboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
 

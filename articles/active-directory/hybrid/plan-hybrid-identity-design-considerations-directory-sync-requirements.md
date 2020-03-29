@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitás Tervező – Azure címtár-szinkronizálás követelményei |} A Microsoft Docs
-description: Azonosíthatja a használati követelményekről szükséges ahhoz, hogy között a felhasználók szinkronizálása az helyi és felhőbeli vállalati =.
+title: Hibrid identitástervezés – címtárszinkronizálási követelmények Azure | Microsoft dokumentumok
+description: Határozza meg, milyen követelmények szükségesek az összes felhasználó szinkronizálásához az on=premises és a felhő között a vállalat számára.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,63 +18,63 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381161"
 ---
-# <a name="determine-directory-synchronization-requirements"></a>Határozza meg a címtár-szinkronizálás követelményei
-Szinkronizálási szól az identitás a felhőben, a helyszíni identitás alapján biztosítanak a felhasználók számára. E szinkronizált fiókot fogja használni, a hitelesítés és az összevont hitelesítés, a felhasználók továbbra is kell rendelkeznie az identitás a felhőben.  Ezt az identitást kell karbantartani, és rendszeresen frissülnek.  A frissítések számos formája, a cím módosításainak a jelszó módosítására.  
+# <a name="determine-directory-synchronization-requirements"></a>Címtár-szinkronizálási követelmények meghatározása
+A szinkronizálás arról szól, hogy a felhasználók a helyszíni identitásuk alapján identitást biztosítsanak a felhőben. Függetlenül attól, hogy szinkronizált fiókot fognak-e használni a hitelesítéshez vagy az összevont hitelesítéshez, a felhasználóknak továbbra is rendelkezniük kell identitással a felhőben.  Ezt az identitást rendszeresen meg kell őrizni és frissíteni kell.  A frissítések számos formát ölthetnek, a címmódosításoktól a jelszómódosításokig.  
 
-Indítsa el a szervezetek számára a helyszíni identitáskezelési megoldás és a felhasználói követelmények kiértékelésekor. Ezt a próbaidőszakot fontos, hogy milyen felhasználói identitások létrejön és a felhőben fenntartott vonatkozó technikai követelmények meghatározása.  A szervezetek többsége az Active Directory a helyszíni és a helyszíni címtár, amely felhasználó által szinkronizálja a rendszer a, azonban bizonyos esetekben ez nem az eset áll fenn.  
+Első ként értékelje ki a szervezetek helyszíni identitáskezelési megoldás és a felhasználói követelmények. Ez a kiértékelés fontos a felhasználói identitások létrehozásának és karbantartásának műszaki követelményeinek meghatározásához.  A szervezetek többsége számára az Active Directory a helyszínen található, és a helyszíni könyvtár lesz, amelyből a felhasználók szinkronizálva lesznek, de bizonyos esetekben ez nem így lesz.  
 
 Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* Rendelkezik egy AD-erdő, több vagy nincs?
+* Van egy AD erdő, több, vagy nincs?
   
-  * Hány Azure AD-címtár fogja azt kell szinkronizálja a?
+  * Hány Azure AD-könyvtárat fog szinkronizálni?
     
-    1. Használ szűrés?
-    2. Több Azure AD Connect-kiszolgálók tervezett van?
-* Jelenleg rendelkezik a szinkronizálás a helyszíni eszköz?
+    1. Szűrést használ?
+    2. Több Azure AD Connect-kiszolgálót tervez?
+* Jelenleg rendelkezik a helyszíni szinkronizálási eszközzel?
   
-  * Ha igen, támogatja a felhasználók számára, ha a felhasználó rendelkezik egy virtuális könyvtárat vagy integrációs identitások?
-* Van bármilyen más címtár a helyszínen (pl. LDAP-címtárhoz, HR-adatbázist, és így tovább) szinkronizálni kívánt?
-  * Lesz a minden GALSync foglalják?
-  * Mi az UPN-EK aktuális állapotát a szervezetben? 
-  * Van egy másik címtárban, hogy a felhasználók hitelesítése?
-  * A vállalat a Microsoft Exchange használ?
-    * Ezek tervezi, hogy az exchange hibrid telepítés?
+  * Ha igen, akkor a felhasználók rendelkeznek az identitások virtuális könyvtárával/integrációjával?
+* Van más helyszíni könyvtára, amelyet szinkronizálni szeretne (pl. LDAP Könyvtár, HR-adatbázis stb.)?
+  * Fogsz csinálni valami GALSync-et?
+  * Milyen állapotban vannak az UPN-ek a szervezetben? 
+  * Van egy másik könyvtár, amely a felhasználók hitelesítése ellen?
+  * A vállalat a Microsoft Exchange programot használja?
+    * Tervezik-e, hogy hibrid cseretelepítést végeznek?
 
-Most, hogy van egy ötletem a szinkronizálás követelményeiről, meg kell határoznia, melyik eszközt a követelmények teljesítéséhez a megfelelőt.  A Microsoft címtár-integráció és a szinkronizálás végrehajtásához számos eszközt nyújt.  Tekintse meg a [Hybrid Identity directory integrációs eszközök összehasonlító táblázatot](plan-hybrid-identity-design-considerations-tools-comparison.md) további információt. 
+Most, hogy van egy ötlete a szinkronizálási követelményekről, meg kell határoznia, hogy melyik eszköz felel meg ezeknek a követelményeknek.  A Microsoft számos eszközt biztosít a címtár-integráció és -szinkronizálás megvalósításához.  További információkért tekintse meg a [hibrid identitáskönyvtár-integrációs eszközök összehasonlító tábláját.](plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-Most, hogy a szinkronizálás követelményei és az eszközt, amely érheti el a vállalat, kell kiértékelni az alkalmazásokat, amelyek a címtárszolgáltatások. Ezt a próbaidőszakot fontos, hogy ezeket az alkalmazásokat a felhőbe való integrálásához technikai követelmények meghatározása. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Most, hogy rendelkezik a szinkronizálási követelmények és az eszköz, amely ezt a vállalat számára, ki kell értékelnie az alkalmazásokat, amelyek ezeket a címtárszolgáltatásokat. Ez a kiértékelés fontos, hogy meghatározza a műszaki követelmények integrálása ezeket az alkalmazásokat a felhőbe. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* Ezek az alkalmazások kerül a felhőbe, és könyvtárat?
-* Vannak-e speciális attribútum használatát, amely a felhőbe kell szinkronizálni, így ezeket az alkalmazásokat a segítségükkel sikeresen?
-* Ezeket az alkalmazásokat kell újra írható felhőalapú hitelesítés előnyeinek kihasználása érdekében?
-* Ezek az alkalmazások továbbra is a helyszíni élő, miközben a felhasználók férhetnek hozzá őket a felhőbeli identitás használatával?
+* Ezek az alkalmazások átkerülnek a felhőbe, és a könyvtárat használják?
+* Vannak-e olyan speciális attribútumok, amelyeket szinkronizálni kell a felhővel, hogy ezek az alkalmazások sikeresen használhassák őket?
+* Át kell írni ezeket az alkalmazásokat, hogy kihasználhassák a felhőhitelesítés előnyeit?
+* Ezek az alkalmazások továbbra is a helyszínen maradnak, miközben a felhasználók a felhőalapú identitás használatával érik el őket?
 
-Meg kell határoznia a biztonsági követelmények és korlátozások a címtár-szinkronizálás is. Ezt a próbaidőszakot fontos lesz szükség ahhoz, hogy létre és tarthatja karban a felhasználói identitások a felhőben követelmények listáját. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Meg kell határoznia a biztonsági követelményeket és a korlátozásokat a címtár-szinkronizálást is. Ez a kiértékelés fontos, hogy egy listát a követelmények, amelyek szükségesek lesznek a felhasználói identitások létrehozásához és karbantartásához a felhőben. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* Ha a szinkronizálási kiszolgáló kerülnek?
-* Lesz, azt a tartományhoz csatlakoztatott?
-* A kiszolgáló legyen, mint például a DMZ-t, tűzfal mögött egy korlátozott hálózati?
-  * Akkor fogja tudni nyissa meg a szükséges tűzfalportok szinkronizálás támogatásához?
-* Rendelkezik egy vész-helyreállítási terv a szinkronizálási kiszolgáló?
-* Rendelkezik egy fiókot a megfelelő engedélyekkel az minden olyan erdőben, a synch szeretne?
-  * Ha a cég nem tudja a választ a kérdésre, tekintse át a "Jelszó-szinkronizáláshoz engedélyek" részt a cikk [az Azure Active Directory Sync Service telepítése](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) és döntse el, ha már rendelkezik fiókkal az ezeket az engedélyeket, vagy ha szeretne létrehozni egyet.
-* Ha az megtalálhatjuk-erdő szinkronizálási tud minden olyan erdőben, a szinkronizálási kiszolgálót?
+* Hol található a szinkronizálási kiszolgáló?
+* Domain-csatlakozás lesz?
+* A kiszolgáló egy tűzfal mögötti korlátozott hálózaton, például DMZ-n lesz elhelyezve?
+  * Meg tudja nyitni a szinkronizálás támogatásához szükséges tűzfalportokat?
+* Rendelkezik vész-helyreállítási tervvel a szinkronizálási kiszolgálóhoz?
+* Rendelkezik a megfelelő engedélyekkel rendelkező fiókkal minden olyan erdőhöz, amellyel szinkronizálni szeretne?
+  * Ha a vállalat nem tudja a választ erre a kérdésre, tekintse át a "Jelszó-szinkronizálás engedélyei" című témakörben [az Azure Active Directory-szinkronizálási szolgáltatás telepítése](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) című témakörben található szakaszt, és állapítsa meg, hogy rendelkezik-e már ilyen engedélyekkel rendelkező fiókkal, vagy létre kell hoznia egyet.
+* Ha van mutli-erdő szinkronizálás a szinkronizálási kiszolgáló képes eljutni az egyes erdők?
 
 > [!NOTE]
-> Ügyeljen arra, hogy minden válaszról feljegyzéseket, és megismerheti a válaszok indokait. [Incidensválasz-követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md) halad keresztül a rendelkezésre álló lehetőségeket. A fenti melyik leginkább megfelelő lehetőséget az üzleti kiválaszthatja kérdések megválaszolása szükséges.
+> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. [Határozza meg az incidensválasz követelményeit,](plan-hybrid-identity-design-considerations-incident-response-requirements.md) amelyek átmennek a rendelkezésre álló lehetőségeken. A kérdések megválaszolásával kiválaszthatja, hogy melyik lehetőség felel meg legjobban üzleti igényeinek.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-[A multi-factor authentication-követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+[Többtényezős hitelesítési követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="see-also"></a>Lásd még
-[Kialakítási szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
 

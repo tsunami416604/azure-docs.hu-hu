@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Deklaratív kiépítés kifejezések |} A Microsoft Docs'
-description: A deklaratív kiépítés kifejezéseinek ismerteti.
+title: 'Azure AD Connect: Deklaratív kiépítési kifejezések | Microsoft dokumentumok'
+description: A deklaratív létesítési kifejezések magyarázata.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,87 +17,87 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245507"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezési kifejezések ismertetése
-Az Azure AD Connect szinkronizálása a deklaratív kiépítés a Forefront Identity Manager 2010 rendszerben bevezetett épül. Ez lehetővé teszi, hogy a teljes körű identitás integrációs üzleti logikát lefordított kód írása nélkül.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect szinkronizálás: A deklaratív létesítési kifejezések ismertetése
+Az Azure AD Connect szinkronizálása a Forefront Identity Manager 2010-ben bevezetett deklaratív kiépítésre épül. Ez lehetővé teszi, hogy végre a teljes identitás-integrációs üzleti logika anélkül, hogy a lefordított kódot kell írni.
 
-Deklaratív kiépítés fontos része az attribútumfolyamok kifejezés nyelve. A használt nyelv alkészlete a Microsoft® Visual Basic® Applications (VBA). Ezen a nyelven a Microsoft Office használja, és a VBScript élménye rendelkező felhasználók is felismeri azt. A deklaratív kiépítés Kifejezésnyelveket csak funkciókat használ, és nem strukturált nyelvet. Nincsenek módszerek vagy utasításokat. Az express programot a folyamat inkább beágyazott függvények.
+A deklaratív kiépítés lényeges része az attribútumfolyamatokban használt kifejezésnyelv. A használt nyelv a Microsoft® Visual Basic® for Applications (VBA) egy részhalmaza. Ezt a nyelvet használják a Microsoft Office-ban, és a VBScript-ben jártas felhasználók is felismerik azt. A deklaratív kiépítési kifejezés nyelv csak függvényeket használ, és nem strukturált nyelv. Nincsenek módszerek vagy utasítások. A függvények ehelyett egymásba vannak ágyazva a programáramlás kifejezésére.
 
-További részletekért lásd: [Üdvözli az alkalmazások nyelvi dokumentáció az Office 2013 a Visual Basic](https://msdn.microsoft.com/library/gg264383.aspx).
+További információt [az Üdvözli az Office 2013 Visual Basic for Applications nyelvi útmutatója című témakörben talál.](https://msdn.microsoft.com/library/gg264383.aspx)
 
-Az attribútumok vannak listaobjektum. A függvény csak a megfelelő típusú attribútumokat fogad el. Emellett akkor is kis-és nagybetűket. Mind a nevét, és a attribútumnevek rendelkeznie kell a megfelelő kis-és nagybetűhasználatot, vagy egy hiba lépett fel.
+Az attribútumok erősen bevannak gépelve. Egy függvény csak a megfelelő típusú attribútumokat fogadja el. A kis- és nagybetűket is figyelembe vevő. Mind a függvényneveknek, mind az attribútumneveknek megfelelő burkolattal kell rendelkezniük, különben hiba történik.
 
 ## <a name="language-definitions-and-identifiers"></a>Nyelvi definíciók és azonosítók
-* Függvények, a neve, és a zárójelek argumentumok: Függvénynév (argument 1, argumentum N).
-* Attribútumok szögletes zárójelek azonosítja: [attributeName]
-* Paraméterek százalékjelek azonosítja: % ParameterName %
-* A karakterlánc-állandókat idézőjelek között veszi körül: Például "Contoso" (Megjegyzés: kell használnia a Egyenes idézőjel "", és nem az ajánlatok intelligens "")
-* Numerikus értékek idézőjeleket kifejezett és kell lennie a tizedes tört. Hexadecimális értékek van fűzve előtagként & h Ha például a 98052 & HFF
-* Logikai értékek az állandókat ki: IGAZ, hamis.
-* Normál és a beépített állandókat, amelyek neve csak van megadva: NULL, CRLF, IgnoreThisFlow
+* A függvények neve argumentumokkal és szögletes zárójelekben lévő argumentumokkal rendelkezik: FunctionName(argument1 argumentum, N argumentum).
+* Az attribútumokat szögletes zárójelek azonosítják: [attribútumnév]
+* A paramétereket százalékjelek azonosítják: %ParameterName%
+* A karakterlánc-állandókat idézőjelek veszik körül: Például "Contoso" (Megjegyzés: egyenes idézőjeleket kell használnia", és nem intelligens idézőjeleket "")
+* A numerikus értékek idézőjelek nélkül vannak kifejezve, és várhatóan tizedesek. A hexadecimális értékek a H &előtaggal vannak rögzítve. Például: 98052, &HFF
+* A logikai értékek állandókkal vannak kifejezve: Igaz, Hamis.
+* A beépített állandók és konstansok csak a nevükkel vannak kifejezve: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Functions
-Számos függvényt deklaratív kiépítés használja ahhoz, hogy átalakítja a attribútumértékek lehetőségét. Ezek a függvények beágyazhatja, így az eredmény egy függvény egy másik függvénynek átadott.
+A deklaratív kiépítés számos függvényt használ az attribútumértékek átalakításának lehetővé tétele érdekében. Ezek a függvények egymásba ágyazhatók, így az egyik függvény eredménye átkerül egy másik függvénybe.
 
 `Function1(Function2(Function3()))`
 
-A funkciók teljes listája megtalálható a [függvény hivatkozási](reference-connect-sync-functions-reference.md).
+A függvények teljes listája megtalálható a [függvényhivatkozásban.](reference-connect-sync-functions-reference.md)
 
 ### <a name="parameters"></a>Paraméterek
-Egy paraméter van definiálva, vagy egy összekötőt, vagy PowerShell segítségével a rendszergazda. Paraméterek általában tartalmaznak, amelyek különböző operációs rendszerek közötti értékeket, például a neve annak a tartománynak a felhasználó található. Ezeket a paramétereket az attribútumfolyamok használható.
+A paramétert egy összekötő vagy egy PowerShell t használó rendszergazda határozza meg. A paraméterek általában rendszerről rendszerre eltérő értékeket tartalmaznak, például annak a tartománynak a nevét, amelyben a felhasználó található. Ezek a paraméterek attribútumfolyamatokban használhatók.
 
-Az Active Directory-összekötő a következő paraméterek megadott bejövő szinkronizálási szabályok:
+Az Active Directory-összekötő a következő paramétereket adta meg a bejövő szinkronizálási szabályokhoz:
 
 | Paraméter neve | Megjegyzés |
 | --- | --- |
-| Domain.Netbios |A tartomány jelenleg importált, például FABRIKAMSALES NetBIOS-formátum |
-| Domain.FQDN |A tartomány jelenleg importált, például sales.fabrikam.com (FQDN) formátumban |
-| Domain.LDAP |LDAP-formátum jelenleg importált, a tartomány például DC értékesítés, DC = fabrikam, DC = = com |
-| Forest.Netbios |Az erdő nevét jelenleg importált, például FABRIKAMCORP NetBIOS formátuma |
-| Forest.FQDN |Az erdő nevének jelenleg importált, például fabrikam.com (FQDN) formátumban |
-| Forest.LDAP |LDAP formátumát az erdő nevét jelenleg importált, például: DC = fabrikam, DC = com |
+| Tartomány.Netbios |A jelenleg importáló tartomány Netbios formátuma, például FABRIKAMSALES |
+| Tartomány.FQDN |Az importáló tartomány teljes tartománynév-formátuma, például sales.fabrikam.com |
+| Tartomány.LDAP |Az importáló tartomány LDAP-formátuma, például DC=sales,DC=fabrikam,DC=com |
+| Erdő.Netbios |A jelenleg importáló erdőnév Netbios formátuma, például FABRIKAMCORP |
+| Erdő.FQDN |Az importáló erdőnév Teljes tartományneve, például fabrikam.com |
+| Erdő.LDAP |Az importáló erdőnév LDAP-formátuma, például DC=fabrikam,DC=com |
 
-A rendszer a következő paramétert, amely kéri le az aktuálisan futó összekötő azonosítóját tartalmazza:  
+A rendszer a következő paramétert biztosítja, amely az összekötő jelenleg futó azonosítójának leéséhez szolgál:  
 `Connector.ID`
 
-Íme egy példa, amely feltölti a metaverzum attribútum tartományba a tartomány, ahol a felhasználó megtalálható a netbios-neve:  
+Íme egy példa, amely feltölti a metaverzum attribútum tartománya a netbios nevét a tartomány, ahol a felhasználó található:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>Operátorok
-Az alábbi operátorok használhatók:
+A következő operátorok használhatók:
 
-* **Összehasonlító**: <, < =, <>, =, >, > =
-* **Matematika**: +, -, \*, -
-* **Karakterlánc**: & (ÖSSZEFŰZ)
-* **Logikai**: & & (és). (vagy)
-* **Fontossági sorrendjének**:)
+* **Összehasonlítás**: <, <=, <>, =, >, >=
+* **Matematika**: +, \*-, , -
+* **Karakterlánc**: & (összefűzés)
+* **Logikai**: && (és), || vagy az, hogy az
+* **Értékelési végzés**: ( )
 
-Operátorok értékeli ki a balról jobbra, és azonos prioritású kiértékelése. Ez azt jelenti, hogy a \* (szorzó) nem kerül kiértékelésre, mielőtt - (kivonás). 2\*(5 + 3) nem ugyanaz, mint 2\*5 + 3. A zárójelek közé () segítségével fontossági sorrendjének módosítása, ha a megfelelő fontossági sorrendjének balról nem megfelelő.
+Az operátorok értékelése balról jobbra történik, és ugyanaz takarási prioritással rendelkeznek. Ez azt \* jelenti, hogy a (szorzót) nem értékelik ki - (kivonás). 2\*(5+3) nem ugyanaz,\*mint a 2 5+3. A szögletes zárójelek ( ) a kiértékelési sorrend módosítására szolgálnak, ha a balról jobbra történő értékelési sorrend nem megfelelő.
 
 ## <a name="multi-valued-attributes"></a>Többértékű attribútumok
-Az funkciók egyaránt egyértékű és többértékű attribútumok működhet. Többértékű attribútumok a függvény minden egyes értékhez keresztül működik, és alkalmazhatja azokat ugyanannak a függvénynek minden egyes értékhez.
+A függvények egyértékű és többértékű attribútumokon is működhetnek. A többértékű attribútumok esetében a függvény minden értéken működik, és ugyanazt a függvényt alkalmazza minden értékre.
 
 Példa:  
-`Trim([proxyAddresses])` Hajtsa végre az proxyAddress attribútuma minden érték Trim.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"` Minden érték és a egy @-sign, cserélje le a tartományba @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Keresse meg a SIP-cím, és távolítsa el az értékeket.
+`Trim([proxyAddresses])`A proxyAddress attribútum minden értékének vágása.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`Minden értéknél @-signcserélje le a @contoso.comtartományt a értékre.  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Keresse meg a SIP-címet, és távolítsa el az értékeket.
 
 ## <a name="next-steps"></a>További lépések
-* További információ a konfigurációs modell [ismertetése deklaratív kiépítés](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Lásd: hogyan deklaratív kiépítés használt out-of-box a [az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md).
-* Tekintse meg gyakorlati módosítást használata a deklaratív kiépítés [hogyan lehet módosítani az alapértelmezett konfiguráció](how-to-connect-sync-change-the-configuration.md).
+* A konfigurációs modellről a [Deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című témakörben olvashat bővebben.
+* Tekintse meg, hogyan használja a deklaratív kiépítést a beépített használat [az alapértelmezett konfiguráció ismertetése című](concept-azure-ad-connect-sync-default-configuration.md)témakörben.
+* Tekintse meg, hogyan lehet gyakorlati módosítást eszközolni a deklaratív kiépítés használatával [az Alapértelmezett konfiguráció módosítása](how-to-connect-sync-change-the-configuration.md)című témakörben.
 
-**Áttekintő témakör**
+**Áttekintő témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Megismerheti, és testre szabhatja a szinkronizálás](how-to-connect-sync-whatis.md)
+* [Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 **Referencia-témakörök**
 
-* [Az Azure AD Connect szinkronizálása: Functions – referencia](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect szinkronizálás: Függvények – referencia](reference-connect-sync-functions-reference.md)
 

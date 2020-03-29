@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Excelben importált Azure Adatkezelő Kusto-lekérdezés használatával megjelenítheti az adatmegjelenítést
-description: Ebből a cikkből megtudhatja, hogyan importálhat Azure Adatkezelő Kusto-lekérdezést a Microsoft Excelben.
+title: Adatok megjelenítése a Microsoft Excelbe importált Azure Data Explorer Kusto lekérdezéssel
+description: Ebből a cikkből megtudhatja, hogyan importálhat egy Azure Data Explorer Kusto-lekérdezést a Microsoft Excelbe.
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,67 +8,67 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 4999000e2084922b43b8085034f545d4b5c644a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849088"
 ---
-# <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>A Microsoft Excelben importált Azure Adatkezelő Kusto-lekérdezés használatával megjelenítheti az adatmegjelenítést
+# <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>Adatok megjelenítése a Microsoft Excelbe importált Azure Data Explorer Kusto lekérdezéssel
 
-Az Azure Adatkezelő két lehetőséget kínál az adatokhoz való csatlakozásra az Excelben: használja a natív összekötőt, vagy importáljon egy lekérdezést az Azure Adatkezelőból. Ebből a cikkből megtudhatja, hogyan importálhat egy lekérdezést az Azure Adatkezelőról az Excelbe az adatok megjelenítéséhez. Kusto-lekérdezés hozzáadása Excel-adatforrásként további számítások vagy vizualizációk megadásához az adathalmazon.
+Az Azure Data Explorer két lehetőséget biztosít az excelbeli adatokhoz való csatlakozáshoz: használja a natív összekötőt, vagy importáljon egy lekérdezést az Azure Data Explorerből. Ez a cikk bemutatja, hogyan importálhat egy lekérdezést az Azure Data Explorer ből az Excelbe az adatok megjelenítéséhez. Kusto-lekérdezés hozzáadása Excel-adatforrásként további számítások vagy vizualizációk elvégzéséhez az adatokon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Egy olyan szervezeti e-mail fiók, amely az Azure Active Directory tagja, így kapcsolódhat az [azure adatkezelő Súgó fürthöz](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
+* Egy szervezeti e-mail fiók, amely az Azure Active Directory tagja, így csatlakozhat az [Azure Data Explorer súgófürtjéhez](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
 <br>vagy</br>
-* Hozzon létre [egy tesztelési fürtöt és adatbázist](create-cluster-database-portal.md) , és jelentkezzen be [Az Azure adatkezelő webes felhasználói felületi alkalmazásba](https://dataexplorer.azure.com/).
+* Hozzon létre [egy tesztfürtöt és adatbázist,](create-cluster-database-portal.md) és jelentkezzen be [az Azure Data Explorer web felhasználói felületi alkalmazásába.](https://dataexplorer.azure.com/)
 
 ## <a name="define-kusto-query-as-an-excel-data-source"></a>Kusto-lekérdezés definiálása Excel-adatforrásként
 
-1. Az [Azure adatkezelő webes felhasználói felületén](https://dataexplorer.azure.com/clusters/help/databases/Samples)futtassa a lekérdezést, és tekintse át az eredményeket.
+1. Az [Azure Data Explorer webes felhasználói felületén](https://dataexplorer.azure.com/clusters/help/databases/Samples)futtassa a lekérdezést, és ellenőrizze az eredményeket.
 
-1. Válassza a **megosztás** fület, és válassza a **lekérdezés lehetőséget Power bi**.
+1. Jelölje ki a **Megosztás** lapot, és válassza **a Lekérdezés a Power BI-ba**lehetőséget.
 
-    ![Webes felhasználói felület lekérdezése Power BI](media/excel-blank-query/web-ui-query-to-powerbi.png)
+    ![Webes felhasználói felület lekérdezése a Power BI-ba](media/excel-blank-query/web-ui-query-to-powerbi.png)
 
-1. Megjelenik egy ablak a következő értesítéssel:
+1. Egy ablak jelenik meg a következő értesítéssel:
 
-    ![lekérdezés exportálása a vágólapra](media/excel-blank-query/query-exported-to-clipboard.png)
+    ![lekérdezés exportálása vágólapra](media/excel-blank-query/query-exported-to-clipboard.png)
 
-1. Nyissa meg a **Microsoft Excelt**.
+1. Nyissa meg **a Microsoft Excelt**.
 
-1. Az **adatok** lapon válassza az **adatok beolvasása** **más forrásokból** >  > **üres lekérdezés**lehetőséget.
+1. Az **Adatok** lapon válassza az Adatok >  **beszedése****más forrásokból** > **üres lekérdezés lehetőséget.**
 
-    ![Adatkérés és üres lekérdezés kiválasztása](media/excel-blank-query/get-data-blank-query.png)
+    ![Adatok beszereznie és üres lekérdezés kiválasztása](media/excel-blank-query/get-data-blank-query.png)
 
-1. Megnyílik a **Power Query-szerkesztő** ablak. Az ablakban válassza a **speciális szerkesztő**lehetőséget.
+1. Megnyílik **a Power Query Editor** ablaka. Az ablakban válassza a **Speciális szerkesztő**lehetőséget.
 
-    ![Power Query-szerkesztő ablak](media/excel-blank-query/power-query-editor.png)
+    ![A Power query szerkesztő ablaka](media/excel-blank-query/power-query-editor.png)
 
-1. Illessze be a vágólapra az exportált lekérdezést a **speciális szerkesztő** ablakban, majd válassza a **kész**lehetőséget.
+1. A **Speciális szerkesztő** ablakban illessze be a vágólapra exportált lekérdezést, és válassza a **Kész gombot.**
 
-    ![Speciális szerkesztői lekérdezés](media/excel-blank-query/advanced-editor-query.png)    
+    ![Speciális szerkesztőlekérdezés](media/excel-blank-query/advanced-editor-query.png)    
 
-1. A hitelesítéshez válassza a **hitelesítő adatok szerkesztése**lehetőséget.
+1. A hitelesítéshez válassza **a Hitelesítő adatok szerkesztése**lehetőséget.
 
     ![Hitelesítő adatok szerkesztése](media/excel-blank-query/edit-credentials.png)
 
-1. Válassza a **szervezeti fiók** lehetőséget, és **Jelentkezzen**be. Fejezze be a bejelentkezési folyamatot, majd válassza a **kapcsolat**lehetőséget.
+1. Válassza a **Szervezeti fiókot és** **a Bejelentkezés**lehetőséget. Fejezze be a bejelentkezési folyamatot, és válassza a **Csatlakozás lehetőséget.**
 
-    ![Bejelentkezés befejezése](media/excel-blank-query/complete-sign-in.png)
+    ![Teljes bejelentkezés](media/excel-blank-query/complete-sign-in.png)
 
-    További lekérdezések hozzáadásához ismételje meg az előző lépéseket. A lekérdezéseket több értelmes névre is átnevezheti.
+    További lekérdezések hozzáadásához ismételje meg az előző lépéseket. A lekérdezéseket átnevezheti értelmesebb nevekre.
 
-1. A **bezárás & betöltés** gombra kattintva beolvashatja az adatait az Excel programba.
+1. Az adatok Excelbe való betöltése gombbal kattintson **a Bezárás & gombra.**
 
-    ![Bezárás és betöltés kiválasztása](media/excel-blank-query/close-and-load.png)
+    ![Zár és betöltés kiválasztása](media/excel-blank-query/close-and-load.png)
 
-1. Most az adatai az Excelben vannak. A lekérdezés frissítéséhez kattintson a **frissítés** gombra.
+1. Most az adatok az Excel-ben vannak. A lekérdezés frissítéséhez kattintson a **Frissítés** gombra.
 
-    ![Az Excelben tárolt adatmegjelenítés](media/excel-blank-query/data-in-excel.png)
+    ![Adatok megtekintése az Excelben](media/excel-blank-query/data-in-excel.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Az Excelhez készült Azure Adatkezelő Connector használatával megjelenítheti az adatmegjelenítést](excel-connector.md)
+[Adatok megjelenítése az Azure Data Explorer excelhez készült összekötője segítségével](excel-connector.md)

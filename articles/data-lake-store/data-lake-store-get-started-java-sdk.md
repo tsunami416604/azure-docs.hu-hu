@@ -1,6 +1,6 @@
 ---
-title: 'Java SDK: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
-description: Használja az Azure Data Lake Storage Gen1 Java SDK fájlrendszer műveletek végrehajtása a Data Lake Storage Gen1 például mappák létrehozása.
+title: 'Java SDK: Fájlrendszer-műveletek az Azure Data Lake Storage Gen1 szolgáltatáson | Microsoft dokumentumok'
+description: Az Azure Data Lake Storage Gen1 Java SDK használatával fájlrendszeri műveleteket hajthat végre a Data Lake Storage Gen1 webhelyen, például mappáklétrehozása stb.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877464"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 Java SDK használatával
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Fájlrendszer-műveletek az Azure Data Lake Storage Gen1 java SDK használatával
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,13 +28,13 @@ ms.locfileid: "60877464"
 >
 > 
 
-Ismerje meg, hogyan például mappák létrehozása, feltöltés le- és adatfájlok alapszintű műveletek végrehajtása az Azure Data Lake Storage Gen1 Java SDK használatával. További információ a Data Lake Storage Gen1: [Azure Data Lake Storage Gen1](data-lake-store-overview.md).
+Ismerje meg, hogyan használhatja az Azure Data Lake Storage Gen1 Java SDK-t olyan alapvető műveletek végrehajtásához, mint például mappák létrehozása, adatfájlok feltöltése és letöltése stb. A Data Lake Storage Gen1 szolgáltatásról az [Azure Data Lake Storage Gen1](data-lake-store-overview.md)című témakörben talál további információt.
 
-A Java SDK API-dokumentációja a Data Lake Storage Gen1 címen érheti el [Azure Data Lake Storage Gen1 Java API-dokumentumok](https://azure.github.io/azure-data-lake-store-java/javadoc/).
+Az Azure Data Lake Storage Gen1 Java SDK API-dokumentumaihoz az [Azure Data Lake Storage Gen1 Java API-dokumentumokban](https://azure.github.io/azure-data-lake-store-java/javadoc/)érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Java-fejlesztőkészlet (JDK 7 vagy újabb, Java 1.7 vagy újabb verzió használatával)
-* Data Lake Storage Gen1 fiók. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával](data-lake-store-get-started-portal.md).
+* Data Lake Storage Gen1 fiók. Kövesse az [Azure Data Lake Storage Gen1 használatának első lépéseit az Azure Portal használatával című útmutatóban.](data-lake-store-get-started-portal.md)
 * [Maven](https://maven.apache.org/install.html). Ez az oktatóanyag a Mavent használja a build- és projektfüggőségek kezeléséhez. Bár lehetséges olyan rendszerek nélkül fejleszteni, mint például a Maven vagy a Gradle, ezekkel a fejlesztőrendszerekkel sokkal egyszerűbb a függőségek kezelése.
 * (Nem kötelező) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), [Eclipse](https://www.eclipse.org/downloads/) vagy hasonló integrált fejlesztőkörnyezet.
 
@@ -43,7 +43,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
 
 1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
 
-2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Illessze be a következő szövegrészletet a **\</project>** címke elé:
+2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Adja hozzá a következő kódrészletet a ** \</project>** címke elé:
    
         <dependencies>
           <dependency>
@@ -58,7 +58,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           </dependency>
         </dependencies>
    
-    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](https://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
+    Az első függőség a Data Lake Storage Gen1`azure-data-lake-store-sdk`SDK ( ) használata a maven-tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Storage Gen1 SDK [slf4j](https://www.slf4j.org/) naplózási homlokzatot használ, amely lehetővé teszi számos népszerű naplózási keretrendszer közül a választást, például log4j, Java naplózás, logback stb., vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 
@@ -75,20 +75,20 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
 
 ## <a name="authentication"></a>Hitelesítés
 
-* Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-end-user-authenticate-java-sdk.md).
-* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md).
+* Az alkalmazás végfelhasználói hitelesítése a [Végfelhasználói hitelesítés a Data Lake Storage Gen1](data-lake-store-end-user-authenticate-java-sdk.md)használatával Java használatával című témakörben található.
+* Az alkalmazás szolgáltatás-szolgáltatás hitelesítése a [Data Lake Storage Gen1 szolgáltatás-alapú hitelesítés java d. című](data-lake-store-service-to-service-authenticate-java.md)témakörben található.
 
-## <a name="create-a-data-lake-storage-gen1-client"></a>Hozzon létre egy Data Lake Storage Gen1 ügyfél
-Létrehozás egy [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum megköveteli, hogy adja meg a Data Lake Storage Gen1 fiók nevét, és ha megtörtént a Data Lake Storage Gen1 létrehozott jogkivonat-szolgáltatót (lásd: [hitelesítési](#authentication) szakaszt). A Data Lake Storage Gen1 fióknevet kell lennie egy teljesen minősített tartománynevét. Helyettesítse be például **FILL-in-HERE** a következőhöz hasonló kódot **mydatalakestoragegen1.azuredatalakestore.net**.
+## <a name="create-a-data-lake-storage-gen1-client"></a>Data Lake Storage Gen1 ügyfél létrehozása
+Az [ADLStoreClient objektum](https://azure.github.io/azure-data-lake-store-java/javadoc/) létrehozásához meg kell adnia a Data Lake Storage Gen1 fiók nevét és a Data Lake Storage Gen1 szolgáltatással való hitelesítéskor létrehozott jogkivonat-szolgáltatót (lásd: [Hitelesítés i.](#authentication) szakasz). A Data Lake Storage Gen1 fióknevének teljesen minősített tartománynévnek kell lennie. Cserélje le például **a FILL-IN-HERE-t** egy **olyanra,** mint mydatalakestoragegen1.azuredatalakestore.net .
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-Az alábbi szakaszokban szereplő kódrészletek néhány gyakori fájlrendszerműveletre mutatnak példát. Tekintse meg a teljes [Data Lake Storage Gen1 Java SDK API-dokumentumok](https://azure.github.io/azure-data-lake-store-java/javadoc/) , a **ADLStoreClient** kapcsolatos más műveletek objektum.
+Az alábbi szakaszokban szereplő kódrészletek néhány gyakori fájlrendszerműveletre mutatnak példát. Megtekintheti az **ADLStoreClient** objektum teljes [Data Lake Storage Gen1 Java SDK API-dokumentumait,](https://azure.github.io/azure-data-lake-store-java/javadoc/) hogy más műveleteket is megtekinthet.
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Az alábbi kódrészlet könyvtárstruktúrát hoz létre a megadott Data Lake Storage Gen1 fiók gyökérmappájában.
+A következő kódrészlet létrehoz egy könyvtárstruktúrát a megadott Data Lake Storage Gen1 fiók gyökérében.
 
     // create directory
     client.createDirectory("/a/b/w");
@@ -134,7 +134,7 @@ Az előző kódrészletben használt `getSampleContent` függvény meghatározá
 
 ## <a name="read-a-file"></a>Fájl beolvasása
 
-Az alábbi kódrészlet adatokat olvas a Data Lake Storage Gen1 fiókban egy fájlt.
+A következő kódrészlet egy Data Lake Storage Gen1 fiókban lévő fájl tartalmát olvassa be.
 
     // Read File
     InputStream in = client.getReadStream(filename);
@@ -149,7 +149,7 @@ Az alábbi kódrészlet adatokat olvas a Data Lake Storage Gen1 fiókban egy fá
 
 ## <a name="concatenate-files"></a>Fájlok összefűzése
 
-Az alábbi kódrészlet egy Data Lake Storage Gen1 fiók két fájlt fűz össze. Ha a művelet sikeres, a rendszer az összefűzött fájllal cseréli le a két meglévő fájlt.
+A következő kódrészlet két fájlt fűz össze egy Data Lake Storage Gen1 fiókban. Ha a művelet sikeres, a rendszer az összefűzött fájllal cseréli le a két meglévő fájlt.
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
@@ -158,7 +158,7 @@ Az alábbi kódrészlet egy Data Lake Storage Gen1 fiók két fájlt fűz össze
 
 ## <a name="rename-a-file"></a>Fájl átnevezése
 
-Az alábbi kódrészlet egy Data Lake Storage Gen1 fiókot egy fájlt nevez át.
+A következő kódrészlet átnevez egy fájlt egy Data Lake Storage Gen1 fiókban.
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
@@ -166,7 +166,7 @@ Az alábbi kódrészlet egy Data Lake Storage Gen1 fiókot egy fájlt nevez át.
 
 ## <a name="get-metadata-for-a-file"></a>Fájl metaadatainak lekérése
 
-Az alábbi kódrészlet egy Data Lake Storage Gen1 fiókot egy fájlt metaadatait kérdezi le.
+A következő kódrészlet lekéri egy fájl metaadatait egy Data Lake Storage Gen1 fiókban.
 
     // get file metadata
     DirectoryEntry ent = client.getDirectoryEntry(filename);
@@ -197,7 +197,7 @@ Az előző kódrészletben használt `printDirectoryInfo` függvény meghatároz
 
 ## <a name="delete-files-and-folders"></a>Fájlok és mappák törlése
 
-A következő kódrészlet törli a megadott fájlokat és mappákat egy Data Lake Storage Gen1-fiók rekurzív módon.
+A következő kódrészlet törli a megadott fájlokat és mappákat a Data Lake Storage Gen1 fiókban, rekurzívmódon.
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
@@ -206,7 +206,7 @@ A következő kódrészlet törli a megadott fájlokat és mappákat egy Data La
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 1. Az integrált fejlesztőkörnyezetben történő futtatáshoz keresse meg a **Futtatás** gombot, és kattintson rá. A Mavenben történő futtatáshoz használja az [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) beépülő modult.
-2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. Az a pom.xml fájlhoz a [Githubon található mintaforráskód](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) egy példa látható.
+2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. A [gitHubon a példa forráskódjában](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) található pom.xml egy példát mutat be.
 
 ## <a name="next-steps"></a>További lépések
 * [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)

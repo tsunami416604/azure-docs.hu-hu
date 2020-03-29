@@ -1,33 +1,33 @@
 ---
-title: Statikus IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
-description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes Service (ak) terheléselosztó használatával.
+title: Statikus IP-cím és DNS-címke használata az Azure Kubernetes-szolgáltatás (AKS) terheléselosztójával
+description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címet az Azure Kubernetes-szolgáltatás (AKS) terheléselosztóval.
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047958"
 ---
-# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes-szolgáltatás (AKS) terheléselosztójával
 
-Alapértelmezés szerint egy AK-fürt által létrehozott terheléselosztó-erőforráshoz hozzárendelt nyilvános IP-cím csak az adott erőforrás élettartama esetén érvényes. Ha törli a Kubernetes szolgáltatást, a rendszer a társított terheléselosztó és az IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy IP-címet kíván megőrizni az újratelepített Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
+Alapértelmezés szerint az AKS-fürt által létrehozott terheléselosztó erőforráshoz rendelt nyilvános IP-cím csak az adott erőforrás élettartamára érvényes. Ha törli a Kubernetes szolgáltatást, a társított terheléselosztó és IP-cím is törlődik. Ha egy adott IP-címet szeretne hozzárendelni, vagy meg szeretne tartani egy IP-címet az áthelyezett Kubernetes-szolgáltatásokhoz, létrehozhat és használhat statikus nyilvános IP-címet.
 
-Ez a cikk bemutatja, hogyan hozhat létre statikus nyilvános IP-címet, és hogyan rendelheti hozzá a Kubernetes szolgáltatáshoz.
+Ez a cikk bemutatja, hogyan hozhat létre egy statikus nyilvános IP-címet, és rendelje hozzá a Kubernetes szolgáltatáshoz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
 
-Ez a cikk a standard *SKU IP* *standard* SKU Load Balancer használatával történő használatát ismerteti. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban][ip-sku]című témakörben talál.
+Ez a cikk egy *szabványos* termékváltozat IP-cím *standard* termékváltozat terheléselosztó használatával foglalkozik. További információt az [IP-címtípusok és a foglalási módszerek az Azure-ban című témakörben talál.][ip-sku]
 
 ## <a name="create-a-static-ip-address"></a>Statikus IP-cím létrehozása
 
-Hozzon létre egy statikus nyilvános IP-címet az az [Network Public IP Create][az-network-public-ip-create] paranccsal. A következő létrehoz egy *myAKSPublicIP* nevű statikus IP-erőforrást a *myResourceGroup* erőforráscsoporthoz:
+Hozzon létre egy statikus nyilvános IP-címet az [az hálózati nyilvános ip create][az-network-public-ip-create] paranccsal. A következő létrehoz egy statikus IP-erőforrás nevű *myAKSPublicIP* a *myResourceGroup* erőforráscsoport:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -38,9 +38,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> Ha *alapszintű* SKU Load balancert használ az AK-fürtben, az *alapszintű* érték használata a nyilvános IP-cím definiálásakor a *SKU* paraméter esetében. Csak az *Alapszintű* SKU IP-címei működnek az *alapszintű* SKU Load balancerben, és csak a *standard* SKU IP-címei működnek a *standard* SKU Load balancerekkel. 
+> Ha *egy alapszintű* termékváltozat terheléselosztót használ az AKS-fürtben, használja az *Alapszintű* a *termékváltozat* paraméter nyilvános IP-cím definiálásakor. Csak *az alapszintű* termékváltozat-azonosítók működnek az *alapszintű* termékváltozat-terheléselosztóval, és csak *a szabványos* termékváltozat-ip-szolgáltatások szabványos termékváltozat-terheléselosztókkal. *Standard* 
 
-Az IP-cím jelenik meg, ahogy az a következő tömörített példában látható:
+Az IP-cím a következő tömörített kimeneti példában látható módon jelenik meg:
 
 ```json
 {
@@ -52,7 +52,7 @@ Az IP-cím jelenik meg, ahogy az a következő tömörített példában láthat�
 }
 ```
 
-Később lekérheti a nyilvános IP-címet az az [Network Public-IP List][az-network-public-ip-list] paranccsal. Adja meg a létrehozott csomópont-erőforráscsoport és nyilvános IP-cím nevét, és az *IP* -cím lekérdezését az alábbi példában látható módon:
+Később lekaphatja a nyilvános [IP-címet az az-hálózat nyilvános ip-lista][az-network-public-ip-list] paranccsal. Adja meg a létrehozott csomóponterőforrás-csoport és nyilvános IP-cím nevét, és az *ipAddress lekérdezését* az alábbi példában látható módon:
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -60,9 +60,9 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 40.121.183.52
 ```
 
-## <a name="create-a-service-using-the-static-ip-address"></a>Szolgáltatás létrehozása a statikus IP-cím használatával
+## <a name="create-a-service-using-the-static-ip-address"></a>Szolgáltatás létrehozása a statikus IP-címmel
 
-A szolgáltatás létrehozása előtt győződjön meg arról, hogy az AK-fürt által használt egyszerű szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz. Például:
+A szolgáltatás létrehozása előtt győződjön meg arról, hogy az AKS-fürt által használt egyszerű szolgáltatás delegált engedélyekkel rendelkezik a másik erőforráscsoportnak. Példa:
 
 ```azurecli-interactive
 az role assignment create \
@@ -71,7 +71,9 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-Ha a *terheléselosztó* szolgáltatást statikus nyilvános IP-címmel szeretné létrehozni, adja hozzá a `loadBalancerIP` tulajdonságot és a statikus nyilvános IP-cím értékét a YAML-jegyzékhez. Hozzon létre egy `load-balancer-service.yaml` nevű fájlt, és másolja a következő YAML. Adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A következő példa a jegyzetet is beállítja az *myResourceGroup*nevű erőforráscsoporthoz. Adja meg a saját erőforráscsoport-nevét.
+Azt is megteheti, hogy a rendszer hozzárendelt felügyelt identitás engedélyek helyett a szolgáltatás névsor. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
+
+*LoadBalancer* szolgáltatás létrehozásához a statikus nyilvános IP-címet, adja hozzá a `loadBalancerIP` tulajdonság és a statikus nyilvános IP-cím értékét a YAML-jegyzékfájlhoz. Hozzon létre `load-balancer-service.yaml` egy elnevezett fájlt, és másolja a következő YAML.Create a file named and copy in the following YAML. Adja meg saját nyilvános IP-címét az előző lépésben létrehozott. A következő példa a notnotációt a *myResourceGroup*nevű erőforráscsoportra is beállítja. Adja meg a saját erőforráscsoport nevét.
 
 ```yaml
 apiVersion: v1
@@ -89,7 +91,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Hozza létre a szolgáltatást és az üzembe helyezést az `kubectl apply` paranccsal.
+Hozza létre a szolgáltatást `kubectl apply` és a központi telepítést a paranccsal.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -97,9 +99,9 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>DNS-címke alkalmazása a szolgáltatásra
 
-Ha a szolgáltatás dinamikus vagy statikus nyilvános IP-címet használ, akkor a szolgáltatás megjegyzése `service.beta.kubernetes.io/azure-dns-label-name` használatával megadhatja a nyilvános DNS-címkét. Ez egy teljes tartománynevet tesz közzé a szolgáltatáshoz az Azure nyilvános DNS-kiszolgálói és legfelső szintű tartománya segítségével. A jegyzet értékének egyedinek kell lennie az Azure-ban, ezért azt javasoljuk, hogy használjon megfelelően minősített címkét.   
+Ha a szolgáltatás dinamikus vagy statikus nyilvános IP-címet használ, `service.beta.kubernetes.io/azure-dns-label-name` a szolgáltatás jegyzetelésével nyilvános DNS-címkét állíthat be. Ez közzétesz egy teljesen minősített tartománynevet a szolgáltatáshoz az Azure nyilvános DNS-kiszolgálói és legfelső szintű tartománya használatával. A jegyzetelési érték nek egyedinek kell lennie az Azure-helyen belül, ezért ajánlott egy megfelelően minősített címkét használni.   
 
-Az Azure ezt követően automatikusan hozzáfűz egy alapértelmezett alhálózatot, például a `<location>.cloudapp.azure.com` (ahol a hely a kiválasztott régió), a megadott névre, hogy létrehozza a teljesen minősített DNS-nevet. Például:
+Az Azure ezután automatikusan hozzáfűzi `<location>.cloudapp.azure.com` az alapértelmezett alhálózatot, például (ahol a hely a kiválasztott régió), a megadott névhez, a teljesen minősített DNS-név létrehozásához. Példa:
 
 ```yaml
 apiVersion: v1
@@ -117,17 +119,17 @@ spec:
 ```
 
 > [!NOTE] 
-> A szolgáltatás saját tartományon való közzétételéhez tekintse meg a [Azure DNS][azure-dns-zone] és a [külső DNS-][external-dns] projektet.
+> A szolgáltatás közzététele a saját tartományban, lásd: [Azure DNS][azure-dns-zone] és a [külső dns-projekt.][external-dns]
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a Kubernetes szolgáltatás jegyzékfájljának *loadBalancerIP* tulajdonságában definiált statikus IP-cím nem létezik, vagy nem lett létrehozva a csomópont-erőforráscsoporthoz, és nincs további delegálás konfigurálva, a terheléselosztó szolgáltatás létrehozása sikertelen lesz. A hibák megoldásához tekintse át a szolgáltatás-létrehozási eseményeket a [kubectl leíró][kubectl-describe] paranccsal. Adja meg a szolgáltatás nevét a YAML jegyzékfájlban megadott módon, az alábbi példában látható módon:
+Ha a Kubernetes szolgáltatásjegyzék *loadBalancerIP* tulajdonságában definiált statikus IP-cím nem létezik, vagy nem jött létre a csomópont erőforráscsoportban, és nincs konfigurálva további delegálás, a terheléselosztó szolgáltatás létrehozása sikertelen lesz. A hibaelhárításhoz tekintse át a szolgáltatás létrehozási eseményeit a [kubectl leírás][kubectl-describe] paranccsal. Adja meg a szolgáltatás nevét a YAML-jegyzékfájlban megadott módon, ahogy az a következő példában látható:
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-Megjelenik a Kubernetes szolgáltatás erőforrásával kapcsolatos információ. Az alábbi példa kimenetének végén lévő *események* azt jelzik, hogy a *felhasználó által megadott IP-cím nem található*. Ezekben a forgatókönyvekben ellenőrizze, hogy a csomópont erőforráscsoporthoz létrehozta-e a statikus nyilvános IP-címet, és hogy a Kubernetes szolgáltatás jegyzékfájljában megadott IP-cím helyes-e.
+A Kubernetes szolgáltatáserőforrással kapcsolatos információk jelennek meg. A következő példa kimenetének végén található *események* azt jelzik, hogy a *felhasználó által megadott IP-cím nem található.* Ezekben az esetekben ellenőrizze, hogy létrehozta-e a statikus nyilvános IP-címet a csomópont erőforráscsoportban, és hogy a Kubernetes szolgáltatásjegyzékben megadott IP-cím helyes-e.
 
 ```
 Name:                     azure-load-balancer
@@ -153,7 +155,7 @@ Events:
 
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdekében érdemes lehet [egy bejövő vezérlőt létrehozni][aks-ingress-basic]. Egy [statikus nyilvános IP-címmel rendelkező bejövő vezérlőt is létrehozhat][aks-static-ingress].
+Az alkalmazások hálózati forgalmának további szabályozása érdekében célszerű lehet ehelyett [létrehozni egy be- ésres vezérlőt.][aks-ingress-basic] [Statikus nyilvános IP-címmel rendelkező be- és be- és átvihető tartományvezérlőt][aks-static-ingress]is létrehozhat.
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
