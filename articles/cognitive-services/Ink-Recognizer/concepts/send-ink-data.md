@@ -1,7 +1,7 @@
 ---
 title: Tintaadatok küldése az Ink Recognizer API-nak
 titleSuffix: Azure Cognitive Services
-description: További információ a tintapatron Analyzer API különböző alkalmazásokhoz való meghívásáról
+description: További információ a tintaelemző API hívásáról a különböző alkalmazásokhoz
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79221105"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Tintaadatok küldése az Ink Recognizer API-nak 
 
-A digitális szabadkézi műveletek olyan technológiák, amelyek lehetővé teszik a bemenetek, például a kézírás és a rajzok digitális ábrázolását. Ez általában olyan digitalizáló használatával érhető el, amely rögzíti a bemeneti eszközök, például a toll mozgását. Mivel az eszközök folyamatosan bővítik a digitális szabadkézi műveletek használati körét, a mesterséges intelligencia és a gépi tanulás bármilyen környezetben lehetővé teszi az írott alakok és szövegek felismerését. A tinta-felismerő API lehetővé teszi a szabadkézi ecsetvonások küldését, és részletes információkat kaphat róluk. 
+A digitális szabadkézi műveletek olyan technológiák, amelyek lehetővé teszik a bemenetek, például a kézírás és a rajzok digitális ábrázolását. Ez általában egy digitalizáló, amely rögzíti a mozgását a bemeneti eszközök, például egy toll. Mivel az eszközök folyamatosan bővítik a digitális szabadkézi műveletek használati körét, a mesterséges intelligencia és a gépi tanulás bármilyen környezetben lehetővé teszi az írott alakok és szövegek felismerését. A Tintafelismerő API lehetővé teszi a tintavonások küldését és a róluk való részletes információ beírását. 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>A Ink-felismerő API és az OCR-szolgáltatások
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>A tintafelismerő API és az OCR-szolgáltatások
 
-A tinta-felismerő API nem használ optikai karakterfelismerést (OCR). Az OCR-szolgáltatások feldolgozzák a képek képpont-adatait, hogy kézírás-és szöveges felismerést nyújtsanak. Ezt időnként offline felismerésnek is nevezik. Ehelyett a tinta-felismerő API-nak a bemeneti eszközként rögzített digitális tollvonási adatokat kell használnia. A digitális tinta adatainak feldolgozása így az OCR-szolgáltatásokhoz képest pontosabb felismerési eredményeket eredményezhet. 
+A Tintafelismerő API nem használ optikai karakterfelismerést (OCR). Az OCR-szolgáltatások a képek képpontadatait a kézírás és a szöveg felismerése érdekében dolgozzák fel. Ezt néha offline felismerésnek is nevezik. Ehelyett a Tintafelismerő API-hoz olyan digitális tintavonási adatokra van szükség, amelyek a bemeneti eszköz használata során rögzítésre kerülnek. A digitális tintaadatok ily módon történő feldolgozása pontosabb felismerési eredményeket hozhat az OCR-szolgáltatásokhoz képest. 
 
-## <a name="sending-ink-data"></a>Szabadkézi adatok küldése
+## <a name="sending-ink-data"></a>Tintaadatok küldése
 
-A tinta-felismerő API-nak az X és az Y koordinátákat kell megadnia, amelyek a bemeneti eszköz által létrehozott szabadkézi ecsetvonásokat jelölik, az észlelési felületet a felemelt állapothoz képest. Az egyes ecsetvonások pontjainak vesszővel tagolt értékeket tartalmazó sztringnek kell lenniük, és a JSON-ban kell formázni, például az alábbi példában látható módon. Emellett minden egyes tollvonásnak egyedi AZONOSÍTÓval kell rendelkeznie minden kérelemben. Ha az azonosítót ugyanazzal a kéréssel ismétli meg, az API hibaüzenetet ad vissza. A legpontosabb felismerési eredményekhez legalább nyolc számjegynek kell lennie a tizedesvessző után. A vászon kezdőpontja (0, 0) a szabadkézi vászon bal felső sarkát feltételezi.
+A Tintafelismerő API-hoz szükség van a bemeneti eszköz által létrehozott tollvonásokat reprezentáló X és Y koordinátákra, attól a pillanattól kezdve, hogy megérinti az észlelési felületet, egészen a felemelésig. Az egyes ecsetvonások pontjainak vesszővel elválasztott értékek sorozatának kell lenniük, és az alábbi példához hasonlóan JSON-ban kell formázni őket. Ezenkívül minden egyes szabadkézi vonásnak egyedi azonosítóval kell rendelkeznie minden kérésben. Ha az azonosító ismétlődik ugyanazon a kérésen belül, az API-t egy hiba adja vissza. A legpontosabb felismerési eredmények érdekében legalább nyolc számjegyet kell megkell adni a tizedesvessző után. A vászon kezdőpontja (0,0) a szabadkézi vászon bal felső sarkának kell lennie.
 
 > [!NOTE]
-> A következő példa nem érvényes JSON. A [githubon](https://go.microsoft.com/fwlink/?linkid=2089909)egy teljes kézírás-felismerő JSON-kérés található.
+> A következő példa nem érvényes JSON. A Teljes tintafelismerő JSON-kérés megtalálható a [GitHubon.](https://go.microsoft.com/fwlink/?linkid=2089909)
  
 ```json
 {
@@ -56,40 +56,40 @@ A tinta-felismerő API-nak az X és az Y koordinátákat kell megadnia, amelyek 
 }
 ```
 
-## <a name="ink-recognizer-response"></a>Kézírás-felismerő válasza
+## <a name="ink-recognizer-response"></a>Tintafelismerő válasza
 
-A tinta-felismerő API egy elemzési választ ad vissza a szabadkézi tartalomból felismerhető objektumokról. A válasz olyan felismerési egységeket tartalmaz, amelyek leírják a különböző szabadkézi ecsetvonások közötti kapcsolatokat. Például a különálló alakzatokat létrehozó ecsetvonások különböző egységekben lesznek tárolva. Mindegyik egység részletes információkat tartalmaz a szabadkézi ecsetvonásokról, beleértve a felismerhető objektumot, annak koordinátáit és egyéb rajzolási attribútumait.
+A Tintafelismerő API elemzési választ ad vissza a tintatartalomból felismert objektumokról. A válasz olyan felismerési egységeket tartalmaz, amelyek a különböző tintavonások közötti kapcsolatokat írják le. Például a különböző, különálló alakzatokat létrehozó körvonalak különböző egységekben lesznek elszóródva. Minden egység részletes információkat tartalmaz a szabadkézi körvonalairól, beleértve a felismert objektumot, a koordinátákat és más rajzjellemzőket.
 
-## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>A tinta-felismerő API által felismert alakzatok
+## <a name="shapes-recognized-by-the-ink-recognizer-api"></a>A Tintafelismerő API által felismert alakzatok
 
-A kézírás-felismerő API képes azonosítani a leggyakrabban használt alakzatokat a megjegyzésekben. Az alábbi képen néhány alapvető példa látható. Az API által felismert alakzatok és egyéb szabadkézi tartalmak teljes listáját az [API-referenciát ismertető cikkben](https://go.microsoft.com/fwlink/?linkid=2089907)találja. 
+A Tintafelismerő API képes azonosítani a jegyzetelésben leggyakrabban használt alakzatokat. Az alábbi képen néhány alapvető példa látható. Az API által felismert alakzatok és egyéb tintatartalom teljes listáját az [API referenciacikkében](https://go.microsoft.com/fwlink/?linkid=2089907)olvashatja. 
 
-![A tinta-felismerő API által felismert alakzatok listája](../media/shapes.png)
+![A Tintafelismerő API által felismert alakzatok listája](../media/shapes.png)
 
 ## <a name="recommended-calling-patterns"></a>Ajánlott hívási minták
 
-Az alkalmazásnak megfelelően különböző mintákban hívhatja a tinta Felismerőjét REST API. 
+A tintafelismerő REST API-t az alkalmazásnak megfelelően különböző mintákban hívhatja meg. 
 
 ### <a name="user-initiated-api-calls"></a>Felhasználó által kezdeményezett API-hívások
 
-Ha olyan alkalmazást hoz létre, amely felhasználói adatbevitelt végez (például egy Megjegyzés készítése vagy jegyzet alkalmazása), érdemes megadnia, hogy mikor és melyik tintát küldje el a rendszer a tinta-felismerő API-nak. Ez a funkció különösen akkor hasznos, ha a szöveg és az alakzatok egyaránt jelen vannak a vásznon, és a felhasználók különböző műveleteket kívánnak végrehajtani mindegyikhez. Vegye fontolóra a kiválasztási funkciók (például a lasszó vagy más geometriai kijelölési eszköz) hozzáadását, amelyekkel a felhasználók kiválaszthatják, hogy mit küld az API-nak.  
+Ha olyan alkalmazást hoz össze, amely felhasználói bevitelt (például jegyzetelő vagy jegyzetelő alkalmazást) vesz igénybe, érdemes lehet nekik szabályozni, hogy mikor és melyik tinta kerül elküldésre a Tintafelismerő API-ba. Ez a funkció különösen akkor hasznos, ha a szöveg és az alakzatok egyaránt jelen vannak a vásznon, és a felhasználók mindegyikhez különböző műveleteket szeretnének végrehajtani. Fontolja meg a kijelölési funkciók (például egy lasszó vagy más geometriai kijelölési eszköz) hozzáadását, amely lehetővé teszi a felhasználók számára, hogy kiválasszák, mit küld az API-nak.  
 
 ### <a name="app-initiated-api-calls"></a>Alkalmazás által kezdeményezett API-hívások
 
-Azt is megteheti, hogy az alkalmazás egy időtúllépés után meghívja a tinta felismerő API-ját. Az aktuális szabadkézi ecsetvonásoknak az API-hoz való rendszeres küldésével a rendszer a felismerési eredményeket a létrehozásuk során tárolja, miközben az API válaszideje is javul. Küldhet például egy kézzel írt szöveget tartalmazó sort az API-nak, miután észlelte, hogy a felhasználó elvégezte azt. 
+Azt is beállíthatja, hogy az alkalmazás időhosszabbítás után hívja meg a tintafelismerő API-t. Az aktuális tintavonások rendszeres elküldésével az API-ba tárolhatja a felismerési eredményeket, ahogy létrejönnek, miközben javítja az API válaszidejét. Például küldhet egy sor kézzel írt szöveget az API-t, miután észlelte a felhasználó befejezte azt. 
 
-Az elismerési eredmények előzetesen információt adnak a szabadkézi ecsetvonások jellemzőiről, amelyek egymáshoz kapcsolódnak. Például, hogy mely ecsetvonások vannak csoportosítva, hogy ugyanazt a szót, sort, listát, bekezdést vagy alakzatot alkotják. Ez az információ növelheti az alkalmazás tinta-kiválasztási funkcióit azáltal, hogy egyszerre kiválaszthatja az ecsetvonások csoportjait, például a következőt:.
+A felismerés előre történő megjelenítésével információt nyújt a tintavonások jellemzőiről, amelyek egymáshoz kapcsolódnak. Például, hogy mely körvonalak vannak csoportosítva, hogy ugyanazt a szót, sort, listát, bekezdést vagy alakzatot alkossák. Ezek az információk javíthatják az alkalmazás tintaválasztó funkcióit, ha például egyszerre választhatják ki a körvonalak csoportjait.
 
-## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>A tinta-felismerő API integrálása Windows-tintával
+## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>A Tintafelismerő API integrálása a Windows Ink-mal
 
-A [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A tinta-felismerő API-val kombinálhatja a Windows tinta platformot a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
+[A Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel a digitális szabadkézi alkalmazások számos eszközön lehetővé teszik a digitális szabadkézi alkalmazások at. A Windows ink platformot a Tintafelismerő API-val kombinálva olyan alkalmazásokat hozhat létre, amelyek digitális tintavonásokat jelenítenek meg és értelmeznek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Mi a Ink-felismerő API?](../overview.md)
-* [Kézírás-felismerő REST API referenciája](https://go.microsoft.com/fwlink/?linkid=2089907)
+* [Mi az Ink Recognizer API?](../overview.md)
+* [Tintafelismerő REST API-hivatkozása](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-* Digitális tinta ecsetvonás-adatok küldésének megkezdése a használatával:
-    * [C#](../quickstarts/csharp.md)
+* Digitális tintavonás-adatok küldésének megkezdése a következő használatával:
+    * [C #](../quickstarts/csharp.md)
     * [Java](../quickstarts/java.md)
-    * [JavaScript](../quickstarts/javascript.md)
+    * [Javascript](../quickstarts/javascript.md)

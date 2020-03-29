@@ -1,7 +1,7 @@
 ---
-title: Moderálási feladatok használata a .NET-Content Moderator használatával
+title: Moderálási feladatok használata a .NET – Tartalommoderátor használatával
 titleSuffix: Azure Cognitive Services
-description: A Content Moderator .NET SDK-val teljes tartalom-moderálási feladatokat indíthat el a képekhez vagy szöveges tartalmakhoz az Azure Content Moderatorban.
+description: A tartalommoderátor .NET SDK segítségével kezdeményezze a teljes körű tartalommoderálási feladatokat az Azure Content Moderator kép- vagy szöveges tartalomhoz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76294337"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Moderálási feladatok definiálása és használata (.NET)
 
-A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderálása, a munkafolyamatok és a felülvizsgálatok működéséhez. Ez az útmutató információkat és kódokat tartalmaz a [.net-hez készült Content MODERATOR SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatának megkezdéséhez a következőhöz:
+A moderálási feladat egyfajta burkolóként szolgál a tartalommoderálás, a munkafolyamatok és az értékelések funkcióihoz. Ez az útmutató információkat és kódmintákat tartalmaz, amelyek segítenek a [tartalommoderátor SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával a következőkre:
 
 - Moderálási feladat indítása, amely lehetővé teszi az emberi moderátorok általi vizsgálatot és felülvizsgálatok létrehozását
 - Függőben lévő felülvizsgálat állapotának lekérése
 - Felülvizsgálat nyomon követése és a végső eredmény lekérése
-- A felülvizsgálati eredmények elküldése a visszahívási URL-címre
+- Az ellenőrzés eredményeinek elküldése a visszahívási URL-címre
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
+- Jelentkezzen be vagy hozzon létre fiókot a [Tartalommoderátor-ellenőrzési eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Arról való gondoskodás, hogy az API-kulcs meg tudja hívni a felülvizsgálati API-t a felülvizsgálat létrehozásához
 
@@ -80,7 +80,7 @@ using System.Threading;
 Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez.
 
 > [!IMPORTANT]
-> Frissítse a **AzureEndpoint** és a **CMSubscriptionKey** mezőt a végpont URL-címének és előfizetési kulcsának értékeivel.
+> Frissítse az **AzureEndpoint** és **a CMSubscriptionKey** mezőket a végpont URL-címének és előfizetési kulcsának értékeivel.
 
 ```csharp
 /// <summary>
@@ -124,7 +124,7 @@ public static class Clients
 Adja hozzá a következő állandókat és statikus mezőket a **Program** osztályhoz a Program.cs-ben.
 
 > [!NOTE]
-> Állítsa a TeamName állandót arra a névre, amelyet a Content Moderator-előfizetés létrehozásakor hozott létre. A csapatnév a Content Moderator webhelyről kérdezi le.
+> Állítsa a TeamName állandót arra a névre, amelyet a Content Moderator-előfizetés létrehozásakor hozott létre. A TeamName értékét a Content Moderator webhelyén ellenőrizheti.
 > Jelentkezzen be, majd a **Beállítások** (fogaskerék) menüben válassza a **Hitelesítő adatok** lehetőséget.
 >
 > A csapatnév az **API** szakasz **Azonosító** mezőjében megadott érték.
@@ -235,7 +235,7 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 > [!NOTE]
 > A Content Moderator szolgáltatáskulcs egy másodpercenkénti kérelmekre (RPS-re) vonatkozó korláttal rendelkezik. Ha túllépi ezt a korlátot, az SDK 429-es hibakódú kivételt jelez.
 >
-> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
+> Az ingyenes szint kulcsai egy RPS-korláttal bírnak.
 
 ## <a name="run-the-program-and-review-the-output"></a>A program futtatása és a kimenet áttekintése
 
@@ -314,6 +314,6 @@ A következő példához hasonló választ fog látni:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szerezze be a kapcsolódó [Content Moderator .NET SDK-t](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET-es Content Moderator ezen és további rövid útmutatóihoz, hogy nekikezdhessen az integrációnak.

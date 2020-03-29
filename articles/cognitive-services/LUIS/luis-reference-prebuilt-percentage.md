@@ -1,7 +1,7 @@
 ---
-title: Előre elkészített entitás százalékos aránya – LUIS
+title: Előre összeállított entitás százalékos aránya - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmaz százalékos előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk a nyelvi ismeretek (LUIS) előre összeállított entitásadatait tartalmazza.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 31ea1c36139abcb1e102161ad76a203073ba4dfd
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270512"
 ---
-# <a name="percentage-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitások százalékos aránya
-A százalékos számok töredékként, `3 1/2`ként vagy százalékként is megjelenhetnek `2%`. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések százalékos tartalmazó példa beszédmódok hozzáadása. A százalékos entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
+# <a name="percentage-prebuilt-entity-for-a-luis-app"></a>Előre összeállított entitás százalékos aránya egy LUIS-alkalmazáshoz
+A százalékos számok törtként `3 1/2`vagy százalékban `2%`is megjelenhetnek. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia a százalékot tartalmazó példautterances az alkalmazás leképezések. A százalékos entitás [számos kultúrában](luis-reference-prebuilt-entities.md)támogatott.
 
-## <a name="types-of-percentage"></a>Százalékos típusai
-A százalékos arányt a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) adattár kezeli
+## <a name="types-of-percentage"></a>A százalékos arány típusai
+A százalékot a [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) GitHub-tárházból kezeli a rendszer
 
-## <a name="resolution-for-prebuilt-percentage-entity"></a>Előre összeállított százalékos entitás feloldása
+## <a name="resolution-for-prebuilt-percentage-entity"></a>Szanálás előre összeállított százalékos entitáshoz
 
-A lekérdezés a következő entitás-objektumokat adja vissza:
+A következő entitásobjektumok at adják vissza a lekérdezéshez:
 
 `set a trigger when my stock goes up 2%`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméterrel van beállítva `false`:
+A következő JSON `verbose` paraméter a `false`következő:
 
 ```json
 "entities": {
@@ -42,7 +42,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméterrel van beállítva `true`:
+A következő JSON `verbose` paraméter a `true`következő:
 
 ```json
 "entities": {
@@ -68,7 +68,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-Az alábbi példa a **beépített. százalék** entitás feloldását mutatja be.
+A következő példa a **builtin.percentage** entitás felbontását mutatja be.
 
 ```json
 "entities": [
@@ -85,8 +85,8 @@ Az alábbi példa a **beépített. százalék** entitás feloldását mutatja be
 ```
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
-További információ a [sorszámok](luis-reference-prebuilt-ordinal.md), a [számok](luis-reference-prebuilt-number.md)és a [hőmérsékleti](luis-reference-prebuilt-temperature.md) entitásokról.
+További információ a [szint,](luis-reference-prebuilt-ordinal.md) [a szám](luis-reference-prebuilt-number.md)és a [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokról.

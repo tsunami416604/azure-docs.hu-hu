@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: cc1fc56f70c2867225903904c7e9706f876f07e2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943791"
 ---
-Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre egy `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+Ha tömörített hangformátumban szeretne streamelni a `PullAudioInputStream` `PushAudioInputStream`beszédfelismerési szolgáltatásba, hozzon létre egy vagy . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály, megadva a tömörítési formátumot az adatfolyam.
 
-Tegyük fel, hogy rendelkezik egy `pullStream` nevű bemeneti adatfolyam-osztállyal, és az OPUS/OGG-t használja. A kód így néz ki:
+Tegyük fel, hogy van egy `pullStream` bemeneti stream osztály neve, és opus/OGG-t használ. A kód a következőkre néz ki:
 
 ```java
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;

@@ -1,7 +1,7 @@
 ---
-title: Az Azure Container instance receptje
+title: Az Azure Container Instance receptje
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan helyezhet üzembe Cognitive Services tárolókat az Azure Container instance szolgáltatásban
+description: Ismerje meg, hogyan telepítheti a Cognitive Services-tárolókat az Azure Container Instance szolgáltatásban
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,41 +11,41 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 78f35042678aa7c30cebf73796df3e5d564b4502
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717001"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Tároló üzembe helyezése és futtatása az Azure Container Instancesben
 
-A következő lépésekkel egyszerűen méretezheti az Azure Cognitive Services-alkalmazásait a felhőben az Azure [Container instances](https://docs.microsoft.com/azure/container-instances/). A tárolókra bontás segítségével az infrastruktúra kezelése helyett az alkalmazások kiépítésére koncentrálhat. További információ a tárolók használatáról: [szolgáltatások és előnyök](../cognitive-services-container-support.md#features-and-benefits).
+A következő lépésekkel egyszerűen skálázhatja az Azure Cognitive Services-alkalmazásokat a felhőben az Azure [Container Instances használatával.](https://docs.microsoft.com/azure/container-instances/) A tárolók segítségével az alkalmazások kiépítésére összpontosíthat az infrastruktúra kezelése helyett. A tárolók használatáról további információt a szolgáltatások és előnyök című [témakörben talál.](../cognitive-services-container-support.md#features-and-benefits)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A recept bármilyen Cognitive Services tárolóval működik. A recept használata előtt létre kell hozni a kognitív szolgáltatás erőforrását a Azure Portalban. Minden olyan kognitív szolgáltatás, amely támogatja a tárolókat, a "hogyan lehet telepíteni" dokumentumot kifejezetten egy tároló szolgáltatásának telepítéséhez és konfigurálásához. Egyes szolgáltatások a tárolóhoz tartozó fájl-vagy fájl-készletet igényelnek, fontos, hogy megértse és használta a tárolót a megoldás használata előtt.
+A recept bármely Cognitive Services-tárolóval működik. A Cognitive Service-erőforrást létre kell hozni az Azure Portalon a recept használata előtt. Minden egyes Cognitive Service, amely támogatja a tárolók egy "Hogyan kell telepíteni" dokumentum kifejezetten a szolgáltatás telepítése és konfigurálása egy tárolóhoz. Egyes szolgáltatások a tároló bemeneteként fájlra vagy fájlkészletre van szükség, fontos, hogy a megoldás használata előtt megértse és sikeresen használja a tárolót.
 
-* A Azure Portalban létrehozott kognitív szolgáltatási erőforrás.
-* A kognitív szolgáltatás **végpontjának URL-címe** – tekintse át az adott szolgáltatás "a telepítésének" módját a tároló számára, hogy megtudja, hol található a végpont URL-címe a Azure Portalon, és hogy az URL-cím helyes példája a következőképpen néz ki:. A pontos formátum a szolgáltatásról a szolgáltatásra változhat.
-* Kognitív szolgáltatás **kulcsa** – a kulcsok az Azure-erőforrás **kulcsok** oldalán találhatók. Csak akkor kell egyik két kulcsot. A kulcs 32 alfanumerikus karakterekből álló karakterlánc.
-* Egyetlen Cognitive Services tároló a helyi gazdagépen (a számítógépen). Győződjön meg arról, hogy a következőket teheti:
-  * Húzza le a rendszerképet egy `docker pull` paranccsal.
-  * Futtassa a helyi tárolót sikeresen az összes szükséges konfigurációs beállítással `docker run` paranccsal.
-  * Hívja meg a tároló végpontját, válaszoljon a HTTP-2xx és egy JSON-válaszra.
+* Az Azure Portalon létrehozott Cognitive Service-erőforrás.
+* Cognitive **Service-végpont URL-cím** – tekintse át az adott szolgáltatás "Hogyan kell telepíteni" a tároló, hogy megtudja, hol a végpont URL-cím az Azure Portalon belül, és milyen a helyes példa az URL-t néz ki. A pontos formátum szolgáltatásról szolgáltatásra változhat.
+* Cognitive **Service-kulcs** – a kulcsok az Azure-erőforrás **Keys** oldalán találhatók. Csak egy a két kulcs. A kulcs egy 32 alfanumerikus karakterből álló karakterlánc.
+* Egyetlen Cognitive Services-tároló a helyi gazdagépen (a számítógépen). Győződjön meg róla, hogy:
+  * Húzza le a `docker pull` képet egy paranccsal.
+  * Futtassa a helyi tárolót sikeresen az összes szükséges konfigurációs beállítással egy `docker run` paranccsal.
+  * Hívja fel a tároló végpontját, és kapja vissza a HTTP 2xx és a JSON-válasz válaszát.
 
-A szögletes zárójelben lévő összes változót a saját értékeire kell cserélni, `<>`. Ez a csere tartalmazza a szögletes zárójeleket.
+A szögletes zárójelben `<>`lévő összes változót a saját értékeire kell cserélni. Ez a csere magában foglalja a szögletes zárójeleket.
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
-## <a name="use-the-container-instance"></a>A Container-példány használata
+## <a name="use-the-container-instance"></a>A tárolópéldány használata
 
-1. Válassza ki az **áttekintést** , és másolja ki az IP-címet. Ez egy numerikus IP-cím lesz, például `55.55.55.55`.
-1. Nyisson meg egy új böngésző fület, és használja az IP-címet, például `http://<IP-address>:5000 (http://55.55.55.55:5000`). Ekkor megjelenik a tároló kezdőlapja, amely arról tájékoztatja, hogy a tároló fut.
+1. Válassza ki az **Áttekintés lehetőséget,** és másolja az IP-címet. Ez egy numerikus IP-cím lesz, például `55.55.55.55`.
+1. Nyisson meg egy új böngészőlapot, és `http://<IP-address>:5000 (http://55.55.55.55:5000`használja például az IP-címet). Látni fogja a tároló kezdőlapját, amely tudatja, hogy a tároló fut.
 
-1. Válassza ki a **szolgáltatás API leírása** elemet a tárolóhoz tartozó felvágási oldal megtekintéséhez.
+1. Válassza **a Service API leírása a** tároló swagger lapjának megtekintéséhez válassza a szolgáltatás leírását.
 
-1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás**lehetőséget.  A paraméterek megjelennek a bemenettel együtt. Adja meg a paramétereket.
+1. Válassza ki bármelyik **POST** API-t, és válassza **a Kipróbálás**lehetőséget .  A paraméterek a bemenettel együtt jelennek meg. Töltse ki a paramétereket.
 
-1. Válassza a **végrehajtás** lehetőséget, hogy elküldje a kérést a tároló példányának.
+1. Válassza **a Végrehajtás** lehetőséget a kérelem nek a tárolópéldánynak való elküldéséhez.
 
-    Sikeresen létrehozta és használta Cognitive Services tárolókat az Azure Container Instanceban.
+    Sikeresen létrehozott és használt Kognitív szolgáltatások tárolók az Azure Container Instance.You have successfully created and used Cognitive Services containers in Azure Container Instance.

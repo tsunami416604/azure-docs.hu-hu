@@ -1,7 +1,7 @@
 ---
-title: Megerősítő tanulás – személyre szabás
+title: Megerősítése Learning - Personalizer
 titleSuffix: Azure Cognitive Services
-description: A személyre szabással kapcsolatos javaslatok megtételéhez a megszemélyesítő a műveletekkel és az aktuális környezettel kapcsolatos információkat használ. Ezekkel a műveletekkel és környezettel kapcsolatos információk a szolgáltatásoknak nevezett attribútumok vagy tulajdonságok.
+description: A Personalizer a műveletekre és az aktuális környezetre vonatkozó információkat használja fel a jobb rangsorolási javaslatok érdekében. A műveletekre és környezetre vonatkozó információk olyan attribútumok vagy tulajdonságok, amelyeket szolgáltatásoknak neveznek.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68662838"
 ---
-# <a name="what-is-reinforcement-learning"></a>Mi a megerősítő tanulás?
+# <a name="what-is-reinforcement-learning"></a>Mi a megerősítés tanulás?
 
-A megerősítő tanulás a gépi tanulás olyan megközelítése, amely a használattól kapott visszajelzések alapján tanulja meg a viselkedést.
+A Megerősítése Learning a gépi tanulás olyan megközelítése, amely a használatból származó visszajelzések megszerzésével tanulja meg a viselkedést.
  
-A megerősítő tanulás az alábbiak szerint működik:
+Megerősítése Learning működik:
 
-* Lehetőség vagy szabadság megteremtése a viselkedés elvégzéséhez – például döntések vagy döntések meghozatala.
-* Környezetfüggő információk biztosítása a környezetről és a választási lehetőségekről.
-* Visszajelzés küldése arról, hogy a viselkedés milyen jól érhető el egy bizonyos célra.
+* Lehetőség vagy szabadság biztosítása egy viselkedés életbe léptetésére – például döntések vagy döntések meghozatalára.
+* Kontextuális információk biztosítása a környezetről és a választási lehetőségekről.
+* Visszajelzést ad arról, hogy mennyire jól a viselkedés elér egy bizonyos célt.
 
-Habár a megerősítő tanulás számos altípussal és stílussal rendelkezik, így a fogalom a személyre szabott módon működik:
+Bár sok altípus és stílus megerősítése tanulás, ez hogyan működik a koncepció Personalizer:
 
-* Az alkalmazás lehetőséget nyújt arra, hogy egy adott tartalmat jelenítsen meg az alternatívák listájáról.
-* Az alkalmazás az egyes alternatívákról és a felhasználó környezetéről nyújt információt.
-* Az alkalmazás kiszámítja a _jutalom pontszámát_.
+* Az alkalmazás lehetőséget nyújt arra, hogy egy tartalom egy részét az alternatívák listájából jelenítse meg.
+* Az alkalmazás tájékoztatást nyújt az egyes alternatív és a környezet a felhasználó.
+* Az alkalmazás kiszámítja a _jutalom pontszámot._
 
-A megerősítő tanulás bizonyos módszereitől eltérően a személyre szabott eszközök nem igénylik a szimuláció használatát a alkalmazásban. A tanulási algoritmusok úgy lettek kialakítva, hogy a külvilág felé (a szabályozással szemben) és az egyes adatpontokból is tanuljanak, és ez egy olyan egyedi lehetőség, amely a költségek idejét és pénzét jelenti, és hogy nem nulla sajnálattal (a lehetséges jutalom elvesztése), ha az optimálisnál rosszabb teljesítmény történik.
+Ellentétben néhány megközelítés megerősítése tanulás, Personalizer nem igényel szimulációt dolgozni. A tanulási algoritmusok célja, hogy reagáljon egy külső világ (szemben ellenőrzik azt), és tanulni minden adatpont azzal a feltétellel, hogy ez egy egyedülálló lehetőséget, hogy a költségek időt és pénzt létrehozni, és hogy van egy nem nulla sajnálom (elvesztése lehetséges jutalom), ha optimálistól elmaradó teljesítmény történik.
 
-## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Milyen típusú megerősítő tanulási algoritmusokat használ a személyre szabás?
+## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Milyen típusú megerősítés tanulási algoritmusokat használ a Personalizer?
 
-A személyre szabott felhasználó jelenlegi verziója **környezetfüggő banditákat**használ, így a megerősítő tanulás olyan megközelítést tesz elérhetővé, amely a döntések meghozatala és a különálló műveletek között egy adott kontextusban való választás.
+A Personalizer jelenlegi verziója **környezetfüggő banditákat**használ, egy olyan megközelítést, amely a tanulás megerősítésére épül, és amely a diszkrét műveletek közötti döntések vagy döntések közötti döntéseket vagy döntéseket hoz egy adott környezetben.
 
-A _döntési memória_, a modell, amely a lehető legjobb döntés rögzítésére lett kiképezve, a kontextusban a lineáris modellek készletét használja. Ezek az üzleti eredmények többször is megjelennek, és a bevált megközelítések, részben azért, mert nagyon gyorsan tanulhatnak a valós világból anélkül, hogy a többlépéses képzést kellene elvégeznie, részben pedig a felügyelt tanulási modellek és a mély neurális funkciók kiegészítéseként is. hálózati modellek.
+A _döntési memória_, a modell, amely be van tanítva, hogy rögzítse a lehető legjobb döntést, adott környezetben, lineáris modellek készletét használja. Ezek többször is üzleti eredményeket mutattak, és bevált megközelítést jelentenek, részben azért, mert nagyon gyorsan tanulhatnak a valós világból anélkül, hogy többmenetes képzésre lenne szükségük, részben pedig azért, mert kiegészíthetik a felügyelt tanulási modelleket és a mély neurális hálózati modellek.
 
-A felderítési és kiaknázási forgalom kiosztása véletlenszerűen történik a feltárási százalékos érték követése után, és a feltárás alapértelmezett algoritmusa epszilon-kapzsi.
+A feltárási/kizsákmányoló forgalom elosztása véletlenszerűen történik a feltáráshoz beállított százalékos érték után, és a feltárás alapértelmezett algoritmusa epsilon-greedy.
 
-### <a name="history-of-contextual-bandits"></a>Környezetfüggő banditák előzményei
+### <a name="history-of-contextual-bandits"></a>Története kontextuális banditák
 
-John Langford megalkotta a kontextusban lévő banditák nevét (Langford és Zhang [2007]), amely leírja a megerősítő tanulás egy megvonható részhalmazát, és egy fél tucat tanulmányban dolgozott, amely az alábbi paradigma megismerését mutatja be:
+John Langford megalkotta a kontextuális banditák (Langford és Zhang [2007]) nevet, hogy leírja a megerősítés tanulásának egy tractable részhalmazát, és fél tucat dolgozaton dolgozott, amelyek javítják a tanulás megértését ebben a paradigmában:
 
-* Beygelzimer és szerzőtársai [2011]
-* Dudík et al. [2011a, b]
-* Agár és szerzőtársai [2014, 2012]
+* Beygelzimer és mtsai [2011]
+* Dudík et al. [2011a,b]
+* Agarwal és mtsai [2014, 2012]
 * Beygelzimer és Langford [2009]
-* Li és al. [2010]
+* Li és mtsai [2010]
 
-John emellett számos olyan oktatóanyagot is kapott, mint például a közös előrejelzés (ICML 2015), a környezetfüggő bandita-elmélet (NIP 2013), az aktív tanulás (ICML 2009) és a minta bonyolultsági korlátok (ICML 2003)
+John korábban számos oktatóanyagot is adott olyan témákról, mint a Közös előrejelzés (ICML 2015), a Kontextuális banditaelmélet (NIPS 2013), az Active Learning (ICML 2009) és a Mintakomplexitási határok (ICML 2003)
 
-## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Milyen gépi tanulási keretrendszerek használják a személyre szabást?
+## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Milyen gépi tanulási keretrendszereket használ a Personalizer?
 
-A személyre szabás jelenleg a [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) használja a gépi tanulás alapjaként. Ez a keretrendszer lehetővé teszi a maximális átviteli sebességet és a legalacsonyabb késést a személyre szabási rangsorolása és a modell tanítása az összes eseménnyel.
+Personalizer jelenleg használ [Vowpal Wabbit,](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) mint az alapja a gépi tanulás. Ez a keretrendszer lehetővé teszi a maximális átviteli és a legalacsonyabb késést, amikor személyre szabási rangok és a modell betanítása az összes esemény.
 
 ## <a name="references"></a>Referencia
 
-* [A kontextusos döntések alacsony technikai adóssággal való kihasználása](https://arxiv.org/abs/1606.03966)
-* [A méltányos besoroláshoz való csökkentési megközelítés](https://arxiv.org/abs/1803.02453)
-* [Hatékony Kontextusbeli banditák a nem álló világokban](https://arxiv.org/abs/1708.01799)
-* [Fennmaradó veszteségek előrejelzése: Megerősítése: a növekményes visszajelzés nélküli tanulás](https://openreview.net/pdf?id=HJNMYceCW)
-* [Útmutatás és vizualizációs megfigyelések a megerősítő képzéssel végzett műveletekhez](https://arxiv.org/abs/1704.08795)
-* [Tanuljon jobb keresésre a tanárnál](https://arxiv.org/abs/1502.02206)
+* [Kontextuális döntések meghozatala alacsony technikai adóssággal](https://arxiv.org/abs/1606.03966)
+* [A méltányos osztályozás csökkentési megközelítése](https://arxiv.org/abs/1803.02453)
+* [Hatékony kontextuális banditák a nem helyhez kötött világokban](https://arxiv.org/abs/1708.01799)
+* [Maradék veszteség előrejelzése: Megerősítése: tanulás nem növekményes visszajelzés](https://openreview.net/pdf?id=HJNMYceCW)
+* [Az utasítások és a vizuális megfigyelések feltérképezése a megerősítési tanulással végzett műveletekhez](https://arxiv.org/abs/1704.08795)
+* [Tanulás keresés jobb, mint a tanár](https://arxiv.org/abs/1502.02206)
 
 ## <a name="next-steps"></a>További lépések
 
-[Offline Értékelés](concepts-offline-evaluation.md) 
+[Offline értékelés](concepts-offline-evaluation.md) 

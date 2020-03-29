@@ -1,7 +1,7 @@
 ---
 title: A Bing Spell Check API használata
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az API-val kapcsolatos Bing Spell Check módokat, beállításokat és egyéb információkat.
+description: Ismerje meg a Bing helyesírás-ellenőrzési módjait, beállításait és az API-val kapcsolatos egyéb információkat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881885"
 ---
 # <a name="using-the-bing-spell-check-api"></a>A Bing Spell Check API használata
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a Bing Spell Check API használatát a kontextusbeli nyelvtan és a helyesírás-ellenőrzés végrehajtásához. Habár a legtöbb helyesírás-ellenőrző szótár alapú szabálykészlet alapján használható, a Bing helyesírás-ellenőrzője a gépi tanulást és a statisztikai gépi fordítást használja a pontos és a kontextusbeli javítások biztosításához. 
+Ebből a cikkből megtudhatja, hogy miként végezheti el a környezetfüggő nyelvhelyesség- és helyesírás-ellenőrzést a Bing helyesírás-ellenőrző API használatával. Míg a legtöbb helyesírás-ellenőrzőszótár-alapú szabálykészletekre támaszkodik, a Bing helyesírás-ellenőrzője a gépi tanulás és a statisztikai gépi fordítás thasználja a pontos és környezetfüggő javítások biztosításához. 
 
 ## <a name="spell-check-modes"></a>Helyesírás-ellenőrzési módok
 
 Az API kétféle ellenőrzési módot támogat: `Proof` és `Spell`.  Próbálja ki a példákat [itt](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
-### <a name="proof---for-documents"></a>Bizonyítás – dokumentumok esetén 
+### <a name="proof---for-documents"></a>Igazolás - dokumentumokhoz 
 
 Az alapértelmezett mód a `Proof`. A `Proof` helyesírási mód biztosítja a legátfogóbb ellenőrzéseket, és a nagybetűs írásmód, az alapvető központozás és más funkciók hozzáadásával segíti a dokumentumok létrehozását. Azonban ez a mód kizárólag az en-US (angol-amerikai), es-ES (spanyol), pt-BR (portugál) piacokon érhető el (megjegyzés: a spanyol és portugál piac esetében csak béta verzióban). Minden más piachoz állítsa be a lekérdezési paramétert Spell módra. 
 
 > [!NOTE]
-> Ha a lekérdezési szöveg hossza meghaladja az 4096-ot, a rendszer a 4096 karakterre csonkolja, majd feldolgozza azt. 
+> Ha a lekérdezés szövegének hossza meghaladja a 4096-ot, a program 4096 karakterre csonkolja, majd feldolgozza. 
 
-### <a name="spell----for-web-searchesqueries"></a>Helyesírás – webes keresések/lekérdezések
+### <a name="spell----for-web-searchesqueries"></a>Helyesírás - webes keresésekhez/lekérdezésekhez
 
 A `Spell` agresszívabb, hogy jobb keresési eredményeket adhasson. A `Spell` mód megtalálja a legtöbb helyesírási hibát, de nem talál meg néhány olyan nyelvtani hibát, például a nagybetűket és a szóismétlést, amelyeket a `Proof` észlel.
 
 > [!NOTE]
-> * A maximális támogatott lekérdezési hossz alább látható. Ha a lekérdezés túllépi a maximális hosszúságot, a lekérdezés és annak eredménye nem módosul.
->    * 130 karakter a következő nyelvi kódokhoz: en, de, es, fr, pl, PT, SV, ru, NL, NB, TR-TR, it, ZH, ko. 
->    * 65 karakter az összes többinél.
-> * A helyesírási mód nem támogatja a szögletes zárójel karaktereit `]`(`[` és) a lekérdezésekben, és inkonzisztens eredményeket eredményezhet. Javasoljuk, hogy a spell mód használatakor távolítsa el őket a lekérdezésből.
+> * A maximálisan támogatott lekérdezési hossz alatt van. Ha a lekérdezés meghaladja a maximális hosszt, a lekérdezés és annak eredményei nem módosulnak.
+>    * 130 karakter a következő nyelvkódok: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko. 
+>    * 65 karakter az összes többi.
+> * A Levarázslat mód nem támogatja`[` `]`a szögletes zárójeles karaktereket ( és ) a lekérdezésekben, és inkonzisztens eredményeket okozhat. Javasoljuk, hogy távolítsa el őket a lekérdezések, ha a Varázslat mód használata.
 
 ## <a name="market-setting"></a>Piac beállítása
 
-A kérésben a `mkt` lekérdezési paraméterrel meg kell adni egy [piaci kódot](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) . Az API egyébként a kérelem IP-címe alapján az alapértelmezett piacot fogja használni.
+A [kérelemben](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) meg kell `mkt` adni egy piaci kódot a lekérdezési paraméterrel. Az API egyébként a kérelem IP-címe alapján használja az alapértelmezett piacot.
 
 
-## <a name="http-post-and-get-support"></a>HTTP-POST és támogatás KÉRÉSe
+## <a name="http-post-and-get-support"></a>HTTP POST és GET támogatás
 
 Az API támogatja a HTTP POST és a HTTP GET metódust is. Az ellenőrizni kívánt szöveg hosszától függ, hogy melyiket érdemes használnia. Ha a sztringek mindig rövidebbek 1500 karakternél, használja a GET-et. Ha azonban 10 000 karakterig szeretné támogatni a sztringeket, akkor használja a POST-ot. A szöveges sztring bármilyen érvényes UTF-8 karaktert tartalmazhat.
 

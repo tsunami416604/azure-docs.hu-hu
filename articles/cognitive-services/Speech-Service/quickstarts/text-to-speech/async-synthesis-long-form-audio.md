@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: aszinkron szintézis a hosszú formátumú hanghoz (előzetes verzió) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Aszinkron szintézis hosszú formátumú hanghoz (előzetes verzió) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: A hosszú hang API-val aszinkron módon alakíthatja át a szövegeket beszédre, és lekérheti a hangkimenetet a szolgáltatás által megadott URI-ból. Ez a REST API ideális olyan tartalomszolgáltatók számára, amelyeknek a 10 000 vagy 50 bekezdésnél nagyobb szövegfájlokat kell konvertálnia a szintetizált beszédbe.
+description: A Hosszú hang API-val aszinkron módon konvertálhatja a szöveget beszédgé, és lekérheti a hangkimenetet a szolgáltatás által biztosított URI-ból. Ez a REST API ideális olyan tartalomszolgáltatók számára, amelyeknek a 10 000 karakternél nagyobb vagy 50 bekezdésnél nagyobb szövegfájlokat kell szintetizált beszédgé konvertálniuk.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331076"
 ---
-# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rövid útmutató: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)
+# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rövid útmutató: Aszinkron szintézis hosszú formátumú hangpythonban (előzetes verzió)
 
-Ebben a rövid útmutatóban a hosszú hangalapú API használatával aszinkron módon alakíthatja át a szövegeket beszédre, és lekérheti a hangkimenetet a szolgáltatás által megadott URI-ból. Ez a REST API ideális olyan tartalomszolgáltatók számára, amelyeknek a hanganyagot 5 000 karakternél nagyobb (vagy több mint 10 percnél hosszabb) szövegből kell szintetizálni. További információ: [Long audio API](../../long-audio-api.md).
+Ebben a rövid útmutatóban a Hosszú hang API-t fogja használni a szöveg beszédgé alakításához, és a szolgáltatás által biztosított URI-ból származó hangkimenet beolvasásához. Ez a REST API ideális olyan tartalomszolgáltatók számára, amelyeknek 5000 karakternél (vagy több mint 10 percnél hosszabb) szövegből kell szintetizálniuk a hangot. További információ: [Long Audio API](../../long-audio-api.md).
 
 > [!NOTE]
-> A hosszú formátumú hang aszinkron szintézise csak [Egyéni neurális hangokkal](../../how-to-custom-voice.md#custom-neural-voices)használható.
+> A hosszú formátumú hangaszinkron szintézis csak [egyéni neurális hangokkal](../../how-to-custom-voice.md#custom-neural-voices)használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Python 2.7. x vagy 3. x.
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy a kedvenc szövegszerkesztője.
-* Egy Azure-előfizetés és egy Speech Service-előfizetési kulcs. [Hozzon létre egy Azure-fiókot](../../get-started.md#new-resource) , és [hozzon létre egy beszédfelismerési erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) a kulcs lekéréséhez. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a díjszabási szintje **S0**, és a hely egy [támogatott régióra](../../regions.md#standard-and-neural-voices)van beállítva.
+* Python 2.7.x vagy 3.x.
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)vagy kedvenc szövegszerkesztője.
+* Egy Azure-előfizetés és egy beszédszolgáltatási előfizetési kulcs. [Hozzon létre egy Azure-fiókot,](../../get-started.md#new-resource) és [hozzon létre egy beszédalapú erőforrást](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) a kulcs leolvasásához. A beszédfelismerési erőforrás létrehozásakor győződjön meg arról, hogy a tarifacsomag **S0**, a hely pedig [támogatott régióra](../../regions.md#standard-and-neural-voices)van állítva.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a kódrészletet egy `voice_synthesis_client.py`nevű fájlba.
+Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja ezt a kódrészletet egy fájlba, amelynek neve `voice_synthesis_client.py`.
 
 ```python
 import argparse
@@ -52,11 +52,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 > [!NOTE]
 > Ha még nem használta ezeket a modulokat, telepítenie kell őket a program futtatása előtt. A csomagok telepítéséhez futtassa a következő parancsot: `pip install requests urllib3`.
 
-Ezek a modulok az argumentumok elemzésére, a HTTP-kérelem összeállítására, valamint a szöveg-beszéd hosszú hangREST API meghívására szolgálnak.
+Ezek a modulok argumentumok elemzésére, a HTTP-kérelem összeállítására és a szövegfelolvasó hosszú audio REST API-nak való hívására szolgálnak.
 
-## <a name="get-a-list-of-supported-voices"></a>A támogatott hangok listájának beolvasása
+## <a name="get-a-list-of-supported-voices"></a>A támogatott hangok listájának beszereznie
 
-Ez a kód beolvassa az elérhető hangok listáját, amelyeket a szöveg-beszéd átalakítására használhat. Adja hozzá a kódot a `voice_synthesis_client.py`hoz:
+Ez a kód a szövegfelolvasás hoz való konvertáláshoz használható elérhető hangok listáját tartalmazza. Adja hozzá `voice_synthesis_client.py`a kódot a következőhöz:
 
 ```python
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
@@ -80,10 +80,10 @@ if args.voices:
 
 ### <a name="test-your-code"></a>A kód tesztelése
 
-Tesztelje az eddigi teendőket. Néhány dolgot frissítenie kell az alábbi kérelemben:
+Teszteljük le, mit tettél eddig. Az alábbi kérelemben néhány dolgot frissítenie kell:
 
-* Cserélje le a `<your_key>`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<region>`t arra a régióra, ahol a beszédfelismerési erőforrás létrejött (például: `eastus` vagy `westus`). Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
+* Cserélje `<your_key>` le a beszédszolgáltatás-előfizetési kulcsra. Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
+* Cserélje `<region>` le azt a régiót, ahol `eastus` a `westus`beszédfelismerési erőforrást létrehozták (például: vagy ). Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
 
 Futtassa ezt a parancsot:
 
@@ -91,7 +91,7 @@ Futtassa ezt a parancsot:
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
 ```
 
-Ekkor a következőhöz hasonló kimenet jelenik meg:
+A következőhez hasonló kimenet jelenik meg:
 
 ```console
 There are xx voices available:
@@ -102,14 +102,14 @@ Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xx
 
 ## <a name="prepare-input-files"></a>Bemeneti fájlok előkészítése
 
-Készítse elő a bemeneti szövegfájlt. Egyszerű szöveges vagy SSML szöveg lehet. A bemeneti fájlra vonatkozó követelményekért lásd: a [tartalom előkészítése a szintézishez](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
+Szövegfájl előkészítése. Ez lehet egyszerű szöveg vagy SSML szöveg. A bemeneti fájlra vonatkozó követelményekről a [tartalom szintézisre való előkészítéséről](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis)itt látható.
 
-## <a name="convert-text-to-speech"></a>Szöveg konvertálása beszédre
+## <a name="convert-text-to-speech"></a>Szöveg átalakítása beszédményré
 
-A bemeneti szövegfájl előkészítését követően adja hozzá ezt a kódot a Speech szintézishez `voice_synthesis_client.py`:
+A bemeneti szövegfájl előkészítése után adja hozzá `voice_synthesis_client.py`ezt a kódot a beszédszintézishez a következőhöz:
 
 > [!NOTE]
-> a "concatenateResult" paraméter nem kötelező. Ha ez a paraméter nincs megadva, a rendszer a hangkimeneteket egy bekezdés alapján hozza létre. A hanganyagot 1 kimenetre is összefűzheti a paraméter beállításával. Alapértelmezés szerint a hang kimenete a riff-16khz-16bit-mono-PCM értékre van beállítva. További információ a támogatott hangkimenetekről: [hang kimeneti formátumai](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+> Az "concatenateResult" egy választható paraméter. Ha ez a paraméter nincs beállítva, a hangkimenetek bekezdésenként jönnek létre. A paraméterek beállításával a hangokat 1 kimenetbe is fűzheti. Alapértelmezés szerint a hangkimenet riff-16khz-16bit-mono-pcm. A támogatott hangkimenetekről a [Hangkimeneti formátumok](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)című témakörben talál további információt.
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -172,26 +172,26 @@ if args.submit:
 
 ### <a name="test-your-code"></a>A kód tesztelése
 
-Tegyük fel, hogy a szöveg szintetizálása a bemeneti fájllal a forrásként művelet. Néhány dolgot frissítenie kell az alábbi kérelemben:
+Kérjük, hogy a szöveget a bemeneti fájl forrásként történő használatával szintetizálják. Az alábbi kérelemben néhány dolgot frissítenie kell:
 
-* Cserélje le a `<your_key>`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<region>`t arra a régióra, ahol a beszédfelismerési erőforrás létrejött (például: `eastus` vagy `westus`). Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<input>`t a szöveg-beszédre előkészített szövegfájl elérési útjára.
-* Cserélje le a `<locale>`t a kívánt kimeneti területi beállítással. További információ: [nyelvi támogatás](../../language-support.md#neural-voices).
-* Cserélje le a `<voice_guid>`t a kívánt kimeneti hangra. A [támogatott hangok listájának beszerzéséhez](#get-a-list-of-supported-voices)használja az egyiket.
+* Cserélje `<your_key>` le a beszédszolgáltatás-előfizetési kulcsra. Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
+* Cserélje `<region>` le azt a régiót, ahol `eastus` a `westus`beszédfelismerési erőforrást létrehozták (például: vagy ). Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
+* Cserélje `<input>` le a szövegfelolvasásra előkészített szövegfájl elérési útját.
+* Cserélje `<locale>` le a kívánt kimeneti területi beállításra. További információt a Nyelvi támogatás című témakörben [talál.](../../language-support.md#neural-voices)
+* Cserélje `<voice_guid>` ki a kívánt kimeneti hangra. Használja a [támogatott hangok listájának lehívása című](#get-a-list-of-supported-voices)hang egyikét.
 
-Szöveg konvertálása beszédre a következő paranccsal:
+Szöveg átalakítása beszédté ezzel a paranccsal:
 
 ```console
 python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file <input> -locale <locale> -voiceId <voice_guid>
 ```
 
 > [!NOTE]
-> Ha egynél több bemeneti fájllal rendelkezik, több kérést is el kell küldenie. Néhány korlátozást kell figyelembe venni. 
-> * Az ügyfél legfeljebb **5** kérést küldhet a kiszolgálónak másodpercenként az egyes Azure-előfizetési fiókokhoz. Ha meghaladja a korlátozást, akkor az ügyfél 429 hibakódot kap (túl sok kérés). Csökkentse a kérelmek mennyiségét másodpercenként
-> * A kiszolgáló az egyes Azure-előfizetésekhez tartozó fiókokhoz legfeljebb **120** kérelmet futtathat, és a várólistára állíthatja. Ha meghaladja a korlátozást, a kiszolgáló 429 hibakódot ad vissza (túl sok kérés). Várjon, és ne küldje el az új kérést, amíg néhány kérelem be nem fejeződik
+> Ha 1-nél több bemeneti fájlja van, több kérelmet kell benyújtania. Vannak bizonyos korlátozások, amelyeket figyelembe kell venni. 
+> * Az ügyfél másodpercenként legfeljebb **5** kérést küldhet a kiszolgálónak minden Egyes Azure-előfizetési fiókhoz. Ha túllépi a korlátozást, az ügyfél 429-es hibakódot kap (túl sok kérés). Kérjük, csökkentse a kérelem összegét másodpercenként
+> * A kiszolgáló minden Egyes Azure-előfizetési fiókhoz legfeljebb **120** kérelmet futtathat és várólistára vehet. Ha túllépi a korlátozást, a kiszolgáló 429-es hibakódot (túl sok kérést) ad vissza. Várjon, és ne nyújtson be új kérelmet, amíg egyes kérelmek et nem teljesít.
 
-Ekkor a következőhöz hasonló kimenet jelenik meg:
+A következőhez hasonló kimenet jelenik meg:
 
 ```console
 Submit synthesis request successful
@@ -209,13 +209,13 @@ Checking status
 Succeeded... Result file downloaded : xxxx.zip
 ```
 
-Az eredmény tartalmazza a bemeneti szöveget és a szolgáltatás által létrehozott hangkimeneti fájlokat. Ezeket a fájlokat zip-fájlból töltheti le.
+Az eredmény tartalmazza a bemeneti szöveget és a szolgáltatás által létrehozott hangkimeneti fájlokat. Ezeket a fájlokat zip-ben töltheti le.
 
-## <a name="remove-previous-requests"></a>Korábbi kérelmek eltávolítása
+## <a name="remove-previous-requests"></a>Korábbi kérések eltávolítása
 
-A kiszolgáló minden egyes Azure-előfizetési fiók esetében **20 000** -kérelmeket fog tartani. Ha a kérelem összege meghaladja ezt a korlátozást, távolítsa el az előző kéréseket, mielőtt újakat hozna. Ha nem távolítja el a meglévő kérelmeket, a rendszer hibaüzenetet küld.
+A kiszolgáló minden Egyes Azure-előfizetési fiókhoz legfeljebb **20 000** kérelmet fog tartani. Ha a kérelem összege meghaladja ezt a korlátozást, kérjük, távolítsa el a korábbi kérelmeket, mielőtt újakat. Ha nem távolítja el a meglévő kérelmeket, hibaüzenetet kap.
 
-Adja hozzá a kódot a `voice_synthesis_client.py`hoz:
+Adja hozzá `voice_synthesis_client.py`a kódot a következőhöz:
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -248,10 +248,10 @@ if args.delete:
 
 ### <a name="test-your-code"></a>A kód tesztelése
 
-Most nézzük meg, hogy milyen kérelmeket korábban küldött be. A folytatás előtt frissítenie kell néhány dolgot a kérelemben:
+Most nézzük meg, hogy korábban milyen kéréseket küldött be. A folytatás előtt frissítenie kell néhány dolgot a kérelemben:
 
-* Cserélje le a `<your_key>`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<region>`t arra a régióra, ahol a beszédfelismerési erőforrás létrejött (például: `eastus` vagy `westus`). Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
+* Cserélje `<your_key>` le a beszédszolgáltatás-előfizetési kulcsra. Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
+* Cserélje `<region>` le azt a régiót, ahol `eastus` a `westus`beszédfelismerési erőforrást létrehozták (például: vagy ). Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
 
 Futtassa ezt a parancsot:
 
@@ -259,7 +259,7 @@ Futtassa ezt a parancsot:
 python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
 ```
 
-Ekkor a rendszer visszaküldi a készített összefoglaló kérelmek listáját. A következőhöz hasonló kimenetet fog látni:
+Ez visszaadja az Ön által benyújtott összegző kérések listáját. Ekkor megjelenik egy ilyen kimenet:
 
 ```console
 There are <number> synthesis requests submitted:
@@ -268,14 +268,14 @@ ID : xxx , Name : xxx, Status : Running
 ID : xxx , Name : xxx : Succeeded
 ```
 
-Most vegyünk fel egy korábban elküldött kérelmet. Néhány dolgot frissítenie kell az alábbi kódban:
+Most távolítsunk el egy korábban benyújtott kérelmet. Az alábbi kódban néhány dolgot frissítenie kell:
 
-* Cserélje le a `<your_key>`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<region>`t arra a régióra, ahol a beszédfelismerési erőforrás létrejött (például: `eastus` vagy `westus`). Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<synthesis_id>` értéket az előző kérelemben visszaadott értékre.
+* Cserélje `<your_key>` le a beszédszolgáltatás-előfizetési kulcsra. Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
+* Cserélje `<region>` le azt a régiót, ahol `eastus` a `westus`beszédfelismerési erőforrást létrehozták (például: vagy ). Ez az információ az [Azure Portalon](https://aka.ms/azureportal)az erőforrás **áttekintése** lapján érhető el.
+* Cserélje `<synthesis_id>` le az előző kérelemben visszaadott értékre.
 
 > [!NOTE]
-> A "Running"/"Waiting" állapotú kérelmeket nem lehet eltávolítani vagy törölni.
+> A "Running"/'Waiting' állapotú kérelmek nem távolíthatók el és nem törölhetők.
 
 Futtassa ezt a parancsot:
 
@@ -283,18 +283,18 @@ Futtassa ezt a parancsot:
 python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>
 ```
 
-A következőhöz hasonló kimenetet fog látni:
+Ekkor megjelenik egy ilyen kimenet:
 
 ```console
 delete voice synthesis xxx
 delete successful
 ```
 
-## <a name="get-the-full-client"></a>A teljes ügyfél beszerzése
+## <a name="get-the-full-client"></a>Szerezd meg a teljes ügyfél
 
-A kész `voice_synthesis_client.py` letölthető a [githubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
+Az `voice_synthesis_client.py` elkészült letölthető a [GitHubon.](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a hosszú hang API-ról](../../long-audio-api.md)
+> [További információ a Hosszú hang API-ról](../../long-audio-api.md)

@@ -1,7 +1,7 @@
 ---
-title: Valós idejű beszélgetés átirata (előzetes verzió) – beszédfelismerési szolgáltatás
+title: Valós idejű beszélgetésátírás (előzetes verzió) – Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan használható a valós idejű beszélgetés a Speech SDK-val. Elérhető a C++, C#, és Javához.
+description: Ismerje meg, hogyan használhatja a valós idejű beszélgetésátírást a beszédfelismerési SDK-val. C++, C# és Java esetén érhető el.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
 ms.openlocfilehash: 64a9e11cec7164fb4421dd018238de9f0670382b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76263727"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>Valós idejű beszélgetés átirata (előzetes verzió)
+# <a name="real-time-conversation-transcription-preview"></a>Valós idejű beszélgetésátírás (előzetes verzió)
 
-A Speech SDK **ConversationTranscriber** API-jával több résztvevő felvételét, eltávolítását és azonosítását is lehetővé teheti, hogy a hang-és hangvételi szolgáltatást `PullStream` vagy `PushStream`használatával közvetíti a beszédfelismerési szolgáltatásnak. Ebből a témakörből megtudhatja, hogyan használható a Speech-Text a Speech SDK-val (1.8.0 vagy újabb verzió). További információ: [Mi a Speech Services](overview.md).
+A Speech SDK **ConversationTranscriber** API-ja lehetővé teszi értekezletek és egyéb beszélgetések átírását több résztvevő hozzáadásával, eltávolításával `PushStream`és azonosításával a hang nak a beszédfelismerési szolgáltatásba történő streamelésével a használatával. `PullStream` Ez a témakör megköveteli, hogy tudja, hogyan használhatja a beszéd-szöveg et a beszédfelismerési SDK-val (1.8.0-s vagy újabb verzió). További információ: [Mik azok a beszédszolgáltatások.](overview.md)
 
 ## <a name="limitations"></a>Korlátozások
 
-- A ConversationTranscriber API-t a C++, C#a és a Java is támogatja Windows, Linux és Android rendszereken.
-- Jelenleg a következő régiókban érhető el az "en-US" és a "zh-CN" nyelveken: _CentralUS_ és _eastasia_.
-- 7 mikrofonos körkörös multi-mikrofonos tömböt igényel egy lejátszási hivatkozási adatfolyammal. A mikrofon tömbnek meg kell felelnie a [specifikációnak](https://aka.ms/sdsdk-microphone).
-- A [Speech Devices SDK](speech-devices-sdk.md) megfelelő eszközöket és egy minta alkalmazást biztosít, amely a beszélgetés átírását szemlélteti.
+- A ConversationTranscriber API-t Támogatja a C++, C#, és Java Windows, Linux és Android rendszeren.
+- Jelenleg "en-US" és "zh-CN" nyelveken érhető el a következő régiókban: _centralus_ és _eastasia_.
+- 7-mic kör alakú, többmikrofonos tömbre van szükség, lejátszási referenciaadatfolyammal. A mikrofontömbnek meg kell [felelnie a specifikációnknak.](https://aka.ms/sdsdk-microphone)
+- A [beszédeszközök SDK](speech-devices-sdk.md) megfelelő eszközöket és egy mintaalkalmazást biztosít, amely bemutatja a beszélgetésátírást.
 
-## <a name="optional-sample-code-resources"></a>Nem kötelező mintakód-erőforrások
+## <a name="optional-sample-code-resources"></a>Választható mintakód-erőforrások
 
-A Speech Device SDK a Javaban a valós idejű hangrögzítéshez 8 csatornán keresztül biztosít mintakód-kódot.
+A Beszédeszköz SDK mintakódot biztosít Java-ban a valós idejű hangrögzítéshez 8 csatorna használatával.
 
-- [ROOBO-eszköz mintakód](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
-- [Azure Kinect dev Kit mintakód](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+- [ROOBO eszköz mintakódja](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
+- [Az Azure Kinect Dev Kit mintakódja](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Beszédfelismerési szolgáltatás előfizetése. Ha még nem rendelkezik [előfizetéssel, lekérheti a beszédfelismerési próbaverziót](https://azure.microsoft.com/try/cognitive-services/) .
+Egy beszédszolgáltatás-előfizetés. Ha még nem rendelkezik [beszédpróba-előfizetéssel, akkor kaphat beszédpróba-előfizetést.](https://azure.microsoft.com/try/cognitive-services/)
 
 ## <a name="create-voice-signatures"></a>Hangaláírások létrehozása
 
-Első lépésként létre kell hoznia a beszélgetés résztvevőinek hangaláírásait a hatékony beszélők azonosításához.
+Az első lépés az, hogy hozzon létre hangaláírásokat a beszélgetés résztvevői számára a hatékony hangszóró-azonosítás érdekében.
 
-### <a name="audio-input-requirements"></a>Hangbeviteli követelmények
+### <a name="audio-input-requirements"></a>Audio bemeneti követelmények
 
-- A hangaláírások létrehozásához használt bemeneti hanghullám-fájlnak 16 bites mintákban, 16 kHz-es mintavételi sebességgel és egyetlen csatornás (mono) formátumban kell lennie.
-- Az egyes hangminták javasolt hossza harminc másodperc és két perc között lehet.
+- A hangaláírások létrehozásához a bemeneti hanghullámfájlnak 16 bites mintákban, 16 kHz-es mintavételi sebességben és egycsatornás (monó) formátumban kell lennie.
+- Az egyes hangminták ajánlott hossza 30 másodperc és 2 perc között van.
 
 ### <a name="sample-code"></a>Mintakód
 
-Az alábbi példa két különböző módszert mutat be a hangaláírások létrehozásához [a REST API használatával](https://aka.ms/cts/signaturegenservice) C#. Vegye figyelembe, hogy a "YourSubscriptionKey", a "speakerVoice. wav" fájlhoz tartozó Wave-fájlnevet, valamint a `{region}` és a "YourServiceRegion" (_CentralUS_ vagy _eastasia_) régiójának valós adatait kell helyettesítenie.
+A következő példa két különböző módon hozhat létre hangaláírás t a REST API c#-ban [használatával.](https://aka.ms/cts/signaturegenservice) Vegye figyelembe, hogy a valós információkat a "YourSubscriptionKey"-ra, a "speakerVoice.wav" `{region}` nevű hullámfájl nevét, valamint a "YourServiceRegion"_(centralus_ vagy eastasia) régiót kell _helyettesítenie._
 
 ```csharp
 class Program
@@ -102,20 +102,20 @@ class Program
 }
 ```
 
-## <a name="transcribe-conversations"></a>Beszélgetések átirata
+## <a name="transcribe-conversations"></a>Beszélgetések átírása
 
-Az alábbi mintakód bemutatja, hogyan lehet valós időben átírni a beszélgetéseket három beszélő számára. Feltételezi, hogy már létrehozott egy hangaláírást az egyes hangszórókhoz a fent látható módon. A SpeechConfig objektum létrehozásakor a "YourSubscriptionKey" és a "YourServiceRegion" valódi információit helyettesítse be.
+A következő mintakód bemutatja, hogyan lehet a beszélgetéseket valós időben átírni három hangszóró esetében. Feltételezi, hogy már létrehozott hangaláírásokat minden hangszóróhoz, ahogy az a fentiekben látható. A "YourSubscriptionKey" és a "YourServiceRegion" valódi információk helyett a SpeechConfig objektum létrehozásakor.
 
-A mintakód Kiemelt jellemzői a következők:
+A mintakód kiemelt elemei a következők:
 
-- `Conversation` objektum létrehozása a `SpeechConfig` objektumból a következő használatával generált Meeting-azonosító használatával: `Guid.NewGuid()`
-- `ConversationTranscriber` objektum létrehozása és a beszélgetéshez való csatlakozás a `JoinConversationAsync()` az átírás indításához
-- A fontos események regisztrálása
-- Résztvevők hozzáadása vagy eltávolítása a beszélgetéshez a beszélgetési objektum használatával
-- A hang továbbítása
-- A Speech SDK verziójában a 1.9.0 és a `string` `int` is támogatott a hangaláírás verziója mezőben.
+- `Conversation` Objektum létrehozása az `SpeechConfig` objektumból a használatával létrehozott értekezletazonosító használatával`Guid.NewGuid()`
+- Objektum `ConversationTranscriber` létrehozása és a `JoinConversationAsync()` beszélgetéshez való csatlakozás az átírás elindításához
+- Az érdekes események regisztrálása
+- Résztvevők hozzáadása vagy eltávolítása a beszélgetéshez a Beszélgetés objektum mal
+- A hang streamelése
+- A Speech SDK 1.9.0-s `int` verziójában és atől, mind az `string` értéktípusokat támogatja a hangaláírás verziószáma.
 
-Az átírás és a hangszóró azonosítója visszakerül a regisztrált eseményekre.
+Az átírás és a hangszóró azonosítója a regisztrált eseményekben található.
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -215,7 +215,7 @@ public class MyConversationTranscriber
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Aszinkron beszélgetés átírása](how-to-async-conversation-transcription.md)
+> [Aszinkron beszédátírás](how-to-async-conversation-transcription.md)

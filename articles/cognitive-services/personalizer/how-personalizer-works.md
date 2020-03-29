@@ -1,59 +1,59 @@
 ---
-title: A megszemélyesítő működése – személyre szabás
-description: A személyre szabási _hurok_ gépi tanulással hozza létre a modellt, amely előre jelzi a tartalom legfelső szintű műveletét. A modell kizárólag a rangsorban és a jutalmazási hívásokkal eljuttatott adataira van kitanítva.
+title: Hogyan működik a Personalizer - Personalizer
+description: A Personalizer _hurok_ gépi tanulás segítségével készítse el a modellt, amely előre jelzi a tartalom legfelső műveletét. A modell kizárólag a Rang és jutalom hívásokkal küldött adatokra van betanítva.
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623744"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
 
-A személyre szabott erőforrás, a _tanulási ciklus_, a gépi tanulás segítségével hozza létre a modellt, amely előre megjósolja a tartalom legfelső szintű műveletét. A modell kizárólag a **rangsorban** és a **jutalmazási** hívásokkal eljuttatott adataira van kitanítva. Minden hurok teljesen független egymástól.
+A Personalizer erőforrás, a _tanulási ciklus,_ gépi tanulás segítségével a modell, amely előre jelzi a tartalom legfelső művelet. A modell kizárólag a **Rang** és **jutalom** hívásokkal küldött adatokra van betanítva. Minden hurok teljesen független egymástól.
 
-## <a name="rank-and-reward-apis-impact-the-model"></a>A Range és a jutalmazási API-k befolyásolják a modellt
+## <a name="rank-and-reward-apis-impact-the-model"></a>A rangsorolási és jutalom API-k hatással vannak a modellre
 
-A Range API- _val funkciókkal_ és _környezeti funkciókkal_ is elküldheti a műveleteket. A **Rank** API úgy dönt, hogy az alábbiakat használja:
+A _funkciókkal_ és a _környezettel kapcsolatos funkciókat_ a Rang API-ba küldműveleteket. A **Rang** API úgy dönt, hogy használja:
 
-* _Kihasználva_: a jelenlegi modell alapján döntheti el, hogy a lehető leghatékonyabban kell-e a múltban.
-* _Megismerés_: válasszon másik műveletet a felső művelet helyett. [Ezt a százalékértéket](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) a Azure Portal személyre szabott erőforrásához konfigurálja.
+* _Exploit_: A jelenlegi modell a legjobb művelet et a múltbeli adatok alapján határozza meg.
+* _Felfedezés_: Válasszon másik műveletet a legfelső művelet helyett. Ezt [a százalékot konfigurálhatja](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) a Personalizer erőforráshoz az Azure Portalon.
 
-Határozza meg a jutalom pontszámát, és küldje el a pontszámot a jutalmazási API-nak. A **jutalmazási** API:
+Ön határozza meg a jutalom pontszámot, és küldje el a pontszámot a Jutalom API-t. A **jutalom** API:
 
-* Összegyűjti az adatokat a modell betanításához az egyes rangsorolási hívások funkcióinak és jutalmazási pontjainak rögzítésével.
-* Ezeket az adattípusokat használja a modell frissítéséhez a _tanulási szabályzatban_megadott konfiguráció alapján.
+* Adatokat gyűjt, hogy betanítsa a modellt az egyes rangok funkcióinak rögzítésével és jutalompontszámainak jutalmazásával.
+* Ezeket az adatokat a tanulási szabályzatban megadott konfiguráció alapján használja a modell _frissítésére._
 
-## <a name="your-system-calling-personalizer"></a>A rendszerhívás személyre szabása
+## <a name="your-system-calling-personalizer"></a>A rendszer hívja A Personalizer
 
-Az alábbi képen a rang és a jutalmazási hívások meghívásának építészeti folyamata látható:
+Az alábbi képen a Rang és jutalom hívások hívásának építészeti folyamata látható:
 
 ![helyettesítő szöveg](./media/how-personalizer-works/personalization-how-it-works.png "A személyre szabás működése")
 
-1. A Range API- _val funkciókkal_ és _környezeti funkciókkal_ is elküldheti a műveleteket.
+1. A _funkciókkal_ és a _környezettel kapcsolatos funkciókat_ a Rang API-ba küldműveleteket.
 
-    * Személyre szabhatja, hogy kihasználja-e az aktuális modellt, vagy a modell új választási lehetőségeit tárja fel.
-    * A rangsor eredményét a rendszer elküldi a EventHub.
-1. A legmagasabb rangot _jutalom műveleti azonosítóként_adja vissza a rendszernek.
-    A rendszer ezt a tartalmat mutatja be, és a saját üzleti szabályai alapján határozza meg a jutalom pontszámát.
-1. A rendszere visszaadja a jutalmazási pontszámot a tanulási ciklusnak.
-    * Ha a személy megkapja a jutalmat, a jutalmat a EventHub kapja meg.
-    * A rangsor és a jutalom összefügg.
+    * A Personalizer dönti el, hogy kihasználja-e az aktuális modellt, vagy új lehetőségeket fedez fel a modellhez.
+    * A rangsorolási eredmény az EventHubra kerül.
+1. A felső rang visszakerül a _rendszer,_ mint jutalom akció azonosító .
+    A rendszer bemutatja ezt a tartalmat, és a saját üzleti szabályai alapján határozza meg a jutalompontszámot.
+1. A rendszer visszaadja a jutalom pontszámot a tanulási hurok.
+    * Amikor a Personalizer megkapja a jutalmat, a jutalom az EventHubra kerül.
+    * A rang és a jutalom összefügg.
     * Az AI-modell a korrelációs eredmények alapján frissül.
-    * A következtetési motor az új modellel frissül.
+    * A következtetési motor frissül az új modellel.
 
-## <a name="personalizer-retrains-your-model"></a>Személyre szabott újraképzések a modellhez
+## <a name="personalizer-retrains-your-model"></a>A personalizer átképzi a modellt
 
-A személyre szabás a modell **gyakoriságának frissítési** beállítása alapján újratanítja a modellt a Azure Portal személyre szabott erőforrásán.
+A Personalizer átvonatozhatja a modellt a **modell gyakoriságfrissítési** beállítása alapján az Azure Portalon a Personalizer erőforráson.
 
-A személyre szabott adatok az összes jelenleg megőrzött adat alapján a Azure Portal személyre szabott erőforrásának **adatmegőrzési** beállításán alapulnak.
+A Personalizer az összes jelenleg megőrzött adatot felhasználja az **Azure** Portalon a Personalizer-erőforráson megadott napok száma alapján.
 
-## <a name="research-behind-personalizer"></a>Személyre szabott kutatás
+## <a name="research-behind-personalizer"></a>Kutatás mögött Personalizer
 
-A személyre szabott tudomány és kutatás területén a [megerősítő tanulás](concepts-reinforcement-learning.md) , többek között a dokumentumok, a kutatási tevékenységek, valamint a kutatás folyamatban van a Microsoft Research szolgáltatásban.
+Personalizer alapul élvonalbeli tudomány és a kutatás területén [megerősítése Learning](concepts-reinforcement-learning.md) beleértve a papírokat, kutatási tevékenységek, és a folyamatban lévő területeken feltárása a Microsoft Research.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a személyre szabott [leggyakoribb forgatókönyvekkel](where-can-you-use-personalizer.md)
+További információ a Personalizer [legfontosabb forgatókönyveiről](where-can-you-use-personalizer.md)

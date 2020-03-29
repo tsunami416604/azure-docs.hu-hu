@@ -1,35 +1,35 @@
 ---
-title: Alapértelmezett válasz beolvasása – QnA Maker
-description: A rendszer az alapértelmezett választ adja vissza, ha nincs egyezés a kérdésben. Érdemes lehet módosítani az alapértelmezett választ a normál alapértelmezett válasz alapján.
+title: Alapértelmezett válasz kérése - QnA Maker
+description: Az alapértelmezett választ akkor adja vissza a rendszer, ha nincs egyezés a kérdéssel. Előfordulhat, hogy módosítani szeretné az alapértelmezett választ a szokásos alapértelmezett válaszból.
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.openlocfilehash: fae5c38fd64435a3fae56862bad04e000916e88b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843276"
 ---
-# <a name="set-default-answer-for-a-knowledge-base"></a>A Tudásbázis alapértelmezett válaszának beállítása
+# <a name="set-default-answer-for-a-knowledge-base"></a>Alapértelmezett válasz beállítása tudásbázishoz
 
-A rendszer az alapértelmezett választ adja vissza, ha nincs egyezés a kérdésben. Érdemes lehet módosítani az alapértelmezett választ a normál alapértelmezett válasz alapján.
+Az alapértelmezett választ akkor adja vissza a rendszer, ha nincs egyezés a kérdéssel. Előfordulhat, hogy módosítani szeretné az alapértelmezett választ a szokásos alapértelmezett válaszból.
 
 ## <a name="change-default-answer"></a>Alapértelmezett válasz módosítása
 
-1. Lépjen a [Azure Portal](https://portal.azure.com) , és navigáljon a létrehozott QnA Maker szolgáltatást jelölő erőforráscsoporthoz.
+1. Nyissa meg az [Azure Portalon,](https://portal.azure.com) és keresse meg a létrehozott QnA Maker-szolgáltatást képviselő erőforráscsoportot.
 
-2. Kattintson ide a **app Service**megnyitásához.
+2. Kattintson ide az **App Service megnyitásához.**
 
-    ![A Azure Portal az App Service for QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Az Azure Portalon a QnA Maker alkalmazásszolgáltatásának elérése](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Kattintson az **Alkalmazásbeállítások** elemre, és szerkessze a **DefaultAnswer** mezőt a kívánt alapértelmezett válaszra. Kattintson a **Mentés** gombra.
+3. Kattintson **az Alkalmazásbeállítások gombra,** és a **DefaultAnswer** mezőt a kívánt alapértelmezett válasszal szerkesztheti. Kattintson a **Mentés** gombra.
 
-    ![Válassza ki az Alkalmazásbeállítások elemet, majd szerkessze a DefaultAnswer QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Válassza az Alkalmazásbeállítások lehetőséget, majd a DefaultAnswer for QnA Maker szerkesztése](../media/qnamaker-concepts-confidencescore/change-response.png)
 
-4. Indítsa újra az App Service-t
+4. Az alkalmazásszolgáltatás újraindítása
 
-    ![A DefaultAnswer módosítása után indítsa újra a QnA Maker appservice](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![A DefaultAnswer módosítása után indítsa újra a QnA Maker alkalmazásszolgáltatást](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Robot létrehozása QnA Maker és LUIS között](../tutorials/integrate-qnamaker-luis.md)
+* [Hozzon létre egy robot ot a QnA Maker és a LUIS segítségével](../tutorials/integrate-qnamaker-luis.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió) – Speech Service'
+title: 'Rövid útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben paramétereket adhat hozzá egy egyéni parancsok alkalmazáshoz.
 services: cognitive-services
@@ -10,70 +10,70 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 994ac88f78dfe5a5b0ee6fef3fa97d66d53c911b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 96312bac369cfa5fe3cb8a00fd63ecfbec624918
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80348534"
 ---
-# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
+# <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Gyorsútmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)
 
-Az [előző cikkben](./quickstart-custom-speech-commands-create-new.md)egy új egyéni parancs-projektet hoztunk létre, amely paraméterek nélkül válaszol a parancsokra.
+Az [előző cikkben](./quickstart-custom-speech-commands-create-new.md)létrehoztunk egy új egyéni parancsok projektet, hogy paraméterek nélkül válaszoljon a parancsokra.
 
-Ebben a cikkben a paraméterekkel bővítjük ezt az alkalmazást, hogy kezelni tudja a több eszköz bekapcsolását és kikapcsolását.
+Ebben a cikkben kiterjesztjük ezt az alkalmazást paraméterekkel, hogy képes legyen kezelni több eszköz be- és kikapcsolását.
 
 ## <a name="create-parameters"></a>Paraméterek létrehozása
 
-1. Nyissa meg a [korábban létrehozott](./quickstart-custom-speech-commands-create-new.md) projektet
-1. Mivel a parancs most már be-és kikapcsolja a-t, nevezze át a parancsot "TurnOnOff"-re.
-   - Vigye a kurzort a parancs nevére, és válassza a Szerkesztés ikont a név módosításához.
-1. Új paraméter létrehozása, amely azt jelzi, hogy a felhasználó be-vagy kikapcsolja az eszközt
-   - Válassza a paraméterek szakasz melletti `+` ikont.
+1. A [korábban létrehozott](./quickstart-custom-speech-commands-create-new.md) projekt megnyitása
+1. Mivel a parancs most antól be- és kikapcsol, nevezze át a parancsot "TurnOnOff" névre.
+   - Mutasson a Parancs nevére, és válassza a szerkesztés ikont a név módosításához
+1. Új paraméter létrehozása annak ábrázolására, hogy a felhasználó be- vagy ki kívánja-e kapcsolni az eszközt
+   - A `+` Paraméterek szakasz melletti ikon kijelölése
 
    > [!div class="mx-imgBorder"]
-   > ![paraméter létrehozása](media/custom-speech-commands/create-on-off-parameter.png)
+   > ![Paraméter létrehozása](media/custom-speech-commands/create-on-off-parameter.png)
 
    | Beállítás            | Ajánlott érték     | Leírás                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Név)               | Javítás OnOff               | A paraméter leíró neve                                                                     |
-   | Globális          | nincs bejelölve           | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
-   | Szükséges           | ellenőrizni             | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
-   | Válasz sablonja  | "-Be vagy ki?"      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
-   | Type (Típus)               | Sztring              | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
-   | Konfiguráció      | Karakterlánc-lista         | Karakterláncok esetén a sztringek listája a lehetséges értékek egy halmazára korlátozza a bemeneteket                                      |
-   | Karakterlánc-lista értékei | be, ki             | Karakterlánc-lista paraméter esetén a lehetséges értékek és azok szinonimáik halmaza                                |
+   | Név               | Be-ki               | A paraméter leíró neve                                                                     |
+   | Globális          | Ellenőrizetlen           | Jelölőnégyzet, amely jelzi, hogy a paraméter értéke globálisan alkalmazva van-e a projekt összes parancsára |
+   | Kötelező           | Ellenőrizni             | Jelölőnégyzet, amely jelzi, hogy szükség van-e erre a paraméterre a parancs végrehajtása előtt          |
+   | Válaszsablon  | "- Be vagy ki?"      | A kérdés, hogy kérje az értékét ezt a paramétert, ha nem ismert                                       |
+   | Típus               | Sztring              | A paraméter típusa, például Szám, Karakterlánc vagy Dátumidő                                               |
+   | Konfiguráció      | Karakterláncok listája         | Karakterláncok esetén a karakterlánclista a bemeneteket a lehetséges értékek egy készletére korlátozza                                      |
+   | Karakterlánclista-értékek | be, ki             | Karakterlánclista paraméter esetén a lehetséges értékek és szinonimáik halmaza                                |
 
-   - Ezután válassza a `+` ikont egy második paraméter hozzáadásához, amely az eszközök nevét jelöli. Ebben a példában egy TV és egy ventilátor
+   - Ezután ismét `+` válassza az ikont egy második paraméter hozzáadásához, amely az eszközök nevét jelöli. Ebben a példában egy tv és egy
 
    | Beállítás            | Ajánlott érték       | Leírás                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name (Név)               | SubjectDevice         | A paraméter leíró neve                                                                     |
-   | Globális          | nincs bejelölve             | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan a projekt összes parancsára vonatkozik-e |
-   | Szükséges           | ellenőrizni               | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt          |
-   | Válasz sablonja  | "– Melyik eszköz?"     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                                       |
-   | Type (Típus)               | Sztring                | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                               |
-   | Konfiguráció      | Karakterlánc-lista           | Karakterláncok esetén a sztringek listája a lehetséges értékek egy halmazára korlátozza a bemeneteket                                      |
-   | Karakterlánc-lista értékei | TV, ventilátor               | Karakterlánc-lista paraméter esetén a lehetséges értékek és azok szinonimáik halmaza                                |
-   | Szinonimák (TV)      | televízió, Teller     | A string List paraméter minden lehetséges értékének választható szinonimái                                      |
+   | Név               | SubjectDevice (Tárgyeszköz)         | A paraméter leíró neve                                                                     |
+   | Globális          | Ellenőrizetlen             | Jelölőnégyzet, amely jelzi, hogy a paraméter értéke globálisan alkalmazva van-e a projekt összes parancsára |
+   | Kötelező           | Ellenőrizni               | Jelölőnégyzet, amely jelzi, hogy szükség van-e erre a paraméterre a parancs végrehajtása előtt          |
+   | Válaszsablon  | "- Melyik eszköz?"     | A kérdés, hogy kérje az értékét ezt a paramétert, ha nem ismert                                       |
+   | Típus               | Sztring                | A paraméter típusa, például Szám, Karakterlánc vagy Dátumidő                                               |
+   | Konfiguráció      | Karakterláncok listája           | Karakterláncok esetén a karakterlánclista a bemeneteket a lehetséges értékek egy készletére korlátozza                                      |
+   | Karakterlánclista-értékek | tv, ventilátor               | Karakterlánclista paraméter esetén a lehetséges értékek és szinonimáik halmaza                                |
+   | Szinonimák (tv)      | televízió, tv     | Választható szinonimák a karakterlánclista-paraméter minden lehetséges értékéhez                                      |
 
-## <a name="add-sample-sentences"></a>Minta mondatok hozzáadása
+## <a name="add-sample-sentences"></a>Mintamondatok hozzáadása
 
-A paraméterekkel hasznos lehet az összes lehetséges kombinációra kiterjedő minta mondatokat hozzáadni. Példa:
+A paraméterekkel hasznos az összes lehetséges kombinációt lefedő mintamondatok hozzáadása. Példa:
 
-1. Teljes paraméter adatai – `"turn {OnOff} the {SubjectDevice}"`
-1. Részleges paraméterek adatai – `"turn it {OnOff}"`
-1. Nincs paraméter-információ – `"turn something"`
+1. Teljes paraméterinformáció -`"turn {OnOff} the {SubjectDevice}"`
+1. Részleges paraméterinformáció -`"turn it {OnOff}"`
+1. Nincs paraméterinformáció -`"turn something"`
 
-A különböző mennyiségű információval rendelkező mondatok többek között lehetővé teszik, hogy az egyéni parancsok alkalmazás az egylépéses felbontást és a többfordulatú feloldásokat részleges információkkal oldja fel.
+A különböző mennyiségű információt tartalmazó mintamondatok lehetővé teszik, hogy az Egyéni parancsok alkalmazás egylépéses felbontásokat és részleges információkat tartalmazó többfordulatos felbontásokat is feloldjon.
 
-Ezt szem előtt tartva szerkessze a minta mondatokat, hogy az alább javasolt paramétereket használják.
+Ezt szem előtt tartva, szerkesztsd a mintamondatokat, hogy a paramétereket az alábbiak szerint használd.
 
 > [!TIP]
-> A minta mondatok szerkesztő kapcsos zárójeleket használ a paraméterekre való hivatkozáshoz. - `turn {OnOff} the {SubjectDevice}` a TAB befejezését használja a korábban létrehozott paraméterekre való hivatkozáshoz.
+> A Mintamondatok szerkesztőben a kapcsos zárójelek segítségével hivatkozhat a paraméterekre. - `turn {OnOff} the {SubjectDevice}`A tabulátor kiegészítésével hivatkozhat a korábban létrehozott paraméterekre.
 
 > [!div class="mx-imgBorder"]
-> ![minta mondatok paraméterekkel](media/custom-speech-commands/create-parameter-sentences.png)
+> ![Mintamondatok paraméterekkel](media/custom-speech-commands/create-parameter-sentences.png)
 
 ```
 turn {OnOff} the {SubjectDevice}
@@ -83,32 +83,32 @@ turn something {OnOff}
 turn something
 ```
 
-## <a name="add-parameters-to-completion-rule"></a>Paraméterek hozzáadása a befejezési szabályhoz
+## <a name="add-parameters-to-completion-rule"></a>Paraméterek hozzáadása a Befejezés szabályhoz
 
-Módosítsa az [előző](./quickstart-custom-speech-commands-create-new.md)rövid útmutatóban létrehozott befejezési szabályt:
+Az [előző rövid útmutatóban](./quickstart-custom-speech-commands-create-new.md)létrehozott Befejezés szabály módosítása:
 
-1. Adjon hozzá egy új feltételt, és válassza a szükséges paramétert. `OnOff` és `SubjectDevice` kijelölése
-1. A beszédfelismerési válasz művelet szerkesztése `OnOff` és `SubjectDevice`:
+1. Adjon hozzá egy új feltételt, és válassza a Kötelező paraméter lehetőséget. Válassza `OnOff` ki a két és`SubjectDevice`
+1. A beszédfelismerési válasz `OnOff` művelet `SubjectDevice`szerkesztése a következőként:
 
    ```
-   Ok, turning {OnOff} the {SubjectDevice}
+   - Ok, turning {OnOff} the {SubjectDevice}
    ```
 
-## <a name="try-it-out"></a>Próbálja ki!
+## <a name="try-it-out"></a>Próba
 
-Nyissa meg a teszt csevegés panelt, és próbálkozzon néhány interakcióval.
+Nyissa meg a Csevegés teszt panelt, és próbáljon ki néhány interakciót.
 
-- Bemenet: a TV kikapcsolása
-- Kimenet: ok, a TV kikapcsolása
+- Bevitel: kapcsolja ki a tv
+- Kimenet: Ok, a tv kikapcsolása
 
-- Bemenet: a televízió kikapcsolása
-- Kimenet: ok, a TV kikapcsolása
+- Bemenet: kapcsolja ki a televíziót
+- Kimenet: Ok, a tv kikapcsolása
 
-- Bemenet: kikapcsolás
-- Kimenet: melyik eszköz?
-- Bemenet: a TV
-- Kimenet: ok, a TV kikapcsolása
+- Bemenet: kapcsolja ki
+- Kimenet: Melyik eszköz?
+- Bemenet: a tv
+- Kimenet: Ok, a tv kikapcsolása
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Kapcsolódás egyéni parancssori alkalmazáshoz a Speech SDK-val (előzetes verzió)](./quickstart-custom-speech-commands-speech-sdk.md)
+> [Rövid útmutató: Egyéni parancsok használata egyéni hanggal (előzetes verzió)](./quickstart-custom-speech-commands-select-custom-voice.md)

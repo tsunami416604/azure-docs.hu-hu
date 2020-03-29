@@ -1,7 +1,7 @@
 ---
-title: Tartalom címkék – Computer Vision
+title: Tartalomcímkék - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API lemezképek címkézési funkciójával kapcsolatos fogalmak megismerése.
+description: Ismerje meg a Computer Vision API képcímkézési funkciójával kapcsolatos fogalmakat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244511"
 ---
 # <a name="applying-content-tags-to-images"></a>Tartalomcímkék alkalmazása képekre
 
-A Computer Vision több ezer felismerhető objektum, élő lény, díszlet és művelet alapján ad vissza címkéket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
+Computer Vision vissza címkék alapján több ezer felismerhető tárgyak, élőlények, díszletek, és intézkedések. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
 
-Egy rendszerkép feltöltését vagy egy képurl-cím megadását követően Computer Vision algoritmusok kimeneti címkéket a képen azonosított objektumok, élő lények és műveletek alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
+Egy kép feltöltése vagy URL-címének megadása után Computer Vision-algoritmusok adnak meg címkéket a képeken felismert tárgyak, élőlények és tevékenységek alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
 
-## <a name="image-tagging-example"></a>Példa a képek címkézésére
+## <a name="image-tagging-example"></a>Példa a kép címkézésére
 
-A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad vissza, amikor az ábrán látható vizualizációs funkciókat címkézi.
+A következő JSON-válasz bemutatja, hogy a Computer Vision milyen értéket ad vissza a példaképen észlelt vizuális funkciók címkézésekor.
 
-![Egy kék ház és az első udvar](./Images/house_yard.png).
+![Egy kék ház és az előkert](./Images/house_yard.png).
 
 ```json
 {
@@ -83,6 +83,13 @@ A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad viss
 }
 ```
 
+## <a name="use-the-api"></a>Az API használata
+
+A címkézési funkció a [Kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API része. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja meg. Szerepeljen `Tags` a **visualFeatures** lekérdezési paraméterben. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezje `"tags"` a szakasz tartalmának karakterláncát.
+
+* [Rövid útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Rövid útmutató: Lemezkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>További lépések
 
-A [képek kategorizálásával](concept-categorizing-images.md) és a [képek leírásával](concept-describing-images.md)kapcsolatos fogalmak megismerése.
+Ismerje meg a [képek kategorizálásának](concept-categorizing-images.md) és [leírásának](concept-describing-images.md)kapcsolódó fogalmait.

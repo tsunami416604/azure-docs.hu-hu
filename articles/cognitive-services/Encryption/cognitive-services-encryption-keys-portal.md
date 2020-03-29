@@ -1,111 +1,112 @@
 ---
-title: Az ügyfél által felügyelt kulcsok konfigurálása a Azure Portal használatával
+title: Az Azure Portal használata az ügyfél által kezelt kulcsok konfigurálásához
 titleSuffix: Cognitive Services
-description: Megtudhatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat a Azure Key Vault segítségével a Azure Portal használatával. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlések létrehozását, elforgatását, letiltását és visszavonását.
+description: Megtudhatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat az Azure Key Vault használatával az Azure Portalon keresztül. Az ügyfél által felügyelt kulcsok lehetővé teszik a hozzáférés-vezérlők létrehozását, elforgatását, letiltását és visszavonását.
 services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: egeaney
-ms.openlocfilehash: ad97bde447a7bfbddca480b8561403f2cee7e25a
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 22bd3afcf30b8b8ebce18b22d5419d49ec8c3b4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79372281"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053610"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a Azure Portal használatával
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Key Vault használatával az Azure Portal használatával
 
-Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services erőforrásnak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+Az ügyfél által felügyelt kulcsok tárolásához az Azure Key Vault használatával kell tárolnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services-erőforrás és a key vault kell lennie ugyanabban a régióban és ugyanabban az Azure Active Directory (Azure AD) bérlőben, de lehetnek különböző előfizetések. Az Azure Key Vaultról a [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vaultt az ügyfél által felügyelt kulcsokkal a [Azure Portal](https://portal.azure.com/)használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../../key-vault/quick-create-portal.md).
+Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vault ügyfél által felügyelt kulcsok at az [Azure Portalon.](https://portal.azure.com/) Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure Portalon, olvassa el a [rövid útmutató: Az Azure Key Vault titkos kulcsának beállítása és beolvasása az Azure Portalon.](../../key-vault/quick-create-portal.md)
 
-## <a name="configure-azure-key-vault"></a>Azure Key Vault konfigurálása
+## <a name="configure-azure-key-vault"></a>Az Azure Key Vault konfigurálása
 
-Az ügyfél által felügyelt kulcsok használata megköveteli, hogy a Key vaulton két tulajdonság legyen beállítva, a **Soft delete** és a **not Purge**. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, de a PowerShell vagy az Azure CLI használatával is engedélyezhető egy új vagy meglévő kulcstartón.
+Az ügyfél által felügyelt kulcsok használatához két tulajdonságot kell beállítani a key vaultban, a **Helyreállítható törlés** és a **Ne ürítse ki a mezőt.** Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, de egy új vagy meglévő kulcstartón a PowerShell vagy az Azure CLI használatával engedélyezhetők.
 
 > [!IMPORTANT]
-> Ha nem rendelkezik a helyreállítható **Törlés** és a kitakarítási **Tulajdonságok lehetőséggel, és törli** a kulcsot, nem fogja tudni helyreállítani a kognitív szolgáltatás erőforrásában lévő adatokat.
+> Ha nem engedélyezve van a **Helyreállítható törlés** és a **Ne ürítés** tulajdonságok, és törli a kulcsot, nem fogja tudni helyreállítani az adatokat a Cognitive Service erőforrásban.
 
-Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő kulcstartón, tekintse meg a következő cikkek egyikében, a **Soft-delete engedélyezése** és a **kiürítési védelem engedélyezése** című szakaszt:
+Ha tudni szeretné, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő kulcstartóban, olvassa el a **"Helyreállítható törlés engedélyezése** és a **kiürítési védelem engedélyezése"** című szakaszokat az alábbi cikkek egyikében:
 
-- [A Soft-delete használata a PowerShell-](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)lel.
-- [A Soft delete használata a parancssori](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli)felülettel.
+- [A soft-delete használata a PowerShell használatával.](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+- [A soft-delete használata a CLI-vel.](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli)
 
-Az Azure Storage-titkosítás csak a 2048 méretű RSA-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Csak a 2048-as méretű RSA-kulcsok at támogatja az Azure Storage titkosítása. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Kulcstároló-kulcsok** című témakörben talál.
 
-## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
+## <a name="enable-customer-managed-keys"></a>Ügyfél által kezelt kulcsok engedélyezése
 
-Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
+Az ügyfél által felügyelt kulcsok engedélyezéséhez az Azure Portalon kövesse az alábbi lépéseket:
 
-1. Navigáljon a Cognitive Services-erőforráshoz.
-1. A Cognitive Services erőforrás **Beállítások** paneljén kattintson a **titkosítás**elemre. Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget az alábbi ábrán látható módon.
+1. Keresse meg a Cognitive Services-erőforrást.
+1. A Cognitive Services-erőforrás **Beállítások** paneljén kattintson a **Titkosítás gombra.** Válassza az **Ügyfél által kezelt kulcsok** lehetőséget, az alábbi ábrán látható módon.
 
-    ![Az ügyfél által felügyelt kulcsok kijelölését bemutató képernyőkép](../media/cognitive-services-encryption/selectcmk.png)
+    ![Képernyőkép az Ügyfél által kezelt kulcsok kiválasztásáról](../media/cognitive-services-encryption/selectcmk.png)
 
-## <a name="specify-a-key"></a>Kulcs meghatározása
+## <a name="specify-a-key"></a>Kulcs megadása
 
-Miután engedélyezte az ügyfél által felügyelt kulcsokat, lehetősége lesz megadnia a Cognitive Services erőforráshoz társítandó kulcsot.
+Miután engedélyezte az ügyfél által felügyelt kulcsokat, megadhatja a Cognitive Services-erőforráshoz társítandó kulcsot.
 
 ### <a name="specify-a-key-as-a-uri"></a>Kulcs megadása URI-ként
 
-A kulcs URI-ként való megadásához kövesse az alábbi lépéseket:
+Kulcs URI-ként történő megadásához kövesse az alábbi lépéseket:
 
-1. Ha meg szeretné keresni a kulcs URI-JÁT a Azure Portalban, navigáljon a kulcstartóhoz, és válassza a **kulcsok** beállítást. Válassza ki a kívánt kulcsot, majd kattintson a kulcsra a verziók megtekintéséhez. Válassza ki a verziószámot az adott verzió beállításainak megtekintéséhez.
-1. Másolja a **kulcs-azonosító** mező értékét, amely megadja az URI-t.
+1. A kulcs URI-jának megkereséséhez az Azure Portalon keresse meg a key vaultot, és válassza a **Kulcsok** beállítást. Jelölje ki a kívánt kulcsot, majd kattintson a billentyűre a verzióinak megtekintéséhez. Válassza ki a kulcsverziót az adott verzió beállításainak megtekintéséhez.
+1. Másolja az URI-t megadó **Kulcsazonosító** mező értékét.
 
-    ![A Key Vault kulcs URI-JÁT ábrázoló képernyőfelvétel](../media/cognitive-services-encryption/key-uri-portal.png)
+    ![Képernyőkép a kulcstartó kulcsURI-jának megjelenítéséről](../media/cognitive-services-encryption/key-uri-portal.png)
 
-1. A Storage-fiók **titkosítási** beállításainál kattintson a **kulcs URI-ja megadása** lehetőségre.
-1. Illessze be a vágólapra a **kulcs URI** mezőjébe MÁSOLt URI-t.
+1. A **tárfiók titkosítási** beállításai ban válassza a **Kulcs URI megadása** lehetőséget.
+1. Illessze be a Kulcs URI-mezőbe másolt **URI-t.**
 
-   ![A kulcs URI-azonosítójának megadását bemutató képernyőkép](../media/cognitive-services-encryption/ssecmk2.png)
+   ![Képernyőkép a kulcs URI-jának beírásáról](../media/cognitive-services-encryption/ssecmk2.png)
 
-1. Itt adhatja meg a kulcstárolót tartalmazó előfizetést.
+1. Adja meg a key vaultot tartalmazó előfizetést.
 1. Mentse a módosításokat.
 
-### <a name="specify-a-key-from-a-key-vault"></a>Kulcs megadása kulcstartóból
+### <a name="specify-a-key-from-a-key-vault"></a>Kulcs megadása a kulcstartóból
 
-A Key Vault kulcsának megadásához először győződjön meg arról, hogy rendelkezik egy kulcsot tartalmazó kulcstartóval. A Key vaultban lévő kulcs megadásához kövesse az alábbi lépéseket:
+Kulcs megadása egy kulcstartóból, először győződjön meg arról, hogy rendelkezik egy kulcstartót tartalmazó. Kulcs megadása egy kulcstartóból, kövesse az alábbi lépéseket:
 
-1. Válassza a **kiválasztás a Key Vault** lehetőséget.
-1. Válassza ki a használni kívánt kulcsot tartalmazó kulcstartót.
-1. Válassza ki a kulcsot a Key vaultból.
+1. Válassza a **Kijelölés a Key Vaultból** lehetőséget.
+1. Jelölje ki a használni kívánt kulcsot tartalmazó kulcstartót.
+1. Válassza ki a kulcsot a key vaultból.
 
-   ![Az ügyfél által felügyelt kulcs beállítását bemutató képernyőfelvétel](../media/cognitive-services-encryption/ssecmk3.png)
+   ![Az ügyfél által felügyelt kulcs beállítását ábrázoló képernyőkép](../media/cognitive-services-encryption/ssecmk3.png)
 
 1. Mentse a módosításokat.
 
-## <a name="update-the-key-version"></a>A kulcs verziójának frissítése
+## <a name="update-the-key-version"></a>A kulcsverzió frissítése
 
-A kulcs új verziójának létrehozásakor frissítse a Cognitive Services erőforrást az új verzió használatára. Kövesse az alábbi lépéseket:
+Amikor egy kulcs új verzióját hozza létre, frissítse a Cognitive Services erőforrást az új verzió használatához. Kövesse az alábbi lépéseket:
 
-1. Navigáljon a Cognitive Services erőforráshoz, és jelenítse meg a **titkosítási** beállításokat.
-1. Adja meg az új kulcs verziójának URI azonosítóját. Másik lehetőségként kiválaszthatja a Key vaultot és a kulcsot is a verzió frissítéséhez.
+1. Nyissa meg a Cognitive Services-erőforrást, és jelenítse meg a **titkosítási** beállításokat.
+1. Adja meg az új kulcsverzió URI-ját. Másik lehetőségként a kulcstartót és a kulcsot is kijelölheti a verzió frissítéséhez.
 1. Mentse a módosításokat.
 
 ## <a name="use-a-different-key"></a>Másik kulcs használata
 
-A titkosításhoz használt kulcs módosításához kövesse az alábbi lépéseket:
+A titkosításhoz használt kulcs módosításához hajtsa végre az alábbi lépéseket:
 
-1. Navigáljon a Cognitive Services erőforráshoz, és jelenítse meg a **titkosítási** beállításokat.
-1. Adja meg az új kulcs URI-JÁT. Másik lehetőségként kiválaszthatja a kulcstartót, és kiválaszthat egy új kulcsot.
+1. Nyissa meg a Cognitive Services-erőforrást, és jelenítse meg a **titkosítási** beállításokat.
+1. Adja meg az új kulcs URI-ját. Másik lehetőségként kiválaszthatja a key vaultot, és választhat egy új kulcsot.
 1. Mentse a módosításokat.
 
-## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
+## <a name="disable-customer-managed-keys"></a>Ügyfél által kezelt kulcsok letiltása
 
-Ha letiltotta az ügyfél által felügyelt kulcsokat, akkor a Cognitive Services-erőforrást a Microsoft által felügyelt kulcsokkal titkosítja. Az ügyfél által felügyelt kulcsok letiltásához kövesse az alábbi lépéseket:
+Ha letiltja az ügyfél által felügyelt kulcsokat, a Cognitive Services-erőforrás ezután microsoftáltal kezelt kulcsokkal titkosítva lesz. Az ügyfél által kezelt kulcsok letiltásához hajtsa végre az alábbi lépéseket:
 
-1. Navigáljon a Cognitive Services erőforráshoz, és jelenítse meg a **titkosítási** beállításokat.
-1. Törölje a **saját kulcs használata** beállítás melletti jelölőnégyzet jelölését.
+1. Nyissa meg a Cognitive Services-erőforrást, és jelenítse meg a **titkosítási** beállításokat.
+1. Törölje a jelet a **Saját kulcsbeállítás** melletti jelölőnégyzetből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Cognitive Services ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
-* [Szembenéző szolgáltatások titkosítása inaktív adatok esetén](../Face/face-encryption-of-data-at-rest.md)
-* [QnA Maker inaktív adatok titkosítása](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
-* [Inaktív adatok Language Understanding szolgáltatás titkosítása](../LUIS/luis-encryption-of-data-at-rest.md)
-* [Content Moderator inaktív adatok titkosítása](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
-* [Inaktív adatok Translator-titkosítása](../translator/translator-encryption-of-data-at-rest.md)
+* [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Cognitive Services ügyféláltal felügyelt kulcskérelem-űrlapja](https://aka.ms/cogsvc-cmk)
+* [Face Services titkosítása adatok inaktív](../Face/face-encryption-of-data-at-rest.md)
+* [A nyugalmi adatok QnA Maker titkosítása](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
+* [Az inaktív adatok nyelvtudása szolgáltatástitkosítása](../LUIS/luis-encryption-of-data-at-rest.md)
+* [Tartalommoderátor inaktív adatok titkosítása](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
+* [Az inaktív adatok fordítótitkosítása](../translator/translator-encryption-of-data-at-rest.md)
+* [Az inaktív adatok személyre szabása](../personalizer/personalizer-encryption-of-data-at-rest.md)

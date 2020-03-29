@@ -1,7 +1,7 @@
 ---
-title: Kérelmek küldése a Bing Autosuggest APInak
+title: Kérések küldése a Bing Automatikus javaslat API-nak
 titleSuffix: Azure Cognitive Services
-description: A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján. További információ a kérelmek küldéséről.
+description: A Bing Autosuggest API a keresési mezőben lévő részleges lekérdezési karakterlánc alapján adja vissza a javasolt lekérdezések listáját. További információ a kérelmek küldéséről.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
 ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072850"
 ---
-# <a name="sending-requests-to-the-bing-autosuggest-api"></a>Kérelmek küldése a Bing Autosuggest APInak.
+# <a name="sending-requests-to-the-bing-autosuggest-api"></a>Kérések küldése a Bing Automatikus javaslat API-nak.
 
-Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a Bing Autosuggest API segítségével javíthatja a felhasználók keresési élményét. A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján. Ahogy a karakterek bekerülnek az alkalmazás egy keresési mezőjébe, a javaslatok a legördülő listában jelennek meg. Ebből a cikkből megtudhatja, hogyan küldhet kérelmeket erre az API-ra. 
+Ha az alkalmazás lekérdezéseket küld a Bing Search api-k bármelyikének, a Bing automatikus javaslat API-jával javíthatja a felhasználók keresési élményét. A Bing Autosuggest API a keresési mezőben lévő részleges lekérdezési karakterlánc alapján adja vissza a javasolt lekérdezések listáját. Mivel az alkalmazás keresőmezőjébe karaktereket ír be, javaslatokat jeleníthet meg egy legördülő listában. Ebből a cikkből további információ az API-ra vonatkozó kérelmek küldéséről. 
 
-## <a name="bing-autosuggest-api-endpoint"></a>Bing Autosuggest API végpont
+## <a name="bing-autosuggest-api-endpoint"></a>Bing automatikus api-végpontra való javaslata
 
-A **Bing AutoSuggest API** egy végpontot tartalmaz, amely egy részleges keresési kifejezésből származó javasolt lekérdezések listáját adja vissza.
+A **Bing Autosuggest API** egy végpontot tartalmaz, amely egy részleges keresési kifejezés javasolt lekérdezéseinek listáját adja vissza.
 
-Ha a Bing API használatával szeretne felvenni javasolt lekérdezéseket, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
+Ha a Bing API használatával szeretne `GET` lekérni a javasolt lekérdezéseket, küldjön egy kérést a következő végpontra. A fejlécek és az URL-paraméterek segítségével további specifikációkat határozhatja meg.
 
-**Végpont:** A keresési javaslatokat adja vissza JSON-eredményekként, amelyek az `?q=""`által definiált felhasználói bemenetre vonatkoznak.
+**Végpont:** A keresési javaslatokat JSON-eredményként adja vissza, amelyek `?q=""`relevánsak a felhasználó által definiált bemenethez.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-A fejlécekről, paraméterekről, piaci kódokról, válasz-objektumokról, hibákról és egyéb adatokról a [Bing AutoSuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) -dokumentációban talál további információt.
+A fejlécekről, paraméterekről, piaci kódokról, válaszobjektumokról, hibákról stb. [Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
 
-A **Bing** API-k olyan keresési műveleteket támogatnak, amelyek típusaik alapján adják vissza az eredményeket. A keresési végpontok az eredményeket JSON-válasz objektumokként adják vissza.
-Minden végpont támogatja a lekérdezéseket, amelyek adott nyelvet és/vagy helyet adnak vissza a földrajzi hosszúság, a szélesség és a keresési sugár alapján.
+A **Bing** API-k támogatják azokat a keresési műveleteket, amelyek típusuk nak megfelelően adják vissza az eredményeket.Minden keresési végpont json válaszobjektumként adja vissza az eredményeket.
+Minden végpont támogatja azokat a lekérdezéseket, amelyek hosszúság, szélesség és keresési sugár szerint egy adott nyelvet és/vagy helyet adnak vissza.
 
-Az egyes végpontok által támogatott paraméterekkel kapcsolatos részletes információkért tekintse meg az egyes típusok hivatkozási oldalait.
-Az automatikus kiegészítési API-t használó alapszintű kérelmekre vonatkozó példákért [tekintse](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest)meg az automatikus kiegészítési útmutatókat.
+Az egyes végpontok által támogatott paraméterekről az egyes típusok referenciaoldalain talál teljes körű tájékoztatást.
+Az Automatikus javaslat API-t használó alapvető kérelmekpéldáit az [Automatikus javaslati rövidútmutatók című témakörben talál.](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest)
 
-## <a name="bing-autosuggest-api-requests"></a>Bing Autosuggest API kérelmek
+## <a name="bing-autosuggest-api-requests"></a>Bing automatikus api-kérelmek
 
 > [!NOTE]
-> * A Bing Autosuggest API kérelmeknek a HTTPS protokollt kell használniuk.
+> * A Bing Autosuggest API-hoz érkező kérelmeknek a HTTPS protokollt kell használniuk.
 
-Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Ha egy ügyfélalkalmazás részeként terjeszti a kulcsot, a rosszindulatú külső felektől származó hozzáférés nagyobb lehetőséget biztosít. Emellett a kiszolgálókon kezdeményezett hívások egyetlen frissítési pontot biztosítanak a jövőbeli frissítésekhez.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. A kulcs ügyfélalkalmazás részeként történő terjesztése több lehetőséget biztosít a rosszindulatú, harmadik féltől származó hozzáférésre. Ezenkívül a kiszolgálóról történő hívások egyetlen frissítési pontot biztosít a jövőbeli frissítésekhez.
 
 A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) lekérdezési paramétert, amely a felhasználó részleges keresési kifejezését adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.
 
@@ -62,15 +62,15 @@ Az ügyfél IP-címe és helye fontos a helyfüggő tartalmak visszaadása szemp
 Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers) cikkben.
 
 > [!NOTE]
-> Ha a Bing Autosuggest API a JavaScriptből hívja meg, a böngésző beépített biztonsági funkciói megakadályozhatják a fejlécek értékének elérését.
+> Amikor a Bing Autosuggest API-t JavaScript-ről hívja meg, a böngésző beépített biztonsági funkciói megakadályozhatják a fejlécek értékeinek elérését.
 
-Ennek megoldásához a Bing Autosuggest API kérelmet egy CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejléctel rendelkezik, amely lehetővé teszi a válasz fejlécének engedélyezési listáját, és elérhetővé teszi őket a JavaScript számára.
+A probléma megoldásához a Bing Autosuggest API-kérelmet cors-proxyn keresztül teheti meg. Az ilyen proxy válasza `Access-Control-Expose-Headers` rendelkezik egy fejléccel, amely fehéríti a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](../tutorials/autosuggest.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
+Könnyen telepíthet CORS proxyt, hogy [oktatóalkalmazásunk](../tutorials/autosuggest.md) hozzáférhessen az opcionális ügyfélfejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a HTML-fájlban lévő Bing Autosuggest API végpontot a következőre:
+Ezután módosítsa a Bing Autosuggest API végpontját a HTML-fájlban a következőkre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
@@ -80,7 +80,7 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-A kérelmeknek tartalmaznia kell az összes javasolt lekérdezési paramétert és fejlécet. 
+A kérelmeknek tartalmazniuk kell az összes javasolt lekérdezési paramétert és fejlécet. 
 
 A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja vissza a javasolt lekérdezési sztringeket.
 
@@ -95,11 +95,11 @@ A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja 
 
 Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosító fejlécét, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-A következő webes javaslati csoport a fenti kérelemre adott válasz. A csoport a keresési lekérdezési javaslatok listáját tartalmazza, és minden javaslatot tartalmaz, beleértve a `displayText`, `query`és `url` mezőt.
+A következő webes javaslatcsoport választ ad a fenti kérésre. A csoport tartalmazza a keresési lekérdezési javaslatok listáját, `query`minden `url` javaslattal együtt, beleértve a `displayText`, és a mezőt.
 
 A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.  
 
-Ha a felhasználó egy lekérdezést választ ki a legördülő listából, használhatja a [Bing Search API-k](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) egyikének meghívására, és saját maga is megtekintheti az eredményeket, vagy elküldheti a felhasználót a Bing-eredmények lapra a visszaadott `url` mező használatával.
+Ha a felhasználó kiválaszt egy lekérdezést a legördülő listából, akkor a [Bing Search API-k](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) egyikének hívására és az eredmények `url` saját kezű megjelenítésére, vagy a visszaadott mező használatával elküldheti a felhasználót a Bing találati oldalára.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -169,6 +169,6 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
+- [Mi a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
-- [Javasolt keresési kifejezések beolvasása a Bing Autosuggest APIból](get-suggestions.md)
+- [Javasolt keresési kifejezések beszerzése a Bing Autosuggest API-ból](get-suggestions.md)

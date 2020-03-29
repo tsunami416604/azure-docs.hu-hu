@@ -1,7 +1,7 @@
 ---
-title: Korlátok – LUIS
+title: Korlátok - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk az Azure Cognitive Services Language Understanding (LUIS) ismert korlátait tartalmazza. A LUIS több határ területeken rendelkezik. Modell határ szándék fog vonatkozni, az entitások és a szolgáltatások a LUIS szabályozza. A kvótakorlát kulcs típusa alapján. Billentyűkombináció szabályozza a LUIS-webhelyet.
+description: Ez a cikk az Azure Cognitive Services nyelvi ismert (LUIS) ismert korlátait tartalmazza. A LUIS több határterületnek is rendelkezik. A modellhatár szabályozza a leképezéseket, entitásokat és szolgáltatásokat a LUIS-ban. Kvótakorlátok a kulcstípus alapján. A billentyűzetkombináció vezérli a LUIS webhelyet.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,103 +12,103 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220082"
 ---
-# <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok határai
-A LUIS több határ területeken rendelkezik. Az első a [modell határa](#model-boundaries), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határ harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.
+# <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és -kulcsok határai
+A LUIS több határterületnek is rendelkezik. Az első a [modell határa](#model-boundaries), amely szabályozza a leképezések, entitások és szolgáltatások a LUIS. A második terület a kulcstípuson alapuló [kvótakorlátok.](#key-limits) A harmadik terület a határok a [billentyűzet kombinációja](#keyboard-controls) a LUIS-webhely vezérléséhez. A negyedik terület a [világ régió leképezése](luis-reference-regions.md) a LUIS authoring webhely és a LUIS [végpont](luis-glossary.md#endpoint) API-k között.
 
 
-## <a name="model-boundaries"></a>Modell határok
+## <a name="model-boundaries"></a>Modellhatárok
 
-Ha az alkalmazása meghaladja a LUIS-modell korlátait és határait, érdemes lehet [Luis küldő](luis-concept-enterprise.md#dispatch-tool-and-model) alkalmazást vagy [Luis-tárolót](luis-container-howto.md)használni.
+Ha az alkalmazás túllépi a LUIS-modell korlátait és határait, fontolja meg egy [LUIS-küldő](luis-concept-enterprise.md#dispatch-tool-and-model) alkalmazás vagy egy [LUIS-tároló](luis-container-howto.md)használatát.
 
 |Terület|Korlát|
 |--|:--|
-| [Alkalmazás neve][luis-get-started-create-app] | \* Maximális alapértelmezett karakter |
-| Alkalmazások| 500 alkalmazás/Azure authoring Resource |
-| [Kötegelt tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
-| Explicit listája | 50 alkalmazásonként|
-| Külső entitások | Nincs korlát |
-| [Leképezések][intents]|500/alkalmazás: 499 egyéni szándék, és a szükséges _none_ szándék.<br>A [küldő-alapú](https://aka.ms/dispatch-tool) alkalmazás megfelelő 500 elküldési forrással rendelkezik.|
-| [Entitások listázása](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. Kanonikus név * alapértelmezett karakterek maximális száma. Szinonima hossza korlátozás rendelkeznie. |
-| [Gépi megtanult entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a határ szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alösszetevők akár 5 szintre is ágyazhatók.|
-|Modell szolgáltatásként| Egy adott modellhez a leíróként (funkcióként) használható modellek maximális száma 10 modell. Egy adott modellhez tartozó leíróként (funkcióként) használt kifejezések maximális száma 10 kifejezés típusú listának.|
-| [Előnézet – dinamikus lista entitásai](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
-| [Minták](luis-concept-patterns.md)|500 minták alkalmazásonként.<br>Minta legfeljebb 400 karakter.<br>3 Pattern.any entitások mintában<br>A beágyazott 2 opcionális szövegek mintában maximális|
-| [Minta. any](./luis-concept-entity-types.md)|100, alkalmazásonként mintában 3 pattern.any entitások |
-| [Kifejezések listája][phrase-list]|500-kifejezések listája. A nem felcserélhető phraselist legfeljebb 5 000 kifejezéssel rendelkezik. A felcserélhető Phraselist legfeljebb 50 000 kifejezéssel rendelkezik. Az 500 000-mondatok alkalmazásával kapcsolatos teljes mondatok maximális száma.|
-| [Előre elkészített entitások](./luis-prebuilt-entities.md) | korlátlan|
-| [Reguláris kifejezések entitásai](./luis-concept-entity-types.md)|20 entitások<br>maximum 500 karakter. egy entitás mintával|
-| [Szerepkörök](luis-concept-roles.md)|300 szerepkörök alkalmazásonként. 10 szerepkörök / entitás|
-| [Utterance][utterances] | 500 karakternél|
-| [Hosszúságú kimondott szöveg][utterances] | 15 000/alkalmazás – a hosszúságú kimondott szöveg száma nem korlátozható a szándék alapján|
-| [Verziók](luis-concept-version.md)| 100 verzió/alkalmazás |
-| [Verzió neve][luis-how-to-manage-versions] | 10 karakter hosszúságú alfanumerikus karaktereket, illetve időszak korlátozódik (.) |
+| [Alkalmazás neve][luis-get-started-create-app] | *Alapértelmezett karakter max |
+| Alkalmazások| 500 alkalmazás Azure-szerzői erőforrásonként |
+| [Kötegelt tesztelés][batch-testing]| 10 adatkészlet, 1000 kimondott szöveg adatkészletenként|
+| Explicit lista | 50 kérelemenként|
+| Külső entitások | nincs enek korlátozás |
+| [Leképezések][intents]|500 alkalmazásonként: 499 egyéni leképezések, és a szükséges _Nincs_ szándék.<br>[A diszpécser alapú](https://aka.ms/dispatch-tool) alkalmazásnak 500 diszpécserforrása van.|
+| [Listaentitások](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20.000 elem. A kanonikus név *alapértelmezett karakter max. A szinonimaértékek nem rendelkeznek hosszkorlátozással. |
+| [Gépmegtanult entitások + szerepkörök:](./luis-concept-entity-types.md)<br> Kompozit<br>Egyszerű<br>entitás szerepköre|Legfeljebb 100 fölérendelt entitás, vagy 330 entitás, attól függően, hogy melyik korlát korlátozza a felhasználó találatai először. A szerepkör entitásnak számít ennek a határnak a alkalmazásában. Egy példa egy összetett egy egyszerű entitás, amely 2 szerepkörök: 1 összetett + 1 egyszerű + 2 szerepkör = 4 a 330 entitások.<br>Az alösszetevők legfeljebb 5 szintbe ágyazhatók be.|
+|Modell mint funkció| Egy adott modellhez leíróként (funkcióként) használható modellek maximális száma 10 modell. Egy adott modell leírójaként (jellemzőjeként) használt kifejezéslisták maximális száma 10 kifejezéslistának kell lennie.|
+| [Előzetes verzió – Dinamikus listaentitások](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lista ~1k lekérdezés-előrejelzési végpontkérésenként|
+| [Minták](luis-concept-patterns.md)|500 minta alkalmazásonként.<br>A minta maximális hossza 400 karakter.<br>3 Pattern.any entitások mintánként<br>Legfeljebb 2 egymásba ágyazott, választható szöveg a mintában|
+| [Minta.minden](./luis-concept-entity-types.md)|100 alkalmazásonként, 3 pattern.any entitás mintánként |
+| [Kifejezéslista][phrase-list]|500 kifejezéslista. A nem felcserélhető kifejezéslista legfeljebb 5000 kifejezést tartalmazza. A cserélhető kifejezéslista legfeljebb 50 000 kifejezést tartalmazza. Az összes kifejezés maximális száma 500 000 kifejezésenként.|
+| [Előre összeállított entitások](./luis-prebuilt-entities.md) | nincs korlátozás|
+| [Reguláriskifejezés-entitások](./luis-concept-entity-types.md)|20 jogalany<br>500 karakter max. reguláris kifejezés entitásmintánként|
+| [Szerepkörök](luis-concept-roles.md)|300 szerepkör alkalmazásonként. 10 szerepkör entitásonként|
+| [Kimondott szöveg][utterances] | 500 karakter|
+| [Beszédmódok][utterances] | 15 000 alkalmazásonként – nincs korlátozva a szándékonkénti kimondott szövegek száma|
+| [Verziók](luis-concept-version.md)| 100 verzió alkalmazásonként |
+| [Verziónév][luis-how-to-manage-versions] | Alfanumerikus és pont (.) karakterre korlátozott 10 karakter |
 
-\* Alapértelmezett karakter legfeljebb 50 karakter hosszú lehet.
+*Az alapértelmezett karakter max.
 
 <a name="intent-and-entity-naming"></a>
 
 ## <a name="name-uniqueness"></a>Név egyedisége
 
-Használja az alábbi elnevezési egyediségi szabályokat.
+Használja a következő elnevezési egyediségi szabályokat.
 
-A következőnek egyedinek kell lennie a LUIS-alkalmazásban:
+A LUIS-alkalmazásokban a következőknek egyedinek kell lenniük:
 
-* Verzió neve
-* szándék
-* entitás
+* verzió neve
+* Szándék
+* Entitás
 * roles
 
-A következőnek egyedinek kell lennie az alkalmazott hatókörön belül:
+Az alkalmazott hatókörön belül a következőknek egyedinek kell lenniük:
 
-* kifejezések listája
+* kifejezéslista
 
 ## <a name="object-naming"></a>Objektum elnevezése
 
-Ne használja az alábbi karaktereket a következő nevekben.
+Ne használja a következő karaktereket a következő nevekben.
 
 |Objektum|Karakterek kizárása|
 |--|--|
-|Cél, entitás és szerepkör neve|`:`<br>`$` <br> `&`|
-|Verzió neve|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
+|Szándék, entitás és szerepkörnevek|`:`<br>`$` <br> `&`|
+|Verziónév|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>Kulcshasználat
+## <a name="key-usage"></a>Kulcs használat
 
-A nyelv értelmezése külön kulcsokkal rendelkezik, egy típust a szerzői műveletekhez, és egy típust az előrejelzési végpont lekérdezéséhez. Ha többet szeretne megtudni a főbb típusok közötti különbségekről, olvassa el az [előrejelzési végpont kulcsainak készítése a Luis-ben](luis-concept-keys.md)című témakört.
+A Language Understand külön kulcsokkal, egy szerzői típussal és egy típussal rendelkezik az előrejelzési végpont lekérdezéséhez. A kulcstípusok közötti különbségekről a [LUIS szerzői és lekérdezés-előrejelzési végpontkulcsai](luis-concept-keys.md)című témakörben olvashat bővebben.
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>Erőforrás-kulcsok korlátai
+## <a name="resource-key-limits"></a>Erőforráskulcs-korlátok
 
-Az erőforrás-kulcsok különböző korlátozásokkal rendelkeznek a szerzői és a végponthoz. A LUIS-előrejelzési lekérdezés végpontjának kulcsa csak végponti lekérdezések esetén érvényes.
+Az erőforráskulcsok különböző korlátozásokat rendelkeznek a szerzői és végponti. A LUIS előrejelzési lekérdezési végpontkulcs csak végpontlekérdezésekre érvényes.
 
-* 500 alkalmazás/Azure authoring Resource
+* 500 alkalmazás Azure-szerzői erőforrásonként
 
-|Paraméter|Tartalomkészítés|Végpont|Cél|
+|Kulcs|Tartalomkészítés|Végpont|Cél|
 |--|--|--|--|
-|Kezdő|1 millió/hó, 5/s|1 ezer/hó, 5/s|A LUIS-alkalmazás készítése|
-|F0 – ingyenes réteg |1 millió/hó, 5/s|10 ezer/hó, 5/s|A LUIS-végpontra lekérdezése|
-|S0 – alapszintű csomag|-|50/mp|A LUIS-végpontra lekérdezése|
-|S0 – standard szint|-|50/mp|A LUIS-végpontra lekérdezése|
-|[Az érzelmek elemzésének integrációja](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Ha további Azure-erőforrásra van szükség, az adatelemzési adatok, például a kulcs kifejezésének kibontása is elérhető. |
-|[Beszédfelismerési integráció](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1000 végponti kérelmek egységenkénti áron|Használja a beszélt utterance (kifejezés) konvertálása szöveges utterance (kifejezés) és a LUIS eredményeket adja vissza|
+|Kezdő|1 millió/hó, 5/másodperc|1 ezer/hó, 5/másodperc|A LUIS-alkalmazás készítése|
+|F0 - Ingyenes szint |1 millió/hó, 5/másodperc|10 ezer/hó, 5/másodperc|A LUIS-végpont lekérdezése|
+|S0 - Alapszintű szint|-|50/másodperc|A LUIS-végpont lekérdezése|
+|S0 - Standard szint|-|50/másodperc|A LUIS-végpont lekérdezése|
+|[Hangulatelemzés integrációja](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|A hangulati információk hozzáadása, beleértve a kulcskifejezés-adatok kinyerését is, egy másik Azure-erőforrás megkövetelése nélkül érhető el. |
+|[Beszédintegráció](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1 000 végpontkérelem egységköltségenként|A szóbeli utterance (kifejezés) konvertálása szöveges utterance (kifejezés) szövegkimondott szöveggé, és luis-eredményeket ad vissza|
 
-[További információ a díjszabásról.][pricing]
+[További információ az árképzésről.][pricing]
 
-## <a name="keyboard-controls"></a>Billentyűzet vezérlők
+## <a name="keyboard-controls"></a>Billentyűzetvezérlők
 
-|Bevitelt a billentyűzetről | Leírás |
+|Billentyűzet bevitele | Leírás |
 |--|--|
-|Vezérlő + E|Váltás a jogkivonatok és utterances listán entitások között|
+|Control+E|váltás a jogkivonatok és az entitások között az utterances list|
 
-## <a name="website-sign-in-time-period"></a>Webhely bejelentkezési időtartama
+## <a name="website-sign-in-time-period"></a>Webhely bejelentkezési időszaka
 
-A bejelentkezési hozzáférés **60 perc**. Ez az időtartam, miután ezt a hibát kap. Újra be kell jelentkeznie.
+A bejelentkezési hozzáférés **60 percig**tart. Ezen időszak után megkapja ezt a hibát. Újra be kell jelentkeznie.
 
 [luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
 [batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing

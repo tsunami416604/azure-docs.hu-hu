@@ -1,7 +1,7 @@
 ---
-title: Descripters – LUIS
+title: Leírók - LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUIS) használja, amely javítja az észlelésük vagy szándékok és entitások előrejelzését funkciók hozzáadása, a kategóriák és minták
+description: A Language Understanding (LUIS) segítségével olyan alkalmazásfunkciókat adhat hozzá, amelyek javíthatják a kategóriákat és mintákat tartalmazó szándékok és entitások észlelését vagy előrejelzését
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,48 +12,48 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: diberry
 ms.openlocfilehash: 2b5046bb61dcafbba0b0540935e08777fbd747a5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74123148"
 ---
-# <a name="use-descriptors-to-boost-signal-of-word-list"></a>A leírók használatával növelheti a szólisták jelét
+# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Leírók használata a szólista jelének kiemelésére
 
-A pontosság javítása érdekében a LUIS-alkalmazás funkciókat adhat hozzá. Szolgáltatások révén a LUIS mutatók azáltal, hogy egyes szavak és kifejezések egy alkalmazás tartomány szókincsből eredőket részét képezik. 
+A LUIS-alkalmazás hoz a pontosság javítása érdekében funkciókat adhat hozzá. A szolgáltatások segítenek a LUIS-nak azáltal, hogy tippeket adnak arra vonatkozóan, hogy bizonyos szavak és kifejezések egy alkalmazástartomány-szókincs részét képezik. 
 
-A [leíró](luis-concept-feature.md) (kifejezések listája) olyan értékek (szavak vagy kifejezések) egy csoportját tartalmazza, amelyek ugyanahhoz az osztályhoz tartoznak, és hasonlóan kell kezelni őket (például városok vagy termékek neve). Mi a LUIS megismerkedik az egyik automatikusan alkalmazza a mások számára is. Ez a lista nem ugyanaz, mint a [listában szereplő entitások](reference-entity-list.md) (pontos szöveges egyezések) a megfeleltetett szavak esetében.
+A [leíró](luis-concept-feature.md) (kifejezéslista) olyan értékcsoportot (szavakat vagy kifejezéseket) tartalmaz, amelyek ugyanabba az osztályba tartoznak, és amelyeket hasonlóan kell kezelni (például városok vagy termékek nevei). A LUIS-t az egyikről a luis automatikusan alkalmazza a többire is. Ez a lista nem ugyanaz, mint egy [listaentitás](reference-entity-list.md) (pontos szöveges egyezések) az egyező szavakkal.
 
-Egy leíró az alkalmazás tartományának szókincsét második jelként adja meg a LUIS-hez a szóban forgó szavakkal.
+A leíró hozzáteszi, hogy az alkalmazás tartomány szókincsét, mint egy második jel a LUIS ezekkel a szavakkal kapcsolatban.
 
-A [szolgáltatással kapcsolatos fogalmak](luis-concept-feature.md) áttekintésével megismerheti, hogy mikor és miért érdemes leírót használni. 
+Tekintse át [a szolgáltatásfogalmakat,](luis-concept-feature.md) hogy megértse, mikor és miért kell használni a leírót. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-descriptor"></a>Leíró hozzáadása
 
-1. Nyissa meg az alkalmazást a saját **alkalmazások** lapján a nevére kattintva, majd kattintson a **Build**, majd a **descripters** elemre az alkalmazás bal oldali paneljén. 
+1. Nyissa meg az alkalmazást úgy, hogy a **Saját alkalmazások** lapon a nevére kattint, majd a **Build**gombra, majd az alkalmazás bal oldali paneljén kattintson a **Leírók** elemre. 
 
-1. A **descripters** lapon kattintson a **+ leíró hozzáadása**elemre. 
+1. A **Leírók** lapon kattintson a **+ Leíró hozzáadása gombra.** 
  
-1. Az **új kifejezési lista leírójának létrehozása** párbeszédpanelen adjon meg egy nevet, például `Cities` a leíróhoz. Az **érték** mezőbe írja be a descripters értékeit, például `Seattle`. Írjon be egy értéket egy időben, vagy értékek vesszővel elválasztva, és nyomja le az **Enter**.
+1. Az **Új kifejezéslista leírójának létrehozása** párbeszédpanelen `Cities` adja meg a leíró nevét. Az **Érték** mezőbe írja be a leírók értékeit, például `Seattle`a. Egyszerre csak egy értéket vagy vesszővel elválasztott értékhalmazt írhat be, majd nyomja le az **Enter billentyűt.**
 
     > [!div class="mx-imgBorder"]
-    > ![leíró városok hozzáadása](./media/luis-add-features/add-phrase-list-cities.png)
+    > ![Leíró városok hozzáadása](./media/luis-add-features/add-phrase-list-cities.png)
 
-    Ha a LUIS számára elég értéket adott meg, a javaslatok megjelennek. Az összes javasolt értéket **+ felveheti** , vagy kijelölhet egyéni kifejezéseket is.
+    Miután elegendő értéket adott meg a LUIS számára, javaslatok jelennek meg. **Hozzáadhatja az összes** javasolt értéket, vagy kiválaszthatja az egyes kifejezéseket.
 
-1. Ha a hozzáadott leíró értékek olyan alternatívák, amelyek szinonimaként használhatók, tartsa meg **ezeket az értékeket** .
+1. Tartsa: **Ezek az értékek felcserélhetők,** ha a hozzáadott leíró értékek olyan alternatívák, amelyek felcserélhetők.
 
-1. Válassza a **Done** (Kész) lehetőséget. Az új leíró bekerül a **descripters** lapra.
+1. Válassza a **Done** (Kész) lehetőséget. Az új leíró hozzáadódik a **leírók** laphoz.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Egy leírót törölheti vagy inaktiválhat a **descripters** lapon található környezetfüggő eszköztárból.
+> A leírót törölheti vagy inaktiválhatja a **Leírók** lap környezetfüggő eszköztárából.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy leíró hozzáadását, szerkesztését, törlését vagy inaktiválását követően ismét [betaníthatja és tesztelheti az alkalmazást, és](luis-interactive-test.md) ellenőrizheti, hogy javul-e a teljesítmény.
+A leíró hozzáadása, szerkesztése, törlése vagy inaktiválása után [újra betanítsa és tesztelje az alkalmazást,](luis-interactive-test.md) hogy lássa, javul-e a teljesítmény.

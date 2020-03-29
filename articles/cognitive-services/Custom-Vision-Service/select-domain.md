@@ -1,7 +1,7 @@
 ---
-title: Tartomány kiválasztása Custom Vision projekthez – Computer Vision
+title: Tartomány kiválasztása egyéni vision projekthez – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan választhat tartományokat a projekthez a Custom Vision Service.
+description: Ez a cikk bemutatja, hogyan választhat ki egy tartományt a projekthez a Custom Vision Szolgáltatásban.
 services: cognitive-services
 author: shonohs
 manager: nitinme
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1569b6081adad4cae0855f9adfb4e14e910bf819
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78899450"
 ---
-# <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása Custom Vision projekthez
+# <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása egyéni vision projekthez
 
-A Custom Vision projekt Beállítások paneljén kiválaszthatja a projekt tartományát. Válassza ki a forgatókönyvhöz legközelebb eső tartományt.
+Az Egyéni vision projekt beállításpaneljén kiválaszthat egy tartományt a projekthez. Válassza ki a forgatókönyvhöz legközelebb eső tartományt.
 
 ## <a name="image-classification"></a>Képbesorolás
 
 |Domain|Cél|
 |---|---|
-|__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt.|
-|__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
-|__Arcrész__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák.|
-|__Kiskereskedelmi__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
-|__Kompakt tartományok__| Az Edge-eszközök valós idejű besorolásának korlátaira optimalizált.|
+|__Általános__| Képbesorolási feladatok széles körére optimalizálva. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos abban, hogy melyik tartományt válassza, válassza az Általános tartományt.|
+|__Élelmiszer__|Az ételek fényképeire optimalizálva, ahogy az éttermi menüben látni fogja őket. Ha az egyes gyümölcsökről vagy zöldségekről készült fényképeket szeretné osztályozni, használja az Élelmiszer domaint.|
+|__Tereptárgyak__|Felismerhető tereptárgyakra optimalizálva, természetes és mesterséges. Ez a domain akkor működik a legjobban, ha a mérföldkő jól látható a fényképen. Ez a domain akkor is működik, ha a mérföldkő kissé akadályozza az emberek előtte.|
+|__Kiskereskedelem__|Bevásárlókatalógusban vagy vásárlási webhelyen található képekre optimalizálva. Ha azt szeretnénk, nagy pontosságú osztályozása között ruhák, nadrágok, és ingek, használja ezt a tartományt.|
+|__Tömörített tartományok__| A peremhálózati eszközök valós idejű besorolásának korlátaira optimalizálva.|
 
 ## <a name="object-detection"></a>Objektumészlelés
 
 |Domain|Cél|
 |---|---|
-|__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt.|
-|__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
-|__Termékek a polcokon__|A polcokon található termékek észlelésére és besorolására optimalizált.|
-|__Kompakt tartományok__| Az Edge-eszközök valós idejű objektum-észlelésének korlátaira optimalizált.|
+|__Általános__| Objektumészlelési feladatok széles körére optimalizálva. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos abban, hogy melyik tartományt válassza, válassza az Általános tartományt.|
+|__Embléma__|Márkalogók keresésére optimalizálva a képeken.|
+|__Termékek a polcokon__|Termékek polcokon való észlelésére és osztályozására optimalizálva.|
+|__Tömörített tartományok__| A peremhálózati eszközök valós idejű objektumészlelési korlátaira optimalizálva.|
 
-## <a name="compact-domains"></a>Kompakt tartományok
+## <a name="compact-domains"></a>Tömörített tartományok
 
-A kompakt tartományok által generált modellek helyileg is futtathatók. A modell teljesítménye a kiválasztott tartománytól függ. Az alábbi táblázatban bejelentjük a modell méretét és következtetéseit az Intel Desktop CPU és az NVidia GPU \[1\]. 
+A kompakt tartományok által létrehozott modellek exportálhatók helyi futtatásra. A modell teljesítménye a kijelölt tartománytól függően változik. Az alábbi táblázatban az Intel Desktop CPU és az NVidia GPU \[\]1 modellméretét és következtetési idejét jelentjük. 
 
 > [!NOTE]
-> Ezek a számok nem tartalmazzák az előfeldolgozást és a utófeldolgozó időt.
+> Ezek a számok nem tartalmazzák az előfeldolgozási és utófeldolgozási időt.
 
-|Feladat|Domain|Modell mérete|CPU-következtetési idő|GPU-következtetési idő|
+|Tevékenység|Domain|Modell mérete|Cpu-következtetések ideje|GPU-következtetések ideje|
 |---|---|---|---|---|
-|Osztályozás|Általános (kompakt)|5 MB|13 MS|5 MS|
-|Objektumészlelés|Általános (kompakt)|45 MB|35 MS|5 MS|
-|Objektumészlelés|Általános (Compact) [S1]|14 MB|27 MS|7 MS|
+|Osztályozás|General (compact) (Általános (kompakt))|5 MB|13 ezres|5 ms|
+|Objektumészlelés|General (compact) (Általános (kompakt))|45 MB|35 ms|5 ms|
+|Objektumészlelés|Általános (kompakt) [S1]|14 MB|27 ezres|7 ezres|
 
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (jövőkép AI fejlesztői csomag)
+## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI Dev Kit)
 
-Ha egy kompakt tartomány van kiválasztva, akkor az "exportálási képességek" beállítás lehetővé teszi az "alapplatformok" és a "jövőkép AI fejlesztői csomag" megkülönböztetését.
+Ha egy kompakt tartomány van kiválasztva egy extra lehetőség "Export képességek" biztosított, amely lehetővé teszi a különbséget az "alapvető platformok" és a "Vision AI Dev Kit".
 
-Az _exportálási képességek_ területen a két lehetőség a következők:
+Az _Exportálási lehetőségek csoportban_ a következő két lehetőség közül választhat:
 
-- Alapszintű platformok (Tensorflow, CoreML, ONNX stb.)
-- A jövőkép AI fejlesztői csomagja.
+- Alapvető platformok (Tensorflow, CoreML, ONNX stb.)
+- Vision AI Dev Kit.
 
-Az _általános_ _, a_ _tereptárgyak_és a _kiskereskedelmi_ célokra szolgáló, de nem az _élelmiszer_ -kompakt tartományok a képbesoroláshoz való kiválasztásakor nem érhetők el az _általános (Compact)_ és az _általános (Compact) [S1]_ objektumok észleléséhez.
+Ha a _Vision AI Dev Kit lehetőséget választja,_ az _Általános_, _Tájékozódási pontok_és _Kiskereskedelmi,_ de nem az _Élelmiszer_ kompakt tartományok érhetők el a képbesoroláshoz, míg az _Általános (kompakt)_ és _az Általános (kompakt) [S1]_ egyaránt elérhető az objektumészleléshez.
 
 >[!NOTE]
->Az objektumok észleléséhez szükséges __általános (Compact)__ tartomány speciális utófeldolgozó logikát igényel. A részletekért tekintse meg az exportált zip-csomagban található példaként szolgáló parancsfájlt. Ha a utófeldolgozó logikát nem használó modellre van szüksége, használja az __általános (Compact) [S1]__ .
+>Az objektumészlelés __általános (kompakt)__ tartománya speciális utófeldolgozási logikát igényel. A részleteket lásd egy példa script az exportált zip csomag. Ha utófeldolgozási logika nélküli modellre van szüksége, használja az __Általános (kompakt) [S1]__.
 
 >[!IMPORTANT]
->Nincs garancia arra, hogy az exportált modellek pontosan ugyanazt eredményezik, mint az előrejelzési API a felhőben. A futó platform enyhe eltérése vagy az előfeldolgozás megvalósítása nagyobb különbséget eredményezhet a modell kimenetében. Az előfeldolgozási logika részleteiért tekintse meg ezt a [dokumentumot](python-tutorial.md).
+>Nincs garancia arra, hogy az exportált modellek adja meg pontosan ugyanazt az eredményt, mint az előrejelzési API a felhőben. A futó platform vagy az előfeldolgozási megvalósítás kismértékű különbsége nagyobb különbséget okozhat a modell kimenetében. Az előfeldolgozási logika részleteit lásd [ebben a dokumentumban.](python-tutorial.md)
 
-\[1\] Intel Xeon E5 – 2690 CPU és NVIDIA Tesla M60
+\[1\] Intel Xeon E5-2690 CPU és NVIDIA Tesla M60

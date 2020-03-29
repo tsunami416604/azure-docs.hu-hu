@@ -1,7 +1,7 @@
 ---
-title: Közzétételi tervre vonatkozó irányelvek
+title: Közzétételi tervezési irányelvek
 titleSuffix: Azure Cognitive Services
-description: Bevezetés a közzétételi tervezési irányelvekbe és a közzétételi szint kiértékelésére.
+description: Bevezetés a közzétételi tervezési iránymutatásokba és a közzétételi szint értékelésébe.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,75 +11,75 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776385"
 ---
 # <a name="disclosure-design-guidelines"></a>Közzététel-tervezési irányelvek
-Ismerje meg, hogyan hozhat létre és tarthat fenn megbízhatóságot az ügyfelekkel a hangélmény szintetikus természetének átláthatósága érdekében.
+Ismerje meg, hogyan építheti ki és tarthatja fenn a bizalmat az ügyfelekkel azáltal, hogy átláthatóan kezeli a hangélmény szintetikus jellegét.
 
 ## <a name="what-is-disclosure"></a>Mi a nyilvánosságra hozatal?
 
-A nyilvánosságra hozatal azt jelenti, hogy az&#39;emberek tudják, hogy a szintetikusan generált hangvételt vagy meghallgatást végeznek.
+A közzététel egy olyan eszköz, amely tudatja az emberekkel, hogy&#39;, hogy újra kommunikáljanak egy szintetikusan generált hanggal, vagy meghallgassanak egy hangot.
 
-## <a name="why-is-disclosure-necessary"></a>Miért szükséges a közzététel?
+## <a name="why-is-disclosure-necessary"></a>Miért van szükség a nyilvánosságra hozatalra?
 
-A számítógép által generált hang szintetikus eredetének közzétételéhez viszonylag új üzenet szükséges. A múltban a számítógép által generált hangok nyilvánvalóan az volt, hogy egy valós személynek soha senki nem lenne hibát kitéve. A szintetikus hangok realizmusa azonban minden nap javul, és egyre kevésbé megkülönböztethető az emberi hangtól.
+A számítógép által generált hang szintetikus eredetének nyilvánosságra hozatalának szükségessége viszonylag új. A múltban, a számítógép által generált hangok nyilvánvalóan, hogy senki sem fogja összetéveszteni őket egy valós személy. A szintetikus hangok realizmusa azonban napról napra javul, és egyre megkülönböztethetetlenebbé válik az emberi hangoktól.
 
 ## <a name="goals"></a>Célok
-A szintetikus hangélmények tervezésekor a következő elveket kell szem előtt tartani:
+Ezeket az elveket kell szem előtt tartani a szintetikus hangélmények tervezésekor:
 
-**Megbízhatóság megerősítése**
-<br>Tervezze meg a Turing-teszt elvégzésének szándékát a felhasználói élmény romlása nélkül. Hagyja, hogy a felhasználók egy szintetikus hanggal kommunikálnak, miközben lehetővé teszik, hogy zökkenőmentesen folytassák a felhasználói élményt.
+**A bizalom erősítése**
+<br>Tervezze meg azzal a szándékkal, hogy megbukjon a Turing-teszten anélkül, hogy lealacsonyítana a tapasztalatot. Hagyja, hogy a felhasználók a tény, hogy ők kölcsönhatásban áll egy szintetikus hang, miközben lehetővé teszi számukra, hogy zökkenőmentesen vegyenek részt a tapasztalat.
 
 **Alkalmazkodás a használati környezethez**
-<br>Megtudhatja, hogy mikor, hol és hogyan fog kommunikálni a felhasználók a szintetikus hanggal, hogy a megfelelő típusú közzétételi lehetőséget biztosítsák a megfelelő időben.
+<br>Ismerje meg, hogy mikor, hol és hogyan lépnek kapcsolatba a felhasználók a szintetikus hanggal, hogy a megfelelő típusú közzétételt biztosítsák a megfelelő időben.
 
-**Egyértelmű elvárások beállítása**
-<br>Lehetővé teszi, hogy a felhasználók könnyedén felfedezzék és megértsék az ügynök képességeit. Lehetőség van arra, hogy további információkat nyújtson a szintetikus hangalapú technológiáról a kérelem alapján.
+**Egyértelmű elvárások**
+<br>Lehetővé teszi a felhasználók számára, hogy könnyen felderítsék és megértsék az ügynök képességeit. Kérésre lehetőséget kínálnak arra, hogy többet tudjon meg a szintetikus hangtechnológiáról.
 
-**Az ölelés sikertelen**
-<br>Pillanatok alatt megerősítheti az ügynök képességeit.
+**Embrace hiba**
+<br>Használja a sikertelen pillanatokat az ügynök képességeinek megerősítéséhez.
 
 ## <a name="how-to-use-this-guide"></a>Az útmutató használata
 
-Ez az útmutató segítséget nyújt annak meghatározásában, hogy mely közzétételi minták legyenek optimálisak a szintetikus hangélményhez. Ezt követően példákat kínálunk arra, hogy hogyan és mikor használja őket. Ezek a minták úgy vannak kialakítva, hogy maximalizálják az átláthatóságot a szintetikus beszédtel rendelkező felhasználóktól, miközben az emberi központú kialakításban maradnak.
+Ez az útmutató segít meghatározni, hogy mely közzétételi minták felelnek meg a legjobban a szintetikus hangélménynek. Ezután példákat mutatunk be arra, hogyan és mikor kell használni őket. Minden ilyen minták célja, hogy maximalizálja az átláthatóságot a felhasználók számára a szintetikus beszéd, miközben hű az ember-központú design.
 
-A hangélmények kialakítására vonatkozó tervezési útmutatót figyelembe véve különösen a következőkre koncentrálunk:
+Figyelembe véve a hatalmas testület tervezési útmutatást hangtapasztalatok, mi itt kifejezetten a következőkre összpontosítunk:
 
-1. [**Közzétételi felmérés**](#disclosure-assessment): a szintetikus hangélményhez ajánlott közzétételi típus megállapításának folyamata
+1. [**Közzétételi értékelés**](#disclosure-assessment): A szintetikus hangélményhez ajánlott közzétételi típus meghatározására szolgáló folyamat
 
-2. [**Közzététel: példák**](concepts-disclosure-patterns.md)olyan közzétételi mintákra, amelyek alkalmazhatók a szintetikus hangalapú felhasználói élményre
+2. [**Hogyan lehet közzétenni:**](concepts-disclosure-patterns.md)Példák a nyilvánosságra hozatali minták, hogy lehet alkalmazni, hogy a szintetikus hang tapasztalat
 
-3. [**Mikor kell kimutatni**](concepts-disclosure-patterns.md#when-to-disclose): az optimális pillanatot a felhasználói útvonalon való közzétételhez
+3. [**Mikor kell nyilvánosságra hozni:**](concepts-disclosure-patterns.md#when-to-disclose)Optimális pillanatok a felhasználói út során
 
-## <a name="disclosure-assessment"></a>Közzétételi felmérés
-Vegye figyelembe,&#39; hogy a felhasználók egy interakcióval kapcsolatos elvárásokat és azt a kontextust, amelyben a hangvételt tapasztalják. Ha a kontextus egyértelművé teszi, hogy a szintetikus hang &quot;beszél,&quot; a közzététel minimális, pillanatnyi vagy szükségtelen lehet. A közzétételt befolyásoló fő típusok közé tartozik a person Type, a forgatókönyv típusa és a kitettség szintje. Emellett segít megfontolni, hogy kik is figyelnek.
+## <a name="disclosure-assessment"></a>A közzététel értékelése
+Vegye figyelembe, hogy a felhasználók&#39; egy interakcióval kapcsolatos elvárásokat, és azt a környezetet, amelyben megtapasztalják a hangot. Ha a kontextus egyértelművé teszi, &quot;hogy&quot; a szintetikus hang beszél, közzététel lehet minimális, pillanatnyi, vagy akár felesleges. A közzétételt befolyásoló környezetfőtípusai közé tartozik a személytípusa, a forgatókönyvtípusa és az expozíció szintje. Az is segít, hogy fontolja meg, aki lehet hallgatni.
 
-### <a name="understand-context"></a>Kontextus ismertetése
+### <a name="understand-context"></a>A környezet megértése
 
-Ez a munkalap a szintetikus hangélmény kontextusának meghatározására használható. Ezt a következő lépésben fogja alkalmazni, ahol meghatározhatja a közzétételi szintet.
+Ezzel a munkalappal meghatározhatja a szintetikus hangélmény környezetét. Ezt a következő lépésben fogja alkalmazni, ahol meghatározza a közzétételi szintet.
 
 |                                    | A használat kontextusa                                                                                                                                                                                                                                                                                                                                                       | Lehetséges kockázatok & kihívások                                                                                                                                                                                                                                                                                                                                                                       |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **1. persona típusa**               | **Ha a következők bármelyike érvényes, a persona a "Human-Like person" kategóriába tartozik:**<br><br><ul><li> A Persona valódi emberi személyt testesíti meg, függetlenül attól, hogy ez egy fiktív képviselet-e. (például a fénykép vagy a számítógép által generált megjelenítés egy valós személy)<br><br><li> A szintetikus hang egy széles körben felismerhető valódi személy (például híresség, politikai ábra) hangja alapján | Minél több emberi jellegű ábrázolást biztosít a Persona számára, annál valószínűbb, hogy egy felhasználó egy valós személyhez társítja azt, vagy ha úgy gondolja, hogy a tartalmat egy valós személy, nem pedig a számítógép hozza létre. </ul>                                                                                                                                                                      |
-| **2. forgatókönyv típusa**            | **Ha a következők bármelyike érvényes, a hangélmény a "szenzitív" kategóriába illeszkedik:**<br><br><ul><li> Személyes adatok beszerzése vagy megjelenítése a felhasználótól <br><br> <li> Szórási idő – bizalmas Hírek/információk (például vészhelyzeti riasztás)<br><br><li> Célja, hogy segítsen a valódi embereknek kommunikálni egymással (például a személyes e-mailek/szövegek olvasása)<br><br> <li> Orvosi/egészségügyi segítséget nyújt </ul>            | Előfordulhat, hogy a szintetikus hang használata nem megfelelőnek vagy megbízhatónak tekinti az azokat használó személyeket, amikor a témakörök bizalmas, személyes vagy sürgős ügyekkel kapcsolatosak. Az is előfordulhat, hogy az empátia és a kontextus ismerete is azonos a valós emberi értékkel. |
-| **3. expozíciós szint** |**A hangélmény nagy valószínűséggel a "magas" kategóriába illeszkedik, ha:** <br><br><ul><li>A felhasználó gyakran vagy hosszú ideig fogja hallani vagy kommunikálni a szintetikus hanggal </ul>                                                                                                                                                                             | A hosszú távú kapcsolatok kialakítása során még nagyobb az átláthatóság és a bizalom kiépítése a felhasználókkal.                                                                                                                                                                                                                                                                      |
+| **1. Persona típus**               | **Ha az alábbiak bármelyike jelentkezik, az Ön személyisége az "Emberszerű Persona" kategóriába tartozik:**<br><br><ul><li> Persona testesíti meg egy igazi ember, hogy ez egy fiktív képviselet, vagy sem. (pl. fénykép vagy egy valós személy számítógép pelenka által létrehozott renderelése)<br><br><li> A szintetikus hang egy széles körben felismerhető valós személy (pl. híresség, politikai figura) hangján alapul. | Minél több emberszerű ábrázolást ad a személyiségének, annál valószínűbb, hogy a felhasználó egy valós személyhez társítja, vagy azt hiszi, hogy a tartalmat nem a számítógép által generált, hanem egy valós személy mondja. </ul>                                                                                                                                                                      |
+| **2. Forgatókönyv típusa**            | **Ha az alábbiak bármelyike vonatkozik, a hangélmény az "Érzékeny" kategóriába tartozik:**<br><br><ul><li> Személyes adatok beszerzése vagy megjelenítése a felhasználótól <br><br> <li> Időérzékeny híreket/információkat sugároz (pl. vészhelyzeti riasztás)<br><br><li> Célja, hogy segítse a valódi emberek et kommunikálni egymással (pl. olvassa a személyes e-mailek / szövegek)<br><br> <li> Orvosi/egészségügyi segítséget nyújt </ul>            | A szintetikus hang használata nem feltétlenül tűnik megfelelőnek vagy megbízhatónak az azt használó emberek számára, amikor a témák érzékeny, személyes vagy sürgős ügyekhez kapcsolódnak. Azt is elvárják, ugyanolyan szintű empátia és kontextuális tudatosság, mint egy igazi ember. |
+| **3. Az expozíció szintje** |**A hangélmény valószínűleg a "Magas" kategóriába illeszkedik, ha:** <br><br><ul><li>A felhasználó gyakran vagy hosszú ideig hallja vagy kölcsönhatásba lép a szintetikus hanggal </ul>                                                                                                                                                                             | A hosszú távú kapcsolatok kialakításakor még nagyobb az átláthatóság és a felhasználókkal való bizalomépítés fontossága.                                                                                                                                                                                                                                                                      |
 
 ### <a name="determine-disclosure-level"></a>Közzétételi szint meghatározása
 
-A következő ábra segítségével meghatározhatja, hogy a szintetikus hangélmény magas vagy alacsony szintű közzétételt igényel-e a használat kontextusa alapján.
+Az alábbi ábrán meghatározhatja, hogy a szintetikus hangélmény a használati környezet alapján magas vagy alacsony szintű közzétételt igényel-e.
 
   ![Közzétételi értékelési diagram](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>Segédanyagok
+## <a name="reference-docs"></a>Referenciadokumentumok
 
-* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
-* [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
-* [A kapuzás áttekintése](concepts-gating-overview.md)
+* [Közzététel a Voice Talent számára](https://aka.ms/disclosure-voice-talent)
+* [A szintetikus hangtechnológia felelősségteljes bevezetésére vonatkozó irányelvek](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Gating – áttekintés](concepts-gating-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Közzétételi tervezési minták](concepts-disclosure-patterns.md)
+* [Közzététel-tervezési minták](concepts-disclosure-patterns.md)

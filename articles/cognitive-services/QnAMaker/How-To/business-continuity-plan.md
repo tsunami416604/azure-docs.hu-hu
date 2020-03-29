@@ -1,7 +1,7 @@
 ---
-title: Üzletmenet-folytonossági terv – QnA Maker
+title: Üzletmenet-folytonossági terv - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Az üzletmenet-folytonossági terv elsődleges célja, hogy egy rugalmas Tudásbázis-végpontot hozzon létre, amely nem gondoskodik a bot vagy az alkalmazás elfogyasztásának leállásáról.
+description: Az üzletmenet-folytonossági terv elsődleges célja, hogy hozzon létre egy rugalmas tudásbázis-végpont, amely biztosítja a robot vagy az alkalmazás fogyasztó számára állási idő.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
 ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650469"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Üzletmenet-folytonossági terv létrehozása a QnA Maker szolgáltatáshoz
 
-Az üzletmenet-folytonossági terv elsődleges célja, hogy egy rugalmas Tudásbázis-végpontot hozzon létre, amely nem gondoskodik a bot vagy az alkalmazás elfogyasztásának leállásáról.
+Az üzletmenet-folytonossági terv elsődleges célja, hogy hozzon létre egy rugalmas tudásbázis-végpont, amely biztosítja a robot vagy az alkalmazás fogyasztó számára állási idő.
 
-![QnA Maker BCP-terv](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+![QnA Maker bcp terv](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
 
-A fentiekben képviselt magas szintű ötlet a következő:
+A fent szereplő magas szintű elképzelés a következő:
 
-1. Két párhuzamos QnA Maker- [szolgáltatás](../How-To/set-up-qnamaker-service-azure.md) beállítása az [Azure párosított régiókban](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+1. Két párhuzamos [QnA Maker-szolgáltatás](../How-To/set-up-qnamaker-service-azure.md) beállítása az [Azure párosított régióiban.](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
 
-2. Tartsa szinkronban az elsődleges és a másodlagos Azure Search-indexeket. A GitHub [-minta használatával](https://github.com/pchoudhari/QnAMakerBackupRestore) megtekintheti, hogyan állíthatja vissza az Azure indexeket.
+2. Tartsa szinkronban az elsődleges és másodlagos Azure-keresési indexeket. A GitHub-minta [itt](https://github.com/pchoudhari/QnAMakerBackupRestore) megtudhatja, hogyan biztonsági másolatot készíteni az Azure-indexek biztonsági mentését.
 
-3. A Application Insights biztonsági mentése [folyamatos exportálással](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry).
+3. Az Application Insights biztonsági másolatot készít [a folyamatos exportálás sal.](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry)
 
-4. Az elsődleges és másodlagos csomagok beállítása után a [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) segítségével konfigurálja a két végpontot, és állítson be útválasztási módszert.
+4. Az elsődleges és másodlagos halmok beállítása után a [traffic manager](https://docs.microsoft.com/azure/traffic-manager/) segítségével konfigurálja a két végpontot, és állítson be egy útválasztási módszert.
 
-5. Létre kell hoznia egy SSL (SSL) tanúsítványt a Traffic Manager-végponthoz. [Az SSL-tanúsítvány kötése](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) az App Servicesben.
+5. Létre kell hoznia egy Secure Sockets Layer (SSL) tanúsítványt a forgalomkezelő végponthoz. [Kösse meg az SSL-tanúsítványt](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) az alkalmazásszolgáltatásokban.
 
-6. Végül használja a Traffic Manager-végpontot a robotban vagy az alkalmazásban.
+6. Végül használja a traffic manager végpontot a robot ban vagy az alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Capactiy kiválasztása](./improve-knowledge-base.md)

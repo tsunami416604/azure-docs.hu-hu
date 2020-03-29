@@ -1,7 +1,7 @@
 ---
-title: Elavult előre összeépített entitások – LUIS
+title: Előre összeállított entitások - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a Language Understanding (LUIS) elavult előre összeállított entitások információkat tartalmaz.
+description: Ez a cikk elavult előre összeállított entitásadatokat tartalmaz a nyelvi ismeretek (LUIS) című témakörben.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -12,25 +12,25 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270681"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Egy LUIS-alkalmazás elavult, előre összeépített entitásai
-A következő előre összeállított entitások elavultak, és nem adható hozzá új LUIS-alkalmazások.
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Előre összeállított entitások elavultak egy LUIS-alkalmazásban
+A következő előre összeállított entitások elavultak, és nem adhatók hozzá az új LUIS-alkalmazásokhoz.
 
-* **Datetime**: a **datetime** -t használó meglévő Luis-alkalmazásokat át kell telepíteni a **datetimeV2**-be, bár a DateTime entitás továbbra is működni fog az azt használó meglévő alkalmazásokban.
-* **Földrajzi**hely: a **földrajzot** használó meglévő LUIS-alkalmazások a 2018. decemberig támogatottak.
-* **Enciklopédia**: az **Encyclopedia** -t használó meglévő LUIS-alkalmazások a 2018. decemberig támogatottak.
+* **Datetime**: A **datetime-ot** használó meglévő LUIS-alkalmazásokat át kell telepíteni a **datetimeV2-re,** bár a datetime entitás továbbra is működik a már meglévő alkalmazásokban, amelyek használják.
+* **Földrajzi hely:** A **földrajzi helyeket** használó meglévő LUIS-alkalmazások 2018 decemberéig támogatottak.
+* **Enciklopédia:** Az **enciklopédiát** használó meglévő LUIS-alkalmazások 2018 decemberéig támogatottak.
 
-## <a name="geography-culture"></a>Földrajzi hely kulturális környezet
-A **földrajzi** hely csak a `en-us` területi beállításban érhető el.
+## <a name="geography-culture"></a>Földrajz kultúra
+**A földrajzi elhelyezkedés** csak `en-us` a területi beállításban érhető el.
 
-#### <a name="3-geography-subtypes"></a>3 földrajzi altípus
+#### <a name="3-geography-subtypes"></a>3 Földrajz altípusai
 
-Előre összeállított entitások   |   Példa kimondott szöveg   |   JSON
+Előre összeállított entitás   |   Példa kimondott szöveg   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -39,11 +39,11 @@ Előre összeállított entitások   |   Példa kimondott szöveg   |   JSON
 `builtin.geography.pointOfInterest`   |   `amazon river` |`{ "type": "builtin.geography.pointOfInterest", "entity": "amazon river" }`|
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
-## <a name="encyclopedia-culture"></a>Enciklopédiájában kulturális környezet
-Az **Encyclopedia** csak a `en-US` területi beállításban érhető el.
+## <a name="encyclopedia-culture"></a>Enciklopédia kultúra
+**Az enciklopédia** csak `en-US` a területi beállításban érhető el.
 
-#### <a name="encyclopedia-subtypes"></a>Enciklopédiájában altípus
-Enciklopédiájában beépített entitás több mint 100 alárendelt típusokat tartalmaz a következő táblázatban: emellett enciklopédiájában entitások gyakran leképezése több típust. Ha például a lekérdezés Ronald reagan elnök eredményez:
+#### <a name="encyclopedia-subtypes"></a>Enciklopédia altípusok
+Az enciklopédia beépített entitása több mint 100 altípust tartalmaz a következő táblázatban: Emellett az enciklopédia entitások gyakran több típusra vannak leképezve. Például a lekérdezés Ronald Reagan hozamok:
 
 ```json
 {
@@ -65,7 +65,7 @@ Enciklopédiájában beépített entitás több mint 100 alárendelt típusokat 
  ```
 
 
-Előre összeállított entitások   |   Előre összeállított entitások (altípusok)   |   Példa kimondott szöveg
+Előre összeállított entitás   |   Előre összeállított entitás (altípusok)   |   Példa kimondott szöveg
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -161,7 +161,7 @@ Előre összeállított entitások   |   Előre összeállított entitások (alt
 `builtin.encyclopedia.finance.stock_exchange`| `builtin.encyclopedia.finance.stock_exchange`| `tokyo stock exchange`|
 `builtin.encyclopedia.film.festival`| `builtin.encyclopedia.film.festival`| `berlin international film festival`|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerje meg a [dimenziót](luis-reference-prebuilt-dimension.md), az [e-mail](luis-reference-prebuilt-email.md) -entitásokat és a [számokat](luis-reference-prebuilt-number.md).
+További információ a [dimenzióról,](luis-reference-prebuilt-dimension.md)az [e-mail](luis-reference-prebuilt-email.md) entitásokról és [a számról.](luis-reference-prebuilt-number.md)
 

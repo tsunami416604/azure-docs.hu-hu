@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 28f6ef7248fada8286bbe90c868cd9f947f0435d
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943824"
 ---
-A tömörített hang kezelésére a [GStreamer](https://gstreamer.freedesktop.org)használatával kerül sor. Licencelési okokból a GStreamer bináris fájlok nincsenek lefordítva és csatolva a Speech SDK-hoz. Ehelyett az ezeket a függvényeket tartalmazó burkoló kódtárat az SDK használatával kell felépíteni és elszállítani az alkalmazásokkal.
+Kezelése tömörített hang hajtja végre [GStreamer](https://gstreamer.freedesktop.org). Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva és nem kapcsolódnak a beszédfelismerési SDK-hoz. Ehelyett létre kell építeni és szállítani kell egy burkolókönyvtárat, amely ezeket a funkciókat tartalmazza.
 
-A burkoló könyvtár létrehozásához először töltse le és telepítse a [GSTREAMER SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)-t. Ezután töltse le a [burkoló könyvtár](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper) **Xcode** -projektjét.
+A burkolókönyvtár létrehozásához először töltse le és telepítse a [GStreamer SDK-t.](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg) Ezután töltse le az **Xcode** projektet a [burkolókönyvtárhoz.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper)
 
-Nyissa meg a projektet a **Xcode** -ben, és hozza létre az **általános iOS-eszközök** céljához – ez *nem* fog működni, hogy egy adott célra felépítse.
+Nyissa meg a projektet **az Xcode-ban,** és hozza létre az **általános iOS-eszköz** célhoz – *nem* fog működni egy adott célhoz való létrehozása.
 
-A Build lépés dinamikus keretrendszerű köteget hoz létre egy dinamikus könyvtárral a `GStreamerWrapper.framework`nevű összes szükséges architektúrához.
+A build lépés létrehoz egy dinamikus keretrendszer köteg egy dinamikus könyvtár `GStreamerWrapper.framework`minden szükséges architektúrák a neve.
 
-Ezt a keretrendszert minden olyan alkalmazásnak tartalmaznia kell, amely a Speech Service SDK-val tömörített hangstreameket használ.
+Ezt a keretrendszert minden olyan alkalmazásban tartalmaznia kell, amely tömörített hangadatfolyamokat használ a beszédfelismerési szolgáltatás Salk-jával.
 
-A következő beállítások alkalmazása a **Xcode** -projektben a következőképpen valósítható meg:
+Ennek érdekében alkalmazza a következő beállításokat az **Xcode** projektben:
 
-1. Másolja ki az imént felépített `GStreamerWrapper.framework` és a Cognitive Services Speech SDK keretrendszerét, amelyet [innen](https://aka.ms/csspeech/iosbinary)tölthet le a minta projektet tartalmazó könyvtárba.
-1. Állítsa be a keretrendszerek elérési útját a *projekt beállításai*között.
-   1. A **beágyazott bináris fájlok** fejlécének **általános** LAPJÁN adja hozzá az SDK-tárat keretrendszerként: **beágyazott bináris fájlok hozzáadása** > **továbbiak hozzáadása...** > navigáljon a kiválasztott könyvtárhoz, és válassza ki mindkét keretrendszert.
+1. Másolja `GStreamerWrapper.framework` az imént épített és a Cognitive Services speech SDK keretét, amelyet [innen](https://aka.ms/csspeech/iosbinary)tölthet le, a mintaprojektet tartalmazó könyvtárba.
+1. Állítsa be a keretrendszerek elérési útjait a *Projektbeállítások*menüben.
+   1. A Beágyazott bináris **fájlok** fejlécének **Általános** lapján adja hozzá az SDK-könyvtárat keretrendszerként: **Beágyazott bináris fájlok** > **hozzáadása: >** Keresse meg a kiválasztott könyvtárat, és jelölje ki mindkét keretrendszert.
    1. Lépjen a **Build Settings** lapra, és engedélyezze az **összes** beállítást.
 1. Vegye fel a könyvtárat `$(SRCROOT)/..` a keretrendszer-keresési útvonalak közé (_Framework Search Paths_ a **Search Paths** részben).

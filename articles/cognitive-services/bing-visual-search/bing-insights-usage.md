@@ -1,7 +1,7 @@
 ---
-title: Példák a Bing-bepillantásokra – Bing Visual Search
+title: Példák a Bing-elemzési adatokra – Bing Vizuális keresés
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk példákat tartalmaz arra vonatkozóan, hogyan használhatók a Bing Visual Search és hogyan jeleníthetők meg a Bing.com a képelemzések.
+description: Ez a cikk példákat tartalmaz arra, hogy a Bing Visual Search hogyan használhatja és jelenítheti meg a képelemzéseket Bing.com.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111642"
 ---
-# <a name="examples-of-bing-insights-usage"></a>Példák a Bing-adatok használatára
+# <a name="examples-of-bing-insights-usage"></a>Példák a Bing insights használatára
 
-Ez a cikk példákat tartalmaz arra vonatkozóan, hogy a Bing hogyan használhatja és képelemzéseket jeleníthet meg a Bing.com.
+Ez a cikk példákat tartalmaz arra, hogy a Bing hogyan használhatja és jelenítheti meg a képelemzéseket Bing.com.
 
-## <a name="pagesincluding-insight-example"></a>PagesIncluding Insight – példa
+## <a name="pagesincluding-insight-example"></a>PagesBeleértve betekintést példa
 
-Az alábbi hivatkozás az első weblapra mutat, és lehetővé teszi, hogy a felhasználó kibontsa és Összecsukja a képet tartalmazó egyéb weblapok listáját:
+Az alábbi adatok az első weblapra mutató hivatkozást jelenítik meg, és lehetővé teszik a felhasználó számára a képet tartalmazó más weblapok listájának kibontását és összecsukását:
 
-![Kibontott lapok, beleértve](./media/pages-including.PNG)
+![Kibontott oldalak, beleértve](./media/pages-including.PNG)
 
-## <a name="shoppingsources-insight-example"></a>ShoppingSources Insight – példa
+## <a name="shoppingsources-insight-example"></a>Példa a ShoppingSources insight
 
-Az alábbi ábrán látható, hogyan jelenhetnek meg a Bing a rendszerképben látható termékek vásárlási forrásaiban:
+Az alábbiakban bemutatjuk, hogy a Bing hogyan jelenítheti meg a képen látható termékek vásárlási forrásait:
 
 ![Vásárlási források](./media/shopping-sources.PNG)
 
-## <a name="visualsearch-insight-example"></a>VisualSearch Insight – példa
+## <a name="visualsearch-insight-example"></a>Példa a VisualSearch insight
 
-Az alábbi ábrán látható, hogyan jelenhetnek meg a Bing vizuálisan hasonló képek (lásd a példában szereplő **kapcsolódó képeket** ):
+Az alábbiakban bemutatjuk, hogy a Bing hogyan jeleníthet meg vizuálisan hasonló képeket (lásd: **Kapcsolódó képek** a példában):
 
 ![Vizuálisan hasonló képek](./media/similar-images.PNG)
 
-## <a name="recipes-insight-example"></a>Példák a receptek betekintésére
+## <a name="recipes-insight-example"></a>Receptek betekintést példa
 
-Az alábbi ábrán látható, hogyan jelenhetnek meg a Bing a képen látható élelmiszerhez kapcsolódó receptek. A példa lehetővé teszi, hogy a felhasználó tudja, hogy vannak-e elérhető receptek:
+Az alábbiakban bemutatjuk, hogy a Bing hogyan jelenítheti meg a képen látható élelmiszer receptjeit. A példa tudatja a felhasználóval, hogy vannak elérhető receptek:
 
-![Receptek és lapok, beleértve a következőket](./media/recipes-pages-including.PNG)
+![Receptek és oldalak, beleértve a](./media/recipes-pages-including.PNG)
 
- És megadja a receptek hivatkozását, amikor a felhasználó kibővíti a listát:
+ És biztosítja a linket a recepteket, amikor a felhasználó kibontja a listát:
 
-![Kibővített recept lapok, beleértve a következőket is](./media/expanded-recipes-pages-including.PNG)
+![Bővített receptoldalak, beleértve](./media/expanded-recipes-pages-including.PNG)
 
-## <a name="relatedsearches-insight-example"></a>RelatedSearches Insight – példa
+## <a name="relatedsearches-insight-example"></a>RelatedSearches insight példa
 
-Az alábbi ábrán látható, hogy a Bing hogyan jelenítheti meg a mások által készített képek kapcsolódó kereséseit. Ha a felhasználó rákattint a képre, a felhasználó a kapcsolódó lekérdezés Bing.com/images keresési eredmények lapjára kerül.
+Az alábbiakban bemutatjuk, hogy a Bing hogyan jelenítheti meg a mások által készített képek kapcsolódó kereséseit. Ha a felhasználó a képre kattint, a rendszer a Bing.com/images keresési eredményoldalra viszi a kapcsolódó lekérdezést.
 
-![Kapcsolódó keresések képekhez](./media/bordered-related-searches.PNG)
+![Kapcsolódó keresések képek](./media/bordered-related-searches.PNG)
 
-## <a name="entity-insight-example"></a>Példa az Entity insightra
+## <a name="entity-insight-example"></a>Példa entitásbetekintési példa
 
-Az alábbi ábrán látható, hogyan jelenhet meg a Bing a képen látható entitással (személy, hely vagy dolog) kapcsolatos információkkal. Ha a felhasználó az Entity (entitás) hivatkozásra kattint, a felhasználó az entitás Bing.com keresési eredmények lapjára kerül:
+Az alábbiakban bemutatjuk, hogy a Bing hogyan jelenítheti meg a képen megjelenő entitással (személy, hely vagy dolog) kapcsolatos információkat. Ha a felhasználó az entitáshivatkozásra kattint, a rendszer az entitás Bing.com keresési eredménylapjára kerül:
 
 ![A képen látható entitás](./media/entity.PNG)
 
-## <a name="displaying-other-insights-that-the-user-might-explore"></a>A felhasználó által esetlegesen felderített egyéb bepillantások megjelenítése
+## <a name="displaying-other-insights-that-the-user-might-explore"></a>A felhasználó által felkutatott egyéb elemzések megjelenítése
 
-Az alábbi ábrán látható, hogyan jelenhet meg a Bing a felhasználó által feltárt rendszerképpel kapcsolatos egyéb információkkal.
+Az alábbiakban bemutatjuk, hogy a Bing hogyan jeleníthet meg más információkat a felhasználó által felderíteni.
 
-![Ismerkedjen meg a rendszerképpel kapcsolatos egyéb elemzésekkel](./media/apple-pie-more-tags.PNG)
+![További információk a képpel kapcsolatban](./media/apple-pie-more-tags.PNG)
 
-## <a name="bounding-boxes-and-hot-spots"></a>Határolókeret és gyors elérésű pontok
+## <a name="bounding-boxes-and-hot-spots"></a>Határolódobozok és forró pontok
 
-A nem alapértelmezett címkék közé tartozik az a keret, amely a címkére vonatkozó képterületet azonosítja. Ha a határolókeret nem azonosítja a teljes képet, a határolókeret használatával hozzon létre egy gyors helyet a képen. A felhasználó rákattinthat a gyors elérésű helyre a gyors elérésű helyen (vagy négyszögben) található tartalommal kapcsolatos információk beszerzéséhez. Ha például a képen egy magas szintű rendszerkép látható, az eredmények tartalmazhatnak címkéket (és határoló mezőket) a képen látható kiegészítők számára, például erszényes, ékszer, sálak stb. Az alábbi példa egy, a képen látható napszemüveghez tartozó, gyors direktszínű téglalapot mutat be:
+A nem alapértelmezett címkék tartalmazzák azt a határolókeretet, amely azonosítja a címke által érintett kép érdeklődési területét. Ha a határolókeret nem azonosítja a teljes képet, a határolókeret segítségével hozzon létre egy gyorspontot a képen. A felhasználó a hot spotra kattintva információkat kaphat az adott hot spot (vagy téglalap) alatt található tartalomról. Ha például a kép egy divatos kép, az eredmények tartalmazhatnak címkéket (és határolókereteket) a képen látható kiegészítőkhöz, például pénztárcához, ékszerekhez, sálakhoz és így tovább. A következő példa a képen látható napszemüveg ekszámára egy gyorspont téglalapot mutat be:
 
-![Határolókeret és gyors elérésű hely](./media/click-to-search.PNG)
+![Határolókeret és forrópont](./media/click-to-search.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-Az első kérésének megkezdéséhez tekintse meg a rövid útmutatók [C#](quickstarts/csharp.md) : | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+Az első kérés megkezdéséhez tekintse meg a rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

@@ -1,48 +1,48 @@
 ---
-title: A Tudásbázis lekérdezése – QnA Maker
-description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton.
+title: A tudásbázis lekérdezése - QnA Maker
+description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázis lekérdezése a futásidejű előrejelzési végpont a generateAnswer API használatával.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220720"
 ---
-# <a name="query-the-knowledge-base-for-answers"></a>A válaszok tudásbázisának lekérdezése
+# <a name="query-the-knowledge-base-for-answers"></a>A tudásbázis lekérdezése válaszokért
 
-A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton. A lekérdezés tartalmazza a kérdés szövegét és az egyéb beállításokat, hogy QnA Maker válassza ki a lehető legjobb egyezést a válaszhoz.
+A tudásbázist közzé kell tenni. A közzététel után a tudásbázis lekérdezése a futásidejű előrejelzési végpont a generateAnswer API használatával. A lekérdezés tartalmazza a kérdés szövegét és egyéb beállításokat, hogy a QnA Maker a válasznak a lehető legjobb egyezést válassza ki.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel QnA Maker a felhasználói lekérdezéseket a legjobb válasz kiválasztásához
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel a QnA Maker a felhasználói lekérdezést a legjobb válasz kiválasztásához?
 
-A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
+A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker tudásbázis egy bottól vagy más ügyfélalkalmazástól felhasználói lekérdezést kap a [GenerateAnswer API-n.](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) Az alábbi ábra a felhasználói lekérdezés fogadásának folyamatát mutatja be.
 
-![A felhasználói lekérdezés rangsorolási modelljének folyamata](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![A felhasználói lekérdezés rangsorolási modellfolyamata](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
-### <a name="ranker-process"></a>Rangsorolási folyamat
+### <a name="ranker-process"></a>Ranker folyamat
 
 A folyamatot az alábbi táblázat ismerteti.
 
 |Lépés|Cél|
 |--|--|
-|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
-|2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
-|3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
-|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely az eredmények `top` számát fogadja. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje `top` kis értékét. Általában a `top` 10 értéke a lekérdezések 90%-ában működik.|
-|5|A QnA Maker szintaktikai és szemantikai alapú featurization használatával határozza meg a felhasználói lekérdezés és a beolvasott QnA eredményei közötti hasonlóságot.|
-|6|A géppel megtanult Ranger-modell az 5. lépés különböző funkcióit használja a megbízhatósági pontszámok és az új rangsorolási sorrend meghatározásához.|
-|7|Az új eredményeket rangsorolt sorrendben adja vissza az ügyfélalkalmazás.|
+|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GenerateAnswer API-nak.](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)|
+|2|A QnA Maker nyelvfelismeréssel, helyesírás-ellenőrzőkkel és szómegszakítókkal dolgozza fel a felhasználói lekérdezést.|
+|3|Ez az előfeldolgozás a felhasználói lekérdezés módosításához történik a legjobb keresési eredmények érdekében.|
+|4|Ezt a módosított lekérdezést a rendszer elküldi egy `top` Azure Cognitive Search Index, amely megkapja az eredmények számát. Ha a helyes válasz nem ezekben az `top` eredményekben, növelje az értékét kissé. Általában a lekérdezések 90%-ában a művek értéke `top` 10.|
+|5|A QnA Maker szintaktikai és szemantikai alapú featurizációval határozza meg a felhasználói lekérdezés és a lekért QnA-eredmények közötti hasonlóságot.|
+|6|A gép megtanult ranker modell a különböző funkciók, az 5.|
+|7|Az új eredmények rangsorolt sorrendben kerülnek vissza az ügyfélalkalmazásba.|
 |||
 
-A használatban lévő funkciók közé tartozik például a Word-szintű szemantika, a kifejezés szintű fontosság a corpusban, és a mélyebben megtanult szemantikai modellek határozzák meg a hasonlóságot és a megfelelést két szöveges karakterlánc között.
+A használt funkciók közé tartozik, de nem korlátozódik a szószintű szemantikára, a corpus kifejezésszintű fontosságára és a mélytanult szemantikai modellekre a két szöveges karakterlánc hasonlóságának és relevanciájának meghatározásához.
 
-## <a name="http-request-and-response-with-endpoint"></a>HTTP-kérelem és-válasz végponttal
-A Tudásbázis közzétételekor a szolgáltatás egy REST-alapú HTTP-végpontot hoz létre, amely integrálható az alkalmazásba, és általában egy csevegési robot.
+## <a name="http-request-and-response-with-endpoint"></a>HTTP-kérelem és válasz a végponttal
+A tudásbázis közzétételekor a szolgáltatás létrehoz egy REST-alapú HTTP-végpontot, amely integrálható az alkalmazásba, általában egy csevegőrobotba.
 
-### <a name="the-user-query-request-to-generate-an-answer"></a>A felhasználó lekérdezési kérelme a válasz létrehozásához
+### <a name="the-user-query-request-to-generate-an-answer"></a>Válasz létrehozására irányuló felhasználói lekérdezési kérelem
 
-A felhasználó lekérdezése az a kérdés, hogy a végfelhasználó megkérdezi a tudásbázist, például `How do I add a collaborator to my app?`. A lekérdezés gyakran természetes nyelvi formátumban van, vagy néhány kulcsszó, amely a kérdést jelöli, például `help with collaborators`. A rendszer elküldi a lekérdezést az ügyfélalkalmazás HTTP-kérelme alapján.
+A felhasználói lekérdezés az a kérdés, amelyet a `How do I add a collaborator to my app?`végfelhasználó a tudásbázisról kérdez, például . A lekérdezés gyakran természetes nyelvű formátumban vagy néhány olyan kulcsszóban `help with collaborators`van, amely a kérdést képviseli, például . A lekérdezést a rendszer az ügyfélalkalmazásban http-kérelemből küldi el a tudásbázisnak.
 
 ```json
 {
@@ -59,13 +59,13 @@ A felhasználó lekérdezése az a kérdés, hogy a végfelhasználó megkérdez
 }
 ```
 
-A választ a tulajdonságok, például a [scoreThreshold](./confidence-score.md#choose-a-score-threshold), a [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)és a [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)tulajdonságainak beállításával szabályozhatja.
+A választ olyan tulajdonságok beállításával szabályozhatja, mint a [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [a top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)és a [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags).
 
-A beszélgetési [kontextusban](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) [többfordulatos funkciókkal](../how-to/multiturn-conversation.md) megtarthatja a beszélgetést a kérdések és válaszok pontosításával, hogy megtalálja a megfelelő és a végső választ.
+Használja [beszélgetési környezet](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) [ben multi-turn funkcióval](../how-to/multiturn-conversation.md) tartani a beszélgetést fog finomítani a kérdéseket és válaszokat, hogy megtalálják a helyes és végső választ.
 
-### <a name="the-response-from-a-call-to-generate-an-answer"></a>Válasz meghívása a válasz létrehozásához
+### <a name="the-response-from-a-call-to-generate-an-answer"></a>A válasz egy hívásból érkező válasz, hogy
 
-A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhasználói lekérdezés legjobb egyezése alapján történik. A válasz tartalmazza a választ és az előrejelzési pontszámot. Ha a `top` tulajdonsággal egynél több legfelső szintű választ kér, több legfelső szintű választ kap, amelyek mindegyike egy pontszámmal rendelkezik.
+A HTTP-válasz a tudásbázisból beolvasott válasz, amely egy adott felhasználói lekérdezés legjobb egyezésén alapul. A válasz tartalmazza a választ és az előrejelzési pontszámot. Ha egynél több felső választ `top` kért az ingatlannal, akkor egynél több felső választ kap, mindegyik nek egy pontszámot.
 
 ```json
 {
@@ -96,7 +96,7 @@ A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhaszná
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Megbízhatósági pontszám](./confidence-score.md)

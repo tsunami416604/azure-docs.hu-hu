@@ -1,7 +1,7 @@
 ---
-title: Módosítások készítése az API-ban
+title: Az API módosításai
 titleSuffix: Azure Cognitive Services
-description: A authoring v2 és V3 API-k megváltoztak. Ebből az útmutatóból megtudhatja, hogyan használhatja a szerzői API-kat.
+description: A v2-es és v3-API-k szerkesztése megváltozott. Ebből az útmutatóból megtudhatja, hogyan használhatja a szerzői API-kat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: eb01ccc211be55885b945c40bd88553818b0ab78
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73507802"
 ---
-# <a name="authoring-api-changes"></a>API-változások készítése 
+# <a name="authoring-api-changes"></a>Az API-módosítások szerzői 
 
-A szerzői API-k frissítve lettek a v3 verzióban, hogy lehetővé tegyék a [modell lebomlását a géppel megtanult entitásokkal](luis-concept-data-extraction.md). 
+A szerzői API-k frissülnek, a V3, hogy a [modell felbontása a gép által megtanult entitások](luis-concept-data-extraction.md). 
 
-A v2 vagy az előnézet V3 API-k segítségével hozhat létre. Ugyanez az alkalmazás dönthet úgy is, hogy v2 vagy v3 előrejelzési végponti válaszokat használ. A végponti válasz létrehozásához és előrejelzéséhez nem szükséges, hogy az API-t ugyanazzal a verzióval rendelkezzen.
+A V2-ben vagy a V3 APIIS-t is létrehozhat. Ugyanez az alkalmazás is választhat v2-es vagy V3-as előrejelzési végpont-válasz használatát is. A szerzői és előrejelzési végpontra adott válaszhoz nem kell az API azonos verzióját kell megkeresnie.
 
-A LUIS-portál kizárólag a v3 authoring API-kat használja.
+A LUIS-portál kizárólag a V3-as szerzői API-kat használja.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át [az előrejelzési végpontra vonatkozó változásokat](luis-migration-api-v3.md) a V3 API-hoz.
+Tekintse át a V3 API [előrejelzési végpontjának módosításait.](luis-migration-api-v3.md)

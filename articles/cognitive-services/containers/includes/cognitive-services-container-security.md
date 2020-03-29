@@ -1,7 +1,7 @@
 ---
 title: Tárolóbiztonság
 titleSuffix: Azure Cognitive Services
-description: Útmutató a tároló biztonságossá tételéhez
+description: További információ a tároló védelméről
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,44 +9,44 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 20f78d9269d4b2270293c8746157ba495c694562
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272633"
 ---
-## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services tároló biztonsága
+## <a name="azure-cognitive-services-container-security"></a>Az Azure Cognitive Services tárolójának biztonsága
 
-Az alkalmazások fejlesztésekor a biztonságnak elsődleges fókusznak kell lennie. A biztonság fontossága a siker mérőszáma. Cognitive Services tárolókat tartalmazó szoftver-megoldás tervezésekor elengedhetetlen az Ön számára elérhető korlátozások és képességek megismerése. A hálózati biztonsággal kapcsolatos további információkért lásd: az [Azure Cognitive Services Virtual Networks konfigurálása][az-security].
+A biztonságnak kell elsődleges fókuszt kell, hogy legyen, amikor alkalmazásokat fejleszt. A biztonság fontossága a siker mérőszáma. Ha olyan szoftvermegoldást tervez, amely kognitív szolgáltatások tárolóit is tartalmazza, létfontosságú, hogy megértse a rendelkezésre álló korlátozásokat és képességeket. A hálózati biztonságról az [Azure Cognitive Services virtuális hálózatok konfigurálása][az-security]című témakörben olvashat bővebben.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint nincs *Biztonság* a Cognitive Services Container API-ban. Ennek az az oka, hogy a tároló a legtöbb esetben egy olyan Pod részeként fut, amely egy hálózati híddal kívülről van védve. Azonban engedélyezhető a hitelesítés, amely azonos módon működik a [felhőalapú Cognitive Serviceshoz][request-authentication]való hozzáféréskor használt hitelesítéssel.
+> Alapértelmezés szerint *nincs biztonság* a Cognitive Services tároló API-t. Ennek az az oka, hogy a tároló leggyakrabban egy olyan pod részeként fog futni, amelyet egy hálózati híd véd kívülről. A [felhőalapú Cognitive Services][request-authentication]elérésekor használt hitelesítéssel azonos módon működő hitelesítés azonban engedélyezésre is lehetőség van.
 
 Az alábbi ábra az alapértelmezett és **nem biztonságos** megközelítést mutatja be:
 
 ![Tárolóbiztonság](../media/container-security.svg)
 
-Alternatív és *biztonságos* megközelítésként a Cognitive Services tárolók felhasználói a tárolót egy előtérben lévő összetevővel bővíthetik, így a tároló végpontja magánjellegű marad. Vegyünk egy olyan forgatókönyvet, amelyben a [Istio][istio] -t bejövő átjáróként használjuk. A Istio támogatja a HTTPS/SSL és az ügyféltanúsítvány-alapú hitelesítést. Ebben a forgatókönyvben a Istio előtér teszi elérhetővé a tárolók hozzáférését, és bemutatja az Istio-mel előzetesen engedélyezett ügyféltanúsítványt.
+Alternatív és *biztonságos* megközelítésként a Cognitive Services-tárolók fogyasztói kiegészíthetik a tárolót egy elülső összetevővel, így a tároló végpontja privát. Vegyünk egy forgatókönyvet, amelyben az [Istio-t][istio] intress átjáróként használjuk. Istio támogatja a HTTPS/TLS és az ügyfél-tanúsítvány hitelesítése. Ebben a forgatókönyvben az Istio előtér elérhetővé teszi a tároló-hozzáférést, és bemutatja az istio-val előzetesen engedélyezési listán szereplő ügyféltanúsítványt.
 
-[Nginx][nginx] egy másik népszerű választás ugyanabban a kategóriában. Mind a Istio, mind az Nginx Service meshként működik, és további funkciókat kínál, például a terheléselosztást, az útválasztást és a díjszabást.
+[Nginx][nginx] egy másik népszerű választás ugyanabban a kategóriában. Mind az Istio, mind a Nginx szolgáltatáshálóként működik, és további funkciókat kínál, például terheléselosztást, útválasztást és díjvezérlést.
 
 ### <a name="container-networking"></a>Tárolóalapú hálózatkezelés
 
-A Cognitive Services tárolók számlázási célú mérési adatok küldéséhez szükségesek. Az egyetlen kivétel, a *kapcsolat nélküli tárolók* , amelyek eltérő számlázási módszert követnek. Nem sikerült engedélyezni a különböző hálózati csatornák listáját, amelyeken a Cognitive Services tárolók támaszkodnak, így nem fog működni a tároló.
+A Cognitive Services-tárolók számlázási célokra szükséges mérési adatok at kell megadni. Az egyetlen kivétel, az *offline tárolók,* mivel más számlázási módszert követnek. Ha nem engedélyezi a különböző hálózati csatornák listáját, amelyekre a Cognitive Services-tárolók támaszkodnak, megakadályozza a tároló működését.
 
-#### <a name="allow-list-cognitive-services-domains-and-ports"></a>Engedélyezési lista Cognitive Services tartományok és portok
+#### <a name="allow-list-cognitive-services-domains-and-ports"></a>Cognitive Services-tartományok és portok listájának engedélyezése
 
-A gazdagépnek engedélyezni kell a 443-es **port** és a következő tartományok listáját:
+Az állomásnak engedélyeznie kell a **443-as listaportot** és a következő tartományokat:
 
 * `*.cognitive.microsoft.com`
 * `*.cognitiveservices.azure.com`
 
-#### <a name="disable-deep-packet-inspection"></a>Mélyreható csomagok ellenőrzésének letiltása
+#### <a name="disable-deep-packet-inspection"></a>Mély csomagvizsgálat letiltása
 
-> A [Deep Packet-ellenőrzés](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) olyan adatfeldolgozási típus, amely részletesen megvizsgálja a számítógépes hálózaton keresztül küldött adatokat, és általában blokkolja, átirányítja vagy naplózza a műveletet.
+> [A mélycsomag-ellenőrzés](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI) olyan adatfeldolgozási típus, amely részletesen ellenőrzi a számítógépes hálózaton keresztül küldött adatokat, és általában ennek megfelelően blokkolja, átirányítja vagy naplózza azokat.
 
-Tiltsa le a DPI-t azon biztonságos csatornákon, amelyeket a Cognitive Services tárolók a Microsoft-kiszolgálókhoz hoznak létre. Ennek elmulasztása megakadályozza, hogy a tároló megfelelően működjön.
+Tiltsa le a DPI-t a Cognitive Services-tárolók által a Microsoft-kiszolgálókszámára létrehozott biztonságos csatornákon. Ennek elmulasztása megakadályozza a tároló megfelelő működését.
 
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com

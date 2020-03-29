@@ -1,7 +1,7 @@
 ---
-title: Keresési kifejezések javaslata a Bing Autosuggest API
+title: Keresési kifejezések rekedése a Bing Autosuggest API-val
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezési kifejezéseket a Bing Autosuggest API és a lekérdezési hosszra gyakorolni a relevancia alapján.
+description: Ez a cikk ismerteti a bing autojavaslati API-t használó lekérdezési kifejezések ajánlásának fogalmát, valamint a lekérdezés hosszának a relevanciára gyakorolt hatását.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072893"
 ---
 # <a name="suggesting-query-terms"></a>Lekérdezési kifejezések javaslása
 
-Általában a Bing Autosuggest API minden alkalommal, amikor egy felhasználó új karaktert keres az alkalmazás keresési mezőjében. A lekérdezési sztring teljessége hatással van az API által visszaadott javasolt lekérdezési kifejezések relevanciájára. Minél teljesebb a lekérdezési sztring, annál relevánsabb lesz a javasolt lekérdezési kifejezések listája. Előfordulhat például, hogy az API által visszaadott javaslatok `s` valószínűleg kevésbé lesznek érvényesek, mint a `sailing dinghies`által visszaadott lekérdezések.
+Általában a Bing Autosuggest API-t minden alkalommal meg kell hívnia, amikor egy felhasználó új karaktert gépel be az alkalmazás keresőmezőjébe. A lekérdezési sztring teljessége hatással van az API által visszaadott javasolt lekérdezési kifejezések relevanciájára. Minél teljesebb a lekérdezési sztring, annál relevánsabb lesz a javasolt lekérdezési kifejezések listája. Például a javaslatok, amelyek az `s` API-t visszaadhat, valószínűleg kevésbé relevánsak, mint a lekérdezések, amelyeket visszaad. `sailing dinghies`
 
 ## <a name="example-request"></a>Példakérelem
 
@@ -45,11 +45,11 @@ Az alábbi válasz [SearchAction](https://docs.microsoft.com/rest/api/cognitives
 }, ...
 ```
 
-## <a name="using-suggested-query-terms"></a>Javasolt lekérdezési feltételek használata
+## <a name="using-suggested-query-terms"></a>Javasolt lekérdezési kifejezések használata
 
 Minden javaslat tartalmaz egy `displayText`, `query` és `url` mezőt. A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.
 
-A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest API javasolt lekérdezési kifejezéssel.
+A következő példa egy legördülő keresőmezőt mutat be a Bing Autosuggest API javasolt lekérdezési kifejezéseivel.
 
 ![Autosuggest legördülő keresőmező-lista](../media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
@@ -57,4 +57,4 @@ Ha a felhasználó kiválaszt egy javasolt lekérdezést a legördülő listáb�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi a Bing Autosuggest API?](../get-suggested-search-terms.md)
+* [Mi az a Bing Autosuggest API?](../get-suggested-search-terms.md)

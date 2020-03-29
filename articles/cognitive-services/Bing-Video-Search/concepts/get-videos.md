@@ -1,7 +1,7 @@
 ---
-title: Videók keresése a Bing Video Search API használatával
+title: Videók keresése a Bing Video Search API-val
 titleSuffix: Azure Cognitive Services
-description: A Bing Video Search APIfinds, és visszaadja a kapcsolódó videókat a webről, számos funkciót kínál az intelligens és a célzott videó-lekéréshez a weben.
+description: A Bing Video Search APImegkeresi és visszaadja a releváns videókat az internetről, számos funkciót biztosít az intelligens és célzott videó visszakereséshez az interneten.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220302"
 ---
-# <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
+# <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API-val
 
-A Bing Video Search API megkönnyíti a Bing kognitív Hírek keresési funkcióinak integrálását az alkalmazásokba. Habár az API elsősorban a Web-ről keres és ad vissza releváns videókat, számos funkciót kínál az intelligens és a célzott videó-lekéréshez a weben.
+A Bing Video Search API megkönnyíti a Bing kognitív hírek keresésének lehetőségeit az alkalmazásokba való integrálásában. Bár az API elsősorban releváns videókat talál meg és ad vissza az internetről, számos funkciót biztosít az intelligens és fókuszált videóvisszakereséshez az interneten.
 
 ## <a name="getting-videos"></a>Videók lekérése
 
@@ -96,9 +96,9 @@ A válasz tartalmaz egy [Videos](https://docs.microsoft.com/rest/api/cognitivese
 }
 ```
 
-## <a name="video-thumbnails"></a>Videós miniatűrök
+## <a name="video-thumbnails"></a>Videó miniatűrjei
 
-Megjelenítheti az Bing Video Search API által visszaadott videó-miniatűrök összes elemét vagy egy részhalmazát. Ha csak a miniatűrök egy részét jeleníti meg, biztosítson lehetőséget a felhasználónak a többi videó megtekintésére. a Bing API [használati és megjelenítési követelményeinek](../UseAndDisplayRequirements.md)részeként a videókat a válaszban megadott sorrendben kell megjeleníteni. A miniatűrök átméretezésével kapcsolatos információkért lásd a [miniatűrök átméretezésével és körülvágásával](../../bing-web-search/resize-and-crop-thumbnails.md) foglalkozó szakaszt. 
+Megjelenítheti az összes, vagy egy részét a videó miniatűrök vissza a Bing Video Search API.You can display all, or a subset of the video thumbnails returned by the Bing Video Search API. Ha csak a miniatűrök egy részét jeleníti meg, biztosítson lehetőséget a felhasználónak a többi videó megtekintésére. a Bing API [használati és megjelenítési követelményeinek](../UseAndDisplayRequirements.md)részeként a videókat a válaszban megadott sorrendben kell megjelenítenie. A miniatűrök átméretezésével kapcsolatos információkért lásd a [miniatűrök átméretezésével és körülvágásával](../../bing-web-search/resize-and-crop-thumbnails.md) foglalkozó szakaszt. 
 
 A [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) használatával beállíthatja, hogy ha a felhasználó a miniatűr fölé viszi a mutatót, akkor elinduljon a videó miniatűr verziójának lejátszása. Ügyeljen arra, hogy megjelenítse a mozgó miniatűr forrását.
 
@@ -106,7 +106,7 @@ A [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bin
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Ha egy miniatűrre kattint, három lehetőség van a videó megtekintésére:
+Ha egy miniatűrre kattintanak, három lehetőség van a videó megtekintésére:
 
 - [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) használata esetén a videó az eredeti webhelyen (például a YouTube-on) tekinthető meg;
 - [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) használata esetén a videó a Bing videóböngészőjében tekinthető meg;
@@ -120,10 +120,10 @@ A [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bin
 
 Alapértelmezés szerint a Video Search API a lekérdezéshez kapcsolódó összes videót visszaadja. Ha csak ingyenes vagy öt percnél rövidebb videókat szeretne visszakapni, a következő szűrőlekérdezési paramétereket használhatja:
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;Videók szűrése ár alapján (például ingyenes vagy fizetős videók);
-- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;Videók szűrése felbontás alapján (például 720p vagy nagyobb felbontású videók);
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;Videók szűrése hossz alapján (például öt percnél rövidebb videók);
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;Videók szűrése a feltöltés időpontja alapján (például a Bing által az elmúlt héten felfedezett videók).
+- [árképzés:](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;Videók szűrése árképzés szerint (például ingyenes videók, vagy amelyekért fizetni kell)
+- [felbontás:](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;Videók felbontás szerinti szűrése (például 720p vagy nagyobb felbontású videók)
+- [videohosszszűrés](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;Videók videóhosszak szerint (például öt percnél rövidebb videók)
+- [frissesség:](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;Videók kor szerinti szűrése (például a Bing által az elmúlt héten felfedezett videók)
 
 Ha egy konkrét tartományban található videókat szeretne lekérni, foglalja bele a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort a lekérdezési sztringbe.
 

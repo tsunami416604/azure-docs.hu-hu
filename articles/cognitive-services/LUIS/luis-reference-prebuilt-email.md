@@ -1,7 +1,7 @@
 ---
-title: LUIS előre elkészített entitások e-mail-referenciája
+title: Luis előre összeállított entitások e-mail hivatkozás
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk az e-mail tartalmazza az előre összeállított Entitásadatok a Language Understanding (LUIS).
+description: Ez a cikk az előre összeállított entitásadatokat tartalmazza a nyelvi ismeretek (LUIS) című témakörben.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273483"
 ---
-# <a name="email-prebuilt-entity-for-a-luis-app"></a>E-mail-előkészített entitás egy LUIS-alkalmazáshoz
-E-mailek kinyerése a teljes e-mail-címét az utterance (kifejezés) tartalmaz. Az entitás már be van tanítva, mert nem kell tartalmazó e-mailben az alkalmazás leképezések példa beszédmódok hozzáadása. Az e-mail-entitás csak `en-us` kulturális környezetekben támogatott.
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>Előre összeállított e-mail entitás egy LUIS-alkalmazáshoz
+E-mail kinyerése tartalmazza a teljes e-mail címet egy utterance (kifejezés). Mivel ez az entitás már be van tanítva, nem kell hozzáadnia az e-maileket tartalmazó példautterances az alkalmazás leképezések. Az e-mail `en-us` entitás csak a kulturális környezetben támogatott.
 
-## <a name="resolution-for-prebuilt-email"></a>Előre összeállított e-mailek felbontás
+## <a name="resolution-for-prebuilt-email"></a>Felbontás előre összeállított e-mailekhez
 
-A lekérdezés a következő entitás-objektumokat adja vissza:
+A következő entitásobjektumok at adják vissza a lekérdezéshez:
 
 `please send the information to patti@contoso.com`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméterrel van beállítva `false`:
+A következő JSON `verbose` paraméter a `false`következő:
 
 ```json
 "entities": {
@@ -40,7 +40,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON a `verbose` paraméterrel van beállítva `true`:
+A következő JSON `verbose` paraméter a `true`következő:
 
 ```json
 "entities": {
@@ -66,7 +66,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-A következő példa a **beépített. e-mail-** entitás feloldását mutatja be.
+A következő példa a **builtin.email** entitás felbontását mutatja be.
 
 ```json
 "entities": [
@@ -83,8 +83,8 @@ A következő példa a **beépített. e-mail-** entitás feloldását mutatja be
 ```
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
-A [szám](luis-reference-prebuilt-number.md), a [sorszám](luis-reference-prebuilt-ordinal.md)és a [százalék](luis-reference-prebuilt-percentage.md)megismerése.
+További információ a [számról](luis-reference-prebuilt-number.md), [a számról](luis-reference-prebuilt-ordinal.md)és a [százalékos értékről](luis-reference-prebuilt-percentage.md).

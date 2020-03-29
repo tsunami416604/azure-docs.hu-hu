@@ -1,7 +1,7 @@
 ---
-title: Alkalmazásbeállítások – LUIS
+title: Alkalmazásbeállítások - LUIS
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Language Understanding-alkalmazások beállításai az alkalmazásban és a portálon vannak tárolva.
+description: Az Azure Cognitive Services nyelvtudási alkalmazásai alkalmazásbeállításait az alkalmazás és a portál tárolja.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270806"
 ---
 # <a name="application-settings"></a>Alkalmazásbeállítások
 
-Ezeket az Alkalmazásbeállítások az [exportált](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) alkalmazásban tárolódnak, és a REST API-kkal [frissülnek](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) . Az alkalmazás verziójának beállításainak módosítása visszaállítja az alkalmazás betanítási állapotát a képzetlen értékre.
+Ezeket az alkalmazásbeállításokat az [exportált](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) alkalmazás tárolja, és [frissíti](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) a REST API-kkal. Az alkalmazás verzióbeállításainak módosítása visszaállítja az alkalmazás betanítási állapotát képzetlenre.
 
 |Beállítás|Alapértelmezett érték|Megjegyzések|
 |--|--|--|
-|NormalizePunctuation|True (Igaz)|Eltávolítja a központozást.|
-|NormalizeDiacritics|True (Igaz)|Eltávolítja a mellékjeleket.|
+|Normalizálás: Pontosság|True (Igaz)|Eltávolítja az írásjeleket.|
+|A jelek normalizálása|True (Igaz)|Eltávolítja az ékezőket.|
 
 ## <a name="diacritics-normalization"></a>Mellékjelek normalizálása
 
-A `settings` paraméterben kapcsolja be a mellékjeleket a LUIS JSON-alkalmazás fájljába.
+Kapcsolja be az utterance (kifejezés normalizálása a mellékjelek a LUIS JSON-alkalmazásfájl a `settings` paraméterben) mellékjelek bekapcsolása.
 
 ```JSON
 "settings": [
@@ -37,18 +37,18 @@ A `settings` paraméterben kapcsolja be a mellékjeleket a LUIS JSON-alkalmazás
 ]
 ```
 
-Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a Mellékjelek a hosszúságú kimondott szöveg:
+A következő kimondott szöveg azt mutatja be, hogy a mellékkritikusok normalizálása hogyan befolyásolja az utterances:
 
-|Ha a Mellékjelek hamis értékre vannak állítva|Ha a Mellékjelek értéke TRUE (igaz)|
+|Hamis ra van állítva a mellékjelek|A mellékjelek értéke igaz|
 |--|--|
 |`quiero tomar una piña colada`|`quiero tomar una pina colada`|
 |||
 
-### <a name="language-support-for-diacritics"></a>Mellékjelek nyelvi támogatása
+### <a name="language-support-for-diacritics"></a>Nyelvi támogatás a mellékjelekhez
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazíliai portugál `pt-br` mellékjelek
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazil `pt-br` portugál mellékjelek
 
-|Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
+|A mellékjelek értéke hamis|A mellékjelek értéke igaz|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a
 
 #### <a name="dutch-nl-nl-diacritics"></a>Holland `nl-nl` mellékjelek
 
-|Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
+|A mellékjelek értéke hamis|A mellékjelek értéke igaz|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -83,9 +83,9 @@ Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a
 
 #### <a name="french-fr--diacritics"></a>Francia `fr-` mellékjelek
 
-Ide tartozik a francia és a kanadai alkultúra is.
+Ez magában foglalja mind a francia, mind a kanadai szubkultúrákat.
 
-|Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
+|A mellékjelek értéke hamis|A mellékjelek értéke igaz|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ Ide tartozik a francia és a kanadai alkultúra is.
 
 #### <a name="german-de-de-diacritics"></a>Német `de-de` mellékjelek
 
-|Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
+|A mellékjelek értéke hamis|A mellékjelek értéke igaz|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`|
@@ -112,7 +112,7 @@ Ide tartozik a francia és a kanadai alkultúra is.
 
 #### <a name="italian-it-it-diacritics"></a>Olasz `it-it` mellékjelek
 
-|Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
+|A mellékjelek értéke hamis|A mellékjelek értéke igaz|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -127,9 +127,9 @@ Ide tartozik a francia és a kanadai alkultúra is.
 
 #### <a name="spanish-es--diacritics"></a>Spanyol `es-` mellékjelek
 
-Ide tartozik a spanyol és a kanadai mexikói is.
+Ez magában foglalja mind a spanyol és a kanadai mexikói.
 
-|Hamis értékre beállított mellékjelek|Igaz értékre beállított mellékjelek|
+|A mellékjelek értéke hamis|A mellékjelek értéke igaz|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
@@ -140,9 +140,9 @@ Ide tartozik a spanyol és a kanadai mexikói is.
 |`ñ`|`u`|
 
 
-## <a name="punctuation-normalization"></a>Központozás normalizálása
+## <a name="punctuation-normalization"></a>Írásjelek normalizálása
 
-A `settings` paraméterben bekapcsolhatja az írásjelek kikapcsolásának normalizálása a LUIS JSON-alkalmazás fájljában.
+Kapcsolja be az utterance (kifejezés normalizálása) írásjelek `settings` a LUIS JSON alkalmazásfájl a paraméterben.
 
 ```JSON
 "settings": [
@@ -150,18 +150,18 @@ A `settings` paraméterben bekapcsolhatja az írásjelek kikapcsolásának norma
 ]
 ```
 
-A következő hosszúságú kimondott szöveg szemléltetik, hogy a központozás milyen hatással van a hosszúságú kimondott szöveg:
+A következő kimondott szöveg azt mutatja be, hogy az írásjelek hogyan befolyásolják az utterances:
 
-|Az írásjel hamis értékre van állítva|A központozás igaz értékre van állítva|
+|Hamis írásjelekre van állítva|Igaz értékre állított írásjelek|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
-### <a name="punctuation-removed"></a>Írásjel eltávolítva
+### <a name="punctuation-removed"></a>Írásjelek eltávolítva
 
-A következő írásjelek törlődnek a `NormalizePunctuation` értéke TRUE (igaz).
+A következő írásjelek et `NormalizePunctuation` a rendszer eltávolítja, és a beállítás igaz.
 
-|Absztrakt|
+|Írásjelek|
 |--|
 |`-`|
 |`.`|

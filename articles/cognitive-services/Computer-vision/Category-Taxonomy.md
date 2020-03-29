@@ -1,7 +1,7 @@
 ---
-title: Képkategóriák besorolása – Computer Vision
+title: A képkategóriák taxonómia - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Szerezze be az Azure-Cognitive Services Computer Vision API besorolási osztályának 86-kategóriáját.
+description: Az Azure Cognitive Services Computer Vision API-jának 86 kategóriáját szerezheti be.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68565777"
 ---
-# <a name="computer-vision-86-category-taxonomy"></a>Computer Vision 86 – kategória besorolása
+# <a name="computer-vision-86-category-taxonomy"></a>Computer Vision 86-kategóriás taxonómia
 
-absztrakt
+abstract_
 
 abstract_net
 
@@ -32,7 +32,7 @@ abstract_shape
 
 abstract_texture
 
-állat
+animal_
 
 animal_bird
 
@@ -44,7 +44,7 @@ animal_horse
 
 animal_panda
 
-létrehozása
+building_
 
 building_arch
 
@@ -62,9 +62,9 @@ building_stair
 
 building_street
 
-sötét
+dark_
 
-ital
+drink_
 
 drink_can
 
@@ -74,7 +74,7 @@ dark_fireworks
 
 sky_object
 
-élelmiszer
+food_
 
 food_bread
 
@@ -100,9 +100,9 @@ indoor_venue
 
 dark_light
 
-mások
+others_
 
-szabadtéri
+outdoor_
 
 outdoor_city
 
@@ -132,7 +132,7 @@ outdoor_water
 
 outdoor_waterside
 
-személyek
+people_
 
 people_baby
 
@@ -152,7 +152,7 @@ people_tattoo
 
 people_young
 
-növény
+plant_
 
 plant_branch
 
@@ -174,7 +174,7 @@ people_swimming
 
 outdoor_pool
 
-szöveg
+text_
 
 text_mag
 

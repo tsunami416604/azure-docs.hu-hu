@@ -1,68 +1,68 @@
 ---
 title: A Personalizer konfigurálása
-description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
+description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran van újrabetanítva, és mennyi adatot tárolnak.
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219356"
 ---
-# <a name="configure-personalizer-learning-loop"></a>Személyre szabott tanulási hurok konfigurálása
+# <a name="configure-personalizer-learning-loop"></a>A Personalizer tanulási ciklusának konfigurálása
 
-A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
+A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran van újrabetanítva, és mennyi adatot tárolnak.
 
-Konfigurálja a tanulási ciklust a **konfiguráció** lapon a személyre szabott erőforráshoz tartozó Azure Portalban.
+Konfigurálja a tanulási hurkot a **konfigurációs** lapon, az Azure Portalon az adott Personalizer erőforráshoz.
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
 
-## <a name="configure-rewards-for-the-feedback-loop"></a>Jutalmak konfigurálása a visszajelzési hurokhoz
+## <a name="configure-rewards-for-the-feedback-loop"></a>Jutalmak konfigurálása a visszacsatolási ciklushoz
 
-Konfigurálja a szolgáltatást a tanulási ciklusban a jutalmak használatára. A következő értékek módosításai visszaállítják a jelenlegi személyre szabott modellt, majd az utolsó 2 nap adatait áttanítják.
+Konfigurálja a szolgáltatást a tanulási hurok jutalmak használatára. A következő értékek módosításai alaphelyzetbe állítják az aktuális Personalizer modellt, és újrabetanítják azt az adatok utolsó 2 napjával.
 
 > [!div class="mx-imgBorder"]
-> ![konfigurálja a visszajelzési hurok jutalmazási értékeit](media/settings/configure-model-reward-settings.png)
+> ![A visszacsatolási ciklus jutalomértékeinek konfigurálása](media/settings/configure-model-reward-settings.png)
 
 |Érték|Cél|
 |--|--|
-|Jutalom várakozási ideje|Meghatározza azt az időtartamot, ameddig a személynek a rangsorolási híváshoz tartozó jutalmazási értékeket kell gyűjtenie a rangsor meghívásának pillanatától kezdve. Ezt az értéket úgy állítja be a rendszer, hogy megkérdezi, hogy mennyi ideig kell megvárnia a személyre szabási hívásokat? Az ablak beérkezését követően bekövetkező minden jutalom bekerül, de nem használható a tanuláshoz.|
-|Alapértelmezett jutalom|Ha nem fogadja el a személyre szabott jutalmat a rangsorolási várakozási idő időszaka alatt, a személyre szabási híváshoz rendelt jutalmazási időablakban az alapértelmezett jutalom lesz hozzárendelve. Alapértelmezés szerint a legtöbb esetben az alapértelmezett jutalom nulla (0).|
-|Jutalom összesítése|Ha ugyanahhoz a Range API-híváshoz több jutalom érkezik, a rendszer ezt az összesítési módszert használja: **Sum** vagy **legkorábbi**. A legkorábbi pontszámot kapott, és elveti a többit. Ez akkor hasznos, ha egyedi jutalmat szeretne használni a lehetséges duplikált hívások között. |
+|Jutalom várakozási idő|Beállítja, hogy a Personalizer mennyi ideig gyűjti a Ranghívás jutalomértékeit, attól a pillanattól kezdve, hogy a Rang hívás megtörténik. Ezt az értéket a következő kérdés állítja be: "Mennyi ideig várjon a Personalizer a jutalomhívásokra?" Az ezen ablak után érkező jutalmakat naplózzuk, de nem használjuk fel a tanuláshoz.|
+|Alapértelmezett jutalom|Ha a Personalize nem fogad jutalomhívást a Ranghíváshoz társított Jutalom várakozási idő ablak ban, a Personalizer hozzárendeli az alapértelmezett jutalmat. Alapértelmezés szerint, és a legtöbb esetben az alapértelmezett jutalom nulla (0).|
+|Jutalom összesítése|Ha ugyanahhoz a Rank API-híváshoz több jutalom érkezik, a program ezt az összesítési módszert használja: **sum** vagy **earliest .** Legkorábbi csákány a legkorábbi pontszámot kapott, és eldobja a többit. Ez akkor hasznos, ha egyedi jutalmat szeretne az esetlegesen ismétlődő hívások között. |
 
 Az értékek módosítása után válassza a **Mentés**lehetőséget.
 
-## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>A felderítés konfigurálása, amely lehetővé teszi, hogy a tanulási hurok alkalmazkodjon
+## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>A feltárás konfigurálása úgy, hogy a tanulási hurok alkalmazkodjon
 
-A személyre szabás lehetővé tenné az új mintázatok felderítését és a felhasználói viselkedés változásainak időbeli változását azáltal, hogy a betanított modell előrejelzése helyett alternatívákat keres. A **feltárási** érték határozza meg, hogy a rangsorolási hívások hány százalékát kell megválaszolni a feltárással.
+A személyre szabás képes új mintákat felfedezni, és alkalmazkodni a felhasználói viselkedés változásaihoz az idő múlásával az alternatívák feltárásával a betanított modell előrejelzésének használata helyett. A **feltárási** érték határozza meg, hogy a rangsorolási hívások hány százaléka válaszol a feltárással.
 
-Az érték módosításakor a rendszer alaphelyzetbe állítja az aktuális személyre szabott modellt, majd az utolsó 2 nap adatainak megfelelően áttanítja azt.
+Az érték módosításai alaphelyzetbe állítják az aktuális Personalizer modellt, és újrabetanítják azt az adatok utolsó 2 napjával.
 
-![A feltárási érték határozza meg, hogy a rangsorolási hívások hány százalékát kell megválaszolni a feltárással](media/settings/configure-exploration-setting.png)
+![A feltárási érték határozza meg, hogy a Rangsorolási hívások hány százaléka válaszol a feltárással](media/settings/configure-exploration-setting.png)
 
 Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 <a name="model-update-frequency"></a>
 
-## <a name="configure-model-update-frequency-for-model-training"></a>Modell-frissítési gyakoriság konfigurálása a modell betanításához
+## <a name="configure-model-update-frequency-for-model-training"></a>Modellfrissítési gyakoriság konfigurálása a modellbetanításhoz
 
-A **modell frissítési gyakorisága** határozza meg, hogy a modell milyen gyakran legyen betanítva.
+A **modell frissítési gyakorisága beállítja,** hogy milyen gyakran a modell betanítása.
 
-|Gyakorisági beállítás|Cél|
+|Frekvencia beállítás|Cél|
 |--|--|
-|1 perc|Az egyperces frissítési gyakoriságok akkor hasznosak, ha az alkalmazás kódját a személyre szabás, a demók **vagy a gépi** tanulási szempontok interaktív tesztelése során végzi.|
-|15 perc|A magas modell-frissítési gyakoriságok olyan helyzetekben hasznosak, amikor **szorosan nyomon szeretné követni** a felhasználói viselkedések változásait. Ilyenek például az élő Hírek, a vírusos tartalmak vagy az élő termékek ajánlattételi helyei. Ezeket a forgatókönyveket 15 perces gyakorisággal használhatja. |
-|1 óra|A legtöbb felhasználási eset esetében az alacsonyabb frissítési gyakoriság érvényes.|
+|1 perc|Az egyperces frissítési gyakoriságok akkor hasznosak, ha az alkalmazás **kódját a** Personalizer használatával, demókkal vagy interaktívan teszteli a gépi tanulási szempontokat.|
+|15 perc|A magas modellfrissítési gyakoriságok olyan helyzetekben hasznosak, amikor **szorosan nyomon** szeretné követni a felhasználói viselkedések változásait. Ilyenek például az élő híreken, vírusos tartalmakon vagy élő termékajánlattételen futó webhelyek. Ezekben a forgatókönyvekben 15 perces gyakoriságot használhat. |
+|1 óra|A legtöbb használati esetben az alacsonyabb frissítési gyakoriság hatékony.|
 
-![A modell frissítési gyakorisága határozza meg, hogy milyen gyakran van új személyre szabott modell újratanítása.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
+![A modellfrissítés gyakorisága beállítja, hogy milyen gyakran van újrabetanítva egy új Personalizer modell.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
 Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-**Az adatmegőrzési időszak** azt állítja be, hogy hány nap személy tartja az adatnaplókat. Az [Offline értékelések](concepts-offline-evaluation.md)végrehajtásához múltbeli adatnaplókra van szükség, amelyek a személyre szabott és a tanulási szabályzatok optimalizálására szolgálnak.
+**Az adatmegőrzési időszak** határozza meg, hogy a Personalizer hány napig tart adatnaplókat. A korábbi adatnaplók szükségesek [az offline értékelések](concepts-offline-evaluation.md)elvégzéséhez, amelyek a Personalizer hatékonyságának mérésére és a tanulási szabályzat optimalizálására szolgálnak.
 
 Az érték módosítása után válassza a **Mentés**lehetőséget.
 
@@ -70,13 +70,13 @@ Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 ## <a name="settings-that-include-resetting-the-model"></a>A modell alaphelyzetbe állítását tartalmazó beállítások
 
-Az alábbi műveletek közé tartozik a modell azonnali átképzése az elmúlt 2 nap során.
+A következő műveletek közé tartozik a modell azonnali átképzése az adatok utolsó 2 napja.
 
 * Jutalom
 * Feltárás
 
-Az összes adatai [törléséhez](how-to-manage-model.md) használja a * * modell és tanulási beállítások * * lapot.
+Az összes adat [törléséhez](how-to-manage-model.md) használja a **Model and learning settings ** oldalt.
 
 ## <a name="next-steps"></a>További lépések
 
-[Ismerje meg, hogyan kezelheti a modellt](how-to-manage-model.md)
+[További információ a modell kezeléséről](how-to-manage-model.md)

@@ -1,25 +1,24 @@
 ### YamlMime:Landing
-title: A hangvezérelt asszisztensek dokumentációja
-summary: A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban.
+title: Hangasszisztensek dokumentációja
+summary: A Beszédszolgáltatást használó hangasszisztensek lehetővé teszik a fejlesztők számára, hogy természetes, emberszerű társalgási felületeket hozzanak létre alkalmazásaikhoz és felhasználói élményeikhez.
 metadata:
-  title: A hangsegédek dokumentációja – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  title: Hangasszisztensek dokumentációja - Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365559"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415155"
 landingContent:
-- title: A hangsegédek ismertetése
+- title: Hangasszisztensek –
   linkLists:
   - linkListType: overview
     links:
@@ -33,7 +32,7 @@ landingContent:
     links:
     - text: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
       url: faq-voice-assistants.md
-    - text: Hangvezérelt asszisztensek díjszabása
+    - text: Hangasszisztensek díjszabása
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
 - title: Fejlesztés egyéni parancsokkal
   linkLists:
@@ -45,19 +44,19 @@ landingContent:
       url: quickstart-custom-speech-commands-create-parameters.md
     - text: Egyéni parancsok használata egyéni hanggal
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Egyéni parancsok használata a Speech SDK-val
+    - text: Egyéni parancsok használata a beszédfelismerési SDK-val
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
     - text: Az ügyfél parancsainak teljesítése
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Paraméter-ellenőrzés hozzáadása
+    - text: Paraméter-érvényesítés hozzáadása
       url: how-to-custom-speech-commands-validations.md
     - text: Megerősítés hozzáadása
       url: how-to-custom-speech-commands-confirmations.md
     - text: Egylépéses javítás hozzáadása
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Fejlesztés közvetlen vonalas Beszédtel
+- title: Fejlesztés közvetlen vonalbeszéddel
   linkLists:
   - linkListType: quickstart
     links:
@@ -71,7 +70,7 @@ landingContent:
     links:
     - text: Robot hangvezérlésének engedélyezése a Speech SDK használatával
       url: tutorial-voice-enable-your-bot-speech-sdk.md
-- title: Fejlesztés egyéni kulcsszóval
+- title: Fejlesztés egyéni kulcsszóral
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -79,5 +78,5 @@ landingContent:
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:
-    - text: Egyéni kulcsszó elnevezési irányelvei
+    - text: Egyéni kulcsszóelnevezési irányelvek
       url: speech-devices-sdk-kws-guidelines.md

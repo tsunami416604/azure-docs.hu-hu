@@ -1,7 +1,7 @@
 ---
-title: Hangvezérelt asszisztensek – gyakori kérdések
+title: A hangasszisztensek gyakran feltett kérdések
 titleSuffix: Azure Cognitive Services
-description: Választ kaphat a hangasszisztensekkel kapcsolatos legnépszerűbb kérdésekre az egyéni parancsok (előzetes verzió) vagy a közvetlen vonalas beszéd csatorna használatával.
+description: Válaszok a hangasszisztensekkel kapcsolatos legnépszerűbb kérdésekre az egyéni parancsok (előzetes verzió) vagy a Közvetlen vonal beszédcsatornája használatával.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74110342"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Hangvezérelt asszisztensek – gyakori kérdések
+# <a name="voice-assistants-frequently-asked-questions"></a>A hangasszisztensek gyakran feltett kérdések
 
-Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [egyéb támogatási lehetőségeket](support.md).
+Ha ebben a dokumentumban nem talál választ kérdéseire, olvassa el [az egyéb támogatási lehetőségeket.](support.md)
 
 ## <a name="general"></a>Általános kérdések
 
-**K: Mi az a hangsegéd?**
+**K: Mi az a hangasszisztens?**
 
-**A:** A Cortana hasonlóan a hangsegéd olyan megoldás, amely figyeli a felhasználó által kimondott hosszúságú kimondott szöveg, elemzi a jelentésekben szereplő hosszúságú kimondott szöveg tartalmát, a teljes szándékra válaszul egy vagy több műveletet hajt végre, majd választ ad a felhasználónak, amely gyakran egy szóbeli összetevőt tartalmaz. Ez egy "hangvételt, hangvételt" kínál a rendszerekkel való interakcióhoz. a hangasszisztens szerzők létrehoznak egy on-Device alkalmazást a Speech SDK `DialogServiceConnector` használatával, hogy az [Egyéni parancsokkal (előzetes verzió)](custom-commands.md) vagy a bot Framework [közvetlen vonalas beszédfelismerési](direct-line-speech.md) csatornával létrehozott asszisztenssel kommunikáljanak. Ezek az asszisztensek egyéni kulcsszavakat, egyéni beszédeket és egyéni hangvételt használhatnak, hogy a márka vagy termék számára szabott élményt nyújtsanak.
+**A.** Cortanához hasonlóan a hangasszisztens is olyan megoldás, amely figyeli a felhasználó kimondott kimondott szövegét, elemzi a kimondott szövegek tartalmát a jelentés szempontjából, egy vagy több műveletet hajt végre az utterance (kifejezés) szándékára válaszul, majd választ ad a felhasználónak, amely gyakran tartalmaz egy szóbeli összetevőt. Ez egy "voice-in, voice-out" tapasztalat kölcsönhatásban áll a rendszerrel. A hangsegéd-szerzők a beszédfelismerési `DialogServiceConnector` SDK-ban lévő alkalmazással hoznak létre egy egyéni [parancsokkal (előzetes verzióval)](custom-commands.md) vagy a Bot Framework Közvetlen [vonalbeszédcsatornával](direct-line-speech.md) létrehozott segéddel való kommunikációhoz. Ezek az asszisztensek egyéni kulcsszavakat, egyéni beszédfelismerést és egyéni hangot használhatnak a márkához vagy termékhez igazított élmény biztosításához.
 
-**K: használhatok egyéni parancsokat (előzetes verzió) vagy közvetlen vonalas beszédet? Mi a különbség?**
+**K: Egyéni parancsokat (előzetes verzió) vagy közvetlen vonalú beszédfelismerést használjak? Mi a különbség?**
 
-**A:** az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy alacsonyabb bonyolultságú eszközkészletet biztosítanak, amellyel könnyedén létrehozhatók és beállíthatók a feladat-végrehajtási forgatókönyvekhez jól illeszkedő asszisztensek. A [közvetlen vonalas beszéd](direct-line-speech.md) gazdagabb és kifinomultabb képességeket biztosít, amelyek lehetővé teszik robusztus társalgási forgatókönyvek használatát. További információért lásd a [segéd-megoldások összehasonlítását](voice-assistants.md#choosing-an-assistant-solution) ismertető témakört.
+**A:** [Az egyéni parancsok (előzetes verzió)](custom-commands.md) egy kisebb összetettségű eszközkészlet, amely könnyen létrehozhat és üzemeltethet egy olyan segédet, amely jól illeszkedik a feladatok befejezéséhez. [A Direct Line Speech](direct-line-speech.md) gazdagabb, kifinomultabb funkciókat biztosít, amelyek robusztus társalgási forgatókönyveket tesznek lehetővé. További információt az [asszisztensi megoldások összehasonlításában](voice-assistants.md#choosing-an-assistant-solution) talál.
 
-**K: Hogyan első lépések?**
+**K: Hogyan kezdhetek?**
 
-**A:** A legjobb módszer az egyéni parancsok (előzetes verzió) alkalmazás vagy az alapszintű bot Framework bot létrehozásához.
+**A.** A legjobb módja annak, hogy először hozzon létre egy egyéni parancsok (előzetes verzió) alkalmazás vagy alapvető Bot Framework bot.
 
 - [Egyéni parancsok (előzetes verzió) alkalmazás létrehozása](quickstart-custom-speech-commands-create-new.md)
-- [Alapszintű robot-keretrendszer robot létrehozása](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [Robot összekötése a közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Hozzon létre egy alapvető Bot Framework bot bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Robot csatlakoztatása a Közvetlen vonal beszédcsatornájához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hibakeresés
 
-**K: hol van a Channel Secret?**
+**K: Hol van a csatornatitkom?**
 
-**A:** Ha a Direct line Speech előzetes verzióját használta, vagy a kapcsolódó dokumentációt olvasta, előfordulhat, hogy a Direct line Speech Channel regisztrációs lapján talál egy titkos kulcsot. A Speech SDK-ban a v 1.7 `DialogServiceConfig` Factory metódus `FromBotSecret` is ezt az értéket várja.
+**A.** Ha már használta a Direct Line Speech előzetes verzióját, vagy a kapcsolódó dokumentációt olvassa, előfordulhat, hogy egy titkos kulcsot talál a Direct Line Speech channel regisztrációs lapján. A beszédsdka 1.7-es `DialogServiceConfig` gyári metódusa `FromBotSecret` is ezt az értéket várja.
 
-A Direct line Speech legújabb verziója leegyszerűsíti a robot egy eszközről való kapcsolatfelvételi folyamatát. A Channel Registration (csatorna regisztrálása) lapon a felül lévő legördülő lista a Direct line Speech Channel-regisztrációt egy beszédfelismerési erőforrással társítja. Ha társítva van, a v 1.8 Speech SDK tartalmaz egy `BotFrameworkConfig::FromSubscription` Factory metódust, amely egy `DialogServiceConnector` konfigurál, hogy kapcsolatba lépjen az előfizetéshez társított robottal.
+A Direct Line Speech legújabb verziója leegyszerűsíti a robottal való kapcsolatfelvétel folyamatát egy eszközről. A csatorna regisztrációs lapján a felső legördülő lista a közvetlen vonalbeszéd-csatorna regisztrációját egy beszédfelismerési erőforráshoz társítja. A társkezelés után a v1.8-as beszédstidk tartalmaz egy `BotFrameworkConfig::FromSubscription` gyári módszert, amely konfigurálja `DialogServiceConnector` a kapcsolatot az előfizetéshez társított robottal.
 
-Ha továbbra is áttelepíti az ügyfélalkalmazás alkalmazást a v 1.7-ről a v 1.8-ra, `DialogServiceConfig::FromBotSecret` továbbra is dolgozhat a Channel Secret paraméteréhez nem üres, nem null értékű értékkel, például a korábban használt titokkal. Ezt a rendszer egyszerűen figyelmen kívül hagyja, ha egy újabb csatornás regisztrációhoz társított beszédfelismerési előfizetést használ. Vegye figyelembe, hogy az érték _nem lehet null_ és nem üres, mivel ezeket a rendszer az eszközön a szolgáltatási oldal társítása előtt ellenőrzi.
+Ha még mindig az ügyfélalkalmazást az 1.7-es verzióról `DialogServiceConfig::FromBotSecret` az 1.8-as verzióra telepíti át, előfordulhat, hogy továbbra is nem üres, nem null értékkel működik a csatornatitkos paraméterhez, például az előző titkos kulcsot. A rendszer egyszerűen figyelmen kívül hagyja, ha egy újabb csatornaregisztrációhoz társított beszéd-előfizetést használ. Kérjük, vegye figyelembe, hogy az _értéknek_ nem null értékűnek és nem üresnek kell lennie, mivel ezeket az eszközön ellenőrzi, mielőtt a szervizoldali társítás releváns lenne.
 
-Részletesebb útmutatásért tekintse meg az [oktatóanyag című szakaszt](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , amely végigvezeti a csatorna regisztrálásán.
+Részletesebb útmutatóért tekintse meg a csatornaregisztrációt bemutató [részt.](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel)
 
-**K: 401-es hibaüzenetet kapok a csatlakozáskor, és semmi nem működik. Tudom, hogy a Speech előfizetés kulcsa érvényes. mi történik?**
+**K: Kapok egy 401 hiba, amikor csatlakozik, és semmi sem működik. Tudom, hogy a beszéd-előfizetési kulcs omlazsa. mi történik?**
 
-**A:** Az előfizetésnek a Azure Portal való kezelésekor ügyeljen arra, hogy a **beszédfelismerési** erőforrást (Microsoft. CognitiveServicesSpeechServices, "Speech") használja, és _ne_ a **Cognitive Services** erőforrást ( Microsoft. CognitiveServicesAllInOne, "All Cognitive Services"). Kérjük, tekintse [meg a beszédfelismerési szolgáltatási régió támogatását a hangasszisztensek számára](regions.md#voice-assistants).
+**A.** Az Előfizetés azure-portálon történő kezelése során győződjön meg arról, hogy a Beszédfelismerés-erőforrást (Microsoft.CognitiveServicesSpeechServices, "Speech") használja, és _nem_ a **Cognitive Services-erőforrást** (Microsoft.CognitiveServicesAllInOne, "Minden Kognitív szolgáltatás"). **Speech** Ellenőrizze a [beszédszolgáltatás régióban a hangasszisztensek támogatását](regions.md#voice-assistants)is.
 
-![megfelelő előfizetés a közvetlen vonalas beszédhez](media/voice-assistants/faq-supported-subscription.png "kompatibilis beszédfelismerési előfizetés – példa")
+![helyes előfizetés a közvetlen vonalbeszédhez](media/voice-assistants/faq-supported-subscription.png "példa kompatibilis beszédfelismerési előfizetésre")
 
-**K: a `DialogServiceConnector`em a felismerési szöveget, de "1011" hibát látok, és nem a saját robotom. miért?**
+**K: Kapok felismerés szöveget `DialogServiceConnector`vissza az én , de látok egy "1011" hiba, és semmi az én bot. miért?**
 
-**A:** Ez a hiba kommunikációs problémát jelez a segéd és a hangsegéd szolgáltatás között.
+**A.** Ez a hiba kommunikációs problémára utal a segéd és a hangasszisztens-szolgáltatás között.
 
-- Egyéni parancsok (előzetes verzió) esetén győződjön meg arról, hogy az egyéni parancsok (előzetes verzió) alkalmazás közzé van téve
-- A közvetlen vonalas beszédhez győződjön meg arról, hogy [csatlakoztatta a robotot a közvetlen vonalas hangcsatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [hozzáadta a folyamatos átviteli protokoll támogatását](https://aka.ms/botframework/addstreamingprotocolsupport) a robothoz (a kapcsolódó webes szoftvercsatorna-támogatással), majd ellenőrizze, hogy a robot válaszol-e a bejövő kérelmekre a csatornáról.
+- Egyéni parancsok (előzetes verzió) esetén győződjön meg arról, hogy az egyéni parancsok (előzetes verzió) alkalmazás közzététele
+- A közvetlen vonalbeszéd, győződjön meg arról, hogy [csatlakoztatta a robot a Direct Line Speech channel,](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) [hozzáadta a streaming protokoll támogatása](https://aka.ms/botframework/addstreamingprotocolsupport) a bot (a kapcsolódó Web Socket támogatás), majd ellenőrizze, hogy a robot válaszol a bejövő kérelmeket a csatornáról.
 
-**K: Ez a kód továbbra sem működik, és/vagy egy `DialogServiceConnector`használatakor más hibaüzenetet kapok. Mit tegyek?**
+**K: Ez a kód még mindig nem működik, és/ vagy `DialogServiceConnector`kapok egy másik hiba használatakor . Mit kell tennem?**
 
-**A:** A fájl alapú naplózás lényegesen több részletet biztosít, és a támogatási kérelmek felgyorsítását is segíti. A funkció engedélyezéséhez tekintse meg a [fájlok naplózásának használata](how-to-use-logging.md)című témakört.
+**A.** A fájlalapú naplózás lényegesen részletesebb, és segít felgyorsítani a támogatási kérelmeket. A funkció engedélyezéséhez olvassa el [a fájlnaplózás használatát.](how-to-use-logging.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hibaelhárítás](troubleshooting.md)
+- [hibaelhárítással](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

@@ -1,7 +1,7 @@
 ---
-title: Videós felülvizsgálatok létrehozása a .NET-Content Moderator használatával
+title: Videoértékelések létrehozása a .NET használatával – Tartalommoderátor
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk információkat és kódokat tartalmaz, amelyek segítségével gyorsan megkezdheti a Content Moderator SDK- C# val való ismerkedést a videó-felülvizsgálatok létrehozásához.
+description: Ez a cikk információkat és kódmintákat tartalmaz, amelyek segítségével gyorsan elkezdheti a C# tartalommoderátor sdk használatával videoértékelések létrehozásához.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931676"
 ---
-# <a name="create-video-reviews-using-net"></a>Videós felülvizsgálatok létrehozása a .NET használatával
+# <a name="create-video-reviews-using-net"></a>Videoértékelések létrehozása a .NET használatával
 
-Ez a cikk információkat és kódokat tartalmaz, amelyek segítségével gyorsan megkezdheti a [Content moderator SDK- C# val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való használatának első lépéseit a következővel:
+Ez a cikk információkat és kódmintákat tartalmaz, amelyek segítségével gyorsan elkezdheti a [C# tartalommoderátor használatát](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a következőkre:
 
-- Videó-áttekintés létrehozása az emberi moderátorok számára
-- Keretek hozzáadása a felülvizsgálathoz
-- A felülvizsgálat keretének beolvasása
-- A felülvizsgálat állapotának és részleteinek beolvasása
-- A felülvizsgálat közzététele
+- Videóáttekintés létrehozása emberi moderátorok számára
+- Keretek hozzáadása ellenőrzéshez
+- A felülvizsgálat keretei
+- Az értékelés állapotának és részleteinek beszerezése
+- Az ellenőrzés közzététele
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Jelentkezzen be, vagy hozzon létre egy fiókot a Content Moderator [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
-- Ez a cikk azt feltételezi, hogy [moderálta a videót (lásd](video-moderation-api.md) a gyors üzembe helyezést), és a válaszokat tartalmazza. Szüksége lesz rá az emberi moderátorok frame-alapú felülvizsgálatának létrehozásához.
+- Jelentkezzen be vagy hozzon létre fiókot a [Tartalommoderátor-ellenőrzési eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén.
+- Ez a cikk feltételezi, hogy [moderálta a videót (lásd a rövid útmutatót),](video-moderation-api.md) és rendelkezik a válaszadatokkal. Szüksége van rá, hogy keretalapú véleményeket hozzon létre az emberi moderátorok számára.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Arról való gondoskodás, hogy az API-kulcs meg tudja hívni a felülvizsgálati API-t a felülvizsgálat létrehozásához
 
@@ -40,22 +40,22 @@ Ha az Azure által biztosított API-kulcsot tervezi használni az SDK-mintában,
 
 Ha a felülvizsgálati eszköz által létrehozott ingyenes próbakulcsot használja, a felülvizsgálati eszközhöz tartozó fiókja már tud a kulcsról, így nincs szükség további lépésekre.
 
-### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Videó és képkockák előkészítése a felülvizsgálathoz
+### <a name="prepare-your-video-and-the-video-frames-for-review"></a>A videó és a képkockák előkészítése véleményezésre
 
-Az áttekinteni kívánt videó-és minta-képkockákat online közzé kell tenni, mert szüksége van az URL-címekre.
+A véleményezésre váró videó- és mintaképeket online kell közzétenni, mert szüksége van az URL-címekre.
 
 > [!NOTE]
-> A program manuálisan mentett képernyőképeket használ a videóból véletlenszerű felnőtt/zamatos pontszámokkal a felülvizsgálati API használatának szemléltetése érdekében. Valós helyzetben a [videó-moderálás kimenet](video-moderation-api.md#run-the-program-and-review-the-output) használatával képeket hozhat létre, és pontszámokat rendelhet hozzá. 
+> A program manuálisan mentett screenshotok a videó véletlenszerű felnőtt / pikáns pontszámok, hogy bemutassa a használatát a felülvizsgálat API. Valós helyzetben a [videó moderálási kimenettel](video-moderation-api.md#run-the-program-and-review-the-output) képeket hozhat létre, és pontszámokat rendelhet hozzá. 
 
-A videóhoz szükség van egy folyamatos átviteli végpontra, hogy a felülvizsgálati eszköz játssza le a videót a Player nézetben.
+A videóhoz egy streamelési végpontra van szükség, hogy a véleményező eszköz lejátssza a videót a lejátszó nézetben.
 
-![Videó bemutató miniatűrje](images/ams-video-demo-view.PNG)
+![Videobemutató miniatűrje](images/ams-video-demo-view.PNG)
 
 - Másolja az **URL-címet** ezen az [Azure Media Services bemutató](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) oldalon a jegyzékfájl URL-címéhez.
 
-A képkockák (képek) esetében használja a következő képeket:
+A videoképkockákhoz (képekhez) használja a következő képeket:
 
-![Videó keretének miniatűrje 1](images/ams-video-frame-thumbnails-1.PNG) | ![Videó keretének miniatűrje 2](images/ams-video-frame-thumbnails-2.PNG) | ![Videó keretének miniatűrje 3](images/ams-video-frame-thumbnails-3.PNG) |
+![A videokeret miniatűrje 1](images/ams-video-frame-thumbnails-1.PNG) | ![A videokeret miniatűrje 2](images/ams-video-frame-thumbnails-2.PNG) | ![A videokeret miniatűrje 3](images/ams-video-frame-thumbnails-3.PNG) |
 | :---: | :---: | :---: |
 [1. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [2. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [3. keret](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
 
@@ -63,13 +63,13 @@ A képkockák (képek) esetében használja a következő képeket:
 
 1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet a megoldáshoz.
 
-1. Nevezze el a projekt **VideoReviews**.
+1. Nevezze el a projektet **VideoReviews**.
 
 1. Válassza ki ezt a projektet a megoldás egyedüli kezdőprojektjeként.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-Telepítse a következő NuGet-csomagokat a TermLists projekthez.
+Telepítse a következő NuGet csomagokat a TermLists projekthez.
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
@@ -92,7 +92,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Privát tulajdonságok hozzáadása
 
-Adja hozzá a következő privát tulajdonságokat a névtér **VideoReviews**, az osztály **programhoz**. Frissítse a `AzureEndpoint` és a `CMSubscriptionKey` mezőket a végpont URL-címe és az előfizetési kulcs értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
+Adja hozzá a következő saját tulajdonságokat a **VideoReviews**névtérhez , **osztályprogram**. Frissítse `AzureEndpoint` a `CMSubscriptionKey` és a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket az azure-portálon található erőforrás **Rövid útmutató** lapján találja.
 
 
 ```csharp
@@ -129,9 +129,9 @@ namespace VideoReviews
         private const int throttleRate = 2000;
 ```
 
-### <a name="create-content-moderator-client-object"></a>Content Moderator ügyfél-objektum létrehozása
+### <a name="create-content-moderator-client-object"></a>Tartalommoderátor-ügyfélobjektum létrehozása
 
-Adja hozzá a következő metódus-definíciót a Namespace **VideoReviews**, a Class **programhoz**.
+Adja hozzá a következő metódusdefiníciót a **VideoReviews**névtérhez , **osztályprogram**.
 
 ```csharp
 /// <summary>
@@ -150,24 +150,24 @@ public static ContentModeratorClient NewClient()
 }
 ```
 
-## <a name="create-a-video-review"></a>Videó felülvizsgálatának létrehozása
+## <a name="create-a-video-review"></a>Videó-ellenőrzés létrehozása
 
-Hozzon létre egy videó-áttekintést a **ContentModeratorClient. Reviews. CreateVideoReviews**. További információkért lásd az [API-referenciát](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+Hozzon létre egy videó felülvizsgálat **ContentModeratorClient.Reviews.CreateVideoReviews**. További információkért lásd az [API-referenciát](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-A **CreateVideoReviews** a következő szükséges paraméterekkel rendelkezik:
-1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie. 
-1. Az Content Moderator-csoport neve.
-1. Egy **IList \<CreateVideoReviewsBodyItem >** objektumot. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
+**A CreateVideoReviews** a következő szükséges paraméterekkel rendelkezik:
+1. Mime-típust tartalmazó karakterlánc, amelynek "application/json" típusúnak kell lennie. 
+1. A tartalommoderátor csapatának neve.
+1. Egy **IList\<CreateVideoReviewsBodyItem>** objektumot. Minden **CreateVideoReviewsBodyItem** objektum egy videó-áttekintést jelöl. Ez a rövid útmutató egyszerre csak egy áttekintést hoz létre.
 
-A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a következő tulajdonságokat kell beállítania:
-- **Tartalom**. Az áttekinteni kívánt videó URL-címe.
-- **ContentId**. A videó felülvizsgálatához hozzárendelni kívánt azonosító.
-- **Állapot**. Állítsa az értéket "közzététel előtt" értékre. Ha nem állítja be, a rendszer alapértelmezés szerint "függőben" állapotba kerül, ami azt jelenti, hogy a videó felülvizsgálata közzé van téve, és az emberi felülvizsgálat függőben van. A videó felülvizsgálatának közzététele után már nem adhat hozzá képkockákat, átiratokat vagy átiratok moderálási eredményét.
+**A CreateVideoReviewsBodyItem számos** tulajdonsággal rendelkezik. Legalább a következő tulajdonságokat kell beállítania:
+- **Tartalom**. A felülvizsgálandó videó URL-címe.
+- **ContentId**. A videóellenőrzéshez rendelő azonosító.
+- **Állapot**. Állítsa az értéket "Közzé nem tett" értékre. Ha nem állítja be, alapértelmezés szerint "Függőben" lesz, ami azt jelenti, hogy a videó-ellenőrzés közzétételre kerül, és emberi ellenőrzésre vár. A videó-ellenőrzés közzététele után már nem adhat hozzá videoképkockákat, átiratot vagy átiratmoderálási eredményt.
 
 > [!NOTE]
-> A **CreateVideoReviews** egy IList \<string > ad vissza. Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével. 
+> **A CreateVideoReviews** egy\<iList karakterláncot ad vissza>. Ezek a karakterláncok mindegyike tartalmaz egy azonosítót a videó felülvizsgálathoz. Ezek az azonosítók GUID azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével. 
 
-Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
+Adja hozzá a következő metódusdefiníciót a VideoReviews névtérhez, osztályprogram.
 
 ```csharp
 /// <summary>
@@ -207,31 +207,31 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 >
 > Az ingyenes szint kulcsai egy RPS-korláttal bírnak.
 
-## <a name="add-video-frames-to-the-video-review"></a>Videó-képkockák hozzáadása a videó felülvizsgálatához
+## <a name="add-video-frames-to-the-video-review"></a>Videoképkockák hozzáadása a videóellenőrzéshez
 
-A video-képkockákat a **ContentModeratorClient. Reviews. AddVideoFrameUrl** (ha a videós keretek online állapotban vannak) vagy a **ContentModeratorClient. Reviews. AddVideoFrameStream** (ha a videós keretek helyileg vannak tárolva). Ez a rövid útmutató feltételezi, hogy a videós keretek online állapotban vannak, és így használja a **AddVideoFrameUrl**-t. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
+Ön hozzá video keretek egy videó felülvizsgálat **ContentModeratorClient.Reviews.AddVideoFrameUrl** (ha a videó keretek házigazdája online) vagy **ContentModeratorClient.Reviews.AddVideoFrameStream** (ha a videó keretek házigazdája helyben). Ez a rövid útmutató feltételezi, hogy a videoképkockák online vannak tárolva, ezért **az AddVideoFrameUrl -t**használja. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd).
 
-A **AddVideoFrameUrl** a következő szükséges paraméterekkel rendelkezik:
-1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie.
-1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
-1. Egy **IList \<VideoFrameBodyItem >** objektumot. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
+**Az AddVideoFrameUrl** a következő szükséges paraméterekkel rendelkezik:
+1. Mime-típust tartalmazó karakterlánc, amelynek "application/json" típusúnak kell lennie.
+1. A tartalommoderátor csapatának neve.
+1. A **CreateVideoReviews**által visszaadott videó-ellenőrző azonosító.
+1. Az **IList\<VideoFrameBodyItem>** objektumot. Minden **VideoFrameBodyItem** objektum egy videokeretet jelöl.
 
-A **VideoFrameBodyItem** a következő tulajdonságokkal rendelkezik:
-- **Időbélyeg**. Egy karakterlánc, amely másodpercek alatt azt a videót tartalmazza, amelyből a videó keretet készített.
-- **FrameImage**. A videó keretének URL-címe
-- **Metaadatok**. Egy IList \<VideoFrameBodyItemMetadataItem >. A **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Az érvényes kulcsok a következők:
-- **reviewRecommended**. Igaz, ha a videó keretének emberi felülvizsgálata ajánlott.
-- **adultScore**. 0 és 1 közötti érték, amely a videó keretében lévő felnőtt tartalom súlyosságát értékeli.
-- **a**. Igaz, ha a videó felnőtt tartalmat tartalmaz.
-- **racyScore**. 0 és 1 közötti érték, amely a videó keretében a zamatos tartalom súlyosságát értékeli.
-- **r**. Értéke true, ha a videó kerete tartalmaz zamatos tartalmat.
-- **ReviewerResultTags**. Egy IList \<VideoFrameBodyItemReviewerResultTagsItem >. A **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás ezeket a címkéket használhatja a képkockák rendszerezéséhez.
+**A VideoFrameBodyItem** a következő tulajdonságokkal rendelkezik:
+- **Időbélyeg**. Olyan karakterlánc, amely másodpercben tartalmazza azt az időt a videóban, amelyből a videoképkocka készült.
+- **FrameImage**. A videoképkocka URL-címe.
+- **Metaadatok**. Egy IList\<VideoFrameBodyItemMetadataItem>. **A VideoFrameBodyItemMetadataItem** egyszerűen kulcs/érték pár. Az érvényes kulcsok a következők:
+- **felülvizsgálatAjánlott**. Igaz, ha a videókép emberi felülvizsgálata ajánlott.
+- **adultScore .** 0 és 1 között, amely a videóképben lévő felnőtt tartalom súlyosságát értékeli.
+- **a .** Igaz, ha a videó felnőtt tartalmat tartalmaz.
+- **racyScore .** 0 és 1 között, amely a videóképben lévő pikáns tartalom súlyosságát értékeli.
+- **r.**. Igaz, ha a videokeret pikáns tartalmat tartalmaz.
+- **ReviewerResultCímkék**. Egy IList\<VideoFrameBodyItemReviewerResultTagsItem>. **A VideoFrameBodyItemReviewerResultTagsItem** egyszerűen kulcs/érték pár. Egy alkalmazás használhatja ezeket a címkéket a videokeretek rendszerezésére.
 
 > [!NOTE]
-> Ez a rövid útmutató véletlenszerű értékeket hoz létre a **adultScore** és a **racyScore** tulajdonsághoz. Éles alkalmazásokban ezeket az értékeket az Azure Media Service-ben üzembe helyezett [videó-moderálási szolgáltatásból](video-moderation-api.md)szerezheti be.
+> Ez a rövid útmutató véletlenszerű értékeket hoz létre a **adultScore** és **a racyScore** tulajdonságokhoz. Egy éles alkalmazás, ezeket az értékeket a [videó moderálási szolgáltatás,](video-moderation-api.md)az Azure Media Service üzembe helyezése.
 
-Adja hozzá a következő metódus-definíciókat a Namespace VideoReviews, a Class programhoz.
+Adja hozzá a következő metódusdefiníciókat a VideoReviews névtérhez, osztályprogram.
 
 ```csharp
 <summary>
@@ -291,15 +291,15 @@ static void AddFrame(ContentModeratorClient client, string review_id, string url
     Thread.Sleep(throttleRate);
 ```
 
-## <a name="get-video-frames-for-video-review"></a>Videó-képkockák áttekintése
+## <a name="get-video-frames-for-video-review"></a>Videóképkockák beszereznie videóellenőrzéshez
 
-A videós áttekintést a **ContentModeratorClient. Reviews. GetVideoFrames**használatával szerezheti be. A **GetVideoFrames** a következő szükséges paraméterekkel rendelkezik:
-1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
-1. Az első videó keretének nulla alapú indexe a lekéréshez.
-1. A lekérdezni kívánt képkockák száma.
+A **ContentModeratorClient.Reviews.GetVideoFrames**. **A GetVideoFrames** a következő szükséges paraméterekkel rendelkezik:
+1. A tartalommoderátor csapatának neve.
+1. A **CreateVideoReviews**által visszaadott videó-ellenőrző azonosító.
+1. Az első beszerezhető videoképkocka nulla alapú indexe.
+1. A beszerezhető videoképkockák száma.
 
-Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
+Adja hozzá a következő metódusdefiníciót a VideoReviews névtérhez, osztályprogram.
 
 ```csharp
 /// <summary>
@@ -319,13 +319,13 @@ static void GetFrames(ContentModeratorClient client, string review_id)
 }
 ```
 
-## <a name="get-video-review-information"></a>Videó-felülvizsgálati információk beolvasása
+## <a name="get-video-review-information"></a>Videó-ellenőrzési információk beszerezni
 
-A **ContentModeratorClient. Reviews. GetReview**. A **GetReview** a következő szükséges paraméterekkel rendelkezik:
-1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
+Kapsz információt a videó felülvizsgálat **ContentModeratorClient.Reviews.GetReview**. **A GetReview** a következő szükséges paraméterekkel rendelkezik:
+1. A tartalommoderátor csapatának neve.
+1. A **CreateVideoReviews**által visszaadott videó-ellenőrző azonosító.
 
-Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
+Adja hozzá a következő metódusdefiníciót a VideoReviews névtérhez, osztályprogram.
 
 ```csharp
 /// <summary>
@@ -345,13 +345,13 @@ private static void GetReview(ContentModeratorClient client, string review_id)
 }
 ```
 
-## <a name="publish-video-review"></a>Videó közzétételének áttekintése
+## <a name="publish-video-review"></a>Videó-ellenőrzés közzététele
 
-A videós felülvizsgálatot a **ContentModeratorClient. Reviews. PublishVideoReview**címen teheti közzé. A **PublishVideoReview** a következő szükséges paraméterekkel rendelkezik:
-1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
+Ön közzé egy videó felülvizsgálat **ContentModeratorClient.Reviews.PublishVideoReview**. **A PublishVideoReview** a következő szükséges paraméterekkel rendelkezik:
+1. A tartalommoderátor csapatának neve.
+1. A **CreateVideoReviews**által visszaadott videó-ellenőrző azonosító.
 
-Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
+Adja hozzá a következő metódusdefiníciót a VideoReviews névtérhez, osztályprogram.
 
 ```csharp
 /// <summary>
@@ -370,7 +370,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 
 ## <a name="putting-it-all-together"></a>Végső összeállítás
 
-Adja hozzá a **fő** metódus definícióját a Namespace VideoReviews, a Class programhoz. Végül zárjuk be a program osztályt és a VideoReviews névteret.
+Adja hozzá a **Fő** metódus definícióját a VideoReviews névtérhez, osztályprogram. Végül zárja be a Program osztályt és a VideoReviews névteret.
 
 ```csharp
 static void Main(string[] args)
@@ -405,7 +405,7 @@ static void Main(string[] args)
 ```
 
 ## <a name="run-the-program-and-review-the-output"></a>A program futtatása és a kimenet áttekintése
-Az alkalmazás futtatásakor a következő sorok kimenete jelenik meg:
+Az alkalmazás futtatásakor a következő sorokban jelenik meg egy kimenet:
 
 ```json
 Creating a video review.
@@ -539,16 +539,16 @@ Open your Content Moderator Dashboard and select Review > Video to see the revie
 Press any key to close the application.
 ```
 
-## <a name="check-out-your-video-review"></a>Tekintse meg a videó felülvizsgálatát
+## <a name="check-out-your-video-review"></a>Nézze meg a videó felülvizsgálat
 
-Végezetül tekintse meg a videó-áttekintést a Content Moderator felülvizsgálati eszköz fiókjában az **áttekintés**>**videó** képernyőjén.
+Végül a Videó **áttekintése**>**képernyőn** láthatja a videóértékelést a Tartalommoderátor-ellenőrző eszközfiókjában.
 
-![Az emberi moderátorok videós áttekintése](images/ams-video-review.PNG)
+![Videó felülvizsgálata az emberi moderátorok](images/ams-video-review.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Szerezze be a [Content moderator .net SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -t és a [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ehhez és egyéb Content moderator a .net-hez készült gyors útmutatóhoz.
+A [tartalommoderátor .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET tartalommoderátor rövid útmutatójának beszerezése.
 
-Megtudhatja, hogyan adhat [átirat-moderálást](video-transcript-moderation-review-tutorial-dotnet.md) a videó felülvizsgálatához. 
+További információ arról, hogyan adhatsz [átiratmoderálást](video-transcript-moderation-review-tutorial-dotnet.md) a videóellenőrzéshez. 
 
-Tekintse meg a [teljes videó-moderálási megoldás](video-transcript-moderation-review-tutorial-dotnet.md)kidolgozásának részletes leírását.
+Nézze meg a részletes bemutató, hogyan kell fejleszteni a [teljes videó moderálás megoldás](video-transcript-moderation-review-tutorial-dotnet.md).

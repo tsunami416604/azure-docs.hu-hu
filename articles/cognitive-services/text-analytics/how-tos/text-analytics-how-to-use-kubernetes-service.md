@@ -1,7 +1,7 @@
 ---
-title: Az Azure Kubernetes Service futtatása – Text Analytics
+title: Azure Kubernetes-szolgáltatás futtatása – Szövegelemzés
 titleSuffix: Azure Cognitive Services
-description: Telepítse az Text Analytics-tároló lemezképét az Azure Kubernetes szolgáltatásba, és tesztelje egy böngészőben.
+description: Telepítse a Text Analytics-tároló rendszerképet az Azure Kubernetes-szolgáltatásba, és tesztelje azt egy webböngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 3264ec5a83277e6bb4befad46cd1337175e911c5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74383496"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Text Analytics tároló üzembe helyezése az Azure Kubernetes Service-ben
+# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Text Analytics-tároló üzembe helyezése az Azure Kubernetes szolgáltatásban
 
-Megtudhatja, hogyan helyezheti üzembe az Azure Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) -tároló lemezképét az Azure Kubernetes Service-ben (ak). Ez az eljárás bemutatja, hogyan hozhat létre egy Text Analytics-erőforrást, hogyan hozhat létre egy kapcsolódó hangulat-elemzési képet, és hogyan gyakorolhatja a kettőt egy böngészőből. A tárolók használatával átirányíthatja a figyelmet az infrastruktúra kezelése helyett, hogy az alkalmazások fejlesztésére összpontosítsanak.
+Ismerje meg, hogyan telepítheti az Azure Cognitive Services [text analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) tárolórendszerképet az Azure Kubernetes-szolgáltatás (AKS) számára. Ez az eljárás bemutatja, hogyan hozhat létre egy Text Analytics-erőforrást, hogyan hozhat létre egy kapcsolódó véleményelemzési képet, és hogyan gyakorolhatja a kettő vezénylését egy böngészőből. A tárolók használatával elterelheti a figyelmet az infrastruktúra kezeléséről az alkalmazásfejlesztésre összpontosítva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg kell telepíteni és futtatni. Ne használja a Azure Cloud Shell. A következőkre lesz szüksége:
+Ez az eljárás több olyan eszközt igényel, amelyeket helyileg kell telepíteni és futtatni. Ne használja az Azure Cloud Shellt. A következőkre van szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Egy szövegszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+* Szövegszerkesztő, például [Visual Studio-kód](https://code.visualstudio.com/download).
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van.
-* A [KUBERNETES CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) telepítve van.
-* Egy megfelelő árképzési szintű Azure-erőforrás. Nem minden díjszabási csomag működik ezzel a tárolóval:
-    * Az **Azure Text Analytics** erőforrás csak a F0 vagy a standard szintű árképzési szinttel rendelkezik.
-    * **Azure Cognitive Services** erőforrás a S0 díjszabási szintjével.
+* A [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) telepítve van.
+* Egy Azure-erőforrás a megfelelő tarifacsomaggal. Nem minden tarifacsomag működik ezzel a tárolóval:
+    * **Az Azure Text Analytics-erőforrás** csak F0 vagy standard tarifacsomagokkal rendelkezik.
+    * **Azure Cognitive Services-erőforrás** az S0 tarifacsomaggal.
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
 [!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Kulcsszókeresés](#tab/keyphrase)
+#### <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/keyphrase)
 
 [!INCLUDE [Key Phrase Extraction Kubernetes config and deploy steps](../includes/key-phrase-extraction-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Key Phrase Extraction container instance](../includes/verify-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Nyelvfelismerés](#tab/language)
+#### <a name="language-detection"></a>[Nyelvfelismerés](#tab/language)
 
 [!INCLUDE [Language Detection Kubernetes config and deploy steps](../includes/language-detection-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Hangulatelemzés](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment)
 
 [!INCLUDE [Sentiment Analysis Kubernetes config and deploy steps](../includes/sentiment-analysis-kubernetes-config-deploy.md)]
 
@@ -57,7 +57,7 @@ Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg k
 
 ***
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
-* A [text Analytics csatlakoztatott szolgáltatás](../vs-text-connected-service.md) használata
+* További [Cognitive Services-tárolók használata](../../cognitive-services-container-support.md)
+* A [Text Analytics csatlakoztatott szolgáltatás használata](../vs-text-connected-service.md)

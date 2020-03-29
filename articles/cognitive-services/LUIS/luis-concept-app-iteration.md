@@ -1,7 +1,7 @@
 ---
-title: Iterációs alkalmazás tervezése – LUIS
+title: Iteratív alkalmazástervezés - LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS legjobb megtanulja az iteratív ciklusának adatmodell változásainak, utterance (kifejezés) példákat, közzététel és adatok összegyűjtése a végpont lekérdezések.
+description: A LUIS a modellváltozások iteratív ciklusában, az utterance (kifejezés) példák közzétételében és a végpontlekérdezések adatok gyűjtésében tanul a legjobban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,141 +12,141 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74422599"
 ---
-# <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
+# <a name="iterative-app-design-for-luis"></a>Iteratív alkalmazástervezés a LUIS számára
 
-A Language Understanding (LUIS) alkalmazás a leghatékonyabban tanul és hajt végre iterációval. Íme egy tipikus iterációs ciklus:
+A Language Understanding (LUIS) alkalmazás megtanulja, és a leghatékonyabban működik iterációval. Íme egy tipikus iterációs ciklus:
 
-* új verzió létrehozása
-* A LUIS-alkalmazás sémájának szerkesztése. Az érintett műveletek közé tartoznak az alábbiak:
-    * leképezések példa hosszúságú kimondott szöveg
+* Új verzió létrehozása
+* A LUIS alkalmazásséma szerkesztése. Az érintett műveletek közé tartoznak az alábbiak:
+    * Leképezések példa utterances
     * Entitások
     * Szolgáltatások
 * Betanítás, tesztelés és közzététel
-    * Tesztelés az aktív tanulás előrejelzési végpontján
-* adatok összegyűjtése végponti lekérdezésekből
+    * Teszt az előrejelzési végponton az aktív tanuláshoz
+* Adatok gyűjtése végpontlekérdezésekből
 
 ![Tartalomkészítési ciklus](./media/luis-concept-app-iteration/iteration.png)
 
 ## <a name="building-a-luis-schema"></a>LUIS-séma létrehozása
 
-Az alkalmazás sémája határozza meg, hogy a felhasználó mit kér (a _szándékot_ vagy szándékot), és a szándék mely részeit adja meg ( _entitások_ _),_ amelyek segítségével meghatározhatja a választ. 
+Az alkalmazás sémája határozza meg, hogy mit kér a felhasználó (a _szándék_ vagy a _szándék_ ), és a szándék mely részei adnak meg részleteket (úgynevezett _entitásokat),_ amelyek segítségével meghatározható a válasz. 
 
-Az alkalmazás sémájának egyedinek kell lennie az alkalmazás-tartományokban, hogy meghatározza a releváns szavakat és kifejezéseket, valamint hogy meghatározza a szokásos Word-sorrendet. 
+Az alkalmazássémának az alkalmazástartományokra jellemzőnek kell lennie a releváns szavak és kifejezések meghatározásához, valamint a tipikus szósorrend meghatározásához. 
 
-A hosszúságú kimondott szöveg olyan felhasználói bemeneteket jelentenek, mint például a felismert beszéd vagy szöveg, amelyet az alkalmazás futásidőben vár. 
+Példa utterances képviseli a felhasználói bemenetek, például a felismert beszéd vagy szöveg, hogy az alkalmazás elvárja, hogy futásidőben. 
 
-A sémához leképezések szükségesek, és _rendelkeznie kell_ entitásokkal. 
+A séma leképezéseket igényel, és entitásokkal _kell rendelkeznie._ 
 
-### <a name="example-schema-of-intents"></a>Példa a szándékok sémájára
+### <a name="example-schema-of-intents"></a>Példa leképezéssée
 
-A leggyakoribb séma a szándékokkal rendezett leképezési séma. Ez a típusú séma a LUIS használatával határozza meg a felhasználó szándékát. 
+A leggyakoribb séma egy szándékokkal rendezett séma. Ez a sématípus a LUIS segítségével határozza meg a felhasználó szándékát. 
 
-Előfordulhat, hogy a szándék sémájának típusa entitásokkal rendelkezik, ha segítséget nyújt a felhasználóknak a felhasználó szándékának meghatározásában. Például egy szállítási entitás (a szándéknak megfelelően) segít a kiszállítási szándék meghatározásában. 
+A szándékséma-típus entitásokkal rendelkezhet, ha segít a LUIS-nak meghatározni a felhasználó szándékát. Például egy szállítási entitás (egy szándék leírójaként) segít a LUIS-nak meghatározni a szállítási szándékot. 
 
-### <a name="example-schema-of-entities"></a>Példa entitások sémája
+### <a name="example-schema-of-entities"></a>Entitások sémája
 
-Az entitások sémái az entitásokra összpontosítanak, amelyek a felhasználói hosszúságú kimondott szöveg kinyert adatok. Ha például egy felhasználó azt mondta, hogy "Szeretnék három pizzát rendelni." Két entitást kell kinyerni: _három_ és _pizzát_. Ezek a célok teljesítéséhez szükségesek, amely a megrendelés megrendelése volt. 
+Az entitásséma az entitásokra összpontosít, amely a felhasználói utterances kinyert adatok. Ha például egy felhasználó azt mondaná: "Három pizzát szeretnék rendelni." Két entitás, hogy lenne kivont: _három_ és _pizzák_. Ezeket arra használják, hogy segítsenek teljesíteni a szándékot, amely a megrendelés volt. 
 
-Az entitások sémája esetében a Kimondás célja kevésbé fontos az ügyfélalkalmazás számára. 
+Egy entitás sémája esetében az utterance (kifejezés) szándéka kevésbé fontos az ügyfélalkalmazás számára. 
 
-Az entitások sémájának megszervezésének közös módszere az összes példa hosszúságú kimondott szöveg hozzáadása a **nincs** szándékhoz. 
+Az entitásséma rendszerezésének gyakori módja az összes példa utterances hozzáadása a **Nincs** szándékhoz. 
 
 ### <a name="example-of-a-mixed-schema"></a>Példa vegyes sémára
 
-A leghatékonyabb és legérettebb séma olyan leképezési séma, amely az entitások és szolgáltatások teljes skáláját tartalmazza. Ez a séma megkezdhető úgy, mint a szándék vagy az entitás sémája, és az is növekszik, hogy mindkét fogalomban szerepelnek, mivel az ügyfélalkalmazás ezekre az adatokra van szüksége. 
+A leghatékonyabb és legkiforrottabb séma egy szándékos séma, amely az entitások és szolgáltatások teljes skáláját tartalmazza. Ez a séma megkezdheti a szándék vagy az entitás sémája, és növekszik, hogy tartalmazza a fogalmak mindkettő, mivel az ügyfélalkalmazás szüksége van ezekre az információkra. 
 
-## <a name="add-example-utterances-to-intents"></a>Példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez
+## <a name="add-example-utterances-to-intents"></a>Példakimondott szöveg hozzáadása a leképezésekhez
 
-A LUIS-nek néhány példát kell hosszúságú kimondott szöveg az egyes **szándékokhoz**. A példának a Word Choice és a Word hosszúságú kimondott szöveg elég variációra van szüksége ahhoz, hogy meg tudja határozni, melyik szándékot jelenti a kiírás. 
+A LUIS-nak szüksége van néhány példa utterances minden **szándékot.** A példa utterances kell elég változata a szó választás és a szó sorrendben, hogy képes legyen meghatározni, hogy melyik szándék az utterance (kifejezés) célja. 
 
 > [!CAUTION]
-> Ne vegyen fel több példát a hosszúságú kimondott szöveg. Kezdje a 15 – 30 konkrét és változó példával. 
+> Ne adjon hozzá példa utterances ömlesztve. Kezdje 15-30 konkrét és különböző példákkal. 
 
-Minden esetben a kiírásnak minden szükséges adattal rendelkeznie kell az **entitásokkal**megtervezett és címkézett **adatok kinyeréséhez** . 
+Minden példa utterance (kifejezés) rendelkeznie kell a **szükséges adatokat az** **entitások**által tervezett és címkézett kivonat. 
 
-|Kulcs eleme|Cél|
+|Kulcselem|Cél|
 |--|--|
-|Szándék|A felhasználó hosszúságú kimondott szöveg egyetlen célra vagy műveletbe **osztályozhatja** . Ilyenek például a `BookFlight` és a `GetWeather`.|
-|Entitás|Az adatok **kinyerése** a cél befejezéséhez szükséges. Ilyenek például az utazás dátuma és időpontja, valamint a hely.|
+|Szándék|A felhasználói utterances **besorolása** egyetlen szándékba vagy műveletbe. Ilyen `BookFlight` például a és `GetWeather`a.|
+|Entitás|**A** szándék befejezéséhez szükséges utterance (kifejezés) adatok kinyerése. Ilyen például az utazás dátuma és időpontja, valamint a hely.|
 
-A LUIS-alkalmazás úgy van kialakítva, hogy figyelmen kívül hagyja az alkalmazás tartományához nem kapcsolódó hosszúságú kimondott szöveg úgy, hogy nem rendeli hozzá a kiírást a **nincs** szándékhoz.
+A LUIS-alkalmazás úgy tervezhető, hogy figyelmen kívül hagyja az olyan kimondott szövegeket, amelyek nem relevánsak az alkalmazás tartományában azáltal, hogy az utterance **(kifejezés)** a Nincs szándékhoz rendeli.
 
 ## <a name="test-and-train-your-app"></a>Az alkalmazás tesztelése és betanítása
 
-Miután 15 – 30 különböző példát hosszúságú kimondott szöveg az egyes szándékokhoz, és a szükséges entitások címkével rendelkeznek, meg kell vizsgálnia és be kell [tanítania](luis-how-to-train.md) a Luis alkalmazást. 
+Miután 15–30 különböző példa utterances minden szándék, a szükséges entitások címkével, tesztelnie kell, és [betanítása](luis-how-to-train.md) a LUIS-alkalmazást. 
 
 ## <a name="publish-to-a-prediction-endpoint"></a>Közzététel előrejelzési végponton
 
-A LUIS-alkalmazást közzé kell tenni, hogy elérhető legyen a List [előrejelzési végpontok régióiban](luis-reference-regions.md).
+A LUIS alkalmazást közzé kell tenni, hogy az elérhető legyen a lista [előrejelzési végponti régióiban.](luis-reference-regions.md)
 
 ## <a name="test-your-published-app"></a>A közzétett alkalmazás tesztelése
 
-A közzétett LUIS-alkalmazást a HTTPS-előrejelzési végpontról tesztelheti. Az előrejelzési végpont tesztelése lehetővé teszi, hogy a LUIS kiválassza az alacsony megbízhatóságú hosszúságú kimondott szöveg az [ellenőrzéshez](luis-how-to-review-endpoint-utterances.md).  
+A közzétett LUIS-alkalmazást a HTTPS-előrejelzési végpontról tesztelheti. Az előrejelzési végpontról történő tesztelés lehetővé teszi a LUIS számára, hogy alacsony megbízhatóságú kimondott szövegeket [válasszon.](luis-how-to-review-endpoint-utterances.md)  
 
 ## <a name="create-a-new-version-for-each-cycle"></a>Új verzió létrehozása minden ciklushoz
 
-Minden verzió egy pillanatkép a LUIS-alkalmazás időpontjában. Mielőtt módosításokat hajt végre az alkalmazásban, hozzon létre egy új verziót. A régebbi verzióra való visszalépés könnyebb, mint a leképezések eltávolításának és a hosszúságú kimondott szöveg egy korábbi állapotának kipróbálása.
+Minden verzió egy pillanatkép a LUIS-alkalmazás idejében. Mielőtt módosítana az alkalmazást, hozzon létre egy új verziót. Könnyebb visszatérni egy régebbi verzióra, mint egy korábbi állapotba való leképezések és kimondott szövegeltávolítása.
 
-A verzióazonosító karakterből, számjegyből vagy "." áll, és nem lehet hosszabb 10 karakternél.
+A verzióazonosító karakterekből, számjegyekből vagy "." karakterekből áll, és nem lehet hosszabb 10 karakternél.
 
-A kezdeti verzió (0,1) az alapértelmezett aktív verzió. 
+A kezdeti verzió (0.1) az alapértelmezett aktív verzió. 
 
-### <a name="begin-by-cloning-an-existing-version"></a>Kezdés egy meglévő verzió klónozásával
+### <a name="begin-by-cloning-an-existing-version"></a>Kezdje egy meglévő verzió klónozásával
 
-Meglévő verzió klónozása az egyes új verziók kiindulási pontként való használatához. Egy verzió klónozása után az új verzió lesz az **aktív** verzió. 
+Klónozzon egy meglévő verziót, amelyet minden új verzió kiindulópontjaként használhat. A verzió klónozása után az új verzió lesz az **aktív** verzió. 
 
-### <a name="publishing-slots"></a>Közzétételi résidők
+### <a name="publishing-slots"></a>Közzétételi tárolóhelyek
 
-Közzéteheti a fázist és/vagy az éles tárolóhelyeket is. Az egyes tárolóhelyek eltérő verziójúak vagy azonos verziójúak lehetnek. Ez akkor lehet hasznos, ha az éles környezetbe való közzététel előtt ellenőrzi a módosításokat, ami elérhető a botok vagy más LUIS hívó alkalmazások számára. 
+A színpadon és/vagy a termelési tárolóhelyeken is közzéteheti. Minden bővítőhely lehet egy másik verzió, vagy ugyanazt a verziót. Ez akkor hasznos, ha a módosítások ellenőrzése az éles környezetben való közzététel előtt, amely elérhető a botok vagy más LUIS hívó alkalmazások. 
 
-A betanított verziók nem érhetők el automatikusan a LUIS-alkalmazás [végpontján](luis-glossary.md#endpoint). Ahhoz, hogy a LUIS-alkalmazás végpontján elérhető legyen, [közzé](luis-how-to-publish-app.md) kell tennie vagy újra közzé kell tennie egy verziót. Közzéteheti az **előkészítést** és a **gyártást**, így az alkalmazás két verziója érhető el a végponton. Ha az alkalmazás több verzióját is elérhetőnek kell lennie egy végponton, exportálnia kell a verziót, és újra importálnia kell egy új alkalmazásba. Az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik.
+A betanított verziók nem érhetők el automatikusan a LUIS-alkalmazás [végpontján.](luis-glossary.md#endpoint) Közzé kell [tennie,](luis-how-to-publish-app.md) vagy újra közzé kell tennie egy verziót annak érdekében, hogy elérhető legyen a LUIS-alkalmazás végpontján. Az **Átmeneti** és **éles környezetben**is közzéteheti, így az alkalmazás két verziója érhető el a végponton. Ha az alkalmazás több verziójának elérhetőnek kell lennie egy végponton, exportálja a verziót, és importálja újra egy új alkalmazásba. Az új alkalmazás egy másik alkalmazásazonosítóval rendelkezik.
 
 ### <a name="import-and-export-a-version"></a>Verzió importálása és exportálása
 
-A verziók az alkalmazás szintjén importálhatók. Ez a verzió lesz az aktív verzió, és a verziószámot használja az alkalmazás `versionId` tulajdonságában. A verzió szintjén is importálhat egy meglévő alkalmazást. Az új verzió lesz az aktív verzió. 
+A verzió az alkalmazás szintjén importálható. Ez a verzió lesz az aktív verzió, `versionId` és az alkalmazásfájl tulajdonságában lévő verzióazonosítót használja. Egy meglévő alkalmazásba is importálhat, verziószinten. Az új verzió lesz az aktív verzió. 
 
-Egy verzió is exportálható az alkalmazás vagy a verzió szintjén is. Az egyetlen különbség, hogy az alkalmazás-szintű exportált verzió a jelenleg aktív verzió a verzió szintjén, a **[Beállítások](luis-how-to-manage-versions.md)** lapon bármilyen verziót kiválaszthat az exportáláshoz. 
+A verzió az alkalmazás vagy verzió szintjén is exportálható. Az egyetlen különbség az, hogy az alkalmazásszintű exportált verzió az aktuálisan aktív verzió, míg a verzió szintjén bármelyik verziót exportálhatja a **[Beállítások](luis-how-to-manage-versions.md)** lapon. 
 
-Az exportált fájl **nem** tartalmazza a következőket:
+Az exportált fájl nem tartalmazza a **következőket:**
 
-* A géppel megtanult információk, mert az alkalmazás a importálása után újra be lett tanítva
-* közreműködői információ
+* Gépmegtanult információk, mert az alkalmazás importálása után újra bevan program
+* Közreműködői információ
 
-A LUIS-alkalmazás sémájának biztonsági mentéséhez exportáljon egy verziót a [Luis portálról](https://www.luis.ai/applications).
+A LUIS-alkalmazásséma biztonsági és biztonsági biztonsági tetézéséhez exportáljon egy verziót a [LUIS-portálról.](https://www.luis.ai/applications)
 
-## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Közreműködői változások kezelése verziók és közreműködők révén
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Közreműködői módosítások kezelése verziókkal és közreműködőkkel
 
-A LUIS az Azure-erőforrásokra vonatkozó engedélyek biztosításával a közreműködők fogalmát használja egy alkalmazáshoz. Ezt a koncepciót a verziószámozással kombinálva megcélozható együttműködés biztosítható. 
+A LUIS az azure-beli erőforrásszintű engedélyek biztosításával használja az alkalmazás közreműködőinek fogalmát. Kombinálja ezt a fogalmat a verziószámozással, hogy célzott együttműködést biztosítson. 
 
-A következő módszerekkel kezelheti az alkalmazás közreműködői módosításait.
+Az alábbi módszerekkel kezelheti az alkalmazás közreműködői módosításait.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Alkalmazáson belül több verziók kezelése
+### <a name="manage-multiple-versions-inside-the-same-app"></a>Több verzió kezelése ugyanazon az alkalmazáson belül
 
-Először [klónozást](luis-how-to-manage-versions.md#clone-a-version) kell kezdenie az egyes szerzők alapverziójából. 
+Kezdje az egyes szerzők alapverziójának [klónozásával.](luis-how-to-manage-versions.md#clone-a-version) 
 
-Minden szerző módosítja az alkalmazás saját verzióját. Ha a szerző elégedett a modellel, exportálja az új verziókat a JSON-fájlokba.  
+Minden szerző módosítja az alkalmazás saját verzióját. Ha a szerző elégedett a modellel, exportálja az új verziókat a JSON fájlokba.  
 
-Az exportált alkalmazások, a. JSON vagy a. lu fájlok összehasonlítható a változásokkal. Egyesítse a fájlokat úgy, hogy egyetlen fájlt hozzon létre az új verzióval. Módosítsa a `versionId` tulajdonságot úgy, hogy az az új egyesített verziót jelenti. Importálja azt a verziót az eredeti alkalmazásba. 
+Az exportált alkalmazások, .json vagy .lu fájlok a módosításokhoz hasonlíthatók. A fájlok egyesítésével egyetlen fájlt hozhat létre az új verzióból. Módosítsa `versionId` a tulajdonságot az új egyesített verzió jelzésére. Importálja a verziót az eredeti alkalmazásba. 
 
-Ez a módszer lehetővé teszi, hogy egy aktív verzióját, egy szakasz és egy közzétett verziója. Az aktív verzió eredményeit összehasonlíthatja egy közzétett verzióval (fázis vagy éles környezet) az [interaktív tesztelési panelen](luis-interactive-test.md).
+Ez a módszer lehetővé teszi, hogy egy aktív verzió, egy szakasz verzió, és egy közzétett verzió. Az aktív verzió eredményeit összehasonlíthatja egy közzétett verzióval (színpadvagy éles környezet) az [interaktív tesztelési ablaktáblában.](luis-interactive-test.md)
 
-### <a name="manage-multiple-versions-as-apps"></a>Alkalmazások több verziók kezelése
+### <a name="manage-multiple-versions-as-apps"></a>Több verzió kezelése alkalmazásként
 
-[Exportálja](luis-how-to-manage-versions.md#export-version) az alapverziót. Mindegyik Szerző importálja a verziót. A személy, amely az alkalmazás importál a verzió tulajdonosa. Amikor végzett a verzió módosítása az alkalmazás exportálása. 
+Az alapverzió [exportálása.](luis-how-to-manage-versions.md#export-version) Minden szerző importálja a verziót. Az alkalmazást importáló személy a verzió tulajdonosa. Ha végeztek az alkalmazás módosításával, exportálja a verziót. 
 
-Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás összehasonlíthatók. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a JSON **versionId** tulajdonságát úgy, hogy az az új egyesített verziót jelenti. Importálja azt a verziót az eredeti alkalmazásba.
+Az exportált alkalmazások JSON-formátumú fájlok, amelyek összehasonlíthatók a változások alapexportálásával. A fájlok egyesítésével egyetlen JSON-fájlt hozhat létre az új verzióról. Módosítsa a **versionId** tulajdonságot a JSON-ban az új egyesített verzió jelzéséhez. Importálja a verziót az eredeti alkalmazásba.
 
-További információ a [közreműködők](luis-how-to-collaborate.md)hozzájárulásainak létrehozásáról.
+További információ a [közreműködők](luis-how-to-collaborate.md)től származó hozzájárulások ról.
 
-## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Az új iterációs ciklus megkezdéséhez tekintse át a végpont hosszúságú kimondott szöveg
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Tekintse át a végpontkimondott szöveget az új iteratív ciklus megkezdéséhez
 
-Ha egy iterációs ciklust használ, megismételheti a folyamatot. Első lépésként [tekintse meg az előrejelzési végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) , amely alacsony megbízhatósággal van megjelölve. Ezeket a hosszúságú kimondott szöveg a helyes előre jelzett szándékot, valamint a helyes és a kinyert entitást is megvizsgálhatja. A módosítások áttekintése és elfogadása után a felülvizsgálati listának üresnek kell lennie.  
+Ha végzett egy iterációs ciklus, akkor ismételje meg a folyamatot. Kezdje [az előrejelzési végpont kimondott szövegek luis](luis-how-to-review-endpoint-utterances.md) alacsony megbízhatósággal megjelölt áttekintésével. Ellenőrizze ezeket a kimondott szövegeket a helyes előre jelzett leképezés és a helyes és teljes entitás kibontva. A módosítások áttekintése és elfogadása után a véleményezési lista üresnek kell lennie.  
 
 ## <a name="next-steps"></a>További lépések
 

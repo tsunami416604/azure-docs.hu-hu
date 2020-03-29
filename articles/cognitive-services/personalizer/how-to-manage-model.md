@@ -1,56 +1,56 @@
 ---
-title: Modell-és tanulási beállítások kezelése – személyre szabás
-description: A gép által megtanult modell-és tanulási beállítások a saját verziókövetés rendszerében exportálhatók a biztonsági mentéshez.
+title: Modell- és tanulási beállítások kezelése - Személyre szabás
+description: A gép megtanult modell és a tanulási beállítások exportálhatók biztonsági mentéshez a saját forrásvezérlő rendszerében.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624296"
 ---
-# <a name="how-to-manage-model-and-learning-settings"></a>Modell-és tanulási beállítások kezelése
+# <a name="how-to-manage-model-and-learning-settings"></a>A modell- és tanulási beállítások kezelése
 
-A gép által megtanult modell-és tanulási beállítások a saját verziókövetés rendszerében exportálhatók a biztonsági mentéshez.
+A gép megtanult modell és a tanulási beállítások exportálhatók biztonsági mentéshez a saját forrásvezérlő rendszerében.
 
-## <a name="export-the-personalizer-model"></a>A személyre szabott modell exportálása
+## <a name="export-the-personalizer-model"></a>A Personalizer modell exportálása
 
-A **modell-és tanulási beállítások**erőforrás-kezelés szakaszában tekintse át a modell létrehozásának és utolsó frissítésének dátumát, és exportálja az aktuális modellt. A Azure Portal vagy a személyre szabható API-k használatával archiválhatja a modelleket archiválás céljából.
+Az Erőforrás-kezelés a **modell és a tanulási beállítások**szakaszban tekintse át a modell létrehozását és az utolsó frissített dátumot, és exportálja az aktuális modellt. Az Azure Portalon vagy a Personalizer API-k használatával exportálhat egy modellfájlt archiválási célokra.
 
-![Aktuális személyre szabott modell exportálása](media/settings/export-current-personalizer-model.png)
+![Jelenlegi Personalizer modell exportálása](media/settings/export-current-personalizer-model.png)
 
-## <a name="clear-data-for-your-learning-loop"></a>Az adatgyűjtési hurokhoz tartozó adattörlés
+## <a name="clear-data-for-your-learning-loop"></a>Adatok törlése a tanulási ciklushoz
 
-1. A Azure Portal a személyre szabott erőforráshoz a **modell és tanulás beállításai** lapon válassza az **adattörlés**lehetőséget.
-1. Az összes érték törléséhez és a tanulási hurok eredeti állapotba való visszaállításához jelölje be a 3 jelölőnégyzetet.
+1. Az Azure Portalon a Personalizer erőforráshoz a **Modell és a tanulási beállítások** lapon válassza az Adatok törlése **lehetőséget.**
+1. Az összes adat törléséhez és a tanulási ciklus eredeti állapotba állításához jelölje be mind a 3 jelölőnégyzetet.
 
-    ![A Azure Portalban törölje a jelet az adatok személyre szabása erőforrásból elemre.](./media/settings/clear-data-from-personalizer-resource.png)
+    ![Az Azure Portalon törölje az adatokat a Personalizer erőforrásból.](./media/settings/clear-data-from-personalizer-resource.png)
 
     |Érték|Cél|
     |--|--|
-    |Naplózott személyre szabás és jutalmazási érték.|A naplózási adatai kapcsolat nélküli értékelésekben használatosak. Törölje az adatait, ha alaphelyzetbe állítja az erőforrást.|
-    |A személyre szabott modell alaphelyzetbe állítása.|Ez a modell minden átképzésen megváltozik. A betanítás gyakorisága a konfiguráció lapon a **feltöltési modell gyakorisága** **beállításban** van megadva. |
-    |Állítsa be a képzési szabályzatot alapértelmezett értékre.|Ha az offline kiértékelés részeként módosította a képzési szabályzatot, a rendszer visszaállítja az eredeti tanulási szabályzatot.|
+    |Naplózott személyre szabási és jutalomadatok.|Ezeket a naplózási adatokat offline kiértékelések használják. Törölje az adatokat, ha alaphelyzetbe állítja az erőforrást.|
+    |Állítsa alaphelyzetbe a Personalizer modellt.|Ez a modell minden átképzésnél megváltozik. Ez a betanítási gyakoriság a **konfigurációs** oldalon a **feltöltési modell gyakoriságában** van megadva. |
+    |Állítsa be a tanulási szabályzatot alapértelmezettre.|Ha egy offline értékelés részeként módosította a tanulási szabályzatot, ez visszaáll az eredeti tanulási szabályzatra.|
 
-1. A törlési folyamat elindításához válassza a **kijelölt adatelemek törlése** lehetőséget. Az állapot az Azure-értesítésekben szerepel, a jobb felső navigációs sávon.
+1. A **törlési** folyamat megkezdéséhez jelölje be a Kijelölt adatok törlése jelölőnégyzetet. Az állapot az Azure-értesítésekben, a jobb felső navigációs sávon jelent meg.
 
-## <a name="import-a-new-learning-policy"></a>Új képzési szabályzat importálása
+## <a name="import-a-new-learning-policy"></a>Új tanulási szabályzat importálása
 
-A képzési [szabályzat](concept-active-learning.md#understand-learning-policy-settings) beállításai határozzák meg a _hiperparaméterek beállításaát_ . Egy új képzési szabályzat megtalálásához végezzen [Offline értékelést](how-to-offline-evaluation.md) .
+A [tanulási házirend-beállítások](concept-active-learning.md#understand-learning-policy-settings) határozzák meg a modell betanításának _hiperparamétereit._ Végezzen [offline értékelést](how-to-offline-evaluation.md) az új tanulási szabályzat megkereséséhez.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com), és válassza ki a személyre szabott erőforrást.
-1. Válassza ki a **modell-és tanulási beállításokat** az **Erőforrás-kezelés** szakaszban.
-1. A **tanulási beállítások importálása** lehetőségnél válassza ki a fent megadott JSON-formátummal létrehozott fájlt, majd kattintson a **feltöltés** gombra.
+1. Nyissa meg az [Azure Portalon](https://portal.azure.com), és válassza ki a Personalizer erőforrást.
+1. Válassza a **Modell és a tanulási beállítások lehetőséget** az **Erőforrás-kezelés** szakaszban.
+1. A **Tanulási beállítások importálása esetén** jelölje ki a fent megadott JSON formátummal létrehozott fájlt, majd kattintson a **Feltöltés gombra.**
 
-    Várjon, amíg befejeződik a tanulási szabályzat feltöltése.
+    Várja meg az értesítést, hogy a tanulási szabályzat feltöltése sikeresen megtörtént.
 
-## <a name="export-a-learning-policy"></a>Képzési szabályzat exportálása
+## <a name="export-a-learning-policy"></a>Tanulási szabályzat exportálása
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com), és válassza ki a személyre szabott erőforrást.
-1. Válassza ki a **modell-és tanulási beállításokat** az **Erőforrás-kezelés** szakaszban.
-1. A **tanulási beállítások importálása** gombra kattintva válassza a **tanulási Beállítások exportálása** gombot. Ezzel menti a `json` fájlt a helyi számítógépre.
+1. Nyissa meg az [Azure Portalon](https://portal.azure.com), és válassza ki a Personalizer erőforrást.
+1. Válassza a **Modell és a tanulási beállítások lehetőséget** az **Erőforrás-kezelés** szakaszban.
+1. A **Tanulási beállítások importálása** lapon válassza a **Tanulási beállítások exportálása** gombot. Ezzel menti `json` a fájlt a helyi számítógépre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Útmutató a képzési szabályzatok kezeléséhez](how-to-manage-model.md)
+[További információ a tanulási szabályzat kezeléséről](how-to-manage-model.md)

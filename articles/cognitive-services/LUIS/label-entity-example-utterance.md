@@ -1,7 +1,7 @@
 ---
-title: Címke-entitás – példa Kimondás
+title: Címkeentitás példa utterance
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan címkézheti egy géppel megtanult entitást alösszetevőkkel egy példa Kimondás formájában a LUIS-portálon található szándék részletek oldalán.
+description: Ismerje meg, hogyan címkézhet egy gép megtanult entitás alösszetevők egy példa utterance (kifejezés) a LUIS-portál leképezési részletes lapján.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,114 +11,114 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
 ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898371"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>Címkézett gép – megtanult entitás egy példa kimondottan
+# <a name="label-machine-learned-entity-in-an-example-utterance"></a>A machine-learned entitás címkéje egy példa utterance
 
-Ha egy entitást címkéz egy példa kiírásakor, az a LUIS példa arra, hogy mi is az entitás, és hogy az entitás hol jelenhet meg a teljes tartalomban.
+Egy entitás címkézése egy példa utterance (kifejezés) egy példa luis egy példát, hogy mi az entitás, és ahol az entitás megjelenhet az utterance (kifejezés).
 
-## <a name="labeling-machine-learned-entity"></a>Gépi megtanult entitás címkézése
+## <a name="labeling-machine-learned-entity"></a>A gép által megtanult entitás címkézése
 
-Vegye figyelembe a kifejezést, `hi, please I want a cheese pizza in 20 minutes`.
+Tekintsük `hi, please I want a cheese pizza in 20 minutes`a kifejezést, .
 
-1. Válassza ki a bal szélső szöveget, majd válassza ki az entitás jobb szélső szövegét, majd válassza ki a címkével ellátni kívánt entitást, ebben az esetben a teljes sorrendet. A _teljes sorrend_ a következő képen látható.
+1. Jelölje ki a bal szélső szöveget, majd jelölje ki az entitás jobb szélső szövegét, majd válassza ki azt az entitást, amelyhez címkézni szeretne, ebben az esetben a Teljes sorrend. A _teljes rendelés_ az alábbi képen látható.
 
     > [!div class="mx-imgBorder"]
-    > ![címke teljes gépi megtanult entitás](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![Címke teljes gépmegtanult entitás](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Válassza ki az entitást az előugró ablakban. A címkével ellátott teljes pizza Order entitás tartalmazza a címkével ellátott összes szót (balról jobbra, angol nyelven).
+1. Válassza ki az entitást az előugró ablakból. A címkézett teljes pizzarendelési entitás tartalmazza az összes olyan szót (balról jobbra angolnyelven), amely címkével van ellátva.
 
 ## <a name="review-labeled-text"></a>Címkézett szöveg áttekintése
 
-A címkézést követően tekintse át a példa teljes számát, és gondoskodjon arról, hogy a kijelölt szöveg a kiválasztott entitással legyen aláhúzva. A folytonos vonal azt jelzi, hogy a szöveg címkével van ellátva.
+A címkézés után tekintse át a példa utterance (kifejezés) és győződjön meg arról, hogy a kiválasztott szövegtartomány alá van húzva a kiválasztott entitással. A folytonos vonal azt jelzi, hogy a szöveg meg van címkézve.
 
 > [!div class="mx-imgBorder"]
-> ![címkézett gépi megtanult entitás](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![Címkézett teljes gépmegtanult entitás](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
 ## <a name="confirm-predicted-entity"></a>Előre jelzett entitás megerősítése
 
-Ha a szöveg keretén belüli pontozott téglalap található, és az entitás neve meghaladja a rövidítést, akkor a szöveg előre látható, de _még nincs megjelölve_. Az előrejelzés címkévé való bekapcsolásához jelölje ki a teljes sort, majd válassza az **entitások előrejelzésének megerősítése**lehetőséget.
+Ha a szöveg tartománya körül pontozott vonalú mező található, és az entitás neve az utterance (kifejezés) felett van, akkor azt jelzi, hogy a szöveg előre jelzett, de _még nincs megcímkézve._ Az előrejelzés címkénnyé alakításához jelölje ki az utterance (kifejezés) sort, majd válassza **az Entitás-előrejelzések megerősítése**lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![megjósolni a géppel megtanult entitások teljes](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
+> ![Teljes gépmegtanult entitás előrejelzése](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-Azt is megteheti, hogy a szöveg fölött kijelöli az entitás nevét, majd a megjelenő menüben kiválasztja a **jóslat megerősítése** lehetőséget.
-
-> [!div class="mx-imgBorder"]
-> ![megjósolni, hogy a gép megtanulta a menüt](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
-
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Címke entitás festéssel az Entity paletta kurzorral
-
-Az entitás-paletta a korábbi címkézési felület alternatívájaként nyújt alternatívát. Lehetővé teszi a szöveg átméretezését, ha azonnal címkével látja el azt egy entitással.
-
-1. Nyissa meg az entitás-palettát a kiemelési tábla jobb felső sarkában található kiemelő ikonra kattintva.
-
-    > [!div class="mx-imgBorder"]
-    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. Válassza ki az entitás összetevőt. Ez a művelet vizuálisan egy új kurzorral van megjelölve. A kurzor az egérmutatót követi a portálon való áthelyezés során.
-
-    > [!div class="mx-imgBorder"]
-    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
-
-3. A példában a Kimondás elemre _festi_ az entitást a kurzorral.
-
-    > [!div class="mx-imgBorder"]
-    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Egy gép megtanult entitás alösszetevőinek címkézése
-
-Az entitásokban lévő alösszetevők pontosan ugyanúgy vannak megjelölve, mint a legfelső szintű entitások. A szöveg kiválasztásakor az előugró ablakban elérhető entitások a szövegnek megfelelő kontextushoz viszonyítva jelennek meg. Ha például egy 5 szintű, géppel megtanult entitást használ, és olyan szöveget választ ki, amely az 1. és a 2. szinttel van megjelölve (a példában szereplő címkével ellátott entitás neve jelzi), az előugró ablakban elérhető entitások köre a a harmadik szint összetevőinek kontextusa. Ha más entitásokkal szeretné felcímkézni a szöveget, válassza a **címke másik entitásként** lehetőséget.
+Másik lehetőségként kiválaszthatja az entitás nevét a szöveg felett, majd a megjelenő menüből válassza az **Előrejelzés megerősítése** parancsot.
 
 > [!div class="mx-imgBorder"]
-> ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+> ![A teljes gépi legeltetésű entitás előrejelzése menüvel](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
 
-Az alösszetevők csak akkor címkével rendelkezhetnek, ha a szülő is címkével van ellátva.
+## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>Entitás felirata entitáspaletta kurzorral való festéssel
 
-## <a name="labeling-entity-roles"></a>Entitás szerepköreinek címkézése
+Az entitáspaletta alternatívát kínál az előző címkézési élményhez képest. Lehetővé teszi a szöveg ecsettel történő átmosását, hogy azonnal címkézze egy entitással.
 
-Az entitások szerepkörei az Entity paletta használatával vannak megjelölve.
-
-1. A leképezés részletei lapon válassza ki az Entity ( **entitás) palettát** a helyi eszköztárból.
-1. Az entitás-paletta megnyitása után válassza ki az entitást az entitás listából.
-1. Lépjen az **entitás-felügyelőre**, és válasszon ki egy meglévő szerepkört, vagy hozzon létre egy új szerepkört.
-1. A példában a Kimondás szövegében címkézze fel a szöveget az entitás szerepkörrel.
-
-## <a name="unlabel-entities"></a>Entitások címkézésének kicsomagolása
-
-Entitás kicímkézéséhez válassza ki az entitás nevét a szöveg alatt, és válassza a **címke**kijelölése elemet. Ha a felcímkézni próbált entitás címkével ellátott alösszetevőket tartalmaz, akkor először el kell távolítani az alösszetevőket.
-
-## <a name="editing-labels-using-the-entity-palette"></a>Címkék szerkesztése az Entity paletta használatával
-
-Ha a címkézés során hiba történik, az Entity paletta egy egyszerű eszköz, amely lehetővé teszi a gyors szerkesztést. Ha például egy entitás címkéje egy további szót mutat be a hiba alapján, és már rendelkezik címkézett alösszetevőkkel, akkor az Entity paletta használatával ecsetet adhat a szavak rövidebb időtartamára.
-
-Például:
-
-1. A pizza Type alösszetevő a "Cheese pizza with" kifejezéssel is rendelkezik, amely tartalmaz egy extra helytelen szót – "with"
+1. Nyissa meg az entitáspalettát az utterance (kifejezés) táblázat jobb felső részén található Kiemelő ikon kiválasztásával.
 
     > [!div class="mx-imgBorder"]
-    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/edit-label-with-palette-1.png)
+    > ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Az Entity paletta használatával válassza ki a pizza típust, és ecsetet a "Cheese pizza" kifejezésre. Ennek eredménye, hogy csak a Cheese pizza van megjelölve pizza típusúként.
+2. Válassza ki az entitásösszetevőt. Ezt a műveletet vizuálisan egy új kurzorral jelzi. A kurzor követi az egeret, ahogy mozog a portálon.
 
     > [!div class="mx-imgBorder"]
-    > ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/edit-label-with-palette-2.png)
+    > ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
 
-## <a name="labels-for-matching-text-entities"></a>Egyező szövegű entitások címkéi
+3. A példa utterance (kifejezés) az entitás _a_ kurzorral.
 
-Az egyező szöveges entitások közé tartoznak az előre elkészített entitások, a reguláris kifejezések entitásai, az entitások listázása és a minta. bármely entitás. Ezeket a rendszer automatikusan a LUIS címkével jelölte meg, így a felhasználóknak nem kell manuálisan megadniuk a címkét.
+    > [!div class="mx-imgBorder"]
+    > ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+
+## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Egy gép által megtanult entitás alösszetevőinek címkézése
+
+Az entitások alösszetevői pontosan ugyanúgy vannak címkézve, mint a legfelső szintű entitások. Szöveg kijelölésétorként az előugró ablakban elérhető entitások a szöveg szövegének környezetéhez viszonyítva jelennek meg. Ha például egy 5 szintű, gép megtanult entitással rendelkezik, és olyan szöveget választ, amely az első és a 2. a harmadik szint összetevőinek összefüggésében. Ha a szöveget más entitásokkal szeretné címkézni, válassza a **Címke másik entitásként** lehetőséget.
+
+> [!div class="mx-imgBorder"]
+> ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
+
+Az alösszetevők csak akkor címkézhetők, ha a szülő is meg van címkézve.
+
+## <a name="labeling-entity-roles"></a>Entitásszerepkörök címkézése
+
+Az entitásszerepkörök az entitáspaletta használatával vannak címkézve.
+
+1. A Szándék részletei lapon válassza ki az **Entitás palettát** a környezet eszköztáráról.
+1. Az Entitás paletta megnyitása után válassza ki az entitást az entitás listájából.
+1. Lépjen az **Entitásfelügyelőre**, és válasszon ki egy meglévő szerepkört, vagy hozzon létre egy új szerepkört.
+1. A példa utterance (kifejezés) szöveget, felirata a szöveget az entitás szerepkör.
+
+## <a name="unlabel-entities"></a>Címke nélküli entitások
+
+Entitás címzésének megszüntetéséhez jelölje ki az entitás nevét a szöveg alatt, és válassza a **Címke megszüntetése**lehetőséget. Ha az entitás, amelyet le szeretne vonni a felirattal, feliratozott alösszetevőkkel rendelkezik, akkor az alösszetevőket először nem kell címkézni.
+
+## <a name="editing-labels-using-the-entity-palette"></a>Címkék szerkesztése az entitáspalettával
+
+Ha hibát követ el a címkézés során, az entitáspaletta egy egyszerű eszköz, amely lehetővé teszi a gyors szerkesztést. Ha például egy entitáscímke véletlenül egy további szót ölel fel, és már rendelkezik címkézett alösszetevőkkel, akkor az entitáspalettával ecsettel átsöpörhet a kívánt rövidebb szavakra.
+
+Példa:
+
+1. Pizza Típus alkomponens ível "sajt pizza", amely magában foglalja egy extra helytelen szó - "a"
+
+    > [!div class="mx-imgBorder"]
+    > ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/edit-label-with-palette-1.png)
+
+2. Használja a entitás paletta felvenni Pizza type és ecsettel át "sajt pizza". Az eredmény az, hogy csak a sajt pizza van címkézve Pizza Type most.
+
+    > [!div class="mx-imgBorder"]
+    > ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/edit-label-with-palette-2.png)
+
+## <a name="labels-for-matching-text-entities"></a>Címkék a megfelelő szöveges entitásokhoz
+
+A megfelelő szöveges entitások közé tartoznak az előre összeállított entitások, reguláris kifejezés entitások, listaentitások és pattern.any entitások. Ezeket a LUIS automatikusan címkézi, így nem kell manuálisan címkézni a felhasználók.
 
 ## <a name="entity-prediction-errors"></a>Entitás-előrejelzési hibák
 
-Az entitás-előrejelzési hibák azt jelzik, hogy az előre jelzett entitás nem egyezik a címkével ellátott entitással. Ezt a rendszer a kiírás melletti óvatossági mutatóval ábrázolja.
+Az entitás előrejelzési hibái azt jelzik, hogy az előre jelzett entitás nem egyezik meg a címkézett entitással. Ez láthatóvá egy figyelmeztető jelzés mellett az utterance (kifejezés) jelző.
 
 > [!div class="mx-imgBorder"]
-> ![a gépi megtanult entitáshoz tartozó Entity paletta](media/label-utterances/example-utterance-indicates-prediction-error.png)
+> ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Használja az [irányítópultot](luis-how-to-use-dashboard.md) , és [tekintse át a végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javítása érdekében.
+Használja az [irányítópultot,](luis-how-to-use-dashboard.md) és tekintse át a [végpont kimondott szövegét](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javításához.

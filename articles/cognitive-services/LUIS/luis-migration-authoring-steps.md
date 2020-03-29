@@ -1,7 +1,7 @@
 ---
-title: Áttelepítés Azure authoring-erőforrásra
+title: Áttelepítés Azure-alapú szerzői erőforrásra
 titleSuffix: Azure Cognitive Services
-description: Migrálás egy Azure authoring-erőforrásba.
+description: Áttelepíthető egy Azure-szerzői erőforrásra.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,47 +12,47 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194638"
 ---
-# <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Az Azure authoring-erőforrásba való Migrálás lépései
+# <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Az Azure szerzői erőforrásra való áttelepítés lépései
 
-A Language Understanding (LUIS) portálon telepítse át az összes olyan alkalmazást, amelyet az Azure authoring Resource használatára használ.
+A Language Understanding (LUIS) portálon áttelepítheti az összes saját alkalmazások az Azure szerzői erőforrás használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Luis portál alkalmazások listájáról is készíthet biztonsági másolatot az alkalmazásokról az egyes alkalmazások exportálásával vagy az exportálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)használatával.
-* **Szükség**esetén mentse az egyes alkalmazások collaborator's listáját. Minden közreműködő e-mailt küldhet az áttelepítési folyamat részeként.
-* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. Ha azonban a LUIS-t használja, használhatja az ingyenes (F0) díjszabási szintet is. Előfordulhat, hogy végül egy fizetős szintet kell használnia, mivel a használat növekszik.
+* **Szükség esetén**készítsen biztonsági másolatot az alkalmazásokról a LUIS-portál alkalmazáslistájáról az egyes alkalmazások exportálásával vagy az exportálási [API használatával.](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)
+* **Szükség esetén**mentse az egyes alkalmazások munkatársainak listáját. Az áttelepítési folyamat részeként minden közreműködő e-mailt küldhet.
+* **Kötelező**, [Azure-előfizetéssel kell rendelkeznie.](https://azure.microsoft.com/free/) Az előfizetési folyamat egy része számlázási adatokat igényel. Azonban használhatja az ingyenes (F0) tarifacsomagok, ha a LUIS használata. Előfordulhat, hogy a használat növekedésével egy fizetős szintre van szüksége.
 
-Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon.](https://azure.microsoft.com/free/)
 
-## <a name="access-the-migration-process"></a>Hozzáférés az áttelepítési folyamathoz
+## <a name="access-the-migration-process"></a>Az áttelepítési folyamat elérése
 
-Heti rendszerességgel megkéri, hogy telepítse át az alkalmazásokat. Ezt az ablakot Migrálás nélkül is megszakíthatja. Ha a következő ütemezett időszak előtt kíván áttelepítést végezni, megkezdheti az áttelepítési folyamatot az **Azure** ikonján a Luis portál felső sávján.
+A rendszer hetente kéri az alkalmazások áttelepítését. Ezt az ablakot átgrés nélkül is megszakíthatja. Ha a következő ütemezett időszak előtt szeretne áttérni, megkezdheti az áttelepítési folyamatot az **Azure** ikonról a LUIS-portál felső eszköztárán.
 
 > [!div class="mx-imgBorder"]
-> ![áttelepítési ikon](./media/migrate-authoring-key/migration-button.png)
+> ![Áttelepítés ikon](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>Az alkalmazás tulajdonosa megkezdi az áttelepítési folyamatot
 
-Az áttelepítési folyamat akkor érhető el, ha Ön a LUIS-alkalmazások tulajdonosa.
+Az áttelepítési folyamat akkor érhető el, ha Ön a tulajdonosa bármely LUIS-alkalmazások.
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai) , és fogadja el a használati feltételeket.
-1. Az áttelepítés előugró ablakával folytathatja az áttelepítést, vagy később is áttelepítheti azokat. Válassza az **áttelepítés most**lehetőséget. Ha később szeretné áttelepíteni a-t, 9 hónapja van, hogy áttelepítse az új szerzői kulcsba az Azure-ban.
+1. Jelentkezzen be a [LUIS-portálra,](https://www.luis.ai) és fogadja el a használati feltételeket.
+1. Az áttelepítés előugró ablaka lehetővé teszi az áttelepítés folytatását vagy későbbi áttelepítését. Válassza **az Áttelepítés most**lehetőséget. Ha úgy dönt, hogy később migrál, 9 hónap áll rendelkezésére az azure-beli új szerzői kulcsra való áttelepítésre.
 
-    ![Első előugró ablak az áttelepítési folyamatban válassza az áttelepítés most lehetőséget.](./media/migrate-authoring-key/migrate-now.png)
+    ![Az áttelepítési folyamat első előugró ablaka, válassza az Áttelepítés most lehetőséget.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Ha bármelyik alkalmazás rendelkezik közreműködővel, a rendszer arra kéri, hogy **küldjön nekik egy e-mailt** , amely tájékoztatja őket az áttelepítésről. Ez az egy választható lépés.
+1. Ha valamelyik alkalmazásrendelkezik együttműködőkkel, a rendszer kéri, hogy **küldjön nekik egy e-mailt,** amely ből tudakadni az áttelepítésről. Ez egy nem kötelező lépés.
 
-    Miután áttelepítette fiókját az Azure-ba, az alkalmazások már nem lesznek elérhetők a közreműködők számára.
+    Miután áttelepítette fiókját az Azure-ba, alkalmazásai már nem lesznek elérhetők az együttműködők számára.
 
-    Az egyes közreműködők és alkalmazások esetében az alapértelmezett e-mail-alkalmazás egy egyszerűsített formátumú e-mail-címmel nyílik meg. A küldés előtt szerkesztheti az e-maileket.
+    Minden közreműködő és alkalmazás esetében az alapértelmezett e-mail alkalmazás egy enyhén formázott e-maillel nyílik meg. Elküldés előtt szerkesztheti az e-mailt.
 
-    Az e-mail-sablon tartalmazza az alkalmazás AZONOSÍTÓját és az alkalmazás nevét.
+    Az e-mail sablon tartalmazza a pontos alkalmazásazonosítót és az alkalmazás nevét.
 
     ```html
     Dear Sir/Madam,
@@ -65,59 +65,59 @@ Az áttelepítési folyamat akkor érhető el, ha Ön a LUIS-alkalmazások tulaj
     Thank you
     ```
 
-1. Hozzon létre egy LUIS authoring-erőforrást úgy, hogy egy meglévő szerzői erőforrást használ, vagy új authoring-erőforrást szeretne létrehozni.
+1. Válassza ki, hogy hozzon létre egy LUIS szerzői erőforrás kiválasztásával egy meglévő szerzői erőforrás, vagy hozzon létre egy új szerzői erőforrás.
 
     > [!div class="mx-imgBorder"]
-    > ![szerzői erőforrás létrehozása](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
+    > ![Szerzői erőforrás létrehozása](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
 
-1. A következő ablakban adja meg az erőforrás-kulcs adatait. Az adatok megadása után válassza az **erőforrás létrehozása**lehetőséget. Régiónként akár 10 ingyenes Author-erőforrást is használhat, előfizetések szerint.
+1. A következő ablakban adja meg az erőforráskulcs adatait. Az adatok megadása után válassza az **Erőforrás létrehozása**lehetőséget. Régiónként és előfizetésenként 10 ingyenes szerzői erőforrást kaphat.
 
     ![Szerzői erőforrás létrehozása](./media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    **Új authoring-erőforrás létrehozásakor**adja meg a következő információkat:
+    **Új szerzői erőforrás létrehozásakor**adja meg a következő információkat:
 
-    * **Erőforrás neve** – a kiválasztott egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használhat.
-    * **Bérlő** – az a bérlő, amelyhez az Azure-előfizetés társítva van.
-    * **Előfizetés neve** – az erőforráshoz számlázandó előfizetés.
-    * **Erőforráscsoport** – a kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez.
-    * **Hely** – a hely kiválasztása az **erőforráscsoport** kiválasztása alapján történik.
-    * **Árképzési szint** – az árképzési szint meghatározza a másodpercenkénti és havi maximális tranzakciót.
+    * **Erőforrás neve** – egyéni név, amelyet a szerzői és előrejelzési végpontlekérdezések URL-címének részeként használ.
+    * **Bérlő** – a bérlő, amelyhez az Azure-előfizetés e társított.
+    * **Előfizetés neve** – az erőforrásért kiszámlázott előfizetés.
+    * **Erőforráscsoport** – egyéni erőforráscsoport által választott vagy létrehozott név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáférés hez és a kezeléshez.
+    * **Hely** – a helyválasztás az **erőforráscsoport** kiválasztásán alapul.
+    * **Tarifacsomag** – a tarifacsomag határozza meg a maximális tranzakciót másodpercenként és havonta.
 
-1. Érvényesítse a szerzői erőforrást, és **telepítse át most**.
+1. Ellenőrizze a szerzői erőforrást, és telepítse most az **áttelepítést.**
 
     ![Szerzői erőforrás létrehozása](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
 
-1. A szerzői erőforrás létrehozásakor megjelenik a siker üzenet. Az előugró ablak bezárásához kattintson a **Bezárás** gombra.
+1. A szerzői erőforrás létrehozásakor megjelenik a sikeres üzenet. Az előugró ablak bezárásához válassza a **Bezárás** gombot.
 
     ![A szerzői erőforrás létrehozása sikeresen megtörtént.](./media/migrate-authoring-key/migration-success.png)
 
-    A **saját alkalmazások** lista az új szerzői erőforrásba áttelepített alkalmazásokat jeleníti meg.
+    A **Saját alkalmazások** lista az új szerzői erőforrásba áttelepített alkalmazásokat jeleníti meg.
 
-    Nem kell tudnia, hogy az authoring Resource kulcsa az alkalmazások a LUIS Portalon való szerkesztésének folytatásához szükséges. Ha programozott módon szeretné szerkeszteni az alkalmazásokat, szüksége lesz a szerzői kulcs értékeire. Ezek az értékek a LUIS **-portál Manage-> Azure-erőforrások** lapján jelennek meg, és az erőforrás **kulcsai** oldalának Azure Portal is elérhetők.
+    Nem kell ismernie a szerzői erőforrás kulcsát, hogy továbbra is szerkesztheti az alkalmazásokat a LUIS portálon. Ha az alkalmazásokat programozott módon kívánja szerkeszteni, szüksége van a szerzői kulcsértékekre. Ezek az értékek a **LUIS-portálon a -> Azure-erőforrások kezelése** lapon jelennek meg, és az erőforrás **kulcsai** lapon is elérhetők az Azure Portalon.
 
-1. Az alkalmazásokhoz való hozzáférés előtt válassza ki az előfizetés és a LUIS authoring Resource elemet a megjelenő alkalmazások megtekintéséhez.
+1. Az alkalmazások elérése előtt válassza ki az előfizetést és a LUIS szerzői erőforrást a létrehozható alkalmazások megtekintéséhez.
 
-    ![Válassza ki az előfizetés és a LUIS authoring Resource elemet a megadható alkalmazások megtekintéséhez.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+    ![Válassza ki az előfizetés és a LUIS szerzői erőforrás megtekintéséhez az alkalmazásokat a hozhat létre.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
-## <a name="app-contributor-begins-the-migration-process"></a>Az alkalmazás közreműködője megkezdi az áttelepítési folyamatot
+## <a name="app-contributor-begins-the-migration-process"></a>Az alkalmazásközreműködő megkezdi az áttelepítési folyamatot
 
-Kövesse az alkalmazás tulajdonosának áttelepítéséhez szükséges lépéseket. A folyamat létrehoz egy `LUIS.Authoring`típusú új szerzői erőforrást.
+Kövesse ugyanazokat a lépéseket, mint az alkalmazás tulajdonosa az áttelepítéshez. A folyamat létrehoz egy új `LUIS.Authoring`szerzői erőforrást.
 
-A fiókját át kell telepíteni ahhoz, hogy közreműködőként hozzá lehessen adni a mások tulajdonában lévő áttelepített alkalmazásokat.
+Át kell telepítenie a fiókját ahhoz, hogy közreműködőként hozzálehessen adni a mások tulajdonában lévő áttelepített alkalmazásokhoz.
 
-## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Az áttelepítési folyamat után vegyen fel közreműködőket a szerzői erőforrásba
+## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Az áttelepítési folyamat után közreműködők hozzáadása a szerzői erőforráshoz
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
-Ismerje meg [, hogyan vehet fel közreműködőket](luis-how-to-collaborate.md).
+További információ [a közreműködők hozzáadásáról.](luis-how-to-collaborate.md)
 
-## <a name="troubleshooting-errors-with-the-migration-process"></a>Hibák elhárítása az áttelepítési folyamattal
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Az áttelepítési folyamat hibáinak elhárítása
 
-Ha `MissingSubscriptionRegistration` hibát kap a LUIS-portálon, és az áttelepítési folyamat során piros értesítési sáv jelenik meg, hozzon létre egy kognitív szolgáltatási erőforrást a [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)-ben. További információ a [hiba okairól](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
+Ha hibaüzenetet `MissingSubscriptionRegistration` kap a LUIS portálon egy piros értesítési sávaz áttelepítési folyamat során, hozzon létre egy Cognitive Service-erőforrást az [Azure Portalon](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI-ben.](luis-how-to-azure-subscription.md#create-resources-in-azure-cli) További információ [a hiba okairól](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
 
 ## <a name="next-steps"></a>További lépések
 
 
-* A szerzői és futtatókörnyezeti kulcsokkal kapcsolatos [fogalmak](luis-concept-keys.md) áttekintése
-* [A kulcsok hozzárendelésének és a](luis-how-to-azure-subscription.md) [közreműködők](luis-how-to-collaborate.md) hozzáadásának áttekintése
+* A szerzői és futásidejű kulcsokra szóló [fogalmak áttekintése](luis-concept-keys.md)
+* A [kulcsok hozzárendelésének](luis-how-to-azure-subscription.md) és [közreműködők hozzáadásának áttekintése](luis-how-to-collaborate.md)

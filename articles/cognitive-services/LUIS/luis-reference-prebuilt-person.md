@@ -1,7 +1,7 @@
 ---
-title: PersonName előre elkészített entitás – LUIS
+title: PersonName előre összeállított entitás - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmaz personName előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk a personName előre összeállított entitásadatait tartalmazza a nyelvi ismeretek (LUIS) nyelvben.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,18 +12,18 @@ ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273423"
 ---
-# <a name="personname-prebuilt-entity-for-a-luis-app"></a>PersonName előre összeépített entitása egy LUIS-alkalmazáshoz
-Az előre összeállított personName entitás emberek neveinek észleli. Az entitás már be van tanítva, mert nem kell való az alkalmazás leképezések personName tartalmazó példa beszédmódok hozzáadása. az personName entitás angol és kínai [kulturális](luis-reference-prebuilt-entities.md)környezetekben támogatott.
+# <a name="personname-prebuilt-entity-for-a-luis-app"></a>A PersonName előre összeállított entitása egy LUIS-alkalmazáshoz
+Az előre összeállított personName entitás felismeri a személyek nevét. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia a personName-t tartalmazó példautterances-t az alkalmazás leképezéseihez. PersonName entitás támogatott angol és kínai [kultúrákban](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>PersonName entitás feloldása
 
-A lekérdezés a következő entitás-objektumokat adja vissza:
+A következő entitásobjektumok at adják vissza a lekérdezéshez:
 
 `Is Jill Jones in Cairo?`
 
@@ -31,7 +31,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
 
-A következő JSON a `verbose` paraméterrel van beállítva `false`:
+A következő JSON `verbose` paraméter a `false`következő:
 
 ```json
 "entities": {
@@ -41,7 +41,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméterrel van beállítva `true`:
+A következő JSON `verbose` paraméter a `true`következő:
 
 ```json
 "entities": {
@@ -67,7 +67,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-Az alábbi példa a **beépített. personName** entitás feloldását mutatja be.
+A következő példa a **builtin.personName** entitás felbontását mutatja be.
 
 ```json
 "entities": [
@@ -81,8 +81,8 @@ Az alábbi példa a **beépített. personName** entitás feloldását mutatja be
 ```
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
-További információ az [e-mailek](luis-reference-prebuilt-email.md), a [számok](luis-reference-prebuilt-number.md)és a [sorszámok](luis-reference-prebuilt-ordinal.md) entitásokról.
+További információ az [e-mail,](luis-reference-prebuilt-email.md) [a szám](luis-reference-prebuilt-number.md)és a [levelezőentitásokról.](luis-reference-prebuilt-ordinal.md)

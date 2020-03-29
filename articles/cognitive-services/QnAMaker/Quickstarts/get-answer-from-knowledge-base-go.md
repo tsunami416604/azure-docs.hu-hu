@@ -1,37 +1,37 @@
 ---
-title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, go-QnA Maker'
-description: Ez a go REST-alapú rövid útmutató végigvezeti Önt a tudásalapú válasz beszerzésén, programozott módon.
+title: 'Rövid útmutató: Válasz kérése a tudásbázistól - REST, Go - QnA Maker'
+description: Ez a Go REST-alapú rövid útmutató végigvezeti a tudásbázisból programozott válasz beszerzésén.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 37a8925f8460e448dce3b66354f5181fe103a6a8
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851794"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Gyors útmutató: válaszok kérése egy tudásalapú Tudásbázisból a go használatával
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Rövid útmutató: Válaszok egy kérdésre egy tudásbázisból a Go segítségével
 
-Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../Concepts/knowledge-base.md) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
+Ez a rövid útmutató végigvezeti a programozott beolvasása egy közzétett QnA Maker tudásbázis. A tudásbázis olyan [adatforrásokból](../Concepts/knowledge-base.md) származó kérdéseket és válaszokat tartalmaz, mint például a gyakori kérdések. A kérdést a [rendszer](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) elküldi a QnA Maker szolgáltatásnak. A [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a felül előre jelzett választ.
 
-[Hivatkozási dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
+[Referenciadokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Go 1.10.1](https://golang.org/dl/)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza a **kulcsok** elemet az **Erőforrás-kezelés** területen az QnA Maker erőforráshoz tartozó Azure-irányítópulton.
-* **Közzétételi** oldal beállításai Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. [Ezt az alapszintű tudásbázist](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)töltheti le és használhatja.
+* [Visual Studio kód](https://code.visualstudio.com/)
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs lekéréséhez válassza **a Kulcsok** az **Erőforrás-kezelés** az Azure-irányítópulton a QnA Maker erőforrás.
+* **Lapbeállítások közzététele.** Ha nem rendelkezik közzétett tudásbázissal, hozzon létre egy üres tudásbázist, majd importáljon egy tudásbázist a **Beállítások** lapon, majd tegye közzé. Letöltheti és használhatja [ezt az alapvető tudásbázist.](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)
 
-    A közzétételi oldal beállításai közé tartozik az útvonal értéke, a gazdagép értéke és a EndpointKey érték.
+    A közzétételi lap beállításai közé tartozik a POST útvonal érték, az Állomás érték és az EndpointKey érték.
 
-    ![Közzétételi beállítások](../media/qnamaker-quickstart-get-answer/publish-settings.png)
+    ![Publish settings (Közzétételi beállítások)](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
 ## <a name="create-a-go-file"></a>Go-fájl létrehozása
 
-Nyissa meg a VSCode, és hozzon létre egy `get-answer.go` nevű új fájlt, és adja hozzá a következő osztályt:
+Nyissa meg a VSCode-ot, és hozzon létre egy új nevű fájlt, `get-answer.go` és adja hozzá a következő osztályt:
 
 ```Go
 package main
@@ -43,31 +43,31 @@ func main() {
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-A `main` függvény fölött, a `get-answer.go` fájl felső részén adja hozzá a szükséges függőségeket a projekthez:
+A `main` függvény felett, a `get-answer.go` fájl tetején adja hozzá a szükséges függőségeket a projekthez:
 
 [!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=3-9 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
-A `main` függvény tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.
+A `main` függvény tetején adja hozzá a QnA Maker eléréséhez szükséges állandókat. Ezek az értékek a tudásbázis közzététele után a **Közzététel** lapon találhatók.
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=17-33 "Add the required constants")]
 
-## <a name="add-a-post-request-to-send-question-and-get-answer"></a>POST-kérelem hozzáadása a kérdés elküldéséhez és a válasz beszerzéséhez
+## <a name="add-a-post-request-to-send-question-and-get-answer"></a>Post-kérelem hozzáadása kérdés küldéséhez és válaszkéréshez
 
-A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a kérdést a Tudásbázisnak, és fogadja a választ:
+A következő kód https-kérelmet küld a QnA Maker API-nak, hogy küldje el a kérdést a tudásbázisnak, és megkapja a választ:
 
 [!code-go[Add a POST request to send question to knowledge base](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=35-48 "Add a POST request to send question to knowledge base")]
 
-A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`.
+A `Authorization` fejléc értéke tartalmazza `EndpointKey`a karakterláncot .
 
-További információ a [kérelemről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
+További információ a [kérésről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról.](../how-to/metadata-generateanswer-usage.md#generateanswer-response)
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozhat létre, és a program futtatása a parancssorból. A kérelem automatikusan elküldi a QnA Maker API, majd a konzolablakban nyomtatási.
+A program létrehozása és futtatása a parancssorból. Automatikusan elküldi a kérelmet a QnA Maker API-nak, majd kinyomtatja a konzolablakba.
 
-1. A fájl létrehozása:
+1. A fájl összeállítása:
 
     ```bash
     go build get-answer.go

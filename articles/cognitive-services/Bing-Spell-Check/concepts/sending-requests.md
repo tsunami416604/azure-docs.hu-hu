@@ -1,7 +1,7 @@
 ---
 title: Kérelmek küldése a Bing Spell Check API-nak
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az API-val kapcsolatos Bing Spell Check módokat, beállításokat és egyéb információkat.
+description: Ismerje meg a Bing helyesírás-ellenőrzési módjait, beállításait és az API-val kapcsolatos egyéb információkat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883451"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérelmek küldése a Bing Spell Check API-nak
@@ -27,11 +27,11 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
   
 A kérelemnek a HTTPS protokollt kell használnia.
 
-Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgálók egyetlen frissítési pontot is biztosítanak az API jövőbeli verzióihoz.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgáló egyetlen frissítési pontot is biztosít az API jövőbeli verzióihoz.
 
 A kérelemnek tartalmaznia kell a [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text) lekérdezési paramétert, amely az ellenőrzendő szöveges sztringet adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `mode`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.  
   
-A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) fejlécet. Bár nem kötelező, javasoljuk, hogy a következő fejléceket is megadja. Ezek a fejlécek segítenek a Bing Spell Check APInak pontosabb eredményeket adni:  
+A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) fejlécet. Bár nem kötelező, javasoljuk, hogy a következő fejléceket is adja meg. Ezek a fejlécek segítik a Bing Helyesírás-ellenőrző API pontosabb eredményeket:  
   
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
@@ -40,15 +40,15 @@ A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.micr
 
 Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers) cikkben.
 
-A Bing Spell Check API JavaScript használatával való meghívásakor a böngésző beépített biztonsági funkciói megakadályozhatják a fejlécek értékének elérését.
+Ha JavaScript-nyelven hívja meg a Bing helyesírás-ellenőrző API-t, a böngésző beépített biztonsági szolgáltatásai megakadályozhatják a fejlécek értékeinek elérését.
 
-A probléma megoldásához a Bing Spell Check API kérelmet CORS-proxyn keresztül teheti meg. Az ilyen proxytól kapott válasz egy `Access-Control-Expose-Headers` fejlécet tartalmaz, amely a válasz fejléceit, és elérhetővé teszi őket a JavaScript számára.
+A probléma megoldásához a Bing helyesírás-ellenőrző API-kérelmet egy CORS-proxyn keresztül teheti meg. Az ilyen proxy válasza `Access-Control-Expose-Headers` rendelkezik egy fejléccel, amely fehéríti a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Egyszerűen telepíthet egy CORS-proxyt, amely lehetővé teszi, hogy az [oktatóanyag-alkalmazás](../tutorials/spellcheck.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
+Könnyen telepíthet CORS-proxyt, hogy az [oktatóalkalmazás](../tutorials/spellcheck.md) hozzáférhessen a választható ügyfélfejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a HTML-fájlban lévő Bing Spell Check API végpontot a következőre:
+Ezután módosítsa a Bing helyesírás-ellenőrző API-végpontját a HTML-fájlban a következőkre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
 
@@ -56,7 +56,7 @@ Végül indítsa el a CORS-proxyt a következő paranccsal:
 
     cors-proxy-server
 
-Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatt a kibontható HTTP-fejlécek szakaszban láthatja a `X-MSEdge-ClientID` fejlécet (többek között), és ellenőrizheti, hogy minden kérelem esetében azonos-e.
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A kibontható HTTP-fejlécek szakaszban a keresési `X-MSEdge-ClientID` eredmények alatt most láthatja a fejlécet (többek között), és ellenőrizheti, hogy az minden kérésnél azonos-e.
 
 ## <a name="example-api-request"></a>Példa API-kérelemre
 

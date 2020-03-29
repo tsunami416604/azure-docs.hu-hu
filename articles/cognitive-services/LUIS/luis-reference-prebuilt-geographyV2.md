@@ -1,7 +1,7 @@
 ---
-title: Földrajz v2 előre elkészített entitás – LUIS
+title: Földrajzi V2 előre összeállított entitás - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmaz geographyV2 előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk a geographyV2 előre összeállított entitásadatait tartalmazza a nyelvi ismeretek (LUIS) című témakörben.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273490"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeépített entitása egy LUIS-alkalmazáshoz
-Az előre összeállított geographyV2 entitás helyek észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések GeographyV2 tartalmazó példa beszédmódok hozzáadása. Az GeographyV2 entitás angol [kulturális](luis-reference-prebuilt-entities.md)környezetekben támogatott.
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeállított entitás egy LUIS-alkalmazáshoz
+Az előre összeállított geographyV2 entitás felismeri a helyeket. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia a GeographyV2-t tartalmazó példautterances az alkalmazás leképezések. GeographyV2 entitás támogatja az angol [kultúra](luis-reference-prebuilt-entities.md).
 
-## <a name="subtypes"></a>Altípus
-A földrajzi helyeket altípus rendelkezik:
+## <a name="subtypes"></a>Altípusa
+A földrajzi helyek altípusai:
 
 |Altípus|Cél|
 |--|--|
-|`poi`|hasznos helyekre vezető útvonalak|
-|`city`|Város neve|
+|`poi`|érdekes hely|
+|`city`|város neve|
 |`countryRegion`|ország vagy régió neve|
 |`continent`|kontinens neve|
-|`state`|állam vagy megye neve|
+|`state`|állam vagy tartomány neve|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás feloldása
+## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 entitás megoldása
 
-A lekérdezés a következő entitás-objektumokat adja vissza:
+A következő entitásobjektumok at adják vissza a lekérdezéshez:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméterrel van beállítva `false`:
+A következő JSON `verbose` paraméter a `false`következő:
 
 ```json
 "entities": {
@@ -70,11 +70,11 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 }
 ```
 
-Az előző JSON-ban `poi` az **érdekes pont**rövidítése.
+Az előző JSON-ban `poi` az érdekes pont **rövidítése.**
 
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON a `verbose` paraméterrel van beállítva `true`:
+A következő JSON `verbose` paraméter a `true`következő:
 
 ```json
 "entities": {
@@ -163,7 +163,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-Az alábbi példa a **beépített. geographyV2** entitás feloldását mutatja be.
+A következő példa a **builtin.geographyV2** entitás felbontását mutatja be.
 
 ```json
 "entities": [
@@ -207,8 +207,8 @@ Az alábbi példa a **beépített. geographyV2** entitás feloldását mutatja b
 ```
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
-További információ az [e-mailek](luis-reference-prebuilt-email.md), a [számok](luis-reference-prebuilt-number.md)és a [sorszámok](luis-reference-prebuilt-ordinal.md) entitásokról.
+További információ az [e-mail,](luis-reference-prebuilt-email.md) [a szám](luis-reference-prebuilt-number.md)és a [levelezőentitásokról.](luis-reference-prebuilt-ordinal.md)

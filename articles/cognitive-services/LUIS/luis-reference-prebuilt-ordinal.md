@@ -1,7 +1,7 @@
 ---
-title: Sorszámmal elkészített, előre összeépített entitás – LUIS
+title: Előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk sorszámnál előre összeállított entitások információkat a Language Understanding (LUIS) tartalmaz.
+description: Ez a cikk a nyelvi ismeretek (LUIS) előre elkészített entitásadatait tartalmazza.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273447"
 ---
-# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre elkészített entitás sorszáma
-A sorszám a készleten belüli objektumok numerikus ábrázolása: `first`, `second`, `third`. Az entitás már be van tanítva, mert nem kell tartalmazó sorszámnál való az alkalmazás leképezések példa beszédmódok hozzáadása. A besorszám entitás [számos kultúrában](luis-reference-prebuilt-entities.md)támogatott.
+# <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Előre összeállított entitás egy LUIS-alkalmazáshoz
+A sorszám egy objektum numerikus ábrázolása a `first`készleten belül: , `second`. `third` Mivel ez az entitás már be van tanítva, nem kell hozzáadnia a célértéket tartalmazó példautterances az alkalmazás leképezések. A ordinális [entitást számos kultúrában támogatják.](luis-reference-prebuilt-entities.md)
 
-## <a name="types-of-ordinal"></a>Sorszámát típusai
-A sorszám a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) adattárból felügyelhető
+## <a name="types-of-ordinal"></a>A soraltípusok
+Az Ordinal kezelése a [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub tárházból történik
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Előre összeállított sorszámnál entitás feloldása
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Megoldás előre összeállított ordinális entitáshoz
 
-A lekérdezés a következő entitás-objektumokat adja vissza:
+A következő entitásobjektumok at adják vissza a lekérdezéshez:
 
 `Order the second option`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméterrel van beállítva `false`:
+A következő JSON `verbose` paraméter a `false`következő:
 
 ```json
 "entities": {
@@ -42,7 +42,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméterrel van beállítva `true`:
+A következő JSON `verbose` paraméter a `true`következő:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-A következő példa a **beépített. sorszámú** entitás feloldását mutatja be.
+A következő példa a **builtin.ordinal** entitás felbontását mutatja be.
 
 ```json
 "entities": [
@@ -86,8 +86,8 @@ A következő példa a **beépített. sorszámú** entitás feloldását mutatja
 ```
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
-Ismerje meg a [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), a [telefonszámot](luis-reference-prebuilt-phonenumber.md)és a [hőmérsékleti](luis-reference-prebuilt-temperature.md) entitásokat.
+Ismerje meg az [OrdinalV2,](luis-reference-prebuilt-ordinal-v2.md) [telefonszám](luis-reference-prebuilt-phonenumber.md), és [a hőmérséklet](luis-reference-prebuilt-temperature.md) entitások.

@@ -1,46 +1,46 @@
 ---
-title: Aktív és inaktív események – személyre szabás
-description: Ez a cikk a személyre szabott szolgáltatáson belüli aktív és inaktív események használatát ismerteti.
+title: Aktív és inaktív események - Személyre szabás
+description: Ez a cikk a Personalizer szolgáltatáson belüli aktív és inaktív események használatát ismerteti.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624252"
 ---
 # <a name="active-and-inactive-events"></a>Aktív és inaktív események
 
-Az **aktív** események bármelyike a rangsorban, ahol tudni fogja, hogy az eredményt az ügyfélnek kell megjelennie, és meg kell határoznia a jutalom pontszámát. Ez az az alapértelmezett viselkedést.
+Az **aktív** esemény minden olyan ranghívás, ahol tudod, hogy meg fogod mutatni az eredményt az ügyfélnek, és meghatározod a jutalom pontszámot. Ez az alapértelmezett viselkedés.
 
-Az **inaktív** esemény olyan rangú hívás, amelyben nem biztos abban, hogy a felhasználó az üzleti logika miatt mindig látni fogja-e a javasolt műveletet. Ez lehetővé teszi az esemény elvetését, hogy a személyre szabás ne legyen betanítva az alapértelmezett jutalommal. Az inaktív események nem hívhatják meg a jutalmazási API-t.
+**Az inaktív** esemény a Rang hívása, ahol nem biztos abban, hogy a felhasználó az üzleti logika miatt valaha is látni fogja-e az ajánlott műveletet. Ez lehetővé teszi, hogy elvesse az eseményt, így personalizer nem képzett az alapértelmezett jutalom. Az inaktív események nem hívhatják meg a Jutalom API-t.
 
-Fontos, hogy a tanulási hurok tudja a tényleges esemény típusát. Az inaktív események nem kapnak jutalmat. Az aktív eseménynek jutalmazási hívással kell rendelkeznie, de ha az API-hívás soha nem történt meg, a rendszer az alapértelmezett jutalom pontszámot alkalmazza. Egy esemény állapotának módosítása inaktívról aktívra, amint tudja, hogy az hatással lesz a felhasználói élményre.
+Fontos, hogy a tanulási hurok tudja a tényleges esemény típusát. Egy inaktív eseménynem rendelkezik Jutalom hívással. Egy aktív eseménynek jutalomhívással kell rendelkeznie, de ha az API-hívás soha nem történik meg, a rendszer az alapértelmezett jutalompontszámot alkalmazza. Módosítsa az esemény állapotát inaktívról aktívra, amint tudja, hogy az befolyásolja a felhasználói élményt.
 
 ## <a name="typical-active-events-scenario"></a>Tipikus aktív események forgatókönyve
 
-Amikor az alkalmazás meghívja a Rank API-t, megkapja a műveletet, amelyet az alkalmazásnak a **rewardActionId** mezőben kell megjelenítenie.  Ettől az időponttól kezdve a személyre szabott jutalom-hívás egy jutalom pontszámmal, amely ugyanazzal a Napszállta rendelkezik. A jutalmazási pontszám a modell jövőbeli rangsorolási hívásokhoz való betanítására szolgál. Ha a Napszállta nem érkezik jutalmazási hívás, a rendszer az alapértelmezett jutalmat alkalmazza. Az [alapértelmezett jutalmak](how-to-settings.md#configure-rewards-for-the-feedback-loop) a Azure Portal személyre szabott erőforrására vannak beállítva.
+Amikor az alkalmazás meghívja a Rank API-t, megkapja a műveletet, amelyet az alkalmazásnak meg kell jelennie a **rewardActionId** mezőben.  Ettől a pillanattól kezdve a Personalizer jutalomhívást vár jutalompontszámmal, amely ugyanazt az eventId azonosítót. A jutalom pontszám a modell betanítására szolgál a jövőbeli Ranghívásokhoz. Ha az eseményazonosítóhoz nem érkezik jutalomhívás, a program alapértelmezett jutalmat alkalmaz. [Az alapértelmezett jutalmak](how-to-settings.md#configure-rewards-for-the-feedback-loop) az Azure Portalon a Personalizer erőforráson vannak beállítva.
 
 ## <a name="other-event-type-scenarios"></a>Egyéb eseménytípus-forgatókönyvek
 
-Bizonyos esetekben előfordulhat, hogy az alkalmazásnak meg kell hívnia a rangsort, mielőtt azt is tudja, hogy az eredményt fogja-e használni vagy megjeleníteni a felhasználó számára. Ez olyan helyzetekben fordulhat elő, amikor például a előléptetett tartalom lapjait a marketing-kampány felülírja. Ha a rangsor hívásának eredménye soha nem volt használatban, és a felhasználó soha nem látta, ne küldjön Önnek megfelelő jutalom-hívást.
+Bizonyos esetekben előfordulhat, hogy az alkalmazásnak meg kell hívnia a Rangsort, mielőtt még tudnia kellene, hogy az eredmény használatos lesz-e, vagy megjelenik-e a felhasználó számára. Ez olyan helyzetekben fordulhat elő, amikor például az előléptetett tartalom oldalmegjelenítését egy marketingkampány felülírja. Ha a Rang hívás eredményét soha nem használták, és a felhasználó soha nem látta, ne küldjön megfelelő Jutalom hívást.
 
-Ezek a forgatókönyvek jellemzően a következő esetekben történnek:
+Ezek a forgatókönyvek általában a következő esetekben következnek be:
 
-* Olyan felhasználói felületet jelenít meg, amelyet a felhasználó esetleg nem lát.
-* Az alkalmazása prediktív megszemélyesítést végez, amelyben a rangsorolási hívások kis valós idejű kontextusban történnek, és előfordulhat, hogy az alkalmazás nem használja a kimenetet.
+* Előrendereli a felhasználói felületet, amelyet a felhasználó esetleg nem láthat, vagy nem.
+* Az alkalmazás prediktív személyre szabást végez, amelyben a Rank hívások kevés valós idejű környezetben történnek, és az alkalmazás lehet, hogy nem használja a kimenetet.
 
-Ezekben az esetekben a személyre szabással hívhatja meg a rangot, és az esemény _inaktívvá_tételét kéri. A személyre szabott szolgáltatás nem vár jutalmat erre az eseményre, és nem alkalmaz alapértelmezett jutalmat.
+Ezekben az esetekben a Personalizer segítségével hívja rank, kérve az esemény _inaktív_. A Personalizer nem számít jutalomra ezért az eseményért, és nem számít fel alapértelmezett jutalomra.
 
-Az üzleti logikában később, ha az alkalmazás a rangsor hívásában található információkat használja, csak _aktiválja_ az eseményt. Amint az esemény aktív, a személyre szabási esemény jutalmat vár. Ha a jutalmazási API-ra nem készül explicit hívás, a személyre szabott alapértelmezett jutalom érvényes.
+Később az üzleti logika, ha az alkalmazás használja az információkat a Rang hívás, csak _aktiválja_ az eseményt. Amint az esemény aktívvá vált, a Personalizer eseményjutalmat vár. Ha nem történik kifejezett hívás a Jutalom API-hoz, a Personalizer alapértelmezett jutalmat alkalmaz.
 
 ## <a name="inactive-events"></a>Inaktív események
 
-Egy esemény betanításának letiltásához hívja meg a rangsort `learningEnabled = False`használatával.
+Egy esemény betanításának letiltásához `learningEnabled = False`hívja meg a Rank metódust a használatával.
 
-Inaktív esemény esetén a tanulás implicit módon aktiválódik, ha jutalmat küld a Napszállta, vagy meghívja az adott Napszállta tartozó `activate` API-t.
+Inaktív esemény esetén a tanulás implicit módon aktiválódik, ha jutalmat küld `activate` az eventId-ért, vagy felhívja az adott eventId API-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja [, hogyan határozhatja meg a jutalom pontszámát és a megfontolandó információkat](concept-rewards.md).
+* További információ [a jutalompontszám meghatározásáról és a figyelembe vejedtső adatokról.](concept-rewards.md)

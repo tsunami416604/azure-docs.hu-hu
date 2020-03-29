@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 8fd7f23235dbd94ee8d20aa693ec5b659cb6d64d
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77279558"
 ---
-Az közreműködők hozzájárulásainak kezelése az alkalmazás aktuális állapotától függ.
+A közreműködők hozzájárulásainak kezelése az alkalmazás aktuális állapotától függ.
 
-**Az [áttelepített erőforrás-alkalmazások létrehozásához](../luis-migration-authoring.md)** : a _közreműködők_ kezelése a Azure Portal a szerzői erőforráshoz a **hozzáférés-vezérlés (iam)** lapon. Adjon hozzá egy felhasználót a közreműködő e-mail-címével és a _közreműködő_ szerepkörrel.
+**Az [erőforrások áttelepítése](../luis-migration-authoring.md) alkalmazások szerzői:** _közreműködők_ kezelik az Azure Portalon a szerzői erőforrás, a **hozzáférés-vezérlés (IAM)** lap használatával. Felhasználó hozzáadása a közreműködő e-mail-címének és a _közreműködői_ szerepkörnek a használatával.
 
-A **még nem áttelepített alkalmazások esetében**: az összes _közreműködőt_ a Luis portálon kezelheti az egyes alkalmazások **> közreműködők** lapján. Ezen a lapon [adjon hozzá egy felhasználó e-mail-címét](../luis-how-to-collaborate.md). Ez csak az alkalmazás szerzői hozzáférését teszi lehetővé.
+**A még nem áttelepített alkalmazások esetében:** az összes _közreműködő_ az egyes alkalmazások -> közreműködők lapja luis portálján kezeli az összes **közreműködő.** Ezen a lapon [adja meg a felhasználó e-mail címét.](../luis-how-to-collaborate.md) Ez csak az alkalmazás szerzői elérését biztosítja.
 
 

@@ -1,7 +1,7 @@
 ---
-title: A beszédfelismerési szolgáltatás inaktív adatok titkosítása
+title: Az inaktív adatok beszédszolgáltatás-titkosítása
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatás inaktív adatok titkosítása.
+description: Az inaktív adatok beszédszolgáltatás-titkosítása.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,37 +10,37 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
 ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79372358"
 ---
-# <a name="speech-service-encryption-of-data-at-rest"></a>A beszédfelismerési szolgáltatás inaktív adatok titkosítása
+# <a name="speech-service-encryption-of-data-at-rest"></a>Az inaktív adatok beszédszolgáltatás-titkosítása
 
-A beszédfelismerési szolgáltatás automatikusan titkosítja az adatait, amikor azt megőrzi a felhőben. A beszédfelismerési szolgáltatás titkosítása védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
+A Beszédszolgáltatás automatikusan titkosítja az adatokat, ha azok a felhőben vannak megőrizve. A beszédszolgáltatások titkosítása védi az adatokat, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
-## <a name="about-cognitive-services-encryption"></a>Tudnivalók a Cognitive Services titkosításról
+## <a name="about-cognitive-services-encryption"></a>A Cognitive Services titkosítása
 
-Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Alapértelmezés szerint az adatai biztonságban vannak, és nem kell módosítania a kódot vagy az alkalmazásokat a titkosítás kihasználása érdekében.
+Az adatok titkosítása és visszafejtése [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) kompatibilis [256 bites AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítással történik. A titkosítás és a visszafejtés transzparens, ami azt jelenti, hogy a titkosítás és a hozzáférés kezelése az Ön számára. Az adatok alapértelmezés szerint biztonságosak, és nem kell módosítania a kódot vagy az alkalmazásokat a titkosítás előnyeinek kihasználásához.
 
-## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
+## <a name="about-encryption-key-management"></a>Titkosítási kulcs kezelése –
 
-A Custom Speech és az egyéni hang használatakor a beszédfelismerési szolgáltatás a következő Felhőbeli adattárolást is elvégezheti:  
+Az egyéni beszédfelismerés és az egyéni hang használata esetén a Beszédszolgáltatás a következő adatokat tárolhatja a felhőben:  
 
-* Beszédfelismerési adat – csak akkor, ha a nyomkövetést bekapcsolja az egyéni végponthoz
-* Feltöltött képzések és tesztelési célú adatfeldolgozás
+* Beszédkövetési adatok – csak akkor, ha bekapcsolja az egyéni végpont nyomkövetését
+* Feltöltött képzési és vizsgálati adatok
 
-Alapértelmezés szerint az adatai a Microsoft tárolójában tárolódnak, és az előfizetése a Microsoft által felügyelt titkosítási kulcsokat használja. Lehetősége van saját Storage-fiók előkészítésére is. Az áruházhoz való hozzáférést a felügyelt identitás kezeli, és a beszédfelismerési szolgáltatás nem tud közvetlenül hozzáférni a saját adataihoz, például a beszédfelismerési adatokhoz, a testreszabási adatokhoz és az egyéni modellekhez.
+Alapértelmezés szerint az adatok a Microsoft tárhelyén tárolódnak, és az előfizetés microsoftáltal felügyelt titkosítási kulcsokat használ. Azt is lehetősége van arra, hogy készítse el a saját tárfiók. Az áruházhoz való hozzáférést a felügyelt identitás kezeli, és a beszédszolgáltatás nem tud közvetlenül hozzáférni a saját adataihoz, például a beszédkövetési adatokhoz, a testreszabási betanítási adatokhoz és az egyéni modellekhez.
 
-A felügyelt identitással kapcsolatos további információkért lásd: [Mik a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+A felügyelt identitásról a Felügyelt identitások ról további információt a [Felügyelt identitások című témakörben talál.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Saját tároló (BYOS) használata a testreszabáshoz és a naplózáshoz
+## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Saját tárhely (BYOS) elhozása testreszabáshoz és naplózáshoz
 
-Ha hozzáférést szeretne kérni a saját tárterületének eléréséhez, töltse ki és küldje el a [beszédfelismerési szolgáltatást – a saját tároló (BYOS) kérelmi űrlapját](https://aka.ms/cogsvc-cmk). A jóváhagyást követően létre kell hoznia a saját Storage-fiókját a testreszabáshoz és a naplózáshoz szükséges adattároláshoz. Storage-fiók hozzáadásakor a Speech Service-erőforrás engedélyezi a rendszer által hozzárendelt felügyelt identitást. Ha engedélyezve van a rendszerhez rendelt felügyelt identitás, az erőforrás regisztrálva lesz Azure Active Directory (HRE). A regisztrálást követően a felügyelt identitás hozzáférést kap a Storage-fiókhoz. A felügyelt identitásokról itt talál további információt. A felügyelt identitással kapcsolatos további információkért lásd: [Mik a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Ha hozzáférést szeretne kérni saját tárhelyéhez, töltse ki és küldje el a [Beszédszolgáltatást – hozza magával saját tárhely (BYOS) igénylőlapot.](https://aka.ms/cogsvc-cmk) A jóváhagyást követően létre kell hoznia saját tárfiókot a testreszabáshoz és a naplózáshoz szükséges adatok tárolásához. Tárfiók hozzáadásakor a beszédszolgáltatás-erőforrás engedélyezi a rendszer hez rendelt felügyelt identitást. Miután a rendszer hez rendelt felügyelt identitás engedélyezve van, ez az erőforrás regisztrálva lesz az Azure Active Directory (AAD) regisztrálva. A regisztráció után a felügyelt identitás hozzáférést kap a tárfiókhoz. A felügyelt identitásokról itt olvashat bővebben. A felügyelt identitásról a Felügyelt identitások ról további információt a [Felügyelt identitások című témakörben talál.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
 > [!IMPORTANT]
-> Ha letiltja a rendszerhez rendelt felügyelt identitásokat, a Storage-fiókhoz való hozzáférés el lesz távolítva. Ez azt eredményezi, hogy a beszédfelismerési szolgáltatás azon részei, amelyek hozzáférést igényelnek a Storage-fiókhoz a működésének leállásához.  
+> Ha letiltja a rendszer hez rendelt felügyelt identitások, a tárfiókhoz való hozzáférés törlődik. Ez azt eredményezi, hogy a beszédfelismerési szolgáltatás azon részei, amelyek hozzáférést igényelnek a tárfiókhoz, leállnak.  
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
@@ -50,7 +50,7 @@ A BYOS jelenleg a következő régiókban érhető el:
 * USA nyugati régiója, 2.
 * USA keleti régiója
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Beszédfelismerési szolgáltatás – saját tároló (BYOS) kérésének űrlapja](https://aka.ms/cogsvc-cmk)
+* [Beszédszolgáltatás - saját tárhely (BYOS) kéreleműrlap](https://aka.ms/cogsvc-cmk)
 * [Mik azok a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

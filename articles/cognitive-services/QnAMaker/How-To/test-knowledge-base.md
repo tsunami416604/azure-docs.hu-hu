@@ -1,90 +1,90 @@
 ---
-title: Tudásbázis – QnA Maker tesztelése
-description: A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságának javítása iteratív folyamat fontos részét képezi. A Tudásbázis is lehetővé teszi a Szerkesztés továbbfejlesztett Csevegés felületen tesztelheti.
+title: Tudásbázis tesztelése - QnA Maker
+description: A QnA Maker tudásbázistesztelése fontos része egy iteratív folyamatnak a visszaadott válaszok pontosságának javítása érdekében. A tudásbázist egy továbbfejlesztett csevegőfelületen tesztelheti, amely lehetővé teszi a szerkesztést is.
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927276"
 ---
-# <a name="test-your-knowledge-base-in-qna-maker"></a>A Tudásbázis tesztelése QnA Maker
+# <a name="test-your-knowledge-base-in-qna-maker"></a>Tesztelje tudásbázisát a QnA Maker programban
 
-A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságának javítása iteratív folyamat fontos részét képezi. A Tudásbázis is lehetővé teszi a Szerkesztés továbbfejlesztett Csevegés felületen tesztelheti.
+A QnA Maker tudásbázistesztelése fontos része egy iteratív folyamatnak a visszaadott válaszok pontosságának javítása érdekében. A tudásbázist egy továbbfejlesztett csevegőfelületen tesztelheti, amely lehetővé teszi a szerkesztést is.
 
-## <a name="interactively-test-in-qna-maker-portal"></a>Interaktív tesztelés QnA Maker portálon
+## <a name="interactively-test-in-qna-maker-portal"></a>Interaktív tesztelés a QnA Maker portálon
 
-1. A Tudásbázisban a saját **Tudásbázis** lapján megjelenő név kiválasztásával férhet hozzá.
-1. A teszt kivetítése panel eléréséhez válassza a **tesztelés** lehetőséget az alkalmazás felső paneljén.
-1. Adjon meg egy lekérdezést a szövegmezőbe, és nyomja le az Enter.
-1. A Tudásbázis a legjobban megfelelő választ ad vissza, a válaszban.
+1. A tudásbázis eléréséhez válassza ki a nevét a **Saját tudásbázisok** lapon.
+1. A Teszt kicsúsztatáspanel eléréséhez válassza a **Teszt** lehetőséget az alkalmazás felső paneljén.
+1. Írjon be egy lekérdezést a szövegmezőbe, és válassza az Enter lehetőséget.
+1. A tudásbázis legjobban illeszkedő válasza válaszként kerül visszaadásra.
 
-### <a name="clear-test-panel"></a>Egyértelmű teszt panel
+### <a name="clear-test-panel"></a>Tesztpanel törlése
 
-Ha törölni szeretné az összes megadott tesztelési lekérdezést és azok eredményeit a tesztelési konzolról, válassza az **Indítás** lehetőséget a teszt panel bal felső sarkában.
+Ha törölni szeretné az összes beírt tesztlekérdezést és azok eredményeit a tesztkonzolról, válassza az **Újrakezdés** lehetőséget a Teszt panel bal felső sarkában.
 
-### <a name="close-test-panel"></a>Zárja be a teszt panel
+### <a name="close-test-panel"></a>Tesztpanel bezárása
 
-A teszt panel bezárásához kattintson újra a **teszt** gombra. Miközben a teszt panel meg nyitva, már nem szerkesztheti a Tudásbázis-tartalmat.
+A Teszt panel bezárásához kattintson ismét a **Teszt** gombra. Amíg a Teszt panel meg van nyitva, a Tudásbázis tartalma nem szerkeszthető.
 
-### <a name="inspect-score"></a>Vizsgálja meg a pontszám
+### <a name="inspect-score"></a>Pontszám vizsgálata
 
-A teszt eredményének részleteit a vizsgálat panelen tekintheti meg.
+A vizsgálati eredmény részleteit az Ellenőrzés panelen vizsgálja meg.
 
-1.  Nyissa meg a teszt kivetítése panelt, **és válassza a vizsgálat lehetőséget** a válasz további részleteinek megtekintéséhez.
+1.  Nyissa meg a Teszt kicsúsztatás panelt, és válassza a **Vizsgálat** lehetőséget, hogy további részleteket megtudjon a válaszról.
 
-    ![Vizsgálja meg a válaszok](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Válaszok vizsgálata](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Megjelenik a vizsgálat panel. A panel felső pontozási szándékot, valamint a azonosított entitások tartalmazza. A panelen a kiválasztott utterance (kifejezés) eredménye látható.
+2.  Megjelenik az ellenőrző panel. A panel tartalmazza a legmagasabb pontozási szándékot, valamint az azonosított entitásokat. A panel a kijelölt utterance (kifejezés) eredményét jeleníti meg.
 
-### <a name="correct-the-top-scoring-answer"></a>Javítsa ki az első válasz a pontozás
+### <a name="correct-the-top-scoring-answer"></a>A legmagasabb pontozási válasz javítása
 
-Ha a felső pontozási válasz helytelen, válassza ki a megfelelő választ a listából, és válassza a **Mentés és a betanítás**lehetőséget.
+Ha a legmagasabb pontozási válasz helytelen, válassza ki a helyes választ a listából, és válassza a **Mentés és betanítás**lehetőséget.
 
-![Javítsa ki az első válasz a pontozás](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![A legmagasabb pontozási válasz javítása](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 
-Egy adott válasz egy kérdést alternatív formáját is hozzáadhat. Írja be a másodlagos válaszokat a szövegmezőbe, majd kattintson a adja meg, adja hozzá őket. A frissítések mentéséhez válassza a **Mentés és a betanítás** lehetőséget.
+Egy adott válaszhoz alternatív űrlapokat is hozzáadhat. Írja be az alternatív válaszokat a szövegmezőbe, és kattintson a Enter gombra a hozzáadásukhoz. A frissítések tárolásához válassza a **Mentés és betanítás** lehetőséget.
 
 ![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
-### <a name="add-a-new-answer"></a>Adjon hozzá egy új válasz
+### <a name="add-a-new-answer"></a>Új válasz hozzáadása
 
-Új válasz is hozzáadhat, ha minden meglévő választ egyezést mutató helytelen, vagy a válasz nem szerepel a Tudásbázis (nem jó egyezés található a KB-ban).
+Új választ adhat hozzá, ha az egyeztetett válaszok bármelyike helytelen, vagy a válasz nem létezik a tudásbázisban (a tudásbázisban nem található megfelelő egyezés).
 
-A válaszok lista alján található szövegmezővel adjon meg egy új választ, és az ENTER billentyű lenyomásával adja hozzá.
+A válaszlista alján a szövegmezősegítségével adjon meg egy új választ, és nyomja meg az Enter billentyűt a hozzáadáshoz.
 
-Válassza a **Mentés és a tanítás** lehetőséget a válasz megőrzéséhez. Kérdés-válasz párokat már hozzá van adva a tudásbázist.
+Válassza a **Mentés és betanítás** lehetőséget a válasz megőrzéséhez. Egy új kérdés-válasz pár lett hozzáadva a tudásbázishoz.
 
 > [!NOTE]
-> A Tudásbázis összes módosítása csak a **Mentés és a betanítás** gomb megnyomása után menthető.
+> A tudásbázis összes szerkesztése csak akkor kerül mentésre, ha megnyomja a Mentés és a **Betanítás** gombot.
 
-### <a name="test-the-published-knowledge-base"></a>A közzétett Tudásbázis tesztelése
+### <a name="test-the-published-knowledge-base"></a>A közzétett tudásbázis tesztelése
 
-A Tudásbázis közzétett verzióját tesztelheti a teszt ablaktáblán. Miután közzétette a KB-ot, válassza ki a **közzétett tudásbázist** , és küldjön egy lekérdezést a közzétett Tudásbázis eredményeinek lekéréséhez.
+A tudásbázis közzétett verzióját a tesztpanelen tesztelheti. A tudásbázis közzététele után jelölje be a **Közzétett tudásbázis** mezőt, és küldjön egy lekérdezést a közzétett kb-tól származó eredmények lekérdezéséhez.
 
-![Tesztelés egy közzétett TUDÁSBÁZISban](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Teszt közzétett KB-val](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
-## <a name="batch-test-with-tool"></a>Batch-teszt eszközzel
+## <a name="batch-test-with-tool"></a>Tételvizsgálat szerszámmal
 
-A Batch Testing eszközt a következő esetekben használhatja:
+Akkor használja a kötegelt tesztelési eszközt, ha a következőket szeretné:
 
-* a legfontosabb válasz és a pontszám meghatározása a kérdésekre
-* a várt válasz ellenőrzése a kérdéses csoportra vonatkozóan
+* meghatározni a legjobb választ és pontszám egy sor kérdést
+* a várt válasz érvényesítése kérdéssorozatra
 
-Részletes útmutatásért olvassa el a Batch-tesztelési [oktatóanyagot](../Quickstarts/batch-testing.md) .
+Olvassa el a kötegelt [tesztelési oktatóanyagot,](../Quickstarts/batch-testing.md) amely részletes útmutatást tartalmaz.
 
-A Batch Testing eszközt a Batch-tesztelési eszközzel együtt kell megadnia. Ez az eszköz letölthető vagy [ C# forráskódként](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)használható [tömörített végrehajtható fájlként](https://aka.ms/qnamakerbatchtestingtool) .
+A kötegelt tesztelés a kötegelt tesztelési eszközzel együtt történik. Ez az eszköz letölthető [tömörítési végrehajtható fájlként](https://aka.ms/qnamakerbatchtestingtool) vagy [C# forráskódként](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)érhető el.
 
-[Az eszközre vonatkozó dokumentáció az](../reference-tsv-format-batch-testing.md) alábbiakat tartalmazza:
+[Az eszközre vonatkozó referenciadokumentáció a](../reference-tsv-format-batch-testing.md) következőket tartalmazza:
 
 * az eszköz parancssori példája
-* a TSV bemeneti és kimeneti fájljainak formátuma
+* A TSV bemeneti és outfile fájlok formátuma
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis közzététele](./publish-knowledge-base.md)

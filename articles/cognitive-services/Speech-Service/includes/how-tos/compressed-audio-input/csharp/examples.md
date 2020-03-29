@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 0e8a6a0ffa451337b9e7ea7590cfe614fc1129a1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943732"
 ---
-Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre egy `AudioConfig` a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+Ha tömörített hangformátumban szeretne streamelni `PullAudioInputStream` a `PushAudioInputStream`Beszédszolgáltatásba, hozzon létre vagy hozzon létre. Ezután hozzon létre egy `AudioConfig` példányt a stream osztály, megadva a tömörítési formátumot az adatfolyam.
 
-Tegyük fel, hogy rendelkezik egy `pushStream` nevű bemeneti adatfolyam-osztállyal, és az OPUS/OGG-t használja. A kód így néz ki:
+Tegyük fel, hogy van egy `pushStream` bemeneti stream osztály neve, és opus/OGG-t használ. A kód a következőkre néz ki:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás – QnA Maker
+title: Nyelvi támogatás - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Kulturális környezet, a Tudásbázis támogatja a QnA Maker természetes nyelvek listáját. Ne keverje a nyelveket ugyanazon Tudásbázis.
+description: A QnA Maker által támogatott kultúra, természetes nyelvek listája a tudásbázishoz. Ne keverjen nyelveket ugyanabban a tudásbázisban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,78 +11,78 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220555"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker erőforrások és tudásbázisok nyelvi támogatása
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Nyelvi támogatás a QnA Maker erőforrás- és tudásbázisokhoz
 
-A szolgáltatás nyelve akkor van kiválasztva, amikor létrehozza az első tudásbázist az erőforrásban. Az erőforrás összes további tudásbázisának azonos nyelven kell lennie. 
+A szolgáltatás nyelve az erőforrás első tudásbázisának létrehozásakor kerül kiválasztásra. Az erőforrás ban található összes további tudásbázisnak ugyanazon a nyelven kell lennie. 
 
-A nyelv meghatározza, hogy az eredmények mennyire fontosak QnA Maker a felhasználói lekérdezésekre adott válaszként.
+A nyelv határozza meg a QnA Maker által a felhasználói lekérdezésekre adott válaszként biztosított eredmények relevanciáját.
 
-További információ a [nyelv kiválasztásának hatásáról](../how-to/language-knowledge-base.md).
+További információ a [nyelvválasztás hatásáról.](../how-to/language-knowledge-base.md)
 
 ## <a name="languages-supported"></a>Támogatott nyelvek
 
-A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalmazza. 
+Az alábbi lista a QnA Maker erőforrás támogatott nyelveit tartalmazza. 
 
 |Nyelv|
 |--|
 |Arab|
 |örmény|
 |bengáli|
-|baszk|
-|bolgár|
-|katalán|
+|Baszk|
+|Bolgár|
+|Katalán|
 |Chinese_Simplified|
 |Chinese_Traditional|
-|horvát|
-|cseh|
-|dán|
+|Horvát|
+|Cseh|
+|Dán|
 |Holland|
 |Angol|
-|észt|
-|finn|
-|francia|
-|gallego|
-|német|
-|görög|
+|Észt|
+|Finn|
+|Francia|
+|Gallego|
+|Német|
+|Görög|
 |gudzsaráti|
 |Héber|
-|hindi|
-|magyar|
+|Hindi|
+|Magyar|
 |Izlandi|
 |Indonéz|
-|ír|
-|olasz|
-|japán|
+|Ír|
+|Olasz|
+|Japán|
 |kannada|
-|koreai|
-|lett|
-|litván|
+|Koreai|
+|Lett|
+|Litván|
 |malajálam|
 |Maláj|
-|norvég|
-|lengyel|
+|Norvég|
+|Lengyel|
 |Portugál|
 |pandzsábi|
 |Román|
 |Orosz|
 |Serbian_Cyrillic|
 |Serbian_Latin|
-|szlovák|
-|szlovén|
-|spanyol|
-|svéd|
+|Szlovák|
+|Szlovén|
+|Spanyol|
+|Svéd|
 |tamil|
 |telugu|
-|thai|
-|török|
-|ukrán|
-|Urdu|
+|Thai|
+|Török|
+|Ukrán|
+|urdu|
 |Vietnami|
 
 ## <a name="next-steps"></a>További lépések

@@ -1,7 +1,7 @@
 ---
-title: Űrlap-felismerő tároló futtatása a Azure Container Instancesban
+title: Űrlapfelismerő tároló futtatása az Azure Container-példányokban
 titleSuffix: Azure Cognitive Services
-description: Üzembe helyezheti az űrlap-felismerő tárolót egy Azure Container-példányon, és tesztelheti egy böngészőben.
+description: Telepítse az űrlapfelismerő tárolót egy Azure Container Instance-ba, és tesztelje azt egy webböngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
 ms.openlocfilehash: 9a3456eb4d30aa8d163488f558b571dd97c73bf4
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605116"
 ---
-# <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Az űrlap-felismerő tároló üzembe helyezése Azure Container Instances
+# <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Az űrlapfelismerő tároló üzembe helyezése az Azure Container Instances szolgáltatásba
 
-Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [űrlap-felismerő](form-recognizer-container-howto.md) tárolót az Azure [Container Instancesban](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás bemutatja egy Azure Form-felismerő erőforrás létrehozását. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
+Ismerje meg, hogyan telepítheti a Cognitive Services [űrlapfelismerő](form-recognizer-container-howto.md) tárolót az Azure [Container Instances szolgáltatásba.](https://docs.microsoft.com/azure/container-instances/) Ez az eljárás bemutatja egy Azure Form Recognizer erőforrás létrehozását. Ezután megbeszéljük a kapcsolódó tárolókép húzását. Végül kiemeljük a két vezénylési lehetőségének gyakorlását egy böngészőből. A tárolók használatával a fejlesztők figyelmét elterelheti az infrastruktúra kezeléséről az alkalmazásfejlesztésre való összpontosításra.
 
 > [!IMPORTANT]
-> Az űrlap-felismerő tárolók jelenleg az űrlap-felismerő API 1,0-es verzióját használják. Ehelyett a felügyelt szolgáltatással érheti el az API legújabb verzióját.
+> A Form Recognizer tárolók jelenleg a Form Recognizer API 1.0-s verzióját használják. Az API legújabb verzióját a felügyelt szolgáltatás használatával érheti el.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-Először be kell fejeznie és el kell küldenie a [Cognitive Services űrlap-felismerő tárolók hozzáférési kérelmének űrlapját](https://aka.ms/FormRecognizerContainerRequestAccess) , hogy hozzáférést Kérjen a tárolóhoz. Emellett aláírja a Computer Vision. Nem kell külön regisztrálnia a Computer Vision kérelem űrlapján. 
+Először ki kell töltenie és el kell küldenie a [Cognitive Services űrlapfelismerő tárolók hozzáférési kérelem űrlap](https://aka.ms/FormRecognizerContainerRequestAccess) hozzáférést a tárolóhoz. Ezzel is feliratkozik a Computer Vision. Nem kell külön regisztrálnia a Computer Vision kérelem űrlapra. 
 
 [!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access-only.md)]
 

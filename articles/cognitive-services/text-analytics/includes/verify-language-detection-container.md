@@ -1,7 +1,7 @@
 ---
-title: A Nyelvfelismerés tároló példányának ellenőrzése
+title: A Nyelvfelismerés tárolópéldány ellenőrzése
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan ellenőrizheti a Nyelvfelismerés tároló példányát.
+description: További információ a Nyelvi észlelési tárolópéldány ellenőrzéséről.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: f4e0770bc052044a408f2c4088f2bd5ead225aa3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70968578"
 ---
-### <a name="verify-the-language-detection-container-instance"></a>A Nyelvfelismerés tároló példányának ellenőrzése
+### <a name="verify-the-language-detection-container-instance"></a>A Nyelvfelismerés tárolópéldány ellenőrzése
 
-1. Válassza az **Áttekintés** lapot, és másolja ki az IP-címet.
-1. Nyisson meg egy új böngésző fület, és adja meg az IP-címet. Írja be `http://<IP-address>:5000 (http://55.55.55.55:5000`például a következőt:). Megjelenik a tároló kezdőlapja, amelyből megtudhatja, hogy fut-e a tároló.
+1. Válassza az **Áttekintés** lapot, és másolja az IP-címet.
+1. Nyisson meg egy új böngészőlapot, és írja be az IP-címet. Írja be `http://<IP-address>:5000 (http://55.55.55.55:5000`például a ). Megjelenik a tároló kezdőlapja, amely tudatja önnel, hogy a tároló fut.
 
     ![A tároló kezdőlapjának megtekintése annak ellenőrzéséhez, hogy fut-e](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. Válassza ki a **szolgáltatás API leírása** hivatkozást, hogy megnyissa a tároló hencegő lapját.
+1. Válassza ki a **Service API Description** hivatkozást a tároló Swagger lapjára való ugráshoz.
 
-1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás**lehetőséget. A paraméterek megjelennek, amely tartalmazza a következő bemeneti példát:
+1. Válassza ki bármelyik **POST** API-t, és válassza **a Kipróbálás**lehetőséget . Megjelennek a paraméterek, amelyek a következő példabevitelt tartalmazzák:
 
     ```json
     {
@@ -49,13 +49,13 @@ ms.locfileid: "70968578"
     }
     ```
 
-1. **ShowStats** beállítása a `true`következőre:.
+1. Állítsa a `true` **showStats-ot** a számára.
 
-1. A szöveg hangulatának meghatározásához válassza a **végrehajtás** lehetőséget.
+1. **A szöveg** hangulatának meghatározásához válassza a Végrehajtás lehetőséget.
 
-    A tárolóban csomagolt modell egy 0 és 1 közötti értéket generál, ahol a 0 negatív hangulat, az 1 pedig pozitív hangulat.
+    A tárolóba csomagolt modell 0 és 1 közötti pontszámot hoz létre, ahol a 0 negatív, az 1 pedig pozitív vélemény.
 
-    A visszaadott JSON-válasz magában foglalja a frissített szövegbeviteli adatok hangulatát:
+    A visszaadott JSON-válasz a frissített szövegbevitel hangulatát tartalmazza:
 
     ```json
     {
@@ -127,4 +127,4 @@ ms.locfileid: "70968578"
     }
     ```
 
-Most már a megfelelő `id`módon összekapcsolhatók a válasz adattartalmának JSON-adatai és az eredeti kérelem adattartalmát tartalmazó dokumentumai. Minden dokumentumot egymástól függetlenül kezelnek, például a `characterCount` és `transactionCount`a különböző statisztikáit. Emellett minden egyes létrejövő dokumentum rendelkezik a `detectedLanguages` ( `name`, `iso6391Name`) és `score` az összes észlelt nyelv tömbével. Ha a rendszer több nyelvet észlel, `score` a a legvalószínűbb nyelv meghatározására szolgál.
+Most már korrelálhatunk a válasz hasznos teherjtaadatainak dokumentumait az `id`eredeti kérelem hasznos dokumentumokkal a megfelelő . Minden dokumentumot egymástól függetlenül kezelnek, amely különböző statisztikákat tartalmaz, például `characterCount` és `transactionCount`. Ezenkívül minden eredményül `detectedLanguages` kapott dokumentumban `iso6391Name`a `score` `name`, és minden egyes észlelt nyelvhez a tömb ötvan. Ha több nyelvet észlel, a `score` rendszer a legvalószínűbb nyelv meghatározására használja.

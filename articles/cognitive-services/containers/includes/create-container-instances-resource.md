@@ -1,7 +1,7 @@
 ---
 title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre Azure Container instance-erőforrásokat.
+description: Ismerje meg, hogyan hozhat létre egy Azure-tárolópéldány-erőforrást.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,43 +10,43 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75692567"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Azure Container instance-erőforrás létrehozása
+## <a name="create-an-azure-container-instance-resource"></a>Azure Container Instance-erőforrás létrehozása
 
-1. Lépjen a Container Instances [Létrehozás](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) lapjára.
+1. Nyissa meg a Create page for Container Instances [(Létrehozás](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) lap a tárolópéldányokhoz) lapot.
 
-2. Az **alapvető beállítások** lapon adja meg a következő adatokat:
+2. Az **Alapok** lapon adja meg a következő adatokat:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
     |Előfizetés|Válassza ki előfizetését.|
     |Erőforráscsoport|Válassza ki a rendelkezésre álló erőforráscsoportot, vagy hozzon létre egy újat, például `cognitive-services`.|
-    |Tárolónév|Adjon meg egy nevet, például `cognitive-container-instance`. A névnek alsó sapkában kell lennie.|
-    |Földrajzi egység|Válasszon régiót az üzembe helyezéshez.|
-    |Lemezkép típusa|Ha a tároló rendszerképét olyan tároló-beállításjegyzékben tárolja, amely nem igényel hitelesítő adatokat, válassza a `Public`lehetőséget. Ha a tároló rendszerképének eléréséhez hitelesítő adatokra van szükség, válassza a `Private`lehetőséget. További részletekért tekintse meg a [Container-Tárházak és-lemezképek](../../cognitive-services-container-support.md#container-repositories-and-images) című témakört, amelyből megtudhatja, hogy `Public`-e vagy sem `Private` ("nyilvános előnézet"). |
-    |Rendszerkép neve|Adja meg a Cognitive Services tároló helyét. A hely a `docker pull` parancs argumentumként használt helye. Tekintse meg a [tároló adattárait és lemezképeit](../../cognitive-services-container-support.md#container-repositories-and-images) a rendelkezésre álló képnevekhez és a hozzájuk tartozó adattárhoz.<br><br>A rendszerkép nevének teljesen minősítettnek kell lennie három rész megadásával. Először a Container Registry, majd a tárház, végül a rendszerkép neve: `<container-registry>/<repository>/<image-name>`.<br><br>Íme egy példa, `mcr.microsoft.com/azure-cognitive-services/keyphrase` az Kulcsszókeresés rendszerképet képviseli a Microsoft Container Registry az Azure Cognitive Services adattárában. Egy másik példa az, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text`, amely a tároló előzetes tárolójának beállításjegyzékének Microsoft adattárában a szöveges kép beszédét jelképezi. |
+    |Tárolónév|Írjon be `cognitive-container-instance`egy nevet, például . A névnek alsó bbbetűs betűkkel kell lennie.|
+    |Hely|Válassza ki a központi telepítéshez kívánt régiót.|
+    |Lemezkép típusa|Ha a tárolórendszerkép egy tárolóbeállításjegyzékben van tárolva, `Public`amelyhez nincs szükség hitelesítő adatokra, válassza a lehetőséget. Ha a tárolórendszerkép eléréséhez `Private`hitelesítő adatok szükségesek, válassza a lehetőséget. A [tárolótárolók és -képek](../../cognitive-services-container-support.md#container-repositories-and-images) című dokumentumból megtudhatja, hogy a tárolórendszerkép-e `Public` vagy sem `Private` ("Nyilvános előzetes verzió"). |
+    |Rendszerkép neve|Adja meg a Cognitive Services tároló helyét. A hely az, amit a `docker pull` parancs argumentumaként használnak. Tekintse meg a [tároló tárolók és a rendszerképek](../../cognitive-services-container-support.md#container-repositories-and-images) a rendelkezésre álló rendszerképek nevét és a hozzájuk tartozó tárház.<br><br>A kép nevének három részből kell állnia. Először is, a tároló rendszerleíró adatbázis, majd `<container-registry>/<repository>/<image-name>`a tárház, végül a kép neve: .<br><br>Íme egy példa, azt jelenti, `mcr.microsoft.com/azure-cognitive-services/keyphrase` hogy a kulcskifejezés kinyerése képa a Microsoft Container Registry az Azure Cognitive Services tárház alatt. Egy másik `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` példa, amely a beszédfelismerési rendszer képet a Microsoft-tárházban a Container Preview tároló beállításjegyzékben. |
     |Operációs rendszer típusa|`Linux`|
-    |Méret|Az adott kognitív szolgáltatási tárolóra vonatkozó javasolt javaslatok méretének módosítása:<br>2 CPU-mag<br>4 GB
+    |Méret|Módosítsa a méretet az adott Cognitive Service-tároló javasolt javaslataira:<br>2 CPU-mag<br>4 GB
 
-3. A **hálózatkezelés** lapon adja meg a következő adatokat:
+3. A **Hálózat** lapon adja meg a következő adatokat:
 
-    |Beállítás|Value (Díj)|
+    |Beállítás|Érték|
     |--|--|
-    |Portok|Állítsa be `5000`a TCP-portot. A tároló elérhetővé tétele a 5000-as porton.|
+    |Portok|Állítsa a TCP-portot `5000`. Kiteszi a konténert az 5000-es porton.|
 
-4. A **speciális** lapon adja meg a szükséges **környezeti változókat** az Azure Container instance-erőforrás tároló számlázási beállításainál:
+4. A **Speciális** lapon adja meg az Azure Container Instance erőforrás tárolószámlázási beállításaihoz szükséges **környezeti változókat:**
 
-    | Jelmagyarázat | Value (Díj) |
+    | Kulcs | Érték |
     |--|--|
-    |`apikey`|Az erőforrás **kulcsok** lapjáról másolt. Egy 32 alfanumerikus karakterből álló karakterlánc, szóköz vagy kötőjel nélkül, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Az erőforrás **Áttekintés** lapjáról lett másolva.|
+    |`apikey`|Az erőforrás **Kulcsok** lapjáról másolva. Ez egy 32 alfanumerikus karakterből álló karakterlánc `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`szóközök és kötőjelek nélkül.|
+    |`billing`|Az erőforrás **Áttekintés** lapjáról másolva.|
     |`eula`|`accept`|
 
-5. Kattintson **a felülvizsgálat és létrehozás** gombra.
-6. Az ellenőrzés után kattintson a **Létrehozás** gombra a létrehozási folyamat befejezéséhez.
+5. Kattintson **a Véleményezés és létrehozás gombra**
+6. Az érvényesítési fázis után kattintson a **Létrehozás** gombra a létrehozási folyamat befejezéséhez.
 7. Az erőforrás sikeres üzembe helyezése után készen áll

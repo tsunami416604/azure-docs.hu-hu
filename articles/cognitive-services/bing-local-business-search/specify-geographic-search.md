@@ -1,7 +1,7 @@
 ---
-title: Földrajzi határok használata a Bing helyi üzleti keresési API eredményeinek szűréséhez
+title: Földrajzi határok használata az eredmények szűréséhez a Bing helyi vállalati keresés API-ból
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogyan szűrheti a keresési eredményeket a Bing helyi üzleti keresési API-ból.
+description: Ebből a cikkből megtudhatja, hogyan szűrheti a keresési eredményeket a Bing Helyi vállalati keresési API-ból.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69906247"
 ---
-# <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Földrajzi határok használata a Bing helyi üzleti keresési API eredményeinek szűréséhez
+# <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Földrajzi határok használata az eredmények szűréséhez a Bing helyi vállalati keresés API-ból
 
-A Bing helyi üzleti keresési API lehetővé teszi, hogy a vagy `localCircularView` `localMapView` a lekérdezési paraméterek használatával a keresett földrajzi terület határain belül legyenek meghatározva. Ügyeljen arra, hogy csak egy paramétert használjon a lekérdezésekben. 
+A Bing Helyi üzleti keresés API lehetővé teszi, hogy a kívánt földrajzi terület `localCircularView` `localMapView` határait a vagy a lekérdezési paraméterek használatával állítsa be. Ügyeljen arra, hogy csak egy paramétert használjon a lekérdezésekben. 
 
-Ha a keresési kifejezés explicit földrajzi helyet tartalmaz, a Bing local Business API automatikusan azt fogja használni a keresési eredmények határainak megadásához. Ha például a keresési kifejezés `sailing in San Diego`, akkor `San Diego` a rendszer a lekérdezési paraméterekben és a felhasználói fejlécekben a hely és a többi megadott hely között fogja figyelmen kívül hagyni. 
+Ha egy keresési kifejezés explicit földrajzi helyet tartalmaz, a Bing helyi üzleti API automatikusan használja azt a keresési eredmények határainak beállításához. Ha például a keresett `sailing in San Diego`kifejezés `San Diego` a , akkor a rendszer helyként fogja használni, és a lekérdezési paraméterekben vagy a felhasználói fejlécekben megadott bármely más helyet figyelmen kívül hagyja a rendszer. 
 
-Ha a keresési kifejezés nem észleli a földrajzi helyet, és nincs megadva földrajzi hely a lekérdezési paraméterek használatával, a Bing local Business Search API megkísérli meghatározni a kérés `X-Search-ClientIP` vagy `X-Search-Location` a fejlécek helyét. Ha egyik fejléc sincs megadva, az API meghatározza a kérelem ügyfél-IP-címének helyét, vagy a mobileszközök GPS-koordinátáit.
+Ha a keresési kifejezésnem észlel földrajzi helyet, és nincs megadva földrajzi hely a lekérdezési paraméterek használatával, a Bing helyi `X-Search-ClientIP` `X-Search-Location` üzleti keresési API megpróbálja meghatározni a helyét a kérelemből vagy a fejlécekből. Ha egyik fejléc sincs megadva, az API a kérelem ügyfél IP-címéből, vagy a mobileszközök GPS-koordinátáiból határozza meg a helyet.
 
 ## <a name="localcircularview"></a>localCircularView
 
-A `localCircularView` (z) paraméter egy kör alakú földrajzi területet hoz létre szélességi/hosszúsági koordináták köré, amelyet egy sugár határoz meg. Ha ezt a paramétert használja, a Bing helyi üzleti keresési API-tól érkező válaszok csak az ezen a körben `localMapView` belüli helyekre fognak kiterjedni, a paramétertől eltérően, amely a keresési területen kívüli helyet is tartalmazhat.
+A `localCircularView` paraméter kör alakú földrajzi területet hoz létre egy sugár által meghatározott szélességi/hosszúsági koordináták köré. Ha ezt a paramétert használja, a Bing Helyi üzleti keresés API `localMapView` válaszai csak a körön belüli helyeket tartalmazzák, ellentétben azzal a paraméterrel, amely a keresési területen kívül rekedhet.
 
-Körkörös földrajzi keresési terület megadásához válasszon egy szélességi és hosszúsági fokot, amely a kör középpontjának és egy méteres sugárnak a kiszolgálása. Ezt a paramétert ezután egy lekérdezési karakterlánchoz lehet hozzáfűzni, például `q=Restaurants&localCircularView=47.6421,-122.13715,5000`:.
+Kör alakú földrajzi keresési terület megadásához válasszon egy szélességi és hosszúsági fokot, amely a kör középpontjaként szolgál, és egy sugarat méterben. Ez a paraméter ezután hozzáfűzhető egy `q=Restaurants&localCircularView=47.6421,-122.13715,5000`lekérdezési karakterlánchoz, például: . .
 
-Lekérdezés befejezése:
+Teljes lekérdezés:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
-## <a name="localmapview"></a>localMapView
+## <a name="localmapview"></a>localMapView nézet
 
-A `localMapView` paraméter egy téglalap alakú földrajzi területet határoz meg a kereséshez, amely két koordináta használatával határozza meg a Délkelet-és északnyugati sarkokat. Ha ezt a paramétert használja, a Bing helyi üzleti keresési API-tól érkező válaszok tartalmazhatnak a megadott területen kívüli, `localCircularView` de a paraméterrel nem rendelkező helyeket, amelyek csak a keresési területen belül találhatók meg.
+A `localMapView` paraméter egy téglalap alakú földrajzi területet ad meg a kereséshez, két koordináta-készlet használatával a délkeleti és északnyugati sarkok megadásához. Ha ezt a paramétert használja, a Bing Helyi üzleti keresés API-ból érkező válaszok `localCircularView` tartalmazhatnak a megadott területen belüli és azon kívüli helyeket, ellentétben a paraméterrel, amely csak a keresési területen belüli helyeket tartalmazza.
 
-Téglalap alakú keresési terület megadásához válasszon ki két szélességi/hosszúsági koordinátákat a határ délkeleti és északnyugati sarkába. Először a Délkelet-koordinátákat kell megadnia, ahogy az az alábbi `localMapView=47.619987,-122.181671,47.6421,-122.13715`példában is látható:.
+Téglalap alakú keresési terület megadásához válasszon két szélességi/hosszúsági koordinátát, amely a határ délkeleti és északnyugati sarkaiként szolgál. Ügyeljen arra, hogy először a délkeleti koordinátákat határozza meg, ahogy a következő példában: `localMapView=47.619987,-122.181671,47.6421,-122.13715`.
 
-Lekérdezés befejezése:
+Teljes lekérdezés:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [Helyi üzleti keresés – Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
-- [Helyi üzleti keresés C# – rövid útmutató](quickstarts/local-quickstart.md)
-- [Helyi üzleti keresési csomópont rövid útmutatója](quickstarts/local-search-node-quickstart.md)
-- [Helyi üzleti keresés – Python rövid útmutató](quickstarts/local-search-python-quickstart.md)
+- [Helyi üzleti keresés Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
+- [Helyi üzleti keresés C# Rövid útmutató](quickstarts/local-quickstart.md)
+- [Rövid útmutató a helyi üzleti keresőcsomópontról](quickstarts/local-search-node-quickstart.md)
+- [Helyi üzleti keresés Python rövid útmutató](quickstarts/local-search-python-quickstart.md)

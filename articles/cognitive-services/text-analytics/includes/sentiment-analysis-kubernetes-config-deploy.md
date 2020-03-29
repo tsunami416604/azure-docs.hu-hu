@@ -1,7 +1,7 @@
 ---
-title: Hangulatelemzés Kubernetes-konfiguráció és a lépések telepítése
+title: Hangulatelemzés Kubernetes konfigurációs és üzembe helyezési lépések
 titleSuffix: Azure Cognitive Services
-description: Hangulatelemzés Kubernetes-konfiguráció és a lépések telepítése
+description: Hangulatelemzés Kubernetes konfigurációs és üzembe helyezési lépések
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 2a99f85cf861c0c36ffac136cdf1f792b40719b2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262637"
 ---
-### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>Az Hangulatelemzés tároló üzembe helyezése egy AK-fürtön
+### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>A Hangulatelemzés tároló telepítése AKS-fürtre
 
 1. Nyissa meg az Azure CLI-t, és jelentkezzen be az Azure-ba.
 
@@ -24,31 +24,31 @@ ms.locfileid: "78262637"
     az login
     ```
 
-1. Jelentkezzen be az AK-fürtbe. Cserélje le a `your-cluster-name`t, és `your-resource-group` a megfelelő értékekkel.
+1. Jelentkezzen be az AKS-fürtbe. Cserélje `your-cluster-name` `your-resource-group` ki és a megfelelő értékeket.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    A parancs futtatása után a következőhöz hasonló üzenetet küld:
+    A parancs futtatása után a következőhöz hasonló üzenetet jelent:
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > Ha több előfizetése is elérhető az Azure-fiókjában, és a `az aks get-credentials` parancs hibát jelez, egy gyakori probléma, hogy nem megfelelő előfizetést használ. Állítsa be az Azure CLI-munkamenet kontextusát úgy, hogy ugyanazt az előfizetést használja, mint amelyet az erőforrásokhoz hozott létre, és próbálkozzon újra.
+    > Ha több előfizetés érhető el az Azure-fiókjában, és a `az aks get-credentials` parancs hiba esetén ad vissza, gyakori probléma, hogy nem a megfelelő előfizetést használja. Állítsa be az Azure CLI-munkamenet környezetét, hogy ugyanazt az előfizetést használja, amelyhez az erőforrásokat hozta létre, és próbálkozzon újra.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Nyissa meg a választható szövegszerkesztőt. Ez a példa a Visual Studio Code-ot használja.
+1. Nyissa meg a választott szövegszerkesztőt. Ez a példa a Visual Studio-kódot használja.
 
     ```console
     code .
     ```
 
-1. A szövegszerkesztőben hozzon létre egy " *YAML*" nevű új fájlt, és illessze be az alábbi YAML. Ne felejtse el lecserélni a `billing/value` és a `apikey/value`t a saját adataira.
+1. A szövegszerkesztőn belül hozzon létre egy *új, sentiment.yaml*nevű fájlt, és illessze be a következő YAML-fájlt. Ügyeljen arra, `billing/value` `apikey/value` hogy cserélje ki, és a saját adatait.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,39 +94,39 @@ ms.locfileid: "78262637"
         app: sentiment-app
     ```
 
-1. Mentse a fájlt, és zárjuk be a szövegszerkesztőt.
-1. Futtassa a Kubernetes `apply` parancsot a *hangulat. YAML* fájllal, célként:
+1. Mentse a fájlt, és zárja be a szövegszerkesztőt.
+1. Futtassa a `apply` Kubernetes parancsot a *sentiment.yaml* fájllal a célként:
 
     ```console
     kubectl apply -f sentiment.yaml
     ```
 
-    Miután a parancs sikeresen alkalmazta a központi telepítési konfigurációt, a következő kimenethez hasonló üzenet jelenik meg:
+    Miután a parancs sikeresen alkalmazza a központi telepítési konfigurációt, egy üzenet jelenik meg a következő kimenethez hasonlóan:
 
     ```output
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. Ellenőrizze, hogy telepítve van-e a pod:
+1. Ellenőrizze, hogy a pod telepítve van-e:
 
     ```console
     kubectl get pods
     ```
 
-    A pod futási állapotának kimenete:
+    A pod futó állapotának kimenete:
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     sentiment-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Győződjön meg arról, hogy a szolgáltatás elérhető, és kérje le az IP-címet.
+1. Ellenőrizze, hogy a szolgáltatás elérhető-e, és az IP-cím beszerzése.
 
     ```console
     kubectl get services
     ```
 
-    Az *hangulati* szolgáltatás a pod-ban futó állapotának kimenete:
+    A kimenet a szolgáltatás a *podban* futó állapot:
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

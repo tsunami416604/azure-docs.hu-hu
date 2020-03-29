@@ -1,7 +1,7 @@
 ---
-title: Kulcs kifejezésének kinyerése a Text Analytics használatával REST API
+title: Kulcskifejezések kinyerése a Text Analytics REST API használatával
 titleSuffix: Azure Cognitive Services
-description: A legfontosabb kifejezések kinyerése az Azure Cognitive Services Text Analytics REST API használatával.
+description: Kulcskifejezések kinyerése a Text Analytics REST API használatával az Azure Cognitive Servicesből.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
 ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72429021"
 ---
-# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: a fő kifejezések kinyerése Text Analytics használatával
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Kulcskifejezések kinyerése a Text Analytics használatával
 
 A [Key Phrase Extraction API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját.
 
@@ -26,15 +26,15 @@ Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyű
 További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
 
 > [!TIP]
-> A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a fő kifejezés kinyeréséhez, így az adatokhoz [az Text Analytics tárolót is telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
+> A Text Analytics egy Linux-alapú Docker-tárolórendszerképet is biztosít a kulcskifejezések kinyeréséhez, így [telepítheti és futtathatja a Text Analytics-tárolót az](text-analytics-how-to-install-containers.md) adatok közelében.
 
 ## <a name="preparation"></a>Előkészítés
 
-A Key kifejezés kinyerése a legjobban akkor működik, ha nagyobb mennyiségű szöveget ad meg a munkához. Ez az érzelmek elemzésével ellentétes, ami jobb a kisebb mennyiségű szövegnél. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
+A kulcskifejezések kinyerése akkor működik a legjobban, ha nagyobb mennyiségű szöveget ad a munkához. Ez ellentétes a hangulatelemzéssel, amely kisebb mennyiségű szövegesetén jobban teljesít. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
 
-A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg, nyelv
+A JSON-dokumentumoknak ebben a formátumban kell rendelkezniük: azonosító, szöveg, nyelv
 
-A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy gyűjteményben legfeljebb 1 000 elem (azonosító) adható meg. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
+A dokumentum méretének dokumentumonként legfeljebb 5120 karakternek kell lennie, és gyűjteményenként legfeljebb 1000 elem (azonosító) lehet. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
 
 ```json
     {
@@ -68,34 +68,34 @@ A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy 
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1\. lépés: A kérés felépítése
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
 
-További információ a kérelem meghatározásáról: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md). A következő pontokat a kényelem kedvéért itt megismételjük:
+A kérelemdefinícióról a [Szövegelemzési API hívása](text-analytics-how-to-call-api.md)című témakörben talál további információt. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Key kifejezések API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Key Phrases API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
 
-+ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Az URL-címben `/text/analytics/v2.1/keyPhrases` értéket kell tartalmaznia. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
++ Állítsa be a HTTP-végpontot a kulcskifejezések kinyeréséhez egy Azure-beli Text Analytics-erőforrással vagy egy példányosított [text analytics-tárolóval.](text-analytics-how-to-install-containers.md) Az URL-címben szerepelnie `/text/analytics/v2.1/keyPhrases` kell. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
 
-+ Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
++ Állítsa be a kérelem fejlécét, hogy tartalmazza a szövegelemzési műveletek [hozzáférési kulcsát.](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2\. lépés: A kérés elküldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
 
-Az elemzés a kérelem megkapásakor történik meg. A percenként vagy másodpercenként küldendő kérelmek méretével és számával kapcsolatos információkért tekintse meg az áttekintés című témakör [adatkorlátok](../overview.md#data-limits) című szakaszát.
+Az elemzés a kérelem megkapásakor történik meg. A percenként vagy másodpercenként küldhető kérelmek méretéről és számáról az [áttekintő adatkorlátok](../overview.md#data-limits) című szakaszban olvashat.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
-## <a name="step-3-view-results"></a>3\. lépés: Eredmények megtekintése
+## <a name="step-3-view-results"></a>3. lépés: Eredmények megtekintése
 
-Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal. A visszaadott kulcsokra vonatkozó kifejezések sorrendjét a modell határozza meg belsőleg.
+Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal. A visszaadott kulcskifejezések sorrendjét a modell határozza meg belsőleg.
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-Itt látható egy példa a Key kifejezés kinyerésének kimenetére:
+A kulcskifejezések kinyerésének kimenetére példa látható:
 
 ```json
     {
@@ -146,23 +146,23 @@ Itt látható egy példa a Key kifejezés kinyerésének kimenetére:
     }
 ```
 
-Ahogy azt a feljegyezte, az elemző megkeresi és elveti a nem alapvető szavakat, és megtartja a mondat tárgyát vagy tárgyát képező egyszeres kifejezéseket vagy kifejezéseket.
+Mint említettük, az analizátor megkeresi és elveti a nem alapvető fontosságú szavakat, és megtartja azokat az egyes kifejezéseket vagy kifejezéseket, amelyek egy mondat tárgyaként vagy tárgyában jelennek meg.
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szükséges fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
+Ebben a cikkben a Cognitive Services Text Analytics használatával ismertetheti a kulcskifejezések kinyerésének fogalmait és munkafolyamatait. Összegezve:
 
 + A [Kulcsszókeresés API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) csak egyes nyelvekre érhető el.
-+ A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
++ A kérelem törzsében lévő JSON-dokumentumok azonosítót, szöveget és nyelvi kódot tartalmaznak.
 + POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
-+ A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak legfontosabb szavaiból és kifejezésből áll, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t, beleértve a Microsoft Office Excel és Power BI is, hogy csak néhányat említsünk.
++ A válaszkimenet, amely az egyes dokumentumazonosítók hoz tartozó kulcsszavakból és kifejezésekből áll, továbbítható bármely olyan alkalmazásba, amely elfogadja a JSON-t, beleértve a Microsoft Office Excelt és a Power BI-t is, hogy csak néhányat említsünk.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
- [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
+ [Szövegelemzés – áttekintés](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)

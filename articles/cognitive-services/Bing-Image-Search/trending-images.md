@@ -1,7 +1,7 @@
 ---
-title: A Bing Image Search API a felkapott képek bekérése
+title: Népszerű képek beszereznie a Bing Image Search API-val
 titleSuffix: Azure Cognitive Services
-description: Keresse meg a mai népszerű webes tartalmazó képek a Bing Image Search API.
+description: Keresse meg a mai felkapott képeket az internetről a Bing Image Search API-val.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -13,15 +13,15 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66383434"
 ---
-# <a name="get-trending-images-from-the-web"></a>Webes felkapott képek bekérése
+# <a name="get-trending-images-from-the-web"></a>Népszerű képek beszereznie az internetről
 
-A mai népszerű képek lekéréséhez a következő GET kérelmet küldeni:  
+A mai felkapott képek lekéréséhez küldje el a következő GET-kérést:  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending?mkt=en-us HTTP/1.1  
@@ -32,14 +32,14 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-A népszerű képek API jelenleg csak a következő piacok támogatja:  
+A Felkapott képek API jelenleg csak a következő piacokat támogatja:  
 
-- en-US (angol nyelven, Egyesült Államok)  
-- en-CA (English, Canada)  
-- en-Ausztrália (angol nyelven, Ausztrália)  
+- en-US (English, Amerikai Egyesült Államok)  
+- en-CA (angol, Kanada)  
+- en-AU (Angol, Ausztrália)  
 - zh-CN (kínai, Kína)
 
-A válasz tartalmaz egy [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) objektum, amely felsorolja a képek kategória szerint. A kategória `title` a képeket a felhasználói élmény a csoporthoz. A kategóriák a napi változhatnak.  
+A válasz tartalmaz egy [Felkapott képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) objektumot, amely kategóriák szerint sorolja fel a képeket. A kategória segítségével `title` csoportosíthatja a képeket a felhasználói élményben. A kategóriák naponta változhatnak.  
 
 ```json
 {
@@ -88,11 +88,11 @@ A válasz tartalmaz egy [TrendingImages](https://docs.microsoft.com/rest/api/cog
 }  
 ```  
 
-Minden csempe kép és a kapcsolódó képek első beállításokat tartalmazza. A kapcsolódó képek bekérése, használhatja a lekérdezés `text` hívja a [Image Search API](./search-the-web.md) és a kapcsolódó képek megjelenítése, saját magának. Vagy használhatja az URL-címet `webSearchUrl` érvénybe a felhasználót, hogy a Bing lemezképek keresési eredmények oldal, amely a kapcsolódó lemezképet is tartalmaz.
+Minden csempe tartalmaz egy képet, és a kapcsolódó képek beszerzésének lehetőségeit. A kapcsolódó képek lekérni, a `text` lekérdezés segítségével hívja meg a [Képkereső API-t,](./search-the-web.md) és jelenítse meg a kapcsolódó képeket saját maga. Vagy használhatja az URL-t, `webSearchUrl` hogy a felhasználó a Bing képek keresési eredményoldal, amely tartalmazza a kapcsolódó képeket.
 
-Ha felhívja a képkeresési API, a kapcsolódó képek bekérése, állítsa be a [azonosító](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) lekérdezési paraméter az azonosítót a `id` mező. Az azonosító megadása, hogy a válasz tartalmazza-e a lemezkép (legyen az első képet a válaszban) és a kapcsolódó képek biztosítja. Emellett állítsa a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paraméter, a szöveget a `query` objektum `text` mező.
+Ha meghívja a Képkereső API-t a kapcsolódó lemezképek lehívásához, `id` állítsa be az [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) lekérdezési paramétert a mezőben lévő azonosítóra. Az azonosító megadása biztosítja, hogy a válasz tartalmazza a képet (ez az első kép a válaszban) és a kapcsolódó képeket. Állítsa be a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezés paramétert `query` az `text` objektum mezőjében lévő szövegre is.
 
-Az alábbi példa bemutatja, hogyan végezheti a lemezkép-azonosító az előző népszerű képek API-válasz Mr. Smith kapcsolódó rendszerképeket.
+A következő példa bemutatja, hogyan használhatja a képazonosítót, hogy a kapcsolódó képeket Mr. Smith az előző Felkapott képek API-válasz.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=Smith&id=77FDE4A1C6529A23C7CF0EC073FAA64843E828F2&mkt=en-us HTTP/1.1  

@@ -1,7 +1,7 @@
 ---
 title: Közzétételi tervezési minták
 titleSuffix: Azure Cognitive Services
-description: Tervezési minták és ajánlott eljárások a közzétételhez.
+description: Tervezési minták és bevált gyakorlatok a közzétételhez.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776622"
 ---
 # <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
-Most, hogy&#39;meghatározta a szintetikus hangélmények megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) ,&#39;jó időt biztosít a lehetséges tervezési minták megismerésére.
+Most, hogy&#39;meg határozta meg a megfelelő [szintű nyilvánosságra hozatala](concepts-disclosure-guidelines.md#disclosure-assessment) a szintetikus hang tapasztalat, ez&#39;egy jó ideje, hogy vizsgálja meg a lehetséges tervezési mintákat.
 ## <a name="overview"></a>Áttekintés
-A különböző közzétételi minták a szintetikus hangvételre is alkalmazhatók. Ha a közzététel kiértékelésének eredménye "magas szintű közzététel" volt, javasoljuk a [**explicit közzétételt**](#explicit-disclosure), ami azt jelenti, hogy a szintetikus hang kiválasztásának elvégzése nem megfelelő. Az [**implicit közzététel**](#implicit-disclosure) olyan célzási és interakciós mintákat tartalmaz, amelyek hasznos tapasztalatokat biztosítanak, függetlenül attól, hogy a szükséges közzétételi szintek magas vagy alacsonyak.
-a közzétételi minták ![spektruma](media/responsible-ai/disclosure-patterns/affordances.png)
+Van egy spektruma közzétételi tervezési minták at lehet alkalmazni, hogy a szintetikus hang élményt. Ha a közzétételi értékelés eredménye "Nagy nyilvánosságot kapott", javasoljuk a [**kifejezett nyilvánosságra hozatalt**](#explicit-disclosure), ami azt jelenti, hogy a szintetikus hang eredetét nyíltan közöljük. [**Az implicit közzététel**](#implicit-disclosure) olyan jelzéseket és interakciós mintákat tartalmaz, amelyek a hangélmények számára előnyösek, függetlenül attól, hogy a szükséges közzétételi szintek magasak vagy alacsonyak-e.
+![A közzétételi minták spektruma](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
 
@@ -30,228 +30,228 @@ a közzétételi minták ![spektruma](media/responsible-ai/disclosure-patterns/a
 
 | Explicit közzétételi minták                                                                                                                                                                                    | Implicit közzétételi minták                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|[Transzparens bevezetés](#transparent-introduction)<br> [Verbális transzparens bemutatása](#verbal-transparent-introduction)<br>  [Explicit Szerző](#explicit-byline)<br>  [Testreszabás és kalibrálás](#customization-and-calibration)<br> [Szülői közzététel](#parental-disclosure)<br> [A hangvételi lehetőségek megismerése](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Képesség-közzététel](#capability-disclosure)<br>[Implicit útmutatók és visszajelzés](#implicit-cues--feedback)<br> [Társalgási átláthatóság](#conversational-transparency) |
+|[Átlátszó bevezetés](#transparent-introduction)<br> [Verbális átlátszó bevezetés](#verbal-transparent-introduction)<br>  [Explicit szövegsor](#explicit-byline)<br>  [Testreszabás és kalibrálás](#customization-and-calibration)<br> [Szülői közzététel](#parental-disclosure)<br> [Lehetőségek biztosítása arra, hogy többet megtudjon arról, hogyan készült a hang](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [A képességek nyilvánosságra hozatala](#capability-disclosure)<br>[Implicit dákók és visszajelzések](#implicit-cues--feedback)<br> [Társalgási átláthatóság](#conversational-transparency) |
 
 
 
-A következő diagram használatával közvetlenül a szintetikus hangra vonatkozó mintákra hivatkozhat. A diagram egyéb feltételei a forgatókönyvre is vonatkozhatnak:<br/>
+Az alábbi táblázat segítségével közvetlenül a szintetikus hangra vonatkozó mintákra hivatkozhat. A diagram egyéb feltételei is vonatkozhatnak a forgatókönyvre:<br/>
 
 
 
-| Ha a szintetikus hang élménye... | Ajánlatok | Tervezési minták |
+| Ha a szintetikus hangélmény... | Javaslatok | Tervezési minták |
 | --- | --- | --- |
-| Magas szintű közzétételt igényel  | Legalább egy explicit mintázatot és implicit célzási lehetőséget kell használnia a felhasználóknak a társítások kiépítéséhez. |[Explicit közzététel](#explicit-disclosure)<br>[Implicit közzététel](#implicit-disclosure)  |
-| Kis nyilvánosságra hozatalt igényel | A közzététel minimális vagy szükségtelen lehet, de bizonyos implicit minták is hasznosak lehetnek. | [Képesség-közzététel](#capability-disclosure)<br>[Társalgási átláthatóság](#conversational-transparency)  |
-| Magas fokú engagement | A kiépítés hosszú távú, és több belépési pontot kínál a közzétételhez a felhasználói út mentén. Kifejezetten ajánlott bevezetési tapasztalat. | [Transzparens bevezetés](#transparent-introduction)<br>[Testreszabás és kalibrálás](#customization-and-calibration)<br>[Képesség-közzététel](#capability-disclosure) |
-| Gyermekeket tartalmaz elsődleges célközönségként | Megcélozhatja a szülőket elsődleges közzétételi célközönségként, és biztosíthatja, hogy hatékonyan kommunikáljanak a gyermekekkel való közzétételsel.  | [Szülői közzététel](#parental-disclosure)<br>[Verbális transzparens bemutatása](#verbal-transparent-introduction)<br> [Implicit közzététel](#implicit-disclosure)<br> [Társalgási átláthatóság](#conversational-transparency)  |
-| Olyan vak felhasználókat vagy személyeket foglal magába, akiknek az elsődleges célközönsége a gyengén látó  | Az összes felhasználó belefoglalható, és gondoskodhat arról, hogy a vizualizációk bármilyen formája más szöveg-vagy hanghatásokat is társítson. Tartsa be a kisegítő lehetőségeket a kontraszt arány és a megjelenítési méret tekintetében. A bejelentések közléséhez használjon hallási jegyeket.  | [Verbális transzparens bemutatása](#verbal-transparent-introduction) <br>[Hallási célzások](#implicit-cues--feedback)<br>[Haptic-útmutatók](#implicit-cues--feedback)<br>[Társalgási átláthatóság](#conversational-transparency)<br>[Kisegítő lehetőségek](https://www.microsoft.com/accessibility) |
-| A képernyő-kevesebb, az eszköz vagy a hang, mint az elsődleges vagy az egyetlen interakciós mód. | A bejelentések közléséhez használjon hallási jegyeket. | [Verbális transzparens bemutatása](#verbal-transparent-introduction) <br> [Hallási célzások](#implicit-cues--feedback)  |
-| Előfordulhat, hogy több felhasználót/figyelőt is tartalmaz (például több háztartásban személyi asszisztens)  | Legyen tisztában a különböző felhasználói környezetekkel és szintekkel, és több lehetőséget kínál a felhasználói úton való közzétételre.  | [Transzparens bevezetés (felhasználó visszaküldése)](#transparent-introduction)<br> [A hangvételi lehetőségek megismerése](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Társalgási átláthatóság](#conversational-transparency)  |
+| Nagy közzétételt igényel  | Legalább egy explicit minta és implicit dákó előre, hogy a felhasználók társítások létrehozásában. |[Explicit közzététel](#explicit-disclosure)<br>[Implicit közzététel](#implicit-disclosure)  |
+| Alacsony közzétételt igényel | A közzététel lehet minimális vagy szükségtelen, de előnyös lehet néhány implicit minta. | [A képességek nyilvánosságra hozatala](#capability-disclosure)<br>[Társalgási átláthatóság](#conversational-transparency)  |
+| Magas szintű elkötelezettség | Építsen hosszú távra, és több belépési pontot kínáljon a felhasználói út során. Erősen ajánlott, hogy egy bevezetési élményt. | [Átlátszó bevezetés](#transparent-introduction)<br>[Testreszabás és kalibrálás](#customization-and-calibration)<br>[A képességek nyilvánosságra hozatala](#capability-disclosure) |
+| A gyermekeket foglalja magában elsődleges célközönségként | Megcélozni a szülőket, mint elsődleges közzétételi közönséget, és biztosítják, hogy hatékonyan kommunikálhassák a gyermekekkel a közzétételt.  | [Szülői közzététel](#parental-disclosure)<br>[Verbális átlátszó bevezetés](#verbal-transparent-introduction)<br> [Implicit közzététel](#implicit-disclosure)<br> [Társalgási átláthatóság](#conversational-transparency)  |
+| Tartalmazza a vak felhasználókat vagy a gyengén látó kit, mint elsődleges célközönséget  | Legyen minden felhasználót bevonni, és győződjön meg arról, hogy a vizuális közzététel bármely formájához alternatív szöveg vagy hanghatások társulnak. Tartsa be a kisegítő lehetőségekre vonatkozó szabványokat a kontrasztarány és a kijelző méretéhez. Használja a hallási jelzéseket a közzététel közléséhez.  | [Verbális átlátszó bevezetés](#verbal-transparent-introduction) <br>[Hangjelzés](#implicit-cues--feedback)<br>[Haptic dákók](#implicit-cues--feedback)<br>[Társalgási átláthatóság](#conversational-transparency)<br>[Akadálymentesítési szabványok](https://www.microsoft.com/accessibility) |
+| Képernyő nélküli, eszköz nélküli vagy hangként használja a hangot elsődleges vagy egyetlen interakciós módként | Használja a hallási jelzéseket a közzététel közléséhez. | [Verbális átlátszó bevezetés](#verbal-transparent-introduction) <br> [Hangjelzés](#implicit-cues--feedback)  |
+| Potenciálisan több felhasználót/hallgatót foglal magában (pl. személyi asszisztens több háztartásban)  | Legyen tudatában a különböző felhasználói környezeteknek és megértési szinteknek, és több lehetőséget kínáljon a felhasználói út során a közzétételre.  | [Átlátszó bevezetés (return user)](#transparent-introduction)<br> [Lehetőségek biztosítása arra, hogy többet megtudjon arról, hogyan készült a hang](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Társalgási átláthatóság](#conversational-transparency)  |
 
 
 
-## <a name="explicit-disclosure"></a>Explicit közzététel
-Ha a szintetikus hangélmény magas szintű nyilvánosságra hozatalt igényel, érdemes a következő explicit minták közül legalább az egyiket használni a szintetikus természet állapotának egyértelmű meghatározásához.
-### <a name="transparent-introduction"></a>Transzparens bevezetés
+## <a name="explicit-disclosure"></a>Kifejezett közzététel
+Ha a szintetikus hang élménye nagy nyilvánosságra hozatalt igényel, a legjobb, ha az alábbi explicit minták közül legalább egyet használ a szintetikus természet egyértelműen megalapozásához.
+### <a name="transparent-introduction"></a>Átlátszó bevezetés
 
-A hangélmény megkezdése előtt vezesse be a digitális asszisztenst úgy, hogy teljesen átlátható legyen a hangjának és képességeinek eredetéről. A minta használatának az optimális pillanata egy új felhasználó bevezetése, illetve új funkciók beléptetése egy visszatérő felhasználó számára. Az implicit célzási útmutatók bevezetése során a felhasználók mentális modellt alkotnak a digitális ügynök szintetikus természetéről.
+A hangélmény megkezdése előtt mutassa be a digitális asszisztenst azáltal, hogy teljes mértékben átláthatóvá válik a hangja eredetét és képességeit illetően. A minta használatának optimális pillanata egy új felhasználó bevezetésekor vagy új funkciók bevezetésekor a visszatérő felhasználó számára. Implicit célzásokra a bevezetés során a felhasználók mentális modellt alkotnak a digitális ügynök szintetikus természetéről.
 
-#### <a name="first-time-user-experience"></a>Felhasználói élmény első alkalommal
+#### <a name="first-time-user-experience"></a>Első felhasználói élmény
 
-![átlátható bevezetés az első futtatási élmény során](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
-*A szintetikus hang egy új felhasználó bevezetését követően jelent meg.*
+![Átlátható bevezetés az első futtatás során](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
+*A szintetikus hang egy új felhasználó bevezetése közben kerül bevezetésre.*
 
-Ajánlatok
-- Írja le, hogy a hang mesterséges (például &quot;digitális&quot;)
-- Írja le, hogy az ügynök mire képes
-- A hangvezéreltség&#39;explicit állapota
-- A szintetikus hangról további információt a belépési pont nyújt.
+Javaslatok
+- Írja le, hogy a hang &quot;mesterséges&quot;(pl. digitális)
+- Írja le, mire képes az ügynök
+- Explicit módon adja meg a&#39;eredetének hangját
+- Kínáljon belépési pontot, hogy többet tudjon meg a szintetikus hangról
 
-#### <a name="returning-user-experience"></a>Felhasználói élmény visszaküldése
+#### <a name="returning-user-experience"></a>Visszatérő felhasználói élmény
 
-Ha a felhasználó kihagyja a bevezetési élményt, folytassa a belépési pontok elérését az átlátható bevezetési élményig, amíg a felhasználó első alkalommal el nem indítja a hangfelvételt.
+Ha egy felhasználó kihagyja a bevezetési élményt, továbbra is kínáljon belépési pontokat az Átlátszó bevezetés élményhez, amíg a felhasználó először nem indítja el a hangot.
 <br/>
 
-![átlátható bevezetés a felhasználói élmény visszaküldése során](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
-*Konzisztens belépési pontot adjon meg a szintetikus hangélményhez. Lehetővé teszi a felhasználó számára, hogy visszatérjen a bevezetési élményhez, amikor az első alkalommal indítja el a hangot a felhasználói út bármely pontján.*
+![Átlátható bevezetés a visszaküldési felhasználói élmény során](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
+*Adjon meg egy konzisztens belépési pontot a szintetikus hang élményéhez. Lehetővé teszi a felhasználó számára, hogy visszatérjen a bevezetési élményhez, amikor először indítja el a hangot a felhasználói út bármely pontján.*
 
 
-### <a name="verbal-transparent-introduction"></a>Verbális transzparens bemutatása
+### <a name="verbal-transparent-introduction"></a>Verbális átlátszó bevezetés
 
-A digitális asszisztens&#39;hangjának eredetét kimondó kérdés a saját maga kifejezett feladata a nyilvánosságra hozatal eléréséhez. Ez a minta a magas közzétételi forgatókönyvek esetében a legjobb, ha a hang az egyetlen elérhető interakciós mód.
+A digitális asszisztens&#39;hangjának eredetét tartalmazó szóbeli üzenet önmagában is elég egyértelmű ahhoz, hogy nyilvánosságra kerülésre kerül. Ez a minta a legjobb a magas közzétételi forgatókönyvek, ahol a hang az egyetlen mód a beavatkozás áll rendelkezésre.
 <br/>
 
-![verbálisan beszélt átlátható bevezetést](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
-<br/>*Transzparens bevezetést használhat, ha a felhasználói élményben olyan pillanatok vannak, amelyekben már be-vagy&#39;kialakíthatja a személy hangját.*
+![Verbálisan beszélt átlátszó bevezetés](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
+<br/>*Használjon átlátszó bevezetést, ha vannak olyan pillanatok a felhasználói élményben, amikor előfordulhat, hogy már bevezet vagy attribútumként egy személyt&#39;hangja.*
 
 
-![verbálisan beszélt átlátható bevezetést az első személy](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
-*További átláthatóság érdekében a hangszínész felfedi a szintetikus hang eredetét az első személyben.*
+![Verbálisan beszélt átlátható bevezetése első személyben](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
+*A további átláthatóság érdekében a hangszereplő az első személyben közzéteheti a szintetikus hang eredetét.*
 
-### <a name="explicit-byline"></a>Explicit Szerző
+### <a name="explicit-byline"></a>Explicit szövegsor
 
-Akkor használja ezt a mintát, ha a felhasználó egy hanglejátszóval vagy interaktív összetevővel fog kommunikálni a hang elindításához.
+Ezt a mintát akkor használja, ha a felhasználó egy hanglejátszóval vagy interaktív összetevővel fog interakcióba lépni a hang aktiválásához.
 
 
-![explicit szerzőt a hírek adathordozó-forgatókönyvében](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
-*Egy explicit szerző az a hely, ahol a hang származik.*
+![Explicit byline egy hírmédia forgatókönyv](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
+*Egy explicit byline a hozzárendelése, ahol a hang jött.*
 
-Ajánlatok
+Javaslatok
 
-- Ajánlat belépési pontja további információ a szintetizált hangról
+- Ajánlat belépési pont, hogy többet tudjon meg a szintetizált hang
 
 ### <a name="customization-and-calibration"></a>Testreszabás és kalibrálás
 
-Adja meg a felhasználók számára, hogy a digitális asszisztens hogyan reagáljon rájuk (azaz hogyan hangzik a hang).  Ha a felhasználó a saját használati feltételeinek megfelelően kommunikál a rendszerrel, és a meghatározott célokkal, akkor a definíció szerint már&#39;nem valódi személy.
+A felhasználók szabályozhatják, hogy a digitális asszisztens hogyan reagáljon rájuk (azaz hogyan szóljon a hang).  Amikor a felhasználó a saját feltételei szerint és meghatározott célokat szem előtt tartva lép kapcsolatba egy rendszerrel, akkor definíció szerint már megértette, hogy&#39;nem valós személy.
 
 #### <a name="user-control"></a>Felhasználói vezérlő
 
-Olyan választási lehetőségeket kínál, amelyek a szintetikus hangélményre nézve értelmes és észrevehető hatással vannak.
+Olyan lehetőségeket kínálhat, amelyek jelentős és észrevehető hatást gyakorolnak a szintetikus hangélményre.
 
-![felhasználói beállítások](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
-*A felhasználói beállítások lehetővé teszik a felhasználók számára, hogy testre szabják és javítsák tapasztalataikat.*
+![Felhasználói beállítások](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
+*A felhasználói beállítások lehetővé teszik a felhasználók számára, hogy testre szabják és javítsák felhasználói élményt.*
 
-Ajánlatok
+Javaslatok
 
-- A hang testreszabásának engedélyezése a felhasználók számára (például a nyelv és a hang típusának kiválasztása)
-- Lehetővé teszi a felhasználóknak, hogy megtanítsák a rendszer számára az egyedi hangra (például hangkalibrációra, egyéni parancsokra) való reagálást.
-- Optimalizálás felhasználó által generált vagy környezetfüggő interakcióhoz (például emlékeztetők)
+- A felhasználók testre szabhatják a hangot (pl. nyelv és hangtípus kiválasztása)
+- A felhasználók megtaníthatják a rendszernek, hogy reagáljon az ő egyedi hangjára (pl. hangkalibrálás, egyéni parancsok)
+- Optimalizálás a felhasználó által generált vagy környezetfüggő interakciókhoz (pl. emlékeztetők)
 
-#### <a name="persona-customization"></a>Persona testreszabása
+#### <a name="persona-customization"></a>Személy testreszabása
 
-A digitális asszisztensi&#39;hang testreszabásának módjai. Ha a hang egy hírességen vagy egy széles körben felismerhető személyen alapul, érdemes lehet vizuális és szóbeli bevezetést használni, amikor a felhasználók előnézete a hang.
+Kínálnak a digitális asszisztens&#39;hangjának testreszabására. Ha a hang egy hírességen vagy egy széles körben felismerhető személyen alapul, fontolja meg a vizuális és szóbeli bemutatkozások használatát, amikor a felhasználók megtekinthetik a hangot.
 
-![hang testreszabása](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
-*A hangok kiválasztásának lehetősége segít közvetíteni a mesterséges természetet.*
+![A hang testreszabása](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
+*Felajánlás a képesség, hogy válasszon egy sor hangok segít közvetíteni a mesterséges természet.*
 
-Ajánlatok
-- Az egyes hangok hangjának előzetes megtekintésének engedélyezése a felhasználók számára
-- Minden hanghoz használjon valódi bevezetést
-- Ajánlat belépési pontjai a szintetizált hangokkal kapcsolatos további információkért
+Javaslatok
+- Lehetővé teszi a felhasználók számára, hogy megtekintsék az egyes hangok hangját
+- Használjon hiteles bevezetőt minden hanghoz
+- Ajánlat belépési pontokat, hogy többet tudjon meg a szintetizált hang
 
 ### <a name="parental-disclosure"></a>Szülői közzététel
 
-A COPPA-szabályozások betartása mellett a szülők számára is biztosíthatja a közzétételt, ha az elsődleges célközönség fiatal gyermek, és a kitettség szintje magas. Bizalmas felhasználás esetén érdemes kapuzás a tapasztalatot, amíg egy felnőtt elismerte a szintetikus hang használatát. Bátorítsa a szülőket, hogy tájékoztassák az üzenetet a gyermekeik számára.
+A MELLETT, hogy megfelel a COPPA előírásoknak, adjon tájékoztatást a szülőknek, ha az elsődleges célközönség kisgyermekek és az expozíciós szint magas. Érzékeny célokra, fontolja meg gating a tapasztalat, amíg egy felnőtt elismerte a szintetikus hang használatát. Buzdítsd a szülőket, hogy közöljék az üzenetet gyermekeikkel.
 
-szülők ![közzététele](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
-*A szülők számára optimalizált transzparens bevezetéssel biztosítható, hogy egy felnőtt tisztában legyen a hang szintetikus természetével, mielőtt a gyermek kommunikál.*
+![Közzététel a szülők számára](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
+*A szülők számára optimalizált átlátható bevezetés biztosítja, hogy a felnőtt et már azelőtt felkell ismerni a hang szintetikus jellegéről, mielőtt a gyermek kölcsönhatásba lépne vele.*
 
-Ajánlatok
+Javaslatok
 
-- A szülők célközönsége elsődleges célközönségként a közzétételhez
-- Bátorítsa a szülőket, hogy tájékoztassák gyermekeiket
-- Ajánlat belépési pontjai a szintetizált hangokkal kapcsolatos további információkért
-- A szülőktől egyszerű &quot;a védelem megkérdezése a tapasztalatok megadásával&quot; megkérdőjelezheti, hogy elolvasták a nyilvánosságra hozatalt
+- A szülők megcélzása a közzététel elsődleges célközönségeként
+- Buzdítsd a szülőket, hogy közöljék a tájékoztatásról gyermekeikkel
+- Ajánlat belépési pontokat, hogy többet tudjon meg a szintetizált hang
+- A tapasztalatot azzal, &quot;hogy&quot; egy egyszerű védintézkedési kérdést tesz fel a szülőknek, hogy megmutassák, elolvasták a
 
-### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>A hangvételi lehetőségek megismerése
+### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Lehetőségek biztosítása arra, hogy többet megtudjon arról, hogyan készült a hang
 
-A környezetfüggő belépési pont olyan oldalra, előugró vagy külső helyre mutat, amely további információkat nyújt a szintetikus hangtechnológiáról. Felvehet például egy hivatkozást, amely további információt nyújt a bevezetéshez, vagy amikor a felhasználó további információkat kér a beszélgetés során.
+Környezetfüggő belépési pontokat kínálhat egy olyan oldalra, előugró ablakra vagy külső webhelyre, amely további információt nyújt a szintetikus hangtechnológiáról. Például megadhat egy hivatkozást, hogy többet tudjon meg a bevezetés során, vagy amikor a felhasználó további információkat kér a beszélgetés során.
 
-![belépési pont további információért](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
-*Példa egy belépési pontra, amely lehetőséget nyújt a szintetizált hangra vonatkozó további információk megismerésére.*
+![Belépési pont, hogy többet](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
+*Példa egy belépési pontra, amely lehetőséget nyújt arra, hogy többet tudjon meg a szintetizált hangról.*
 
-Ha a felhasználó további információt kér a szintetikus hangról, az elsődleges cél a szintetikus hang eredetével kapcsolatos információk benyújtása, valamint a technológia átláthatósága.
+Amint a felhasználó több információt kér a szintetikus hangról, az elsődleges cél az, hogy oktassa őket a szintetikus hang eredetéről, és átlátható legyen a technológiával kapcsolatban.
 
-![a szintetikus hanggal kapcsolatos további információkat biztosít a felhasználóknak](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
-*További információt a külső hely súgójának webhelyén találhat.*
+![További információk biztosítása a felhasználóknak a szintetikus hangról](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
+*További információk egy külső webhely súgójában ajánlhatók fel.*
 
-Ajánlatok
+Javaslatok
 
-- Egyszerűsítse az összetett fogalmakat, és ne használja a Legalese és a műszaki szakzsargont
-- Ne temetni a tartalmat az adatvédelem és a használati feltételekkel kapcsolatos utasításokban
-- A tartalom tömören tartása és a képek használata, ha elérhető
+- Egyszerűsítse az összetett fogalmakat, és kerülje a jogi és technikai zsargon használatát
+- Ne temetje el ezt a tartalmat az adatvédelemés a használati feltételek nyilatkozataiban
+- A tartalom tömören tartása és képek használata, ha rendelkezésre áll
 
 ## <a name="implicit-disclosure"></a>Implicit közzététel
 
-A konzisztencia a teljes felhasználói útra kiterjedő, a közzétételt implicit módon megvalósító kulcs. A vizualizációk és a hallási útmutatók konzisztens használata az eszközökön és a beavatkozási módokon segíthet az implicit minták és a explicit közzététel közötti társítások kiépítésében.
+A konzisztencia a kulcs a közzététel implicit módon eléréséhez a felhasználói út során. A vizuális és hallási jelzések konzisztens használata az eszközök és az interakciómód között segíthet az implicit minták és az explicit közzététel közötti társítások létrehozásában.
 
-![Implicit célzások konzisztenciája](media/responsible-ai/disclosure-patterns/consistency.png)
+![Implicit jelzések konzisztenciája](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues--feedback"></a>Implicit útmutatók & visszajelzés
+### <a name="implicit-cues--feedback"></a>Implicit dákók & visszajelzések
 
-A antropomorfizmus különböző módokon, az ügynök tényleges vizualizációs ábrázolásán, hangon, hangoknál, a fény mintázatán, a pattogó alakzatokon, vagy akár az eszköz rezgésén is megnyilvánulhat. A Persona meghatározásakor implicit célzási és visszajelzési mintákat használhat, nem pedig egy nagyon emberi jellegű avatárt. Ez az egyik módszer, amellyel csökkentheti a explicit közzététel szükségességét.
+Az antropomorfizmus különböző módokon nyilvánulhat meg, az ügynök tényleges vizuális ábrázolásától kezdve a hangig, a hangokig, a fénymintázatokig, a pattogó formákig, vagy akár egy eszköz rezgéséig. Meghatározásakor a persona, tőkeáttétel implicit célzásokat és visszajelzésminták helyett célja egy nagyon ember-szerű avatar. Ez az egyik módja annak, hogy minimálisra csökkentsék a konkrétabb közzététel szükségességét.
 
-![vizuális útmutatók és visszajelzések](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
-*Ezek a útmutatók segítenek az ügynök anthropomorphize, hogy ne legyen túl emberi jellegű. A saját maguk is létrehozhatnak hatékony közzétételi mechanizmusokat, amikor az idő múlásával következetesen használják őket.*
+![Vizuális jelzések és visszajelzések](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
+*Ezek a jelek segítenek antropomorfizálni az anyagot anélkül, hogy túl emberszerűek lenneek. Ők is válhatnak hatékony közzétételi mechanizmusok saját, ha következetesen használják az idő múlásával.*
 
-A következő típusú útmutatók beépítésekor vegye figyelembe a tapasztalatok interakciójának különböző módjait:
+Vegye figyelembe a következő típusú dákók beépítésekor a felhasználói élmény különböző módjait:
 
-| Vizuális útmutatók                                                                                                                                                               | Hallási célzások                                                      | Haptic-útmutatók |
+| Vizuális jelzések                                                                                                                                                               | Hangjelzés                                                      | Haptic dákók |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|  Avatar <br>Rugalmas valós idejű figyelmeztetések (például animációk)<br> Nem képernyős útmutatók (például az eszközön lévő fények és minták)<br>  | Sonicon (pl. egy rövid megkülönböztető hang, hangjegyzetek sorozata) | Rezgés   |
+|  Avatar <br>Reszponzív valós idejű jelzések (pl. animációk)<br> Nem képernyős jelzések (pl. fények és minták az eszközön)<br>  | Sonicon (pl. egy rövid, jellegzetes hang, zenei hangsorok sorozata) | Rezgés   |
 
-### <a name="capability-disclosure"></a>Képesség-közzététel
+### <a name="capability-disclosure"></a>A képességek nyilvánosságra hozatala
 
-A közzététel implicit módon megvalósítható azáltal, hogy pontos elvárásokat biztosít a digitális asszisztens számára. Adjon meg olyan példákat, amelyekkel a felhasználók megismerhetik a digitális segéd használatát, és a kontextus súgójában további információkat találhat a szintetikus hangról a felhasználói élmény korai szakaszában.
+A közzététel hallgatólagosan elérhető, ha pontos elvárásokat állítunk fel arra vonatkozóan, hogy a digitális asszisztens mire képes. Mintaparancsokat adhat meg, hogy a felhasználók megtanulják, hogyan kommunikálhatnak a digitális asszisztenssel, és kontextuális segítséget nyújthatnak a szintetikus hangról az élmény korai szakaszában.
 
-![Vizuális útmutatók és visszajelzés](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Vizuális jelzések és visszajelzések](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>Társalgási átláthatóság
 
-Ha a beszélgetések nem várt elérési utakat mutatnak be, érdemes lehet olyan alapértelmezett válaszokat készíteni, amelyek segítenek az elvárások visszaállításában, az átláthatóság erősítésében és a felhasználók a sikeres elérési utakhoz Lehetőség van arra, hogy a kommunikációban is explicit módon használja a közzétételt.
+Ha a beszélgetések váratlan útvonalakba esnek, fontolja meg az alapértelmezett válaszok kidolgozását, amelyek segíthetnek az elvárások visszaállításában, az átláthatóság megerősítésében és a felhasználók sikeres elérési utak felé terelésében. Vannak lehetőségek, hogy használja explicit közzététel beszélgetés is.
 
-![Nem várt elérési utak feldolgozása](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
+![Nem várt útvonalak kezelése](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-A feladathoz kapcsolódó vagy &quot;személyes&quot; az ügynökre irányuló kérdések jó alkalom arra, hogy emlékeztesse a felhasználókat az ügynök szintetikus természetére, és irányítsa őket, hogy megfelelően vagy átirányítsák őket egy valós személyre.
+Off-task &quot;vagy&quot; személyes kérdések et az ügynök egy jó ideje, hogy emlékeztesse a felhasználókat a szintetikus jellege az ügynök, és irányítja őket, hogy vegyenek részt vele megfelelően, vagy átirányítani őket egy valós személy.
 
-![Feladatok kikapcsolásával kapcsolatos kérdések](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
+![Feladatkérdések kezelése](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
 ## <a name="when-to-disclose"></a>Mikor kell közzétenni
 
-A felhasználói utazás során számos lehetőség van a közzétételre. Tervezze meg az első használatot, a második használatot, az n... lehetőséget, de a &quot;meghibásodásának pillanatait is megöleli&quot; az átláthatóság kiemeléséhez – például ha a rendszer hibát jelez, vagy&#39;amikor a felhasználó felfedi az ügynök képességeinek korlátozását.
+A felhasználói út során számos közzétételi lehetőség van. Tervezze meg az első használat, a második használat, az &quot;&quot; n-edik használat..., hanem az átláthatóság kiemelésének kudarcát is , például amikor a rendszer hibát követ el, vagy amikor a felhasználó felfedezi az ügynök korlátozását,&#39;képességeit.
 
-![Közzétételi lehetőségek a felhasználói utazás során](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
+![Közzétételi lehetőségek a felhasználói út során](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
-Példa a szabványos digitális asszisztens felhasználói útra a különböző közzétételi lehetőségek kiemelésével.
+Példa szabványos digitális asszisztens felhasználói útra, amely különböző közzétételi lehetőségeket emel ki.
 
-### <a name="up-front"></a>Előzetes
+### <a name="up-front"></a>Kezdeti
 
-A közzététel legelső pillanata, amikor egy személy a szintetikus hanggal kommunikál.  Személyes hangasszisztensi forgatókönyv esetén ez a bevezetéskor, vagy az első alkalommal, amikor a felhasználó gyakorlatilag felveszi a funkciót. Más helyzetekben ez az első alkalom, amikor egy szintetikus hang beolvassa a tartalmat egy webhelyen, vagy amikor a felhasználó először kommunikál egy virtuális karakterrel.
+Az optimális pillanat a nyilvánosságra hozatal az első alkalom, egy személy kölcsönhatásba lép a szintetikus hang.A személyi hangasszisztens-forgatókönyv esetén ez a bevezetés során, vagy az első alkalommal, amikor a felhasználó gyakorlatilag kicsomagolja a felhasználói élményt. Más esetekben ez lehet az első alkalom, hogy egy szintetikus hang beolvassa a tartalmat egy webhelyen, vagy az első alkalommal, amikor a felhasználó egy virtuális karakterrel lép kapcsolatba.
 
-- [Transzparens bevezetés](#transparent-introduction)
-- [Képesség-közzététel](#capability-disclosure)
+- [Átlátszó bevezetés](#transparent-introduction)
+- [A képességek nyilvánosságra hozatala](#capability-disclosure)
 - [Testreszabás és kalibrálás](#customization-and-calibration)
-- [Implicit útmutatók](#implicit-cues--feedback)
+- [Implicit dákók](#implicit-cues--feedback)
 
-### <a name="upon-request"></a>Igény szerint
+### <a name="upon-request"></a>Kérésre
 
-A felhasználóknak könnyedén hozzá kell férniük a további információkhoz, a vezérlési beállításokhoz, és az áttekinthető kommunikációhoz bármikor hozzáférhetnek a felhasználói utazás során, amikor erre szükség van.
+A felhasználók számára lehetővé kell tenni, hogy könnyen hozzáférjenek a további információkhoz, ellenőrizzék a beállításokat, és kérésre a felhasználói út bármely pontján átlátható kommunikációt kapjanak.
 
-- [A hangvételi lehetőségek megismerése](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Lehetőségek biztosítása arra, hogy többet megtudjon arról, hogyan készült a hang](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
 - [Testreszabás és kalibrálás](#customization-and-calibration)
 - [Társalgási átláthatóság](#conversational-transparency)
 
 ### <a name="continuously"></a>Folyamatosan
 
-A felhasználói élményt folyamatosan javító implicit tervezési minták használatával.
+Használja az implicit tervezési mintákat, amelyek folyamatosan fokozzák a felhasználói élményt.
 
-- [Képesség-közzététel](#capability-disclosure)
-- [Implicit útmutatók](#implicit-cues--feedback)
+- [A képességek nyilvánosságra hozatala](#capability-disclosure)
+- [Implicit dákók](#implicit-cues--feedback)
 
-### <a name="when-the-system-fails"></a>A számítógép meghibásodása esetén
+### <a name="when-the-system-fails"></a>Ha a rendszer meghibásodik
 
-A közzétételi lehetőség használata a zökkenőmentes működés érdekében.
+Használja a közzétételt, mint lehetőséget, hogy nem kecsesen.
 
 - [Társalgási átláthatóság](#conversational-transparency)
-- [A hangvételi lehetőségek megismerése](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [Handoff – emberi](#conversational-transparency)
+- [Lehetőségek biztosítása arra, hogy többet megtudjon arról, hogyan készült a hang](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Átadás az embernek](#conversational-transparency)
 
 
 
 ## <a name="additional-resources"></a>További források
-- [Microsoft bot-irányelvek](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana kialakítási útmutató](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP – beszédfelismerési tervezési irányelvek](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [A Microsoft Windows vegyes valóság hangutasításokra vonatkozó utasításai](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [A Microsoft robotolói irányelvei](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
+- [Cortana tervezési irányelvei](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
+- [A Microsoft Windows UWP beszédtervezési irányelvei](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
+- [A Microsoft Windows Mixed Reality hangvezérlési irányelvei](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Segédanyagok
+## <a name="reference-docs"></a>Referenciadokumentumok
 
-* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
-* [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
-* [A kapuzás áttekintése](concepts-gating-overview.md)
-* [A közzététel módja](concepts-disclosure-guidelines.md)
+* [Közzététel a Voice Talent számára](https://aka.ms/disclosure-voice-talent)
+* [A szintetikus hangtechnológia felelősségteljes bevezetésére vonatkozó irányelvek](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Gating – áttekintés](concepts-gating-overview.md)
+* [Hogyan lehet nyilvánosságra hozni](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
+* [Közzététel a Voice Talent számára](https://aka.ms/disclosure-voice-talent)

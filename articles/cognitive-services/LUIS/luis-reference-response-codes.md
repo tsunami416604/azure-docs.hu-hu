@@ -1,7 +1,7 @@
 ---
-title: API HTTP-reagálási kódok – LUIS
+title: API HTTP válaszkódok - LUIS
 titleSuffix: Azure Cognitive Services
-description: Mely HTTP-válaszkódot kapott a LUIS szerzői és végponti API-k ismertetése
+description: A LUIS authoring és az endpoint API-k http-válaszkódjainak ismertetése
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270246"
 ---
-# <a name="common-api-response-codes-and-their-meaning"></a>Általános API-válaszok kódjai és azok jelentése
+# <a name="common-api-response-codes-and-their-meaning"></a>Közös API-válaszkódok és jelentésük
 
-A [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végponti](https://go.microsoft.com/fwlink/?linkid=2092356) API-k http-válasz kódokat adnak vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános.
+A [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végponti](https://go.microsoft.com/fwlink/?linkid=2092356) API-k HTTP-válaszkódokat adnak vissza. Bár a válaszüzenetek egy kérésre vonatkozó információkat tartalmaznak, a HTTP-válasz állapotkódja általános.
 
 ## <a name="common-status-codes"></a>Közös állapotkódok
-A következő táblázat a [szerzői műveletek](https://go.microsoft.com/fwlink/?linkid=2092087) és a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-jai leggyakoribb http-válasz-állapotkódok listáját tartalmazza:
+Az alábbi táblázat a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végponti](https://go.microsoft.com/fwlink/?linkid=2092356) API-k leggyakoribb HTTP-válaszállapot-kódjait sorolja fel:
 
 |Kód|API|Magyarázat|
 |:--|--|--|
-|400|Szerzői műveletek, a végpont|kérés paraméterei helytelen, ami azt jelenti, a szükséges paraméterek: hiányzó, hibás vagy túl nagy|
-|400|Szerzői műveletek, a végpont|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, hibás vagy túl nagy|
-|401|Tartalomkészítés|előfizetés végpontkulcsának használt kulcs létrehozási helyett|
-|401|Szerzői műveletek, a végpont|Érvénytelen, hibás vagy üres kulccsal|
-|401|Szerzői műveletek, a végpont| kulcs nem egyezik meg a régiót|
-|401|Tartalomkészítés|Ön nem a tulajdonos vagy közreműködő|
-|401|Tartalomkészítés|Érvénytelen order az API-hívások|
-|403|Szerzői műveletek, a végpont|teljes havi kulcs kvótakorlát túllépve|
-|409|Végpont|alkalmazások betöltése folyamatban van|
-|410|Végpont|retrained és újra közzé kell Application|
-|414|Végpont|lekérdezés meghaladja a maximális karakterszámot.|
-|429|Szerzői műveletek, a végpont|Költési korlát túllépve (kérelem/másodperc)|
+|400|Szerzői, végpont|a kérelem paraméterei helytelenek, ami azt jelenti, hogy a szükséges paraméterek hiányoznak, hibásak vagy túl nagyok|
+|400|Szerzői, végpont|a kérelem törzse helytelen, ami azt jelenti, hogy a JSON hiányzik, hibás vagy túl nagy|
+|401|Tartalomkészítés|használt végpont-előfizetési kulcs a kulcs készítése helyett|
+|401|Szerzői, végpont|érvénytelen, hibásan formázott vagy üres kulcs|
+|401|Szerzői, végpont| a kulcs nem egyezik a régióval|
+|401|Tartalomkészítés|nem ön a tulajdonos vagy munkatárs|
+|401|Tartalomkészítés|érvénytelen API-hívások sorrendje|
+|403|Szerzői, végpont|a havi kulcskvóta-korlát túllépése|
+|409|Végpont|alkalmazás még mindig betöltődik|
+|410|Végpont|újra kell képezni, és újra közzé kell tenni|
+|414|Végpont|A lekérdezés túllépi a maximális karakterkorlátot|
+|429|Szerzői, végpont|Túllépte a sebességkorlátot (kérelmek/másodperc)|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A [szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) és [végponti](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) dokumentáció REST API
+* REST API [szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) és [végpontdokumentációja](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)

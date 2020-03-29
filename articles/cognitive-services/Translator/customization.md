@@ -1,7 +1,7 @@
 ---
-title: Fordítás testreszabása – Translator Text API
+title: Fordítás testreszabása - Fordító szöveg API
 titleSuffix: Azure Cognitive Services
-description: A Microsoft Translator hub használatával saját gépi fordítási rendszereket hozhat létre a kívánt terminológiával és stílussal.
+description: A Microsoft Translator Hub segítségével saját gépi fordítási rendszert hozhat létre a kívánt terminológiával és stílussal.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71257627"
 ---
-# <a name="customize-your-text-translations"></a>A szöveges fordítások testreszabása
+# <a name="customize-your-text-translations"></a>A szövegfordítások testreszabása
 
-A Microsoft Custom Translator a Microsoft Translator Service funkciója, amely lehetővé teszi a felhasználók számára, hogy testre szabják a Microsoft Translator speciális neurális gépi fordítását, ha a Translator Text API (csak 3. verzió) használatával fordítja le a szöveget.
+A Microsoft Custom Translator a Microsoft Translator szolgáltatás jellemzője, amely lehetővé teszi a felhasználók számára, hogy testre szabják a Microsoft Translator fejlett neurális gépi fordítását, amikor szöveget fordítanak a Translator Text API-val (csak a 3-as verzióval).
 
-A funkció a beszédfelismerési fordítás testreszabására is használható [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/)használata esetén.
+A szolgáltatás a [beszédfordítás](https://docs.microsoft.com/azure/cognitive-services/speech-service/)testreszabására is használható, ha a Cognitive Services beszédfelismeréssel használja.
 
 ## <a name="custom-translator"></a>Custom Translator
 
-Az egyéni fordítóval olyan neurális fordítási rendszereket hozhat létre, amelyek megértik a saját üzleti és iparági terminológiáját. A testreszabott fordítási rendszer ezután integrálva lesz a meglévő alkalmazásokhoz, munkafolyamatokhoz és webhelyekhez.
+Az egyéni fordítóval olyan neurális fordítási rendszereket hozhat létre, amelyek megértik a saját vállalkozásában és iparágában használt terminológiát. A testreszabott fordítási rendszer ezután integrálódik a meglévő alkalmazásokba, munkafolyamatokba és webhelyekbe.
 
 ### <a name="how-does-it-work"></a>Hogyan működik?
 
-A korábban lefordított dokumentumok (szórólapok, weblapok, dokumentációk stb.) használatával olyan fordítási rendszer hozható létre, amely a tartományra jellemző terminológiát és stílust tükrözi, ami jobb, mint a szabványos fordítási rendszer. A felhasználók feltölthetik a TMX, a XLIFF, a TXT, a DOCX és az XLSX dokumentumokat.  
+Használja a korábban lefordított dokumentumokat (szórólapok, weboldalak, dokumentáció, stb.) egy olyan fordítási rendszer létrehozásához, amely tükrözi a tartományspecifikus terminológiát és stílust, jobb, mint egy szabványos fordítási rendszer. A felhasználók TMX, XLIFF, TXT, DOCX és XLSX dokumentumokat tölthetnek fel.  
 
-A rendszer emellett a dokumentum szintjén párhuzamosan megjelenő olyan adattípusokat is elfogadja, amelyek még nem igazodnak a mondatok szintjéhez. Ha a felhasználók több nyelven is hozzáférnek ugyanahhoz a tartalomhoz, de a különálló dokumentumok egyéni fordítója automatikusan meg tudja feleltetni a mondatokat a dokumentumok között.  A rendszerek a párhuzamos betanítási adatgyűjtést a fordítások tökéletesítése érdekében akár mindkét nyelven is használhatják.
+A rendszer olyan adatokat is elfogad, amelyek párhuzamosak a dokumentum szintjén, de még nincsenek igazítva a mondat szintjén. Ha a felhasználók több nyelven is hozzáférhetnek ugyanannak a tartalomnak a verzióihoz, de külön dokumentumokban az Egyéni fordító automatikusan egyeztethet a mondatokkal a dokumentumok között.  A rendszer egynyelvű adatokat is használhat egyik vagy mindkét nyelven a párhuzamos betanítási adatok kiegészítésére a fordítások javítása érdekében.
 
-A testreszabott rendszer ezután a Microsoft Translator Text API rendszeres hívásával érhető el a category paraméter használatával.
+A testreszabott rendszer ezután a Microsoft Translator Text API-hoz a kategóriaparaméter használatával rendszeresen elérhető.
 
-A megfelelő típusú és mennyiségű betanítási adat miatt nem ritka, hogy 5 és 10 közötti nyereséget vár, vagy akár több BLEU-pontot is a fordítási minőséghez egyéni Translator használatával.
+Tekintettel a megfelelő típusú és mennyiségű betanítási adatok nem ritka, hogy számíthat nyereség között 5 és 10, vagy még több BLEU pontot a fordítás minősége segítségével Custom Translator.
 
-Az elérhető adatok alapján történő Testreszabás különböző szintjeiről további részleteket az [Egyéni Translator felhasználói útmutatójában](https://aka.ms/CustomTranslatorDocs)találhat.
+A rendelkezésre álló adatok on alapuló testreszabás különböző szintjeiről további részletek találhatók az [Egyéni fordító felhasználói útmutatójában.](https://aka.ms/CustomTranslatorDocs)
 
 
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
+## <a name="microsoft-translator-hub"></a>Microsoft Fordítóközpont
 
 > [!NOTE]
-> Az örökölt Microsoft Translator hub 2019. május 17-én megszűnik. [Tekintse meg a fontos áttelepítési információkat és dátumokat](https://www.microsoft.com/translator/business/hub/).  
+> 2019. május 17-én megszűnik a régebbi Microsoft Translator Hub. [Fontos áttelepítési információk és dátumok megtekintése.](https://www.microsoft.com/translator/business/hub/)  
 
-## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító
+## <a name="custom-translator-versus-hub"></a>Egyéni fordító kontra központ
 
-|   | **Hub** | **Egyéni fordító**|
+|   | **Hub** | **Custom Translator**|
 |:-----|:----:|:----:|
-|Testreszabási funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
-| Text API-verzió  | Csak v2   | Csak v3 |
+|Testreszabási szolgáltatás állapota   | Általános elérhetőség  | Általános elérhetőség |
+| Szöveges API-verzió  | Csak V2   | Csak V3 |
 | SMT testreszabása | Igen   | Nem |
 | NMT testreszabása | Nem    | Igen |
-| Új egyesített Speech services testreszabása | Nem    | Igen |
+| Új egységes beszédfelismerési szolgáltatások testreszabása | Nem    | Igen |
 | [Nincs nyomkövetés](https://www.aka.ms/notrace) | Igen  | Igen |
 
 ## <a name="collaborative-translations-framework"></a>Együttműködésen alapuló fordítási keretrendszer
 
 > [!NOTE]
-> A 2018. február 1-től a AddTranslation () és a AddTranslationArray () már nem használható a Translator Text API 2.0-s verzióban. Ezek a metódusok sikertelenek lesznek, és semmi sem íródik. A Translator Text API V 3.0 nem támogatja ezeket a metódusokat.
+> 2018. február 1-től az AddTranslation() és az AddTranslationArray() már nem használható a Translator Text API V2.0-val. Ezek a módszerek nem fogsannak, és semmi sem lesz megírva. A Translator Text API V3.0 nem támogatja ezeket a módszereket.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Testreszabott nyelvi rendszer beállítása egyéni Translator használatával](https://aka.ms/CustomTranslatorDocs)
+> [Egyéni fordító val testreszabott nyelvi rendszer beállítása](https://aka.ms/CustomTranslatorDocs)

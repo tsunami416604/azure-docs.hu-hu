@@ -1,7 +1,7 @@
 ---
-title: Mi az a BLEU pontszám? -Egyéni fordító
+title: Mi az a BLEU pontszám? - Egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: BLEU a gépi fordítás és az emberi által létrehozott, ugyanazon forrásra vonatkozó mondatok közötti különbségek mérése.
+description: A BLEU az ugyanazon forrásmondat gépi fordítása és az ember által létrehozott referenciafordításai közötti különbségek mérése.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647359"
 ---
 # <a name="what-is-a-bleu-score"></a>Mi az a BLEU pontszám?
 
-[Bleu (kétnyelvű kiértékelési tanulmány)](https://en.wikipedia.org/wiki/BLEU) az automatikus fordítás és egy vagy több emberi által létrehozott, azonos forrásoldali mondatban található fordítás közötti különbségek mérése.
+[A BLEU (Kétnyelvű értékelés Beugró)](https://en.wikipedia.org/wiki/BLEU) az automatikus fordítás és ugyanazon forrásmondat egy vagy több, ember által létrehozott referenciafordítása közötti különbségek mérése.
 
 ## <a name="scoring-process"></a>Pontozási folyamat
 
-A BLEU algoritmus összehasonlítja az automatikus fordítás egymást követő kifejezéseit a hivatkozási fordításban megtalált egymást követő kifejezésekkel, és a találatok számát súlyozott módon számítja ki. Ezek a egyezések egymástól függetlenek. A magasabb szintű egyeztetési fok magasabb fokú hasonlóságot jelez a hivatkozás fordításával és a magasabb pontszámot. Az érthetőség és a nyelvtan helyességét nem veszi figyelembe a rendszer.
+A BLEU algoritmus összehasonlítja az automatikus fordítás egymást követő kifejezéseit a referenciafordításban talált egymást követő kifejezésekkel, és súlyozott módon számolja a találatok számát. Ezek a mérkőzések pozíciófüggetlenek. A magasabb találati fokozat nagyobb fokú hasonlóságot jelez a referenciafordítással és magasabb pontszámot. Az érthetőséget és a nyelvtani helyességet nem veszik figyelembe.
 
 ## <a name="how-bleu-works"></a>Hogyan működik a BLEU?
 
-BLEU erőssége az, hogy jól összefügg az emberi ítélettel azáltal, hogy az egyes mondatok esetében az egyes mondatok esetében az egyes mondatokra vonatkozó mondatokat az egyes mondatok pontos emberi ítéletének kijavítása helyett.
+BLEU erőssége az, hogy jól korrelál az emberi ítélet átlagolásával ki az egyes mondat ítélet hibák at a vizsgálati corpus, ahelyett, hogy megpróbálja kidolgozni a pontos emberi ítélet minden mondatot.
 
-A BLEU-pontszámok széles körű megbeszélése [itt](https://youtu.be/-UqDljMymMg)található.
+Egy szélesebb körű vitát BLEU pontszámok [itt](https://youtu.be/-UqDljMymMg).
 
-A BLEU eredményei erősen függenek a tartomány szélességével, a tesztelési adatok konzisztenciájával az adatok betanításával és hangolásával, valamint a betanításhoz rendelkezésre álló adatok mennyiségével. Ha a modelljeit egy keskeny tartományon szerezték be, és a betanítási adatok konzisztensek a tesztelési adatokkal, akkor magas BLEU-pontszámot várhat.
+A BLEU-eredmények nagymértékben függnek a tartomány szélességétől, a tesztadatok konzisztenciájától a betanítási és hangolási adatokkal, valamint attól, hogy mennyi adat áll rendelkezésre a betanításhoz. Ha a modellek egy szűk tartományban vannak betanítva, és a betanítási adatok konzisztensek a tesztadatokkal, magas BLEU-pontszámra számíthat.
 
 >[!NOTE]
->A BLEU-pontszámok összehasonlítása csak akkor igazolható, ha a BLEU eredményeit ugyanazzal a tesztelési készlettel, azonos nyelvi párral és ugyanazzal az MT-motorral hasonlítják össze. Egy másik tesztelési készletből származó BLEU-pontszám nem lehet más.
+>A BLEU pontszámok összehasonlítása csak akkor igazolható, ha a BLEU eredményeket ugyanazzal a tesztkészlettel, azonos nyelvi párral és ugyanazzal az MT motorral hasonlítják össze. Egy másik tesztkészlet bleu pontszáma eltérő nek kell lennie.

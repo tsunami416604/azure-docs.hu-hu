@@ -1,7 +1,7 @@
 ---
-title: Beszéd – szöveg – beszéd szolgáltatás
+title: Beszéd-szöveg - Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési funkció lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé. Alkalmazásait, eszközeit és eszközeit felhasználhatják, megjeleníthetik, és műveleteket végezhetnek ezen a szövegbevitelen. Ez a szolgáltatás zökkenőmentesen működik a szöveg-beszéd (Speech szintézis) és a beszédfelismerési funkciók használatával.
+description: A beszéd-szöveg funkció lehetővé teszi a hangadatfolyamok valós idejű átírását a szövegbe. Az alkalmazások, eszközök vagy eszközök felemészthetik, megjeleníthetik és végrehajthatják a szövegbevitelt. Ez a szolgáltatás zökkenőmentesen működik a szövegfelolvasás (beszédszintézis) és a beszédfordítási funkciókkal.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,51 +10,53 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 2854f4e8d91164c8ae1f35761d6f605cae725245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052628"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
-A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből származó beszéd – szöveg lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé. Alkalmazásai, eszközei vagy eszközei felhasználhatják, megjeleníthetik és megtehetik ezt a szöveget a parancs bemenetként. Ezt a szolgáltatást a Microsoft a Cortana és az Office-termékekhez használt felismerési technológiával látja el. Zökkenőmentesen együttműködik a <a href="./speech-translation.md" target="_blank">fordítási <span class="docon docon-navigate-external x-hidden-focus"></span> </a> és <a href="./text-to-speech.md" target="_blank">szöveg- <span class="docon docon-navigate-external x-hidden-focus"></span> beszéd</a> szolgáltatási ajánlatokkal. Az elérhető beszéd – szöveg nyelvek teljes listáját a [támogatott nyelvek](language-support.md#speech-to-text)című részben tekintheti meg.
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-A beszédfelismerési szolgáltatás alapértelmezés szerint az univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adataival lett betanítva, és a felhőben van üzembe helyezve. Ez optimális a társalgási és a diktálási forgatókönyvek esetében. A beszédfelismerés és az átiratok egyedi környezetben való használatakor egyéni akusztikai, nyelvi és kiejtési modelleket hozhat létre és állíthat be. A Testreszabás hasznos lehet a környezeti zaj vagy az iparágra jellemző szókincs kezelése során.
+A beszédfelismerési szolgáltatásból származó beszéd-szöveg üzenet lehetővé teszi a hangadatfolyamok valós idejű átírását a szövegbe. Az alkalmazások, eszközök vagy eszközök parancsbemenetként felhasználhatók, megjeleníthetnek és végrehajthatnak műveleteket ezen a szövegen. Ezt a szolgáltatást ugyanaz a felismerési technológia működteti, amelyet a Microsoft a Cortanához és az Office-termékekhez használ. Ez zökkenőmentesen működik a <a href="./speech-translation.md" target="_blank">fordítás <span class="docon docon-navigate-external x-hidden-focus"></span> </a> és <a href="./text-to-speech.md" target="_blank">a text-to-speech <span class="docon docon-navigate-external x-hidden-focus"></span> </a> szolgáltatás kínálatát. Az elérhető beszéd-szöveg nyelvek teljes listáját a támogatott nyelvek című [témakörben](language-support.md#speech-to-text)található.
+
+A beszéd-szöveg szolgáltatás alapértelmezés szerint az univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adatok használatával lett betanítva, és a felhőben van telepítve. Ez optimális társalgási és diktálási forgatókönyvek. Ha a beszéd-szöveg felismerés és átírás egy egyedi környezetben, hozhat létre, és a betanításegyéni akusztikai, nyelvi és kiejtési modellek. A testreszabás hasznos a környezeti zajok vagy az iparág-specifikus szókincs kezeléséhez.
 
 > [!NOTE]
-> A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
-> - [Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba](how-to-migrate-from-bing-speech.md)
+> A Bing Speech-t 2019. október 15-én leszerelték. Ha alkalmazásai, eszközei vagy termékei a Bing beszédfelismerési API-kat használják, útmutatókat hoztunk létre a beszédfelismerési szolgáltatásba való áttelepítéshez.
+> - [Áttelepítés a Bing beszédfelismerésről a beszédfelismerési szolgáltatásra](how-to-migrate-from-bing-speech.md)
 
-## <a name="get-started-with-speech-to-text"></a>Ismerkedés a beszédfelismerési szöveggel
+## <a name="get-started-with-speech-to-text"></a>Ismerkedés a szöveggé bírja - beszédfelismerés
 
-A Speech-Text szolgáltatás a [SPEECH SDK](speech-sdk.md)-n keresztül érhető el. Számos gyakori forgatókönyv érhető el, különböző nyelveken és platformokon:
+A beszéd-szöveg szolgáltatás a [Speech SDK-n](speech-sdk.md)keresztül érhető el. Számos gyakori forgatókönyv érhető el rövid útmutatóként, különböző nyelveken és platformokon:
 
- - [Gyors útmutató: beszéd felismerése mikrofonos bevitelsel](quickstarts/speech-to-text-from-microphone.md)
- - [Rövid útmutató: beszéd felismerése fájlból](quickstarts/speech-to-text-from-file.md)
- - [Gyors útmutató: a blob Storage-ban tárolt beszéd felismerése](quickstarts/from-blob.md)
+ - [Rövid útmutató: Beszéd felismerése mikrofonbemenettel](quickstarts/speech-to-text-from-microphone.md)
+ - [Rövid útmutató: Beszéd felismerése fájlból](quickstarts/speech-to-text-from-file.md)
+ - [Rövid útmutató: A blobstorageban tárolt beszédfelismerés](quickstarts/from-blob.md)
 
-Ha inkább a beszéd-szöveg REST-szolgáltatást szeretné használni, lásd: [REST API](rest-speech-to-text.md)-k.
+Ha a beszédfelismerési REST-szolgáltatást szeretné használni, olvassa el a [REST API-k című témakört.](rest-speech-to-text.md)
 
 ## <a name="tutorials-and-sample-code"></a>Oktatóanyagok és mintakód
 
-A beszédfelismerési szolgáltatás használatának lehetősége után próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech SDK és a LUIS használatával.
+Miután lehetősége volt használni a beszédfelismerési szolgáltatást, próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédből származó szándékokat a beszédbeszédskés a LUIS használatával.
 
-- [Oktatóanyag: beszédfelismerési szándékok felismerése a Speech SDK és a LUIS használatávalC#](how-to-recognize-intents-from-speech-csharp.md)
+- [Oktatóanyag: A beszédbeszédSDK-vel és a LUIS-szal való leképezések felismerése c használatával #](how-to-recognize-intents-from-speech-csharp.md)
 
-A Speech SDK mintakód a GitHubon érhető el. Ezek a minták olyan gyakori forgatókönyveket érintenek, mint például a hang fájlból vagy streamből való olvasása, a folyamatos és az egyszeri felvétel felismerése, valamint az egyéni modellek használata.
+A beszédbeszéd SDK-hoz tartozó mintakód elérhető a GitHubon. Ezek a minták olyan gyakori forgatókönyveket fednek le, mint a hang fájlból vagy adatfolyamból történő olvasása, a folyamatos és az egyesélyes felismerés, valamint az egyéni modellek kezelése.
 
-- [Beszéd – szöveg minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Batch-átírási minták (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Beszéd-szöveg minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Tételtranszkripciós minták (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
 ## <a name="customization"></a>Testreszabás
 
-A standard Speech Service-modellen kívül egyéni modelleket is létrehozhat. A testreszabással leküzdheti a beszédfelismerési akadályokat, például a beszéd stílusát, a szókincset és a háttérzajt, lásd: [Custom Speech](how-to-custom-speech.md). A testreszabási lehetőségek nyelv/területi beállítás szerint változnak, a támogatás ellenőrzéséhez lásd a [támogatott nyelveket](supported-languages.md) .
+A szabványos beszédszolgáltatás-modell mellett egyéni modelleket is létrehozhat. A testreszabás segít leküzdeni a beszédfelismerési akadályokat, például a beszédstílust, a szókincset és a háttérzajt, lásd: [Egyéni beszéd.](how-to-custom-speech.md) A testreszabási lehetőségek nyelvtől/területi beállítástól függően változnak, lásd a [támogatott nyelvek](supported-languages.md) ellenőrzését.
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
-- [A Speech SDK beszerzése](speech-sdk.md)
+- [Ingyenes beszédfelismerési szolgáltatás-előfizetési kulcs beszerezni](get-started.md)
+- [A beszédfelismerési SDK beolvasása](speech-sdk.md)

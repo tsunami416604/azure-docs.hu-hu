@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78668403"
 ---
 ## <a name="authentication"></a>Hitelesítés
 
-Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
+Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat azt mutatja be, hogy mely fejlécek támogatottak az egyes szolgáltatásokban:
 
-| Támogatott engedélyezési fejléceket | Diktálás | Szövegfelolvasás |
+| Támogatott engedélyezési fejlécek | Diktálás | Szövegfelolvasás |
 |------------------------|----------------|----------------|
-| OCP-Apim-Subscription-Key | Igen | Nem |
-| Engedélyezési: tulajdonosi | Igen | Igen |
+| Ocp-Apim-Subscription-Key | Igen | Nem |
+| Engedély: Tulajdonos | Igen | Igen |
 
-A `Ocp-Apim-Subscription-Key` fejléc használatakor csak az előfizetési kulcsot kell megadnia. Például:
+A `Ocp-Apim-Subscription-Key` fejléc használatakor csak az előfizetési kulcsot kell megadnia. Példa:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-A `Authorization: Bearer` fejléc használatakor kérést kell tennie a `issueToken` végpontnak. Ebben a kérelemben cserél az előfizetési kulcs hozzáférési jogkivonat helyeként, 10 percig érvényes. A következő néhány szakaszban megtudhatja, hogyan kérhet le jogkivonatot, és hogyan használhat jogkivonatot.
+A `Authorization: Bearer` fejléc használatakor a `issueToken` végpontra kell kérnie. Ebben a kérelemben az előfizetési kulcsot egy 10 percig érvényes hozzáférési jogkivonatért cseréli ki. A következő néhány szakaszban megtudhatja, hogyan szerezhet be egy jogkivonatot, és hogyan használhat jogkivonatot.
 
-### <a name="how-to-get-an-access-token"></a>Hozzáférési jogkivonat beszerzése
+### <a name="how-to-get-an-access-token"></a>Hozzáférési jogkivonat beszerezése
 
-Hozzáférési jogkivonat beszerzéséhez a `Ocp-Apim-Subscription-Key` és az előfizetési kulccsal kell elvégeznie a `issueToken` végpontra vonatkozó kérést.
+Hozzáférési jogkivonat bekérése érdekében a végpontra `issueToken` kell kérnie `Ocp-Apim-Subscription-Key` a és az előfizetési kulcsot.
 
 A `issueToken` végpont formátuma a következő:
 
@@ -38,15 +38,15 @@ A `issueToken` végpont formátuma a következő:
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Cserélje le a `<REGION_IDENTIFIER>` az előfizetés régiójának megfelelő azonosítóra a következő táblázatból:
+Cserélje `<REGION_IDENTIFIER>` le az előfizetés régiójának megfelelő azonosítóra ebből a táblából:
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
-Ezek a minták segítségével hozzon létre a hozzáférési jogkivonat kérése.
+Ezekkel a mintákkal hozza létre a hozzáférési jogkivonat-kérelmet.
 
 #### <a name="http-sample"></a>HTTP-minta
 
-Ebben a példában egy egyszerű HTTP-kérelem egy token beszerzéséhez. Cserélje le a `YOUR_SUBSCRIPTION_KEY`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ha az előfizetése nem az USA nyugati régiójában található, cserélje le a `Host` fejlécet a régiója állomásneve.
+Ebben a példában egy egyszerű HTTP-kérelem egy jogkivonat lekéréséhez. Cserélje `YOUR_SUBSCRIPTION_KEY` le a Beszédszolgáltatás-előfizetési kulcsra. Ha az előfizetés nem az USA nyugati `Host` régiójában található, cserélje le a fejlécet a régió gazdagépnevére.
 
 ```http
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -56,11 +56,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-A válasz törzse JSON Web Token (JWT) formátumban tartalmazza a hozzáférési jogkivonatot.
+A válasz törzse json webtoken (JWT) formátumban tartalmazza a hozzáférési jogkivonatot.
 
 #### <a name="powershell-sample"></a>PowerShell-minta
 
-Ebben a példában egy egyszerű PowerShell-parancsfájlt, hogy hozzáférési jogkivonatot kapjon. Cserélje le a `YOUR_SUBSCRIPTION_KEY`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ellenőrizze, hogy a helyes-e a végpontot használja a régiót, amelyben megegyezik az előfizetés. Ebben a példában az USA nyugati RÉGIÓJA van beállítva.
+Ebben a példában egy egyszerű PowerShell-parancsfájl egy hozzáférési jogkivonat beírásához. Cserélje `YOUR_SUBSCRIPTION_KEY` le a Beszédszolgáltatás-előfizetési kulcsra. Győződjön meg arról, hogy a megfelelő végpontot használja az előfizetésének megfelelő régióhoz. Ez a példa jelenleg az USA nyugati felére van állítva.
 
 ```powershell
 $FetchTokenHeader = @{
@@ -77,9 +77,9 @@ $OAuthToken
 
 ```
 
-#### <a name="curl-sample"></a>a cURL-minta
+#### <a name="curl-sample"></a>cURL minta
 
-a cURL egy Linux (és a Linux Windows alrendszere) elérhető parancssori eszköz. A cURL-parancs bemutatja, hogyan hozzáférési jogkivonatot kapjon. Cserélje le a `YOUR_SUBSCRIPTION_KEY`t a beszédfelismerési szolgáltatás előfizetési kulcsára. Ellenőrizze, hogy a helyes-e a végpontot használja a régiót, amelyben megegyezik az előfizetés. Ebben a példában az USA nyugati RÉGIÓJA van beállítva.
+A cURL egy parancssori eszköz, amely Linux alatt (és a Windows Alrendszerben Linuxhoz) érhető el. Ez a cURL parancs bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot. Cserélje `YOUR_SUBSCRIPTION_KEY` le a Beszédszolgáltatás-előfizetési kulcsra. Győződjön meg arról, hogy a megfelelő végpontot használja az előfizetésének megfelelő régióhoz. Ez a példa jelenleg az USA nyugati felére van állítva.
 
 ```console
 curl -v -X POST
@@ -91,7 +91,7 @@ curl -v -X POST
 
 #### <a name="c-sample"></a>C#-minta
 
-Ez C# osztály mutatja be a hozzáférési jogkivonat beszerzése. Át a az Speech Service előfizetési kulcs, ha az osztály példányosítania. Ha az előfizetése nem az USA nyugati régiójában található, módosítsa `FetchTokenUri` értékét, hogy az megfeleljen az előfizetése régiójának.
+Ez a C# osztály bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot. Adja át a Beszédszolgáltatás-előfizetési kulcsot az osztály példányosításakor. Ha az előfizetés nem az USA nyugati régiójában `FetchTokenUri` található, módosítsa az értékét, hogy megfeleljen az előfizetés régiójának.
 
 ```csharp
 public class Authentication
@@ -147,11 +147,11 @@ def get_token(subscription_key):
     print(access_token)
 ```
 
-### <a name="how-to-use-an-access-token"></a>Hozzáférési token használatával
+### <a name="how-to-use-an-access-token"></a>Hozzáférési jogkivonat használata
 
-A hozzáférési jogkivonatot `Authorization: Bearer <TOKEN>` fejlécként kell elküldeni a szolgáltatásnak. Minden hozzáférési jogkivonatot a 10 percig érvényes. Bármikor megtekintheti az új jogkivonatot, azonban a hálózati forgalom és a késés minimalizálása érdekében azt javasoljuk, ugyanezt a tokent kilenc percig.
+A hozzáférési jogkivonatot fejlécként `Authorization: Bearer <TOKEN>` kell elküldeni a szolgáltatásnak. Minden hozzáférési jogkivonat 10 percig érvényes. Bármikor beszerezhet egy új jogkivonatot, azonban a hálózati forgalom és a késés minimalizálása érdekében azt javasoljuk, hogy ugyanazt a jogkivonatot kilenc percig használja.
 
-Íme egy példa HTTP-kérelem a szöveg-hang transzformációs REST API:
+Íme egy http-kérelem a szövegfelolvasó REST API-hoz:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

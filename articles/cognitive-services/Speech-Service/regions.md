@@ -1,7 +1,7 @@
 ---
-title: Régiók – beszédfelismerési szolgáltatás
+title: Régiók - Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatáshoz elérhető régiók és végpontok listája, beleértve a beszéd szövegét, a szöveg és a beszéd fordítását, valamint a beszédfelismerést.
+description: A beszédfelismerési szolgáltatás elérhető régióinak és végpontjainak listája, beleértve a szövegfelolvasást, a szövegfelolvasást és a beszédfordítást.
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -12,37 +12,37 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220467"
 ---
-# <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
+# <a name="speech-service-supported-regions"></a>Beszédszolgáltatás által támogatott régiók
 
-A Speech service lehetővé teszi, hogy az alkalmazás hanganyagot alakíthat át szöveggé, beszédalapú fordítási és fedett szöveg-beszéd átalakítás elvégzéséhez. A szolgáltatás az egyedi végpontok a Speech SDK és a REST API-k több régióban érhető el.
+A Beszédszolgáltatás lehetővé teszi, hogy az alkalmazás a hangot szöveggé alakítsa, beszédfordítást és rejtett szöveget váltson beszédbeszédre. A szolgáltatás több régióban érhető el, a beszédsdk és a REST API-k egyedi végpontjaival.
 
-A beszédfelismerési portál egyéni konfigurációkat hajt végre a beszédfelismerési élményben az összes régióban: https://speech.microsoft.com
+A beszédfelismerési portál, amely az összes régió beszédélményének egyéni konfigurációit hajtja végre, itt érhető el:https://speech.microsoft.com
 
-A beszédfelismerési szolgáltatás hívása esetén győződjön meg arról, hogy a hívás megfelel az előfizetés régiójának.
+A beszédfelismerési szolgáltatás meghívásához győződjön meg arról, hogy a hívás megegyezik az előfizetés régiójával.
 
 ## <a name="speech-sdk"></a>Beszéd SDK
 
-A [SPEECH SDK](speech-sdk.md)-ban a régiók karakterláncként vannak megadva (például a Speech SDK-ban `SpeechConfig.FromSubscription` paraméterként C#).
+A [beszédsdkában](speech-sdk.md)a régiók karakterláncként vannak megadva (például a C#-hoz tartozó beszédsdk `SpeechConfig.FromSubscription` paramétereként).
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>Beszéd – szöveg, szöveg – beszéd és fordítás
+### <a name="speech-to-text-text-to-speech-and-translation"></a>Beszéd-szöveg, szövegfelolvasás és fordítás
 
-A beszédfelismerési testreszabási portál itt érhető el: https://speech.microsoft.com
+A beszédtestreszabási portál itt érhető el:https://speech.microsoft.com
 
-A beszédfelismerési szolgáltatás a következő régiókban érhető el a beszédfelismerés, a **szöveg és a beszéd** **megjelenítéséhez**, valamint a **fordításhoz**:
+A beszédfelismerési szolgáltatás ezekben a régiókban áll rendelkezésre **beszédfelismerésre,** **szövegfelolvasásra**és **fordításra:**
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-Ha a [SPEECH SDK](speech-sdk.md)-t használja, a régiókat a **régió azonosítója** adja meg (például paraméterként `SpeechConfig.FromSubscription`). Győződjön meg arról, hogy a régió megfelel az előfizetés régiójának.
+A [beszédbeszéd SDK](speech-sdk.md)használata esetén a régiókat a **Régió azonosító** határozza `SpeechConfig.FromSubscription`meg (például paraméterként). Győződjön meg arról, hogy a régió megfelel az előfizetés régiójának.
 
 ### <a name="intent-recognition"></a>Szándékfelismerés
 
-Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szándék-felismeréshez** a következők:
+A beszédfelismerési SDK-n keresztül a **leképezésfelismeréshez** rendelkezésre álló régiók a következők:
 
 | Globális régió | Régió           | Régió azonosítója |
 | ------------- | ---------------- | -------------------- |
@@ -59,11 +59,11 @@ Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szán
 | Észak-Amerika | USA nyugati régiója, 2.        | `westus2`            |
 | Dél-Amerika | Dél-Brazília     | `brazilsouth`        |
 
-Ez a [Language Understanding szolgáltatás (Luis)](/azure/cognitive-services/luis/luis-reference-regions)által támogatott közzétételi régiók részhalmaza.
+Ez a [Language Understanding szolgáltatás (LUIS)](/azure/cognitive-services/luis/luis-reference-regions)által támogatott közzétételi régiók egy részhalmaza.
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
-A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegéd** képességeit:
+A [beszédfelismerési SDK](speech-sdk.md) támogatja a **hangasszisztensi** képességeket ezekben a régiókban:
 
 | Régió         | Régió azonosítója |
 | -------------- | -------------------- |
@@ -77,27 +77,27 @@ A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegé
 
 ## <a name="rest-apis"></a>REST API-k
 
-A beszédfelismerési szolgáltatás is elérhetővé teszi a hang-szöveg és a szöveg-hang transzformációs kérések REST-végpontokat.
+A beszédszolgáltatás rest-végpontokat is elérhetővé tesz a beszéd-szöveg és a szöveg-beszéd kérések hez.
 
 ### <a name="speech-to-text"></a>Diktálás
 
-A beszéd – szöveg hivatkozási dokumentációja a [beszéd – szöveg REST API](rest-speech-to-text.md)című részben olvasható.
+A beszéd-szöveg hivatkozási dokumentációt a [Beszéd-szöveg REST API-ban](rest-speech-to-text.md)találja.
 
-A REST API végpontjának formátuma a következő:
+A REST API végpontja a következő formátummal rendelkezik:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Cserélje le a `<REGION_IDENTIFIER>` az előfizetés régiójának megfelelő azonosítóra a következő táblázatból:
+Cserélje `<REGION_IDENTIFIER>` le az előfizetés régiójának megfelelő azonosítóra ebből a táblából:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> A nyelvi paramétert az URL-címhez kell hozzáfűzni, hogy ne kapjon 4xx HTTP-hibát. Az USA nyugati végpontját használó angol nyelv például a következő: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> A nyelvi paramétert hozzá kell fűzni az URL-címhez, hogy ne kapjon 4xx HTTP-hibát. Az USA nyugati végpontját használó amerikai angol nyelv `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`például a következő: .
 
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 
-Szöveg – beszéd hivatkozási dokumentáció: [szöveg – beszéd REST API](rest-text-to-speech.md).
+A szövegfelolvasó referenciadokumentációt a [Text-to-speech REST API (Szövegfelolvasó REST API) (Szövegfelolvasó REST API) (Szövegfelolvasó REST API) (Szövegfelolvasó REST API) (Szövegfelolvasó REST API) (Text-to-speech](rest-text-to-speech.md)
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

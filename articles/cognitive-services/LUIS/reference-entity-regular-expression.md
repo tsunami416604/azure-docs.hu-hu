@@ -1,7 +1,7 @@
 ---
-title: Reguláris kifejezés típusú entitás – LUIS
+title: Reguláris kifejezés entitás típusa - LUIS
 titleSuffix: Azure Cognitive Services
-description: A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezések egyeztetése a karakter szintjén, nem pedig a jogkivonat szintjén történik.
+description: A reguláris kifejezés a legjobb a nyers utterance (kifejezés) szöveg. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezésegyeztetés a karakterszinten, nem pedig a token szinten történő helyesírás-ellenőrzés módosítása után kerül alkalmazásra.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74841217"
 ---
 # <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás
 
-A reguláris kifejezés entitás kinyeri az entitást az Ön által megadott reguláris kifejezési minta alapján.
+A reguláris kifejezés entitás kinyeri az entitást a megadott reguláris kifejezésminta alapján.
 
-A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezések egyeztetése a karakter szintjén, nem pedig a jogkivonat szintjén történik. Ha a reguláris kifejezés túl összetett, például sok szögletes zárójelet használ, nem tudja felvenni a kifejezést a modellbe. A nem az összes [.net regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) függvénytár részét használja.
+A reguláris kifejezés a legjobb a nyers utterance (kifejezés) szöveg. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezésegyeztetés a karakterszinten, nem pedig a token szinten történő helyesírás-ellenőrzés módosítása után kerül alkalmazásra. Ha a reguláris kifejezés túl összetett, például sok szögletes zárójelet használ, nem tudja hozzáadni a kifejezést a modellhez. A [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) könyvtár részét használja, de nem az összeset.
 
-**Az entitás jól illeszkedik, ha:**
+**A gazdálkodó egység akkor illeszkedik, ha:**
 
-* Az adat konzisztens módon formázható minden olyan változattal, amely szintén konzisztens.
-* A reguláris kifejezéshez nem szükséges több, mint 2 beágyazási szint.
+* Az adatok konzisztensen vannak formázva minden olyan változattal, amely szintén konzisztens.
+* A reguláris kifejezésnem igényel 2 szintnél több beágyazási szintet.
 
 ![Reguláriskifejezés-entitás](./media/luis-concept-entities/regex-entity.png)
 
-## <a name="usage-considerations"></a>Használati megfontolások
+## <a name="usage-considerations"></a>Használati szempontok
 
-A reguláris kifejezések nem egyeznek meg a vártnál. Ilyen például a numerikus szó, például a `one` és az `two`. Ilyen például a következő regex, amely megfelel a számnak `one` más számokkal együtt:
+A reguláris kifejezések megegyezhetnek a vártnál. Erre példa a numerikus szavak `one` `two`egyeztetése, például a és a. Erre példa a következő regex, `one` amely a számnak és a többi számnak felel meg:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-Ez a regex kifejezés olyan szavakat is tartalmaz, amelyek ezekkel a számokkal végződik, például `phone`. A probléma megoldása érdekében győződjön meg arról, hogy a regex-egyezések figyelembe veszik a Word határait. A jelen példában a Word-határok használatára szolgáló regex a következő regexben van használatban:
+Ez a regex kifejezés minden olyan szót is `phone`egyezik, amely ezekkel a számokkal végződik, például . Annak érdekében, hogy megoldja a problémákat, mint ez, győződjön meg róla, a regex mérkőzések figyelembe veszi szó határokat. A regex használni szó határok ebben a példában használják a következő regex:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
 ```
 
-### <a name="example-json"></a>Példa JSON-ra
+### <a name="example-json"></a>Példa JSON
 
-Ha `kb[0-9]{6}`használ, mint a reguláris kifejezés entitásának definíciója, a következő JSON-válasz egy példa a lekérdezésben szereplő reguláris kifejezéssel rendelkező entitásokra:
+A `kb[0-9]{6}`használata esetén a , mint a reguláris kifejezés entitás definíciója, a következő JSON-válasz egy példa utterance kifejezés a visszaadott reguláris kifejezések entitások a lekérdezés:
 
 `When was kb123456 published?`:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpontra adott válasza](#tab/V2)
 
 ```JSON
 "entities": [
@@ -64,10 +64,10 @@ Ha `kb[0-9]{6}`használ, mint a reguláris kifejezés entitásának definíciój
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpontra adott válasza](#tab/V3)
 
 
-Ez a JSON, ha `verbose=false` van beállítva a lekérdezési karakterláncban:
+Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
 
 ```json
 "entities": {
@@ -77,7 +77,7 @@ Ez a JSON, ha `verbose=false` van beállítva a lekérdezési karakterláncban:
 }
 ```
 
-Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
+Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 ```json
 "entities": {
@@ -104,6 +104,6 @@ Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
 
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az [oktatóanyagban](tutorial-regex-entity.md)hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.
+Ebben az [oktatóanyagban](tutorial-regex-entity.md)hozzon létre egy alkalmazást, amely következetesen formázott adatokat nyer ki egy utterance **(kifejezés)** kifejezés használatával.

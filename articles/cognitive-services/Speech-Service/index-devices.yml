@@ -1,45 +1,44 @@
 ### YamlMime:Landing
-title: A Speech Devices dokumentációja
-summary: A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
+title: Beszédeszközök dokumentációja
+summary: A beszédfelismerési eszközök SDK egy előre hangolt könyvtár, amely párosítva van a célra épített, mikrofontömb fejlesztői készletek.
 metadata:
-  title: Beszédfelismerési eszközök dokumentációja – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  title: Beszédeszközök dokumentációja – Oktatóanyagok, API-referencia – Azure Cognitive Services | Microsoft dokumentumok
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79369250"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415359"
 landingContent:
-- title: Tudnivalók a Speech Devices SDK-ról
+- title: A beszédfelismerési eszközök SDK-
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi a Speech Devices SDK?
+    - text: Mi az SDK beszédeszközök?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: A Speech Devices SDK (Windows) használata
+    - text: Beszédfelismerési eszközök használata SDK (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: A Speech Devices SDK (Linux) használata
+    - text: Beszédfelismerési eszközök használata SDK (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: A Speech Devices SDK (Android) használata
+    - text: Beszédfelismerési eszközök használata SDK (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Fejlesztés a Speech Device SDK-val
+- title: Fejlesztés beszédeszközökkel SDK
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Mikrofon tömb kialakítása
+    - text: Mikrofontömb tervezése
       url: speech-devices-sdk-microphone.md
-    - text: A Roobo v1 csomag beállítása
+    - text: A Roobo v1 kit beállítása
       url: speech-devices-sdk-roobo-v1.md
 - title: Referencia
   linkLists:

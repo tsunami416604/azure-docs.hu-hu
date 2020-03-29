@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás – Bing Spell Check API
+title: Nyelvi támogatás – Bing helyesírás-ellenőrző API
 titleSuffix: Azure Cognitive Services
-description: A Bing Spell Check API által támogatott természetes nyelvek listáját.
+description: A Bing helyesírás-ellenőrző API által támogatott természetes nyelvek listája.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,60 +11,60 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390168"
 ---
-# <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing Spell Check API nyelvéhez és régiójához támogatása
+# <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing helyesírás-ellenőrző API nyelvi és régiótámogatása
 
-A Bing Spell Check API által támogatott nyelvek (kizárólag a `spell` módban).
+Ezeket a nyelveket a Bing Helyesírás-ellenőrző API támogatja (csak `spell` módban).
 
-Vegye figyelembe, hogy, mint bármely más nyelvvel való `en-US`, a `mkt` kell beállítani, és mindkét `Accept-Language` vagy `setLang` kell beállítani a már leírtak szerint [Spell Check API 7-es referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Kérjük, vegye figyelembe, hogy `en-US`a `mkt` , a `Accept-Language` programon kívül más nyelven való munkavégzéshez be kell állítani, és vagy be `setLang` kell állítani, ahogy azt a Spell Check API [v7 referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|
-| arab      | `ar`          |
-| Kínai (Népköztársaság Kína)     | `zh-CN`          |
-| Kínai (Hongkong (KKT))    | `zh-HK`          |
-| kínai (tajvani)     | `zh-TW`          |
-| dán      | `da`          |
+| Arab      | `ar`          |
+| Kínai (Kínai Népköztársaság)     | `zh-CN`          |
+| Kínai (Hongkong KKT)    | `zh-HK`          |
+| Kínai (Tajvan)     | `zh-TW`          |
+| Dán      | `da`          |
 | Holland (Belgium)       | `nl-BE`          |
-| holland (Hollandia)      | `nl-NL`          |
-| angol (Ausztrália)    | `en-AU`          |
-| angol (Kanada)     | `en-CA`          |
+| Holland (Hollandia)      | `nl-NL`          |
+| Angol (Ausztrália)    | `en-AU`          |
+| Angol (Kanada)     | `en-CA`          |
 | Angol (India)    | `en-IN`          |
 | Angol (Indonézia)     | `en-ID`          |
 | Angol (Malajzia)     | `en-MY`          |
-| angol (Új-Zéland)    | `en-NZ`          |
+| Angol (Új-Zéland)    | `en-NZ`          |
 | Angol (Fülöp-szigetek)     | `en-PH`          |
 | Angol (Dél-Afrika)    | `en-ZA`          |
 | angol (Egyesült Királyság)    | `en-GB`          |
 | angol (Egyesült Államok)    | `en-US`          |
-| finn     | `fi`          |
+| Finn     | `fi`          |
 | Francia (Belgium)     | `fr-BE`          |
-| francia (Kanada)     | `fr-CA`          |
-| francia (Franciaország)     | `fr-FR`          |
-| francia (Svájc)      | `fr-CH`          |
-| német (Ausztria)      | `de-AT`          |
-| német (Németország)      | `de-DE`          |
-| német (Svájc)      | `de-CH`          |
-| olasz     | `it`          |
-| japán    | `ja`          |
-| koreai      | `ko`          |
-| norvég   | `no`          |
-| lengyel      | `pl`          |
-| portugál (brazíliai)   | `pt-BR`|
-| portugál (általános) | `pt-PT`|
-| orosz     | `ru`          |
-| Spanyol (Argentína)    | `es-AR`          |
-| Spanyol (Chile)     | `es-CL`          |
-| spanyol (Mexikó)    | `es-MX`          |
-| spanyol (spanyolországi)    | `es-ES`          |
+| Francia (Kanada)     | `fr-CA`          |
+| Francia (Franciaország)     | `fr-FR`          |
+| Francia (Svájc)      | `fr-CH`          |
+| Német (Ausztria)      | `de-AT`          |
+| Német (Németország)      | `de-DE`          |
+| Német (Svájc)      | `de-CH`          |
+| Olasz     | `it`          |
+| Japán    | `ja`          |
+| Koreai      | `ko`          |
+| Norvég   | `no`          |
+| Lengyel      | `pl`          |
+| Portugál (Brazília)   | `pt-BR`|
+| Portugál (Portugália) | `pt-PT`|
+| Orosz     | `ru`          |
+| spanyol (argentínai)    | `es-AR`          |
+| spanyol (chilei)     | `es-CL`          |
+| Spanyol (Mexikó)    | `es-MX`          |
+| Spanyol (Spanyolország)    | `es-ES`          |
 | Spanyol (Egyesült Államok)    | `es-US`          |
-| svéd     | `sv`          |
-| török     | `tr`          |
+| Svéd     | `sv`          |
+| Török     | `tr`          |
 
 ## <a name="see-also"></a>Lásd még
 

@@ -1,7 +1,7 @@
 ---
-title: Testre szabhatja, és javasolt kép keresési lekérdezéseket – a Bing Image Search API
+title: Képkeresési lekérdezések testreszabása és javaslata – Bing képkeresési API
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a keresési lekérdezéseket küld a Bing Image Search API testreszabása.
+description: További információ a Bing Képkeresési API-ba küldött keresési lekérdezések testreszabásáról.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67542744"
 ---
-# <a name="customize-and-suggest-image-search-queries"></a>Testre szabhatja, és javasolt kép keresési lekérdezések
+# <a name="customize-and-suggest-image-search-queries"></a>Képkeresési lekérdezések testreszabása és javaslata
 
-Ez a cikk segítségével testre szabhatja a lekérdezések és a keresési kifejezéseket, a Bing Image Search API küldendő javaslat.
+Ebből a cikkből megtudhatja, hogyan szabhatja testre a lekérdezéseket, és javasolhat keresési kifejezéseket a Bing Képkereső API-nak elküldve.
 
-## <a name="suggest-search-terms"></a>Keresési kifejezések javaslat
+## <a name="suggest-search-terms"></a>Keresési kifejezések javaslata
 
-Ha az alkalmazás egy keresőmezőt, ahol a keresési feltételek kerülnek, használhatja a [a Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) élményének növelése érdekében. Az API-t javasolt keresőkifejezéseket valós időben jelenítheti meg. Az API-t adja vissza a részleges keresési kifejezéseket, és a Cognitive Services alapján javasolt lekérdezési karakterláncokat.
+Ha az alkalmazás rendelkezik egy keresőmezővel, ahol keresési kifejezéseket ír nak be, a [Bing Automatikus javaslat API-val javíthatja](../../bing-autosuggest/get-suggested-search-terms.md) a felhasználói élményt. Az API valós időben tudja megjeleníteni a javasolt keresési kifejezéseket. Az API részleges keresési kifejezések és a Cognitive Services alapján adja vissza a javasolt lekérdezési karakterláncokat.
 
-## <a name="pivot-the-query"></a>A lekérdezés forgáspont
+## <a name="pivot-the-query"></a>A lekérdezés elforgatása
 
-Ha a Bing is szegmentálhatja az eredeti keresési lekérdezés által visszaadott [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) az objektum tartalmaz `pivotSuggestions`. Pivot javaslatok, a felhasználónak kötelező keresőkifejezéseket jeleníthető meg. Például, ha az eredeti lekérdezés lett *Microsoft Surface*, a Bing lehet, hogy szegmentálhatja a lekérdezést *Microsoft* és *Surface* , és adja meg a javasolt kimutatás az egyes. Ezek a javaslatok, a felhasználónak kötelező lekérdezési kifejezések jeleníthető meg.
+Ha a Bing szegmentálhatja [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) az eredeti `pivotSuggestions`keresési lekérdezést, a visszaadott Képek objektum tartalmazza a . A kimutatásjavaslatok opcionális keresési kifejezésként jeleníthetők meg a felhasználó számára. Ha például az eredeti lekérdezés a *Microsoft Surface*volt, a Bing szegmentálhatja a lekérdezést a *Microsoftra* és a *Surface-re,* és mindegyikhez ajánlott pivotokat adhat meg. Ezek a javaslatok választható lekérdezési kifejezésként jeleníthetők meg a felhasználó számára.
 
-Az alábbi példa bemutatja a pivot javaslatokat *Microsoft Surface*:  
+A következő példa a Microsoft Surface pivot javaslatait mutatja *be:*  
 
 ```json
 {
@@ -89,9 +89,9 @@ Az alábbi példa bemutatja a pivot javaslatokat *Microsoft Surface*:
 }
 ```
 
-A `pivotSuggestions` mező azoknak a szegmenseknek a listáját tartalmazza, amelyekre az eredeti lekérdezést a rendszer felbontotta. A válasz minden szegmenshez kínál olyan [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) objektumokat, amelyek a javasolt lekérdezéseket tartalmazzák. A `text` mező tartalmazza a javasolt lekérdezést. A `displayText` mező a kifejezés, amely lecseréli az eredeti lekérdezés a Pivot táblázatot tartalmaz. Ilyen például, a Surface kiadási dátum.
+A `pivotSuggestions` mező azoknak a szegmenseknek a listáját tartalmazza, amelyekre az eredeti lekérdezést a rendszer felbontotta. A válasz minden szegmenshez kínál olyan [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) objektumokat, amelyek a javasolt lekérdezéseket tartalmazzák. A `text` mező a javasolt lekérdezést tartalmazza. A `displayText` mező azt a kifejezést tartalmazza, amely az eredeti lekérdezés ben a kimutatást felülírja. Ilyen például a Surface kiadási dátuma.
 
-Ha a pivot lekérdezési karakterláncot a felhasználói felülete, használja a `text` és `thumbnail` a pivot megjelenítendő mezők lekérdezési karakterláncokat. Győződjön meg a miniatűr és a szöveg kattintható használatával a `webSearchUrl` URL-cím vagy a `searchLink` URL-CÍMÉT. Használat `webSearchUrl` a felhasználó küldhet a Bing keresési eredmények között. A saját eredmények lapon ad meg, ha `searchLink`.
+Ha a pivot lekérdezési karakterlánc az, amit `text` `thumbnail` a felhasználó keres, használja a és a mezőket a kimutatás lekérdezési karakterláncainak megjelenítéséhez. Az URL vagy az URL `webSearchUrl` használatával kattinthatóvá teheti a miniatűrt és a `searchLink` szöveget. Ezzel `webSearchUrl` elküldésre használhatja a felhasználót a Bing keresési eredményeiközött. Ha saját eredményoldalt ad `searchLink`meg, használja a használatát.
 
 <!-- Need a sanitized version of the image
 The following shows an example of the pivot queries.
@@ -99,12 +99,12 @@ The following shows an example of the pivot queries.
 ![Pivot suggestions](./media/cognitive-services-bing-images-api/bing-image-pivotsuggestion.GIF)
 -->
 
-## <a name="expand-the-query"></a>Bontsa ki a lekérdezés
+## <a name="expand-the-query"></a>A lekérdezés kibontása
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, az [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumban szerepelni fog a `queryExpansions` mező. Például, ha a lekérdezés a(z) *Microsoft Surface*, lehet, hogy a kibontott lekérdezéseket:
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, az [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *Microsoft Surface*volt, a kibontott lekérdezések a következők lehetnek:
 - Microsoft Surface **Pro 3**.
 - Microsoft Surface **RT**.
-- Microsoft Surface **Phone**.
+- Microsoft Surface **Phone .**
 - Microsoft Surface **Hub**.
 
 Az alábbi példában a *Microsoft Surface* bővített lekérdezései láthatók.
@@ -147,7 +147,7 @@ Az alábbi példában a *Microsoft Surface* bővített lekérdezései láthatók
 }
 ```
 
-A `queryExpansions` mező a [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) objektumok listáját tartalmazza. A `text` mező tartalmazza a kibontott lekérdezést. A `displayText` mező tartalmazza a nyelvi kifejezés. Ha a bővített lekérdezési karakterláncot a felhasználói felülete, használja a `text` és `thumbnail` a bővített lekérdezési karakterláncok megjelenítendő mezőket. Győződjön meg a miniatűr és a szöveg kattintható használatával a `webSearchUrl` URL-cím vagy a `searchLink` URL-CÍMÉT. Használat `webSearchUrl` a felhasználó küldhet a Bing keresési eredmények között. A saját eredmények lapon ad meg, ha `searchLink`.
+A `queryExpansions` mező a [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) objektumok listáját tartalmazza. A `text` mező a kibontott lekérdezést tartalmazza. A `displayText` mező a kibontási kifejezést tartalmazza. Ha a kibontott lekérdezési karakterlánc az, `text` `thumbnail` amit a felhasználó keres, használja a és a mezőket a kibontott lekérdezési karakterláncok megjelenítéséhez. Az URL vagy az URL `webSearchUrl` használatával kattinthatóvá teheti a miniatűrt és a `searchLink` szöveget. Ezzel `webSearchUrl` elküldésre használhatja a felhasználót a Bing keresési eredményeiközött. ha megadja saját eredményoldalát, `searchLink`használja a használatát.
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.
@@ -162,4 +162,4 @@ The following shows an example Bing implementation that uses expanded queries. I
 
 ## <a name="next-steps"></a>További lépések
 
-Ha még nem próbálta a Bing Image Search API előtti, próbálja meg egy [rövid](../quickstarts/csharp.md). Ha összetettebb keres, próbálja meg létrehozni az oktatóanyag egy [egyoldalas webalkalmazást](../tutorial-bing-image-search-single-page-app.md).
+Ha még nem próbálta ki a Bing Image Search API-t, próbálkozzon egy [rövid útmutatóval.](../quickstarts/csharp.md) Ha valami összetettebbet keres, próbálja ki az oktatóanyagot egy [egyoldalas webalkalmazás](../tutorial-bing-image-search-single-page-app.md)létrehozásához.

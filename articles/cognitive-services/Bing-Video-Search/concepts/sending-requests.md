@@ -1,7 +1,7 @@
 ---
-title: Keresési kérelmek küldése a Bing Video Search APInak
+title: Keresési kérelmek küldése a Bing Video Search API-nak
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk ismerteti a Bing Video Search API küldött kérések paramétereit és attribútumait, valamint a visszaadott JSON-válasz objektumot.
+description: Ez a cikk a Bing Video Search API-nak küldött kérelmek, valamint az általa visszaadott JSON-válaszobjektum paramétereit és attribútumait ismerteti.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220291"
 ---
-# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Keresési kérelmek küldése a Bing Video Search APInak
+# <a name="sending-search-requests-to-the-bing-video-search-api"></a>Keresési kérelmek küldése a Bing Video Search API-ba
 
-Ez a cikk ismerteti a Bing Video Search API küldött kérések paramétereit és attribútumait, valamint a visszaadott JSON-válasz objektumot. 
+Ez a cikk a Bing Video Search API-nak küldött kérelmek, valamint az általa visszaadott JSON-válaszobjektum paramétereit és attribútumait ismerteti. 
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Keresési kifejezések ajánlása a Bing Autosuggest API
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Javasoljon keresési kifejezéseket a Bing Autosuggest API-val
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
-Miután a felhasználó beírja a keresési kifejezést, URL-kódolással kódolja a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
+Miután a felhasználó megadta a keresési kifejezést, URL-kódolni, mielőtt a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) lekérdezés paraméter. Ha például a felhasználó a *sailing dinghies* (kis vitorlások) kifejezésre keres, állítsa a `q` beállítást `sailing+dinghies` vagy `sailing%20dinghies` értékre.
 
 ## <a name="sending-a-request"></a>Kérelem küldése
 
@@ -39,7 +39,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
    
 A kérelemnek a HTTPS protokollt kell használnia.
 
-Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgálókon kezdeményezett hívások egyetlen frissítési pontot is biztosítanak az API jövőbeli verzióihoz.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. A kiszolgálóról történő hívások egyetlen frissítési pontot is biztosít az API jövőbeli verzióihoz.
 
   
 A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) lekérdezési paramétert, amely a felhasználó keresési kifejezését adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `pricing`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.  

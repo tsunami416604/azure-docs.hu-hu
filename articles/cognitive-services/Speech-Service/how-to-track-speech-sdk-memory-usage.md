@@ -1,7 +1,7 @@
 ---
-title: A Speech SDK memóriahasználat nyomon követése – beszédfelismerési szolgáltatás
+title: A beszédsdka memóriahasználatának nyomon követése – Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Speech Service SDK számos programozási nyelvet támogat a beszédfelismerés és a szöveg közötti átalakításhoz, valamint a beszéd fordításához. Ez a cikk az SDK-ba beépített memória-kezelési eszközöket ismerteti.
+description: A beszédszolgáltatás SDK számos programozási nyelvet támogat a beszéd-szöveg és a szöveg-beszéd átalakításhoz, valamint a beszédfordítást. Ez a cikk az SDK-ba épített memóriakezelő eszközökről beszél.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75456431"
 ---
-# <a name="how-to-track-speech-sdk-memory-usage"></a>A Speech SDK memóriahasználat használatának nyomon követése
+# <a name="how-to-track-speech-sdk-memory-usage"></a>A beszédsdka memóriahasználatának nyomon követése
 
-A Speech SDK egy olyan natív programkódon alapul, amelyet több programozási nyelvre terveztek az együttműködési rétegek sorozatán keresztül. Az egyes nyelvspecifikus leképezések idiomatically megfelelő funkciókat biztosítanak az objektumok életciklusának kezeléséhez. Emellett a Speech SDK a memória-kezelési eszközöket is tartalmazza, amelyekkel nyomon követheti az erőforrás-használatot az objektumok naplózásával és az objektumok korlátaival. 
+A beszédstabk egy natív kódbázison alapul, amely több programozási nyelvre vetítve, együttműködési rétegek sorozatán keresztül. Minden nyelvspecifikus vetület idiomatikusan helyes funkciókkal rendelkezik az objektum életciklusának kezeléséhez. Emellett a beszédstab-sdk memóriakezelő eszközökkel nyomon követheti az erőforrás-használatot az objektumnaplózással és az objektumkorlátokkal. 
 
-## <a name="how-to-read-object-logs"></a>Az objektumok naplófájljainak olvasása
+## <a name="how-to-read-object-logs"></a>Objektumnaplók olvasása
 
-Ha [a beszédfelismerési SDK naplózása engedélyezve van](how-to-use-logging.md), a rendszer a címkék követésével teszi lehetővé a korábbi objektumok megfigyelését. Ezek a címkék a következők: 
+Ha [a beszédbeszéd SDK-naplózása engedélyezve van,](how-to-use-logging.md)a program nyomkövetési címkéket bocsát ki a korábbi objektummegfigyelés engedélyezéséhez. Ezek a címkék a következők: 
 
 * `TrackHandle` vagy `StopTracking` 
 * Az objektum típusa
-* Az objektum típusát nyomon követő objektumok aktuális száma, valamint a nyomon követett aktuális szám.
+* Az objektum típusát és az aktuálisan nyomon követett objektumok aktuális száma.
 
-Íme egy példa napló: 
+Itt egy minta napló: 
 
 ```terminal
 (284): 8604ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:90 TrackHandle type=Microsoft::CognitiveServices::Speech::Impl::ISpxRecognitionResult handle=0x0x7f688401e1a0, ptr=0x0x7f688401e1a0, total=19
@@ -38,9 +38,9 @@ Ha [a beszédfelismerési SDK naplózása engedélyezve van](how-to-use-logging.
 
 ## <a name="set-a-warning-threshold"></a>Figyelmeztetési küszöbérték beállítása
 
-Lehetősége van figyelmeztetési küszöbértéket létrehozni, és ha túllépi a küszöbértéket (feltéve, hogy a naplózás engedélyezve van), a rendszer figyelmeztető üzenetet naplóz. A figyelmeztető üzenet tartalmazza a létezésben lévő összes objektum számát a darabszámmal együtt. Ez az információ a problémák jobb megismeréséhez használható. 
+Lehetősége van figyelmeztető küszöbérték létrehozására, és ha túllépi ezt a küszöbértéket (feltéve, hogy a naplózás engedélyezve van), a rendszer figyelmeztető üzenetet naplóz. A figyelmeztető üzenet az összes létező objektum ról és azok számáról tartalmaz egy memóriaképet. Ez az információ felhasználható a problémák jobb megértéséhez. 
 
-A figyelmeztetési küszöbérték engedélyezéséhez meg kell adni egy `SpeechConfig` objektumon. Ezt az objektumot az új felismerő létrehozásakor ellenőrzi a rendszer. A következő példákban tegyük fel, hogy létrehozott egy `config`nevű `SpeechConfig` példányt:
+A figyelmeztetési küszöbérték engedélyezéséhez azt meg `SpeechConfig` kell adni egy objektumon. Új felismerő létrehozásakor ez az objektum be van jelölve. A következő példákban tegyük fel, hogy létrehozott `SpeechConfig` `config`egy példányt a hívott:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -83,13 +83,13 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")
 ::: zone-end
 
 > [!TIP]
-> Ennek a tulajdonságnak az alapértelmezett értéke 10 000.
+> A tulajdonság alapértelmezett értéke 10 000.
 
-## <a name="set-an-error-threshold"></a>Hiba küszöbértékének beállítása 
+## <a name="set-an-error-threshold"></a>Hibaküszöbérték beállítása 
 
-A Speech SDK használatával beállíthatja, hogy az objektumok maximális száma egy adott időpontban engedélyezett legyen. Ha ez a beállítás engedélyezve van, a maximális szám megadását követően az új felismerő objektumok létrehozásának kísérletei sikertelenek lesznek. A meglévő objektumok továbbra is működni fognak.
+A beszédsdka használatával beállíthatja az adott időpontban engedélyezett objektumok maximális számát. Ha ez a beállítás engedélyezve van, a maximális szám elérésekor az új felismerő objektumok létrehozására tett kísérletek sikertelenek lesznek. A meglévő objektumok továbbra is működni fognak.
 
-Példa a következőre:
+Íme egy mintahiba:
 
 ```terminal
 Runtime error: The maximum object count of 500 has been exceeded.
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-A hiba küszöbértékének engedélyezéséhez meg kell adni egy `SpeechConfig` objektumon. Ezt az objektumot az új felismerő létrehozásakor ellenőrzi a rendszer. A következő példákban tegyük fel, hogy létrehozott egy `config`nevű `SpeechConfig` példányt:
+A hibaküszöbérték engedélyezéséhez meg kell adni `SpeechConfig` egy objektumon. Új felismerő létrehozásakor ez az objektum be van jelölve. A következő példákban tegyük fel, hogy létrehozott `SpeechConfig` `config`egy példányt a hívott:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -145,9 +145,9 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 ::: zone-end
 
 > [!TIP]
-> Ennek a tulajdonságnak az alapértelmezett értéke egy `size_t` adattípusra vonatkozó platform-specifikus maximális érték. Egy tipikus felismerés 7 és 10 belső objektum között lesz használatban.
+> A tulajdonság alapértelmezett értéke egy `size_t` adattípus platformspecifikus maximális értéke. Egy tipikus felismerés 7 és 10 belső objektum között fog elhasználódni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](get-started.md)
-* [Megtudhatja, hogyan ismerheti fel a beszédfelismerést mikrofon használatával](quickstarts/speech-to-text-from-microphone.md)
+* [A Beszédfelismerési szolgáltatás próba-előfizetésének beolvasása](get-started.md)
+* [A beszéd felismerése mikrofonnal](quickstarts/speech-to-text-from-microphone.md)

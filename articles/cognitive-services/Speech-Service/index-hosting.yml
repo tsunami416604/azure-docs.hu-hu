@@ -1,33 +1,32 @@
 ### YamlMime:Landing
-title: Az üzemeltetés dokumentációja
-summary: A Speech Service-tárolók mind a beszéd-szöveg, mind a szöveg-beszéd forgatókönyvek számára elérhetők, amely magában foglalja a standard vagy a testreszabott modelleket.
+title: Üzemeltetési dokumentáció
+summary: A beszédfelismerési szolgáltatás tárolói beszédfelismerési és szövegfelolvasó forgatókönyvekhez is elérhetők, amelyek szabványos vagy testreszabott modelleket foglalnak magukban.
 metadata:
-  title: Üzemeltetési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  title: Üzemeltetési dokumentáció - Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 8298a2e37520e7920f18b7ffd5b49074098e0243
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79366700"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415908"
 landingContent:
-- title: Az üzemeltetésről
+- title: A tárhelyről
   linkLists:
   - linkListType: concept
     links:
-    - text: Beszédfelismerési tárolók telepítése és futtatása
+    - text: Beszédtárolók telepítése és futtatása
       url: speech-container-howto.md
-    - text: Beszédfelismerési tárolók Kubernetes és Helmtal
+    - text: Beszédtárolók Kubernetes és Helm
       url: speech-container-howto-on-premises.md
-    - text: Beszédfelismerési tárolók az Azure Container instances szolgáltatásban
+    - text: Beszédtárolók az Azure-tárolópéldányokon
       url: deploy-speech-on-container-instances.md
 - title: Létrehozás és konfigurálás
   linkLists:
@@ -35,7 +34,7 @@ landingContent:
     links:
     - text: Azure Speech-erőforrás létrehozása
       url: get-started.md#new-resource
-    - text: Beszédfelismerési tárolók konfigurálása
+    - text: Beszédtárolók konfigurálása
       url: speech-container-configuration.md
 - title: Referencia
   linkLists:
@@ -43,5 +42,5 @@ landingContent:
     links:
     - text: Támogatott régiók
       url: regions.md
-    - text: Független felhők
+    - text: Szuverén felhők
       url: sovereign-clouds.md

@@ -1,7 +1,7 @@
 ---
-title: Translator Text API Átbetűzés metódus
+title: Fordító szöveg API transzkitrát módszer
 titleSuffix: Azure Cognitive Services
-description: Az egyik parancsfájlból egy másik parancsfájlba alakítja át a szöveget az Translator Text API Átbetűzés metódussal.
+description: A Translator Text API Transliterate metódussal az egyik nyelven lévő szöveget konvertálhatja egy parancsfájlból egy másikba.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,75 +11,75 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837279"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3,0: Átbetűzés
+# <a name="translator-text-api-30-transliterate"></a>Fordító szöveg API 3.0: Átírás
 
-A szöveget egy adott nyelven alakítja át egy másik parancsfájlba.
+Az egyik nyelven lévő szöveget egyik parancsfájlból a másikba konvertálja.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-`POST` kérelem küldése a következőnek:
+Kérés `POST` küldése a következő knek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Kérelmek paramétereinek megadása
+## <a name="request-parameters"></a>Kérelem paraméterei
 
-A lekérdezési karakterláncon átadott kérési paraméterek a következők:
+A lekérdezési karakterláncon átadott kérelemparaméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>API-Version</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`nak kell lennie.</td>
+    <td>api-verzió</td>
+    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API verziója. Az értéknek kell lennie. `3.0`</td>
   </tr>
   <tr>
     <td>language</td>
-    <td>*Kötelező paraméter*.<br/>Megadja az egyik parancsfájlból a másikba konvertálandó szöveg nyelvét. A lehetséges nyelvek a szolgáltatásnak a [támogatott nyelvekre](./v3-0-languages.md)való lekérdezésével kapott `transliteration` hatókörben vannak felsorolva.</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a konvertálandó szöveg nyelvét az egyik parancsfájlból a másikba. A lehetséges nyelvek a `transliteration` szolgáltatás [támogatott nyelveinek](./v3-0-languages.md)lekérdezésével kapott hatókörben jelennek meg.</td>
   </tr>
   <tr>
-    <td>fromScript</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a bemeneti szöveg által használt parancsfájlt. A `transliteration` hatókör használatával kereshet [támogatott nyelveket](./v3-0-languages.md) a kiválasztott nyelvhez elérhető bemeneti parancsfájlok kereséséhez.</td>
+    <td>inScript</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a bemeneti szöveg által használt parancsfájlt. Keresse meg a `transliteration` hatókört használó támogatott [nyelveket,](./v3-0-languages.md) és keresse meg a kiválasztott nyelvhez elérhető bemeneti parancsfájlokat.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti parancsfájlt. A `transliteration` hatókörrel megkeresheti a [támogatott nyelveket](./v3-0-languages.md) , hogy megtalálja a bemeneti nyelv és a bemeneti parancsfájl kiválasztott kombinációjával elérhető kimeneti parancsfájlokat.</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti parancsfájlt. Keresse meg a `transliteration` hatókört használó [támogatott nyelveket,](./v3-0-languages.md) hogy megtalálja a bemeneti nyelv és a bemeneti parancsfájl kiválasztott kombinációjához elérhető kimeneti parancsfájlokat.</td>
   </tr>
 </table> 
 
-A kérelem fejlécei a következők:
+A kérelemfejlécek a következőket tartalmazzák:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>Hitelesítési fejléc (ek)</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
+    <td>Hitelesítési fejléc(ek)</td>
+    <td><em>Kötelező kérelemfejléc</em>.<br/>Lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">A hitelesítéshez rendelkezésre álló lehetőségek.</a></td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json`.</td>
+    <td>*Kötelező kérelemfejléc*.<br/>Megadja a hasznos adat tartalom típusát. Lehetséges értékek: `application/json`. .</td>
   </tr>
   <tr>
-    <td>Content-Length</td>
-    <td>*Kötelező kérelem fejléce*<br/>A kérelem törzsének hossza</td>
+    <td>Tartalom hossza</td>
+    <td>*Kötelező kérelemfejléc*.<br/>A kérelem törzsének hossza.</td>
   </tr>
   <tr>
-    <td>X – ClientTraceId</td>
-    <td>*Választható*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító egy `ClientTraceId`nevű lekérdezési paraméter használatával.</td>
+    <td>X-ClientTraceId</td>
+    <td>*Nem kötelező*.<br/>Az ügyfél által létrehozott GUID a kérelem egyedi azonosítására. Ne feledje, hogy a fejlécet kihagyhatja, ha a nyomkövetési `ClientTraceId`azonosítót a lekérdezési karakterláncba a .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömb elem egy `Text`nevű karakterlánc-tulajdonságú JSON-objektum, amely az átalakítandó karakterláncot jelöli.
+A kérelem törzse egy JSON-tömb. Minden tömbelem egy JSON-objektum, `Text`amelynek neve karakterlánc-tulajdonság, amely a konvertálandó karakterláncot jelöli.
 
 ```json
 [
@@ -88,21 +88,21 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy `Text`nevű karakterlá
 ]
 ```
 
-A következő korlátozások érvényesek:
+Az alábbi korlátozások érvényesek:
 
-* A tömb legfeljebb 10 elemet tartalmazhat.
-* Egy tömb elemének szöveges értéke nem lehet hosszabb 1 000 karakternél, beleértve a szóközöket is.
-* A kérelemben szereplő teljes szöveg nem lehet hosszabb 5 000 karakternél, beleértve a szóközöket is.
+* A tömb legbőlegelhető 10 elemet tartalmazhat.
+* A tömbelem szöveges értéke szóközökkel együtt nem haladhatja meg az 1000 karaktert.
+* A kérelemben szereplő teljes szöveg nem haladhatja meg az 5000 karaktert szóközökkel együtt.
 
-## <a name="response-body"></a>Válasz törzse
+## <a name="response-body"></a>Választörzs
 
-A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a bemeneti tömb minden eleméhez. Az eredmény objektum a következő tulajdonságokat tartalmazza:
+A sikeres válasz egy JSON-tömb, amely a bemeneti tömb minden eleméhez egy eredményt tartalmaz. Az eredményobjektum a következő tulajdonságokat tartalmazza:
 
-  * `text`: a bemeneti karakterlánc kimeneti parancsfájlba való átalakításának eredményét megadó karakterlánc.
+  * `text`: Olyan karakterlánc, amely a bemeneti karakterlánc kimeneti parancsfájllá történő konvertálásának eredménye.
   
-  * `script`: a kimenetben használt parancsfájlt megadó karakterlánc.
+  * `script`: A kimenetben használt parancsfájlt meghatározó karakterlánc.
 
-Példa JSON-válaszra:
+Egy példa JSON válasz:
 
 ```json
 [
@@ -111,20 +111,20 @@ Példa JSON-válaszra:
 ]
 ```
 
-## <a name="response-headers"></a>Válasz fejlécei
+## <a name="response-headers"></a>Válaszfejlécek
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>X – kérelemazonosító</td>
-    <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
+    <td>X-RequestId azonosító</td>
+    <td>A szolgáltatás által a kérelem azonosítására létrehozott érték. Hibaelhárítási célokra használják.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Válasz-állapotkódok
+## <a name="response-status-codes"></a>Válasz állapotkódjai
 
-A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők: 
+A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők. 
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
@@ -135,43 +135,43 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
   <tr>
     <td>400</td>
-    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa a kérelmek paramétereit.</td>
+    <td>A lekérdezési paraméterek egyike hiányzik vagy érvénytelen. Az újrapróbálkozás előtt javítsa ki a kérelem paramétereit.</td>
   </tr>
   <tr>
     <td>401</td>
-    <td>A kérést nem lehetett hitelesíteni. Győződjön meg arról, hogy a hitelesítő adatok meg vannak adva és érvényesek.</td>
+    <td>A kérés t nem lehetett hitelesíteni. Ellenőrizze, hogy a hitelesítő adatok meg vannak-e adva és érvényesek-e.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>A kérés nincs engedélyezve. Olvassa el a részletek hibaüzenetét. Ez gyakran azt jelzi, hogy a próbaverziós előfizetéssel biztosított összes ingyenes fordítás fel lett használva.</td>
+    <td>A kérés nem engedélyezett. Ellenőrizze a részleteket hibaüzenetet. Ez gyakran azt jelzi, hogy a próba-előfizetéssel rendelkező összes ingyenes fordítást felhasználták.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.</td>
+    <td>A kiszolgáló elutasította a kérést, mert az ügyfél túllépte a kérelemkorlátot.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécének `X-RequestId`, valamint az ügyfél-azonosító a kérelem fejlécében `X-ClientTraceId`.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse azt a következőkkel: `X-RequestId`a hiba dátuma `X-ClientTraceId`és időpontja, a válaszfejlécből származó kérelemazonosító és az ügyfélazonosító a kérelemfejlécből.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécének `X-RequestId`, valamint az ügyfél-azonosító a kérelem fejlécében `X-ClientTraceId`.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálkozzon újra a kéréssel. Ha a hiba továbbra is fennáll, jelentse azt a következőkkel: `X-RequestId`a hiba dátuma `X-ClientTraceId`és időpontja, a válaszfejlécből származó kérelemazonosító és az ügyfélazonosító a kérelemfejlécből.</td>
   </tr>
 </table> 
 
-Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Text API hivatkozási oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
+Ha hiba történik, a kérelem json-hibaválaszt is ad vissza. A hibakód egy 6 jegyű szám, amely a 3 jegyű HTTP-állapotkódot, majd egy 3 jegyű számot követ a hiba további kategorizálása érdekében. A gyakori hibakódok a [v3 Translator Text API referenciaoldalán](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 
-Az alábbi példa bemutatja, hogyan alakíthat át két japán karakterláncot a római Japánra.
+A következő példa bemutatja, hogyan konvertálható két japán karakterlánc romanizált japán.
 
-A kérelem JSON-adattartalma a következő példában:
+A json hasznos teher a kérelem ebben a példában:
 
 ```json
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Ha a fürtöket olyan parancssori ablakban használja, amely nem támogatja a Unicode-karaktereket, hajtsa végre a következő JSON-adattartalmat, és mentse egy `request.txt`nevű fájlba. Ügyeljen arra, hogy `UTF-8` kódolással mentse a fájlt.
+Ha olyan parancssori ablakban használja a cURL-t, amely nem támogatja a Unicode karaktereket, `request.txt`vegye ki a következő JSON-hasznos adatra, és mentse egy fájlba, amelynek neve . Ügyeljen arra, hogy `UTF-8` a fájlt kódolással mentse.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

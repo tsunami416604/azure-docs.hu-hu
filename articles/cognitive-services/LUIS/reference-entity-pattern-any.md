@@ -1,7 +1,7 @@
 ---
-title: Minta. bármely entitás típusa – LUIS
+title: Pattern.any entitástípus - LUIS
 titleSuffix: Azure Cognitive Services
-description: Minta. a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik.
+description: Pattern.any egy változó hosszúságú helyőrző csak a minta sablon utterance (kifejezés) megjelölésére, ahol az entitás kezdődik és végződik.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,49 +11,49 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75979163"
 ---
 # <a name="patternany-entity"></a>Pattern.any entitás
 
-Minta. a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik.  
+Pattern.any egy változó hosszúságú helyőrző csak a minta sablon utterance (kifejezés) megjelölésére, ahol az entitás kezdődik és végződik.  
 
-Minta. minden entitást meg kell adni a [minta](luis-how-to-model-intent-pattern.md) sablon példákban, nem pedig a leképezési felhasználói példákban.
+Pattern.any entitások kell jelölni a [Minta](luis-how-to-model-intent-pattern.md) sablon példák, nem a szándék felhasználói példákat.
 
-**Az entitás jól illeszkedik, ha:**
+**A gazdálkodó egység akkor illeszkedik, ha:**
 
-* Az entitás végének összetéveszthető a kihagyás hátralévő szövegével.
+* Az entitás vége összetéveszthető az utterance (kifejezés) fennmaradó szövegével.
 
 ## <a name="usage"></a>Használat
 
-Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon teljes használata minta használatával. a könyvben végzett kereséshez a `Was {BookTitle} written by an American this year[?]`.
+Adott egy ügyfélalkalmazás, amely a cím alapján keres könyveket, a pattern.any kinyeri a teljes címet. A sablon utterance kifejezés használatával pattern.any ehhez a könyv keresés `Was {BookTitle} written by an American this year[?]`.
 
-A következő táblázatban az egyes sorok a teljes verzió két változatával rendelkeznek. A legelső Kimondás, hogy a LUIS kezdetben hogyan látja a megnyilatkozás módját. Nem egyértelmű, hogy a könyv címe hol kezdődik és végződik. Az alsó lemondás egy mintát használ. bármely entitás, amely az entitás kezdetét és végét jelöli.
+Az alábbi táblázatban minden sor rendelkezik az utterance (kifejezés) két verziója. A felső utterance (kifejezés) hogyan LUIS kezdetben látja az utterance (kifejezés). Nem világos, hogy hol kezdődik és végződik a könyv címe. Az alsó utterance (kifejezés) egy Pattern.any entitást használ az entitás kezdetének és végének jelölésére.
 
-|Az entitások kimondása félkövérrel|
+|Kimondott szöveg félkövér entitással|
 |--|
-|`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Volt **az az ember, aki eltartotta a feleségét egy kalapban és más** , az idén amerikai klinikai mesében?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>**Félig aludt a béka pizsamában,** amelyet egy amerikai idén írt?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>**A Lemon Cake különleges szomorúsága volt:** az idén egy Amerikai Egyesült Államok által írt regény?|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>Volt **egy Wocket a zsebemben!** írta egy Amerikai Egyesült államokbeli év?|
+|`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Volt **az ember, aki összetévesztette a feleségét egy kalap és egyéb klinikai mesék** írta egy amerikai ebben az évben?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>Volt **Half Sleep a béka pizsama** írta egy amerikai ebben az évben?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>Volt **a különös szomorúság a citromtorta: A regény** írta egy amerikai ebben az évben?|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>**Volt egy wocket a zsebemben!** írta egy amerikai ebben az évben?|
 ||
 
 
 
-## <a name="example-json"></a>Példa JSON-ra
+## <a name="example-json"></a>Példa JSON
 
 Tekintse meg a következő lekérdezést:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-A beágyazott űrlap neve kinyerhető mintázatként. bármelyik:
+A beágyazott űrlap nevét kivonat minta.any:
 
 `Understand your responsibilities as a member of the community`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpontra adott válasza](#tab/V2)
 
 ```JSON
 "entities": [
@@ -67,9 +67,9 @@ A beágyazott űrlap neve kinyerhető mintázatként. bármelyik:
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpontra adott válasza](#tab/V3)
 
-Ez a JSON, ha `verbose=false` van beállítva a lekérdezési karakterláncban:
+Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
 
 ```json
 "entities": {
@@ -79,7 +79,7 @@ Ez a JSON, ha `verbose=false` van beállítva a lekérdezési karakterláncban:
 }
 ```
 
-Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
+Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 ```json
 "entities": {
@@ -106,6 +106,6 @@ Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
 
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az [oktatóanyagban](luis-tutorial-pattern.md)használja a **mintát. bármely** entitást, amellyel kinyerheti az adatok hosszúságú kimondott szöveg, ahol a hosszúságú kimondott szöveg megfelelően formázottak, és az adatok végének könnyen összetéveszthető a kimaradás többi szavával.
+Ebben az [oktatóanyagban](luis-tutorial-pattern.md)használja a **Pattern.any** entitást az utterances adatok kinyeréséhez, ahol az utterances jól formázott, és ahol az adatok végét könnyen összetéveszthető a többi szó az utterance (kifejezés).

@@ -1,7 +1,7 @@
 ---
-title: Az entitások felismerésének használata a Text Analytics API
+title: Entitásfelismerés használata a Text Analytics API-val
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan azonosíthatja és egyértelműsítse a szövegben talált entitás identitását a Text Analytics REST API.
+description: Ismerje meg, hogyan azonosíthatja és semmisítheti meg a szövegben található entitás identitását a Text Analytics REST API-val.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,154 +11,154 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
 ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79203491"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>A Named Entity Recognition használata a Text Analytics szolgáltatásban
 
-A Text Analytics API lehetővé teszi a strukturálatlan szöveg átrendezését és a disambiguated entitások listájának beolvasása, amely a weben található további információkra mutató hivatkozásokat tartalmaz. Az API támogatja az elnevezett entitások felismerését és az entitások összekapcsolását is.
+A Text Analytics API lehetővé teszi, hogy strukturálatlan szöveget, és visszaadja a nem egyértelmű entitások listáját, a hivatkozásokat további információkra az interneten. Az API támogatja mind a névvel ellátott entitásfelismerést (NER) és az entitáscsatolást.
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
 
-Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például annak meghatározását, hogy a szó előfordulása `Mars`-e a bolygón vagy a háború római istene). Ennek a folyamatnak a megfelelő nyelven kell megadnia egy tudásbázist, hogy az felismert entitások szövegben legyenek összekapcsolva. Az Entity Linking a [wikipedia](https://www.wikipedia.org/) -t használja a Tudásbázisban.
+Az entitásösszekapcsolás képes azonosítani és félretenni a szövegben található entitás személyazonosságát (például annak meghatározása, `Mars` hogy a szó előfordulása a bolygóra vagy a háború római istenére utal-e). Ehhez a folyamathoz egy tudásbázis meglétére van szükség a megfelelő nyelven, hogy a felismert entitásokat szövegben összekapcsolják. Az Entity Linking a [Wikipédiát](https://www.wikipedia.org/) használja erre a tudásbázisra.
 
 
-### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
+### <a name="named-entity-recognition-ner"></a>Elnevezett entitásfelismerés (NER)
 
-Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra vagy típusokra kategorizálhatja, például: személy, hely, esemény, termék és szervezet.  
+A névvel ellátott entitásfelismerés (NER) lehetővé teszi a különböző entitások azonosítását a szövegben, és előre meghatározott osztályokba vagy típusokba sorolja őket, mint például: személy, hely, esemény, termék és szervezet.  
 
-A 3. verziótól kezdődően a Text Analytics API ezen funkciója a személyes és bizalmas adattípusokat is képes azonosítani, például a telefonszámot, a társadalombiztosítási számot, az e-mail-címet és a bankszámla-számot.  Az entitások azonosítása segíthet a bizalmas dokumentumok besorolásában és a személyes adatok kivonásában.
+A Text Analytics API 3-as verziójától kezdve a Text Analytics API ezen szolgáltatása olyan személyes és bizalmas adattípusokat is képes azonosítani, mint például: telefonszám, társadalombiztosítási szám, e-mail-cím és bankszámlaszám.  Ezeknek az entitásoknak az azonosítása segíthet a bizalmas dokumentumok besorolásában és a személyes adatok átminősítésében.
 
-## <a name="named-entity-recognition-versions-and-features"></a>Elnevezett entitás-felismerési verziók és szolgáltatások
+## <a name="named-entity-recognition-versions-and-features"></a>Elnevezett entitásfelismerési verziók és -szolgáltatások
 
-A Text Analytics API az elnevezett Entity Recognition-v2 és v3 két verzióját kínálja. A 3. verzió (nyilvános előzetes verzió) nagyobb részletességet biztosít az észlelhető és kategorizálható entitásokban.
+A Text Analytics API a Named Entity Recognition két verzióját kínálja – a 2-es és a v3-as verziót. 3-as verzió (Nyilvános előzetes verzió) nyújt nagyobb részletességgel az entitások, amelyek észlelhetők és kategorizálhatók.
 
-| Funkció                                                         | Felkerülő v2 | V3 |
+| Szolgáltatás                                                         | NER v2 | NER v3 |
 |-----------------------------------------------------------------|--------|--------|
-| Egyszeri és batch-kérelmek módszerei                          | X      | X      |
-| Alapszintű entitások felismerése több kategória között              | X      | X      |
-| Felismert entitások kiterjesztett besorolása                 |        | X      |
-| Különálló végpontok az entitások összekapcsolását és a meghívást kérő kérelmek küldéséhez. |        | X      |
-| Modell verziószámozása                                                |        | X      |
+| Az egyedi és kötegelt kérelmek módszerei                          | X      | X      |
+| Alapvető entitások kiismerése több kategóriában              | X      | X      |
+| Ismert entitások kiterjesztett besorolása                 |        | X      |
+| Külön végpontok az entitás-összekapcsolás és a NER-kérelmek küldéséhez. |        | X      |
+| Modellverziószámozás                                                |        | X      |
 
-További információért lásd a [nyelvi támogatást](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) ismertető témakört.
+Az információkat a [nyelvi támogatásban](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) talál.
 
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-### <a name="entity-types"></a>Entitás típusa
+### <a name="entity-types"></a>Entitástípusok
 
-A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. Jelenleg az alábbi kategóriájú entitások is felismerhetők:
+Az elnevezett entitásfelismerés v3 több típusra bontott észlelést biztosít. Jelenleg a NER v3 a következő entitáskategóriákat ismeri fel:
 
 * Általános kérdések
 * Személyes adatok 
 
-A támogatott entitások és nyelvek részletes listáját a következő témakörben találja: a [támogatott entitások támogatása](../named-entity-types.md) .
+A támogatott entitások és nyelvek részletes listáját a [NER v3 által támogatott entitástípusok](../named-entity-types.md) című cikkben olvashatja.
 
-### <a name="request-endpoints"></a>Kérelmek végpontjai
+### <a name="request-endpoints"></a>Végpontok kérése
 
-Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypéldányos és az entitás-összekapcsolási kérelmekhez Az alábbi URL-formátumot használja a kérelme alapján:
+A Named Entity Recognition v3 külön végpontokat használ a NER és az entitáscsatolási kérelmekhez. A kérés alapján az alábbi URL-formátumot használja:
 
-NER
-* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+Ner
+* Általános entitások -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Személyes adatok – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Személyes adatok -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entitás összekapcsolása
+Entitáscsatolás
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-### <a name="model-versioning"></a>Modell verziószámozása
+### <a name="model-versioning"></a>Modellverziószámozás
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-### <a name="entity-types"></a>Entitás típusa
+### <a name="entity-types"></a>Entitástípusok
 
 > [!NOTE]
-> Az elnevezett entitások felismerése () 2-es verziója csak a következő entitásokat támogatja. Nyilvános előzetes verzióban érhető el, és nagy mértékben kibővíti a szövegben felismert entitások számát és mélységét.   
+> A Named Entity Recognition(NER) 2-es verziója csak a következő entitásokat támogatja. A NER v3 nyilvános előzetes verzióban érhető el, és jelentősen kibővíti a szövegben felismert entitások számát és mélységét.   
 
 | Típus  | Altípus | Példa |
 |:-----------   |:------------- |:---------|
-| Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Hely      | N/A\*         | "Redmond, Washington", "Párizs"  |
-| Szervezet  | N/A\*         | Microsoft   |
+| Személy        | N/a\*         | "Jeff", "Bill Gates"     |
+| Hely      | N/a\*         | "Redmond, Washington", "Párizs"  |
+| Szervezet  | N/a\*         | "Microsoft"   |
 | Mennyiség      | Szám        | "6", "hat"     |
-| Mennyiség      | Százalék    | "50%", "50 százalék"|
-| Mennyiség      | Sorszámok       | "2.", "Second"     |
-| Mennyiség      | Kor           | "90 napos", "30 év régi"    |
-| Mennyiség      | Currency (Pénznem)      | "$10,99"     |
-| Mennyiség      | Dimenzió     | "10 Miles", "40 cm"     |
+| Mennyiség      | Százalék    | "50%", "ötven százalék"|
+| Mennyiség      | Ordinális       | "2.", "második"     |
+| Mennyiség      | Kor           | "90 napos", "30 éves"    |
+| Mennyiség      | Currency (Pénznem)      | "10,99 $ "     |
+| Mennyiség      | Dimenzió     | "10 mérföld", "40 cm"     |
 | Mennyiség      | Hőmérséklet   | "32 fok"    |
-| DateTime      | N/A\*         | "6:18. február 4., 2012"      |
-| DateTime      | Dátum          | "Május 2nd, 2017", "05/02/2017"   |
-| DateTime      | Time          | "08:00", "8:00"  |
-| DateTime      | DateRange     | "Május 2. május 5."    |
-| DateTime      | TimeRange     | "18:00 – 19:00"     |
-| DateTime      | Időtartam      | "1 perc és 45 másodperc"   |
-| DateTime      | Beállítás           | "minden kedd"     |
-| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
-| E-mail         | N/A\*         | „support@contoso.com” |
-| Egyesült államokbeli telefonszám  | N/A\*         | (Csak az Egyesült államokbeli telefonszámok) "(312) 555-0176" |
-| IP-cím    | N/A\*         | 10.0.0.100 |
+| DateTime      | N/a\*         | "2012. február 4., 18:30"      |
+| DateTime      | Dátum          | "May 2nd, 2017", "05/02/2017"   |
+| DateTime      | Time          | "8:00", "8:00"  |
+| DateTime      | Dátumtartomány     | "Május 2-tól május 5-ig"    |
+| DateTime      | Időtartomány     | "18:00-19:00"     |
+| DateTime      | Időtartam      | "1 perc 45 másodperc"   |
+| DateTime      | Beállítás           | "minden kedden"     |
+| URL-cím           | N/a\*         | "https:\//www.bing.com"    |
+| E-mail         | N/a\*         | "support@contoso.com" |
+| Amerikai telefonszám  | N/a\*         | (csak amerikai telefonszámok esetén) "(312) 555-0176" |
+| IP-cím    | N/a\*         | "10.0.0.100" |
 
-\* a bemeneti és a kinyert entitástól függően előfordulhat, hogy bizonyos entitások kihagyhatják a `SubType`.  A felsorolt összes támogatott entitás csak angol, Kínai – egyszerűsített, francia, német és spanyol nyelven érhető el.
+\*A bemeneti és kinyert entitásoktól függően bizonyos `SubType`entitások kihagyhatják a .  Az összes felsorolt támogatott entitástípus csak az angol, a kínai egyszerűsített, a francia, a német és a spanyol nyelvekhez érhető el.
 
-### <a name="request-endpoints"></a>Kérelmek végpontjai
+### <a name="request-endpoints"></a>Végpontok kérése
 
-Az elnevezett Entity Recognition v2 egyetlen végpontot használ az egyhelyes és az entitás-összekapcsolási kérelmekhez:
+Az elnevezett entitásfelismerés v2 egyetlen végpontot használ a NER és az entitásösszekapcsolási kérelmekhez:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
-## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése
+## <a name="sending-a-rest-api-request"></a>REST API-kérelem küldése
 
 ### <a name="preparation"></a>Előkészítés
 
-A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg, nyelv.
+A JSON-dokumentumoknak ebben a formátumban kell lennie: azonosító, szöveg, nyelv.
 
-Minden dokumentumnak 5 120 karakterből kell állnia, és gyűjteményben legfeljebb 1 000 elem (azonosító) lehet. A kollekció elküldése a kérelem törzsében történik.
+Minden dokumentumnak 5120 karakternél kisebbnek kell lennie, és gyűjteményenként legfeljebb 1000 elem (azonosító) lehet. A kollekció elküldése a kérelem törzsében történik.
 
-### <a name="structure-the-request"></a>A kérelem szerkezete
+### <a name="structure-the-request"></a>A kérelem strukturálása
 
-Hozzon létre egy POST-kérelmet. A következő hivatkozásokon a [Poster](text-analytics-how-to-call-api.md) vagy az **API-tesztelési konzol** használatával gyorsan feldolgozhatja és elküldheti az egyiket. 
+Hozzon létre egy POST kérést. A [Postman](text-analytics-how-to-call-api.md) vagy az API-tesztkonzol segítségével gyorsan strukturálhatja és elküldheti az **API-t.** 
 
 > [!NOTE]
-> Az Azure Portalon megtalálhatja Text Analytics erőforrásának kulcsát és végpontját. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés**területen találhatók. 
+> Az azure-portálon megtalálhatja a kulcs átési végpontját a Text Analytics-erőforráshoz. Ezek az erőforrás **gyorskezdőlapján,** az **erőforrás-kezelés**csoportban találhatók. 
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-[Elnevezett Entity Recognition v3-dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
+[Elnevezett entitásfelismerés v3 hivatkozása](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
-A 3-as verzió külön végpontokat használ az Egypéldányos és az entitás-összekapcsolási kérelmekhez. Az alábbi URL-formátumot használja a kérelme alapján:
+A 3-as verzió külön végpontokat használ a NER és az entitásösszekapcsolási kérelmekhez. A kérés alapján az alábbi URL-formátumot használja:
 
-NER
-* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+Ner
+* Általános entitások -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Személyes információk entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* Személyes adatokat közrenyekkel foglalkozó szervezetek -`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entitás összekapcsolása
+Entitáscsatolás
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-[Nevesített entitások felismerése (megnevezett) v2 – dokumentáció](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+[Elnevezett entitásfelismerés (NER) v2 hivatkozás](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-A 2. verzió a következő végpontot használja az entitás-összekapcsolási és a Meghívási kérelmekhez: 
+A 2-es verzió a következő végpontot használja az entitás-összekapcsoláshoz és a NER-kérelmekhez: 
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
-A Text Analytics API kulcsot tartalmazó kérelem fejlécének beállítása. A kérelem törzsében adja meg az előkészített JSON-dokumentumokat.
+Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics API-kulcsot. A kérelem törzsében adja meg az elkészített JSON-dokumentumokat.
 
-### <a name="example-ner-request"></a>Példa a kérelemre 
+### <a name="example-ner-request"></a>Példa NER kérésre 
 
-Az alábbi példa az API-nak elküldhető tartalomra mutat. A kérelem formátuma megegyezik az API mindkét verziójával.
+Az alábbi példa az API-nak küldhető tartalmakat. A kérelem formátuma megegyezik az API mindkét verziójában.
 
 ```json
 {
@@ -172,25 +172,25 @@ Az alábbi példa az API-nak elküldhető tartalomra mutat. A kérelem formátum
 }
 ```
 
-## <a name="post-the-request"></a>A kérelem közzététele
+## <a name="post-the-request"></a>A kérelem feladása
 
-Az elemzés a kérelem megkapásakor történik meg. Az áttekinthető kérelmek méretével és számával kapcsolatos információkat az [Áttekintés lapon](../overview.md#data-limits) tekintheti meg a percenkénti küldéshez.
+Az elemzés a kérelem megkapásakor történik meg. Az [adatkorlátok](../overview.md#data-limits) szakaszát az áttekintésben a percenként és másodpercenként elküldhető kérelmek méretéről és számáról olvashat.
 
-A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen adatmennyiséget, és az eredményeket azonnal visszaadja a válaszban.
+A Text Analytics API állapot nélküli. A rendszer nem tárol adatokat a fiókjában, és az eredményeket azonnal visszaadja a válasznak.
 
 ## <a name="view-results"></a>Eredmények megtekintése
 
-Az összes POST kérelem egy JSON formátumú választ ad vissza az azonosítók és az észlelt entitás tulajdonságaival.
+Minden POST-kérelem JSON-formátumú választ ad vissza az azonosítókkal, és entitástulajdonságokat észlelt.
 
-A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információért lásd: [a szöveg eltolásának feldolgozása](../concepts/text-offsets.md) .
+A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba. A többnyelvű és emoji támogatásnak köszönhetően a válasz szövegeltolásokat tartalmazhat. További információ [a szövegeltolások feldolgozásáról.](../concepts/text-offsets.md)
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió)](#tab/version-3)
+#### <a name="version-30-preview"></a>[3.0-os verzió-előnézet)](#tab/version-3)
 
-### <a name="example-v3-responses"></a>V3-válaszok – példa
+### <a name="example-v3-responses"></a>Példa v3 válaszok
 
-A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások összekapcsolásához. A két műveletre adott válaszok alább láthatók. 
+A 3-as verzió külön végpontokat biztosít a NER és az entitáskötéshez. A két műveletre adott válaszok az alábbiakban találhatók. 
 
-#### <a name="example-ner-response"></a>Példa a válaszra
+#### <a name="example-ner-response"></a>Példa NER válasz
 
 ```json
 {
@@ -216,7 +216,7 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
 }
 ```
 
-#### <a name="example-entity-linking-response"></a>Példa entitás-csatolási választ
+#### <a name="example-entity-linking-response"></a>Példa entitáscsatolási válaszra
 
 ```json
 {
@@ -241,9 +241,9 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
 }
 ```
 
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Példa a kiválasztó v2-re
+### <a name="example-ner-v2-response"></a>Példa NER v2 válasz
 ```json
 {
   "documents": [{
@@ -280,17 +280,17 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
 
 ---
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
-Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
+Ebben a cikkben megtanulta a fogalmakés munkafolyamat entitás összekapcsolása a Cognitive Services szövegelemzés használatával. Összegezve:
 
-* A nevesített entitások felismerése két verzióban érhető el a kiválasztott nyelvekhez.
-* A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
-* A POST kéréseket egy vagy több végpontra küldi a rendszer, egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használva.
-* Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
+* Az elnevezett entitásfelismerés két változatban érhető el a kiválasztott nyelvekhez.
+* A kérelem törzsében lévő JSON-dokumentumok azonosítót, szöveget és nyelvi kódot tartalmaznak.
+* Post kérelmek küldése egy vagy több végpontra, egy személyre szabott [hozzáférési kulcs és egy végpont,](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) amely érvényes az előfizetéshez.
+* A válaszkimenet, amely összekapcsolt entitásokból áll (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat, minden egyes dokumentumazonosítóhoz) bármely alkalmazásban használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A Text Analytics áttekintése](../overview.md)
-* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
+* [Szövegelemzés – áttekintés](../overview.md)
+* [A Text Analytics ügyféltár használata](../quickstarts/text-analytics-sdk.md)
 * [Újdonságok](../whats-new.md)

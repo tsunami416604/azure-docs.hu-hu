@@ -1,7 +1,7 @@
 ---
-title: Szerzői és futtatókörnyezeti kulcsok használata – LUIS
+title: A szerzői és a futásidejű kulcsok használata - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ha először használja a Language Understanding (LUIS), nem kell létrehoznia authoring-kulcsot. Ha közzé szeretné tenni az alkalmazást, majd használja a futásidejű végpontját, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
+description: Amikor először használja a language understanding (LUIS) nyelvet, nem kell létrehoznia egy szerzői kulcsot. Ha közzé kívánja tenni az alkalmazást, majd a futásidejű végpontot használja, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,72 +12,72 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219972"
 ---
-# <a name="using-authoring-and-runtime-resource-keys"></a>Szerzői és futtatókörnyezeti erőforrás-kulcsok használata
+# <a name="using-authoring-and-runtime-resource-keys"></a>Szerzői és futásidejű erőforráskulcsok használata
 
-A szerzői és futtatókörnyezeti erőforrások hitelesítést biztosítanak a LUIS-alkalmazás és az előrejelzési végpont számára.
+A szerzői és a futásidejű erőforrások hitelesítést biztosítanak a LUIS-alkalmazásnak és az előrejelzési végpontnak.
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-Amikor bejelentkezik a LUIS-portálra, a következő lépések közül választhat:
+Amikor bejelentkezik a LUIS-portálra, folytathatja a következőt:
 
-* ingyenes [próbaverzió](#trial-key) , amely lehetővé teszi a szerzői műveletek és néhány előrejelzési végpont lekérdezését.
-* egy Azure [Luis authoring](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) -erőforrás. 
+* egy ingyenes [próbakulcs](#trial-key) – szerzői és néhány előrejelzési végpont-lekérdezés biztosítása.
+* egy Azure [LUIS szerzői](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) erőforrás. 
 
 
 <a name="starter-key"></a>
 
-## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Jelentkezzen be a LUIS Portalra, és kezdje el a szerzői műveletek
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Jelentkezzen be a LUIS-portálra, és kezdje meg a szerzői jog
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai) , és fogadja el a használati feltételeket.
-1. Indítsa el a LUIS alkalmazást úgy, hogy kiválasztja a használni kívánt LUIS authoring-kulcs típusát: ingyenes próbaverziós kulcs vagy új Azure LUIS authoring Key. 
+1. Jelentkezzen be a [LUIS-portálra,](https://www.luis.ai) és fogadja el a használati feltételeket.
+1. Kezdje el a LUIS-alkalmazást a használni kívánt LUIS-szerzői kulcs típusának kiválasztásával: ingyenes próbakulcs vagy új Azure LUIS szerzői kulcs. 
 
-    ![Language Understanding szerzői erőforrás típusának kiválasztása](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    ![A Nyelvi megértés szerzői erőforrástípusának kiválasztása](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-1. Ha elkészült az erőforrás-kiválasztási folyamattal, [hozzon létre egy új alkalmazást](luis-how-to-start-new-app.md#create-new-app-in-luis). 
+1. Ha végzett az erőforrás-kiválasztási folyamattal, [hozzon létre egy új alkalmazást.](luis-how-to-start-new-app.md#create-new-app-in-luis) 
 
-## <a name="trial-key"></a>Próbaverziós kulcs
+## <a name="trial-key"></a>Próbakulcs
 
-A próbaverzió (kezdő) kulcsát Önnek kell megadnia. A hitelesítési kulcsként szolgál az előrejelzési végpont futtatókörnyezetének lekérdezéséhez, havonta akár 1000 lekérdezéssel. 
+A próbagomb (indító) az Ön számára biztosított. A hitelesítési kulcs ként használja az előrejelzési végpont futásidejű, havonta legfeljebb 1000 lekérdezések lekérdezése. 
 
-A **felhasználói beállítások** lapon és a " **Manage-> Azure-erőforrások** " oldalon is látható a Luis-portálon. 
+A **Felhasználói beállítások** lapon és a **-> Azure-erőforrások kezelése** lapon is látható a LUIS portálon. 
 
-Ha készen áll az előrejelzési végpont közzétételére, hozzon létre és rendeljen hozzá létrehozási és előrejelzési futtatókörnyezeti kulcsokat az alapszintű kulcs funkcióinak cseréjéhez. 
+Ha készen áll az előrejelzési végpont közzétételére, hozzon létre és rendeljen hozzá szerzői és előrejelzési futásidejű kulcsokat, hogy cserélje le az induló kulcs funkcióit. 
 
-## <a name="create-resources-in-the-azure-portal"></a>Erőforrások létrehozása a Azure Portalban
+## <a name="create-resources-in-the-azure-portal"></a>Erőforrások létrehozása az Azure Portalon
 
-1. [Ezzel a hivatkozással](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) megnyithatja a Azure Portalt az erőforrás-létrehozáshoz.
-1. Válassza **mindkettőt** a szerzői műveletek és az előrejelzési végpont futtatókörnyezeti kulcsának létrehozásához. 
-1. Adja meg az erőforrás létrehozásához szükséges adatokat, majd válassza a **Létrehozás** lehetőséget a folyamat befejezéséhez.
+1. [Ezen a hivatkozáson](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) keresztül megnyithatja az Azure Portalon az erőforrások létrehozásához.
+1. Válassza **a Mindkettő** lehetőséget egy szerzői és egy előrejelzési végpont futásidejű kulcs létrehozásához. 
+1. Adja meg az erőforrás létrehozásához szükséges adatokat, majd a folyamat befejezéséhez válassza a **Létrehozás** gombot.
 
-    ![A Language Understanding-erőforrás létrehozása](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
+    ![A nyelvtudáserőforrás létrehozása](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Name (Név)|Cél|
+    |Név|Cél|
     |--|--|
-    |Erőforrás neve| Egyéni név, amelyet a szerzői műveletek és előrejelzési végpontok lekérdezéséhez használt URL-cím részeként használ.|
-    |Előfizetés neve| az erőforrásért fizetendő előfizetés.|
-    |Erőforráscsoport| Egy kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik, hogy az Azure-erőforrásokat az adott régióban való hozzáféréshez és felügyelethez csoportosítsa.|
+    |Erőforrás neve| Egyéni név, amely a szerzői és előrejelzési végpont-lekérdezések URL-címének részeként használatos.|
+    |Előfizetés neve| az erőforrásért kiszámlázott előfizetés.|
+    |Erőforráscsoport| A kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását az ugyanabban a régióban való hozzáféréshez és kezeléshez.|
     |Szerzői hely|A modellhez társított régió.|
-    |A szerzői díjak szintjei|Az árképzési szint meghatározza a másodpercenkénti maximális tranzakciót és a havi értéket.|
-    |Futtatókörnyezet helye|A közzétett előrejelzési végpont futtatókörnyezetéhez társított régió.|
-    |Futtatókörnyezet árképzési szintje|Az árképzési szint meghatározza a másodpercenkénti maximális tranzakciót és a havi értéket.|
+    |Szerzői tarifacsomag|A tarifacsomag határozza meg a maximális tranzakció másodpercenként és havonta.|
+    |Futásidejű hely|A közzétett előrejelzési végpont futásidejéhez társított régió.|
+    |Futásidejű tarifacsomag|A tarifacsomag határozza meg a maximális tranzakció másodpercenként és havonta.|
 
-    Ha mindkét erőforrás létrejött, rendelje hozzá az erőforrásokat a LUIS-portálhoz.
+    Mindkét erőforrás létrehozása után rendelje hozzá az erőforrásokat a LUIS-portálon.
 
 ## <a name="create-resources-in-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat. 
+Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával minden egyes erőforrást külön-külön hozhat létre. 
 
-Erőforrás-`kind`:
+Erőforrás `kind`:
 
-* Szerzői műveletek: `LUIS.Authoring`
-* Előrejelzés: `LUIS` 
+* Authoring:`LUIS.Authoring`
+* Jóslás:`LUIS` 
 
 1. Jelentkezzen be az Azure CLI-be:
 
@@ -85,136 +85,136 @@ Erőforrás-`kind`:
     az login
     ```
 
-    Ekkor megnyílik egy böngésző, amely lehetővé teszi a megfelelő fiók kiválasztását és a hitelesítés megadását.
+    Ez megnyit egy böngészőt, amely lehetővé teszi a megfelelő fiók kiválasztását és a hitelesítés biztosítását.
 
-1. Hozzon létre egy `my-luis-authoring-resource` nevű **Luis authoring-erőforrást**a `westus` régióhoz `my-resource-group` nevű _meglévő_ erőforráscsoport `LUIS.Authoring`. 
+1. Hozzon létre egy luis `LUIS.Authoring` **authoring erőforrást**, `my-resource-group` amely `westus` a régióhoz elnevezett _meglévő_ erőforráscsoportban van elnevezve. `my-luis-authoring-resource` 
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Hozzon létre egy **Luis előrejelzési végpont-erőforrást**, amely a `westus` régióhoz `my-resource-group` nevű _meglévő_ erőforráscsoport `my-luis-prediction-resource` nevű `LUIS`. Ha az ingyenes szintjénél nagyobb átviteli sebességet szeretne, módosítsa `F0`t `S0`re. További információ a [díjszabási szintekről és az átviteli sebességről](luis-boundaries.md#key-limits).
+1. Hozzon létre egy **LUIS-előrejelzési végponterőforrást,** `LUIS`amely `my-resource-group` a `westus` régióhoz elnevezett _meglévő_ erőforráscsoportban van elnevezve. `my-luis-prediction-resource` Ha az ingyenes szintnél nagyobb átviteli `F0` átaputét szeretné elérni, módosítsa a. `S0` További információ [a tarifacsomagokról és az átviteli műveletekről.](luis-boundaries.md#key-limits)
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note] 
-    > A LUIS portál **nem** használja ezeket a kulcsokat, amíg hozzá nem rendelik a Luis portálon a **> Azure-erőforrások kezeléséhez**.
+    > Ezeket a kulcsokat a LUIS-portál **csak** akkor használja, ha a **-> Azure-erőforrások kezelése**szolgáltatás luis portálján van hozzárendelve.
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Szerzői erőforrás kiosztása a LUIS-portálon az összes alkalmazáshoz
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Szerzői erőforrás hozzárendelése a LUIS-portálon az összes alkalmazáshoz
 
-Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS összes alkalmazásához. Az alábbi eljárás az összes alkalmazást egyetlen szerzői erőforráshoz rendeli.
+Hozzárendelhet egy szerzői erőforrást egyetlen alkalmazáshoz vagy a LUIS összes alkalmazásához. Az alábbi eljárás az összes alkalmazást egyetlen szerzői erőforráshoz rendeli.
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
-1. A felső navigációs sávon kattintson a jobb szélre, válassza ki a felhasználói fiókját, majd válassza a **Beállítások**lehetőséget.
-1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Kattintson a **Mentés** gombra. 
+1. Jelentkezzen be a [LUIS-portálra.](https://www.luis.ai)
+1. A felső navigációs sávon, a jobb szélen jelölje ki a felhasználói fiókját, majd válassza a **Beállítások lehetőséget.**
+1. A **Felhasználói beállítások** lapon válassza a **Szerzői erőforrás hozzáadása** lehetőséget, majd jelöljön ki egy meglévő szerzői erőforrást. Kattintson a **Mentés** gombra. 
 
-## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
+## <a name="assign-a-resource-to-an-app"></a>Erőforrás hozzárendelése alkalmazáshoz
 
-A következő eljárással hozzárendelhet egyetlen erőforrást, szerzői vagy előrejelzési végponti futtatókörnyezetet az alkalmazáshoz.
+Egyetlen erőforrást, szerzői vagy előrejelzési végponti futásidejűt rendelhet egy alkalmazáshoz a következő eljárással.
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Navigáljon a **Manage-> Azure-erőforrások** lapra.
+1. Jelentkezzen be a [LUIS-portálra,](https://www.luis.ai)majd válasszon ki egy alkalmazást a **Saját alkalmazások** listából.
+1. Nyissa meg a **-> Azure-erőforrások kezelése** lapot.
 
-    ![A LUIS-portálon kattintson a Manage-> Azure-erőforrások elemre, és rendeljen hozzá egy erőforrást az alkalmazáshoz.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+    ![Válassza ki a Manage -> Azure-erőforrások a LUIS portálon erőforrás hozzárendeléséhez az alkalmazáshoz.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd jelölje be az **előrejelzési erőforrás hozzáadása** vagy a **szerzői erőforrás hozzáadása** gomb. 
-1. A megfelelő erőforrás megkereséséhez válassza ki a mezőket az űrlapon, majd válassza a **Mentés**lehetőséget.  
+1. Válassza az Előrejelzés vagy Szerzői erőforrás lapot, majd válassza az **Előrejelzési erőforrás hozzáadása** vagy **a Szerzői erőforrás hozzáadása** gombot. 
+1. Jelölje ki az űrlap mezőit a megfelelő erőforrás megkereséséhez, majd kattintson a **Mentés gombra.**  
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>Futásidejű erőforrás kiosztása a LUIS-portál használata nélkül
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>Runtime erőforrás hozzárendelése a LUIS-portál használata nélkül
 
-Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes automatizálni egy LUIS Runtime-erőforrás hozzárendelését egy LUIS-alkalmazásba. Ehhez a következő lépéseket kell elvégeznie:
+Automatizálási célokra, például egy CI/CD-folyamat, érdemes automatizálni a LUIS futásidejű erőforrás hozzárendelését egy LUIS-alkalmazáshoz. Ehhez a következő lépéseket kell végrehajtania:
 
-1. Azure Resource Manager jogkivonat beszerzése a [webhelyről](https://resources.azure.com/api/token?plaintext=true). Ez a token hamarosan lejár, azonnal használható. A kérelem egy Azure Resource Manager-jogkivonatát adja vissza.
+1. Szerezzen be egy Azure Resource Manager-jogkivonatot erről a [webhelyről.](https://resources.azure.com/api/token?plaintext=true) Ez a jogkivonat lejár, ezért azonnal használja. A kérelem egy Azure Resource Manager-jogkivonatot ad vissza.
 
-    ![Azure Resource Manager jogkivonat igénylése és Azure Resource Manager token fogadása](./media/luis-manage-keys/get-arm-token.png)
+    ![Azure Resource Manager-token kérése és az Azure Resource Manager token fogadása](./media/luis-manage-keys/get-arm-token.png)
 
-1. A token használatával kérheti a LUIS Runtime erőforrásait az előfizetések között, a [Get Luis Azure accounts API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)-ból, amelyhez a felhasználói fiókja hozzáfér. 
+1. A jogkivonat használatával kérje a LUIS futásidejű erőforrások között előfizetések, a [Luis azure-fiókok bekérése API-ból,](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)amely a felhasználói fiók hozzáféréssel rendelkezik. 
 
-    A bejegyzés API megköveteli a következő beállításokat:
+    A POST API-hoz a következő beállítások szükségesek:
 
     |Fejléc|Érték|
     |--|--|
-    |`Authorization`|A `Authorization` értéke `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szó `Bearer` és egy szóköznek.| 
+    |`Authorization`|Az értéke `Authorization` `Bearer {token}`. Figyelje meg, hogy a token `Bearer` értéket a szónak és egy szóköznek kell megelőznie.| 
     |`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
 
-    Az API-t a LUIS előfizetések, beleértve az előfizetés-azonosító, az erőforráscsoportot és az erőforrás nevét adja vissza a fiók neve a JSON-objektumok tömbjét adja vissza. Egy elem a tömbben, amely a LUIS alkalmazás hozzárendelése a LUIS-erőforrás megkeresése. 
+    Ez az API a LUIS-előfizetések JSON-objektumainak tömbjét adja vissza, beleértve az előfizetés-azonosítót, az erőforráscsoportot és az erőforrásnevet, és a fióknévként visszaadott. Keresse meg a tömb egyetlen elem, amely a LUIS-erőforrás hozzárendelni a LUIS app. 
 
-1. Rendelje hozzá a tokent a LUIS-erőforráshoz a [Luis Azure-fiókok egy Application API-hoz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) való hozzárendelésével. 
+1. Rendelje hozzá a jogkivonatot a LUIS-erőforráshoz a [LUIS azure-fiókok hozzárendelése alkalmazás API-hoz.](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) 
 
-    A bejegyzés API megköveteli a következő beállításokat:
+    A POST API-hoz a következő beállítások szükségesek:
 
     |Típus|Beállítás|Érték|
     |--|--|--|
-    |Fejléc|`Authorization`|A `Authorization` értéke `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szó `Bearer` és egy szóköznek.|
+    |Fejléc|`Authorization`|Az értéke `Authorization` `Bearer {token}`. Figyelje meg, hogy a token `Bearer` értéket a szónak és egy szóköznek kell megelőznie.|
     |Fejléc|`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
     |Fejléc|`Content-type`|`application/json`|
-    |A lekérdezési karakterlánc|`appid`|A LUIS-app azonosítója. 
-    |Törzs||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "erőforráscsoport-2"<br>"AccountName": "a luis-uswest-S0-2"}|
+    |Querystring|`appid`|A LUIS-app azonosítója. 
+    |Törzs||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
-    Ha ez az API sikeres volt, a 201 - létrehozott állapotát adja vissza. 
+    Ha ez az API sikeres, 201 – létrehozott állapotot ad vissza. 
 
-## <a name="unassign-resource"></a>Erőforrás hozzárendelésének megszüntetése
+## <a name="unassign-resource"></a>Erőforrás hozzárendelésének visszavonása
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Navigáljon a **Manage-> Azure-erőforrások** lapra.
-1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd válassza az erőforrás **hozzárendelésének megszüntetése** gombot. 
+1. Jelentkezzen be a [LUIS-portálra,](https://www.luis.ai)majd válasszon ki egy alkalmazást a **Saját alkalmazások** listából.
+1. Nyissa meg a **-> Azure-erőforrások kezelése** lapot.
+1. Válassza az Előrejelzés vagy szerzői erőforrás lapot, majd válassza az **Erőforrás hozzárendelésének visszavonása** gombot az erőforráshoz. 
 
-Ha törli az erőforrás hozzárendelését, az nem törlődik az Azure-ból. Csak byl odpojen OD LUIS. 
+Ha egy erőforrás hozzárendelését, nem törlődik az Azure-ból. Csak a LUIS-tól van lekötve. 
 
-## <a name="reset-authoring-key"></a>Szerzői kulcs visszaállítása
+## <a name="reset-authoring-key"></a>Szerzői kulcs alaphelyzetbe állítása
 
-**Az [áttelepített erőforrás-alkalmazások létrehozásához](luis-migration-authoring.md)** : Ha a szerzői kulcs biztonsága sérül, állítsa alaphelyzetbe a kulcsot a Azure Portal az adott authoring Resource **kulcsok** lapján. 
+**Az [erőforrások áttelepítése](luis-migration-authoring.md) alkalmazások szerzői:** ha a szerzői kulcs sérül, állítsa alaphelyzetbe a kulcsot az Azure Portalon a **Keys** lapon az adott szerzői erőforrás. 
 
-**Még nem telepített alkalmazások esetén**: a kulcs alaphelyzetbe áll a Luis-portál összes alkalmazásán. Ha a szerzői API-kon keresztül készíti el az alkalmazásokat, a OCP-APIM-Subscription-Key értékét az új kulcsra kell módosítania.
+**A még nem áttelepített alkalmazások esetében:** a kulcs alaphelyzetbe áll a LUIS-portálon lévő összes alkalmazásban. Ha az alkalmazásokat a szerzői API-kon keresztül hozhatja létre, módosítania kell az Ocp-Apim-Subscription-Key értékét az új kulcsra.
 
-## <a name="regenerate-azure-key"></a>Azure-kulcs újrakészítése
+## <a name="regenerate-azure-key"></a>Az Azure-kulcs újragenerálása
 
-Az Azure-kulcsok újragenerálása a Azure Portal a **kulcsok** lapon.
+Az Azure-kulcsok az Azure Portalon, a **Keys** lapon.
 
 ## <a name="delete-account"></a>Fiók törlése
 
-Az adatok [tárolásával és eltávolításával](luis-concept-data-storage.md#accounts) kapcsolatos információkért tekintse meg a fiók törlése után megjelenő adatokat.
+[Az Adattárolás és -eltávolítás](luis-concept-data-storage.md#accounts) című témakörben talál információt arról, hogy milyen adatok törlődnek a fiók törlésekor.
 
 ## <a name="change-pricing-tier"></a>A tarifacsomag módosítása
 
-1.  Az [Azure](https://portal.azure.com)-ban keresse meg a Luis-előfizetését. Válassza ki a LUIS-előfizetést.
-    ![a LUIS-előfizetés megkeresése](./media/luis-usage-tiers/find.png)
-1.  A rendelkezésre álló díjszabási szintek megtekintéséhez válassza az **árképzési szintet** . 
-    ![tekintse meg az árképzési szinteket](./media/luis-usage-tiers/subscription.png)
-1.  Válassza ki a díjszabási szintet, és válassza a **kiválasztás** lehetőséget a módosítás mentéséhez. 
-    ![megváltoztathatja a LUIS fizetési szintet](./media/luis-usage-tiers/plans.png)
-1.  Ha a díjszabás módosítása befejeződött, egy előugró ablak ellenőrzi az új tarifacsomag. 
-    ![a LUIS fizetési szintet](./media/luis-usage-tiers/updated.png)
-1. Ne felejtse el [hozzárendelni ezt a végponti kulcsot](#assign-a-resource-to-an-app) a **közzétételi** lapon, és használja azt az összes végponti lekérdezésben. 
+1.  Az [Azure-ban](https://portal.azure.com)keresse meg a LUIS-előfizetést. Válassza ki a LUIS-előfizetést.
+    ![A LUIS-előfizetés megkeresése](./media/luis-usage-tiers/find.png)
+1.  Válassza ki **a tarifacsomag** annak érdekében, hogy az elérhető tarifacsomagok megtekintéséhez. 
+    ![Tarifacsomagok megtekintése](./media/luis-usage-tiers/subscription.png)
+1.  Válassza ki a tarifacsomagot, és válassza a **Kijelölés** lehetőséget a módosítás mentéséhez. 
+    ![A LUIS fizetési szint módosítása](./media/luis-usage-tiers/plans.png)
+1.  Amikor a díjszabás módosítása befejeződött, egy előugró ablak ellenőrzi az új tarifacsomagot. 
+    ![A LUIS fizetési szint ellenőrzése](./media/luis-usage-tiers/updated.png)
+1. Ne felejtse el [hozzárendelni ezt](#assign-a-resource-to-an-app) a végpontkulcsot a **Közzététel** lapon, és használja azt minden végponti lekérdezésben. 
 
-## <a name="viewing-azure-resource-metrics"></a>Azure-erőforrás metrikáinak megtekintése
+## <a name="viewing-azure-resource-metrics"></a>Az Azure-erőforrások metrikáinak megtekintése
 
 ### <a name="viewing-azure-resource-summary-usage"></a>Az Azure-erőforrások összegző használatának megtekintése
-A LUIS-használati adatokat megtekintheti az Azure-ban. Az **Áttekintés** oldalon a legutóbbi összefoglaló információk, például a hívások és a hibák láthatók. Ha LUIS-végponti kérelmet hoz létre, azonnal tekintse meg az **Áttekintés lapot**, és akár öt percet is igénybe vehet, hogy a használat megjelenjen.
+A LUIS használati információit az Azure-ban tekintheti meg. Az **Áttekintés** lap a legutóbbi összesítő információkat jeleníti meg, beleértve a hívásokat és a hibákat is. Ha luis-végpont-kérelmet, majd azonnal nézze meg az **áttekintése lapot,** legfeljebb öt percet a használat jelenik meg.
 
-![Összefoglaló használat megtekintése](./media/luis-usage-tiers/overview.png)
+![Összegző használat megtekintése](./media/luis-usage-tiers/overview.png)
 
-### <a name="customizing-azure-resource-usage-charts"></a>Azure-Erőforrás-használati diagramok testreszabása
-Metrikák az adatok részletesebb betekintést biztosít.
+### <a name="customizing-azure-resource-usage-charts"></a>Az Azure-erőforrások használati diagramjainak testreszabása
+A metrikák részletesebb képet adnak az adatokról.
 
-![Alapértelmezett mérőszámok](./media/luis-usage-tiers/metrics-default.png)
+![Alapértelmezett mutatók](./media/luis-usage-tiers/metrics-default.png)
 
-Konfigurálhatja a mérőszámdiagramok időszak és a metrika típusa. 
+A metrikadiagramokat az időszak és a metrikatípushoz konfigurálhatja. 
 
 ![Egyéni metrikák](./media/luis-usage-tiers/metrics-custom.png)
 
-### <a name="total-transactions-threshold-alert"></a>Összes tranzakciós küszöbértékének riasztási
-Ha szeretné tudni, hogy ha egy bizonyos tranzakció küszöbértéket, például 10 000 tranzakció, elérte a riasztás is létrehozhat. 
+### <a name="total-transactions-threshold-alert"></a>Összes tranzakcióküszöbérték riasztás
+Ha tudni szeretné, hogy mikor ért el egy bizonyos tranzakciós küszöbértéket, például 10 000 tranzakciót, létrehozhat egy riasztást. 
 
 ![Alapértelmezett riasztások](./media/luis-usage-tiers/alert-default.png)
 
-Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja hozzá, amelyek megkapják a riasztás minden személyek e-mail címét. Adja hozzá a webhookok az összes rendszer, amelyre a riasztást kapni. A riasztás akkor aktiválódik, ha egy logikai alkalmazást is futtathatja. 
+Adjon hozzá egy metrika riasztást az **összes hívás** metrika egy bizonyos időszakra. Adja meg az összes olyan ember e-mail címét, amelyiknek meg kell kapnia a riasztást. Webhookok hozzáadása minden olyan rendszerhez, amelynek meg kell kapnia a riasztást. A logikai alkalmazást is futtathatja, amikor a riasztás aktiválódik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
-* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
-* Útmutató szerzői és futtatókörnyezeti erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
-* Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md) 
+* Ismerje [meg, hogyan vezérelheti](luis-how-to-manage-versions.md) a verziók az alkalmazás életciklusát.
+* Ismerje meg a fogalmakat, beleértve a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és az adott erőforrás [közreműködőit.](luis-concept-keys.md#contributions-from-other-authors)
+* Útmutató szerzői és futásidejű erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
+* Áttelepítés az új [szerzői erőforrásra](luis-migration-authoring.md) 

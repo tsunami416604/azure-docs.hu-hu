@@ -1,58 +1,58 @@
 ---
-title: Az import-QnA Maker által támogatott URL-típusok
-description: Ismerje meg, hogy az URL-típusok hogyan használhatók az QnA-készletek importálásához és létrehozásához.
+title: Importálásra támogatott URL-típusok - QnA Maker
+description: Ismerje meg, hogyan használják az URL-ek típusait a QnA-készletek importálásához és létrehozásához.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651827"
 ---
 # <a name="urls-supported-for-importing-documents"></a>Dokumentumok importálásához támogatott URL-címek
 
-Ismerje meg, hogy az URL-típusok hogyan használhatók az QnA-készletek importálásához és létrehozásához.
+Ismerje meg, hogyan használják az URL-ek típusait a QnA-készletek importálásához és létrehozásához.
 
-## <a name="faq-urls"></a>Gyakori kérdések URL-címek
+## <a name="faq-urls"></a>GYIK URL-ek
 
-A QnA Maker 3 különböző formában támogathatja a gyakori kérdések weblapjait:
+A QnA Maker 3 különböző formában támogatja a GYIK-weboldalakat:
 
-* Egyszerű gyakori kérdéseket tartalmazó oldalak
-* Mutató hivatkozásokat tartalmaz a gyakori kérdéseket tartalmazó oldalak
-* GYIK-lapok a témakörök kezdőlapján
+* Egyszerű gyakori kérdések oldalak
+* Gyakori kérdések oldalak linkekkel
+* Gyakran feltett kérdések a Témakörök kezdőlapjával
 
-### <a name="plain-faq-pages"></a>Egyszerű gyakori kérdéseket tartalmazó oldalak
+### <a name="plain-faq-pages"></a>Egyszerű gyakori kérdések oldalak
 
-Ez a gyakori kérdéseket tartalmazó oldal, ahol a válaszok azonnal kövesse ugyanazon az oldalon szereplő kérdések leggyakoribb típusát.
+Ez a leggyakoribb típusú GYIK oldal, amelyben a válaszok azonnal követik a kérdéseket ugyanazon az oldalon.
 
-Az alábbi, egy egyszerű gyakori kérdéseket tartalmazó oldal egy példát:
+Az alábbiakban egy példa egy egyszerű GYIK oldal:
 
-![Egyszerű – gyakori kérdések lapján példa a Tudásbázis](./media/qnamaker-concepts-datasources/plain-faq.png)
-
-
-### <a name="faq-pages-with-links"></a>Mutató hivatkozásokat tartalmaz a gyakori kérdéseket tartalmazó oldalak
-
-A gyakori kérdéseket tartalmazó oldal az ilyen típusú kérdéseket együtt vannak összesítve, és választ, amelyek különböző szakaszaiban azonos vagy eltérő lapjain van csatolva.
-
-Alább egyik példája egy gyakori kérdéseket tartalmazó oldal mutató hivatkozásokat tartalmaz, amelyek ugyanazon az oldalon szakaszokban:
-
- ![A szakasz kapcsolat – gyakori kérdések lapján példa a Tudásbázis](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
+![Egyszerű GYIK lap példa egy tudásbázishoz](./media/qnamaker-concepts-datasources/plain-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>Fölérendelt témakörök lap a gyermek válaszokat tartalmazó lapokra mutató hivatkozások
+### <a name="faq-pages-with-links"></a>Gyakori kérdések oldalak linkekkel
 
-Az ilyen típusú GYIK olyan témaköröket tartalmaz, ahol az egyes témakörök egy adott kérdésekkel és válaszokkal vannak összekapcsolva egy másik oldalon. QnA Maker feltérképezi az összes csatolt oldalt, hogy kinyerje a megfelelő kérdéseket & választ.
+Az ilyen típusú GYIK oldalon a kérdések összesítve vannak, és olyan válaszokhoz kapcsolódnak, amelyek ugyanazon oldal különböző szakaszaiban vagy különböző oldalakon találhatók.
 
-Az alábbi példa egy olyan témakört mutat be, amely a különböző lapokon található gyakori kérdések fejezeteire mutató hivatkozásokat tartalmaz.
+Az alábbi példa egy GYIK oldalt mutat be, amely az ugyanazon az oldalon található szakaszokban található hivatkozásokat tartalmazza:
 
- ![Tudásbázis lapon példa áruházra mutató mélyhivatkozás – gyakori kérdések](./media/qnamaker-concepts-datasources/topics-faq.png)
+ ![Példa egy tudásbázis szakaszhivatkozása – gyakori kérdések lap](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
-## <a name="support-urls"></a>Támogatási URL-címek
 
-A QnA Maker képes feldolgozni a részben strukturált támogatási weblapokat, például a webcikkeket, amelyek leírják, hogyan hajthat végre egy adott feladatot, hogyan diagnosztizálhatja és elháríthatja az adott problémát, és hogy mi az ajánlott eljárás az adott folyamathoz. A kinyerés a legjobb olyan tartalmaknál működik, amelyek hierarchikus fejlécekkel rendelkező tiszta struktúrával rendelkeznek.
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>Szülőtémakörök lap hivatkozásai a gyermekválaszok lapjaira
+
+Az ilyen típusú GYIK-nek van egy Témakörei oldala, ahol minden témakör egy másik oldalon található megfelelő kérdés- és válaszkészlethez kapcsolódik. A QnA Maker feltérképezi az összes hivatkozott oldalt, hogy kibontsa a megfelelő kérdéseket & válaszokat.
+
+Az alábbiakban egy példa a Témák lap linkeket GYIK szakaszok különböző oldalakon.
+
+ ![Deep link GYIK oldal példa egy tudásbázishoz](./media/qnamaker-concepts-datasources/topics-faq.png)
+
+## <a name="support-urls"></a>Támogatási URL-ek
+
+A QnA Maker fel tudja dolgozni a félig strukturált támogatási weboldalakat, például azokat a webes cikkeket, amelyek leírják egy adott feladat elvégzésének módját, hogyan diagnosztizálhatják és oldhatják meg az adott problémát, és milyen gyakorlati tanácsok egy adott folyamathoz. A kibontás olyan tartalomesetén működik a legjobban, amelynek világos szerkezete hierarchikus fejlécekkel rendelkezik.
 
 > [!NOTE]
-> A támogatási cikkek kinyerése egy új szolgáltatás, amely korai fázisban van. A legmegfelelőbb az egyszerű lapokhoz, amelyek jól strukturáltak, és nem tartalmaznak összetett fejléceket/élőlábakat.
+> A támogatási cikkek kinyerése egy új funkció, és korai szakaszában van. Ez szerkezet legjobb részére egyszerű oldalak, amit van jól strukturált, és nem tartalmaz összetett fejes/ lábléc.
 
-![QnA Maker támogatja a félig strukturált weblapok kinyerését, ahol a világos struktúra hierarchikus fejlécekkel van megjelenítve](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![A QnA Maker támogatja a félig strukturált weboldalak kinyerését, ahol a hierarchikus fejlécek világos struktúrát mutatnak be](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)

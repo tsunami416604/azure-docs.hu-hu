@@ -1,7 +1,7 @@
 ---
-title: Színséma észlelése – Computer Vision
+title: Színséma észlelése - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A rendszerképek színsémájának észlelésével kapcsolatos fogalmak a Computer Vision API használatával.
+description: A képek színsémájának a Computer Vision API használatával történő észlelésével kapcsolatos fogalmak.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945278"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244732"
 ---
-# <a name="detect-color-schemes-in-images"></a>Képek színsémáinak észlelése
+# <a name="detect-color-schemes-in-images"></a>Színsémák észlelése képeken
 
-Computer Vision elemzi a képen látható színeket, hogy három különböző attribútumot adjon meg: a domináns előtéri színt, a domináns háttérszínt, valamint a kép domináns színeit egészként. A visszaadott színek a készlethez tartoznak: fekete, kék, barna, szürke, zöld, narancssárga, rózsaszín, lila, piros, kékeszöld, fehér és sárga. 
+A Computer Vision elemzi a kép színeit, hogy három különböző tulajdonságot adjon meg: a domináns előtérszínt, a domináns háttérszínt és a kép egészének domináns színeit. A visszaadott színek a készlethez tartoznak: fekete, kék, barna, szürke, zöld, narancs, rózsaszín, lila, piros, kékeszöld, fehér és sárga. 
 
-A Computer Vision egy ékezetes színt is Kinyer, amely a képen a legélénkebb színt jelöli, a domináns színek és a telítettség kombinációja alapján. A rendszer a kiejtés színét hexadecimális HTML színkóddal adja vissza. 
+Computer Vision is kibontja a kiemelő szín, amely képviseli a legélénkebb szín a képen, kombinációja alapján domináns színek és telítettség. A kiemelő szín hexadecimális HTML színkódként lesz visszaadva. 
 
-A Computer Vision egy logikai értéket ad vissza, amely azt jelzi, hogy a képek fekete-fehérben vannak-e.
+A Computer Vision logikai értéket is ad vissza, amely azt jelzi, hogy a kép fekete-fehér.
 
-## <a name="color-scheme-detection-examples"></a>Példák a színséma észlelésére
+## <a name="color-scheme-detection-examples"></a>Példák színséma-észlelési példák
 
-Az alábbi példa a Computer Vision által visszaadott JSON-választ mutatja be, amikor észleli a képsémát a képen. Ebben az esetben a kép nem fekete-fehér kép, de a domináns előtér-és háttérszínek fekete színűek, a kép domináns színei pedig fekete és fehérek.
+A következő példa a Computer Vision által visszaadott JSON-választ mutatja be a példakép színsémájának észlelésekor. Ebben az esetben a példakép nem fekete-fehér kép, de a domináns előtér és háttérszínek fekete színűek, és a kép egészének domináns színei fekete-fehérek.
 
-![Kültéri hegyi naplemente, egy személy sziluettje](./Images/mountain_vista.png)
+![Szabadtéri hegy napnyugtakor, egy személy sziluettjével](./Images/mountain_vista.png)
 
 ```json
 {
@@ -50,34 +50,37 @@ Az alábbi példa a Computer Vision által visszaadott JSON-választ mutatja be,
 }
 ```
 
-### <a name="dominant-color-examples"></a>Domináns szín példák
+### <a name="dominant-color-examples"></a>Példák domináns színre
 
-A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és képének színét mutatja be.
+Az alábbi táblázat az egyes mintaképek retonátorait, hátterét és képszíneit mutatja be.
 
-| Image | Domináns színek |
+| Kép | Domináns színek |
 |-------|-----------------|
-|![Fehér virág Zöld háttérrel](./Images/flower.png)| Előtér Fekete<br/>Háttér Fehér<br/>Színek Fekete, fehér, zöld|
-![Állomáson futó vonat](./Images/train_station.png) | Előtér Fekete<br/>Háttér Fekete<br/>Színek Fekete |
+|![Fehér virág zöld háttérrel](./Images/flower.png)| Előtér: Fekete<br/>Háttér: Fehér<br/>Színek: fekete, fehér, zöld|
+![Egy állomáson áthaladó vonat](./Images/train_station.png) | Előtér: Fekete<br/>Háttér: Fekete<br/>Színek: Fekete |
 
-### <a name="accent-color-examples"></a>Kiejtési színek példái
+### <a name="accent-color-examples"></a>Példák a kiemelő színre
 
- A következő táblázat a visszaadott hangsúlyozási színt jeleníti meg hexadecimális HTML színértékként az egyes képképeknél.
+ Az alábbi táblázat a visszaadott kiemelőszínt mutatja, hexadecimális HTML színértékként, minden példaképhez.
 
-| Image | Kiegészítő szín |
+| Kép | Kiegészítő szín |
 |-------|--------------|
-|![A napnyugtakor egy hegyi sziklán álló személy](./Images/mountain_vista.png) | #BB6D10 |
-|![Fehér virág Zöld háttérrel](./Images/flower.png) | #C6A205 |
-|![Állomáson futó vonat](./Images/train_station.png) | #474A84 |
+|![Egy személy, aki egy hegyi sziklán áll napnyugtakor](./Images/mountain_vista.png) | #BB6D10 |
+|![Fehér virág zöld háttérrel](./Images/flower.png) | #C6A205 |
+|![Egy állomáson áthaladó vonat](./Images/train_station.png) | #474A84 |
 
-### <a name="black--white-detection-examples"></a>Fekete & White észlelési példák
+### <a name="black--white-detection-examples"></a>Példák fekete & fehér észlelési
 
-A következő táblázat Computer Vision fekete-fehér kiértékelését mutatja a minta lemezképekben.
+Az alábbi táblázat a Computer Vision fekete-fehér értékelését mutatja be a mintaképeken.
 
-| Image | Fekete & fehér? |
+| Kép | Fekete & fehér? |
 |-------|----------------|
-|![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png) | true |
-|![Egy kék ház és az első udvar](./Images/house_yard.png) | false |
+|![Egy fekete-fehér képet épületek Manhattan](./Images/bw_buildings.png) | igaz |
+|![Egy kék ház és az előkert](./Images/house_yard.png) | hamis |
 
-## <a name="next-steps"></a>További lépések
+## <a name="use-the-api"></a>Az API használata
 
-A képtípusok [észlelésével](concept-detecting-image-types.md)kapcsolatos fogalmak megismerése.
+A színséma észlelési szolgáltatás része a [Kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja meg. Szerepeljen `Color` a **visualFeatures** lekérdezési paraméterben. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezje `"color"` a szakasz tartalmának karakterláncát.
+
+* [Rövid útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Rövid útmutató: Lemezkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

@@ -1,7 +1,7 @@
 ---
-title: Előre elkészített entitások száma – LUIS
+title: Előre összeállított entitás száma - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk előre összeállított entitások információ a Language Understanding (LUIS) tartalmazza.
+description: Ez a cikk a nyelvismertetés (LUIS) előre összeállított entitásadatait tartalmazza.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,19 +12,19 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273465"
 ---
-# <a name="number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitások száma
-Számos módon, amelyben a numerikus értékek összeszámolása, express, és írja le az adatokat használják. Ez a cikk ismerteti a lehetséges példa csak néhányat. A LUIS a változások, a felhasználó utterances értelmezi, és egységes numerikus értéket adja vissza. Az entitás már be van tanítva, mert nem kell az alkalmazás leképezések számot tartalmazó példa beszédmódok hozzáadása.
+# <a name="number-prebuilt-entity-for-a-luis-app"></a>Előre összeállított entitás száma egy LUIS-alkalmazáshoz
+A numerikus értékek számos módon használhatók az információadatok számszerűsítésére, kifejezésére és leírására. Ez a cikk csak néhány lehetséges példát tartalmaz. A LUIS értelmezi a felhasználói kimondott szöveg változatait, és konzisztens numerikus értékeket ad vissza. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia a számot tartalmazó példautterances az alkalmazás leképezések.
 
-## <a name="types-of-number"></a>Szám típusú
-A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) adattárból kezeli
+## <a name="types-of-number"></a>A szám típusai
+A szám kezelése a [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub tárházból történik
 
-## <a name="examples-of-number-resolution"></a>Példák a szám felbontás
+## <a name="examples-of-number-resolution"></a>Példák a számfelbontásra
 
 | Kimondott szöveg        | Entitás   | Megoldás: |
 | ------------- |:----------------:| --------------:|
@@ -38,17 +38,17 @@ A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microso
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-A LUIS egy **`builtin.number`** entitás felismert értékét tartalmazza a visszaadott JSON-válasz `resolution` mezőjében.
+A LUIS tartalmazza egy **`builtin.number`** entitás `resolution` felismert értékét a visszaadott JSON-válasz mezőjében.
 
-## <a name="resolution-for-prebuilt-number"></a>Feloldási előre összeállított maximális száma
+## <a name="resolution-for-prebuilt-number"></a>Felbontás előre összeállított számhoz
 
-A lekérdezés a következő entitás-objektumokat adja vissza:
+A következő entitásobjektumok at adják vissza a lekérdezéshez:
 
 `order two dozen eggs`
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméterrel van beállítva `false`:
+A következő JSON `verbose` paraméter a `false`következő:
 
 ```json
 "entities": {
@@ -59,7 +59,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `false`:
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON a `verbose` paraméterrel van beállítva `true`:
+A következő JSON `verbose` paraméter a `true`következő:
 
 ```json
 "entities": {
@@ -85,7 +85,7 @@ A következő JSON a `verbose` paraméterrel van beállítva `true`:
 ```
 #### <a name="v2-response"></a>[V2 válasz](#tab/V2)
 
-Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifejezés) "két tucat" értékének 24, LUIS, a JSON-választ.
+A következő példa a LUIS JSON-válaszát mutatja be, amely tartalmazza a 24-es érték feloldását a "két tucat" utterance (kifejezés) értékhez.
 
 ```json
 "entities": [
@@ -103,8 +103,8 @@ Az alábbi példa bemutatja, amely tartalmazza a felbontást az utterance (kifej
 ```
 * * *
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
+További információ a [V3 előrejelzési végpontjáról.](luis-migration-api-v3.md)
 
-A [Pénznem](luis-reference-prebuilt-currency.md), a [sorszám](luis-reference-prebuilt-ordinal.md)és a [százalék](luis-reference-prebuilt-percentage.md)megismerése.
+További információ a [pénznemről](luis-reference-prebuilt-currency.md), [a szószerint](luis-reference-prebuilt-ordinal.md)és a [százalékos értékről](luis-reference-prebuilt-percentage.md).

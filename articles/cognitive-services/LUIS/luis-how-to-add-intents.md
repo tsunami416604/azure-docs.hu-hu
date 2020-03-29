@@ -1,7 +1,7 @@
 ---
 title: Leképezések hozzáadása – LUIS
 titleSuffix: Azure Cognitive Services
-description: Vegyen fel szándékokat a LUIS-alkalmazásba, hogy azonosítsa az azonos szándékkal rendelkező kérdések vagy parancsok csoportjait.
+description: Szándékok hozzáadása a LUIS-alkalmazáshoz az azonos szándékú kérdések vagy parancsok csoportjainak azonosításához.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,76 +12,76 @@ ms.date: 11/08/2019
 ms.author: diberry
 ms.service: cognitive-services
 ms.openlocfilehash: 66a3350dee60772ce706af8995179dcd8c485b64
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904329"
 ---
-# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Szándékok hozzáadása az utterances felhasználói szándékának meghatározásához
 
-Vegyen fel [leképezéseket](luis-concept-intent.md) a Luis-alkalmazásba, hogy azonosítsa az azonos szándékú kérdések vagy parancsok csoportjait. 
+[Szándékok](luis-concept-intent.md) hozzáadása a LUIS-alkalmazáshoz az azonos szándékú kérdések vagy parancsok csoportjainak azonosításához. 
 
-A leképezéseket a rendszer a felső navigációs sáv **Build** szakasza, majd a bal oldali panel **szándékai**alapján kezeli. 
+A leképezések kezelése a felső navigációs sáv **Build** szakaszából, majd a bal oldali panel **szándékaiból**áll. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-intent"></a>Szándék hozzáadása
 
-1. A [Luis betekintő portálon](https://preview.luis.ai)válassza a **Létrehozás** lehetőséget a leképezések megtekintéséhez. 
-1. A **leképezések** lapon válassza a **+ Létrehozás**elemet.
-1. Az **Új leképezés létrehozása** párbeszédpanelen adja meg a leképezés nevét, például `ModifyOrder`, majd válassza a **kész**lehetőséget.
+1. A [LUIS előzetes verzióportálon](https://preview.luis.ai)válassza **a Build a** leképezések megtekintéséhez. 
+1. A **Szándékok** lapon válassza a **+ Create**lehetőséget.
+1. Az **Új leképezés létrehozása** párbeszédpanelen adja `ModifyOrder`meg például a szándék nevét, és válassza a **Kész gombot.**
 
     > [!div class="mx-imgBorder"]
-    > ![a leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
+    > ![Leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    A szándéknak például hosszúságú kimondott szöveg kell lennie.
+    A szándék példa utterances igényel példa utterances.
 
-## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
+## <a name="add-an-example-utterance"></a>Példa utterance (kifejezés) hozzáadása
 
-Például a hosszúságú kimondott szöveg a felhasználói kérdések és parancsok szöveges példái. Ha meg szeretné tanítani Language Understanding (LUIS), hogy mikor kell megjósolni ezt a szándékot, hozzá kell adnia egy példa hosszúságú kimondott szöveg egy szándékhoz. A LUIS-nek 15 és 30 közötti hosszúságú kimondott szöveg kell lennie, hogy megkezdje a szándék megértését. Ne vegyen fel több példát a hosszúságú kimondott szöveg. Minden Kimondás után körültekintően kell kiválasztani, hogy miben különbözik a már a szándéknál látható példáktól. 
+Példa utterances szöveges példák a felhasználói kérdések vagy parancsok. A language understanding (LUIS) tanításához, amikor előre ezt a szándékot, példa utterances hozzáadása kell egy szándék. Luis szüksége van a tartományban 15-30 példa utterances a szándék megértéséhez. Ne adjon hozzá példa utterances ömlesztve. Minden utterance (kifejezés) gondosan meg kell választani, hogy miben különbözik a már a szándékban lévő példáktól. 
 
-1. A szándék részletei lapon adja meg a felhasználóktól várt megfelelő értéket, például `Deliver a large cheese pizza`t a cél neve alatti szövegmezőben, majd nyomja le az ENTER billentyűt.
+1. A szándék részletei lapon adja meg a felhasználóktól elvárt `Deliver a large cheese pizza` megfelelő utterance (kifejezés) értéket, például a szándék neve alatti szövegmezőbe, majd nyomja le az Enter billentyűt.
  
     > [!div class="mx-imgBorder"]
-    > ![a szándékok részletei oldal képernyőképe, a teljes kiemeléssel kiemelve](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    > ![A Szándékok részletei lap képernyőképe, kiemelve az utterance (kifejezés)](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-    A LUIS az összes hosszúságú kimondott szöveg kisbetűsre alakítja, és szóközöket [, például](luis-language-support.md#tokenization) kötőjeleket hoz létre.
+    A LUIS az összes utterances kisbetűssé alakítja, és szóközöket ad a [jogkivonatok,](luis-language-support.md#tokenization) például a kötőjelek körül.
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
 ## <a name="intent-prediction-errors"></a>Szándék-előrejelzési hibák 
 
-A szándékok egyik példájának kimondása a szándék előrejelzési hibája, amely a példa szerinti kifejezés és a képzés során meghatározott szándék között van. 
+Egy példa utterance (kifejezés) egy szándék lehet egy szándék előrejelzési hiba a szándék a példa utterance (kifejezés) jelenleg, és a szándék a képzés során meghatározott. 
 
-A részletes előrejelzési hibák és a kijavításuk megkereséséhez használja a helytelen és a nem egyértelmű **szűrési** beállításokat a **részletes**nézet **nézet** beállításával együtt. 
+Az utterance (kifejezés) előrejelzési hibák megkereséséhez és javításához használja a Helytelen és a Nem egyértelmű **szűrő** beállításokat a **Részletes nézet** **Nézet** beállításával kombinálva. 
 
-![A teljes előrejelzési hibák és a kijavításuk megkereséséhez használja a Filter (szűrő) beállítást.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![Az utterance (kifejezés) előrejelzési hibák megkereséséhez és javításához használja a Szűrő beállítást.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példaként szolgáló lista a hosszúságú kimondott szöveg és a problémákat jeleníti meg.
+A szűrők és a nézet alkalmazásakor, és vannak példa kimondott hibák, a példa utterance (kifejezés) lista az utterances és a problémákat.
 
 > [!div class="mx-imgBorder"]
-> ![! [Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példában a teljes lista a hosszúságú kimondott szöveg és a problémákat mutatja.] (./Media/Luis-How-to-add-intents/Find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+> ![! [A szűrők és a nézet alkalmazásakor, és vannak hibákat tartalmazó példa utterances, a példa utterance (kifejezés) lista az utterances és a problémákat jeleníti meg.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-Az egyes sorok az aktuális képzés előrejelzési pontszámát jelenítik meg a példához, a legközelebbi rivális pontszámát, amely a két pontszám különbsége. 
+Minden sor az aktuális betanítási pontszám a példa utterance (kifejezés) a példa utterance (kifejezés) a legközelebbi rivális pontszám, amely a különbség a két pontszámok. 
 
-### <a name="fixing-intents"></a>Leképezések kijavítása
+### <a name="fixing-intents"></a>Leképezések rögzítése
 
-Ha meg szeretné tudni, hogyan lehet kijavítani a szándék-előrejelző hibákat, használja az [összegző irányítópultot](luis-how-to-use-dashboard.md). Az összegző irányítópult elemzést nyújt az aktív verzió utolsó betanításáról, és a legjobb javaslatokat kínálja a modell kijavításához.  
+A szándékelőrejelzési hibák javításáról az [Összefoglaló irányítópulton](luis-how-to-use-dashboard.md)olvashat. Az összefoglaló irányítópult elemzést nyújt az aktív verzió utolsó betanításához, és a modell javításához a legfontosabb javaslatokat kínálja.  
 
 ## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár használata
 
-A környezeti eszköztár más műveleteket is tartalmaz:
+A környezet eszköztár a következő műveleteket tartalmazza:
 
-* Példa szerkesztése vagy törlése
-* Példa kiosztásának ismételt társítása egy másik szándékhoz
-* Szűrők és nézetek: csak a szűrt entitásokat tartalmazó hosszúságú kimondott szöveg megjelenítése vagy a választható részletek megtekintése
-* Keresés a példa hosszúságú kimondott szöveg
+* Példakimondott szöveg szerkesztése vagy törlése
+* Példa utterance (kifejezés) hozzárendelése egy másik szándékhoz
+* Szűrők és nézetek: csak szűrt entitásokat tartalmazó kimondott szövegeket jelenít meg, vagy nem kötelező részleteket tekinthet meg
+* Keresés példakimondott szövegben
 
-## <a name="train-your-app-after-changing-model-with-intents"></a>Az alkalmazás betanítása a modell leképezésekkel való módosítása után
+## <a name="train-your-app-after-changing-model-with-intents"></a>Az alkalmazás betanítása a modell szándékokkal való módosítása után
 
-Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja](luis-how-to-train.md) és [közzéteszi](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre legyenek alkalmazva. Ne végezze el a betanítást minden egyes módosítás után. Betanítás egy csoport módosítása után. 
+A leképezések hozzáadása, szerkesztése vagy eltávolítása után [tanítsa be](luis-how-to-train.md) és [tegye közzé](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre is vonatkozjanak. Ne eddz minden apró váltás után. Vonat egy csoport módosítás után. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) az entitásokkal való hozzáadásáról. 
+További információ a [példakimondott szöveg entitások](luis-how-to-add-example-utterances.md) hozzáadásáról. 

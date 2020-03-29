@@ -1,5 +1,5 @@
 ---
-title: Megnevezett entitások a személyes adatokhoz
+title: Személyes adatok elnevezett entitásai
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,93 +9,93 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086899"
 ---
-## <a name="personal-information-entity-types"></a>Személyes információ típusú entitások típusai:
+## <a name="personal-information-entity-types"></a>Személyes adatok entitás típusok:
 
 ### <a name="person"></a>Személy
-Nevek felismerése szövegben.
+Személyek nevének felismerése a szövegben.
 
-Nyelvek
-* Nyilvános előzetes verzió: `English`
+Nyelvek:
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                               | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                               | Modellverzióval kezdve elérhető |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| N/A          | Felismert nevek, például `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+| N/A          | Elismert nevek, `Bill Gates`például :`Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Szervezet  
 
-Felismerheti a szervezeteket, vállalatokat, ügynökségeket, vállalatokat, klubokat és más csoportokat.
+Ismerje el a szervezeteket, vállalatokat, ügynökségeket, vállalatokat, klubokat és más embercsoportokat.
 
-Nyelvek 
+Nyelvek: 
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                                                                       | A modell verziójától kezdődően érhető el|
+| Altípus neve | Leírás                                                                                       | Modellverzióval kezdve elérhető|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
-| N/A          | szervezetek, például `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration` | `2020-02-01` |
+| N/A          | szervezetek, például `Microsoft` `NASA`, ,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefonszám
 
-Telefonszámok (csak az Egyesült államokbeli telefonszámok). 
+Telefonszámok (csak amerikai telefonszámok). 
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                    | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                    | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------|----------------------------------------|
-| N/A          | Egyesült államokbeli telefonszámok, például `(312) 555-0176` | `2020-02-01`                           |
+| N/A          | Amerikai telefonszámok, például`(312) 555-0176` | `2020-02-01`                           |
 
 ### <a name="email"></a>E-mail
 
 E-mail-cím. 
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                      | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                      | Modellverzióval kezdve elérhető |
 |--------------|--------------------------------------------------|----------------------------------------|
-| N/A          | E-mail-cím, például `support@contoso.com` | `2020-02-01`                           |
+| N/A          | E-mail cím, például`support@contoso.com` | `2020-02-01`                           |
 
 ### <a name="url"></a>URL-cím
 
-Internetes URL-címek.
+internetes URL-eket.
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                          | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                          | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------------|----------------------------------------|
-| N/A          | Webhelyekhez tartozó URL-címek, például `https://www.bing.com` | `2020-02-01`                           |
+| N/A          | URL-címek a weboldalak, például`https://www.bing.com` | `2020-02-01`                           |
 
 ### <a name="ip-address"></a>IP-cím
 
-Internet Protocol címe
+IP-cím
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                              | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                              | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------|----------------------------------------|
-| N/A          | Hálózati címe például `10.0.0.101` | `2020-02-01`                           |
+| N/A          | Hálózati cím például`10.0.0.101` | `2020-02-01`                           |
 
 ### <a name="quantity"></a>Mennyiség 
 
 Numerikus mennyiségek
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                   | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                   | Modellverzióval kezdve elérhető |
 |--------------|-------------------------------|----------------------------------------|
 | Kor          | `90 days old`, `30 years old` | `2020-02-01`                           |
 
@@ -103,190 +103,190 @@ Nyelvek
 
 Dátum és idő entitások
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                   | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                   | Modellverzióval kezdve elérhető |
 |--------------|-------------------------------|----------------------------------------|
 | Dátum         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
-### <a name="eu-gps-coordinates"></a>EU GPS-koordináták
+### <a name="eu-gps-coordinates"></a>EU GPS koordináták
 
- GPS-koordináták az Európai Unión belüli helyszínekhez. 
+ Az Európai Unión belüli helyek GPS koordinátái. 
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                               | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                               | Modellverzióval kezdve elérhető |
 |--------------|-------------------------------------------|----------------------------------------|
-| N/A          | GPS-koordináták az Európai Unión belül | `2019-10-01`                           |
+| N/A          | GPS koordináták az Európai Unión belül | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure-információk
 
-Azonosítható Azure-információk, beleértve a hitelesítési adatokat és a kapcsolatok karakterláncait. 
+Azonosítható Azure-adatok, beleértve a hitelesítési adatokat és a kapcsolati karakterláncokat. 
 
-* A modell verziója `2019-10-01`tól kezdődően érhető el.
+* A modellverzióval `2019-10-01`kezdve érhető el.
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
 | Altípus neve                          | Leírás                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
-| Azure DocumentDB-hitelesítési kulcs             | Egy Azure DocumentDB-kiszolgáló engedélyezési kulcsa.                           |
-| Azure IAAS adatbázis-kapcsolatok karakterlánca | Az Azure infrastruktúra-szolgáltatás (IaaS) adatbázisához tartozó kapcsolatok karakterlánca. |
-| Azure SQL-kapcsolatok karakterlánca           | Az Azure SQL Database-adatbázishoz tartozó kapcsolatok karakterlánca.                                |
-| Azure IoT-kapcsolatok karakterlánca           | Az Azure Internet of Things (IoT) szolgáltatáshoz tartozó kapcsolatok karakterlánca.                        |
-| Azure közzétételi beállítás jelszava        | Az Azure közzétételi beállításainak jelszava.                                        |
-| Azure Redis Cache a kapcsolatok karakterlánca   | A Redis tartozó Azure cache-hez tartozó kapcsolatok karakterlánca.                             |
-| Azure SAS                             | Az Azure-beli szoftver (SAS) szolgáltatáshoz tartozó kapcsolatok karakterlánca.                     |
-| Azure Service Bus a kapcsolatok karakterlánca   | Az Azure Service Bus szolgáltatáshoz tartozó kapcsolatok karakterlánca.                                |
-| Azure Storage-fiók kulcsa             | Egy Azure Storage-fiókhoz tartozó fiók kulcsa.                                   |
-| Azure Storage-fiók kulcsa (általános)   | Általános fiók kulcsa egy Azure Storage-fiókhoz.                           |
-| SQL Server a kapcsolatok karakterlánca          | Az SQL Serverhez tartozó kapcsolatok karakterlánca.                                         |
+| Azure DocumentDB hitelesítési kulcs             | Egy Azure DocumentDB-kiszolgáló engedélyezési kulcsa.                           |
+| Azure IAAS adatbázis-kapcsolati karakterlánc | Az Azure Infrastructure szolgáltatásként (IaaS) adatbázis ának kapcsolati karakterlánca. |
+| Azure SQL-kapcsolati karakterlánc           | Kapcsolati karakterlánc egy Azure SQL-adatbázishoz.                                |
+| Azure IoT-kapcsolati karakterlánc           | Kapcsolati karakterlánc az Azure Internet of things(IoT) számára.                        |
+| Azure közzétételi beállítás jelszava        | Az Azure Közzététel beállításainak jelszava.                                        |
+| Azure Redis gyorsítótár-kapcsolati karakterlánc   | A Redis Azure-gyorsítótárának kapcsolati karakterlánca.                             |
+| Azure SAS                             | Az Azure Software szolgáltatásként (SAS) kapcsolati karakterlánca.                     |
+| Az Azure Service Bus kapcsolati karakterlánca   | Kapcsolati karakterlánc egy Azure-szolgáltatásbuszhoz.                                |
+| Azure storage-fiókkulcs             | Egy Azure-tárfiók fiókkulcsa.                                   |
+| Azure storage-fiókkulcs (általános)   | Általános fiókkulcs egy Azure-tárfiókhoz.                           |
+| SQL Server kapcsolati karakterlánc          | SQL-kiszolgáló csatlakozási karakterlánca.                                         |
 
-### <a name="identification"></a>Szoftverazonosító
+### <a name="identification"></a>Azonosítás
 
-* A modell verziója `2019-10-01`tól kezdődően érhető el.
+* A modellverzióval `2019-10-01`kezdve érhető el.
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-#### <a name="financial-account-identification"></a>Pénzügyi fiók azonosítása
+#### <a name="financial-account-identification"></a>Pénzügyi számla azonosítása
 
 | Altípus neve               | Leírás                                                                |
 |----------------------------|----------------------------------------------------------------------------|
-| ABA-útválasztási számok        | American Banker Association (ABA) tranzit-útválasztási számok.                  |
-| SWIFT-kód                 | SWIFT-kódok a fizetési utasítással kapcsolatos információkhoz.                           |
-| Hitelkártya                | Hitelkártya-számok.                                                       |
-| IBAN-kód                  | IBAN-kódok a fizetési utasítással kapcsolatos információkhoz.                            |
+| ABA útválasztási számok        | American Banker Association (ABA) tranzitútvonal-számok.                  |
+| SWIFT-kód                 | SWIFT-kódok a fizetési megbízási információkhoz.                           |
+| Hitelkártya                | Hitelkártya számok.                                                       |
+| IBAN-kód                  | IBAN-kódok a fizetési utasítás adataihoz.                            |
 
 #### <a name="government-and-country-specific-identification"></a>Kormányzati és országspecifikus azonosítás
 
-Az alábbi entitások ország szerint vannak csoportosítva és listázva:
+Az alábbi entitások országonként vannak csoportosítva és felsorolva:
 
 Argentína
-* Nemzeti identitás (DNI) száma
+* Nemzeti azonosító (DNI) szám
 
 Ausztrália
-* Adó fájl száma 
-* Illesztőprogram licenc-azonosítója
-* Passport-azonosító
-* Egészségügyi fiók száma
-* bankszámla-számok (például ellenőrzés, megtakarítások és betéti fiókok)
+* Adófájl száma 
+* Jogosítvány azonosítója
+* Útlevél azonosító
+* Orvosi számlaszám
+* bankszámlaszámok (például csekk-, megtakarítás- és tartozik számlák)
 
 Belgium
 * Nemzeti szám
 
 Brazília
-* Jogi entitás száma (CNPJ)
-* CPF száma
-* Nemzeti azonosító kártya (RG)
+* Jogi személy száma (CNPJ)
+* CPF-szám
+* Személyi igazolvány (RG)
 
 Kanada
-* Passport-azonosító
-* Illesztőprogram licenc-azonosítója
+* Útlevél azonosító
+* Jogosítvány azonosítója
 * Egészségbiztosítási szám
-* Személyes állapot AZONOSÍTÓjának száma (PHIN)
-* Társadalombiztosítási szám
-* bankszámla-számok (például ellenőrzés, megtakarítások és betéti fiókok)
+* Személyi egészségügyi azonosító száma (PHIN)
+* Társadalombiztosítási
+* bankszámlaszámok (például csekk-, megtakarítás- és tartozik számlák)
 
 Chile
-* Azonosító kártya száma 
+* Személyazonosító igazolvány száma 
 
 Kína
-* Azonosító kártya száma
-* Rezidens azonosító kártya (PRC) száma
+* Személyazonosító igazolvány száma
+* Rezidens személyazonosító igazolvány (KNK) száma
 
 Horvátország
-* AZONOSÍTÓ kártya száma
-* Személyes azonosító (OIB) száma
+* Személyi igazolvány száma
+* Személyi azonosító (OIB) száma
 
 Cseh Köztársaság
-* Nemzeti azonosító kártya száma
+* Személyi igazolvány száma
 
 Dánia
-* Személyes azonosító száma
+* Személyi azonosító száma
 
 Európai Unió (EU)
-* Nemzeti azonosító száma
-* Passport-azonosító
-* Illesztőprogram licenc-azonosítója
+* Nemzeti azonosító szám
+* Útlevél azonosító
+* Jogosítvány azonosítója
 * Társadalombiztosítási szám (SSN) vagy azzal egyenértékű azonosító
-* EU adóazonosító szám (TIN)
-* EU Debit kártya száma
+* Eu adóazonosító szám (TIN)
+* Eu betéti kártya száma
 
 Finnország
-* Nemzeti azonosító száma
-* Passport-azonosító
+* Nemzeti azonosító szám
+* Útlevél azonosító
 
 Franciaország
-* Nemzeti azonosító kártya (CNI)
+* Nemzeti személyi igazolvány (CNI)
 * Társadalombiztosítási szám (INSEE)
-* Passport-azonosító
-* Illesztőprogram licenc-azonosítója
+* Útlevél azonosító
+* Jogosítvány azonosítója
 
 Németország
-* AZONOSÍTÓ kártya száma
-* Passport-azonosító
-* Illesztőprogram licenc-azonosítója
+* Személyi igazolvány száma
+* Útlevél azonosító
+* Jogosítvány azonosítója
 
 Görögország 
-* Nemzeti azonosító kártya száma
+* Személyi igazolvány száma
 
 Hongkong
-* AZONOSÍTÓ kártya (HKID) száma
+* Személyi igazolvány (HKID) száma
 
 India
-* Állandó fiók száma (PAN)
+* Állandó számlaszám (PAN)
 * Egyedi azonosító (Aadhaar) száma
 
 Indonézia
-* AZONOSÍTÓ kártya száma (KTP)
+* Személyi igazolvány száma (KTP)
 
 Írország
-* Személyes nyilvános szolgáltatás (PPS) száma
+* Személyi közszolgálati (PPS) szám
 
 Izrael
 * Nemzeti azonosító
-* bankszámla-számok (például ellenőrzés, megtakarítások és betéti fiókok)
+* bankszámlaszámok (például csekk-, megtakarítás- és tartozik számlák)
 
 Olaszország
-* Illesztőprogram licenc-azonosítója
+* Jogosítvány azonosítója
 
 Japán
-* Rezidens regisztrációs szám
+* Rezidens nyilvántartási száma
 * Tartózkodási kártya száma
-* Illesztőprogram licenc-azonosítója
-* Társadalombiztosítási szám (SIN)
-* Passport-azonosító
-* bankszámla-számok (például ellenőrzés, megtakarítások és betéti fiókok)
+* Jogosítvány azonosítója
+* Társadalombiztosítási szám (Bűn)
+* Útlevél azonosító
+* bankszámlaszámok (például csekk-, megtakarítás- és tartozik számlák)
 
 Malajzia
-* AZONOSÍTÓ kártya száma
+* Személyi igazolvány száma
 
 Hollandia
-* Citizen szolgáltatás (BSN) száma
+* Állampolgári szolgálat (BSN) száma
 
 Új-Zéland
 * Egészségügyi Minisztérium száma
 
 Norvégia
-* AZONOSÍTÓ kártya száma
+* Személyi igazolvány száma
 
 Fülöp-szigetek
-* Egyesített többcélú azonosító száma
+* Egyesített többcélú azonosítószám
 
 Lengyelország
-* AZONOSÍTÓ kártya száma
+* Személyi igazolvány száma
 * Nemzeti azonosító (PESEL)
-* Passport-azonosító
+* Útlevél azonosító
 
 Portugália 
-* Citizen kártya száma
+* Állampolgári kártya száma
 
 Szaúd-Arábia
 * Nemzeti azonosító
@@ -295,38 +295,38 @@ Szingapúr
 * Nemzeti regisztrációs azonosító kártya (NRIC) száma
 
 Dél-afrikai Köztársaság
-* AZONOSÍTÓ száma
-* Rezidens regisztrációs szám
+* Azonosító száma
+* Rezidens nyilvántartási száma
 
 Dél-Korea
-* Rezidens regisztrációs szám
+* Rezidens nyilvántartási szám
 
 Spanyolország 
 * Társadalombiztosítási szám (SSN)
 
 Svédország
 * Nemzeti azonosító
-* Passport-azonosító
+* Útlevél azonosító
 
 Tajvan 
 * Nemzeti azonosító
-* Rezidens tanúsítvány (ARC/TARC) száma
-* Passport-azonosító
+* Rezidens bizonyítvány (ARC/TARC) száma
+* Útlevél azonosító
 
 Thaiföld
-* Populáció azonosító kódja
+* Népességazonosító kód
 
 Egyesült Királyság
-* Passport-azonosító
-* Illesztőprogram licenc-azonosítója
+* Útlevél azonosító
+* Jogosítvány azonosítója
 * Nemzeti biztosítási szám (NINO)
-* Nemzeti Állapotfigyelő szolgáltatás (NHS) száma
+* Nemzeti Egészségügyi Szolgálat (NHS) száma
 
 Egyesült Államok
 * Társadalombiztosítási szám (SSN)
-* Illesztőprogram licenc-azonosítója
-* Passport-azonosító
-* Választási tekercs száma
+* Jogosítvány azonosítója
+* Útlevél azonosító
+* Választási névjegyzék száma
 * Egyéni adóazonosító szám (ITIN)
-* Kábítószer-érvényesítő Ügynökség (DEA) száma
-* bankszámla-számok (például ellenőrzés, megtakarítások és betéti fiókok)
+* Kábítószer-végrehajtási Ügynökség (DEA) száma
+* bankszámlaszámok (például csekk-, megtakarítás- és tartozik számlák)

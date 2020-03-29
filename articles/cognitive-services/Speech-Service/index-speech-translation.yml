@@ -1,25 +1,24 @@
 ### YamlMime:Landing
-title: A Beszédfordítás dokumentációja
-summary: A beszédfelismerési szolgáltatásból való beszéd fordítás lehetővé teszi a hangadatfolyamok valós idejű, több nyelvű beszéd-beszéd és beszéd – szöveg fordítását.
+title: Beszédfordítási dokumentáció
+summary: A beszédfelismerési szolgáltatásból származó beszédfordítás lehetővé teszi a hangfolyamok valós idejű, többnyelvű beszéd-felolvasását és szöveggé történő írásba olvasását
 metadata:
-  title: Beszédfelismerési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
+  title: Beszédfordítási dokumentáció – Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367975"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415325"
 landingContent:
-- title: Beszéd fordítása
+- title: Beszédfordítás –
   linkLists:
   - linkListType: overview
     links:
@@ -33,11 +32,11 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Beszéd fordítása beszédre
       url: quickstarts/translate-speech-to-speech.md
-- title: Fejlesztés a beszéd fordításával
+- title: Fejlesztés beszédfordítással
   linkLists:
   - linkListType: learn
     links:
-    - text: Beszéd valós idejű fordítása
+    - text: Beszéd fordítása valós időben
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
@@ -51,5 +50,5 @@ landingContent:
       url: language-support.md#speech-translation
     - text: Beszédfordítás – GYIK
       url: https://www.microsoft.com/translator/business/faq/
-    - text: Beszéd fordításának díjszabása
+    - text: Beszédfordítás díjszabása
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

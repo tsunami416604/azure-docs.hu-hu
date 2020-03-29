@@ -1,7 +1,7 @@
 ---
-title: A Bing Image Search API végpontjai
+title: A Bing képkeresési API végpontjai
 titleSuffix: Azure Cognitive Services
-description: A Image Search API három végpontot tartalmaz. Az 1. végpont a webről származó képeket ad vissza. A 2. végpont a ImageInsights adja vissza. A 3. végpont a trendi képeket adja vissza.
+description: A képkeresési API három végpontot tartalmaz. Az 1-es végpont képeket ad vissza az internetről. A 2-es végpont eredménye az ImageInsights. A 3-as végpont függvény trendképeket ad vissza.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072633"
 ---
-# <a name="endpoints-for-the-bing-image-search-api"></a>A Bing Image Search API végpontjai
+# <a name="endpoints-for-the-bing-image-search-api"></a>A Bing képkeresési API végpontjai
 
-A **Image Search API** három végpontot tartalmaz.  Az 1. végpont a webről származó képeket ad vissza egy lekérdezés alapján. A 2. végpont a [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse)adja vissza.  A 3. végpont a trendi képeket adja vissza.
+A **képkeresési API** három végpontot tartalmaz.  Az 1- es végpont lekérdezés alapján visszaadja a webről származó képeket. A 2-es végpont eredménye az [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  A 3-as végpont függvény trendképeket ad vissza.
 
 ## <a name="endpoints"></a>Végpontok
 
-Ha a Bing API használatával szeretné beolvasni a képkeresési eredményeket, küldjön egy kérelmet a következő végpontok egyikére. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
+Ha a Bing API használatával szeretne képeredményeket kapni, küldjön egy kérést az alábbi végpontok egyikére. A fejlécek és az URL-paraméterek segítségével további specifikációkat határozhatja meg.
 
-**1. végpont:** Azokat a lemezképeket adja vissza, amelyek a `?q=""`által definiált felhasználó keresési lekérdezéséhez szükségesek.
+**1. végpont:** A felhasználó által `?q=""`definiált keresési lekérdezéséhez kapcsolódó képeket ad eredményül.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**2. végpont:** Egy képpel kapcsolatos elemzéseket ad vissza `GET` vagy `POST`használatával.
+**2. végpont:** A képelemzési adatokat `GET` `POST`a vagy a használatával ad eredményül.
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-A GET-kérelem egy képpel kapcsolatos információkat ad vissza, például a képet tartalmazó weblapokat. Adja meg a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) paramétert egy `GET` kéréssel.
+A GET-kérelem elemzési adatokat ad vissza egy képről, például a képet tartalmazó weblapokról. Az [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) paraméter `GET` t.
 
-Vagy egy `POST` kérelem törzsében is használhat bináris képet, és a modules [paramétert](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) `RecognizedEntities`értékre állíthatja. Ez egy olyan [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) ad vissza, amelyet paraméterként fog használni egy későbbi `GET` kérelemben, amely a rendszerképben szereplő személyekre vonatkozó adatokat adja vissza.  Állítsa be úgy a `modules`t, hogy `All` az összes bepillantást, kivéve a `POST` eredményében lévő `RecognizedEntities`eket anélkül, hogy egy másik hívást kellene beszereznie a `insightsToken`használatával.
+Vagy felvehet egy bináris lemezképet a `POST` kérelem törzsébe, `RecognizedEntities`és [beállíthatja](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) a modulok paraméterét . Ez egy [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) függvényt ad vissza `GET` paraméterként egy későbbi kérelemben, amely a rendszerképben lévő személyek adatait adja vissza.  Állítsa `modules` `All` be, hogy az `RecognizedEntities` összes betekintést, `POST` kivéve az `insightsToken`eredményeket a anélkül, hogy egy másik hívást a .
 
 
-**3. végpont:** Azokat a képeket adja vissza, amelyek a mások által végzett keresési kérelmek alapján alakulnak. A képek különböző kategóriákba vannak elkülönítve, például a figyelemreméltó személyek vagy események alapján.
+**3. végpont:** A mások által küldött keresési kérelmek alapján felkapott képeket ad vissza. A képek különböző kategóriákba sorolhatók, például figyelemre méltó emberek vagy események alapján.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending
 ```
 
-A Trends lemezképeket támogató piacok listáját a következő témakörben tekintheti meg: [trendek képek](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images).
+A felkapott képeket támogató piacok listáját a [Felkapott képek (Felkapott képek) (Felkapott képek) (Felkapott képek) (Felkapott képek) (Felkapott képek) (Felkapott képek) (Felkapott képek)](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)témakörben található
 
-A fejlécekről, paraméterekről, piaci kódokról, válasz-objektumokról, hibákról és egyéb adatokról a [Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) -dokumentációban talál további információt.
+A fejlécekről, paraméterekről, piaci kódokról, válaszobjektumokról, hibákról stb. [Bing Image Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
 ## <a name="response-json"></a>Válasz JSON
-A képkeresési kérelemre adott válasz az eredményeket JSON-objektumokként tartalmazza. Az eredmények elemzésére példákat az [oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) és a [forráskód](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)című témakörben talál.
+A képkeresési kérelemre adott válasz JSON-objektumokként tartalmazza az eredményeket. Az eredmények elemzésével például az [oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app) és a [forráskód látható.](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app-source)
 
 ## <a name="next-steps"></a>További lépések
-A **Bing** API-k olyan keresési műveleteket támogatnak, amelyek típusaik alapján adják vissza az eredményeket. A keresési végpontok az eredményeket JSON-válasz objektumokként adják vissza.  Minden végpont támogatja a lekérdezéseket, amelyek adott nyelvet és/vagy helyet adnak vissza a földrajzi hosszúság, a szélesség és a keresési sugár alapján.
+A **Bing** API-k támogatják azokat a keresési műveleteket, amelyek típusuk nak megfelelően adják vissza az eredményeket.Minden keresési végpont json válaszobjektumként adja vissza az eredményeket. Minden végpont támogatja azokat a lekérdezéseket, amelyek hosszúság, szélesség és keresési sugár szerint egy adott nyelvet és/vagy helyet adnak vissza.
 
-Az egyes végpontok által támogatott paraméterekkel kapcsolatos részletes információkért tekintse meg az egyes típusok hivatkozási oldalait.
-A képkeresési API-t használó alapszintű kérelmekre például a következő témakörben talál további információt: [Image Search Quick-starts](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web).
+Az egyes végpontok által támogatott paraméterekről az egyes típusok referenciaoldalain talál teljes körű tájékoztatást.
+A Képkeresési API-t használó alapszintű kérelmekről a [Képkeresés gyorsindítása](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/search-the-web)című témakörben talál példákat.

@@ -1,7 +1,7 @@
 ---
 title: Tervezési alapelvek az Acoustics Simulationnel
 titlesuffix: Azure Cognitive Services
-description: Ez a fogalmi áttekintés azt ismerteti, hogyan tartalmazza a Project Acoustics a hangtervezés folyamatát.
+description: Ez a koncepcionális áttekintés bemutatja, hogy a Project Acoustics hogyan építi be az akusztikai szimulációt a hangtervezési folyamatba.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,55 +12,55 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854293"
 ---
-# <a name="project-acoustics-design-process-concepts"></a>A Project akusztikai tervezési folyamatával kapcsolatos fogalmak
+# <a name="project-acoustics-design-process-concepts"></a>Projekt akusztikatervezési folyamat fogalmai
 
-Ez a fogalmi áttekintés azt ismerteti, hogyan foglalja magában a Project akusztika a fizikai akusztikai szimulációt a hangtervezési folyamat során.
+Ez a koncepcionális áttekintés bemutatja, hogy a Project Acoustics hogyan építi be a fizikai akusztikai szimulációt a hangtervezési folyamatba.
 
-## <a name="sound-design-with-audio-dsp-parameters"></a>Hang-kialakítás hangalapú DSP-paraméterekkel
+## <a name="sound-design-with-audio-dsp-parameters"></a>Hangkialakítás audio DSP paraméterekkel
 
-a 3D interaktív címek a hangmotorban üzemeltetett hangalapú digitális jelfeldolgozó (DSP) blokkok használatával érik el az adott hangot. Ezek a blokkok az egyszerű keveréstől, a visszaverődéstől, az ECHO, a késleltetéstől, a kiegyenlítőtől, a tömörítéstől és a korlátozástól, valamint más effektusok függően különbözőek. Ezeknek a hatásoknak a kiválasztásával, megszervezésével és beállításával a hangtervező feladata, hogy ki épít egy hanggráfot, amely a felhasználói élmény esztétikai és Játékmeneti céljait éri el.
+A 3D interaktív címek az audio digitális jelfeldolgozó (DSP) blokkok segítségével érik el a hangjukat. Ezek a blokkok tartomány összetettsége egyszerű keverés, a visszhang, visszhang, késleltetés, kiegyenlítés, tömörítés és korlátozás, és egyéb hatások. Kiválasztása, rendezése, és a paraméterek beállítása ezeket a hatásokat a feladata a hang tervező, aki épít egy audio grafikon, amely eléri az esztétikai és játékcéljait a tapasztalat.
 
-Interaktív cím esetén, ahogy a hangok és a figyelők a 3D-s térben mozognak, hogyan alkalmazkodnak ezekhez a paraméterek a változó feltételekhez? A hangtervező gyakran rendezi a köteteket a paraméterek változásának elindítására szolgáló térben, hogy megváltoztassa a visszaverődés hatásának változásait, például a hangokat, vagy ha a figyelő a jelenet egyik részéből egy másikba kerül. Az akusztikai rendszerek szintén elérhetők, amelyekkel automatizálható néhány ilyen hatás.
+Egy interaktív címben, ahogy a hangok és a hallgató mozog nak a 3D-s térben, hogyan alkalmazkodnak ezek a paraméterek a változó körülményekhez? A hangtervező gyakran rendezi kötetek az egész tér, amelyek programozott kiváltó paraméter változások at változások at reverberation hatások, például, vagy kacsa hangok a mix, mint a hallgató mozog az egyik része a jelenet a másikra. Akusztikai rendszerek is rendelkezésre állnak, amelyek automatizálják néhány ilyen hatások.
 
-a 3D-címek olyan világító és kinematikus fizikai rendszereket használnak, amelyek a fizika által motivált, de tervezői célokra vannak kialakítva, így a merítési és a Játékmeneti célok kombinációja is elérhető. A vizuális tervező nem állít be egyéni képpontos értékeket, hanem a vizuális esztétika és a CPU-költségek kiszűrésére szolgáló 3D-modelleket, anyagokat és fényátviteli rendszereket állítja be. Mi lenne az egyenértékű folyamat a hanggal? A Project akusztika a kérdés feltárásának első lépése. Először is megtudhatjuk, mit jelent az akusztikai energia átvitele egy szóközzel.
+A 3D-s címek olyan világítási és kinematikus fizikai rendszereket használnak, amelyek fizika-motiváltak, de a tervező által beállított a merítés és a játékmenet imázsának keverékét. A vizuális tervező nem állít be egyedi képpontértékeket, hanem inkább olyan 3D modelleket, anyagokat és könnyű közlekedési rendszereket állít be, amelyek fizikailag mind a vizuális esztétika és a CPU-költségek lecserélésére. Mi lenne az egyenértékű folyamat audio? Project Akusztika az első lépés a feltárása ezt a kérdést. Először is megérintjük, mit jelent az akusztikai energiát egy térben keresztül szállítani.
 
-![Képernyőfelvétel a AltSpace jelenetről a reverb zónákkal](media/reverb-zones-altspace.png)
+![Az AltSpace jelenet zengetési zónákkal átfedésével eltitkezve](media/reverb-zones-altspace.png)
 
-## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulzusos válaszok: Két pont akusztikus csatlakoztatása a térben
+## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Impulzusválaszok: Akusztikailag összekötve két pontot az űrben
 
-Ha már ismeri a hangtervezést, az akusztikai impulzusos válaszokat is megismerheti. Az akusztikus impulzusos válaszok egy hang átvitelét modellezik a forrásról a figyelőre. Ezért az Impulzusos válaszok rögzíthetik a helyiségek akusztikaának minden érdekes hatását, például az elzáródást és a visszhangot. Az Impulzusos válaszok olyan hatékony tulajdonságokkal is rendelkeznek, amelyek lehetővé teszik a hangalapú DSP-effektusok méretezését. Két hangjelzés együttes hozzáadása és egy impulzusos válasz feldolgozása ugyanazt az eredményt adja, mint az Impulzusos válasz alkalmazása az egyes jelekre, és hozzáadja az eredményeket. Az akusztikai propagálás és az Impulzusos válaszok szintén nem függnek a feldolgozott hangtól, csak a modellezett jelenetnél, valamint a forrás-és a figyelő helyein. Röviden, egy impulzusos válasz a jelenet hatását a hangpropagálásra is hatással van.
+Ha ismeri a hangtervezést, akkor talán ismeri az akusztikus impulzusválaszokat. Az akusztikai impulzusválasz a hang átvitelét modellezi a forrásból a hallgatóhoz. Ezért egy impulzus válasz képes megragadni minden érdekes hatása szoba akusztika, mint az elzáródás és a visszhang. Impulzus válaszok is van bizonyos erős tulajdonságokkal, amelyek lehetővé teszik a hang DSP hatások skála. Két hangjel együttes hozzáadása és impulzusválasz-feldolgozás ugyanazt az eredményt adja, mint ha az impulzusválaszt külön-külön alkalmaznák az egyes jelekre, és hozzáadják az eredményeket. Az akusztikai szaporítás és az impulzusválaszok szintén nem függnek a feldolgozott hangtól, csak a modellező jelenettől, valamint a forrás- és figyelőhelyektől. Röviden, egy impulzus válasz desztillálja a jelenet hatását a hang terjedésére.
 
-Az Impulzusos válaszok rögzítik az összes érdekes helyiség akusztikai hatását, és a szűrővel hatékonyan is alkalmazhatjuk a hanganyagot, és a méréstől vagy a szimulációtól kaphatunk impulzusos válaszokat. De mi történik, ha nem szeretnénk, hogy az akusztika pontosan illeszkedjen a fizikához, hanem inkább a jelenet érzelmi igényeihez igazodva? A képpont-értékekhez hasonlóan az Impulzusos válasz csak a több ezer számból álló lista, így lehetséges, hogy az esztétikai igényeknek megfelelően módosítható? És mi a teendő, ha olyan elzáródást/akadályt szeretnénk használni, amely gördülékenyen változik az átjárók vagy az akadályok mögött, hány impulzusos válaszra van szükségünk a zökkenőmentes működéshez? Mi a teendő, ha a forrás gyorsan mozog? Hogyan lehet közbeszúrást végezni?
+Az impulzusválasz minden érdekes szoba akusztikai effektust rögzít, és szűrővel hatékonyan alkalmazhatjuk a hangra, és impulzusválaszokat kaphatunk a mérésből vagy szimulációból. De mi van, ha nem akarjuk, hogy az akusztika pontosan egyezzen a fizikával, hanem inkább úgy formázza, hogy megfeleljen egy jelenet érzelmi igényeinek? De hasonlóan a pixelértékekhez, az impulzusválasz csak egy több ezer számból álló lista, hogyan állíthatjuk be az esztétikai igényekhez? És mi van, ha azt akarjuk, hogy elzáródás / akadály, hogy zökkenőmentesen változik, miközben áthalad ajtók vagy akadályok mögött, hány impulzus válaszok van szükségünk, hogy a sima hatás? Mi van, ha a forrás gyorsan mozog? Hogyan interpolálunk?
 
-A szimulációs és az Impulzusos válaszokat nehéz felvenni az interaktív címekbe tartozó akusztika egyes aspektusaira. De továbbra is készíthetünk olyan hangátviteli rendszereket, amelyek támogatják a tervezői beállításokat, ha a szimulációról a jól ismert hangalapú DSP Effect paraméterekkel tudjuk összeállítani az Impulzusos válaszokat.
+Úgy hangzik, nehéz használni szimuláció és impulzus válaszok bizonyos aspektusait akusztika interaktív címek. De még mindig építhetünk egy audio közlekedési rendszert, amely támogatja a tervezői beállításokat, ha a szimulációból származó impulzusválaszainkat összekapcsoljuk a jól ismert audio DSP hatás paraméterekkel.
 
-## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>A szimulációs és a hangalapú DSP összekapcsolása paraméterekkel
+## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Szimuláció csatlakoztatása hangDSP-hez paraméterekkel
 
-Egy impulzusos válasz minden érdekes (és minden érdektelen) akusztikai hatást tartalmaz. A hangdsp-blokkok, ha a paraméterek megfelelően vannak beállítva, érdekes akusztikai hatást képesek megjeleníteni. Az akusztikus szimuláció használatával hangalapú DSP-blokkot lehet vezetni a hangátviteli műveletek 3D-jelenetekben történő automatizálásához. Ez a mérés jól ismert bizonyos gyakori és fontos akusztikai hatásokhoz, beleértve az elzáródást, az elzáródást, a portált és a visszaverődést.
+Az impulzusválasz minden érdekes (és minden érdektelen) akusztikai hatást tartalmaz. Audio DSP blokkok, ha a paraméterek megfelelően vannak beállítva, teszi érdekes akusztikus hatást. Az akusztikai szimuláció használata egy hang DSP blokk meghajtására a 3D-s jelenetben történő hangátvitel automatizálásához csak az audio DSP paraméterek impulzusválaszból történő mérésének kérdése. Ez a mérés jól ismert bizonyos gyakori és fontos akusztikai hatások, beleértve az elzáródás, elzáródás, portalling, és a visszhang.
 
-Ha azonban a szimuláció közvetlenül a hangalapú DSP-paraméterekhez csatlakozik, hol van a tervező beállítása? Mi volt a nyereség? Emellett jelentős mennyiségű memóriát biztosítunk az Impulzusos válaszok elvetésével és néhány DSP-paraméter megtartásával. Továbbá ahhoz, hogy a tervező kihasználja a végeredményt, csak meg kell keresnie a tervezőt a szimuláció és a hangalapú DSP használatával.
+De ha a szimuláció közvetlenül kapcsolódik az audio DSP paraméterekhez, hol van a tervezői korrekció? Mit nyertünk? Nos, jelentős mennyiségű memóriát nyerünk vissza úgy, hogy elvetjük az impulzusválaszokat, és megtartunk néhány DSP paramétert. És hogy a tervező némi hatalmat a végeredmény, már csak meg kell találni a módját, hogy helyezze be a tervező között a szimuláció és az audio DSP.
 
-![Gráf és stilizált impulzusos válasz paraméterekkel átfedésben](media/acoustic-parameters.png)
+![Stilizált impulzusválaszt tartalmazó grafikon kirakott paraméterekkel](media/acoustic-parameters.png)
 
-## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Hangkialakítás a hangalapú DSP-paraméterek átalakításával a szimulációból
+## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>Hangtervezés az audio DSP paraméterek szimulációból történő átalakításával
 
-Gondolja át, milyen hatással van a napszemüveg a világ nézetére. A szemüvegek egy világos napon csökkentik a fényt, hogy kényelmesebbek legyenek. A sötét helyiségekben előfordulhat, hogy egyáltalán nem fog tudni semmit látni. A szemüvegek nem állítanak be bizonyos szintű fényerőket minden helyzetben; csak minden sötétebbet tesznek.
+Fontolja meg a hatása a napszemüveg van a kilátás a világ. Egy fényes napon a szemüveg csökkentheti a fényt, hogy valami kényelmesebb. Egy sötét szobában, lehet, hogy nem is látsz semmit. A szemüveg nem állít be egy bizonyos fényerőt minden helyzetben; csak mindent sötétebbé tesznek.
 
-Ha a hanganyagot az elzáródási és a visszaverődési paraméterek használatával szimuláljuk, akkor a szimulátor után hozzáadhatunk egy szűrőt a DSP által megjelenített paraméterek módosításához. A szűrő nem kényszeríti ki egy bizonyos szintű elzáródás vagy reverb farok hosszát, hasonlóan a napszemüveghez, hogy ne legyenek minden helyiségben azonos fényerő. Előfordulhat, hogy a szűrő minden occluder occlude kevesebbet. Vagy további occlude. Egy "elsötétítő" elzáródási paraméter hozzáadásával és módosításával a nagyméretű, nyitott szobák továbbra sem tudnak semmilyen elzáródást, míg az átjárók közepestől erős elzáródási hatásra növekednek, miközben megőrzik a simaságot a váltás során ezt a szimuláció biztosítja.
+Ha szimulációt használunk az audio DSP-nk meghajtására elzáródási és reverberation paraméterek kel, a szimulátor után hozzáadhatunk egy szűrőt, hogy módosítsuk a DSP által "látott" paramétereket. A szűrő nem kényszeríti egy bizonyos szintű elzáródás vagy zengetés farok hossza, ugyanúgy, mint napszemüveg nem teszi minden szobában ugyanazt a fényerőt. A szűrő lehet, hogy csak, hogy minden elzár elzáródás kevesebb. Vagy elzáródás több. Egy "sötétedő" elzáródási paraméterszűrő hozzáadásával és beállításával a nagy, nyitott helyiségeknek még mindig kevés vagy semmilyen elzáródási hatásuk lenne, míg az ajtók közepesről erős elzáróhatásra nőnének, miközben megtartják a sima sági átmeneteket a szimuláció által biztosított adatok.
 
-Ebben a paradigmában a tervező feladata megváltoztatja az akusztikus paraméterek kiválasztását minden esetben, a szűrők kiválasztására és módosítására, hogy azok a szimulációból származó legfontosabb DSP-paraméterekre vonatkozzanak. Ez a művelet emeli a tervező tevékenységeit, amelyek a szűk környezetekben a zökkenőmentes áttérések beállításával kapcsolatosak, és a keverési és a visszaverődési hatások intenzitásának, valamint a különböző források jelenlétének magasabb szempontjaira vonatkoznak. Természetesen, ha a helyzet igényt kielégít, az egyik szűrő mindig elérhető, így egyszerűen visszatérhet egy adott forráshoz tartozó DSP-paraméterek kiválasztására egy adott helyzetben.
+Ebben a paradigmában a tervező feladata az akusztikai paraméterek kiválasztásától minden egyes helyzethez, a szűrők kiválasztásáig és beállításáig változik, hogy a szimulációból származó legfontosabb DSP paraméterekre vonatkozzon. Ez emeli a tervező tevékenységét a szűk aggodalmak létrehozása sima átmenetek a magasabb aggodalmak intenzitása elzáródás és visszhanghatások és a források jelenléte a mix. Természetesen, ha a helyzet megköveteli, egy szűrő mindig elérhető, hogy egyszerűen menjen vissza a DSP paraméterek kiválasztására egy adott forrás egy adott helyzetben.
 
-## <a name="sound-design-in-project-acoustics"></a>Hangkialakítás a Project Akusztikaében
+## <a name="sound-design-in-project-acoustics"></a>Hangtervezés a Project Akusztikában
 
-A Project Acoustics csomag a fent ismertetett összetevők mindegyikét integrálja: egy szimulátort, egy kódolót, amely Kinyeri a paramétereket, és létrehozza az akusztikai eszközt, az audió DSP-t és a kiválasztott szűrőket. A hangalapú kialakítás a Project Acoustics használatával olyan paraméterek kiválasztását vonja maga után, amelyek a szimulációból származtatott elzáródási és visszaverődési paramétereket módosítják
+A Project Acoustics csomag integrálja a fent leírt összetevők mindegyikét: egy szimulátort, egy kódolót, amely kinyeri a paramétereket, és létrehozza az akusztikai eszközt, az audio DSP-t és a szűrők választékát. A Project Acoustics hangtervezése magában foglalja a paraméterek kiválasztását a szűrőkhöz, amelyek a szimulációból származó és az audio DSP-re alkalmazott elzáródási és visszhangi paramétereket módosítják, a dinamikus vezérlőket a játékszerkesztőn és az audiomotoron belül téve.
 
 ## <a name="next-steps"></a>További lépések
-* Próbálja ki a tervezési paradigmát a [projekt akusztikai útmutatója az Unity](unity-quickstart.md) vagy az [Unreal projekthez](unreal-quickstart.md) készült Acoustics gyors üzembe helyezéséhez
-* Ismerje meg a [projekt akusztikai tervezési vezérlőit](unity-workflow.md) az egységhez vagy a [projekt akusztikai kialakításához az Unreal](unreal-workflow.md) -hez
+* Próbálja ki a tervezési paradigmát a [Project Acoustics rövid útmutatóval az Unity-hez](unity-quickstart.md) vagy a Project [Acoustics rövid útmutatóval az Unreal számára](unreal-quickstart.md)
+* Fedezze fel a [Project Acoustics tervezési vezérlőit a Unity-hez](unity-workflow.md) vagy a [Project Acoustics tervezési vezérlőit az Unreal-hoz](unreal-workflow.md)
 

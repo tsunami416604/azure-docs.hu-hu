@@ -1,7 +1,7 @@
 ---
-title: Rendszerképek lekérése az egyéni nézet – Bing egyéni keresés
+title: Képek beszereznie az egyéni nézetből – Bing egyéni keresés
 titleSuffix: Azure Cognitive Services
-description: Rendszerképek lekérése a webes egyéni nézetének Bing Custom Search használatával magas szintű áttekintése.
+description: Magas szintű áttekintés arról, hogy a Bing egyéni keresés használatával milyen képeket kaphat az egyéni webes nézetből.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 5fa71c62969e0f1ff7e98f374eca63efa051c041
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390332"
 ---
-# <a name="get-images-from-your-custom-view"></a>Rendszerképek lekérése az egyéni nézet
+# <a name="get-images-from-your-custom-view"></a>Képek beszerezése az egyéni nézetből
 
-Bing – egyéni rendszerképek keresés lehetővé teszi, hogy az egyéni keresési funkciókat képekkel gazdagabbá teheti. A webes találatokhoz hasonlóan az egyéni keresés a képkeresést is támogatja azokon a webhelyeken, amelyek a keresési példányhoz engedélyezve vannak. A képek, az egyéni lemezképek keresési Bing-API használatával, vagy a tárolt felhasználói felületen funkciót. A felhasználói felületi üzemeltetett szolgáltatás használata könnyen használható és a keresési funkciót és röviden rendelés ajánlott.  A tárolt felhasználói felület képeket konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a központi felhasználói felület](hosted-ui.md).
+A Bing egyéni képek keresése lehetővé teszi az egyéni keresési élmény képekkel való gazdagítását. A webes találatokhoz hasonlóan az egyéni keresés a képkeresést is támogatja azokon a webhelyeken, amelyek a keresési példányhoz engedélyezve vannak. A képeket a Bing Egyéni képek keresési API-jával vagy a Hosztott felhasználói felület funkciójával szerezheti be. A Hosted ui funkció használata egyszerű, és ajánlott a keresési élmény rövid időn belül történő felfuttatásához.  A szolgáltatott felhasználói felület képek rekonfigurálásáról a [Hosztolt felhasználói felület konfigurálása című](hosted-ui.md)témakörben talál.
 
-Ha szeretné jobban szabályozhatja a keresési eredményekkel, használhatja az egyéni lemezképek keresési Bing-API. Mivel az API meghívása hasonlít a Bing Image Search API hívása kivétele [a Bing Képkeresés](../Bing-Image-Search/overview.md) példák az API-t hívná. Azonban mielőtt ezt megtenné, ismerje meg az a [egyéni rendszerképek keresési API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) tartalmat. A legfontosabb különbségek a következők: a támogatott lekérdezési paraméterek (meg kell adni a customConfig lekérdezési paraméter) és a végpont kéréseket küld.
+Ha szeretné, hogy jobban kézben jelenítse meg a keresési eredményeket, használhatja a Bing Egyéni képek keresési API-ját. Mivel az API-hívás hasonló a Bing Image Search API hívásához, a [Bing Image Search](../Bing-Image-Search/overview.md) kivételezése példákat az API-t. De mielőtt ezt megtenné, ismerkedjen meg az [Egyéni képek keresés API referenciatartalommal.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) A fő különbségek a támogatott lekérdezési paraméterek (tartalmaznia kell a customConfig lekérdezési paraméter) és a végpont, amelynek kéréseket küld.
 
 <!--
 ## Next steps

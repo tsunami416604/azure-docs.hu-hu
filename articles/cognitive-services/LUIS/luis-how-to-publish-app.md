@@ -1,7 +1,7 @@
 ---
 title: Alkalmazás közzététele – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ha befejezte a elkészítését és tesztelését a LUIS alkalmazás aktív, tegye elérhetővé számára az ügyfélalkalmazás közzétesszük azt a végpontot.
+description: Ha befejezte az aktív LUIS-alkalmazás kiépítését és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végponton való közzététellel.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,88 +11,88 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220885"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053436"
 ---
-# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
+# <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Az aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
-Ha befejezte az aktív LUIS-alkalmazás létrehozását, betanítását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végpontra való közzétételsel. 
+Amikor befejezte az aktív LUIS-alkalmazás kiépítését, betanítását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végponton való közzététellel. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Közzététel
 
-1. A végponton való közzétételhez kattintson a jobb oldali panelen a **Közzététel** elemre. 
+1. A végponton való közzétételhez válassza a Jobb felső **panelen** a Közzététel lehetőséget. 
 
-    ![Közzététel gomb a fent, jobb oldali navigációs sávon](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![Közzététel gomb felül, jobb oldali navigációs sáv](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Válassza ki a közzétett előrejelzési végpont beállításait, majd válassza a **Közzététel**lehetőséget.
+1. Adja meg a közzétett előrejelzési végpont beállításait, majd válassza a **Közzététel lehetőséget.**
 
-    ![Válassza a közzétételi beállítások lehetőséget, majd válassza a közzététel gombot](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![Válassza a közzétételi beállítások lehetőséget, majd válassza a Közzététel gombot](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Közzétételi résidők
+### <a name="publishing-slots"></a>Közzétételi tárolóhelyek
 
-Válassza ki a megfelelő tárolóhelyet, amikor megjelenik az előugró ablak: 
+Az előugró ablak megjelenítésekor válassza ki a megfelelő foglalatot: 
 
-* Átmeneti
-* Éles 
+* Előkészítés
+* Production 
 
-Ha mindkét közzétételi tárolóhelyet használja, ez lehetővé teszi, hogy az alkalmazás két különböző verzióját elérhetővé tegye a közzétett végpontokon vagy ugyanazon a verzión két különböző végponton. 
+Mindkét közzétételi bővítőhely használatával ez lehetővé teszi, hogy az alkalmazás két különböző verziója érhető el a közzétett végpontokon, vagy ugyanazt a verziót két különböző végpontokon. 
 
 ### <a name="publishing-regions"></a>Közzétételi régiók
 
-Az alkalmazás az **[Azure-erőforrások](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **kezelése** -> a Luis-portálon a Luis-előrejelzési végpont erőforrásaihoz társított összes régióban megjelenik. 
+Az alkalmazás az Azure-erőforrások **kezelése** -> lapon a LUIS-portálon hozzáadott LUIS-előrejelzési végpont-erőforrásokhoz társított összes régióban**[megjelenik.](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** 
 
-Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmazáshoz létrehoz egy Luis-erőforrást két régióban, a **westus** és a **eastus**, és hozzáadja ezeket az alkalmazáshoz erőforrásként, az alkalmazás mindkét régióban közzé lesz téve. A LUIS régiókkal kapcsolatos további információkért lásd: [régiók](luis-reference-regions.md).
+Ha például egy [www.luis.ai-én](https://www.luis.ai)létrehozott alkalmazás esetén két régióban, a **Westusban** és **az Eastusban**hoz létre LUIS-erőforrást, és ezeket erőforrásként adja hozzá az alkalmazáshoz, az alkalmazás mindkét régióban megjelenik. A LUIS-régiókról a [Régiók című témakörben talál](luis-reference-regions.md)további információt.
 
 > [!TIP]
-> 3 authoring-régió van. Ahhoz a régióhoz kell tartoznia, amelyet közzé kíván tenni. Ha minden régióban közzé kell tennie az összes régiót, a szerzői folyamatokat és a létrejövő betanított modellt mind a 3 szerzői régióban kell kezelnie. 
+> Jelenleg 3 szerzői régiók. Abban a régióban kell szerzőnek lennie, ahol közzé kíván tenni. Ha minden régióban közzé kell tennie, mind a 3 szerzői régióban kezelnie kell a szerzői folyamatot és az eredményül kapott betanított modellt. 
 
 
-## <a name="configuring-publish-settings"></a>Nastavení publikování konfigurálása
+## <a name="configuring-publish-settings"></a>Közzétételi beállítások konfigurálása
 
-Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
+Miután kiválasztotta a tárolóhelyet, adja meg a közzétételi beállításokat:
 
 * Hangulatelemzés
-* Helyesírás-javítás – v2 előrejelzési végpont
-* Beszéd alapozó 
+* Helyesírás-ellenőrzés - csak a v2 előrejelzési végpont
+* Beszéd alapozása 
 
-A közzététel után ezek a beállítások a **kezelés** szakasz **közzétételi beállítások** lapján érhetők el. A beállításokat minden közzététel lehetőséggel módosíthatja. Ha megszakít egy közzétételt, a közzététel során végrehajtott módosítások is megszakadnak. 
+A közzététel után ezek a beállítások a **Kezelés** szakasz **Közzétételi beállítások** lapján tekinthetők meg. A beállításokat minden közzétételnél módosíthatja. Ha megszakítja a közzétételt, a közzététel során végrehajtott módosítások is törlődnek. 
 
 ### <a name="when-your-app-is-published"></a>Az alkalmazás közzétételekor
 
-Az alkalmazás sikeres közzétételekor megjelenik egy sikeres értesítés a böngésző tetején. Az értesítés a végpontokra mutató hivatkozást is tartalmaz. 
+Az alkalmazás sikeres közzététele után a böngésző tetején megjelenik egy sikeres értesítés. Az értesítés a végpontokra mutató hivatkozást is tartalmaz. 
 
-Ha a végpont URL-címe van szüksége, válassza ki a hivatkozást. A végpont URL-címeihez a felső menüben a **kezelés** lehetőségre kattintva, majd a bal oldali menüben válassza az **Azure-erőforrások** lehetőséget. 
+Ha szüksége van a végpont URL-címére, jelölje ki a hivatkozást. A végpont URL-címeit úgy is megérheti, hogy a felső menüben a Kezelés lehetőséget **választja,** majd a bal oldali **menüben** válassza az Azure Resources lehetőséget. 
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
 <a name="enable-sentiment-analysis"></a>
 
-A hangulat elemzése lehetővé teszi a LUIS számára a [text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) integrálását az érzelmek és a kulcsfontosságú kifejezések elemzésének biztosítása érdekében. 
+A hangulatelemzés lehetővé teszi a LUIS számára, hogy integrálódjon [a Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) szolgáltatással, hogy hangulat- és kulcskifejezés-elemzéseket biztosítson. 
 
-Nem kell adnia a Text Analytics kulcsot, és nem jár költségekkel számlázási ezt a szolgáltatást az Azure-fiókjába. 
+Nem kell megadnia a Text Analytics-kulcsot, és nincs számlázási díj a szolgáltatás az Azure-fiók. 
 
-Véleményadatok egy 1 és 0 a pozitív jelző közötti pontszámot (közelebb 1) vagy negatív (0 közelebb) az adatok a róluk szóló véleményeket. A `positive`, `neutral`és `negative` hangulati címkéje támogatott kultúrán alapul. Jelenleg csak az angol támogatja a hangulati címkéket. 
+A hangulatadatok az adatok pozitív (1-hez közelebbi) vagy negatív (0-hoz közelebbi) hangulatát jelző 1 és 0 közötti pontszám. A , `positive` `neutral`és `negative` a hangulatcímkéje támogatott kulturális környezetszerint történik. Jelenleg csak az angol nyelv támogatja a hangulatcímkéket. 
 
-A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-concept-data-extraction.md#sentiment-analysis) talál további információt.
+A JSON-végpontra adott válaszról a hangulatelemzéssel kapcsolatos további információkért [lásd: Hangulatelemzés](luis-concept-data-extraction.md#sentiment-analysis)
 
 ## <a name="spelling-correction"></a>Helyesírás-javítás
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-A helyesírási javítások a LUIS-felhasználó teljes előrejelzése előtt történnek. A válaszban megtekintheti az eredeti szöveg összes módosítását, beleértve a helyesírást is.
+A helyesírás-javítás a LUIS-felhasználó kimondott szövegének előrejelzése előtt történik. A válaszban láthatja az eredeti utterance (kifejezés) bármilyen módosítását, beleértve a helyesírást is.
 
-## <a name="speech-priming"></a>Beszéd alapozó
+## <a name="speech-priming"></a>Beszéd alapozása
 
-A beszédfelismerési folyamat célja a LUIS modell elküldése a beszédfelismerési szolgáltatásoknak a szöveg beszédbe való átalakítása előtt. Ez lehetővé teszi, hogy a beszédfelismerési szolgáltatás pontosabban biztosítson beszédfelismerési konverziót a modell számára. Ez lehetővé teszi, hogy a bot beszédét és a LUIS kérelmeit és válaszait egy hívással egy beszédes hívást indítson, és egy LUIS-választ kérjen vissza. Összességében kevesebb késést biztosít.
+A beszédfelismerési alapozás a LUIS-modell beszédfelismerési szolgáltatásokba küldésének folyamata a szöveg beszédfelismerésre való átalakítása előtt. Ez lehetővé teszi, hogy a beszédszolgáltatás pontosabban biztosítsa a beszédkonverziót a modellhez. Ez lehetővé teszi a robot beszéd- és LUIS-kéréseit és válaszait egy hívásban egy beszédhívással és egy LUIS-válasz visszaszerzésével. Összességében kevesebb késést biztosít.
 
 ## <a name="next-steps"></a>További lépések
 
-* Lásd: [kulcsok kezelése](./luis-how-to-azure-subscription.md) az Azure-előfizetési kulcshoz való hozzáadásához a Luis-hez, valamint a Bing Spell Check kulcs beállításához, és az összes leképezést az eredmények között.
-* A közzétett alkalmazás tesztelési konzolon történő tesztelésével kapcsolatos útmutatásért lásd: [az alkalmazás betanítása és tesztelése](luis-interactive-test.md) .
+* A [Kulcsok kezelése](./luis-how-to-azure-subscription.md) című témakörben található kulcsok hozzáadása a LUIS-hoz, valamint a Bing helyesírás-ellenőrző kulcsának beállítása és az összes leképezés felvétele az eredményekbe című témakörben.
+* A közzétett alkalmazás tesztelésével kapcsolatos útmutatást [az alkalmazás betanítása és tesztelése](luis-interactive-test.md) című témakörben találja.
 
