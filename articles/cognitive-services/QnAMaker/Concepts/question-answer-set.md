@@ -1,49 +1,49 @@
 ---
-title: Tudásbázis tervezése – QnA Maker
-description: A QnA Maker Tudásbázis egy kérdés-válasz típusú (QnA) készletből és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
+title: Tervezési tudásbázis - QnA Maker
+description: A QnA Maker tudásbázis a qna-párokhoz tartozó kérdés-válasz (QnA) készletekből és választható metaadatokból áll.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76844318"
 ---
-# <a name="question-and-answer-set-concepts"></a>Kérdések és válaszok beállítása – fogalmak
+# <a name="question-and-answer-set-concepts"></a>A kérdések és kérdések halmazának fogalmai
 
-A Tudásbázis a kérdések és válaszok (QnA) készletből áll.  Mindegyik készlet egyetlen választ tartalmaz, és egy készlet tartalmazza az adott _válaszhoz_tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat.
+A tudásbázis kérdések és válasz (QnA) készletekből áll.  Minden készletnek egy válasza van, és egy készlet tartalmazza a _válaszhoz_kapcsolódó összes információt. A válasz lazán hasonlíthat egy adatbázissorra vagy egy adatstruktúra-példányra.
 
-## <a name="question-and-answer-sets"></a>Kérdések és válaszok készletei
+## <a name="question-and-answer-sets"></a>Kérdés- és válaszkészletek
 
-A kérdés-válasz (QnA) készlet **kötelező** beállításai a következők:
+A kérdések és válasz (QnA) készletben **szükséges** beállítások a következők:
 
-* a **felhasználói lekérdezésnek a QnA Maker** gépi tanuláshoz használt szövege, amely a felhasználó kérdéséhez igazodik a különböző szóhasználattal, de ugyanaz a válasz
-* a **Válasz** – a készlet válasza az a válasz, amelyet a rendszer akkor ad vissza, amikor egy felhasználói lekérdezés megfelel a kapcsolódó kérdésnek
+* egy **kérdés** - a felhasználói lekérdezés szövege, a QnA Maker gépi tanulásához, a felhasználó kérdésének szövegéhez való igazítás különböző megfogalmazással, de ugyanaz a válasz
+* a **válasz** - a készlet válasza az a válasz, amelyakkor ad vissza, amikor egy felhasználói lekérdezés tegyezik meg a kapcsolódó kérdéssel
 
-Minden készletet egy **azonosító**képvisel.
+Minden készletet egy **azonosító**jelöl.
 
-A készlet **választható** beállításai a következők:
+A **készlet választható** beállításai a következők:
 
-* **A kérdés alternatív formái** – ez segít QnA Maker a megfelelő választ visszaadni a kérdéses szövegezések széles körére
-* **Metaadatok**: a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
-* Többfordulatú **kérések**, amelyek a több fordulatos beszélgetés folytatására szolgálnak
+* **Alternatív formái a kérdés** - ez segít QnA Maker vissza a helyes választ a szélesebb körű kérdés kifejezések
+* **Metaadatok**: A metaadatok egy QnA-párhoz társított címkék, amelyek kulcsérték-párokként jelennek meg. A metaadat-címkék a QnA-párok szűrésére szolgálnak, és korlátozzák azt a készletet, amely en a lekérdezésegyeztetést végzik.
+* **Többfordulatos rákérdezések**, amelyek a többfordulatos beszélgetés folytatására szolgálnak
 
 ![QnA Maker tudásbázisok](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
-## <a name="editorially-add-to-knowledge-base"></a>Szerkesztői Hozzáadás a tudásbázishoz
+## <a name="editorially-add-to-knowledge-base"></a>Szerkesztői módon hozzá tudásbázis
 
-Ha nem rendelkezik már meglévő tartalommal a Tudásbázis feltöltéséhez, a QnA Maker-portálon is hozzáadhat QnA-készleteket. Megtudhatja, hogyan frissítheti a tudásbázist [itt](../How-To/edit-knowledge-base.md).
+Ha nem rendelkezik már meglévő tartalommal a tudásbázis feltöltéséhez, hozzáadhat QnA-készleteket szerkesztői módon a QnA Maker portálon. Itt megtudhatja, hogyan [here](../How-To/edit-knowledge-base.md)frissítheti tudásbázisát.
 
-## <a name="editing-your-knowledge-base-locally"></a>A Tudásbázis helyi szerkesztése
+## <a name="editing-your-knowledge-base-locally"></a>A tudásbázis helyi szerkesztése
 
-A Tudásbázis létrehozása után javasolt a [QnA Maker-portálon](https://qnamaker.ai)lévő Tudásbázis szövegének szerkesztése a helyi fájlok exportálása és újraimportálása helyett. Előfordulhat azonban, hogy a tudásbázist helyileg kell szerkesztenie.
+A tudásbázis létrehozása után a tudásbázis szövegét a [QnA Maker portálon](https://qnamaker.ai)ajánlott a tudásbázis szövegének szerkesztése, nem pedig a helyi fájlokon keresztüli exportálás és újraimportálás. Előfordulhat azonban, hogy helyileg kell szerkeszteni egy tudásbázist.
 
-Exportálja a tudásbázist a **Beállítások** lapról, majd szerkessze a tudásbázist a Microsoft Excelben. Ha egy másik alkalmazás használatával szerkeszti az exportált fájlt, előfordulhat, hogy az alkalmazás szintaktikai hibákat tartalmaz, mert az nem teljes TSV-kompatibilis. A Microsoft Excel TSV-fájljai általában nem vezetnek be formázási hibákat.
+Exportálja a **tudásbázist** a Beállítások lapról, majd szerkesztse a tudásbázist a Microsoft Excel programmal. Ha úgy dönt, hogy egy másik alkalmazást használ az exportált fájl szerkesztéséhez, az alkalmazás szintaktikai hibákat okozhat, mert nem teljesen kompatibilis a TSV-vel. A Microsoft Excel TSV-fájljai általában nem okoznak formázási hibákat.
 
-Miután végzett a szerkesztéssel, importálja újra a TSV-fájlt a **Beállítások** lapról. Ez teljes mértékben lecseréli az aktuális tudásbázist az importált tudásbázisba.
+Miután végzett a szerkesztésekkel, importálja újra a TSV-fájlt a **Beállítások** lapról. Ez teljesen felváltja az aktuális tudásbázist az importált tudásbázissal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tudásbázis életciklusa QnA Maker](./development-lifecycle-knowledge-base.md)
+> [Tudásbázis életciklusa a QnA Maker programban](./development-lifecycle-knowledge-base.md)

@@ -1,7 +1,7 @@
 ---
-title: További tudnivalók az eszközök áttekintése – Content Moderator
+title: Ismerje meg az Ellenőrzés eszköz fogalmait - Tartalommoderátor
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a Content Moderator felülvizsgálati eszközt, amely egy olyan webhely, amely összehangolja a kombinált AI-és emberi felülvizsgálati moderálási erőfeszítéseket.
+description: Ismerje meg a Tartalommoderátor-ellenőrző eszközt, amely egy olyan webhely, amely koordinálja a kombinált AI-t és az emberi ellenőrzés moderálási erőfeszítéseit.
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,42 +11,42 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
 ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169502"
 ---
-# <a name="content-moderator-review-tool"></a>Content Moderator felülvizsgálati eszköz
+# <a name="content-moderator-review-tool"></a>Tartalommoderátor-ellenőrző eszköz
 
-Az Azure Content Moderator olyan szolgáltatásokat biztosít, amelyekkel egyesítheti a gépi tanulási tartalmak moderálását emberi felülvizsgálatokkal, és a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) webhelye egy felhasználóbarát kezelőfelület, amely részletes hozzáférést biztosít ezekhez a szolgáltatásokhoz.
+Az Azure Content Moderator szolgáltatásokat nyújt a gépi tanulási tartalom moderálásés az emberi felülvizsgálatok kombinálására, és a [Felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) webhelye egy felhasználóbarát előtér, amely részletes hozzáférést biztosít ezekhez a szolgáltatásokhoz.
 
-![A felülvizsgálati eszköz irányítópultja egy böngészőben](./images/0-dashboard.png)
+![A felülvizsgálati eszköz irányítópultja a böngészőben](./images/0-dashboard.png)
 
-## <a name="what-it-does"></a>Funkció
+## <a name="what-it-does"></a>Művelet
 
-A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com)a géppel támogatott moderálási API-kkal együtt használva a következő feladatokat hajthatja végre a tartalom-moderálási folyamat során:
+A [Véleményezés eszköz](https://contentmoderator.cognitive.microsoft.com), ha a gépáltal támogatott moderálási API-kkal együtt használja, lehetővé teszi a következő feladatok elvégzését a tartalommoderálási folyamatban:
 
-- Egyetlen eszközkészletet használhat a tartalom moderálására több formátumban (szöveg, rendszerkép és videó).
-- Automatizálhatja az emberi [felülvizsgálatok](../review-api.md#reviews) létrehozását, ha a moderálási API eredményei beérkeznek.
-- Több felülvizsgálati csapatnak is hozzárendelhet vagy kiterjesztheti a tartalmi értékeléseket, amelyek a tartalom kategóriája vagy a felhasználói élmény szintjén vannak rendezve.
-- Az alapértelmezett vagy az egyéni logikai szűrők ([munkafolyamatok](../review-api.md#workflows)) használatával rendezheti és követheti a tartalmakat anélkül, hogy kódot kellene írnia.
-- Az [Összekötők](./configure.md#connectors) segítségével a Content moderator API-k mellett a Microsoft PhotoDNA, a Text Analytics és a Face Services használatával is feldolgozhatja a tartalmakat.
-- Készítse el saját összekötőjét munkafolyamatok létrehozásához bármely API-vagy üzleti folyamathoz.
-- A tartalom moderálási folyamataihoz tartozó fő teljesítmény-mérőszámok beolvasása.
+- Egyetlen eszközkészlet segítségével több formátumban (szövegben, képben és videóban) moderálja a tartalmat.
+- Automatizálja az emberi [vélemények](../review-api.md#reviews) létrehozását, amikor a moderálásapi-eredmények beérkeznek.
+- A tartalomértékelésekhozzárendelése vagy eszkalálása több ellenőrzési csoporthoz, tartalomkategória vagy élményszint szerint rendezve.
+- Az alapértelmezett vagy egyéni logikai szűrők[(munkafolyamatok](../review-api.md#workflows)) segítségével kód írása nélkül rendezheti és nyomon követheti a tartalmat.
+- [Összekötők](./configure.md#connectors) használatával a Tartalommoderátor API-k mellett a Microsoft PhotoDNA, a Text Analytics és a Face szolgáltatásokkal is feldolgozhat tartalmakat.
+- Saját összekötőt hozhat létre, hogy munkafolyamatokat hozzon létre bármely API-hoz vagy üzleti folyamathoz.
+- A tartalommoderálási folyamatok legfontosabb teljesítménymutatóit kaphatja meg.
 
-## <a name="review-tool-dashboard"></a>Felülvizsgálati eszköz irányítópultja
+## <a name="review-tool-dashboard"></a>Az eszköz irányítópultjának áttekintése
 
-Az **irányítópult** lapon megtekintheti az eszközön végzett tartalmi felülvizsgálatok fő mérőszámait. Tekintse meg a képek, szövegek és videók összesített, teljes és függőben lévő felülvizsgálatait. Megtekintheti azon felhasználók és csoportok részletezését is, amelyek elvégezték az értékeléseket, valamint az alkalmazott moderálási címkéket is.
+Az **Irányítópult** lapon megtekintheti az eszközben végzett tartalomértékelések fő mutatóit. Megtekintheti a kép-, szöveg- és videotartalomösszes, teljes és függőben lévő értékeléseinek számát. Megtekintheti az értékeléseket elvégzett felhasználók és csoportok, valamint az alkalmazott moderálási címkék lebontását is.
 
-![Az irányítópult megtekintése](images/0-dashboard.png)
+![Irányítópult megtekintése](images/0-dashboard.png)
 
-## <a name="review-tool-credentials"></a>Eszköz hitelesítő adatainak áttekintése
+## <a name="review-tool-credentials"></a>Az eszköz hitelesítő adatainak áttekintése
 
-Ha regisztrál a [felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com), a rendszer kérni fogja, hogy válasszon ki egy Azure-régiót a fiókhoz. Ennek az az oka, hogy a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) létrehoz egy ingyenes próbaverziót az Azure Content moderator Services szolgáltatáshoz; erre a kulcsra szüksége lesz a REST-hívásokból vagy az ügyféloldali SDK-ból származó szolgáltatások eléréséhez. A kulcs-és API-végpont URL-címét a **beállítások** > a **hitelesítő adatok**lehetőség kiválasztásával tekintheti meg.
+Amikor regisztrál a [Véleményezés eszközzel,](https://contentmoderator.cognitive.microsoft.com)a rendszer kéri, hogy válasszon ki egy Azure-régiót a fiókjához. Ennek az az oka, hogy a [Véleményezés eszköz](https://contentmoderator.cognitive.microsoft.com) ingyenes próbakulcsot hoz létre az Azure Content Moderator szolgáltatásaihoz; szüksége lesz erre a kulcsra, hogy hozzáférjen bármelyik szolgáltatáshoz egy REST-hívásból vagy ügyfél SDK-ból. A kulcs- és API-végpont URL-címét a **Beállítások** > hitelesítő adatok lehetőséget választva**tekintheti**meg.
 
-![Hitelesítő adatok Content Moderator](images/settings-6-credentials.png)
+![Tartalommoderátor hitelesítő adatai](images/settings-6-credentials.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Lásd: [a felülvizsgálati eszköz konfigurálása](./configure.md) , amelyből megtudhatja, hogyan érheti el a felülvizsgálati eszköz erőforrásait és módosíthatja a beállításokat.
+A [Véleményezés eszköz konfigurálása](./configure.md) című témakörből megtudhatja, hogyan érheti el az Eszköz erőforrásait, és hogyan módosíthatja a beállításokat.

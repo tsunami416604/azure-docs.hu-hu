@@ -1,7 +1,7 @@
 ---
-title: Projekt akusztika Azure Batch fiók beállítása
+title: Project Acoustics Azure Batch-fiók beállítása
 titlesuffix: Azure Cognitive Services
-description: Ez a útmutató leírja, hogyan állítható be egy Azure Batch-fiók a Project akusztikai egység és az Unreal Engine integrációjának használatával.
+description: Ez az útmutató egy Azure Batch-fiók beállítását ismerteti a Project Acoustics Unity és az Unreal motorintegrációk számára.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,57 +12,57 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f0f726d9d23f20698d3510ad674331ad74fb703
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68855083"
 ---
-# <a name="project-acoustics-azure-batch-account-setup"></a>Projekt akusztika Azure Batch fiók beállítása
-Ez a útmutató leírja, hogyan állítható be egy Azure Batch-fiók a Project akusztikai egység és az Unreal Engine integrációjának használatával.
+# <a name="project-acoustics-azure-batch-account-setup"></a>Project Acoustics Azure Batch-fiók beállítása
+Ez az útmutató egy Azure Batch-fiók beállítását ismerteti a Project Acoustics Unity és az Unreal motorintegrációk számára.
 
-## <a name="get-an-azure-subscription"></a>Azure-előfizetés igénylése
-A Batch-és Storage-fiókok beállítása előtt [Azure](https://azure.microsoft.com/free/) -előfizetésre van szükség. Ha első alkalommal regisztrál, az Azure-ban néhány korlátozott ingyenes erőforrás és $200 kredit áll rendelkezésre.
+## <a name="get-an-azure-subscription"></a>Azure-előfizetés beszerzése
+A Batch és storage-fiókok beállítása előtt [egy Azure-előfizetés](https://azure.microsoft.com/free/) szükséges. Ha első alkalommal regisztrál, az Azure néhány korlátozott időre szóló szabad erőforrást és $200-os kreditet biztosít.
 
-## <a name="create-azure-batch-and-storage-accounts"></a>Azure Batch-és Storage-fiókok létrehozása
-Ezután kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/batch/batch-account-create-portal) a Azure batch és a társított Azure Storage-fiókok beállításához.
+## <a name="create-azure-batch-and-storage-accounts"></a>Azure Batch- és tárfiókok létrehozása
+Ezután kövesse [az alábbi utasításokat](https://docs.microsoft.com/azure/batch/batch-account-create-portal) az Azure Batch és a kapcsolódó Azure Storage-fiókok beállításához.
 
-Válassza ki a Batch-és a Storage-fiókok alapértelmezett beállításait:
+Válassza az alapértelmezett beállításokat mind a Batch, mind a Storage fiókokhoz:
   
-  ![Képernyőkép a Azure Batch új fiókok beállításairól az alapértelmezett beállítások megjelenítéséhez](media/new-batch-account-create.png)
+  ![Képernyőkép az Azure Batch új fiókbeállításairól az alapértelmezett beállításokkal](media/new-batch-account-create.png)
 
-  ![Képernyőkép az Azure Storage új fiókjairól az alapértelmezett beállítások megjelenítéséhez](media/batch-storage-account-create.png)
+  ![Képernyőkép az Azure Storage új fiókbeállításairól az alapértelmezett beállításokkal](media/batch-storage-account-create.png)
 
-Az Azure-ban a fiókok üzembe helyezése néhány percet vesz igénybe. A portál jobb felső sarkában keresse meg a befejezési értesítést.
+Az Azure-nak néhány percet kell igénybe adnia a fiókok üzembe helyezése. Keressen egy befejezési értesítést a portál jobb felső sarkában.
   
-  ![Képernyőkép az Azure-fiókok üzembe helyezéséről](media/batch-accounts-deploy-notification.png)
+  ![Képernyőkép az Azure-fiókok üzembe helyezett értesítéséről](media/batch-accounts-deploy-notification.png)
 
 A fiókoknak most már láthatónak kell lenniük az irányítópulton.
   
-  ![A Batch-és Storage-fiókot bemutató Azure Portal irányítópult képernyőképe](media/azure-portal-dashboard.png)
+  ![Képernyőkép az Azure Portal irányítópultjáról, amelyen egy Batch- és Storage-fiók látható](media/azure-portal-dashboard.png)
 
-## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Akusztikai sütőipari felhasználói felület beállítása Azure-beli hitelesítő adatokkal
-Kattintson a Batch-fiók hivatkozásra az irányítópulton, majd a Batch-fiók lapon található **kulcsok** hivatkozásra kattintva érheti el a hitelesítő adatait.
+## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Akusztikai bake felhasználói felület beállítása Azure-hitelesítő adatokkal
+Kattintson a Batch-fiók hivatkozásra az irányítópulton, majd kattintson a **Kulcsok** hivatkozásra a Kötegfiók lapon a hitelesítő adatok eléréséhez.
   
-  ![Képernyőkép a Azure Batch-fiókról, amelynek hivatkozása a kulcsok lapra van kijelölve](media/batch-access-keys.png)
+  ![Képernyőkép az Azure Batch-fiókról, amely a Kulcsok lapra mutató hivatkozással van kiemelve](media/batch-access-keys.png)
 
-  ![Képernyőkép az Azure Batch-fiók kulcsainak oldaláról hozzáférési kulcsokkal](media/batch-keys-info.png)
+  ![Képernyőkép az Azure Batch-fiók kulcsailapról hozzáférési kulcsokkal](media/batch-keys-info.png)
 
-Kattintson a **Storage-fiók** hivatkozásra az oldalon az Azure Storage-fiók hitelesítő adatainak eléréséhez.
+Kattintson a **tárfiók** hivatkozásra az oldalon az Azure Storage-fiók hitelesítő adatainak eléréséhez.
   
-  ![Képernyőkép az Azure Storage-fiók kulcsainak oldaláról hozzáférési kulcsokkal](media/storage-keys-info.png)
+  ![Képernyőkép az Azure Storage-fiók kulcsailap hozzáférési kulcsokkal](media/storage-keys-info.png)
 
-Adja meg ezeket a hitelesítő adatokat az [Unity sütni beépülő modulban](unity-baking.md) vagy az [Unreal Bake beépülő modulban](unreal-baking.md).
+Adja meg ezeket a hitelesítő adatokat a [Unity sütni plugin](unity-baking.md) vagy [Unreal sütni plugin](unreal-baking.md).
 
-## <a name="node-types-and-region-support"></a>Csomópontok típusai és régió támogatása
-A Project akusztikai Fsv2-és H-sorozatú, optimalizált Azure-beli virtuálisgép-csomópontokra van szükség, amelyek esetleg nem támogatottak az összes Azure-régióban. Ebben a [táblázatban](https://azure.microsoft.com/global-infrastructure/services) ellenőrizheti, hogy a Batch-fiókjának megfelelő helyet választotta-e.
-![Az Azure Virtual Machines régió szerinti megjelenítését bemutató képernyőfelvétel](media/azure-regions.png) 
+## <a name="node-types-and-region-support"></a>Csomóponttípusok és régiótámogatás
+A Project Acoustics fsv2- és H-sorozatú, optimalizált Azure Virtuálisgép-csomópontokat igényel, amelyek nem minden Azure-régióban támogatottak. Ellenőrizze [ezt a táblázatot,](https://azure.microsoft.com/global-infrastructure/services) és győződjön meg arról, hogy a Batch-fiókmegfelelő helyet választja.
+![Az Azure virtuális gépek régiónkénti képe](media/azure-regions.png) 
 
 ## <a name="upgrading-your-quota"></a>A kvóta frissítése
-Azure Batch fiókokat a fiók létrehozásakor 20 számítási magot tartalmazó korláttal kell kiépíteni. Érdemes lehet ezt a korlátot a gyorsabb sütni-idő növelésére használni, mert számos csomóponton integrálással az akusztikai számítási feladatokat, akár a jelenetben lévő mintavételi pontok számával. A kvóta növeléséhez kattintson a Azure Batch portál oldalán található **kvóta** hivatkozásra, majd kattintson a **kérelmek kvótájának növelésére**:
+Az Azure Batch-fiókok a fiók létrehozása 20 számítási magok kiépítésével vannak kiépítve. Érdemes lehet növelni ezt a korlátot a gyorsabb sütési idő érdekében, mert számos csomóponton párhuzamosíthatja az akusztikai munkaterhelést, akár a felderítési pontok számát a jelenetben. Kvótanövelést kérhet, ha az Azure Batch-portál oldalán a **Kvóta** hivatkozásra kattint, majd a **Kvótanövelése kérése**elemre kattint:
 
-![Az Azure-kvóta oldalának képernyőképe](media/azure-quotas.png)
+![Képernyőkép az Azure Kvóta lapról](media/azure-quotas.png)
 
 ## <a name="next-steps"></a>További lépések
-* A Project akusztikai beépülő modul integrálása az [Unity](unity-integration.md) vagy az [Unreal](unreal-integration.md) projektbe
+* Integrálja a Project Acoustics bővítményt [unity](unity-integration.md) vagy [Unreal](unreal-integration.md) projektjébe
 

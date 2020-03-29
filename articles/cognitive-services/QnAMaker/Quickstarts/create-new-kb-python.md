@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: bb51a47efc7bcae5014d5ea004674fed7cb33fe0
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851816"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Python használatával
@@ -20,14 +20,14 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Tudásbázis létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Műveletek részleteinek lekérése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python-minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
+[Referenciadokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python-minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.7](https://www.python.org/downloads/)
-* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
+* Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. A kulcs és a végpont (amely tartalmazza az erőforrás nevét) lekéréséhez válassza az erőforrás **gyorsindítását** az Azure Portalon.
 
 ## <a name="create-a-knowledge-base-python-file"></a>A tudásbázis Python-fájljának létrehozása
 
@@ -40,14 +40,14 @@ A `create-new-knowledge-base-3x.py` tetején a következő sorok hozzáadásáva
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
-A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is. Cserélje le a `<your-qna-maker-subscription-key>` értékét, és `<your-resource-name>` a saját QnA Maker kulcsával és erőforrásának nevével.
+A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is. Cserélje le a `<your-qna-maker-subscription-key>` `<your-resource-name>` és a saját QnA Maker kulcs és erőforrás nevét.
 
-A program osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez.
+A Program osztály tetején adja hozzá a QnA Maker eléréséhez szükséges állandókat.
 
 Állítsa be a következő értékeket:
 
-* `<your-qna-maker-subscription-key>` – a **kulcs** egy 32 karakterből álló karakterlánc, amely a QnA Maker erőforrás Azure Portal, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
-* `<your-resource-name>` – az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`formátumban. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
+* `<your-qna-maker-subscription-key>`- A **kulcs** egy 32 karakterből álló karakterlánc, és elérhető az Azure Portalon, a QnA Maker erőforrás, a gyorsútmutató lapon. Ez nem ugyanaz, mint az előrejelzési végpont kulcs.
+* `<your-resource-name>`- Az **erőforrás neve** a szerzői végpont URL-címének létrehozásához `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`használható, a . Ez nem ugyanaz az URL-cím, amelyet az előrejelzési végpont lekérdezéséhez használnak.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 

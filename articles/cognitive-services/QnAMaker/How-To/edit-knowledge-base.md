@@ -1,109 +1,79 @@
 ---
-title: Tudásbázis – QnA Maker szerkesztése
-titleSuffix: Azure Cognitive Services
-description: A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hogy egy könnyen használható szerkesztési funkciót.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Tudásbázis szerkesztése - QnA Maker
+description: A QnA Maker lehetővé teszi a tudásbázis tartalmának kezelését egy könnyen használható szerkesztési élmény biztosításával.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/19/2020
+ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131657"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
+# <a name="edit-qna-sets-in-your-knowledge-base"></a>QnA-készletek szerkesztése a tudásbázisban
 
-A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hogy egy könnyen használható szerkesztési funkciót.
+A QnA Maker lehetővé teszi a tudásbázis tartalmának kezelését egy könnyen használható szerkesztési élmény biztosításával.
 
-<a name="add-datasource"></a>
+A QnA-készletek adatforrásból, például fájlból vagy URL-címből kerülnek hozzáadásra, vagy szerkesztői forrásként kerülnek hozzáadásra. Egy szerkesztői forrás azt jelzi, hogy a QnA-készlet manuálisan lett hozzáadva a QnA portálhoz. Minden QnA készlet szerkeszthető.
 
-## <a name="edit-your-knowledge-base-content"></a>A Tudásbázis-tartalmat szerkesztése
+## <a name="add-an-editorial-qna-set"></a>Szerkesztői QnA-készlet hozzáadása
+1. Jelentkezzen be a [QnA portálra,](https://www.qnamaker.ai/)majd válassza ki azt a tudásbázist, amelyhez hozzá szeretné adni a QnA-készletet.
+1. A tudásbázis **EDIT** lapján válassza a **QnA hozzáadása készlet** lehetőséget egy új QnA-készlet hozzáadásához.
 
-1.  Válassza a **saját tudásbázisok** lehetőséget a felső navigációs sávon. 
+1. Az új QnA-készlet sorában adja hozzá a szükséges **Kérdések** és **válasz** mezőket. A többi mező nem kötelező. Minden mező bármikor módosítható.
 
-    Az összes Ön által létrehozott vagy megosztott szolgáltatást megtekintheti az **utolsó módosítás** dátuma szerinti csökkenő sorrendben.
+1. Ha tetszés szerint **alternatív kifejezéseket**is hozzáadhat. Az alternatív megfogalmazás a kérdés bármely formája, amely jelentősen eltér az eredeti kérdéstől, de ugyanazt a választ kell adnia.
 
-    ![Saját tudásbázisok](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    Amikor a tudásbázis tava van, és be van kapcsolva az aktív tanulás, a QnA Maker alternatív kifejezéseket gyűjt, amelyeket el kell fogadnia. Ezek a választási lehetőségek az előrejelzés pontosságának növelése érdekében vannak kiválasztva.
 
-1. Válassza ki az adott Tudásbázis szerkesztenie azt.
- 
-1. Válassza a **Beállítások**lehetőséget. Itt szerkesztheti a szolgáltatás neve kötelező mező.
-  
-    |Cél|Műveletek|
-    |--|--|
-    |URL-cím felvétele|Új URL-címek hozzáadásával új GYIK-tartalmakat adhat hozzá a tudásbázishoz, ha a Tudásbázis kezelése elemre kattint **– > "+ URL-cím hozzáadása"** hivatkozást.|
-    |URL-cím törlése|A Törlés ikonra kattintva törölheti a meglévő URL-címeket, a Kuka is.|
-    |Tartalom frissítése|Ha azt szeretné, hogy a tudásbázisa a meglévő URL-címek legújabb tartalmát bejárja, jelölje be a **refresh (frissítés** ) jelölőnégyzetet. Ekkor a rendszer egyszer frissíti a tudásbázist a legújabb URL-tartalommal. Ez nem állítja be a frissítések rendszeres ütemtervét.|
-    |Fájl hozzáadása|Egy Tudásbázis részét képező támogatott dokumentum hozzáadásához válassza a **Tudásbázis kezelése**lehetőséget, majd a **+ fájl hozzáadása** elemet.|
-    |Importálás|A meglévő tudásbázist a **Tudásbázis importálása** gomb kiválasztásával is importálhatja. |
-    |Frissítés|A Tudásbázis frissítése a tudásbázishoz kapcsolódó QnA Maker szolgáltatás létrehozásakor használt **felügyeleti díjszabási szinttől** függ. Ha szükséges, a felügyeleti csomag az Azure Portalról is frissítheti.
+1. Tetszés szerint adja hozzá **a metaadatokat**. A metaadatok megtekintéséhez válassza a helyi menü **Nézet beállításai parancsát.** A metaadatok szűrőket adnak az ügyfélalkalmazás válaszaihoz, például egy csevegőrobothoz.
 
-1. Miután végzett a Tudásbázis módosításával, a módosítások megőrzése érdekében válassza a **Mentés és a betanítás** lehetőséget a lap jobb felső sarkában.    
+1. Szükség esetén adja hozzá a **nyomon követési utasításokat.** A nyomon követési utasítások további beszélgetési útvonalakat biztosítanak az ügyfélalkalmazásszámára, amelyet a felhasználó rendelkezésére bocsát.
 
-    ![Mentse és tanítása](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+1. Válassza a **Mentés és betanítás** lehetőséget az előrejelzések megtekintéséhez, beleértve az új QnA-készletet is.
 
-    >[!CAUTION]
-    >Ha a **Mentés és a betanítás**kiválasztása előtt elhagyja a lapot, az összes módosítás elvész.
+## <a name="edit-a-qna-set"></a>QnA-készlet szerkesztése
 
-## <a name="add-a-qna-pair"></a>Kérdés-válasz pár hozzáadása
+Bármely QnA-készlet bármely mezője szerkeszthető, függetlenül az eredeti adatforrástól. Előfordulhat, hogy egyes mezők nem láthatók a környezeti eszköztáron található jelenlegi **nézetbeállítások** miatt.
 
-Az **Edit (Szerkesztés** ) lapon válassza a **QnA pár hozzáadása** elemet új sor hozzáadásához a Tudásbázis-táblához.
+## <a name="delete-a-qna-set"></a>QnA-készlet törlése
 
-![A QnA pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+QnA törléséhez kattintson a **QnA** sor jobb szélén található törlés ikonra. Ez egy állandó művelet. Nem lehet visszacsinálni. A készletek törlése előtt exportálja a tudásbázist a **Közzététel** lapról.
 
-## <a name="delete-a-qna-pair"></a>Egy kérdés-válasz párt törlése
+![QnA-készlet törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-A QnA törléséhez kattintson a QnA sor jobb szélén található **Törlés** ikonra. Ez a végleges művelet. Nem lehet visszavonni. A párok törlése előtt érdemes lehet a TUDÁSBÁZISt a **közzétételi** lapról exportálni. 
+## <a name="find-the-qna-set-id"></a>A QnA-készlet azonosítójának megkeresése
 
-![Kérdés-válasz párt törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+Ha meg kell találnia a QnA set ID-t, két helyen megtalálhatja:
+
+* Mutasson a törlés ikonra az Önt érdeklő QnA-beállítássoron. A rámutatás szövege tartalmazza a QnA-készlet azonosítót.
+* Exportálja a tudásbázist. A tudásbázisban beállított minden qna tartalmazza a QnA-készlet azonosítót.
 
 ## <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 
-Alternatív kérdések hozzáadása egy meglévő QnA pár annak lehetőségét, hogy egy felhasználó lekérdezésnek megfelelő javítása érdekében.
+Alternatív kérdések hozzáadása egy meglévő QnA-készlethez a felhasználói lekérdezések egyezésének valószínűségének növelése érdekében.
 
 ![Alternatív kérdések hozzáadása](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="add-metadata"></a>metaadatok hozzáadása
+## <a name="linking-qna-sets"></a>QnA-készletek összekapcsolása
 
-Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** aláírást a metaadat-párok hozzáadásához. Ez a pár egy kulcsból és egy értékből áll.
+A QnA-készletek összekapcsolása nyomon követési utasításokat is [mellékel.](multiturn-conversation.md) Ez egy logikai kapcsolat a tudásbázis szintjén kezelt QnA-készletek között. A nyomon követési utasításokat a QnA Maker portálon szerkesztheti.
+
+A qna-készletek nem kapcsolhatók össze a válasz metaadataiban.
+
+## <a name="add-metadata"></a>Metaadatok hozzáadása
+
+Metaadat-halmazok hozzáadásához először a **Nézet beállítások**, majd a Metaadatok megjelenítése lehetőséget választva adja hozzá a **metaadat-készleteket.** Ez megjeleníti a metaadat oszlopot. Ezután jelölje **+** ki a jelet egy metaadatkészlet hozzáadásához. Ez a készlet egy kulcsból és egy értékből áll.
+
+## <a name="save-changes-to-the-qna-sets"></a>A QnA-készletek módosításának mentése
+
+A módosítások elvesztésének elkerülése érdekében a módosítások elkerülése érdekében a Módosítások **és a Betanítás** lehetőséget rendszeresen válassza a Mentés és betanítás gombra.
 
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
-> [!TIP]
-> Ellenőrizze, hogy rendszeres időközönként mentéséhez és a módosításokat az adatvesztés elkerülése érdekében a módosítások elvégzése után a Tudásbázis betanításához.
-
-## <a name="manage-large-knowledge-bases"></a>Nagy tudásbázisok kezelése
-
-* **Adatforrás-csoportok**: a QnAs azon adatforrás szerint vannak csoportosítva, amelyből kibontották őket. Bontsa ki, vagy az adatforrás összecsukása.
-
-    ![Az adatforrással kapcsolatos kérdések és válaszok összecsukása és kibontása a QnA Maker adatforrás-sávjának használatával](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **Keresés a Tudásbázisban**: a Tudásbázis táblázatának tetején található szövegmező beírásával keresheti meg a tudásbázist. Kattintson a kérdés válasz metaadat-tartalom, vagy a kereséshez adja meg. Kattintson az X ikont a keresési szűrő eltávolításához.
-
-    ![A kérdések és válaszok fölötti QnA Maker keresőmező használatával csökkentse a nézetet csak a szűrővel egyező elemek](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **Tördelés**: az adatforrások gyors áthelyezése a nagyméretű tudásbázisok kezelésére
-
-    ![A kérdések és válaszok lapokon való áthelyezéséhez használja a QnA Maker tördelési funkcióit.](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>Tudásbázisok törlése
-
-(KB) Tudásbázis törlése nem visszavonható művelet. Nem lehet visszavonni. A Tudásbázis törlése előtt exportálja a tudásbázist a QnA Maker portál **Beállítások** lapjáról. 
-
-Ha megosztja a KB-ban [közreműködőket](collaborate-knowledge-base.md) , majd törli azt, mindenki elveszti a kb-hoz való hozzáférést. 
-
-## <a name="delete-azure-resources"></a>Azure-erőforrások törlése 
-
-Ha törli a QnA Maker tudásbázisok használt Azure-erőforrások, a tudásbázisok többé nem fognak működni. Az erőforrások törlése előtt győződjön meg arról, hogy a tudásbázisokat a **Beállítások** lapról exportálja. 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Együttműködés a Tudásbázisban](./collaborate-knowledge-base.md)
+> [Együttműködés a tudásbázison](./collaborate-knowledge-base.md)
+
+* [A QnA Maker által használt Azure-erőforrások kezelése](set-up-qnamaker-service-azure.md)

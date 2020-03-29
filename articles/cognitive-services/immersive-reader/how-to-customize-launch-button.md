@@ -1,7 +1,7 @@
 ---
-title: A megölelő olvasó gomb testreszabása
+title: A Magával ragadó olvasó gomb testreszabása
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan szabhatja testre a teljes olvasót indító gombot.
+description: Ez a cikk bemutatja, hogyan szabhatja testre a bemerítést elolvasó gombot.
 services: cognitive-services
 author: metanMSFT
 manager: guillasi
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946209"
 ---
-# <a name="how-to-customize-the-immersive-reader-button"></a>A megölelő olvasó gomb testreszabása
+# <a name="how-to-customize-the-immersive-reader-button"></a>A Magával ragadó olvasó gomb testreszabása
 
-Ez a cikk bemutatja, hogyan szabhatja testre a teljes olvasót, hogy illeszkedjen az alkalmazás igényeihez.
+Ez a cikk bemutatja, hogyan szabhatja testre a gombot, amely elindítja a Magával ragadó olvasó, hogy megfeleljen az alkalmazás igényeinek.
 
-## <a name="add-the-immersive-reader-button"></a>A magával ejtő olvasó gomb hozzáadása
+## <a name="add-the-immersive-reader-button"></a>A Magával ragadó olvasó gomb hozzáadása
 
-A lebilincselő olvasó SDK alapértelmezett stílust biztosít a magával ragadó olvasót indító gombhoz. A stílus engedélyezéséhez használja a `immersive-reader-button` class attribútumot.
+A Magával ragadó Reader SDK biztosítja az alapértelmezett stílus a gombot, amely elindítja a magával ragadó olvasó. A `immersive-reader-button` stílus engedélyezéséhez használja az osztályattribútumot.
 
 ```html
 <div class='immersive-reader-button'></div>
 ```
 
-## <a name="customize-the-button-style"></a>A gomb stílusának testreszabása
+## <a name="customize-the-button-style"></a>A gombstílus testreszabása
 
-A gomb stílusának beállításához használja a `data-button-style` attribútumot. Az engedélyezett értékek: `icon`, `text`és `iconAndText`. Az alapértelmezett érték 0.`icon`
+Az `data-button-style` attribútum segítségével állítsa be a gomb stílusát. Az engedélyezett `icon`értékek `text`a `iconAndText`, és a . Az alapértelmezett érték `icon`.
 
 ### <a name="icon-button"></a>Ikon gomb
 
@@ -39,17 +39,17 @@ A gomb stílusának beállításához használja a `data-button-style` attribút
 <div class='immersive-reader-button' data-button-style='icon'></div>
 ```
 
-Ez a következőt jeleníti meg:
+Ez a következőket teszi:
 
 ![Ikon gomb](./media/button-icon.png)
 
-### <a name="text-button"></a>Text (szöveg) gomb
+### <a name="text-button"></a>Szöveg gomb
 
 ```html
 <div class='immersive-reader-button' data-button-style='text'></div>
 ```
 
-Ez a következőt jeleníti meg:
+Ez a következőket teszi:
 
 ![Ikon gomb](./media/button-text.png)
 
@@ -59,13 +59,13 @@ Ez a következőt jeleníti meg:
 <div class='immersive-reader-button' data-button-style='iconAndText'></div>
 ```
 
-Ez a következőt jeleníti meg:
+Ez a következőket teszi:
 
 ![Ikon gomb](./media/button-icon-and-text.png)
 
 ## <a name="customize-the-button-text"></a>A gomb szövegének testreszabása
 
-Konfigurálja a gomb nyelvét és az ALT szövegét a `data-locale` attribútum használatával. Az alapértelmezett nyelv az angol.
+Konfigurálja a gomb nyelvét és helyettesítő `data-locale` szövegét az attribútum használatával. Az alapértelmezett nyelv az angol.
 
 ```html
 <div class='immersive-reader-button' data-locale='fr-FR'></div>
@@ -73,12 +73,12 @@ Konfigurálja a gomb nyelvét és az ALT szövegét a `data-locale` attribútum 
 
 ## <a name="customize-the-size-of-the-icon"></a>Az ikon méretének testreszabása
 
-A lebilincselő olvasó ikonjának mérete a `data-icon-px-size` attribútummal konfigurálható. Ezzel beállítja az ikon méretét képpontban megadva. Az alapértelmezett méret a 20px.
+A Immersive Reader ikon mérete az `data-icon-px-size` attribútum használatával konfigurálható. Ezzel az ikon méretét képpontban állítja be. Az alapértelmezett méret 20px.
 
 ```html
 <div class='immersive-reader-button' data-icon-px-size='50'></div>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ismerje meg az [olvasói SDK-referenciát](./reference.md)
+* Fedezze fel a [magával ragadó Reader SDK-referenciát](./reference.md)

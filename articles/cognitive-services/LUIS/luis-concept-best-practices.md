@@ -1,7 +1,7 @@
 ---
-title: Ajánlott eljárások a LUIS-alkalmazás létrehozásához
+title: Gyakorlati tanácsok a LUIS-alkalmazás létrehozásához
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az ajánlott eljárásokat a LUIS-alkalmazás modelljéből származó legjobb eredmények eléréséhez.
+description: Ismerje meg az ajánlott eljárásokat a LUIS-alkalmazás modelljéből származó legjobb eredmények leértékeléséhez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,95 +12,95 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280927"
 ---
-# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Ajánlott eljárások a Language Understanding (LUIS) alkalmazások létrehozásához
-A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot: 
+# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Gyakorlati tanácsok a nyelvi megértési (LUIS) alkalmazások létrehozásához
+Az alkalmazásszerzői folyamat segítségével hozhatja létre a LUIS-alkalmazást: 
 
 * Nyelvi modellek (szándékok és entitások) létrehozása
-* Vegyen fel néhány betanítási példát a hosszúságú kimondott szöveg (15-30/szándék)
-* Közzététel a végponton
-* A végpont tesztelése 
+* Adjon hozzá néhány betanítási példa utterances (15-30 leképezésenként)
+* Közzététel a végpontra
+* Tesztelés a végpontról 
 
-Miután [közzétette](luis-how-to-publish-app.md)az alkalmazást, a fejlesztési életciklus használatával hozzáadhat szolgáltatásokat, közzétehet és tesztelheti a végpontról. Ne kezdje el a következő szerzői ciklust további példa hosszúságú kimondott szöveg hozzáadásával, mivel ez nem teszi lehetővé, hogy a LUIS a valós felhasználói hosszúságú kimondott szöveg segítségével Ismerje meg a modellt. 
+Az alkalmazás [közzététele](luis-how-to-publish-app.md)után a fejlesztési életciklus segítségével funkciókat adhat hozzá, közzétehet és tesztelhet a végpontról. Ne kezdje el a következő szerzői ciklust további példakimondott szöveghozzáadásával, mert ez nem teszi lehetővé a LUIS számára, hogy valós felhasználói kimondott szövegekkel ismerje meg a modellt. 
 
-Ne bontsa ki a hosszúságú kimondott szöveg, amíg a példa és a végpontok hosszúságú kimondott szöveg aktuális készlete nem ad vissza magabiztosan, nagy előrejelzési pontszámokat. Az [aktív tanulással](luis-concept-review-endpoint-utterances.md)javíthatja a pontszámokat. 
-
-
+Ne bontsa ki az utterances, amíg az aktuális készlet e példa és a végpont utterances advissza magabiztos, magas előrejelzési pontszámok. Az aktív tanulás segítségével javíthatja a [pontszámokat.](luis-concept-review-endpoint-utterances.md) 
 
 
-## <a name="do-and-dont"></a>Hajtsa végre, és nem
-Az alábbi lista tartalmazza az ajánlott eljárások a LUIS-alkalmazások:
+
+
+## <a name="do-and-dont"></a>Ne és ne tegye
+Az alábbi lista a LUIS-alkalmazásokra vonatkozó gyakorlati tanácsokat tartalmazza:
 
 |Ajánlott|Nem ajánlott|
 |--|--|
-|[Különböző leképezések definiálása](#do-define-distinct-intents)<br>[Descripters hozzáadása a szándékokhoz](#do-add-descriptors-to-intents) |[Számos példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez](#dont-add-many-example-utterances-to-intents)<br>[Néhány vagy egyszerű entitás használata](#dont-use-few-or-simple-entities) |
-|[Keressen egy édes helyet a túl általános és az egyes szándékok között](#do-find-sweet-spot-for-intents)|[A LUIS használata képzési platformként](#dont-use-luis-as-a-training-platform)|
-|[Az alkalmazás iteratív létrehozása verziókkal](#do-build-your-app-iteratively-with-versions)<br>[Entitások létrehozása a modell elbomlásához](#do-build-for-model-decomposition)|[Több, azonos formátumú hosszúságú kimondott szöveg hozzáadása, figyelmen kívül hagyva más formátumok](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Mintázatok hozzáadása a későbbi ismétlésekben](#do-add-patterns-in-later-iterations)|[A leképezések és entitások definíciójának összekeverése](#dont-mix-the-definition-of-intents-and-entities)|
-|A [hosszúságú kimondott szöveg egyensúlyt kell kiosztania az összes](#balance-your-utterances-across-all-intents) szándékon, kivéve a none szándékot.<br>[Példa hosszúságú kimondott szöveg hozzáadása nincs szándékhoz](#do-add-example-utterances-to-none-intent)|[Leírók létrehozása az összes lehetséges értékkel](#dont-create-descriptors-with-all-the-possible-values)|
-|[Az aktív tanulásra vonatkozó javaslati funkció kihasználása](#do-leverage-the-suggest-feature-for-active-learning)|[Túl sok mintázat hozzáadása](#dont-add-many-patterns)|
-|[Az alkalmazás teljesítményének figyelése batch-teszteléssel](#do-monitor-the-performance-of-your-app)|[Betanítás és közzététel minden egyes példa Kimondás esetén](#dont-train-and-publish-with-every-single-example-utterance)|
+|[Különböző leképezések definiálása](#do-define-distinct-intents)<br>[Leírók hozzáadása a leképezésekhez](#do-add-descriptors-to-intents) |[Számos példa kimondott szöveg hozzáadása a leképezésekhez](#dont-add-many-example-utterances-to-intents)<br>[Kevés vagy egyszerű entitás használata](#dont-use-few-or-simple-entities) |
+|[Keressen egy édes folt között túl általános és túl specifikus minden szándék](#do-find-sweet-spot-for-intents)|[A LUIS használata képzési platformként](#dont-use-luis-as-a-training-platform)|
+|[Az alkalmazás iteratív módon való létrehozása verziókkal](#do-build-your-app-iteratively-with-versions)<br>[Entitások létrehozása a modell felbontásához](#do-build-for-model-decomposition)|[Adjon hozzá sok azonos formátumú példakimondott szöveget, figyelmen kívül hagyva más formátumokat](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Mintázatok hozzáadása későbbi ismétlésekben](#do-add-patterns-in-later-iterations)|[A szándékok és entitások meghatározásának összekeverése](#dont-mix-the-definition-of-intents-and-entities)|
+|[Az utterances az összes szándék között,](#balance-your-utterances-across-all-intents) kivéve a Nincs szándék ot.<br>[Példakimondott szöveg hozzáadása a Nincs szándékhoz](#do-add-example-utterances-to-none-intent)|[Leírók létrehozása az összes lehetséges értékkel](#dont-create-descriptors-with-all-the-possible-values)|
+|[Használja ki a javasolt funkciót az aktív tanuláshoz](#do-leverage-the-suggest-feature-for-active-learning)|[Túl sok minta hozzáadása](#dont-add-many-patterns)|
+|[Az alkalmazás teljesítményének figyelése kötegelt teszteléssel](#do-monitor-the-performance-of-your-app)|[Betanítása és közzététele minden egyes példa utterance hozzáadott](#dont-train-and-publish-with-every-single-example-utterance)|
 
-## <a name="do-define-distinct-intents"></a>Adja meg a különböző leképezések
-Ellenőrizze, hogy a szöveg szóhasználati, az egyes leképezés csak az adott szándékot és a különböző leképezés nem átfedő. Ha például olyan alkalmazást szeretne használni, amely az utazási szabályokat, például a légitársasági repülőjáratokat és a szállodákat kezeli, dönthet úgy, hogy ezeket a témaköröket külön szándékként vagy azonos szándékkal látja el a részletekben lévő konkrét adategységekhez.
+## <a name="do-define-distinct-intents"></a>Különböző leképezések definiálása
+Győződjön meg arról, hogy az egyes szándékok szókincse csak erre a szándékra van, és nem fedi át egymást egy másik szándékkal. Például ha azt szeretné, hogy egy alkalmazás, amely kezeli az utazási megállapodások, például a légitársaságok járatai és szállodái, kiválaszthatja, hogy ezeket a tárgyterületeket külön szándékként vagy azonos szándékkal entitások adott adatok az utterance (kifejezés) belül.
 
-A két szándék közötti szószedet megegyezik, ha a leképezés egyesítése, és használjon az entitást. 
+Ha a szókincs két leképezések azonos, kombinálja a szándékot, és használja az entitásokat. 
 
-Vegye figyelembe a következő példa kimondott szöveg:
+Vegye figyelembe a következő példa utterances:
 
 |Példák kimondott szövegekre|
 |--|
-|Könyvet a repülőút|
-|Egy szállodai Vendég könyv|
+|Foglaljon repülőjegyet|
+|Foglaljon szállodát|
 
-`Book a flight` és `Book a hotel` ugyanazt a szókincset használja `book a `. Ez a formátum ugyanaz, mint a `flight` különböző szavaival, és `hotel` kinyert entitásként. 
+`Book a flight`és `Book a hotel` használja ugyanazt `book a `a szókincset. Ez a formátum ugyanaz, így meg kell ugyanazt `flight` `hotel` a szándékot a különböző szavakat, és a kinyert entitások. 
 
-## <a name="do-add-descriptors-to-intents"></a>Adja hozzá a leírókat a szándékokhoz
+## <a name="do-add-descriptors-to-intents"></a>Leírók hozzáadása a leképezésekhez
 
-A descripters súgója egy szándék szolgáltatásait ismerteti. A leíró lehet olyan szavak felsorolása, amelyek jelentősek az adott szándék szempontjából, vagy olyan entitások, amelyek jelentősek erre a célra. 
+A leírók segítenek a szándék kalkulátorai leírásában. A leíró lehet az adott szándék szempontjából jelentős szavak vagy az adott szándék szempontjából jelentős szavak kifejezéslistája. 
 
-## <a name="do-find-sweet-spot-for-intents"></a>Édes helyszíni keresése leképezések
-Előrejelzési adatokat a LUIS segítségével meghatározhatja, amennyiben a szándék átfedésben. Az átfedésben lévő leképezések megzavarják a LUIS-t. Eredménye, hogy a leképezés pontozási felső túl van egy másik szándékot. LUIS oktatási minden alkalommal, amikor nem használja a pontos ugyanazt az elérési utat az adatok között, mert átfedő megjelölésű rendelkezik, hogy az első és második képzési lehetőséget. Azt szeretné, hogy a teljes pontszám az egyes céloknál távolabb legyen, így ez a flip/flop nem fog történni. A leképezések jó különbséget kell eredményeznie a várt felső célt minden alkalommal. 
+## <a name="do-find-sweet-spot-for-intents"></a>Ne találja édes helyet szándékok
+A LUIS előrejelzési adataisegítségével határozza meg, hogy a szándékok átfedésben vannak-e. Egymást átfedő szándékok megzavarja a LUIS. Az eredmény az, hogy a legfelső pontozási szándék túl közel van egy másik szándékhoz. Mivel a LUIS nem használja pontosan ugyanazt az elérési utat az adatokon keresztül a betanítás minden alkalommal, egy egymást átfedő szándék van esélye, hogy az első vagy a második a képzésben. Azt szeretné, hogy az utterance (kifejezés) pontszáma minden szándékesetében távolabb legyen egymástól, így ez a flip/flop nem történik meg. A leképezések jó megkülönböztetésének minden alkalommal a várt felső szándékot kell eredményeznie. 
  
 <a name="#do-build-the-app-iteratively"></a>
 
-## <a name="do-build-your-app-iteratively-with-versions"></a>Készítse el az alkalmazás iteratív a verziókkal
+## <a name="do-build-your-app-iteratively-with-versions"></a>Az alkalmazás iteratív módon való összeállítása verziókkal
 
-Minden authoring ciklusnak egy meglévő verzióról klónozott új [verzióba](luis-concept-version.md)kell esnie. 
+Minden szerzői ciklusnak egy új [verzión](luis-concept-version.md)belül kell lennie, amelyet egy meglévő verzióról kell klónozni. 
 
-## <a name="do-build-for-model-decomposition"></a>Build a Model dekompozícióhoz
+## <a name="do-build-for-model-decomposition"></a>Ne épít a modell felbontása
 
-A modell kibontása a következőket jellemző folyamattal rendelkezik:
+A modell bomlásának tipikus folyamata van:
 
-* **szándék** létrehozása ügyfél-alkalmazás felhasználói szándékai alapján
-* 15-30-es példa hosszúságú kimondott szöveg hozzáadása a valós felhasználói bevitel alapján
-* a legfelső szintű adatelemzési koncepció megjelölése példaként
-* az adatkoncepció felosztása alösszetevőkbe
-* descripters (szolgáltatások) hozzáadása alösszetevőkhöz
-* leíró (szolgáltatások) hozzáadása a szándékhoz 
+* **szándék** létrehozása az ügyfélalkalmazás felhasználói szándékai alapján
+* 15–30 példa utterances hozzáadása valós felhasználói bevitel alapján
+* címke legfelső szintű adatkoncepció példa utterance
+* adatkoncepció felosztása alösszetevőkre
+* leírók (szolgáltatások) hozzáadása alösszetevőkhöz
+* leírók (funkciók) hozzáadása a szándékhoz 
 
-Miután létrehozta a szándékot, és hozzáadta például a hosszúságú kimondott szöveg-t, az alábbi példa az entitások lebomlását ismerteti. 
+Miután létrehozta a szándékot, és hozzáadott példa utterances, a következő példa ismerteti az entitás felbontását. 
 
-Első lépésként azonosítsa a kinyerni kívánt teljes adatfogalmakat. Ez a gép által megtanult entitás. Ezután bontsa ki a kifejezést a részébe. Ide tartozik az alösszetevők (entitások) azonosítása, valamint a leírók és a megkötések. 
+Első ként azonosítsa a teljes adatfogalmakat szeretne kinyerni egy utterance (kifejezés). Ez a gép-tanult entitás. Ezután bomlik le a kifejezést a részeire. Ez magában foglalja az alösszetevők azonosítását (entitásként), valamint a leírókat és a megkötéseket. 
 
-Ha például egy címeket szeretne kinyerni, a legfelső szintű géppel megismert entitást `Address`lehet meghívni. A cím létrehozásakor azonosítsa a hozzá tartozó alösszetevők némelyikét, például a házszámot, a várost, az állapotot és az irányítószámot. 
+Ha például ki szeretne nyerni egy címet, a legfelső `Address`gép által megtanult entitás neve is megadható. A cím létrehozása közben azonosítsa néhány alösszetevőjét, például az utcacímet, a várost, az államot és az irányítószámot. 
 
-Folytassa ezen elemek kibontását azáltal, hogy **korlátozza** a postai kódot egy reguláris kifejezésre. Az utcanév kibontása az utca egy részébe (egy előre elkészített szám használatával), egy utcanév és egy utca típusa. Az utca típusát **leíró** listával (például Avenue, Circle, Road és Lane) lehet leírni.
+Az irányítószám reguláris kifejezésre **való korlátozásával** folytassa az elemek törlését. Az utcanév lefektése egy utcaszám részeire (előre összeállított számmal), egy utcanévre és egy utcatípusra. Az utcatípus leírható egy **leírólistával,** például sugárral, körrel, úttal és sávval.
 
-A v3 authoring API lehetővé teszi a modellek lebomlását. 
+A V3 szerzői API lehetővé teszi a modell felbontását. 
 
-## <a name="do-add-patterns-in-later-iterations"></a>Minták hozzáadása a későbbi iterációkban
+## <a name="do-add-patterns-in-later-iterations"></a>Mintázatok hozzáadása későbbi ismétlésekben
 
-Érdemes tisztában lennie azzal, hogy az alkalmazás hogyan viselkedik a [mintázatok](luis-concept-patterns.md) hozzáadása előtt, mivel a mintákat sokkal nagyobb mértékben súlyozzák, mint például a hosszúságú kimondott szöveg, és a megbízhatóságot is rontja. 
+Meg kell értenie, hogyan viselkedik az alkalmazás a minták hozzáadása [előtt,](luis-concept-patterns.md) mert a minták súlyozása nagyobb, mint a példa kimondott szöveg, és ferde megbízhatóságot. 
 
-Miután megértette, hogyan viselkedik az alkalmazás, vegyen fel mintákat, ahogyan azok az alkalmazásra vonatkoznak. Az egyes [iterációk](luis-concept-app-iteration.md)nem szükségesek hozzájuk. 
+Ha tisztában van azzal, hogyan viselkedik az alkalmazása, adjon hozzá mintákat az alkalmazásra vonatkozó mintákhoz. Nem kell hozzáadni őket minden [iteráció](luis-concept-app-iteration.md). 
 
-A modell kialakításának elején nem árt felvenni a problémát, de könnyebben láthatja, hogy az egyes minták Hogyan változnak a modell hosszúságú kimondott szöveg való tesztelése után. 
+Nincs kár hozzátéve őket az elején a modell terv, de könnyebb látni, hogy az egyes minták hogyan módosítja a modell után a modell által tesztelt utterances. 
  
 <!--
 
@@ -129,66 +129,66 @@ For more information:
 
 <a name="balance-your-utterances-across-all-intents"></a>
 
-## <a name="do-balance-your-utterances-across-all-intents"></a>A hosszúságú kimondott szöveg egyensúlyba vétele az összes cél között
+## <a name="do-balance-your-utterances-across-all-intents"></a>Az utterances kiegyensúlyozása az összes szándék között
 
-Ahhoz, hogy a LUIS-előrejelzések pontosak legyenek, az egyes szándékok (kivéve a none szándékot) hosszúságú kimondott szöveg mennyiségének viszonylag egyenlőnek kell lennie. 
+Annak érdekében, hogy a LUIS-előrejelzések pontosak legyenek, az egyes szándékokban lévő példa kimondott szövegmennyiségnek (kivéve a Nincs szándékot) viszonylag egyenlőnek kell lennie. 
 
-Ha az 100-es hosszúságú kimondott szöveg és egy 20 példás hosszúságú kimondott szöveg, akkor a 100-Kimondás szándéka magasabb előrejelzési aránnyal fog rendelkezni.  
+Ha van egy szándék 100 példa utterances és egy szándék 20 példa utterances, a 100-utterance (kifejezés) szándék nagyobb lesz az előrejelzési.  
 
-## <a name="do-add-example-utterances-to-none-intent"></a>Nincs leképezés példa beszédmódok hozzáadása
+## <a name="do-add-example-utterances-to-none-intent"></a>Példakimondott szöveg hozzáadása a Nincs szándékhoz
 
-Ez a szándék a tartalék szándék, amely az alkalmazáson kívül mindent jelez. Egy példa utterance (kifejezés) hozzáadása a nincs szándék, a többi része a LUIS-alkalmazás minden 10 példa kimondott szöveg.
+Ez a szándék a tartalék szándék, jelezve mindent az alkalmazáson kívül. Adjon hozzá egy példa utterance (kifejezés) a Nincs szándék minden 10 példa utterances a LUIS-alkalmazás többi részében.
 
-## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Kihasználhatja a javaslat funkciót aktív tanulás
+## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Használja ki a javasolt funkciót az aktív tanuláshoz
 
-Az [aktív tanulás](luis-how-to-review-endpoint-utterances.md) **felülvizsgálati végpontjának hosszúságú kimondott szöveg** rendszeresen használhatja, ahelyett, hogy további példákat hosszúságú kimondott szöveg hozzá. Az alkalmazás végponti utterances folyamatosan fogad, mivel a lista egyre növekvő és módosítása.
+Használja [az aktív tanulási](luis-how-to-review-endpoint-utterances.md)'s tekintse végpont **utterances** rendszeresen, ahelyett, hogy további példa utterances a szándékok. Mivel az alkalmazás folyamatosan megkapja a végpontkimondott szövegeket, ez a lista növekszik és változik.
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Az alkalmazás teljesítményének figyelése
 
-Figyelje meg az előrejelzés pontosságát egy [Batch-tesztkörnyezet](luis-concept-batch-test.md) használatával. 
+Az előrejelzés pontosságának figyelése [kötegelt](luis-concept-batch-test.md) tesztkészlettel. 
 
-Tartsa meg a [hosszúságú kimondott szöveg](luis-concept-utterance.md) vagy a végpont hosszúságú kimondott szöveg nem használt különálló hosszúságú kimondott szöveg. Az alkalmazás a tesztelési készlethez tartozó fejlettebbek. Alkalmazkodjon a vizsgálatot, hogy az megfeleljen a valós felhasználói kimondott szöveg. Ezzel a tesztelési készlettel értékelheti ki az alkalmazás minden egyes iterációját vagy verzióját. 
+Tartsa meg a kimondott szöveg, amely nem példa [utterances](luis-concept-utterance.md) vagy végpont kimondott szövegként nem használt külön. Tovább fejlesztheti az alkalmazást a tesztkészlethez. Igazítsa a tesztkészletet a valós felhasználói kimondott szövegnek megfelelően. Ezzel a tesztkészlettel kiértékelheti az alkalmazás egyes iterációit vagy verzióit. 
 
-## <a name="dont-add-many-example-utterances-to-intents"></a>Nem sok példa utterances leképezések hozzáadása
+## <a name="dont-add-many-example-utterances-to-intents"></a>Ne adjon hozzá sok példa kimondott szöveget a szándékokhoz
 
-Az alkalmazás közzététele után csak a fejlesztési életciklus folyamatában hosszúságú kimondott szöveg adhat hozzá az aktív tanulásból. Ha kimondott szöveg túl hasonló, adjon hozzá egy minta. 
+Az alkalmazás közzététele után csak adja hozzá az aktív tanulás utterances a fejlesztési életciklus-folyamat. Ha az utterances túl hasonló, adjon hozzá egy mintát. 
 
-## <a name="dont-use-few-or-simple-entities"></a>Ne használjon néhány vagy egyszerű entitást
+## <a name="dont-use-few-or-simple-entities"></a>Ne használjon kevés vagy egyszerű entitást
 
-Az entitások az kinyeréshez és előrejelzéshez készültek. Fontos, hogy az egyes szándékok géppel megtanult entitásokat adjanak meg, amelyek leírják a szándékban lévő adatkészleteket. Ez segíti a LUIS előrejelzését abban az esetben is, ha az ügyfélalkalmazás nem kell a kibontott entitást használnia. 
+Az entitások az adatok kinyerésére és előrejelzésére épülnek. Fontos, hogy minden szándék gép által megtanult entitások, amelyek leírják az adatokat a szándékban. Ez segít a LUIS-nak megjósolni a szándékot, még akkor is, ha az ügyfélalkalmazásnak nem kell használnia a kinyert entitást. 
 
-## <a name="dont-use-luis-as-a-training-platform"></a>Ne használja a LUIS képzési platform
+## <a name="dont-use-luis-as-a-training-platform"></a>Ne használja a LUIS-t képzési platformként
 
-A LUIS csak a nyelvi modell tartományhoz. Nem az általános természetes nyelvi képzési platformként működik. 
+A LUIS egy nyelvi modell tartományára jellemző. Ez nem azt jelentette, hogy a munka, mint egy általános természetes nyelvi képzési platform. 
 
-## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Nem sok példa beszédmódok hozzáadása, ugyanazt a formátumot, figyelmen kívül hagyja a többi formátumok
+## <a name="dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats"></a>Ne adjon hozzá sok azonos formátumú példakimondott szöveget, figyelmen kívül hagyva más formátumokat
 
-A LUIS változata létezik egy leképezés kimondott szöveg vár. A kimondott szöveg azonos teljes jelentésű során változhatnak. Változatok utterance (kifejezés) hossza, a word választási lehetőség és a word elhelyezési is tartalmazhat. 
+A LUIS a szándék kimondott szövegének eltéréseket vár. A kimondott szöveg eltérő lehet, miközben ugyanazt az általános jelentését. A változatok közé tartozhat az utterance (kifejezés) hossza, a szóválasztás és a szóelhelyezés. 
 
-|Ne használja ugyanazt a formátumot|Különböző formátumot használja.|
+|Ne használjon ugyanazt a formátumot|Használjon különböző formátumú|
 |--|--|
-|Seattle jegyet vásárolni<br>Vásároljon egy jegyet, Párizs<br>A jegy Orlandóban vásárlása|Seattle 1 jegyet vásárolni<br>Két hely foglalására két Párizsba piros szemmel a következő hétfőn<br>Szeretném, ha lefoglalja 3 jegyek Orlandóban, spring break|
+|Vegyél egy jegyet Seattle-be<br>Vegyél egy jegyet Párizsba<br>Vegyél egy jegyet Orlando|Vásároljon 1 jegyet Seattle-be<br>Foglaljon két helyet a vörös szem, hogy Párizs jövő hétfőn<br>Szeretnék 3 jegyet foglalni Orlandóba a tavaszi szünetre|
 
-A második oszlop használja különböző műveletek (vételi, a tartalék, a könyvet.), a másik mennyiségek (1, két, 3), és különböző elrendezésben szavak, de az összes van utazási légitársaság jegyek vásárolhat azonos szándékkal. 
+A második oszlop különböző igéket (vétel, foglalás, könyv), különböző mennyiségeket (1, kettő, 3) és különböző szóelrendezéseket használ, de mindegyiknek ugyanaz a szándéka, hogy repülőjegyeket vásároljon az utazáshoz. 
 
-## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Ne keverje a szándékok és entitások definíciója
+## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Ne keverje a szándékok és entitások definícióját
 
-Hozzon létre minden művelethez megjelölésű robotjait vesz igénybe. Entitások használják, amelyek lehetővé teszik, hogy a műveleti paraméterek. 
+Hozzon létre egy szándékot a robot által végrehajtott műveletekhez. Entitások használata olyan paraméterekként, amelyek lehetővé teszik ezt a műveletet. 
 
-Egy olyan robot esetében, amely légitársasági repülőjáratokat fog foglalni, hozzon létre egy **BookFlight** szándékot. Ne hozzon létre minden egyes légitársaság vagy minden cél megjelölésű. Ezeket az [adategységeket entitásként](luis-concept-entity-types.md) használhatja, és megjelölheti őket a példában szereplő hosszúságú kimondott szöveg. 
+Egy olyan robot esetén, amely **BookFlight** repülőjegyet foglal, hozzon létre egy BookFlight-szándékot. Ne hozzon létre szándékot minden légitársaság vagy minden rendeltetési helyre. Használja ezeket az adatokat [entitásként,](luis-concept-entity-types.md) és jelölje meg őket a példa utterances. 
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Ne hozzon létre leírókat az összes lehetséges értékkel
+## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Ne hozzon létre összes lehetséges értéket
 
-Adjon meg néhány példát a leíró [kifejezések listájában](luis-concept-feature.md) , de ne minden szót. A LUIS általánosítja, és figyelembe veszi a környezetben. 
+Adjon meg néhány példát a leíró [kifejezéslistáiban,](luis-concept-feature.md) de nem minden szót. A LUIS általánosítja és figyelembe veszi a kontextust. 
 
-## <a name="dont-add-many-patterns"></a>Ne adja hozzá a sok minták
+## <a name="dont-add-many-patterns"></a>Ne adjon hozzá sok mintát
 
-Ne adjon hozzá túl sok [mintázatot](luis-concept-patterns.md). A LUIS ismerje meg gyorsan, kevesebb példákkal szolgál. A rendszer feleslegesen túlterhelni nem.
+Ne adjon hozzá túl sok [mintát.](luis-concept-patterns.md) A LUIS célja, hogy gyorsan tanuljon kevesebb példával. Ne terhelje túl feleslegesen a rendszert.
 
-## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Nem betanításához használatával létrehozott és közzétett minden egyetlen példa utterance (kifejezés)
+## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Ne képezze be és tegye közzé minden egyes példautterance
 
-10 vagy 15 beszédmódok hozzáadása a képzés és a közzététel előtt. Lehetővé teszi a előrejelzési pontosság-azonosítókra gyakorolt hatást. Egy egyetlen utterance (kifejezés) hozzáadása nincs hatással lehet egy látható a pontszámot. 
+Adjon hozzá 10 vagy 15 utterances betanítása és közzététele előtt. Ez lehetővé teszi, hogy az előrejelzés pontosságára gyakorolt hatás. Egyetlen utterance (kifejezés) hozzáadása nem feltétlenül befolyásolja a pontszám. 
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [tervezze meg alkalmazását](luis-how-plan-your-app.md) a Luis-alkalmazásban.
+* Ismerje meg, hogyan [tervezheti](luis-how-plan-your-app.md) meg az alkalmazást a LUIS alkalmazásban.

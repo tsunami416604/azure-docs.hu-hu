@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: egyéni parancsok használata egyéni hanggal (előzetes verzió) – beszédfelismerési szolgáltatás'
+title: 'Rövid útmutató: Egyéni parancsok használata egyéni hanggal (előzetes verzió) – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a cikkben megadhatja az egyéni parancsok alkalmazás kimeneti hangját.
+description: Ebben a cikkben adja meg az egyéni parancsok alkalmazás kimeneti hangját.
 services: cognitive-services
 author: anhoang
 manager: yetian
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
 ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75456409"
 ---
-# <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Gyors útmutató: egyéni parancsok használata egyéni hanggal (előzetes verzió)
+# <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Rövid útmutató: Egyéni parancsok használata egyéni hanggal (előzetes verzió)
 
-Az [előző cikkben](./quickstart-custom-speech-commands-create-parameters.md)egy új egyéni parancs-projektet hoztunk létre, amely paraméterekkel válaszol a parancsokra.
+Az [előző cikkben](./quickstart-custom-speech-commands-create-parameters.md)létrehoztunk egy új egyéni parancsok projektet, hogy válaszoljon a paraméterekkel rendelkező parancsokra.
 
 Ebben a cikkben kiválasztunk egy egyéni kimeneti hangot az általunk létrehozott alkalmazáshoz.
 
 ## <a name="select-a-custom-voice"></a>Egyéni hang kiválasztása
 
-1. Nyissa meg a [korábban létrehozott](./quickstart-custom-speech-commands-create-parameters.md) projektet
-1. A bal oldali panelen válassza a **Beállítások** lehetőséget.
-1. Válassza az **egyéni hang** lehetőséget a középső ablaktáblán
-1. Válassza ki a kívánt egyéni vagy nyilvános hangot a táblából.
-1. Kattintson a **Mentés** gombra
+1. A [korábban létrehozott](./quickstart-custom-speech-commands-create-parameters.md) projekt megnyitása
+1. Válassza a **Beállítások** lehetőséget a bal oldali ablaktáblából
+1. Válassza az **Egyéni hang** lehetőséget a középső ablaktáblán
+1. Válassza ki a kívánt egyéni vagy nyilvános hangot az asztalról
+1. **Mentés** kiválasztása
 
 > [!div class="mx-imgBorder"]
-> ![minta mondatok paraméterekkel](media/custom-speech-commands/select-custom-voice.png)
+> ![Mintamondatok paraméterekkel](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Egyéni hangok hozhatók létre az egyéni hangprojektek lapról. Válassza ki a **Speech Studio** -hivatkozást, majd a kezdéshez **Egyéni hangfelvételt** .
+> Egyéni hangok hozhatók létre az Egyéni hang projekt lapról. A kezdéshez válassza a **Beszédstúdió** hivatkozást, majd az **Egyéni hangot.**
 
-Mostantól az alkalmazás az alapértelmezett hang helyett a kiválasztott hangon fog válaszolni.
+Most az alkalmazás válaszol a kiválasztott hang, hanem az alapértelmezett hang.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Kapcsolódás egyéni parancssori alkalmazáshoz a Speech SDK-val (előzetes verzió)](./quickstart-custom-speech-commands-speech-sdk.md)
+> [Rövid útmutató: Csatlakozás egyéni parancsalkalmazáshoz a beszédfelismerési SDK-val (előzetes verzió)](./quickstart-custom-speech-commands-speech-sdk.md)
 

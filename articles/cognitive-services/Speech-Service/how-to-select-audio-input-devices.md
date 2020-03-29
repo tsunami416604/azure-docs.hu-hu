@@ -1,7 +1,7 @@
 ---
-title: Hangbemeneti eszköz kiválasztása a Speech SDK-val
+title: Hangbemeneti eszköz kiválasztása a Beszéd SDK-val
 titleSuffix: Azure Cognitive Services
-description: Tudnivalók a hangbemeneti eszközök kiválasztásáról a SpeechC++SDK C#-ban (,, Python, Objective-C, Java, JavaScript) a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzésével.
+description: Ismerje meg, hogyan kell hangbemeneti eszközöket kiválasztani a beszédbeszédSDkben (C++, C#, Python, Objective-C, Java, JavaScript) a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzésével.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74109975"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Útmutató: hangbemeneti eszköz kiválasztása a Speech SDK-val
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Útmutató: Hangbemeneti eszköz kiválasztása a beszédfelismerési SDK-val
 
-A Speech SDK 1.3.0 verziója bevezet egy API-t a hangbemenet kiválasztásához. Ez a cikk a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzését ismerteti. Ezek ezután a Speech SDK-ban használhatók a hangeszköz `AudioConfig` objektumon keresztüli konfigurálásával:
+A speech SDK 1.3.0-s verziója api-t vezet be a hangbemenet kiválasztásához. Ez a cikk a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzését ismerteti. Ezek ezután használhatók a beszédsdka konfigurálásával a `AudioConfig` hangeszköz az objektumon keresztül:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,13 +46,13 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
 > [!Note]
-> A mikrofon használata nem érhető el a Node. js-ben futó JavaScripthez
+> A mikrofon használat nem érhető el a Node.js nyelven futó JavaScript-műveletekhez
 
-## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Hangeszközök azonosítói Windows asztali alkalmazásokhoz
+## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Hangeszköz-azonosítók az asztali Windows alkalmazásokban
 
-Az audioeszköz- [VÉGPONT azonosító sztringek](/windows/desktop/CoreAudio/endpoint-id-strings) a Windows asztali alkalmazásokhoz készült [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) objektumból kérhetők le.
+A hangeszköz [végpontazonosító karakterláncai](/windows/desktop/CoreAudio/endpoint-id-strings) lehívhatók az objektumból az [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) asztali Windows alkalmazásokban.
 
-A következő mintakód azt szemlélteti, hogyan használható a hangeszközök enumerálása a ben C++:
+A következő kódminta bemutatja, hogyan használható a C++-ban lévő hangeszközök számbavételére:
 
 ```cpp
 #include <cstdio>
@@ -147,7 +147,7 @@ Exit:
 }
 ```
 
-A C#-ben a [NAudio](https://github.com/naudio/NAudio) könyvtár a CoreAudio API eléréséhez és az eszközök enumerálásához a következő módon használható:
+A C#-ban az [NAudio-kódtár](https://github.com/naudio/NAudio) a CoreAudio API elérésére és az eszközök számbavételére használható az alábbiak szerint:
 
 ```cs
 using System;
@@ -171,13 +171,13 @@ namespace ConsoleApp
 }
 ```
 
-Egy minta-eszköz azonosítója `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
+A mintaeszköz-azonosító a. `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`
 
-## <a name="audio-device-ids-on-uwp"></a>Hangeszközök azonosítói a UWP
+## <a name="audio-device-ids-on-uwp"></a>Hangeszköz-azonosítók az UWP-n
 
-A Univerzális Windows-platform (UWP) hangbeviteli eszközöket a megfelelő [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) objektum `Id()` tulajdonságával lehet beszerezni.
+Az univerzális Windows-platformon (UWP) a hangbemeneti eszközök `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) a megfelelő objektum tulajdonságával szerezhetők be.
 
-A következő kódrészletek bemutatják, hogyan teheti C#ezt meg a és a alkalmazásban C++ :
+A következő kódminták bemutatják, hogyan kell ezt megtenni C++ és C#-ban:
 
 ```cpp
 #include <winrt/Windows.Foundation.h>
@@ -222,22 +222,22 @@ namespace helloworld {
 }
 ```
 
-Egy minta-eszköz azonosítója `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
+A mintaeszköz-azonosító a. `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`
 
-## <a name="audio-device-ids-on-linux"></a>Audio-eszközök azonosítói Linuxon
+## <a name="audio-device-ids-on-linux"></a>Audio eszköz azonosítók Linuxon
 
-Az eszközök azonosítói a szabványos ALSA-eszközök azonosítói alapján vannak kiválasztva.
+Az eszközazonosítók at szabványos ALSA-eszközazonosítók segítségével választják ki.
 
-A rendszerhez csatolt bemenetek azonosítói az `arecord -L`parancs kimenetében találhatók.
-Azt is megteheti, hogy az [ALSA C könyvtár](https://www.alsa-project.org/alsa-doc/alsa-lib/)használatával szerzi be őket.
+A rendszerhez csatolt bemenetek azonosítóit a parancs `arecord -L`kimenete tartalmazza.
+Alternatív megoldásként az [ALSA C könyvtársegítségével](https://www.alsa-project.org/alsa-doc/alsa-lib/)szerezhetők be.
 
-A minták azonosítói `hw:1,0` és `hw:CARD=CC,DEV=0`.
+A mintaazonosítók `hw:CARD=CC,DEV=0`és `hw:1,0` a.
 
-## <a name="audio-device-ids-on-macos"></a>Hangeszközök azonosítói macOS rendszeren
+## <a name="audio-device-ids-on-macos"></a>Hangeszköz-azonosítók a macOS rendszeren
 
-Az Objective-C-ben implementált következő függvény a Mac számítógéphez csatlakoztatott hangeszközök neveinek és azonosítóinak listáját hozza létre.
+A C célkitűzésben megvalósított következő függvény a Mac-hez csatlakoztatott hangeszközök nevét és azonosítóit tartalmazza.
 
-A `deviceUID` sztring a macOS-hez készült Speech SDK-ban található eszköz azonosítására szolgál.
+A `deviceUID` karakterlánc a macOS-hez való beszédsdk-ben lévő eszköz azonosítására szolgál.
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -361,11 +361,11 @@ CFArrayRef CreateInputDeviceArray()
 }
 ```
 
-A beépített mikrofonhoz tartozó UID például `BuiltInMicrophoneDevice`.
+A beépített mikrofon UID azonosítója `BuiltInMicrophoneDevice`például .
 
-## <a name="audio-device-ids-on-ios"></a>Hangeszközök azonosítói az iOS-en
+## <a name="audio-device-ids-on-ios"></a>Hangeszköz-azonosítók iOS rendszeren
 
-A Speech SDK-val a hangeszköz kiválasztása nem támogatott iOS rendszeren. Az SDK-t használó alkalmazások azonban a [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) -keretrendszer segítségével befolyásolhatják a hangútválasztást.
+A beszédfelismerési SDK-val rendelkező hangeszköz-választás iOS rendszeren nem támogatott. Az SDK-t használó alkalmazások azonban [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) befolyásolhatják a hang-útválasztást a keretrendszeren keresztül.
 
 Például az utasítás
 
@@ -374,16 +374,16 @@ Például az utasítás
     withOptions:AVAudioSessionCategoryOptionAllowBluetooth error:NULL];
 ```
 
-engedélyezi a Bluetooth-fejhallgató használatát egy beszédfelismerést támogató alkalmazáshoz.
+lehetővé teszi a Bluetooth-headset használatát a beszédfelismerésre alkalmas alkalmazásokhoz.
 
-## <a name="audio-device-ids-in-javascript"></a>Hangeszközök azonosítói a JavaScriptben
+## <a name="audio-device-ids-in-javascript"></a>Hangeszköz-azonosítók JavaScriptben
 
-A JavaScriptben a [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metódus használatával enumerálhatja az adathordozó eszközöket, és megtalálhatja a `fromMicrophone(...)`nek átadandó eszköz azonosítóját.
+JavaScript ben a [MediaDevices.ennumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metódus a médiaeszközök számbavételére és a `fromMicrophone(...)`továbbítandó eszközazonosító megkeresésére használható.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)
+> [Fedezze fel mintáinkat a GitHubon](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Lásd még
 

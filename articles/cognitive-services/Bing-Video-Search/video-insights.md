@@ -1,7 +1,7 @@
 ---
-title: A Bing Video Search API használatával videó-felismeréseket kaphat
+title: Videoelemzések beszereznie a Bing Video Search API-val
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan használhatja a Bing Video Search APIt a videókkal, például a kapcsolódó videókkal kapcsolatos további információk eléréséhez.
+description: Megtudhatja, hogy miként szerezhet további információt a Videókról, például a kapcsolódó videókról a Bing Video Keresési API használatával.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500600"
 ---
-# <a name="get-insights-about-a-video"></a>Videókra vonatkozó információk lekérése
+# <a name="get-insights-about-a-video"></a>Elemzési adatok beszerezése egy videóról
 
-A Bing Video Search API által visszaadott összes videó tartalmaz egy videó-azonosítót, amellyel további információkat kaphat, például a kapcsolódó videókat. A videóval kapcsolatos információk beszerzéséhez szerezze be az [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) -tokent az API-válaszban. 
+A Bing Video Search API által visszaküldött minden egyes videó tartalmaz egy videoazonosítót, amelynek segítségével további információkat kaphat róla, például a kapcsolódó videókat. A videóval kapcsolatos elemzési [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) adatok lekéréséhez az API-válasz videóazonosító-jogkivonatát is lekell szereznie. 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ A Bing Video Search API által visszaadott összes videó tartalmaz egy videó-a
     ],
 ```
 
-Ezt követően küldjön egy GET-kérést a videó részleteit tartalmazó végpontra az AZONOSÍTÓval. Állítsa az [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) lekérdezési paramétert `videoId` a tokenre. A lekérdezni kívánt adatfelismerések megadásához állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméterét. Az összes bepillantást az összes értékre `modules` állíthatja. A válasz tartalmazza az összes kért bepillantást, ha van ilyen.
+Ezt követően küldjön egy GET-kérelmet a Videó részletei végpontaz azonosítóval. Állítsa be az [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) lekérdezési paramétert a `videoId` jogkivonatra. A beszerezni kívánt [elemzések](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) megadásához állítsa be a modulok lekérdezési paraméterét. Ahhoz, hogy `modules` minden betekintést, állítsa be az összes. A válasz tartalmazza az összes általakért elemzéseket, ha rendelkezésre állnak.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -46,9 +46,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ``` 
 
-## <a name="getting-related-videos-insights"></a>Kapcsolódó videó-felismerések beolvasása  
+## <a name="getting-related-videos-insights"></a>Kapcsolódó videók elemzési adatainak beszerzése  
 
-A megadott videóhoz kapcsolódó videók beszerzéséhez állítsa a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméterét `RelatedVideos`a következőre:.
+A megadott videóhoz kapcsolódó videók lefelvételéhez állítsa a `RelatedVideos` [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) query paramétert a értékre.
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-A kérelemre adott válasz felső szintű [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) objektummal fog rendelkezni a [videók](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektum helyett.  
+A kérésre adott válaszegy legfelső szintű [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) objektumot fog használni [a Videók](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektum helyett.  
   
 ```json
 {
@@ -97,5 +97,5 @@ A kérelemre adott válasz felső szintű [VideoDetails](https://docs.microsoft.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Trendek keresése a videók között](trending-videos.md)
+> [Felkapott videók keresése](trending-videos.md)
 

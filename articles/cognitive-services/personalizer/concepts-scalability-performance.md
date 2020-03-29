@@ -1,7 +1,7 @@
 ---
-title: Skálázhatóság és teljesítmény – személyre szabás
+title: Méretezhetőség és teljesítmény – személyre szabó
 titleSuffix: Azure Cognitive Services
-description: 'A nagy teljesítményű és a nagy forgalmú webhelyeknek és alkalmazásoknak két fő szempontja van, amely a méretezhetőség és a teljesítmény érdekében a rugalmasságot és a teljesítményt is figyelembe veszi: késés és betanítás.'
+description: 'A nagy teljesítményű és nagy forgalmú webhelyek és alkalmazások két fő tényezőt kell figyelembe venniük a Méretezhetőség és a teljesítmény érdekében: a késés és a betanítási teljesítmény.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,44 +11,44 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: diberry
 ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490789"
 ---
 # <a name="scalability-and-performance"></a>Méretezhetőség és teljesítmény
 
-A nagy teljesítményű és nagy forgalmú webhelyekhez és alkalmazásokhoz két fő tényezőt kell figyelembe venni a méretezhetőség és a teljesítmény személyre szabása érdekében:
+A nagy teljesítményű és nagy forgalmú webhelyek nek és alkalmazásoknak két fő tényezőt kell figyelembe venniük a Personalizer segítségével a méretezhetőség és a teljesítmény érdekében:
 
-* Alacsony késés a rangsor API-hívások készítésekor
-* Győződjön meg arról, hogy a betanítási átviteli sebesség lépést tart az esemény bemenetével
+* Alacsony késleltetés a Rank API-hívások kezdeményezése során
+* Annak biztosítása, hogy a betanítási átviteli adata lépést tart az eseménybevitellel
 
-A személyre szabás gyorsan, a REST APIon keresztüli kommunikációhoz dedikált hívási időtartam nagy részét is visszaállíthatja. Az Azure automatikusan méretezi a kérések gyors reagálásának lehetőségét.
+A személyre szabás gyorsan visszaadhat egy rangot, és a hívás időtartamának nagy része a REST API-n keresztüli kommunikációra van felszentelve. Az Azure automatikusan skálázódik a kérelmek gyors megválaszolásának képességét.
 
 ##  <a name="low-latency-scenarios"></a>Kis késleltetésű forgatókönyvek
 
-Egyes alkalmazások esetében alacsony késésre van szükség, amikor egy rangot ad vissza. Kis késleltetés szükséges:
+Egyes alkalmazások alacsony késéseket igényelnek, amikor egy rangsort adnak vissza. Alacsony késések szükségesek:
 
-* Annak érdekében, hogy a felhasználó a rangsorolt tartalom megjelenítése előtt ne várjon észrevehető időtartamot.
-* Annak érdekében, hogy a szélsőséges forgalmat észlelő kiszolgálók elkerüljék a szűkös számítási idő és a hálózati kapcsolatok összekapcsolását.
+* Annak érdekében, hogy a felhasználó ne várjon észrevehető időt a rangsorolt tartalom megjelenítése előtt.
+* A szélsőséges forgalmat tapasztaló kiszolgáló segítése érdekében, hogy ne kösse le a szűkös számítási időt és a hálózati kapcsolatokat.
 
 
-## <a name="scalability-and-training-throughput"></a>Skálázhatóság és betanítási teljesítmény
+## <a name="scalability-and-training-throughput"></a>Méretezhetőség és betanítási átmenő képesség
 
-A személyre szabás úgy működik, hogy frissít egy olyan modellt, amely a személyre szabott, a rangsor és a jutalmazási API-k után aszinkron módon küldött üzeneteken alapul. Ezeket az üzeneteket az alkalmazás Azure-EventHub küldik el.
+A Personalizer úgy működik, hogy frissít egy modellt, amely átvan programezve a Personalizer által a rangsor és jutalom API-k után aszinkron módon küldött üzenetek alapján. Ezeket az üzeneteket egy Azure EventHub az alkalmazás használatával küldi el.
 
- Nem valószínű, hogy a legtöbb alkalmazás eléri a személyre szabáshoz való csatlakozás és a betanítás maximális átviteli sebességét. Ha eléri ezt a maximumot, nem lassítja le az alkalmazást, azt feltételezi, hogy az Event hub-várólistákat a rendszer a tisztításhoz leggyorsabban kitölti.
+ Nem valószínű, hogy a legtöbb alkalmazás eléri a Personalizer maximális illesztési és képzési átaputlását. A maximális érték elérése nem lassítja le az alkalmazást, ez azt jelentené, hogy az Event Hub-várólisták belsőleg gyorsabban töltődnek be, mint ahogy azok megtisztíthatók.
 
-## <a name="how-to-estimate-your-throughput-requirements"></a>Az átviteli sebességre vonatkozó követelmények becslése
+## <a name="how-to-estimate-your-throughput-requirements"></a>Az átviteli követelmények becslése
 
-* A környezeti és a műveleti JSON-dokumentumok hosszának kiszámításával megbecsülheti az egyes rangsorolási események bájtjainak átlagos számát.
-* A becsült átlagos bájtok száma (MB/s)
+* Becsülje meg a bájtok átlagos számát rangsorolási eseményenként, hozzáadva a környezet és a művelet JSON-dokumentumainak hosszát.
+* 20 MB/s-os elosztani ezzel a becsült átlagos bájttal.
 
-Ha például az átlagos adattartalom 500 funkcióval rendelkezik, és mindegyik 20 karakterből áll, akkor minden esemény körülbelül 10kb. A becslések szerint a 20 000 000/10 000 = 2 000 Events/sec, amely körülbelül 173 000 000 esemény/nap. 
+Ha például az átlagos hasznos adat 500 funkcióval rendelkezik, és mindegyik becsült 20 karakter, akkor minden esemény körülbelül 10 kb. Ezekkel a becslésekkel 20 000 000 / 10 000 = 2000 esemény/mp, ami körülbelül 173 millió esemény/nap. 
 
-Ha eléri ezeket a korlátokat, forduljon a támogatási csapathoz architektúra-tanácsadásért.
+Ha eléri ezeket a korlátokat, kérjük, forduljon támogatási csapatunkhoz építészeti tanácsért.
 
 ## <a name="next-steps"></a>További lépések
 
-[Személyre szabás létrehozása és konfigurálása](how-to-settings.md).
+[A Personalizer létrehozása és konfigurálása.](how-to-settings.md)

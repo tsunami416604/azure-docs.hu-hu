@@ -1,7 +1,7 @@
 ---
-title: Bing Spell Check API V5 frissítése a v7-re
+title: A Bing helyesírás-ellenőrző API 5-ös frissítésének frissítése a v7-re
 titleSuffix: Azure Cognitive Services
-description: Az alkalmazás azon részeit azonosítja, amelyeket frissítenie kell a 7-es verzió használatára.
+description: Azonosítja az alkalmazás azon részeit, amelyeket frissítenie kell a 7-es verzió használatához.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,65 +11,65 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68500819"
 ---
-# <a name="spell-check-api-upgrade-guide"></a>Spell Check API frissítési útmutató
+# <a name="spell-check-api-upgrade-guide"></a>Helyesírás-ellenőrző API frissítési útmutató
 
-Ez a frissítési útmutató a Bing Spell Check API 5. és 7. verziójának változásait azonosítja. Ez az útmutató segítséget nyújt az alkalmazás azon részeinek azonosításához, amelyeket frissítenie kell a 7-es verzió használatához.
+Ez a frissítési útmutató azonosítja a Bing Helyesírás-ellenőrző API 5-ös és 7-es verziója közötti változásokat. Ebben az útmutatóban azonosíthatja az alkalmazás azon részeit, amelyeket frissítenie kell a 7-es verzió használatához.
 
 ## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 ### <a name="endpoints"></a>Végpontok
 
-- A végpont verziószáma a V5 verzióról a v7-re változott. Például: `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
+- A végpont verziószáma v5-ről v7-re változott. Például: `https://api.cognitive.microsoft.com/bing/v7.0/spellcheck`.
 
-### <a name="error-response-objects-and-error-codes"></a>Hibás objektumok és hibakódok
+### <a name="error-response-objects-and-error-codes"></a>Hibaválasz-objektumok és hibakódok
 
-- Az összes sikertelen kérelemnek tartalmaznia kell `ErrorResponse` egy objektumot a válasz törzsében.
+- Minden sikertelen kérelemnek tartalmaznia kell egy `ErrorResponse` objektumot a választörzsben.
 
-- A következő mezőket adta hozzá az `Error` objektumhoz.  
-  - `subCode`&mdash;A hibakódot különálló gyűjtőbe particionálja, ha lehetséges
+- A következő mezőket `Error` adta hozzá az objektumhoz.  
+  - `subCode`&mdash;A hibakódot különálló gyűjtőkre válaszolja, ha lehetséges
   - `moreDetails`&mdash;További információ a `message` mezőben leírt hibáról
    
 
-- Az V5-hibakódokat a következő lehetséges `code` és `subCode` értékekkel cserélte le.  
+- A v5 hibakódokat a `code` következő `subCode` lehetséges és értékekre cserélte.  
   
-|Kód|SubCode|Leírás
+|Kód|Alkód|Leírás
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing visszaadja a ServerError, ha az alkódok bármely feltétele teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolt|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha a hiba HttpNotAllowed, a 410-es HTTP-állapotkód.
-|RateLimitExceeded||A Bing visszaadja a RateLimitExceeded, amikor a másodpercenkénti lekérdezések (QPS) vagy a havi lekérdezés (QPM) kvóta meghaladja a kvótát.<br/><br/>A Bing a 429-as HTTP-állapotkódot adja vissza, ha túllépte a QPS és a 403 értéket, ha túllépte a QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing visszaadja a InvalidAuthorization, ha a Bing nem tudja hitelesíteni a hívót. Például hiányzik a `Ocp-Apim-Subscription-Key` fejléc, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing visszaadja a InsufficientAuthorization, ha a hívónak nincs engedélye az erőforrás elérésére. Ez akkor fordulhat elő, ha az előfizetési kulcs le van tiltva vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód 403.
+|Kiszolgálóhiba|Váratlan hiba<br/>Erőforráshiba<br/>Nincs megvalósítva|A Bing az alkódfeltételek bármelyikének bekövetkeztekor adja vissza a ServerError függvényt. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód 500.
+|Érvénytelen kérelem|Paraméter hiányzik<br/>ParameterInvalidValue érték<br/>HttpNem engedélyezett<br/>Blokkolva|A Bing visszaadja az InvalidRequest függvényt, ha a kérés bármely része érvénytelen. Például egy szükséges paraméter hiányzik, vagy egy paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha a hiba HttpNotAllowed, a HTTP-állapotkód 410.
+|RateLimitExceeded||A Bing visszaadja a RateLimitExceeded értéket, ha túllépi a lekérdezések másodpercenkénti (QPS) vagy lekérdezések havonta (QPM) kvótát.<br/><br/>A Bing a 429-es HTTP-állapotkódot adja vissza, ha túllépte a QPS-t, és a 403-at, ha túllépte a QPM protokollt.
+|InvalidAuthorization (Érvénytelen engedélyezés)|Engedély hiányzik<br/>EngedélyezésRedundancy|A Bing invalidAuthorization értéket ad vissza, ha a Bing nem tudja hitelesíteni a hívót. Például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor következik be, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
+|Elégtelen engedélyezés|Engedélyezésletiltva<br/>Engedélyezés Lejárt|A Bing nem licencet ad vissza, ha a hívó nem rendelkezik az erőforrás eléréséhez szükséges engedélyekkel. Ez akkor fordulhat elő, ha az előfizetési kulcs le van tiltva, vagy lejárt. <br/><br/>Ha a hiba insufficientAuthorization, a HTTP-állapotkód 403.
 
-- A következő leképezi az előző hibakódokat az új kódokra. Ha az V5-hibakódok függőségét vette igénybe, frissítse a kódját ennek megfelelően.  
+- Az alábbiakban az előző hibakódokat az új kódokhoz rendelik. Ha a v5-ös hibakódoktól függ, ennek megfelelően frissítse a kódot.  
   
-|5\. verzió kódja|7-es verzió kódja. alkód
+|5-ös verzió kódja|7-es verziójú kód.alkód
 |-|-
-|RequestParameterMissing|InvalidRequest.ParameterMissing
+|RequestParameterMissing (RequestParameterMissing)|InvalidRequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
-ResourceAccessDenied|InsufficientAuthorization
-ExceededVolume|RateLimitExceeded
-ExceededQpsLimit|RateLimitExceeded
+ResourceAccess Megtagadva|Elégtelen engedélyezés
+Túllépvea kötet|RateLimitExceeded
+TúllépveqpsLimit|RateLimitExceeded
 Letiltva|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|ServerError.UnexpectedError
-DataSourceErrors|ServerError. ResourceError
-AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.HttpNotAllowed
+Váratlan hiba|ServerError.UnexpectedError
+DataSourceErrors (Adatforráshibák)|ServerError.ResourceError
+Engedély hiányzik|InvalidAuthorization.AuthorizationMissing
+HttpNem engedélyezett|InvalidRequest.HttpNotallowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-Nincs implementálva|ServerError.NotImplemented
-InvalidAuthorization|InvalidAuthorization
-InvalidAuthorizationMethod|InvalidAuthorization
-MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
+Nincs megvalósítva|ServerError.NotImplemented
+InvalidAuthorization (Érvénytelen engedélyezés)|InvalidAuthorization (Érvénytelen engedélyezés)
+InvalidAuthorizationMetódus|InvalidAuthorization (Érvénytelen engedélyezés)
+MultipleAuthorizationMetódus|InvalidAuthorization.AuthorizationRedundancy
 ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
-InsufficientScope|InsufficientAuthorization
-Blokkolt|InvalidRequest. Blocked
+InsufficientScope (Elégtelen hatókör)|Elégtelen engedélyezés
+Blokkolva|ÉrvénytelenKérelem.Letiltva
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Használati és megjelenítési követelmények](./UseAndDisplayRequirements.md)
+> [Felhasználási és megjelenítési követelmények](./UseAndDisplayRequirements.md)

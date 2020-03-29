@@ -1,7 +1,7 @@
 ---
-title: Rendszerképek lekérése a webes – a Bing Image Search API
+title: Képek beszereznie az internetről – Bing Image Search API
 titleSuffix: Azure Cognitive Services
-description: A Bing Image Search API használatával keresse meg és képeket lekérése az internetről.
+description: A Bing Image Search API-val releváns képeket kereshet és kaphat le az internetről.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67542766"
 ---
-# <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Képek bekérése a weben a Bing Image Search API az
+# <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Képek beszereznie az internetről a Bing Képkereső API-val
 
-A Bing Image Search REST API használata esetén a keresési kifejezést a következő GET kérelem küldésével kapcsolatos webes kaphat lemezképek:
+A Bing Image Search REST API használatakor a következő GET-kérelem elküldésével kaphat le képeket az internetről, amelyek a keresési kifejezéshez kapcsolódnak:
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -31,13 +31,13 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Használja a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) lekérdezési paraméter esetében az url-kódolású keresőkifejezést. Ha például meg *hajózási dinghies*állítsa be `q` való `sailing+dinghies` vagy `sailing%20dinghies`.
+Használja a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) lekérdezésparamétert az URL-kódolású keresési kifejezéshez. Ha például *vitorlás csónakokat*ad `q` `sailing+dinghies` meg, állítsa be a vagy `sailing%20dinghies`a értéket.
 
 > [!IMPORTANT]
-> * Egy kiszolgálóról, és nem az ügyféltől érkező összes kérés kell tenni.
-> * Ha most először bármely, a Bing keresési API-k hívása, az ügyfél-ID fejléc nem tartalmaznak. Csak tartalmazza az ügyfél-Azonosítót, ha korábban már meghívta a Bing-API, amely az ügyfél-Azonosítót a felhasználó és eszköz kombinációt adja vissza.
+> * Minden kérést kiszolgálóról kell kérelmet intézni, nem ügyfélről.
+> * Ha ez az első alkalom, hogy felhívja a Bing keresési API-k bármelyikét, ne adja meg az ügyfélazonosító fejlécét. Csak akkor adja meg az ügyfélazonosítót, ha korábban olyan Bing API-t hívott meg, amely ügyfélazonosítót adott vissza a felhasználó és az eszköz kombinációjához.
 
-## <a name="get-images-from-a-specific-web-domain"></a>Rendszerképek lekérése egy adott webes tartományból
+## <a name="get-images-from-a-specific-web-domain"></a>Képek beszereznie egy adott webtartományból
 
 Ha egy konkrét tartományban található képeket szeretne lekérni, használja a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
 
@@ -46,24 +46,24 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> Adott válaszok segítségével a `site:` operátort tartalmazhatnak felnőtt tartalom, függetlenül attól, hogy a [biztonságos keresési](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) beállítás. Csak `site:` Ha tisztában a tartalmat a tartományon.
+> Az operátort használó `site:` lekérdezésekre adott válaszok felnőtt tartalmat is tartalmazhatnak, függetlenül a [biztonságos Keresés](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) beállításától. Csak `site:` akkor használja, ha ismeri a tartomány tartalmát.
 
-## <a name="filter-images"></a>Rendszerképek szűrése
+## <a name="filter-images"></a>Képek szűrése
 
- Alapértelmezés szerint az Image Search API, amely a lekérdezés az összes rendszerkép adja vissza. Ha szeretne szűrheti a képeket, a Bing adja vissza (például csak képeket áttetsző hátterű vagy meghatározott méretet), használja a lekérdezési paraméterek:
+ Alapértelmezés szerint a Képkereső API a lekérdezéshez kapcsolódó összes lemezképet visszaadja. Ha szűrni szeretné a Bing által visszaadott képeket (például csak átlátszó háttérrel vagy adott méretű képeket szeretne visszaadni), használja a következő lekérdezési paramétereket:
 
-* [aspektus](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)– rendszerképek szűrés oldalarány (például standard vagy nagy képernyőképek).
-* [szín](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)– színig vagy fekete-fehér-rendszerképek szűrése.
-* [frissessége](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)– rendszerképek szűrése kor (például képek felderítette a Bing, az elmúlt héten).
-* [magasság](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [szélesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)– szélességének és magasságának-rendszerképek szűrése.
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)– rendszerképek szűrése tartalom (például képek, amelyek csak egy személy face megjelenítése) által.
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)– rendszerképek (például ClipArt, GIF, vagy áttetsző háttérrel) típus szerint szűrheti.
-* [licenc](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)– rendszerképek szűrése a helyhez hozzárendelt licenc típusa szerint.
-* [méret](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)– például a kis méretű szűrő lemezképek lemezkép legfeljebb 200 x 200 képpont.
+* [szempont](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)– A képek képarány szerinti szűrése (például normál vagy széles vásznú képek).
+* [szín](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)– A képek szűrése domináns szín vagy fekete-fehér szerint.
+* [frissesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)– A képek kor szerinti szűrése (például a Bing által az elmúlt héten felfedezett képek)
+* [magasság](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [szélesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)–Képek szűrése szélesség és magasság szerint.
+* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)– A képek szűrése tartalom szerint (például olyan képek, amelyek csak egy személy arcát jelenítik meg).
+* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)— Képek szűrése szöveg szerint (például ClipArt-elemek, animált GIF-ek vagy átlátszó hátterek).
+* [licenc](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)– A webhelyhez társított licenc típusa szerint szűrheti a képeket.
+* [méret](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)– A képek et méret szerint szűrheti, például kis képeket akár 200x200 képpontig.
 
 Ha egy konkrét tartományban található képeket szeretne lekérni, használja a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
 
-Az alábbi példa bemutatja, hogyan kis képek beolvasni a Bing által az elmúlt héten felderített ContosoSailing.com.  
+A következő példa bemutatja, hogyan szerezhet be kis képeket a bing által az elmúlt héten felfedezett ContosoSailing.com.  
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
@@ -74,13 +74,13 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="bing-image-search-response-format"></a>Bing – Képkeresés válaszának formátuma
+## <a name="bing-image-search-response-format"></a>Bing képkeresési válaszformátuma
 
-A Bing a válaszüzenet tartalmaz egy [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) választ, amely fontos lehet a lekérdezés megállapítani a Cognitive Services rendszerképek listáját tartalmazza. Minden egyes [kép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektum a lista tartalmazza a kép a következő információkat: az URL-címet, annak méretét, a dimenziók, a kódolási formátum, a képet, és a miniatűr dimenziók Miniatűr URL-CÍMÉT.
+A Bing válaszüzenete tartalmaz egy [Képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) választ, amely tartalmazza azon képek listáját, amelyeket a Cognitive Services a lekérdezés szempontjából relevánsnak határozott. A listában szereplő [minden képobjektum](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) a következő információkat tartalmazza a képről: az URL-cím, annak mérete, méretei, kódolási formátuma, a kép miniatűrjének URL-címe és a bélyegkép méretei.
 
 > [!NOTE]
-> * Képek a válaszban megadott sorrendben kell megjeleníteni.
-> * Mert az URL-formátumok és paraméterek előzetes értesítés nélkül változhatnak, használja az URL-címekhez,-van. Az URL-formátum vagy nincs másként jelölve paraméterek függőségek nem kell tennie.
+> * A képeket a válaszban megadott sorrendben kell megjeleníteni.
+> * Mivel az URL-formátumok és -paraméterek előzetes értesítés nélkül változhatnak, használja az összes URL-t a hogyési.Because URL formats and parameters are to change without notice, use all URL as-is. Nem szabad függőséget az URL-formátumvagy paraméterek, kivéve, ha azt megjegyezte.
 
 ```json
 {
@@ -109,8 +109,8 @@ A Bing a válaszüzenet tartalmaz egy [lemezképek](https://docs.microsoft.com/r
 },
 ```
 
-Amikor meghívja a Bing Image Search API-t, a Bing visszaad egy eredménylistát. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. A válasz `totalEstimatedMatches` mezője az összes megtekinthető kép becsült számát adja meg. További részének a lemezképek lapra kapcsolatos részletekért lásd: [lapozás lemezképek](../paging-images.md).
+Amikor meghívja a Bing Image Search API-t, a Bing visszaad egy eredménylistát. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. A válasz `totalEstimatedMatches` mezője az összes megtekinthető kép becsült számát adja meg. A többi kép lapozásáról a [Lapozási képek](../paging-images.md)című témakörben talál részleteket.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha még nem próbálta a Bing Image Search API előtti, próbálja meg egy [rövid](../quickstarts/csharp.md). Ha összetettebb keres, próbálja meg létrehozni az oktatóanyag egy [egyoldalas webalkalmazást](../tutorial-bing-image-search-single-page-app.md).
+Ha még nem próbálta ki a Bing Image Search API-t, próbálkozzon egy [rövid útmutatóval.](../quickstarts/csharp.md) Ha valami összetettebbet keres, próbálja ki az oktatóanyagot egy [egyoldalas webalkalmazás](../tutorial-bing-image-search-single-page-app.md)létrehozásához.

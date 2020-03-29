@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás – Computer Vision
+title: Nyelvi támogatás - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk a Computer Vision szolgáltatások által támogatott természetes nyelvek listáját tartalmazza; OCR, szövegfelismerés és olvasás.
+description: Ez a cikk a Computer Vision funkciói által támogatott természetes nyelvek listáját tartalmazza; OCR, Szöveg felismerése és olvasása.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,66 +11,66 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: a834c68119340d796f87971912a07fc0524a6d21
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220137"
 ---
-# <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
+# <a name="language-support-for-computer-vision"></a>Nyelvi támogatás a Computer Vision-hez
 
-A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említett szolgáltatások csak az angol nyelvet támogatják.
+A Computer Vision egyes funkciói több nyelvet is támogatnak; az itt nem említett funkciók csak az angol nyelvet támogatják.
 
 ## <a name="text-recognition"></a>Szövegfelismerés
 
-A Computer Vision számos nyelven képes felismerni a szöveget. Az [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) API különböző nyelveket támogat, míg az [olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API és a [szövegfelismerés](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) API csak az angol nyelvet támogatja. További információ a funkcióról és az egyes API-k előnyeiről: a [nyomtatott és a kézírásos szöveg felismerése](concept-recognizing-text.md) .
+A Computer Vision számos nyelven képes felismerni a szöveget. Pontosabban az [OCR](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) API számos nyelvet támogat, míg az [Olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API és a [Szöveg felismerése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) API csak az angol nyelvet támogatja. A funkcióval és az egyes [API-k](concept-recognizing-text.md) előnyeivel kapcsolatos további információkért lásd: Nyomtatott és kézzel írt szöveg felismerése.
 
-Az OCR automatikusan észleli a bemeneti anyag nyelvét, így nincs szükség a nyelvi kód megadására az API-hívásban. A nyelvi kódokat azonban mindig a JSON-válasz `"language"` csomópontjának értékeként adja vissza a rendszer.
+Az OCR automatikusan felismeri a bemeneti anyag nyelvét, így nincs szükség nyelvi kód megadására az API-hívásban. A nyelvkódok azonban mindig a JSON-válasz ban lévő `"language"` csomópont értékeként lesznek visszaadva.
 
 |Nyelv| Nyelvkód | OCR API |
 |:-----|:----:|:-----:|
 |Arab | `ar`|✔ |
-|kínai (egyszerűsített) | `zh-Hans`|✔ |
-|kínai (hagyományos) | `zh-Hant`|✔ |
-|cseh | `cs` |✔ |
-|dán | `da` |✔ |
+|Kínai (egyszerűsített) | `zh-Hans`|✔ |
+|Kínai (hagyományos) | `zh-Hant`|✔ |
+|Cseh | `cs` |✔ |
+|Dán | `da` |✔ |
 |Holland | `nl` |✔ |
 |Angol | `en` |✔ |
-|finn | `fi` |✔ |
-|francia | `fr` |✔ |
-|német | `de` |✔ |
-|görög | `el` |✔ |
-|magyar | `hu` |✔ |
-|olasz | `it` |✔ |
-|japán | `ja` |✔ |
-|koreai | `ko` |✔ |
-|norvég | `nb` |✔ |
-|lengyel | `pl` |✔ |
+|Finn | `fi` |✔ |
+|Francia | `fr` |✔ |
+|Német | `de` |✔ |
+|Görög | `el` |✔ |
+|Magyar | `hu` |✔ |
+|Olasz | `it` |✔ |
+|Japán | `ja` |✔ |
+|Koreai | `ko` |✔ |
+|Norvég | `nb` |✔ |
+|Lengyel | `pl` |✔ |
 |Portugál | `pt` |✔ |
 |Román | `ro` |✔ |
 |Orosz | `ru` |✔ |
-|szerb (cirill betűs) | `sr-Cyrl` |✔ |
-|szerb (latin betűs) | `sr-Latn` |✔ |
-|szlovák | `sk` |✔ |
-|spanyol | `es` |✔ |
-|svéd | `sw` |✔ |
-|török | `tr` |✔ |
+|Szerb (cirill betűs) | `sr-Cyrl` |✔ |
+|Szerb (latin betűs) | `sr-Latn` |✔ |
+|Szlovák | `sk` |✔ |
+|Spanyol | `es` |✔ |
+|Svéd | `sw` |✔ |
+|Török | `tr` |✔ |
 
-## <a name="image-analysis"></a>Rendszerkép elemzése
+## <a name="image-analysis"></a>Képelemzés
 
-Az [elemzés-rendszerkép](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API egyes műveletei más nyelveket is visszaadhatnak, amelyek a `language` lekérdezési paraméterrel vannak megadva. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a `visualFeatures` és a `details` lekérdezési paraméterekkel vannak megadva; a képelemzéssel elvégezhető műveletek listáját az [áttekintésben](home.md) tekintheti meg.
+Az Elemzés [– Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API egyes műveletek más nyelveken `language` is visszaadhatnak eredményeket, a lekérdezési paraméterrel megadva. A többi művelet angol nyelvű eredményt ad vissza, függetlenül attól, hogy milyen nyelven van megadva, míg mások kivételt tesznek a nem támogatott nyelvekre. A műveletek a `visualFeatures` és `details` a lekérdezési paraméterekkel vannak megadva; Tekintse meg az [Áttekintés című témakört](home.md) a képelemzéssel kapcsolatban elvégzett összes művelet ről.
 
-|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumok | Hírességek | Arcrész |
+|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Color | Arcok | ImageType (Képtípus) | Objektumok | Hírességek | Nevezetességek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
-|japán | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Japán | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-|spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
+Ismerkedés az ebben az útmutatóban említett Computer Vision funkciókkal.
 
-* [Helyi rendszerkép (REST) elemzése](./quickstarts/csharp-analyze.md)
-* [Nyomtatott szöveg kinyerése (REST)](./quickstarts/csharp-print-text.md)
+* [Helyi lemezkép elemzése (REST)](./quickstarts/csharp-analyze.md)
+* [Nyomtatott szöveg kibontása (REST)](./quickstarts/csharp-print-text.md)

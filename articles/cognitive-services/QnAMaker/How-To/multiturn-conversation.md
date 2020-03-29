@@ -1,187 +1,187 @@
 ---
-title: Több-turn beszélgetések – QnA Maker
-description: A kérdésekkel és környezettel kezelheti a több fordulatot, más néven a robotot az egyik kérdésből a másikba. A többszörös bekapcsolás lehetősége van arra, hogy olyan háttérbeli beszélgetést lehessen használni, ahol az előző kérdés kontextusa befolyásolja a következő kérdést és választ.
+title: Többfordulatos beszélgetések - QnA Maker
+description: A kérdésekkel és a környezetkörnyezetvel kezelheti a több fordulatot, az úgynevezett többfordulatot, a robotot egyik kérdésből a másikba. Multi-turn az a képesség, hogy egy oda-vissza beszélgetés, ahol az előző kérdés összefüggésben befolyásolja a következő kérdésre és válaszra.
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220621"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
-A nyomon követéssel és a kontextussal kezelheti a több fordulatot, más néven _több bekapcsolást_az egyik kérdésből a másikba.
+A nyomon követési kérdések és a környezet segítségével kezelheti a több fordulatot, az úgynevezett _többfordulatot_a robothoz az egyik kérdésből a másikba.
 
-Ha szeretné megtekinteni, hogyan működik a több funkció, tekintse meg az alábbi bemutató videót:
+A többfordulatos működés megtekintéséhez tekintse meg a következő bemutató videót:
 
-[![több-turn beszélgetés a QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Többfordulatos beszélgetés a QnA Maker ben](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
-## <a name="what-is-a-multi-turn-conversation"></a>Mi az a több fordulatos beszélgetés?
+## <a name="what-is-a-multi-turn-conversation"></a>Mi az a többfordulós beszélgetés?
 
-Néhány kérdés nem válaszolható meg egyetlen fordulatban sem. Amikor megtervezi az ügyfélalkalmazás (chat bot) beszélgetéseit, a felhasználók megtehetnek egy olyan kérdést, amelyet szűrni vagy finomítani kell a helyes válasz megállapítása érdekében. Ezt a folyamatot a lehetséges kérdések segítségével teheti meg, ha a felhasználót a *követő kérésekkel*mutatja be.
+Néhány kérdésre nem lehet egy menetben válaszolni. Az ügyfélalkalmazással (csevegőrobotokkal) folytatott beszélgetések tervezésekor a felhasználó feltehet egy kérdést, amelyet szűrni vagy finomítani kell a helyes válasz meghatározásához. Ezt a kérdést a felhasználó nyomon követési kérdéseinek bemutatásával teheti *lehetővé.*
 
-Amikor egy felhasználó kérdést tesz fel, QnA Maker visszaadja a választ _és_ a követő utasításokat. Ez a válasz lehetővé teszi, hogy választási lehetőségként bemutassa a követő kérdéseket.
+Amikor egy felhasználó feltesz egy kérdést, a QnA Maker visszaküldi a választ _és_ a nyomon követési utasításokat. Ez a válasz lehetővé teszi, hogy a nyomon követési kérdéseket választási lehetőségként mutassa be.
 
 > [!CAUTION]
-> A többszörös kapcsolású kérések nem a GYIK-dokumentumokból lettek kinyerve. Ha több kibontásra van szüksége, távolítsa el azokat a kérdőjeleket, amelyek a QnA-párokat GYIK-ként jelölik.
+> A többfordulatos kérések nem kerülnek kinyerésre a GYIK-dokumentumokból. Ha többfordulatos kivonásra van szüksége, távolítsa el a QnA-párokat GYIK-ként megjelölt kérdőjeleket.
 
-## <a name="example-multi-turn-conversation-with-chat-bot"></a>Multi-turn beszélgetés a csevegő robottal
+## <a name="example-multi-turn-conversation-with-chat-bot"></a>Példa többfordulatos beszélgetésre a csevegőrobottal
 
-A többszörös bekapcsolással a csevegési bot a felhasználóval folytatott beszélgetést kezeli a végső válasz meghatározásához, ahogy az az alábbi képen is látható:
+A multi-turn, a chat bot kezeli a beszélgetést a felhasználóval, hogy meghatározza a végső választ, ahogy az a következő képen látható:
 
-![Egy Többablakos párbeszédpanel, amely a felhasználóknak egy beszélgetésen keresztül útmutatást nyújt.](../media/conversational-context/conversation-in-bot.png)
+![Többfordulatos párbeszédablak, amely nek ikraatta a felhasználót a beszélgetés](../media/conversational-context/conversation-in-bot.png)
 
-Az előző képen egy felhasználó elindított egy beszélgetést **a fiókom beírásával**. A Tudásbázis három csatolt kérdés-válasz párral rendelkezik. A válasz pontosításához a felhasználó kiválasztja a Tudásbázis három választási lehetőségének egyikét. A kérdés (#1) három utólagos figyelmeztetést tartalmaz, amelyek a csevegési robotban három lehetőségként jelennek meg (#2).
+Az előző képen a felhasználó a **Saját fiók**elemre lépve indított el beszélgetést. A tudásbázis három összekapcsolt kérdés-válasz párral rendelkezik. A válasz finomításához a felhasználó a tudásbázis három választási lehetősége közül választ. A kérdés (#1), három nyomon követési kéri, amelyek megjelennek a chat bot három lehetőség (#2).
 
-Ha a felhasználó kiválaszt egy beállítást (#3), a rendszer a finomítási beállítások (#4) következő listáját mutatja be. Ez a folyamat addig folytatódik (#5), amíg a felhasználó nem határozza meg a helyes, végleges választ (#6).
+Amikor a felhasználó kiválaszt egy beállítást (#3), megjelenik a finomítási beállítások következő listája (#4). Ez a sorozat addig folytatódik (#5), amíg a felhasználó meg nem határozza a helyes, végső választ (#6).
 
 
-### <a name="use-multi-turn-in-a-bot"></a>Több bekapcsoló használata a robotban
+### <a name="use-multi-turn-in-a-bot"></a>Használja multi-turn egy bot
 
-Miután közzétette a KB-ot, a **robot létrehozása** gombra kattintva üzembe helyezheti QnA Maker robotját az Azure bot Service-be. A promptok megjelennek a csevegési ügyfeleken, amelyeken engedélyezve van a robot.
+A tudásbázis közzététele után **kiválaszthatja** a Robot létrehozása gombot a QnA Maker robot azure-beli robotszolgáltatásba való üzembe helyezéséhez. A kérések megjelennek a csevegőklinek, amelyeket a robothoz engedélyezett.
 
-## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Többfordulatú beszélgetés létrehozása a dokumentumok struktúrájából
+## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Többfordulatos beszélgetés létrehozása a dokumentum szerkezetéből
 
-Ha létrehoz egy tudásbázist, a **tudásbáziscikk feltöltése** szakasz megjeleníti az **URL-címek,. PDF vagy. docx fájlok jelölőnégyzetének többszörös kibontásának engedélyezése** beállítást.
+Tudásbázis létrehozásakor a **TUDÁSBÁZIS feltöltése** szakasz ban megjelenik a **Többfordulatos kinyerés engedélyezése URL-címekről, .pdf vagy .docx fájlokból** jelölőnégyzet.
 
-![A többszörös Kibontás engedélyezésének jelölőnégyzete](../media/conversational-context/enable-multi-turn.png)
+![A többfordulatos kihúzás engedélyezéséhez jelölőnégyzet](../media/conversational-context/enable-multi-turn.png)
 
-Ha ezt a beállítást választja, QnA Maker kibontja a dokumentum struktúrájában lévő hierarchiát. A rendszer átalakítja a hierarchiát, hogy kövesse az utasításokat, és a hierarchia gyökerének szülő QnA kell szolgálnia. Egyes dokumentumokban a hierarchia gyökere nem rendelkezik olyan tartalommal, amely válaszként szolgálhat, megadhatja az "alapértelmezett válasz szövege" karakterláncot helyettesítő válaszként a hierarchiák kinyeréséhez.
+Ha ezt a beállítást választja, a QnA Maker kinyeri a dokumentumszerkezetben lévő hierarchiát. A hierarchia a következő kérések követésére konvertálódik, és a hierarchia gyökere szülő QnA-ként szolgál. Egyes dokumentumokban a hierarchia gyökerében nincs olyan tartalom, amely válaszként szolgálhatna, megadhatod az "Alapértelmezett válaszszöveget", amelyet helyettesítő válaszszövegként használhataz ilyen hierarchiák kibontásához.
 
-A többszörös kapcsolási struktúra csak URL-címekből, PDF-fájlokból vagy DOCX-fájlokból következtethető ki. A struktúra példájának megtekintéséhez tekintse meg a [Microsoft Surface felhasználói manuális PDF-fájljának](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)képét.
+A többfordulatos struktúra csak URL-ekből, PDF-fájlokból vagy DOCX-fájlokból következtethető ki. A szerkezetre vonatkozó példa a [Microsoft Surface felhasználói kézikönyve PDF-fájljának](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)képének megtekintése .
 
-![! [A felhasználói kézikönyv struktúrájának példája] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Példa a szerkezet a felhasználói kézikönyv] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="building-your-own-multi-turn-document"></a>Saját multi-turn dokumentum kiépítése
+### <a name="building-your-own-multi-turn-document"></a>Saját többfordulatos dokumentum létrehozása
 
-Ha több bekapcsoló dokumentumot hoz létre, vegye figyelembe a következő irányelveket:
+Ha többfordulatos dokumentumot hoz létre, kérjük, tartsa szem előtt az alábbi irányelveket:
 
-* Fejlécek és alfejlécek használatával jelezheti a hierarchiát. Például a H1 paraméterrel jelezheti, hogy a szülő QnA és a H2 jelzi a QnA, amelyet a rendszer kérni fog. A kisebb fejlécek méretének használata a későbbi hierarchia jelölésére. Ne használjon stílust, színt vagy valamilyen más mechanizmust a dokumentum struktúrájának megjelenítéséhez, QnA Maker nem fogja kibontani a többszörös bekapcsolási utasításokat.
+* A hierarchiát a címsorok és alfejlécek segítségével jelölje. Például h1 jelöli a szülő QnA és h2 jelöli a QnA, hogy kell venni, mint a prompt. A későbbi hierarchia kis címsorméretével jelölheti a későbbi hierarchiát. Ne használjon stílust, színt vagy más mechanizmust a dokumentum szerkezetének sugallására, a QnA Maker nem bontja ki a többszörös fordulatos utasításokat.
 
-* A fejléc első karakterének tőkésített kell lennie.
+* A címsor első karakterét nagybetűvel kell elévíteni.
 
-* Ne fejezze be a fejlécet kérdőjeltel, `?`.
+* Ne hagyjon kérdőjellel egy `?`címsort.
 
-* Példaként használhatja a [minta dokumentumot](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) a saját többfunkciós dokumentum létrehozásához.
+* A [mintadokumentum](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) példaként használhatja saját többfordulatos dokumentumának létrehozását.
 
-### <a name="adding-files-to-a-multi-turn-kb"></a>Fájlok hozzáadása több fordulatos KB-hoz
+### <a name="adding-files-to-a-multi-turn-kb"></a>Fájlok hozzáadása többfordulatos KB-hoz
 
-Hierarchikus dokumentum hozzáadásakor a QnA Maker a folyamaton belüli követő kéréseket határozza meg a beszélgetési folyamat létrehozásához.
+Amikor hierarchikus dokumentumot ad hozzá, a QnA Maker meghatározza a struktúra nyomon követési kéréseit a társalgási folyamat létrehozásához.
 
-1. A QnA Maker területen válasszon ki egy meglévő tudásbázist, amely az **URL-címek,. PDF vagy. docx fájlok többszörös kinyerésének engedélyezése** beállítással lett létrehozva. engedélyezve.
-1. Lépjen a **Beállítások** lapra, és válassza ki a hozzáadni kívánt fájlt vagy URL-címet.
-1. **Mentse és tanítsa** a tudásbázist.
+1. A QnA Maker programban válasszon ki egy meglévő tudásbázist, amely et az **URL-címek, .pdf vagy .docx fájlok többfordulatos kinyerésének engedélyezése** funkcióval hoztak létre. Engedélyezve.
+1. Nyissa meg a **Beállítások** lapot, és jelölje ki a hozzáadni kívánt fájlt vagy URL-címet.
+1. **Mentse és tanítsa** be a tudásbázist.
 
 > [!Caution]
-> Az exportált TSV vagy XLS multi-turn Tudásbázis-fájl adatforrásként való használatának támogatása nem támogatott az új vagy az üres Tudásbázisban. Ezt a fájltípust a QnA Maker portál **Beállítások** oldaláról kell **importálnia** , hogy az exportált többszörös bekapcsolási kérések egy tudásbázishoz legyenek hozzáadva.
+> Az exportált TSV- vagy XLS-alapú tudásbázisfájl új vagy üres tudásbázis adatforrásaként való használatának támogatása nem támogatott. A fájltípus **importálásához** a QnA Maker portál **Beállítások** lapjáról kell importálnia, hogy exportált többfordulatos utasításokat adjon a tudásbázishoz.
 
 
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tudásbázis létrehozása több bekapcsolási kéréssel a Create API használatával
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tudásbázis létrehozása többfordulatos kérdésekkel a Create API-val
 
-A [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával létrehozhat egy, a több bekapcsolást kérő kérdésekkel kapcsolatos tudásbázist. A rendszer hozzáadja az utasításokat a `context` tulajdonság `prompts` tömbben.
+A [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)segítségével többfordulatos kérdésekkel hozhat létre tudásesetet. A kérések hozzáadnak `context` a `prompts` tulajdonság tömbjéhez.
 
-## <a name="show-questions-and-answers-with-context"></a>Kérdések és válaszok megjelenítése a kontextusban
+## <a name="show-questions-and-answers-with-context"></a>Kérdések és válaszok megjelenítése kontextusban
 
-Csökkentse a megjelenő kérdés-válasz párokat, hogy csak a környezetfüggő beszélgetésekkel rendelkezők jelenjenek meg.
+Csökkentse a megjelenített kérdés-válasz párokat csak a környezetfüggő beszélgetésekkel rendelkezőkre.
 
-Válassza a **megtekintési beállítások**, majd a **környezet megjelenítése**lehetőséget. A lista a követő kérdéseket tartalmazó kérdés-válasz párokat jeleníti meg.
+Válassza **a Nézet beállításai lehetőséget,** majd a Környezet **megjelenítése**lehetőséget. A lista azokat a kérdések és válaszpárokat jeleníti meg, amelyek nyomon követési utasításokat tartalmaznak.
 
-![Kérdés-válasz párok szűrése környezetfüggő beszélgetések alapján](../media/conversational-context/filter-question-and-answers-by-context.png)
+![Kérdés-válasz párok szűrése környezetfüggő beszélgetések szerint](../media/conversational-context/filter-question-and-answers-by-context.png)
 
-A többszörös kapcsolási környezet az első oszlopban jelenik meg.
+A többfordulatos környezet az első oszlopban jelenik meg.
 
-![! [A "Context (előnézet)" oszlop] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! [A "Környezet (PREVIEW)" oszlop] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-Az előző képen a **#1** félkövér szöveget jelöl az oszlopban, amely az aktuális kérdést jelzi. A szülő kérdés a sorban lévő legfelső elem. Az alábbi kérdések a csatolt kérdés-válasz párok. Ezek az elemek kiválaszthatók, így azonnal átléphet a többi környezeti elemre.
+Az előző képen **a #1** az oszlopban lévő félkövér szöveget jelöli, ami az aktuális kérdést jelöli. A szülőkérdés a sor legfelső eleme. Az alatta lévő kérdések a kapcsolódó kérdés-válasz párok. Ezek az elemek választhatók, így azonnal átléphet a többi környezeti elemre.
 
-## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Egy meglévő kérdés-válasz pár hozzáadása követő üzenetként
+## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Meglévő kérdés-válasz pár hozzáadása nyomon követési kérdésként
 
-Az eredeti kérdés, **a fiókom**, a követési kérések, például a **fiókok és a bejelentkezés**.
+Az eredeti kérdés, **A fiók**, nyomon követési utasításokat, például a Fiókok és **a bejelentkezés.**
 
-![A "fiókok és bejelentkezés" válaszok és követő kérések](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
+![A "Fiókok és bejelentkezés" válaszok és nyomon követési utasítások](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
-Olyan meglévő kérdés-válasz párokhoz adja hozzá a követési kérést, amely jelenleg nincs összekapcsolva. Mivel a kérdés nem kapcsolódik a kérdés-válasz párokhoz, a jelenlegi nézet beállítást módosítani kell.
+Adjon hozzá egy nyomon követési kérdést egy meglévő kérdés-válasz párhoz, amely jelenleg nincs összekapcsolva. Mivel a kérdés nem kapcsolódik egyetlen kérdés-válasz párhoz sem, az aktuális nézetbeállítást módosítani kell.
 
-1. Ha egy meglévő kérdés-válasz párokat szeretne felvenni egy követő parancssorba, válassza ki a kérdés-válasz párok sorát. A felszín manuális megjelenítéséhez keressen rá a **kijelentkezés** gombra a lista csökkentése érdekében.
-1. A **kijelentkezés**sorában, a **Válasz** oszlopban válassza a **követő kérés hozzáadása**lehetőséget.
-1. A következő értékeket kell megadnia a **követési kérés** előugró ablakának mezőiben:
+1. Ha egy meglévő kérdés-válasz párt szeretne nyomon követési kérdésként összekapcsolni, válassza ki a kérdés-válasz pár sorát. A Surface kézikönyvben keresse meg a **Kijelentkezés** kifejezést a lista csökkentéséhez.
+1. A **Kijelentkezés**sorában a **Válasz** oszlopban válassza **a Nyomon követési kérdés hozzáadása**lehetőséget.
+1. A **Nyomon követési kérdés** előugró ablakmezőiben adja meg a következő értékeket:
 
     |Mező|Érték|
     |--|--|
-    |Szöveg megjelenítése|Adja meg **az eszköz kikapcsolását**. Ez a követési parancssorban megjelenítendő egyéni szöveg.|
-    |Csak kontextus| Jelölje be ezt a jelölőnégyzetet. A rendszer csak akkor adja vissza a választ, ha a kérdés a kontextust adja meg.|
-    |Hivatkozás a válaszra|Adja meg a **bejelentkezési képernyőt** a meglévő kérdés-válasz párok megkereséséhez.|
+    |Megjelenítendő szöveg|Írja be **Az eszköz kikapcsolása**lehetőséget. Ez az egyéni szöveg jelenik meg a nyomon követési kérdés.|
+    |Csak környezet| Jelölje be ezt a jelölőnégyzetet. A válasz csak akkor ad vissza, ha a kérdés kontextust ad meg.|
+    |Válasz: válasz|Írja be: A meglévő kérdés-válasz pár megkereséséhez **használja a bejelentkezési képernyőt.**|
 
 
-1.  Az egyik egyezést adja vissza. Válassza ki ezt a választ követő műveletként, majd kattintson a **Mentés**gombra.
+1.  Egy találat visszaadása. Válassza ki ezt a választ nyomon követésként, majd válassza a **Mentés gombot.**
 
-    ![A "követő figyelmeztetés (előzetes verzió)" oldal](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+    ![A "Nyomon követési kérdés (PREVIEW)" oldal](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
 
-1. Miután hozzáadta a követő parancssort, válassza a **Mentés és betanítás** lehetőséget a felső navigációs sávon.
+1. Miután hozzáadta a követési kérdést, válassza a **Mentés és betanítás** lehetőséget a felső navigációs sávon.
 
 ### <a name="edit-the-display-text"></a>A megjelenített szöveg szerkesztése
 
-Ha a rendszer egy követő kérdést hoz létre, és egy meglévő kérdés-válasz pár jelenik meg a **válaszra mutató hivatkozásként**, megadhat új **megjelenítendő szöveget**. Ez a szöveg nem helyettesíti a meglévő kérdést, és nem ad hozzá új alternatív kérdést. Ezek az értékek eltérnek egymástól.
+Amikor nyomon követési kérdést hoz létre, és egy meglévő kérdés-válasz párt **ad**meg hivatkozásként, új **Megjelenítendő szöveget**is beírhat. Ez a szöveg nem helyettesíti a meglévő kérdést, és nem ad hozzá új alternatív kérdést. Ez elkülönül ezektől az értékektől.
 
-1. A megjelenítendő szöveg szerkesztéséhez keresse meg és válassza ki a kérdést a **környezeti** mezőben.
-1. A kérdés sorában válassza ki a követő kérdést a válasz oszlopban.
-1. Jelölje ki a szerkeszteni kívánt megjelenítendő szöveget, majd válassza a **Szerkesztés**lehetőséget.
+1. A megjelenített szöveg szerkesztéséhez keresse meg és jelölje ki a kérdést a **Környezet** mezőben.
+1. A kérdés sorában válassza ki a nyomon követési kérdést a válaszoszlopban.
+1. Jelölje ki a szerkesztendő megjelenítendő szöveget, majd válassza a **Szerkesztés**lehetőséget.
 
-    ![A megjelenített szöveg szerkesztési parancsa](../media/conversational-context/edit-existing-display-text.png)
+    ![A megjelenített szöveg Szerkesztés parancsa](../media/conversational-context/edit-existing-display-text.png)
 
-1. A **követő üzenet** előugró ablakában módosítsa a meglévő megjelenítendő szöveget.
-1. Ha elkészült a megjelenítési szöveg szerkesztésével, válassza a **Mentés**lehetőséget.
-1. A felső navigációs sávban **mentse és betanítása**.
+1. A **Nyomon követési kérdés** előugró ablakában módosítsa a meglévő megjelenítendő szöveget.
+1. Ha végzett a megjelenítendő szöveg szerkesztésével, válassza a **Mentés gombot.**
+1. A felső navigációs sávon a **Mentés és a betanítás**lehetőség.
 
 
-## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Új kérdés-válasz pár hozzáadása követő üzenetként
+## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Új kérdés-válasz pár hozzáadása nyomon követési kérdésként
 
-Amikor új kérdés-válasz párokat ad hozzá a tudásbázishoz, az egyes párokat nyomon követő rákérdezésként egy meglévő kérdéssel kell összekapcsolni.
+Amikor új kérdés-válasz párt ad hozzá a tudásbázishoz, minden párt egy meglévő kérdéshez kell kapcsolni nyomon követési kérdésként.
 
-1. A Tudásbázis eszköztárán keresse meg és válassza ki a meglévő kérdés-válasz párokat a fiókok számára, és **Jelentkezzen**be.
+1. A Tudásbázis eszköztáron keresse meg és jelölje ki a fiókok és a bejelentkezés meglévő kérdés-válasz **párját.**
 
-1. A kérdéshez tartozó **Válasz** oszlopban válassza a **következő üzenet hozzáadása**lehetőséget.
-1. A követő **üzenet (előzetes verzió)** alatt hozzon létre egy új követő kérdést a következő értékek megadásával:
+1. A kérdés **Válasz** oszlopában válassza **a Nyomon követési kérdés hozzáadása**lehetőséget.
+1. A **Követési kérdés (PREVIEW)** csoportban hozzon létre egy új követési kérdést a következő értékek megadásával:
 
     |Mező|Érték|
     |--|--|
-    |Szöveg megjelenítése|*Hozzon létre egy Windows-fiókot*. A követő parancssorban megjelenítendő egyéni szöveg|
-    |Csak kontextus|Jelölje be ezt a jelölőnégyzetet. A rendszer csak akkor adja vissza ezt a választ, ha a kérdés a kontextust adja meg.|
-    |Hivatkozás a válaszra|Válaszként adja meg a következő szöveget:<br>*[Hozzon létre](https://account.microsoft.com/) egy Windows-fiókot új vagy meglévő e-mail-fiókkal*.<br>Az adatbázis mentésekor és betanításakor ez a szöveg lesz konvertálva. |
+    |Megjelenítendő szöveg|*Hozzon létre egy Windows-fiókot*. A nyomon követési kérdésben megjelenítendő egyéni szöveg.|
+    |Csak környezet|Jelölje be ezt a jelölőnégyzetet. Ez a válasz csak akkor ad vissza, ha a kérdés kontextust ad meg.|
+    |Válasz: válasz|Válaszként írja be a következő szöveget:<br>* [Hozzon létre](https://account.microsoft.com/) egy Windows-fiókot új vagy meglévő e-mail fiókkal.*<br>Az adatbázis mentésekor és betanításakor a program konvertálja ezt a szöveget. |
     |||
 
-    ![Új kérdés és válasz létrehozása](../media/conversational-context/create-child-prompt-from-parent.png)
+    ![Új kérdés-felelés létrehozása](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. Válassza az **új létrehozása**, majd a **Mentés**lehetőséget.
+1. Válassza **az Új létrehozása**lehetőséget, majd a Mentés **gombot.**
 
-    Ez a művelet létrehoz egy új kérdés-válasz párokat, és a kiválasztott kérdést követő üzenetként csatolja. A **környezeti** oszlop mindkét kérdés esetében egy követő prompt-kapcsolatot jelez.
+    Ez a művelet új kérdés-válasz párt hoz létre, és a kiválasztott kérdést nyomon követési üzenetként kapcsolja össze. A **Környezet** oszlop mindkét kérdésnél egy nyomon követési gyors kapcsolatot jelez.
 
-1. Válassza a **megtekintési beállítások**, majd a [**környezet megjelenítése (előzetes verzió)** ](#show-questions-and-answers-with-context)lehetőséget.
+1. Válassza a **Nézet beállításai lehetőséget,** majd a [**Környezet megjelenítése (PREVIEW)**](#show-questions-and-answers-with-context)lehetőséget.
 
-    Az új kérdés bemutatja, hogyan kapcsolódik egymáshoz.
+    Az új kérdés megmutatja, hogyan kapcsolódik egymáshoz.
 
-    ![Új követő figyelmeztetés létrehozása](../media/conversational-context/new-qna-follow-up-prompt.png)
+    ![Új nyomon követési kérdés létrehozása](../media/conversational-context/new-qna-follow-up-prompt.png)
 
-    A szülő kérdés egy új kérdést jelenít meg az egyik lehetőség közül.
+    A szülőkérdés egy új kérdést jelenít meg az egyik választási lehetőségeként.
 
-    ![! [A környezeti oszlop mindkét kérdés esetében egy követő kérdés-kapcsolatot jelez] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [A Környezet oszlop mindkét kérdésnél egy nyomon követési gyors kapcsolatot jelöl] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Miután hozzáadta a követő parancssort, válassza a **Mentés és betanítás** lehetőséget a felső navigációs sávon.
+1. Miután hozzáadta a követési kérdést, válassza a **Mentés és betanítás** lehetőséget a felső navigációs sávon.
 
-## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Több bekapcsolás engedélyezése a követő kérések tesztelése során
+## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Többfordulatos beállítás engedélyezése a nyomon követési kérések tesztelése során
 
-Ha a **teszt** ablaktáblán a követési kérésekkel kapcsolatos kérdést teszteli, válassza a **többszörös bekapcsolás engedélyezése**lehetőséget, majd adja meg a kérdését. A válasz tartalmazza a követő utasításokat.
+Ha a **tesztablakon** nyomon követési kérdésekkel teszteli a kérdést, válassza a **Többfordulatos fordulat engedélyezése**lehetőséget, majd írja be a kérdést. A válasz tartalmazza a nyomon követési utasításokat.
 
-![A válasz tartalmazza a követő utasításokat](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
+![A válasz tartalmazza a nyomon követési](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
-Ha nem engedélyezi a többszörös bekapcsolást, a rendszer visszaadja a választ, de a rendszer nem adja vissza a következő utasításokat.
+Ha nem engedélyezi a multi-turn, a válasz ad vissza, de a nyomon követési utasításokat nem adja vissza.
 
-## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Egy JSON-kérelem, amely egy kezdeti választ ad vissza, és követő kéréseket küld
+## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>JSON-kérés az első válasz és nyomon követési kérdések visszaküldésére
 
-Az üres `context` objektum használatával kérje a választ a felhasználó kérdésére, és vegyen fel követő utasításokat.
+Az üres `context` objektum segítségével választ kérhet a felhasználó kérdésére, és nyomon követési utasításokat is tartalmazhat.
 
 ```JSON
 {
@@ -193,9 +193,9 @@ Az üres `context` objektum használatával kérje a választ a felhasználó k�
 }
 ```
 
-## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Egy kezdeti válasz és követő kérések visszaadására szolgáló JSON-válasz
+## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>JSON-válasz a kezdeti válasz és nyomon követési utasítások visszaadása érdekében
 
-Az előző szakaszban választ kértek, és a rendszer a **fiókokat és a bejelentkezést**követő utasításokat kér. A válasz tartalmazza a kérdéses adatokat, amelyek a következő *válaszokban találhatók: [0]. Context*, valamint a felhasználónak megjelenítendő szöveg.
+Az előző szakasz választ kért, és minden nyomon követési kérdést a **Fiókokhoz és a bejelentkezéshez.** A válasz tartalmazza a gyors információkat, amelyek a *válaszokban találhatók[0].context*, és a felhasználó számára megjelenítendő szöveget.
 
 ```JSON
 {
@@ -260,7 +260,7 @@ Az előző szakaszban választ kértek, és a rendszer a **fiókokat és a bejel
 }
 ```
 
-A `prompts` tömb szövegeket biztosít a `displayText` tulajdonságban és a `qnaId` értéket. Ezeket a válaszokat a beszélgetési folyamat következő megjelenő lehetőségeiként jelenítheti meg, majd a kijelölt `qnaId` visszaküldheti QnA Makerre a következő kérelemben.
+A `prompts` tömb szöveget `displayText` ad `qnaId` a tulajdonságban és az értékben. Ezeket a válaszokat a beszélgetési folyamat következő megjelenített `qnaId` választási lehetőségeiként jelenítheti meg, majd a következő kérelemben visszaküldheti a kiválasztottat a QnA Makernek.
 
 <!--
 
@@ -268,11 +268,11 @@ The `promptsToDelete` array provides the ...
 
 -->
 
-## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Egy JSON-kérelem, amely nem kezdeti választ ad vissza, és követő kéréseket küld
+## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>JSON-kérelem nem kezdeti válasz és nyomon követési kérés visszaküldésére
 
-Töltse ki a `context` objektumot az előző környezet belefoglalásához.
+Töltse `context` ki az objektumot az előző környezetben.
 
-A következő JSON-kérelemben az aktuális kérdés a *Windows Hello használata a bejelentkezéshez* , az előző kérdés pedig a *fiókok és a bejelentkezés*.
+A következő JSON-kérelemben az aktuális kérdés a *Bejelentkezés a Windows Hello használata,* az előző kérdés pedig a fiókok és a *bejelentkezés.*
 
 ```JSON
 {
@@ -288,9 +288,9 @@ A következő JSON-kérelemben az aktuális kérdés a *Windows Hello használat
 }
 ```
 
-##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Egy nem kezdeti válasz és követő kérések visszaadására szolgáló JSON-válasz
+##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>JSON-válasz a nem kezdeti válasz és nyomon követési kérdések visszaadására
 
-Az QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a következő utasításokat az `answers` objektum első eleme `context` tulajdonságában:
+A QnA Maker _GenerateAnswer_ JSON válasza tartalmazza az `context` `answers` objektum első elemének tulajdonságában található nyomon követési utasításokat:
 
 ```JSON
 {
@@ -348,26 +348,26 @@ Az QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a következő utasításo
 }
 ```
 
-## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>A Tudásbázis lekérdezése a QnA Maker azonosítója alapján
+## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>A tudásbázis lekérdezése a QnA Maker azonosítójával
 
-Ha többfordulatos funkciót használó egyéni alkalmazást hoz létre. Az első kérdés válaszában a rendszer a követő lépéseket és a hozzá tartozó `qnaId` adja vissza. Most, hogy már rendelkezik AZONOSÍTÓval, átadhatja ezt a követési kérés törzsében. Ha a kérelem törzse tartalmazza a `qnaId`t, és a környezeti objektum (amely az előző QnA Maker tulajdonságokat tartalmazza), akkor a GenerateAnswer az azonosító alapján a pontos kérdést adja vissza ahelyett, hogy a rangsorolási algoritmus használatával megkeresi a választ a kérdés szövege alapján.
+Ha egyéni alkalmazást hoz létre a többfordulatos funkcióval. Az első kérdés válasza, minden nyomon követési utasításokat `qnaId` és a kapcsolódó vissza. Most, hogy rendelkezik az azonosítóval, ezt átadhatja a nyomon követési parancs kéréstörzsében. Ha a kérelem `qnaId`törzse tartalmazza a , és a context objektumot (amely tartalmazza az előző QnA Maker tulajdonságokat), akkor generateanswer ad vissza a pontos kérdést azonosító, ahelyett, hogy a rangsor algoritmus, hogy megtalálja a választ a kérdés szövegét.
 
 
-## <a name="display-order-is-supported-in-the-update-api"></a>A megjelenítési sorrend támogatott a frissítési API-ban
+## <a name="display-order-is-supported-in-the-update-api"></a>A megjelenítési sorrend támogatott az Update API-ban
 
-A JSON-válaszban visszaadott [szöveg és megjelenítési sorrend](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)is támogatott a [frissítési API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)-val való szerkesztéshez.
+A JSON-válaszban visszaadott [megjelenítési szöveget és megjelenítési sorrendet](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)az [Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)támogatja szerkesztésre.
 
-## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Több bekapcsolási kérés hozzáadása vagy törlése a frissítési API-val
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Többfordulatos kérések hozzáadása vagy törlése az Update API-val
 
-A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával több bekapcsolási kérést is hozzáadhat vagy törölhet.  A rendszer hozzáadja az utasításokat a `context` tulajdonság `promptsToAdd` tömbben és a `promptsToDelete` tömbben.
+A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)segítségével többfordulatos utasításokat adhat hozzá vagy törölhet.  A kérések hozzáadnak `context` a `promptsToAdd` tulajdonság tömbjéhez és a `promptsToDelete` tömbhöz.
 
-## <a name="export-knowledge-base-for-version-control"></a>Tudásbázis exportálása a verziókövetés számára
+## <a name="export-knowledge-base-for-version-control"></a>Tudásbázis exportálása verziókövetéshez
 
-A QnA Maker támogatja a verziókövetés használatát, többek között az exportált fájlban lévő több lépésből álló beszélgetés lépéseivel.
+A QnA Maker támogatja a verziókövetést azáltal, hogy többfordulatos beszélgetési lépéseket is betesz az exportált fájlba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [párbeszédpanel](https://aka.ms/qnamakermultiturnsample) környezetfüggő beszélgetésekről, vagy további információ a [fogalmi robot kialakításáról a több-turn beszélgetések esetében](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Tudjon meg többet a [párbeszédablakból](https://aka.ms/qnamakermultiturnsample) származó kontextuális beszélgetésekről, vagy tudjon meg többet [a többfordulatos beszélgetések koncepcionális robottervezéséről.](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)
 
 > [!div class="nextstepaction"]
 > [Tudásbázis migrálása](../Tutorials/migrate-knowledge-base.md)

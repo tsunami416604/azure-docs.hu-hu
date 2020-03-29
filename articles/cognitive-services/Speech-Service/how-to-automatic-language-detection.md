@@ -1,49 +1,56 @@
 ---
-title: A beszédfelismerés automatikus nyelvfelismerés használata szövegre
+title: Az automatikus nyelvfelismerés használata beszéd-szövegként
 titleSuffix: Azure Cognitive Services
-description: A Speech SDK támogatja a beszédfelismerés automatikus nyelvi észlelését a szöveghez. A szolgáltatás használatakor a rendszer összehasonlítja a megadott hangot a nyelvek egy adott listájával, és a legvalószínűbb egyezést határozza meg. A visszaadott érték Ezután kiválaszthatja a szövegre való beszédfelismeréshez használt nyelvi modellt.
+description: A beszédsdk támogatja az automatikus nyelvfelismerést a beszéd-szöveg hez. A szolgáltatás használatakor a rendszer összehasonlítja a megadott hanganyagokat a megadott nyelvek listájával, és a legvalószínűbb egyezést határozza meg. A visszaadott érték segítségével kiválaszthatja a beszéd-szöveg nyelvmodellt.
 services: cognitive-services
-author: susanhu
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: qiohu
-zone_pivot_groups: programming-languages-set-seven
-ms.openlocfilehash: bc438c3e606fefc10e9ffbb64c79f7167d9af062
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/16/2020
+ms.author: dapine
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239603"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>Beszédfelismerés automatikus nyelvfelismerés a szöveghez
+# <a name="automatic-language-detection-for-speech-to-text"></a>Automatikus nyelvfelismerés a beszéd-szöveg hez
 
-Az automatikus nyelvfelismerés segítségével megállapítható, hogy a beszédfelismerési SDK milyen nagy valószínűséggel egyezik meg a megadott nyelvek listájának összehasonlításával. Ekkor a rendszer az automatikus nyelvfelismerés által visszaadott értéket használja a beszédfelismeréshez használt nyelvi modell kiválasztásához, amely pontosabb átírást biztosít. Ha szeretné megtekinteni, hogy mely nyelvek érhetők el, tekintse meg a [nyelvi támogatást](language-support.md).
+Az automatikus nyelvfelismerés segítségével határozható meg a beszédfelismerési SDK-nak átadott hang legvalószínűbb egyezése a megadott nyelvek listájával összehasonlítva. Az automatikus nyelvfelismerés által visszaadott érték ezután a beszéd-szöveg nyelvmodelljének kiválasztására szolgál, pontosabb átírást biztosítva. Az elérhető nyelvek megtekintéséről a Nyelvi támogatás ( Nyelvi támogatás ) [(Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás) (Nyelvi támogatás](language-support.md)
 
-Ebből a cikkből megtudhatja, hogyan használható a `AutoDetectSourceLanguageConfig` egy `SpeechRecognizer` objektum létrehozásához és az észlelt nyelv lekéréséhez.
+Ebben a cikkben megtudhatja, `AutoDetectSourceLanguageConfig` hogyan hozhat `SpeechRecognizer` létre egy objektumot, és hogyan kérheti be az észlelt nyelvet.
 
 > [!IMPORTANT]
-> Ez a funkció csak a Speech SDK for C# C++ és a Java esetében érhető el.
+> Ez a funkció csak a Beszéd sDK C#, C++, Java és Python esetén érhető el.
 
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a Speech SDK-val
+## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatikus nyelvfelismerés a beszédfelismerési SDK-val
 
-Az automatikus nyelvfelismerés jelenleg csak két nyelvet tartalmaz. Tartsa szem előtt ezt a korlátozást a `AudoDetectSourceLanguageConfig` objektum építésekor. Az alábbi mintákban létre kell hoznia egy `AutoDetectSourceLanguageConfig`, majd felhasználhatja `SpeechRecognizer`létrehozásához.
+Az automatikus nyelvfelismerés jelenleg észlelésenként két nyelvre van korlátozva. Tartsa szem előtt ezt `AudoDetectSourceLanguageConfig` a korlátozást, amikor az objektum építése. Az alábbi mintákban hozzon `AutoDetectSourceLanguageConfig`létre egy t, `SpeechRecognizer`majd készítse el azt.
 
 > [!TIP]
-> Megadhat egy egyéni modellt is, amelyet a beszéd szövegre való elvégzéséhez használhat. További információ: [Egyéni modell használata automatikus nyelvfelismerés esetén](#use-a-custom-model-for-automatic-language-detection).
+> Megadhat egy egyéni modellt is, amelyet a beszéd-szöveg végrehajtásakor kell használni. További információ: [Egyéni modell használata automatikus nyelvfelismeréshez.](#use-a-custom-model-for-automatic-language-detection)
 
-Az alábbi kódrészletek azt szemléltetik, hogyan használható az automatikus nyelvfelismerés az alkalmazásokban:
+Az alábbi kódrészletek bemutatják, hogyan használhatja az automatikus nyelvfelismerést az alkalmazásokban:
 
 ::: zone pivot="programming-language-csharp"
 
 ```csharp
-var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "de-DE" });
-using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig))
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromLanguages(
+        new string[] { "en-US", "de-DE" });
+
+using (var recognizer = new SpeechRecognizer(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig))
 {
     var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
-    var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
+    var autoDetectSourceLanguageResult =
+        AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
     var detectedLanguage = autoDetectSourceLanguageResult.Language;
 }
 ```
@@ -52,11 +59,18 @@ using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLangu
 
 ::: zone pivot="programming-language-cpp"
 
-```C++
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
-auto recognizer = SpeechRecognizer::FromConfig(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
+```cpp
+auto autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
+
+auto recognizer = SpeechRecognizer::FromConfig(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig);
+
 speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
-auto autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
+auto autoDetectSourceLanguageResult =
+    AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
 auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 ```
 
@@ -64,12 +78,19 @@ auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 
 ::: zone pivot="programming-language-java"
 
-```Java
-AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
-SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
+```java
+AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
+
+SpeechRecognizer recognizer = new SpeechRecognizer(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig);
+
 Future<SpeechRecognitionResult> future = recognizer.recognizeOnceAsync();
 SpeechRecognitionResult result = future.get(30, TimeUnit.SECONDS);
-AutoDetectSourceLanguageResult autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.fromResult(result);
+AutoDetectSourceLanguageResult autoDetectSourceLanguageResult =
+    AutoDetectSourceLanguageResult.fromResult(result);
 String detectedLanguage = autoDetectSourceLanguageResult.getLanguage();
 
 recognizer.close();
@@ -81,11 +102,27 @@ result.close();
 
 ::: zone-end
 
-## <a name="use-a-custom-model-for-automatic-language-detection"></a>Egyéni modell használata az automatikus nyelvfelismerés
+::: zone pivot="programming-language-python"
 
-A Speech Service-modelleket használó nyelvfelismerés mellett egyéni modellt is megadhat a továbbfejlesztett felismeréshez. Ha nincs megadva egyéni modell, a szolgáltatás az alapértelmezett nyelvi modellt fogja használni.
+```Python
+auto_detect_source_language_config = \
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["en-US", "de-DE"])
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, 
+        auto_detect_source_language_config=auto_detect_source_language_config, 
+        audio_config=audio_config)
+result = speech_recognizer.recognize_once()
+auto_detect_source_language_result = speechsdk.AutoDetectSourceLanguageResult(result)
+detected_language = auto_detect_source_language_result.language
+```
 
-Az alábbi kódrészletek azt szemléltetik, hogyan lehet egyéni modellt megadni a beszédfelismerési szolgáltatás hívását. Ha az észlelt nyelv `en-US`, akkor a rendszer az alapértelmezett modellt használja. Ha az észlelt nyelv `fr-FR`, akkor a rendszer az egyéni modell végpontját használja:
+::: zone-end
+
+## <a name="use-a-custom-model-for-automatic-language-detection"></a>Egyéni modell használata az automatikus nyelvfelismeréshez
+
+A beszédfelismerési szolgáltatások modelljeinek használatával történő nyelvfelismerés mellett egyéni modellt is megadhat a fokozott felismeréshez. Ha egy egyéni modell nem biztosított, a szolgáltatás az alapértelmezett nyelvi modellt fogja használni.
+
+Az alábbi kódrészletek bemutatják, hogyan adhat meg egyéni modellt a beszédfelismerési szolgáltatás hívásában. Ha az észlelt `en-US`nyelv a , akkor az alapértelmezett modell t használja. Ha az észlelt `fr-FR`nyelv a , majd az egyéni modell végpontja használatos:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -95,33 +132,56 @@ var sourceLanguageConfigs = new SourceLanguageConfig[]
     SourceLanguageConfig.FromLanguage("en-US"),
     SourceLanguageConfig.FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR")
 };
-var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(sourceLanguageConfigs);
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
-```C++
+```cpp
 std::vector<std::shared_ptr<SourceLanguageConfig>> sourceLanguageConfigs;
-sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("en-US"));
-sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(sourceLanguageConfigs);
+sourceLanguageConfigs.push_back(
+    SourceLanguageConfig::FromLanguage("en-US"));
+sourceLanguageConfigs.push_back(
+    SourceLanguageConfig::FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
+
+auto autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-```Java
+```java
 List sourceLanguageConfigs = new ArrayList<SourceLanguageConfig>();
-sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("en-US"));
-sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
-AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(sourceLanguageConfigs);
+sourceLanguageConfigs.add(
+    SourceLanguageConfig.fromLanguage("en-US"));
+sourceLanguageConfigs.add(
+    SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
+
+AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+::: zone pivot="programming-language-python"
 
-- [A Speech SDK dokumentációja](speech-sdk.md)
+```Python
+ en_language_config = speechsdk.languageconfig.SourceLanguageConfig("en-US")
+ fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
+ auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
+        sourceLanguageConfigs=[en_language_config, fr_language_config])
+```
+
+::: zone-end
+
+## <a name="next-steps"></a>További lépések
+
+- [BeszédSDK referenciadokumentáció](speech-sdk.md)

@@ -1,7 +1,7 @@
 ---
-title: Példa a Text Analytics API felhasználói forgatókönyvei
+title: Példa felhasználói forgatókönyvekre a Text Analytics API-hoz
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogyan integrálhatja a Text Analytics APIt a szolgáltatásaiba és folyamataiba.
+description: Ebből a cikkből néhány gyakori forgatókönyvet láthat a Text Analytics API szolgáltatásokba és folyamatokba való integrálására.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219246"
 ---
-# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa a Text Analytics API felhasználói forgatókönyvei
+# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa felhasználói forgatókönyvekre a Text Analytics API-hoz
 
-A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást biztosít szövegen keresztül. Ez a cikk néhány példát mutat be arra, hogyan integrálhatja az API-t üzleti megoldásaiba és folyamataiba. 
+A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást biztosít a szövegen keresztül. Ez a cikk néhány példa használati esetek az API-t az üzleti megoldások és folyamatok integrálására. 
 
 ## <a name="analyze-survey-results"></a>Felmérés eredményeinek elemzése
 
-Elemzéseket készíthet az ügyfelek és az alkalmazottak felmérési eredményeiről azáltal, hogy a nyers szöveges válaszokat a Hangulatelemzés használatával dolgozza fel. Összesítheti az elemzés, a nyomon követés és a bevezetések eredményeit.
+Az ügyfél- és alkalmazotti felmérés eredményeiből elemzéseket nyerhet a nyers szöveges válaszok hangulatelemzés használatával történő feldolgozásával. Az eredmények összesítése elemzés, nyomon követés és vezetői kötelezettségvállalás.
 
-![Egy rendszerkép, amely leírja, hogyan végezheti el az ügyfelek és az alkalmazottak felméréseit.](media/use-cases/survey-results.svg)
+![Az ügyfél- és alkalmazotti felmérések hangulatelemzését leíró kép.](media/use-cases/survey-results.svg)
 
-## <a name="analyze-recorded-inbound-customer-calls"></a>Rögzített bejövő ügyfelek hívásainak elemzése
+## <a name="analyze-recorded-inbound-customer-calls"></a>Rögzített bejövő vevői hívások elemzése
 
-Text to Speech, Hangulatelemzés és Kulcsszókeresés használatával kinyerheti az ügyfelek által kezdeményezett bepillantást. Jelenítse meg az eredményeket Power BI irányítópulton vagy egy portálon az ügyfelek jobb megismeréséhez, az ügyfélszolgálat trendjeinek kiemeléséhez és az ügyfelek bevonásához. API-kéréseket küldhet a jelentéskészítési kötegként, vagy valós időben a beavatkozáshoz. Tekintse meg a mintakód [a githubon](https://github.com/rlagh2/callcenteranalytics).
+Elemzéseket nyerhet ki az ügyfélszolgálati hívásokból a szöveg-beszéd, a hangulatelemzés és a kulcskifejezések kinyerése használatával. Az eredményeket a Power BI irányítópultján vagy egy portálon jelenítheti meg az ügyfelek jobb megértése, az ügyfélszolgálati trendek kiemelése és az ügyfelek elköteleződésének ösztönzése érdekében. API-kérelmek küldése kötegként jelentéskészítéshez, vagy valós időben a beavatkozáshoz. Tekintse meg a mintakódot [a GitHubon.](https://github.com/rlagh2/callcenteranalytics)
 
-![Egy rendszerkép, amely leírja, hogyan automatizálható az ügyfélszolgálati hívások beszerzése az adatelemzések használatával](media/use-cases/azure-inbound.svg)
+![Az ügyfélszolgálati hívásokból származó elemzések hangulatelemzéssel történő beszerzésének automatizálását lehetővé tévő kép](media/use-cases/azure-inbound.svg)
 
 ## <a name="process-and-categorize-support-incidents"></a>Támogatási incidensek feldolgozása és kategorizálása
 
-Az Kulcsszókeresés és az entitások felismerésével feldolgozhatja a strukturálatlan szöveges formátumban küldött támogatási kérelmeket. A kinyert kifejezésekkel és entitásokkal kategorizálhatja az erőforrás-tervezésre és a trend elemzésére vonatkozó kéréseket.
+A kulcskifejezések kinyerése és az entitásfelismerés segítségével strukturálatlan szöveges formátumban benyújtott támogatási kérelmeket dolgozfel. A kinyert kifejezések és entitások segítségével kategorizálhatja az erőforrás-tervezési és trendelemzési kérelmeket.
 
-![Egy rendszerkép, amely leírja, hogyan használható a Key kifejezés kinyerése és az entitások felismerése az incidensek jelentéseinek és trendjeinek kategorizálásához](media/use-cases/support-incidents.svg)
+![Az incidensjelentések és -trendek kategorizálása kulcskifejezések kinyerésének és entitásfelismerésének kategorizálását leíró kép](media/use-cases/support-incidents.svg)
 
-## <a name="monitor-your-products-social-media-feeds"></a>A termék közösségi média-hírcsatornáinak monitorozása
+## <a name="monitor-your-products-social-media-feeds"></a>A termék közösségi média hírcsatornáinak figyelése
 
-Felhasználói termékkel kapcsolatos visszajelzések figyelése a termék Twitter-vagy Facebook-oldalán. Az adatok segítségével elemezheti az ügyfelek hangulatát az új termékek bevezetésekor, kinyerheti a funkciókkal és szolgáltatásokkal kapcsolatos fontos kifejezéseket, vagy megtekintheti az ügyfelekre vonatkozó panaszokat. Tekintse meg a példa [Microsoft flow sablont](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
+Figyelemmel kísérheti a felhasználói termékek visszajelzéseit a termék Twitter vagy Facebook oldalán. Az adatok segítségével elemezheti az ügyfelek hangulatát az új termékek bevezetése felé, kinyerheti a funkciókkal és a szolgáltatáskérésekkel kapcsolatos legfontosabb kifejezéseket, vagy megoldhatja az ügyfelek panaszait. Lásd a példa [Microsoft Flow sablont](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
-![Egy rendszerkép, amely leírja, hogyan figyelheti meg a termékeit és a vállalati visszajelzéseket a közösségi médián a kulcsfontosságú kifejezés kibontásával](media/use-cases/social-feed.svg)
+![Egy kép, amely leírja, hogyan figyelheti a terméket és a vállalati visszajelzéseket a közösségi médiában a kulcskifejezések kinyerésével](media/use-cases/social-feed.svg)
 
-## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Bizalmas adatokat tartalmazó dokumentumok besorolása és kivonása
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Bizalmas adatokat tartalmazó dokumentumok osztályozása és kivonása
 
-Az elnevezett entitások felismerésével azonosíthatja a dokumentumok személyes és bizalmas információit. A dokumentumok osztályozása vagy kivonása, hogy biztonságosan megoszthatók legyenek.
+A Névvel ellátott entitásfelismerés segítségével azonosíthatja a dokumentumokban lévő személyes és bizalmas adatokat. Az adatok segítségével osztályozhatja a dokumentumokat, vagy kiújíthatja őket, hogy azok biztonságosan megoszthatók legyenek.
 
-![Egy rendszerkép, amely leírja, hogyan használható a személyes adatok észlelése és kivonása a dokumentumok használatával](media/use-cases/sensitive-docs.jpg)
+![A NER segítségével a személyes adatok észlelése, valamint a dokumentumok osztályozása és kivonása című kép](media/use-cases/sensitive-docs.jpg)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi a Text Analytics API?](overview.md)
-* [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/text-analytics-sdk.md)
+* [Kérelem küldése a Text Analytics API-nak az ügyféltár használatával](quickstarts/text-analytics-sdk.md)

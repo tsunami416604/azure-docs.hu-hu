@@ -1,7 +1,7 @@
 ---
-title: Tervezés modellekből – LUIS
+title: Tervezés modellekkel - LUIS
 titleSuffix: Azure Cognitive Services
-description: A Language Understanding számos típusú modellt biztosít. Egyes modellek több módon is használhatók.
+description: A nyelvi megértés többféle modellt kínál. Egyes modellek több módon is használhatók.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,149 +12,149 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219994"
 ---
-# <a name="design-with-intent-and-entity-models"></a>Tervezés a szándék és az entitás modelljeivel 
+# <a name="design-with-intent-and-entity-models"></a>Tervezés szándékkal és entitásmodellekkel 
 
-A Language Understanding számos típusú modellt biztosít. Egyes modellek több módon is használhatók. 
+A nyelvi megértés többféle modellt kínál. Egyes modellek több módon is használhatók. 
 
-## <a name="v3-authoring-uses-machine-teaching"></a>A v3 authoring gépi tanítást használ
+## <a name="v3-authoring-uses-machine-teaching"></a>V3 Authoring használ géptanítás
 
-LUIS lehetővé teszi, hogy a felhasználók könnyedén tanítsák a fogalmakat a gépekre. A gép ezután olyan modelleket építhet ki (olyan fogalmakat, mint az osztályozók és a kivonók), amelyek az intelligens alkalmazások működéséhez használhatók. Míg a LUIS-t gépi tanulás működteti, a gépi tanulás megismerése nem szükséges a használatához. A gépi tanárok Ehelyett a koncepció pozitív és negatív példáit, valamint a koncepciók más kapcsolódó fogalmakkal való modellezését mutatják be a LUIS számára. A tanárok interaktív módon is fejleszthetik a LUIS modelljét az előrejelzési hibák azonosításával és javításával. 
+A LUIS lehetővé teszi az emberek számára, hogy könnyen tanítsanak fogalmakat egy gépre. A gép ezután olyan modelleket (funkcionális közelítéseket, például osztályozók és elszívók) hozhat létre, amelyek intelligens alkalmazások működtetésére használhatók. Míg a LUIS gépi tanulás, a gépi tanulás megértése nem szükséges használni. Ehelyett a géptanárok a koncepciókat a LUIS-nak kommunikálják a koncepció pozitív és negatív példáinak bemutatásával, és elmagyarázzák, hogyan kell egy fogalmat más kapcsolódó fogalmak használatával modellezni. A tanárok is javíthatja a LUIS-modell interaktívan azonosításával és kijavításával az előrejelzési hibákat. 
 
-## <a name="v3-authoring-model-decomposition"></a>V3 authoring Model dekompozíciója
+## <a name="v3-authoring-model-decomposition"></a>V3 Szerzői modell bomlása
 
-LUIS támogatja a _Model dekompozíciót_ a v3 authoring API-kkal, és lebontja a modellt kisebb részekre. Ez lehetővé teszi, hogy a modelleket a különböző részek kiépítésének és előrejelzésének módjával bízza.
+A LUIS támogatja a _modell felbontását_ a V3-as szerzői API-kkal, a modell kisebb részekre bontásával. Ez lehetővé teszi, hogy a modelleket bizalommal építse fel a különböző alkatrészek felépítésében és előrejelzésében.
 
-A modell elbomlása a következő részekből áll:
+A modell bomlása a következő részeket rendelkezik:
 
-* [leképezések](#intents-classify-utterances)
-    * a funkciók által biztosított [leírók](#descriptors-are-features)
-* [gépi megtanult entitások](#machine-learned-entities)
-    * [alösszetevők](#entity-subcomponents-help-extract-data) (a géppel megtanult entitások is)
-        * a funkciók által biztosított [leírók](#descriptors-are-features) 
-        * nem géppel megtanult entitások, például reguláris kifejezések és felsorolások által biztosított [korlátozások](#constraints-are-text-rules)
+* [Cél](#intents-classify-utterances)
+    * funkciók által biztosított [leírók](#descriptors-are-features)
+* [gépileg megtanult entitások](#machine-learned-entities)
+    * [alösszetevők](#entity-subcomponents-help-extract-data) (gépáltal megtanult entitások is)
+        * funkciók által biztosított [leírók](#descriptors-are-features) 
+        * nem gépi legeltetésű entitások, például reguláris kifejezések és listák által [biztosított](#constraints-are-text-rules)
 
-## <a name="v2-authoring-models"></a>V2 authoring modellek
+## <a name="v2-authoring-models"></a>V2 Szerzői modellek
 
-A LUIS támogatja az összetett entitásokat a v2 authoring API-kkal. Ez hasonló modellt tartalmaz, de nem ugyanaz, mint a v3 modell lebomlása. Az ajánlott modell architektúra a v3 authoring API-k modellbeli elbomlására való áttérés. 
+A LUIS támogatja az összetett entitásokat a V2 szerzői API-kkal. Ez biztosítja a hasonló modell bomlás, de nem ugyanaz, mint a V3 modell bomlás. Az ajánlott modell architektúra a v3-as szerzői API-k modellbomlási ra való áttérés. 
 
-## <a name="intents-classify-utterances"></a>Szándékok osztályozása hosszúságú kimondott szöveg
+## <a name="intents-classify-utterances"></a>Szándékok osztályoznak utterances
 
-A szándék egy példaként osztályozza a hosszúságú kimondott szöveg, hogy megtanítsa LUISt a szándékról. Egy szándékon belüli hosszúságú kimondott szöveg például pozitív példaként szolgál a kiértékeléshez. Ugyanezek a hosszúságú kimondott szöveg az összes többi szándékban negatív példákként használatosak.
+A szándék osztályozni példa utterances a szándékkal kapcsolatos tanítása LUIS. Példa utterances belül egy szándék pozitív példaként az utterance (kifejezés) pozitív példaként. Ezek az utterances használják negatív példaként minden más szándékok.
 
-Vegyünk egy olyan alkalmazást, amelynek meg kell határoznia a felhasználó azon szándékát, hogy egy könyvet és egy olyan alkalmazást rendeljen, amelynek szüksége van az ügyfél szállítási címeként. Az alkalmazásnak két célja van: `OrderBook` és `ShippingLocation`.
+Vegyünk egy alkalmazást, amelynek meg kell határoznia a felhasználó azon szándékát, hogy megrendeljen egy könyvet, és egy olyan alkalmazást, amelynek szüksége van az ügyfél szállítási címére. Ez az alkalmazás két `OrderBook` `ShippingLocation`szándékkal rendelkezik: és .
 
-A következő Kimondás **pozitív példa** a `OrderBook` szándékra és **negatív példára** a `ShippingLocation` és a `None`: 
+A következő utterance (kifejezés) **egy pozitív példa** `ShippingLocation` a `None` `OrderBook` szándék és a leképezések **negatív példa:** 
 
 `Buy the top-rated book on bot architecture.`
 
-A jól megtervezett leképezések eredménye, például a hosszúságú kimondott szöveg, a nagy szándékú előrejelzés. 
+Az eredmény a jól megtervezett szándékok, azok példa utterances, egy nagy szándékú előrejelzés. 
 
-## <a name="entities-extract-data"></a>Az entitások kinyerik az adatok
+## <a name="entities-extract-data"></a>Entitások adatok kinyerése
 
-Az entitás a kinyert adatok adategységét jelöli. 
+Az entitás az utterance (kifejezés) kinyerni kívánt adatok egyegységét jelöli. 
 
-### <a name="machine-learned-entities"></a>Gépi megtanult entitások
+### <a name="machine-learned-entities"></a>Gépmegtanult entitások
 
-A géppel megtanult entitások olyan legfelső szintű entitások, amelyek alösszetevőket tartalmaznak, amelyek a géppel megtanult entitások is. 
+A gép megtanult entitás egy legfelső szintű entitás, amely alösszetevőket tartalmaz, amelyek szintén gép által megtanult entitások. 
 
-**Gépi megtanult entitás használata**:
+**Gépmegtanult entitás használata:**
 
-* Ha az ügyfélalkalmazás szükség van az alösszetevőkre
-* az entitások lebontásának elősegítése a gépi tanulási algoritmusban
+* amikor az ügyfélalkalmazás nak szüksége van az alösszetevőkre
+* a gépi tanulási algoritmus segítése az entitások lebomlásában
 
 Minden alösszetevő rendelkezhet:
 
-* alösszetevők
-* megkötések (reguláris kifejezés entitás vagy lista entitás)
-* descripters (funkciók, például kifejezések listája) 
+* Alösszetevői
+* megkötések (reguláris kifejezés entitás vagy listaentitás)
+* leírók (olyan jellemzők, mint például kifejezéslista) 
 
-Egy gép által megtanult entitás például egy repülőjegy-jegy rendelése. Ez egy tranzakció, amely sok kisebb adategységgel rendelkezik, mint például a dátum, az idő, az ülőhelyek száma, az ülés típusa, például az első osztály vagy az edző, a forrás helye, a célhely és az étkezési lehetőség.
+Egy gép megtanult entitás például egy repülőjegy rendelése. Fogalmilag ez egy tranzakció, amely számos kisebb adategységet tartalmaz, mint például a dátum, az idő, az ülések mennyisége, az ülőhely típusa, mint például az első osztályú vagy az autóbusz, a származási hely, a rendeltetési hely és az étkezés választása.
 
 
-### <a name="entity-subcomponents-help-extract-data"></a>Az entitás alösszetevők segítenek az adatok kinyerésében
+### <a name="entity-subcomponents-help-extract-data"></a>Entitás-alösszetevők segítenek az adatok kinyeréséhez
 
-Az alösszetevő egy géppel megtanult alárendelt entitás egy géppel megtanult szülő entitáson belül. 
+Az alösszetevő egy gép által megtanult gyermekentitás egy gép által megtanult szülőentitáson belül. 
 
-**Az alösszetevő használata**a következőhöz:
+**Az alösszetevő vel:**
 
-* a gép által megtanult entitás (szülő entitás) részeinek deösszeállítása.
+* a gép által megtanult entitás (fölérendelt entitás) részeinek lebomlása.
 
-A következő egy géppel megtanult entitást jelent, amely az alábbi különálló adatokkal rendelkezik:
+A következőkben egy gép által megtanult entitást jelölnek mindezen különálló adatokkal:
 
-* TravelOrder (gépi megtanult entitás)
-    * DateTime (előre elkészített datetimeV2)
-    * Hely (gépi megtanult entitás)
-        * Forrás (a szerepkör olyan kontextusban található, mint a `from`)
-        * Cél (a szerepkör olyan kontextusban található, mint a `to`)
-    * Ülőhelyek (gépi megtanult entitás)
-        * Mennyiség (előre elkészített szám)
-        * Minőség (gépi megtanult entitás a kifejezések listájának leírója)
-    * Étkezés (gépi megtanult entitás, amely a listával rendelkező entitást élelmiszer-döntések megkötésével együtt)
+* TravelOrder (gépáltal megtanult entitás)
+    * DateTime (előre összeállított datetimeV2)
+    * Hely (gép által megtanult entitás)
+        * Origin (a szerepkör a `from`környezetben található, például )
+        * Cél (a szerepkör a `to`környezetben található, például )
+    * Ülőhelyek (gépileg tanult entitás)
+        * Mennyiség (előre összeállított szám)
+        * Minőség (gépileg megtanult entitás a kifejezéslista leírójával)
+    * Étkezés (gépi legeltetésű entitás, amely korlátozza a listaentitást, mint élelmiszer-választást)
 
-Ezen adatok némelyikét – például a forrás helyét és a célhelyet – meg kell tanulni a teljesség kontextusában, például `from` és `to`. Az adategységek egyéb részei kinyerhető pontos karakterlánc-egyezéssel (`Vegan`) vagy előre elkészített entitásokkal (`Seattle` és `Cairo`geographyV2). 
+Ezen adatok egy részét, például a származási helyet és a célhelyet, az utterance `from` (kifejezés) környezetéből kell megtanulni, például a következő szöveggel: és `to`a. Az adatok más részei pontos karakterlánc-egyezésekkel ( )`Vegan`vagy előre `Seattle` összeállított `Cairo`entitásokkal (a és a földrajzV2) nyerhetők ki. 
 
-Megtervezheti, hogy az adattípusok hogyan legyenek összehasonlítva és kinyerve a kiválasztott modellekkel és azok konfigurálásával.
+Ön határozza meg, hogyan egyezteti és nyerje ki az adatokat, hogy mely modelleket választja, és hogyan konfigurálja őket.
 
-### <a name="constraints-are-text-rules"></a>A megkötések szöveges szabályok
+### <a name="constraints-are-text-rules"></a>A kényszerek szöveges szabályok
 
-A megkötés egy szöveg-egyeztetési szabály, amelyet egy nem gépi megtanult entitás, például a reguláris kifejezés entitás vagy egy lista entitás biztosít. A rendszer előrejelzési időpontban alkalmazza a megkötést, hogy korlátozza a jóslatot, és megadja az ügyfélalkalmazás számára szükséges entitás-feloldást. Ezeket a szabályokat az alösszetevő létrehozásakor kell meghatároznia. 
+A megkötés egy szövegegyeztetési szabály, amelyet egy nem gép által megtanult entitás, például a reguláris kifejezés entitás vagy egy listaentitás biztosít. A megkötés t alkalmazva előrejelzési időben, hogy korlátozza az előrejelzést, és az entitás megoldása szükséges az ügyfélalkalmazás. Ezeket a szabályokat az alösszetevő szerkesztése közben határozhatja meg. 
 
 **Megkötés használata**:
-* Ha ismeri a kinyerni kívánt szöveg pontos részleteit.
+* ha tudod, hogy a pontos szöveget kivonat.
 
-A megkötések a következők:
+A korlátozások a következők:
 
-* [reguláris kifejezések](reference-entity-regular-expression.md) entitásai
-* entitások [listázása](reference-entity-list.md) 
-* [előre elkészített](luis-reference-prebuilt-entities.md) entitások
+* [reguláris kifejezés](reference-entity-regular-expression.md) entitások
+* [lista](reference-entity-list.md) entitások 
+* [előre összeállított](luis-reference-prebuilt-entities.md) entitások
 
-A repülőgép-jegy példáját követve a repülőtéri kódok egy lista entitásban lehetnek a pontos szöveges egyezésekhez. 
+Folytatva a példa a repülőjegy, a repülőtér-kódok lehet nek egy lista entitás pontos szöveges egyezések. 
 
-A repülőtér listájában a Seattle-re vonatkozó List bejegyzés a város neve, `Seattle` és a Seattle szinonimái közé tartozik a Seattle-i repülőtér kódja, valamint a környező városok és városok:
+A repülőtéri lista, a lista bejegyzés Seattle `Seattle` a város neve, és a szinonimák Seattle tartalmazza a repülőtér-kódot Seattle együtt a környező városokban:
 
-|`Seattle` az entitás szinonimáinak listázása|
+|`Seattle`Entitás szinonimáinak listázása|
 |--|
 |`Sea`|
 |`seatac`|
 |`Bellevue`|
 
-Ha csak a repülőtéri kódok 3 betűs kódját szeretné felismerni, használjon egy reguláris kifejezést a korlátozásként. 
+Ha csak 3 betűs kódot szeretne felismerni a repülőtéri kódokhoz, használjon reguláris kifejezést megkötésként. 
 
 `/^[A-Z]{3}$/`
 
-## <a name="intents-versus-entities"></a>Leképezések versus entitások
+## <a name="intents-versus-entities"></a>Szándékok és entitások
 
-A teljes kiértékelés kívánt eredménye az, hogy az entitások a _teljességből_ kinyert adatok részleteit jelentik. Általában a leképezések olyan műveletekhez vannak kötve, amelyeket az ügyfélalkalmazás elvégez, és az entitások a művelet végrehajtásához szükséges információk. Programozási szempontból a szándék egy metódus hívását indítja el, és az entitások paraméterként lesznek használva a metódus hívásakor.
+A szándék a kívánt kimenetelét a _teljes_ utterance (kifejezés), míg az entitások az utterance (kifejezés) kinyert adatok. Általában leképezések vannak kötve a műveleteket az ügyfélalkalmazás kell tennie, és az entitások a művelet végrehajtásához szükséges információkat. Programozási szempontból a szándék metódushívást indít, és az entitások az adott metódushívás paramétereiként lesznek használva.
 
-Ennek a Kimondás szándékának _meg kell felelnie_ , és _rendelkezhet_ entitásokkal:
+Ennek az utterance _(kifejezés)_ szándékkal kell rendelkeznie, és _lehetnek_ entitások:
 
 `Buy an airline ticket from Seattle to Cairo`
 
-Ez a Kimondás egyetlen szándékkal rendelkezik:
+Ez az utterance (kifejezés) egyetlen szándék:
 
 * Repülőjegy vásárlása
 
-A Kimondás több entitással _is_ rendelkezhet:
+Ez az utterance (kifejezés) több entitást _is_ tartalmazhat:
 
-* Seattle (Origin) és Kairó (rendeltetés) helyei
+* Seattle (származási) és Kairó (úti cél) helyei
 * Egyetlen jegy mennyisége
 
-## <a name="descriptors-are-features"></a>A descripters szolgáltatások
+## <a name="descriptors-are-features"></a>A leírók olyan jellemzők,
 
-A leíró egy olyan szolgáltatás, amely a modellre vonatkozik a betanítási idő, beleértve a kifejezések listáját és az entitásokat. 
+A leíró egy olyan funkció, amely et alkalmaznak a modellre a betanítási időben, beleértve a kifejezéslistákat és az entitásokat. 
 
-**Használjon leírót, ha a**következőket kívánja használni:
+**Akkor használjon leírót, ha:**
 
-* fokozza a leíró által azonosított szavak és kifejezések jelentőségét
-* a-nek a leíróhoz javasolt új szöveget vagy kifejezéseket ajánljuk a LUIS számára
-* a betanítási adatgyűjtési hiba elhárítása
+* a leíró által azonosított szavak és kifejezések jelentőségének növelése
+* a LUIS-nak új szöveget vagy kifejezéseket kell javasolnia a leíróhoz
+* hiba kijavítása a betanítási adatokon
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A [szándékok](luis-concept-intent.md) és az [entitások](luis-concept-entity-types.md)ismertetése. 
+* A [szándékok](luis-concept-intent.md) és [entitások megismerése.](luis-concept-entity-types.md) 

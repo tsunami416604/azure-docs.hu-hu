@@ -1,7 +1,7 @@
 ---
-title: Tárolók konfigurálása – Face
+title: Tárolók konfigurálása - Lap
 titleSuffix: Azure Cognitive Services
-description: Az arc-tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. A kötelező és a választható beállítások is elérhetők.
+description: A Face tároló futásidejű környezeta a `docker run` parancsargumentumok használatával van konfigurálva. Vannak mind a szükséges, mind a választható beállítások.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,101 +12,101 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76167981"
 ---
-# <a name="configure-face-docker-containers"></a>Arc Docker-tárolók konfigurálása
+# <a name="configure-face-docker-containers"></a>Face Docker-tárolók konfigurálása
 
-Az **arc** -tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. A parancshoz több [példa](#example-docker-run-commands) is rendelkezésre áll. A tárolóra jellemző beállítások a számlázási beállítások. 
+A **Face** tároló futásidejű környezeta a `docker run` parancsargumentumok használatával van konfigurálva. Ez a tároló számos szükséges beállítással rendelkezik, valamint néhány választható beállítással. A parancsra több [példa](#example-docker-run-commands) is elérhető. A tároló-specifikus beállítások a számlázási beállításokat. 
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> A [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)és [`Eula`](#eula-setting) beállításokat a rendszer együtt használja, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](face-how-to-install-containers.md#billing).
+> A [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting), [`Eula`](#eula-setting) és a beállítások együtt vannak használva, és mindháromhoz érvényes értékeket kell megadnia; ellenkező esetben a tartály nem indul el. A tároló konstiniformatika érdekében ezeknek a konfigurációs beállításoknak a használatával kapcsolatos további [tudnivalókért olvassa el a Számlázás című témakört.](face-how-to-install-containers.md#billing)
 
-## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
+## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítása
 
-A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott _Cognitive Services_ erőforráshoz.
+A `ApiKey` beállítás megadja az Azure erőforráskulcs a tároló számlázási adatainak nyomon követéséhez. Meg kell adnia egy értéket az ApiKey és az érték érvényes kulcsnak [`Billing`](#billing-configuration-setting) kell lennie a konfigurációs beállításhoz megadott Cognitive Services-erőforráshoz. _Cognitive Services_
 
-Ez a beállítás a következő helyen érhető el:
+Ez a beállítás a következő helyen található:
 
-* Azure Portal: **Cognitive Services** erőforrás-kezelés a **kulcsok** területen
+* Azure portal: **Cognitive Services** Erőforrás-kezelés, **a Kulcsok** csoportban
 
-## <a name="applicationinsights-setting"></a>ApplicationInsights-beállítás
+## <a name="applicationinsights-setting"></a>ApplicationInsights beállítás
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
+## <a name="billing-configuration-setting"></a>Számlázási konfiguráció beállítása
 
-A `Billing` beállítás határozza meg az Azure-beli _Cognitive Services_ erőforrás végponti URI-ját, amely a tároló számlázási adatainak mérésére szolgál. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nek kell lennie az Azure-beli _Cognitive Services_ erőforráshoz. A tároló 10 – 15 percen belül jelentést készít a használatról.
+A `Billing` beállítás adja meg a végpont URI a _Cognitive Services-erőforrás_ az Azure-ban a tároló számlázási adatainak mérésére használt. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végpontURI-nak kell lennie az _Azure-beli Cognitive_ Services-erőforráshoz. A tároló 10–15 percenként jelenti a használatot.
 
-Ez a beállítás a következő helyen érhető el:
+Ez a beállítás a következő helyen található:
 
-* Azure Portal: **Cognitive Services** áttekintés, címkézett `Endpoint`
+* Azure portal: **Kognitív szolgáltatások** áttekintése, címkével`Endpoint`
 
-Ne feledje, hogy a példában látható módon hozzáadja az _arc_ -útválasztást a végpont URI-hoz. 
+Ne felejtse el hozzáadni a _Face_ útválasztást a végpont URI-hoz a példában látható módon. 
 
-|Szükséges| Name (Név) | Data type | Leírás |
+|Kötelező| Név | Adattípus | Leírás |
 |--|------|-----------|-------------|
-|Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](face-how-to-install-containers.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
+|Igen| `Billing` | Sztring | Számlázási végpont URI. A számlázási URI beszerzésével kapcsolatos további információkért [lásd: A szükséges paraméterek összegyűjtése.](face-how-to-install-containers.md#gathering-required-parameters) További információt és a regionális végpontok teljes listáját a [Cognitive Services egyéni altartománynevei című témakörben talál.](../cognitive-services-custom-subdomains.md) |
 
 <!-- specific to face only -->
 
-## <a name="cloudai-configuration-settings"></a>CloudAI-konfigurációs beállítások
+## <a name="cloudai-configuration-settings"></a>CloudAI konfigurációs beállítások
 
-A `CloudAI` szakaszban található konfigurációs beállítások a tárolóra jellemző egyedi beállításokat biztosítanak. A `CloudAI` szakasz Face tárolójában a következő beállítások és objektumok támogatottak
+A szakasz konfigurációs beállításai a `CloudAI` tárolóra jellemző tárolóspecifikus beállításokat biztosítanak. A következő beállítások és objektumok támogatottak `CloudAI` a metszetben lévő Face tárolóhoz
 
-| Name (Név) | Data type | Leírás |
+| Név | Adattípus | Leírás |
 |------|-----------|-------------|
-| `Storage` | Objektum | A Face tároló által használt tárolási forgatókönyv. További információ a tárolási forgatókönyvekről és a `Storage` objektumhoz kapcsolódó beállításokról: [tárolási forgatókönyv beállításai](#storage-scenario-settings) |
+| `Storage` | Objektum | A Face tároló által használt tárolási forgatókönyv. Az objektum tárolási forgatókönyveiről és `Storage` a kapcsolódó beállításokról a [Tárolási forgatókönyv beállításai című](#storage-scenario-settings) témakörben olvashat bővebben. |
 
 ### <a name="storage-scenario-settings"></a>Tárolási forgatókönyv beállításai
 
-A Face tároló a tárolt adatoktól függően blobokat, gyorsítótárat, metaadatokat és üzenetsor-adatokat tárol. A nagyméretű személyekhez tartozó indexek és eredmények például blob-adatként vannak tárolva. A Face tároló két különböző tárolási forgatókönyvet biztosít az ilyen típusú adatokkal való interakció és tárolás során:
+A Face tároló tárolja blob, gyorsítótár, metaadatok és várólista adatok, attól függően, hogy mi van tárolva. Például a betanítási indexek és eredmények egy nagy személy csoport blob adatok ként tárolja. A Face tároló két különböző tárolási forgatókönyvet biztosít az ilyen típusú adatokkal való interakció és tárolás során:
 
-* Memória  
-  A memóriában mind a négy adattípus tárolódik. Nem oszlanak meg, és nem is állandóak. Ha a Face tároló le van állítva vagy el lett távolítva, a tárolóban lévő összes tárolt adatmennyiség megsemmisül.  
+* Memory (Memória)  
+  Mind a négy adattípus a memóriában tárolódik. Nem terjesztik őket, és nem is állandóak. Ha a Face tároló levan állítva vagy eltávolítja, a tároló összes tárolóban lévő adata megsemmisül.  
   Ez a Face tároló alapértelmezett tárolási forgatókönyve.
 * Azure  
-  A Face tároló az Azure Storage és a Azure Cosmos DB használatával osztja el ezeket a négyféle adattípust az állandó tárolók között. A blob-és üzenetsor-adatkezelést az Azure Storage kezeli. A metaadatok és a gyorsítótár-adatok Azure Cosmos DB kezelik. Ha a Face tároló le van állítva vagy el lett távolítva, a tárolóban lévő összes tárolt adatmennyiség az Azure Storage-ban és a Azure Cosmos DBban marad.  
-  Az Azure Storage-forgatókönyv által használt erőforrások a következő további követelményekkel rendelkeznek
-  * Az Azure Storage-erőforrásnak a StorageV2-fiók típusát kell használnia
-  * A Azure Cosmos DB erőforrásnak a Azure Cosmos DB API-ját kell használnia a MongoDB
+  A Face tároló az Azure Storage és az Azure Cosmos DB használatával osztja el ezt a négy típusú adatokat az állandó tároló között. A blob- és várólista-adatokat az Azure Storage kezeli. Metaadatok és gyorsítótár-adatok kezelése az Azure Cosmos DB. Ha a Face-tároló levan állítva vagy eltávolítva, az adott tároló összes tárolóban tárolt összes adat az Azure Storage és az Azure Cosmos DB tárolja.  
+  Az Azure storage-forgatókönyv által használt erőforrások a következő további követelményekkel rendelkeznek
+  * Az Azure Storage-erőforrásnak a StorageV2 fiók-fajtát kell használnia
+  * Az Azure Cosmos DB-erőforrásnak az Azure Cosmos DB MongoDB-hoz való API-ját kell használnia
 
-A tárolási forgatókönyveket és a társított konfigurációs beállításokat a `Storage` objektum felügyeli, a `CloudAI` konfiguráció szakaszban. A következő konfigurációs beállítások érhetők el a `Storage` objektumban:
+A tárolási forgatókönyveket és a kapcsolódó `Storage` konfigurációs `CloudAI` beállításokat az objektum kezeli a konfigurációs szakaszban. Az objektumban a `Storage` következő konfigurációs beállítások érhetők el:
 
-| Name (Név) | Data type | Leírás |
+| Név | Adattípus | Leírás |
 |------|-----------|-------------|
-| `StorageScenario` | Sztring | A tároló által támogatott tárolási forgatókönyv. A következő értékek érhetők el<br/>`Memory` – alapértelmezett érték. A tároló nem állandó, nem elosztott és memóriában tárolt tárterületet használ egycsomópontos, ideiglenes használathoz. Ha a tároló le van állítva vagy el lett távolítva, a tároló tárterülete megsemmisül.<br/>`Azure` – a tároló Azure-erőforrásokat használ a tároláshoz. Ha a tároló le van állítva vagy el lett távolítva, a tároló tárterülete megmarad.|
-| `ConnectionStringOfAzureStorage` | Sztring | A tároló által használt Azure Storage-erőforráshoz tartozó kapcsolatok karakterlánca.<br/>Ez a beállítás csak akkor érvényes, ha `Azure` van megadva a `StorageScenario` konfigurációs beállításhoz. |
-| `ConnectionStringOfCosmosMongo` | Sztring | A tároló által használt Azure Cosmos DB erőforráshoz tartozó MongoDB-kapcsolatok karakterlánca.<br/>Ez a beállítás csak akkor érvényes, ha `Azure` van megadva a `StorageScenario` konfigurációs beállításhoz. |
+| `StorageScenario` | Sztring | A tároló által támogatott tárolási forgatókönyv. A következő értékek érhetők el<br/>`Memory`- Alapértelmezett érték. A tároló nem állandó, nem elosztott és memórián belüli tárolót használ egycsomópontos, ideiglenes használatra. Ha a tárolót leállítják vagy eltávolítják, a tároló tárolója megsemmisül.<br/>`Azure`- A tároló Azure-erőforrásokat használ a tároláshoz. Ha a tárolólevan állítva vagy eltávolítva, a tároló tárolója megmarad.|
+| `ConnectionStringOfAzureStorage` | Sztring | A tároló által használt Azure Storage-erőforrás kapcsolati karakterlánca.<br/>Ez a beállítás `Azure` csak akkor `StorageScenario` érvényes, ha meg van adva a konfigurációs beállításhoz. |
+| `ConnectionStringOfCosmosMongo` | Sztring | A MongoDB kapcsolati karakterlánc az Azure Cosmos DB erőforrás a tároló által használt.<br/>Ez a beállítás `Azure` csak akkor `StorageScenario` érvényes, ha meg van adva a konfigurációs beállításhoz. |
 
-Az alábbi parancs például meghatározza az Azure Storage-forgatókönyvet, és minta-kapcsolódási karakterláncokat biztosít az Azure Storage-hoz, és Cosmos DB a Face tárolóban tárolt adattároláshoz használt erőforrásokat.
+Például a következő parancs megadja az Azure storage-forgatókönyvet, és mintakapcsolati karakterláncokat biztosít az Azure Storage és a Cosmos DB-erőforrások a Face tároló adatainak tárolására.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-A tárolási forgatókönyvet külön kezelik a bemeneti csatlakoztatások és a kimeneti csatlakoztatások. Ezen szolgáltatások kombinációját egyetlen tárolóhoz is megadhatja. Az alábbi parancs például egy Docker-kötést határoz meg a gazdaszámítógép `D:\Output` mappájához, mint a kimeneti csatlakoztatást, majd egy tárolót hoz létre a Face tárolóból, és a naplófájlokat JSON formátumban menti a kimeneti csatlakoztatásra. A parancs az Azure Storage-forgatókönyvet is megadja, és minta-kapcsolódási karakterláncokat biztosít az Azure Storage-hoz, valamint Cosmos DB a Face tárolóban tárolt adattároláshoz használt erőforrásokat.
+A tárolási forgatókönyv a bemeneti csatolóktól és a kimeneti csatlakoztatásoktól elkülönítve történik. Ezeknek a szolgáltatásoknak a kombinációját egyetlen tárolóhoz adhatja meg. A következő parancs például egy Docker-kötéscsatlakoztatást határoz meg a `D:\Output` gazdagép mappájához kimeneti csatlakoztatásként, majd példányosít ja a tárolót a Face container rendszerképből, és json formátumú naplófájlokat ment a kimeneti csatlakoztatásba. A parancs az Azure storage-forgatókönyvet is meghatározza, és mintakapcsolati karakterláncokat biztosít az Azure Storage és a Cosmos DB-erőforrások hoz a Face container adatok tárolására.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
-## <a name="eula-setting"></a>Végfelhasználói licencszerződés beállítása
+## <a name="eula-setting"></a>Eula beállítás
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Fluent beállítások
+## <a name="fluentd-settings"></a>Gördülékeny beállítások
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http-proxy hitelesítő adatainak beállításai
+## <a name="http-proxy-credentials-settings"></a>Http proxy hitelesítő adatok beállításai
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -116,40 +116,40 @@ A tárolási forgatókönyvet külön kezelik a bemeneti csatlakoztatások és a
 
 ## <a name="mount-settings"></a>Csatlakoztatási beállítások
 
-A tárolóban lévő és onnan érkező adatok olvasására és írására a kötési csatlakoztatások használhatók. Adja meg a bemeneti csatlakoztatást vagy a kimeneti csatlakoztatást úgy, hogy megadja a `--mount` lehetőséget a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsban.
+A kötéscsatlakoztatások segítségével adatokat olvashat és írhat a tárolóba és a tárolóból. Megadhatja a bemeneti csatlakoztatás vagy `--mount` kimeneti csatlakoztatás a beállítás megadásával a [docker futtatási](https://docs.docker.com/engine/reference/commandline/run/) parancs.
 
-A Face containers nem használ bemeneti vagy kimeneti csatlakoztatásokat a képzési és a szolgáltatási adatok tárolásához. 
+A Face-tárolók nem használnak bemeneti vagy kimeneti csatlakoztatásokat a betanítási vagy szolgáltatásadatok tárolására. 
 
-A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](face-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
+A gazdagép csatlakoztatási helyének pontos szintaxisa a gazdaoperációs rendszertől függően változik. Emellett előfordulhat, hogy a [gazdaszámítógép](face-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el a Docker-szolgáltatásfiók által használt engedélyek és a gazdagép csatlakoztatási helyének engedélyei közötti ütközés miatt. 
 
-|Választható| Name (Név) | Data type | Leírás |
+|Optional| Név | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Nem engedélyezett| `Input` | Sztring | A Face containers nem használja ezt.|
-|Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték 0.`/output` Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem engedélyezett| `Input` | Sztring | Az arctárolók nem használják ezt.|
+|Optional| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a rönkök helye. Ez magában foglalja a tárolónaplókat is. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra 
+## <a name="example-docker-run-commands"></a>Példa a docker-futtatási parancsokra 
 
-A következő példák a konfigurációs beállításokat használják a `docker run` parancsok írására és használatára.  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](face-how-to-install-containers.md#stop-the-container) .
+Az alábbi példák a konfigurációs beállításoksegítségével `docker run` szemléltetik a parancsok írását és használatát.  Futás után a tároló addig fut, amíg le nem [állítja.](face-how-to-install-containers.md#stop-the-container)
 
-* **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a háttér perjelet (`\`) használják vonal-folytatási karakterként. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. 
-* **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
+* **Sor-folytatás karakter**: A Docker-parancsok a következő `\`szakaszokban a fordított perjelet használják, vonalfolytatási karakterként. Cserélje le vagy távolítsa el ezt a gazdaoperációs rendszer követelményei nek megfelelően. 
+* **Argumentum sorrendje**: Ne módosítsa az argumentumok sorrendjét, hacsak nem nagyon ismeri a Docker-tárolókat.
 
-Cserélje le a {_argument_name_} értéket a saját értékeire:
+Cserélje le {_argument_name_} -t a saját értékeire:
 
-| Helyőrző | Value (Díj) | Formátum vagy példa |
+| Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-| **{API_KEY}** | Az `Face` erőforrás Endpoint kulcsa az Azure `Face` kulcsok lapon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Face` – áttekintés oldalon.| Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](face-how-to-install-containers.md#gathering-required-parameters) ismertető témakört. |
+| **{API_KEY}** | Az erőforrás végpontkulcsa az `Face` `Face` Azure Keys lapon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető `Face` az Azure Áttekintés oldalon.| Lásd: [a szükséges paraméterek összegyűjtése](face-how-to-install-containers.md#gathering-required-parameters) explicit példákat. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> A tároló futtatásához meg kell adni a `Eula`, `Billing`és `ApiKey` beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](face-how-to-install-containers.md#billing).
-> A ApiKey értéke az Azure `Cognitive Services` Resource Keys oldalának **kulcsa** . 
+> A `Eula` `Billing`, `ApiKey` a lehetőséget és a beállításokat meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információ: [Billing](face-how-to-install-containers.md#billing).
+> Az ApiKey érték **Key** a kulcs `Cognitive Services` az Azure Resource keys lapról. 
 
-## <a name="face-container-docker-examples"></a>Face Container Docker-példák
+## <a name="face-container-docker-examples"></a>Face container Docker példák
 
-A következő Docker-példák a Face tárolóra vonatkoznak. 
+Az alábbi Docker-példák az arctárolóhoz tartoznak. 
 
 ### <a name="basic-example"></a>Alapszintű példa 
 
@@ -170,6 +170,6 @@ A következő Docker-példák a Face tárolóra vonatkoznak.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A tárolók telepítésének és futtatásának](face-how-to-install-containers.md) áttekintése
+* Tekintse át [a tárolók telepítésének és futtatásának áttekintését](face-how-to-install-containers.md)

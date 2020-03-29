@@ -1,5 +1,5 @@
 ---
-title: Általános névvel ellátott entitások
+title: Általánosan elnevezett entitások
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,162 +9,162 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211408"
 ---
-## <a name="general-entity-types"></a>Általános entitások típusai:
+## <a name="general-entity-types"></a>Általános entitástípusok:
 
 ### <a name="person"></a>Személy
 
-Nevek felismerése szövegben.
+Személyek nevének felismerése a szövegben.
 
-Nyelvek
-* Nyilvános előzetes verzió: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` és `Turkish`
+Nyelvek:
+* Nyilvános `Arabic`előnézet: `Czech` `Chinese-Simplified`, `Danish` `Dutch`, `English` `Finnish`, `French` `German`, `Hungarian` `Italian` `Japanese` `Korean`, , `Norwegian (Bokmål)` `Polish`, `Portuguese (Portugal)` `Portuguese (Brazil)`, `Russian` `Spanish`, `Swedish` , , , , , , , , , , és`Turkish`
 
-| Altípus neve | Leírás                                                      | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                                      | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| N/A          | Felismert személy neve, például `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
+| N/A          | Elismert személynevek, `Bill Gates`például ,`Marie Curie` | `2019-10-01`                          | 
 
-### <a name="persontype"></a>PersonType
-Egy személy által birtokolt feladat típusa vagy szerepköre.
+### <a name="persontype"></a>Személytípus
+Egy személy által betöltött feladattípus vagy szerepkör.
 
-Nyelvek
-* Nyilvános előzetes verzió: `English`
+Nyelvek:
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                                                                | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                                                                | Modellverzióval kezdve elérhető |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | Feladattípusok például `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
+| N/A          | Feladattípusok, `civil engineer`például `chef` `librarian`, `salesperson`, ,`nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Hely
 
-Természetes és emberi által készített tereptárgyak, struktúrák, földrajzi funkciók és geopolitikai entitások.
+Természeti és emberi gyártmányú tereptárgyak, struktúrák, földrajzi jellemzők és geopolitikai entitások.
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` és `Turkish`
+* Nyilvános `Arabic`előnézet: `Czech` `Chinese-Simplified`, `Danish` `Dutch`, `English` `Finnish`, `French` `German`, `Hungarian` `Italian` `Japanese` `Korean`, , `Norwegian (Bokmål)` `Polish`, `Portuguese (Portugal)` `Portuguese (Brazil)`, `Russian` `Spanish`, `Swedish` , , , , , , , , , , és`Turkish`
 
-| Altípus neve              | Leírás                                                                              | A modell verziójától kezdődően érhető el |
+| Altípus neve              | Leírás                                                                              | Modellverzióval kezdve elérhető |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A                       | helyszínek, például `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitikai entitás (GPE) – csak angol nyelven| Városok, országok, például `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
+| N/A                       | helyeken, `Atlantic Ocean`például `library` `Eiffel Tower`, , ,`Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitikai Entitás (GPE) - csak angol| Városok, országok, államok, `Pennsylvania` `South Africa`például `Seattle`, ,`Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Szervezet  
 
-Elismert szervezetek, vállalatok, ügynökségek és más csoportok. Például: vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban. 
+Elismert szervezetek, vállalatok, ügynökségek és más embercsoportok. Például: vállalatok, politikai csoportok, zenei zenekarok, sportklubok, kormányzati szervek és állami szervezetek. A nemzetiségek és vallások nem tartoznak ebbe a jogalanytípusba. 
 
-Nyelvek 
+Nyelvek: 
 
-* Nyilvános előzetes verzió: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` és `Turkish`
+* Nyilvános `Arabic`előnézet: `Czech` `Chinese-Simplified`, `Danish` `Dutch`, `English` `Finnish`, `French` `German`, `Hungarian` `Italian` `Japanese` `Korean`, , `Norwegian (Bokmål)` `Polish`, `Portuguese (Portugal)` `Portuguese (Brazil)`, `Russian` `Spanish`, `Swedish` , , , , , , , , , , és`Turkish`
 
-| Altípus neve | Leírás                                                                                             | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                                                                             | Modellverzióval kezdve elérhető |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | szervezetek, például `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
+| N/A          | szervezetek, például `Microsoft` `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>Esemény  
 
-Történelmi, társadalmi és természeti események.  
+Történelmi, társadalmi és természetes események.  
 
-Nyelvek 
+Nyelvek: 
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                                            | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                                            | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| N/A          | Események, például `wedding`, `hurricane`, `car accident`, `solar eclipse`, `American Revolution` | `2020-02-01`                           |
+| N/A          | események, `wedding`mint `hurricane` `car accident`például , , , `solar eclipse``American Revolution` | `2020-02-01`                           |
 
 ### <a name="product"></a>Product  
 
-Különböző kategóriák fizikai objektumai.  
+Különböző kategóriájú fizikai tárgyak.  
 
-Nyelvek 
+Nyelvek: 
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                                                        | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                                                        | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | Például `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox` | `2020-02-01`                           |
+| N/A          | Például, `Microsoft Surface laptop` `sunglasses`, `motorcycle` `bag`, ,`Xbox` | `2020-02-01`                           |
 | Számítás    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>Ügyességi  
 
 Egy képességet vagy szakértelmet leíró entitás.  
 
-Nyelvek 
+Nyelvek: 
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                                                 | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                                                 | Modellverzióval kezdve elérhető |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
 | N/A          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Telefonszám
 
-Telefonszámok (csak az Egyesült államokbeli telefonszámok). 
+Telefonszámok (csak amerikai telefonszámok). 
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                    | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                    | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------|----------------------------------------|
-| N/A          | Egyesült államokbeli telefonszámok, például `(312) 555-0176` | `2019-10-01`                           |
+| N/A          | Amerikai telefonszámok, például`(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>E-mail
 
 E-mail-cím. 
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                      | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                      | Modellverzióval kezdve elérhető |
 |--------------|--------------------------------------------------|----------------------------------------|
-| N/A          | E-mail-cím, például `support@contoso.com` | `2019-10-01`                           |
+| N/A          | E-mail cím, például`support@contoso.com` | `2019-10-01`                           |
 
 ### <a name="url"></a>URL-cím
 
-Internetes URL-címek.
+internetes URL-eket.
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                                          | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                                          | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------------------|----------------------------------------|
-| N/A          | Webhelyekhez tartozó URL-címek, például `https://www.bing.com` | `2019-10-01`                           |
+| N/A          | URL-címek a weboldalak, például`https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>IP-cím
 
-Internet Protocol címe
+IP-cím
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `English`
+* Nyilvános előzetes verzió:`English`
 
-| Altípus neve | Leírás                              | A modell verziójától kezdődően érhető el |
+| Altípus neve | Leírás                              | Modellverzióval kezdve elérhető |
 |--------------|------------------------------------------|----------------------------------------|
-| N/A          | Hálózati címe például `10.0.0.101` | `2019-10-01`                           |
+| N/A          | Hálózati cím például`10.0.0.101` | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>DateTime
 
 Dátum és idő entitások. 
 
-* A modell verziójától kezdve elérhető `2019-10-01`
+* Modellverzióval kezdve elérhető`2019-10-01`
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `Chinese-Simplified`, `English`, `French`, `German` és `Spanish`
+* Nyilvános előzetes `Chinese-Simplified` `English`verzió: , , `French`, `German` és`Spanish`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|
 | N/A         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
 | Dátum  | `May 2nd, 2017`, `05/02/2017`       |
 | Time     | `8:15`, `6AM`              |
-| DateRange    | `August 2nd to August 5th`         |
-| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
+| Dátumtartomány    | `August 2nd to August 5th`         |
+| Időtartomány   | `4-6PM`, `10:00AM to Noon`          |
 | Időtartam | `2.5 minutes`, `one and a half hours`         |
 | Beállítás | `every Saturday`         |
 
@@ -172,17 +172,17 @@ Nyelvek
 
 Számok és numerikus mennyiségek. 
 
-* A modell verziójától kezdve elérhető `2019-10-01`
+* Modellverzióval kezdve elérhető`2019-10-01`
 
-Nyelvek
+Nyelvek:
 
-* Nyilvános előzetes verzió: `Chinese-Simplified`, `English`, `French`, `German` és `Spanish`
+* Nyilvános előzetes `Chinese-Simplified` `English`verzió: , , `French`, `German` és`Spanish`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|
 | Szám         | `6`, `six`                   |
 | Százalék  | `50%`, `fifty percent`       |
-| Sorszámok     | `2nd`, `second`              |
+| Ordinális     | `2nd`, `second`              |
 | Kor         | `90 day old`, `30 years old` |
 | Currency (Pénznem)    | `$10.99`, `€30.00`           |
 | Dimenzió   | `10 miles`, `40 cm`          |

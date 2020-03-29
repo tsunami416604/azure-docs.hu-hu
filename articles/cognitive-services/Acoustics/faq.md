@@ -1,7 +1,7 @@
 ---
-title: Project Acoustics – gyakori kérdések
+title: A Project Akusztika – gyakran ismételt kérdések
 titlesuffix: Azure Cognitive Services
-description: Ez a lap a projekt akusztikai kérdéseivel kapcsolatban feltett kérdésekre ad választ, beleértve a letöltési utasításokat és a sütni folyamatot.
+description: Ez az oldal választ ad a Project Acoustics-ról gyakran feltett kérdésekre, beleértve a letöltési utasításokat és a sütési folyamatot.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -12,74 +12,74 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75770203"
 ---
-# <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics – gyakori kérdések
+# <a name="project-acoustics-frequently-asked-questions"></a>A Project Akusztika – gyakran ismételt kérdések
 
 ## <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 
-A beépülő modulok projektje egy akusztikai rendszer, amely a futásidejű működés előtt kiszámítja a hanghullám viselkedését, hasonlóan a statikus világításhoz. A felhő a hullámos fizikai számítások nagy mennyiségű feloldását végzi, így a futásidejű CPU-díj alacsony.  
+A Project Acoustics plugins egy akusztikai rendszer, amely kiszámítja a hanghullám viselkedését futáselőtt, hasonlít a statikus világításhoz. A felhő nem a nehéz emelés a hullám fizika számítások, így a futásidejű CPU költsége alacsony.  
 
-## <a name="where-can-i-download-the-plugin"></a>Honnan tölthetők le a beépülő modul?
+## <a name="where-can-i-download-the-plugin"></a>Hol lehet letölteni a plugin?
 
-Letöltheti a [Project akusztikai egység beépülő](https://www.microsoft.com/download/details.aspx?id=57346) modulját vagy a [Project Acoustics Unreal beépülő modulját](https://www.microsoft.com/download/details.aspx?id=58090).
+Letöltheti a [Project Acoustics Unity plugint](https://www.microsoft.com/download/details.aspx?id=57346) vagy a [Project Acoustics Unreal plugint.](https://www.microsoft.com/download/details.aspx?id=58090)
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Támogatja a Project Acoustics a &lt;x&gt; platformot?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Támogatja a Project &lt;&gt; Acoustics az x platformot?
 
-A Project akusztikai platform támogatja az ügyfelek igényei alapján történő kialakulását. Ha további platformokra vonatkozó támogatást szeretne megtudni, lépjen kapcsolatba velünk a [Project akusztikai kérdésekkel foglalkozó fórumában](https://github.com/microsoft/ProjectAcoustics/issues) .
+A Project Acoustics platform támogatása az ügyfelek igényei alapján fejlődik. Kérjük, lépjen kapcsolatba velünk a [Project Acoustics kérdés fórumon,](https://github.com/microsoft/ProjectAcoustics/issues) hogy érdeklődjön a további platformok támogatásáról.
 
-## <a name="is-azure-used-at-runtime"></a>Az Azure-t használja futásidőben?
+## <a name="is-azure-used-at-runtime"></a>Az Azure-t futásidőben használják?
 
-Nem, a felhő-integráció csak az előszámítási fázisban használatos a jelenet telepítőjének részeként.
+Nem, a felhőintegráció csak az előreszámítási szakaszban használatos a jelenet beállításának részeként.
  
-## <a name="what-is-simulation-input"></a>Mi a szimulációs bemenet? 
+## <a name="what-is-simulation-input"></a>Mi az a szimulációs bemenet? 
 
-A szimulációs bemenet a 3D-s jelenet, a virtuális környezet vagy a játék szintje. A Project Acoustics olyan 3D-s hullámos szimulációkat hajt végre, amelyek alaposan megalakították a fizikai fizikát, beleértve a zökkenőmentes elzáródást és a szórást.
+A szimulációs bemenet a 3D-s jelenet, virtuális környezet vagy játék szinten. A Project Acoustics 3D térfogathullám-szimulációkat hajt végre, amelyek szorosan modellezik a hangfizikáját, beleértve a sima elzáródást és a szórást.
  
-## <a name="what-is-the-runtime-cost"></a>Mi a futásidejű díj?
+## <a name="what-is-the-runtime-cost"></a>Mi a futásidejű költség?
 
-Az akusztika körülbelül 0,01%-os CPU-t vesz igénybe. A RAM-használat a jelenet méretétől függ, és 10 – 100 MB-ig terjedhet.
+Akusztika a CPU körülbelül 0,01%-át veszi igénybe forrásonként és keretenként. A RAM-használat a jelenet méretétől függ, és 10 és 100 MB között lehet.
  
-## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Egyszerűsíteni kell a szint geometriáját? A háromszögek számának szabályozása? A hálók vízhatlanak legyenek?
+## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Egyszerűsítenem kell a szintgeometriát? Az irányítás háromszögeszámít? Vízhatlant csinálsz a meshe-ktől?
 
-Nem. A rendszer közvetlenül a részletes geometriai szintet fogja bevezetni. A rendszer belső feldolgozásra fogja voxelized.
+Nem. A rendszer közvetlenül befogja a részletes szintgeometriát. Ez lesz voxelized belső feldolgozásra.
  
-## <a name="whats-in-the-runtime-lookup-table"></a>Mi a futásidejű keresési táblázat?
+## <a name="whats-in-the-runtime-lookup-table"></a>Mi található a futásidejű keresse a táblában?
 
-Az ACE-fájl tartalmazza az akusztikus paraméterek egy táblázatát, amely számos forrás-és figyelő-hely párok között, valamint a voxelized a paraméter interpolációhoz használt geometriájában szerepel.
+Az ACE fájl tartalmaz egy táblázatot az akusztikus paraméterek között számos forrás és a hallgató helyét pár, valamint voxelized jelenet geometria használt paraméter interpoláció.
  
-## <a name="can-project-acoustics-handle-moving-sources"></a>Képes a Project Acoustics kezelni a források áthelyezését?
+## <a name="can-project-acoustics-handle-moving-sources"></a>A Project Acoustics képes kezelni a mozgó forrásokat?
 
-Igen, a Project Acoustics megkeresi a keresési táblázatot, és frissíti a hanganyagot az egyes kullancsokon, így képes a mozgó források és a figyelő kezelésére.
+Igen, a Project Acoustics konzultál a keresőtáblában, és frissíti az egyes pipák hangdsp-ját, így képes kezelni a mozgó forrásokat és a figyelőt.
  
-## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Képes a Project Acoustics kezelni a dinamikus geometriát? Ajtók bezárása? Elfújta a falakat?
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>A Project Acoustics képes kezelni a dinamikus geometriát? Bezárni az ajtókat? A falakat elfújták?
 
-Nem. Az akusztikus paraméterek előre vannak kiszámítva a játék szintjének statikus állapota alapján. Javasoljuk, hogy hagyja ki az ajtó geometriáját az akusztikaból, majd alkalmazzon további elzáródásokat a kitalált módszerekkel a lerombolt és a mozgatható játék objektumai alapján.
+Nem. Az akusztikai paraméterek előre számításra kerülnek a játékszint statikus állapota alapján. Javasoljuk, hogy hagyja ki az ajtó geometriáját az akusztikából, majd alkalmazzon további elzáródást a megsemmisíthető és mozgatható játékobjektumok állapota alapján, bevált technikák alkalmazásával.
  
-## <a name="does-project-acoustics-use-acoustic-materials"></a>A Project Acoustics akusztikai anyagokat használ?
+## <a name="does-project-acoustics-use-acoustic-materials"></a>A Project Acoustics használ akusztikus anyagokat?
 
-Igen. Az anyagokat az Ön szintjén található fizikai anyagok neveiből kell kiválasztani, absorptivity kell vezetni.
+Igen. Anyagok leszedett a fizikai anyag nevét a szinten, vezetési abszorpciós.
  
-## <a name="what-do-the-probes-represent"></a>Mit jelentenek a "mintavételek"?
+## <a name="what-do-the-probes-represent"></a>Mit jelentenek a "szondák"?
 
-A mintavétel a lehetséges játékosok helyeinek mintavételezését jelenti. Mindegyik mintavétel a mintavételi helyről származó jelenet külön hullámos szimulációját jelöli. Futásidőben a figyelőhöz tartozó akusztikai paraméterek a közeli mintavételi helyekről vannak interpolált.
+A szondák a lehetséges játékoshelyek mintavételezése. Minden szonda a helyszínről származó jelenet külön hullámszimulációját jelöli. Futásidőben a figyelő helyének akusztikai paramétereit interpolálja a közeli mintavételi helyekről.
  
-## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Miért érdemes nagy mennyiségű számítást költeni a felhőbe? Mit vásárol?
+## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Miért érdemes ennyi számítást költeni a felhőben? Mit veszek belőle?
 
-A Project akusztika pontos és megbízható akusztikai paramétereket biztosít még az igen összetett virtuális környezetek számára is, amely minden építészeti aspektust figyelembe vesz. Zökkenőmentes elzáródást és elzáródást, valamint dinamikus reverb-variációt biztosít a rajzolási kötetek manuális munkája nélkül. Miközben a CPU-t a Futtatás közben is megmaradt.
+A Project Acoustics pontos és megbízható akusztikai paramétereket biztosít még az ultra-összetett virtuális környezetekben is, minden építészeti szempontot figyelembe véve. Sima elzáródást, akadályt és dinamikus zengetés variációt biztosít a rajzkötetek kézi munkája nélkül. Mindezt, miközben a processzoron marad futásközben.
 
 ## <a name="what-exactly-happens-during-baking"></a>Pontosan mi történik a "sütés" során?
 
-A Bake a téglatest-szimulációk akusztikus hullámos szimulációit tartalmazza az egyes figyelőknél.
+A sütni áll akusztikus hullám szimulációk téglatest szimulációs régiók középpontjában minden hallgató szonda.
 
-## <a name="is-my-source-content-secure"></a>Biztonságos a tartalom?
+## <a name="is-my-source-content-secure"></a>Biztonságos a forrástartalmam?
 
-A Project akusztika nem tölti fel a forrás jelenet geometriáját a felhőbe. Ehelyett a szimuláció a saját jelenetének egyik voxelization működik, amely a mintavételi hely adataival együtt és saját formátumban van tárolva.     
+A Project Acoustics nem tölti fel a forrásjelenet geometriáját a felhőbe. Ehelyett a szimuláció a jelenet voxelization-ján működik, amelyet a mintavételhely-adatokkal kombinálnak, és egy saját formátumban tárolnak.     
 
-## <a name="next-steps"></a>Következő lépések
-* Próbálja ki a [Project akusztikai egység minta tartalmát](unity-quickstart.md) vagy az [Unreal Sample tartalmat](unreal-quickstart.md)
+## <a name="next-steps"></a>További lépések
+* Próbálja ki a [Project Acoustics Unity mintatartalmat](unity-quickstart.md) vagy [az Unreal mintatartalmat](unreal-quickstart.md)
 
