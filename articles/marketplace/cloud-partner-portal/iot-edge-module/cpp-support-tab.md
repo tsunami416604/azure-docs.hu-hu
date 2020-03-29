@@ -1,45 +1,44 @@
 ---
-title: Azure IoT Edge modul támogatása | Azure piactér
-description: IoT Edge modul támogatási lehetőségei.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Az Azure IoT Edge-modul támogatása | Azure Piactér
+description: IoT Edge-modul támogatási lehetőségei.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: fe8ff895990471107cfaa229f7b4ced28b477afa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286506"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge modul támogatása lap
 
-Az **új ajánlat** lap **támogatás** lapján megadhatja az ajánlat technikai és felhasználói támogatási forrásait.  A következő bemeneti területek a támogatási űrlapon találhatók: **mérnöki kapcsolattartás**, **ügyfélszolgálat**és **támogatási URL-címek**. A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező.
+Az **Új ajánlat** lap **Támogatás** lapján technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz.  A támogatási űrlapon a következő beviteli területek találhatók: **Mérnöki kapcsolat**, **Ügyfélszolgálat**és **Támogatási URL-ek**. A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
 
-![A IoT Edge-modulok új ajánlat űrlapjának támogatás lapja](./media/iot-edge-module-support-tab.png)
+![Támogatás lap az IoT Edge-modulok új ajánlatűrlapján](./media/iot-edge-module-support-tab.png)
 
-## <a name="support-form-fields"></a>Támogatási űrlap mezői
+## <a name="support-form-fields"></a>Űrlapmezők támogatása
 
-Az alábbi táblázat az egyes mezőkhöz szükséges űrlapmezőket és bemeneteket ismerteti. A kötelező mezőket csillag (*) alapján vádoljuk.
+Az alábbi táblázat az űrlapmezőket és az egyes mezőkhöz szükséges bevitelt ismerteti. A kötelező mezőket csillag (*) vádolja.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
-| ***Mérnöki kapcsolattartó***  |  *Technikai kapcsolattartóként szolgál a Microsoft és a szervezet között* | 
-| **Név\***                  | A technikai/mérnöki támogatásként szolgáló személy vagy csoport neve     |
-| **E-mail\***                 | A technikai kapcsolattartó e-mail-címe                                      |
-| **Telefonos\***                 | A technikai támogatás telefonszáma                                           |
-| ***Ügyfélszolgálat***  | *Az Azure-beli ügyfelek által megnyitott támogatási jegyek fogadása* |
-| **Név\***                  | Az ügyfél-támogatási szolgálatként szolgáló személy vagy csoport neve                  |
-| **E-mail\***                 | Az ügyfélszolgálat e-mail-címe                                            |
-| **Telefonos\***                 | Ügyfélszolgálat telefonszáma                                            |
-| ***Támogatási URL-címek***  | *Támogatási helyek, amelyeket a Microsoft fog használni, amikor az ügyfelek megnyitják a támogatási jegyeket* |
-| **Nyilvános Azure**          | Nyilvános internetes támogatási webhely URL-címe                                         |
-| **Azure Government felhő**| A kormányzati felhő támogatási webhelyének URL-címe                                        |
+| ***Mérnöki kapcsolattartó***  |  *Technikai kapcsolatként szolgál a Microsoft és az Ön szervezete között* | 
+| **név\***                  | A műszaki/mérnöki támogatásként szolgáló személy vagy csoport neve     |
+| **E-mail\***                 | A technikai kapcsolattartó e-mail címe                                      |
+| **Telefon\***                 | A technikai támogatás telefonszáma                                           |
+| ***Ügyfélszolgálat***  | *Az Ügyfelek által az Azure-ban megnyitott támogatási jegyek fogadása* |
+| **név\***                  | Az ügyfélszolgálatként szolgáló személy vagy csoport neve                  |
+| **E-mail\***                 | Ügyfélszolgálat e-mail címe                                            |
+| **Telefon\***                 | Az ügyfélszolgálat telefonszáma                                            |
+| ***Támogatási URL-címek***  | *Támogatási webhelyek, amelyeket a Microsoft akkor használ, amikor ügyfelei támogatási jegyeket nyitnak* |
+| **Nyilvános Azure**          | A nyilvános internetes támogatási webhely URL-címe                                         |
+| **Azure Government Cloud**| A kormányzati felhőtámogatási webhely URL-címe                                        |
 |   |   |
 
 ## <a name="next-steps"></a>További lépések
 
-A támogatási információk megadása után készen áll az [ajánlat közzétételére](./cpp-publish-offer.md).
+Miután befejezte a támogatási információk megadását, készen áll [az ajánlat közzétételére.](./cpp-publish-offer.md)

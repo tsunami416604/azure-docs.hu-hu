@@ -1,6 +1,6 @@
 ---
-title: Adja meg a kötelező összetevők számára az Azure DevTest Labs |} A Microsoft Docs
-description: Ismerje meg, hogyan adja meg a kötelező összetevők, amelyek a virtuális gépeken (VM) a tesztkörnyezetben bármely felhasználó által kiválasztott összetevők telepítése előtt telepíteni kell.
+title: Kötelező összetevők megadása az Azure DevTest Labs számára | Microsoft dokumentumok
+description: Megtudhatja, hogyan adhatja meg a kötelező összetevőket, amelyeket telepíteni kell a felhasználó által kiválasztott összetevők telepítése előtt a tesztkörnyezetben lévő virtuális gépeken.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,76 +14,76 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60562209"
 ---
-# <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Adja meg a kötelező összetevők a tesztkörnyezethez az Azure DevTest Labs szolgáltatásban
-A labor tulajdonosként minden olyan gép, a lab-ben létrehozott alkalmazott kötelező összetevők is megadhat. Képzelje el egy forgatókönyvet, ahol szeretné az egyes gépek kell csatlakoztatni a vállalati hálózathoz a lab-ben. Ebben az esetben minden labor-felhasználónak kell egy tartományhoz való csatlakozás összetevő hozzáadása a virtuális gép létrehozásakor, győződjön meg arról, hogy a gép csatlakoztatva van a vállalati tartományhoz. Más szóval lab-felhasználó lényegében kellene hozza létre újból a gép abban az esetben, ha elfelejtették a alkalmazni a kötelező összetevők a számítógépen. Labortulajdonosként ellenőrizze a tartományhoz való csatlakozás összetevő egy kötelező összetevő, a tesztkörnyezetben. Ebben a lépésben gondoskodik arról, hogy az egyes gépek csatlakoztatva van a vállalati hálózathoz, és menti az idő és munka a labor-felhasználók számára.
+# <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Kötelező összetevők megadása a laborhoz az Azure DevTest Labsben
+A tesztkörnyezet tulajdonosaként megadhatja a kötelező összetevőket, amelyek a laborban létrehozott összes gépre vonatkoznak. Képzeljen el egy olyan forgatókönyvet, amelyben azt szeretné, hogy a laborban lévő minden gép csatlakozzon a vállalati hálózathoz. Ebben az esetben minden tesztkörnyezet-felhasználónak hozzá kell adnia egy tartományillesztő-összetevőt a virtuális gép létrehozása során, hogy a gépe csatlakozzon a vállalati tartományhoz. Más szóval, a labor felhasználók lényegében újra létre kell hoznia egy gépet, ha elfelejtik alkalmazni a kötelező összetevők a gépen. A labor tulajdonosaként a tartományillesztési összetevőt kötelező összetevőként a laborban. Ez a lépés gondoskodik arról, hogy minden gép csatlakozik a vállalati hálózathoz, és időt és energiát takarít meg a tesztkörnyezet felhasználói számára.
  
-Más kötelező összetevők lehetnek egy ismert eszköz, amely a csapat használ, vagy olyan platformon termékspecifikus biztonsági csomag, amely a stb. alapértelmezés szerint minden gép rendelkeznie kell. Röviden semmilyen közös szoftver, amely a laborkörnyezetben található minden gépnek rendelkeznie kell válik egy kötelező összetevő. Ha egy egyéni lemezkép készítése egy gépet, amely kötelező összetevők alkalmaztak, majd hozzon létre egy új gépet abból a rendszerképből a kötelező összetevők rendszer újra alkalmazza a gép a létrehozása során. Ezt a viselkedést azt is jelenti, hogy annak ellenére, hogy az egyéni rendszerkép régi, minden alkalommal, amikor a legtöbb frissített verzió kötelező összetevők létrehozása egy gép származó beállítva rajta a létrehozási folyamat során. 
+Egyéb kötelező összetevők közé tartozik egy közös eszköz, amely a csapat által használt, vagy egy platformmal kapcsolatos biztonsági csomag, amely minden gép kell alapértelmezés szerint, stb. Röviden, minden olyan közös szoftver, amelya labor minden gépkell válik kötelező műtermék. Ha egy olyan gépről hoz létre egyéni lemezképet, amelykötelező összetevőket alkalmaz rá, majd létrehoz egy új gépet abból a lemezképből, a kötelező összetevők et a rendszer újra alkalmazza a gépen a létrehozás során. Ez a viselkedés azt is jelenti, hogy annak ellenére, hogy az egyéni lemezkép régi, minden alkalommal, amikor létrehoz egy gépet belőle a kötelező összetevők legfrissítettebb verzióját alkalmazza rá a létrehozási folyamat során. 
  
-Csak olyan összetevők, amelyek nem lehetnek paraméterei kötelező is támogatottak. A lab-felhasználó nem kell további paramétereket adja meg a labor létrehozása, és így egyszerű a virtuális gép létrehozásakor a folyamat során. 
+Csak a paramétereket nem tartalmazó összetevők támogatottak kötelezőként. A tesztkörnyezet-felhasználónak nem kell további paramétereket megadnia a tesztkörnyezet létrehozása során, és így a virtuális gép létrehozásának folyamata egyszerű. 
 
 ## <a name="specify-mandatory-artifacts"></a>Kötelező összetevők megadása
-Kötelező összetevők Windows és Linux rendszerű gépek külön-külön is választhat. Ezek az összetevők a sorrendet, amelyben szeretné őket a alkalmazni függően is sorrendjének módosításához. 
+A Windows és Linux gépekhez külön-külön is kiválaszthat kötelező összetevőket. Ezeket az összetevőket át is rendezheti attól függően, hogy milyen sorrendben szeretné alkalmazni őket. 
 
-1. Válassza ki a labor kezdőlapja, **Konfigurace a zásady** alatt **beállítások**. 
-3. Válassza ki **kötelező összetevők** alatt **külső erőforrások**. 
-4. Válassza ki **szerkesztése** a a **Windows** szakasz vagy a **Linux** szakaszban. Ez a példa a **Windows** lehetőséget. 
+1. A tesztkörnyezet kezdőlapján válassza a **Beállítások és házirendek** lehetőséget a **BEÁLLÍTÁSOK csoportban.** 
+3. A **KÜLSŐ ERŐFORRÁSOK**csoportban válassza a **Kötelező összetevők** lehetőséget. 
+4. Válassza a **Szerkesztés lehetőséget** a **Windows** vagy a **Linux** szakaszban. Ez a példa a **Windows** beállítást használja. 
 
-    ![Kötelező összetevők lap – Szerkesztés gomb](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
-4. Válassza ki egy összetevőt. Ez a példa **7-Zip** lehetőséget. 
-5. Az a **Hozzáadás összetevő** lapon jelölje be **Hozzáadás**. 
+    ![Kötelező összetevők lap - Szerkesztés gomb](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
+4. Jelöljön ki egy műtárgyat. Ez a példa **a 7-Zip** opciót használja. 
+5. A **Műtermék hozzáadása** lapon válassza a **Hozzáadás**lehetőséget. 
 
-    ![Kötelező összetevők oldala – 7-zip hozzáadása](media/devtest-lab-mandatory-artifacts/add-seven-zip.png)
-6. Adjon hozzá egy másik összetevő, jelölje ki a cikket, és válassza ki **Hozzáadás**. Ebben a példában **Chrome** , a második kötelező összetevő.
+    ![Kötelező összetevők lap - 7-zip hozzáadása](media/devtest-lab-mandatory-artifacts/add-seven-zip.png)
+6. Másik műtermék hozzáadásához jelölje ki a cikket, és válassza a **Hozzáadás**lehetőséget. Ez a példa a **Chrome-ot** adja hozzá a második kötelező összetevőként.
 
-    ![Kötelező összetevők lap – Chrome hozzáadása](media/devtest-lab-mandatory-artifacts/add-chrome.png)
-7. Az a **kötelező összetevők** lapon megjelenik egy üzenet, amely a kijelölt összetevők számát adja meg. Kattintson az üzenetre, megjelenik a kiválasztott összetevőket. Válassza ki **mentése** mentéséhez. 
+    ![Kötelező összetevők lap - Chrome hozzáadása](media/devtest-lab-mandatory-artifacts/add-chrome.png)
+7. A **Kötelező összetevők** lapon megjelenik egy üzenet, amely megadja a kijelölt összetevők számát. Ha az üzenetre kattint, megjelennek a kijelölt összetevők. A mentéshez válassza a **Mentés** lehetőséget. 
 
-    ![Kötelező összetevők lap - összetevők mentése](media/devtest-lab-mandatory-artifacts/save-artifacts.png)
-8. Ismételje meg a lépéseket adja meg a kötelező összetevők Linux rendszerű virtuális gépekhez. 
+    ![Kötelező összetevők lap – Műtermékek mentése](media/devtest-lab-mandatory-artifacts/save-artifacts.png)
+8. Ismételje meg a lépéseket a Linux virtuális gépek kötelező összetevőinek megadásához. 
     
-    ![Kötelező összetevők lap - összetevőket Windows és Linux](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
-9. A **törlése** kiválasztása a listából egy összetevő **... három (pont)**  a sort, és válassza a végén **törlése**. 
-10. A **átrendezése** összetevők rámutatáskor egér át az összetevő listájában válassza ki **... három (pont)**  , hogy megjelenik-e a sor elejére, és húzza az új helyre az elemet. 
-11. A lab-ben kötelező összetevők mentéséhez válassza **mentése**. 
+    ![Kötelező összetevők lap – Windows és Linux összetevők](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
+9. Ha **törölni** szeretne egy műtárgyat a listából, válassza **a ... (Ellipszis)** a sor végén, és válassza a **Törlés gombot.** 
+10. A listában szereplő összetevők **átrendezéséhez** vigye az egérmutatót a műtermék fölé, és válassza **a ... (Ellipszis)** amely a sor elején jelenik meg, és húzza az elemet az új pozícióba. 
+11. Ha a kötelező összetevőket a tesztkörnyezetben szeretné menteni, válassza a **Mentés gombot.** 
 
-    ![Kötelező összetevők lap – Mentés összetevők lab-ben](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
-12. Zárja be a **Konfigurace a zásady** lap (kiválasztása **X** jobb felső sarokban), hogy a labor kezdőlapján.  
+    ![Kötelező összetevők lap – Műtermékek mentése a laborban](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
+12. Zárja be a **Konfiguráció és házirendek** lapot (válassza az **X** lehetőséget a jobb felső sarokban) a tesztkörnyezet kezdőlapjára való visszavezető gombra.  
 
-## <a name="delete-a-mandatory-artifact"></a>Egy kötelező összetevő törlése
-Egy kötelező összetevő a labor törléséhez tegye a következőket: 
+## <a name="delete-a-mandatory-artifact"></a>Kötelező műtermék törlése
+Kötelező műtermék törlése egy tesztkörnyezetből, tegye a következő műveleteket: 
 
-1. Válassza ki **Konfigurace a zásady** alatt **beállítások**. 
-2. Válassza ki **kötelező összetevők** alatt **külső erőforrások**. 
-3. Válassza ki **szerkesztése** a a **Windows** szakasz vagy a **Linux** szakaszban. Ez a példa a **Windows** lehetőséget. 
-4. Válassza ki a kötelező összetevők felső számát az üzenetet. 
+1. Válassza a **Beállítások és házirendek** lehetőséget a **BEÁLLÍTÁSOK csoportban.** 
+2. A **KÜLSŐ ERŐFORRÁSOK**csoportban válassza a **Kötelező összetevők** lehetőséget. 
+3. Válassza a **Szerkesztés lehetőséget** a **Windows** vagy a **Linux** szakaszban. Ez a példa a **Windows** beállítást használja. 
+4. Válassza ki az üzenetet a kötelező összetevők tetején a kötelező összetevők számával. 
 
-    ![Kötelező összetevők lap – válassza ki az üzenet](media/devtest-lab-mandatory-artifacts/select-message-artifacts.png)
-5. Az a **kiválasztott összetevők** lapon jelölje be **... három (pont)**  törlődik, és válassza ki az összetevőre **eltávolítása**. 
+    ![Kötelező összetevők lap – Az üzenet kijelölése](media/devtest-lab-mandatory-artifacts/select-message-artifacts.png)
+5. A **Kijelölt összetevők** lapon válassza **a ... (Ellipszis)** a műtermék törléséhez, és válassza **az Eltávolítás gombot.** 
     
-    ![Kötelező összetevők lap - összetevő eltávolítása](media/devtest-lab-mandatory-artifacts/remove-artifact.png)
-6. Válassza ki **OK** gombra kattintva zárja be a **kiválasztott összetevők** lapot. 
-7. Válassza ki **mentése** a a **kötelező összetevők** lapot.
-8. Ismételje meg a **Linux** lemezképek, ha szükséges. 
-9. Válassza ki **mentése** módosításokat menti a labor létrehozása. 
+    ![Kötelező összetevők lap – Műtermék eltávolítása](media/devtest-lab-mandatory-artifacts/remove-artifact.png)
+6. A Kijelölt összetevők lap bezárásához **kattintson** az OK **gombra.** 
+7. Válassza a **Mentés** gombot a **Kötelező eltérések** lapon.
+8. Ismételje meg a **linuxos** lemezképek lépéseit, ha szükséges. 
+9. Válassza a **Mentés** lehetőséget az összes módosítás mentéséhez a tesztkörnyezetbe. 
 
-## <a name="view-mandatory-artifacts-when-creating-a-vm"></a>Nézet kötelező összetevők virtuális gép létrehozásakor
-Most labor felhasználóként megtekintheti a kötelező összetevők listáját a laborkörnyezetben található virtuális gép létrehozása során. Nem szerkeszthetők, és a lab-ben a labor tulajdonosa által beállított kötelező összetevők törlése.
+## <a name="view-mandatory-artifacts-when-creating-a-vm"></a>Kötelező összetevők megtekintése virtuális gép létrehozásakor
+Most, mint egy tesztkörnyezet-felhasználó megtekintheti a kötelező összetevők listáját, miközben egy virtuális gép létrehozása a laborban. Nem szerkesztheti vagy törölheti a tesztkörnyezet ben beállított kötelező összetevőket a labor tulajdonosa által beállított kötelező összetevőket.
 
-1. Válassza ki a labor kezdőlapja, **áttekintése** a menüből.
-2. A labor virtuális gép hozzáadásához válassza **+ Hozzáadás**. 
-3. Válassza ki a **alaplemezkép**. Ez a példa **a Windows Server 1709-es**.
-4. Figyelje meg, hogy az üzenet jelenik meg, hogy **összetevők** a kiválasztott kötelező összetevők számát. 
-5. Válassza ki **összetevők**. 
-6. Győződjön meg arról, hogy a **kötelező összetevők** a labor konfigurace a zásady megadott. 
+1. A labor kezdőlapján válassza a menü **Áttekintés parancsát.**
+2. Ha virtuális gépet szeretne hozzáadni a tesztkörnyezethez, válassza a **+ Hozzáadás lehetőséget.** 
+3. Válasszon egy **alapképet**. Ez a példa **a Windows Server 1709-es verzióját**használja.
+4. Figyelje meg, hogy **megjelenik** egy üzenet az összetevők számára a kötelező összetevők kijelölt száma. 
+5. Válassza **az Eltérések lehetőséget.** 
+6. Győződjön meg arról, hogy a tesztkörnyezet konfigurációjában és szabályzataiban megadott **kötelező összetevők** jelennek meg. 
 
-    ![A virtuális gép létrehozása – kötelező összetevők](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
+    ![Virtuális gép létrehozása – kötelező összetevők](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [egy Git-tárház összetevő hozzáadása egy laborhoz](devtest-lab-add-artifact-repo.md).
+* Ismerje meg, hogyan [adhat hozzá git-műtermék-tárházat egy tesztkörnyezethez.](devtest-lab-add-artifact-repo.md)
 

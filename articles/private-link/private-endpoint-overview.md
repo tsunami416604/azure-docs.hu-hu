@@ -1,150 +1,173 @@
 ---
-title: Mi az Azure Private-végpont?
-description: További tudnivalók az Azure Private-végpontról
+title: Mi az Azure Private Endpoint?
+description: További információ az Azure Private Endpointról
 services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fd389c1e909e6875ead8410b5ca692b82c79e0de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245706"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063074"
 ---
-# <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
+# <a name="what-is-azure-private-endpoint"></a>Mi az Azure Private Endpoint?
 
-Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás olyan Azure-szolgáltatás lehet, mint például az Azure Storage, az Azure Cosmos DB, az SQL vagy a saját [privát kapcsolati szolgáltatása](private-link-service-overview.md).
+Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz. A privát végpont egy privát IP-címet használ a virtuális hálózatból, így a szolgáltatás hatékonyan hozza a virtuális hálózatba. A szolgáltatás lehet egy Azure-szolgáltatás, például az Azure Storage, az Azure Cosmos DB, az SQL [stb.](private-link-service-overview.md)
   
-## <a name="private-endpoint-properties"></a>Magánhálózati végpont tulajdonságai 
- A privát végpontok a következő tulajdonságokat határozzák meg: 
+## <a name="private-endpoint-properties"></a>Privát végpont tulajdonságai 
+ A privát végpont a következő tulajdonságokat határozza meg: 
 
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Név    |    Az erőforráscsoporthoz tartozó egyedi név.      |
-|Subnet    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
-|Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
-|Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
-|A kapcsolatok jóváhagyási módszere    |  Automatikus vagy manuális. A szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek alapján a magánhálózati végpontok automatikusan is jóváhagyva lesznek. Ha RBAC nélküli privát kapcsolati erőforráshoz próbál csatlakozni, a manuális módszerrel engedélyezheti, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolatot.        |
-|Kérelem üzenete     |  Megadhat egy üzenetet, hogy a kért kapcsolatok manuálisan legyenek jóváhagyva. Ez az üzenet egy adott kérelem azonosítására szolgál.        |
-|A kapcsolat állapota   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**jóváhagyva**: a rendszer automatikusan vagy manuálisan jóváhagyta a kapcsolódást, és készen áll a használatra.</br><br>-**függőben**: a kapcsolat manuálisan lett létrehozva, és a privát kapcsolat erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**visszautasítva**: a kapcsolati erőforrás tulajdonosa elutasította a kapcsolatot.</br><br>-**leválasztva**: a kapcsolatot a privát kapcsolat erőforrásának tulajdonosa törölte. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
+|Név    |    Egyedi név az erőforráscsoporton belül.      |
+|Alhálózat    |  A privát IP-címek virtuális hálózatból történő üzembe helyezéséhez és lefoglalásához használt alhálózat. Az alhálózati követelményekről a cikk Korlátozások című szakaszában olvashat.         |
+|Magánhivatkozás erőforrás    |   Az erőforrás-azonosító vagy alias használatával kapcsolatba lépő magánhivatkozás-erőforrás az elérhető típusok listájából. A rendszer egyedi hálózati azonosítót hoz létre az erőforrásnak küldött összes forgalomhoz.       |
+|Cél alerőforrás   |      A csatlakoztatni a csatlakozáshoz használt alerőforrás. Minden magánkapcsolati erőforrástípus nak különböző beállításai vannak a preferencia alapján kiválasztva.    |
+|Kapcsolat jóváhagyási módja    |  Automatikus vagy kézi. A szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek alapján a privát végpont automatikusan jóváhagyható. Ha rBAC nélküli magánkapcsolati erőforráshoz próbál csatlakozni, a manuális módszerrel engedélyezheti az erőforrás tulajdonosának a kapcsolat jóváhagyását.        |
+|Üzenet kérése     |  Megadhat egy üzenetet a kért kapcsolatok manuálisan jóvá kell hagyni. Ez az üzenet egy adott kérelem azonosítására használható.        |
+|A kapcsolat állapota   |   Írásvédett tulajdonság, amely megadja, hogy a privát végpont aktív-e. Csak a privát végpontok jóváhagyott állapotban lehet használni a forgalom küldéséhez. További elérhető állapotok: <br>-**Jóváhagyva:** A kapcsolat automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.</br><br>-**Függőben**: A kapcsolat manuálisan jött létre, és a magánkapcsolati erőforrás tulajdonosának jóváhagyása vár.</br><br>-**Elutasítva:** A kapcsolatot a magánkapcsolati erőforrás tulajdonosa elutasította.</br><br>-**Kapcsolat nélkül:** A kapcsolatot a magánkapcsolati erőforrás tulajdonosa eltávolította. A privát végpont informatívsá válik, és törlésre kell törölni. </br>|
 
-Íme néhány fontos adat a privát végpontokról: 
-- A privát végpont lehetővé teszi, hogy az azonos VNet, regionálisan egymással virtuális hálózatok, globálisan összekapcsolt virtuális hálózatok és helyszíni kapcsolaton keresztüli kapcsolatot létesítsen a [VPN](https://azure.microsoft.com/services/vpn-gateway/) -t vagy [expressz útvonalat](https://azure.microsoft.com/services/expressroute/) és szolgáltatásokat használó privát kapcsolaton keresztül.
+Íme néhány fontos részlet a privát végpontokról: 
+- A privát végpont lehetővé teszi az ugyanazon virtuális hálózatból származó, regionális társviszonyba vett virtuális hálózatokból származó, globálisan társviszonyba vett virtuális hálózatok és a [VPN-](https://azure.microsoft.com/services/vpn-gateway/) vagy [express-útvonal](https://azure.microsoft.com/services/expressroute/) és a privát kapcsolat által működtetett szolgáltatások használatával a fogyasztók közötti kapcsolatot.
  
-- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy hálózati adaptert. Az illesztőhöz a magánhálózati kapcsolat szolgáltatáshoz hozzárendelt privát IP-cím tartozik.
+- Privát végpont létrehozásakor egy hálózati adapter is létrejön az erőforrás életciklusához. A kapcsolat hoz egy privát IP-címet az alhálózat, amely leképezi a Private Link szolgáltatás.
  
-- A magánhálózati végpontot a virtuális hálózattal megegyező régióban kell telepíteni. 
+- A privát végpontot ugyanabban a régióban kell telepíteni, mint a virtuális hálózatot. 
  
-- A magánhálózati kapcsolati erőforrás a virtuális hálózat és a magánhálózati végpontok egy másik régiójában is üzembe helyezhető.
+- A magánkapcsolati erőforrás a virtuális hálózattól és a privát végponttól eltérő régióban is telepíthető.
  
-- Több privát végpont is létrehozható ugyanazzal a privát kapcsolati erőforrással. Egy közös DNS-kiszolgáló konfigurációját használó egyetlen hálózat esetében az ajánlott eljárás egyetlen magánhálózati végpont használata egy adott privát kapcsolati erőforráshoz a duplikált bejegyzések vagy a DNS-feloldási ütközések elkerülése érdekében. 
+- Több magánvégpont is létrehozható ugyanazzal a privát kapcsolaterőforrással. A dns-kiszolgáló közös konfigurációját használó egyetlen hálózat esetében ajánlott egyetlen magánhálózati végpont használata egy adott magánkapcsolati erőforráshoz az ismétlődő bejegyzések vagy a DNS-feloldás ütközésének elkerülése érdekében. 
  
-- Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Több magánvégpont is létrehozható ugyanazon vagy különböző alhálózatokon ugyanazon a virtuális hálózaton belül. Az előfizetésben létrehozható privát végpontok száma korlátozott. További információt az [Azure-korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)ban talál.
 
 
  
-## <a name="private-link-resource"></a>Magánhálózati kapcsolat erőforrása 
-A privát kapcsolati erőforrás egy adott privát végpont célját célozza meg. Az alábbi lista a rendelkezésre álló privát kapcsolati erőforrástípusok listáját tartalmazza: 
+## <a name="private-link-resource"></a>Magánkapcsolati erőforrás 
+A magánkapcsolati erőforrás egy adott privát végpont célcélja. Az alábbi lista az elérhető magánkapcsolati erőforrástípusokat tartalmazza: 
  
-|Privát hivatkozás erőforrásának neve  |Erőforrás típusa   |Alerőforrások  |
+|Magánkapcsolati erőforrás neve  |Erőforrás típusa   |Alforrások  |
 |---------|---------|---------|
-|**Privát kapcsolati szolgáltatás** (saját szolgáltatás)   |  Microsoft. Network/privateLinkServices       | empty |
-|**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure szinapszis-elemzés** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Tábla (tábla, table_secondary)<BR> Üzenetsor (Üzenetsor, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)       |
-|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, Table|
-|**Azure Database for PostgreSQL – egyetlen kiszolgáló** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
-|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | Portra beállított mysqlserver |
-|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Private Link Szolgáltatás** (Saját szolgáltatás)   |  Microsoft.Network/privateLinkServices       | üres |
+|**Azure SQL Database** | Microsoft.Sql/kiszolgálók    |  Sql Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/kiszolgálók    |  Sql Server (sqlServer)        | 
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Táblázat (táblázat, table_secondary)<BR> Várólista (várólista, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
+|**2. generációs Azure Data Lake Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake fájlrendszer Gen2 (dfs, dfs_secondary)       |
+|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Asztal|
+|**Azure Database for PostgreSQL -Single server (Egyetlen kiszolgáló) azure-adatbázis** | Microsoft.DBforPostgreSQL/szerverek   | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/kiszolgálók    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/kiszolgálók    | mariadbServer |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | tár |
+|**Azure Kubernetes szolgáltatás - Kubernetes API** | Microsoft.ContainerService/managedClusters | managedCluster (felügyelt fürt) |
+|**Azure Search** | Microsoft.Search/searchService| searchService (keresés)|  
+|**Azure container-beállításjegyzék** | Microsoft.ContainerRegistry/regisztika  | registry |
+|**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores   | configurationStore (konfigurációStore) |
+|**Azure Backup** | Microsoft.RecoveryServices/vaults   | tár |
+|**Azure Event Hub** | Microsoft.EventHub/névterek    | névtér |
+|**Azure Service Bus** | Microsoft.ServiceBus/névterek | névtér |
+|**Azure Relay** | Microsoft.Relay/névterek | névtér |
+|**Azure Event Grid** | Microsoft.EventGrid/témakörök  | témakör |
+|**Azure Event Grid** | Microsoft.EventGrid/tartományok | domain |
+|**Azure WebApps** | Microsoft.Web/webhelyek    | Helyek |
  
-## <a name="network-security-of-private-endpoints"></a>Privát végpontok hálózati biztonsága 
-Ha privát végpontokat használ az Azure-szolgáltatásokhoz, a forgalom egy adott privát kapcsolati erőforráshoz van védve. A platform egy hozzáférés-vezérléssel ellenőrzi, hogy a hálózati kapcsolatok csak a megadott privát kapcsolati erőforrást érik-e el. Ha további erőforrásokat szeretne elérni ugyanazon az Azure-szolgáltatáson belül, további privát végpontokra van szükség. 
+## <a name="network-security-of-private-endpoints"></a>A magánvégpontok hálózati biztonsága 
+Ha az Azure-szolgáltatások hoz privát végpontokat használ, a forgalom egy adott magánkapcsolati erőforráshoz van biztosítva. A platform hozzáférés-vezérlést hajt végre, hogy ellenőrizze, hogy a hálózati kapcsolatok csak a megadott magánkapcsolati erőforrást érjék el. Az ugyanazon Azure-szolgáltatáson belüli további erőforrások eléréséhez további privát végpontokra van szükség. 
  
-A munkaterhelések teljes mértékben lezárhatók a nyilvános végpontokhoz való hozzáféréstől egy támogatott Azure-szolgáltatáshoz való kapcsolódáshoz. Ez a vezérlő egy további hálózati biztonsági réteget biztosít az erőforrásokhoz egy beépített kiszűrése-védelem biztosításával, amely megakadályozza az ugyanazon az Azure-szolgáltatáson üzemeltetett egyéb erőforrásokhoz való hozzáférést. 
+Teljesen zárolhatja a számítási feladatokat a nyilvános végpontok eléréséből, hogy csatlakozzon egy támogatott Azure-szolgáltatáshoz. Ez a vezérlő egy további hálózati biztonsági réteget biztosít az erőforrások számára azáltal, hogy egy beépített kiszivárgási védelmet biztosít, amely megakadályozza az ugyanazon Azure-szolgáltatásban üzemeltetett más erőforrásokhoz való hozzáférést. 
  
-## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Hozzáférés egy privát kapcsolati erőforráshoz jóváhagyási munkafolyamat használatával 
-A következő kapcsolat-jóváhagyási módszerekkel csatlakozhat egy privát kapcsolati erőforráshoz:
-- A **rendszer automatikusan** jóváhagyja, ha a saját vagy engedéllyel rendelkezik az adott privát kapcsolati erőforráshoz. A szükséges engedély a privát kapcsolat erőforrástípus alapján, a következő formátumban: Microsoft.\<Provider >/< resource_type >/privateEndpointConnectionApproval/action
-- **Manuális** kérés, ha nem rendelkezik a szükséges engedélyekkel, és hozzáférést szeretne kérni. A rendszer elindít egy jóváhagyási munkafolyamatot. A privát végpont és a következő privátvégpont-kapcsolat „Függőben” állapotban jön létre. A privát hivatkozás erőforrásának tulajdonosa felelős a kapcsolat jóváhagyásáért. A jóváhagyást követően a magánhálózati végpont engedélyezve van a forgalom normál módon történő elküldéséhez, ahogy az a következő jóváhagyási munkafolyamat-diagramon is látható.  
+## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Hozzáférés egy magánkapcsolati erőforráshoz jóváhagyási munkafolyamat használatával 
+A magánkapcsolati erőforrásokhoz a következő kapcsolat-jóváhagyási módszerekkel csatlakozhat:
+- **Automatikusan** jóváhagyva, ha rendelkezik az adott magánkapcsolati erőforrás sal, vagy rendelkezik engedéllyel. A szükséges engedély a magánkapcsolat erőforrás típusától függ, a következő formátumban: Microsoft. \<Szolgáltató>/<resource_type>/privateEndpointConnectionApproval/action szolgáltató
+- **Kézi** kérelem, ha nem rendelkezik a szükséges engedéllyel, és hozzáférést szeretne kérni. A jóváhagyási munkafolyamat elindul. A privát végpont és a következő privátvégpont-kapcsolat „Függőben” állapotban jön létre. A privát hivatkozás erőforrásának tulajdonosa felelős a kapcsolat jóváhagyásáért. Jóváhagyása után a privát végpont engedélyezve van a forgalom normál küldésére, ahogy az a következő jóváhagyási munkafolyamat-diagramban látható.  
 
-![munkafolyamat-jóváhagyás](media/private-endpoint-overview/private-link-paas-workflow.png)
+![munkafolyamat jóváhagyása](media/private-endpoint-overview/private-link-paas-workflow.png)
  
-A magánhálózati kapcsolat erőforrás-tulajdonosa a következő műveleteket hajthatja végre egy privát végponti kapcsolaton keresztül: 
-- Tekintse át az összes privát végponti kapcsolat részleteit. 
-- Privát végponti kapcsolatok jóváhagyása. A megfelelő privát végpont engedélyezve lesz a privát kapcsolati erőforrás felé irányuló forgalom elküldéséhez. 
-- Privát végponti kapcsolatok elutasítása. A rendszer frissíti a megfelelő privát végpontot, hogy tükrözze az állapotot.
-- Privát végponti kapcsolatok törlése bármilyen állapotban. A rendszer a megfelelő privát végpontot leválasztott állapottal frissíti, hogy tükrözze a műveletet, a privát végpont tulajdonosa csak ezen a ponton tudja törölni az erőforrást. 
+A magánkapcsolati erőforrás tulajdonosa a következő műveleteket hajthatja végre egy privát végponti kapcsolaton keresztül: 
+- Tekintse át az összes privát végpontkapcsolatok adatait. 
+- Privát végpontkapcsolat jóváhagyása. A megfelelő privát végpont engedélyezve lesz a forgalom küldése a magánkapcsolati erőforrás. 
+- Privát végpontkapcsolat elutasítása. A megfelelő privát végpont frissül, hogy tükrözze az állapotot.
+- Privát végpontkapcsolat törlése bármely állapotban. A megfelelő privát végpont frissül egy leválasztott állapotban, hogy tükrözze a műveletet, a privát végpont tulajdonosa csak törölni az erőforrást ezen a ponton. 
  
 > [!NOTE]
-> Csak a jóváhagyott állapotú privát végpont küldhet forgalmat egy adott privát kapcsolati erőforrásba. 
+> Csak egy jóváhagyott állapotú privát végpont küldhet forgalmat egy adott magánkapcsolati erőforrásnak. 
 
 ### <a name="connecting-using-alias"></a>Csatlakozás alias használatával
-Az alias egy egyedi moniker, amely akkor jön létre, amikor a szolgáltatás tulajdonosa létrehoz egy standard Load Balancer mögötti privát kapcsolati szolgáltatást. A szolgáltatás tulajdonosai megoszthatják ezt az aliast a felhasználókkal kapcsolat nélkül. A felhasználók az erőforrás URI-ja vagy az alias használatával igényelhetnek kapcsolatot a privát kapcsolati szolgáltatással. Ha az alias használatával szeretne csatlakozni, létre kell hoznia egy privát végpontot a manuális kapcsolat jóváhagyási módszerével. A manuális kapcsolódási jóváhagyási módszer használatához állítsa a manuális kérelem paraméterét True értékre a magánhálózati végpont létrehozása folyamat során. A részletekért tekintse meg a [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) és [az az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) parancsot. 
+Az alias egy egyedi becenév, amely akkor jön létre, amikor a szolgáltatás tulajdonosa létrehozza a privát kapcsolat szolgáltatást egy szabványos terheléselosztó mögött. A szolgáltatás tulajdonosa megoszthatja ezt az aliast a fogyasztóival kapcsolat nélkül. A fogyasztók kérhetik a kapcsolatot a magánkapcsolati szolgáltatással az erőforrás URI-jával vagy az aliashasználatával. Ha alias használatával szeretne csatlakozni, manuális kapcsolat-jóváhagyási módszerrel kell létrehoznia a saját végpontot. A kézi kapcsolat jóváhagyási módszer használatával állítsa manuális kérelem paraméter igaz a magán-végpont létrehozása folyamat. Tekintse meg a [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) és [az az hálózati magán-végpont létrehozása](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) a részleteket. 
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció 
-Ha a kapcsolati karakterlánc részeként egy teljes tartománynevet (FQDN) használó privát kapcsolati erőforráshoz csatlakozik, fontos, hogy a DNS-beállításokat helyesen konfigurálja a lefoglalt magánhálózati IP-címhez való feloldáshoz. Előfordulhat, hogy a meglévő Azure-szolgáltatások már rendelkeznek DNS-konfigurációval, ha nyilvános végponton keresztül csatlakoznak. Ezt felül kell bírálni a privát végpont használatával történő kapcsolódáshoz. 
+Ha a kapcsolati karakterlánc részeként egy teljesen minősített tartománynév (FQDN) használatával csatlakozik egy privát kapcsolati erőforráshoz, fontos, hogy a DNS-beállításokat helyesen konfigurálja a lefoglalt privát IP-címre való feloldáshoz. Előfordulhat, hogy a meglévő Azure-szolgáltatások már rendelkeznek egy NYILVÁNOS végponton való csatlakozáshoz használható DNS-konfigurációval. Ezt felül kell bírnia a privát végponthasználatával történő csatlakozáshoz. 
  
-A magánhálózati végponthoz társított hálózati adapter tartalmazza a DNS konfigurálásához szükséges összes információt, beleértve a teljes TARTOMÁNYNEVEt és az adott privát kapcsolati erőforrás számára lefoglalt magánhálózati IP-címeket is. 
+A magánvégponthoz társított hálózati adapter tartalmazza a DNS konfigurálásához szükséges teljes információkészletet, beleértve az FQDN-t és az adott magánhálózati erőforráshoz lefoglalt privát IP-címeket. 
  
-A következő beállításokkal konfigurálhatja a magánhálózati végpontok DNS-beállításait: 
-- **A gazda fájl használata (csak teszteléshez ajánlott)** . A virtuális gépen lévő gazdagépen a DNS felülbírálására is használható.  
-- **Használjon privát DNS-zónát**. A privát DNS-zónák használatával felülbírálhatja egy adott privát végpont DNS-feloldását. A saját DNS-zónák összekapcsolhatók a virtuális hálózattal bizonyos tartományok feloldásához.
-- **Használja az egyéni DNS-kiszolgálót**. A saját DNS-kiszolgáló használatával felülbírálhatja egy adott privát kapcsolati erőforrás DNS-feloldását. Ha a [DNS-kiszolgáló](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) egy virtuális hálózaton található, létrehozhat egy DNS-továbbítási szabályt, amely egy magánhálózati DNS-zónát használ, hogy leegyszerűsítse az összes privát kapcsolati erőforrás konfigurációját.
+Az alábbi beállításokkal konfigurálhatja a DNS-beállításokat a saját végpontokhoz: 
+- **Használja a Gazdafájlt (csak tesztelésre ajánlott).** A virtuális gépen lévő gazdafájl segítségével felülbírálhatja a DNS-t.  
+- **Használjon privát DNS-zónát**. A magánDNS-zónák segítségével felülbírálhatja egy adott privát végpont DNS-feloldását. Adott tartományok feloldása érdekében a virtuális hálózathoz privát DNS-zóna is csatolható.
+- **Használja az egyéni DNS-kiszolgálót**. A saját DNS-kiszolgálójával felülbírálhatja egy adott magánkapcsolati erőforrás DNS-feloldását. Ha a [DNS-kiszolgáló](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) egy virtuális hálózaton van, létrehozhat egy DNS-továbbítási szabályt, amely egy privát DNS-zóna használatával egyszerűsíti az összes magánkapcsolati erőforrás konfigurációját.
  
 > [!IMPORTANT]
-> Nem ajánlott felülbírálni egy olyan zónát, amely aktívan használatban van a nyilvános végpontok feloldásához. Az erőforrásokhoz való csatlakozások nem lesznek képesek megfelelően feloldani a nyilvános DNS-re való DNS-továbbítás nélkül. A problémák elkerülése érdekében hozzon létre egy másik tartománynevet, vagy kövesse a javasolt nevet az alábbi szolgáltatásokhoz. 
+> Nem ajánlott felülbírálni egy olyan zónát, amely aktívan használatban van a nyilvános végpontok feloldásához. Az erőforrásokkal létesített kapcsolatok nem oldhatók fel megfelelően a DNS-továbbítás nélkül a nyilvános DNS-re. A problémák elkerülése érdekében hozzon létre egy másik tartománynevet, vagy kövesse az egyes szolgáltatások javasolt nevét. 
  
-Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az alábbi táblázatban leírtak szerint:
+Az Azure-szolgáltatások esetében használja az ajánlott zónaneveket az alábbi táblázatban leírtak szerint:
 
-|Privát kapcsolat erőforrástípus   |Alerőforrás  |Zóna neve  |
+|Magánkapcsolat erőforrástípusa   |Alerőforrás  |Zóna neve  |
 |---------|---------|---------|
-|SQL DB/DW (Microsoft. SQL/Servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Storage-fiók (Microsoft. Storage/storageAccounts)    |  BLOB (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Storage-fiók (Microsoft. Storage/storageAccounts)    |    Tábla (tábla, table_secondary)      |   privatelink.table.core.windows.net       |
-|Storage-fiók (Microsoft. Storage/storageAccounts)    |    Üzenetsor (Üzenetsor, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Storage-fiók (Microsoft. Storage/storageAccounts)   |    Fájl (fájl, file_secondary)      |    privatelink.file.core.windows.net      |
-|Storage-fiók (Microsoft. Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake fájlrendszer Gen2 (Microsoft. Storage/storageAccounts)  |  Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tábla|privatelink.table.cosmos.azure.com|
-|Azure Database for PostgreSQL – egyetlen kiszolgáló (Microsoft. DBforPostgreSQL/Servers)|postgresqlServer|privatelink.postgres.database.azure.com|
-|Azure Database for MySQL (Microsoft. DBforMySQL/Servers)|Portra beállított mysqlserver|privatelink.mysql.database.azure.com|
-|Azure Database for MariaDB (Microsoft. DBforMariaDB/Servers)|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault (Microsoft. kulcstartó/tárolók)|tár|privatelink.vaultcore.azure.net|
+|SQL DB (Microsoft.Sql/kiszolgálók)    |  Sql Server (sqlServer)        |   privatelink.database.windows.net       |
+|Azure Synapse Analytics (Microsoft.Sql/kiszolgálók)    |  Sql Server (sqlServer)        | privatelink.database.windows.net |
+|Tárfiók (Microsoft.Storage/storageAccounts)    |  Blob (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
+|Tárfiók (Microsoft.Storage/storageAccounts)    |    Táblázat (táblázat, table_secondary)      |   privatelink.table.core.windows.net       |
+|Tárfiók (Microsoft.Storage/storageAccounts)    |    Várólista (várólista, queue_secondary)     |   privatelink.queue.core.windows.net       |
+|Tárfiók (Microsoft.Storage/storageAccounts)   |    Fájl (fájl, file_secondary)      |    privatelink.file.core.windows.net      |
+|Tárfiók (Microsoft.Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
+|Data Lake fájlrendszer Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake fájlrendszer Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Tábla|privatelink.table.cosmos.azure.com|
+|Azure Database for PostgreSQL - Egykiszolgálós (Microsoft.DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
+|Azure Database for MySQL (Microsoft.DBforMySQL/kiszolgálók)|mysqlServer|privatelink.mysql.database.azure.com|
+|Azure-adatbázis a MariaDB-hez (Microsoft.DBforMariaDB/kiszolgálók)|mariadbServer|privatelink.mariadb.database.azure.com|
+|Azure Key Vault (Microsoft.KeyVault/vaults)|tár|privatelink.vaultcore.azure.net|
+|Azure Kubernetes-szolgáltatás – Kubernetes API (Microsoft.ContainerService/managedClusters) | managedCluster (felügyelt fürt) | {guid}.privatelink. <region>azmk8s.io|
+|Azure Search (Microsoft.Search/searchServices)|searchService (keresés)|privatelink.search.windows.net|   
+|Azure Container Registry (Microsoft.ContainerRegistry/regisztika) | registry | privatelink.azurecr.io |
+|Azure App konfigurációja (Microsoft.Appconfiguration/configurationStores)| configurationStore (konfigurációStore) | privatelink.azconfig.io|
+|Azure Backup (Microsoft.RecoveryServices/vaults)| tár |privát link. {region}.backup.windowsazure.com|
+|Azure Event Hub (Microsoft.EventHub/namespaces)| névtér |privatelink.servicebus.windows.net|
+|Azure Service Bus (Microsoft.ServiceBus/névterek) | névtér |privatelink.servicebus.windows.net|
+|Azure Relay (Microsoft.Relay/névterek) | névtér |privatelink.servicebus.windows.net|
+|Azure Event Grid (Microsoft.EventGrid/topics)   | témakör | Téma. {region}.privatelink.eventgrid.azure.net|
+|Azure Event Grid (Microsoft.EventGrid/tartományok) | domain | Tartomány. {region}.privatelink.eventgrid.azure.net |
+|Azure WebApps(Microsoft.Web/sites) | Oldalon | privatelink.azurewebsites.net |
  
-Az Azure egy kanonikus DNS-rekordot (CNAME) hoz létre a nyilvános DNS-ben, hogy átirányítsa a felbontást a javasolt tartomány nevére. A felbontás felülbírálható a privát végpontok magánhálózati IP-címével. 
+Az Azure létrehoz egy gyűjtőnév DNS-rekordot (CNAME) a nyilvános DNS-en, hogy a felbontást a javasolt tartománynevekre irányítsa át. A feloldást felülírhatja a privát végpontok privát IP-címével. 
  
-Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyilvános DNS-sel próbál feloldani, a DNS-kiszolgáló most feloldja a saját végpontokat. A folyamat nem befolyásolja az alkalmazásait. 
+Az alkalmazásoknak nem kell módosítaniuk a kapcsolat URL-címét. Nyilvános DNS-sel történő feloldáskor a DNS-kiszolgáló feloldódik a saját végpontjaira. A folyamat nincs hatással az alkalmazásokra. 
  
 ## <a name="limitations"></a>Korlátozások
  
-A következő táblázat tartalmazza a privát végpontok használatakor felismert korlátozások listáját: 
+Az alábbi táblázat a magánvégfelhasználói végpontok használata során ismert korlátozásokat tartalmazza: 
 
 
 |Korlátozás |Leírás |Kezelés  |
 |---------|---------|---------|
-|A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
+|A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által definiált útvonalak nem vonatkoznak a privát végpontra    |Az NSG nem támogatott a privát végpontokon. Míg a magánvégpontot tartalmazó alhálózatoknn, nsg-t társíthatnak hozzá, a szabályok nem lesznek hatékonyak a privát végpont által feldolgozott forgalomban. A [hálózati házirendek kényszerítésének le van tiltva](disable-private-endpoint-network-policy.md) ahhoz, hogy a magánvégpontokat alhálózatban telepítsék. Az NSG továbbra is érvényben van az ugyanazon az alhálózaton üzemeltetett más számítási feladatokon. Bármely ügyfélalhálózat útvonalai /32 előtagot fognak használni, az alapértelmezett útválasztási viselkedés módosítása hasonló UDR-t igényel  | A forgalmat a forrásügyfelek kimenő forgalmat nsg-szabályok használatával szabályozhatja. A /32 előtaggal rendelkező egyes útvonalak üzembe helyezése a magánvégpont-útvonalak felülbírálásához. Az NSG-folyamatnaplók és a kimenő kapcsolatok figyelési információi továbbra is támogatottak, és használhatók        |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
-- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
-- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)
-- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
-- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
-- [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a portál használatával](../postgresql/howto-configure-privatelink-portal.md)
-- [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a parancssori felület használatával](../postgresql/howto-configure-privatelink-cli.md)
-- [Saját privát hivatkozás létrehozása Azure Database for MySQLhoz a portál használatával](../mysql/howto-configure-privatelink-portal.md)
-- [Saját privát hivatkozás létrehozása Azure Database for MySQLhoz a CLI használatával](../mysql/howto-configure-privatelink-cli.md)
-- [Saját privát hivatkozás létrehozása Azure Database for MariaDBhoz a portál használatával](../mariadb/howto-configure-privatelink-portal.md)
-- [Saját privát hivatkozás létrehozása Azure Database for MariaDBhoz a CLI használatával](../mariadb/howto-configure-privatelink-cli.md)
+- [Saját végpont létrehozása az SQL Database Server számára a Portál használatával](create-private-endpoint-portal.md)
+- [Saját végpont létrehozása az SQL Database Server számára a PowerShell használatával](create-private-endpoint-powershell.md)
+- [Saját végpont létrehozása az SQL Database Server számára a CLI használatával](create-private-endpoint-cli.md)
+- [Privát végpont létrehozása a storage-fiókhoz a Portál használatával](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása az Azure Cosmos-fiókhoz a Portal használatával](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Saját Privát kapcsolat szolgáltatás létrehozása az Azure PowerShell használatával](create-private-link-service-powershell.md)
+- [Saját privát kapcsolat létrehozása az Azure-adatbázishoz a PostgreSQL számára - Egyetlen kiszolgáló a Portál használatával](../postgresql/howto-configure-privatelink-portal.md)
+- [Saját privát kapcsolat létrehozása az Azure-adatbázishoz a PostgreSQL-hez - Egyetlen kiszolgáló cli használatával](../postgresql/howto-configure-privatelink-cli.md)
+- [Saját privát kapcsolat létrehozása a MySQL azure-adatbázisához a Portál használatával](../mysql/howto-configure-privatelink-portal.md)
+- [Saját privát kapcsolat létrehozása a MySQL Azure-adatbázisához a CLI használatával](../mysql/howto-configure-privatelink-cli.md)
+- [Saját privát kapcsolat létrehozása a MariaDB Azure-adatbázisához a Portál használatával](../mariadb/howto-configure-privatelink-portal.md)
+- [Saját privát kapcsolat létrehozása az Azure-adatbázishoz a MariaDB számára a CLI használatával](../mariadb/howto-configure-privatelink-cli.md)

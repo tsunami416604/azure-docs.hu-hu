@@ -1,48 +1,47 @@
 ---
-title: Power BI alkalmazás ajánlatának létrehozása | Azure piactér
-description: Power BI alkalmazás létrehozása a Microsoft AppSource Marketplace-hez.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Power BI Alkalmazásajánlat létrehozása | Azure Piactér
+description: Power BI-alkalmazásajánlat létrehozása a Microsoft AppSource Piactérhez.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: pabutler
-ms.openlocfilehash: e0ee26672697517556a2f639b533a1217712d03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822683"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286387"
 ---
-# <a name="create-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat létrehozása
+# <a name="create-a-power-bi-app-offer"></a>Power BI App-ajánlat létrehozása
 
-Ez a cikk a [AppSource](https://appsource.microsoft.com)új Power bi alkalmazás-ajánlatának létrehozásához szükséges lépéseket ismerteti. Minden ajánlat saját entitásként jelenik meg a AppSource. Amikor új ajánlatot hoz létre a [Cloud Partner Portalban](https://cloudpartner.azure.com/), négy adategységet kell megadnia az ajánlathoz.
+Ez a cikk azokat a lépéseket sorolja fel, amelyeket az [AppSource](https://appsource.microsoft.com)új Power BI Alkalmazásajánlatának létrehozásához kell végrehajtani. Minden ajánlat saját entitásként jelenik meg az AppSource-ban. Amikor új ajánlatot hoz létre a [Cloud Partner Portalon,](https://cloudpartner.azure.com/)négy eszközcsoportot kell megadnia az ajánlathoz.
 
-Az eszközcsoport-csoportokat a következő táblázat ismerteti:
+Az eszközcsoportokat az alábbi táblázat ismerteti:
 
 |   Eszközcsoport      | Leírás                                                                         |
 | ----------------   | ----------------                                                                    |
-| Ajánlat beállításai     | Az ajánlat elsődleges azonosítói és neve.                                      |
-| Technikai információ     | Az alkalmazás az ügyfél Power BI munkaterületén való telepítéséhez használt telepítési URL-cím. További információ az URL-cím létrehozásáról: [Power bi alkalmazás dokumentációja](https://go.microsoft.com/fwlink/?linkid=2028636). |
-| Kirakat részletei | Marketing, jogi és vezető felügyeleti eszközöket tartalmaz. A marketing-eszközök közé tartozik az ajánlat leírása és az emblémák. A jogi eszközök közé tartozik az adatvédelmi szabályzat, a használati feltételek és egyéb jogi dokumentáció. A vezető felügyeleti házirend segítségével megadhatja, hogyan kezelje az érdeklődőket a AppSource felhasználói portálról. |
-| Kapcsolatok           | A kapcsolattartási és a házirend-információkat tartalmazza.                                     |
+| Ajánlat beállításai     | Az elsődleges azonosítók és az ajánlat neve.                                      |
+| Technikai információk     | Az alkalmazás nak az ügyfél Power BI-munkaterületén történő telepítéséhez használt telepítő URL-címe. Az URL-cím létrehozásáról a [Power BI App dokumentációjában](https://go.microsoft.com/fwlink/?linkid=2028636)olvashat bővebben. |
+| Kirakat részletei | Marketing, jogi és érdeklődőkezelési eszközöket tartalmaz. A marketingeszközök tartalmazzák az ajánlat leírását és az emblémákat. A jogi eszközök közé tartozik az adatvédelmi szabályzat, a használati feltételek és egyéb jogi dokumentumok. Az érdeklődőkezelési házirend segítségével megadhatja, hogyan kezelje az érdeklődőket az AppSource felhasználói portálról. |
+| Kapcsolatok           | Támogatási kapcsolattartóés házirend-információkat tartalmaz.                                     |
 
-## <a name="new-offer-form"></a>Új ajánlat űrlapja
+## <a name="new-offer-form"></a>Új ajánlat űrlap
 
-Miután bejelentkezett a Cloud Partner Portalba, válassza az **új ajánlat** lehetőséget a bal oldali ablaktáblán. Ezután az új ajánlat űrlap megjelenítéséhez és az új alkalmazási ajánlathoz tartozó eszközök definiálási folyamatának megkezdéséhez válassza **Power bi alkalmazások**lehetőséget.
+Miután bejelentkezett a Felhőpartneri portálra, válassza az **Új ajánlat lehetőséget** a bal oldali ablaktáblában. Ezután az Új ajánlat űrlap megjelenítéséhez és az új alkalmazásajánlat eszközeinek meghatározásának megkezdéséhez válassza a **Power BI-alkalmazások**lehetőséget.
 
-![Power BI ajánlat menüpont](./media/new-offer-menu.png)
+![A Power BI ajánlat menüeleme](./media/new-offer-menu.png)
 
 > [!NOTE] 
-> Ha a **Power bi alkalmazások** lehetőség nem jelenik meg vagy nincs engedélyezve, a fiók nem rendelkezik engedéllyel az ajánlat típusának létrehozásához. Győződjön meg arról, hogy teljesítette az ajánlat típusának összes [előfeltételét](./cpp-prerequisites.md) , beleértve a regisztrálást egy fejlesztői fiók esetében is.
+> Ha a **Power BI-alkalmazások** beállítás nem jelenik meg, vagy nincs engedélyezve, a fióknak nincs engedélye az ajánlattípus létrehozására. Ellenőrizze, hogy megfelelt-e az ajánlattípus összes [előfeltételének,](./cpp-prerequisites.md) beleértve a fejlesztői fiók regisztrálását is.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek ismertetik az **új ajánlat** oldalának lapfüleit Power bi alkalmazás-ajánlat típusának. Az egyes cikkek az új Power BI app-ajánlathoz tartozó eszközcsoport-csoportokat és támogató szolgáltatásokat ismertetik.
+Az alábbi cikkek a Power BI-alkalmazásajánlat-típus **új ajánlatlapjának** lapjait ismertetik. Minden cikk ismerteti az új Power BI-alkalmazásajánlat eszközcsoportjait és támogató szolgáltatásait.
 
--  [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
+-  [Ajánlat beállításai lap](./cpp-offer-settings-tab.md)
 -  [Technikai információs lap](./cpp-technical-info-tab.md)
 -  [Áruház részletei lap](./cpp-storefront-details-tab.md)
 -  [Névjegyek lap](./cpp-contacts-tab.md)

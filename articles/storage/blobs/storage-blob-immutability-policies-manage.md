@@ -1,6 +1,6 @@
 ---
-title: BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése – Azure Storage
-description: Megtudhatja, hogyan tárolhatók a blob (Object) tárolók féreg (egyszer írható és olvasható) támogatása, hogy a megadott intervallumban nem törölhető, nem módosítható állapotban tárolja az információkat.
+title: A Blob Storage megváltoztathatatlansági szabályzatának beállítása és kezelése - Azure Storage
+description: Ismerje meg, hogyan használhatja worm (írás egyszer, sok olvasása) támogatja a Blob (objektum) tároló adatok tárolására nem elévülhető, nem módosítható állapotban egy adott intervallumban.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,71 +9,71 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970102"
 ---
-# <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése
+# <a name="set-and-manage-immutability-policies-for-blob-storage"></a>A Blob storage-hoz való megváltoztathatatlansági házirendek beállítása és kezelése
 
-Az Azure Blob Storage nem módosítható tárolója lehetővé teszi, hogy a felhasználók üzleti szempontból kritikus fontosságú adatobjektumokat tároljanak egy FÉREGben (egyszer írható, olvasható) állapot. Ez az állapot a felhasználó által megadott intervallumban nem törölhető és nem módosítható adatvesztést tesz lehetővé. A megőrzési időtartam időtartama alatt a Blobok létrehozhatók és olvashatók, de nem módosíthatók és nem törölhetők. A nem módosítható tárterület az összes Azure-régióban az általános célú v2 és a blob Storage-fiókok esetében érhető el.
+Az Azure Blob storage nem módosítható tárhelye lehetővé teszi a felhasználók számára, hogy az üzleti szempontból kritikus fontosságú adatobjektumokat WORM (Egyszer írás, Sok olvasás) állapotban tárolják. Ez az állapot az adatokat nem lehet eltéve, és nem módosítható a felhasználó által megadott időközönként. A megőrzési időköz időtartama alatt blobok hozhatók létre és olvashatók, de nem módosíthatók vagy törölhetők. A nem módosítható tár minden Azure-régióban elérhető az általános célú v2- és Blob-tárfiókokhoz.
 
-Ez a cikk bemutatja, hogyan állíthatja be és kezelheti a blob Storage-ban lévő módosíthatatlansági-házirendeket és jogi megtartási jogokat a Azure Portal, a PowerShell vagy az Azure CLI használatával. A nem módosítható tárolóval kapcsolatos további információkért lásd: [üzleti szempontból kritikus blob-adatok tárolása a](storage-blob-immutable-storage.md)nem módosítható tárolóval.
+Ez a cikk bemutatja, hogyan állíthatja be és kezelheti a blobstorage-beli adatok szolgáltatása a szolgáltatás ban az Azure Portalon, a PowerShellben vagy az Azure CLI-ben tárolt adatok at. A nem módosítható tárolásról további információt az [Üzleti legkritikusabb blobadatok tárolása nem módosítható tárhellyel című témakörben talál.](storage-blob-immutable-storage.md)
 
-## <a name="set-retention-policies-and-legal-holds"></a>Adatmegőrzési szabályzatok és jogcímek beállítása
+## <a name="set-retention-policies-and-legal-holds"></a>Adatmegőrzési szabályok és jogi visszatartások beállítása
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Hozzon létre egy új tárolót, vagy válasszon ki egy már meglévőt a nem módosítható állapotban tartandó blobok tárolására. A tárolónak egy általános célú v2-vagy blob Storage-fiókban kell lennie.
+1. Hozzon létre egy új tárolót, vagy válasszon ki egy már meglévőt a nem módosítható állapotban tartandó blobok tárolására. A tárolónak egy általános célú v2- vagy Blob-tárfiókban kell lennie.
 
-2. A tároló beállításainál válassza a **hozzáférési szabályzat** lehetőséget. Ezután válassza a **házirend hozzáadása** a nem módosítható **blob Storage**-ban lehetőséget.
+2. Válassza **az Access házirend lehetőséget** a tárolóbeállításaiközött. Ezután válassza **a Házirend hozzáadása** lehetőséget az **Átnem módosítható blobtároló csoportban.**
 
-    ![Tároló beállításai a portálon](media/storage-blob-immutability-policies-manage/portal-image-1.png)
+    ![Tárolóbeállítások a portálon](media/storage-blob-immutability-policies-manage/portal-image-1.png)
 
-3. Az időalapú adatmegőrzés engedélyezéséhez válassza az **időalapú megőrzés** lehetőséget a legördülő menüből.
+3. Az időalapú adatmegőrzés engedélyezéséhez válassza az **Időalapú adatmegőrzés** lehetőséget a legördülő menüből.
 
-    !["Időalapú megőrzés" kiválasztva a "házirend típusa" alatt](media/storage-blob-immutability-policies-manage/portal-image-2.png)
+    !["Házirend típusa" alatt kiválasztott "Időalapú adatmegőrzés"](media/storage-blob-immutability-policies-manage/portal-image-2.png)
 
-4. Adja meg a megőrzési időtartamot napokban (az elfogadható értékek 1 – 146000 nap).
+4. Adja meg a megőrzési időközt napokban (az elfogadható értékek 1 és 146000 nap között vannak).
 
-    !["Megőrzési időszak frissítése a következőre" mező](media/storage-blob-immutability-policies-manage/portal-image-5-retention-interval.png)
+    !["Megőrzési időszak frissítése" mező](media/storage-blob-immutability-policies-manage/portal-image-5-retention-interval.png)
 
-    A házirend kezdeti állapota zárolva van, így a zárolás előtt tesztelheti a szolgáltatást, és módosíthatja a szabályzatot. A szabályzat zárolása elengedhetetlen ahhoz, hogy megfeleljen a (z) SEC 17a-4 előírásoknak.
+    A házirend kezdeti állapota fel van oldva, így tesztelheti a funkciót, és módosíthatja a házirendet a zárolás előtt. A házirend zárolása alapvető fontosságú az olyan előírások nak való megfeleléshez, mint a SEC 17a-4.
 
-5. Zárolja a szabályzatot. Kattintson a jobb gombbal a három pontra ( **..** .), és a következő menü jelenik meg további műveletekkel:
+5. Zárd le a házirendet. Kattintson a jobb gombbal a három pontra (**...**), és a következő menü további műveletekkel jelenik meg:
 
-    ![A menü zárolási szabályzata](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
+    !["Zárolási házirend" a menüben](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
 
-6. Válassza a **zárolási házirend** elemet, és erősítse meg a zárolást. A szabályzat zárolva van, és nem törölhető, csak a megőrzési időtartam kiterjesztései lesznek engedélyezve. A blob-törlések és felülbírálások nem engedélyezettek. 
+6. Válassza **a Házirend zárolása lehetőséget,** és erősítse meg a zárolást. A házirend zárolva van, és nem törölhető, csak a megőrzési időköz kiterjesztései engedélyezettek. Blob törlések és felülbírálások nem engedélyezettek. 
 
-    ![A menü zárolási szabályzatának megerősítése](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
+    ![A "Házirend zárolása" megerősítése a menüben](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
 
-7. A jogcímek engedélyezéséhez válassza a **házirend hozzáadása**lehetőséget. Válassza a **jogi megtartás** lehetőséget a legördülő menüből.
+7. A jogi visszatartjanak engedélyezéséhez válassza **a Házirend hozzáadása**lehetőséget. Válassza a Legördülő menü **Jogi visszatartás** parancsát.
 
-    !["Jogi megtartás" a "szabályzat típusa" alatt található menüben](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
+    !["Jogi visszatartás" a "Házirend típusa" menüpont alatt](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
 
-8. Hozzon létre egy jogi megtartást egy vagy több címkével.
+8. Hozzon létre jogi visszatartást egy vagy több címkével.
 
-    !["Címke neve" mező a házirend típusa alatt](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
+    !["Címkenév" mező a házirend-típus alatt](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. A jogi megtartási szabály törléséhez távolítsa el az alkalmazott jogi megtartási azonosító címkét.
+9. A jogi visszatartás törléséhez távolítsa el az alkalmazott jogi visszatartásazonosító címkét.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A szolgáltatás a következő parancs-csoportokba tartozik: `az storage container immutability-policy` és `az storage container legal-hold`. `-h` futtatásával tekintheti meg a parancsokat.
+A szolgáltatás a következő parancscsoportokban található: `az storage container immutability-policy` és `az storage container legal-hold`. Fuss `-h` rajtuk, hogy a parancsokat.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az az. Storage modul támogatja a nem módosítható tárolókat.  A szolgáltatás engedélyezéséhez kövesse az alábbi lépéseket:
+Az Az.Storage modul támogatja a nem módosítható tárolást.  A szolgáltatás engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a telepített PowerShellGet legújabb verziója van telepítve: `Install-Module PowerShellGet –Repository PSGallery –Force`.
-2. Távolítsa el a Azure PowerShell korábbi telepítését.
-3. Azure PowerShell telepítése: `Install-Module Az –Repository PSGallery –AllowClobber`.
+1. Győződjön meg arról, hogy a `Install-Module PowerShellGet –Repository PSGallery –Force`PowerShell legújabb verziója telepítve van: .
+2. Távolítsa el az Azure PowerShell korábbi telepítését.
+3. Telepítse az Azure `Install-Module Az –Repository PSGallery –AllowClobber`PowerShellt: .
 
-A következő PowerShell-parancsfájl a hivatkozás. Ez a szkript létrehoz egy új Storage-fiókot és-tárolót. Ezután bemutatjuk, hogyan lehet beállítani és törölni az időalapú adatmegőrzési szabályzatokat (más néven módosíthatatlansági-szabályzatokat), és ki kell zárnia a megőrzési időt.
+A következő powershell-parancsfájlminta referenciaként szolgál. Ez a parancsfájl létrehoz egy új tárfiókot és tárolót. Ezután bemutatja, hogyan állíthat be és törölheti a jogi visszatartásokat, hozhat létre és zárolhat egy időalapú adatmegőrzési házirendet (más néven megváltoztathatatlansági házirendet), és hogyan hosszabbíthatja meg a megőrzési időközt.
 
 Először hozzon létre egy Azure Storage-fiókot:
 
@@ -104,7 +104,7 @@ Get-AzStorageContainer -Context $account.Context
 Remove-AzStorageContainer -Name $container -Context $account.Context
 ```
 
-Jogi tartalékok beállítása és törlése:
+Meghatározott és egyértelmű jogi tart:
 
 ```powershell
 # Set a legal hold
@@ -116,7 +116,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-Időalapú módosíthatatlansági házirendek létrehozása vagy frissítése:
+Időalapú megváltoztathatósági házirendek létrehozása vagy frissítése:
 
 ```powershell
 # Create a time-based immutablity policy
@@ -124,7 +124,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
 
-Módosíthatatlansági szabályzatok beolvasása:
+A megváltoztathatatlansági házirendek beolvasása:
 
 ```powershell
 # Get an immutability policy
@@ -132,7 +132,7 @@ Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container
 ```
 
-Módosíthatatlansági házirendek zárolása (`-Force` hozzáadása a kérés elvetéséhez):
+A megváltoztathatatlansági házirendek zárolása (a `-Force` kérdés elvetéséhez hozzáadható):
 
 ```powershell
 # Lock immutability policies
@@ -143,7 +143,7 @@ Lock-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     -Etag $policy.Etag
 ```
 
-Módosíthatatlansági házirendek kiterjesztése:
+A megváltoztathatatlansági házirendek kiterjesztése:
 
 ```powershell
 # Extend immutability policies
@@ -154,7 +154,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 ```
 
-Zárolt módosíthatatlansági szabályzat eltávolítása (`-Force` hozzáadása a kérés elvetéséhez):
+Feloldott megváltoztathatatlansági házirend eltávolítása `-Force` (a kérdés elvetéséhez adja hozzá):
 
 ```powershell
 # Remove an unlocked immutability policy
@@ -166,17 +166,17 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ---
 
-## <a name="enabling-allow-protected-append-blobs-writes"></a>A védett hozzáfűzési Blobok írásának engedélyezése
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Védett hozzáfűző blobok írási műveletek engedélyezésének engedélyezése
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-![További hozzáfűzési írások engedélyezése](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+![További hozzáfűző írások engedélyezése](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A szolgáltatás a következő parancs-csoportokba tartozik: `az storage container immutability-policy` és `az storage container legal-hold`. `-h` futtatásával tekintheti meg a parancsokat.
+A szolgáltatás a következő parancscsoportokban található: `az storage container immutability-policy` és `az storage container legal-hold`. Fuss `-h` rajtuk, hogy a parancsokat.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```powershell
 # Create an immutablity policy with appends allowed
@@ -186,6 +186,6 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)
+[Üzleti legkritikusabb blobadatok tárolása állandó tárolóval](storage-blob-immutable-storage.md)

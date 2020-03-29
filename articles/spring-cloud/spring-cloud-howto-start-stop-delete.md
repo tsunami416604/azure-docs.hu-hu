@@ -1,45 +1,45 @@
 ---
-title: Azure Spring Cloud-alkalmazás elindítása, leállítása és törlése | Microsoft Docs
-description: Azure Spring Cloud-alkalmazás elindítása, leállítása és törlése
+title: Az Azure Spring Cloud-alkalmazás indítása, leállítása és törlése | Microsoft dokumentumok
+description: Az Azure Spring Cloud-alkalmazás indítása, leállítása és törlése
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.openlocfilehash: daa549e248668add54530e90174134c4e0059b3a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276835"
 ---
-# <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud-alkalmazás elindítása, leállítása és törlése
+# <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Az Azure Spring Cloud-alkalmazás indítása, leállítása és törlése
 
-Ez az útmutató azt ismerteti, hogyan lehet módosítani az alkalmazások állapotát az Azure Spring Cloud-ban a Azure Portal vagy az Azure CLI használatával.
+Ez az útmutató bemutatja, hogyan módosíthatja egy alkalmazás állapotát az Azure Spring Cloud ban az Azure Portal vagy az Azure CLI használatával.
 
 ## <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Az alkalmazások központi telepítése után elindíthatja, leállíthatja és törölheti a Azure Portal használatával.
+Egy alkalmazás üzembe helyezése után elindíthatja, leállíthatja és törölheti az Azure Portal használatával.
 
-1. Nyissa meg az Azure Spring Cloud Service-példányt a Azure Portal.
-1. Válassza az **alkalmazás-irányítópult** fület.
-1. Válassza ki azt az alkalmazást, amelynek az állapotát módosítani szeretné.
-1. Az alkalmazás **Áttekintés** lapján válassza a **Start/leállítás**, **Újraindítás**vagy **Törlés**lehetőséget.
+1. Nyissa meg az Azure Spring Cloud szolgáltatáspéldányát az Azure Portalon.
+1. Válassza az **Alkalmazás irányítópultja** lapot.
+1. Jelölje ki azt az alkalmazást, amelynek állapotát módosítani szeretné.
+1. Az **Alkalmazás Áttekintés lapján** válassza a **Start/Stop**, **Restart**vagy **Delete**lehetőséget.
 
 ## <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 > [!NOTE]
-> Az Azure CLI-vel választható paramétereket és az alapértelmezett értékeket is konfigurálhatja. További információt az Azure CLI-ről a [dokumentációban talál](spring-cloud-cli-reference.md).  
+> Használhatja a választható paramétereket, és konfigurálja az alapértelmezett az Azure CLI. Tudjon meg többet az Azure CLI-ről a [dokumentáció ban.](spring-cloud-cli-reference.md)  
 
-Először telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi módon:
+Először telepítse az Azure Spring Cloud bővítményt az Azure CLI-hez az alábbiak szerint:
 
 ```azurecli
 az extension add --name spring-cloud
 ```
 
-Ezután válassza ki az alábbi Azure CLI-műveletek bármelyikét:
+Ezután válassza ki az Alábbi Azure CLI-műveletek egyikét:
 
-* Az alkalmazás elindítása:
+* Az alkalmazás elindításához:
 
     ```azurecli
     az spring-cloud app start -n <application name> -g <resource group> -s <Azure Spring Cloud name>

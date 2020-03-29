@@ -1,6 +1,6 @@
 ---
-title: A StorSimple Virtual Array szolgáltatás összefoglalás panelén |} A Microsoft Docs
-description: A szolgáltatás összefoglalás panelén a StorSimple-Eszközkezelő és ismerteti a StorSimple Virtual Array állapotának figyelésére használható.
+title: StorSimple Virtual Array szolgáltatás összefoglaló panel | Microsoft dokumentumok
+description: Ismerteti a StorSimple Eszközkezelő szolgáltatás összefoglaló panel, és elmagyarázza, hogyan használhatja a StorSimple virtuális tömb állapotának figyelésére.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9c05bddaeb3c34400db1ec75c624ef00a85d9444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64720702"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén használata a StorSimple Virtual Array csatlakozik.
+# <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz csatlakoztatott StorSimple Eszközkezelő szolgáltatás-összefoglaló paneljének használata
 ## <a name="overview"></a>Áttekintés
-A StorSimple Virtual Arrayt (más néven a StorSimple a helyi virtuális vagy virtuális), amely csatlakozik a szolgáltatáshoz, kiemelése, amelyek olyan rendszerre van szüksége összefoglaló nézetét jeleníti meg az a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén a rendszergazda figyelmet. Ebben az oktatóanyagban vezet be a szolgáltatás összefoglalás panelén, a tartalom- és funkciót ismerteti és azokat a feladatokat hajthat végre ezen a panelen.
+A StorSimple Eszközkezelő szolgáltatásösszefoglaló panelje összefoglaló nézetet biztosít a szolgáltatáshoz csatlakoztatott StorSimple virtuális tömbökről (más néven StorSimple helyszíni virtuális eszközökről vagy virtuális eszközökről), kiemelve azokat, amelyeknek rendszerre van szükségük az adminisztrátor figyelmét. Ez az oktatóanyag bemutatja a szolgáltatás összefoglaló panel, ismerteti a tartalom és a funkció, és ismerteti a feladatokat, amelyeket el lehet végezni ebből a panelből.
 
-![Szolgáltatási irányítópult](./media/storsimple-virtual-array-service-summary/service-blade.png)
+![Szolgáltatás irányítópultja](./media/storsimple-virtual-array-service-summary/service-blade.png)
 
-## <a name="management-commands-and-essentials"></a>Felügyeleti parancsok és essentials
-A StorSimple összefoglaló panelén kezelése a StorSimple-Eszközkezelő szolgáltatás, valamint a virtuális tömbök szolgáltatáshoz regisztrált beállításainak megjelenítéséhez. A parancsok és a bal oldalon a panel tetején megjelenik.
+## <a name="management-commands-and-essentials"></a>Felügyeleti parancsok és alapvető tudnivalók
+A StorSimple összefoglaló panelen láthatja a StorSimple Eszközkezelő szolgáltatás, valamint a szolgáltatáshoz regisztrált virtuális tömbök kezelésének lehetőségeit. A felügyeleti parancsok a penge tetején és a bal oldalon jelennek meg.
 
-Ezek a beállítások használata csatlakozva különféle műveleteket végezhet, például a részvények vagy a kötet hozzáadása, vagy a figyelő a különböző feladatok, a virtuális tömbök futó.
+Ezekkel a beállításokkal különböző műveleteket hajthat végre, például megosztásokat vagy köteteket adhat hozzá, vagy figyelheti a virtuális tömbökön futó különböző feladatokat.
 
-Az essentials területen rögzíti az egyes fontos tulajdonságai, például az erőforráscsoport, helyét és előfizetés, amelyben a StorSimple-Eszközkezelő létrehozása történt.
+A lényegi terület rögzíti néhány fontos tulajdonságok, például az erőforráscsoport, a hely és az előfizetés, amelyben a StorSimple Eszközkezelő jött létre.
 
-## <a name="storsimple-device-manager-service-summary"></a>StorSimple-Eszközkezelő szolgáltatás összegzése
-* A **riasztások** csempe egy pillanatkép összes aktív riasztás biztosít virtuális eszközön, riasztás súlyossága szerint csoportosítva. A csempékre kattintva a **riasztások** panel, ahol az egyes riasztást a riasztással kapcsolatos további részletek megtekintéséhez kattintson így azokat is ajánlott műveletek. A riasztás is törölheti, ha a probléma megoldódott.
-* A **kapacitás** csempe megjeleníti az elsődleges tároló kiosztott és a fennmaradó összes virtuális eszközön, az összes szabad tárhely viszonyított összes virtuális eszközön jeleníti meg. **Üzembe helyezett** hivatkozik, amely készített, és használatra, lefoglalt tárhely **fennmaradó** hivatkozik a fennmaradó kapacitás, amelyek kioszthatóak az összes virtuális eszközön. A **fennmaradó rétegzett** kapacitás a rendelkezésre álló kapacitást, amelyek kioszthatóak többek között a felhőben, amíg a **fennmaradó helyi** a virtuális tömbök csatlakoztatott lemezek fennmaradó kapacitás.
-* Az a **használati** diagramra, megtekintheti a releváns metrikákat a virtuális eszközök. Megtekintheti az összes virtuális eszközön használt elsődleges tároló, valamint a felhőalapú tárolás az elmúlt 7 napban, az alapértelmezett időszak virtuális eszközök által felhasznált. Használja a **szerkesztése** lehetőséget a jobb felső sarokban, a diagram válassza egy másik időpontot méretezési.
-* A **eszközök** csempe összesíti a virtuális tömbök az a StorSimple-Eszközkezelő eszköz állapota szerint csoportosítva számát. Ez a csempe megnyitásához kattintson a **eszközök** panel listából, majd kattintson az egy adott eszköz az eszközre adott eszközösszegzés adatfelhasználás. Eszköz műveleteket is elvégezheti egy adott eszköz összefoglalás panelje. Az összefoglalás panel kapcsolatos további információkért látogasson el [eszköz összefoglalás panel](storsimple-virtual-array-device-summary.md).
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple Eszközkezelő szolgáltatás összegzése
+* A **Riasztások** csempe pillanatképet biztosít az összes virtuális eszközön az összes aktív riasztásról, riasztási súlyosság szerint csoportosítva. A csempére kattintva megnyílik a **Riasztások** panel, ahol egy adott riasztásra kattintva megtekintheti a riasztástovábbi részleteit, beleértve az ajánlott műveleteket is. A riasztást törölheti is, ha a probléma megoldódott.
+* A **Kapacitás** csempe megjeleníti az elsődleges tároló, amely ki van építve, és az összes virtuális eszközök képest a teljes rendelkezésre álló tárterület az összes virtuális eszközök. **Kiépített** utal, hogy a tárolási összeg, amely előkészített és használatra lefoglalt, **Fennmaradó** utal a fennmaradó kapacitás, amely kiépíthető az összes virtuális eszközök. A **fennmaradó rétegzett** kapacitás a rendelkezésre álló kapacitás, amely kiépíthető, beleértve a felhőt, míg a **fennmaradó helyi** a virtuális tömbökhöz csatlakoztatott lemezeken fennmaradó kapacitás.
+* A **Használat** diagramban láthatja a virtuális eszközök relevancia-mutatóit. Megtekintheti az összes virtuális eszközön használt elsődleges tárhelyet, valamint a virtuális eszközök által az elmúlt 7 napban felhasznált felhőalapú tárhelyet, az alapértelmezett időszakot. A diagram jobb felső sarkában található **Szerkesztés** beállítással válasszon másik időskálát.
+* **Az Eszközök** csempe összegzést nyújt a StorSimple Eszközkezelőben lévő virtuális tömbök eszközállapot szerint csoportosítva. Kattintson erre a csempére az **Eszközök** lista panel megnyitásához, majd egy adott eszközre kattintva részletezze az eszköz eszközre jellemző összegzését. Eszközspecifikus műveleteket is végrehajthat egy adott eszközösszesítő panelről. Az eszköz összesítő paneljéről az [Eszköz összesítő paneljéről az Eszközösszegzés panelen](storsimple-virtual-array-device-summary.md)talál további információt.
 
-## <a name="view-the-activity-logs"></a>A Tevékenységnaplók megtekintése
-A különböző műveletek belül a StorSimple-Eszközkezelő végzett megtekintéséhez kattintson a **tevékenységeket tartalmazó naplók** a StorSimple szolgáltatás összefoglalás panelén bal oldalán található hivatkozást. Ezzel továbblép a **tevékenységeket tartalmazó naplók** panel, ahol megtekintheti a legutóbbi végrehajtott műveletek összegzése.
+## <a name="view-the-activity-logs"></a>A tevékenységnaplók megtekintése
+A StorSimple Eszközkezelőben végrehajtott különböző műveletek megtekintéséhez kattintson a **Tevékenységnaplók** hivatkozásra a StorSimple szolgáltatás összefoglaló panelbal oldalán. Ez a **tevékenységnaplók** panelhez vezet, ahol megtekintheti a legutóbbi végrehajtott műveletek összegzését.
 
 ![Tevékenységnaplók](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [felügyelete a StorSimple virtuális tömb helyi webes felületén használatával](storsimple-ova-web-ui-admin.md).
+Ismerje meg, hogyan [használhatja a helyi webes felhasználói felületet a StorSimple virtuális tömb felügyeletére.](storsimple-ova-web-ui-admin.md)
 

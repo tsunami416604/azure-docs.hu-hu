@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid-előfizetés eseménysémája
-description: Ismerteti a tulajdonságait, amelyet az Azure Event Grid-előfizetés események
+title: Azure Event Grid-előfizetési eseménysémája
+description: Az Azure Event Grid del az előfizetéses eseményekhez megadott tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,47 +8,47 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561676"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
+# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid eseménysémája előfizetésekhez
 
-Ez a cikk a tulajdonságok és a séma az Azure-előfizetés események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk az Azure-előfizetési események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az eseménytípusok kapcsolatos műveletek és erőforrás-módosítások. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből.
+Az Azure-előfizetések és erőforráscsoportok ugyanazokat az eseménytípusokat bocsátják ki. Az eseménytípusok erőforrás-változásokhoz vagy műveletekhez kapcsolódnak. Az elsődleges különbség az, hogy az erőforráscsoportok eseményeket bocsátanak ki az erőforráscsoporton belüli erőforrásokhoz, és az Azure-előfizetések eseményeket bocsátanak ki az erőforrásokhoz az előfizetés ben.
 
-Erőforrás-események PUT, PATCH, bejegyzés jön létre, és a törlési műveletek küldött `management.azure.com`. GET műveleteket nem hoz létre az eseményeket. Az adatsík küldött műveletek (például `myaccount.blob.core.windows.net`) események nem hoz létre. A műveleti események eseményadatok műveletek, mint az erőforrás kulcsainak listázása adja meg.
+Az erőforrásesemények a put, patch, posta és DELETE `management.azure.com`műveletekhez jönnek létre, amelyeket a rendszer a rendszernek küld. Get műveletek nem hoznak létre eseményeket. Az adatsíkra küldött műveletek `myaccount.blob.core.windows.net`(például ) nem hoznak létre eseményeket. A műveletesemények eseményadatokat biztosítanak a műveletekhez, például egy erőforrás kulcsainak listázásához.
 
-Amikor előfizet egy Azure-előfizetés eseményeire, a végpont adott előfizetéshez tartozó összes esemény kapja meg. Az események eseményt szeretne látni, például egy virtuális gép frissítése, de események, amelyek esetleg nem fontos számunkra, például az írt új bejegyzést az üzembe helyezési előzmények tartalmazhatnak. Az összes esemény fogadása a végponton, és dolgozza fel a kezelni kívánt kód írására. Másik lehetőségként beállíthatja a szűrőt az esemény-előfizetés létrehozásakor.
+Amikor előfizet egy Azure-előfizetés eseményeire, a végpont jattt az adott előfizetésösszes eseményét megkapja. Az események tartalmazhatnak megtekinteni kívánt eseményeket, például egy virtuális gép frissítését, de olyan eseményeket is, amelyek esetleg nem fontosak az Ön számára, például egy új bejegyzés írása a központi telepítési előzményekben. A végponton az összes eseményt megkaphatja, és olyan kódot írhat, amely feldolgozza a kezelni kívánt eseményeket. Vagy beállíthat egy szűrőt az esemény-előfizetés létrehozásakor.
 
-Események programozott módon kezelje, rendezheti események megtekintésével a `operationName` értéket. Például az esemény-végpont lehet, hogy csak feldolgozni a műveletek eseményeit, amelyek egyenlőnek kell lennie `Microsoft.Compute/virtualMachines/write` vagy `Microsoft.Storage/storageAccounts/write`.
+Az események programozott kezeléséhez az eseményeket az `operationName` érték vizsgálatával rendezheti. Előfordulhat például, hogy `Microsoft.Compute/virtualMachines/write` `Microsoft.Storage/storageAccounts/write`az eseményvégpont csak a vagy a.
 
-Az esemény áll, akkor az erőforrás, amely a művelet céljaként megadott erőforrás-Azonosítóját. Erőforrás események szűréséhez állítsa be, adja meg, hogy az erőforrás létrehozásakor az esemény-előfizetés AZONOSÍTÓJÁT. Szűrés erőforrástípus szerint, használja az értéket a következő formátumban: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Az esemény tárgya a művelet célját képező erőforrás erőforrásazonosítója. Egy erőforrás eseményeinek szűréséhez adja meg az erőforrás-azonosítót az esemény-előfizetés létrehozásakor. Erőforrástípus szerinti szűréshez használja a következő formátumú értéket:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Mintaszkriptek és oktatóanyagok listáját lásd: [Azure-előfizetés eseményforrás](event-sources.md#azure-subscriptions).
+A mintaparancsfájlok és oktatóanyagok listáját az [Azure-előfizetés eseményforrásában](event-sources.md#azure-subscriptions)láthatja.
 
-## <a name="available-event-types"></a>Rendelkezésre álló események típusai
+## <a name="available-event-types"></a>Elérhető eseménytípusok
 
-Az Azure-előfizetések gridre bocsáthatja ki felügyeleti események Azure Resource Manager, például egy virtuális gép létrehozásakor, vagy a tárfiókot törölték.
+Az Azure-előfizetések az Azure Resource Manager felügyeleti eseményeit bocsátják ki, például amikor virtuális gép jön létre, vagy egy tárfiók törlődik.
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceActionCancel | Jelenik meg, ha az erőforrás a művelet meg lett szakítva. |
-| Microsoft.Resources.ResourceActionFailure | Jelenik meg, ha az erőforrás a művelet sikertelen lesz. |
-| Microsoft.Resources.ResourceActionSuccess | Jön létre, ha az erőforrás a művelet sikeres. |
-| Microsoft.Resources.ResourceDeleteCancel | Következik be, mikor törölje a művelet meg lett szakítva. Ez az esemény történik, ha a sablon központi telepítés meg lett szakítva. |
-| Microsoft.Resources.ResourceDeleteFailure | Következik be, mikor törlése művelet sikertelen. |
-| Microsoft.Resources.ResourceDeleteSuccess | Következik be, mikor-törlési művelet sikeres. |
-| Microsoft.Resources.ResourceWriteCancel | Következik be, mikor hozzon létre vagy frissítési művelet meg lett szakítva. |
-| Microsoft.Resources.ResourceWriteFailure | Következik be, mikor létrehozása vagy frissítése a művelet sikertelen lesz. |
-| Microsoft.Resources.ResourceWriteSuccess | Következik be, mikor hozzon létre vagy frissítési művelet sikeres. |
+| Microsoft.Resources.ResourceActionMégs | Az erőforráson végzett művelet megszakításakor előáll. |
+| Microsoft.Resources.ResourceActionFailure | Ha az erőforráson végrehajtott művelet sikertelen. |
+| Microsoft.Resources.ResourceActionSuccess | Ha az erőforrás-művelet sikeres. |
+| Microsoft.Resources.ResourceDeleteCancelMégs | A törlési művelet megszakításakor előáll. Ez az esemény akkor következik be, amikor egy sablon központi telepítését megszakítják. |
+| Microsoft.Resources.ResourceDeleteFailureFailure | Ha a törlési művelet sikertelen, a rendszer előáll. |
+| Microsoft.Resources.ResourceDeleteSuccess | A törlési művelet sikeresse esetén előtörve. |
+| Microsoft.Resources.ResourceWriteMégs | A létrehozási vagy frissítési művelet megszakításakor keletkezik. |
+| Microsoft.Resources.ResourceWriteFailure | A létrehozási vagy frissítési művelet sikertelensítése esetén keletkezik. |
+| Microsoft.Resources.ResourceWriteSuccess | Ha a létrehozási vagy frissítési művelet sikeres. |
 
 ## <a name="example-event"></a>Példa esemény
 
-Az alábbi példa bemutatja a sémában egy **ResourceWriteSuccess** esemény. Ugyanazzal a sémával használt **ResourceWriteFailure** és **ResourceWriteCancel** eltérő értékek az események `eventType`.
+A következő példa egy **ResourceWriteSuccess** esemény sémáját mutatja be. Ugyanaz a séma használatos a **ResourceWriteFailure** és a `eventType` **ResourceWriteCancel** eseményekhez, amelyek különböző értékeit használják.
 
 ```json
 [{
@@ -108,7 +108,7 @@ Az alábbi példa bemutatja a sémában egy **ResourceWriteSuccess** esemény. U
 }]
 ```
 
-Az alábbi példa bemutatja a sémában egy **ResourceDeleteSuccess** esemény. Ugyanazzal a sémával használt **ResourceDeleteFailure** és **ResourceDeleteCancel** eltérő értékek az események `eventType`.
+A következő példa egy **ResourceDeleteSuccess** esemény sémáját mutatja be. Ugyanaz a séma használatos a **ResourceDeleteFailure** és a `eventType` **ResourceDeleteCancel** eseményekhez, amelyek különböző értékeit használják.
 
 ```json
 [{
@@ -174,7 +174,7 @@ Az alábbi példa bemutatja a sémában egy **ResourceDeleteSuccess** esemény. 
 }]
 ```
 
-Az alábbi példa bemutatja a sémában egy **ResourceActionSuccess** esemény. Ugyanazzal a sémával használt **ResourceActionFailure** és **ResourceActionCancel** eltérő értékek az események `eventType`.
+A következő példa egy **ResourceActionSuccess** esemény sémáját mutatja be. Ugyanaz a séma használatos a **ResourceActionFailure** és a `eventType` **ResourceActionCancel** eseményekhez, amelyek különböző értékeit használják.
 
 ```json
 [{   
@@ -232,35 +232,35 @@ Az alábbi példa bemutatja a sémában egy **ResourceActionSuccess** esemény. 
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény legfelső szintű adatokat rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | string | Az esemény egyedi azonosítója. |
-| data | object | Előfizetés eseményadatokat. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| id | sztring | Az esemény egyedi azonosítója |
+| data | objektum | Előfizetési esemény adatai. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Az objektum a következő tulajdonságokkal rendelkezik:
+Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| authorization | object | A kért hitelesítést biztosít a műveletet. |
-| claims | object | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | string | A hibaelhárítási művelet azonosítója. |
-| httpRequest | object | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
-| resourceProvider | string | Az erőforrás-szolgáltató a művelethez. |
-| resourceUri | string | A műveletet az erőforrás URI azonosítója. |
-| operationName | string | A művelet, amely kerül. |
-| status | string | A művelet állapota. |
-| subscriptionId | string | Az erőforrás előfizetés-azonosítója. |
-| tenantId | string | Az erőforrás Bérlőazonosítója. |
+| engedélyezés | objektum | A művelethez kért engedély. |
+| Azt állítja | objektum | A követelések tulajdonságai. További információ: [JWT specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| correlationId | sztring | Hibaelhárítási műveletazonosító. |
+| httpRequest (Kérés) | objektum | A művelet részletei. Ez az objektum csak meglévő erőforrás frissítésekor vagy egy erőforrás törlésekor jelenik meg. |
+| resourceProvider | sztring | A művelet erőforrás-szolgáltatója. |
+| resourceUri | sztring | A műveletben lévő erőforrás URI-ja. |
+| operationName | sztring | A művelet, amit elvettek. |
+| status | sztring | A művelet állapota. |
+| subscriptionId | sztring | Az erőforrás előfizetési azonosítója. |
+| tenantId | sztring | Az erőforrás bérlői azonosítója. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md).
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md).
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.

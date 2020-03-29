@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921504"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Az Azure Security Center és az Azure-beli virtuális gépek
@@ -33,7 +33,7 @@ A Security Center segít megóvni az Azure-beli virtuális gépeken tárolt adat
 * Az Endpoint Protection javaslatai
 * Lemeztitkosítás ellenőrzése
 * Biztonsági rések felmérése és elhárítása
-* Biztonsági riasztások a veszélyforrások elleni védelem funkcióiról
+* A veszélyforrások elleni védelem funkcióiból származó biztonsági riasztások
 
 A Security Center az Azure-beli virtuális gépek védelme mellett a Cloud Services, az App Services, a Virtual Networks és mások biztonsági felügyeletében és kezelésében is segítséget nyújt. 
 
@@ -47,7 +47,7 @@ Az Azure Security Centert használatának elkezdése előtt tudnia kell és meg 
 
 * Szüksége lesz egy Microsoft Azure-előfizetésre. A Security Center ingyenes és standard csomagjairól a [ Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/) ismertető oldalon talál további információt.
 * Tervezze meg a Security Center bevezetését az[Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) című dokumentum segítségével, amely további információkat nyújt a tervezés és működtetés szempontjairól.
-* A támogatott operációs rendszerekkel kapcsolatos információkért lásd: [Azure Security Center gyakori kérdések (GYIK)](faq-vms.md). 
+* A támogatott operációs rendszerekkel kapcsolatos információkért tekintse meg az [Azure Security Center gyakori kérdéseit .](faq-vms.md) 
 
 ## <a name="set-security-policy"></a>Biztonsági házirend beállítása
 Engedélyezze az adatgyűjtést, hogy az Azure Security Center összegyűjthesse a szükséges információkat a beállított biztonsági házirend alapján létrehozott javaslatok és riasztások biztosításához. Az alábbi ábrán látható, hogy az **Adatgyűjtés** állapota **Be** van kapcsolva.
@@ -82,7 +82,7 @@ Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ö
 > 
 
 ## <a name="monitor-security-health"></a>A biztonsági állapot figyelése
-Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  A **Resource Security Health** (Erőforrás biztonsági állapota) panelen megtekintheti az erőforrások biztonsági állapotát, valamint az esetleg felmerülő problémákat. A **Resources security health** (Erőforrás biztonsági állapota) csempe **Virtual machines** (Virtuális gépek) elemére kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen megtekintheti a virtuális gépekkel kapcsolatos javaslatokat. 
+Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](tutorial-security-policy.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  Megtekintheti az erőforrások biztonsági állapotát, valamint az **Erőforrás-biztonság állapotpanelen** található problémákat. A **Resources security health** (Erőforrás biztonsági állapota) csempe **Virtual machines** (Virtuális gépek) elemére kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen megtekintheti a virtuális gépekkel kapcsolatos javaslatokat. 
 
 ![Biztonsági állapot](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -97,5 +97,5 @@ Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riaszt�
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
-* [Gyakori kérdések – Virtual Machines](faq-vms.md) – a szolgáltatás használatával kapcsolatos gyakori kérdések megkeresése.
+* [Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – Ismerje meg, hogyan kezelheti és válaszolhat azokra a biztonsági riasztásokra.
+* [GyIK – Virtuális gépek](faq-vms.md) – Gyakori kérdések keresése a szolgáltatás használatával kapcsolatban.

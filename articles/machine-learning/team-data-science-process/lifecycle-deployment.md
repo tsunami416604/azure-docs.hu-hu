@@ -1,6 +1,6 @@
 ---
-title: A csoportos adatelemzési folyamat életciklusa telepítési szakaszában
-description: A célok, feladatok és a központi telepítési szakaszra a data-adatelemzési projektek le
+title: A csapatadat-elemzési folyamat életciklusának telepítési szakasza
+description: Az adatelemzési projektek üzembe helyezési szakaszának céljai, feladatai és céljai
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,63 +12,63 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720486"
 ---
-# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusa telepítési szakaszában
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>A csapatadat-elemzési folyamat életciklusának telepítési szakasza
 
-Ez a cikk ismerteti a célokat, feladatok és az üzembe helyezés, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
+Ez a cikk ismerteti a csapat adatelemzési folyamat (TDSP) telepítéséhez kapcsolódó célokat, feladatokat és eredményeket. Ez a folyamat egy ajánlott életciklust biztosít, amely az adatelemzési projektek strukturálásához használható. Az életciklus felvázolja azokat a főbb szakaszokat, amelyeket a projektek általában végrehajtanak, gyakran ismétlődően:
 
-   1. **Üzleti ismeretek**
-   2. **Adatgyűjtés és-megértés**
+   1. **Üzleti ismertetés**
+   2. **Adatgyűjtés és adatértelmezés**
    3. **Modellezés**
-   4. **Üzembe helyezés**
-   5. **Ügyfél-elfogadás**
+   4. **Környezet**
+   5. **Felhasználói elfogadás**
 
-A TDSP életciklus ábrázolása a következő: 
+Itt van egy vizuális ábrázolása a TDSP életciklus: 
 
-![TDSP-életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Cél
-Egy adatfolyamat a modellek üzembe helyezése éles, akár a végső felhasználói elfogadás éles-szerű környezete. 
+Az adatfolyamattal rendelkező modelleket éles vagy éles környezetben helyezheti üzembe a végső felhasználói elfogadás érdekében. 
 
-## <a name="how-to-do-it"></a>Megtudhatja, hogyan teheti
-Ebben a szakaszban tárgyalt fő feladat:
+## <a name="how-to-do-it"></a>Hogyan kell csinálni
+Az ebben a szakaszban tárgyalt fő feladat:
 
-**Működővé tenni**: a modell és a folyamat üzembe helyezése éles vagy éles környezetben az alkalmazások felhasználásához.
+**A modell üzembe helyezése:** Telepítse a modellt és a folyamatot egy éles vagy éles környezetben az alkalmazás felhasználása.
 
 ### <a name="operationalize-a-model"></a>Modell üzembe helyezése
-Miután egy jól teljesítő modell készletét, működésbe hozhat őket a más alkalmazások általi felhasználáshoz. Az üzleti követelményeitől függően előrejelzéseket valós időben vagy kötegelt alapon történik. Modellek üzembe helyezéséhez elérhetővé teszi azokat az open API felületet. A felület lehetővé teszi, hogy a modell egyszerűen fogják a különböző alkalmazások, például:
+Miután olyan modellkészletet rendelkezik, amely jól teljesít, üzembe hatja őket más alkalmazások számára. Az üzleti követelményektől függően az előrejelzések valós időben vagy kötegelve történnek. A modellek üzembe helyezéséhez egy nyílt API-felülettel teheti elérhetővé őket. A felület lehetővé teszi, hogy a modell könnyen fogyasztható a különböző alkalmazások, mint például:
 
-   * Online webhelyek
-   * Számolótáblák 
+   * Online weboldalak
+   * Táblázatok 
    * Irányítópultok
-   * Az üzletági alkalmazások 
-   * Háttér-alkalmazások 
+   * Üzletági alkalmazások 
+   * Háttéralkalmazások 
 
-Azure Machine Learning webszolgáltatással történő operacionalizálási kapcsolatos példákért tekintse meg a [Azure Machine learning webszolgáltatás üzembe helyezése](../studio/deploy-a-machine-learning-web-service.md)című témakört. Ajánlott eljárás a telemetriai adatok és a figyelést az üzemi modell és az adatfolyamatok úgy, hogy legyen. Ez az eljárás későbbi rendszer állapota jelentéskészítési és hibaelhárítási segítséget.  
+Példák a modell operationalization egy Azure Machine Learning webszolgáltatás, [az Azure Machine Learning webszolgáltatás telepítése.](../studio/deploy-a-machine-learning-web-service.md) Ajánlott eljárás telemetriai adatok at és figyelést az éles modell és az üzembe helyezett adatfolyamat. Ez a gyakorlat segít a rendszer állapotjelentésében és hibaelhárításában.  
 
 ## <a name="artifacts"></a>Összetevők
 
-* Egy állapotjelző irányítópult, amely megjeleníti a rendszer állapotának és a kulcs metrikák
-* Üzembe helyezési adatok végleges modellezési jelentés
-* A végső megoldás architektúrája dokumentum
+* Állapotirányítópult, amely a rendszer állapotát és a legfontosabb mutatókat jeleníti meg
+* Végső modellezési jelentés az üzembe helyezés részleteivel
+* Végső megoldásarchitektúra dokumentum
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alábbiakban a TDSP életciklusának minden lépése mutató hivatkozásokat:
+A TDSP életciklusának egyes lépéseire mutató hivatkozások:
 
-   1. [Üzleti ismeretek](lifecycle-business-understanding.md)
-   2. [Adatgyűjtés és-megértés](lifecycle-data.md)
+   1. [Üzleti ismertetés](lifecycle-business-understanding.md)
+   2. [Adatgyűjtés és megértés](lifecycle-data.md)
    3. [Modellezés](lifecycle-modeling.md)
-   4. [Üzembe helyezés](lifecycle-deployment.md)
-   5. [Ügyfél-elfogadás](lifecycle-acceptance.md)
+   4. [Környezet](lifecycle-deployment.md)
+   5. [Felhasználói elfogadás](lifecycle-acceptance.md)
 
-Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
+Teljes forgatókönyveket biztosítunk, amelyek bemutatják a folyamat összes lépését az adott forgatókönyvekhez. A [Példa forgatókönyvek](walkthroughs.md) cikk hivatkozásokat és miniatűr leírásokat tartalmazó forgatókönyvek listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőt, a helyszíni eszközöket és szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Példák az Azure Machine Learning Studio tdsp-kben végrehajtott lépések végrehajtásáról: [Use the TDSP with Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

@@ -1,6 +1,6 @@
 ---
-title: 'Python: fájlrendszerbeli műveletek Azure Data Lake Storage Gen1on | Microsoft Docs'
-description: Megtudhatja, hogyan használhatja a Python SDK-t a Data Lake Storage Gen1 fájlrendszerrel való együttműködéshez.
+title: 'Python: Fájlrendszer-műveletek az Azure Data Lake Storage Gen1 szolgáltatáson | Microsoft dokumentumok'
+description: Ismerje meg, hogyan használhatja a Python SDK-t a Data Lake Storage Gen1 fájlrendszerrel való együttműködésre.
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 17b53c508f0c4c5ba8fa257fcdc692cdaa45d470
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76294218"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fájlrendszer-műveletek Azure Data Lake Storage Gen1 a Python használatával
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fájlrendszer-műveletek az Azure Data Lake Storage Gen1 python használatával
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -23,7 +23,7 @@ ms.locfileid: "76294218"
 >
 > 
 
-Ebből a cikkből megtudhatja, hogyan hajthat végre fájlrendszerbeli műveleteket a Python SDK használatával Azure Data Lake Storage Gen1on. A Data Lake Storage Gen1 a Python használatával végzett felügyeleti műveletek végrehajtásával kapcsolatos útmutatásért lásd: [Fiókkezelés a Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md).
+Ebben a cikkben megtudhatja, hogyan használhatja a Python SDK-t az Azure Data Lake Storage Gen1 fájlrendszer-műveletek végrehajtásához. A Data Lake Storage Gen1 Python használatával végzett fiókkezelési műveletekről a Data Lake Storage Gen1 python használatával végzett [fiókkezelési műveletekben](data-lake-store-get-started-python.md)talál útmutatást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,15 +31,15 @@ Ebből a cikkből megtudhatja, hogyan hajthat végre fájlrendszerbeli művelete
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure Data Lake Storage Gen1 fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
+* **Azure Data Lake Storage Gen1 fiók.** Kövesse az [Azure Data Lake Storage Gen1 használatának első lépéseit az Azure Portal használatával című útmutatóban.](data-lake-store-get-started-portal.md)
 
 ## <a name="install-the-modules"></a>A modulok telepítése
 
-A Data Lake Storage Gen1 Python használatával való használatához három modult kell telepítenie.
+A Data Lake Storage Gen1 Python használatával való munkához három modult kell telepítenie.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
-* A `azure-mgmt-datalake-store` modul, amely tartalmazza a Azure Data Lake Storage Gen1 Fiókkezelés műveleteit. A modullal kapcsolatos további információkért tekintse meg az [Azure-mgmt-datalake-Store modul referenciáját](/python/api/azure-mgmt-datalake-store/).
-* A `azure-datalake-store` modul, amely tartalmazza a Azure Data Lake Storage Gen1 filesystem műveleteit. További információ erről a modulról: [Azure-datalake-Store File-System modul Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* A `azure-mgmt-datalake-store` modul, amely tartalmazza az Azure Data Lake Storage Gen1 fiókkezelési műveleteket. A modulról további információt az [azure-mgmt-datalake-store modul hivatkozása tartalmaz.](/python/api/azure-mgmt-datalake-store/)
+* A `azure-datalake-store` modul, amely tartalmazza az Azure Data Lake Storage Gen1 fájlrendszer-műveleteket. Erről a modulról további információt az [azure-datalake-store fájlrendszer modulhivatkozása tartalmaz.](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -86,12 +86,12 @@ pip install azure-datalake-store
 
 Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk. Az elérhető lehetőségek:
 
-* Az alkalmazás végfelhasználói hitelesítéséhez lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 a Python használatával](data-lake-store-end-user-authenticate-python.md).
-* Az alkalmazás szolgáltatások közötti hitelesítéséhez lásd: [szolgáltatások közötti hitelesítés Data Lake Storage Gen1 a Python használatával](data-lake-store-service-to-service-authenticate-python.md).
+* Az alkalmazás végfelhasználói hitelesítése a [Data Lake Storage Gen1 használatával a Python használatával című végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-python.md)című témakörben található.
+* Az alkalmazás szolgáltatás-szolgáltatás hitelesítése a [Szolgáltatás-szolgáltatás hitelesítés a Data Lake Storage Gen1 python használatával című](data-lake-store-service-to-service-authenticate-python.md)témakörben található.
 
 ## <a name="create-filesystem-client"></a>Fájlrendszerügyfél létrehozása
 
-A következő kódrészlet először létrehozza a Data Lake Storage Gen1 fiók ügyfelét. Az ügyfél objektum használatával hozza létre a Data Lake Storage Gen1 fiókot. Végül pedig létrehoz egy fájlrendszerügyfél-objektumot.
+A következő kódrészlet először létrehozza a Data Lake Storage Gen1 fiókügyfelet. Az ügyfélobjektum segítségével hozzon létre egy Data Lake Storage Gen1 fiókot. Végül pedig létrehoz egy fájlrendszerügyfél-objektumot.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -122,10 +122,10 @@ A következő kódrészlet először létrehozza a Data Lake Storage Gen1 fiók 
     ## Delete a directory
     adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
-## <a name="next-steps"></a>Következő lépések
-* [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md).
+## <a name="next-steps"></a>További lépések
+* [Fiókkezelési műveletek a Data Lake Storage Gen1](data-lake-store-get-started-python.md)python használatával.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Azure Data Lake Storage Gen1 Python (fájlrendszer) referenciája](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
-* [Azure Data Lake Storage Gen1-kompatibilis nyílt forráskódú Big adatalkalmazások](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage Gen1 Python (fájlrendszer) – referencia](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [Az Azure Data Lake Storage Gen1-tal kompatibilis nyílt forráskódú Big Data-alkalmazások](data-lake-store-compatible-oss-other-applications.md)

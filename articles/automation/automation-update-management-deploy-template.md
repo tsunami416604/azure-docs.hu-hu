@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-sablonok használata a bevezetéshez Update Management | Microsoft Docs
-description: A Azure Automation Update Management megoldás bevezetéséhez használhat Azure Resource Manager sablont.
+title: Az Azure Resource Manager-sablonok használata a frissítéskezelés hez | Microsoft dokumentumok
+description: Az Azure Resource Manager-sablon használatával az Azure Automation Update Management megoldás.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
@@ -8,61 +8,61 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/27/2020
 ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77925799"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Update Management megoldás előkészítése Azure Resource Manager sablon használatával
+# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Beépített frissítéskezelési megoldás az Azure Resource Manager-sablon használatával
 
-[Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával engedélyezheti az Azure Automation Update Management megoldást az erőforráscsoporthoz. Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
+[Az Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával engedélyezheti az Azure Automation Update Management megoldást az erőforráscsoportban. Ez a cikk egy mintasablont tartalmaz, amely automatizálja a következőket:
 
-* Azure Monitor Log Analytics munkaterület létrehozása.
-* Azure Automation-fiók létrehozása.
-* Összekapcsolja az Automation-fiókot a Log Analytics munkaterülettel, ha még nincs csatolva.
-* A Azure Automation Update Management megoldás előkészítése
+* Egy Azure Monitor Log Analytics munkaterület létrehozása.
+* Egy Azure Automation-fiók létrehozása.
+* Az Automation-fiók a Log Analytics-munkaterülethez kapcsolódik, ha még nincs összekapcsolva.
+* Az Azure Automation Update Management megoldás ának fedélzeti
 
-A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép bevezetését.
+A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép bevezetési szolgáltatását.
 
-Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés egy támogatott régiójában van telepítve, akkor nincs összekapcsolva, és a munkaterületen még nincs telepítve a Update Management megoldás, ezzel a sablonnal sikeresen létrehozva a hivatkozás és üzembe helyezi a Update Management megoldást. 
+Ha már rendelkezik egy Log Analytics-munkaterületi és Automation-fiókkal az előfizetés egy támogatott régiójában, azok nincsenek összekapcsolva, és a munkaterület még nem rendelkezik az Update Management megoldás telepítve, ezzel a sablonnal sikeresen létrehoz a kapcsolatot, és telepíti az Update Management megoldást. 
 
 ## <a name="api-versions"></a>API-verziók
 
-A következő táblázat felsorolja az ebben a példában használt erőforrások API-verzióját.
+Az alábbi táblázat a példában használt erőforrások API-verzióját sorolja fel.
 
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| Munkaterület | munkaterületek | 2017-03-15 – előzetes verzió |
+| Munkaterület | munkaterületek | 2017-03-15-előzetes |
 | Automation-fiók | automation | 2015-10-31 | 
-| Megoldás | megoldások | 2015-11-01 – előzetes verzió |
+| Megoldás | megoldások | 2015-11-01-előzetes |
 
 ## <a name="before-using-the-template"></a>A sablon használata előtt
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A Azure PowerShell használatával a telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
+Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk az Azure PowerShell Az modult igényli. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. Az Azure PowerShell használatával a központi telepítés a [New-AzResourceGroupDeployment szolgáltatást](/powershell/module/az.resources/new-azresourcegroupdeployment)használja.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
+Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköveteli, hogy az Azure CLI 2.1.0-s vagy újabb verzióját futassza. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Az Azure CLI,ez a központi telepítés használja [az csoport központi telepítés létrehozása](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
-A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
+A JSON-sablon úgy van beállítva, hogy a következőket kérje:
 
 * A munkaterület neve
-* Az a régió, amelyben létre kívánja hozni a munkaterületet
+* Az a régió, amelyben a munkaterületet létre lehet hozni
 * Az Automation-fiók neve
-* Az a régió, amelyben létre kell hozni a fiókot
+* Az a régió, amelyben a fiókot létre szeretné hozni
 
-A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amely valószínűleg a környezetben megszokott konfigurációként lesz használva. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md).
+A JSON-sablon egy alapértelmezett értéket ad meg a többi paraméterhez, amelyek valószínűleg szabványos konfigurációként lennének használva a környezetben. A sablon tárolhatja egy Azure storage-fiók megosztott hozzáférést a szervezetben. A sablonok használatával kapcsolatos további tudnivalókért olvassa el az [Erőforrások telepítése erőforrás-kezelői sablonokkal és az Azure CLI-vel című témakört.](../azure-resource-manager/templates/deploy-cli.md)
 
 A sablonban a következő paraméterek a Log Analytics munkaterület alapértelmezett értékével vannak beállítva:
 
-* Termékváltozat - alapértelmezés szerint a 2018 áprilisi díjszabási modell megjelent új GB-onkénti tarifacsomag kiválasztása
-* adatmegőrzés – az alapértelmezett érték 30 nap
+* sku - alapértelmezés szerint a 2018 áprilisában kiadott új GB-onkénti díjszabási szint
+* adatmegőrzés - alapértelmezés szerint harminc nap
 
 >[!WARNING]
->Ha Log Analytics munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új, április 2018 díjszabási modellbe van lefoglalva, az egyetlen érvényes Log Analytics díjszabási csomag **PerGB2018**.
+>Ha egy Log Analytics-munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új 2018 áprilisi díjszabási modellt választotta, az egyetlen érvényes Log Analytics-díjszabási szint a **PerGB2018.**
 >
 
 >[!NOTE]
->A sablon használata előtt tekintse át a [További részleteket](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) a munkaterület konfigurációs beállításainak, például a hozzáférés-vezérlési mód, az árképzési szint, a megőrzés és a kapacitás foglalási szintjének teljes megértéséhez. Ha még nem Azure Monitor naplókat, és már nem telepített munkaterületet, tekintse át a [munkaterület kialakításával](../azure-monitor/platform/design-logs-deployment.md) kapcsolatos útmutatót a hozzáférés-vezérlés megismeréséhez, és ismerkedjen meg a szervezete számára ajánlott tervezési megvalósítási stratégiákkal.
+>A sablon használata előtt tekintse át a [további részleteket](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) a munkaterület konfigurációs beállításainak teljes megértéséhez, például a hozzáférés-vezérlési mód, a tarifacsomag, a megőrzési és a kapacitásfoglalási szint. Ha most ismerkedik az Azure Monitor naplóival, és még nem telepített munkaterületet, tekintse át a [munkaterület tervezési](../azure-monitor/platform/design-logs-deployment.md) útmutatóját a hozzáférés-vezérlésről, valamint a szervezet számára ajánlott tervezési megvalósítási stratégiák megértéséről.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
@@ -231,13 +231,13 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
     }
     ```
 
-2. Szerkessze a sablont az igényeknek.
+2. A sablont az igényeinek megfelelően szerkesztheti.
 
-3. Mentse ezt a fájlt deployUMSolutiontemplate. JSON néven egy helyi mappába.
+3. Mentse a fájlt deployUMSolutiontemplate.json fájlként egy helyi mappába.
 
-4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
+4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShell vagy az Azure CLI. Amikor a rendszer egy munkaterület- és Automation-fióknév megadását kéri, adjon meg egy globálisan egyedi nevet az összes Azure-előfizetésben.
 
-    **PowerShell**
+    **Powershell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json
@@ -249,16 +249,16 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
     ```
 
-    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:
+    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
 
-    ![Ha üzembe helyezés kész eredményének](media/automation-update-management-deploy-template/template-output.png)
+    ![Példa eredmény, ha a telepítés befejeződött](media/automation-update-management-deploy-template/template-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy telepítette a Update Management megoldást, engedélyezheti a virtuális gépek felügyeletét, ellenőrizheti a frissítések értékeléseit, és telepítheti a frissítéseket, hogy azok megfeleljenek.
+Most, hogy telepítette az Update Management megoldást, engedélyezheti a virtuális gépeket a felügyelethez, áttekintheti a frissítési értékeléseket, és telepítheti a frissítéseket, hogy azok megfeleljenek.
 
-- Azure Automation- [fiókjából](automation-onboard-solutions-from-automation-account.md) egy vagy több Azure-gép számára, és manuálisan a nem Azure-beli gépekhez.
+- Az [Azure Automation-fiók](automation-onboard-solutions-from-automation-account.md) egy vagy több Azure-gépek és manuálisan nem Azure-gépek.
 
-- Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetében érhető el.
+- Egyetlen Azure-virtuális gép az Azure Portalon a virtuális gép lapjáról. Ez a forgatókönyv [Linux és](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépekhez érhető el.
 
-- [Több Azure](manage-update-multi.md) -beli virtuális gép esetén válassza ki őket a Azure Portal **Virtual Machines** lapján. 
+- [Több Azure-beli virtuális gép](manage-update-multi.md) esetén az Azure Portal virtuális **gépek** lapján való kijelölésükhez. 

@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Átmenő hitelesítés – aktuális korlátozások |} A Microsoft Docs'
-description: Ez a cikk ismerteti a jelenlegi korlátozások az Azure Active Directory (Azure AD) átmenő hitelesítése
+title: 'Azure AD Connect: Átmenő hitelesítés – Jelenlegi korlátozások | Microsoft dokumentumok'
+description: Ez a cikk az Azure Active Directory (Azure AD) átadó hitelesítésének jelenlegi korlátait ismerteti
 services: active-directory
-keywords: Az Azure AD Connect az átmenő hitelesítés, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
+keywords: Azure AD Connect áthaladási hitelesítés, active directory telepítése, szükséges összetevők az Azure AD, Egyszeri bejelentkezés, Egyszeri bejelentkezés hez
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,49 +17,49 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347741"
 ---
-# <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítés: Aktuális korlátozások
+# <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory átadó hitelesítés: Jelenlegi korlátozások
 
 >[!IMPORTANT]
->Az Azure Active Directory (Azure AD) átmenő hitelesítése egy ingyenes szolgáltatás, és nem kell minden fizetős kiadásban az Azure AD használatát. Az átmenő hitelesítés csak érhető el a világszerte példány az Azure ad-ben, és nem a a [Microsoft Azure Germany cloud](https://www.microsoft.de/cloud-deutschland) vagy a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/).
+>Az Azure Active Directory (Azure AD) átmenő hitelesítés egy ingyenes funkció, és nem kell semmilyen fizetős azure AD-kiadások használatához. Az átmenő hitelesítés csak az Azure AD világszintű példányában érhető el, a [Microsoft Azure Germany felhőben](https://www.microsoft.de/cloud-deutschland) vagy a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)nem.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
 A következő forgatókönyvek támogatottak:
 
-- Felhasználói bejelentkezések böngészőalapú webalkalmazásokhoz.
-- Felhasználói bejelentkezések az Outlook-felhasználók számára, például az Exchange ActiveSync, EAS, SMTP, POP és IMAP örökölt protokollok használatával.
-- Felhasználói bejelentkezések a régebbi Office-ügyfélalkalmazások és támogató Office-alkalmazások [modern hitelesítést](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview): Office 2013 és 2016-verziók.
-- Felhasználói bejelentkezések örökölt protokoll alkalmazások, például a PowerShell 1.0-s verzióját.
-- Az Azure AD csatlakoztatja a Windows 10 rendszerű eszközökhöz.
-- A multi-factor Authentication alkalmazásjelszókat.
+- Felhasználói bejelentkezések webböngésző-alapú alkalmazásokba.
+- Az Outlook-ügyfelekbe olyan örökölt protokollok használatával jelentkezik be az Outlook-ügyfelekre, mint az Exchange ActiveSync, az EAS, az SMTP, a POP és az IMAP.
+- Felhasználói bejelentkezések a [modern hitelesítést](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)támogató régebbi Office-ügyfélalkalmazásokba és Office-alkalmazásokba: Office 2013-as és 2016-os verziók.
+- Felhasználói bejelentkezések örökölt protokollalkalmazásokba, például a PowerShell 1.0-s verziójába és másokba.
+- Az Azure AD csatlakozik a Windows 10-es eszközökhöz.
+- Alkalmazásjelszavak a többtényezős hitelesítéshez.
 
-## <a name="unsupported-scenarios"></a>Nem támogatott helyzetek
+## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
-A következő forgatókönyvek _nem_ támogatja:
+A következő esetek _nem_ támogatottak:
 
-- A felhasználók észlelése [kiszivárgott hitelesítő adatok](../reports-monitoring/concept-risk-events.md#leaked-credentials).
-- Az Azure AD Domain Services Jelszókivonat-szinkronizálást engedélyezni kell a bérlő van szüksége. Ezért az átmenő hitelesítést használó bérlők _csak_ Azure AD tartományi szolgáltatásokat igénylő forgatókönyvek nem működnek.
-- Az átmenő hitelesítés nincs integrálva az [az Azure AD Connect Health](whatis-hybrid-identity-health.md).
+- A [kiszivárgott hitelesítő adatokkal](../reports-monitoring/concept-risk-events.md#leaked-credentials)rendelkező felhasználók észlelése.
+- Az Azure AD tartományi szolgáltatások jelszókivonat-szinkronizálást kell engedélyezni a bérlőn. Ezért az átmenő hitelesítést használó bérlők _csak_ az Azure AD tartományi szolgáltatásokat igénylő forgatókönyvek esetén nem működnek.
+- Az átmenő hitelesítés nincs integrálva az [Azure AD Connect Health szolgáltatásba.](whatis-hybrid-identity-health.md)
 
 > [!IMPORTANT]
-> Nem támogatott forgatókönyvek esetében _csak_ (kivéve az Azure AD Connect Health-integráció), engedélyezze a Jelszókivonat-szinkronizálást a [választható funkciók](how-to-connect-install-custom.md#optional-features) lévő Azure AD Connect varázsló.
+> Csak a nem támogatott forgatókönyvek kerülő megoldásaként _(az_ Azure AD Connect health integráció kivételével) engedélyezze a jelszókivonat-szinkronizálást az Azure AD Connect varázsló [Választható szolgáltatások](how-to-connect-install-custom.md#optional-features) lapján.
 > 
 > [!NOTE]
-> Jelszókivonat-szinkronizálás engedélyezése teszi meg a feladatátvételi hitelesítési Ha megszakad a helyi infrastruktúrát. A feladatátvétel az átmenő hitelesítés a Jelszókivonat-szinkronizálás nem történik meg automatikusan. Váltson a bejelentkezési módszer, az Azure AD Connect segítségével manuálisan kell. Az Azure AD Connectet futtató kiszolgáló leáll, ha szüksége lesz a segítséget a Microsoft Support átmenő hitelesítés kikapcsolása.
+> Jelszókivonat-szinkronizálás engedélyezése lehetővé teszi a feladatátvételi hitelesítést, ha a helyszíni infrastruktúra megszakad. Ez a feladatátvétel az átmenő hitelesítésés a jelszókivonat-szinkronizálás között nem automatikus. A bejelentkezési módszert manuálisan kell átváltania az Azure AD Connect használatával. Ha az Azure AD Connect szolgáltatást futtató kiszolgáló leáll, a Microsoft támogatási szolgálatától kell segítséget használnia az átmenő hitelesítés kikapcsolásához.
 
 ## <a name="next-steps"></a>További lépések
-- [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md): Első lépésekhez az Azure AD átmenő hitelesítés.
-- [Az AD FS át az átmenő hitelesítés](https://aka.ms/ADFSTOPTADPDownload) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
-- [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): Megtudhatja, hogyan konfigurálhatja az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
-- [Részletes technikai](how-to-connect-pta-how-it-works.md): Az átmenő hitelesítési szolgáltatás működésének megismerése.
-- [Gyakori kérdések](how-to-connect-pta-faq.md): Az átmenő hitelesítés szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok.
-- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): Ismerje meg az átmenő hitelesítés szolgáltatás szolgáltatással kapcsolatos gyakori problémák megoldásához.
-- [A biztonság részletes bemutatása](how-to-connect-pta-security-deep-dive.md): Az átmenő hitelesítés szolgáltatás technikai információk beolvasása.
-- [Az Azure AD közvetlen egyszeri bejelentkezés](how-to-connect-sso.md): További információ a kiegészítő funkció.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Az Azure Active Directory-fórumon használatával új funkcióra vonatkozó javaslata fájlt.
+- [Gyors indítás:](how-to-connect-pta-quick-start.md)Az Azure AD áthaladási hitelesítése.
+- [Az AD FS-ről átmenő hitelesítésre való áttelepítés](https://aka.ms/ADFSTOPTADPDownload) részletes útmutató az AD FS-ről (vagy más összevonási technológiákról) az átmenő hitelesítésre való áttelepítéshez.
+- [Intelligens zárolás:](../authentication/howto-password-smart-lockout.md)Ismerje meg, hogyan konfigurálhatja a bérlő intelligens zárolási képességét a felhasználói fiókok védelme érdekében.
+- [Technikai mélymerülés:](how-to-connect-pta-how-it-works.md)Ismerje meg, hogyan működik az átmenő hitelesítés funkció.
+- [Gyakori kérdések](how-to-connect-pta-faq.md): Válaszok az átmenő hitelesítés funkcióval kapcsolatos gyakori kérdésekre.
+- [Hibaelhárítás:](tshoot-connect-pass-through-authentication.md)Ismerje meg, hogyan oldhatja meg az átmenő hitelesítés szolgáltatással kapcsolatos gyakori problémákat.
+- [Biztonsági mélymerülés:](how-to-connect-pta-security-deep-dive.md)Részletes technikai információk beszerezhető az átmenő hitelesítés funkcióról.
+- [Azure AD seamless egyszeri bejelentkezés:](how-to-connect-sso.md)További információ erről a kiegészítő funkcióról.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Az Azure Active Directory fórum használatával új szolgáltatáskérelmek et nyújthat be.

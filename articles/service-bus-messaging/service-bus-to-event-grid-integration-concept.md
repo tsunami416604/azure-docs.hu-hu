@@ -1,6 +1,6 @@
 ---
 title: Az Azure Service Bus – Event Grid integráció áttekintése | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan integrálható az Azure Service Bus üzenetkezelés a Azure Event Gridsal.
+description: Ez a cikk ismerteti, hogy az Azure Service Bus üzenetküldés hogyan integrálódik az Azure Event Griddel.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773478"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
@@ -38,7 +38,7 @@ A funkció engedélyezéséhez a következőkre van szüksége:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Győződjön meg arról, hogy rendelkezik közreműködői hozzáféréssel
-Lépjen a Service Bus névtérhez, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget, és válassza a **szerepkör-hozzárendelések** lapot. Ellenőrizze, hogy rendelkezik-e a közreműködői hozzáféréssel a névtérhez. 
+Nyissa meg a Service Bus névterét, majd válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, és válassza **a Szerepkör-hozzárendelések** lapot. 
 
 ### <a name="events-and-event-schemas"></a>Események és eseménysémák
 
@@ -117,9 +117,9 @@ Ha a névtérben például csak egy üzenetsor vagy egy előfizetés eseményeit
 
 Három különböző módon hozhatók létre Event Grid-előfizetések a Service Bus-névterekhez.
 
-* A Azure Portal
+* Az Azure Portalon
 * Az [Azure CLI](#azure-cli-instructions) használatával
-* A [PowerShell](#powershell-instructions) használatával
+* A [PowerShell](#powershell-instructions) ben
 
 ## <a name="azure-portal-instructions"></a>Azure-portálutasítások
 
@@ -138,7 +138,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 ## <a name="azure-cli-instructions"></a>Azure CLI utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X**lehetőséget, majd nyisson meg egy rendszergazdai engedélyekkel rendelkező új PowerShell-konzolt. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 Hajtsa végre a következő kódot:
 
@@ -152,7 +152,7 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Ha BASH-et használ 
+Ha bash-t használ 
 
 ## <a name="powershell-instructions"></a>PowerShell-utasítások
 
@@ -172,9 +172,9 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Itt megtekintheti a többi beállítási lehetőséget, vagy tesztelheti az események folyamatát.
+Innen felfedezheti a többi beállítási lehetőséget, vagy tesztelheti az események áramlását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
 * További tudnivalók az [Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.

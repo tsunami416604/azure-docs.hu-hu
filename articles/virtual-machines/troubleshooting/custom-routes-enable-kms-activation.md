@@ -1,6 +1,6 @@
 ---
-title: A KMS-Aktiválás kényszerített bújtatással való engedélyezése az egyéni Azure-útvonalak használatával | Microsoft Docs
-description: Bemutatja, hogyan használhatók az Azure egyéni útvonalak a KMS-Aktiválás engedélyezéséhez a kényszerített bújtatás használatakor az Azure-ban.
+title: Az Azure egyéni útvonalainak használata a KMS aktiválásának engedélyezéséhez kényszerített bújtatással | Microsoft dokumentumok
+description: Bemutatja, hogyan használhatja az Azure egyéni útvonalakat a KMS-aktiválás engedélyezéséhez kényszerített bújtatás használata esetén az Azure-ban.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,33 +14,33 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920161"
 ---
-# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
+# <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatásesetén
 
-Ez a cikk azt ismerteti, hogyan oldható meg a KMS-aktiválási probléma, amely akkor fordulhat elő, ha engedélyezi a kényszerített bújtatást a helyek közötti VPN-kapcsolaton vagy ExpressRoute forgatókönyvekben.
+Ez a cikk azt ismerteti, hogy miként oldható meg a KMS-aktiválási probléma, amely a kényszerített bújtatás engedélyezésekor fordulhat elő a helyek közötti VPN-kapcsolatban vagy az ExpressRoute-forgatókönyvekben.
 
 ## <a name="symptom"></a>Hibajelenség
 
-A [kényszerített bújtatást](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az Azure-beli virtuális hálózati alhálózatokon engedélyezheti, hogy az összes internetes forgalmat visszairányítsa a helyszíni hálózatra. Ebben az esetben a Windowst futtató Azure-beli virtuális gépek (VM-EK) nem aktiválják a Windowst.
+Engedélyezi a [kényszerített bújtatás az](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) Azure virtuális hálózati alhálózatokon, hogy az összes internethez kötött forgalmat visszairányítsa a helyszíni hálózatra. Ebben a forgatókönyvben a Windows t használó Azure virtuális gépek (VM-ek) nem aktiválják a Windowst.
 
 ## <a name="cause"></a>Ok
 
-Az Azure Windows rendszerű virtuális gépeknek csatlakozniuk kell az Azure KMS-kiszolgálóhoz a Windows aktiválásához. Az aktiváláshoz az aktiválási kérelemnek egy Azure nyilvános IP-címről kell származnia. A kényszerített bújtatási forgatókönyvben az aktiválás sikertelen, mert az aktiválási kérelem a helyszíni hálózatról származik, és nem egy Azure nyilvános IP-címről.
+Az Azure Windows virtuális gépek kell csatlakoznia az Azure KMS-kiszolgáló a Windows aktiválása. Az aktiválás megköveteli, hogy az aktiválási kérelem egy Azure nyilvános IP-címről származik. A kényszerített bújtatási forgatókönyvben az aktiválás sikertelen, mert az aktiválási kérelem a helyszíni hálózatról származik, nem pedig egy Azure nyilvános IP-címről.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához használja az Azure egyéni útvonalát az aktiválási forgalom Azure KMS-kiszolgálóra történő átirányításához.
+A probléma megoldásához használja az Azure egyéni útvonal aktiválási forgalmat az Azure KMS-kiszolgálóra.
 
-Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246. Its DNS name is kms.core.windows.net. Ha más Azure-platformokat, például az Azure Germany-t használja, akkor a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért tekintse meg a következő táblázatot:
+Az Azure Global felhőjének KMS-kiszolgálójának IP-címe: 23.102.135.246. DNS-neve kms.core.windows.net. Ha más Azure-platformokat használ, például az Azure Germany-t, a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információt az alábbi táblázatban talál:
 
 |Platform| KMS DNS|KMS IP|
 |------|-------|-------|
-|Azure globális|kms.core.windows.net|23.102.135.246|
+|Azure Globális|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
 |Amerikai Egyesült Államok kormánya által használt Azure|kms.core.usgovcloudapi.net|23.97.0.13|
 |Azure China 21Vianet|kms.core.chinacloudapi.cn|42.159.7.249|
@@ -48,14 +48,14 @@ Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246.
 
 Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
-### <a name="for-resource-manager-vms"></a>Resource Manager-alapú virtuális gépek esetén
+### <a name="for-resource-manager-vms"></a>Erőforrás-kezelő i virtuális gépei esetén
 
  
 
 > [!NOTE] 
-> Az aktiválás nyilvános IP-címeket használ, és egy szabványos SKU Load Balancer konfiguráció fogja érinteni. A követelmények megismeréséhez körültekintően tekintse át a [kimenő kapcsolatokat az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+> Az aktiválás nyilvános IP-címeket használ, és a szabványos termékváltozat terheléselosztó konfigurációja befolyásolja. A követelmények megismeréséhez tekintse át a kimenő kapcsolatokat az [Azure-ban.](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
 
-1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Nyissa meg az Azure PowerShellt, majd [jelentkezzen be Azure-előfizetésébe.](https://docs.microsoft.com/powershell/azure/authenticate-azureps)
 2. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -77,17 +77,17 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
+3. Nyissa meg az aktiválási problémákkal kapcsolatos virtuális gépét. Használja [PsPing,](https://docs.microsoft.com/sysinternals/downloads/psping) hogy teszteljék, ha eléri a KMS szerver:
 
         psping kms.core.windows.net:1688
 
-4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
+4. Próbálja meg aktiválni a Windows rendszert, és nézze meg, hogy megoldódott-e a probléma.
 
-### <a name="for-classic-vms"></a>Klasszikus virtuális gépek esetén
+### <a name="for-classic-vms"></a>Klasszikus virtuális gépekhez
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Nyissa meg az Azure PowerShellt, majd [jelentkezzen be Azure-előfizetésébe.](https://docs.microsoft.com/powershell/azure/authenticate-azureps)
 2. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -105,13 +105,13 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
+3. Nyissa meg az aktiválási problémákkal kapcsolatos virtuális gépét. Használja [PsPing,](https://docs.microsoft.com/sysinternals/downloads/psping) hogy teszteljék, ha eléri a KMS szerver:
 
         psping kms.core.windows.net:1688
 
-4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
+4. Próbálja meg aktiválni a Windows rendszert, és nézze meg, hogy megoldódott-e a probléma.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [KMS-ügyfél telepítési kulcsai](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )

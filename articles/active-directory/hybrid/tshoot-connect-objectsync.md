@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Objektum-szinkronizálás hibaelhárítása |} A Microsoft Docs'
-description: Ez a témakör ismerteti a problémák elhárítása a hibaelhárítási feladat használatával felügyeltobjektum-szinkronizációs.
+title: 'Azure AD Connect: Az objektumok szinkronizálásának hibaelhárítása | Microsoft dokumentumok'
+description: Ez a témakör az objektum-szinkronizálással kapcsolatos problémák hibaelhárítási lépéseit ismerteti a hibaelhárítási feladattal.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,88 +16,88 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64919120"
 ---
-# <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálási objektum-szinkronizálás hibaelhárítása
-Ez a cikk lépéseit kapcsolatos hibák elhárításának felügyeltobjektum-szinkronizációs a hibaelhárítási feladat használatával. Az az Azure Active Directory (Azure AD) Connect hibaelhárítási kipróbálásához, tekintse meg a [Ez a rövid videó](https://aka.ms/AADCTSVideo).
+# <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektumszinkronizálás hibaelhárítása Azure AD Connect-szinkronizálással
+Ez a cikk az objektum-szinkronizálással kapcsolatos problémák hibaelhárítási lépéseit ismerteti a hibaelhárítási feladat használatával. Ha meg szeretné tudni, hogyan működik a hibaelhárítás az Azure Active Directory (Azure AD) Connect szolgáltatásban, tekintse meg [ezt a rövid videót.](https://aka.ms/AADCTSVideo)
 
-## <a name="troubleshooting-task"></a>A feladat hibaelhárítása
-Az Azure ad központi telepítési csatlakozzon 1.1.749.0 verzióját, vagy újabb verziója szükséges, használja a hibaelhárítási feladat a varázsló objektumok szinkronizálási problémáinak hibaelhárítása. Régebbi verziók esetében adjon hibaelhárítása leírtak szerint manuálisan [Itt](tshoot-connect-object-not-syncing.md).
+## <a name="troubleshooting-task"></a>Feladatelhárítási feladat
+Az 1.1.749.0-s vagy újabb verziójú Azure AD Connect üzemelő példánya esetében használja a varázsló hibaelhárítási feladatát az objektumszinkronizálási problémák elhárításához. A korábbi verziók esetében kérjük, hogy manuálisan hárítsa el az [itt](tshoot-connect-object-not-syncing.md)leírtak szerint a hibákat.
 
-### <a name="run-the-troubleshooting-task-in-the-wizard"></a>A hibaelhárítási feladat futtatása a varázsló
-A hibaelhárítási feladat futtatása a varázsló, hajtsa végre az alábbi lépéseket:
+### <a name="run-the-troubleshooting-task-in-the-wizard"></a>A hibaelhárítási feladat futtatása a varázslóban
+A hibaelhárítási feladat varázslóban való futtatásához hajtsa végre az alábbi lépéseket:
 
-1.  Nyisson meg egy új Windows PowerShell-munkamenetet a az Azure AD Connect-kiszolgáló a Futtatás rendszergazdaként lehetőséggel.
-2.  Futtatás `Set-ExecutionPolicy RemoteSigned` vagy `Set-ExecutionPolicy Unrestricted`.
-3.  Az Azure AD Connect varázsló elindításához.
-4.  Nyissa meg a további feladatok lapot, válassza ki a hibaelhárítás, és kattintson a Tovább gombra.
-5.  A hibaelhárítás lapon kattintson az indítás, indítsa el a hibaelhárítási menü a PowerShellben.
-6.  A fő menüjéből válassza az objektum-szinkronizálás hibáinak elhárítása.
-![Objektum-szinkronizálás hibaelhárítása](media/tshoot-connect-objectsync/objsynch11.png)
+1.  Nyisson meg egy új Windows PowerShell-munkamenetet az Azure AD Connect kiszolgálón a Futtatás rendszergazdaként beállítással.
+2.  Futtassa `Set-ExecutionPolicy RemoteSigned` a vagy `Set-ExecutionPolicy Unrestricted`a ot.
+3.  Indítsa el az Azure AD Connect varázslót.
+4.  Nyissa meg a További feladatok lapot, válassza a Hibaelhárítás lehetőséget, és kattintson a Tovább gombra.
+5.  A Hibaelhárítás lapon kattintson az Indítás gombra a PowerShell hibaelhárítási menüjének elindításához.
+6.  A főmenüben válassza az Objektum-szinkronizálás hibaelhárítása lehetőséget.
+![Objektumszinkronizálás – problémamegoldás](media/tshoot-connect-objectsync/objsynch11.png)
 
-### <a name="troubleshooting-input-parameters"></a>Hibaelhárítás a bemeneti paraméterek
-A következő bemeneti paraméterek a hibaelhárítási feladat által van szükség:
-1.  **Az objektum megkülönböztető nevét** – Ez a hibaelhárítási igénylő az objektum megkülönböztető nevét
-2.  **AD-összekötő neve** – Ez a neve az AD-erdőhöz, amelyben a fenti objektum található.
-3.  Az Azure AD bérlő globális rendszergazdai hitelesítő adatokkal ![globális rendszergazdai hitelesítő adatokkal](media/tshoot-connect-objectsync/objsynch1.png)
+### <a name="troubleshooting-input-parameters"></a>Bemeneti paraméterek hibáinak elhárítása
+A hibaelhárítási feladatnak a következő bemeneti paraméterekre van szüksége:
+1.  **Objektum megkülönböztető neve** – Ez annak az objektumnak a megkülönböztető neve, amelyet hibaelhárításra kell
+2.  **AD összekötő neve** – Ez annak az AD erdőnek a neve, ahol a fenti objektum található.
+3.  Az Azure AD globális ![rendszergazdai hitelesítő adatai globális rendszergazdai hitelesítő adatok](media/tshoot-connect-objectsync/objsynch1.png)
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>A hibaelhárítási feladat eredményeivel
-A hibaelhárítási feladat az alábbi ellenőrzéseket hajtja végre:
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>A hibaelhárítási feladat eredményeinek megismerése
+A hibaelhárítási feladat a következő ellenőrzéseket hajtja végre:
 
-1.  Egyszerű felhasználónév eltérés észleli, ha az Azure Active Directory szinkronizálva van az objektum
-2.  Ellenőrizze az objektum tartomány szűrés miatt van szűrve
-3.  Ellenőrizze az objektum van szűrve miatt szervezeti egységek szűrése
-4.  Ellenőrizze, hogy ha felügyeltobjektum-szinkronizációs hivatkozott postafiókkal miatt le van tiltva
-5. Ellenőrizze, hogy az objektum dinamikus terjesztési csoport, amely nem lehet szinkronizálni
+1.  Az upn-eltérés észlelése, ha az objektum szinkronizálva van az Azure Active Directoryval
+2.  Annak ellenőrzése, hogy az objektum szűrése tartományszűrés miatt történik-e
+3.  Annak ellenőrzése, hogy az objektum szűrve van-e a szervezeti egység szűrése miatt
+4.  Annak ellenőrzése, hogy csatolt postaláda miatt blokkolva van-e az objektumszinkronizálás
+5. Annak ellenőrzése, hogy az objektum dinamikus terjesztési csoport-e, amelyet nem kellene szinkronizálni
 
-Ez a szakasz a többi adott a tevékenység által visszaadott eredmények ismerteti. Minden esetben a feladat elemzi a probléma megoldása érdekében ajánlott műveletek követ.
+A szakasz többi része a feladat által visszaadott konkrét eredményeket ismerteti. A feladat minden esetben elemzést ad, amelyet a probléma megoldásához javasolt műveletek követnek.
 
-## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>UPN eltérés észleli, ha az Azure Active Directory szinkronizálva van a objektum
-### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>Az Azure AD-bérlő nem ellenőrzött UPN-utótagja
-Ha a UserPrincipalName (UPN) / az Azure AD-bérlőben nem ellenőrzi a másodlagos bejelentkezési azonosító utótagot, majd az Azure Active Directory UPN-utótagot cseréli az alapértelmezett tartomány neve "onmicrosoft.com".
+## <a name="detect-upn-mismatch-if-object-is-synced-to-azure-active-directory"></a>Az upn-eltérés észlelése, ha az objektum szinkronizálva van az Azure Active Directoryval
+### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>Az UPN-utótag nem ellenőrzött az Azure AD-bérlővel
+Ha a UserPrincipalName (UPN)/Alternate Login Iutófix nincs ellenőrizve az Azure AD-bérlővel, akkor az Azure Active Directory lecseréli az UPN-utótagokat az alapértelmezett "onmicrosoft.com" tartománynévre.
 
-![Az Azure AD UPN váltja fel.](media/tshoot-connect-objectsync/objsynch2.png)
+![Az Azure AD felváltja az UPN-t](media/tshoot-connect-objectsync/objsynch2.png)
 
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>Egyszerű Felhasználónévi utótagot összevont tartományok egy másik, összevont tartomány módosítása
-Az Azure Active Directory nem teszi lehetővé a szinkronizálás a UserPrincipalName (UPN) / másik bejelentkezési azonosító utótag módosítása egy összevont tartományból egy másikba összevont tartományban. Ez vonatkozik, amelyek ellenőrzése az Azure AD-bérlőben, és amelyek a hitelesítési típus szerint az összevont tartományokban.
+### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>UPN-utótag módosítása egyik összevont tartományról egy másik összevont tartományra
+Az Azure Active Directory nem teszi lehetővé a UserPrincipalName (UPN)/Alternate Login ID utótag szinkronizálását egyik összevont tartományról egy másik összevont tartományra. Ez az Azure AD-bérlővel ellenőrzött és a hitelesítési típust összevontként rendelkező tartományokra vonatkozik.
 
-![Nincs UPN szinkronizálási egy összevont tartományt a másikba](media/tshoot-connect-objectsync/objsynch3.png) 
+![Nincs upn-szinkronizálás egyik összevont tartományból a másikba](media/tshoot-connect-objectsync/objsynch3.png) 
 
-### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Az Azure AD bérlő a DirSync szolgáltatás "SynchronizeUpnForManagedUsers" le van tiltva
-Ha az Azure AD-bérlő a DirSync szolgáltatás "SynchronizeUpnForManagedUsers" le van tiltva, az Azure Active Directory nem engedélyezi a szinkronizálási frissítéseket UserPrincipalName/másodlagos bejelentkezési azonosító felügyelt hitelesítéssel licenccel rendelkező felhasználói fiókok esetében.
+### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Az Azure AD-bérlődirSync szolgáltatása "SyncUpnForManagedUsers" le van tiltva
+Ha az Azure AD-bérlődirSync szolgáltatás "SyncUpnForManagedUsers" le van tiltva, az Azure Active Directory nem engedélyezi a szinkronizálási frissítéseket UserPrincipalName/alternatív bejelentkezési azonosító felügyelt hitelesítéssel rendelkező licenccel rendelkező felhasználói fiókok.
 
 ![SynchronizeUpnForManagedUsers](media/tshoot-connect-objectsync/objsynch4.png)
 
-## <a name="object-is-filtered-due-to-domain-filtering"></a>Objektum tartomány szűrés miatt van szűrve.
-### <a name="domain-is-not-configured-to-sync"></a>Nincs konfigurálva a tartományhoz való szinkronizálás
-Objektum nem miatt a tartomány nincs konfigurálva. Az alábbi példában az objektum szinkronban hatókör vannak leszűrve a tartományban, amelyhez tartozik, mint a szinkronizálás.
+## <a name="object-is-filtered-due-to-domain-filtering"></a>Az objektum szűrése tartományszűrés miatt történik
+### <a name="domain-is-not-configured-to-sync"></a>A tartomány nincs szinkronban
+Az objektum hatóköre nem tartozik a tartományható tartományhatóhatóhoz, mivel nincs konfigurálva. Az alábbi példában az objektum nincs szinkronhatókörben, mivel a tartomány, amelyhez tartozik, szűrést végez a szinkronizálásból.
 
-![Nincs konfigurálva a tartományhoz való szinkronizálás](media/tshoot-connect-objectsync/objsynch5.png)
+![A tartomány nincs szinkronban](media/tshoot-connect-objectsync/objsynch5.png)
 
-### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>Tartomány úgy van konfigurálva, hogy szinkronizálhatók, de hiányzik a futtatási profilok és futtató lépések
-Objektum hatókörén kívül hiányzik a tartomány futtatja a profilok és futtató lépéseket. Az alábbi példában objektum szinkronban hatókör, a tartományban, amelyhez tartozik, futtatási lépéseket hiányzik a futtatási profil teljes importálásra.
-![Hiányzó futtatási profilok](media/tshoot-connect-objectsync/objsynch6.png)
+### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>A tartomány szinkronizálásra van konfigurálva, de hiányoznak a futtatási profilok/futtatási lépések
+Az objektum hatóköre kívül esik, mivel a tartományból hiányoznak a futtatási profilok/futtatási lépések. Az alábbi példában az objektum nincs szinkronhatókörben, mivel a tartomány, amelyhez tartozik, hiányzik a Teljes importálás futtatási profil futtatási lépéseiből.
+![hiányzó futtatási profilok](media/tshoot-connect-objectsync/objsynch6.png)
 
-## <a name="object-is-filtered-due-to-ou-filtering"></a>Objektum szűrt miatt szervezeti egységek szűrése
-Az objektum nincs szinkronban hatókör OU-szűrés konfiguráció miatt. Az alábbi példában az objektum tartozik OU NoSync, DC = = bvtadwbackdc, DC = com.  Adatszinkronizálás hatóköre nem szerepel az ebbe a szervezeti Egységbe.</br>
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Az objektum szűrése szervezeti egység szűrése miatt történik
+Az objektum a szervezetiegység-szűrési konfiguráció miatt nem jelenik meg a szinkronizáláshatókörén. Az alábbi példában az objektum az OU=NoSync,DC=bvtadwbackdc,DC=com objektumhoz tartozik.  Ez a szervezeti egység nem szerepel a szinkronizálási hatókörben.</br>
 
-![SZERVEZETI EGYSÉG](./media/tshoot-connect-objectsync/objsynch7.png)
+![OU](./media/tshoot-connect-objectsync/objsynch7.png)
 
-## <a name="linked-mailbox-issue"></a>A csatolt postaláda-probléma
-Hivatkozott postafiókkal kellene lennie a társított megbízható fiók egy másik erdőben található külső fő fiókkal. Ha nincs ilyen külső fő fiók, akkor az Azure AD Connect nem szinkronizálja a felhasználói fiók megfelel a hivatkozott postafiókkal az Exchange-erdő, az Azure AD-bérlőhöz.</br>
-![Hivatkozott postafiókkal](./media/tshoot-connect-objectsync/objsynch12.png)
+## <a name="linked-mailbox-issue"></a>Csatolt postaláda-probléma
+A csatolt postaládát egy másik megbízhatófiók-erdőben található külső főfiókhoz kell társítani. Ha nincs ilyen külső főfiók, majd az Azure AD Connect nem szinkronizálja a felhasználói fiók megfelel az Exchange-erdőben az Azure AD bérlőhöz csatolt postaládának.</br>
+![Csatolt postaláda](./media/tshoot-connect-objectsync/objsynch12.png)
 
-## <a name="dynamic-distribution-group-issue"></a>Dinamikus terjesztési csoport probléma
-Helyszíni különböző eltérései miatt az Active Directory és az Azure Active Directory, az Azure AD Connect nem szinkronizálja a dinamikus terjesztésipont-csoportok az Azure AD-bérlőhöz.
+## <a name="dynamic-distribution-group-issue"></a>Dinamikus terjesztési csoport kiadása
+A helyszíni Active Directory és az Azure Active Directory közötti különböző különbségek miatt az Azure AD Connect nem szinkronizálja a dinamikus terjesztési csoportokat az Azure AD-bérlővel.
 
 ![Dinamikus terjesztési csoport](./media/tshoot-connect-objectsync/objsynch13.png)
 
 ## <a name="html-report"></a>HTML-jelentés
-Az objektum elemzése, mellett a hibaelhárítási feladat is egy HTML-jelentést, amely mindent az objektumra vonatkozó ismert állít elő. Ez a jelentés HTML megoszthatók a támogatási csapat számára a do további hibaelhárítási, ha szükséges.
+Az objektum elemzése mellett a hibaelhárítási feladat egy HTML-jelentést is létrehoz, amely mindent tartalmaz, ami az objektumról ismert. Ez a HTML-jelentés megosztható a támogatási csapattal, hogy szükség esetén további hibaelhárítást végezhessenek.
 
 ![HTML-jelentés](media/tshoot-connect-objectsync/objsynch8.png)
 

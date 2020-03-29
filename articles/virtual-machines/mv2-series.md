@@ -1,6 +1,6 @@
 ---
-title: Mv2 sorozat – Azure Virtual Machines
-description: A Mv2 sorozatú virtuális gépek specifikációi.
+title: Mv2 sorozat - Azure virtuális gépek
+description: Az Mv2 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -8,38 +8,38 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163896"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
-A Mv2 sorozat nagy átviteli sebességű, kis késleltetésű platformot használ egy Hyper-threaded Intel® Xeon® Platinum 8180M 2.5 GHz-es (Skylake) processzoron, amely a 2,5 GHz-es és a max. 3,8 GHz-es maximális Turbo-gyakorisággal rendelkezik. A Mv2 sorozatú virtuálisgép-méretek standard és prémium szintű állandó lemezeket is használhatnak. A Mv2 sorozat példányai a memóriára optimalizált virtuálisgép-méretek, amelyek páratlan számítási teljesítményt biztosítanak a nagy memóriában lévő adatbázisok és munkaterhelések támogatásához, magas memória-CPU aránnyal, amely ideális a kapcsolódó adatbázis-kiszolgálók, a nagyméretű gyorsítótárak és a memóriában tárolt adatok számára. Analytics.
+Az Mv2 sorozat nagy átviteli sebességű, alacsony késleltetésű platformja egy hiperszálas Intel® Xeon® Platinum 8180M 2.5GHz (Skylake) processzoron fut, amelynek minden magalapfrekvenciája 2,5 GHz és a maximális turbó frekvenciája 3,8 GHz. Az Mv2 sorozatú virtuálisgépek összes mérete szabványos és prémium szintű állandó lemezeket is használhat. Az Mv2 sorozatú példányok memóriaoptimalizált virtuálisgép-méretek, amelyek páratlan számítási teljesítményt nyújtanak a nagy memóriabeli adatbázisok és munkaterhelések támogatásához, magas memória-és CPU-aránymellett, amely ideális a relációs adatbázis-kiszolgálókhoz, a nagy gyorsítótárakhoz és a memórián belüli Analytics.
 
-A Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading technológiája
+Mv2-sorozat VM funkció Intel® Hyper-Threading technológia
 
-Premium Storage: támogatott
+Prémium szintű tárhely: Támogatott
 
-Premium Storage gyorsítótárazás: támogatott
+Prémium szintű tárolási gyorsítótárazás: Támogatott
 
-Élő áttelepítés: nem támogatott
+Élő áttelepítés: Nem támogatott
 
-Memória-megőrzési frissítések: nem támogatott
+Memóriamegőrzési frissítések: Nem támogatott
 
-Írásgyorsító: [támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Írási gyorssegéd: [Támogatott](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-|Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+|Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Max hálózati adapterek / várható hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
-| Standard_M416ms_v2<sup>1, 2</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000 / 2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1, 2</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M208ms_v2<sup>1.</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
+| <sup>1.</sup> Standard_M208s_v2 | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
+| Standard_M416ms_v2<sup>1, 2</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>1, 2</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> a Mv2 sorozatú virtuális gépek csak 2. generációsak. Ha Linuxot használ, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](./linux/generation-2.md) -ban című témakört, amely útmutatást nyújt a rendszerképek megkereséséhez és kiválasztásához.
+<sup>1</sup> Mv2 sorozatú virtuális gépek csak generációs 2. Ha Linuxot használ, olvassa el [a 2.](./linux/generation-2.md)
 
-<sup>2</sup> a M416ms_v2 és a M416s_v2 méretek esetében vegye figyelembe, hogy a csak az alábbi képen látható kezdeti támogatás: "GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 SAP-alkalmazásokhoz."
+<sup>2</sup> A M416ms_v2 és M416s_v2 méretek esetén vegye figyelembe, hogy a következő lemezkép csak a következő: "GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 SAP-alkalmazásokhoz."
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -52,6 +52,6 @@ Memória-megőrzési frissítések: nem támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

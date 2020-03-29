@@ -1,7 +1,7 @@
 ---
-title: Egy SAML-kiállító technikai profiljának meghatározása egyéni házirendben
+title: SamL-kibocsátó technikai profiljának definiálása egyéni házirendben
 titleSuffix: Azure AD B2C
-description: Definiáljon egy Security Assertion Markup Language token (SAML) kiállító technikai profilját egy egyéni szabályzatban Azure Active Directory B2Cban.
+description: Technikai profildefiniálása egy biztonsági helyestmondás-azonosító nyelv (SAML) kiállítóhoz az Azure Active Directory B2C egyéni szabályzatában.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78967269"
 ---
-# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Az SAML-token kiállítójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
+# <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>SamL-jogkivonat-kibocsátó technikai profiljának definiálása az Azure Active Directory B2C egyéni szabályzatában
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) számos különböző típusú biztonsági jogkivonatot bocsát ki, mivel az egyes hitelesítési folyamatokat dolgozza fel. Az SAML-token kiállítójának műszaki profilja olyan SAML-jogkivonatot bocsát ki, amely vissza lesz visszaküldve a függő entitás alkalmazásának (szolgáltatónak). Ez a technikai profil általában a felhasználói út utolsó előkészítési lépése.
+Az Azure Active Directory B2C (Azure AD B2C) többféle biztonsági jogkivonatot bocsát ki az egyes hitelesítési folyamatok feldolgozása során. Az SAML token kibocsátójának technikai profilja saml-jogkivonatot bocsát ki, amely visszakerül a függő entitás alkalmazás (szolgáltató) számára. Általában ez a technikai profil az utolsó vezénylési lépés a felhasználói út.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol (Protokoll)
 
-A **protokoll** elem **Name** attribútumát `None`értékre kell állítani. Állítsa a **OutputTokenFormat** elemet `SAML2`értékre.
+A **Protokoll** elem **Name** attribútumát a `None`parancsra kell állítani. Állítsa a **OutputTokenFormat** elemet a programra. `SAML2`
 
-Az alábbi példa a `Saml2AssertionIssuer`technikai profilját mutatja be:
+A következő példa a `Saml2AssertionIssuer`következő technikai profilt mutatja be:
 
 ```XML
 <TechnicalProfile Id="Saml2AssertionIssuer">
@@ -48,34 +48,34 @@ Az alábbi példa a `Saml2AssertionIssuer`technikai profilját mutatja be:
 </TechnicalProfile>
 ```
 
-## <a name="input-output-and-persist-claims"></a>Bemeneti, kimeneti és megőrzési jogcímek
+## <a name="input-output-and-persist-claims"></a>Bemeneti, kimeneti és megmaradó jogcímek
 
-A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek üresek vagy hiányoznak. A **InutputClaimsTransformations** és a **OutputClaimsTransformations** elemek is hiányoznak.
+Az **InputClaims**, **OutputClaims**és **PersistClaims** elemek üresek vagy hiányoznak. Az **InutputClaimsTransformations** és **a OutputClaimsTransformations** elemek is hiányoznak.
 
 ## <a name="metadata"></a>Metaadatok
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| IssuerUri | Nem | Az SAML-válaszban megjelenő kiállító neve. Az értéknek meg kell egyeznie a függő entitás alkalmazásban konfigurált névvel. |
+| IssuerUri | Nem | Az SAML-válaszban megjelenő kibocsátó neve. Az értéknek meg kell egyeznie a függő entitás alkalmazásban konfigurált névvel. |
 
-## <a name="cryptographic-keys"></a>Titkosítási kulcsok
+## <a name="cryptographic-keys"></a>Kriptográfiai kulcsok
 
-A CryptographicKeys elem a következő attribútumokat tartalmazza:
+A Kriptográfiai kulcsok elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MetadataSigning | Igen | Az SAML-metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához. |
-| SamlMessageSigning| Igen| Adja meg az SAML-üzenetek aláírásához használandó X509-tanúsítványt (RSA-kulcs). Azure AD B2C ezt a kulcsot használja a függő entitásnak küldött válasz aláírására `<samlp:Response>`.|
+| Metaadat-aláírás | Igen | Az SAML metaadatok aláírásához használt X509-tanúsítvány (RSA-kulcskészlet). Az Azure AD B2C ezt a kulcsot használja a metaadatok aláírásához. |
+| SamlMessageAláírása| Igen| Adja meg az SAML-üzenetek aláírásához használni kívánt X509-tanúsítványt (RSA-kulcskészlet). Az Azure AD B2C ezt `<samlp:Response>` a kulcsot használja a válaszküldés aláírásához a függő entitásnak.|
 
 ## <a name="session-management"></a>Munkamenet-kezelés
 
-Az Azure AD B2C SAML-munkamenetek a függő entitások közötti konfigurálásához a `UseTechnicalProfileForSessionManagement` elem attribútuma, amely a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-munkamenetre hivatkozik.
+Az Azure AD B2C SAML-munkamenetek konfigurálásához egy függő `UseTechnicalProfileForSessionManagement` entitás alkalmazás között, az elem attribútuma, hivatkozás [a SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO-munkamenet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő cikkből megtudhatja, hogyan használhatja az SAML kiállítói technikai profilt:
+Az alábbi cikkben például saml-kibocsátó technikai profiljának használatával kapcsolatos a következő cikk:
 
-- [SAML-alkalmazás regisztrálása Azure AD B2C](connect-with-saml-service-providers.md)
+- [SAML-alkalmazás regisztrálása az Azure AD B2C-ben](connect-with-saml-service-providers.md)
 
 
 

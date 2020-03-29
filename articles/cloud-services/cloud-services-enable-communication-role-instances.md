@@ -1,6 +1,6 @@
 ---
-title: Kommunikáció a Cloud Services szerepköreiben | Microsoft Docs
-description: A Cloud Servicesban lévő szerepkör-példányok rendelkezhetnek olyan végpontokkal (http, HTTPS, TCP, UDP), amelyek a külső vagy más szerepkör-példányok közötti kommunikációhoz vannak meghatározva.
+title: Kommunikáció a felhőszolgáltatások szerepköreihez | Microsoft dokumentumok
+description: A Cloud Services szerepkörpéldányai végpontokat (http, https, tcp, udp) definiálhatnak, amelyek a külső vagy más szerepkörpéldányokkal kommunikálnak.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386340"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Azure-beli szerepkör-példányok kommunikációjának engedélyezése
-A felhőalapú szolgáltatás szerepkörei belső és külső kapcsolatokon keresztül kommunikálnak. A külső kapcsolatokat **bemeneti végpontoknak** nevezzük, a belső kapcsolatokat pedig **belső végpontoknak**nevezzük. Ez a témakör azt ismerteti, hogyan módosíthatja a [szolgáltatás definícióját](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
+# <a name="enable-communication-for-role-instances-in-azure"></a>Az azure-beli szerepkörpéldányok kommunikációjának engedélyezése
+A felhőszolgáltatási szerepkörök belső és külső kapcsolatokon keresztül kommunikálnak. A külső kapcsolatokat **bemeneti végpontnak,** míg a belső kapcsolatokat **belső végpontnak nevezzük.** Ez a témakör azt ismerteti, hogyan módosíthatja a [szolgáltatásdefiníciót](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
 
 ## <a name="input-endpoint"></a>Bemeneti végpont
-A bemeneti végpontot akkor kell használni, ha a portot kívülre kívánja tenni. Adja meg a protokoll típusát és a végponthoz tartozó portot, amely ezután a végpont külső és belső portjaira is érvényes. Ha szeretné, megadhat egy másik belső portot a végponthoz a [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) attribútummal.
+A bemeneti végpont akkor használatos, ha egy portot kívülről szeretne elérhetővé tenni. Megadhatja a végpont protokolltípusát és portját, amely ezután a végpont külső és belső portjaira is vonatkozik. Ha szeretné, megadhat egy másik belső portot a végponthoz a [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) attribútummal.
 
-A bemeneti végpont a következő protokollokat használhatja: **http, HTTPS, TCP, UDP**.
+A bemeneti végpont a következő protokollokat használhatja: **http, https, tcp, udp**.
 
-Bemeneti végpont létrehozásához adja hozzá a **InputEndpoint** gyermek elemet a webes vagy feldolgozói szerepkör **végpontok** eleméhez.
+Bemeneti végpont létrehozásához adja hozzá a **InputEndpoint** gyermekelemet a webes vagy feldolgozói szerepkör **Végpontok** eleméhez.
 
 ```xml
 <Endpoints>
@@ -33,11 +33,11 @@ Bemeneti végpont létrehozásához adja hozzá a **InputEndpoint** gyermek elem
 ```
 
 ## <a name="instance-input-endpoint"></a>Példány bemeneti végpontja
-A példány bemeneti végpontja hasonló a bemeneti végpontokhoz, de lehetővé teszi, hogy az egyes szerepkör-példányok számára a port továbbítása szolgáltatással leképezse a megadott nyilvános portokat a terheléselosztó használatával. Megadhat egyetlen nyilvános portot, vagy a portok egy tartományát is.
+A példánybemeneti végpontok hasonlóak a bemeneti végpontokhoz, de lehetővé teszi, hogy a terheléselosztó porttovábbításával leképezze az egyes szerepkörpéldányok adott nyilvános néző portjait. Megadhat egyetlen nyilvános bevezető portot vagy porttartományt.
 
-A példány bemeneti végpontja csak a **TCP** vagy az **UDP** protokollt használhatja protokollként.
+A példány bemeneti végpontja csak **tcp** vagy **udp** protokollként használható.
 
-Egy példány bemeneti végpontjának létrehozásához adja hozzá a **InstanceInputEndpoint** gyermek elemet a webes vagy feldolgozói szerepkör **végpontok** eleméhez.
+Példánybemeneti végpont létrehozásához adja hozzá a **InstanceInputEndpoint** gyermekelemet a webes vagy feldolgozói szerepkör **Végpontok** eleméhez.
 
 ```xml
 <Endpoints>
@@ -50,11 +50,11 @@ Egy példány bemeneti végpontjának létrehozásához adja hozzá a **Instance
 ```
 
 ## <a name="internal-endpoint"></a>Belső végpont
-A belső végpontok például a példányok közötti kommunikációhoz érhetők el. A port nem kötelező, és ha nincs megadva, a rendszer egy dinamikus portot rendel hozzá a végponthoz. Egy porttartomány is használható. Legfeljebb öt belső végpont adható meg.
+Belső végpontok érhetők el a példányok közötti kommunikációhoz. A port nem kötelező, és ha nincs megadva, dinamikus port van rendelve a végponthoz. Porttartomány használható. Szerepkörenként legfeljebb öt belső végpont van.
 
-A belső végpont a következő protokollokat használhatja: **http, TCP, UDP, any**.
+A belső végpont a következő protokollokat használhatja: **http, tcp, udp, any**.
 
-Belső bemeneti végpont létrehozásához adja hozzá a **InternalEndpoint** gyermek elemet a webes vagy feldolgozói szerepkör **végpontok** eleméhez.
+Belső bemeneti végpont létrehozásához adja hozzá a **InternalEndpoint** gyermekelemet a webes vagy feldolgozói szerepkör **Végpontok** eleméhez.
 
 ```xml
 <Endpoints>
@@ -62,7 +62,7 @@ Belső bemeneti végpont létrehozásához adja hozzá a **InternalEndpoint** gy
 </Endpoints> 
 ```
 
-A portok tartományát is használhatja.
+Porttartományt is használhat.
 
 ```xml
 <Endpoints>
@@ -74,7 +74,7 @@ A portok tartományát is használhatja.
 
 
 ## <a name="worker-roles-vs-web-roles"></a>Feldolgozói szerepkörök és webes szerepkörök
-A munkavégző és a webes szerepkörök használata esetén a végpontokkal kapcsolatban egyetlen kisebb különbség van. A webes szerepkörnek legalább egyetlen bemeneti végponttal kell rendelkeznie a **http** protokoll használatával.
+Van egy kisebb különbség a végpontok, ha dolgozik mind a feldolgozó és a webes szerepkörök. A webes szerepkörnek legalább egy bemeneti végponttal kell rendelkeznie a **HTTP protokoll** használatával.
 
 ```xml
 <Endpoints>
@@ -83,32 +83,32 @@ A munkavégző és a webes szerepkörök használata esetén a végpontokkal kap
 </Endpoints>
 ```
 
-## <a name="using-the-net-sdk-to-access-an-endpoint"></a>A .NET SDK használata végpont eléréséhez
-Az Azure Managed Library olyan metódusokat biztosít a szerepkör-példányok számára, amelyek futásidőben kommunikálhatnak. A szerepkör-példányon belül futó programkódból lekérheti a többi szerepkör-példány és a végpontok létezéséről, valamint az aktuális szerepkör-példányra vonatkozó információkat.
+## <a name="using-the-net-sdk-to-access-an-endpoint"></a>Végpont elérése a .NET SDK használatával
+Az Azure Felügyelt könyvtár a szerepkörpéldányok futásidőben kommunikálhat metódusait. A szerepkörpéldányon belül futó kódból lekérheti a többi szerepkörpéldány és azok végpontjai létezésével kapcsolatos információkat, valamint az aktuális szerepkörpéldány adatait.
 
 > [!NOTE]
-> Csak a felhőalapú szolgáltatásban futó szerepkör-példányokra vonatkozó információkat kérhet le, és amelyek legalább egy belső végpontot határoznak meg. Egy másik szolgáltatásban futó szerepkör-példányok adatait nem lehet beolvasni.
+> Csak a felhőszolgáltatásban futó és legalább egy belső végpontot definiáló szerepkörpéldányokról kérhet információt. Nem kaphat adatokat egy másik szolgáltatásban futó szerepkörpéldányokról.
 > 
 > 
 
-A [példányok](/previous-versions/azure/reference/ee741904(v=azure.100)) tulajdonságot a szerepkörök példányainak lekérésére használhatja. Először használja a [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) az aktuális szerepkör-példányra mutató hivatkozás visszaküldéséhez, majd használja a [role](/previous-versions/azure/reference/ee741918(v=azure.100)) tulajdonságot a szerepkörre mutató hivatkozás visszaküldéséhez.
+A [Példányok](/previous-versions/azure/reference/ee741904(v=azure.100)) tulajdonsággal lekérheti egy szerepkör példányait. Először használja a [CurrentRoleInstance-t](/previous-versions/azure/reference/ee741907(v=azure.100)) az aktuális szerepkörpéldányra mutató hivatkozás visszaadására, majd a [Role](/previous-versions/azure/reference/ee741918(v=azure.100)) tulajdonsággal adja vissza magát a szerepkört.
 
-Ha a .NET SDK-val programozott módon csatlakozik a szerepkör-példányhoz, viszonylag könnyen elérheti a végpont adatait. Ha például egy adott szerepkör-környezethez már kapcsolódott, akkor egy adott végpont portját a következő kóddal szerezheti be:
+Ha programozott módon csatlakozik egy szerepkörpéldányhoz a .NET SDK-n keresztül, viszonylag könnyen hozzáférhet a végpontadatokhoz. Ha például már csatlakozott egy adott szerepkörkörnyezethez, ezzel a kóddal lejuthat egy adott végpont portjára:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-A **instances** tulajdonság **RoleInstance** objektumok gyűjteményét adja vissza. Ez a gyűjtemény mindig az aktuális példányt tartalmazza. Ha a szerepkör nem határoz meg belső végpontot, a gyűjtemény tartalmazza az aktuális példányt, de más példányokat sem. A gyűjteményben található szerepkör-példányok száma mindig 1 lesz abban az esetben, ha nincs megadva belső végpont a szerepkörhöz. Ha a szerepkör egy belső végpontot határoz meg, a példányok futásidőben felderíthetők, és a gyűjtemény példányainak száma a szolgáltatás konfigurációs fájljában a szerepkörhöz megadott számú példánynak felel meg.
+A **Példányok** tulajdonság **RoleInstance** objektumok gyűjteményét adja vissza. Ez a gyűjtemény mindig az aktuális példányt tartalmazza. Ha a szerepkör nem határoz meg belső végpontot, a gyűjtemény tartalmazza az aktuális példányt, de más példányokat nem. A gyűjteményben lévő szerepkörpéldányok száma mindig 1 lesz abban az esetben, ha nincs belső végpont definiálva a szerepkörhöz. Ha a szerepkör belső végpontot határoz meg, a példányok felderíthetők futásidőben, és a gyűjtemény példányainak száma megegyezik a szolgáltatás konfigurációs fájljában a szerepkörhöz megadott példányok számával.
 
 > [!NOTE]
-> Az Azure Managed Library nem biztosít más szerepkör-példányok állapotának meghatározására szolgáló módszert, de ha a szolgáltatásnak szüksége van erre a funkcióra, Ön is megvalósíthatja az ilyen állapot-értékeléseket. A [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) használatával információkat szerezhet be a futó szerepkör példányairól.
+> Az Azure felügyelt könyvtár nem nyújt más szerepkörpéldányok állapotának meghatározásához, de az ilyen állapotfelméréseket saját maga is megvalósíthatja, ha a szolgáltatásnak szüksége van erre a funkcióra. Az [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) használatával információkat kaphat a futó szerepkörpéldányokról.
 > 
 > 
 
-Egy szerepkör-példány belső végpontjának portszámát a [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) tulajdonsággal adhatja vissza, amely a végpontok nevét, valamint a hozzájuk tartozó IP-címeket és portokat tartalmazza. A [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) tulajdonság egy megadott végpont IP-címét és portját adja vissza. A **PublicIPEndpoint** tulajdonság egy elosztott terhelésű végpont portját adja vissza. A **PublicIPEndpoint** tulajdonság IP-cím része nincs használatban.
+Egy szerepkörpéldány belső végpontjának portszámának meghatározásához a [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) tulajdonsággal visszaadhat egy szótárobjektumot, amely végpontneveket, valamint a hozzájuk tartozó IP-címeket és portokat tartalmaz. Az [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) tulajdonság egy megadott végpont IP-címét és portját adja vissza. A **PublicIPEndpoint** tulajdonság egy elhatárolt terhelésű végpont portját adja vissza. A **PublicIPEndpoint** tulajdonság IP-cím része nem használatos.
 
-Íme egy példa, amely megismétli a szerepkör-példányokat.
+Íme egy példa, amely a szerepkörpéldányokat iterálja.
 
 ```csharp
 foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Instances)
@@ -121,10 +121,10 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Íme egy példa arra a feldolgozói szerepkörre, amely a szolgáltatás definícióján keresztül teszi elérhetővé a végpontot, és megkezdi a kapcsolatok figyelését.
+Íme egy példa egy feldolgozói szerepkörre, amely a végpontot a szolgáltatásdefiníción keresztül elérhetővé teszi, és elkezdi figyelni a kapcsolatokat.
 
 > [!WARNING]
-> Ez a kód csak központilag telepített szolgáltatás esetén működik. Az Azure számítási emulátorban való futtatáskor a rendszer figyelmen kívül hagyja a közvetlen portok végpontját (**InstanceInputEndpoint** -elemeket) létrehozó szolgáltatás-konfigurációs elemeket.
+> Ez a kód csak telepített szolgáltatás esetén működik. Az Azure Compute Emulator futtatásakor a közvetlen portvégpontokat **(InstanceInputEndpoint-elemeket)** létrehozó szolgáltatáskonfigurációs elemeket figyelmen kívül hagyja.
 > 
 > 
 
@@ -212,12 +212,12 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a>Hálózati forgalmi szabályok a szerepkör-kommunikáció vezérléséhez
-A belső végpontok definiálását követően hálózati forgalmi szabályokat adhat hozzá (a létrehozott végpontok alapján) annak vezérléséhez, hogy a szerepkör-példányok hogyan kommunikáljanak egymással. Az alábbi ábrán néhány gyakori forgatókönyv látható a szerepkör-kommunikáció szabályozásához:
+## <a name="network-traffic-rules-to-control-role-communication"></a>Hálózati forgalmi szabályok a szerepkör-kommunikáció szabályozására
+A belső végpontok definiálása után hálózati forgalmi szabályokat adhat hozzá (a létrehozott végpontok alapján), hogy szabályozhassa, hogyan kommunikálhatnak egymással a szerepkörpéldányok. Az alábbi ábra a szerepkör-kommunikáció szabályozásának néhány gyakori forgatókönyvét mutatja be:
 
-![Hálózati forgalomra vonatkozó szabályok forgatókönyvei](./media/cloud-services-enable-communication-role-instances/scenarios.png "Hálózati forgalomra vonatkozó szabályok forgatókönyvei")
+![Hálózati forgalmi szabályok forgatókönyvei](./media/cloud-services-enable-communication-role-instances/scenarios.png "Hálózati forgalmi szabályok forgatókönyvei")
 
-A következő kódrészlet az előző ábrán látható szerepkörökhöz tartozó szerepkör-definíciókat mutatja be. Minden szerepkör-definíció legalább egy belső végpontot definiál:
+A következő kódpélda az előző diagramon látható szerepkörök szerepkör-definícióit mutatja be. Minden szerepkör-definíció legalább egy definiált belső végpontot tartalmaz:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -249,14 +249,14 @@ A következő kódrészlet az előző ábrán látható szerepkörökhöz tartoz
 ```
 
 > [!NOTE]
-> A szerepkörök közötti kommunikáció korlátozása a rögzített és automatikusan hozzárendelt portok belső végpontjának használatával történhet.
+> A szerepkörök közötti kommunikáció korlátozása történhet a rögzített és automatikusan hozzárendelt portok belső végpontjaival.
 > 
 > 
 
-Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy **NetworkTrafficRules** elemet a **ServiceDefinition** elemhez a szolgáltatás definíciós fájljában.
+Alapértelmezés szerint egy belső végpont definiálása után a kommunikáció bármely szerepkörből a szerepkör belső végpontjára korlátozás nélkül áramlhat. A kommunikáció korlátozásához hozzá kell adnia egy **NetworkTrafficRules** elemet a **szolgáltatásdefiníciós** fájl ServiceDefinition eleméhez.
 
-### <a name="scenario-1"></a>1\. eset
-Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom engedélyezése.
+### <a name="scenario-1"></a>1. példa
+Csak a **WebRole1** és a **WorkerRole1**között engedélyezze a hálózati forgalmat.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -274,8 +274,8 @@ Csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalom eng
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a>2\. forgatókönyv
-Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2**közötti hálózati forgalmat engedélyezi.
+### <a name="scenario-2"></a>2. példa
+Csak a **WebRole1** és a **WorkerRole2** **WorkerRole1** között engedélyezi a hálózati forgalmat.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -293,8 +293,8 @@ Csak a **webrole1 webes** és a **WorkerRole1** , illetve a **WorkerRole2**köz�
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>3\. forgatókönyv
-A csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalmat engedélyezi, és **WorkerRole1** a **WorkerRole2**.
+### <a name="scenario-3"></a>3. példa
+Csak a **WebRole1** és a **WorkerRole1,** a **WorkerRole1** és a **WorkerRole2**között engedélyezi a hálózati forgalmat.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -322,8 +322,8 @@ A csak a **webrole1 webes** és a **WorkerRole1**közötti hálózati forgalmat 
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>4\. forgatókönyv
-A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** **és a** **WorkerRole1** közötti hálózati forgalmat engedélyezi a **WorkerRole2**.
+### <a name="scenario-4"></a>4. példa
+Csak **a WebRole1** és **a WorkerRole1**, **a WebRole1** és **a WorkerRole2,** a **WorkerRole1** és a **WorkerRole2**között engedélyezi a hálózati forgalmat.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -363,10 +363,10 @@ A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** **és a** **Wo
 </ServiceDefinition>
 ```
 
-[Itt](/previous-versions/azure/reference/gg557551(v=azure.100))talál egy XML-séma-referenciát a fent használt elemekhez.
+A fent használt elemekHEZ való XML-sémahivatkozás [itt](/previous-versions/azure/reference/gg557551(v=azure.100))található.
 
-## <a name="next-steps"></a>Következő lépések
-Tudjon meg többet a Cloud Service- [modellről](cloud-services-model-and-package.md).
+## <a name="next-steps"></a>További lépések
+További információ a Felhőszolgáltatás [modelljéről.](cloud-services-model-and-package.md)
 
 
 

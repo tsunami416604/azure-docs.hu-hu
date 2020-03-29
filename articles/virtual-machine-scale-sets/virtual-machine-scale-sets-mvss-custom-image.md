@@ -1,6 +1,6 @@
 ---
-title: Egyéni rendszerkép referenciája egy Azure méretezési csoport sablonjában
-description: Ismerje meg, hogyan adhat hozzá egyéni rendszerképet egy meglévő Azure virtuálisgép-méretezési csoport sablonhoz
+title: Egyéni lemezkép hivatkozása Azure-méretezési csoportsablonban
+description: Megtudhatja, hogyan adhat hozzá egyéni lemezképet egy meglévő Azure Virtuálisgép-méretezési készletsablonhoz
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: manayar
 ms.openlocfilehash: fd1a567af1c35cf6b659995e998b11a61a526508
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275593"
 ---
-# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Egyéni rendszerkép hozzáadása egy Azure méretezési csoport sablonhoz
+# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Egyéni rendszerkép hozzáadása egy Azure méretezésicsoport-sablonhoz
 
-Ez a cikk bemutatja, hogyan módosíthatja az [alapszintű méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) az egyéni lemezképből való üzembe helyezéshez.
+Ez a cikk bemutatja, hogyan módosíthatja az [alapvető méretezési csoport sablont](virtual-machine-scale-sets-mvss-start.md) az egyéni lemezkép üzembe helyezéséhez.
 
-## <a name="change-the-template-definition"></a>A sablon definíciójának módosítása
-Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) egy alapszintű méretezési csoport sablont hoztunk létre. Most ezt a korábbi sablont fogjuk használni, és módosítjuk egy olyan sablon létrehozásához, amely egy méretezési csoport üzembe helyezését végzi egy egyéni rendszerképből.  
+## <a name="change-the-template-definition"></a>A sablondefiníció módosítása
+Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) létrehoztunk egy egyszerű méretezési csoport sablont. Most antól ezt a korábbi sablont használjuk, és módosítjuk azt, hogy hozzon létre egy sablont, amely egy egyéni lemezképből származó méretezési készletet telepít.  
 
-### <a name="creating-a-managed-disk-image"></a>Felügyelt lemez rendszerképének létrehozása
+### <a name="creating-a-managed-disk-image"></a>Felügyelt lemezkép létrehozása
 
-Ha már rendelkezik egy egyéni felügyelt lemezképtel (`Microsoft.Compute/images`típusú erőforrás), akkor kihagyhatja ezt a szakaszt.
+Ha már rendelkezik egyéni felügyelt lemezképpel `Microsoft.Compute/images`(egy erőforrás típus), akkor kihagyhatja ezt a szakaszt.
 
-Először vegyen fel egy `sourceImageVhdUri` paramétert, amely az Azure Storage-ban található általánosított blob URI-ja, amely a-ból telepítendő egyéni lemezképet tartalmazza.
+Először adjon `sourceImageVhdUri` hozzá egy paramétert, amely az URI az azure storage-ban az általános blobhoz, amely tartalmazza az egyéni lemezképet, amelyből üzembe helyezhető.
 
 
 ```diff
@@ -44,7 +44,7 @@ Először vegyen fel egy `sourceImageVhdUri` paramétert, amely az Azure Storage
    "variables": {},
 ```
 
-Ezután adjon hozzá egy `Microsoft.Compute/images`típusú erőforrást, amely a felügyelt lemez lemezképe az URI-`sourceImageVhdUri`található általánosított blob alapján. Ennek a képnek ugyanabban a régióban kell lennie, mint az azt használó méretezési csoportnak. A rendszerkép tulajdonságainál adja meg az operációs rendszer típusát, a blob helyét (a `sourceImageVhdUri` paraméterből) és a Storage-fiók típusát:
+Ezután adjon hozzá `Microsoft.Compute/images`egy típusú erőforrást , amely az URI-ban `sourceImageVhdUri`található általános blobon alapuló felügyelt lemezlemez-lemezkép. Ennek a lemezképnek ugyanabban a régióban kell lennie, mint az azt használó méretezési készletnek. A lemezkép tulajdonságai között adja meg az operációs rendszer típusát, a blob helyét (a `sourceImageVhdUri` paraméterből) és a tárfiók típusát:
 
 ```diff
    "resources": [
@@ -71,7 +71,7 @@ Ezután adjon hozzá egy `Microsoft.Compute/images`típusú erőforrást, amely 
 
 ```
 
-A méretezési csoport erőforrásban vegyen fel egy `dependsOn` záradékot, amely az egyéni lemezképre hivatkozik, hogy a rendszer létrehozza a lemezképet, mielőtt a méretezési csoport megpróbálja telepíteni a lemezképből:
+A méretezési csoport erőforrásban adjon hozzá egy, `dependsOn` az egyéni lemezképre hivatkozó záradékot, amely biztosítja, hogy a lemezkép létrejön, mielőtt a méretezési csoport megpróbálna telepíteni az adott lemezképről:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -86,9 +86,9 @@ A méretezési csoport erőforrásban vegyen fel egy `dependsOn` záradékot, am
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Méretezési csoport tulajdonságainak módosítása a felügyelt lemezkép használatára
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>A méretezési csoport tulajdonságainak módosítása a felügyelt lemezkép használatára
 
-A méretezési csoport `storageProfile``imageReference` a platform-rendszerkép közzétevője, ajánlata, SKU-jának és verziójának megadása helyett adja meg a `Microsoft.Compute/images` erőforrás `id`ét:
+A `imageReference` méretezési csoportban `storageProfile`a közzétevő, az ajánlat, a termékváltozat és a `id` platformlemezkép verziójának megadása helyett adja meg az `Microsoft.Compute/images` erőforrás t:
 
 ```json
          "virtualMachineProfile": {
@@ -100,7 +100,7 @@ A méretezési csoport `storageProfile``imageReference` a platform-rendszerkép 
            "osProfile": {
 ```
 
-Ebben a példában a `resourceId` függvénnyel lekérheti az ugyanabban a sablonban létrehozott rendszerkép erőforrás-AZONOSÍTÓját. Ha korábban már létrehozta a felügyelt lemezképet, adja meg a rendszerkép AZONOSÍTÓját. Ennek az AZONOSÍTÓnak a következő formátumúnak kell lennie: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+Ebben a példában `resourceId` használja a függvényt az ugyanabban a sablonban létrehozott lemezkép erőforrás-azonosítójának leéséhez. Ha a felügyelt lemezképet előzetesen létrehozta, akkor inkább a lemezkép azonosítóját adja meg. Ennek az azonosítónak a `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`következő formában kell lennie: .
 
 
 ## <a name="next-steps"></a>Következő lépések

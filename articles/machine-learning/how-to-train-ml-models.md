@@ -1,7 +1,7 @@
 ---
-title: ML modellek betanítása a becslések
+title: Ml-modellek betanítása becsléssel
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan hajthat végre egycsomópontos és elosztott képzéseket hagyományos gépi tanulási és Deep learning-modellekben Azure Machine Learning kalkulátor osztály használatával
+description: Ismerje meg, hogyan végezhet egycsomópontos és elosztott képzést a hagyományos gépi tanulási és mélytanulási modellekről az Azure Machine Learning Estimator osztály használatával
 ms.author: maxluk
 author: maxluk
 services: machine-learning
@@ -12,33 +12,33 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79078477"
 ---
-# <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
+# <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása az Azure Machine Learning használatával a becslés használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-A Azure Machine Learning segítségével könnyedén elküldheti a betanítási szkriptet [különféle számítási célokba](how-to-set-up-training-targets.md#compute-targets-for-training)egy [RunConfiguration-objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és egy [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális szabályozást biztosít.
+Az Azure Machine Learning segítségével könnyedén elküldheti a betanítási parancsfájlt [különböző számítási célokba](how-to-set-up-training-targets.md#compute-targets-for-training)egy [RunConfiguration objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és egy [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális kontrollt biztosít.
 
-A részletes tanulási modell tanításának elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít, amely lehetővé teszi a felhasználók számára a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat egy általános számítást, amellyel betaníthatja [az oktatási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) szkriptet bármely kiválasztott képzési keretrendszer (például a scikit-Learn) bármely kiválasztott számítási célra, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban vagy egy Azure-beli GPU-fürt. A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
+A deep learning modell betanításának megkönnyítése érdekében az Azure Machine Learning Python SDK egy alternatív magasabb szintű absztrakciót biztosít, a estimator osztályt, amely lehetővé teszi a felhasználók számára, hogy könnyen létrefutnak konfigurációk. Létrehozhat és használhat egy általános [estimatort,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) hogy benyújtsa a képzési parancsfájlt bármely választott tanulási keretrendszer (például scikit-learn) használatával bármely kiválasztott számítási célon, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban, vagy egy GPU-fürt az Azure-ban. A PyTorch, TensorFlow és Chainer feladatok hoz, az Azure Machine Learning is rendelkezik a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimators, hogy egyszerűsítse ezeket a keretrendszereket.
 
-## <a name="train-with-an-estimator"></a>Az egy estimator betanítása
+## <a name="train-with-an-estimator"></a>Becslővel vonat
 
-Miután létrehozta a [munkaterületet](concept-workspace.md) , és beállította a [fejlesztési környezetet](how-to-configure-environment.md), a modell betanítása Azure Machine learning a következő lépésekkel jár:  
-1. Hozzon létre egy [távoli számítási célt](how-to-set-up-training-targets.md) (vegye figyelembe, hogy a helyi számítógépet számítási célként is használhatja)
-2. [Betanítási adatok](how-to-access-data.md) feltöltése az adattárba (opcionális)
+Miután létrehozta a [munkaterületet,](concept-workspace.md) és beállította a [fejlesztői környezetet,](how-to-configure-environment.md)a modell betanítása az Azure Machine Learningben a következő lépésekkel jár:  
+1. Távoli [számítási cél](how-to-set-up-training-targets.md) létrehozása (megjegyzés: a helyi számítógépet számítási célként is használhatja)
+2. A [betanítási adatok](how-to-access-data.md) feltöltése az adattárba (nem kötelező)
 3. A [betanítási parancsfájl](tutorial-train-models-with-aml.md#create-a-training-script) létrehozása
-4. `Estimator` objektum létrehozása
-5. A kalkulátor beküldése a munkaterület alá tartozó kísérleti objektumra
+4. Egy `Estimator`-objektum létrehozása
+5. A becslés beküldése egy kísérleti objektumba a munkaterület alatt
 
-Ez a cikk foglalkozik a 4 – 5. lépéseket. Az 1-3-as lépéseknél tekintse meg a [Train a Model oktatóanyagot](tutorial-train-models-with-aml.md) példaként.
+Ez a cikk a 4-5. Az 1-3. [train a model tutorial](tutorial-train-models-with-aml.md)
 
-### <a name="single-node-training"></a>Egy csomópontos képzés
+### <a name="single-node-training"></a>Egycsomópontos képzés
 
-Az Azure-ban a scikit-Learn modellben egy egycsomópontos képzéshez `Estimator` használhat. Létre kell hoznia a [számítási cél](how-to-set-up-training-targets.md#amlcompute) objektumot `compute_target` és a [FileDataset](how-to-create-register-datasets.md) -objektumot `ds`.
+Használjon `Estimator` egy egycsomópontos betanítási futtatást az Azure-ban egy scikit-learn modellhez. Már létre kellett volna [hoznia](how-to-set-up-training-targets.md#amlcompute) a számítási célobjektumot `compute_target` és a [FileDataset](how-to-create-register-datasets.md) objektumot. `ds`
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -56,19 +56,19 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
                    conda_packages=['scikit-learn'])
 ```
 
-Ez a kódrészlet a következő paramétereket adja meg a `Estimator` konstruktorhoz.
+Ez a kódrészlet a következő paramétereket `Estimator` adja meg a konstruktornak.
 
 Paraméter | Leírás
 --|--
-`source_directory`| Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ezt a mappát a rendszer átmásolja a helyi gépről a távoli számításba.
-`script_params`| A szótár adja meg a betanítási parancsfájlnak `entry_script``<command-line argument, value>` pár formájában átadandó parancssori argumentumokat. A `script_params`ban található részletes jelző megadásához használja a `<command-line argument, "">`.
-`compute_target`| Távoli számítási cél, amelyet a képzési parancsfájl fog futni, ebben az esetben egy Azure Machine Learning számítási ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)-) fürt. (Vegye figyelembe, hogy bár a AmlCompute-fürt a leggyakrabban használt cél, más számítási célpontok is kiválaszthatók, például az Azure-beli virtuális gépek vagy akár a helyi számítógép is.)
-`entry_script`| A távoli számításon futtatandó betanítási szkript filepath (`source_directory`képest). Ez a fájl és az attól függő további fájlok a mappában találhatók.
-`conda_packages`| Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját.  
+`source_directory`| Helyi könyvtár, amely tartalmazza az összes szükséges kódot a betanítási feladathoz. Ez a mappa a helyi számítógépről a távoli számításra kerül átmásolva.
+`script_params`| Szótár, amely párok formájában adja át a betanítási `entry_script` `<command-line argument, value>` parancsfájlnak átadandó parancssori argumentumokat. Ha részletes jelzőt szeretne `script_params`megadni `<command-line argument, "">`a alkalmazásban, használja a használatát.
+`compute_target`| Távoli számítási cél, amelyen a betanítási parancsfájl futni fog, ebben az esetben egy Azure Machine Learning Compute[(AmlCompute)](how-to-set-up-training-targets.md#amlcompute)fürt. (Vegye figyelembe, annak ellenére, hogy az AmlCompute-fürt a leggyakrabban használt cél, más számítási céltípusokat is választhat, például az Azure virtuális gépeket vagy akár a helyi számítógépet is.)
+`entry_script`| A távoli számítási `source_directory`számítógépen futtatandó betanítási parancsfájl fájlelérési útja .Filepath (a távoli számítási rendszerhez viszonyított) betanítási parancsfájlhoz viszonyítva. Ennek a fájlnak és a további fájloknak, amelyektől függ, ebben a mappában kell lennie.
+`conda_packages`| A betanítási parancsfájl által szükséges conda-n keresztül telepítendő Python-csomagok listája.  
 
-A konstruktor egy másik, `pip_packages` nevű paraméterrel rendelkezik, amelyet minden szükséges pip-csomaghoz használhat.
+A konstruktor nak van egy másik paramétere, `pip_packages` amelyet a szükséges pip csomagokhoz használ.
 
-Most, hogy létrehozta a `Estimator` objektumot, küldje el a betanítási feladatot úgy, hogy a távoli számításon fusson, és hívja meg a `submit` függvényt a [kísérlet](concept-azure-machine-learning-architecture.md#experiments) objektumon `experiment`. 
+Most, hogy létrehozta `Estimator` az objektumot, küldje el a betanítási feladatot, `submit` amelyet a `experiment`távoli számítási számítógépen futtat, a [Kísérlet](concept-azure-machine-learning-architecture.md#experiments) objektum függvényének hívásával. 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -76,23 +76,23 @@ print(run.get_portal_url())
 ```
 
 > [!IMPORTANT]
-> **Speciális mappák** Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során a rendszer a gyökérkönyvtárhoz viszonyított *kimenetek* és *naplók* nevű mappákba ír fájlokat (`./outputs` és `./logs`), a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférhessenek hozzájuk.
+> **Speciális mappák** Két mappa, *kimenetek* és *naplók,* különleges bánásmódban részesülnek az Azure Machine Learning. A betanítás során, amikor fájlokat ír *logs* a gyökérkönyvtárhoz (és `./logs``./outputs` a gyökérkönyvtárhoz) viszonyított, *nevű* mappákba, a fájlok automatikusan feltöltődnek a futtatási előzményekbe, így a futtatás befejezése után hozzáférhet hozzájuk.
 >
-> Az összetevők a betanítás során történő létrehozásához (például a Model Files, az ellenőrzőpontok, az adatfájlok vagy a képek kirajzolása) írja ezeket a `./outputs` mappába.
+> A betanítás során összetevők (például modellfájlok, ellenőrzőpontok, adatfájlok vagy ábrázolt képek) létrehozásához írja ezeket a `./outputs` mappába.
 >
-> Hasonlóképpen bármilyen naplót írhat a betanításból a `./logs` mappába. Azure Machine Learning [TensorBoard-integrációjának](https://aka.ms/aml-notebook-tb) kihasználása érdekében ügyeljen arra, hogy a TensorBoard-naplókat a mappába írja. Amíg Futtatás folyamatban van, akkor fogja tudni TensorBoard elindításához, és ezek a naplók streamelése.  Később akkor is a korábbi futtatásokat bármelyik a naplók visszaállítási lehetőségével.
+> Hasonlóképpen a betanítási futtatásból a naplót is írhat a `./logs` mappába. Az Azure Machine Learning [TensorBoard-integrációjának](https://aka.ms/aml-notebook-tb) használatához győződjön meg arról, hogy a TensorBoard-naplókat ebbe a mappába írja. Amíg a futás folyamatban van, akkor képes lesz arra, hogy indítson TensorBoard és patak ezeket a naplókat.  Később a korábbi futtatások bármelyikének naplóit is visszaállíthatja.
 >
-> Ha például le szeretné tölteni a *kimeneti* mappába írt fájlt a helyi gépre a távoli képzés futtatása után: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
+> Például a *kimeneti* mappába írt fájl letöltése a helyi számítógépre a távoli betanítás futtatása után:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
-### <a name="distributed-training-and-custom-docker-images"></a>Elosztott képzés és az egyéni Docker-rendszerképek
+### <a name="distributed-training-and-custom-docker-images"></a>Elosztott betanítás és egyéni Docker-lemezképek
 
-Két további tanítási forgatókönyv is elvégezhető a `Estimator`:
-* Egyéni Docker-rendszerkép használata
-* Több csomópontos fürt elosztott betanítás
+Két további képzési forgatókönyvet végezhet el `Estimator`a következőkkel:
+* Egyéni Docker-lemezkép használata
+* Elosztott képzés többcsomópontos fürtön
 
-A következő kód bemutatja, hogyan hajthat végre elosztott képzést egy kerasz-modellhez. Emellett az alapértelmezett Azure Machine Learning rendszerképek használata helyett egyéni Docker-rendszerképet ad meg a Docker hub `continuumio/miniconda` a betanításhoz.
+A következő kód bemutatja, hogyan végezhet elosztott képzést egy Keras modellhez. Emellett az alapértelmezett Azure Machine Learning-rendszerképek használata helyett egy egyéni docker-lemezképet adocker hubról `continuumio/miniconda` a betanításhoz.
 
-Létre kell hoznia a [számítási cél](how-to-set-up-training-targets.md#amlcompute) objektumot `compute_target`. A estimator következőképpen hozhat létre:
+Már létre kellett volna [hoznia](how-to-set-up-training-targets.md#amlcompute) a számítási célobjektumot. `compute_target` A becslőt a következőképpen hozza létre:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -108,17 +108,17 @@ estimator = Estimator(source_directory='./my-keras-proj',
                       custom_docker_image='continuumio/miniconda')
 ```
 
-A fenti kód a következő új paramétereket teszi elérhetővé a `Estimator` konstruktor számára:
+A fenti kód a következő új `Estimator` paramétereket teszi ki a kivitelezőnek:
 
 Paraméter | Leírás | Alapértelmezett
 --|--|--
-`custom_docker_image`| A használni kívánt kép neve. Csak adja meg a lemezkép érhető el a nyilvános docker adattárait (megkülönbözteti a kis Docker Hub). Ha privát Docker-tárházból szeretne képet használni, használja helyette a konstruktor `environment_definition` paraméterét. [Lásd: példa](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
-`node_count`| A betanítási feladathoz használandó csomópontok száma. | `1`
-`process_count_per_node`| Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") száma. Ebben az esetben az egyes csomópontokon elérhető `2` GPU-ket használja.| `1`
-`distributed_training`| [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objektum az elosztott KÉPZÉSek MPI-háttér használatával történő elindításához.  | `None`
+`custom_docker_image`| A használni kívánt kép neve. Csak a nyilvános docker-adattárakban (ebben az esetben a Docker Hub) elérhető képeket biztosít. A rendszerkép használata egy privát docker-tárházból, `environment_definition` használja a konstruktor paraméter helyett. [Lásd a példát.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb) | `None`
+`node_count`| Az edzésfeladathoz használandó csomópontok száma. | `1`
+`process_count_per_node`| Az egyes csomópontokon futtatandó folyamatok (vagy "dolgozók") száma. Ebben az esetben az `2` egyes csomópontokon elérhető GPU-kat használja.| `1`
+`distributed_training`| [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objektum az MPI-háttérrendszer használatával elosztott betanítás elindításához.  | `None`
 
 
-Végül küldje el a betanítási feladatot:
+Végül nyújtsa be a képzési munkát:
 ```Python
 run = experiment.submit(estimator)
 print(run.get_portal_url())
@@ -126,36 +126,36 @@ print(run.get_portal_url())
 
 ## <a name="registering-a-model"></a>Modell regisztrálása
 
-A modell kiképzése után mentheti és regisztrálhatja azt a munkaterületen. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében.
+Miután betanította a modellt, mentheti és regisztrálhatja azt a munkaterületre. A modellregisztráció lehetővé teszi a modellek tárolását és verziózását a munkaterületen a [modellkezelés és -telepítés egyszerűsítése érdekében.](concept-model-management-and-deployment.md)
 
-A következő kód futtatásával regisztrálja a modellt a munkaterületre, és elérhetővé teszi a név alapján a távoli számítási környezetekben vagy az üzembe helyezési parancsfájlokban való hivatkozáshoz. További információ és további paraméterek: [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) a dokumentációban.
+A következő kód futtatása regisztrálja a modellt a munkaterületre, és elérhetővé teszi név szerint a távoli számítási környezetekben vagy központi telepítési parancsfájlokban. További [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) információt és további paramétereket a referenciadokumentumokban talál.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)
 ```
 
-## <a name="github-tracking-and-integration"></a>GitHub-követés és-integráció
+## <a name="github-tracking-and-integration"></a>GitHub nyomon követése és integrációja
 
-Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. További információ: git- [integráció Azure Machine Learninghoz](concept-train-model-git-integration.md).
+Amikor elindítja a betanítási futtatás, ahol a forráskönyvtár egy helyi Git-tárház, a tárház adatait a futtatási előzmények tárolja. További információ: [Git integration for Azure Machine Learning.](concept-train-model-git-integration.md)
 
 ## <a name="examples"></a>Példák
-A becslési minta alapjait megjelenítő jegyzetfüzetek esetében lásd:
-* [használati útmutató – azureml/képzés – részletesen tanulás/használati útmutató – kalkulátor](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
+A becslőminta alapjait bemutató jegyzetfüzetek a következő témakörökben láthatók:
+* [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-Olyan jegyzetfüzetek esetében, amelyek a scikit-tanulási modellt a kalkulátor használatával végzik, lásd:
-* [oktatóanyagok/IMG-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+A scikit-learn modellt estimator segítségével bevonatozó jegyzetfüzetet lásd:
+* [oktatóanyagok/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-A betanítási modellekhez tartozó jegyzetfüzetek mélyreható tanulási keretrendszer-specifikus becslések való használatával kapcsolatban lásd:
+A mélytanulási keretrendszer-specifikus becslések használatával a képzési modellekről szóló jegyzetfüzetek a következő témakörökben jelennek meg:
 
-* [használati útmutató – azureml/ml – keretrendszerek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
+* [hogyan használható azureml/ml-keretrendszerek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
+* [Futási mérőszámok nyomon követése edzés közben](how-to-track-experiments.md)
 * [PyTorch-modellek betanítása](how-to-train-pytorch.md)
 * [TensorFlow-modellek betanítása](how-to-train-tensorflow.md)
-* [Hiperparaméterek beállítása hangolása](how-to-tune-hyperparameters.md)
-* [Betanított modell üzembe helyezése](how-to-deploy-and-where.md)
-* [Környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md)
+* [Hiperparaméterek hangolása](how-to-tune-hyperparameters.md)
+* [Betanított modell telepítése](how-to-deploy-and-where.md)
+* [Környezetek létrehozása és kezelése képzési és üzembe helyezési célokra](how-to-use-environments.md)

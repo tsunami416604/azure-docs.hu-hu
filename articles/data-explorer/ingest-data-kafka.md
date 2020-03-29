@@ -1,6 +1,6 @@
 ---
-title: Betölteni az adatokat a Kafkából az Azure Data Explorer
-description: Ebből a cikkből megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer kafka.
+title: Adatok betöltése a Kafkából az Azure Data Explorerbe
+description: Ebben a cikkben megtudhatja, hogyan töltheti be (töltheti be) az adatokat a Kafka Azure Data Explorerbe.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,33 +8,33 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497280"
 ---
-# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Betölteni az adatokat a Kafkából az Azure Data Explorer
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Adatok betöltése a Kafkából az Azure Data Explorerbe
  
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer Kafka Adatbetöltési (az adatok betöltése) kínál. A Kafka egy elosztott streamelési platform streamadatfolyamatok, amely megbízhatóan adatáthelyezést közötti rendszerek vagy alkalmazások kiépítését lehetővé teszi, hogy.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer a Kafka betöltését (adatbetöltését) kínálja. A Kafka egy elosztott streamelési platform, amely lehetővé teszi a valós idejű streamelési adatfolyamatok kiépítését, amelyek megbízhatóan mozgatják az adatokat a rendszerek vagy alkalmazások között.
  
 ## <a name="prerequisites"></a>Előfeltételek
  
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
  
-* [Egy teszt fürt és az adatbázis](create-cluster-database-portal.md).
+* [Tesztfürt és adatbázis](create-cluster-database-portal.md).
  
-* [Egy mintaalkalmazás](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , amely adatokat állít elő, és elküldi azokat a Kafka.
+* [Egy mintaalkalmazás,](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) amely adatokat hoz létre, és elküldi azokat a Kafkának.
 
-* [A Visual Studio 2019](https://visualstudio.microsoft.com/vs/) , futtassa a mintaalkalmazást.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) a mintaalkalmazás futtatásához.
  
-## <a name="kafka-connector-setup"></a>A Kafka-összekötő telepítése
+## <a name="kafka-connector-setup"></a>Kafka csatlakozó beállítása
 
-A Kafka csatlakozzon egy olyan eszköz, skálázható és megbízható folyamatos átviteli adatok az Apache Kafka és más rendszerek közötti. Lehetővé teszi, hogy gyorsan meghatározásához, hogy az adatok nagy gyűjteményeknek Kafka-összekötők egyszerű. A Kafka fogadó ADX Kafka a összekötőként szolgál.
+A Kafka Connect egy olyan eszköz, amely az Apache Kafka és más rendszerek közötti skálázható és megbízható adatfolyam-továbbítást szolgál. Ez leegyszerűsíti a kafka-ba és a Kafkába nagy adatgyűjteményeket áthelyező összekötők gyors definiálását. Az ADX Kafka Sink a Kafka összekötőjeként szolgál.
  
 ### <a name="bundle"></a>Csomag
 
-A Kafka betöltheti egy `.jar` , egy beépülő modult, amely egy egyéni összekötőt fog működni. Előállításához, például egy `.jar`, klónozza a kód a helyi rendszer és hozhat létre a Maven használatával. 
+Kafka lehet `.jar` betölteni egy plugin, amely működni fog, mint egy egyéni csatlakozó. Ahhoz, `.jar`hogy egy ilyen , akkor klón a kódot helyben és épít segítségével Maven. 
 
 #### <a name="clone"></a>Klónozás
 
@@ -45,13 +45,13 @@ cd ./kafka-sink-azure-kusto/kafka/
 
 #### <a name="build"></a>Felépítés
 
-Helyileg készítése a Mavennel előállításához egy `.jar` függőségekkel befejeződött.
+Helyileg a Maven-nel `.jar` hozhat létre függőségekkel rendelkező teljes körű buildelést.
 
-* JDK > = 1.8-as [letöltése](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Maven [letöltése](https://maven.apache.org/install.html)
+* JDK >= 1,8 [letöltés](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Maven [letöltés](https://maven.apache.org/install.html)
  
 
-A legfelső szintű könyvtárán belül található *kafka-fogadó-azure-kusto*futtassa:
+A *gyökérkönyvtárban kafka-sink-azure-kusto*, fuss:
 
 ```bash
 mvn clean compile assembly:single
@@ -59,10 +59,10 @@ mvn clean compile assembly:single
 
 ### <a name="deploy"></a>Üzembe helyezés 
 
-Töltse be a Kafka beépülő modult. A docker használatával központi telepítési példában talál [kafka-fogadó-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
+Load plugin a Kafka. A docker használatával egy üzembe helyezési példa megtalálható a [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
 
-Részletes dokumentációt a Kafka-összekötők, és hogyan kell őket telepíteni található [Kafka csatlakoztatása](https://kafka.apache.org/documentation/#connect) 
+Részletes dokumentáció a Kafka csatlakozókról és azok üzembe helyezéséről a [Kafka Connect](https://kafka.apache.org/documentation/#connect) 
 
 ### <a name="example-configuration"></a>Konfigurációs példa 
  
@@ -83,11 +83,11 @@ kusto.sink.tempdir=/var/tmp/
 kusto.sink.flush_size=1000
 ```
  
-## <a name="create-a-target-table-in-adx"></a>ADX a céloldali tábla létrehozása
+## <a name="create-a-target-table-in-adx"></a>Céltábla létrehozása az ADX-ben
  
-Hozzon létre egy táblát ADX, amelyhez a Kafka adatokat küldhet. A tábla létrehozása a fürt és az adatbázis kiépítése a **Előfeltételek**.
+Hozzon létre egy táblát az ADX-ben, amelyre a Kafka adatokat küldhet. Hozza létre a táblát a fürtben és az **Előfeltételek**területen kiépített adatbázisban.
  
-1. Az Azure Portalon keresse meg a fürt és a select **lekérdezés**.
+1. Az Azure Portalon keresse meg a fürtöt, és válassza a **Lekérdezés**lehetőséget.
  
     ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-hub/query-explorer-link.png)
  
@@ -110,7 +110,7 @@ Hozzon létre egy táblát ADX, amelyhez a Kafka adatokat küldhet. A tábla lé
 
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
-Most, hogy a Kafka-fürt ADX csatlakoztatva van, használja a [mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) letöltött adatok létrehozására.
+Most, hogy a Kafka-fürt csatlakozik az ADX-hez, használja a letöltött [mintaalkalmazást](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) az adatok létrehozásához.
 
 ### <a name="clone"></a>Klónozás
 
@@ -125,41 +125,41 @@ cd ./azure-kusto-samples-dotnet/kafka/
 
 1. Nyissa meg a mintaalkalmazást a Visual Studióban.
 
-1. Az a `Program.cs` fájlt, frissítse a `connectionString` konstans, a Kafka-kapcsolati karakterláncot.
+1. A `Program.cs` fájlban frissítse `connectionString` az állandót a Kafka kapcsolati karakterláncra.
 
     ```csharp    
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. Hozza létre és futtassa az alkalmazást. Az alkalmazás üzeneteket küld a Kafka-fürt, és jelenít meg, az állapota 10 másodpercenként.
+1. Hozza létre és futtassa az alkalmazást. Az alkalmazás üzeneteket küld a Kafka-fürtnek, és 10 másodpercenként kinyomtatja az állapotát.
 
-1. Miután az alkalmazás néhány üzenetet küldött, folytassa a következő lépéssel.
+1. Miután az alkalmazás elküldött néhány üzenetet, lépjen tovább a következő lépésre.
  
-## <a name="query-and-review-the-data"></a>Lekérdezés, és tekintse át az adatokat
+## <a name="query-and-review-the-data"></a>Adatok lekérdezése és áttekintése
 
-1. Győződjön meg arról, hogy nem történt hiba Adatbetöltési során:
+1. Annak érdekében, hogy a betöltés során ne történt hiba:
 
     ```Kusto
     .show ingestion failures
     ```
 
-1. Az újonnan betöltött adatok megjelenítése:
+1. Az újonnan bevitt adatok megtekintése:
 
     ```Kusto
     TestTable 
     | count
     ```
 
-1. Láthatja az üzenetek:
+1. Az üzenetek tartalmának megtekintése:
  
     ```Kusto
     TestTable
     ```
  
-    Az eredményhalmaz a következőhöz hasonlóan kell kinéznie:
+    Az eredményhalmaznak a következőkre kell hasonlítania:
  
     ![Üzenetek eredményhalmaza](media/ingest-data-event-hub/message-result-set.png)
  
 ## <a name="next-steps"></a>További lépések
  
-* [Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+* [Adatok lekérdezése az Azure Data Explorerben](web-query-data.md)

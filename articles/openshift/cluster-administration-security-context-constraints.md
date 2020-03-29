@@ -1,26 +1,26 @@
 ---
-title: Biztonsági környezeti korlátozások kezelése az Azure Red Hat OpenShift | Microsoft Docs
-description: Biztonsági környezeti korlátozások az Azure Red Hat OpenShift-fürt rendszergazdái számára
+title: Biztonsági környezetkorlátainak kezelése az Azure Red Hat OpenShift ben | Microsoft dokumentumok
+description: Az Azure Red Hat OpenShift fürtrendszergazdáinak biztonsági környezetkorlátai
 services: container-service
 author: troy0820
-ms.author: jzim
+ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063178"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Biztonsági környezeti korlátozások kezelése az Azure Red Hat OpenShift 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Biztonsági környezetkorlátainak kezelése az Azure Red Hat OpenShift ben 
 
-A biztonsági környezeti megkötések (SCCs) lehetővé teszik a fürt rendszergazdái számára a hüvely engedélyeinek vezérlését. Ha többet szeretne megtudni erről az API-típusról, tekintse meg a [SCCs architektúrájának dokumentációját](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). A SCCs a példányban a CLI használatával a szokásos API-objektumokként kezelheti.
+A biztonsági környezet megkötései (SCC-k) lehetővé teszik a fürtrendszergazdák számára a podok engedélyeinek vezérlését. Az API-típusról az [SCC-k architektúrájának dokumentációjában olvashat bővebben.](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) A CLI használatával a példányban lévő SCC-ket normál API-objektumként kezelheti.
 
-## <a name="list-security-context-constraints"></a>Biztonsági környezeti megkötések listázása
+## <a name="list-security-context-constraints"></a>Biztonsági környezetmegkötések listázása
 
-A SCCs aktuális listájának beszerzéséhez használja a következő parancsot: 
+Az SCC-k aktuális listájának leéséhez használja a következő parancsot: 
 
 ```bash
 $ oc get scc
@@ -35,42 +35,42 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Egy objektum vizsgálata biztonsági környezeti megkötések esetén
+## <a name="examine-an-object-for-security-context-constraints"></a>Objektum biztonsági környezetbeli megkötéseinek vizsgálata
 
-Egy adott SCC vizsgálatához használja a `oc get`, `oc describe` vagy a `oc edit` értéket.  Például a **korlátozott** SCC vizsgálatához használja a következő parancsot:
+Egy adott SCC vizsgálatához használja `oc get`a , `oc describe`vagy `oc edit`a .  A **korlátozott** SCC vizsgálatához például használja a következő parancsot:
 ```bash
 $ oc describe scc restricted
-Name:                   restricted
-Priority:               <none>
+Name:                    restricted
+Priority:                <none>
 Access:
   Users:                <none>
-  Groups:               system:authenticated
+  Groups:                system:authenticated
 Settings:
-  Allow Privileged:         false
-  Default Add Capabilities:     <none>
-  Required Drop Capabilities:       KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
-  Allowed Capabilities:         <none>
-  Allowed Seccomp Profiles:     <none>
-  Allowed Volume Types:         configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
-  Allow Host Network:           false
-  Allow Host Ports:         false
-  Allow Host PID:           false
-  Allow Host IPC:           false
+  Allow Privileged:            false
+  Default Add Capabilities:        <none>
+  Required Drop Capabilities:        KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+  Allowed Capabilities:            <none>
+  Allowed Seccomp Profiles:        <none>
+  Allowed Volume Types:            configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
+  Allow Host Network:            false
+  Allow Host Ports:            false
+  Allow Host PID:            false
+  Allow Host IPC:            false
   Read Only Root Filesystem:        false
   Run As User Strategy: MustRunAsRange
     UID:                <none>
-    UID Range Min:          <none>
-    UID Range Max:          <none>
+    UID Range Min:            <none>
+    UID Range Max:            <none>
   SELinux Context Strategy: MustRunAs
-    User:               <none>
-    Role:               <none>
-    Type:               <none>
-    Level:              <none>
+    User:                <none>
+    Role:                <none>
+    Type:                <none>
+    Level:                <none>
   FSGroup Strategy: MustRunAs
-    Ranges:             <none>
+    Ranges:                <none>
   Supplemental Groups Strategy: RunAsAny
-    Ranges:             <none>
+    Ranges:                <none>
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) 

@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuális gépek méretei – tárolás | Microsoft Docs
-description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző tárterület-optimalizált méreteket. A vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózat sávszélességével kapcsolatos információkat sorolja fel ebben a sorozatban.
+title: Az Azure virtuális gépek méretei - Storage | Microsoft dokumentumok
+description: Az Azure-ban a virtuális gépekhez elérhető különböző tárhelyre optimalizált méretek. A vCPU-k, adatlemezek és hálózati adapterek számával, valamint a tárolóátviteli és hálózati sávszélességgel kapcsolatos információkat sorolja fel a sorozat méreteihez.
 services: virtual-machines
 documentationcenter: ''
 author: sasha-melamed
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: 5a611dc288fc18a14f6000689f9f9b49d4b3feb8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913336"
 ---
-# <a name="storage-optimized-virtual-machine-sizes"></a>Tárterületre optimalizált virtuálisgép-méretek
+# <a name="storage-optimized-virtual-machine-sizes"></a>Tárhelyre optimalizált virtuális gépméretek
 
-A tárolásra optimalizált virtuálisgép-méretek nagy méretű adatátviteli sebességet és IO-t biztosítanak, és ideálisak a Big adatok, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok számára.  Ilyenek például a Cassandra, a MongoDB, a Cloudera és a Redis. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számáról, valamint a helyi tárterület átviteli sebességéről és a hálózati sávszélességről nyújt információt az egyes optimalizált méretekhez.
+A tárhelyre optimalizált virtuális gépméretek nagy lemezátviteli és I/O-t kínálnak, és ideálisak big data, SQL, NoSQL adatbázisok, adattárház és nagy méretű tranzakciós adatbázisok számára.  Ilyen például cassandra, MongoDB, Cloudera és Redis. Ez a cikk a vCPU-k, adatlemezek és hálózati adapterek, valamint a helyi tárolási átviteli és hálózati sávszélesség számáról tartalmaz információt az egyes optimalizált mérethez.
 
-A [Lsv2 sorozat](lsv2-series.md) nagy átviteli sebességű, kis késleltetésű, közvetlenül leképezett helyi NVMe-tárolót biztosít az [AMD EPYC<sup>TM</sup> 7551 processzoron](https://www.amd.com/en/products/epyc-7000-series) , amely a 2.55 GHz-es és a 3,0 GHz-es maximális lendülettel rendelkezik. Az Lsv2 sorozatú virtuális gépek elérhetőek 8 és 80 vCPU-s méretekben egy párhuzamos többszálas konfigurációban.  A vCPU-nkénti memória 8 GiB, és 8 vCPU-nkét egy 1,92 TB-os NVMe SSD M.2 eszköz, és az L80s v2-nél akár 19,2 TB (10x1,92 TB) is elérhető.
+Az [Lsv2 sorozat](lsv2-series.md) nagy átviteli sebességgel, alacsony késleltetéssel, közvetlenül feltérképezett helyi NVMe tárolóval rendelkezik, amely az [AMD EPYC<sup>TM</sup> 7551 processzoron](https://www.amd.com/en/products/epyc-7000-series) fut, 2,55 GHz-es magemeléssel és 3,0 GHz-es maximális növekedéssel. Az Lsv2 sorozatú virtuális gépek 8 és 80 vCPU között kaphatók egyidejű többszálas konfigurációban.  Van 8 GiB memória vCPU-nként, és egy 1.92TB NVMe SSD M.2 eszköz 8 vCPU-nként, akár 19.2TB (10x1.92TB) elérhető az L80s v2.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -36,8 +36,8 @@ A [Lsv2 sorozat](lsv2-series.md) nagy átviteli sebességű, kis késleltetésű
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
 
-Ismerje meg, hogyan optimalizálhatja a teljesítményt a Windows vagy [Linux](linux/storage-performance.md) [rendszerhez](windows/storage-performance.md) készült Lsv2-sorozatú virtuális gépeken.
+Ismerje meg, hogyan optimalizálhatja a teljesítményt az Lsv2 sorozatú [windowsos](windows/storage-performance.md) vagy [Linuxos](linux/storage-performance.md)virtuális gépeken.

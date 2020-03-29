@@ -1,7 +1,7 @@
 ---
 title: Biztonságos webszolgáltatások a TLS használatával
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan engedélyezheti a HTTPS-t a Azure Machine Learning használatával központilag telepített webszolgáltatás biztonságossá tétele érdekében. A Azure Machine Learning a TLS 1,2-es verzióját használja a webszolgáltatásként üzembe helyezett modellek biztonságossá tételéhez.
+description: Ismerje meg, hogyan engedélyezheti a HTTPS-t az Azure Machine Learningen keresztül üzembe helyezett webszolgáltatás biztonságossá tétele érdekében. Az Azure Machine Learning a TLS 1.2-es verzióját használja a webszolgáltatásként üzembe helyezett modellek védelméhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,94 +11,94 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287339"
 ---
-# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatás biztonságossá tétele az Azure Machine Learning en keresztül a TLS használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez a cikk bemutatja, hogyan védheti meg az Azure Machine Learning használatával üzembe helyezett webszolgáltatásokat.
+Ez a cikk bemutatja, hogyan biztonságos sá that's deployed through Azure Machine Learning.
 
-A [https](https://en.wikipedia.org/wiki/HTTPS) használatával korlátozhatja a webszolgáltatásokhoz való hozzáférést, és gondoskodhat az ügyfelek által elküldött adatvédelemről. A HTTPS segíti a kommunikációt az ügyfél és a webszolgáltatás között a kettő közötti kommunikáció titkosításával. A titkosítás [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)protokollt használ. A TLS-t néha *SSL* (SSL) néven is emlegetik, amely a TLS elődje volt.
+A [HTTPS](https://en.wikipedia.org/wiki/HTTPS) használatával korlátozhatja a webszolgáltatásokhoz való hozzáférést, és biztonságossá teszi az ügyfelek által beküldött adatokat. A HTTPS a kettő közötti kommunikáció titkosításával segíti az ügyfél és a webszolgáltatás közötti kommunikáció biztonságát. A titkosítás [a Transport Layer Security (TLS) (Transport Layer Security) (Transport Layer Security) (Transport Layer Security) (Transport Layer Security) (TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) A TLS-t néha még mindig Secure Sockets Layer (SSL) néven is *emlegetik,* amely a TLS elődje volt.
 
 > [!TIP]
-> Az Azure Machine Learning SDK az "SSL" kifejezést használja a biztonságos kommunikációhoz kapcsolódó tulajdonságokhoz. Ez nem jelenti azt, hogy a webszolgáltatás nem használ *TLS*-t. Az SSL csak egy gyakrabban felismert kifejezés.
+> Az Azure Machine Learning SDK az "SSL" kifejezést használja a biztonságos kommunikációhoz kapcsolódó tulajdonságokhoz. Ez nem jelenti azt, hogy a webszolgáltatás nem használja a *TLS-t.* SSL csak egy általánosan elismert kifejezés.
 >
-> A Azure Machine Learning-en keresztül üzembe helyezett webszolgáltatások csak a 1,2-es TLS-verziót támogatják.
+> Pontosabban az Azure Machine Learningen keresztül telepített webszolgáltatások csak a TLS 1.2-es verzióját támogatják.
 
-A TLS és az SSL egyaránt *digitális tanúsítványokra*támaszkodik, amelyek segítenek a titkosítás és az identitások ellenőrzésében. A digitális tanúsítványok működésével kapcsolatos további információkért tekintse meg a wikipedia témakör [nyilvános kulcsokra épülő infrastruktúráját](https://en.wikipedia.org/wiki/Public_key_infrastructure).
+A TLS és az SSL egyaránt *digitális tanúsítványokra*támaszkodik, amelyek segítenek a titkosításban és az identitás-ellenőrzésben. A digitális tanúsítványok működéséről a Wikipédia [Nyilvános kulcs infrastruktúrája](https://en.wikipedia.org/wiki/Public_key_infrastructure)című témakörben olvashat bővebben.
 
 > [!WARNING]
-> Ha nem használja a HTTPS-t a webszolgáltatáshoz, a szolgáltatásba érkező és onnan érkező adatok az interneten mások számára is láthatóvá válnak.
+> Ha nem használja a HTTPS-t a webszolgáltatáshoz, a szolgáltatásba és a szolgáltatásból küldött adatok az interneten mások számára is láthatóak lehetnek.
 >
-> A HTTPS azt is lehetővé teszi az ügyfél számára, hogy ellenőrizze annak a kiszolgálónak a hitelességét, amelyhez csatlakozik. Ez a szolgáltatás megvédi [az](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) ügyfeleket a támadásokkal szemben.
+> A HTTPS azt is lehetővé teszi, hogy az ügyfél ellenőrizze annak a kiszolgálónak a hitelességét, amelyhez csatlakozik. Ez a funkció megvédi az ügyfeleket [a köztes](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) támadásoktól.
 
-Ez a webszolgáltatás biztonságossá tételének általános folyamata:
+Ez a webszolgáltatás biztonságossá tétele általános folyamat:
 
-1. Kérje le egy tartomány nevét.
+1. Szerezzen be egy tartománynevet.
 
-2. Digitális tanúsítvány beszerzése.
+2. Szerezzen be egy digitális tanúsítványt.
 
-3. A webszolgáltatás üzembe helyezése vagy frissítése engedélyezve az SSL használatával.
+3. Telepítse vagy frissítse a webszolgáltatást úgy, hogy a TLS engedélyezve van.
 
-4. Frissítse a DNS, a web Service mutasson.
+4. Frissítse a DNS-t, hogy a webszolgáltatásra mutasson.
 
 > [!IMPORTANT]
-> Ha az Azure Kubernetes szolgáltatásba (ak) végzi az üzembe helyezést, megvásárolhatja saját tanúsítványát, vagy a Microsoft által biztosított tanúsítványt is használhatja. Ha tanúsítványt használ a Microsofttól, nem kell beszereznie a tartománynevet vagy az SSL-tanúsítványt. További információ: az [SSL és a telepítés engedélyezése](#enable) című rész, jelen cikk.
+> Ha az Azure Kubernetes-szolgáltatásra (AKS) telepít, megvásárolhatja saját tanúsítványát, vagy használhatja a Microsoft által biztosított tanúsítványt. Ha a Microsoft tanúsítványát használja, nem kell tartománynevet vagy TLS/SSL tanúsítványt beszereznie. További információt a [cikk TLS engedélyezése és üzembe helyezése](#enable) című szakaszában talál.
 
-Kis eltérések vannak, amikor a biztonsági s-t az [üzembe helyezési célok](how-to-deploy-and-where.md)között.
+Vannak kisebb különbségek, ha biztonságos s között [telepítési célokat.](how-to-deploy-and-where.md)
 
-## <a name="get-a-domain-name"></a>Tartománynév beszerzése
+## <a name="get-a-domain-name"></a>Tartománynév beszereznie
 
-Ha még nem rendelkezik tartománynévvel, vásároljon egyet a tartománynév- *regisztrálótól*. A folyamat és az ár eltér a regisztrátorok között. A regisztrátor a tartománynevet kezelő eszközöket biztosít. Ezeknek az eszközöknek a segítségével teljes tartománynevet (például www\.contoso.com) képezhető le a webszolgáltatást futtató IP-címhez.
+Ha még nem rendelkezik tartománynévvel, vásároljon egyet egy *tartományregisztrálótól.* A folyamat és az ár eltér a regisztrátorok között. A regisztrátor eszközöket biztosít a tartománynév kezeléséhez. Ezekkel az eszközökkel egy teljesen minősített tartománynevet (például\.www contoso.com) rendel a webszolgáltatást tartalmazó IP-címre.
 
-## <a name="get-an-ssl-certificate"></a>SSL-tanúsítvány beszerzése
+## <a name="get-a-tlsssl-certificate"></a>TLS/SSL tanúsítvány beszerezni
 
-Az SSL-tanúsítványok (digitális tanúsítványok) többféleképpen is beszerezhetők. A leggyakoribb a *hitelesítésszolgáltató (CA* ) egyikének megvásárlása. A tanúsítvány lekérésének helyétől függetlenül a következő fájlokra lesz szüksége:
+A TLS/SSL tanúsítvány (digitális tanúsítvány) számos módon szerezhető be. A leggyakoribb az, hogy megvásárol egy *hitelesítésszolgáltatótól* (CA). Függetlenül attól, hogy hol kapja meg a tanúsítványt, a következő fájlokra van szüksége:
 
-* Egy **tanúsítvány**. A tanúsítványnak tartalmaznia kell a teljes tanúsítványláncot, és a "PEM-kódolt" értéknek kell lennie.
-* Egy **kulcs**. A kulcsnak PEM-kódolású is kell lennie.
+* A **tanúsítvány**. A tanúsítványnak tartalmaznia kell a teljes tanúsítványláncot, és "PEM-kódoltnak" kell lennie.
+* A **kulcs**. A kulcsot PEM-kódolásúnak is kell lennie.
 
-Ha tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívánt címek teljes tartománynevét (például a www\.contoso.com). A rendszer a tanúsítványba pecsételő és az ügyfelek által használt címek összehasonlításával ellenőrzi a webszolgáltatás identitását. Ha ezek a címek nem egyeznek, az ügyfél hibaüzenetet kap.
+Amikor tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívánt cím teljes tartománynát (például www\.contoso.com). A tanúsítványba bepecsételt címet és az ügyfelek által használt címet a rendszer összehasonlítja a webszolgáltatás identitásának ellenőrzéséhez. Ha ezek a címek nem egyeznek, az ügyfél hibaüzenetet kap.
 
 > [!TIP]
-> Ha a hitelesítésszolgáltató nem tudja megadni a tanúsítványt és a kulcsot PEM-kódolású fájlként, használhat egy olyan segédprogramot, mint például az [OpenSSL](https://www.openssl.org/) a formátum megváltoztatásához.
+> Ha a hitelesítésszolgáltató nem tudja PEM-kódolású fájlként biztosítani a tanúsítványt és a kulcsot, a formátum módosításához használhat egy segédprogramot, például az [OpenSSL-t.](https://www.openssl.org/)
 
 > [!WARNING]
-> *Önaláírt* tanúsítványokat csak fejlesztéshez használhat. Ne használja őket éles környezetekben. Önaláírt tanúsítványok problémákat okozhat az ügyfél az alkalmazásokat. További információkért tekintse meg az ügyfélalkalmazás által használt hálózati kódtárak dokumentációját.
+> Csak *önaláírt* tanúsítványokat használjon fejlesztésre. Ne használja őket éles környezetben. Az önaláírt tanúsítványok problémákat okozhatnak az ügyfélalkalmazásokban. További információt az ügyfélalkalmazás által használt hálózati tárak dokumentációjában talál.
 
-## <a id="enable"></a>Az SSL engedélyezése és üzembe helyezése
+## <a name="enable-tls-and-deploy"></a><a id="enable"></a>TLS engedélyezése és üzembe helyezés
 
-A szolgáltatás üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) engedélyezve van az SSL, állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
+A szolgáltatás üzembe helyezéséhez (vagy újratelepítéséhez) a TLS engedélyezve van, állítsa a *ssl_enabled* paramétert "True" értékre, bárhol is legyen alkalmazható. Állítsa be a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa be a *ssl_key* a *kulcsfájl* értékére.
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Üzembe helyezés az AK-ban és a Field-programozható Gate array (FPGA)
+### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Üzembe helyezés AKS-en és mezőprogramozható kaputömbön (FPGA)
 
   > [!NOTE]
-  > Az ebben a szakaszban található információk akkor is érvényesek, ha biztonságos webszolgáltatást telepít a tervezőhöz. Ha nem ismeri a Python SDK használatát, tekintse [meg a mi a Pythonhoz készült Azure Machine learning SDK?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)című témakört.
+  > Az ebben a szakaszban található információk akkor is érvényesek, ha biztonságos webszolgáltatást telepít a tervező számára. Ha nem ismeri a Python SDK használatát, olvassa el [a Mi az Azure Machine Learning SDK pythonhoz.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
-Ha AK-ra végez üzembe helyezést, létrehozhat egy új AK-fürtöt, vagy csatolhat egy meglévőt. A fürtök létrehozásával vagy csatolásával kapcsolatos további információkért lásd: [modell üzembe helyezése Azure Kubernetes Service-fürtön](how-to-deploy-azure-kubernetes-service.md).
+Az AKS-re való üzembe helyezéskor létrehozhat egy új AKS-fürtöt, vagy csatolhat egy meglévőt. A fürt létrehozásáról és csatolásáról a [Modell telepítése egy Azure Kubernetes-szolgáltatásfürthöz című témakörben](how-to-deploy-azure-kubernetes-service.md)talál további információt.
   
--  Ha új fürtöt hoz létre, használja a **[AksCompute. provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** .
-- Ha meglévő fürtöt csatlakoztat, használja a **[AksCompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** programot. Mindkettő olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik.
+-  Ha új fürtöt hoz létre, az **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**.
+- Ha meglévő fürtöt csatol, az **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**. Mindkettő olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik.
 
-A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt tanúsítvánnyal rendelkező tanúsítványt is használhat.
+A **enable_ssl** módszer a Microsoft által biztosított tanúsítványt vagy a megvásárolt tanúsítványt használhatja.
 
-  * Ha tanúsítványt használ a Microsofttól, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "contoso" érték például a "contoso\<hat-Random-characters > tartománynevet hozza létre.\<azureregion >. cloudapp. Azure. com ", ahol a \<azureregion > a szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*.
+  * Ha a Microsoft tanúsítványát használja, a *leaf_domain_label* paramétert kell használnia. Ez a paraméter hozza létre a szolgáltatás DNS-nevét. A "contoso" érték például "contoso\<hat-véletlen karakterek> tartománynevet hoz létre. \<azureregion>.cloudapp.azure.com", \<ahol az azureregion> a szolgáltatást tartalmazó régió. Szükség esetén a *overwrite_existing_domain* paraméterrel felülírhatja a meglévő *leaf_domain_label.*
 
-    A szolgáltatás üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) engedélyezve van az SSL, állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
+    A szolgáltatás üzembe helyezéséhez (vagy újratelepítéséhez) a TLS engedélyezve van, állítsa a *ssl_enabled* paramétert "True" értékre, bárhol is legyen alkalmazható. Állítsa be a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa be a *ssl_key* a *kulcsfájl* értékére.
 
     > [!IMPORTANT]
-    > Ha tanúsítványt használ a Microsofttól, nem kell megvásárolnia a saját tanúsítványát vagy tartománynevét.
+    > Ha a Microsoft tól származó tanúsítványt használ, nem kell megvásárolnia a saját tanúsítványát vagy tartománynevét.
 
-    Az alábbi példa bemutatja, hogyan hozhat létre olyan konfigurációt, amely lehetővé teszi egy SSL-tanúsítvány létrehozását a Microsofttól:
+    A következő példa bemutatja, hogyan hozhat létre olyan konfigurációt, amely engedélyezi a Microsoft TLS/SSL tanúsítványát:
 
     ```python
     from azureml.core.compute import AksCompute
-    # Config used to create a new AKS cluster and enable SSL
+    # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
@@ -106,7 +106,7 @@ A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt 
     provisioning_config.enable_ssl(leaf_domain_label = "contoso")
 
 
-    # Config used to attach an existing AKS cluster to your workspace and enable SSL
+    # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
     # Leaf domain label generates a name using the formula
@@ -115,11 +115,11 @@ A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt 
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * A *megvásárolt tanúsítvány*használatakor a *ssl_cert_pem_file*, *ssl_key_pem_file*és *ssl_cname* paramétereket kell használnia. Az alábbi példa bemutatja, hogyan használhatók a *. PEM* -fájlok olyan konfigurációk létrehozásához, amelyek egy MEGvásárolt SSL-tanúsítványt használnak:
+  * A *megvásárolt tanúsítvány*használatakor a *ssl_cert_pem_file,* *a ssl_key_pem_file*és *ssl_cname* paramétereket használja. A következő példa bemutatja, hogyan lehet *a .pem* fájlok használatával olyan konfigurációt létrehozni, amely a megvásárolt TLS/SSL tanúsítványt használja:
 
     ```python
     from azureml.core.compute import AksCompute
-    # Config used to create a new AKS cluster and enable SSL
+    # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
@@ -130,11 +130,11 @@ A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt 
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-További információ a *enable_sslről*: [AksProvisioningConfiguration. enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) és [AksAttachConfiguration. enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
+A *enable_ssl*kapcsolatos további tudnivalókért olvassa el az [AksProvisioningConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) és [az AksAttachConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)című témakört.
 
-### <a name="deploy-on-azure-container-instances"></a>Üzembe helyezés Azure Container Instances
+### <a name="deploy-on-azure-container-instances"></a>Üzembe helyezés az Azure Container-példányokon
 
-Ha Azure Container Instancesre telepít, az SSL-hez kapcsolódó paraméterek értékeit adja meg, az alábbi kódrészlet pedig az alábbiakat mutatja be:
+Amikor üzembe helyezi az Azure Container Instances, adja meg a TLS-sel kapcsolatos paraméterek értékeit, ahogy azt a következő kódrészlet mutatja:
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -143,34 +143,34 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-További információ: [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
+További információ: [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-).
 
 ## <a name="update-your-dns"></a>A DNS frissítése
 
-Ezt követően frissítenie kell a DNS, a web Service mutasson.
+Ezután frissítenie kell a DNS-t, hogy a webszolgáltatásra mutasson.
 
-+ **Container Instances esetén:**
++ **Tárolópéldányok esetén:**
 
-  A tartománynév-regisztráló eszközeit használva frissítse a tartománynév DNS-rekordját. A rekordnak a szolgáltatás IP-címére kell mutatnia.
+  A tartománynév-regisztráló eszközeivel frissítheti a tartománynév DNS-rekordját. A rekordnak a szolgáltatás IP-címére kell mutatnia.
 
-  Perc vagy óra késése is lehet, mielőtt az ügyfelek fel tudják oldani a tartománynevet a regisztrátortól és a tartománynévhez konfigurált "élettartamtól" (TTL) függően.
+  A tartománynév feloldása a regisztrálótól és a tartománynévhez konfigurált "time to live" (TTL) beállítástól függően percek vagy órák késleltetése lehet.
 
-+ **AK esetében:**
++ **AKS esetében:**
 
   > [!WARNING]
-  > Ha az *leaf_domain_label* használatával hozza létre a szolgáltatást a Microsofttól származó tanúsítvánnyal, ne frissítse manuálisan a fürt DNS-értékét. Az értéket automatikusan kell beállítani.
+  > Ha *leaf_domain_label* a szolgáltatás microsoftos tanúsítvány használatával történő létrehozásához használta, ne frissítse manuálisan a fürt DNS-értékét. Az értéket automatikusan be kell állítani.
 
-  Frissítse az AK-fürt nyilvános IP-címének DNS-címét a **konfiguráció** lapon a bal oldali ablaktábla **Beállítások** területén. (Lásd az alábbi ábrát.) A nyilvános IP-cím olyan erőforrástípus, amely az AK-ügynök csomópontjait és egyéb hálózati erőforrásokat tartalmazó erőforráscsoport alatt jön létre.
+  Frissítse az AKS-fürt nyilvános IP-címének DNS-ét a **bal** oldali ablaktábla **Beállítások lapján.** (Lásd az alábbi képet.) A nyilvános IP-cím egy olyan erőforrástípus, amely az AKS-ügynökcsomópontokat és más hálózati erőforrásokat tartalmazó erőforráscsoport alatt jön létre.
 
-  [![Azure Machine Learning: webszolgáltatások biztonságossá tétele SSL használatával](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Webes szolgáltatások védelme a TLS-sel](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
-## <a name="update-the-ssl-certificate"></a>Az SSL-tanúsítvány frissítése
+## <a name="update-the-tlsssl-certificate"></a>A TLS/SSL tanúsítvány frissítése
 
-Az SSL-tanúsítványok lejárnak, és meg kell újítani. Ez általában évente történik. A következő részben található információk segítségével frissítheti és újíthatja meg az Azure Kubernetes Service-ben üzembe helyezett modellek tanúsítványát:
+A TLS/SSL tanúsítványok lejárnak, és meg kell újítani őket. Jellemzően ez történik minden évben. Az alábbi szakaszokban található információk segítségével frissítse és újítsa meg az Azure Kubernetes-szolgáltatásba telepített modellek tanúsítványát:
 
-### <a name="update-a-microsoft-generated-certificate"></a>Microsoft által generált tanúsítvány frissítése
+### <a name="update-a-microsoft-generated-certificate"></a>Microsoft által létrehozott tanúsítvány frissítése
 
-Ha a tanúsítványt eredetileg a Microsoft hozta létre (ha a *leaf_domain_label* a szolgáltatás létrehozásához használja), az alábbi példák egyikével frissítheti a tanúsítványt:
+Ha a tanúsítványt eredetileg a Microsoft hozta létre (amikor a *leaf_domain_label* a szolgáltatás létrehozásához használta, az alábbi példák egyikével frissítse a tanúsítványt:
 
 **Az SDK használata**
 
@@ -194,18 +194,18 @@ aks_target.update(update_config)
 az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
 ```
 
-További információkért tekintse meg a következő dokumentációs dokumentumokat:
+További információt az alábbi hivatkozási dokumentumokban talál:
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [Ssl-konfiguráció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
 * [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
 
 ### <a name="update-custom-certificate"></a>Egyéni tanúsítvány frissítése
 
-Ha a tanúsítványt eredetileg egy hitelesítésszolgáltató hozta létre, kövesse az alábbi lépéseket:
+Ha a tanúsítványt eredetileg hitelesítésszolgáltató hozta létre, kövesse az alábbi lépéseket:
 
-1. A tanúsítvány megújításához használja a hitelesítésszolgáltató által biztosított dokumentációt. Ez a folyamat új tanúsítványfájl-fájlokat hoz létre.
+1. A tanúsítvány megújításához használja a hitelesítésszolgáltató által biztosított dokumentációt. Ez a folyamat új tanúsítványfájlokat hoz létre.
 
-1. Az SDK vagy a CLI használatával frissítse a szolgáltatást az új tanúsítvánnyal:
+1. Az SDK vagy a CLI segítségével frissítse a szolgáltatást az új tanúsítvánnyal:
 
     **Az SDK használata**
 
@@ -234,14 +234,14 @@ Ha a tanúsítványt eredetileg egy hitelesítésszolgáltató hozta létre, kö
     az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-cname "myaks"--ssl-cert-file "cert.pem" --ssl-key-file "key.pem"
     ```
 
-További információkért tekintse meg a következő dokumentációs dokumentumokat:
+További információt az alábbi hivatkozási dokumentumokban talál:
 
-* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [Ssl-konfiguráció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
 * [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
 
-## <a name="disable-ssl"></a>SSL letiltása
+## <a name="disable-tls"></a>A TLS letiltása
 
-Ha le szeretné tiltani az SSL-t az Azure Kubernetes szolgáltatásban üzembe helyezett modellhez, hozzon létre egy `SslConfiguration`t a `status="Disabled"`, majd hajtson végre egy frissítést:
+Az Azure Kubernetes-szolgáltatásra telepített modell TLS `SslConfiguration` letiltásához hozzon létre egy a használatával, `status="Disabled"`majd hajtson végre egy frissítést:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -251,13 +251,13 @@ from azureml.core.compute.aks import SslConfiguration
 # Get the existing cluster
 aks_target = AksCompute(ws, clustername)
 
-# Disable SSL
+# Disable TLS
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbiak végrehajtásának módját ismerheti meg:
 + [Webszolgáltatásként üzembe helyezett gépi tanulási modell felhasználása](how-to-consume-web-service.md)
-+ [Kísérletek és következtetések biztonságos futtatása Azure-beli virtuális hálózaton belül](how-to-enable-virtual-network.md)
++ [Biztonságosan futtatjon kísérleteket és következtetéseket az Azure virtuális hálózatán belül](how-to-enable-virtual-network.md)

@@ -1,37 +1,37 @@
 ---
-title: Resource Manager-sablonok a MongoDB Azure Cosmos DB API-hoz
-description: Azure Resource Manager-sablonok használatával Azure Cosmos DB API-t hozhat létre és konfigurálhat a MongoDB.
+title: Erőforrás-kezelősablonok a MongoDB-hoz készült Azure Cosmos DB API-hoz
+description: Azure Resource Manager-sablonok használatával hozhatja létre és konfigurálhatja az Azure Cosmos DB API-t a MongoDB számára.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: eb3b0537b01c60e79959494c65306c4a56c331a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 531f122679c463b11c84eba2fca9f30b09e0935f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251855"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063639"
 ---
-# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB API-erőforrások kezelése Azure Resource Manager-sablonok használatával
+# <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Az Azure Cosmos DB MongoDB API-erőforrások kezelése az Azure Resource Manager-sablonokkal
 
-Ez a cikk bemutatja, hogyan hajthat végre különböző műveleteket a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók felügyeletének automatizálásához Azure Resource Manager-sablonok használatával. Ez a cikk példákat tartalmaz a Azure Cosmos DB API-MongoDB csak az API-típusok más típusú fiókjainak megkereséséhez lásd: a Azure Resource Manager-sablonok használata a Azure Cosmos DB API-jával a [Cassandra](manage-cassandra-with-resource-manager.md), a [Gremlin](manage-gremlin-with-resource-manager.md), az [SQL](manage-sql-with-resource-manager.md)és a [Table](manage-table-with-resource-manager.md) cikkekhez.
+Ez a cikk ismerteti, hogyan hajthatja végre a különböző műveleteket az Azure Cosmos DB-fiókok, adatbázisok és tárolók felügyeletének automatizálására az Azure Resource Manager-sablonok használatával. Ez a cikk példákat az Azure Cosmos DB API-t a MongoDB csak példákat más API-típusú fiókok lásd: használja az Azure Resource Manager-sablonok at Azure Cosmos DB API [cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [Table](manage-table-with-resource-manager.md) cikkek.
 
-## MongoDB-fiók, adatbázis és gyűjtemény létrehozása Azure Cosmos DB API-val<a id="create-resource"></a>
+## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Azure Cosmos DB API létrehozása MongoDB-fiókhoz, adatbázishoz és gyűjteményhez<a id="create-resource"></a>
 
-Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon használatával. Ez a sablon egy Azure Cosmos-fiókot hoz létre a MongoDB API-hoz két olyan gyűjteménysel, amelyek a 400 RU/s átviteli sebességet használják az adatbázis szintjén. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
+Hozzon létre Azure Cosmos DB-erőforrásokat egy Azure Resource Manager-sablon használatával. Ez a sablon létrehoz egy Azure Cosmos-fiókot a MongoDB API-hoz két olyan gyűjteménynel, amelyek adatbázis szinten 400 RU/s átviteli sebességgel rendelkeznek. Másolja a sablont, és telepítse az alábbiak szerint, vagy keresse fel az [Azure Gyorsútmutató galériát,](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) és telepítse az Azure Portalról. A sablont letöltheti a helyi számítógépre, vagy létrehozhat egy új `--template-file` sablont, és megadhatja a helyi elérési utat a paraméterrel.
 
 > [!NOTE]
-> A fióknév csak kisbetűket és 44 karaktert tartalmazhat.
-> Az RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonság-értékekkel.
+> A fiókneveknek kisbetűsnek és 44 vagy kevesebb karakternek kell lenniük.
+> A RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonságértékekkel.
 >
-> Jelenleg a PowerShell, a CLI és a Resource Manager-sablonok használatával csak a 3,2-es verziót hozhatja létre (azaz a `*.documents.azure.com`) Azure Cosmos DB API-ját használó MongoDB. A fiókok 3,6-es verziójának létrehozásához használja a Azure Portal helyet.
+> Jelenleg csak 3.2-es verziót (azaz a végpontot `*.documents.azure.com`használó a datált a formátumban) az Azure Cosmos DB API-t a MongoDB-fiókok a PowerShell és a CLI használatával hozhat létre. A fiókok 3.6-os verziójának létrehozásához használja a Resource Manager-sablonokat (lent) vagy az Azure Portalt.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
 
 ### <a name="deploy-via-the-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
 
-A Azure Resource Manager-sablon Azure CLI-vel történő üzembe helyezéséhez **másolja** a szkriptet, és válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+Az Azure Resource Manager-sablon azure CLI használatával történő üzembe helyezéséhez másolja a **parancsfájlt,** és válassza a **Próbálja ki az** Azure Cloud Shell megnyitásához lehetőséget. A parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés parancsot:**
 
 ```azurecli-interactive
 
@@ -53,13 +53,13 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg az üzembe helyezés után. Ha úgy dönt, hogy a Cloud Shell használata helyett az Azure CLI helyileg telepített verzióját használja, tekintse meg az [Azure CLI](/cli/azure/) -cikket.
+A `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg a kiépítés után. Ha úgy dönt, hogy az Azure CLI helyileg telepített verzióját használja a Cloud Shell használata helyett, tekintse meg az [Azure CLI](/cli/azure/) cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Íme néhány további erőforrás:
+Néhány további információforrás:
 
-- [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
-- [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/)
+- [Az Azure Cosmos DB erőforrás-szolgáltatósémája](/azure/templates/microsoft.documentdb/allversions)
+- [Az Azure Cosmos DB rövid útmutató sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Gyakori Azure Resource Manager-telepítési hibák elhárítási hibáinak elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)

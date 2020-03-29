@@ -1,6 +1,6 @@
 ---
-title: Ismerkedjen meg az Azure IoT Hub modul Identity & modullal (C)
-description: Ismerje meg, hogyan hozhatja létre a modul-identitást és a modult a Twin IoT SDK-k használatával.
+title: Ismerkedés az Azure IoT Hub modul identitásával & ikermodul (C)
+description: Ismerje meg, hogyan hozhat létre modulidentitást és frissítheti az ikermodult az IoT SDK-k C-hez használatával.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
 ms.openlocfilehash: 095f6c6ab8395c4ab314fbe948cbc1fbd32cd510
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719143"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Első lépések IoT Hub modul identitása és modulja – twin (C)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Ismerkedés az IoT Hub modul identitásával és az ikermodullal (C)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
 > [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Amíg az Azure IoT Hub eszközidentitása és eszközikre lehetővé teszi a háttéralkalmazás számára az eszköz konfigurálását, és rálátást nyújt az eszköz feltételeire, a modulidentitás és a moduliker az eszköz egyes összetevőihez biztosítja ezeket a lehetőségeket. A megfelelő, több összetevős eszközök, például az operációs rendszeren vagy a belső vezérlőprogramon alapuló eszközök esetében lehetővé teszi az elkülönített konfigurációk és feltételek beállítását az egyes összetevőkhöz.
 
-Az oktatóanyag végén két C alkalmazás található:
+Az oktatóanyag végén két C-alkalmazással rendelkezik:
 
 * A **CreateIdentities** egy eszközidentitást, egy modulidentitást valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat az eszközhöz és a modulügyfelekhez.
 
 * Az **UpdateModuleTwinReportedProperties** a moduliker jelentett tulajdonságainak frissítését továbbítja az IoT Hub részére.
 
 > [!NOTE]
-> További információ az Azure IoT SDK-k használatáról, amelyekkel az eszközökön futtatott alkalmazások és a megoldási háttérrendszer is használható: [Azure IoT SDK](iot-hub-devguide-sdks.md)-k.
+> Az Azure IoT SDK-król, amelyek segítségével az eszközökön futtatandó alkalmazásokat és a megoldás háttérét is létrehozhatja, az [Azure IoT SDK-k](iot-hub-devguide-sdks.md)című témakörben talál további információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív Azure-fiók. (Ha nincs fiókja, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) .)
+* Aktív Azure-fiók. (Ha nem rendelkezik fiókkal, néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot.)](https://azure.microsoft.com/pricing/free-trial/)
 
 * A legújabb [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
@@ -41,17 +41,17 @@ Az oktatóanyag végén két C alkalmazás található:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
 
 [!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Eszköz identitásának és modul-identitásának létrehozása IoT Hub
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Eszközidentitás és modulidentitás létrehozása az IoT Hubban
 
-Ebben a szakaszban egy olyan C alkalmazást hoz létre, amely létrehoz egy eszköz-identitást és egy modul-identitást az IoT hub identitás-beállításjegyzékében. Egy eszköz vagy modul csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért tekintse meg a [IoT hub fejlesztői útmutatójának](iot-hub-devguide-identity-registry.md) **Identity Registry** című szakaszát. A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
+Ebben a szakaszban hozzon létre egy C-alkalmazást, amely létrehoz egy eszközidentitást és egy modulidentitást az IoT hub identitás-beállításjegyzékében. Egy eszköz vagy modul csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információt az [IoT Hub fejlesztői](iot-hub-devguide-identity-registry.md) **útmutatójának Identitásbeállítási** szakaszában talál. A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít elő az eszköz és a modul számára. Ezekkel az értékekkel az eszköz és a modul azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az azonosítók megkülönböztetik a kis- és nagybetűket.
 
-Adja hozzá a következő kódot a C-fájlhoz:
+Adja hozzá a következő kódot a C fájlhoz:
 
 ```C
 #include <stdio.h>
@@ -177,22 +177,22 @@ int main(void)
 }
 ```
 
-Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul adatait.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+Ez az alkalmazás létrehoz egy eszköz identitásazonosítóazonosítóazonosítót **myD myFirstDevice** és egy modul identitás id **myFirstModule** eszköz alatt **myFirstDevice**. (Ha a modulazonosító már létezik az identitásjegyzékben, a kód egyszerűen beolvassa a meglévő moduladatokat.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
 
 > [!NOTE]
-> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [IoT hub fejlesztői útmutató](iot-hub-devguide-identity-registry.md).
+> Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [IoT Hub fejlesztői útmutató.](iot-hub-devguide-identity-registry.md)
 
-## <a name="update-the-module-twin-using-c-device-sdk"></a>A Twin modul frissítése a C Device SDK használatával
+## <a name="update-the-module-twin-using-c-device-sdk"></a>A modul ikerfrissítése c-eszköz SDK használatával
 
-Ebben a szakaszban egy C alkalmazást hoz létre a szimulált eszközön, amely frissíti a modul Twin jelentett tulajdonságait.
+Ebben a szakaszban hozzon létre egy C-alkalmazást a szimulált eszközön, amely frissíti a modul iker jelentett tulajdonságait.
 
-1. **A modul kapcsolódási karakterláncának beolvasása** – most, ha bejelentkezik a [Azure Portalba](https://portal.azure.com). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice, nyissa meg, és láthatja, hogy a myFirstModule létrehozása sikeresen megtörtént. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+1. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra](https://portal.azure.com). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice-t, nyissa meg, és láthatja, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
     ![Az Azure Portal moduladatai](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **UpdateModuleTwinReportedProperties-alkalmazás létrehozása**
+2. **UpdateModuleTwinReportedProperties alkalmazás létrehozása**
    
-   Adja hozzá a következőt a C-fájlhoz:
+   Adja hozzá a következőket a C fájlhoz:
 
     ```C
     #include <stdio.h>
@@ -248,11 +248,11 @@ Ebben a szakaszban egy C alkalmazást hoz létre a szimulált eszközön, amely 
     }
     ```
 
-Ez a mintakód azt mutatja be, hogyan kérheti le a modult, és hogyan frissítheti a jelentett tulajdonságokat. 
+Ez a kódminta bemutatja, hogyan lehet lekérni a modul iker és frissíti a jelentett tulajdonságokat. 
 
-## <a name="get-updates-on-the-device-side"></a>Frissítések letöltése az eszköz oldaláról
+## <a name="get-updates-on-the-device-side"></a>Frissítések beszerezni az eszköz oldalán
 
-A fenti kód mellett hozzáadhatja az alábbi kódrészletet is, hogy megkapja a kettős frissítési üzenetet az eszközön.
+A fenti kód mellett hozzáadhatja az alábbi kódblokkot, hogy megkapja a két frissítési üzenetet az eszközön.
 
 ```C
 #include <stdio.h>
@@ -383,9 +383,9 @@ int main(void)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 
-* [Az eszközkezelés első lépései](iot-hub-node-node-device-management-get-started.md)
-* [A IoT Edge első lépései](../iot-edge/tutorial-simulate-device-linux.md)
+* [Eszközfelügyelet – első lépések](iot-hub-node-node-device-management-get-started.md)
+* [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)

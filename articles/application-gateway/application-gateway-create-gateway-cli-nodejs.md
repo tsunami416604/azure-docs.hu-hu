@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Gateway - létrehozása az Azure klasszikus parancssori felület
-description: Ismerje meg, hogyan hozhat létre egy Application Gateway az Azure klasszikus parancssori felület használatával a Resource Managerben
+title: Azure-alkalmazásátjáró létrehozása - Klasszikus Azure CLI
+description: Megtudhatja, hogyan hozhat létre alkalmazásátjárót az Azure klasszikus CLI használatával az Erőforrás-kezelőben
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095982"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Application gateway létrehozása az Azure CLI-vel
+# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása az Azure CLI használatával
 
-Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application gateway az alábbi alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztást, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) alapú kiszervezés, egyéni állapotmintákat, és a többhelyes támogatást.
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az alkalmazásátjáró a következő alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztás, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) kiszervezés, egyéni állapotminta és a többtelephelyes támogatás.
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Előfeltétel: Telepítse az Azure CLI-t
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [az Azure CLI telepítése](../xplat-cli-install.md) és kell [jelentkezzen be Azure](/cli/azure/authenticate-azure-cli). 
+A cikkben ismertetett lépések végrehajtásához telepítenie kell [az Azure CLI-t,](../xplat-cli-install.md) és be kell [jelentkeznie az Azure-ban.](/cli/azure/authenticate-azure-cli) 
 
 > [!NOTE]
-> Ha nem rendelkezik Azure-fiókra, kell egyet. Itt regisztrálhat az [ingyenes próbaverzióra](../active-directory/fundamentals/sign-up-organization.md).
+> Ha nem rendelkezik Azure-fiókkal, szüksége van rá. Itt regisztrálhat az [ingyenes próbaverzióra](../active-directory/fundamentals/sign-up-organization.md).
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Ebben a forgatókönyvben megtudhatja hogyan hozhat létre egy application gateway az Azure portal használatával.
+Ebben a forgatókönyvben megtudhatja, hogyan hozhat létre egy alkalmazásátjárót az Azure Portal használatával.
 
-Ebben a forgatókönyvben lesz:
+Ez a forgatókönyv:
 
-* Egy közepes méretű Alkalmazásátjáró létrehozása két példánnyal.
-* Hozzon létre egy virtuális hálózatot a 10.0.0.0/16 egy fenntartott CIDR-blokk ContosoVNET nevű.
-* Hozzon létre egy, a CIDR-blokkja 10.0.0.0/28 használó subnet01 nevű alhálózatot.
+* Hozzon létre egy közepes alkalmazásátjáró két példányban.
+* Hozzon létre egy ContosoVNET nevű virtuális hálózatot egy 10.0.0.0/16-os fenntartott CIDR-blokkdal.
+* Hozzon létre egy alhálózat nevű alhálózat01 használó 10.0.0.0/28 cidr blokk.
 
 > [!NOTE]
-> További konfigurációs az application Gateway, beleértve az egyéni állapot-mintavételei, háttérbeli címkészlet-címeit, és a további szabályok vannak konfigurálva, az application gateway konfigurálása után, és nem a kezdeti üzembe helyezése során.
+> Az alkalmazásátjáró további konfigurálása, beleértve az egyéni állapotpróbákat, a háttérkészlet-címeket és a további szabályokat az alkalmazásátjáró konfigurálása után konfigurálják, és nem a kezdeti telepítés során.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure Application Gateway a saját alhálózatában van szükség. Ha egy virtuális hálózatot hoz létre, győződjön meg arról, hogy hagyja-e elég hely a cím több alhálózattal rendelkezik. Miután telepít egy alhálózatot az application gateway, csak további az application Gateway átjárók tudnak lesz hozzáadva az alhálózathoz.
+Az Azure Application Gateway saját alhálózatot igényel. Virtuális hálózat létrehozásakor győződjön meg arról, hogy elegendő címterületet hagy több alhálózat hoz létre. Miután telepített egy alkalmazásátjárót egy alhálózatra, csak további alkalmazásátjárók adhatók hozzá az alhálózathoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Nyissa meg a **a Microsoft Azure-parancssort**, és jelentkezzen be.
+Nyissa meg a **Microsoft Azure parancssorát**, és jelentkezzen be.
 
 ```azurecli-interactive
 az login
 ```
 
-Miután beírta a fenti példa, egy kódot biztosítunk. Navigáljon a https://aka.ms/devicelogin egy böngészőben a bejelentkezési folyamat folytatása.
+Az előző példa beírása után egy kód kerül megadva. Keresse https://aka.ms/devicelogin meg a böngészőben a bejelentkezési folyamat folytatásához.
 
-![bejelentkezés az cmd megjelenítő eszközön][1]
+![cmd a készülék bejelentkezését mutatja][1]
 
-A böngészőben adja meg a kapott kódot. Ekkor megnyílik egy bejelentkezési oldalra.
+A böngészőben adja meg a kapott kódot. A visszavezetés egy bejelentkezési oldalra lesz átirányítva.
 
-![Adja meg a kódot a böngészőben][2]
+![böngésző beírni kódot][2]
 
-Ha nincs megadva a kód van bejelentkezve, zárja be a böngészőt, és a forgatókönyv a folytatáshoz.
+Miután beírta a kódot, be van jelentkezve, zárja be a böngészőt, hogy folytassa a forgatókönyvvel.
 
-![sikeresen jelentkezett be][3]
+![sikeresen bejelentkezett][3]
 
-## <a name="switch-to-resource-manager-mode"></a>Váltson Resource Manager módra
+## <a name="switch-to-resource-manager-mode"></a>Váltás erőforrás-kezelő módra
 
 ```azurecli-interactive
 azure config mode arm
@@ -70,7 +70,7 @@ azure config mode arm
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-Az application gateway létrehozása előtt egy erőforráscsoportot az application gateway tartalmazó jön létre. Az alábbiakban a parancs látható.
+Az alkalmazásátjáró létrehozása előtt egy erőforráscsoport jön létre az alkalmazásátjáró tárolására. Az alábbiakban a parancs látható.
 
 ```azurecli-interactive
 azure group create \
@@ -80,7 +80,7 @@ azure group create \
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Miután létrejött az erőforráscsoport, egy virtuális hálózatot az application gateway létrejön.  A következő példában a címtér lett 10.0.0.0/16, ahogyan az a fenti forgatókönyv megjegyzéseket.
+Az erőforráscsoport létrehozása után létrejön egy virtuális hálózat az alkalmazásátjáróhoz.  A következő példában a címtér az előző forgatókönyv-megjegyzésekben meghatározott a 10.0.0.0/16 volt.
 
 ```azurecli-interactive
 azure network vnet create \
@@ -92,7 +92,7 @@ azure network vnet create \
 
 ## <a name="create-a-subnet"></a>Alhálózat létrehozása
 
-A virtuális hálózat létrehozása után egy alhálózatot az application gateway számára egészül ki.  Ha azt tervezi, az application gateway ugyanazon a virtuális hálózaton lévő üzemeltetett webalkalmazások az application gateway használatára, mindenképpen hagyja bejelölve elég hellyel rendelkezzen a egy másik alhálózatot.
+A virtuális hálózat létrehozása után egy alhálózat kerül hozzáadásra az alkalmazásátjáróhoz.  Ha azt tervezi, hogy az alkalmazásátjárót az alkalmazásátjáróval azonos virtuális hálózatban üzemeltetett webalkalmazással szeretné használni, hagyjon elegendő helyet egy másik alhálózat számára.
 
 ```azurecli-interactive
 azure network vnet subnet create \
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-A virtuális hálózat és alhálózat létrehozása után az application gateway számára az előfeltételek teljesülnek. Emellett a korábban exportált .pfx tanúsítvány és a jelszót a tanúsítványhoz szükség, a következő lépés: A használt biztosítani a háttérbeli IP-címek a háttérkiszolgáló az IP-címek. Ezek az értékek lehetnek magánhálózati IP-címek a virtuális hálózatban, nyilvános IP-címek vagy teljesen minősített tartománynevet a háttérkiszolgálókhoz.
+A virtuális hálózat és az alhálózat létrehozása után az alkalmazásátjáró előfeltételei befejeződnek. Ezenkívül egy korábban exportált .pfx tanúsítvány és a tanúsítvány jelszava is szükséges a következő lépéshez: A háttérrendszerhez használt IP-címek a háttérkiszolgáló IP-címei. Ezek az értékek lehetnek privát IP-k a virtuális hálózatban, nyilvános ips, vagy teljesen minősített tartománynevek a háttérkiszolgálók.
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -126,16 +126,16 @@ azure network application-gateway create \
 ```
 
 > [!NOTE]
-> Paraméterek, amelyeket a következő parancs futtatásával a létrehozás során adható meg listáját: **az azure network application-gateway create--help**.
+> A létrehozás során megadható paraméterek listájához futtassa a következő parancsot: **azure network application-gateway create --help**.
 
-Ez a példa létrehoz egy alapszintű application gateway a figyelő, a háttérkészlet, a háttérbeli http-beállítások és a szabályok az alapértelmezett beállításokkal. Ezek a beállítások igény szerint a telepítés után a kiépítés sikeres módosíthatja.
-Ha már van definiálva az előző lépésekben, ezután a háttérkészlet webalkalmazása terheléselosztás kezdődik.
+Ebben a példában létrehoz egy alapszintű alkalmazásátjáróalapértelmezett beállításokat a figyelő, háttérkészlet, háttérrendszer http-beállítások és szabályok. Ezeket a beállításokat módosíthatja, hogy megfeleljen a központi telepítés, ha a kiépítés sikeres.
+Ha már rendelkezik a webalkalmazás definiálva a háttérkészlet az előző lépésekben, miután létrehozta, terheléselosztás kezdődik.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan hozhat létre egyéni állapotmintákat funkcionáló [hozzon létre egy egyéni](application-gateway-create-probe-portal.md)
+Ismerje meg, hogyan hozhat létre egyéni állapotmintaképeket [az Egyéni állapotminta létrehozása című ellátogat](application-gateway-create-probe-portal.md)
 
-Ismerje meg, hogyan konfigurálja az SSL-kiürítés, és a költséges SSL visszafejtési Ön webkiszolgálóiról funkcionáló [SSL kiürítési konfigurálása](application-gateway-ssl-arm.md)
+Ismerje meg, hogyan konfigurálhatja az SSL-kiszervezést, és hogyan veheti le a költséges SSL-visszafejtést a webkiszolgálókról az [SSL-kiszervezés konfigurálása](application-gateway-ssl-arm.md) webhelyen.
 
 <!--Image references-->
 

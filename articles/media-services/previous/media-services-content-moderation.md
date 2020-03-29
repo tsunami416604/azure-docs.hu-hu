@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Content Moderator használata a lehetséges felnőtt és a zamatos tartalmak észleléséhez | Microsoft Docs
-description: Az Azure Media Content Moderator Media Processor segít felderíteni a videókban rejlő lehetséges felnőtt és zamatos tartalmakat.
+title: Az Azure Media tartalommoderátor használata a lehetséges felnőtteknek és pikáns tartalmaknak a észlelésére | Microsoft dokumentumok
+description: Az Azure Media Content Moderator médiaprocesszor segít észlelni a potenciális felnőtt és pikáns tartalmakat a videókban.
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914317"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Az Azure Media Content Moderator használata a lehetséges felnőtt és a zamatos tartalmak észleléséhez 
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Az Azure Media tartalommoderátor használata a lehetséges felnőtteknek és pikáns tartalmaknak a felismeréséhez 
 
 > [!NOTE]
-> Az **Azure media Content moderator** adathordozó-processzora megszűnik. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
+> Az **Azure Media tartalommoderátor** médiaprocesszora megszűnik. A kivonási dátum, lásd a [régi összetevők](legacy-components.md) témakörben.
 
 ## <a name="overview"></a>Áttekintés
-Az **Azure media Content moderator** Media Processor (mp) lehetővé teszi, hogy a videókhoz gépi támogatással rendelkező moderálást használjon. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat.
+Az **Azure Media Media Content Moderator** médiaprocesszor (MP) lehetővé teszi, hogy gépi támogatású moderálás a videók. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat.
 
-Az **Azure Media Content moderator** mp jelenleg előzetes verzióban érhető el.
+Az **Azure Media tartalommoderátor** mp jelenleg előzetes verzióban.
 
-Ez a cikk az **Azure Media Content moderator** adatait ismerteti, és bemutatja, hogyan használható a Media Services SDK for .net szolgáltatással.
+Ez a cikk az **Azure Media tartalommoderátorával** kapcsolatos részleteket tartalmaz, és bemutatja, hogyan használható a Media Services SDK-val a .
 
-## <a name="content-moderator-input-files"></a>Bemeneti fájlok Content Moderator
+## <a name="content-moderator-input-files"></a>Tartalommoderátor bemeneti fájljai
 Videofájlok. Jelenleg a következő formátumok támogatottak: MP4, MOV és WMV.
 
-## <a name="content-moderator-output-files"></a>Kimeneti fájlok Content Moderator
-A JSON formátum moderált kimenete automatikusan észlelt képeket és kulcsképeket tartalmaz. A kulcsképek a lehetséges felnőtt vagy a zamatos tartalmak megbízhatósági pontszámával lesznek visszaadva. Egy logikai jelzőt is tartalmaznak, amely azt jelzi, hogy a felülvizsgálat ajánlott-e. A felülvizsgálati javaslat jelölője a felnőtt és a zamatos pontszámok belső küszöbértékei alapján rendel hozzá értékeket.
+## <a name="content-moderator-output-files"></a>Tartalommoderátor kimeneti fájljai
+A JSON formátummoderált kimenet automatikusan észlelt felvételeket és kulcsképeket tartalmaz. A kulcsképek megbízhatósági pontszámokkal kerülnek vissza a lehetséges felnőtt vagy pikáns tartalomhoz. Logikai jelzőt is tartalmaznak, amely jelzi, hogy ajánlott-e a felülvizsgálat. A felülvizsgálati javaslat jelző van rendelve értékek alapján a belső küszöbértékek felnőtt és pikáns pontszámok.
 
 ## <a name="elements-of-the-output-json-file"></a>A kimeneti JSON-fájl elemei
 
-A feladat létrehoz egy JSON kimeneti fájlt, amely az észlelt felvételekből és a kulcsképekből származó metaadatokat tartalmaz, valamint hogy felnőtt vagy zamatos tartalmat tartalmaz-e.
+A feladat létrehoz egy JSON kimeneti fájlt, amely metaadatokat tartalmaz az észlelt felvételekről és kulcsképekről, valamint arról, hogy felnőtteknek vagy pikáns tartalomnak vannak-e tartalmaznia.
 
 A kimeneti JSON a következő elemeket tartalmazza:
 
@@ -49,49 +49,49 @@ A kimeneti JSON a következő elemeket tartalmazza:
 
 | Elem | Leírás |
 | --- | --- |
-| version |A Content Moderator verziója. |
-| timescale |A videó másodpercenkénti száma. |
-| offset |Időeltolás az időbélyegek esetében. A video API-k 1,0-es verziójában ez az érték mindig 0 lesz. Ez az érték a jövőben változhat. |
-| frameráta |Képkockák másodpercenkénti száma a videóban. |
-| szélessége |A kimeneti videó keretének szélessége képpontban megadva|
-| magasság |A kimeneti videó keretének magassága képpontban megadva|
-| TotalDuration |A bemeneti videó időtartama "ketyeg". |
-| [töredékek](#fragments-json-elements) |A metaadatok a töredékek nevű különböző szegmensekben vannak kiosztva. Az egyes töredékek egy kezdő, időtartam, intervallum és esemény (ek) alapú, automatikusan észlelt shot. |
+| version |A tartalommoderátor verziója. |
+| Időskála |"Kullancsok" másodpercenként a videó. |
+| offset |Időeltolás az időbélyegek esetében. A videoAPI-k 1.0-s verziójában ez az érték mindig 0 lesz. Ez az érték a jövőben változhat. |
+| Frameráta |Képkockák másodpercenkénti száma a videóban. |
+| szélesség |A kimeneti videoképszélesség képpontban.|
+| magasság |A kimeneti videoképmagasság képpontban.|
+| totalDuration |A bemeneti videó időtartama a "kullancsokban". |
+| [Töredékek](#fragments-json-elements) |A metaadatok különböző szegmensekbe, úgynevezett töredékekbe vannak felosztva. Minden töredék egy automatikusan észlelt felvétel, amely nek kezdete, időtartama, időköze és esemény(e)i vannak. |
 
-### <a name="fragments-json-elements"></a>Töredékek JSON-elemek
+### <a name="fragments-json-elements"></a>Töredékek JSON elemek
 
 |Elem|Leírás|
 |---|---|
-| start |Az első esemény kezdő időpontja "ketyeg". |
-| duration |A töredék hossza "ketyeg". |
-| interval |Az egyes események bejegyzésének intervalluma a töredéken belül "ketyeg". |
-| [események](#events-json-elements) |Minden esemény egy klipet jelöl, és minden klip az adott időtartamon belül észlelt és nyomon követett képkockákat tartalmaz. Az események tömbje. A külső tömb egy időintervallumot jelöl. A belső tömb 0 vagy több eseményből áll, amelyek az adott időpontban történtek.|
+| start |Az első esemény kezdési időpontja a "kullancsokban". |
+| duration |A töredék hossza a "kullancsokban". |
+| interval |A töredéken belüli egyes eseménybejegyzések időköze a "ticks" mezőben. |
+| [események](#events-json-elements) |Minden esemény egy klipet jelöl, és minden egyes klip tartalmazza az adott időtartamon belül észlelt és nyomon követett kulcsképeket. Ez egy sor esemény. A külső tömb egy időintervallumot jelöl. A belső tömb 0 vagy több eseményből áll, amelyek az adott időpontban történtek.|
 
 ### <a name="events-json-elements"></a>Események JSON-elemek
 
 |Elem|Leírás|
 |---|---|
-| reviewRecommended | `true` vagy `false` attól függően, hogy a **adultScore** vagy a **racyScore** túllépi-e a belső küszöbértékeket. |
-| adultScore | A lehetséges felnőtt tartalmak megbízhatósági pontszáma 0,00 és 0,99 közötti skálán. |
-| racyScore | A lehetséges, a 0,00 és 0,99 közötti skálán megjelenő, a lehetséges zamatos tartalmak megbízhatósági pontszáma. |
-| index | egy skálán lévő keret indexe az első keret indexéről az utolsó keret indexére. |
-| időbélyeg | A keret helye "ketyeg". |
-| shotIndex | A fölérendelt felvétel indexe. |
+| felülvizsgálatAjánlott | `true`vagy `false` attól függően, hogy a **adultScore** vagy **a racyScore** meghaladja-e a belső küszöbértékeket. |
+| felnőttPontszám | A lehetséges felnőtt tartalom megbízhatósági pontszáma 0,00 és 0,99 között. |
+| racyScore (racyScore) | A lehetséges pikáns tartalom megbízhatósági pontszáma 0,00 és 0,99 között. |
+| Index | a keret indexét az első képkockaindextől az utolsó képkockaindexig terjedő skálán. |
+| időbélyeg | A keret helye a "kullancsokban". |
+| shotIndex | A szülőlövés indexe. |
 
 
-## <a name="content-moderation-quickstart-and-sample-output"></a>A tartalom moderálása és a minta kimenete
+## <a name="content-moderation-quickstart-and-sample-output"></a>Tartalommoderálás rövid útmutató és mintakimenet
 
-### <a name="task-configuration-preset"></a>Feladat konfigurációja (előre beállított)
-Az **Azure Media Content Moderatort**tartalmazó feladatok létrehozásakor meg kell adnia egy konfigurációs beállításkészletet. A következő konfigurációs beállításkészlet csak a tartalom moderálására szolgál.
+### <a name="task-configuration-preset"></a>Feladat konfigurációja (készlet)
+Amikor feladatot hoz létre az **Azure Media tartalommoderátorával,** meg kell adnia egy konfigurációs készletet. A következő konfigurációs készlet csak a tartalom moderálásához.
 
     {
       "version":"2.0"
     }
 
-### <a name="net-code-sample"></a>.NET-kód minta
+### <a name="net-code-sample"></a>.NET-kódminta
 
-A következő .NET-mintakód a Media Services .NET SDK-t használja a Content Moderator feladatok futtatásához. Egy Media Services-eszközt vesz igénybe, mint a moderálni kívánt videót tartalmazó bemenet.
-Tekintse meg a teljes forráskódra és a Visual Studio-projektre vonatkozó [Content moderator videót](../../cognitive-services/Content-Moderator/video-moderation-api.md) .
+A következő .NET-kódminta a Media Services .NET SDK segítségével futtat egy tartalommoderátori feladatot. A videó moderált bemeneteként egy médiaszolgáltatási eszközt vesz igénybe.
+Tekintse meg a [Tartalommoderátor rövid útmutatóját](../../cognitive-services/Content-Moderator/video-moderation-api.md) a teljes forráskódról és a Visual Studio-projektről.
 
 
 ```csharp
@@ -220,23 +220,23 @@ The following example of a Content Moderator JSON output was truncated.
     }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 
-[Azure Media Analytics bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Az Azure Media Analytics bemutatói](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Content Moderator [videós moderálási és felülvizsgálati megoldásáról](../../cognitive-services/Content-Moderator/video-moderation-human-review.md).
+További információ a Tartalommoderátor [videómoderálási és felülvizsgálati megoldásáról.](../../cognitive-services/Content-Moderator/video-moderation-human-review.md)
 
-Szerezze be a teljes forráskódot és a Visual Studio-projektet a [videó moderálási](../../cognitive-services/Content-Moderator/video-moderation-api.md)rövid útmutatójában. 
+A teljes forráskód és a Visual Studio-projekt beszerezhető a [videómoderálási rövid útmutatóból.](../../cognitive-services/Content-Moderator/video-moderation-api.md) 
 
-Megtudhatja, hogyan hozhat elő [videó-felülvizsgálatokat](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) a moderált kimenetből és a .net-beli [mérsékelt átiratokból](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) .
+További információ [arról,](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) hogyan hozhat létre videoértékeléseket a moderált kimenetből, és [hogyan készíthet mérsékelt átiratokat](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) a .NET-ben.
 
-Tekintse meg a .NET [videó részletes moderálási és felülvizsgálati oktatóanyagát](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md). 
+Nézze meg a részletes .NET [videó moderálás és felülvizsgálat bemutató](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md). 

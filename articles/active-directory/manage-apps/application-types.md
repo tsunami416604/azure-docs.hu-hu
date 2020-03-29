@@ -1,6 +1,6 @@
 ---
-title: Nem várt alkalmazás alkalmazáslistában |} A Microsoft Docs
-description: Tekintse meg a bérlő összes alkalmazást, és megismerheti, hogyan alkalmazások jelennek meg a minden alkalmazás lista a vállalati alkalmazások
+title: Váratlan alkalmazás az alkalmazáslistámon | Microsoft dokumentumok
+description: Az összes alkalmazás megtekintése a bérlőben, és annak megértése, hogy az alkalmazások hogyan jelennek meg a Minden alkalmazás listában a Vállalati alkalmazások csoportban
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,113 +16,113 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65781099"
 ---
-# <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás alkalmazáslistában
+# <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás az alkalmazások listájában
 
-Ez a cikk segít megérteni, hogyan az alkalmazások megjelennek az **minden alkalmazás** alatt **vállalati alkalmazások**. 
+Ez a cikk segítséget nyújt annak megértéséhez, hogy az alkalmazások hogyan jelennek meg a Vállalati **alkalmazások**csoport **Minden alkalmazás** listájában. 
 
-## <a name="how-to-see-all-applications-in-your-tenant"></a>A bérlőn belüli összes alkalmazás megtekintése
+## <a name="how-to-see-all-applications-in-your-tenant"></a>Az összes alkalmazás megtekintése a bérlőben
 
-A bérlőn belüli összes alkalmazás megjelenítéséhez kell használnia a **szűrő** vezérlőelem **minden alkalmazás** alatt a **minden alkalmazás** listája. Kövesse az alábbi lépéseket:
+A bérlőben lévő összes alkalmazás megtekintéséhez a **Szűrő** vezérlővel kell **megjelenítenie** **az** Összes alkalmazás listát. Kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1.  Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként** vagy **társrendszergazdaként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2.  Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3.  Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  kattintson az Azure Active Directory bal oldali navigációs **menüjében** az Enterprise Applications parancsra.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5.  Kattintson **a Minden alkalmazás** elemre az összes alkalmazás listájának megtekintéséhez.
 
-6.  Kattintson a használata a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista**.
+6.  kattintson a **Szűrő** vezérlő gombjára a **Minden alkalmazás lista tetején.**
 
-7.  Az a **szűrő** panelen adja meg a **megjelenítése** beállítást **összes alkalmazáshoz.**
+7.  A **Szűrő** ablaktáblán állítsa a **Megjelenítés** beállítást **minden alkalmazásra.**
 
-## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Miért jelenik meg egy adott alkalmazás összes alkalmazáslistában?
+## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>Miért jelenik meg egy adott alkalmazás az összes alkalmazáslistában?
 
-Ha a szűrt **minden alkalmazás**, a **minden alkalmazás** **lista** jeleníti meg minden szolgáltatásnév-objektumot a bérlőben. Egyszerű szolgáltatási objektumok ebben a listában, a különböző módon jelenhetnek meg:
+Az Összes **alkalmazás**ra szűrve a **Minden alkalmazás** **lista** a bérlő összes egyszerű szolgáltatásobjektumát megjeleníti. Az egyszerű szolgáltatásobjektumok többféleképpen jelenhetnek meg a listában:
 
-1. Bármely alkalmazás hozzáadása az alkalmazáskatalógusból, ha többek között:
+1. Ha bármilyen alkalmazást hozzáad az alkalmazásgalériából, beleértve a következőket:
 
-   1. **Az Azure AD-katalógusban alkalmazások** –, az egyszeri bejelentkezés az Azure ad-vel előre integrált alkalmazás
+   1. **Azure AD Gallery-alkalmazások** – Olyan alkalmazás, amely et előre integráltaz Azure AD-vel való egyszeri bejelentkezéshez
 
-   2. **Application Proxy alkalmazásai** – szeretne biztosítani a biztonságos egyszeri bejelentkezés, a külsőleg a helyszíni környezetben futó alkalmazásokhoz
+   2. **Alkalmazásproxy-alkalmazások** – A helyszíni környezetben futó alkalmazás, amelyet biztonságos egyszeri bejelentkezéssel szeretne biztosítani külsőleg
 
-   3. **Saját fejlesztésű alkalmazásokat** – el alkalmazást, amely a szervezet által blokkolni kívánt fejlesztése az Azure AD-alkalmazás fejlesztési platform, amely nem még létezik
+   3. **Egyéni legfejlettebb alkalmazások** – Olyan alkalmazás, amelyet a szervezet fejleszteni kíván az Azure AD alkalmazásfejlesztési platformon, de előfordulhat, hogy még nem létezik
 
-   4. **Katalógusban nem szereplő alkalmazások** – saját alkalmazások importálása! Összes webes hivatkozás szeretne, vagy egy felhasználónév és jelszó mezőt megjelenítő alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy az egyszeri bejelentkezés az Azure ad-vel integrálni kívánt SCIM támogatja.
+   4. **Nem Galéria alkalmazások** - Hozd a saját alkalmazások! Bármely webes hivatkozás, vagy bármely olyan alkalmazás, amely egy felhasználónév és jelszó mezőt jelenít meg, támogatja az SAML vagy openId Connect protokollokat, vagy támogatja az SCIM-et, amelyet integrálni szeretne az Azure AD-vel való egyszeri bejelentkezéshez.
 
-2. Ha regisztrál a, vagy egy 3-ra bejelentkezés<sup>távoli asztali</sup> gyártótól származó alkalmazás az Azure Active Directoryval integrált. Ez egy [Smartsheet](https://app.smartsheet.com/b/home) vagy [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Amikor regisztrál, vagy bejelentkezik az Azure Active Directoryval integrált 3<sup>rd</sup> party alkalmazásra, vagy bejelentkezik. Erre példa a [Smartsheet](https://app.smartsheet.com/b/home) vagy a [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3. Amikor a regisztrációt, vagy licencet ad hozzá egy felhasználó vagy csoport első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
+3. Amikor regisztrál, vagy licencet ad egy felhasználóhoz vagy csoporthoz egy külső alkalmazáshoz, például a [Microsoft Office 365-höz](https://products.office.com/)
 
-4. Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [alkalmazás beállításjegyzékében](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
+4. Ha új alkalmazásregisztrációt ad hozzá egy egyéni fejlesztésű alkalmazás létrehozásával az [alkalmazás-beállításjegyzék](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration) használatával
 
-5. Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [V2.0 az alkalmazásregisztrációs portálon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
+5. Ha új alkalmazásregisztrációt ad hozzá egy egyéni fejlesztésű alkalmazás létrehozásával a [V2.0 alkalmazásregisztrációs portálhasználatával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6. Amikor hozzáad egy alkalmazást fejleszt, a Visual Studio használatával [ASP.net hitelesítési módszerek](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatás](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6. Amikor a Visual Studio [ASP.net hitelesítési módszerével](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásokkal](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) fejlesztő alkalmazást ad hozzá
 
-7. Amikor hoz létre egy szolgáltatás rendszerbiztonsági tag típusú objektumot használ a [Azure AD PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Amikor létrehoz egy egyszerű szolgáltatásobjektumot az [Azure AD PowerShell-modul használatával](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8. Ha Ön [járul hozzá az alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben rendszergazdaként
+8. Ha [beleegyezik abba, hogy egy alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) rendszergazdaként használja az adatokat a bérlőben
 
-9. Ha egy [felhasználó jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben
+9. Amikor egy [felhasználó beleegyezik egy alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) a bérlőben lévő adatok használatához
 
-10. Amikor engedélyezi bizonyos szolgáltatásokat, amelyek adatokat tárolnak a bérlőben. Ez egy jelszó-visszaállítás, amely szerint egy egyszerű szolgáltatást a jelszó tárolásához új kérésére vonatkozó szabályzat van modellezve biztonságosan.
+10. Ha engedélyezi bizonyos szolgáltatások, amelyek adatokat tárolnak a bérlőben. Egy példa a jelszó-visszaállítás, amely egyszerű szolgáltatásként van modellezve a jelszó-visszaállítási házirend biztonságos tárolásához.
 
-Az alkalmazások hogyan kerülnek a címtár további információért olvassa el a [hogyan és miért érdemes az Azure AD-alkalmazások felvétele](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added).
+Ha további részleteket szeretne megtudni arról, hogyan kerülnek hozzá az alkalmazások a címtárhoz, olvassa el a [Hogyan és miért adják hozzá az alkalmazásokat az Azure AD-hez.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added)
 
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Egy alkalmazás egy adott felhasználó vagy csoport-hozzárendelés eltávolítása
+## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>El szeretném távolítani egy adott felhasználó vagy csoport hozzárendelését egy alkalmazáshoz
 
-Egy felhasználó vagy csoport-hozzárendelés alkalmazáshoz való eltávolításához kövesse a felsorolt lépéseket a [egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) cikk.
+Ha el szeretne távolítani egy felhasználó- vagy csoporthozzárendelést egy alkalmazáshoz, kövesse a [Felhasználó vagy csoport hozzárendeléseltávolítása vállalati alkalmazásból](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) az Azure Active Directory cikkben szereplő lépéseket.
 
-## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Letiltani a minden felhasználó számára az összes alkalmazás elérése
+## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Azt akarom, hogy tiltsa le az összes hozzáférést egy alkalmazás minden felhasználó számára
 
-Összes felhasználói bejelentkezés egy alkalmazás letiltásához kövesse a felsorolt lépéseket a [letiltása a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) cikk.
+Az alkalmazásba való összes felhasználói bejelentkezés letiltásához kövesse a [vállalati alkalmazások felhasználói bejelentkezéseinek letiltása az Azure Active Directory-cikkben](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) szereplő lépéseket.
 
-## <a name="i-want-to-delete-an-application-entirely"></a>Egy alkalmazás teljesen törölni
+## <a name="i-want-to-delete-an-application-entirely"></a>Teljesen törölni szeretnék egy alkalmazást
 
-A **törölhető az alkalmazás**, kövesse az alábbi lépéseket:
+**Alkalmazás törléséhez**hajtsa végre az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként** vagy **társrendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. kattintson az Azure Active Directory bal oldali navigációs **menüjében** az Enterprise Applications parancsra.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson **a Minden alkalmazás** elemre az összes alkalmazás listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   * Ha nem látja a kívánt alkalmazást, használja a **Szűrő** vezérlőt a **Minden alkalmazás lista** tetején, és állítsa a **Megjelenítés** beállítást **minden alkalmazásra.**
 
-6. Válassza ki a törölni kívánt alkalmazást.
+6. Jelölje ki a törölni kívánt alkalmazást.
 
-7. Ha az alkalmazás betöltött, kattintson a **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
+7. Miután az alkalmazás betöltődik, kattintson a **Törlés** ikonra a felső alkalmazás **áttekintő** ablaktábláján.
 
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani minden jövőbeli felhasználói jóváhagyási művelet bármely alkalmazás
+## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Azt akarom, hogy tiltsa le az összes jövőbeli felhasználói hozzájárulási műveletek bármely alkalmazás
 
-Felhasználói beleegyezés letiltása, a teljes címtárban megakadályozza, hogy a végfelhasználók hozzájárul ahhoz, hogy minden olyan alkalmazás esetében. A rendszergazdák továbbra is hagyhatja jóvá a felhasználó nevében. További információ az alkalmazás jóváhagyásának, és ezért lehetséges, hogy, vagy nem biztos, hogy engedélyt adjanak, olvassa el a [ismertetése felhasználói és rendszergazdai jóváhagyás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+A teljes címtár felhasználói hozzájárulásának letiltása megakadályozza, hogy a végfelhasználók bármely alkalmazáshoz hozzájáruljanak. A rendszergazdák továbbra is beleegyezhetnek a felhasználó nevében. Ha többet szeretne megtudni az alkalmazás beleegyezéséről, és arról, hogy miért szeretne vagy miért nem szeretne hozzájárulni, olvassa el [a Felhasználói és rendszergazdai hozzájárulás ismertetése című témakört.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
-A **tiltsa le az összes jövőbeli felhasználói jóváhagyási művelet a teljes címtárban**, kövesse az alábbi lépéseket:
+A **teljes címtárban lévő összes jövőbeli felhasználói hozzájárulási művelet letiltásához hajtsa**végre az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2.  Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3.  Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4.  Kattintson a **felhasználók és csoportok** a navigációs menü.
+4.  kattintson a navigációs menü **Felhasználók és csoportok** parancsára.
 
-5.  Kattintson a **felhasználói beállítások**.
+5.  kattintson a **Felhasználói beállítások gombra.**
 
-6.  Tiltsa le az összes jövőbeli felhasználó hozzájárulási műveleteket beállításával a **felhasználók engedélyezhetik alkalmazások hozzáférhetnek az adataikhoz való** kapcsolót **nem** , és kattintson a **mentése** gombra.
+6.  Tiltsa le az összes jövőbeli felhasználói hozzájárulási műveletet, ha beállítja, hogy a **Felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek az adataikhoz,** **és** a **Mentés** gombra kattintva.
 
 ## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

@@ -1,276 +1,276 @@
 ---
-title: Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure Virtual machines szolgáltatásban
-description: Futtassa a Micro fókusz BankDemo alkalmazást az Azure Virtual Machines (VM) azt ismerteti, hogyan használja a Micro fókusz Enterprise Server és a nagyvállalati fejlesztő.
+title: Micro Focus CICS BankDemo beállítása micro focus enterprise developer 4.0-hoz az Azure virtuális gépeken
+description: Futtassa a Micro Focus BankDemo alkalmazást az Azure virtuális gépeken (VM-ek), hogy megtanulja a Micro Focus Enterprise Server és az Enterprise Developer használatát.
 author: sread
 ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621338"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro Focus CICS BankDemo beállítása micro focus enterprise developer 4.0-hoz az Azure-on
 
-Beállításakor Micro fókusz Enterprise Server 4.0-s és Enterprise fejlesztői 4.0-s verzióját az Azure-ban, IBM z/OS-munkaterhelések központi telepítések tesztelheti. Ez a cikk bemutatja, hogyan állítható be CICS BankDemo, egy mintaalkalmazást, amely együttműködik a vállalati fejlesztői.
+Amikor a Micro Focus Enterprise Server 4.0-s és az Enterprise Developer 4.0-s verziót az Azure-ban állítja be, tesztelheti az IBM z/OS számítási feladatok központi telepítését. Ez a cikk bemutatja, hogyan állíthatja be a CICS BankDemo mintaalkalmazást, amely az Enterprise Developer alkalmazással rendelkezik.
 
-CICs a vásárlói adatokat verziókövetési rendszert, a tranzakciós platform számos, az online nagyszámítógépes alkalmazások által használt rövidítése. Hogyan működnek a vállalati kiszolgáló és a vállalati fejlesztői és a kezeléséről és a egy tényleges teljes zöld képernyő terminálok az alkalmazás üzembe helyezése a BankDemo alkalmazás kiválóan alkalmazható.
+A CIC az Ügyfélinformáció-ellenőrző Rendszer rövidítése, amely számos online nagyszámítógépes alkalmazás által használt tranzakciós platform. A BankDemo alkalmazás kiválóan alkalmas az Enterprise Server és az Enterprise Developer működésének megismerésére, valamint a zöld képernyős terminálokkal kiegészített tényleges alkalmazások kezelésére és telepítésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A virtuális gép [nagyvállalati fejlesztő](set-up-micro-focus-azure.md). Ne feledje, hogy rendelkezik-e nagyvállalati fejlesztő egy teljes példánya vállalati kiszolgáló, fejlesztési és tesztelési célokat szolgálnak. Ez a példány a bemutatóhoz használt Enterprise Server-példány.
+- Virtuális gép [nagyvállalati fejlesztővel.](set-up-micro-focus-azure.md) Ne feledje, hogy az Enterprise Developer fejlesztője az Enterprise Server teljes példányával rendelkezik fejlesztési és tesztelési célokra. Ez a példány a bemutatóhoz használt Enterprise Server példánya.
 
-- [Az SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Töltse le és telepítse a vállalati fejlesztői gépen. Enterprise Server egy adatbázis szükséges CICS régiók felügyeletéhez, és a BankDemo alkalmazás BANKDEMO nevű SQL Server adatbázist is használ. Ez a bemutató feltételezi, hogy mindkét adatbázisok SQL Server Expresst használ. Telepítése esetén válassza ki az Alapszintű telepítés.
+- [SQL Server 2017 Express kiadás](https://www.microsoft.com/sql-server/sql-server-editions-express). Töltse le és telepítse az Enterprise Developer virtuális gépre. Az Enterprise Server használatához adatbázisra van szükség a CICS-régiók kezeléséhez, és a BankDemo alkalmazás egy BANKDEMO nevű SQL Server-adatbázist is használ. Ez a bemutató feltételezi, hogy mindkét adatbázishoz SQL Server Express programot használ. Telepítéskor válassza ki az alaptelepítést.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS az adatbázis-kezelés és a egy T-SQL-parancsprogram futtatása szolgál. Töltse le és telepítse a vállalati fejlesztői gépen.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). Az SSMS az adatbázisok kezelésére és egy T-SQL parancsfájl futtatására szolgál. Töltse le és telepítse az Enterprise Developer virtuális gépre.
 
-- [A Visual Studio 2019](https://azure.microsoft.com/downloads/) a legújabb szervizcsomaggal vagy [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), amely innen tölthető le az ingyenes.
+- [Visual Studio 2019](https://azure.microsoft.com/downloads/) a legújabb szervizcsomaggal vagy visual [studio közösséggel](https://visualstudio.microsoft.com/vs/community/), amelyet ingyenesen tölthet le.
 
-- Asztali vagy egy másik Rumba 3270 emulátort.
+- Rumba Desktop vagy egy másik 3270 emulátor.
 
 ## <a name="configure-the-windows-environment"></a>A Windows-környezet konfigurálása
 
-Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gépen, konfigurálnia kell azt az Enterprise Server példánya. Ehhez meg kell néhány további Windows szolgáltatások a következőképpen telepítheti.
+Miután telepítette az Enterprise Developer 4.0-s verziót a virtuális gépre, konfigurálnia kell az Enterprise Server hozzá kapcsolódó példányát. Ehhez telepítenie kell néhány további Windows-szolgáltatást az alábbiak szerint.
 
-1. RDP használatával jelentkezzen be a vállalati Server 4.0-s virtuális gép hozott létre.
+1. Az RDP használatával jelentkezzen be a létrehozott Enterprise Server 4.0 virtuális gépre.
 
-2. Kattintson a **keresési** melletti ikon a **Start** gombra, és írja be **Windows szolgáltatások**. A Kiszolgálókezelő Hozzáadás szerepkörök és szolgáltatások varázsló megnyílik.
+2. Kattintson a **Start** gomb melletti **Keresés** ikonra, és írja be a **Windows-szolgáltatások kifejezést**. Megnyílik a Kiszolgálókezelő Szerepkörök és szolgáltatások hozzáadása varázslója.
 
-3. Válassza ki **webkiszolgáló (IIS) szerepkör**, majd ellenőrizze a következő beállításokat:
+3. Válassza **a Webkiszolgálói szerepkör (IIS) szerepkör**lehetőséget, majd ellenőrizze az alábbi beállításokat:
 
-    - Webkezelési eszközök
-    - Kompatibilitás az IIS 6 kezelésével (válassza ki az összes elérhető szolgáltatásokat)
-    - IIS-kezelő konzol
-    - Az IIS-kezelés parancsfájljai és eszközei
-    - IIS-kezelő szolgáltatás
+    - Webkezelő eszközök
+    - IIS 6 felügyeleti kompatibilitás (az összes elérhető szolgáltatás kiválasztása)
+    - IIS kezelése konzol
+    - IIS felügyeleti parancsfájlok és -eszközök
+    - IIS felügyeleti szolgáltatás
 
-4. Válassza ki **webszolgáltatások**, és ellenőrizze a következő beállításokat:
+4. Válassza a **World Wide Web Services**lehetőséget, és ellenőrizze az alábbi beállításokat:
 
-     Alkalmazásfejlesztési szolgáltatások:
+     Alkalmazásfejlesztési funkciók:
     - .NET-bővíthetőség
     - ASP.NET
-    - Általános HTTP-szolgáltatások: Az összes elérhető funkciók hozzáadása
-    - Állapot és diagnosztika: Az összes elérhető funkciók hozzáadása
+    - Közös HTTP-funkciók: Az összes elérhető funkció hozzáadása
+    - Állapot és diagnosztika: Az összes elérhető funkció hozzáadása
     - Biztonság:
         - Alapszintű hitelesítés
         - Windows-hitelesítés
 
-5. Válassza ki **Windows folyamataktivációs szolgáltatás** és minden gyermekét.
+5. Válassza a **Windows folyamataktivációs szolgáltatás** át, valamint annak összes gyermeke lehetőséget.
 
-6. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 3.5.1**, és ellenőrizze a következő beállításokat:
+6. **Szolgáltatások esetén**ellenőrizze a **Microsoft .**
 
-    - Windows Communication Foundation HTTP Activation
-    - Windows Communication Foundation Non-HTTP Activation
+    - Windows Kommunikációs alaprendszer HTTP aktiválása
+    - A Windows Kommunikációs alaprendszer nem HTTP-aktiválása
 
-7. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 4.6**, és ellenőrizze a következő beállításokat:
+7. **Szolgáltatások esetén**ellenőrizze a **Microsoft .**
 
-   - Nevesített cső aktiválása
-   - TCP-aktiválás
-   - TCP-Port megosztása
+   - Elnevezett cső aktiválása
+   - TCP aktiválása
+   - TCP-port megosztása
 
      ![Szerepkörök és szolgáltatások hozzáadása varázsló: Szerepkör-szolgáltatások](media/01-demo-roles.png)
 
-8. Ha a kiválasztott összes beállítást, kattintson **tovább** telepítéséhez.
+8. Ha az összes beállítást kiválasztotta, a telepítéshez kattintson a **Tovább** gombra.
 
-9. A Windows szolgáltatások után lépjen a **Vezérlőpult \> rendszer és biztonság \> felügyeleti eszközök**, válassza ki **szolgáltatások**. Görgessen lefelé, és ellenőrizze, hogy a következő szolgáltatások futnak, és állítsa **automatikus**:
+9. A Windows-szolgáltatások után nyissa meg a **Vezérlőpult \> rendszer- és biztonsági \> felügyeleti eszközei t,** és válassza a **Szolgáltatások**lehetőséget. Görgessen le, és győződjön meg arról, hogy a következő szolgáltatások futnak, és **automatikus:**
 
     - **NetTcpPortSharing**
-    - **Adaptér Naslouchání Net.Pipe**
-    - **Adaptér Naslouchání NET.TCP**
+    - **Net.Pipe figyelő adapter**
+    - **Net.tcp figyelő adapter**
 
-10. Konfigurálja az IIS és a Service, WAS támogatás, a menüben keresse meg **Micro fókusz vállalati fejlesztői parancssort (64 bites)** és a Futtatás mint **rendszergazda**.
+10. Az IIS és a WAS támogatás konfigurálásához a menüből keresse meg a **Micro Focus Enterprise Developer Command Prompt (64 bites) parancssorát,** és futtassa **rendszergazdaként.**
 
-11. Típus **wassetup – i** nyomja le az ENTER **Enter**.
+11. Írja be **a wassetup –i** billentyűt, és nyomja **le az Enter billentyűt.**
 
-12. A szkript futtatása után bezárhatja az ablakot.
+12. A parancsfájl futtatása után bezárhatja az ablakot.
 
-## <a name="configure-the-local-system-account-for-sql-server"></a>Az SQL Server a helyi rendszer fiók konfigurálása
+## <a name="configure-the-local-system-account-for-sql-server"></a>Az SQL Server helyi rendszerfiókjának konfigurálása
 
-Egyes vállalati kiszolgáló folyamatok kell tudni jelentkezzen be az SQL Server és adatbázisok és egyéb objektumok létrehozásához. Ezeket a folyamatokat a helyi rendszer fiókot használ, így a sysadmin (rendszergazda) szolgáltatót kell megadnia a fiókhoz.
+Egyes Enterprise Server-folyamatoknak képesnek kell lenniük az SQL Server kiszolgálón való bejelentkezésre, valamint adatbázisok és egyéb objektumok létrehozására. Ezek a folyamatok a helyi rendszerfiókot használják, ezért rendszergazdai jogosultságot kell adnia a fióknak.
 
-1. Indítsa el a **SSMS** kattintson **Connect** a helyi Windows-hitelesítés használatával SQLEXPRESS kiszolgálóhoz való csatlakozáshoz. Elérhető legyen a **kiszolgálónév** listája.
+1. Indítsa el az **SSMS-t,** és kattintson a **Csatlakozás** gombra a helyi SQLEXPRESS-kiszolgálóhoz való csatlakozáshoz a Windows-hitelesítés használatával. A **kiszolgálónév** listában elérhetőnek kell lennie.
 
-2. A bal oldalon bontsa ki a **biztonsági** mappára, és válassza **bejelentkezések**.
+2. A bal oldalon **bontsa** ki a Biztonság mappát, és válassza **a Bejelentkezések**lehetőséget.
 
-3. Válassza ki **NT AUTHORITY\\rendszer** válassza **tulajdonságok**.
+3. Válassza az **NT AUTHORITY\\SYSTEM, majd** a Properties **(Tulajdonságok)** lehetőséget.
 
-4. Válassza ki **kiszolgálói szerepkörök** , és ellenőrizze **SysAdmin (rendszergazda)** .
+4. Válassza **a Kiszolgálói szerepkörök lehetőséget,** és ellenőrizze **a rendszergazda imát.**
 
-     ![SSMS Object Explorer ablak: Bejelentkezési tulajdonságok](media/02-demo-explorer.png)
+     ![SSMS objektumkezelő ablak: Bejelentkezési tulajdonságok](media/02-demo-explorer.png)
 
-## <a name="create-the-bankdemo-database-and-all-its-objects"></a>A BankDemo adatbázis és minden objektum létrehozása
+## <a name="create-the-bankdemo-database-and-all-its-objects"></a>A BankDemo adatbázis és annak összes objektumának létrehozása
 
-1. Nyissa meg **Windows Explorer** , és keresse meg **C:\\felhasználók\\nyilvános\\dokumentumok\\Micro fókusz\\nagyvállalati fejlesztő\\ A minták\\nagyszámítógépes\\CICS\\DotNet\\BankDemo\\SQL**.
+1. Nyissa meg **a Windows Intézőt,** és keresse meg a **C:\\Users\\Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo\\SQL -t.**
 
-2. Másolja ki a tartalmát **BankDemoCreateAll.SQL** fájlt a vágólapra.
+2. Másolja a **BankDemoCreateAll.SQL** fájl tartalmát a vágólapra.
 
-3. Nyissa meg **SSMS**. Kattintson a jobb oldali **kiszolgáló** válassza **új lekérdezés**.
+3. Nyissa **meg az SSMS-t**. A jobb oldalon kattintson a **Kiszolgáló** gombra, és válassza az **Új lekérdezés**lehetőséget.
 
-4. A vágólap tartalmának beillesztése a **új lekérdezés** mezőbe.
+4. Illessze be a vágólap tartalmát az **Új lekérdezés** mezőbe.
 
-5. Az SQL-utasítás végrehajtása kattintva **Execute** származó a **parancs** fent a lekérdezés lapon.
+5. Az SQL végrehajtása a lekérdezés feletti **Parancs** lapon a **Végrehajtás** gombra kattintva.
 
-Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis az BankDemo alkalmazás rendelkezik.
+A lekérdezésnek hiba nélkül kell futnia. Ha elkészült, rendelkezik a BankDemo alkalmazás mintaadatbázisával.
 
-![SQLQuery1.sql output](media/03-demo-query.png)
+![SQLQuery1.sql kimenet](media/03-demo-query.png)
 
-## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Győződjön meg arról, hogy az adatbázis tábláinak és objektumok létrehozott
+## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Az adatbázistáblák és -objektumok létrehozásának ellenőrzése
 
-1. Kattintson a jobb gombbal a **BANKDEMO** adatbázisra, majd válassza **frissítése**.
+1. Kattintson a jobb gombbal a **BANKDEMO** adatbázisra, és válassza a **Frissítés**parancsot.
 
-2. Bontsa ki a **adatbázis** válassza **táblák**. Megtekintheti a következőhöz hasonló.
+2. Bontsa ki az **adatbázist,** és válassza **a Táblák**lehetőséget. Látnia kell valami ilyesmit.
 
-     ![Az Object Explorerben kibontva BANKDEMO tábla](media/04-demo-explorer.png)
+     ![BANKDE tábla kibontva az Objektumkezelőben](media/04-demo-explorer.png)
 
-## <a name="build-the-application-in-enterprise-developer"></a>A vállalati fejlesztői alkalmazás létrehozása
+## <a name="build-the-application-in-enterprise-developer"></a>Az alkalmazás létrehozása az Enterprise Developer alkalmazásban
 
-1. Nyissa meg a Visual Studiót, és jelentkezzen be.
+1. Nyissa meg a Visual Studio alkalmazást, és jelentkezzen be.
 
-2. Alatt a **fájl** menüpont, jelölje be **nyissa meg a projekt/megoldás**, navigáljon a **C:\\felhasználók\\nyilvános\\dokumentumok\\Micro Fókusz\\nagyvállalati fejlesztő\\minták\\nagyszámítógépes\\CICS\\DotNet\\BankDemo**, és válassza ki a **sln**fájlt.
+2. A **Fájl** menüben válassza a **Project/Solution megnyitása**lehetőséget, válassza a **C:\\\\Users Public\\Documents\\Micro\\Focus Enterprise Developer\\Samples\\Mainframe CICS DotNet BankDemo (Nagyszámítógép\\CICS\\DotNet\\BankDemo)** lapot, és válassza ki az **sln** fájlt.
 
-3. Eltarthat egy ideig objektumok vizsgálata. COBOL programok CopyBooks (CPY) és JCL CBL kiterjesztésű láthatók a Megoldáskezelőben.
+3. Szánjon egy kis időt, hogy vizsgálja meg a tárgyakat. A COBOL-programok a Megoldáskezelőben, a CBL kiterjesztéssel, valamint a CopyBooks (CPY) és a JCL alkalmazásban jelennek meg.
 
-4. Kattintson a jobb gombbal a **BankDemo2** projektet, és válassza ki **Set as Startup Project**.
-
-    > [!NOTE]
-    > A BankDemo projekt felhasznál HCOSS (gazdagép alkalmazáskompatibilitási beállítást az SQL Server), amely nem használható ez a bemutató.
-
-5. A **Megoldáskezelőben**, kattintson a jobb gombbal a **BankDemo2** projektet, és válassza **összeállítása**.
+4. Kattintson a jobb gombbal a **BankDemo2** projektre, és válassza **a Beállítás indítási projektként parancsot.**
 
     > [!NOTE]
-    > A megoldás szintjén épület HCOSS nincs konfigurálva, hibák, eredményez.
+    > A BankDemo projekt a HCOSS (Host Compatibility Option for SQL Server) programot használja, amelyet nem használ ez a demó.
 
-6. A projekt létrejött, vizsgálja meg a **kimeneti** ablak. Az alábbi képhez hasonlóan kell kinéznie.
+5. A **Megoldáskezelőben**kattintson a jobb gombbal a **BankDemo2** projektre, és válassza a **Build parancsot.**
 
-     ![Kimeneti ablak, rajta a build sikeres létrehozása](media/05-demo-output.png)
+    > [!NOTE]
+    > A megoldás szintjén való építés hibákat eredményez, mivel a HCOSS nincs konfigurálva.
 
-## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>Az a régió adatbázisba BankDemo alkalmazás üzembe helyezése
+6. A projekt megépítéseután vizsgálja meg a **Kimenet** ablakot. Az alábbi képen láthatóhoz hasonlóan kell kinéznie.
 
-1. Nyisson meg egy vállalati fejlesztői parancssort (64 bites) rendszergazdaként.
+     ![Sikeres létrehozási időszakot megjelenítő kimeneti ablak](media/05-demo-output.png)
 
-2. Keresse meg a **nyilvános %\\dokumentumok\\Micro fókusz\\nagyvállalati fejlesztő\\minták\\nagyszámítógépes\\CICS\\DotNet\\ BankDemo**.
+## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>A BankDemo alkalmazás telepítése a régió adatbázisba
 
-3. Hajtsa végre a parancsot a parancssorba **bankdemodbdeploy** és a paramétert az adatbázis központi telepítése, például:
+1. Nyisson meg egy Enterprise Developer parancssort (64 bites) rendszergazdaként.
+
+2. Keresse meg a **\\%PUBLIC%\\Documents\\\\Micro Focus\\Enterprise Developer\\mintáját\\a\\Nagyszámítógépes CICS DotNet BankDemo-ból.**
+
+3. A parancssorban hajtsa végre a **bankdemodbdeploy parancsot,** és adja meg az adatbázis telepítéséhez szükséges paramétert, például:
 
     ```
     bankdemodbdeploy (local)/sqlexpress
     ```
 
 > [!NOTE]
-> Ügyeljen arra, hogy használjon perjellel (/) nem fordított perjelet (\\). Ez a szkript fut egy ideig.
+> Ügyeljen arra, hogy előre perjelet (/)\\használjon, ne hátrafelé perjel( ). Ez a szkript fut egy ideig.
 
-![Felügyelet: Enterprise, Developer parancssori ablakban](media/06-demo-cmd.png)
+![Felügyelet: Az Enterprise Developer parancssori ablaka](media/06-demo-cmd.png)
 
-## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>A BankDemo régió létrehozása a vállalati rendszergazda a .NET-hez
+## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>A .NET vállalati rendszergazdája bankdemo régiójának létrehozása
 
-1. Nyissa meg a **vállalati kiszolgáló, a .NET-felügyelet** felhasználói felületén.
+1. Nyissa meg a **Vállalati kiszolgáló szolgáltatás .NET felügyeleti** felhasználói felületét.
 
-2. Kezdő MMC beépülő modul a Windows **Start** menüben válassza a **Micro fókusz nagyvállalati fejlesztő \> konfigurációs \> vállalati kiszolgáló, a .NET-rendszergazda**. (A Windows Server, válassza ki a **Micro fókusz nagyvállalati fejlesztő \> vállalati kiszolgáló, a .NET-rendszergazda**).
+2. Az MMC beépülő modul elindításához válassza a Windows **Start** menüjében a **Micro Focus Enterprise Developer \> Configuration \> Enterprise Server for .NET Admin**parancsot. (Windows Server esetén válassza **a \> Micro Focus Enterprise Enterprise Server for .NET Admin lehetőséget.**
 
-3. Bontsa ki a **régiók** a bal oldali panelen, majd kattintson rá jobb gombbal a tárolóra **CICS**.
+3. **Bontsa** ki a Régiók tárolót a bal oldali ablaktáblában, majd kattintson a jobb gombbal a **CICS**elemre.
 
-4. Válassza ki **definiálása régió** hozhat létre egy új CICS régióban nevű **BANKDEMO**, üzemeltetett a (helyi) adatbázisban.
+4. Válassza **a Régió definiálása** lehetőséget egy (helyi) adatbázisban tárolt **BANKDEMO**nevű új CICS-régió létrehozásához.
 
-5. Adja meg az adatbázis-kiszolgálópéldányra, kattintson a **tovább**, majd adja meg a régió neve **BANKDEMO**.
+5. Adja meg az adatbázis-kiszolgáló példányt, kattintson a **Tovább**gombra, majd írja be a RÉGIÓ NEVÉT **BANKDEMO**.
 
-     ![Adja meg a régiót párbeszédpanel](media/07-demo-cics.png)
+     ![Terület definiálása párbeszédpanel](media/07-demo-cics.png)
 
-6. Válassza ki a régiót a régiók közötti adatbázis-definíciós fájljának, keresse meg a **régió\_bankdemo\_db.config** a **C:\\felhasználók\\nyilvános\\ Dokumentumok\\Micro fókusz\\nagyvállalati fejlesztő\\minták\\nagyszámítógépes\\CICS\\DotNet\\BankDemo**.
+6. A régióközi adatbázis régiódefiníciós fájljának kiválasztásához keresse meg a **\_régió bankdemo\_db.config fájlját** a **C:\\Users\\Public\\Documents\\Micro Focus\\Enterprise Developer\\Samples\\Mainframe\\CICS\\DotNet\\BankDemo**területen.
 
-     ![Adja meg a régió - régió neve: BANKDEMO](media/08-demo-cics.png)
+     ![Régió definiálása - Régió neve: BANKDEMO](media/08-demo-cics.png)
 
-7. Kattintson a **Befejezés**gombra.
+7. Kattintson a **Befejezés** gombra.
 
-## <a name="create-xa-resource-definitions"></a>XA erőforrás-definíciók létrehozása
+## <a name="create-xa-resource-definitions"></a>XA-erőforrás-definíciók létrehozása
 
-1. A bal oldali panelen, a **vállalati kiszolgáló, a .NET-felügyelet** felhasználói felületén, bontsa ki a **rendszer**, majd **XA erőforrás-definíciókban**. Ez a beállítás határozza meg, hogyan Enterprise Server és az alkalmazás-adatbázisok együttműködik-e a a régióban.
+1. A Vállalati kiszolgáló **szolgáltatás .NET felügyeleti** felhasználói felületének bal oldali ablaktáblájában bontsa ki a **Rendszer,** majd az **XA erőforrás-definíciók csomópontot.** Ez a beállítás határozza meg, hogy a régió hogyan működik együtt az Enterprise Server kiszolgálóval és az alkalmazásadatbázisokkal.
 
-2. Kattintson a jobb gombbal a **XA erőforrás-definíciókban** válassza **Server-példány hozzáadása**.
+2. Kattintson a jobb gombbal az **XA erőforrás-definíciók elemre,** és válassza **a Kiszolgálópéldány hozzáadása parancsot.**
 
-3. A legördülő mezőben válassza ki a **adatbázis szolgáltatáspéldány**. A helyi gép SQLEXPRESS lesz.
+3. A legördülő lista válassza az **Adatbázis-szolgáltatáspéldány lehetőséget.** Ez lesz a helyi gép SQLEXPRESS.
 
-4. Válassza ki az alatt a **XA erőforrás-definíciókban (machinename\\sqlexpress)** tárolóra, majd kattintson **Hozzáadás**.
+4. Válassza ki a példányt az **XA\\erőforrás-definíciók (gépnév sqlexpress)** tárolóban, és kattintson a **Hozzáadás gombra.**
 
-5. Válassza ki **XA-adatbázis erőforrás-definíció** és írja be **BANKDEMO** számára a **neve** és **régió**.
+5. Válassza **az Adatbázis XA erőforrás-definíciója lehetőséget,** majd írja be a **BANKDEMO** parancsot a Név és **régió** **mezőbe.**
 
-     ![Új adatbázis XA erőforrás-definíció képernyő](media/09-demo-xa.png)
+     ![Új Adatbázis XA erőforrás-definícióképernyő](media/09-demo-xa.png)
 
-6. Kattintson a három pontra ( **...** ) viszi, megjelenik a kapcsolati karakterlánc varázsló. A **kiszolgálónév**, típus **(helyi)\\SQLEXPRESS**. A **bejelentkezési**válassza **Windows-hitelesítés**. Az adatbázis nevét, írja be a **BANKDEMO**
+6. Kattintson a három pontra (**...**) a Kapcsolati karakterlánc varázsló felsorakezéséhez. A **Kiszolgálónév mezőbe**írja be a **\\(helyi) SQLEXPRESS nevet.** A **Bejelentkezés hez**válassza a **Windows-hitelesítés**lehetőséget. Adatbázisnevének beírásához írja be a **BANKDEMO (BANKDEMO)** nevet.
 
-     ![A Szerkesztés képernyő kapcsolati karakterlánc](media/10-demo-string.png)
+     ![Kapcsolati karakterlánc szerkesztése képernyő](media/10-demo-string.png)
 
-7. A kapcsolat teszteléséhez.
+7. Tesztelje a kapcsolatot.
 
-## <a name="start-the-bankdemo-region"></a>Indítsa el a BANKDEMO régió
+## <a name="start-the-bankdemo-region"></a>A BANKDEMO régió indítása
 
 > [!NOTE]
-> Fontos, az első lépés: A régió az imént létrehozott XA erőforrás-definíció használatához be kell állítani.
+> Az első lépés fontos: Be kell állítania a régiót az imént létrehozott XA erőforrás-definíció használatához.
 
-1. Keresse meg a **BANDEMO CICS régió** alatt a **régiók tároló**, majd válassza ki **régió indítási fájl szerkesztése** származó a **műveletek** panel. Görgessen le az SQL-tulajdonságokat, és adja meg **bankdemo** számára a **XA erőforrásnév**, vagy jelölje ki azt a három pontra.
+1. Nyissa meg a **BANDEMO CICS-régiót** a **Régiók tároló**csoportban, majd válassza a **Régiók indítási fájl szerkesztése** lehetőséget a **Műveletek** ablaktáblán. Görgessen le az SQL-tulajdonságokhoz, és adja meg az **XA-erőforrás nevének** **bankdemo** ját, vagy a három ponttal jelölje ki.
 
-2. Kattintson a **mentése** ikonra a módosítások mentéséhez.
+2. A módosítások mentéséhez kattintson a **Mentés** ikonra.
 
-3. Kattintson a jobb gombbal **BANKDEMO CICS régió** a a **konzol** panelre, és válassza **indítása és leállítása régió**.
+3. Kattintson a jobb gombbal a **BANKDEMO CICS-régióra** a **Konzol** ablaktáblán, és válassza a **Start/Stop Region parancsot.**
 
-4. Alsó részén a **indítása és leállítása régió** a középső ablaktáblán, válassza a megjelenő mezőben **Start**. Néhány másodperc elteltével indítja el a régióban.
+4. A középső ablaktáblán megjelenő **Start/Stop Terület** mező alján válassza a **Start**lehetőséget. Néhány másodperc múlva elindul a régió.
 
-     ![SQL Start/Stop box](media/11-demo-sql.png)
+     ![SQL Start/Stop mező](media/11-demo-sql.png)
 
-     ![CICS régió BANKDEMO - lépések képernyő](media/12-demo-cics.png)
+     ![CICS Region BANKDEMO - Started képernyő](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Figyelő létrehozása
 
-Hozzon létre egy figyelőt a TN3270-munkamenetet, amely a BankDemo alkalmazás eléréséhez.
+Hozzon létre egy figyelőt a BankDemo alkalmazáshoz hozzáférő TN3270 munkamenetekhez.
 
-1. A bal oldali ablaktáblán bontsa ki a **konfigurációs szerkesztők** válassza **figyelő**.
+1. A bal oldali ablaktáblában bontsa ki a **Configuration Editors (Figyelő) csomópontot,** és válassza **a Figyelő**lehetőséget.
 
-2. Kattintson a **fájl megnyitása** ikonra, és válassza a **seelistener.exe.config** fájlt. Ez a fájl lesz szerkeszthető, és be van töltve a vállalati kiszolgáló indításakor.
+2. Kattintson a **Fájl megnyitása** ikonra, és válassza a **seelistener.exe.config** fájlt. Ez a fájl szerkesztésre kerül, és az Enterprise Server minden indításakor betöltődik.
 
-3. Figyelje meg, hogy a két régióban korábban definiált (ESDEMO és JCLDEMO).
+3. Figyelje meg a korábban definiált két régiót (ESDEMO és JCLDEMO).
 
-4. Szeretne létrehozni egy új régióban BANKDEMO, kattintson a jobb gombbal **régiók**, és válassza ki **régió hozzáadása**.
+4. Új bankdemo régió létrehozásához kattintson a jobb gombbal **a Régiók**elemre, és válassza a Régió **hozzáadása parancsot.**
 
-5. Válassza ki **BANKDEMO régió**.
+5. Válassza ki **a BANKDEMO régiót**.
 
-6. Egy TN3270 csatorna hozzáadásához kattintson a jobb gombbal **BANKDEMO régió** és kiválasztásával **Hozzáadás csatorna**.
+6. TN3270 csatorna hozzáadásához kattintson a jobb gombbal a **BANKDEMO régió** elemre, és válassza **a Csatorna hozzáadása parancsot.**
 
-7. A **neve**, adja meg **TN3270**. A **Port**, adja meg **9024**. A ESDEMO alkalmazás 9230-es portot használja, ezért egy másik port használatára kell.
+7. A **Név mezőbe**írja be a **TN3270 értéket.** A **Port (Port**) mezőbe írja be a **9024**értéket. Az ESDEMO alkalmazás a 9230-as portot használja, ezért másik portot kell használnia.
 
-8. Mentse a fájlt, kattintson a **mentése** ikonra, vagy válasszon **fájl** \> **mentése**.
+8. A fájl mentéséhez kattintson a **Mentés** ikonra, vagy válassza a **Fájlmentés** \> **lehetőséget**.
 
-9. A figyelő indításához kattintson a **Start figyelő** ikonra, vagy válasszon **beállítások** \> **Start figyelő**.
+9. A figyelő elindításához kattintson a **Figyelő indítása** ikonra, vagy válassza a **Beállítások** \> **Figyelő indítása parancsot**.
 
-     ![Figyelő Konfigurációszerkesztő windows](media/13-demo-listener.png)
+     ![Figyelő konfigurációs szerkesztőablakai](media/13-demo-listener.png)
 
 
-## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba az BankDemo alkalmazáshoz való hozzáférés konfigurálása
+## <a name="configure-rumba-to-access-the-bankdemo-application"></a>A Rumba konfigurálása a BankDemo alkalmazás eléréséhez
 
-Az utolsó lépésben kell tennie az Rumba, egy 3270 emulator használatával 3270 munkamenet konfigurálása. Ez a lépés lehetővé teszi a BankDemo alkalmazás hozzáférnie a létrehozott figyelőt.
+Az utolsó dolog, amit meg kell tennie, hogy konfigurálja a 3270 munkamenet segítségével Rumba, a 3270 emulátor. Ez a lépés lehetővé teszi, hogy a BankDemo alkalmazás eléréséhez a létrehozott figyelőn keresztül.
 
-1. A Windows a **Start** menüben Rumba asztal elindításához.
+1. A Windows **Start** menüjében indítsa el a Rumba Desktop programot.
 
-2. Alatt a **kapcsolatok** menü eleméhez válassza **TN3270**.
+2. A **Kapcsolatok** menüpontalatt válassza a **TN3270**lehetőséget.
 
-3. Kattintson a **beszúrása** , és írja be **127.0.0.1** az IP-cím és **9024** a felhasználó által meghatározott port.
+3. Kattintson a **Beszúrás gombra,** és írja be a **127.0.0.1-es** és a **9024-es** ip-címet a felhasználó által definiált porthoz.
 
-4. Kattintson a párbeszédpanel alján **Connect**. Egy fekete CICS képernyő jelenik meg.
+4. A párbeszédpanel alján kattintson a **Csatlakozás gombra.** Fekete CICS képernyő jelenik meg.
 
-5. Típus **bank** BankDemo alkalmazásához a kezdeti 3270 képernyő megjelenítéséhez.
+5. Írja be a **bank** ot a BankDemo alkalmazás kezdeti 3270 képernyőjének megjelenítéséhez.
 
-6. Írja be a felhasználói Azonosítójához tartozó **B0001** , és írja be a jelszót, és semmit. Az első képernyő BANK20 nyílik meg.
+6. A Felhasználói azonosító mezőbe írja be a **B0001 típust,** és a jelszómezőbe írjon be bármit. Megnyílik az első bank20 képernyő.
 
-![Nagyszámítógépes megjelenített üdvözlő képernyő](media/14-demo.png)
-![nagyszámítógépes megjelenített - Rumba - alrendszer bemutató képernyő](media/15-demo.png)
+![Mainframe Display](media/14-demo.png)
+![Üdvözlőképernyő Nagyszámítógépes kijelző - Rumba - Alrendszer bemutató képernyő](media/15-demo.png)
 
-Gratulálunk! Most egy CICS alkalmazást futtat az Azure-ban Micro fókusz vállalati kiszolgáló használatával.
+Gratulálunk! Most egy CICS-alkalmazást futtat az Azure-ban a Micro Focus Enterprise Server használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A Docker-tárolók, Azure-on futtatott vállalati kiszolgáló](run-enterprise-server-container.md)
-- [Nagyszámítógépek Migrálása – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
+- [Enterprise Server futtatása Docker-tárolókban az Azure-ban](run-enterprise-server-container.md)
+- [Nagyszámítógépes áttelepítés - Portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Az Azure-migrálás nagyszámítógépes nyelvszakértőinkből](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [hibaelhárítással](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Nagyszámítógép demystifying az Azure-migráláshoz](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

@@ -1,6 +1,6 @@
 ---
-title: Event Grid események továbbítása a IoTHub-Azure Event Grid IoT Edgehoz | Microsoft Docs
-description: Event Grid események továbbítása a IoTHub
+title: Eseményrács eseményeinek továbbítása az IoTHubra – Azure Event Grid IoT Edge | Microsoft dokumentumok
+description: Eseményrács-események továbbítása az IoTHubra
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,37 +10,37 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844700"
 ---
-# <a name="tutorial-forward-events-to-iothub"></a>Oktatóanyag: események továbbítása a IoTHub
+# <a name="tutorial-forward-events-to-iothub"></a>Oktatóanyag: Események továbbítása az IoTHubra
 
-Ez a cikk végigvezeti az Event Grid események más IoT Edge modulokra való továbbításához szükséges összes lépésen, IoTHub útvonalak használatával. A következő okok miatt lehet szükség:
+Ez a cikk végigvezeti az Event Grid-események továbbításához szükséges összes lépést más IoT Edge-modulok, az IoTHub útvonalak használatával. Ezt a következő okok miatt teheti meg:
 
-* Továbbra is használhatja a már meglévő, a edgeHub útválasztással rendelkező befektetéseit
-* Az összes eseményt csak IoT Hub használatával irányíthatja át az eszközről
+* Továbbra is használja a már meglévő befektetéseket az edgeHub útválasztásával
+* Az összes eseményt csak az IoT Hubon keresztül szeretné irányítani egy eszközről
 
-Az oktatóanyag elvégzéséhez ismernie kell a következő fogalmakat:
+Az oktatóanyag befejezéséhez meg kell értenie a következő fogalmakat:
 
-- [Event Grid fogalmak](concepts.md)
-- [IoT Edge hub](../../iot-edge/module-composition.md) 
+- [Eseményrács – fogalmak](concepts.md)
+- [IoT edge hub](../../iot-edge/module-composition.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Az oktatóanyag befejezéséhez a következőkre lesz szüksége:
 
-* **Azure-előfizetés** – hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) , ha még nem rendelkezik ilyennel. 
-* **Azure IoT hub és IoT Edge eszköz** – kövesse a [Linux](../../iot-edge/quickstart-linux.md) vagy [Windows rendszerű eszközök](../../iot-edge/quickstart.md) gyors üzembe helyezésének lépéseit, ha még nem rendelkezik ilyennel.
+* **Azure-előfizetés** – Hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) ha még nem rendelkezik ilyen. 
+* **Azure IoT Hub és IoT Edge-eszköz** – Kövesse a lépéseket a gyors indítás [Linux](../../iot-edge/quickstart-linux.md) vagy [Windows eszközök,](../../iot-edge/quickstart.md) ha még nem rendelkezik ilyen.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-topic"></a>Témakör létrehozása
 
-Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A témakör egy olyan végpontra hivatkozik, ahol a közzétevők küldhetnek eseményeket.
+Egy esemény közzétevőjeként létre kell hoznia egy eseményrács-témakört. A témakör egy végpontra hivatkozik, ahol a közzétevők eseményeket küldhetnek.
 
-1. Hozza létre a topic4. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre topic4.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
 
    ```json
     {
@@ -50,13 +50,13 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A téma
           }
     }
     ```
-1. Futtassa a következő parancsot a témakör létrehozásához. Az 200-es HTTP-állapotkódot vissza kell adni.
+1. A témakör létrehozásához futtassa a következő parancsot. A 200 OK HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
     ```
 
-1. A következő parancs futtatásával ellenőrizheti, hogy a témakör sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
+1. Futtassa a következő parancsot a témakör sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
@@ -80,11 +80,11 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A téma
 
 ## <a name="create-event-subscription"></a>Esemény-előfizetés létrehozása
 
-Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést egy érdekes témakörben.
+Az előfizetők regisztrálhatnak a témában közzétett eseményekre. Ahhoz, hogy bármilyen eseményt megkapzon, létre kell hoznia egy Eseményrács-előfizetést egy érdeklődésre számot tartó témában.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozza létre a subscription4. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
+1. Hozzon létre subscription4.json az alábbi tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
 
    ```json
     {
@@ -100,13 +100,13 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
    ```
 
    >[!NOTE]
-   > A `endpointType` megadja, hogy az előfizető `edgeHub`. A `outputName` megadja azt a kimenetet, amelyen a Event Grid modul a edgeHub-előfizetésnek megfelelő eseményeket irányítja. A fenti előfizetésnek megfelelő események például a `/messages/modules/eventgridmodule/outputs/sampleSub4`ba lesznek írva.
-2. A következő parancs futtatásával hozza létre az előfizetést. Az 200-es HTTP-állapotkódot vissza kell adni.
+   > A `endpointType` megadott, hogy `edgeHub`az előfizető . A `outputName` adja meg a kimenetet, amelyen az Event Grid modul útvonal események, amelyek megfelelnek az előfizetés edgeHub. Például a fenti előfizetésnek megfelelő események `/messages/modules/eventgridmodule/outputs/sampleSub4`a alkalmazásba kerül.
+2. Futtassa a következő parancsot az előfizetés létrehozásához. A 200 OK HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/eventSubscriptions/sampleSubscription4?api-version=2019-01-01-preview
     ```
-3. A következő parancs futtatásával ellenőrizheti, hogy az előfizetés sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
+3. Futtassa a következő parancsot az előfizetés sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/eventSubscriptions/sampleSubscription4?api-version=2019-01-01-preview
@@ -131,17 +131,17 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
         }
     ```
 
-## <a name="set-up-an-edge-hub-route"></a>Az Edge hub útvonalának beállítása
+## <a name="set-up-an-edge-hub-route"></a>Szegélyelosztó útvonal beállítása
 
-Frissítse az Edge hub útvonalát az esemény-előfizetés eseményeinek továbbításához a IoTHub a következőképpen:
+Frissítse a peremhálózati központ útvonalát az esemény-előfizetés eseményeinek továbbításához az IoTHubra az alábbiak szerint:
 
-1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com)
-1. Navigáljon a **IoT hub**.
-1. **IoT Edge** kiválasztása a menüből
-1. Válassza ki a cél eszköz AZONOSÍTÓját az eszközök listájából.
-1. Válassza a **Modulok beállítása** lehetőséget.
-1. Válassza a **Next (tovább** ) és az útvonalak szakaszt.
-1. Az útvonalakban adjon hozzá egy új útvonalat
+1. Bejelentkezés az [Azure Portalra](https://ms.portal.azure.com)
+1. Nyissa meg az **IoT-központot.**
+1. Válassza ki az **IoT Edge parancsot** a menüből
+1. Válassza ki a céleszköz azonosítóját az eszközök listájából.
+1. Válassza **a Modulok beállítása**lehetőséget.
+1. Válassza a **Tovább** gombot és az útvonalak szakaszt.
+1. Az útvonalakon adjon hozzá egy új útvonalat
 
   ```sh
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
@@ -158,17 +158,17 @@ Frissítse az Edge hub útvonalát az esemény-előfizetés eseményeinek továb
   ```
 
    >[!NOTE]
-   > A fenti útvonal továbbítja az előfizetéshez tartozó összes eseményt az IoT hub felé. Az [Edge hub útválasztási](../../iot-edge/module-composition.md) funkciói segítségével további szűrést végezhet, és átirányíthatja a Event Grid eseményeket más IoT Edge modulokhoz.
+   > A fenti útvonal továbbítja az ehhez az előfizetéshez az IoT hubra való továbbításhoz egyeztetett eseményeket. Az Edge [hub útválasztási](../../iot-edge/module-composition.md) szolgáltatásaival tovább szűrheti és továbbíthatja az Event Grid-eseményeket más IoT Edge-modulokhoz.
 
-## <a name="setup-iot-hub-route"></a>IoT Hub útvonal beállítása
+## <a name="setup-iot-hub-route"></a>Az IoT Hub-útvonal beállítása
 
-Tekintse meg a [IoT hub útválasztási oktatóanyagot](../../iot-hub/tutorial-routing.md) az IoT hub útvonalának beállításához, így megtekintheti a Event Grid modulból továbbított eseményeket. A lekérdezés `true` használatával egyszerűen megtarthatja az oktatóanyagot.  
+Tekintse meg az [IoT Hub útválasztási oktatóanyag](../../iot-hub/tutorial-routing.md) egy útvonalat az IoT hubról, hogy az Event Grid modulból továbbított események megtekintéséhez. Használja `true` a lekérdezést, hogy az oktatóanyag egyszerű legyen.  
 
 
 
 ## <a name="publish-an-event"></a>Esemény közzététele
 
-1. Hozza létre a event4. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
+1. Hozzon létre event4.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
 
     ```json
         [
@@ -192,26 +192,26 @@ Tekintse meg a [IoT hub útválasztási oktatóanyagot](../../iot-hub/tutorial-r
     curl -k -H "Content-Type: application/json" -X POST -g -d @event4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-event-delivery"></a>Esemény-kézbesítés ellenőrzése
+## <a name="verify-event-delivery"></a>Az esemény kézbesítésének ellenőrzése
 
-Az események megtekintéséhez szükséges lépéseket a IoT Hub [útválasztási oktatóanyagban](../../iot-hub/tutorial-routing.md) találhatja meg.
+Tekintse meg az IoT Hub [útválasztási oktatóanyag](../../iot-hub/tutorial-routing.md) az események megtekintéséhez szükséges lépéseket.
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
 
-* Futtassa a következő parancsot a témakör és az összes előfizetésének törléséhez az Edge-ben:
+* Futtassa a következő parancsot a témakör és az összes előfizetésének törléséhez a peremhálózaton:
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
     ```
-* Törölje az IoTHub-útválasztás felhőben való beállítása során létrehozott erőforrásokat is.
+* Törölje az IoTHub-útválasztás felhőben való beállítása közben létrehozott erőforrásokat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, az Edge hub-előfizetést és a közzétett eseményeket. Most, hogy már ismeri az egy peremhálózati hubhoz való továbbítás alapvető lépéseit, tekintse meg a következő cikkeket:
+Ebben az oktatóanyagban létrehozott egy eseményrács-témakört, a peremhálózati hub-előfizetést és a közzétett eseményeket. Most, hogy már ismeri a peremhálózati hubra való előrelépés alapvető lépéseit, tekintse meg az alábbi cikkeket:
 
-* A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
-* Az [Edge hub](../../iot-edge/module-composition.md) Route Filters használata az események particionálásához
-* Event Grid modul megőrzésének beállítása [Linux](persist-state-linux.md) vagy [Windows](persist-state-windows.md) rendszeren
-* Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
-* Események továbbítása Azure Event Grid a felhőben az [oktatóanyag](forward-events-event-grid-cloud.md) követésével
-* [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)
+* Az Azure Event Grid IoT Edge-en való használatával kapcsolatos problémák elhárításáról a [Hibaelhárítási útmutató](troubleshoot.md)című témakörben talál.
+* [Peremhálózati](../../iot-edge/module-composition.md) hubútvonal-szűrők használata események particionálásához
+* Az Event Grid modul perzisztenciájának beállítása [linuxon](persist-state-linux.md) vagy [Windowsrendszeren](persist-state-windows.md)
+* Az ügyfélhitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
+* Események továbbítása az Azure Event Grid be a felhőben az [oktatóanyag](forward-events-event-grid-cloud.md) követésével
+* [Témakörök és előfizetések figyelése a peremhálózaton](monitor-topics-subscriptions.md)

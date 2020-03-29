@@ -1,19 +1,18 @@
 ---
-title: Ajánlat létrehozása vagy módosítása | Azure piactér
-description: API új vagy frissített és meglévő ajánlat létrehozásához.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Ajánlat létrehozása vagy módosítása | Azure Piactér
+description: API-t hozhat létre egy új vagy frissítési és meglévő ajánlat létrehozásához.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819717"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288614"
 ---
 <a name="create-or-modify-an-offer"></a>Ajánlat létrehozása vagy módosítása
 =========================
@@ -26,27 +25,27 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 <a name="uri-parameters"></a>URI-paraméterek
 --------------
 
-|  **Name (Név)**         |  **Leírás**                      |  **Adattípus**  |
+|  **Név**         |  **Leírás**                      |  **Adattípus**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Közzétevő azonosítója, például `contoso` |   Sztring |
-| OfferId           |  Ajánlat azonosítója                     |   Sztring        |
-| API-Version       |  Az API legújabb verziója            |   Dátum           |
+| publisherId       |  Közzétevő azonosítója, például`contoso` |   Sztring |
+| offerId           |  Ajánlat azonosítója                     |   Sztring        |
+| api-verzió       |  Az API legújabb verziója            |   Dátum           |
 |  |  |  |
 
 <a name="header"></a>Fejléc
 ------
 
-|  **Name (Név)**        |  **Érték**               |
+|  **Név**        |  **Érték**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | Engedélyezés    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
 
-<a name="body-example"></a>Példa szövegtörzsre
+<a name="body-example"></a>Példa törzsre
 ------------
 
-A következő példa egy ajánlatot hoz létre `contosovirtualmachine`offerID.
+A következő példa létrehoz egy ajánlatot offerID.The following example creates a offerID of. `contosovirtualmachine`
 
 ### <a name="request"></a>Kérés
 
@@ -240,23 +239,23 @@ A következő példa egy ajánlatot hoz létre `contosovirtualmachine`offerID.
 ```
 
 > [!NOTE]
-> Az ajánlat módosításához adjon hozzá egy **IF-Match** fejlécet * értékre a fenti kérelemhez. Használja ugyanazt a kérési törzset, mint a fentieket, de szükség szerint módosítsa az értékeket. 
+> Az ajánlat módosításához adjon hozzá egy **If-Match** fejlécet a *-ra a fenti kéréshez. Használja ugyanazt a kérelemtörzset, mint fent, de módosítsa az értékeket a kívánt módon. 
 
 
-### <a name="response-status-codes"></a>Válasz-állapotkódok
+### <a name="response-status-codes"></a>Válasz állapotkódjai
 
 | **Kód**  |  **Leírás**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | `OK`. A kérés feldolgozása sikeres volt, és az ajánlat sikeresen módosítva lett.           |
-|  201      | `Created`. A kérés feldolgozása sikeres volt, és az ajánlat sikeresen létrejött.   |
-|  400      | `Bad/Malformed request`. A hiba-válasz törzse további információkat biztosíthat.            |
+|  200      | `OK`. A kérés feldolgozása sikeresen megtörtént, és az ajánlat módosítása sikeresen megtörtént.           |
+|  201      | `Created`. A kérés feldolgozása sikeresen megtörtént, és az ajánlat létrehozása sikeresen megtörtént.   |
+|  400      | `Bad/Malformed request`. A hibaválasz törzse további információkat nyújthat.            |
 |  403      | `Forbidden`. Az ügyfél nem fér hozzá a kért névtérhez.                     |
 |  404      | `Not found`. Az ügyfél által hivatkozott entitás nem létezik.                           |
-|  412      | A kiszolgáló nem felel meg a kérelmező által a kérelemben megadott előfeltételek egyikének. Az ügyfélnek ellenőriznie kell a kéréssel ellátott ETAG. |
+|  412      | A kiszolgáló nem felel meg a kérelemben megadott egyik előfeltételnek sem. Az ügyfélnek ellenőriznie kell a kéréssel küldött ETAG-et. |
 |  |  |
 
 
 <a name="uploading-artifacts"></a>Összetevők feltöltése
 -------------------
 
-Az összetevők, például a képek és az emblémák megosztását úgy kell megosztani, hogy feltölti őket egy elérhető helyre a weben, majd a PUT kérelemben szereplő URI-t is beleértve, a fenti példában látható módon. A rendszer felismeri, hogy ezek a fájlok nem jelennek meg az Azure piactér-tárolóban, és nem tölthetik le ezeket a fájlokat a tárolóba.  Ennek eredményeképpen azt tapasztalhatja, hogy a jövőbeli GET-kérések az Azure piactér szolgáltatás URL-címét fogják visszaadni ezekhez a fájlokhoz.
+Az összetevőket, például a képeket és az emblémákat úgy kell megosztani, hogy feltöltik őket egy elérhető helyre az interneten, majd mindegyiket URI-ként kell használni a PUT-kérelemben, mint a fenti példában. A rendszer észleli, hogy ezek a fájlok nincsenek jelen az Azure piactéri tárolóban, és letölti ezeket a fájlokat a tárolóba.  Ennek eredményeképpen azt fogja találni, hogy a jövőbeli GET-kérelmek egy Azure marketplace-szolgáltatás URL-címét adja vissza ezekhez a fájlokhoz.

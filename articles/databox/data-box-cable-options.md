@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920637"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Az Azure Data Box kábelezési lehetőségei
@@ -54,7 +54,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 - Egy 10-GbE SFP+ Twinax-rézkábel minden csatlakoztatni kívánt 10-GbE-adatporthoz.
 - Egy vagy több, [támogatott operációs rendszert](data-box-system-requirements.md#supported-operating-systems-for-clients) futtató adatforrás.
 
-### <a name="option-1---initial-setup-via-server"></a>1\. lehetőség – Kezdeti beállítás kiszolgálón keresztül
+### <a name="option-1---initial-setup-via-server"></a>1. lehetőség – Kezdeti beállítás kiszolgálón keresztül
 
 Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
@@ -70,11 +70,11 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 3. Nyissa meg az eszköz helyi webes felületét a 192.168.100.10 címen. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 4. Rendeljen statikus IP-címeket a konfigurált adatportokhoz.
 
-### <a name="option-2---initial-setup-via-separate-computer"></a>2\. lehetőség – Kezdeti beállítás különálló számítógépen keresztül
+### <a name="option-2---initial-setup-via-separate-computer"></a>2. lehetőség – Kezdeti beállítás különálló számítógépen keresztül
 
 Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 
-1. A különálló számítógépről származó RJ45 Ethernet-kábelt közvetlenül a MGMT-portra használhatja a konfiguráláshoz.
+1. A konfigurációhoz használjon RJ45 Ethernet kábelt a különálló számítógépről közvetlenül az MGMT portra.
 2. Egy DATA 3-porthoz készült RJ45- vagy SFP+ kábellel csatlakoztassa a DATA 1 vagy a DATA 2 portot a kiszolgálóhoz. Azt javasoljuk, hogy a jó teljesítmény érdekében 10-GbE DATA 1- és DATA 2- portokat használjon. Az adatportok egy 10-GbE-kapcsolón keresztül csatlakoznak az adatokat tartalmazó kiszolgálóhoz.
 3. Konfigurálja az Ethernet-adaptert azon a laptopon, amellyel az eszközhöz csatlakozik:
 
@@ -129,6 +129,6 @@ Végezze el az alábbi lépéseket az eszköz bekábelezéséhez.
 2. A DHCP-kiszolgálóval vagy a DNS-kiszolgálóval azonosítsa az IP-címet.
 3. Egy ugyanazon a hálózaton lévő egyik kiszolgálóról érje el az eszköz helyi webes felületét a DHCP-kiszolgáló által hozzárendelt IP-címmel. Jelentkezzen be és oldja fel a Data Box zárolását az Azure Portalról beszerzett feloldási jelszóval.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az eszköz kábelezése után lépjen az [adatok Azure Data Boxba való másolását](data-box-deploy-copy-data.md) leíró szakaszra.

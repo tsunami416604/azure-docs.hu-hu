@@ -1,23 +1,21 @@
 ---
 title: LCS-előfizetés
-description: Elavult ez a CPP-cikk, amely a PC cikkhez van csatolva; "Bevezetés az előfizetés létrehozására szolgáló oktatóanyagba".
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+description: Elavultak ez a PC-cikkhez kapcsolódó CPP-cikk; volt "Bevezetés a bemutató létrehozásához előfizetést."
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: a6c03ab07ba813922ca9a9d19201a84ac0c5692d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d33a4c2924696184076aaed37f73c9033d12f20e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824198"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289039"
 ---
 # <a name="lcs-subscription"></a>LCS-előfizetés
 
-A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 pénzügyi és üzemeltetési ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 for Finance and Operations ajánlatok létrehozását és kezelését. Ehelyett ezt a funkciót áthelyezték a Microsoft [Partner Center portálra.](https://partner.microsoft.com/) További információt a [Create a New Dynamics 365 for Operations ajánlat című témakörben talál.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)
 
-Az új Dynamics 365 for Operations ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) című témakör utasításait.
+Mielőtt új Dynamics 365 for Operations ajánlatot hozna létre, olvassa el [a Partnerközpont-fiók létrehozása című témakört,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) majd nyissa meg a [Kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) az **Áttekintés** lap kiválasztásával. Az ajánlat létrehozásához kövesse az [Új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) című, az útmutatóutasításait.

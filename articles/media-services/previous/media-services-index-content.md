@@ -1,6 +1,6 @@
 ---
-title: Médiafájlok indexelése Azure Media Indexer
-description: Azure Media Indexer lehetővé teszi, hogy a médiafájlokat kereshetővé tegye, és teljes szöveges átiratot hozzon a kódolt feliratok és kulcsszavak számára. Ez a témakör a Media Indexer használatát mutatja be.
+title: Médiafájlok indexelése az Azure Media Indexelővel
+description: Az Azure Media Indexer lehetővé teszi, hogy a médiafájlok tartalmát kereshetővé tegye, és teljes szöveges átiratot hozzon létre a feliratozáshoz és a kulcsszavakhoz. Ez a témakör a Media Indexer használatát mutatja be.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -16,41 +16,41 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163998"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer"></a>Médiafájlok indexelése Azure Media Indexer
+# <a name="indexing-media-files-with-azure-media-indexer"></a>Médiafájlok indexelése az Azure Media Indexelővel
 
 > [!NOTE]
-> A **Azure Media Indexer** adathordozó-processzor ki lesz vonva. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) lecseréli ezt az örökölt adathordozó-processzort. További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
+> Az **Azure Media Indexer** médiaprocesszor kilesz vonva. A nyugdíjazási dátumokat lásd az [örökölt összetevők](legacy-components.md) témakörben. [Az Azure Media Services videoindexelője](https://docs.microsoft.com/azure/media-services/video-indexer/) lecseréli ezt az örökölt médiaprocesszort. További információ: Áttelepítés az [Azure Media Indexerről és az Azure Media Indexer 2-ről az Azure Media Services videoindexelőre](migrate-indexer-v1-v2.md)című témakörben.
 
-Azure Media Indexer lehetővé teszi, hogy a médiafájlokat kereshetővé tegye, és teljes szöveges átiratot hozzon a kódolt feliratok és kulcsszavak számára. Egy kötegben egy médiafájl vagy több médiafájl is feldolgozható.  
+Az Azure Media Indexer lehetővé teszi, hogy a médiafájlok tartalmát kereshetővé tegye, és teljes szöveges átiratot hozzon létre a feliratozáshoz és a kulcsszavakhoz. Egy kötegben egy médiafájlt vagy több médiafájlt is feldolgozhat.  
 
-Tartalom indexelése esetén ügyeljen arra, hogy a tiszta beszédtel (háttérzene, zaj, effektusok vagy mikrofon nélkül sziszegve) médiafájlokat használjon. Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy bemutatók. Előfordulhat, hogy az alábbi tartalmak nem alkalmasak indexelésre: filmek, TV-műsorok, bármilyen kevert hang-és hanghatások, a rosszul rögzített tartalom (sziszegés).
+Tartalom indexelésekor ügyeljen arra, hogy tiszta beszéddel rendelkező médiafájlokat használjon (háttérzene, zaj, effektusok vagy mikrofonszij nélkül). Néhány példa a megfelelő tartalomra: rögzített értekezletek, előadások vagy előadások. Előfordulhat, hogy a következő tartalom nem alkalmas indexelésre: filmek, tv-műsorok, vegyes hang- és hangeffektusokkal rendelkező tartalmak, rosszul rögzített, háttérzajú tartalom (szimás).
 
-Az indexelési feladatok a következő kimeneteket hozhatják elő:
+Az indexelési feladat a következő kimeneteket hozhatja létre:
 
-* A kódolt képfeliratok fájljai a következő formátumokban vannak: **TTML**és **WebVTT**.
+* A feliratfájlok a következő formátumokban jelennek meg: **TTML**és **WebVTT**.
   
-    A kódolt feliratos fájlok közé tartozik a felismerhetőség nevű címke, amely a forrás videójában található beszéd felismerhetővé módját mutatja.  Használhatja a felismerhetőség értékét a felhasználhatóságra szolgáló kimeneti fájlok megjelenítéséhez. Az alacsony pontszám a hangminőség miatt gyenge indexelési eredményeket jelent.
-* Kulcsszóválasztó fájl (XML).
+    A feliratfájlok közé tartozik a Felismerhetőség nevű címke, amely indexelési feladatot ad a forrásvideóban lévő beszéd felismerésének megalapozottságátalapul.  A Felismerhetőség értékével szűrheti a kimeneti fájlokat a használhatóság érdekében. Az alacsony pontszám a hangminőség miatt gyenge indexelési eredményeket jelentene.
+* Kulcsszófájl (XML).
 
-Ez a cikk bemutatja, hogyan hozhat létre indexelési feladatokat **egy eszköz indexeléséhez** és **több fájl indexeléséhez**.
+Ez a cikk bemutatja, hogyan hozhat létre indexelési feladatokat **egy eszköz indexeléséhez** és **több fájl indexeléséhez.**
 
-## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Konfigurációs és MANIFEST-fájlok használata az indexelési feladatokhoz
-Az indexelési feladatokhoz több részletet is megadhat a feladatok konfigurációjának használatával. Megadhatja például, hogy mely metaadatokat szeretné használni a médiafájlhoz. Ezt a metaadatokat a nyelvi motor használja a szókincs kibontásához, és nagy mértékben javítja a beszédfelismerés pontosságát.  A kívánt kimeneti fájlokat is meg tudja adni.
+## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Konfigurációs és jegyzékfájlok használata indexelési feladatokhoz
+Az indexelési feladatoktovábbi részleteit egy feladatkonfiguráció használatával adhatja meg. Megadhatja például, hogy mely metaadatokat használja a médiafájlhoz. Ezeket a metaadatokat a nyelvi motor használja a szókincs bővítésére, és jelentősen javítja a beszédfelismerés pontosságát.  Megadhatja a kívánt kimeneti fájlokat is.
 
-Egy jegyzékfájl használatával egyszerre több médiafájl is feldolgozható.
+Egy jegyzékfájl használatával egyszerre több médiafájlt is feldolgozhat.
 
-További információ: [Azure Media Indexer feladatának előre definiálása](https://msdn.microsoft.com/library/dn783454.aspx).
+További információ: [Task Preset for Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ## <a name="index-an-asset"></a>Eszköz indexelése
-A következő módszer egy médiafájlt tölt fel egy eszközként, és létrehoz egy feladatot az eszköz indexeléséhez.
+A következő módszer feltölt egy médiafájlt eszközként, és létrehoz egy feladatot az eszköz indexelésére.
 
-Ha nincs megadva konfigurációs fájl, a rendszer az összes alapértelmezett beállítással indexeli a médiafájlt.
+Ha nincs megadva konfigurációs fájl, a médiafájl az összes alapértelmezett beállítással lesz indexelve.
 
 ```csharp
     static bool RunIndexingJob(string inputMediaFilePath, string outputFolder, string configurationFile = "")
@@ -142,23 +142,23 @@ Ha nincs megadva konfigurációs fájl, a rendszer az összes alapértelmezett b
 ```
 
 <!-- __ -->
-### <a id="output_files"></a>Kimeneti fájlok
-Alapértelmezés szerint az indexelési feladatok a következő kimeneti fájlokat generálják. A fájlokat az első kimeneti eszköz tárolja.
+### <a name="output-files"></a><a id="output_files"></a>Kimeneti fájlok
+Alapértelmezés szerint egy indexelési feladat a következő kimeneti fájlokat hozza létre. A fájlok az első kimeneti eszközben tárolódnak.
 
-Ha egynél több bemeneti médiafájl található, az indexelő egy jegyzékfájlt hoz létre a feladatok kimenetéhez, amelynek neve "JobResult. txt". Minden bemeneti médiafájl esetében az eredményül kapott TTML, WebVTT és kulcsszavas fájlok számozása sorrendben, és az "alias" névvel van elnevezve.
+Ha egynél több bemeneti médiafájl van, az Indexelő létrehoz egy "JobResult.txt" nevű jegyzékfájl-fájlt a feladatkimenetekhez. Az egyes bemeneti médiafájlok hozlétre kerülő TTML-, WebVTT- és kulcsszófájljai egymás után számozottak és elnevezett ek ként jelennek meg az "Alias" használatával.
 
 | Fájlnév | Leírás |
 | --- | --- |
-| **InputFileName. ttml**<br/>**InputFileName. VTT** |A TTML-és WebVTT-formátumokban lezárt feliratú (CC) fájlok.<br/><br/>Használhatók a hang-és videofájlok elérhetővé tételéhez a fogyatékkal élők számára.<br/><br/>A kódolt feliratú fájlok közé tartozik egy <b>felismerhetőség</b> nevű címke, amely a forrás videójában található beszéd felismerhetővé módját mutatja.  Használhatja a <b>felismerhetőség</b> értékét a felhasználhatóságra szolgáló kimeneti fájlok megjelenítéséhez. Az alacsony pontszám a hangminőség miatt gyenge indexelési eredményeket jelent. |
-| **InputFileName. kW. XML<br/>InputFileName.info** |Kulcsszó-és információs fájlok. <br/><br/>A Kulcsszóválasztó fájl egy XML-fájl, amely a beszédfelismerési tartalomból kinyert kulcsszavakat tartalmazza a gyakorisággal és az eltolással kapcsolatos információkkal. <br/><br/>Az információs fájl egy egyszerű szöveges fájl, amely részletes információkat tartalmaz az egyes felismert feltételekről. Az első sor speciális, és tartalmazza a felismerhetőség pontszámát. Minden további sor a következő adatok tabulátorral tagolt listája: kezdési idő, befejezési idő, szó/kifejezés, megbízhatóság. A rendszer másodpercek alatt adja meg az időpontokat, és a megbízhatóságot a 0-1-es számként adja meg. <br/><br/>Példa sor: "1,20 1,45 Word 0,67" <br/><br/>Ezek a fájlok számos célra használhatók, például a beszédfelismerési elemzések elvégzéséhez, vagy a keresőprogramok, például a Bing, a Google vagy a Microsoft SharePoint használatával, hogy a médiafájlok könnyebben felderíthetők legyenek, vagy akár több releváns hirdetés nyújtására is használhatók. |
-| **JobResult. txt** |Kimeneti jegyzékfájl, amely csak több fájl indexelése esetén jelenik meg, a következő információkat tartalmazza:<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>Hiba</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **Bemeneti fájlnév.ttml**<br/>**InputFileName.vtt** |TTML és WebVTT formátumban.<br/><br/>Ezeket arra is fel lehet használni, hogy a hang- és videofájlokat hozzáférhetővé tegyék a hallássérült ek számára.<br/><br/>A feliratfájlok közé tartozik a Felismerhetőség nevű <b>címke,</b> amely indexelési feladatot ad a forrásvideóban lévő beszéd felismerésének megalapozottságátalapul.  A <b>Felismerhetőség</b> értékével szűrheti a kimeneti fájlokat a használhatóság érdekében. Az alacsony pontszám a hangminőség miatt gyenge indexelési eredményeket jelentene. |
+| **InputFileName.kw.xml<br/>InputFileName.info** |Kulcsszó- és információs fájlok. <br/><br/>A kulcsszófájl egy XML-fájl, amely a beszédtartalomból kinyert kulcsszavakat tartalmazza, gyakorisági és eltolási információkkal. <br/><br/>Az információs fájl egy egyszerű szöveges fájl, amely részletes információkat tartalmaz az egyes felismert kifejezésekről. Az első sor különleges, és tartalmazza a felismerhetőség pontszám. Minden további sor a következő adatok tabulátorlistája: kezdési időpont, befejezési időpont, szó/kifejezés, megbízhatóság. Az idők másodpercben vannak megadva, és a megbízhatóság 0-1 számként van megadva. <br/><br/>Példa sor: "1,20 1,45 szó 0,67" <br/><br/>Ezek a fájlok számos célra használhatók, például beszédelemzéselvégzésére, vagy olyan keresőmotoroknak vannak kitéve, mint a Bing, a Google vagy a Microsoft SharePoint, hogy a médiafájlok at felfedezhetővé tegyék, vagy akár relevánsabb hirdetések megjelenítésére is használják. |
+| **JobResult.txt fájl** |Kimeneti jegyzékfájl, amely csak több fájl indexelésekéneknél jelenik meg, és a következő információkat tartalmazza:<br/><br/><table border="1"><tr><th>Bemeneti fájl</th><th>Alias</th><th>MediaLength (MediaLength)</th><th>Hiba</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
-Ha nem az összes bemeneti médiafájl indexelve lett, az indexelési feladatok a 4000 hibakód miatt meghiúsulnak. További információ: [hibakódok](#error_codes).
+Ha nem minden bemeneti médiafájl van sikeresen indexelve, az indexelési feladat a 4000-es hibakóddal sikertelen lesz. További információt a [Hibakódok című témakörben talál.](#error_codes)
 
 ## <a name="index-multiple-files"></a>Több fájl indexelése
-A következő módszer több médiafájlt tölt fel egy eszközként, és létrehoz egy feladatot, amely az összes fájlt egy kötegben indexeli.
+A következő módszer több médiafájlt tölt fel eszközként, és létrehoz egy feladatot, amely indexeli ezeket a fájlokat egy kötegben.
 
-A rendszer létrehoz egy ". lst" kiterjesztésű jegyzékfájlt, és feltölti az eszközre. A manifest-fájl tartalmazza az összes objektum fájljának listáját. További információ: [Azure Media Indexer feladatának előre definiálása](https://msdn.microsoft.com/library/dn783454.aspx).
+Létrejön egy jegyzékfájl a ".lst" kiterjesztéssel, és feltöltésre kerül az eszközbe. A jegyzékfájl tartalmazza az összes eszközfájl listáját. További információ: [Task Preset for Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -235,47 +235,47 @@ A rendszer létrehoz egy ". lst" kiterjesztésű jegyzékfájlt, és feltölti a
     }
 ```
 
-### <a name="partially-succeeded-job"></a>Részben sikeres feladatok
-Ha nem az összes bemeneti médiafájl indexelve lett, az indexelési feladat sikertelen lesz, hibakód: 4000. További információ: [hibakódok](#error_codes).
+### <a name="partially-succeeded-job"></a>Részlegesen sikeres feladat
+Ha nem sikerül az összes bemeneti médiafájl indexelése, az indexelő feladat a 4000-es hibakóddal sikertelen lesz. További információt a [Hibakódok című témakörben talál.](#error_codes)
 
-Ugyanezek a kimenetek (a sikeres feladatok) jönnek létre. Tekintse át a kimeneti jegyzékfájlt, és ellenőrizze, hogy mely bemeneti fájlok sikertelenek, a hiba oszlop értékeinek megfelelően. A sikertelen bemeneti fájlok esetében az eredményül kapott TTML-, WebVTT-és kulcsszavas fájlok nem jönnek létre.
+Ugyanazok a kimenetek (a sikeres feladatokhoz képest) jönnek létre. A kimeneti jegyzékfájlra hivatkozva megtudhatja, hogy mely bemeneti fájlok sikertelenek, a Hiba oszlop értékei szerint. A sikertelen bemeneti fájlok esetében az eredményül kapott TTML-, WebVTT- és kulcsszófájlok NEM jönnek létre.
 
-### <a id="preset"></a>Azure Media Indexer feladatának beállítása
-A Azure Media Indexerból történő feldolgozás testreszabható úgy, hogy a feladattal együtt egy opcionális feladattal is rendelkezik.  Az alábbiakban a konfigurációs XML formátumát ismertetjük.
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Feladatkészlet az Azure Media Indexelőhez
+Az Azure Media Indexelő feldolgozását testre szabhatja egy opcionális feladatkészlet a feladat mellett.  Az alábbiakban a konfigurációs xml formátumát ismertetik.
 
-| Name (Név) | Kötelező | Leírás |
+| Név | Kötelező | Leírás |
 | --- | --- | --- |
-| **bemeneti** |false |Az indexelni kívánt adatfájl (ok).</p><p>A Azure Media Indexer a következő médiafájl-formátumokat támogatja: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Megadhatja a fájl nevét (ke) t a **bemeneti** elem **Name** vagy **List** attribútumában (az alább látható módon). Ha nem határozza meg, hogy melyik adatfájlt szeretné indexelni, az elsődleges fájl lesz kiválasztva. Ha nincs beállítva elsődleges adatfájl, a bemeneti eszköz első fájlja indexelve lesz.</p><p>Ha explicit módon meg szeretné adni az eszköz fájljának nevét, tegye a következőket:<br/>`<input name="TestFile.wmv">`<br/><br/>Egyszerre több adatfájlt is indexelheti (legfeljebb 10 fájlt). Ehhez tegye a következőket:<br/><br/><ol class="ordered"><li><p>Hozzon létre egy szövegfájlt (manifest-fájlt), és adjon meg egy. lst kiterjesztést. </p></li><li><p>Adja meg a bemeneti objektumban található összes adatfájl nevét ebbe a jegyzékfájlba. </p></li><li><p>Adja hozzá (feltölti) a jegyzékfájlt az objektumhoz.  </p></li><li><p>Adja meg a jegyzékfájl nevét a bemenet List attribútumában.<br/>`<input list="input.lst">`</li></ol><br/><br/>Megjegyzés: Ha 10-nél több fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz az 2006-es hibakód miatt. |
-| **metaadatok** |false |A szókincs-átalakításhoz használt megadott adatfájl (ok) metaadatai.  Az indexelő előkészítése hasznos lehet a nem szabványos szókincs-szavak, például a megfelelő főnevek felismerésére.<br/>`<metadata key="..." value="..."/>` <br/><br/>Megadhatja az előre definiált **kulcsok** **értékeit** . Jelenleg a következő kulcsok támogatottak:<br/><br/>"title" és "Description" – a szókincs adaptációja a feladatokhoz használt nyelvi modell finomhangolásához és a beszédfelismerés pontosságának javításához.  Az értékek a mag internetes keresésével keresik a kontextusban releváns szöveges dokumentumokat, a tartalom használatával kiegészítik a belső szótárt az indexelési feladat időtartamára.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **szolgáltatások** <br/><br/> Az 1,2-es verzióban lett hozzáadva. Jelenleg az egyetlen támogatott funkció a beszédfelismerés ("ASR"). |false |A beszédfelismerési funkció a következő beállítások kulcsokkal rendelkezik:<table><tr><th><p>Paraméter</p></th>        <th><p>Leírás</p></th><th><p>Példaérték</p></th></tr><tr><td><p>Nyelv</p></td><td><p>A multimédiás fájlban felismerhető természetes nyelv.</p></td><td><p>Angol, Spanyol</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>a kívánt kimeneti felirat formátumának pontosvesszővel tagolt listája (ha van ilyen)</p></td><td><p>ttml; webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Igaz Hamis</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Logikai jelző, amely meghatározza, hogy szükség van-e egy kulcsszó XML-fájlra.</p></td><td><p>Igaz Hamis. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Logikai jelző, amely meghatározza, hogy a teljes feliratok (a megbízhatósági szinttől függetlenül) legyenek kényszerítve.  </p><p>Az alapértelmezett érték false (hamis), amelyben az olyan szavak és kifejezések, amelyek 50%-nál kevesebb megbízhatósági szinttel rendelkeznek, kimaradnak a végső képaláírás-kimenetből, és az ellipszisek ("...") helyébe lépnek.  Az ellipszisek hasznosak a feliratok minőségének ellenőrzéséhez és a naplózáshoz.</p></td><td><p>Igaz Hamis. </p></td></tr></table> |
+| **bemenet** |hamis |Az indexozni kívánt eszközfájl(ok).</p><p>Az Azure Media Indexer a következő médiafájlformátumokat támogatja: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>A bemeneti elem **nevében** vagy **listaattribútumában** megadhatja a fájlnevet (eke)t (lásd alább). **input** Ha nem adja meg, hogy melyik eszközfájlt indexelje, a rendszer kiveszi az elsődleges fájlt. Ha nincs beállítva elsődleges eszközfájl, a bemeneti eszköz első fájlja indexelésre kerül.</p><p>Az eszközfájl nevének explicit megadásához tegye a következőket:<br/>`<input name="TestFile.wmv">`<br/><br/>Egyszerre több eszközfájlt is indexelhet (legfeljebb 10 fájl). Ehhez tegye a következőket:<br/><br/><ol class="ordered"><li><p>Hozzon létre egy szövegfájlt (jegyzékfájl) és adjon neki .lst kiterjesztést. </p></li><li><p>Adja hozzá a bemeneti eszközben lévő összes eszközfájl nevét ehhez a jegyzékfájlhoz. </p></li><li><p>Adja hozzá (töltse fel) a jegyzékfájlaz eszközhöz.  </p></li><li><p>Adja meg a jegyzékfájl nevét a bemeneti lista attribútumában.<br/>`<input list="input.lst">`</li></ol><br/><br/>Megjegyzés: Ha 10-nél több fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz a 2006-os hibakóddal. |
+| **Metaadat** |hamis |A szókincs-adaptációhoz használt meghatározott eszközfájl(ok) metaadatai.  Hasznos lehet az Indexer előkészítése a nem szabványos szókincs, például a megfelelő főnév felismerésére.<br/>`<metadata key="..." value="..."/>` <br/><br/>Az előre definiált kulcsok **értékeit** **megadhatja.** Jelenleg a következő kulcsok támogatottak:<br/><br/>"title" és "description" - szókincs-adaptációhoz használt, hogy a nyelvi modellt finomítsa a munkájához, és javítsa a beszédfelismerés pontosságát.  Az értékek az internetes kereséseket a kontextusszempontjából releváns szöveges dokumentumok kereséséhez használja a tartalom használatával a belső szótár kiegészítésére az indexelési feladat időtartama alatt.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **Funkciók** <br/><br/> Hozzáadva az 1.2-es verzióban. Jelenleg az egyetlen támogatott funkció a beszédfelismerés ("ASR"). |hamis |A Beszédfelismerés szolgáltatás a következő beállítási gombokkal rendelkezik:<table><tr><th><p>Kulcs</p></th>        <th><p>Leírás</p></th><th><p>Példaérték</p></th></tr><tr><td><p>Nyelv</p></td><td><p>A multimédiás fájlban felismerendő természetes nyelv.</p></td><td><p>Angol, spanyol</p></td></tr><tr><td><p>Feliratformátumok</p></td><td><p>a kívánt kimeneti feliratformátumok pontosvesszővel elválasztott listája (ha van ilyen)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Igaz; Hamis</p></td></tr><tr><td><p>Kulcsszavak létrehozása</p></td><td><p>Logikai jelző, amely meghatározza, hogy szükség van-e kulcsszó XML-fájlra.</p></td><td><p>Igaz; Hamis. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Logikai jelző, amely meghatározza, hogy a teljes feliratok kikényszerítése legyen-e (a megbízhatósági szinttől függetlenül).  </p><p>Az alapértelmezett érték hamis, ebben az esetben az 50%-nál kisebb megbízhatósági szinttel rendelkező szavak és kifejezések kimaradnak a végső feliratkimenetből, és három ponttal helyettesítik ("...").  A három pont a feliratminőség-ellenőrzéshez és -naplózáshoz hasznos.</p></td><td><p>Igaz; Hamis. </p></td></tr></table> |
 
-### <a id="error_codes"></a>Hibakódok
-Hiba esetén Azure Media Indexer a következő hibakódok egyikét kell jelentenie:
+### <a name="error-codes"></a><a id="error_codes"></a>Hibakódok
+Hiba esetén az Azure Media Indexernek az alábbi hibakódok egyikéről kell jelentést tennie:
 
-| Kód | Name (Név) | Lehetséges okok |
+| Kód | Név | Lehetséges okok |
 | --- | --- | --- |
 | 2000 |Érvénytelen konfiguráció |Érvénytelen konfiguráció |
-| 2001 |Érvénytelen bemeneti eszközök |Hiányzó bemeneti eszközök vagy üres eszköz. |
-| 2002 |Érvénytelen jegyzékfájl |A jegyzékfájl üres, vagy a jegyzékfájl érvénytelen elemeket tartalmaz. |
-| 2003 |A médiafájl letöltése nem sikerült |Érvénytelen URL-cím a jegyzékfájlban. |
-| 2004 |Nem támogatott protokoll |A Media URL-cím protokollja nem támogatott. |
+| 2001 |Érvénytelen input eszközök |Hiányzó bemeneti eszközök vagy üres eszköz. |
+| 2002 |Érvénytelen jegyzékfájl |A jegyzékfájl üres, vagy érvénytelen elemeket tartalmaz. |
+| 2003 |Nem sikerült letölteni a médiafájlt |Érvénytelen URL a jegyzékfájlban. |
+| 2004 |Nem támogatott protokoll |A média URL-címének protokollja nem támogatott. |
 | 2005 |Nem támogatott fájltípus. |A bemeneti médiafájl típusa nem támogatott. |
-| 2006 |Túl sok bemeneti fájl |A bemeneti jegyzékfájlban több mint 10 fájl található. |
+| 2006 |Túl sok a bemeneti fájl |A bemeneti jegyzékben több mint 10 fájl található. |
 | 3000 |Nem sikerült dekódolni a médiafájlt |Nem támogatott adathordozó-kodek <br/>vagy<br/> Sérült médiafájl <br/>vagy<br/> Nincs hangadatfolyam a bemeneti adathordozón. |
-| 4000 |A kötegelt indexelés részben sikerült |A bemeneti médiafájlok némelyikét nem sikerült indexelni. További információ: <a href="#output_files">kimeneti fájlok</a>. |
-| egyéb |Belső hibák |Forduljon a támogatási csoporthoz. indexer@microsoft.com |
+| 4000 |A kötegelt indexelés részben sikeres volt |A bemeneti médiafájlok egy része nem indexelhető. További információt a Kimeneti fájlok című <a href="#output_files">témakörben talál.</a> |
+| egyéb |Belső hibák |Kérjük, lépjen kapcsolatba az ügyfélszolgálattal. indexer@microsoft.com |
 
-## <a id="supported_languages"></a>Támogatott nyelvek
+## <a name="supported-languages"></a><a id="supported_languages"></a>Támogatott nyelvek
 Jelenleg az angol és a spanyol nyelv támogatott.  
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 
-[Médiafájlok indexelése Azure Media Indexer 2 előzetes verzióval](media-services-process-content-with-indexer2.md)
+[Médiafájlok indexelése az Azure Media Indexer 2 előzetes verzióval](media-services-process-content-with-indexer2.md)
 

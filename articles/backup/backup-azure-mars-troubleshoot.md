@@ -1,113 +1,113 @@
 ---
-title: A Azure Backup ügynök hibáinak megoldása
-description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Backup ügynök telepítését és regisztrálását.
+title: Az Azure Backup ügynök – hibaelhárítás
+description: Ebből a cikkből megtudhatja, hogyan háríthatja el az Azure Backup-ügynök telepítését és regisztrációját.
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
 ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673109"
 ---
-# <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibáinak megoldása
+# <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services (MARS) ügynök – hibaelhárítása
 
-Ez a cikk a konfiguráció, a regisztráció, a biztonsági mentés és a visszaállítás során esetlegesen megjelenő hibák megoldását ismerteti.
+Ez a cikk a konfiguráció, a regisztráció, a biztonsági mentés és a visszaállítás során előforduló hibák elhárítását ismerteti.
 
 ## <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
 
-Javasoljuk, hogy a Microsoft Azure Recovery Services (MARS) ügynökével kapcsolatos hibaelhárítás megkezdése előtt győződjön meg a következőkről:
+Javasoljuk, hogy a Microsoft az Azure Recovery Services (MARS) ügynökhiba-elhárításának megkezdése előtt ellenőrizze az alábbiakat:
 
-- [Győződjön meg arról, hogy a Mars-ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
-- [Győződjön meg arról, hogy van hálózati kapcsolat a Mars-ügynök és az Azure között](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
-- Győződjön meg arról, hogy a MARS fut (a szolgáltatás konzolján). Ha szükséges, indítsa újra, majd próbálja megismételni a műveletet.
-- Ügyeljen arra, hogy a kihelyezett [mappa helyén 5% – 10% szabad lemezterület álljon rendelkezésre](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder).
-- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver zavarja-e Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
-- Ha az ütemezett biztonsági mentés sikertelen, de a manuális biztonsági mentés működik, [a biztonsági mentések nem az ütemezés szerint futnak](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule).
+- [Győződjön meg arról, hogy a MARS-ügynök naprakész.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Győződjön meg arról, hogy van hálózati kapcsolat a MARS ügynök és az Azure között.](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- Győződjön meg arról, hogy a MARS fut (a Service console-ban). Ha szükséges, indítsa újra, majd próbálkozzon újra a művelettel.
+- [Győződjön meg arról, hogy 5–10%-os szabad kötetterület áll rendelkezésre a tervezőasztal helyén.](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver zavarja-e az Azure Backup szolgáltatást.](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- Ha az ütemezett biztonsági mentés sikertelen, de a manuális biztonsági mentés működik, olvassa el a [Biztonsági mentések nem az ütemezés nek megfelelően való futtatása.](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
 - Győződjön meg arról, hogy az operációs rendszer rendelkezik a legújabb frissítésekkel.
-- [Győződjön meg arról, hogy a nem támogatott, nem támogatott attribútumokkal rendelkező meghajtók és fájlok ki vannak zárva a biztonsági mentésből](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup).
+- [Győződjön meg arról, hogy a nem támogatott meghajtók és a nem támogatott attribútumokkal rendelkező fájlok ki vannak zárva a biztonsági mentésből.](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Győződjön meg arról, hogy a védett rendszer órája a megfelelő időzónára van konfigurálva.
-- [Győződjön meg arról, hogy a .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve van a kiszolgálón](https://www.microsoft.com/download/details.aspx?id=30653).
-- Ha a kiszolgálót egy tárolóba próbálja újra regisztrálni:
-  - Győződjön meg arról, hogy az ügynök el lett távolítva a kiszolgálón, és hogy a portálról törölve lett.
-  - Ugyanazt a jelszót használja, amelyet eredetileg a kiszolgáló regisztrálásához használt.
-- Offline biztonsági mentések esetén győződjön meg arról, hogy a biztonsági mentés megkezdése előtt a forráson és a másolási számítógépen Azure PowerShell 3.7.0 van telepítve.
-- Ha a biztonsági mentési ügynök Azure-beli virtuális gépen fut, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine).
+- [Győződjön meg arról, hogy a .NET Framework 4.5.2-es vagy újabb rendszer telepítve van a kiszolgálón.](https://www.microsoft.com/download/details.aspx?id=30653)
+- Ha újra regisztrálni szeretné a kiszolgálót egy trezorba:
+  - Győződjön meg arról, hogy az ügynök eltávolításra kerül a kiszolgálón, és hogy törlődik a portálról.
+  - Használja ugyanazt a jelszót, amelyet eredetileg a kiszolgáló regisztrálásához használt.
+- Offline biztonsági mentések esetén győződjön meg arról, hogy az Azure PowerShell 3.7.0 telepítve van a forrásra és a másolószámítógépre a biztonsági mentés megkezdése előtt.
+- Ha a biztonságimásolat-ügynök egy Azure virtuális gépen fut, olvassa el [ezt a cikket.](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
 
-## <a name="invalid-vault-credentials-provided"></a>A tár megadott hitelesítő adatai érvénytelenek
+## <a name="invalid-vault-credentials-provided"></a>A tároló megadott hitelesítő adatai érvénytelenek
 
-**Hibaüzenet**: Érvénytelen tároló hitelesítő adatok lettek megadva. A fájl vagy sérült, vagy nem rendelkezik a helyreállítási szolgáltatáshoz társított legújabb hitelesítő adatokkal. (AZONOSÍTÓ: 34513)
+**Hibaüzenet**: Érvénytelen tárolóhitelesítő adatok at. A fájl sérült, vagy nem rendelkezik a helyreállítási szolgáltatással társított legújabb hitelesítő adatokkal. (ID: 34513)
 
-| Ok | Javasolt teendők |
+| Ok | Ajánlott műveletek |
 | ---     | ---    |
-| **A tár hitelesítő adatai nem érvényesek** <br/> <br/> Előfordulhat, hogy a tár hitelesítő adatainak fájljai sérültek vagy lejártak. (Előfordulhat például, hogy a regisztráció időpontja előtt több mint 48 órával korábban töltötték le.)| Töltse le az új hitelesítő adatokat Recovery Services-tárból a Azure Portal. (Lásd a [Mars-ügynök letöltése](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) című szakasz 6. lépését.) Ezután hajtsa végre az alábbi lépéseket a megfelelő módon: <ul><li> Ha már telepítette és regisztrálta a MARSot, nyissa meg az Microsoft Azure Backup Agent MMC konzolt, majd a **műveletek** ablaktáblán válassza a **kiszolgáló regisztrálása** lehetőséget a regisztráció az új hitelesítő adatokkal való elvégzéséhez. <br/> <li> Ha az új telepítés meghiúsul, próbálja meg újratelepíteni az új hitelesítő adatokkal.</ul> **Megjegyzés**: Ha több tároló hitelesítő adatait letöltötte, csak a legújabb fájl érvényes a következő 48 órán belül. Azt javasoljuk, hogy töltsön le egy új, a tároló hitelesítő adatait tartalmazó fájlt.
-| **A proxykiszolgáló/tűzfal blokkolja a regisztrációt** <br/>or <br/>**Nincs internetkapcsolat** <br/><br/> Ha a számítógép vagy a proxykiszolgáló korlátozott internetkapcsolattal rendelkezik, és nem biztosít hozzáférést a szükséges URL-címekhez, a regisztráció sikertelen lesz.| Hajtsa végre a következő lépéseket:<br/> <ul><li> Az informatikai csapattal együttműködve gondoskodhat arról, hogy a rendszeren legyen internetkapcsolat.<li> Ha nincs proxykiszolgáló, győződjön meg arról, hogy a proxy beállítás nincs kiválasztva az ügynök regisztrálása során. [Keresse meg a proxybeállításokat](#verifying-proxy-settings-for-windows).<li> Ha tűzfal-vagy proxykiszolgáló van, a hálózati csapattal együttműködve biztosíthatja, hogy ezek az URL-címek és IP-címek hozzáférhessenek:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-címek**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Az előző hibaelhárítási lépések elvégzése után próbálkozzon újra a regisztrálással.<br></br> Ha a kapcsolatok az Azure ExpressRoute keresztül érhetők el, győződjön meg arról, hogy a beállítások az [Azure ExpressRoute-támogatás](backup-support-matrix-mars-agent.md#azure-expressroute-support)című témakörben leírtak szerint vannak konfigurálva.
-| **A víruskereső szoftver blokkolja a regisztrációt** | Ha a kiszolgálón telepítve van víruskereső szoftver, adja hozzá a szükséges kizárási szabályokat a következő fájlokhoz és mappákhoz tartozó víruskereső vizsgálathoz: <br/><ul> <li> CBengine.exe <li> CSC. exe<li> A Scratch mappa. Alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> A bin mappa a C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| **A tároló hitelesítő adatai érvénytelenek** <br/> <br/> Lehet, hogy a tároló hitelesítő fájljai sérültek vagy lejártak. (Előfordulhat például, hogy a regisztráció előtt több mint 48 órával töltötték le őket.)| Új hitelesítő adatok letöltése a Recovery Services-tárolóból az Azure Portalon. (Lásd a [MARS-ügynök letöltése](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) című szakasz 6. lépését.) Ezután tegye meg az alábbi lépéseket: <ul><li> Ha már telepítette és regisztrálta a MARS-ot, nyissa meg a Microsoft Azure Backup Agent MMC konzolt, majd válassza a **Kiszolgáló regisztrálása** lehetőséget a **Műveletek** ablaktáblán a regisztráció befejezéséhez az új hitelesítő adatokkal. <br/> <li> Ha az új telepítés sikertelen, próbálja meg újratelepíteni az új hitelesítő adatokkal.</ul> **Megjegyzés:** Ha több tároló hitelesítő fájl töltle, csak a legújabb fájl érvényes a következő 48 órában. Azt javasoljuk, hogy töltse le egy új tároló hitelesítő fájl letöltését.
+| **A proxykiszolgáló/tűzfal blokkolja a regisztrációt** <br/>vagy <br/>**Nincs internetkapcsolat** <br/><br/> Ha a számítógép vagy a proxykiszolgáló korlátozott internetkapcsolattal rendelkezik, és nem biztosítja a szükséges URL-címekhez való hozzáférést, a regisztráció sikertelen lesz.| Tegye meg az alábbi lépéseket:<br/> <ul><li> Működjön együtt informatikai csapatával annak érdekében, hogy a rendszer rendelkezik internetkapcsolattal.<li> Ha nem rendelkezik proxykiszolgálóval, győződjön meg arról, hogy a proxybeállítás nincs bejelölve az ügynök regisztrálásakor. [Ellenőrizze a proxy beállításokat](#verifying-proxy-settings-for-windows).<li> Ha rendelkezik tűzfal-proxykiszolgálóval, a hálózati csapattal együttműködve győződjön meg arról, hogy ezek az URL-címek és IP-címek hozzáférnek:<br/> <br> **Urls**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-címek**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Próbálkozzon újra a regisztrációval az előző hibaelhárítási lépések elvégzése után.<br></br> Ha az Azure ExpressRoute-on keresztül kapcsolódik a kapcsolathoz, győződjön meg arról, hogy a beállítások az [Azure ExpressRoute-támogatásban](backup-support-matrix-mars-agent.md#azure-expressroute-support)leírtak szerint vannak konfigurálva.
+| **A víruskereső szoftver blokkolja a regisztrációt** | Ha víruskereső szoftver van telepítve a kiszolgálón, adja hozzá a szükséges kizárási szabályokat a fájlok és mappák víruskereső vizsgálatához: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> A semmiből dosszié. Az alapértelmezett helye: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> A C:\Program Files\Microsoft Azure Recovery Services Agent\Bin raktárhely tárolómappája.
 
-### <a name="additional-recommendations"></a>További javaslatok
+### <a name="additional-recommendations"></a>További ajánlások
 
-- Lépjen a C:/Windows/Temp értékre, és győződjön meg arról, hogy a. tmp kiterjesztéssel több mint 60 000 vagy 65 000 fájl található. Ha vannak ilyenek, törölje ezeket a fájlokat.
-- Győződjön meg arról, hogy a gép dátumának és időpontjának egyeznie kell a helyi időzónával.
-- Győződjön meg arról, hogy [ezek a helyek](install-mars-agent.md#verify-internet-access) hozzá vannak adva a megbízható helyekhez az Internet Explorerben.
+- Nyissa meg a C:/Windows/Temp fájlt, és ellenőrizze, hogy több mint 60 000 vagy 65 000 fájl van-e .tmp kiterjesztéssel. Ha vannak, törölje ezeket a fájlokat.
+- Győződjön meg arról, hogy a készülék dátuma és időpontja megegyezik a helyi időzónával.
+- Győződjön meg [arról,](install-mars-agent.md#verify-internet-access) hogy ezek a helyek hozzá vannak adva a megbízható helyekhez az Internet Explorer programban.
 
-### <a name="verifying-proxy-settings-for-windows"></a>Proxybeállítások ellenőrzése Windows rendszeren
+### <a name="verifying-proxy-settings-for-windows"></a>A Windows proxybeállításainak ellenőrzése
 
-1. Töltse le a PsExec a [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) lapról.
-1. `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` futtatása rendszergazda jogú parancssorból.
+1. Töltse le a PsExec-et a [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) oldalról.
+1. Fusson `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` egy rendszergazda jogú parancssorból.
 
-   Ezzel a paranccsal megnyílik az Internet Explorer.
-1. Lépjen az **eszközök** > Internetbeállítások > **kapcsolatok** > **LAN-beállítások** **lehetőségre** .
-1. Keresse meg a rendszerfiók proxybeállításait.
-1. Ha nincs proxy konfigurálva, és a proxy adatai meg vannak adva, távolítsa el a részleteket.
-1. Ha egy proxy konfigurálva van, és a proxy adatai helytelenek, győződjön meg arról, hogy a **proxy IP-címe** és a **port** adatai helyesek.
-1. Az Internet Explorer bezárásához.
+   Ez a parancs megnyitja az Internet Explorer t.
+1. Nyissa meg **az Eszközök** > **– Internetbeállítások** > **Kapcsolatok** > **LAN-beállításai**.
+1. Ellenőrizze a rendszerfiók proxybeállításait.
+1. Ha nincs beállítva proxy, és proxy részletek vannak megadva, távolítsa el a részleteket.
+1. Ha egy proxy konfigurálva van, és a proxy részletei helytelenek, győződjön meg arról, hogy a **proxy IP-és** **portadatai** helyesek.
+1. Zárja be az Internet Explorert.
 
-## <a name="unable-to-download-vault-credential-file"></a>Nem tölthető le a tár hitelesítőadat-fájlja
+## <a name="unable-to-download-vault-credential-file"></a>Nem lehet letölteni a tároló hitelesítő fájlját
 
-| Hiba   | Javasolt teendők |
+| Hiba   | Ajánlott műveletek |
 | ---     | ---    |
-|Nem sikerült letölteni a tároló hitelesítőadat-fájlját. (AZONOSÍTÓ: 403) | <ul><li> Próbálja meg letölteni a tár hitelesítő adatait egy másik böngészőben, vagy hajtsa végre a következő lépéseket: <ul><li> Start Internet Explorer. Válassza az F12 lehetőséget. </li><li> Nyissa meg a **hálózat** lapot, és törölje a gyorsítótárat és a cookie-kat. </li> <li> Frissítse az oldalt.<br></li></ul> <li> Ellenőrizze, hogy az előfizetés le van-e tiltva/lejárt-e.<br></li> <li> Ellenőrizze, hogy a tűzfalszabály blokkolja-e a letöltést. <br></li> <li> Gondoskodjon róla, hogy a tárolón ne legyen kimerítve a korlát (50 gép/tároló).<br></li>  <li> Győződjön meg arról, hogy a felhasználó rendelkezik a tár hitelesítő adatainak letöltéséhez szükséges Azure Backup engedélyekkel, és regisztrálja a kiszolgálót a tárolóban. [A Azure Backup helyreállítási pontok kezeléséhez lásd: szerepköralapú Access Control használata](backup-rbac-rs-vault.md).</li></ul> |
+|Nem sikerült letölteni a tároló hitelesítő adatfájlját. (ID: 403) | <ul><li> Próbálja meg letölteni a tároló hitelesítő adatait egy másik böngészővel, vagy tegye meg az alábbi lépéseket: <ul><li> Indítsa el az Internet Explorert. Válassza az F12 lehetőséget. </li><li> Lépjen a **Hálózat** lapra, és törölje a gyorsítótárat és a cookie-kat. </li> <li> Frissítse az oldalt.<br></li></ul> <li> Ellenőrizze, hogy az előfizetés le van-e tiltva/lejárt.Check if the subscription is disabled/expired.<br></li> <li> Ellenőrizze, hogy a tűzfalszabály blokkolja-e a letöltést. <br></li> <li> Győződjön meg róla, hogy nem merítette ki a tárolókorlátot (50 gép tárolónként).<br></li>  <li> Győződjön meg arról, hogy a felhasználó rendelkezik az Azure Backup engedélyekkel, amelyek szükségesek a tároló hitelesítő adatainak letöltéséhez és a kiszolgáló regisztrálásához a tárolóval. Az [Azure Biztonsági másolat helyreállítási pontjainak kezeléséhez olvassa el a Szerepköralapú hozzáférés-vezérlés használata című témakört.](backup-rbac-rs-vault.md)</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>A Microsoft Azure Recovery Service-ügynök nem tudott kapcsolódni a Microsoft Azure Backuphoz
 
-| Hiba  | Lehetséges ok | Javasolt teendők |
+| Hiba  | Lehetséges ok | Ajánlott műveletek |
 | ---     | ---     | ---    |
-| <br /><ul><li>A Microsoft Azure Recovery szolgáltatás ügynökének nem sikerült kapcsolódnia a Microsoft Azure Backuphoz. (AZONOSÍTÓ: 100050) Ellenőrizze a hálózati beállításokat, és győződjön meg arról, hogy tud-e csatlakozni az internethez.<li>(407) proxy hitelesítés szükséges. |A proxy blokkolja a csatlakozást. |  <ul><li>Az Internet Explorerben nyissa meg a **Tools** > **internet Options** > **Security** > **Internet**lehetőséget. Válassza az **Egyéni szint** lehetőséget, majd görgessen le a **Fájl letöltése** szakaszhoz. Válassza az **Engedélyezés** lehetőséget.<p>Előfordulhat, hogy az Internet Explorerben [URL-címeket és IP-címeket](install-mars-agent.md#verify-internet-access) is hozzá kell adnia a megbízható helyekhez.<li>Módosítsa a beállításokat proxykiszolgáló használatára. Ezután adja meg a proxykiszolgáló részleteit.<li> Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógépen vagy a proxyn a tűzfalbeállítások engedélyezik ezeket az [URL-címeket és IP-címeket](install-mars-agent.md#verify-internet-access). <li>Ha a kiszolgálón telepítve van a víruskereső szoftver, zárja ki ezeket a fájlokat a víruskeresőből: <ul><li>CBEngine. exe (a dpmra. exe helyett).<li>CSC. exe (a .NET-keretrendszerhez kapcsolódóan). Van egy CSC. exe a kiszolgálón telepített összes .NET-keretrendszer-verzióhoz. Zárja ki a CSC. exe fájlokat a .NET-keretrendszer összes verziójához az érintett kiszolgálón. <li>A mappa vagy a gyorsítótár helye. <br>A Scratch mappa vagy a gyorsítótár elérési útjának alapértelmezett helye: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>A bin mappa a C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| <br /><ul><li>A Microsoft Azure helyreállítási szolgáltatásügynök nem tudott csatlakozni a Microsoft Azure biztonsági másolathoz. (ID: 100050) Ellenőrizze a hálózati beállításokat, és győződjön meg arról, hogy képes csatlakozni az internethez.<li>(407) Proxy hitelesítés szükséges. |Egy proxy blokkolja a kapcsolatot. |  <ul><li>Az Internet Explorer ben nyissa meg **az Eszközök** > internetbeállítások**Biztonsági** > **internet****lehetőséget.** >  Válassza **az Egyéni szint lehetőséget,** és görgessen le a Fájl **letöltése** szakaszhoz. Válassza az **Engedélyezés** lehetőséget.<p>Előfordulhat, hogy [URL-címeket és IP-címeket](install-mars-agent.md#verify-internet-access) is hozzá kell adnia a megbízható helyekhez az Internet Explorer programban.<li>Módosítsa a beállításokat proxykiszolgáló használatához. Ezután adja meg a proxykiszolgáló adatait.<li> Ha a számítógép korlátozott internet-hozzáféréssel rendelkezik, győződjön meg arról, hogy a tűzfal beállításai a számítógépen vagy a proxyn engedélyezik ezeket az [URL-címeket és IP-címeket.](install-mars-agent.md#verify-internet-access) <li>Ha víruskereső szoftver van telepítve a kiszolgálón, zárja ki ezeket a fájlokat a víruskereső vizsgálatból: <ul><li>CBEngine.exe (a dpmra.exe helyett).<li>CSC.exe (a .NET framework programmal kapcsolatos). A kiszolgálón telepített összes . Zárja ki a CSC.exe fájlokat a .NET Framework összes verziójához az érintett kiszolgálón. <li>A kaparós sorsjegy mappája vagy gyorsítótára. <br>A kaparós mappa vagy a gyorsítótár elérési útja a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch alapértelmezett helye.<li>A C:\Program Files\Microsoft Azure Recovery Services Agent\Bin raktárhely tárolómappája.
 
-## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nem sikerült beállítani a biztonságos biztonsági mentések titkosítási kulcsát
+## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nem sikerült a biztonsági mentések biztonságossá tételéhez szükséges titkosítási kulcs beállítása
 
-| Hiba | Lehetséges okok | Javasolt teendők |
+| Hiba | Lehetséges okok | Ajánlott műveletek |
 | ---     | ---     | ---    |
-| <br />Nem sikerült beállítani a biztonságos biztonsági mentések titkosítási kulcsát. Az aktiválás nem sikerült, de a titkosítási jelszó a következő fájlba lett mentve. |<li>A kiszolgáló már regisztrálva van egy másik tárolóban.<li>A konfiguráció során a jelszó megsérült.| Szüntesse meg a kiszolgáló regisztrációját a tárból, és regisztrálja újra az új jelszóval.
+| <br />Nem sikerült beállítani a titkosítási kulcsot a biztonságos biztonsági mentések hez. Az aktiválás nem sikerült teljesen, de a titkosítási jelszó a következő fájlba lett mentve. |<li>A kiszolgáló már regisztrálva van egy másik trezorral.<li>A konfiguráció során a jelszó sérült.| Törölje a kiszolgáló regisztrációját a tárolóból, és regisztrálja újra egy új jelszóval.
 
 ## <a name="the-activation-did-not-complete-successfully"></a>Az aktiválás nem fejeződött be sikeresen
 
-| Hiba  | Lehetséges okok | Javasolt teendők |
+| Hiba  | Lehetséges okok | Ajánlott műveletek |
 |---------|---------|---------|
-|<br />Az aktiválás nem fejeződött be sikeresen. Az aktuális művelet végrehajtása egy belső szolgáltatási hiba miatt meghiúsult [0x1FC07]. Próbálja meg újra a műveletet később. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatához.     | <li> A kaparós mappa olyan köteten található, amely nem rendelkezik elegendő hellyel. <li> A Scratch mappa helytelenül lett áthelyezve. <li> A OnlineBackup. KEK fájl hiányzik.         | <li>Frissítsen a MARS-ügynök [legújabb verziójára](https://aka.ms/azurebackup_agent) .<li>Helyezze át a kihelyezett mappát vagy a gyorsítótár helyét egy olyan kötetre, amelynek szabad területe a biztonsági mentési adatmennyiség 5%-a és 10%-a között van. A gyorsítótár helyének megfelelő áthelyezéséhez tekintse meg a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)című témakör lépéseit.<li> Győződjön meg arról, hogy a OnlineBackup. KEK fájl megtalálható. <br>A *Scratch mappa vagy a gyorsítótár elérési útjának alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|<br />Az aktiválás sikertelenül zárult. Az aktuális művelet belső szolgáltatáshiba miatt nem sikerült [0x1FC07] miatt. Próbálja meg újra a műveletet később. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.)     | <li> A kaparós sorsú mappa olyan köteten található, amelynek nincs elég helye. <li> A semmiből vett mappa helytelenül lett áthelyezve. <li> Hiányzik az OnlineBackup.KEK fájl.         | <li>Frissítsen a MARS-ügynök [legújabb verziójára.](https://aka.ms/azurebackup_agent)<li>Helyezze át a tervezőmappa vagy a gyorsítótár helyét egy olyan kötetre, amelynek szabad területe a teljes biztonsági mentési adatméretének 5–10%-a. A gyorsítótár helyének helyes áthelyezéséhez olvassa el a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)című részben leírt lépéseket.<li> Győződjön meg arról, hogy az OnlineBackup.KEK fájl jelen van. <br>*A kaparós sorsmappa vagy a gyorsítótár elérési útja a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>A titkosítási jelszó helytelenül van konfigurálva
 
-| Hiba  | Lehetséges okok | Javasolt teendők |
+| Hiba  | Lehetséges okok | Ajánlott műveletek |
 |---------|---------|---------|
-| <br />34506-es hiba. A számítógépen tárolt titkosítási jelszó nincs megfelelően konfigurálva.    | <li> A kaparós mappa olyan köteten található, amely nem rendelkezik elegendő hellyel. <li> A Scratch mappa helytelenül lett áthelyezve. <li> A OnlineBackup. KEK fájl hiányzik.        | <li>Frissítsen a MARS-ügynök [legújabb verziójára](https://aka.ms/azurebackup_agent) .<li>Helyezze át a kihelyezett mappát vagy a gyorsítótár helyét egy olyan kötetre, amelynek szabad területe a biztonsági mentési adatmennyiség 5%-a és 10%-a között van. A gyorsítótár helyének megfelelő áthelyezéséhez tekintse meg a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)című témakör lépéseit.<li> Győződjön meg arról, hogy a OnlineBackup. KEK fájl megtalálható. <br>A *Scratch mappa vagy a gyorsítótár elérési útjának alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+| <br />34506-os hiba. A számítógépen tárolt titkosítási jelszó nincs megfelelően konfigurálva.    | <li> A kaparós sorsú mappa olyan köteten található, amelynek nincs elég helye. <li> A semmiből vett mappa helytelenül lett áthelyezve. <li> Hiányzik az OnlineBackup.KEK fájl.        | <li>Frissítsen a MARS-ügynök [legújabb verziójára.](https://aka.ms/azurebackup_agent)<li>Helyezze át a tervezőmappa vagy a gyorsítótár helyét egy olyan kötetre, amelynek szabad területe a teljes biztonsági mentési adatméretének 5–10%-a. A gyorsítótár helyének helyes áthelyezéséhez olvassa el a [fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)című részben leírt lépéseket.<li> Győződjön meg arról, hogy az OnlineBackup.KEK fájl jelen van. <br>*A kaparós sorsmappa vagy a gyorsítótár elérési útja a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>A biztonsági mentések nem az ütemezés szerint futnak
 
-Ha az ütemezett biztonsági mentések nem indulnak el automatikusan, de a manuális biztonsági mentések megfelelően működnek, próbálkozzon a következő műveletekkel:
+Ha az ütemezett biztonsági mentések nem aktiválódnak automatikusan, de a manuális biztonsági mentések megfelelően működnek, próbálkozzon a következő műveletekkel:
 
-- Győződjön meg arról, hogy a Windows Server biztonsági másolatának ütemterve nem ütközik az Azure Files és mappák biztonsági mentési ütemtervével.
+- Győződjön meg arról, hogy a Windows Server biztonsági mentési ütemezése nem ütközik az Azure-fájlok és mappák biztonsági mentési ütemezésével.
 
-- Győződjön meg arról, hogy az online biztonsági mentés állapota beállítás **engedélyezve**értékre van állítva. Az állapot ellenőrzéséhez hajtsa végre a következő lépéseket:
+- Győződjön meg arról, hogy az online biztonsági mentés állapota **Engedélyezés.** Az állapot ellenőrzéséhez tegye a következő lépéseket:
 
-  1. A Feladatütemezőben bontsa ki a **Microsoft** elemet, majd válassza az **online biztonsági mentés**lehetőséget.
-  1. Kattintson duplán a **Microsoft-OnlineBackup** elemre, és lépjen az **Eseményindítók** lapra.
-  1. Ellenőrizze, hogy az állapot **engedélyezve**értékre van-e állítva. Ha nem, válassza a **Szerkesztés**lehetőséget, válassza az **engedélyezve**lehetőséget, majd kattintson **az OK gombra**.
+  1. A Feladatütemezőben bontsa ki a **Microsoft** csomópontot, és válassza **az Online biztonsági másolat lehetőséget.**
+  1. Kattintson duplán a **Microsoft-OnlineBackup elemre,** és lépjen az **Eseményindítók** lapra.
+  1. Ellenőrizze, hogy az állapot Engedélyezve értékre **van-e állítva.** Ha nem, válassza a **Szerkesztés**, majd **az Engedélyezve**lehetőséget, majd az **OK**gombot.
 
-- Győződjön meg arról, hogy a feladat futtatásához kiválasztott felhasználói fiók vagy **rendszer** vagy **helyi Rendszergazdák csoport** a kiszolgálón. A felhasználói fiók ellenőrzéséhez lépjen az **általános** lapra, és ellenőrizze a **biztonsági** beállításokat.
+- Győződjön meg arról, hogy a feladat futtatásához kijelölt felhasználói fiók a **RENDSZER** vagy a **Helyi rendszergazdák csoportja** a kiszolgálón. A felhasználói fiók ellenőrzéséhez lépjen az **Általános** lapra, és ellenőrizze a **Biztonsági** beállításokat.
 
-- Győződjön meg arról, hogy a PowerShell 3,0-es vagy újabb verziója telepítve van a kiszolgálón. A PowerShell verziójának ellenőrzéséhez futtassa ezt a parancsot, és ellenőrizze, hogy a `Major` verziószáma 3 vagy újabb:
+- Győződjön meg arról, hogy a PowerShell 3.0-s vagy újabb verzió telepítve van a kiszolgálón. A PowerShell-verzió ellenőrzéséhez futtassa `Major` ezt a parancsot, és ellenőrizze, hogy a verziószám 3-as vagy újabb:
 
   `$PSVersionTable.PSVersion`
 
@@ -115,7 +115,7 @@ Ha az ütemezett biztonsági mentések nem indulnak el automatikusan, de a manu�
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Ha a `LocalMachine` PowerShell-végrehajtási szabályzata `restricted`értékre van állítva, akkor a biztonsági mentési feladatot kiváltó PowerShell-parancsmag sikertelen lehet. Futtassa az alábbi parancsokat emelt szintű módban a végrehajtási házirendnek a `Unrestricted` vagy `RemoteSigned`hoz való megadásához és beállításához:
+- Ha a PowerShell `LocalMachine` végrehajtási szabályzata van beállítva, hogy `restricted`a PowerShell-parancsmag, amely elindítja a biztonsági mentési feladat sikertelen lehet. A parancsok magas szintű módban futtatva ellenőrizze `Unrestricted` és `RemoteSigned`állítsa a végrehajtási házirendet vagy a következőre:
 
  ```PowerShell
  Get-ExecutionPolicy -List
@@ -123,105 +123,105 @@ Ha az ütemezett biztonsági mentések nem indulnak el automatikusan, de a manu�
 Set-ExecutionPolicy Unrestricted
 ```
 
-- Győződjön meg arról, hogy nincs hiányzó vagy sérült PowerShell-modul MSOnlineBackup-fájlja. Ha vannak hiányzó vagy sérült fájlok, hajtsa végre a következő lépéseket:
+- Győződjön meg arról, hogy nincsenek hiányzó vagy sérült PowerShell-modul MSOnlineBackup fájlok. Ha hiányzó vagy sérült fájlok vannak, tegye az alábbi lépéseket:
 
-  1. Másolja a MSOnlineBackup mappát a C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules. webhelyről minden olyan gépről, amely megfelelően működik a MARS-ügynökkel.
-  1. A problémás gépen illessze be a másolt fájlokat ugyanazon a mappában (C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules).
+  1. Minden olyan gépről, amelyen megfelelően működik a MARS-ügynök, másolja az MSOnlineBackup mappát a C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules mappából.
+  1. A problémás gépen illessze be a másolt fájlokat ugyanarra a mappára (C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules).
 
-     Ha már van MSOnlineBackup mappa a gépen, illessze be a fájlokat, vagy cserélje le a meglévő fájlokat.
+     Ha már van MSOnlineBackup mappa a számítógépen, illessze be a fájlokat, vagy cserélje le a meglévő fájlokat.
 
 > [!TIP]
-> A módosítások következetes alkalmazása érdekében indítsa újra a kiszolgálót az előző lépések végrehajtása után.
+> A módosítások következetes alkalmazásának biztosításához indítsa újra a kiszolgálót az előző lépések végrehajtása után.
 
 ## <a name="troubleshoot-restore-problems"></a>Visszaállítási problémák elhárítása
 
-Előfordulhat, hogy a Azure Backup néhány perc elteltével sem sikerült csatlakoztatni a helyreállítási kötetet. A folyamat során hibaüzenetek jelenhetnek meg. A normál helyreállítás megkezdéséhez hajtsa végre a következő lépéseket:
+Előfordulhat, hogy az Azure Backup nem lehet sikeresen csatlakoztatni a helyreállítási kötetet, még néhány perc elteltével is. És előfordulhat, hogy hibaüzeneteket kap a folyamat során. A normális helyreállítás megkezdéséhez tegye meg az alábbi lépéseket:
 
-1. Ha több percig is fut, szakítsa meg a csatlakoztatási folyamatot.
+1. Szakítsa meg a csatlakoztatási folyamatot, ha már több perce fut.
 
-2. Ellenőrizze, hogy a biztonsági mentési ügynök legújabb verziója van-e telepítve. A verzió vizsgálatához a MARS-konzol **műveletek** paneljén válassza az **Microsoft Azure Recovery Services ügynök**elemet. Győződjön meg arról, hogy a **verziószám** értéke vagy magasabb, mint a [cikkben](https://go.microsoft.com/fwlink/?linkid=229525)említett verzió. Válassza ezt a hivatkozást [a legújabb verzió letöltéséhez](https://go.microsoft.com/fwLink/?LinkID=288905).
+2. Ellenőrizze, hogy a biztonsági másolat ügynök legújabb verzióját használja-e. A verzió ellenőrzéséhez a MARS konzol **Műveletek** ablaktábláján válassza a **Microsoft Azure Recovery Services Agent – Beszerzés– alkalmazásról lehetőséget.** Ellenőrizze, hogy a **verziószám** megegyezik-e vagy magasabb-e, mint a [cikkben](https://go.microsoft.com/fwlink/?linkid=229525)említett verzió. Válassza ezt a linket [a legújabb verzió letöltéséhez.](https://go.microsoft.com/fwLink/?LinkID=288905)
 
-3. Nyissa meg **Eszközkezelő** > **Storage-vezérlőket** , és keresse meg a **Microsoft iSCSI-kezdeményezőt**. Ha megtalálta, lépjen közvetlenül a 7. lépésre.
+3. Nyissa meg az **Eszközkezelő** > **tárolóvezérlőit,** és keresse meg **a Microsoft iSCSI-kezdeményezőt.** Ha megtalálta, lépjen közvetlenül a 7.
 
-4. Ha nem találja a Microsoft iSCSI-kezdeményező szolgáltatást, próbáljon meg egy bejegyzést keresni **Eszközkezelő** > az **ismeretlen eszköz** nevű **Storage-vezérlőket** a **ROOT\ISCSIPRT**hardver-azonosítóval.
+4. Ha nem találja a Microsoft iSCSI-kezdeményező szolgáltatást, próbáljon meg egy bejegyzést keresni az **Ismeretlen eszköz** hardverazonosítóval/ISCSIPRT **ROOT\ISCSIPRT**nevű **Eszközkezelő-vezérlők** > **Storage controllers** csoportban.
 
-5. Kattintson a jobb gombbal az **ismeretlen eszköz** elemre, és válassza az **illesztőprogram-szoftver frissítése**lehetőséget.
+5. Kattintson a jobb gombbal **az Ismeretlen eszköz elemre,** és válassza **az Illesztőprogram frissítése parancsot.**
 
-6. Frissítse az illesztőprogramot úgy, hogy kijelöli a **frissített illesztőprogram-szoftver automatikus keresésének**lehetőségét. A frissítésnek **ismeretlen eszközt** kell megváltoztatnia a **Microsoft iSCSI-kezdeményezőnek**:
+6. Frissítse az illesztőprogramot a **frissített illesztőprogram automatikus keresése**lehetőség kiválasztásával. A frissítésnek az **Ismeretlen eszközt** **Microsoft iSCSI-kezdeményezőre kell módosítania:**
 
-    ![Képernyőkép a Azure Backup Eszközkezelőról, a Storage-vezérlők kiemelésével](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
+    ![Képernyőkép az Azure biztonsági másolat eszközkezelőjéről, kiemelve a Storage-vezérlőket](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. Nyissa meg a **feladatkezelő** > **Services (helyi)**  > **Microsoft iSCSI-kezdeményező szolgáltatás**:
+7. Nyissa meg a **Feladatkezelő** > **szolgáltatások (helyi)** > **Microsoft iSCSI-kezdeményező szolgáltatását**:
 
-    ![Képernyőkép a Azure Backup Task Managerről, a szolgáltatások (helyi) kiemelve](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
+    ![Képernyőkép az Azure Biztonsági mentés feladatkezelőjéről, kiemelve szolgáltatások (helyi)](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8. Indítsa újra a Microsoft iSCSI-kezdeményező szolgáltatást. Ehhez kattintson a jobb gombbal a szolgáltatásra, és válassza a **Leállítás**lehetőséget. Ezután kattintson rá a jobb gombbal, és válassza az **Indítás**lehetőséget.
+8. Indítsa újra a Microsoft iSCSI-kezdeményező szolgáltatást. Ehhez kattintson a jobb gombbal a szolgáltatásra, és válassza a **Leállítás parancsot.** Ezután kattintson rá a jobb gombbal, és válassza a **Start parancsot.**
 
-9. Próbálja megismételni a helyreállítást az [azonnali visszaállítással](backup-instant-restore-capability.md).
+9. Próbálja meg újra a helyreállítást az [Azonnali visszaállítás használatával.](backup-instant-restore-capability.md)
 
-Ha a helyreállítás továbbra is sikertelen, indítsa újra a kiszolgálót vagy az ügyfelet. Ha nem kívánja újraindítani a rendszert, vagy ha a helyreállítás még a kiszolgáló újraindítása után is sikertelen, próbálja meg [egy másik gépről helyreállítani](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+Ha a helyreállítás továbbra is sikertelen, indítsa újra a kiszolgálót vagy az ügyfelet. Ha nem szeretné újraindítani, vagy ha a helyreállítás a kiszolgáló újraindítása után is sikertelen, próbáljon [meg egy másik gépről helyreállítva.](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
 
-## <a name="troubleshoot-cache-problems"></a>Gyorsítótárral kapcsolatos problémák elhárítása
+## <a name="troubleshoot-cache-problems"></a>Gyorsítótárproblémák elhárítása
 
-A biztonsági mentési művelet sikertelen lehet, ha a gyorsítótár mappája (más néven a Scratch mappa) helytelenül van konfigurálva, hiányoznak az előfeltételek, vagy korlátozott hozzáférése van.
+A biztonsági mentési művelet sikertelen lehet, ha a gyorsítótármappa (más néven kaparós mappa) helytelenül van konfigurálva, hiányoznak az előfeltételek, vagy korlátozott hozzáféréssel rendelkezik.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a MARS-ügynök műveletei sikeresek legyenek, a gyorsítótár mappájának meg kell felelnie az alábbi követelményeknek:
+A MARS ügynök műveletek sikeres a cache mappát kell tartania az alábbi követelményeknek:
 
-- [Győződjön meg arról, hogy a kihelyezett mappa helye 5% – 10% szabad lemezterülettel rendelkezik](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Győződjön meg arról, hogy a mappa helye érvényes és elérhető](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
-- [Győződjön meg arról, hogy a gyorsítótár mappában található fájlattribútumok támogatottak](backup-azure-file-folder-backup-faq.md#are-there-any-attributes-of-the-cache-folder-that-arent-supported)
-- [Győződjön meg arról, hogy a lefoglalt árnyékmásolat tárolóhelye elegendő a biztonsági mentési folyamathoz.](#increase-shadow-copy-storage)
-- [Győződjön meg arról, hogy nincsenek más folyamatok (például víruskereső szoftverek) a gyorsítótár mappájához való hozzáférés korlátozásához](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
+- [Annak biztosítása, hogy 5–10%-os szabad kötetterület legyen elérhető a tervezőasztal helyén](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [A kaparós sorsmappa helyének érvényességének és akadályának biztosítása](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+- [A gyorsítótár-mappa fájlattribútumainak támogatása](backup-azure-file-folder-backup-faq.md#are-there-any-attributes-of-the-cache-folder-that-arent-supported)
+- [Annak biztosítása, hogy a lefoglalt árnyékmásolat-tárterület elegendő legyen a biztonsági mentési folyamathoz](#increase-shadow-copy-storage)
+- [Győződjön meg arról, hogy nincs más folyamat (pl. anti-vírus szoftver), amely korlátozza a gyorsítótármappához való hozzáférést](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
-### <a name="increase-shadow-copy-storage"></a>Árnyékmásolat-tároló javítása
+### <a name="increase-shadow-copy-storage"></a>Árnyékmásolat-tárolás növelése
 
-A biztonsági mentési műveletek sikertelenek lehetnek, ha nincs elegendő árnyékmásolat-tárolóhely az adatforrás védelme érdekében. A probléma megoldásához növelje az árnyékmásolat tárolóhelyét a védett köteten a vssadmin használatával az alábbi ábrán látható módon:
+A biztonsági mentési műveletek sikertelenek lehetnek, ha nincs elegendő árnyékmásolat-tárolóhely az adatforrás védelméhez. A probléma megoldásához növelje a védett kötet árnyékmásolati tárhelyét a vssadmin használatával az alábbiak szerint:
 
-- A rendszergazda jogú parancssorban keresse meg az aktuális árnyékmásolat-tárolóhelyet:<br/>
+- Ellenőrizze az aktuális árnyéktároló helyet a rendszergazda jogú parancssorból:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- Növelje az árnyék tárolóhelyét az alábbi parancs használatával:<br/>
+- Növelje az árnyéktárhelyet az alábbi paranccsal:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
-### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Egy másik folyamat vagy víruskereső szoftver blokkolja a gyorsítótár mappához való hozzáférést
+### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Egy másik folyamat vagy víruskereső szoftver, amely blokkolja a gyorsítótár mappához való hozzáférést
 
-Ha a kiszolgálón telepítve van víruskereső szoftver, adja hozzá a szükséges kizárási szabályokat a következő fájlokhoz és mappákhoz tartozó víruskereső vizsgálathoz:  
+Ha víruskereső szoftver van telepítve a kiszolgálón, adja hozzá a szükséges kizárási szabályokat a fájlok és mappák víruskereső vizsgálatához:  
 
-- A Scratch mappa. Alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
-- A bin mappa a C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+- A semmiből dosszié. Az alapértelmezett helye: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
+- A C:\Program Files\Microsoft Azure Recovery Services Agent\Bin raktárhely mappája
 - CBengine.exe
-- CSC. exe
+- CSC.exe
 
 ## <a name="common-issues"></a>Gyakori problémák
 
-Ez a szakasz a MARS-ügynök használata során felmerülő gyakori hibákat ismerteti.
+Ez a szakasz a MARS-ügynök használata során előforduló gyakori hibákat ismerteti.
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
 Hibaüzenet | Javasolt művelet |
 -- | --
-A Microsoft Azure Recovery Services-ügynök nem tudta elérni a biztonsági mentés ideiglenes helyen tárolt ellenőrzőösszegét | A probléma megoldásához hajtsa végre az alábbi műveleteket, majd indítsa újra a kiszolgálót <br/> - [ellenőrizze, hogy van-e víruskereső vagy más folyamat, amely zárolja a fájlokat a kaparós hely fájljaival](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [ellenőrizze, hogy a kiinduló hely érvényes-e, és elérhető-e a Mars-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+A Microsoft Azure Recovery Services-ügynök nem tudta elérni a biztonsági mentés ideiglenes helyen tárolt ellenőrzőösszegét | A probléma megoldásához hajtsa végre az alábbi műveletet, és indítsa újra a kiszolgálót <br/> - [Ellenőrizze, hogy van-e víruskereső vagy más folyamatok zár a semmiből hely fájlokat](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Ellenőrizze, hogy a kaparós sorsjegy érvényes és hozzáférhető-e a Mars-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Hibaüzenet | Javasolt művelet |
 -- | --
-A Microsoft Azure Recovery Services-ügynök nem tudta elérni az ideiglenes helyet virtuális merevlemez inicializálásához | A probléma megoldásához hajtsa végre az alábbi műveleteket, majd indítsa újra a kiszolgálót <br/> - [ellenőrizze, hogy van-e víruskereső vagy más folyamat, amely zárolja a fájlokat a kaparós hely fájljaival](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [ellenőrizze, hogy a kiinduló hely érvényes-e, és elérhető-e a Mars-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+A Microsoft Azure Recovery Services-ügynök nem tudta elérni az ideiglenes helyet virtuális merevlemez inicializálásához | A probléma megoldásához hajtsa végre az alábbi műveletet, és indítsa újra a kiszolgálót <br/> - [Ellenőrizze, hogy van-e víruskereső vagy más folyamatok zár a semmiből hely fájlokat](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Ellenőrizze, hogy a kaparós sorsjegy érvényes és hozzáférhető-e a Mars-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
-### <a name="sallowdiskspace"></a>SalLowDiskSpace
+### <a name="sallowdiskspace"></a>SalLowDiskSpace (SalLowDiskSpace)
 
 Hibaüzenet | Javasolt művelet |
 -- | --
-A biztonsági mentés nem sikerült, mert nincs elég hely a kötetben, ahol a kaparós mappa található. | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálja megismételni a műveletet:<br/>- [a Mars-ügynök legújabb ellenőrzése](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [a biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
+A biztonsági mentés nem sikerült, mert nem volt elegendő a köteten lévő tároló, ahol a semmiből tároló mappa található | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálkozzon újra a művelettel:<br/>- [Győződjön meg róla, hogy a MARS-ügynök a legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [A biztonsági mentés takarását érintő tárolási problémák ellenőrzése és megoldása](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Hibaüzenet | Javasolt művelet |
 -- | --
-Nem találhatók módosítások a fájlban. Ennek több oka lehet. Próbálkozzon újra a művelettel | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálja megismételni a műveletet:<br/> - [a Mars-ügynök legújabb ellenőrzése](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [a biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
+Nem találhatók módosítások a fájlban. Ennek több oka lehet. Próbálkozzon újra a művelettel | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálkozzon újra a művelettel:<br/> - [Győződjön meg róla, hogy a MARS-ügynök a legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [A biztonsági mentés takarását érintő tárolási problémák ellenőrzése és megoldása](#prerequisites)
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Windows Server biztonsági mentéséről a Azure Backup ügynökkel](tutorial-backup-windows-server-to-azure.md).
-- Ha vissza kell állítania egy biztonsági mentést, olvassa el a [fájlok visszaállítása Windows rendszerű gépre](backup-azure-restore-windows-server.md)című témakört.
+- További részletek a Windows Server biztonsági mentésének az [Azure Backup ügynökkel való biztonsági mentésével kapcsolatban.](tutorial-backup-windows-server-to-azure.md)
+- Ha biztonsági másolatot kell visszaállítania, olvassa el [a Fájlok visszaállítása Windows rendszerbe](backup-azure-restore-windows-server.md).

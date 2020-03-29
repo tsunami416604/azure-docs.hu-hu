@@ -1,6 +1,6 @@
 ---
-title: Fsv2 sorozat – Azure Virtual Machines
-description: A Fsv2 sorozatú virtuális gépek specifikációi.
+title: Fsv2 sorozat - Azure virtuális gépek
+description: Az Fsv2 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: brbell
 ms.service: virtual-machines
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164848"
 ---
 # <a name="fsv2-series"></a>Fsv2 sorozat
 
-A Fsv2 sorozat az Intel® Xeon® Platinum 8168 processzoron alapul. A szolgáltatás egy tartós, 3,4 GHz-es, a Turbo órajelét és a 3,7 GHz-es max. Intel® AVX-512 utasítások az Intel skálázható processzorok újdonságai. Ezek az utasítások akár kétszeres teljesítmény-növekedést is biztosítanak a vektoros feldolgozási feladatokhoz egy-és dupla pontosságú lebegőpontos műveletekben. Más szóval a számítási feladatokhoz nagyon gyorsak.
+Az Fsv2 sorozat az Intel® Xeon® Platinum 8168 processzoron alapul. Ez jellegét meghatározza egy tartós minden magtok Turbo órajel -ból 3.4 GHz és egy legfelső határ egymagos turbó frekvencia -ból 3.7 GHz. Intel® AVX-512 utasítások újak az Intel skálázható processzorok. Ezek az utasítások akár kétszeres teljesítménynövekedést biztosítanak a vektoros feldolgozási számítási feladatokhoz mind az egy- és kétszeres pontosságú lebegőpontos műveleteken. Más szóval, ezek nagyon gyors a számítási számítási feladatokhoz.
 
 Az Fsv2 sorozatú virtuális gépek Intel® Hyper-Threading technológiával rendelkeznek.
 
-ACU: 195 – 210
+ACU: 195 - 210
 
-Premium Storage: támogatott
+Prémium szintű tárhely: Támogatott
 
-Premium Storage gyorsítótárazás: támogatott
+Prémium szintű tárolási gyorsítótárazás: Támogatott
 
-Élő áttelepítés: támogatott
+Élő áttelepítés: Támogatott
 
-Memória megőrzésének frissítései: támogatott
+Memóriamegőrzési frissítések: Támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
+| Méret | vCPU-k | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott gyorsítótárazási és ideiglenes tárolási átviteli sebesség: IOPS/MBps (gyorsítótár mérete GiB-ben) | Maximális nem gyorsítótárazott lemezátviteli sebesség: IOPS/MBps | Maximális hálózati adapterek/várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_F2s_v2  | 2  | 4   | 16  | 4  | 4000/31 (32)       | 3200/47    | 2/875   |
 | Standard_F4s_v2  | 4  | 8   | 32  | 8  | 8000/63 (64)       | 6400/95    | 2/1750  |
@@ -41,19 +41,19 @@ Memória megőrzésének frissítései: támogatott
 | Standard_F64s_v2 | 64 | 128 | 512 | 32 | 128000/1024 (1024) | 80000/1100 | 8/28000 |
 | Standard_F72s_v2<sup>1, 2</sup> | 72 | 144 | 576 | 32 | 144000/1152 (1520) | 80000/1100 | 8/30000 |
 
-<sup>1</sup> a 64-nál több vCPU használata a következő támogatott vendég operációs rendszerek egyikét igényli:
+<sup>1</sup> A 64-nél több vCPU használatához a támogatott vendég operációs rendszerek egyikére van szükség:
 
 - Windows Server 2016 vagy újabb
-- Ubuntu 16,04 LTS vagy újabb, az Azure-ban hangolt kernel (4,15 kernel vagy újabb)
+- Ubuntu 16.04 LTS vagy újabb, Azure hangolt kernellel (4.15 kernel vagy újabb)
 - SLES 12 SP2 vagy újabb
-- RHEL vagy CentOS 6,7-es verzió – 6,10, a Microsoft által biztosított LIS-csomag 4.3.1-es (vagy újabb) verziójával
-- RHEL vagy CentOS 7,3-es verzió, a Microsoft által biztosított LIS csomag 4.2.1 (vagy újabb) telepítésével
-- RHEL vagy CentOS 7,6-es vagy újabb verzió
+- RHEL vagy CentOS 6.7-től 6.10-ig, a Microsoft által biztosított 4.3.1-es (vagy újabb) LIS-csomaggal telepítve
+- RHEL vagy CentOS 7.3-as verzió, a Microsoft által biztosított 4.2.1-es (vagy újabb) LIS-csomaggal telepítve
+- RHEL vagy CentOS 7.6-os vagy újabb verzió
 - Oracle Linux UEK4 vagy újabb verzióval
-- Debian 9 a backports rendszermaggal, Debian 10 vagy újabb verzióval
-- CoreOS 4,14 kernelsel vagy újabb verzióval
+- Debian 9 a backport kernellel, Debian 10 vagy újabb
+- CoreOS 4.14-es vagy újabb kernellel
 
-<sup>2</sup> a példány egyetlen ügyfél számára dedikált hardveren van elkülönítve.
+<sup>2</sup> Példány egyetlen ügyfélnek dedikált hardverhez van elkülönítve.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -66,6 +66,6 @@ Memória megőrzésének frissítései: támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+További információ arról, hogy [az Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.

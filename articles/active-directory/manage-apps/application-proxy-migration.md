@@ -1,6 +1,6 @@
 ---
-title: Frissítés az Azure AD-alkalmazásproxyval |} A Microsoft Docs
-description: Válassza ki, melyik proxy megoldás a legjobb, ha frissít, a Microsoft Forefront vagy egyesített Access-átjárón.
+title: Frissítés az Azure AD alkalmazásproxyra | Microsoft dokumentumok
+description: Válassza ki, hogy melyik proxymegoldás a legjobb, ha a Microsoft Forefront vagy az Unified Access Gateway rendszerről frissít.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,51 +17,51 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108412"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
 
-Az Azure Active Directory Application Proxy egyike a két távelérési megoldás, amely a Microsoft kínál. A másik pedig a webalkalmazás-Proxy, a helyileg telepített verzióját. Ezek a megoldások két cserélje le a korábbi, amely a Microsoft által kínált termékek: Microsoft Forefront Threat Management Gateway (TMG), és egységes Access-átjárón (UAG). Ez a cikk segítségével azonosíthatja a ezeket a megoldásokat hogyan hasonlítsa össze egymással. Azoknak, továbbra is használja az elavult TMG vagy a UAG megoldásokat Ez a cikk segítségével tervezze meg a migrációt a megfelelőt a Proxy segítségével. 
+Az Azure Active Directory alkalmazásproxy a Microsoft által elérhető két távelérési megoldás egyike. A másik a webalkalmazás-proxy, a helyszíni verzió. Ez a két megoldás a Microsoft által kínált korábbi termékekhelyébe lép: a Microsoft Forefront Threat Management Gateway (TMG) és az Unified Access Gateway (UAG). Ebből a cikkből megtudhatja, hogy ez a négy megoldás hogyan viszonyul egymáshoz. Azok számára, akik még mindig az elavult TMG vagy UAG megoldásokat használják, használja ezt a cikket az alkalmazásproxy egyikére való áttelepítés megtervezéséhez. 
 
 
 ## <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 
-Ez a táblázat segítségével megismerheti, hogyan Threat Management Gateway (TMG), a Unified Access-átjáró (UAG), a webalkalmazás-proxykiszolgálóként (WAP) és az Azure AD Application Proxy (AP) hasonlítsa össze egymással.
+Ebben a táblázatban megtudhatja, hogy a Veszélyforrások kezelése átjáró (TMG), az egyesített hozzáférésű átjáró (UAG), a webalkalmazás-proxy (WAP) és az Azure AD alkalmazásproxy (AP) hogyan viszonyul egymáshoz.
 
-| Funkció | TMG | UAG | WAP | AP |
+| Szolgáltatás | Tmg | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Tanúsítványalapú hitelesítés | Igen | Igen | - | - |
-| Alkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
-| Az előhitelesítést, és egyszeri bejelentkezés | Igen | Igen | Igen | Igen | 
-| Tűzfal 2/3. réteg | Igen | Igen | - | - |
-| Továbbítói proxy képességek | Igen | - | - | - |
+| Tanúsítványhitelesítés | Igen | Igen | - | - |
+| Böngészőalkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
+| Előhitelesítés és egyszeri bejelentkezés | Igen | Igen | Igen | Igen | 
+| 2/3. | Igen | Igen | - | - |
+| Továbbítási proxyképességek | Igen | - | - | - |
 | VPN-képességek | Igen | Igen | - | - |
-| Gazdag protokoll támogatása | - | Igen | Igen, ha HTTP-n keresztül futtat | Igen, ha HTTP protokollon keresztül vagy a távoli asztali átjárón keresztül |
-| ADFS-proxykiszolgálóra szolgál | - | Igen | Igen | - |
-| Alkalmazás-hozzáférési egyetlen portálon | - | Igen | - | Igen |
-| Válasz törzsében hivatkozás fordítása | Igen | Igen | - | Igen | 
-| Hitelesítés a fejlécek | - | Igen | - | Igen, a pingaccess segítségével | 
-| A felhőméretű biztonsági | - | - | - | Igen | 
+| Gazdag protokolltámogatás | - | Igen | Igen, ha http-n fut | Igen, http-n vagy távoli asztali átjárón keresztül történő futtatás esetén |
+| ADFS-proxykiszolgálóként szolgál | - | Igen | Igen | - |
+| Egy portál az alkalmazás-hozzáféréshez | - | Igen | - | Igen |
+| Választörzs hivatkozásfordítása | Igen | Igen | - | Igen | 
+| Hitelesítés fejlécekkel | - | Igen | - | Igen, a PingAccess segítségével | 
+| Felhőszintű biztonság | - | - | - | Igen | 
 | Feltételes hozzáférés | - | Igen | - | Igen |
-| Nincsenek összetevők a demilitarizált zónában (DMZ) | - | - | - | Igen |
-| Egy kimenő kapcsolatot sem | - | - | - | Igen |
+| Nincsenek alkatrészek a demilitarizált zónában (DMZ) | - | - | - | Igen |
+| Nincs bejövő kapcsolat | - | - | - | Igen |
 
-A legtöbb esetben javasoljuk, hogy az Azure AD-alkalmazásproxy, a modern megoldása. A webalkalmazás-Proxy csak az előnyben részesített olyan esetekben proxykiszolgáló az AD FS-hez, és nem használhat egyéni tartományok az Azure Active Directoryban. 
+A legtöbb esetben azt javasoljuk, hogy az Azure AD alkalmazásproxy a modern megoldás. Webalkalmazás-proxy csak olyan esetekben, amelyek proxykiszolgálót igényelnek az AD FS,és nem használhat egyéni tartományokat az Azure Active Directoryban. 
 
-Azure AD-alkalmazásproxy hasonló termékek, köztük a képest egyedi előnyöket kínálja:
+Az Azure AD alkalmazásproxy egyedi előnyöket kínál a hasonló termékekhez képest, többek között a következőket:
 
-- Az Azure AD a helyszíni erőforrásokhoz való kiterjesztése
-   - A felhőméretű biztonság és védelem
-   - Szolgáltatások, mint például a feltételes hozzáférés és a multi-factor Authentication hitelesítés is egyszerűen engedélyezése
-- A demilitarizált zónában nincsenek összetevők
-- Szükséges egy kimenő kapcsolatot sem
-- Egy hozzáférési panelen, hogy a felhasználók is nyissa meg az összes alkalmazásokban, beleértve az Office 365, az Azure AD integrált SaaS-alkalmazások, és a helyszíni webalkalmazásokhoz. 
+- Az Azure AD kiterjesztése a helyszíni erőforrásokra
+   - Felhőszintű biztonság és védelem
+   - Az olyan funkciók, mint a feltételes hozzáférés és a többtényezős hitelesítés, könnyen engedélyezhetők
+- Nincsenek alkatrészek a demilitarizált zónában
+- Nincs szükség bejövő kapcsolatokra
+- Egy hozzáférési panel, amelyet a felhasználók az összes alkalmazásukhoz használhatnak, beleértve az O365-öt, az Azure AD-vel integrált SaaS-alkalmazásokat és a helyszíni webalkalmazásokat. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A helyszíni alkalmazások biztonságos távoli elérést biztosíthat az Azure AD-alkalmazás használatával](application-proxy.md)
+- [Az Azure AD alkalmazás használata a helyszíni alkalmazások biztonságos távoli eléréséhez](application-proxy.md)

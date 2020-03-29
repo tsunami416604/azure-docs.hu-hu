@@ -1,6 +1,6 @@
 ---
-title: IoT üzembe egyéni szimulált eszközök – Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, hogyan helyezhet üzembe egyéni szimulált eszközök a távoli figyelési megoldásgyorsító.
+title: Az IoT egyéni szimulált eszközöket telepít - Azure | Microsoft dokumentumok
+description: Ez az útmutató bemutatja, hogyan telepíthet egyéni szimulált eszközöket a távoli figyelési megoldás gyorsítójára.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,63 +9,63 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66427564"
 ---
-# <a name="deploy-a-new-simulated-device"></a>Új szimulált eszköz üzembe helyezése
+# <a name="deploy-a-new-simulated-device"></a>Új szimulált eszköz telepítése
 
-A távoli figyelési és az Eszközszimuláció megoldásgyorsítók mindkét segítségével meghatározhatja a saját szimulált eszközök. Ez a cikk bemutatja, hogyan helyezhet üzembe egy testre szabott hűtő eszköz típusa és a egy villanykörte új eszköztípus a távoli figyelési megoldásgyorsító.
+A távoli figyelés i és az eszközszimulációs megoldásgyorsítók egyaránt lehetővé teszik a saját szimulált eszközök meghatározását. Ez a cikk bemutatja, hogyan telepíthet egy testreszabott hűtőeszköz-típust és egy új villanykörte-eszköztípust a távoli figyelési megoldásgyorsítóba.
 
-Ez a cikk lépései azt feltételezik, hogy befejezte a [létrehozása és a egy új szimulált eszköz teszt](iot-accelerators-remote-monitoring-create-simulated-device.md) útmutató útmutatót, és a fájlokat, amelyek meghatározzák a testre szabott hűtő és új villanykörte eszköz típusa.
+A cikkben leírt lépések feltételezik, hogy befejezte az új szimulált eszköz útmutató létrehozása és tesztelése című [útmutatót,](iot-accelerators-remote-monitoring-create-simulated-device.md) és rendelkezik a testreszabott hűtőt és az új villanykörte-eszköztípusokat meghatározó fájlokkal.
 
-Ez az útmutató lépései bemutatják, hogyan való:
+Az útmutató lépései bemutatják, hogyan:
 
-1. Az SSH használata a fájlrendszer, a virtuális gép, amelyen a távoli figyelési megoldásgyorsító eléréséhez.
+1. Az SSH segítségével elérheti a távoli figyelési megoldásgyorsítót tartalmazó virtuális gép fájlrendszerét.
 
-1. Állítsa be a Docker a Docker-tároló kívüli helyről az eszközmodell betölteni.
+1. Konfigurálja a Docker-t az eszközmodellek nek a Docker-tárolón kívüli helyről történő betöltéséhez.
 
-1. Futtassa a távoli figyelési megoldásgyorsító egyéni modell-fájlok használatával.
+1. Futtassa a Távoli figyelési megoldás gyorsítót egyéni eszközmodell-fájlokkal.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ez az útmutató a lépések elvégzéséhez, aktív Azure-előfizetés szükséges.
+Az útmutató lépései végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató követéséhez lesz szüksége:
+Az útmutató követéséhez a következőkre van szükség:
 
-- Egy telepített példányát az [távoli figyelési megoldásgyorsító](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
-- A helyi **bash** rendszerhéj futtatásához a `ssh` és `scp` parancsokat. A Windows, egyszerűen telepítse **bash** telepítése [git](https://git-scm.com/download/win).
-- Az egyéni modell fájlok, a ismertetettekhez [létrehozása és a egy új szimulált eszköz teszt](iot-accelerators-remote-monitoring-create-simulated-device.md).
+- A [távfigyelési megoldásgyorsító telepített példánya.](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2)
+- A helyi **bash** shell `ssh` `scp` futtatni a és parancsokat. A Windows, egy egyszerű módja annak, hogy telepíteni **bash** telepíteni [git](https://git-scm.com/download/win).
+- Az egyéni eszközmodell-fájlok, például az [új szimulált eszköz létrehozása és tesztelése](iot-accelerators-remote-monitoring-create-simulated-device.md)című részben leírtak.
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]
 
 ## <a name="configure-docker"></a>Docker konfigurálása
 
-Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a **/tmp/devicemodels** a virtuális gépen, nem pedig a mappa a Docker-tárolóban. Futtassa a parancsokat az ebben a szakaszban egy **bash** héjastól a helyi gépen:
+Ebben a szakaszban konfigurálja a Docker-t, hogy az eszközmodell-fájlokat a **/tmp/devicemodels** mappából töltse be a virtuális gépen, nem pedig a Docker-tárolón belülről. Futtassa a parancsokat ebben a szakaszban egy **bash** shell a helyi számítógépen:
 
-Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a **/tmp/devicemodels** a virtuális gépen, nem pedig a mappa a Docker-tárolóban. Futtassa a parancsokat az ebben a szakaszban egy **bash** héjastól a helyi gépen:
+Ebben a szakaszban konfigurálja a Docker-t, hogy az eszközmodell-fájlokat a **/tmp/devicemodels** mappából töltse be a virtuális gépen, nem pedig a Docker-tárolón belülről. Futtassa a parancsokat ebben a szakaszban egy **bash** shell a helyi számítógépen:
 
-1. Az SSH használatával csatlakozhat a virtuális gép az Azure-ban, a helyi gépen. Az alábbi parancs feltételezi, hogy a virtuális gép nyilvános IP-cím **vm-vikxv** van **104.41.128.108** – ezt az értéket cserélje le az előző szakaszban a virtuális gép nyilvános IP-címét:
+1. Az SSH használatával csatlakozhat a virtuális géphez az Azure-ban a helyi gépről. A következő parancs feltételezi, hogy a virtuális gép **vm-vikxv nyilvános IP-címe** **104.41.128.108** - cserélje le ezt az értéket a virtuális gép előző szakaszból származó nyilvános IP-címére:
 
    ```sh
     ssh azureuser@104.41.128.108
     ```
 
-    Kövesse az utasításokat követve jelentkezzen be a virtuális gépet az előző szakaszban állítsa be a jelszót.
+    Kövesse a következő utasításokat, hogy jelentkezzen be a virtuális gépre az előző szakaszban beállított jelszóval.
 
-1. Az eszköz szimuláció szolgáltatás számára, hogy az eszköz modellek a tárolón kívül konfigurálja. Először nyissa meg a Docker-konfigurációs fájl:
+1. Konfigurálja az eszközszimulációs szolgáltatást úgy, hogy az eszközmodelleket a tárolón kívülről töltse be. Először nyissa meg a Docker konfigurációs fájlját:
 
     ```sh
     sudo nano /app/docker-compose.yml
     ```
 
-    Keresse meg a beállításokat a a **devicesimulation** tároló és a Szerkesztés a **kötetek** beállítása az alábbi kódrészletben látható módon:
+    Keresse meg az **eszközszimulációs** tároló beállításait, és az alábbi kódrészletben látható módon szerkesztse a **kötetek** beállítását:
 
     ```yml
     devicesimulation:
@@ -85,22 +85,22 @@ Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a 
 
     Mentse a módosításokat.
 
-1. A meglévő eszköz modell fájlok másolása a tárolót az új helyen. Eszköz szimulálása tároló először keresse meg a tároló azonosítója:
+1. Másolja a meglévő eszközmodell-fájlokat a tárolóból az új helyre. Először keresse meg az eszközszimulációs tároló azonosítóját:
 
     ```sh
     sudo docker ps
     ```
 
-    Majd az eszköz modellje fájlok másolása a **tmp** mappa a virtuális gépen. Az alábbi parancs feltételezi, hogy a Tárolóazonosító c378d6878407 – ezt az értéket cserélje le az eszköz szimulálása Tárolóazonosító:
+    Ezután másolja az eszközmodell fájljait a virtuális gép **tmp** mappájába. A következő parancs feltételezi, hogy a tárolóazonosító c378d6878407 – cserélje le ezt az értéket az eszközszimulációs tároló azonosítójára:
 
     ```sh
     sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
     sudo chown -R azureuser /tmp/devicemodels/
     ```
 
-    Tartsa a **bash** nyissa meg az SSH-munkamenet-ablakot.
+    Tartsa nyitva a **bash** ablakot az SSH munkamenettel.
 
-1. Másolja az egyéni modell-fájlt a virtuális gép. Futtassa ezt a parancsot egy másik **bash** héjastól a számítógépen, ahol létrehozta a egyéni modellek. Először keresse meg a helyi mappát, amely az eszköz modellje JSON-fájlokat tartalmazza. Az alábbi parancs feltételezi, hogy a virtuális gép nyilvános IP-cím **104.41.128.108** – ezt az értéket cserélje le a virtuális gép nyilvános IP-címét. Adja meg a virtuális gép jelszavát, amikor a rendszer kéri:
+1. Másolja az egyéni eszközmodell-fájlokat a virtuális gépre. Futtassa ezt a parancsot egy másik **bash** shell a gépen, ahol létrehozta az egyéni eszköz modellek. Először keresse meg az eszközmodell JSON-fájljait tartalmazó helyi mappát. A következő parancsok feltételezik, hogy a virtuális gép nyilvános IP-címe **104.41.128.108** - cserélje le ezt az értéket a virtuális gép nyilvános IP-címével. Adja meg a virtuális gép jelszavát, amikor a rendszer kéri:
 
     ```sh
     scp *json azureuser@104.41.128.108:/tmp/devicemodels
@@ -108,19 +108,19 @@ Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a 
     scp *js azureuser@104.41.128.108:/tmp/devicemodels/scripts
     ```
 
-1. Indítsa újra az eszköz szimulálása Docker-tárolót az új eszköz modellek használata. Futtassa a következő parancsokat a **bash** héjastól együtt az open SSH-munkamenetből a virtuális géphez:
+1. Indítsa újra az eszközszimulációs Docker-tárolót az új eszközmodellek használatához. Futtassa a következő parancsokat a **bash** shell a nyitott SSH-munkamenet a virtuális gépre:
 
     ```sh
     sudo /app/start.sh
     ```
 
-    Ha azt szeretné, megtekintheti a futó Docker-tárolók és a tároló azonosítók állapotát, használja a következő parancsot:
+    Ha a futó Docker-tárolók és azok tárolóazonosítóinak állapotát szeretné látni, használja a következő parancsot:
 
     ```sh
     sudo docker ps
     ```
 
-    Ha azt szeretné, az eszköz szimulálása a tárolóból a napló megtekintéséhez futtassa a következő parancsot. Cserélje le a tároló azonosítója az eszköz szimulálása tároló Azonosítóját:
+    Ha meg szeretné tekinteni az eszközszimulációs tárolónaplóját, futtassa a következő parancsot. Cserélje le a tárolóazonosítót az eszközszimulációs tároló azonosítójára:
 
     ```sh
     sudo docker logs -f 5d3f3e78822e
@@ -128,20 +128,20 @@ Ebben a szakaszban a Docker betölteni az eszköz modellje a konfigurálható a 
 
 ## <a name="run-simulation"></a>Szimuláció futtatása
 
-A távoli figyelési megoldás mostantól használhatja az egyéni modellek:
+Most már használhatja az egyéni eszközmodelleket a távoli figyelési megoldásban:
 
-1. Indítsa el a távoli figyelési irányítópult [a Microsoft Azure IoT-Megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators#dashboard).
+1. Indítsa el a Távoli figyelés irányítópultját a [Microsoft Azure IoT-megoldásgyorsítókból.](https://www.azureiotsolutions.com/Accelerators#dashboard)
 
-1. Használja a **eszközök** lapot, a szimulált eszközökről. Új szimulált eszköz hozzáadásakor, válassza ki az új eszköz modellek érhetők el.
+1. Az **Eszközök** lapon szimulált eszközöket adhat hozzá. Amikor új szimulált eszközt ad hozzá, az új eszközmodellek választhatók.
 
-1. Az irányítópult használatával eszköz telemetriai adatok megtekintése és eszközmetódusok hívja.
+1. Az irányítópult segítségével megtekintheti az eszköz telemetriai és hívási eszköz módszerek.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, vizsgálódáshoz, hagyja a távoli figyelési megoldásgyorsító üzembe helyezve.
+Ha azt tervezi, hogy vizsgálja meg a további, hagyja a távoli figyelési megoldás gyorsító telepítve.
 
-Ha már nincs szüksége a megoldásgyorsító, törölje azt a [kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapon jelölje ki, majd **megoldás törlése**.
+Ha már nincs szüksége a megoldásgyorsítóra, törölje azt a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról, jelölje ki, majd kattintson a **Megoldás törlése**gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az útmutató bemutatta a távoli figyelési megoldásgyorsító egyéni modellek üzembe helyezése. A javasolt következő lépésre az, hogy ismerje meg, hogyan [egy valós eszköz csatlakoztatása a távoli figyelési megoldás](iot-accelerators-connecting-devices-node.md).
+Ez az útmutató bemutatja, hogyan telepítheti az egyéni eszközmodelleket a távoli figyelési megoldásgyorsítóba. A javasolt következő lépés az, hogy megtanulják, hogyan [csatlakoztathat egy valódi eszközt a távoli figyelési megoldáshoz.](iot-accelerators-connecting-devices-node.md)
