@@ -1,39 +1,39 @@
 ---
-title: Az Azure Signaler szolgáltatás egy példányának méretezése
-description: Megtudhatja, hogyan méretezhető az Azure Signaler szolgáltatás példánya kapacitás hozzáadásához vagy csökkentéséhez Azure Portal vagy az Azure CLI-n keresztül.
+title: Az Azure SignalR-szolgáltatás egy példányának méretezése
+description: Ismerje meg, hogyan skálázhat egy Azure SignalR-szolgáltatáspéldányt a kapacitás hozzáadásához vagy csökkentéséhez az Azure Portalon vagy az Azure CLI-n keresztül.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
 ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75659287"
 ---
-# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure Signaler Service-példány skálázása
-Ez a cikk bemutatja, hogyan méretezhető az Azure Signaler szolgáltatás példánya. Két forgatókönyv áll rendelkezésre a méretezéshez, a vertikális felskálázáshoz és a horizontális felskálázáshoz.
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Hogyan skálázható egy Azure SignalR-szolgáltatáspéldány?
+Ez a cikk bemutatja, hogyan skálázhatja az Azure SignalR-szolgáltatás példányát. Két forgatókönyv van a skálázás, a horizontális felskálázás és a horizontális felskálázás.
 
-* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): több egység, kapcsolat, üzenet és egyebek is elérhetők. Vertikális felskálázást az árképzési szint Ingyenesről standard szintűre való módosításával végezheti el.
-* Vertikális [felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): növelje a jelző egységek számát. Akár 100 egységre is kibővíthető.
+* [Felskálázás:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)Több egység, kapcsolat, üzenet és egyebek. A tarifacsomag ingyenesről standardra történő módosításával skálázható.
+* [Horizontális felskálázás](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Növelje a SignalR egységek számát. Akár 100 egységre is méretezhető.
 
-A skálázási beállítások alkalmazása eltarthat néhány percig. Ritka esetekben előfordulhat, hogy az alkalmazás körülbelül 30 percet vesz igénybe. Nem igénylik a kód módosítását vagy a kiszolgálóalkalmazás újbóli üzembe helyezését.
+A méretezési beállítások alkalmazása néhány percet vesz igénybe. Ritka esetekben, ez eltarthat körülbelül 30 perc alatt alkalmazni. Nem követelik meg a kód módosítását vagy a kiszolgálóalkalmazás újratelepítését.
 
-További információ az egyéni szignáló szolgáltatás díjszabásáról és kapacitásáról: az [Azure signaler szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/signalr-service/).  
+Az egyes SignalR-szolgáltatások díjszabásáról és kapacitásairól az [Azure SignalR service díjszabásának részletei című témakörben talál további információt.](https://azure.microsoft.com/pricing/details/signalr-service/)  
 
 > [!NOTE]
-> A Signaler szolgáltatás **ingyenes** szintjéről **standard** csomagra vált, vagy fordítva, a nyilvános szolgáltatás IP-címe módosul, és általában 30-60 percet vesz igénybe, hogy a teljes interneten keresztül propagálja a DNS-kiszolgálókra való változást. Előfordulhat, hogy a szolgáltatás nem érhető el, mielőtt frissül a DNS. Általában nem ajánlott túl gyakran módosítani az árképzési szintet.
+> Ha a SignalR szolgáltatást **ingyenes** szintről **standard** szintre vagy fordítva módosítja, a közszolgálati IP-cím megváltozik, és általában 30–60 percet vesz igénybe a módosítás terjesztése a DNS-kiszolgálókon a teljes interneten. Előfordulhat, hogy a szolgáltatás nem érhető el a DNS frissítése előtt. Általában nem ajánlott túl gyakran módosítani a tarifacsomagot.
 
 
-## <a name="scale-on-azure-portal"></a>Méretezés Azure Portal
+## <a name="scale-on-azure-portal"></a>Méretezés az Azure Portalon
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com) a böngészőjében.
 
-2. A Signaler szolgáltatás lapjának bal oldali menüjében válassza a **skála**lehetőséget.
+2. A SignalR Szolgáltatás lapon a bal oldali menüben válassza a **Méretezés**lehetőséget.
    
-3. Válassza ki az árképzési szintet, majd kattintson a **kiválasztás**elemre. Állítsa be a **standard** szint egységének darabszámát.
+3. Válassza ki a tarifacsomagot, majd kattintson a **Kijelölés gombra.** Állítsa be a **standard** szint egységszámát.
    
     ![Méretezés a portálon](./media/signalr-howto-scale/signalr-howto-scale.png)
 
@@ -41,7 +41,7 @@ További információ az egyéni szignáló szolgáltatás díjszabásáról és
 
 ## <a name="scale-using-azure-cli"></a>Méretezés az Azure CLI használatával
 
-Ez a szkript létrehoz egy új, az **ingyenes** szint és egy új erőforráscsoport, valamint a **standard** szintnek megfelelő méretezést. 
+Ez a parancsfájl létrehoz egy új SignalR Service erőforrás **t és** egy új erőforráscsoportot, és standard **szintre** méretezi. 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -77,17 +77,17 @@ Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ezt az 
 
 [!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
 
-## <a name="compare-pricing-tiers"></a>Árképzési szintek összehasonlítása
+## <a name="compare-pricing-tiers"></a>Tarifacsomagok összehasonlítása
 
-Részletes információkat, például az összes díjszabási csomaghoz tartozó üzeneteket és kapcsolatokat lásd: a [signaler szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/signalr-service/).
+Részletes információkért, például az egyes tarifacsomagokhoz tartozó üzenetekről és kapcsolatokról a [SignalR service pricing details című témakörben talál](https://azure.microsoft.com/pricing/details/signalr-service/)részletes információt.
 
-Az egyes szintek szolgáltatási korlátainak, kvótáinak és megkötéseinek táblázatát lásd: a [signaler szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
+Az egyes rétegek szolgáltatáskorlátait, kvótáit és korlátait táblázatban a [SignalR szolgáltatás korlátok .](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megismerte, hogyan méretezhető az egyetlen szignáló szolgáltatás példánya.
+Ebben az útmutatóban megtanulta, hogyan skálázhatja az egyes SignalR-szolgáltatáspéldányokat.
 
-Több végpont is támogatott a méretezés, a horizontális skálázás és a régiók közötti környezetekben.
+Több végpont is támogatott méretezés, horizontális és régiók közötti forgatókönyvek.
 
 > [!div class="nextstepaction"]
-> [a Signaler szolgáltatás méretezése több példánnyal](./signalr-howto-scale-multi-instances.md)
+> [a SignalR szolgáltatás méretezése több példánysal](./signalr-howto-scale-multi-instances.md)

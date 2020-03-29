@@ -1,6 +1,6 @@
 ---
-title: StorSimple-ben a hozzáférés-vezérlési rekordok kezelése |} A Microsoft Docs
-description: Útmutatás segítségével (ACR-EK) hozzáférés-vezérlési rekordok meghatározhatja, mely állomások csatlakozhat egy kötet a StorSimple eszközön.
+title: Hozzáférés-vezérlési rekordok kezelése a StorSimple programban | Microsoft dokumentumok
+description: Ez a témakör azt ismerteti, hogy miként használhatók a hozzáférés-vezérlési rekordok (AKR-ek) annak meghatározására, hogy mely állomások csatlakozhatnak egy kötethez a StorSimple eszközön.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,119 +15,119 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64693238"
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>A StorSimple Manager szolgáltatás használata kezelheti a hozzáférés-vezérlési rekordok
+# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Hozzáférés-vezérlési rekordok kezelése a StorSimple Manager szolgáltatással
 
 ## <a name="overview"></a>Áttekintés
-Hozzáférés-vezérlési rekordok (ACR-EK) lehetővé teszik annak megadását, mely állomások csatlakozhat egy kötet a StorSimple eszközön. ACR-EK vannak beállítva, hogy egy adott kötet, és az iSCSI minősített nevét (IQN-nevekre vonatkozóan) a gazdagépeket tartalmaz. Ha egy gazdagép egy kötetre csatlakozni próbál, az eszköz ellenőrzi az ACR-REL társított az IQN-név a kötetet, és ha van egyezés, majd a kapcsolat létrejött. A hozzáférés-vezérlést rögzíti a **konfigurációs** a StorSimple-Eszközkezelő szolgáltatás paneljén szakaszában minden hozzáférés-vezérlési bejegyzés a megfelelő IQN-nevekre vonatkozóan a gazdagépek a megjelenítéséhez.
+A hozzáférés-vezérlési rekordok (AKR-ek) lehetővé teszik annak megadását, hogy mely állomások csatlakozhatnak egy kötethez a StorSimple eszközön. Az AR-ek egy adott kötetre vannak beállítva, és tartalmazzák az állomások iSCSI-minősített neveit (IQN). Amikor egy gazdagép megpróbál csatlakozni egy kötethez, az eszköz ellenőrzi az adott kötethez társított ACR-t az IQN-névért, és ha egyezés van, akkor létrejön a kapcsolat. A StorSimple Eszközkezelő szolgáltatás panel **konfigurációs** szakaszában található hozzáférés-vezérlési rekordok megjelenítik az összes hozzáférés-vezérlési rekordot a gazdagépek megfelelő IQN-jével.
 
-Ez az oktatóanyag a következő gyakori ACR kapcsolatos feladatokat ismerteti:
+Ez az oktatóanyag a következő gyakori ACR-feladatokkal kapcsolatos:
 
-* Adjon hozzá egy hozzáférés-vezérlési rekord
-* Egy hozzáférés-vezérlési rekord szerkesztése
-* Egy hozzáférés-vezérlési rekord törlése
+* Hozzáférés-vezérlési rekord hozzáadása
+* Hozzáférés-vezérlőrekord szerkesztése
+* Hozzáférés-vezérlési rekord törlése
 
 > [!IMPORTANT]
-> * Az ACR hozzárendelése egy kötetet, ha körültekintően, hogy a kötet sem egyidejűleg elérhető egynél több nem fürtözött gazdagépen, mert ez a kötet, megsérülhet.
-> * Egy ACR-t egy kötet törlésekor győződjön meg arról, hogy a megfelelő gazdagép nem fér hozzá a kötetet, mert a törlés egy írható-olvasható megszakítás eredményezheti.
+> * Amikor ACR-t rendel egy kötethez, ügyeljen arra, hogy a kötetet ne érje egyidejűleg egynél több nem fürtözött állomás, mert ez megsérülhet.
+> * Acr kötetből való törlésekor győződjön meg arról, hogy a megfelelő állomás nem fér hozzá a kötethez, mert a törlés olvasási és olvasási zavarokat okozhat.
 
-## <a name="get-the-iqn"></a>IQN Nevének lekérése
+## <a name="get-the-iqn"></a>Szerezd meg az IQN-t
 
-A következő lépésekkel Windows Server 2012 rendszert futtató Windows-gazdagép IQN Nevének lekérése.
+A Windows Server 2012 rendszert futtató Windows-állomás IQN-jének leolvasásához hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 
-## <a name="add-an-access-control-record"></a>Adjon hozzá egy hozzáférés-vezérlési rekord
-Használja a **konfigurációs** szakasz a StorSimple-Eszközkezelő szolgáltatás paneljén hozzáadása az ACR-EK. Általában egy ACR fog társítani egy kötetet.
+## <a name="add-an-access-control-record"></a>Hozzáférés-vezérlési rekord hozzáadása
+A StorSimple Device Manager szolgáltatás panel **konfigurációs** szakaszával a kresz-ek hozzáadásához. Általában egy ACR-t társít egy kötethez.
 
-A következő lépésekkel adja hozzá egy ACR-t.
+ACR hozzáadásához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-add-an-acr"></a>Az ACR hozzáadása
+#### <a name="to-add-an-acr"></a>ACR hozzáadása
 
-1. Keresse meg a StorSimple-Eszközkezelő szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **konfigurációs** területén kattintson **hozzáférés-vezérlési rekordok**.
-2. Az a **hozzáférés-vezérlési rekordok** panelen kattintson a **+ ACR hozzáadása**.
+1. Nyissa meg a StorSimple Eszközkezelő szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **Konfiguráció** csoportban kattintson a **Hozzáférés-vezérlési rekordok**elemre.
+2. A **Hozzáférés-vezérlési rekordok** panelen kattintson a **+ Add ACR gombra.**
 
-    ![Kattintson a Hozzáadás ACR](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Kattintson az ACR hozzáadása gombra](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. Az a **ACR hozzáadása** panelen tegye a következőket:
+3. Az **ACR hozzáadása** panelen tegye a következő lépéseket:
 
-    1. Adjon meg egy nevet az ACR.
+    1. Adja meg az ACR nevét.
     
-    2. Adja meg a csoportban a Windows Server-állomás IQN neve **iSCSI kezdeményező neve (IQN)** .
+    2. Adja meg a Windows Server-állomás IQN-nevét az **iSCSI-kezdeményező neve (IQN)** területen.
 
-    3. Kattintson a **Hozzáadás** az ACR létrehozása.
+    3. Az ACR létrehozásához kattintson a **Hozzáadás** gombra.
 
-        ![Kattintson a Hozzáadás ACR](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![Kattintson az ACR hozzáadása gombra](./media/storsimple-8000-manage-acrs/createacr2.png)
 
-4.  Az újonnan hozzáadott ACR ACR-EK táblázatos jeleníti meg.
+4.  Az újonnan hozzáadott ACR megjelenik az ACR táblázatos listájában.
 
-    ![Kattintson a Hozzáadás ACR](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![Kattintson az ACR hozzáadása gombra](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
-## <a name="edit-an-access-control-record"></a>Egy hozzáférés-vezérlési rekord szerkesztése
-Használja a **konfigurációs** szakasz a StorSimple-Eszközkezelő szolgáltatás paneljén szerkesztése az ACR-EK.
+## <a name="edit-an-access-control-record"></a>Hozzáférés-vezérlőrekord szerkesztése
+A StorSimple Device Manager szolgáltatáspanel **Konfiguráció szakaszával** szerkesztheti az AR-eket.
 
 > [!NOTE]
-> Javasoljuk, hogy csak adott ACR-EK, amelyek jelenleg nem használt módosítása. Egy olyan kötetre, amely jelenleg használatban van társítva ACR szerkesztéséhez, előbb végre kell hajtania a kötet offline.
+> Javasoljuk, hogy csak azokat az AR-eket módosítsa, amelyek jelenleg nincsenek használatban. Ha egy jelenleg használt kötethez társított ACR-t szeretne szerkeszteni, először offline állapotba kell helyeznie a kötetet.
 
-Hajtsa végre az alábbi lépések végrehajtásával szerkesztheti egy ACR-t.
+Az ACR szerkesztéséhez hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-edit-an-access-control-record"></a>Egy hozzáférés-vezérlési rekord szerkesztése
-1.  Keresse meg a StorSimple-Eszközkezelő szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **konfigurációs** területén kattintson **hozzáférés-vezérlési rekordok**.
+#### <a name="to-edit-an-access-control-record"></a>Hozzáférés-vezérlési rekord szerkesztése
+1.  Nyissa meg a StorSimple Eszközkezelő szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **Konfiguráció** csoportban kattintson a **Hozzáférés-vezérlési rekordok**elemre.
 
-    ![Ugrás a hozzáférés-vezérlési rekordok](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. A hozzáférés-vezérlési rekordok táblázatos listájában tekintse kattintson, és válassza ki a módosítani kívánt ACR.
+2. A hozzáférés-vezérlési rekordok táblázatos listájában kattintson a módosítani kívánt ACR-re, és jelölje ki azt az ACR-t, amelyet módosítani szeretne.
 
-    ![Hozzáférés-vezérlési rekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr1.png)
+    ![Hozzáférés-vezérlőrekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. Az a **hozzáférés-vezérlési rekord szerkesztése** panelen adjon meg egy másik IQN-Nevének megfelelő egy másik gazdagépre.
+3. A **Hozzáférés-vezérlés szerkesztése rekordpanelen** adjon meg egy másik IQN-t, amely egy másik állomásnak felel meg.
 
-    ![Hozzáférés-vezérlési rekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![Hozzáférés-vezérlőrekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. Kattintson a **Save** (Mentés) gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. 
+4. Kattintson a **Mentés** gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. 
 
-    ![Hozzáférés-vezérlési rekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![Hozzáférés-vezérlőrekordok szerkesztése](./media/storsimple-8000-manage-acrs/editacr3.png)
 
-5. Értesítést kap az ACR-REL frissül. A táblázatos ajánlati is frissíti a változás tükrözése érdekében.
+5. Az ACR frissítésekor értesítést kap. A táblázatos lista is frissíti, hogy tükrözze a változást.
 
    
-## <a name="delete-an-access-control-record"></a>Egy hozzáférés-vezérlési rekord törlése
-Használja a **konfigurációs** szakasz a StorSimple-Eszközkezelő szolgáltatás paneljén törli az ACR-EK.
+## <a name="delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
+A StorSimple Device Manager szolgáltatáspanel **Konfiguráció szakaszával** törölheti az AR-eket.
 
 > [!NOTE]
-> Törölheti csak ezen ACR-EK, amelyek jelenleg nem használja. A töröl egy olyan kötetre, amely jelenleg használatban van társítva, akkor előbb végre kell hajtania a kötet offline.
+> Csak azokat az AR-eket törölheti, amelyek jelenleg nincsenek használatban. Ha egy jelenleg használt kötethez társított ACR-t szeretne törölni, először offline állapotba kell helyeznie a kötetet.
 
-Hajtsa végre az alábbi lépéseket egy hozzáférés-vezérlési rekord törlése.
+Hozzáférés-vezérlési rekord törléséhez hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-delete-an-access-control-record"></a>Egy hozzáférés-vezérlési rekord törlése
-1.  Keresse meg a StorSimple-Eszközkezelő szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **konfigurációs** területén kattintson **hozzáférés-vezérlési rekordok**.
+#### <a name="to-delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
+1.  Nyissa meg a StorSimple Eszközkezelő szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **Konfiguráció** csoportban kattintson a **Hozzáférés-vezérlési rekordok**elemre.
 
-    ![Ugrás a hozzáférés-vezérlési rekordok](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-2. A hozzáférés-vezérlési rekordok táblázatos listájából, kattintson, és jelölje be az ACR-REL, amelyet törölni kíván.
+2. A hozzáférés-vezérlési rekordok táblázatos listájában kattintson a törölni kívánt ACR-re, és jelölje ki azt az ACR-t, amelyet törölni szeretne.
 
-    ![Ugrás a hozzáférés-vezérlési rekordok](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. Kattintson a jobb gombbal indítja el a helyi menüt, és válassza ki **törlése**.
+3. Kattintson a jobb gombbal a helyi menü meghívásához, és válassza a **Törlés parancsot.**
 
-    ![Ugrás a hozzáférés-vezérlési rekordok](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. Amikor a rendszer megerősítést kér, tekintse át az adatokat, és kattintson a **törlése**.
+4. Amikor megerősítést kér, tekintse át az adatokat, majd kattintson a **Törlés gombra.**
 
-    ![Ugrás a hozzáférés-vezérlési rekordok](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
-5. A Törlés befejezése után értesítést kap. A törlés táblázatos frissül.
+5. A törlés befejezésekor értesítést kap. A táblázatos lista frissül, hogy tükrözze a törlést.
 
-    ![Ugrás a hozzáférés-vezérlési rekordok](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![Ugrás a hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [kezelése a StorSimple-kötetek](storsimple-8000-manage-volumes-u2.md).
-* Tudjon meg többet [a StorSimple Manager szolgáltatás használata a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
+* További információ [a StorSimple kötetek kezeléséről.](storsimple-8000-manage-volumes-u2.md)
+* További információ [a StorSimple-kezelő szolgáltatás használatáról a StorSimple-eszköz felügyeletéhez.](storsimple-8000-manager-service-administration.md)
 

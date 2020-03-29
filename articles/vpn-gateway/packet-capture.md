@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Gateway: csomagok rögzítésének konfigurálása'
-description: Ismerje meg a VPN-átjárók által használható csomag-rögzítési funkciókat.
+title: 'Azure VPN-átjáró: Csomagrögzítéskonfigurálása'
+description: Információ a VPN-átjárókon használható csomagrögzítési funkciókról.
 services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
 ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75353517"
 ---
-# <a name="configure-packet-captures-for-vpn-gateways"></a>A csomagok rögzítésének konfigurálása a VPN-átjárók számára
+# <a name="configure-packet-captures-for-vpn-gateways"></a>Csomagrögzítések konfigurálása VPN-átjárókhoz
 
-A kapcsolat és a teljesítménnyel kapcsolatos problémák gyakran sokszor bonyolultak, és jelentős mennyiségű időt és erőfeszítést igényelnek a probléma okának csökkentése érdekében. A csomagok rögzítésének képessége nagy mértékben segít csökkenteni a probléma hatókörét a hálózat bizonyos részeire, például azt, hogy a probléma a hálózat ügyfél oldalán, a hálózat Azure-oldalán vagy valahol a között van-e. A probléma szűkítése után sokkal hatékonyabb a hibakeresés és a javító művelet végrehajtása.
+A kapcsolódási és a teljesítménnyel kapcsolatos problémák gyakran bonyolultak, és jelentős időt és erőfeszítést igényelnek a probléma okának leszűkítéséhez. A csomagrögzítés képessége nagyban csökkenti a probléma hatókörének a hálózat bizonyos részeire történő leszűkítéséhez szükséges időt, például azt, hogy a probléma a hálózat ügyféloldalán, a hálózat Azure-oldalán vagy valahol a kettő között van-e. Miután a probléma már szűkült le, ez sokkal hatékonyabb a hibakeresés, és megteszi a korrekciós intézkedéseket.
 
-Vannak általánosan elérhető eszközök a csomagok rögzítéséhez. Ha azonban ezekkel az eszközökkel lekérdezi a kapcsolódó csomagokat, gyakran nehézkes, különösen nagy mennyiségű forgalmi forgatókönyvek használata esetén. A VPN Gateway-csomagok rögzítése által biztosított szűrési képességek jelentős differenciáló válnak. A VPN Gateway-csomagok rögzítését az általánosan elérhető csomagok rögzítése eszközein kívül is használhatja.
+A csomagrögzítéshez van néhány általánosan elérhető eszköz. Azonban a releváns csomagrögzítések beszerzése ezekkel az eszközökkel gyakran nehézkes, különösen akkor, ha nagy mennyiségű forgalmi forgatókönyvekkel dolgozik. A VPN-átjárócsomag-rögzítés által biztosított szűrési képességek jelentős különbséget jelentenek. A gyakran elérhető csomagrögzítő eszközök mellett vpn-átjárócsomag-rögzítést is használhat.
 
-## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>A VPN Gateway csomagok rögzítésének szűrési képességei
+## <a name="vpn-gateway-packet-capture-filtering-capabilities"></a>VPN-átjáró csomagrögzítési szűrési képességei
 
-A VPN Gateway-csomagok rögzítése az ügyfél igényeitől függően az átjárón vagy egy adott kapcsolaton is futtatható. A csomagok rögzítését egyszerre több alagúton is futtathatja. A VPN-átjárón való szűrés mellett egyetlen vagy kétirányú forgalmat, IKE-és ESP-forgalmat, valamint belső csomagokat is rögzíthet.
+A VPN-átjárócsomag-rögzítések az ügyfél igényeitől függően futtathatók az átjárón vagy egy adott kapcsolaton. A csomagrögzítéseket egyszerre több alagúton is futtathatja. Egy- vagy kétirányú forgalmat, ike- és ESP-forgalmat, valamint belső csomagokat, valamint a VPN-átjárószűrést rögzíthet.
 
-Az 5 rekordok szűrő (forrásoldali alhálózat, célként használt alhálózat, forrásport, célport, protokoll) és a TCP-jelzők (SYN, ACK, FIN, URG, PSH, első) használata hasznos lehet a nagy mennyiségű forgalom problémáinak elkülönítéséhez.
+Az 5 tuples szűrő (forrásalhálózat, célalhálózat, forrásport, célport, protokoll) és TCP-jelzők (SYN, ACK, FIN, URG, PSH, RST) használata akkor hasznos, ha nagy mennyiségű forgalom esetén problémákat old meg.
 
-A csomagok rögzítésének futtatásakor csak egy lehetőséget használhat tulajdonságként.
+A csomagrögzítés futtatásakor tulajdonságonként csak egy beállítás használható.
 
-## <a name="setup-packet-capture-using-powershell"></a>Csomagok rögzítésének beállítása a PowerShell használatával
+## <a name="setup-packet-capture-using-powershell"></a>Csomagrögzítés beállítása a PowerShell használatával
 
-A csomagok rögzítésének elindításához és leállításához tekintse meg az alábbi példákat a PowerShell-parancsokhoz. A paraméter beállításaival kapcsolatos további információkért (például a szűrő létrehozásához) tekintse meg ezt a PowerShell- [dokumentumot](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Tekintse meg az alábbi példákat a PowerShell-parancsok at a csomagrögzítés indításához és leállításához. A paraméterbeállításokkal (például a szűrő létrehozásának módjával) kapcsolatos további információkért tekintse meg ezt a [PowerShell-dokumentumot.](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)
 
-### <a name="start-packet-capture-for-a-vpn-gateway"></a>A csomagok rögzítésének elindítása VPN-átjáró esetén
+### <a name="start-packet-capture-for-a-vpn-gateway"></a>Csomagrögzítés indítása VPN-átjáróhoz
 
 ```azurepowershell-interactive
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Opcionális paraméter **– a FilterData** használható a szűrő alkalmazásához.
+Választható paraméter **-FilterData** szűrő alkalmazására használható.
 
-### <a name="stop-packet-capture-for-a-vpn-gateway"></a>A csomagok rögzítésének leállítása a VPN-átjárón
+### <a name="stop-packet-capture-for-a-vpn-gateway"></a>VPN-átjáró csomagrögzítésének leállítása
 
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName" -SasUrl "YourSASURL"
 ```
 
-### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>A csomagok rögzítésének elindítása a VPN Gateway-kapcsolathoz
+### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>Csomagrögzítés indítása VPN-átjárókapcsolathoz
 
 ```azurepowershell-interactive
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Opcionális paraméter **– a FilterData** használható a szűrő alkalmazásához.
+Választható paraméter **-FilterData** szűrő alkalmazására használható.
 
-### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>A csomagok rögzítésének leállítása a VPN Gateway-kapcsolaton
+### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Csomagrögzítés leállítása VPN-átjárókapcsolaton
 
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName" -SasUrl "YourSASURL"
@@ -62,10 +62,10 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 ## <a name="key-considerations"></a>Fő szempontok
 
-- A csomagok rögzítésének futtatása hatással lehet a teljesítményre. Ne felejtse el leállítani a csomagok rögzítését, ha nincs rá szükség.
-- A csomagok minimális rögzítési időtartama 600 másodperc. Előfordulhat, hogy a csomagok rögzítésének rövidebb időtartama nem biztosít teljes körű adatmennyiséget, mert az elérési út több összetevője között szinkronizálja a problémákat.
-- A csomag-rögzítési adatfájlok PCAP formátumban jönnek létre. A PCAP-fájlok megnyitásához használjon Wireshark vagy más általánosan elérhető alkalmazásokat.
+- A csomagrögzítések futtatása befolyásolhatja a teljesítményt. Ne felejtse el leállítani a csomagrögzítést, ha nincs rá szükség.
+- A csomagrögzítés javasolt minimális időtartama 600 másodperc. Előfordulhat, hogy a rövidebb csomagrögzítés idotartama nem biztosít teljes adatokat, mivel az elérési út több összetevője között szinkronizálási problémák vannak.
+- A csomagrögzítési adatfájlok PCAP formátumban jönnek létre. Használja wireshark vagy más általánosan elérhető alkalmazások megnyitásához PCAP fájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a VPN Gatewayről: [about VPN Gateway](vpn-gateway-about-vpngateways.md)
+A VPN-átjáróról a [VPN-átjáróról című témakörben](vpn-gateway-about-vpngateways.md) talál további információt

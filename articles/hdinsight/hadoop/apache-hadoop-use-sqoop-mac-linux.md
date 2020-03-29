@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop Apache Hadoop-Azure HDInsight
-description: Ismerje meg, hogyan használható az Apache Sqoop a HDInsight és az Azure SQL Database közötti Apache Hadoop importálására és exportálására.
+title: Apache Sqoop és Apache Hadoop – Azure HDInsight
+description: Ismerje meg, hogyan importálhat és exportálhat az Apache Hadoop és egy Azure SQL-adatbázis között az Apache Sqoop használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769387"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Az Apache Sqoop használatával importálhat és exportálhat adatApache Hadoop a HDInsight és a SQL Database között
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Adatok importálása és exportálása az Apache Sqoop használatával a HDInsight-alapú Apache Hadoop és az SQL Database között
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, hogyan használható az Apache Sqoop az Azure HDInsight-beli Apache Hadoop-fürt és az Azure SQL Database vagy Microsoft SQL Server-adatbázis közötti importáláshoz és exportáláshoz. A jelen dokumentumban ismertetett lépések közvetlenül a Hadoop-fürt átjárócsomóponthoz származó `sqoop` parancsot használják. Az SSH használatával csatlakozhat a fő csomóponthoz, és futtathatja a dokumentumban található parancsokat. Ez a cikk az [Apache Sqoop és a Hadoop HDInsight-ben való használatának](./hdinsight-use-sqoop.md)folytatása.
+Ismerje meg, hogyan importálhat és exportálhat Apache Hadoop-fürtöt az Apache Hadoop-fürtökkel az Azure HDInsight ban és az Azure SQL Database vagy a Microsoft SQL Server adatbázisban. A jelen dokumentum lépései a `sqoop` parancsot közvetlenül a Hadoop-fürt fejnófokáról használják. Az SSH segítségével csatlakozhat a főcsomóponthoz, és futtathatja a parancsokat ebben a dokumentumban. Ez a cikk az Apache Sqoop használatának folytatása a [Hadoop-mal a HDInsight-ban.](./hdinsight-use-sqoop.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [tesztkörnyezet üzembe](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) állításának befejezése az [Apache Sqoop és a Hadoop használatával a HDInsight-ben](./hdinsight-use-sqoop.md).
+* A [Tesztkörnyezet beállítása](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) az [Apache Sqoop használata a Hadoop segítségével a HDInsight ban](./hdinsight-use-sqoop.md).
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
-* Az Sqoop ismerete. További információ: [Sqoop felhasználói útmutató](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
+* A Sqoop ismerete. További információ: [Sqoop User Guide](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
 ## <a name="set-up"></a>Beállítás
 
-1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
+1. Az [ssh paranccsal](../hdinsight-hadoop-linux-use-ssh-unix.md) csatlakozhat a fürthöz. Az alábbi parancs szerkesztésével cserélje le a CLUSTERNAME-t a fürt nevére, majd írja be a parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Az egyszerű használat érdekében állítsa be a változókat. Cserélje le a `PASSWORD`, `MYSQLSERVER`és `MYDATABASE` értéket a megfelelő értékekre, majd írja be az alábbi parancsokat:
+1. A könnyű használat érdekében állítsa be a változókat. Cserélje `PASSWORD` `MYSQLSERVER`ki `MYDATABASE` a , és a megfelelő értékeket, majd írja be az alábbi parancsokat:
 
     ```bash
     export password='PASSWORD'
@@ -49,23 +49,23 @@ Ismerje meg, hogyan használható az Apache Sqoop az Azure HDInsight-beli Apache
     export serverDbConnect="jdbc:sqlserver://$sqlserver.database.windows.net:1433;user=sqluser;password=$password;database=$database"
     ```
 
-## <a name="sqoop-export"></a>Sqoop-exportálás
+## <a name="sqoop-export"></a>Sqoop export
 
-A kaptárból a SQL Serverba.
+A Hive-tól az SQL Serverkiszolgálóig.
 
-1. Annak ellenőrzéséhez, hogy a Sqoop látható-e a SQL Database, írja be az alábbi parancsot az Open SSH-kapcsolatban. Ez a parancs az adatbázisok listáját adja vissza.
+1. Annak ellenőrzéséhez, hogy a Sqoop láthatja-e az SQL-adatbázist, írja be az alábbi parancsot a nyitott SSH-kapcsolatba. Ez a parancs az adatbázisok listáját adja vissza.
 
     ```bash
     sqoop list-databases --connect $serverConnect
     ```
 
-1. A következő parancs megadásával tekintheti meg a megadott adatbázis tábláinak listáját:
+1. A megadott adatbázis tábláinak listájának megtekintéséhez írja be a következő parancsot:
 
     ```bash
     sqoop list-tables --connect $serverDbConnect
     ```
 
-1. Ha az adatok a kaptár `hivesampletable` táblából a SQL Database `mobiledata` táblájába szeretné exportálni, írja be az alábbi parancsot az Open SSH-kapcsolatban:
+1. Ha adatokat szeretne `hivesampletable` exportálni `mobiledata` a Hive táblából az SQL Database táblájába, írja be az alábbi parancsot a megnyitott SSH-kapcsolatba:
 
     ```bash
     sqoop export --connect $serverDbConnect \
@@ -73,7 +73,7 @@ A kaptárból a SQL Serverba.
     --hcatalog-table hivesampletable
     ```
 
-1. Az adatok exportálásának ellenőrzéséhez használja az SSH-kapcsolatban az alábbi lekérdezéseket az exportált adatok megtekintéséhez:
+1. Az adatok exportálásának ellenőrzéséhez használja az alábbi lekérdezéseket az SSH-kapcsolatból az exportált adatok megtekintéséhez:
 
     ```bash
     sqoop eval --connect $serverDbConnect \
@@ -84,11 +84,11 @@ A kaptárból a SQL Serverba.
     --query "SELECT TOP(10) * from dbo.mobiledata WITH (NOLOCK)"
     ```
 
-## <a name="sqoop-import"></a>Sqoop importálása
+## <a name="sqoop-import"></a>Sqoop import
 
-SQL Server az Azure Storage-ba.
+Az SQL Servertől az Azure-tárhelyig.
 
-1. Az Open SSH-kapcsolatban az alábbi parancs megadásával importálhatja az adatait a SQL Database `mobiledata` táblájából a HDInsight `wasbs:///tutorials/usesqoop/importeddata` könyvtárába. Az adatokban található mezőket tabulátor karakter választja el egymástól, a vonalakat pedig egy új sor karaktere állítja le.
+1. Írja be az alábbi parancsot a nyitott `mobiledata` SSH-kapcsolatba, `wasbs:///tutorials/usesqoop/importeddata` és importálja az adatokat az SQL Database táblájából a HDInsight könyvtárába. Az adatok mezőit tabulátorkarakter választja el egymástól, a sorokat pedig egy új sorkarakter szakítja meg.
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -98,7 +98,7 @@ SQL Server az Azure Storage-ba.
     --lines-terminated-by '\n' -m 1
     ```
 
-1. Azt is megteheti, hogy egy kaptár táblát is megadhat:
+1. Másik lehetőségként megadhat egy Hive-táblát is:
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -111,13 +111,13 @@ SQL Server az Azure Storage-ba.
     --hive-import -m 1
     ```
 
-1. Az importálás befejezése után írja be a következő parancsot az Open SSH-kapcsolatban, hogy kilistázza az új könyvtár adatait:
+1. Miután az importálás befejeződött, írja be a következő parancsot a nyitott SSH-kapcsolatba az új könyvtárban lévő adatok listázásához:
 
     ```bash
     hadoop fs -tail /tutorials/usesqoop/importeddata/part-m-00000
     ```
 
-1. A [Beeline](./apache-hadoop-use-hive-beeline.md) használatával ellenőrizze, hogy a tábla létre lett-e hozva a kaptárban.
+1. Használja [a beeline-t](./apache-hadoop-use-hive-beeline.md) annak ellenőrzésére, hogy a táblázat hive-ban készült-e.
 
     1. Kapcsolódás
 
@@ -125,7 +125,7 @@ SQL Server az Azure Storage-ba.
         beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
         ```
 
-    1. Hajtsa végre az egyes lekérdezéseket egy időben, és tekintse át a kimenetet:
+    1. Egyszerre minden lekérdezést egyenként hajtson végre, és tekintse át a kimenetet:
 
         ```hql
         show tables;
@@ -134,30 +134,30 @@ SQL Server az Azure Storage-ba.
         SELECT * FROM mobiledata_imported2 LIMIT 10;
         ```
 
-    1. Zárja be a `!exit`.
+    1. Kilépés a beeline-ból. `!exit`
 
 ## <a name="limitations"></a>Korlátozások
 
-* Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amely az adatexportálást Microsoft SQL Server vagy Azure SQL Database nem támogatja a tömeges beszúrások használatát.
+* Tömeges exportálás – A Linux-alapú HDInsight, a Sqoop-összekötő adatok Microsoft SQL Server vagy az Azure SQL Database adatok exportálásához használt nem támogatja a tömeges beszúrások.
 
-* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót használja a lapkák végrehajtásakor, a Sqoop több beszúrást tesz lehetővé az INSERT műveletekhez.
+* Kötegelés - A Linux-alapú HDInsight, Amikor a `-batch` kapcsolót, amikor a beszúrások végrehajtásakor, Sqoop teszi több lapkák helyett kötegelés a beszúrási műveleteket.
 
 ## <a name="important-considerations"></a>Fontos szempontok
 
-* A HDInsight és a SQL Servernak ugyanazon az Azure-Virtual Network kell lennie.
+* A HDInsightnak és az SQL Servernek is ugyanazon az Azure virtuális hálózaton kell lennie.
 
-    Példaként tekintse meg a [HDInsight összekapcsolása](./../connect-on-premises-network.md) a helyszíni hálózati dokumentumhoz című témakört.
+    Például tekintse meg a [HDInsight csatlakoztatása a helyszíni hálózati](./../connect-on-premises-network.md) dokumentumhoz.
 
-    További információ a HDInsight Azure Virtual Network használatával történő használatáról: a [HDInsight kiterjesztése az azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md) dokumentummal. További információ az Azure Virtual Networkről: [Virtual Network áttekintő](../../virtual-network/virtual-networks-overview.md) dokumentum.
+    A HDInsight Azure virtuális hálózattal való használatáról a HDInsight kiterjesztése az [Azure virtuális hálózattal](../hdinsight-plan-virtual-network-deployment.md) című dokumentumban talál további információt. Az Azure virtuális hálózatról további információt a virtuális hálózat áttekintése című [dokumentumban talál.](../../virtual-network/virtual-networks-overview.md)
 
-* Az SQL Servert úgy kell konfigurálni, hogy engedélyezze az SQL-hitelesítést. További információ: a [hitelesítési mód kiválasztása](https://msdn.microsoft.com/ms144284.aspx) dokumentum.
+* Az SQL Server t úgy kell konfigurálni, hogy engedélyezze az SQL-hitelesítést. További információt a [Hitelesítési mód kiválasztása](https://msdn.microsoft.com/ms144284.aspx) dokumentumban talál.
 
-* Előfordulhat, hogy a távoli kapcsolatok fogadásához konfigurálnia kell SQL Server. További információ: az SQL Server adatbázismotor-dokumentumhoz [való csatlakozás hibáinak megoldása](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) .
+* Előfordulhat, hogy az SQL Server t be kell állítania a távoli kapcsolatok fogadására. További információt az [SQL Server adatbázis-motordokumentumhoz való csatlakozás sal kapcsolatos hibaelhárítása](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
+Most már megtanulta, hogyan kell használni Sqoop. További tudnivalókért lásd:
 
-* Az [Apache Oozie és a HDInsight használata](../hdinsight-use-oozie-linux-mac.md): Sqoop művelet használata Oozie-munkafolyamatokban.
-* [Repülési késleltetési idő elemzése a HDInsight használatával](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): interaktív lekérdezés használatával elemezheti a repülési késleltetési adataikat, majd a Sqoop használatával exportálhatja az Azure SQL Database-be.
-* [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszerek az adatok HDInsight/Azure Blob Storage-ba való feltöltéséhez.
+* [Az Apache Oozie használata a HDInsight segítségével:](../hdinsight-use-oozie-linux-mac.md)Sqoop művelet használata Oozie-munkafolyamatokban.
+* [A járatkésleltetési adatok elemzése a HDInsight használatával:](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)Az Interaktív lekérdezés segítségével elemezheti a járatkésési adatokat, majd a Sqoop segítségével exportálhatja az adatokat egy Azure SQL-adatbázisba.
+* [Adatok feltöltése a HDInsightba:](../hdinsight-upload-data.md)További módszereket találhat az adatok HDInsight/Azure Blob storage-ba való feltöltésére.

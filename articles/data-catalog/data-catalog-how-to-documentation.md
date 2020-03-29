@@ -1,45 +1,45 @@
 ---
-title: Adatforrások dokumentálása Azure Data Catalog
-description: Útmutató az adategységek Azure Data Catalogban való dokumentálására.
+title: Adatforrások dokumentálása az Azure Data Catalogban
+description: Útmutató cikk, amely kiemeli az adatelemek dokumentálását az Azure Data Catalogban.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68950192"
 ---
-# <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Adatforrások dokumentálása Azure Data Catalog
+# <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Adatforrások dokumentálása az Azure Data Catalogban
 
 ## <a name="introduction"></a>Bevezetés
-A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, *megérteni*és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak.
+**A Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely a vállalati adatforrások regisztrációs és felderítési rendszereként szolgál. Más szóval az **Azure Data Catalog** arról szól, hogy segítsen az embereknek az adatforrások *felderítésében, megértésében*és használatában, és segítse a szervezeteket abban, hogy nagyobb értéket kapjanak a meglévő adataikból.
 
-Ha egy adatforrás regisztrálva van **Azure Data Catalog**, a metaadatokat a szolgáltatás átmásolja és indexeli, de a történet nem fejeződik be. **Azure Data Catalog** azt is lehetővé teszi, hogy a felhasználók saját teljes dokumentációt adjanak meg, amely leírja az adatforrás használati és általános forgatókönyveit.
+Ha egy adatforrás regisztrálva van az **Azure Data Catalog-ban,** a rendszer másolja és indexeli a metaadatait a szolgáltatás, de a történet nem ér véget. **Az Azure Data Catalog** azt is lehetővé teszi a felhasználók számára, hogy saját teljes dokumentációt, amely leírja a használat és a gyakori forgatókönyvek az adatforráshoz.
 
-Az [](data-catalog-how-to-annotate.md)adatforrások feliratozásával megismerheti, hogy az adatforrást ismerő szakértők megjegyzésekkel láthatják el a címkéket és a leírást. A **Azure Data Catalog** -portál egy Rich Text Editort tartalmaz, így a felhasználók teljes mértékben dokumentálják az adategységeket és a tárolókat. A szerkesztő tartalmazza a bekezdések formázását, például a fejléceket, a szövegformázást, a listajeles listákat, a számozott listákat és a táblákat.
+Az [adatforrások jegyzetelése](data-catalog-how-to-annotate.md)című részben megtudhatja, hogy az adatforrást ismertető szakértők címkékkel és leírással egészíthetik ki azt. Az **Azure Data Catalog** portál tartalmaz egy rich text szerkesztő, így a felhasználók teljes mértékben dokumentálja az adatelemek és tárolók. A szerkesztő bekezdésformázást tartalmaz, például címsorokat, szövegformázást, listajeles listákat, számozott listákat és táblázatokat.
 
-A címkék és a leírások kiválóan használhatók az egyszerű jegyzetekhez. Ahhoz azonban, hogy az adatfogyasztók jobban megértsék az adatforrások használatát és az adatforráshoz kapcsolódó üzleti forgatókönyveket, a szakértők teljes körű és részletes dokumentációt is biztosíthatnak. Az adatforrások egyszerű dokumentálása. Válasszon ki egy adategységet vagy tárolót, és válassza a **dokumentáció**elemet.
+Címkék és leírások nagy egyszerű jegyzeteket. Annak érdekében azonban, hogy az adatfelhasználók jobban megértsék az adatforrások használatát és az adatforrások üzleti forgatókönyveit, a szakértő teljes körű, részletes dokumentációt nyújthat. Az adatforrások könnyen dokumentálhatóak. Jelöljön ki egy adategységet vagy tárolót, és válassza a **Dokumentáció**lehetőséget.
 
-![Dokumentációs lap Data Catalog](media/data-catalog-documentation/data-catalog-documentation.png)
+![Dokumentáció lap egy adatkatalógusban](media/data-catalog-documentation/data-catalog-documentation.png)
 
-## <a name="documenting-data-assets"></a>Adategységek dokumentálása
-Az **Azure Data Catalog** dokumentáció előnyei lehetővé teszik, hogy az adategységek teljes elbeszélésének létrehozásához a Data Catalog használja a tartalom tárházában. Megtekintheti a tárolókat és táblákat leíró részletes tartalmakat. Ha már rendelkezik tartalommal egy másik adattárban, például a SharePointban vagy egy fájlmegosztásban, hozzáadhat az eszköz dokumentációs hivatkozásaihoz, és hivatkozhat erre a meglévő tartalomra. Ez a funkció lehetővé teszi, hogy a meglévő dokumentumok felderíthetők legyenek.
+## <a name="documenting-data-assets"></a>Adateszközök dokumentálása
+Az **Azure Data Catalog** dokumentációjának előnye lehetővé teszi, hogy a data catalog-t tartalomtárként használja az adateszközök teljes elbeszélésének létrehozásához. A tárolókat és táblákat leíró részletes tartalmakat is megismerheti. Ha már rendelkezik tartalommal egy másik tartalomtárban, például a SharePointban vagy egy fájlmegosztásban, hozzáadhatja az eszközdokumentációs hivatkozásokhoz, hogy hivatkozzon a meglévő tartalomra. Ez a funkció felderíthetővé teszi a meglévő dokumentumokat.
 
 > [!NOTE]
-> A keresési index nem tartalmazza a dokumentációt.
+> A dokumentáció nem szerepel a keresési indexben.
 >
 
-![Dokumentáció lap és hivatkozás a webes hivatkozásra](media/data-catalog-documentation/data-catalog-documentation2.png)
+![Dokumentáció lap és hivatkozás a webhivatkozásra](media/data-catalog-documentation/data-catalog-documentation2.png)
 
-A dokumentáció szintje az adategység-tároló jellemzőinek és értékének leírására terjedhet ki egy tárolóban lévő Table Schema részletes leírására. A dokumentáció szintjét az üzleti igényeknek megfelelően kell megadnia. Az adategységek dokumentálása azonban általában néhány előnye és hátránya:
+A dokumentáció szintje az adateszköz-tároló jellemzőinek és értékének leírásától a tárolón belüli táblaséma részletes leírásáig terjedhet. A megadott dokumentáció szintjét az üzleti igényeknek kell vezérelnie. De általában, itt van néhány előnye és hátránya dokumentálása adateszközök:
 
-* Csak egy tároló dokumentálása: Az összes tartalom egy helyen található, de nem feltétlenül szükséges adatokat a felhasználók számára, hogy tájékozott döntést hozzanak.
-* Csak a táblákat dokumentálja: A tartalom az adott objektumra vonatkozik, de a felhasználók több hellyel rendelkeznek a dokumentumokhoz.
-* Dokumentumok tárolói és táblái: A legátfogóbb megközelítés, de a dokumentumok több karbantartását is bevezethetik.
+* Dokumentum csak egy tároló: Minden tartalom egy helyen, de előfordulhat, hogy nem rendelkeznek a szükséges részleteket a felhasználók számára, hogy tájékozott döntést.
+* Csak a táblák dokumentálása: A tartalom az adott objektumra jellemző, de a felhasználók nak több helye van a dokumentumok számára.
+* Dokumentumtárolók és -táblázatok: A legátfogóbb megközelítés, de a dokumentumok további karbantartását vezetheti be.
 
-## <a name="summary"></a>Összegzés
-Az adatforrások **Azure Data Catalogsal** való dokumentálása a szükséges részletességgel részletes információkkal szolgálhat az adategységekről.  A hivatkozások használatával egy meglévő tartalom-tárházban tárolt tartalomhoz csatolhat, amely a meglévő docs-és adategységeket együtt hozza össze. Miután a felhasználók felderítik a megfelelő adategységeket, a dokumentáció teljes készletét használhatja.
+## <a name="summary"></a>Összefoglalás
+Az **adatforrások dokumentálása az Azure Data Catalog** segítségével olyan részletes elbeszélést hozhat létre az adateszközökről, amennyire szüksége van.  A hivatkozások használatával egy meglévő tartalomtárban tárolt tartalomra mutató hivatkozást használhat, amely összehozza a meglévő dokumentumokat és adatelemeket. Miután a felhasználók felfedezik a megfelelő adateszközöket, teljes dokumentációkészletet kaphatnak.

@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Twilio-hez Azure Logic Apps
-description: A globális SMS-, MMS-és IP-üzeneteket kezelő feladatok és munkafolyamatok automatizálása a Twilio-fiókon keresztül a Azure Logic Apps használatával
+title: Csatlakozás a Twilio-hoz az Azure Logic Apps alkalmazásból
+description: A globális SMS-, MMS- és IP-üzeneteket kezelő feladatok és munkafolyamatok automatizálása twilio-fiókon keresztül az Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,70 +8,70 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789103"
 ---
-# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Üzenetek kezelése a Twilio-ben Azure Logic Apps
+# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Üzenetek kezelése a Twilio-ban az Azure Logic Apps alkalmazásokkal
 
-A Azure Logic Apps és a Twilio-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a globális SMS-, MMS-és IP-üzeneteket tartalmazó Twilio-üzenetek beolvasására, küldésére és listázására használhatók. Ezekkel a műveletekkel feladatokat végezhet el a Twilio-fiókkal. Más műveletek is használhatók a Twilio műveletek kimenetének használatával. Ha például új üzenet érkezik, az üzenet tartalmát a Slack-összekötővel is elküldheti. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Az Azure Logic Apps és a Twilio-összekötő segítségével automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek lekapják, elküldik és listázik az üzeneteket a Twilio-ban, amelyek globális SMS-, MMS- és IP-üzeneteket tartalmaznak. Ezeket a műveleteket használhatja a Twilio-fiókkal végzett feladatok végrehajtásához. Más műveletek is használhatják a Twilio-műveletek kimenetét. Ha például egy új üzenet érkezik, elküldheti az üzenet tartalmát a Tartalékidő-összekötővel. Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* [Twilio](https://www.twilio.com/): 
+* Forrás: [Twilio](https://www.twilio.com/): 
 
-  * A Twilio-fiók azonosítója és a [hitelesítési token](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), amelyet a Twilio-irányítópulton talál
+  * A Twilio-fiók azonosítója és [a hitelesítési jogkivonat,](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them)amely megtalálható a Twilio irányítópulton
 
-    A hitelesítő adatai engedélyezik a logikai alkalmazásnak, hogy kapcsolatot hozzon létre, és hozzáférjen a Twilio-fiókhoz a logikai alkalmazásból. 
-    Ha Twilio próbaverziós fiókot használ, csak az *ellenőrzött* telefonszámok számára küldhet SMS-t.
+    A hitelesítő adatok engedélyezik a logikai alkalmazás számára, hogy hozzon létre egy kapcsolatot, és a Logikai alkalmazásból való hozzáférés. 
+    Ha Twilio próbafiókot használ, csak *ellenőrzött telefonszámokon* küldhet SMS-t.
 
-  * Egy ellenőrzött Twilio-telefonszám, amely SMS-t tud küldeni
+  * Ellenőrzött Twilio-telefonszám, amely képes SMS-t küldeni
 
-  * Egy ellenőrzött Twilio-telefonszám, amely SMS-t kaphat
+  * Ellenőrzött Twilio-telefonszám, amely képes SMS-t fogadni
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni a Twilio-fiókját. Ha Twilio műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
+* A logikai alkalmazás, ahol szeretné elérni a Twilio-fiók. Twilio-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **Ismétlődés** eseményindítóval.
 
-## <a name="connect-to-twilio"></a>Kapcsolódás a Twilio
+## <a name="connect-to-twilio"></a>Csatlakozás a Twilio-hoz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
 
-1. Válasszon egy elérési utat: 
+1. Válasszon elérési utat: 
 
-     * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
+     * Az utolsó lépésben, ahol műveletet szeretne hozzáadni, válassza az **Új lépés lehetőséget.** 
 
        – vagy –
 
-     * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
-     Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+     * A lépések között, ahol műveletet szeretne hozzáadni, vigye az egérmutatót a lépések közötti nyíl fölé. 
+     Válassza ki a**+** megjelenő pluszjelet ( ), majd válassza **a Művelet hozzáadása**lehetőséget.
      
-       A keresőmezőbe írja be szűrőként a "twilio" kifejezést. 
-       A műveletek listában válassza ki a kívánt műveletet.
+       A keresőmezőbe írja be a "twilio" szűrőt. 
+       A műveletek listájában jelölje ki a kívánt műveletet.
 
-1. Adja meg a kapcsolathoz szükséges adatokat, majd kattintson a **Létrehozás**gombra:
+1. Adja meg a kapcsolathoz szükséges részleteket, majd válassza a **Létrehozás lehetőséget:**
 
-   * A kapcsolódáshoz használandó név
-   * Az Ön Twilio-fiókjának azonosítója 
-   * Twilio-hozzáférési (hitelesítési) token
+   * A kapcsolathoz használandó név
+   * Az Ön Twilio-fiókazonosítója 
+   * A Twilio-hozzáférés (hitelesítés) jogkivonat
 
-1. Adja meg a kiválasztott művelethez szükséges adatokat, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
+1. Adja meg a kiválasztott művelethez szükséges részleteket, és folytassa a logikai alkalmazás munkafolyamatának kiépítését.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/twilio/).
+Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](/connectors/twilio/)
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)

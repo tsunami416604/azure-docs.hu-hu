@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid Azure SignalR eseménysémája
-description: Az Azure SignalR-események az Azure Event GRID használatával biztosított tulajdonságait ismerteti
+title: Azure Event Grid Azure SignalR eseményséma
+description: Az Azure Event Grid del az Azure SignalR-eseményekhez biztosított tulajdonságok ismertetése
 services: event-grid
 author: chenyl
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 06/11/2019
 ms.author: chenyl
 ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67789071"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>A SignalR Service az Azure Event Grid eseménysémája
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid eseménysémája a SignalR szolgáltatáshoz
 
-Ez a cikk a séma és a SignalR Service eseményeket. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk a SignalR Service-események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
 
-## <a name="available-event-types"></a>Rendelkezésre álló események típusai
+## <a name="available-event-types"></a>Elérhető eseménytípusok
 
-SignalR Service a következő esemény típusú bocsát ki:
+A SignalR szolgáltatás a következő eseménytípusokat bocsátja ki:
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.SignalRService.ClientConnectionConnected | Következik be, amikor egy ügyfél kapcsolat. |
-| Microsoft.SignalRService.ClientConnectionDisconnected | Következik be, amikor egy ügyfél-kapcsolat megszakadt. |
+| Microsoft.SignalRService.ClientConnected kapcsolat | Ügyfélkapcsolat csatlakoztatásakor. |
+| Microsoft.SignalRService.ClientKapcsolatleválasztva | Ügyfélkapcsolat leválasztásakor. |
 
 ## <a name="example-event"></a>Példa esemény
 
-Az alábbi példa bemutatja az ügyfél-séma kapcsolat csatlakoztatott esemény: 
+A következő példa egy ügyfélkapcsolathoz csatlakoztatott esemény sémáját mutatja be: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Az alábbi példa bemutatja az ügyfél-séma kapcsolat csatlakoztatott esemény
 }]
 ```
 
-Egy ügyfél-csatlakozási leválasztott esemény sémája hasonlít: 
+Az ügyfélkapcsolat leválasztott eseményének sémája hasonló: 
 
 ```json
 [{
@@ -73,30 +73,30 @@ Egy ügyfél-csatlakozási leválasztott esemény sémája hasonlít:
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény legfelső szintű adatokat rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | Karakterlánc | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | Karakterlánc | Az esemény egyedi azonosítója. |
-| data | object | SignalR Service eseményadatokat. |
-| dataVersion | Karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| id | sztring | Az esemény egyedi azonosítója |
+| data | objektum | SignalR Service eseményadatai. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Az objektum a következő tulajdonságokkal rendelkezik:
+Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| timestamp | Karakterlánc | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| hubName | Karakterlánc | A központ, amely az ügyfél kapcsolata. |
-| connectionId | Karakterlánc | Az ügyfél kapcsolata egyedi azonosítója. |
-| userId | Karakterlánc | A felhasználói azonosító jogcím meghatározott. |
-| Hibaüzenet | Karakterlánc | A hiba, amelynek hatására a kapcsolat megszakadt. |
+| időbélyeg | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| hubName | sztring | Az a hub, amelyhez az ügyfélkapcsolat tartozik. |
+| connectionId | sztring | Az ügyfélkapcsolat egyedi azonosítója. |
+| userId | sztring | A jogcímcímben definiált felhasználói azonosító. |
+| errorMessage | sztring | A kapcsolat megszakadását okozó hiba. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.

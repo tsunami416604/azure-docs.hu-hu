@@ -1,6 +1,6 @@
 ---
-title: Az Azure storage table adatok titkosítása |} A Microsoft Docs
-description: Ismerje meg a tábla adatok titkosítását az Azure storage-ban.
+title: Azure storage-táblaadatok titkosítása | Microsoft dokumentumok
+description: Ismerje meg a táblaadatok titkosítását az Azure storage-ban.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,26 +9,26 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60326003"
 ---
-# <a name="encrypt-table-data"></a>Táblák adatainak titkosítása
-Az Azure Storage .NET ügyféloldali kódtár támogatja a titkosítást a karakterlánc-entitás tulajdonságai szúrhatók be, és cserélje le a műveleteket. A titkosított karakterláncokat tárolja a szolgáltatás bináris tulajdonságokként, és azok alakítja vissza karakterláncok a visszafejtés után.    
+# <a name="encrypt-table-data"></a>Táblaadatok titkosítása
+A .NET Azure Storage ügyfélkódtár támogatja a karakterláncentitás-tulajdonságok titkosítását a beszúrási és csereműveletekhez. A titkosított karakterláncok bináris tulajdonságokként tárolódnak a szolgáltatásban, és a visszafejtés után karakterláncokká alakulnak vissza.    
 
-Felhasználók táblákat, a titkosítási szabályzat mellett titkosítását a tulajdonságokat kell megadnia. Ezt megteheti megadásával vagy (POCO entitások, amelyek TableEntity származtatva) [EncryptProperty] attribútum vagy egy titkosítási feloldási lehetőségek. Egy titkosítási feloldó egy meghatalmazott, amelyek egy partíciókulcsot, egy sorkulcsot és egy tulajdonságnév vesz igénybe, és logikai érték beolvasása, amely azt jelzi, hogy tulajdonság titkosítani kell. Titkosítás során az ügyféloldali kódtár ezen információk segítségével titkosítása egy tulajdonság írása az átvitel közben kell-e. A delegált körül hogyan tulajdonságok vannak titkosítva logikai lehetőségét is biztosít. (Például, ha X, majd titkosítása egy tulajdonság; ellenkező esetben a tulajdonságok a és b titkosítása) Nem kell ezt az információt entitások lekérdezése vagy olvasása közben.
+Táblák esetén a titkosítási házirendmellett a felhasználóknak meg kell adniuk a titkosítandó tulajdonságokat. Ez történhet egy [EncryptProperty] attribútum megadásával (a TableEntity-ból származó POCO-entitásokhoz), vagy egy titkosítás-feloldó megadásával a kérelembeállításokban. A titkosítási feloldó olyan delegált, amely partíciókulcsot, sorkulcsot és tulajdonságnevet ad vissza, és logikai értéket ad vissza, amely jelzi, hogy a tulajdonságot titkosítani kell-e. A titkosítás során az ügyféltár ezt az információt használja annak eldöntésére, hogy titkosítson-e egy tulajdonságot a vezetékbe írás közben. A delegált is lehetővé teszi a logika körül, hogyan tulajdonságok titkosítását. (Ha például X, akkor titkosítsa az A tulajdonságot; egyébként titkosítsa az A és B tulajdonságokat.) Ezeket az adatokat nem szükséges megadni entitások olvasása vagy lekérdezése közben.
 
-## <a name="merge-support"></a>Támogatási egyesítése
+## <a name="merge-support"></a>Támogatás egyesítése
 
-Egyesítési jelenleg nem támogatott. A tulajdonságok egy részének előfordulhat, hogy korábban használatával titkosított egy másik kulcsot, mert csak az új tulajdonságok egyesítése, és a metaadatok frissítése eredményez az adatvesztést. Az egyesítés vagy igényel, a már meglévő entitás olvasni a szolgáltatás további szolgáltatás-hívások, illetve tulajdonságonként egy új kulcsot használ, mindkettő nem alkalmasak a teljesítmény javítása érdekében.     
+Az egyesítés jelenleg nem támogatott. Mivel előfordulhat, hogy a tulajdonságok egy részhalmaza korábban egy másik kulccsal lett titkosítva, az új tulajdonságok egyesítése és a metaadatok frissítése adatvesztést eredményez. Az egyesítéshez vagy további szolgáltatáshívásokat kell kezdeményezni a már meglévő entitás szolgáltatásból való olvasásához, vagy egy új kulcsot használ tulajdononként, amelyek teljesítménybeli okokból nem alkalmasak.     
 
-További információ a táblák adatainak titkosítása: [ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](../common/storage-client-side-encryption.md).  
+A táblaadatok titkosításáról az [Ügyféloldali titkosítás és az Azure Key Vault for Microsoft Azure Storage című témakörben talál](../common/storage-client-side-encryption.md)további információt.  
 
 ## <a name="next-steps"></a>További lépések
 
-- [Táblázat kialakítási minták](table-storage-design-patterns.md)
-- [Kapcsolatok modellezését](table-storage-design-modeling.md)
-- [Kapcsolatok modellezését](table-storage-design-modeling.md)
-- [Adatmódosítás tervezése](table-storage-design-for-modification.md)
+- [Táblázat tervezési mintái](table-storage-design-patterns.md)
+- [Kapcsolatok modellezése](table-storage-design-modeling.md)
+- [Kapcsolatok modellezése](table-storage-design-modeling.md)
+- [Tervezés adatmódosításhoz](table-storage-design-for-modification.md)

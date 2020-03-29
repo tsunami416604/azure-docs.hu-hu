@@ -1,32 +1,32 @@
 ---
-title: Egyéni szerepkör-definíciók áttekintése
-description: A felügyelt alkalmazásokhoz tartozó egyéni szerepkör-definíciók létrehozásának fogalmát ismerteti.
+title: Egyéni szerepkör-definíciók – áttekintés
+description: A felügyelt alkalmazások egyéni szerepkör-definícióinak létrehozásának fogalmát ismerteti.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650759"
 ---
-# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Egyéni szerepkör-definíciós összetevő a Azure Managed Applications
+# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Egyéni szerepkör-definíciós összetevő az Azure felügyelt alkalmazásokban
 
-Az egyéni szerepkör-definíció egy opcionális összetevő a felügyelt alkalmazásokban. Annak meghatározására szolgál, hogy a felügyelt alkalmazás milyen engedélyeket kell végrehajtania a függvények működéséhez.
+Az egyéni szerepkör-definíció egy választható műtermék a felügyelt alkalmazásokban. Annak meghatározására szolgál, hogy a felügyelt alkalmazásnak milyen engedélyekre van szüksége a függvények végrehajtásához.
 
 Ez a cikk áttekintést nyújt az egyéni szerepkör-definíciós összetevőről és annak képességeiről.
 
 ## <a name="custom-role-definition-artifact"></a>Egyéni szerepkör-definíciós összetevő
 
-A customRoleDefinition. JSON nevű egyéni szerepkör-definíciót kell megadnia. Helyezze el ugyanazon a szinten, mint a createUiDefinition. JSON és a mainTemplate. JSON fájl a felügyelt alkalmazás definícióját létrehozó. zip csomagban. A. zip csomag létrehozásával és a felügyelt alkalmazás definíciójának közzétételével kapcsolatos további információkért lásd: [felügyelt alkalmazás definíciójának közzététele.](publish-managed-app-definition-quickstart.md)
+Meg kell neveznie az egyéni szerepkör-definíciós összetevő customRoleDefinition.json nevet. Helyezze a createUiDefinition.json és a mainTemplate.json szintre a .zip csomagban, amely felügyelt alkalmazásdefiníciót hoz létre. A .zip csomag létrehozásáról és a felügyelt alkalmazásdefiníció közzétételéről a [Felügyelt alkalmazásdefiníció közzététele című](publish-managed-app-definition-quickstart.md) témakörben olvashat.
 
 ## <a name="custom-role-definition-schema"></a>Egyéni szerepkör-definíciós séma
 
-A customRoleDefinition. JSON fájl legfelső szintű `roles` tulajdonsága, amely a szerepkörök tömbje. Ezek a szerepkörök a felügyelt alkalmazás működéséhez szükséges engedélyek. Jelenleg csak a beépített szerepkörök engedélyezettek, de több szerepkör is megadható. A szerepköröket a szerepkör-definíció vagy a szerepkör neve is hivatkozhat.
+A customRoleDefinition.json fájl egy `roles` legfelső szintű tulajdonsággal rendelkezik, amely szerepkörök tömbje. Ezek a szerepkörök azok az engedélyek, amelyeket a felügyelt alkalmazásnak kell működnie. Jelenleg csak a beépített szerepkörök engedélyezettek, de több szerepkört is megadhat. Egy szerepkörre a szerepkör-definíció azonosítója vagy a szerepkör neve hivatkozhat.
 
-Egyéni szerepkör-definíciók JSON-mintája:
+Minta JSON egyéni szerepkör-definíció:
 
 ```json
 {
@@ -49,7 +49,7 @@ Egyéni szerepkör-definíciók JSON-mintája:
 
 ## <a name="roles"></a>Szerepkörök
 
-A szerepkörök egy `$.properties.roleName` vagy egy `id`ből állnak:
+A szerep a vagy `$.properties.roleName` egy: `id`
 
 ```json
 {
@@ -61,9 +61,9 @@ A szerepkörök egy `$.properties.roleName` vagy egy `id`ből állnak:
 ```
 
 > [!NOTE]
-> A `id` vagy a `roleName` mezőt is használhatja. Csak egy szükséges. Ezekkel a mezőkkel lehet megkeresni a szerepkör-definíciót, amelyet alkalmazni kell. Ha mindkettő meg van adva, a rendszer a `id` mezőt fogja használni.
+> Használhatja a `id` vagy `roleName` a mezőt. Csak egy szükséges. Ezek a mezők az alkalmazandó szerepkör-definíció jának megkeresésére szolgálnak. Ha mindkettő tavan, a `id` mező lesz használva.
 
 |Tulajdonság|Kötelező?|Leírás|
 |---------|---------|---------|
-|id|Igen|A beépített szerepkör azonosítója. Használhatja a teljes azonosítót vagy csak a GUID azonosítót.|
-|roleName|Igen|A beépített szerepkör neve.|
+|id|Igen|A beépített szerepkör azonosítója. Használhatja a teljes azonosítót, vagy csak a GUID.|
+|szerepkörneve|Igen|A beépített szerepkör neve.|

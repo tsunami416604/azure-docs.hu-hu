@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Mi az a PowerShell-modul ADConnectivityTool |} A Microsoft Docs'
-description: Ez a dokumentum bemutatja az új ADConnectivity PowerShell-modult, és hogyan használható hibaelhárításához.
+title: 'Azure AD Connect: Mi az ADConnectivityTool PowerShell modul | Microsoft dokumentumok'
+description: Ez a dokumentum bemutatja az új ADConnectivity PowerShell modult, és hogyan használható a hibaelhárításhoz.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,70 +12,70 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64571115"
 ---
-# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>A ADConnectivityTool PowerShell-modult az Azure AD-kapcsolatának hibaelhárítása
+# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Az Azure AD-kapcsolat – az ADConnectivityTool PowerShell modullal – problémamegoldás
 
-A ADConnectivity eszköz el egy PowerShell-modul, amely szerepel az alábbi lehetőségek közül:
+Az ADConnectivity eszköz egy PowerShell-modul, amelyet a következők egyikében használnak:
 
-- A telepítés során, ha a hálózati kapcsolati probléma megakadályozza a sikeres érvényesítésének feltétele lesz az Active Directory hitelesítő adatok a felhasználó a varázslóban megadott.
-- Meghívja a függvényt, egy PowerShell-munkamenetet a felhasználó által a telepítés után.
+- A telepítés során, amikor a hálózati kapcsolat problémája megakadályozza a varázslóban megadott Active Directory-hitelesítő adatok sikeres érvényesítését.
+- A telepítést egy powershell-munkamenetből a függvényeket meghívó felhasználó által idoben történő telepítését követően.
 
-Az eszköz található: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
+Az eszköz a következő helyen található: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
 
-## <a name="adconnectivitytool-during-installation"></a>A telepítés során ADConnectivityTool
+## <a name="adconnectivitytool-during-installation"></a>ADConnectivityTool telepítés közben
 
-Az a **csatlakoztassa a címtárakat** lapon, az Azure AD Connect varázsló, ha hálózati hiba történik, a ADConnectivityTool lesz automatikusan használatával a függvények egyikét határozza meg, mi is történik.  Az alábbi tekinthető hálózati problémák:
+A **Könyvtárak csatlakoztatása** lap, az Azure AD Connect varázsló, ha hálózati probléma merül fel, az ADConnectivitytool automatikusan használja az egyik függvénye, hogy meghatározzák, mi folyik itt.  Az alábbiak bármelyike hálózati problémának tekinthető:
 
-- Rosszul írta be a nevét, az erdő, a felhasználó által megadott vagy említett erdő nem létezik. 
-- 389-es UDP-port le van zárva, a tartományvezérlők, az erdőben, a felhasználó által megadott társított
-- Az "AD-erdőfiók" ablakban megadott hitelesítő adatok nem rendelkezik jogosultságokkal a tartományvezérlők, a cél erdő társított beolvasása
-- Bármely 53-as, 88 vagy 389-es TCP-port zárva van a tartományvezérlők, az erdőben, a felhasználó által megadott társított a 
-- Mind a 389-es UDP és TCP-port (vagy -portokat) nincs megnyitva
-- Nem sikerült a DNS a társított tartományvezérlők számára a megadott erdő kijelöljön Megoldva
+- A felhasználó által megadott erdő neve helytelenül lett beírva, vagy az erdő nem létezik. 
+- A 389-es UDP-port a felhasználó által megadott erdőhöz társított tartományvezérlőkön van bezárva
+- Az "AD erdőfiók" ablakban megadott hitelesítő adatok nem rendelkeznek jogosultságokkal a célerdőhöz társított tartományvezérlők lekéréséhez.
+- Az 53-as, 88-as vagy 389-es TCP-portok bármelyike be van zárva a felhasználó által megadott erdőhöz társított tartományvezérlőkön. 
+- Mind az UDP 389, mind a TCP-port (vagy portok) zárva vannak
+- A DNS nem oldható fel a megadott erdőhöz és\vagy a hozzá tartozó tartományvezérlőkhöz
 
-Találhatók esetleges ezeket a problémákat, amikor egy kapcsolódó hibaüzenet jelenik meg az aad Connect varázslóban:
+Ha a probléma bármelyike megtalálható, az AADConnect varázslóban egy kapcsolódó hibaüzenet jelenik meg:
 
 
 ![Hiba](media/how-to-connect-adconnectivitytools/error1.png)
 
-Például ha helyreállításon dolgozunk a könyvtár hozzáadása a **csatlakoztassa a címtárakat** képernyő, az Azure AD Connect kell ellenőriznie ezt, és vár a tartományvezérlővel 389-es porton keresztül kommunikálnak.  Ha nem érhető el, hogy a fenti képernyőképen látható hibaüzenet jelenik meg.  
+Ha például megpróbálunk hozzáadni egy könyvtárat a **Könyvtárak csatlakoztatása** képernyőn, az Azure AD Connectnek ellenőriznie kell ezt, és elvárja, hogy képes legyen kommunikálni egy tartományvezérlővel a 389-es porton keresztül.  Ha nem, látni fogjuk a fenti képernyőképen látható hibát.  
 
-Mi ténylegesen történik a színfalak mögött, hogy az Azure AD Connect hívja a `Start-NetworkConnectivityDiagnosisTools` függvény.  Ez a függvény nevezzük, amikor hitelesítő adatok érvényesítése hálózati kapcsolati hiba miatt sikertelen.
+Mi történik valójában a színfalak mögött, hogy `Start-NetworkConnectivityDiagnosisTools` az Azure AD Connect hívja a függvényt.  Ez a függvény akkor jön létre, ha a hitelesítő adatok érvényesítése hálózati kapcsolati probléma miatt sikertelen.
 
-Végül a részletes naplófájl jön létre, amikor az eszköz neve a varázslóból. A naplóban található **C:\ProgramData\AADConnect\ADConnectivityTool-\<dátum >-\<idő > .log**
+Végül egy részletes naplófájl jön létre, amikor az eszközt a varázslóból hívják meg. A napló a **C:\ProgramData\AADConnect\ADConnectivityTool\<mappában\<található,> időpont>.log**
 
-## <a name="adconnectivitytools-post-installation"></a>A telepítés után ADConnectivityTools
-Az Azure AD Connect telepítése után a ADConnectivityTools PowerShell-modul az a funkciók bármelyike használható.  
+## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools telepítés után
+Az Azure AD Connect telepítése után az ADConnectivityTools PowerShell-modul bármely függvénye használható.  
 
-Az a funkciók részletes információkat talál a [ADConnectivityTools referencia](reference-connect-adconnectivitytools.md)
+A függvényekkel kapcsolatos referenciainformációkat az [ADConnectivityTools Referencia](reference-connect-adconnectivitytools.md)
 
 ### <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
-Ez a függvény hívásához, mert képes kezelni fogjuk **csak** a ADConnectivityTool.psm1 PowerShell alkalmazásba importálása után manuálisan hívható. 
+Ezt a funkciót fogjuk kihívni, mert **csak** akkor hívható meg manuálisan, ha az ADConnectivityTool.psm1 importálása megtörtént a PowerShellbe. 
 
-Ez a függvény végrehajtja ugyanazt a logikát, amely az Azure AD Connect varázsló a megadott AD hitelesítő adatok ellenőrzése.  Azonban sokkal több részletes magyarázatát a problémát, és a egy javasolt megoldást biztosít. 
+Ez a függvény ugyanazt a logikát hajtja végre, mint az Azure AD Connect varázsló fut a megadott AD hitelesítő adatok érvényesítéséhez.  Azonban ez egy sokkal bőbeszédű magyarázatot a problémára, és a javasolt megoldás. 
 
-A kapcsolat érvényesítése a következő lépésekből áll:
--   Tartomány teljes Tartományneve (teljesen minősített tartománynév) objektum
--   Ellenőrizze, hogy a felhasználó kiválasztott a "Létrehozás új AD-fiók", ha ezeket a hitelesítő adatokat tartozik a vállalati rendszergazdák csoport
--   Get-erdő teljes Tartományneve objektum
--   Győződjön meg arról, hogy legalább egy tartományt a korábban kapott erdő FQDN-objektumhoz társított érhető el
--   Ellenőrizze, hogy az erdő működési szintje Windows Server 2003 vagy újabb.
+A kapcsolat ellenőrzése a következő lépésekből áll:
+-   Tartomány teljes tartománynév (teljesen minősített tartománynév) objektumának beolvasása
+-   Annak ellenőrzése, hogy ha a felhasználó az "Új AD-fiók létrehozása" lehetőséget választotta, ezek a hitelesítő adatok a Vállalati rendszergazdák csoporthoz tartoznak
+-   Erdő FQDN-objektumának beolvasása
+-   Annak ellenőrzése, hogy a korábban beszerzett erdő fqdn-objektumához társított legalább egy tartomány elérhető-e
+-   Ellenőrizze, hogy az erdő működési szintje Windows Server 2003 vagy nagyobb.
 
-A felhasználó fogja tudni adjon hozzá egy könyvtárat, ha ezek a műveletek végrehajtása sikerült.
+A felhasználó hozzáadhat egy könyvtárat, ha ezeket a műveleteket sikeresen végrehajtották.
 
-Ha a felhasználó ezt a funkciót futtat, miután egy zárhatók (vagy ha nincs probléma egyáltalán létezik) a kimenetben megjelenik a felhasználó, lépjen vissza az Azure AD Connect varázsló, és próbálja meg újra szúr be a hitelesítő adatokat.
+Ha a felhasználó a probléma megoldása után futtatja ezt a funkciót (vagy ha egyáltalán nem probléma áll fenn), a kimenet jelzi, hogy a felhasználó visszatérjen az Azure AD Connect varázslóhoz, és próbálja meg újra beszúrni a hitelesítő adatokat.
 
 
 
-## <a name="next-steps"></a>További lépések
-- [Azure AD Connect: Fiókok és engedélyek](reference-connect-accounts-permissions.md)
-- [Az Expressz telepítés](how-to-connect-install-express.md)
+## <a name="next-steps"></a>Következő lépések
+- [Azure AD Connect: fiókok és engedélyek](reference-connect-accounts-permissions.md)
+- [Expressz telepítés](how-to-connect-install-express.md)
 - [Egyéni telepítés](how-to-connect-install-custom.md)
-- [ADConnectivityTools referencia](reference-connect-adconnectivitytools.md)
+- [Az ADConnectivityTools referenciája](reference-connect-adconnectivitytools.md)
 

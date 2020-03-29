@@ -1,6 +1,6 @@
 ---
-title: Fájlok áthelyezése a fájl alapú tárterület között
-description: Megtudhatja, hogyan helyezhet át fájlokat a fájl-alapú tárolók között Azure Data Factory használatával a megoldás sablon használatával.
+title: Fájlok áthelyezése fájlalapú tárolók között
+description: Ismerje meg, hogyan használhat megoldássablont a fájlok fájlalapú tárolás a fájlalapú tárolás között az Azure Data Factory használatával.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,53 +12,53 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
 ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74941918"
 ---
-# <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése Azure Data Factory
+# <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése az Azure Data Factory segítségével
 
-Ez a cikk egy megoldás-sablont ismertet, amellyel a fájlokat áthelyezheti egyik mappából a másikba a fájl alapú tárolók között. A sablon használatának egyik leggyakoribb forgatókönyve: a fájlok folyamatosan el lesznek dobva a forrás-áruház egy leszálló mappájába. Az ütemezett triggerek létrehozásával az ADF-folyamat rendszeres időközönként áthelyezheti ezeket a fájlokat a forrásról a célhelyre.  Az ADF-folyamat a "fájlok áthelyezése" értékkel éri el a fájlokat a lekérési mappából, és mindegyiket egy másik mappába másolja a célhelyen, majd törli ugyanezeket a fájlokat a forrás-áruházban található kihelyezett mappából.
+Ez a cikk egy olyan megoldássablont ismertet, amelyekkel fájlokat helyezhet át egyik mappából a másikba a fájlalapú tárolók között. A sablon használatának egyik gyakori forgatókönyve: A fájlok folyamatosan a forrástároló egy célmappájába kerülnek. Ütemezési eseményindító létrehozásával az ADF-folyamat rendszeresen áthelyezheti ezeket a fájlokat a forrásból a céltárolóba.  Az ADF-folyamat "fájlok áthelyezésének" módja a fájlok beszerzése a célmappából, mindegyik másolása a céltároló egy másik mappájába, majd ugyanazokat a fájlokat a forrástároló célmappájából.
 
 > [!NOTE]
-> Vegye figyelembe, hogy a sablon úgy lett kialakítva, hogy a mappák áthelyezése helyett fájlokat helyezzen át.  Ha úgy szeretné áthelyezni a mappát, hogy úgy módosítja az adatkészletet, hogy csak a mappa elérési útját tartalmazza, majd a másolási tevékenység és a törlés tevékenység használatával ugyanarra az adatkészletre hivatkozzon, amely egy mappát jelképez, nagyon Körültekintőnek kell lennie. Ennek az az oka, hogy meg kell győződnie arról, hogy a másolási művelet és a törlési művelet között nem lesznek új fájlok a mappába. Ha a másolási tevékenység csak a másolási művelet befejezése után új fájlok érkeznek, de a törlési tevékenység nem lett kitöltve, lehetséges, hogy a törlési tevékenység törli ezt az új, a DESTINATI nem másolt beérkező fájlt. még a teljes mappa törlésével.
+> Ne feledje, hogy ez a sablon a mappák áthelyezése helyett a fájlok áthelyezésére szolgál.  Ha úgy szeretné áthelyezni a mappát, hogy az adatkészlet et úgy szeretné áthelyezni, hogy az csak egy mappa elérési útját tartalmazza, majd a másolási tevékenység és a törlési tevékenység használatával ugyanarra az adatkészletre hivatkozik, amely egy mappát ábrázol, nagyon óvatosnak kell lennie. Ez azért van, mert meg kell győződnie arról, hogy nem lesz új fájlok érkeznek a mappába a másolási művelet és a törlési művelet között. Ha új fájlok érkeznek a mappába abban a pillanatban, amikor a másolási tevékenység éppen befejezte a másolási feladatot, de a Törlés tevékenység nem nézett, lehetséges, hogy a Törlés tevékenység törli ezt az új érkező fájlt, amely nem másolt a a teljes mappa törlésével.
 
-## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
+## <a name="about-this-solution-template"></a>A megoldássablon – kapcsolat
 
-Ez a sablon lekéri a fájlokat a forrásfájl-alapú tárolóból. Ezután áthelyezi őket a célhelyre.
+Ez a sablon leveszi a fájlokat a forrásfájl-alapú tárolóból. Ezután áthelyezi mindegyiket a céltárolóba.
 
 A sablon öt tevékenységet tartalmaz:
-- A **GetMetaData** lekéri az objektumok listáját, beleértve a forrás-áruház mappájából származó fájlokat és almappákat is. Az objektumok rekurzív beolvasása nem történik meg. 
-- **Szűrje** az objektumok listáját a **GetMetaData** tevékenységből a csak fájlok kiválasztásához. 
-- A **foreach** lekéri a fájlok listáját a **szűrő** tevékenységből, majd megismétli a listát, és átadja az egyes fájlokat a másolási tevékenységnek és a törlési tevékenységnek.
-- A másolás egy fájlt **másol** a forrásról a célhelyre.
-- A **delete** parancs törli a forrás-áruházból származó azonos fájlt.
+- **A GetMetadata** leveszi az objektumok listáját, beleértve a fájlokat és az almappákat is a forrástárolómappából. Nem fogja rekurzívan beolvasni az objektumokat. 
+- **Szűrje** az objektumok listáját a **GetMetadata** tevékenységből, hogy csak a fájlokat jelölje ki. 
+- **ForEach** lekéri a fájllistát a **Szűrő** tevékenységből, majd áttevé teszi a listát, és minden fájlt átad a Másolás tevékenységnek és a Törlés tevékenységnek.
+- Egy fájl **másolása** a forrásból a céltárolóba.
+- **A Törlés** törli ugyanazt a fájlt a forrástárolóból.
 
 A sablon négy paramétert határoz meg:
-- A *SourceStore_Location* az a forrásként megadott mappa elérési útja, ahová át szeretné helyezni a fájlokat. 
-- *SourceStore_Directory* annak a forrásnak az almappájának elérési útja, ahová át szeretné helyezni a fájlokat.
-- *DestinationStore_Location* a célhely azon mappájának elérési útja, ahová át szeretné helyezni a fájlokat. 
-- *DestinationStore_Directory* annak a célhelynek az almappájának elérési útja, ahová át szeretné helyezni a fájlokat.
+- *SourceStore_Location* a forrástároló azon mappaelérési útja, ahonnan fájlokat szeretne áthelyezni. 
+- *SourceStore_Directory* a forrástároló azon almappája, ahonnan fájlokat szeretne áthelyezni.
+- *DestinationStore_Location* a céltároló azon mappájának elérési útja, ahová a fájlokat át szeretné helyezni. 
+- *DestinationStore_Directory* a céltároló azon almappája, ahová fájlokat szeretne áthelyezni.
 
-## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
+## <a name="how-to-use-this-solution-template"></a>A megoldássablon használata
 
-1. Lépjen a **fájlok áthelyezése** sablonhoz. Válassza a meglévő kapcsolatok lehetőséget, vagy hozzon létre egy **új** kapcsolódást a forrásfájl-tárolóhoz, ahová át szeretné helyezni a fájlokat. Vegye figyelembe, hogy **DataSource_Folder** és **DataSource_File** a forrásfájl-tárolóval azonos kapcsolatban hivatkozik.
+1. Nyissa meg a **Fájlok áthelyezése sablont.** Jelölje ki a meglévő kapcsolatot, vagy hozzon létre **egy új** kapcsolatot a forrásfájltárolóval, ahonnan fájlokat szeretne áthelyezni. Ne feledje, hogy **DataSource_Folder** és **DataSource_File** a forrásfájl-tároló ugyanazon kapcsolatára hivatkoznak.
 
-    ![Új kapcsolódás létrehozása a forráshoz](media/solution-template-move-files/move-files1.png)
+    ![Új kapcsolat létrehozása a forrással](media/solution-template-move-files/move-files1.png)
 
-2. Válassza a meglévő kapcsolatok lehetőséget, vagy hozzon létre egy **új** kapcsolódást a célfájl tárolójához, ahová át szeretné helyezni a fájlokat.
+2. Jelölje ki a meglévő kapcsolatot, vagy hozzon létre **egy új** kapcsolatot a célfájltárolóhoz, ahová fájlokat szeretne áthelyezni.
 
-    ![Új kapcsolódás létrehozása a célhoz](media/solution-template-move-files/move-files2.png)
+    ![Új kapcsolat létrehozása a célhoz](media/solution-template-move-files/move-files2.png)
 
-3. Válassza **a sablon használata** lapot.
+3. Válassza **a Sablon használata** lapot.
     
-4. Ekkor megjelenik a folyamat, ahogy az alábbi példában is látható:
+4. A következő példában látható a folyamat:
 
     ![A folyamat megjelenítése](media/solution-template-move-files/move-files4.png)
 
-5. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.   A paraméterek a mappa elérési útja, ahová át kívánja helyezni a fájlokat és a mappa elérési útját, ahová át szeretné helyezni a fájlokat. 
+5. Válassza **a Hibakeresés**lehetőséget, írja be a **Paraméterek**, majd a **Befejezés**lehetőséget.   A paraméterek a mappa elérési útja, amelyből fájlokat szeretne áthelyezni, és az a mappaelérési út, ahová a fájlokat át szeretné helyezni. 
 
     ![A folyamat futtatása](media/solution-template-move-files/move-files5.png)
 
@@ -66,8 +66,8 @@ A sablon négy paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-move-files/move-files6.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory](solution-template-copy-new-files-lastmodifieddate.md)
+- [Új és módosított fájlok másolása lastmodifieddate segítségével az Azure Data Factory](solution-template-copy-new-files-lastmodifieddate.md)
 
-- [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Fájlok másolása több tárolóból az Azure Data Factory segítségével](solution-template-copy-files-multiple-containers.md)

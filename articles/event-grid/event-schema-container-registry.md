@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Griddel Container Registry eseménysémája
-description: Ismerteti a tulajdonságait, amelyet az Azure Event Griddel Container Registry-események
+title: Azure Event Grid Container Registry eseménysémája
+description: Az Azure Event Grid tárolóbeállítási eseményeihez megadott tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,30 +9,30 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345464"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Tároló-beállításjegyzék Azure Event Grid eseménysémája
+# <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid eseménysémája a tárolóbeállítási rendszerhez
 
-Ez a cikk a séma és a Container Registry-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
+Ez a cikk a tárolóbeállítási események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-## <a name="available-event-types"></a>Rendelkezésre álló események típusai
+## <a name="available-event-types"></a>Elérhető eseménytípusok
 
-Az Azure Container Registry a következő esemény típusú bocsát ki:
+Az Azure Container Registry a következő eseménytípusokat bocsátja ki:
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Jelenik meg, ha a kép leküldésekor. |
-| Microsoft.ContainerRegistry.ImageDeleted | Következik be, amikor egy lemezkép törlődik. |
-| Microsoft.ContainerRegistry.ChartPushed | Következik be, amikor egy Helm-diagram leküldésekor. |
-| Microsoft.ContainerRegistry.ChartDeleted | Jön létre, ha törölnek egy Helm-diagramot. |
+| Microsoft.ContainerRegistry.ImagePushed | Kép leküldésekor. |
+| Microsoft.ContainerRegistry.ImageTörölve | Kép törlésekor előáll. |
+| Microsoft.ContainerRegistry.ChartPushed | A Helm-diagram megnyomásakor emelkedik. |
+| Microsoft.ContainerRegistry.ChartDeleted | Helm-diagram törlésekor előáll. |
 
 ## <a name="example-event"></a>Példa esemény
 
-Az alábbi példa bemutatja egy esemény leküldött rendszerkép sémája: 
+A következő példa egy leadott rendszersémáját mutatja be: 
 
 ```json
 [{
@@ -65,7 +65,7 @@ Az alábbi példa bemutatja egy esemény leküldött rendszerkép sémája:
 }]
 ```
 
-Egy törölt kép esemény sémája hasonlít:
+A rendszerkép törölt eseményének sémája hasonló:
 
 ```json
 [{
@@ -95,7 +95,7 @@ Egy törölt kép esemény sémája hasonlít:
 }]
 ```
 
-A séma, esemény leküldött diagram egy lemezkép-alapú leküldött esemény sémája a hasonló, de nem tartalmazza a kérés objektum:
+A séma egy diagram leküldött esemény hasonló a séma egy leküldött leküldött esemény, de nem tartalmaz kérésobjektumot:
 
 ```json
 [{
@@ -123,7 +123,7 @@ A séma, esemény leküldött diagram egy lemezkép-alapú leküldött esemény 
 }]
 ```
 
-Egy törölt diagram esemény sémája a sémában az leképezett törölt esemény hasonló, de nem tartalmazza a kérés objektum:
+A diagram törölt eseményének sémája hasonló a rendszerképekáltal törölt esemény sémájához, de nem tartalmaz kérésobjektumot:
 
 ```json
 [{
@@ -153,53 +153,53 @@ Egy törölt diagram esemény sémája a sémában az leképezett törölt esem�
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény a következő legfelső szintű adatokat tartalmaz:
+Egy esemény legfelső szintű adatokat rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | string | Az esemény egyedi azonosítója. |
-| data | object | A BLOB storage-eseményadatok. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
+| id | sztring | Az esemény egyedi azonosítója |
+| data | objektum | Blob tárolási esemény adatai. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Az objektum a következő tulajdonságokkal rendelkezik:
+Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| id | string | Az esemény azonosítója. |
-| timestamp | string | Az az időpont, amikor az esemény történt. |
-| action | string | A művelet, amely magában foglalja a megadott esemény. |
-| target | object | A cél az esemény. |
-| request | object | A kérelem, ami az esemény jön létre. |
+| id | sztring | Az eseményazonosító. |
+| időbélyeg | sztring | Az az időpont, amikor az esemény bekövetkezett. |
+| action | sztring | A megadott eseményt magában foglaló művelet. |
+| Cél | objektum | Az esemény célpontja. |
+| Kérés | objektum | Az eseményt létrehozó kérelem. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| mediaType | string | A hivatkozott objektum MIME-típusát. |
-| size | integer | A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben. |
-| digest | string | A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat. |
-| length | integer | A tartalom bájtok száma. Ugyanaz, mint mérete mező. |
-| repository | string | A tárház nevét. |
-| tag | string | A címke neve. |
-| name | string | A diagram neve. |
-| version | string | A diagram verziója. |
+| mediaType típus | sztring | A hivatkozott objektum MIME-típusa. |
+| size | egész szám | A tartalom bájtjainak száma. Megegyezik a Hossz mezővel. |
+| digest | sztring | A tartalom kivonatolása a Rendszerleíróadatbázis V2 HTTP API specifikációja szerint. |
+| hossz | egész szám | A tartalom bájtjainak száma. Megegyezik a Méret mezővel. |
+| Tárház | sztring | A tárház neve. |
+| címke | sztring | A címke neve. |
+| név | sztring | A diagram neve. |
+| version | sztring | A diagram verziója. |
 
-A kérelem objektum a következő tulajdonságokkal rendelkezik:
+A kérelemobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| id | string | Az esemény által kezdeményezett kérelem azonosítója. |
-| addr | string | Az IP vagy állomásnév, esetleg az ügyfél kapcsolata az eseményt inicializáló portjával. Ez az érték a szabványos http-kérelem a RemoteAddr. |
-| host | string | A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem http-állomásfejlécet által megadott. |
-| method | string | A kérelmi metódust, ami az esemény jön létre. |
-| useragent | string | A felhasználói ügynök fejléc a kérelem. |
+| id | sztring | Az eseményt kezdeményező kérelem azonosítója. |
+| addr | sztring | Az eseményt kezdeményező ügyfélkapcsolat IP- vagy állomásneve és esetleg portja. Ez az érték a standard http-kérelem RemoteAddr értéke. |
+| gazda | sztring | A beállításjegyzék-példány külsőleg elérhető állomásneve, ahogy azt a http állomásfejléc a bejövő kérelmeknél meghatározta. |
+| method | sztring | Az eseményt létrehozó kérelemmetódus. |
+| Useragent | sztring | A kérelem felhasználói ügynökfejléce. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
+* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.

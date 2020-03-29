@@ -1,6 +1,6 @@
 ---
-title: Fájlok feltöltése Media Services-fiókba a .NET használatával |} A Microsoft Docs
-description: Megtudhatja, hogyan médiatartalmak kerülnek a Media Services létrehozása és feltöltése az eszközök által.
+title: Fájlok feltöltése Media Services-fiókba a .NET | Microsoft dokumentumok
+description: Ismerje meg, hogyan tölthet be médiatartalmakat a Media Services szolgáltatásba eszközök létrehozásával és feltöltésével.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64869459"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. A **eszköz** entitás videókhoz, audiofájlokhoz, képeket, miniatűröket, szöveges nyomon követi és akadálymentes felirat fájlokat (és mindezen fájlok metaadatait.) tartalmazhat.  A fájlok feltöltése után a tartalom a felhőben lesz biztonságosan tárolva további feldolgozás és adatfolyam-továbbítás céljából.
+A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. Az **Eszköz** entitás tartalmazhat video-, hang-, kép-, miniatűr gyűjtemények, szöveges pályák és feliratfájlok (és a metaadatok ezekről a fájlokat.)  A fájlok feltöltése után a tartalom biztonságosan tárolódik a felhőben további feldolgozás és streamelés céljából.
 
-Az adategységben található fájlokat **adategység-fájloknak** nevezzük. A **AssetFile** -példány és a tényleges médiafájl két különböző objektumot. A AssetFile-példány a médiafájl kapcsolatos metaadatokat tartalmaz, amíg az adathordozó-fájl tartalmazza a tényleges médiatartalmakat.
+Az adategységben található fájlokat **adategység-fájloknak** nevezzük. Az **AssetFile** példány és a tényleges médiafájl két különálló objektum. Az AssetFile példány metaadatokat tartalmaz a médiafájlról, míg a médiafájl a tényleges médiatartalmat tartalmazza.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
 A következő szempontokat kell figyelembe venni:
  
- * A Media Services a IAssetFile.Name tulajdonság értékét használja, URL-címek létrehozását, a streamelési tartalom (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék-kódolás – fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
-* A név hossza nem lehet nagyobb, mint 260 karakter hosszúságú lehet.
+ * A Media Services a IAssetFile.Name tulajdonság értékét használja a streamelési tartalom URL-címeinek létrehozásakor (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Ezért a százalékos kódolás nem engedélyezett. A **Name** tulajdonság értéke nem tartalmazhatja a következő [százalékkódolást fenntartott karaktereket](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$/?%#[]". A fájlnévkiterjesztéséhez csak egy "" lehet.
+* A név hossza nem lehet hosszabb 260 karakternél.
 * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a cikkben talál.
-* A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
+* A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információt [ebben a cikkben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
 
 Eszközök létrehozásakor a következő titkosítási beállításokat adhatja meg:
 
-* **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás.
-  Ha azt tervezi, hogy egy MP4-fájlt progresszív letöltés, használja ezt a beállítást: 
-* **CommonEncryption** -használja ezt a beállítást, ha már titkosítva és általános titkosítás vagy a PlayReady DRM (például védett Smooth Streaming a PlayReady DRM technológiával) által védett tartalmat tölt fel.
-* **EnvelopeEncrypted** – használja ezt a beállítást, ha AES által titkosított HLS tölt fel. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
-* **StorageEncrypted** – a tiszta tartalom helyileg AES-256 bites titkosítást titkosítja, és ezután feltölti az Azure Storage helyén titkosítása. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
+* **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ha ezt a beállítást használja, a tartalom nem védett az átvitel vagy a tárolóban lévő nyugalmi helyen.
+  Ha progresszív letöltéssel szeretne MP4-et szállítani, használja ezt a lehetőséget: 
+* **CommonEncryption** - Akkor használja ezt a beállítást, ha olyan tartalmat tölt fel, amelymár titkosítva van és közös titkosítással vagy PlayReady DRM-mel védett (például PlayReady DRM-mel védett sima streamelés).
+* **EnvelopeEncrypted** – Akkor használja ezt a beállítást, ha az AES-sel titkosított HLS-t tölti fel. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
+* **StorageEncrypted** – Titkosítja a tiszta tartalom helyileg AES-256 bites titkosítással, majd feltölti azt az Azure Storage, ahol tárolja titkosítva. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
   
-    Media Services biztosítja az eszközöket, nem több mint átvitel közbeni digitális Manager (DRM) például a lemezes tárolás titkosítása.
+    A Media Services lemezes tárolási titkosítást biztosít az eszközök számára, nem pedig vezetéken keresztüli titkosítást, például a Digitális jogkezelő (DRM).
   
-    Ha az objektum tárolása titkosítva, konfigurálnia kell a állít be objektumtovábbítási szabályzatot. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
+    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információ: [Asset delivery policy configur.](media-services-dotnet-configure-asset-delivery-policy.md)
 
-Állít be az eszköz titkosítását a egy **CommonEncrypted** lehetőséget, vagy egy **EnvelopeEncrypted** lehetőség, hozzá kell rendelni az eszközintelligencia-egy **ContentKey**. További információkért lásd: [létrehozása egy ContentKey](media-services-dotnet-create-contentkey.md). 
+Ha azt adja meg, hogy az eszköz titkosítva legyen egy **CommonEncrypted** beállítással vagy egy **EnvelopeEncrypted** beállítással, az eszközt egy **ContentKey-hez**kell társítania. További információ: [Hogyan hozhatlétre contentkey.For](media-services-dotnet-create-contentkey.md)more information, to How to create a ContentKey . 
 
-Ha adja meg az eszköz titkosítását a egy **StorageEncrypted** beállítás, a Media Services SDK for .NET hoz létre egy **StorageEncrypted** **ContentKey** az objektum.
+Ha megadja, hogy az eszköz **titkosítása StorageEncrypted** beállítással legyen titkosítva, a Media Services SDK for .NET egy **StorageEncrypted** **ContentKey-t** hoz létre az eszközhöz.
 
-Ez a cikk bemutatja, hogyan használható a Media Services .NET SDK, valamint a Media Services .NET SDK-bővítmények a fájlok feltöltése a Media Services-eszköz.
+Ez a cikk bemutatja, hogyan használható a Media Services .NET SDK és a Media Services .NET SDK-bővítmények használata fájlok Media Services-eszközökbe való feltöltéséhez.
 
-## <a name="upload-a-single-file-with-media-services-net-sdk"></a>A Media Services .NET SDK-val egy fájl feltöltése
+## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Egyetlen fájl feltöltése a Media Services .NET SDK szolgáltatással
 
-A következő kód .NET egyetlen fájl feltöltéséhez használja. A AccessPolicy és lokátor létrehozása és megsemmisíteni a feltöltési funkció. 
+A következő kód a .NET segítségével tölt fel egyetlen fájlt. Az AccessPolicy és a Locator a Feltöltés funkcióval jön létre és semmisül meg. 
 
 ```csharp
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -85,20 +85,20 @@ A következő kód .NET egyetlen fájl feltöltéséhez használja. A AccessPoli
 ```
 
 
-## <a name="upload-multiple-files-with-media-services-net-sdk"></a>A Media Services .NET SDK-val több fájl feltöltése
-A következő kód bemutatja, hogyan hozzon létre egy objektumot, és több fájl tölthető fel.
+## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Több fájl feltöltése a Media Services .NET SDK szolgáltatással
+A következő kód bemutatja, hogyan hozhat létre egy eszközt, és töltsön fel több fájlt.
 
 A kód a következőket teszi:
 
-* Létrehoz egy üres az előző lépésben meghatározott CreateEmptyAsset mód használatával.
-* Létrehoz egy **AccessPolicy** példányt, amely meghatározza az engedélyeket és a hozzáférés időtartama az eszközre.
-* Létrehoz egy **kereső** példányt, amely hozzáférést biztosít az eszközre.
-* Létrehoz egy **BlobTransferClient** példány. Ez a típus jelképezi ügyfél, amely az Azure-blobok működik. Ebben a példában az ügyfél a feltöltési folyamat figyeli. 
-* A megadott könyvtárban található fájlok keresztül enumerálása, és létrehoz egy **AssetFile** példány minden egyes fájl.
-* Feltölti a fájlokat, a Media Services használatával a **UploadAsync** metódust. 
+* Üres eszközt hoz létre az előző lépésben definiált CreateEmptyAsset metódus használatával.
+* Létrehoz **AccessPolicy** egy AccessPolicy-példányt, amely meghatározza az eszközhöz való hozzáférés engedélyeit és időtartamát.
+* Létrehoz egy **lokátor** példányt, amely hozzáférést biztosít az eszközhöz.
+* Létrehoz egy **BlobTransferClient-példányt.** Ez a típus az Azure-blobokon működő ügyfelet jelöli. Ebben a példában az ügyfél figyeli a feltöltési folyamatot. 
+* A megadott könyvtárban lévő fájlok számbavétele, és minden fájlhoz létrehoz egy **AssetFile** példányt.
+* Feltölti a fájlokat a Media Services szolgáltatásba az **UploadAsync** metódussal. 
 
 > [!NOTE]
-> Győződjön meg arról, hogy a hívások nem korlátozzák-e, és párhuzamosan a fájlok feltöltése a UploadAsync módszert használja.
+> Az UploadAsync metódus segítségével győződjön meg arról, hogy a hívások nem blokkolódnak, és a fájlok feltöltése párhuzamosan történik.
 > 
 > 
 
@@ -161,22 +161,22 @@ A kód a következőket teszi:
 ```
 
 
-Eszközök nagy mennyiségű feltöltését, vegye figyelembe a következőket:
+Nagy számú eszköz feltöltésekénvegye figyelembe a következőket:
 
-* Hozzon létre egy új **CloudMediaContext** szálanként objektum. A **CloudMediaContext** osztály nem szálbiztos.
-* 2\. az alapértelmezett érték 5 például értéke NumberOfConcurrentTransfers növelése Ez a tulajdonság beállítása hatással van az összes példányát **CloudMediaContext**. 
-* Az alapértelmezett érték 10 ParallelTransferThreadCount megőrizni.
+* Hozzon létre egy új **CloudMediaContext** objektumot szálonként. A **CloudMediaContext** osztály nem szálbiztos.
+* Növelje a NumberOfConcurrentTransfers értékét az alapértelmezett 2 értékről egy magasabb értékre, például 5-re. A tulajdonság beállítása a **CloudMediaContext**összes példányára hatással van. 
+* A ParallelTransferThreadCount megtartása 10-es alapértelmezett értéken.
 
-## <a id="ingest_in_bulk"></a>Eszközök fürtjét egyszerre több Media Services .NET SDK használatával
-Nagy méretű adategység-fájlok feltöltése lehet szűk keresztmetszetté objektum létrehozása során. Eszközök tömeges vagy a "Tömeges fürtjét" fürtjét, elválasztás objektum létrehozása a feltöltési folyamat magában foglalja. A tömeges megközelítés fürtjét használatához hozzon létre a jegyzékfájl (IngestManifest), amely az eszköz és az ahhoz tartozó fájlokat ismerteti. A választott a feltöltési módszer használatával töltse fel a társított fájlok a jegyzékfájl blob-tárolóba. A Microsoft Azure Media Services figyeli a jegyzékfájl társított blob-tárolóban. Egy fájlt a blobtárolóba való feltöltését követően a Microsoft Azure Media Services befejezte az eszköz a jegyzékfájlban (IngestManifestAsset) konfigurációja alapján eszköz létrehozását.
+## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Eszközök tömeges betöltése a Media Services .NET SDK használatával
+Nagy eszközfájlok feltöltése szűk keresztmetszetet okozhat az eszköz létrehozása során. Eszközök ömlesztve vagy "Tömeges betöltése", magában foglalja az eszköz létrehozásának leválasztása a feltöltési folyamatról. Tömeges betöltési megközelítés használatához hozzon létre egy jegyzékfájlt (IngestManifest), amely leírja az eszközt és a hozzá tartozó fájlokat. Ezután a választott feltöltési módszerrel töltse fel a társított fájlokat a jegyzékfájl blobtárolóba. A Microsoft Azure Media Services figyeli a jegyzékfájlhoz társított blob tároló. Miután egy fájlt feltöltött a blob tárolóba, a Microsoft Azure Media Services befejezi az eszköz létrehozása alapján a konfiguráció az eszköz a jegyzékben (IngestManifestAsset).
 
-Hozzon létre egy új IngestManifest, hívja meg a Create metódus az a CloudMediaContext a IngestManifests gyűjtemény által elérhetővé tett. Ez a módszer létrehoz egy új IngestManifest az alkalmazásjegyzék-nevet.
+Új BealegkisebbManifest létrehozásához hívja meg a Create metódust, amelyet a CloudMediaContext Inasztika gyűjteménye elérhetővé tett. Ez a módszer létrehoz egy új BeestManifest a megadott jegyzékfájl nevét.
 
 ```csharp
     IIngestManifest manifest = context.IngestManifests.Create(name);
 ```
 
-A tömeges IngestManifest társított adategységek létrehozása. Az eszközök tömeges fürtjét a kívánt titkosítási beállításainak megadása
+Hozza létre a tömeges betöltési jegyzékhez társított eszközöket. Konfigurálja a kívánt titkosítási beállításokat az eszköz tömeges betöltésére.
 
 ```csharp
     // Create the assets that will be associated with this bulk ingest manifest
@@ -184,9 +184,9 @@ A tömeges IngestManifest társított adategységek létrehozása. Az eszközök
     IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 ```
 
-Egy IngestManifestAsset tömeges IngestManifest tömeges fürtjét az adategység társítja. Hozzárendeli az, hogy minden eszköz AssetFiles is. Egy IngestManifestAsset létrehozásához használja a Create metódus a kiszolgáló környezetben.
+Egy BeadtManifestAsset társít egy eszközt egy tömeges betöltési tömeges betöltése. Azt is társítja a AssetFiles, amely az egyes eszközök. IngestManifestAsset létrehozásához használja a Create metódust a kiszolgálókörnyezetben.
 
-A következő példa bemutatja, hogy hozzáadásával két új IngestManifestAssets, amely társításához a két eszközök tömeges a korábban létrehozott jegyzék betöltését. Minden egyes IngestManifestAsset hozzárendeli is az egyes eszközök feltöltött fájlokat során kötegelt feldolgozására.  
+A következő példa bemutatja két új IngestManifestAssets hozzáadása, amely a korábban létrehozott két eszközt társítja a tömeges betöltési jegyzékhez. Minden egyes BeadtManifestAsset is társít egy fájlkészletet, amely feltölti az egyes eszközök tömeges betöltése során.  
 
 ```csharp
     string filename1 = _singleInputMp4Path;
@@ -197,9 +197,9 @@ A következő példa bemutatja, hogy hozzáadásával két új IngestManifestAss
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 ```
 
-Bármely nagy sebességű ügyfélalkalmazás képes az adategység-fájlok feltöltése a blob storage-tároló által biztosított URI-t is használhatja a **IIngestManifest.BlobStorageUriForUpload** a IngestManifest tulajdonságát. 
+Bármilyen nagy sebességű ügyfélalkalmazást használhat, amely képes feltölteni az eszközfájlokat a blob storage tároló URI-ba, amelyet az **IngestManifest IIngestManifest.BlobStorageUriForUpload** tulajdonság a Bead. 
 
-A következő kód bemutatja, hogyan lehet az eszközök fájlok feltöltése a .NET SDK használatával.
+A következő kód bemutatja, hogyan lehet a .NET SDK használatával feltölteni az eszközfájlokat.
 
 ```csharp
     static void UploadBlobFile(string containerName, string filename)
@@ -226,7 +226,7 @@ A következő kód bemutatja, hogyan lehet az eszközök fájlok feltöltése a 
     }
 ```
 
-A kód a minta a cikk ezt használja az adategység-fájlok feltöltése az alábbi kód példa látható:
+A cikkben használt minta eszközfájljainak feltöltéséhez használt kód a következő kódpélda látható:
 
 ```csharp
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
@@ -234,9 +234,9 @@ A kód a minta a cikk ezt használja az adategység-fájlok feltöltése az alá
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 ```
 
-Megadhatja, hogy a kötegelt feldolgozására társított összes eszköz előrehaladását egy **IngestManifest** a statisztikák tulajdonságának lekérdezésével a **IngestManifest**. Végrehajtási adatok frissítéséhez kell használnia egy új **CloudMediaContext** minden alkalommal, amikor lekérdezi a statisztikák tulajdonság.
+Az **IngestManifest-hez** társított összes eszköz tömeges betöltésének folyamatát az **IngestManifest**Statisztikai tulajdonságának lekérdezésével határozhatja meg. A folyamatadatok frissítéséhez minden alkalommal új **CloudMediaContext környezetet** kell használnia, amikor leteszi a Statistics tulajdonságot.
 
-A következő példa bemutatja egy IngestManifest által lekérdezési annak **azonosító**.
+A következő példa bemutatja az IngestManifest lekérdezését az **azonosítója**segítségével.
 
 ```csharp
     static void MonitorBulkManifest(string manifestID)
@@ -273,8 +273,8 @@ A következő példa bemutatja egy IngestManifest által lekérdezési annak **a
 ```
 
 
-## <a name="upload-files-using-net-sdk-extensions"></a>Fájlok feltöltése a .NET SDK-bővítmények használatával
-Az alábbi példa bemutatja, hogyan töltse fel a .NET SDK-bővítmények használatával egyetlen fájlt. Ebben az esetben a **CreateFromFile** módszert használja, de a aszinkron verziója is elérhető (**CreateFromFileAsync**). A **CreateFromFile** módszer lehetővé teszi, hogy Ön adja meg a fájl nevét, a titkosítási beállítás és a egy visszahívást az annak érdekében, hogy a fájl feltöltési folyamatáról.
+## <a name="upload-files-using-net-sdk-extensions"></a>Fájlok feltöltése .NET SDK-bővítmények használatával
+A következő példa bemutatja, hogyan tölthet fel egyetlen fájlt a .NET SDK-bővítmények használatával. Ebben az esetben a **CreateFromFile** metódust használja a rendszer, de az aszinkron verzió is elérhető (**CreateFromFileAsync**). A **CreateFromFile** metódus lehetővé teszi a fájlnév, a titkosítási beállítás és a visszahívás megadását a fájl feltöltési folyamatának jelentéséhez.
 
 ```csharp
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
@@ -293,7 +293,7 @@ Az alábbi példa bemutatja, hogyan töltse fel a .NET SDK-bővítmények haszn�
     }
 ```
 
-Az alábbi példa UploadFile függvényt hívja, és a tárolás titkosítása az eszköz beállítás határozza meg.  
+A következő példa meghívja az UploadFile függvényt, és a tárolótitkosítást adja meg eszközlétrehozási lehetőségként.  
 
 ```csharp
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
@@ -305,14 +305,14 @@ Most már kódolhatja a feltöltött adategységeket. További információ: [En
 
 Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a konfigurált tárolóba érkező fájlok alapján. További információkért tekintse meg [ezt a mintát](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Következő lépés
-Most, hogy a Media Services-feltöltött adategység, nyissa meg a [beszerzése egy Médiaprocesszorral] [ How to Get a Media Processor] cikk.
+Most, hogy feltöltött egy eszközt a Media Services szolgáltatásba, folytassa a [Hogyan kaphat médiaprocesszort][How to Get a Media Processor] cikket.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
 

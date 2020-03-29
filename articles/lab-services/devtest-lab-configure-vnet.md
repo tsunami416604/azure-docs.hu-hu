@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózat konfigurálása Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhat egy meglévő virtuális hálózatot és alhálózatot, és hogyan használhatja azokat egy virtuális gépen Azure DevTest Labs
+title: Virtuális hálózat konfigurálása az Azure DevTest Labs ben | Microsoft dokumentumok
+description: Ismerje meg, hogyan konfigurálhat egy meglévő virtuális hálózatot és alhálózatot, és hogyan használhatja őket virtuális gépben az Azure DevTest Labs alkalmazással
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390033"
 ---
-# <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása Azure DevTest Labsban
-Ahogy azt a cikk azt ismerteti, hogyan adhat hozzá egy virtuális gépet a [laborhoz](devtest-lab-add-vm.md), amikor a virtuális gépet egy laborban hozza létre, megadhat egy konfigurált virtuális hálózatot. Előfordulhat például, hogy el kell érnie a Corpnet-erőforrásait a virtuális gépekről a ExpressRoute vagy helyek közötti VPN-kapcsolattal konfigurált virtuális hálózat használatával.
+# <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása az Azure DevTest Labs ben
+Acikk ben kifejtése virtuális [gép hozzáadása egy laborban,](devtest-lab-add-vm.md)amikor létrehoz egy virtuális gépet egy tesztkörnyezetben, megadhatja a konfigurált virtuális hálózat. Előfordulhat például, hogy a virtuális gépekről kell elérnie a testhálózati erőforrásokat az ExpressRoute-tal vagy a helyek közötti VPN-nel konfigurált virtuális hálózat használatával.
 
-Ez a cikk azt ismerteti, hogyan adható hozzá meglévő virtuális hálózata egy Lab Virtual Network-beállításokhoz, hogy elérhető legyen a virtuális gépek létrehozásakor.
+Ez a cikk bemutatja, hogyan adhat hozzá a meglévő virtuális hálózat ot a tesztkörnyezet virtuális hálózati beállításaihoz, hogy a virtuális gépek létrehozásakor választható legyen.
 
 > [!NOTE]
-> Az Azure Virtual Network szolgáltatással kapcsolatos költségek megismeréséhez tekintse meg az [azure Virtual Network díjszabását](../virtual-network/virtual-networks-overview.md#pricing).
+> Az Azure Virtuális hálózat szolgáltatással kapcsolatos költségekről az [Azure Virtuális hálózat díjszabása](../virtual-network/virtual-networks-overview.md#pricing)című témakörben olvashat.
 
-## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Virtuális hálózat konfigurálása laborhoz a Azure Portal használatával
-A következő lépések végigvezetik a meglévő virtuális hálózatok (és alhálózatok) egy laborhoz való hozzáadásának lépésein, így a virtuális gép ugyanabban a laborban való létrehozásakor használható. 
+## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Virtuális hálózat konfigurálása egy tesztkörnyezethez az Azure Portal használatával
+A következő lépések végigvezeti kontinami útján egy meglévő virtuális hálózat (és alhálózat) hozzáadása egy labor, hogy használható, amikor egy virtuális gép ugyanabban a tesztkörnyezetben. 
 
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+1. Válassza az **Összes szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
 1. A laborok listájából válassza ki a kívánt labort. 
-1. A labor fő ablaktábláján válassza a **konfiguráció és szabályzatok**lehetőséget.
+1. A tesztkörnyezet fő ablaktábláján válassza a **Konfiguráció és házirendek**lehetőséget.
 
-    ![A labor konfigurációjának és házirendjeinek elérése](./media/devtest-lab-configure-vnet/policies-menu.png)
-1. A **külső erőforrások** szakaszban válassza a **virtuális hálózatok**elemet. Megjelenik az aktuális laborhoz konfigurált virtuális hálózatok listája, valamint a laborhoz létrehozott alapértelmezett virtuális hálózat. 
+    ![A tesztkörnyezet konfigurációjának és házirendjeinek elérése](./media/devtest-lab-configure-vnet/policies-menu.png)
+1. A **KÜLSŐ ERŐFORRÁSOK** CSOPORTban válassza a **Virtuális hálózatok**lehetőséget. Megjelenik az aktuális tesztkörnyezethez konfigurált virtuális hálózatok listája, valamint a tesztkörnyezethez létrehozott alapértelmezett virtuális hálózat. 
 1. Válassza a **+ Hozzáadás** lehetőséget.
    
     ![Meglévő virtuális hálózat hozzáadása a laborhoz](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-1. A **virtuális hálózat** ablaktáblán válassza a **[virtuális hálózat kiválasztása]** lehetőséget.
+1. A **Virtuális hálózat** ablaktáblán válassza a **[Virtuális hálózat kiválasztása]** lehetőséget.
    
     ![Meglévő virtuális hálózat kiválasztása](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-1. A **virtuális hálózat kiválasztása** panelen válassza ki a kívánt virtuális hálózatot. Megjelenik egy lista, amely az előfizetésben a laborban azonos régióban található összes virtuális hálózatot megjeleníti.
-1. A virtuális hálózat kiválasztása után a rendszer visszaadja a **virtuális hálózat** panelt. Válassza ki az alhálózatot a lenti listában.
+1. A **Válassza ki** a virtuális hálózat ablaktábláját, jelölje ki a kívánt virtuális hálózatot. Megjelenik egy lista, amely az összes olyan virtuális hálózatot megjeleníti, amely az előfizetésben ugyanabban a régióban van, mint a tesztkörnyezetben.
+1. A virtuális hálózat kiválasztása után a rendszer visszakerül a **virtuális hálózat** ablaktáblájára. Jelölje ki az alhálózatot az alsó listában.
 
     ![Alhálózati lista](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
-    Megjelenik a tesztkörnyezet alhálózata ablaktábla.
+    Megjelenik a Lab alhálózat ablaktábla.
 
-    ![Lab alhálózat panel](./media/devtest-lab-configure-vnet/lab-subnet.png)
+    ![Labor alhálózat ablaktábla](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
-   - Adja meg a **labor alhálózat nevét**.
-   - Ha engedélyezni szeretné az alhálózat használatát a labor virtuális gépek létrehozásában, válassza **a használat a virtuális gép létrehozásakor**lehetőséget.
-   - [Megosztott nyilvános IP-cím](devtest-lab-shared-ip.md)engedélyezéséhez válassza a **megosztott nyilvános IP-címek engedélyezése**lehetőséget.
-   - Ha engedélyezni szeretné a nyilvános IP-címeket egy alhálózatban, válassza a **nyilvános IP-címek létrehozásának engedélyezése**lehetőséget.
-   - A **virtuális gépek maximális száma** felhasználónként mezőben határozza meg az egyes alhálózatok felhasználónként maximális számát. Ha nem korlátozott számú virtuális gépet szeretne használni, hagyja üresen ezt a mezőt.
-1. Kattintson az **OK** gombra a labor alhálózat panel bezárásához.
-1. A virtuális hálózat ablaktábla bezárásához válassza a **Mentés** lehetőséget.
+   - Adja meg **a Lab alhálózat nevét.**
+   - Ha engedélyezni szeretné egy alhálózat használatát a tesztkörnyezet virtuális gépének létrehozásában, jelölje be **a Használat a virtuális gép létrehozásához**lehetőséget.
+   - A [megosztott nyilvános IP-cím](devtest-lab-shared-ip.md)engedélyezéséhez jelölje be **A megosztott nyilvános IP engedélyezése**lehetőséget.
+   - Ha engedélyezni szeretné a nyilvános IP-címeket egy alhálózatban, jelölje be **a Nyilvános IP-létrehozás engedélyezése**jelölőnégyzetet.
+   - A **Felhasználónkénti virtuális gépek maximális** száma mezőben adja meg az egyes alhálózatok felhasználónkénti maximális virtuális gépeit. Ha korlátlan számú virtuális gépet szeretne, hagyja üresen ezt a mezőt.
+1. A Lab Subnet ablaktábla bezárásához válassza az **OK gombot.**
+1. A Virtuális hálózat ablaktábla bezárásához válassza a **Mentés** lehetőséget.
 
-Most, hogy a virtuális hálózat be van állítva, akkor kiválasztható virtuális gép létrehozásakor. Ha szeretné megtekinteni, hogyan hozható létre virtuális gép, és hogyan adhat meg virtuális hálózatot, tekintse meg a cikket, [adjon hozzá egy virtuális gépet egy laborhoz](devtest-lab-add-vm.md). 
+Most, hogy a virtuális hálózat konfigurálva van, ki lehet választani, amikor virtuális gépet hoz létre. A virtuális gép létrehozásáról és a virtuális hálózat megadásáról a [Virtuális gép hozzáadása laborhoz](devtest-lab-add-vm.md)című cikkben olvashat. 
 
-Az Azure [Virtual Network dokumentációja](https://docs.microsoft.com/azure/virtual-network) további információkat nyújt a virtuális hálózatok használatáról, beleértve a VNet beállítását és kezelését, valamint a helyszíni hálózathoz való kapcsolódást.
+Az Azure [virtuális hálózati dokumentációja](https://docs.microsoft.com/azure/virtual-network) további információt nyújt a virtuális hálózatok használatáról, beleértve a virtuális hálózatok beállítását és kezelését, valamint a helyszíni hálózathoz való csatlakoztatását.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>További lépések
-Miután hozzáadta a kívánt virtuális hálózatot a laborhoz, a következő lépés [egy virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md).
+Miután hozzáadta a kívánt virtuális hálózatot a laborhoz, a következő lépés [egy virtuális gép hozzáadása a laborhoz.](devtest-lab-add-vm.md)
 

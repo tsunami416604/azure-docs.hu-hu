@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple virtuális tömb frissítés 1.2 kibocsátási megjegyzései |} A Microsoft Docs
-description: Az 1.2-es frissítést futtató StorSimple Virtual Array kritikus megoldatlan problémák és megoldásuk ismertetése
+title: Microsoft Azure StorSimple Virtual Array Update 1.2 kiadási megjegyzések| Microsoft dokumentumok
+description: Az 1.2-es frissítést futtató StorSimple virtuális tömb kritikus nyitott problémáit és megoldásait ismerteti.
 services: storsimple
 author: alkohli
 ms.service: storsimple
@@ -8,65 +8,65 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66420603"
 ---
-# <a name="storsimple-virtual-array-update-12-release-notes"></a>A StorSimple Virtual Array frissítés 1.2-es kibocsátási megjegyzései
+# <a name="storsimple-virtual-array-update-12-release-notes"></a>StorSimple Virtual Array Update 1.2 kiadási megjegyzések
 
-A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problémák és a Microsoft Azure StorSimple Virtual Array frissítések megoldott problémák azonosításához.
+A következő kiadási megjegyzések azonosítják a kritikus nyitott problémákat és a Microsoft Azure StorSimple virtual array frissítések megoldott problémáit.
 
-A kibocsátási megjegyzésekben folyamatosan frissülnek. Ahogy ismertté kritikus fontosságú problémáit, a rendszer hozzáadja azokat. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
+A kibocsátási megjegyzések folyamatosan frissülnek. Ahogy ismertté válnak a megoldást igénylő kritikus fontosságú problémák, hozzáadjuk őket a dokumentumhoz. A StorSimple virtuális tömb telepítése előtt alaposan tekintse át a kiadási megjegyzésekben található információkat.
 
-1\.2-es frissítés felel meg a szoftververzió **10.0.10311.0**.
+Az 1.2-es frissítés a **10.0.10311.0**szoftververziónak felel meg.
 
 > [!IMPORTANT]
-> - Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást. A csomagokat, használja a frissítés részletes utasításokért ugorjon [frissítése 1.2 letöltése](#download-update-12).
-> - 1\.2-es frissítés érhető el, hogy az Azure Portalon csak akkor, ha az eszköz fut-e frissítés 1.0 és 1.1.
+> - A frissítések zavaróak, és újraindítják az eszközt. Ha az I/O folyamatban van, az eszköz állásidőt ad. A frissítés telepítéséhez használt csomagokra vonatkozó részletes utasításokért látogasson el az [1.2-es frissítés letöltése című fájlba.](#download-update-12)
+> - Az 1.2-es frissítés csak akkor érhető el az Azure Portalon keresztül, ha az eszközén az 1.0-s vagy 1.1-es frissítés fut.
 
-## <a name="whats-new-in-update-12"></a>1\.2-es frissítés újdonságai
+## <a name="whats-new-in-update-12"></a>Az 1.2-es frissítés újdonságai
 
-Ez a frissítés a következő hibajavításokat tartalmaz:
+A frissítés a következő hibajavításokat tartalmazza:
 
-- Jobb rugalmasság feldolgozásakor törölt fájlok.
-- A kód indítási vezető elérési út jobb kezelése kivételek csökkenteni a hibák a biztonsági mentés, visszaállítás, felhőalapú olvasási műveleteknél, és a terület-visszaigénylést automatikus.
+- Továbbfejlesztett rugalmasság a törölt fájlok feldolgozásakor.
+- Továbbfejlesztett kezelési kivételek a kód indítási útvonalában, ami a biztonsági mentések, a visszaállítás, a felhőolvasások és az automatikus térvisszanyerés csökkentett hibáihoz vezet.
 
-## <a name="download-update-12"></a>Töltse le az 1.2-es frissítés
+## <a name="download-update-12"></a>1.2-es frissítés letöltése
 
-Ez a frissítés letöltéséhez nyissa meg a [a Microsoft Update katalógus](https://www.catalog.update.microsoft.com/Home.aspx) server és a KB4502035 letöltési csomagra. Ez a csomag tartalmazza a következő csomagokat:
+A frissítés letöltéséhez nyissa meg a [Microsoft Update katalóguskiszolgálót,](https://www.catalog.update.microsoft.com/Home.aspx) és töltse le a KB4502035 kb4502035 kb. Ez a csomag a következő csomagokat tartalmazza:
 
- - **KB4493446** összegző Windows-frissítések, amely tartalmazza a 2012 R2 legfeljebb április 2019. Mit tartalmaz az összegző további információért látogasson el [április havi a biztonság összegzése](https://support.microsoft.com/help/4493446/windows-8-1-update-kb4493446).
- - **KB3011067** Ez az a Microsoft Update önálló csomagfájl WindowsTH-KB3011067-x64. Ez a fájl frissítése az eszközhöz használatos.
+ - **KB4493446,** amely 2019 áprilisáig tartalmazza a 2012 R2 összesítő Windows-frissítéseit. Ha többet szeretne tudni arról, hogy mi szerepel ebben az összesítésben, látogasson el az [áprilisi havi biztonsági összesítésre.](https://support.microsoft.com/help/4493446/windows-8-1-update-kb4493446)
+ - **KB3011067,** amely a Microsoft Update önálló csomagfájlJa: WindowsTH-KB3011067-x64. Ez a fájl az eszköz szoftverének frissítésére szolgál.
 
-Töltse le a KB4502035, és ezeket az utasításokat követve [frissítést a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
+Töltse le a KB4502035-öt, és kövesse az alábbi utasításokat [A frissítés alkalmazása a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui)keresztül .
 
-## <a name="issues-fixed-in-update-12"></a>Az 1.2-es frissítés megoldott problémák
+## <a name="issues-fixed-in-update-12"></a>Az 1.2-es frissítésben javított problémák
 
-Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
+Az alábbi táblázat az ebben a kiadásban javított problémákat tartalmazza.
 
-| Nem. | Funkció | Probléma |
+| Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
-| 1 |Törlés| A szoftver korábbi verzióiban hiba történt, amikor az eszköz használatát módosította, akkor is, ha fájlt törölt. Ebben a verzióban a probléma megoldódik. Rétegezési kódelérési út rugalmasabb történt, a törölt fájlok feldolgozása során.|
-| 2 |Kivételkezelés| A szoftver korábbi verzióiban hiba történt a következő, a rendszer újraindítása, amely a biztonsági mentés, visszaállítás, a felhőbe való olvasás sikertelen eredményezhet, és automatikus beállításainak terület-visszanyerést. Ebben a kiadásban feltárhatja, hogy hogyan kezelt kivételek az indítási elérési út módosításokat tartalmaz.|
+| 1 |Törlés| A szoftver korábbi verzióiban volt egy probléma, amikor az eszköz használata nem változott még akkor sem, amikor a fájlokat törölték. Ez a probléma ebben a verzióban lett kijavítva. A rétegezési kód elérési útja a törölt fájlok feldolgozásakor rugalmasabbá vált.|
+| 2 |Kivételkezelés| A szoftver korábbi verzióiban a rendszer újraindítását követően olyan hiba történt a biztonsági mentések, a visszaállítás, a felhőből történő olvasás és az automatikus térvisszanyerés során. Ez a kiadás az indítási útvonalon a kivételek kezelésének módját illetően tartalmaz módosításokat.|
 
-## <a name="known-issues-in-update-12"></a>Ismert problémák az 1.2-es frissítés
+## <a name="known-issues-in-update-12"></a>Ismert problémák az 1.2-es frissítésben
 
-Nincsenek új problémák nem 1.2-es frissítés a kiadási feljegyzett. A kiadási feljegyzett hibákat a korábbi kiadások átkerülnek. Tekintse meg az előző kiadásokban található ismert problémák összefoglalása, lépjen a [ismert hibái, 1.1-es frissítés](storsimple-virtual-array-update-11-release-notes.md#known-issues-in-update-11).
+Az 1.2-es frissítésben nem észleltek új problémákat. Az összes kiadás által észlelt probléma átkerül a korábbi kiadásokból. Az előző kiadásokban szereplő ismert problémák összegzését az [1.1-es frissítés Ismert problémái című témakörben található.](storsimple-virtual-array-update-11-release-notes.md#known-issues-in-update-11)
 
 ## <a name="next-steps"></a>További lépések
 
-Töltse le a KB4502035 és [frissítést a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
+Töltse le a KB4502035 frissítést, és [alkalmazza a frissítést a helyi internetes felhasználói felületen](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui)keresztül.
 
 ## <a name="references"></a>Referencia
 
-Egy régebbi kiadási Megjegyzés keres? Ugrás:
-* [A StorSimple Virtual Array frissítés 1.1 kibocsátási megjegyzései](storsimple-virtual-array-update-11-release-notes.md)
-* [A StorSimple Virtual Array frissítés 1.0-ás kibocsátási megjegyzései](storsimple-virtual-array-update-1-release-notes.md)
-* [A StorSimple Virtual Array frissítés a 0.6-os kibocsátási megjegyzései](storsimple-virtual-array-update-06-release-notes.md)
-* [A StorSimple Virtual Array frissítés 0,5 kibocsátási megjegyzései](storsimple-virtual-array-update-05-release-notes.md)
-* [A StorSimple Virtual Array frissítés 0,4 kibocsátási megjegyzései](storsimple-virtual-array-update-04-release-notes.md)
-* [A StorSimple Virtual Array frissítés 0,3 kibocsátási megjegyzései](storsimple-ova-update-03-release-notes.md)
-* [A StorSimple Virtual Array frissítés 0.1, 0.2-es és kibocsátási megjegyzések](storsimple-ova-update-01-release-notes.md)
-* [A StorSimple Virtual Array általános rendelkezésre állási kibocsátási megjegyzései](storsimple-ova-pp-release-notes.md)
+Régebbi kiadási megjegyzést keres? Ugrás:
+* [StorSimple Virtual Array Update 1.1 Release Notes](storsimple-virtual-array-update-11-release-notes.md)
+* [StorSimple virtual array update 1.0 kibocsátási megjegyzések](storsimple-virtual-array-update-1-release-notes.md)
+* [StorSimple virtuális tömb frissítése 0,6 Kibocsátási megjegyzések](storsimple-virtual-array-update-06-release-notes.md)
+* [StorSimple virtuális tömb frissítése 0,5 kibocsátási megjegyzések](storsimple-virtual-array-update-05-release-notes.md)
+* [StorSimple virtuális tömb frissítése 0.4 Kibocsátási megjegyzések](storsimple-virtual-array-update-04-release-notes.md)
+* [StorSimple virtuális tömb frissítése 0.3 Kibocsátási megjegyzések](storsimple-ova-update-03-release-notes.md)
+* [StorSimple virtuális tömb frissítése 0.1 és 0.2 Kibocsátási megjegyzések](storsimple-ova-update-01-release-notes.md)
+* [StorSimple virtuális tömb általános rendelkezésre állási kibocsátási megjegyzések](storsimple-ova-pp-release-notes.md)

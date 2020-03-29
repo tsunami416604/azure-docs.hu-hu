@@ -1,6 +1,6 @@
 ---
-title: Betöltés az Azure Storage-környezetbe – csoportos adatelemzési folyamat
-description: Megtudhatja, hogyan lehet az adatgyűjtést különböző célpont-környezetekben tárolni és feldolgozni.
+title: Adatok betöltése az Azure Storage-környezetekbe – Csapatadat-elemzési folyamat
+description: Ismerje meg, hogyan lehet adatokat bedolgozni különböző célkörnyezetekbe, ahol az adatok tárolása és feldolgozása történik.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720537"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Adatok betöltése a tárolási környezetekbe elemzés céljából
 
-A csoportos adatelemzési folyamat megköveteli, hogy az egyes fázisokban az adatmennyiséget a legmegfelelőbb módon kell betölteni vagy betölteni. Az adatcélhelyek közé tartozhatnak az Azure Blob Storage, a SQL Azure SQL Server-adatbázisok, az Azure-beli virtuális gépek, a HDInsight (Hadoop), a szinapszis-elemzések és a Azure Machine Learning. 
+A csapat adatelemzési folyamat megköveteli, hogy az adatok at kell betölteni, vagy betölteni a legmegfelelőbb módon minden szakaszában. Az adatcélok közé tartozhatnak az Azure Blob Storage, az SQL Azure-adatbázisok, az Azure VM-en futó SQL Server, a HDInsight (Hadoop), a Synapse Analytics és az Azure Machine Learning. 
 
-A következő cikkek betölteni az adatokat különböző célkörnyezetekben, ahol az adatok tárolása és feldolgozása az ismertetik.
+Az alábbi cikkek ismertetik, hogyan lehet adatokat bedolgozni különböző célkörnyezetekbe, ahol az adatok tárolása és feldolgozása.
 
-* [Azure-Blob Storage](move-azure-blob.md)
-* SQL Server az Azure-beli [virtuális gépen](move-sql-server-virtual-machine.md)
-* [Azure SQL Database](move-sql-azure.md)
-* A [struktúra tábláiba](move-hive-tables.md)
-* [SQL-particionálású táblákhoz](parallel-load-sql-partitioned-tables.md)
-* Helyszíni [SQL Server](move-sql-azure-adf.md)
+* Az [Azure Blob Storage-ba/onnan](move-azure-blob.md)
+* Sql [Server az Azure VM-en](move-sql-server-virtual-machine.md)
+* Az [Azure SQL-adatbázisba](move-sql-azure.md)
+* [Hive-táblákhoz](move-hive-tables.md)
+* [SQL particionált táblákhoz](parallel-load-sql-partitioned-tables.md)
+* Helyszíni [SQL Server kiszolgálóról](move-sql-azure-adf.md)
 
-A technikai és üzleti igények, valamint az adatmennyiség kezdeti helye, formátuma és mérete határozza meg a legjobb adatfeldolgozási tervet. Nem ritka, hogy a legjobb terv több lépésből áll. Ezen feladatok sorozatát lehetnek például adatfeltárás, az előfeldolgozásához, a tisztítás, a le-mintavételi és a modell betanítása.  Azure Data Factory egy ajánlott Azure-erőforrás az adatáthelyezés és-átalakítás előkészítéséhez.
+A műszaki és üzleti igények, valamint az adatok kezdeti helye, formátuma és mérete határozza meg a legjobb adatbetöltési tervet. Nem ritka, hogy a legjobb terv, hogy több lépést. Ez a feladatsorozat magában foglalhatja például az adatok feltárását, az előfeldolgozást, a tisztítást, a lemintavételezést és a modellbetanítást.  Az Azure Data Factory egy ajánlott Azure-erőforrás az adatok mozgatásának és átalakításának vezénylésére.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight-alkalmazások közzététele
-description: Ismerje meg, hogyan hozhat létre egy HDInsight-alkalmazás, és közzé kell tennie az Azure piactéren.
+title: Azure HDInsight-alkalmazások közzététele
+description: Ismerje meg, hogyan hozhat létre egy HDInsight-alkalmazást, majd teheti közzé az Azure Piactéren.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64685321"
 ---
-# <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
-Egy Azure HDInsight alkalmazást is telepítheti egy Linux-alapú HDInsight-fürtön. Ebből a cikkből megtudhatja, hogyan HDInsight alkalmazás közzététele az Azure piactéren. Az Azure Marketplace közzétételi kapcsolatos általános információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md).
+# <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazás közzététele az Azure Piactéren
+Telepíthet egy Azure HDInsight-alkalmazást egy Linux-alapú HDInsight-fürtre. Ebből a cikkből megtudhatja, hogyan tehet közzé egy HDInsight-alkalmazást az Azure Piactéren. Az Azure Marketplace-en való közzétételről az [Ajánlat közzététele az Azure Piactéren](../marketplace/marketplace-publishers-guide.md)című témakörben talál általános tudnivalókat.
 
-HDInsight-alkalmazások használata a *Bring Your saját licences (BYOL)* modell. A BYOL forgatókönyvekben egy alkalmazás szolgáltatója felelős az alkalmazást. alkalmazás felhasználóinak. Alkalmazás felhasználóinak csak azok létrehozni, például a HDInsight-fürt és a fürt virtuális gépek vagy csomópontok az Azure-erőforrások díjkötelesek. Jelenleg maga az alkalmazás használati díjának felszámolása nem következik be, az Azure-ban.
+A HDInsight-alkalmazások a *Bring Your Own License (BYOL) modellt* használják. BYOL-forgatókönyv esetén az alkalmazásszolgáltató felelős az alkalmazás felhasználói számára történő licencelésért. Az alkalmazásfelhasználóknak csak az általuk létrehozott Azure-erőforrásokért kell fizetniük, például a HDInsight-fürtért, valamint a fürt virtuális gépeiért és csomópontjaiért. Jelenleg maga az alkalmazás számlázása nem fordul elő az Azure-ban.
 
-További információkért tekintse meg a HDInsight-alkalmazásokhoz kapcsolódó cikkek:
+További információt a HDInsight alkalmazásokkal kapcsolatos alábbi cikkeiben talál:
 
-* [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md). Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtökön.
+* [HdInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md). Ismerje meg, hogyan telepíthet HDInsight-alkalmazásokat a fürtökre.
 * [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md). Ismerje meg, hogyan telepítheti és tesztelheti az egyéni HDInsight-alkalmazásokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Marketplace-en, először is egyéni jelentkezése elküldésekor [létrehozása és az egyéni alkalmazás teszteléséhez](hdinsight-apps-install-custom-applications.md).
+Az egyéni alkalmazás Marketplace-en való elküldéséhez először [hozza létre és tesztelje az egyéni alkalmazást.](hdinsight-apps-install-custom-applications.md)
 
-A fejlesztői fiókkal is kell regisztrálni. További információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md) és [hozzon létre egy Microsoft Developer-fiókot](../marketplace/marketplace-publishers-guide.md).
+A fejlesztői fiókot is regisztrálnia kell. További információt az [Ajánlat közzététele az Azure Piactéren](../marketplace/marketplace-publishers-guide.md) és a Microsoft [Developer-fiók létrehozása](../marketplace/marketplace-publishers-guide.md)című témakörben talál.
 
 ## <a name="define-the-application"></a>Az alkalmazás meghatározása
-Két lépést is igényel, az alkalmazás-közzététel a piactéren. Először határozzon meg egy *createUiDef.json* fájlt. A createUiDef.json mintafájl látható azt jelzi, mely a fürtök az alkalmazás kompatibilis. Majd tegye közzé a sablont az Azure Portalról. Íme egy createUiDef.json mintafájl látható:
+Két lépésben vesznek részt az alkalmazások közzétételében a Marketplace-en. Először definiáljon egy *createUiDef.json* fájlt. A createUiDef.json fájl jelzi, hogy az alkalmazás mely fürtökkel kompatibilis. Ezután tegye közzé a sablont az Azure Portalon. Íme egy példa createUiDef.json fájl:
 
 ```json
 {
@@ -46,60 +46,60 @@ Két lépést is igényel, az alkalmazás-közzététel a piactéren. Először 
 
 | Mező | Leírás | Lehetséges értékek |
 | --- | --- | --- |
-| types |Azok a fürttípusok, amelyekkel az alkalmazás kompatibilis. |Hadoop, HBase, Storm, Spark (vagy ezek kombinációi) |
+| types |Azok a fürttípusok, amelyekkel az alkalmazás kompatibilis. |Hadoop, HBase, Storm, Spark (vagy ezek bármilyen kombinációja) |
 | versions |Azok a HDInsight-fürttípusok, amelyekkel az alkalmazás kompatibilis. |3.4 |
 
-## <a name="application-installation-script"></a>Alkalmazás telepítési parancsfájlt
-Ha az alkalmazás telepítve van egy fürtön (vagy egy meglévő fürthöz, vagy egy új), egy élcsomópontot jön létre. Az alkalmazás telepítési parancsfájlt futtat az élcsomóponthoz.
+## <a name="application-installation-script"></a>Alkalmazástelepítési parancsfájl
+Ha egy alkalmazás telepítve van egy fürtre (vagy egy meglévő fürtre, vagy egy újra), egy peremcsomópont jön létre. Az alkalmazástelepítési parancsfájl a peremhálózati csomóponton fut.
 
   > [!IMPORTANT]  
-  > Az alkalmazás telepítési parancsfájl neve az adott fürt egyedinek kell lennie. A szkript neve a következő formátumban kell rendelkeznie:
+  > Az alkalmazástelepítési parancsfájl nevének egyedinek kell lennie egy adott fürthöz. A parancsfájl nevének a következő formátumúnak kell lennie:
   > 
-  > "name": "[concat (" hue-install-v0 ','-', uniquestring('applicationName')] "
+  > "name": "[concat('hue-install-v0','-' ,uniquestring('applicationName')]"
   > 
-  > A parancsfájl nevét három részből áll:
+  > A parancsfájl neve három részből áll:
   > 
-  > * A parancsfájl nevének előtagja, amelynek tartalmaznia kell az alkalmazás nevét és a egy, az alkalmazáshoz kapcsolódó nevet.
-  > * Egy kötőjel az olvashatóság érdekében.
-  > * Egy egyedi karakterláncfüggvény, paramétere az alkalmazás nevével együtt.
+  > * Parancsfájlnév-előtag, amelynek tartalmaznia kell az alkalmazás nevét vagy az alkalmazásra vonatkozó nevet.
+  > * Kötőjel, az olvashatóság érdekében.
+  > * Egy egyedi karakterlánc-függvény, amelynek az alkalmazás neve a paraméter.
   > 
-  > A megőrzött Parancsfájlműveletek listáján, az az előző példában látható **hue-install-v0-4wkahss55hlas**. Tekintse meg a [JSON hasznosadat-minta](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+  > A megőrzött parancsfájl-műveletlistában az előző példa **színárnyalat-install-v0-4wkahss55hlas**néven jelenik meg. Lásd [a minta JSON hasznos teher](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
   > 
 
-A telepítési parancsfájl a következő jellemzőkkel kell rendelkeznie:
-* A szkript idempotens. A parancsfájl több alkalommal hívnia elő ugyanazt az eredményt.
-* A parancsfájl verziószámmal. Ha frissíti vagy módosítások teszteléshez használható a parancsfájl egy másik helyet. Ez biztosítja, hogy azokat a felhasználókat, akik az alkalmazást telepíti, nem a frissítések által érintett vagy tesztelési. 
-* A szkript rendelkezik a megfelelő naplózási minden pontján. Parancsfájl-naplók általában csak úgy alkalmazás telepítési kapcsolatos problémák megoldásában.
-* A külső szolgáltatásokhoz és erőforrásokhoz hívásaihoz megfelelő próbálkozások, hogy a telepítés nem átmeneti hálózati hibák által érintett.
-* A szkript elindítja a szolgáltatásokat a csomópontokon, ha szolgáltatások figyeli, és úgy konfigurálva, hogy automatikusan elindul, ha egy csomópont-újraindítás történik.
+A telepítési parancsfájlnak a következő jellemzőkkel kell rendelkeznie:
+* A forgatókönyv idempotent. A parancsfájl több hívása ugyanazt az eredményt eredményezi.
+* A parancsfájl megfelelőverzióval van elferdítve. A módosítások frissítésekor vagy tesztelésekor használjon másik helyet a parancsfájlhoz. Ez biztosítja, hogy az alkalmazást telepítő ügyfeleket ne érintsék a frissítések vagy a tesztelés. 
+* A parancsfájl minden ponton megfelelő naplózással rendelkezik. Általában a parancsfájlnaplók az egyetlen módja annak, hogy hibakeresési alkalmazás telepítési problémákat.
+* A külső szolgáltatások vagy erőforrások hívásai megfelelő újrapróbálkozásokkal rendelkeznek, így a telepítést nem érintik az átmeneti hálózati problémák.
+* Ha a parancsfájl elindítja a csomópontokon lévő szolgáltatásokat, a rendszer figyeli és konfigurálja, hogy automatikusan elinduljanak, ha egy csomópont újraindul.
 
-## <a name="package-the-application"></a>Az alkalmazás becsomagolása
-Hozzon létre egy .zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepítéséhez szükséges összes fájlt. Az alkalmazás közzétételéhez használhatja a .zip-fájlt. A zip-fájlt a következő fájlokat tartalmazza:
+## <a name="package-the-application"></a>Csomagolja be az alkalmazást
+Hozzon létre egy .zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepítéséhez szükséges összes fájlt. A .zip fájl segítségével teheti közzé az alkalmazást. A .zip fájl a következő fájlokat tartalmazza:
 
 * createUiDefinition.json
-* mainTemplate.json (egy minta: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).)
-* Az összes szükséges szkriptek
+* mainTemplate.json (Minta: [Egyéni HDInsight-alkalmazások telepítése.)](hdinsight-apps-install-custom-applications.md)
+* Minden szükséges parancsfájl
 
 > [!NOTE]  
-> Az alkalmazás fájljai (beleértve a webes alkalmazás fájlok) bármilyen nyilvánosan elérhető végponton is üzemeltethet.
+> Az alkalmazásfájlokat (beleértve a webalkalmazás-fájlokat is) bármely nyilvánosan elérhető végponton üzemeltetheti.
 
 ## <a name="publish-the-application"></a>Az alkalmazás közzététele
-Egy HDInsight-alkalmazás közzététele:
+HDInsight-alkalmazás közzététele:
 
-1. Jelentkezzen be a [Azure-beli közzétételt](https://publish.windowsazure.com/).
-2. A bal oldali menüben válassza ki a **megoldássablonok**.
-3. Adjon meg egy címet, és válassza ki **új megoldássablon létrehozásához**.
-4. Ha már a szervezete még nem regisztrált, válassza ki a **létrehozása fejlesztői központban lévő fiókjához és csatlakozás az Azure-program**.  További információkért lásd: [hozzon létre egy Microsoft Developer-fiókot](../marketplace/marketplace-publishers-guide.md).
-5. Válassza ki **megadása a kezdéshez néhány topológiák**. A megoldássablon az összes hozzá tartozó topológia "szülője". Egy ajánlat vagy megoldás sablonban több topológiát is megadhat. Amikor a rendszer továbbítja az ajánlat átmeneti, azt az összes hozzá tartozó topológia leküldésekor. 
-6. Adja meg a topológia nevét, és válassza ki **+** .
-7. Adja meg egy új verziót, és válassza ki **+** .
-8. Töltse fel a .zip-fájlt, az alkalmazás csomagolása során létrehozott.  
-9. Válassza ki **kérjen minősítést**. A Microsoft hitelesítő csapata áttekinti a fájlokat, és hitelesíti a topológiát.
+1. Jelentkezzen be az [Azure Publishing szolgáltatásba.](https://publish.windowsazure.com/)
+2. A bal oldali menüben válassza a **Megoldássablonok lehetőséget.**
+3. Írjon be egy címet, és válassza **az Új megoldássablon létrehozása lehetőséget.**
+4. Ha még nem regisztrálta a szervezetet, válassza **a Fejlesztői központ létrehozása fiók lehetőséget, és csatlakozzon az Azure-programhoz.**  További információt a [Microsoft Developer-fiók létrehozása című témakörben talál.](../marketplace/marketplace-publishers-guide.md)
+5. Az első lépések megkezdéséhez válassza **a Topológiák definiálása**lehetőséget. A megoldássablon minden topológiájának "szülője". Egy ajánlatban vagy megoldássablonban több topológiát is definiálhat. Amikor egy ajánlatot átmeneti állapotba kerül, a topológiák kalegyütt leküldéses lesz. 
+6. Írjon be egy topológianevet, majd válassza a lehetőséget. **+**
+7. Adjon meg egy új **+** verziót, majd válassza a lehetőséget.
+8. Töltse fel az alkalmazás csomagolásakor létrehozott .zip fájlt.  
+9. Válassza **a Tanúsítványkérése lehetőséget.** A Microsoft minősítő csapata áttekinti a fájlokat, és hitelesíti a topológiát.
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md) a fürtben.
-* Ismerje meg, hogyan [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) és a HDInsight közzé nem tett HDInsight-alkalmazás üzembe helyezése.
-* Ismerje meg, hogyan [Linux-alapú HDInsight-fürtök testreszabása Szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md) és további alkalmazásokat. 
-* Ismerje meg, hogyan [HDInsight Linux-alapú Apache Hadoop-fürtök létrehozása az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
-* Ismerje meg, hogyan [üres élcsomópontot használni a HDInsight](hdinsight-apps-use-edge-node.md) HDInsight-fürtök elérésére, HDInsight-alkalmazások tesztelése és HDInsight-alkalmazások üzemeltetésére.
+* Ismerje meg, hogyan telepítheti a [HDInsight-alkalmazásokat](hdinsight-apps-install-applications.md) a fürtökben.
+* Ismerje meg, hogyan [telepíthet egyéni HDInsight-alkalmazásokat,](hdinsight-apps-install-custom-applications.md) és hogyan telepíthet közzé nem tett HDInsight-alkalmazásokat a HDInsightba.
+* Ismerje meg, hogyan [használhatja a Parancsfájl-művelet et a Linux-alapú HDInsight-fürtök testreszabására](hdinsight-hadoop-customize-cluster-linux.md) és további alkalmazások hozzáadására. 
+* Ismerje meg, hogyan [hozhat létre Linux-alapú Apache Hadoop-fürtöket a HDInsightban az Azure Resource Manager-sablonok használatával.](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+* Ismerje meg, hogyan [használhat üres peremhálózati csomópontot a HDInsight-fürtök](hdinsight-apps-use-edge-node.md) eléréséhez, a HDInsight-alkalmazások teszteléséhez és a HDInsight-alkalmazások üzemeltetéséhez.
 

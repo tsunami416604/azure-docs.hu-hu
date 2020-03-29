@@ -1,6 +1,6 @@
 ---
-title: A feladat előrehaladásának figyelése .NET használatával
-description: Ismerje meg, hogyan használhatja a feladat előrehaladásának és küld kezelő kód události. A kódminta nyelven van megírva C# , és használja a Media Services SDK a .NET-hez.
+title: A feladat állapotának figyelése a .NET használatával
+description: Ismerje meg, hogyan használhatja az eseménykezelő kódot a feladat előrehaladásának nyomon követésére és az állapotfrissítések küldésére. A kódminta C# nyelven íródott, és a Media Services SDK-t használja a .NET-hez.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64867102"
 ---
-# <a name="monitor-job-progress-using-net"></a>A feladat előrehaladásának figyelése .NET használatával 
+# <a name="monitor-job-progress-using-net"></a>A feladat állapotának figyelése a .NET használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. A folyamat ellenőrzéséhez egy StateChanged eseménykezelő meghatározása (ebben a témakörben leírt) vagy az Azure Queue storage használata a Media Services feladatértesítések figyelésére használt (leírtak szerint [ez](media-services-dotnet-check-job-progress-with-queues.md) témakört).
+Feladatok futtatásakor gyakran van szükség a feladat előrehaladásának nyomon követésére. A folyamatot ellenőrizheti egy StateChanged eseménykezelő definiálásával (ebben a témakörben leírtak szerint), vagy az Azure Queue storage használatával figyelheti a Media Services-feladatértesítéseket [(ebben](media-services-dotnet-check-job-progress-with-queues.md) a témakörben leírtak szerint).
 
-## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>A feladat előrehaladásának figyeléséhez StateChanged eseménykezelő definiálása
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Állapotváltozású eseménykezelő definiálása a feladat állapotának figyeléséhez
 
-Az alábbi példakód a StateChanged eseménykezelő határozza meg. Az eseménykezelő nyomon követi a feladat állapotát, és a frissített állapotot állapotától függően biztosít. A kód a LogJobStop módszert is meghatározza. Ez segédmetódus naplózza a hiba részleteit.
+A következő kódpélda határozza meg a StateChanged eseménykezelőt. Ez az eseménykezelő nyomon követi a feladat előrehaladását, és az állapottól függően frissített állapotot biztosít. A kód a LogJobStop metódust is definiálja. Ez a segítő metódus naplózza a hiba részleteit.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

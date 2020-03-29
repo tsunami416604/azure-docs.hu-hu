@@ -1,6 +1,6 @@
 ---
-title: IBM számítási feladatok az Azure-ban | Microsoft Docs
-description: A Microsoft partnereitől származó mainframe-emulátorral és más szolgáltatásokkal áthelyezheti az IBM z/OS munkaterheléseket Microsoft Azure használatával.
+title: IBM számítási feladatok az Azure-ban | Microsoft dokumentumok
+description: A Microsoft-partnerek nagyszámítógépes emulátorával és egyéb szolgáltatásaival újraüzemeltetheti IBM z/os számítási feladatait a Microsoft Azure használatával.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
 documentationcenter: ''
@@ -13,31 +13,31 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68834583"
 ---
-# <a name="ibm-workloads-on-azure"></a>IBM számítási feladatok az Azure-ban
+# <a name="ibm-workloads-on-azure"></a>IBM-munkaterhelések az Azure-ban
 
-Számos, a z/OS-alapú IBM-es nagyszámítógépes számítási feladat replikálható az Azure-ban a funkciók elvesztése nélkül, és anélkül, hogy a felhasználók még a mögöttes rendszerek változásait is észrevették. Az Azure-beli alkalmazások újraüzemeltetése biztosítja a szükséges nagyvállalati funkciókat, valamint a felhő rugalmasságát, rendelkezésre állását és lehetséges költségmegtakarítását.
+Számos, z/OS-alapú IBM nagyszámítógépes számítási feladat replikálható az Azure-ban a funkcionalitás elvesztése nélkül, anélkül, hogy a felhasználók észrevennék az alapul szolgáló rendszerek változásait. Az Azure-beli alkalmazások újraüzemeltetése biztosítja a szükséges nagyszámítógép-szerű funkciókat, valamint a felhő rugalmasságát, rendelkezésre állását és potenciális költségmegtakarítását.
 
-Az Azure támogatja az integrációt a meglévő IBM mainframe-környezetekkel, lehetővé téve a applicates, hogy szükség esetén hibrid megoldásokat futtasson, és az idő múlásával áttelepítse azokat. Habár teljes mértékben újraírhatók a meglévő Nagyvállalati alkalmazások az Azure-hoz, sokkal gyakoribb, hogy áthelyezi őket. Az újraírással az áttelepítési projektek költségeit, összetettségét és időpontját adhatja meg. Az újraüzemeltetéssel a következőket teheti:
+Az Azure támogatja a meglévő IBM nagyszámítógépes környezetekkel való integrációt, lehetővé téve az értelmes alkalmazások áttelepítését, szükség esetén hibrid megoldások futtatását és idővel történő áttelepítését. Bár teljesen átírhatja a meglévő nagyszámítógépes programok az Azure-ban, sokkal gyakoribb, hogy újra üzemelteti őket. Az újraírás növeli a költségeket, az összetettséget és az időt az áttelepítési projektekhez. A rehosting, akkor:
 
 - Alkalmazások áthelyezése felhőalapú emulátorba.
 
-- Telepítse át az adatbázist egy felhőalapú adatbázisba.
+- Az adatbázis áttelepítése felhőalapú adatbázisba.
 
-- Cserélje le a modulokat és a kódokat a Code Transformation Engines használatával.
+- Cserélje ki a modulokat és a kódot kódátalakító motorokkal.
 
-Ezen kívül az IBM-szoftverek, például a WebSphere és az MQ, már az Azure piactéren is elérhetők. mert ha IBM-szoftverlicenccel rendelkezik, kihasználhatja az Azure által kínált igény szerint skálázható infrastruktúra előnyeit, és gyorsan üzembe helyezhet egy virtuális gépet.
+Emellett az IBM szoftverei, beleértve a WebSphere-t és az MQ-t, most már az Azure Piactéren vannak. Az IBM szoftverlicenccel kihasználhatja az Azure által biztosított igény szerinti infrastruktúra-skálázást a virtuális gépek gyors indításához.
 
-Egy kiterjedt partneri ökoszisztéma segíti az IBM mainframe rendszerek áttelepíthetők az Azure-ba. A legtöbb esetben az újraírás vagy az alkalmazások cseréjének fokozatos üzembe helyezése előtt a lehető legalkalmasabb módszert kell alkalmazni az újrafelhasználásra. További útmutatást és segítséget nyújt a partnereknek az [Azure mainframe Migration Centerben](https://azure.microsoft.com/migration/mainframe/).
+Kiterjedt partneri ökoszisztéma áll rendelkezésre az IBM nagyszámítógépes rendszerek Azure-ba való áttelepítéséhez. A legtöbb enciklon pragmatikus megközelítést alkalmaz, ahol csak lehetséges, mielőtt az alkalmazások újraírásának vagy cseréjének szakaszos telepítésébe kezdene. További útmutatást és segítséget kaphat a partnerektől az [Azure Mainframe Migration centerben.](https://azure.microsoft.com/migration/mainframe/)
 
-**Következő lépések**
+**További lépések**
 
-- [Mainframe-áttelepítés: mítoszok és tények](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Az IBM & T fejlesztési és tesztelési környezet telepítése az Azure-ban](./install-ibm-z-environment.md)
-- [Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM & T v1-ben](./demo.md)
-- [IBM DB2-pureScale az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
+- [Mainframe migráció: mítoszok és tények](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Az IBM zD&T fejlesztési/tesztelési környezet telepítése az Azure-ra](./install-ibm-z-environment.md)
+- [Alkalmazásfejlesztők által vezérelt disztribúció (ADCD) beállítása IBM&T v1-ben](./demo.md)
+- [IBM DB2 pureScale az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)

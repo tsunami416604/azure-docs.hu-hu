@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás Azure Media Services V3 API-hoz – Python
-description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services V3 API-hoz a Python használatával.
+title: Csatlakozás az Azure Media Services v3 API-hoz – Python
+description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services v3 API-hoz a Python.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74888461"
 ---
-# <a name="connect-to-media-services-v3-api---python"></a>Kapcsolódás Media Services V3 API-hoz – Python
+# <a name="connect-to-media-services-v3-api---python"></a>Csatlakozás a Media Services v3 API-hoz – Python
 
-Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Python SDK-hoz az egyszerű szolgáltatás bejelentkezési metódusának használatával.
+Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3 Python SDK-hoz az egyszerű szolgáltatás bejelentkezési módszer használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A Python letöltése a [Python.org](https://www.python.org/downloads/) -ből
-- Ügyeljen arra, hogy a `PATH` környezeti változót állítsa be
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
-- Kövesse az API-k [elérését](access-api-cli-how-to.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-AZONOSÍTÓját), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyet a későbbi lépésben kell megadnia.
+- Python letöltése [python.org](https://www.python.org/downloads/)
+- Győződjön meg `PATH` arról, hogy a környezeti változó
+- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). Ne felejtse el megjegyezni az erőforráscsoport nevét és a Media Services-fiók nevét.
+- Kövesse az [Access API-k témakörlépéseit.](access-api-cli-how-to.md) Rögzítse az előfizetés-azonosítót, az alkalmazásazonosítót (ügyfélazonosító), a hitelesítési kulcsot (titkos) és a bérlői azonosítót, amelya későbbi lépésben szüksége van rá.
 
 > [!IMPORTANT]
-> Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
+> Tekintse át [az elnevezési konvenciókat.](media-services-apis-overview.md#naming-conventions)
 
 ## <a name="install-the-modules"></a>A modulok telepítése
 
-A Azure Media Services Python használatával történő használatához telepítenie kell ezeket a modulokat.
+Az Azure Media Services Python használatával való munkához telepítenie kell ezeket a modulokat.
 
-* A `azure-mgmt-resource` modul, amely tartalmazza Active Directory Azure-modulokat.
-* A `azure-mgmt-media` modul, amely tartalmazza a Media Services entitásokat.
+* A `azure-mgmt-resource` modul, amely tartalmazza az Azure-modulok az Active Directoryhoz.
+* A `azure-mgmt-media` modul, amely magában foglalja a Media Services entitásokat.
 
 Nyisson meg egy parancssori eszközt, és a következő parancsokkal telepítse a modulokat.
 
@@ -48,13 +48,13 @@ pip3 install azure-mgmt-resource
 pip3 install azure-mgmt-media==1.1.1
 ```
 
-## <a name="connect-to-the-python-client"></a>Kapcsolódás a Python-ügyfélhez
+## <a name="connect-to-the-python-client"></a>Csatlakozás a Python-ügyfélhez
 
-1. `.py` kiterjesztésű fájl létrehozása
-1. Nyissa meg a fájlt a kedvenc szerkesztőjében
-1. Adja hozzá a következő kódot a fájlhoz. A kód importálja a szükséges modulokat, és létrehozza a Media Serviceshoz való kapcsolódáshoz szükséges Active Directory hitelesítő adatokat tartalmazó objektumot.
+1. `.py` Kiterjesztésű fájl létrehozása
+1. A fájl megnyitása a kedvenc szerkesztőjében
+1. Adja hozzá a következő kódot a fájlhoz. A kód importálja a szükséges modulokat, és létrehozza a Media Services szolgáltatáshoz való csatlakozáshoz szükséges Active Directory hitelesítő adatok objektumot.
 
-      A változók értékeinek beállítása a [hozzáférési API](access-api-cli-how-to.md) -kkal kapott értékekre
+      A változók értékeinek beállítása az [Access API-kból](access-api-cli-how-to.md) kapott értékekre
 
       ```
       import adal
@@ -101,7 +101,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 1. A fájl futtatása
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A [PYTHON SDK](https://aka.ms/ams-v3-python-sdk)használata.
+- Használja [python SDK](https://aka.ms/ams-v3-python-sdk).
 - Tekintse át a Media Services [Python ref](https://aka.ms/ams-v3-python-ref) dokumentációját.

@@ -1,6 +1,6 @@
 ---
-title: Fejlesztés az Azure NetApp fájlok REST API-val |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Azure NetApp Files REST API használatának első lépései.
+title: Fejlesztés Az Azure NetApp-fájlokhoz REST API-val | Microsoft dokumentumok
+description: Az Azure NetApp Files REST API használatának első lépéseit ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,34 +15,34 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: b-juche
 ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65957040"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Fejlesztés az Azure NetApp fájlok REST API-val 
+# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Fejlesztés az Azure NetApp-fájlokhoz REST API-val 
 
-Az Azure Files-NetApp szolgáltatás REST API HTTP-erőforrásokkal kapcsolatos művelet például a NetApp fiók, a kapacitás-készlet, kötetek és a pillanatképek határozza meg. Ez a cikk segít az Azure NetApp fájlok REST API használatának első lépései.
+Az Azure NetApp Files szolgáltatás REST API-ja http-műveleteket határoz meg olyan erőforrásokkal szemben, mint például a NetApp-fiók, a kapacitáskészlet, a kötetek és a pillanatképek. Ez a cikk segítséget nyújt az Azure NetApp Files REST API használatának megkezdéséhez.
 
-## <a name="azure-netapp-files-rest-api-specification"></a>Az Azure NetApp Files REST API-specifikáció
+## <a name="azure-netapp-files-rest-api-specification"></a>Az Azure NetApp Files REST API specifikációja
 
-A REST API-specifikációnak NetApp Azure-fájlok közzétett [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
+Az Azure NetApp Files REST API-specifikációja a [GitHubon](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)keresztül jelenik meg:
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
 
-## <a name="access-the-azure-netapp-files-rest-api"></a>Az Azure NetApp fájlok REST API eléréséhez  
+## <a name="access-the-azure-netapp-files-rest-api"></a>Az Azure NetApp Files REST API elérése  
 
-1. [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Ha már tette.
+1. [Telepítse az Azure CLI-t,](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ha még nem tette meg.
 2. Egyszerű szolgáltatás létrehozása az Azure Active Directoryban (Azure AD):
-   1. Ellenőrizze, hogy [megfelelő engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+   1. Ellenőrizze, hogy rendelkezik-e [a megfelelő engedélyekkel.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)
 
-   1. Adja meg az Azure CLI az alábbi parancsot:  
+   1. Írja be a következő parancsot az Azure CLI-be:  
 
            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
-      A parancs kimenete a következő példához hasonlít:  
+      A parancs kimenete hasonló a következő példához:  
 
            { 
                "appId": "appIDgoeshere", 
@@ -52,38 +52,38 @@ A REST API-specifikációnak NetApp Azure-fájlok közzétett [GitHub](https://g
                "tenant": "tenantIDgoeshere" 
            } 
 
-      Tartsa meg a parancs kimenete.  Szüksége lesz a `appId`, `password`, és `tenant` értékeket. 
+      Tartsa meg a parancs kimenetét.  Szüksége lesz `appId`a `password`, `tenant` és értékekre. 
 
-3. OAuth-hozzáférési token-kérelem:
+3. OAuth-hozzáférési jogkivonat kérése:
 
-    A példák ebben a cikkben a cURL használatával.  Például különböző API-eszközöket is használható [Postman](https://www.getpostman.com/), [alvó üzemmódra képtelen számítógépek](https://insomnia.rest/), és [Paw](https://paw.cloud/).  
+    A cikkben szereplő példák cURL-t használnak.  Különböző API-eszközöket is használhat, például [postás,](https://www.getpostman.com/) [álmatlanság](https://insomnia.rest/)és [mancs.](https://paw.cloud/)  
 
-    A változók a következő példában cserélje le a parancs kimenete a fenti 2. lépés. 
+    Cserélje le a következő példában található változókat a fenti 2. 
 
         curl -X POST -d 'grant_type=client_credentials&client_id=[APP_ID]&client_secret=[PASSWORD]&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/[TENANT_ID]/oauth2/token
 
-    A kimenet tartalmazza egy hozzáférési tokent az alábbi példához hasonló:
+    A kimenet a következő példához hasonló hozzáférési jogkivonatot biztosít:
 
         eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
 
-    A megjelenített jogkivonatot a érvényes 3600 másodperc. Ezt követően meg kell kérnie egy új jogkivonatot. 
-    Mentse a token egy szövegszerkesztőbe.  Szüksége lesz rá a következő lépéshez.
+    A megjelenített token 3600 másodpercig érvényes. Ezt követően új jogkivonatot kell kérnie. 
+    Mentse a tokent egy szövegszerkesztőbe.  Szükséged lesz rá a következő lépéshez.
 
-4. Küldhet teszt hívást, és a jogkivonatot érvényesíteni a hozzáférést a REST API-nak a következők:
+4. Küldjön egy teszthívást, és adja meg a jogkivonatot a REST API-hoz való hozzáférés ellenőrzéséhez:
 
         curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2016-08-01
 
-## <a name="examples-using-the-api"></a>Példák az API-val  
+## <a name="examples-using-the-api"></a>Példák az API használatával  
 
-Ez a cikk a következő URL-címet használja a kérések az alapterv esetében. Az URL-címet az Azure Files-NetApp névtér a legfelső szintű mutat. 
+Ez a cikk a következő URL-címet használja a kérelmek alapkonfigurációjának. Ez az URL-cím az Azure NetApp-fájlok névtér gyökerére mutat. 
 
 `https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15`
 
-Kell cserélni a `subID` és `resourceGroups` értékek a következő példákban a saját értékeire. 
+Az alábbi `subID` példákban lévő értékeket `resourceGroups` a saját értékeivel kell lecserélni. 
 
-### <a name="get-request-examples"></a>Kérelem-példák
+### <a name="get-request-examples"></a>Példák get kérés
 
-Egy GET kérelem lekérdezési objektumok Azure NetApp fájlok található egy előfizetésben, használja az alábbi példák mutatják: 
+Get-kérelem segítségével lekérdezheti az Azure NetApp-fájlok objektumait egy előfizetésben, amint azt a következő példák mutatják: 
 
         #get NetApp accounts 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15
@@ -97,9 +97,9 @@ Egy GET kérelem lekérdezési objektumok Azure NetApp fájlok található egy e
         #get snapshots for a volume 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2017-08-15
 
-### <a name="put-request-examples"></a>A PUT kérés példák
+### <a name="put-request-examples"></a>Példák a PUT-kérelemre
 
-Egy PUT kérelmet használatával új objektumokat hozhat létre Azure NetApp fájlok, mint az alábbi példák mutatják. A PUT kérés törzsében hozzáadhatja a módosítások formázott JSON-adatokat, vagy azt adhatja meg a fájl olvasásához. 
+A PUT-kérelem segítségével új objektumokat hozhat létre az Azure NetApp-fájlokban, ahogy azt az alábbi példák mutatják. A PUT-kérelem törzse tartalmazhat a módosítások JSON-formátumú adatait, vagy megadhat egy fájlt, amelyből olvasni szeretne. 
 
         #create a NetApp account  
         curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2017-08-15
@@ -113,9 +113,9 @@ Egy PUT kérelmet használatával új objektumokat hozhat létre Azure NetApp f�
         #create a volume snapshot  
         curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2017-08-15
 
-### <a name="json-examples"></a>JSON-példák
+### <a name="json-examples"></a>Példák json-példák
 
-Az alábbi példa bemutatja, hogyan hozhat létre a NetApp fiókot:
+A következő példa bemutatja, hogyan hozhat létre NetApp-fiókot:
 
     { 
         "name": "MYNETAPPACCOUNT", 
@@ -126,7 +126,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre a NetApp fiókot:
         }
     } 
 
-Az alábbi példa bemutatja, hogyan hoz létre egy kapacitás-készletet: 
+A következő példa bemutatja, hogyan hozhat létre kapacitáskészletet: 
 
     {
         "name": "MYNETAPPACCOUNT/POOLNAME",
@@ -139,7 +139,7 @@ Az alábbi példa bemutatja, hogyan hoz létre egy kapacitás-készletet:
         }
     }
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy új kötet: 
+A következő példa bemutatja, hogyan hozhat létre új kötetet: 
 
     {
         "name": "MYNEWVOLUME",
@@ -154,7 +154,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy új kötet:
             }
     }
 
-Az alábbi példa bemutatja, hogyan hozhat létre pillanatképet egy kötet: 
+A következő példa bemutatja, hogyan hozhat létre pillanatképet egy kötetről: 
 
     {
         "name": "apitest2/apiPool01/apiVol01/snap02",
@@ -167,8 +167,8 @@ Az alábbi példa bemutatja, hogyan hozhat létre pillanatképet egy kötet:
     }
 
 > [!NOTE] 
-> Meg kell adnia `fileSystemId` egy pillanatkép létrehozásához.  Szerezheti be a `fileSystemId` érték egy GET kéréssel kötetre. 
+> Meg kell `fileSystemId` adnia a pillanatkép létrehozásához.  Az értéket `fileSystemId` get kéréssel kaphatja meg egy kötethez. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Tekintse meg az Azure NetApp fájlok REST API-referencia](https://docs.microsoft.com/rest/api/netapp/)
+[Az Azure NetApp Files REST API-hivatkozásának megtekintése](https://docs.microsoft.com/rest/api/netapp/)

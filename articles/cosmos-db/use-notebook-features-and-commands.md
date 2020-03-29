@@ -1,65 +1,65 @@
 ---
-title: Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DBban (előzetes verzió)
-description: Ismerje meg, hogyan használhatók a beépített parancsok és szolgáltatások a Azure Cosmos DB beépített jegyzetfüzetekkel való gyakori műveletek végrehajtásához.
+title: Beépített jegyzetfüzetparancsok és -funkciók használata az Azure Cosmos DB-ben (előzetes verzió)
+description: Ismerje meg, hogyan használhatja a beépített parancsokat és funkciókat az Azure Cosmos DB beépített jegyzetfüzeteivel végzett gyakori műveletekhez.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: dech
 ms.openlocfilehash: 61d46bbf0ccdeb5cd2e95e36e19f1aa81cfeeb48
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513399"
 ---
-# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DBban (előzetes verzió)
+# <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-preview"></a>Beépített jegyzetfüzetparancsok és -funkciók használata az Azure Cosmos DB-ben (előzetes verzió)
 
-A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk leírja, hogyan lehet beépített notebook-parancsokat és -funkciókat használni a gyakori műveletek végrehajtásához.
+Az Azure Cosmos DB beépített Jupyter-jegyzetfüzetei lehetővé teszik az Azure Portaladatainak elemzését és megjelenítését. Ez a cikk leírja, hogyan lehet beépített notebook-parancsokat és -funkciókat használni a gyakori műveletek végrehajtásához.
 
 ## <a name="install-a-new-package"></a>Új csomag telepítése
-Miután engedélyezte az Azure Cosmos-fiókok notebook-támogatását, megnyithat egy új jegyzetfüzetet, és telepítheti a csomagot.
+Miután engedélyezte a jegyzetfüzetek támogatását az Azure Cosmos-fiókokhoz, megnyithat egy új jegyzetfüzetet, és telepíthet egy csomagot.
 
-Helyezzen be és futtassa a következő kódot egy új kódrészletben, és cserélje le a ``PackageToBeInstalled``t a kívánt Python-csomagra.
+Egy új kódcellában szúrja be és ``PackageToBeInstalled`` futtassa a következő kódot, és cserélje ki a kívánt Python-csomagot.
 ```python
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Ez a csomag minden jegyzetfüzetből elérhető lesz az Azure Cosmos-fiók munkaterületen. 
+Ez a csomag az Azure Cosmos-fiók munkaterületén lévő bármely jegyzetfüzetből használható lesz. 
 
 > [!TIP]
-> Ha a notebookjának egyéni csomagra van szüksége, javasoljuk, hogy adjon hozzá egy cellát a jegyzetfüzetben a csomag telepítéséhez, mivel a rendszer eltávolítja a csomagokat, ha [alaphelyzetbe állítja a munkaterületet](#reset-notebooks-workspace).  
+> Ha a jegyzetfüzethez egyéni csomag szükséges, javasoljuk, hogy adjon hozzá egy cellát a jegyzetfüzethez a csomag telepítéséhez, mivel a csomagok törlődnek, ha [alaphelyzetbe állítja a munkaterületet.](#reset-notebooks-workspace)  
 
 ## <a name="run-a-sql-query"></a>SQL-lekérdezés futtatása
 
-A ``%%sql`` Magic paranccsal [SQL-lekérdezést](sql-query-getting-started.md) futtathat a fiókjában lévő bármelyik tárolón. Használja a szintaxist:
+A ``%%sql`` magic paranccsal [sql-lekérdezést](sql-query-getting-started.md) futtathat a fiók bármely tárolóján. Használja a szintaxist:
 
 ```bash
 %%sql --database {database_id} --container {container_id}
 {Query text}
 ```
 
-- Cserélje le a ``{database_id}`` és a ``{container_id}``t az adatbázis és a tároló nevére a Cosmos-fiókban. Ha a ``--database`` és ``--container`` argumentumok nincsenek megadva, a rendszer végrehajtja a lekérdezést az [alapértelmezett adatbázison és tárolón](#set-default-database-for-queries).
-- A Azure Cosmos DBban érvényes SQL-lekérdezéseket futtathat. A lekérdezés szövegének új sorban kell lennie.
+- Cserélje ``{database_id}`` ``{container_id}`` le, és a nevét, az adatbázis és a tároló a Cosmos-fiókban. Ha ``--database`` a ``--container`` és az argumentumok nem adottak meg, a lekérdezés az [alapértelmezett adatbázison és tárolón lesz végrehajtva.](#set-default-database-for-queries)
+- Bármilyen SQL-lekérdezést futtathat, amely érvényes az Azure Cosmos DB-ben. A lekérdezés szövegének új sorban kell lennie.
 
 Példa: 
 ```bash
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
-Futtassa ```%%sql?``` egy cellában, és tekintse meg a jegyzetfüzetben található SQL Magic parancs súgóját.
+Futtassa ```%%sql?``` egy cellában, hogy a súgó dokumentációját az sql magic parancs a notebook.
 
-## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>SQL-lekérdezés és kimenet futtatása pandák DataFrame
+## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>SQL-lekérdezés futtatása és kimenete Pandas DataFrame-en
 
-Egy ``%%sql`` lekérdezés eredményét egy [Panda DataFrame](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)is kiválaszthatja. Használja a szintaxist: 
+A ``%%sql`` lekérdezés eredményeit kimenetelét [pandas dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe). Használja a szintaxist: 
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
 {Query text}
 ```
-- Cserélje le a ``{database_id}`` és a ``{container_id}``t az adatbázis és a tároló nevére a Cosmos-fiókban. Ha a ``--database`` és ``--container`` argumentumok nincsenek megadva, a rendszer végrehajtja a lekérdezést az [alapértelmezett adatbázison és tárolón](#set-default-database-for-queries).
-- A ``{outputDataFrameVar}`` helyére írja be annak a DataFrame-változónak a nevét, amely az eredményeket fogja tartalmazni.
-- A Azure Cosmos DBban érvényes SQL-lekérdezéseket futtathat. A lekérdezés szövegének új sorban kell lennie. 
+- Cserélje ``{database_id}`` ``{container_id}`` le, és a nevét, az adatbázis és a tároló a Cosmos-fiókban. Ha ``--database`` a ``--container`` és az argumentumok nem adottak meg, a lekérdezés az [alapértelmezett adatbázison és tárolón lesz végrehajtva.](#set-default-database-for-queries)
+- Cserélje ``{outputDataFrameVar}`` le az eredményeket tartalmazó DataFrame változó nevére.
+- Bármilyen SQL-lekérdezést futtathat, amely érvényes az Azure Cosmos DB-ben. A lekérdezés szövegének új sorban kell lennie. 
 
 Példa:
 
@@ -83,14 +83,14 @@ df_cosmos.head(10)
 9   Viewed  14.00   Cape Verde  Flip Flop Shoes
 ```
 ## <a name="upload-json-items-to-a-container"></a>JSON-elemek feltöltése tárolóba
-A ``%%upload`` Magic paranccsal adatok tölthetők fel egy JSON-fájlból egy megadott Azure Cosmos-tárolóba. Az elemek feltöltéséhez használja az alábbi parancsot:
+A ``%%upload`` magic paranccsal adatokat tölthet fel egy JSON-fájlból egy megadott Azure Cosmos-tárolóba. Az elemek feltöltéséhez használja a következő parancsot:
 
 ```bash
 %%upload --databaseName {database_id} --containerName {container_id} --url {url_location_of_file}
 ```
 
-- Cserélje le a ``{database_id}`` és az ``{container_id}``t az Azure Cosmos-fiókban található adatbázis és tároló nevére. Ha a ``--database`` és ``--container`` argumentumok nincsenek megadva, a rendszer végrehajtja a lekérdezést az [alapértelmezett adatbázison és tárolón](#set-default-database-for-queries).
-- Cserélje le a ``{url_location_of_file}``t a JSON-fájljának helyére. A fájlnak érvényes JSON-objektumokból álló tömbnek kell lennie, és a nyilvános interneten keresztül elérhetőnek kell lennie.
+- Cserélje ``{database_id}`` ``{container_id}`` le, és az Azure Cosmos-fiókban az adatbázis és a tároló nevét. Ha ``--database`` a ``--container`` és az argumentumok nem adottak meg, a lekérdezés az [alapértelmezett adatbázison és tárolón lesz végrehajtva.](#set-default-database-for-queries)
+- Cserélje ``{url_location_of_file}`` le a JSON-fájl helyét. A fájlnak érvényes JSON-objektumok tömbjének kell lennie, és a nyilvános interneten keresztül elérhetőnek kell lennie.
 
 Példa:
 
@@ -104,26 +104,26 @@ Total number of documents imported : 2654
 Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
-A kimeneti statisztikával kiszámíthatja az elemek feltöltéséhez használt hatályos RU/s értékeit. Ha például az 25 000 RUs-t 38 másodpercen keresztül használták, a hatályos RU/s értéke 25 000 RUs/38 másodperc = 658 RU/s.
+A kimeneti statisztikákkal kiszámíthatja a cikkek feltöltéséhez használt effektív RU-kat. Ha például 25 000 több mint 38 másodperc alatt használ fel 25 000 VT-t, az effektus/s 25 000 VT / 38 másodperc = 658 RU/s.
 
-## <a name="set-default-database-for-queries"></a>Alapértelmezett adatbázis beállítása lekérdezésekhez
-Beállíthatja, hogy az alapértelmezett adatbázis ```%%sql``` parancsokat a rendszer a jegyzetfüzethez használja. Cserélje le a ```{database_id}```t az adatbázis nevére.
+## <a name="set-default-database-for-queries"></a>Lekérdezések alapértelmezett adatbázisának beállítása
+Beállíthatja, hogy ```%%sql``` a jegyzetfüzethez alapértelmezett adatbázis-parancsokat használjon. Cserélje ```{database_id}``` le az adatbázis nevére.
 
 ```bash
 %database {database_id}
 ```
-A jegyzetfüzetben lévő dokumentáció megtekintéséhez futtasson ```%database?``` a cellában.
+Futtassa ```%database?``` egy cellában a jegyzetfüzet dokumentációjának megtekintéséhez.
 
 ## <a name="set-default-container-for-queries"></a>Alapértelmezett tároló beállítása lekérdezésekhez
-Beállíthatja az alapértelmezett tárolót, ```%%sql``` a parancsokat a rendszer a jegyzetfüzethez használja. Cserélje le a ```{container_id}```t a tároló nevére.
+Beállíthatja, hogy ```%%sql``` a jegyzetfüzethez alapértelmezett tárolóparancsokat használjanak. Cserélje ```{container_id}``` le a tároló nevét.
 
 ```bash
 %container {container_id}
 ```
-A jegyzetfüzetben lévő dokumentáció megtekintéséhez futtasson ```%container?``` a cellában.
+Futtassa ```%container?``` egy cellában a jegyzetfüzet dokumentációjának megtekintéséhez.
 
 ## <a name="use-built-in-nteract-data-explorer"></a>Beépített nteract adatkezelő használata
-A beépített [nteract adatkezelő](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) használatával szűrheti és megjelenítheti a DataFrame. A szolgáltatás engedélyezéséhez állítsa a ``pd.options.display.html.table_schema`` beállítást ``True`` és ``pd.options.display.max_rows`` a kívánt értékre (az összes eredmény megjelenítéséhez beállíthatja ``pd.options.display.max_rows`` ``None``.
+A beépített [nteract adatkezelő](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) segítségével szűrheti és jelenítheti meg a DataFrame-et. A szolgáltatás engedélyezéséhez állítsa ``pd.options.display.html.table_schema`` ``True`` be ``pd.options.display.max_rows`` a kívánt értékre ``pd.options.display.max_rows`` és ``None`` a kívánt értékre vonatkozó beállítást (beállíthatja, hogy az összes eredmény megjelenjen).
 
 ```python
 import pandas as pd
@@ -135,9 +135,9 @@ df_cosmos.groupby("Item").size()
 ![nteract adatkezelő](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
 
 ## <a name="use-the-built-in-python-sdk"></a>A beépített Python SDK használata
-A [Azure Cosmos db PYTHON SDK for SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) 4-es verziója telepítve van, és tartalmazza az Azure Cosmos-fiók notebook-környezetében.
+Az Azure [Cosmos DB Python SDK SQL API-hoz](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) 4-es verziója telepítve van, és az Azure Cosmos-fiók jegyzetfüzetkörnyezetében található.
 
-Az SDK-műveletek futtatásához használja a beépített ``cosmos_client``-példányt. 
+A beépített ``cosmos_client`` példány segítségével bármely SDK-művelet futtatásához. 
 
 Példa:
 
@@ -151,18 +151,18 @@ database = cosmos_client.create_database_if_not_exists('RetailDemo')
 ## Create a new container if it doesn't exist
 container = database.create_container_if_not_exists(id='WebsiteData', partition_key=PartitionKey(path='/CartID'))
 ```
-Lásd: [PYTHON SDK-minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos/samples). 
+Lásd: [Python SDK-minták.](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos/samples) 
 
 > [!IMPORTANT]
-> A beépített Python SDK csak az SQL (Core) API-fiókok esetében támogatott. Más API-k esetén [telepítenie kell az](#install-a-new-package) API-nak megfelelő Python-illesztőprogramot. 
+> A beépített Python SDK csak az SQL (Core) API-fiókok támogatott. Más API-k esetén telepítenie kell [a megfelelő Python-illesztőprogramot,](#install-a-new-package) amely megfelel az API-nak. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>``cosmos_client`` egyéni példányának létrehozása
-A nagyobb rugalmasság érdekében a következő esetekben hozhat létre ``cosmos_client`` egyéni példányát:
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Egyéni példány létrehozása``cosmos_client``
+A nagyobb rugalmasság érdekében létrehozhat egy ``cosmos_client`` egyéni példányt a következők érdekében:
 
-- A [kapcsolatok házirendjének](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) testreszabása
-- Futtasson műveleteket egy másik Azure Cosmos-fiókon, mint a
+- A [kapcsolatházirend](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) testreszabása
+- Műveletek futtatása egy másik Azure Cosmos-fiókon, mint amelyben van
 
-Az aktuális fiók kapcsolati sztringjét és elsődleges kulcsát a [környezeti változók](#access-the-account-endpoint-and-primary-key-env-variables)segítségével érheti el. 
+Az aktuális számla kapcsolati karakterláncát és elsődleges kulcsát a [környezeti változókon](#access-the-account-endpoint-and-primary-key-env-variables)keresztül érheti el. 
 
 ```python
 import os
@@ -179,7 +179,7 @@ custom_connection_policy.PreferredLocations = [region_1, region_2] # Set the ord
 # Create a new instance of CosmosClient, getting the endpoint and key from the environment variables
 custom_client = cosmos.CosmosClient(url=os.environ["COSMOS_ENDPOINT"], credential=os.environ["COSMOS_KEY"], connection_policy=custom_connection_policy)
 ```
-## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Hozzáférés a fiók végpontja és az elsődleges kulcs env változói
+## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Hozzáférés a fiókvégponthoz és az elsődleges kulcsenv változókhoz
 ```python
 import os
 
@@ -187,14 +187,14 @@ endpoint = os.environ["COSMOS_ENDPOINT"]
 primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
-> A ``COSMOS_ENDPOINT`` és ``COSMOS_KEY`` környezeti változók csak az SQL API-ra alkalmazhatók. Más API-k esetén keresse meg a végpontot és a kulcsot az Azure Cosmos-fiókjának **kapcsolatok karakterláncok** vagy **kulcsok** paneljén.  
+> A ``COSMOS_ENDPOINT`` ``COSMOS_KEY`` környezeti változók csak SQL API-ra alkalmazhatók. Más API-k esetén keresse meg a végpontot és a kulcsot az Azure Cosmos-fiók **kapcsolati karakterláncok** vagy **kulcsok** panelen.  
 
-## <a name="reset-notebooks-workspace"></a>Jegyzetfüzetek alaphelyzetbe állítása munkaterület
-Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeretné visszaállítani, válassza a parancssáv **munkaterület alaphelyzetbe** állítása lehetőséget. Ezzel eltávolítja az összes egyéni telepített csomagot, majd újraindítja a Jupyter-kiszolgálót. A jegyzetfüzeteket, a fájlokat és az Azure Cosmos-erőforrásokat nem érinti a rendszer.  
+## <a name="reset-notebooks-workspace"></a>Jegyzetfüzet-munkaterület visszaállítása
+Ha vissza szeretné állítani a jegyzetfüzetek munkaterületét az alapértelmezett beállításokra, válassza a munkaterület **visszaállítása** lehetőséget a parancssávon. Ezzel eltávolítja az egyéni telepített csomagokat, és újraindítja a Jupyter-kiszolgálót. A jegyzetfüzetek, a fájlok és az Azure Cosmos-erőforrások nem érinti.  
 
-![Jegyzetfüzetek alaphelyzetbe állítása munkaterület](media/use-notebook-features-and-commands/reset-workspace.png)
+![Jegyzetfüzet-munkaterület visszaállítása](media/use-notebook-features-and-commands/reset-workspace.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
-- Tudnivalók a [Azure Cosmos db PYTHON SDK for SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) -ról
+- Ismerje meg az [Azure Cosmos DB Jupyter-jegyzetfüzetek](cosmosdb-jupyter-notebooks.md) előnyeit
+- Ismerje meg az [Azure Cosmos DB Python SDK sql API-hoz készült](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)

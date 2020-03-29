@@ -1,6 +1,6 @@
 ---
-title: Az Azure Multi-Factor Authentication-Azure Active Directory biztonsági útmutatója
-description: Ez a dokumentum útmutatást nyújt az Azure MFA Azure-fiókokkal való használatáról
+title: Biztonsági útmutató az Azure többtényezős hitelesítéséhez – Azure Active Directory
+description: Ez a dokumentum útmutatást nyújt az Azure MFA Azure-fiókokkal való használatával kapcsolatban
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,108 +12,108 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846827"
 ---
-# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Biztonsági útmutató az Azure Multi-Factor Authentication Azure AD-fiókokkal való használatához
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Biztonsági útmutató az Azure többtényezős hitelesítésazure-AD-fiókokkal való használatához
 
-A kétlépéses ellenőrzés az ajánlott választás a legtöbb szervezet számára, akik szeretnék javítani a hitelesítési folyamatát. Az Azure Multi-Factor Authentication (MFA) segíti a vállalatoknak a biztonsági és megfelelőségi követelményeknek való megfelelést, miközben egyszerű bejelentkezési élményt biztosítanak a felhasználók számára. Ez a cikk az Azure MFA bevezetésének megtervezése során megfontolandó tippeket ismerteti.
+A kétlépéses ellenőrzés az előnyben részesített választás a legtöbb olyan szervezet számára, amely szeretné növelni a hitelesítési folyamatot. Az Azure többtényezős hitelesítés (MFA) segít a vállalatoknak megfelelni a biztonsági és megfelelőségi követelményeknek, miközben egyszerű bejelentkezési élményt nyújt a felhasználók számára. Ez a cikk néhány olyan tippet ismerteti, amelyeket érdemes figyelembe venni az Azure MFA bevezetésének tervezésekor.
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>Az Azure MFA üzembe helyezése a felhőben
 
-Az Azure MFA két módon [engedélyezhető az összes felhasználó](howto-mfa-getstarted.md)számára.
+Az [Azure MFA-t kétféleképpen engedélyezheti az összes felhasználó számára.](howto-mfa-getstarted.md)
 
-* Licencek vásárlása minden felhasználóhoz (Azure MFA, prémium szintű Azure AD vagy Enterprise Mobility + Security)
-* Multi-Factor Auth szolgáltató létrehozása és felhasználónkénti vagy felhasználónkénti fizetés
+* Licencek vásárlása az egyes felhasználók (akár Az Azure MFA, Az Azure AD Premium vagy enterprise mobility + security)
+* Többtényezős hitelesítésszolgáltató létrehozása és felhasználónkénti vagy hitelesítésenkénti fizetés
 
 ### <a name="licenses"></a>Licencek
 
-![Licencek alkalmazása felhasználók számára, engedélyezés, értesítés](./media/multi-factor-authentication-security-best-practices/ems.png)
+![Licencek alkalmazása a felhasználókra, engedélyezés, értesítés](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-Ha prémium szintű Azure AD vagy Enterprise Mobility + Security licenccel rendelkezik, akkor már rendelkezik Azure MFA-val. A szervezetnek nincs szüksége további információkra a kétlépéses ellenőrzési képesség kiterjesztéséhez minden felhasználó számára. Csak egy licencet kell hozzárendelni egy felhasználóhoz, majd be lehet kapcsolni az MFA-t.
+Ha Rendelkezik Azure AD Premium vagy Enterprise Mobility + Security licenccel, már rendelkezik Azure MFA-val. A szervezetnek nincs szüksége további további adatokra ahhoz, hogy a kétlépéses ellenőrzési képességet minden felhasználóra kiterjessze. Csak licencet kell hozzárendelnie egy felhasználóhoz, majd bekapcsolhatja az MFA-t.
 
-Multi-Factor Authentication beállításakor vegye figyelembe a következő tippeket:
+A többtényezős hitelesítés beállításakor vegye figyelembe az alábbi tippeket:
 
-* Ne hozzon létre hitelesítést használó multi-Factor Auth szolgáltatót. Ha így tesz, előfordulhat, hogy a licencekkel már rendelkező felhasználóktól érkező ellenőrzési kérelmekért kell fizetnie.
-* Ha nem rendelkezik elegendő licenccel az összes felhasználó számára, létrehozhat egy felhasználónkénti multi-Factor Auth-szolgáltatót, hogy az fedezze a szervezet többi részét. 
-* Azure AD Connect csak akkor szükséges, ha a helyszíni Active Directory környezetet egy Azure AD-címtárral szinkronizálja. Ha olyan Azure AD-címtárat használ, amely nincs szinkronizálva a Active Directory helyszíni példányával, nincs szükség Azure AD Connectra.
+* Ne hozzon létre hitelesítésenkénti többtényezős hitelesítésszolgáltatót. Ha így tesz, a végén megkell fizetnie a licenccel már rendelkező felhasználók ellenőrzési kérelmeit.
+* Ha nem rendelkezik elegendő licenccel az összes felhasználó számára, létrehozhat egy felhasználónkénti többtényezős hitelesítésszolgáltatót, amely lefedi a szervezet többi részét. 
+* Az Azure AD Connect csak akkor szükséges, ha szinkronizálja a helyszíni Active Directory-környezetegy Azure AD-címtár. Ha olyan Azure AD-könyvtárat használ, amely nincs szinkronizálva az Active Directory helyszíni példányával, nincs szüksége az Azure AD Connectre.
 
-### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth szolgáltató
+### <a name="multi-factor-auth-provider"></a>Többtényezős hitelesítésszolgáltató
 
-![Multi-Factor Authentication szolgáltató](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+![Többtényezős hitelesítésszolgáltató](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-Ha nincs olyan licence, amely tartalmazza az Azure MFA-t, [hozzon létre egy MFA-hitelesítési szolgáltatót](concept-mfa-authprovider.md).
+Ha nem rendelkezik azure-beli mfa-t tartalmazó licencekkel, akkor [létrehozhat egy MFA hitelesítésszolgáltatót.](concept-mfa-authprovider.md)
 
-Az Auth-szolgáltató létrehozásakor ki kell választania egy könyvtárat, és figyelembe kell vennie a következő adatokat:
+Az Auth szolgáltató létrehozásakor ki kell választania egy könyvtárat, és figyelembe kell vennie a következő részleteket:
 
-* A multi-Factor Auth szolgáltató létrehozásához nincs szükség Azure AD-címtárra, de további funkciókat is kap. A következő funkciók engedélyezettek, ha az Auth-szolgáltatót egy Azure AD-címtárral társítja:
-  * Kétlépéses ellenőrzés kiterjesztése az összes felhasználóra
-  * A globális rendszergazdák számára további funkciókat is kínál, például a felügyeleti portált, az egyéni üdvözléseket és a jelentéseket.
-* Ha a helyszíni Active Directory-környezetet egy Azure AD-címtárral szinkronizálja, a következőkre lesz szüksége: inrsync vagy Azure AD-szinkronizáló. Ha olyan Azure AD-címtárat használ, amely nem a Active Directory helyszíni példányával van szinkronizálva, nem kell megadnia az rSync vagy a Azure AD-szinkronizáló.
-* Válassza ki a vállalata számára legmegfelelőbb felhasználási modellt. A használati modell kiválasztását követően nem módosítható. A két modell a következők:
-  * /Hitelesítés: az egyes ellenőrzésekhez tartozó díjakat számítjuk fel. Akkor használja ezt a modellt, ha azt szeretné, hogy a kétlépéses ellenőrzés mindenki számára, aki hozzáfér egy adott alkalmazáshoz, nem pedig adott felhasználók számára.
-  * /Engedélyezett felhasználó: az Azure MFA-hoz tartozó összes felhasználóra vonatkozó díjat számít fel. Akkor használja ezt a modellt, ha prémium szintű Azure AD vagy nagyvállalati mobilitási csomaggal rendelkező felhasználókkal rendelkezik, és néhány nem.
+* Nem kell egy Azure AD könyvtárat, hogy hozzon létre egy többtényezős hitelesítésszolgáltató, de több funkciót kap egy. A következő funkciók akkor engedélyezettek, ha az Auth-szolgáltatót egy Azure AD-könyvtárhoz társítja:
+  * A kétlépéses ellenőrzés kiterjesztése az összes felhasználóra
+  * A globális rendszergazdáknak további funkciókat is kínálhat, például a felügyeleti portált, az egyéni üdvözléseket és a jelentéseket.
+* Ha szinkronizálja a helyszíni Active Directory-környezetet egy Azure AD-könyvtárral, dirsync vagy Az Azure AD Sync szükséges. Ha olyan Azure AD-könyvtárat használ, amely nincs szinkronizálva az Active Directory helyszíni példányával, nincs szükség DirSync vagy Azure AD Sync szolgáltatásra.
+* Válassza ki a vállalkozásának leginkább megfelelő fogyasztási modellt. Miután kiválasztotta a használati modellt, nem módosíthatja azt. A két modell a következő:
+  * Hitelesítésenként: minden egyes ellenőrzésért díjat számít fel. Akkor használja ezt a modellt, ha kétlépéses ellenőrzést szeretne kérni bárki számára, aki egy bizonyos alkalmazáshoz fér hozzá, nem adott felhasználók számára.
+  * Engedélyezett felhasználónként: díjat minden egyes felhasználó, amely engedélyezi az Azure MFA. Akkor használja ezt a modellt, ha rendelkezik néhány Azure AD Premium- vagy Enterprise Mobility Suite-licenccel rendelkező felhasználóval, és néhányat anélkül.
 
 ### <a name="supportability"></a>Támogatási lehetőségek
 
-Mivel a legtöbb felhasználó megszokta, hogy csak a jelszavakat használja a hitelesítéshez, fontos, hogy a vállalat a folyamattal kapcsolatos összes felhasználóra felhívja a figyelmét. Ez a figyelem csökkenti annak a valószínűségét, hogy a felhasználók az MFA-hoz kapcsolódó kisebb problémák esetén meghívja az ügyfélszolgálatot. Vannak azonban olyan helyzetek, amikor átmenetileg le kell tiltani az MFA-t. Az alábbi irányelvek segítségével megismerheti, hogyan kezelheti ezeket a forgatókönyveket:
+Mivel a legtöbb felhasználó megszokta, hogy csak jelszavakat használ a hitelesítéshez, fontos, hogy a vállalat felhívja a figyelmet az összes felhasználóra ezzel a folyamattal kapcsolatban. Ez a tudatosság csökkentheti annak valószínűségét, hogy a felhasználók az MFA-val kapcsolatos kisebb problémák miatt hívják az ügyfélszolgálatot. Vannak azonban olyan forgatókönyvek, ahol ideiglenesen letiltja az MFA-t. Az alábbi irányelvek segítségével megtudhatja, hogyan kezelhetők ezek a forgatókönyvek:
 
-* A technikai támogatási munkatársak betanítása olyan forgatókönyvek kezelésére, amelyekben a felhasználó nem tud bejelentkezni, mert a mobil alkalmazás vagy telefon nem kap értesítést vagy telefonhívást. A technikai támogatás lehetővé teszi, hogy egy egyszeri [mellőzést](howto-mfa-mfasettings.md#one-time-bypass) engedélyezzen a felhasználóknak a kétlépéses ellenőrzés megkerülésével egy adott idő hitelesítéséhez. A Mellőzés ideiglenes, és a megadott számú másodperc elteltével lejár.
-* Tekintse át az Azure MFA [megbízható IP](howto-mfa-mfasettings.md#trusted-ips) -címeinek képességét a kétlépéses ellenőrzés minimalizálására. Ezzel a funkcióval a felügyelt vagy összevont bérlő rendszergazdái megkerülhetik a kétlépéses ellenőrzést a vállalat helyi intranetéről bejelentkezett felhasználók számára. A szolgáltatások olyan Azure AD-bérlők számára érhetők el, amelyek prémium szintű Azure AD, nagyvállalati mobilitási csomaggal vagy Azure Multi-Factor Authentication licenccel rendelkeznek.
+* A technikai támogató személyzet et arra taníthatja, hogy kezelni tudják azokat a helyzeteket, amikor a felhasználó nem tud bejelentkezni, mert a mobilalkalmazás vagy a telefon nem kap értesítést vagy telefonhívást. A technikai támogatás [lehetővé teszi az egyszeri megkerülést,](howto-mfa-mfasettings.md#one-time-bypass) hogy a felhasználó egyetlen alkalommal hitelesíthesse magát a kétlépéses ellenőrzés "megkerülésével". A megkerülés ideiglenes, és meghatározott számú másodperc után lejár.
+* Fontolja meg a [megbízható IP-k az](howto-mfa-mfasettings.md#trusted-ips) Azure MFA-ban, mint egy módja annak, hogy minimálisra csökkentsék a kétlépéses ellenőrzés. Ezzel a funkcióval a felügyelt vagy összevont bérlő rendszergazdái megkerülhetik a kétlépéses ellenőrzést a vállalat helyi intranetjéről bejelentkező felhasználók számára. A funkciók azure AD-bérlők számára érhetők el, amelyek Rendelkeznek az Azure AD Premium, enterprise mobility suite vagy Azure többtényezős hitelesítési licenccel.
 
-## <a name="best-practices-for-an-on-premises-deployment"></a>Ajánlott eljárások helyszíni központi telepítéshez
+## <a name="best-practices-for-an-on-premises-deployment"></a>Gyakorlati tanácsok a helyszíni telepítéshez
 
-Ha a vállalat úgy döntött, hogy kihasználja a saját infrastruktúráját az MFA engedélyezéséhez, akkor [telepítenie kell egy Azure multi-Factor Authentication-kiszolgáló a helyszínen](howto-mfaserver-deploy.md). Az MFA-kiszolgáló összetevői a következő ábrán láthatók:
+Ha a vállalat úgy döntött, hogy kihasználja a saját infrastruktúráját az MFA engedélyezéséhez, akkor telepítenie kell [egy Azure többtényezős hitelesítési kiszolgálót a helyszínen.](howto-mfaserver-deploy.md) Az MFA-kiszolgáló összetevői az alábbi ábrán láthatók:
 
-![az alapértelmezett MFA-kiszolgáló összetevőit](./media/multi-factor-authentication-security-best-practices/server.png) \*nincs telepítve alapértelmezés szerint \** telepítve, de alapértelmezés szerint nincs engedélyezve
+![Az alapértelmezett MFA-kiszolgáló-összetevők](./media/multi-factor-authentication-security-best-practices/server.png) \* \*Alapértelmezés szerint nincsenek telepítve *Telepítve, de alapértelmezés szerint nincs engedélyezve
 
-Az Azure Multi-Factor Authentication-kiszolgáló a Felhőbeli erőforrásokat és a helyszíni erőforrásokat is biztonságossá teszi az összevonás használatával. Az Azure AD-Bérlővel AD FS kell összevontnak lennie.
-Multi-Factor Authentication-kiszolgáló beállításakor vegye figyelembe az alábbi adatokat:
+Az Azure többtényezős hitelesítési kiszolgáló az összevonás használatával biztosíthatja a felhőbeli erőforrásokat és a helyszíni erőforrásokat. Rendelkeznie kell az AD FS, és azt összekell egyeztetve az Azure AD-bérlővel.
+A többtényezős hitelesítési kiszolgáló beállításakor vegye figyelembe az alábbi részleteket:
 
-* Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával védi az Azure AD-erőforrásokat, akkor az első ellenőrzési lépést a helyszíni AD FS használatával hajtja végre. A második lépés a helyszínen történik a jogcím betartásával.
-* Nem kell telepítenie az Azure-Multi-Factor Authentication-kiszolgáló a AD FS összevonási kiszolgálót. A AD FS Multi-Factor Authentication-adapterét azonban a AD FS rendszert futtató Windows Server 2012 R2 rendszerre kell telepíteni. A kiszolgálót másik számítógépre is telepítheti, ha az egy támogatott verzió, és a AD FS adaptert külön telepíti a AD FS összevonási kiszolgálón. 
-* A Multi-Factor Authentication AD FS-adapter telepítővarázslója létrehoz egy PhoneFactor-adminisztrátorok nevű biztonsági csoportot a Active Directory, majd hozzáadja a AD FS szolgáltatásfiókot a csoporthoz. Ellenőrizze, hogy létrejött-e a PhoneFactor-adminisztrátorok csoport a tartományvezérlőn, illetve hogy az AD FS-szolgáltatásfiók valóban tagja-e a csoportnak. Ha szükséges, adja hozzá manuálisan az AD FS-szolgáltatásfiókot a tartományvezérlőn a PhoneFactor-adminisztrátorok csoporthoz.
+* Ha az Azure AD-erőforrásokat az Active Directory összevonási szolgáltatások (AD FS) használatával biztosítja, akkor az első ellenőrzési lépés a helyszínen történik az AD FS használatával. A második lépés a helyszínen történik a jogcím betartásával.
+* Nem kell telepítenie az Azure többtényezős hitelesítési kiszolgáló az AD FS összevonási kiszolgáló. Az AD FS többtényezős hitelesítési adapterét azonban AD FS rendszert futtató Windows Server 2012 R2 rendszerre kell telepíteni. A kiszolgálót telepítheti egy másik számítógépre, feltéve, hogy az támogatott verzió, és az AD FS-adaptert külön telepítheti az AD FS összevonási kiszolgálóra. 
+* A Többtényezős hitelesítés aD FS adapter telepítővarázsló létrehoz egy PhoneFactor Admins nevű biztonsági csoportot az Active Directoryban, majd hozzáadja az AD FS szolgáltatásfiókot ehhez a csoporthoz. Ellenőrizze, hogy létrejött-e a PhoneFactor-adminisztrátorok csoport a tartományvezérlőn, illetve hogy az AD FS-szolgáltatásfiók valóban tagja-e a csoportnak. Ha szükséges, adja hozzá manuálisan az AD FS-szolgáltatásfiókot a tartományvezérlőn a PhoneFactor-adminisztrátorok csoporthoz.
 
 ### <a name="user-portal"></a>Felhasználói portál
 
-A felhasználói portál lehetővé teszi az önkiszolgáló képességeket, és teljes körű felhasználói felügyeleti képességeket biztosít. Egy Internet Information Server-(IIS-) webhelyen fut. Az összetevő konfigurálásához kövesse az alábbi irányelveket:
+A felhasználói portál önkiszolgáló funkciókat tesz lehetővé, és a felhasználói felügyeleti képességek teljes készletét biztosítja. Egy Internet Information Server (IIS) webhelyen fut. Az összetevő konfigurálásához használja az alábbi irányelveket:
 
-* AZ IIS 6-os vagy újabb használata
-* A ASP.NET v 2.0.507207 telepítése és regisztrálása
-* Győződjön meg arról, hogy a kiszolgáló üzembe helyezhető egy peremhálózati hálózaton
+* Az IIS 6 vagy nagyobb használata
+* Telepítés és regisztráció ASP.NET 2.0.507207-es
+* Annak ellenőrzése, hogy a kiszolgáló telepíthető-e peremhálózaton
 
-### <a name="app-passwords"></a>Alkalmazás jelszavai
+### <a name="app-passwords"></a>Alkalmazásjelszavak
 
-Ha a szervezete az Azure AD-vel történő egyszeri bejelentkezéshez készült, és az Azure MFA-t fogja használni, vegye figyelembe a következő adatokat:
+Ha a szervezet össze van egyítve az SSO az Azure AD-vel, és az Azure MFA-t fogja használni, akkor vegye figyelembe az alábbi részleteket:
 
-* Az alkalmazás jelszavait az Azure AD ellenőrzi, így megkerüli az összevonást. Az összevonás csak az alkalmazás jelszavának beállításakor használatos.
-* Összevont (SSO) felhasználók esetén a rendszer a jelszavakat a szervezeti AZONOSÍTÓban tárolja. Ha a felhasználó elhagyja a vállalatot, az információnak a szervezet AZONOSÍTÓját kell használnia az rSync használatával. A fiókok letiltása/törlése akár három órát is igénybe vehet, ami késlelteti az alkalmazások jelszavainak letiltását/törlését az Azure AD-ben.
+* Az alkalmazás jelszavát az Azure AD ellenőrzi, ezért megkerüli az összevonást. Az összevonás csak az alkalmazásjelszavak beállításakor használatos.
+* Összevont (SSO) felhasználók számára a jelszavak a szervezeti azonosítóban tárolódnak. Ha a felhasználó elhagyja a vállalatot, az információnak a DirSync használatával kell a szervezeti azonosítóhoz áramlania. A fiók letiltása/törlése akár három órát is igénybe vehet a szinkronizálás, ami késlelteti az alkalmazásjelszavak letiltását/törlését az Azure AD-ben.
 * Az alkalmazásjelszó nem tartja be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
-* Nem érhető el helyszíni hitelesítési naplózási/naplózási képesség az alkalmazások jelszavainak megadásához.
-* Bizonyos speciális építészeti kialakításokhoz szükség lehet a szervezeti felhasználónevek és jelszavak és az alkalmazások jelszavának együttes használatára, ha kétlépéses ellenőrzést használ az ügyfelekkel a hitelesítés helyétől függően. A helyszíni infrastruktúrával hitelesítő ügyfelek esetében szervezeti felhasználónevet és jelszót kell használnia. Az Azure AD-vel hitelesítő ügyfelek esetében használja az alkalmazás jelszavát.
-* Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Ha engedélyezni szeretné a felhasználóknak az alkalmazás jelszavának létrehozását, jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget a nem böngésző alkalmazásokba való bejelentkezéshez** .
+* Az alkalmazásjelszavakhoz nem érhető el helyszíni hitelesítésnaplózási/naplózási képesség.
+* Bizonyos speciális architekturális tervek szükség lehet a szervezeti felhasználónév és jelszavak és alkalmazásjelszavak kombinációjának használatára, amikor kétlépéses ellenőrzést használnak az ügyfelekkel, attól függően, hogy hol hitelesítik magukat. A helyszíni infrastruktúrával hitelesítendő ügyfelek szervezeti felhasználónevet és jelszót kell használnia. Az Azure AD-vel hitelesítendő ügyfelek esetében az alkalmazás jelszavát kell használnia.
+* Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazásjelszavakat. Ha engedélyeznie kell a felhasználóknak az alkalmazásjelszavak létrehozását, jelölje be a **Felhasználók számára alkalmazásjelszavak létrehozásához nem böngészőalkalmazásokba való bejelentkezésengedélyezése** lehetőséget.
 
 ## <a name="additional-considerations"></a>További szempontok
 
-A következő lista további szempontokat és útmutatást nyújt a helyszínen üzembe helyezett egyes összetevőkhöz:
+A lista további szempontokat és útmutatást nyújt a helyszínen üzembe helyezett összetevőkről:
 
 * Az Azure Multi-Factor Authentication telepítése az [Active Directory összevonási szolgáltatással](multi-factor-authentication-get-started-adfs.md).
 * Az Azure MFA-kiszolgáló telepítése és konfigurálása [RADIUS-hitelesítéssel](howto-mfaserver-dir-radius.md).
-* Az Azure MFA-kiszolgáló beállítása és konfigurálása [IIS-hitelesítéssel](howto-mfaserver-iis.md).
-* Az Azure MFA-kiszolgáló beállítása és konfigurálása [Windows-hitelesítéssel](howto-mfaserver-windows.md).
-* Az Azure MFA-kiszolgáló beállítása és konfigurálása [LDAP-hitelesítéssel](howto-mfaserver-dir-ldap.md).
-* Az Azure MFA-kiszolgáló beállítása és konfigurálása a [Távoli asztali átjáró és az azure multi-Factor Authentication-kiszolgáló RADIUS használatával](howto-mfaserver-nps-rdg.md).
-* Az Azure MFA-kiszolgáló és a [Windows Server-Active Directory](howto-mfaserver-dir-ad.md)közötti szinkronizálás beállítása és konfigurálása.
-* [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md).
-* [Speciális VPN-konfiguráció az Azure multi-Factor Authentication](howto-mfaserver-nps-vpn.md) a Cisco ASA, a Citrix NetScaler és a Juniper/Pulse Secure VPN-készülékek számára LDAP vagy RADIUS használatával.
+* Az Azure MFA-kiszolgáló beállítása és konfigurálása [IIS-hitelesítéssel.](howto-mfaserver-iis.md)
+* Állítsa be és konfigurálja az Azure MFA-kiszolgálót [Windows-hitelesítéssel.](howto-mfaserver-windows.md)
+* Az Azure MFA-kiszolgáló beállítása és konfigurálása [LDAP-hitelesítéssel.](howto-mfaserver-dir-ldap.md)
+* Állítsa be és konfigurálja az Azure MFA-kiszolgálót [a Távoli asztali átjáróval és az Azure többtényezős hitelesítési kiszolgálóval a RADIUS használatával.](howto-mfaserver-nps-rdg.md)
+* Állítsa be és konfigurálja a szinkronizálást az Azure MFA Server és a [Windows Server Active Directory](howto-mfaserver-dir-ad.md)között.
+* [Telepítse az Azure többtényezős hitelesítési kiszolgáló mobilalkalmazás-webszolgáltatását.](howto-mfaserver-deploy-mobileapp.md)
+* [Speciális VPN-konfiguráció Az Azure multi-factor hitelesítés](howto-mfaserver-nps-vpn.md) Cisco ASA, Citrix Netscaler és Juniper/Pulse Secure VPN készülékek LDAP vagy RADIUS használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a cikk az Azure MFA-hoz kapcsolódó ajánlott eljárásokat mutatja be, és egyéb erőforrásokat is használhat az MFA üzembe helyezésének megtervezése során. Az alábbi lista néhány kulcsfontosságú cikket tartalmaz, amelyek segítséget nyújthatnak a folyamat során:
+Ez a cikk kiemeli az Azure MFA néhány ajánlott eljárását, vannak más erőforrások is, amelyek et is használhat az MFA-telepítés tervezése során. Az alábbi lista néhány kulcsfontosságú cikket tartalmaz, amelyek segíthetnek a folyamat során:
 
-* [Jelentések az Azure Multi-Factor Authentication](howto-mfa-reporting.md)
-* [A kétlépéses ellenőrzés regisztrációs felülete](../user-help/multi-factor-authentication-end-user-first-time.md)
-* [Azure Multi-Factor Authentication GYIK](multi-factor-authentication-faq.md)
+* [Jelentések az Azure többtényezős hitelesítésében](howto-mfa-reporting.md)
+* [A kétlépcsős ellenőrzési regisztrációs élmény](../user-help/multi-factor-authentication-end-user-first-time.md)
+* [Az Azure többtényezős hitelesítéssel kapcsolatos gyakori kérdések](multi-factor-authentication-faq.md)

@@ -1,54 +1,54 @@
 ---
-title: Webes API-k & REST API-k üzembe helyezése és hívása Azure Logic Apps
-description: Webes API-k üzembe helyezése és hívása & REST API-k számára a rendszerintegrációs munkafolyamatokhoz Azure Logic Apps
+title: Webes API-k üzembe helyezése és hívása & AZ Azure Logic Apps-ekrest-API-kat
+description: Webes API-k üzembe helyezése és hívása & REST API-k at az Azure Logic Apps rendszerintegrációs munkafolyamataihoz
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790751"
 ---
-# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Egyéni API-k üzembe helyezése és hívása munkafolyamatokból Azure Logic Apps
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Egyéni API-k üzembe helyezése és hívása munkafolyamatokból az Azure Logic Apps-ben
 
-Miután [létrehozta az egyéni API-kat](./logic-apps-create-api-app.md) a Logic app-munkafolyamatokban való használatra, az API-k meghívása előtt telepítenie kell az API-kat. Az API-kat [webalkalmazásként](../app-service/overview.md)is üzembe helyezheti, de érdemes lehet [API-alkalmazásokként](../app-service/app-service-web-tutorial-rest-api.md)üzembe helyeznie az API-kat, amelyek megkönnyítik a feladatok elvégzését a felhőben és a helyszínen lévő API-k létrehozásakor, üzemeltetése és felhasználása során. Nem kell módosítania az API-kat, csak telepítse a kódot egy API-alkalmazásba. Az API-kat üzemeltetheti [Azure app Serviceon](../app-service/overview.md), egy szolgáltatásként nyújtott platformon (Pásti), amely kiválóan méretezhető, egyszerű API-üzemeltetést biztosít.
+Miután [egyéni API-kat hoz létre](./logic-apps-create-api-app.md) a logikai alkalmazások munkafolyamataihoz, üzembe kell helyeznie az API-kat, mielőtt meghívhatna őket. Az [API-kweb-alkalmazásokként](../app-service/overview.md)is üzembe helyezhetők, de fontolja meg az API-k [API-alkalmazásokként](../app-service/app-service-web-tutorial-rest-api.md)való üzembe helyezését, amelyek megkönnyítik a munkát, amikor api-kat hoz létre, üzemeltet és használ fel a felhőben és a helyszínen. Nem kell módosítania az API-kban lévő kódot – csak telepítse a kódot egy API-alkalmazásba. Api-kat az [Azure App Service](../app-service/overview.md)platformszolgáltatásként (PaaS) üzemeltethet, amely rendkívül méretezhető, egyszerű API-üzemeltetést biztosít.
 
-Habár bármely API-t meghívhat egy logikai alkalmazásból, a legjobb megoldás érdekében vegyen fel [OpenAPI (korábban hencegő) metaadatokat](https://swagger.io/specification/) , amelyek az API műveleteit és paramétereit írják le. Ez a OpenAPI-fájl megkönnyíti az API-k integrálását, és jobban együttműködik a Logic apps szolgáltatással.
+Bár bármelyik API-t meghívhat egy logikai alkalmazásból, a legjobb élmény érdekében adja hozzá az [OpenAPI (korábban Swagger) metaadatait,](https://swagger.io/specification/) amelyek az API műveleteit és paramétereit ismertetik. Ez az OpenAPI-fájl segítségével az API könnyebben integrálható, és jobban dolgozhat a logikai alkalmazásokkal.
 
-## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Az API üzembe helyezése webalkalmazásként vagy API-alkalmazásként
+## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Az API telepítése webalkalmazásként vagy API-alkalmazásként
 
-Ahhoz, hogy az egyéni API-t egy logikai alkalmazásból lehessen hívni, az API-t webalkalmazásként vagy API-alkalmazásként üzembe helyezheti Azure App Service. Azt is megteheti, hogy a OpenAPI-fájlt a Logic Apps Designer is felhasználja, beállíthatja az API-definíció tulajdonságait, és bekapcsolhatja az [ágazatközi erőforrás-megosztást (CORS)](../app-service/overview.md) a webalkalmazás vagy az API-alkalmazás számára.
+Mielőtt meghívhatna az egyéni API-t egy logikai alkalmazásból, telepítse az API-t webalkalmazásként vagy API-alkalmazásként az Azure App Service-be. Ahhoz is, hogy az OpenAPI-fájl olvasható legyen a Logic Apps Designer számára, állítsa be az API-definíció tulajdonságait, és kapcsolja be a [több forrásból származó erőforrás-megosztást (CORS)](../app-service/overview.md) a webalkalmazásban vagy AZ API-alkalmazásban.
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki a webalkalmazást vagy az API-alkalmazást.
+1. Az [Azure Portalon](https://portal.azure.com)válassza ki a webalkalmazást vagy az API-alkalmazást.
 
-2. A megnyíló alkalmazás menüben az **API**alatt válassza az **API-definíció**elemet. Állítsa be az **API-definíció helyét** a OpenAPI henceg. JSON fájljának URL-címére.
+2. A megnyíló alkalmazásmenü **API-területén**válassza az **API-definíció lehetőséget.** Állítsa be az **API-definíció helyét** az OpenAPI swagger.json fájl URL-címére.
 
-   Az URL-cím általában a következő formátumban jelenik meg: `https://{name}.azurewebsites.net/swagger/docs/v1)`
+   Az URL általában ebben a formátumban jelenik meg:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 
-   ![Az egyéni API-hoz tartozó OpenAPI-fájlra mutató hivatkozás](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
+   ![Hivatkozás az egyéni API-hoz való OpenAPI-fájlra](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. Az **API**alatt válassza a **CORS**lehetőséget. Állítsa be a CORS házirendet az **engedélyezett eredetek** számára a **"*"** értékre (az összes engedélyezése).
+3. Az **API csoportban**válassza a **CORS lehetőséget.** Állítsa a CORS-házirendet **az Engedélyezett eredetekhez** **"*"** értékre (engedélyezve az összeset).
 
-   Ez a beállítás engedélyezi a Logic app designertől érkező kéréseket.
+   Ez a beállítás engedélyezi a Logic App Designer től érkező kérelmeket.
 
-   ![A Logic app designertől érkező kérések engedélyezése az egyéni API-nak](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
+   ![A Logic App Designer kéréseinek engedélyezése az egyéni API-ra](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
 
-További információkért lásd: [REST API üzemeltetése a CORS-ben Azure app Service](../app-service/app-service-web-tutorial-rest-api.md).
+További információ: [RESTful API üzemeltetése a CORS szolgáltatással az Azure App Service szolgáltatásban.](../app-service/app-service-web-tutorial-rest-api.md)
 
-## <a name="call-your-custom-api-from-logic-app-workflows"></a>Egyéni API meghívása a Logic app-munkafolyamatokból
+## <a name="call-your-custom-api-from-logic-app-workflows"></a>Az egyéni API hívása a logikai alkalmazás munkafolyamataiból
 
-Miután beállította az API-definíció tulajdonságait és a CORS, az egyéni API-eseményindítók és műveletek elérhetők lesznek a logikai alkalmazás munkafolyamatában való felvételhez. 
+Az API-definíció tulajdonságainak és a CORS-nak a beállítása után az egyéni API-eseményindítók nak és műveleteknek elérhetőnek kell lenniük ahhoz, hogy a logikai alkalmazás munkafolyamatába bekerüljön. 
 
-*  Ha a OpenAPI URL-címmel rendelkező webhelyeket szeretné megtekinteni, böngészhet az előfizetési webhelyeken a Logic Apps Designerben.
+*  Az OpenAPI URL-címekkel rendelkező webhelyek megtekintéséhez tallózhat az előfizetéses webhelyek között a Logic Apps Designer alkalmazásban.
 
-*  Az elérhető műveletek és bemenetek megtekintéséhez egy OpenAPI-dokumentumra mutatva használja a [http + hencegés műveletet](../connectors/connectors-native-http-swagger.md).
+*  Ha a rendelkezésre álló műveleteket és bemeneteket egy OpenAPI-dokumentumra mutatva szeretné megtekinteni, használja a [HTTP + Swagger műveletet.](../connectors/connectors-native-http-swagger.md)
 
-*  Bármely API meghívásához, beleértve az olyan API-kat, amelyek nem rendelkeznek vagy OpenAPI-dokumentumot tesznek elérhetővé, bármikor létrehozhat egy [http-művelettel](../connectors/connectors-native-http.md)rendelkező kérelmet.
+*  Bármely API hívásához, beleértve az OpenAPI-dokumentumot nem tartalmazó VAGY elérhető API-kat is, a [HTTP-művelettel](../connectors/connectors-native-http.md)bármikor létrehozhat egy kérelmet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyéni összekötők áttekintése](../logic-apps/custom-connector-overview.md)

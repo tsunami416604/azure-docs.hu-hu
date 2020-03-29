@@ -1,7 +1,7 @@
 ---
-title: AD FS támogatás (MSAL Javához)
+title: AD FS támogatás (MSAL Java-hoz)
 titleSuffix: Microsoft identity platform
-description: Ismerkedjen meg Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatással a Javához készült Microsoft Authentication Library (MSAL4j) szolgáltatásban.
+description: Információ az Active Directory összevonási szolgáltatások (AD FS) támogatásáról a Microsoft Authentication Library for Java (MSAL4j) alkalmazásban.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,38 +14,38 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 3d834a8d1524595304c22fed9897094622dfd93f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696214"
 ---
-# <a name="active-directory-federation-services-support-in-msal-for-java"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL Javához
+# <a name="active-directory-federation-services-support-in-msal-for-java"></a>Az Active Directory összevonási szolgáltatások támogatása az MSAL for Java szolgáltatásban
 
-A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés hozzáadását, valamint a Java (MSAL for Java) alkalmazáshoz való Microsoft-hitelesítési kódtár engedélyezését. Az integrációt követően az alkalmazás az Azure AD-n keresztül összevont AD FS felhasználók hitelesítésére is képes. További információ a forgatókönyvekről: [AD FS forgatókönyvek fejlesztőknek](/windows-server/identity/ad-fs/ad-fs-development).
+A Windows Server Active Directory összevonási szolgáltatásai (AD FS) lehetővé teszik az OpenID Connect és az OAuth 2.0 alapú hitelesítés és engedélyezés hozzáadását a Microsoft Authentication Library for Java (MSAL for Java) alkalmazáshoz. Az integrálás után az alkalmazás hitelesítheti a felhasználókat az AD FS-ben, az Azure AD-n keresztül összevont módon. A forgatókönyvekről az [AD FS-forgatókönyvek fejlesztőknek](/windows-server/identity/ad-fs/ad-fs-development)című témakörben talál további információt.
 
-A Javához készült MSAL-t használó alkalmazások Azure Active Directory (Azure AD) szolgáltatással kommunikálnak, amely aztán a AD FS összevonja.
+Az MSAL java-hoz használó alkalmazás az Azure Active Directoryval (Azure AD) fog beszélni, amely ezután az AD FS-be kerül.
 
-A MSAL for Java az Azure ad-hez csatlakozik, amely az Azure AD-ben (felügyelt felhasználók) felügyelt felhasználók vagy más identitás-szolgáltató (például AD FS (összevont felhasználók) által felügyelt felhasználók számára jelentkezik be. A Java-MSAL nem tudja, hogy a felhasználó összevont. Egyszerűen beszél az Azure AD-ről.
+Az MSAL for Java az Azure AD-hez csatlakozik, amely az Azure AD-ben (felügyelt felhasználók) vagy egy másik identitásszolgáltató, például az AD FS (összevont felhasználók) által felügyelt felhasználókat ír alá. Az MSAL java-hoz nem tudja, hogy a felhasználó össze van-e véve. Egyszerűen beszél az Azure AD.It simply talks to Azure AD.
 
-Az ebben az esetben [használt szolgáltató a](msal-client-application-configuration.md#authority) szokásos hatóság (szolgáltatói állomásnév + bérlő, közös vagy szervezet).
+Ebben [authority](msal-client-application-configuration.md#authority) az esetben a szokásos jogosultságot használja (a hatóság gazdagépneve + bérlő, közös vagy szervezet).
 
-## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Jogkivonat interaktív beszerzése egy összevont felhasználó számára
+## <a name="acquire-a-token-interactively-for-a-federated-user"></a>Jogkivonat interaktív beszerzése összevont felhasználó számára
 
-Ha `ConfidentialClientApplication.AcquireToken()` vagy `PublicClientApplication.AcquireToken()` hív meg `AuthorizationCodeParameters` vagy `DeviceCodeParameters`, a felhasználói élmény általában:
+Amikor `ConfidentialClientApplication.AcquireToken()` telefonál, `PublicClientApplication.AcquireToken()` `AuthorizationCodeParameters` vagy `DeviceCodeParameters`a vagy, a felhasználói élmény általában:
 
-1. A felhasználó megadja a fiók AZONOSÍTÓját.
-2. Az Azure AD röviden megjeleníti a "a szervezet oldalát", a felhasználó pedig átirányítja az identitás-szolgáltató bejelentkezési lapjára. A bejelentkezési oldal általában a szervezet emblémájának megfelelően van testreszabva.
+1. A felhasználó megadja a fiókazonosítóját.
+2. Az Azure AD röviden megjeleníti a "A szervezet oldalára vétele" lehetőséget, és a felhasználó átlesz irányítva az identitásszolgáltató bejelentkezési oldalára. A bejelentkezési lap általában a szervezet emblémájával van testreszabva.
 
-Az összevont forgatókönyvben támogatott AD FS verziók a következők:
-- Active Directory összevonási szolgáltatások (AD FS) FS v2
-- Active Directory összevonási szolgáltatások (AD FS) v3 (Windows Server 2012 R2)
-- Active Directory összevonási szolgáltatások (AD FS) v4 (AD FS 2016)
+Ebben az összevont forgatókönyvben a támogatott AD FS-verziók a következők:
+- Active Directory összevonási szolgáltatások FS v2
+- Active Directory összevonási szolgáltatások 3.
+- Active Directory összevonási szolgáltatások 4- es v4-es (AD FS 2016)
 
-## <a name="acquire-a-token-via-username-and-password"></a>Token beszerzése Felhasználónév és jelszó használatával
+## <a name="acquire-a-token-via-username-and-password"></a>Token beszerzése felhasználónévvel és jelszóval
 
-Ha `ConfidentialClientApplication.AcquireToken()` vagy `PublicClientApplication.AcquireToken()` `IntegratedWindowsAuthenticationParameters` vagy `UsernamePasswordParameters`használatával szerez be jogkivonatot, a Java-MSAL a Felhasználónév alapján kapja meg az identitás-szolgáltatót. A MSAL for Java egy [SAML 1,1 token](reference-saml-tokens.md) -tokent kap az identitás-szolgáltatótól, amelyet aztán az Azure ad-nek ad vissza, amely visszaadja a JSON web token (JWT).
+Amikor beszerez egy `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` jogkivonatot a használatával `IntegratedWindowsAuthenticationParameters` `UsernamePasswordParameters`vagy a , MSAL java lekéri az identitásszolgáltató t a felhasználónév alapján. MSAL Java lekérést kap egy [SAML 1.1 jogkivonatot](reference-saml-tokens.md) az identitásszolgáltatótól, amelyezután biztosítja az Azure AD, amely visszaadja a JSON webtoken (JWT).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Az összevont esetről az [Azure Active Directory bejelentkezési viselkedésének konfigurálása egy alkalmazáshoz home realm felderítési szabályzat használatával című](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) témakörben található.

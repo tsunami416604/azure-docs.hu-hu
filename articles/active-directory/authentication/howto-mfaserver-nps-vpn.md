@@ -1,6 +1,6 @@
 ---
-title: Azure MFA-kiszolgáló és harmadik féltől származó virtuális magánhálózatok – Azure Active Directory
-description: Részletes konfigurációs útmutatók az Azure MFA-kiszolgálóhoz a Cisco, a Citrix és a Juniper integrálásához.
+title: Azure MFA-kiszolgáló és külső VPN-ek – Azure Active Directory
+description: Az Azure MFA Server részletes konfigurációs útmutatói a Cisco, a Citrix és a Juniper integrálására.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,45 +12,45 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fdb24bcd79f1766a52f290fd6fe0e6e5bf17e7c9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847949"
 ---
-# <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure MFA-kiszolgálóval és a harmadik féltől származó VPN-megoldásokkal
+# <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure MFA Server és a külső VPN-megoldások segítségével
 
-Az Azure Multi-Factor Authentication-kiszolgáló (Azure MFA-kiszolgáló) segítségével zökkenőmentesen kapcsolódhat különböző külső VPN-megoldásokkal. Ez a cikk a Cisco® ASA VPN-készülékre, a Citrix NetScaler SSL VPN-készülékre, valamint a Juniper Networks Secure Access/Pulse Secure SSL VPN-készülék biztonságos elérésére koncentrál. A következő három közös berendezés kezelésére szolgáló konfigurációs útmutatókat hoztunk létre. Az Azure MFA-kiszolgáló a legtöbb más olyan rendszerrel is integrálható, amelyek RADIUS-, LDAP-, IIS-vagy jogcím-alapú hitelesítést használnak AD FS. További részleteket az [Azure MFA-kiszolgáló konfigurációjában](howto-mfaserver-deploy.md#next-steps)talál.
+Az Azure Multi-Factor Authentication Server (Azure MFA Server) segítségével zökkenőmentesen csatlakozhat a különböző külső VPN-megoldásokhoz. Ez a cikk a Cisco® ASA VPN-készülékre, a Citrix NetScaler SSL VPN-készülékre és a Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN-készülékre összpontosít. Létrehoztunk konfigurációs útmutatókat e három közös készülék kezelésére. Az Azure MFA Server a legtöbb más, RADIUS-, LDAP-, IIS-hitelesítést vagy jogcímalapú hitelesítést használó rendszerrel is integrálható az AD FS szolgáltatásba. További részleteket az [Azure MFA Server konfigurációiban](howto-mfaserver-deploy.md#next-steps)talál.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
 
-## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN-készülék és Azure MFA-kiszolgáló
-Az Azure MFA-kiszolgáló integrálható a Cisco® ASA VPN-berendezéssel, hogy további biztonságot nyújtson a Cisco AnyConnect® VPN-bejelentkezések és portál-hozzáférés terén.  Használhatja az LDAP vagy a RADIUS protokollt is.  Válassza ki a következők egyikét a részletes, lépésenkénti konfigurációs útmutatók letöltéséhez.
-
-| Konfigurációs útmutató | Leírás |
-| --- | --- |
-| [Cisco ASA a AnyConnect VPN és az Azure MFA konfigurálása az LDAP-hez](https://download.microsoft.com/download/A/2/0/A201567C-C3DE-4227-AF89-4567A470899E/Cisco_ASA_Azure_MFA_LDAP.docx) | A Cisco ASA VPN-készülék integrálása az Azure MFA-val LDAP használatával |
-| [Cisco ASA AnyConnect VPN-sel és Azure MFA-konfiguráció RADIUS-hez](https://download.microsoft.com/download/4/5/7/4579C1CF-35B0-4FBE-8A1A-B49CB2CC0382/Cisco_ASA_Azure_MFA_RADIUS.docx) | A Cisco ASA VPN-készülék integrálása az Azure MFA-val a RADIUS használatával |
-
-## <a name="citrix-netscaler-ssl-vpn-and-azure-mfa-server"></a>Citrix NetScaler SSL VPN és Azure MFA-kiszolgáló
-Az Azure MFA-kiszolgáló integrálva van a Citrix NetScaler SSL VPN-berendezésével, hogy további biztonságot nyújtson a Citrix NetScaler SSL VPN-bejelentkezésekhez és a portálhoz való hozzáféréshez.  Használhatja az LDAP vagy a RADIUS protokollt is.  Válassza ki a következők egyikét a részletes, lépésenkénti konfigurációs útmutatók letöltéséhez.
+## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN-készülék és Azure MFA Server
+Az Azure MFA Server integrálható a Cisco® ASA VPN-készülékkel, hogy további biztonságot nyújtson a Cisco AnyConnect® VPN-bejelentkezések és a portálhozzáférés számára.  Használhatja az LDAP vagy a RADIUS protokollt.  Válassza ki az alábbi műveletek egyikét a részletes, részletes konfigurációs útmutatók letöltéséhez.
 
 | Konfigurációs útmutató | Leírás |
 | --- | --- |
-| [Citrix NetScaler SSL VPN és Azure MFA-konfiguráció LDAP-hez](https://download.microsoft.com/download/2/4/E/24E1E722-72DF-471F-A88A-D1338DB1AF83/Citrix_NS_Azure_MFA_LDAP.docx) | A Citrix NetScaler SSL VPN integrálása az Azure MFA-berendezéssel LDAP használatával |
-| [Citrix NetScaler SSL VPN és Azure MFA-konfiguráció a RADIUS-hez](https://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | A Citrix NetScaler SSL VPN-készülék integrálása az Azure MFA-val a RADIUS használatával |
+| [Cisco ASA anyconnect VPN- és Azure MFA-konfigurációval LDAP-hoz](https://download.microsoft.com/download/A/2/0/A201567C-C3DE-4227-AF89-4567A470899E/Cisco_ASA_Azure_MFA_LDAP.docx) | Integrálja a Cisco ASA VPN-készülékét az Azure MFA-val az LDAP használatával |
+| [Cisco ASA anyconnect VPN- és Azure MFA-konfigurációval radius-hoz](https://download.microsoft.com/download/4/5/7/4579C1CF-35B0-4FBE-8A1A-B49CB2CC0382/Cisco_ASA_Azure_MFA_RADIUS.docx) | Integrálja cisco ASA VPN-készülékét az Azure MFA-val a RADIUS használatával |
 
-## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-mfa-server"></a>Juniper/Pulse Secure SSL VPN-készülék és Azure MFA-kiszolgáló
-Az Azure MFA-kiszolgáló integrálható a Juniper/Pulse Secure SSL VPN-berendezéssel, hogy további biztonságot nyújtson a Juniper/Pulse Secure SSL VPN-bejelentkezésekhez és a portálhoz való hozzáféréshez.  Használhatja az LDAP vagy a RADIUS protokollt is.  Válassza ki a következők egyikét a részletes, lépésenkénti konfigurációs útmutatók letöltéséhez.
+## <a name="citrix-netscaler-ssl-vpn-and-azure-mfa-server"></a>Citrix NetScaler SSL VPN és Azure MFA Server
+Az Azure MFA Server integrálható a Citrix NetScaler SSL VPN-készülékkel, hogy további biztonságot nyújtson a Citrix NetScaler SSL VPN-bejelentkezések és a portálhozzáférés számára.  Használhatja az LDAP vagy a RADIUS protokollt.  Válassza ki az alábbi műveletek egyikét a részletes, részletes konfigurációs útmutatók letöltéséhez.
 
 | Konfigurációs útmutató | Leírás |
 | --- | --- |
-| [Juniper/Pulse Secure SSL VPN és Azure MFA-konfiguráció LDAP-hez](https://download.microsoft.com/download/6/5/8/6587B418-75B1-4FCB-84D4-984BC479309E/JuniperPulse_Azure_MFA_LDAP.docx) | A Juniper/Pulse Secure SSL VPN integrálása az Azure MFA-berendezéssel az LDAP használatával |
-| [Juniper/Pulse Secure SSL VPN és Azure MFA-konfiguráció a RADIUS-hez](https://download.microsoft.com/download/7/9/A/79AB3DAD-4799-4379-B1DA-B95ABDF231DC/JuniperPulse_Azure_MFA_RADIUS.docx) | A Juniper/Pulse Secure SSL VPN-berendezés integrálása az Azure MFA-val a RADIUS használatával |
+| [Citrix NetScaler SSL VPN és Azure MFA-konfiguráció LDAP-hoz](https://download.microsoft.com/download/2/4/E/24E1E722-72DF-471F-A88A-D1338DB1AF83/Citrix_NS_Azure_MFA_LDAP.docx) | Integrálja a Citrix NetScaler SSL VPN-t az Azure MFA-készülékkel LDAP használatával |
+| [Citrix NetScaler SSL VPN és Azure MFA-konfiguráció RADIUS-hoz](https://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | Integrálja a Citrix NetScaler SSL VPN-készülékét az Azure MFA-val a RADIUS használatával |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-mfa-server"></a>Juniper/Pulse Secure SSL VPN-készülék és Az Azure MFA Server
+Az Azure MFA-kiszolgáló integrálható a Juniper/Pulse Secure SSL VPN-készülékkel, hogy további biztonságot nyújtson a Juniper/Pulse Secure SSL VPN bejelentkezések és a portálhozzáférés számára.  Használhatja az LDAP vagy a RADIUS protokollt.  Válassza ki az alábbi műveletek egyikét a részletes, részletes konfigurációs útmutatók letöltéséhez.
 
-- [Bővítse meglévő hitelesítési infrastruktúráját az Azure NPS-bővítményével Multi-Factor Authentication](howto-mfa-nps-extension.md)
+| Konfigurációs útmutató | Leírás |
+| --- | --- |
+| [Juniper/Pulse Biztonságos SSL VPN és Az Azure MFA-konfiguráció LDAP-hoz](https://download.microsoft.com/download/6/5/8/6587B418-75B1-4FCB-84D4-984BC479309E/JuniperPulse_Azure_MFA_LDAP.docx) | Integrálja a Juniper/Pulse Secure SSL VPN-t az Azure MFA-készülékkel ldap használatával |
+| [Juniper/Pulse Biztonságos SSL VPN és Az Azure MFA-konfiguráció RADIUS-hoz](https://download.microsoft.com/download/7/9/A/79AB3DAD-4799-4379-B1DA-B95ABDF231DC/JuniperPulse_Azure_MFA_RADIUS.docx) | Integrálja juniper/Pulse Secure SSL VPN-készülékét az Azure MFA-val a RADIUS használatával |
+
+## <a name="next-steps"></a>További lépések
+
+- [Bővítse meglévő hitelesítési infrastruktúráját az Azure többtényezős hitelesítéshez szükséges nps-bővítménysel](howto-mfa-nps-extension.md)
 
 - [Az Azure Multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)

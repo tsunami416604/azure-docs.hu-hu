@@ -1,6 +1,6 @@
 ---
-title: Részklip egy videót, ha az Azure Media Services encoding
-description: Ez a témakör ismerteti, hogyan részklip egy videót, amikor a kódolás az Azure Media Services .NET SDK használatával
+title: Videoklip részklipje az Azure Media Services használatával történő kódolássorán
+description: Ez a témakör azt ismerteti, hogyan lehet egy videót részklipként használni, amikor az Azure Media Services szolgáltatással .NET SDK használatával kódol.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67305124"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Részklip egy videót, amikor a kódolás a Media Services – .NET
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Videoklip a Media Services szolgáltatással történő kódoláshoz – .NET
 
-Trim vagy a videó részklip használatával kódolás esetén egy [feladat](https://docs.microsoft.com/rest/api/media/jobs). Ez a funkció együttműködik bármely [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) épül fel, amelyek segítségével a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) készleteket, vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) készletek.
+A videót levághatja vagy részcsípheti, ha [a feladatot használva](https://docs.microsoft.com/rest/api/media/jobs)kódolja. Ez a funkció minden [olyan átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik, amely a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) készletekkel vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) készletekkel épül fel.
 
-A következő C# példa létrehoz egy feladatot, amely egy videót egy adategység levágja, a kódolási feladatokat a helyrendszerekre. 
+A következő C# példa létrehoz egy feladatot, amely levágja a videót egy eszköz, mert küld egy kódolási feladat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben a témakörben leírt lépések elvégzéséhez kell:
+A témakörben ismertetett lépések végrehajtásához a következőket kell elvégeznie:
 
-- [Az Azure Media Services-fiók létrehozása](create-account-cli-how-to.md)
-- Hozzon létre egy-egy átalakítási és a egy bemeneti és kimeneti objektumok. Láthatja, hogyan hozhat létre egy-egy átalakítási és a bemeneti és kimeneti objektumok a [feltöltése, kódolása és streamelése a .NET használatával kíván videókat](stream-files-tutorial-with-api.md) oktatóanyag.
-- Tekintse át a [kódolás fogalom](encoding-concept.md) témakör.
+- [Azure Media Services-fiók létrehozása](create-account-cli-how-to.md)
+- Hozzon létre egy átalakítást, valamint egy bemeneti és kimeneti eszközöket. A .NET oktatóanyag használatával megtekintheti, hogyan hozhat létre átalakítást, valamint bemeneti és kimeneti eszközöket a [Videók feltöltése, kódolása és streamelése segítségével.](stream-files-tutorial-with-api.md)
+- Tekintse át a [Kódolási koncepció](encoding-concept.md) témakörét.
 
 ## <a name="example"></a>Példa
 
@@ -91,4 +91,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>További lépések
 
-[Az egyéni átalakítási kódolása](customize-encoder-presets-how-to.md) 
+[Hogyan kódolj egyéni átalakítással](customize-encoder-presets-how-to.md) 

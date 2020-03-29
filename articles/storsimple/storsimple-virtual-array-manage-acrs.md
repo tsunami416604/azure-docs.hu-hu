@@ -1,6 +1,6 @@
 ---
-title: Hozzáférés-vezérlési rekordok kezelése a StorSimple Virtual Array |} A Microsoft Docs
-description: Ismerteti, hogyan lehet megállapítani a gazdagépek csatlakozhat a StorSimple Virtual Array egy köteten hozzáférés-vezérlési rekordok (ACR-EK) kezelése.
+title: Hozzáférés-vezérlési rekordok kezelése a StorSimple virtual array-hez | Microsoft dokumentumok
+description: Ez a témakör azt ismerteti, hogy miként kezelhetők a hozzáférés-vezérlési rekordok (AKR-ek) annak meghatározásához, hogy mely állomások csatlakozhatnak a StorSimple virtuális tömb köteteihez.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -16,118 +16,118 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64724420"
 ---
-# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Hozzáférés-vezérlési rekordok kezelése a StorSimple Virtual Array StorSimple Eszközkezelő
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>A StorSimple Eszközkezelő vel kezelheti a StorSimple virtuális tömb hozzáférés-vezérlési rekordjait
 
 ## <a name="overview"></a>Áttekintés
 
-Hozzáférés-vezérlési rekordok (ACR-EK) adja meg azt a kötetet a StorSimple Virtual Array (más néven a StorSimple helyszíni virtuális eszköz) a gazdagépek kapcsolódhatnak teszi lehetővé. ACR-EK vannak beállítva, hogy egy adott kötet, és az iSCSI minősített nevét (IQN-nevekre vonatkozóan) a gazdagépeket tartalmaz. Egy gazdagép egy kötetre csatlakozni próbál, ha az eszköz ellenőrzi, az ACR-REL társított az IQN-név a kötetet, és ha egyezést, majd a kapcsolat létrejött. A **hozzáférés-vezérlési rekordok** paneljén a **konfigurációs** a Device Manager szolgáltatás szakaszában minden hozzáférés-vezérlési bejegyzés a megfelelő IQN-nevekre vonatkozóan a gazdagépek a jeleníti meg.
+A hozzáférés-vezérlési rekordok (AKR-ek) lehetővé teszik annak megadását, hogy mely állomások csatlakozhatnak egy kötethez a StorSimple virtuális tömb (más néven a Helyszíni StorSimple virtuális eszköz) kötetéhez. Az AR-ek egy adott kötetre vannak beállítva, és tartalmazzák az állomások iSCSI-minősített neveit (IQN). Amikor egy gazdagép megpróbál csatlakozni egy kötethez, az eszköz ellenőrzi az adott kötethez társított ACR-t az IQN-névért, és ha egyezés van, akkor létrejön a kapcsolat. Az Eszközkezelő szolgáltatás **Konfiguráció** szakaszában található **hozzáférés-vezérlési rekordok** panel megjeleníti az összes hozzáférés-vezérlési rekordot a gazdagépek megfelelő IQN-jével.
 
 ![Hozzáférés-vezérlési rekordok kezelése](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
-Ez az oktatóanyag a következő gyakori ACR kapcsolatos feladatokat ismerteti:
+Ez az oktatóanyag a következő gyakori ACR-feladatokkal kapcsolatos:
 
-* IQN Nevének lekérése
-* Adjon hozzá egy hozzáférés-vezérlési rekord
-* Egy hozzáférés-vezérlési rekord szerkesztése
-* Egy hozzáférés-vezérlési rekord törlése
+* Szerezd meg az IQN-t
+* Hozzáférés-vezérlési rekord hozzáadása
+* Hozzáférés-vezérlőrekord szerkesztése
+* Hozzáférés-vezérlési rekord törlése
 
 > [!IMPORTANT]
 > 
-> * Az ACR hozzárendelése egy kötetet, ha körültekintően, hogy a kötet sem egyidejűleg elérhető egynél több nem fürtözött gazdagépen, mert ez a kötet, megsérülhet.
-> * Egy ACR-t egy kötet törlésekor győződjön meg arról, hogy a megfelelő gazdagép nem fér hozzá a kötetet, mert a törlés egy írható-olvasható megszakítás eredményezheti.
+> * Amikor ACR-t rendel egy kötethez, ügyeljen arra, hogy a kötetet ne érje egyidejűleg egynél több nem fürtözött állomás, mert ez megsérülhet.
+> * Acr kötetből való törlésekor győződjön meg arról, hogy a megfelelő állomás nem fér hozzá a kötethez, mert a törlés olvasási és olvasási zavarokat okozhat.
 
 
-## <a name="get-the-iqn"></a>IQN Nevének lekérése
+## <a name="get-the-iqn"></a>Szerezd meg az IQN-t
 
-A következő lépésekkel Windows Server 2012 rendszert futtató Windows-gazdagép IQN Nevének lekérése.
+A Windows Server 2012 rendszert futtató Windows-állomás IQN-jének leolvasásához hajtsa végre az alábbi lépéseket.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
-## <a name="add-an-acr"></a>Adjon hozzá egy ACR-t
+## <a name="add-an-acr"></a>ACR hozzáadása
 
-Használhat **hozzáférés-vezérlési rekordok** paneljén a **konfigurációs** ACR-EK hozzáadása a StorSimple-Eszközkezelő szolgáltatás szakaszában. Általában egy ACR társítani egy kötetet.
+A StorSimple Eszközkezelő szolgáltatás **Konfiguráció** szakaszában a **hozzáférés-vezérlési rekordok** panelen használhatja az AR-ek hozzáadásához. Általában egy ACR-t társít egy kötethez.
 
-Információ egy ACR-t társít egy kötetet, nyissa meg [kötet hozzáadása](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+Az ACR kötethez való társításáról a kötet hozzáadásáról a [majd a majd a kötet et.](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)
 
 > [!IMPORTANT]
-> Az ACR hozzárendelése egy kötetet, ha körültekintően, hogy a kötet sem egyidejűleg elérhető egynél több nem fürtözött gazdagépen, mert ez a kötet, megsérülhet.
+> Amikor ACR-t rendel egy kötethez, ügyeljen arra, hogy a kötetet ne érje egyidejűleg egynél több nem fürtözött állomás, mert ez megsérülhet.
 
 
-A következő lépésekkel adja hozzá egy ACR-t.
+ACR hozzáadásához hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-add-an-acr"></a>Az ACR hozzáadása
+#### <a name="to-add-an-acr"></a>ACR hozzáadása
 
-1. Szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **konfigurációs** területén kattintson **hozzáférés-vezérlési rekordok**.
-2. Az a **hozzáférés-vezérlési rekordok** panelen kattintson a **Hozzáadás**.
-3. Az a **ACR hozzáadása** panelen tegye a következőket:
+1. A szolgáltatás céllapján jelölje ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **Konfiguráció** csoportban kattintson a **Hozzáférés-vezérlési rekordok**elemre.
+2. A **Hozzáférés-vezérlési rekordok** panelen kattintson a **Hozzáadás**gombra.
+3. Az **ACR hozzáadása** panelen tegye a következőket:
    
     1. Adja meg az ACR **nevét**.
     
-    2. A **iSCSI-kezdeményező neve**, adja meg a Windows-állomás IQN-név. A Windows Server-gazdagép IQN Nevének lekérése, tegye a következőket:
+    2. Az **iSCSI-kezdeményező neve csoportban**adja meg a Windows-állomás IQN-nevét. A Windows Server-állomás IQN-jének levételéhez tegye a következőket:
    
-    3. Indítsa el a Microsoft iSCSI-kezdeményezőt a Windows-gazdagépen. Az iSCSI-kezdeményező tulajdonságai ablakban a a **konfigurációs** lapra, válassza ki, másolja a karakterláncot, a **kezdeményező neve** mező.
-    Illessze be ezt a karakterláncot a **IQN** mezőbe a **ACR hozzáadása** panelen.
+    3. Indítsa el a Microsoft iSCSI-kezdeményezőt a Windows-gazdagépen. Az iSCSI-kezdeményező tulajdonságai ablakban a **Konfiguráció** lapon jelölje ki, majd másolja a **Kezdeményező neve** mezőben lévő sztringet.
+    Illessze be ezt a karakterláncot az **ACR hozzáadása** panel **IQN** mezőjébe.
    
-    6. Kattintson a **Hozzáadás** az ACR hozzáadása.  
+    6. Az ACR hozzáadásához kattintson a **Hozzáadás** gombra.  
    
         ![Hozzáférés-vezérlési rekordok hozzáadása](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
-4. Táblázatos végeredménynek megfelelően frissül.
+4. A táblázatos lista frissül, hogy tükrözze ezt a kiegészítést.
 
-## <a name="edit-an-acr"></a>Az ACR szerkesztése
+## <a name="edit-an-acr"></a>ACR szerkesztése
 
-Használja a **hozzáférés-vezérlési rekordok** paneljén a **konfigurációs** szakaszban szerkesztheti az ACR-EK az Azure Portalon a Device Manager szolgáltatás.
+Az Azure Portalon az Eszközkezelő szolgáltatás **Konfigurációs** szakaszában található **hozzáférés-vezérlési rekordok** paneljét használhatja az AR-ek szerkesztéséhez.
 
 > [!NOTE]
-> Ne módosítsa egy ACR-t, amely jelenleg használatban van. Egy olyan kötetre, amely jelenleg használatban van társítva ACR szerkesztéséhez, érdemes először állítsa offline.
+> Ne módosítsa a jelenleg használatban lévő ACR-t. Ha egy jelenleg használt kötethez társított ACR-t szeretne szerkeszteni, először offline állapotba kell helyeznie a kötetet.
 
 
-Hajtsa végre az alábbi lépések végrehajtásával szerkesztheti egy ACR-t.
+Az ACR szerkesztéséhez hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-edit-an-acr"></a>Az ACR szerkesztése
+#### <a name="to-edit-an-acr"></a>ACR szerkesztése
 
-1. Szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **konfigurációs** szakaszban **hozzáférés-vezérlési rekordok**.
-2. Az a **hozzáférés-vezérlési rekordok** panelen, a hozzáférés-vezérlési rekordok táblázatos listájából, kattintson duplán az ACR-REL, amelyet módosítani szeretne.
-3. Az a **szerkesztési hozzáférés-vezérlési rekordok** panelen tegye a következőket:
+1. A szolgáltatás céllapján jelölje ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **Konfiguráció** szakasz **Hozzáférés-vezérlési rekordok**területén.
+2. A **hozzáférés-vezérlési rekordok** panelen a hozzáférés-vezérlési rekordok táblázatos listájából kattintson duplán a módosítani kívánt Hozzáférési szabályszabály-szabályra.
+3. A **Hozzáférés-vezérlési rekordok szerkesztése** panelen tegye a következőket:
    
-    1. Adja meg az ACR-REL az IQN-t.
+    1. Adja meg az IQN-t az ACR-hez.
    
-    2. Kattintson a **mentése** menteni a módosított ACR a panel tetején. A következő megerősítő üzenetet látja:
+    2. A módosított ACR mentéséhez kattintson a panel tetején található **Mentés** gombra. A következő megerősítő üzenet jelenik meg:
    
-        ![Hozzáférés-vezérlési rekordok szerkesztése](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
+        ![Hozzáférés-vezérlőrekordok szerkesztése](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
 
-## <a name="delete-an-access-control-record"></a>Egy hozzáférés-vezérlési rekord törlése
+## <a name="delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
 
-Használja a **konfigurációs** lap ACR-EK törlése az Azure Portalon.
+Az Azure Portal **konfigurációs** lapján törölheti az AR-eket.
 
 > [!NOTE]
 > 
-> * Ne töröljön egy ACR-t, amely jelenleg használatban van. Töröl egy olyan kötetre, amely jelenleg használatban van társítva, hogy be kell először állítsa offline.
-> * Egy ACR-t egy kötet törlésekor győződjön meg arról, hogy a megfelelő gazdagép nem fér hozzá a kötetet, mert a törlés egy írható-olvasható megszakítás eredményezheti.
+> * Ne töröljön olyan ACR-t, amely jelenleg használatban van. Ha egy jelenleg használt kötethez társított ACR-t szeretne törölni, először offline állapotba kell helyeznie a kötetet.
+> * Acr kötetből való törlésekor győződjön meg arról, hogy a megfelelő állomás nem fér hozzá a kötethez, mert a törlés olvasási és olvasási zavarokat okozhat.
 
 
-Hajtsa végre az alábbi lépéseket egy hozzáférés-vezérlési rekord törlése.
+Hozzáférés-vezérlési rekord törléséhez hajtsa végre az alábbi lépéseket.
 
-#### <a name="to-delete-an-access-control-record"></a>Egy hozzáférés-vezérlési rekord törlése
+#### <a name="to-delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
 
-1. Szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevét, és ezután belül a **konfigurációs** szakaszban **hozzáférés-vezérlési rekordok**.
+1. A szolgáltatás céllapján jelölje ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **Konfiguráció** szakasz **Hozzáférés-vezérlési rekordok**területén.
 
-2. Az a **hozzáférés-vezérlési rekordok** panelen, a hozzáférés-vezérlési rekordok táblázatos listájából, kattintson duplán az ACR-REL, amelyet törölni kíván.
+2. A **hozzáférés-vezérlési rekordok** panelen a hozzáférés-vezérlési rekordok táblázatos listájából kattintson duplán a törölni kívánt Hozzáférési szabályszabály-szabályra.
 
-3. Szerkesztés access control rekordok panelen kattintson **törlése**.
+3. A Hozzáférés-vezérlési rekordok szerkesztése panelen kattintson a **Törlés gombra.**
    
-    ![ACR-EK törlése](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
+    ![ACRS törlése](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
-4. Amikor a rendszer megerősítést kér, kattintson a **törlése** a törlés folytatásához. A törlés táblázatos frissül.
+4. Amikor megerősítést kér, a törlés folytatásához kattintson a **Törlés** gombra. A táblázatos lista frissül, hogy tükrözze a törlést.
    
    ![Figyelmeztető üzenet](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [kötetek hozzáadása és konfigurálása az ACR-EK](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+* További információ a [kötetek hozzáadásáról és az ACR-ek konfigurálásáról.](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)
 

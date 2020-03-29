@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Twitterhez Azure Logic Apps
-description: Automatizálja a tweeteket figyelő és kezelő feladatokat és munkafolyamatokat, valamint az Ön Twitter-Azure Logic Apps fiókjával kapcsolatos adatok lekérése, a követett felhasználók, más felhasználók, határidők és egyebek
+title: Csatlakozás a Twitterhez az Azure Logic Apps alkalmazásból
+description: A tweeteket figyelő és kezelő feladatok és munkafolyamatok automatizálása, valamint a követők, a követett felhasználók, más felhasználók, ütemtervek és egyebek beszereznie a Twitter-fiókjából az Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,85 +8,85 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789086"
 ---
-# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>A Twitter figyelése és kezelése Azure Logic Apps használatával
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>A Twitter figyelése és kezelése az Azure Logic Apps használatával
 
-A Azure Logic Apps és a Twitter-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelhetik a Twitteren, például a tweetekben, a követőiben, a felhasználóknál és a követett felhasználóknál, időpontokban és egyéb műveletekben, valamint más műveletekben, például:
+Az Azure Logic Apps és a Twitter-összekötő segítségével automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik és kezelik a Twitteren fontos adatokat, például a tweeteket, a követőket, a felhasználókat és a követett felhasználókat, az ütemterveket és egyebeket, például más műveletekkel együtt:
 
-* Megfigyelheti, közzéteheti és keresheti a tweeteket.
-* Többek között a követői, a felhasználók, az idővonalak és sok egyéb információ beolvasása.
+* Figyelheti, közzékell küldenie és tweeteket kell keresnie.
+* Szerezzen be olyan adatokat, mint a követők, a követett felhasználók, az ütemtervek stb.
 
-Használhat olyan eseményindítókat, amelyek válaszokat kapnak a Twitter-fiókjából, és más műveletek számára elérhetővé teszik a kimenetet. A Twitter-fiókkal feladatokat végrehajtó műveleteket is használhat. A Twitter-műveletek kimenetét más műveletekkel is elvégezheti. Ha például egy új Tweet jelenik meg egy adott hashtagtel, akkor üzeneteket küldhet a Slack-összekötővel. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Használhatja az eseményindítók, hogy kap választ a Twitter-fiók, és a kimenet elérhetővé más műveleteket. A Twitter-fiókjával feladatokat végrehajtó műveleteket használhat. Más műveletek is használhatják a Twitter-műveletek kimenetét. Ha például egy adott hashtaggel rendelkező új tweet jelenik meg, üzeneteket küldhet a Tartalékidő-összekötővel. Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Twitter-fiókja és felhasználói hitelesítő adatai
+* Az Ön Twitter-fiókja és felhasználói hitelesítő adatai
 
-   A hitelesítő adatai engedélyezik a logikai alkalmazásnak a kapcsolat létrehozását és a Twitter-fiók elérését.
+   A hitelesítő adatok engedélyezik a logikai alkalmazás számára, hogy kapcsolatot hozzon létre, és hozzáférjen a Twitter-fiókjához.
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni a Twitter-fiókját. A Twitter-triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Twitter-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
+* A logikai alkalmazás, ahol szeretné elérni a Twitter-fiókját. A Twitter-eseményindítóval való kezdéshez [hozzon létre egy üres logikai alkalmazást.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Twitter-művelet használatához indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **Ismétlődés** eseményindítóval.
 
 ## <a name="connect-to-twitter"></a>Csatlakozás a Twitterhez
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
 
-1. Válasszon egy elérési utat: 
+1. Válasszon elérési utat: 
 
-   * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "Twitter" kifejezést. 
-   Válassza ki a kívánt eseményindítót az eseményindítók listából. 
+   * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "twitter" kifejezést. 
+   Az eseményindítók listában válassza ki a kívánt eseményindítót. 
 
      – vagy –
 
-   * Meglévő Logic apps esetén: 
+   * Meglévő logikai alkalmazások esetén: 
    
-     * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
+     * Az utolsó lépésben, ahol műveletet szeretne hozzáadni, válassza az **Új lépés lehetőséget.** 
 
        – vagy –
 
-     * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
-     Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+     * A lépések között, ahol műveletet szeretne hozzáadni, vigye az egérmutatót a lépések közötti nyíl fölé. 
+     Válassza ki a**+** megjelenő pluszjelet ( ), majd válassza **a Művelet hozzáadása**lehetőséget.
      
-       A keresőmezőbe írja be a "Twitter" kifejezést a szűrőként. 
-       A műveletek listában válassza ki a kívánt műveletet.
+       A keresőmezőbe írja be a "twitter" szót szűrőként. 
+       A műveletek listájában jelölje ki a kívánt műveletet.
 
-1. Ha a rendszer arra kéri, hogy jelentkezzen be a Twitterbe, jelentkezzen be most, így engedélyezheti a hozzáférést a logikai alkalmazáshoz.
+1. Ha a rendszer kéri, hogy jelentkezzen be a Twitterre, jelentkezzen be most, hogy engedélyezhesse a hozzáférést a logikai alkalmazáshoz.
 
-1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
+1. Adja meg a kiválasztott eseményindító vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának kiépítését.
 
 ## <a name="examples"></a>Példák
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-trigger: új Tweet közzétételekor
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter trigger: Ha egy új csipog van kifüggesztett
 
-Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, ha az trigger új tweetet észlel, például a hashtag #Seattle. Így például, ha ezek a tweetek találhatók, hozzáadhat egy fájlt a tárhelyhez, például egy Dropbox-fiókot a Dropbox-összekötő használatával. 
+Ez az eseményindító elindítja a logikai alkalmazás munkafolyamat, amikor az eseményindító észleli egy új tweet, például a hashtag, #Seattle. Így például, ha ezek a tweetek találhatók, hozzáadhat egy fájlt a tweetek tartalmával a tárolóhoz, például egy Dropbox-fiókot a Dropbox összekötő használatával. 
 
-Igény szerint olyan feltételt is megadhat, amely jogosult tweetek a megadott számú követővel rendelkező felhasználóktól származnak.
+Tetszés szerint megadhat egy feltételt, hogy a jogosult tweeteknek legalább meghatározott számú követővel rendelkező felhasználóktól kell származniuk.
 
-**Vállalati példa**: ezzel a triggerrel figyelheti a vállalattal kapcsolatos tweeteket, és feltöltheti a tweetek tartalmát egy SQL-adatbázisba.
+**Példa vállalati például**: Ezzel az eseményindítóval figyelheti a vállalatával kapcsolatos tweeteket, és feltöltheti a tweetek tartalmát egy SQL-adatbázisba.
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter-művelet: Tweet közzététele
+### <a name="twitter-action-post-a-tweet"></a>Twitter fellépés: Post a csipog
 
-Ez a művelet tweetet könyvel, de beállíthatja a műveletet úgy, hogy a tweet tartalmazza a korábban leírt trigger által talált tweetek tartalmát. 
+Ez a művelet tweetet tesz közzé, de beállíthatja a műveletet úgy, hogy a tweet tartalmazza a korábban leírt eseményindító által talált tweetek tartalmát. 
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/twitterconnector/).
+Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](/connectors/twitterconnector/)
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)

@@ -1,6 +1,6 @@
 ---
-title: Váratlan hiba történt, amikor beleegyezést ad egy alkalmazás |} A Microsoft Docs
-description: A cikk ismerteti, beleegyezik abba, hogy egy alkalmazás, és mit tehet velük kapcsolatban a folyamat során előforduló hibák
+title: Váratlan hiba a kérelemhez való hozzájárulás végrehajtásakor | Microsoft dokumentumok
+description: A cikk ismerteti azokat a hibákat, amelyek a kérelemhez való hozzájárulás folyamata során fordulhatnak elő, és hogy mit tehet velük kapcsolatban
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,66 +17,66 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65824940"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt, amikor beleegyezést ad egy alkalmazás
+# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba az alkalmazáshoz való hozzájárulás végrehajtásakor
 
-Ez a cikk ismerteti, beleegyezik abba, hogy egy alkalmazás folyamata során előforduló hibákat. Ha hibaelhárítást váratlan beleegyezést kérő, amely nem tartalmazza a hibaüzeneteket, lásd: [hitelesítési forgatókönyvek az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+Ez a cikk ismerteti az alkalmazáshoz való hozzájárulás folyamata során előforduló hibákat. Ha olyan váratlan hozzájárulási kéréseket hárít el, amelyek nem tartalmaznak hibaüzeneteket, olvassa el [az Azure AD hitelesítési forgatókönyvei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios)című témakört.
 
-Számos alkalmazás, amelyekbe beépül az Azure Active Directory szükséges engedélyekkel ahhoz, hogy működni egyéb erőforrások eléréséhez. Ha ezeket az erőforrásokat is integrálhatók az Azure Active Directoryval, hozzáférési engedélyeket gyakran kérik a közös hozzájárulási keretrendszer használatával. A beleegyezést kérő üzenetet jelenik meg, amely általában akkor fordul elő, először egy alkalmazást használnak, de akkor is előfordulhat az alkalmazás egy későbbi használatra.
+Számos, az Azure Active Directoryval integrálható alkalmazásnak engedélyre van szüksége más erőforrások eléréséhez a működéshez. Ha ezek az erőforrások is integrálva vannak az Azure Active Directoryval, gyakran kérik a hozzáféréshez szükséges engedélyeket a közös jóváhagyási keretrendszer használatával. Megjelenik egy hozzájárulási parancs, amely általában akkor fordul elő, amikor egy alkalmazást először használnak, de az alkalmazás későbbi használatakor is előfordulhat.
 
-Bizonyos feltételeknek kell teljesülniük, egy felhasználó, hogy engedélyt adjanak az alkalmazáshoz szükséges engedélyeket. Ha ezek a feltételek nem teljesülnek, a következő hibák akkor fordulhatnak elő.
+Bizonyos feltételeknek meg kell felelniük ahhoz, hogy a felhasználó hozzájáruljon az alkalmazás által igényelt engedélyekhez. Ha ezek a feltételek nem teljesülnek, a következő hibák léphetnek fel.
 
-## <a name="requesting-not-authorized-permissions-error"></a>Nem jogosult engedélyeket hiba kérése
-* **AADSTS90093:** &lt;clientAppDisplayName&gt; egy vagy több olyan engedélyeket, amelynek Ön nem jogosult a megadását kéri. Forduljon a rendszergazdához, aki engedélyezhetik, hogy az alkalmazás az Ön nevében.
+## <a name="requesting-not-authorized-permissions-error"></a>Nem engedélyezett engedélyek kérése hiba
+* **AADSTS90093:** &lt;A clientAppDisplayName&gt; egy vagy több olyan engedélyt kér, amelynek megadása nincs engedélyezve. Lépjen kapcsolatba egy rendszergazdával, aki az Ön nevében beleegyezik ebbe az alkalmazásba.
 
-Ez a hiba akkor fordul elő, amikor egy felhasználó egy vállalati rendszergazdai jogosultságokkal nem kísérel meg, amely csak a rendszergazda biztosíthat engedélyeket kér az alkalmazás használatát. Ez a hiba megoldhatók a rendszergazda az alkalmazást a szervezet nevében való hozzáférést.
+Ez a hiba akkor fordul elő, ha egy nem vállalati rendszergazda felhasználó olyan alkalmazást próbál használni, amely csak a rendszergazda által megadott engedélyeket kér. Ezt a hibát megoldhatja egy rendszergazda, aki hozzáférést biztosít az alkalmazáshoz a szervezet nevében.
 
-## <a name="policy-prevents-granting-permissions-error"></a>Házirend miatt engedélyek hiba
-* **AADSTS90093:** Az rendszergazdájának &lt;tenantDisplayName&gt; által beállított szabályzat, amely megakadályozza, hogy jegykiadó &lt;nevű alkalmazás&gt; kér, az engedélyeket. Lépjen kapcsolatba az rendszergazdájának &lt;tenantDisplayName&gt;, akik az engedélyeket ehhez az alkalmazáshoz az Ön nevében.
+## <a name="policy-prevents-granting-permissions-error"></a>A házirend megakadályozza az engedélyhiba megadását
+* **AADSTS90093:** A &lt;tenantDisplayName&gt; rendszergazdája olyan házirendet állított be, amely&gt; megakadályozza, hogy megadja az alkalmazás &lt;nevének megadását a kért engedélyekben. Lépjen kapcsolatba &lt;a tenantDisplayName&gt;rendszergazdájával, aki az Ön nevében engedélyt adhat az alkalmazásnak.
 
-Ez a hiba akkor fordul elő, ha egy vállalati rendszergazda kikapcsolja lehetővé teszi a felhasználók számára, hogy engedélyt adjanak az alkalmazásokat, majd egy nem rendszergazdai felhasználó megpróbálja használni olyan alkalmazás, amely engedélyt kell kapnia. Ez a hiba megoldhatók a rendszergazda az alkalmazást a szervezet nevében való hozzáférést.
+Ez a hiba akkor fordul elő, ha a vállalati rendszergazda kikapcsolja a felhasználók számára az alkalmazások hozadékát, majd egy nem rendszergazdai felhasználó megkísérli a jóváhagyást igénylő alkalmazások használatát. Ezt a hibát megoldhatja egy rendszergazda, aki hozzáférést biztosít az alkalmazáshoz a szervezet nevében.
 
-## <a name="intermittent-problem-error"></a>Időnként problémákat tapasztalt hiba
-* **AADSTS90090:** Úgy tűnik, a bejelentkezési folyamat észlelt egy időszakos probléma rögzítése az engedélyek megadása a próbált &lt;clientAppDisplayName&gt;. Próbálkozzon újra később.
+## <a name="intermittent-problem-error"></a>Időszakos problémahiba
+* **AADSTS90090:** Úgy tűnik, hogy a bejelentkezési folyamat időszakos problémát észlelt a &lt;clientAppDisplayName&gt;számára megadni próbált engedélyek rögzítésével. Próbálkozzon később.
 
-Ez a hiba azt jelzi, hogy történt-e egy szolgáltatás időszakos ügyféloldali hiba történt. Megoldható úgy, hogy engedélyt adjanak az újból az alkalmazást.
+Ez a hiba azt jelzi, hogy időszakos szolgáltatási oldali probléma lépett fel. Meg oldható, ha megpróbálja újra hozzájárulni az alkalmazáshoz.
 
-## <a name="resource-not-available-error"></a>Erőforrás nem érhető el hiba
-* **AADSTS65005:** Az alkalmazás &lt;clientAppDisplayName&gt; a kért erőforrás elérésére jogosult &lt;resourceAppDisplayName&gt; , amely nem érhető el. 
+## <a name="resource-not-available-error"></a>Az erőforrás nem érhető el hiba
+* **AADSTS65005:** Az &lt;alkalmazás clientAppDisplayName&gt; engedélyt kért &lt;egy olyan&gt; erőforrás eléréséhezAppDisplayName, amely nem érhető el. 
 
 Lépjen kapcsolatba az alkalmazás fejlesztőjével.
 
-##  <a name="resource-not-available-in-tenant-error"></a>Az erőforrás nem érhető el a bérlő hiba
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; erőforrásokhoz való hozzáférést kér &lt;resourceAppDisplayName&gt; , amely nem áll rendelkezésre a szervezet &lt;tenantDisplayName &gt;. 
+##  <a name="resource-not-available-in-tenant-error"></a>Az erőforrás nem érhető el bérlői hibában
+* **AADSTS65005:** &lt;A&gt; clientAppDisplayName hozzáférést kér &lt;egy olyan&gt; erőforrás-erőforráshozAppDisplayName, amely nem érhető el a szervezet &lt;tenantDisplayName&gt;eszközében. 
 
-Győződjön meg arról, hogy az erőforrás elérhető legyen, vagy lépjen kapcsolatba az rendszergazdájának &lt;tenantDisplayName&gt;.
+Győződjön meg arról, hogy &lt;ez az&gt;erőforrás elérhető, vagy lépjen kapcsolatba a tenantDisplayName rendszergazdájával.
 
-## <a name="permissions-mismatch-error"></a>Engedélyek verzióeltérési hiba
-* **AADSTS65005:** Az alkalmazás hozzáférési erőforrás hozzájárulást kért &lt;resourceAppDisplayName&gt;. A kérelem sikertelen volt, mert nem felel meg hogyan az alkalmazás előre konfigurálva lett alkalmazás regisztrációja során. Forduljon az alkalmazás vendor.* *
+## <a name="permissions-mismatch-error"></a>Engedélyeltérési hiba
+* **AADSTS65005:** Az alkalmazás beleegyezést &lt;kért az&gt;erőforrás-erőforrás eléréséhezAppDisplayName . Ez a kérés nem sikerült, mert nem egyezik meg az alkalmazás előzetes konfigurálásával az alkalmazás regisztrációja során. Lépjen kapcsolatba az alkalmazás forgalmazójával.**
 
-Ezek a hibák összes fordulhatnak elő, amikor egy felhasználó megpróbál beleegyezik abba, hogy az alkalmazás által kért, amely a szervezet címtárában (bérlő) nem található erőforrás-alkalmazás elérésére jogosult. Ez a helyzet akkor fordulhat elő, több okból:
+Ezek a hibák akkor fordulnak elő, amikor a felhasználó által hozzájárulásba kívánt alkalmazás engedélyeket kér egy olyan erőforrás-alkalmazás eléréséhez, amely nem található meg a szervezet címtárában (bérlőjében). Ennek a helyzetnek több oka is lehet:
 
--   Az ügyféloldali alkalmazás fejlesztője rendelkezik az alkalmazás nem megfelelően konfigurálva, okozza, hogy a kérés érvénytelen erőforrást eredményezett a hozzáférést. Ebben az esetben az alkalmazás fejlesztőjének frissítenie kell a probléma megoldásához az ügyfélalkalmazás konfigurációját.
+-   Az ügyfélalkalmazás fejlesztője helytelenül konfigurálta az alkalmazást, így érvénytelen erőforráshoz való hozzáférést kért. Ebben az esetben az alkalmazás fejlesztőjének frissítenie kell az ügyfélalkalmazás konfigurációját a probléma megoldásához.
 
--   Egy egyszerű szolgáltatást a célként megadott erőforrás-alkalmazás jelölő nem létezik a szervezeten belül, vagy a korábban létezett, de el lett távolítva. A probléma megoldásához, egy egyszerű szolgáltatást az erőforrás-alkalmazás ki kell építeni a szervezeten belüli, az ügyfélalkalmazás hozzá engedélyeket kérhet. Az egyszerű szolgáltatás építhető számos módon, attól függően, az alkalmazás, többek között:
+-   A célerőforrás-alkalmazást képviselő egyszerű szolgáltatás nem létezik a szervezetben, vagy korábban létezett, de eltávolították. A probléma megoldásához az erőforrás-alkalmazás egyszerű szolgáltatását ki kell építeni a szervezetben, hogy az ügyfélalkalmazás engedélyeket kérhessen hozzá. A szolgáltatásnév az alkalmazás típusától függően számos módon kiépíthető, beleértve a következőket:
 
-    -   Az erőforrás-alkalmazás (a Microsoft közzétett alkalmazások) előfizetés beszerzése
+    -   Előfizetés beszerzése az erőforrás-alkalmazáshoz (Microsoft által közzétett alkalmazások)
 
-    -   Beleegyezik abba, hogy az erőforrás-alkalmazás
+    -   Hozzájárulás az erőforrás-alkalmazáshoz
 
-    -   Az Azure Portalon az Alkalmazásengedélyek megadása
+    -   Az alkalmazásengedélyek megadása az Azure Portalon keresztül
 
-    -   Az alkalmazás hozzáadása a az Azure AD Alkalmazáskatalógusában
+    -   Az alkalmazás hozzáadása az Azure AD alkalmazásgalériából
 
 ## <a name="next-steps"></a>További lépések 
 
-[Alkalmazások, engedélyek és jóváhagyás az Azure Active Directoryban (v1-végpontra)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Alkalmazások, engedélyek és hozzájárulás az Azure Active Directoryban (v1-végpont)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 
-[Hatókörök, engedélyek és jóváhagyás az Azure Active Directoryban (v2.0-végpontra)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+[Hatókörök, engedélyek és hozzájárulás az Azure Active Directoryban (2.0-s vagy os végpont)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

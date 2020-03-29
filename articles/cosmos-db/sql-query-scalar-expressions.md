@@ -1,21 +1,21 @@
 ---
-title: Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
-description: Ismerkedjen meg a skaláris kifejezés SQL-szintaxisával Azure Cosmos DB. Ez a cikk azt is ismerteti, hogyan lehet a skaláris kifejezéseket összetett kifejezésekkel egyesíteni a kezelők használatával.
+title: Skaláris kifejezések az Azure Cosmos DB SQL-lekérdezésekben
+description: Ismerje meg az Azure Cosmos DB SQL szintaxisának skaláris kifejezését. Ez a cikk azt is ismerteti, hogyan egyesítheti a skaláris kifejezéseket operátorok használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870734"
 ---
-# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
+# <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skaláris kifejezések az Azure Cosmos DB SQL-lekérdezésekben
 
-A [Select záradék](sql-query-select.md) támogatja a skaláris kifejezéseket. A skaláris kifejezés olyan szimbólumok és operátorok kombinációja, amelyek kiértékelése egyetlen érték beszerzésére szolgál. Skaláris kifejezések például a következők: konstansok, tulajdonság-referenciák, tömb elemek hivatkozásai, alias-hivatkozások vagy függvények hívásai. A skaláris kifejezések összetett kifejezésekkel kombinálhatók a kezelők használatával.
+A [SELECT záradék](sql-query-select.md) támogatja a skaláris kifejezéseket. A skaláris kifejezés olyan szimbólumok és operátorok kombinációja, amelyek egyetlen érték eléréséhez értékelhetők. A skaláris kifejezések közé tartoznak például: állandók, tulajdonsághivatkozások, tömbelem-hivatkozások, aliashivatkozások vagy függvényhívások. A skaláris kifejezések operátorok használatával összetett kifejezésekké kombinálhatók.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -50,60 +50,60 @@ A [Select záradék](sql-query-select.md) támogatja a skaláris kifejezéseket.
   
 - `<constant>`  
   
-   Konstans értéket jelöl. Részletekért lásd az [állandók](sql-query-constants.md) szakaszt.  
+   Állandó értéket jelöl. A részleteket lásd [az Állandók](sql-query-constants.md) című részben.  
   
 - `input_alias`  
   
-   A `FROM` záradékban bemutatott `input_alias` által meghatározott értéket jelöli.  
-  Ez az érték nem **meghatározatlan** – a bemenetben nem**definiált** értékek vannak kihagyva.  
+   A `input_alias` `FROM` záradékban bevezetett érték által meghatározott értéket jelöli.  
+  Ez az érték garantáltan nem **lesz meghatározatlan** – a bemeneti adatokban lévő**nem definiált** értékek kimaradnak.  
   
 - `<scalar_expression>.property_name`  
   
-   Egy objektum tulajdonságának értékét jelöli. Ha a tulajdonság nem létezik, vagy a tulajdonság egy értékre hivatkozik, amely nem objektum, a kifejezés kiértékelése nem **definiált** értékre történik.  
+   Egy objektum tulajdonságának értékét jelöli. Ha a tulajdonság nem létezik, vagy a tulajdonság egy értékre hivatkozik, amely nem objektum, akkor a kifejezés **értéke nem definiált** érték.  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Az `property_name` vagy Array elemet tartalmazó tulajdonság értékét jelöli egy tömb index `array_index`. Ha a tulajdonság/tömb indexe nem létezik, vagy a tulajdonság/tömb indexe nem objektum/tömb értékre hivatkozik, a kifejezés kiértékelése nem definiált értékre történik.  
+   A tulajdonság nevét `property_name` vagy tömbelemét egy `array_index` tömb indexével rendelkező tulajdonság értékét jelöli. Ha a tulajdonság/tömb index nem létezik, vagy a tulajdonság/tömb indexre olyan érték hivatkozik, amely nem objektum/tömb, akkor a kifejezés értéke nem definiált érték.  
   
 - `unary_operator <scalar_expression>`  
   
-   Egyetlen értékre alkalmazott operátort jelöl. Részletekért lásd: [operátorok](sql-query-operators.md) szakasz.  
+   Egy egyetlen értékre alkalmazott operátort jelöl. A részleteket lásd [az Operátorok](sql-query-operators.md) részben.  
   
 - `<scalar_expression> binary_operator <scalar_expression>`  
   
-   Két értékre alkalmazott operátort jelöl. Részletekért lásd: [operátorok](sql-query-operators.md) szakasz.  
+   Két értékre alkalmazott operátort jelöl. A részleteket lásd [az Operátorok](sql-query-operators.md) részben.  
   
 - `<scalar_function_expression>`  
   
-   Egy függvény hívásának eredményeképpen definiált értéket jelöli.  
+   Függvényhívás eredménye által meghatározott értéket jelöl.  
   
 - `udf_scalar_function`  
   
-   A felhasználó által definiált skaláris függvény neve.  
+   A felhasználó által definiált skalárfüggvény neve.  
   
 - `builtin_scalar_function`  
   
-   A beépített skaláris függvény neve.  
+   A beépített skalárfüggvény neve.  
   
 - `<create_object_expression>`  
   
-   A megadott tulajdonságokkal és értékekkel rendelkező új objektum létrehozásával kapott értéket jelöli.  
+   A megadott tulajdonságokkal és értékükkel rendelkező új objektum létrehozásával kapott értéket jelöli.  
   
 - `<create_array_expression>`  
   
-   A megadott értékekkel rendelkező új tömb létrehozásával kapott értéket jelöli.  
+   Egy új tömb létrehozásával kapott értéket jelöl, amelynek elemekben megadott értékei vannak.  
   
 - `parameter_name`  
   
-   A megadott paraméter nevének értékét jelöli. A paraméterek nevének egyetlen \@ kell lennie, mint az első karakternek.  
+   A megadott paraméternév értékét jelöli. A paraméterneveknek \@ az első karakterként egyetlen karakterrel kell rendelkezniük.  
   
 ## <a name="remarks"></a>Megjegyzések
   
-  Beépített vagy felhasználó által definiált skaláris függvény meghívásakor az összes argumentumot meg kell adni. Ha az argumentumok bármelyike nincs meghatározva, a függvény nem lesz meghívva, és az eredmény nem lesz meghatározva.  
+  Beépített vagy felhasználó által definiált skaláris függvény hívásakor minden argumentumot meg kell adni. Ha az argumentumok bármelyike nincs definiálva, a függvény nem lesz meghívva, és az eredmény nem lesz definiálva.  
   
-  Objektum létrehozásakor a rendszer kihagyja a nem definiált értékhez rendelt összes tulajdonságot, és a létrehozott objektumban nem fog szerepelni.  
+  Objektum létrehozásakor a meg nem határozott értékhez rendelt tulajdonságokat a program kihagyja, és nem tartalmazza a létrehozott objektumban.  
   
-  Tömb létrehozásakor a rendszer kihagyja a nem **definiált** értékhez rendelt elemet, és a létrehozott objektum nem tartalmazza azt. Ez azt eredményezi, hogy a következő definiált elem a helyére kerül, hogy a létrehozott tömb ne legyen kihagyva indexekkel.  
+  Tömb létrehozásakor a **meg nem határozott** értékhez rendelt elemértékek et a program kihagyja, és nem tartalmazza a létrehozott objektumban. Ez azt eredményezi, hogy a következő definiált elem úgy kerül a helyére, hogy a létrehozott tömb nem hagyja ki az indexeket.  
 
 ## <a name="examples"></a>Példák
 
@@ -139,8 +139,8 @@ Az eredmény a következő:
     ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
-- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Allekérdezéseket](sql-query-subquery.md)
+- [Bevezetés az Azure Cosmos DB bemutatása](introduction.md)
+- [Az Azure Cosmos DB .NET-mintái](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Segédlekérdezések](sql-query-subquery.md)

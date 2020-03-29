@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services fejlesztési környezet beállítása | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan állíthatja be a környezetet a Azure Media Serviceshez való fejlesztéshez.
+description: Ez a cikk bemutatja, hogyan állíthatja be a környezetet az Azure Media Services használatával való fejlesztéshez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895805"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Az Azure Media Services fejlesztési környezet beállítása  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A következő lépésekben az Azure Media Services szolgáltatással történő fejlesztés előfeltételeit ismertetjük.
 
@@ -45,7 +45,7 @@ A REST fejlesztési környezet beállításával kapcsolatban tekintse meg [ezt]
 
 Ha az Azure Media Services API-hoz szeretne csatlakozni, lásd [az Azure Media Services Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az **Azure-kódminták** katalógusban számos kódmintát talál: [Azure Media Services-kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 

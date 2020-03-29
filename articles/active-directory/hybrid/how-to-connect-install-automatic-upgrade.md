@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Automatikus frissítés |} A Microsoft Docs'
-description: Ez a témakör ismerteti a beépített, automatikus frissítési funkció az Azure AD Connect szinkronizálása.
+title: 'Azure AD Connect: Automatikus frissítés | Microsoft dokumentumok'
+description: Ez a témakör az Azure AD Connect-szinkronizálás beépített automatikus frissítési funkcióját ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,91 +17,91 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60349844"
 ---
-# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatikus frissítés
-Ez a funkció jelent meg a build [(kiadás dátuma: 2016. február) 1.1.105.0](reference-connect-version-history.md#111050).  Ez a szolgáltatás frissítve lett a [1.1.561 összeállítása](reference-connect-version-history.md#115610) és mostantól támogatja a további forgatókönyvek, amelyek korábban nem támogatottak.
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
+Ez a funkció az [1.1.105.0 (2016 februárjában jelent meg)](reference-connect-version-history.md#111050)buildelésével került bevezetésre.  Ez a funkció frissítve lett az [1.1.561-es buildben,](reference-connect-version-history.md#115610) és most már támogatja a korábban nem támogatott további forgatókönyveket.
 
 ## <a name="overview"></a>Áttekintés
-Gondoskodik róla, hogy az Azure AD Connect telepítése mindig naprakész minden eddiginél egyszerűbbé teszi a **automatikus frissítés** funkció. Ez a funkció a express telepítések alapértelmezés szerint engedélyezve van, és a frissítés a DirSync. Amikor egy új verziója, a rendszer automatikusan frissíti a telepítést.
-Az alábbi alapértelmezés szerint engedélyezve van a automatikus frissítését:
+Az **automatikus frissítési** funkcióval még soha nem volt ilyen egyszerű, hogy az Azure AD Connect telepítése mindig naprakész legyen. Ez a funkció alapértelmezés szerint engedélyezve van expressz telepítések és DirSync frissítések. Új verzió megjelenésekor a telepítés automatikusan frissül.
+Az automatikus frissítés alapértelmezés szerint engedélyezve van a következőkesetében:
 
-* Expressz telepítési beállítások és a DirSync frissítése.
-* Az SQL Express LocalDB, amelyek használata a mi gyorsbeállításokat mindig használja. DirSync és az SQL Express LocalDB is használhatja.
-* Az AD egy a gyorsbeállítások és a DirSync által létrehozott alapértelmezett MSOL_ fiók.
-* Kevesebb mint 100 000 objektummal rendelkezik a metaverzumban.
+* Expressz beállítások telepítése és DirSync frissítések.
+* Az SQL Express LocalDB használatával, amit az Express beállítások mindig használnak. A DirSync az SQL Express programmal a LocalDB-t is használja.
+* Az AD-fiók az alapértelmezett MSOL_ az Express-beállítások és a DirSync által létrehozott fiókhoz.
+* Kevesebb, mint 100 000 objektum van a metaverzumban.
 
-Automatikus frissítés aktuális állapotának tekinthet meg a PowerShell-parancsmaggal `Get-ADSyncAutoUpgrade`. A következő állapotok rendelkezik:
+Az automatikus frissítés jelenlegi állapota a PowerShell-parancsmaggal `Get-ADSyncAutoUpgrade`tekinthető meg. Ez a következő államok:
 
 | Állapot | Megjegyzés |
 | --- | --- |
-| Enabled |Automatikus frissítés engedélyezve van. |
-| Felfüggesztve |A rendszer csak állítja be. A rendszer **jelenleg nem** fogadni az automatikus frissítéseket. |
-| Letiltva |Automatikus frissítés le van tiltva. |
+| Engedélyezve |Az automatikus frissítés engedélyezve van. |
+| Felfüggesztve |Csak a rendszer állítja be. A rendszer **jelenleg nem** jogosult automatikus frissítésekfogadására. |
+| Letiltva |Az automatikus frissítés le van tiltva. |
 
-Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.  1\.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag lenne letiltása Autoupgrade, ha az automatikus frissítési állapot felfüggesztve értékre lett beállítva. Ez a funkció mostantól megváltozott, így nem blokkolja a AutoUpgrade.
+Az **Engedélyezett** és a `Set-ADSyncAutoUpgrade` **Letiltás** között válthat. Csak a rendszer állítsa be az állam **Felfüggesztett**.  Az 1.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag blokkolja az automatikus frissítést, ha az automatikus frissítési állapot felfüggesztésre van állítva. Ez a funkció most megváltozott, így nem blokkolja az automatikus frissítést.
 
-Automatikus frissítés a frissítési infrastruktúra használ az Azure AD Connect Health. Az automatikus frissítés működik, győződjön meg arról, hogy megnyitotta az URL-címeket a proxykiszolgálót a **az Azure AD Connect Health** leírtak szerint [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Az automatikus frissítés az Azure AD Connect Health szolgáltatást használja a frissítési infrastruktúrához. Az automatikus frissítés működéséhez győződjön meg arról, hogy megnyitotta az URL-címeket az **Azure AD Connect Health** proxykiszolgálóján az Office [365 URL-címeiben és IP-címtartományokban](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)dokumentált módon.
 
 
-Ha a **Synchronization Service Managert** felhasználói felület a kiszolgálón fut, akkor a frissítés fel van függesztve, amíg a felhasználói felület le van zárva.
+Ha a **Szinkronizálási szolgáltatáskezelő** felhasználói felülete fut a kiszolgálón, akkor a frissítés a felhasználói felület bezárásáig felfüggesztésre kerül.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha a Connect-telepítésre nem frissíti magát várt módon, majd kövesse az alábbi lépéseket, ismerje meg, milyen helytelen lehet.
+Ha a Connect telepítése nem a várt módon frissíti magát, kövesse az alábbi lépéseket, hogy megtudja, mi lehet a baj.
 
-Először történik kísérlet az első napján egy új verziója, az automatikus frissítés nem fognak. Egy szándékos véletlenszerűségre azért van előtt frissítés kísérlet történik, így nem kell alarmed, ha a telepítés azonnal nincs frissítve.
+Először is, ne számítson arra, hogy az automatikus frissítés megkísérli az új verzió kiadásának első napján. A frissítés megkísérlése előtt szándékos véletlenszerűség történik, ezért ne ijedjen meg, ha a telepítés nem frissül azonnal.
 
-Ha úgy gondolja, hogy valami nem megfelelő, először futtassa `Get-ADSyncAutoUpgrade` annak érdekében, hogy engedélyezve van az automatikus frissítés.
+Ha úgy gondolja, hogy valami `Get-ADSyncAutoUpgrade` nincs rendben, akkor először futtassa az automatikus frissítés engedélyezéséhez.
 
-Ezután ellenőrizze a proxy vagy tűzfal nyitotta meg a szükséges URL-címeket. Az automatikus frissítést használ az Azure AD Connect Health leírtak szerint a [áttekintése](#overview). Ha a proxy használatát választja, győződjön meg arról, egészségügyi használatára van konfigurálva egy [proxykiszolgáló](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Is tesztelheti a [egészségügyi kapcsolat](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) az Azure ad-hez.
+Ezután győződjön meg arról, hogy megnyitotta a szükséges URL-címeket a proxyban vagy a tűzfalban. Az automatikus frissítés az Azure AD Connect Health szolgáltatást használja az [áttekintésben leírtak szerint.](#overview) Ha proxyt használ, győződjön meg arról, hogy az Állapot szolgáltatás [proxykiszolgáló](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)használatára van konfigurálva. Tesztelje az [Azure AD-hez való állapotkapcsolatot](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) is.
 
-Az Azure AD ellenőrizte kapcsolatokkal, amelyekkel megismerhetők az Eventlog ideje. Indítsa el az eseménynaplót, és tekintse meg a **alkalmazás** az eseménynaplóban. A forrás egy Eseménynapló-szűrő hozzáadása **az Azure AD Connect frissítés** és az event id tartomány **300-399**.  
-![Automatikus frissítés szűrőt az eseménynaplóban](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+Az Azure AD-vel való kapcsolat ellenőrzése után itt az ideje, hogy vizsgálja meg az eseménynaplókat. Indítsa el az eseménynaplót, és tekintse meg az **Alkalmazás** eseménynaplójában. Adjon hozzá egy eseménynapló-szűrőt az **Azure AD Connect frissítéshez** és a **300-399-es**eseményazonosító-tartományhoz.  
+![Eseménynapló-szűrő az automatikus frissítéshez](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
-Most már megtekintheti az automatikus frissítés állapota társított Eventlog.  
-![Automatikus frissítés szűrőt az eseménynaplóban](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
+Most már láthatja az automatikus frissítés állapotához társított eseménynaplókat.  
+![Eseménynapló-szűrő az automatikus frissítéshez](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
 
-A eredménykódot tartalmaz egy előtagot a állapotának áttekintése.
+Az eredménykód előtaggal rendelkezik, amely áttekintést ad az állapotról.
 
-| Eredmény kódja előtagja | Leírás |
+| Eredménykód előtagja | Leírás |
 | --- | --- |
-| Siker |A telepítés sikeresen frissült. |
-| UpgradeAborted |Egy ideiglenes állapot le a frissítést. Az elvárás, hogy később sikeres-e, és újból próbálkozunk. |
-| UpgradeNotSupported |A rendszer, amely blokkolja a rendszer automatikusan frissítendő konfigurációval rendelkezik. Tekintse meg, ha az állapot módosul, de az elvárás, hogy a rendszer manuálisan kell frissíteni a rendszer megpróbálja. |
+| Sikeres |A telepítés frissítése sikeresen megtörtént. |
+| FrissítésMegszakadt |Egy ideiglenes állapot leállította a frissítést. Ez lesz újra próbált újra és a elvárás van amit ez sikerül később. |
+| UpgradeNotSupported |A rendszer olyan konfigurációval rendelkezik, amely megakadályozza a rendszer automatikus frissítését. A rendszer újra megpróbálja látni, hogy az állapot változik-e, de az elvárás az, hogy a rendszert manuálisan kell frissíteni. |
 
-Ez egy lista a leggyakrabban használt üzenetek találja. Nem tartalmazza az összes, de az eredménye üzenet kell lennie, törölje a jelet, mely a probléma van.
+Az alábbiakban a leggyakrabban használt üzenetek listáját találja. Nem tartalmazza az összeset, de az eredményüzenetnek egyértelműnek kell lennie azzal kapcsolatban, hogy mi a probléma.
 
-| Eredményét jelző üzenet | Leírás |
+| Eredményüzenet | Leírás |
 | --- | --- |
-| **UpgradeAborted** | |
-| UpgradeAbortedCouldNotSetUpgradeMarker |Nem sikerült írni a beállításjegyzékben. |
-| UpgradeAbortedInsufficientDatabasePermissions |A beépített Rendszergazdák csoport nincs engedélye az adatbázishoz. Manuálisan frissítse a probléma megoldása érdekében az Azure AD Connect legújabb verzióját. |
-| UpgradeAbortedInsufficientDiskSpace |Nem áll elég lemezterület a frissítés támogatása. |
-| UpgradeAbortedSecurityGroupsNotPresent |Nem sikerült keresse meg és oldja meg a szinkronizálási motor által használt összes biztonsági csoportokat. |
-| UpgradeAbortedServiceCanNotBeStarted |Az NT-szolgáltatás **a Microsoft Azure AD Sync** nem indult el. |
-| UpgradeAbortedServiceCanNotBeStopped |Az NT-szolgáltatás **a Microsoft Azure AD Sync** leállítása nem sikerült. |
-| UpgradeAbortedServiceIsNotRunning |Az NT-szolgáltatás **a Microsoft Azure AD Sync** nem működik. |
-| UpgradeAbortedSyncCycleDisabled |A SyncCycle opcióhoz a [scheduler](how-to-connect-sync-feature-scheduler.md) le van tiltva. |
-| UpgradeAbortedSyncExeInUse |A [synchronization service Managert felhasználói felület](how-to-connect-sync-service-manager-ui.md) meg nyitva a kiszolgálón. |
-| UpgradeAbortedSyncOrConfigurationInProgress |A telepítővarázsló fut, vagy az ütemező kívül ütemezett szinkronizálást. |
+| **FrissítésMegszakadt** | |
+| UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a rendszerleíró adatbázisba. |
+| UpgradeAbortedInsufficientDatabaseEngedélyek |A beépített rendszergazdák csoport nem rendelkezik az adatbázishoz szükséges engedélyekkel. Manuálisan frissítsen az Azure AD Connect legújabb verziójára a probléma megoldásához. |
+| UpgradeAbortedInsufficientDiskSpace |Nincs elég lemezterület a frissítés támogatásához. |
+| UpgradeAbortedSecurityGroupsNotPresent |Nem található és nem oldható fel a szinkronizálási motor által használt összes biztonsági csoport. |
+| UpgradeAbortedServiceCanNotBeStartedStarted |Az NT szolgáltatás **Microsoft Azure AD Sync** nem tudott elindulni. |
+| UpgradeAbortedServiceCanNotBeStopped |Az NT szolgáltatás **Microsoft Azure AD sync** nem tudta leállítani. |
+| UpgradeAbortedServiceIsNotRunning |Az NT szolgáltatás **Microsoft Azure AD Sync** nem fut. |
+| UpgradeAbortedSyncCycleDisabled |Az [ütemező](how-to-connect-sync-feature-scheduler.md) Szinkronizálási ciklus lehetősége le van tiltva. |
+| UpgradeAbortedSyncExeInUse |A [szinkronizálási szolgáltatáskezelő felhasználói felülete](how-to-connect-sync-service-manager-ui.md) meg van nyitva a kiszolgálón. |
+| UpgradeAbortedSyncOrConfigurationInProgress |A telepítővarázsló fut, vagy szinkronizálás volt ütemezve az ütemezőn kívül. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | A kijelölt AD FS bejelentkezési módszert. |
-| UpgradeNotSupportedCustomizedSyncRules |A konfigurációhoz hozzáadott el saját egyéni szabályait. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Engedélyezte a [eszközvisszaírás](how-to-connect-device-writeback.md) funkció. |
-| UpgradeNotSupportedGroupWritebackEnabled |Engedélyezte a [csoportvisszaírás](how-to-connect-preview.md#group-writeback) funkció. |
-| UpgradeNotSupportedInvalidPersistedState |A telepítés még nem egy gyorsbeállításokat vagy a DirSync frissítése. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |Több mint 100 000 objektummal rendelkezik a metaverzumban. |
-| UpgradeNotSupportedMultiForestSetup |Egynél több erdő csatlakozik. Expressz telepítés csak egy erdőben csatlakozik. |
-| UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB adatbázis nem használ. |
-| UpgradeNotSupportedNonMsolAccount |A [AD DS-összekötő fiók](reference-connect-accounts-permissions.md#ad-ds-connector-account) már nem az alapértelmezett MSOL_ fiókot. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Állítson be az AAD Connect, választott *ne konfiguráljon* a bejelentkezési módszer kiválasztásakor. |
-| UpgradeNotSupportedPtaSignInMethod | Az átmenő hitelesítés kijelölt bejelentkezési módszert. |
-| UpgradeNotSupportedStagingModeEnabled |A kiszolgáló beállítása legyen [átmeneti módban](how-to-connect-sync-staging-server.md). |
-| UpgradeNotSupportedUserWritebackEnabled |Engedélyezte a [felhasználó-visszaírás](how-to-connect-preview.md#user-writeback) funkció. |
+| UpgradeNotSupportedAdfsSignInMethod | Az Adfs-t választotta bejelentkezési módszerként. |
+| UpgradeNotSupportedCustomizedSyncRules |Saját egyéni szabályokat adott hozzá a konfigurációhoz. |
+| UpgradeNotSupportedDeviceWritebackEnabled |Engedélyezte az [eszköz visszaírási](how-to-connect-device-writeback.md) funkcióját. |
+| UpgradeNotSupportedGroupWritebackEnabled |Engedélyezte a [csoportvisszaírási](how-to-connect-preview.md#group-writeback) funkciót. |
+| UpgradeNotSupportedInvalidPersistedState |A telepítés nem Expressz vagy DirSync-frissítés. |
+| UpgradeNotSupportedMetaverseSizeExceeededed |Több mint 100 000 objektum van a metaverzumban. |
+| UpgradeNotSupportedMultiForestSetup |Több erdőhöz csatlakozik. Az expressz beállítás csak egy erdőhöz kapcsolódik. |
+| UpgradeNotSupportedNonLocalDbInstall |Nem SQL Server Express LocalDB adatbázist használ. |
+| UpgradeNotSupportedNonMsolAccount |Az [AD DS Connector-fiók](reference-connect-accounts-permissions.md#ad-ds-connector-account) már nem az alapértelmezett MSOL_ fiók. |
+| UpgradeNotSupportednotconfiguredsigninmethod | Az AAD Connect beállításakor a *Nincs konfigurálás* lehetőséget választotta a bejelentkezési módszer kiválasztásakor. |
+| UpgradeNotSupportedPtaSignInMethod | Az átmenő hitelesítést választotta bejelentkezési módszerként. |
+| UpgradeNotSupportedStagingModeEnabled |A kiszolgáló [átmeneti üzemmódban](how-to-connect-sync-staging-server.md)van beállítva. |
+| UpgradeNotSupportedUserWritebackEnabled |Engedélyezte a [felhasználói visszaírási](how-to-connect-preview.md#user-writeback) funkciót. |
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

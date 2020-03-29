@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Az átmenő hitelesítés hibáinak elhárítása |} A Microsoft Docs'
-description: Ez a cikk ismerteti, hogyan háríthatók el az Azure Active Directory (Azure AD) átmenő hitelesítés.
+title: 'Azure AD Connect: Áthaladási hitelesítés hibaelhárítása | Microsoft dokumentumok'
+description: Ez a cikk ismerteti, hogyan hárítsa el az Azure Active Directory (Azure AD) átmenő hitelesítés.
 services: active-directory
-keywords: Hibaelhárítás az Azure AD Connect az átmenő hitelesítés, Active Directory, Azure AD egyszeri bejelentkezés, a szükséges összetevők telepítése egyszeri bejelentkezés
+keywords: Az Azure AD Connect áthaladási hitelesítésének hibaelhárítása, az Active Directory telepítése, az Azure AD, egyszeri bejelentkezés, egyszeri bejelentkezés szükséges összetevőinek telepítése
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,123 +17,123 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456174"
 ---
-# <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
+# <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
-Ez a cikk hibaelhárítási információkat az Azure AD átmenő hitelesítés kapcsolatos gyakori problémákkal kapcsolatban.
+Ez a cikk segítséget nyújt az Azure AD áthaladási hitelesítéssel kapcsolatos gyakori problémákkal kapcsolatos hibaelhárítási információk kereséséhez.
 
 >[!IMPORTANT]
->Ha az átmenő hitelesítés felhasználói bejelentkezési problémák, nem a funkció letiltásához vagy anélkül, hogy egy csak felhőalapú globális rendszergazdai fiókkal tud visszatérni átmenő hitelesítés ügynökök eltávolítása. Ismerje meg [hozzáadása egy csak felhőalapú globális rendszergazdai fiókkal](../active-directory-users-create-azure-portal.md). Ehhez a lépéshez kritikus fontosságú, és biztosítja, hogy ne zárja ki a bérlő.
+>Ha felhasználói bejelentkezési problémákkal szembesül az átmenő hitelesítéssel kapcsolatban, ne tiltsa le a szolgáltatást, és ne távolítsa el az átmenő hitelesítési ügynököket anélkül, hogy csak felhőalapú globális rendszergazdai fiókkal rendelkezne. További információ [a csak felhőalapú globális rendszergazdai fiók hozzáadásáról.](../active-directory-users-create-azure-portal.md) Ez a lépés kritikus fontosságú, és biztosítja, hogy nem kap kizárva a bérlő.
 
 ## <a name="general-issues"></a>Általános problémák
 
-### <a name="check-status-of-the-feature-and-authentication-agents"></a>A szolgáltatás és a hitelesítési ügynökök állapotának ellenőrzése
+### <a name="check-status-of-the-feature-and-authentication-agents"></a>A szolgáltatás és a hitelesítési megbízottak állapotának ellenőrzése
 
-Győződjön meg arról, hogy az átmenő hitelesítés funkció továbbra is **engedélyezve** a bérlő és a hitelesítési ügynökök állapotát jeleníti meg **aktív**, és nem **inaktív**. Címen ellenőrizheti a **az Azure AD Connect** paneljén a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
+Győződjön meg arról, hogy az átadó hitelesítés funkció továbbra is **engedélyezve** van a bérlőn, és a hitelesítési ügynökök állapota **aktív**és nem **inaktív állapotot**mutat. Az állapotát az [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/)Azure **AD Connect** paneljének megnyitásával ellenőrizheti.
 
-![Az Azure Active Directory felügyeleti központ – az Azure AD Connect panel](./media/tshoot-connect-pass-through-authentication/pta7.png)
+![Azure Active Directory felügyeleti központ – Az Azure AD Connect panel](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
-![Az Azure Active Directory felügyeleti központ – átmenő hitelesítés panel](./media/tshoot-connect-pass-through-authentication/pta11.png)
+![Azure Active Directory felügyeleti központ – Áthaladási hitelesítés panel](./media/tshoot-connect-pass-through-authentication/pta11.png)
 
-### <a name="user-facing-sign-in-error-messages"></a>Felhasználói bejelentkezési hibaüzenetek
+### <a name="user-facing-sign-in-error-messages"></a>Felhasználó felé néző bejelentkezési hibaüzenetek
 
-Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítéssel, megjelenhet számukra felhasználói hibák a következők egyikét a bejelentkezési képernyő Azure ad-ben: 
+Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítés használatával, az alábbi felhasználói hibák egyikét láthatja az Azure AD bejelentkezési képernyőjén: 
 
 |Hiba|Leírás|Megoldás:
 | --- | --- | ---
-|AADSTS80001|Nem lehet csatlakozni az Active Directory|Győződjön meg arról, hogy az ügynök kiszolgálók tagjai a felhasználókat, amelyeknek a jelszava kell érvényesíteni eltérő AD-erdőben, és azok tud csatlakozni az Active Directory.  
-|AADSTS8002|Időtúllépés történt az Active Directoryhoz csatlakozó|Ellenőrizze, hogy ellenőrizze, hogy az Active Directory elérhető-e, és az ügynököktől származó válaszol a kérelmekre.
-|AADSTS80004|Az ügynök átadott felhasználónév nem érvényes|Győződjön meg arról, a felhasználó megpróbál bejelentkezni a megfelelő felhasználónév.
-|AADSTS80005|Érvényesítési kiszámíthatatlan WebException észlelt|Átmeneti hiba. Ismételje meg a kérelmet. Ha továbbra sem sikerül, forduljon a Microsoft ügyfélszolgálatához.
-|AADSTS80007|Hiba történt az Active Directory kommunikál|További információ az ügynök naplókat, és győződjön meg arról, hogy a várt módon működik-e az Active Directory.
+|AADSTS80001|Nem lehet csatlakozni az Active Directoryhoz|Győződjön meg arról, hogy az ügynökkiszolgálók ugyanannak az AD-erdőnek a tagjai, mint azoknak a felhasználóknak, akiknek a jelszavát ellenőrizni kell, és csatlakozni tudnak az Active Directoryhoz.  
+|AADSTS8002|Időtúltöltés történt az Active Directoryhoz való csatlakozáskor|Ellenőrizze, hogy az Active Directory elérhető-e, és válaszol-e az ügynökök kéréseire.
+|AADSTS80004|Az ügynöknek átadott felhasználónév érvénytelen.|Győződjön meg arról, hogy a felhasználó a megfelelő felhasználónévvel próbál bejelentkezni.
+|AADSTS80005|Előre nem látható webkivétel ellenőrzése|Átmeneti hiba. Próbálkozzon újra a kéréssel. Ha továbbra is sikertelen, forduljon a Microsoft támogatási szolgálatához.
+|AADSTS80007|Hiba történt az Active Directoryval való kommunikáció során|Ellenőrizze az ügynök naplók további információt, és ellenőrizze, hogy az Active Directory működik a várt módon.
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Bejelentkezési hibák okai a az Azure Active Directory felügyeleti központban (prémium szintű licencre van szüksége)
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Bejelentkezési hibák okai az Azure Active Directory felügyeleti központban (prémium szintű licencre van szüksége)
 
-Ha a bérlő az Azure AD Premium licenccel rendelkezik, akkor is megjeleníthető a [bejelentkezési tevékenységek jelentésének](../reports-monitoring/concept-sign-ins.md) a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
+Ha a bérlő rendelkezik egy Azure AD [Premium-licenc](../reports-monitoring/concept-sign-ins.md) társítva, akkor is tekintse meg a bejelentkezési tevékenység jelentést az [Azure Active Directory felügyeleti központ.](https://aad.portal.azure.com/)
 
-![Az Azure Active Directory felügyeleti központ – bejelentkezési jelentések](./media/tshoot-connect-pass-through-authentication/pta4.png)
+![Azure Active Directory felügyeleti központ – Bejelentkezések jelentés](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-Navigáljon a **Azure Active Directory** -> **bejelentkezések** a a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/) kattintson egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hiba kódja** mező. A mező értékét leképezése a hiba oka és a megoldás a következő táblázat használatával:
+Keresse meg az **Azure Active Directory** -> **bejelentkezések** az [Azure Active Directory felügyeleti központban,](https://aad.portal.azure.com/) és kattintson egy adott felhasználó bejelentkezési tevékenység. Keresse meg a **SIGN-IN ERROR CODE mezőt.** A mező értékét az alábbi táblázat segítségével rendelje hozzá a hiba okához és megoldásához:
 
-|Bejelentkezési hiba kódja|Jelentkezzen be a hiba oka|Megoldás:
+|Bejelentkezési hibakód|Bejelentkezési hiba oka|Megoldás:
 | --- | --- | ---
-| 50144 | A felhasználó Active Directory jelszava lejárt. | A helyszíni Active Directoryban a felhasználó jelszavának alaphelyzetbe állítása.
-| 80001 | Nem érhető el hitelesítési ügynök. | Telepíti és regisztrálja a hitelesítési ügynök.
-| 80002 | A hitelesítési ügynök jelszó-érvényesítési kérése túllépte az időkorlátot. | Ellenőrizze, hogy elérhető legyen a hitelesítési ügynök-e az Active Directoryban.
-| 80003 | A hitelesítési ügynök érvénytelen választ kapott. | Ha a probléma rendszeresen reprodukálható, több olyan felhasználóra, ellenőrizze az Active Directory konfigurációját.
-| 80004 | A bejelentkezési kérésben helytelen egyszerű felhasználónevet (UPN-t) használtak. | Kérje meg a felhasználót, hogy jelentkezzen be a helyes felhasználónevet.
-| 80005 | A hitelesítési ügynök: Hiba történt. | Átmeneti hiba. Próbálkozzon újra később.
-| 80007 | A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. | Ellenőrizze, hogy elérhető legyen a hitelesítési ügynök-e az Active Directoryban.
-| 80010 | A hitelesítési ügynök nem tudta visszafejteni a jelszót. | Ha a probléma rendszeresen reprodukálható, telepítse, és regisztráljon egy új hitelesítési ügynök. És távolítsa el a jelenlegivel. 
-| 80011 | A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot. | Ha a probléma rendszeresen reprodukálható, telepítse, és regisztráljon egy új hitelesítési ügynök. És távolítsa el a jelenlegivel.
+| 50144 | A felhasználó Active Directory jelszava lejárt. | Állítsa alaphelyzetbe a felhasználó jelszavát a helyszíni Active Directoryban.
+| 80001 | Nem érhető el hitelesítési ügynök. | Hitelesítési ügynök telepítése és regisztrálása.
+| 80002 | A hitelesítési ügynök jelszó-érvényesítési kérése túllépte az időkorlátot. | Ellenőrizze, hogy az Active Directory elérhető-e a hitelesítési ügynökből.
+| 80003 | A hitelesítési ügynök érvénytelen választ kapott. | Ha a probléma következetesen több felhasználó számára is megismételhető, ellenőrizze az Active Directory konfigurációját.
+| 80004 | A bejelentkezési kérésben helytelen egyszerű felhasználónevet (UPN-t) használtak. | Kérje meg a felhasználót, hogy a megfelelő felhasználónévvel jelentkezzen be.
+| 80005 | Hitelesítési ügynök: hiba történt. | Átmeneti hiba. Próbálkozzon újra később.
+| 80007 | A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. | Ellenőrizze, hogy az Active Directory elérhető-e a hitelesítési ügynökből.
+| 80010 | A hitelesítési ügynök nem tudta visszafejteni a jelszót. | Ha a probléma következetesen reprodukálható, telepítsen és regisztráljon egy új hitelesítési ügynököt. És távolítsa el a jelenlegit. 
+| 80011 | A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot. | Ha a probléma következetesen reprodukálható, telepítsen és regisztráljon egy új hitelesítési ügynököt. És távolítsa el a jelenlegit.
 
 >[!IMPORTANT]
->Átmenő hitelesítés ügynökök hitelesítéséhez az Azure AD-felhasználók érvényesítésével azonosítsa a felhasználónevek és jelszavak Active Directorybeli meghívásával a [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx). Ennek eredményeképpen munkaállomás bejelentkezési korlátozni az Active Directory állított be a "bejelentkezés" beállítást, ha akkor adhat hozzá kiszolgálókat üzemeltető átmenő hitelesítési ügynökök engedélyezése, valamint a "Bejelentkezés a" kiszolgálók listájához. Ennek hiányában letiltja a felhasználók az Azure AD-ba történő bejelentkezéskor.
+>Az átadó hitelesítési ügynökök úgy hitelesítik az Azure AD-felhasználókat, hogy a [Win32 LogonUser API-t](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)meghívja az Active Directoryhoz. Ennek eredményeképpen, ha az Active Directory "Bejelentkezési" beállítását állította be a munkaállomás-bejelentkezési hozzáférés korlátozására, akkor az átmenő hitelesítési ügynököket tartalmazó kiszolgálókat is hozzá kell adnia a "Bejelentkezési" kiszolgálók listájához. Ennek elmulasztása megakadályozza, hogy a felhasználók bejelentkeznek az Azure AD-be.
 
-## <a name="authentication-agent-installation-issues"></a>Hitelesítési ügynök telepítésével kapcsolatos problémák
-
-### <a name="an-unexpected-error-occurred"></a>Váratlan hiba történt
-
-[Ügynök naplóinak gyűjtése](#collecting-pass-through-authentication-agent-logs) a kiszolgáló és a probléma megoldásához forduljon a Microsoft Support.
-
-## <a name="authentication-agent-registration-issues"></a>Hitelesítési ügynök regisztrációs problémák
-
-### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>A hitelesítési ügynök regisztrációja nem sikerült, mert a blokkolt port
-
-Győződjön meg arról, hogy a kiszolgáló, amelyre telepítve van a hitelesítési ügynök kommunikálhatnak-e a szolgáltatás URL-címek és portok listáját [Itt](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
-
-### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>A hitelesítési ügynök regisztrációs jogkivonatot, vagy a fiók hitelesítési hibák miatt nem sikerült
-
-Győződjön meg arról, hogy egy csak felhőalapú globális rendszergazdai fiókkal minden Azure AD Connect vagy különálló hitelesítési ügynök telepítése és regisztrálása az operations. Van egy ismert probléma az MFA-kompatibilis globális rendszergazdai fiókok; Áthidaló megoldásként kapcsolja ki az MFA ideiglenesen (csak a műveletek végrehajtásához).
+## <a name="authentication-agent-installation-issues"></a>Hitelesítési ügynök telepítési problémái
 
 ### <a name="an-unexpected-error-occurred"></a>Váratlan hiba történt
 
-[Ügynök naplóinak gyűjtése](#collecting-pass-through-authentication-agent-logs) a kiszolgáló és a probléma megoldásához forduljon a Microsoft Support.
+Gyűjtse össze az [ügyintézői naplókat](#collecting-pass-through-authentication-agent-logs) a kiszolgálóról, és lépjen kapcsolatba a Microsoft támogatási szolgálatával a problémával kapcsolatban.
 
-## <a name="authentication-agent-uninstallation-issues"></a>Hitelesítési ügynök eltávolításának kapcsolatos problémák
+## <a name="authentication-agent-registration-issues"></a>Hitelesítési ügynök regisztrációs problémái
 
-### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Figyelmeztetés jelenik meg, amikor az Azure AD Connect eltávolítása
+### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>A hitelesítési ügynök regisztrációja blokkolt portok miatt nem sikerült
 
-Ha az átmenő hitelesítés engedélyezve van a bérlő rendelkezik, és megpróbálja eltávolítani az Azure AD Connect, megjeleníti a következő figyelmeztető üzenet: "Felhasználók nem fognak tudni jelentkezzen be az Azure AD, ha nincsenek más kiszolgálókra telepített átmenő hitelesítés ügynökök."
+Győződjön meg arról, hogy az a kiszolgáló, amelyre a hitelesítési ügynök telepítve van, képes kommunikálni az [itt](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)felsorolt szolgáltatási URL-címekkel és portokkal.
 
-Győződjön meg arról, hogy a telepítő [magas rendelkezésre állású](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) felhasználói bejelentkezés használhatatlanná tévő elkerülése érdekében az Azure AD Connect eltávolítása előtt.
+### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>A hitelesítési ügynök regisztrációja token- vagy fiókengedélyezési hibák miatt nem sikerült
 
-## <a name="issues-with-enabling-the-feature"></a>A szolgáltatás engedélyezési problémái
+Győződjön meg arról, hogy csak felhőalapú globális rendszergazdai fiókot használ az összes Azure AD Connect vagy önálló hitelesítési ügynök telepítési és regisztrációs művelethez. Ismert probléma van az MFA-kompatibilis globális rendszergazdai fiókokkal; ideiglenesen kikapcsolja az MFA-t (csak a műveletek befejezéséhez) kerülő megoldásként.
 
-### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>Nem sikerült, mert nincs hitelesítési ügynökök volt elérhető a funkció engedélyezése
+### <a name="an-unexpected-error-occurred"></a>Váratlan hiba történt
 
-Szüksége lesz az átmenő hitelesítés engedélyezése a bérlő legalább egy aktív hitelesítési ügynököt. Hitelesítési ügynök telepítése az Azure AD Connect vagy egy különálló hitelesítési ügynök telepítése.
+Gyűjtse össze az [ügyintézői naplókat](#collecting-pass-through-authentication-agent-logs) a kiszolgálóról, és lépjen kapcsolatba a Microsoft támogatási szolgálatával a problémával kapcsolatban.
 
-### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>A funkció engedélyezése nem sikerült, mert a blokkolt port
+## <a name="authentication-agent-uninstallation-issues"></a>A hitelesítési ügynök eltávolítási problémái
 
-Győződjön meg arról, hogy a kiszolgáló, amelyen telepítve van az Azure AD Connect kommunikálhatnak-e a szolgáltatás URL-címek és portok listáját [Itt](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Figyelmeztető üzenet az Azure AD Connect eltávolításakor
 
-### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>A funkció engedélyezése a jogkivonatot, vagy a fiók hitelesítési hibák miatt nem sikerült
+Ha engedélyezve van az átmenő hitelesítés a bérlőn, és megpróbálja eltávolítani az Azure AD Connectet, az a következő figyelmeztető üzenetet jeleníti meg: "A felhasználók csak akkor tudnak bejelentkezni az Azure AD-be, ha más átmenő hitelesítési ügynökök vannak telepítve más szervereken."
 
-Ha a funkció engedélyezése egy csak felhőalapú globális rendszergazdai fiók használata érdekében. Egy ismert probléma, és a többtényezős hitelesítés (MFA)-engedélyezve van a globális rendszergazdai fiókok; Áthidaló megoldásként kapcsolja ki az MFA ideiglenesen (csak a a művelet végrehajtásához).
+Győződjön meg arról, hogy a beállítás [magas rendelkezésre állású,](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) mielőtt eltávolítané az Azure AD Connectet, hogy elkerülje a felhasználói bejelentkezés t.
 
-## <a name="collecting-pass-through-authentication-agent-logs"></a>Átmenő hitelesítési ügynök-naplók gyűjtését.
+## <a name="issues-with-enabling-the-feature"></a>A szolgáltatás engedélyezésével kapcsolatos problémák
 
-Függően szükség lehet a probléma szükség van a átmenő hitelesítési ügynök naplóinak különböző helyeken.
+### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>A szolgáltatás engedélyezése nem sikerült, mert nem volt elérhető hitelesítési ügynök
 
-### <a name="azure-ad-connect-logs"></a>Az Azure AD Connect-naplók
+Legalább egy aktív hitelesítési ügynökkel kell rendelkeznie ahhoz, hogy a bérlőn engedélyezze az átmenő hitelesítést. A hitelesítési ügynök telepítése az Azure AD Connect vagy egy önálló hitelesítési ügynök telepítésével telepíthető.
 
-A telepítés kapcsolódó hibák ellenőrizze az Azure AD Connect-naplókat, **%ProgramData%\AADConnect\trace-\*.log**.
+### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>A szolgáltatás engedélyezése blokkolt portok miatt nem sikerült
 
-### <a name="authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplók
+Győződjön meg arról, hogy az a kiszolgáló, amelyre az Azure AD Connect telepítve van, képes kommunikálni az [itt](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)felsorolt szolgáltatási URL-címekkel és portokkal.
 
-A hitelesítési ügynök kapcsolatos hibákat, nyissa meg az Eseménynapló alkalmazást a kiszolgálón, és ellenőrizze a **alkalmazás és szolgáltatás Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
+### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>A szolgáltatás engedélyezése token- vagy fiókengedélyezési hibák miatt nem sikerült
 
-Részletes elemzés engedélyezze a "Munkamenet" log (kattintson a jobb gombbal az Eseménynapló alkalmazásban ez a beállítás található). Ez a napló engedélyezve van a normál működés; során az a hitelesítési ügynök nem futnak csak a hibaelhárításhoz használható. A napló tartalmát csak láthatók, miután a naplót újra le van tiltva.
+Győződjön meg arról, hogy csak felhőalapú globális rendszergazdai fiókot használ a szolgáltatás engedélyezésekor. Ismert probléma van a többtényezős hitelesítést (MFA) engedélyező globális rendszergazdai fiókokkal; ideiglenesen kikapcsolja az MFA-t (csak a művelet befejezéséhez) kerülő megoldásként.
+
+## <a name="collecting-pass-through-authentication-agent-logs"></a>Áthaladási hitelesítési ügynök naplóinak gyűjtése
+
+Attól függően, hogy milyen típusú probléma lehet, meg kell keresni a különböző helyeken átmenő hitelesítési ügynök naplók.
+
+### <a name="azure-ad-connect-logs"></a>Az Azure AD Connect naplói
+
+A telepítéssel kapcsolatos hibákat az Azure AD Connect naplóiban a **%ProgramData%\AADConnect\trace-\*.log mappában.**
+
+### <a name="authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplói
+
+A hitelesítési ügynökkel kapcsolatos hibákért nyissa meg az Eseménynapló alkalmazást a kiszolgálón, és ellenőrizze az **Alkalmazás- és szolgáltatásnaplók\Microsoft\AzureAdConnect\AuthenticationAgent\Admin mappában.**
+
+A részletes elemzéshez engedélyezze a "Munkamenet" naplót (kattintson a jobb gombbal az Eseménynapló alkalmazáson belül, hogy megtalálja ezt a lehetőséget). Ne futtassa a hitelesítési ügynököt úgy, hogy ez a napló engedélyezve van a normál műveletek során; csak hibaelhárításhoz használható. A napló tartalma csak akkor látható, ha a napló újra le van tiltva.
 
 ### <a name="detailed-trace-logs"></a>Részletes nyomkövetési naplók
 
-A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomkövetési naplókat, **%ProgramData%\Microsoft\Azure AD Connect hitelesítési Agent\Trace\\** . Ezek a naplók például miért egy adott felhasználó bejelentkezési okokból nem sikerült az átmenő hitelesítés funkciójával. Ezeket a hibákat a sikertelen bejelentkezési okokból előző táblázatban szereplő bejelentkezési hibák okainak is vannak leképezve. Következő egy példa naplóbejegyzés:
+A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomkövetési naplókat a **következő helyen:\\%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace**. Ezek a naplók tartalmazzák az okokat, amelyek miatt egy adott felhasználói bejelentkezés sikertelen volt az átmenő hitelesítés i. Ezek a hibák is le vannak képezve az előző bejelentkezési hiba okai táblázatban látható bejelentkezési hibák okai. A következő egy példa naplóbejegyzés:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -141,15 +141,15 @@ A felhasználói bejelentkezési hibák elhárításához keresse meg a nyomköv
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-Részletekért leíró (az előző példában "1328" jelöli) hiba megnyitása a parancssor használatával, és futtassa a következő parancsot (Megjegyzés: Cserélje le "1328" a tényleges hiba száma a naplókban megjelenő):
+A hiba leíró részleteit (az előző példában"1328) a parancssor megnyitásával és a következő parancs futtatásával kaphatja meg (Megjegyzés: Cserélje le az "1328" értéket a naplókban látható tényleges hibaszámra):
 
 `Net helpmsg 1328`
 
 ![Átmenő hitelesítés](./media/tshoot-connect-pass-through-authentication/pta3.png)
 
-### <a name="domain-controller-logs"></a>Tartományvezérlő-naplók
+### <a name="domain-controller-logs"></a>Tartományvezérlő naplói
 
-Ha a naplózás engedélyezve van, további információ a biztonsági naplók a tartományvezérlők található. Bejelentkezési kérelmek átmenő hitelesítési ügynökök által küldött lekérdezési egy egyszerű módja a következőképpen történik:
+Ha a naplózás engedélyezve van, további információk találhatók a tartományvezérlők biztonsági naplóiban. Az átmenő hitelesítési ügynökök által küldött bejelentkezési kérelmek lekérdezésének egyszerű módja a következő:
 
 ```
     <QueryList>
@@ -159,11 +159,11 @@ Ha a naplózás engedélyezve van, további információ a biztonsági naplók a
     </QueryList>
 ```
 
-## <a name="performance-monitor-counters"></a>Teljesítményfigyelő-számlálók
+## <a name="performance-monitor-counters"></a>Teljesítményfigyelő számlálói
 
-Hitelesítési ügynökök figyeléséhez egy másik lehetőség, hogy jellemző teljesítményszámlálók nyomon minden kiszolgálón, ahol a hitelesítési ügynök telepítve van. Használja a következő globális számlálók ( **# ESP hitelesítések**, **#PTA sikertelen hitelesítések** és **#PTA sikeres hitelesítések**) és a hiba-számlálók ( **# ESP hitelesítési hibák**):
+A hitelesítési ügynökök figyelésének másik módja, ha nyomon követi a teljesítményfigyelő egyes számlálóit minden olyan kiszolgálón, ahol a hitelesítési ügynök telepítve van. Használja a következő globális számlálókat (**# PTA-hitelesítések**, **#PTA sikertelen hitelesítések** és **#PTA sikeres hitelesítések)** és hibaszámlálókat **(# PTA hitelesítési hibák):**
 
-![Átmenő hitelesítés Teljesítményfigyelő-számlálók](./media/tshoot-connect-pass-through-authentication/pta12.png)
+![Átmenő hitelesítési teljesítményfigyelő számlálók](./media/tshoot-connect-pass-through-authentication/pta12.png)
 
 >[!IMPORTANT]
->Az átmenő hitelesítés használatával több hitelesítési ügynök, magas rendelkezésre állást biztosít, és _nem_ terheléselosztás. A konfigurációtól függően _nem_ nagyjából kapni minden hitelesítési ügynök _egyenlő_ kérelmek száma. Akkor lehet, hogy egy adott hitelesítési ügynök nem forgalmat fogadó egyáltalán.
+>Az átmenő hitelesítés magas rendelkezésre állást biztosít több hitelesítési ügynök használatával, _és nem_ terheléselosztást. A konfigurációtól függően _nem_ minden hitelesítési ügynök kap nagyjából _azonos_ számú kérelmet. Lehetséges, hogy egy adott hitelesítési ügynök egyáltalán nem kap forgalmat.

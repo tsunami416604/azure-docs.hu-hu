@@ -1,6 +1,6 @@
 ---
-title: Probléma van az összevont egyszeri bejelentkezés konfigurálásával egy nem katalógusbeli alkalmazáshoz | Microsoft Docs
-description: Az összevont egyszeri bejelentkezés az Azure AD Application Galleryben nem szereplő egyéni SAML-alkalmazáshoz való konfigurálása során felmerülő gyakori problémák némelyike.
+title: Probléma az összevont egyszeri bejelentkezés konfigurálása nem galériaalkalmazásokhoz | Microsoft dokumentumok
+description: Az Azure AD alkalmazásgalériában nem szereplő egyéni SAML-alkalmazásba való egyszeri bejelentkezés konfigurálásakor felmerülő gyakori problémák kezelése
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,59 +16,59 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76711875"
 ---
-# <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Probléma az összevont egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazáshoz
+# <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Probléma az összevont egyszeri bejelentkezés konfigurálása nem katalógusalkalmazáshoz
 
-Ha probléma merül fel az alkalmazás konfigurálásakor. Ellenőrizze, hogy követte-e az [egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazás-katalógusban nem szereplő alkalmazásokra](configure-federated-single-sign-on-non-gallery-applications.md) című cikkben ismertetett lépéseket.
+Ha egy alkalmazás konfigurálása kor problémát tapasztal. Ellenőrizze, hogy követte-e a cikkben az [egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusban nem szereplő alkalmazásokra](configure-federated-single-sign-on-non-gallery-applications.md) vonatkozó összes lépést.
 
-## <a name="cant-add-another-instance-of-the-application"></a>Nem lehet felvenni az alkalmazás egy másik példányát.
+## <a name="cant-add-another-instance-of-the-application"></a>Nem lehet hozzáadni az alkalmazás másik példányát
 
 Egy alkalmazás második példányának hozzáadásához a következőket kell tudnia:
 
--   Konfigurálja a második példány egyedi azonosítóját. Az első példányhoz használt azonosító nem konfigurálható.
+-   A második példány egyedi azonosítójának konfigurálása. Az első példányhoz használt azonosító nem konfigurálható.
 
--   Állítson be egy másik tanúsítványt, mint az első példánynál használt tanúsítvány.
+-   Az első példánytól eltérő tanúsítvány konfigurálása.
 
-Ha az alkalmazás nem támogatja az előzőek valamelyikét, nem konfigurálhat második példányt.
+Ha az alkalmazás nem támogatja az előző, nem konfigurálhatja a második példány.
 
-## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Hol állítható be a EntityID (felhasználói azonosító) formátuma
+## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Hol állíthatom be az EntityID (felhasználói azonosító) formátumot?
 
-Nem választhatja ki azt a EntityID (felhasználóazonosító), amelyet az Azure AD küld az alkalmazásnak a felhasználó hitelesítése utáni válaszban.
+Nem választhatja ki azt az Entitásazonosító (felhasználói azonosító) formátumot, amelyet az Azure AD a felhasználó hitelesítése után a válaszban küld az alkalmazásnak.
 
-Az Azure AD kiválasztja a NameID attribútum (felhasználói azonosító) formátumát a kiválasztott érték vagy az alkalmazás által az SAML-AuthRequest által kért formátum alapján. További információkért tekintse meg az [egyszeri bejelentkezés SAML protokollját](../develop/single-sign-on-saml-protocol.md#authnrequest) a NameIDPolicy szakaszban.
+Az Azure AD kiválasztja a NameID attribútum (felhasználói azonosító) formátumát a kiválasztott érték vagy az alkalmazás által az SAML AuthRequest-ben kért formátum alapján. További információkért látogasson el az [Egyszeri bejelentkezés SAML protokoll](../develop/single-sign-on-saml-protocol.md#authnrequest) című cikkbe a NameIDPolicy
 
-## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Honnan szerezhetem be az alkalmazás metaadatait vagy tanúsítványát az Azure AD-ből
+## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Hol kaphatom meg az alkalmazás metaadatait vagy tanúsítványát az Azure AD-től?
 
 Az alkalmazás metaadatainak vagy tanúsítványának az Azure AD-ből való letöltéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként** vagy **társrendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** elemre kattintva.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. kattintson a **vállalati alkalmazások** lehetőségre a bal oldali navigációs menü Azure Active Directory.
+4. kattintson az Azure Active Directory bal oldali navigációs **menüjében** az Enterprise Applications parancsra.
 
-5. kattintson a **minden alkalmazás** elemre az alkalmazások listájának megtekintéséhez.
+5. Kattintson **a Minden alkalmazás** elemre az összes alkalmazás listájának megtekintéséhez.
 
-   * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
+   * Ha nem látja a kívánt alkalmazást, használja a **Szűrő** vezérlőt a **Minden alkalmazás lista** tetején, és állítsa a **Megjelenítés** beállítást **minden alkalmazásra.**
 
-6. Válassza ki azt az alkalmazást, amelyhez konfigurálta az egyszeri bejelentkezést.
+6. Válassza ki az egyszeri bejelentkezést konfigurált alkalmazást.
 
-7. Az alkalmazás betöltése után kattintson az **egyszeri bejelentkezésre** az alkalmazás bal oldali navigációs menüjében.
+7. Miután az alkalmazás betöltődik, kattintson az **egyszeri bejelentkezésre** az alkalmazás bal oldali navigációs menüjéből.
 
-8. Nyissa meg az **SAML aláíró tanúsítvány** szakaszt, majd kattintson az oszlop értékének **letöltése** elemre. Attól függően, hogy az alkalmazásnak hogyan kell konfigurálnia az egyszeri bejelentkezést, megjelenik a metaadatok XML-fájljának vagy a tanúsítványnak a letöltésére szolgáló lehetőség.
+8. Nyissa meg az **SAML aláíró tanúsítvány szakaszt,** majd kattintson **az Oszlopérték letöltése** parancsra. Attól függően, hogy az alkalmazás nak mi szükséges egyszeri bejelentkezés konfigurálásához, megjelenik a metaadat-XML vagy a tanúsítvány letöltésének lehetősége.
 
-Az Azure AD nem biztosít URL-címet a metaadatok beszerzéséhez. A metaadatokat csak XML-fájlként lehet beolvasni.
+Az Azure AD nem ad meg URL-címet a metaadatok leéséhez. A metaadatok csak XML-fájlként olvashatók be.
 
-## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nem tudom, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-jogcímeket
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nem tudja, hogyan szabható testre az alkalmazásnak küldött SAML-jogcímek
 
-Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](../develop/active-directory-claims-mapping.md)
+Az alkalmazásnak küldött SAML-attribútumjogcímek testreszabásáról további információt az Azure Active Directory ban található [Jogcímleképezés](../develop/active-directory-claims-mapping.md) című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

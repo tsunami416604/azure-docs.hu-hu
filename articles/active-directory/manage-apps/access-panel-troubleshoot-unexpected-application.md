@@ -1,6 +1,6 @@
 ---
-title: Hogyan alkalmazások jelennek meg a hozzáférési panelen |} A Microsoft Docs
-description: Egy alkalmazás jelenik-e meg a hozzáférési panelen okozó hibák elhárításához
+title: Az alkalmazások megjelenésének a hozzáférési panelen | Microsoft dokumentumok
+description: Hibaelhárítás, hogy miért jelenik meg egy alkalmazás a Hozzáférési panelen
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,141 +17,141 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784416"
 ---
-# <a name="how-applications-appear-on-the-access-panel"></a>Hogyan alkalmazások jelennek meg a hozzáférési panelen
+# <a name="how-applications-appear-on-the-access-panel"></a>Az alkalmazások megjelenésének megtervezése a hozzáférési panelen
 
-A hozzáférési panelen egy webes portál, amely lehetővé teszi, hogy egy felhasználó munkahelyi vagy iskolai fiókkal az Azure Active Directoryban (Azure AD), megtekintheti, és indítsa el a felhőalapú alkalmazásokat, hogy az Azure AD-rendszergazda hozzáférést adott őket. Ezeket az alkalmazásokat úgy vannak konfigurálva, az Azure AD portálon a felhasználó nevében. A rendszergazdák üzembe helyezhetnek a felhasználónak az alkalmazás közvetlenül, vagy csoporthoz egy felhasználó tagja eredményez az alkalmazás a felhasználó hozzáférési panelen jelennek meg.
+A Hozzáférési panel egy webalapú portál, amely lehetővé teszi, hogy az Azure Active Directoryban (Azure AD) munkahelyi vagy iskolai fiókkal rendelkező felhasználó megtekintse és elindítsa azokat a felhőalapú alkalmazásokat, amelyekhez az Azure AD-rendszergazda hozzáférést biztosított számukra. Ezek az alkalmazások a felhasználó nevében vannak konfigurálva az Azure AD portálon. A rendszergazda kiépítheti az alkalmazást közvetlenül a felhasználónak vagy egy olyan csoportnak, amelynek része a felhasználó, ami azt eredményezi, hogy az alkalmazás megjelenik a felhasználó hozzáférési paneljén.
 
-## <a name="general-issues-to-check-first"></a>Először ellenőrizze a általános problémák
+## <a name="general-issues-to-check-first"></a>Általános kérdések, amelyeket először ellenőrizni kell
 
--   Ha egy alkalmazás egy felhasználót vagy csoportot, a felhasználó a tagja, el lett távolítva, próbáljon meg bejelentkezni be és ki újra a felhasználó hozzáférési Panel be néhány perc múlva megtekintheti, ha a rendszer eltávolítja az alkalmazást.
+-   Ha egy alkalmazást eltávolítottak egy olyan felhasználóból vagy csoportból, amelynek a felhasználó tagja, próbáljon meg néhány perc múlva újra bejelentkezni és kijelentkezni a felhasználó hozzáférési paneljén, hogy lássa, az alkalmazás eltávolításra kerül-e.
 
--   Ha egy licencet a felhasználó vagy csoport el lett távolítva az a felhasználó nem tagja ennek a mérete és összetettsége kell tenni a módosításokat a csoport hosszú időt is igénybe vehet. Lehetővé teszi további időpont előtt jelentkezzen be a hozzáférési panelen.
+-   Ha egy licencet eltávolítottak egy felhasználótól vagy csoportból, a felhasználó ennek a tagja, a csoport méretétől és összetettségétől függően a módosítások végrehajtása hosszú időt vehet igénybe. Hagyjon több időt a hozzáférési panelre való bejelentkezés előtt.
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>A felhasználók számára alkalmazások hozzárendelése kapcsolatos problémák
+## <a name="problems-related-to-assigning-applications-to-users"></a>Az alkalmazások felhasználókhoz való hozzárendelésével kapcsolatos problémák
 
-A felhasználó lehet annak, hogy egy alkalmazás a hozzáférési panelen láthatnak, mert azok volt korábban hozzárendelt. Az alábbiakban néhány módszer ellenőrzése:
+Előfordulhat, hogy egy felhasználó azért lát egy alkalmazást a hozzáférési panelen, mert korábban hozzá volt rendelve. Az alábbiakban néhány módja annak ellenőrzésére:
 
--   [Ha egy felhasználó hozzá van rendelve az alkalmazás ellenőrzése](#check-if-a-user-is-assigned-to-the-application)
+-   [Annak ellenőrzése, hogy egy felhasználó hozzá van-e rendelve az alkalmazáshoz](#check-if-a-user-is-assigned-to-the-application)
 
--   [Ellenőrizze, hogy van-e egy felhasználó egy licenc, az alkalmazással kapcsolatos](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Annak ellenőrzése, hogy a felhasználó az alkalmazáshoz kapcsolódó licenc alatt áll-e](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Ha egy felhasználó hozzá van rendelve az alkalmazás ellenőrzése
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>Annak ellenőrzése, hogy egy felhasználó hozzá van-e rendelve az alkalmazáshoz
 
-Ha egy felhasználó hozzá van rendelve az alkalmazás ellenőrzéséhez kövesse az alábbi lépéseket:
+Annak ellenőrzéséhez, hogy egy felhasználó hozzá van-e rendelve az alkalmazáshoz, kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. kattintson az Azure Active Directory bal oldali navigációs **menüjében** az Enterprise Applications parancsra.
 
-5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson **a Minden alkalmazás** elemre az összes alkalmazás listájának megtekintéséhez.
 
-6. **Keresés** a kérdéses alkalmazás neve.
+6. **Keresse meg** a kérdéses alkalmazás nevét.
 
-7. Kattintson a **felhasználók és csoportok**.
+7. kattintson a **Felhasználók és csoportok**elemre.
 
-8. Ellenőrizze, hogy ha a felhasználó az alkalmazáshoz van hozzárendelve.
+8. Ellenőrizze, hogy a felhasználó hozzá van-e rendelve az alkalmazáshoz.
 
-   * Ha a felhasználó eltávolítja az alkalmazásból, **kattintson az adott sorra** a felhasználó és a select **törlése**.
+   * Ha el szeretné távolítani a felhasználót az alkalmazásból, **kattintson a** felhasználó sorára, és válassza a **törlés**lehetőséget.
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Ellenőrizze, hogy van-e egy felhasználó egy licenc, az alkalmazással kapcsolatos
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Annak ellenőrzése, hogy a felhasználó az alkalmazáshoz kapcsolódó licenc alatt áll-e
 
-A felhasználó hozzárendelt licencek ellenőrzéséhez kövesse az alábbi lépéseket:
+A felhasználó hozzárendelt licenceinek ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. Kattintson a **felhasználók és csoportok** a navigációs menü.
+4. kattintson a navigációs menü **Felhasználók és csoportok** parancsára.
 
-5. Kattintson a **minden felhasználó**.
+5. kattintson **a Minden felhasználó gombra.**
 
-6. **Keresés** az Önt érdeklő felhasználó és **kattintson az adott sorra** kiválasztásához.
+6. **Keresse meg** az önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
-7. Kattintson a **licencek** megtekintéséhez, amelyek licencek, a felhasználó jelenleg hozzá van rendelve.
+7. Kattintson **a Licencek** elemre, ha meg szeretné tekinteni, hogy a felhasználó jelenleg mely licenceket rendelte hozzá.
 
-   * Ha a felhasználó hozzá van rendelve egy Office-licencet, ez lehetővé teszi a felhasználó hozzáférési panelen megjelenő első fél Office alkalmazások.
+   * Ha a felhasználó Office-licenchez van rendelve, ez lehetővé teszi, hogy a First Party Office alkalmazások megjelenjenek a felhasználó hozzáférési paneljén.
 
 ## <a name="problems-related-to-assigning-applications-to-groups"></a>Az alkalmazások csoportokhoz való hozzárendelésével kapcsolatos problémák
 
-A felhasználó lehet annak, hogy egy alkalmazás a hozzáférési panelen láthatnak, mert egy csoportot, amely az alkalmazás részét képezik. Az alábbiakban néhány módszer ellenőrzése:
+Előfordulhat, hogy egy felhasználó egy alkalmazást lát a hozzáférési panelen, mert egy olyan csoport része, amelyhez az alkalmazás hozzá van rendelve. Az alábbiakban néhány módja annak ellenőrzésére:
 
--   [A vendégfelhasználói csoporttagságok ellenőrzése](#check-a-users-group-memberships)
+-   [Felhasználó csoporttagságának ellenőrzése](#check-a-users-group-memberships)
 
--   [Ellenőrizze, hogy ha egy felhasználó tagja-e egy licencet rendelt csoport](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
+-   [Annak ellenőrzése, hogy a felhasználó tagja-e egy licenchez rendelt csoportnak](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
-### <a name="check-a-users-group-memberships"></a>A vendégfelhasználói csoporttagságok ellenőrzése
+### <a name="check-a-users-group-memberships"></a>Felhasználó csoporttagságának ellenőrzése
 
-Ellenőrizze a csoport tagságát, kövesse az alábbi lépéseket:
+A csoport tagságának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. Kattintson a **felhasználók és csoportok** a navigációs menü.
+4. kattintson a navigációs menü **Felhasználók és csoportok** parancsára.
 
-5. Kattintson a **minden felhasználó**.
+5. kattintson **a Minden felhasználó gombra.**
 
-6. **Keresés** az Önt érdeklő felhasználó és **kattintson az adott sorra** kiválasztásához.
+6. **Keresse meg** az önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
-7. Kattintson a **csoportok.**
+7. kattintson **a Csoportok gombra.**
 
-8. Ellenőrizze, hogy ha a felhasználó az alkalmazáshoz hozzárendelt csoport része.
+8. Ellenőrizze, hogy a felhasználó tagja-e az alkalmazáshoz rendelt csoportnak.
 
-   * Ha azt szeretné, a felhasználó eltávolítása a csoportból, **kattintson az adott sorra** , a csoport- és válassza a törlés.
+   * Ha el szeretné távolítani a felhasználót a csoportból, **kattintson a** csoport sorára, és válassza a törlés lehetőséget.
 
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Ellenőrizze, hogy ha egy felhasználó tagja-e egy licencet rendelt csoport
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Annak ellenőrzése, hogy a felhasználó tagja-e egy licenchez rendelt csoportnak
 
-1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa meg az [**Azure Portalt,**](https://portal.azure.com/) és jelentkezzen be **globális rendszergazdaként.**
 
-2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg az **Azure Active Directory-bővítményt** a bal oldali főnavigációs menü tetején található **Összes szolgáltatás** elemre kattintva.
 
-3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be az **"Azure Active Directory"** kifejezést a szűrő keresőmezőjébe, és válassza ki az **Azure Active Directory-elemet.**
 
-4. Kattintson a **felhasználók és csoportok** a navigációs menü.
+4. kattintson a navigációs menü **Felhasználók és csoportok** parancsára.
 
-5. Kattintson a **minden felhasználó**.
+5. kattintson **a Minden felhasználó gombra.**
 
-6. **Keresés** az Önt érdeklő felhasználó és **kattintson az adott sorra** kiválasztásához.
+6. **Keresse meg** az önt érdeklő felhasználót, és **kattintson a** kijelölni kívánt sorra.
 
-7. Kattintson a **csoportok.**
+7. kattintson **a Csoportok gombra.**
 
-8. Kattintson az adott csoportban sorát.
+8. kattintson egy adott csoport sorára.
 
-9. Kattintson a **licencek** megtekintéséhez, amely licencek, a csoporthoz van hozzárendelve.
+9. **Kattintson a Licencek** elemre, ha meg szeretné tekinteni, hogy a csoport mely licenceket rendelte hozzá.
 
-   * A csoport hozzá van rendelve egy Office-licencet, ha ez lehetséges, hogy lehetővé teszik az bizonyos első fél Office alkalmazások jelennek meg a felhasználó hozzáférési paneljén.
+   * Ha a csoport Office-licenchez van rendelve, ez lehetővé teheti, hogy bizonyos First Party Office alkalmazások megjelenjenek a felhasználó hozzáférési paneljén.
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Ha ezeket a hibaelhárítási lépéseket végre nem a hárítsa el a problémát
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Ha ezek a hibaelhárítási lépések nem oldják meg a problémát
 
-Nyisson meg egy támogatási jegyet a következő adatokat, ha rendelkezésre áll:
+nyisson meg egy támogatási jegyet a következő információkkal, ha azok rendelkezésre állnak:
 
--   Megfelelési hiba azonosítója
+-   Korrelációs hiba azonosítója
 
--   Egyszerű felhasználónév (felhasználó e-mail-címe)
+-   UPN (felhasználói e-mail cím)
 
 -   Bérlőazonosító
 
 -   Böngésző típusa
 
--   Időzóna és idő/időkeret során hiba történik.
+-   Időzóna és idő/időkeret hiba esetén
 
--   Fiddler-nyomkövetés
+-   Hegedűs nyomok
 
 ## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

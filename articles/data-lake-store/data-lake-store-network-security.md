@@ -1,6 +1,6 @@
 ---
 title: Hálózati biztonság az 1. generációs Azure Data Lake Storage-ben | Microsoft Docs
-description: Megismerheti, hogyan virtuális hálózati integráció az Azure Data Lake Storage Gen1 működik
+description: A virtuális hálózatok integrációjának ismertetése az Azure Data Lake Storage Gen1 szolgáltatásban
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612541"
 ---
-# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózat integrációja Azure Data Lake Storage Gen1
+# <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózati integráció az Azure Data Lake Storage Gen1 számára
 
-Ez a cikk bemutatja a virtuális hálózat integrációja Azure Data Lake Storage Gen1. A virtuális hálózat integrációjával mostantól úgy állíthatja be fiókjait, hogy azok csak az adott virtuális hálózatokról és alhálózatokról érkező forgalmat fogadják. 
+Ez a cikk bemutatja az Azure Data Lake Storage Gen1 virtuális hálózati integrációját. A virtuális hálózat integrációjával mostantól úgy állíthatja be fiókjait, hogy azok csak az adott virtuális hálózatokról és alhálózatokról érkező forgalmat fogadják. 
 
 Ezzel a funkcióval megvédheti Data Lake Storage-fiókját a külső fenyegetésektől.
 
@@ -65,29 +65,29 @@ A Data Lake Storage-fiókok virtuális hálózatok felőli hozzáférésének bi
 A virtuális hálózaton használjon egy tűzfalmegoldást, amely a célfiók URL-címe alapján megszűri a kimenő forgalmat. Csak a jóváhagyott 1. generációs Data Lake Storage-fiók számára engedélyezze a hozzáférést.
 
 Néhány elérhető lehetőség:
-- [Az Azure tűzfal](https://docs.microsoft.com/azure/firewall/overview): [Üzembe helyezhet és konfigurálhat egy Azure-tűzfalon](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) a virtuális hálózat. Lássa el védelemmel a kimenő Data Lake Storage-forgalmat, és korlátozza az ismert és jogosult fiók-URL-címekre.
-- [Hálózati virtuális berendezésen](https://azure.microsoft.com/solutions/network-appliances/) tűzfal: A rendszergazda előfordulhat, hogy csak bizonyos kereskedelmi tűzfal szállítók használatának engedélyezése. Használjon az Azure Marketplace-en elérhető hálózati virtuális berendezési tűzfalmegoldást, amely elláthatja ugyanezt a funkciót.
+- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): A virtuális hálózathoz [helyezzen üzembe és konfiguráljon egy Azure Firewallt](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Lássa el védelemmel a kimenő Data Lake Storage-forgalmat, és korlátozza az ismert és jogosult fiók-URL-címekre.
+- [Hálózati virtuális berendezés](https://azure.microsoft.com/solutions/network-appliances/) tűzfala: Előfordulhat, hogy a rendszergazda csak bizonyos kereskedelmi tűzfaltermékek használatát engedélyezi. Használjon az Azure Marketplace-en elérhető hálózati virtuális berendezési tűzfalmegoldást, amely elláthatja ugyanezt a funkciót.
 
 > [!NOTE]
 > Ha az adatok útvonalán tűzfalat használ, az egy további ugrást jelent az adatok útvonalán. Ez hatással lehet a végpontok közötti hálózati adatátvitel teljesítményére. Az elérhető adatátviteli sebességet és a kapcsolatok késését is befolyásolhatja. 
 
 ## <a name="limitations"></a>Korlátozások
 
-- Data Lake Storage Gen1 virtuálishálózat-integrációs támogatást volt elérhető előtt készült HDInsight-fürtök támogatása az új szolgáltatás hozza létre újra kell lennie.
+- Az új szolgáltatás támogatásához újra létre kell hozni a Data Lake Storage Gen1 virtuális hálózati integrációs támogatás előtt létrehozott HDInsight-fürtöket.
  
-- Amikor új HDInsight-fürt létrehozásakor egy 1. generációs Data Lake Storage-fiókot választ ki, amelyen engedélyezve van a virtuális hálózati integráció, a folyamat sikertelen lesz. Elsőként tiltsa le a virtuális hálózati szabályokat. Vagy a Data Lake Storage-fiók **Tűzfal és virtuális hálózatok** panelén válassza a **Hozzáférés engedélyezése minden hálózatról és szolgáltatásról** lehetőséget. Ezután hozzon létre a HDInsight-fürt végül ismét engedélyezni a virtuális hálózati szabályt vagy vonja kiválasztása előtt **engedélyezze a hozzáférést minden hálózat és szolgáltatás**. További információt a [Kivételek](#exceptions) szakaszban talál.
+- Amikor új HDInsight-fürt létrehozásakor egy 1. generációs Data Lake Storage-fiókot választ ki, amelyen engedélyezve van a virtuális hálózati integráció, a folyamat sikertelen lesz. Elsőként tiltsa le a virtuális hálózati szabályokat. Vagy a Data Lake Storage-fiók **Tűzfal és virtuális hálózatok** panelén válassza a **Hozzáférés engedélyezése minden hálózatról és szolgáltatásról** lehetőséget. Ezután hozza létre a HDInsight-fürtöt, mielőtt véglegesen újra engedélyezne a virtuális hálózati szabályt, vagy kihagyná **a Hozzáférés engedélyezése az összes hálózatról és szolgáltatásból.** További információt a [Kivételek](#exceptions) szakaszban talál.
 
-- Data Lake Storage Gen1 virtuális hálózat integrációja nem működik az [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- A Data Lake Storage Gen1 virtuális hálózati integrációja nem működik [az Azure-erőforrások felügyelt identitásaival.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
   
 - A virtuális hálózattal integrált 1. generációs Data Lake Storage-fiókokban található fájl- és mappaadatok nem érhetők el a portálról. Ez a korlátozás magában foglalja a virtuális hálózathoz tartozó virtuális gépekről való hozzáférést és az olyan tevékenységeket is, mint az Adatkezelő használata. A fiókfelügyeleti tevékenységek továbbra is működni fognak. A virtuális hálózattal integrált Data Lake Storage-fiókokban található fájl- és mappaadatok minden nem portálalapú erőforrás által elérhetők. Ebbe beletartozik az SDK-hozzáférés, a PowerShell-szkriptek és az egyéb (nem a portálról indított) Azure-szolgáltatások. 
 
 ## <a name="configuration"></a>Konfiguráció
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1\. lépés: Az Azure AD szolgáltatás a végpontot használja a virtuális hálózat konfigurálása
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>1. lépés: Konfigurálja a virtuális hálózatot az Azure AD-szolgáltatásvégpont használatára
 
 1.  Nyissa meg az Azure Portalt, és jelentkezzen be fiókjába.
  
-2.  [Hozzon létre egy új virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)az előfizetésében. Vagy használhat egy meglévő virtuális hálózatot is. A virtuális hálózatoknak az 1. generációs Data Lake Storage-fiókkal megegyező régióban kell lenniük.
+2.  [Hozzon létre egy új virtuális hálózatot](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)az előfizetésében. Vagy használhat egy meglévő virtuális hálózatot is. A virtuális hálózatoknak az 1. generációs Data Lake Storage-fiókkal megegyező régióban kell lenniük.
  
 3.  A **Virtuális hálózat** panelen válassza a **Szolgáltatásvégpontok** lehetőséget.
  
@@ -107,7 +107,7 @@ Néhány elérhető lehetőség:
  
     ![A szolgáltatásvégpont sikeres hozzáadása](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>2\. lépés: Az engedélyezett virtuális hálózat vagy alhálózat a Data Lake Storage Gen1 fiók beállítása
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>2. lépés: Az 1. generációs Data Lake Storage-fiókhoz engedélyezett virtuális hálózat vagy alhálózat beállítása
 
 1.  A virtuális hálózat konfigurálását követően [hozzon létre egy új 1. generációs Azure Data Lake Storage-fiókot](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account) az előfizetésében. Vagy használhat egy meglévő 1. generációs Data Lake Storage-fiókot is. Az 1. generációs Data Lake Storage-fióknak a virtuális hálózattal megegyező régióban kell lennie.
  

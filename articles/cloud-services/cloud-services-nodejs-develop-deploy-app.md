@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386187"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
@@ -35,7 +35,7 @@ Az alkalmazás egy egyszerű „hello world” alkalmazás:
 > [!NOTE]
 > A jelen oktatóanyagban szereplő Azure PowerShell használatához Windows rendszer szükséges.
 
-* Telepítse és konfigurálja az [Azure PowerShell] eszközt.
+* Az [Azure Powershell]telepítése és konfigurálása.
 * Az [Azure SDK for .NET 2.7] letöltése és telepítése. A telepítőben válassza a következőket:
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -154,14 +154,14 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
    > [!NOTE]
    > A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. Ha a tárterületet semmi más nem használja, megfontolhatja a törlését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk: [Node.js fejlesztői központ].
 
 <!-- URL List -->
 
 [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [egyszerűsített webalkalmazás használatát]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure Powershell]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [PowerShell összekapcsolása]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

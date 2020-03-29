@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor naplók lekérdezése az Azure HDInsight-fürtök figyeléséhez
-description: Megtudhatja, hogyan futtathat lekérdezéseket Azure Monitor naplókon a HDInsight-fürtön futó feladatok figyeléséhez.
+title: Az Azure Monitor naplóinak lekérdezése az Azure HDInsight-fürtök figyeléséhez
+description: Megtudhatja, hogyan futtathat lekérdezéseket az Azure Monitor naplóiban a HDInsight-fürtön futó feladatok figyeléséhez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,63 +9,63 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: 65e85548420116bdfcab87fe9f81a20e66226beb
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74803809"
 ---
-# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Az Azure Monitor naplóinak lekérdezése a HDInsight-fürtök figyeléséhez
 
-Ismerkedjen meg az Azure HDInsight-fürtök figyelésére szolgáló Azure Monitor-naplók használatával kapcsolatos alapvető forgatókönyvekkel:
+Ismerje meg az Azure HDInsight-fürtök figyeléséhez használt Azure Monitor-naplók néhány alapvető forgatókönyvét:
 
-* [HDInsight-fürt metrikáinak elemzése](#analyze-hdinsight-cluster-metrics)
-* [Esemény-riasztások létrehozása](#create-alerts-for-tracking-events)
+* [HDInsight-fürtmetrikák elemzése](#analyze-hdinsight-cluster-metrics)
+* [Eseményriasztások létrehozása](#create-alerts-for-tracking-events)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Konfigurálnia kell egy HDInsight-fürtöt, hogy Azure Monitor naplókat használjon, és hozzáadta a HDInsight-fürthöz tartozó Azure Monitor naplók figyelési megoldásait a munkaterülethez. Útmutatásért lásd: [Azure monitor naplók használata HDInsight-fürtökkel](hdinsight-hadoop-oms-log-analytics-tutorial.md).
+Konfigurálnia kell egy HDInsight-fürtöt az Azure Monitor-naplók használatához, és hozzá kell adnia a HDInsight-fürtspecifikus Azure Monitor-naplók figyelési megoldásait a munkaterülethez. További információt az [Azure Monitor naplók használata HDInsight-fürtökkel .](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight-fürt metrikáinak elemzése
+## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight-fürtmetrikák elemzése
 
-Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
+Ismerje meg, hogyan kereshet konkrét metrikákat a HDInsight-fürthöz.
 
-1. Nyissa meg a HDInsight-fürthöz társított Log Analytics munkaterületet a Azure Portal.
-1. Az **általános**területen válassza a **naplók**lehetőséget.
-1. Írja be a következő lekérdezést a keresőmezőbe, hogy megkeresse az összes rendelkezésre álló metrikát a Azure Monitor naplók használatára konfigurált összes HDInsight-fürthöz, majd válassza a **Futtatás**lehetőséget. Itt tekintheti meg a művelet eredményét.
+1. Nyissa meg a Log Analytics munkaterületet, amely a HDInsight-fürthöz van társítva az Azure Portalról.
+1. **Az Általános csoportban**válassza **a Naplók**lehetőséget.
+1. Írja be a következő lekérdezést a keresőmezőbe az Azure Monitor-naplók használatára konfigurált összes HDInsight-fürt összes elérhető metrika összes metrikája kereséséhez, majd válassza a **Futtatás lehetőséget.** Itt tekintheti meg a művelet eredményét.
 
     ```kusto
     search *
     ```
 
-    ![Apache Ambari Analytics keresés az összes mérőszámban](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Keresés az összes mérőszámban")
+    ![Az Apache Ambari elemzések az összes mutatót keresik](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Keresés az összes mutatóban")
 
-1. A bal oldali menüben válassza a **szűrő** fület.
+1. A bal oldali menüben válassza a **Szűrő** lapot.
 
-1. A **típus**területen válassza a **szívverés**lehetőséget. Ezután válassza az **alkalmaz & Futtatás**elemet.
+1. A **Típus csoportban**válassza a **Szívverés**lehetőséget. Ezután válassza **& Futtatás alkalmazása**lehetőséget.
 
-    ![log Analytics-keresés – specifikus mérőszámok](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Konkrét mérőszámok keresése")
+    ![log analytics keresés konkrét mérőszámok](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Adott mérőszámok keresése")
 
-1. Figyelje meg, hogy a szövegmezőben a lekérdezés a következőre változik:
+1. Figyelje meg, hogy a szövegmezőben lévő lekérdezés a következőre változik:
 
     ```kusto
     search *
     | where Type == "Heartbeat"
     ```
 
-1. A bal oldali menüben elérhető beállításokkal mélyebbre is kihasználhatja. Példa:
+1. A bal oldali menüben elérhető lehetőségek segítségével mélyebbre áshat. Példa:
 
-    - Egy adott csomópont naplófájljainak megtekintéséhez:
+    - Adott csomópontnaplóinak megtekintése:
 
-        ![Adott hibák keresése output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Adott hibák keresése output1")
+        ![Adott hibák kimenetének keresése1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Adott hibák kimenetének keresése1")
 
     - Naplók megtekintése bizonyos időpontokban:
 
-        ![Adott hibák keresése output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Adott hibák keresése output2")
+        ![Adott hibák keresése kimenet2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Adott hibák keresése kimenet2")
 
-1. Válassza az **alkalmaz & Futtatás** elemet, és tekintse át az eredményeket. Azt is vegye figyelembe, hogy a lekérdezés frissítve lett a következőre:
+1. Válassza **& Futtatás alkalmazása** és az eredmények áttekintése lehetőséget. Azt is vegye figyelembe, hogy a lekérdezés frissítve lett:
 
     ```kusto
     search *
@@ -73,28 +73,28 @@ Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
     | where (Computer == "zk2-myhado") and (TimeGenerated == "2019-12-02T23:15:02.69Z" or TimeGenerated == "2019-12-02T23:15:08.07Z" or TimeGenerated == "2019-12-02T21:09:34.787Z")
     ```
 
-### <a name="additional-sample-queries"></a>További példák a lekérdezésekre
+### <a name="additional-sample-queries"></a>További mintalekérdezések
 
-A 10 perces intervallumban használt erőforrások átlagán alapuló minta-lekérdezés, a fürt neve szerint kategorizálva:
+Mintalekérdezés a 10 perces időközben használt erőforrások átlaga alapján, fürtnév szerint csoportosítva:
 
 ```kusto
 search in (metrics_resourcemanager_queue_root_default_CL) * 
 | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
 ```
 
-A felhasznált erőforrások átlaga alapján történő finomítás helyett a következő lekérdezéssel finomíthatja az eredményeket, ha a maximális erőforrást (valamint a 90-es és a 95. percentilis-t) használja egy 10 perces ablakban:
+A felhasznált erőforrások átlaga alapján történő finomítás helyett a következő lekérdezéssel finomíthatja az eredményeket a maximális erőforrások felhasználása (valamint a 90. és 95. percentilis) alapján egy 10 perces ablakban:
 
 ```kusto
 search in (metrics_resourcemanager_queue_root_default_CL) * 
 | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
 ```
 
-## <a name="create-alerts-for-tracking-events"></a>Riasztások létrehozása a követési eseményekhez
+## <a name="create-alerts-for-tracking-events"></a>Értesítések létrehozása az események nyomon követéséhez
 
-A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezése, amely alapján a riasztás aktiválva van. Bármely olyan lekérdezést használhat, amelyhez riasztást szeretne létrehozni.
+A riasztás létrehozásának első lépése egy olyan lekérdezés, amely alapján a riasztás aktiválódik. Bármilyen lekérdezést használhat, amelyet riasztást szeretne létrehozni.
 
-1. Nyissa meg a HDInsight-fürthöz társított Log Analytics munkaterületet a Azure Portal.
-1. Az **általános**területen válassza a **naplók**lehetőséget.
+1. Nyissa meg a Log Analytics munkaterületet, amely a HDInsight-fürthöz van társítva az Azure Portalról.
+1. **Az Általános csoportban**válassza **a Naplók**lehetőséget.
 1. Futtassa a következő lekérdezést, amelyen riasztást szeretne létrehozni, majd válassza a **Futtatás**lehetőséget.
 
     ```kusto
@@ -103,31 +103,31 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
     A lekérdezés a HDInsight-fürtökön futó sikertelen alkalmazások listáját tartalmazza.
 
-1. Az oldal tetején válassza az **új riasztási szabály** lehetőséget.
+1. Válassza az **Új figyelmeztetési szabály** lehetőséget a lap tetején.
 
-    ![Lekérdezés megadása alert1 létrehozásához](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Lekérdezés megadása alert1 létrehozásához")
+    ![Írjon be lekérdezést a riasztás létrehozásához1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Írjon be lekérdezést a riasztás létrehozásához1")
 
-1. A **szabály létrehozása** ablakban adja meg a lekérdezést és egyéb adatokat a riasztás létrehozásához, majd válassza a **riasztási szabály létrehozása**lehetőséget.
+1. A **Szabály létrehozása** ablakban adja meg a lekérdezést és az egyéb részleteket a riasztás létrehozásához, majd válassza **a Figyelmeztetési szabály létrehozása**lehetőséget.
 
-    ![Lekérdezés megadása alert2 létrehozásához](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Lekérdezés megadása alert2 létrehozásához")
+    ![Írjon be lekérdezést a riasztás létrehozásához2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Írjon be lekérdezést a riasztás létrehozásához2")
 
 ### <a name="edit-or-delete-an-existing-alert"></a>Meglévő riasztás szerkesztése vagy törlése
 
-1. Nyissa meg az Log Analytics munkaterületet a Azure Portal.
+1. Nyissa meg a Log Analytics munkaterületet az Azure Portalon.
 
-1. A bal oldali menüben a **figyelés**területen válassza a **riasztások**lehetőséget.
+1. A bal oldali menü **Figyelés**területén válassza a **Riasztások**lehetőséget.
 
-1. A felső részen válassza a **riasztási szabályok kezelése**lehetőséget.
+1. A lap tetejére válaszd a **Riasztási szabályok kezelése**lehetőséget.
 
-1. Válassza ki a szerkeszteni vagy törölni kívánt riasztást.
+1. Jelölje ki a szerkesztni vagy törölni kívánt riasztást.
 
-1. A következő lehetőségek közül választhat: **Mentés**, **Elvetés**, **Letiltás**és **Törlés**.
+1. A következő lehetőségek közül választhat: **Mentés,** **Elvetés,** **Letiltás**és **Törlés**.
 
-    ![HDInsight Azure Monitor naplók riasztás törlésének szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight Azure Monitor naplók riasztás törlés szerkesztés](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-metric.md).
+További információ: [Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával című témakörben.](../azure-monitor/platform/alerts-metric.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-* [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
-* [Egyéni nézetek létrehozása a Azure Monitor View Designer használatával](../azure-monitor/platform/view-designer.md)
+* [A naplólekérdezések első lépései az Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
+* [Egyéni nézetek létrehozása a Nézettervező használatával az Azure Monitorban](../azure-monitor/platform/view-designer.md)

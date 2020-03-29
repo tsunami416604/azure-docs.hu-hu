@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-kiszolgáló AD FS a Windows Server-Azure Active Directory
+title: Azure MFA-kiszolgáló AD FS szolgáltatással a Windows Server rendszerben – Azure Active Directory
 description: Ez a cikk az Azure Multi-Factor Authentication és az AD FS Windows Server 2012 R2 és 2016 alatti használatának első lépéseit mutatja be.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4b463dad84f2c3ea93fefabdca5141a4b51468c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848204"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS-sel való használathoz Windows Serveren
@@ -25,7 +25,7 @@ Ha Active Directory összevonási szolgáltatásokat (AD FS-t) használ, és sze
 Ebben a cikkben azt mutatjuk be, hogyan használja az Azure Multi-Factor Authentication-kiszolgálót az AD FS-sel Windows Server 2012 R2 vagy Windows Server 2016 rendszeren. További információkért olvassa el a [cikket, amely leírja, hogy hogyan biztosítson védelmet a felhőnek és helyszíni erőforrásainak az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0 segítségével](howto-mfaserver-adfs-2.md).
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>A Windows Server AD FS védelme az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -84,8 +84,8 @@ Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy va
 A MultiFactorAuthenticationAdfsAdapter.config fájl szerkesztéséhez kövesse az alábbi lépéseket:
 
 1. Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.  
-2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: *https:\/\/contoso.com/\<certificatename >/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, ahol *\<certificatename >* a tanúsítvány neve.  
-3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 szkriptet: adja hozzá a `-ConfigurationFilePath &lt;path&gt;` értéket a `Register-AdfsAuthenticationProvider` parancs végéhez. A *&lt;path&gt;* helyére írja be a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útját.
+2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: *https:\/\/\<contoso.com/ tanúsítványnév>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, Ahol * \<a tanúsítványnév>* a tanúsítvány neve.  
+3. A Register-MultiFactorAuthenticationAdfsAdapter.ps1 parancsfájl szerkesztéséhez adja `-ConfigurationFilePath &lt;path&gt;` hozzá `Register-AdfsAuthenticationProvider` a parancs végét, ahol * &lt;&gt; * az elérési út a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útja.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>A Web Service SDK konfigurálása felhasználónévvel és jelszóval
 
@@ -131,26 +131,26 @@ Végezetül futtassa a \Program Files\Multi-Factor Authentication Server\Registe
 A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hogy az Active Directory összevonási szolgáltatások a multipleauthn jogcímet adja ki, amikor egy felhasználó sikeresen végez kétlépéses ellenőrzést. Ez a jogcím átkerül az Azure AD-re. Az alábbi eljárás bemutatja ennek lépéseit:
 
 1. Nyissa meg az AD FS felügyeleti konzolt.
-2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
-3. Kattintson a jobb gombbal a **Microsoft Office 365 Identity Platform** elemre, és válassza a **Jogcímszabályok szerkesztése…** lehetőséget.
+2. A bal oldalon válassza a **Függő entitás megbízhatósága lehetőséget.**
+3. Kattintson a jobb gombbal a **Microsoft Office 365 identitáskezelési platformjára,** és válassza **a Jogcímszabályok szerkesztése parancsot...**
 
-   ![Jogcím-szabályok szerkesztése az ADFS-konzolon](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![Jogcímszabályok szerkesztése az ADFS-konzolon](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
-4. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
+4. Kiállításátalakítási szabályok után kattintson **a Szabály hozzáadása gombra.**
 
    ![Átalakítási szabályok szerkesztése az ADFS-konzolon](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
 
-   ![Átalakítási jogcím szabályának hozzáadása varázsló](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. Adjon nevet a szabálynak.
 7. Válassza a **Hitelesítési módszerek hivatkozásai** lehetőséget a Bejövő jogcím típusaként.
 8. Válassza **Az összes jogcímérték továbbítása** lehetőséget.
 
-    ![Átalakítási jogcím szabályának hozzáadása varázsló](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+    ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
-9. Kattintson a **Finish** (Befejezés) gombra. Zárja be az AD FS felügyeleti konzolt.
+9. Kattintson a **Befejezés** gombra. Zárja be az AD FS felügyeleti konzolt.
 
 ## <a name="troubleshooting-logs"></a>Hibaelhárítási naplók
 

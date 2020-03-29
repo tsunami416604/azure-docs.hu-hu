@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Slackhez Azure Logic Apps
-description: Automatizálja a fájlokat és a fájlok figyelését, valamint a csatornák, csoportok és üzenetek kezelését a Slack-fiókban Azure Logic Apps használatával
+title: Csatlakozás a Slackhez az Azure Logic Apps alkalmazásból
+description: A fájlokat figyelő és csatornákat, csoportokat és üzeneteket kezelő feladatok és munkafolyamatok automatizálása a Slack-fiókban az Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,71 +8,71 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789171"
 ---
-# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>A Slack figyelése és kezelése Azure Logic Apps
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>A Slack figyelése és kezelése az Azure Logic-alkalmazásokkal
 
-A Azure Logic Apps és a Slack-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik a Slack-fájlokat, és kezelhetik a Slack-csatornákat, az üzeneteket, a csoportokat és így tovább, például:
+Az Azure Logic Apps és a Slack-összekötő segítségével automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek figyelik a Tartaléklasztó-fájlokat, és kezelik a Tartalékcsatornákat, üzeneteket, csoportokat és így tovább, például:
 
-* Figyelés az új fájlok létrehozásakor.
-* Csatornák létrehozása, listázása és csatlakoztatása 
-* Üzenetek közzététele.
-* Hozzon létre csoportokat, és állítsa a ne zavarja meg.
+* Figyelje, ha új fájlok jönnek létre.
+* Csatornák létrehozása, listázása és illesztése 
+* Üzeneteket küldeni.
+* Hozzon létre csoportokat, és állítsa be a Ne zavarjanak.
 
-Használhat olyan eseményindítókat, amelyek választ kapnak a Slack-fiókjából, és más műveletek számára elérhetővé teszik a kimenetet. A Slack-fiókkal feladatokat végző műveleteket is használhat. Más műveletek is használhatók a Slack-műveletek kimenetének használatával. Egy új fájl létrehozásakor például az Office 365 Outlook Connector használatával küldhet e-mailt. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Használhatja az eseményindítók, hogy a slack-fiókból kap válaszokat, és a kimenet elérhetővé más műveleteket. A Tartalékidő-fiókkal feladatokat végrehajtó műveleteket is használhatja. Más műveletek is használhatják a Tartalékidő-műveletek kimenetét. Ha például új fájlt hoz létre, e-mailt küldhet az Office 365 Outlook-összekötővel. Ha most kezdi meg a logikai alkalmazások, tekintse át [az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A [Slack](https://slack.com/) -fiók és a felhasználói hitelesítő adatok
+* [A Tartalékidő-fiók](https://slack.com/) és a felhasználói hitelesítő adatok
 
-  A hitelesítő adatai engedélyezik a logikai alkalmazásnak, hogy kapcsolatot hozzon létre, és hozzáférjen a Slack-fiókjához.
+  A hitelesítő adatok engedélyezik a logikai alkalmazás számára, hogy hozzon létre egy kapcsolatot, és hozzáférjen a Slack-fiókhoz.
 
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni a Slack-fiókját. A Slack triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). A Slack művelet használatához indítsa el a logikai alkalmazást egy eseményindítóval, például egy Slack eseményindítóval vagy egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
+* A logikai alkalmazás, ahol szeretné elérni a Slack-fiók. A Tartalékidő-eseményindítóval való kezdéshez [hozzon létre egy üres logikai alkalmazást.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Tartalékidő-művelet használatához indítsa el a logikai alkalmazást egy eseményindítóval, például egy tartalékidő-eseményindítóval vagy egy másik eseményindítóval, például az **Ismétlődés** eseményindítóval.
 
-## <a name="connect-to-slack"></a>Kapcsolódás a Slackhez
+## <a name="connect-to-slack"></a>Csatlakozás a tartalékidőhöz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "Slack" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a "tartalékidő" szót szűrőként. Az eseményindítók listában válassza ki a kívánt eseményindítót. 
 
    – vagy –
 
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
-   A keresőmezőbe írja be a "Slack" kifejezést a szűrőként. 
-   A műveletek listában válassza ki a kívánt műveletet.
+   Meglévő logikai alkalmazások esetén az utolsó lépésben, ahol műveletet szeretne hozzáadni, válassza az **Új lépés lehetőséget.** 
+   A keresőmezőbe írja be szűrőként a "tartalékidő" szót. 
+   A műveletek listájában jelölje ki a kívánt műveletet.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+   Ha lépéseket szeretne hozzáadni a lépések közé, vigye az egérmutatót a lépések közötti nyíl fölé. 
+   Válassza ki a**+** megjelenő pluszjelet ( ), majd válassza **a Művelet hozzáadása**lehetőséget.
 
-1. Ha a rendszer kéri, hogy jelentkezzen be a Slack-ba, jelentkezzen be a Slack-munkaterületére. 
+1. Ha a rendszer kéri, hogy jelentkezzen be a Slack be, jelentkezzen be a Slack-munkaterületre. 
 
-   ![Bejelentkezés a Slack-munkaterületre](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+   ![Bejelentkezés a Slack munkaterületre](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
 
 1. Engedélyezze a hozzáférést a logikai alkalmazáshoz.
 
-   ![A Slackhez való hozzáférés engedélyezése](./media/connectors-create-api-slack/slack-authorize-access.png)
+   ![Hozzáférés engedélyezése a Tartalékidőhöz](./media/connectors-create-api-slack/slack-authorize-access.png)
 
-1. Adja meg a kiválasztott triggerhez vagy művelethez szükséges adatokat. A logikai alkalmazás munkafolyamatának folytatásához adjon hozzá további műveleteket.
+1. Adja meg a kiválasztott eseményindító vagy művelet szükséges adatait. A logikai alkalmazás munkafolyamatának további létrehozásához adjon hozzá további műveleteket.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/slack/).
+Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](/connectors/slack/)
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)

@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás SQL Server vagy Azure SQL Database
-description: A helyszínen vagy a felhőben található SQL-adatbázisok feladatainak automatizálása Azure Logic Apps használatával
+title: Csatlakozás SQL Server vagy Azure SQL Database alkalmazáshoz
+description: Az Azure Logic Apps használatával automatizálhatja a helyszíni vagy felhőbeli SQL-adatbázisok feladatait
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam; logicappspm
@@ -8,101 +8,101 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 tags: connectors
 ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789195"
 ---
-# <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
+# <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Az SQL Server vagy az Azure SQL Database munkafolyamatainak automatizálása az Azure Logic Apps használatával
 
-Ez a cikk bemutatja, hogyan érheti el az SQL Database-ben tárolt adatok egy logikai alkalmazásban az SQL Server-összekötő használatával. Így automatizálhatja az SQL-adatok és-erőforrások kezelésére szolgáló feladatokat, folyamatokat és munkafolyamatokat logikai alkalmazások létrehozásával. Az SQL Server-összekötő a helyszíni [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) és a [felhőalapú Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)esetében egyaránt működik.
+Ez a cikk bemutatja, hogyan érheti el az SQL-adatbázis adatait egy logikai alkalmazáson belülről az SQL Server-összekötővel. Így automatizálhatja az SQL-adatokat és -erőforrásokat kezelő feladatokat, folyamatokat és munkafolyamatokat logikai alkalmazások létrehozásával. Az SQL Server-összekötő a [helyszíni SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) és a [felhőalapú Azure SQL Database esetén](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)is működik.
 
-Létrehozhat olyan logikai alkalmazásokat, amelyek az SQL-adatbázisban vagy más rendszerekben, például a Dynamics CRM Online-ban indított események indításakor futnak. A logikai alkalmazások az SQL-lekérdezések és a tárolt eljárások futtatásával is lekérhetik, behelyezhetik és törölhetik az adatforrásokat. Létrehozhat például egy olyan logikai alkalmazást, amely automatikusan ellenőrzi az új rekordokat a Dynamics CRM Online-ban, elemeket ad hozzá az SQL-adatbázishoz bármely új rekordhoz, majd e-mail-riasztásokat küld a hozzáadott elemekről.
+Létrehozhat logikai alkalmazásokat, amelyek akkor futnak, ha az SQL-adatbázisban vagy más rendszerekben, például a Dynamics CRM Online-ban események aktiválják őket. A logikai alkalmazások is lekérik, beszúrják és törlik az adatokat az SQL-lekérdezések és a tárolt eljárások futtatásával együtt. Létrehozhat például egy logikai alkalmazást, amely automatikusan megkeresi az új rekordokat a Dynamics CRM Online rendszerben, elemeket ad hozzá az SQL-adatbázishoz az új rekordokhoz, majd e-mailben értesítéseket küld a hozzáadott elemekről.
 
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információkkal, korlátozásokkal és ismert problémákkal kapcsolatban tekintse meg az [SQL Server-összekötő hivatkozását ismertető oldalt](https://docs.microsoft.com/connectors/sql/).
+Ha most kezdi meg a logikai alkalmazásokat, tekintse át [az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Rövid útmutató: Az első logikai alkalmazás létrehozása című ismertetése című ismertetése című ismertetése. [Quickstart: Create your first logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md) Az összekötő-specifikus műszaki információkat, korlátozásokat és ismert problémákat az [SQL Server összekötő referencialapján](https://docs.microsoft.com/connectors/sql/)találja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [SQL Server adatbázis](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) vagy [Azure SQL Database](../sql-database/sql-database-get-started-portal.md)
+* [SQL Server-](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) vagy [Azure SQL-adatbázis](../sql-database/sql-database-get-started-portal.md)
 
-  A tábláknak adatokkal kell rendelkezniük, hogy a logikai alkalmazás a műveletek meghívásakor eredményeket lehessen visszaadni. Ha Azure SQL Database hoz létre, használhat példákat tartalmazó adatbázisokat is.
+  A tábláknak adatokkal kell rendelkezniük, hogy a logikai alkalmazás eredményeket adhasson vissza a műveletek hívásakor. Ha létrehoz egy Azure SQL-adatbázist, használhatja a minta adatbázisok, amelyek szerepelnek.
 
-* Az SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevét és a jelszavát. Ezekre a hitelesítő adatokra akkor van szükség, ha engedélyezni szeretné a logikáját az SQL Serverhez való hozzáféréshez.
+* Az SQL-kiszolgáló neve, az adatbázis neve, a felhasználóneve és a jelszava. Ezekre a hitelesítő adatokra van szüksége, hogy engedélyezze a logika iSQL-kiszolgáló elérését.
 
-  * SQL Server a következő adatokat találja meg a kapcsolati karakterláncban:
+  * Az SQL Server esetében ezeket az adatokat a kapcsolati karakterláncban találja:
 
     `Server={your-server-address};Database={your-database-name};User Id={your-user-name};Password={your-password};`
 
-  * Azure SQL Database ezeket a részleteket a kapcsolati karakterláncban találja, vagy a Azure Portal a SQL Database tulajdonságok területen:
+  * Az Azure SQL Database esetében ezeket az adatokat a kapcsolati karakterláncban vagy az Azure Portalon találja az SQL Database tulajdonságai alatt:
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* A helyi számítógépre telepített helyszíni [adatátjáró](../logic-apps/logic-apps-gateway-install.md) és egy [Azure-beli adatátjáró-erőforrás, amelyet a Azure Portal](../logic-apps/logic-apps-gateway-connection.md) a következő forgatókönyvek esetében hozott létre:
+* A helyi számítógépre telepített [helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md) és az Azure [Portalon létrehozott Azure-adatátjáró-erőforrás a](../logic-apps/logic-apps-gateway-connection.md) következő esetekben:
 
-  * A logikai alkalmazások nem futnak [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+  * A logikai alkalmazások nem futnak [integrációs szolgáltatási környezetben (ISE).](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)
 
-  * A *logikai alkalmazások egy* integrációs szolgáltatási környezetben futnak, de Windows-hitelesítést kell használnia a SQL Server-kapcsolatban. Ebben az esetben használja a SQL Server Connector nem ISE verzióját az adatátjáróval együtt, mert az ISE verziója nem támogatja a Windows-hitelesítést.
+  * A logikai alkalmazások integrációs szolgáltatási környezetben *futnak,* de az SQL Server-kapcsolathoz Windows-hitelesítést kell használnia. Ebben az esetben használja az SQL Server-összekötő nem ISE-verzióját az adatátjáróval együtt, mert az ISE-verzió nem támogatja a Windows-hitelesítést.
 
-* Az a logikai alkalmazás, amelyben hozzá kell férnie az SQL-adatbázishoz. A logikai alkalmazás SQL-triggerrel való elindításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
+* A logikai alkalmazás, ahol az SQL-adatbázishoz való hozzáférésre van szüksége. A logikai alkalmazás SQL-eseményindítóval való elindításához [egy üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
 
 <a name="add-sql-trigger"></a>
 
-## <a name="add-a-sql-trigger"></a>SQL-trigger hozzáadása
+## <a name="add-a-sql-trigger"></a>SQL-eseményindító hozzáadása
 
-Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor minden alkalommal elindít egy Logic app-példányt, és elindítja a logikai alkalmazás munkafolyamatának futtatását.
+Az Azure Logic Apps minden logikai alkalmazás kell kezdeni egy [eseményindító,](../logic-apps/logic-apps-overview.md#logic-app-concepts)amely egy adott esemény bekövetkezésekor, vagy ha egy adott feltétel teljesül. Minden alkalommal, amikor az eseményindító aktiválódik, a Logic Apps motor létrehoz egy logikai alkalmazáspéldányt, és megkezdi a logikai alkalmazás munkafolyamatának futtatását.
 
-1. A Azure Portal vagy a Visual Studióban hozzon létre egy üres logikai alkalmazást, amely megnyitja Logic Apps designert. Ez a példa a Azure Portal használja.
+1. Az Azure Portalon vagy a Visual Studio,hozzon létre egy üres logikai alkalmazás, amely megnyitja a Logic Apps Designer. Ez a példa az Azure Portalt használja.
 
-1. A tervezőben a keresőmezőbe írja be szűrőként az "SQL Server" kifejezést. Az eseményindítók listából válassza ki a kívánt SQL-eseményindítót.
+1. A tervezőkeresőmezőjében írja be szűrőként az "sql server" kifejezést. Az eseményindítók listájában válassza ki a kívánt SQL-eseményindítót.
 
-   Ez a példa **azt használja, hogy mikor hozzon létre triggert egy elemmel** .
+   Ez a példa a **Cikk létrehozásakor eseményindítót** használja.
 
-   !["Az elem létrehozásakor" trigger kiválasztása](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
+   ![Válassza az "Elem létrehozásakor" eseményindító lehetőséget.](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
 
-1. Ha a rendszer kéri, hogy hozzon létre egy-egy kapcsolódást, [hozzon létre most egy SQL-kapcsolódást](#create-connection). Ha a kapcsolatok már léteznek, válassza ki a **Táblanév nevet**.
+1. Ha a rendszer kéri, hogy hozzon létre egy kapcsolatot, [hozza létre most az SQL-kapcsolatot.](#create-connection) Ha a kapcsolat létezik, válasszon **egy táblanevet.**
 
-   ![Válassza ki a kívánt táblázatot](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
+   ![A kívánt tábla kijelölése](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
 
-1. Adja meg az **intervallum** és a **gyakoriság** tulajdonságait, amely meghatározza, hogy a logikai alkalmazás milyen gyakran ellenőrizze a táblát.
+1. Állítsa be az **Intervallum** és **gyakoriság** tulajdonságokat, amelyek meghatározzák, hogy a logikai alkalmazás milyen gyakran ellenőrizze a táblát.
 
-   Ez az trigger csak egy sort ad vissza a kijelölt táblából, semmi más. Egyéb feladatok elvégzéséhez vegyen fel további műveleteket, amelyek végrehajtják a kívánt feladatokat. Ha például meg szeretné tekinteni az ebben a sorban lévő adatok megjelenítését, hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, majd e-mail-riasztásokat küldenek. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
+   Ez az eseményindító csak egy sort ad vissza a kijelölt táblából, semmi mást. Más feladatok végrehajtásához adjon hozzá egyéb műveleteket, amelyek a kívánt feladatokat hajtják végre. Ha például meg szeretné tekinteni a sor adatait, hozzáadhat más műveleteket is, amelyek olyan fájlt hoznak létre, amely tartalmazza a visszaadott sor mezőit, majd e-mailes értesítéseket küldhet. Az összekötő höz elérhető egyéb műveletekről az [összekötő referencialapján](https://docs.microsoft.com/connectors/sql/)olvashat.
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés gombot.**
 
-   Ez a lépés automatikusan engedélyezi és közzéteszi a logikai alkalmazást az Azure-ban.
+   Ez a lépés automatikusan engedélyezi és közzéteszi a logikai alkalmazást élőben az Azure-ban.
 
 <a name="add-sql-action"></a>
 
 ## <a name="add-a-sql-action"></a>SQL-művelet hozzáadása
 
-Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan lépés a munkafolyamatban, amely egy triggert vagy egy másik műveletet követ. Ebben a példában a logikai alkalmazás az [ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md)kezdődik, és olyan műveletet hív meg, amely egy SQL-adatbázisból származó sort kap.
+Az Azure Logic Apps egy [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy lépés a munkafolyamatban, amely követi az eseményindító vagy egy másik művelet. Ebben a példában a logikai alkalmazás az [Ismétlődés eseményindítóval](../connectors/connectors-native-recurrence.md)kezdődik, és meghív egy műveletet, amely egy sql-adatbázisból kap egy sort.
 
-1. A Azure Portal vagy a Visual Studióban nyissa meg a logikai alkalmazást Logic Apps Designerben. Ez a példa a Azure Portal használja.
+1. Az Azure Portalon vagy a Visual Studio, nyissa meg a logikai alkalmazást a Logic Apps Designer. Ez a példa az Azure Portalt használja.
 
-1. Az aktiválás vagy művelet alatt, ahol az SQL-műveletet hozzá szeretné adni, válassza az **új lépés**lehetőséget.
+1. Az eseményindító vagy művelet alatt, ahol hozzá szeretné adni az SQL-műveletet, válassza az **Új lépés**lehetőséget.
 
    ![Új lépés hozzáadása a logikai alkalmazáshoz](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+   Ha műveletet szeretne hozzáadni a meglévő lépések közé, vigye az egeret a csatlakozó nyíl fölé. Jelölje ki a**+** megjelenő pluszjelet ( ), majd kattintson **a Művelet hozzáadása gombra.**
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "SQL Server" kifejezést. A műveletek listából válassza ki a kívánt SQL-műveletet.
+1. A **Művelet kiválasztása csoportkereső**mezőjében írja be szűrőként az "sql server" kifejezést. A műveletek listájában válassza ki a kívánt SQL-műveletet.
 
-   Ez a példa a **sor beolvasása** műveletet használja, amely egyetlen rekordot kap.
+   Ez a példa a **Sor legete** műveletet használja, amely egyetlen rekordot kap.
 
-   ![Az SQL "sor beolvasása" művelet megkeresése és kiválasztása](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
+   ![Sql "Get row" művelet ének keresése és kijelölése](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Ez a művelet csak egy sort ad vissza a kijelölt táblából, semmi más. Az ebben a sorban lévő adatok megtekintéséhez hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, és a fájlt egy felhőalapú Storage-fiókban tárolják. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
+   Ez a művelet csak egy sort ad vissza a kijelölt táblából, semmi mást. Az ebben a sorban lévő adatok megtekintéséhez hozzáadhat más műveleteket, amelyek olyan fájlt hoznak létre, amely tartalmazza a visszaadott sor mezőit, és a fájlt egy felhőalapú tárfiókban tárolja. Az összekötő höz elérhető egyéb műveletekről az [összekötő referencialapján](https://docs.microsoft.com/connectors/sql/)olvashat.
 
-1. Ha a rendszer kéri, hogy hozzon létre egy-egy kapcsolódást, [hozzon létre most egy SQL-kapcsolódást](#create-connection). Ha a hálózat már létezik, válassza ki a **Táblanév nevet**, és adja meg a kívánt rekordhoz tartozó **sort** .
+1. Ha a rendszer kéri, hogy hozzon létre egy kapcsolatot, [hozza létre most az SQL-kapcsolatot.](#create-connection) Ha a kapcsolat létezik, jelöljön ki egy **táblanevet**, és adja meg a kívánt rekord **sorazonosítóját.**
 
-   ![Adja meg a tábla nevét és a sor AZONOSÍTÓját](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
+   ![Adja meg a tábla nevét és a sorazonosítót](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés gombot.**
 
-   Ez a lépés automatikusan engedélyezi és közzéteszi a logikai alkalmazást az Azure-ban.
+   Ez a lépés automatikusan engedélyezi és közzéteszi a logikai alkalmazást élőben az Azure-ban.
 
 <a name="create-connection"></a>
 
@@ -112,28 +112,28 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="handle-bulk-data"></a>Tömeges adatkezelés
+## <a name="handle-bulk-data"></a>Tömeges adatok kezelése
 
-Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja vissza az összes eredményt egyszerre, vagy az eredményhalmaz méretének és szerkezetének jobb szabályozását szeretné. A következő módszerekkel kezelheti az ilyen nagy eredményeket:
+Néha olyan nagy eredményhalmazokkal kell dolgoznia, hogy az összekötő nem adja vissza az összes eredményt egyszerre, vagy jobban szeretné szabályozni az eredményhalmazok méretét és szerkezetét. Íme néhány módszer, amelyekkel ilyen nagy eredményhalmazokat kezelhet:
 
-* Az eredmények kisebb készletekként való kezeléséhez kapcsolja be a *tördelést*. További információ: [tömeges adatok, rekordok és elemek beolvasása a tördelés használatával](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
+* Ha kisebb halmazként szeretné kezelni az eredményeket, kapcsolja be a *tördelést.* További információt a [Tömeges adatok, rekordok és elemek tördeléssel című](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)témakörben talál.
 
 * Hozzon létre egy tárolt eljárást, amely a kívánt módon rendezi az eredményeket.
 
-  Több sor beolvasása vagy beillesztése esetén a logikai [alkalmazás ezen](../logic-apps/logic-apps-limits-and-config.md)sorokon keresztül is megismételheti [*ezeket a sorokat*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) . Ha azonban a logikai alkalmazásnak a rekordhalmazokkal együtt kell működnie, például több ezer vagy több millió sorból, akkor az adatbázis felé irányuló hívások költségeinek minimalizálására van szükség.
+  Több sor beszerzésekor vagy beszúrásakor a logikai alkalmazás végighaladhat ezeken a sorokon egy [*until ciklus*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) használatával ezeken a [korlátokon](../logic-apps/logic-apps-limits-and-config.md)belül. Ha azonban a logikai alkalmazásnak olyan nagy rekordkészletekkel kell dolgoznia, például több ezer vagy több millió sor, hogy minimalizálni szeretné az adatbázis-hívásokból eredő költségeket.
 
-  Az eredmények a kívánt módon történő rendezéséhez létrehozhat egy [*tárolt eljárást*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely az SQL-példányban fut, és a **Select-Order by** utasítást használja. Ez a megoldás az eredmények méretének és szerkezetének nagyobb mértékű szabályozását teszi lehetővé. A logikai alkalmazás meghívja a tárolt eljárást az SQL Server-összekötő által **tárolt eljárás végrehajtása** művelettel.
+  Ha az eredményeket a kívánt módon szeretné rendszerezni, létrehozhat egy [*tárolt eljárást,*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) amely az SQL-példányban fut, és a **SELECT - ORDER BY** utasítást használja. Ez a megoldás nagyobb ellenőrzést biztosít az eredmények mérete és szerkezete felett. A logikai alkalmazás meghívja a tárolt eljárást az SQL Server-összekötő **Tárolt eljárás végrehajtása** művelet használatával.
 
-  További megoldási részletekért tekintse meg a következő cikkeket:
+  További részletek értendők a következő cikkekben:
 
-  * [SQL-tördelés a tömeges adatátvitel Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
+  * [SQL-töredezés tömeges adatátvitelhez a Logic Apps alkalmazásokkal](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-  * [SELECT-ORDER BY záradék](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  * [SELECT - ORDER BY záradék](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
+Az összekötő eseményindítóival, műveleteivel és korlátaival kapcsolatos technikai információkért tekintse meg az [összekötő referencialapját.](https://docs.microsoft.com/connectors/sql/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról
+* További információ az Azure Logic Apps egyéb [összekötőiről](../connectors/apis-list.md)

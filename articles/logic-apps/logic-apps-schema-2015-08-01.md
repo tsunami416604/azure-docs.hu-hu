@@ -1,6 +1,6 @@
 ---
-title: A séma frissítései augusztus-1-2015 előzetes verzióra
-description: 'Frissített séma-verzió: 2015-08-01 – előzetes verzió a Logic app-definíciók számára Azure Logic Apps'
+title: Sémafrissítések az augusztus 1-2015 előzetes verzióhoz
+description: Frissített séma verzió 2015-08-01-preview logikai alkalmazásdefiníciók az Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,39 +9,39 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/31/2016
 ms.openlocfilehash: b6746baaede777eb8c2afcae9eb3fe80b669c468
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792846"
 ---
-# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Séma frissítései Azure Logic Apps – augusztus 1., 2015 előzetes verzió
+# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Sémafrissítések az Azure Logic Apps alkalmazáshoz – 2015.
 
-A Azure Logic Apps sémája és API-verziója olyan kulcsfontosságú funkciókat tartalmaz, amelyek megbízhatóbb és könnyebben használható logikai alkalmazásokat tesznek elérhetővé:
+Ez a séma- és API-verzió az Azure Logic Apps hez olyan kulcsfontosságú fejlesztéseket tartalmaz, amelyek megbízhatóbbá és könnyebben használhatóvá teszik a logikai alkalmazásokat:
 
-* A **APIApp** művelet típusa mostantól [**APIConnection**](#api-connections).
-* Az **Ismétlési** művelet már [**foreach**](#foreach)néven szerepel.
-* A [ **http-figyelő** API-alkalmazásra](#http-listener) már nincs szükség.
-* A gyermek munkafolyamatok hívása egy [új sémát](#child-workflows)használ.
+* Az **APIApp-művelettípus** neve [**APIConnection**](#api-connections)lett.
+* Az **Ismétlés** művelet neve Most [**Antól Foreach.**](#foreach)
+* A [ **HTTP Listener** API-alkalmazás](#http-listener) már nincs szükség.
+* Az alárendelt munkafolyamatok hívása [új sémát](#child-workflows)használ.
 
 <a name="api-connections"></a>
 
-## <a name="move-to-api-connections"></a>Áttérés az API-kapcsolatokra
+## <a name="move-to-api-connections"></a>Áthelyezés API-kapcsolatokra
 
-A legnagyobb változás az, hogy már nem kell API Apps telepíteni az Azure-előfizetésbe, hogy az API-kat használhassa. Az API-k az alábbi módokon használhatók:
+A legnagyobb változás az, hogy már nem kell telepítenie az API-alkalmazásokat az Azure-előfizetésében, hogy API-kat használhasson. Az API-k használatával a következőképpen használhatja a következőket:
 
 * Felügyelt API-k
-* Egyéni webes API-k
+* Az egyéni webes API-k
 
-Az egyes módokat némileg másképp kezelik, mert a felügyeleti és üzemeltetési modelljeik eltérőek. A modell egyik előnye, hogy már nem korlátozza az Azure-erőforráscsoporthoz üzembe helyezett erőforrásokat. 
+Minden út kezeli kissé másképp, mert a menedzsment és hosting modellek eltérőek. A modell egyik előnye, hogy már nem korlátozza az Azure-erőforráscsoportban üzembe helyezett erőforrásokat. 
 
 ### <a name="managed-apis"></a>Felügyelt API-k
 
-A Microsoft felügyel néhány API-t az Ön nevében, például az Office 365, a Salesforce, a Twitter és az FTP szolgáltatáshoz. Bizonyos felügyelt API-kat használhat, például a Bing fordítását, míg mások konfigurációt igényelnek, más néven a *kapcsolódást*.
+A Microsoft az Ön nevében kezel bizonyos API-kat, például az Office 365-öt, a Salesforce-ot, a Twittert és az FTP-t. Egyes felügyelt API-kat ugyanúgy is használhat, mint például a Bing Fordító, míg mások nak konfigurációra van szükségük, más néven *kapcsolatra.*
 
-Ha például az Office 365-et használja, létre kell hoznia egy olyan kapcsolatokat, amely tartalmazza az Office 365 bejelentkezési jogkivonatát. A token tárolása és frissítése biztonságos, így a logikai alkalmazás mindig meghívhatja az Office 365 API-t. Ha az SQL-vagy FTP-kiszolgálóhoz szeretne csatlakozni, létre kell hoznia egy olyan kapcsolatot, amely rendelkezik a kapcsolati karakterlánccal. 
+Az Office 365 használataesetén például létre kell hoznia egy olyan kapcsolatot, amely tartalmazza az Office 365 bejelentkezési jogkivonatát. A jogkivonat biztonságosan van tárolva és frissítve, így a logikai alkalmazás mindig hívhatja az Office 365 API-t. Ha csatlakozni szeretne az SQL- vagy FTP-kiszolgálóhoz, létre kell hoznia egy olyan kapcsolatot, amely rendelkezik a kapcsolati karakterláncmal. 
 
-Ebben a definícióban ezeket a műveleteket `APIConnection`nevezzük. Az alábbi példa egy olyan kapcsolódási példát mutat be, amely az Office 365 e-mail küldését hívja meg:
+Ebben a definícióban ezeket a műveleteket nevezik `APIConnection`. Íme egy példa egy olyan kapcsolatra, amely e-mail küldésére hívja az Office 365-öt:
 
 ``` json
 {
@@ -70,20 +70,20 @@ Ebben a definícióban ezeket a műveleteket `APIConnection`nevezzük. Az alább
 }
 ```
 
-A `host` objektum az API-kapcsolatokhoz egyedi bemenetek részét képezi, és a következő részeket tartalmazza: `api` és `connection`. A `api` objektum azt a futásidejű URL-címet adja meg, ahol a felügyelt API üzemeltetve van. Az összes elérhető felügyelt API-t megtekintheti a következő módszer meghívásával:
+Az `host` objektum az API-kapcsolatokra vonatkozó adatok része, és a `api` `connection`következő részeket tartalmazza: és . Az `api` objektum megadja a futásidejű URL-címet, ahol a felügyelt API található. Az összes elérhető felügyelt API-t a következő módszer hívásával láthatja:
 
 ```text
 GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
 ```
 
-Ha API-t használ, az API lehet, hogy nincs megadva *kapcsolódási paraméter*. Tehát ha az API nem határozza meg ezeket a paramétereket, nincs szükség kapcsolatok megadására. Ha az API definiálja ezeket a paramétereket, létre kell hoznia egy, a megadott névvel rendelkező kapcsolatokat.  
-Ezt követően a `connection` objektumban hivatkozhat erre a névre a `host` objektumon belül. Ha egy erőforráscsoportot szeretne létrehozni, hívja meg a következő metódust:
+API használatakor előfordulhat, hogy az API-nak nincs *kapcsolati paramétere.* Így ha az API nem határozza meg ezeket a paramétereket, nincs kapcsolat szükséges. Ha az API határozza meg ezeket a paramétereket, létre kell hoznia egy kapcsolatot egy megadott névvel.  
+Ezután hivatkozik erre `connection` a `host` névre az objektumon belüli objektumban. Ha erőforráscsoportban szeretne kapcsolatot létrehozni, hívja meg ezt a módszert:
 
 ```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
-A következő törzstel:
+A következő testtel:
 
 ``` json
 {
@@ -99,10 +99,10 @@ A következő törzstel:
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Felügyelt API-k központi telepítése Azure Resource Manager sablonban
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Felügyelt API-k telepítése Azure Resource Manager-sablonban
 
-Ha nincs szükség interaktív bejelentkezésre, létrehozhat egy teljes alkalmazást egy Resource Manager-sablon használatával.
-Ha be kell jelentkeznie, továbbra is használhatja a Resource Manager-sablonokat, de a Azure Portalon keresztül engedélyeznie kell a kapcsolatokat. 
+Ha nincs szükség interaktív bejelentkezésre, létrehozhat egy teljes alkalmazást egy Erőforrás-kezelő sablon használatával.
+Ha bejelentkezésre van szükség, továbbra is használhatja a Resource Manager-sablont, de engedélyeznie kell a kapcsolatokat az Azure Portalon keresztül. 
 
 ``` json
 "resources": [ {
@@ -192,13 +192,13 @@ Ha be kell jelentkeznie, továbbra is használhatja a Resource Manager-sablonoka
 } ]
 ```
 
-Ebben a példában láthatja, hogy a kapcsolatok csak az erőforráscsoporthoz tartozó erőforrások. Az előfizetésben elérhető felügyelt API-kra hivatkoznak.
+Ebben a példában látható, hogy a kapcsolatok csak az erőforráscsoportban élő erőforrások. Hivatkoznak az előfizetésben elérhető felügyelt API-kra.
 
-### <a name="your-custom-web-apis"></a>Egyéni webes API-k
+### <a name="your-custom-web-apis"></a>Az egyéni webes API-k
 
-Ha a Microsoft által felügyelt helyett saját API-kat használ, használja a beépített **http** -műveletet az API-k meghívásához. Ideális esetben meg kell adnia egy hencegő végpontot az API-hoz. Ez a végpont segít a Logic app Designerben az API bemeneteit és kimeneteit megjeleníteni. Hencegő végpont nélkül a tervező csak átlátszatlan JSON-objektumokként jeleníti meg a bemeneteket és kimeneteket.
+Ha a Microsoft által felügyelt ek helyett saját API-kat **HTTP** használ, a beépített HTTP-művelettel hívja meg az API-kat. Ideális esetben meg kell adnia egy Swagger-végpontot az API-hoz. Ez a végpont segít a Logic App Designer az API bemenetek és kimenetek megjelenítése. Swagger-végpont nélkül a tervező csak a bemenetek és kimenetek átlátszatlan JSON-objektumokként jeleníthető meg.
 
-Az alábbi példa az új `metadata.apiDefinitionUrl` tulajdonságot mutatja be:
+Íme egy példa, `metadata.apiDefinitionUrl` amely bemutatja az új tulajdonságot:
 
 ``` json
 "actions": {
@@ -215,12 +215,12 @@ Az alábbi példa az új `metadata.apiDefinitionUrl` tulajdonságot mutatja be:
 }
 ```
 
-Ha Azure App Serviceon futtatja a webes API-t, a webes API automatikusan megjelenik a tervezőben elérhető műveletek listájában. Ha nem, akkor közvetlenül be kell illesztenie az URL-címet. A hencegő végpontnak nem hitelesítettnek kell lennie ahhoz, hogy használható legyen a Logic app Designerben, de saját maga is biztonságossá teheti az API-t bármilyen, a hencegés által támogatott módszerrel.
+Ha az Azure App Service-ben üzemelteti a webes API-t, a webes API automatikusan megjelenik a tervezőben elérhető műveletek listájában. Ha nem, akkor közvetlenül be kell illesztenie az URL-t. A Swagger-végpont nem hitelesíthető, hogy használható legyen a Logic App Designer, bár az API-t is biztosíthatja bármilyen módszerekkel, amelyeket swagger támogatja.
 
-### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Meghívásos üzembe helyezett API-alkalmazások a 2015-08-01-es verzióban – előzetes verzió
+### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Üzembe helyezett API-alkalmazások hívása a 2015-08-01-preview-val
 
-Ha korábban üzembe helyezett egy API-alkalmazást, meghívhatja az alkalmazást a **http** -művelettel.
-Ha például a Dropbox használatával kívánja kilistázni a fájlokat, a **2014-12-01-** es verziójú sémájának definíciója a következőhöz hasonló lehet:
+Ha korábban telepített egy API-alkalmazást, meghívhatja az alkalmazást a **HTTP-művelettel.**
+Ha például a Dropbox segítségével listázfájlokat, a **2014-12-01-preview séma** verziódefiníciója a következőhöz hasonló lehet:
 
 ``` json
 "definition": {
@@ -261,7 +261,7 @@ Ha például a Dropbox használatával kívánja kilistázni a fájlokat, a **20
 }
 ```
 
-Most már létrehozhat egy hasonló HTTP-műveletet, és a Logic app-definíció `parameters` szakaszát változatlanul hagyhatja, például:
+Most már létrehozhat egy hasonló HTTP-műveletet, és `parameters` változatlanul hagyhatja a logikai alkalmazás definíciójának szakaszát, például:
 
 ``` json
 "actions": {
@@ -286,24 +286,24 @@ Most már létrehozhat egy hasonló HTTP-műveletet, és a Logic app-definíció
 }
 ```
 
-Ezeket a tulajdonságokat egy-az-egyhez:
+Séta ezeken a tulajdonságokon keresztül egyenként:
 
-| Művelet tulajdonsága | Leírás |
+| Művelet tulajdonság | Leírás |
 | --- | --- |
-| `type` | `APIapp` helyett `Http` |
-| `metadata.apiDefinitionUrl` | Ha ezt a műveletet a Logic app Designerben szeretné használni, foglalja bele a metaadatok végpontját, amely a következőkből áll: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` | Kiépítés forrása: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
-| `inputs.method` | Mindig `POST` |
-| `inputs.body` | Ugyanaz, mint az API-alkalmazás paramétereinek |
-| `inputs.authentication` | Ugyanaz, mint az API-alkalmazás hitelesítése |
+| `type` | `Http`ahelyett, hogy`APIapp` |
+| `metadata.apiDefinitionUrl` | Ha ezt a műveletet a Logic App Designer, adja meg a metaadat-végpont, amely épül:`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` | A következő ből készült:`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `inputs.method` | Mindig`POST` |
+| `inputs.body` | Megegyezik az API-alkalmazás paramétereivel |
+| `inputs.authentication` | Megegyezik az API-alkalmazás hitelesítésének |
 
-Ennek a megközelítésnek működnie kell az összes API app-művelet esetében. Ne feledje azonban, hogy ezek az előző API Appsek már nem támogatottak. Ezért érdemes áttérnie a két másik korábbi lehetőségre, egy felügyelt API-ra vagy az egyéni webes API-k üzemeltetésére.
+Ez a megközelítés az összes API-alkalmazás-művelethez működnie kell. Ne feledje azonban, hogy ezek a korábbi API-alkalmazások már nem támogatottak. Ezért lépjen át a két másik korábbi lehetőség, egy felügyelt API vagy az egyéni webes API üzemeltetésére.
 
 <a name="foreach"></a>
 
-## <a name="renamed-repeat-to-foreach"></a>Átnevezve: "REPEAT" – "foreach"
+## <a name="renamed-repeat-to-foreach"></a>Átnevezve "ismétlés" -re "foreach"
 
-A séma korábbi verziójában sok vásárlói visszajelzést kaptunk, hogy az **Ismétlési** művelet neve zavaros volt, és nem volt megfelelően rögzítve **, hogy az ismétlés valóban** a-minden hurokhoz tartozik. Ezért a `repeat` átnevezve `foreach`re. Korábban a következő példához hasonló műveletet kell megírnia:
+Az előző sémaverzióhoz sok vásárlói visszajelzést kaptunk arról, hogy a Művelet **ismétlése** név zavaró volt, és nem megfelelően rögzítette, hogy **az Ismétlés** valóban minden ciklusra szólt. Szóval, `repeat` átneveztük `foreach`a . Korábban ezt a műveletet a következő példához hasonlóan írta:
 
 ``` json
 "actions": {
@@ -318,7 +318,7 @@ A séma korábbi verziójában sok vásárlói visszajelzést kaptunk, hogy az *
 }
 ```
 
-Most Ehelyett ezt a verziót kell megírnia:
+Most azt írja ezt a verziót helyett:
 
 ``` json
 "actions": {
@@ -333,13 +333,13 @@ Most Ehelyett ezt a verziót kell megírnia:
 }
 ```
 
-Továbbá a `repeatItem()` függvény, amely arra hivatkozott, hogy az aktuális iteráció során a hurok feldolgozására használt elemre hivatkozik, a rendszer most átnevezi `item()`. 
+Továbbá, `repeatItem()` a függvény, amely hivatkozott a tétel, hogy a hurok feldolgozása `item()`során az aktuális iteráció, most átlett nevezve . 
 
-### <a name="reference-outputs-from-foreach"></a>A "foreach" kimenetének hivatkozási eredményei
+### <a name="reference-outputs-from-foreach"></a>Referencia-outputok a "foreach"-ből
 
-Az egyszerűsítés érdekében a `foreach` műveletekből származó kimenetek már nincsenek becsomagolva egy `repeatItems`nevű objektumba. Ezekkel a módosításokkal a `repeatItem()`, `repeatBody()`és `repeatOutputs()` függvények is törlődnek.
+Az egyszerűsítés érdekében `foreach` a műveletek kimenetei `repeatItems`már nem kerülnek a neve súgás objektumba. Ezen a módosításnál `repeatItem()`a `repeatBody()`, `repeatOutputs()` a és a függvények is törlődnek.
 
-Tehát az előző `repeat` példa használatával ezeket a kimeneteket kapja:
+Tehát az előző `repeat` példában ezeket a kimeneteket kapja:
 
 ``` json
 "repeatItems": [ {
@@ -356,7 +356,7 @@ Tehát az előző `repeat` példa használatával ezeket a kimeneteket kapja:
 } ]
 ```
 
-Most ezeket a kimeneteket kapja:
+Most kap ezeket a kimeneteket helyett:
 
 ``` json
 [ {
@@ -373,7 +373,7 @@ Most ezeket a kimeneteket kapja:
 } ]
 ```
 
-Korábban a következő kimenetekre való hivatkozáskor a művelet `body`ának beszerzéséhez:
+Korábban, hogy `body` a műveletből, amikor ezekre a kimenetek:
 
 ``` json
 "actions": {
@@ -389,7 +389,7 @@ Korábban a következő kimenetekre való hivatkozáskor a művelet `body`ának 
 }
 ```
 
-Most már használhatja ezt a verziót:
+Most már használhatja ezt a verziót helyette:
 
 ``` json
 "actions": {
@@ -409,15 +409,15 @@ Most már használhatja ezt a verziót:
 
 ## <a name="native-http-listener"></a>Natív HTTP-figyelő
 
-A HTTP-figyelő funkciói már beépítettek, így nem kell telepítenie egy HTTP-figyelő API-alkalmazást. További információért olvassa el, hogyan [teheti meg a logikai alkalmazás végpontjának meghívását](../logic-apps/logic-apps-http-endpoint.md). 
+A HTTP-figyelő funkciók mostmár beépítettek, így nem kell telepítenie egy HTTP Listener API-alkalmazást. További információ: a [logikai alkalmazás végpontjának hívássá tehető.](../logic-apps/logic-apps-http-endpoint.md) 
 
-Ezekkel a módosításokkal a Logic Apps lecseréli a `@accessKeys()` függvényt a `@listCallbackURL()` függvénnyel, amely szükség esetén lekéri a végpontot. Emellett meg kell adnia legalább egy triggert a logikai alkalmazásban. Ha `/run` a munkafolyamatot, a következő trigger-típusok egyikét kell használnia: `Manual`, `ApiConnectionWebhook`vagy `HttpWebhook`
+Ezekkel a módosításokkal a `@accessKeys()` Logic `@listCallbackURL()` Apps lecseréli a függvényt a függvényre, amely szükség esetén leváltja a végpontot. Emellett most meg kell határoznia legalább egy eseményindítót a logikai alkalmazásban. Ha a `/run` munkafolyamatot szeretné használni, az alábbi eseményindítótípusok egyikét kell használnia: `Manual`, `ApiConnectionWebhook`vagy`HttpWebhook`
 
 <a name="child-workflows"></a>
 
-## <a name="call-child-workflows"></a>Alárendelt munkafolyamatok hívása
+## <a name="call-child-workflows"></a>Gyermekmunkafolyamatok hívása
 
-Korábban a gyermek munkafolyamatok hívása szükséges a munkafolyamathoz, a hozzáférési token beszerzése és a token beillesztése a logikai alkalmazás definíciójában, ahol a gyermek munkafolyamatot hívni kívánja. Ezzel a sémával a Logic Apps motor automatikusan létrehoz egy SAS-t futásidőben a gyermek munkafolyamathoz, így nem kell semmilyen titkot beillesztenie a definícióba. Például:
+Korábban az alárendelt munkafolyamatok hívása szükséges a munkafolyamathoz való hozzáféréshez, a hozzáférési jogkivonat beszerzéséhez és a jogkivonat beillesztéséhez a logikai alkalmazás definíciójába, ahol meg szeretné hívni az adott alárendelt munkafolyamatot. Ezzel a sémával a Logic Apps motor automatikusan létrehoz egy SAS futásidőben a gyermek munkafolyamat, így nem kell beilleszteni a titkos kulcsokat a definícióba. Például:
 
 ``` json
 "myNestedWorkflow": {
@@ -443,20 +443,20 @@ Korábban a gyermek munkafolyamatok hívása szükséges a munkafolyamathoz, a h
 }
 ```
 
-Emellett a gyermek munkafolyamatok teljes hozzáférést kapnak a bejövő kérelemhez. Így a paramétereket át lehet adni a `queries` szakaszban és a `headers` objektumban. A teljes `body` szakaszt teljes egészében is meghatározhatja.
+Emellett az alárendelt munkafolyamatok teljes hozzáférést kapnak a bejövő kérelemhez. Tehát paramétereket adhat át `queries` a szakaszban `headers` és az objektumban. Teljes mértékben meghatározhatja `body` a teljes szakaszt is.
 
-Végül a gyermek munkafolyamatok rendelkeznek a szükséges módosításokkal. Egy alárendelt munkafolyamatot korábban és közvetlenül hívhat meg, ezért meg kell határoznia egy trigger-végpontot a szülő által hívni kívánt munkafolyamatban. Általában olyan triggert kell hozzáadnia, amely `Manual` típust tartalmaz, majd ezt az triggert használja a szülő definíciójában. A `host` tulajdonságnak külön `triggerName` kell lennie, mert mindig meg kell adnia a meghívott triggert.
+Végül az alárendelt munkafolyamatok rendelkeznek ezekkel a szükséges módosításokkal. Bár korábban és közvetlenül meghívhat egy alárendelt munkafolyamatot, most meg kell határoznia egy eseményindító végpontot a munkafolyamatban, hogy a szülő hívhassa. Általában hozzá kell adnia `Manual` egy eseményindítót, amely nek típusa van, majd használja ezt az eseményindítót a szülődefinícióban. A `host` tulajdonságnak kifejezetten van egy, `triggerName` mert mindig meg kell adnia a hívott eseményindítót.
 
-## <a name="other-changes"></a>Egyéb változások
+## <a name="other-changes"></a>További változások
 
 ### <a name="new-queries-property"></a>Új "lekérdezések" tulajdonság
 
-Az összes Művelettípus mostantól támogatja a `queries`nevű új bemenetet. Ez a bemenet lehet strukturált objektum, nem pedig kézzel kell összeállítani a sztringet.
+Mostantól minden művelettípus támogatja `queries`az új bemenetet, amelyet . Ez a bemenet lehet strukturált objektum, ahelyett, hogy kézzel kellene összeállítania a karakterláncot.
 
-### <a name="renamed-parse-function-to-json"></a>A "parse ()" függvény átnevezve a következőre: "JSON ()"
+### <a name="renamed-parse-function-to-json"></a>Átnevezett "parse()" függvény "json()" névre.
 
-A `parse()` függvény most átnevezte a `json()` függvényt a jövőbeli tartalomtípusokra.
+A `parse()` függvény most átnevezi a függvényt a `json()` jövőbeli tartalomtípusokhoz.
 
-## <a name="enterprise-integration-apis"></a>Vállalati integráció API-k
+## <a name="enterprise-integration-apis"></a>Vállalati integrációs API-k
 
-Ez a séma még nem támogatja a felügyelt verziókat Vállalati integráció API-k, például az AS2 számára. A meglévő telepített BizTalk API-kat azonban a HTTP-művelettel is használhatja. További információ: "a már telepített API-alkalmazások használata" az [integrációs ütemtervben](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Ez a séma még nem támogatja a vállalati integrációs API-k, például az AS2 felügyelt verzióit. A meglévő üzembe helyezett BizTalk API-k at azonban használhatja a HTTP-műveleten keresztül. További információt az [integrációs ütemterv](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)"A már telepített API-alkalmazások használata" című témakörben talál. 
